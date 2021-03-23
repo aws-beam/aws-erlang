@@ -96,10 +96,14 @@
 %% @doc Associate a lens to a workload.
 associate_lenses(Client, WorkloadId, Input) ->
     associate_lenses(Client, WorkloadId, Input, []).
-associate_lenses(Client, WorkloadId, Input0, Options) ->
+associate_lenses(Client, WorkloadId, Input0, Options0) ->
     Method = patch,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/associateLenses"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -112,10 +116,14 @@ associate_lenses(Client, WorkloadId, Input0, Options) ->
 %% @doc Create a milestone for an existing workload.
 create_milestone(Client, WorkloadId, Input) ->
     create_milestone(Client, WorkloadId, Input, []).
-create_milestone(Client, WorkloadId, Input0, Options) ->
+create_milestone(Client, WorkloadId, Input0, Options0) ->
     Method = post,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/milestones"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -135,10 +143,14 @@ create_milestone(Client, WorkloadId, Input0, Options) ->
 %% Tool User Guide.
 create_workload(Client, Input) ->
     create_workload(Client, Input, []).
-create_workload(Client, Input0, Options) ->
+create_workload(Client, Input0, Options0) ->
     Method = post,
     Path = ["/workloads"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -158,10 +170,14 @@ create_workload(Client, Input0, Options) ->
 %% Tool User Guide.
 create_workload_share(Client, WorkloadId, Input) ->
     create_workload_share(Client, WorkloadId, Input, []).
-create_workload_share(Client, WorkloadId, Input0, Options) ->
+create_workload_share(Client, WorkloadId, Input0, Options0) ->
     Method = post,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/shares"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -174,10 +190,14 @@ create_workload_share(Client, WorkloadId, Input0, Options) ->
 %% @doc Delete an existing workload.
 delete_workload(Client, WorkloadId, Input) ->
     delete_workload(Client, WorkloadId, Input, []).
-delete_workload(Client, WorkloadId, Input0, Options) ->
+delete_workload(Client, WorkloadId, Input0, Options0) ->
     Method = delete,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -191,10 +211,14 @@ delete_workload(Client, WorkloadId, Input0, Options) ->
 %% @doc Delete a workload share.
 delete_workload_share(Client, ShareId, WorkloadId, Input) ->
     delete_workload_share(Client, ShareId, WorkloadId, Input, []).
-delete_workload_share(Client, ShareId, WorkloadId, Input0, Options) ->
+delete_workload_share(Client, ShareId, WorkloadId, Input0, Options0) ->
     Method = delete,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/shares/", aws_util:encode_uri(ShareId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -211,10 +235,14 @@ delete_workload_share(Client, ShareId, WorkloadId, Input0, Options) ->
 %% removed from a workload.
 disassociate_lenses(Client, WorkloadId, Input) ->
     disassociate_lenses(Client, WorkloadId, Input, []).
-disassociate_lenses(Client, WorkloadId, Input0, Options) ->
+disassociate_lenses(Client, WorkloadId, Input0, Options0) ->
     Method = patch,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/disassociateLenses"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -233,10 +261,13 @@ get_answer(Client, LensAlias, QuestionId, WorkloadId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_answer(Client, LensAlias, QuestionId, WorkloadId, QueryMap, HeadersMap, []).
 
-get_answer(Client, LensAlias, QuestionId, WorkloadId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_answer(Client, LensAlias, QuestionId, WorkloadId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), "/answers/", aws_util:encode_uri(QuestionId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -257,10 +288,13 @@ get_lens_review(Client, LensAlias, WorkloadId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_lens_review(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, []).
 
-get_lens_review(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_lens_review(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -281,10 +315,13 @@ get_lens_review_report(Client, LensAlias, WorkloadId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_lens_review_report(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, []).
 
-get_lens_review_report(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_lens_review_report(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), "/report"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -305,10 +342,13 @@ get_lens_version_difference(Client, LensAlias, BaseLensVersion, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_lens_version_difference(Client, LensAlias, BaseLensVersion, QueryMap, HeadersMap, []).
 
-get_lens_version_difference(Client, LensAlias, BaseLensVersion, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_lens_version_difference(Client, LensAlias, BaseLensVersion, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/lenses/", aws_util:encode_uri(LensAlias), "/versionDifference"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -329,10 +369,13 @@ get_milestone(Client, MilestoneNumber, WorkloadId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_milestone(Client, MilestoneNumber, WorkloadId, QueryMap, HeadersMap, []).
 
-get_milestone(Client, MilestoneNumber, WorkloadId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_milestone(Client, MilestoneNumber, WorkloadId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/milestones/", aws_util:encode_uri(MilestoneNumber), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -349,10 +392,13 @@ get_workload(Client, WorkloadId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_workload(Client, WorkloadId, QueryMap, HeadersMap, []).
 
-get_workload(Client, WorkloadId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_workload(Client, WorkloadId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -369,10 +415,13 @@ list_answers(Client, LensAlias, WorkloadId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_answers(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, []).
 
-list_answers(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_answers(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), "/answers"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -396,10 +445,13 @@ list_lens_review_improvements(Client, LensAlias, WorkloadId, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_lens_review_improvements(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, []).
 
-list_lens_review_improvements(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_lens_review_improvements(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), "/improvements"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -423,10 +475,13 @@ list_lens_reviews(Client, WorkloadId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_lens_reviews(Client, WorkloadId, QueryMap, HeadersMap, []).
 
-list_lens_reviews(Client, WorkloadId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_lens_reviews(Client, WorkloadId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -449,10 +504,13 @@ list_lenses(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_lenses(Client, QueryMap, HeadersMap, []).
 
-list_lenses(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_lenses(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/lenses"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -468,10 +526,14 @@ list_lenses(Client, QueryMap, HeadersMap, Options)
 %% @doc List all milestones for an existing workload.
 list_milestones(Client, WorkloadId, Input) ->
     list_milestones(Client, WorkloadId, Input, []).
-list_milestones(Client, WorkloadId, Input0, Options) ->
+list_milestones(Client, WorkloadId, Input0, Options0) ->
     Method = post,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/milestonesSummaries"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -484,10 +546,14 @@ list_milestones(Client, WorkloadId, Input0, Options) ->
 %% @doc List lens notifications.
 list_notifications(Client, Input) ->
     list_notifications(Client, Input, []).
-list_notifications(Client, Input0, Options) ->
+list_notifications(Client, Input0, Options0) ->
     Method = post,
     Path = ["/notifications"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -506,10 +572,13 @@ list_share_invitations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_share_invitations(Client, QueryMap, HeadersMap, []).
 
-list_share_invitations(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_share_invitations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/shareInvitations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -532,10 +601,13 @@ list_tags_for_resource(Client, WorkloadArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, WorkloadArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, WorkloadArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, WorkloadArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(WorkloadArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -552,10 +624,13 @@ list_workload_shares(Client, WorkloadId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_workload_shares(Client, WorkloadId, QueryMap, HeadersMap, []).
 
-list_workload_shares(Client, WorkloadId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_workload_shares(Client, WorkloadId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/shares"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -574,10 +649,14 @@ list_workload_shares(Client, WorkloadId, QueryMap, HeadersMap, Options)
 %% Paginated.
 list_workloads(Client, Input) ->
     list_workloads(Client, Input, []).
-list_workloads(Client, Input0, Options) ->
+list_workloads(Client, Input0, Options0) ->
     Method = post,
     Path = ["/workloadsSummaries"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -590,10 +669,14 @@ list_workloads(Client, Input0, Options) ->
 %% @doc Adds one or more tags to the specified resource.
 tag_resource(Client, WorkloadArn, Input) ->
     tag_resource(Client, WorkloadArn, Input, []).
-tag_resource(Client, WorkloadArn, Input0, Options) ->
+tag_resource(Client, WorkloadArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(WorkloadArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -606,10 +689,14 @@ tag_resource(Client, WorkloadArn, Input0, Options) ->
 %% @doc Deletes specified tags from a resource.
 untag_resource(Client, WorkloadArn, Input) ->
     untag_resource(Client, WorkloadArn, Input, []).
-untag_resource(Client, WorkloadArn, Input0, Options) ->
+untag_resource(Client, WorkloadArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(WorkloadArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -623,10 +710,14 @@ untag_resource(Client, WorkloadArn, Input0, Options) ->
 %% @doc Update the answer to a specific question in a workload review.
 update_answer(Client, LensAlias, QuestionId, WorkloadId, Input) ->
     update_answer(Client, LensAlias, QuestionId, WorkloadId, Input, []).
-update_answer(Client, LensAlias, QuestionId, WorkloadId, Input0, Options) ->
+update_answer(Client, LensAlias, QuestionId, WorkloadId, Input0, Options0) ->
     Method = patch,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), "/answers/", aws_util:encode_uri(QuestionId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -639,10 +730,14 @@ update_answer(Client, LensAlias, QuestionId, WorkloadId, Input0, Options) ->
 %% @doc Update lens review.
 update_lens_review(Client, LensAlias, WorkloadId, Input) ->
     update_lens_review(Client, LensAlias, WorkloadId, Input, []).
-update_lens_review(Client, LensAlias, WorkloadId, Input0, Options) ->
+update_lens_review(Client, LensAlias, WorkloadId, Input0, Options0) ->
     Method = patch,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -655,10 +750,14 @@ update_lens_review(Client, LensAlias, WorkloadId, Input0, Options) ->
 %% @doc Update a workload invitation.
 update_share_invitation(Client, ShareInvitationId, Input) ->
     update_share_invitation(Client, ShareInvitationId, Input, []).
-update_share_invitation(Client, ShareInvitationId, Input0, Options) ->
+update_share_invitation(Client, ShareInvitationId, Input0, Options0) ->
     Method = patch,
     Path = ["/shareInvitations/", aws_util:encode_uri(ShareInvitationId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -671,10 +770,14 @@ update_share_invitation(Client, ShareInvitationId, Input0, Options) ->
 %% @doc Update an existing workload.
 update_workload(Client, WorkloadId, Input) ->
     update_workload(Client, WorkloadId, Input, []).
-update_workload(Client, WorkloadId, Input0, Options) ->
+update_workload(Client, WorkloadId, Input0, Options0) ->
     Method = patch,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -687,10 +790,14 @@ update_workload(Client, WorkloadId, Input0, Options) ->
 %% @doc Update a workload share.
 update_workload_share(Client, ShareId, WorkloadId, Input) ->
     update_workload_share(Client, ShareId, WorkloadId, Input, []).
-update_workload_share(Client, ShareId, WorkloadId, Input0, Options) ->
+update_workload_share(Client, ShareId, WorkloadId, Input0, Options0) ->
     Method = patch,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/shares/", aws_util:encode_uri(ShareId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -703,10 +810,14 @@ update_workload_share(Client, ShareId, WorkloadId, Input0, Options) ->
 %% @doc Upgrade lens review.
 upgrade_lens_review(Client, LensAlias, WorkloadId, Input) ->
     upgrade_lens_review(Client, LensAlias, WorkloadId, Input, []).
-upgrade_lens_review(Client, LensAlias, WorkloadId, Input0, Options) ->
+upgrade_lens_review(Client, LensAlias, WorkloadId, Input0, Options0) ->
     Method = put,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), "/upgrade"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -738,19 +849,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -760,14 +872,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

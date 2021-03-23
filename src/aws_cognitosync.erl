@@ -84,10 +84,14 @@
 %% this API with the temporary user credentials provided by Cognito Identity.
 bulk_publish(Client, IdentityPoolId, Input) ->
     bulk_publish(Client, IdentityPoolId, Input, []).
-bulk_publish(Client, IdentityPoolId, Input0, Options) ->
+bulk_publish(Client, IdentityPoolId, Input0, Options0) ->
     Method = post,
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/bulkpublish"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -108,10 +112,14 @@ bulk_publish(Client, IdentityPoolId, Input0, Options) ->
 %% Identity or with developer credentials.
 delete_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Input) ->
     delete_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Input, []).
-delete_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Input0, Options) ->
+delete_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Input0, Options0) ->
     Method = delete,
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets/", aws_util:encode_uri(DatasetName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -138,10 +146,13 @@ describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersMap, []).
 
-describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets/", aws_util:encode_uri(DatasetName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -162,10 +173,13 @@ describe_identity_pool_usage(Client, IdentityPoolId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_identity_pool_usage(Client, IdentityPoolId, QueryMap, HeadersMap, []).
 
-describe_identity_pool_usage(Client, IdentityPoolId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_identity_pool_usage(Client, IdentityPoolId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -186,10 +200,13 @@ describe_identity_usage(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_identity_usage(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap, []).
 
-describe_identity_usage(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_identity_usage(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -204,10 +221,14 @@ describe_identity_usage(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap
 %% this API with the temporary user credentials provided by Cognito Identity.
 get_bulk_publish_details(Client, IdentityPoolId, Input) ->
     get_bulk_publish_details(Client, IdentityPoolId, Input, []).
-get_bulk_publish_details(Client, IdentityPoolId, Input0, Options) ->
+get_bulk_publish_details(Client, IdentityPoolId, Input0, Options0) ->
     Method = post,
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/getBulkPublishDetails"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -230,10 +251,13 @@ get_cognito_events(Client, IdentityPoolId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cognito_events(Client, IdentityPoolId, QueryMap, HeadersMap, []).
 
-get_cognito_events(Client, IdentityPoolId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_cognito_events(Client, IdentityPoolId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/events"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -253,10 +277,13 @@ get_identity_pool_configuration(Client, IdentityPoolId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_identity_pool_configuration(Client, IdentityPoolId, QueryMap, HeadersMap, []).
 
-get_identity_pool_configuration(Client, IdentityPoolId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_identity_pool_configuration(Client, IdentityPoolId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/configuration"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -281,10 +308,13 @@ list_datasets(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_datasets(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap, []).
 
-list_datasets(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_datasets(Client, IdentityId, IdentityPoolId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -310,10 +340,13 @@ list_identity_pool_usage(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_identity_pool_usage(Client, QueryMap, HeadersMap, []).
 
-list_identity_pool_usage(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_identity_pool_usage(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/identitypools"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -344,10 +377,13 @@ list_records(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_records(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersMap, []).
 
-list_records(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_records(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets/", aws_util:encode_uri(DatasetName), "/records"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -368,10 +404,14 @@ list_records(Client, DatasetName, IdentityId, IdentityPoolId, QueryMap, HeadersM
 %% Identity. You cannot call this API with developer credentials.
 register_device(Client, IdentityId, IdentityPoolId, Input) ->
     register_device(Client, IdentityId, IdentityPoolId, Input, []).
-register_device(Client, IdentityId, IdentityPoolId, Input0, Options) ->
+register_device(Client, IdentityId, IdentityPoolId, Input0, Options0) ->
     Method = post,
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identity/", aws_util:encode_uri(IdentityId), "/device"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -392,10 +432,14 @@ register_device(Client, IdentityId, IdentityPoolId, Input0, Options) ->
 %% this API with the temporary user credentials provided by Cognito Identity.
 set_cognito_events(Client, IdentityPoolId, Input) ->
     set_cognito_events(Client, IdentityPoolId, Input, []).
-set_cognito_events(Client, IdentityPoolId, Input0, Options) ->
+set_cognito_events(Client, IdentityPoolId, Input0, Options0) ->
     Method = post,
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/events"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -411,10 +455,14 @@ set_cognito_events(Client, IdentityPoolId, Input0, Options) ->
 %% this API with the temporary user credentials provided by Cognito Identity.
 set_identity_pool_configuration(Client, IdentityPoolId, Input) ->
     set_identity_pool_configuration(Client, IdentityPoolId, Input, []).
-set_identity_pool_configuration(Client, IdentityPoolId, Input0, Options) ->
+set_identity_pool_configuration(Client, IdentityPoolId, Input0, Options0) ->
     Method = post,
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/configuration"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -431,10 +479,14 @@ set_identity_pool_configuration(Client, IdentityPoolId, Input0, Options) ->
 %% Identity. You cannot call this API with developer credentials.
 subscribe_to_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input) ->
     subscribe_to_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input, []).
-subscribe_to_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input0, Options) ->
+subscribe_to_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input0, Options0) ->
     Method = post,
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets/", aws_util:encode_uri(DatasetName), "/subscriptions/", aws_util:encode_uri(DeviceId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -451,10 +503,14 @@ subscribe_to_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, 
 %% Identity. You cannot call this API with developer credentials.
 unsubscribe_from_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input) ->
     unsubscribe_from_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input, []).
-unsubscribe_from_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input0, Options) ->
+unsubscribe_from_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input0, Options0) ->
     Method = delete,
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets/", aws_util:encode_uri(DatasetName), "/subscriptions/", aws_util:encode_uri(DeviceId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -484,10 +540,14 @@ unsubscribe_from_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPool
 %% Identity or with developer credentials.
 update_records(Client, DatasetName, IdentityId, IdentityPoolId, Input) ->
     update_records(Client, DatasetName, IdentityId, IdentityPoolId, Input, []).
-update_records(Client, DatasetName, IdentityId, IdentityPoolId, Input0, Options) ->
+update_records(Client, DatasetName, IdentityId, IdentityPoolId, Input0, Options0) ->
     Method = post,
     Path = ["/identitypools/", aws_util:encode_uri(IdentityPoolId), "/identities/", aws_util:encode_uri(IdentityId), "/datasets/", aws_util:encode_uri(DatasetName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-Client-Context">>, <<"ClientContext">>}
@@ -521,19 +581,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -543,14 +604,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

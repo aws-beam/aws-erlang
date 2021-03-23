@@ -83,10 +83,14 @@
 %% `lookoutvision:CreateDataset' operation.
 create_dataset(Client, ProjectName, Input) ->
     create_dataset(Client, ProjectName, Input, []).
-create_dataset(Client, ProjectName, Input0, Options) ->
+create_dataset(Client, ProjectName, Input0, Options0) ->
     Method = post,
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/datasets"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"ClientToken">>}
@@ -120,10 +124,14 @@ create_dataset(Client, ProjectName, Input0, Options) ->
 %% also require permission to the `lookoutvision:TagResource' operation.
 create_model(Client, ProjectName, Input) ->
     create_model(Client, ProjectName, Input, []).
-create_model(Client, ProjectName, Input0, Options) ->
+create_model(Client, ProjectName, Input0, Options0) ->
     Method = post,
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/models"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"ClientToken">>}
@@ -143,10 +151,14 @@ create_model(Client, ProjectName, Input0, Options) ->
 %% `lookoutvision:CreateProject' operation.
 create_project(Client, Input) ->
     create_project(Client, Input, []).
-create_project(Client, Input0, Options) ->
+create_project(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-11-20/projects"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"ClientToken">>}
@@ -177,10 +189,14 @@ create_project(Client, Input0, Options) ->
 %% `lookoutvision:DeleteDataset' operation.
 delete_dataset(Client, DatasetType, ProjectName, Input) ->
     delete_dataset(Client, DatasetType, ProjectName, Input, []).
-delete_dataset(Client, DatasetType, ProjectName, Input0, Options) ->
+delete_dataset(Client, DatasetType, ProjectName, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/datasets/", aws_util:encode_uri(DatasetType), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"ClientToken">>}
@@ -205,10 +221,14 @@ delete_dataset(Client, DatasetType, ProjectName, Input0, Options) ->
 %% `lookoutvision:DeleteModel' operation.
 delete_model(Client, ModelVersion, ProjectName, Input) ->
     delete_model(Client, ModelVersion, ProjectName, Input, []).
-delete_model(Client, ModelVersion, ProjectName, Input0, Options) ->
+delete_model(Client, ModelVersion, ProjectName, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/models/", aws_util:encode_uri(ModelVersion), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"ClientToken">>}
@@ -234,10 +254,14 @@ delete_model(Client, ModelVersion, ProjectName, Input0, Options) ->
 %% `lookoutvision:DeleteProject' operation.
 delete_project(Client, ProjectName, Input) ->
     delete_project(Client, ProjectName, Input, []).
-delete_project(Client, ProjectName, Input0, Options) ->
+delete_project(Client, ProjectName, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"ClientToken">>}
@@ -261,10 +285,13 @@ describe_dataset(Client, DatasetType, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dataset(Client, DatasetType, ProjectName, QueryMap, HeadersMap, []).
 
-describe_dataset(Client, DatasetType, ProjectName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_dataset(Client, DatasetType, ProjectName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/datasets/", aws_util:encode_uri(DatasetType), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -284,10 +311,13 @@ describe_model(Client, ModelVersion, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_model(Client, ModelVersion, ProjectName, QueryMap, HeadersMap, []).
 
-describe_model(Client, ModelVersion, ProjectName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_model(Client, ModelVersion, ProjectName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/models/", aws_util:encode_uri(ModelVersion), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -307,10 +337,13 @@ describe_project(Client, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_project(Client, ProjectName, QueryMap, HeadersMap, []).
 
-describe_project(Client, ProjectName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_project(Client, ProjectName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -334,10 +367,14 @@ describe_project(Client, ProjectName, QueryMap, HeadersMap, Options)
 %% `lookoutvision:DetectAnomalies' operation.
 detect_anomalies(Client, ModelVersion, ProjectName, Input) ->
     detect_anomalies(Client, ModelVersion, ProjectName, Input, []).
-detect_anomalies(Client, ModelVersion, ProjectName, Input0, Options) ->
+detect_anomalies(Client, ModelVersion, ProjectName, Input0, Options0) ->
     Method = post,
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/models/", aws_util:encode_uri(ModelVersion), "/detect"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, true},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Content-Type">>, <<"ContentType">>}
@@ -347,7 +384,7 @@ detect_anomalies(Client, ModelVersion, ProjectName, Input0, Options) ->
     Query_ = [],
     Input = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options ++ [{should_send_body_as_binary, true}], SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the JSON Lines within a dataset.
 %%
@@ -364,10 +401,13 @@ list_dataset_entries(Client, DatasetType, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dataset_entries(Client, DatasetType, ProjectName, QueryMap, HeadersMap, []).
 
-list_dataset_entries(Client, DatasetType, ProjectName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_dataset_entries(Client, DatasetType, ProjectName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/datasets/", aws_util:encode_uri(DatasetType), "/entries"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -398,10 +438,13 @@ list_models(Client, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_models(Client, ProjectName, QueryMap, HeadersMap, []).
 
-list_models(Client, ProjectName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_models(Client, ProjectName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/models"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -426,10 +469,13 @@ list_projects(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_projects(Client, QueryMap, HeadersMap, []).
 
-list_projects(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_projects(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-11-20/projects"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -455,10 +501,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-11-20/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -484,10 +533,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% `lookoutvision:StartModel' operation.
 start_model(Client, ModelVersion, ProjectName, Input) ->
     start_model(Client, ModelVersion, ProjectName, Input, []).
-start_model(Client, ModelVersion, ProjectName, Input0, Options) ->
+start_model(Client, ModelVersion, ProjectName, Input0, Options0) ->
     Method = post,
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/models/", aws_util:encode_uri(ModelVersion), "/start"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"ClientToken">>}
@@ -510,10 +563,14 @@ start_model(Client, ModelVersion, ProjectName, Input0, Options) ->
 %% `lookoutvision:StopModel' operation.
 stop_model(Client, ModelVersion, ProjectName, Input) ->
     stop_model(Client, ModelVersion, ProjectName, Input, []).
-stop_model(Client, ModelVersion, ProjectName, Input0, Options) ->
+stop_model(Client, ModelVersion, ProjectName, Input0, Options0) ->
     Method = post,
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/models/", aws_util:encode_uri(ModelVersion), "/stop"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"ClientToken">>}
@@ -535,10 +592,14 @@ stop_model(Client, ModelVersion, ProjectName, Input0, Options) ->
 %% `lookoutvision:TagResource' operation.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/2020-11-20/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -557,10 +618,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% `lookoutvision:UntagResource' operation.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-11-20/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -585,10 +650,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% `lookoutvision:UpdateDatasetEntries' operation.
 update_dataset_entries(Client, DatasetType, ProjectName, Input) ->
     update_dataset_entries(Client, DatasetType, ProjectName, Input, []).
-update_dataset_entries(Client, DatasetType, ProjectName, Input0, Options) ->
+update_dataset_entries(Client, DatasetType, ProjectName, Input0, Options0) ->
     Method = patch,
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/datasets/", aws_util:encode_uri(DatasetType), "/entries"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"ClientToken">>}
@@ -622,19 +691,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -644,14 +714,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

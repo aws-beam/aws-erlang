@@ -185,10 +185,14 @@
 %% @doc Creates an Api resource.
 create_api(Client, Input) ->
     create_api(Client, Input, []).
-create_api(Client, Input0, Options) ->
+create_api(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/apis"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -201,10 +205,14 @@ create_api(Client, Input0, Options) ->
 %% @doc Creates an API mapping.
 create_api_mapping(Client, DomainName, Input) ->
     create_api_mapping(Client, DomainName, Input, []).
-create_api_mapping(Client, DomainName, Input0, Options) ->
+create_api_mapping(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/apimappings"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -217,10 +225,14 @@ create_api_mapping(Client, DomainName, Input0, Options) ->
 %% @doc Creates an Authorizer for an API.
 create_authorizer(Client, ApiId, Input) ->
     create_authorizer(Client, ApiId, Input, []).
-create_authorizer(Client, ApiId, Input0, Options) ->
+create_authorizer(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/authorizers"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -233,10 +245,14 @@ create_authorizer(Client, ApiId, Input0, Options) ->
 %% @doc Creates a Deployment for an API.
 create_deployment(Client, ApiId, Input) ->
     create_deployment(Client, ApiId, Input, []).
-create_deployment(Client, ApiId, Input0, Options) ->
+create_deployment(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/deployments"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -249,10 +265,14 @@ create_deployment(Client, ApiId, Input0, Options) ->
 %% @doc Creates a domain name.
 create_domain_name(Client, Input) ->
     create_domain_name(Client, Input, []).
-create_domain_name(Client, Input0, Options) ->
+create_domain_name(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domainnames"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -265,10 +285,14 @@ create_domain_name(Client, Input0, Options) ->
 %% @doc Creates an Integration.
 create_integration(Client, ApiId, Input) ->
     create_integration(Client, ApiId, Input, []).
-create_integration(Client, ApiId, Input0, Options) ->
+create_integration(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -281,10 +305,14 @@ create_integration(Client, ApiId, Input0, Options) ->
 %% @doc Creates an IntegrationResponses.
 create_integration_response(Client, ApiId, IntegrationId, Input) ->
     create_integration_response(Client, ApiId, IntegrationId, Input, []).
-create_integration_response(Client, ApiId, IntegrationId, Input0, Options) ->
+create_integration_response(Client, ApiId, IntegrationId, Input0, Options0) ->
     Method = post,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), "/integrationresponses"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -297,10 +325,14 @@ create_integration_response(Client, ApiId, IntegrationId, Input0, Options) ->
 %% @doc Creates a Model for an API.
 create_model(Client, ApiId, Input) ->
     create_model(Client, ApiId, Input, []).
-create_model(Client, ApiId, Input0, Options) ->
+create_model(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -313,10 +345,14 @@ create_model(Client, ApiId, Input0, Options) ->
 %% @doc Creates a Route for an API.
 create_route(Client, ApiId, Input) ->
     create_route(Client, ApiId, Input, []).
-create_route(Client, ApiId, Input0, Options) ->
+create_route(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -329,10 +365,14 @@ create_route(Client, ApiId, Input0, Options) ->
 %% @doc Creates a RouteResponse for a Route.
 create_route_response(Client, ApiId, RouteId, Input) ->
     create_route_response(Client, ApiId, RouteId, Input, []).
-create_route_response(Client, ApiId, RouteId, Input0, Options) ->
+create_route_response(Client, ApiId, RouteId, Input0, Options0) ->
     Method = post,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/routeresponses"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -345,10 +385,14 @@ create_route_response(Client, ApiId, RouteId, Input0, Options) ->
 %% @doc Creates a Stage for an API.
 create_stage(Client, ApiId, Input) ->
     create_stage(Client, ApiId, Input, []).
-create_stage(Client, ApiId, Input0, Options) ->
+create_stage(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -361,10 +405,14 @@ create_stage(Client, ApiId, Input0, Options) ->
 %% @doc Creates a VPC link.
 create_vpc_link(Client, Input) ->
     create_vpc_link(Client, Input, []).
-create_vpc_link(Client, Input0, Options) ->
+create_vpc_link(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/vpclinks"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -379,10 +427,14 @@ create_vpc_link(Client, Input0, Options) ->
 %% To disable access logging for a Stage, delete its AccessLogSettings.
 delete_access_log_settings(Client, ApiId, StageName, Input) ->
     delete_access_log_settings(Client, ApiId, StageName, Input, []).
-delete_access_log_settings(Client, ApiId, StageName, Input0, Options) ->
+delete_access_log_settings(Client, ApiId, StageName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), "/accesslogsettings"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -395,10 +447,14 @@ delete_access_log_settings(Client, ApiId, StageName, Input0, Options) ->
 %% @doc Deletes an Api resource.
 delete_api(Client, ApiId, Input) ->
     delete_api(Client, ApiId, Input, []).
-delete_api(Client, ApiId, Input0, Options) ->
+delete_api(Client, ApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -411,10 +467,14 @@ delete_api(Client, ApiId, Input0, Options) ->
 %% @doc Deletes an API mapping.
 delete_api_mapping(Client, ApiMappingId, DomainName, Input) ->
     delete_api_mapping(Client, ApiMappingId, DomainName, Input, []).
-delete_api_mapping(Client, ApiMappingId, DomainName, Input0, Options) ->
+delete_api_mapping(Client, ApiMappingId, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/apimappings/", aws_util:encode_uri(ApiMappingId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -427,10 +487,14 @@ delete_api_mapping(Client, ApiMappingId, DomainName, Input0, Options) ->
 %% @doc Deletes an Authorizer.
 delete_authorizer(Client, ApiId, AuthorizerId, Input) ->
     delete_authorizer(Client, ApiId, AuthorizerId, Input, []).
-delete_authorizer(Client, ApiId, AuthorizerId, Input0, Options) ->
+delete_authorizer(Client, ApiId, AuthorizerId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -443,10 +507,14 @@ delete_authorizer(Client, ApiId, AuthorizerId, Input0, Options) ->
 %% @doc Deletes a CORS configuration.
 delete_cors_configuration(Client, ApiId, Input) ->
     delete_cors_configuration(Client, ApiId, Input, []).
-delete_cors_configuration(Client, ApiId, Input0, Options) ->
+delete_cors_configuration(Client, ApiId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/cors"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -459,10 +527,14 @@ delete_cors_configuration(Client, ApiId, Input0, Options) ->
 %% @doc Deletes a Deployment.
 delete_deployment(Client, ApiId, DeploymentId, Input) ->
     delete_deployment(Client, ApiId, DeploymentId, Input, []).
-delete_deployment(Client, ApiId, DeploymentId, Input0, Options) ->
+delete_deployment(Client, ApiId, DeploymentId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -475,10 +547,14 @@ delete_deployment(Client, ApiId, DeploymentId, Input0, Options) ->
 %% @doc Deletes a domain name.
 delete_domain_name(Client, DomainName, Input) ->
     delete_domain_name(Client, DomainName, Input, []).
-delete_domain_name(Client, DomainName, Input0, Options) ->
+delete_domain_name(Client, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -491,10 +567,14 @@ delete_domain_name(Client, DomainName, Input0, Options) ->
 %% @doc Deletes an Integration.
 delete_integration(Client, ApiId, IntegrationId, Input) ->
     delete_integration(Client, ApiId, IntegrationId, Input, []).
-delete_integration(Client, ApiId, IntegrationId, Input0, Options) ->
+delete_integration(Client, ApiId, IntegrationId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -507,10 +587,14 @@ delete_integration(Client, ApiId, IntegrationId, Input0, Options) ->
 %% @doc Deletes an IntegrationResponses.
 delete_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Input) ->
     delete_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Input, []).
-delete_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Input0, Options) ->
+delete_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), "/integrationresponses/", aws_util:encode_uri(IntegrationResponseId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -523,10 +607,14 @@ delete_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId,
 %% @doc Deletes a Model.
 delete_model(Client, ApiId, ModelId, Input) ->
     delete_model(Client, ApiId, ModelId, Input, []).
-delete_model(Client, ApiId, ModelId, Input0, Options) ->
+delete_model(Client, ApiId, ModelId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models/", aws_util:encode_uri(ModelId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -539,10 +627,14 @@ delete_model(Client, ApiId, ModelId, Input0, Options) ->
 %% @doc Deletes a Route.
 delete_route(Client, ApiId, RouteId, Input) ->
     delete_route(Client, ApiId, RouteId, Input, []).
-delete_route(Client, ApiId, RouteId, Input0, Options) ->
+delete_route(Client, ApiId, RouteId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -555,10 +647,14 @@ delete_route(Client, ApiId, RouteId, Input0, Options) ->
 %% @doc Deletes a route request parameter.
 delete_route_request_parameter(Client, ApiId, RequestParameterKey, RouteId, Input) ->
     delete_route_request_parameter(Client, ApiId, RequestParameterKey, RouteId, Input, []).
-delete_route_request_parameter(Client, ApiId, RequestParameterKey, RouteId, Input0, Options) ->
+delete_route_request_parameter(Client, ApiId, RequestParameterKey, RouteId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/requestparameters/", aws_util:encode_uri(RequestParameterKey), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -571,10 +667,14 @@ delete_route_request_parameter(Client, ApiId, RequestParameterKey, RouteId, Inpu
 %% @doc Deletes a RouteResponse.
 delete_route_response(Client, ApiId, RouteId, RouteResponseId, Input) ->
     delete_route_response(Client, ApiId, RouteId, RouteResponseId, Input, []).
-delete_route_response(Client, ApiId, RouteId, RouteResponseId, Input0, Options) ->
+delete_route_response(Client, ApiId, RouteId, RouteResponseId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/routeresponses/", aws_util:encode_uri(RouteResponseId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -587,10 +687,14 @@ delete_route_response(Client, ApiId, RouteId, RouteResponseId, Input0, Options) 
 %% @doc Deletes the RouteSettings for a stage.
 delete_route_settings(Client, ApiId, RouteKey, StageName, Input) ->
     delete_route_settings(Client, ApiId, RouteKey, StageName, Input, []).
-delete_route_settings(Client, ApiId, RouteKey, StageName, Input0, Options) ->
+delete_route_settings(Client, ApiId, RouteKey, StageName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), "/routesettings/", aws_util:encode_uri(RouteKey), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -603,10 +707,14 @@ delete_route_settings(Client, ApiId, RouteKey, StageName, Input0, Options) ->
 %% @doc Deletes a Stage.
 delete_stage(Client, ApiId, StageName, Input) ->
     delete_stage(Client, ApiId, StageName, Input, []).
-delete_stage(Client, ApiId, StageName, Input0, Options) ->
+delete_stage(Client, ApiId, StageName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -619,10 +727,14 @@ delete_stage(Client, ApiId, StageName, Input0, Options) ->
 %% @doc Deletes a VPC link.
 delete_vpc_link(Client, VpcLinkId, Input) ->
     delete_vpc_link(Client, VpcLinkId, Input, []).
-delete_vpc_link(Client, VpcLinkId, Input0, Options) ->
+delete_vpc_link(Client, VpcLinkId, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/vpclinks/", aws_util:encode_uri(VpcLinkId), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -642,10 +754,13 @@ export_api(Client, ApiId, Specification, OutputType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     export_api(Client, ApiId, Specification, OutputType, QueryMap, HeadersMap, []).
 
-export_api(Client, ApiId, Specification, OutputType, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+export_api(Client, ApiId, Specification, OutputType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/exports/", aws_util:encode_uri(Specification), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -669,10 +784,13 @@ get_api(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_api(Client, ApiId, QueryMap, HeadersMap, []).
 
-get_api(Client, ApiId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_api(Client, ApiId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -689,10 +807,13 @@ get_api_mapping(Client, ApiMappingId, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_api_mapping(Client, ApiMappingId, DomainName, QueryMap, HeadersMap, []).
 
-get_api_mapping(Client, ApiMappingId, DomainName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_api_mapping(Client, ApiMappingId, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/apimappings/", aws_util:encode_uri(ApiMappingId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -709,10 +830,13 @@ get_api_mappings(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_api_mappings(Client, DomainName, QueryMap, HeadersMap, []).
 
-get_api_mappings(Client, DomainName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_api_mappings(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/apimappings"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -734,10 +858,13 @@ get_apis(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_apis(Client, QueryMap, HeadersMap, []).
 
-get_apis(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_apis(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -759,10 +886,13 @@ get_authorizer(Client, ApiId, AuthorizerId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_authorizer(Client, ApiId, AuthorizerId, QueryMap, HeadersMap, []).
 
-get_authorizer(Client, ApiId, AuthorizerId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_authorizer(Client, ApiId, AuthorizerId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -779,10 +909,13 @@ get_authorizers(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_authorizers(Client, ApiId, QueryMap, HeadersMap, []).
 
-get_authorizers(Client, ApiId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_authorizers(Client, ApiId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/authorizers"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -804,10 +937,13 @@ get_deployment(Client, ApiId, DeploymentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployment(Client, ApiId, DeploymentId, QueryMap, HeadersMap, []).
 
-get_deployment(Client, ApiId, DeploymentId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_deployment(Client, ApiId, DeploymentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -824,10 +960,13 @@ get_deployments(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployments(Client, ApiId, QueryMap, HeadersMap, []).
 
-get_deployments(Client, ApiId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_deployments(Client, ApiId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/deployments"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -849,10 +988,13 @@ get_domain_name(Client, DomainName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain_name(Client, DomainName, QueryMap, HeadersMap, []).
 
-get_domain_name(Client, DomainName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_domain_name(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -869,10 +1011,13 @@ get_domain_names(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_domain_names(Client, QueryMap, HeadersMap, []).
 
-get_domain_names(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_domain_names(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domainnames"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -894,10 +1039,13 @@ get_integration(Client, ApiId, IntegrationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_integration(Client, ApiId, IntegrationId, QueryMap, HeadersMap, []).
 
-get_integration(Client, ApiId, IntegrationId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_integration(Client, ApiId, IntegrationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -914,10 +1062,13 @@ get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Qu
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, QueryMap, HeadersMap, []).
 
-get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), "/integrationresponses/", aws_util:encode_uri(IntegrationResponseId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -934,10 +1085,13 @@ get_integration_responses(Client, ApiId, IntegrationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_integration_responses(Client, ApiId, IntegrationId, QueryMap, HeadersMap, []).
 
-get_integration_responses(Client, ApiId, IntegrationId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_integration_responses(Client, ApiId, IntegrationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), "/integrationresponses"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -959,10 +1113,13 @@ get_integrations(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_integrations(Client, ApiId, QueryMap, HeadersMap, []).
 
-get_integrations(Client, ApiId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_integrations(Client, ApiId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -984,10 +1141,13 @@ get_model(Client, ApiId, ModelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_model(Client, ApiId, ModelId, QueryMap, HeadersMap, []).
 
-get_model(Client, ApiId, ModelId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_model(Client, ApiId, ModelId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models/", aws_util:encode_uri(ModelId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1004,10 +1164,13 @@ get_model_template(Client, ApiId, ModelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_model_template(Client, ApiId, ModelId, QueryMap, HeadersMap, []).
 
-get_model_template(Client, ApiId, ModelId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_model_template(Client, ApiId, ModelId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models/", aws_util:encode_uri(ModelId), "/template"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1024,10 +1187,13 @@ get_models(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_models(Client, ApiId, QueryMap, HeadersMap, []).
 
-get_models(Client, ApiId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_models(Client, ApiId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1049,10 +1215,13 @@ get_route(Client, ApiId, RouteId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_route(Client, ApiId, RouteId, QueryMap, HeadersMap, []).
 
-get_route(Client, ApiId, RouteId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_route(Client, ApiId, RouteId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1069,10 +1238,13 @@ get_route_response(Client, ApiId, RouteId, RouteResponseId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_route_response(Client, ApiId, RouteId, RouteResponseId, QueryMap, HeadersMap, []).
 
-get_route_response(Client, ApiId, RouteId, RouteResponseId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_route_response(Client, ApiId, RouteId, RouteResponseId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/routeresponses/", aws_util:encode_uri(RouteResponseId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1089,10 +1261,13 @@ get_route_responses(Client, ApiId, RouteId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_route_responses(Client, ApiId, RouteId, QueryMap, HeadersMap, []).
 
-get_route_responses(Client, ApiId, RouteId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_route_responses(Client, ApiId, RouteId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/routeresponses"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1114,10 +1289,13 @@ get_routes(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_routes(Client, ApiId, QueryMap, HeadersMap, []).
 
-get_routes(Client, ApiId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_routes(Client, ApiId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1139,10 +1317,13 @@ get_stage(Client, ApiId, StageName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_stage(Client, ApiId, StageName, QueryMap, HeadersMap, []).
 
-get_stage(Client, ApiId, StageName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_stage(Client, ApiId, StageName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1159,10 +1340,13 @@ get_stages(Client, ApiId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_stages(Client, ApiId, QueryMap, HeadersMap, []).
 
-get_stages(Client, ApiId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_stages(Client, ApiId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1184,10 +1368,13 @@ get_tags(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_tags(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-get_tags(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_tags(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1204,10 +1391,13 @@ get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap, []).
 
-get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/vpclinks/", aws_util:encode_uri(VpcLinkId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1224,10 +1414,13 @@ get_vpc_links(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_vpc_links(Client, QueryMap, HeadersMap, []).
 
-get_vpc_links(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_vpc_links(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/vpclinks"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1243,10 +1436,14 @@ get_vpc_links(Client, QueryMap, HeadersMap, Options)
 %% @doc Imports an API.
 import_api(Client, Input) ->
     import_api(Client, Input, []).
-import_api(Client, Input0, Options) ->
+import_api(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v2/apis"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, true},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1256,15 +1453,19 @@ import_api(Client, Input0, Options) ->
                      {<<"failOnWarnings">>, <<"FailOnWarnings">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options ++ [{should_send_body_as_binary, true}], SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Puts an Api resource.
 reimport_api(Client, ApiId, Input) ->
     reimport_api(Client, ApiId, Input, []).
-reimport_api(Client, ApiId, Input0, Options) ->
+reimport_api(Client, ApiId, Input0, Options0) ->
     Method = put,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), ""],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, true},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1274,17 +1475,21 @@ reimport_api(Client, ApiId, Input0, Options) ->
                      {<<"failOnWarnings">>, <<"FailOnWarnings">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options ++ [{should_send_body_as_binary, true}], SuccessStatusCode).
+    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Resets all authorizer cache entries for the specified stage.
 %%
 %% Supported only for HTTP API Lambda authorizers.
 reset_authorizers_cache(Client, ApiId, StageName, Input) ->
     reset_authorizers_cache(Client, ApiId, StageName, Input, []).
-reset_authorizers_cache(Client, ApiId, StageName, Input0, Options) ->
+reset_authorizers_cache(Client, ApiId, StageName, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), "/cache/authorizers"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1297,10 +1502,14 @@ reset_authorizers_cache(Client, ApiId, StageName, Input0, Options) ->
 %% @doc Creates a new Tag resource to represent a tag.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/v2/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1313,10 +1522,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Deletes a Tag.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v2/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1330,10 +1543,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Updates an Api resource.
 update_api(Client, ApiId, Input) ->
     update_api(Client, ApiId, Input, []).
-update_api(Client, ApiId, Input0, Options) ->
+update_api(Client, ApiId, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1346,10 +1563,14 @@ update_api(Client, ApiId, Input0, Options) ->
 %% @doc The API mapping.
 update_api_mapping(Client, ApiMappingId, DomainName, Input) ->
     update_api_mapping(Client, ApiMappingId, DomainName, Input, []).
-update_api_mapping(Client, ApiMappingId, DomainName, Input0, Options) ->
+update_api_mapping(Client, ApiMappingId, DomainName, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/apimappings/", aws_util:encode_uri(ApiMappingId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1362,10 +1583,14 @@ update_api_mapping(Client, ApiMappingId, DomainName, Input0, Options) ->
 %% @doc Updates an Authorizer.
 update_authorizer(Client, ApiId, AuthorizerId, Input) ->
     update_authorizer(Client, ApiId, AuthorizerId, Input, []).
-update_authorizer(Client, ApiId, AuthorizerId, Input0, Options) ->
+update_authorizer(Client, ApiId, AuthorizerId, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1378,10 +1603,14 @@ update_authorizer(Client, ApiId, AuthorizerId, Input0, Options) ->
 %% @doc Updates a Deployment.
 update_deployment(Client, ApiId, DeploymentId, Input) ->
     update_deployment(Client, ApiId, DeploymentId, Input, []).
-update_deployment(Client, ApiId, DeploymentId, Input0, Options) ->
+update_deployment(Client, ApiId, DeploymentId, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1394,10 +1623,14 @@ update_deployment(Client, ApiId, DeploymentId, Input0, Options) ->
 %% @doc Updates a domain name.
 update_domain_name(Client, DomainName, Input) ->
     update_domain_name(Client, DomainName, Input, []).
-update_domain_name(Client, DomainName, Input0, Options) ->
+update_domain_name(Client, DomainName, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1410,10 +1643,14 @@ update_domain_name(Client, DomainName, Input0, Options) ->
 %% @doc Updates an Integration.
 update_integration(Client, ApiId, IntegrationId, Input) ->
     update_integration(Client, ApiId, IntegrationId, Input, []).
-update_integration(Client, ApiId, IntegrationId, Input0, Options) ->
+update_integration(Client, ApiId, IntegrationId, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1426,10 +1663,14 @@ update_integration(Client, ApiId, IntegrationId, Input0, Options) ->
 %% @doc Updates an IntegrationResponses.
 update_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Input) ->
     update_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Input, []).
-update_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Input0, Options) ->
+update_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), "/integrationresponses/", aws_util:encode_uri(IntegrationResponseId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1442,10 +1683,14 @@ update_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId,
 %% @doc Updates a Model.
 update_model(Client, ApiId, ModelId, Input) ->
     update_model(Client, ApiId, ModelId, Input, []).
-update_model(Client, ApiId, ModelId, Input0, Options) ->
+update_model(Client, ApiId, ModelId, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models/", aws_util:encode_uri(ModelId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1458,10 +1703,14 @@ update_model(Client, ApiId, ModelId, Input0, Options) ->
 %% @doc Updates a Route.
 update_route(Client, ApiId, RouteId, Input) ->
     update_route(Client, ApiId, RouteId, Input, []).
-update_route(Client, ApiId, RouteId, Input0, Options) ->
+update_route(Client, ApiId, RouteId, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1474,10 +1723,14 @@ update_route(Client, ApiId, RouteId, Input0, Options) ->
 %% @doc Updates a RouteResponse.
 update_route_response(Client, ApiId, RouteId, RouteResponseId, Input) ->
     update_route_response(Client, ApiId, RouteId, RouteResponseId, Input, []).
-update_route_response(Client, ApiId, RouteId, RouteResponseId, Input0, Options) ->
+update_route_response(Client, ApiId, RouteId, RouteResponseId, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/routeresponses/", aws_util:encode_uri(RouteResponseId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1490,10 +1743,14 @@ update_route_response(Client, ApiId, RouteId, RouteResponseId, Input0, Options) 
 %% @doc Updates a Stage.
 update_stage(Client, ApiId, StageName, Input) ->
     update_stage(Client, ApiId, StageName, Input, []).
-update_stage(Client, ApiId, StageName, Input0, Options) ->
+update_stage(Client, ApiId, StageName, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1506,10 +1763,14 @@ update_stage(Client, ApiId, StageName, Input0, Options) ->
 %% @doc Updates a VPC link.
 update_vpc_link(Client, VpcLinkId, Input) ->
     update_vpc_link(Client, VpcLinkId, Input, []).
-update_vpc_link(Client, VpcLinkId, Input0, Options) ->
+update_vpc_link(Client, VpcLinkId, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/vpclinks/", aws_util:encode_uri(VpcLinkId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1541,19 +1802,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -1563,14 +1825,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

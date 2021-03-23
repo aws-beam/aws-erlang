@@ -171,10 +171,14 @@
 %% AWS Audit Manager.
 associate_assessment_report_evidence_folder(Client, AssessmentId, Input) ->
     associate_assessment_report_evidence_folder(Client, AssessmentId, Input, []).
-associate_assessment_report_evidence_folder(Client, AssessmentId, Input0, Options) ->
+associate_assessment_report_evidence_folder(Client, AssessmentId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/associateToAssessmentReport"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -188,10 +192,14 @@ associate_assessment_report_evidence_folder(Client, AssessmentId, Input0, Option
 %% Manager assessment.
 batch_associate_assessment_report_evidence(Client, AssessmentId, Input) ->
     batch_associate_assessment_report_evidence(Client, AssessmentId, Input, []).
-batch_associate_assessment_report_evidence(Client, AssessmentId, Input0, Options) ->
+batch_associate_assessment_report_evidence(Client, AssessmentId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/batchAssociateToAssessmentReport"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -205,10 +213,14 @@ batch_associate_assessment_report_evidence(Client, AssessmentId, Input0, Options
 %% Manager.
 batch_create_delegation_by_assessment(Client, AssessmentId, Input) ->
     batch_create_delegation_by_assessment(Client, AssessmentId, Input, []).
-batch_create_delegation_by_assessment(Client, AssessmentId, Input0, Options) ->
+batch_create_delegation_by_assessment(Client, AssessmentId, Input0, Options0) ->
     Method = post,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/delegations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -222,10 +234,14 @@ batch_create_delegation_by_assessment(Client, AssessmentId, Input0, Options) ->
 %% assessment.
 batch_delete_delegation_by_assessment(Client, AssessmentId, Input) ->
     batch_delete_delegation_by_assessment(Client, AssessmentId, Input, []).
-batch_delete_delegation_by_assessment(Client, AssessmentId, Input0, Options) ->
+batch_delete_delegation_by_assessment(Client, AssessmentId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/delegations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -239,10 +255,14 @@ batch_delete_delegation_by_assessment(Client, AssessmentId, Input0, Options) ->
 %% in AWS Audit Manager.
 batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input) ->
     batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input, []).
-batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input0, Options) ->
+batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/batchDisassociateFromAssessmentReport"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -256,10 +276,14 @@ batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input0, Opti
 %% the assessment in AWS Audit Manager.
 batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input) ->
     batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input, []).
-batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input0, Options) ->
+batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input0, Options0) ->
     Method = post,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/controls/", aws_util:encode_uri(ControlId), "/evidence"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -272,10 +296,14 @@ batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, Con
 %% @doc Creates an assessment in AWS Audit Manager.
 create_assessment(Client, Input) ->
     create_assessment(Client, Input, []).
-create_assessment(Client, Input0, Options) ->
+create_assessment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/assessments"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -288,10 +316,14 @@ create_assessment(Client, Input0, Options) ->
 %% @doc Creates a custom framework in AWS Audit Manager.
 create_assessment_framework(Client, Input) ->
     create_assessment_framework(Client, Input, []).
-create_assessment_framework(Client, Input0, Options) ->
+create_assessment_framework(Client, Input0, Options0) ->
     Method = post,
     Path = ["/assessmentFrameworks"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -304,10 +336,14 @@ create_assessment_framework(Client, Input0, Options) ->
 %% @doc Creates an assessment report for the specified assessment.
 create_assessment_report(Client, AssessmentId, Input) ->
     create_assessment_report(Client, AssessmentId, Input, []).
-create_assessment_report(Client, AssessmentId, Input0, Options) ->
+create_assessment_report(Client, AssessmentId, Input0, Options0) ->
     Method = post,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/reports"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -320,10 +356,14 @@ create_assessment_report(Client, AssessmentId, Input0, Options) ->
 %% @doc Creates a new custom control in AWS Audit Manager.
 create_control(Client, Input) ->
     create_control(Client, Input, []).
-create_control(Client, Input0, Options) ->
+create_control(Client, Input0, Options0) ->
     Method = post,
     Path = ["/controls"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -336,10 +376,14 @@ create_control(Client, Input0, Options) ->
 %% @doc Deletes an assessment in AWS Audit Manager.
 delete_assessment(Client, AssessmentId, Input) ->
     delete_assessment(Client, AssessmentId, Input, []).
-delete_assessment(Client, AssessmentId, Input0, Options) ->
+delete_assessment(Client, AssessmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -352,10 +396,14 @@ delete_assessment(Client, AssessmentId, Input0, Options) ->
 %% @doc Deletes a custom framework in AWS Audit Manager.
 delete_assessment_framework(Client, FrameworkId, Input) ->
     delete_assessment_framework(Client, FrameworkId, Input, []).
-delete_assessment_framework(Client, FrameworkId, Input0, Options) ->
+delete_assessment_framework(Client, FrameworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/assessmentFrameworks/", aws_util:encode_uri(FrameworkId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -368,10 +416,14 @@ delete_assessment_framework(Client, FrameworkId, Input0, Options) ->
 %% @doc Deletes an assessment report from an assessment in AWS Audit Manager.
 delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input) ->
     delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input, []).
-delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input0, Options) ->
+delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input0, Options0) ->
     Method = delete,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/reports/", aws_util:encode_uri(AssessmentReportId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -384,10 +436,14 @@ delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input0, Optio
 %% @doc Deletes a custom control in AWS Audit Manager.
 delete_control(Client, ControlId, Input) ->
     delete_control(Client, ControlId, Input, []).
-delete_control(Client, ControlId, Input0, Options) ->
+delete_control(Client, ControlId, Input0, Options0) ->
     Method = delete,
     Path = ["/controls/", aws_util:encode_uri(ControlId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -400,10 +456,14 @@ delete_control(Client, ControlId, Input0, Options) ->
 %% @doc Deregisters an account in AWS Audit Manager.
 deregister_account(Client, Input) ->
     deregister_account(Client, Input, []).
-deregister_account(Client, Input0, Options) ->
+deregister_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/account/deregisterAccount"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -417,10 +477,14 @@ deregister_account(Client, Input0, Options) ->
 %% organization.
 deregister_organization_admin_account(Client, Input) ->
     deregister_organization_admin_account(Client, Input, []).
-deregister_organization_admin_account(Client, Input0, Options) ->
+deregister_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/account/deregisterOrganizationAdminAccount"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -434,10 +498,14 @@ deregister_organization_admin_account(Client, Input0, Options) ->
 %% in AWS Audit Manager.
 disassociate_assessment_report_evidence_folder(Client, AssessmentId, Input) ->
     disassociate_assessment_report_evidence_folder(Client, AssessmentId, Input, []).
-disassociate_assessment_report_evidence_folder(Client, AssessmentId, Input0, Options) ->
+disassociate_assessment_report_evidence_folder(Client, AssessmentId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/disassociateFromAssessmentReport"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -456,10 +524,13 @@ get_account_status(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account_status(Client, QueryMap, HeadersMap, []).
 
-get_account_status(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_account_status(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/account/status"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -476,10 +547,13 @@ get_assessment(Client, AssessmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_assessment(Client, AssessmentId, QueryMap, HeadersMap, []).
 
-get_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -496,10 +570,13 @@ get_assessment_framework(Client, FrameworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_assessment_framework(Client, FrameworkId, QueryMap, HeadersMap, []).
 
-get_assessment_framework(Client, FrameworkId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_assessment_framework(Client, FrameworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessmentFrameworks/", aws_util:encode_uri(FrameworkId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -517,10 +594,13 @@ get_assessment_report_url(Client, AssessmentId, AssessmentReportId, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_assessment_report_url(Client, AssessmentId, AssessmentReportId, QueryMap, HeadersMap, []).
 
-get_assessment_report_url(Client, AssessmentId, AssessmentReportId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_assessment_report_url(Client, AssessmentId, AssessmentReportId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/reports/", aws_util:encode_uri(AssessmentReportId), "/url"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -537,10 +617,13 @@ get_change_logs(Client, AssessmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_change_logs(Client, AssessmentId, QueryMap, HeadersMap, []).
 
-get_change_logs(Client, AssessmentId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_change_logs(Client, AssessmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/changelogs"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -564,10 +647,13 @@ get_control(Client, ControlId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_control(Client, ControlId, QueryMap, HeadersMap, []).
 
-get_control(Client, ControlId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_control(Client, ControlId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/controls/", aws_util:encode_uri(ControlId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -584,10 +670,13 @@ get_delegations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_delegations(Client, QueryMap, HeadersMap, []).
 
-get_delegations(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_delegations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/delegations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -609,10 +698,13 @@ get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, Q
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, QueryMap, HeadersMap, []).
 
-get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/evidenceFolders/", aws_util:encode_uri(EvidenceFolderId), "/evidence/", aws_util:encode_uri(EvidenceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -630,10 +722,13 @@ get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFold
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryMap, HeadersMap, []).
 
-get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/evidenceFolders/", aws_util:encode_uri(EvidenceFolderId), "/evidence"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -656,10 +751,13 @@ get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryMap, HeadersMap, []).
 
-get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/evidenceFolders/", aws_util:encode_uri(EvidenceFolderId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -677,10 +775,13 @@ get_evidence_folders_by_assessment(Client, AssessmentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_evidence_folders_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, []).
 
-get_evidence_folders_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_evidence_folders_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/evidenceFolders"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -703,10 +804,13 @@ get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, Cont
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId, QueryMap, HeadersMap, []).
 
-get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/evidenceFolders-by-assessment-control/", aws_util:encode_uri(ControlSetId), "/", aws_util:encode_uri(ControlId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -729,10 +833,13 @@ get_organization_admin_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_organization_admin_account(Client, QueryMap, HeadersMap, []).
 
-get_organization_admin_account(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_organization_admin_account(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/account/organizationAdminAccount"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -750,10 +857,13 @@ get_services_in_scope(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_services_in_scope(Client, QueryMap, HeadersMap, []).
 
-get_services_in_scope(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_services_in_scope(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/services"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -770,10 +880,13 @@ get_settings(Client, Attribute, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_settings(Client, Attribute, QueryMap, HeadersMap, []).
 
-get_settings(Client, Attribute, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_settings(Client, Attribute, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/settings/", aws_util:encode_uri(Attribute), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -791,10 +904,13 @@ list_assessment_frameworks(Client, FrameworkType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assessment_frameworks(Client, FrameworkType, QueryMap, HeadersMap, []).
 
-list_assessment_frameworks(Client, FrameworkType, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_assessment_frameworks(Client, FrameworkType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessmentFrameworks"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -817,10 +933,13 @@ list_assessment_reports(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assessment_reports(Client, QueryMap, HeadersMap, []).
 
-list_assessment_reports(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_assessment_reports(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessmentReports"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -843,10 +962,13 @@ list_assessments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assessments(Client, QueryMap, HeadersMap, []).
 
-list_assessments(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_assessments(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assessments"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -868,10 +990,13 @@ list_controls(Client, ControlType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_controls(Client, ControlType, QueryMap, HeadersMap, []).
 
-list_controls(Client, ControlType, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_controls(Client, ControlType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/controls"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -895,10 +1020,13 @@ list_keywords_for_data_source(Client, Source, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_keywords_for_data_source(Client, Source, QueryMap, HeadersMap, []).
 
-list_keywords_for_data_source(Client, Source, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_keywords_for_data_source(Client, Source, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dataSourceKeywords"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -921,10 +1049,13 @@ list_notifications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_notifications(Client, QueryMap, HeadersMap, []).
 
-list_notifications(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_notifications(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/notifications"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -947,10 +1078,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -961,10 +1095,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% @doc Enables AWS Audit Manager for the specified AWS account.
 register_account(Client, Input) ->
     register_account(Client, Input, []).
-register_account(Client, Input0, Options) ->
+register_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/account/registerAccount"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -978,10 +1116,14 @@ register_account(Client, Input0, Options) ->
 %% administrator for AWS Audit Manager.
 register_organization_admin_account(Client, Input) ->
     register_organization_admin_account(Client, Input, []).
-register_organization_admin_account(Client, Input0, Options) ->
+register_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/account/registerOrganizationAdminAccount"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -994,10 +1136,14 @@ register_organization_admin_account(Client, Input0, Options) ->
 %% @doc Tags the specified resource in AWS Audit Manager.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1010,10 +1156,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Removes a tag from a resource in AWS Audit Manager.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1027,10 +1177,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Edits an AWS Audit Manager assessment.
 update_assessment(Client, AssessmentId, Input) ->
     update_assessment(Client, AssessmentId, Input, []).
-update_assessment(Client, AssessmentId, Input0, Options) ->
+update_assessment(Client, AssessmentId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1043,10 +1197,14 @@ update_assessment(Client, AssessmentId, Input0, Options) ->
 %% @doc Updates a control within an assessment in AWS Audit Manager.
 update_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input) ->
     update_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input, []).
-update_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input0, Options) ->
+update_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/controls/", aws_util:encode_uri(ControlId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1060,10 +1218,14 @@ update_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input0,
 %% assessment.
 update_assessment_control_set_status(Client, AssessmentId, ControlSetId, Input) ->
     update_assessment_control_set_status(Client, AssessmentId, ControlSetId, Input, []).
-update_assessment_control_set_status(Client, AssessmentId, ControlSetId, Input0, Options) ->
+update_assessment_control_set_status(Client, AssessmentId, ControlSetId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/status"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1076,10 +1238,14 @@ update_assessment_control_set_status(Client, AssessmentId, ControlSetId, Input0,
 %% @doc Updates a custom framework in AWS Audit Manager.
 update_assessment_framework(Client, FrameworkId, Input) ->
     update_assessment_framework(Client, FrameworkId, Input, []).
-update_assessment_framework(Client, FrameworkId, Input0, Options) ->
+update_assessment_framework(Client, FrameworkId, Input0, Options0) ->
     Method = put,
     Path = ["/assessmentFrameworks/", aws_util:encode_uri(FrameworkId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1092,10 +1258,14 @@ update_assessment_framework(Client, FrameworkId, Input0, Options) ->
 %% @doc Updates the status of an assessment in AWS Audit Manager.
 update_assessment_status(Client, AssessmentId, Input) ->
     update_assessment_status(Client, AssessmentId, Input, []).
-update_assessment_status(Client, AssessmentId, Input0, Options) ->
+update_assessment_status(Client, AssessmentId, Input0, Options0) ->
     Method = put,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/status"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1108,10 +1278,14 @@ update_assessment_status(Client, AssessmentId, Input0, Options) ->
 %% @doc Updates a custom control in AWS Audit Manager.
 update_control(Client, ControlId, Input) ->
     update_control(Client, ControlId, Input, []).
-update_control(Client, ControlId, Input0, Options) ->
+update_control(Client, ControlId, Input0, Options0) ->
     Method = put,
     Path = ["/controls/", aws_util:encode_uri(ControlId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1124,10 +1298,14 @@ update_control(Client, ControlId, Input0, Options) ->
 %% @doc Updates AWS Audit Manager settings for the current user account.
 update_settings(Client, Input) ->
     update_settings(Client, Input, []).
-update_settings(Client, Input0, Options) ->
+update_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/settings"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1140,10 +1318,14 @@ update_settings(Client, Input0, Options) ->
 %% @doc Validates the integrity of an assessment report in AWS Audit Manager.
 validate_assessment_report_integrity(Client, Input) ->
     validate_assessment_report_integrity(Client, Input, []).
-validate_assessment_report_integrity(Client, Input0, Options) ->
+validate_assessment_report_integrity(Client, Input0, Options0) ->
     Method = post,
     Path = ["/assessmentReports/integrity"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1175,19 +1357,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -1197,14 +1380,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

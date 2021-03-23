@@ -266,10 +266,14 @@
 %% Associates an approved origin to an Amazon Connect instance.
 associate_approved_origin(Client, InstanceId, Input) ->
     associate_approved_origin(Client, InstanceId, Input, []).
-associate_approved_origin(Client, InstanceId, Input0, Options) ->
+associate_approved_origin(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/approved-origin"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -293,10 +297,14 @@ associate_approved_origin(Client, InstanceId, Input0, Options) ->
 %% association.
 associate_instance_storage_config(Client, InstanceId, Input) ->
     associate_instance_storage_config(Client, InstanceId, Input, []).
-associate_instance_storage_config(Client, InstanceId, Input0, Options) ->
+associate_instance_storage_config(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -313,10 +321,14 @@ associate_instance_storage_config(Client, InstanceId, Input0, Options) ->
 %% Lambda function.
 associate_lambda_function(Client, InstanceId, Input) ->
     associate_lambda_function(Client, InstanceId, Input, []).
-associate_lambda_function(Client, InstanceId, Input0, Options) ->
+associate_lambda_function(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lambda-function"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -333,10 +345,14 @@ associate_lambda_function(Client, InstanceId, Input0, Options) ->
 %% Amazon Lex bot.
 associate_lex_bot(Client, InstanceId, Input) ->
     associate_lex_bot(Client, InstanceId, Input, []).
-associate_lex_bot(Client, InstanceId, Input0, Options) ->
+associate_lex_bot(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lex-bot"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -352,10 +368,14 @@ associate_lex_bot(Client, InstanceId, Input0, Options) ->
 %% Associates a set of quick connects with a queue.
 associate_queue_quick_connects(Client, InstanceId, QueueId, Input) ->
     associate_queue_quick_connects(Client, InstanceId, QueueId, Input, []).
-associate_queue_quick_connects(Client, InstanceId, QueueId, Input0, Options) ->
+associate_queue_quick_connects(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = post,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/associate-quick-connects"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -368,10 +388,14 @@ associate_queue_quick_connects(Client, InstanceId, QueueId, Input0, Options) ->
 %% @doc Associates a set of queues with a routing profile.
 associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input) ->
     associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input, []).
-associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options) ->
+associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/associate-queues"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -387,10 +411,14 @@ associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, O
 %% Associates a security key to the instance.
 associate_security_key(Client, InstanceId, Input) ->
     associate_security_key(Client, InstanceId, Input, []).
-associate_security_key(Client, InstanceId, Input0, Options) ->
+associate_security_key(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/security-key"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -406,10 +434,14 @@ associate_security_key(Client, InstanceId, Input0, Options) ->
 %% language.
 create_contact_flow(Client, InstanceId, Input) ->
     create_contact_flow(Client, InstanceId, Input, []).
-create_contact_flow(Client, InstanceId, Input0, Options) ->
+create_contact_flow(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -428,10 +460,14 @@ create_contact_flow(Client, InstanceId, Input0, Options) ->
 %% configurations on features, such as Contact Lens for Amazon Connect.
 create_instance(Client, Input) ->
     create_instance(Client, Input, []).
-create_instance(Client, Input0, Options) ->
+create_instance(Client, Input0, Options0) ->
     Method = put,
     Path = ["/instance"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -447,10 +483,14 @@ create_instance(Client, Input0, Options) ->
 %% Create an AppIntegration association with an Amazon Connect instance.
 create_integration_association(Client, InstanceId, Input) ->
     create_integration_association(Client, InstanceId, Input, []).
-create_integration_association(Client, InstanceId, Input0, Options) ->
+create_integration_association(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -466,10 +506,14 @@ create_integration_association(Client, InstanceId, Input0, Options) ->
 %% Creates a new queue for the specified Amazon Connect instance.
 create_queue(Client, InstanceId, Input) ->
     create_queue(Client, InstanceId, Input, []).
-create_queue(Client, InstanceId, Input0, Options) ->
+create_queue(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -485,10 +529,14 @@ create_queue(Client, InstanceId, Input0, Options) ->
 %% Creates a quick connect for the specified Amazon Connect instance.
 create_quick_connect(Client, InstanceId, Input) ->
     create_quick_connect(Client, InstanceId, Input, []).
-create_quick_connect(Client, InstanceId, Input0, Options) ->
+create_quick_connect(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -501,10 +549,14 @@ create_quick_connect(Client, InstanceId, Input0, Options) ->
 %% @doc Creates a new routing profile.
 create_routing_profile(Client, InstanceId, Input) ->
     create_routing_profile(Client, InstanceId, Input, []).
-create_routing_profile(Client, InstanceId, Input0, Options) ->
+create_routing_profile(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -520,10 +572,14 @@ create_routing_profile(Client, InstanceId, Input0, Options) ->
 %% Creates a use case for an AppIntegration association.
 create_use_case(Client, InstanceId, IntegrationAssociationId, Input) ->
     create_use_case(Client, InstanceId, IntegrationAssociationId, Input, []).
-create_use_case(Client, InstanceId, IntegrationAssociationId, Input0, Options) ->
+create_use_case(Client, InstanceId, IntegrationAssociationId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations/", aws_util:encode_uri(IntegrationAssociationId), "/use-cases"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -539,10 +595,14 @@ create_use_case(Client, InstanceId, IntegrationAssociationId, Input0, Options) -
 %% console, see Add Users in the Amazon Connect Administrator Guide.
 create_user(Client, InstanceId, Input) ->
     create_user(Client, InstanceId, Input, []).
-create_user(Client, InstanceId, Input0, Options) ->
+create_user(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/users/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -555,10 +615,14 @@ create_user(Client, InstanceId, Input0, Options) ->
 %% @doc Creates a new user hierarchy group.
 create_user_hierarchy_group(Client, InstanceId, Input) ->
     create_user_hierarchy_group(Client, InstanceId, Input, []).
-create_user_hierarchy_group(Client, InstanceId, Input0, Options) ->
+create_user_hierarchy_group(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/user-hierarchy-groups/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -574,10 +638,14 @@ create_user_hierarchy_group(Client, InstanceId, Input0, Options) ->
 %% Deletes the Amazon Connect instance.
 delete_instance(Client, InstanceId, Input) ->
     delete_instance(Client, InstanceId, Input, []).
-delete_instance(Client, InstanceId, Input0, Options) ->
+delete_instance(Client, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -594,10 +662,14 @@ delete_instance(Client, InstanceId, Input0, Options) ->
 %% association must not have any use cases associated with it.
 delete_integration_association(Client, InstanceId, IntegrationAssociationId, Input) ->
     delete_integration_association(Client, InstanceId, IntegrationAssociationId, Input, []).
-delete_integration_association(Client, InstanceId, IntegrationAssociationId, Input0, Options) ->
+delete_integration_association(Client, InstanceId, IntegrationAssociationId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations/", aws_util:encode_uri(IntegrationAssociationId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -613,10 +685,14 @@ delete_integration_association(Client, InstanceId, IntegrationAssociationId, Inp
 %% Deletes a quick connect.
 delete_quick_connect(Client, InstanceId, QuickConnectId, Input) ->
     delete_quick_connect(Client, InstanceId, QuickConnectId, Input, []).
-delete_quick_connect(Client, InstanceId, QuickConnectId, Input0, Options) ->
+delete_quick_connect(Client, InstanceId, QuickConnectId, Input0, Options0) ->
     Method = delete,
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -632,10 +708,14 @@ delete_quick_connect(Client, InstanceId, QuickConnectId, Input0, Options) ->
 %% Deletes a use case from an AppIntegration association.
 delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input) ->
     delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input, []).
-delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input0, Options) ->
+delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations/", aws_util:encode_uri(IntegrationAssociationId), "/use-cases/", aws_util:encode_uri(UseCaseId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -652,10 +732,14 @@ delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input0,
 %% Connect Administrator Guide.
 delete_user(Client, InstanceId, UserId, Input) ->
     delete_user(Client, InstanceId, UserId, Input, []).
-delete_user(Client, InstanceId, UserId, Input0, Options) ->
+delete_user(Client, InstanceId, UserId, Input0, Options0) ->
     Method = delete,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -670,10 +754,14 @@ delete_user(Client, InstanceId, UserId, Input0, Options) ->
 %% It must not be associated with any agents or have any active child groups.
 delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input) ->
     delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input, []).
-delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input0, Options) ->
+delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/user-hierarchy-groups/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HierarchyGroupId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -695,10 +783,13 @@ describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap, []).
 
-describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -718,10 +809,13 @@ describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, QueryMap, HeadersMap, []).
 
-describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -748,10 +842,13 @@ describe_instance(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_instance(Client, InstanceId, QueryMap, HeadersMap, []).
 
-describe_instance(Client, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_instance(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -771,10 +868,13 @@ describe_instance_attribute(Client, AttributeType, InstanceId, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_instance_attribute(Client, AttributeType, InstanceId, QueryMap, HeadersMap, []).
 
-describe_instance_attribute(Client, AttributeType, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_instance_attribute(Client, AttributeType, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/attribute/", aws_util:encode_uri(AttributeType), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -795,10 +895,13 @@ describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType, QueryMap, HeadersMap, []).
 
-describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-config/", aws_util:encode_uri(AssociationId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -822,10 +925,13 @@ describe_queue(Client, InstanceId, QueueId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_queue(Client, InstanceId, QueueId, QueryMap, HeadersMap, []).
 
-describe_queue(Client, InstanceId, QueueId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_queue(Client, InstanceId, QueueId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -845,10 +951,13 @@ describe_quick_connect(Client, InstanceId, QuickConnectId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_quick_connect(Client, InstanceId, QuickConnectId, QueryMap, HeadersMap, []).
 
-describe_quick_connect(Client, InstanceId, QuickConnectId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_quick_connect(Client, InstanceId, QuickConnectId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -865,10 +974,13 @@ describe_routing_profile(Client, InstanceId, RoutingProfileId, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_routing_profile(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap, []).
 
-describe_routing_profile(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_routing_profile(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -889,10 +1001,13 @@ describe_user(Client, InstanceId, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_user(Client, InstanceId, UserId, QueryMap, HeadersMap, []).
 
-describe_user(Client, InstanceId, UserId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_user(Client, InstanceId, UserId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -909,10 +1024,13 @@ describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, QueryMap, HeadersMap, []).
 
-describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/user-hierarchy-groups/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HierarchyGroupId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -930,10 +1048,13 @@ describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap, []).
 
-describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/user-hierarchy-structure/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -947,10 +1068,14 @@ describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap, Opti
 %% Revokes access to integrated applications from Amazon Connect.
 disassociate_approved_origin(Client, InstanceId, Input) ->
     disassociate_approved_origin(Client, InstanceId, Input, []).
-disassociate_approved_origin(Client, InstanceId, Input0, Options) ->
+disassociate_approved_origin(Client, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/approved-origin"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -968,10 +1093,14 @@ disassociate_approved_origin(Client, InstanceId, Input0, Options) ->
 %% and association ID.
 disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input) ->
     disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input, []).
-disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input0, Options) ->
+disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-config/", aws_util:encode_uri(AssociationId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -989,10 +1118,14 @@ disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input0, 
 %% relevant contact flow blocks.
 disassociate_lambda_function(Client, InstanceId, Input) ->
     disassociate_lambda_function(Client, InstanceId, Input, []).
-disassociate_lambda_function(Client, InstanceId, Input0, Options) ->
+disassociate_lambda_function(Client, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lambda-function"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1010,10 +1143,14 @@ disassociate_lambda_function(Client, InstanceId, Input0, Options) ->
 %% Amazon Lex bot.
 disassociate_lex_bot(Client, InstanceId, Input) ->
     disassociate_lex_bot(Client, InstanceId, Input, []).
-disassociate_lex_bot(Client, InstanceId, Input0, Options) ->
+disassociate_lex_bot(Client, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lex-bot"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1031,10 +1168,14 @@ disassociate_lex_bot(Client, InstanceId, Input0, Options) ->
 %% Disassociates a set of quick connects from a queue.
 disassociate_queue_quick_connects(Client, InstanceId, QueueId, Input) ->
     disassociate_queue_quick_connects(Client, InstanceId, QueueId, Input, []).
-disassociate_queue_quick_connects(Client, InstanceId, QueueId, Input0, Options) ->
+disassociate_queue_quick_connects(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = post,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/disassociate-quick-connects"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1047,10 +1188,14 @@ disassociate_queue_quick_connects(Client, InstanceId, QueueId, Input0, Options) 
 %% @doc Disassociates a set of queues from a routing profile.
 disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input) ->
     disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input, []).
-disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options) ->
+disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/disassociate-queues"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1066,10 +1211,14 @@ disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0
 %% Deletes the specified security key.
 disassociate_security_key(Client, AssociationId, InstanceId, Input) ->
     disassociate_security_key(Client, AssociationId, InstanceId, Input, []).
-disassociate_security_key(Client, AssociationId, InstanceId, Input0, Options) ->
+disassociate_security_key(Client, AssociationId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/security-key/", aws_util:encode_uri(AssociationId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1088,10 +1237,13 @@ get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMap, []).
 
-get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact/attributes/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(InitialContactId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1106,10 +1258,14 @@ get_contact_attributes(Client, InitialContactId, InstanceId, QueryMap, HeadersMa
 %% Amazon Connect Administrator Guide.
 get_current_metric_data(Client, InstanceId, Input) ->
     get_current_metric_data(Client, InstanceId, Input, []).
-get_current_metric_data(Client, InstanceId, Input0, Options) ->
+get_current_metric_data(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/metrics/current/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1128,10 +1284,13 @@ get_federation_token(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_federation_token(Client, InstanceId, QueryMap, HeadersMap, []).
 
-get_federation_token(Client, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_federation_token(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/user/federate/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1146,10 +1305,14 @@ get_federation_token(Client, InstanceId, QueryMap, HeadersMap, Options)
 %% Definitions in the Amazon Connect Administrator Guide.
 get_metric_data(Client, InstanceId, Input) ->
     get_metric_data(Client, InstanceId, Input, []).
-get_metric_data(Client, InstanceId, Input0, Options) ->
+get_metric_data(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/metrics/historical/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1172,10 +1335,13 @@ list_approved_origins(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_approved_origins(Client, InstanceId, QueryMap, HeadersMap, []).
 
-list_approved_origins(Client, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_approved_origins(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/approved-origins"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1204,10 +1370,13 @@ list_contact_flows(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_contact_flows(Client, InstanceId, QueryMap, HeadersMap, []).
 
-list_contact_flows(Client, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_contact_flows(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact-flows-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1234,10 +1403,13 @@ list_hours_of_operations(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_hours_of_operations(Client, InstanceId, QueryMap, HeadersMap, []).
 
-list_hours_of_operations(Client, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_hours_of_operations(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/hours-of-operations-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1262,10 +1434,13 @@ list_instance_attributes(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_instance_attributes(Client, InstanceId, QueryMap, HeadersMap, []).
 
-list_instance_attributes(Client, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_instance_attributes(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/attributes"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1291,10 +1466,13 @@ list_instance_storage_configs(Client, InstanceId, ResourceType, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_instance_storage_configs(Client, InstanceId, ResourceType, QueryMap, HeadersMap, []).
 
-list_instance_storage_configs(Client, InstanceId, ResourceType, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_instance_storage_configs(Client, InstanceId, ResourceType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-configs"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1323,10 +1501,13 @@ list_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_instances(Client, QueryMap, HeadersMap, []).
 
-list_instances(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_instances(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1352,10 +1533,13 @@ list_integration_associations(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_integration_associations(Client, InstanceId, QueryMap, HeadersMap, []).
 
-list_integration_associations(Client, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_integration_associations(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1381,10 +1565,13 @@ list_lambda_functions(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_lambda_functions(Client, InstanceId, QueryMap, HeadersMap, []).
 
-list_lambda_functions(Client, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_lambda_functions(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lambda-functions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1410,10 +1597,13 @@ list_lex_bots(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_lex_bots(Client, InstanceId, QueryMap, HeadersMap, []).
 
-list_lex_bots(Client, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_lex_bots(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lex-bots"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1439,10 +1629,13 @@ list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap, []).
 
-list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-numbers-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1467,10 +1660,13 @@ list_prompts(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_prompts(Client, InstanceId, QueryMap, HeadersMap, []).
 
-list_prompts(Client, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_prompts(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prompts-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1495,10 +1691,13 @@ list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap, []).
 
-list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/quick-connects"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1524,10 +1723,13 @@ list_queues(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_queues(Client, InstanceId, QueryMap, HeadersMap, []).
 
-list_queues(Client, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_queues(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/queues-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1554,10 +1756,13 @@ list_quick_connects(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_quick_connects(Client, InstanceId, QueryMap, HeadersMap, []).
 
-list_quick_connects(Client, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_quick_connects(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1580,10 +1785,13 @@ list_routing_profile_queues(Client, InstanceId, RoutingProfileId, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_routing_profile_queues(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap, []).
 
-list_routing_profile_queues(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_routing_profile_queues(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/queues"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1609,10 +1817,13 @@ list_routing_profiles(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_routing_profiles(Client, InstanceId, QueryMap, HeadersMap, []).
 
-list_routing_profiles(Client, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_routing_profiles(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/routing-profiles-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1638,10 +1849,13 @@ list_security_keys(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_security_keys(Client, InstanceId, QueryMap, HeadersMap, []).
 
-list_security_keys(Client, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_security_keys(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/security-keys"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1667,10 +1881,13 @@ list_security_profiles(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_security_profiles(Client, InstanceId, QueryMap, HeadersMap, []).
 
-list_security_profiles(Client, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_security_profiles(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/security-profiles-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1695,10 +1912,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1718,10 +1938,13 @@ list_use_cases(Client, InstanceId, IntegrationAssociationId, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_use_cases(Client, InstanceId, IntegrationAssociationId, QueryMap, HeadersMap, []).
 
-list_use_cases(Client, InstanceId, IntegrationAssociationId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_use_cases(Client, InstanceId, IntegrationAssociationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations/", aws_util:encode_uri(IntegrationAssociationId), "/use-cases"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1747,10 +1970,13 @@ list_user_hierarchy_groups(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_user_hierarchy_groups(Client, InstanceId, QueryMap, HeadersMap, []).
 
-list_user_hierarchy_groups(Client, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_user_hierarchy_groups(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/user-hierarchy-groups-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1773,10 +1999,13 @@ list_users(Client, InstanceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_users(Client, InstanceId, QueryMap, HeadersMap, []).
 
-list_users(Client, InstanceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_users(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/users-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1796,10 +2025,14 @@ list_users(Client, InstanceId, QueryMap, HeadersMap, Options)
 %% Only voice recordings are supported at this time.
 resume_contact_recording(Client, Input) ->
     resume_contact_recording(Client, Input, []).
-resume_contact_recording(Client, Input0, Options) ->
+resume_contact_recording(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/resume-recording"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1832,10 +2065,14 @@ resume_contact_recording(Client, Input0, Options) ->
 %% Connect Administrator Guide.
 start_chat_contact(Client, Input) ->
     start_chat_contact(Client, Input, []).
-start_chat_contact(Client, Input0, Options) ->
+start_chat_contact(Client, Input0, Options0) ->
     Method = put,
     Path = ["/contact/chat"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1860,10 +2097,14 @@ start_chat_contact(Client, Input0, Options) ->
 %% Only voice recordings are supported at this time.
 start_contact_recording(Client, Input) ->
     start_contact_recording(Client, Input, []).
-start_contact_recording(Client, Input0, Options) ->
+start_contact_recording(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/start-recording"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1893,10 +2134,14 @@ start_contact_recording(Client, Input0, Options) ->
 %% Amazon Connect Administrator Guide.
 start_outbound_voice_contact(Client, Input) ->
     start_outbound_voice_contact(Client, Input, []).
-start_outbound_voice_contact(Client, Input0, Options) ->
+start_outbound_voice_contact(Client, Input0, Options0) ->
     Method = put,
     Path = ["/contact/outbound-voice"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1909,10 +2154,14 @@ start_outbound_voice_contact(Client, Input0, Options) ->
 %% @doc Initiates a contact flow to start a new task.
 start_task_contact(Client, Input) ->
     start_task_contact(Client, Input, []).
-start_task_contact(Client, Input0, Options) ->
+start_task_contact(Client, Input0, Options0) ->
     Method = put,
     Path = ["/contact/task"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1925,10 +2174,14 @@ start_task_contact(Client, Input0, Options) ->
 %% @doc Ends the specified contact.
 stop_contact(Client, Input) ->
     stop_contact(Client, Input, []).
-stop_contact(Client, Input0, Options) ->
+stop_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/stop"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1950,10 +2203,14 @@ stop_contact(Client, Input0, Options) ->
 %% Only voice recordings are supported at this time.
 stop_contact_recording(Client, Input) ->
     stop_contact_recording(Client, Input, []).
-stop_contact_recording(Client, Input0, Options) ->
+stop_contact_recording(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/stop-recording"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1976,10 +2233,14 @@ stop_contact_recording(Client, Input0, Options) ->
 %% Only voice recordings are supported at this time.
 suspend_contact_recording(Client, Input) ->
     suspend_contact_recording(Client, Input, []).
-suspend_contact_recording(Client, Input0, Options) ->
+suspend_contact_recording(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/suspend-recording"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1998,10 +2259,14 @@ suspend_contact_recording(Client, Input0, Options) ->
 %% Policy Examples in the Amazon Connect Administrator Guide.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2014,10 +2279,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Removes the specified tags from the specified resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2052,10 +2321,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% of the API but are still active in your instance.
 update_contact_attributes(Client, Input) ->
     update_contact_attributes(Client, Input, []).
-update_contact_attributes(Client, Input0, Options) ->
+update_contact_attributes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/attributes"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2071,10 +2344,14 @@ update_contact_attributes(Client, Input0, Options) ->
 %% language.
 update_contact_flow_content(Client, ContactFlowId, InstanceId, Input) ->
     update_contact_flow_content(Client, ContactFlowId, InstanceId, Input, []).
-update_contact_flow_content(Client, ContactFlowId, InstanceId, Input0, Options) ->
+update_contact_flow_content(Client, ContactFlowId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/content"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2090,10 +2367,14 @@ update_contact_flow_content(Client, ContactFlowId, InstanceId, Input0, Options) 
 %% language.
 update_contact_flow_name(Client, ContactFlowId, InstanceId, Input) ->
     update_contact_flow_name(Client, ContactFlowId, InstanceId, Input, []).
-update_contact_flow_name(Client, ContactFlowId, InstanceId, Input0, Options) ->
+update_contact_flow_name(Client, ContactFlowId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/name"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2109,10 +2390,14 @@ update_contact_flow_name(Client, ContactFlowId, InstanceId, Input0, Options) ->
 %% Updates the value for the specified attribute type.
 update_instance_attribute(Client, AttributeType, InstanceId, Input) ->
     update_instance_attribute(Client, AttributeType, InstanceId, Input, []).
-update_instance_attribute(Client, AttributeType, InstanceId, Input0, Options) ->
+update_instance_attribute(Client, AttributeType, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/attribute/", aws_util:encode_uri(AttributeType), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2129,10 +2414,14 @@ update_instance_attribute(Client, AttributeType, InstanceId, Input0, Options) ->
 %% idempotent.
 update_instance_storage_config(Client, AssociationId, InstanceId, Input) ->
     update_instance_storage_config(Client, AssociationId, InstanceId, Input, []).
-update_instance_storage_config(Client, AssociationId, InstanceId, Input0, Options) ->
+update_instance_storage_config(Client, AssociationId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-config/", aws_util:encode_uri(AssociationId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2149,10 +2438,14 @@ update_instance_storage_config(Client, AssociationId, InstanceId, Input0, Option
 %% Updates the hours of operation for the specified queue.
 update_queue_hours_of_operation(Client, InstanceId, QueueId, Input) ->
     update_queue_hours_of_operation(Client, InstanceId, QueueId, Input, []).
-update_queue_hours_of_operation(Client, InstanceId, QueueId, Input0, Options) ->
+update_queue_hours_of_operation(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = post,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/hours-of-operation"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2169,10 +2462,14 @@ update_queue_hours_of_operation(Client, InstanceId, QueueId, Input0, Options) ->
 %% considered full.
 update_queue_max_contacts(Client, InstanceId, QueueId, Input) ->
     update_queue_max_contacts(Client, InstanceId, QueueId, Input, []).
-update_queue_max_contacts(Client, InstanceId, QueueId, Input0, Options) ->
+update_queue_max_contacts(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = post,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/max-contacts"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2189,10 +2486,14 @@ update_queue_max_contacts(Client, InstanceId, QueueId, Input0, Options) ->
 %% `Description' must be provided.
 update_queue_name(Client, InstanceId, QueueId, Input) ->
     update_queue_name(Client, InstanceId, QueueId, Input, []).
-update_queue_name(Client, InstanceId, QueueId, Input0, Options) ->
+update_queue_name(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = post,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/name"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2209,10 +2510,14 @@ update_queue_name(Client, InstanceId, QueueId, Input0, Options) ->
 %% a specified queue.
 update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input) ->
     update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input, []).
-update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input0, Options) ->
+update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = post,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/outbound-caller-config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2228,10 +2533,14 @@ update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input0, Options
 %% Updates the status of the queue.
 update_queue_status(Client, InstanceId, QueueId, Input) ->
     update_queue_status(Client, InstanceId, QueueId, Input, []).
-update_queue_status(Client, InstanceId, QueueId, Input0, Options) ->
+update_queue_status(Client, InstanceId, QueueId, Input0, Options0) ->
     Method = post,
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/status"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2247,10 +2556,14 @@ update_queue_status(Client, InstanceId, QueueId, Input0, Options) ->
 %% Updates the configuration settings for the specified quick connect.
 update_quick_connect_config(Client, InstanceId, QuickConnectId, Input) ->
     update_quick_connect_config(Client, InstanceId, QuickConnectId, Input, []).
-update_quick_connect_config(Client, InstanceId, QuickConnectId, Input0, Options) ->
+update_quick_connect_config(Client, InstanceId, QuickConnectId, Input0, Options0) ->
     Method = post,
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), "/config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2268,10 +2581,14 @@ update_quick_connect_config(Client, InstanceId, QuickConnectId, Input0, Options)
 %% be provided.
 update_quick_connect_name(Client, InstanceId, QuickConnectId, Input) ->
     update_quick_connect_name(Client, InstanceId, QuickConnectId, Input, []).
-update_quick_connect_name(Client, InstanceId, QuickConnectId, Input0, Options) ->
+update_quick_connect_name(Client, InstanceId, QuickConnectId, Input0, Options0) ->
     Method = post,
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), "/name"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2285,10 +2602,14 @@ update_quick_connect_name(Client, InstanceId, QuickConnectId, Input0, Options) -
 %% Panel (CCP) for a routing profile.
 update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input) ->
     update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input, []).
-update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input0, Options) ->
+update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/concurrency"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2301,10 +2622,14 @@ update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input0,
 %% @doc Updates the default outbound queue of a routing profile.
 update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfileId, Input) ->
     update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfileId, Input, []).
-update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfileId, Input0, Options) ->
+update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/default-outbound-queue"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2320,10 +2645,14 @@ update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfile
 %% `Description' must be provided.
 update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input) ->
     update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input, []).
-update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input0, Options) ->
+update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/name"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2337,10 +2666,14 @@ update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input0, Option
 %% profile.
 update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input) ->
     update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input, []).
-update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options) ->
+update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/queues"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2353,10 +2686,14 @@ update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Opti
 %% @doc Assigns the specified hierarchy group to the specified user.
 update_user_hierarchy(Client, InstanceId, UserId, Input) ->
     update_user_hierarchy(Client, InstanceId, UserId, Input, []).
-update_user_hierarchy(Client, InstanceId, UserId, Input0, Options) ->
+update_user_hierarchy(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/hierarchy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2369,10 +2706,14 @@ update_user_hierarchy(Client, InstanceId, UserId, Input0, Options) ->
 %% @doc Updates the name of the user hierarchy group.
 update_user_hierarchy_group_name(Client, HierarchyGroupId, InstanceId, Input) ->
     update_user_hierarchy_group_name(Client, HierarchyGroupId, InstanceId, Input, []).
-update_user_hierarchy_group_name(Client, HierarchyGroupId, InstanceId, Input0, Options) ->
+update_user_hierarchy_group_name(Client, HierarchyGroupId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/user-hierarchy-groups/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HierarchyGroupId), "/name"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2386,10 +2727,14 @@ update_user_hierarchy_group_name(Client, HierarchyGroupId, InstanceId, Input0, O
 %% hierarchy levels.
 update_user_hierarchy_structure(Client, InstanceId, Input) ->
     update_user_hierarchy_structure(Client, InstanceId, Input, []).
-update_user_hierarchy_structure(Client, InstanceId, Input0, Options) ->
+update_user_hierarchy_structure(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/user-hierarchy-structure/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2410,10 +2755,14 @@ update_user_hierarchy_structure(Client, InstanceId, Input0, Options) ->
 %% the Amazon Connect Administrator Guide.
 update_user_identity_info(Client, InstanceId, UserId, Input) ->
     update_user_identity_info(Client, InstanceId, UserId, Input, []).
-update_user_identity_info(Client, InstanceId, UserId, Input0, Options) ->
+update_user_identity_info(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/identity-info"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2426,10 +2775,14 @@ update_user_identity_info(Client, InstanceId, UserId, Input0, Options) ->
 %% @doc Updates the phone configuration settings for the specified user.
 update_user_phone_config(Client, InstanceId, UserId, Input) ->
     update_user_phone_config(Client, InstanceId, UserId, Input, []).
-update_user_phone_config(Client, InstanceId, UserId, Input0, Options) ->
+update_user_phone_config(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/phone-config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2442,10 +2795,14 @@ update_user_phone_config(Client, InstanceId, UserId, Input0, Options) ->
 %% @doc Assigns the specified routing profile to the specified user.
 update_user_routing_profile(Client, InstanceId, UserId, Input) ->
     update_user_routing_profile(Client, InstanceId, UserId, Input, []).
-update_user_routing_profile(Client, InstanceId, UserId, Input0, Options) ->
+update_user_routing_profile(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/routing-profile"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2458,10 +2815,14 @@ update_user_routing_profile(Client, InstanceId, UserId, Input0, Options) ->
 %% @doc Assigns the specified security profiles to the specified user.
 update_user_security_profiles(Client, InstanceId, UserId, Input) ->
     update_user_security_profiles(Client, InstanceId, UserId, Input, []).
-update_user_security_profiles(Client, InstanceId, UserId, Input0, Options) ->
+update_user_security_profiles(Client, InstanceId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/security-profiles"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2493,19 +2854,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -2515,14 +2877,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

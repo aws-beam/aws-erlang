@@ -172,10 +172,14 @@
 %% statement ID that you specified when you added it.
 add_layer_version_permission(Client, LayerName, VersionNumber, Input) ->
     add_layer_version_permission(Client, LayerName, VersionNumber, Input, []).
-add_layer_version_permission(Client, LayerName, VersionNumber, Input0, Options) ->
+add_layer_version_permission(Client, LayerName, VersionNumber, Input0, Options0) ->
     Method = post,
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), "/policy"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -207,10 +211,14 @@ add_layer_version_permission(Client, LayerName, VersionNumber, Input0, Options) 
 %% Function Policies.
 add_permission(Client, FunctionName, Input) ->
     add_permission(Client, FunctionName, Input, []).
-add_permission(Client, FunctionName, Input0, Options) ->
+add_permission(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/policy"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -231,10 +239,14 @@ add_permission(Client, FunctionName, Input0, Options) ->
 %% and the percentage of invocation requests that it receives.
 create_alias(Client, FunctionName, Input) ->
     create_alias(Client, FunctionName, Input, []).
-create_alias(Client, FunctionName, Input0, Options) ->
+create_alias(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -251,10 +263,14 @@ create_alias(Client, FunctionName, Input0, Options) ->
 %% deployment validation checks fail).
 create_code_signing_config(Client, Input) ->
     create_code_signing_config(Client, Input, []).
-create_code_signing_config(Client, Input0, Options) ->
+create_code_signing_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-04-22/code-signing-configs/"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -305,10 +321,14 @@ create_code_signing_config(Client, Input0, Options) ->
 %% </li> </ul>
 create_event_source_mapping(Client, Input) ->
     create_event_source_mapping(Client, Input, []).
-create_event_source_mapping(Client, Input0, Options) ->
+create_event_source_mapping(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-03-31/event-source-mappings/"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -367,10 +387,14 @@ create_event_source_mapping(Client, Input0, Options) ->
 %% service. For more information, see Invoking Functions.
 create_function(Client, Input) ->
     create_function(Client, Input, []).
-create_function(Client, Input0, Options) ->
+create_function(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-03-31/functions"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -383,10 +407,14 @@ create_function(Client, Input0, Options) ->
 %% @doc Deletes a Lambda function alias.
 delete_alias(Client, FunctionName, Name, Input) ->
     delete_alias(Client, FunctionName, Name, Input, []).
-delete_alias(Client, FunctionName, Name, Input0, Options) ->
+delete_alias(Client, FunctionName, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -402,10 +430,14 @@ delete_alias(Client, FunctionName, Name, Input0, Options) ->
 %% it.
 delete_code_signing_config(Client, CodeSigningConfigArn, Input) ->
     delete_code_signing_config(Client, CodeSigningConfigArn, Input, []).
-delete_code_signing_config(Client, CodeSigningConfigArn, Input0, Options) ->
+delete_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-04-22/code-signing-configs/", aws_util:encode_uri(CodeSigningConfigArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -424,10 +456,14 @@ delete_code_signing_config(Client, CodeSigningConfigArn, Input0, Options) ->
 %% might not be completely deleted for several seconds.
 delete_event_source_mapping(Client, UUID, Input) ->
     delete_event_source_mapping(Client, UUID, Input, []).
-delete_event_source_mapping(Client, UUID, Input0, Options) ->
+delete_event_source_mapping(Client, UUID, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-03-31/event-source-mappings/", aws_util:encode_uri(UUID), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -448,10 +484,14 @@ delete_event_source_mapping(Client, UUID, Input0, Options) ->
 %% originally configured it.
 delete_function(Client, FunctionName, Input) ->
     delete_function(Client, FunctionName, Input, []).
-delete_function(Client, FunctionName, Input0, Options) ->
+delete_function(Client, FunctionName, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -465,10 +505,14 @@ delete_function(Client, FunctionName, Input0, Options) ->
 %% @doc Removes the code signing configuration from the function.
 delete_function_code_signing_config(Client, FunctionName, Input) ->
     delete_function_code_signing_config(Client, FunctionName, Input, []).
-delete_function_code_signing_config(Client, FunctionName, Input0, Options) ->
+delete_function_code_signing_config(Client, FunctionName, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-06-30/functions/", aws_util:encode_uri(FunctionName), "/code-signing-config"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -481,10 +525,14 @@ delete_function_code_signing_config(Client, FunctionName, Input0, Options) ->
 %% @doc Removes a concurrent execution limit from a function.
 delete_function_concurrency(Client, FunctionName, Input) ->
     delete_function_concurrency(Client, FunctionName, Input, []).
-delete_function_concurrency(Client, FunctionName, Input0, Options) ->
+delete_function_concurrency(Client, FunctionName, Input0, Options0) ->
     Method = delete,
     Path = ["/2017-10-31/functions/", aws_util:encode_uri(FunctionName), "/concurrency"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -501,10 +549,14 @@ delete_function_concurrency(Client, FunctionName, Input0, Options) ->
 %% `PutFunctionEventInvokeConfig'.
 delete_function_event_invoke_config(Client, FunctionName, Input) ->
     delete_function_event_invoke_config(Client, FunctionName, Input, []).
-delete_function_event_invoke_config(Client, FunctionName, Input0, Options) ->
+delete_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
     Method = delete,
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -522,10 +574,14 @@ delete_function_event_invoke_config(Client, FunctionName, Input0, Options) ->
 %% functions refer to it.
 delete_layer_version(Client, LayerName, VersionNumber, Input) ->
     delete_layer_version(Client, LayerName, VersionNumber, Input, []).
-delete_layer_version(Client, LayerName, VersionNumber, Input0, Options) ->
+delete_layer_version(Client, LayerName, VersionNumber, Input0, Options0) ->
     Method = delete,
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -538,10 +594,14 @@ delete_layer_version(Client, LayerName, VersionNumber, Input0, Options) ->
 %% @doc Deletes the provisioned concurrency configuration for a function.
 delete_provisioned_concurrency_config(Client, FunctionName, Input) ->
     delete_provisioned_concurrency_config(Client, FunctionName, Input, []).
-delete_provisioned_concurrency_config(Client, FunctionName, Input0, Options) ->
+delete_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
     Method = delete,
     Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/provisioned-concurrency"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -562,10 +622,13 @@ get_account_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account_settings(Client, QueryMap, HeadersMap, []).
 
-get_account_settings(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_account_settings(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2016-08-19/account-settings/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -582,10 +645,13 @@ get_alias(Client, FunctionName, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_alias(Client, FunctionName, Name, QueryMap, HeadersMap, []).
 
-get_alias(Client, FunctionName, Name, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_alias(Client, FunctionName, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -602,10 +668,13 @@ get_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, []).
 
-get_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-04-22/code-signing-configs/", aws_util:encode_uri(CodeSigningConfigArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -625,10 +694,13 @@ get_event_source_mapping(Client, UUID, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_event_source_mapping(Client, UUID, QueryMap, HeadersMap, []).
 
-get_event_source_mapping(Client, UUID, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_event_source_mapping(Client, UUID, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/event-source-mappings/", aws_util:encode_uri(UUID), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -649,10 +721,13 @@ get_function(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function(Client, FunctionName, QueryMap, HeadersMap, []).
 
-get_function(Client, FunctionName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_function(Client, FunctionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -673,10 +748,13 @@ get_function_code_signing_config(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_code_signing_config(Client, FunctionName, QueryMap, HeadersMap, []).
 
-get_function_code_signing_config(Client, FunctionName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_function_code_signing_config(Client, FunctionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-06-30/functions/", aws_util:encode_uri(FunctionName), "/code-signing-config"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -696,10 +774,13 @@ get_function_concurrency(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_concurrency(Client, FunctionName, QueryMap, HeadersMap, []).
 
-get_function_concurrency(Client, FunctionName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_function_concurrency(Client, FunctionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/concurrency"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -723,10 +804,13 @@ get_function_configuration(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_configuration(Client, FunctionName, QueryMap, HeadersMap, []).
 
-get_function_configuration(Client, FunctionName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_function_configuration(Client, FunctionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/configuration"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -751,10 +835,13 @@ get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap, []).
 
-get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -776,10 +863,13 @@ get_layer_version(Client, LayerName, VersionNumber, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_layer_version(Client, LayerName, VersionNumber, QueryMap, HeadersMap, []).
 
-get_layer_version(Client, LayerName, VersionNumber, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_layer_version(Client, LayerName, VersionNumber, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -797,10 +887,13 @@ get_layer_version_by_arn(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_layer_version_by_arn(Client, Arn, QueryMap, HeadersMap, []).
 
-get_layer_version_by_arn(Client, Arn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_layer_version_by_arn(Client, Arn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2018-10-31/layers?find=LayerVersion"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -823,10 +916,13 @@ get_layer_version_policy(Client, LayerName, VersionNumber, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_layer_version_policy(Client, LayerName, VersionNumber, QueryMap, HeadersMap, []).
 
-get_layer_version_policy(Client, LayerName, VersionNumber, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_layer_version_policy(Client, LayerName, VersionNumber, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), "/policy"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -844,10 +940,13 @@ get_policy(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_policy(Client, FunctionName, QueryMap, HeadersMap, []).
 
-get_policy(Client, FunctionName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_policy(Client, FunctionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/policy"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -869,10 +968,13 @@ get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, HeadersMap, []).
 
-get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/provisioned-concurrency"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -925,10 +1027,14 @@ get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, He
 %% This operation requires permission for the lambda:InvokeFunction action.
 invoke(Client, FunctionName, Input) ->
     invoke(Client, FunctionName, Input, []).
-invoke(Client, FunctionName, Input0, Options) ->
+invoke(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/invocations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Context">>, <<"ClientContext">>},
@@ -966,10 +1072,14 @@ invoke(Client, FunctionName, Input0, Options) ->
 %% Invokes a function asynchronously.
 invoke_async(Client, FunctionName, Input) ->
     invoke_async(Client, FunctionName, Input, []).
-invoke_async(Client, FunctionName, Input0, Options) ->
+invoke_async(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2014-11-13/functions/", aws_util:encode_uri(FunctionName), "/invoke-async/"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -988,10 +1098,13 @@ list_aliases(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_aliases(Client, FunctionName, QueryMap, HeadersMap, []).
 
-list_aliases(Client, FunctionName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_aliases(Client, FunctionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1017,10 +1130,13 @@ list_code_signing_configs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_code_signing_configs(Client, QueryMap, HeadersMap, []).
 
-list_code_signing_configs(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_code_signing_configs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-04-22/code-signing-configs/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1045,10 +1161,13 @@ list_event_source_mappings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_event_source_mappings(Client, QueryMap, HeadersMap, []).
 
-list_event_source_mappings(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_event_source_mappings(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/event-source-mappings/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1076,10 +1195,13 @@ list_function_event_invoke_configs(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_function_event_invoke_configs(Client, FunctionName, QueryMap, HeadersMap, []).
 
-list_function_event_invoke_configs(Client, FunctionName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_function_event_invoke_configs(Client, FunctionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config/list"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1108,10 +1230,13 @@ list_functions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_functions(Client, QueryMap, HeadersMap, []).
 
-list_functions(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_functions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/functions/"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1138,10 +1263,13 @@ list_functions_by_code_signing_config(Client, CodeSigningConfigArn, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_functions_by_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, []).
 
-list_functions_by_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_functions_by_code_signing_config(Client, CodeSigningConfigArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-04-22/code-signing-configs/", aws_util:encode_uri(CodeSigningConfigArn), "/functions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1167,10 +1295,13 @@ list_layer_versions(Client, LayerName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_layer_versions(Client, LayerName, QueryMap, HeadersMap, []).
 
-list_layer_versions(Client, LayerName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_layer_versions(Client, LayerName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1197,10 +1328,13 @@ list_layers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_layers(Client, QueryMap, HeadersMap, []).
 
-list_layers(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_layers(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2018-10-31/layers"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1224,10 +1358,13 @@ list_provisioned_concurrency_configs(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_provisioned_concurrency_configs(Client, FunctionName, QueryMap, HeadersMap, []).
 
-list_provisioned_concurrency_configs(Client, FunctionName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_provisioned_concurrency_configs(Client, FunctionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/provisioned-concurrency?List=ALL"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1251,10 +1388,13 @@ list_tags(Client, Resource, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags(Client, Resource, QueryMap, HeadersMap, []).
 
-list_tags(Client, Resource, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags(Client, Resource, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-03-31/tags/", aws_util:encode_uri(Resource), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1274,10 +1414,13 @@ list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap, []).
 
-list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1299,10 +1442,14 @@ list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap, Options)
 %% `UpdateFunctionConfiguration'.
 publish_layer_version(Client, LayerName, Input) ->
     publish_layer_version(Client, LayerName, Input, []).
-publish_layer_version(Client, LayerName, Input0, Options) ->
+publish_layer_version(Client, LayerName, Input0, Options0) ->
     Method = post,
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1327,10 +1474,14 @@ publish_layer_version(Client, LayerName, Input0, Options) ->
 %% use `CreateAlias'.
 publish_version(Client, FunctionName, Input) ->
     publish_version(Client, FunctionName, Input, []).
-publish_version(Client, FunctionName, Input0, Options) ->
+publish_version(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/versions"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1346,10 +1497,14 @@ publish_version(Client, FunctionName, Input0, Options) ->
 %% tries to deploy a code package to the function.
 put_function_code_signing_config(Client, FunctionName, Input) ->
     put_function_code_signing_config(Client, FunctionName, Input, []).
-put_function_code_signing_config(Client, FunctionName, Input0, Options) ->
+put_function_code_signing_config(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2020-06-30/functions/", aws_util:encode_uri(FunctionName), "/code-signing-config"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1375,10 +1530,14 @@ put_function_code_signing_config(Client, FunctionName, Input0, Options) ->
 %% Managing Concurrency.
 put_function_concurrency(Client, FunctionName, Input) ->
     put_function_concurrency(Client, FunctionName, Input, []).
-put_function_concurrency(Client, FunctionName, Input0, Options) ->
+put_function_concurrency(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2017-10-31/functions/", aws_util:encode_uri(FunctionName), "/concurrency"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1410,10 +1569,14 @@ put_function_concurrency(Client, FunctionName, Input0, Options) ->
 %% instead of a dead-letter queue.
 put_function_event_invoke_config(Client, FunctionName, Input) ->
     put_function_event_invoke_config(Client, FunctionName, Input, []).
-put_function_event_invoke_config(Client, FunctionName, Input0, Options) ->
+put_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1428,10 +1591,14 @@ put_function_event_invoke_config(Client, FunctionName, Input0, Options) ->
 %% version.
 put_provisioned_concurrency_config(Client, FunctionName, Input) ->
     put_provisioned_concurrency_config(Client, FunctionName, Input, []).
-put_provisioned_concurrency_config(Client, FunctionName, Input0, Options) ->
+put_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/provisioned-concurrency"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1448,10 +1615,14 @@ put_provisioned_concurrency_config(Client, FunctionName, Input0, Options) ->
 %% For more information, see `AddLayerVersionPermission'.
 remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, Input) ->
     remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, Input, []).
-remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, Input0, Options) ->
+remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, Input0, Options0) ->
     Method = delete,
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), "/policy/", aws_util:encode_uri(StatementId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1468,10 +1639,14 @@ remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, I
 %% You can get the ID of the statement from the output of `GetPolicy'.
 remove_permission(Client, FunctionName, StatementId, Input) ->
     remove_permission(Client, FunctionName, StatementId, Input, []).
-remove_permission(Client, FunctionName, StatementId, Input0, Options) ->
+remove_permission(Client, FunctionName, StatementId, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/policy/", aws_util:encode_uri(StatementId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1486,10 +1661,14 @@ remove_permission(Client, FunctionName, StatementId, Input0, Options) ->
 %% @doc Adds tags to a function.
 tag_resource(Client, Resource, Input) ->
     tag_resource(Client, Resource, Input, []).
-tag_resource(Client, Resource, Input0, Options) ->
+tag_resource(Client, Resource, Input0, Options0) ->
     Method = post,
     Path = ["/2017-03-31/tags/", aws_util:encode_uri(Resource), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1502,10 +1681,14 @@ tag_resource(Client, Resource, Input0, Options) ->
 %% @doc Removes tags from a function.
 untag_resource(Client, Resource, Input) ->
     untag_resource(Client, Resource, Input, []).
-untag_resource(Client, Resource, Input0, Options) ->
+untag_resource(Client, Resource, Input0, Options0) ->
     Method = delete,
     Path = ["/2017-03-31/tags/", aws_util:encode_uri(Resource), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1519,10 +1702,14 @@ untag_resource(Client, Resource, Input0, Options) ->
 %% @doc Updates the configuration of a Lambda function alias.
 update_alias(Client, FunctionName, Name, Input) ->
     update_alias(Client, FunctionName, Name, Input, []).
-update_alias(Client, FunctionName, Name, Input0, Options) ->
+update_alias(Client, FunctionName, Name, Input0, Options0) ->
     Method = put,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1538,10 +1725,14 @@ update_alias(Client, FunctionName, Name, Input0, Options) ->
 %% tries to deploy a code package to the function.
 update_code_signing_config(Client, CodeSigningConfigArn, Input) ->
     update_code_signing_config(Client, CodeSigningConfigArn, Input, []).
-update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options) ->
+update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
     Method = put,
     Path = ["/2020-04-22/code-signing-configs/", aws_util:encode_uri(CodeSigningConfigArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1579,10 +1770,14 @@ update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options) ->
 %% </li> </ul>
 update_event_source_mapping(Client, UUID, Input) ->
     update_event_source_mapping(Client, UUID, Input, []).
-update_event_source_mapping(Client, UUID, Input0, Options) ->
+update_event_source_mapping(Client, UUID, Input0, Options0) ->
     Method = put,
     Path = ["/2015-03-31/event-source-mappings/", aws_util:encode_uri(UUID), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1606,10 +1801,14 @@ update_event_source_mapping(Client, UUID, Input0, Options) ->
 %% image, Lambda does not automatically update the function.
 update_function_code(Client, FunctionName, Input) ->
     update_function_code(Client, FunctionName, Input, []).
-update_function_code(Client, FunctionName, Input0, Options) ->
+update_function_code(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/code"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1638,10 +1837,14 @@ update_function_code(Client, FunctionName, Input0, Options) ->
 %% invoke permissions to an account or AWS service, use `AddPermission'.
 update_function_configuration(Client, FunctionName, Input) ->
     update_function_configuration(Client, FunctionName, Input, []).
-update_function_configuration(Client, FunctionName, Input0, Options) ->
+update_function_configuration(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/configuration"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1658,10 +1861,14 @@ update_function_configuration(Client, FunctionName, Input0, Options) ->
 %% `PutFunctionEventInvokeConfig'.
 update_function_event_invoke_config(Client, FunctionName, Input) ->
     update_function_event_invoke_config(Client, FunctionName, Input, []).
-update_function_event_invoke_config(Client, FunctionName, Input0, Options) ->
+update_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1694,19 +1901,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -1716,14 +1924,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

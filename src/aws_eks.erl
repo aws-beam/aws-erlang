@@ -109,10 +109,14 @@
 %% EKS clusters.
 associate_encryption_config(Client, ClusterName, Input) ->
     associate_encryption_config(Client, ClusterName, Input, []).
-associate_encryption_config(Client, ClusterName, Input0, Options) ->
+associate_encryption_config(Client, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/encryption-config/associate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -133,10 +137,14 @@ associate_encryption_config(Client, ClusterName, Input0, Options) ->
 %% Authorization in the Kubernetes documentation.
 associate_identity_provider_config(Client, ClusterName, Input) ->
     associate_identity_provider_config(Client, ClusterName, Input, []).
-associate_identity_provider_config(Client, ClusterName, Input0, Options) ->
+associate_identity_provider_config(Client, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/identity-provider-configs/associate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -156,10 +164,14 @@ associate_identity_provider_config(Client, ClusterName, Input0, Options) ->
 %% Kubernetes 1.18 and later.
 create_addon(Client, ClusterName, Input) ->
     create_addon(Client, ClusterName, Input, []).
-create_addon(Client, ClusterName, Input0, Options) ->
+create_addon(Client, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/addons"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -195,10 +207,14 @@ create_addon(Client, ClusterName, Input0, Options) ->
 %% EKS nodes in the Amazon EKS User Guide.
 create_cluster(Client, Input) ->
     create_cluster(Client, Input, []).
-create_cluster(Client, Input0, Options) ->
+create_cluster(Client, Input0, Options0) ->
     Method = post,
     Path = ["/clusters"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -244,10 +260,14 @@ create_cluster(Client, Input0, Options) ->
 %% Guide.
 create_fargate_profile(Client, ClusterName, Input) ->
     create_fargate_profile(Client, ClusterName, Input, []).
-create_fargate_profile(Client, ClusterName, Input0, Options) ->
+create_fargate_profile(Client, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/fargate-profiles"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -273,10 +293,14 @@ create_fargate_profile(Client, ClusterName, Input0, Options) ->
 %% EKS User Guide.
 create_nodegroup(Client, ClusterName, Input) ->
     create_nodegroup(Client, ClusterName, Input, []).
-create_nodegroup(Client, ClusterName, Input0, Options) ->
+create_nodegroup(Client, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -293,10 +317,14 @@ create_nodegroup(Client, ClusterName, Input0, Options) ->
 %% API.
 delete_addon(Client, AddonName, ClusterName, Input) ->
     delete_addon(Client, AddonName, ClusterName, Input, []).
-delete_addon(Client, AddonName, ClusterName, Input0, Options) ->
+delete_addon(Client, AddonName, ClusterName, Input0, Options0) ->
     Method = delete,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/addons/", aws_util:encode_uri(AddonName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -320,10 +348,14 @@ delete_addon(Client, AddonName, ClusterName, Input0, Options) ->
 %% `DeleteNodegroup' and `DeleteFargateProfile'.
 delete_cluster(Client, Name, Input) ->
     delete_cluster(Client, Name, Input, []).
-delete_cluster(Client, Name, Input0, Options) ->
+delete_cluster(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/clusters/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -346,10 +378,14 @@ delete_cluster(Client, Name, Input0, Options) ->
 %% can delete any other profiles in that cluster.
 delete_fargate_profile(Client, ClusterName, FargateProfileName, Input) ->
     delete_fargate_profile(Client, ClusterName, FargateProfileName, Input, []).
-delete_fargate_profile(Client, ClusterName, FargateProfileName, Input0, Options) ->
+delete_fargate_profile(Client, ClusterName, FargateProfileName, Input0, Options0) ->
     Method = delete,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/fargate-profiles/", aws_util:encode_uri(FargateProfileName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -362,10 +398,14 @@ delete_fargate_profile(Client, ClusterName, FargateProfileName, Input0, Options)
 %% @doc Deletes an Amazon EKS node group for a cluster.
 delete_nodegroup(Client, ClusterName, NodegroupName, Input) ->
     delete_nodegroup(Client, ClusterName, NodegroupName, Input, []).
-delete_nodegroup(Client, ClusterName, NodegroupName, Input0, Options) ->
+delete_nodegroup(Client, ClusterName, NodegroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups/", aws_util:encode_uri(NodegroupName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -384,10 +424,13 @@ describe_addon(Client, AddonName, ClusterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_addon(Client, AddonName, ClusterName, QueryMap, HeadersMap, []).
 
-describe_addon(Client, AddonName, ClusterName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_addon(Client, AddonName, ClusterName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/addons/", aws_util:encode_uri(AddonName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -404,10 +447,13 @@ describe_addon_versions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_addon_versions(Client, QueryMap, HeadersMap, []).
 
-describe_addon_versions(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_addon_versions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/addons/supported-versions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -439,10 +485,13 @@ describe_cluster(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_cluster(Client, Name, QueryMap, HeadersMap, []).
 
-describe_cluster(Client, Name, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_cluster(Client, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -459,10 +508,13 @@ describe_fargate_profile(Client, ClusterName, FargateProfileName, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_fargate_profile(Client, ClusterName, FargateProfileName, QueryMap, HeadersMap, []).
 
-describe_fargate_profile(Client, ClusterName, FargateProfileName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_fargate_profile(Client, ClusterName, FargateProfileName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/fargate-profiles/", aws_util:encode_uri(FargateProfileName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -474,10 +526,14 @@ describe_fargate_profile(Client, ClusterName, FargateProfileName, QueryMap, Head
 %% configuration.
 describe_identity_provider_config(Client, ClusterName, Input) ->
     describe_identity_provider_config(Client, ClusterName, Input, []).
-describe_identity_provider_config(Client, ClusterName, Input0, Options) ->
+describe_identity_provider_config(Client, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/identity-provider-configs/describe"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -496,10 +552,13 @@ describe_nodegroup(Client, ClusterName, NodegroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_nodegroup(Client, ClusterName, NodegroupName, QueryMap, HeadersMap, []).
 
-describe_nodegroup(Client, ClusterName, NodegroupName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_nodegroup(Client, ClusterName, NodegroupName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups/", aws_util:encode_uri(NodegroupName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -521,10 +580,13 @@ describe_update(Client, Name, UpdateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_update(Client, Name, UpdateId, QueryMap, HeadersMap, []).
 
-describe_update(Client, Name, UpdateId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_update(Client, Name, UpdateId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(Name), "/updates/", aws_util:encode_uri(UpdateId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -544,10 +606,14 @@ describe_update(Client, Name, UpdateId, QueryMap, HeadersMap, Options)
 %% access the cluster with AWS IAM users.
 disassociate_identity_provider_config(Client, ClusterName, Input) ->
     disassociate_identity_provider_config(Client, ClusterName, Input, []).
-disassociate_identity_provider_config(Client, ClusterName, Input0, Options) ->
+disassociate_identity_provider_config(Client, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/identity-provider-configs/disassociate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -566,10 +632,13 @@ list_addons(Client, ClusterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_addons(Client, ClusterName, QueryMap, HeadersMap, []).
 
-list_addons(Client, ClusterName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_addons(Client, ClusterName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/addons"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -592,10 +661,13 @@ list_clusters(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_clusters(Client, QueryMap, HeadersMap, []).
 
-list_clusters(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_clusters(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -618,10 +690,13 @@ list_fargate_profiles(Client, ClusterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_fargate_profiles(Client, ClusterName, QueryMap, HeadersMap, []).
 
-list_fargate_profiles(Client, ClusterName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_fargate_profiles(Client, ClusterName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/fargate-profiles"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -643,10 +718,13 @@ list_identity_provider_configs(Client, ClusterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_identity_provider_configs(Client, ClusterName, QueryMap, HeadersMap, []).
 
-list_identity_provider_configs(Client, ClusterName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_identity_provider_configs(Client, ClusterName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/identity-provider-configs"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -671,10 +749,13 @@ list_nodegroups(Client, ClusterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_nodegroups(Client, ClusterName, QueryMap, HeadersMap, []).
 
-list_nodegroups(Client, ClusterName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_nodegroups(Client, ClusterName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -696,10 +777,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -717,10 +801,13 @@ list_updates(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_updates(Client, Name, QueryMap, HeadersMap, []).
 
-list_updates(Client, Name, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_updates(Client, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/clusters/", aws_util:encode_uri(Name), "/updates"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -747,10 +834,14 @@ list_updates(Client, Name, QueryMap, HeadersMap, Options)
 %% nodes associated with the cluster.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -763,10 +854,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Deletes specified tags from a resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -780,10 +875,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Updates an Amazon EKS add-on.
 update_addon(Client, AddonName, ClusterName, Input) ->
     update_addon(Client, AddonName, ClusterName, Input, []).
-update_addon(Client, AddonName, ClusterName, Input0, Options) ->
+update_addon(Client, AddonName, ClusterName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/addons/", aws_util:encode_uri(AddonName), "/update"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -824,10 +923,14 @@ update_addon(Client, AddonName, ClusterName, Input0, Options) ->
 %% (either `Failed' or `Successful'), the cluster status moves to `Active'.
 update_cluster_config(Client, Name, Input) ->
     update_cluster_config(Client, Name, Input, []).
-update_cluster_config(Client, Name, Input0, Options) ->
+update_cluster_config(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(Name), "/update-config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -853,10 +956,14 @@ update_cluster_config(Client, Name, Input0, Options) ->
 %% order to update the cluster to a new Kubernetes version.
 update_cluster_version(Client, Name, Input) ->
     update_cluster_version(Client, Name, Input, []).
-update_cluster_version(Client, Name, Input0, Options) ->
+update_cluster_version(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(Name), "/updates"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -875,10 +982,14 @@ update_cluster_version(Client, Name, Input0, Options) ->
 %% configuration.
 update_nodegroup_config(Client, ClusterName, NodegroupName, Input) ->
     update_nodegroup_config(Client, ClusterName, NodegroupName, Input, []).
-update_nodegroup_config(Client, ClusterName, NodegroupName, Input0, Options) ->
+update_nodegroup_config(Client, ClusterName, NodegroupName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups/", aws_util:encode_uri(NodegroupName), "/update-config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -916,10 +1027,14 @@ update_nodegroup_config(Client, ClusterName, NodegroupName, Input0, Options) ->
 %% of a pod disruption budget issue.
 update_nodegroup_version(Client, ClusterName, NodegroupName, Input) ->
     update_nodegroup_version(Client, ClusterName, NodegroupName, Input, []).
-update_nodegroup_version(Client, ClusterName, NodegroupName, Input0, Options) ->
+update_nodegroup_version(Client, ClusterName, NodegroupName, Input0, Options0) ->
     Method = post,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups/", aws_util:encode_uri(NodegroupName), "/update-version"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -951,19 +1066,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -973,14 +1089,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

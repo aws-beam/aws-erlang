@@ -90,10 +90,14 @@
 %% @doc Specifies a domain to be associated to Amazon WorkLink.
 associate_domain(Client, Input) ->
     associate_domain(Client, Input, []).
-associate_domain(Client, Input0, Options) ->
+associate_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/associateDomain"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -109,10 +113,14 @@ associate_domain(Client, Input0, Options) ->
 %% network.
 associate_website_authorization_provider(Client, Input) ->
     associate_website_authorization_provider(Client, Input, []).
-associate_website_authorization_provider(Client, Input0, Options) ->
+associate_website_authorization_provider(Client, Input0, Options0) ->
     Method = post,
     Path = ["/associateWebsiteAuthorizationProvider"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -127,10 +135,14 @@ associate_website_authorization_provider(Client, Input0, Options) ->
 %% network.
 associate_website_certificate_authority(Client, Input) ->
     associate_website_certificate_authority(Client, Input, []).
-associate_website_certificate_authority(Client, Input0, Options) ->
+associate_website_certificate_authority(Client, Input0, Options0) ->
     Method = post,
     Path = ["/associateWebsiteCertificateAuthority"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -147,10 +159,14 @@ associate_website_certificate_authority(Client, Input0, Options) ->
 %% WorkLink app.
 create_fleet(Client, Input) ->
     create_fleet(Client, Input, []).
-create_fleet(Client, Input0, Options) ->
+create_fleet(Client, Input0, Options0) ->
     Method = post,
     Path = ["/createFleet"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -165,10 +181,14 @@ create_fleet(Client, Input0, Options) ->
 %% Prevents users from accessing previously associated websites.
 delete_fleet(Client, Input) ->
     delete_fleet(Client, Input, []).
-delete_fleet(Client, Input0, Options) ->
+delete_fleet(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteFleet"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -182,10 +202,14 @@ delete_fleet(Client, Input0, Options) ->
 %% customer account.
 describe_audit_stream_configuration(Client, Input) ->
     describe_audit_stream_configuration(Client, Input, []).
-describe_audit_stream_configuration(Client, Input0, Options) ->
+describe_audit_stream_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeAuditStreamConfiguration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -199,10 +223,14 @@ describe_audit_stream_configuration(Client, Input0, Options) ->
 %% websites associated with the specified fleet.
 describe_company_network_configuration(Client, Input) ->
     describe_company_network_configuration(Client, Input, []).
-describe_company_network_configuration(Client, Input0, Options) ->
+describe_company_network_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeCompanyNetworkConfiguration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -215,10 +243,14 @@ describe_company_network_configuration(Client, Input0, Options) ->
 %% @doc Provides information about a user's device.
 describe_device(Client, Input) ->
     describe_device(Client, Input, []).
-describe_device(Client, Input0, Options) ->
+describe_device(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeDevice"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -231,10 +263,14 @@ describe_device(Client, Input0, Options) ->
 %% @doc Describes the device policy configuration for the specified fleet.
 describe_device_policy_configuration(Client, Input) ->
     describe_device_policy_configuration(Client, Input, []).
-describe_device_policy_configuration(Client, Input0, Options) ->
+describe_device_policy_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeDevicePolicyConfiguration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -247,10 +283,14 @@ describe_device_policy_configuration(Client, Input0, Options) ->
 %% @doc Provides information about the domain.
 describe_domain(Client, Input) ->
     describe_domain(Client, Input, []).
-describe_domain(Client, Input0, Options) ->
+describe_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeDomain"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -264,10 +304,14 @@ describe_domain(Client, Input0, Options) ->
 %% identity provider, networking, and device configuration details.
 describe_fleet_metadata(Client, Input) ->
     describe_fleet_metadata(Client, Input, []).
-describe_fleet_metadata(Client, Input0, Options) ->
+describe_fleet_metadata(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeFleetMetadata"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -280,10 +324,14 @@ describe_fleet_metadata(Client, Input0, Options) ->
 %% @doc Describes the identity provider configuration of the specified fleet.
 describe_identity_provider_configuration(Client, Input) ->
     describe_identity_provider_configuration(Client, Input, []).
-describe_identity_provider_configuration(Client, Input0, Options) ->
+describe_identity_provider_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeIdentityProviderConfiguration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -296,10 +344,14 @@ describe_identity_provider_configuration(Client, Input0, Options) ->
 %% @doc Provides information about the certificate authority.
 describe_website_certificate_authority(Client, Input) ->
     describe_website_certificate_authority(Client, Input, []).
-describe_website_certificate_authority(Client, Input0, Options) ->
+describe_website_certificate_authority(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeWebsiteCertificateAuthority"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -314,10 +366,14 @@ describe_website_certificate_authority(Client, Input0, Options) ->
 %% End users lose the ability to access the domain with Amazon WorkLink.
 disassociate_domain(Client, Input) ->
     disassociate_domain(Client, Input, []).
-disassociate_domain(Client, Input0, Options) ->
+disassociate_domain(Client, Input0, Options0) ->
     Method = post,
     Path = ["/disassociateDomain"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -334,10 +390,14 @@ disassociate_domain(Client, Input0, Options) ->
 %% require this authorization provider.
 disassociate_website_authorization_provider(Client, Input) ->
     disassociate_website_authorization_provider(Client, Input, []).
-disassociate_website_authorization_provider(Client, Input0, Options) ->
+disassociate_website_authorization_provider(Client, Input0, Options0) ->
     Method = post,
     Path = ["/disassociateWebsiteAuthorizationProvider"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -350,10 +410,14 @@ disassociate_website_authorization_provider(Client, Input0, Options) ->
 %% @doc Removes a certificate authority (CA).
 disassociate_website_certificate_authority(Client, Input) ->
     disassociate_website_certificate_authority(Client, Input, []).
-disassociate_website_certificate_authority(Client, Input0, Options) ->
+disassociate_website_certificate_authority(Client, Input0, Options0) ->
     Method = post,
     Path = ["/disassociateWebsiteCertificateAuthority"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -366,10 +430,14 @@ disassociate_website_certificate_authority(Client, Input0, Options) ->
 %% @doc Retrieves a list of devices registered with the specified fleet.
 list_devices(Client, Input) ->
     list_devices(Client, Input, []).
-list_devices(Client, Input0, Options) ->
+list_devices(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listDevices"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -382,10 +450,14 @@ list_devices(Client, Input0, Options) ->
 %% @doc Retrieves a list of domains associated to a specified fleet.
 list_domains(Client, Input) ->
     list_domains(Client, Input, []).
-list_domains(Client, Input0, Options) ->
+list_domains(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listDomains"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -398,10 +470,14 @@ list_domains(Client, Input0, Options) ->
 %% @doc Retrieves a list of fleets for the current account and Region.
 list_fleets(Client, Input) ->
     list_fleets(Client, Input, []).
-list_fleets(Client, Input0, Options) ->
+list_fleets(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listFleets"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -420,10 +496,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -435,10 +514,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% specified fleet.
 list_website_authorization_providers(Client, Input) ->
     list_website_authorization_providers(Client, Input, []).
-list_website_authorization_providers(Client, Input0, Options) ->
+list_website_authorization_providers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listWebsiteAuthorizationProviders"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -452,10 +535,14 @@ list_website_authorization_providers(Client, Input0, Options) ->
 %% account and Region.
 list_website_certificate_authorities(Client, Input) ->
     list_website_certificate_authorities(Client, Input, []).
-list_website_certificate_authorities(Client, Input0, Options) ->
+list_website_certificate_authorities(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listWebsiteCertificateAuthorities"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -468,10 +555,14 @@ list_website_certificate_authorities(Client, Input0, Options) ->
 %% @doc Moves a domain to ACTIVE status if it was in the INACTIVE status.
 restore_domain_access(Client, Input) ->
     restore_domain_access(Client, Input, []).
-restore_domain_access(Client, Input0, Options) ->
+restore_domain_access(Client, Input0, Options0) ->
     Method = post,
     Path = ["/restoreDomainAccess"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -484,10 +575,14 @@ restore_domain_access(Client, Input0, Options) ->
 %% @doc Moves a domain to INACTIVE status if it was in the ACTIVE status.
 revoke_domain_access(Client, Input) ->
     revoke_domain_access(Client, Input, []).
-revoke_domain_access(Client, Input0, Options) ->
+revoke_domain_access(Client, Input0, Options0) ->
     Method = post,
     Path = ["/revokeDomainAccess"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -502,10 +597,14 @@ revoke_domain_access(Client, Input0, Options) ->
 %% The user can sign in again if they have valid credentials.
 sign_out_user(Client, Input) ->
     sign_out_user(Client, Input, []).
-sign_out_user(Client, Input0, Options) ->
+sign_out_user(Client, Input0, Options0) ->
     Method = post,
     Path = ["/signOutUser"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -522,10 +621,14 @@ sign_out_user(Client, Input0, Options) ->
 %% has a tag with the same key, this operation updates its value.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -538,10 +641,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Removes one or more tags from the specified resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -555,10 +662,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Updates the audit stream configuration for the fleet.
 update_audit_stream_configuration(Client, Input) ->
     update_audit_stream_configuration(Client, Input, []).
-update_audit_stream_configuration(Client, Input0, Options) ->
+update_audit_stream_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateAuditStreamConfiguration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -571,10 +682,14 @@ update_audit_stream_configuration(Client, Input0, Options) ->
 %% @doc Updates the company network configuration for the fleet.
 update_company_network_configuration(Client, Input) ->
     update_company_network_configuration(Client, Input, []).
-update_company_network_configuration(Client, Input0, Options) ->
+update_company_network_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateCompanyNetworkConfiguration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -587,10 +702,14 @@ update_company_network_configuration(Client, Input0, Options) ->
 %% @doc Updates the device policy configuration for the fleet.
 update_device_policy_configuration(Client, Input) ->
     update_device_policy_configuration(Client, Input, []).
-update_device_policy_configuration(Client, Input0, Options) ->
+update_device_policy_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateDevicePolicyConfiguration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -603,10 +722,14 @@ update_device_policy_configuration(Client, Input0, Options) ->
 %% @doc Updates domain metadata, such as DisplayName.
 update_domain_metadata(Client, Input) ->
     update_domain_metadata(Client, Input, []).
-update_domain_metadata(Client, Input0, Options) ->
+update_domain_metadata(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateDomainMetadata"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -619,10 +742,14 @@ update_domain_metadata(Client, Input0, Options) ->
 %% @doc Updates fleet metadata, such as DisplayName.
 update_fleet_metadata(Client, Input) ->
     update_fleet_metadata(Client, Input, []).
-update_fleet_metadata(Client, Input0, Options) ->
+update_fleet_metadata(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateFleetMetadata"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -635,10 +762,14 @@ update_fleet_metadata(Client, Input0, Options) ->
 %% @doc Updates the identity provider configuration for the fleet.
 update_identity_provider_configuration(Client, Input) ->
     update_identity_provider_configuration(Client, Input, []).
-update_identity_provider_configuration(Client, Input0, Options) ->
+update_identity_provider_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateIdentityProviderConfiguration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -670,19 +801,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -692,14 +824,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

@@ -37,10 +37,14 @@
 %% @doc Creates a Savings Plan.
 create_savings_plan(Client, Input) ->
     create_savings_plan(Client, Input, []).
-create_savings_plan(Client, Input0, Options) ->
+create_savings_plan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateSavingsPlan"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -53,10 +57,14 @@ create_savings_plan(Client, Input0, Options) ->
 %% @doc Deletes the queued purchase for the specified Savings Plan.
 delete_queued_savings_plan(Client, Input) ->
     delete_queued_savings_plan(Client, Input, []).
-delete_queued_savings_plan(Client, Input0, Options) ->
+delete_queued_savings_plan(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteQueuedSavingsPlan"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -69,10 +77,14 @@ delete_queued_savings_plan(Client, Input0, Options) ->
 %% @doc Describes the specified Savings Plans rates.
 describe_savings_plan_rates(Client, Input) ->
     describe_savings_plan_rates(Client, Input, []).
-describe_savings_plan_rates(Client, Input0, Options) ->
+describe_savings_plan_rates(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeSavingsPlanRates"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -85,10 +97,14 @@ describe_savings_plan_rates(Client, Input0, Options) ->
 %% @doc Describes the specified Savings Plans.
 describe_savings_plans(Client, Input) ->
     describe_savings_plans(Client, Input, []).
-describe_savings_plans(Client, Input0, Options) ->
+describe_savings_plans(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeSavingsPlans"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -101,10 +117,14 @@ describe_savings_plans(Client, Input0, Options) ->
 %% @doc Describes the specified Savings Plans offering rates.
 describe_savings_plans_offering_rates(Client, Input) ->
     describe_savings_plans_offering_rates(Client, Input, []).
-describe_savings_plans_offering_rates(Client, Input0, Options) ->
+describe_savings_plans_offering_rates(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeSavingsPlansOfferingRates"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -117,10 +137,14 @@ describe_savings_plans_offering_rates(Client, Input0, Options) ->
 %% @doc Describes the specified Savings Plans offerings.
 describe_savings_plans_offerings(Client, Input) ->
     describe_savings_plans_offerings(Client, Input, []).
-describe_savings_plans_offerings(Client, Input0, Options) ->
+describe_savings_plans_offerings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeSavingsPlansOfferings"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -133,10 +157,14 @@ describe_savings_plans_offerings(Client, Input0, Options) ->
 %% @doc Lists the tags for the specified resource.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
-list_tags_for_resource(Client, Input0, Options) ->
+list_tags_for_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListTagsForResource"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -149,10 +177,14 @@ list_tags_for_resource(Client, Input0, Options) ->
 %% @doc Adds the specified tags to the specified resource.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
-tag_resource(Client, Input0, Options) ->
+tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/TagResource"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -165,10 +197,14 @@ tag_resource(Client, Input0, Options) ->
 %% @doc Removes the specified tags from the specified resource.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
-untag_resource(Client, Input0, Options) ->
+untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UntagResource"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -201,19 +237,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -223,14 +260,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

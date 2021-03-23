@@ -40,10 +40,14 @@
 %% during the 60-day request history retention period for API calls.
 cancel_change_set(Client, Input) ->
     cancel_change_set(Client, Input, []).
-cancel_change_set(Client, Input0, Options) ->
+cancel_change_set(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/CancelChangeSet"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -64,10 +68,13 @@ describe_change_set(Client, Catalog, ChangeSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_change_set(Client, Catalog, ChangeSetId, QueryMap, HeadersMap, []).
 
-describe_change_set(Client, Catalog, ChangeSetId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_change_set(Client, Catalog, ChangeSetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/DescribeChangeSet"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -89,10 +96,13 @@ describe_entity(Client, Catalog, EntityId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_entity(Client, Catalog, EntityId, QueryMap, HeadersMap, []).
 
-describe_entity(Client, Catalog, EntityId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_entity(Client, Catalog, EntityId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/DescribeEntity"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -116,10 +126,14 @@ describe_entity(Client, Catalog, EntityId, QueryMap, HeadersMap, Options)
 %% period for API calls.
 list_change_sets(Client, Input) ->
     list_change_sets(Client, Input, []).
-list_change_sets(Client, Input0, Options) ->
+list_change_sets(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListChangeSets"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -132,10 +146,14 @@ list_change_sets(Client, Input0, Options) ->
 %% @doc Provides the list of entities of a given type.
 list_entities(Client, Input) ->
     list_entities(Client, Input, []).
-list_entities(Client, Input0, Options) ->
+list_entities(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListEntities"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -159,10 +177,14 @@ list_entities(Client, Input0, Options) ->
 %% (`AddRevisions') against the same entity (`entity-id@1)'.
 start_change_set(Client, Input) ->
     start_change_set(Client, Input, []).
-start_change_set(Client, Input0, Options) ->
+start_change_set(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StartChangeSet"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -194,19 +216,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -216,14 +239,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

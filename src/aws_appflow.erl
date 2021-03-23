@@ -88,10 +88,14 @@
 %% channel.
 create_connector_profile(Client, Input) ->
     create_connector_profile(Client, Input, []).
-create_connector_profile(Client, Input0, Options) ->
+create_connector_profile(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-connector-profile"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -110,10 +114,14 @@ create_connector_profile(Client, Input0, Options) ->
 %% at once.
 create_flow(Client, Input) ->
     create_flow(Client, Input, []).
-create_flow(Client, Input0, Options) ->
+create_flow(Client, Input0, Options0) ->
     Method = post,
     Path = ["/create-flow"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -126,10 +134,14 @@ create_flow(Client, Input0, Options) ->
 %% @doc Enables you to delete an existing connector profile.
 delete_connector_profile(Client, Input) ->
     delete_connector_profile(Client, Input, []).
-delete_connector_profile(Client, Input0, Options) ->
+delete_connector_profile(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-connector-profile"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -145,10 +157,14 @@ delete_connector_profile(Client, Input0, Options) ->
 %% the flow configuration and status. You can delete flows one at a time.
 delete_flow(Client, Input) ->
     delete_flow(Client, Input, []).
-delete_flow(Client, Input0, Options) ->
+delete_flow(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-flow"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -162,10 +178,14 @@ delete_flow(Client, Input0, Options) ->
 %% description of the data model for each entity.
 describe_connector_entity(Client, Input) ->
     describe_connector_entity(Client, Input, []).
-describe_connector_entity(Client, Input0, Options) ->
+describe_connector_entity(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-connector-entity"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -185,10 +205,14 @@ describe_connector_entity(Client, Input0, Options) ->
 %% an empty list.
 describe_connector_profiles(Client, Input) ->
     describe_connector_profiles(Client, Input, []).
-describe_connector_profiles(Client, Input0, Options) ->
+describe_connector_profiles(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-connector-profiles"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -208,10 +232,14 @@ describe_connector_profiles(Client, Input0, Options) ->
 %% operation to retrieve the next page.
 describe_connectors(Client, Input) ->
     describe_connectors(Client, Input, []).
-describe_connectors(Client, Input0, Options) ->
+describe_connectors(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-connectors"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -224,10 +252,14 @@ describe_connectors(Client, Input0, Options) ->
 %% @doc Provides a description of the specified flow.
 describe_flow(Client, Input) ->
     describe_flow(Client, Input, []).
-describe_flow(Client, Input0, Options) ->
+describe_flow(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-flow"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -240,10 +272,14 @@ describe_flow(Client, Input0, Options) ->
 %% @doc Fetches the execution history of the flow.
 describe_flow_execution_records(Client, Input) ->
     describe_flow_execution_records(Client, Input, []).
-describe_flow_execution_records(Client, Input0, Options) ->
+describe_flow_execution_records(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describe-flow-execution-records"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -260,10 +296,14 @@ describe_flow_execution_records(Client, Input0, Options) ->
 %% entities, or query ServiceNow for the Incident entity.
 list_connector_entities(Client, Input) ->
     list_connector_entities(Client, Input, []).
-list_connector_entities(Client, Input0, Options) ->
+list_connector_entities(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-connector-entities"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -276,10 +316,14 @@ list_connector_entities(Client, Input0, Options) ->
 %% @doc Lists all of the flows associated with your account.
 list_flows(Client, Input) ->
     list_flows(Client, Input, []).
-list_flows(Client, Input0, Options) ->
+list_flows(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-flows"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -298,10 +342,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -315,10 +362,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% schedule and event-triggered flows, this operation activates the flow.
 start_flow(Client, Input) ->
     start_flow(Client, Input, []).
-start_flow(Client, Input0, Options) ->
+start_flow(Client, Input0, Options0) ->
     Method = post,
     Path = ["/start-flow"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -335,10 +386,14 @@ start_flow(Client, Input0, Options) ->
 %% event-triggered flows, this operation deactivates the flow.
 stop_flow(Client, Input) ->
     stop_flow(Client, Input, []).
-stop_flow(Client, Input0, Options) ->
+stop_flow(Client, Input0, Options0) ->
     Method = post,
     Path = ["/stop-flow"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -351,10 +406,14 @@ stop_flow(Client, Input0, Options) ->
 %% @doc Applies a tag to the specified flow.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -367,10 +426,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Removes a tag from the specified flow.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -384,10 +447,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Updates a given connector profile associated with your account.
 update_connector_profile(Client, Input) ->
     update_connector_profile(Client, Input, []).
-update_connector_profile(Client, Input0, Options) ->
+update_connector_profile(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-connector-profile"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -400,10 +467,14 @@ update_connector_profile(Client, Input0, Options) ->
 %% @doc Updates an existing flow.
 update_flow(Client, Input) ->
     update_flow(Client, Input, []).
-update_flow(Client, Input0, Options) ->
+update_flow(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-flow"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -435,19 +506,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -457,14 +529,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

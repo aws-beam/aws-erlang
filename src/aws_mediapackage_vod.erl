@@ -56,10 +56,14 @@
 %% subscription
 configure_logs(Client, Id, Input) ->
     configure_logs(Client, Id, Input, []).
-configure_logs(Client, Id, Input0, Options) ->
+configure_logs(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/packaging_groups/", aws_util:encode_uri(Id), "/configure_logs"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -72,10 +76,14 @@ configure_logs(Client, Id, Input0, Options) ->
 %% @doc Creates a new MediaPackage VOD Asset resource.
 create_asset(Client, Input) ->
     create_asset(Client, Input, []).
-create_asset(Client, Input0, Options) ->
+create_asset(Client, Input0, Options0) ->
     Method = post,
     Path = ["/assets"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -88,10 +96,14 @@ create_asset(Client, Input0, Options) ->
 %% @doc Creates a new MediaPackage VOD PackagingConfiguration resource.
 create_packaging_configuration(Client, Input) ->
     create_packaging_configuration(Client, Input, []).
-create_packaging_configuration(Client, Input0, Options) ->
+create_packaging_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/packaging_configurations"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -104,10 +116,14 @@ create_packaging_configuration(Client, Input0, Options) ->
 %% @doc Creates a new MediaPackage VOD PackagingGroup resource.
 create_packaging_group(Client, Input) ->
     create_packaging_group(Client, Input, []).
-create_packaging_group(Client, Input0, Options) ->
+create_packaging_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/packaging_groups"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -120,10 +136,14 @@ create_packaging_group(Client, Input0, Options) ->
 %% @doc Deletes an existing MediaPackage VOD Asset resource.
 delete_asset(Client, Id, Input) ->
     delete_asset(Client, Id, Input, []).
-delete_asset(Client, Id, Input0, Options) ->
+delete_asset(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/assets/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -136,10 +156,14 @@ delete_asset(Client, Id, Input0, Options) ->
 %% @doc Deletes a MediaPackage VOD PackagingConfiguration resource.
 delete_packaging_configuration(Client, Id, Input) ->
     delete_packaging_configuration(Client, Id, Input, []).
-delete_packaging_configuration(Client, Id, Input0, Options) ->
+delete_packaging_configuration(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/packaging_configurations/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -152,10 +176,14 @@ delete_packaging_configuration(Client, Id, Input0, Options) ->
 %% @doc Deletes a MediaPackage VOD PackagingGroup resource.
 delete_packaging_group(Client, Id, Input) ->
     delete_packaging_group(Client, Id, Input, []).
-delete_packaging_group(Client, Id, Input0, Options) ->
+delete_packaging_group(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/packaging_groups/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -174,10 +202,13 @@ describe_asset(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_asset(Client, Id, QueryMap, HeadersMap, []).
 
-describe_asset(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_asset(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -195,10 +226,13 @@ describe_packaging_configuration(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_packaging_configuration(Client, Id, QueryMap, HeadersMap, []).
 
-describe_packaging_configuration(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_packaging_configuration(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packaging_configurations/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -215,10 +249,13 @@ describe_packaging_group(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_packaging_group(Client, Id, QueryMap, HeadersMap, []).
 
-describe_packaging_group(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_packaging_group(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packaging_groups/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -235,10 +272,13 @@ list_assets(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_assets(Client, QueryMap, HeadersMap, []).
 
-list_assets(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_assets(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -262,10 +302,13 @@ list_packaging_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_packaging_configurations(Client, QueryMap, HeadersMap, []).
 
-list_packaging_configurations(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_packaging_configurations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packaging_configurations"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -288,10 +331,13 @@ list_packaging_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_packaging_groups(Client, QueryMap, HeadersMap, []).
 
-list_packaging_groups(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_packaging_groups(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packaging_groups"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -313,10 +359,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -329,10 +378,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% You can specify one or more tags to add.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -347,10 +400,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% You can specify one or more tags to remove.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -367,10 +424,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% attributes.
 update_packaging_group(Client, Id, Input) ->
     update_packaging_group(Client, Id, Input, []).
-update_packaging_group(Client, Id, Input0, Options) ->
+update_packaging_group(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/packaging_groups/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -402,19 +463,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -424,14 +486,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

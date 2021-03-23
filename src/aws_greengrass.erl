@@ -254,10 +254,14 @@
 %% perform actions against the cloud.
 associate_role_to_group(Client, GroupId, Input) ->
     associate_role_to_group(Client, GroupId, Input, []).
-associate_role_to_group(Client, GroupId, Input0, Options) ->
+associate_role_to_group(Client, GroupId, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/role"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -275,10 +279,14 @@ associate_role_to_group(Client, GroupId, Input0, Options) ->
 %% ''AWSGreengrassResourceAccessRolePolicy''.
 associate_service_role_to_account(Client, Input) ->
     associate_service_role_to_account(Client, Input, []).
-associate_service_role_to_account(Client, Input0, Options) ->
+associate_service_role_to_account(Client, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/servicerole"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -294,10 +302,14 @@ associate_service_role_to_account(Client, Input0, Options) ->
 %% ''CreateConnectorDefinitionVersion'' at a later time.
 create_connector_definition(Client, Input) ->
     create_connector_definition(Client, Input, []).
-create_connector_definition(Client, Input0, Options) ->
+create_connector_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/connectors"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -313,10 +325,14 @@ create_connector_definition(Client, Input0, Options) ->
 %% defined.
 create_connector_definition_version(Client, ConnectorDefinitionId, Input) ->
     create_connector_definition_version(Client, ConnectorDefinitionId, Input, []).
-create_connector_definition_version(Client, ConnectorDefinitionId, Input0, Options) ->
+create_connector_definition_version(Client, ConnectorDefinitionId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), "/versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -335,10 +351,14 @@ create_connector_definition_version(Client, ConnectorDefinitionId, Input0, Optio
 %% each contain exactly one Greengrass core.
 create_core_definition(Client, Input) ->
     create_core_definition(Client, Input, []).
-create_core_definition(Client, Input0, Options) ->
+create_core_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/cores"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -355,10 +375,14 @@ create_core_definition(Client, Input0, Options) ->
 %% Greengrass groups must each contain exactly one Greengrass core.
 create_core_definition_version(Client, CoreDefinitionId, Input) ->
     create_core_definition_version(Client, CoreDefinitionId, Input, []).
-create_core_definition_version(Client, CoreDefinitionId, Input0, Options) ->
+create_core_definition_version(Client, CoreDefinitionId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), "/versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -376,10 +400,14 @@ create_core_definition_version(Client, CoreDefinitionId, Input0, Options) ->
 %% ''X-Amzn-Client-Token'' token and the request parameters.
 create_deployment(Client, GroupId, Input) ->
     create_deployment(Client, GroupId, Input, []).
-create_deployment(Client, GroupId, Input0, Options) ->
+create_deployment(Client, GroupId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/deployments"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -397,10 +425,14 @@ create_deployment(Client, GroupId, Input0, Options) ->
 %% ''CreateDeviceDefinitionVersion'' at a later time.
 create_device_definition(Client, Input) ->
     create_device_definition(Client, Input, []).
-create_device_definition(Client, Input0, Options) ->
+create_device_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/devices"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -416,10 +448,14 @@ create_device_definition(Client, Input0, Options) ->
 %% defined.
 create_device_definition_version(Client, DeviceDefinitionId, Input) ->
     create_device_definition_version(Client, DeviceDefinitionId, Input, []).
-create_device_definition_version(Client, DeviceDefinitionId, Input0, Options) ->
+create_device_definition_version(Client, DeviceDefinitionId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), "/versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -439,10 +475,14 @@ create_device_definition_version(Client, DeviceDefinitionId, Input0, Options) ->
 %% ''CreateFunctionDefinitionVersion'' later.
 create_function_definition(Client, Input) ->
     create_function_definition(Client, Input, []).
-create_function_definition(Client, Input0, Options) ->
+create_function_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/functions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -458,10 +498,14 @@ create_function_definition(Client, Input0, Options) ->
 %% been defined.
 create_function_definition_version(Client, FunctionDefinitionId, Input) ->
     create_function_definition_version(Client, FunctionDefinitionId, Input, []).
-create_function_definition_version(Client, FunctionDefinitionId, Input0, Options) ->
+create_function_definition_version(Client, FunctionDefinitionId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), "/versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -482,10 +526,14 @@ create_function_definition_version(Client, FunctionDefinitionId, Input0, Options
 %% command-line application to create and deploy Greengrass groups.
 create_group(Client, Input) ->
     create_group(Client, Input, []).
-create_group(Client, Input0, Options) ->
+create_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/groups"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -502,10 +550,14 @@ create_group(Client, Input0, Options) ->
 %% If a CA already exists, it will rotate the existing CA.
 create_group_certificate_authority(Client, GroupId, Input) ->
     create_group_certificate_authority(Client, GroupId, Input, []).
-create_group_certificate_authority(Client, GroupId, Input0, Options) ->
+create_group_certificate_authority(Client, GroupId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/certificateauthorities"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -520,10 +572,14 @@ create_group_certificate_authority(Client, GroupId, Input0, Options) ->
 %% @doc Creates a version of a group which has already been defined.
 create_group_version(Client, GroupId, Input) ->
     create_group_version(Client, GroupId, Input, []).
-create_group_version(Client, GroupId, Input0, Options) ->
+create_group_version(Client, GroupId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -541,10 +597,14 @@ create_group_version(Client, GroupId, Input0, Options) ->
 %% ''CreateLoggerDefinitionVersion'' at a later time.
 create_logger_definition(Client, Input) ->
     create_logger_definition(Client, Input, []).
-create_logger_definition(Client, Input0, Options) ->
+create_logger_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/loggers"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -560,10 +620,14 @@ create_logger_definition(Client, Input0, Options) ->
 %% defined.
 create_logger_definition_version(Client, LoggerDefinitionId, Input) ->
     create_logger_definition_version(Client, LoggerDefinitionId, Input, []).
-create_logger_definition_version(Client, LoggerDefinitionId, Input0, Options) ->
+create_logger_definition_version(Client, LoggerDefinitionId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), "/versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -582,10 +646,14 @@ create_logger_definition_version(Client, LoggerDefinitionId, Input0, Options) ->
 %% resources now, or use ''CreateResourceDefinitionVersion'' later.
 create_resource_definition(Client, Input) ->
     create_resource_definition(Client, Input, []).
-create_resource_definition(Client, Input0, Options) ->
+create_resource_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/resources"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -601,10 +669,14 @@ create_resource_definition(Client, Input0, Options) ->
 %% defined.
 create_resource_definition_version(Client, ResourceDefinitionId, Input) ->
     create_resource_definition_version(Client, ResourceDefinitionId, Input, []).
-create_resource_definition_version(Client, ResourceDefinitionId, Input0, Options) ->
+create_resource_definition_version(Client, ResourceDefinitionId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), "/versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -624,10 +696,14 @@ create_resource_definition_version(Client, ResourceDefinitionId, Input0, Options
 %% manage a Greengrass core software update job.
 create_software_update_job(Client, Input) ->
     create_software_update_job(Client, Input, []).
-create_software_update_job(Client, Input0, Options) ->
+create_software_update_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/updates"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -645,10 +721,14 @@ create_software_update_job(Client, Input0, Options) ->
 %% use ''CreateSubscriptionDefinitionVersion'' at a later time.
 create_subscription_definition(Client, Input) ->
     create_subscription_definition(Client, Input, []).
-create_subscription_definition(Client, Input0, Options) ->
+create_subscription_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/subscriptions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -664,10 +744,14 @@ create_subscription_definition(Client, Input0, Options) ->
 %% defined.
 create_subscription_definition_version(Client, SubscriptionDefinitionId, Input) ->
     create_subscription_definition_version(Client, SubscriptionDefinitionId, Input, []).
-create_subscription_definition_version(Client, SubscriptionDefinitionId, Input0, Options) ->
+create_subscription_definition_version(Client, SubscriptionDefinitionId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), "/versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -682,10 +766,14 @@ create_subscription_definition_version(Client, SubscriptionDefinitionId, Input0,
 %% @doc Deletes a connector definition.
 delete_connector_definition(Client, ConnectorDefinitionId, Input) ->
     delete_connector_definition(Client, ConnectorDefinitionId, Input, []).
-delete_connector_definition(Client, ConnectorDefinitionId, Input0, Options) ->
+delete_connector_definition(Client, ConnectorDefinitionId, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -698,10 +786,14 @@ delete_connector_definition(Client, ConnectorDefinitionId, Input0, Options) ->
 %% @doc Deletes a core definition.
 delete_core_definition(Client, CoreDefinitionId, Input) ->
     delete_core_definition(Client, CoreDefinitionId, Input, []).
-delete_core_definition(Client, CoreDefinitionId, Input0, Options) ->
+delete_core_definition(Client, CoreDefinitionId, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -714,10 +806,14 @@ delete_core_definition(Client, CoreDefinitionId, Input0, Options) ->
 %% @doc Deletes a device definition.
 delete_device_definition(Client, DeviceDefinitionId, Input) ->
     delete_device_definition(Client, DeviceDefinitionId, Input, []).
-delete_device_definition(Client, DeviceDefinitionId, Input0, Options) ->
+delete_device_definition(Client, DeviceDefinitionId, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -730,10 +826,14 @@ delete_device_definition(Client, DeviceDefinitionId, Input0, Options) ->
 %% @doc Deletes a Lambda function definition.
 delete_function_definition(Client, FunctionDefinitionId, Input) ->
     delete_function_definition(Client, FunctionDefinitionId, Input, []).
-delete_function_definition(Client, FunctionDefinitionId, Input0, Options) ->
+delete_function_definition(Client, FunctionDefinitionId, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -746,10 +846,14 @@ delete_function_definition(Client, FunctionDefinitionId, Input0, Options) ->
 %% @doc Deletes a group.
 delete_group(Client, GroupId, Input) ->
     delete_group(Client, GroupId, Input, []).
-delete_group(Client, GroupId, Input0, Options) ->
+delete_group(Client, GroupId, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -762,10 +866,14 @@ delete_group(Client, GroupId, Input0, Options) ->
 %% @doc Deletes a logger definition.
 delete_logger_definition(Client, LoggerDefinitionId, Input) ->
     delete_logger_definition(Client, LoggerDefinitionId, Input, []).
-delete_logger_definition(Client, LoggerDefinitionId, Input0, Options) ->
+delete_logger_definition(Client, LoggerDefinitionId, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -778,10 +886,14 @@ delete_logger_definition(Client, LoggerDefinitionId, Input0, Options) ->
 %% @doc Deletes a resource definition.
 delete_resource_definition(Client, ResourceDefinitionId, Input) ->
     delete_resource_definition(Client, ResourceDefinitionId, Input, []).
-delete_resource_definition(Client, ResourceDefinitionId, Input0, Options) ->
+delete_resource_definition(Client, ResourceDefinitionId, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -794,10 +906,14 @@ delete_resource_definition(Client, ResourceDefinitionId, Input0, Options) ->
 %% @doc Deletes a subscription definition.
 delete_subscription_definition(Client, SubscriptionDefinitionId, Input) ->
     delete_subscription_definition(Client, SubscriptionDefinitionId, Input, []).
-delete_subscription_definition(Client, SubscriptionDefinitionId, Input0, Options) ->
+delete_subscription_definition(Client, SubscriptionDefinitionId, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -810,10 +926,14 @@ delete_subscription_definition(Client, SubscriptionDefinitionId, Input0, Options
 %% @doc Disassociates the role from a group.
 disassociate_role_from_group(Client, GroupId, Input) ->
     disassociate_role_from_group(Client, GroupId, Input, []).
-disassociate_role_from_group(Client, GroupId, Input0, Options) ->
+disassociate_role_from_group(Client, GroupId, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/role"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -828,10 +948,14 @@ disassociate_role_from_group(Client, GroupId, Input0, Options) ->
 %% Without a service role, deployments will not work.
 disassociate_service_role_from_account(Client, Input) ->
     disassociate_service_role_from_account(Client, Input, []).
-disassociate_service_role_from_account(Client, Input0, Options) ->
+disassociate_service_role_from_account(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/greengrass/servicerole"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -850,10 +974,13 @@ get_associated_role(Client, GroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_associated_role(Client, GroupId, QueryMap, HeadersMap, []).
 
-get_associated_role(Client, GroupId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_associated_role(Client, GroupId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/role"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -870,10 +997,13 @@ get_bulk_deployment_status(Client, BulkDeploymentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bulk_deployment_status(Client, BulkDeploymentId, QueryMap, HeadersMap, []).
 
-get_bulk_deployment_status(Client, BulkDeploymentId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bulk_deployment_status(Client, BulkDeploymentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/bulk/deployments/", aws_util:encode_uri(BulkDeploymentId), "/status"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -890,10 +1020,13 @@ get_connectivity_info(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, []).
 
-get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/connectivityInfo"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -910,10 +1043,13 @@ get_connector_definition(Client, ConnectorDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connector_definition(Client, ConnectorDefinitionId, QueryMap, HeadersMap, []).
 
-get_connector_definition(Client, ConnectorDefinitionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_connector_definition(Client, ConnectorDefinitionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -934,10 +1070,13 @@ get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinit
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, QueryMap, HeadersMap, []).
 
-get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), "/versions/", aws_util:encode_uri(ConnectorDefinitionVersionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -958,10 +1097,13 @@ get_core_definition(Client, CoreDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_core_definition(Client, CoreDefinitionId, QueryMap, HeadersMap, []).
 
-get_core_definition(Client, CoreDefinitionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_core_definition(Client, CoreDefinitionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -978,10 +1120,13 @@ get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, Q
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, QueryMap, HeadersMap, []).
 
-get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), "/versions/", aws_util:encode_uri(CoreDefinitionVersionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -998,10 +1143,13 @@ get_deployment_status(Client, DeploymentId, GroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_deployment_status(Client, DeploymentId, GroupId, QueryMap, HeadersMap, []).
 
-get_deployment_status(Client, DeploymentId, GroupId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_deployment_status(Client, DeploymentId, GroupId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/deployments/", aws_util:encode_uri(DeploymentId), "/status"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1018,10 +1166,13 @@ get_device_definition(Client, DeviceDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_device_definition(Client, DeviceDefinitionId, QueryMap, HeadersMap, []).
 
-get_device_definition(Client, DeviceDefinitionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_device_definition(Client, DeviceDefinitionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1038,10 +1189,13 @@ get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersio
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersionId, QueryMap, HeadersMap, []).
 
-get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), "/versions/", aws_util:encode_uri(DeviceDefinitionVersionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1063,10 +1217,13 @@ get_function_definition(Client, FunctionDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_definition(Client, FunctionDefinitionId, QueryMap, HeadersMap, []).
 
-get_function_definition(Client, FunctionDefinitionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_function_definition(Client, FunctionDefinitionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1085,10 +1242,13 @@ get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinition
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinitionVersionId, QueryMap, HeadersMap, []).
 
-get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinitionVersionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinitionVersionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), "/versions/", aws_util:encode_uri(FunctionDefinitionVersionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1109,10 +1269,13 @@ get_group(Client, GroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_group(Client, GroupId, QueryMap, HeadersMap, []).
 
-get_group(Client, GroupId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_group(Client, GroupId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1131,10 +1294,13 @@ get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, QueryMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, QueryMap, HeadersMap, []).
 
-get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/certificateauthorities/", aws_util:encode_uri(CertificateAuthorityId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1151,10 +1317,13 @@ get_group_certificate_configuration(Client, GroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_group_certificate_configuration(Client, GroupId, QueryMap, HeadersMap, []).
 
-get_group_certificate_configuration(Client, GroupId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_group_certificate_configuration(Client, GroupId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/certificateauthorities/configuration/expiry"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1171,10 +1340,13 @@ get_group_version(Client, GroupId, GroupVersionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_group_version(Client, GroupId, GroupVersionId, QueryMap, HeadersMap, []).
 
-get_group_version(Client, GroupId, GroupVersionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_group_version(Client, GroupId, GroupVersionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/versions/", aws_util:encode_uri(GroupVersionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1191,10 +1363,13 @@ get_logger_definition(Client, LoggerDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_logger_definition(Client, LoggerDefinitionId, QueryMap, HeadersMap, []).
 
-get_logger_definition(Client, LoggerDefinitionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_logger_definition(Client, LoggerDefinitionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1211,10 +1386,13 @@ get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersio
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersionId, QueryMap, HeadersMap, []).
 
-get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), "/versions/", aws_util:encode_uri(LoggerDefinitionVersionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1236,10 +1414,13 @@ get_resource_definition(Client, ResourceDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_definition(Client, ResourceDefinitionId, QueryMap, HeadersMap, []).
 
-get_resource_definition(Client, ResourceDefinitionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_resource_definition(Client, ResourceDefinitionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1257,10 +1438,13 @@ get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinition
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinitionVersionId, QueryMap, HeadersMap, []).
 
-get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinitionVersionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinitionVersionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), "/versions/", aws_util:encode_uri(ResourceDefinitionVersionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1277,10 +1461,13 @@ get_service_role_for_account(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_service_role_for_account(Client, QueryMap, HeadersMap, []).
 
-get_service_role_for_account(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_service_role_for_account(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/servicerole"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1297,10 +1484,13 @@ get_subscription_definition(Client, SubscriptionDefinitionId, QueryMap, HeadersM
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_subscription_definition(Client, SubscriptionDefinitionId, QueryMap, HeadersMap, []).
 
-get_subscription_definition(Client, SubscriptionDefinitionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_subscription_definition(Client, SubscriptionDefinitionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1317,10 +1507,13 @@ get_subscription_definition_version(Client, SubscriptionDefinitionId, Subscripti
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_subscription_definition_version(Client, SubscriptionDefinitionId, SubscriptionDefinitionVersionId, QueryMap, HeadersMap, []).
 
-get_subscription_definition_version(Client, SubscriptionDefinitionId, SubscriptionDefinitionVersionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_subscription_definition_version(Client, SubscriptionDefinitionId, SubscriptionDefinitionVersionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), "/versions/", aws_util:encode_uri(SubscriptionDefinitionVersionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1341,10 +1534,13 @@ get_thing_runtime_configuration(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_thing_runtime_configuration(Client, ThingName, QueryMap, HeadersMap, []).
 
-get_thing_runtime_configuration(Client, ThingName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_thing_runtime_configuration(Client, ThingName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/runtimeconfig"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1362,10 +1558,13 @@ list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, QueryMap, HeadersMap, []).
 
-list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/bulk/deployments/", aws_util:encode_uri(BulkDeploymentId), "/detailed-reports"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1387,10 +1586,13 @@ list_bulk_deployments(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bulk_deployments(Client, QueryMap, HeadersMap, []).
 
-list_bulk_deployments(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_bulk_deployments(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/bulk/deployments"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1417,10 +1619,13 @@ list_connector_definition_versions(Client, ConnectorDefinitionId, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_connector_definition_versions(Client, ConnectorDefinitionId, QueryMap, HeadersMap, []).
 
-list_connector_definition_versions(Client, ConnectorDefinitionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_connector_definition_versions(Client, ConnectorDefinitionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), "/versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1442,10 +1647,13 @@ list_connector_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_connector_definitions(Client, QueryMap, HeadersMap, []).
 
-list_connector_definitions(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_connector_definitions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/connectors"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1467,10 +1675,13 @@ list_core_definition_versions(Client, CoreDefinitionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_core_definition_versions(Client, CoreDefinitionId, QueryMap, HeadersMap, []).
 
-list_core_definition_versions(Client, CoreDefinitionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_core_definition_versions(Client, CoreDefinitionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), "/versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1492,10 +1703,13 @@ list_core_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_core_definitions(Client, QueryMap, HeadersMap, []).
 
-list_core_definitions(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_core_definitions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/cores"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1517,10 +1731,13 @@ list_deployments(Client, GroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_deployments(Client, GroupId, QueryMap, HeadersMap, []).
 
-list_deployments(Client, GroupId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_deployments(Client, GroupId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/deployments"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1542,10 +1759,13 @@ list_device_definition_versions(Client, DeviceDefinitionId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_device_definition_versions(Client, DeviceDefinitionId, QueryMap, HeadersMap, []).
 
-list_device_definition_versions(Client, DeviceDefinitionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_device_definition_versions(Client, DeviceDefinitionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), "/versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1567,10 +1787,13 @@ list_device_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_device_definitions(Client, QueryMap, HeadersMap, []).
 
-list_device_definitions(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_device_definitions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/devices"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1592,10 +1815,13 @@ list_function_definition_versions(Client, FunctionDefinitionId, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_function_definition_versions(Client, FunctionDefinitionId, QueryMap, HeadersMap, []).
 
-list_function_definition_versions(Client, FunctionDefinitionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_function_definition_versions(Client, FunctionDefinitionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), "/versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1617,10 +1843,13 @@ list_function_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_function_definitions(Client, QueryMap, HeadersMap, []).
 
-list_function_definitions(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_function_definitions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/functions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1642,10 +1871,13 @@ list_group_certificate_authorities(Client, GroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_group_certificate_authorities(Client, GroupId, QueryMap, HeadersMap, []).
 
-list_group_certificate_authorities(Client, GroupId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_group_certificate_authorities(Client, GroupId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/certificateauthorities"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1662,10 +1894,13 @@ list_group_versions(Client, GroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_group_versions(Client, GroupId, QueryMap, HeadersMap, []).
 
-list_group_versions(Client, GroupId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_group_versions(Client, GroupId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1687,10 +1922,13 @@ list_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_groups(Client, QueryMap, HeadersMap, []).
 
-list_groups(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_groups(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/groups"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1712,10 +1950,13 @@ list_logger_definition_versions(Client, LoggerDefinitionId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_logger_definition_versions(Client, LoggerDefinitionId, QueryMap, HeadersMap, []).
 
-list_logger_definition_versions(Client, LoggerDefinitionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_logger_definition_versions(Client, LoggerDefinitionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), "/versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1737,10 +1978,13 @@ list_logger_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_logger_definitions(Client, QueryMap, HeadersMap, []).
 
-list_logger_definitions(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_logger_definitions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/loggers"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1762,10 +2006,13 @@ list_resource_definition_versions(Client, ResourceDefinitionId, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resource_definition_versions(Client, ResourceDefinitionId, QueryMap, HeadersMap, []).
 
-list_resource_definition_versions(Client, ResourceDefinitionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_resource_definition_versions(Client, ResourceDefinitionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), "/versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1787,10 +2034,13 @@ list_resource_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_resource_definitions(Client, QueryMap, HeadersMap, []).
 
-list_resource_definitions(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_resource_definitions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/resources"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1812,10 +2062,13 @@ list_subscription_definition_versions(Client, SubscriptionDefinitionId, QueryMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_subscription_definition_versions(Client, SubscriptionDefinitionId, QueryMap, HeadersMap, []).
 
-list_subscription_definition_versions(Client, SubscriptionDefinitionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_subscription_definition_versions(Client, SubscriptionDefinitionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), "/versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1837,10 +2090,13 @@ list_subscription_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_subscription_definitions(Client, QueryMap, HeadersMap, []).
 
-list_subscription_definitions(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_subscription_definitions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/definition/subscriptions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1862,10 +2118,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1876,10 +2135,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% @doc Resets a group's deployments.
 reset_deployments(Client, GroupId, Input) ->
     reset_deployments(Client, GroupId, Input, []).
-reset_deployments(Client, GroupId, Input0, Options) ->
+reset_deployments(Client, GroupId, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/deployments/$reset"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -1901,10 +2164,14 @@ reset_deployments(Client, GroupId, Input0, Options) ->
 %% parameters.
 start_bulk_deployment(Client, Input) ->
     start_bulk_deployment(Client, Input, []).
-start_bulk_deployment(Client, Input0, Options) ->
+start_bulk_deployment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/greengrass/bulk/deployments"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -1924,10 +2191,14 @@ start_bulk_deployment(Client, Input0, Options) ->
 %% completed deployments or cancel pending deployments.
 stop_bulk_deployment(Client, BulkDeploymentId, Input) ->
     stop_bulk_deployment(Client, BulkDeploymentId, Input, []).
-stop_bulk_deployment(Client, BulkDeploymentId, Input0, Options) ->
+stop_bulk_deployment(Client, BulkDeploymentId, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/bulk/deployments/", aws_util:encode_uri(BulkDeploymentId), "/$stop"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1944,10 +2215,14 @@ stop_bulk_deployment(Client, BulkDeploymentId, Input0, Options) ->
 %% 'SubscriptionDefinition', 'ResourceDefinition', and 'BulkDeployment'.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1960,10 +2235,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Remove resource tags from a Greengrass Resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1980,10 +2259,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% information in order to find the location of the core and connect to it.
 update_connectivity_info(Client, ThingName, Input) ->
     update_connectivity_info(Client, ThingName, Input, []).
-update_connectivity_info(Client, ThingName, Input0, Options) ->
+update_connectivity_info(Client, ThingName, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/connectivityInfo"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1996,10 +2279,14 @@ update_connectivity_info(Client, ThingName, Input0, Options) ->
 %% @doc Updates a connector definition.
 update_connector_definition(Client, ConnectorDefinitionId, Input) ->
     update_connector_definition(Client, ConnectorDefinitionId, Input, []).
-update_connector_definition(Client, ConnectorDefinitionId, Input0, Options) ->
+update_connector_definition(Client, ConnectorDefinitionId, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2012,10 +2299,14 @@ update_connector_definition(Client, ConnectorDefinitionId, Input0, Options) ->
 %% @doc Updates a core definition.
 update_core_definition(Client, CoreDefinitionId, Input) ->
     update_core_definition(Client, CoreDefinitionId, Input, []).
-update_core_definition(Client, CoreDefinitionId, Input0, Options) ->
+update_core_definition(Client, CoreDefinitionId, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2028,10 +2319,14 @@ update_core_definition(Client, CoreDefinitionId, Input0, Options) ->
 %% @doc Updates a device definition.
 update_device_definition(Client, DeviceDefinitionId, Input) ->
     update_device_definition(Client, DeviceDefinitionId, Input, []).
-update_device_definition(Client, DeviceDefinitionId, Input0, Options) ->
+update_device_definition(Client, DeviceDefinitionId, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2044,10 +2339,14 @@ update_device_definition(Client, DeviceDefinitionId, Input0, Options) ->
 %% @doc Updates a Lambda function definition.
 update_function_definition(Client, FunctionDefinitionId, Input) ->
     update_function_definition(Client, FunctionDefinitionId, Input, []).
-update_function_definition(Client, FunctionDefinitionId, Input0, Options) ->
+update_function_definition(Client, FunctionDefinitionId, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2060,10 +2359,14 @@ update_function_definition(Client, FunctionDefinitionId, Input0, Options) ->
 %% @doc Updates a group.
 update_group(Client, GroupId, Input) ->
     update_group(Client, GroupId, Input, []).
-update_group(Client, GroupId, Input0, Options) ->
+update_group(Client, GroupId, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2076,10 +2379,14 @@ update_group(Client, GroupId, Input0, Options) ->
 %% @doc Updates the Certificate expiry time for a group.
 update_group_certificate_configuration(Client, GroupId, Input) ->
     update_group_certificate_configuration(Client, GroupId, Input, []).
-update_group_certificate_configuration(Client, GroupId, Input0, Options) ->
+update_group_certificate_configuration(Client, GroupId, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/certificateauthorities/configuration/expiry"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2092,10 +2399,14 @@ update_group_certificate_configuration(Client, GroupId, Input0, Options) ->
 %% @doc Updates a logger definition.
 update_logger_definition(Client, LoggerDefinitionId, Input) ->
     update_logger_definition(Client, LoggerDefinitionId, Input, []).
-update_logger_definition(Client, LoggerDefinitionId, Input0, Options) ->
+update_logger_definition(Client, LoggerDefinitionId, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2108,10 +2419,14 @@ update_logger_definition(Client, LoggerDefinitionId, Input0, Options) ->
 %% @doc Updates a resource definition.
 update_resource_definition(Client, ResourceDefinitionId, Input) ->
     update_resource_definition(Client, ResourceDefinitionId, Input, []).
-update_resource_definition(Client, ResourceDefinitionId, Input0, Options) ->
+update_resource_definition(Client, ResourceDefinitionId, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2124,10 +2439,14 @@ update_resource_definition(Client, ResourceDefinitionId, Input0, Options) ->
 %% @doc Updates a subscription definition.
 update_subscription_definition(Client, SubscriptionDefinitionId, Input) ->
     update_subscription_definition(Client, SubscriptionDefinitionId, Input, []).
-update_subscription_definition(Client, SubscriptionDefinitionId, Input0, Options) ->
+update_subscription_definition(Client, SubscriptionDefinitionId, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2140,10 +2459,14 @@ update_subscription_definition(Client, SubscriptionDefinitionId, Input0, Options
 %% @doc Updates the runtime configuration of a thing.
 update_thing_runtime_configuration(Client, ThingName, Input) ->
     update_thing_runtime_configuration(Client, ThingName, Input, []).
-update_thing_runtime_configuration(Client, ThingName, Input0, Options) ->
+update_thing_runtime_configuration(Client, ThingName, Input0, Options0) ->
     Method = put,
     Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/runtimeconfig"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2175,19 +2498,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -2197,14 +2521,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

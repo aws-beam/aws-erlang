@@ -94,10 +94,14 @@
 %% create the first application version in the same call.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
-create_application(Client, Input0, Options) ->
+create_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/applications"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -110,10 +114,14 @@ create_application(Client, Input0, Options) ->
 %% @doc Creates an application version.
 create_application_version(Client, ApplicationId, SemanticVersion, Input) ->
     create_application_version(Client, ApplicationId, SemanticVersion, Input, []).
-create_application_version(Client, ApplicationId, SemanticVersion, Input0, Options) ->
+create_application_version(Client, ApplicationId, SemanticVersion, Input0, Options0) ->
     Method = put,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/versions/", aws_util:encode_uri(SemanticVersion), ""],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -126,10 +134,14 @@ create_application_version(Client, ApplicationId, SemanticVersion, Input0, Optio
 %% @doc Creates an AWS CloudFormation change set for the given application.
 create_cloud_formation_change_set(Client, ApplicationId, Input) ->
     create_cloud_formation_change_set(Client, ApplicationId, Input, []).
-create_cloud_formation_change_set(Client, ApplicationId, Input0, Options) ->
+create_cloud_formation_change_set(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/changesets"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -142,10 +154,14 @@ create_cloud_formation_change_set(Client, ApplicationId, Input0, Options) ->
 %% @doc Creates an AWS CloudFormation template.
 create_cloud_formation_template(Client, ApplicationId, Input) ->
     create_cloud_formation_template(Client, ApplicationId, Input, []).
-create_cloud_formation_template(Client, ApplicationId, Input0, Options) ->
+create_cloud_formation_template(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/templates"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -158,10 +174,14 @@ create_cloud_formation_template(Client, ApplicationId, Input0, Options) ->
 %% @doc Deletes the specified application.
 delete_application(Client, ApplicationId, Input) ->
     delete_application(Client, ApplicationId, Input, []).
-delete_application(Client, ApplicationId, Input0, Options) ->
+delete_application(Client, ApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -180,10 +200,13 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application(Client, ApplicationId, QueryMap, HeadersMap, []).
 
-get_application(Client, ApplicationId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -204,10 +227,13 @@ get_application_policy(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_application_policy(Client, ApplicationId, QueryMap, HeadersMap, []).
 
-get_application_policy(Client, ApplicationId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_application_policy(Client, ApplicationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/policy"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -224,10 +250,13 @@ get_cloud_formation_template(Client, ApplicationId, TemplateId, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cloud_formation_template(Client, ApplicationId, TemplateId, QueryMap, HeadersMap, []).
 
-get_cloud_formation_template(Client, ApplicationId, TemplateId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_cloud_formation_template(Client, ApplicationId, TemplateId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/templates/", aws_util:encode_uri(TemplateId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -245,10 +274,13 @@ list_application_dependencies(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_application_dependencies(Client, ApplicationId, QueryMap, HeadersMap, []).
 
-list_application_dependencies(Client, ApplicationId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_application_dependencies(Client, ApplicationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/dependencies"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -271,10 +303,13 @@ list_application_versions(Client, ApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_application_versions(Client, ApplicationId, QueryMap, HeadersMap, []).
 
-list_application_versions(Client, ApplicationId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_application_versions(Client, ApplicationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -296,10 +331,13 @@ list_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_applications(Client, QueryMap, HeadersMap, []).
 
-list_applications(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_applications(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -320,10 +358,14 @@ list_applications(Client, QueryMap, HeadersMap, Options)
 %% .
 put_application_policy(Client, ApplicationId, Input) ->
     put_application_policy(Client, ApplicationId, Input, []).
-put_application_policy(Client, ApplicationId, Input0, Options) ->
+put_application_policy(Client, ApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/policy"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -338,10 +380,14 @@ put_application_policy(Client, ApplicationId, Input0, Options) ->
 %% This operation can be called only from the organization's master account.
 unshare_application(Client, ApplicationId, Input) ->
     unshare_application(Client, ApplicationId, Input, []).
-unshare_application(Client, ApplicationId, Input0, Options) ->
+unshare_application(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/unshare"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -354,10 +400,14 @@ unshare_application(Client, ApplicationId, Input0, Options) ->
 %% @doc Updates the specified application.
 update_application(Client, ApplicationId, Input) ->
     update_application(Client, ApplicationId, Input, []).
-update_application(Client, ApplicationId, Input0, Options) ->
+update_application(Client, ApplicationId, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -389,19 +439,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -411,14 +462,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

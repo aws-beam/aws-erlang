@@ -114,10 +114,14 @@
 %% link.
 associate_customer_gateway(Client, GlobalNetworkId, Input) ->
     associate_customer_gateway(Client, GlobalNetworkId, Input, []).
-associate_customer_gateway(Client, GlobalNetworkId, Input0, Options) ->
+associate_customer_gateway(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/customer-gateway-associations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -134,10 +138,14 @@ associate_customer_gateway(Client, GlobalNetworkId, Input0, Options) ->
 %% network and the same site.
 associate_link(Client, GlobalNetworkId, Input) ->
     associate_link(Client, GlobalNetworkId, Input, []).
-associate_link(Client, GlobalNetworkId, Input0, Options) ->
+associate_link(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/link-associations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -159,10 +167,14 @@ associate_link(Client, GlobalNetworkId, Input0, Options) ->
 %% device and link.
 associate_transit_gateway_connect_peer(Client, GlobalNetworkId, Input) ->
     associate_transit_gateway_connect_peer(Client, GlobalNetworkId, Input, []).
-associate_transit_gateway_connect_peer(Client, GlobalNetworkId, Input0, Options) ->
+associate_transit_gateway_connect_peer(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-connect-peer-associations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -179,10 +191,14 @@ associate_transit_gateway_connect_peer(Client, GlobalNetworkId, Input0, Options)
 %% another physical appliance in an on-premises network.
 create_connection(Client, GlobalNetworkId, Input) ->
     create_connection(Client, GlobalNetworkId, Input, []).
-create_connection(Client, GlobalNetworkId, Input0, Options) ->
+create_connection(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -198,10 +214,14 @@ create_connection(Client, GlobalNetworkId, Input0, Options) ->
 %% used for visualization in the Network Manager console.
 create_device(Client, GlobalNetworkId, Input) ->
     create_device(Client, GlobalNetworkId, Input, []).
-create_device(Client, GlobalNetworkId, Input0, Options) ->
+create_device(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/devices"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -214,10 +234,14 @@ create_device(Client, GlobalNetworkId, Input0, Options) ->
 %% @doc Creates a new, empty global network.
 create_global_network(Client, Input) ->
     create_global_network(Client, Input, []).
-create_global_network(Client, Input0, Options) ->
+create_global_network(Client, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -230,10 +254,14 @@ create_global_network(Client, Input0, Options) ->
 %% @doc Creates a new link for a specified site.
 create_link(Client, GlobalNetworkId, Input) ->
     create_link(Client, GlobalNetworkId, Input, []).
-create_link(Client, GlobalNetworkId, Input0, Options) ->
+create_link(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/links"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -246,10 +274,14 @@ create_link(Client, GlobalNetworkId, Input0, Options) ->
 %% @doc Creates a new site in a global network.
 create_site(Client, GlobalNetworkId, Input) ->
     create_site(Client, GlobalNetworkId, Input, []).
-create_site(Client, GlobalNetworkId, Input0, Options) ->
+create_site(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/sites"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -262,10 +294,14 @@ create_site(Client, GlobalNetworkId, Input0, Options) ->
 %% @doc Deletes the specified connection in your global network.
 delete_connection(Client, ConnectionId, GlobalNetworkId, Input) ->
     delete_connection(Client, ConnectionId, GlobalNetworkId, Input, []).
-delete_connection(Client, ConnectionId, GlobalNetworkId, Input0, Options) ->
+delete_connection(Client, ConnectionId, GlobalNetworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections/", aws_util:encode_uri(ConnectionId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -281,10 +317,14 @@ delete_connection(Client, ConnectionId, GlobalNetworkId, Input0, Options) ->
 %% gateways.
 delete_device(Client, DeviceId, GlobalNetworkId, Input) ->
     delete_device(Client, DeviceId, GlobalNetworkId, Input, []).
-delete_device(Client, DeviceId, GlobalNetworkId, Input0, Options) ->
+delete_device(Client, DeviceId, GlobalNetworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/devices/", aws_util:encode_uri(DeviceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -300,10 +340,14 @@ delete_device(Client, DeviceId, GlobalNetworkId, Input0, Options) ->
 %% sites) and deregister all transit gateways.
 delete_global_network(Client, GlobalNetworkId, Input) ->
     delete_global_network(Client, GlobalNetworkId, Input, []).
-delete_global_network(Client, GlobalNetworkId, Input0, Options) ->
+delete_global_network(Client, GlobalNetworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -319,10 +363,14 @@ delete_global_network(Client, GlobalNetworkId, Input0, Options) ->
 %% gateways.
 delete_link(Client, GlobalNetworkId, LinkId, Input) ->
     delete_link(Client, GlobalNetworkId, LinkId, Input, []).
-delete_link(Client, GlobalNetworkId, LinkId, Input0, Options) ->
+delete_link(Client, GlobalNetworkId, LinkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/links/", aws_util:encode_uri(LinkId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -337,10 +385,14 @@ delete_link(Client, GlobalNetworkId, LinkId, Input0, Options) ->
 %% The site cannot be associated with any device or link.
 delete_site(Client, GlobalNetworkId, SiteId, Input) ->
     delete_site(Client, GlobalNetworkId, SiteId, Input, []).
-delete_site(Client, GlobalNetworkId, SiteId, Input0, Options) ->
+delete_site(Client, GlobalNetworkId, SiteId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/sites/", aws_util:encode_uri(SiteId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -356,10 +408,14 @@ delete_site(Client, GlobalNetworkId, SiteId, Input0, Options) ->
 %% attachments. This action removes any customer gateway associations.
 deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input) ->
     deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input, []).
-deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input0, Options) ->
+deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-registrations/", aws_util:encode_uri(TransitGatewayArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -383,10 +439,13 @@ describe_global_networks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_global_networks(Client, QueryMap, HeadersMap, []).
 
-describe_global_networks(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_global_networks(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -403,10 +462,14 @@ describe_global_networks(Client, QueryMap, HeadersMap, Options)
 %% @doc Disassociates a customer gateway from a device and a link.
 disassociate_customer_gateway(Client, CustomerGatewayArn, GlobalNetworkId, Input) ->
     disassociate_customer_gateway(Client, CustomerGatewayArn, GlobalNetworkId, Input, []).
-disassociate_customer_gateway(Client, CustomerGatewayArn, GlobalNetworkId, Input0, Options) ->
+disassociate_customer_gateway(Client, CustomerGatewayArn, GlobalNetworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/customer-gateway-associations/", aws_util:encode_uri(CustomerGatewayArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -422,10 +485,14 @@ disassociate_customer_gateway(Client, CustomerGatewayArn, GlobalNetworkId, Input
 %% the link.
 disassociate_link(Client, GlobalNetworkId, Input) ->
     disassociate_link(Client, GlobalNetworkId, Input, []).
-disassociate_link(Client, GlobalNetworkId, Input0, Options) ->
+disassociate_link(Client, GlobalNetworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/link-associations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -440,10 +507,14 @@ disassociate_link(Client, GlobalNetworkId, Input0, Options) ->
 %% @doc Disassociates a transit gateway Connect peer from a device and link.
 disassociate_transit_gateway_connect_peer(Client, GlobalNetworkId, TransitGatewayConnectPeerArn, Input) ->
     disassociate_transit_gateway_connect_peer(Client, GlobalNetworkId, TransitGatewayConnectPeerArn, Input, []).
-disassociate_transit_gateway_connect_peer(Client, GlobalNetworkId, TransitGatewayConnectPeerArn, Input0, Options) ->
+disassociate_transit_gateway_connect_peer(Client, GlobalNetworkId, TransitGatewayConnectPeerArn, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-connect-peer-associations/", aws_util:encode_uri(TransitGatewayConnectPeerArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -463,10 +534,13 @@ get_connections(Client, GlobalNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_connections(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
 
-get_connections(Client, GlobalNetworkId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_connections(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -491,10 +565,13 @@ get_customer_gateway_associations(Client, GlobalNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_customer_gateway_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
 
-get_customer_gateway_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_customer_gateway_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/customer-gateway-associations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -518,10 +595,13 @@ get_devices(Client, GlobalNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_devices(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
 
-get_devices(Client, GlobalNetworkId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_devices(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/devices"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -547,10 +627,13 @@ get_link_associations(Client, GlobalNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_link_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
 
-get_link_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_link_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/link-associations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -578,10 +661,13 @@ get_links(Client, GlobalNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_links(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
 
-get_links(Client, GlobalNetworkId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_links(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/links"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -607,10 +693,13 @@ get_sites(Client, GlobalNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sites(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
 
-get_sites(Client, GlobalNetworkId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_sites(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/sites"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -634,10 +723,13 @@ get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
 
-get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-connect-peer-associations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -661,10 +753,13 @@ get_transit_gateway_registrations(Client, GlobalNetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_transit_gateway_registrations(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
 
-get_transit_gateway_registrations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_transit_gateway_registrations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-registrations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -687,10 +782,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -705,10 +803,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% transit gateway in more than one global network.
 register_transit_gateway(Client, GlobalNetworkId, Input) ->
     register_transit_gateway(Client, GlobalNetworkId, Input, []).
-register_transit_gateway(Client, GlobalNetworkId, Input0, Options) ->
+register_transit_gateway(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-registrations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -721,10 +823,14 @@ register_transit_gateway(Client, GlobalNetworkId, Input0, Options) ->
 %% @doc Tags a specified resource.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -737,10 +843,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Removes tags from a specified resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -756,10 +866,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% To remove information for any of the parameters, specify an empty string.
 update_connection(Client, ConnectionId, GlobalNetworkId, Input) ->
     update_connection(Client, ConnectionId, GlobalNetworkId, Input, []).
-update_connection(Client, ConnectionId, GlobalNetworkId, Input0, Options) ->
+update_connection(Client, ConnectionId, GlobalNetworkId, Input0, Options0) ->
     Method = patch,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections/", aws_util:encode_uri(ConnectionId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -774,10 +888,14 @@ update_connection(Client, ConnectionId, GlobalNetworkId, Input0, Options) ->
 %% To remove information for any of the parameters, specify an empty string.
 update_device(Client, DeviceId, GlobalNetworkId, Input) ->
     update_device(Client, DeviceId, GlobalNetworkId, Input, []).
-update_device(Client, DeviceId, GlobalNetworkId, Input0, Options) ->
+update_device(Client, DeviceId, GlobalNetworkId, Input0, Options0) ->
     Method = patch,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/devices/", aws_util:encode_uri(DeviceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -792,10 +910,14 @@ update_device(Client, DeviceId, GlobalNetworkId, Input0, Options) ->
 %% To remove information for any of the parameters, specify an empty string.
 update_global_network(Client, GlobalNetworkId, Input) ->
     update_global_network(Client, GlobalNetworkId, Input, []).
-update_global_network(Client, GlobalNetworkId, Input0, Options) ->
+update_global_network(Client, GlobalNetworkId, Input0, Options0) ->
     Method = patch,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -810,10 +932,14 @@ update_global_network(Client, GlobalNetworkId, Input0, Options) ->
 %% To remove information for any of the parameters, specify an empty string.
 update_link(Client, GlobalNetworkId, LinkId, Input) ->
     update_link(Client, GlobalNetworkId, LinkId, Input, []).
-update_link(Client, GlobalNetworkId, LinkId, Input0, Options) ->
+update_link(Client, GlobalNetworkId, LinkId, Input0, Options0) ->
     Method = patch,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/links/", aws_util:encode_uri(LinkId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -828,10 +954,14 @@ update_link(Client, GlobalNetworkId, LinkId, Input0, Options) ->
 %% To remove information for any of the parameters, specify an empty string.
 update_site(Client, GlobalNetworkId, SiteId, Input) ->
     update_site(Client, GlobalNetworkId, SiteId, Input, []).
-update_site(Client, GlobalNetworkId, SiteId, Input0, Options) ->
+update_site(Client, GlobalNetworkId, SiteId, Input0, Options0) ->
     Method = patch,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/sites/", aws_util:encode_uri(SiteId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -863,19 +993,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -885,14 +1016,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

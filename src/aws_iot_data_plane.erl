@@ -46,10 +46,14 @@
 %% Guide.
 delete_thing_shadow(Client, ThingName, Input) ->
     delete_thing_shadow(Client, ThingName, Input, []).
-delete_thing_shadow(Client, ThingName, Input0, Options) ->
+delete_thing_shadow(Client, ThingName, Input0, Options0) ->
     Method = delete,
     Path = ["/things/", aws_util:encode_uri(ThingName), "/shadow"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -71,10 +75,13 @@ get_thing_shadow(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_thing_shadow(Client, ThingName, QueryMap, HeadersMap, []).
 
-get_thing_shadow(Client, ThingName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_thing_shadow(Client, ThingName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/shadow"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -95,10 +102,13 @@ list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap, []).
 
-list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/things/shadow/ListNamedShadowsForThing/", aws_util:encode_uri(ThingName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -116,10 +126,14 @@ list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap, Options)
 %% For more information, see HTTP Protocol in the AWS IoT Developer Guide.
 publish(Client, Topic, Input) ->
     publish(Client, Topic, Input, []).
-publish(Client, Topic, Input0, Options) ->
+publish(Client, Topic, Input0, Options0) ->
     Method = post,
     Path = ["/topics/", aws_util:encode_uri(Topic), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -136,10 +150,14 @@ publish(Client, Topic, Input0, Options) ->
 %% Guide.
 update_thing_shadow(Client, ThingName, Input) ->
     update_thing_shadow(Client, ThingName, Input, []).
-update_thing_shadow(Client, ThingName, Input0, Options) ->
+update_thing_shadow(Client, ThingName, Input0, Options0) ->
     Method = post,
     Path = ["/things/", aws_util:encode_uri(ThingName), "/shadow"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -172,19 +190,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -194,14 +213,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

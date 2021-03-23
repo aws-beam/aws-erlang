@@ -91,10 +91,14 @@
 %% Applies only to Hyperledger Fabric.
 create_member(Client, NetworkId, Input) ->
     create_member(Client, NetworkId, Input, []).
-create_member(Client, NetworkId, Input0, Options) ->
+create_member(Client, NetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -109,10 +113,14 @@ create_member(Client, NetworkId, Input0, Options) ->
 %% Applies only to Hyperledger Fabric.
 create_network(Client, Input) ->
     create_network(Client, Input, []).
-create_network(Client, Input0, Options) ->
+create_network(Client, Input0, Options0) ->
     Method = post,
     Path = ["/networks"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -127,10 +135,14 @@ create_network(Client, Input0, Options) ->
 %% Applies to Hyperledger Fabric and Ethereum.
 create_node(Client, NetworkId, Input) ->
     create_node(Client, NetworkId, Input, []).
-create_node(Client, NetworkId, Input0, Options) ->
+create_node(Client, NetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/nodes"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -149,10 +161,14 @@ create_node(Client, NetworkId, Input0, Options) ->
 %% Applies only to Hyperledger Fabric.
 create_proposal(Client, NetworkId, Input) ->
     create_proposal(Client, NetworkId, Input, []).
-create_proposal(Client, NetworkId, Input0, Options) ->
+create_proposal(Client, NetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/proposals"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -175,10 +191,14 @@ create_proposal(Client, NetworkId, Input0, Options) ->
 %% Applies only to Hyperledger Fabric.
 delete_member(Client, MemberId, NetworkId, Input) ->
     delete_member(Client, MemberId, NetworkId, Input, []).
-delete_member(Client, MemberId, NetworkId, Input0, Options) ->
+delete_member(Client, MemberId, NetworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members/", aws_util:encode_uri(MemberId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -195,10 +215,14 @@ delete_member(Client, MemberId, NetworkId, Input0, Options) ->
 %% Applies to Hyperledger Fabric and Ethereum.
 delete_node(Client, NetworkId, NodeId, Input) ->
     delete_node(Client, NetworkId, NodeId, Input, []).
-delete_node(Client, NetworkId, NodeId, Input0, Options) ->
+delete_node(Client, NetworkId, NodeId, Input0, Options0) ->
     Method = delete,
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/nodes/", aws_util:encode_uri(NodeId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -220,10 +244,13 @@ get_member(Client, MemberId, NetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_member(Client, MemberId, NetworkId, QueryMap, HeadersMap, []).
 
-get_member(Client, MemberId, NetworkId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_member(Client, MemberId, NetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members/", aws_util:encode_uri(MemberId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -242,10 +269,13 @@ get_network(Client, NetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_network(Client, NetworkId, QueryMap, HeadersMap, []).
 
-get_network(Client, NetworkId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_network(Client, NetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -264,10 +294,13 @@ get_node(Client, NetworkId, NodeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_node(Client, NetworkId, NodeId, QueryMap, HeadersMap, []).
 
-get_node(Client, NetworkId, NodeId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_node(Client, NetworkId, NodeId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/nodes/", aws_util:encode_uri(NodeId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -290,10 +323,13 @@ get_proposal(Client, NetworkId, ProposalId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_proposal(Client, NetworkId, ProposalId, QueryMap, HeadersMap, []).
 
-get_proposal(Client, NetworkId, ProposalId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_proposal(Client, NetworkId, ProposalId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/proposals/", aws_util:encode_uri(ProposalId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -312,10 +348,13 @@ list_invitations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_invitations(Client, QueryMap, HeadersMap, []).
 
-list_invitations(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_invitations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/invitations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -340,10 +379,13 @@ list_members(Client, NetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_members(Client, NetworkId, QueryMap, HeadersMap, []).
 
-list_members(Client, NetworkId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_members(Client, NetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -371,10 +413,13 @@ list_networks(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_networks(Client, QueryMap, HeadersMap, []).
 
-list_networks(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_networks(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/networks"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -401,10 +446,13 @@ list_nodes(Client, NetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_nodes(Client, NetworkId, QueryMap, HeadersMap, []).
 
-list_nodes(Client, NetworkId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_nodes(Client, NetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/nodes"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -432,10 +480,13 @@ list_proposal_votes(Client, NetworkId, ProposalId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_proposal_votes(Client, NetworkId, ProposalId, QueryMap, HeadersMap, []).
 
-list_proposal_votes(Client, NetworkId, ProposalId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_proposal_votes(Client, NetworkId, ProposalId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/proposals/", aws_util:encode_uri(ProposalId), "/votes"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -459,10 +510,13 @@ list_proposals(Client, NetworkId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_proposals(Client, NetworkId, QueryMap, HeadersMap, []).
 
-list_proposals(Client, NetworkId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_proposals(Client, NetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/proposals"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -490,10 +544,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -509,10 +566,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% Applies only to Hyperledger Fabric.
 reject_invitation(Client, InvitationId, Input) ->
     reject_invitation(Client, InvitationId, Input, []).
-reject_invitation(Client, InvitationId, Input0, Options) ->
+reject_invitation(Client, InvitationId, Input0, Options0) ->
     Method = delete,
     Path = ["/invitations/", aws_util:encode_uri(InvitationId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -538,10 +599,14 @@ reject_invitation(Client, InvitationId, Input0, Options) ->
 %% Amazon Managed Blockchain Hyperledger Fabric Developer Guide.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -559,10 +624,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% Amazon Managed Blockchain Hyperledger Fabric Developer Guide.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -578,10 +647,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% Applies only to Hyperledger Fabric.
 update_member(Client, MemberId, NetworkId, Input) ->
     update_member(Client, MemberId, NetworkId, Input, []).
-update_member(Client, MemberId, NetworkId, Input0, Options) ->
+update_member(Client, MemberId, NetworkId, Input0, Options0) ->
     Method = patch,
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/members/", aws_util:encode_uri(MemberId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -596,10 +669,14 @@ update_member(Client, MemberId, NetworkId, Input0, Options) ->
 %% Applies only to Hyperledger Fabric.
 update_node(Client, NetworkId, NodeId, Input) ->
     update_node(Client, NetworkId, NodeId, Input, []).
-update_node(Client, NetworkId, NodeId, Input0, Options) ->
+update_node(Client, NetworkId, NodeId, Input0, Options0) ->
     Method = patch,
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/nodes/", aws_util:encode_uri(NodeId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -617,10 +694,14 @@ update_node(Client, NetworkId, NodeId, Input0, Options) ->
 %% Applies only to Hyperledger Fabric.
 vote_on_proposal(Client, NetworkId, ProposalId, Input) ->
     vote_on_proposal(Client, NetworkId, ProposalId, Input, []).
-vote_on_proposal(Client, NetworkId, ProposalId, Input0, Options) ->
+vote_on_proposal(Client, NetworkId, ProposalId, Input0, Options0) ->
     Method = post,
     Path = ["/networks/", aws_util:encode_uri(NetworkId), "/proposals/", aws_util:encode_uri(ProposalId), "/votes"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -652,19 +733,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -674,14 +756,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

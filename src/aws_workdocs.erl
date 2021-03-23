@@ -149,10 +149,14 @@
 %% the document version, or fails to do so.
 abort_document_version_upload(Client, DocumentId, VersionId, Input) ->
     abort_document_version_upload(Client, DocumentId, VersionId, Input, []).
-abort_document_version_upload(Client, DocumentId, VersionId, Input0, Options) ->
+abort_document_version_upload(Client, DocumentId, VersionId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -169,10 +173,14 @@ abort_document_version_upload(Client, DocumentId, VersionId, Input0, Options) ->
 %% Only active users can access Amazon WorkDocs.
 activate_user(Client, UserId, Input) ->
     activate_user(Client, UserId, Input, []).
-activate_user(Client, UserId, Input0, Options) ->
+activate_user(Client, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/users/", aws_util:encode_uri(UserId), "/activation"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -190,10 +198,14 @@ activate_user(Client, UserId, Input0, Options) ->
 %% different permissions.
 add_resource_permissions(Client, ResourceId, Input) ->
     add_resource_permissions(Client, ResourceId, Input, []).
-add_resource_permissions(Client, ResourceId, Input0, Options) ->
+add_resource_permissions(Client, ResourceId, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/permissions"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -208,10 +220,14 @@ add_resource_permissions(Client, ResourceId, Input0, Options) ->
 %% @doc Adds a new comment to the specified document version.
 create_comment(Client, DocumentId, VersionId, Input) ->
     create_comment(Client, DocumentId, VersionId, Input, []).
-create_comment(Client, DocumentId, VersionId, Input0, Options) ->
+create_comment(Client, DocumentId, VersionId, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), "/comment"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -227,10 +243,14 @@ create_comment(Client, DocumentId, VersionId, Input0, Options) ->
 %% folder, document, or version).
 create_custom_metadata(Client, ResourceId, Input) ->
     create_custom_metadata(Client, ResourceId, Input, []).
-create_custom_metadata(Client, ResourceId, Input0, Options) ->
+create_custom_metadata(Client, ResourceId, Input0, Options0) ->
     Method = put,
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/customMetadata"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -246,10 +266,14 @@ create_custom_metadata(Client, ResourceId, Input0, Options) ->
 %% @doc Creates a folder with the specified name and parent folder.
 create_folder(Client, Input) ->
     create_folder(Client, Input, []).
-create_folder(Client, Input0, Options) ->
+create_folder(Client, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/folders"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -265,10 +289,14 @@ create_folder(Client, Input0, Options) ->
 %% or folder)
 create_labels(Client, ResourceId, Input) ->
     create_labels(Client, ResourceId, Input, []).
-create_labels(Client, ResourceId, Input0, Options) ->
+create_labels(Client, ResourceId, Input0, Options0) ->
     Method = put,
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/labels"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -289,10 +317,14 @@ create_labels(Client, ResourceId, Input0, Options) ->
 %% WorkDocs Developer Guide.
 create_notification_subscription(Client, OrganizationId, Input) ->
     create_notification_subscription(Client, OrganizationId, Input, []).
-create_notification_subscription(Client, OrganizationId, Input0, Options) ->
+create_notification_subscription(Client, OrganizationId, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/organizations/", aws_util:encode_uri(OrganizationId), "/subscriptions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -308,10 +340,14 @@ create_notification_subscription(Client, OrganizationId, Input0, Options) ->
 %% Amazon WorkDocs.
 create_user(Client, Input) ->
     create_user(Client, Input, []).
-create_user(Client, Input0, Options) ->
+create_user(Client, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/users"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -327,10 +363,14 @@ create_user(Client, Input0, Options) ->
 %% Amazon WorkDocs.
 deactivate_user(Client, UserId, Input) ->
     deactivate_user(Client, UserId, Input, []).
-deactivate_user(Client, UserId, Input0, Options) ->
+deactivate_user(Client, UserId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/users/", aws_util:encode_uri(UserId), "/activation"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -345,10 +385,14 @@ deactivate_user(Client, UserId, Input0, Options) ->
 %% @doc Deletes the specified comment from the document version.
 delete_comment(Client, CommentId, DocumentId, VersionId, Input) ->
     delete_comment(Client, CommentId, DocumentId, VersionId, Input, []).
-delete_comment(Client, CommentId, DocumentId, VersionId, Input0, Options) ->
+delete_comment(Client, CommentId, DocumentId, VersionId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), "/comment/", aws_util:encode_uri(CommentId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -363,10 +407,14 @@ delete_comment(Client, CommentId, DocumentId, VersionId, Input0, Options) ->
 %% @doc Deletes custom metadata from the specified resource.
 delete_custom_metadata(Client, ResourceId, Input) ->
     delete_custom_metadata(Client, ResourceId, Input, []).
-delete_custom_metadata(Client, ResourceId, Input0, Options) ->
+delete_custom_metadata(Client, ResourceId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/customMetadata"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -385,10 +433,14 @@ delete_custom_metadata(Client, ResourceId, Input0, Options) ->
 %% metadata.
 delete_document(Client, DocumentId, Input) ->
     delete_document(Client, DocumentId, Input, []).
-delete_document(Client, DocumentId, Input0, Options) ->
+delete_document(Client, DocumentId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -403,10 +455,14 @@ delete_document(Client, DocumentId, Input0, Options) ->
 %% @doc Permanently deletes the specified folder and its contents.
 delete_folder(Client, FolderId, Input) ->
     delete_folder(Client, FolderId, Input, []).
-delete_folder(Client, FolderId, Input0, Options) ->
+delete_folder(Client, FolderId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -421,10 +477,14 @@ delete_folder(Client, FolderId, Input0, Options) ->
 %% @doc Deletes the contents of the specified folder.
 delete_folder_contents(Client, FolderId, Input) ->
     delete_folder_contents(Client, FolderId, Input, []).
-delete_folder_contents(Client, FolderId, Input0, Options) ->
+delete_folder_contents(Client, FolderId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), "/contents"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -439,10 +499,14 @@ delete_folder_contents(Client, FolderId, Input0, Options) ->
 %% @doc Deletes the specified list of labels from a resource.
 delete_labels(Client, ResourceId, Input) ->
     delete_labels(Client, ResourceId, Input, []).
-delete_labels(Client, ResourceId, Input0, Options) ->
+delete_labels(Client, ResourceId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/labels"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -459,10 +523,14 @@ delete_labels(Client, ResourceId, Input0, Options) ->
 %% @doc Deletes the specified subscription from the specified organization.
 delete_notification_subscription(Client, OrganizationId, SubscriptionId, Input) ->
     delete_notification_subscription(Client, OrganizationId, SubscriptionId, Input, []).
-delete_notification_subscription(Client, OrganizationId, SubscriptionId, Input0, Options) ->
+delete_notification_subscription(Client, OrganizationId, SubscriptionId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/organizations/", aws_util:encode_uri(OrganizationId), "/subscriptions/", aws_util:encode_uri(SubscriptionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -476,10 +544,14 @@ delete_notification_subscription(Client, OrganizationId, SubscriptionId, Input0,
 %% directory.
 delete_user(Client, UserId, Input) ->
     delete_user(Client, UserId, Input, []).
-delete_user(Client, UserId, Input0, Options) ->
+delete_user(Client, UserId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/users/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -500,10 +572,13 @@ describe_activities(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_activities(Client, QueryMap, HeadersMap, []).
 
-describe_activities(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_activities(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/activities"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -536,10 +611,13 @@ describe_comments(Client, DocumentId, VersionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_comments(Client, DocumentId, VersionId, QueryMap, HeadersMap, []).
 
-describe_comments(Client, DocumentId, VersionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_comments(Client, DocumentId, VersionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), "/comments"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -567,10 +645,13 @@ describe_document_versions(Client, DocumentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_document_versions(Client, DocumentId, QueryMap, HeadersMap, []).
 
-describe_document_versions(Client, DocumentId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_document_versions(Client, DocumentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -604,10 +685,13 @@ describe_folder_contents(Client, FolderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_folder_contents(Client, FolderId, QueryMap, HeadersMap, []).
 
-describe_folder_contents(Client, FolderId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_folder_contents(Client, FolderId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), "/contents"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -639,10 +723,13 @@ describe_groups(Client, SearchQuery, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_groups(Client, SearchQuery, QueryMap, HeadersMap, []).
 
-describe_groups(Client, SearchQuery, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_groups(Client, SearchQuery, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/groups"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -670,10 +757,13 @@ describe_notification_subscriptions(Client, OrganizationId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_notification_subscriptions(Client, OrganizationId, QueryMap, HeadersMap, []).
 
-describe_notification_subscriptions(Client, OrganizationId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_notification_subscriptions(Client, OrganizationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/organizations/", aws_util:encode_uri(OrganizationId), "/subscriptions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -695,10 +785,13 @@ describe_resource_permissions(Client, ResourceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_resource_permissions(Client, ResourceId, QueryMap, HeadersMap, []).
 
-describe_resource_permissions(Client, ResourceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_resource_permissions(Client, ResourceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/permissions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -735,10 +828,13 @@ describe_root_folders(Client, AuthenticationToken, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_root_folders(Client, AuthenticationToken, QueryMap, HeadersMap, []).
 
-describe_root_folders(Client, AuthenticationToken, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_root_folders(Client, AuthenticationToken, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/me/root"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -771,10 +867,13 @@ describe_users(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_users(Client, QueryMap, HeadersMap, []).
 
-describe_users(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_users(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/users"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -815,10 +914,13 @@ get_current_user(Client, AuthenticationToken, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_current_user(Client, AuthenticationToken, QueryMap, HeadersMap, []).
 
-get_current_user(Client, AuthenticationToken, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_current_user(Client, AuthenticationToken, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/me"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -839,10 +941,13 @@ get_document(Client, DocumentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_document(Client, DocumentId, QueryMap, HeadersMap, []).
 
-get_document(Client, DocumentId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_document(Client, DocumentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -873,10 +978,13 @@ get_document_path(Client, DocumentId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_document_path(Client, DocumentId, QueryMap, HeadersMap, []).
 
-get_document_path(Client, DocumentId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_document_path(Client, DocumentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/path"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -903,10 +1011,13 @@ get_document_version(Client, DocumentId, VersionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_document_version(Client, DocumentId, VersionId, QueryMap, HeadersMap, []).
 
-get_document_version(Client, DocumentId, VersionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_document_version(Client, DocumentId, VersionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -932,10 +1043,13 @@ get_folder(Client, FolderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_folder(Client, FolderId, QueryMap, HeadersMap, []).
 
-get_folder(Client, FolderId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_folder(Client, FolderId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -966,10 +1080,13 @@ get_folder_path(Client, FolderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_folder_path(Client, FolderId, QueryMap, HeadersMap, []).
 
-get_folder_path(Client, FolderId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_folder_path(Client, FolderId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), "/path"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -998,10 +1115,13 @@ get_resources(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resources(Client, QueryMap, HeadersMap, []).
 
-get_resources(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_resources(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/resources"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -1031,10 +1151,14 @@ get_resources(Client, QueryMap, HeadersMap, Options)
 %% To cancel the document upload, call `AbortDocumentVersionUpload'.
 initiate_document_version_upload(Client, Input) ->
     initiate_document_version_upload(Client, Input, []).
-initiate_document_version_upload(Client, Input0, Options) ->
+initiate_document_version_upload(Client, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/documents"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1049,10 +1173,14 @@ initiate_document_version_upload(Client, Input0, Options) ->
 %% @doc Removes all the permissions from the specified resource.
 remove_all_resource_permissions(Client, ResourceId, Input) ->
     remove_all_resource_permissions(Client, ResourceId, Input, []).
-remove_all_resource_permissions(Client, ResourceId, Input0, Options) ->
+remove_all_resource_permissions(Client, ResourceId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/permissions"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1068,10 +1196,14 @@ remove_all_resource_permissions(Client, ResourceId, Input0, Options) ->
 %% resource.
 remove_resource_permission(Client, PrincipalId, ResourceId, Input) ->
     remove_resource_permission(Client, PrincipalId, ResourceId, Input, []).
-remove_resource_permission(Client, PrincipalId, ResourceId, Input0, Options) ->
+remove_resource_permission(Client, PrincipalId, ResourceId, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/permissions/", aws_util:encode_uri(PrincipalId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1090,10 +1222,14 @@ remove_resource_permission(Client, PrincipalId, ResourceId, Input0, Options) ->
 %% applicable.
 update_document(Client, DocumentId, Input) ->
     update_document(Client, DocumentId, Input, []).
-update_document(Client, DocumentId, Input0, Options) ->
+update_document(Client, DocumentId, Input0, Options0) ->
     Method = patch,
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1112,10 +1248,14 @@ update_document(Client, DocumentId, Input0, Options) ->
 %% an S3-presigned URL returned by `InitiateDocumentVersionUpload'.
 update_document_version(Client, DocumentId, VersionId, Input) ->
     update_document_version(Client, DocumentId, VersionId, Input, []).
-update_document_version(Client, DocumentId, VersionId, Input0, Options) ->
+update_document_version(Client, DocumentId, VersionId, Input0, Options0) ->
     Method = patch,
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1133,10 +1273,14 @@ update_document_version(Client, DocumentId, VersionId, Input0, Options) ->
 %% applicable.
 update_folder(Client, FolderId, Input) ->
     update_folder(Client, FolderId, Input, []).
-update_folder(Client, FolderId, Input0, Options) ->
+update_folder(Client, FolderId, Input0, Options0) ->
     Method = patch,
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1152,10 +1296,14 @@ update_folder(Client, FolderId, Input0, Options) ->
 %% revokes administrative privileges to the Amazon WorkDocs site.
 update_user(Client, UserId, Input) ->
     update_user(Client, UserId, Input, []).
-update_user(Client, UserId, Input0, Options) ->
+update_user(Client, UserId, Input0, Options0) ->
     Method = patch,
     Path = ["/api/v1/users/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1189,19 +1337,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -1211,14 +1360,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

@@ -56,10 +56,14 @@
 %% column will be left blank for the new rows.
 batch_create_table_rows(Client, TableId, WorkbookId, Input) ->
     batch_create_table_rows(Client, TableId, WorkbookId, Input, []).
-batch_create_table_rows(Client, TableId, WorkbookId, Input0, Options) ->
+batch_create_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/batchcreate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -76,10 +80,14 @@ batch_create_table_rows(Client, TableId, WorkbookId, Input0, Options) ->
 %% table.
 batch_delete_table_rows(Client, TableId, WorkbookId, Input) ->
     batch_delete_table_rows(Client, TableId, WorkbookId, Input, []).
-batch_delete_table_rows(Client, TableId, WorkbookId, Input0, Options) ->
+batch_delete_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/batchdelete"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -99,10 +107,14 @@ batch_delete_table_rows(Client, TableId, WorkbookId, Input0, Options) ->
 %% empty string ("").
 batch_update_table_rows(Client, TableId, WorkbookId, Input) ->
     batch_update_table_rows(Client, TableId, WorkbookId, Input, []).
-batch_update_table_rows(Client, TableId, WorkbookId, Input0, Options) ->
+batch_update_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/batchupdate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -129,10 +141,14 @@ batch_update_table_rows(Client, TableId, WorkbookId, Input0, Options) ->
 %% to set the value as an empty string ("").
 batch_upsert_table_rows(Client, TableId, WorkbookId, Input) ->
     batch_upsert_table_rows(Client, TableId, WorkbookId, Input, []).
-batch_upsert_table_rows(Client, TableId, WorkbookId, Input0, Options) ->
+batch_upsert_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/batchupsert"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -152,10 +168,13 @@ describe_table_data_import_job(Client, JobId, TableId, WorkbookId, QueryMap, Hea
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_table_data_import_job(Client, JobId, TableId, WorkbookId, QueryMap, HeadersMap, []).
 
-describe_table_data_import_job(Client, JobId, TableId, WorkbookId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_table_data_import_job(Client, JobId, TableId, WorkbookId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/import/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -170,10 +189,14 @@ describe_table_data_import_job(Client, JobId, TableId, WorkbookId, QueryMap, Hea
 %% otherwise affect what will be displayed on the screen.
 get_screen_data(Client, Input) ->
     get_screen_data(Client, Input, []).
-get_screen_data(Client, Input0, Options) ->
+get_screen_data(Client, Input0, Options0) ->
     Method = post,
     Path = ["/screendata"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -191,10 +214,14 @@ get_screen_data(Client, Input0, Options) ->
 %% interactions to write, update or delete data in the workbook.
 invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId, Input) ->
     invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId, Input, []).
-invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId, Input0, Options) ->
+invoke_screen_automation(Client, AppId, ScreenAutomationId, ScreenId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/apps/", aws_util:encode_uri(AppId), "/screens/", aws_util:encode_uri(ScreenId), "/automations/", aws_util:encode_uri(ScreenAutomationId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -214,10 +241,13 @@ list_table_columns(Client, TableId, WorkbookId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_table_columns(Client, TableId, WorkbookId, QueryMap, HeadersMap, []).
 
-list_table_columns(Client, TableId, WorkbookId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_table_columns(Client, TableId, WorkbookId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/columns"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -233,10 +263,14 @@ list_table_columns(Client, TableId, WorkbookId, QueryMap, HeadersMap, Options)
 %% in a table in a workbook.
 list_table_rows(Client, TableId, WorkbookId, Input) ->
     list_table_rows(Client, TableId, WorkbookId, Input, []).
-list_table_rows(Client, TableId, WorkbookId, Input0, Options) ->
+list_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/list"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -256,10 +290,13 @@ list_tables(Client, WorkbookId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tables(Client, WorkbookId, QueryMap, HeadersMap, []).
 
-list_tables(Client, WorkbookId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tables(Client, WorkbookId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -276,10 +313,14 @@ list_tables(Client, WorkbookId, QueryMap, HeadersMap, Options)
 %% for specific rows in a table.
 query_table_rows(Client, TableId, WorkbookId, Input) ->
     query_table_rows(Client, TableId, WorkbookId, Input, []).
-query_table_rows(Client, TableId, WorkbookId, Input0, Options) ->
+query_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(TableId), "/rows/query"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -297,10 +338,14 @@ query_table_rows(Client, TableId, WorkbookId, Input0, Options) ->
 %% DescribeTableDataImportJob API.
 start_table_data_import_job(Client, DestinationTableId, WorkbookId, Input) ->
     start_table_data_import_job(Client, DestinationTableId, WorkbookId, Input, []).
-start_table_data_import_job(Client, DestinationTableId, WorkbookId, Input0, Options) ->
+start_table_data_import_job(Client, DestinationTableId, WorkbookId, Input0, Options0) ->
     Method = post,
     Path = ["/workbooks/", aws_util:encode_uri(WorkbookId), "/tables/", aws_util:encode_uri(DestinationTableId), "/import"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -332,19 +377,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -354,14 +400,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

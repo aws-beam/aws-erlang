@@ -89,10 +89,14 @@
 %% @doc Creates a discoverer.
 create_discoverer(Client, Input) ->
     create_discoverer(Client, Input, []).
-create_discoverer(Client, Input0, Options) ->
+create_discoverer(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/discoverers"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -105,10 +109,14 @@ create_discoverer(Client, Input0, Options) ->
 %% @doc Creates a registry.
 create_registry(Client, RegistryName, Input) ->
     create_registry(Client, RegistryName, Input, []).
-create_registry(Client, RegistryName, Input0, Options) ->
+create_registry(Client, RegistryName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), ""],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -123,10 +131,14 @@ create_registry(Client, RegistryName, Input0, Options) ->
 %% Inactive schemas will be deleted after two years.
 create_schema(Client, RegistryName, SchemaName, Input) ->
     create_schema(Client, RegistryName, SchemaName, Input, []).
-create_schema(Client, RegistryName, SchemaName, Input0, Options) ->
+create_schema(Client, RegistryName, SchemaName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), ""],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -139,10 +151,14 @@ create_schema(Client, RegistryName, SchemaName, Input0, Options) ->
 %% @doc Deletes a discoverer.
 delete_discoverer(Client, DiscovererId, Input) ->
     delete_discoverer(Client, DiscovererId, Input, []).
-delete_discoverer(Client, DiscovererId, Input0, Options) ->
+delete_discoverer(Client, DiscovererId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/discoverers/id/", aws_util:encode_uri(DiscovererId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -155,10 +171,14 @@ delete_discoverer(Client, DiscovererId, Input0, Options) ->
 %% @doc Deletes a Registry.
 delete_registry(Client, RegistryName, Input) ->
     delete_registry(Client, RegistryName, Input, []).
-delete_registry(Client, RegistryName, Input0, Options) ->
+delete_registry(Client, RegistryName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -171,10 +191,14 @@ delete_registry(Client, RegistryName, Input0, Options) ->
 %% @doc Delete the resource-based policy attached to the specified registry.
 delete_resource_policy(Client, Input) ->
     delete_resource_policy(Client, Input, []).
-delete_resource_policy(Client, Input0, Options) ->
+delete_resource_policy(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/policy"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -188,10 +212,14 @@ delete_resource_policy(Client, Input0, Options) ->
 %% @doc Delete a schema definition.
 delete_schema(Client, RegistryName, SchemaName, Input) ->
     delete_schema(Client, RegistryName, SchemaName, Input, []).
-delete_schema(Client, RegistryName, SchemaName, Input0, Options) ->
+delete_schema(Client, RegistryName, SchemaName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -204,10 +232,14 @@ delete_schema(Client, RegistryName, SchemaName, Input0, Options) ->
 %% @doc Delete the schema version definition
 delete_schema_version(Client, RegistryName, SchemaName, SchemaVersion, Input) ->
     delete_schema_version(Client, RegistryName, SchemaName, SchemaVersion, Input, []).
-delete_schema_version(Client, RegistryName, SchemaName, SchemaVersion, Input0, Options) ->
+delete_schema_version(Client, RegistryName, SchemaName, SchemaVersion, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), "/version/", aws_util:encode_uri(SchemaVersion), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -226,10 +258,13 @@ describe_code_binding(Client, Language, RegistryName, SchemaName, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_code_binding(Client, Language, RegistryName, SchemaName, QueryMap, HeadersMap, []).
 
-describe_code_binding(Client, Language, RegistryName, SchemaName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_code_binding(Client, Language, RegistryName, SchemaName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), "/language/", aws_util:encode_uri(Language), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -250,10 +285,13 @@ describe_discoverer(Client, DiscovererId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_discoverer(Client, DiscovererId, QueryMap, HeadersMap, []).
 
-describe_discoverer(Client, DiscovererId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_discoverer(Client, DiscovererId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/discoverers/id/", aws_util:encode_uri(DiscovererId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -270,10 +308,13 @@ describe_registry(Client, RegistryName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_registry(Client, RegistryName, QueryMap, HeadersMap, []).
 
-describe_registry(Client, RegistryName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_registry(Client, RegistryName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -290,10 +331,13 @@ describe_schema(Client, RegistryName, SchemaName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_schema(Client, RegistryName, SchemaName, QueryMap, HeadersMap, []).
 
-describe_schema(Client, RegistryName, SchemaName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_schema(Client, RegistryName, SchemaName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -314,10 +358,13 @@ export_schema(Client, RegistryName, SchemaName, Type, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     export_schema(Client, RegistryName, SchemaName, Type, QueryMap, HeadersMap, []).
 
-export_schema(Client, RegistryName, SchemaName, Type, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+export_schema(Client, RegistryName, SchemaName, Type, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), "/export"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -339,10 +386,13 @@ get_code_binding_source(Client, Language, RegistryName, SchemaName, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_code_binding_source(Client, Language, RegistryName, SchemaName, QueryMap, HeadersMap, []).
 
-get_code_binding_source(Client, Language, RegistryName, SchemaName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_code_binding_source(Client, Language, RegistryName, SchemaName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), "/language/", aws_util:encode_uri(Language), "/source"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, true}
+               | Options0],
 
     Headers = [],
 
@@ -357,10 +407,14 @@ get_code_binding_source(Client, Language, RegistryName, SchemaName, QueryMap, He
 %% @doc Get the discovered schema that was generated based on sampled events.
 get_discovered_schema(Client, Input) ->
     get_discovered_schema(Client, Input, []).
-get_discovered_schema(Client, Input0, Options) ->
+get_discovered_schema(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/discover"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -379,10 +433,13 @@ get_resource_policy(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_resource_policy(Client, QueryMap, HeadersMap, []).
 
-get_resource_policy(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_resource_policy(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/policy"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -403,10 +460,13 @@ list_discoverers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_discoverers(Client, QueryMap, HeadersMap, []).
 
-list_discoverers(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_discoverers(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/discoverers"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -430,10 +490,13 @@ list_registries(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_registries(Client, QueryMap, HeadersMap, []).
 
-list_registries(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_registries(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/registries"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -457,10 +520,13 @@ list_schema_versions(Client, RegistryName, SchemaName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_schema_versions(Client, RegistryName, SchemaName, QueryMap, HeadersMap, []).
 
-list_schema_versions(Client, RegistryName, SchemaName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_schema_versions(Client, RegistryName, SchemaName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), "/versions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -482,10 +548,13 @@ list_schemas(Client, RegistryName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_schemas(Client, RegistryName, QueryMap, HeadersMap, []).
 
-list_schemas(Client, RegistryName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_schemas(Client, RegistryName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -508,10 +577,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -522,10 +594,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% @doc Put code binding URI
 put_code_binding(Client, Language, RegistryName, SchemaName, Input) ->
     put_code_binding(Client, Language, RegistryName, SchemaName, Input, []).
-put_code_binding(Client, Language, RegistryName, SchemaName, Input0, Options) ->
+put_code_binding(Client, Language, RegistryName, SchemaName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), "/language/", aws_util:encode_uri(Language), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -539,10 +615,14 @@ put_code_binding(Client, Language, RegistryName, SchemaName, Input0, Options) ->
 %% @doc The name of the policy.
 put_resource_policy(Client, Input) ->
     put_resource_policy(Client, Input, []).
-put_resource_policy(Client, Input0, Options) ->
+put_resource_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/policy"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -562,10 +642,13 @@ search_schemas(Client, RegistryName, Keywords, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     search_schemas(Client, RegistryName, Keywords, QueryMap, HeadersMap, []).
 
-search_schemas(Client, RegistryName, Keywords, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+search_schemas(Client, RegistryName, Keywords, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/search"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -582,10 +665,14 @@ search_schemas(Client, RegistryName, Keywords, QueryMap, HeadersMap, Options)
 %% @doc Starts the discoverer
 start_discoverer(Client, DiscovererId, Input) ->
     start_discoverer(Client, DiscovererId, Input, []).
-start_discoverer(Client, DiscovererId, Input0, Options) ->
+start_discoverer(Client, DiscovererId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/discoverers/id/", aws_util:encode_uri(DiscovererId), "/start"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -598,10 +685,14 @@ start_discoverer(Client, DiscovererId, Input0, Options) ->
 %% @doc Stops the discoverer
 stop_discoverer(Client, DiscovererId, Input) ->
     stop_discoverer(Client, DiscovererId, Input, []).
-stop_discoverer(Client, DiscovererId, Input0, Options) ->
+stop_discoverer(Client, DiscovererId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/discoverers/id/", aws_util:encode_uri(DiscovererId), "/stop"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -614,10 +705,14 @@ stop_discoverer(Client, DiscovererId, Input0, Options) ->
 %% @doc Add tags to a resource.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -630,10 +725,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Removes tags from a resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -647,10 +746,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Updates the discoverer
 update_discoverer(Client, DiscovererId, Input) ->
     update_discoverer(Client, DiscovererId, Input, []).
-update_discoverer(Client, DiscovererId, Input0, Options) ->
+update_discoverer(Client, DiscovererId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/discoverers/id/", aws_util:encode_uri(DiscovererId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -663,10 +766,14 @@ update_discoverer(Client, DiscovererId, Input0, Options) ->
 %% @doc Updates a registry.
 update_registry(Client, RegistryName, Input) ->
     update_registry(Client, RegistryName, Input, []).
-update_registry(Client, RegistryName, Input0, Options) ->
+update_registry(Client, RegistryName, Input0, Options0) ->
     Method = put,
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -681,10 +788,14 @@ update_registry(Client, RegistryName, Input0, Options) ->
 %% Inactive schemas will be deleted after two years.
 update_schema(Client, RegistryName, SchemaName, Input) ->
     update_schema(Client, RegistryName, SchemaName, Input, []).
-update_schema(Client, RegistryName, SchemaName, Input0, Options) ->
+update_schema(Client, RegistryName, SchemaName, Input0, Options0) ->
     Method = put,
     Path = ["/v1/registries/name/", aws_util:encode_uri(RegistryName), "/schemas/name/", aws_util:encode_uri(SchemaName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -716,19 +827,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -738,14 +850,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

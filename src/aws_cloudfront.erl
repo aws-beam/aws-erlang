@@ -228,10 +228,14 @@
 %% in the Amazon CloudFront Developer Guide.
 create_cache_policy(Client, Input) ->
     create_cache_policy(Client, Input, []).
-create_cache_policy(Client, Input0, Options) ->
+create_cache_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/cache-policy"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -267,10 +271,14 @@ create_cache_policy(Client, Input0, Options) ->
 %% Amazon CloudFront Developer Guide.
 create_cloud_front_origin_access_identity(Client, Input) ->
     create_cloud_front_origin_access_identity(Client, Input, []).
-create_cloud_front_origin_access_identity(Client, Input0, Options) ->
+create_cloud_front_origin_access_identity(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/origin-access-identity/cloudfront"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -313,10 +321,14 @@ create_cloud_front_origin_access_identity(Client, Input0, Options) ->
 %% Amazon CloudFront Developer Guide.
 create_distribution(Client, Input) ->
     create_distribution(Client, Input, []).
-create_distribution(Client, Input0, Options) ->
+create_distribution(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/distribution"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -346,10 +358,14 @@ create_distribution(Client, Input0, Options) ->
 %% @doc Create a new distribution with tags.
 create_distribution_with_tags(Client, Input) ->
     create_distribution_with_tags(Client, Input, []).
-create_distribution_with_tags(Client, Input0, Options) ->
+create_distribution_with_tags(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/distribution?WithTags"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -379,10 +395,14 @@ create_distribution_with_tags(Client, Input0, Options) ->
 %% @doc Create a new field-level encryption configuration.
 create_field_level_encryption_config(Client, Input) ->
     create_field_level_encryption_config(Client, Input, []).
-create_field_level_encryption_config(Client, Input0, Options) ->
+create_field_level_encryption_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/field-level-encryption"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -412,10 +432,14 @@ create_field_level_encryption_config(Client, Input0, Options) ->
 %% @doc Create a field-level encryption profile.
 create_field_level_encryption_profile(Client, Input) ->
     create_field_level_encryption_profile(Client, Input, []).
-create_field_level_encryption_profile(Client, Input0, Options) ->
+create_field_level_encryption_profile(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/field-level-encryption-profile"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -445,10 +469,14 @@ create_field_level_encryption_profile(Client, Input0, Options) ->
 %% @doc Create a new invalidation.
 create_invalidation(Client, DistributionId, Input) ->
     create_invalidation(Client, DistributionId, Input, []).
-create_invalidation(Client, DistributionId, Input0, Options) ->
+create_invalidation(Client, DistributionId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(DistributionId), "/invalidation"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -488,10 +516,14 @@ create_invalidation(Client, DistributionId, Input0, Options) ->
 %% private content in the Amazon CloudFront Developer Guide.
 create_key_group(Client, Input) ->
     create_key_group(Client, Input, []).
-create_key_group(Client, Input0, Options) ->
+create_key_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/key-group"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -527,10 +559,14 @@ create_key_group(Client, Input0, Options) ->
 %% metrics in the Amazon CloudFront Developer Guide.
 create_monitoring_subscription(Client, DistributionId, Input) ->
     create_monitoring_subscription(Client, DistributionId, Input, []).
-create_monitoring_subscription(Client, DistributionId, Input0, Options) ->
+create_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/distributions/", aws_util:encode_uri(DistributionId), "/monitoring-subscription"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -567,10 +603,14 @@ create_monitoring_subscription(Client, DistributionId, Input0, Options) ->
 %% requests in the Amazon CloudFront Developer Guide.
 create_origin_request_policy(Client, Input) ->
     create_origin_request_policy(Client, Input, []).
-create_origin_request_policy(Client, Input0, Options) ->
+create_origin_request_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/origin-request-policy"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -601,10 +641,14 @@ create_origin_request_policy(Client, Input0, Options) ->
 %% and signed cookies, or with field-level encryption.
 create_public_key(Client, Input) ->
     create_public_key(Client, Input, []).
-create_public_key(Client, Input0, Options) ->
+create_public_key(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/public-key"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -641,10 +685,14 @@ create_public_key(Client, Input0, Options) ->
 %% logs in the Amazon CloudFront Developer Guide.
 create_realtime_log_config(Client, Input) ->
     create_realtime_log_config(Client, Input, []).
-create_realtime_log_config(Client, Input0, Options) ->
+create_realtime_log_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/realtime-log-config"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -661,10 +709,14 @@ create_realtime_log_config(Client, Input0, Options) ->
 %% announcement on the Amazon CloudFront discussion forum.
 create_streaming_distribution(Client, Input) ->
     create_streaming_distribution(Client, Input, []).
-create_streaming_distribution(Client, Input0, Options) ->
+create_streaming_distribution(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/streaming-distribution"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -698,10 +750,14 @@ create_streaming_distribution(Client, Input0, Options) ->
 %% announcement on the Amazon CloudFront discussion forum.
 create_streaming_distribution_with_tags(Client, Input) ->
     create_streaming_distribution_with_tags(Client, Input, []).
-create_streaming_distribution_with_tags(Client, Input0, Options) ->
+create_streaming_distribution_with_tags(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/streaming-distribution?WithTags"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -739,10 +795,14 @@ create_streaming_distribution_with_tags(Client, Input0, Options) ->
 %% `GetCachePolicy'.
 delete_cache_policy(Client, Id, Input) ->
     delete_cache_policy(Client, Id, Input, []).
-delete_cache_policy(Client, Id, Input0, Options) ->
+delete_cache_policy(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/cache-policy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -757,10 +817,14 @@ delete_cache_policy(Client, Id, Input0, Options) ->
 %% @doc Delete an origin access identity.
 delete_cloud_front_origin_access_identity(Client, Id, Input) ->
     delete_cloud_front_origin_access_identity(Client, Id, Input, []).
-delete_cloud_front_origin_access_identity(Client, Id, Input0, Options) ->
+delete_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -775,10 +839,14 @@ delete_cloud_front_origin_access_identity(Client, Id, Input0, Options) ->
 %% @doc Delete a distribution.
 delete_distribution(Client, Id, Input) ->
     delete_distribution(Client, Id, Input, []).
-delete_distribution(Client, Id, Input0, Options) ->
+delete_distribution(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -793,10 +861,14 @@ delete_distribution(Client, Id, Input0, Options) ->
 %% @doc Remove a field-level encryption configuration.
 delete_field_level_encryption_config(Client, Id, Input) ->
     delete_field_level_encryption_config(Client, Id, Input, []).
-delete_field_level_encryption_config(Client, Id, Input0, Options) ->
+delete_field_level_encryption_config(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/field-level-encryption/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -811,10 +883,14 @@ delete_field_level_encryption_config(Client, Id, Input0, Options) ->
 %% @doc Remove a field-level encryption profile.
 delete_field_level_encryption_profile(Client, Id, Input) ->
     delete_field_level_encryption_profile(Client, Id, Input, []).
-delete_field_level_encryption_profile(Client, Id, Input0, Options) ->
+delete_field_level_encryption_profile(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/field-level-encryption-profile/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -837,10 +913,14 @@ delete_field_level_encryption_profile(Client, Id, Input0, Options) ->
 %% `GetKeyGroup' or `GetKeyGroupConfig'.
 delete_key_group(Client, Id, Input) ->
     delete_key_group(Client, Id, Input, []).
-delete_key_group(Client, Id, Input0, Options) ->
+delete_key_group(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/key-group/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -856,10 +936,14 @@ delete_key_group(Client, Id, Input0, Options) ->
 %% distribution.
 delete_monitoring_subscription(Client, DistributionId, Input) ->
     delete_monitoring_subscription(Client, DistributionId, Input, []).
-delete_monitoring_subscription(Client, DistributionId, Input0, Options) ->
+delete_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/distributions/", aws_util:encode_uri(DistributionId), "/monitoring-subscription"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -880,10 +964,14 @@ delete_monitoring_subscription(Client, DistributionId, Input0, Options) ->
 %% `ListOriginRequestPolicies' or `GetOriginRequestPolicy'.
 delete_origin_request_policy(Client, Id, Input) ->
     delete_origin_request_policy(Client, Id, Input, []).
-delete_origin_request_policy(Client, Id, Input0, Options) ->
+delete_origin_request_policy(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/origin-request-policy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -898,10 +986,14 @@ delete_origin_request_policy(Client, Id, Input0, Options) ->
 %% @doc Remove a public key you previously added to CloudFront.
 delete_public_key(Client, Id, Input) ->
     delete_public_key(Client, Id, Input, []).
-delete_public_key(Client, Id, Input0, Options) ->
+delete_public_key(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/public-key/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -926,10 +1018,14 @@ delete_public_key(Client, Id, Input0, Options) ->
 %% the real-time log configuration to delete.
 delete_realtime_log_config(Client, Input) ->
     delete_realtime_log_config(Client, Input, []).
-delete_realtime_log_config(Client, Input0, Options) ->
+delete_realtime_log_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/delete-realtime-log-config/"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -982,10 +1078,14 @@ delete_realtime_log_config(Client, Input0, Options) ->
 %% Developer Guide.
 delete_streaming_distribution(Client, Id, Input) ->
     delete_streaming_distribution(Client, Id, Input, []).
-delete_streaming_distribution(Client, Id, Input0, Options) ->
+delete_streaming_distribution(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-05-31/streaming-distribution/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -1016,10 +1116,13 @@ get_cache_policy(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cache_policy(Client, Id, QueryMap, HeadersMap, []).
 
-get_cache_policy(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_cache_policy(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/cache-policy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1058,10 +1161,13 @@ get_cache_policy_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cache_policy_config(Client, Id, QueryMap, HeadersMap, []).
 
-get_cache_policy_config(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_cache_policy_config(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/cache-policy/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1094,10 +1200,13 @@ get_cloud_front_origin_access_identity(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cloud_front_origin_access_identity(Client, Id, QueryMap, HeadersMap, []).
 
-get_cloud_front_origin_access_identity(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_cloud_front_origin_access_identity(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1130,10 +1239,13 @@ get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap, []).
 
-get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1166,10 +1278,13 @@ get_distribution(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_distribution(Client, Id, QueryMap, HeadersMap, []).
 
-get_distribution(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_distribution(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1202,10 +1317,13 @@ get_distribution_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_distribution_config(Client, Id, QueryMap, HeadersMap, []).
 
-get_distribution_config(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_distribution_config(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1238,10 +1356,13 @@ get_field_level_encryption(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_field_level_encryption(Client, Id, QueryMap, HeadersMap, []).
 
-get_field_level_encryption(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_field_level_encryption(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/field-level-encryption/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1274,10 +1395,13 @@ get_field_level_encryption_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_field_level_encryption_config(Client, Id, QueryMap, HeadersMap, []).
 
-get_field_level_encryption_config(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_field_level_encryption_config(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/field-level-encryption/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1310,10 +1434,13 @@ get_field_level_encryption_profile(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_field_level_encryption_profile(Client, Id, QueryMap, HeadersMap, []).
 
-get_field_level_encryption_profile(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_field_level_encryption_profile(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/field-level-encryption-profile/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1346,10 +1473,13 @@ get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap, []).
 
-get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/field-level-encryption-profile/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1382,10 +1512,13 @@ get_invalidation(Client, DistributionId, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_invalidation(Client, DistributionId, Id, QueryMap, HeadersMap, []).
 
-get_invalidation(Client, DistributionId, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_invalidation(Client, DistributionId, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(DistributionId), "/invalidation/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1409,10 +1542,13 @@ get_key_group(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_key_group(Client, Id, QueryMap, HeadersMap, []).
 
-get_key_group(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_key_group(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/key-group/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1451,10 +1587,13 @@ get_key_group_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_key_group_config(Client, Id, QueryMap, HeadersMap, []).
 
-get_key_group_config(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_key_group_config(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/key-group/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1488,10 +1627,13 @@ get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap, []).
 
-get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distributions/", aws_util:encode_uri(DistributionId), "/monitoring-subscription"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1519,10 +1661,13 @@ get_origin_request_policy(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_origin_request_policy(Client, Id, QueryMap, HeadersMap, []).
 
-get_origin_request_policy(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_origin_request_policy(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-request-policy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1562,10 +1707,13 @@ get_origin_request_policy_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_origin_request_policy_config(Client, Id, QueryMap, HeadersMap, []).
 
-get_origin_request_policy_config(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_origin_request_policy_config(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-request-policy/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1598,10 +1746,13 @@ get_public_key(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_public_key(Client, Id, QueryMap, HeadersMap, []).
 
-get_public_key(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_public_key(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/public-key/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1634,10 +1785,13 @@ get_public_key_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_public_key_config(Client, Id, QueryMap, HeadersMap, []).
 
-get_public_key_config(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_public_key_config(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/public-key/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1669,10 +1823,14 @@ get_public_key_config(Client, Id, QueryMap, HeadersMap, Options)
 %% configuration to get.
 get_realtime_log_config(Client, Input) ->
     get_realtime_log_config(Client, Input, []).
-get_realtime_log_config(Client, Input0, Options) ->
+get_realtime_log_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/get-realtime-log-config/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1692,10 +1850,13 @@ get_streaming_distribution(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_streaming_distribution(Client, Id, QueryMap, HeadersMap, []).
 
-get_streaming_distribution(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_streaming_distribution(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/streaming-distribution/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1728,10 +1889,13 @@ get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap, []).
 
-get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/streaming-distribution/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1774,10 +1938,13 @@ list_cache_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cache_policies(Client, QueryMap, HeadersMap, []).
 
-list_cache_policies(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_cache_policies(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/cache-policy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1800,10 +1967,13 @@ list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap, []).
 
-list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-access-identity/cloudfront"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1825,10 +1995,13 @@ list_distributions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions(Client, QueryMap, HeadersMap, []).
 
-list_distributions(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_distributions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distribution"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1858,10 +2031,13 @@ list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMap, []).
 
-list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distributionsByCachePolicyId/", aws_util:encode_uri(CachePolicyId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1891,10 +2067,13 @@ list_distributions_by_key_group(Client, KeyGroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions_by_key_group(Client, KeyGroupId, QueryMap, HeadersMap, []).
 
-list_distributions_by_key_group(Client, KeyGroupId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_distributions_by_key_group(Client, KeyGroupId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distributionsByKeyGroupId/", aws_util:encode_uri(KeyGroupId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1924,10 +2103,13 @@ list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Qu
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, QueryMap, HeadersMap, []).
 
-list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distributionsByOriginRequestPolicyId/", aws_util:encode_uri(OriginRequestPolicyId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1956,10 +2138,14 @@ list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Qu
 %% subsequent request.
 list_distributions_by_realtime_log_config(Client, Input) ->
     list_distributions_by_realtime_log_config(Client, Input, []).
-list_distributions_by_realtime_log_config(Client, Input0, Options) ->
+list_distributions_by_realtime_log_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/distributionsByRealtimeLogConfig/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1979,10 +2165,13 @@ list_distributions_by_web_acl_id(Client, WebACLId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_distributions_by_web_acl_id(Client, WebACLId, QueryMap, HeadersMap, []).
 
-list_distributions_by_web_acl_id(Client, WebACLId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_distributions_by_web_acl_id(Client, WebACLId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distributionsByWebACLId/", aws_util:encode_uri(WebACLId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2005,10 +2194,13 @@ list_field_level_encryption_configs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_field_level_encryption_configs(Client, QueryMap, HeadersMap, []).
 
-list_field_level_encryption_configs(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_field_level_encryption_configs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/field-level-encryption"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2031,10 +2223,13 @@ list_field_level_encryption_profiles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_field_level_encryption_profiles(Client, QueryMap, HeadersMap, []).
 
-list_field_level_encryption_profiles(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_field_level_encryption_profiles(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/field-level-encryption-profile"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2056,10 +2251,13 @@ list_invalidations(Client, DistributionId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_invalidations(Client, DistributionId, QueryMap, HeadersMap, []).
 
-list_invalidations(Client, DistributionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_invalidations(Client, DistributionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(DistributionId), "/invalidation"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2088,10 +2286,13 @@ list_key_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_key_groups(Client, QueryMap, HeadersMap, []).
 
-list_key_groups(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_key_groups(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/key-group"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2123,10 +2324,13 @@ list_origin_request_policies(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_origin_request_policies(Client, QueryMap, HeadersMap, []).
 
-list_origin_request_policies(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_origin_request_policies(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-request-policy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2150,10 +2354,13 @@ list_public_keys(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_public_keys(Client, QueryMap, HeadersMap, []).
 
-list_public_keys(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_public_keys(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/public-key"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2182,10 +2389,13 @@ list_realtime_log_configs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_realtime_log_configs(Client, QueryMap, HeadersMap, []).
 
-list_realtime_log_configs(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_realtime_log_configs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/realtime-log-config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2207,10 +2417,13 @@ list_streaming_distributions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_streaming_distributions(Client, QueryMap, HeadersMap, []).
 
-list_streaming_distributions(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_streaming_distributions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/streaming-distribution"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2232,10 +2445,13 @@ list_tags_for_resource(Client, Resource, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, Resource, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, Resource, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, Resource, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/tagging"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2250,10 +2466,14 @@ list_tags_for_resource(Client, Resource, QueryMap, HeadersMap, Options)
 %% @doc Add tags to a CloudFront resource.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
-tag_resource(Client, Input0, Options) ->
+tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/tagging?Operation=Tag"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2267,10 +2487,14 @@ tag_resource(Client, Input0, Options) ->
 %% @doc Remove tags from a CloudFront resource.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
-untag_resource(Client, Input0, Options) ->
+untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/tagging?Operation=Untag"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2299,10 +2523,14 @@ untag_resource(Client, Input0, Options) ->
 %% </li> </ol>
 update_cache_policy(Client, Id, Input) ->
     update_cache_policy(Client, Id, Input, []).
-update_cache_policy(Client, Id, Input0, Options) ->
+update_cache_policy(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/cache-policy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -2333,10 +2561,14 @@ update_cache_policy(Client, Id, Input0, Options) ->
 %% @doc Update an origin access identity.
 update_cloud_front_origin_access_identity(Client, Id, Input) ->
     update_cloud_front_origin_access_identity(Client, Id, Input, []).
-update_cloud_front_origin_access_identity(Client, Id, Input0, Options) ->
+update_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -2433,10 +2665,14 @@ update_cloud_front_origin_access_identity(Client, Id, Input0, Options) ->
 %% </li> </ol>
 update_distribution(Client, Id, Input) ->
     update_distribution(Client, Id, Input, []).
-update_distribution(Client, Id, Input0, Options) ->
+update_distribution(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -2467,10 +2703,14 @@ update_distribution(Client, Id, Input0, Options) ->
 %% @doc Update a field-level encryption configuration.
 update_field_level_encryption_config(Client, Id, Input) ->
     update_field_level_encryption_config(Client, Id, Input, []).
-update_field_level_encryption_config(Client, Id, Input0, Options) ->
+update_field_level_encryption_config(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/field-level-encryption/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -2501,10 +2741,14 @@ update_field_level_encryption_config(Client, Id, Input0, Options) ->
 %% @doc Update a field-level encryption profile.
 update_field_level_encryption_profile(Client, Id, Input) ->
     update_field_level_encryption_profile(Client, Id, Input, []).
-update_field_level_encryption_profile(Client, Id, Input0, Options) ->
+update_field_level_encryption_profile(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/field-level-encryption-profile/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -2550,10 +2794,14 @@ update_field_level_encryption_profile(Client, Id, Input0, Options) ->
 %% </li> </ol>
 update_key_group(Client, Id, Input) ->
     update_key_group(Client, Id, Input, []).
-update_key_group(Client, Id, Input0, Options) ->
+update_key_group(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/key-group/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -2601,10 +2849,14 @@ update_key_group(Client, Id, Input0, Options) ->
 %% </li> </ol>
 update_origin_request_policy(Client, Id, Input) ->
     update_origin_request_policy(Client, Id, Input, []).
-update_origin_request_policy(Client, Id, Input0, Options) ->
+update_origin_request_policy(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/origin-request-policy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -2637,10 +2889,14 @@ update_origin_request_policy(Client, Id, Input0, Options) ->
 %% Note that the only value you can change is the comment.
 update_public_key(Client, Id, Input) ->
     update_public_key(Client, Id, Input, []).
-update_public_key(Client, Id, Input0, Options) ->
+update_public_key(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/public-key/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -2688,10 +2944,14 @@ update_public_key(Client, Id, Input0, Options) ->
 %% `ARN'.
 update_realtime_log_config(Client, Input) ->
     update_realtime_log_config(Client, Input, []).
-update_realtime_log_config(Client, Input0, Options) ->
+update_realtime_log_config(Client, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/realtime-log-config/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2704,10 +2964,14 @@ update_realtime_log_config(Client, Input0, Options) ->
 %% @doc Update a streaming distribution.
 update_streaming_distribution(Client, Id, Input) ->
     update_streaming_distribution(Client, Id, Input, []).
-update_streaming_distribution(Client, Id, Input0, Options) ->
+update_streaming_distribution(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/streaming-distribution/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -2758,19 +3022,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -2780,14 +3045,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = aws_util:decode_xml(Body),
+            Result = case DecodeBody of
+                       true -> aws_util:decode_xml(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = aws_util:decode_xml(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

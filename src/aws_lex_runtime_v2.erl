@@ -41,10 +41,14 @@
 %% enables for the alias, you receive a `BadRequestException'.
 delete_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     delete_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
-delete_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options) ->
+delete_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
     Method = delete,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botAliases/", aws_util:encode_uri(BotAliasId), "/botLocales/", aws_util:encode_uri(LocaleId), "/sessions/", aws_util:encode_uri(SessionId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -70,10 +74,13 @@ get_session(Client, BotAliasId, BotId, LocaleId, SessionId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_session(Client, BotAliasId, BotId, LocaleId, SessionId, QueryMap, HeadersMap, []).
 
-get_session(Client, BotAliasId, BotId, LocaleId, SessionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_session(Client, BotAliasId, BotId, LocaleId, SessionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botAliases/", aws_util:encode_uri(BotAliasId), "/botLocales/", aws_util:encode_uri(LocaleId), "/sessions/", aws_util:encode_uri(SessionId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -87,10 +94,14 @@ get_session(Client, BotAliasId, BotId, LocaleId, SessionId, QueryMap, HeadersMap
 %% Use this operation to enable your application to set the state of the bot.
 put_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     put_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
-put_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options) ->
+put_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botAliases/", aws_util:encode_uri(BotAliasId), "/botLocales/", aws_util:encode_uri(LocaleId), "/sessions/", aws_util:encode_uri(SessionId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"ResponseContentType">>, <<"responseContentType">>}
@@ -132,10 +143,14 @@ put_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options) ->
 %% an optional response card to display.
 recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
-recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options) ->
+recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botAliases/", aws_util:encode_uri(BotAliasId), "/botLocales/", aws_util:encode_uri(LocaleId), "/sessions/", aws_util:encode_uri(SessionId), "/text"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -152,10 +167,14 @@ recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options) 
 %% using the machine learning model built for the bot.
 recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
-recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options) ->
+recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botAliases/", aws_util:encode_uri(BotAliasId), "/botLocales/", aws_util:encode_uri(LocaleId), "/sessions/", aws_util:encode_uri(SessionId), "/utterance"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-lex-request-attributes">>, <<"requestAttributes">>},
@@ -201,10 +220,14 @@ recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Opti
 %% responds with streaming text or audio events.
 start_conversation(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     start_conversation(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
-start_conversation(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options) ->
+start_conversation(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botAliases/", aws_util:encode_uri(BotAliasId), "/botLocales/", aws_util:encode_uri(LocaleId), "/sessions/", aws_util:encode_uri(SessionId), "/conversation"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-lex-conversation-mode">>, <<"conversationMode">>}
@@ -238,19 +261,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -260,14 +284,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

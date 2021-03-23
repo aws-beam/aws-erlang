@@ -76,10 +76,14 @@
 %% operation.
 cancel_job(Client, Input) ->
     cancel_job(Client, Input, []).
-cancel_job(Client, Input0, Options) ->
+cancel_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/canceljob"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -137,10 +141,14 @@ cancel_job(Client, Input0, Options) ->
 %% Delete the earlier compute environment.
 create_compute_environment(Client, Input) ->
     create_compute_environment(Client, Input, []).
-create_compute_environment(Client, Input0, Options) ->
+create_compute_environment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/createcomputeenvironment"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -163,10 +171,14 @@ create_compute_environment(Client, Input0, Options) ->
 %% preference for scheduling jobs to that compute environment.
 create_job_queue(Client, Input) ->
     create_job_queue(Client, Input, []).
-create_job_queue(Client, Input0, Options) ->
+create_job_queue(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/createjobqueue"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -187,10 +199,14 @@ create_job_queue(Client, Input0, Options) ->
 %% up in an invalid state.
 delete_compute_environment(Client, Input) ->
     delete_compute_environment(Client, Input, []).
-delete_compute_environment(Client, Input0, Options) ->
+delete_compute_environment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/deletecomputeenvironment"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -211,10 +227,14 @@ delete_compute_environment(Client, Input0, Options) ->
 %% before submitting a `DeleteJobQueue' request.
 delete_job_queue(Client, Input) ->
     delete_job_queue(Client, Input, []).
-delete_job_queue(Client, Input0, Options) ->
+delete_job_queue(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/deletejobqueue"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -229,10 +249,14 @@ delete_job_queue(Client, Input0, Options) ->
 %% Job definitions are permanently deleted after 180 days.
 deregister_job_definition(Client, Input) ->
     deregister_job_definition(Client, Input, []).
-deregister_job_definition(Client, Input0, Options) ->
+deregister_job_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/deregisterjobdefinition"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -249,10 +273,14 @@ deregister_job_definition(Client, Input0, Options) ->
 %% that you should launch your Amazon ECS container instances into.
 describe_compute_environments(Client, Input) ->
     describe_compute_environments(Client, Input, []).
-describe_compute_environments(Client, Input0, Options) ->
+describe_compute_environments(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/describecomputeenvironments"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -268,10 +296,14 @@ describe_compute_environments(Client, Input0, Options) ->
 %% definitions that match that status.
 describe_job_definitions(Client, Input) ->
     describe_job_definitions(Client, Input, []).
-describe_job_definitions(Client, Input0, Options) ->
+describe_job_definitions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/describejobdefinitions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -284,10 +316,14 @@ describe_job_definitions(Client, Input0, Options) ->
 %% @doc Describes one or more of your job queues.
 describe_job_queues(Client, Input) ->
     describe_job_queues(Client, Input, []).
-describe_job_queues(Client, Input0, Options) ->
+describe_job_queues(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/describejobqueues"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -300,10 +336,14 @@ describe_job_queues(Client, Input0, Options) ->
 %% @doc Describes a list of AWS Batch jobs.
 describe_jobs(Client, Input) ->
     describe_jobs(Client, Input, []).
-describe_jobs(Client, Input0, Options) ->
+describe_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/describejobs"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -329,10 +369,14 @@ describe_jobs(Client, Input0, Options) ->
 %% returned.
 list_jobs(Client, Input) ->
     list_jobs(Client, Input, []).
-list_jobs(Client, Input0, Options) ->
+list_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/listjobs"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -355,10 +399,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -369,10 +416,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% @doc Registers an AWS Batch job definition.
 register_job_definition(Client, Input) ->
     register_job_definition(Client, Input, []).
-register_job_definition(Client, Input0, Options) ->
+register_job_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/registerjobdefinition"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -392,10 +443,14 @@ register_job_definition(Client, Input0, Options) ->
 %% terminated.
 submit_job(Client, Input) ->
     submit_job(Client, Input, []).
-submit_job(Client, Input0, Options) ->
+submit_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/submitjob"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -415,10 +470,14 @@ submit_job(Client, Input0, Options) ->
 %% child jobs of array and multi-node parallel (MNP) jobs are not supported.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -435,10 +494,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% the `STARTING' state are cancelled.
 terminate_job(Client, Input) ->
     terminate_job(Client, Input, []).
-terminate_job(Client, Input0, Options) ->
+terminate_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/terminatejob"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -451,10 +514,14 @@ terminate_job(Client, Input0, Options) ->
 %% @doc Deletes specified tags from an AWS Batch resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -468,10 +535,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Updates an AWS Batch compute environment.
 update_compute_environment(Client, Input) ->
     update_compute_environment(Client, Input, []).
-update_compute_environment(Client, Input0, Options) ->
+update_compute_environment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/updatecomputeenvironment"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -484,10 +555,14 @@ update_compute_environment(Client, Input0, Options) ->
 %% @doc Updates a job queue.
 update_job_queue(Client, Input) ->
     update_job_queue(Client, Input, []).
-update_job_queue(Client, Input0, Options) ->
+update_job_queue(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/updatejobqueue"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -519,19 +594,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -541,14 +617,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

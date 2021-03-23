@@ -80,10 +80,14 @@
 %% @doc Cancels a contact with a specified contact ID.
 cancel_contact(Client, ContactId, Input) ->
     cancel_contact(Client, ContactId, Input, []).
-cancel_contact(Client, ContactId, Input0, Options) ->
+cancel_contact(Client, ContactId, Input0, Options0) ->
     Method = delete,
     Path = ["/contact/", aws_util:encode_uri(ContactId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -98,10 +102,14 @@ cancel_contact(Client, ContactId, Input0, Options) ->
 %% Only one type of `configData' can be specified.
 create_config(Client, Input) ->
     create_config(Client, Input, []).
-create_config(Client, Input0, Options) ->
+create_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/config"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -122,10 +130,14 @@ create_config(Client, Input0, Options) ->
 %% `Config' must match a `DataflowEndpoint' in the same group.
 create_dataflow_endpoint_group(Client, Input) ->
     create_dataflow_endpoint_group(Client, Input, []).
-create_dataflow_endpoint_group(Client, Input0, Options) ->
+create_dataflow_endpoint_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/dataflowEndpointGroup"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -141,10 +153,14 @@ create_dataflow_endpoint_group(Client, Input0, Options) ->
 %% strings has two elements: a from ARN and a to ARN.
 create_mission_profile(Client, Input) ->
     create_mission_profile(Client, Input, []).
-create_mission_profile(Client, Input0, Options) ->
+create_mission_profile(Client, Input0, Options0) ->
     Method = post,
     Path = ["/missionprofile"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -157,10 +173,14 @@ create_mission_profile(Client, Input0, Options) ->
 %% @doc Deletes a `Config'.
 delete_config(Client, ConfigId, ConfigType, Input) ->
     delete_config(Client, ConfigId, ConfigType, Input, []).
-delete_config(Client, ConfigId, ConfigType, Input0, Options) ->
+delete_config(Client, ConfigId, ConfigType, Input0, Options0) ->
     Method = delete,
     Path = ["/config/", aws_util:encode_uri(ConfigType), "/", aws_util:encode_uri(ConfigId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -173,10 +193,14 @@ delete_config(Client, ConfigId, ConfigType, Input0, Options) ->
 %% @doc Deletes a dataflow endpoint group.
 delete_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Input) ->
     delete_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Input, []).
-delete_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Input0, Options) ->
+delete_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Input0, Options0) ->
     Method = delete,
     Path = ["/dataflowEndpointGroup/", aws_util:encode_uri(DataflowEndpointGroupId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -189,10 +213,14 @@ delete_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Input0, Options)
 %% @doc Deletes a mission profile.
 delete_mission_profile(Client, MissionProfileId, Input) ->
     delete_mission_profile(Client, MissionProfileId, Input, []).
-delete_mission_profile(Client, MissionProfileId, Input0, Options) ->
+delete_mission_profile(Client, MissionProfileId, Input0, Options0) ->
     Method = delete,
     Path = ["/missionprofile/", aws_util:encode_uri(MissionProfileId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -211,10 +239,13 @@ describe_contact(Client, ContactId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_contact(Client, ContactId, QueryMap, HeadersMap, []).
 
-describe_contact(Client, ContactId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_contact(Client, ContactId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact/", aws_util:encode_uri(ContactId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -233,10 +264,13 @@ get_config(Client, ConfigId, ConfigType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_config(Client, ConfigId, ConfigType, QueryMap, HeadersMap, []).
 
-get_config(Client, ConfigId, ConfigType, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_config(Client, ConfigId, ConfigType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/config/", aws_util:encode_uri(ConfigType), "/", aws_util:encode_uri(ConfigId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -253,10 +287,13 @@ get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, QueryMap, HeadersMap, []).
 
-get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dataflowEndpointGroup/", aws_util:encode_uri(DataflowEndpointGroupId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -267,10 +304,14 @@ get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, QueryMap, HeadersMa
 %% @doc Returns the number of minutes used by account.
 get_minute_usage(Client, Input) ->
     get_minute_usage(Client, Input, []).
-get_minute_usage(Client, Input0, Options) ->
+get_minute_usage(Client, Input0, Options0) ->
     Method = post,
     Path = ["/minute-usage"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -289,10 +330,13 @@ get_mission_profile(Client, MissionProfileId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_mission_profile(Client, MissionProfileId, QueryMap, HeadersMap, []).
 
-get_mission_profile(Client, MissionProfileId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_mission_profile(Client, MissionProfileId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/missionprofile/", aws_util:encode_uri(MissionProfileId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -309,10 +353,13 @@ get_satellite(Client, SatelliteId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_satellite(Client, SatelliteId, QueryMap, HeadersMap, []).
 
-get_satellite(Client, SatelliteId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_satellite(Client, SatelliteId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/satellite/", aws_util:encode_uri(SatelliteId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -329,10 +376,13 @@ list_configs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configs(Client, QueryMap, HeadersMap, []).
 
-list_configs(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_configs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/config"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -351,10 +401,14 @@ list_configs(Client, QueryMap, HeadersMap, Options)
 %% `groundStation', `missionprofileArn', and `satelliteArn'.
 list_contacts(Client, Input) ->
     list_contacts(Client, Input, []).
-list_contacts(Client, Input0, Options) ->
+list_contacts(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contacts"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -373,10 +427,13 @@ list_dataflow_endpoint_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dataflow_endpoint_groups(Client, QueryMap, HeadersMap, []).
 
-list_dataflow_endpoint_groups(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_dataflow_endpoint_groups(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/dataflowEndpointGroup"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -398,10 +455,13 @@ list_ground_stations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ground_stations(Client, QueryMap, HeadersMap, []).
 
-list_ground_stations(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_ground_stations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/groundstation"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -424,10 +484,13 @@ list_mission_profiles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_mission_profiles(Client, QueryMap, HeadersMap, []).
 
-list_mission_profiles(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_mission_profiles(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/missionprofile"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -449,10 +512,13 @@ list_satellites(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_satellites(Client, QueryMap, HeadersMap, []).
 
-list_satellites(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_satellites(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/satellite"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -474,10 +540,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -488,10 +557,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% @doc Reserves a contact using specified parameters.
 reserve_contact(Client, Input) ->
     reserve_contact(Client, Input, []).
-reserve_contact(Client, Input0, Options) ->
+reserve_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -504,10 +577,14 @@ reserve_contact(Client, Input0, Options) ->
 %% @doc Assigns a tag to a resource.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -520,10 +597,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Deassigns a resource tag.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -540,10 +621,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% future contacts scheduled with this `Config'.
 update_config(Client, ConfigId, ConfigType, Input) ->
     update_config(Client, ConfigId, ConfigType, Input, []).
-update_config(Client, ConfigId, ConfigType, Input0, Options) ->
+update_config(Client, ConfigId, ConfigType, Input0, Options0) ->
     Method = put,
     Path = ["/config/", aws_util:encode_uri(ConfigType), "/", aws_util:encode_uri(ConfigId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -559,10 +644,14 @@ update_config(Client, ConfigId, ConfigType, Input0, Options) ->
 %% existing future contacts.
 update_mission_profile(Client, MissionProfileId, Input) ->
     update_mission_profile(Client, MissionProfileId, Input, []).
-update_mission_profile(Client, MissionProfileId, Input0, Options) ->
+update_mission_profile(Client, MissionProfileId, Input0, Options0) ->
     Method = put,
     Path = ["/missionprofile/", aws_util:encode_uri(MissionProfileId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -594,19 +683,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -616,14 +706,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

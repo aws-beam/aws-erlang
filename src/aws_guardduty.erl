@@ -169,10 +169,14 @@
 %% account.
 accept_invitation(Client, DetectorId, Input) ->
     accept_invitation(Client, DetectorId, Input, []).
-accept_invitation(Client, DetectorId, Input0, Options) ->
+accept_invitation(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/master"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -189,10 +193,14 @@ accept_invitation(Client, DetectorId, Input0, Options) ->
 %% have permission to archive findings from their accounts.
 archive_findings(Client, DetectorId, Input) ->
     archive_findings(Client, DetectorId, Input, []).
-archive_findings(Client, DetectorId, Input0, Options) ->
+archive_findings(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/archive"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -210,10 +218,14 @@ archive_findings(Client, DetectorId, Input0, Options) ->
 %% All data sources are enabled in a new detector by default.
 create_detector(Client, Input) ->
     create_detector(Client, Input, []).
-create_detector(Client, Input0, Options) ->
+create_detector(Client, Input0, Options0) ->
     Method = post,
     Path = ["/detector"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -226,10 +238,14 @@ create_detector(Client, Input0, Options) ->
 %% @doc Creates a filter using the specified finding criteria.
 create_filter(Client, DetectorId, Input) ->
     create_filter(Client, DetectorId, Input, []).
-create_filter(Client, DetectorId, Input0, Options) ->
+create_filter(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -248,10 +264,14 @@ create_filter(Client, DetectorId, Input0, Options) ->
 %% from the administrator account can use this operation.
 create_ip_set(Client, DetectorId, Input) ->
     create_ip_set(Client, DetectorId, Input, []).
-create_ip_set(Client, DetectorId, Input0, Options) ->
+create_ip_set(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -277,10 +297,14 @@ create_ip_set(Client, DetectorId, Input0, Options) ->
 %% Members' .
 create_members(Client, DetectorId, Input) ->
     create_members(Client, DetectorId, Input, []).
-create_members(Client, DetectorId, Input0, Options) ->
+create_members(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -296,10 +320,14 @@ create_members(Client, DetectorId, Input0, Options) ->
 %% operation.
 create_publishing_destination(Client, DetectorId, Input) ->
     create_publishing_destination(Client, DetectorId, Input, []).
-create_publishing_destination(Client, DetectorId, Input0, Options) ->
+create_publishing_destination(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -316,10 +344,14 @@ create_publishing_destination(Client, DetectorId, Input0, Options) ->
 %% findings of all supported finding types.
 create_sample_findings(Client, DetectorId, Input) ->
     create_sample_findings(Client, DetectorId, Input, []).
-create_sample_findings(Client, DetectorId, Input0, Options) ->
+create_sample_findings(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/create"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -336,10 +368,14 @@ create_sample_findings(Client, DetectorId, Input0, Options) ->
 %% administrator account can use this operation.
 create_threat_intel_set(Client, DetectorId, Input) ->
     create_threat_intel_set(Client, DetectorId, Input, []).
-create_threat_intel_set(Client, DetectorId, Input0, Options) ->
+create_threat_intel_set(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -353,10 +389,14 @@ create_threat_intel_set(Client, DetectorId, Input0, Options) ->
 %% accounts specified by their account IDs.
 decline_invitations(Client, Input) ->
     decline_invitations(Client, Input, []).
-decline_invitations(Client, Input0, Options) ->
+decline_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitation/decline"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -370,10 +410,14 @@ decline_invitations(Client, Input0, Options) ->
 %% detector ID.
 delete_detector(Client, DetectorId, Input) ->
     delete_detector(Client, DetectorId, Input, []).
-delete_detector(Client, DetectorId, Input0, Options) ->
+delete_detector(Client, DetectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -386,10 +430,14 @@ delete_detector(Client, DetectorId, Input0, Options) ->
 %% @doc Deletes the filter specified by the filter name.
 delete_filter(Client, DetectorId, FilterName, Input) ->
     delete_filter(Client, DetectorId, FilterName, Input, []).
-delete_filter(Client, DetectorId, FilterName, Input0, Options) ->
+delete_filter(Client, DetectorId, FilterName, Input0, Options0) ->
     Method = delete,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter/", aws_util:encode_uri(FilterName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -403,10 +451,14 @@ delete_filter(Client, DetectorId, FilterName, Input0, Options) ->
 %% accounts specified by their account IDs.
 delete_invitations(Client, Input) ->
     delete_invitations(Client, Input, []).
-delete_invitations(Client, Input0, Options) ->
+delete_invitations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/invitation/delete"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -421,10 +473,14 @@ delete_invitations(Client, Input0, Options) ->
 %% IPSets are called trusted IP lists in the console user interface.
 delete_ip_set(Client, DetectorId, IpSetId, Input) ->
     delete_ip_set(Client, DetectorId, IpSetId, Input, []).
-delete_ip_set(Client, DetectorId, IpSetId, Input0, Options) ->
+delete_ip_set(Client, DetectorId, IpSetId, Input0, Options0) ->
     Method = delete,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -438,10 +494,14 @@ delete_ip_set(Client, DetectorId, IpSetId, Input0, Options) ->
 %% administrator account) specified by the account IDs.
 delete_members(Client, DetectorId, Input) ->
     delete_members(Client, DetectorId, Input, []).
-delete_members(Client, DetectorId, Input0, Options) ->
+delete_members(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/delete"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -454,10 +514,14 @@ delete_members(Client, DetectorId, Input0, Options) ->
 %% @doc Deletes the publishing definition with the specified `destinationId'.
 delete_publishing_destination(Client, DestinationId, DetectorId, Input) ->
     delete_publishing_destination(Client, DestinationId, DetectorId, Input, []).
-delete_publishing_destination(Client, DestinationId, DetectorId, Input0, Options) ->
+delete_publishing_destination(Client, DestinationId, DetectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination/", aws_util:encode_uri(DestinationId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -470,10 +534,14 @@ delete_publishing_destination(Client, DestinationId, DetectorId, Input0, Options
 %% @doc Deletes the ThreatIntelSet specified by the ThreatIntelSet ID.
 delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input) ->
     delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input, []).
-delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options) ->
+delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options0) ->
     Method = delete,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset/", aws_util:encode_uri(ThreatIntelSetId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -493,10 +561,13 @@ describe_organization_configuration(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_organization_configuration(Client, DetectorId, QueryMap, HeadersMap, []).
 
-describe_organization_configuration(Client, DetectorId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_organization_configuration(Client, DetectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/admin"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -514,10 +585,13 @@ describe_publishing_destination(Client, DestinationId, DetectorId, QueryMap, Hea
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_publishing_destination(Client, DestinationId, DetectorId, QueryMap, HeadersMap, []).
 
-describe_publishing_destination(Client, DestinationId, DetectorId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_publishing_destination(Client, DestinationId, DetectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination/", aws_util:encode_uri(DestinationId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -529,10 +603,14 @@ describe_publishing_destination(Client, DestinationId, DetectorId, QueryMap, Hea
 %% delegated administrator.
 disable_organization_admin_account(Client, Input) ->
     disable_organization_admin_account(Client, Input, []).
-disable_organization_admin_account(Client, Input0, Options) ->
+disable_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/admin/disable"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -546,10 +624,14 @@ disable_organization_admin_account(Client, Input0, Options) ->
 %% administrator account.
 disassociate_from_master_account(Client, DetectorId, Input) ->
     disassociate_from_master_account(Client, DetectorId, Input, []).
-disassociate_from_master_account(Client, DetectorId, Input0, Options) ->
+disassociate_from_master_account(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/master/disassociate"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -563,10 +645,14 @@ disassociate_from_master_account(Client, DetectorId, Input0, Options) ->
 %% administrator account) specified by the account IDs.
 disassociate_members(Client, DetectorId, Input) ->
     disassociate_members(Client, DetectorId, Input, []).
-disassociate_members(Client, DetectorId, Input0, Options) ->
+disassociate_members(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/disassociate"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -580,10 +666,14 @@ disassociate_members(Client, DetectorId, Input0, Options) ->
 %% delegated administrator.
 enable_organization_admin_account(Client, Input) ->
     enable_organization_admin_account(Client, Input, []).
-enable_organization_admin_account(Client, Input0, Options) ->
+enable_organization_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/admin/enable"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -602,10 +692,13 @@ get_detector(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_detector(Client, DetectorId, QueryMap, HeadersMap, []).
 
-get_detector(Client, DetectorId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_detector(Client, DetectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -622,10 +715,13 @@ get_filter(Client, DetectorId, FilterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_filter(Client, DetectorId, FilterName, QueryMap, HeadersMap, []).
 
-get_filter(Client, DetectorId, FilterName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_filter(Client, DetectorId, FilterName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter/", aws_util:encode_uri(FilterName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -636,10 +732,14 @@ get_filter(Client, DetectorId, FilterName, QueryMap, HeadersMap, Options)
 %% @doc Describes Amazon GuardDuty findings specified by finding IDs.
 get_findings(Client, DetectorId, Input) ->
     get_findings(Client, DetectorId, Input, []).
-get_findings(Client, DetectorId, Input0, Options) ->
+get_findings(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/get"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -653,10 +753,14 @@ get_findings(Client, DetectorId, Input0, Options) ->
 %% ID.
 get_findings_statistics(Client, DetectorId, Input) ->
     get_findings_statistics(Client, DetectorId, Input, []).
-get_findings_statistics(Client, DetectorId, Input0, Options) ->
+get_findings_statistics(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/statistics"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -677,10 +781,13 @@ get_invitations_count(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_invitations_count(Client, QueryMap, HeadersMap, []).
 
-get_invitations_count(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_invitations_count(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/invitation/count"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -697,10 +804,13 @@ get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap, []).
 
-get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -718,10 +828,13 @@ get_master_account(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_master_account(Client, DetectorId, QueryMap, HeadersMap, []).
 
-get_master_account(Client, DetectorId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_master_account(Client, DetectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/master"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -733,10 +846,14 @@ get_master_account(Client, DetectorId, QueryMap, HeadersMap, Options)
 %% detector.
 get_member_detectors(Client, DetectorId, Input) ->
     get_member_detectors(Client, DetectorId, Input, []).
-get_member_detectors(Client, DetectorId, Input0, Options) ->
+get_member_detectors(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/detector/get"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -750,10 +867,14 @@ get_member_detectors(Client, DetectorId, Input0, Options) ->
 %% administrator account) specified by the account IDs.
 get_members(Client, DetectorId, Input) ->
     get_members(Client, DetectorId, Input, []).
-get_members(Client, DetectorId, Input0, Options) ->
+get_members(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/get"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -773,10 +894,13 @@ get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, QueryMap, HeadersMap, []).
 
-get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset/", aws_util:encode_uri(ThreatIntelSetId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -794,10 +918,14 @@ get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, QueryMap, HeadersMap,
 %% Calculated.
 get_usage_statistics(Client, DetectorId, Input) ->
     get_usage_statistics(Client, DetectorId, Input, []).
-get_usage_statistics(Client, DetectorId, Input0, Options) ->
+get_usage_statistics(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/usage/statistics"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -813,10 +941,14 @@ get_usage_statistics(Client, DetectorId, Input0, Options) ->
 %% GuardDuty administrator account.
 invite_members(Client, DetectorId, Input) ->
     invite_members(Client, DetectorId, Input, []).
-invite_members(Client, DetectorId, Input0, Options) ->
+invite_members(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/invite"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -836,10 +968,13 @@ list_detectors(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_detectors(Client, QueryMap, HeadersMap, []).
 
-list_detectors(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_detectors(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -861,10 +996,13 @@ list_filters(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_filters(Client, DetectorId, QueryMap, HeadersMap, []).
 
-list_filters(Client, DetectorId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_filters(Client, DetectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -880,10 +1018,14 @@ list_filters(Client, DetectorId, QueryMap, HeadersMap, Options)
 %% @doc Lists Amazon GuardDuty findings for the specified detector ID.
 list_findings(Client, DetectorId, Input) ->
     list_findings(Client, DetectorId, Input, []).
-list_findings(Client, DetectorId, Input0, Options) ->
+list_findings(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -903,10 +1045,13 @@ list_invitations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_invitations(Client, QueryMap, HeadersMap, []).
 
-list_invitations(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_invitations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/invitation"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -932,10 +1077,13 @@ list_ip_sets(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ip_sets(Client, DetectorId, QueryMap, HeadersMap, []).
 
-list_ip_sets(Client, DetectorId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_ip_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -958,10 +1106,13 @@ list_members(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_members(Client, DetectorId, QueryMap, HeadersMap, []).
 
-list_members(Client, DetectorId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_members(Client, DetectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -984,10 +1135,13 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_organization_admin_accounts(Client, QueryMap, HeadersMap, []).
 
-list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/admin"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1010,10 +1164,13 @@ list_publishing_destinations(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_publishing_destinations(Client, DetectorId, QueryMap, HeadersMap, []).
 
-list_publishing_destinations(Client, DetectorId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_publishing_destinations(Client, DetectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1039,10 +1196,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1063,10 +1223,13 @@ list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap, []).
 
-list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1085,10 +1248,14 @@ list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap, Options)
 %% monitoring with the `StopMonitoringMembers' operation.
 start_monitoring_members(Client, DetectorId, Input) ->
     start_monitoring_members(Client, DetectorId, Input, []).
-start_monitoring_members(Client, DetectorId, Input0, Options) ->
+start_monitoring_members(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/start"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1104,10 +1271,14 @@ start_monitoring_members(Client, DetectorId, Input0, Options) ->
 %% accounts.
 stop_monitoring_members(Client, DetectorId, Input) ->
     stop_monitoring_members(Client, DetectorId, Input, []).
-stop_monitoring_members(Client, DetectorId, Input0, Options) ->
+stop_monitoring_members(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/stop"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1120,10 +1291,14 @@ stop_monitoring_members(Client, DetectorId, Input0, Options) ->
 %% @doc Adds tags to a resource.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1136,10 +1311,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Unarchives GuardDuty findings specified by the `findingIds'.
 unarchive_findings(Client, DetectorId, Input) ->
     unarchive_findings(Client, DetectorId, Input, []).
-unarchive_findings(Client, DetectorId, Input0, Options) ->
+unarchive_findings(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/unarchive"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1152,10 +1331,14 @@ unarchive_findings(Client, DetectorId, Input0, Options) ->
 %% @doc Removes tags from a resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1169,10 +1352,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Updates the Amazon GuardDuty detector specified by the detectorId.
 update_detector(Client, DetectorId, Input) ->
     update_detector(Client, DetectorId, Input, []).
-update_detector(Client, DetectorId, Input0, Options) ->
+update_detector(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1185,10 +1372,14 @@ update_detector(Client, DetectorId, Input0, Options) ->
 %% @doc Updates the filter specified by the filter name.
 update_filter(Client, DetectorId, FilterName, Input) ->
     update_filter(Client, DetectorId, FilterName, Input, []).
-update_filter(Client, DetectorId, FilterName, Input0, Options) ->
+update_filter(Client, DetectorId, FilterName, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter/", aws_util:encode_uri(FilterName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1201,10 +1392,14 @@ update_filter(Client, DetectorId, FilterName, Input0, Options) ->
 %% @doc Marks the specified GuardDuty findings as useful or not useful.
 update_findings_feedback(Client, DetectorId, Input) ->
     update_findings_feedback(Client, DetectorId, Input, []).
-update_findings_feedback(Client, DetectorId, Input0, Options) ->
+update_findings_feedback(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/feedback"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1217,10 +1412,14 @@ update_findings_feedback(Client, DetectorId, Input0, Options) ->
 %% @doc Updates the IPSet specified by the IPSet ID.
 update_ip_set(Client, DetectorId, IpSetId, Input) ->
     update_ip_set(Client, DetectorId, IpSetId, Input, []).
-update_ip_set(Client, DetectorId, IpSetId, Input0, Options) ->
+update_ip_set(Client, DetectorId, IpSetId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1233,10 +1432,14 @@ update_ip_set(Client, DetectorId, IpSetId, Input0, Options) ->
 %% @doc Contains information on member accounts to be updated.
 update_member_detectors(Client, DetectorId, Input) ->
     update_member_detectors(Client, DetectorId, Input, []).
-update_member_detectors(Client, DetectorId, Input0, Options) ->
+update_member_detectors(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/detector/update"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1249,10 +1452,14 @@ update_member_detectors(Client, DetectorId, Input0, Options) ->
 %% @doc Updates the delegated administrator account with the values provided.
 update_organization_configuration(Client, DetectorId, Input) ->
     update_organization_configuration(Client, DetectorId, Input, []).
-update_organization_configuration(Client, DetectorId, Input0, Options) ->
+update_organization_configuration(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/admin"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1266,10 +1473,14 @@ update_organization_configuration(Client, DetectorId, Input0, Options) ->
 %% `destinationId'.
 update_publishing_destination(Client, DestinationId, DetectorId, Input) ->
     update_publishing_destination(Client, DestinationId, DetectorId, Input, []).
-update_publishing_destination(Client, DestinationId, DetectorId, Input0, Options) ->
+update_publishing_destination(Client, DestinationId, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination/", aws_util:encode_uri(DestinationId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1282,10 +1493,14 @@ update_publishing_destination(Client, DestinationId, DetectorId, Input0, Options
 %% @doc Updates the ThreatIntelSet specified by the ThreatIntelSet ID.
 update_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input) ->
     update_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input, []).
-update_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options) ->
+update_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset/", aws_util:encode_uri(ThreatIntelSetId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1317,19 +1532,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -1339,14 +1555,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

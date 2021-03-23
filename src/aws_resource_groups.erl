@@ -99,10 +99,14 @@
 %% </li> </ul>
 create_group(Client, Input) ->
     create_group(Client, Input, []).
-create_group(Client, Input0, Options) ->
+create_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/groups"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -126,10 +130,14 @@ create_group(Client, Input0, Options) ->
 %% </li> </ul>
 delete_group(Client, Input) ->
     delete_group(Client, Input, []).
-delete_group(Client, Input0, Options) ->
+delete_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-group"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -150,10 +158,14 @@ delete_group(Client, Input0, Options) ->
 %% </li> </ul>
 get_group(Client, Input) ->
     get_group(Client, Input, []).
-get_group(Client, Input0, Options) ->
+get_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-group"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -178,10 +190,14 @@ get_group(Client, Input0, Options) ->
 %% </li> </ul>
 get_group_configuration(Client, Input) ->
     get_group_configuration(Client, Input, []).
-get_group_configuration(Client, Input0, Options) ->
+get_group_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-group-configuration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -206,10 +222,14 @@ get_group_configuration(Client, Input0, Options) ->
 %% </li> </ul>
 get_group_query(Client, Input) ->
     get_group_query(Client, Input, []).
-get_group_query(Client, Input0, Options) ->
+get_group_query(Client, Input0, Options0) ->
     Method = post,
     Path = ["/get-group-query"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -237,10 +257,13 @@ get_tags(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_tags(Client, Arn, QueryMap, HeadersMap, []).
 
-get_tags(Client, Arn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_tags(Client, Arn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resources/", aws_util:encode_uri(Arn), "/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -259,10 +282,14 @@ get_tags(Client, Arn, QueryMap, HeadersMap, Options)
 %% </li> </ul>
 group_resources(Client, Input) ->
     group_resources(Client, Input, []).
-group_resources(Client, Input0, Options) ->
+group_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/group-resources"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -284,10 +311,14 @@ group_resources(Client, Input0, Options) ->
 %% </li> </ul>
 list_group_resources(Client, Input) ->
     list_group_resources(Client, Input, []).
-list_group_resources(Client, Input0, Options) ->
+list_group_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-group-resources"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -308,10 +339,14 @@ list_group_resources(Client, Input0, Options) ->
 %% </li> </ul>
 list_groups(Client, Input) ->
     list_groups(Client, Input, []).
-list_groups(Client, Input0, Options) ->
+list_groups(Client, Input0, Options0) ->
     Method = post,
     Path = ["/groups-list"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -337,10 +372,14 @@ list_groups(Client, Input0, Options) ->
 %% </li> </ul>
 put_group_configuration(Client, Input) ->
     put_group_configuration(Client, Input, []).
-put_group_configuration(Client, Input0, Options) ->
+put_group_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/put-group-configuration"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -365,10 +404,14 @@ put_group_configuration(Client, Input0, Options) ->
 %% </li> </ul>
 search_resources(Client, Input) ->
     search_resources(Client, Input, []).
-search_resources(Client, Input0, Options) ->
+search_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/resources/search"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -397,10 +440,14 @@ search_resources(Client, Input0, Options) ->
 %% </li> </ul>
 tag(Client, Arn, Input) ->
     tag(Client, Arn, Input, []).
-tag(Client, Arn, Input0, Options) ->
+tag(Client, Arn, Input0, Options0) ->
     Method = put,
     Path = ["/resources/", aws_util:encode_uri(Arn), "/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -421,10 +468,14 @@ tag(Client, Arn, Input0, Options) ->
 %% </li> </ul>
 ungroup_resources(Client, Input) ->
     ungroup_resources(Client, Input, []).
-ungroup_resources(Client, Input0, Options) ->
+ungroup_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ungroup-resources"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -445,10 +496,14 @@ ungroup_resources(Client, Input0, Options) ->
 %% </li> </ul>
 untag(Client, Arn, Input) ->
     untag(Client, Arn, Input, []).
-untag(Client, Arn, Input0, Options) ->
+untag(Client, Arn, Input0, Options0) ->
     Method = patch,
     Path = ["/resources/", aws_util:encode_uri(Arn), "/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -471,10 +526,14 @@ untag(Client, Arn, Input0, Options) ->
 %% </li> </ul>
 update_group(Client, Input) ->
     update_group(Client, Input, []).
-update_group(Client, Input0, Options) ->
+update_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-group"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -498,10 +557,14 @@ update_group(Client, Input0, Options) ->
 %% </li> </ul>
 update_group_query(Client, Input) ->
     update_group_query(Client, Input, []).
-update_group_query(Client, Input0, Options) ->
+update_group_query(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-group-query"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -533,19 +596,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -555,14 +619,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

@@ -77,10 +77,14 @@
 %% Note: This API is asynchronous.
 create_broker(Client, Input) ->
     create_broker(Client, Input, []).
-create_broker(Client, Input0, Options) ->
+create_broker(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/brokers"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -95,10 +99,14 @@ create_broker(Client, Input0, Options) ->
 %% Amazon MQ uses the default configuration (the engine type and version).
 create_configuration(Client, Input) ->
     create_configuration(Client, Input, []).
-create_configuration(Client, Input0, Options) ->
+create_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/configurations"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -111,10 +119,14 @@ create_configuration(Client, Input0, Options) ->
 %% @doc Add a tag to a resource.
 create_tags(Client, ResourceArn, Input) ->
     create_tags(Client, ResourceArn, Input, []).
-create_tags(Client, ResourceArn, Input0, Options) ->
+create_tags(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -127,10 +139,14 @@ create_tags(Client, ResourceArn, Input0, Options) ->
 %% @doc Creates an ActiveMQ user.
 create_user(Client, BrokerId, Username, Input) ->
     create_user(Client, BrokerId, Username, Input, []).
-create_user(Client, BrokerId, Username, Input0, Options) ->
+create_user(Client, BrokerId, Username, Input0, Options0) ->
     Method = post,
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/users/", aws_util:encode_uri(Username), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -145,10 +161,14 @@ create_user(Client, BrokerId, Username, Input0, Options) ->
 %% Note: This API is asynchronous.
 delete_broker(Client, BrokerId, Input) ->
     delete_broker(Client, BrokerId, Input, []).
-delete_broker(Client, BrokerId, Input0, Options) ->
+delete_broker(Client, BrokerId, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -161,10 +181,14 @@ delete_broker(Client, BrokerId, Input0, Options) ->
 %% @doc Removes a tag from a resource.
 delete_tags(Client, ResourceArn, Input) ->
     delete_tags(Client, ResourceArn, Input, []).
-delete_tags(Client, ResourceArn, Input0, Options) ->
+delete_tags(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -178,10 +202,14 @@ delete_tags(Client, ResourceArn, Input0, Options) ->
 %% @doc Deletes an ActiveMQ user.
 delete_user(Client, BrokerId, Username, Input) ->
     delete_user(Client, BrokerId, Username, Input, []).
-delete_user(Client, BrokerId, Username, Input0, Options) ->
+delete_user(Client, BrokerId, Username, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/users/", aws_util:encode_uri(Username), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -200,10 +228,13 @@ describe_broker(Client, BrokerId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_broker(Client, BrokerId, QueryMap, HeadersMap, []).
 
-describe_broker(Client, BrokerId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_broker(Client, BrokerId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -220,10 +251,13 @@ describe_broker_engine_types(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_broker_engine_types(Client, QueryMap, HeadersMap, []).
 
-describe_broker_engine_types(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_broker_engine_types(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/broker-engine-types"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -246,10 +280,13 @@ describe_broker_instance_options(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_broker_instance_options(Client, QueryMap, HeadersMap, []).
 
-describe_broker_instance_options(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_broker_instance_options(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/broker-instance-options"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -274,10 +311,13 @@ describe_configuration(Client, ConfigurationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_configuration(Client, ConfigurationId, QueryMap, HeadersMap, []).
 
-describe_configuration(Client, ConfigurationId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_configuration(Client, ConfigurationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/configurations/", aws_util:encode_uri(ConfigurationId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -295,10 +335,13 @@ describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, QueryMap, HeadersMap, []).
 
-describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/configurations/", aws_util:encode_uri(ConfigurationId), "/revisions/", aws_util:encode_uri(ConfigurationRevision), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -315,10 +358,13 @@ describe_user(Client, BrokerId, Username, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_user(Client, BrokerId, Username, QueryMap, HeadersMap, []).
 
-describe_user(Client, BrokerId, Username, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_user(Client, BrokerId, Username, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/users/", aws_util:encode_uri(Username), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -335,10 +381,13 @@ list_brokers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_brokers(Client, QueryMap, HeadersMap, []).
 
-list_brokers(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_brokers(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/brokers"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -360,10 +409,13 @@ list_configuration_revisions(Client, ConfigurationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configuration_revisions(Client, ConfigurationId, QueryMap, HeadersMap, []).
 
-list_configuration_revisions(Client, ConfigurationId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_configuration_revisions(Client, ConfigurationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/configurations/", aws_util:encode_uri(ConfigurationId), "/revisions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -385,10 +437,13 @@ list_configurations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_configurations(Client, QueryMap, HeadersMap, []).
 
-list_configurations(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_configurations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/configurations"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -410,10 +465,13 @@ list_tags(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -430,10 +488,13 @@ list_users(Client, BrokerId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_users(Client, BrokerId, QueryMap, HeadersMap, []).
 
-list_users(Client, BrokerId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_users(Client, BrokerId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/users"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -451,10 +512,14 @@ list_users(Client, BrokerId, QueryMap, HeadersMap, Options)
 %% Note: This API is asynchronous.
 reboot_broker(Client, BrokerId, Input) ->
     reboot_broker(Client, BrokerId, Input, []).
-reboot_broker(Client, BrokerId, Input0, Options) ->
+reboot_broker(Client, BrokerId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/reboot"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -467,10 +532,14 @@ reboot_broker(Client, BrokerId, Input0, Options) ->
 %% @doc Adds a pending configuration change to a broker.
 update_broker(Client, BrokerId, Input) ->
     update_broker(Client, BrokerId, Input, []).
-update_broker(Client, BrokerId, Input0, Options) ->
+update_broker(Client, BrokerId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -483,10 +552,14 @@ update_broker(Client, BrokerId, Input0, Options) ->
 %% @doc Updates the specified configuration.
 update_configuration(Client, ConfigurationId, Input) ->
     update_configuration(Client, ConfigurationId, Input, []).
-update_configuration(Client, ConfigurationId, Input0, Options) ->
+update_configuration(Client, ConfigurationId, Input0, Options0) ->
     Method = put,
     Path = ["/v1/configurations/", aws_util:encode_uri(ConfigurationId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -499,10 +572,14 @@ update_configuration(Client, ConfigurationId, Input0, Options) ->
 %% @doc Updates the information for an ActiveMQ user.
 update_user(Client, BrokerId, Username, Input) ->
     update_user(Client, BrokerId, Username, Input, []).
-update_user(Client, BrokerId, Username, Input0, Options) ->
+update_user(Client, BrokerId, Username, Input0, Options0) ->
     Method = put,
     Path = ["/v1/brokers/", aws_util:encode_uri(BrokerId), "/users/", aws_util:encode_uri(Username), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -534,19 +611,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -556,14 +634,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

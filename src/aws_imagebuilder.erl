@@ -129,10 +129,14 @@
 %% This operation can only be used on images in a non-terminal state.
 cancel_image_creation(Client, Input) ->
     cancel_image_creation(Client, Input, []).
-cancel_image_creation(Client, Input0, Options) ->
+cancel_image_creation(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CancelImageCreation"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -146,10 +150,14 @@ cancel_image_creation(Client, Input0, Options) ->
 %% and assess your image.
 create_component(Client, Input) ->
     create_component(Client, Input, []).
-create_component(Client, Input0, Options) ->
+create_component(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateComponent"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -164,10 +172,14 @@ create_component(Client, Input0, Options) ->
 %% Container recipes define how images are configured, tested, and assessed.
 create_container_recipe(Client, Input) ->
     create_container_recipe(Client, Input, []).
-create_container_recipe(Client, Input0, Options) ->
+create_container_recipe(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateContainerRecipe"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -183,10 +195,14 @@ create_container_recipe(Client, Input0, Options) ->
 %% pipeline.
 create_distribution_configuration(Client, Input) ->
     create_distribution_configuration(Client, Input, []).
-create_distribution_configuration(Client, Input0, Options) ->
+create_distribution_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateDistributionConfiguration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -202,10 +218,14 @@ create_distribution_configuration(Client, Input0, Options) ->
 %% output resources defined in the distribution configuration.
 create_image(Client, Input) ->
     create_image(Client, Input, []).
-create_image(Client, Input0, Options) ->
+create_image(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateImage"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -221,10 +241,14 @@ create_image(Client, Input0, Options) ->
 %% images.
 create_image_pipeline(Client, Input) ->
     create_image_pipeline(Client, Input, []).
-create_image_pipeline(Client, Input0, Options) ->
+create_image_pipeline(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateImagePipeline"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -239,10 +263,14 @@ create_image_pipeline(Client, Input0, Options) ->
 %% Image recipes define how images are configured, tested, and assessed.
 create_image_recipe(Client, Input) ->
     create_image_recipe(Client, Input, []).
-create_image_recipe(Client, Input0, Options) ->
+create_image_recipe(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateImageRecipe"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -258,10 +286,14 @@ create_image_recipe(Client, Input0, Options) ->
 %% image will be built and tested.
 create_infrastructure_configuration(Client, Input) ->
     create_infrastructure_configuration(Client, Input, []).
-create_infrastructure_configuration(Client, Input0, Options) ->
+create_infrastructure_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/CreateInfrastructureConfiguration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -274,10 +306,14 @@ create_infrastructure_configuration(Client, Input0, Options) ->
 %% @doc Deletes a component build version.
 delete_component(Client, Input) ->
     delete_component(Client, Input, []).
-delete_component(Client, Input0, Options) ->
+delete_component(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteComponent"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -291,10 +327,14 @@ delete_component(Client, Input0, Options) ->
 %% @doc Deletes a container recipe.
 delete_container_recipe(Client, Input) ->
     delete_container_recipe(Client, Input, []).
-delete_container_recipe(Client, Input0, Options) ->
+delete_container_recipe(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteContainerRecipe"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -308,10 +348,14 @@ delete_container_recipe(Client, Input0, Options) ->
 %% @doc Deletes a distribution configuration.
 delete_distribution_configuration(Client, Input) ->
     delete_distribution_configuration(Client, Input, []).
-delete_distribution_configuration(Client, Input0, Options) ->
+delete_distribution_configuration(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteDistributionConfiguration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -325,10 +369,14 @@ delete_distribution_configuration(Client, Input0, Options) ->
 %% @doc Deletes an image.
 delete_image(Client, Input) ->
     delete_image(Client, Input, []).
-delete_image(Client, Input0, Options) ->
+delete_image(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteImage"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -342,10 +390,14 @@ delete_image(Client, Input0, Options) ->
 %% @doc Deletes an image pipeline.
 delete_image_pipeline(Client, Input) ->
     delete_image_pipeline(Client, Input, []).
-delete_image_pipeline(Client, Input0, Options) ->
+delete_image_pipeline(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteImagePipeline"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -359,10 +411,14 @@ delete_image_pipeline(Client, Input0, Options) ->
 %% @doc Deletes an image recipe.
 delete_image_recipe(Client, Input) ->
     delete_image_recipe(Client, Input, []).
-delete_image_recipe(Client, Input0, Options) ->
+delete_image_recipe(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteImageRecipe"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -376,10 +432,14 @@ delete_image_recipe(Client, Input0, Options) ->
 %% @doc Deletes an infrastructure configuration.
 delete_infrastructure_configuration(Client, Input) ->
     delete_infrastructure_configuration(Client, Input, []).
-delete_infrastructure_configuration(Client, Input0, Options) ->
+delete_infrastructure_configuration(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/DeleteInfrastructureConfiguration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -399,10 +459,13 @@ get_component(Client, ComponentBuildVersionArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_component(Client, ComponentBuildVersionArn, QueryMap, HeadersMap, []).
 
-get_component(Client, ComponentBuildVersionArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_component(Client, ComponentBuildVersionArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetComponent"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -423,10 +486,13 @@ get_component_policy(Client, ComponentArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_component_policy(Client, ComponentArn, QueryMap, HeadersMap, []).
 
-get_component_policy(Client, ComponentArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_component_policy(Client, ComponentArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetComponentPolicy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -447,10 +513,13 @@ get_container_recipe(Client, ContainerRecipeArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_container_recipe(Client, ContainerRecipeArn, QueryMap, HeadersMap, []).
 
-get_container_recipe(Client, ContainerRecipeArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_container_recipe(Client, ContainerRecipeArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetContainerRecipe"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -471,10 +540,13 @@ get_container_recipe_policy(Client, ContainerRecipeArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_container_recipe_policy(Client, ContainerRecipeArn, QueryMap, HeadersMap, []).
 
-get_container_recipe_policy(Client, ContainerRecipeArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_container_recipe_policy(Client, ContainerRecipeArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetContainerRecipePolicy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -495,10 +567,13 @@ get_distribution_configuration(Client, DistributionConfigurationArn, QueryMap, H
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_distribution_configuration(Client, DistributionConfigurationArn, QueryMap, HeadersMap, []).
 
-get_distribution_configuration(Client, DistributionConfigurationArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_distribution_configuration(Client, DistributionConfigurationArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetDistributionConfiguration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -519,10 +594,13 @@ get_image(Client, ImageBuildVersionArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_image(Client, ImageBuildVersionArn, QueryMap, HeadersMap, []).
 
-get_image(Client, ImageBuildVersionArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_image(Client, ImageBuildVersionArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetImage"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -543,10 +621,13 @@ get_image_pipeline(Client, ImagePipelineArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_image_pipeline(Client, ImagePipelineArn, QueryMap, HeadersMap, []).
 
-get_image_pipeline(Client, ImagePipelineArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_image_pipeline(Client, ImagePipelineArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetImagePipeline"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -567,10 +648,13 @@ get_image_policy(Client, ImageArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_image_policy(Client, ImageArn, QueryMap, HeadersMap, []).
 
-get_image_policy(Client, ImageArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_image_policy(Client, ImageArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetImagePolicy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -591,10 +675,13 @@ get_image_recipe(Client, ImageRecipeArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_image_recipe(Client, ImageRecipeArn, QueryMap, HeadersMap, []).
 
-get_image_recipe(Client, ImageRecipeArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_image_recipe(Client, ImageRecipeArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetImageRecipe"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -615,10 +702,13 @@ get_image_recipe_policy(Client, ImageRecipeArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_image_recipe_policy(Client, ImageRecipeArn, QueryMap, HeadersMap, []).
 
-get_image_recipe_policy(Client, ImageRecipeArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_image_recipe_policy(Client, ImageRecipeArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetImageRecipePolicy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -639,10 +729,13 @@ get_infrastructure_configuration(Client, InfrastructureConfigurationArn, QueryMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_infrastructure_configuration(Client, InfrastructureConfigurationArn, QueryMap, HeadersMap, []).
 
-get_infrastructure_configuration(Client, InfrastructureConfigurationArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_infrastructure_configuration(Client, InfrastructureConfigurationArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/GetInfrastructureConfiguration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -658,10 +751,14 @@ get_infrastructure_configuration(Client, InfrastructureConfigurationArn, QueryMa
 %% document.
 import_component(Client, Input) ->
     import_component(Client, Input, []).
-import_component(Client, Input0, Options) ->
+import_component(Client, Input0, Options0) ->
     Method = put,
     Path = ["/ImportComponent"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -675,10 +772,14 @@ import_component(Client, Input0, Options) ->
 %% semantic version.
 list_component_build_versions(Client, Input) ->
     list_component_build_versions(Client, Input, []).
-list_component_build_versions(Client, Input0, Options) ->
+list_component_build_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListComponentBuildVersions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -692,10 +793,14 @@ list_component_build_versions(Client, Input0, Options) ->
 %% semantic version.
 list_components(Client, Input) ->
     list_components(Client, Input, []).
-list_components(Client, Input0, Options) ->
+list_components(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListComponents"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -708,10 +813,14 @@ list_components(Client, Input0, Options) ->
 %% @doc Returns a list of container recipes.
 list_container_recipes(Client, Input) ->
     list_container_recipes(Client, Input, []).
-list_container_recipes(Client, Input0, Options) ->
+list_container_recipes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListContainerRecipes"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -724,10 +833,14 @@ list_container_recipes(Client, Input0, Options) ->
 %% @doc Returns a list of distribution configurations.
 list_distribution_configurations(Client, Input) ->
     list_distribution_configurations(Client, Input, []).
-list_distribution_configurations(Client, Input0, Options) ->
+list_distribution_configurations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListDistributionConfigurations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -740,10 +853,14 @@ list_distribution_configurations(Client, Input0, Options) ->
 %% @doc Returns a list of image build versions.
 list_image_build_versions(Client, Input) ->
     list_image_build_versions(Client, Input, []).
-list_image_build_versions(Client, Input0, Options) ->
+list_image_build_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListImageBuildVersions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -757,10 +874,14 @@ list_image_build_versions(Client, Input0, Options) ->
 %% determined by AWS Systems Manager Inventory at build time.
 list_image_packages(Client, Input) ->
     list_image_packages(Client, Input, []).
-list_image_packages(Client, Input0, Options) ->
+list_image_packages(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListImagePackages"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -773,10 +894,14 @@ list_image_packages(Client, Input0, Options) ->
 %% @doc Returns a list of images created by the specified pipeline.
 list_image_pipeline_images(Client, Input) ->
     list_image_pipeline_images(Client, Input, []).
-list_image_pipeline_images(Client, Input0, Options) ->
+list_image_pipeline_images(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListImagePipelineImages"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -789,10 +914,14 @@ list_image_pipeline_images(Client, Input0, Options) ->
 %% @doc Returns a list of image pipelines.
 list_image_pipelines(Client, Input) ->
     list_image_pipelines(Client, Input, []).
-list_image_pipelines(Client, Input0, Options) ->
+list_image_pipelines(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListImagePipelines"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -805,10 +934,14 @@ list_image_pipelines(Client, Input0, Options) ->
 %% @doc Returns a list of image recipes.
 list_image_recipes(Client, Input) ->
     list_image_recipes(Client, Input, []).
-list_image_recipes(Client, Input0, Options) ->
+list_image_recipes(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListImageRecipes"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -821,10 +954,14 @@ list_image_recipes(Client, Input0, Options) ->
 %% @doc Returns the list of images that you have access to.
 list_images(Client, Input) ->
     list_images(Client, Input, []).
-list_images(Client, Input0, Options) ->
+list_images(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListImages"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -837,10 +974,14 @@ list_images(Client, Input0, Options) ->
 %% @doc Returns a list of infrastructure configurations.
 list_infrastructure_configurations(Client, Input) ->
     list_infrastructure_configurations(Client, Input, []).
-list_infrastructure_configurations(Client, Input0, Options) ->
+list_infrastructure_configurations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListInfrastructureConfigurations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -859,10 +1000,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -879,10 +1023,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% shared.
 put_component_policy(Client, Input) ->
     put_component_policy(Client, Input, []).
-put_component_policy(Client, Input0, Options) ->
+put_component_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/PutComponentPolicy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -904,10 +1052,14 @@ put_component_policy(Client, Input0, Options) ->
 %% resource is shared.
 put_container_recipe_policy(Client, Input) ->
     put_container_recipe_policy(Client, Input, []).
-put_container_recipe_policy(Client, Input0, Options) ->
+put_container_recipe_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/PutContainerRecipePolicy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -926,10 +1078,14 @@ put_container_recipe_policy(Client, Input0, Options) ->
 %% shared.
 put_image_policy(Client, Input) ->
     put_image_policy(Client, Input, []).
-put_image_policy(Client, Input0, Options) ->
+put_image_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/PutImagePolicy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -948,10 +1104,14 @@ put_image_policy(Client, Input0, Options) ->
 %% shared.
 put_image_recipe_policy(Client, Input) ->
     put_image_recipe_policy(Client, Input, []).
-put_image_recipe_policy(Client, Input0, Options) ->
+put_image_recipe_policy(Client, Input0, Options0) ->
     Method = put,
     Path = ["/PutImageRecipePolicy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -964,10 +1124,14 @@ put_image_recipe_policy(Client, Input0, Options) ->
 %% @doc Manually triggers a pipeline to create an image.
 start_image_pipeline_execution(Client, Input) ->
     start_image_pipeline_execution(Client, Input, []).
-start_image_pipeline_execution(Client, Input0, Options) ->
+start_image_pipeline_execution(Client, Input0, Options0) ->
     Method = put,
     Path = ["/StartImagePipelineExecution"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -980,10 +1144,14 @@ start_image_pipeline_execution(Client, Input0, Options) ->
 %% @doc Adds a tag to a resource.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -996,10 +1164,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Removes a tag from a resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1016,10 +1188,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% pipeline.
 update_distribution_configuration(Client, Input) ->
     update_distribution_configuration(Client, Input, []).
-update_distribution_configuration(Client, Input0, Options) ->
+update_distribution_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/UpdateDistributionConfiguration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1035,10 +1211,14 @@ update_distribution_configuration(Client, Input0, Options) ->
 %% images.
 update_image_pipeline(Client, Input) ->
     update_image_pipeline(Client, Input, []).
-update_image_pipeline(Client, Input0, Options) ->
+update_image_pipeline(Client, Input0, Options0) ->
     Method = put,
     Path = ["/UpdateImagePipeline"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1054,10 +1234,14 @@ update_image_pipeline(Client, Input0, Options) ->
 %% image will be built and tested.
 update_infrastructure_configuration(Client, Input) ->
     update_infrastructure_configuration(Client, Input, []).
-update_infrastructure_configuration(Client, Input0, Options) ->
+update_infrastructure_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/UpdateInfrastructureConfiguration"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1089,19 +1273,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -1111,14 +1296,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

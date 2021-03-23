@@ -78,10 +78,14 @@
 %% more information, see Security Considerations for Synthetics Canaries.
 create_canary(Client, Input) ->
     create_canary(Client, Input, []).
-create_canary(Client, Input0, Options) ->
+create_canary(Client, Input0, Options0) ->
     Method = post,
     Path = ["/canary"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -119,10 +123,14 @@ create_canary(Client, Input0, Options) ->
 %% you delete the canary.
 delete_canary(Client, Name, Input) ->
     delete_canary(Client, Name, Input, []).
-delete_canary(Client, Name, Input0, Options) ->
+delete_canary(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/canary/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -141,10 +149,14 @@ delete_canary(Client, Name, Input0, Options) ->
 %% canaries. It cannot be used on specific resources.
 describe_canaries(Client, Input) ->
     describe_canaries(Client, Input, []).
-describe_canaries(Client, Input0, Options) ->
+describe_canaries(Client, Input0, Options0) ->
     Method = post,
     Path = ["/canaries"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -158,10 +170,14 @@ describe_canaries(Client, Input0, Options) ->
 %% each canary that you have created.
 describe_canaries_last_run(Client, Input) ->
     describe_canaries_last_run(Client, Input, []).
-describe_canaries_last_run(Client, Input0, Options) ->
+describe_canaries_last_run(Client, Input0, Options0) ->
     Method = post,
     Path = ["/canaries/last-run"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -176,10 +192,14 @@ describe_canaries_last_run(Client, Input0, Options) ->
 %% For more information, see Canary Runtime Versions.
 describe_runtime_versions(Client, Input) ->
     describe_runtime_versions(Client, Input, []).
-describe_runtime_versions(Client, Input0, Options) ->
+describe_runtime_versions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/runtime-versions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -201,10 +221,13 @@ get_canary(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_canary(Client, Name, QueryMap, HeadersMap, []).
 
-get_canary(Client, Name, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_canary(Client, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/canary/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -215,10 +238,14 @@ get_canary(Client, Name, QueryMap, HeadersMap, Options)
 %% @doc Retrieves a list of runs for a specified canary.
 get_canary_runs(Client, Name, Input) ->
     get_canary_runs(Client, Name, Input, []).
-get_canary_runs(Client, Name, Input0, Options) ->
+get_canary_runs(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/canary/", aws_util:encode_uri(Name), "/runs"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -237,10 +264,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -254,10 +284,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% canary's `Schedule'. To see a canary's schedule, use GetCanary.
 start_canary(Client, Name, Input) ->
     start_canary(Client, Name, Input, []).
-start_canary(Client, Name, Input0, Options) ->
+start_canary(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/canary/", aws_util:encode_uri(Name), "/start"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -278,10 +312,14 @@ start_canary(Client, Name, Input0, Options) ->
 %% current schedule at any point in the future.
 stop_canary(Client, Name, Input) ->
     stop_canary(Client, Name, Input, []).
-stop_canary(Client, Name, Input0, Options) ->
+stop_canary(Client, Name, Input0, Options0) ->
     Method = post,
     Path = ["/canary/", aws_util:encode_uri(Name), "/stop"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -309,10 +347,14 @@ stop_canary(Client, Name, Input0, Options) ->
 %% You can associate as many as 50 tags with a canary.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -325,10 +367,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Removes one or more tags from the specified canary.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -346,10 +392,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% change the tags of an existing canary, use TagResource.
 update_canary(Client, Name, Input) ->
     update_canary(Client, Name, Input, []).
-update_canary(Client, Name, Input0, Options) ->
+update_canary(Client, Name, Input0, Options0) ->
     Method = patch,
     Path = ["/canary/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -381,19 +431,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -403,14 +454,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

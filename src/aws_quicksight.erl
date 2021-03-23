@@ -262,10 +262,14 @@
 %% @doc Cancels an ongoing ingestion of data into SPICE.
 cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input) ->
     cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input, []).
-cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options) ->
+cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions/", aws_util:encode_uri(IngestionId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -298,10 +302,14 @@ cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options) 
 %% permissions by using the ` `UpdateThemePermissions' ' API operation.
 create_account_customization(Client, AwsAccountId, Input) ->
     create_account_customization(Client, AwsAccountId, Input, []).
-create_account_customization(Client, AwsAccountId, Input0, Options) ->
+create_account_customization(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/customizations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -315,10 +323,14 @@ create_account_customization(Client, AwsAccountId, Input0, Options) ->
 %% @doc Creates an analysis in Amazon QuickSight.
 create_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     create_analysis(Client, AnalysisId, AwsAccountId, Input, []).
-create_analysis(Client, AnalysisId, AwsAccountId, Input0, Options) ->
+create_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -339,10 +351,14 @@ create_analysis(Client, AnalysisId, AwsAccountId, Input0, Options) ->
 %% exists in a different AWS account.
 create_dashboard(Client, AwsAccountId, DashboardId, Input) ->
     create_dashboard(Client, AwsAccountId, DashboardId, Input, []).
-create_dashboard(Client, AwsAccountId, DashboardId, Input0, Options) ->
+create_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -355,10 +371,14 @@ create_dashboard(Client, AwsAccountId, DashboardId, Input0, Options) ->
 %% @doc Creates a dataset.
 create_data_set(Client, AwsAccountId, Input) ->
     create_data_set(Client, AwsAccountId, Input, []).
-create_data_set(Client, AwsAccountId, Input0, Options) ->
+create_data_set(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -371,10 +391,14 @@ create_data_set(Client, AwsAccountId, Input0, Options) ->
 %% @doc Creates a data source.
 create_data_source(Client, AwsAccountId, Input) ->
     create_data_source(Client, AwsAccountId, Input, []).
-create_data_source(Client, AwsAccountId, Input0, Options) ->
+create_data_source(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -393,10 +417,14 @@ create_data_source(Client, AwsAccountId, Input0, Options) ->
 %% The response is a group object.
 create_group(Client, AwsAccountId, Namespace, Input) ->
     create_group(Client, AwsAccountId, Namespace, Input, []).
-create_group(Client, AwsAccountId, Namespace, Input0, Options) ->
+create_group(Client, AwsAccountId, Namespace, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -409,10 +437,14 @@ create_group(Client, AwsAccountId, Namespace, Input0, Options) ->
 %% @doc Adds an Amazon QuickSight user to an Amazon QuickSight group.
 create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input) ->
     create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input, []).
-create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input0, Options) ->
+create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), "/members/", aws_util:encode_uri(MemberName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -431,10 +463,14 @@ create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, 
 %% unique.
 create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input) ->
     create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input, []).
-create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input0, Options) ->
+create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -454,10 +490,14 @@ create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input0, Options) -
 %% visible on the tagged dataset, but not on the ingestion resource.
 create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input) ->
     create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input, []).
-create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options) ->
+create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions/", aws_util:encode_uri(IngestionId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -479,10 +519,14 @@ create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options) 
 %% AWS account. To increase your limit, create a ticket with AWS Support.
 create_namespace(Client, AwsAccountId, Input) ->
     create_namespace(Client, AwsAccountId, Input, []).
-create_namespace(Client, AwsAccountId, Input0, Options) ->
+create_namespace(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -504,10 +548,14 @@ create_namespace(Client, AwsAccountId, Input0, Options) ->
 %% same schema that was used to create the source analysis and template.
 create_template(Client, AwsAccountId, TemplateId, Input) ->
     create_template(Client, AwsAccountId, TemplateId, Input, []).
-create_template(Client, AwsAccountId, TemplateId, Input0, Options) ->
+create_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -520,10 +568,14 @@ create_template(Client, AwsAccountId, TemplateId, Input0, Options) ->
 %% @doc Creates a template alias for a template.
 create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input) ->
     create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input, []).
-create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Options) ->
+create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases/", aws_util:encode_uri(AliasName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -540,10 +592,14 @@ create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Optio
 %% Amazon QuickSight in the Amazon QuickSight User Guide.
 create_theme(Client, AwsAccountId, ThemeId, Input) ->
     create_theme(Client, AwsAccountId, ThemeId, Input, []).
-create_theme(Client, AwsAccountId, ThemeId, Input0, Options) ->
+create_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -556,10 +612,14 @@ create_theme(Client, AwsAccountId, ThemeId, Input0, Options) ->
 %% @doc Creates a theme alias for a theme.
 create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) ->
     create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input, []).
-create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options) ->
+create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases/", aws_util:encode_uri(AliasName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -573,10 +633,14 @@ create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options) ->
 %% the specified AWS account and QuickSight namespace.
 delete_account_customization(Client, AwsAccountId, Input) ->
     delete_account_customization(Client, AwsAccountId, Input, []).
-delete_account_customization(Client, AwsAccountId, Input0, Options) ->
+delete_account_customization(Client, AwsAccountId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/customizations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -605,10 +669,14 @@ delete_account_customization(Client, AwsAccountId, Input0, Options) ->
 %% analysis doesn't delete the dashboards that you publish from it.
 delete_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     delete_analysis(Client, AnalysisId, AwsAccountId, Input, []).
-delete_analysis(Client, AnalysisId, AwsAccountId, Input0, Options) ->
+delete_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -623,10 +691,14 @@ delete_analysis(Client, AnalysisId, AwsAccountId, Input0, Options) ->
 %% @doc Deletes a dashboard.
 delete_dashboard(Client, AwsAccountId, DashboardId, Input) ->
     delete_dashboard(Client, AwsAccountId, DashboardId, Input, []).
-delete_dashboard(Client, AwsAccountId, DashboardId, Input0, Options) ->
+delete_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -640,10 +712,14 @@ delete_dashboard(Client, AwsAccountId, DashboardId, Input0, Options) ->
 %% @doc Deletes a dataset.
 delete_data_set(Client, AwsAccountId, DataSetId, Input) ->
     delete_data_set(Client, AwsAccountId, DataSetId, Input, []).
-delete_data_set(Client, AwsAccountId, DataSetId, Input0, Options) ->
+delete_data_set(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -659,10 +735,14 @@ delete_data_set(Client, AwsAccountId, DataSetId, Input0, Options) ->
 %% source.
 delete_data_source(Client, AwsAccountId, DataSourceId, Input) ->
     delete_data_source(Client, AwsAccountId, DataSourceId, Input, []).
-delete_data_source(Client, AwsAccountId, DataSourceId, Input0, Options) ->
+delete_data_source(Client, AwsAccountId, DataSourceId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -675,10 +755,14 @@ delete_data_source(Client, AwsAccountId, DataSourceId, Input0, Options) ->
 %% @doc Removes a user group from Amazon QuickSight.
 delete_group(Client, AwsAccountId, GroupName, Namespace, Input) ->
     delete_group(Client, AwsAccountId, GroupName, Namespace, Input, []).
-delete_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options) ->
+delete_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -692,10 +776,14 @@ delete_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options) ->
 %% the group.
 delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input) ->
     delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input, []).
-delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input0, Options) ->
+delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), "/members/", aws_util:encode_uri(MemberName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -708,10 +796,14 @@ delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, 
 %% @doc Deletes an existing IAM policy assignment.
 delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input) ->
     delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input, []).
-delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options) ->
+delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespace/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/", aws_util:encode_uri(AssignmentName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -729,10 +821,14 @@ delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, In
 %% the API operations for the relevant asset.
 delete_namespace(Client, AwsAccountId, Namespace, Input) ->
     delete_namespace(Client, AwsAccountId, Namespace, Input, []).
-delete_namespace(Client, AwsAccountId, Namespace, Input0, Options) ->
+delete_namespace(Client, AwsAccountId, Namespace, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -745,10 +841,14 @@ delete_namespace(Client, AwsAccountId, Namespace, Input0, Options) ->
 %% @doc Deletes a template.
 delete_template(Client, AwsAccountId, TemplateId, Input) ->
     delete_template(Client, AwsAccountId, TemplateId, Input, []).
-delete_template(Client, AwsAccountId, TemplateId, Input0, Options) ->
+delete_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -765,10 +865,14 @@ delete_template(Client, AwsAccountId, TemplateId, Input0, Options) ->
 %% that the alias points to.
 delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input) ->
     delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input, []).
-delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Options) ->
+delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases/", aws_util:encode_uri(AliasName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -781,10 +885,14 @@ delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Optio
 %% @doc Deletes a theme.
 delete_theme(Client, AwsAccountId, ThemeId, Input) ->
     delete_theme(Client, AwsAccountId, ThemeId, Input, []).
-delete_theme(Client, AwsAccountId, ThemeId, Input0, Options) ->
+delete_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -802,10 +910,14 @@ delete_theme(Client, AwsAccountId, ThemeId, Input0, Options) ->
 %% the alias points to.
 delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) ->
     delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input, []).
-delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options) ->
+delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases/", aws_util:encode_uri(AliasName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -822,10 +934,14 @@ delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options) ->
 %% The IAM user isn't deleted as a result of this call.
 delete_user(Client, AwsAccountId, Namespace, UserName, Input) ->
     delete_user(Client, AwsAccountId, Namespace, UserName, Input, []).
-delete_user(Client, AwsAccountId, Namespace, UserName, Input0, Options) ->
+delete_user(Client, AwsAccountId, Namespace, UserName, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -838,10 +954,14 @@ delete_user(Client, AwsAccountId, Namespace, UserName, Input0, Options) ->
 %% @doc Deletes a user identified by its principal ID.
 delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input) ->
     delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input, []).
-delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0, Options) ->
+delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/user-principals/", aws_util:encode_uri(PrincipalId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -908,10 +1028,13 @@ describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
-describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/customizations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -934,10 +1057,13 @@ describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
-describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/settings"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -954,10 +1080,13 @@ describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, []).
 
-describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -974,10 +1103,13 @@ describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, []).
 
-describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), "/permissions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -994,10 +1126,13 @@ describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, []).
 
-describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1019,10 +1154,13 @@ describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, []).
 
-describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/permissions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1039,10 +1177,13 @@ describe_data_set(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_data_set(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
 
-describe_data_set(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_data_set(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1062,10 +1203,13 @@ describe_data_set_permissions(Client, AwsAccountId, DataSetId, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_data_set_permissions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
 
-describe_data_set_permissions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_data_set_permissions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/permissions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1082,10 +1226,13 @@ describe_data_source(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_data_source(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, []).
 
-describe_data_source(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_data_source(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1102,10 +1249,13 @@ describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, H
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, []).
 
-describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), "/permissions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1123,10 +1273,13 @@ describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, []).
 
-describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1144,10 +1297,13 @@ describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
 
-describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/", aws_util:encode_uri(AssignmentName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1164,10 +1320,13 @@ describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, HeadersMap, []).
 
-describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions/", aws_util:encode_uri(IngestionId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1184,10 +1343,13 @@ describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
 
-describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1204,10 +1366,13 @@ describe_template(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_template(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
 
-describe_template(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_template(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1229,10 +1394,13 @@ describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, H
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
 
-describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases/", aws_util:encode_uri(AliasName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1249,10 +1417,13 @@ describe_template_permissions(Client, AwsAccountId, TemplateId, QueryMap, Header
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_template_permissions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
 
-describe_template_permissions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_template_permissions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/permissions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1269,10 +1440,13 @@ describe_theme(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_theme(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
 
-describe_theme(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_theme(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1294,10 +1468,13 @@ describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
 
-describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases/", aws_util:encode_uri(AliasName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1314,10 +1491,13 @@ describe_theme_permissions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_theme_permissions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
 
-describe_theme_permissions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_theme_permissions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/permissions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1334,10 +1514,13 @@ describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, []).
 
-describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1373,10 +1556,13 @@ get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMap, HeadersMap, []).
 
-get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/embed-url"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1421,10 +1607,13 @@ get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
-get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/session-embed-url"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1448,10 +1637,13 @@ list_analyses(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_analyses(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
-list_analyses(Client, AwsAccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_analyses(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1474,10 +1666,13 @@ list_dashboard_versions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dashboard_versions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, []).
 
-list_dashboard_versions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_dashboard_versions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/versions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1499,10 +1694,13 @@ list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
-list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1528,10 +1726,13 @@ list_data_sets(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_sets(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
-list_data_sets(Client, AwsAccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_data_sets(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1554,10 +1755,13 @@ list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
-list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1579,10 +1783,13 @@ list_group_memberships(Client, AwsAccountId, GroupName, Namespace, QueryMap, Hea
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_group_memberships(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, []).
 
-list_group_memberships(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_group_memberships(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), "/members"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1604,10 +1811,13 @@ list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
 
-list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1630,10 +1840,13 @@ list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
 
-list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1657,10 +1870,13 @@ list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, []).
 
-list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), "/iam-policy-assignments"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1682,10 +1898,13 @@ list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
 
-list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1707,10 +1926,13 @@ list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
-list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1732,10 +1954,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1752,10 +1977,13 @@ list_template_aliases(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_template_aliases(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
 
-list_template_aliases(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_template_aliases(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1778,10 +2006,13 @@ list_template_versions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_template_versions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
 
-list_template_versions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_template_versions(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/versions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1803,10 +2034,13 @@ list_templates(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_templates(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
-list_templates(Client, AwsAccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_templates(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1828,10 +2062,13 @@ list_theme_aliases(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_theme_aliases(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
 
-list_theme_aliases(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_theme_aliases(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1853,10 +2090,13 @@ list_theme_versions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_theme_versions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, []).
 
-list_theme_versions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_theme_versions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/versions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1878,10 +2118,13 @@ list_themes(Client, AwsAccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_themes(Client, AwsAccountId, QueryMap, HeadersMap, []).
 
-list_themes(Client, AwsAccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_themes(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1905,10 +2148,13 @@ list_user_groups(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_user_groups(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, []).
 
-list_user_groups(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_user_groups(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), "/groups"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1931,10 +2177,13 @@ list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, []).
 
-list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1952,10 +2201,14 @@ list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options)
 %% the request.
 register_user(Client, AwsAccountId, Namespace, Input) ->
     register_user(Client, AwsAccountId, Namespace, Input, []).
-register_user(Client, AwsAccountId, Namespace, Input0, Options) ->
+register_user(Client, AwsAccountId, Namespace, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1968,10 +2221,14 @@ register_user(Client, AwsAccountId, Namespace, Input0, Options) ->
 %% @doc Restores an analysis.
 restore_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     restore_analysis(Client, AnalysisId, AwsAccountId, Input, []).
-restore_analysis(Client, AnalysisId, AwsAccountId, Input0, Options) ->
+restore_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/restore/analyses/", aws_util:encode_uri(AnalysisId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1985,10 +2242,14 @@ restore_analysis(Client, AnalysisId, AwsAccountId, Input0, Options) ->
 %% filter.
 search_analyses(Client, AwsAccountId, Input) ->
     search_analyses(Client, AwsAccountId, Input, []).
-search_analyses(Client, AwsAccountId, Input0, Options) ->
+search_analyses(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/analyses"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2001,10 +2262,14 @@ search_analyses(Client, AwsAccountId, Input0, Options) ->
 %% @doc Searches for dashboards that belong to a user.
 search_dashboards(Client, AwsAccountId, Input) ->
     search_dashboards(Client, AwsAccountId, Input, []).
-search_dashboards(Client, AwsAccountId, Input0, Options) ->
+search_dashboards(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/dashboards"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2042,10 +2307,14 @@ search_dashboards(Client, AwsAccountId, Input0, Options) ->
 %% </li> </ul>
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2058,10 +2327,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Removes a tag or tags from a resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/resources/", aws_util:encode_uri(ResourceArn), "/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2083,10 +2356,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% `DescribeAccountCustomization' API operation.
 update_account_customization(Client, AwsAccountId, Input) ->
     update_account_customization(Client, AwsAccountId, Input, []).
-update_account_customization(Client, AwsAccountId, Input0, Options) ->
+update_account_customization(Client, AwsAccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/customizations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2100,10 +2377,14 @@ update_account_customization(Client, AwsAccountId, Input0, Options) ->
 %% @doc Updates the Amazon QuickSight settings in your AWS account.
 update_account_settings(Client, AwsAccountId, Input) ->
     update_account_settings(Client, AwsAccountId, Input, []).
-update_account_settings(Client, AwsAccountId, Input0, Options) ->
+update_account_settings(Client, AwsAccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/settings"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2116,10 +2397,14 @@ update_account_settings(Client, AwsAccountId, Input0, Options) ->
 %% @doc Updates an analysis in Amazon QuickSight
 update_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     update_analysis(Client, AnalysisId, AwsAccountId, Input, []).
-update_analysis(Client, AnalysisId, AwsAccountId, Input0, Options) ->
+update_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2132,10 +2417,14 @@ update_analysis(Client, AnalysisId, AwsAccountId, Input0, Options) ->
 %% @doc Updates the read and write permissions for an analysis.
 update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input) ->
     update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input, []).
-update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input0, Options) ->
+update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), "/permissions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2148,10 +2437,14 @@ update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input0, Options) -
 %% @doc Updates a dashboard in an AWS account.
 update_dashboard(Client, AwsAccountId, DashboardId, Input) ->
     update_dashboard(Client, AwsAccountId, DashboardId, Input, []).
-update_dashboard(Client, AwsAccountId, DashboardId, Input0, Options) ->
+update_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2164,10 +2457,14 @@ update_dashboard(Client, AwsAccountId, DashboardId, Input0, Options) ->
 %% @doc Updates read and write permissions on a dashboard.
 update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input) ->
     update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input, []).
-update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input0, Options) ->
+update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/permissions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2180,10 +2477,14 @@ update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input0, Options)
 %% @doc Updates the published version of a dashboard.
 update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNumber, Input) ->
     update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNumber, Input, []).
-update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNumber, Input0, Options) ->
+update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNumber, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/versions/", aws_util:encode_uri(VersionNumber), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2196,10 +2497,14 @@ update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNum
 %% @doc Updates a dataset.
 update_data_set(Client, AwsAccountId, DataSetId, Input) ->
     update_data_set(Client, AwsAccountId, DataSetId, Input, []).
-update_data_set(Client, AwsAccountId, DataSetId, Input0, Options) ->
+update_data_set(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2215,10 +2520,14 @@ update_data_set(Client, AwsAccountId, DataSetId, Input0, Options) ->
 %% `arn:aws:quicksight:region:aws-account-id:dataset/data-set-id'.
 update_data_set_permissions(Client, AwsAccountId, DataSetId, Input) ->
     update_data_set_permissions(Client, AwsAccountId, DataSetId, Input, []).
-update_data_set_permissions(Client, AwsAccountId, DataSetId, Input0, Options) ->
+update_data_set_permissions(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/permissions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2231,10 +2540,14 @@ update_data_set_permissions(Client, AwsAccountId, DataSetId, Input0, Options) ->
 %% @doc Updates a data source.
 update_data_source(Client, AwsAccountId, DataSourceId, Input) ->
     update_data_source(Client, AwsAccountId, DataSourceId, Input, []).
-update_data_source(Client, AwsAccountId, DataSourceId, Input0, Options) ->
+update_data_source(Client, AwsAccountId, DataSourceId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2247,10 +2560,14 @@ update_data_source(Client, AwsAccountId, DataSourceId, Input0, Options) ->
 %% @doc Updates the permissions to a data source.
 update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input) ->
     update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input, []).
-update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input0, Options) ->
+update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources/", aws_util:encode_uri(DataSourceId), "/permissions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2263,10 +2580,14 @@ update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input0, Optio
 %% @doc Changes a group description.
 update_group(Client, AwsAccountId, GroupName, Namespace, Input) ->
     update_group(Client, AwsAccountId, GroupName, Namespace, Input, []).
-update_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options) ->
+update_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2283,10 +2604,14 @@ update_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options) ->
 %% `Identities'.
 update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input) ->
     update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input, []).
-update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options) ->
+update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/", aws_util:encode_uri(AssignmentName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2300,10 +2625,14 @@ update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, In
 %% another template.
 update_template(Client, AwsAccountId, TemplateId, Input) ->
     update_template(Client, AwsAccountId, TemplateId, Input, []).
-update_template(Client, AwsAccountId, TemplateId, Input0, Options) ->
+update_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2316,10 +2645,14 @@ update_template(Client, AwsAccountId, TemplateId, Input0, Options) ->
 %% @doc Updates the template alias of a template.
 update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input) ->
     update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input, []).
-update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Options) ->
+update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/aliases/", aws_util:encode_uri(AliasName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2332,10 +2665,14 @@ update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Optio
 %% @doc Updates the resource permissions for a template.
 update_template_permissions(Client, AwsAccountId, TemplateId, Input) ->
     update_template_permissions(Client, AwsAccountId, TemplateId, Input, []).
-update_template_permissions(Client, AwsAccountId, TemplateId, Input0, Options) ->
+update_template_permissions(Client, AwsAccountId, TemplateId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/permissions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2348,10 +2685,14 @@ update_template_permissions(Client, AwsAccountId, TemplateId, Input0, Options) -
 %% @doc Updates a theme.
 update_theme(Client, AwsAccountId, ThemeId, Input) ->
     update_theme(Client, AwsAccountId, ThemeId, Input, []).
-update_theme(Client, AwsAccountId, ThemeId, Input0, Options) ->
+update_theme(Client, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2364,10 +2705,14 @@ update_theme(Client, AwsAccountId, ThemeId, Input0, Options) ->
 %% @doc Updates an alias of a theme.
 update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) ->
     update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input, []).
-update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options) ->
+update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases/", aws_util:encode_uri(AliasName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2426,10 +2771,14 @@ update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options) ->
 %% </li> </ul>
 update_theme_permissions(Client, AwsAccountId, ThemeId, Input) ->
     update_theme_permissions(Client, AwsAccountId, ThemeId, Input, []).
-update_theme_permissions(Client, AwsAccountId, ThemeId, Input0, Options) ->
+update_theme_permissions(Client, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/permissions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2442,10 +2791,14 @@ update_theme_permissions(Client, AwsAccountId, ThemeId, Input0, Options) ->
 %% @doc Updates an Amazon QuickSight user.
 update_user(Client, AwsAccountId, Namespace, UserName, Input) ->
     update_user(Client, AwsAccountId, Namespace, UserName, Input, []).
-update_user(Client, AwsAccountId, Namespace, UserName, Input0, Options) ->
+update_user(Client, AwsAccountId, Namespace, UserName, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2477,19 +2830,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -2499,14 +2853,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

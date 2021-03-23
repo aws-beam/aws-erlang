@@ -148,10 +148,14 @@
 %% The ownership of the device will transfer to your AWS account.
 accept_input_device_transfer(Client, InputDeviceId, Input) ->
     accept_input_device_transfer(Client, InputDeviceId, Input, []).
-accept_input_device_transfer(Client, InputDeviceId, Input0, Options) ->
+accept_input_device_transfer(Client, InputDeviceId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/accept"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -164,10 +168,14 @@ accept_input_device_transfer(Client, InputDeviceId, Input0, Options) ->
 %% @doc Starts delete of resources.
 batch_delete(Client, Input) ->
     batch_delete(Client, Input, []).
-batch_delete(Client, Input0, Options) ->
+batch_delete(Client, Input0, Options0) ->
     Method = post,
     Path = ["/prod/batch/delete"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -180,10 +188,14 @@ batch_delete(Client, Input0, Options) ->
 %% @doc Starts existing resources
 batch_start(Client, Input) ->
     batch_start(Client, Input, []).
-batch_start(Client, Input0, Options) ->
+batch_start(Client, Input0, Options0) ->
     Method = post,
     Path = ["/prod/batch/start"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -196,10 +208,14 @@ batch_start(Client, Input0, Options) ->
 %% @doc Stops running resources
 batch_stop(Client, Input) ->
     batch_stop(Client, Input, []).
-batch_stop(Client, Input0, Options) ->
+batch_stop(Client, Input0, Options0) ->
     Method = post,
     Path = ["/prod/batch/stop"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -212,10 +228,14 @@ batch_stop(Client, Input0, Options) ->
 %% @doc Update a channel schedule
 batch_update_schedule(Client, ChannelId, Input) ->
     batch_update_schedule(Client, ChannelId, Input, []).
-batch_update_schedule(Client, ChannelId, Input0, Options) ->
+batch_update_schedule(Client, ChannelId, Input0, Options0) ->
     Method = put,
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/schedule"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -228,10 +248,14 @@ batch_update_schedule(Client, ChannelId, Input0, Options) ->
 %% @doc Cancel an input device transfer that you have requested.
 cancel_input_device_transfer(Client, InputDeviceId, Input) ->
     cancel_input_device_transfer(Client, InputDeviceId, Input, []).
-cancel_input_device_transfer(Client, InputDeviceId, Input0, Options) ->
+cancel_input_device_transfer(Client, InputDeviceId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/cancel"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -244,10 +268,14 @@ cancel_input_device_transfer(Client, InputDeviceId, Input0, Options) ->
 %% @doc Creates a new channel
 create_channel(Client, Input) ->
     create_channel(Client, Input, []).
-create_channel(Client, Input0, Options) ->
+create_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/prod/channels"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -260,10 +288,14 @@ create_channel(Client, Input0, Options) ->
 %% @doc Create an input
 create_input(Client, Input) ->
     create_input(Client, Input, []).
-create_input(Client, Input0, Options) ->
+create_input(Client, Input0, Options0) ->
     Method = post,
     Path = ["/prod/inputs"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -276,10 +308,14 @@ create_input(Client, Input0, Options) ->
 %% @doc Creates a Input Security Group
 create_input_security_group(Client, Input) ->
     create_input_security_group(Client, Input, []).
-create_input_security_group(Client, Input0, Options) ->
+create_input_security_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/prod/inputSecurityGroups"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -292,10 +328,14 @@ create_input_security_group(Client, Input0, Options) ->
 %% @doc Create a new multiplex.
 create_multiplex(Client, Input) ->
     create_multiplex(Client, Input, []).
-create_multiplex(Client, Input0, Options) ->
+create_multiplex(Client, Input0, Options0) ->
     Method = post,
     Path = ["/prod/multiplexes"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -308,10 +348,14 @@ create_multiplex(Client, Input0, Options) ->
 %% @doc Create a new program in the multiplex.
 create_multiplex_program(Client, MultiplexId, Input) ->
     create_multiplex_program(Client, MultiplexId, Input, []).
-create_multiplex_program(Client, MultiplexId, Input0, Options) ->
+create_multiplex_program(Client, MultiplexId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -324,10 +368,14 @@ create_multiplex_program(Client, MultiplexId, Input0, Options) ->
 %% @doc Create a partner input
 create_partner_input(Client, InputId, Input) ->
     create_partner_input(Client, InputId, Input, []).
-create_partner_input(Client, InputId, Input0, Options) ->
+create_partner_input(Client, InputId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/inputs/", aws_util:encode_uri(InputId), "/partners"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -340,10 +388,14 @@ create_partner_input(Client, InputId, Input0, Options) ->
 %% @doc Create tags for a resource
 create_tags(Client, ResourceArn, Input) ->
     create_tags(Client, ResourceArn, Input, []).
-create_tags(Client, ResourceArn, Input0, Options) ->
+create_tags(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/prod/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -358,10 +410,14 @@ create_tags(Client, ResourceArn, Input0, Options) ->
 %% The associated outputs are also deleted.
 delete_channel(Client, ChannelId, Input) ->
     delete_channel(Client, ChannelId, Input, []).
-delete_channel(Client, ChannelId, Input0, Options) ->
+delete_channel(Client, ChannelId, Input0, Options0) ->
     Method = delete,
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -374,10 +430,14 @@ delete_channel(Client, ChannelId, Input0, Options) ->
 %% @doc Deletes the input end point
 delete_input(Client, InputId, Input) ->
     delete_input(Client, InputId, Input, []).
-delete_input(Client, InputId, Input0, Options) ->
+delete_input(Client, InputId, Input0, Options0) ->
     Method = delete,
     Path = ["/prod/inputs/", aws_util:encode_uri(InputId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -390,10 +450,14 @@ delete_input(Client, InputId, Input0, Options) ->
 %% @doc Deletes an Input Security Group
 delete_input_security_group(Client, InputSecurityGroupId, Input) ->
     delete_input_security_group(Client, InputSecurityGroupId, Input, []).
-delete_input_security_group(Client, InputSecurityGroupId, Input0, Options) ->
+delete_input_security_group(Client, InputSecurityGroupId, Input0, Options0) ->
     Method = delete,
     Path = ["/prod/inputSecurityGroups/", aws_util:encode_uri(InputSecurityGroupId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -408,10 +472,14 @@ delete_input_security_group(Client, InputSecurityGroupId, Input0, Options) ->
 %% The multiplex must be idle.
 delete_multiplex(Client, MultiplexId, Input) ->
     delete_multiplex(Client, MultiplexId, Input, []).
-delete_multiplex(Client, MultiplexId, Input0, Options) ->
+delete_multiplex(Client, MultiplexId, Input0, Options0) ->
     Method = delete,
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -424,10 +492,14 @@ delete_multiplex(Client, MultiplexId, Input0, Options) ->
 %% @doc Delete a program from a multiplex.
 delete_multiplex_program(Client, MultiplexId, ProgramName, Input) ->
     delete_multiplex_program(Client, MultiplexId, ProgramName, Input, []).
-delete_multiplex_program(Client, MultiplexId, ProgramName, Input0, Options) ->
+delete_multiplex_program(Client, MultiplexId, ProgramName, Input0, Options0) ->
     Method = delete,
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs/", aws_util:encode_uri(ProgramName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -440,10 +512,14 @@ delete_multiplex_program(Client, MultiplexId, ProgramName, Input0, Options) ->
 %% @doc Delete an expired reservation.
 delete_reservation(Client, ReservationId, Input) ->
     delete_reservation(Client, ReservationId, Input, []).
-delete_reservation(Client, ReservationId, Input0, Options) ->
+delete_reservation(Client, ReservationId, Input0, Options0) ->
     Method = delete,
     Path = ["/prod/reservations/", aws_util:encode_uri(ReservationId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -456,10 +532,14 @@ delete_reservation(Client, ReservationId, Input0, Options) ->
 %% @doc Delete all schedule actions on a channel.
 delete_schedule(Client, ChannelId, Input) ->
     delete_schedule(Client, ChannelId, Input, []).
-delete_schedule(Client, ChannelId, Input0, Options) ->
+delete_schedule(Client, ChannelId, Input0, Options0) ->
     Method = delete,
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/schedule"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -472,10 +552,14 @@ delete_schedule(Client, ChannelId, Input0, Options) ->
 %% @doc Removes tags for a resource
 delete_tags(Client, ResourceArn, Input) ->
     delete_tags(Client, ResourceArn, Input, []).
-delete_tags(Client, ResourceArn, Input0, Options) ->
+delete_tags(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/prod/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -495,10 +579,13 @@ describe_channel(Client, ChannelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel(Client, ChannelId, QueryMap, HeadersMap, []).
 
-describe_channel(Client, ChannelId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_channel(Client, ChannelId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -515,10 +602,13 @@ describe_input(Client, InputId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_input(Client, InputId, QueryMap, HeadersMap, []).
 
-describe_input(Client, InputId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_input(Client, InputId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/inputs/", aws_util:encode_uri(InputId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -535,10 +625,13 @@ describe_input_device(Client, InputDeviceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_input_device(Client, InputDeviceId, QueryMap, HeadersMap, []).
 
-describe_input_device(Client, InputDeviceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_input_device(Client, InputDeviceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -555,10 +648,13 @@ describe_input_device_thumbnail(Client, InputDeviceId, Accept, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_input_device_thumbnail(Client, InputDeviceId, Accept, QueryMap, HeadersMap, []).
 
-describe_input_device_thumbnail(Client, InputDeviceId, Accept, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_input_device_thumbnail(Client, InputDeviceId, Accept, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/thumbnailData"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, true}
+               | Options0],
 
     Headers0 =
       [
@@ -598,10 +694,13 @@ describe_input_security_group(Client, InputSecurityGroupId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_input_security_group(Client, InputSecurityGroupId, QueryMap, HeadersMap, []).
 
-describe_input_security_group(Client, InputSecurityGroupId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_input_security_group(Client, InputSecurityGroupId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/inputSecurityGroups/", aws_util:encode_uri(InputSecurityGroupId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -618,10 +717,13 @@ describe_multiplex(Client, MultiplexId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_multiplex(Client, MultiplexId, QueryMap, HeadersMap, []).
 
-describe_multiplex(Client, MultiplexId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_multiplex(Client, MultiplexId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -638,10 +740,13 @@ describe_multiplex_program(Client, MultiplexId, ProgramName, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_multiplex_program(Client, MultiplexId, ProgramName, QueryMap, HeadersMap, []).
 
-describe_multiplex_program(Client, MultiplexId, ProgramName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_multiplex_program(Client, MultiplexId, ProgramName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs/", aws_util:encode_uri(ProgramName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -658,10 +763,13 @@ describe_offering(Client, OfferingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_offering(Client, OfferingId, QueryMap, HeadersMap, []).
 
-describe_offering(Client, OfferingId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_offering(Client, OfferingId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/offerings/", aws_util:encode_uri(OfferingId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -678,10 +786,13 @@ describe_reservation(Client, ReservationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_reservation(Client, ReservationId, QueryMap, HeadersMap, []).
 
-describe_reservation(Client, ReservationId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_reservation(Client, ReservationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/reservations/", aws_util:encode_uri(ReservationId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -698,10 +809,13 @@ describe_schedule(Client, ChannelId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_schedule(Client, ChannelId, QueryMap, HeadersMap, []).
 
-describe_schedule(Client, ChannelId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_schedule(Client, ChannelId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/schedule"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -723,10 +837,13 @@ list_channels(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channels(Client, QueryMap, HeadersMap, []).
 
-list_channels(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_channels(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/channels"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -751,10 +868,13 @@ list_input_device_transfers(Client, TransferType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_input_device_transfers(Client, TransferType, QueryMap, HeadersMap, []).
 
-list_input_device_transfers(Client, TransferType, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_input_device_transfers(Client, TransferType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/inputDeviceTransfers"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -777,10 +897,13 @@ list_input_devices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_input_devices(Client, QueryMap, HeadersMap, []).
 
-list_input_devices(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_input_devices(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/inputDevices"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -802,10 +925,13 @@ list_input_security_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_input_security_groups(Client, QueryMap, HeadersMap, []).
 
-list_input_security_groups(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_input_security_groups(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/inputSecurityGroups"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -827,10 +953,13 @@ list_inputs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_inputs(Client, QueryMap, HeadersMap, []).
 
-list_inputs(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_inputs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/inputs"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -852,10 +981,13 @@ list_multiplex_programs(Client, MultiplexId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_multiplex_programs(Client, MultiplexId, QueryMap, HeadersMap, []).
 
-list_multiplex_programs(Client, MultiplexId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_multiplex_programs(Client, MultiplexId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -877,10 +1009,13 @@ list_multiplexes(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_multiplexes(Client, QueryMap, HeadersMap, []).
 
-list_multiplexes(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_multiplexes(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/multiplexes"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -902,10 +1037,13 @@ list_offerings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_offerings(Client, QueryMap, HeadersMap, []).
 
-list_offerings(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_offerings(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/offerings"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -937,10 +1075,13 @@ list_reservations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_reservations(Client, QueryMap, HeadersMap, []).
 
-list_reservations(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_reservations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/reservations"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -970,10 +1111,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/prod/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -984,10 +1128,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% @doc Purchase an offering and create a reservation.
 purchase_offering(Client, OfferingId, Input) ->
     purchase_offering(Client, OfferingId, Input, []).
-purchase_offering(Client, OfferingId, Input0, Options) ->
+purchase_offering(Client, OfferingId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/offerings/", aws_util:encode_uri(OfferingId), "/purchase"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1001,10 +1149,14 @@ purchase_offering(Client, OfferingId, Input0, Options) ->
 %% account.
 reject_input_device_transfer(Client, InputDeviceId, Input) ->
     reject_input_device_transfer(Client, InputDeviceId, Input, []).
-reject_input_device_transfer(Client, InputDeviceId, Input0, Options) ->
+reject_input_device_transfer(Client, InputDeviceId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/reject"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1017,10 +1169,14 @@ reject_input_device_transfer(Client, InputDeviceId, Input0, Options) ->
 %% @doc Starts an existing channel
 start_channel(Client, ChannelId, Input) ->
     start_channel(Client, ChannelId, Input, []).
-start_channel(Client, ChannelId, Input0, Options) ->
+start_channel(Client, ChannelId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/start"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1036,10 +1192,14 @@ start_channel(Client, ChannelId, Input0, Options) ->
 %% start each channel.
 start_multiplex(Client, MultiplexId, Input) ->
     start_multiplex(Client, MultiplexId, Input, []).
-start_multiplex(Client, MultiplexId, Input0, Options) ->
+start_multiplex(Client, MultiplexId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/start"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1052,10 +1212,14 @@ start_multiplex(Client, MultiplexId, Input0, Options) ->
 %% @doc Stops a running channel
 stop_channel(Client, ChannelId, Input) ->
     stop_channel(Client, ChannelId, Input, []).
-stop_channel(Client, ChannelId, Input0, Options) ->
+stop_channel(Client, ChannelId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/stop"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1070,10 +1234,14 @@ stop_channel(Client, ChannelId, Input0, Options) ->
 %% If the multiplex isn't running, this action has no effect.
 stop_multiplex(Client, MultiplexId, Input) ->
     stop_multiplex(Client, MultiplexId, Input, []).
-stop_multiplex(Client, MultiplexId, Input0, Options) ->
+stop_multiplex(Client, MultiplexId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/stop"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1089,10 +1257,14 @@ stop_multiplex(Client, MultiplexId, Input0, Options) ->
 %% transfer.
 transfer_input_device(Client, InputDeviceId, Input) ->
     transfer_input_device(Client, InputDeviceId, Input, []).
-transfer_input_device(Client, InputDeviceId, Input0, Options) ->
+transfer_input_device(Client, InputDeviceId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/transfer"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1105,10 +1277,14 @@ transfer_input_device(Client, InputDeviceId, Input0, Options) ->
 %% @doc Updates a channel.
 update_channel(Client, ChannelId, Input) ->
     update_channel(Client, ChannelId, Input, []).
-update_channel(Client, ChannelId, Input0, Options) ->
+update_channel(Client, ChannelId, Input0, Options0) ->
     Method = put,
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1121,10 +1297,14 @@ update_channel(Client, ChannelId, Input0, Options) ->
 %% @doc Changes the class of the channel.
 update_channel_class(Client, ChannelId, Input) ->
     update_channel_class(Client, ChannelId, Input, []).
-update_channel_class(Client, ChannelId, Input0, Options) ->
+update_channel_class(Client, ChannelId, Input0, Options0) ->
     Method = put,
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/channelClass"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1137,10 +1317,14 @@ update_channel_class(Client, ChannelId, Input0, Options) ->
 %% @doc Updates an input.
 update_input(Client, InputId, Input) ->
     update_input(Client, InputId, Input, []).
-update_input(Client, InputId, Input0, Options) ->
+update_input(Client, InputId, Input0, Options0) ->
     Method = put,
     Path = ["/prod/inputs/", aws_util:encode_uri(InputId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1153,10 +1337,14 @@ update_input(Client, InputId, Input0, Options) ->
 %% @doc Updates the parameters for the input device.
 update_input_device(Client, InputDeviceId, Input) ->
     update_input_device(Client, InputDeviceId, Input, []).
-update_input_device(Client, InputDeviceId, Input0, Options) ->
+update_input_device(Client, InputDeviceId, Input0, Options0) ->
     Method = put,
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1169,10 +1357,14 @@ update_input_device(Client, InputDeviceId, Input0, Options) ->
 %% @doc Update an Input Security Group's Whilelists.
 update_input_security_group(Client, InputSecurityGroupId, Input) ->
     update_input_security_group(Client, InputSecurityGroupId, Input, []).
-update_input_security_group(Client, InputSecurityGroupId, Input0, Options) ->
+update_input_security_group(Client, InputSecurityGroupId, Input0, Options0) ->
     Method = put,
     Path = ["/prod/inputSecurityGroups/", aws_util:encode_uri(InputSecurityGroupId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1185,10 +1377,14 @@ update_input_security_group(Client, InputSecurityGroupId, Input0, Options) ->
 %% @doc Updates a multiplex.
 update_multiplex(Client, MultiplexId, Input) ->
     update_multiplex(Client, MultiplexId, Input, []).
-update_multiplex(Client, MultiplexId, Input0, Options) ->
+update_multiplex(Client, MultiplexId, Input0, Options0) ->
     Method = put,
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1201,10 +1397,14 @@ update_multiplex(Client, MultiplexId, Input0, Options) ->
 %% @doc Update a program in a multiplex.
 update_multiplex_program(Client, MultiplexId, ProgramName, Input) ->
     update_multiplex_program(Client, MultiplexId, ProgramName, Input, []).
-update_multiplex_program(Client, MultiplexId, ProgramName, Input0, Options) ->
+update_multiplex_program(Client, MultiplexId, ProgramName, Input0, Options0) ->
     Method = put,
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs/", aws_util:encode_uri(ProgramName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1217,10 +1417,14 @@ update_multiplex_program(Client, MultiplexId, ProgramName, Input0, Options) ->
 %% @doc Update reservation.
 update_reservation(Client, ReservationId, Input) ->
     update_reservation(Client, ReservationId, Input, []).
-update_reservation(Client, ReservationId, Input0, Options) ->
+update_reservation(Client, ReservationId, Input0, Options0) ->
     Method = put,
     Path = ["/prod/reservations/", aws_util:encode_uri(ReservationId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1252,19 +1456,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -1274,14 +1479,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

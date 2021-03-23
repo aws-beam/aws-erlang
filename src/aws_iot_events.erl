@@ -65,10 +65,14 @@
 %% @doc Creates a detector model.
 create_detector_model(Client, Input) ->
     create_detector_model(Client, Input, []).
-create_detector_model(Client, Input0, Options) ->
+create_detector_model(Client, Input0, Options0) ->
     Method = post,
     Path = ["/detector-models"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -81,10 +85,14 @@ create_detector_model(Client, Input0, Options) ->
 %% @doc Creates an input.
 create_input(Client, Input) ->
     create_input(Client, Input, []).
-create_input(Client, Input0, Options) ->
+create_input(Client, Input0, Options0) ->
     Method = post,
     Path = ["/inputs"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -99,10 +107,14 @@ create_input(Client, Input0, Options) ->
 %% Any active instances of the detector model are also deleted.
 delete_detector_model(Client, DetectorModelName, Input) ->
     delete_detector_model(Client, DetectorModelName, Input, []).
-delete_detector_model(Client, DetectorModelName, Input0, Options) ->
+delete_detector_model(Client, DetectorModelName, Input0, Options0) ->
     Method = delete,
     Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -115,10 +127,14 @@ delete_detector_model(Client, DetectorModelName, Input0, Options) ->
 %% @doc Deletes an input.
 delete_input(Client, InputName, Input) ->
     delete_input(Client, InputName, Input, []).
-delete_input(Client, InputName, Input0, Options) ->
+delete_input(Client, InputName, Input0, Options0) ->
     Method = delete,
     Path = ["/inputs/", aws_util:encode_uri(InputName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -140,10 +156,13 @@ describe_detector_model(Client, DetectorModelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_detector_model(Client, DetectorModelName, QueryMap, HeadersMap, []).
 
-describe_detector_model(Client, DetectorModelName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_detector_model(Client, DetectorModelName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -164,10 +183,13 @@ describe_detector_model_analysis(Client, AnalysisId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_detector_model_analysis(Client, AnalysisId, QueryMap, HeadersMap, []).
 
-describe_detector_model_analysis(Client, AnalysisId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_detector_model_analysis(Client, AnalysisId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analysis/detector-models/", aws_util:encode_uri(AnalysisId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -184,10 +206,13 @@ describe_input(Client, InputName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_input(Client, InputName, QueryMap, HeadersMap, []).
 
-describe_input(Client, InputName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_input(Client, InputName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/inputs/", aws_util:encode_uri(InputName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -204,10 +229,13 @@ describe_logging_options(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_logging_options(Client, QueryMap, HeadersMap, []).
 
-describe_logging_options(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_logging_options(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/logging"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -224,10 +252,13 @@ get_detector_model_analysis_results(Client, AnalysisId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_detector_model_analysis_results(Client, AnalysisId, QueryMap, HeadersMap, []).
 
-get_detector_model_analysis_results(Client, AnalysisId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_detector_model_analysis_results(Client, AnalysisId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/analysis/detector-models/", aws_util:encode_uri(AnalysisId), "/results"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -251,10 +282,13 @@ list_detector_model_versions(Client, DetectorModelName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_detector_model_versions(Client, DetectorModelName, QueryMap, HeadersMap, []).
 
-list_detector_model_versions(Client, DetectorModelName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_detector_model_versions(Client, DetectorModelName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), "/versions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -278,10 +312,13 @@ list_detector_models(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_detector_models(Client, QueryMap, HeadersMap, []).
 
-list_detector_models(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_detector_models(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector-models"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -303,10 +340,13 @@ list_inputs(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_inputs(Client, QueryMap, HeadersMap, []).
 
-list_inputs(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_inputs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/inputs"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -328,10 +368,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -352,10 +395,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% effect.
 put_logging_options(Client, Input) ->
     put_logging_options(Client, Input, []).
-put_logging_options(Client, Input0, Options) ->
+put_logging_options(Client, Input0, Options0) ->
     Method = put,
     Path = ["/logging"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -371,10 +418,14 @@ put_logging_options(Client, Input0, Options) ->
 %% Events Developer Guide.
 start_detector_model_analysis(Client, Input) ->
     start_detector_model_analysis(Client, Input, []).
-start_detector_model_analysis(Client, Input0, Options) ->
+start_detector_model_analysis(Client, Input0, Options0) ->
     Method = post,
     Path = ["/analysis/detector-models/"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -389,10 +440,14 @@ start_detector_model_analysis(Client, Input0, Options) ->
 %% Tags are metadata that can be used to manage a resource.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
-tag_resource(Client, Input0, Options) ->
+tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -406,10 +461,14 @@ tag_resource(Client, Input0, Options) ->
 %% @doc Removes the given tags (metadata) from the resource.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
-untag_resource(Client, Input0, Options) ->
+untag_resource(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -427,10 +486,14 @@ untag_resource(Client, Input0, Options) ->
 %% re-created as new inputs arrive.
 update_detector_model(Client, DetectorModelName, Input) ->
     update_detector_model(Client, DetectorModelName, Input, []).
-update_detector_model(Client, DetectorModelName, Input0, Options) ->
+update_detector_model(Client, DetectorModelName, Input0, Options0) ->
     Method = post,
     Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -443,10 +506,14 @@ update_detector_model(Client, DetectorModelName, Input0, Options) ->
 %% @doc Updates an input.
 update_input(Client, InputName, Input) ->
     update_input(Client, InputName, Input, []).
-update_input(Client, InputName, Input0, Options) ->
+update_input(Client, InputName, Input0, Options0) ->
     Method = put,
     Path = ["/inputs/", aws_util:encode_uri(InputName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -478,19 +545,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -500,14 +568,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

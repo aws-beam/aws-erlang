@@ -89,10 +89,14 @@
 %% @doc Add up to 2 anomaly notifications channels for a profiling group.
 add_notification_channels(Client, ProfilingGroupName, Input) ->
     add_notification_channels(Client, ProfilingGroupName, Input, []).
-add_notification_channels(Client, ProfilingGroupName, Input0, Options) ->
+add_notification_channels(Client, ProfilingGroupName, Input0, Options0) ->
     Method = post,
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/notificationConfiguration"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -106,10 +110,14 @@ add_notification_channels(Client, ProfilingGroupName, Input0, Options) ->
 %% metrics from a time period.
 batch_get_frame_metric_data(Client, ProfilingGroupName, Input) ->
     batch_get_frame_metric_data(Client, ProfilingGroupName, Input, []).
-batch_get_frame_metric_data(Client, ProfilingGroupName, Input0, Options) ->
+batch_get_frame_metric_data(Client, ProfilingGroupName, Input0, Options0) ->
     Method = post,
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/frames/-/metrics"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -130,10 +138,14 @@ batch_get_frame_metric_data(Client, ProfilingGroupName, Input0, Options) ->
 %% profile or not and for how long to return profiling data.
 configure_agent(Client, ProfilingGroupName, Input) ->
     configure_agent(Client, ProfilingGroupName, Input, []).
-configure_agent(Client, ProfilingGroupName, Input0, Options) ->
+configure_agent(Client, ProfilingGroupName, Input0, Options0) ->
     Method = post,
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/configureAgent"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -146,10 +158,14 @@ configure_agent(Client, ProfilingGroupName, Input0, Options) ->
 %% @doc Creates a profiling group.
 create_profiling_group(Client, Input) ->
     create_profiling_group(Client, Input, []).
-create_profiling_group(Client, Input0, Options) ->
+create_profiling_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/profilingGroups"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -163,10 +179,14 @@ create_profiling_group(Client, Input0, Options) ->
 %% @doc Deletes a profiling group.
 delete_profiling_group(Client, ProfilingGroupName, Input) ->
     delete_profiling_group(Client, ProfilingGroupName, Input, []).
-delete_profiling_group(Client, ProfilingGroupName, Input0, Options) ->
+delete_profiling_group(Client, ProfilingGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -186,10 +206,13 @@ describe_profiling_group(Client, ProfilingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_profiling_group(Client, ProfilingGroupName, QueryMap, HeadersMap, []).
 
-describe_profiling_group(Client, ProfilingGroupName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_profiling_group(Client, ProfilingGroupName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -207,10 +230,13 @@ get_findings_report_account_summary(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_findings_report_account_summary(Client, QueryMap, HeadersMap, []).
 
-get_findings_report_account_summary(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_findings_report_account_summary(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/internal/findingsReports"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -234,10 +260,13 @@ get_notification_configuration(Client, ProfilingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_notification_configuration(Client, ProfilingGroupName, QueryMap, HeadersMap, []).
 
-get_notification_configuration(Client, ProfilingGroupName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_notification_configuration(Client, ProfilingGroupName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/notificationConfiguration"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -255,10 +284,13 @@ get_policy(Client, ProfilingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_policy(Client, ProfilingGroupName, QueryMap, HeadersMap, []).
 
-get_policy(Client, ProfilingGroupName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_policy(Client, ProfilingGroupName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/policy"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -313,10 +345,13 @@ get_profile(Client, ProfilingGroupName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_profile(Client, ProfilingGroupName, QueryMap, HeadersMap, []).
 
-get_profile(Client, ProfilingGroupName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_profile(Client, ProfilingGroupName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/profile"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -365,10 +400,13 @@ get_recommendations(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_recommendations(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, HeadersMap, []).
 
-get_recommendations(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_recommendations(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/internal/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/recommendations"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -392,10 +430,13 @@ list_findings_reports(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_findings_reports(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, HeadersMap, []).
 
-list_findings_reports(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_findings_reports(Client, ProfilingGroupName, EndTime, StartTime, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/internal/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/findingsReports"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -421,10 +462,13 @@ list_profile_times(Client, ProfilingGroupName, EndTime, Period, StartTime, Query
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_profile_times(Client, ProfilingGroupName, EndTime, Period, StartTime, QueryMap, HeadersMap, []).
 
-list_profile_times(Client, ProfilingGroupName, EndTime, Period, StartTime, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_profile_times(Client, ProfilingGroupName, EndTime, Period, StartTime, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/profileTimes"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -452,10 +496,13 @@ list_profiling_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_profiling_groups(Client, QueryMap, HeadersMap, []).
 
-list_profiling_groups(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_profiling_groups(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/profilingGroups"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -478,10 +525,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -495,10 +545,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% `GetProfile' .
 post_agent_profile(Client, ProfilingGroupName, Input) ->
     post_agent_profile(Client, ProfilingGroupName, Input, []).
-post_agent_profile(Client, ProfilingGroupName, Input0, Options) ->
+post_agent_profile(Client, ProfilingGroupName, Input0, Options0) ->
     Method = post,
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/agentProfile"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"Content-Type">>, <<"contentType">>}
@@ -536,10 +590,14 @@ post_agent_profile(Client, ProfilingGroupName, Input0, Options) ->
 %% policy. </p>
 put_permission(Client, ActionGroup, ProfilingGroupName, Input) ->
     put_permission(Client, ActionGroup, ProfilingGroupName, Input, []).
-put_permission(Client, ActionGroup, ProfilingGroupName, Input0, Options) ->
+put_permission(Client, ActionGroup, ProfilingGroupName, Input0, Options0) ->
     Method = put,
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/policy/", aws_util:encode_uri(ActionGroup), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -552,10 +610,14 @@ put_permission(Client, ActionGroup, ProfilingGroupName, Input0, Options) ->
 %% @doc Remove one anomaly notifications channel for a profiling group.
 remove_notification_channel(Client, ChannelId, ProfilingGroupName, Input) ->
     remove_notification_channel(Client, ChannelId, ProfilingGroupName, Input, []).
-remove_notification_channel(Client, ChannelId, ProfilingGroupName, Input0, Options) ->
+remove_notification_channel(Client, ChannelId, ProfilingGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/notificationConfiguration/", aws_util:encode_uri(ChannelId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -575,10 +637,14 @@ remove_notification_channel(Client, ChannelId, ProfilingGroupName, Input0, Optio
 %% `PostAgentProfile' .
 remove_permission(Client, ActionGroup, ProfilingGroupName, Input) ->
     remove_permission(Client, ActionGroup, ProfilingGroupName, Input, []).
-remove_permission(Client, ActionGroup, ProfilingGroupName, Input0, Options) ->
+remove_permission(Client, ActionGroup, ProfilingGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/policy/", aws_util:encode_uri(ActionGroup), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -593,10 +659,14 @@ remove_permission(Client, ActionGroup, ProfilingGroupName, Input0, Options) ->
 %% detected by the analysis is useful or not.
 submit_feedback(Client, AnomalyInstanceId, ProfilingGroupName, Input) ->
     submit_feedback(Client, AnomalyInstanceId, ProfilingGroupName, Input, []).
-submit_feedback(Client, AnomalyInstanceId, ProfilingGroupName, Input0, Options) ->
+submit_feedback(Client, AnomalyInstanceId, ProfilingGroupName, Input0, Options0) ->
     Method = post,
     Path = ["/internal/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/anomalies/", aws_util:encode_uri(AnomalyInstanceId), "/feedback"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -609,10 +679,14 @@ submit_feedback(Client, AnomalyInstanceId, ProfilingGroupName, Input0, Options) 
 %% @doc Use to assign one or more tags to a resource.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -625,10 +699,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Use to remove one or more tags from a resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -642,10 +720,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Updates a profiling group.
 update_profiling_group(Client, ProfilingGroupName, Input) ->
     update_profiling_group(Client, ProfilingGroupName, Input, []).
-update_profiling_group(Client, ProfilingGroupName, Input0, Options) ->
+update_profiling_group(Client, ProfilingGroupName, Input0, Options0) ->
     Method = put,
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -677,19 +759,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -699,14 +782,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

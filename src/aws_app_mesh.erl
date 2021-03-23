@@ -127,10 +127,14 @@
 %% For more information about gateway routes, see Gateway routes.
 create_gateway_route(Client, MeshName, VirtualGatewayName, Input) ->
     create_gateway_route(Client, MeshName, VirtualGatewayName, Input, []).
-create_gateway_route(Client, MeshName, VirtualGatewayName, Input0, Options) ->
+create_gateway_route(Client, MeshName, VirtualGatewayName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateway/", aws_util:encode_uri(VirtualGatewayName), "/gatewayRoutes"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -152,10 +156,14 @@ create_gateway_route(Client, MeshName, VirtualGatewayName, Input0, Options) ->
 %% For more information about service meshes, see Service meshes.
 create_mesh(Client, Input) ->
     create_mesh(Client, Input, []).
-create_mesh(Client, Input0, Options) ->
+create_mesh(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -173,10 +181,14 @@ create_mesh(Client, Input0, Options) ->
 %% For more information about routes, see Routes.
 create_route(Client, MeshName, VirtualRouterName, Input) ->
     create_route(Client, MeshName, VirtualRouterName, Input, []).
-create_route(Client, MeshName, VirtualRouterName, Input0, Options) ->
+create_route(Client, MeshName, VirtualRouterName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouter/", aws_util:encode_uri(VirtualRouterName), "/routes"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -199,10 +211,14 @@ create_route(Client, MeshName, VirtualRouterName, Input0, Options) ->
 %% For more information about virtual gateways, see Virtual gateways.
 create_virtual_gateway(Client, MeshName, Input) ->
     create_virtual_gateway(Client, MeshName, Input, []).
-create_virtual_gateway(Client, MeshName, Input0, Options) ->
+create_virtual_gateway(Client, MeshName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateways"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -246,10 +262,14 @@ create_virtual_gateway(Client, MeshName, Input0, Options) ->
 %% the AWS App Mesh User Guide.
 create_virtual_node(Client, MeshName, Input) ->
     create_virtual_node(Client, MeshName, Input, []).
-create_virtual_node(Client, MeshName, Input0, Options) ->
+create_virtual_node(Client, MeshName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualNodes"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -272,10 +292,14 @@ create_virtual_node(Client, MeshName, Input0, Options) ->
 %% For more information about virtual routers, see Virtual routers.
 create_virtual_router(Client, MeshName, Input) ->
     create_virtual_router(Client, MeshName, Input, []).
-create_virtual_router(Client, MeshName, Input0, Options) ->
+create_virtual_router(Client, MeshName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouters"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -297,10 +321,14 @@ create_virtual_router(Client, MeshName, Input0, Options) ->
 %% For more information about virtual services, see Virtual services.
 create_virtual_service(Client, MeshName, Input) ->
     create_virtual_service(Client, MeshName, Input, []).
-create_virtual_service(Client, MeshName, Input0, Options) ->
+create_virtual_service(Client, MeshName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualServices"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -314,10 +342,14 @@ create_virtual_service(Client, MeshName, Input0, Options) ->
 %% @doc Deletes an existing gateway route.
 delete_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input) ->
     delete_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input, []).
-delete_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input0, Options) ->
+delete_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input0, Options0) ->
     Method = delete,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateway/", aws_util:encode_uri(VirtualGatewayName), "/gatewayRoutes/", aws_util:encode_uri(GatewayRouteName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -335,10 +367,14 @@ delete_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Inp
 %% itself.
 delete_mesh(Client, MeshName, Input) ->
     delete_mesh(Client, MeshName, Input, []).
-delete_mesh(Client, MeshName, Input0, Options) ->
+delete_mesh(Client, MeshName, Input0, Options0) ->
     Method = delete,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -351,10 +387,14 @@ delete_mesh(Client, MeshName, Input0, Options) ->
 %% @doc Deletes an existing route.
 delete_route(Client, MeshName, RouteName, VirtualRouterName, Input) ->
     delete_route(Client, MeshName, RouteName, VirtualRouterName, Input, []).
-delete_route(Client, MeshName, RouteName, VirtualRouterName, Input0, Options) ->
+delete_route(Client, MeshName, RouteName, VirtualRouterName, Input0, Options0) ->
     Method = delete,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouter/", aws_util:encode_uri(VirtualRouterName), "/routes/", aws_util:encode_uri(RouteName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -371,10 +411,14 @@ delete_route(Client, MeshName, RouteName, VirtualRouterName, Input0, Options) ->
 %% to it.
 delete_virtual_gateway(Client, MeshName, VirtualGatewayName, Input) ->
     delete_virtual_gateway(Client, MeshName, VirtualGatewayName, Input, []).
-delete_virtual_gateway(Client, MeshName, VirtualGatewayName, Input0, Options) ->
+delete_virtual_gateway(Client, MeshName, VirtualGatewayName, Input0, Options0) ->
     Method = delete,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateways/", aws_util:encode_uri(VirtualGatewayName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -391,10 +435,14 @@ delete_virtual_gateway(Client, MeshName, VirtualGatewayName, Input0, Options) ->
 %% provider before you can delete the virtual node itself.
 delete_virtual_node(Client, MeshName, VirtualNodeName, Input) ->
     delete_virtual_node(Client, MeshName, VirtualNodeName, Input, []).
-delete_virtual_node(Client, MeshName, VirtualNodeName, Input0, Options) ->
+delete_virtual_node(Client, MeshName, VirtualNodeName, Input0, Options0) ->
     Method = delete,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualNodes/", aws_util:encode_uri(VirtualNodeName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -411,10 +459,14 @@ delete_virtual_node(Client, MeshName, VirtualNodeName, Input0, Options) ->
 %% can delete the router itself.
 delete_virtual_router(Client, MeshName, VirtualRouterName, Input) ->
     delete_virtual_router(Client, MeshName, VirtualRouterName, Input, []).
-delete_virtual_router(Client, MeshName, VirtualRouterName, Input0, Options) ->
+delete_virtual_router(Client, MeshName, VirtualRouterName, Input0, Options0) ->
     Method = delete,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouters/", aws_util:encode_uri(VirtualRouterName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -428,10 +480,14 @@ delete_virtual_router(Client, MeshName, VirtualRouterName, Input0, Options) ->
 %% @doc Deletes an existing virtual service.
 delete_virtual_service(Client, MeshName, VirtualServiceName, Input) ->
     delete_virtual_service(Client, MeshName, VirtualServiceName, Input, []).
-delete_virtual_service(Client, MeshName, VirtualServiceName, Input0, Options) ->
+delete_virtual_service(Client, MeshName, VirtualServiceName, Input0, Options0) ->
     Method = delete,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualServices/", aws_util:encode_uri(VirtualServiceName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -451,10 +507,13 @@ describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Q
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, QueryMap, HeadersMap, []).
 
-describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateway/", aws_util:encode_uri(VirtualGatewayName), "/gatewayRoutes/", aws_util:encode_uri(GatewayRouteName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -475,10 +534,13 @@ describe_mesh(Client, MeshName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_mesh(Client, MeshName, QueryMap, HeadersMap, []).
 
-describe_mesh(Client, MeshName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_mesh(Client, MeshName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -499,10 +561,13 @@ describe_route(Client, MeshName, RouteName, VirtualRouterName, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_route(Client, MeshName, RouteName, VirtualRouterName, QueryMap, HeadersMap, []).
 
-describe_route(Client, MeshName, RouteName, VirtualRouterName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_route(Client, MeshName, RouteName, VirtualRouterName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouter/", aws_util:encode_uri(VirtualRouterName), "/routes/", aws_util:encode_uri(RouteName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -523,10 +588,13 @@ describe_virtual_gateway(Client, MeshName, VirtualGatewayName, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_virtual_gateway(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap, []).
 
-describe_virtual_gateway(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_virtual_gateway(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateways/", aws_util:encode_uri(VirtualGatewayName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -547,10 +615,13 @@ describe_virtual_node(Client, MeshName, VirtualNodeName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_virtual_node(Client, MeshName, VirtualNodeName, QueryMap, HeadersMap, []).
 
-describe_virtual_node(Client, MeshName, VirtualNodeName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_virtual_node(Client, MeshName, VirtualNodeName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualNodes/", aws_util:encode_uri(VirtualNodeName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -571,10 +642,13 @@ describe_virtual_router(Client, MeshName, VirtualRouterName, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_virtual_router(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap, []).
 
-describe_virtual_router(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_virtual_router(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouters/", aws_util:encode_uri(VirtualRouterName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -595,10 +669,13 @@ describe_virtual_service(Client, MeshName, VirtualServiceName, QueryMap, Headers
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_virtual_service(Client, MeshName, VirtualServiceName, QueryMap, HeadersMap, []).
 
-describe_virtual_service(Client, MeshName, VirtualServiceName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_virtual_service(Client, MeshName, VirtualServiceName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualServices/", aws_util:encode_uri(VirtualServiceName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -620,10 +697,13 @@ list_gateway_routes(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_gateway_routes(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap, []).
 
-list_gateway_routes(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_gateway_routes(Client, MeshName, VirtualGatewayName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateway/", aws_util:encode_uri(VirtualGatewayName), "/gatewayRoutes"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -646,10 +726,13 @@ list_meshes(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_meshes(Client, QueryMap, HeadersMap, []).
 
-list_meshes(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_meshes(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -671,10 +754,13 @@ list_routes(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_routes(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap, []).
 
-list_routes(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_routes(Client, MeshName, VirtualRouterName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouter/", aws_util:encode_uri(VirtualRouterName), "/routes"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -697,10 +783,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/tags"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -723,10 +812,13 @@ list_virtual_gateways(Client, MeshName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_virtual_gateways(Client, MeshName, QueryMap, HeadersMap, []).
 
-list_virtual_gateways(Client, MeshName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_virtual_gateways(Client, MeshName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateways"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -749,10 +841,13 @@ list_virtual_nodes(Client, MeshName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_virtual_nodes(Client, MeshName, QueryMap, HeadersMap, []).
 
-list_virtual_nodes(Client, MeshName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_virtual_nodes(Client, MeshName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualNodes"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -775,10 +870,13 @@ list_virtual_routers(Client, MeshName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_virtual_routers(Client, MeshName, QueryMap, HeadersMap, []).
 
-list_virtual_routers(Client, MeshName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_virtual_routers(Client, MeshName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouters"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -801,10 +899,13 @@ list_virtual_services(Client, MeshName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_virtual_services(Client, MeshName, QueryMap, HeadersMap, []).
 
-list_virtual_services(Client, MeshName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_virtual_services(Client, MeshName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualServices"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -826,10 +927,14 @@ list_virtual_services(Client, MeshName, QueryMap, HeadersMap, Options)
 %% that resource are also deleted.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
-tag_resource(Client, Input0, Options) ->
+tag_resource(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/tag"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -843,10 +948,14 @@ tag_resource(Client, Input0, Options) ->
 %% @doc Deletes specified tags from a resource.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
-untag_resource(Client, Input0, Options) ->
+untag_resource(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/untag"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -861,10 +970,14 @@ untag_resource(Client, Input0, Options) ->
 %% virtual gateway in a service mesh.
 update_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input) ->
     update_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input, []).
-update_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input0, Options) ->
+update_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateway/", aws_util:encode_uri(VirtualGatewayName), "/gatewayRoutes/", aws_util:encode_uri(GatewayRouteName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -878,10 +991,14 @@ update_gateway_route(Client, GatewayRouteName, MeshName, VirtualGatewayName, Inp
 %% @doc Updates an existing service mesh.
 update_mesh(Client, MeshName, Input) ->
     update_mesh(Client, MeshName, Input, []).
-update_mesh(Client, MeshName, Input0, Options) ->
+update_mesh(Client, MeshName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -895,10 +1012,14 @@ update_mesh(Client, MeshName, Input0, Options) ->
 %% router.
 update_route(Client, MeshName, RouteName, VirtualRouterName, Input) ->
     update_route(Client, MeshName, RouteName, VirtualRouterName, Input, []).
-update_route(Client, MeshName, RouteName, VirtualRouterName, Input0, Options) ->
+update_route(Client, MeshName, RouteName, VirtualRouterName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouter/", aws_util:encode_uri(VirtualRouterName), "/routes/", aws_util:encode_uri(RouteName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -912,10 +1033,14 @@ update_route(Client, MeshName, RouteName, VirtualRouterName, Input0, Options) ->
 %% @doc Updates an existing virtual gateway in a specified service mesh.
 update_virtual_gateway(Client, MeshName, VirtualGatewayName, Input) ->
     update_virtual_gateway(Client, MeshName, VirtualGatewayName, Input, []).
-update_virtual_gateway(Client, MeshName, VirtualGatewayName, Input0, Options) ->
+update_virtual_gateway(Client, MeshName, VirtualGatewayName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualGateways/", aws_util:encode_uri(VirtualGatewayName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -929,10 +1054,14 @@ update_virtual_gateway(Client, MeshName, VirtualGatewayName, Input0, Options) ->
 %% @doc Updates an existing virtual node in a specified service mesh.
 update_virtual_node(Client, MeshName, VirtualNodeName, Input) ->
     update_virtual_node(Client, MeshName, VirtualNodeName, Input, []).
-update_virtual_node(Client, MeshName, VirtualNodeName, Input0, Options) ->
+update_virtual_node(Client, MeshName, VirtualNodeName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualNodes/", aws_util:encode_uri(VirtualNodeName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -946,10 +1075,14 @@ update_virtual_node(Client, MeshName, VirtualNodeName, Input0, Options) ->
 %% @doc Updates an existing virtual router in a specified service mesh.
 update_virtual_router(Client, MeshName, VirtualRouterName, Input) ->
     update_virtual_router(Client, MeshName, VirtualRouterName, Input, []).
-update_virtual_router(Client, MeshName, VirtualRouterName, Input0, Options) ->
+update_virtual_router(Client, MeshName, VirtualRouterName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualRouters/", aws_util:encode_uri(VirtualRouterName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -963,10 +1096,14 @@ update_virtual_router(Client, MeshName, VirtualRouterName, Input0, Options) ->
 %% @doc Updates an existing virtual service in a specified service mesh.
 update_virtual_service(Client, MeshName, VirtualServiceName, Input) ->
     update_virtual_service(Client, MeshName, VirtualServiceName, Input, []).
-update_virtual_service(Client, MeshName, VirtualServiceName, Input0, Options) ->
+update_virtual_service(Client, MeshName, VirtualServiceName, Input0, Options0) ->
     Method = put,
     Path = ["/v20190125/meshes/", aws_util:encode_uri(MeshName), "/virtualServices/", aws_util:encode_uri(VirtualServiceName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -999,19 +1136,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -1021,14 +1159,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

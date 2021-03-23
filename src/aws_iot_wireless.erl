@@ -137,10 +137,14 @@
 %% @doc Associates a partner account with your AWS account.
 associate_aws_account_with_partner_account(Client, Input) ->
     associate_aws_account_with_partner_account(Client, Input, []).
-associate_aws_account_with_partner_account(Client, Input0, Options) ->
+associate_aws_account_with_partner_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/partner-accounts"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -153,10 +157,14 @@ associate_aws_account_with_partner_account(Client, Input0, Options) ->
 %% @doc Associates a wireless device with a thing.
 associate_wireless_device_with_thing(Client, Id, Input) ->
     associate_wireless_device_with_thing(Client, Id, Input, []).
-associate_wireless_device_with_thing(Client, Id, Input0, Options) ->
+associate_wireless_device_with_thing(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/wireless-devices/", aws_util:encode_uri(Id), "/thing"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -169,10 +177,14 @@ associate_wireless_device_with_thing(Client, Id, Input0, Options) ->
 %% @doc Associates a wireless gateway with a certificate.
 associate_wireless_gateway_with_certificate(Client, Id, Input) ->
     associate_wireless_gateway_with_certificate(Client, Id, Input, []).
-associate_wireless_gateway_with_certificate(Client, Id, Input0, Options) ->
+associate_wireless_gateway_with_certificate(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/wireless-gateways/", aws_util:encode_uri(Id), "/certificate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -185,10 +197,14 @@ associate_wireless_gateway_with_certificate(Client, Id, Input0, Options) ->
 %% @doc Associates a wireless gateway with a thing.
 associate_wireless_gateway_with_thing(Client, Id, Input) ->
     associate_wireless_gateway_with_thing(Client, Id, Input, []).
-associate_wireless_gateway_with_thing(Client, Id, Input0, Options) ->
+associate_wireless_gateway_with_thing(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/wireless-gateways/", aws_util:encode_uri(Id), "/thing"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -202,10 +218,14 @@ associate_wireless_gateway_with_thing(Client, Id, Input0, Options) ->
 %% rule.
 create_destination(Client, Input) ->
     create_destination(Client, Input, []).
-create_destination(Client, Input0, Options) ->
+create_destination(Client, Input0, Options0) ->
     Method = post,
     Path = ["/destinations"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -218,10 +238,14 @@ create_destination(Client, Input0, Options) ->
 %% @doc Creates a new device profile.
 create_device_profile(Client, Input) ->
     create_device_profile(Client, Input, []).
-create_device_profile(Client, Input0, Options) ->
+create_device_profile(Client, Input0, Options0) ->
     Method = post,
     Path = ["/device-profiles"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -234,10 +258,14 @@ create_device_profile(Client, Input0, Options) ->
 %% @doc Creates a new service profile.
 create_service_profile(Client, Input) ->
     create_service_profile(Client, Input, []).
-create_service_profile(Client, Input0, Options) ->
+create_service_profile(Client, Input0, Options0) ->
     Method = post,
     Path = ["/service-profiles"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -250,10 +278,14 @@ create_service_profile(Client, Input0, Options) ->
 %% @doc Provisions a wireless device.
 create_wireless_device(Client, Input) ->
     create_wireless_device(Client, Input, []).
-create_wireless_device(Client, Input0, Options) ->
+create_wireless_device(Client, Input0, Options0) ->
     Method = post,
     Path = ["/wireless-devices"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -266,10 +298,14 @@ create_wireless_device(Client, Input0, Options) ->
 %% @doc Provisions a wireless gateway.
 create_wireless_gateway(Client, Input) ->
     create_wireless_gateway(Client, Input, []).
-create_wireless_gateway(Client, Input0, Options) ->
+create_wireless_gateway(Client, Input0, Options0) ->
     Method = post,
     Path = ["/wireless-gateways"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -282,10 +318,14 @@ create_wireless_gateway(Client, Input0, Options) ->
 %% @doc Creates a task for a wireless gateway.
 create_wireless_gateway_task(Client, Id, Input) ->
     create_wireless_gateway_task(Client, Id, Input, []).
-create_wireless_gateway_task(Client, Id, Input0, Options) ->
+create_wireless_gateway_task(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/wireless-gateways/", aws_util:encode_uri(Id), "/tasks"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -298,10 +338,14 @@ create_wireless_gateway_task(Client, Id, Input0, Options) ->
 %% @doc Creates a gateway task definition.
 create_wireless_gateway_task_definition(Client, Input) ->
     create_wireless_gateway_task_definition(Client, Input, []).
-create_wireless_gateway_task_definition(Client, Input0, Options) ->
+create_wireless_gateway_task_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/wireless-gateway-task-definitions"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -314,10 +358,14 @@ create_wireless_gateway_task_definition(Client, Input0, Options) ->
 %% @doc Deletes a destination.
 delete_destination(Client, Name, Input) ->
     delete_destination(Client, Name, Input, []).
-delete_destination(Client, Name, Input0, Options) ->
+delete_destination(Client, Name, Input0, Options0) ->
     Method = delete,
     Path = ["/destinations/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -330,10 +378,14 @@ delete_destination(Client, Name, Input0, Options) ->
 %% @doc Deletes a device profile.
 delete_device_profile(Client, Id, Input) ->
     delete_device_profile(Client, Id, Input, []).
-delete_device_profile(Client, Id, Input0, Options) ->
+delete_device_profile(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/device-profiles/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -346,10 +398,14 @@ delete_device_profile(Client, Id, Input0, Options) ->
 %% @doc Deletes a service profile.
 delete_service_profile(Client, Id, Input) ->
     delete_service_profile(Client, Id, Input, []).
-delete_service_profile(Client, Id, Input0, Options) ->
+delete_service_profile(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/service-profiles/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -362,10 +418,14 @@ delete_service_profile(Client, Id, Input0, Options) ->
 %% @doc Deletes a wireless device.
 delete_wireless_device(Client, Id, Input) ->
     delete_wireless_device(Client, Id, Input, []).
-delete_wireless_device(Client, Id, Input0, Options) ->
+delete_wireless_device(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/wireless-devices/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -378,10 +438,14 @@ delete_wireless_device(Client, Id, Input0, Options) ->
 %% @doc Deletes a wireless gateway.
 delete_wireless_gateway(Client, Id, Input) ->
     delete_wireless_gateway(Client, Id, Input, []).
-delete_wireless_gateway(Client, Id, Input0, Options) ->
+delete_wireless_gateway(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/wireless-gateways/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -394,10 +458,14 @@ delete_wireless_gateway(Client, Id, Input0, Options) ->
 %% @doc Deletes a wireless gateway task.
 delete_wireless_gateway_task(Client, Id, Input) ->
     delete_wireless_gateway_task(Client, Id, Input, []).
-delete_wireless_gateway_task(Client, Id, Input0, Options) ->
+delete_wireless_gateway_task(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/wireless-gateways/", aws_util:encode_uri(Id), "/tasks"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -413,10 +481,14 @@ delete_wireless_gateway_task(Client, Id, Input0, Options) ->
 %% progress.
 delete_wireless_gateway_task_definition(Client, Id, Input) ->
     delete_wireless_gateway_task_definition(Client, Id, Input, []).
-delete_wireless_gateway_task_definition(Client, Id, Input0, Options) ->
+delete_wireless_gateway_task_definition(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/wireless-gateway-task-definitions/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -432,10 +504,14 @@ delete_wireless_gateway_task_definition(Client, Id, Input0, Options) ->
 %% account from all partner accounts.
 disassociate_aws_account_from_partner_account(Client, PartnerAccountId, Input) ->
     disassociate_aws_account_from_partner_account(Client, PartnerAccountId, Input, []).
-disassociate_aws_account_from_partner_account(Client, PartnerAccountId, Input0, Options) ->
+disassociate_aws_account_from_partner_account(Client, PartnerAccountId, Input0, Options0) ->
     Method = delete,
     Path = ["/partner-accounts/", aws_util:encode_uri(PartnerAccountId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -449,10 +525,14 @@ disassociate_aws_account_from_partner_account(Client, PartnerAccountId, Input0, 
 %% @doc Disassociates a wireless device from its currently associated thing.
 disassociate_wireless_device_from_thing(Client, Id, Input) ->
     disassociate_wireless_device_from_thing(Client, Id, Input, []).
-disassociate_wireless_device_from_thing(Client, Id, Input0, Options) ->
+disassociate_wireless_device_from_thing(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/wireless-devices/", aws_util:encode_uri(Id), "/thing"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -466,10 +546,14 @@ disassociate_wireless_device_from_thing(Client, Id, Input0, Options) ->
 %% certificate.
 disassociate_wireless_gateway_from_certificate(Client, Id, Input) ->
     disassociate_wireless_gateway_from_certificate(Client, Id, Input, []).
-disassociate_wireless_gateway_from_certificate(Client, Id, Input0, Options) ->
+disassociate_wireless_gateway_from_certificate(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/wireless-gateways/", aws_util:encode_uri(Id), "/certificate"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -482,10 +566,14 @@ disassociate_wireless_gateway_from_certificate(Client, Id, Input0, Options) ->
 %% @doc Disassociates a wireless gateway from its currently associated thing.
 disassociate_wireless_gateway_from_thing(Client, Id, Input) ->
     disassociate_wireless_gateway_from_thing(Client, Id, Input, []).
-disassociate_wireless_gateway_from_thing(Client, Id, Input0, Options) ->
+disassociate_wireless_gateway_from_thing(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/wireless-gateways/", aws_util:encode_uri(Id), "/thing"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -504,10 +592,13 @@ get_destination(Client, Name, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_destination(Client, Name, QueryMap, HeadersMap, []).
 
-get_destination(Client, Name, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_destination(Client, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/destinations/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -524,10 +615,13 @@ get_device_profile(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_device_profile(Client, Id, QueryMap, HeadersMap, []).
 
-get_device_profile(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_device_profile(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/device-profiles/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -547,10 +641,13 @@ get_partner_account(Client, PartnerAccountId, PartnerType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_partner_account(Client, PartnerAccountId, PartnerType, QueryMap, HeadersMap, []).
 
-get_partner_account(Client, PartnerAccountId, PartnerType, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_partner_account(Client, PartnerAccountId, PartnerType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/partner-accounts/", aws_util:encode_uri(PartnerAccountId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -572,10 +669,13 @@ get_service_endpoint(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_service_endpoint(Client, QueryMap, HeadersMap, []).
 
-get_service_endpoint(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_service_endpoint(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/service-endpoint"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -596,10 +696,13 @@ get_service_profile(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_service_profile(Client, Id, QueryMap, HeadersMap, []).
 
-get_service_profile(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_service_profile(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/service-profiles/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -616,10 +719,13 @@ get_wireless_device(Client, Identifier, IdentifierType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_wireless_device(Client, Identifier, IdentifierType, QueryMap, HeadersMap, []).
 
-get_wireless_device(Client, Identifier, IdentifierType, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_wireless_device(Client, Identifier, IdentifierType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/wireless-devices/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -640,10 +746,13 @@ get_wireless_device_statistics(Client, WirelessDeviceId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_wireless_device_statistics(Client, WirelessDeviceId, QueryMap, HeadersMap, []).
 
-get_wireless_device_statistics(Client, WirelessDeviceId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_wireless_device_statistics(Client, WirelessDeviceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/wireless-devices/", aws_util:encode_uri(WirelessDeviceId), "/statistics"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -660,10 +769,13 @@ get_wireless_gateway(Client, Identifier, IdentifierType, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_wireless_gateway(Client, Identifier, IdentifierType, QueryMap, HeadersMap, []).
 
-get_wireless_gateway(Client, Identifier, IdentifierType, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_wireless_gateway(Client, Identifier, IdentifierType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/wireless-gateways/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -685,10 +797,13 @@ get_wireless_gateway_certificate(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_wireless_gateway_certificate(Client, Id, QueryMap, HeadersMap, []).
 
-get_wireless_gateway_certificate(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_wireless_gateway_certificate(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/wireless-gateways/", aws_util:encode_uri(Id), "/certificate"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -706,10 +821,13 @@ get_wireless_gateway_firmware_information(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_wireless_gateway_firmware_information(Client, Id, QueryMap, HeadersMap, []).
 
-get_wireless_gateway_firmware_information(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_wireless_gateway_firmware_information(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/wireless-gateways/", aws_util:encode_uri(Id), "/firmware-information"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -726,10 +844,13 @@ get_wireless_gateway_statistics(Client, WirelessGatewayId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_wireless_gateway_statistics(Client, WirelessGatewayId, QueryMap, HeadersMap, []).
 
-get_wireless_gateway_statistics(Client, WirelessGatewayId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_wireless_gateway_statistics(Client, WirelessGatewayId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/wireless-gateways/", aws_util:encode_uri(WirelessGatewayId), "/statistics"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -746,10 +867,13 @@ get_wireless_gateway_task(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_wireless_gateway_task(Client, Id, QueryMap, HeadersMap, []).
 
-get_wireless_gateway_task(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_wireless_gateway_task(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/wireless-gateways/", aws_util:encode_uri(Id), "/tasks"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -766,10 +890,13 @@ get_wireless_gateway_task_definition(Client, Id, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_wireless_gateway_task_definition(Client, Id, QueryMap, HeadersMap, []).
 
-get_wireless_gateway_task_definition(Client, Id, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_wireless_gateway_task_definition(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/wireless-gateway-task-definitions/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -786,10 +913,13 @@ list_destinations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_destinations(Client, QueryMap, HeadersMap, []).
 
-list_destinations(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_destinations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/destinations"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -811,10 +941,13 @@ list_device_profiles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_device_profiles(Client, QueryMap, HeadersMap, []).
 
-list_device_profiles(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_device_profiles(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/device-profiles"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -836,10 +969,13 @@ list_partner_accounts(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_partner_accounts(Client, QueryMap, HeadersMap, []).
 
-list_partner_accounts(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_partner_accounts(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/partner-accounts"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -861,10 +997,13 @@ list_service_profiles(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_service_profiles(Client, QueryMap, HeadersMap, []).
 
-list_service_profiles(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_service_profiles(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/service-profiles"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -886,10 +1025,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -910,10 +1052,13 @@ list_wireless_devices(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_wireless_devices(Client, QueryMap, HeadersMap, []).
 
-list_wireless_devices(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_wireless_devices(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/wireless-devices"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -940,10 +1085,13 @@ list_wireless_gateway_task_definitions(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_wireless_gateway_task_definitions(Client, QueryMap, HeadersMap, []).
 
-list_wireless_gateway_task_definitions(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_wireless_gateway_task_definitions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/wireless-gateway-task-definitions"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -966,10 +1114,13 @@ list_wireless_gateways(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_wireless_gateways(Client, QueryMap, HeadersMap, []).
 
-list_wireless_gateways(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_wireless_gateways(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/wireless-gateways"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -985,10 +1136,14 @@ list_wireless_gateways(Client, QueryMap, HeadersMap, Options)
 %% @doc Sends a decrypted application data frame to a device.
 send_data_to_wireless_device(Client, Id, Input) ->
     send_data_to_wireless_device(Client, Id, Input, []).
-send_data_to_wireless_device(Client, Id, Input0, Options) ->
+send_data_to_wireless_device(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/wireless-devices/", aws_util:encode_uri(Id), "/data"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1001,10 +1156,14 @@ send_data_to_wireless_device(Client, Id, Input0, Options) ->
 %% @doc Adds a tag to a resource.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
-tag_resource(Client, Input0, Options) ->
+tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1019,10 +1178,14 @@ tag_resource(Client, Input0, Options) ->
 %% `Hello'.
 test_wireless_device(Client, Id, Input) ->
     test_wireless_device(Client, Id, Input, []).
-test_wireless_device(Client, Id, Input0, Options) ->
+test_wireless_device(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/wireless-devices/", aws_util:encode_uri(Id), "/test"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1035,10 +1198,14 @@ test_wireless_device(Client, Id, Input0, Options) ->
 %% @doc Removes one or more tags from a resource.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
-untag_resource(Client, Input0, Options) ->
+untag_resource(Client, Input0, Options0) ->
     Method = delete,
     Path = ["/tags"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1053,10 +1220,14 @@ untag_resource(Client, Input0, Options) ->
 %% @doc Updates properties of a destination.
 update_destination(Client, Name, Input) ->
     update_destination(Client, Name, Input, []).
-update_destination(Client, Name, Input0, Options) ->
+update_destination(Client, Name, Input0, Options0) ->
     Method = patch,
     Path = ["/destinations/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1069,10 +1240,14 @@ update_destination(Client, Name, Input0, Options) ->
 %% @doc Updates properties of a partner account.
 update_partner_account(Client, PartnerAccountId, Input) ->
     update_partner_account(Client, PartnerAccountId, Input, []).
-update_partner_account(Client, PartnerAccountId, Input0, Options) ->
+update_partner_account(Client, PartnerAccountId, Input0, Options0) ->
     Method = patch,
     Path = ["/partner-accounts/", aws_util:encode_uri(PartnerAccountId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1086,10 +1261,14 @@ update_partner_account(Client, PartnerAccountId, Input0, Options) ->
 %% @doc Updates properties of a wireless device.
 update_wireless_device(Client, Id, Input) ->
     update_wireless_device(Client, Id, Input, []).
-update_wireless_device(Client, Id, Input0, Options) ->
+update_wireless_device(Client, Id, Input0, Options0) ->
     Method = patch,
     Path = ["/wireless-devices/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1102,10 +1281,14 @@ update_wireless_device(Client, Id, Input0, Options) ->
 %% @doc Updates properties of a wireless gateway.
 update_wireless_gateway(Client, Id, Input) ->
     update_wireless_gateway(Client, Id, Input, []).
-update_wireless_gateway(Client, Id, Input0, Options) ->
+update_wireless_gateway(Client, Id, Input0, Options0) ->
     Method = patch,
     Path = ["/wireless-gateways/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1137,19 +1320,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -1159,14 +1343,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

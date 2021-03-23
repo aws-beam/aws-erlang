@@ -481,10 +481,14 @@
 %% @doc Associates a phone number with the specified Amazon Chime user.
 associate_phone_number_with_user(Client, AccountId, UserId, Input) ->
     associate_phone_number_with_user(Client, AccountId, UserId, Input, []).
-associate_phone_number_with_user(Client, AccountId, UserId, Input0, Options) ->
+associate_phone_number_with_user(Client, AccountId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "?operation=associate-phone-number"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -498,10 +502,14 @@ associate_phone_number_with_user(Client, AccountId, UserId, Input0, Options) ->
 %% Connector.
 associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input) ->
     associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input, []).
-associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input0, Options) ->
+associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "?operation=associate-phone-numbers"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -515,10 +523,14 @@ associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input0, O
 %% Connector group.
 associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
-associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options) ->
+associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), "?operation=associate-phone-numbers"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -532,10 +544,14 @@ associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId
 %% Amazon Chime account.
 associate_signin_delegate_groups_with_account(Client, AccountId, Input) ->
     associate_signin_delegate_groups_with_account(Client, AccountId, Input, []).
-associate_signin_delegate_groups_with_account(Client, AccountId, Input0, Options) ->
+associate_signin_delegate_groups_with_account(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "?operation=associate-signin-delegate-groups"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -552,10 +568,14 @@ associate_signin_delegate_groups_with_account(Client, AccountId, Input0, Options
 %% Chime SDK in the Amazon Chime Developer Guide.
 batch_create_attendee(Client, MeetingId, Input) ->
     batch_create_attendee(Client, MeetingId, Input, []).
-batch_create_attendee(Client, MeetingId, Input0, Options) ->
+batch_create_attendee(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees?operation=batch-create"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -572,10 +592,14 @@ batch_create_attendee(Client, MeetingId, Input0, Options) ->
 %% member is a chat room administrator or a general chat room member.
 batch_create_room_membership(Client, AccountId, RoomId, Input) ->
     batch_create_room_membership(Client, AccountId, RoomId, Input, []).
-batch_create_room_membership(Client, AccountId, RoomId, Input0, Options) ->
+batch_create_room_membership(Client, AccountId, RoomId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships?operation=batch-create"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -594,10 +618,14 @@ batch_create_room_membership(Client, AccountId, RoomId, Input0, Options) ->
 %% deleted permanently.
 batch_delete_phone_number(Client, Input) ->
     batch_delete_phone_number(Client, Input, []).
-batch_delete_phone_number(Client, Input0, Options) ->
+batch_delete_phone_number(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-numbers?operation=batch-delete"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -626,10 +654,14 @@ batch_delete_phone_number(Client, Input0, Options) ->
 %% To sign out users without suspending them, use the `LogoutUser' action.
 batch_suspend_user(Client, AccountId, Input) ->
     batch_suspend_user(Client, AccountId, Input, []).
-batch_suspend_user(Client, AccountId, Input0, Options) ->
+batch_suspend_user(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users?operation=suspend"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -651,10 +683,14 @@ batch_suspend_user(Client, AccountId, Input0, Options) ->
 %% are ignored.
 batch_unsuspend_user(Client, AccountId, Input) ->
     batch_unsuspend_user(Client, AccountId, Input, []).
-batch_unsuspend_user(Client, AccountId, Input0, Options) ->
+batch_unsuspend_user(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users?operation=unsuspend"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -679,10 +715,14 @@ batch_unsuspend_user(Client, AccountId, Input0, Options) ->
 %% request another update.
 batch_update_phone_number(Client, Input) ->
     batch_update_phone_number(Client, Input, []).
-batch_update_phone_number(Client, Input0, Options) ->
+batch_update_phone_number(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-numbers?operation=batch-update"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -698,10 +738,14 @@ batch_update_phone_number(Client, Input0, Options) ->
 %% Currently, only `LicenseType' updates are supported for this action.
 batch_update_user(Client, AccountId, Input) ->
     batch_update_user(Client, AccountId, Input, []).
-batch_update_user(Client, AccountId, Input0, Options) ->
+batch_update_user(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -719,10 +763,14 @@ batch_update_user(Client, AccountId, Input0, Options) ->
 %% Chime Accounts in the Amazon Chime Administration Guide.
 create_account(Client, Input) ->
     create_account(Client, Input, []).
-create_account(Client, Input0, Options) ->
+create_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/accounts"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -739,10 +787,14 @@ create_account(Client, Input0, Options) ->
 %% idempotency behavior as described in the AWS API Standard.
 create_app_instance(Client, Input) ->
     create_app_instance(Client, Input, []).
-create_app_instance(Client, Input0, Options) ->
+create_app_instance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/app-instances"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -765,10 +817,14 @@ create_app_instance(Client, Input0, Options) ->
 %% `AppInstanceAdmin' role.
 create_app_instance_admin(Client, AppInstanceArn, Input) ->
     create_app_instance_admin(Client, AppInstanceArn, Input, []).
-create_app_instance_admin(Client, AppInstanceArn, Input0, Options) ->
+create_app_instance_admin(Client, AppInstanceArn, Input0, Options0) ->
     Method = post,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -784,10 +840,14 @@ create_app_instance_admin(Client, AppInstanceArn, Input0, Options) ->
 %% user.
 create_app_instance_user(Client, Input) ->
     create_app_instance_user(Client, Input, []).
-create_app_instance_user(Client, Input0, Options) ->
+create_app_instance_user(Client, Input0, Options0) ->
     Method = post,
     Path = ["/app-instance-users"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -803,10 +863,14 @@ create_app_instance_user(Client, Input0, Options) ->
 %% Chime SDK in the Amazon Chime Developer Guide.
 create_attendee(Client, MeetingId, Input) ->
     create_attendee(Client, MeetingId, Input, []).
-create_attendee(Client, MeetingId, Input0, Options) ->
+create_attendee(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -819,10 +883,14 @@ create_attendee(Client, MeetingId, Input0, Options) ->
 %% @doc Creates a bot for an Amazon Chime Enterprise account.
 create_bot(Client, AccountId, Input) ->
     create_bot(Client, AccountId, Input, []).
-create_bot(Client, AccountId, Input0, Options) ->
+create_bot(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -841,10 +909,14 @@ create_bot(Client, AccountId, Input0, Options) ->
 %% the header.
 create_channel(Client, Input) ->
     create_channel(Client, Input, []).
-create_channel(Client, Input0, Options) ->
+create_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/channels"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -870,10 +942,14 @@ create_channel(Client, Input0, Options) ->
 %% the header.
 create_channel_ban(Client, ChannelArn, Input) ->
     create_channel_ban(Client, ChannelArn, Input, []).
-create_channel_ban(Client, ChannelArn, Input0, Options) ->
+create_channel_ban(Client, ChannelArn, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -913,10 +989,14 @@ create_channel_ban(Client, ChannelArn, Input0, Options) ->
 %% the header.
 create_channel_membership(Client, ChannelArn, Input) ->
     create_channel_membership(Client, ChannelArn, Input, []).
-create_channel_membership(Client, ChannelArn, Input0, Options) ->
+create_channel_membership(Client, ChannelArn, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -947,10 +1027,14 @@ create_channel_membership(Client, ChannelArn, Input0, Options) ->
 %% the header.
 create_channel_moderator(Client, ChannelArn, Input) ->
     create_channel_moderator(Client, ChannelArn, Input, []).
-create_channel_moderator(Client, ChannelArn, Input0, Options) ->
+create_channel_moderator(Client, ChannelArn, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -971,10 +1055,14 @@ create_channel_moderator(Client, ChannelArn, Input0, Options) ->
 %% Chime Developer Guide .
 create_meeting(Client, Input) ->
     create_meeting(Client, Input, []).
-create_meeting(Client, Input0, Options) ->
+create_meeting(Client, Input0, Options0) ->
     Method = post,
     Path = ["/meetings"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -995,10 +1083,14 @@ create_meeting(Client, Input0, Options) ->
 %% media application ID.
 create_meeting_dial_out(Client, MeetingId, Input) ->
     create_meeting_dial_out(Client, MeetingId, Input, []).
-create_meeting_dial_out(Client, MeetingId, Input0, Options) ->
+create_meeting_dial_out(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/dial-outs"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1017,10 +1109,14 @@ create_meeting_dial_out(Client, MeetingId, Input0, Options) ->
 %% Chime Developer Guide .
 create_meeting_with_attendees(Client, Input) ->
     create_meeting_with_attendees(Client, Input, []).
-create_meeting_with_attendees(Client, Input0, Options) ->
+create_meeting_with_attendees(Client, Input0, Options0) ->
     Method = post,
     Path = ["/meetings?operation=create-attendees"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1037,10 +1133,14 @@ create_meeting_with_attendees(Client, Input0, Options) ->
 %% Connector product type.
 create_phone_number_order(Client, Input) ->
     create_phone_number_order(Client, Input, []).
-create_phone_number_order(Client, Input0, Options) ->
+create_phone_number_order(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-number-orders"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1054,10 +1154,14 @@ create_phone_number_order(Client, Input0, Options) ->
 %% for the specified participant phone numbers.
 create_proxy_session(Client, VoiceConnectorId, Input) ->
     create_proxy_session(Client, VoiceConnectorId, Input, []).
-create_proxy_session(Client, VoiceConnectorId, Input0, Options) ->
+create_proxy_session(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1071,10 +1175,14 @@ create_proxy_session(Client, VoiceConnectorId, Input0, Options) ->
 %% account.
 create_room(Client, AccountId, Input) ->
     create_room(Client, AccountId, Input, []).
-create_room(Client, AccountId, Input0, Options) ->
+create_room(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1090,10 +1198,14 @@ create_room(Client, AccountId, Input0, Options) ->
 %% the member is a chat room administrator or a general chat room member.
 create_room_membership(Client, AccountId, RoomId, Input) ->
     create_room_membership(Client, AccountId, RoomId, Input, []).
-create_room_membership(Client, AccountId, RoomId, Input0, Options) ->
+create_room_membership(Client, AccountId, RoomId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1106,10 +1218,14 @@ create_room_membership(Client, AccountId, RoomId, Input0, Options) ->
 %% @doc Creates a SIP media application.
 create_sip_media_application(Client, Input) ->
     create_sip_media_application(Client, Input, []).
-create_sip_media_application(Client, Input0, Options) ->
+create_sip_media_application(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sip-media-applications"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1124,10 +1240,14 @@ create_sip_media_application(Client, Input0, Options) ->
 %% `sipMediaApplicationId'.
 create_sip_media_application_call(Client, SipMediaApplicationId, Input) ->
     create_sip_media_application_call(Client, SipMediaApplicationId, Input, []).
-create_sip_media_application_call(Client, SipMediaApplicationId, Input0, Options) ->
+create_sip_media_application_call(Client, SipMediaApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/calls"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1141,10 +1261,14 @@ create_sip_media_application_call(Client, SipMediaApplicationId, Input0, Options
 %% as a target for a specific trigger type.
 create_sip_rule(Client, Input) ->
     create_sip_rule(Client, Input, []).
-create_sip_rule(Client, Input0, Options) ->
+create_sip_rule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/sip-rules"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1157,10 +1281,14 @@ create_sip_rule(Client, Input0, Options) ->
 %% @doc Creates a user under the specified Amazon Chime account.
 create_user(Client, AccountId, Input) ->
     create_user(Client, AccountId, Input, []).
-create_user(Client, AccountId, Input0, Options) ->
+create_user(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users?operation=create"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1182,10 +1310,14 @@ create_user(Client, AccountId, Input0, Options) ->
 %% unencrypted outbound calls are blocked.
 create_voice_connector(Client, Input) ->
     create_voice_connector(Client, Input, []).
-create_voice_connector(Client, Input0, Options) ->
+create_voice_connector(Client, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1206,10 +1338,14 @@ create_voice_connector(Client, Input0, Options) ->
 %% case of availability events.
 create_voice_connector_group(Client, Input) ->
     create_voice_connector_group(Client, Input, []).
-create_voice_connector_group(Client, Input0, Options) ->
+create_voice_connector_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connector-groups"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1236,10 +1372,14 @@ create_voice_connector_group(Client, Input0, Options) ->
 %% `Disabled' accounts list.
 delete_account(Client, AccountId, Input) ->
     delete_account(Client, AccountId, Input, []).
-delete_account(Client, AccountId, Input0, Options) ->
+delete_account(Client, AccountId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1252,10 +1392,14 @@ delete_account(Client, AccountId, Input0, Options) ->
 %% @doc Deletes an `AppInstance' and all associated data asynchronously.
 delete_app_instance(Client, AppInstanceArn, Input) ->
     delete_app_instance(Client, AppInstanceArn, Input, []).
-delete_app_instance(Client, AppInstanceArn, Input0, Options) ->
+delete_app_instance(Client, AppInstanceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1270,10 +1414,14 @@ delete_app_instance(Client, AppInstanceArn, Input0, Options) ->
 %% This action does not delete the user.
 delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input) ->
     delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input, []).
-delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input0, Options) ->
+delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins/", aws_util:encode_uri(AppInstanceAdminArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1286,10 +1434,14 @@ delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input0, O
 %% @doc Deletes the streaming configurations of an `AppInstance'.
 delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input) ->
     delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input, []).
-delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Options) ->
+delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/streaming-configurations"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1302,10 +1454,14 @@ delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Opt
 %% @doc Deletes an `AppInstanceUser'.
 delete_app_instance_user(Client, AppInstanceUserArn, Input) ->
     delete_app_instance_user(Client, AppInstanceUserArn, Input, []).
-delete_app_instance_user(Client, AppInstanceUserArn, Input0, Options) ->
+delete_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
     Method = delete,
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1323,10 +1479,14 @@ delete_app_instance_user(Client, AppInstanceUserArn, Input0, Options) ->
 %% Amazon Chime SDK in the Amazon Chime Developer Guide .
 delete_attendee(Client, AttendeeId, MeetingId, Input) ->
     delete_attendee(Client, AttendeeId, MeetingId, Input, []).
-delete_attendee(Client, AttendeeId, MeetingId, Input0, Options) ->
+delete_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
     Method = delete,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1346,10 +1506,14 @@ delete_attendee(Client, AttendeeId, MeetingId, Input0, Options) ->
 %% the header.
 delete_channel(Client, ChannelArn, Input) ->
     delete_channel(Client, ChannelArn, Input, []).
-delete_channel(Client, ChannelArn, Input0, Options) ->
+delete_channel(Client, ChannelArn, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1368,10 +1532,14 @@ delete_channel(Client, ChannelArn, Input0, Options) ->
 %% the header.
 delete_channel_ban(Client, ChannelArn, MemberArn, Input) ->
     delete_channel_ban(Client, ChannelArn, MemberArn, Input, []).
-delete_channel_ban(Client, ChannelArn, MemberArn, Input0, Options) ->
+delete_channel_ban(Client, ChannelArn, MemberArn, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans/", aws_util:encode_uri(MemberArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1390,10 +1558,14 @@ delete_channel_ban(Client, ChannelArn, MemberArn, Input0, Options) ->
 %% the header.
 delete_channel_membership(Client, ChannelArn, MemberArn, Input) ->
     delete_channel_membership(Client, ChannelArn, MemberArn, Input, []).
-delete_channel_membership(Client, ChannelArn, MemberArn, Input0, Options) ->
+delete_channel_membership(Client, ChannelArn, MemberArn, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships/", aws_util:encode_uri(MemberArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1416,10 +1588,14 @@ delete_channel_membership(Client, ChannelArn, MemberArn, Input0, Options) ->
 %% the header.
 delete_channel_message(Client, ChannelArn, MessageId, Input) ->
     delete_channel_message(Client, ChannelArn, MessageId, Input, []).
-delete_channel_message(Client, ChannelArn, MessageId, Input0, Options) ->
+delete_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1438,10 +1614,14 @@ delete_channel_message(Client, ChannelArn, MessageId, Input0, Options) ->
 %% the header.
 delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input) ->
     delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input, []).
-delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input0, Options) ->
+delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input0, Options0) ->
     Method = delete,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators/", aws_util:encode_uri(ChannelModeratorArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1457,10 +1637,14 @@ delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input0, Option
 %% outgoing events.
 delete_events_configuration(Client, AccountId, BotId, Input) ->
     delete_events_configuration(Client, AccountId, BotId, Input, []).
-delete_events_configuration(Client, AccountId, BotId, Input0, Options) ->
+delete_events_configuration(Client, AccountId, BotId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), "/events-configuration"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1478,10 +1662,14 @@ delete_events_configuration(Client, AccountId, BotId, Input0, Options) ->
 %% the Amazon Chime SDK in the Amazon Chime Developer Guide.
 delete_meeting(Client, MeetingId, Input) ->
     delete_meeting(Client, MeetingId, Input, []).
-delete_meeting(Client, MeetingId, Input0, Options) ->
+delete_meeting(Client, MeetingId, Input0, Options0) ->
     Method = delete,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1500,10 +1688,14 @@ delete_meeting(Client, MeetingId, Input0, Options) ->
 %% are deleted permanently.
 delete_phone_number(Client, PhoneNumberId, Input) ->
     delete_phone_number(Client, PhoneNumberId, Input, []).
-delete_phone_number(Client, PhoneNumberId, Input0, Options) ->
+delete_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Method = delete,
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1517,10 +1709,14 @@ delete_phone_number(Client, PhoneNumberId, Input0, Options) ->
 %% Voice Connector.
 delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input) ->
     delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input, []).
-delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options) ->
+delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions/", aws_util:encode_uri(ProxySessionId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1533,10 +1729,14 @@ delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options) 
 %% @doc Deletes a chat room in an Amazon Chime Enterprise account.
 delete_room(Client, AccountId, RoomId, Input) ->
     delete_room(Client, AccountId, RoomId, Input, []).
-delete_room(Client, AccountId, RoomId, Input0, Options) ->
+delete_room(Client, AccountId, RoomId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1550,10 +1750,14 @@ delete_room(Client, AccountId, RoomId, Input0, Options) ->
 %% account.
 delete_room_membership(Client, AccountId, MemberId, RoomId, Input) ->
     delete_room_membership(Client, AccountId, MemberId, RoomId, Input, []).
-delete_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options) ->
+delete_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships/", aws_util:encode_uri(MemberId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1566,10 +1770,14 @@ delete_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options) ->
 %% @doc Deletes a SIP media application.
 delete_sip_media_application(Client, SipMediaApplicationId, Input) ->
     delete_sip_media_application(Client, SipMediaApplicationId, Input, []).
-delete_sip_media_application(Client, SipMediaApplicationId, Input0, Options) ->
+delete_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
     Method = delete,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1584,10 +1792,14 @@ delete_sip_media_application(Client, SipMediaApplicationId, Input0, Options) ->
 %% You must disable a SIP rule before you can delete it.
 delete_sip_rule(Client, SipRuleId, Input) ->
     delete_sip_rule(Client, SipRuleId, Input, []).
-delete_sip_rule(Client, SipRuleId, Input0, Options) ->
+delete_sip_rule(Client, SipRuleId, Input0, Options0) ->
     Method = delete,
     Path = ["/sip-rules/", aws_util:encode_uri(SipRuleId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1603,10 +1815,14 @@ delete_sip_rule(Client, SipRuleId, Input0, Options) ->
 %% disassociated from it before it can be deleted.
 delete_voice_connector(Client, VoiceConnectorId, Input) ->
     delete_voice_connector(Client, VoiceConnectorId, Input, []).
-delete_voice_connector(Client, VoiceConnectorId, Input0, Options) ->
+delete_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1620,10 +1836,14 @@ delete_voice_connector(Client, VoiceConnectorId, Input0, Options) ->
 %% specified Amazon Chime Voice Connector.
 delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input, []).
-delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input0, Options) ->
+delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1639,10 +1859,14 @@ delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId,
 %% be removed before it can be deleted.
 delete_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     delete_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
-delete_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options) ->
+delete_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1659,10 +1883,14 @@ delete_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options) ->
 %% it must be deleted prior to deleting the origination settings.
 delete_voice_connector_origination(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_origination(Client, VoiceConnectorId, Input, []).
-delete_voice_connector_origination(Client, VoiceConnectorId, Input0, Options) ->
+delete_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/origination"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1676,10 +1904,14 @@ delete_voice_connector_origination(Client, VoiceConnectorId, Input0, Options) ->
 %% Connector.
 delete_voice_connector_proxy(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_proxy(Client, VoiceConnectorId, Input, []).
-delete_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options) ->
+delete_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/programmable-numbers/proxy"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1693,10 +1925,14 @@ delete_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options) ->
 %% Voice Connector.
 delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input, []).
-delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Options) ->
+delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/streaming-configuration"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1713,10 +1949,14 @@ delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0,
 %% it must be deleted prior to deleting the termination settings.
 delete_voice_connector_termination(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_termination(Client, VoiceConnectorId, Input, []).
-delete_voice_connector_termination(Client, VoiceConnectorId, Input0, Options) ->
+delete_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) ->
     Method = delete,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1730,10 +1970,14 @@ delete_voice_connector_termination(Client, VoiceConnectorId, Input0, Options) ->
 %% authenticate during call termination.
 delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input, []).
-delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Options) ->
+delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/credentials?operation=delete"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -1752,10 +1996,13 @@ describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
-describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_app_instance(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1772,10 +2019,13 @@ describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMap, HeadersMap, []).
 
-describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins/", aws_util:encode_uri(AppInstanceAdminArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1792,10 +2042,13 @@ describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap, []).
 
-describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_app_instance_user(Client, AppInstanceUserArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -1817,10 +2070,13 @@ describe_channel(Client, ChannelArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel(Client, ChannelArn, QueryMap, HeadersMap, []).
 
-describe_channel(Client, ChannelArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_channel(Client, ChannelArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -1845,10 +2101,13 @@ describe_channel_ban(Client, ChannelArn, MemberArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel_ban(Client, ChannelArn, MemberArn, QueryMap, HeadersMap, []).
 
-describe_channel_ban(Client, ChannelArn, MemberArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_channel_ban(Client, ChannelArn, MemberArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans/", aws_util:encode_uri(MemberArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -1873,10 +2132,13 @@ describe_channel_membership(Client, ChannelArn, MemberArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel_membership(Client, ChannelArn, MemberArn, QueryMap, HeadersMap, []).
 
-describe_channel_membership(Client, ChannelArn, MemberArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_channel_membership(Client, ChannelArn, MemberArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships/", aws_util:encode_uri(MemberArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -1902,10 +2164,13 @@ describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanc
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, QueryMap, HeadersMap, []).
 
-describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "?scope=app-instance-user-membership"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -1935,10 +2200,13 @@ describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceU
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, QueryMap, HeadersMap, []).
 
-describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "?scope=app-instance-user-moderated-channel"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -1967,10 +2235,13 @@ describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, QueryMap, HeadersMap, []).
 
-describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators/", aws_util:encode_uri(ChannelModeratorArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -1986,10 +2257,14 @@ describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, QueryMap, He
 %% Amazon Chime user.
 disassociate_phone_number_from_user(Client, AccountId, UserId, Input) ->
     disassociate_phone_number_from_user(Client, AccountId, UserId, Input, []).
-disassociate_phone_number_from_user(Client, AccountId, UserId, Input0, Options) ->
+disassociate_phone_number_from_user(Client, AccountId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "?operation=disassociate-phone-number"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2003,10 +2278,14 @@ disassociate_phone_number_from_user(Client, AccountId, UserId, Input0, Options) 
 %% Chime Voice Connector.
 disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input) ->
     disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input, []).
-disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input0, Options) ->
+disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "?operation=disassociate-phone-numbers"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2020,10 +2299,14 @@ disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input0
 %% Chime Voice Connector group.
 disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
-disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options) ->
+disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), "?operation=disassociate-phone-numbers"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2037,10 +2320,14 @@ disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGrou
 %% specified Amazon Chime account.
 disassociate_signin_delegate_groups_from_account(Client, AccountId, Input) ->
     disassociate_signin_delegate_groups_from_account(Client, AccountId, Input, []).
-disassociate_signin_delegate_groups_from_account(Client, AccountId, Input0, Options) ->
+disassociate_signin_delegate_groups_from_account(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "?operation=disassociate-signin-delegate-groups"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2060,10 +2347,13 @@ get_account(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account(Client, AccountId, QueryMap, HeadersMap, []).
 
-get_account(Client, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_account(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2084,10 +2374,13 @@ get_account_settings(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_account_settings(Client, AccountId, QueryMap, HeadersMap, []).
 
-get_account_settings(Client, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_account_settings(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/settings"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2104,10 +2397,13 @@ get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
-get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_app_instance_retention_settings(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/retention-settings"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2124,10 +2420,13 @@ get_app_instance_streaming_configurations(Client, AppInstanceArn, QueryMap, Head
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_app_instance_streaming_configurations(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
-get_app_instance_streaming_configurations(Client, AppInstanceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_app_instance_streaming_configurations(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/streaming-configurations"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2148,10 +2447,13 @@ get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, []).
 
-get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_attendee(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2169,10 +2471,13 @@ get_bot(Client, AccountId, BotId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_bot(Client, AccountId, BotId, QueryMap, HeadersMap, []).
 
-get_bot(Client, AccountId, BotId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_bot(Client, AccountId, BotId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2193,10 +2498,13 @@ get_channel_message(Client, ChannelArn, MessageId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_channel_message(Client, ChannelArn, MessageId, QueryMap, HeadersMap, []).
 
-get_channel_message(Client, ChannelArn, MessageId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_channel_message(Client, ChannelArn, MessageId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -2218,10 +2526,13 @@ get_events_configuration(Client, AccountId, BotId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_events_configuration(Client, AccountId, BotId, QueryMap, HeadersMap, []).
 
-get_events_configuration(Client, AccountId, BotId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_events_configuration(Client, AccountId, BotId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), "/events-configuration"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2240,10 +2551,13 @@ get_global_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_global_settings(Client, QueryMap, HeadersMap, []).
 
-get_global_settings(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_global_settings(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/settings"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2264,10 +2578,13 @@ get_meeting(Client, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_meeting(Client, MeetingId, QueryMap, HeadersMap, []).
 
-get_meeting(Client, MeetingId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_meeting(Client, MeetingId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2284,10 +2601,13 @@ get_messaging_session_endpoint(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_messaging_session_endpoint(Client, QueryMap, HeadersMap, []).
 
-get_messaging_session_endpoint(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_messaging_session_endpoint(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/endpoints/messaging-session"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2305,10 +2625,13 @@ get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, []).
 
-get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2327,10 +2650,13 @@ get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap, []).
 
-get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-number-orders/", aws_util:encode_uri(PhoneNumberOrderId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2348,10 +2674,13 @@ get_phone_number_settings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_phone_number_settings(Client, QueryMap, HeadersMap, []).
 
-get_phone_number_settings(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_phone_number_settings(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/settings/phone-number"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2369,10 +2698,13 @@ get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap, []).
 
-get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions/", aws_util:encode_uri(ProxySessionId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2393,10 +2725,13 @@ get_retention_settings(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_retention_settings(Client, AccountId, QueryMap, HeadersMap, []).
 
-get_retention_settings(Client, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_retention_settings(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/retention-settings"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2414,10 +2749,13 @@ get_room(Client, AccountId, RoomId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_room(Client, AccountId, RoomId, QueryMap, HeadersMap, []).
 
-get_room(Client, AccountId, RoomId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_room(Client, AccountId, RoomId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2435,10 +2773,13 @@ get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap, []).
 
-get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2456,10 +2797,13 @@ get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Q
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, QueryMap, HeadersMap, []).
 
-get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/logging-configuration"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2477,10 +2821,13 @@ get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap, []).
 
-get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-rules/", aws_util:encode_uri(SipRuleId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2501,10 +2848,13 @@ get_user(Client, AccountId, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_user(Client, AccountId, UserId, QueryMap, HeadersMap, []).
 
-get_user(Client, AccountId, UserId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_user(Client, AccountId, UserId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2522,10 +2872,13 @@ get_user_settings(Client, AccountId, UserId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_user_settings(Client, AccountId, UserId, QueryMap, HeadersMap, []).
 
-get_user_settings(Client, AccountId, UserId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_user_settings(Client, AccountId, UserId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "/settings"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2543,10 +2896,13 @@ get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
-get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2564,10 +2920,13 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Qu
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
-get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2585,10 +2944,13 @@ get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap, []).
 
-get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2609,10 +2971,13 @@ get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, He
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
-get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/logging-configuration"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2630,10 +2995,13 @@ get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
-get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/origination"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2651,10 +3019,13 @@ get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
-get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/programmable-numbers/proxy"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2675,10 +3046,13 @@ get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, 
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
-get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/streaming-configuration"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2696,10 +3070,13 @@ get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
-get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2718,10 +3095,13 @@ get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
-get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/health"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2735,10 +3115,14 @@ get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, Heade
 %% Only `Team' account types are currently supported for this action.
 invite_users(Client, AccountId, Input) ->
     invite_users(Client, AccountId, Input, []).
-invite_users(Client, AccountId, Input0, Options) ->
+invite_users(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users?operation=add"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -2762,10 +3146,13 @@ list_accounts(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_accounts(Client, QueryMap, HeadersMap, []).
 
-list_accounts(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_accounts(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2789,10 +3176,13 @@ list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
-list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2814,10 +3204,13 @@ list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
-list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_app_instance_users(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instance-users"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2841,10 +3234,13 @@ list_app_instances(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_app_instances(Client, QueryMap, HeadersMap, []).
 
-list_app_instances(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_app_instances(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app-instances"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2866,10 +3262,13 @@ list_attendee_tags(Client, AttendeeId, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_attendee_tags(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, []).
 
-list_attendee_tags(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_attendee_tags(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), "/tags"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2889,10 +3288,13 @@ list_attendees(Client, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_attendees(Client, MeetingId, QueryMap, HeadersMap, []).
 
-list_attendees(Client, MeetingId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_attendees(Client, MeetingId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2915,10 +3317,13 @@ list_bots(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_bots(Client, AccountId, QueryMap, HeadersMap, []).
 
-list_bots(Client, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_bots(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -2944,10 +3349,13 @@ list_channel_bans(Client, ChannelArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_bans(Client, ChannelArn, QueryMap, HeadersMap, []).
 
-list_channel_bans(Client, ChannelArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_channel_bans(Client, ChannelArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -2977,10 +3385,13 @@ list_channel_memberships(Client, ChannelArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_memberships(Client, ChannelArn, QueryMap, HeadersMap, []).
 
-list_channel_memberships(Client, ChannelArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_channel_memberships(Client, ChannelArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -3014,10 +3425,13 @@ list_channel_memberships_for_app_instance_user(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_memberships_for_app_instance_user(Client, QueryMap, HeadersMap, []).
 
-list_channel_memberships_for_app_instance_user(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_channel_memberships_for_app_instance_user(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels?scope=app-instance-user-memberships"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -3055,10 +3469,13 @@ list_channel_messages(Client, ChannelArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_messages(Client, ChannelArn, QueryMap, HeadersMap, []).
 
-list_channel_messages(Client, ChannelArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_channel_messages(Client, ChannelArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -3091,10 +3508,13 @@ list_channel_moderators(Client, ChannelArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channel_moderators(Client, ChannelArn, QueryMap, HeadersMap, []).
 
-list_channel_moderators(Client, ChannelArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_channel_moderators(Client, ChannelArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -3135,10 +3555,13 @@ list_channels(Client, AppInstanceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channels(Client, AppInstanceArn, QueryMap, HeadersMap, []).
 
-list_channels(Client, AppInstanceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_channels(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -3170,10 +3593,13 @@ list_channels_moderated_by_app_instance_user(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_channels_moderated_by_app_instance_user(Client, QueryMap, HeadersMap, []).
 
-list_channels_moderated_by_app_instance_user(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_channels_moderated_by_app_instance_user(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels?scope=app-instance-user-moderated-channels"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers0 =
       [
@@ -3200,10 +3626,13 @@ list_meeting_tags(Client, MeetingId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_meeting_tags(Client, MeetingId, QueryMap, HeadersMap, []).
 
-list_meeting_tags(Client, MeetingId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_meeting_tags(Client, MeetingId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/tags"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3223,10 +3652,13 @@ list_meetings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_meetings(Client, QueryMap, HeadersMap, []).
 
-list_meetings(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_meetings(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/meetings"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3249,10 +3681,13 @@ list_phone_number_orders(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_phone_number_orders(Client, QueryMap, HeadersMap, []).
 
-list_phone_number_orders(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_phone_number_orders(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-number-orders"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3276,10 +3711,13 @@ list_phone_numbers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_phone_numbers(Client, QueryMap, HeadersMap, []).
 
-list_phone_numbers(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_phone_numbers(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-numbers"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3306,10 +3744,13 @@ list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
-list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3334,10 +3775,13 @@ list_room_memberships(Client, AccountId, RoomId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_room_memberships(Client, AccountId, RoomId, QueryMap, HeadersMap, []).
 
-list_room_memberships(Client, AccountId, RoomId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_room_memberships(Client, AccountId, RoomId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3363,10 +3807,13 @@ list_rooms(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_rooms(Client, AccountId, QueryMap, HeadersMap, []).
 
-list_rooms(Client, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_rooms(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3390,10 +3837,13 @@ list_sip_media_applications(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sip_media_applications(Client, QueryMap, HeadersMap, []).
 
-list_sip_media_applications(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_sip_media_applications(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-media-applications"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3415,10 +3865,13 @@ list_sip_rules(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_sip_rules(Client, QueryMap, HeadersMap, []).
 
-list_sip_rules(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_sip_rules(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sip-rules"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3441,10 +3894,13 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3468,10 +3924,13 @@ list_users(Client, AccountId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_users(Client, AccountId, QueryMap, HeadersMap, []).
 
-list_users(Client, AccountId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_users(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3496,10 +3955,13 @@ list_voice_connector_groups(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_voice_connector_groups(Client, QueryMap, HeadersMap, []).
 
-list_voice_connector_groups(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_voice_connector_groups(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connector-groups"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3522,10 +3984,13 @@ list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap,
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap, HeadersMap, []).
 
-list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/credentials"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3543,10 +4008,13 @@ list_voice_connectors(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_voice_connectors(Client, QueryMap, HeadersMap, []).
 
-list_voice_connectors(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_voice_connectors(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/voice-connectors"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3563,10 +4031,14 @@ list_voice_connectors(Client, QueryMap, HeadersMap, Options)
 %% currently logged into.
 logout_user(Client, AccountId, UserId, Input) ->
     logout_user(Client, AccountId, UserId, Input, []).
-logout_user(Client, AccountId, UserId, Input0, Options) ->
+logout_user(Client, AccountId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "?operation=logout"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -3580,10 +4052,14 @@ logout_user(Client, AccountId, UserId, Input0, Options) ->
 %% data.
 put_app_instance_retention_settings(Client, AppInstanceArn, Input) ->
     put_app_instance_retention_settings(Client, AppInstanceArn, Input, []).
-put_app_instance_retention_settings(Client, AppInstanceArn, Input0, Options) ->
+put_app_instance_retention_settings(Client, AppInstanceArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/retention-settings"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -3596,10 +4072,14 @@ put_app_instance_retention_settings(Client, AppInstanceArn, Input0, Options) ->
 %% @doc The data streaming configurations of an `AppInstance'.
 put_app_instance_streaming_configurations(Client, AppInstanceArn, Input) ->
     put_app_instance_streaming_configurations(Client, AppInstanceArn, Input, []).
-put_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Options) ->
+put_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/streaming-configurations"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -3616,10 +4096,14 @@ put_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Option
 %% information, see `Bot'.
 put_events_configuration(Client, AccountId, BotId, Input) ->
     put_events_configuration(Client, AccountId, BotId, Input, []).
-put_events_configuration(Client, AccountId, BotId, Input0, Options) ->
+put_events_configuration(Client, AccountId, BotId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), "/events-configuration"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -3642,10 +4126,14 @@ put_events_configuration(Client, AccountId, BotId, Input0, Options) ->
 %% Policies in the Amazon Chime Administration Guide .
 put_retention_settings(Client, AccountId, Input) ->
     put_retention_settings(Client, AccountId, Input, []).
-put_retention_settings(Client, AccountId, Input0, Options) ->
+put_retention_settings(Client, AccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/retention-settings"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -3659,10 +4147,14 @@ put_retention_settings(Client, AccountId, Input0, Options) ->
 %% application.
 put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input) ->
     put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input, []).
-put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input0, Options) ->
+put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/logging-configuration"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -3680,10 +4172,14 @@ put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, I
 %% Voice Connector before emergency calling can be configured.
 put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input, []).
-put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input0, Options) ->
+put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -3700,10 +4196,14 @@ put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, In
 %% for sending to Amazon CloudWatch Logs.
 put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input, []).
-put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input0, Options) ->
+put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/logging-configuration"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -3720,10 +4220,14 @@ put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input0, Opti
 %% it must be deleted prior to turning off origination settings.
 put_voice_connector_origination(Client, VoiceConnectorId, Input) ->
     put_voice_connector_origination(Client, VoiceConnectorId, Input, []).
-put_voice_connector_origination(Client, VoiceConnectorId, Input0, Options) ->
+put_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/origination"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -3737,10 +4241,14 @@ put_voice_connector_origination(Client, VoiceConnectorId, Input0, Options) ->
 %% Voice Connector.
 put_voice_connector_proxy(Client, VoiceConnectorId, Input) ->
     put_voice_connector_proxy(Client, VoiceConnectorId, Input, []).
-put_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options) ->
+put_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/programmable-numbers/proxy"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -3758,10 +4266,14 @@ put_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options) ->
 %% for the Amazon Kinesis data.
 put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input, []).
-put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Options) ->
+put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/streaming-configuration"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -3778,10 +4290,14 @@ put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Op
 %% it must be deleted prior to turning off termination settings.
 put_voice_connector_termination(Client, VoiceConnectorId, Input) ->
     put_voice_connector_termination(Client, VoiceConnectorId, Input, []).
-put_voice_connector_termination(Client, VoiceConnectorId, Input0, Options) ->
+put_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -3795,10 +4311,14 @@ put_voice_connector_termination(Client, VoiceConnectorId, Input0, Options) ->
 %% Connector.
 put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input) ->
     put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input, []).
-put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Options) ->
+put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/credentials?operation=put"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -3818,10 +4338,14 @@ put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Op
 %% the header.
 redact_channel_message(Client, ChannelArn, MessageId, Input) ->
     redact_channel_message(Client, ChannelArn, MessageId, Input, []).
-redact_channel_message(Client, ChannelArn, MessageId, Input0, Options) ->
+redact_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), "?operation=redact"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -3837,10 +4361,14 @@ redact_channel_message(Client, ChannelArn, MessageId, Input0, Options) ->
 %% conversation.
 redact_conversation_message(Client, AccountId, ConversationId, MessageId, Input) ->
     redact_conversation_message(Client, AccountId, ConversationId, MessageId, Input, []).
-redact_conversation_message(Client, AccountId, ConversationId, MessageId, Input0, Options) ->
+redact_conversation_message(Client, AccountId, ConversationId, MessageId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/conversations/", aws_util:encode_uri(ConversationId), "/messages/", aws_util:encode_uri(MessageId), "?operation=redact"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -3854,10 +4382,14 @@ redact_conversation_message(Client, AccountId, ConversationId, MessageId, Input0
 %% channel.
 redact_room_message(Client, AccountId, MessageId, RoomId, Input) ->
     redact_room_message(Client, AccountId, MessageId, RoomId, Input, []).
-redact_room_message(Client, AccountId, MessageId, RoomId, Input0, Options) ->
+redact_room_message(Client, AccountId, MessageId, RoomId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/messages/", aws_util:encode_uri(MessageId), "?operation=redact"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -3870,10 +4402,14 @@ redact_room_message(Client, AccountId, MessageId, RoomId, Input0, Options) ->
 %% @doc Regenerates the security token for a bot.
 regenerate_security_token(Client, AccountId, BotId, Input) ->
     regenerate_security_token(Client, AccountId, BotId, Input, []).
-regenerate_security_token(Client, AccountId, BotId, Input0, Options) ->
+regenerate_security_token(Client, AccountId, BotId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), "?operation=regenerate-security-token"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -3889,10 +4425,14 @@ regenerate_security_token(Client, AccountId, BotId, Input0, Options) ->
 %% Returns the `User' object with the updated personal meeting PIN.
 reset_personal_pin(Client, AccountId, UserId, Input) ->
     reset_personal_pin(Client, AccountId, UserId, Input, []).
-reset_personal_pin(Client, AccountId, UserId, Input0, Options) ->
+reset_personal_pin(Client, AccountId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "?operation=reset-personal-pin"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -3906,10 +4446,14 @@ reset_personal_pin(Client, AccountId, UserId, Input0, Options) ->
 %% number Inventory.
 restore_phone_number(Client, PhoneNumberId, Input) ->
     restore_phone_number(Client, PhoneNumberId, Input, []).
-restore_phone_number(Client, PhoneNumberId, Input0, Options) ->
+restore_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Method = post,
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), "?operation=restore"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -3928,10 +4472,13 @@ search_available_phone_numbers(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     search_available_phone_numbers(Client, QueryMap, HeadersMap, []).
 
-search_available_phone_numbers(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+search_available_phone_numbers(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/search?type=phone-numbers"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -3959,10 +4506,14 @@ search_available_phone_numbers(Client, QueryMap, HeadersMap, Options)
 %% `CONTROL' messages can contain 30 bytes of data and no metadata.
 send_channel_message(Client, ChannelArn, Input) ->
     send_channel_message(Client, ChannelArn, Input, []).
-send_channel_message(Client, ChannelArn, Input0, Options) ->
+send_channel_message(Client, ChannelArn, Input0, Options0) ->
     Method = post,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -3978,10 +4529,14 @@ send_channel_message(Client, ChannelArn, Input0, Options) ->
 %% attendee.
 tag_attendee(Client, AttendeeId, MeetingId, Input) ->
     tag_attendee(Client, AttendeeId, MeetingId, Input, []).
-tag_attendee(Client, AttendeeId, MeetingId, Input0, Options) ->
+tag_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), "/tags?operation=add"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -3994,10 +4549,14 @@ tag_attendee(Client, AttendeeId, MeetingId, Input0, Options) ->
 %% @doc Applies the specified tags to the specified Amazon Chime SDK meeting.
 tag_meeting(Client, MeetingId, Input) ->
     tag_meeting(Client, MeetingId, Input, []).
-tag_meeting(Client, MeetingId, Input0, Options) ->
+tag_meeting(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/tags?operation=add"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4011,10 +4570,14 @@ tag_meeting(Client, MeetingId, Input0, Options) ->
 %% resource.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
-tag_resource(Client, Input0, Options) ->
+tag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=tag-resource"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4028,10 +4591,14 @@ tag_resource(Client, Input0, Options) ->
 %% attendee.
 untag_attendee(Client, AttendeeId, MeetingId, Input) ->
     untag_attendee(Client, AttendeeId, MeetingId, Input, []).
-untag_attendee(Client, AttendeeId, MeetingId, Input0, Options) ->
+untag_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), "/tags?operation=delete"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4045,10 +4612,14 @@ untag_attendee(Client, AttendeeId, MeetingId, Input0, Options) ->
 %% meeting.
 untag_meeting(Client, MeetingId, Input) ->
     untag_meeting(Client, MeetingId, Input, []).
-untag_meeting(Client, MeetingId, Input0, Options) ->
+untag_meeting(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/tags?operation=delete"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4062,10 +4633,14 @@ untag_meeting(Client, MeetingId, Input0, Options) ->
 %% resource.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
-untag_resource(Client, Input0, Options) ->
+untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=untag-resource"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4080,10 +4655,14 @@ untag_resource(Client, Input0, Options) ->
 %% Currently, only account name updates are supported for this action.
 update_account(Client, AccountId, Input) ->
     update_account(Client, AccountId, Input, []).
-update_account(Client, AccountId, Input0, Options) ->
+update_account(Client, AccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4100,10 +4679,14 @@ update_account(Client, AccountId, Input0, Options) ->
 %% Policies Page in the Amazon Chime Administration Guide.
 update_account_settings(Client, AccountId, Input) ->
     update_account_settings(Client, AccountId, Input, []).
-update_account_settings(Client, AccountId, Input0, Options) ->
+update_account_settings(Client, AccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/settings"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4116,10 +4699,14 @@ update_account_settings(Client, AccountId, Input0, Options) ->
 %% @doc Updates `AppInstance' metadata.
 update_app_instance(Client, AppInstanceArn, Input) ->
     update_app_instance(Client, AppInstanceArn, Input, []).
-update_app_instance(Client, AppInstanceArn, Input0, Options) ->
+update_app_instance(Client, AppInstanceArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4134,10 +4721,14 @@ update_app_instance(Client, AppInstanceArn, Input0, Options) ->
 %% You can update names and metadata.
 update_app_instance_user(Client, AppInstanceUserArn, Input) ->
     update_app_instance_user(Client, AppInstanceUserArn, Input, []).
-update_app_instance_user(Client, AppInstanceUserArn, Input0, Options) ->
+update_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4151,10 +4742,14 @@ update_app_instance_user(Client, AppInstanceUserArn, Input0, Options) ->
 %% the bot from running in your Amazon Chime Enterprise account.
 update_bot(Client, AccountId, BotId, Input) ->
     update_bot(Client, AccountId, BotId, Input, []).
-update_bot(Client, AccountId, BotId, Input0, Options) ->
+update_bot(Client, AccountId, BotId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4173,10 +4768,14 @@ update_bot(Client, AccountId, BotId, Input0, Options) ->
 %% the header.
 update_channel(Client, ChannelArn, Input) ->
     update_channel(Client, ChannelArn, Input, []).
-update_channel(Client, ChannelArn, Input0, Options) ->
+update_channel(Client, ChannelArn, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -4195,10 +4794,14 @@ update_channel(Client, ChannelArn, Input0, Options) ->
 %% the header.
 update_channel_message(Client, ChannelArn, MessageId, Input) ->
     update_channel_message(Client, ChannelArn, MessageId, Input, []).
-update_channel_message(Client, ChannelArn, MessageId, Input0, Options) ->
+update_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -4217,10 +4820,14 @@ update_channel_message(Client, ChannelArn, MessageId, Input0, Options) ->
 %% the header.
 update_channel_read_marker(Client, ChannelArn, Input) ->
     update_channel_read_marker(Client, ChannelArn, Input, []).
-update_channel_read_marker(Client, ChannelArn, Input0, Options) ->
+update_channel_read_marker(Client, ChannelArn, Input0, Options0) ->
     Method = put,
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/readMarker"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -4236,10 +4843,14 @@ update_channel_read_marker(Client, ChannelArn, Input0, Options) ->
 %% Amazon Chime Business Calling and Amazon Chime Voice Connector settings.
 update_global_settings(Client, Input) ->
     update_global_settings(Client, Input, []).
-update_global_settings(Client, Input0, Options) ->
+update_global_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/settings"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4263,10 +4874,14 @@ update_global_settings(Client, Input0, Options) ->
 %% request another update.
 update_phone_number(Client, PhoneNumberId, Input) ->
     update_phone_number(Client, PhoneNumberId, Input, []).
-update_phone_number(Client, PhoneNumberId, Input0, Options) ->
+update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Method = post,
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4283,10 +4898,14 @@ update_phone_number(Client, PhoneNumberId, Input0, Options) ->
 %% Outbound calling names can take up to 72 hours to update.
 update_phone_number_settings(Client, Input) ->
     update_phone_number_settings(Client, Input, []).
-update_phone_number_settings(Client, Input0, Options) ->
+update_phone_number_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/settings/phone-number"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4300,10 +4919,14 @@ update_phone_number_settings(Client, Input0, Options) ->
 %% capabilities.
 update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input) ->
     update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input, []).
-update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options) ->
+update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions/", aws_util:encode_uri(ProxySessionId), ""],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4317,10 +4940,14 @@ update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options) 
 %% Chime Enterprise account.
 update_room(Client, AccountId, RoomId, Input) ->
     update_room(Client, AccountId, RoomId, Input, []).
-update_room(Client, AccountId, RoomId, Input0, Options) ->
+update_room(Client, AccountId, RoomId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4338,10 +4965,14 @@ update_room(Client, AccountId, RoomId, Input0, Options) ->
 %% user IDs.
 update_room_membership(Client, AccountId, MemberId, RoomId, Input) ->
     update_room_membership(Client, AccountId, MemberId, RoomId, Input, []).
-update_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options) ->
+update_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships/", aws_util:encode_uri(MemberId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4354,10 +4985,14 @@ update_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options) ->
 %% @doc Updates the details of the specified SIP media application.
 update_sip_media_application(Client, SipMediaApplicationId, Input) ->
     update_sip_media_application(Client, SipMediaApplicationId, Input, []).
-update_sip_media_application(Client, SipMediaApplicationId, Input0, Options) ->
+update_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4370,10 +5005,14 @@ update_sip_media_application(Client, SipMediaApplicationId, Input0, Options) ->
 %% @doc Updates the details of the specified SIP rule.
 update_sip_rule(Client, SipRuleId, Input) ->
     update_sip_rule(Client, SipRuleId, Input, []).
-update_sip_rule(Client, SipRuleId, Input0, Options) ->
+update_sip_rule(Client, SipRuleId, Input0, Options0) ->
     Method = put,
     Path = ["/sip-rules/", aws_util:encode_uri(SipRuleId), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4388,10 +5027,14 @@ update_sip_rule(Client, SipRuleId, Input0, Options) ->
 %% Currently, only `LicenseType' updates are supported for this action.
 update_user(Client, AccountId, UserId, Input) ->
     update_user(Client, AccountId, UserId, Input, []).
-update_user(Client, AccountId, UserId, Input0, Options) ->
+update_user(Client, AccountId, UserId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4405,10 +5048,14 @@ update_user(Client, AccountId, UserId, Input0, Options) ->
 %% settings.
 update_user_settings(Client, AccountId, UserId, Input) ->
     update_user_settings(Client, AccountId, UserId, Input, []).
-update_user_settings(Client, AccountId, UserId, Input0, Options) ->
+update_user_settings(Client, AccountId, UserId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "/settings"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4421,10 +5068,14 @@ update_user_settings(Client, AccountId, UserId, Input0, Options) ->
 %% @doc Updates details for the specified Amazon Chime Voice Connector.
 update_voice_connector(Client, VoiceConnectorId, Input) ->
     update_voice_connector(Client, VoiceConnectorId, Input, []).
-update_voice_connector(Client, VoiceConnectorId, Input0, Options) ->
+update_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4438,10 +5089,14 @@ update_voice_connector(Client, VoiceConnectorId, Input0, Options) ->
 %% such as the name and Amazon Chime Voice Connector priority ranking.
 update_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     update_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
-update_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options) ->
+update_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -4474,19 +5129,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -4496,14 +5152,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

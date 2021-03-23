@@ -52,10 +52,14 @@
 %% @doc Associates a physical device with a placement.
 associate_device_with_placement(Client, DeviceTemplateName, PlacementName, ProjectName, Input) ->
     associate_device_with_placement(Client, DeviceTemplateName, PlacementName, ProjectName, Input, []).
-associate_device_with_placement(Client, DeviceTemplateName, PlacementName, ProjectName, Input0, Options) ->
+associate_device_with_placement(Client, DeviceTemplateName, PlacementName, ProjectName, Input0, Options0) ->
     Method = put,
     Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements/", aws_util:encode_uri(PlacementName), "/devices/", aws_util:encode_uri(DeviceTemplateName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -68,10 +72,14 @@ associate_device_with_placement(Client, DeviceTemplateName, PlacementName, Proje
 %% @doc Creates an empty placement.
 create_placement(Client, ProjectName, Input) ->
     create_placement(Client, ProjectName, Input, []).
-create_placement(Client, ProjectName, Input0, Options) ->
+create_placement(Client, ProjectName, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -87,10 +95,14 @@ create_placement(Client, ProjectName, Input0, Options) ->
 %% template defined in the project.
 create_project(Client, Input) ->
     create_project(Client, Input, []).
-create_project(Client, Input0, Options) ->
+create_project(Client, Input0, Options0) ->
     Method = post,
     Path = ["/projects"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -107,10 +119,14 @@ create_project(Client, Input0, Options) ->
 %% When you delete a placement, all associated data becomes irretrievable.
 delete_placement(Client, PlacementName, ProjectName, Input) ->
     delete_placement(Client, PlacementName, ProjectName, Input, []).
-delete_placement(Client, PlacementName, ProjectName, Input0, Options) ->
+delete_placement(Client, PlacementName, ProjectName, Input0, Options0) ->
     Method = delete,
     Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements/", aws_util:encode_uri(PlacementName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -127,10 +143,14 @@ delete_placement(Client, PlacementName, ProjectName, Input0, Options) ->
 %% When you delete a project, all associated data becomes irretrievable.
 delete_project(Client, ProjectName, Input) ->
     delete_project(Client, ProjectName, Input, []).
-delete_project(Client, ProjectName, Input0, Options) ->
+delete_project(Client, ProjectName, Input0, Options0) ->
     Method = delete,
     Path = ["/projects/", aws_util:encode_uri(ProjectName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -149,10 +169,13 @@ describe_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMap, []).
 
-describe_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements/", aws_util:encode_uri(PlacementName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -169,10 +192,13 @@ describe_project(Client, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_project(Client, ProjectName, QueryMap, HeadersMap, []).
 
-describe_project(Client, ProjectName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_project(Client, ProjectName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(ProjectName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -183,10 +209,14 @@ describe_project(Client, ProjectName, QueryMap, HeadersMap, Options)
 %% @doc Removes a physical device from a placement.
 disassociate_device_from_placement(Client, DeviceTemplateName, PlacementName, ProjectName, Input) ->
     disassociate_device_from_placement(Client, DeviceTemplateName, PlacementName, ProjectName, Input, []).
-disassociate_device_from_placement(Client, DeviceTemplateName, PlacementName, ProjectName, Input0, Options) ->
+disassociate_device_from_placement(Client, DeviceTemplateName, PlacementName, ProjectName, Input0, Options0) ->
     Method = delete,
     Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements/", aws_util:encode_uri(PlacementName), "/devices/", aws_util:encode_uri(DeviceTemplateName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -205,10 +235,13 @@ get_devices_in_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMa
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     get_devices_in_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMap, []).
 
-get_devices_in_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+get_devices_in_placement(Client, PlacementName, ProjectName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements/", aws_util:encode_uri(PlacementName), "/devices"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -225,10 +258,13 @@ list_placements(Client, ProjectName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_placements(Client, ProjectName, QueryMap, HeadersMap, []).
 
-list_placements(Client, ProjectName, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_placements(Client, ProjectName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -251,10 +287,13 @@ list_projects(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_projects(Client, QueryMap, HeadersMap, []).
 
-list_projects(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_projects(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -277,10 +316,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -294,10 +336,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% For more information, see AWS Tagging Strategies.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -310,10 +356,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Removes one or more tags (metadata key/value pairs) from a resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -329,10 +379,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% To clear an attribute, pass an empty value (i.e., "").
 update_placement(Client, PlacementName, ProjectName, Input) ->
     update_placement(Client, PlacementName, ProjectName, Input, []).
-update_placement(Client, PlacementName, ProjectName, Input0, Options) ->
+update_placement(Client, PlacementName, ProjectName, Input0, Options0) ->
     Method = put,
     Path = ["/projects/", aws_util:encode_uri(ProjectName), "/placements/", aws_util:encode_uri(PlacementName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -350,10 +404,14 @@ update_placement(Client, PlacementName, ProjectName, Input0, Options) ->
 %% `""').
 update_project(Client, ProjectName, Input) ->
     update_project(Client, ProjectName, Input, []).
-update_project(Client, ProjectName, Input0, Options) ->
+update_project(Client, ProjectName, Input0, Options0) ->
     Method = put,
     Path = ["/projects/", aws_util:encode_uri(ProjectName), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -385,19 +443,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -407,14 +466,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->

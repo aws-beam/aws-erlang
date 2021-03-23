@@ -78,10 +78,14 @@
 %% You can create up to 50 outputs per flow.
 add_flow_outputs(Client, FlowArn, Input) ->
     add_flow_outputs(Client, FlowArn, Input, []).
-add_flow_outputs(Client, FlowArn, Input0, Options) ->
+add_flow_outputs(Client, FlowArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/outputs"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -94,10 +98,14 @@ add_flow_outputs(Client, FlowArn, Input0, Options) ->
 %% @doc Adds Sources to flow
 add_flow_sources(Client, FlowArn, Input) ->
     add_flow_sources(Client, FlowArn, Input, []).
-add_flow_sources(Client, FlowArn, Input0, Options) ->
+add_flow_sources(Client, FlowArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/source"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -110,10 +118,14 @@ add_flow_sources(Client, FlowArn, Input0, Options) ->
 %% @doc Adds VPC interfaces to flow
 add_flow_vpc_interfaces(Client, FlowArn, Input) ->
     add_flow_vpc_interfaces(Client, FlowArn, Input, []).
-add_flow_vpc_interfaces(Client, FlowArn, Input0, Options) ->
+add_flow_vpc_interfaces(Client, FlowArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/vpcInterfaces"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -129,10 +141,14 @@ add_flow_vpc_interfaces(Client, FlowArn, Input0, Options) ->
 %% outputs (up to 50) and entitlements (up to 50).
 create_flow(Client, Input) ->
     create_flow(Client, Input, []).
-create_flow(Client, Input0, Options) ->
+create_flow(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/flows"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -147,10 +163,14 @@ create_flow(Client, Input0, Options) ->
 %% Before you can delete a flow, you must stop the flow.
 delete_flow(Client, FlowArn, Input) ->
     delete_flow(Client, FlowArn, Input, []).
-delete_flow(Client, FlowArn, Input0, Options) ->
+delete_flow(Client, FlowArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -172,10 +192,13 @@ describe_flow(Client, FlowArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_flow(Client, FlowArn, QueryMap, HeadersMap, []).
 
-describe_flow(Client, FlowArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_flow(Client, FlowArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -195,10 +218,13 @@ describe_offering(Client, OfferingArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_offering(Client, OfferingArn, QueryMap, HeadersMap, []).
 
-describe_offering(Client, OfferingArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_offering(Client, OfferingArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/offerings/", aws_util:encode_uri(OfferingArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -219,10 +245,13 @@ describe_reservation(Client, ReservationArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     describe_reservation(Client, ReservationArn, QueryMap, HeadersMap, []).
 
-describe_reservation(Client, ReservationArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+describe_reservation(Client, ReservationArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/reservations/", aws_util:encode_uri(ReservationArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -233,10 +262,14 @@ describe_reservation(Client, ReservationArn, QueryMap, HeadersMap, Options)
 %% @doc Grants entitlements to an existing flow.
 grant_flow_entitlements(Client, FlowArn, Input) ->
     grant_flow_entitlements(Client, FlowArn, Input, []).
-grant_flow_entitlements(Client, FlowArn, Input0, Options) ->
+grant_flow_entitlements(Client, FlowArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/entitlements"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -258,10 +291,13 @@ list_entitlements(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_entitlements(Client, QueryMap, HeadersMap, []).
 
-list_entitlements(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_entitlements(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/entitlements"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -285,10 +321,13 @@ list_flows(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_flows(Client, QueryMap, HeadersMap, []).
 
-list_flows(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_flows(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/flows"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -315,10 +354,13 @@ list_offerings(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_offerings(Client, QueryMap, HeadersMap, []).
 
-list_offerings(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_offerings(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/offerings"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -344,10 +386,13 @@ list_reservations(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_reservations(Client, QueryMap, HeadersMap, []).
 
-list_reservations(Client, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_reservations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/reservations"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -369,10 +414,13 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
     list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
 
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options) ->
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
 
     Headers = [],
 
@@ -386,10 +434,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options)
 %% offering.
 purchase_offering(Client, OfferingArn, Input) ->
     purchase_offering(Client, OfferingArn, Input, []).
-purchase_offering(Client, OfferingArn, Input0, Options) ->
+purchase_offering(Client, OfferingArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/offerings/", aws_util:encode_uri(OfferingArn), ""],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -407,10 +459,14 @@ purchase_offering(Client, OfferingArn, Input0, Options) ->
 %% flow, the service automatically removes the associated output.
 remove_flow_output(Client, FlowArn, OutputArn, Input) ->
     remove_flow_output(Client, FlowArn, OutputArn, Input, []).
-remove_flow_output(Client, FlowArn, OutputArn, Input0, Options) ->
+remove_flow_output(Client, FlowArn, OutputArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/outputs/", aws_util:encode_uri(OutputArn), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -426,10 +482,14 @@ remove_flow_output(Client, FlowArn, OutputArn, Input0, Options) ->
 %% flow.
 remove_flow_source(Client, FlowArn, SourceArn, Input) ->
     remove_flow_source(Client, FlowArn, SourceArn, Input, []).
-remove_flow_source(Client, FlowArn, SourceArn, Input0, Options) ->
+remove_flow_source(Client, FlowArn, SourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/source/", aws_util:encode_uri(SourceArn), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -447,10 +507,14 @@ remove_flow_source(Client, FlowArn, SourceArn, Input0, Options) ->
 %% to no longer reference the VPC interface.
 remove_flow_vpc_interface(Client, FlowArn, VpcInterfaceName, Input) ->
     remove_flow_vpc_interface(Client, FlowArn, VpcInterfaceName, Input, []).
-remove_flow_vpc_interface(Client, FlowArn, VpcInterfaceName, Input0, Options) ->
+remove_flow_vpc_interface(Client, FlowArn, VpcInterfaceName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/vpcInterfaces/", aws_util:encode_uri(VpcInterfaceName), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -466,10 +530,14 @@ remove_flow_vpc_interface(Client, FlowArn, VpcInterfaceName, Input0, Options) ->
 %% subscriber and the associated output is removed.
 revoke_flow_entitlement(Client, EntitlementArn, FlowArn, Input) ->
     revoke_flow_entitlement(Client, EntitlementArn, FlowArn, Input, []).
-revoke_flow_entitlement(Client, EntitlementArn, FlowArn, Input0, Options) ->
+revoke_flow_entitlement(Client, EntitlementArn, FlowArn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/entitlements/", aws_util:encode_uri(EntitlementArn), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -482,10 +550,14 @@ revoke_flow_entitlement(Client, EntitlementArn, FlowArn, Input0, Options) ->
 %% @doc Starts a flow.
 start_flow(Client, FlowArn, Input) ->
     start_flow(Client, FlowArn, Input, []).
-start_flow(Client, FlowArn, Input0, Options) ->
+start_flow(Client, FlowArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/flows/start/", aws_util:encode_uri(FlowArn), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -498,10 +570,14 @@ start_flow(Client, FlowArn, Input0, Options) ->
 %% @doc Stops a flow.
 stop_flow(Client, FlowArn, Input) ->
     stop_flow(Client, FlowArn, Input, []).
-stop_flow(Client, FlowArn, Input0, Options) ->
+stop_flow(Client, FlowArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/flows/stop/", aws_util:encode_uri(FlowArn), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -519,10 +595,14 @@ stop_flow(Client, FlowArn, Input0, Options) ->
 %% associated with that resource are deleted as well.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options) ->
+tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -535,10 +615,14 @@ tag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Deletes specified tags from a resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options) ->
+untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -552,10 +636,14 @@ untag_resource(Client, ResourceArn, Input0, Options) ->
 %% @doc Updates flow
 update_flow(Client, FlowArn, Input) ->
     update_flow(Client, FlowArn, Input, []).
-update_flow(Client, FlowArn, Input0, Options) ->
+update_flow(Client, FlowArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -572,10 +660,14 @@ update_flow(Client, FlowArn, Input0, Options) ->
 %% are are used by the subscribers that are removed.
 update_flow_entitlement(Client, EntitlementArn, FlowArn, Input) ->
     update_flow_entitlement(Client, EntitlementArn, FlowArn, Input, []).
-update_flow_entitlement(Client, EntitlementArn, FlowArn, Input0, Options) ->
+update_flow_entitlement(Client, EntitlementArn, FlowArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/entitlements/", aws_util:encode_uri(EntitlementArn), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -588,10 +680,14 @@ update_flow_entitlement(Client, EntitlementArn, FlowArn, Input0, Options) ->
 %% @doc Updates an existing flow output.
 update_flow_output(Client, FlowArn, OutputArn, Input) ->
     update_flow_output(Client, FlowArn, OutputArn, Input, []).
-update_flow_output(Client, FlowArn, OutputArn, Input0, Options) ->
+update_flow_output(Client, FlowArn, OutputArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/outputs/", aws_util:encode_uri(OutputArn), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -604,10 +700,14 @@ update_flow_output(Client, FlowArn, OutputArn, Input0, Options) ->
 %% @doc Updates the source of a flow.
 update_flow_source(Client, FlowArn, SourceArn, Input) ->
     update_flow_source(Client, FlowArn, SourceArn, Input, []).
-update_flow_source(Client, FlowArn, SourceArn, Input0, Options) ->
+update_flow_source(Client, FlowArn, SourceArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/source/", aws_util:encode_uri(SourceArn), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
 
     Headers = [],
     Input1 = Input0,
@@ -639,19 +739,20 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     Payload =
-      case proplists:get_value(should_send_body_as_binary, Options) of
+      case proplists:get_value(send_body_as_binary, Options) of
         true ->
           maps:get(<<"Body">>, Input, <<"">>);
-        undefined ->
+        false ->
           encode_payload(Input)
       end,
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
-    handle_response(Response, SuccessStatusCode).
+    DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
+    handle_response(Response, SuccessStatusCode, DecodeBody).
 
-handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
+handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
@@ -661,14 +762,17 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode)
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
-            Result = jsx:decode(Body),
+            Result = case DecodeBody of
+                       true -> jsx:decode(Body);
+                       false -> #{<<"Body">> => Body}
+                     end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, ResponseHeaders, Client}, _) ->
+handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
-handle_response({error, Reason}, _) ->
+handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
