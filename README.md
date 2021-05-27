@@ -85,15 +85,25 @@ The rest of the code is manually written and used as support for the generated c
 
 ## Documentation
 
-Online:
+### Check it Online
 
 * [Hex Docs](https://hexdocs.pm/aws_erlang/)
 
-Locally:
+### Build it locally
+
+Add the [rebar3_docs](https://github.com/jfacorro/rebar3_docs) plugin to your global _rebar3_ config in `~/.config/rebar3/rebar.config`:
+
+```
+{plugins, [rebar3_docs]}.
+```
+
+Then simply:
 
 ```bash
 $ rebar3 docs
 ```
+
+The docs will be available in `./doc`.
 
 ## Running Tests
 
