@@ -3,6 +3,7 @@
 -export([ add_headers/2
         , add_query/2
         , build_headers/2
+        , build_custom_headers/2
         , method_to_binary/1
         , sign_request/5
         ]).
@@ -35,7 +36,7 @@ add_headers([{Name, _} = Header | Additions], Headers) ->
 
 %% @doc Build request headers based on a list key-value pairs
 %% representing the mappings from param names to header names and a
-%% map qith the `params'.
+%% map with the `params'.
 build_headers(ParamsHeadersMapping, Params0)
   when is_list(ParamsHeadersMapping),
        is_map(Params0) ->
@@ -50,6 +51,25 @@ build_headers(ParamsHeadersMapping, Params0)
             end
         end,
   lists:foldl(Fun, {[], Params0}, ParamsHeadersMapping).
+
+%% @doc Build custom request headers based on a list key-value pairs
+%% representing the mappings from param names to header names and a
+%% map with the `params'.
+build_custom_headers(ParamsCustomHeadersMapping, Params0)
+  when is_list(ParamsCustomHeadersMapping),
+       is_map(Params0) ->
+  Fun = fun({HeaderName, ParamName}, {HeadersAcc, ParamsAcc}) ->
+            case maps:get(ParamName, ParamsAcc, undefined) of
+              undefined ->
+                {HeadersAcc, ParamsAcc};
+              Value ->
+                Headers = [{<<HeaderName/binary, K/binary>>, V}
+                           || {K, V} <- maps:to_list(Value)] ++ HeadersAcc,
+                Params = maps:remove(ParamName, ParamsAcc),
+                {Headers, Params}
+            end
+        end,
+  lists:foldl(Fun, {[], Params0}, ParamsCustomHeadersMapping).
 
 %% @doc Add querystring to url is there are any parameters in the list
 -spec add_query(binary(), [{binary(), any()}]) -> binary().
