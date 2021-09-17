@@ -74,10 +74,13 @@ get_clip(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -245,10 +248,13 @@ get_dash_streaming_session_url(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves an HTTP Live Streaming (HLS) URL for the stream.
 %%
@@ -423,10 +429,13 @@ get_hls_streaming_session_url(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets media for a list of fragments (specified by fragment number)
 %% from the archived data in an Amazon Kinesis video stream.
@@ -475,10 +484,13 @@ get_media_for_fragment_list(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    case request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode) of
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -540,10 +552,13 @@ list_fragments(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions

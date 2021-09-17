@@ -142,10 +142,13 @@ batch_delete_worlds(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes one or more simulation jobs.
 batch_describe_simulation_job(Client, Input) ->
@@ -162,10 +165,13 @@ batch_describe_simulation_job(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the specified deployment job.
 cancel_deployment_job(Client, Input) ->
@@ -182,10 +188,13 @@ cancel_deployment_job(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the specified simulation job.
 cancel_simulation_job(Client, Input) ->
@@ -202,10 +211,13 @@ cancel_simulation_job(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels a simulation job batch.
 %%
@@ -225,10 +237,13 @@ cancel_simulation_job_batch(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the specified export job.
 cancel_world_export_job(Client, Input) ->
@@ -245,10 +260,13 @@ cancel_world_export_job(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the specified world generator job.
 cancel_world_generation_job(Client, Input) ->
@@ -265,10 +283,13 @@ cancel_world_generation_job(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deploys a specific version of a robot application to robots in a
 %% fleet.
@@ -294,10 +315,13 @@ create_deployment_job(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a fleet, a logical group of robots running the same robot
 %% application.
@@ -315,10 +339,13 @@ create_fleet(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a robot.
 create_robot(Client, Input) ->
@@ -335,10 +362,13 @@ create_robot(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a robot application.
 create_robot_application(Client, Input) ->
@@ -355,10 +385,13 @@ create_robot_application(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a version of a robot application.
 create_robot_application_version(Client, Input) ->
@@ -375,10 +408,13 @@ create_robot_application_version(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a simulation application.
 create_simulation_application(Client, Input) ->
@@ -395,10 +431,13 @@ create_simulation_application(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a simulation application with a specific revision id.
 create_simulation_application_version(Client, Input) ->
@@ -415,10 +454,13 @@ create_simulation_application_version(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a simulation job.
 %%
@@ -438,10 +480,13 @@ create_simulation_job(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a world export job.
 create_world_export_job(Client, Input) ->
@@ -458,10 +503,13 @@ create_world_export_job(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates worlds using the specified template.
 create_world_generation_job(Client, Input) ->
@@ -478,10 +526,13 @@ create_world_generation_job(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a world template.
 create_world_template(Client, Input) ->
@@ -498,10 +549,13 @@ create_world_template(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a fleet.
 delete_fleet(Client, Input) ->
@@ -518,10 +572,13 @@ delete_fleet(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a robot.
 delete_robot(Client, Input) ->
@@ -538,10 +595,13 @@ delete_robot(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a robot application.
 delete_robot_application(Client, Input) ->
@@ -558,10 +618,13 @@ delete_robot_application(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a simulation application.
 delete_simulation_application(Client, Input) ->
@@ -578,10 +641,13 @@ delete_simulation_application(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a world template.
 delete_world_template(Client, Input) ->
@@ -598,10 +664,13 @@ delete_world_template(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deregisters a robot.
 deregister_robot(Client, Input) ->
@@ -618,10 +687,13 @@ deregister_robot(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a deployment job.
 describe_deployment_job(Client, Input) ->
@@ -638,10 +710,13 @@ describe_deployment_job(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a fleet.
 describe_fleet(Client, Input) ->
@@ -658,10 +733,13 @@ describe_fleet(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a robot.
 describe_robot(Client, Input) ->
@@ -678,10 +756,13 @@ describe_robot(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a robot application.
 describe_robot_application(Client, Input) ->
@@ -698,10 +779,13 @@ describe_robot_application(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a simulation application.
 describe_simulation_application(Client, Input) ->
@@ -718,10 +802,13 @@ describe_simulation_application(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a simulation job.
 describe_simulation_job(Client, Input) ->
@@ -738,10 +825,13 @@ describe_simulation_job(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a simulation job batch.
 describe_simulation_job_batch(Client, Input) ->
@@ -758,10 +848,13 @@ describe_simulation_job_batch(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a world.
 describe_world(Client, Input) ->
@@ -778,10 +871,13 @@ describe_world(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a world export job.
 describe_world_export_job(Client, Input) ->
@@ -798,10 +894,13 @@ describe_world_export_job(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a world generation job.
 describe_world_generation_job(Client, Input) ->
@@ -818,10 +917,13 @@ describe_world_generation_job(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a world template.
 describe_world_template(Client, Input) ->
@@ -838,10 +940,13 @@ describe_world_template(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the world template body.
 get_world_template_body(Client, Input) ->
@@ -858,10 +963,13 @@ get_world_template_body(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of deployment jobs for a fleet.
 %%
@@ -880,10 +988,13 @@ list_deployment_jobs(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of fleets.
 %%
@@ -902,10 +1013,13 @@ list_fleets(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of robot application.
 %%
@@ -925,10 +1039,13 @@ list_robot_applications(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of robots.
 %%
@@ -947,10 +1064,13 @@ list_robots(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of simulation applications.
 %%
@@ -970,10 +1090,13 @@ list_simulation_applications(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list simulation job batches.
 %%
@@ -993,10 +1116,13 @@ list_simulation_job_batches(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of simulation jobs.
 %%
@@ -1015,10 +1141,13 @@ list_simulation_jobs(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all tags on a AWS RoboMaker resource.
 list_tags_for_resource(Client, ResourceArn)
@@ -1058,10 +1187,13 @@ list_world_export_jobs(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists world generator jobs.
 list_world_generation_jobs(Client, Input) ->
@@ -1078,10 +1210,13 @@ list_world_generation_jobs(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists world templates.
 list_world_templates(Client, Input) ->
@@ -1098,10 +1233,13 @@ list_world_templates(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists worlds.
 list_worlds(Client, Input) ->
@@ -1118,10 +1256,13 @@ list_worlds(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Registers a robot with a fleet.
 register_robot(Client, Input) ->
@@ -1138,10 +1279,13 @@ register_robot(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Restarts a running simulation job.
 restart_simulation_job(Client, Input) ->
@@ -1158,10 +1302,13 @@ restart_simulation_job(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a new simulation job batch.
 %%
@@ -1180,10 +1327,13 @@ start_simulation_job_batch(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Syncrhonizes robots in a fleet to the latest deployment.
 %%
@@ -1202,10 +1352,13 @@ sync_deployment_job(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds or edits tags for a AWS RoboMaker resource.
 %%
@@ -1229,10 +1382,13 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified tags from the specified AWS RoboMaker resource.
 %%
@@ -1252,11 +1408,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a robot application.
 update_robot_application(Client, Input) ->
@@ -1273,10 +1432,13 @@ update_robot_application(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a simulation application.
 update_simulation_application(Client, Input) ->
@@ -1293,10 +1455,13 @@ update_simulation_application(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a world template.
 update_world_template(Client, Input) ->
@@ -1313,10 +1478,13 @@ update_world_template(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions

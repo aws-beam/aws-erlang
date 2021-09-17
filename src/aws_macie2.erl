@@ -158,10 +158,13 @@ accept_invitation(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about one or more custom data identifiers.
 batch_get_custom_data_identifiers(Client, Input) ->
@@ -178,10 +181,13 @@ batch_get_custom_data_identifiers(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates and defines the settings for a classification job.
 create_classification_job(Client, Input) ->
@@ -198,10 +204,13 @@ create_classification_job(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates and defines the criteria and other settings for a custom data
 %% identifier.
@@ -219,10 +228,13 @@ create_custom_data_identifier(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates and defines the criteria and other settings for a findings
 %% filter.
@@ -240,10 +252,13 @@ create_findings_filter(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sends an Amazon Macie membership invitation to one or more accounts.
 create_invitations(Client, Input) ->
@@ -260,10 +275,13 @@ create_invitations(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates an account with an Amazon Macie administrator account.
 create_member(Client, Input) ->
@@ -280,10 +298,13 @@ create_member(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates sample findings.
 create_sample_findings(Client, Input) ->
@@ -300,10 +321,13 @@ create_sample_findings(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Declines Amazon Macie membership invitations that were received from
 %% specific accounts.
@@ -321,10 +345,13 @@ decline_invitations(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Soft deletes a custom data identifier.
 delete_custom_data_identifier(Client, Id, Input) ->
@@ -341,10 +368,13 @@ delete_custom_data_identifier(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a findings filter.
 delete_findings_filter(Client, Id, Input) ->
@@ -361,10 +391,13 @@ delete_findings_filter(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes Amazon Macie membership invitations that were received from
 %% specific accounts.
@@ -382,10 +415,13 @@ delete_invitations(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the association between an Amazon Macie administrator account
 %% and an account.
@@ -403,10 +439,13 @@ delete_member(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves (queries) statistical data and other information about one
 %% or more S3 buckets that Amazon Macie monitors and analyzes.
@@ -424,10 +463,13 @@ describe_buckets(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the status and settings for a classification job.
 describe_classification_job(Client, JobId)
@@ -492,10 +534,13 @@ disable_macie(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disables an account as the delegated Amazon Macie administrator
 %% account for an AWS organization.
@@ -513,11 +558,14 @@ disable_organization_admin_account(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"adminAccountId">>, <<"adminAccountId">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates a member account from its Amazon Macie administrator
 %% account.
@@ -535,10 +583,13 @@ disassociate_from_administrator_account(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc (Deprecated) Disassociates a member account from its Amazon Macie
 %% administrator account.
@@ -559,10 +610,13 @@ disassociate_from_master_account(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates an Amazon Macie administrator account from a member
 %% account.
@@ -580,10 +634,13 @@ disassociate_member(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables Amazon Macie and specifies the configuration settings for a
 %% Macie account.
@@ -601,10 +658,13 @@ enable_macie(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Designates an account as the delegated Amazon Macie administrator
 %% account for an AWS organization.
@@ -622,10 +682,13 @@ enable_organization_admin_account(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the Amazon Macie administrator account
 %% for an account.
@@ -667,10 +730,13 @@ get_bucket_statistics(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the configuration settings for storing data classification
 %% results.
@@ -735,10 +801,13 @@ get_finding_statistics(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the details of one or more findings.
 get_findings(Client, Input) ->
@@ -755,10 +824,13 @@ get_findings(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the criteria and other settings for a findings filter.
 get_findings_filter(Client, Id)
@@ -897,10 +969,13 @@ get_usage_statistics(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves (queries) aggregated usage data for an account.
 get_usage_totals(Client)
@@ -945,10 +1020,13 @@ list_classification_jobs(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a subset of information about all the custom data
 %% identifiers for an account.
@@ -966,10 +1044,13 @@ list_custom_data_identifiers(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a subset of information about one or more findings.
 list_findings(Client, Input) ->
@@ -986,10 +1067,13 @@ list_findings(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves a subset of information about all the findings filters for
 %% an account.
@@ -1149,10 +1233,13 @@ put_classification_export_configuration(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds or updates one or more tags (keys and values) that are
 %% associated with a classification job, custom data identifier, findings
@@ -1171,10 +1258,13 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Tests a custom data identifier.
 test_custom_data_identifier(Client, Input) ->
@@ -1191,10 +1281,13 @@ test_custom_data_identifier(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes one or more tags (keys and values) from a classification job,
 %% custom data identifier, findings filter, or member account.
@@ -1212,11 +1305,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes the status of a classification job.
 update_classification_job(Client, JobId, Input) ->
@@ -1233,10 +1329,13 @@ update_classification_job(Client, JobId, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the criteria and other settings for a findings filter.
 update_findings_filter(Client, Id, Input) ->
@@ -1253,10 +1352,13 @@ update_findings_filter(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Suspends or re-enables an Amazon Macie account, or updates the
 %% configuration settings for a Macie account.
@@ -1274,10 +1376,13 @@ update_macie_session(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables an Amazon Macie administrator to suspend or re-enable a
 %% member account.
@@ -1295,10 +1400,13 @@ update_member_session(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the Amazon Macie configuration settings for an AWS
 %% organization.
@@ -1316,10 +1424,13 @@ update_organization_configuration(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions

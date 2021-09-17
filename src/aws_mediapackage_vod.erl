@@ -68,10 +68,13 @@ configure_logs(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new MediaPackage VOD Asset resource.
 create_asset(Client, Input) ->
@@ -88,10 +91,13 @@ create_asset(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new MediaPackage VOD PackagingConfiguration resource.
 create_packaging_configuration(Client, Input) ->
@@ -108,10 +114,13 @@ create_packaging_configuration(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new MediaPackage VOD PackagingGroup resource.
 create_packaging_group(Client, Input) ->
@@ -128,10 +137,13 @@ create_packaging_group(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an existing MediaPackage VOD Asset resource.
 delete_asset(Client, Id, Input) ->
@@ -148,10 +160,13 @@ delete_asset(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a MediaPackage VOD PackagingConfiguration resource.
 delete_packaging_configuration(Client, Id, Input) ->
@@ -168,10 +183,13 @@ delete_packaging_configuration(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a MediaPackage VOD PackagingGroup resource.
 delete_packaging_group(Client, Id, Input) ->
@@ -188,10 +206,13 @@ delete_packaging_group(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a description of a MediaPackage VOD Asset resource.
 describe_asset(Client, Id)
@@ -390,10 +411,13 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from the specified resource.
 %%
@@ -412,11 +436,14 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"tagKeys">>, <<"TagKeys">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a specific packaging group.
 %%
@@ -436,10 +463,13 @@ update_packaging_group(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions

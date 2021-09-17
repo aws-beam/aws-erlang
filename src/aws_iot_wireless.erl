@@ -149,10 +149,13 @@ associate_aws_account_with_partner_account(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a wireless device with a thing.
 associate_wireless_device_with_thing(Client, Id, Input) ->
@@ -169,10 +172,13 @@ associate_wireless_device_with_thing(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a wireless gateway with a certificate.
 associate_wireless_gateway_with_certificate(Client, Id, Input) ->
@@ -189,10 +195,13 @@ associate_wireless_gateway_with_certificate(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a wireless gateway with a thing.
 associate_wireless_gateway_with_thing(Client, Id, Input) ->
@@ -209,10 +218,13 @@ associate_wireless_gateway_with_thing(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new destination that maps a device message to an AWS IoT
 %% rule.
@@ -230,10 +242,13 @@ create_destination(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new device profile.
 create_device_profile(Client, Input) ->
@@ -250,10 +265,13 @@ create_device_profile(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new service profile.
 create_service_profile(Client, Input) ->
@@ -270,10 +288,13 @@ create_service_profile(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provisions a wireless device.
 create_wireless_device(Client, Input) ->
@@ -290,10 +311,13 @@ create_wireless_device(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provisions a wireless gateway.
 create_wireless_gateway(Client, Input) ->
@@ -310,10 +334,13 @@ create_wireless_gateway(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a task for a wireless gateway.
 create_wireless_gateway_task(Client, Id, Input) ->
@@ -330,10 +357,13 @@ create_wireless_gateway_task(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a gateway task definition.
 create_wireless_gateway_task_definition(Client, Input) ->
@@ -350,10 +380,13 @@ create_wireless_gateway_task_definition(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a destination.
 delete_destination(Client, Name, Input) ->
@@ -370,10 +403,13 @@ delete_destination(Client, Name, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a device profile.
 delete_device_profile(Client, Id, Input) ->
@@ -390,10 +426,13 @@ delete_device_profile(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a service profile.
 delete_service_profile(Client, Id, Input) ->
@@ -410,10 +449,13 @@ delete_service_profile(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a wireless device.
 delete_wireless_device(Client, Id, Input) ->
@@ -430,10 +472,13 @@ delete_wireless_device(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a wireless gateway.
 delete_wireless_gateway(Client, Id, Input) ->
@@ -450,10 +495,13 @@ delete_wireless_gateway(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a wireless gateway task.
 delete_wireless_gateway_task(Client, Id, Input) ->
@@ -470,10 +518,13 @@ delete_wireless_gateway_task(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a wireless gateway task definition.
 %%
@@ -493,10 +544,13 @@ delete_wireless_gateway_task_definition(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates your AWS account from a partner account.
 %%
@@ -516,11 +570,14 @@ disassociate_aws_account_from_partner_account(Client, PartnerAccountId, Input0, 
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"partnerType">>, <<"PartnerType">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates a wireless device from its currently associated thing.
 disassociate_wireless_device_from_thing(Client, Id, Input) ->
@@ -537,10 +594,13 @@ disassociate_wireless_device_from_thing(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates a wireless gateway from its currently associated
 %% certificate.
@@ -558,10 +618,13 @@ disassociate_wireless_gateway_from_certificate(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates a wireless gateway from its currently associated thing.
 disassociate_wireless_gateway_from_thing(Client, Id, Input) ->
@@ -578,10 +641,13 @@ disassociate_wireless_gateway_from_thing(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about a destination.
 get_destination(Client, Name)
@@ -1148,10 +1214,13 @@ send_data_to_wireless_device(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a tag to a resource.
 tag_resource(Client, Input) ->
@@ -1168,11 +1237,14 @@ tag_resource(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"resourceArn">>, <<"ResourceArn">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Simulates a provisioned device by sending an uplink data payload of
 %% `Hello'.
@@ -1190,10 +1262,13 @@ test_wireless_device(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes one or more tags from a resource.
 untag_resource(Client, Input) ->
@@ -1210,12 +1285,15 @@ untag_resource(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"resourceArn">>, <<"ResourceArn">>},
                      {<<"tagKeys">>, <<"TagKeys">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates properties of a destination.
 update_destination(Client, Name, Input) ->
@@ -1232,10 +1310,13 @@ update_destination(Client, Name, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates properties of a partner account.
 update_partner_account(Client, PartnerAccountId, Input) ->
@@ -1252,11 +1333,14 @@ update_partner_account(Client, PartnerAccountId, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"partnerType">>, <<"PartnerType">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates properties of a wireless device.
 update_wireless_device(Client, Id, Input) ->
@@ -1273,10 +1357,13 @@ update_wireless_device(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates properties of a wireless gateway.
 update_wireless_gateway(Client, Id, Input) ->
@@ -1293,10 +1380,13 @@ update_wireless_gateway(Client, Id, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions

@@ -293,14 +293,17 @@ associate_external_connection(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"domain">>, <<"domain">>},
                      {<<"domain-owner">>, <<"domainOwner">>},
                      {<<"external-connection">>, <<"externalConnection">>},
                      {<<"repository">>, <<"repository">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Copies package versions from one repository to another repository in
 %% the same domain.
@@ -321,6 +324,9 @@ copy_package_versions(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"destination-repository">>, <<"destinationRepository">>},
                      {<<"domain">>, <<"domain">>},
@@ -330,8 +336,8 @@ copy_package_versions(Client, Input0, Options0) ->
                      {<<"package">>, <<"package">>},
                      {<<"source-repository">>, <<"sourceRepository">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a domain.
 %%
@@ -358,11 +364,14 @@ create_domain(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"domain">>, <<"domain">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a repository.
 create_repository(Client, Input) ->
@@ -379,13 +388,16 @@ create_repository(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"domain">>, <<"domain">>},
                      {<<"domain-owner">>, <<"domainOwner">>},
                      {<<"repository">>, <<"repository">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a domain.
 %%
@@ -405,12 +417,15 @@ delete_domain(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"domain">>, <<"domain">>},
                      {<<"domain-owner">>, <<"domainOwner">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the resource policy set on a domain.
 delete_domain_permissions_policy(Client, Input) ->
@@ -427,13 +442,16 @@ delete_domain_permissions_policy(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"domain">>, <<"domain">>},
                      {<<"domain-owner">>, <<"domainOwner">>},
                      {<<"policy-revision">>, <<"policyRevision">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes one or more versions of a package.
 %%
@@ -457,6 +475,9 @@ delete_package_versions(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"domain">>, <<"domain">>},
                      {<<"domain-owner">>, <<"domainOwner">>},
@@ -465,8 +486,8 @@ delete_package_versions(Client, Input0, Options0) ->
                      {<<"package">>, <<"package">>},
                      {<<"repository">>, <<"repository">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a repository.
 delete_repository(Client, Input) ->
@@ -483,13 +504,16 @@ delete_repository(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"domain">>, <<"domain">>},
                      {<<"domain-owner">>, <<"domainOwner">>},
                      {<<"repository">>, <<"repository">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the resource policy that is set on a repository.
 %%
@@ -514,14 +538,17 @@ delete_repository_permissions_policy(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"domain">>, <<"domain">>},
                      {<<"domain-owner">>, <<"domainOwner">>},
                      {<<"policy-revision">>, <<"policyRevision">>},
                      {<<"repository">>, <<"repository">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a `DomainDescription' object that contains information about
 %% the requested domain.
@@ -631,14 +658,17 @@ disassociate_external_connection(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"domain">>, <<"domain">>},
                      {<<"domain-owner">>, <<"domainOwner">>},
                      {<<"external-connection">>, <<"externalConnection">>},
                      {<<"repository">>, <<"repository">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the assets in package versions and sets the package versions'
 %% status to `Disposed'.
@@ -665,6 +695,9 @@ dispose_package_versions(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"domain">>, <<"domain">>},
                      {<<"domain-owner">>, <<"domainOwner">>},
@@ -673,8 +706,8 @@ dispose_package_versions(Client, Input0, Options0) ->
                      {<<"package">>, <<"package">>},
                      {<<"repository">>, <<"repository">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Generates a temporary authorization token for accessing repositories
 %% in the domain.
@@ -712,13 +745,16 @@ get_authorization_token(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"domain">>, <<"domain">>},
                      {<<"domain-owner">>, <<"domainOwner">>},
                      {<<"duration">>, <<"durationSeconds">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the resource policy attached to the specified domain.
 %%
@@ -938,10 +974,13 @@ list_domains(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of `AssetSummary' objects for assets in a package
 %% version.
@@ -959,6 +998,9 @@ list_package_version_assets(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"domain">>, <<"domain">>},
                      {<<"domain-owner">>, <<"domainOwner">>},
@@ -970,8 +1012,8 @@ list_package_version_assets(Client, Input0, Options0) ->
                      {<<"version">>, <<"packageVersion">>},
                      {<<"repository">>, <<"repository">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the direct dependencies for a package version.
 %%
@@ -994,6 +1036,9 @@ list_package_version_dependencies(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"domain">>, <<"domain">>},
                      {<<"domain-owner">>, <<"domainOwner">>},
@@ -1004,8 +1049,8 @@ list_package_version_dependencies(Client, Input0, Options0) ->
                      {<<"version">>, <<"packageVersion">>},
                      {<<"repository">>, <<"repository">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of `PackageVersionSummary' objects for package
 %% versions in a repository that match the request parameters.
@@ -1023,6 +1068,9 @@ list_package_versions(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"domain">>, <<"domain">>},
                      {<<"domain-owner">>, <<"domainOwner">>},
@@ -1035,8 +1083,8 @@ list_package_versions(Client, Input0, Options0) ->
                      {<<"sortBy">>, <<"sortBy">>},
                      {<<"status">>, <<"status">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of `PackageSummary' objects for packages in a
 %% repository that match the request parameters.
@@ -1054,6 +1102,9 @@ list_packages(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"domain">>, <<"domain">>},
                      {<<"domain-owner">>, <<"domainOwner">>},
@@ -1064,8 +1115,8 @@ list_packages(Client, Input0, Options0) ->
                      {<<"package-prefix">>, <<"packagePrefix">>},
                      {<<"repository">>, <<"repository">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of `RepositorySummary' objects.
 %%
@@ -1085,13 +1136,16 @@ list_repositories(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"max-results">>, <<"maxResults">>},
                      {<<"next-token">>, <<"nextToken">>},
                      {<<"repository-prefix">>, <<"repositoryPrefix">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of `RepositorySummary' objects.
 %%
@@ -1111,6 +1165,9 @@ list_repositories_in_domain(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"administrator-account">>, <<"administratorAccount">>},
                      {<<"domain">>, <<"domain">>},
@@ -1119,8 +1176,8 @@ list_repositories_in_domain(Client, Input0, Options0) ->
                      {<<"next-token">>, <<"nextToken">>},
                      {<<"repository-prefix">>, <<"repositoryPrefix">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about AWS tags for a specified Amazon Resource Name
 %% (ARN) in AWS CodeArtifact.
@@ -1138,11 +1195,14 @@ list_tags_for_resource(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"resourceArn">>, <<"resourceArn">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets a resource policy on a domain that specifies permissions to
 %% access it.
@@ -1165,10 +1225,13 @@ put_domain_permissions_policy(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
-    Query_ = [],
-    Input = Input1,
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the resource policy on a repository that specifies permissions
 %% to access it.
@@ -1191,13 +1254,16 @@ put_repository_permissions_policy(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"domain">>, <<"domain">>},
                      {<<"domain-owner">>, <<"domainOwner">>},
                      {<<"repository">>, <<"repository">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds or updates tags for a resource in AWS CodeArtifact.
 tag_resource(Client, Input) ->
@@ -1214,11 +1280,14 @@ tag_resource(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"resourceArn">>, <<"resourceArn">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from a resource in AWS CodeArtifact.
 untag_resource(Client, Input) ->
@@ -1235,11 +1304,14 @@ untag_resource(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"resourceArn">>, <<"resourceArn">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the status of one or more versions of a package.
 update_package_versions_status(Client, Input) ->
@@ -1256,6 +1328,9 @@ update_package_versions_status(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"domain">>, <<"domain">>},
                      {<<"domain-owner">>, <<"domainOwner">>},
@@ -1264,8 +1339,8 @@ update_package_versions_status(Client, Input0, Options0) ->
                      {<<"package">>, <<"package">>},
                      {<<"repository">>, <<"repository">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update the properties of a repository.
 update_repository(Client, Input) ->
@@ -1282,13 +1357,16 @@ update_repository(Client, Input0, Options0) ->
     Headers = [],
     Input1 = Input0,
 
+    CustomHeaders = [],
+    Input2 = Input1,
+
     QueryMapping = [
                      {<<"domain">>, <<"domain">>},
                      {<<"domain-owner">>, <<"domainOwner">>},
                      {<<"repository">>, <<"repository">>}
                    ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input1),
-    request(Client, Method, Path, Query_, Headers, Input, Options, SuccessStatusCode).
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions
