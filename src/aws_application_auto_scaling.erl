@@ -4,41 +4,45 @@
 %% @doc With Application Auto Scaling, you can configure automatic scaling
 %% for the following resources:
 %%
-%% <ul> <li> Amazon ECS services
-%%
-%% </li> <li> Amazon EC2 Spot Fleet requests
-%%
-%% </li> <li> Amazon EMR clusters
-%%
-%% </li> <li> Amazon AppStream 2.0 fleets
-%%
-%% </li> <li> Amazon DynamoDB tables and global secondary indexes throughput
-%% capacity
+%% <ul> <li> Amazon AppStream 2.0 fleets
 %%
 %% </li> <li> Amazon Aurora Replicas
-%%
-%% </li> <li> Amazon SageMaker endpoint variants
-%%
-%% </li> <li> Custom resources provided by your own applications or services
 %%
 %% </li> <li> Amazon Comprehend document classification and entity recognizer
 %% endpoints
 %%
-%% </li> <li> AWS Lambda function provisioned concurrency
+%% </li> <li> Amazon DynamoDB tables and global secondary indexes throughput
+%% capacity
+%%
+%% </li> <li> Amazon ECS services
+%%
+%% </li> <li> Amazon ElastiCache for Redis clusters (replication groups)
+%%
+%% </li> <li> Amazon EMR clusters
 %%
 %% </li> <li> Amazon Keyspaces (for Apache Cassandra) tables
 %%
+%% </li> <li> Lambda function provisioned concurrency
+%%
 %% </li> <li> Amazon Managed Streaming for Apache Kafka broker storage
+%%
+%% </li> <li> Amazon Neptune clusters
+%%
+%% </li> <li> Amazon SageMaker endpoint variants
+%%
+%% </li> <li> Spot Fleets (Amazon EC2)
+%%
+%% </li> <li> Custom resources provided by your own applications or services
 %%
 %% </li> </ul> API Summary
 %%
 %% The Application Auto Scaling service API includes three key sets of
 %% actions:
 %%
-%% <ul> <li> Register and manage scalable targets - Register AWS or custom
-%% resources as scalable targets (a resource that Application Auto Scaling
-%% can scale), set minimum and maximum capacity limits, and retrieve
-%% information on existing scalable targets.
+%% <ul> <li> Register and manage scalable targets - Register Amazon Web
+%% Services or custom resources as scalable targets (a resource that
+%% Application Auto Scaling can scale), set minimum and maximum capacity
+%% limits, and retrieve information on existing scalable targets.
 %%
 %% </li> <li> Configure and manage automatic scaling - Define scaling
 %% policies to dynamically scale your resources in response to CloudWatch
@@ -269,6 +273,13 @@ put_scheduled_action(Client, Input, Options)
 %% change. Include the parameters that identify the scalable target: resource
 %% ID, scalable dimension, and namespace. Any parameters that you don't
 %% specify are not changed by this update request.
+%%
+%% If you call the `RegisterScalableTarget' API to update an existing
+%% scalable target, Application Auto Scaling retrieves the current capacity
+%% of the resource. If it is below the minimum capacity or above the maximum
+%% capacity, Application Auto Scaling adjusts the capacity of the scalable
+%% target to place it within these bounds, even if you don't include the
+%% `MinCapacity' or `MaxCapacity' request parameters.
 register_scalable_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_scalable_target(Client, Input, []).

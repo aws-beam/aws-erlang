@@ -1,23 +1,25 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Directory Service
+%% @doc Directory Service
 %%
-%% AWS Directory Service is a web service that makes it easy for you to setup
-%% and run directories in the AWS cloud, or connect your AWS resources with
-%% an existing on-premises Microsoft Active Directory.
+%% Directory Service is a web service that makes it easy for you to setup and
+%% run directories in the Amazon Web Services cloud, or connect your Amazon
+%% Web Services resources with an existing self-managed Microsoft Active
+%% Directory.
 %%
-%% This guide provides detailed information about AWS Directory Service
-%% operations, data types, parameters, and errors. For information about AWS
-%% Directory Services features, see AWS Directory Service and the AWS
-%% Directory Service Administration Guide.
+%% This guide provides detailed information about Directory Service
+%% operations, data types, parameters, and errors. For information about
+%% Directory Services features, see Directory Service and the Directory
+%% Service Administration Guide.
 %%
-%% AWS provides SDKs that consist of libraries and sample code for various
-%% programming languages and platforms (Java, Ruby, .Net, iOS, Android,
-%% etc.). The SDKs provide a convenient way to create programmatic access to
-%% AWS Directory Service and other AWS services. For more information about
-%% the AWS SDKs, including how to download and install them, see Tools for
-%% Amazon Web Services.
+%% Amazon Web Services provides SDKs that consist of libraries and sample
+%% code for various programming languages and platforms (Java, Ruby, .Net,
+%% iOS, Android, etc.). The SDKs provide a convenient way to create
+%% programmatic access to Directory Service and other Amazon Web Services
+%% services. For more information about the Amazon Web Services SDKs,
+%% including how to download and install them, see Tools for Amazon Web
+%% Services.
 -module(aws_directory).
 
 -export([accept_shared_directory/2,
@@ -64,6 +66,8 @@
          deregister_event_topic/3,
          describe_certificate/2,
          describe_certificate/3,
+         describe_client_authentication_settings/2,
+         describe_client_authentication_settings/3,
          describe_conditional_forwarders/2,
          describe_conditional_forwarders/3,
          describe_directories/2,
@@ -160,19 +164,18 @@ accept_shared_directory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptSharedDirectory">>, Input, Options).
 
-%% @doc If the DNS server for your on-premises domain uses a publicly
+%% @doc If the DNS server for your self-managed domain uses a publicly
 %% addressable IP address, you must add a CIDR address block to correctly
 %% route traffic to and from your Microsoft AD on Amazon Web Services.
 %%
 %% AddIpRoutes adds this address block. You can also use AddIpRoutes to
 %% facilitate routing traffic that uses public IP ranges from your Microsoft
-%% AD on AWS to a peer VPC.
+%% AD on Amazon Web Services to a peer VPC.
 %%
 %% Before you call AddIpRoutes, ensure that all of the required permissions
 %% have been explicitly granted through a policy. For details about what
-%% permissions are required to run the AddIpRoutes operation, see AWS
-%% Directory Service API Permissions: Actions, Resources, and Conditions
-%% Reference.
+%% permissions are required to run the AddIpRoutes operation, see Directory
+%% Service API Permissions: Actions, Resources, and Conditions Reference.
 add_ip_routes(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_ip_routes(Client, Input, []).
@@ -213,13 +216,13 @@ cancel_schema_extension(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelSchemaExtension">>, Input, Options).
 
-%% @doc Creates an AD Connector to connect to an on-premises directory.
+%% @doc Creates an AD Connector to connect to a self-managed directory.
 %%
 %% Before you call `ConnectDirectory', ensure that all of the required
 %% permissions have been explicitly granted through a policy. For details
 %% about what permissions are required to run the `ConnectDirectory'
-%% operation, see AWS Directory Service API Permissions: Actions, Resources,
-%% and Conditions Reference.
+%% operation, see Directory Service API Permissions: Actions, Resources, and
+%% Conditions Reference.
 connect_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     connect_directory(Client, Input, []).
@@ -251,7 +254,8 @@ create_computer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateComputer">>, Input, Options).
 
-%% @doc Creates a conditional forwarder associated with your AWS directory.
+%% @doc Creates a conditional forwarder associated with your Amazon Web
+%% Services directory.
 %%
 %% Conditional forwarders are required in order to set up a trust
 %% relationship with another domain. The conditional forwarder points to the
@@ -265,14 +269,14 @@ create_conditional_forwarder(Client, Input, Options)
 
 %% @doc Creates a Simple AD directory.
 %%
-%% For more information, see Simple Active Directory in the AWS Directory
-%% Service Admin Guide.
+%% For more information, see Simple Active Directory in the Directory Service
+%% Admin Guide.
 %%
 %% Before you call `CreateDirectory', ensure that all of the required
 %% permissions have been explicitly granted through a policy. For details
 %% about what permissions are required to run the `CreateDirectory'
-%% operation, see AWS Directory Service API Permissions: Actions, Resources,
-%% and Conditions Reference.
+%% operation, see Directory Service API Permissions: Actions, Resources, and
+%% Conditions Reference.
 create_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_directory(Client, Input, []).
@@ -282,7 +286,7 @@ create_directory(Client, Input, Options)
 
 %% @doc Creates a subscription to forward real-time Directory Service domain
 %% controller security logs to the specified Amazon CloudWatch log group in
-%% your AWS account.
+%% your Amazon Web Services account.
 create_log_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_log_subscription(Client, Input, []).
@@ -290,16 +294,16 @@ create_log_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLogSubscription">>, Input, Options).
 
-%% @doc Creates a Microsoft AD directory in the AWS Cloud.
+%% @doc Creates a Microsoft AD directory in the Amazon Web Services Cloud.
 %%
-%% For more information, see AWS Managed Microsoft AD in the AWS Directory
-%% Service Admin Guide.
+%% For more information, see Managed Microsoft AD in the Directory Service
+%% Admin Guide.
 %%
 %% Before you call CreateMicrosoftAD, ensure that all of the required
 %% permissions have been explicitly granted through a policy. For details
 %% about what permissions are required to run the CreateMicrosoftAD
-%% operation, see AWS Directory Service API Permissions: Actions, Resources,
-%% and Conditions Reference.
+%% operation, see Directory Service API Permissions: Actions, Resources, and
+%% Conditions Reference.
 create_microsoft_ad(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_microsoft_ad(Client, Input, []).
@@ -308,7 +312,7 @@ create_microsoft_ad(Client, Input, Options)
     request(Client, <<"CreateMicrosoftAD">>, Input, Options).
 
 %% @doc Creates a snapshot of a Simple AD or Microsoft AD directory in the
-%% AWS cloud.
+%% Amazon Web Services cloud.
 %%
 %% You cannot take snapshots of AD Connector directories.
 create_snapshot(Client, Input)
@@ -318,17 +322,18 @@ create_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshot">>, Input, Options).
 
-%% @doc AWS Directory Service for Microsoft Active Directory allows you to
+%% @doc Directory Service for Microsoft Active Directory allows you to
 %% configure trust relationships.
 %%
-%% For example, you can establish a trust between your AWS Managed Microsoft
-%% AD directory, and your existing on-premises Microsoft Active Directory.
-%% This would allow you to provide users and groups access to resources in
-%% either domain, with a single set of credentials.
+%% For example, you can establish a trust between your Managed Microsoft AD
+%% directory, and your existing self-managed Microsoft Active Directory. This
+%% would allow you to provide users and groups access to resources in either
+%% domain, with a single set of credentials.
 %%
-%% This action initiates the creation of the AWS side of a trust relationship
-%% between an AWS Managed Microsoft AD directory and an external domain. You
-%% can create either a forest trust or an external trust.
+%% This action initiates the creation of the Amazon Web Services side of a
+%% trust relationship between an Managed Microsoft AD directory and an
+%% external domain. You can create either a forest trust or an external
+%% trust.
 create_trust(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trust(Client, Input, []).
@@ -336,8 +341,8 @@ create_trust(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrust">>, Input, Options).
 
-%% @doc Deletes a conditional forwarder that has been set up for your AWS
-%% directory.
+%% @doc Deletes a conditional forwarder that has been set up for your Amazon
+%% Web Services directory.
 delete_conditional_forwarder(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_conditional_forwarder(Client, Input, []).
@@ -345,13 +350,13 @@ delete_conditional_forwarder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConditionalForwarder">>, Input, Options).
 
-%% @doc Deletes an AWS Directory Service directory.
+%% @doc Deletes an Directory Service directory.
 %%
 %% Before you call `DeleteDirectory', ensure that all of the required
 %% permissions have been explicitly granted through a policy. For details
 %% about what permissions are required to run the `DeleteDirectory'
-%% operation, see AWS Directory Service API Permissions: Actions, Resources,
-%% and Conditions Reference.
+%% operation, see Directory Service API Permissions: Actions, Resources, and
+%% Conditions Reference.
 delete_directory(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_directory(Client, Input, []).
@@ -375,8 +380,8 @@ delete_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSnapshot">>, Input, Options).
 
-%% @doc Deletes an existing trust relationship between your AWS Managed
-%% Microsoft AD directory and an external domain.
+%% @doc Deletes an existing trust relationship between your Managed Microsoft
+%% AD directory and an external domain.
 delete_trust(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trust(Client, Input, []).
@@ -393,8 +398,8 @@ deregister_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterCertificate">>, Input, Options).
 
-%% @doc Removes the specified directory as a publisher to the specified SNS
-%% topic.
+%% @doc Removes the specified directory as a publisher to the specified
+%% Amazon SNS topic.
 deregister_event_topic(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_event_topic(Client, Input, []).
@@ -410,6 +415,19 @@ describe_certificate(Client, Input)
 describe_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCertificate">>, Input, Options).
+
+%% @doc Retrieves information about the type of client authentication for the
+%% specified directory, if the type is specified.
+%%
+%% If no type is specified, information about all client authentication types
+%% that are supported for the specified directory is retrieved. Currently,
+%% only `SmartCard' is supported.
+describe_client_authentication_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_client_authentication_settings(Client, Input, []).
+describe_client_authentication_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeClientAuthenticationSettings">>, Input, Options).
 
 %% @doc Obtains information about the conditional forwarders for this
 %% account.
@@ -453,8 +471,8 @@ describe_domain_controllers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDomainControllers">>, Input, Options).
 
-%% @doc Obtains information about which SNS topics receive status messages
-%% from the specified directory.
+%% @doc Obtains information about which Amazon SNS topics receive status
+%% messages from the specified directory.
 %%
 %% If no input parameters are provided, such as DirectoryId or TopicName,
 %% this request describes all of the associations in the account.
@@ -583,9 +601,9 @@ enable_radius(Client, Input, Options)
 
 %% @doc Enables single sign-on for a directory.
 %%
-%% Single sign-on allows users in your directory to access certain AWS
-%% services from a computer joined to the directory without having to enter
-%% their credentials separately.
+%% Single sign-on allows users in your directory to access certain Amazon Web
+%% Services services from a computer joined to the directory without having
+%% to enter their credentials separately.
 enable_sso(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_sso(Client, Input, []).
@@ -626,7 +644,8 @@ list_ip_routes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIpRoutes">>, Input, Options).
 
-%% @doc Lists the active log subscriptions for the AWS account.
+%% @doc Lists the active log subscriptions for the Amazon Web Services
+%% account.
 list_log_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_log_subscriptions(Client, Input, []).
@@ -659,12 +678,12 @@ register_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterCertificate">>, Input, Options).
 
-%% @doc Associates a directory with an SNS topic.
+%% @doc Associates a directory with an Amazon SNS topic.
 %%
-%% This establishes the directory as a publisher to the specified SNS topic.
-%% You can then receive email or text (SMS) messages when the status of your
-%% directory changes. You get notified if your directory goes from an Active
-%% status to an Impaired or Inoperable status. You also receive a
+%% This establishes the directory as a publisher to the specified Amazon SNS
+%% topic. You can then receive email or text (SMS) messages when the status
+%% of your directory changes. You get notified if your directory goes from an
+%% Active status to an Impaired or Inoperable status. You also receive a
 %% notification when the directory returns to an Active status.
 register_event_topic(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -710,7 +729,7 @@ remove_tags_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromResource">>, Input, Options).
 
-%% @doc Resets the password for any user in your AWS Managed Microsoft AD or
+%% @doc Resets the password for any user in your Managed Microsoft AD or
 %% Simple AD directory.
 %%
 %% You can reset the password for any user in your directory with the
@@ -720,12 +739,12 @@ remove_tags_from_resource(Client, Input, Options)
 %% is a member of either the Domain Admins or Enterprise Admins group except
 %% for the administrator user.
 %%
-%% </li> <li> For AWS Managed Microsoft AD, you can only reset the password
-%% for a user that is in an OU based off of the NetBIOS name that you typed
-%% when you created your directory. For example, you cannot reset the
-%% password for a user in the AWS Reserved OU. For more information about the
-%% OU structure for an AWS Managed Microsoft AD directory, see What Gets
-%% Created in the AWS Directory Service Administration Guide.
+%% </li> <li> For Managed Microsoft AD, you can only reset the password for a
+%% user that is in an OU based off of the NetBIOS name that you typed when
+%% you created your directory. For example, you cannot reset the password for
+%% a user in the Amazon Web Services Reserved OU. For more information about
+%% the OU structure for an Managed Microsoft AD directory, see What Gets
+%% Created in the Directory Service Administration Guide.
 %%
 %% </li> </ul>
 reset_user_password(Client, Input)
@@ -752,23 +771,25 @@ restore_from_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreFromSnapshot">>, Input, Options).
 
-%% @doc Shares a specified directory (`DirectoryId') in your AWS account
-%% (directory owner) with another AWS account (directory consumer).
+%% @doc Shares a specified directory (`DirectoryId') in your Amazon Web
+%% Services account (directory owner) with another Amazon Web Services
+%% account (directory consumer).
 %%
-%% With this operation you can use your directory from any AWS account and
-%% from any Amazon VPC within an AWS Region.
+%% With this operation you can use your directory from any Amazon Web
+%% Services account and from any Amazon VPC within an Amazon Web Services
+%% Region.
 %%
-%% When you share your AWS Managed Microsoft AD directory, AWS Directory
-%% Service creates a shared directory in the directory consumer account. This
-%% shared directory contains the metadata to provide access to the directory
-%% within the directory owner account. The shared directory is visible in all
-%% VPCs in the directory consumer account.
+%% When you share your Managed Microsoft AD directory, Directory Service
+%% creates a shared directory in the directory consumer account. This shared
+%% directory contains the metadata to provide access to the directory within
+%% the directory owner account. The shared directory is visible in all VPCs
+%% in the directory consumer account.
 %%
 %% The `ShareMethod' parameter determines whether the specified directory can
-%% be shared between AWS accounts inside the same AWS organization
-%% (`ORGANIZATIONS'). It also determines whether you can share the directory
-%% with any other AWS account either inside or outside of the organization
-%% (`HANDSHAKE').
+%% be shared between Amazon Web Services accounts inside the same Amazon Web
+%% Services organization (`ORGANIZATIONS'). It also determines whether you
+%% can share the directory with any other Amazon Web Services account either
+%% inside or outside of the organization (`HANDSHAKE').
 %%
 %% The `ShareNotes' parameter is only used when `HANDSHAKE' is called, which
 %% sends a directory sharing request to the directory consumer.
@@ -796,8 +817,8 @@ unshare_directory(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UnshareDirectory">>, Input, Options).
 
-%% @doc Updates a conditional forwarder that has been set up for your AWS
-%% directory.
+%% @doc Updates a conditional forwarder that has been set up for your Amazon
+%% Web Services directory.
 update_conditional_forwarder(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_conditional_forwarder(Client, Input, []).
@@ -828,8 +849,8 @@ update_radius(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRadius">>, Input, Options).
 
-%% @doc Updates the trust that has been set up between your AWS Managed
-%% Microsoft AD directory and an on-premises Active Directory.
+%% @doc Updates the trust that has been set up between your Managed Microsoft
+%% AD directory and an self-managed Active Directory.
 update_trust(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_trust(Client, Input, []).
@@ -837,11 +858,11 @@ update_trust(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTrust">>, Input, Options).
 
-%% @doc AWS Directory Service for Microsoft Active Directory allows you to
+%% @doc Directory Service for Microsoft Active Directory allows you to
 %% configure and verify trust relationships.
 %%
-%% This action verifies a trust relationship between your AWS Managed
-%% Microsoft AD directory and an external domain.
+%% This action verifies a trust relationship between your Managed Microsoft
+%% AD directory and an external domain.
 verify_trust(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_trust(Client, Input, []).

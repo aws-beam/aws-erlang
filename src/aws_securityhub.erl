@@ -2,42 +2,42 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Security Hub provides you with a comprehensive view of the security
-%% state of your AWS environment and resources.
+%% state of your Amazon Web Services environment and resources.
 %%
 %% It also provides you with the readiness status of your environment based
 %% on controls from supported security standards. Security Hub collects
-%% security data from AWS accounts, services, and integrated third-party
-%% products and helps you analyze security trends in your environment to
-%% identify the highest priority security issues. For more information about
-%% Security Hub, see the AWS Security Hub User Guide .
+%% security data from Amazon Web Services accounts, services, and integrated
+%% third-party products and helps you analyze security trends in your
+%% environment to identify the highest priority security issues. For more
+%% information about Security Hub, see the Security HubUser Guide .
 %%
 %% When you use operations in the Security Hub API, the requests are executed
-%% only in the AWS Region that is currently active or in the specific AWS
-%% Region that you specify in your request. Any configuration or settings
-%% change that results from the operation is applied only to that Region. To
-%% make the same change in other Regions, execute the same command for each
-%% Region to apply the change to.
+%% only in the Amazon Web Services Region that is currently active or in the
+%% specific Amazon Web Services Region that you specify in your request. Any
+%% configuration or settings change that results from the operation is
+%% applied only to that Region. To make the same change in other Regions,
+%% execute the same command for each Region to apply the change to.
 %%
-%% For example, if your Region is set to `us-west-2', when you use `
-%% `CreateMembers' ' to add a member account to Security Hub, the association
-%% of the member account with the master account is created only in the
-%% `us-west-2' Region. Security Hub must be enabled for the member account in
-%% the same Region that the invitation was sent from.
+%% For example, if your Region is set to `us-west-2', when you use
+%% `CreateMembers' to add a member account to Security Hub, the association
+%% of the member account with the administrator account is created only in
+%% the `us-west-2' Region. Security Hub must be enabled for the member
+%% account in the same Region that the invitation was sent from.
 %%
 %% The following throttling limits apply to using Security Hub API
 %% operations.
 %%
-%% <ul> <li> ` `BatchEnableStandards' ' - `RateLimit' of 1 request per
-%% second, `BurstLimit' of 1 request per second.
+%% <ul> <li> `BatchEnableStandards' - `RateLimit' of 1 request per second,
+%% `BurstLimit' of 1 request per second.
 %%
-%% </li> <li> ` `GetFindings' ' - `RateLimit' of 3 requests per second.
+%% </li> <li> `GetFindings' - `RateLimit' of 3 requests per second.
 %% `BurstLimit' of 6 requests per second.
 %%
-%% </li> <li> ` `UpdateFindings' ' - `RateLimit' of 1 request per second.
+%% </li> <li> `UpdateFindings' - `RateLimit' of 1 request per second.
 %% `BurstLimit' of 5 requests per second.
 %%
-%% </li> <li> ` `UpdateStandardsControl' ' - `RateLimit' of 1 request per
-%% second, `BurstLimit' of 5 requests per second.
+%% </li> <li> `UpdateStandardsControl' - `RateLimit' of 1 request per second,
+%% `BurstLimit' of 5 requests per second.
 %%
 %% </li> <li> All other operations - `RateLimit' of 10 requests per second.
 %% `BurstLimit' of 30 requests per second.
@@ -45,7 +45,9 @@
 %% </li> </ul>
 -module(aws_securityhub).
 
--export([accept_invitation/2,
+-export([accept_administrator_invitation/2,
+         accept_administrator_invitation/3,
+         accept_invitation/2,
          accept_invitation/3,
          batch_disable_standards/2,
          batch_disable_standards/3,
@@ -57,6 +59,8 @@
          batch_update_findings/3,
          create_action_target/2,
          create_action_target/3,
+         create_finding_aggregator/2,
+         create_finding_aggregator/3,
          create_insight/2,
          create_insight/3,
          create_members/2,
@@ -65,6 +69,8 @@
          decline_invitations/3,
          delete_action_target/3,
          delete_action_target/4,
+         delete_finding_aggregator/3,
+         delete_finding_aggregator/4,
          delete_insight/3,
          delete_insight/4,
          delete_invitations/2,
@@ -94,6 +100,8 @@
          disable_organization_admin_account/3,
          disable_security_hub/2,
          disable_security_hub/3,
+         disassociate_from_administrator_account/2,
+         disassociate_from_administrator_account/3,
          disassociate_from_master_account/2,
          disassociate_from_master_account/3,
          disassociate_members/2,
@@ -104,8 +112,14 @@
          enable_organization_admin_account/3,
          enable_security_hub/2,
          enable_security_hub/3,
+         get_administrator_account/1,
+         get_administrator_account/3,
+         get_administrator_account/4,
          get_enabled_standards/2,
          get_enabled_standards/3,
+         get_finding_aggregator/2,
+         get_finding_aggregator/4,
+         get_finding_aggregator/5,
          get_findings/2,
          get_findings/3,
          get_insight_results/2,
@@ -126,6 +140,9 @@
          list_enabled_products_for_import/1,
          list_enabled_products_for_import/3,
          list_enabled_products_for_import/4,
+         list_finding_aggregators/1,
+         list_finding_aggregators/3,
+         list_finding_aggregators/4,
          list_invitations/1,
          list_invitations/3,
          list_invitations/4,
@@ -144,6 +161,8 @@
          untag_resource/4,
          update_action_target/3,
          update_action_target/4,
+         update_finding_aggregator/2,
+         update_finding_aggregator/3,
          update_findings/2,
          update_findings/3,
          update_insight/3,
@@ -162,13 +181,56 @@
 %%====================================================================
 
 %% @doc Accepts the invitation to be a member account and be monitored by the
-%% Security Hub master account that the invitation was sent from.
+%% Security Hub administrator account that the invitation was sent from.
 %%
 %% This operation is only used by member accounts that are not added through
 %% Organizations.
 %%
 %% When the member account accepts the invitation, permission is granted to
-%% the master account to view findings generated in the member account.
+%% the administrator account to view findings generated in the member
+%% account.
+accept_administrator_invitation(Client, Input) ->
+    accept_administrator_invitation(Client, Input, []).
+accept_administrator_invitation(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/administrator"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This method is deprecated.
+%%
+%% Instead, use `AcceptAdministratorInvitation'.
+%%
+%% The Security Hub console continues to use `AcceptInvitation'. It will
+%% eventually change to use `AcceptAdministratorInvitation'. Any IAM policies
+%% that specifically control access to this function must continue to use
+%% `AcceptInvitation'. You should also add `AcceptAdministratorInvitation' to
+%% your policies to ensure that the correct permissions are in place after
+%% the console begins to use `AcceptAdministratorInvitation'.
+%%
+%% Accepts the invitation to be a member account and be monitored by the
+%% Security Hub administrator account that the invitation was sent from.
+%%
+%% This operation is only used by member accounts that are not added through
+%% Organizations.
+%%
+%% When the member account accepts the invitation, permission is granted to
+%% the administrator account to view findings generated in the member
+%% account.
 accept_invitation(Client, Input) ->
     accept_invitation(Client, Input, []).
 accept_invitation(Client, Input0, Options0) ->
@@ -194,8 +256,8 @@ accept_invitation(Client, Input0, Options0) ->
 %% @doc Disables the standards specified by the provided
 %% `StandardsSubscriptionArns'.
 %%
-%% For more information, see Security Standards section of the AWS Security
-%% Hub User Guide.
+%% For more information, see Security Standards section of the Security Hub
+%% User Guide.
 batch_disable_standards(Client, Input) ->
     batch_disable_standards(Client, Input, []).
 batch_disable_standards(Client, Input0, Options0) ->
@@ -220,11 +282,10 @@ batch_disable_standards(Client, Input0, Options0) ->
 
 %% @doc Enables the standards specified by the provided `StandardsArn'.
 %%
-%% To obtain the ARN for a standard, use the ` `DescribeStandards' '
-%% operation.
+%% To obtain the ARN for a standard, use the `DescribeStandards' operation.
 %%
-%% For more information, see the Security Standards section of the AWS
-%% Security Hub User Guide.
+%% For more information, see the Security Standards section of the Security
+%% Hub User Guide.
 batch_enable_standards(Client, Input) ->
     batch_enable_standards(Client, Input, []).
 batch_enable_standards(Client, Input0, Options0) ->
@@ -247,8 +308,8 @@ batch_enable_standards(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Imports security findings generated from an integrated third-party
-%% product into Security Hub.
+%% @doc Imports security findings generated from an integrated product into
+%% Security Hub.
 %%
 %% This action is requested by the integrated product to import its findings
 %% into Security Hub.
@@ -268,10 +329,8 @@ batch_enable_standards(Client, Input0, Options0) ->
 %%
 %% </li> <li> `Workflow'
 %%
-%% </li> </ul> `BatchImportFindings' can be used to update the following
-%% finding fields and objects only if they have not been updated using
-%% `BatchUpdateFindings'. After they are updated using `BatchUpdateFindings',
-%% these fields cannot be updated using `BatchImportFindings'.
+%% </li> </ul> Finding providers also should not use `BatchImportFindings' to
+%% update the following attributes.
 %%
 %% <ul> <li> `Confidence'
 %%
@@ -283,7 +342,8 @@ batch_enable_standards(Client, Input0, Options0) ->
 %%
 %% </li> <li> `Types'
 %%
-%% </li> </ul>
+%% </li> </ul> Instead, finding providers use `FindingProviderFields' to
+%% provide values for these attributes.
 batch_import_findings(Client, Input) ->
     batch_import_findings(Client, Input, []).
 batch_import_findings(Client, Input0, Options0) ->
@@ -309,15 +369,15 @@ batch_import_findings(Client, Input0, Options0) ->
 %% @doc Used by Security Hub customers to update information about their
 %% investigation into a finding.
 %%
-%% Requested by master accounts or member accounts. Master accounts can
-%% update findings for their account and their member accounts. Member
-%% accounts can update findings for their account.
+%% Requested by administrator accounts or member accounts. Administrator
+%% accounts can update findings for their account and their member accounts.
+%% Member accounts can update findings for their account.
 %%
 %% Updates from `BatchUpdateFindings' do not affect the value of `UpdatedAt'
 %% for a finding.
 %%
-%% Master and member accounts can use `BatchUpdateFindings' to update the
-%% following finding fields and objects.
+%% Administrator and member accounts can use `BatchUpdateFindings' to update
+%% the following finding fields and objects.
 %%
 %% <ul> <li> `Confidence'
 %%
@@ -340,7 +400,7 @@ batch_import_findings(Client, Input0, Options0) ->
 %% </li> </ul> You can configure IAM policies to restrict access to fields
 %% and field values. For example, you might not want member accounts to be
 %% able to suppress findings or change the finding severity. See Configuring
-%% access to BatchUpdateFindings in the AWS Security Hub User Guide.
+%% access to BatchUpdateFindings in the Security Hub User Guide.
 batch_update_findings(Client, Input) ->
     batch_update_findings(Client, Input, []).
 batch_update_findings(Client, Input0, Options0) ->
@@ -389,6 +449,34 @@ create_action_target(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Used to enable finding aggregation.
+%%
+%% Must be called from the aggregation Region.
+%%
+%% For more details about cross-Region replication, see Configuring finding
+%% aggregation in the Security Hub User Guide.
+create_finding_aggregator(Client, Input) ->
+    create_finding_aggregator(Client, Input, []).
+create_finding_aggregator(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/findingAggregator/create"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a custom insight in Security Hub.
 %%
 %% An insight is a consolidation of findings that relate to a security issue
@@ -418,44 +506,52 @@ create_insight(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a member association in Security Hub between the specified
-%% accounts and the account used to make the request, which is the master
-%% account.
+%% accounts and the account used to make the request, which is the
+%% administrator account.
 %%
-%% If you are integrated with Organizations, then the master account is the
-%% Security Hub administrator account that is designated by the organization
-%% management account.
+%% If you are integrated with Organizations, then the administrator account
+%% is designated by the organization management account.
 %%
 %% `CreateMembers' is always used to add accounts that are not organization
 %% members.
 %%
-%% For accounts that are part of an organization, `CreateMembers' is only
+%% For accounts that are managed using Organizations, `CreateMembers' is only
 %% used in the following cases:
 %%
-%% <ul> <li> Security Hub is not configured to automatically add new accounts
-%% in an organization.
+%% <ul> <li> Security Hub is not configured to automatically add new
+%% organization accounts.
 %%
 %% </li> <li> The account was disassociated or deleted in Security Hub.
 %%
 %% </li> </ul> This action can only be used by an account that has Security
-%% Hub enabled. To enable Security Hub, you can use the ` `EnableSecurityHub'
-%% ' operation.
+%% Hub enabled. To enable Security Hub, you can use the `EnableSecurityHub'
+%% operation.
 %%
 %% For accounts that are not organization members, you create the account
 %% association and then send an invitation to the member account. To send the
-%% invitation, you use the ` `InviteMembers' ' operation. If the account
-%% owner accepts the invitation, the account becomes a member account in
-%% Security Hub.
+%% invitation, you use the `InviteMembers' operation. If the account owner
+%% accepts the invitation, the account becomes a member account in Security
+%% Hub.
 %%
-%% Accounts that are part of an organization do not receive an invitation.
-%% They automatically become a member account in Security Hub.
+%% Accounts that are managed using Organizations do not receive an
+%% invitation. They automatically become a member account in Security Hub.
 %%
-%% A permissions policy is added that permits the master account to view the
-%% findings generated in the member account. When Security Hub is enabled in
-%% a member account, findings are sent to both the member and master
-%% accounts.
+%% <ul> <li> If the organization account does not have Security Hub enabled,
+%% then Security Hub and the default standards are automatically enabled.
+%% Note that Security Hub cannot be enabled automatically for the
+%% organization management account. The organization management account must
+%% enable Security Hub before the administrator account enables it as a
+%% member account.
 %%
-%% To remove the association between the master and member accounts, use the
-%% ` `DisassociateFromMasterAccount' ' or ` `DisassociateMembers' '
+%% </li> <li> For organization accounts that already have Security Hub
+%% enabled, Security Hub does not make any other changes to those accounts.
+%% It does not change their enabled standards or controls.
+%%
+%% </li> </ul> A permissions policy is added that permits the administrator
+%% account to view the findings generated in the member account.
+%%
+%% To remove the association between the administrator and member accounts,
+%% use the `DisassociateFromMasterAccount' or `DisassociateMembers'
 %% operation.
 create_members(Client, Input) ->
     create_members(Client, Input, []).
@@ -532,6 +628,35 @@ delete_action_target(Client, ActionTargetArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a finding aggregator.
+%%
+%% When you delete the finding aggregator, you stop finding aggregation.
+%%
+%% When you stop finding aggregation, findings that were already aggregated
+%% to the aggregation Region are still visible from the aggregation Region.
+%% New findings and finding updates are not aggregated.
+delete_finding_aggregator(Client, FindingAggregatorArn, Input) ->
+    delete_finding_aggregator(Client, FindingAggregatorArn, Input, []).
+delete_finding_aggregator(Client, FindingAggregatorArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/findingAggregator/delete/", aws_util:encode_multi_segment_uri(FindingAggregatorArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the insight specified by the `InsightArn'.
 delete_insight(Client, InsightArn, Input) ->
     delete_insight(Client, InsightArn, Input, []).
@@ -555,8 +680,8 @@ delete_insight(Client, InsightArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes invitations received by the AWS account to become a member
-%% account.
+%% @doc Deletes invitations received by the Amazon Web Services account to
+%% become a member account.
 %%
 %% This operation is only used by accounts that are not part of an
 %% organization. Organization accounts do not receive invitations.
@@ -839,13 +964,13 @@ disable_organization_admin_account(Client, Input0, Options0) ->
 %% To disable Security Hub in all Regions, you must submit one request per
 %% Region where you have enabled Security Hub.
 %%
-%% When you disable Security Hub for a master account, it doesn't disable
-%% Security Hub for any associated member accounts.
+%% When you disable Security Hub for an administrator account, it doesn't
+%% disable Security Hub for any associated member accounts.
 %%
 %% When you disable Security Hub, your existing findings and insights and any
 %% Security Hub configuration settings are deleted after 90 days and cannot
 %% be recovered. Any standards that were enabled are disabled, and your
-%% master and member account associations are removed.
+%% administrator and member account associations are removed.
 %%
 %% If you want to save your existing findings, you must export them before
 %% you disable Security Hub.
@@ -872,11 +997,51 @@ disable_security_hub(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates the current Security Hub member account from the
-%% associated master account.
+%% associated administrator account.
 %%
 %% This operation is only used by accounts that are not part of an
-%% organization. For organization accounts, only the master account (the
-%% designated Security Hub administrator) can disassociate a member account.
+%% organization. For organization accounts, only the administrator account
+%% can disassociate a member account.
+disassociate_from_administrator_account(Client, Input) ->
+    disassociate_from_administrator_account(Client, Input, []).
+disassociate_from_administrator_account(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/administrator/disassociate"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This method is deprecated.
+%%
+%% Instead, use `DisassociateFromAdministratorAccount'.
+%%
+%% The Security Hub console continues to use `DisassociateFromMasterAccount'.
+%% It will eventually change to use `DisassociateFromAdministratorAccount'.
+%% Any IAM policies that specifically control access to this function must
+%% continue to use `DisassociateFromMasterAccount'. You should also add
+%% `DisassociateFromAdministratorAccount' to your policies to ensure that the
+%% correct permissions are in place after the console begins to use
+%% `DisassociateFromAdministratorAccount'.
+%%
+%% Disassociates the current Security Hub member account from the associated
+%% administrator account.
+%%
+%% This operation is only used by accounts that are not part of an
+%% organization. For organization accounts, only the administrator account
+%% can disassociate a member account.
 disassociate_from_master_account(Client, Input) ->
     disassociate_from_master_account(Client, Input, []).
 disassociate_from_master_account(Client, Input0, Options0) ->
@@ -900,10 +1065,10 @@ disassociate_from_master_account(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates the specified member accounts from the associated
-%% master account.
+%% administrator account.
 %%
-%% Can be used to disassociate both accounts that are in an organization and
-%% accounts that were invited manually.
+%% Can be used to disassociate both accounts that are managed using
+%% Organizations and accounts that were invited manually.
 disassociate_members(Client, Input) ->
     disassociate_members(Client, Input, []).
 disassociate_members(Client, Input0, Options0) ->
@@ -990,9 +1155,9 @@ enable_organization_admin_account(Client, Input0, Options0) ->
 %% When you use the `EnableSecurityHub' operation to enable Security Hub, you
 %% also automatically enable the following standards.
 %%
-%% <ul> <li> CIS AWS Foundations
+%% <ul> <li> CIS Amazon Web Services Foundations
 %%
-%% </li> <li> AWS Foundational Security Best Practices
+%% </li> <li> Amazon Web Services Foundational Security Best Practices
 %%
 %% </li> </ul> You do not enable the Payment Card Industry Data Security
 %% Standard (PCI DSS) standard.
@@ -1000,12 +1165,11 @@ enable_organization_admin_account(Client, Input0, Options0) ->
 %% To not enable the automatically enabled standards, set
 %% `EnableDefaultStandards' to `false'.
 %%
-%% After you enable Security Hub, to enable a standard, use the `
-%% `BatchEnableStandards' ' operation. To disable a standard, use the `
-%% `BatchDisableStandards' ' operation.
+%% After you enable Security Hub, to enable a standard, use the
+%% `BatchEnableStandards' operation. To disable a standard, use the
+%% `BatchDisableStandards' operation.
 %%
-%% To learn more, see Setting Up AWS Security Hub in the AWS Security Hub
-%% User Guide.
+%% To learn more, see the setup information in the Security Hub User Guide.
 enable_security_hub(Client, Input) ->
     enable_security_hub(Client, Input, []).
 enable_security_hub(Client, Input0, Options0) ->
@@ -1027,6 +1191,33 @@ enable_security_hub(Client, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Provides the details for the Security Hub administrator account for
+%% the current member account.
+%%
+%% Can be used by both member accounts that are managed using Organizations
+%% and accounts that were invited manually.
+get_administrator_account(Client)
+  when is_map(Client) ->
+    get_administrator_account(Client, #{}, #{}).
+
+get_administrator_account(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_administrator_account(Client, QueryMap, HeadersMap, []).
+
+get_administrator_account(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/administrator"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of the standards that are currently enabled.
 get_enabled_standards(Client, Input) ->
@@ -1051,7 +1242,34 @@ get_enabled_standards(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns the current finding aggregation configuration.
+get_finding_aggregator(Client, FindingAggregatorArn)
+  when is_map(Client) ->
+    get_finding_aggregator(Client, FindingAggregatorArn, #{}, #{}).
+
+get_finding_aggregator(Client, FindingAggregatorArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_finding_aggregator(Client, FindingAggregatorArn, QueryMap, HeadersMap, []).
+
+get_finding_aggregator(Client, FindingAggregatorArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/findingAggregator/get/", aws_util:encode_multi_segment_uri(FindingAggregatorArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of findings that match the specified criteria.
+%%
+%% If finding aggregation is enabled, then when you call `GetFindings' from
+%% the aggregation Region, the results include all of the matching findings
+%% from both the aggregation Region and the linked Regions.
 get_findings(Client, Input) ->
     get_findings(Client, Input, []).
 get_findings(Client, Input0, Options0) ->
@@ -1146,11 +1364,22 @@ get_invitations_count(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Provides the details for the Security Hub master account for the
+%% @doc This method is deprecated.
+%%
+%% Instead, use `GetAdministratorAccount'.
+%%
+%% The Security Hub console continues to use `GetMasterAccount'. It will
+%% eventually change to use `GetAdministratorAccount'. Any IAM policies that
+%% specifically control access to this function must continue to use
+%% `GetMasterAccount'. You should also add `GetAdministratorAccount' to your
+%% policies to ensure that the correct permissions are in place after the
+%% console begins to use `GetAdministratorAccount'.
+%%
+%% Provides the details for the Security Hub administrator account for the
 %% current member account.
 %%
-%% Can be used by both member accounts that are in an organization and
-%% accounts that were invited manually.
+%% Can be used by both member accounts that are managed using Organizations
+%% and accounts that were invited manually.
 get_master_account(Client)
   when is_map(Client) ->
     get_master_account(Client, #{}, #{}).
@@ -1176,12 +1405,12 @@ get_master_account(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns the details for the Security Hub member accounts for the
 %% specified account IDs.
 %%
-%% A master account can be either a delegated Security Hub administrator
-%% account for an organization or a master account that enabled Security Hub
-%% manually.
+%% An administrator account can be either the delegated Security Hub
+%% administrator account for an organization or an administrator account that
+%% enabled Security Hub manually.
 %%
-%% The results include both member accounts that are in an organization and
-%% accounts that were invited manually.
+%% The results include both member accounts that are managed using
+%% Organizations and accounts that were invited manually.
 get_members(Client, Input) ->
     get_members(Client, Input, []).
 get_members(Client, Input0, Options0) ->
@@ -1204,17 +1433,18 @@ get_members(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Invites other AWS accounts to become member accounts for the Security
-%% Hub master account that the invitation is sent from.
+%% @doc Invites other Amazon Web Services accounts to become member accounts
+%% for the Security Hub administrator account that the invitation is sent
+%% from.
 %%
 %% This operation is only used to invite accounts that do not belong to an
 %% organization. Organization accounts do not receive invitations.
 %%
 %% Before you can use this action to invite a member, you must first use the
-%% ` `CreateMembers' ' action to create the member account in Security Hub.
+%% `CreateMembers' action to create the member account in Security Hub.
 %%
 %% When the account owner enables Security Hub and accepts the invitation to
-%% become a member account, the master account can view the findings
+%% become a member account, the administrator account can view the findings
 %% generated from the member account.
 invite_members(Client, Input) ->
     invite_members(Client, Input, []).
@@ -1267,11 +1497,43 @@ list_enabled_products_for_import(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all Security Hub membership invitations that were sent to the
-%% current AWS account.
+%% @doc If finding aggregation is enabled, then `ListFindingAggregators'
+%% returns the ARN of the finding aggregator.
 %%
-%% This operation is only used by accounts that do not belong to an
-%% organization. Organization accounts do not receive invitations.
+%% You can run this operation from any Region.
+list_finding_aggregators(Client)
+  when is_map(Client) ->
+    list_finding_aggregators(Client, #{}, #{}).
+
+list_finding_aggregators(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_finding_aggregators(Client, QueryMap, HeadersMap, []).
+
+list_finding_aggregators(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/findingAggregator/list"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all Security Hub membership invitations that were sent to the
+%% current Amazon Web Services account.
+%%
+%% This operation is only used by accounts that are managed by invitation.
+%% Accounts that are managed using the integration with Organizations do not
+%% receive invitations.
 list_invitations(Client)
   when is_map(Client) ->
     list_invitations(Client, #{}, #{}).
@@ -1300,7 +1562,7 @@ list_invitations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists details about all member accounts for the current Security Hub
-%% master account.
+%% administrator account.
 %%
 %% The results include both member accounts that belong to an organization
 %% and member accounts that were invited manually.
@@ -1439,6 +1701,36 @@ update_action_target(Client, ActionTargetArn, Input) ->
 update_action_target(Client, ActionTargetArn, Input0, Options0) ->
     Method = patch,
     Path = ["/actionTargets/", aws_util:encode_multi_segment_uri(ActionTargetArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the finding aggregation configuration.
+%%
+%% Used to update the Region linking mode and the list of included or
+%% excluded Regions. You cannot use `UpdateFindingAggregator' to change the
+%% aggregation Region.
+%%
+%% You must run `UpdateFindingAggregator' from the current aggregation
+%% Region.
+update_finding_aggregator(Client, Input) ->
+    update_finding_aggregator(Client, Input, []).
+update_finding_aggregator(Client, Input0, Options0) ->
+    Method = patch,
+    Path = ["/findingAggregator/update"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1616,6 +1908,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

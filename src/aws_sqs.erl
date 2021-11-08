@@ -1,18 +1,19 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Welcome to the Amazon Simple Queue Service API Reference.
+%% @doc Welcome to the Amazon SQS API Reference.
 %%
-%% Amazon Simple Queue Service (Amazon SQS) is a reliable, highly-scalable
-%% hosted queue for storing messages as they travel between applications or
-%% microservices. Amazon SQS moves data between distributed application
-%% components and helps you decouple these components.
+%% Amazon SQS is a reliable, highly-scalable hosted queue for storing
+%% messages as they travel between applications or microservices. Amazon SQS
+%% moves data between distributed application components and helps you
+%% decouple these components.
 %%
 %% For information on the permissions you need to use this API, see Identity
-%% and access management in the Amazon Simple Queue Service Developer Guide.
+%% and access management in the Amazon SQS Developer Guide.
 %%
-%% You can use AWS SDKs to access Amazon SQS using your favorite programming
-%% language. The SDKs perform tasks such as the following automatically:
+%% You can use Amazon Web Services SDKs to access Amazon SQS using your
+%% favorite programming language. The SDKs perform tasks such as the
+%% following automatically:
 %%
 %% <ul> <li> Cryptographically sign your service requests
 %%
@@ -20,11 +21,11 @@
 %%
 %% </li> <li> Handle error responses
 %%
-%% </li> </ul> Additional Information
+%% </li> </ul> Additional information
 %%
 %% <ul> <li> Amazon SQS Product Page
 %%
-%% </li> <li> Amazon Simple Queue Service Developer Guide
+%% </li> <li> Amazon SQS Developer Guide
 %%
 %% <ul> <li> Making API Requests
 %%
@@ -32,7 +33,7 @@
 %%
 %% </li> <li> Amazon SQS Dead-Letter Queues
 %%
-%% </li> </ul> </li> <li> Amazon SQS in the AWS CLI Command Reference
+%% </li> </ul> </li> <li> Amazon SQS in the Command Line Interface
 %%
 %% </li> <li> Amazon Web Services General Reference
 %%
@@ -95,13 +96,13 @@
 %% When you create a queue, you have full control access rights for the
 %% queue. Only you, the owner of the queue, can grant or deny permissions to
 %% the queue. For more information about these permissions, see Allow
-%% Developers to Write Messages to a Shared Queue in the Amazon Simple Queue
-%% Service Developer Guide.
+%% Developers to Write Messages to a Shared Queue in the Amazon SQS Developer
+%% Guide.
 %%
 %% `AddPermission' generates a policy for you. You can use `
 %% `SetQueueAttributes' ' to upload your policy. For more information, see
 %% Using Custom Policies with the Amazon SQS Access Policy Language in the
-%% Amazon Simple Queue Service Developer Guide.
+%% Amazon SQS Developer Guide.
 %%
 %% An Amazon SQS policy can have a maximum of 7 actions.
 %%
@@ -119,7 +120,7 @@
 %%
 %% Cross-account permissions don't apply to this action. For more
 %% information, see Grant cross-account permissions to a role and a user name
-%% in the Amazon Simple Queue Service Developer Guide.
+%% in the Amazon SQS Developer Guide.
 add_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_permission(Client, Input, []).
@@ -132,7 +133,7 @@ add_permission(Client, Input, Options)
 %%
 %% The default visibility timeout for a message is 30 seconds. The minimum is
 %% 0 seconds. The maximum is 12 hours. For more information, see Visibility
-%% Timeout in the Amazon Simple Queue Service Developer Guide.
+%% Timeout in the Amazon SQS Developer Guide.
 %%
 %% For example, you have a message with a visibility timeout of 5 minutes.
 %% After 3 minutes, you call `ChangeMessageVisibility' with a timeout of 10
@@ -227,8 +228,7 @@ change_message_visibility_batch(Client, Input, Options)
 %% an existing standard queue into a FIFO queue. You must either create a new
 %% FIFO queue for your application or delete your existing standard queue and
 %% recreate it as a FIFO queue. For more information, see Moving From a
-%% Standard Queue to a FIFO Queue in the Amazon Simple Queue Service
-%% Developer Guide.
+%% Standard Queue to a FIFO Queue in the Amazon SQS Developer Guide.
 %%
 %% </li> <li> If you don't provide a value for an attribute, the queue is
 %% created with the default value for the attribute.
@@ -264,7 +264,7 @@ change_message_visibility_batch(Client, Input, Options)
 %%
 %% Cross-account permissions don't apply to this action. For more
 %% information, see Grant cross-account permissions to a role and a user name
-%% in the Amazon Simple Queue Service Developer Guide.
+%% in the Amazon SQS Developer Guide.
 create_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_queue(Client, Input, []).
@@ -341,7 +341,7 @@ delete_message_batch(Client, Input, Options)
 %%
 %% Cross-account permissions don't apply to this action. For more
 %% information, see Grant cross-account permissions to a role and a user name
-%% in the Amazon Simple Queue Service Developer Guide.
+%% in the Amazon SQS Developer Guide.
 delete_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_queue(Client, Input, []).
@@ -367,7 +367,7 @@ get_queue_attributes(Client, Input, Options)
 %% queue's owner. The queue's owner must grant you permission to access the
 %% queue. For more information about shared queue access, see `
 %% `AddPermission' ' or see Allow Developers to Write Messages to a Shared
-%% Queue in the Amazon Simple Queue Service Developer Guide.
+%% Queue in the Amazon SQS Developer Guide.
 get_queue_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_queue_url(Client, Input, []).
@@ -387,7 +387,7 @@ get_queue_url(Client, Input, Options)
 %% `ListDeadLetterSourceQueues' to receive the next page of results.
 %%
 %% For more information about using dead-letter queues, see Using Amazon SQS
-%% Dead-Letter Queues in the Amazon Simple Queue Service Developer Guide.
+%% Dead-Letter Queues in the Amazon SQS Developer Guide.
 list_dead_letter_source_queues(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dead_letter_source_queues(Client, Input, []).
@@ -398,12 +398,12 @@ list_dead_letter_source_queues(Client, Input, Options)
 %% @doc List all cost allocation tags added to the specified Amazon SQS
 %% queue.
 %%
-%% For an overview, see Tagging Your Amazon SQS Queues in the Amazon Simple
-%% Queue Service Developer Guide.
+%% For an overview, see Tagging Your Amazon SQS Queues in the Amazon SQS
+%% Developer Guide.
 %%
 %% Cross-account permissions don't apply to this action. For more
 %% information, see Grant cross-account permissions to a role and a user name
-%% in the Amazon Simple Queue Service Developer Guide.
+%% in the Amazon SQS Developer Guide.
 list_queue_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_queue_tags(Client, Input, []).
@@ -427,7 +427,7 @@ list_queue_tags(Client, Input, Options)
 %%
 %% Cross-account permissions don't apply to this action. For more
 %% information, see Grant cross-account permissions to a role and a user name
-%% in the Amazon Simple Queue Service Developer Guide.
+%% in the Amazon SQS Developer Guide.
 list_queues(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_queues(Client, Input, []).
@@ -459,8 +459,8 @@ purge_queue(Client, Input, Options)
 %% @doc Retrieves one or more messages (up to 10), from the specified queue.
 %%
 %% Using the `WaitTimeSeconds' parameter enables long-poll support. For more
-%% information, see Amazon SQS Long Polling in the Amazon Simple Queue
-%% Service Developer Guide.
+%% information, see Amazon SQS Long Polling in the Amazon SQS Developer
+%% Guide.
 %%
 %% Short poll is the default behavior where a weighted random set of machines
 %% is sampled on a `ReceiveMessage' call. Thus, only the messages on the
@@ -488,14 +488,13 @@ purge_queue(Client, Input, Options)
 %%
 %% </li> </ul> The receipt handle is the identifier you must provide when
 %% deleting the message. For more information, see Queue and Message
-%% Identifiers in the Amazon Simple Queue Service Developer Guide.
+%% Identifiers in the Amazon SQS Developer Guide.
 %%
 %% You can provide the `VisibilityTimeout' parameter in your request. The
 %% parameter is applied to the messages that Amazon SQS returns in the
 %% response. If you don't include the parameter, the overall visibility
 %% timeout for the queue is used for the returned messages. For more
-%% information, see Visibility Timeout in the Amazon Simple Queue Service
-%% Developer Guide.
+%% information, see Visibility Timeout in the Amazon SQS Developer Guide.
 %%
 %% A message that isn't deleted or a message whose visibility isn't extended
 %% before the visibility timeout expires counts as a failed receive.
@@ -519,7 +518,7 @@ receive_message(Client, Input, Options)
 %%
 %% Cross-account permissions don't apply to this action. For more
 %% information, see Grant cross-account permissions to a role and a user name
-%% in the Amazon Simple Queue Service Developer Guide.
+%% in the Amazon SQS Developer Guide.
 %%
 %% To remove the ability to change queue permissions, you must deny
 %% permission to the `AddPermission', `RemovePermission', and
@@ -601,7 +600,7 @@ send_message_batch(Client, Input, Options)
 %%
 %% Cross-account permissions don't apply to this action. For more
 %% information, see Grant cross-account permissions to a role and a user name
-%% in the Amazon Simple Queue Service Developer Guide.
+%% in the Amazon SQS Developer Guide.
 %%
 %% To remove the ability to change queue permissions, you must deny
 %% permission to the `AddPermission', `RemovePermission', and
@@ -615,8 +614,8 @@ set_queue_attributes(Client, Input, Options)
 
 %% @doc Add cost allocation tags to the specified Amazon SQS queue.
 %%
-%% For an overview, see Tagging Your Amazon SQS Queues in the Amazon Simple
-%% Queue Service Developer Guide.
+%% For an overview, see Tagging Your Amazon SQS Queues in the Amazon SQS
+%% Developer Guide.
 %%
 %% When you use queue tags, keep the following guidelines in mind:
 %%
@@ -630,12 +629,12 @@ set_queue_attributes(Client, Input, Options)
 %% </li> <li> A new tag with a key identical to that of an existing tag
 %% overwrites the existing tag.
 %%
-%% </li> </ul> For a full list of tag restrictions, see Limits Related to
-%% Queues in the Amazon Simple Queue Service Developer Guide.
+%% </li> </ul> For a full list of tag restrictions, see Quotas related to
+%% queues in the Amazon SQS Developer Guide.
 %%
 %% Cross-account permissions don't apply to this action. For more
 %% information, see Grant cross-account permissions to a role and a user name
-%% in the Amazon Simple Queue Service Developer Guide.
+%% in the Amazon SQS Developer Guide.
 tag_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_queue(Client, Input, []).
@@ -645,12 +644,12 @@ tag_queue(Client, Input, Options)
 
 %% @doc Remove cost allocation tags from the specified Amazon SQS queue.
 %%
-%% For an overview, see Tagging Your Amazon SQS Queues in the Amazon Simple
-%% Queue Service Developer Guide.
+%% For an overview, see Tagging Your Amazon SQS Queues in the Amazon SQS
+%% Developer Guide.
 %%
 %% Cross-account permissions don't apply to this action. For more
 %% information, see Grant cross-account permissions to a role and a user name
-%% in the Amazon Simple Queue Service Developer Guide.
+%% in the Amazon SQS Developer Guide.
 untag_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_queue(Client, Input, []).

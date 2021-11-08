@@ -64,7 +64,8 @@ create_cli_token(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc JSON blob that describes the environment to create.
+%% @doc Creates an Amazon Managed Workflows for Apache Airflow (MWAA)
+%% environment.
 create_environment(Client, Name, Input) ->
     create_environment(Client, Name, Input, []).
 create_environment(Client, Name, Input0, Options0) ->
@@ -111,7 +112,8 @@ create_web_login_token(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete an existing environment.
+%% @doc Deletes an Amazon Managed Workflows for Apache Airflow (MWAA)
+%% environment.
 delete_environment(Client, Name, Input) ->
     delete_environment(Client, Name, Input, []).
 delete_environment(Client, Name, Input0, Options0) ->
@@ -134,7 +136,8 @@ delete_environment(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Get details of an existing environment.
+%% @doc Retrieves the details of an Amazon Managed Workflows for Apache
+%% Airflow (MWAA) environment.
 get_environment(Client, Name)
   when is_map(Client) ->
     get_environment(Client, Name, #{}, #{}).
@@ -157,7 +160,8 @@ get_environment(Client, Name, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List Amazon MWAA Environments.
+%% @doc Lists the Amazon Managed Workflows for Apache Airflow (MWAA)
+%% environments.
 list_environments(Client)
   when is_map(Client) ->
     list_environments(Client, #{}, #{}).
@@ -185,7 +189,10 @@ list_environments(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List the tags for MWAA environments.
+%% @doc Lists the key-value tag pairs associated to the Amazon Managed
+%% Workflows for Apache Airflow (MWAA) environment.
+%%
+%% For example, `"Environment": "Staging"'.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -232,7 +239,8 @@ publish_metrics(Client, EnvironmentName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Add tag to the MWAA environments.
+%% @doc Associates key-value tag pairs to your Amazon Managed Workflows for
+%% Apache Airflow (MWAA) environment.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -255,7 +263,10 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Remove a tag from the MWAA environments.
+%% @doc Removes key-value tag pairs associated to your Amazon Managed
+%% Workflows for Apache Airflow (MWAA) environment.
+%%
+%% For example, `"Environment": "Staging"'.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -279,7 +290,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update an MWAA environment.
+%% @doc Updates an Amazon Managed Workflows for Apache Airflow (MWAA)
+%% environment.
 update_environment(Client, Name, Input) ->
     update_environment(Client, Name, Input, []).
 update_environment(Client, Name, Input0, Options0) ->
@@ -337,6 +349,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

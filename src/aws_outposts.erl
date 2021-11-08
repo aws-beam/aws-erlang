@@ -10,7 +10,9 @@
 %% storage resources for lower latency and local data processing needs.
 -module(aws_outposts).
 
--export([create_outpost/2,
+-export([create_order/2,
+         create_order/3,
+         create_outpost/2,
          create_outpost/3,
          delete_outpost/3,
          delete_outpost/4,
@@ -42,7 +44,32 @@
 %% API
 %%====================================================================
 
+%% @doc Creates an order for an Outpost.
+create_order(Client, Input) ->
+    create_order(Client, Input, []).
+create_order(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/orders"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an Outpost.
+%%
+%% You can specify `AvailabilityZone' or `AvailabilityZoneId'.
 create_outpost(Client, Input) ->
     create_outpost(Client, Input, []).
 create_outpost(Client, Input0, Options0) ->
@@ -162,7 +189,14 @@ get_outpost_instance_types(Client, OutpostId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List the Outposts for your AWS account.
+%% @doc Create a list of the Outposts for your AWS account.
+%%
+%% Add filters to your request to return a more specific list of results. Use
+%% filters to match an Outpost lifecycle status, Availibility Zone
+%% (`us-east-1a'), and AZ ID (`use1-az1').
+%%
+%% If you specify multiple filters, the filters are joined with an `AND', and
+%% the request returns only results that match all of the specified filters.
 list_outposts(Client)
   when is_map(Client) ->
     list_outposts(Client, #{}, #{}).
@@ -183,6 +217,9 @@ list_outposts(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"AvailabilityZoneFilter">>, maps:get(<<"AvailabilityZoneFilter">>, QueryMap, undefined)},
+        {<<"AvailabilityZoneIdFilter">>, maps:get(<<"AvailabilityZoneIdFilter">>, QueryMap, undefined)},
+        {<<"LifeCycleStatusFilter">>, maps:get(<<"LifeCycleStatusFilter">>, QueryMap, undefined)},
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
@@ -323,6 +360,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

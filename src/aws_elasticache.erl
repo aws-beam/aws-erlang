@@ -154,19 +154,23 @@
 %% API
 %%====================================================================
 
-%% @doc Adds up to 50 cost allocation tags to the named resource.
+%% @doc A tag is a key-value pair where the key and value are case-sensitive.
 %%
-%% A cost allocation tag is a key-value pair where the key and value are
-%% case-sensitive. You can use cost allocation tags to categorize and track
-%% your AWS costs.
+%% You can use tags to categorize and track all your ElastiCache resources,
+%% with the exception of global replication group. When you add or remove
+%% tags on replication groups, those actions will be replicated to all nodes
+%% in the replication group. For more information, see Resource-level
+%% permissions.
 %%
-%% When you apply tags to your ElastiCache resources, AWS generates a cost
-%% allocation report as a comma-separated value (CSV) file with your usage
-%% and costs aggregated by your tags. You can apply tags that represent
-%% business categories (such as cost centers, application names, or owners)
-%% to organize your costs across multiple services. For more information, see
-%% Using Cost Allocation Tags in Amazon ElastiCache in the ElastiCache User
-%% Guide.
+%% For example, you can use cost-allocation tags to your ElastiCache
+%% resources, Amazon generates a cost allocation report as a comma-separated
+%% value (CSV) file with your usage and costs aggregated by your tags. You
+%% can apply tags that represent business categories (such as cost centers,
+%% application names, or owners) to organize your costs across multiple
+%% services.
+%%
+%% For more information, see Using Cost Allocation Tags in Amazon ElastiCache
+%% in the ElastiCache User Guide.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_resource(Client, Input, []).
@@ -364,7 +368,7 @@ create_cache_subnet_group(Client, Input, Options)
 %% Across Regions Using Global Datastore.
 %%
 %% <ul> <li> The GlobalReplicationGroupIdSuffix is the name of the Global
-%% Datastore.
+%% datastore.
 %%
 %% </li> <li> The PrimaryReplicationGroupId represents the name of the
 %% primary cluster that accepts writes and will replicate updates to the
@@ -382,7 +386,7 @@ create_global_replication_group(Client, Input, Options)
 %% enabled) replication group.
 %%
 %% This API can be used to create a standalone regional replication group or
-%% a secondary replication group associated with a Global Datastore.
+%% a secondary replication group associated with a Global datastore.
 %%
 %% A Redis (cluster mode disabled) replication group is a collection of
 %% clusters, where one of the clusters is a read/write primary and the others
@@ -405,8 +409,8 @@ create_global_replication_group(Client, Input, Options)
 %% heavily used by other clusters. For more information, see Creating a
 %% Subnet Group. For versions below 5.0.6, the limit is 250 per cluster.
 %%
-%% To request a limit increase, see AWS Service Limits and choose the limit
-%% type Nodes per cluster per instance type.
+%% To request a limit increase, see Amazon Service Limits and choose the
+%% limit type Nodes per cluster per instance type.
 %%
 %% When a Redis (cluster mode disabled) replication group has been
 %% successfully created, you can add one or more read replicas to it, up to a
@@ -454,7 +458,7 @@ create_user_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUserGroup">>, Input, Options).
 
-%% @doc Decreases the number of node groups in a Global Datastore
+%% @doc Decreases the number of node groups in a Global datastore
 decrease_node_groups_in_global_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     decrease_node_groups_in_global_replication_group(Client, Input, []).
@@ -539,18 +543,21 @@ delete_cache_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCacheSubnetGroup">>, Input, Options).
 
-%% @doc Deleting a Global Datastore is a two-step process:
+%% @doc Deleting a Global datastore is a two-step process:
 %%
 %% <ul> <li> First, you must `DisassociateGlobalReplicationGroup' to remove
-%% the secondary clusters in the Global Datastore.
+%% the secondary clusters in the Global datastore.
 %%
-%% </li> <li> Once the Global Datastore contains only the primary cluster,
-%% you can use DeleteGlobalReplicationGroup API to delete the Global
-%% Datastore while retainining the primary cluster using Retain…= true.
+%% </li> <li> Once the Global datastore contains only the primary cluster,
+%% you can use the `DeleteGlobalReplicationGroup' API to delete the Global
+%% datastore while retainining the primary cluster using
+%% `RetainPrimaryReplicationGroup=true'.
 %%
 %% </li> </ul> Since the Global Datastore has only a primary cluster, you can
 %% delete the Global Datastore while retaining the primary by setting
-%% `RetainPrimaryCluster=true'.
+%% `RetainPrimaryReplicationGroup=true'. The primary cluster is never deleted
+%% when deleting a Global Datastore. It can only be deleted when it no longer
+%% is associated with any Global Datastore.
 %%
 %% When you receive a successful response from this operation, Amazon
 %% ElastiCache immediately begins deleting the selected resources; you cannot
@@ -729,7 +736,7 @@ describe_events(Client, Input, Options)
 %% @doc Returns information about a particular global replication group.
 %%
 %% If no identifier is specified, returns information about all Global
-%% Datastores.
+%% datastores.
 describe_global_replication_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_global_replication_groups(Client, Input, []).
@@ -813,11 +820,11 @@ describe_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUsers">>, Input, Options).
 
-%% @doc Remove a secondary cluster from the Global Datastore using the Global
-%% Datastore name.
+%% @doc Remove a secondary cluster from the Global datastore using the Global
+%% datastore name.
 %%
 %% The secondary cluster will no longer receive updates from the primary
-%% cluster, but will remain as a standalone cluster in that AWS region.
+%% cluster, but will remain as a standalone cluster in that Amazon region.
 disassociate_global_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_global_replication_group(Client, Input, []).
@@ -836,7 +843,7 @@ failover_global_replication_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"FailoverGlobalReplicationGroup">>, Input, Options).
 
-%% @doc Increase the number of node groups in the Global Datastore
+%% @doc Increase the number of node groups in the Global datastore
 increase_node_groups_in_global_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     increase_node_groups_in_global_replication_group(Client, Input, []).
@@ -870,17 +877,16 @@ list_allowed_node_type_modifications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAllowedNodeTypeModifications">>, Input, Options).
 
-%% @doc Lists all cost allocation tags currently on the named resource.
+%% @doc Lists all tags currently on a named resource.
 %%
-%% A `cost allocation tag' is a key-value pair where the key is
-%% case-sensitive and the value is optional. You can use cost allocation tags
-%% to categorize and track your AWS costs.
+%% A tag is a key-value pair where the key and value are case-sensitive. You
+%% can use tags to categorize and track all your ElastiCache resources, with
+%% the exception of global replication group. When you add or remove tags on
+%% replication groups, those actions will be replicated to all nodes in the
+%% replication group. For more information, see Resource-level permissions.
 %%
 %% If the cluster is not in the available state, `ListTagsForResource'
 %% returns an error.
-%%
-%% You can have a maximum of 50 cost allocation tags on an ElastiCache
-%% resource. For more information, see Monitoring Costs with Tags.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -918,7 +924,7 @@ modify_cache_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyCacheSubnetGroup">>, Input, Options).
 
-%% @doc Modifies the settings for a Global Datastore.
+%% @doc Modifies the settings for a Global datastore.
 modify_global_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_global_replication_group(Client, Input, []).
@@ -1018,6 +1024,12 @@ reboot_cache_cluster(Client, Input, Options)
 
 %% @doc Removes the tags identified by the `TagKeys' list from the named
 %% resource.
+%%
+%% A tag is a key-value pair where the key and value are case-sensitive. You
+%% can use tags to categorize and track all your ElastiCache resources, with
+%% the exception of global replication group. When you add or remove tags on
+%% replication groups, those actions will be replicated to all nodes in the
+%% replication group. For more information, see Resource-level permissions.
 remove_tags_from_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_resource(Client, Input, []).
@@ -1064,8 +1076,8 @@ start_migration(Client, Input, Options)
 %% == Note the following ==
 %%
 %% <ul> <li> A customer can use this operation to test automatic failover on
-%% up to 5 shards (called node groups in the ElastiCache API and AWS CLI) in
-%% any rolling 24-hour period.
+%% up to 5 shards (called node groups in the ElastiCache API and Amazon CLI)
+%% in any rolling 24-hour period.
 %%
 %% </li> <li> If calling this operation on shards in different clusters
 %% (called replication groups in the API and CLI), the calls can be made
@@ -1076,7 +1088,7 @@ start_migration(Client, Input, Options)
 %% replacement must complete before a subsequent call can be made.
 %%
 %% </li> <li> To determine whether the node replacement is complete you can
-%% check Events using the Amazon ElastiCache console, the AWS CLI, or the
+%% check Events using the Amazon ElastiCache console, the Amazon CLI, or the
 %% ElastiCache API. Look for the following automatic failover related events,
 %% listed here in order of occurrance:
 %%

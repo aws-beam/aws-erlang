@@ -1,14 +1,14 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS DataSync
+%% @doc DataSync
 %%
-%% AWS DataSync is a managed data transfer service that makes it simpler for
-%% you to automate moving data between on-premises storage and Amazon Simple
+%% DataSync is a managed data transfer service that makes it simpler for you
+%% to automate moving data between on-premises storage and Amazon Simple
 %% Storage Service (Amazon S3) or Amazon Elastic File System (Amazon EFS).
 %%
-%% This API interface reference for AWS DataSync contains documentation for a
-%% programming interface that you can use to manage AWS DataSync.
+%% This API interface reference for DataSync contains documentation for a
+%% programming interface that you can use to manage DataSync.
 -module(aws_datasync).
 
 -export([cancel_task_execution/2,
@@ -19,6 +19,8 @@
          create_location_efs/3,
          create_location_fsx_windows/2,
          create_location_fsx_windows/3,
+         create_location_hdfs/2,
+         create_location_hdfs/3,
          create_location_nfs/2,
          create_location_nfs/3,
          create_location_object_storage/2,
@@ -41,6 +43,8 @@
          describe_location_efs/3,
          describe_location_fsx_windows/2,
          describe_location_fsx_windows/3,
+         describe_location_hdfs/2,
+         describe_location_hdfs/3,
          describe_location_nfs/2,
          describe_location_nfs/3,
          describe_location_object_storage/2,
@@ -71,6 +75,8 @@
          untag_resource/3,
          update_agent/2,
          update_agent/3,
+         update_location_hdfs/2,
+         update_location_hdfs/3,
          update_location_nfs/2,
          update_location_nfs/3,
          update_location_object_storage/2,
@@ -96,8 +102,8 @@
 %% start a new task execution on the same task and you allow the task
 %% execution to complete, file content on the destination is complete and
 %% consistent. This applies to other unexpected failures that interrupt a
-%% task execution. In all of these cases, AWS DataSync successfully complete
-%% the transfer when you start the next task execution.
+%% task execution. In all of these cases, DataSync successfully complete the
+%% transfer when you start the next task execution.
 cancel_task_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_task_execution(Client, Input, []).
@@ -105,13 +111,14 @@ cancel_task_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelTaskExecution">>, Input, Options).
 
-%% @doc Activates an AWS DataSync agent that you have deployed on your host.
+%% @doc Activates an DataSync agent that you have deployed on your host.
 %%
 %% The activation process associates your agent with your account. In the
-%% activation process, you specify information such as the AWS Region that
-%% you want to activate the agent in. You activate the agent in the AWS
-%% Region where your target locations (in Amazon S3 or Amazon EFS) reside.
-%% Your tasks are created in this AWS Region.
+%% activation process, you specify information such as the Amazon Web
+%% Services Region that you want to activate the agent in. You activate the
+%% agent in the Amazon Web Services Region where your target locations (in
+%% Amazon S3 or Amazon EFS) reside. Your tasks are created in this Amazon Web
+%% Services Region.
 %%
 %% You can activate the agent in a VPC (virtual private cloud) or provide the
 %% agent access to a VPC endpoint so you can run tasks without going over the
@@ -122,8 +129,8 @@ cancel_task_execution(Client, Input, Options)
 %% you use multiple agents for a source location, the status of all the
 %% agents must be AVAILABLE for the task to run.
 %%
-%% Agents are automatically updated by AWS on a regular basis, using a
-%% mechanism that ensures minimal interruption to your tasks.
+%% Agents are automatically updated by Amazon Web Services on a regular
+%% basis, using a mechanism that ensures minimal interruption to your tasks.
 create_agent(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_agent(Client, Input, []).
@@ -148,6 +155,14 @@ create_location_fsx_windows(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationFsxWindows">>, Input, Options).
 
+%% @doc Creates an endpoint for a Hadoop Distributed File System (HDFS).
+create_location_hdfs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_location_hdfs(Client, Input, []).
+create_location_hdfs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateLocationHdfs">>, Input, Options).
+
 %% @doc Defines a file system on a Network File System (NFS) server that can
 %% be read from or written to.
 create_location_nfs(Client, Input)
@@ -160,7 +175,7 @@ create_location_nfs(Client, Input, Options)
 %% @doc Creates an endpoint for a self-managed object storage bucket.
 %%
 %% For more information about self-managed object storage locations, see
-%% `create-object-location'.
+%% Creating a location for object storage.
 create_location_object_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_object_storage(Client, Input, []).
@@ -170,9 +185,8 @@ create_location_object_storage(Client, Input, Options)
 
 %% @doc Creates an endpoint for an Amazon S3 bucket.
 %%
-%% For more information, see
-%% https://docs.aws.amazon.com/datasync/latest/userguide/create-locations-cli.html#create-location-s3-cli
-%% in the AWS DataSync User Guide.
+%% For more information, see Create an Amazon S3 location in the DataSync
+%% User Guide.
 create_location_s3(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_s3(Client, Input, []).
@@ -197,18 +211,18 @@ create_location_smb(Client, Input, Options)
 %% configuration specifies options such as task scheduling, bandwidth limits,
 %% etc. A task is the complete definition of a data transfer.
 %%
-%% When you create a task that transfers data between AWS services in
-%% different AWS Regions, one of the two locations that you specify must
-%% reside in the Region where DataSync is being used. The other location must
-%% be specified in a different Region.
+%% When you create a task that transfers data between Amazon Web Services
+%% services in different Amazon Web Services Regions, one of the two
+%% locations that you specify must reside in the Region where DataSync is
+%% being used. The other location must be specified in a different Region.
 %%
-%% You can transfer data between commercial AWS Regions except for China, or
-%% between AWS GovCloud (US-East and US-West) Regions.
+%% You can transfer data between commercial Amazon Web Services Regions
+%% except for China, or between Amazon Web Services GovCloud (US) Regions.
 %%
-%% When you use DataSync to copy files or objects between AWS Regions, you
-%% pay for data transfer between Regions. This is billed as data transfer OUT
-%% from your source Region to your destination Region. For more information,
-%% see Data Transfer pricing.
+%% When you use DataSync to copy files or objects between Amazon Web Services
+%% Regions, you pay for data transfer between Regions. This is billed as data
+%% transfer OUT from your source Region to your destination Region. For more
+%% information, see Data Transfer pricing.
 create_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_task(Client, Input, []).
@@ -220,8 +234,8 @@ create_task(Client, Input, Options)
 %%
 %% To specify which agent to delete, use the Amazon Resource Name (ARN) of
 %% the agent in your request. The operation disassociates the agent from your
-%% AWS account. However, it doesn't delete the agent virtual machine (VM)
-%% from your on-premises environment.
+%% Amazon Web Services account. However, it doesn't delete the agent virtual
+%% machine (VM) from your on-premises environment.
 delete_agent(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_agent(Client, Input, []).
@@ -229,7 +243,7 @@ delete_agent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAgent">>, Input, Options).
 
-%% @doc Deletes the configuration of a location used by AWS DataSync.
+%% @doc Deletes the configuration of a location used by DataSync.
 delete_location(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_location(Client, Input, []).
@@ -275,6 +289,15 @@ describe_location_fsx_windows(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationFsxWindows">>, Input, Options).
 
+%% @doc Returns metadata, such as the authentication information about the
+%% Hadoop Distributed File System (HDFS) location.
+describe_location_hdfs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_location_hdfs(Client, Input, []).
+describe_location_hdfs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeLocationHdfs">>, Input, Options).
+
 %% @doc Returns metadata, such as the path information, about an NFS
 %% location.
 describe_location_nfs(Client, Input)
@@ -287,7 +310,7 @@ describe_location_nfs(Client, Input, Options)
 %% @doc Returns metadata about a self-managed object storage server location.
 %%
 %% For more information about self-managed object storage locations, see
-%% `create-object-location'.
+%% Creating a location for object storage.
 describe_location_object_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_object_storage(Client, Input, []).
@@ -329,8 +352,8 @@ describe_task_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTaskExecution">>, Input, Options).
 
-%% @doc Returns a list of agents owned by an AWS account in the AWS Region
-%% specified in the request.
+%% @doc Returns a list of agents owned by an Amazon Web Services account in
+%% the Amazon Web Services Region specified in the request.
 %%
 %% The returned list is ordered by agent Amazon Resource Name (ARN).
 %%
@@ -395,7 +418,7 @@ list_tasks(Client, Input, Options)
 %% PREPARING | TRANSFERRING | VERIFYING | SUCCESS/FAILURE.
 %%
 %% For detailed information, see the Task Execution section in the Components
-%% and Terminology topic in the AWS DataSync User Guide.
+%% and Terminology topic in the DataSync User Guide.
 start_task_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_task_execution(Client, Input, []).
@@ -403,7 +426,7 @@ start_task_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartTaskExecution">>, Input, Options).
 
-%% @doc Applies a key-value pair to an AWS resource.
+%% @doc Applies a key-value pair to an Amazon Web Services resource.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -411,7 +434,7 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Removes a tag from an AWS resource.
+%% @doc Removes a tag from an Amazon Web Services resource.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -427,10 +450,20 @@ update_agent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAgent">>, Input, Options).
 
+%% @doc Updates some parameters of a previously created location for a Hadoop
+%% Distributed File System cluster.
+update_location_hdfs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_location_hdfs(Client, Input, []).
+update_location_hdfs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateLocationHdfs">>, Input, Options).
+
 %% @doc Updates some of the parameters of a previously created location for
 %% Network File System (NFS) access.
 %%
-%% For information about creating an NFS location, see `create-nfs-location'.
+%% For information about creating an NFS location, see Creating a location
+%% for NFS.
 update_location_nfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_location_nfs(Client, Input, []).
@@ -442,7 +475,7 @@ update_location_nfs(Client, Input, Options)
 %% self-managed object storage server access.
 %%
 %% For information about creating a self-managed object storage location, see
-%% `create-object-location'.
+%% Creating a location for object storage.
 update_location_object_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_location_object_storage(Client, Input, []).
@@ -453,7 +486,8 @@ update_location_object_storage(Client, Input, Options)
 %% @doc Updates some of the parameters of a previously created location for
 %% Server Message Block (SMB) file system access.
 %%
-%% For information about creating an SMB location, see `create-smb-location'.
+%% For information about creating an SMB location, see Creating a location
+%% for SMB.
 update_location_smb(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_location_smb(Client, Input, []).

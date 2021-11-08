@@ -1,10 +1,11 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc EC2 Image Builder is a fully managed AWS service that makes it easier
-%% to automate the creation, management, and deployment of customized,
-%% secure, and up-to-date "golden" server images that are pre-installed and
-%% pre-configured with software and settings to meet specific IT standards.
+%% @doc EC2 Image Builder is a fully managed Amazon Web Services service that
+%% makes it easier to automate the creation, management, and deployment of
+%% customized, secure, and up-to-date "golden" server images that are
+%% pre-installed and pre-configured with software and settings to meet
+%% specific IT standards.
 -module(aws_imagebuilder).
 
 -export([cancel_image_creation/2,
@@ -227,7 +228,9 @@ create_distribution_configuration(Client, Input0, Options0) ->
 %% @doc Creates a new image.
 %%
 %% This request will create a new image along with all of the configured
-%% output resources defined in the distribution configuration.
+%% output resources defined in the distribution configuration. You must
+%% specify exactly one recipe for your image, using either a
+%% ContainerRecipeArn or an ImageRecipeArn.
 create_image(Client, Input) ->
     create_image(Client, Input, []).
 create_image(Client, Input0, Options0) ->
@@ -399,7 +402,23 @@ delete_distribution_configuration(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an image.
+%% @doc Deletes an Image Builder image resource.
+%%
+%% This does not delete any EC2 AMIs or ECR container images that are created
+%% during the image build process. You must clean those up separately, using
+%% the appropriate Amazon EC2 or Amazon ECR console actions, or API or CLI
+%% commands.
+%%
+%% <ul> <li> To deregister an EC2 Linux AMI, see Deregister your Linux AMI in
+%% the Amazon EC2 User Guide .
+%%
+%% </li> <li> To deregister an EC2 Windows AMI, see Deregister your Windows
+%% AMI in the Amazon EC2 Windows Guide .
+%%
+%% </li> <li> To delete a container image from Amazon ECR, see Deleting an
+%% image in the Amazon ECR User Guide.
+%%
+%% </li> </ul>
 delete_image(Client, Input) ->
     delete_image(Client, Input, []).
 delete_image(Client, Input0, Options0) ->
@@ -818,6 +837,15 @@ import_component(Client, Input0, Options0) ->
 
 %% @doc Returns the list of component build versions for the specified
 %% semantic version.
+%%
+%% The semantic version has four nodes: <major>.<minor>.<patch>/<build>. You
+%% can assign values for the first three, and can filter on all of them.
+%%
+%% Filtering: With semantic versioning, you have the flexibility to use
+%% wildcards (x) to specify the most recent versions or nodes when selecting
+%% the base image or components for your recipe. When you use a wildcard in
+%% any node, all nodes to the right of the first wildcard must also be
+%% wildcards.
 list_component_build_versions(Client, Input) ->
     list_component_build_versions(Client, Input, []).
 list_component_build_versions(Client, Input0, Options0) ->
@@ -842,6 +870,15 @@ list_component_build_versions(Client, Input0, Options0) ->
 
 %% @doc Returns the list of component build versions for the specified
 %% semantic version.
+%%
+%% The semantic version has four nodes: <major>.<minor>.<patch>/<build>. You
+%% can assign values for the first three, and can filter on all of them.
+%%
+%% Filtering: With semantic versioning, you have the flexibility to use
+%% wildcards (x) to specify the most recent versions or nodes when selecting
+%% the base image or components for your recipe. When you use a wildcard in
+%% any node, all nodes to the right of the first wildcard must also be
+%% wildcards.
 list_components(Client, Input) ->
     list_components(Client, Input, []).
 list_components(Client, Input0, Options0) ->
@@ -934,7 +971,7 @@ list_image_build_versions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc List the Packages that are associated with an Image Build Version, as
-%% determined by AWS Systems Manager Inventory at build time.
+%% determined by Amazon Web Services Systems Manager Inventory at build time.
 list_image_packages(Client, Input) ->
     list_image_packages(Client, Input, []).
 list_image_packages(Client, Input0, Options0) ->
@@ -1310,10 +1347,14 @@ update_distribution_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a new image pipeline.
+%% @doc Updates an image pipeline.
 %%
 %% Image pipelines enable you to automate the creation and distribution of
 %% images.
+%%
+%% UpdateImagePipeline does not support selective updates for the pipeline.
+%% You must specify all of the required properties in the update request, not
+%% just the properties that have changed.
 update_image_pipeline(Client, Input) ->
     update_image_pipeline(Client, Input, []).
 update_image_pipeline(Client, Input0, Options0) ->
@@ -1397,6 +1438,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

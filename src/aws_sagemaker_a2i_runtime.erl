@@ -1,16 +1,14 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Augmented AI is in preview release and is subject to change.
+%% @doc Amazon Augmented AI (Amazon A2I) adds the benefit of human judgment
+%% to any machine learning application.
 %%
-%% We do not recommend using this product in production environments.
-%%
-%% Amazon Augmented AI (Amazon A2I) adds the benefit of human judgment to any
-%% machine learning application. When an AI application can't evaluate data
-%% with a high degree of confidence, human reviewers can take over. This
-%% human review is called a human review workflow. To create and start a
-%% human review workflow, you need three resources: a worker task template, a
-%% flow definition, and a human loop.
+%% When an AI application can't evaluate data with a high degree of
+%% confidence, human reviewers can take over. This human review is called a
+%% human review workflow. To create and start a human review workflow, you
+%% need three resources: a worker task template, a flow definition, and a
+%% human loop.
 %%
 %% For information about these resources and prerequisites for using Amazon
 %% A2I, see Get Started with Amazon Augmented AI in the Amazon SageMaker
@@ -57,6 +55,9 @@
 %%====================================================================
 
 %% @doc Deletes the specified human loop for a flow definition.
+%%
+%% If the human loop was deleted, this operation will return a
+%% `ResourceNotFoundException'.
 delete_human_loop(Client, HumanLoopName, Input) ->
     delete_human_loop(Client, HumanLoopName, Input, []).
 delete_human_loop(Client, HumanLoopName, Input0, Options0) ->
@@ -80,6 +81,9 @@ delete_human_loop(Client, HumanLoopName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns information about the specified human loop.
+%%
+%% If the human loop was deleted, this operation will return a
+%% `ResourceNotFoundException' error.
 describe_human_loop(Client, HumanLoopName)
   when is_map(Client) ->
     describe_human_loop(Client, HumanLoopName, #{}, #{}).
@@ -219,6 +223,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

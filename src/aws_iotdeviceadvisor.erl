@@ -37,11 +37,10 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
-         list_test_cases/1,
-         list_test_cases/3,
-         list_test_cases/4,
          start_suite_run/3,
          start_suite_run/4,
+         stop_suite_run/4,
+         stop_suite_run/5,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -259,41 +258,35 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all the test cases in the test suite.
-list_test_cases(Client)
-  when is_map(Client) ->
-    list_test_cases(Client, #{}, #{}).
-
-list_test_cases(Client, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_test_cases(Client, QueryMap, HeadersMap, []).
-
-list_test_cases(Client, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/testCases"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
-
-    Headers = [],
-
-    Query0_ =
-      [
-        {<<"intendedForQualification">>, maps:get(<<"intendedForQualification">>, QueryMap, undefined)},
-        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
-        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
-      ],
-    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
 %% @doc Starts a Device Advisor test suite run.
 start_suite_run(Client, SuiteDefinitionId, Input) ->
     start_suite_run(Client, SuiteDefinitionId, Input, []).
 start_suite_run(Client, SuiteDefinitionId, Input0, Options0) ->
     Method = post,
     Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), "/suiteRuns"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops a Device Advisor test suite run that is currently running.
+stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input) ->
+    stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input, []).
+stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input0, Options0) ->
+    Method = post,
+    Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), "/suiteRuns/", aws_util:encode_uri(SuiteRunId), "/stop"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -416,6 +409,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

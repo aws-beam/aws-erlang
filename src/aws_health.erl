@@ -9,13 +9,18 @@
 %% You can use the API operations to get information about AWS Health events
 %% that affect your AWS services and resources.
 %%
-%% You must have a Business or Enterprise support plan from AWS Support to
+%% You must have a Business or Enterprise Support plan from AWS Support to
 %% use the AWS Health API. If you call the AWS Health API from an AWS account
-%% that doesn't have a Business or Enterprise support plan, you receive a
+%% that doesn't have a Business or Enterprise Support plan, you receive a
 %% `SubscriptionRequiredException' error.
 %%
-%% AWS Health has a single endpoint: health.us-east-1.amazonaws.com (HTTPS).
-%% Use this endpoint to call the AWS Health API operations.
+%% You can use the AWS Health endpoint health.us-east-1.amazonaws.com (HTTPS)
+%% to call the AWS Health API operations. AWS Health supports a multi-Region
+%% application architecture and has two regional endpoints in an
+%% active-passive configuration. You can use the high availability endpoint
+%% example to determine which AWS Region is active, so that you can get the
+%% latest information from the API. For more information, see Accessing the
+%% AWS Health API in the AWS Health User Guide.
 %%
 %% For authentication of requests, AWS Health uses the Signature Version 4
 %% Signing Process.
@@ -181,10 +186,10 @@ describe_event_aggregates(Client, Input, Options)
 %% Information includes standard event data (AWS Region, service, and so on,
 %% as returned by DescribeEvents), a detailed event description, and possible
 %% additional metadata that depends upon the nature of the event. Affected
-%% entities are not included. To retrieve those, use the
+%% entities are not included. To retrieve the entities, use the
 %% DescribeAffectedEntities operation.
 %%
-%% If a specified event cannot be retrieved, an error message is returned for
+%% If a specified event can't be retrieved, an error message is returned for
 %% that event.
 %%
 %% This operation supports resource-level permissions. You can use this
@@ -199,32 +204,33 @@ describe_event_details(Client, Input, Options)
     request(Client, <<"DescribeEventDetails">>, Input, Options).
 
 %% @doc Returns detailed information about one or more specified events for
-%% one or more accounts in your organization.
+%% one or more AWS accounts in your organization.
 %%
-%% Information includes standard event data (AWS Region, service, and so on,
-%% as returned by DescribeEventsForOrganization), a detailed event
-%% description, and possible additional metadata that depends upon the nature
-%% of the event. Affected entities are not included; to retrieve those, use
-%% the DescribeAffectedEntitiesForOrganization operation.
+%% This information includes standard event data (such as the AWS Region and
+%% service), an event description, and (depending on the event) possible
+%% metadata. This operation doesn't return affected entities, such as the
+%% resources related to the event. To return affected entities, use the
+%% DescribeAffectedEntitiesForOrganization operation.
 %%
 %% Before you can call this operation, you must first enable AWS Health to
 %% work with AWS Organizations. To do this, call the
 %% EnableHealthServiceAccessForOrganization operation from your
 %% organization's management account.
 %%
-%% When you call the `DescribeEventDetailsForOrganization' operation, you
-%% specify the `organizationEventDetailFilters' object in the request.
-%% Depending on the AWS Health event type, note the following differences:
+%% When you call the `DescribeEventDetailsForOrganization' operation, specify
+%% the `organizationEventDetailFilters' object in the request. Depending on
+%% the AWS Health event type, note the following differences:
 %%
-%% <ul> <li> If the event is public, the `awsAccountId' parameter must be
-%% empty. If you specify an account ID for a public event, then an error
-%% message is returned. That's because the event might apply to all AWS
-%% accounts and isn't specific to an account in your organization.
+%% <ul> <li> To return event details for a public event, you must specify a
+%% null value for the `awsAccountId' parameter. If you specify an account ID
+%% for a public event, AWS Health returns an error message because public
+%% events aren't specific to an account.
 %%
-%% </li> <li> If the event is specific to an account, then you must specify
-%% the `awsAccountId' parameter in the request. If you don't specify an
-%% account ID, an error message returns because the event is specific to an
-%% AWS account in your organization.
+%% </li> <li> To return event details for an event that is specific to an
+%% account in your organization, you must specify the `awsAccountId'
+%% parameter in the request. If you don't specify an account ID, AWS Health
+%% returns an error message because the event is specific to an account in
+%% your organization.
 %%
 %% </li> </ul> For more information, see Event.
 %%
@@ -373,9 +379,9 @@ disable_health_service_access_for_organization(Client, Input, Options)
 %%
 %% To call this operation, you must meet the following requirements:
 %%
-%% You must have a Business or Enterprise support plan from AWS Support to
+%% You must have a Business or Enterprise Support plan from AWS Support to
 %% use the AWS Health API. If you call the AWS Health API from an AWS account
-%% that doesn't have a Business or Enterprise support plan, you receive a
+%% that doesn't have a Business or Enterprise Support plan, you receive a
 %% `SubscriptionRequiredException' error.
 %%
 %% You must have permission to call this operation from the organization's

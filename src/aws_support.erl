@@ -3,17 +3,17 @@
 
 %% @doc AWS Support
 %%
-%% The AWS Support API reference is intended for programmers who need
+%% The AWS Support API Reference is intended for programmers who need
 %% detailed information about the AWS Support operations and data types.
 %%
-%% This service enables you to manage your AWS Support cases
-%% programmatically. It uses HTTP methods that return results in JSON format.
+%% You can use the API to manage your support cases programmatically. The AWS
+%% Support API uses HTTP methods that return results in JSON format.
 %%
-%% You must have a Business or Enterprise support plan to use the AWS Support
+%% You must have a Business or Enterprise Support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException'
+%% Business or Enterprise Support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 %%
@@ -24,17 +24,17 @@
 %%
 %% The following list describes the AWS Support case management operations:
 %%
-%% <ul> <li> Service names, issue categories, and available severity levels.
+%% <ul> <li> Service names, issue categories, and available severity levels -
 %% The `DescribeServices' and `DescribeSeverityLevels' operations return AWS
 %% service names, service codes, service categories, and problem severity
 %% levels. You use these values when you call the `CreateCase' operation.
 %%
-%% </li> <li> Case creation, case details, and case resolution. The
+%% </li> <li> Case creation, case details, and case resolution - The
 %% `CreateCase', `DescribeCases', `DescribeAttachment', and `ResolveCase'
 %% operations create AWS Support cases, retrieve information about cases, and
 %% resolve cases.
 %%
-%% </li> <li> Case communication. The `DescribeCommunications',
+%% </li> <li> Case communication - The `DescribeCommunications',
 %% `AddCommunicationToCase', and `AddAttachmentsToSet' operations retrieve
 %% and add communications and attachments to AWS Support cases.
 %%
@@ -109,11 +109,11 @@
 %% created. The `expiryTime' returned in the response is when the set
 %% expires.
 %%
-%% You must have a Business or Enterprise support plan to use the AWS Support
+%% You must have a Business or Enterprise Support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException'
+%% Business or Enterprise Support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 add_attachments_to_set(Client, Input)
@@ -130,11 +130,11 @@ add_attachments_to_set(Client, Input, Options)
 %% communication by using the `ccEmailAddresses' parameter. The
 %% `communicationBody' value contains the text of the communication.
 %%
-%% You must have a Business or Enterprise support plan to use the AWS Support
+%% You must have a Business or Enterprise Support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException'
+%% Business or Enterprise Support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 add_communication_to_case(Client, Input)
@@ -165,11 +165,11 @@ add_communication_to_case(Client, Input, Options)
 %% The `caseId' is separate from the `displayId' that appears in the AWS
 %% Support Center. Use the `DescribeCases' operation to get the `displayId'.
 %%
-%% You must have a Business or Enterprise support plan to use the AWS Support
+%% You must have a Business or Enterprise Support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException'
+%% Business or Enterprise Support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 create_case(Client, Input)
@@ -187,11 +187,11 @@ create_case(Client, Input, Options)
 %% Attachment IDs are returned in the `AttachmentDetails' objects that are
 %% returned by the `DescribeCommunications' operation.
 %%
-%% You must have a Business or Enterprise support plan to use the AWS Support
+%% You must have a Business or Enterprise Support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException'
+%% Business or Enterprise Support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 describe_attachment(Client, Input)
@@ -219,11 +219,11 @@ describe_attachment(Client, Input, Options)
 %% </li> </ul> Case data is available for 12 months after creation. If a case
 %% was created more than 12 months ago, a request might return an error.
 %%
-%% You must have a Business or Enterprise support plan to use the AWS Support
+%% You must have a Business or Enterprise Support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException'
+%% Business or Enterprise Support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 describe_cases(Client, Input)
@@ -246,11 +246,11 @@ describe_cases(Client, Input, Options)
 %% you want to display on each page, and use `nextToken' to specify the
 %% resumption of pagination.
 %%
-%% You must have a Business or Enterprise support plan to use the AWS Support
+%% You must have a Business or Enterprise Support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException'
+%% Business or Enterprise Support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 describe_communications(Client, Input)
@@ -274,11 +274,11 @@ describe_communications(Client, Input, Options)
 %% returns, so that you have the most recent set of service and category
 %% codes.
 %%
-%% You must have a Business or Enterprise support plan to use the AWS Support
+%% You must have a Business or Enterprise Support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException'
+%% Business or Enterprise Support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 describe_services(Client, Input)
@@ -288,17 +288,17 @@ describe_services(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServices">>, Input, Options).
 
-%% @doc Returns the list of severity levels that you can assign to an AWS
-%% Support case.
+%% @doc Returns the list of severity levels that you can assign to a support
+%% case.
 %%
 %% The severity level for a case is also a field in the `CaseDetails' data
 %% type that you include for a `CreateCase' request.
 %%
-%% You must have a Business or Enterprise support plan to use the AWS Support
+%% You must have a Business or Enterprise Support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException'
+%% Business or Enterprise Support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 describe_severity_levels(Client, Input)
@@ -319,11 +319,11 @@ describe_severity_levels(Client, Input, Options)
 %% operation. If you call this operation for these checks, you might see an
 %% `InvalidParameterValue' error.
 %%
-%% You must have a Business or Enterprise support plan to use the AWS Support
+%% You must have a Business or Enterprise Support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException'
+%% Business or Enterprise Support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 describe_trusted_advisor_check_refresh_statuses(Client, Input)
@@ -350,18 +350,18 @@ describe_trusted_advisor_check_refresh_statuses(Client, Input, Options)
 %%
 %% </li> </ul> In addition, the response contains these fields:
 %%
-%% <ul> <li> status - The alert status of the check: "ok" (green), "warning"
-%% (yellow), "error" (red), or "not_available".
+%% <ul> <li> status - The alert status of the check can be `ok' (green),
+%% `warning' (yellow), `error' (red), or `not_available'.
 %%
 %% </li> <li> timestamp - The time of the last refresh of the check.
 %%
 %% </li> <li> checkId - The unique identifier for the check.
 %%
-%% </li> </ul> You must have a Business or Enterprise support plan to use the
+%% </li> </ul> You must have a Business or Enterprise Support plan to use the
 %% AWS Support API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException'
+%% Business or Enterprise Support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 describe_trusted_advisor_check_result(Client, Input)
@@ -379,11 +379,11 @@ describe_trusted_advisor_check_result(Client, Input, Options)
 %%
 %% The response contains an array of `TrustedAdvisorCheckSummary' objects.
 %%
-%% You must have a Business or Enterprise support plan to use the AWS Support
+%% You must have a Business or Enterprise Support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException'
+%% Business or Enterprise Support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 describe_trusted_advisor_check_summaries(Client, Input)
@@ -401,13 +401,17 @@ describe_trusted_advisor_check_summaries(Client, Input, Options)
 %% `TrustedAdvisorCheckDescription' object for each check. You must set the
 %% AWS Region to us-east-1.
 %%
-%% You must have a Business or Enterprise support plan to use the AWS Support
+%% You must have a Business or Enterprise Support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException'
+%% Business or Enterprise Support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
+%%
+%% The names and descriptions for Trusted Advisor checks are subject to
+%% change. We recommend that you specify the check ID in your code to
+%% uniquely identify a check.
 describe_trusted_advisor_checks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trusted_advisor_checks(Client, Input, []).
@@ -427,11 +431,11 @@ describe_trusted_advisor_checks(Client, Input, Options)
 %%
 %% The response contains a `TrustedAdvisorCheckRefreshStatus' object.
 %%
-%% You must have a Business or Enterprise support plan to use the AWS Support
+%% You must have a Business or Enterprise Support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException'
+%% Business or Enterprise Support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 refresh_trusted_advisor_check(Client, Input)
@@ -446,11 +450,11 @@ refresh_trusted_advisor_check(Client, Input, Options)
 %% This operation takes a `caseId' and returns the initial and final state of
 %% the case.
 %%
-%% You must have a Business or Enterprise support plan to use the AWS Support
+%% You must have a Business or Enterprise Support plan to use the AWS Support
 %% API.
 %%
 %% If you call the AWS Support API from an account that does not have a
-%% Business or Enterprise support plan, the `SubscriptionRequiredException'
+%% Business or Enterprise Support plan, the `SubscriptionRequiredException'
 %% error message appears. For information about changing your support plan,
 %% see AWS Support.
 resolve_case(Client, Input)

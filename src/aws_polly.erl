@@ -40,7 +40,8 @@
 %% API
 %%====================================================================
 
-%% @doc Deletes the specified pronunciation lexicon stored in an AWS Region.
+%% @doc Deletes the specified pronunciation lexicon stored in an Amazon Web
+%% Services Region.
 %%
 %% A lexicon which has been deleted is not available for speech synthesis,
 %% nor is it possible to retrieve it using either the `GetLexicon' or
@@ -120,7 +121,7 @@ describe_voices(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the content of the specified pronunciation lexicon stored in
-%% an AWS Region.
+%% an Amazon Web Services Region.
 %%
 %% For more information, see Managing Lexicons.
 get_lexicon(Client, Name)
@@ -172,7 +173,8 @@ get_speech_synthesis_task(Client, TaskId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of pronunciation lexicons stored in an AWS Region.
+%% @doc Returns a list of pronunciation lexicons stored in an Amazon Web
+%% Services Region.
 %%
 %% For more information, see Managing Lexicons.
 list_lexicons(Client)
@@ -234,7 +236,7 @@ list_speech_synthesis_tasks(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Stores a pronunciation lexicon in an AWS Region.
+%% @doc Stores a pronunciation lexicon in an Amazon Web Services Region.
 %%
 %% If a lexicon with the same name already exists in the region, it is
 %% overwritten by the new lexicon. Lexicon operations have eventual
@@ -270,9 +272,11 @@ put_lexicon(Client, Name, Input0, Options0) ->
 %% This operation requires all the standard information needed for speech
 %% synthesis, plus the name of an Amazon S3 bucket for the service to store
 %% the output of the synthesis task and two optional parameters
-%% (OutputS3KeyPrefix and SnsTopicArn). Once the synthesis task is created,
-%% this operation will return a SpeechSynthesisTask object, which will
-%% include an identifier of this task as well as the current status.
+%% (`OutputS3KeyPrefix' and `SnsTopicArn'). Once the synthesis task is
+%% created, this operation will return a `SpeechSynthesisTask' object, which
+%% will include an identifier of this task as well as the current status. The
+%% `SpeechSynthesisTask' object is available for 72 hours after starting the
+%% asynchronous synthesis task.
 start_speech_synthesis_task(Client, Input) ->
     start_speech_synthesis_task(Client, Input, []).
 start_speech_synthesis_task(Client, Input0, Options0) ->
@@ -375,6 +379,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

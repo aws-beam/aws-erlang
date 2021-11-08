@@ -32,6 +32,8 @@
          delete_predictor/3,
          delete_predictor_backtest_export_job/2,
          delete_predictor_backtest_export_job/3,
+         delete_resource_tree/2,
+         delete_resource_tree/3,
          describe_dataset/2,
          describe_dataset/3,
          describe_dataset_group/2,
@@ -405,6 +407,37 @@ delete_predictor_backtest_export_job(Client, Input)
 delete_predictor_backtest_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePredictorBacktestExportJob">>, Input, Options).
+
+%% @doc Deletes an entire resource tree.
+%%
+%% This operation will delete the parent resource and its child resources.
+%%
+%% Child resources are resources that were created from another resource. For
+%% example, when a forecast is generated from a predictor, the forecast is
+%% the child resource and the predictor is the parent resource.
+%%
+%% Amazon Forecast resources possess the following parent-child resource
+%% hierarchies:
+%%
+%% <ul> <li> Dataset: dataset import jobs
+%%
+%% </li> <li> Dataset Group: predictors, predictor backtest export jobs,
+%% forecasts, forecast export jobs
+%%
+%% </li> <li> Predictor: predictor backtest export jobs, forecasts, forecast
+%% export jobs
+%%
+%% </li> <li> Forecast: forecast export jobs
+%%
+%% </li> </ul> `DeleteResourceTree' will only delete Amazon Forecast
+%% resources, and will not delete datasets or exported files stored in Amazon
+%% S3.
+delete_resource_tree(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_resource_tree(Client, Input, []).
+delete_resource_tree(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteResourceTree">>, Input, Options).
 
 %% @doc Describes an Amazon Forecast dataset created using the
 %% `CreateDataset' operation.

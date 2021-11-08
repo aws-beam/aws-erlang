@@ -79,6 +79,12 @@
          get_intents/1,
          get_intents/3,
          get_intents/4,
+         get_migration/2,
+         get_migration/4,
+         get_migration/5,
+         get_migrations/1,
+         get_migrations/3,
+         get_migrations/4,
          get_slot_type/3,
          get_slot_type/5,
          get_slot_type/6,
@@ -104,6 +110,8 @@
          put_slot_type/4,
          start_import/2,
          start_import/3,
+         start_migration/2,
+         start_migration/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -999,6 +1007,65 @@ get_intents(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Provides details about an ongoing or complete migration from an
+%% Amazon Lex V1 bot to an Amazon Lex V2 bot.
+%%
+%% Use this operation to view the migration alerts and warnings related to
+%% the migration.
+get_migration(Client, MigrationId)
+  when is_map(Client) ->
+    get_migration(Client, MigrationId, #{}, #{}).
+
+get_migration(Client, MigrationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_migration(Client, MigrationId, QueryMap, HeadersMap, []).
+
+get_migration(Client, MigrationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/migrations/", aws_util:encode_uri(MigrationId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a list of migrations between Amazon Lex V1 and Amazon Lex V2.
+get_migrations(Client)
+  when is_map(Client) ->
+    get_migrations(Client, #{}, #{}).
+
+get_migrations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_migrations(Client, QueryMap, HeadersMap, []).
+
+get_migrations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/migrations"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"migrationStatusEquals">>, maps:get(<<"migrationStatusEquals">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"sortByAttribute">>, maps:get(<<"sortByAttribute">>, QueryMap, undefined)},
+        {<<"sortByOrder">>, maps:get(<<"sortByOrder">>, QueryMap, undefined)},
+        {<<"v1BotNameContains">>, maps:get(<<"v1BotNameContains">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns information about a specific version of a slot type.
 %%
 %% In addition to specifying the slot type name, you must specify the slot
@@ -1127,9 +1194,9 @@ get_slot_types(Client, QueryMap, HeadersMap, Options0)
 %% by the bot in the last 15 days. The response contains information about a
 %% maximum of 100 utterances for each version.
 %%
-%% If you set `childDirected' field to true when you created your bot, or if
-%% you opted out of participating in improving Amazon Lex, utterances are not
-%% available.
+%% If you set `childDirected' field to true when you created your bot, if you
+%% are using slot obfuscation with one or more slots, or if you opted out of
+%% participating in improving Amazon Lex, utterances are not available.
 %%
 %% This operation requires permissions for the `lex:GetUtterancesView'
 %% action.
@@ -1390,6 +1457,35 @@ start_import(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts migrating a bot from Amazon Lex V1 to Amazon Lex V2.
+%%
+%% Migrate your bot when you want to take advantage of the new features of
+%% Amazon Lex V2.
+%%
+%% For more information, see Migrating a bot in the Amazon Lex developer
+%% guide.
+start_migration(Client, Input) ->
+    start_migration(Client, Input, []).
+start_migration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/migrations"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Adds the specified tags to the specified resource.
 %%
 %% If a tag key already exists, the existing value is replaced with the new
@@ -1475,6 +1571,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

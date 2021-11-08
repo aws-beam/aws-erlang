@@ -7,12 +7,11 @@
 %% EC2 instances based on user-defined scaling policies, scheduled actions,
 %% and health checks.
 %%
-%% Use this service with AWS Auto Scaling, Amazon CloudWatch, and Elastic
-%% Load Balancing.
-%%
-%% For more information, including information about granting IAM users
-%% required permissions for Amazon EC2 Auto Scaling actions, see the Amazon
-%% EC2 Auto Scaling User Guide.
+%% For more information about Amazon EC2 Auto Scaling, see the Amazon EC2
+%% Auto Scaling User Guide. For information about granting IAM users required
+%% permissions for calls to Amazon EC2 Auto Scaling, see Granting IAM users
+%% required permissions for Amazon EC2 Auto Scaling resources in the Amazon
+%% EC2 Auto Scaling API Reference.
 -module(aws_auto_scaling).
 
 -export([attach_instances/2,
@@ -49,6 +48,8 @@
          delete_scheduled_action/3,
          delete_tags/2,
          delete_tags/3,
+         delete_warm_pool/2,
+         delete_warm_pool/3,
          describe_account_limits/2,
          describe_account_limits/3,
          describe_adjustment_types/2,
@@ -87,6 +88,8 @@
          describe_tags/3,
          describe_termination_policy_types/2,
          describe_termination_policy_types/3,
+         describe_warm_pool/2,
+         describe_warm_pool/3,
          detach_instances/2,
          detach_instances/3,
          detach_load_balancer_target_groups/2,
@@ -103,6 +106,8 @@
          execute_policy/3,
          exit_standby/2,
          exit_standby/3,
+         get_predictive_scaling_forecast/2,
+         get_predictive_scaling_forecast/3,
          put_lifecycle_hook/2,
          put_lifecycle_hook/3,
          put_notification_configuration/2,
@@ -111,6 +116,8 @@
          put_scaling_policy/3,
          put_scheduled_update_group_action/2,
          put_scheduled_update_group_action/3,
+         put_warm_pool/2,
+         put_warm_pool/3,
          record_lifecycle_action_heartbeat/2,
          record_lifecycle_action_heartbeat/3,
          resume_processes/2,
@@ -218,9 +225,6 @@ batch_delete_scheduled_action(Client, Input, Options)
 
 %% @doc Creates or updates one or more scheduled scaling actions for an Auto
 %% Scaling group.
-%%
-%% If you leave a parameter unspecified when updating a scheduled scaling
-%% action, the corresponding value remains unchanged.
 batch_put_scheduled_update_group_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_put_scheduled_update_group_action(Client, Input, []).
@@ -233,8 +237,9 @@ batch_put_scheduled_update_group_action(Client, Input, Options)
 %% Cancellation does not roll back any replacements that have already been
 %% completed, but it prevents new replacements from being started.
 %%
-%% For more information, see Replacing Auto Scaling Instances Based on an
-%% Instance Refresh.
+%% This operation is part of the instance refresh feature in Amazon EC2 Auto
+%% Scaling, which helps you update instances in your Auto Scaling group after
+%% you make configuration changes.
 cancel_instance_refresh(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_instance_refresh(Client, Input, []).
@@ -421,11 +426,25 @@ delete_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTags">>, Input, Options).
 
-%% @doc Describes the current Amazon EC2 Auto Scaling resource quotas for
-%% your AWS account.
+%% @doc Deletes the warm pool for the specified Auto Scaling group.
 %%
-%% For information about requesting an increase, see Amazon EC2 Auto Scaling
-%% service quotas in the Amazon EC2 Auto Scaling User Guide.
+%% For more information, see Warm pools for Amazon EC2 Auto Scaling in the
+%% Amazon EC2 Auto Scaling User Guide.
+delete_warm_pool(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_warm_pool(Client, Input, []).
+delete_warm_pool(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteWarmPool">>, Input, Options).
+
+%% @doc Describes the current Amazon EC2 Auto Scaling resource quotas for
+%% your account.
+%%
+%% When you establish an Amazon Web Services account, the account has initial
+%% quotas on the maximum number of Auto Scaling groups and launch
+%% configurations that you can create in a given Region. For more
+%% information, see Amazon EC2 Auto Scaling service quotas in the Amazon EC2
+%% Auto Scaling User Guide.
 describe_account_limits(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_account_limits(Client, Input, []).
@@ -433,19 +452,16 @@ describe_account_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountLimits">>, Input, Options).
 
-%% @doc Describes the available adjustment types for Amazon EC2 Auto Scaling
+%% @doc Describes the available adjustment types for step scaling and simple
 %% scaling policies.
-%%
-%% These settings apply to step scaling policies and simple scaling policies;
-%% they do not apply to target tracking scaling policies.
 %%
 %% The following adjustment types are supported:
 %%
-%% <ul> <li> ChangeInCapacity
+%% <ul> <li> `ChangeInCapacity'
 %%
-%% </li> <li> ExactCapacity
+%% </li> <li> `ExactCapacity'
 %%
-%% </li> <li> PercentChangeInCapacity
+%% </li> <li> `PercentChangeInCapacity'
 %%
 %% </li> </ul>
 describe_adjustment_types(Client, Input)
@@ -455,7 +471,18 @@ describe_adjustment_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAdjustmentTypes">>, Input, Options).
 
-%% @doc Describes one or more Auto Scaling groups.
+%% @doc Gets information about the Auto Scaling groups in the account and
+%% Region.
+%%
+%% If you specify Auto Scaling group names, the output includes information
+%% for only the specified Auto Scaling groups. If you specify filters, the
+%% output includes information for only those Auto Scaling groups that meet
+%% the filter criteria. If you do not specify group names or filters, the
+%% output includes information for all Auto Scaling groups.
+%%
+%% This operation also returns information about instances in Auto Scaling
+%% groups. To retrieve information about the instances in a warm pool, you
+%% must call the `DescribeWarmPool' API.
 describe_auto_scaling_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_scaling_groups(Client, Input, []).
@@ -463,7 +490,8 @@ describe_auto_scaling_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutoScalingGroups">>, Input, Options).
 
-%% @doc Describes one or more Auto Scaling instances.
+%% @doc Gets information about the Auto Scaling instances in the account and
+%% Region.
 describe_auto_scaling_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_scaling_instances(Client, Input, []).
@@ -480,10 +508,20 @@ describe_auto_scaling_notification_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutoScalingNotificationTypes">>, Input, Options).
 
-%% @doc Describes one or more instance refreshes.
+%% @doc Gets information about the instance refreshes for the specified Auto
+%% Scaling group.
 %%
-%% You can determine the status of a request by looking at the `Status'
-%% parameter. The following are the possible statuses:
+%% This operation is part of the instance refresh feature in Amazon EC2 Auto
+%% Scaling, which helps you update instances in your Auto Scaling group after
+%% you make configuration changes.
+%%
+%% To help you determine the status of an instance refresh, this operation
+%% returns information about the instance refreshes you previously initiated,
+%% including their status, end time, the percentage of the instance refresh
+%% that is complete, and the number of instances remaining to update before
+%% the instance refresh is complete.
+%%
+%% The following are the possible statuses:
 %%
 %% <ul> <li> `Pending' - The request was created, but the operation has not
 %% started.
@@ -501,8 +539,7 @@ describe_auto_scaling_notification_types(Client, Input, Options)
 %%
 %% </li> <li> `Cancelled' - The operation is cancelled.
 %%
-%% </li> </ul> For more information, see Replacing Auto Scaling Instances
-%% Based on an Instance Refresh.
+%% </li> </ul>
 describe_instance_refreshes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_refreshes(Client, Input, []).
@@ -510,7 +547,8 @@ describe_instance_refreshes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstanceRefreshes">>, Input, Options).
 
-%% @doc Describes one or more launch configurations.
+%% @doc Gets information about the launch configurations in the account and
+%% Region.
 describe_launch_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_launch_configurations(Client, Input, []).
@@ -522,9 +560,9 @@ describe_launch_configurations(Client, Input, Options)
 %%
 %% The following hook types are supported:
 %%
-%% <ul> <li> autoscaling:EC2_INSTANCE_LAUNCHING
+%% <ul> <li> `autoscaling:EC2_INSTANCE_LAUNCHING'
 %%
-%% </li> <li> autoscaling:EC2_INSTANCE_TERMINATING
+%% </li> <li> `autoscaling:EC2_INSTANCE_TERMINATING'
 %%
 %% </li> </ul>
 describe_lifecycle_hook_types(Client, Input)
@@ -534,7 +572,8 @@ describe_lifecycle_hook_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLifecycleHookTypes">>, Input, Options).
 
-%% @doc Describes the lifecycle hooks for the specified Auto Scaling group.
+%% @doc Gets information about the lifecycle hooks for the specified Auto
+%% Scaling group.
 describe_lifecycle_hooks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_lifecycle_hooks(Client, Input, []).
@@ -542,7 +581,31 @@ describe_lifecycle_hooks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLifecycleHooks">>, Input, Options).
 
-%% @doc Describes the target groups for the specified Auto Scaling group.
+%% @doc Gets information about the load balancer target groups for the
+%% specified Auto Scaling group.
+%%
+%% To determine the availability of registered instances, use the `State'
+%% element in the response. When you attach a target group to an Auto Scaling
+%% group, the initial `State' value is `Adding'. The state transitions to
+%% `Added' after all Auto Scaling instances are registered with the target
+%% group. If Elastic Load Balancing health checks are enabled for the Auto
+%% Scaling group, the state transitions to `InService' after at least one
+%% Auto Scaling instance passes the health check. When the target group is in
+%% the `InService' state, Amazon EC2 Auto Scaling can terminate and replace
+%% any instances that are reported as unhealthy. If no registered instances
+%% pass the health checks, the target group doesn't enter the `InService'
+%% state.
+%%
+%% Target groups also have an `InService' state if you attach them in the
+%% `CreateAutoScalingGroup' API call. If your target group state is
+%% `InService', but it is not working properly, check the scaling activities
+%% by calling `DescribeScalingActivities' and take any corrective actions
+%% necessary.
+%%
+%% For help with failed health checks, see Troubleshooting Amazon EC2 Auto
+%% Scaling: Health checks in the Amazon EC2 Auto Scaling User Guide. For more
+%% information, see Elastic Load Balancing and Amazon EC2 Auto Scaling in the
+%% Amazon EC2 Auto Scaling User Guide.
 describe_load_balancer_target_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancer_target_groups(Client, Input, []).
@@ -550,11 +613,35 @@ describe_load_balancer_target_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLoadBalancerTargetGroups">>, Input, Options).
 
-%% @doc Describes the load balancers for the specified Auto Scaling group.
+%% @doc Gets information about the load balancers for the specified Auto
+%% Scaling group.
 %%
 %% This operation describes only Classic Load Balancers. If you have
 %% Application Load Balancers, Network Load Balancers, or Gateway Load
 %% Balancers, use the `DescribeLoadBalancerTargetGroups' API instead.
+%%
+%% To determine the availability of registered instances, use the `State'
+%% element in the response. When you attach a load balancer to an Auto
+%% Scaling group, the initial `State' value is `Adding'. The state
+%% transitions to `Added' after all Auto Scaling instances are registered
+%% with the load balancer. If Elastic Load Balancing health checks are
+%% enabled for the Auto Scaling group, the state transitions to `InService'
+%% after at least one Auto Scaling instance passes the health check. When the
+%% load balancer is in the `InService' state, Amazon EC2 Auto Scaling can
+%% terminate and replace any instances that are reported as unhealthy. If no
+%% registered instances pass the health checks, the load balancer doesn't
+%% enter the `InService' state.
+%%
+%% Load balancers also have an `InService' state if you attach them in the
+%% `CreateAutoScalingGroup' API call. If your load balancer state is
+%% `InService', but it is not working properly, check the scaling activities
+%% by calling `DescribeScalingActivities' and take any corrective actions
+%% necessary.
+%%
+%% For help with failed health checks, see Troubleshooting Amazon EC2 Auto
+%% Scaling: Health checks in the Amazon EC2 Auto Scaling User Guide. For more
+%% information, see Elastic Load Balancing and Amazon EC2 Auto Scaling in the
+%% Amazon EC2 Auto Scaling User Guide.
 describe_load_balancers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancers(Client, Input, []).
@@ -575,8 +662,8 @@ describe_metric_collection_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMetricCollectionTypes">>, Input, Options).
 
-%% @doc Describes the notification actions associated with the specified Auto
-%% Scaling group.
+%% @doc Gets information about the Amazon SNS notifications that are
+%% configured for one or more Auto Scaling groups.
 describe_notification_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_notification_configurations(Client, Input, []).
@@ -584,7 +671,8 @@ describe_notification_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNotificationConfigurations">>, Input, Options).
 
-%% @doc Describes the policies for the specified Auto Scaling group.
+%% @doc Gets information about the scaling policies in the account and
+%% Region.
 describe_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_policies(Client, Input, []).
@@ -592,14 +680,19 @@ describe_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePolicies">>, Input, Options).
 
-%% @doc Describes one or more scaling activities for the specified Auto
-%% Scaling group.
+%% @doc Gets information about the scaling activities in the account and
+%% Region.
 %%
-%% To view the scaling activities from the Amazon EC2 Auto Scaling console,
-%% choose the Activity tab of the Auto Scaling group. When scaling events
-%% occur, you see scaling activity messages in the Activity history. For more
-%% information, see Verifying a scaling activity for an Auto Scaling group in
-%% the Amazon EC2 Auto Scaling User Guide.
+%% When scaling events occur, you see a record of the scaling activity in the
+%% scaling activities. For more information, see Verifying a scaling activity
+%% for an Auto Scaling group in the Amazon EC2 Auto Scaling User Guide.
+%%
+%% If the scaling event succeeds, the value of the `StatusCode' element in
+%% the response is `Successful'. If an attempt to launch instances failed,
+%% the `StatusCode' value is `Failed' or `Cancelled' and the `StatusMessage'
+%% element in the response indicates the cause of the failure. For help
+%% interpreting the `StatusMessage', see Troubleshooting Amazon EC2 Auto
+%% Scaling in the Amazon EC2 Auto Scaling User Guide.
 describe_scaling_activities(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_activities(Client, Input, []).
@@ -616,11 +709,11 @@ describe_scaling_process_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScalingProcessTypes">>, Input, Options).
 
-%% @doc Describes the actions scheduled for your Auto Scaling group that
-%% haven't run or that have not reached their end time.
+%% @doc Gets information about the scheduled actions that haven't run or that
+%% have not reached their end time.
 %%
-%% To describe the actions that have already run, call the
-%% `DescribeScalingActivities' API.
+%% To describe the scaling activities for scheduled actions that have already
+%% run, call the `DescribeScalingActivities' API.
 describe_scheduled_actions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scheduled_actions(Client, Input, []).
@@ -659,6 +752,17 @@ describe_termination_policy_types(Client, Input)
 describe_termination_policy_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTerminationPolicyTypes">>, Input, Options).
+
+%% @doc Gets information about a warm pool and its instances.
+%%
+%% For more information, see Warm pools for Amazon EC2 Auto Scaling in the
+%% Amazon EC2 Auto Scaling User Guide.
+describe_warm_pool(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_warm_pool(Client, Input, []).
+describe_warm_pool(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeWarmPool">>, Input, Options).
 
 %% @doc Removes one or more instances from the specified Auto Scaling group.
 %%
@@ -772,6 +876,26 @@ exit_standby(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExitStandby">>, Input, Options).
 
+%% @doc Retrieves the forecast data for a predictive scaling policy.
+%%
+%% Load forecasts are predictions of the hourly load values using historical
+%% load data from CloudWatch and an analysis of historical trends. Capacity
+%% forecasts are represented as predicted values for the minimum capacity
+%% that is needed on an hourly basis, based on the hourly load forecast.
+%%
+%% A minimum of 24 hours of data is required to create the initial forecasts.
+%% However, having a full 14 days of historical data results in more accurate
+%% forecasts.
+%%
+%% For more information, see Predictive scaling for Amazon EC2 Auto Scaling
+%% in the Amazon EC2 Auto Scaling User Guide.
+get_predictive_scaling_forecast(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_predictive_scaling_forecast(Client, Input, []).
+get_predictive_scaling_forecast(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetPredictiveScalingForecast">>, Input, Options).
+
 %% @doc Creates or updates a lifecycle hook for the specified Auto Scaling
 %% group.
 %%
@@ -839,9 +963,21 @@ put_notification_configuration(Client, Input, Options)
 
 %% @doc Creates or updates a scaling policy for an Auto Scaling group.
 %%
-%% For more information about using scaling policies to scale your Auto
-%% Scaling group, see Target tracking scaling policies and Step and simple
-%% scaling policies in the Amazon EC2 Auto Scaling User Guide.
+%% Scaling policies are used to scale an Auto Scaling group based on
+%% configurable metrics. If no policies are defined, the dynamic scaling and
+%% predictive scaling features are not used.
+%%
+%% For more information about using dynamic scaling, see Target tracking
+%% scaling policies and Step and simple scaling policies in the Amazon EC2
+%% Auto Scaling User Guide.
+%%
+%% For more information about using predictive scaling, see Predictive
+%% scaling for Amazon EC2 Auto Scaling in the Amazon EC2 Auto Scaling User
+%% Guide.
+%%
+%% You can view the scaling policies for an Auto Scaling group using the
+%% `DescribePolicies' API call. If you are no longer using a scaling policy,
+%% you can delete it by calling the `DeletePolicy' API.
 put_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_scaling_policy(Client, Input, []).
@@ -852,17 +988,42 @@ put_scaling_policy(Client, Input, Options)
 %% @doc Creates or updates a scheduled scaling action for an Auto Scaling
 %% group.
 %%
-%% If you leave a parameter unspecified when updating a scheduled scaling
-%% action, the corresponding value remains unchanged.
-%%
 %% For more information, see Scheduled scaling in the Amazon EC2 Auto Scaling
 %% User Guide.
+%%
+%% You can view the scheduled actions for an Auto Scaling group using the
+%% `DescribeScheduledActions' API call. If you are no longer using a
+%% scheduled action, you can delete it by calling the `DeleteScheduledAction'
+%% API.
 put_scheduled_update_group_action(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_scheduled_update_group_action(Client, Input, []).
 put_scheduled_update_group_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutScheduledUpdateGroupAction">>, Input, Options).
+
+%% @doc Creates or updates a warm pool for the specified Auto Scaling group.
+%%
+%% A warm pool is a pool of pre-initialized EC2 instances that sits alongside
+%% the Auto Scaling group. Whenever your application needs to scale out, the
+%% Auto Scaling group can draw on the warm pool to meet its new desired
+%% capacity. For more information and example configurations, see Warm pools
+%% for Amazon EC2 Auto Scaling in the Amazon EC2 Auto Scaling User Guide.
+%%
+%% This operation must be called from the Region in which the Auto Scaling
+%% group was created. This operation cannot be called on an Auto Scaling
+%% group that has a mixed instances policy or a launch template or launch
+%% configuration that requests Spot Instances.
+%%
+%% You can view the instances in the warm pool using the `DescribeWarmPool'
+%% API call. If you are no longer using a warm pool, you can delete it by
+%% calling the `DeleteWarmPool' API.
+put_warm_pool(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_warm_pool(Client, Input, []).
+put_warm_pool(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutWarmPool">>, Input, Options).
 
 %% @doc Records a heartbeat for the lifecycle action associated with the
 %% specified token or instance.
@@ -891,8 +1052,8 @@ put_scheduled_update_group_action(Client, Input, Options)
 %% </li> <li> If you finish before the timeout period ends, complete the
 %% lifecycle action.
 %%
-%% </li> </ol> For more information, see Auto Scaling lifecycle in the Amazon
-%% EC2 Auto Scaling User Guide.
+%% </li> </ol> For more information, see Amazon EC2 Auto Scaling lifecycle
+%% hooks in the Amazon EC2 Auto Scaling User Guide.
 record_lifecycle_action_heartbeat(Client, Input)
   when is_map(Client), is_map(Input) ->
     record_lifecycle_action_heartbeat(Client, Input, []).
@@ -940,6 +1101,8 @@ set_instance_health(Client, Input, Options)
 
 %% @doc Updates the instance protection settings of the specified instances.
 %%
+%% This operation cannot be called on instances in a warm pool.
+%%
 %% For more information about preventing instances that are part of an Auto
 %% Scaling group from terminating on scale in, see Instance scale-in
 %% protection in the Amazon EC2 Auto Scaling User Guide.
@@ -953,19 +1116,26 @@ set_instance_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetInstanceProtection">>, Input, Options).
 
-%% @doc Starts a new instance refresh operation, which triggers a rolling
-%% replacement of all previously launched instances in the Auto Scaling group
-%% with a new group of instances.
+%% @doc Starts a new instance refresh operation.
 %%
-%% If successful, this call creates a new instance refresh request with a
+%% An instance refresh performs a rolling replacement of all or some
+%% instances in an Auto Scaling group. Each instance is terminated first and
+%% then replaced, which temporarily reduces the capacity available within
+%% your Auto Scaling group.
+%%
+%% This operation is part of the instance refresh feature in Amazon EC2 Auto
+%% Scaling, which helps you update instances in your Auto Scaling group. This
+%% feature is helpful, for example, when you have a new AMI or a new user
+%% data script. You just need to create a new launch template that specifies
+%% the new AMI or user data script. Then start an instance refresh to
+%% immediately begin the process of updating instances in the group.
+%%
+%% If the call succeeds, it creates a new instance refresh request with a
 %% unique ID that you can use to track its progress. To query its status,
 %% call the `DescribeInstanceRefreshes' API. To describe the instance
 %% refreshes that have already run, call the `DescribeInstanceRefreshes' API.
 %% To cancel an instance refresh operation in progress, use the
 %% `CancelInstanceRefresh' API.
-%%
-%% For more information, see Replacing Auto Scaling Instances Based on an
-%% Instance Refresh.
 start_instance_refresh(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_instance_refresh(Client, Input, []).
@@ -992,6 +1162,8 @@ suspend_processes(Client, Input, Options)
 
 %% @doc Terminates the specified instance and optionally adjusts the desired
 %% group size.
+%%
+%% This operation cannot be called on instances in a warm pool.
 %%
 %% This call simply makes a termination request. The instance is not
 %% terminated immediately. When an instance is terminated, the instance

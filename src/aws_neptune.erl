@@ -160,7 +160,7 @@
 %% API
 %%====================================================================
 
-%% @doc Associates an Identity and Access Management (IAM) role from an
+%% @doc Associates an Identity and Access Management (IAM) role with an
 %% Neptune DB cluster.
 add_role_to_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -334,7 +334,7 @@ create_db_parameter_group(Client, Input, Options)
 %% @doc Creates a new DB subnet group.
 %%
 %% DB subnet groups must contain at least one subnet in at least two AZs in
-%% the AWS Region.
+%% the Amazon Region.
 create_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_subnet_group(Client, Input, []).
@@ -509,15 +509,15 @@ describe_db_cluster_parameters(Client, Input, Options)
 %% @doc Returns a list of DB cluster snapshot attribute names and values for
 %% a manual DB cluster snapshot.
 %%
-%% When sharing snapshots with other AWS accounts,
+%% When sharing snapshots with other Amazon accounts,
 %% `DescribeDBClusterSnapshotAttributes' returns the `restore' attribute and
-%% a list of IDs for the AWS accounts that are authorized to copy or restore
-%% the manual DB cluster snapshot. If `all' is included in the list of values
-%% for the `restore' attribute, then the manual DB cluster snapshot is public
-%% and can be copied or restored by all AWS accounts.
+%% a list of IDs for the Amazon accounts that are authorized to copy or
+%% restore the manual DB cluster snapshot. If `all' is included in the list
+%% of values for the `restore' attribute, then the manual DB cluster snapshot
+%% is public and can be copied or restored by all Amazon accounts.
 %%
-%% To add or remove access for an AWS account to copy or restore a manual DB
-%% cluster snapshot, or to make the manual DB cluster snapshot public or
+%% To add or remove access for an Amazon account to copy or restore a manual
+%% DB cluster snapshot, or to make the manual DB cluster snapshot public or
 %% private, use the `ModifyDBClusterSnapshotAttribute' API action.
 describe_db_cluster_snapshot_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -762,19 +762,19 @@ modify_db_cluster_parameter_group(Client, Input, Options)
 %% @doc Adds an attribute and values to, or removes an attribute and values
 %% from, a manual DB cluster snapshot.
 %%
-%% To share a manual DB cluster snapshot with other AWS accounts, specify
+%% To share a manual DB cluster snapshot with other Amazon accounts, specify
 %% `restore' as the `AttributeName' and use the `ValuesToAdd' parameter to
-%% add a list of IDs of the AWS accounts that are authorized to restore the
-%% manual DB cluster snapshot. Use the value `all' to make the manual DB
+%% add a list of IDs of the Amazon accounts that are authorized to restore
+%% the manual DB cluster snapshot. Use the value `all' to make the manual DB
 %% cluster snapshot public, which means that it can be copied or restored by
-%% all AWS accounts. Do not add the `all' value for any manual DB cluster
+%% all Amazon accounts. Do not add the `all' value for any manual DB cluster
 %% snapshots that contain private information that you don't want available
-%% to all AWS accounts. If a manual DB cluster snapshot is encrypted, it can
-%% be shared, but only by specifying a list of authorized AWS account IDs for
-%% the `ValuesToAdd' parameter. You can't use `all' as a value for that
-%% parameter in this case.
+%% to all Amazon accounts. If a manual DB cluster snapshot is encrypted, it
+%% can be shared, but only by specifying a list of authorized Amazon account
+%% IDs for the `ValuesToAdd' parameter. You can't use `all' as a value for
+%% that parameter in this case.
 %%
-%% To view which AWS accounts have access to copy or restore a manual DB
+%% To view which Amazon accounts have access to copy or restore a manual DB
 %% cluster snapshot, or whether a manual DB cluster snapshot public or
 %% private, use the `DescribeDBClusterSnapshotAttributes' API action.
 modify_db_cluster_snapshot_attribute(Client, Input)
@@ -827,7 +827,7 @@ modify_db_parameter_group(Client, Input, Options)
 %% @doc Modifies an existing DB subnet group.
 %%
 %% DB subnet groups must contain at least one subnet in at least two AZs in
-%% the AWS Region.
+%% the Amazon Region.
 modify_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_subnet_group(Client, Input, []).
@@ -976,8 +976,8 @@ restore_db_cluster_to_point_in_time(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreDBClusterToPointInTime">>, Input, Options).
 
-%% @doc Starts an Amazon Neptune DB cluster that was stopped using the AWS
-%% console, the AWS CLI stop-db-cluster command, or the StopDBCluster API.
+%% @doc Starts an Amazon Neptune DB cluster that was stopped using the Amazon
+%% console, the Amazon CLI stop-db-cluster command, or the StopDBCluster API.
 start_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_db_cluster(Client, Input, []).

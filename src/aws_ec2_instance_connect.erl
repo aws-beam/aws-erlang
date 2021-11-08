@@ -1,13 +1,14 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS EC2 Connect Service is a service that enables system
-%% administrators to publish temporary SSH keys to their EC2 instances in
-%% order to establish connections to their instances without leaving a
-%% permanent authentication option.
+%% @doc Amazon EC2 Instance Connect enables system administrators to publish
+%% one-time use SSH public keys to EC2, providing users a simple and secure
+%% way to connect to their instances.
 -module(aws_ec2_instance_connect).
 
--export([send_ssh_public_key/2,
+-export([send_serial_console_ssh_public_key/2,
+         send_serial_console_ssh_public_key/3,
+         send_ssh_public_key/2,
          send_ssh_public_key/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
@@ -16,8 +17,23 @@
 %% API
 %%====================================================================
 
-%% @doc Pushes an SSH public key to a particular OS user on a given EC2
-%% instance for 60 seconds.
+%% @doc Pushes an SSH public key to the specified EC2 instance.
+%%
+%% The key remains for 60 seconds, which gives you 60 seconds to establish a
+%% serial console connection to the instance using SSH. For more information,
+%% see EC2 Serial Console in the Amazon EC2 User Guide.
+send_serial_console_ssh_public_key(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    send_serial_console_ssh_public_key(Client, Input, []).
+send_serial_console_ssh_public_key(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SendSerialConsoleSSHPublicKey">>, Input, Options).
+
+%% @doc Pushes an SSH public key to the specified EC2 instance for use by the
+%% specified user.
+%%
+%% The key remains for 60 seconds. For more information, see Connect to your
+%% Linux instance using EC2 Instance Connect in the Amazon EC2 User Guide.
 send_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_ssh_public_key(Client, Input, []).

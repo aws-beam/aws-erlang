@@ -4,23 +4,25 @@
 %% @doc This section provides documentation for the Amazon CodeGuru Profiler
 %% API operations.
 %%
-%% <p>Amazon CodeGuru Profiler collects runtime performance data from your
-%% live applications, and provides recommendations that can help you
-%% fine-tune your application performance. Using machine learning algorithms,
-%% CodeGuru Profiler can help you find your most expensive lines of code and
-%% suggest ways you can improve efficiency and remove CPU bottlenecks. </p>
-%% <p>Amazon CodeGuru Profiler provides different visualizations of profiling
+%% Amazon CodeGuru Profiler collects runtime performance data from your live
+%% applications, and provides recommendations that can help you fine-tune
+%% your application performance. Using machine learning algorithms, CodeGuru
+%% Profiler can help you find your most expensive lines of code and suggest
+%% ways you can improve efficiency and remove CPU bottlenecks.
+%%
+%% Amazon CodeGuru Profiler provides different visualizations of profiling
 %% data to help you identify what code is running on the CPU, see how much
-%% time is consumed, and suggest ways to reduce CPU utilization. </p> <note>
-%% <p>Amazon CodeGuru Profiler currently supports applications written in all
-%% Java virtual machine (JVM) languages. While CodeGuru Profiler supports
-%% both visualizations and recommendations for applications written in Java,
-%% it can also generate visualizations and a subset of recommendations for
-%% applications written in other JVM languages.</p> </note> <p> For more
-%% information, see <a
-%% href="https://docs.aws.amazon.com/codeguru/latest/profiler-ug/what-is-codeguru-profiler.html">What
-%% is Amazon CodeGuru Profiler</a> in the <i>Amazon CodeGuru Profiler User
-%% Guide</i>. </p>
+%% time is consumed, and suggest ways to reduce CPU utilization.
+%%
+%% Amazon CodeGuru Profiler currently supports applications written in all
+%% Java virtual machine (JVM) languages and Python. While CodeGuru Profiler
+%% supports both visualizations and recommendations for applications written
+%% in Java, it can also generate visualizations and a subset of
+%% recommendations for applications written in other JVM languages and
+%% Python.
+%%
+%% For more information, see What is Amazon CodeGuru Profiler in the Amazon
+%% CodeGuru Profiler User Guide.
 -module(aws_codeguruprofiler).
 
 -export([add_notification_channels/3,
@@ -140,7 +142,7 @@ batch_get_frame_metric_data(Client, ProfilingGroupName, Input0, Options0) ->
 %% @doc Used by profiler agents to report their current state and to receive
 %% remote configuration updates.
 %%
-%% For example, `ConfigureAgent' can be used to tell and agent whether to
+%% For example, `ConfigureAgent' can be used to tell an agent whether to
 %% profile or not and for how long to return profiling data.
 configure_agent(Client, ProfilingGroupName, Input) ->
     configure_agent(Client, ProfilingGroupName, Input, []).
@@ -811,6 +813,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

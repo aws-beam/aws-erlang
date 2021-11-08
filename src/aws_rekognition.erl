@@ -8,6 +8,8 @@
          compare_faces/3,
          create_collection/2,
          create_collection/3,
+         create_dataset/2,
+         create_dataset/3,
          create_project/2,
          create_project/3,
          create_project_version/2,
@@ -16,6 +18,8 @@
          create_stream_processor/3,
          delete_collection/2,
          delete_collection/3,
+         delete_dataset/2,
+         delete_dataset/3,
          delete_faces/2,
          delete_faces/3,
          delete_project/2,
@@ -26,6 +30,8 @@
          delete_stream_processor/3,
          describe_collection/2,
          describe_collection/3,
+         describe_dataset/2,
+         describe_dataset/3,
          describe_project_versions/2,
          describe_project_versions/3,
          describe_projects/2,
@@ -44,6 +50,8 @@
          detect_protective_equipment/3,
          detect_text/2,
          detect_text/3,
+         distribute_dataset_entries/2,
+         distribute_dataset_entries/3,
          get_celebrity_info/2,
          get_celebrity_info/3,
          get_celebrity_recognition/2,
@@ -66,10 +74,16 @@
          index_faces/3,
          list_collections/2,
          list_collections/3,
+         list_dataset_entries/2,
+         list_dataset_entries/3,
+         list_dataset_labels/2,
+         list_dataset_labels/3,
          list_faces/2,
          list_faces/3,
          list_stream_processors/2,
          list_stream_processors/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          recognize_celebrities/2,
          recognize_celebrities/3,
          search_faces/2,
@@ -99,7 +113,13 @@
          stop_project_version/2,
          stop_project_version/3,
          stop_stream_processor/2,
-         stop_stream_processor/3]).
+         stop_stream_processor/3,
+         tag_resource/2,
+         tag_resource/3,
+         untag_resource/2,
+         untag_resource/3,
+         update_dataset_entries/2,
+         update_dataset_entries/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -112,6 +132,15 @@
 %%
 %% If the source image contains multiple faces, the service detects the
 %% largest face and compares it with each face detected in the target image.
+%%
+%% CompareFaces uses machine learning algorithms, which are probabilistic. A
+%% false negative is an incorrect prediction that a face in the target image
+%% has a low similarity confidence score when compared to the face in the
+%% source image. To reduce the probability of false negatives, we recommend
+%% that you compare the target image against multiple source images. If you
+%% plan to use `CompareFaces' to make a decision that impacts an individual's
+%% rights, privacy, or access to services, we recommend that you pass the
+%% result to a human for review and further validation before taking action.
 %%
 %% You pass the input and target images either as base64-encoded image bytes
 %% or as references to images in an Amazon S3 bucket. If you use the AWS CLI
@@ -179,7 +208,9 @@ compare_faces(Client, Input, Options)
 %% Collection names are case-sensitive.
 %%
 %% This operation requires permissions to perform the
-%% `rekognition:CreateCollection' action.
+%% `rekognition:CreateCollection' action. If you want to tag your collection,
+%% you also require permission to perform the `rekognition:TagResource'
+%% operation.
 create_collection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_collection(Client, Input, []).
@@ -187,10 +218,45 @@ create_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCollection">>, Input, Options).
 
+%% @doc Creates a new Amazon Rekognition Custom Labels dataset.
+%%
+%% You can create a dataset by using an Amazon Sagemaker format manifest file
+%% or by copying an existing Amazon Rekognition Custom Labels dataset.
+%%
+%% To create a training dataset for a project, specify `train' for the value
+%% of `DatasetType'. To create the test dataset for a project, specify `test'
+%% for the value of `DatasetType'.
+%%
+%% The response from `CreateDataset' is the Amazon Resource Name (ARN) for
+%% the dataset. Creating a dataset takes a while to complete. Use
+%% `DescribeDataset' to check the current status. The dataset created
+%% successfully if the value of `Status' is `CREATE_COMPLETE'.
+%%
+%% To check if any non-terminal errors occurred, call `ListDatasetEntries'
+%% and check for the presence of `errors' lists in the JSON Lines.
+%%
+%% Dataset creation fails if a terminal error occurs (`Status' =
+%% `CREATE_FAILED'). Currently, you can't access the terminal error
+%% information.
+%%
+%% For more information, see Creating dataset in the Amazon Rekognition
+%% Custom Labels Developer Guide.
+%%
+%% This operation requires permissions to perform the
+%% `rekognition:CreateDataset' action. If you want to copy an existing
+%% dataset, you also require permission to perform the
+%% `rekognition:ListDatasetEntries' action.
+create_dataset(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_dataset(Client, Input, []).
+create_dataset(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateDataset">>, Input, Options).
+
 %% @doc Creates a new Amazon Rekognition Custom Labels project.
 %%
-%% A project is a logical grouping of resources (images, Labels, models) and
-%% operations (training, evaluation and detection).
+%% A project is a group of resources (datasets, model versions) that you use
+%% to create and manage Amazon Rekognition Custom Labels models.
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:CreateProject' action.
@@ -204,15 +270,36 @@ create_project(Client, Input, Options)
 %% @doc Creates a new version of a model and begins training.
 %%
 %% Models are managed as part of an Amazon Rekognition Custom Labels project.
-%% You can specify one training dataset and one testing dataset. The response
-%% from `CreateProjectVersion' is an Amazon Resource Name (ARN) for the
-%% version of the model.
+%% The response from `CreateProjectVersion' is an Amazon Resource Name (ARN)
+%% for the version of the model.
+%%
+%% Training uses the training and test datasets associated with the project.
+%% For more information, see Creating training and test dataset in the Amazon
+%% Rekognition Custom Labels Developer Guide.
+%%
+%% You can train a modelin a project that doesn't have associated datasets by
+%% specifying manifest files in the `TrainingData' and `TestingData' fields.
+%%
+%% If you open the console after training a model with manifest files, Amazon
+%% Rekognition Custom Labels creates the datasets for you using the most
+%% recent manifest files. You can no longer train a model version for the
+%% project by specifying manifest files.
+%%
+%% Instead of training with a project without associated datasets, we
+%% recommend that you use the manifest files to create training and test
+%% datasets for the project.
 %%
 %% Training takes a while to complete. You can get the current status by
-%% calling `DescribeProjectVersions'.
+%% calling `DescribeProjectVersions'. Training completed successfully if the
+%% value of the `Status' field is `TRAINING_COMPLETED'.
+%%
+%% If training fails, see Debugging a failed model training in the Amazon
+%% Rekognition Custom Labels developer guide.
 %%
 %% Once training has successfully completed, call `DescribeProjectVersions'
-%% to get the training results and evaluate the model.
+%% to get the training results and evaluate the model. For more information,
+%% see Improving a trained Amazon Rekognition Custom Labels model in the
+%% Amazon Rekognition Custom Labels developers guide.
 %%
 %% After evaluating the model, you start the model by calling
 %% `StartProjectVersion'.
@@ -244,6 +331,11 @@ create_project_version(Client, Input, Options)
 %% After you have finished analyzing a streaming video, use
 %% `StopStreamProcessor' to stop processing. You can delete the stream
 %% processor by calling `DeleteStreamProcessor'.
+%%
+%% This operation requires permissions to perform the
+%% `rekognition:CreateStreamProcessor' action. If you want to tag your stream
+%% processor, you also require permission to perform the
+%% `rekognition:TagResource' operation.
 create_stream_processor(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_stream_processor(Client, Input, []).
@@ -265,6 +357,26 @@ delete_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCollection">>, Input, Options).
 
+%% @doc Deletes an existing Amazon Rekognition Custom Labels dataset.
+%%
+%% Deleting a dataset might take while. Use `DescribeDataset' to check the
+%% current status. The dataset is still deleting if the value of `Status' is
+%% `DELETE_IN_PROGRESS'. If you try to access the dataset after it is
+%% deleted, you get a `ResourceNotFoundException' exception.
+%%
+%% You can't delete a dataset while it is creating (`Status' =
+%% `CREATE_IN_PROGRESS') or if the dataset is updating (`Status' =
+%% `UPDATE_IN_PROGRESS').
+%%
+%% This operation requires permissions to perform the
+%% `rekognition:DeleteDataset' action.
+delete_dataset(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_dataset(Client, Input, []).
+delete_dataset(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDataset">>, Input, Options).
+
 %% @doc Deletes faces from a collection.
 %%
 %% You specify a collection ID and an array of face IDs to remove from the
@@ -283,6 +395,10 @@ delete_faces(Client, Input, Options)
 %%
 %% To delete a project you must first delete all models associated with the
 %% project. To delete a model, see `DeleteProjectVersion'.
+%%
+%% `DeleteProject' is an asynchronous operation. To check if the project is
+%% deleted, call `DescribeProjects'. The project is deleted when the project
+%% no longer appears in the response.
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DeleteProject' action.
@@ -336,11 +452,26 @@ describe_collection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCollection">>, Input, Options).
 
-%% @doc Lists and describes the models in an Amazon Rekognition Custom Labels
-%% project.
+%% @doc Describes an Amazon Rekognition Custom Labels dataset.
+%%
+%% You can get information such as the current status of a dataset and
+%% statistics about the images and labels in a dataset.
+%%
+%% This operation requires permissions to perform the
+%% `rekognition:DescribeDataset' action.
+describe_dataset(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_dataset(Client, Input, []).
+describe_dataset(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDataset">>, Input, Options).
+
+%% @doc Lists and describes the versions of a model in an Amazon Rekognition
+%% Custom Labels project.
 %%
 %% You can specify up to 10 model versions in `ProjectVersionArns'. If you
-%% don't specify a value, descriptions for all models are returned.
+%% don't specify a value, descriptions for all model versions in the project
+%% are returned.
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DescribeProjectVersions' action.
@@ -351,8 +482,8 @@ describe_project_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProjectVersions">>, Input, Options).
 
-%% @doc Lists and gets information about your Amazon Rekognition Custom
-%% Labels projects.
+%% @doc Gets information about your Amazon Rekognition Custom Labels
+%% projects.
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DescribeProjects' action.
@@ -394,23 +525,30 @@ describe_stream_processor(Client, Input, Options)
 %% location information, if it exists, for the label on the image
 %% (`Geometry').
 %%
-%% During training model calculates a threshold value that determines if a
-%% prediction for a label is true. By default, `DetectCustomLabels' doesn't
-%% return labels whose confidence value is below the model's calculated
-%% threshold value. To filter labels that are returned, specify a value for
-%% `MinConfidence' that is higher than the model's calculated threshold. You
-%% can get the model's calculated threshold from the model's training results
-%% shown in the Amazon Rekognition Custom Labels console. To get all labels,
-%% regardless of confidence, specify a `MinConfidence' value of 0.
+%% To filter labels that are returned, specify a value for `MinConfidence'.
+%% `DetectCustomLabelsLabels' only returns labels with a confidence that's
+%% higher than the specified value. The value of `MinConfidence' maps to the
+%% assumed threshold values created during training. For more information,
+%% see Assumed threshold in the Amazon Rekognition Custom Labels Developer
+%% Guide. Amazon Rekognition Custom Labels metrics expresses an assumed
+%% threshold as a floating point value between 0-1. The range of
+%% `MinConfidence' normalizes the threshold value to a percentage value
+%% (0-100). Confidence responses from `DetectCustomLabels' are also returned
+%% as a percentage. You can use `MinConfidence' to change the precision and
+%% recall or your model. For more information, see Analyzing an image in the
+%% Amazon Rekognition Custom Labels Developer Guide.
 %%
-%% You can also add the `MaxResults' parameter to limit the number of labels
-%% returned.
+%% If you don't specify a value for `MinConfidence', `DetectCustomLabels'
+%% returns labels based on the assumed threshold of each label.
 %%
 %% This is a stateless API operation. That is, the operation does not persist
 %% any data.
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DetectCustomLabels' action.
+%%
+%% For more information, see Analyzing an image in the Amazon Rekognition
+%% Custom Labels Developer Guide.
 detect_custom_labels(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_custom_labels(Client, Input, []).
@@ -617,7 +755,7 @@ detect_protective_equipment(Client, Input, Options)
 %% image.
 %%
 %% A word is one or more ISO basic latin script characters that are not
-%% separated by spaces. `DetectText' can detect up to 50 words in an image.
+%% separated by spaces. `DetectText' can detect up to 100 words in an image.
 %%
 %% A line is a string of equally spaced words. A line isn't necessarily a
 %% complete sentence. For example, a driver's license number is detected as a
@@ -643,8 +781,34 @@ detect_text(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectText">>, Input, Options).
 
+%% @doc Distributes the entries (images) in a training dataset across the
+%% training dataset and the test dataset for a project.
+%%
+%% `DistributeDatasetEntries' moves 20% of the training dataset images to the
+%% test dataset. An entry is a JSON Line that describes an image.
+%%
+%% You supply the Amazon Resource Names (ARN) of a project's training dataset
+%% and test dataset. The training dataset must contain the images that you
+%% want to split. The test dataset must be empty. The datasets must belong to
+%% the same project. To create training and test datasets for a project, call
+%% `CreateDataset'.
+%%
+%% Distributing a dataset takes a while to complete. To check the status call
+%% `DescribeDataset'. The operation is complete when the `Status' field for
+%% the training dataset and the test dataset is `UPDATE_COMPLETE'. If the
+%% dataset split fails, the value of `Status' is `UPDATE_FAILED'.
+%%
+%% This operation requires permissions to perform the
+%% `rekognition:DistributeDatasetEntries' action.
+distribute_dataset_entries(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    distribute_dataset_entries(Client, Input, []).
+distribute_dataset_entries(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DistributeDatasetEntries">>, Input, Options).
+
 %% @doc Gets the name and additional information about a celebrity based on
-%% his or her Amazon Rekognition ID.
+%% their Amazon Rekognition ID.
 %%
 %% The additional information is returned as an array of URLs. If there is no
 %% additional information about the celebrity, this list is empty.
@@ -666,9 +830,11 @@ get_celebrity_info(Client, Input, Options)
 %%
 %% Celebrity recognition in a video is an asynchronous operation. Analysis is
 %% started by a call to `StartCelebrityRecognition' which returns a job
-%% identifier (`JobId'). When the celebrity recognition operation finishes,
-%% Amazon Rekognition Video publishes a completion status to the Amazon
-%% Simple Notification Service topic registered in the initial call to
+%% identifier (`JobId').
+%%
+%% When the celebrity recognition operation finishes, Amazon Rekognition
+%% Video publishes a completion status to the Amazon Simple Notification
+%% Service topic registered in the initial call to
 %% `StartCelebrityRecognition'. To get the results of the celebrity
 %% recognition analysis, first check that the status value published to the
 %% Amazon SNS topic is `SUCCEEDED'. If so, call `GetCelebrityDetection' and
@@ -682,13 +848,16 @@ get_celebrity_info(Client, Input, Options)
 %% they are detected in an array (`Celebrities') of `CelebrityRecognition'
 %% objects. Each `CelebrityRecognition' contains information about the
 %% celebrity in a `CelebrityDetail' object and the time, `Timestamp', the
-%% celebrity was detected.
+%% celebrity was detected. This `CelebrityDetail' object stores information
+%% about the detected celebrity's face attributes, a face bounding box, known
+%% gender, the celebrity's name, and a confidence estimate.
 %%
 %% `GetCelebrityRecognition' only returns the default facial attributes
 %% (`BoundingBox', `Confidence', `Landmarks', `Pose', and `Quality'). The
-%% other facial attributes listed in the `Face' object of the following
-%% response syntax are not returned. For more information, see FaceDetail in
-%% the Amazon Rekognition Developer Guide.
+%% `BoundingBox' field only applies to the detected face instance. The other
+%% facial attributes listed in the `Face' object of the following response
+%% syntax are not returned. For more information, see FaceDetail in the
+%% Amazon Rekognition Developer Guide.
 %%
 %% By default, the `Celebrities' array is sorted by time (milliseconds from
 %% the start of the video). You can also sort the array by celebrity by
@@ -715,25 +884,29 @@ get_celebrity_recognition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCelebrityRecognition">>, Input, Options).
 
-%% @doc Gets the unsafe content analysis results for a Amazon Rekognition
-%% Video analysis started by `StartContentModeration'.
+%% @doc Gets the inappropriate, unwanted, or offensive content analysis
+%% results for a Amazon Rekognition Video analysis started by
+%% `StartContentModeration'.
 %%
-%% Unsafe content analysis of a video is an asynchronous operation. You start
-%% analysis by calling `StartContentModeration' which returns a job
-%% identifier (`JobId'). When analysis finishes, Amazon Rekognition Video
-%% publishes a completion status to the Amazon Simple Notification Service
-%% topic registered in the initial call to `StartContentModeration'. To get
-%% the results of the unsafe content analysis, first check that the status
-%% value published to the Amazon SNS topic is `SUCCEEDED'. If so, call
-%% `GetContentModeration' and pass the job identifier (`JobId') from the
-%% initial call to `StartContentModeration'.
+%% For a list of moderation labels in Amazon Rekognition, see Using the image
+%% and video moderation APIs.
+%%
+%% Amazon Rekognition Video inappropriate or offensive content detection in a
+%% stored video is an asynchronous operation. You start analysis by calling
+%% `StartContentModeration' which returns a job identifier (`JobId'). When
+%% analysis finishes, Amazon Rekognition Video publishes a completion status
+%% to the Amazon Simple Notification Service topic registered in the initial
+%% call to `StartContentModeration'. To get the results of the content
+%% analysis, first check that the status value published to the Amazon SNS
+%% topic is `SUCCEEDED'. If so, call `GetContentModeration' and pass the job
+%% identifier (`JobId') from the initial call to `StartContentModeration'.
 %%
 %% For more information, see Working with Stored Videos in the Amazon
 %% Rekognition Devlopers Guide.
 %%
-%% `GetContentModeration' returns detected unsafe content labels, and the
-%% time they are detected, in an array, `ModerationLabels', of
-%% `ContentModerationDetection' objects.
+%% `GetContentModeration' returns detected inappropriate, unwanted, or
+%% offensive content moderation labels, and the time they are detected, in an
+%% array, `ModerationLabels', of `ContentModerationDetection' objects.
 %%
 %% By default, the moderated labels are returned sorted by time, in
 %% milliseconds from the start of the video. You can also sort them by
@@ -748,8 +921,8 @@ get_celebrity_recognition(Client, Input, Options)
 %% `NextToken' request parameter with the value of `NextToken' returned from
 %% the previous call to `GetContentModeration'.
 %%
-%% For more information, see Detecting Unsafe Content in the Amazon
-%% Rekognition Developer Guide.
+%% For more information, see Content moderation in the Amazon Rekognition
+%% Developer Guide.
 get_content_moderation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_content_moderation(Client, Input, []).
@@ -1108,6 +1281,45 @@ list_collections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCollections">>, Input, Options).
 
+%% @doc Lists the entries (images) within a dataset.
+%%
+%% An entry is a JSON Line that contains the information for a single image,
+%% including the image location, assigned labels, and object location
+%% bounding boxes. For more information, see Creating a manifest file.
+%%
+%% JSON Lines in the response include information about non-terminal errors
+%% found in the dataset. Non terminal errors are reported in `errors' lists
+%% within each JSON Line. The same information is reported in the training
+%% and testing validation result manifests that Amazon Rekognition Custom
+%% Labels creates during model training.
+%%
+%% You can filter the response in variety of ways, such as choosing which
+%% labels to return and returning JSON Lines created after a specific date.
+%%
+%% This operation requires permissions to perform the
+%% `rekognition:ListDatasetEntries' action.
+list_dataset_entries(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_dataset_entries(Client, Input, []).
+list_dataset_entries(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDatasetEntries">>, Input, Options).
+
+%% @doc Lists the labels in a dataset.
+%%
+%% Amazon Rekognition Custom Labels uses labels to describe images. For more
+%% information, see Labeling images.
+%%
+%% Lists the labels in a dataset. Amazon Rekognition Custom Labels uses
+%% labels to describe images. For more information, see Labeling images in
+%% the Amazon Rekognition Custom Labels Developer Guide.
+list_dataset_labels(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_dataset_labels(Client, Input, []).
+list_dataset_labels(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDatasetLabels">>, Input, Options).
+
 %% @doc Returns metadata for faces in the specified collection.
 %%
 %% This metadata includes information such as the bounding box coordinates,
@@ -1133,16 +1345,28 @@ list_stream_processors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStreamProcessors">>, Input, Options).
 
+%% @doc Returns a list of tags in an Amazon Rekognition collection, stream
+%% processor, or Custom Labels model.
+%%
+%% This operation requires permissions to perform the
+%% `rekognition:ListTagsForResource' action.
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
+
 %% @doc Returns an array of celebrities recognized in the input image.
 %%
 %% For more information, see Recognizing Celebrities in the Amazon
 %% Rekognition Developer Guide.
 %%
 %% `RecognizeCelebrities' returns the 64 largest faces in the image. It lists
-%% recognized celebrities in the `CelebrityFaces' array and unrecognized
-%% faces in the `UnrecognizedFaces' array. `RecognizeCelebrities' doesn't
-%% return celebrities whose faces aren't among the largest 64 faces in the
-%% image.
+%% the recognized celebrities in the `CelebrityFaces' array and any
+%% unrecognized faces in the `UnrecognizedFaces' array.
+%% `RecognizeCelebrities' doesn't return celebrities whose faces aren't among
+%% the largest 64 faces in the image.
 %%
 %% For each celebrity recognized, `RecognizeCelebrities' returns a
 %% `Celebrity' object. The `Celebrity' object contains the celebrity name,
@@ -1230,6 +1454,9 @@ search_faces(Client, Input, Options)
 %% bounding box (and a confidence level that the bounding box contains a
 %% face) of the face that Amazon Rekognition used for the input image.
 %%
+%% If no faces are detected in the input image, `SearchFacesByImage' returns
+%% an `InvalidParameterException' error.
+%%
 %% For an example, Searching for a Face Using an Image in the Amazon
 %% Rekognition Developer Guide.
 %%
@@ -1275,23 +1502,27 @@ start_celebrity_recognition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartCelebrityRecognition">>, Input, Options).
 
-%% @doc Starts asynchronous detection of unsafe content in a stored video.
+%% @doc Starts asynchronous detection of inappropriate, unwanted, or
+%% offensive content in a stored video.
+%%
+%% For a list of moderation labels in Amazon Rekognition, see Using the image
+%% and video moderation APIs.
 %%
 %% Amazon Rekognition Video can moderate content in a video stored in an
 %% Amazon S3 bucket. Use `Video' to specify the bucket name and the filename
 %% of the video. `StartContentModeration' returns a job identifier (`JobId')
-%% which you use to get the results of the analysis. When unsafe content
-%% analysis is finished, Amazon Rekognition Video publishes a completion
-%% status to the Amazon Simple Notification Service topic that you specify in
+%% which you use to get the results of the analysis. When content analysis is
+%% finished, Amazon Rekognition Video publishes a completion status to the
+%% Amazon Simple Notification Service topic that you specify in
 %% `NotificationChannel'.
 %%
-%% To get the results of the unsafe content analysis, first check that the
-%% status value published to the Amazon SNS topic is `SUCCEEDED'. If so, call
+%% To get the results of the content analysis, first check that the status
+%% value published to the Amazon SNS topic is `SUCCEEDED'. If so, call
 %% `GetContentModeration' and pass the job identifier (`JobId') from the
 %% initial call to `StartContentModeration'.
 %%
-%% For more information, see Detecting Unsafe Content in the Amazon
-%% Rekognition Developer Guide.
+%% For more information, see Content moderation in the Amazon Rekognition
+%% Developer Guide.
 start_content_moderation(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_content_moderation(Client, Input, []).
@@ -1491,6 +1722,70 @@ stop_stream_processor(Client, Input)
 stop_stream_processor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopStreamProcessor">>, Input, Options).
+
+%% @doc Adds one or more key-value tags to an Amazon Rekognition collection,
+%% stream processor, or Custom Labels model.
+%%
+%% For more information, see Tagging AWS Resources.
+%%
+%% This operation requires permissions to perform the
+%% `rekognition:TagResource' action.
+tag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    tag_resource(Client, Input, []).
+tag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TagResource">>, Input, Options).
+
+%% @doc Removes one or more tags from an Amazon Rekognition collection,
+%% stream processor, or Custom Labels model.
+%%
+%% This operation requires permissions to perform the
+%% `rekognition:UntagResource' action.
+untag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    untag_resource(Client, Input, []).
+untag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Adds or updates one or more entries (images) in a dataset.
+%%
+%% An entry is a JSON Line which contains the information for a single image,
+%% including the image location, assigned labels, and object location
+%% bounding boxes. For more information, see Image-Level labels in manifest
+%% files and Object localization in manifest files in the Amazon Rekognition
+%% Custom Labels Developer Guide.
+%%
+%% If the `source-ref' field in the JSON line references an existing image,
+%% the existing image in the dataset is updated. If `source-ref' field
+%% doesn't reference an existing image, the image is added as a new image to
+%% the dataset.
+%%
+%% You specify the changes that you want to make in the `Changes' input
+%% parameter. There isn't a limit to the number JSON Lines that you can
+%% change, but the size of `Changes' must be less than 5MB.
+%%
+%% `UpdateDatasetEntries' returns immediatly, but the dataset update might
+%% take a while to complete. Use `DescribeDataset' to check the current
+%% status. The dataset updated successfully if the value of `Status' is
+%% `UPDATE_COMPLETE'.
+%%
+%% To check if any non-terminal errors occured, call `ListDatasetEntries' and
+%% check for the presence of `errors' lists in the JSON Lines.
+%%
+%% Dataset update fails if a terminal error occurs (`Status' =
+%% `UPDATE_FAILED'). Currently, you can't access the terminal error
+%% information from the Amazon Rekognition Custom Labels SDK.
+%%
+%% This operation requires permissions to perform the
+%% `rekognition:UpdateDatasetEntries' action.
+update_dataset_entries(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_dataset_entries(Client, Input, []).
+update_dataset_entries(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDatasetEntries">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

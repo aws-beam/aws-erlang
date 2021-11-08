@@ -33,8 +33,16 @@
 
 -export([accept_reserved_node_exchange/2,
          accept_reserved_node_exchange/3,
+         add_partner/2,
+         add_partner/3,
+         associate_data_share_consumer/2,
+         associate_data_share_consumer/3,
          authorize_cluster_security_group_ingress/2,
          authorize_cluster_security_group_ingress/3,
+         authorize_data_share/2,
+         authorize_data_share/3,
+         authorize_endpoint_access/2,
+         authorize_endpoint_access/3,
          authorize_snapshot_access/2,
          authorize_snapshot_access/3,
          batch_delete_cluster_snapshots/2,
@@ -45,6 +53,8 @@
          cancel_resize/3,
          copy_cluster_snapshot/2,
          copy_cluster_snapshot/3,
+         create_authentication_profile/2,
+         create_authentication_profile/3,
          create_cluster/2,
          create_cluster/3,
          create_cluster_parameter_group/2,
@@ -55,6 +65,8 @@
          create_cluster_snapshot/3,
          create_cluster_subnet_group/2,
          create_cluster_subnet_group/3,
+         create_endpoint_access/2,
+         create_endpoint_access/3,
          create_event_subscription/2,
          create_event_subscription/3,
          create_hsm_client_certificate/2,
@@ -71,6 +83,10 @@
          create_tags/3,
          create_usage_limit/2,
          create_usage_limit/3,
+         deauthorize_data_share/2,
+         deauthorize_data_share/3,
+         delete_authentication_profile/2,
+         delete_authentication_profile/3,
          delete_cluster/2,
          delete_cluster/3,
          delete_cluster_parameter_group/2,
@@ -81,12 +97,16 @@
          delete_cluster_snapshot/3,
          delete_cluster_subnet_group/2,
          delete_cluster_subnet_group/3,
+         delete_endpoint_access/2,
+         delete_endpoint_access/3,
          delete_event_subscription/2,
          delete_event_subscription/3,
          delete_hsm_client_certificate/2,
          delete_hsm_client_certificate/3,
          delete_hsm_configuration/2,
          delete_hsm_configuration/3,
+         delete_partner/2,
+         delete_partner/3,
          delete_scheduled_action/2,
          delete_scheduled_action/3,
          delete_snapshot_copy_grant/2,
@@ -99,6 +119,8 @@
          delete_usage_limit/3,
          describe_account_attributes/2,
          describe_account_attributes/3,
+         describe_authentication_profiles/2,
+         describe_authentication_profiles/3,
          describe_cluster_db_revisions/2,
          describe_cluster_db_revisions/3,
          describe_cluster_parameter_groups/2,
@@ -117,8 +139,18 @@
          describe_cluster_versions/3,
          describe_clusters/2,
          describe_clusters/3,
+         describe_data_shares/2,
+         describe_data_shares/3,
+         describe_data_shares_for_consumer/2,
+         describe_data_shares_for_consumer/3,
+         describe_data_shares_for_producer/2,
+         describe_data_shares_for_producer/3,
          describe_default_cluster_parameters/2,
          describe_default_cluster_parameters/3,
+         describe_endpoint_access/2,
+         describe_endpoint_access/3,
+         describe_endpoint_authorization/2,
+         describe_endpoint_authorization/3,
          describe_event_categories/2,
          describe_event_categories/3,
          describe_event_subscriptions/2,
@@ -135,6 +167,8 @@
          describe_node_configuration_options/3,
          describe_orderable_cluster_options/2,
          describe_orderable_cluster_options/3,
+         describe_partners/2,
+         describe_partners/3,
          describe_reserved_node_offerings/2,
          describe_reserved_node_offerings/3,
          describe_reserved_nodes/2,
@@ -159,6 +193,8 @@
          disable_logging/3,
          disable_snapshot_copy/2,
          disable_snapshot_copy/3,
+         disassociate_data_share_consumer/2,
+         disassociate_data_share_consumer/3,
          enable_logging/2,
          enable_logging/3,
          enable_snapshot_copy/2,
@@ -167,6 +203,10 @@
          get_cluster_credentials/3,
          get_reserved_node_exchange_offerings/2,
          get_reserved_node_exchange_offerings/3,
+         modify_aqua_configuration/2,
+         modify_aqua_configuration/3,
+         modify_authentication_profile/2,
+         modify_authentication_profile/3,
          modify_cluster/2,
          modify_cluster/3,
          modify_cluster_db_revision/2,
@@ -183,6 +223,8 @@
          modify_cluster_snapshot_schedule/3,
          modify_cluster_subnet_group/2,
          modify_cluster_subnet_group/3,
+         modify_endpoint_access/2,
+         modify_endpoint_access/3,
          modify_event_subscription/2,
          modify_event_subscription/3,
          modify_scheduled_action/2,
@@ -199,6 +241,8 @@
          purchase_reserved_node_offering/3,
          reboot_cluster/2,
          reboot_cluster/3,
+         reject_data_share/2,
+         reject_data_share/3,
          reset_cluster_parameter_group/2,
          reset_cluster_parameter_group/3,
          resize_cluster/2,
@@ -211,10 +255,14 @@
          resume_cluster/3,
          revoke_cluster_security_group_ingress/2,
          revoke_cluster_security_group_ingress/3,
+         revoke_endpoint_access/2,
+         revoke_endpoint_access/3,
          revoke_snapshot_access/2,
          revoke_snapshot_access/3,
          rotate_encryption_key/2,
-         rotate_encryption_key/3]).
+         rotate_encryption_key/3,
+         update_partner_status/2,
+         update_partner_status/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -232,6 +280,29 @@ accept_reserved_node_exchange(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptReservedNodeExchange">>, Input, Options).
 
+%% @doc Adds a partner integration to a cluster.
+%%
+%% This operation authorizes a partner to push status updates for the
+%% specified database. To complete the integration, you also set up the
+%% integration on the partner website.
+add_partner(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_partner(Client, Input, []).
+add_partner(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddPartner">>, Input, Options).
+
+%% @doc From a datashare consumer account, associates a datashare with the
+%% account (AssociateEntireAccount) or the specified namespace (ConsumerArn).
+%%
+%% If you make this association, the consumer can consume the datashare.
+associate_data_share_consumer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_data_share_consumer(Client, Input, []).
+associate_data_share_consumer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateDataShareConsumer">>, Input, Options).
+
 %% @doc Adds an inbound (ingress) rule to an Amazon Redshift security group.
 %%
 %% Depending on whether the application accessing your cluster is running on
@@ -242,7 +313,8 @@ accept_reserved_node_exchange(Client, Input, Options)
 %%
 %% If you authorize access to an Amazon EC2 security group, specify
 %% EC2SecurityGroupName and EC2SecurityGroupOwnerId. The Amazon EC2 security
-%% group and Amazon Redshift cluster must be in the same AWS Region.
+%% group and Amazon Redshift cluster must be in the same Amazon Web Services
+%% Region.
 %%
 %% If you authorize access to a CIDR/IP address range, specify CIDRIP. For an
 %% overview of CIDR blocks, see the Wikipedia article on Classless
@@ -260,7 +332,27 @@ authorize_cluster_security_group_ingress(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AuthorizeClusterSecurityGroupIngress">>, Input, Options).
 
-%% @doc Authorizes the specified AWS customer account to restore the
+%% @doc From a data producer account, authorizes the sharing of a datashare
+%% with one or more consumer accounts.
+%%
+%% To authorize a datashare for a data consumer, the producer account must
+%% have the correct access privileges.
+authorize_data_share(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    authorize_data_share(Client, Input, []).
+authorize_data_share(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AuthorizeDataShare">>, Input, Options).
+
+%% @doc Grants access to a cluster.
+authorize_endpoint_access(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    authorize_endpoint_access(Client, Input, []).
+authorize_endpoint_access(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AuthorizeEndpointAccess">>, Input, Options).
+
+%% @doc Authorizes the specified Amazon Web Services account to restore the
 %% specified snapshot.
 %%
 %% For more information about working with snapshots, go to Amazon Redshift
@@ -316,6 +408,14 @@ copy_cluster_snapshot(Client, Input)
 copy_cluster_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyClusterSnapshot">>, Input, Options).
+
+%% @doc Creates an authentication profile with the specified parameters.
+create_authentication_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_authentication_profile(Client, Input, []).
+create_authentication_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAuthenticationProfile">>, Input, Options).
 
 %% @doc Creates a new cluster with the specified parameters.
 %%
@@ -390,6 +490,14 @@ create_cluster_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateClusterSubnetGroup">>, Input, Options).
 
+%% @doc Creates a Redshift-managed VPC endpoint.
+create_endpoint_access(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_endpoint_access(Client, Input, []).
+create_endpoint_access(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateEndpointAccess">>, Input, Options).
+
 %% @doc Creates an Amazon Redshift event notification subscription.
 %%
 %% This action requires an ARN (Amazon Resource Name) of an Amazon SNS topic
@@ -410,11 +518,11 @@ create_cluster_subnet_group(Client, Input, Options)
 %% cluster and source identifier = my-cluster-1, notifications will be sent
 %% for all the cluster events for my-cluster-1. If you specify a source type
 %% but do not specify a source identifier, you will receive notice of the
-%% events for the objects of that type in your AWS account. If you do not
-%% specify either the SourceType nor the SourceIdentifier, you will be
-%% notified of events generated from all Amazon Redshift sources belonging to
-%% your AWS account. You must specify a source type if you specify a source
-%% ID.
+%% events for the objects of that type in your Amazon Web Services account.
+%% If you do not specify either the SourceType nor the SourceIdentifier, you
+%% will be notified of events generated from all Amazon Redshift sources
+%% belonging to your Amazon Web Services account. You must specify a source
+%% type if you specify a source ID.
 create_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_subscription(Client, Input, []).
@@ -469,8 +577,8 @@ create_scheduled_action(Client, Input, Options)
     request(Client, <<"CreateScheduledAction">>, Input, Options).
 
 %% @doc Creates a snapshot copy grant that permits Amazon Redshift to use a
-%% customer master key (CMK) from AWS Key Management Service (AWS KMS) to
-%% encrypt copied snapshots in a destination region.
+%% customer master key (CMK) from Key Management Service (KMS) to encrypt
+%% copied snapshots in a destination region.
 %%
 %% For more information about managing snapshot copy grants, go to Amazon
 %% Redshift Database Encryption in the Amazon Redshift Cluster Management
@@ -515,6 +623,23 @@ create_usage_limit(Client, Input)
 create_usage_limit(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUsageLimit">>, Input, Options).
+
+%% @doc From the producer account, removes authorization from the specified
+%% datashare.
+deauthorize_data_share(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    deauthorize_data_share(Client, Input, []).
+deauthorize_data_share(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeauthorizeDataShare">>, Input, Options).
+
+%% @doc Deletes an authentication profile.
+delete_authentication_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_authentication_profile(Client, Input, []).
+delete_authentication_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAuthenticationProfile">>, Input, Options).
 
 %% @doc Deletes a previously provisioned cluster without its final snapshot
 %% being created.
@@ -591,6 +716,14 @@ delete_cluster_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteClusterSubnetGroup">>, Input, Options).
 
+%% @doc Deletes a Redshift-managed VPC endpoint.
+delete_endpoint_access(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_endpoint_access(Client, Input, []).
+delete_endpoint_access(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteEndpointAccess">>, Input, Options).
+
 %% @doc Deletes an Amazon Redshift event notification subscription.
 delete_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -614,6 +747,17 @@ delete_hsm_configuration(Client, Input)
 delete_hsm_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHsmConfiguration">>, Input, Options).
+
+%% @doc Deletes a partner integration from a cluster.
+%%
+%% Data can still flow to the cluster until the integration is deleted at the
+%% partner's website.
+delete_partner(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_partner(Client, Input, []).
+delete_partner(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeletePartner">>, Input, Options).
 
 %% @doc Deletes a scheduled action.
 delete_scheduled_action(Client, Input)
@@ -665,6 +809,14 @@ describe_account_attributes(Client, Input)
 describe_account_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountAttributes">>, Input, Options).
+
+%% @doc Describes an authentication profile.
+describe_authentication_profiles(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_authentication_profiles(Client, Input, []).
+describe_authentication_profiles(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAuthenticationProfiles">>, Input, Options).
 
 %% @doc Returns an array of `ClusterDbRevision' objects.
 describe_cluster_db_revisions(Client, Input)
@@ -749,8 +901,9 @@ describe_cluster_security_groups(Client, Input, Options)
 %% your cluster snapshots.
 %%
 %% By default, this operation returns information about all snapshots of all
-%% clusters that are owned by you AWS customer account. No information is
-%% returned for snapshots owned by inactive AWS customer accounts.
+%% clusters that are owned by your Amazon Web Services account. No
+%% information is returned for snapshots owned by inactive Amazon Web
+%% Services accounts.
 %%
 %% If you specify both tag keys and tag values in the same request, Amazon
 %% Redshift returns all snapshots that match any combination of the specified
@@ -774,7 +927,7 @@ describe_cluster_snapshots(Client, Input, Options)
 %% metadata about your cluster subnet groups.
 %%
 %% By default, this operation returns information about all cluster subnet
-%% groups that are defined in you AWS account.
+%% groups that are defined in your Amazon Web Services account.
 %%
 %% If you specify both tag keys and tag values in the same request, Amazon
 %% Redshift returns all subnet groups that match any combination of the
@@ -838,6 +991,33 @@ describe_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusters">>, Input, Options).
 
+%% @doc Shows the status of any inbound or outbound datashares available in
+%% the specified account.
+describe_data_shares(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_data_shares(Client, Input, []).
+describe_data_shares(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDataShares">>, Input, Options).
+
+%% @doc Returns a list of datashares where the account identifier being
+%% called is a consumer account identifier.
+describe_data_shares_for_consumer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_data_shares_for_consumer(Client, Input, []).
+describe_data_shares_for_consumer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDataSharesForConsumer">>, Input, Options).
+
+%% @doc Returns a list of datashares when the account identifier being called
+%% is a producer account identifier.
+describe_data_shares_for_producer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_data_shares_for_producer(Client, Input, []).
+describe_data_shares_for_producer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDataSharesForProducer">>, Input, Options).
+
 %% @doc Returns a list of parameter settings for the specified parameter
 %% group family.
 %%
@@ -849,6 +1029,22 @@ describe_default_cluster_parameters(Client, Input)
 describe_default_cluster_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDefaultClusterParameters">>, Input, Options).
+
+%% @doc Describes a Redshift-managed VPC endpoint.
+describe_endpoint_access(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_endpoint_access(Client, Input, []).
+describe_endpoint_access(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeEndpointAccess">>, Input, Options).
+
+%% @doc Describes an endpoint authorization.
+describe_endpoint_authorization(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_endpoint_authorization(Client, Input, []).
+describe_endpoint_authorization(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeEndpointAuthorization">>, Input, Options).
 
 %% @doc Displays a list of event categories for all event source types, or
 %% for a specified source type.
@@ -901,7 +1097,7 @@ describe_events(Client, Input, Options)
 %% @doc Returns information about the specified HSM client certificate.
 %%
 %% If no certificate ID is specified, returns information about all the HSM
-%% certificates owned by your AWS customer account.
+%% certificates owned by your Amazon Web Services account.
 %%
 %% If you specify both tag keys and tag values in the same request, Amazon
 %% Redshift returns all HSM client certificates that match any combination of
@@ -924,7 +1120,7 @@ describe_hsm_client_certificates(Client, Input, Options)
 %% configuration.
 %%
 %% If no configuration ID is specified, returns information about all the HSM
-%% configurations owned by your AWS customer account.
+%% configurations owned by your Amazon Web Services account.
 %%
 %% If you specify both tag keys and tag values in the same request, Amazon
 %% Redshift returns all HSM connections that match any combination of the
@@ -964,18 +1160,27 @@ describe_node_configuration_options(Client, Input, Options)
 %%
 %% Before you create a new cluster you can use this operation to find what
 %% options are available, such as the EC2 Availability Zones (AZ) in the
-%% specific AWS Region that you can specify, and the node types you can
-%% request. The node types differ by available storage, memory, CPU and
-%% price. With the cost involved you might want to obtain a list of cluster
-%% options in the specific region and specify values when creating a cluster.
-%% For more information about managing clusters, go to Amazon Redshift
-%% Clusters in the Amazon Redshift Cluster Management Guide.
+%% specific Amazon Web Services Region that you can specify, and the node
+%% types you can request. The node types differ by available storage, memory,
+%% CPU and price. With the cost involved you might want to obtain a list of
+%% cluster options in the specific region and specify values when creating a
+%% cluster. For more information about managing clusters, go to Amazon
+%% Redshift Clusters in the Amazon Redshift Cluster Management Guide.
 describe_orderable_cluster_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_orderable_cluster_options(Client, Input, []).
 describe_orderable_cluster_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOrderableClusterOptions">>, Input, Options).
+
+%% @doc Returns information about the partner integrations defined for a
+%% cluster.
+describe_partners(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_partners(Client, Input, []).
+describe_partners(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribePartners">>, Input, Options).
 
 %% @doc Returns a list of the available reserved node offerings by Amazon
 %% Redshift with their descriptions including the node type, the fixed and
@@ -1029,8 +1234,8 @@ describe_scheduled_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScheduledActions">>, Input, Options).
 
-%% @doc Returns a list of snapshot copy grants owned by the AWS account in
-%% the destination region.
+%% @doc Returns a list of snapshot copy grants owned by the Amazon Web
+%% Services account in the destination region.
 %%
 %% For more information about managing snapshot copy grants, go to Amazon
 %% Redshift Database Encryption in the Amazon Redshift Cluster Management
@@ -1146,15 +1351,24 @@ disable_logging(Client, Input, Options)
 %% another region for a specified cluster.
 %%
 %% If your cluster and its snapshots are encrypted using a customer master
-%% key (CMK) from AWS KMS, use `DeleteSnapshotCopyGrant' to delete the grant
-%% that grants Amazon Redshift permission to the CMK in the destination
-%% region.
+%% key (CMK) from Key Management Service, use `DeleteSnapshotCopyGrant' to
+%% delete the grant that grants Amazon Redshift permission to the CMK in the
+%% destination region.
 disable_snapshot_copy(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_snapshot_copy(Client, Input, []).
 disable_snapshot_copy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableSnapshotCopy">>, Input, Options).
+
+%% @doc From a consumer account, remove association for the specified
+%% datashare.
+disassociate_data_share_consumer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_data_share_consumer(Client, Input, []).
+disassociate_data_share_consumer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateDataShareConsumer">>, Input, Options).
 
 %% @doc Starts logging information, such as queries and connection attempts,
 %% for the specified Amazon Redshift cluster.
@@ -1186,7 +1400,7 @@ enable_snapshot_copy(Client, Input, Options)
 %% IAM Authentication to Generate Database User Credentials in the Amazon
 %% Redshift Cluster Management Guide.
 %%
-%% The AWS Identity and Access Management (IAM)user or role that executes
+%% The Identity and Access Management (IAM) user or role that runs
 %% GetClusterCredentials must have an IAM policy attached that allows access
 %% to all necessary actions and resources. For more information about
 %% permissions, see Resource Policies for GetClusterCredentials in the Amazon
@@ -1216,13 +1430,29 @@ get_reserved_node_exchange_offerings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetReservedNodeExchangeOfferings">>, Input, Options).
 
+%% @doc Modifies whether a cluster can use AQUA (Advanced Query Accelerator).
+modify_aqua_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_aqua_configuration(Client, Input, []).
+modify_aqua_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyAquaConfiguration">>, Input, Options).
+
+%% @doc Modifies an authentication profile.
+modify_authentication_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_authentication_profile(Client, Input, []).
+modify_authentication_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyAuthenticationProfile">>, Input, Options).
+
 %% @doc Modifies the settings for a cluster.
 %%
 %% You can also change node type and the number of nodes to scale up or down
 %% the cluster. When resizing a cluster, you must specify both the number of
 %% nodes and the node type even if one of the parameters does not change.
 %%
-%% You can add another security or parameter group, or change the master user
+%% You can add another security or parameter group, or change the admin user
 %% password. Resetting a cluster password or modifying the security groups
 %% associated with a cluster do not need a reboot. However, modifying a
 %% parameter group requires a reboot for parameters to take effect. For more
@@ -1246,8 +1476,8 @@ modify_cluster_db_revision(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyClusterDbRevision">>, Input, Options).
 
-%% @doc Modifies the list of AWS Identity and Access Management (IAM) roles
-%% that can be used by the cluster to access other AWS services.
+%% @doc Modifies the list of Identity and Access Management (IAM) roles that
+%% can be used by the cluster to access other Amazon Web Services services.
 %%
 %% A cluster can have up to 10 IAM roles associated at any time.
 modify_cluster_iam_roles(Client, Input)
@@ -1266,6 +1496,8 @@ modify_cluster_maintenance(Client, Input, Options)
     request(Client, <<"ModifyClusterMaintenance">>, Input, Options).
 
 %% @doc Modifies the parameters of a parameter group.
+%%
+%% For the parameters parameter, it can't contain ASCII characters.
 %%
 %% For more information about parameters and parameter groups, go to Amazon
 %% Redshift Parameter Groups in the Amazon Redshift Cluster Management Guide.
@@ -1307,6 +1539,14 @@ modify_cluster_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyClusterSubnetGroup">>, Input, Options).
 
+%% @doc Modifies a Redshift-managed VPC endpoint.
+modify_endpoint_access(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_endpoint_access(Client, Input, []).
+modify_endpoint_access(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyEndpointAccess">>, Input, Options).
+
 %% @doc Modifies an existing Amazon Redshift event notification subscription.
 modify_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1324,7 +1564,8 @@ modify_scheduled_action(Client, Input, Options)
     request(Client, <<"ModifyScheduledAction">>, Input, Options).
 
 %% @doc Modifies the number of days to retain snapshots in the destination
-%% AWS Region after they are copied from the source AWS Region.
+%% Amazon Web Services Region after they are copied from the source Amazon
+%% Web Services Region.
 %%
 %% By default, this operation only changes the retention period of copied
 %% automated snapshots. The retention periods for both new and existing
@@ -1398,6 +1639,14 @@ reboot_cluster(Client, Input)
 reboot_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootCluster">>, Input, Options).
+
+%% @doc From the consumer account, rejects the specified datashare.
+reject_data_share(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    reject_data_share(Client, Input, []).
+reject_data_share(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RejectDataShare">>, Input, Options).
 
 %% @doc Sets one or more parameters of the specified parameter group to their
 %% default values and sets the source values of the parameters to
@@ -1520,8 +1769,16 @@ revoke_cluster_security_group_ingress(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RevokeClusterSecurityGroupIngress">>, Input, Options).
 
-%% @doc Removes the ability of the specified AWS customer account to restore
-%% the specified snapshot.
+%% @doc Revokes access to a cluster.
+revoke_endpoint_access(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    revoke_endpoint_access(Client, Input, []).
+revoke_endpoint_access(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RevokeEndpointAccess">>, Input, Options).
+
+%% @doc Removes the ability of the specified Amazon Web Services account to
+%% restore the specified snapshot.
 %%
 %% If the account is currently restoring the snapshot, the restore will run
 %% to completion.
@@ -1542,6 +1799,14 @@ rotate_encryption_key(Client, Input)
 rotate_encryption_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RotateEncryptionKey">>, Input, Options).
+
+%% @doc Updates the status of a partner integration.
+update_partner_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_partner_status(Client, Input, []).
+update_partner_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdatePartnerStatus">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

@@ -6,10 +6,16 @@
 %% Defines the public endpoint for the AWS Lake Formation service.
 -module(aws_lakeformation).
 
--export([batch_grant_permissions/2,
+-export([add_l_f_tags_to_resource/2,
+         add_l_f_tags_to_resource/3,
+         batch_grant_permissions/2,
          batch_grant_permissions/3,
          batch_revoke_permissions/2,
          batch_revoke_permissions/3,
+         create_l_f_tag/2,
+         create_l_f_tag/3,
+         delete_l_f_tag/2,
+         delete_l_f_tag/3,
          deregister_resource/2,
          deregister_resource/3,
          describe_resource/2,
@@ -18,8 +24,14 @@
          get_data_lake_settings/3,
          get_effective_permissions_for_path/2,
          get_effective_permissions_for_path/3,
+         get_l_f_tag/2,
+         get_l_f_tag/3,
+         get_resource_l_f_tags/2,
+         get_resource_l_f_tags/3,
          grant_permissions/2,
          grant_permissions/3,
+         list_l_f_tags/2,
+         list_l_f_tags/3,
          list_permissions/2,
          list_permissions/3,
          list_resources/2,
@@ -28,8 +40,16 @@
          put_data_lake_settings/3,
          register_resource/2,
          register_resource/3,
+         remove_l_f_tags_from_resource/2,
+         remove_l_f_tags_from_resource/3,
          revoke_permissions/2,
          revoke_permissions/3,
+         search_databases_by_l_f_tags/2,
+         search_databases_by_l_f_tags/3,
+         search_tables_by_l_f_tags/2,
+         search_tables_by_l_f_tags/3,
+         update_l_f_tag/2,
+         update_l_f_tag/3,
          update_resource/2,
          update_resource/3]).
 
@@ -38,6 +58,14 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Attaches one or more tags to an existing resource.
+add_l_f_tags_to_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_l_f_tags_to_resource(Client, Input, []).
+add_l_f_tags_to_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddLFTagsToResource">>, Input, Options).
 
 %% @doc Batch operation to grant permissions to the principal.
 batch_grant_permissions(Client, Input)
@@ -54,6 +82,29 @@ batch_revoke_permissions(Client, Input)
 batch_revoke_permissions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchRevokePermissions">>, Input, Options).
+
+%% @doc Creates a tag with the specified name and values.
+create_l_f_tag(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_l_f_tag(Client, Input, []).
+create_l_f_tag(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateLFTag">>, Input, Options).
+
+%% @doc Deletes the specified tag key name.
+%%
+%% If the attribute key does not exist or the tag does not exist, then the
+%% operation will not do anything. If the attribute key exists, then the
+%% operation checks if any resources are tagged with this attribute key, if
+%% yes, the API throws a 400 Exception with the message "Delete not allowed"
+%% as the tag key is still attached with resources. You can consider
+%% untagging resources with this tag key.
+delete_l_f_tag(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_l_f_tag(Client, Input, []).
+delete_l_f_tag(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteLFTag">>, Input, Options).
 
 %% @doc Deregisters the resource as managed by the Data Catalog.
 %%
@@ -96,6 +147,22 @@ get_effective_permissions_for_path(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEffectivePermissionsForPath">>, Input, Options).
 
+%% @doc Returns a tag definition.
+get_l_f_tag(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_l_f_tag(Client, Input, []).
+get_l_f_tag(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetLFTag">>, Input, Options).
+
+%% @doc Returns the tags applied to a resource.
+get_resource_l_f_tags(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_resource_l_f_tags(Client, Input, []).
+get_resource_l_f_tags(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetResourceLFTags">>, Input, Options).
+
 %% @doc Grants permissions to the principal to access metadata in the Data
 %% Catalog and data organized in underlying data storage such as Amazon S3.
 %%
@@ -107,6 +174,14 @@ grant_permissions(Client, Input)
 grant_permissions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GrantPermissions">>, Input, Options).
+
+%% @doc Lists tags that the requester has permission to view.
+list_l_f_tags(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_l_f_tags(Client, Input, []).
+list_l_f_tags(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListLFTags">>, Input, Options).
 
 %% @doc Returns a list of the principal permissions on the resource, filtered
 %% by the permissions of the caller.
@@ -178,6 +253,18 @@ register_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterResource">>, Input, Options).
 
+%% @doc Removes a tag from the resource.
+%%
+%% Only database, table, or tableWithColumns resource are allowed. To tag
+%% columns, use the column inclusion list in `tableWithColumns' to specify
+%% column input.
+remove_l_f_tags_from_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_l_f_tags_from_resource(Client, Input, []).
+remove_l_f_tags_from_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveLFTagsFromResource">>, Input, Options).
+
 %% @doc Revokes permissions to the principal to access metadata in the Data
 %% Catalog and data organized in underlying data storage such as Amazon S3.
 revoke_permissions(Client, Input)
@@ -186,6 +273,49 @@ revoke_permissions(Client, Input)
 revoke_permissions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RevokePermissions">>, Input, Options).
+
+%% @doc This operation allows a search on `DATABASE' resources by
+%% `TagCondition'.
+%%
+%% This operation is used by admins who want to grant user permissions on
+%% certain `TagConditions'. Before making a grant, the admin can use
+%% `SearchDatabasesByTags' to find all resources where the given
+%% `TagConditions' are valid to verify whether the returned resources can be
+%% shared.
+search_databases_by_l_f_tags(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    search_databases_by_l_f_tags(Client, Input, []).
+search_databases_by_l_f_tags(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SearchDatabasesByLFTags">>, Input, Options).
+
+%% @doc This operation allows a search on `TABLE' resources by `LFTag's.
+%%
+%% This will be used by admins who want to grant user permissions on certain
+%% LFTags. Before making a grant, the admin can use `SearchTablesByLFTags' to
+%% find all resources where the given `LFTag's are valid to verify whether
+%% the returned resources can be shared.
+search_tables_by_l_f_tags(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    search_tables_by_l_f_tags(Client, Input, []).
+search_tables_by_l_f_tags(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SearchTablesByLFTags">>, Input, Options).
+
+%% @doc Updates the list of possible values for the specified tag key.
+%%
+%% If the tag does not exist, the operation throws an
+%% EntityNotFoundException. The values in the delete key values will be
+%% deleted from list of possible values. If any value in the delete key
+%% values is attached to a resource, then API errors out with a 400 Exception
+%% - "Update not allowed". Untag the attribute before deleting the tag key's
+%% value.
+update_l_f_tag(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_l_f_tag(Client, Input, []).
+update_l_f_tag(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateLFTag">>, Input, Options).
 
 %% @doc Updates the data access role used for vending access to the given
 %% (registered) resource in AWS Lake Formation.

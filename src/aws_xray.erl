@@ -1,8 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS X-Ray provides APIs for managing debug traces and retrieving
-%% service maps and other data created by processing those traces.
+%% @doc Amazon Web Services X-Ray provides APIs for managing debug traces and
+%% retrieving service maps and other data created by processing those traces.
 -module(aws_xray).
 
 -export([batch_get_traces/2,
@@ -118,13 +118,12 @@ create_group(Client, Input0, Options0) ->
 %% @doc Creates a rule to control sampling behavior for instrumented
 %% applications.
 %%
-%% Services retrieve rules with `GetSamplingRules', and evaluate each rule in
+%% Services retrieve rules with GetSamplingRules, and evaluate each rule in
 %% ascending order of priority for each request. If a rule matches, the
 %% service records a trace, borrowing it from the reservoir size. After 10
-%% seconds, the service reports back to X-Ray with `GetSamplingTargets' to
-%% get updated versions of each in-use rule. The updated rule contains a
-%% trace quota that the service can use instead of borrowing from the
-%% reservoir.
+%% seconds, the service reports back to X-Ray with GetSamplingTargets to get
+%% updated versions of each in-use rule. The updated rule contains a trace
+%% quota that the service can use instead of borrowing from the reservoir.
 create_sampling_rule(Client, Input) ->
     create_sampling_rule(Client, Input, []).
 create_sampling_rule(Client, Input0, Options0) ->
@@ -442,9 +441,9 @@ get_sampling_targets(Client, Input0, Options0) ->
 %% requests, and downstream services that they call as a result.
 %%
 %% Root services process incoming requests and make calls to downstream
-%% services. Root services are applications that use the AWS X-Ray SDK.
-%% Downstream services can be other applications, AWS resources, HTTP web
-%% APIs, or SQL databases.
+%% services. Root services are applications that use the Amazon Web Services
+%% X-Ray SDK. Downstream services can be other applications, Amazon Web
+%% Services resources, HTTP web APIs, or SQL databases.
 get_service_graph(Client, Input) ->
     get_service_graph(Client, Input, []).
 get_service_graph(Client, Input0, Options0) ->
@@ -532,8 +531,8 @@ get_trace_graph(Client, Input0, Options0) ->
 %% `annotation.account = "12345"'
 %%
 %% For a full list of indexed fields and keywords that you can use in filter
-%% expressions, see Using Filter Expressions in the AWS X-Ray Developer
-%% Guide.
+%% expressions, see Using Filter Expressions in the Amazon Web Services X-Ray
+%% Developer Guide.
 get_trace_summaries(Client, Input) ->
     get_trace_summaries(Client, Input, []).
 get_trace_summaries(Client, Input0, Options0) ->
@@ -556,8 +555,8 @@ get_trace_summaries(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of tags that are applied to the specified AWS X-Ray
-%% group or sampling rule.
+%% @doc Returns a list of tags that are applied to the specified Amazon Web
+%% Services X-Ray group or sampling rule.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
 list_tags_for_resource(Client, Input0, Options0) ->
@@ -603,7 +602,7 @@ put_encryption_config(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Used by the AWS X-Ray daemon to upload telemetry.
+%% @doc Used by the Amazon Web Services X-Ray daemon to upload telemetry.
 put_telemetry_records(Client, Input) ->
     put_telemetry_records(Client, Input, []).
 put_telemetry_records(Client, Input0, Options0) ->
@@ -626,14 +625,15 @@ put_telemetry_records(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Uploads segment documents to AWS X-Ray.
+%% @doc Uploads segment documents to Amazon Web Services X-Ray.
 %%
 %% The X-Ray SDK generates segment documents and sends them to the X-Ray
 %% daemon, which uploads them in batches. A segment document can be a
 %% completed segment, an in-progress segment, or an array of subsegments.
 %%
 %% Segments must include the following fields. For the full segment document
-%% schema, see AWS X-Ray Segment Documents in the AWS X-Ray Developer Guide.
+%% schema, see Amazon Web Services X-Ray Segment Documents in the Amazon Web
+%% Services X-Ray Developer Guide.
 %%
 %% == Required segment document fields ==
 %%
@@ -697,7 +697,8 @@ put_trace_segments(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Applies tags to an existing AWS X-Ray group or sampling rule.
+%% @doc Applies tags to an existing Amazon Web Services X-Ray group or
+%% sampling rule.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->
@@ -720,7 +721,8 @@ tag_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes tags from an AWS X-Ray group or sampling rule.
+%% @doc Removes tags from an Amazon Web Services X-Ray group or sampling
+%% rule.
 %%
 %% You cannot edit or delete system tags (those with an `aws:' prefix).
 untag_resource(Client, Input) ->
@@ -826,6 +828,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

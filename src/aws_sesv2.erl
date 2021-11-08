@@ -3,33 +3,13 @@
 
 %% @doc Amazon SES API v2
 %%
-%% Welcome to the Amazon SES API v2 Reference.
+%% Amazon SES is an Amazon Web Services service that you can use to send
+%% email messages to your customers.
 %%
-%% This guide provides information about the Amazon SES API v2, including
-%% supported operations, data types, parameters, and schemas.
-%%
-%% Amazon SES is an AWS service that you can use to send email messages to
-%% your customers.
-%%
-%% If you're new to Amazon SES API v2, you might find it helpful to also
-%% review the Amazon Simple Email Service Developer Guide. The Amazon SES
-%% Developer Guide provides information and code samples that demonstrate how
-%% to use Amazon SES API v2 features programmatically.
-%%
-%% The Amazon SES API v2 is available in several AWS Regions and it provides
-%% an endpoint for each of these Regions. For a list of all the Regions and
-%% endpoints where the API is currently available, see AWS Service Endpoints
-%% in the Amazon Web Services General Reference. To learn more about AWS
-%% Regions, see Managing AWS Regions in the Amazon Web Services General
-%% Reference.
-%%
-%% In each Region, AWS maintains multiple Availability Zones. These
-%% Availability Zones are physically isolated from each other, but are united
-%% by private, low-latency, high-throughput, and highly redundant network
-%% connections. These Availability Zones enable us to provide very high
-%% levels of availability and redundancy, while also minimizing latency. To
-%% learn more about the number of Availability Zones that are available in
-%% each Region, see AWS Global Infrastructure.
+%% If you're new to Amazon SES API v2, you might find it helpful to review
+%% the Amazon Simple Email Service Developer Guide. The Amazon SES Developer
+%% Guide provides information and code samples that demonstrate how to use
+%% Amazon SES API v2 features programmatically.
 -module(aws_sesv2).
 
 -export([create_configuration_set/2,
@@ -370,9 +350,9 @@ create_custom_verification_email_template(Client, Input0, Options0) ->
 %% @doc Create a new pool of dedicated IP addresses.
 %%
 %% A pool can include one or more dedicated IP addresses that are associated
-%% with your AWS account. You can associate a pool with a configuration set.
-%% When you send an email that uses that configuration set, the message is
-%% sent from one of the addresses in the associated pool.
+%% with your Amazon Web Services account. You can associate a pool with a
+%% configuration set. When you send an email that uses that configuration
+%% set, the message is sent from one of the addresses in the associated pool.
 create_dedicated_ip_pool(Client, Input) ->
     create_dedicated_ip_pool(Client, Input, []).
 create_dedicated_ip_pool(Client, Input0, Options0) ->
@@ -451,8 +431,8 @@ create_deliverability_test_report(Client, Input0, Options0) ->
 %% Your Own DKIM (BYODKIM). To use BYODKIM, your call to the
 %% `CreateEmailIdentity' operation has to include the `DkimSigningAttributes'
 %% object. When you specify this object, you provide a selector (a component
-%% of the DNS record name that identifies the public key that you want to use
-%% for DKIM authentication) and a private key.
+%% of the DNS record name that identifies the public key to use for DKIM
+%% authentication) and a private key.
 %%
 %% When you verify a domain, this operation provides a set of DKIM tokens,
 %% which you can convert into CNAME tokens. You add these CNAME tokens to the
@@ -836,7 +816,7 @@ delete_suppressed_destination(Client, EmailAddress, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Obtain information about the email-sending status and capabilities of
-%% your Amazon SES account in the current AWS Region.
+%% your Amazon SES account in the current Amazon Web Services Region.
 get_account(Client)
   when is_map(Client) ->
     get_account(Client, #{}, #{}).
@@ -1051,8 +1031,8 @@ get_dedicated_ip(Client, Ip, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List the dedicated IP addresses that are associated with your AWS
-%% account.
+%% @doc List the dedicated IP addresses that are associated with your Amazon
+%% Web Services account.
 get_dedicated_ips(Client)
   when is_map(Client) ->
     get_dedicated_ips(Client, #{}, #{}).
@@ -1091,8 +1071,9 @@ get_dedicated_ips(Client, QueryMap, HeadersMap, Options0)
 %%
 %% When you use the Deliverability dashboard, you pay a monthly subscription
 %% charge, in addition to any other fees that you accrue by using Amazon SES
-%% and other AWS services. For more information about the features and cost
-%% of a Deliverability dashboard subscription, see Amazon SES Pricing.
+%% and other Amazon Web Services services. For more information about the
+%% features and cost of a Deliverability dashboard subscription, see Amazon
+%% SES Pricing.
 get_deliverability_dashboard_options(Client)
   when is_map(Client) ->
     get_deliverability_dashboard_options(Client, #{}, #{}).
@@ -1419,7 +1400,7 @@ list_contacts(Client, ContactListName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the existing custom verification email templates for your
-%% account in the current AWS Region.
+%% account in the current Amazon Web Services Region.
 %%
 %% For more information about custom verification email templates, see Using
 %% Custom Verification Email Templates in the Amazon SES Developer Guide.
@@ -1452,8 +1433,8 @@ list_custom_verification_email_templates(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List all of the dedicated IP pools that exist in your AWS account in
-%% the current Region.
+%% @doc List all of the dedicated IP pools that exist in your Amazon Web
+%% Services account in the current Region.
 list_dedicated_ip_pools(Client)
   when is_map(Client) ->
     list_dedicated_ip_pools(Client, #{}, #{}).
@@ -1548,7 +1529,7 @@ list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDat
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all of the email identities that are associated
-%% with your AWS account.
+%% with your Amazon Web Services account.
 %%
 %% An identity can be either an email address or a domain. This operation
 %% returns identities that are verified as well as those that aren't. This
@@ -1582,7 +1563,7 @@ list_email_identities(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the email templates present in your Amazon SES account in the
-%% current AWS Region.
+%% current Amazon Web Services Region.
 %%
 %% You can execute this operation no more than once per second.
 list_email_templates(Client)
@@ -1825,7 +1806,8 @@ put_configuration_set_delivery_options(Client, ConfigurationSetName, Input0, Opt
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enable or disable collection of reputation metrics for emails that
-%% you send using a particular configuration set in a specific AWS Region.
+%% you send using a particular configuration set in a specific Amazon Web
+%% Services Region.
 put_configuration_set_reputation_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_reputation_options(Client, ConfigurationSetName, Input, []).
 put_configuration_set_reputation_options(Client, ConfigurationSetName, Input0, Options0) ->
@@ -1849,7 +1831,7 @@ put_configuration_set_reputation_options(Client, ConfigurationSetName, Input0, O
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enable or disable email sending for messages that use a particular
-%% configuration set in a specific AWS Region.
+%% configuration set in a specific Amazon Web Services Region.
 put_configuration_set_sending_options(Client, ConfigurationSetName, Input) ->
     put_configuration_set_sending_options(Client, ConfigurationSetName, Input, []).
 put_configuration_set_sending_options(Client, ConfigurationSetName, Input0, Options0) ->
@@ -1923,7 +1905,7 @@ put_configuration_set_tracking_options(Client, ConfigurationSetName, Input0, Opt
 %% @doc Move a dedicated IP address to an existing dedicated IP pool.
 %%
 %% The dedicated IP address that you specify must already exist, and must be
-%% associated with your AWS account.
+%% associated with your Amazon Web Services account.
 %%
 %% The dedicated IP pool you specify must already exist. You can create a new
 %% pool by using the `CreateDedicatedIpPool' operation.
@@ -1981,8 +1963,9 @@ put_dedicated_ip_warmup_attributes(Client, Ip, Input0, Options0) ->
 %%
 %% When you use the Deliverability dashboard, you pay a monthly subscription
 %% charge, in addition to any other fees that you accrue by using Amazon SES
-%% and other AWS services. For more information about the features and cost
-%% of a Deliverability dashboard subscription, see Amazon SES Pricing.
+%% and other Amazon Web Services services. For more information about the
+%% features and cost of a Deliverability dashboard subscription, see Amazon
+%% SES Pricing.
 put_deliverability_dashboard_option(Client, Input) ->
     put_deliverability_dashboard_option(Client, Input, []).
 put_deliverability_dashboard_option(Client, Input0, Options0) ->
@@ -2058,6 +2041,8 @@ put_email_identity_dkim_attributes(Client, EmailIdentity, Input0, Options0) ->
 %%
 %% <ul> <li> Update the signing attributes for an identity that uses Bring
 %% Your Own DKIM (BYODKIM).
+%%
+%% </li> <li> Update the key length that should be used for Easy DKIM.
 %%
 %% </li> <li> Change from using no DKIM authentication to using Easy DKIM.
 %%
@@ -2197,7 +2182,8 @@ send_bulk_email(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds an email address to the list of identities for your Amazon SES
-%% account in the current AWS Region and attempts to verify it.
+%% account in the current Amazon Web Services Region and attempts to verify
+%% it.
 %%
 %% As a result of executing this operation, a customized verification email
 %% is sent to the specified address.
@@ -2232,7 +2218,7 @@ send_custom_verification_email(Client, Input0, Options0) ->
 
 %% @doc Sends an email message.
 %%
-%% You can use the Amazon SES API v2 to send two types of messages:
+%% You can use the Amazon SES API v2 to send the following types of messages:
 %%
 %% <ul> <li> Simple – A standard email message. When you create this type of
 %% message, you specify the sender, the recipient, and the message body, and
@@ -2565,6 +2551,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

@@ -8,6 +8,8 @@
          cancel_job/4,
          create_data_set/2,
          create_data_set/3,
+         create_event_action/2,
+         create_event_action/3,
          create_job/2,
          create_job/3,
          create_revision/3,
@@ -16,6 +18,8 @@
          delete_asset/6,
          delete_data_set/3,
          delete_data_set/4,
+         delete_event_action/3,
+         delete_event_action/4,
          delete_revision/4,
          delete_revision/5,
          get_asset/4,
@@ -24,6 +28,9 @@
          get_data_set/2,
          get_data_set/4,
          get_data_set/5,
+         get_event_action/2,
+         get_event_action/4,
+         get_event_action/5,
          get_job/2,
          get_job/4,
          get_job/5,
@@ -36,6 +43,9 @@
          list_data_sets/1,
          list_data_sets/3,
          list_data_sets/4,
+         list_event_actions/1,
+         list_event_actions/3,
+         list_event_actions/4,
          list_jobs/1,
          list_jobs/3,
          list_jobs/4,
@@ -55,6 +65,8 @@
          update_asset/6,
          update_data_set/3,
          update_data_set/4,
+         update_event_action/3,
+         update_event_action/4,
          update_revision/4,
          update_revision/5]).
 
@@ -95,6 +107,29 @@ create_data_set(Client, Input) ->
 create_data_set(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/data-sets"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This operation creates an event action.
+create_event_action(Client, Input) ->
+    create_event_action(Client, Input, []).
+create_event_action(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/event-actions"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -204,6 +239,29 @@ delete_data_set(Client, DataSetId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc This operation deletes the event action.
+delete_event_action(Client, EventActionId, Input) ->
+    delete_event_action(Client, EventActionId, Input, []).
+delete_event_action(Client, EventActionId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/event-actions/", aws_util:encode_uri(EventActionId), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This operation deletes a revision.
 delete_revision(Client, DataSetId, RevisionId, Input) ->
     delete_revision(Client, DataSetId, RevisionId, Input, []).
@@ -262,6 +320,29 @@ get_data_set(Client, DataSetId, QueryMap, HeadersMap)
 get_data_set(Client, DataSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This operation retrieves information about an event action.
+get_event_action(Client, EventActionId)
+  when is_map(Client) ->
+    get_event_action(Client, EventActionId, #{}, #{}).
+
+get_event_action(Client, EventActionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_event_action(Client, EventActionId, QueryMap, HeadersMap, []).
+
+get_event_action(Client, EventActionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/event-actions/", aws_util:encode_uri(EventActionId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -376,6 +457,35 @@ list_data_sets(Client, QueryMap, HeadersMap, Options0)
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"origin">>, maps:get(<<"origin">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This operation lists your event actions.
+list_event_actions(Client)
+  when is_map(Client) ->
+    list_event_actions(Client, #{}, #{}).
+
+list_event_actions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_event_actions(Client, QueryMap, HeadersMap, []).
+
+list_event_actions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/event-actions"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"eventSourceId">>, maps:get(<<"eventSourceId">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -580,6 +690,29 @@ update_data_set(Client, DataSetId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc This operation updates the event action.
+update_event_action(Client, EventActionId, Input) ->
+    update_event_action(Client, EventActionId, Input, []).
+update_event_action(Client, EventActionId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v1/event-actions/", aws_util:encode_uri(EventActionId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This operation updates a revision.
 update_revision(Client, DataSetId, RevisionId, Input) ->
     update_revision(Client, DataSetId, RevisionId, Input, []).
@@ -638,6 +771,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

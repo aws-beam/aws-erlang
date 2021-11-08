@@ -3,7 +3,7 @@
 
 %% @doc AWS CodeArtifact is a fully managed artifact repository compatible
 %% with language-native package managers and build tools such as npm, Apache
-%% Maven, NuGet, and pip.
+%% Maven, and pip.
 %%
 %% You can use CodeArtifact to share packages with development teams and pull
 %% packages. Packages can be pulled from both public and CodeArtifact
@@ -20,8 +20,8 @@
 %% versions, each of which maps to a set of assets, or files. Repositories
 %% are polyglot, so a single repository can contain packages of any supported
 %% type. Each repository exposes endpoints for fetching and publishing
-%% packages using tools like the `npm' CLI, the `NuGet' CLI, the Maven CLI (
-%% `mvn' ), and `pip' .
+%% packages using tools like the `npm' CLI, the Maven CLI ( `mvn' ), and
+%% `pip' .
 %%
 %% </li> <li> Domain: Repositories are aggregated into a higher-level entity
 %% known as a domain. All package assets and metadata are stored in the
@@ -44,7 +44,7 @@
 %%
 %% </li> <li> Package: A package is a bundle of software and the metadata
 %% required to resolve dependencies and install the software. CodeArtifact
-%% supports npm, PyPI, Maven, and NuGet package formats.
+%% supports npm, PyPI, and Maven package formats.
 %%
 %% In CodeArtifact, a package consists of:
 %%
@@ -107,8 +107,8 @@
 %% </li> <li> `DescribeDomain': Returns a `DomainDescription' object that
 %% contains information about the requested domain.
 %%
-%% </li> <li> `DescribePackageVersion': Returns a ` PackageVersionDescription
-%% ' object that contains details about a package version.
+%% </li> <li> `DescribePackageVersion': Returns a PackageVersionDescription
+%% object that contains details about a package version.
 %%
 %% </li> <li> `DescribeRepository': Returns a `RepositoryDescription' object
 %% that contains detailed information about the requested repository.
@@ -144,8 +144,6 @@
 %%
 %% </li> <li> `maven'
 %%
-%% </li> <li> `nuget'
-%%
 %% </li> </ul> </li> <li> `GetRepositoryPermissionsPolicy': Returns the
 %% resource policy that is set on a repository.
 %%
@@ -169,18 +167,11 @@
 %% </li> <li> `ListRepositoriesInDomain': Returns a list of the repositories
 %% in a domain.
 %%
-%% </li> <li> `ListTagsForResource': Returns a list of the tags associated
-%% with a resource.
-%%
 %% </li> <li> `PutDomainPermissionsPolicy': Attaches a resource policy to a
 %% domain.
 %%
 %% </li> <li> `PutRepositoryPermissionsPolicy': Sets the resource policy on a
 %% repository that specifies permissions to access it.
-%%
-%% </li> <li> `TagResource': Adds or updates tags for a resource.
-%%
-%% </li> <li> `UntagResource': Removes a tag from a resource.
 %%
 %% </li> <li> `UpdatePackageVersionsStatus': Updates the status of one or
 %% more versions of a package.
@@ -459,8 +450,8 @@ delete_domain_permissions_policy(Client, Input0, Options0) ->
 %% want to remove a package version from your repository and be able to
 %% restore it later, set its status to `Archived'. Archived packages cannot
 %% be downloaded from a repository and don't show up with list package APIs
-%% (for example, ` ListackageVersions '), but you can restore them using `
-%% UpdatePackageVersionsStatus '.
+%% (for example, ListackageVersions), but you can restore them using
+%% UpdatePackageVersionsStatus.
 delete_package_versions(Client, Input) ->
     delete_package_versions(Client, Input, []).
 delete_package_versions(Client, Input0, Options0) ->
@@ -550,7 +541,7 @@ delete_repository_permissions_policy(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a `DomainDescription' object that contains information about
+%% @doc Returns a DomainDescription object that contains information about
 %% the requested domain.
 describe_domain(Client, Domain)
   when is_map(Client) ->
@@ -579,8 +570,8 @@ describe_domain(Client, Domain, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a `PackageVersionDescription' object that contains
-%% information about the requested package version.
+%% @doc Returns a PackageVersionDescription object that contains information
+%% about the requested package version.
 describe_package_version(Client, Domain, Format, Package, PackageVersion, Repository)
   when is_map(Client) ->
     describe_package_version(Client, Domain, Format, Package, PackageVersion, Repository, #{}, #{}).
@@ -677,10 +668,10 @@ disassociate_external_connection(Client, Input0, Options0) ->
 %% its assets are deleted.
 %%
 %% To view all disposed package versions in a repository, use
-%% `ListPackageVersions' and set the `status' parameter to `Disposed'.
+%% ListPackageVersions and set the status parameter to `Disposed'.
 %%
 %% To view information about a disposed package version, use
-%% `DescribePackageVersion' ..
+%% DescribePackageVersion.
 dispose_package_versions(Client, Input) ->
     dispose_package_versions(Client, Input, []).
 dispose_package_versions(Client, Input0, Options0) ->
@@ -895,8 +886,6 @@ get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repo
 %%
 %% </li> <li> `maven'
 %%
-%% </li> <li> `nuget'
-%%
 %% </li> </ul>
 get_repository_endpoint(Client, Domain, Format, Repository)
   when is_map(Client) ->
@@ -956,8 +945,8 @@ get_repository_permissions_policy(Client, Domain, Repository, QueryMap, HeadersM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of ` DomainSummary ' objects for all domains owned by
-%% the AWS account that makes this call.
+%% @doc Returns a list of DomainSummary objects for all domains owned by the
+%% AWS account that makes this call.
 %%
 %% Each returned `DomainSummary' object contains information about a domain.
 list_domains(Client, Input) ->
@@ -982,7 +971,7 @@ list_domains(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of `AssetSummary' objects for assets in a package
+%% @doc Returns a list of AssetSummary objects for assets in a package
 %% version.
 list_package_version_assets(Client, Input) ->
     list_package_version_assets(Client, Input, []).
@@ -1017,7 +1006,7 @@ list_package_version_assets(Client, Input0, Options0) ->
 
 %% @doc Returns the direct dependencies for a package version.
 %%
-%% The dependencies are returned as `PackageDependency' objects. CodeArtifact
+%% The dependencies are returned as PackageDependency objects. CodeArtifact
 %% extracts the dependencies for a package version from the metadata file for
 %% the package format (for example, the `package.json' file for npm packages
 %% and the `pom.xml' file for Maven). Any package version dependencies that
@@ -1052,8 +1041,8 @@ list_package_version_dependencies(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of `PackageVersionSummary' objects for package
-%% versions in a repository that match the request parameters.
+%% @doc Returns a list of PackageVersionSummary objects for package versions
+%% in a repository that match the request parameters.
 list_package_versions(Client, Input) ->
     list_package_versions(Client, Input, []).
 list_package_versions(Client, Input0, Options0) ->
@@ -1086,8 +1075,8 @@ list_package_versions(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of `PackageSummary' objects for packages in a
-%% repository that match the request parameters.
+%% @doc Returns a list of PackageSummary objects for packages in a repository
+%% that match the request parameters.
 list_packages(Client, Input) ->
     list_packages(Client, Input, []).
 list_packages(Client, Input0, Options0) ->
@@ -1118,7 +1107,7 @@ list_packages(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of `RepositorySummary' objects.
+%% @doc Returns a list of RepositorySummary objects.
 %%
 %% Each `RepositorySummary' contains information about a repository in the
 %% specified AWS account and that matches the input parameters.
@@ -1147,7 +1136,7 @@ list_repositories(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of `RepositorySummary' objects.
+%% @doc Returns a list of RepositorySummary objects.
 %%
 %% Each `RepositorySummary' contains information about a repository in the
 %% specified domain and that matches the input parameters.
@@ -1403,6 +1392,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

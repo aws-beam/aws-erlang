@@ -1,10 +1,10 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Database Migration Service
+%% @doc Database Migration Service
 %%
-%% AWS Database Migration Service (AWS DMS) can migrate your data to and from
-%% the most widely used commercial and open-source databases such as Oracle,
+%% Database Migration Service (DMS) can migrate your data to and from the
+%% most widely used commercial and open-source databases such as Oracle,
 %% PostgreSQL, Microsoft SQL Server, Amazon Redshift, MariaDB, Amazon Aurora,
 %% MySQL, and SAP Adaptive Server Enterprise (ASE).
 %%
@@ -12,8 +12,8 @@
 %% well as heterogeneous migrations between different database platforms,
 %% such as Oracle to MySQL or SQL Server to PostgreSQL.
 %%
-%% For more information about AWS DMS, see What Is AWS Database Migration
-%% Service? in the AWS Database Migration User Guide.
+%% For more information about DMS, see What Is Database Migration Service? in
+%% the Database Migration Service User Guide.
 -module(aws_database_migration).
 
 -export([add_tags_to_resource/2,
@@ -56,6 +56,8 @@
          describe_certificates/3,
          describe_connections/2,
          describe_connections/3,
+         describe_endpoint_settings/2,
+         describe_endpoint_settings/3,
          describe_endpoint_types/2,
          describe_endpoint_types/3,
          describe_endpoints/2,
@@ -131,7 +133,7 @@
 %% API
 %%====================================================================
 
-%% @doc Adds metadata tags to an AWS DMS resource, including replication
+%% @doc Adds metadata tags to an DMS resource, including replication
 %% instance, endpoint, security group, and migration task.
 %%
 %% These tags can also be used with cost allocation reporting to track cost
@@ -166,6 +168,13 @@ cancel_replication_task_assessment_run(Client, Input, Options)
     request(Client, <<"CancelReplicationTaskAssessmentRun">>, Input, Options).
 
 %% @doc Creates an endpoint using the provided settings.
+%%
+%% For a MySQL source or target endpoint, don't explicitly specify the
+%% database using the `DatabaseName' request parameter on the
+%% `CreateEndpoint' API call. Specifying `DatabaseName' when you create a
+%% MySQL endpoint replicates all the task tables to this single database. For
+%% MySQL endpoints, you specify the database only when you specify the schema
+%% in the table-mapping rules of the DMS task.
 create_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint(Client, Input, []).
@@ -173,23 +182,23 @@ create_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEndpoint">>, Input, Options).
 
-%% @doc Creates an AWS DMS event notification subscription.
+%% @doc Creates an DMS event notification subscription.
 %%
 %% You can specify the type of source (`SourceType') you want to be notified
-%% of, provide a list of AWS DMS source IDs (`SourceIds') that triggers the
+%% of, provide a list of DMS source IDs (`SourceIds') that triggers the
 %% events, and provide a list of event categories (`EventCategories') for
 %% events you want to be notified of. If you specify both the `SourceType'
 %% and `SourceIds', such as `SourceType = replication-instance' and
 %% `SourceIdentifier = my-replinstance', you will be notified of all the
 %% replication instance events for the specified source. If you specify a
 %% `SourceType' but don't specify a `SourceIdentifier', you receive notice of
-%% the events for that source type for all your AWS DMS sources. If you don't
+%% the events for that source type for all your DMS sources. If you don't
 %% specify either `SourceType' nor `SourceIdentifier', you will be notified
-%% of events generated from all AWS DMS sources belonging to your customer
+%% of events generated from all DMS sources belonging to your customer
 %% account.
 %%
-%% For more information about AWS DMS events, see Working with Events and
-%% Notifications in the AWS Database Migration Service User Guide.
+%% For more information about DMS events, see Working with Events and
+%% Notifications in the Database Migration Service User Guide.
 create_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_subscription(Client, Input, []).
@@ -199,11 +208,11 @@ create_event_subscription(Client, Input, Options)
 
 %% @doc Creates the replication instance using the specified parameters.
 %%
-%% AWS DMS requires that your account have certain roles with appropriate
+%% DMS requires that your account have certain roles with appropriate
 %% permissions before you can create a replication instance. For information
-%% on the required roles, see Creating the IAM Roles to Use With the AWS CLI
-%% and AWS DMS API. For information on the required permissions, see IAM
-%% Permissions Needed to Use AWS DMS.
+%% on the required roles, see Creating the IAM Roles to Use With the CLI and
+%% DMS API. For information on the required permissions, see IAM Permissions
+%% Needed to Use DMS.
 create_replication_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_instance(Client, Input, []).
@@ -213,6 +222,10 @@ create_replication_instance(Client, Input, Options)
 
 %% @doc Creates a replication subnet group given a list of the subnet IDs in
 %% a VPC.
+%%
+%% The VPC needs to have at least one subnet in at least two availability
+%% zones in the Amazon Web Services Region, otherwise the service will throw
+%% a `ReplicationSubnetGroupDoesNotCoverEnoughAZs' exception.
 create_replication_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_subnet_group(Client, Input, []).
@@ -256,7 +269,7 @@ delete_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEndpoint">>, Input, Options).
 
-%% @doc Deletes an AWS DMS event subscription.
+%% @doc Deletes an DMS event subscription.
 delete_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_subscription(Client, Input, []).
@@ -293,7 +306,7 @@ delete_replication_task(Client, Input, Options)
 
 %% @doc Deletes the record of a single premigration assessment run.
 %%
-%% This operation removes all metadata that AWS DMS maintains about this
+%% This operation removes all metadata that DMS maintains about this
 %% assessment run. However, the operation leaves untouched all information
 %% about this assessment run that is stored in your Amazon S3 bucket.
 delete_replication_task_assessment_run(Client, Input)
@@ -303,11 +316,11 @@ delete_replication_task_assessment_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteReplicationTaskAssessmentRun">>, Input, Options).
 
-%% @doc Lists all of the AWS DMS attributes for a customer account.
+%% @doc Lists all of the DMS attributes for a customer account.
 %%
-%% These attributes include AWS DMS quotas for the account and a unique
-%% account identifier in a particular DMS region. DMS quotas include a list
-%% of resource quotas supported by the account, such as the number of
+%% These attributes include DMS quotas for the account and a unique account
+%% identifier in a particular DMS region. DMS quotas include a list of
+%% resource quotas supported by the account, such as the number of
 %% replication instances allowed. The description for each resource quota,
 %% includes the quota name, current usage toward that quota, and the quota's
 %% maximum value. DMS uses the unique account identifier to name each
@@ -369,6 +382,15 @@ describe_connections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConnections">>, Input, Options).
 
+%% @doc Returns information about the possible endpoint settings available
+%% when you create an endpoint for a specific database engine.
+describe_endpoint_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_endpoint_settings(Client, Input, []).
+describe_endpoint_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeEndpointSettings">>, Input, Options).
+
 %% @doc Returns information about the type of endpoints available.
 describe_endpoint_types(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -390,7 +412,7 @@ describe_endpoints(Client, Input, Options)
 %% specified source type.
 %%
 %% You can see a list of the event categories and source types in Working
-%% with Events and Notifications in the AWS Database Migration Service User
+%% with Events and Notifications in the Database Migration Service User
 %% Guide.
 describe_event_categories(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -416,9 +438,9 @@ describe_event_subscriptions(Client, Input, Options)
 
 %% @doc Lists events for a given source identifier and source type.
 %%
-%% You can also specify a start and end time. For more information on AWS DMS
-%% events, see Working with Events and Notifications in the AWS Database
-%% Migration User Guide.
+%% You can also specify a start and end time. For more information on DMS
+%% events, see Working with Events and Notifications in the Database
+%% Migration Service User Guide.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
@@ -476,9 +498,13 @@ describe_replication_subnet_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReplicationSubnetGroups">>, Input, Options).
 
-%% @doc Returns the task assessment results from Amazon S3.
+%% @doc Returns the task assessment results from the Amazon S3 bucket that
+%% DMS creates in your Amazon Web Services account.
 %%
 %% This action always returns the latest results.
+%%
+%% For more information about DMS task assessments, see Creating a task
+%% assessment report in the Database Migration Service User Guide.
 describe_replication_task_assessment_results(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replication_task_assessment_results(Client, Input, []).
@@ -536,7 +562,7 @@ describe_schemas(Client, Input, Options)
 %% table name, rows inserted, rows updated, and rows deleted.
 %%
 %% Note that the "last updated" column the DMS console only indicates the
-%% time that AWS DMS last updated the table statistics record for a table. It
+%% time that DMS last updated the table statistics record for a table. It
 %% does not indicate the time of the last update to the table.
 describe_table_statistics(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -553,7 +579,7 @@ import_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportCertificate">>, Input, Options).
 
-%% @doc Lists all metadata tags attached to an AWS DMS resource, including
+%% @doc Lists all metadata tags attached to an DMS resource, including
 %% replication instance, endpoint, security group, and migration task.
 %%
 %% For more information, see `Tag' data type description.
@@ -565,6 +591,13 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Modifies the specified endpoint.
+%%
+%% For a MySQL source or target endpoint, don't explicitly specify the
+%% database using the `DatabaseName' request parameter on the
+%% `ModifyEndpoint' API call. Specifying `DatabaseName' when you modify a
+%% MySQL endpoint replicates all the task tables to this single database. For
+%% MySQL endpoints, you specify the database only when you specify the schema
+%% in the table-mapping rules of the DMS task.
 modify_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_endpoint(Client, Input, []).
@@ -572,7 +605,7 @@ modify_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyEndpoint">>, Input, Options).
 
-%% @doc Modifies an existing AWS DMS event notification subscription.
+%% @doc Modifies an existing DMS event notification subscription.
 modify_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_event_subscription(Client, Input, []).
@@ -606,8 +639,8 @@ modify_replication_subnet_group(Client, Input, Options)
 %% You can't modify the task endpoints. The task must be stopped before you
 %% can modify it.
 %%
-%% For more information about AWS DMS tasks, see Working with Migration Tasks
-%% in the AWS Database Migration Service User Guide.
+%% For more information about DMS tasks, see Working with Migration Tasks in
+%% the Database Migration Service User Guide.
 modify_replication_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_replication_task(Client, Input, []).
@@ -618,8 +651,8 @@ modify_replication_task(Client, Input, Options)
 %% @doc Moves a replication task from its current replication instance to a
 %% different target replication instance using the specified parameters.
 %%
-%% The target replication instance must be created with the same or later AWS
-%% DMS version as the current replication instance.
+%% The target replication instance must be created with the same or later DMS
+%% version as the current replication instance.
 move_replication_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     move_replication_task(Client, Input, []).
@@ -651,6 +684,9 @@ refresh_schemas(Client, Input, Options)
     request(Client, <<"RefreshSchemas">>, Input, Options).
 
 %% @doc Reloads the target database table with the source data.
+%%
+%% You can only use this operation with a task in the `RUNNING' state,
+%% otherwise the service will throw an `InvalidResourceStateFault' exception.
 reload_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     reload_tables(Client, Input, []).
@@ -658,7 +694,7 @@ reload_tables(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ReloadTables">>, Input, Options).
 
-%% @doc Removes metadata tags from an AWS DMS resource, including replication
+%% @doc Removes metadata tags from an DMS resource, including replication
 %% instance, endpoint, security group, and migration task.
 %%
 %% For more information, see `Tag' data type description.
@@ -671,8 +707,8 @@ remove_tags_from_resource(Client, Input, Options)
 
 %% @doc Starts the replication task.
 %%
-%% For more information about AWS DMS tasks, see Working with Migration Tasks
-%% in the AWS Database Migration Service User Guide.
+%% For more information about DMS tasks, see Working with Migration Tasks in
+%% the Database Migration Service User Guide.
 start_replication_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_replication_task(Client, Input, []).

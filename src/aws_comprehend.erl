@@ -21,6 +21,8 @@
          batch_detect_syntax/3,
          classify_document/2,
          classify_document/3,
+         contains_pii_entities/2,
+         contains_pii_entities/3,
          create_document_classifier/2,
          create_document_classifier/3,
          create_endpoint/2,
@@ -69,6 +71,8 @@
          detect_syntax/3,
          list_document_classification_jobs/2,
          list_document_classification_jobs/3,
+         list_document_classifier_summaries/2,
+         list_document_classifier_summaries/3,
          list_document_classifiers/2,
          list_document_classifiers/3,
          list_dominant_language_detection_jobs/2,
@@ -77,6 +81,8 @@
          list_endpoints/3,
          list_entities_detection_jobs/2,
          list_entities_detection_jobs/3,
+         list_entity_recognizer_summaries/2,
+         list_entity_recognizer_summaries/3,
          list_entity_recognizers/2,
          list_entity_recognizers/3,
          list_events_detection_jobs/2,
@@ -197,6 +203,16 @@ classify_document(Client, Input)
 classify_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ClassifyDocument">>, Input, Options).
+
+%% @doc Analyzes input text for the presence of personally identifiable
+%% information (PII) and returns the labels of identified PII entity types
+%% such as name, address, bank account number, or phone number.
+contains_pii_entities(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    contains_pii_entities(Client, Input, []).
+contains_pii_entities(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ContainsPiiEntities">>, Input, Options).
 
 %% @doc Creates a new document classifier that you can use to categorize
 %% documents.
@@ -452,6 +468,15 @@ list_document_classification_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDocumentClassificationJobs">>, Input, Options).
 
+%% @doc Gets a list of summaries of the document classifiers that you have
+%% created
+list_document_classifier_summaries(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_document_classifier_summaries(Client, Input, []).
+list_document_classifier_summaries(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDocumentClassifierSummaries">>, Input, Options).
+
 %% @doc Gets a list of the document classifiers that you have created.
 list_document_classifiers(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -484,6 +509,15 @@ list_entities_detection_jobs(Client, Input)
 list_entities_detection_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEntitiesDetectionJobs">>, Input, Options).
+
+%% @doc Gets a list of summaries for the entity recognizers that you have
+%% created.
+list_entity_recognizer_summaries(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_entity_recognizer_summaries(Client, Input, []).
+list_entity_recognizer_summaries(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListEntityRecognizerSummaries">>, Input, Options).
 
 %% @doc Gets a list of the properties of all entity recognizers that you
 %% created, including recognizers currently in training.

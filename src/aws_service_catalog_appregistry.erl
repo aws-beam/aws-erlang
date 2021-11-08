@@ -1,8 +1,9 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Service Catalog AppRegistry enables organizations to understand
-%% the application context of their AWS resources.
+%% @doc Amazon Web Services Service Catalog AppRegistry enables organizations
+%% to understand the application context of their Amazon Web Services
+%% resources.
 %%
 %% AppRegistry provides a repository of your applications, their resources,
 %% and the application metadata that you use within your enterprise.
@@ -27,6 +28,9 @@
          get_application/2,
          get_application/4,
          get_application/5,
+         get_associated_resource/4,
+         get_associated_resource/6,
+         get_associated_resource/7,
          get_attribute_group/2,
          get_attribute_group/4,
          get_attribute_group/5,
@@ -300,6 +304,29 @@ get_application(Client, Application, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets the resource associated with the application.
+get_associated_resource(Client, Application, Resource, ResourceType)
+  when is_map(Client) ->
+    get_associated_resource(Client, Application, Resource, ResourceType, #{}, #{}).
+
+get_associated_resource(Client, Application, Resource, ResourceType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_associated_resource(Client, Application, Resource, ResourceType, QueryMap, HeadersMap, []).
+
+get_associated_resource(Client, Application, Resource, ResourceType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(Application), "/resources/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(Resource), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves an attribute group, either by its name or its ID.
 %%
 %% The attribute group can be specified either by its unique ID or by its
@@ -470,12 +497,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Syncs the resource with what is currently recorded in App registry.
+%% @doc Syncs the resource with current AppRegistry records.
 %%
-%% Specifically, the resource’s App registry system tags are synced with its
-%% associated application. The resource is removed if it is not associated
-%% with the application. The caller must have permissions to read and update
-%% the resource.
+%% Specifically, the resource’s AppRegistry system tags sync with its
+%% associated application. We remove the resource's AppRegistry system tags
+%% if it does not associate with the application. The caller must have
+%% permissions to read and update the resource.
 sync_resource(Client, Resource, ResourceType, Input) ->
     sync_resource(Client, Resource, ResourceType, Input, []).
 sync_resource(Client, Resource, ResourceType, Input0, Options0) ->
@@ -634,6 +661,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

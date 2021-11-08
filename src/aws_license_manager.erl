@@ -1,10 +1,9 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS License Manager
-%%
-%% AWS License Manager makes it easier to manage licenses from software
-%% vendors across multiple AWS accounts and on-premises servers.
+%% @doc License Manager makes it easier to manage licenses from software
+%% vendors across multiple Amazon Web Services accounts and on-premises
+%% servers.
 -module(aws_license_manager).
 
 -export([accept_grant/2,
@@ -23,6 +22,10 @@
          create_license/3,
          create_license_configuration/2,
          create_license_configuration/3,
+         create_license_conversion_task_for_resource/2,
+         create_license_conversion_task_for_resource/3,
+         create_license_manager_report_generator/2,
+         create_license_manager_report_generator/3,
          create_license_version/2,
          create_license_version/3,
          create_token/2,
@@ -33,6 +36,8 @@
          delete_license/3,
          delete_license_configuration/2,
          delete_license_configuration/3,
+         delete_license_manager_report_generator/2,
+         delete_license_manager_report_generator/3,
          delete_token/2,
          delete_token/3,
          extend_license_consumption/2,
@@ -45,6 +50,10 @@
          get_license/3,
          get_license_configuration/2,
          get_license_configuration/3,
+         get_license_conversion_task/2,
+         get_license_conversion_task/3,
+         get_license_manager_report_generator/2,
+         get_license_manager_report_generator/3,
          get_license_usage/2,
          get_license_usage/3,
          get_service_settings/2,
@@ -57,6 +66,10 @@
          list_failures_for_license_configuration_operations/3,
          list_license_configurations/2,
          list_license_configurations/3,
+         list_license_conversion_tasks/2,
+         list_license_conversion_tasks/3,
+         list_license_manager_report_generators/2,
+         list_license_manager_report_generators/3,
          list_license_specifications_for_resource/2,
          list_license_specifications_for_resource/3,
          list_license_versions/2,
@@ -83,6 +96,8 @@
          untag_resource/3,
          update_license_configuration/2,
          update_license_configuration/3,
+         update_license_manager_report_generator/2,
+         update_license_manager_report_generator/3,
          update_license_specifications_for_resource/2,
          update_license_specifications_for_resource/3,
          update_service_settings/2,
@@ -130,7 +145,8 @@ checkout_license(Client, Input, Options)
 
 %% @doc Creates a grant for the specified license.
 %%
-%% A grant shares the use of license entitlements with specific AWS accounts.
+%% A grant shares the use of license entitlements with specific Amazon Web
+%% Services accounts.
 create_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_grant(Client, Input, []).
@@ -168,6 +184,22 @@ create_license_configuration(Client, Input)
 create_license_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLicenseConfiguration">>, Input, Options).
+
+%% @doc Creates a new license conversion task.
+create_license_conversion_task_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_license_conversion_task_for_resource(Client, Input, []).
+create_license_conversion_task_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateLicenseConversionTaskForResource">>, Input, Options).
+
+%% @doc Creates a report generator.
+create_license_manager_report_generator(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_license_manager_report_generator(Client, Input, []).
+create_license_manager_report_generator(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateLicenseManagerReportGenerator">>, Input, Options).
 
 %% @doc Creates a new version of the specified license.
 create_license_version(Client, Input)
@@ -214,6 +246,18 @@ delete_license_configuration(Client, Input)
 delete_license_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLicenseConfiguration">>, Input, Options).
+
+%% @doc Deletes the specified report generator.
+%%
+%% This action deletes the report generator, which stops it from generating
+%% future reports. The action cannot be reversed. It has no effect on the
+%% previous reports from this generator.
+delete_license_manager_report_generator(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_license_manager_report_generator(Client, Input, []).
+delete_license_manager_report_generator(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteLicenseManagerReportGenerator">>, Input, Options).
 
 %% @doc Deletes the specified token.
 %%
@@ -267,6 +311,22 @@ get_license_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLicenseConfiguration">>, Input, Options).
 
+%% @doc Gets information about the specified license type conversion task.
+get_license_conversion_task(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_license_conversion_task(Client, Input, []).
+get_license_conversion_task(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetLicenseConversionTask">>, Input, Options).
+
+%% @doc Gets information about the specified report generator.
+get_license_manager_report_generator(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_license_manager_report_generator(Client, Input, []).
+get_license_manager_report_generator(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetLicenseManagerReportGenerator">>, Input, Options).
+
 %% @doc Gets detailed information about the usage of the specified license.
 get_license_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -319,6 +379,22 @@ list_license_configurations(Client, Input)
 list_license_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLicenseConfigurations">>, Input, Options).
+
+%% @doc Lists the license type conversion tasks for your account.
+list_license_conversion_tasks(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_license_conversion_tasks(Client, Input, []).
+list_license_conversion_tasks(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListLicenseConversionTasks">>, Input, Options).
+
+%% @doc Lists the report generators for your account.
+list_license_manager_report_generators(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_license_manager_report_generators(Client, Input, []).
+list_license_manager_report_generators(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListLicenseManagerReportGenerators">>, Input, Options).
 
 %% @doc Describes the license configurations for the specified resource.
 list_license_specifications_for_resource(Client, Input)
@@ -429,11 +505,22 @@ update_license_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLicenseConfiguration">>, Input, Options).
 
+%% @doc Updates a report generator.
+%%
+%% After you make changes to a report generator, it starts generating new
+%% reports within 60 minutes of being updated.
+update_license_manager_report_generator(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_license_manager_report_generator(Client, Input, []).
+update_license_manager_report_generator(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateLicenseManagerReportGenerator">>, Input, Options).
+
 %% @doc Adds or removes the specified license configurations for the
-%% specified AWS resource.
+%% specified Amazon Web Services resource.
 %%
 %% You can update the license specifications of AMIs, instances, and hosts.
-%% You cannot update the license specifications for launch templates and AWS
+%% You cannot update the license specifications for launch templates and
 %% CloudFormation templates, as they send license configurations to the
 %% operation that creates the resource.
 update_license_specifications_for_resource(Client, Input)

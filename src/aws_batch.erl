@@ -1,24 +1,26 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Using AWS Batch, you can run batch computing workloads on the AWS
-%% Cloud.
+%% @doc Batch
+%%
+%% Using Batch, you can run batch computing workloads on the Cloud.
 %%
 %% Batch computing is a common means for developers, scientists, and
-%% engineers to access large amounts of compute resources. AWS Batch utilizes
-%% the advantages of this computing workload to remove the undifferentiated
-%% heavy lifting of configuring and managing required infrastructure, while
-%% also adopting a familiar batch computing software approach. Given these
-%% advantages, AWS Batch can help you to efficiently provision resources in
-%% response to jobs submitted, thus effectively helping to eliminate capacity
-%% constraints, reduce compute costs, and deliver your results more quickly.
+%% engineers to access large amounts of compute resources. Batch uses the
+%% advantages of this computing workload to remove the undifferentiated heavy
+%% lifting of configuring and managing required infrastructure. At the same
+%% time, it also adopts a familiar batch computing software approach. Given
+%% these advantages, Batch can help you to efficiently provision resources in
+%% response to jobs submitted, thus effectively helping you to eliminate
+%% capacity constraints, reduce compute costs, and deliver your results more
+%% quickly.
 %%
-%% As a fully managed service, AWS Batch can run batch computing workloads of
-%% any scale. AWS Batch automatically provisions compute resources and
-%% optimizes workload distribution based on the quantity and scale of your
-%% specific workloads. With AWS Batch, there's no need to install or manage
-%% batch computing software. This means that you can focus your time and
-%% energy on analyzing results and solving your specific problems.
+%% As a fully managed service, Batch can run batch computing workloads of any
+%% scale. Batch automatically provisions compute resources and optimizes
+%% workload distribution based on the quantity and scale of your specific
+%% workloads. With Batch, there's no need to install or manage batch
+%% computing software. This means that you can focus your time and energy on
+%% analyzing results and solving your specific problems.
 -module(aws_batch).
 
 -export([cancel_job/2,
@@ -67,13 +69,12 @@
 %% API
 %%====================================================================
 
-%% @doc Cancels a job in an AWS Batch job queue.
+%% @doc Cancels a job in an Batch job queue.
 %%
 %% Jobs that are in the `SUBMITTED', `PENDING', or `RUNNABLE' state are
-%% canceled. Jobs that have progressed to `STARTING' or `RUNNING' are not
-%% canceled (but the API operation still succeeds, even if no job is
-%% canceled); these jobs must be terminated with the `TerminateJob'
-%% operation.
+%% canceled. Jobs that have progressed to `STARTING' or `RUNNING' aren't
+%% canceled, but the API operation still succeeds, even if no job is
+%% canceled. These jobs must be terminated with the `TerminateJob' operation.
 cancel_job(Client, Input) ->
     cancel_job(Client, Input, []).
 cancel_job(Client, Input0, Options0) ->
@@ -96,44 +97,44 @@ cancel_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an AWS Batch compute environment.
+%% @doc Creates an Batch compute environment.
 %%
 %% You can create `MANAGED' or `UNMANAGED' compute environments. `MANAGED'
-%% compute environments can use Amazon EC2 or AWS Fargate resources.
-%% `UNMANAGED' compute environments can only use EC2 resources.
+%% compute environments can use Amazon EC2 or Fargate resources. `UNMANAGED'
+%% compute environments can only use EC2 resources.
 %%
-%% In a managed compute environment, AWS Batch manages the capacity and
-%% instance types of the compute resources within the environment. This is
-%% based on the compute resource specification that you define or the launch
-%% template that you specify when you create the compute environment. You can
-%% choose either to use EC2 On-Demand Instances and EC2 Spot Instances, or to
+%% In a managed compute environment, Batch manages the capacity and instance
+%% types of the compute resources within the environment. This is based on
+%% the compute resource specification that you define or the launch template
+%% that you specify when you create the compute environment. Either, you can
+%% choose to use EC2 On-Demand Instances and EC2 Spot Instances. Or, you can
 %% use Fargate and Fargate Spot capacity in your managed compute environment.
 %% You can optionally set a maximum price so that Spot Instances only launch
 %% when the Spot Instance price is less than a specified percentage of the
 %% On-Demand price.
 %%
-%% Multi-node parallel jobs are not supported on Spot Instances.
+%% Multi-node parallel jobs aren't supported on Spot Instances.
 %%
 %% In an unmanaged compute environment, you can manage your own EC2 compute
 %% resources and have a lot of flexibility with how you configure your
-%% compute resources. For example, you can use custom AMI. However, you need
-%% to verify that your AMI meets the Amazon ECS container instance AMI
+%% compute resources. For example, you can use custom AMIs. However, you must
+%% verify that each of your AMIs meet the Amazon ECS container instance AMI
 %% specification. For more information, see container instance AMIs in the
-%% Amazon Elastic Container Service Developer Guide. After you have created
-%% your unmanaged compute environment, you can use the
+%% Amazon Elastic Container Service Developer Guide. After you created your
+%% unmanaged compute environment, you can use the
 %% `DescribeComputeEnvironments' operation to find the Amazon ECS cluster
-%% that's associated with it. Then, manually launch your container instances
-%% into that Amazon ECS cluster. For more information, see Launching an
-%% Amazon ECS container instance in the Amazon Elastic Container Service
-%% Developer Guide.
+%% that's associated with it. Then, launch your container instances into that
+%% Amazon ECS cluster. For more information, see Launching an Amazon ECS
+%% container instance in the Amazon Elastic Container Service Developer
+%% Guide.
 %%
-%% AWS Batch doesn't upgrade the AMIs in a compute environment after it's
-%% created. For example, it doesn't update the AMIs when a newer version of
-%% the Amazon ECS-optimized AMI is available. Therefore, you're responsible
-%% for the management of the guest operating system (including updates and
-%% security patches) and any additional application software or utilities
-%% that you install on the compute resources. To use a new AMI for your AWS
-%% Batch jobs, complete these steps:
+%% Batch doesn't upgrade the AMIs in a compute environment after the
+%% environment is created. For example, it doesn't update the AMIs when a
+%% newer version of the Amazon ECS optimized AMI is available. Therefore,
+%% you're responsible for managing the guest operating system (including its
+%% updates and security patches) and any additional application software or
+%% utilities that you install on the compute resources. To use a new AMI for
+%% your Batch jobs, complete these steps:
 %%
 %% Create a new compute environment with the new AMI.
 %%
@@ -164,17 +165,17 @@ create_compute_environment(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an AWS Batch job queue.
+%% @doc Creates an Batch job queue.
 %%
 %% When you create a job queue, you associate one or more compute
 %% environments to the queue and assign an order of preference for the
 %% compute environments.
 %%
-%% You also set a priority to the job queue that determines the order in
-%% which the AWS Batch scheduler places jobs onto its associated compute
-%% environments. For example, if a compute environment is associated with
-%% more than one job queue, the job queue with a higher priority is given
-%% preference for scheduling jobs to that compute environment.
+%% You also set a priority to the job queue that determines the order that
+%% the Batch scheduler places jobs onto its associated compute environments.
+%% For example, if a compute environment is associated with more than one job
+%% queue, the job queue with a higher priority is given preference for
+%% scheduling jobs to that compute environment.
 create_job_queue(Client, Input) ->
     create_job_queue(Client, Input, []).
 create_job_queue(Client, Input0, Options0) ->
@@ -197,15 +198,15 @@ create_job_queue(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an AWS Batch compute environment.
+%% @doc Deletes an Batch compute environment.
 %%
 %% Before you can delete a compute environment, you must set its state to
 %% `DISABLED' with the `UpdateComputeEnvironment' API operation and
 %% disassociate it from any job queues with the `UpdateJobQueue' API
-%% operation. Compute environments that use AWS Fargate resources must
-%% terminate all active jobs on that compute environment before deleting the
-%% compute environment. If this isn't done, the compute environment will end
-%% up in an invalid state.
+%% operation. Compute environments that use Fargate resources must terminate
+%% all active jobs on that compute environment before deleting the compute
+%% environment. If this isn't done, the compute environment enters an invalid
+%% state.
 delete_compute_environment(Client, Input) ->
     delete_compute_environment(Client, Input, []).
 delete_compute_environment(Client, Input0, Options0) ->
@@ -259,7 +260,7 @@ delete_job_queue(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deregisters an AWS Batch job definition.
+%% @doc Deregisters an Batch job definition.
 %%
 %% Job definitions are permanently deleted after 180 days.
 deregister_job_definition(Client, Input) ->
@@ -360,7 +361,7 @@ describe_job_queues(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes a list of AWS Batch jobs.
+%% @doc Describes a list of Batch jobs.
 describe_jobs(Client, Input) ->
     describe_jobs(Client, Input, []).
 describe_jobs(Client, Input0, Options0) ->
@@ -383,16 +384,16 @@ describe_jobs(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of AWS Batch jobs.
+%% @doc Returns a list of Batch jobs.
 %%
 %% You must specify only one of the following items:
 %%
 %% <ul> <li> A job queue ID to return a list of jobs in that job queue
 %%
-%% </li> <li> A multi-node parallel job ID to return a list of that job's
-%% nodes
+%% </li> <li> A multi-node parallel job ID to return a list of nodes for that
+%% job
 %%
-%% </li> <li> An array job ID to return a list of that job's children
+%% </li> <li> An array job ID to return a list of the children for that job
 %%
 %% </li> </ul> You can filter the results by job status with the `jobStatus'
 %% parameter. If you don't specify a status, only `RUNNING' jobs are
@@ -419,9 +420,9 @@ list_jobs(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the tags for an AWS Batch resource.
+%% @doc Lists the tags for an Batch resource.
 %%
-%% AWS Batch resources that support tags are compute environments, jobs, job
+%% Batch resources that support tags are compute environments, jobs, job
 %% definitions, and job queues. ARNs for child jobs of array and multi-node
 %% parallel (MNP) jobs are not supported.
 list_tags_for_resource(Client, ResourceArn)
@@ -446,7 +447,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Registers an AWS Batch job definition.
+%% @doc Registers an Batch job definition.
 register_job_definition(Client, Input) ->
     register_job_definition(Client, Input, []).
 register_job_definition(Client, Input0, Options0) ->
@@ -469,14 +470,19 @@ register_job_definition(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Submits an AWS Batch job from a job definition.
+%% @doc Submits an Batch job from a job definition.
 %%
-%% Parameters specified during `SubmitJob' override parameters defined in the
-%% job definition.
+%% Parameters that are specified during `SubmitJob' override parameters
+%% defined in the job definition. vCPU and memory requirements that are
+%% specified in the `ResourceRequirements' objects in the job definition are
+%% the exception. They can't be overridden this way using the `memory' and
+%% `vcpus' parameters. Rather, you must specify updates to job definition
+%% parameters in a `ResourceRequirements' object that's included in the
+%% `containerOverrides' parameter.
 %%
-%% Jobs run on Fargate resources don't run for more than 14 days. After 14
-%% days, the Fargate resources might no longer be available and the job is
-%% terminated.
+%% Jobs that run on Fargate resources can't be guaranteed to run for more
+%% than 14 days. This is because, after 14 days, Fargate resources might
+%% become unavailable and job might be terminated.
 submit_job(Client, Input) ->
     submit_job(Client, Input, []).
 submit_job(Client, Input0, Options0) ->
@@ -503,10 +509,11 @@ submit_job(Client, Input0, Options0) ->
 %% `resourceArn'.
 %%
 %% If existing tags on a resource aren't specified in the request parameters,
-%% they aren't changed. When a resource is deleted, the tags associated with
-%% that resource are deleted as well. AWS Batch resources that support tags
-%% are compute environments, jobs, job definitions, and job queues. ARNs for
-%% child jobs of array and multi-node parallel (MNP) jobs are not supported.
+%% they aren't changed. When a resource is deleted, the tags that are
+%% associated with that resource are deleted as well. Batch resources that
+%% support tags are compute environments, jobs, job definitions, and job
+%% queues. ARNs for child jobs of array and multi-node parallel (MNP) jobs
+%% are not supported.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -556,7 +563,7 @@ terminate_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes specified tags from an AWS Batch resource.
+%% @doc Deletes specified tags from an Batch resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -580,7 +587,7 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an AWS Batch compute environment.
+%% @doc Updates an Batch compute environment.
 update_compute_environment(Client, Input) ->
     update_compute_environment(Client, Input, []).
 update_compute_environment(Client, Input0, Options0) ->
@@ -661,6 +668,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

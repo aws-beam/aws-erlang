@@ -6,7 +6,7 @@
 %%
 %% CodeGuru Reviewer is a service that uses program analysis and machine
 %% learning to detect potential defects that are difficult for developers to
-%% find and recommends fixes in your Java code.
+%% find and recommends fixes in your Java and Python code.
 %%
 %% By proactively detecting and providing recommendations for addressing code
 %% defects and implementing best practices, CodeGuru Reviewer improves the
@@ -17,8 +17,8 @@
 %% To improve the security of your CodeGuru Reviewer API calls, you can
 %% establish a private connection between your VPC and CodeGuru Reviewer by
 %% creating an interface VPC endpoint. For more information, see CodeGuru
-%% Reviewer and interface VPC endpoints (AWS PrivateLink) in the Amazon
-%% CodeGuru Reviewer User Guide.
+%% Reviewer and interface VPC endpoints (Amazon Web Services PrivateLink) in
+%% the Amazon CodeGuru Reviewer User Guide.
 -module(aws_codeguru_reviewer).
 
 -export([associate_repository/2,
@@ -64,8 +64,9 @@
 %% API
 %%====================================================================
 
-%% @doc Use to associate an AWS CodeCommit repository or a repostory managed
-%% by AWS CodeStar Connections with Amazon CodeGuru Reviewer.
+%% @doc Use to associate an Amazon Web Services CodeCommit repository or a
+%% repostory managed by Amazon Web Services CodeStar Connections with Amazon
+%% CodeGuru Reviewer.
 %%
 %% When you associate a repository, CodeGuru Reviewer reviews source code
 %% changes in the repository's pull requests and provides automatic
@@ -73,19 +74,19 @@
 %% console. For more information, see Recommendations in Amazon CodeGuru
 %% Reviewer in the Amazon CodeGuru Reviewer User Guide.
 %%
-%% If you associate a CodeCommit repository, it must be in the same AWS
-%% Region and AWS account where its CodeGuru Reviewer code reviews are
-%% configured.
+%% If you associate a CodeCommit or S3 repository, it must be in the same
+%% Amazon Web Services Region and Amazon Web Services account where its
+%% CodeGuru Reviewer code reviews are configured.
 %%
-%% Bitbucket and GitHub Enterprise Server repositories are managed by AWS
-%% CodeStar Connections to connect to CodeGuru Reviewer. For more
-%% information, see Connect to a repository source provider in the Amazon
-%% CodeGuru Reviewer User Guide.
+%% Bitbucket and GitHub Enterprise Server repositories are managed by Amazon
+%% Web Services CodeStar Connections to connect to CodeGuru Reviewer. For
+%% more information, see Associate a repository in the Amazon CodeGuru
+%% Reviewer User Guide.
 %%
-%% You cannot use the CodeGuru Reviewer SDK or the AWS CLI to associate a
-%% GitHub repository with Amazon CodeGuru Reviewer. To associate a GitHub
-%% repository, use the console. For more information, see Getting started
-%% with CodeGuru Reviewer in the CodeGuru Reviewer User Guide.
+%% You cannot use the CodeGuru Reviewer SDK or the Amazon Web Services CLI to
+%% associate a GitHub repository with Amazon CodeGuru Reviewer. To associate
+%% a GitHub repository, use the console. For more information, see Getting
+%% started with CodeGuru Reviewer in the CodeGuru Reviewer User Guide.
 associate_repository(Client, Input) ->
     associate_repository(Client, Input, []).
 associate_repository(Client, Input0, Options0) ->
@@ -113,7 +114,7 @@ associate_repository(Client, Input0, Options0) ->
 %%
 %% This type of code review analyzes all code under a specified branch in an
 %% associated repository. `PullRequest' code reviews are automatically
-%% triggered by a pull request so cannot be created using this method.
+%% triggered by a pull request.
 create_code_review(Client, Input) ->
     create_code_review(Client, Input, []).
 create_code_review(Client, Input0, Options0) ->
@@ -497,6 +498,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

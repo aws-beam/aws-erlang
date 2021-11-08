@@ -75,6 +75,42 @@
 %% @doc Creates a broker.
 %%
 %% Note: This API is asynchronous.
+%%
+%% To create a broker, you must either use the AmazonMQFullAccess IAM policy
+%% or include the following EC2 permissions in your IAM policy.
+%%
+%% <ul><li>ec2:CreateNetworkInterface
+%%
+%% This permission is required to allow Amazon MQ to create an elastic
+%% network interface (ENI) on behalf of your account.
+%%
+%% </li> <li>ec2:CreateNetworkInterfacePermission
+%%
+%% This permission is required to attach the ENI to the broker instance.
+%%
+%% </li> <li>ec2:DeleteNetworkInterface
+%%
+%% </li> <li>ec2:DeleteNetworkInterfacePermission
+%%
+%% </li> <li>ec2:DetachNetworkInterface
+%%
+%% </li> <li>ec2:DescribeInternetGateways
+%%
+%% </li> <li>ec2:DescribeNetworkInterfaces
+%%
+%% </li> <li>ec2:DescribeNetworkInterfacePermissions
+%%
+%% </li> <li>ec2:DescribeRouteTables
+%%
+%% </li> <li>ec2:DescribeSecurityGroups
+%%
+%% </li> <li>ec2:DescribeSubnets
+%%
+%% </li> <li>ec2:DescribeVpcs
+%%
+%% </li></ul> For more information, see Create an IAM User and Get Your AWS
+%% Credentials and Never Modify or Delete the Amazon MQ Elastic Network
+%% Interface in the Amazon MQ Developer Guide.
 create_broker(Client, Input) ->
     create_broker(Client, Input, []).
 create_broker(Client, Input0, Options0) ->
@@ -657,6 +693,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

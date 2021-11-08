@@ -1,13 +1,14 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Certificate Manager
+%% @doc Amazon Web Services Certificate Manager
 %%
-%% You can use AWS Certificate Manager (ACM) to manage SSL/TLS certificates
-%% for your AWS-based websites and applications.
+%% You can use Amazon Web Services Certificate Manager (ACM) to manage
+%% SSL/TLS certificates for your Amazon Web Services-based websites and
+%% applications.
 %%
-%% For more information about using ACM, see the AWS Certificate Manager User
-%% Guide.
+%% For more information about using ACM, see the Amazon Web Services
+%% Certificate Manager User Guide.
 -module(aws_acm).
 
 -export([add_tags_to_certificate/2,
@@ -49,10 +50,10 @@
 
 %% @doc Adds one or more tags to an ACM certificate.
 %%
-%% Tags are labels that you can use to identify and organize your AWS
-%% resources. Each tag consists of a `key' and an optional `value'. You
-%% specify the certificate on input by its Amazon Resource Name (ARN). You
-%% specify the tag by using a key-value pair.
+%% Tags are labels that you can use to identify and organize your Amazon Web
+%% Services resources. Each tag consists of a `key' and an optional `value'.
+%% You specify the certificate on input by its Amazon Resource Name (ARN).
+%% You specify the tag by using a key-value pair.
 %%
 %% You can apply a tag to just one certificate if you want to identify a
 %% specific characteristic of that certificate, or you can apply the same tag
@@ -79,11 +80,11 @@ add_tags_to_certificate(Client, Input, Options)
 %% If this action succeeds, the certificate no longer appears in the list
 %% that can be displayed by calling the `ListCertificates' action or be
 %% retrieved by calling the `GetCertificate' action. The certificate will not
-%% be available for use by AWS services integrated with ACM.
+%% be available for use by Amazon Web Services services integrated with ACM.
 %%
-%% You cannot delete an ACM certificate that is being used by another AWS
-%% service. To delete a certificate that is in use, the certificate
-%% association must first be removed.
+%% You cannot delete an ACM certificate that is being used by another Amazon
+%% Web Services service. To delete a certificate that is in use, the
+%% certificate association must first be removed.
 delete_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_certificate(Client, Input, []).
@@ -116,8 +117,8 @@ export_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportCertificate">>, Input, Options).
 
-%% @doc Returns the account configuration options associated with an AWS
-%% account.
+%% @doc Returns the account configuration options associated with an Amazon
+%% Web Services account.
 get_account_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_configuration(Client, Input, []).
@@ -138,15 +139,15 @@ get_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCertificate">>, Input, Options).
 
-%% @doc Imports a certificate into AWS Certificate Manager (ACM) to use with
-%% services that are integrated with ACM.
+%% @doc Imports a certificate into Amazon Web Services Certificate Manager
+%% (ACM) to use with services that are integrated with ACM.
 %%
 %% Note that integrated services allow only certificate types and keys they
 %% support to be associated with their resources. Further, their support
 %% differs depending on whether the certificate is imported into IAM or into
 %% ACM. For more information, see the documentation for each service. For
 %% more information about importing certificates into ACM, see Importing
-%% Certificates in the AWS Certificate Manager User Guide.
+%% Certificates in the Amazon Web Services Certificate Manager User Guide.
 %%
 %% ACM does not provide managed renewal for certificates that you import.
 %%
@@ -275,7 +276,8 @@ renew_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RenewCertificate">>, Input, Options).
 
-%% @doc Requests an ACM certificate for use with other AWS services.
+%% @doc Requests an ACM certificate for use with other Amazon Web Services
+%% services.
 %%
 %% To request an ACM certificate, you must specify a fully qualified domain
 %% name (FQDN) in the `DomainName' parameter. You can also specify additional
@@ -287,6 +289,11 @@ renew_certificate(Client, Input, Options)
 %% domain. You can use DNS validation or email validation. We recommend that
 %% you use DNS validation. ACM issues public certificates after receiving
 %% approval from the domain owner.
+%%
+%% ACM behavior differs from the
+%% [https://tools.ietf.org/html/rfc6125#appendix-B.2]RFC 6125 specification
+%% of the certificate validation process. first checks for a subject
+%% alternative name, and, if it finds one, ignores the common name (CN)
 request_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_certificate(Client, Input, []).

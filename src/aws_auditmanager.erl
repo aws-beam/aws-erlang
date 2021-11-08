@@ -1,29 +1,29 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Welcome to the AWS Audit Manager API reference.
+%% @doc Welcome to the Audit Manager API reference.
 %%
-%% This guide is for developers who need detailed information about the AWS
-%% Audit Manager API operations, data types, and errors.
+%% This guide is for developers who need detailed information about the Audit
+%% Manager API operations, data types, and errors.
 %%
-%% AWS Audit Manager is a service that provides automated evidence collection
-%% so that you can continuously audit your AWS usage, and assess the
-%% effectiveness of your controls to better manage risk and simplify
+%% Audit Manager is a service that provides automated evidence collection so
+%% that you can continually audit your Amazon Web Services usage. You can use
+%% it to assess the effectiveness of your controls, manage risk, and simplify
 %% compliance.
 %%
-%% AWS Audit Manager provides pre-built frameworks that structure and
-%% automate assessments for a given compliance standard. Frameworks include a
-%% pre-built collection of controls with descriptions and testing procedures,
-%% which are grouped according to the requirements of the specified
+%% Audit Manager provides prebuilt frameworks that structure and automate
+%% assessments for a given compliance standard. Frameworks include a prebuilt
+%% collection of controls with descriptions and testing procedures. These
+%% controls are grouped according to the requirements of the specified
 %% compliance standard or regulation. You can also customize frameworks and
-%% controls to support internal audits with unique requirements.
+%% controls to support internal audits with specific requirements.
 %%
-%% Use the following links to get started with the AWS Audit Manager API:
+%% Use the following links to get started with the Audit Manager API:
 %%
-%% <ul> <li> Actions: An alphabetical list of all AWS Audit Manager API
+%% <ul> <li> Actions: An alphabetical list of all Audit Manager API
 %% operations.
 %%
-%% </li> <li> Data types: An alphabetical list of all AWS Audit Manager data
+%% </li> <li> Data types: An alphabetical list of all Audit Manager data
 %% types.
 %%
 %% </li> <li> Common parameters: Parameters that all Query operations can
@@ -32,8 +32,8 @@
 %% </li> <li> Common errors: Client and server errors that all operations can
 %% return.
 %%
-%% </li> </ul> If you're new to AWS Audit Manager, we recommend that you
-%% review the AWS Audit Manager User Guide.
+%% </li> </ul> If you're new to Audit Manager, we recommend that you review
+%% the Audit Manager User Guide.
 -module(aws_auditmanager).
 
 -export([associate_assessment_report_evidence_folder/3,
@@ -60,6 +60,8 @@
          delete_assessment/4,
          delete_assessment_framework/3,
          delete_assessment_framework/4,
+         delete_assessment_framework_share/3,
+         delete_assessment_framework_share/4,
          delete_assessment_report/4,
          delete_assessment_report/5,
          delete_control/3,
@@ -115,6 +117,9 @@
          get_settings/2,
          get_settings/4,
          get_settings/5,
+         list_assessment_framework_share_requests/2,
+         list_assessment_framework_share_requests/4,
+         list_assessment_framework_share_requests/5,
          list_assessment_frameworks/2,
          list_assessment_frameworks/4,
          list_assessment_frameworks/5,
@@ -140,6 +145,8 @@
          register_account/3,
          register_organization_admin_account/2,
          register_organization_admin_account/3,
+         start_assessment_framework_share/3,
+         start_assessment_framework_share/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -152,6 +159,8 @@
          update_assessment_control_set_status/5,
          update_assessment_framework/3,
          update_assessment_framework/4,
+         update_assessment_framework_share/3,
+         update_assessment_framework_share/4,
          update_assessment_status/3,
          update_assessment_status/4,
          update_control/3,
@@ -167,8 +176,8 @@
 %% API
 %%====================================================================
 
-%% @doc Associates an evidence folder to the specified assessment report in
-%% AWS Audit Manager.
+%% @doc Associates an evidence folder to an assessment report in a Audit
+%% Manager assessment.
 associate_assessment_report_evidence_folder(Client, AssessmentId, Input) ->
     associate_assessment_report_evidence_folder(Client, AssessmentId, Input, []).
 associate_assessment_report_evidence_folder(Client, AssessmentId, Input0, Options0) ->
@@ -191,7 +200,7 @@ associate_assessment_report_evidence_folder(Client, AssessmentId, Input0, Option
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates a list of evidence to an assessment report in an AWS Audit
+%% @doc Associates a list of evidence to an assessment report in an Audit
 %% Manager assessment.
 batch_associate_assessment_report_evidence(Client, AssessmentId, Input) ->
     batch_associate_assessment_report_evidence(Client, AssessmentId, Input, []).
@@ -215,8 +224,7 @@ batch_associate_assessment_report_evidence(Client, AssessmentId, Input0, Options
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a batch of delegations for a specified assessment in AWS Audit
-%% Manager.
+%% @doc Creates a batch of delegations for an assessment in Audit Manager.
 batch_create_delegation_by_assessment(Client, AssessmentId, Input) ->
     batch_create_delegation_by_assessment(Client, AssessmentId, Input, []).
 batch_create_delegation_by_assessment(Client, AssessmentId, Input0, Options0) ->
@@ -239,8 +247,7 @@ batch_create_delegation_by_assessment(Client, AssessmentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the delegations in the specified AWS Audit Manager
-%% assessment.
+%% @doc Deletes a batch of delegations for an assessment in Audit Manager.
 batch_delete_delegation_by_assessment(Client, AssessmentId, Input) ->
     batch_delete_delegation_by_assessment(Client, AssessmentId, Input, []).
 batch_delete_delegation_by_assessment(Client, AssessmentId, Input0, Options0) ->
@@ -263,8 +270,8 @@ batch_delete_delegation_by_assessment(Client, AssessmentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disassociates a list of evidence from the specified assessment report
-%% in AWS Audit Manager.
+%% @doc Disassociates a list of evidence from an assessment report in Audit
+%% Manager.
 batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input) ->
     batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input, []).
 batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input0, Options0) ->
@@ -287,8 +294,8 @@ batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input0, Opti
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Uploads one or more pieces of evidence to the specified control in
-%% the assessment in AWS Audit Manager.
+%% @doc Uploads one or more pieces of evidence to a control in an Audit
+%% Manager assessment.
 batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input) ->
     batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input, []).
 batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input0, Options0) ->
@@ -311,7 +318,7 @@ batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, Con
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an assessment in AWS Audit Manager.
+%% @doc Creates an assessment in Audit Manager.
 create_assessment(Client, Input) ->
     create_assessment(Client, Input, []).
 create_assessment(Client, Input0, Options0) ->
@@ -334,7 +341,7 @@ create_assessment(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a custom framework in AWS Audit Manager.
+%% @doc Creates a custom framework in Audit Manager.
 create_assessment_framework(Client, Input) ->
     create_assessment_framework(Client, Input, []).
 create_assessment_framework(Client, Input0, Options0) ->
@@ -380,7 +387,7 @@ create_assessment_report(Client, AssessmentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new custom control in AWS Audit Manager.
+%% @doc Creates a new custom control in Audit Manager.
 create_control(Client, Input) ->
     create_control(Client, Input, []).
 create_control(Client, Input0, Options0) ->
@@ -403,7 +410,7 @@ create_control(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an assessment in AWS Audit Manager.
+%% @doc Deletes an assessment in Audit Manager.
 delete_assessment(Client, AssessmentId, Input) ->
     delete_assessment(Client, AssessmentId, Input, []).
 delete_assessment(Client, AssessmentId, Input0, Options0) ->
@@ -426,7 +433,7 @@ delete_assessment(Client, AssessmentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a custom framework in AWS Audit Manager.
+%% @doc Deletes a custom framework in Audit Manager.
 delete_assessment_framework(Client, FrameworkId, Input) ->
     delete_assessment_framework(Client, FrameworkId, Input, []).
 delete_assessment_framework(Client, FrameworkId, Input0, Options0) ->
@@ -449,7 +456,31 @@ delete_assessment_framework(Client, FrameworkId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an assessment report from an assessment in AWS Audit Manager.
+%% @doc Deletes a share request for a custom framework in Audit Manager.
+delete_assessment_framework_share(Client, RequestId, Input) ->
+    delete_assessment_framework_share(Client, RequestId, Input, []).
+delete_assessment_framework_share(Client, RequestId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/assessmentFrameworkShareRequests/", aws_util:encode_uri(RequestId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"requestType">>, <<"requestType">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an assessment report from an assessment in Audit Manager.
 delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input) ->
     delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input, []).
 delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input0, Options0) ->
@@ -472,7 +503,7 @@ delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input0, Optio
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a custom control in AWS Audit Manager.
+%% @doc Deletes a custom control in Audit Manager.
 delete_control(Client, ControlId, Input) ->
     delete_control(Client, ControlId, Input, []).
 delete_control(Client, ControlId, Input0, Options0) ->
@@ -495,7 +526,7 @@ delete_control(Client, ControlId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deregisters an account in AWS Audit Manager.
+%% @doc Deregisters an account in Audit Manager.
 deregister_account(Client, Input) ->
     deregister_account(Client, Input, []).
 deregister_account(Client, Input0, Options0) ->
@@ -518,8 +549,15 @@ deregister_account(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deregisters the delegated AWS administrator account from the AWS
-%% organization.
+%% @doc Removes the specified member Amazon Web Services account as a
+%% delegated administrator for Audit Manager.
+%%
+%% When you remove a delegated administrator from your Audit Manager
+%% settings, you continue to have access to the evidence that you previously
+%% collected under that account. This is also the case when you deregister a
+%% delegated administrator from Audit Manager. However, Audit Manager will
+%% stop collecting and attaching evidence to that delegated administrator
+%% account moving forward.
 deregister_organization_admin_account(Client, Input) ->
     deregister_organization_admin_account(Client, Input, []).
 deregister_organization_admin_account(Client, Input0, Options0) ->
@@ -543,7 +581,7 @@ deregister_organization_admin_account(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates an evidence folder from the specified assessment report
-%% in AWS Audit Manager.
+%% in Audit Manager.
 disassociate_assessment_report_evidence_folder(Client, AssessmentId, Input) ->
     disassociate_assessment_report_evidence_folder(Client, AssessmentId, Input, []).
 disassociate_assessment_report_evidence_folder(Client, AssessmentId, Input0, Options0) ->
@@ -566,7 +604,7 @@ disassociate_assessment_report_evidence_folder(Client, AssessmentId, Input0, Opt
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns the registration status of an account in AWS Audit Manager.
+%% @doc Returns the registration status of an account in Audit Manager.
 get_account_status(Client)
   when is_map(Client) ->
     get_account_status(Client, #{}, #{}).
@@ -589,7 +627,7 @@ get_account_status(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns an assessment from AWS Audit Manager.
+%% @doc Returns an assessment from Audit Manager.
 get_assessment(Client, AssessmentId)
   when is_map(Client) ->
     get_assessment(Client, AssessmentId, #{}, #{}).
@@ -612,7 +650,7 @@ get_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a framework from AWS Audit Manager.
+%% @doc Returns a framework from Audit Manager.
 get_assessment_framework(Client, FrameworkId)
   when is_map(Client) ->
     get_assessment_framework(Client, FrameworkId, #{}, #{}).
@@ -635,8 +673,7 @@ get_assessment_framework(Client, FrameworkId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the URL of a specified assessment report in AWS Audit
-%% Manager.
+%% @doc Returns the URL of an assessment report in Audit Manager.
 get_assessment_report_url(Client, AssessmentId, AssessmentReportId)
   when is_map(Client) ->
     get_assessment_report_url(Client, AssessmentId, AssessmentReportId, #{}, #{}).
@@ -659,7 +696,7 @@ get_assessment_report_url(Client, AssessmentId, AssessmentReportId, QueryMap, He
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of changelogs from AWS Audit Manager.
+%% @doc Returns a list of changelogs from Audit Manager.
 get_change_logs(Client, AssessmentId)
   when is_map(Client) ->
     get_change_logs(Client, AssessmentId, #{}, #{}).
@@ -689,7 +726,7 @@ get_change_logs(Client, AssessmentId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a control from AWS Audit Manager.
+%% @doc Returns a control from Audit Manager.
 get_control(Client, ControlId)
   when is_map(Client) ->
     get_control(Client, ControlId, #{}, #{}).
@@ -740,7 +777,7 @@ get_delegations(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns evidence from AWS Audit Manager.
+%% @doc Returns evidence from Audit Manager.
 get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId)
   when is_map(Client) ->
     get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, #{}, #{}).
@@ -763,7 +800,7 @@ get_evidence(Client, AssessmentId, ControlSetId, EvidenceFolderId, EvidenceId, Q
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns all evidence from a specified evidence folder in AWS Audit
+%% @doc Returns all evidence from a specified evidence folder in Audit
 %% Manager.
 get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId)
   when is_map(Client) ->
@@ -792,7 +829,7 @@ get_evidence_by_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFold
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns an evidence folder from the specified assessment in AWS Audit
+%% @doc Returns an evidence folder from the specified assessment in Audit
 %% Manager.
 get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId)
   when is_map(Client) ->
@@ -816,7 +853,7 @@ get_evidence_folder(Client, AssessmentId, ControlSetId, EvidenceFolderId, QueryM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the evidence folders from a specified assessment in AWS Audit
+%% @doc Returns the evidence folders from a specified assessment in Audit
 %% Manager.
 get_evidence_folders_by_assessment(Client, AssessmentId)
   when is_map(Client) ->
@@ -845,8 +882,8 @@ get_evidence_folders_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, O
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of evidence folders associated with a specified
-%% control of an assessment in AWS Audit Manager.
+%% @doc Returns a list of evidence folders that are associated with a
+%% specified control of an assessment in Audit Manager.
 get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId)
   when is_map(Client) ->
     get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId, #{}, #{}).
@@ -874,8 +911,8 @@ get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, Cont
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the name of the delegated AWS administrator account for the
-%% AWS organization.
+%% @doc Returns the name of the delegated Amazon Web Services administrator
+%% account for the organization.
 get_organization_admin_account(Client)
   when is_map(Client) ->
     get_organization_admin_account(Client, #{}, #{}).
@@ -898,8 +935,8 @@ get_organization_admin_account(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of the in-scope AWS services for the specified
-%% assessment.
+%% @doc Returns a list of the in-scope Amazon Web Services services for the
+%% specified assessment.
 get_services_in_scope(Client)
   when is_map(Client) ->
     get_services_in_scope(Client, #{}, #{}).
@@ -922,7 +959,7 @@ get_services_in_scope(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the settings for the specified AWS account.
+%% @doc Returns the settings for the specified Amazon Web Services account.
 get_settings(Client, Attribute)
   when is_map(Client) ->
     get_settings(Client, Attribute, #{}, #{}).
@@ -945,8 +982,38 @@ get_settings(Client, Attribute, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of the frameworks available in the AWS Audit Manager
-%% framework library.
+%% @doc Returns a list of sent or received share requests for custom
+%% frameworks in Audit Manager.
+list_assessment_framework_share_requests(Client, RequestType)
+  when is_map(Client) ->
+    list_assessment_framework_share_requests(Client, RequestType, #{}, #{}).
+
+list_assessment_framework_share_requests(Client, RequestType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_assessment_framework_share_requests(Client, RequestType, QueryMap, HeadersMap, []).
+
+list_assessment_framework_share_requests(Client, RequestType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/assessmentFrameworkShareRequests"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"requestType">>, RequestType}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of the frameworks that are available in the Audit
+%% Manager framework library.
 list_assessment_frameworks(Client, FrameworkType)
   when is_map(Client) ->
     list_assessment_frameworks(Client, FrameworkType, #{}, #{}).
@@ -975,7 +1042,7 @@ list_assessment_frameworks(Client, FrameworkType, QueryMap, HeadersMap, Options0
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of assessment reports created in AWS Audit Manager.
+%% @doc Returns a list of assessment reports created in Audit Manager.
 list_assessment_reports(Client)
   when is_map(Client) ->
     list_assessment_reports(Client, #{}, #{}).
@@ -1003,8 +1070,7 @@ list_assessment_reports(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of current and past assessments from AWS Audit
-%% Manager.
+%% @doc Returns a list of current and past assessments from Audit Manager.
 list_assessments(Client)
   when is_map(Client) ->
     list_assessments(Client, #{}, #{}).
@@ -1032,7 +1098,7 @@ list_assessments(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of controls from AWS Audit Manager.
+%% @doc Returns a list of controls from Audit Manager.
 list_controls(Client, ControlType)
   when is_map(Client) ->
     list_controls(Client, ControlType, #{}, #{}).
@@ -1061,8 +1127,8 @@ list_controls(Client, ControlType, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of keywords that pre-mapped to the specified control
-%% data source.
+%% @doc Returns a list of keywords that are pre-mapped to the specified
+%% control data source.
 list_keywords_for_data_source(Client, Source)
   when is_map(Client) ->
     list_keywords_for_data_source(Client, Source, #{}, #{}).
@@ -1091,7 +1157,7 @@ list_keywords_for_data_source(Client, Source, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of all AWS Audit Manager notifications.
+%% @doc Returns a list of all Audit Manager notifications.
 list_notifications(Client)
   when is_map(Client) ->
     list_notifications(Client, #{}, #{}).
@@ -1119,8 +1185,7 @@ list_notifications(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of tags for the specified resource in AWS Audit
-%% Manager.
+%% @doc Returns a list of tags for the specified resource in Audit Manager.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1143,7 +1208,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Enables AWS Audit Manager for the specified AWS account.
+%% @doc Enables Audit Manager for the specified Amazon Web Services account.
 register_account(Client, Input) ->
     register_account(Client, Input, []).
 register_account(Client, Input0, Options0) ->
@@ -1166,8 +1231,8 @@ register_account(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Enables an AWS account within the organization as the delegated
-%% administrator for AWS Audit Manager.
+%% @doc Enables an Amazon Web Services account within the organization as the
+%% delegated administrator for Audit Manager.
 register_organization_admin_account(Client, Input) ->
     register_organization_admin_account(Client, Input, []).
 register_organization_admin_account(Client, Input0, Options0) ->
@@ -1190,7 +1255,43 @@ register_organization_admin_account(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Tags the specified resource in AWS Audit Manager.
+%% @doc Creates a share request for a custom framework in Audit Manager.
+%%
+%% The share request specifies a recipient and notifies them that a custom
+%% framework is available. Recipients have 120 days to accept or decline the
+%% request. If no action is taken, the share request expires.
+%%
+%% When you invoke the `StartAssessmentFrameworkShare' API, you are about to
+%% share a custom framework with another Amazon Web Services account. You may
+%% not share a custom framework that is derived from a standard framework if
+%% the standard framework is designated as not eligible for sharing by Amazon
+%% Web Services, unless you have obtained permission to do so from the owner
+%% of the standard framework. To learn more about which standard frameworks
+%% are eligible for sharing, see Framework sharing eligibility in the Audit
+%% Manager User Guide.
+start_assessment_framework_share(Client, FrameworkId, Input) ->
+    start_assessment_framework_share(Client, FrameworkId, Input, []).
+start_assessment_framework_share(Client, FrameworkId, Input0, Options0) ->
+    Method = post,
+    Path = ["/assessmentFrameworks/", aws_util:encode_uri(FrameworkId), "/shareRequests"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Tags the specified resource in Audit Manager.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -1213,7 +1314,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes a tag from a resource in AWS Audit Manager.
+%% @doc Removes a tag from a resource in Audit Manager.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -1237,7 +1338,7 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Edits an AWS Audit Manager assessment.
+%% @doc Edits an Audit Manager assessment.
 update_assessment(Client, AssessmentId, Input) ->
     update_assessment(Client, AssessmentId, Input, []).
 update_assessment(Client, AssessmentId, Input0, Options0) ->
@@ -1260,7 +1361,7 @@ update_assessment(Client, AssessmentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a control within an assessment in AWS Audit Manager.
+%% @doc Updates a control within an assessment in Audit Manager.
 update_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input) ->
     update_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input, []).
 update_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input0, Options0) ->
@@ -1283,8 +1384,7 @@ update_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input0,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the status of a control set in an AWS Audit Manager
-%% assessment.
+%% @doc Updates the status of a control set in an Audit Manager assessment.
 update_assessment_control_set_status(Client, AssessmentId, ControlSetId, Input) ->
     update_assessment_control_set_status(Client, AssessmentId, ControlSetId, Input, []).
 update_assessment_control_set_status(Client, AssessmentId, ControlSetId, Input0, Options0) ->
@@ -1307,7 +1407,7 @@ update_assessment_control_set_status(Client, AssessmentId, ControlSetId, Input0,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a custom framework in AWS Audit Manager.
+%% @doc Updates a custom framework in Audit Manager.
 update_assessment_framework(Client, FrameworkId, Input) ->
     update_assessment_framework(Client, FrameworkId, Input, []).
 update_assessment_framework(Client, FrameworkId, Input0, Options0) ->
@@ -1330,7 +1430,30 @@ update_assessment_framework(Client, FrameworkId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the status of an assessment in AWS Audit Manager.
+%% @doc Updates a share request for a custom framework in Audit Manager.
+update_assessment_framework_share(Client, RequestId, Input) ->
+    update_assessment_framework_share(Client, RequestId, Input, []).
+update_assessment_framework_share(Client, RequestId, Input0, Options0) ->
+    Method = put,
+    Path = ["/assessmentFrameworkShareRequests/", aws_util:encode_uri(RequestId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the status of an assessment in Audit Manager.
 update_assessment_status(Client, AssessmentId, Input) ->
     update_assessment_status(Client, AssessmentId, Input, []).
 update_assessment_status(Client, AssessmentId, Input0, Options0) ->
@@ -1353,7 +1476,7 @@ update_assessment_status(Client, AssessmentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a custom control in AWS Audit Manager.
+%% @doc Updates a custom control in Audit Manager.
 update_control(Client, ControlId, Input) ->
     update_control(Client, ControlId, Input, []).
 update_control(Client, ControlId, Input0, Options0) ->
@@ -1376,7 +1499,7 @@ update_control(Client, ControlId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates AWS Audit Manager settings for the current user account.
+%% @doc Updates Audit Manager settings for the current user account.
 update_settings(Client, Input) ->
     update_settings(Client, Input, []).
 update_settings(Client, Input0, Options0) ->
@@ -1399,7 +1522,7 @@ update_settings(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Validates the integrity of an assessment report in AWS Audit Manager.
+%% @doc Validates the integrity of an assessment report in Audit Manager.
 validate_assessment_report_integrity(Client, Input) ->
     validate_assessment_report_integrity(Client, Input, []).
 validate_assessment_report_integrity(Client, Input0, Options0) ->
@@ -1457,6 +1580,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

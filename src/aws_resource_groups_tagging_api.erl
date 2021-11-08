@@ -41,7 +41,7 @@ describe_report_creation(Client, Input, Options)
 %% @doc Returns a table that shows counts of resources that are noncompliant
 %% with their tag policies.
 %%
-%% For more information on tag policies, see Tag Policies in the AWS
+%% For more information on tag policies, see Tag Policies in the
 %% Organizations User Guide.
 %%
 %% You can call this operation only from the organization's management
@@ -62,7 +62,7 @@ get_compliance_summary(Client, Input, Options)
     request(Client, <<"GetComplianceSummary">>, Input, Options).
 
 %% @doc Returns all the tagged or previously tagged resources that are
-%% located in the specified Region for the AWS account.
+%% located in the specified Amazon Web Services Region for the account.
 %%
 %% Depending on what information you want returned, you can also specify the
 %% following:
@@ -72,7 +72,7 @@ get_compliance_summary(Client, Input, Options)
 %% requested resources.
 %%
 %% </li> <li> Information about compliance with the account's effective tag
-%% policy. For more information on tag policies, see Tag Policies in the AWS
+%% policy. For more information on tag policies, see Tag Policies in the
 %% Organizations User Guide.
 %%
 %% </li> </ul> This operation supports pagination, where the response can be
@@ -89,8 +89,8 @@ get_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResources">>, Input, Options).
 
-%% @doc Returns all tag keys currently in use in the specified Region for the
-%% calling AWS account.
+%% @doc Returns all tag keys currently in use in the specified Amazon Web
+%% Services Region for the calling account.
 %%
 %% This operation supports pagination, where the response can be sent in
 %% multiple pages. You should check the `PaginationToken' response parameter
@@ -107,7 +107,7 @@ get_tag_keys(Client, Input, Options)
     request(Client, <<"GetTagKeys">>, Input, Options).
 
 %% @doc Returns all tag values for the specified key that are used in the
-%% specified AWS Region for the calling AWS account.
+%% specified Amazon Web Services Region for the calling account.
 %%
 %% This operation supports pagination, where the response can be sent in
 %% multiple pages. You should check the `PaginationToken' response parameter
@@ -149,13 +149,16 @@ start_report_creation(Client, Input, Options)
 %%
 %% <ul> <li> Not all resources can have tags. For a list of services with
 %% resources that support tagging using this operation, see Services that
-%% support the Resource Groups Tagging API.
+%% support the Resource Groups Tagging API. If the resource doesn't yet
+%% support this operation, the resource's service might support tagging using
+%% its own API operations. For more information, refer to the documentation
+%% for that service.
 %%
 %% </li> <li> Each resource can have up to 50 tags. For other limits, see Tag
-%% Naming and Usage Conventions in the AWS General Reference.
+%% Naming and Usage Conventions in the Amazon Web Services General Reference.
 %%
 %% </li> <li> You can only tag resources that are located in the specified
-%% AWS Region for the AWS account.
+%% Amazon Web Services Region for the Amazon Web Services account.
 %%
 %% </li> <li> To add tags to a resource, you need the necessary permissions
 %% for the service that the resource belongs to as well as permissions for
@@ -165,6 +168,20 @@ start_report_creation(Client, Input, Options)
 %% other confidential or sensitive information in tags. We use tags to
 %% provide you with billing and administration services. Tags are not
 %% intended to be used for private or sensitive data.
+%%
+%% Minimum permissions
+%%
+%% In addition to the `tag:TagResources' permission required by this
+%% operation, you must also have the tagging permission defined by the
+%% service that created the resource. For example, to tag an Amazon EC2
+%% instance using the `TagResources' operation, you must have both of the
+%% following permissions:
+%%
+%% <ul> <li> `tag:TagResource'
+%%
+%% </li> <li> `ec2:CreateTags'
+%%
+%% </li> </ul>
 tag_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resources(Client, Input, []).
@@ -184,7 +201,19 @@ tag_resources(Client, Input, Options)
 %% for the service whose resource you want to untag.
 %%
 %% </li> <li> You can only tag resources that are located in the specified
-%% AWS Region for the calling AWS account.
+%% Amazon Web Services Region for the calling Amazon Web Services account.
+%%
+%% </li> </ul> Minimum permissions
+%%
+%% In addition to the `tag:UntagResources' permission required by this
+%% operation, you must also have the remove tags permission defined by the
+%% service that created the resource. For example, to remove the tags from an
+%% Amazon EC2 instance using the `UntagResources' operation, you must have
+%% both of the following permissions:
+%%
+%% <ul> <li> `tag:UntagResource'
+%%
+%% </li> <li> `ec2:DeleteTags'
 %%
 %% </li> </ul>
 untag_resources(Client, Input)

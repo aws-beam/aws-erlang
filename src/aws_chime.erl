@@ -50,6 +50,8 @@
          associate_signin_delegate_groups_with_account/4,
          batch_create_attendee/3,
          batch_create_attendee/4,
+         batch_create_channel_membership/3,
+         batch_create_channel_membership/4,
          batch_create_room_membership/4,
          batch_create_room_membership/5,
          batch_delete_phone_number/2,
@@ -82,6 +84,8 @@
          create_channel_membership/4,
          create_channel_moderator/3,
          create_channel_moderator/4,
+         create_media_capture_pipeline/2,
+         create_media_capture_pipeline/3,
          create_meeting/2,
          create_meeting/3,
          create_meeting_dial_out/3,
@@ -132,6 +136,8 @@
          delete_channel_moderator/5,
          delete_events_configuration/4,
          delete_events_configuration/5,
+         delete_media_capture_pipeline/3,
+         delete_media_capture_pipeline/4,
          delete_meeting/3,
          delete_meeting/4,
          delete_phone_number/3,
@@ -224,6 +230,9 @@
          get_global_settings/1,
          get_global_settings/3,
          get_global_settings/4,
+         get_media_capture_pipeline/2,
+         get_media_capture_pipeline/4,
+         get_media_capture_pipeline/5,
          get_meeting/2,
          get_meeting/4,
          get_meeting/5,
@@ -334,6 +343,9 @@
          list_channels_moderated_by_app_instance_user/1,
          list_channels_moderated_by_app_instance_user/3,
          list_channels_moderated_by_app_instance_user/4,
+         list_media_capture_pipelines/1,
+         list_media_capture_pipelines/3,
+         list_media_capture_pipelines/4,
          list_meeting_tags/2,
          list_meeting_tags/4,
          list_meeting_tags/5,
@@ -361,6 +373,9 @@
          list_sip_rules/1,
          list_sip_rules/3,
          list_sip_rules/4,
+         list_supported_phone_number_countries/2,
+         list_supported_phone_number_countries/4,
+         list_supported_phone_number_countries/5,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -419,6 +434,10 @@
          search_available_phone_numbers/4,
          send_channel_message/3,
          send_channel_message/4,
+         start_meeting_transcription/3,
+         start_meeting_transcription/4,
+         stop_meeting_transcription/3,
+         stop_meeting_transcription/4,
          tag_attendee/4,
          tag_attendee/5,
          tag_meeting/3,
@@ -461,6 +480,8 @@
          update_room_membership/6,
          update_sip_media_application/3,
          update_sip_media_application/4,
+         update_sip_media_application_call/4,
+         update_sip_media_application_call/5,
          update_sip_rule/3,
          update_sip_rule/4,
          update_user/4,
@@ -600,6 +621,31 @@ batch_create_attendee(Client, MeetingId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Adds a specified number of users to a channel.
+batch_create_channel_membership(Client, ChannelArn, Input) ->
+    batch_create_channel_membership(Client, ChannelArn, Input, []).
+batch_create_channel_membership(Client, ChannelArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships?operation=batch-create"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Adds up to 50 members to a chat room in an Amazon Chime Enterprise
 %% account.
 %%
@@ -700,7 +746,8 @@ batch_suspend_user(Client, AccountId, Input0, Options0) ->
 %%
 %% Only users on `EnterpriseLWA' accounts can be unsuspended using this
 %% action. For more information about different account types, see Managing
-%% Your Amazon Chime Accounts in the Amazon Chime Administration Guide.
+%% Your Amazon Chime Accounts in the account types, in the Amazon Chime
+%% Administration Guide.
 %%
 %% Previously suspended users who are unsuspended using this action are
 %% returned to `Registered' status. Users who are not previously suspended
@@ -730,12 +777,12 @@ batch_unsuspend_user(Client, AccountId, Input0, Options0) ->
 %% @doc Updates phone number product types or calling names.
 %%
 %% You can update one attribute at a time for each
-%% `UpdatePhoneNumberRequestItem' . For example, you can update either the
-%% product type or the calling name.
+%% `UpdatePhoneNumberRequestItem'. For example, you can update the product
+%% type or the calling name.
 %%
-%% For product types, choose from Amazon Chime Business Calling and Amazon
-%% Chime Voice Connector. For toll-free numbers, you must use the Amazon
-%% Chime Voice Connector product type.
+%% For toll-free numbers, you cannot use the Amazon Chime Business Calling
+%% product type. For numbers outside the U.S., you must use the Amazon Chime
+%% SIP Media Application Dial-In product type.
 %%
 %% Updates to outbound calling names can take up to 72 hours to complete.
 %% Pending updates to outbound calling names must be complete before you can
@@ -1109,6 +1156,29 @@ create_channel_moderator(Client, ChannelArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a media capture pipeline.
+create_media_capture_pipeline(Client, Input) ->
+    create_media_capture_pipeline(Client, Input, []).
+create_media_capture_pipeline(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/media-capture-pipelines"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a new Amazon Chime SDK meeting in the specified media Region
 %% with no initial attendees.
 %%
@@ -1200,9 +1270,9 @@ create_meeting_with_attendees(Client, Input0, Options0) ->
 
 %% @doc Creates an order for phone numbers to be provisioned.
 %%
-%% Choose from Amazon Chime Business Calling and Amazon Chime Voice Connector
-%% product types. For toll-free numbers, you must use the Amazon Chime Voice
-%% Connector product type.
+%% For toll-free numbers, you cannot use the Amazon Chime Business Calling
+%% product type. For numbers outside the U.S., you must use the Amazon Chime
+%% SIP Media Application Dial-In product type.
 create_phone_number_order(Client, Input) ->
     create_phone_number_order(Client, Input, []).
 create_phone_number_order(Client, Input0, Options0) ->
@@ -1589,11 +1659,11 @@ delete_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an attendee from the specified Amazon Chime SDK meeting and
-%% deletes their `JoinToken' .
+%% deletes their `JoinToken'.
 %%
 %% Attendees are automatically deleted when a Amazon Chime SDK meeting is
 %% deleted. For more information about the Amazon Chime SDK, see Using the
-%% Amazon Chime SDK in the Amazon Chime Developer Guide .
+%% Amazon Chime SDK in the Amazon Chime Developer Guide.
 delete_attendee(Client, AttendeeId, MeetingId, Input) ->
     delete_attendee(Client, AttendeeId, MeetingId, Input, []).
 delete_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
@@ -1792,12 +1862,35 @@ delete_events_configuration(Client, AccountId, BotId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the media capture pipeline.
+delete_media_capture_pipeline(Client, MediaPipelineId, Input) ->
+    delete_media_capture_pipeline(Client, MediaPipelineId, Input, []).
+delete_media_capture_pipeline(Client, MediaPipelineId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/media-capture-pipelines/", aws_util:encode_uri(MediaPipelineId), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the specified Amazon Chime SDK meeting.
 %%
-%% When a meeting is deleted, its attendees are also deleted, clients
-%% connected to the meeting are disconnected, and clients can no longer join
-%% the meeting. For more information about the Amazon Chime SDK, see Using
-%% the Amazon Chime SDK in the Amazon Chime Developer Guide.
+%% The operation deletes all attendees, disconnects all clients, and prevents
+%% new clients from joining the meeting. For more information about the
+%% Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon Chime
+%% Developer Guide.
 delete_meeting(Client, MeetingId, Input) ->
     delete_meeting(Client, MeetingId, Input, []).
 delete_meeting(Client, MeetingId, Input0, Options0) ->
@@ -1820,7 +1913,7 @@ delete_meeting(Client, MeetingId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Moves the specified phone number into the Deletionqueue.
+%% @doc Moves the specified phone number into the Deletion queue.
 %%
 %% A phone number must be disassociated from any users or Amazon Chime Voice
 %% Connectors before it can be deleted.
@@ -2216,7 +2309,7 @@ describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the full details of an `AppInstanceUser' .
+%% @doc Returns the full details of an `AppInstanceUser'.
 describe_app_instance_user(Client, AppInstanceUserArn)
   when is_map(Client) ->
     describe_app_instance_user(Client, AppInstanceUserArn, #{}, #{}).
@@ -2760,6 +2853,29 @@ get_global_settings(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets an existing media capture pipeline.
+get_media_capture_pipeline(Client, MediaPipelineId)
+  when is_map(Client) ->
+    get_media_capture_pipeline(Client, MediaPipelineId, #{}, #{}).
+
+get_media_capture_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_media_capture_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap, []).
+
+get_media_capture_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/media-capture-pipelines/", aws_util:encode_uri(MediaPipelineId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets the Amazon Chime SDK meeting details for the specified meeting
 %% ID.
 %%
@@ -2911,7 +3027,7 @@ get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap
 %% account.
 %%
 %% For more information about retention settings, see Managing Chat Retention
-%% Policies in the Amazon Chime Administration Guide .
+%% Policies in the Amazon Chime Administration Guide.
 get_retention_settings(Client, AccountId)
   when is_map(Client) ->
     get_retention_settings(Client, AccountId, #{}, #{}).
@@ -3130,7 +3246,7 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Qu
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves details for the specified Amazon Chime Voice Connector
-%% group, such as timestamps,name, and associated `VoiceConnectorItems' .
+%% group, such as timestamps,name, and associated `VoiceConnectorItems'.
 get_voice_connector_group(Client, VoiceConnectorGroupId)
   when is_map(Client) ->
     get_voice_connector_group(Client, VoiceConnectorGroupId, #{}, #{}).
@@ -3334,7 +3450,7 @@ invite_users(Client, AccountId, Input0, Options0) ->
 %% account.
 %%
 %% You can filter accounts by account name prefix. To find out which Amazon
-%% Chime account a user belongs to, toucan filter by the user's email
+%% Chime account a user belongs to, you can filter by the user's email
 %% address, which returns one account result.
 list_accounts(Client)
   when is_map(Client) ->
@@ -3477,7 +3593,7 @@ list_attendee_tags(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0
 %% @doc Lists the attendees for the specified Amazon Chime SDK meeting.
 %%
 %% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK in the Amazon Chime Developer Guide .
+%% Chime SDK in the Amazon Chime Developer Guide.
 list_attendees(Client, MeetingId)
   when is_map(Client) ->
     list_attendees(Client, MeetingId, #{}, #{}).
@@ -3650,7 +3766,7 @@ list_channel_memberships_for_app_instance_user(Client, QueryMap, HeadersMap, Opt
 %% @doc List all the messages in a channel.
 %%
 %% Returns a paginated list of `ChannelMessages'. By default, sorted by
-%% creation timestamp in descending order .
+%% creation timestamp in descending order.
 %%
 %% Redacted messages appear in the results as empty, since they are only
 %% redacted, not deleted. Deleted messages do not appear in the results. This
@@ -3737,7 +3853,7 @@ list_channel_moderators(Client, ChannelArn, QueryMap, HeadersMap, Options0)
 %% == Functionality & restrictions ==
 %%
 %% <ul> <li> Use privacy = `PUBLIC' to retrieve all public channels in the
-%% account
+%% account.
 %%
 %% </li> <li> Only an `AppInstanceAdmin' can set privacy = `PRIVATE' to list
 %% the private channels in an account.
@@ -3815,6 +3931,34 @@ list_channels_moderated_by_app_instance_user(Client, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of media capture pipelines.
+list_media_capture_pipelines(Client)
+  when is_map(Client) ->
+    list_media_capture_pipelines(Client, #{}, #{}).
+
+list_media_capture_pipelines(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_media_capture_pipelines(Client, QueryMap, HeadersMap, []).
+
+list_media_capture_pipelines(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/media-capture-pipelines"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the tags applied to an Amazon Chime SDK meeting resource.
 list_meeting_tags(Client, MeetingId)
   when is_map(Client) ->
@@ -3841,7 +3985,7 @@ list_meeting_tags(Client, MeetingId, QueryMap, HeadersMap, Options0)
 %% @doc Lists up to 100 active Amazon Chime SDK meetings.
 %%
 %% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK in the Amazon Chime Developer Guide .
+%% Chime SDK in the Amazon Chime Developer Guide.
 list_meetings(Client)
   when is_map(Client) ->
     list_meetings(Client, #{}, #{}).
@@ -4078,6 +4222,33 @@ list_sip_rules(Client, QueryMap, HeadersMap, Options0)
         {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
         {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
         {<<"sip-media-application">>, maps:get(<<"sip-media-application">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists supported phone number countries.
+list_supported_phone_number_countries(Client, ProductType)
+  when is_map(Client) ->
+    list_supported_phone_number_countries(Client, ProductType, #{}, #{}).
+
+list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap, []).
+
+list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/phone-number-countries"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"product-type">>, ProductType}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -4328,12 +4499,12 @@ put_events_configuration(Client, AccountId, BotId, Input0, Options0) ->
 %%
 %% We recommend using AWS CloudTrail to monitor usage of this API for your
 %% account. For more information, see Logging Amazon Chime API Calls with AWS
-%% CloudTrail in the Amazon Chime Administration Guide .
+%% CloudTrail in the Amazon Chime Administration Guide.
 %%
 %% To turn off existing retention settings, remove the number of days from
 %% the corresponding RetentionDays field in the RetentionSettings object. For
 %% more information about retention settings, see Managing Chat Retention
-%% Policies in the Amazon Chime Administration Guide .
+%% Policies in the Amazon Chime Administration Guide.
 put_retention_settings(Client, AccountId, Input) ->
     put_retention_settings(Client, AccountId, Input, []).
 put_retention_settings(Client, AccountId, Input0, Options0) ->
@@ -4718,7 +4889,12 @@ restore_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches phone numbers that can be ordered.
+%% @doc Searches for phone numbers that can be ordered.
+%%
+%% For US numbers, provide at least one of the following search filters:
+%% `AreaCode', `City', `State', or `TollFreePrefix'. If you provide `City',
+%% you must also provide `State'. Numbers outside the US only support the
+%% `PhoneNumberType' filter, which you must use.
 search_available_phone_numbers(Client)
   when is_map(Client) ->
     search_available_phone_numbers(Client, #{}, #{}).
@@ -4744,6 +4920,7 @@ search_available_phone_numbers(Client, QueryMap, HeadersMap, Options0)
         {<<"country">>, maps:get(<<"country">>, QueryMap, undefined)},
         {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
         {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"phone-number-type">>, maps:get(<<"phone-number-type">>, QueryMap, undefined)},
         {<<"state">>, maps:get(<<"state">>, QueryMap, undefined)},
         {<<"toll-free-prefix">>, maps:get(<<"toll-free-prefix">>, QueryMap, undefined)}
       ],
@@ -4774,6 +4951,52 @@ send_channel_message(Client, ChannelArn, Input0, Options0) ->
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts transcription for the specified `meetingId'.
+start_meeting_transcription(Client, MeetingId, Input) ->
+    start_meeting_transcription(Client, MeetingId, Input, []).
+start_meeting_transcription(Client, MeetingId, Input0, Options0) ->
+    Method = post,
+    Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/transcription?operation=start"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops transcription for the specified `meetingId'.
+stop_meeting_transcription(Client, MeetingId, Input) ->
+    stop_meeting_transcription(Client, MeetingId, Input, []).
+stop_meeting_transcription(Client, MeetingId, Input0, Options0) ->
+    Method = post,
+    Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/transcription?operation=stop"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
 
     CustomHeaders = [],
     Input2 = Input1,
@@ -4928,7 +5151,8 @@ untag_resource(Client, Input0, Options0) ->
 
 %% @doc Updates account details for the specified Amazon Chime account.
 %%
-%% Currently, only account name updates are supported for this action.
+%% Currently, only account name and default license updates are supported for
+%% this action.
 update_account(Client, AccountId, Input) ->
     update_account(Client, AccountId, Input, []).
 update_account(Client, AccountId, Input0, Options0) ->
@@ -5169,12 +5393,13 @@ update_global_settings(Client, Input0, Options0) ->
 %% You can update one phone number detail at a time. For example, you can
 %% update either the product type or the calling name in one action.
 %%
-%% For toll-free numbers, you must use the Amazon Chime Voice Connector
-%% product type.
+%% For toll-free numbers, you cannot use the Amazon Chime Business Calling
+%% product type. For numbers outside the U.S., you must use the Amazon Chime
+%% SIP Media Application Dial-In product type.
 %%
-%% Updates to outbound calling names can take up to 72 hours to complete.
-%% Pending updates to outbound calling names must be complete before you can
-%% request another update.
+%% Updates to outbound calling names can take 72 hours to complete. Pending
+%% updates to outbound calling names must be complete before you can request
+%% another update.
 update_phone_number(Client, PhoneNumberId, Input) ->
     update_phone_number(Client, PhoneNumberId, Input, []).
 update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
@@ -5307,6 +5532,31 @@ update_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
     Method = put,
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Allows you to trigger a Lambda function at any time while a call is
+%% active, and replace the current actions with new actions returned by the
+%% invocation.
+update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input) ->
+    update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input, []).
+update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input0, Options0) ->
+    Method = post,
+    Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/calls/", aws_util:encode_uri(TransactionId), ""],
+    SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -5478,6 +5728,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

@@ -81,6 +81,8 @@
          copy_option_group/3,
          create_custom_availability_zone/2,
          create_custom_availability_zone/3,
+         create_custom_db_engine_version/2,
+         create_custom_db_engine_version/3,
          create_db_cluster/2,
          create_db_cluster/3,
          create_db_cluster_endpoint/2,
@@ -97,6 +99,8 @@
          create_db_parameter_group/3,
          create_db_proxy/2,
          create_db_proxy/3,
+         create_db_proxy_endpoint/2,
+         create_db_proxy_endpoint/3,
          create_db_security_group/2,
          create_db_security_group/3,
          create_db_snapshot/2,
@@ -111,6 +115,8 @@
          create_option_group/3,
          delete_custom_availability_zone/2,
          delete_custom_availability_zone/3,
+         delete_custom_db_engine_version/2,
+         delete_custom_db_engine_version/3,
          delete_db_cluster/2,
          delete_db_cluster/3,
          delete_db_cluster_endpoint/2,
@@ -127,6 +133,8 @@
          delete_db_parameter_group/3,
          delete_db_proxy/2,
          delete_db_proxy/3,
+         delete_db_proxy_endpoint/2,
+         delete_db_proxy_endpoint/3,
          delete_db_security_group/2,
          delete_db_security_group/3,
          delete_db_snapshot/2,
@@ -177,6 +185,8 @@
          describe_db_parameters/3,
          describe_db_proxies/2,
          describe_db_proxies/3,
+         describe_db_proxy_endpoints/2,
+         describe_db_proxy_endpoints/3,
          describe_db_proxy_target_groups/2,
          describe_db_proxy_target_groups/3,
          describe_db_proxy_targets/2,
@@ -235,6 +245,8 @@
          modify_certificates/3,
          modify_current_db_cluster_capacity/2,
          modify_current_db_cluster_capacity/3,
+         modify_custom_db_engine_version/2,
+         modify_custom_db_engine_version/3,
          modify_db_cluster/2,
          modify_db_cluster/3,
          modify_db_cluster_endpoint/2,
@@ -249,6 +261,8 @@
          modify_db_parameter_group/3,
          modify_db_proxy/2,
          modify_db_proxy/3,
+         modify_db_proxy_endpoint/2,
+         modify_db_proxy_endpoint/3,
          modify_db_proxy_target_group/2,
          modify_db_proxy_target_group/3,
          modify_db_snapshot/2,
@@ -330,7 +344,8 @@
 %% Amazon Aurora DB cluster.
 %%
 %% For more information, see Authorizing Amazon Aurora MySQL to Access Other
-%% AWS Services on Your Behalf in the Amazon Aurora User Guide.
+%% Amazon Web Services Services on Your Behalf in the Amazon Aurora User
+%% Guide.
 %%
 %% This action only applies to Aurora DB clusters.
 add_role_to_db_cluster(Client, Input)
@@ -340,11 +355,13 @@ add_role_to_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddRoleToDBCluster">>, Input, Options).
 
-%% @doc Associates an AWS Identity and Access Management (IAM) role with a DB
-%% instance.
+%% @doc Associates an Amazon Web Services Identity and Access Management
+%% (IAM) role with a DB instance.
 %%
 %% To add a role to a DB instance, the status of the DB instance must be
 %% `available'.
+%%
+%% This command doesn't apply to RDS Custom.
 add_role_to_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_role_to_db_instance(Client, Input, []).
@@ -395,9 +412,10 @@ apply_pending_maintenance_action(Client, Input, Options)
 %% CIDR range, EC2SecurityGroupId for VPC, or (EC2SecurityGroupOwnerId and
 %% either EC2SecurityGroupName or EC2SecurityGroupId for non-VPC).
 %%
-%% You can't authorize ingress from an EC2 security group in one AWS Region
-%% to an Amazon RDS DB instance in another. You can't authorize ingress from
-%% a VPC security group in one VPC to an Amazon RDS DB instance in another.
+%% You can't authorize ingress from an EC2 security group in one Amazon Web
+%% Services Region to an Amazon RDS DB instance in another. You can't
+%% authorize ingress from a VPC security group in one VPC to an Amazon RDS DB
+%% instance in another.
 %%
 %% For an overview of CIDR ranges, go to the Wikipedia Tutorial.
 authorize_db_security_group_ingress(Client, Input)
@@ -448,60 +466,65 @@ copy_db_cluster_parameter_group(Client, Input, Options)
 %% `SourceDBClusterSnapshotIdentifier' must be the Amazon Resource Name (ARN)
 %% of the shared DB cluster snapshot.
 %%
-%% You can copy an encrypted DB cluster snapshot from another AWS Region. In
-%% that case, the AWS Region where you call the `CopyDBClusterSnapshot'
-%% action is the destination AWS Region for the encrypted DB cluster snapshot
-%% to be copied to. To copy an encrypted DB cluster snapshot from another AWS
+%% You can copy an encrypted DB cluster snapshot from another Amazon Web
+%% Services Region. In that case, the Amazon Web Services Region where you
+%% call the `CopyDBClusterSnapshot' action is the destination Amazon Web
+%% Services Region for the encrypted DB cluster snapshot to be copied to. To
+%% copy an encrypted DB cluster snapshot from another Amazon Web Services
 %% Region, you must provide the following values:
 %%
-%% <ul> <li> `KmsKeyId' - The AWS Key Management System (AWS KMS) key
-%% identifier for the key to use to encrypt the copy of the DB cluster
-%% snapshot in the destination AWS Region.
+%% <ul> <li> `KmsKeyId' - The Amazon Web Services Key Management System
+%% (Amazon Web Services KMS) key identifier for the key to use to encrypt the
+%% copy of the DB cluster snapshot in the destination Amazon Web Services
+%% Region.
 %%
 %% </li> <li> `PreSignedUrl' - A URL that contains a Signature Version 4
 %% signed request for the `CopyDBClusterSnapshot' action to be called in the
-%% source AWS Region where the DB cluster snapshot is copied from. The
-%% pre-signed URL must be a valid request for the `CopyDBClusterSnapshot' API
-%% action that can be executed in the source AWS Region that contains the
-%% encrypted DB cluster snapshot to be copied.
+%% source Amazon Web Services Region where the DB cluster snapshot is copied
+%% from. The pre-signed URL must be a valid request for the
+%% `CopyDBClusterSnapshot' API action that can be executed in the source
+%% Amazon Web Services Region that contains the encrypted DB cluster snapshot
+%% to be copied.
 %%
 %% The pre-signed URL request must contain the following parameter values:
 %%
-%% <ul> <li> `KmsKeyId' - The AWS KMS key identifier for the customer master
-%% key (CMK) to use to encrypt the copy of the DB cluster snapshot in the
-%% destination AWS Region. This is the same identifier for both the
-%% `CopyDBClusterSnapshot' action that is called in the destination AWS
-%% Region, and the action contained in the pre-signed URL.
+%% <ul> <li> `KmsKeyId' - The Amazon Web Services KMS key identifier for the
+%% KMS key to use to encrypt the copy of the DB cluster snapshot in the
+%% destination Amazon Web Services Region. This is the same identifier for
+%% both the `CopyDBClusterSnapshot' action that is called in the destination
+%% Amazon Web Services Region, and the action contained in the pre-signed
+%% URL.
 %%
-%% </li> <li> `DestinationRegion' - The name of the AWS Region that the DB
-%% cluster snapshot is to be created in.
+%% </li> <li> `DestinationRegion' - The name of the Amazon Web Services
+%% Region that the DB cluster snapshot is to be created in.
 %%
 %% </li> <li> `SourceDBClusterSnapshotIdentifier' - The DB cluster snapshot
 %% identifier for the encrypted DB cluster snapshot to be copied. This
 %% identifier must be in the Amazon Resource Name (ARN) format for the source
-%% AWS Region. For example, if you are copying an encrypted DB cluster
-%% snapshot from the us-west-2 AWS Region, then your
-%% `SourceDBClusterSnapshotIdentifier' looks like the following example:
+%% Amazon Web Services Region. For example, if you are copying an encrypted
+%% DB cluster snapshot from the us-west-2 Amazon Web Services Region, then
+%% your `SourceDBClusterSnapshotIdentifier' looks like the following example:
 %% `arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115'.
 %%
 %% </li> </ul> To learn how to generate a Signature Version 4 signed request,
-%% see Authenticating Requests: Using Query Parameters (AWS Signature Version
-%% 4) and Signature Version 4 Signing Process.
+%% see Authenticating Requests: Using Query Parameters (Amazon Web Services
+%% Signature Version 4) and Signature Version 4 Signing Process.
 %%
-%% If you are using an AWS SDK tool or the AWS CLI, you can specify
-%% `SourceRegion' (or `--source-region' for the AWS CLI) instead of
+%% If you are using an Amazon Web Services SDK tool or the CLI, you can
+%% specify `SourceRegion' (or `--source-region' for the CLI) instead of
 %% specifying `PreSignedUrl' manually. Specifying `SourceRegion'
 %% autogenerates a pre-signed URL that is a valid request for the operation
-%% that can be executed in the source AWS Region.
+%% that can be executed in the source Amazon Web Services Region.
 %%
 %% </li> <li> `TargetDBClusterSnapshotIdentifier' - The identifier for the
-%% new copy of the DB cluster snapshot in the destination AWS Region.
+%% new copy of the DB cluster snapshot in the destination Amazon Web Services
+%% Region.
 %%
 %% </li> <li> `SourceDBClusterSnapshotIdentifier' - The DB cluster snapshot
 %% identifier for the encrypted DB cluster snapshot to be copied. This
-%% identifier must be in the ARN format for the source AWS Region and is the
-%% same value as the `SourceDBClusterSnapshotIdentifier' in the pre-signed
-%% URL.
+%% identifier must be in the ARN format for the source Amazon Web Services
+%% Region and is the same value as the `SourceDBClusterSnapshotIdentifier' in
+%% the pre-signed URL.
 %%
 %% </li> </ul> To cancel the copy operation once it is in progress, delete
 %% the target DB cluster snapshot identified by
@@ -509,8 +532,8 @@ copy_db_cluster_parameter_group(Client, Input, Options)
 %% "copying" status.
 %%
 %% For more information on copying encrypted DB cluster snapshots from one
-%% AWS Region to another, see Copying a Snapshot in the Amazon Aurora User
-%% Guide.
+%% Amazon Web Services Region to another, see Copying a Snapshot in the
+%% Amazon Aurora User Guide.
 %%
 %% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
@@ -535,9 +558,12 @@ copy_db_parameter_group(Client, Input, Options)
 %%
 %% The source DB snapshot must be in the `available' state.
 %%
-%% You can copy a snapshot from one AWS Region to another. In that case, the
-%% AWS Region where you call the `CopyDBSnapshot' action is the destination
-%% AWS Region for the DB snapshot copy.
+%% You can copy a snapshot from one Amazon Web Services Region to another. In
+%% that case, the Amazon Web Services Region where you call the
+%% `CopyDBSnapshot' action is the destination Amazon Web Services Region for
+%% the DB snapshot copy.
+%%
+%% This command doesn't apply to RDS Custom.
 %%
 %% For more information about copying snapshots, see Copying a DB Snapshot in
 %% the Amazon RDS User Guide.
@@ -570,13 +596,58 @@ create_custom_availability_zone(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCustomAvailabilityZone">>, Input, Options).
 
+%% @doc Creates a custom DB engine version (CEV).
+%%
+%% A CEV is a binary volume snapshot of a database engine and specific AMI.
+%% The only supported engine is Oracle Database 19c Enterprise Edition with
+%% the January 2021 or later RU/RUR. For more information, see Amazon RDS
+%% Custom requirements and limitations in the Amazon RDS User Guide.
+%%
+%% Amazon RDS, which is a fully managed service, supplies the Amazon Machine
+%% Image (AMI) and database software. The Amazon RDS database software is
+%% preinstalled, so you need only select a DB engine and version, and create
+%% your database. With Amazon RDS Custom, you upload your database
+%% installation files in Amazon S3. For more information, see Preparing to
+%% create a CEV in the Amazon RDS User Guide.
+%%
+%% When you create a custom engine version, you specify the files in a JSON
+%% document called a CEV manifest. This document describes installation .zip
+%% files stored in Amazon S3. RDS Custom creates your CEV from the
+%% installation files that you provided. This service model is called Bring
+%% Your Own Media (BYOM).
+%%
+%% Creation takes approximately two hours. If creation fails, RDS Custom
+%% issues `RDS-EVENT-0196' with the message `Creation failed for custom
+%% engine version', and includes details about the failure. For example, the
+%% event prints missing files.
+%%
+%% After you create the CEV, it is available for use. You can create multiple
+%% CEVs, and create multiple RDS Custom instances from any CEV. You can also
+%% change the status of a CEV to make it available or inactive.
+%%
+%% The MediaImport service that imports files from Amazon S3 to create CEVs
+%% isn't integrated with Amazon Web Services CloudTrail. If you turn on data
+%% logging for Amazon RDS in CloudTrail, calls to the
+%% `CreateCustomDbEngineVersion' event aren't logged. However, you might see
+%% calls from the API gateway that accesses your Amazon S3 bucket. These
+%% calls originate from the MediaImport service for the
+%% `CreateCustomDbEngineVersion' event.
+%%
+%% For more information, see Creating a CEV in the Amazon RDS User Guide.
+create_custom_db_engine_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_custom_db_engine_version(Client, Input, []).
+create_custom_db_engine_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateCustomDBEngineVersion">>, Input, Options).
+
 %% @doc Creates a new Amazon Aurora DB cluster.
 %%
 %% You can use the `ReplicationSourceIdentifier' parameter to create the DB
-%% cluster as a read replica of another DB cluster or Amazon RDS MySQL DB
-%% instance. For cross-region replication where the DB cluster identified by
-%% `ReplicationSourceIdentifier' is encrypted, you must also specify the
-%% `PreSignedUrl' parameter.
+%% cluster as a read replica of another DB cluster or Amazon RDS MySQL or
+%% PostgreSQL DB instance. For cross-region replication where the DB cluster
+%% identified by `ReplicationSourceIdentifier' is encrypted, you must also
+%% specify the `PreSignedUrl' parameter.
 %%
 %% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
@@ -686,11 +757,13 @@ create_db_instance_read_replica(Client, Input, Options)
 %% A DB parameter group is initially created with the default parameters for
 %% the database engine used by the DB instance. To provide custom values for
 %% any of the parameters, you must modify the group after creating it using
-%% ModifyDBParameterGroup. Once you've created a DB parameter group, you need
-%% to associate it with your DB instance using ModifyDBInstance. When you
-%% associate a new DB parameter group with a running DB instance, you need to
-%% reboot the DB instance without failover for the new DB parameter group and
-%% associated settings to take effect.
+%% `ModifyDBParameterGroup'. Once you've created a DB parameter group, you
+%% need to associate it with your DB instance using `ModifyDBInstance'. When
+%% you associate a new DB parameter group with a running DB instance, you
+%% need to reboot the DB instance without failover for the new DB parameter
+%% group and associated settings to take effect.
+%%
+%% This command doesn't apply to RDS Custom.
 %%
 %% After you create a DB parameter group, you should wait at least 5 minutes
 %% before creating your first DB instance that uses that DB parameter group
@@ -716,6 +789,19 @@ create_db_proxy(Client, Input)
 create_db_proxy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBProxy">>, Input, Options).
+
+%% @doc Creates a `DBProxyEndpoint'.
+%%
+%% Only applies to proxies that are associated with Aurora DB clusters. You
+%% can use DB proxy endpoints to specify read/write or read-only access to
+%% the DB cluster. You can also use DB proxy endpoints to access a DB proxy
+%% through a different VPC than the proxy's default VPC.
+create_db_proxy_endpoint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_db_proxy_endpoint(Client, Input, []).
+create_db_proxy_endpoint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateDBProxyEndpoint">>, Input, Options).
 
 %% @doc Creates a new DB security group.
 %%
@@ -744,7 +830,7 @@ create_db_snapshot(Client, Input, Options)
 %% @doc Creates a new DB subnet group.
 %%
 %% DB subnet groups must contain at least one subnet in at least two AZs in
-%% the AWS Region.
+%% the Amazon Web Services Region.
 create_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_subnet_group(Client, Input, []).
@@ -786,7 +872,8 @@ create_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEventSubscription">>, Input, Options).
 
-%% @doc Creates an Aurora global database spread across multiple AWS Regions.
+%% @doc Creates an Aurora global database spread across multiple Amazon Web
+%% Services Regions.
 %%
 %% The global database contains a single primary cluster with read-write
 %% capability, and a read-only secondary cluster that receives data from the
@@ -809,6 +896,8 @@ create_global_cluster(Client, Input, Options)
 %% @doc Creates a new option group.
 %%
 %% You can create up to 20 option groups.
+%%
+%% This command doesn't apply to RDS Custom.
 create_option_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_option_group(Client, Input, []).
@@ -829,6 +918,35 @@ delete_custom_availability_zone(Client, Input)
 delete_custom_availability_zone(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCustomAvailabilityZone">>, Input, Options).
+
+%% @doc Deletes a custom engine version.
+%%
+%% To run this command, make sure you meet the following prerequisites:
+%%
+%% <ul> <li> The CEV must not be the default for RDS Custom. If it is, change
+%% the default before running this command.
+%%
+%% </li> <li> The CEV must not be associated with an RDS Custom DB instance,
+%% RDS Custom instance snapshot, or automated backup of your RDS Custom
+%% instance.
+%%
+%% </li> </ul> Typically, deletion takes a few minutes.
+%%
+%% The MediaImport service that imports files from Amazon S3 to create CEVs
+%% isn't integrated with Amazon Web Services CloudTrail. If you turn on data
+%% logging for Amazon RDS in CloudTrail, calls to the
+%% `DeleteCustomDbEngineVersion' event aren't logged. However, you might see
+%% calls from the API gateway that accesses your Amazon S3 bucket. These
+%% calls originate from the MediaImport service for the
+%% `DeleteCustomDbEngineVersion' event.
+%%
+%% For more information, see Deleting a CEV in the Amazon RDS User Guide.
+delete_custom_db_engine_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_custom_db_engine_version(Client, Input, []).
+delete_custom_db_engine_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteCustomDBEngineVersion">>, Input, Options).
 
 %% @doc The DeleteDBCluster action deletes a previously provisioned DB
 %% cluster.
@@ -950,13 +1068,26 @@ delete_db_parameter_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBParameterGroup">>, Input, Options).
 
-%% @doc Deletes an existing proxy.
+%% @doc Deletes an existing DB proxy.
 delete_db_proxy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_proxy(Client, Input, []).
 delete_db_proxy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBProxy">>, Input, Options).
+
+%% @doc Deletes a `DBProxyEndpoint'.
+%%
+%% Doing so removes the ability to access the DB proxy using the endpoint
+%% that you defined. The endpoint that you delete might have provided
+%% capabilities such as read/write or read-only operations, or using a
+%% different VPC than the DB proxy's default VPC.
+delete_db_proxy_endpoint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_db_proxy_endpoint(Client, Input, []).
+delete_db_proxy_endpoint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDBProxyEndpoint">>, Input, Options).
 
 %% @doc Deletes a DB security group.
 %%
@@ -1054,8 +1185,8 @@ describe_account_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountAttributes">>, Input, Options).
 
-%% @doc Lists the set of CA certificates provided by Amazon RDS for this AWS
-%% account.
+%% @doc Lists the set of CA certificates provided by Amazon RDS for this
+%% Amazon Web Services account.
 describe_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificates(Client, Input, []).
@@ -1133,16 +1264,18 @@ describe_db_cluster_parameters(Client, Input, Options)
 %% @doc Returns a list of DB cluster snapshot attribute names and values for
 %% a manual DB cluster snapshot.
 %%
-%% When sharing snapshots with other AWS accounts,
+%% When sharing snapshots with other Amazon Web Services accounts,
 %% `DescribeDBClusterSnapshotAttributes' returns the `restore' attribute and
-%% a list of IDs for the AWS accounts that are authorized to copy or restore
-%% the manual DB cluster snapshot. If `all' is included in the list of values
-%% for the `restore' attribute, then the manual DB cluster snapshot is public
-%% and can be copied or restored by all AWS accounts.
+%% a list of IDs for the Amazon Web Services accounts that are authorized to
+%% copy or restore the manual DB cluster snapshot. If `all' is included in
+%% the list of values for the `restore' attribute, then the manual DB cluster
+%% snapshot is public and can be copied or restored by all Amazon Web
+%% Services accounts.
 %%
-%% To add or remove access for an AWS account to copy or restore a manual DB
-%% cluster snapshot, or to make the manual DB cluster snapshot public or
-%% private, use the `ModifyDBClusterSnapshotAttribute' API action.
+%% To add or remove access for an Amazon Web Services account to copy or
+%% restore a manual DB cluster snapshot, or to make the manual DB cluster
+%% snapshot public or private, use the `ModifyDBClusterSnapshotAttribute' API
+%% action.
 %%
 %% This action only applies to Aurora DB clusters.
 describe_db_cluster_snapshot_attributes(Client, Input)
@@ -1220,6 +1353,8 @@ describe_db_instances(Client, Input, Options)
     request(Client, <<"DescribeDBInstances">>, Input, Options).
 
 %% @doc Returns a list of DB log files for the DB instance.
+%%
+%% This command doesn't apply to RDS Custom.
 describe_db_log_files(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_log_files(Client, Input, []).
@@ -1255,6 +1390,14 @@ describe_db_proxies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBProxies">>, Input, Options).
 
+%% @doc Returns information about DB proxy endpoints.
+describe_db_proxy_endpoints(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_db_proxy_endpoints(Client, Input, []).
+describe_db_proxy_endpoints(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDBProxyEndpoints">>, Input, Options).
+
 %% @doc Returns information about DB proxy target groups, represented by
 %% `DBProxyTargetGroup' data structures.
 describe_db_proxy_target_groups(Client, Input)
@@ -1288,16 +1431,16 @@ describe_db_security_groups(Client, Input, Options)
 %% @doc Returns a list of DB snapshot attribute names and values for a manual
 %% DB snapshot.
 %%
-%% When sharing snapshots with other AWS accounts,
+%% When sharing snapshots with other Amazon Web Services accounts,
 %% `DescribeDBSnapshotAttributes' returns the `restore' attribute and a list
-%% of IDs for the AWS accounts that are authorized to copy or restore the
-%% manual DB snapshot. If `all' is included in the list of values for the
-%% `restore' attribute, then the manual DB snapshot is public and can be
-%% copied or restored by all AWS accounts.
+%% of IDs for the Amazon Web Services accounts that are authorized to copy or
+%% restore the manual DB snapshot. If `all' is included in the list of values
+%% for the `restore' attribute, then the manual DB snapshot is public and can
+%% be copied or restored by all Amazon Web Services accounts.
 %%
-%% To add or remove access for an AWS account to copy or restore a manual DB
-%% snapshot, or to make the manual DB snapshot public or private, use the
-%% `ModifyDBSnapshotAttribute' API action.
+%% To add or remove access for an Amazon Web Services account to copy or
+%% restore a manual DB snapshot, or to make the manual DB snapshot public or
+%% private, use the `ModifyDBSnapshotAttribute' API action.
 describe_db_snapshot_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_snapshot_attributes(Client, Input, []).
@@ -1478,9 +1621,9 @@ describe_reserved_db_instances_offerings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReservedDBInstancesOfferings">>, Input, Options).
 
-%% @doc Returns a list of the source AWS Regions where the current AWS Region
-%% can create a read replica, copy a DB snapshot from, or replicate automated
-%% backups from.
+%% @doc Returns a list of the source Amazon Web Services Regions where the
+%% current Amazon Web Services Region can create a read replica, copy a DB
+%% snapshot from, or replicate automated backups from.
 %%
 %% This API action supports pagination.
 describe_source_regions(Client, Input)
@@ -1494,6 +1637,8 @@ describe_source_regions(Client, Input, Options)
 %% modifications you can make to your DB instance.
 %%
 %% You can use this information when you call `ModifyDBInstance'.
+%%
+%% This command doesn't apply to RDS Custom.
 describe_valid_db_instance_modifications(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_valid_db_instance_modifications(Client, Input, []).
@@ -1503,6 +1648,8 @@ describe_valid_db_instance_modifications(Client, Input, Options)
 
 %% @doc Downloads all or a portion of the specified log file, up to 1 MB in
 %% size.
+%%
+%% This command doesn't apply to RDS Custom.
 download_db_log_file_portion(Client, Input)
   when is_map(Client), is_map(Input) ->
     download_db_log_file_portion(Client, Input, []).
@@ -1594,12 +1741,13 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% <ul> <li> You already migrated your applications to support the latest
 %% certificate authority (CA) certificate, but the new CA certificate is not
-%% yet the RDS default CA certificate for the specified AWS Region.
+%% yet the RDS default CA certificate for the specified Amazon Web Services
+%% Region.
 %%
 %% </li> <li> RDS has already moved to a new default CA certificate for the
-%% specified AWS Region, but you are still in the process of supporting the
-%% new CA certificate. In this case, you temporarily need additional time to
-%% finish your application changes.
+%% specified Amazon Web Services Region, but you are still in the process of
+%% supporting the new CA certificate. In this case, you temporarily need
+%% additional time to finish your application changes.
 %%
 %% </li> </ul> For more information about rotating your SSL/TLS certificate
 %% for RDS DB engines, see Rotating Your SSL/TLS Certificate in the Amazon
@@ -1635,13 +1783,34 @@ modify_certificates(Client, Input, Options)
 %% scaling point might be dropped. For more information about scaling points,
 %% see Autoscaling for Aurora Serverless in the Amazon Aurora User Guide.
 %%
-%% This action only applies to Aurora DB clusters.
+%% This action only applies to Aurora Serverless DB clusters.
 modify_current_db_cluster_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_current_db_cluster_capacity(Client, Input, []).
 modify_current_db_cluster_capacity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyCurrentDBClusterCapacity">>, Input, Options).
+
+%% @doc Modifies the status of a custom engine version (CEV).
+%%
+%% You can find CEVs to modify by calling `DescribeDBEngineVersions'.
+%%
+%% The MediaImport service that imports files from Amazon S3 to create CEVs
+%% isn't integrated with Amazon Web Services CloudTrail. If you turn on data
+%% logging for Amazon RDS in CloudTrail, calls to the
+%% `ModifyCustomDbEngineVersion' event aren't logged. However, you might see
+%% calls from the API gateway that accesses your Amazon S3 bucket. These
+%% calls originate from the MediaImport service for the
+%% `ModifyCustomDbEngineVersion' event.
+%%
+%% For more information, see Modifying CEV status in the Amazon RDS User
+%% Guide.
+modify_custom_db_engine_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_custom_db_engine_version(Client, Input, []).
+modify_custom_db_engine_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyCustomDBEngineVersion">>, Input, Options).
 
 %% @doc Modify a setting for an Amazon Aurora DB cluster.
 %%
@@ -1678,10 +1847,6 @@ modify_db_cluster_endpoint(Client, Input, Options)
 %% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
 %%
-%% Changes to dynamic parameters are applied immediately. Changes to static
-%% parameters require a reboot without failover to the DB cluster associated
-%% with the parameter group before the change can take effect.
-%%
 %% After you create a DB cluster parameter group, you should wait at least 5
 %% minutes before creating your first DB cluster that uses that DB cluster
 %% parameter group as the default parameter group. This allows Amazon RDS to
@@ -1711,24 +1876,27 @@ modify_db_cluster_parameter_group(Client, Input, Options)
 %% @doc Adds an attribute and values to, or removes an attribute and values
 %% from, a manual DB cluster snapshot.
 %%
-%% To share a manual DB cluster snapshot with other AWS accounts, specify
-%% `restore' as the `AttributeName' and use the `ValuesToAdd' parameter to
-%% add a list of IDs of the AWS accounts that are authorized to restore the
-%% manual DB cluster snapshot. Use the value `all' to make the manual DB
-%% cluster snapshot public, which means that it can be copied or restored by
-%% all AWS accounts.
+%% To share a manual DB cluster snapshot with other Amazon Web Services
+%% accounts, specify `restore' as the `AttributeName' and use the
+%% `ValuesToAdd' parameter to add a list of IDs of the Amazon Web Services
+%% accounts that are authorized to restore the manual DB cluster snapshot.
+%% Use the value `all' to make the manual DB cluster snapshot public, which
+%% means that it can be copied or restored by all Amazon Web Services
+%% accounts.
 %%
 %% Don't add the `all' value for any manual DB cluster snapshots that contain
-%% private information that you don't want available to all AWS accounts.
+%% private information that you don't want available to all Amazon Web
+%% Services accounts.
 %%
 %% If a manual DB cluster snapshot is encrypted, it can be shared, but only
-%% by specifying a list of authorized AWS account IDs for the `ValuesToAdd'
-%% parameter. You can't use `all' as a value for that parameter in this case.
+%% by specifying a list of authorized Amazon Web Services account IDs for the
+%% `ValuesToAdd' parameter. You can't use `all' as a value for that parameter
+%% in this case.
 %%
-%% To view which AWS accounts have access to copy or restore a manual DB
-%% cluster snapshot, or whether a manual DB cluster snapshot is public or
-%% private, use the `DescribeDBClusterSnapshotAttributes' API action. The
-%% accounts are returned as values for the `restore' attribute.
+%% To view which Amazon Web Services accounts have access to copy or restore
+%% a manual DB cluster snapshot, or whether a manual DB cluster snapshot is
+%% public or private, use the `DescribeDBClusterSnapshotAttributes' API
+%% action. The accounts are returned as values for the `restore' attribute.
 %%
 %% This action only applies to Aurora DB clusters.
 modify_db_cluster_snapshot_attribute(Client, Input)
@@ -1757,10 +1925,6 @@ modify_db_instance(Client, Input, Options)
 %% `ParameterName', `ParameterValue', and `ApplyMethod'. A maximum of 20
 %% parameters can be modified in a single request.
 %%
-%% Changes to dynamic parameters are applied immediately. Changes to static
-%% parameters require a reboot without failover to the DB instance associated
-%% with the parameter group before the change can take effect.
-%%
 %% After you modify a DB parameter group, you should wait at least 5 minutes
 %% before creating your first DB instance that uses that DB parameter group
 %% as the default parameter group. This allows Amazon RDS to fully complete
@@ -1786,6 +1950,14 @@ modify_db_proxy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBProxy">>, Input, Options).
 
+%% @doc Changes the settings for an existing DB proxy endpoint.
+modify_db_proxy_endpoint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_db_proxy_endpoint(Client, Input, []).
+modify_db_proxy_endpoint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyDBProxyEndpoint">>, Input, Options).
+
 %% @doc Modifies the properties of a `DBProxyTargetGroup'.
 modify_db_proxy_target_group(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1798,8 +1970,8 @@ modify_db_proxy_target_group(Client, Input, Options)
 %%
 %% The snapshot can be encrypted or unencrypted, but not shared or public.
 %%
-%% Amazon RDS supports upgrading DB snapshots for MySQL, Oracle, and
-%% PostgreSQL.
+%% Amazon RDS supports upgrading DB snapshots for MySQL, PostgreSQL, and
+%% Oracle. This command doesn't apply to RDS Custom.
 modify_db_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_snapshot(Client, Input, []).
@@ -1810,23 +1982,26 @@ modify_db_snapshot(Client, Input, Options)
 %% @doc Adds an attribute and values to, or removes an attribute and values
 %% from, a manual DB snapshot.
 %%
-%% To share a manual DB snapshot with other AWS accounts, specify `restore'
-%% as the `AttributeName' and use the `ValuesToAdd' parameter to add a list
-%% of IDs of the AWS accounts that are authorized to restore the manual DB
-%% snapshot. Uses the value `all' to make the manual DB snapshot public,
-%% which means it can be copied or restored by all AWS accounts.
+%% To share a manual DB snapshot with other Amazon Web Services accounts,
+%% specify `restore' as the `AttributeName' and use the `ValuesToAdd'
+%% parameter to add a list of IDs of the Amazon Web Services accounts that
+%% are authorized to restore the manual DB snapshot. Uses the value `all' to
+%% make the manual DB snapshot public, which means it can be copied or
+%% restored by all Amazon Web Services accounts.
 %%
 %% Don't add the `all' value for any manual DB snapshots that contain private
-%% information that you don't want available to all AWS accounts.
+%% information that you don't want available to all Amazon Web Services
+%% accounts.
 %%
 %% If the manual DB snapshot is encrypted, it can be shared, but only by
-%% specifying a list of authorized AWS account IDs for the `ValuesToAdd'
-%% parameter. You can't use `all' as a value for that parameter in this case.
+%% specifying a list of authorized Amazon Web Services account IDs for the
+%% `ValuesToAdd' parameter. You can't use `all' as a value for that parameter
+%% in this case.
 %%
-%% To view which AWS accounts have access to copy or restore a manual DB
-%% snapshot, or whether a manual DB snapshot public or private, use the
-%% `DescribeDBSnapshotAttributes' API action. The accounts are returned as
-%% values for the `restore' attribute.
+%% To view which Amazon Web Services accounts have access to copy or restore
+%% a manual DB snapshot, or whether a manual DB snapshot public or private,
+%% use the `DescribeDBSnapshotAttributes' API action. The accounts are
+%% returned as values for the `restore' attribute.
 modify_db_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_snapshot_attribute(Client, Input, []).
@@ -1837,7 +2012,7 @@ modify_db_snapshot_attribute(Client, Input, Options)
 %% @doc Modifies an existing DB subnet group.
 %%
 %% DB subnet groups must contain at least one subnet in at least two AZs in
-%% the AWS Region.
+%% the Amazon Web Services Region.
 modify_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_subnet_group(Client, Input, []).
@@ -1896,7 +2071,8 @@ modify_option_group(Client, Input, Options)
 %% backup window so that daily backups do not interfere with read replica
 %% promotion.
 %%
-%% This command doesn't apply to Aurora MySQL and Aurora PostgreSQL.
+%% This command doesn't apply to Aurora MySQL, Aurora PostgreSQL, or RDS
+%% Custom.
 promote_read_replica(Client, Input)
   when is_map(Client), is_map(Input) ->
     promote_read_replica(Client, Input, []).
@@ -1935,6 +2111,8 @@ purchase_reserved_db_instances_offering(Client, Input, Options)
 %%
 %% For more information about rebooting, see Rebooting a DB Instance in the
 %% Amazon RDS User Guide.
+%%
+%% This command doesn't apply to RDS Custom.
 reboot_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_db_instance(Client, Input, []).
@@ -1966,11 +2144,12 @@ remove_from_global_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveFromGlobalCluster">>, Input, Options).
 
-%% @doc Disassociates an AWS Identity and Access Management (IAM) role from
-%% an Amazon Aurora DB cluster.
+%% @doc Disassociates an Amazon Web Services Identity and Access Management
+%% (IAM) role from an Amazon Aurora DB cluster.
 %%
 %% For more information, see Authorizing Amazon Aurora MySQL to Access Other
-%% AWS Services on Your Behalf in the Amazon Aurora User Guide.
+%% Amazon Web Services Services on Your Behalf in the Amazon Aurora User
+%% Guide.
 %%
 %% This action only applies to Aurora DB clusters.
 remove_role_from_db_cluster(Client, Input)
@@ -1980,8 +2159,8 @@ remove_role_from_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveRoleFromDBCluster">>, Input, Options).
 
-%% @doc Disassociates an AWS Identity and Access Management (IAM) role from a
-%% DB instance.
+%% @doc Disassociates an Amazon Web Services Identity and Access Management
+%% (IAM) role from a DB instance.
 remove_role_from_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_role_from_db_instance(Client, Input, []).
@@ -2168,6 +2347,8 @@ restore_db_instance_from_db_snapshot(Client, Input, Options)
 %% a new Amazon RDS DB instance running MySQL. For more information, see
 %% Importing Data into an Amazon RDS MySQL DB Instance in the Amazon RDS User
 %% Guide.
+%%
+%% This command doesn't apply to RDS Custom.
 restore_db_instance_from_s3(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_instance_from_s3(Client, Input, []).
@@ -2199,7 +2380,7 @@ restore_db_instance_to_point_in_time(Client, Input, Options)
     request(Client, <<"RestoreDBInstanceToPointInTime">>, Input, Options).
 
 %% @doc Revokes ingress from a DBSecurityGroup for previously authorized IP
-%% ranges or EC2 or VPC Security Groups.
+%% ranges or EC2 or VPC security groups.
 %%
 %% Required parameters for this API are one of CIDRIP, EC2SecurityGroupId for
 %% VPC, or (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or
@@ -2223,8 +2404,9 @@ start_activity_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartActivityStream">>, Input, Options).
 
-%% @doc Starts an Amazon Aurora DB cluster that was stopped using the AWS
-%% console, the stop-db-cluster AWS CLI command, or the StopDBCluster action.
+%% @doc Starts an Amazon Aurora DB cluster that was stopped using the Amazon
+%% Web Services console, the stop-db-cluster CLI command, or the
+%% StopDBCluster action.
 %%
 %% For more information, see Stopping and Starting an Aurora Cluster in the
 %% Amazon Aurora User Guide.
@@ -2237,15 +2419,15 @@ start_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDBCluster">>, Input, Options).
 
-%% @doc Starts an Amazon RDS DB instance that was stopped using the AWS
-%% console, the stop-db-instance AWS CLI command, or the StopDBInstance
-%% action.
+%% @doc Starts an Amazon RDS DB instance that was stopped using the Amazon
+%% Web Services console, the stop-db-instance CLI command, or the
+%% StopDBInstance action.
 %%
 %% For more information, see Starting an Amazon RDS DB instance That Was
 %% Previously Stopped in the Amazon RDS User Guide.
 %%
-%% This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-%% Aurora DB clusters, use `StartDBCluster' instead.
+%% This command doesn't apply to RDS Custom, Aurora MySQL, and Aurora
+%% PostgreSQL. For Aurora DB clusters, use `StartDBCluster' instead.
 start_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_db_instance(Client, Input, []).
@@ -2253,10 +2435,13 @@ start_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDBInstance">>, Input, Options).
 
-%% @doc Enables replication of automated backups to a different AWS Region.
+%% @doc Enables replication of automated backups to a different Amazon Web
+%% Services Region.
 %%
-%% For more information, see Replicating Automated Backups to Another AWS
-%% Region in the Amazon RDS User Guide.
+%% This command doesn't apply to RDS Custom.
+%%
+%% For more information, see Replicating Automated Backups to Another Amazon
+%% Web Services Region in the Amazon RDS User Guide.
 start_db_instance_automated_backups_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_db_instance_automated_backups_replication(Client, Input, []).
@@ -2267,6 +2452,8 @@ start_db_instance_automated_backups_replication(Client, Input, Options)
 %% @doc Starts an export of a snapshot to Amazon S3.
 %%
 %% The provided IAM role must have access to the S3 bucket.
+%%
+%% This command doesn't apply to RDS Custom.
 start_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_export_task(Client, Input, []).
@@ -2274,8 +2461,8 @@ start_export_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartExportTask">>, Input, Options).
 
-%% @doc Stops a database activity stream that was started using the AWS
-%% console, the `start-activity-stream' AWS CLI command, or the
+%% @doc Stops a database activity stream that was started using the Amazon
+%% Web Services console, the `start-activity-stream' CLI command, or the
 %% `StartActivityStream' action.
 %%
 %% For more information, see Database Activity Streams in the Amazon Aurora
@@ -2314,8 +2501,8 @@ stop_db_cluster(Client, Input, Options)
 %% For more information, see Stopping an Amazon RDS DB Instance Temporarily
 %% in the Amazon RDS User Guide.
 %%
-%% This command doesn't apply to Aurora MySQL and Aurora PostgreSQL. For
-%% Aurora clusters, use `StopDBCluster' instead.
+%% This command doesn't apply to RDS Custom, Aurora MySQL, and Aurora
+%% PostgreSQL. For Aurora clusters, use `StopDBCluster' instead.
 stop_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_db_instance(Client, Input, []).
@@ -2325,8 +2512,10 @@ stop_db_instance(Client, Input, Options)
 
 %% @doc Stops automated backup replication for a DB instance.
 %%
-%% For more information, see Replicating Automated Backups to Another AWS
-%% Region in the Amazon RDS User Guide.
+%% This command doesn't apply to RDS Custom.
+%%
+%% For more information, see Replicating Automated Backups to Another Amazon
+%% Web Services Region in the Amazon RDS User Guide.
 stop_db_instance_automated_backups_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_db_instance_automated_backups_replication(Client, Input, []).

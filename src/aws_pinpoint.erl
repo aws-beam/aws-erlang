@@ -14,6 +14,8 @@
          create_export_job/4,
          create_import_job/3,
          create_import_job/4,
+         create_in_app_template/3,
+         create_in_app_template/4,
          create_journey/3,
          create_journey/4,
          create_push_template/3,
@@ -52,6 +54,8 @@
          delete_event_stream/4,
          delete_gcm_channel/3,
          delete_gcm_channel/4,
+         delete_in_app_template/3,
+         delete_in_app_template/4,
          delete_journey/4,
          delete_journey/5,
          delete_push_template/3,
@@ -148,6 +152,12 @@
          get_import_jobs/2,
          get_import_jobs/4,
          get_import_jobs/5,
+         get_in_app_messages/3,
+         get_in_app_messages/5,
+         get_in_app_messages/6,
+         get_in_app_template/2,
+         get_in_app_template/4,
+         get_in_app_template/5,
          get_journey/3,
          get_journey/5,
          get_journey/6,
@@ -256,6 +266,8 @@
          update_endpoints_batch/4,
          update_gcm_channel/3,
          update_gcm_channel/4,
+         update_in_app_template/3,
+         update_in_app_template/4,
          update_journey/4,
          update_journey/5,
          update_journey_state/4,
@@ -383,6 +395,30 @@ create_import_job(Client, ApplicationId, Input) ->
 create_import_job(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/jobs/import"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new message template for messages using the in-app message
+%% channel.
+create_in_app_template(Client, TemplateName, Input) ->
+    create_in_app_template(Client, TemplateName, Input, []).
+create_in_app_template(Client, TemplateName, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/inapp"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -850,6 +886,31 @@ delete_gcm_channel(Client, ApplicationId, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a message template for messages sent using the in-app message
+%% channel.
+delete_in_app_template(Client, TemplateName, Input) ->
+    delete_in_app_template(Client, TemplateName, Input, []).
+delete_in_app_template(Client, TemplateName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/inapp"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"version">>, <<"Version">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a journey from an application.
@@ -1732,6 +1793,57 @@ get_import_jobs(Client, ApplicationId, QueryMap, HeadersMap, Options0)
       [
         {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)},
         {<<"token">>, maps:get(<<"token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the in-app messages targeted for the provided endpoint ID.
+get_in_app_messages(Client, ApplicationId, EndpointId)
+  when is_map(Client) ->
+    get_in_app_messages(Client, ApplicationId, EndpointId, #{}, #{}).
+
+get_in_app_messages(Client, ApplicationId, EndpointId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_in_app_messages(Client, ApplicationId, EndpointId, QueryMap, HeadersMap, []).
+
+get_in_app_messages(Client, ApplicationId, EndpointId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/endpoints/", aws_util:encode_uri(EndpointId), "/inappmessages"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the content and settings of a message template for messages
+%% sent through the in-app channel.
+get_in_app_template(Client, TemplateName)
+  when is_map(Client) ->
+    get_in_app_template(Client, TemplateName, #{}, #{}).
+
+get_in_app_template(Client, TemplateName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_in_app_template(Client, TemplateName, QueryMap, HeadersMap, []).
+
+get_in_app_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/inapp"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"version">>, maps:get(<<"version">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2852,6 +2964,32 @@ update_gcm_channel(Client, ApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates an existing message template for messages sent through the
+%% in-app message channel.
+update_in_app_template(Client, TemplateName, Input) ->
+    update_in_app_template(Client, TemplateName, Input, []).
+update_in_app_template(Client, TemplateName, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/inapp"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"create-new-version">>, <<"CreateNewVersion">>},
+                     {<<"version">>, <<"Version">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates the configuration and other settings for a journey.
 update_journey(Client, ApplicationId, JourneyId, Input) ->
     update_journey(Client, ApplicationId, JourneyId, Input, []).
@@ -2875,7 +3013,7 @@ update_journey(Client, ApplicationId, JourneyId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Cancels (stops) an active journey.
+%% @doc Pause, resume or cancels (stops) a journey.
 update_journey_state(Client, ApplicationId, JourneyId, Input) ->
     update_journey_state(Client, ApplicationId, JourneyId, Input, []).
 update_journey_state(Client, ApplicationId, JourneyId, Input0, Options0) ->
@@ -3131,6 +3269,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

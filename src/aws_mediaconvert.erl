@@ -18,6 +18,8 @@
          create_queue/3,
          delete_job_template/3,
          delete_job_template/4,
+         delete_policy/2,
+         delete_policy/3,
          delete_preset/3,
          delete_preset/4,
          delete_queue/3,
@@ -32,6 +34,9 @@
          get_job_template/2,
          get_job_template/4,
          get_job_template/5,
+         get_policy/1,
+         get_policy/3,
+         get_policy/4,
          get_preset/2,
          get_preset/4,
          get_preset/5,
@@ -53,6 +58,8 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         put_policy/2,
+         put_policy/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/3,
@@ -246,6 +253,29 @@ delete_job_template(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Permanently delete a policy that you created.
+delete_policy(Client, Input) ->
+    delete_policy(Client, Input, []).
+delete_policy(Client, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2017-08-29/policy"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Permanently delete a preset you have created.
 delete_preset(Client, Name, Input) ->
     delete_preset(Client, Name, Input, []).
@@ -376,6 +406,29 @@ get_job_template(Client, Name, QueryMap, HeadersMap)
 get_job_template(Client, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2017-08-29/jobTemplates/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieve the JSON for your policy.
+get_policy(Client)
+  when is_map(Client) ->
+    get_policy(Client, #{}, #{}).
+
+get_policy(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_policy(Client, QueryMap, HeadersMap, []).
+
+get_policy(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2017-08-29/policy"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -597,6 +650,32 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Create or change your policy.
+%%
+%% For more information about policies, see the user guide at
+%% http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+put_policy(Client, Input) ->
+    put_policy(Client, Input, []).
+put_policy(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/2017-08-29/policy"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Add tags to a MediaConvert queue, preset, or job template.
 %%
 %% For information about tagging, see the User Guide at
@@ -753,6 +832,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

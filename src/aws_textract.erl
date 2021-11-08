@@ -9,16 +9,22 @@
 
 -export([analyze_document/2,
          analyze_document/3,
+         analyze_expense/2,
+         analyze_expense/3,
          detect_document_text/2,
          detect_document_text/3,
          get_document_analysis/2,
          get_document_analysis/3,
          get_document_text_detection/2,
          get_document_text_detection/3,
+         get_expense_analysis/2,
+         get_expense_analysis/3,
          start_document_analysis/2,
          start_document_analysis/3,
          start_document_text_detection/2,
-         start_document_text_detection/3]).
+         start_document_text_detection/3,
+         start_expense_analysis/2,
+         start_expense_analysis/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -64,6 +70,26 @@ analyze_document(Client, Input)
 analyze_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AnalyzeDocument">>, Input, Options).
+
+%% @doc Analyzes an input document for financially related relationships
+%% between text.
+%%
+%% Information is returned as `ExpenseDocuments' and seperated as follows.
+%%
+%% <ul> <li> `LineItemGroups'- A data set containing `LineItems' which store
+%% information about the lines of text, such as an item purchased and its
+%% price on a receipt.
+%%
+%% </li> <li> `SummaryFields'- Contains all other information a receipt, such
+%% as header information or the vendors name.
+%%
+%% </li> </ul>
+analyze_expense(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    analyze_expense(Client, Input, []).
+analyze_expense(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AnalyzeExpense">>, Input, Options).
 
 %% @doc Detects text in the input document.
 %%
@@ -182,14 +208,46 @@ get_document_text_detection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDocumentTextDetection">>, Input, Options).
 
+%% @doc Gets the results for an Amazon Textract asynchronous operation that
+%% analyzes invoices and receipts.
+%%
+%% Amazon Textract finds contact information, items purchased, and vendor
+%% name, from input invoices and receipts.
+%%
+%% You start asynchronous invoice/receipt analysis by calling
+%% `StartExpenseAnalysis', which returns a job identifier (`JobId'). Upon
+%% completion of the invoice/receipt analysis, Amazon Textract publishes the
+%% completion status to the Amazon Simple Notification Service (Amazon SNS)
+%% topic. This topic must be registered in the initial call to
+%% `StartExpenseAnalysis'. To get the results of the invoice/receipt analysis
+%% operation, first ensure that the status value published to the Amazon SNS
+%% topic is `SUCCEEDED'. If so, call `GetExpenseAnalysis', and pass the job
+%% identifier (`JobId') from the initial call to `StartExpenseAnalysis'.
+%%
+%% Use the MaxResults parameter to limit the number of blocks that are
+%% returned. If there are more results than specified in `MaxResults', the
+%% value of `NextToken' in the operation response contains a pagination token
+%% for getting the next set of results. To get the next page of results, call
+%% `GetExpenseAnalysis', and populate the `NextToken' request parameter with
+%% the token value that's returned from the previous call to
+%% `GetExpenseAnalysis'.
+%%
+%% For more information, see Analyzing Invoices and Receipts.
+get_expense_analysis(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_expense_analysis(Client, Input, []).
+get_expense_analysis(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetExpenseAnalysis">>, Input, Options).
+
 %% @doc Starts the asynchronous analysis of an input document for
 %% relationships between detected items such as key-value pairs, tables, and
 %% selection elements.
 %%
 %% `StartDocumentAnalysis' can analyze text in documents that are in JPEG,
-%% PNG, and PDF format. The documents are stored in an Amazon S3 bucket. Use
-%% `DocumentLocation' to specify the bucket name and file name of the
-%% document.
+%% PNG, TIFF, and PDF format. The documents are stored in an Amazon S3
+%% bucket. Use `DocumentLocation' to specify the bucket name and file name of
+%% the document.
 %%
 %% `StartDocumentAnalysis' returns a job identifier (`JobId') that you use to
 %% get the results of the operation. When text analysis is finished, Amazon
@@ -214,7 +272,7 @@ start_document_analysis(Client, Input, Options)
 %% of text.
 %%
 %% `StartDocumentTextDetection' can analyze text in documents that are in
-%% JPEG, PNG, and PDF format. The documents are stored in an Amazon S3
+%% JPEG, PNG, TIFF, and PDF format. The documents are stored in an Amazon S3
 %% bucket. Use `DocumentLocation' to specify the bucket name and file name of
 %% the document.
 %%
@@ -234,6 +292,32 @@ start_document_text_detection(Client, Input)
 start_document_text_detection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDocumentTextDetection">>, Input, Options).
+
+%% @doc Starts the asynchronous analysis of invoices or receipts for data
+%% like contact information, items purchased, and vendor names.
+%%
+%% `StartExpenseAnalysis' can analyze text in documents that are in JPEG,
+%% PNG, and PDF format. The documents must be stored in an Amazon S3 bucket.
+%% Use the `DocumentLocation' parameter to specify the name of your S3 bucket
+%% and the name of the document in that bucket.
+%%
+%% `StartExpenseAnalysis' returns a job identifier (`JobId') that you will
+%% provide to `GetExpenseAnalysis' to retrieve the results of the operation.
+%% When the analysis of the input invoices/receipts is finished, Amazon
+%% Textract publishes a completion status to the Amazon Simple Notification
+%% Service (Amazon SNS) topic that you provide to the `NotificationChannel'.
+%% To obtain the results of the invoice and receipt analysis operation,
+%% ensure that the status value published to the Amazon SNS topic is
+%% `SUCCEEDED'. If so, call `GetExpenseAnalysis', and pass the job identifier
+%% (`JobId') that was returned by your call to `StartExpenseAnalysis'.
+%%
+%% For more information, see Analyzing Invoices and Receipts.
+start_expense_analysis(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_expense_analysis(Client, Input, []).
+start_expense_analysis(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartExpenseAnalysis">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

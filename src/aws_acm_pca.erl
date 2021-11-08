@@ -12,9 +12,18 @@
 %% access an API that's tailored to the programming language or platform that
 %% you're using. For more information, see AWS SDKs.
 %%
-%% Each ACM Private CA API action has a quota that determines the number of
-%% times the action can be called per second. For more information, see API
-%% Rate Quotas in ACM Private CA in the ACM Private CA user guide.
+%% Each ACM Private CA API operation has a quota that determines the number
+%% of times the operation can be called per second. ACM Private CA throttles
+%% API requests at different rates depending on the operation. Throttling
+%% means that ACM Private CA rejects an otherwise valid request because the
+%% request exceeds the operation's quota for the number of requests per
+%% second. When a request is throttled, ACM Private CA returns a
+%% ThrottlingException error. ACM Private CA does not guarantee a minimum
+%% request rate for APIs.
+%%
+%% To see an up-to-date list of your ACM Private CA quotas, or to request a
+%% quota increase, log into your AWS account and visit the Service Quotas
+%% console.
 -module(aws_acm_pca).
 
 -export([create_certificate_authority/2,
@@ -72,18 +81,20 @@
 
 %% @doc Creates a root or subordinate private certificate authority (CA).
 %%
-%% You must specify the CA configuration, the certificate revocation list
-%% (CRL) configuration, the CA type, and an optional idempotency token to
-%% avoid accidental creation of multiple CAs. The CA configuration specifies
-%% the name of the algorithm and key size to be used to create the CA private
+%% You must specify the CA configuration, an optional configuration for
+%% Online Certificate Status Protocol (OCSP) and/or a certificate revocation
+%% list (CRL), the CA type, and an optional idempotency token to avoid
+%% accidental creation of multiple CAs. The CA configuration specifies the
+%% name of the algorithm and key size to be used to create the CA private
 %% key, the type of signing algorithm that the CA uses, and X.500 subject
-%% information. The CRL configuration specifies the CRL expiration period in
-%% days (the validity period of the CRL), the Amazon S3 bucket that will
-%% contain the CRL, and a CNAME alias for the S3 bucket that is included in
-%% certificates issued by the CA. If successful, this action returns the
+%% information. The OCSP configuration can optionally specify a custom URL
+%% for the OCSP responder. The CRL configuration specifies the CRL expiration
+%% period in days (the validity period of the CRL), the Amazon S3 bucket that
+%% will contain the CRL, and a CNAME alias for the S3 bucket that is included
+%% in certificates issued by the CA. If successful, this action returns the
 %% Amazon Resource Name (ARN) of the CA.
 %%
-%% ACM Private CAA assets that are stored in Amazon S3 can be protected with
+%% ACM Private CA assets that are stored in Amazon S3 can be protected with
 %% encryption. For more information, see Encrypting Your CRLs.
 %%
 %% Both PCA and the IAM principal must have permission to write to the S3
@@ -108,7 +119,7 @@ create_certificate_authority(Client, Input, Options)
 %% have permission to write to the bucket, then an exception is thrown. For
 %% more information, see Configure Access to ACM Private CA.
 %%
-%% ACM Private CAA assets that are stored in Amazon S3 can be protected with
+%% ACM Private CA assets that are stored in Amazon S3 can be protected with
 %% encryption. For more information, see Encrypting Your Audit Reports.
 create_certificate_authority_audit_report(Client, Input)
   when is_map(Client), is_map(Input) ->

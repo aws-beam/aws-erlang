@@ -6,14 +6,20 @@
 
 -export([batch_delete_document/2,
          batch_delete_document/3,
+         batch_get_document_status/2,
+         batch_get_document_status/3,
          batch_put_document/2,
          batch_put_document/3,
+         clear_query_suggestions/2,
+         clear_query_suggestions/3,
          create_data_source/2,
          create_data_source/3,
          create_faq/2,
          create_faq/3,
          create_index/2,
          create_index/3,
+         create_query_suggestions_block_list/2,
+         create_query_suggestions_block_list/3,
          create_thesaurus/2,
          create_thesaurus/3,
          delete_data_source/2,
@@ -22,6 +28,10 @@
          delete_faq/3,
          delete_index/2,
          delete_index/3,
+         delete_principal_mapping/2,
+         delete_principal_mapping/3,
+         delete_query_suggestions_block_list/2,
+         delete_query_suggestions_block_list/3,
          delete_thesaurus/2,
          delete_thesaurus/3,
          describe_data_source/2,
@@ -30,20 +40,34 @@
          describe_faq/3,
          describe_index/2,
          describe_index/3,
+         describe_principal_mapping/2,
+         describe_principal_mapping/3,
+         describe_query_suggestions_block_list/2,
+         describe_query_suggestions_block_list/3,
+         describe_query_suggestions_config/2,
+         describe_query_suggestions_config/3,
          describe_thesaurus/2,
          describe_thesaurus/3,
+         get_query_suggestions/2,
+         get_query_suggestions/3,
          list_data_source_sync_jobs/2,
          list_data_source_sync_jobs/3,
          list_data_sources/2,
          list_data_sources/3,
          list_faqs/2,
          list_faqs/3,
+         list_groups_older_than_ordering_id/2,
+         list_groups_older_than_ordering_id/3,
          list_indices/2,
          list_indices/3,
+         list_query_suggestions_block_lists/2,
+         list_query_suggestions_block_lists/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          list_thesauri/2,
          list_thesauri/3,
+         put_principal_mapping/2,
+         put_principal_mapping/3,
          query/2,
          query/3,
          start_data_source_sync_job/2,
@@ -60,6 +84,10 @@
          update_data_source/3,
          update_index/2,
          update_index/3,
+         update_query_suggestions_block_list/2,
+         update_query_suggestions_block_list/3,
+         update_query_suggestions_config/2,
+         update_query_suggestions_config/3,
          update_thesaurus/2,
          update_thesaurus/3]).
 
@@ -74,14 +102,32 @@
 %% The documents must have been added with the `BatchPutDocument' operation.
 %%
 %% The documents are deleted asynchronously. You can see the progress of the
-%% deletion by using AWS CloudWatch. Any error messages releated to the
-%% processing of the batch are sent to you CloudWatch log.
+%% deletion by using Amazon Web Services CloudWatch. Any error messages
+%% related to the processing of the batch are sent to you CloudWatch log.
 batch_delete_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_document(Client, Input, []).
 batch_delete_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeleteDocument">>, Input, Options).
+
+%% @doc Returns the indexing status for one or more documents submitted with
+%% the BatchPutDocument operation.
+%%
+%% When you use the `BatchPutDocument' operation, documents are indexed
+%% asynchronously. You can use the `BatchGetDocumentStatus' operation to get
+%% the current status of a list of documents so that you can determine if
+%% they have been successfully indexed.
+%%
+%% You can also use the `BatchGetDocumentStatus' operation to check the
+%% status of the BatchDeleteDocument operation. When a document is deleted
+%% from the index, Amazon Kendra returns `NOT_FOUND' as the status.
+batch_get_document_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_document_status(Client, Input, []).
+batch_get_document_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetDocumentStatus">>, Input, Options).
 
 %% @doc Adds one or more documents to an index.
 %%
@@ -92,8 +138,8 @@ batch_delete_document(Client, Input, Options)
 %% documents added to the index.
 %%
 %% The documents are indexed asynchronously. You can see the progress of the
-%% batch using AWS CloudWatch. Any error messages related to processing the
-%% batch are sent to your AWS CloudWatch log.
+%% batch using Amazon Web Services CloudWatch. Any error messages related to
+%% processing the batch are sent to your Amazon Web Services CloudWatch log.
 batch_put_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_put_document(Client, Input, []).
@@ -101,11 +147,26 @@ batch_put_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchPutDocument">>, Input, Options).
 
-%% @doc Creates a data source that you use to with an Amazon Kendra index.
+%% @doc Clears existing query suggestions from an index.
+%%
+%% This deletes existing suggestions only, not the queries in the query log.
+%% After you clear suggestions, Amazon Kendra learns new suggestions based on
+%% new queries added to the query log from the time you cleared suggestions.
+%% If you do not see any new suggestions, then please allow Amazon Kendra to
+%% collect enough queries to learn new suggestions.
+clear_query_suggestions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    clear_query_suggestions(Client, Input, []).
+clear_query_suggestions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ClearQuerySuggestions">>, Input, Options).
+
+%% @doc Creates a data source that you want to use with an Amazon Kendra
+%% index.
 %%
 %% You specify a name, data source connector type and description for your
-%% data source. You also specify configuration information such as document
-%% metadata (author, source URI, and so on) and user context information.
+%% data source. You also specify configuration information for the data
+%% source connector.
 %%
 %% `CreateDataSource' is a synchronous operation. The operation returns 200
 %% if the data source was successfully created. Otherwise, an exception is
@@ -129,17 +190,36 @@ create_faq(Client, Input, Options)
 %% @doc Creates a new Amazon Kendra index.
 %%
 %% Index creation is an asynchronous operation. To determine if index
-%% creation has completed, check the `Status' field returned from a call to .
-%% The `Status' field is set to `ACTIVE' when the index is ready to use.
+%% creation has completed, check the `Status' field returned from a call to
+%% `DescribeIndex'. The `Status' field is set to `ACTIVE' when the index is
+%% ready to use.
 %%
-%% Once the index is active you can index your documents using the operation
-%% or using one of the supported data sources.
+%% Once the index is active you can index your documents using the
+%% `BatchPutDocument' operation or using one of the supported data sources.
 create_index(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_index(Client, Input, []).
 create_index(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIndex">>, Input, Options).
+
+%% @doc Creates a block list to exlcude certain queries from suggestions.
+%%
+%% Any query that contains words or phrases specified in the block list is
+%% blocked or filtered out from being shown as a suggestion.
+%%
+%% You need to provide the file location of your block list text file in your
+%% S3 bucket. In your text file, enter each block word or phrase on a
+%% separate line.
+%%
+%% For information on the current quota limits for block lists, see Quotas
+%% for Amazon Kendra.
+create_query_suggestions_block_list(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_query_suggestions_block_list(Client, Input, []).
+create_query_suggestions_block_list(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateQuerySuggestionsBlockList">>, Input, Options).
 
 %% @doc Creates a thesaurus for an index.
 %%
@@ -155,8 +235,8 @@ create_thesaurus(Client, Input, Options)
 %%
 %% An exception is not thrown if the data source is already being deleted.
 %% While the data source is being deleted, the `Status' field returned by a
-%% call to the operation is set to `DELETING'. For more information, see
-%% Deleting Data Sources.
+%% call to the `DescribeDataSource' operation is set to `DELETING'. For more
+%% information, see Deleting Data Sources.
 delete_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_data_source(Client, Input, []).
@@ -183,6 +263,39 @@ delete_index(Client, Input)
 delete_index(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIndex">>, Input, Options).
+
+%% @doc Deletes a group so that all users and sub groups that belong to the
+%% group can no longer access documents only available to that group.
+%%
+%% For example, after deleting the group "Summer Interns", all interns who
+%% belonged to that group no longer see intern-only documents in their search
+%% results.
+%%
+%% If you want to delete or replace users or sub groups of a group, you need
+%% to use the `PutPrincipalMapping' operation. For example, if a user in the
+%% group "Engineering" leaves the engineering team and another user takes
+%% their place, you provide an updated list of users or sub groups that
+%% belong to the "Engineering" group when calling `PutPrincipalMapping'. You
+%% can update your internal list of users or sub groups and input this list
+%% when calling `PutPrincipalMapping'.
+delete_principal_mapping(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_principal_mapping(Client, Input, []).
+delete_principal_mapping(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeletePrincipalMapping">>, Input, Options).
+
+%% @doc Deletes a block list used for query suggestions for an index.
+%%
+%% A deleted block list might not take effect right away. Amazon Kendra needs
+%% to refresh the entire suggestions list to add back the queries that were
+%% previously blocked.
+delete_query_suggestions_block_list(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_query_suggestions_block_list(Client, Input, []).
+delete_query_suggestions_block_list(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteQuerySuggestionsBlockList">>, Input, Options).
 
 %% @doc Deletes an existing Amazon Kendra thesaurus.
 delete_thesaurus(Client, Input)
@@ -216,6 +329,42 @@ describe_index(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeIndex">>, Input, Options).
 
+%% @doc Describes the processing of `PUT' and `DELETE' actions for mapping
+%% users to their groups.
+%%
+%% This includes information on the status of actions currently processing or
+%% yet to be processed, when actions were last updated, when actions were
+%% received by Amazon Kendra, the latest action that should process and apply
+%% after other actions, and useful error messages if an action could not be
+%% processed.
+describe_principal_mapping(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_principal_mapping(Client, Input, []).
+describe_principal_mapping(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribePrincipalMapping">>, Input, Options).
+
+%% @doc Describes a block list used for query suggestions for an index.
+%%
+%% This is used to check the current settings that are applied to a block
+%% list.
+describe_query_suggestions_block_list(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_query_suggestions_block_list(Client, Input, []).
+describe_query_suggestions_block_list(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeQuerySuggestionsBlockList">>, Input, Options).
+
+%% @doc Describes the settings of query suggestions for an index.
+%%
+%% This is used to check the current settings applied to query suggestions.
+describe_query_suggestions_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_query_suggestions_config(Client, Input, []).
+describe_query_suggestions_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeQuerySuggestionsConfig">>, Input, Options).
+
 %% @doc Describes an existing Amazon Kendra thesaurus.
 describe_thesaurus(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -223,6 +372,14 @@ describe_thesaurus(Client, Input)
 describe_thesaurus(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeThesaurus">>, Input, Options).
+
+%% @doc Fetches the queries that are suggested to your users.
+get_query_suggestions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_query_suggestions(Client, Input, []).
+get_query_suggestions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetQuerySuggestions">>, Input, Options).
 
 %% @doc Gets statistics about synchronizing Amazon Kendra with a data source.
 list_data_source_sync_jobs(Client, Input)
@@ -248,6 +405,15 @@ list_faqs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFaqs">>, Input, Options).
 
+%% @doc Provides a list of groups that are mapped to users before a given
+%% ordering or timestamp identifier.
+list_groups_older_than_ordering_id(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_groups_older_than_ordering_id(Client, Input, []).
+list_groups_older_than_ordering_id(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListGroupsOlderThanOrderingId">>, Input, Options).
+
 %% @doc Lists the Amazon Kendra indexes that you have created.
 list_indices(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -255,6 +421,17 @@ list_indices(Client, Input)
 list_indices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIndices">>, Input, Options).
+
+%% @doc Lists the block lists used for query suggestions for an index.
+%%
+%% For information on the current quota limits for block lists, see Quotas
+%% for Amazon Kendra.
+list_query_suggestions_block_lists(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_query_suggestions_block_lists(Client, Input, []).
+list_query_suggestions_block_lists(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListQuerySuggestionsBlockLists">>, Input, Options).
 
 %% @doc Gets a list of tags associated with a specified resource.
 %%
@@ -273,6 +450,30 @@ list_thesauri(Client, Input)
 list_thesauri(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListThesauri">>, Input, Options).
+
+%% @doc Maps users to their groups so that you only need to provide the user
+%% ID when you issue the query.
+%%
+%% You can also map sub groups to groups. For example, the group "Company
+%% Intellectual Property Teams" includes sub groups "Research" and
+%% "Engineering". These sub groups include their own list of users or people
+%% who work in these teams. Only users who work in research and engineering,
+%% and therefore belong in the intellectual property group, can see
+%% top-secret company documents in their search results.
+%%
+%% You map users to their groups when you want to filter search results for
+%% different users based on their group’s access to documents. For more
+%% information on filtering search results for different users, see Filtering
+%% on user context.
+%%
+%% If more than five `PUT' actions for a group are currently processing, a
+%% validation exception is thrown.
+put_principal_mapping(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_principal_mapping(Client, Input, []).
+put_principal_mapping(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutPrincipalMapping">>, Input, Options).
 
 %% @doc Searches an active index.
 %%
@@ -325,7 +526,7 @@ stop_data_source_sync_job(Client, Input, Options)
     request(Client, <<"StopDataSourceSyncJob">>, Input, Options).
 
 %% @doc Enables you to provide feedback to Amazon Kendra to improve the
-%% performance of the service.
+%% performance of your index.
 submit_feedback(Client, Input)
   when is_map(Client), is_map(Input) ->
     submit_feedback(Client, Input, []).
@@ -368,6 +569,44 @@ update_index(Client, Input)
 update_index(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateIndex">>, Input, Options).
+
+%% @doc Updates a block list used for query suggestions for an index.
+%%
+%% Updates to a block list might not take effect right away. Amazon Kendra
+%% needs to refresh the entire suggestions list to apply any updates to the
+%% block list. Other changes not related to the block list apply immediately.
+%%
+%% If a block list is updating, then you need to wait for the first update to
+%% finish before submitting another update.
+%%
+%% Amazon Kendra supports partial updates, so you only need to provide the
+%% fields you want to update.
+update_query_suggestions_block_list(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_query_suggestions_block_list(Client, Input, []).
+update_query_suggestions_block_list(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateQuerySuggestionsBlockList">>, Input, Options).
+
+%% @doc Updates the settings of query suggestions for an index.
+%%
+%% Amazon Kendra supports partial updates, so you only need to provide the
+%% fields you want to update.
+%%
+%% If an update is currently processing (i.e. 'happening'), you need to wait
+%% for the update to finish before making another update.
+%%
+%% Updates to query suggestions settings might not take effect right away.
+%% The time for your updated settings to take effect depends on the updates
+%% made and the number of search queries in your index.
+%%
+%% You can still enable/disable query suggestions at any time.
+update_query_suggestions_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_query_suggestions_config(Client, Input, []).
+update_query_suggestions_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateQuerySuggestionsConfig">>, Input, Options).
 
 %% @doc Updates a thesaurus file associated with an index.
 update_thesaurus(Client, Input)

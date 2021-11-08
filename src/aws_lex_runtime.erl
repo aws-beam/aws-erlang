@@ -177,6 +177,8 @@ post_content(Client, BotAlias, BotName, UserId, Input0, Options0) ->
             {<<"x-amz-lex-bot-version">>, <<"botVersion">>},
             {<<"Content-Type">>, <<"contentType">>},
             {<<"x-amz-lex-dialog-state">>, <<"dialogState">>},
+            {<<"x-amz-lex-encoded-input-transcript">>, <<"encodedInputTranscript">>},
+            {<<"x-amz-lex-encoded-message">>, <<"encodedMessage">>},
             {<<"x-amz-lex-input-transcript">>, <<"inputTranscript">>},
             {<<"x-amz-lex-intent-name">>, <<"intentName">>},
             {<<"x-amz-lex-message">>, <<"message">>},
@@ -311,6 +313,7 @@ put_session(Client, BotAlias, BotName, UserId, Input0, Options0) ->
             {<<"x-amz-lex-active-contexts">>, <<"activeContexts">>},
             {<<"Content-Type">>, <<"contentType">>},
             {<<"x-amz-lex-dialog-state">>, <<"dialogState">>},
+            {<<"x-amz-lex-encoded-message">>, <<"encodedMessage">>},
             {<<"x-amz-lex-intent-name">>, <<"intentName">>},
             {<<"x-amz-lex-message">>, <<"message">>},
             {<<"x-amz-lex-message-format">>, <<"messageFormat">>},
@@ -366,6 +369,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

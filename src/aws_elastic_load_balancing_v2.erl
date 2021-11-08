@@ -288,7 +288,7 @@ deregister_targets(Client, Input, Options)
     request(Client, <<"DeregisterTargets">>, Input, Options).
 
 %% @doc Describes the current Elastic Load Balancing resource limits for your
-%% AWS account.
+%% Amazon Web Services account.
 %%
 %% For more information, see the following:
 %%

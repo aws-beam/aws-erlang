@@ -8,8 +8,8 @@
 %%
 %% Amazon AppFlow is a fully managed integration service that enables you to
 %% securely transfer data between software as a service (SaaS) applications
-%% like Salesforce, Marketo, Slack, and ServiceNow, and AWS services like
-%% Amazon S3 and Amazon Redshift.
+%% like Salesforce, Marketo, Slack, and ServiceNow, and Amazon Web Services
+%% like Amazon S3 and Amazon Redshift.
 %%
 %% Use the following links to get started on the Amazon AppFlow API:
 %%
@@ -80,12 +80,13 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a new connector profile associated with your AWS account.
+%% @doc Creates a new connector profile associated with your Amazon Web
+%% Services account.
 %%
-%% There is a soft quota of 100 connector profiles per AWS account. If you
-%% need more connector profiles than this quota allows, you can submit a
-%% request to the Amazon AppFlow team through the Amazon AppFlow support
-%% channel.
+%% There is a soft quota of 100 connector profiles per Amazon Web Services
+%% account. If you need more connector profiles than this quota allows, you
+%% can submit a request to the Amazon AppFlow team through the Amazon AppFlow
+%% support channel.
 create_connector_profile(Client, Input) ->
     create_connector_profile(Client, Input, []).
 create_connector_profile(Client, Input0, Options0) ->
@@ -570,6 +571,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

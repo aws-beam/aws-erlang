@@ -273,7 +273,7 @@ disassociate_lenses(Client, WorkloadId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Get lens review.
+%% @doc Get the answer to a specific question in a workload review.
 get_answer(Client, LensAlias, QuestionId, WorkloadId)
   when is_map(Client) ->
     get_answer(Client, LensAlias, QuestionId, WorkloadId, #{}, #{}).
@@ -720,6 +720,10 @@ tag_resource(Client, WorkloadArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes specified tags from a resource.
+%%
+%% To specify multiple tags, use separate tagKeys parameters, for example:
+%%
+%% `DELETE /tags/WorkloadArn?tagKeys=key1&tagKeys=key2'
 untag_resource(Client, WorkloadArn, Input) ->
     untag_resource(Client, WorkloadArn, Input, []).
 untag_resource(Client, WorkloadArn, Input0, Options0) ->
@@ -916,6 +920,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

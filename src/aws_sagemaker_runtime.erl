@@ -5,7 +5,9 @@
 -module(aws_sagemaker_runtime).
 
 -export([invoke_endpoint/3,
-         invoke_endpoint/4]).
+         invoke_endpoint/4,
+         invoke_endpoint_async/3,
+         invoke_endpoint_async/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -83,6 +85,68 @@ invoke_endpoint(Client, EndpointName, Input0, Options0) ->
         Result
     end.
 
+%% @doc After you deploy a model into production using Amazon SageMaker
+%% hosting services, your client applications use this API to get inferences
+%% from the model hosted at the specified endpoint in an asynchronous manner.
+%%
+%% Inference requests sent to this API are enqueued for asynchronous
+%% processing. The processing of the inference request may or may not
+%% complete before the you receive a response from this API. The response
+%% from this API will not contain the result of the inference request but
+%% contain information about where you can locate it.
+%%
+%% Amazon SageMaker strips all `POST' headers except those supported by the
+%% API. Amazon SageMaker might add additional headers. You should not rely on
+%% the behavior of headers outside those enumerated in the request syntax.
+%%
+%% Calls to `InvokeEndpointAsync' are authenticated by using AWS Signature
+%% Version 4. For information, see Authenticating Requests (AWS Signature
+%% Version 4) in the Amazon S3 API Reference.
+invoke_endpoint_async(Client, EndpointName, Input) ->
+    invoke_endpoint_async(Client, EndpointName, Input, []).
+invoke_endpoint_async(Client, EndpointName, Input0, Options0) ->
+    Method = post,
+    Path = ["/endpoints/", aws_util:encode_uri(EndpointName), "/async-invocations"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"X-Amzn-SageMaker-Accept">>, <<"Accept">>},
+                       {<<"X-Amzn-SageMaker-Content-Type">>, <<"ContentType">>},
+                       {<<"X-Amzn-SageMaker-Custom-Attributes">>, <<"CustomAttributes">>},
+                       {<<"X-Amzn-SageMaker-Inference-Id">>, <<"InferenceId">>},
+                       {<<"X-Amzn-SageMaker-InputLocation">>, <<"InputLocation">>},
+                       {<<"X-Amzn-SageMaker-RequestTTLSeconds">>, <<"RequestTTLSeconds">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"X-Amzn-SageMaker-OutputLocation">>, <<"OutputLocation">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %%====================================================================
 %% Internal functions
 %%====================================================================
@@ -118,6 +182,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

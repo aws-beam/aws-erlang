@@ -1,14 +1,12 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Firewall Manager
+%% @doc This is the Firewall Manager API Reference.
 %%
-%% This is the AWS Firewall Manager API Reference.
-%%
-%% This guide is for developers who need detailed information about the AWS
+%% This guide is for developers who need detailed information about the
 %% Firewall Manager API actions, data types, and errors. For detailed
-%% information about AWS Firewall Manager features, see the AWS Firewall
-%% Manager Developer Guide.
+%% information about Firewall Manager features, see the Firewall Manager
+%% Developer Guide.
 %%
 %% Some API actions require explicit resource permissions. For information,
 %% see the developer guide topic Firewall Manager required permissions for
@@ -74,15 +72,13 @@
 %% API
 %%====================================================================
 
-%% @doc Sets the AWS Firewall Manager administrator account.
+%% @doc Sets the Firewall Manager administrator account.
 %%
-%% AWS Firewall Manager must be associated with the master account of your
-%% AWS organization or associated with a member account that has the
-%% appropriate permissions. If the account ID that you submit is not an AWS
-%% Organizations master account, AWS Firewall Manager will set the
-%% appropriate permissions for the given member account.
+%% The account must be a member of the organization in Organizations whose
+%% resources you want to protect. Firewall Manager sets the permissions that
+%% allow the account to administer your Firewall Manager policies.
 %%
-%% The account that you associate with AWS Firewall Manager is called the AWS
+%% The account that you associate with Firewall Manager is called the
 %% Firewall Manager administrator account.
 associate_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -91,7 +87,7 @@ associate_admin_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateAdminAccount">>, Input, Options).
 
-%% @doc Permanently deletes an AWS Firewall Manager applications list.
+%% @doc Permanently deletes an Firewall Manager applications list.
 delete_apps_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_apps_list(Client, Input, []).
@@ -99,8 +95,8 @@ delete_apps_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAppsList">>, Input, Options).
 
-%% @doc Deletes an AWS Firewall Manager association with the IAM role and the
-%% Amazon Simple Notification Service (SNS) topic that is used to record AWS
+%% @doc Deletes an Firewall Manager association with the IAM role and the
+%% Amazon Simple Notification Service (SNS) topic that is used to record
 %% Firewall Manager SNS logs.
 delete_notification_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -109,7 +105,7 @@ delete_notification_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNotificationChannel">>, Input, Options).
 
-%% @doc Permanently deletes an AWS Firewall Manager policy.
+%% @doc Permanently deletes an Firewall Manager policy.
 delete_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_policy(Client, Input, []).
@@ -117,7 +113,7 @@ delete_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePolicy">>, Input, Options).
 
-%% @doc Permanently deletes an AWS Firewall Manager protocols list.
+%% @doc Permanently deletes an Firewall Manager protocols list.
 delete_protocols_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_protocols_list(Client, Input, []).
@@ -125,8 +121,8 @@ delete_protocols_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProtocolsList">>, Input, Options).
 
-%% @doc Disassociates the account that has been set as the AWS Firewall
-%% Manager administrator account.
+%% @doc Disassociates the account that has been set as the Firewall Manager
+%% administrator account.
 %%
 %% To set a different account as the administrator account, you must submit
 %% an `AssociateAdminAccount' request.
@@ -137,8 +133,8 @@ disassociate_admin_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateAdminAccount">>, Input, Options).
 
-%% @doc Returns the AWS Organizations master account that is associated with
-%% AWS Firewall Manager as the AWS Firewall Manager administrator.
+%% @doc Returns the Organizations account that is associated with Firewall
+%% Manager as the Firewall Manager administrator.
 get_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_admin_account(Client, Input, []).
@@ -146,8 +142,8 @@ get_admin_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAdminAccount">>, Input, Options).
 
-%% @doc Returns information about the specified AWS Firewall Manager
-%% applications list.
+%% @doc Returns information about the specified Firewall Manager applications
+%% list.
 get_apps_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_apps_list(Client, Input, []).
@@ -159,16 +155,27 @@ get_apps_list(Client, Input, Options)
 %% account.
 %%
 %% Details include resources that are in and out of compliance with the
-%% specified policy. Resources are considered noncompliant for AWS WAF and
-%% Shield Advanced policies if the specified policy has not been applied to
-%% them. Resources are considered noncompliant for security group policies if
-%% they are in scope of the policy, they violate one or more of the policy
-%% rules, and remediation is disabled or not possible. Resources are
-%% considered noncompliant for Network Firewall policies if a firewall is
-%% missing in the VPC, if the firewall endpoint isn't set up in an expected
-%% Availability Zone and subnet, if a subnet created by the Firewall Manager
-%% doesn't have the expected route table, and for modifications to a firewall
-%% policy that violate the Firewall Manager policy's rules.
+%% specified policy.
+%%
+%% <ul> <li> Resources are considered noncompliant for WAF and Shield
+%% Advanced policies if the specified policy has not been applied to them.
+%%
+%% </li> <li> Resources are considered noncompliant for security group
+%% policies if they are in scope of the policy, they violate one or more of
+%% the policy rules, and remediation is disabled or not possible.
+%%
+%% </li> <li> Resources are considered noncompliant for Network Firewall
+%% policies if a firewall is missing in the VPC, if the firewall endpoint
+%% isn't set up in an expected Availability Zone and subnet, if a subnet
+%% created by the Firewall Manager doesn't have the expected route table, and
+%% for modifications to a firewall policy that violate the Firewall Manager
+%% policy's rules.
+%%
+%% </li> <li> Resources are considered noncompliant for DNS Firewall policies
+%% if a DNS Firewall rule group is missing from the rule group associations
+%% for the VPC.
+%%
+%% </li> </ul>
 get_compliance_detail(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compliance_detail(Client, Input, []).
@@ -177,7 +184,7 @@ get_compliance_detail(Client, Input, Options)
     request(Client, <<"GetComplianceDetail">>, Input, Options).
 
 %% @doc Information about the Amazon Simple Notification Service (SNS) topic
-%% that is used to record AWS Firewall Manager SNS logs.
+%% that is used to record Firewall Manager SNS logs.
 get_notification_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_notification_channel(Client, Input, []).
@@ -185,7 +192,7 @@ get_notification_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetNotificationChannel">>, Input, Options).
 
-%% @doc Returns information about the specified AWS Firewall Manager policy.
+%% @doc Returns information about the specified Firewall Manager policy.
 get_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_policy(Client, Input, []).
@@ -204,8 +211,8 @@ get_protection_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetProtectionStatus">>, Input, Options).
 
-%% @doc Returns information about the specified AWS Firewall Manager
-%% protocols list.
+%% @doc Returns information about the specified Firewall Manager protocols
+%% list.
 get_protocols_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_protocols_list(Client, Input, []).
@@ -213,8 +220,8 @@ get_protocols_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetProtocolsList">>, Input, Options).
 
-%% @doc Retrieves violations for a resource based on the specified AWS
-%% Firewall Manager policy and AWS account.
+%% @doc Retrieves violations for a resource based on the specified Firewall
+%% Manager policy and Amazon Web Services account.
 get_violation_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_violation_details(Client, Input, []).
@@ -242,10 +249,10 @@ list_compliance_status(Client, Input, Options)
     request(Client, <<"ListComplianceStatus">>, Input, Options).
 
 %% @doc Returns a `MemberAccounts' object that lists the member accounts in
-%% the administrator's AWS organization.
+%% the administrator's Amazon Web Services organization.
 %%
 %% The `ListMemberAccounts' must be submitted by the account that is set as
-%% the AWS Firewall Manager administrator.
+%% the Firewall Manager administrator.
 list_member_accounts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_member_accounts(Client, Input, []).
@@ -269,7 +276,8 @@ list_protocols_lists(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProtocolsLists">>, Input, Options).
 
-%% @doc Retrieves the list of tags for the specified AWS resource.
+%% @doc Retrieves the list of tags for the specified Amazon Web Services
+%% resource.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -277,7 +285,7 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Creates an AWS Firewall Manager applications list.
+%% @doc Creates an Firewall Manager applications list.
 put_apps_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_apps_list(Client, Input, []).
@@ -286,12 +294,12 @@ put_apps_list(Client, Input, Options)
     request(Client, <<"PutAppsList">>, Input, Options).
 
 %% @doc Designates the IAM role and Amazon Simple Notification Service (SNS)
-%% topic that AWS Firewall Manager uses to record SNS logs.
+%% topic that Firewall Manager uses to record SNS logs.
 %%
 %% To perform this action outside of the console, you must configure the SNS
 %% topic to allow the Firewall Manager role `AWSServiceRoleForFMS' to publish
 %% SNS logs. For more information, see Firewall Manager required permissions
-%% for API actions in the AWS Firewall Manager Developer Guide.
+%% for API actions in the Firewall Manager Developer Guide.
 put_notification_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_notification_channel(Client, Input, []).
@@ -299,25 +307,27 @@ put_notification_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutNotificationChannel">>, Input, Options).
 
-%% @doc Creates an AWS Firewall Manager policy.
+%% @doc Creates an Firewall Manager policy.
 %%
 %% Firewall Manager provides the following types of policies:
 %%
-%% <ul> <li> An AWS WAF policy (type WAFV2), which defines rule groups to run
-%% first in the corresponding AWS WAF web ACL and rule groups to run last in
-%% the web ACL.
+%% <ul> <li> An WAF policy (type WAFV2), which defines rule groups to run
+%% first in the corresponding WAF web ACL and rule groups to run last in the
+%% web ACL.
 %%
-%% </li> <li> An AWS WAF Classic policy (type WAF), which defines a rule
-%% group.
+%% </li> <li> An WAF Classic policy (type WAF), which defines a rule group.
 %%
 %% </li> <li> A Shield Advanced policy, which applies Shield Advanced
 %% protection to specified accounts and resources.
 %%
 %% </li> <li> A security group policy, which manages VPC security groups
-%% across your AWS organization.
+%% across your Amazon Web Services organization.
 %%
-%% </li> <li> An AWS Network Firewall policy, which provides firewall rules
-%% to filter network traffic in specified Amazon VPCs.
+%% </li> <li> An Network Firewall policy, which provides firewall rules to
+%% filter network traffic in specified Amazon VPCs.
+%%
+%% </li> <li> A DNS Firewall policy, which provides Route 53 Resolver DNS
+%% Firewall rules to filter DNS queries for specified VPCs.
 %%
 %% </li> </ul> Each policy is specific to one of the types. If you want to
 %% enforce more than one policy type across accounts, create multiple
@@ -333,7 +343,7 @@ put_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutPolicy">>, Input, Options).
 
-%% @doc Creates an AWS Firewall Manager protocols list.
+%% @doc Creates an Firewall Manager protocols list.
 put_protocols_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_protocols_list(Client, Input, []).
@@ -341,7 +351,7 @@ put_protocols_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutProtocolsList">>, Input, Options).
 
-%% @doc Adds one or more tags to an AWS resource.
+%% @doc Adds one or more tags to an Amazon Web Services resource.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -349,7 +359,7 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Removes one or more tags from an AWS resource.
+%% @doc Removes one or more tags from an Amazon Web Services resource.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).

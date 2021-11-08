@@ -27,8 +27,9 @@
 %% perimeter of your VPC. This includes filtering traffic going to and coming
 %% from an internet gateway, NAT gateway, or over VPN or AWS Direct Connect.
 %% Network Firewall uses rules that are compatible with Suricata, a free,
-%% open source intrusion detection system (IDS) engine. For information about
-%% Suricata, see the Suricata website.
+%% open source intrusion detection system (IDS) engine. AWS Network Firewall
+%% supports Suricata version 5.0.2. For information about Suricata, see the
+%% Suricata website.
 %%
 %% You can use Network Firewall to monitor and protect your VPC traffic in a
 %% number of ways. The following are just a few examples:
@@ -41,9 +42,6 @@
 %%
 %% </li> <li> Perform deep packet inspection on traffic entering or leaving
 %% your VPC.
-%%
-%% </li> <li> Rate limit traffic going from AWS to on-premises IP
-%% destinations.
 %%
 %% </li> <li> Use stateful protocol detection to filter protocols like HTTPS,
 %% regardless of the port used.

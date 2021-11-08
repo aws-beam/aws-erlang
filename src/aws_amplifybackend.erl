@@ -40,6 +40,8 @@
          get_token/3,
          get_token/5,
          get_token/6,
+         import_backend_auth/4,
+         import_backend_auth/5,
          list_backend_jobs/4,
          list_backend_jobs/5,
          remove_all_backends/3,
@@ -386,7 +388,7 @@ get_backend_api_models(Client, AppId, BackendEnvironmentName, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets backend auth details.
+%% @doc Gets a backend auth details.
 get_backend_auth(Client, AppId, BackendEnvironmentName, Input) ->
     get_backend_auth(Client, AppId, BackendEnvironmentName, Input, []).
 get_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
@@ -455,6 +457,29 @@ get_token(Client, AppId, SessionId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Imports an existing backend authentication resource.
+import_backend_auth(Client, AppId, BackendEnvironmentName, Input) ->
+    import_backend_auth(Client, AppId, BackendEnvironmentName, Input, []).
+import_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
+    Method = post,
+    Path = ["/backend/", aws_util:encode_uri(AppId), "/auth/", aws_util:encode_uri(BackendEnvironmentName), "/import"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists the jobs for the backend of an Amplify app.
 list_backend_jobs(Client, AppId, BackendEnvironmentName, Input) ->
     list_backend_jobs(Client, AppId, BackendEnvironmentName, Input, []).
@@ -501,8 +526,7 @@ remove_all_backends(Client, AppId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes the AWS resources that are required to access the Amplify
-%% Admin UI.
+%% @doc Removes the AWS resources required to access the Amplify Admin UI.
 remove_backend_config(Client, AppId, Input) ->
     remove_backend_config(Client, AppId, Input, []).
 remove_backend_config(Client, AppId, Input0, Options0) ->
@@ -571,8 +595,7 @@ update_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the AWS resources that are required to access the Amplify
-%% Admin UI.
+%% @doc Updates the AWS resources required to access the Amplify Admin UI.
 update_backend_config(Client, AppId, Input) ->
     update_backend_config(Client, AppId, Input, []).
 update_backend_config(Client, AppId, Input0, Options0) ->
@@ -653,6 +676,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

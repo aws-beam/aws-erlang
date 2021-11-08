@@ -21,7 +21,9 @@
 %% </li> </ul>
 -module(aws_sagemaker_featurestore_runtime).
 
--export([delete_record/3,
+-export([batch_get_record/2,
+         batch_get_record/3,
+         delete_record/3,
          delete_record/4,
          get_record/3,
          get_record/5,
@@ -34,6 +36,29 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Retrieves a batch of `Records' from a `FeatureGroup'.
+batch_get_record(Client, Input) ->
+    batch_get_record(Client, Input, []).
+batch_get_record(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/BatchGetRecord"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a `Record' from a `FeatureGroup'.
 %%
@@ -159,6 +184,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

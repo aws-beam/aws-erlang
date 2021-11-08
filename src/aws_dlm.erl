@@ -4,7 +4,7 @@
 %% @doc Amazon Data Lifecycle Manager
 %%
 %% With Amazon Data Lifecycle Manager, you can manage the lifecycle of your
-%% AWS resources.
+%% Amazon Web Services resources.
 %%
 %% You create lifecycle policies, which are used to automate operations on
 %% the specified resources.
@@ -40,8 +40,8 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a policy to manage the lifecycle of the specified AWS
-%% resources.
+%% @doc Creates a policy to manage the lifecycle of the specified Amazon Web
+%% Services resources.
 %%
 %% You can create up to 100 lifecycle policies.
 create_lifecycle_policy(Client, Input) ->
@@ -275,6 +275,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

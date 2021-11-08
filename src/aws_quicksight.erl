@@ -4,8 +4,8 @@
 %% @doc Amazon QuickSight API Reference
 %%
 %% Amazon QuickSight is a fully managed, serverless business intelligence
-%% service for the AWS Cloud that makes it easy to extend data and insights
-%% to every user in your organization.
+%% service for the Amazon Web Services Cloud that makes it easy to extend
+%% data and insights to every user in your organization.
 %%
 %% This API reference contains documentation for a programming interface that
 %% you can use to manage Amazon QuickSight.
@@ -23,6 +23,10 @@
          create_data_set/4,
          create_data_source/3,
          create_data_source/4,
+         create_folder/4,
+         create_folder/5,
+         create_folder_membership/6,
+         create_folder_membership/7,
          create_group/4,
          create_group/5,
          create_group_membership/6,
@@ -51,6 +55,10 @@
          delete_data_set/5,
          delete_data_source/4,
          delete_data_source/5,
+         delete_folder/4,
+         delete_folder/5,
+         delete_folder_membership/6,
+         delete_folder_membership/7,
          delete_group/5,
          delete_group/6,
          delete_group_membership/6,
@@ -101,6 +109,15 @@
          describe_data_source_permissions/3,
          describe_data_source_permissions/5,
          describe_data_source_permissions/6,
+         describe_folder/3,
+         describe_folder/5,
+         describe_folder/6,
+         describe_folder_permissions/3,
+         describe_folder_permissions/5,
+         describe_folder_permissions/6,
+         describe_folder_resolved_permissions/3,
+         describe_folder_resolved_permissions/5,
+         describe_folder_resolved_permissions/6,
          describe_group/4,
          describe_group/6,
          describe_group/7,
@@ -110,6 +127,9 @@
          describe_ingestion/4,
          describe_ingestion/6,
          describe_ingestion/7,
+         describe_ip_restriction/2,
+         describe_ip_restriction/4,
+         describe_ip_restriction/5,
          describe_namespace/3,
          describe_namespace/5,
          describe_namespace/6,
@@ -134,6 +154,10 @@
          describe_user/4,
          describe_user/6,
          describe_user/7,
+         generate_embed_url_for_anonymous_user/3,
+         generate_embed_url_for_anonymous_user/4,
+         generate_embed_url_for_registered_user/3,
+         generate_embed_url_for_registered_user/4,
          get_dashboard_embed_url/4,
          get_dashboard_embed_url/6,
          get_dashboard_embed_url/7,
@@ -155,6 +179,12 @@
          list_data_sources/2,
          list_data_sources/4,
          list_data_sources/5,
+         list_folder_members/3,
+         list_folder_members/5,
+         list_folder_members/6,
+         list_folders/2,
+         list_folders/4,
+         list_folders/5,
          list_group_memberships/4,
          list_group_memberships/6,
          list_group_memberships/7,
@@ -208,6 +238,8 @@
          search_analyses/4,
          search_dashboards/3,
          search_dashboards/4,
+         search_folders/3,
+         search_folders/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -234,10 +266,16 @@
          update_data_source/5,
          update_data_source_permissions/4,
          update_data_source_permissions/5,
+         update_folder/4,
+         update_folder/5,
+         update_folder_permissions/4,
+         update_folder_permissions/5,
          update_group/5,
          update_group/6,
          update_iam_policy_assignment/5,
          update_iam_policy_assignment/6,
+         update_ip_restriction/3,
+         update_ip_restriction/4,
          update_template/4,
          update_template/5,
          update_template_alias/5,
@@ -282,19 +320,21 @@ cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates Amazon QuickSight customizations the current AWS Region.
+%% @doc Creates Amazon QuickSight customizations the current Amazon Web
+%% Services Region.
 %%
 %% Currently, you can add a custom default theme by using the
 %% `CreateAccountCustomization' or `UpdateAccountCustomization' API
-%% operation. To further customize QuickSight by removing QuickSight sample
-%% assets and videos for all new users, see Customizing QuickSight in the
-%% Amazon QuickSight User Guide.
+%% operation. To further customize Amazon QuickSight by removing Amazon
+%% QuickSight sample assets and videos for all new users, see Customizing
+%% Amazon QuickSight in the Amazon QuickSight User Guide.
 %%
-%% You can create customizations for your AWS account or, if you specify a
-%% namespace, for a QuickSight namespace instead. Customizations that apply
-%% to a namespace always override customizations that apply to an AWS
-%% account. To find out which customizations apply, use the
-%% `DescribeAccountCustomization' API operation.
+%% You can create customizations for your Amazon Web Services account or, if
+%% you specify a namespace, for a Amazon QuickSight namespace instead.
+%% Customizations that apply to a namespace always override customizations
+%% that apply to an Amazon Web Services account. To find out which
+%% customizations apply, use the `DescribeAccountCustomization' API
+%% operation.
 %%
 %% Before you use the `CreateAccountCustomization' API operation to add a
 %% theme as the namespace default, make sure that you first share the theme
@@ -353,11 +393,12 @@ create_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
 %%
 %% To first create a template, see the ` `CreateTemplate' ' API operation.
 %%
-%% A dashboard is an entity in QuickSight that identifies QuickSight reports,
-%% created from analyses. You can share QuickSight dashboards. With the right
-%% permissions, you can create scheduled email reports from them. If you have
-%% the correct permissions, you can create a dashboard from a template that
-%% exists in a different AWS account.
+%% A dashboard is an entity in Amazon QuickSight that identifies Amazon
+%% QuickSight reports, created from analyses. You can share Amazon QuickSight
+%% dashboards. With the right permissions, you can create scheduled email
+%% reports from them. If you have the correct permissions, you can create a
+%% dashboard from a template that exists in a different Amazon Web Services
+%% account.
 create_dashboard(Client, AwsAccountId, DashboardId, Input) ->
     create_dashboard(Client, AwsAccountId, DashboardId, Input, []).
 create_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
@@ -409,6 +450,53 @@ create_data_source(Client, AwsAccountId, Input) ->
 create_data_source(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an empty shared folder.
+create_folder(Client, AwsAccountId, FolderId, Input) ->
+    create_folder(Client, AwsAccountId, FolderId, Input, []).
+create_folder(Client, AwsAccountId, FolderId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds an asset, such as a dashboard, analysis, or dataset into a
+%% folder.
+create_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input) ->
+    create_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input, []).
+create_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/members/", aws_util:encode_uri(MemberType), "/", aws_util:encode_uri(MemberId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -478,13 +566,13 @@ create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an assignment with one specified IAM policy, identified by
-%% its Amazon Resource Name (ARN).
+%% @doc Creates an assignment with one specified IAMpolicy, identified by its
+%% Amazon Resource Name (ARN).
 %%
 %% This policy assignment is attached to the specified groups or users of
-%% Amazon QuickSight. Assignment names are unique per AWS account. To avoid
-%% overwriting rules in other namespaces, use assignment names that are
-%% unique.
+%% Amazon QuickSight. Assignment names are unique per Amazon Web Services
+%% account. To avoid overwriting rules in other namespaces, use assignment
+%% names that are unique.
 create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input) ->
     create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input, []).
 create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input0, Options0) ->
@@ -513,8 +601,9 @@ create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input0, Options0) 
 %% automatically for use in access control.
 %%
 %% For an example, see How do I create an IAM policy to control access to
-%% Amazon EC2 resources using tags? in the AWS Knowledge Center. Tags are
-%% visible on the tagged dataset, but not on the ingestion resource.
+%% Amazon EC2 resources using tags? in the Amazon Web Services Knowledge
+%% Center. Tags are visible on the tagged dataset, but not on the ingestion
+%% resource.
 create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input) ->
     create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input, []).
 create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0) ->
@@ -540,13 +629,15 @@ create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0)
 %% @doc (Enterprise edition only) Creates a new namespace for you to use with
 %% Amazon QuickSight.
 %%
-%% A namespace allows you to isolate the QuickSight users and groups that are
-%% registered for that namespace. Users that access the namespace can share
-%% assets only with other users or groups in the same namespace. They can't
-%% see users and groups in other namespaces. You can create a namespace after
-%% your AWS account is subscribed to QuickSight. The namespace must be unique
-%% within the AWS account. By default, there is a limit of 100 namespaces per
-%% AWS account. To increase your limit, create a ticket with AWS Support.
+%% A namespace allows you to isolate the Amazon QuickSight users and groups
+%% that are registered for that namespace. Users that access the namespace
+%% can share assets only with other users or groups in the same namespace.
+%% They can't see users and groups in other namespaces. You can create a
+%% namespace after your Amazon Web Services account is subscribed to Amazon
+%% QuickSight. The namespace must be unique within the Amazon Web Services
+%% account. By default, there is a limit of 100 namespaces per Amazon Web
+%% Services account. To increase your limit, create a ticket with Amazon Web
+%% Services Support.
 create_namespace(Client, AwsAccountId, Input) ->
     create_namespace(Client, AwsAccountId, Input, []).
 create_namespace(Client, AwsAccountId, Input0, Options0) ->
@@ -569,16 +660,18 @@ create_namespace(Client, AwsAccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a template from an existing QuickSight analysis or template.
+%% @doc Creates a template from an existing Amazon QuickSight analysis or
+%% template.
 %%
 %% You can use the resulting template to create a dashboard.
 %%
-%% A template is an entity in QuickSight that encapsulates the metadata
-%% required to create an analysis and that you can use to create s dashboard.
-%% A template adds a layer of abstraction by using placeholders to replace
-%% the dataset associated with the analysis. You can use templates to create
-%% dashboards by replacing dataset placeholders with datasets that follow the
-%% same schema that was used to create the source analysis and template.
+%% A template is an entity in Amazon QuickSight that encapsulates the
+%% metadata required to create an analysis and that you can use to create s
+%% dashboard. A template adds a layer of abstraction by using placeholders to
+%% replace the dataset associated with the analysis. You can use templates to
+%% create dashboards by replacing dataset placeholders with datasets that
+%% follow the same schema that was used to create the source analysis and
+%% template.
 create_template(Client, AwsAccountId, TemplateId, Input) ->
     create_template(Client, AwsAccountId, TemplateId, Input, []).
 create_template(Client, AwsAccountId, TemplateId, Input0, Options0) ->
@@ -674,8 +767,9 @@ create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes all Amazon QuickSight customizations in this AWS Region for
-%% the specified AWS account and QuickSight namespace.
+%% @doc Deletes all Amazon QuickSight customizations in this Amazon Web
+%% Services Region for the specified Amazon Web Services account and Amazon
+%% QuickSight namespace.
 delete_account_customization(Client, AwsAccountId, Input) ->
     delete_account_customization(Client, AwsAccountId, Input, []).
 delete_account_customization(Client, AwsAccountId, Input0, Options0) ->
@@ -703,16 +797,16 @@ delete_account_customization(Client, AwsAccountId, Input0, Options0) ->
 %%
 %% You can optionally include a recovery window during which you can restore
 %% the analysis. If you don't specify a recovery window value, the operation
-%% defaults to 30 days. QuickSight attaches a `DeletionTime' stamp to the
-%% response that specifies the end of the recovery window. At the end of the
-%% recovery window, QuickSight deletes the analysis permanently.
+%% defaults to 30 days. Amazon QuickSight attaches a `DeletionTime' stamp to
+%% the response that specifies the end of the recovery window. At the end of
+%% the recovery window, Amazon QuickSight deletes the analysis permanently.
 %%
 %% At any time before recovery window ends, you can use the `RestoreAnalysis'
 %% API operation to remove the `DeletionTime' stamp and cancel the deletion
 %% of the analysis. The analysis remains visible in the API until it's
 %% deleted, so you can describe it but you can't make a template from it.
 %%
-%% An analysis that's scheduled for deletion isn't accessible in the
+%% An analysis that's scheduled for deletion isn't accessible in the Amazon
 %% QuickSight console. To access it in the console, restore it. Deleting an
 %% analysis doesn't delete the dashboards that you publish from it.
 delete_analysis(Client, AnalysisId, AwsAccountId, Input) ->
@@ -812,6 +906,53 @@ delete_data_source(Client, AwsAccountId, DataSourceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes an empty folder.
+delete_folder(Client, AwsAccountId, FolderId, Input) ->
+    delete_folder(Client, AwsAccountId, FolderId, Input, []).
+delete_folder(Client, AwsAccountId, FolderId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes an asset, such as a dashboard, analysis, or dataset, from a
+%% folder.
+delete_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input) ->
+    delete_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input, []).
+delete_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/members/", aws_util:encode_uri(MemberType), "/", aws_util:encode_uri(MemberId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Removes a user group from Amazon QuickSight.
 delete_group(Client, AwsAccountId, GroupName, Namespace, Input) ->
     delete_group(Client, AwsAccountId, GroupName, Namespace, Input, []).
@@ -859,7 +1000,7 @@ delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an existing IAM policy assignment.
+%% @doc Deletes an existing IAMpolicy assignment.
 delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input) ->
     delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input, []).
 delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options0) ->
@@ -1012,8 +1153,8 @@ delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the Amazon QuickSight user that is associated with the
-%% identity of the AWS Identity and Access Management (IAM) user or role
-%% that's making the call.
+%% identity of the Identity and Access Management (IAM) user or role that's
+%% making the call.
 %%
 %% The IAM user isn't deleted as a result of this call.
 delete_user(Client, AwsAccountId, Namespace, UserName, Input) ->
@@ -1061,53 +1202,59 @@ delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes the customizations associated with the provided AWS account
-%% and Amazon QuickSight namespace in an AWS Region.
+%% @doc Describes the customizations associated with the provided Amazon Web
+%% Services account and Amazon Amazon QuickSight namespace in an Amazon Web
+%% Services Region.
 %%
-%% The QuickSight console evaluates which customizations to apply by running
-%% this API operation with the `Resolved' flag included.
+%% The Amazon QuickSight console evaluates which customizations to apply by
+%% running this API operation with the `Resolved' flag included.
 %%
 %% To determine what customizations display when you run this command, it can
 %% help to visualize the relationship of the entities involved.
 %%
-%% <ul> <li> `AWS Account' - The AWS account exists at the top of the
-%% hierarchy. It has the potential to use all of the AWS Regions and AWS
-%% Services. When you subscribe to QuickSight, you choose one AWS Region to
-%% use as your home Region. That's where your free SPICE capacity is located.
-%% You can use QuickSight in any supported AWS Region.
+%% <ul> <li> `Amazon Web Services account' - The Amazon Web Services account
+%% exists at the top of the hierarchy. It has the potential to use all of the
+%% Amazon Web Services Regions and AWS Services. When you subscribe to Amazon
+%% QuickSight, you choose one Amazon Web Services Region to use as your home
+%% Region. That's where your free SPICE capacity is located. You can use
+%% Amazon QuickSight in any supported Amazon Web Services Region.
 %%
-%% </li> <li> `AWS Region' - In each AWS Region where you sign in to
-%% QuickSight at least once, QuickSight acts as a separate instance of the
-%% same service. If you have a user directory, it resides in us-east-1, which
-%% is the US East (N. Virginia). Generally speaking, these users have access
-%% to QuickSight in any AWS Region, unless they are constrained to a
-%% namespace.
+%% </li> <li> `Amazon Web Services Region' - In each Amazon Web Services
+%% Region where you sign in to Amazon QuickSight at least once, Amazon
+%% QuickSight acts as a separate instance of the same service. If you have a
+%% user directory, it resides in us-east-1, which is the US East (N.
+%% Virginia). Generally speaking, these users have access to Amazon
+%% QuickSight in any Amazon Web Services Region, unless they are constrained
+%% to a namespace.
 %%
-%% To run the command in a different AWS Region, you change your Region
-%% settings. If you're using the AWS CLI, you can use one of the following
-%% options:
+%% To run the command in a different Amazon Web Services Region, you change
+%% your Region settings. If you're using the AWS CLI, you can use one of the
+%% following options:
 %%
 %% <ul> <li> Use command line options.
 %%
 %% </li> <li> Use named profiles.
 %%
-%% </li> <li> Run `aws configure' to change your default AWS Region. Use
-%% Enter to key the same settings for your keys. For more information, see
-%% Configuring the AWS CLI.
+%% </li> <li> Run `aws configure' to change your default Amazon Web Services
+%% Region. Use Enter to key the same settings for your keys. For more
+%% information, see Configuring the AWS CLI.
 %%
-%% </li> </ul> </li> <li> `Namespace' - A QuickSight namespace is a partition
-%% that contains users and assets (data sources, datasets, dashboards, and so
-%% on). To access assets that are in a specific namespace, users and groups
-%% must also be part of the same namespace. People who share a namespace are
-%% completely isolated from users and assets in other namespaces, even if
-%% they are in the same AWS account and AWS Region.
+%% </li> </ul> </li> <li> `Namespace' - A Amazon QuickSight namespace is a
+%% partition that contains users and assets (data sources, datasets,
+%% dashboards, and so on). To access assets that are in a specific namespace,
+%% users and groups must also be part of the same namespace. People who share
+%% a namespace are completely isolated from users and assets in other
+%% namespaces, even if they are in the same Amazon Web Services account and
+%% Amazon Web Services Region.
 %%
-%% </li> <li> `Applied customizations' - Within an AWS Region, a set of
-%% QuickSight customizations can apply to an AWS account or to a namespace.
-%% Settings that you apply to a namespace override settings that you apply to
-%% an AWS account. All settings are isolated to a single AWS Region. To apply
-%% them in other AWS Regions, run the `CreateAccountCustomization' command in
-%% each AWS Region where you want to apply the same customizations.
+%% </li> <li> `Applied customizations' - Within an Amazon Web Services
+%% Region, a set of Amazon QuickSight customizations can apply to an Amazon
+%% Web Services account or to a namespace. Settings that you apply to a
+%% namespace override settings that you apply to an Amazon Web Services
+%% account. All settings are isolated to a single Amazon Web Services Region.
+%% To apply them in other Amazon Web Services Regions, run the
+%% `CreateAccountCustomization' command in each Amazon Web Services Region
+%% where you want to apply the same customizations.
 %%
 %% </li> </ul>
 describe_account_customization(Client, AwsAccountId)
@@ -1137,8 +1284,8 @@ describe_account_customization(Client, AwsAccountId, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes the settings that were used when your QuickSight
-%% subscription was first created in this AWS account.
+%% @doc Describes the settings that were used when your Amazon QuickSight
+%% subscription was first created in this Amazon Web Services account.
 describe_account_settings(Client, AwsAccountId)
   when is_map(Client) ->
     describe_account_settings(Client, AwsAccountId, #{}, #{}).
@@ -1353,6 +1500,78 @@ describe_data_source_permissions(Client, AwsAccountId, DataSourceId, QueryMap, H
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Describes a folder.
+describe_folder(Client, AwsAccountId, FolderId)
+  when is_map(Client) ->
+    describe_folder(Client, AwsAccountId, FolderId, #{}, #{}).
+
+describe_folder(Client, AwsAccountId, FolderId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_folder(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, []).
+
+describe_folder(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes permissions for a folder.
+describe_folder_permissions(Client, AwsAccountId, FolderId)
+  when is_map(Client) ->
+    describe_folder_permissions(Client, AwsAccountId, FolderId, #{}, #{}).
+
+describe_folder_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_folder_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, []).
+
+describe_folder_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/permissions"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the folder resolved permissions.
+%%
+%% Permissions consists of both folder direct permissions and the inherited
+%% permissions from the ancestor folders.
+describe_folder_resolved_permissions(Client, AwsAccountId, FolderId)
+  when is_map(Client) ->
+    describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, #{}, #{}).
+
+describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, []).
+
+describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/resolved-permissions"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns an Amazon QuickSight group's description and Amazon Resource
 %% Name (ARN).
 describe_group(Client, AwsAccountId, GroupName, Namespace)
@@ -1377,7 +1596,7 @@ describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes an existing IAM policy assignment, as specified by the
+%% @doc Describes an existing IAMpolicy assignment, as specified by the
 %% assignment name.
 describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace)
   when is_map(Client) ->
@@ -1413,6 +1632,29 @@ describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, Heade
 describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions/", aws_util:encode_uri(IngestionId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Provides a summary and status of IP Rules.
+describe_ip_restriction(Client, AwsAccountId)
+  when is_map(Client) ->
+    describe_ip_restriction(Client, AwsAccountId, #{}, #{}).
+
+describe_ip_restriction(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_ip_restriction(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+describe_ip_restriction(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/ip-restriction"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1618,8 +1860,110 @@ describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, O
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Generates an embed URL that you can use to embed an Amazon QuickSight
+%% dashboard in your website, without having to register any reader users.
+%%
+%% Before you use this action, make sure that you have configured the
+%% dashboards and permissions.
+%%
+%% The following rules apply to the generated URL:
+%%
+%% <ul> <li> It contains a temporary bearer token. It is valid for 5 minutes
+%% after it is generated. Once redeemed within this period, it cannot be
+%% re-used again.
+%%
+%% </li> <li> The URL validity period should not be confused with the actual
+%% session lifetime that can be customized using the `
+%% SessionLifetimeInMinutes ' parameter.
+%%
+%% The resulting user session is valid for 15 minutes (default) to 10 hours
+%% (maximum).
+%%
+%% </li> <li> You are charged only when the URL is used or there is
+%% interaction with Amazon QuickSight.
+%%
+%% </li> </ul> For more information, see Embedded Analytics in the Amazon
+%% QuickSight User Guide.
+%%
+%% For more information about the high-level steps for embedding and for an
+%% interactive demo of the ways you can customize embedding, visit the Amazon
+%% QuickSight Developer Portal.
+generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input) ->
+    generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input, []).
+generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/embed-url/anonymous-user"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Generates an embed URL that you can use to embed an Amazon QuickSight
+%% experience in your website.
+%%
+%% This action can be used for any type of user registered in an Amazon
+%% QuickSight account. Before you use this action, make sure that you have
+%% configured the relevant Amazon QuickSight resource and permissions.
+%%
+%% The following rules apply to the generated URL:
+%%
+%% <ul> <li> It contains a temporary bearer token. It is valid for 5 minutes
+%% after it is generated. Once redeemed within this period, it cannot be
+%% re-used again.
+%%
+%% </li> <li> The URL validity period should not be confused with the actual
+%% session lifetime that can be customized using the `
+%% SessionLifetimeInMinutes ' parameter.
+%%
+%% The resulting user session is valid for 15 minutes (default) to 10 hours
+%% (maximum).
+%%
+%% </li> <li> You are charged only when the URL is used or there is
+%% interaction with Amazon QuickSight.
+%%
+%% </li> </ul> For more information, see Embedded Analytics in the Amazon
+%% QuickSight User Guide.
+%%
+%% For more information about the high-level steps for embedding and for an
+%% interactive demo of the ways you can customize embedding, visit the Amazon
+%% QuickSight Developer Portal.
+generate_embed_url_for_registered_user(Client, AwsAccountId, Input) ->
+    generate_embed_url_for_registered_user(Client, AwsAccountId, Input, []).
+generate_embed_url_for_registered_user(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/embed-url/registered-user"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Generates a session URL and authorization code that you can use to
-%% embed an Amazon QuickSight read-only dashboard in your web server code.
+%% embed an Amazon Amazon QuickSight read-only dashboard in your web server
+%% code.
 %%
 %% Before you use this command, make sure that you have configured the
 %% dashboards and permissions.
@@ -1636,8 +1980,12 @@ describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, O
 %%
 %% </li> <li> The resulting user session is valid for 10 hours.
 %%
-%% </li> </ul> For more information, see Embedded Analytics in the Amazon
-%% QuickSight User Guide.
+%% </li> </ul> For more information, see Embedding Analytics Using
+%% GetDashboardEmbedUrl in the Amazon QuickSight User Guide.
+%%
+%% For more information about the high-level steps for embedding and for an
+%% interactive demo of the ways you can customize embedding, visit the Amazon
+%% QuickSight Developer Portal.
 get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType)
   when is_map(Client) ->
     get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, #{}, #{}).
@@ -1672,19 +2020,19 @@ get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Generates a session URL and authorization code that you can use to
-%% embed the Amazon QuickSight console in your web server code.
+%% embed the Amazon Amazon QuickSight console in your web server code.
 %%
 %% Use `GetSessionEmbedUrl' where you want to provide an authoring portal
 %% that allows users to create data sources, datasets, analyses, and
-%% dashboards. The users who access an embedded QuickSight console need
-%% belong to the author or admin security cohort. If you want to restrict
-%% permissions to some of these features, add a custom permissions profile to
-%% the user with the ` `UpdateUser' ' API operation. Use ` `RegisterUser' '
-%% API operation to add a new user with a custom permission profile attached.
-%% For more information, see the following sections in the Amazon QuickSight
-%% User Guide:
+%% dashboards. The users who access an embedded Amazon QuickSight console
+%% need belong to the author or admin security cohort. If you want to
+%% restrict permissions to some of these features, add a custom permissions
+%% profile to the user with the ` `UpdateUser' ' API operation. Use `
+%% `RegisterUser' ' API operation to add a new user with a custom permission
+%% profile attached. For more information, see the following sections in the
+%% Amazon QuickSight User Guide:
 %%
-%% <ul> <li> Embedding the Amazon QuickSight Console
+%% <ul> <li> Embedding Analytics
 %%
 %% </li> <li> Customizing Access to the Amazon QuickSight Console
 %%
@@ -1717,8 +2065,8 @@ get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists Amazon QuickSight analyses that exist in the specified AWS
-%% account.
+%% @doc Lists Amazon QuickSight analyses that exist in the specified Amazon
+%% Web Services account.
 list_analyses(Client, AwsAccountId)
   when is_map(Client) ->
     list_analyses(Client, AwsAccountId, #{}, #{}).
@@ -1746,7 +2094,7 @@ list_analyses(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all the versions of the dashboards in the QuickSight
+%% @doc Lists all the versions of the dashboards in the Amazon QuickSight
 %% subscription.
 list_dashboard_versions(Client, AwsAccountId, DashboardId)
   when is_map(Client) ->
@@ -1775,7 +2123,7 @@ list_dashboard_versions(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists dashboards in an AWS account.
+%% @doc Lists dashboards in an Amazon Web Services account.
 list_dashboards(Client, AwsAccountId)
   when is_map(Client) ->
     list_dashboards(Client, AwsAccountId, #{}, #{}).
@@ -1803,8 +2151,8 @@ list_dashboards(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all of the datasets belonging to the current AWS account in an
-%% AWS Region.
+%% @doc Lists all of the datasets belonging to the current Amazon Web
+%% Services account in an Amazon Web Services Region.
 %%
 %% The permissions resource is
 %% `arn:aws:quicksight:region:aws-account-id:dataset/*'.
@@ -1835,8 +2183,8 @@ list_data_sets(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists data sources in current AWS Region that belong to this AWS
-%% account.
+%% @doc Lists data sources in current Amazon Web Services Region that belong
+%% to this Amazon Web Services account.
 list_data_sources(Client, AwsAccountId)
   when is_map(Client) ->
     list_data_sources(Client, AwsAccountId, #{}, #{}).
@@ -1848,6 +2196,62 @@ list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap)
 list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List all assets (`DASHBOARD', `ANALYSIS', and `DATASET') in a folder.
+list_folder_members(Client, AwsAccountId, FolderId)
+  when is_map(Client) ->
+    list_folder_members(Client, AwsAccountId, FolderId, #{}, #{}).
+
+list_folder_members(Client, AwsAccountId, FolderId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_folder_members(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, []).
+
+list_folder_members(Client, AwsAccountId, FolderId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/members"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all folders in an account.
+list_folders(Client, AwsAccountId)
+  when is_map(Client) ->
+    list_folders(Client, AwsAccountId, #{}, #{}).
+
+list_folders(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_folders(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+list_folders(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1920,8 +2324,7 @@ list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists IAM policy assignments in the current Amazon QuickSight
-%% account.
+%% @doc Lists IAMpolicy assignments in the current Amazon QuickSight account.
 list_iam_policy_assignments(Client, AwsAccountId, Namespace)
   when is_map(Client) ->
     list_iam_policy_assignments(Client, AwsAccountId, Namespace, #{}, #{}).
@@ -1949,7 +2352,7 @@ list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all the IAM policy assignments, including the Amazon Resource
+%% @doc Lists all the IAMpolicy assignments, including the Amazon Resource
 %% Names (ARNs) for the IAM policies assigned to the specified user and group
 %% or groups that the user belongs to.
 list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName)
@@ -2007,7 +2410,7 @@ list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the namespaces for the specified AWS account.
+%% @doc Lists the namespaces for the specified Amazon Web Services account.
 list_namespaces(Client, AwsAccountId)
   when is_map(Client) ->
     list_namespaces(Client, AwsAccountId, #{}, #{}).
@@ -2171,7 +2574,8 @@ list_theme_aliases(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options0
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all the versions of the themes in the current AWS account.
+%% @doc Lists all the versions of the themes in the current Amazon Web
+%% Services account.
 list_theme_versions(Client, AwsAccountId, ThemeId)
   when is_map(Client) ->
     list_theme_versions(Client, AwsAccountId, ThemeId, #{}, #{}).
@@ -2199,7 +2603,7 @@ list_theme_versions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, Options
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all the themes in the current AWS account.
+%% @doc Lists all the themes in the current Amazon Web Services account.
 list_themes(Client, AwsAccountId)
   when is_map(Client) ->
     list_themes(Client, AwsAccountId, #{}, #{}).
@@ -2336,6 +2740,9 @@ restore_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
 
 %% @doc Searches for analyses that belong to the user specified in the
 %% filter.
+%%
+%% This operation is eventually consistent. The results are best effort and
+%% may not reflect very recent updates and changes.
 search_analyses(Client, AwsAccountId, Input) ->
     search_analyses(Client, AwsAccountId, Input, []).
 search_analyses(Client, AwsAccountId, Input0, Options0) ->
@@ -2359,6 +2766,9 @@ search_analyses(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches for dashboards that belong to a user.
+%%
+%% This operation is eventually consistent. The results are best effort and
+%% may not reflect very recent updates and changes.
 search_dashboards(Client, AwsAccountId, Input) ->
     search_dashboards(Client, AwsAccountId, Input, []).
 search_dashboards(Client, AwsAccountId, Input0, Options0) ->
@@ -2381,7 +2791,30 @@ search_dashboards(Client, AwsAccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Assigns one or more tags (key-value pairs) to the specified
+%% @doc Searches the subfolders in a folder.
+search_folders(Client, AwsAccountId, Input) ->
+    search_folders(Client, AwsAccountId, Input, []).
+search_folders(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/folders"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Assigns one or more tags (key-value pairs) to the specified Amazon
 %% QuickSight resource.
 %%
 %% Tags can help you organize and categorize your resources. You can also use
@@ -2393,17 +2826,17 @@ search_dashboards(Client, AwsAccountId, Input0, Options0) ->
 %% already associated with the resource, the new tag value that you specify
 %% replaces the previous value for that tag.
 %%
-%% You can associate as many as 50 tags with a resource. QuickSight supports
-%% tagging on data set, data source, dashboard, and template.
+%% You can associate as many as 50 tags with a resource. Amazon QuickSight
+%% supports tagging on data set, data source, dashboard, and template.
 %%
-%% Tagging for QuickSight works in a similar way to tagging for other AWS
-%% services, except for the following:
+%% Tagging for Amazon QuickSight works in a similar way to tagging for other
+%% AWS services, except for the following:
 %%
-%% <ul> <li> You can't use tags to track AWS costs for QuickSight. This
-%% restriction is because QuickSight costs are based on users and SPICE
-%% capacity, which aren't taggable resources.
+%% <ul> <li> You can't use tags to track AWS costs for Amazon QuickSight.
+%% This restriction is because Amazon QuickSight costs are based on users and
+%% SPICE capacity, which aren't taggable resources.
 %%
-%% </li> <li> QuickSight doesn't currently support the Tag Editor for AWS
+%% </li> <li> Amazon QuickSight doesn't currently support the Tag Editor for
 %% Resource Groups.
 %%
 %% </li> </ul>
@@ -2453,15 +2886,16 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates Amazon QuickSight customizations the current AWS Region.
+%% @doc Updates Amazon QuickSight customizations the current Amazon Web
+%% Services Region.
 %%
 %% Currently, the only customization you can use is a theme.
 %%
-%% You can use customizations for your AWS account or, if you specify a
-%% namespace, for a QuickSight namespace instead. Customizations that apply
-%% to a namespace override customizations that apply to an AWS account. To
-%% find out which customizations apply, use the
-%% `DescribeAccountCustomization' API operation.
+%% You can use customizations for your Amazon Web Services account or, if you
+%% specify a namespace, for a Amazon QuickSight namespace instead.
+%% Customizations that apply to a namespace override customizations that
+%% apply to an Amazon Web Services account. To find out which customizations
+%% apply, use the `DescribeAccountCustomization' API operation.
 update_account_customization(Client, AwsAccountId, Input) ->
     update_account_customization(Client, AwsAccountId, Input, []).
 update_account_customization(Client, AwsAccountId, Input0, Options0) ->
@@ -2485,7 +2919,8 @@ update_account_customization(Client, AwsAccountId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the Amazon QuickSight settings in your AWS account.
+%% @doc Updates the Amazon QuickSight settings in your Amazon Web Services
+%% account.
 update_account_settings(Client, AwsAccountId, Input) ->
     update_account_settings(Client, AwsAccountId, Input, []).
 update_account_settings(Client, AwsAccountId, Input0, Options0) ->
@@ -2554,7 +2989,12 @@ update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a dashboard in an AWS account.
+%% @doc Updates a dashboard in an Amazon Web Services account.
+%%
+%% Updating a Dashboard creates a new dashboard version but does not
+%% immediately publish the new version. You can update the published version
+%% of a dashboard by using the `UpdateDashboardPublishedVersion' API
+%% operation.
 update_dashboard(Client, AwsAccountId, DashboardId, Input) ->
     update_dashboard(Client, AwsAccountId, DashboardId, Input, []).
 update_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
@@ -2718,6 +3158,52 @@ update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input0, Optio
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the name of a folder.
+update_folder(Client, AwsAccountId, FolderId, Input) ->
+    update_folder(Client, AwsAccountId, FolderId, Input, []).
+update_folder(Client, AwsAccountId, FolderId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates permissions of a folder.
+update_folder_permissions(Client, AwsAccountId, FolderId, Input) ->
+    update_folder_permissions(Client, AwsAccountId, FolderId, Input, []).
+update_folder_permissions(Client, AwsAccountId, FolderId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/folders/", aws_util:encode_uri(FolderId), "/permissions"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Changes a group description.
 update_group(Client, AwsAccountId, GroupName, Namespace, Input) ->
     update_group(Client, AwsAccountId, GroupName, Namespace, Input, []).
@@ -2741,7 +3227,7 @@ update_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing IAM policy assignment.
+%% @doc Updates an existing IAMpolicy assignment.
 %%
 %% This operation updates only the optional parameter or parameters that are
 %% specified in the request. This overwrites all of the users included in
@@ -2751,6 +3237,29 @@ update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, In
 update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments/", aws_util:encode_uri(AssignmentName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates content and status of IP Rules.
+update_ip_restriction(Client, AwsAccountId, Input) ->
+    update_ip_restriction(Client, AwsAccountId, Input, []).
+update_ip_restriction(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/ip-restriction"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -3011,6 +3520,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

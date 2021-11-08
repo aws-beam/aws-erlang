@@ -1,16 +1,16 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Cloud9
+%% @doc Cloud9
 %%
-%% AWS Cloud9 is a collection of tools that you can use to code, build, run,
+%% Cloud9 is a collection of tools that you can use to code, build, run,
 %% test, debug, and release software in the cloud.
 %%
-%% For more information about AWS Cloud9, see the AWS Cloud9 User Guide.
+%% For more information about Cloud9, see the Cloud9 User Guide.
 %%
-%% AWS Cloud9 supports these operations:
+%% Cloud9 supports these operations:
 %%
-%% <ul> <li> `CreateEnvironmentEC2': Creates an AWS Cloud9 development
+%% <ul> <li> `CreateEnvironmentEC2': Creates an Cloud9 development
 %% environment, launches an Amazon EC2 instance, and then connects from the
 %% instance to the environment.
 %%
@@ -81,9 +81,9 @@
 %% API
 %%====================================================================
 
-%% @doc Creates an AWS Cloud9 development environment, launches an Amazon
-%% Elastic Compute Cloud (Amazon EC2) instance, and then connects from the
-%% instance to the environment.
+%% @doc Creates an Cloud9 development environment, launches an Amazon Elastic
+%% Compute Cloud (Amazon EC2) instance, and then connects from the instance
+%% to the environment.
 create_environment_ec2(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment_ec2(Client, Input, []).
@@ -91,7 +91,7 @@ create_environment_ec2(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEnvironmentEC2">>, Input, Options).
 
-%% @doc Adds an environment member to an AWS Cloud9 development environment.
+%% @doc Adds an environment member to an Cloud9 development environment.
 create_environment_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment_membership(Client, Input, []).
@@ -99,7 +99,7 @@ create_environment_membership(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEnvironmentMembership">>, Input, Options).
 
-%% @doc Deletes an AWS Cloud9 development environment.
+%% @doc Deletes an Cloud9 development environment.
 %%
 %% If an Amazon EC2 instance is connected to the environment, also terminates
 %% the instance.
@@ -110,8 +110,7 @@ delete_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEnvironment">>, Input, Options).
 
-%% @doc Deletes an environment member from an AWS Cloud9 development
-%% environment.
+%% @doc Deletes an environment member from an Cloud9 development environment.
 delete_environment_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment_membership(Client, Input, []).
@@ -119,8 +118,8 @@ delete_environment_membership(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEnvironmentMembership">>, Input, Options).
 
-%% @doc Gets information about environment members for an AWS Cloud9
-%% development environment.
+%% @doc Gets information about environment members for an Cloud9 development
+%% environment.
 describe_environment_memberships(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_environment_memberships(Client, Input, []).
@@ -128,7 +127,7 @@ describe_environment_memberships(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEnvironmentMemberships">>, Input, Options).
 
-%% @doc Gets status information for an AWS Cloud9 development environment.
+%% @doc Gets status information for an Cloud9 development environment.
 describe_environment_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_environment_status(Client, Input, []).
@@ -136,7 +135,7 @@ describe_environment_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEnvironmentStatus">>, Input, Options).
 
-%% @doc Gets information about AWS Cloud9 development environments.
+%% @doc Gets information about Cloud9 development environments.
 describe_environments(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_environments(Client, Input, []).
@@ -144,7 +143,7 @@ describe_environments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEnvironments">>, Input, Options).
 
-%% @doc Gets a list of AWS Cloud9 development environment identifiers.
+%% @doc Gets a list of Cloud9 development environment identifiers.
 list_environments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_environments(Client, Input, []).
@@ -152,7 +151,7 @@ list_environments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEnvironments">>, Input, Options).
 
-%% @doc Gets a list of the tags associated with an AWS Cloud9 development
+%% @doc Gets a list of the tags associated with an Cloud9 development
 %% environment.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -161,10 +160,10 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Adds tags to an AWS Cloud9 development environment.
+%% @doc Adds tags to an Cloud9 development environment.
 %%
-%% Tags that you add to an AWS Cloud9 environment by using this method will
-%% NOT be automatically propagated to underlying resources.
+%% Tags that you add to an Cloud9 environment by using this method will NOT
+%% be automatically propagated to underlying resources.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -172,7 +171,7 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Removes tags from an AWS Cloud9 development environment.
+%% @doc Removes tags from an Cloud9 development environment.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -180,8 +179,7 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc Changes the settings of an existing AWS Cloud9 development
-%% environment.
+%% @doc Changes the settings of an existing Cloud9 development environment.
 update_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment(Client, Input, []).
@@ -189,8 +187,8 @@ update_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEnvironment">>, Input, Options).
 
-%% @doc Changes the settings of an existing environment member for an AWS
-%% Cloud9 development environment.
+%% @doc Changes the settings of an existing environment member for an Cloud9
+%% development environment.
 update_environment_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment_membership(Client, Input, []).

@@ -2,12 +2,8 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Transit Gateway Network Manager (Network Manager) enables you to
-%% create a global network, in which you can monitor your AWS and on-premises
-%% networks that are built around transit gateways.
-%%
-%% The Network Manager APIs are supported in the US West (Oregon) Region
-%% only. You must specify the `us-west-2' Region in all requests made to
-%% Network Manager.
+%% create a global network, in which you can monitor your Amazon Web Services
+%% and on-premises networks that are built around transit gateways.
 -module(aws_networkmanager).
 
 -export([associate_customer_gateway/3,
@@ -62,6 +58,23 @@
          get_links/2,
          get_links/4,
          get_links/5,
+         get_network_resource_counts/2,
+         get_network_resource_counts/4,
+         get_network_resource_counts/5,
+         get_network_resource_relationships/2,
+         get_network_resource_relationships/4,
+         get_network_resource_relationships/5,
+         get_network_resources/2,
+         get_network_resources/4,
+         get_network_resources/5,
+         get_network_routes/3,
+         get_network_routes/4,
+         get_network_telemetry/2,
+         get_network_telemetry/4,
+         get_network_telemetry/5,
+         get_route_analysis/3,
+         get_route_analysis/5,
+         get_route_analysis/6,
          get_sites/2,
          get_sites/4,
          get_sites/5,
@@ -76,6 +89,8 @@
          list_tags_for_resource/5,
          register_transit_gateway/3,
          register_transit_gateway/4,
+         start_route_analysis/3,
+         start_route_analysis/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -88,6 +103,8 @@
          update_global_network/4,
          update_link/4,
          update_link/5,
+         update_network_resource_metadata/4,
+         update_network_resource_metadata/5,
          update_site/4,
          update_site/5]).
 
@@ -735,6 +752,185 @@ get_links(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets the count of network resources, by resource type, for the
+%% specified global network.
+get_network_resource_counts(Client, GlobalNetworkId)
+  when is_map(Client) ->
+    get_network_resource_counts(Client, GlobalNetworkId, #{}, #{}).
+
+get_network_resource_counts(Client, GlobalNetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_network_resource_counts(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
+
+get_network_resource_counts(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/network-resource-count"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the network resource relationships for the specified global
+%% network.
+get_network_resource_relationships(Client, GlobalNetworkId)
+  when is_map(Client) ->
+    get_network_resource_relationships(Client, GlobalNetworkId, #{}, #{}).
+
+get_network_resource_relationships(Client, GlobalNetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_network_resource_relationships(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
+
+get_network_resource_relationships(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/network-resource-relationships"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"accountId">>, maps:get(<<"accountId">>, QueryMap, undefined)},
+        {<<"awsRegion">>, maps:get(<<"awsRegion">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"registeredGatewayArn">>, maps:get(<<"registeredGatewayArn">>, QueryMap, undefined)},
+        {<<"resourceArn">>, maps:get(<<"resourceArn">>, QueryMap, undefined)},
+        {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the network resources for the specified global network.
+%%
+%% The results include information from the corresponding Describe call for
+%% the resource, minus any sensitive information such as pre-shared keys.
+get_network_resources(Client, GlobalNetworkId)
+  when is_map(Client) ->
+    get_network_resources(Client, GlobalNetworkId, #{}, #{}).
+
+get_network_resources(Client, GlobalNetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_network_resources(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
+
+get_network_resources(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/network-resources"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"accountId">>, maps:get(<<"accountId">>, QueryMap, undefined)},
+        {<<"awsRegion">>, maps:get(<<"awsRegion">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"registeredGatewayArn">>, maps:get(<<"registeredGatewayArn">>, QueryMap, undefined)},
+        {<<"resourceArn">>, maps:get(<<"resourceArn">>, QueryMap, undefined)},
+        {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the network routes of the specified global network.
+get_network_routes(Client, GlobalNetworkId, Input) ->
+    get_network_routes(Client, GlobalNetworkId, Input, []).
+get_network_routes(Client, GlobalNetworkId, Input0, Options0) ->
+    Method = post,
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/network-routes"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets the network telemetry of the specified global network.
+get_network_telemetry(Client, GlobalNetworkId)
+  when is_map(Client) ->
+    get_network_telemetry(Client, GlobalNetworkId, #{}, #{}).
+
+get_network_telemetry(Client, GlobalNetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_network_telemetry(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
+
+get_network_telemetry(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/network-telemetry"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"accountId">>, maps:get(<<"accountId">>, QueryMap, undefined)},
+        {<<"awsRegion">>, maps:get(<<"awsRegion">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"registeredGatewayArn">>, maps:get(<<"registeredGatewayArn">>, QueryMap, undefined)},
+        {<<"resourceArn">>, maps:get(<<"resourceArn">>, QueryMap, undefined)},
+        {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets information about the specified route analysis.
+get_route_analysis(Client, GlobalNetworkId, RouteAnalysisId)
+  when is_map(Client) ->
+    get_route_analysis(Client, GlobalNetworkId, RouteAnalysisId, #{}, #{}).
+
+get_route_analysis(Client, GlobalNetworkId, RouteAnalysisId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_route_analysis(Client, GlobalNetworkId, RouteAnalysisId, QueryMap, HeadersMap, []).
+
+get_route_analysis(Client, GlobalNetworkId, RouteAnalysisId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/route-analyses/", aws_util:encode_uri(RouteAnalysisId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets information about one or more of your sites in a global network.
 get_sites(Client, GlobalNetworkId)
   when is_map(Client) ->
@@ -849,14 +1045,41 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Registers a transit gateway in your global network.
 %%
-%% The transit gateway can be in any AWS Region, but it must be owned by the
-%% same AWS account that owns the global network. You cannot register a
-%% transit gateway in more than one global network.
+%% The transit gateway can be in any Amazon Web Services Region, but it must
+%% be owned by the same Amazon Web Services account that owns the global
+%% network. You cannot register a transit gateway in more than one global
+%% network.
 register_transit_gateway(Client, GlobalNetworkId, Input) ->
     register_transit_gateway(Client, GlobalNetworkId, Input, []).
 register_transit_gateway(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-registrations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts analyzing the routing path between the specified source and
+%% destination.
+%%
+%% For more information, see Route Analyzer.
+start_route_analysis(Client, GlobalNetworkId, Input) ->
+    start_route_analysis(Client, GlobalNetworkId, Input, []).
+start_route_analysis(Client, GlobalNetworkId, Input0, Options0) ->
+    Method = post,
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/route-analyses"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1021,6 +1244,29 @@ update_link(Client, GlobalNetworkId, LinkId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the resource metadata for the specified global network.
+update_network_resource_metadata(Client, GlobalNetworkId, ResourceArn, Input) ->
+    update_network_resource_metadata(Client, GlobalNetworkId, ResourceArn, Input, []).
+update_network_resource_metadata(Client, GlobalNetworkId, ResourceArn, Input0, Options0) ->
+    Method = patch,
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/network-resources/", aws_util:encode_uri(ResourceArn), "/metadata"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates the information for an existing site.
 %%
 %% To remove information for any of the parameters, specify an empty string.
@@ -1058,7 +1304,8 @@ update_site(Client, GlobalNetworkId, SiteId, Input0, Options0) ->
     Result :: map(),
     Error :: map().
 request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"networkmanager">>},
+    Client1 = Client#{service => <<"networkmanager">>,
+                      region => <<"us-west-2">>},
     Host = build_host(<<"networkmanager">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
@@ -1081,6 +1328,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
@@ -1108,8 +1363,8 @@ build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
     Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
-build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
+build_host(EndpointPrefix, #{endpoint := Endpoint}) ->
+    aws_util:binary_join([EndpointPrefix, Endpoint], <<".">>).
 
 build_url(Host, Path0, Client) ->
     Proto = maps:get(proto, Client),

@@ -16,8 +16,8 @@
 %% support the API. For more information and to download the driver, see
 %% Accessing Amazon Athena with JDBC.
 %%
-%% For code samples using the AWS SDK for Java, see Examples and Code Samples
-%% in the Amazon Athena User Guide.
+%% For code samples using the Amazon Web Services SDK for Java, see Examples
+%% and Code Samples in the Amazon Athena User Guide.
 -module(aws_athena).
 
 -export([batch_get_named_query/2,
@@ -28,12 +28,16 @@
          create_data_catalog/3,
          create_named_query/2,
          create_named_query/3,
+         create_prepared_statement/2,
+         create_prepared_statement/3,
          create_work_group/2,
          create_work_group/3,
          delete_data_catalog/2,
          delete_data_catalog/3,
          delete_named_query/2,
          delete_named_query/3,
+         delete_prepared_statement/2,
+         delete_prepared_statement/3,
          delete_work_group/2,
          delete_work_group/3,
          get_data_catalog/2,
@@ -42,6 +46,8 @@
          get_database/3,
          get_named_query/2,
          get_named_query/3,
+         get_prepared_statement/2,
+         get_prepared_statement/3,
          get_query_execution/2,
          get_query_execution/3,
          get_query_results/2,
@@ -58,6 +64,8 @@
          list_engine_versions/3,
          list_named_queries/2,
          list_named_queries/3,
+         list_prepared_statements/2,
+         list_prepared_statements/3,
          list_query_executions/2,
          list_query_executions/3,
          list_table_metadata/2,
@@ -76,6 +84,8 @@
          untag_resource/3,
          update_data_catalog/2,
          update_data_catalog/3,
+         update_prepared_statement/2,
+         update_prepared_statement/3,
          update_work_group/2,
          update_work_group/3]).
 
@@ -122,7 +132,8 @@ batch_get_query_execution(Client, Input, Options)
 %% @doc Creates (registers) a data catalog with the specified name and
 %% properties.
 %%
-%% Catalogs created are visible to all users of the same AWS account.
+%% Catalogs created are visible to all users of the same Amazon Web Services
+%% account.
 create_data_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_catalog(Client, Input, []).
@@ -134,14 +145,22 @@ create_data_catalog(Client, Input, Options)
 %%
 %% Requires that you have access to the workgroup.
 %%
-%% For code samples using the AWS SDK for Java, see Examples and Code Samples
-%% in the Amazon Athena User Guide.
+%% For code samples using the Amazon Web Services SDK for Java, see Examples
+%% and Code Samples in the Amazon Athena User Guide.
 create_named_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_named_query(Client, Input, []).
 create_named_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNamedQuery">>, Input, Options).
+
+%% @doc Creates a prepared statement for use with SQL queries in Athena.
+create_prepared_statement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_prepared_statement(Client, Input, []).
+create_prepared_statement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreatePreparedStatement">>, Input, Options).
 
 %% @doc Creates a workgroup with the specified name.
 create_work_group(Client, Input)
@@ -162,14 +181,23 @@ delete_data_catalog(Client, Input, Options)
 %% @doc Deletes the named query if you have access to the workgroup in which
 %% the query was saved.
 %%
-%% For code samples using the AWS SDK for Java, see Examples and Code Samples
-%% in the Amazon Athena User Guide.
+%% For code samples using the Amazon Web Services SDK for Java, see Examples
+%% and Code Samples in the Amazon Athena User Guide.
 delete_named_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_named_query(Client, Input, []).
 delete_named_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNamedQuery">>, Input, Options).
+
+%% @doc Deletes the prepared statement with the specified name from the
+%% specified workgroup.
+delete_prepared_statement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_prepared_statement(Client, Input, []).
+delete_prepared_statement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeletePreparedStatement">>, Input, Options).
 
 %% @doc Deletes the workgroup with the specified name.
 %%
@@ -208,6 +236,15 @@ get_named_query(Client, Input)
 get_named_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetNamedQuery">>, Input, Options).
+
+%% @doc Retrieves the prepared statement with the specified name from the
+%% specified workgroup.
+get_prepared_statement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_prepared_statement(Client, Input, []).
+get_prepared_statement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetPreparedStatement">>, Input, Options).
 
 %% @doc Returns information about a single execution of a query if you have
 %% access to the workgroup in which the query ran.
@@ -261,7 +298,7 @@ get_work_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWorkGroup">>, Input, Options).
 
-%% @doc Lists the data catalogs in the current AWS account.
+%% @doc Lists the data catalogs in the current Amazon Web Services account.
 list_data_catalogs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_data_catalogs(Client, Input, []).
@@ -292,14 +329,22 @@ list_engine_versions(Client, Input, Options)
 %% Requires that you have access to the specified workgroup. If a workgroup
 %% is not specified, lists the saved queries for the primary workgroup.
 %%
-%% For code samples using the AWS SDK for Java, see Examples and Code Samples
-%% in the Amazon Athena User Guide.
+%% For code samples using the Amazon Web Services SDK for Java, see Examples
+%% and Code Samples in the Amazon Athena User Guide.
 list_named_queries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_named_queries(Client, Input, []).
 list_named_queries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListNamedQueries">>, Input, Options).
+
+%% @doc Lists the prepared statements in the specfied workgroup.
+list_prepared_statements(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_prepared_statements(Client, Input, []).
+list_prepared_statements(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListPreparedStatements">>, Input, Options).
 
 %% @doc Provides a list of available query execution IDs for the queries in
 %% the specified workgroup.
@@ -308,8 +353,8 @@ list_named_queries(Client, Input, Options)
 %% the primary workgroup. Requires you to have access to the workgroup in
 %% which the queries ran.
 %%
-%% For code samples using the AWS SDK for Java, see Examples and Code Samples
-%% in the Amazon Athena User Guide.
+%% For code samples using the Amazon Web Services SDK for Java, see Examples
+%% and Code Samples in the Amazon Athena User Guide.
 list_query_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_query_executions(Client, Input, []).
@@ -347,8 +392,9 @@ list_work_groups(Client, Input, Options)
 %%
 %% Requires you to have access to the workgroup in which the query ran.
 %% Running queries against an external catalog requires `GetDataCatalog'
-%% permission to the catalog. For code samples using the AWS SDK for Java,
-%% see Examples and Code Samples in the Amazon Athena User Guide.
+%% permission to the catalog. For code samples using the Amazon Web Services
+%% SDK for Java, see Examples and Code Samples in the Amazon Athena User
+%% Guide.
 start_query_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_query_execution(Client, Input, []).
@@ -360,8 +406,8 @@ start_query_execution(Client, Input, Options)
 %%
 %% Requires you to have access to the workgroup in which the query ran.
 %%
-%% For code samples using the AWS SDK for Java, see Examples and Code Samples
-%% in the Amazon Athena User Guide.
+%% For code samples using the Amazon Web Services SDK for Java, see Examples
+%% and Code Samples in the Amazon Athena User Guide.
 stop_query_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_query_execution(Client, Input, []).
@@ -405,6 +451,14 @@ update_data_catalog(Client, Input)
 update_data_catalog(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDataCatalog">>, Input, Options).
+
+%% @doc Updates a prepared statement.
+update_prepared_statement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_prepared_statement(Client, Input, []).
+update_prepared_statement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdatePreparedStatement">>, Input, Options).
 
 %% @doc Updates the workgroup with the specified name.
 %%
