@@ -92,7 +92,8 @@ encode_xml(Map) ->
 %% elements are processed as described above and all the text parts
 %% are merged under the binary `__text' key.
 decode_xml(Xml) ->
-    XmlString = unicode:characters_to_list(Xml),
+    %% See: https://elixirforum.com/t/utf-8-issue-with-erlang-xmerl-scan-function/1668/9
+    XmlString = erlang:binary_to_list(Xml),
     Opts = [{hook_fun, fun hook_fun/2}],
     {Element, []} = xmerl_scan:string(XmlString, Opts),
     Element.
@@ -265,13 +266,13 @@ decode_xml_lists_test() ->
                , <<"addresses">> => #{<<"address">> => [<<"1">>, <<"2">>]}
                }
         },
-       decode_xml("<person>"
-                  "  <name>foo</name>"
-                  "  <addresses>"
-                  "    <address>1</address>"
-                  "    <address>2</address>"
-                  "  </addresses>"
-                  "</person>")).
+       decode_xml(<<"<person>"
+                    "  <name>foo</name>"
+                    "  <addresses>"
+                    "    <address>1</address>"
+                    "    <address>2</address>"
+                    "  </addresses>"
+                    "</person>">>)).
 
 %% decode_xml handles multiple text elments mixed with other elements correctly.
 decode_xml_text_test() ->
@@ -280,10 +281,10 @@ decode_xml_text_test() ->
                           , ?TEXT => <<"random">>
                           }
                    }
-                , decode_xml("<person>"
-                             "  <name>foo</name>"
-                             "  random"
-                             "</person>")
+                , decode_xml(<<"<person>"
+                               "  <name>foo</name>"
+                               "  random"
+                               "</person>">>)
                 ),
 
     ?assertEqual( #{<<"person">> => #{ <<"name">> => <<"foo">>
@@ -291,12 +292,24 @@ decode_xml_text_test() ->
                                      , ?TEXT => <<"random    text">>
                                      }
                    }
-                , decode_xml("<person>"
-                             "  <name>foo</name>"
-                             "  random"
-                             "  <age>42</age>"
-                             "  text"
-                             "</person>")
+                , decode_xml(<<"<person>"
+                               "  <name>foo</name>"
+                               "  random"
+                               "  <age>42</age>"
+                               "  text"
+                               "</person>">>)
+                ).
+
+decode_utf8_xml_text_test() ->
+    ?assertEqual( #{ <<"person">> =>
+                         #{ <<"name">> => <<"сергей"/utf8>>
+                          , ?TEXT => <<"random">>
+                          }
+                   }
+                , decode_xml(<<"<person>"
+                               "  <name>сергей</name>"
+                               "  random"
+                               "</person>"/utf8>>)
                 ).
 
 
