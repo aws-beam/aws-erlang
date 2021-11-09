@@ -5,6 +5,7 @@
  , { applications
    , [ kernel
      , stdlib
+     , xmerl
      , erlware_commons
      , hackney
      , jsx
