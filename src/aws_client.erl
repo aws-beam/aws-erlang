@@ -5,6 +5,7 @@
         , make_client/3
         , make_temporary_client/4
         , make_local_client/3
+        , make_local_client/4
         ]).
 
 -type access_key_id() :: binary().
@@ -13,6 +14,8 @@
 -type token() :: binary().
 -type http_port() :: binary().
 -type aws_client() :: map().
+-type endpoint() :: binary().
+
 -export_type([access_key_id/0, secret_access_key/0, region/0,
               token/0, aws_client/0]).
 
@@ -78,14 +81,21 @@ make_temporary_client(AccessKeyID, SecretAccessKey, Token, Region)
 
 -spec make_local_client(access_key_id(), secret_access_key(), http_port()) ->
 			       aws_client().
-make_local_client(AccessKeyID, SecretAccessKey, Port)
-  when is_binary(AccessKeyID), is_binary(SecretAccessKey), is_binary(Port) ->
-    #{access_key_id => AccessKeyID,
-      secret_access_key => SecretAccessKey,
-      region => <<"local">>,
-      proto => <<"http">>,
-      port => Port,
-      service => undefined}.
+ make_local_client(AccessKeyID, SecretAccessKey, Port)
+   when is_binary(AccessKeyID), is_binary(SecretAccessKey), is_binary(Port) ->
+    make_local_client(AccessKeyID, SecretAccessKey, Port, <<"localhost">>).
+
+-spec make_local_client(access_key_id(), secret_access_key(), http_port(), endpoint()) ->
+             aws_client().
+make_local_client(AccessKeyID, SecretAccessKey, Port, Endpoint)
+  when is_binary(Endpoint) ->
+     #{access_key_id => AccessKeyID,
+       secret_access_key => SecretAccessKey,
+       region => <<"local">>,
+       endpoint => Endpoint,
+       proto => <<"http">>,
+       port => Port,
+       service => undefined}.
 
 %%====================================================================
 %% Helper functions
@@ -131,15 +141,29 @@ make_temporary_client_test() ->
                                        <<"some-token">>,
                                        <<"region">>)).
 
-make_local_client_test() ->
+make_local_client_3_test() ->
     ?assertEqual(#{access_key_id => <<"access-key-id">>,
 		   port => <<"8000">>,
 		   proto => <<"http">>,
 		   region => <<"local">>,
+                   endpoint => <<"localhost">>,
 		   secret_access_key => <<"secret-access-key">>,
 		   service => undefined},
 		 make_local_client(<<"access-key-id">>,
 				   <<"secret-access-key">>,
 				   <<"8000">>)).
+
+make_local_client_4_test() ->
+    ?assertEqual(#{access_key_id => <<"access-key-id">>,
+		   port => <<"8000">>,
+		   proto => <<"http">>,
+		   region => <<"local">>,
+                   endpoint => <<"endpoint">>,
+		   secret_access_key => <<"secret-access-key">>,
+		   service => undefined},
+		 make_local_client(<<"access-key-id">>,
+				   <<"secret-access-key">>,
+				   <<"8000">>,
+                                   <<"endpoint">>)).
 
 -endif.
