@@ -678,6 +678,7 @@ update_metric_set(Client, Input0, Options0) ->
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->
+    {ok, {integer(), list()}} |
     {ok, Result, {integer(), list(), hackney:client()}} |
     {error, Error, {integer(), list(), hackney:client()}} |
     {error, term()} when
