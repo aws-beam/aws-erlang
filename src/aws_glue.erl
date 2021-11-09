@@ -1,9 +1,9 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Glue
+%% @doc Glue
 %%
-%% Defines the public endpoint for the AWS Glue service.
+%% Defines the public endpoint for the Glue service.
 -module(aws_glue).
 
 -export([batch_create_partition/2,
@@ -16,6 +16,8 @@
          batch_delete_table/3,
          batch_delete_table_version/2,
          batch_delete_table_version/3,
+         batch_get_blueprints/2,
+         batch_get_blueprints/3,
          batch_get_crawlers/2,
          batch_get_crawlers/3,
          batch_get_dev_endpoints/2,
@@ -36,6 +38,8 @@
          cancel_ml_task_run/3,
          check_schema_version_validity/2,
          check_schema_version_validity/3,
+         create_blueprint/2,
+         create_blueprint/3,
          create_classifier/2,
          create_classifier/3,
          create_connection/2,
@@ -70,6 +74,8 @@
          create_user_defined_function/3,
          create_workflow/2,
          create_workflow/3,
+         delete_blueprint/2,
+         delete_blueprint/3,
          delete_classifier/2,
          delete_classifier/3,
          delete_column_statistics_for_partition/2,
@@ -112,6 +118,12 @@
          delete_user_defined_function/3,
          delete_workflow/2,
          delete_workflow/3,
+         get_blueprint/2,
+         get_blueprint/3,
+         get_blueprint_run/2,
+         get_blueprint_run/3,
+         get_blueprint_runs/2,
+         get_blueprint_runs/3,
          get_catalog_import_status/2,
          get_catalog_import_status/3,
          get_classifier/2,
@@ -218,6 +230,8 @@
          get_workflow_runs/3,
          import_catalog_to_glue/2,
          import_catalog_to_glue/3,
+         list_blueprints/2,
+         list_blueprints/3,
          list_crawlers/2,
          list_crawlers/3,
          list_dev_endpoints/2,
@@ -256,6 +270,8 @@
          resume_workflow_run/3,
          search_tables/2,
          search_tables/3,
+         start_blueprint_run/2,
+         start_blueprint_run/3,
          start_crawler/2,
          start_crawler/3,
          start_crawler_schedule/2,
@@ -286,6 +302,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_blueprint/2,
+         update_blueprint/3,
          update_classifier/2,
          update_classifier/3,
          update_column_statistics_for_partition/2,
@@ -354,7 +372,7 @@ batch_delete_partition(Client, Input, Options)
 %% @doc Deletes multiple tables at once.
 %%
 %% After completing this operation, you no longer have access to the table
-%% versions and partitions that belong to the deleted table. AWS Glue deletes
+%% versions and partitions that belong to the deleted table. Glue deletes
 %% these "orphaned" resources asynchronously in a timely manner, at the
 %% discretion of the service.
 %%
@@ -376,6 +394,14 @@ batch_delete_table_version(Client, Input)
 batch_delete_table_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeleteTableVersion">>, Input, Options).
+
+%% @doc Retrieves information about a list of blueprints.
+batch_get_blueprints(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_blueprints(Client, Input, []).
+batch_get_blueprints(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetBlueprints">>, Input, Options).
 
 %% @doc Returns a list of resource metadata for a given list of crawler
 %% names.
@@ -472,10 +498,10 @@ batch_update_partition(Client, Input, Options)
 
 %% @doc Cancels (stops) a task run.
 %%
-%% Machine learning task runs are asynchronous tasks that AWS Glue runs on
-%% your behalf as part of various machine learning workflows. You can cancel
-%% a machine learning task run at any time by calling `CancelMLTaskRun' with
-%% a task run's parent transform's `TransformID' and the task run's
+%% Machine learning task runs are asynchronous tasks that Glue runs on your
+%% behalf as part of various machine learning workflows. You can cancel a
+%% machine learning task run at any time by calling `CancelMLTaskRun' with a
+%% task run's parent transform's `TransformID' and the task run's
 %% `TaskRunId'.
 cancel_ml_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -495,6 +521,14 @@ check_schema_version_validity(Client, Input)
 check_schema_version_validity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CheckSchemaVersionValidity">>, Input, Options).
+
+%% @doc Registers a blueprint with Glue.
+create_blueprint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_blueprint(Client, Input, []).
+create_blueprint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateBlueprint">>, Input, Options).
 
 %% @doc Creates a classifier in the user's account.
 %%
@@ -551,7 +585,7 @@ create_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateJob">>, Input, Options).
 
-%% @doc Creates an AWS Glue machine learning transform.
+%% @doc Creates an Glue machine learning transform.
 %%
 %% This operation creates the transform and all the necessary parameters to
 %% train it.
@@ -561,10 +595,10 @@ create_job(Client, Input, Options)
 %% data. You can provide an optional `Description', in addition to the
 %% parameters that you want to use for your algorithm.
 %%
-%% You must also specify certain parameters for the tasks that AWS Glue runs
-%% on your behalf as part of learning from your data and creating a
-%% high-quality machine learning transform. These parameters include `Role',
-%% and optionally, `AllocatedCapacity', `Timeout', and `MaxRetries'. For more
+%% You must also specify certain parameters for the tasks that Glue runs on
+%% your behalf as part of learning from your data and creating a high-quality
+%% machine learning transform. These parameters include `Role', and
+%% optionally, `AllocatedCapacity', `Timeout', and `MaxRetries'. For more
 %% information, see Jobs.
 create_ml_transform(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -631,9 +665,9 @@ create_script(Client, Input, Options)
 %% @doc Creates a new security configuration.
 %%
 %% A security configuration is a set of security properties that can be used
-%% by AWS Glue. You can use a security configuration to encrypt data at rest.
-%% For information about using security configurations in AWS Glue, see
-%% Encrypting Data Written by Crawlers, Jobs, and Development Endpoints.
+%% by Glue. You can use a security configuration to encrypt data at rest. For
+%% information about using security configurations in Glue, see Encrypting
+%% Data Written by Crawlers, Jobs, and Development Endpoints.
 create_security_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_security_configuration(Client, Input, []).
@@ -673,6 +707,14 @@ create_workflow(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkflow">>, Input, Options).
 
+%% @doc Deletes an existing blueprint.
+delete_blueprint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_blueprint(Client, Input, []).
+delete_blueprint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteBlueprint">>, Input, Options).
+
 %% @doc Removes a classifier from the Data Catalog.
 delete_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -711,8 +753,8 @@ delete_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConnection">>, Input, Options).
 
-%% @doc Removes a specified crawler from the AWS Glue Data Catalog, unless
-%% the crawler state is `RUNNING'.
+%% @doc Removes a specified crawler from the Glue Data Catalog, unless the
+%% crawler state is `RUNNING'.
 delete_crawler(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_crawler(Client, Input, []).
@@ -724,9 +766,9 @@ delete_crawler(Client, Input, Options)
 %%
 %% After completing this operation, you no longer have access to the tables
 %% (and all table versions and partitions that might belong to the tables)
-%% and the user-defined functions in the deleted database. AWS Glue deletes
-%% these "orphaned" resources asynchronously in a timely manner, at the
-%% discretion of the service.
+%% and the user-defined functions in the deleted database. Glue deletes these
+%% "orphaned" resources asynchronously in a timely manner, at the discretion
+%% of the service.
 %%
 %% To ensure the immediate deletion of all related resources, before calling
 %% `DeleteDatabase', use `DeleteTableVersion' or `BatchDeleteTableVersion',
@@ -758,15 +800,14 @@ delete_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteJob">>, Input, Options).
 
-%% @doc Deletes an AWS Glue machine learning transform.
+%% @doc Deletes an Glue machine learning transform.
 %%
 %% Machine learning transforms are a special type of transform that use
 %% machine learning to learn the details of the transformation to be
 %% performed by learning from examples provided by humans. These
-%% transformations are then saved by AWS Glue. If you no longer need a
-%% transform, you can delete it by calling `DeleteMLTransforms'. However, any
-%% AWS Glue jobs that still reference the deleted transform will no longer
-%% succeed.
+%% transformations are then saved by Glue. If you no longer need a transform,
+%% you can delete it by calling `DeleteMLTransforms'. However, any Glue jobs
+%% that still reference the deleted transform will no longer succeed.
 delete_ml_transform(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ml_transform(Client, Input, []).
@@ -793,7 +834,7 @@ delete_partition_index(Client, Input, Options)
 %% @doc Delete the entire registry including schema and all of its versions.
 %%
 %% To get the status of the delete operation, you can call the `GetRegistry'
-%% API after the asynchronous call. Deleting a registry will disable all
+%% API after the asynchronous call. Deleting a registry will deactivate all
 %% online operations for the registry such as the `UpdateRegistry',
 %% `CreateSchema', `UpdateSchema', and `RegisterSchemaVersion' APIs.
 delete_registry(Client, Input)
@@ -815,8 +856,8 @@ delete_resource_policy(Client, Input, Options)
 %% its versions.
 %%
 %% To get the status of the delete operation, you can call `GetSchema' API
-%% after the asynchronous call. Deleting a registry will disable all online
-%% operations for the schema, such as the `GetSchemaByDefinition', and
+%% after the asynchronous call. Deleting a registry will deactivate all
+%% online operations for the schema, such as the `GetSchemaByDefinition', and
 %% `RegisterSchemaVersion' APIs.
 delete_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -863,7 +904,7 @@ delete_security_configuration(Client, Input, Options)
 %% @doc Removes a table definition from the Data Catalog.
 %%
 %% After completing this operation, you no longer have access to the table
-%% versions and partitions that belong to the deleted table. AWS Glue deletes
+%% versions and partitions that belong to the deleted table. Glue deletes
 %% these "orphaned" resources asynchronously in a timely manner, at the
 %% discretion of the service.
 %%
@@ -911,6 +952,30 @@ delete_workflow(Client, Input)
 delete_workflow(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWorkflow">>, Input, Options).
+
+%% @doc Retrieves the details of a blueprint.
+get_blueprint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_blueprint(Client, Input, []).
+get_blueprint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetBlueprint">>, Input, Options).
+
+%% @doc Retrieves the details of a blueprint run.
+get_blueprint_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_blueprint_run(Client, Input, []).
+get_blueprint_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetBlueprintRun">>, Input, Options).
+
+%% @doc Retrieves the details of blueprint runs for a specified blueprint.
+get_blueprint_runs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_blueprint_runs(Client, Input, []).
+get_blueprint_runs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetBlueprintRuns">>, Input, Options).
 
 %% @doc Retrieves the status of a migration operation.
 get_catalog_import_status(Client, Input)
@@ -1033,9 +1098,9 @@ get_dataflow_graph(Client, Input, Options)
 %% @doc Retrieves information about a specified development endpoint.
 %%
 %% When you create a development endpoint in a virtual private cloud (VPC),
-%% AWS Glue returns only a private IP address, and the public IP address
-%% field is not populated. When you create a non-VPC development endpoint,
-%% AWS Glue returns only a public IP address.
+%% Glue returns only a private IP address, and the public IP address field is
+%% not populated. When you create a non-VPC development endpoint, Glue
+%% returns only a public IP address.
 get_dev_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_dev_endpoint(Client, Input, []).
@@ -1046,8 +1111,8 @@ get_dev_endpoint(Client, Input, Options)
 %% @doc Retrieves all the development endpoints in this AWS account.
 %%
 %% When you create a development endpoint in a virtual private cloud (VPC),
-%% AWS Glue returns only a private IP address and the public IP address field
-%% is not populated. When you create a non-VPC development endpoint, AWS Glue
+%% Glue returns only a private IP address and the public IP address field is
+%% not populated. When you create a non-VPC development endpoint, Glue
 %% returns only a public IP address.
 get_dev_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1106,10 +1171,10 @@ get_mapping(Client, Input, Options)
 
 %% @doc Gets details for a specific task run on a machine learning transform.
 %%
-%% Machine learning task runs are asynchronous tasks that AWS Glue runs on
-%% your behalf as part of various machine learning workflows. You can check
-%% the stats of any task run by calling `GetMLTaskRun' with the `TaskRunID'
-%% and its parent transform's `TransformID'.
+%% Machine learning task runs are asynchronous tasks that Glue runs on your
+%% behalf as part of various machine learning workflows. You can check the
+%% stats of any task run by calling `GetMLTaskRun' with the `TaskRunID' and
+%% its parent transform's `TransformID'.
 get_ml_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ml_task_run(Client, Input, []).
@@ -1119,8 +1184,8 @@ get_ml_task_run(Client, Input, Options)
 
 %% @doc Gets a list of runs for a machine learning transform.
 %%
-%% Machine learning task runs are asynchronous tasks that AWS Glue runs on
-%% your behalf as part of various machine learning workflows. You can get a
+%% Machine learning task runs are asynchronous tasks that Glue runs on your
+%% behalf as part of various machine learning workflows. You can get a
 %% sortable, filterable list of machine learning task runs by calling
 %% `GetMLTaskRuns' with their parent transform's `TransformID' and other
 %% optional parameters as documented in this section.
@@ -1133,14 +1198,14 @@ get_ml_task_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMLTaskRuns">>, Input, Options).
 
-%% @doc Gets an AWS Glue machine learning transform artifact and all its
+%% @doc Gets an Glue machine learning transform artifact and all its
 %% corresponding metadata.
 %%
 %% Machine learning transforms are a special type of transform that use
 %% machine learning to learn the details of the transformation to be
 %% performed by learning from examples provided by humans. These
-%% transformations are then saved by AWS Glue. You can retrieve their
-%% metadata by calling `GetMLTransform'.
+%% transformations are then saved by Glue. You can retrieve their metadata by
+%% calling `GetMLTransform'.
 get_ml_transform(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ml_transform(Client, Input, []).
@@ -1148,13 +1213,13 @@ get_ml_transform(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMLTransform">>, Input, Options).
 
-%% @doc Gets a sortable, filterable list of existing AWS Glue machine
-%% learning transforms.
+%% @doc Gets a sortable, filterable list of existing Glue machine learning
+%% transforms.
 %%
 %% Machine learning transforms are a special type of transform that use
 %% machine learning to learn the details of the transformation to be
 %% performed by learning from examples provided by humans. These
-%% transformations are then saved by AWS Glue, and you can retrieve their
+%% transformations are then saved by Glue, and you can retrieve their
 %% metadata by calling `GetMLTransforms'.
 get_ml_transforms(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1203,12 +1268,13 @@ get_registry(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRegistry">>, Input, Options).
 
-%% @doc Retrieves the security configurations for the resource policies set
-%% on individual resources, and also the account-level policy.
+%% @doc Retrieves the resource policies set on individual resources by
+%% Resource Access Manager during cross-account permission grants.
 %%
-%% This operation also returns the Data Catalog resource policy. However, if
-%% you enabled metadata encryption in Data Catalog settings, and you do not
-%% have permission on the AWS KMS key, the operation can't return the Data
+%% Also retrieves the Data Catalog resource policy.
+%%
+%% If you enabled metadata encryption in Data Catalog settings, and you do
+%% not have permission on the KMS key, the operation can't return the Data
 %% Catalog resource policy.
 get_resource_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1393,7 +1459,7 @@ get_workflow_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWorkflowRuns">>, Input, Options).
 
-%% @doc Imports an existing Amazon Athena Data Catalog to AWS Glue
+%% @doc Imports an existing Amazon Athena Data Catalog to Glue.
 import_catalog_to_glue(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_catalog_to_glue(Client, Input, []).
@@ -1401,8 +1467,16 @@ import_catalog_to_glue(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportCatalogToGlue">>, Input, Options).
 
-%% @doc Retrieves the names of all crawler resources in this AWS account, or
-%% the resources with the specified tag.
+%% @doc Lists all the blueprint names in an account.
+list_blueprints(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_blueprints(Client, Input, []).
+list_blueprints(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListBlueprints">>, Input, Options).
+
+%% @doc Retrieves the names of all crawler resources in this Amazon Web
+%% Services account, or the resources with the specified tag.
 %%
 %% This operation allows you to see which resources are available in your
 %% account, and their names.
@@ -1418,8 +1492,8 @@ list_crawlers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCrawlers">>, Input, Options).
 
-%% @doc Retrieves the names of all `DevEndpoint' resources in this AWS
-%% account, or the resources with the specified tag.
+%% @doc Retrieves the names of all `DevEndpoint' resources in this Amazon Web
+%% Services account, or the resources with the specified tag.
 %%
 %% This operation allows you to see which resources are available in your
 %% account, and their names.
@@ -1435,8 +1509,8 @@ list_dev_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDevEndpoints">>, Input, Options).
 
-%% @doc Retrieves the names of all job resources in this AWS account, or the
-%% resources with the specified tag.
+%% @doc Retrieves the names of all job resources in this Amazon Web Services
+%% account, or the resources with the specified tag.
 %%
 %% This operation allows you to see which resources are available in your
 %% account, and their names.
@@ -1452,9 +1526,9 @@ list_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListJobs">>, Input, Options).
 
-%% @doc Retrieves a sortable, filterable list of existing AWS Glue machine
-%% learning transforms in this AWS account, or the resources with the
-%% specified tag.
+%% @doc Retrieves a sortable, filterable list of existing Glue machine
+%% learning transforms in this Amazon Web Services account, or the resources
+%% with the specified tag.
 %%
 %% This operation takes the optional `Tags' field, which you can use as a
 %% filter of the responses so that tagged resources can be retrieved as a
@@ -1505,8 +1579,8 @@ list_schemas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSchemas">>, Input, Options).
 
-%% @doc Retrieves the names of all trigger resources in this AWS account, or
-%% the resources with the specified tag.
+%% @doc Retrieves the names of all trigger resources in this Amazon Web
+%% Services account, or the resources with the specified tag.
 %%
 %% This operation allows you to see which resources are available in your
 %% account, and their names.
@@ -1650,6 +1724,14 @@ search_tables(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchTables">>, Input, Options).
 
+%% @doc Starts a new run of the specified blueprint.
+start_blueprint_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_blueprint_run(Client, Input, []).
+start_blueprint_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartBlueprintRun">>, Input, Options).
+
 %% @doc Starts a crawl using the specified crawler, regardless of what is
 %% scheduled.
 %%
@@ -1698,7 +1780,7 @@ start_export_labels_task_run(Client, Input, Options)
 %% and that ultimately results in improving the quality of your machine
 %% learning transform.
 %%
-%% After the `StartMLLabelingSetGenerationTaskRun' finishes, AWS Glue machine
+%% After the `StartMLLabelingSetGenerationTaskRun' finishes, Glue machine
 %% learning will have generated a series of questions for humans to answer.
 %% (Answering these questions is often called 'labeling' in the machine
 %% learning workflows). In the case of the `FindMatches' transform, these
@@ -1736,9 +1818,9 @@ start_job_run(Client, Input, Options)
 
 %% @doc Starts a task to estimate the quality of the transform.
 %%
-%% When you provide label sets as examples of truth, AWS Glue machine
-%% learning uses some of those examples to learn from them. The rest of the
-%% labels are used as a test to estimate quality.
+%% When you provide label sets as examples of truth, Glue machine learning
+%% uses some of those examples to learn from them. The rest of the labels are
+%% used as a test to estimate quality.
 %%
 %% Returns a unique identifier for the run. You can call `GetMLTaskRun' to
 %% get more information about the stats of the `EvaluationTaskRun'.
@@ -1753,9 +1835,8 @@ start_ml_evaluation_task_run(Client, Input, Options)
 %% transform to improve the transform's quality by generating label sets and
 %% adding labels.
 %%
-%% When the `StartMLLabelingSetGenerationTaskRun' finishes, AWS Glue will
-%% have generated a "labeling set" or a set of questions for humans to
-%% answer.
+%% When the `StartMLLabelingSetGenerationTaskRun' finishes, Glue will have
+%% generated a "labeling set" or a set of questions for humans to answer.
 %%
 %% In the case of the `FindMatches' transform, these questions are of the
 %% form, “What is the correct way to group these rows together into groups
@@ -1826,9 +1907,9 @@ stop_workflow_run(Client, Input, Options)
 
 %% @doc Adds tags to a resource.
 %%
-%% A tag is a label you can assign to an AWS resource. In AWS Glue, you can
-%% tag only certain resources. For information about what resources you can
-%% tag, see AWS Tags in AWS Glue.
+%% A tag is a label you can assign to an Amazon Web Services resource. In
+%% Glue, you can tag only certain resources. For information about what
+%% resources you can tag, see Amazon Web Services Tags in Glue.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1843,6 +1924,14 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates a registered blueprint.
+update_blueprint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_blueprint(Client, Input, []).
+update_blueprint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateBlueprint">>, Input, Options).
 
 %% @doc Modifies an existing classifier (a `GrokClassifier', an
 %% `XMLClassifier', a `JsonClassifier', or a `CsvClassifier', depending on

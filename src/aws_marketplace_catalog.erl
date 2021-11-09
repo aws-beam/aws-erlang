@@ -181,9 +181,12 @@ list_entities(Client, Input0, Options0) ->
 %% try to start a ChangeSet containing a change against an entity that is
 %% already locked, you will receive a `ResourceInUseException'.
 %%
-%% For example, you cannot start the ChangeSet described in the example below
-%% because it contains two changes to execute the same change type
-%% (`AddRevisions') against the same entity (`entity-id@1)'.
+%% For example, you cannot start the ChangeSet described in the example later
+%% in this topic, because it contains two changes to execute the same change
+%% type (`AddRevisions') against the same entity (`entity-id@1)'.
+%%
+%% For more information about working with change sets, see Working with
+%% change sets.
 start_change_set(Client, Input) ->
     start_change_set(Client, Input, []).
 start_change_set(Client, Input0, Options0) ->
@@ -241,6 +244,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

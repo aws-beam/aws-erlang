@@ -8,14 +8,12 @@
 %% Docker containers on a cluster.
 %%
 %% You can host your cluster on a serverless infrastructure that is managed
-%% by Amazon ECS by launching your services or tasks using the Fargate launch
-%% type. For more control, you can host your tasks on a cluster of Amazon
-%% Elastic Compute Cloud (Amazon EC2) instances that you manage by using the
-%% EC2 launch type. For more information about launch types, see Amazon ECS
-%% Launch Types.
+%% by Amazon ECS by launching your services or tasks on Fargate. For more
+%% control, you can host your tasks on a cluster of Amazon Elastic Compute
+%% Cloud (Amazon EC2) instances that you manage.
 %%
-%% Amazon ECS lets you launch and stop container-based applications with
-%% simple API calls, allows you to get the state of your cluster from a
+%% Amazon ECS makes it easy to launch and stop container-based applications
+%% with simple API calls, allows you to get the state of your cluster from a
 %% centralized service, and gives you access to many familiar Amazon EC2
 %% features.
 %%
@@ -66,6 +64,8 @@
          describe_tasks/3,
          discover_poll_endpoint/2,
          discover_poll_endpoint/3,
+         execute_command/2,
+         execute_command/3,
          list_account_settings/2,
          list_account_settings/3,
          list_attributes/2,
@@ -114,6 +114,8 @@
          untag_resource/3,
          update_capacity_provider/2,
          update_capacity_provider/3,
+         update_cluster/2,
+         update_cluster/3,
          update_cluster_settings/2,
          update_cluster_settings/3,
          update_container_agent/2,
@@ -139,9 +141,9 @@
 %% in capacity provider strategies to facilitate cluster auto scaling.
 %%
 %% Only capacity providers using an Auto Scaling group can be created. Amazon
-%% ECS tasks on AWS Fargate use the `FARGATE' and `FARGATE_SPOT' capacity
+%% ECS tasks on Fargate use the `FARGATE' and `FARGATE_SPOT' capacity
 %% providers which are already created and available to all accounts in
-%% Regions supported by AWS Fargate.
+%% Regions supported by Fargate.
 create_capacity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_capacity_provider(Client, Input, []).
@@ -157,11 +159,11 @@ create_capacity_provider(Client, Input, Options)
 %%
 %% When you call the `CreateCluster' API operation, Amazon ECS attempts to
 %% create the Amazon ECS service-linked role for your account so that
-%% required resources in other AWS services can be managed on your behalf.
-%% However, if the IAM user that makes the call does not have permissions to
-%% create the service-linked role, it is not created. For more information,
-%% see Using Service-Linked Roles for Amazon ECS in the Amazon Elastic
-%% Container Service Developer Guide.
+%% required resources in other Amazon Web Services services can be managed on
+%% your behalf. However, if the IAM user that makes the call does not have
+%% permissions to create the service-linked role, it is not created. For more
+%% information, see Using Service-Linked Roles for Amazon ECS in the Amazon
+%% Elastic Container Service Developer Guide.
 create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster(Client, Input, []).
@@ -463,10 +465,9 @@ describe_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusters">>, Input, Options).
 
-%% @doc Describes Amazon Elastic Container Service container instances.
+%% @doc Describes one or more container instances.
 %%
-%% Returns metadata about registered and remaining resources on each
-%% container instance requested.
+%% Returns metadata about each container instance requested.
 describe_container_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_container_instances(Client, Input, []).
@@ -528,6 +529,14 @@ discover_poll_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DiscoverPollEndpoint">>, Input, Options).
 
+%% @doc Runs a command remotely on a container within a task.
+execute_command(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    execute_command(Client, Input, []).
+execute_command(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ExecuteCommand">>, Input, Options).
+
 %% @doc Lists the account settings for a specified principal.
 list_account_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -573,7 +582,10 @@ list_container_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListContainerInstances">>, Input, Options).
 
-%% @doc Lists the services that are running in a specified cluster.
+%% @doc Returns a list of services.
+%%
+%% You can filter the results by cluster, launch type, and scheduling
+%% strategy.
 list_services(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_services(Client, Input, []).
@@ -616,11 +628,11 @@ list_task_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTaskDefinitions">>, Input, Options).
 
-%% @doc Returns a list of tasks for a specified cluster.
+%% @doc Returns a list of tasks.
 %%
-%% You can filter the results by family name, by a particular container
-%% instance, or by the desired status of the task with the `family',
-%% `containerInstance', and `desiredStatus' parameters.
+%% You can filter the results by cluster, task definition family, container
+%% instance, launch type, what IAM principal started the task, or by the
+%% desired status of the task.
 %%
 %% Recently stopped tasks might appear in the returned results. Currently,
 %% stopped tasks appear in the returned results for at least one hour.
@@ -740,10 +752,10 @@ register_container_instance(Client, Input, Options)
 %%
 %% You can specify an IAM role for your task with the `taskRoleArn'
 %% parameter. When you specify an IAM role for a task, its containers can
-%% then use the latest versions of the AWS CLI or SDKs to make API requests
-%% to the AWS services that are specified in the IAM policy associated with
-%% the role. For more information, see IAM Roles for Tasks in the Amazon
-%% Elastic Container Service Developer Guide.
+%% then use the latest versions of the CLI or SDKs to make API requests to
+%% the Amazon Web Services services that are specified in the IAM policy
+%% associated with the role. For more information, see IAM Roles for Tasks in
+%% the Amazon Elastic Container Service Developer Guide.
 %%
 %% You can specify a Docker networking mode for the containers in your task
 %% definition with the `networkMode' parameter. The available network modes
@@ -896,6 +908,14 @@ update_capacity_provider(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCapacityProvider">>, Input, Options).
 
+%% @doc Updates the cluster.
+update_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_cluster(Client, Input, []).
+update_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateCluster">>, Input, Options).
+
 %% @doc Modifies the settings to use for a cluster.
 update_cluster_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -912,11 +932,17 @@ update_cluster_settings(Client, Input, Options)
 %% differs depending on whether your container instance was launched with the
 %% Amazon ECS-optimized AMI or another operating system.
 %%
-%% `UpdateContainerAgent' requires the Amazon ECS-optimized AMI or Amazon
-%% Linux with the `ecs-init' service installed and running. For help updating
-%% the Amazon ECS container agent on other operating systems, see Manually
-%% Updating the Amazon ECS Container Agent in the Amazon Elastic Container
-%% Service Developer Guide.
+%% The `UpdateContainerAgent' API isn't supported for container instances
+%% using the Amazon ECS-optimized Amazon Linux 2 (arm64) AMI. To update the
+%% container agent, you can update the `ecs-init' package which will update
+%% the agent. For more information, see Updating the Amazon ECS container
+%% agent in the Amazon Elastic Container Service Developer Guide.
+%%
+%% The `UpdateContainerAgent' API requires an Amazon ECS-optimized AMI or
+%% Amazon Linux AMI with the `ecs-init' service installed and running. For
+%% help updating the Amazon ECS container agent on other operating systems,
+%% see Manually updating the Amazon ECS container agent in the Amazon Elastic
+%% Container Service Developer Guide.
 update_container_agent(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_container_agent(Client, Input, []).
@@ -1001,9 +1027,9 @@ update_container_instances_state(Client, Input, Options)
 %% only the desired count, deployment configuration, task placement
 %% constraints and strategies, and health check grace period can be updated
 %% using this API. If the network configuration, platform version, or task
-%% definition need to be updated, a new AWS CodeDeploy deployment should be
-%% created. For more information, see CreateDeployment in the AWS CodeDeploy
-%% API Reference.
+%% definition need to be updated, a new CodeDeploy deployment should be
+%% created. For more information, see CreateDeployment in the CodeDeploy API
+%% Reference.
 %%
 %% For services using an external deployment controller, you can update only
 %% the desired count, task placement constraints and strategies, and health

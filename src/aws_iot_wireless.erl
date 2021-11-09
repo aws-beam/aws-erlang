@@ -6,16 +6,28 @@
 
 -export([associate_aws_account_with_partner_account/2,
          associate_aws_account_with_partner_account/3,
+         associate_multicast_group_with_fuota_task/3,
+         associate_multicast_group_with_fuota_task/4,
+         associate_wireless_device_with_fuota_task/3,
+         associate_wireless_device_with_fuota_task/4,
+         associate_wireless_device_with_multicast_group/3,
+         associate_wireless_device_with_multicast_group/4,
          associate_wireless_device_with_thing/3,
          associate_wireless_device_with_thing/4,
          associate_wireless_gateway_with_certificate/3,
          associate_wireless_gateway_with_certificate/4,
          associate_wireless_gateway_with_thing/3,
          associate_wireless_gateway_with_thing/4,
+         cancel_multicast_group_session/3,
+         cancel_multicast_group_session/4,
          create_destination/2,
          create_destination/3,
          create_device_profile/2,
          create_device_profile/3,
+         create_fuota_task/2,
+         create_fuota_task/3,
+         create_multicast_group/2,
+         create_multicast_group/3,
          create_service_profile/2,
          create_service_profile/3,
          create_wireless_device/2,
@@ -30,6 +42,10 @@
          delete_destination/4,
          delete_device_profile/3,
          delete_device_profile/4,
+         delete_fuota_task/3,
+         delete_fuota_task/4,
+         delete_multicast_group/3,
+         delete_multicast_group/4,
          delete_service_profile/3,
          delete_service_profile/4,
          delete_wireless_device/3,
@@ -42,6 +58,12 @@
          delete_wireless_gateway_task_definition/4,
          disassociate_aws_account_from_partner_account/3,
          disassociate_aws_account_from_partner_account/4,
+         disassociate_multicast_group_from_fuota_task/4,
+         disassociate_multicast_group_from_fuota_task/5,
+         disassociate_wireless_device_from_fuota_task/4,
+         disassociate_wireless_device_from_fuota_task/5,
+         disassociate_wireless_device_from_multicast_group/4,
+         disassociate_wireless_device_from_multicast_group/5,
          disassociate_wireless_device_from_thing/3,
          disassociate_wireless_device_from_thing/4,
          disassociate_wireless_gateway_from_certificate/3,
@@ -54,9 +76,27 @@
          get_device_profile/2,
          get_device_profile/4,
          get_device_profile/5,
+         get_fuota_task/2,
+         get_fuota_task/4,
+         get_fuota_task/5,
+         get_log_levels_by_resource_types/1,
+         get_log_levels_by_resource_types/3,
+         get_log_levels_by_resource_types/4,
+         get_multicast_group/2,
+         get_multicast_group/4,
+         get_multicast_group/5,
+         get_multicast_group_session/2,
+         get_multicast_group_session/4,
+         get_multicast_group_session/5,
          get_partner_account/3,
          get_partner_account/5,
          get_partner_account/6,
+         get_resource_event_configuration/3,
+         get_resource_event_configuration/5,
+         get_resource_event_configuration/6,
+         get_resource_log_level/3,
+         get_resource_log_level/5,
+         get_resource_log_level/6,
          get_service_endpoint/1,
          get_service_endpoint/3,
          get_service_endpoint/4,
@@ -93,6 +133,15 @@
          list_device_profiles/1,
          list_device_profiles/3,
          list_device_profiles/4,
+         list_fuota_tasks/1,
+         list_fuota_tasks/3,
+         list_fuota_tasks/4,
+         list_multicast_groups/1,
+         list_multicast_groups/3,
+         list_multicast_groups/4,
+         list_multicast_groups_by_fuota_task/2,
+         list_multicast_groups_by_fuota_task/4,
+         list_multicast_groups_by_fuota_task/5,
          list_partner_accounts/1,
          list_partner_accounts/3,
          list_partner_accounts/4,
@@ -111,8 +160,24 @@
          list_wireless_gateways/1,
          list_wireless_gateways/3,
          list_wireless_gateways/4,
+         put_resource_log_level/3,
+         put_resource_log_level/4,
+         reset_all_resource_log_levels/2,
+         reset_all_resource_log_levels/3,
+         reset_resource_log_level/3,
+         reset_resource_log_level/4,
+         send_data_to_multicast_group/3,
+         send_data_to_multicast_group/4,
          send_data_to_wireless_device/3,
          send_data_to_wireless_device/4,
+         start_bulk_associate_wireless_device_with_multicast_group/3,
+         start_bulk_associate_wireless_device_with_multicast_group/4,
+         start_bulk_disassociate_wireless_device_from_multicast_group/3,
+         start_bulk_disassociate_wireless_device_from_multicast_group/4,
+         start_fuota_task/3,
+         start_fuota_task/4,
+         start_multicast_group_session/3,
+         start_multicast_group_session/4,
          tag_resource/2,
          tag_resource/3,
          test_wireless_device/3,
@@ -121,8 +186,16 @@
          untag_resource/3,
          update_destination/3,
          update_destination/4,
+         update_fuota_task/3,
+         update_fuota_task/4,
+         update_log_levels_by_resource_types/2,
+         update_log_levels_by_resource_types/3,
+         update_multicast_group/3,
+         update_multicast_group/4,
          update_partner_account/3,
          update_partner_account/4,
+         update_resource_event_configuration/3,
+         update_resource_event_configuration/4,
          update_wireless_device/3,
          update_wireless_device/4,
          update_wireless_gateway/3,
@@ -141,6 +214,75 @@ associate_aws_account_with_partner_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/partner-accounts"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associate a multicast group with a FUOTA task.
+associate_multicast_group_with_fuota_task(Client, Id, Input) ->
+    associate_multicast_group_with_fuota_task(Client, Id, Input, []).
+associate_multicast_group_with_fuota_task(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/fuota-tasks/", aws_util:encode_uri(Id), "/multicast-group"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associate a wireless device with a FUOTA task.
+associate_wireless_device_with_fuota_task(Client, Id, Input) ->
+    associate_wireless_device_with_fuota_task(Client, Id, Input, []).
+associate_wireless_device_with_fuota_task(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/fuota-tasks/", aws_util:encode_uri(Id), "/wireless-device"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates a wireless device with a multicast group.
+associate_wireless_device_with_multicast_group(Client, Id, Input) ->
+    associate_wireless_device_with_multicast_group(Client, Id, Input, []).
+associate_wireless_device_with_multicast_group(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/multicast-groups/", aws_util:encode_uri(Id), "/wireless-device"],
+    SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -226,6 +368,29 @@ associate_wireless_gateway_with_thing(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Cancels an existing multicast group session.
+cancel_multicast_group_session(Client, Id, Input) ->
+    cancel_multicast_group_session(Client, Id, Input, []).
+cancel_multicast_group_session(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/multicast-groups/", aws_util:encode_uri(Id), "/session"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a new destination that maps a device message to an AWS IoT
 %% rule.
 create_destination(Client, Input) ->
@@ -256,6 +421,52 @@ create_device_profile(Client, Input) ->
 create_device_profile(Client, Input0, Options0) ->
     Method = post,
     Path = ["/device-profiles"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a FUOTA task.
+create_fuota_task(Client, Input) ->
+    create_fuota_task(Client, Input, []).
+create_fuota_task(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/fuota-tasks"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a multicast group.
+create_multicast_group(Client, Input) ->
+    create_multicast_group(Client, Input, []).
+create_multicast_group(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/multicast-groups"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -434,6 +645,52 @@ delete_device_profile(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a FUOTA task.
+delete_fuota_task(Client, Id, Input) ->
+    delete_fuota_task(Client, Id, Input, []).
+delete_fuota_task(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/fuota-tasks/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a multicast group if it is not in use by a fuota task.
+delete_multicast_group(Client, Id, Input) ->
+    delete_multicast_group(Client, Id, Input, []).
+delete_multicast_group(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/multicast-groups/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a service profile.
 delete_service_profile(Client, Id, Input) ->
     delete_service_profile(Client, Id, Input, []).
@@ -579,6 +836,75 @@ disassociate_aws_account_from_partner_account(Client, PartnerAccountId, Input0, 
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Disassociates a multicast group from a fuota task.
+disassociate_multicast_group_from_fuota_task(Client, Id, MulticastGroupId, Input) ->
+    disassociate_multicast_group_from_fuota_task(Client, Id, MulticastGroupId, Input, []).
+disassociate_multicast_group_from_fuota_task(Client, Id, MulticastGroupId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/fuota-tasks/", aws_util:encode_uri(Id), "/multicast-groups/", aws_util:encode_uri(MulticastGroupId), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disassociates a wireless device from a FUOTA task.
+disassociate_wireless_device_from_fuota_task(Client, Id, WirelessDeviceId, Input) ->
+    disassociate_wireless_device_from_fuota_task(Client, Id, WirelessDeviceId, Input, []).
+disassociate_wireless_device_from_fuota_task(Client, Id, WirelessDeviceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/fuota-tasks/", aws_util:encode_uri(Id), "/wireless-devices/", aws_util:encode_uri(WirelessDeviceId), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disassociates a wireless device from a multicast group.
+disassociate_wireless_device_from_multicast_group(Client, Id, WirelessDeviceId, Input) ->
+    disassociate_wireless_device_from_multicast_group(Client, Id, WirelessDeviceId, Input, []).
+disassociate_wireless_device_from_multicast_group(Client, Id, WirelessDeviceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/multicast-groups/", aws_util:encode_uri(Id), "/wireless-devices/", aws_util:encode_uri(WirelessDeviceId), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Disassociates a wireless device from its currently associated thing.
 disassociate_wireless_device_from_thing(Client, Id, Input) ->
     disassociate_wireless_device_from_thing(Client, Id, Input, []).
@@ -695,6 +1021,101 @@ get_device_profile(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets information about a FUOTA task.
+get_fuota_task(Client, Id)
+  when is_map(Client) ->
+    get_fuota_task(Client, Id, #{}, #{}).
+
+get_fuota_task(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_fuota_task(Client, Id, QueryMap, HeadersMap, []).
+
+get_fuota_task(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/fuota-tasks/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns current default log levels or log levels by resource types.
+%%
+%% Based on resource types, log levels can be for wireless device log options
+%% or wireless gateway log options.
+get_log_levels_by_resource_types(Client)
+  when is_map(Client) ->
+    get_log_levels_by_resource_types(Client, #{}, #{}).
+
+get_log_levels_by_resource_types(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_log_levels_by_resource_types(Client, QueryMap, HeadersMap, []).
+
+get_log_levels_by_resource_types(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/log-levels"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets information about a multicast group.
+get_multicast_group(Client, Id)
+  when is_map(Client) ->
+    get_multicast_group(Client, Id, #{}, #{}).
+
+get_multicast_group(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_multicast_group(Client, Id, QueryMap, HeadersMap, []).
+
+get_multicast_group(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/multicast-groups/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets information about a multicast group session.
+get_multicast_group_session(Client, Id)
+  when is_map(Client) ->
+    get_multicast_group_session(Client, Id, #{}, #{}).
+
+get_multicast_group_session(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_multicast_group_session(Client, Id, QueryMap, HeadersMap, []).
+
+get_multicast_group_session(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/multicast-groups/", aws_util:encode_uri(Id), "/session"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets information about a partner account.
 %%
 %% If `PartnerAccountId' and `PartnerType' are `null', returns all partner
@@ -720,6 +1141,64 @@ get_partner_account(Client, PartnerAccountId, PartnerType, QueryMap, HeadersMap,
     Query0_ =
       [
         {<<"partnerType">>, PartnerType}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get the event configuration for a particular resource identifier.
+get_resource_event_configuration(Client, Identifier, IdentifierType)
+  when is_map(Client) ->
+    get_resource_event_configuration(Client, Identifier, IdentifierType, #{}, #{}).
+
+get_resource_event_configuration(Client, Identifier, IdentifierType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resource_event_configuration(Client, Identifier, IdentifierType, QueryMap, HeadersMap, []).
+
+get_resource_event_configuration(Client, Identifier, IdentifierType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/event-configurations/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"identifierType">>, IdentifierType},
+        {<<"partnerType">>, maps:get(<<"partnerType">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Fetches the log-level override, if any, for a given resource-ID and
+%% resource-type.
+%%
+%% It can be used for a wireless device or a wireless gateway.
+get_resource_log_level(Client, ResourceIdentifier, ResourceType)
+  when is_map(Client) ->
+    get_resource_log_level(Client, ResourceIdentifier, ResourceType, #{}, #{}).
+
+get_resource_log_level(Client, ResourceIdentifier, ResourceType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resource_log_level(Client, ResourceIdentifier, ResourceType, QueryMap, HeadersMap, []).
+
+get_resource_log_level(Client, ResourceIdentifier, ResourceType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/log-levels/", aws_util:encode_uri(ResourceIdentifier), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"resourceType">>, ResourceType}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1026,6 +1505,90 @@ list_device_profiles(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the FUOTA tasks registered to your AWS account.
+list_fuota_tasks(Client)
+  when is_map(Client) ->
+    list_fuota_tasks(Client, #{}, #{}).
+
+list_fuota_tasks(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_fuota_tasks(Client, QueryMap, HeadersMap, []).
+
+list_fuota_tasks(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/fuota-tasks"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the multicast groups registered to your AWS account.
+list_multicast_groups(Client)
+  when is_map(Client) ->
+    list_multicast_groups(Client, #{}, #{}).
+
+list_multicast_groups(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_multicast_groups(Client, QueryMap, HeadersMap, []).
+
+list_multicast_groups(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/multicast-groups"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List all multicast groups associated with a fuota task.
+list_multicast_groups_by_fuota_task(Client, Id)
+  when is_map(Client) ->
+    list_multicast_groups_by_fuota_task(Client, Id, #{}, #{}).
+
+list_multicast_groups_by_fuota_task(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_multicast_groups_by_fuota_task(Client, Id, QueryMap, HeadersMap, []).
+
+list_multicast_groups_by_fuota_task(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/fuota-tasks/", aws_util:encode_uri(Id), "/multicast-groups"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the partner accounts associated with your AWS account.
 list_partner_accounts(Client)
   when is_map(Client) ->
@@ -1132,7 +1695,9 @@ list_wireless_devices(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"destinationName">>, maps:get(<<"destinationName">>, QueryMap, undefined)},
         {<<"deviceProfileId">>, maps:get(<<"deviceProfileId">>, QueryMap, undefined)},
+        {<<"fuotaTaskId">>, maps:get(<<"fuotaTaskId">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"multicastGroupId">>, maps:get(<<"multicastGroupId">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"serviceProfileId">>, maps:get(<<"serviceProfileId">>, QueryMap, undefined)},
         {<<"wirelessDeviceType">>, maps:get(<<"wirelessDeviceType">>, QueryMap, undefined)}
@@ -1199,6 +1764,107 @@ list_wireless_gateways(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Sets the log-level override for a resource-ID and resource-type.
+%%
+%% This option can be specified for a wireless gateway or a wireless device.
+%% A limit of 200 log level override can be set per account.
+put_resource_log_level(Client, ResourceIdentifier, Input) ->
+    put_resource_log_level(Client, ResourceIdentifier, Input, []).
+put_resource_log_level(Client, ResourceIdentifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/log-levels/", aws_util:encode_uri(ResourceIdentifier), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"resourceType">>, <<"ResourceType">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes the log-level overrides for all resources; both wireless
+%% devices and wireless gateways.
+reset_all_resource_log_levels(Client, Input) ->
+    reset_all_resource_log_levels(Client, Input, []).
+reset_all_resource_log_levels(Client, Input0, Options0) ->
+    Method = delete,
+    Path = ["/log-levels"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes the log-level override, if any, for a specific resource-ID
+%% and resource-type.
+%%
+%% It can be used for a wireless device or a wireless gateway.
+reset_resource_log_level(Client, ResourceIdentifier, Input) ->
+    reset_resource_log_level(Client, ResourceIdentifier, Input, []).
+reset_resource_log_level(Client, ResourceIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/log-levels/", aws_util:encode_uri(ResourceIdentifier), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"resourceType">>, <<"ResourceType">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Sends the specified data to a multicast group.
+send_data_to_multicast_group(Client, Id, Input) ->
+    send_data_to_multicast_group(Client, Id, Input, []).
+send_data_to_multicast_group(Client, Id, Input0, Options0) ->
+    Method = post,
+    Path = ["/multicast-groups/", aws_util:encode_uri(Id), "/data"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Sends a decrypted application data frame to a device.
 send_data_to_wireless_device(Client, Id, Input) ->
     send_data_to_wireless_device(Client, Id, Input, []).
@@ -1206,6 +1872,100 @@ send_data_to_wireless_device(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/wireless-devices/", aws_util:encode_uri(Id), "/data"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a bulk association of all qualifying wireless devices with a
+%% multicast group.
+start_bulk_associate_wireless_device_with_multicast_group(Client, Id, Input) ->
+    start_bulk_associate_wireless_device_with_multicast_group(Client, Id, Input, []).
+start_bulk_associate_wireless_device_with_multicast_group(Client, Id, Input0, Options0) ->
+    Method = patch,
+    Path = ["/multicast-groups/", aws_util:encode_uri(Id), "/bulk"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a bulk disassociatin of all qualifying wireless devices from a
+%% multicast group.
+start_bulk_disassociate_wireless_device_from_multicast_group(Client, Id, Input) ->
+    start_bulk_disassociate_wireless_device_from_multicast_group(Client, Id, Input, []).
+start_bulk_disassociate_wireless_device_from_multicast_group(Client, Id, Input0, Options0) ->
+    Method = post,
+    Path = ["/multicast-groups/", aws_util:encode_uri(Id), "/bulk"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a FUOTA task.
+start_fuota_task(Client, Id, Input) ->
+    start_fuota_task(Client, Id, Input, []).
+start_fuota_task(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/fuota-tasks/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a multicast group session.
+start_multicast_group_session(Client, Id, Input) ->
+    start_multicast_group_session(Client, Id, Input, []).
+start_multicast_group_session(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/multicast-groups/", aws_util:encode_uri(Id), "/session"],
+    SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -1318,6 +2078,79 @@ update_destination(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates properties of a FUOTA task.
+update_fuota_task(Client, Id, Input) ->
+    update_fuota_task(Client, Id, Input, []).
+update_fuota_task(Client, Id, Input0, Options0) ->
+    Method = patch,
+    Path = ["/fuota-tasks/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Set default log level, or log levels by resource types.
+%%
+%% This can be for wireless device log options or wireless gateways log
+%% options and is used to control the log messages that'll be displayed in
+%% CloudWatch.
+update_log_levels_by_resource_types(Client, Input) ->
+    update_log_levels_by_resource_types(Client, Input, []).
+update_log_levels_by_resource_types(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/log-levels"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates properties of a multicast group session.
+update_multicast_group(Client, Id, Input) ->
+    update_multicast_group(Client, Id, Input, []).
+update_multicast_group(Client, Id, Input0, Options0) ->
+    Method = patch,
+    Path = ["/multicast-groups/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates properties of a partner account.
 update_partner_account(Client, PartnerAccountId, Input) ->
     update_partner_account(Client, PartnerAccountId, Input, []).
@@ -1337,6 +2170,31 @@ update_partner_account(Client, PartnerAccountId, Input0, Options0) ->
     Input2 = Input1,
 
     QueryMapping = [
+                     {<<"partnerType">>, <<"PartnerType">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update the event configuration for a particular resource identifier.
+update_resource_event_configuration(Client, Identifier, Input) ->
+    update_resource_event_configuration(Client, Identifier, Input, []).
+update_resource_event_configuration(Client, Identifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/event-configurations/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"identifierType">>, <<"IdentifierType">>},
                      {<<"partnerType">>, <<"PartnerType">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
@@ -1423,6 +2281,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

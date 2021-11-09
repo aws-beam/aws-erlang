@@ -1,7 +1,10 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-
+%% @doc The AWS Single Sign-On (SSO) Identity Store service provides a single
+%% place to retrieve all of your identities (users and groups).
+%%
+%% For more information about AWS, see the AWS Single Sign-On User Guide.
 -module(aws_identitystore).
 
 -export([describe_group/2,

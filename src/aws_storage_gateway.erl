@@ -1,42 +1,40 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Storage Gateway Service
+%% @doc Storage Gateway Service
 %%
-%% AWS Storage Gateway is the service that connects an on-premises software
+%% Storage Gateway is the service that connects an on-premises software
 %% appliance with cloud-based storage to provide seamless and secure
 %% integration between an organization's on-premises IT environment and the
-%% AWS storage infrastructure.
+%% Amazon Web Services storage infrastructure.
 %%
-%% The service enables you to securely upload data to the AWS Cloud for cost
-%% effective backup and rapid disaster recovery.
+%% The service enables you to securely upload data to the Amazon Web Services
+%% Cloud for cost effective backup and rapid disaster recovery.
 %%
-%% Use the following links to get started using the AWS Storage Gateway
-%% Service API Reference:
+%% Use the following links to get started using the Storage Gateway Service
+%% API Reference:
 %%
-%% <ul> <li> AWS Storage Gateway required request headers: Describes the
-%% required headers that you must send with every POST request to AWS Storage
-%% Gateway.
+%% <ul> <li> Storage Gateway required request headers: Describes the required
+%% headers that you must send with every POST request to Storage Gateway.
 %%
-%% </li> <li> Signing requests: AWS Storage Gateway requires that you
+%% </li> <li> Signing requests: Storage Gateway requires that you
 %% authenticate every request you send; this topic describes how sign such a
 %% request.
 %%
-%% </li> <li> Error responses: Provides reference information about AWS
-%% Storage Gateway errors.
+%% </li> <li> Error responses: Provides reference information about Storage
+%% Gateway errors.
 %%
-%% </li> <li> Operations in AWS Storage Gateway: Contains detailed
-%% descriptions of all AWS Storage Gateway operations, their request
-%% parameters, response elements, possible errors, and examples of requests
-%% and responses.
+%% </li> <li> Operations in Storage Gateway: Contains detailed descriptions
+%% of all Storage Gateway operations, their request parameters, response
+%% elements, possible errors, and examples of requests and responses.
 %%
-%% </li> <li> AWS Storage Gateway endpoints and quotas: Provides a list of
-%% each AWS Region and the endpoints available for use with AWS Storage
-%% Gateway.
+%% </li> <li> Storage Gateway endpoints and quotas: Provides a list of each
+%% Amazon Web Services Region and the endpoints available for use with
+%% Storage Gateway.
 %%
-%% </li> </ul> AWS Storage Gateway resource IDs are in uppercase. When you
-%% use these resource IDs with the Amazon EC2 API, EC2 expects resource IDs
-%% in lowercase. You must change your resource ID to lowercase to use it with
+%% </li> </ul> Storage Gateway resource IDs are in uppercase. When you use
+%% these resource IDs with the Amazon EC2 API, EC2 expects resource IDs in
+%% lowercase. You must change your resource ID to lowercase to use it with
 %% the EC2 API. For example, in Storage Gateway the ID for a volume might be
 %% `vol-AA22BB012345DAF670'. When you use this ID with the EC2 API, you must
 %% change it to `vol-aa22bb012345daf670'. Otherwise, the EC2 API might not
@@ -57,8 +55,8 @@
 %% A snapshot ID with the longer ID format looks like the following:
 %% `snap-78e226633445566ee'.
 %%
-%% For more information, see Announcement: Heads-up – Longer AWS Storage
-%% Gateway volume and snapshot IDs coming in 2016.
+%% For more information, see Announcement: Heads-up – Longer Storage Gateway
+%% volume and snapshot IDs coming in 2016.
 -module(aws_storage_gateway).
 
 -export([activate_gateway/2,
@@ -73,6 +71,8 @@
          add_working_storage/3,
          assign_tape_pool/2,
          assign_tape_pool/3,
+         associate_file_system/2,
+         associate_file_system/3,
          attach_volume/2,
          attach_volume/3,
          cancel_archival/2,
@@ -129,6 +129,8 @@
          describe_cached_iscsi_volumes/3,
          describe_chap_credentials/2,
          describe_chap_credentials/3,
+         describe_file_system_associations/2,
+         describe_file_system_associations/3,
          describe_gateway_information/2,
          describe_gateway_information/3,
          describe_maintenance_start_time/2,
@@ -159,12 +161,16 @@
          detach_volume/3,
          disable_gateway/2,
          disable_gateway/3,
+         disassociate_file_system/2,
+         disassociate_file_system/3,
          join_domain/2,
          join_domain/3,
          list_automatic_tape_creation_policies/2,
          list_automatic_tape_creation_policies/3,
          list_file_shares/2,
          list_file_shares/3,
+         list_file_system_associations/2,
+         list_file_system_associations/3,
          list_gateways/2,
          list_gateways/3,
          list_local_disks/2,
@@ -211,6 +217,8 @@
          update_bandwidth_rate_limit_schedule/3,
          update_chap_credentials/2,
          update_chap_credentials/3,
+         update_file_system_association/2,
+         update_file_system_association/3,
          update_gateway_information/2,
          update_gateway_information/3,
          update_gateway_software_now/2,
@@ -223,6 +231,8 @@
          update_smb_file_share/3,
          update_smb_file_share_visibility/2,
          update_smb_file_share_visibility/3,
+         update_smb_local_groups/2,
+         update_smb_local_groups/3,
          update_smb_security_strategy/2,
          update_smb_security_strategy/3,
          update_snapshot_schedule/2,
@@ -238,11 +248,11 @@
 
 %% @doc Activates the gateway you previously deployed on your host.
 %%
-%% In the activation process, you specify information such as the AWS Region
-%% that you want to use for storing snapshots or tapes, the time zone for
-%% scheduled snapshots the gateway snapshot schedule window, an activation
-%% key, and a name for your gateway. The activation process also associates
-%% your gateway with your account. For more information, see
+%% In the activation process, you specify information such as the Amazon Web
+%% Services Region that you want to use for storing snapshots or tapes, the
+%% time zone for scheduled snapshots the gateway snapshot schedule window, an
+%% activation key, and a name for your gateway. The activation process also
+%% associates your gateway with your account. For more information, see
 %% `UpdateGatewayInformation'.
 %%
 %% You must turn on the gateway VM before you can activate your gateway.
@@ -256,7 +266,7 @@ activate_gateway(Client, Input, Options)
 %% @doc Configures one or more gateway local disks as cache for a gateway.
 %%
 %% This operation is only supported in the cached volume, tape, and file
-%% gateway type (see How AWS Storage Gateway works (architecture).
+%% gateway type (see How Storage Gateway works (architecture).
 %%
 %% In the request, you specify the gateway Amazon Resource Name (ARN) to
 %% which you want to add cache, and one or more disk IDs that you want to
@@ -273,8 +283,7 @@ add_cache(Client, Input, Options)
 %% You use tags to add metadata to resources, which you can use to categorize
 %% these resources. For example, you can categorize resources by purpose,
 %% owner, environment, or team. Each tag consists of a key and a value, which
-%% you define. You can add tags to the following AWS Storage Gateway
-%% resources:
+%% you define. You can add tags to the following Storage Gateway resources:
 %%
 %% <ul> <li> Storage gateways of all types
 %%
@@ -283,6 +292,8 @@ add_cache(Client, Input, Options)
 %% </li> <li> Virtual tapes
 %%
 %% </li> <li> NFS and SMB file shares
+%%
+%% </li> <li> File System associations
 %%
 %% </li> </ul> You can create a maximum of 50 tags for each resource. Virtual
 %% tapes and storage volumes that are recovered to a new gateway maintain
@@ -297,7 +308,7 @@ add_tags_to_resource(Client, Input, Options)
 %% @doc Configures one or more gateway local disks as upload buffer for a
 %% specified gateway.
 %%
-%% This operation is supported for the stored volume, cached volume and tape
+%% This operation is supported for the stored volume, cached volume, and tape
 %% gateway types.
 %%
 %% In the request, you specify the gateway Amazon Resource Name (ARN) to
@@ -345,6 +356,18 @@ assign_tape_pool(Client, Input)
 assign_tape_pool(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssignTapePool">>, Input, Options).
+
+%% @doc Associate an Amazon FSx file system with the FSx File Gateway.
+%%
+%% After the association process is complete, the file shares on the Amazon
+%% FSx file system are available for access through the gateway. This
+%% operation only supports the FSx File Gateway type.
+associate_file_system(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_file_system(Client, Input, []).
+associate_file_system(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateFileSystem">>, Input, Options).
 
 %% @doc Connects a volume to an iSCSI connection and then attaches the volume
 %% to the specified gateway.
@@ -409,21 +432,23 @@ create_cached_iscsi_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCachediSCSIVolume">>, Input, Options).
 
-%% @doc Creates a Network File System (NFS) file share on an existing file
-%% gateway.
+%% @doc Creates a Network File System (NFS) file share on an existing S3 File
+%% Gateway.
 %%
 %% In Storage Gateway, a file share is a file system mount point backed by
 %% Amazon S3 cloud storage. Storage Gateway exposes file shares using an NFS
-%% interface. This operation is only supported for file gateways.
+%% interface. This operation is only supported for S3 File Gateways.
 %%
-%% File gateway requires AWS Security Token Service (AWS STS) to be activated
-%% to enable you to create a file share. Make sure AWS STS is activated in
-%% the AWS Region you are creating your file gateway in. If AWS STS is not
-%% activated in the AWS Region, activate it. For information about how to
-%% activate AWS STS, see Activating and deactivating AWS STS in an AWS Region
-%% in the AWS Identity and Access Management User Guide.
+%% S3 File gateway requires Security Token Service (Amazon Web Services STS)
+%% to be activated to enable you to create a file share. Make sure Amazon Web
+%% Services STS is activated in the Amazon Web Services Region you are
+%% creating your S3 File Gateway in. If Amazon Web Services STS is not
+%% activated in the Amazon Web Services Region, activate it. For information
+%% about how to activate Amazon Web Services STS, see Activating and
+%% deactivating Amazon Web Services STS in an Amazon Web Services Region in
+%% the Identity and Access Management User Guide.
 %%
-%% File gateway does not support creating hard or symbolic links on a file
+%% S3 File Gateways do not support creating hard or symbolic links on a file
 %% share.
 create_nfs_file_share(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -432,19 +457,21 @@ create_nfs_file_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNFSFileShare">>, Input, Options).
 
-%% @doc Creates a Server Message Block (SMB) file share on an existing file
-%% gateway.
+%% @doc Creates a Server Message Block (SMB) file share on an existing S3
+%% File Gateway.
 %%
 %% In Storage Gateway, a file share is a file system mount point backed by
 %% Amazon S3 cloud storage. Storage Gateway exposes file shares using an SMB
-%% interface. This operation is only supported for file gateways.
+%% interface. This operation is only supported for S3 File Gateways.
 %%
-%% File gateways require AWS Security Token Service (AWS STS) to be activated
-%% to enable you to create a file share. Make sure that AWS STS is activated
-%% in the AWS Region you are creating your file gateway in. If AWS STS is not
-%% activated in this AWS Region, activate it. For information about how to
-%% activate AWS STS, see Activating and deactivating AWS STS in an AWS Region
-%% in the AWS Identity and Access Management User Guide.
+%% S3 File Gateways require Security Token Service (Amazon Web Services STS)
+%% to be activated to enable you to create a file share. Make sure that
+%% Amazon Web Services STS is activated in the Amazon Web Services Region you
+%% are creating your S3 File Gateway in. If Amazon Web Services STS is not
+%% activated in this Amazon Web Services Region, activate it. For information
+%% about how to activate Amazon Web Services STS, see Activating and
+%% deactivating Amazon Web Services STS in an Amazon Web Services Region in
+%% the Identity and Access Management User Guide.
 %%
 %% File gateways don't support creating hard or symbolic links on a file
 %% share.
@@ -457,22 +484,22 @@ create_smb_file_share(Client, Input, Options)
 
 %% @doc Initiates a snapshot of a volume.
 %%
-%% AWS Storage Gateway provides the ability to back up point-in-time
-%% snapshots of your data to Amazon Simple Storage (Amazon S3) for durable
-%% off-site recovery, as well as import the data to an Amazon Elastic Block
-%% Store (EBS) volume in Amazon Elastic Compute Cloud (EC2). You can take
-%% snapshots of your gateway volume on a scheduled or ad hoc basis. This API
-%% enables you to take an ad hoc snapshot. For more information, see Editing
-%% a snapshot schedule.
+%% Storage Gateway provides the ability to back up point-in-time snapshots of
+%% your data to Amazon Simple Storage (Amazon S3) for durable off-site
+%% recovery, and also import the data to an Amazon Elastic Block Store (EBS)
+%% volume in Amazon Elastic Compute Cloud (EC2). You can take snapshots of
+%% your gateway volume on a scheduled or ad hoc basis. This API enables you
+%% to take an ad hoc snapshot. For more information, see Editing a snapshot
+%% schedule.
 %%
 %% In the `CreateSnapshot' request, you identify the volume by providing its
 %% Amazon Resource Name (ARN). You must also provide description for the
-%% snapshot. When AWS Storage Gateway takes the snapshot of specified volume,
-%% the snapshot and description appears in the AWS Storage Gateway console.
-%% In response, AWS Storage Gateway returns you a snapshot ID. You can use
-%% this snapshot ID to check the snapshot progress or later use it when you
-%% want to create a volume from a snapshot. This operation is only supported
-%% in stored and cached volume gateway type.
+%% snapshot. When Storage Gateway takes the snapshot of specified volume, the
+%% snapshot and description appears in the Storage Gateway console. In
+%% response, Storage Gateway returns you a snapshot ID. You can use this
+%% snapshot ID to check the snapshot progress or later use it when you want
+%% to create a volume from a snapshot. This operation is only supported in
+%% stored and cached volume gateway type.
 %%
 %% To list or delete a snapshot, you must use the Amazon EC2 API. For more
 %% information, see DescribeSnapshots or DeleteSnapshot in the Amazon Elastic
@@ -499,10 +526,10 @@ create_snapshot(Client, Input, Options)
 %% In the `CreateSnapshotFromVolumeRecoveryPoint' request, you identify the
 %% volume by providing its Amazon Resource Name (ARN). You must also provide
 %% a description for the snapshot. When the gateway takes a snapshot of the
-%% specified volume, the snapshot and its description appear in the AWS
-%% Storage Gateway console. In response, the gateway returns you a snapshot
-%% ID. You can use this snapshot ID to check the snapshot progress or later
-%% use it when you want to create a volume from a snapshot.
+%% specified volume, the snapshot and its description appear in the Storage
+%% Gateway console. In response, the gateway returns you a snapshot ID. You
+%% can use this snapshot ID to check the snapshot progress or later use it
+%% when you want to create a volume from a snapshot.
 %%
 %% To list or delete a snapshot, you must use the Amazon EC2 API. For more
 %% information, see DescribeSnapshots or DeleteSnapshot in the Amazon Elastic
@@ -615,9 +642,9 @@ delete_chap_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteChapCredentials">>, Input, Options).
 
-%% @doc Deletes a file share from a file gateway.
+%% @doc Deletes a file share from an S3 File Gateway.
 %%
-%% This operation is only supported for file gateways.
+%% This operation is only supported for S3 File Gateways.
 delete_file_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_file_share(Client, Input, []).
@@ -642,7 +669,7 @@ delete_file_share(Client, Input, Options)
 %% billed for these snapshots. You can choose to remove all remaining Amazon
 %% EBS snapshots by canceling your Amazon EC2 subscription.  If you prefer
 %% not to cancel your Amazon EC2 subscription, you can delete your snapshots
-%% using the Amazon EC2 console. For more information, see the AWS Storage
+%% using the Amazon EC2 console. For more information, see the Storage
 %% Gateway detail page.
 delete_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -726,7 +753,7 @@ delete_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVolume">>, Input, Options).
 
-%% @doc Returns information about the most recent High Availability
+%% @doc Returns information about the most recent high availability
 %% monitoring test that was performed on the host in a cluster.
 %%
 %% If a test isn't performed, the status and start time in the response would
@@ -804,8 +831,8 @@ describe_cache(Client, Input, Options)
 %% This operation is only supported in the cached volume gateway types.
 %%
 %% The list of gateway volumes in the request must be from one gateway. In
-%% the response, AWS Storage Gateway returns volume information sorted by
-%% volume Amazon Resource Name (ARN).
+%% the response, Storage Gateway returns volume information sorted by volume
+%% Amazon Resource Name (ARN).
 describe_cached_iscsi_volumes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cached_iscsi_volumes(Client, Input, []).
@@ -824,6 +851,16 @@ describe_chap_credentials(Client, Input)
 describe_chap_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeChapCredentials">>, Input, Options).
+
+%% @doc Gets the file system association information.
+%%
+%% This operation is only supported for FSx File Gateways.
+describe_file_system_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_file_system_associations(Client, Input, []).
+describe_file_system_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeFileSystemAssociations">>, Input, Options).
 
 %% @doc Returns metadata about a gateway such as its name, network
 %% interfaces, configured time zone, and the state (whether the gateway is
@@ -850,9 +887,9 @@ describe_maintenance_start_time(Client, Input, Options)
     request(Client, <<"DescribeMaintenanceStartTime">>, Input, Options).
 
 %% @doc Gets a description for one or more Network File System (NFS) file
-%% shares from a file gateway.
+%% shares from an S3 File Gateway.
 %%
-%% This operation is only supported for file gateways.
+%% This operation is only supported for S3 File Gateways.
 describe_nfs_file_shares(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_nfs_file_shares(Client, Input, []).
@@ -861,9 +898,9 @@ describe_nfs_file_shares(Client, Input, Options)
     request(Client, <<"DescribeNFSFileShares">>, Input, Options).
 
 %% @doc Gets a description for one or more Server Message Block (SMB) file
-%% shares from a file gateway.
+%% shares from a S3 File Gateway.
 %%
-%% This operation is only supported for file gateways.
+%% This operation is only supported for S3 File Gateways.
 describe_smb_file_shares(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_smb_file_shares(Client, Input, []).
@@ -898,9 +935,8 @@ describe_snapshot_schedule(Client, Input, Options)
 %% request.
 %%
 %% The list of gateway volumes in the request must be from one gateway. In
-%% the response, AWS Storage Gateway returns volume information sorted by
-%% volume ARNs. This operation is only supported in stored volume gateway
-%% type.
+%% the response, Storage Gateway returns volume information sorted by volume
+%% ARNs. This operation is only supported in stored volume gateway type.
 describe_stored_iscsi_volumes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stored_iscsi_volumes(Client, Input, []).
@@ -913,7 +949,7 @@ describe_stored_iscsi_volumes(Client, Input, Options)
 %%
 %% This operation is only supported in the tape gateway type.
 %%
-%% If a specific `TapeARN' is not specified, AWS Storage Gateway returns a
+%% If a specific `TapeARN' is not specified, Storage Gateway returns a
 %% description of all virtual tapes found in the VTS associated with your
 %% account.
 describe_tape_archives(Client, Input)
@@ -967,7 +1003,7 @@ describe_upload_buffer(Client, Input, Options)
 %% @doc Returns a description of virtual tape library (VTL) devices for the
 %% specified tape gateway.
 %%
-%% In the response, AWS Storage Gateway returns VTL device information.
+%% In the response, Storage Gateway returns VTL device information.
 %%
 %% This operation is only supported in the tape gateway type.
 describe_vtl_devices(Client, Input)
@@ -1027,6 +1063,18 @@ disable_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableGateway">>, Input, Options).
 
+%% @doc Disassociates an Amazon FSx file system from the specified gateway.
+%%
+%% After the disassociation process finishes, the gateway can no longer
+%% access the Amazon FSx file system. This operation is only supported in the
+%% FSx File Gateway type.
+disassociate_file_system(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_file_system(Client, Input, []).
+disassociate_file_system(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateFileSystem">>, Input, Options).
+
 %% @doc Adds a file gateway to an Active Directory domain.
 %%
 %% This operation is only supported for file gateways that support the SMB
@@ -1051,10 +1099,10 @@ list_automatic_tape_creation_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAutomaticTapeCreationPolicies">>, Input, Options).
 
-%% @doc Gets a list of the file shares for a specific file gateway, or the
+%% @doc Gets a list of the file shares for a specific S3 File Gateway, or the
 %% list of file shares that belong to the calling user account.
 %%
-%% This operation is only supported for file gateways.
+%% This operation is only supported for S3 File Gateways.
 list_file_shares(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_file_shares(Client, Input, []).
@@ -1062,8 +1110,19 @@ list_file_shares(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFileShares">>, Input, Options).
 
-%% @doc Lists gateways owned by an AWS account in an AWS Region specified in
-%% the request.
+%% @doc Gets a list of `FileSystemAssociationSummary' objects.
+%%
+%% Each object contains a summary of a file system association. This
+%% operation is only supported for FSx File Gateways.
+list_file_system_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_file_system_associations(Client, Input, []).
+list_file_system_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFileSystemAssociations">>, Input, Options).
+
+%% @doc Lists gateways owned by an Amazon Web Services account in an Amazon
+%% Web Services Region specified in the request.
 %%
 %% The returned list is ordered by gateway Amazon Resource Name (ARN).
 %%
@@ -1200,17 +1259,17 @@ list_volumes(Client, Input, Options)
 %% @doc Sends you notification through CloudWatch Events when all files
 %% written to your file share have been uploaded to Amazon S3.
 %%
-%% AWS Storage Gateway can send a notification through Amazon CloudWatch
-%% Events when all files written to your file share up to that point in time
-%% have been uploaded to Amazon S3. These files include files written to the
-%% file share up to the time that you make a request for notification. When
-%% the upload is done, Storage Gateway sends you notification through an
-%% Amazon CloudWatch Event. You can configure CloudWatch Events to send the
-%% notification through event targets such as Amazon SNS or AWS Lambda
-%% function. This operation is only supported for file gateways.
+%% Storage Gateway can send a notification through Amazon CloudWatch Events
+%% when all files written to your file share up to that point in time have
+%% been uploaded to Amazon S3. These files include files written to the file
+%% share up to the time that you make a request for notification. When the
+%% upload is done, Storage Gateway sends you notification through an Amazon
+%% CloudWatch Event. You can configure CloudWatch Events to send the
+%% notification through event targets such as Amazon SNS or Lambda function.
+%% This operation is only supported for S3 File Gateways.
 %%
-%% For more information, see Getting file upload notification in the AWS
-%% Storage Gateway User Guide.
+%% For more information, see Getting file upload notification in the Storage
+%% Gateway User Guide.
 notify_when_uploaded(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_when_uploaded(Client, Input, []).
@@ -1218,36 +1277,41 @@ notify_when_uploaded(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"NotifyWhenUploaded">>, Input, Options).
 
-%% @doc Refreshes the cache for the specified file share.
+%% @doc Refreshes the cached inventory of objects for the specified file
+%% share.
 %%
 %% This operation finds objects in the Amazon S3 bucket that were added,
 %% removed, or replaced since the gateway last listed the bucket's contents
-%% and cached the results. This operation is only supported in the file
-%% gateway type. You can subscribe to be notified through an Amazon
-%% CloudWatch event when your RefreshCache operation completes. For more
-%% information, see Getting notified about file operations in the AWS Storage
-%% Gateway User Guide.
+%% and cached the results. This operation does not import files into the S3
+%% File Gateway cache storage. It only updates the cached inventory to
+%% reflect changes in the inventory of the objects in the S3 bucket. This
+%% operation is only supported in the S3 File Gateway types.
+%%
+%% You can subscribe to be notified through an Amazon CloudWatch event when
+%% your `RefreshCache' operation completes. For more information, see Getting
+%% notified about file operations in the Storage Gateway User Guide. This
+%% operation is Only supported for S3 File Gateways.
 %%
 %% When this API is called, it only initiates the refresh operation. When the
 %% API call completes and returns a success code, it doesn't necessarily mean
 %% that the file refresh has completed. You should use the refresh-complete
 %% notification to determine that the operation has completed before you
 %% check for new files on the gateway file share. You can subscribe to be
-%% notified through an CloudWatch event when your `RefreshCache' operation
+%% notified through a CloudWatch event when your `RefreshCache' operation
 %% completes.
 %%
-%% Throttle limit: This API is asynchronous so the gateway will accept no
+%% Throttle limit: This API is asynchronous, so the gateway will accept no
 %% more than two refreshes at any time. We recommend using the
 %% refresh-complete CloudWatch event notification before issuing additional
 %% requests. For more information, see Getting notified about file operations
-%% in the AWS Storage Gateway User Guide.
+%% in the Storage Gateway User Guide.
 %%
 %% If you invoke the RefreshCache API when two requests are already being
 %% processed, any new request will cause an `InvalidGatewayRequestException'
 %% error because too many requests were sent to the server.
 %%
 %% For more information, see Getting notified about file operations in the
-%% AWS Storage Gateway User Guide.
+%% Storage Gateway User Guide.
 refresh_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     refresh_cache(Client, Input, []).
@@ -1339,7 +1403,8 @@ set_local_console_password(Client, Input, Options)
 %% @doc Sets the password for the guest user `smbguest'.
 %%
 %% The `smbguest' user is the user when the authentication method for the
-%% file share is set to `GuestAccess'.
+%% file share is set to `GuestAccess'. This operation only supported for S3
+%% File Gateways
 set_smb_guest_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_smb_guest_password(Client, Input, []).
@@ -1481,6 +1546,16 @@ update_chap_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateChapCredentials">>, Input, Options).
 
+%% @doc Updates a file system association.
+%%
+%% This operation is only supported in the FSx File Gateways.
+update_file_system_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_file_system_association(Client, Input, []).
+update_file_system_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateFileSystemAssociation">>, Input, Options).
+
 %% @doc Updates a gateway's metadata, which includes the gateway's name and
 %% time zone.
 %%
@@ -1532,7 +1607,7 @@ update_maintenance_start_time(Client, Input, Options)
 
 %% @doc Updates a Network File System (NFS) file share.
 %%
-%% This operation is only supported in the file gateway type.
+%% This operation is only supported in S3 File Gateways.
 %%
 %% To leave a file share field unchanged, set the corresponding input field
 %% to null.
@@ -1559,17 +1634,19 @@ update_nfs_file_share(Client, Input, Options)
 
 %% @doc Updates a Server Message Block (SMB) file share.
 %%
-%% This operation is only supported for file gateways.
+%% This operation is only supported for S3 File Gateways.
 %%
 %% To leave a file share field unchanged, set the corresponding input field
 %% to null.
 %%
-%% File gateways require AWS Security Token Service (AWS STS) to be activated
-%% to enable you to create a file share. Make sure that AWS STS is activated
-%% in the AWS Region you are creating your file gateway in. If AWS STS is not
-%% activated in this AWS Region, activate it. For information about how to
-%% activate AWS STS, see Activating and deactivating AWS STS in an AWS Region
-%% in the AWS Identity and Access Management User Guide.
+%% File gateways require Security Token Service (Amazon Web Services STS) to
+%% be activated to enable you to create a file share. Make sure that Amazon
+%% Web Services STS is activated in the Amazon Web Services Region you are
+%% creating your file gateway in. If Amazon Web Services STS is not activated
+%% in this Amazon Web Services Region, activate it. For information about how
+%% to activate Amazon Web Services STS, see Activating and deactivating
+%% Amazon Web Services STS in an Amazon Web Services Region in the Identity
+%% and Access Management User Guide.
 %%
 %% File gateways don't support creating hard or symbolic links on a file
 %% share.
@@ -1580,14 +1657,25 @@ update_smb_file_share(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSMBFileShare">>, Input, Options).
 
-%% @doc Controls whether the shares on a gateway are visible in a net view or
-%% browse list.
+%% @doc Controls whether the shares on an S3 File Gateway are visible in a
+%% net view or browse list.
+%%
+%% The operation is only supported for S3 File Gateways.
 update_smb_file_share_visibility(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_smb_file_share_visibility(Client, Input, []).
 update_smb_file_share_visibility(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSMBFileShareVisibility">>, Input, Options).
+
+%% @doc Updates the list of Active Directory users and groups that have
+%% special permissions for SMB file shares on the gateway.
+update_smb_local_groups(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_smb_local_groups(Client, Input, []).
+update_smb_local_groups(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateSMBLocalGroups">>, Input, Options).
 
 %% @doc Updates the SMB security strategy on a file gateway.
 %%

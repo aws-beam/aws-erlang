@@ -4,16 +4,44 @@
 %% @doc Amazon Managed Service for Prometheus
 -module(aws_amp).
 
--export([create_workspace/2,
+-export([create_alert_manager_definition/3,
+         create_alert_manager_definition/4,
+         create_rule_groups_namespace/3,
+         create_rule_groups_namespace/4,
+         create_workspace/2,
          create_workspace/3,
+         delete_alert_manager_definition/3,
+         delete_alert_manager_definition/4,
+         delete_rule_groups_namespace/4,
+         delete_rule_groups_namespace/5,
          delete_workspace/3,
          delete_workspace/4,
+         describe_alert_manager_definition/2,
+         describe_alert_manager_definition/4,
+         describe_alert_manager_definition/5,
+         describe_rule_groups_namespace/3,
+         describe_rule_groups_namespace/5,
+         describe_rule_groups_namespace/6,
          describe_workspace/2,
          describe_workspace/4,
          describe_workspace/5,
+         list_rule_groups_namespaces/2,
+         list_rule_groups_namespaces/4,
+         list_rule_groups_namespaces/5,
+         list_tags_for_resource/2,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          list_workspaces/1,
          list_workspaces/3,
          list_workspaces/4,
+         put_alert_manager_definition/3,
+         put_alert_manager_definition/4,
+         put_rule_groups_namespace/4,
+         put_rule_groups_namespace/5,
+         tag_resource/3,
+         tag_resource/4,
+         untag_resource/3,
+         untag_resource/4,
          update_workspace_alias/3,
          update_workspace_alias/4]).
 
@@ -22,6 +50,52 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Create an alert manager definition.
+create_alert_manager_definition(Client, WorkspaceId, Input) ->
+    create_alert_manager_definition(Client, WorkspaceId, Input, []).
+create_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Create a rule group namespace.
+create_rule_groups_namespace(Client, WorkspaceId, Input) ->
+    create_rule_groups_namespace(Client, WorkspaceId, Input, []).
+create_rule_groups_namespace(Client, WorkspaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/rulegroupsnamespaces"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new AMP workspace.
 create_workspace(Client, Input) ->
@@ -44,6 +118,54 @@ create_workspace(Client, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an alert manager definition.
+delete_alert_manager_definition(Client, WorkspaceId, Input) ->
+    delete_alert_manager_definition(Client, WorkspaceId, Input, []).
+delete_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete a rule groups namespace.
+delete_rule_groups_namespace(Client, Name, WorkspaceId, Input) ->
+    delete_rule_groups_namespace(Client, Name, WorkspaceId, Input, []).
+delete_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/rulegroupsnamespaces/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an AMP workspace.
@@ -70,6 +192,52 @@ delete_workspace(Client, WorkspaceId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Describes an alert manager definition.
+describe_alert_manager_definition(Client, WorkspaceId)
+  when is_map(Client) ->
+    describe_alert_manager_definition(Client, WorkspaceId, #{}, #{}).
+
+describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap, []).
+
+describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describe a rule groups namespace.
+describe_rule_groups_namespace(Client, Name, WorkspaceId)
+  when is_map(Client) ->
+    describe_rule_groups_namespace(Client, Name, WorkspaceId, #{}, #{}).
+
+describe_rule_groups_namespace(Client, Name, WorkspaceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_rule_groups_namespace(Client, Name, WorkspaceId, QueryMap, HeadersMap, []).
+
+describe_rule_groups_namespace(Client, Name, WorkspaceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/rulegroupsnamespaces/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Describes an existing AMP workspace.
 describe_workspace(Client, WorkspaceId)
   when is_map(Client) ->
@@ -82,6 +250,58 @@ describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap)
 describe_workspace(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists rule groups namespaces.
+list_rule_groups_namespaces(Client, WorkspaceId)
+  when is_map(Client) ->
+    list_rule_groups_namespaces(Client, WorkspaceId, #{}, #{}).
+
+list_rule_groups_namespaces(Client, WorkspaceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_rule_groups_namespaces(Client, WorkspaceId, QueryMap, HeadersMap, []).
+
+list_rule_groups_namespaces(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/rulegroupsnamespaces"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the tags you have assigned to the resource.
+list_tags_for_resource(Client, ResourceArn)
+  when is_map(Client) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -122,6 +342,99 @@ list_workspaces(Client, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Update an alert manager definition.
+put_alert_manager_definition(Client, WorkspaceId, Input) ->
+    put_alert_manager_definition(Client, WorkspaceId, Input, []).
+put_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update a rule groups namespace.
+put_rule_groups_namespace(Client, Name, WorkspaceId, Input) ->
+    put_rule_groups_namespace(Client, Name, WorkspaceId, Input, []).
+put_rule_groups_namespace(Client, Name, WorkspaceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/rulegroupsnamespaces/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates tags for the specified resource.
+tag_resource(Client, ResourceArn, Input) ->
+    tag_resource(Client, ResourceArn, Input, []).
+tag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes tags from the specified resource.
+untag_resource(Client, ResourceArn, Input) ->
+    untag_resource(Client, ResourceArn, Input, []).
+untag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"tagKeys">>, <<"tagKeys">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an AMP workspace alias.
 update_workspace_alias(Client, WorkspaceId, Input) ->
@@ -181,6 +494,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

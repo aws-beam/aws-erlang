@@ -141,9 +141,9 @@ get_clip(Client, Input0, Options0) ->
 %% an encrypted session token) for the session's MPEG-DASH manifest (the root
 %% resource needed for streaming with MPEG-DASH).
 %%
-%% Don't share or store this token where an unauthorized entity could access
+%% Don't share or store this token where an unauthorized entity can access
 %% it. The token provides access to the content of the stream. Safeguard the
-%% token with the same measures that you would use with your AWS credentials.
+%% token with the same measures that you use with your AWS credentials.
 %%
 %% The media that is made available through the manifest consists only of the
 %% requested stream, time range, and format. No other media data (such as
@@ -189,23 +189,8 @@ get_clip(Client, Input0, Options0) ->
 %%
 %% Data retrieved with this action is billable. See Pricing for details.
 %%
-%% </li> </ul> </li> </ol> The following restrictions apply to MPEG-DASH
-%% sessions:
-%%
-%% A streaming session URL should not be shared between players. The service
-%% might throttle a session if multiple media players are sharing it. For
-%% connection limits, see Kinesis Video Streams Limits.
-%%
-%% A Kinesis video stream can have a maximum of ten active MPEG-DASH
-%% streaming sessions. If a new session is created when the maximum number of
-%% sessions is already active, the oldest (earliest created) session is
-%% closed. The number of active `GetMedia' connections on a Kinesis video
-%% stream does not count against this limit, and the number of active
-%% MPEG-DASH sessions does not count against the active `GetMedia' connection
-%% limit.
-%%
-%% The maximum limits for active HLS and MPEG-DASH streaming sessions are
-%% independent of each other.
+%% </li> </ul> </li> </ol> For restrictions that apply to MPEG-DASH sessions,
+%% see Kinesis Video Streams Limits.
 %%
 %% You can monitor the amount of data that the media player consumes by
 %% monitoring the `GetMP4MediaFragment.OutgoingBytes' Amazon CloudWatch
@@ -372,21 +357,9 @@ get_dash_streaming_session_url(Client, Input0, Options0) ->
 %% Data retrieved with this action is billable. For more information, see
 %% Kinesis Video Streams pricing.
 %%
-%% </li> </ul> </li> </ol> The following restrictions apply to HLS sessions:
-%%
-%% A streaming session URL should not be shared between players. The service
-%% might throttle a session if multiple media players are sharing it. For
-%% connection limits, see Kinesis Video Streams Limits.
-%%
-%% A Kinesis video stream can have a maximum of ten active HLS streaming
-%% sessions. If a new session is created when the maximum number of sessions
-%% is already active, the oldest (earliest created) session is closed. The
-%% number of active `GetMedia' connections on a Kinesis video stream does not
-%% count against this limit, and the number of active HLS sessions does not
-%% count against the active `GetMedia' connection limit.
-%%
-%% The maximum limits for active HLS and MPEG-DASH streaming sessions are
-%% independent of each other.
+%% </li> </ul> </li> </ol> A streaming session URL must not be shared between
+%% players. The service might throttle a session if multiple media players
+%% are sharing it. For connection limits, see Kinesis Video Streams Limits.
 %%
 %% You can monitor the amount of data that the media player consumes by
 %% monitoring the `GetMP4MediaFragment.OutgoingBytes' Amazon CloudWatch
@@ -444,18 +417,11 @@ get_hls_streaming_session_url(Client, Input0, Options0) ->
 %% send the `GetMediaForFragmentList' requests to this endpoint using the
 %% --endpoint-url parameter.
 %%
-%% The following limits apply when using the `GetMediaForFragmentList' API:
+%% For limits, see Kinesis Video Streams Limits.
 %%
-%% <ul> <li> A client can call `GetMediaForFragmentList' up to five times per
-%% second per stream.
-%%
-%% </li> <li> Kinesis Video Streams sends media data at a rate of up to 25
-%% megabytes per second (or 200 megabits per second) during a
-%% `GetMediaForFragmentList' session.
-%%
-%% </li> </ul> If an error is thrown after invoking a Kinesis Video Streams
-%% archived media API, in addition to the HTTP status code and the response
-%% body, it includes the following pieces of information:
+%% If an error is thrown after invoking a Kinesis Video Streams archived
+%% media API, in addition to the HTTP status code and the response body, it
+%% includes the following pieces of information:
 %%
 %% `x-amz-ErrorType' HTTP header – contains a more specific error type in
 %% addition to what the HTTP status code provides.
@@ -595,6 +561,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

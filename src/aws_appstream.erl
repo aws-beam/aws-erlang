@@ -47,6 +47,8 @@
          create_stack/3,
          create_streaming_url/2,
          create_streaming_url/3,
+         create_updated_image/2,
+         create_updated_image/3,
          create_usage_report_subscription/2,
          create_usage_report_subscription/3,
          create_user/2,
@@ -230,6 +232,19 @@ create_streaming_url(Client, Input)
 create_streaming_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStreamingURL">>, Input, Options).
+
+%% @doc Creates a new image with the latest Windows operating system updates,
+%% driver updates, and AppStream 2.0 agent software.
+%%
+%% For more information, see the "Update an Image by Using Managed AppStream
+%% 2.0 Image Updates" section in Administer Your AppStream 2.0 Images, in the
+%% Amazon AppStream 2.0 Administration Guide.
+create_updated_image(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_updated_image(Client, Input, []).
+create_updated_image(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateUpdatedImage">>, Input, Options).
 
 %% @doc Creates a usage report subscription.
 %%

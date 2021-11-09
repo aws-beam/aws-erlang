@@ -5,8 +5,9 @@
 %% resolution within the VPC from Route 53 Resolver.
 %%
 %% By default, Resolver answers DNS queries for VPC domain names such as
-%% domain names for EC2 instances or ELB load balancers. Resolver performs
-%% recursive lookups against public name servers for all other domain names.
+%% domain names for EC2 instances or Elastic Load Balancing load balancers.
+%% Resolver performs recursive lookups against public name servers for all
+%% other domain names.
 %%
 %% You can also configure DNS resolution between your VPC and your network
 %% over a Direct Connect or VPN connection:
@@ -15,10 +16,10 @@
 %%
 %% DNS resolvers on your network can forward DNS queries to Resolver in a
 %% specified VPC. This allows your DNS resolvers to easily resolve domain
-%% names for AWS resources such as EC2 instances or records in a Route 53
-%% private hosted zone. For more information, see How DNS Resolvers on Your
-%% Network Forward DNS Queries to Route 53 Resolver in the Amazon Route 53
-%% Developer Guide.
+%% names for Amazon Web Services resources such as EC2 instances or records
+%% in a Route 53 private hosted zone. For more information, see How DNS
+%% Resolvers on Your Network Forward DNS Queries to Route 53 Resolver in the
+%% Amazon Route 53 Developer Guide.
 %%
 %% Conditionally forward queries from a VPC to resolvers on your network
 %%
@@ -34,36 +35,64 @@
 %% Forwards DNS Queries from Your VPCs to Your Network in the Amazon Route 53
 %% Developer Guide.
 %%
-%% Like Amazon VPC, Resolver is regional. In each region where you have VPCs,
+%% Like Amazon VPC, Resolver is Regional. In each Region where you have VPCs,
 %% you can choose whether to forward queries from your VPCs to your network
 %% (outbound queries), from your network to your VPCs (inbound queries), or
 %% both.
 -module(aws_route53resolver).
 
--export([associate_resolver_endpoint_ip_address/2,
+-export([associate_firewall_rule_group/2,
+         associate_firewall_rule_group/3,
+         associate_resolver_endpoint_ip_address/2,
          associate_resolver_endpoint_ip_address/3,
          associate_resolver_query_log_config/2,
          associate_resolver_query_log_config/3,
          associate_resolver_rule/2,
          associate_resolver_rule/3,
+         create_firewall_domain_list/2,
+         create_firewall_domain_list/3,
+         create_firewall_rule/2,
+         create_firewall_rule/3,
+         create_firewall_rule_group/2,
+         create_firewall_rule_group/3,
          create_resolver_endpoint/2,
          create_resolver_endpoint/3,
          create_resolver_query_log_config/2,
          create_resolver_query_log_config/3,
          create_resolver_rule/2,
          create_resolver_rule/3,
+         delete_firewall_domain_list/2,
+         delete_firewall_domain_list/3,
+         delete_firewall_rule/2,
+         delete_firewall_rule/3,
+         delete_firewall_rule_group/2,
+         delete_firewall_rule_group/3,
          delete_resolver_endpoint/2,
          delete_resolver_endpoint/3,
          delete_resolver_query_log_config/2,
          delete_resolver_query_log_config/3,
          delete_resolver_rule/2,
          delete_resolver_rule/3,
+         disassociate_firewall_rule_group/2,
+         disassociate_firewall_rule_group/3,
          disassociate_resolver_endpoint_ip_address/2,
          disassociate_resolver_endpoint_ip_address/3,
          disassociate_resolver_query_log_config/2,
          disassociate_resolver_query_log_config/3,
          disassociate_resolver_rule/2,
          disassociate_resolver_rule/3,
+         get_firewall_config/2,
+         get_firewall_config/3,
+         get_firewall_domain_list/2,
+         get_firewall_domain_list/3,
+         get_firewall_rule_group/2,
+         get_firewall_rule_group/3,
+         get_firewall_rule_group_association/2,
+         get_firewall_rule_group_association/3,
+         get_firewall_rule_group_policy/2,
+         get_firewall_rule_group_policy/3,
+         get_resolver_config/2,
+         get_resolver_config/3,
          get_resolver_dnssec_config/2,
          get_resolver_dnssec_config/3,
          get_resolver_endpoint/2,
@@ -80,6 +109,22 @@
          get_resolver_rule_association/3,
          get_resolver_rule_policy/2,
          get_resolver_rule_policy/3,
+         import_firewall_domains/2,
+         import_firewall_domains/3,
+         list_firewall_configs/2,
+         list_firewall_configs/3,
+         list_firewall_domain_lists/2,
+         list_firewall_domain_lists/3,
+         list_firewall_domains/2,
+         list_firewall_domains/3,
+         list_firewall_rule_group_associations/2,
+         list_firewall_rule_group_associations/3,
+         list_firewall_rule_groups/2,
+         list_firewall_rule_groups/3,
+         list_firewall_rules/2,
+         list_firewall_rules/3,
+         list_resolver_configs/2,
+         list_resolver_configs/3,
          list_resolver_dnssec_configs/2,
          list_resolver_dnssec_configs/3,
          list_resolver_endpoint_ip_addresses/2,
@@ -96,6 +141,8 @@
          list_resolver_rules/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         put_firewall_rule_group_policy/2,
+         put_firewall_rule_group_policy/3,
          put_resolver_query_log_config_policy/2,
          put_resolver_query_log_config_policy/3,
          put_resolver_rule_policy/2,
@@ -104,6 +151,16 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_firewall_config/2,
+         update_firewall_config/3,
+         update_firewall_domains/2,
+         update_firewall_domains/3,
+         update_firewall_rule/2,
+         update_firewall_rule/3,
+         update_firewall_rule_group_association/2,
+         update_firewall_rule_group_association/3,
+         update_resolver_config/2,
+         update_resolver_config/3,
          update_resolver_dnssec_config/2,
          update_resolver_dnssec_config/3,
          update_resolver_endpoint/2,
@@ -116,6 +173,15 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Associates a `FirewallRuleGroup' with a VPC, to provide DNS filtering
+%% for the VPC.
+associate_firewall_rule_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_firewall_rule_group(Client, Input, []).
+associate_firewall_rule_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateFirewallRuleGroup">>, Input, Options).
 
 %% @doc Adds IP addresses to an inbound or an outbound Resolver endpoint.
 %%
@@ -165,6 +231,38 @@ associate_resolver_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateResolverRule">>, Input, Options).
 
+%% @doc Creates an empty firewall domain list for use in DNS Firewall rules.
+%%
+%% You can populate the domains for the new list with a file, using
+%% `ImportFirewallDomains', or with domain strings, using
+%% `UpdateFirewallDomains'.
+create_firewall_domain_list(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_firewall_domain_list(Client, Input, []).
+create_firewall_domain_list(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateFirewallDomainList">>, Input, Options).
+
+%% @doc Creates a single DNS Firewall rule in the specified rule group, using
+%% the specified domain list.
+create_firewall_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_firewall_rule(Client, Input, []).
+create_firewall_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateFirewallRule">>, Input, Options).
+
+%% @doc Creates an empty DNS Firewall rule group for filtering DNS network
+%% traffic in a VPC.
+%%
+%% You can add rules to the new rule group by calling `CreateFirewallRule'.
+create_firewall_rule_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_firewall_rule_group(Client, Input, []).
+create_firewall_rule_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateFirewallRuleGroup">>, Input, Options).
+
 %% @doc Creates a Resolver endpoint.
 %%
 %% There are two types of Resolver endpoints, inbound and outbound:
@@ -193,10 +291,10 @@ create_resolver_endpoint(Client, Input, Options)
 %% `AssociateResolverQueryLogConfig'. For more information, see
 %% AssociateResolverQueryLogConfig.
 %%
-%% You can optionally use AWS Resource Access Manager (AWS RAM) to share a
-%% query logging configuration with other AWS accounts. The other accounts
-%% can then associate VPCs with the configuration. The query logs that
-%% Resolver creates for a configuration include all DNS queries that
+%% You can optionally use Resource Access Manager (RAM) to share a query
+%% logging configuration with other Amazon Web Services accounts. The other
+%% accounts can then associate VPCs with the configuration. The query logs
+%% that Resolver creates for a configuration include all DNS queries that
 %% originate in all VPCs that are associated with the configuration.
 create_resolver_query_log_config(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -215,6 +313,30 @@ create_resolver_rule(Client, Input)
 create_resolver_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateResolverRule">>, Input, Options).
+
+%% @doc Deletes the specified domain list.
+delete_firewall_domain_list(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_firewall_domain_list(Client, Input, []).
+delete_firewall_domain_list(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteFirewallDomainList">>, Input, Options).
+
+%% @doc Deletes the specified firewall rule.
+delete_firewall_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_firewall_rule(Client, Input, []).
+delete_firewall_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteFirewallRule">>, Input, Options).
+
+%% @doc Deletes the specified firewall rule group.
+delete_firewall_rule_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_firewall_rule_group(Client, Input, []).
+delete_firewall_rule_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteFirewallRuleGroup">>, Input, Options).
 
 %% @doc Deletes a Resolver endpoint.
 %%
@@ -239,9 +361,9 @@ delete_resolver_endpoint(Client, Input, Options)
 %%
 %% When you delete a configuration, Resolver stops logging DNS queries for
 %% all of the Amazon VPCs that are associated with the configuration. This
-%% also applies if the query logging configuration is shared with other AWS
-%% accounts, and the other accounts have associated VPCs with the shared
-%% configuration.
+%% also applies if the query logging configuration is shared with other
+%% Amazon Web Services accounts, and the other accounts have associated VPCs
+%% with the shared configuration.
 %%
 %% Before you can delete a query logging configuration, you must first
 %% disassociate all VPCs from the configuration. See
@@ -272,6 +394,15 @@ delete_resolver_rule(Client, Input)
 delete_resolver_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResolverRule">>, Input, Options).
+
+%% @doc Disassociates a `FirewallRuleGroup' from a VPC, to remove DNS
+%% filtering from the VPC.
+disassociate_firewall_rule_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_firewall_rule_group(Client, Input, []).
+disassociate_firewall_rule_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateFirewallRuleGroup">>, Input, Options).
 
 %% @doc Removes IP addresses from an inbound or an outbound Resolver
 %% endpoint.
@@ -318,6 +449,64 @@ disassociate_resolver_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateResolverRule">>, Input, Options).
 
+%% @doc Retrieves the configuration of the firewall behavior provided by DNS
+%% Firewall for a single VPC from Amazon Virtual Private Cloud (Amazon VPC).
+get_firewall_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_firewall_config(Client, Input, []).
+get_firewall_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetFirewallConfig">>, Input, Options).
+
+%% @doc Retrieves the specified firewall domain list.
+get_firewall_domain_list(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_firewall_domain_list(Client, Input, []).
+get_firewall_domain_list(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetFirewallDomainList">>, Input, Options).
+
+%% @doc Retrieves the specified firewall rule group.
+get_firewall_rule_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_firewall_rule_group(Client, Input, []).
+get_firewall_rule_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetFirewallRuleGroup">>, Input, Options).
+
+%% @doc Retrieves a firewall rule group association, which enables DNS
+%% filtering for a VPC with one rule group.
+%%
+%% A VPC can have more than one firewall rule group association, and a rule
+%% group can be associated with more than one VPC.
+get_firewall_rule_group_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_firewall_rule_group_association(Client, Input, []).
+get_firewall_rule_group_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetFirewallRuleGroupAssociation">>, Input, Options).
+
+%% @doc Returns the Identity and Access Management (Amazon Web Services IAM)
+%% policy for sharing the specified rule group.
+%%
+%% You can use the policy to share the rule group using Resource Access
+%% Manager (RAM).
+get_firewall_rule_group_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_firewall_rule_group_policy(Client, Input, []).
+get_firewall_rule_group_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetFirewallRuleGroupPolicy">>, Input, Options).
+
+%% @doc Retrieves the behavior configuration of Route 53 Resolver behavior
+%% for a single VPC from Amazon Virtual Private Cloud.
+get_resolver_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_resolver_config(Client, Input, []).
+get_resolver_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetResolverConfig">>, Input, Options).
+
 %% @doc Gets DNSSEC validation information for a specified resource.
 get_resolver_dnssec_config(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -361,7 +550,8 @@ get_resolver_query_log_config_association(Client, Input, Options)
 %% @doc Gets information about a query logging policy.
 %%
 %% A query logging policy specifies the Resolver query logging operations and
-%% resources that you want to allow another AWS account to be able to use.
+%% resources that you want to allow another Amazon Web Services account to be
+%% able to use.
 get_resolver_query_log_config_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resolver_query_log_config_policy(Client, Input, []).
@@ -402,8 +592,120 @@ get_resolver_rule_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResolverRulePolicy">>, Input, Options).
 
+%% @doc Imports domain names from a file into a domain list, for use in a DNS
+%% firewall rule group.
+%%
+%% Each domain specification in your domain list must satisfy the following
+%% requirements:
+%%
+%% <ul> <li> It can optionally start with `*' (asterisk).
+%%
+%% </li> <li> With the exception of the optional starting asterisk, it must
+%% only contain the following characters: `A-Z', `a-z', `0-9', `-' (hyphen).
+%%
+%% </li> <li> It must be from 1-255 characters in length.
+%%
+%% </li> </ul>
+import_firewall_domains(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    import_firewall_domains(Client, Input, []).
+import_firewall_domains(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ImportFirewallDomains">>, Input, Options).
+
+%% @doc Retrieves the firewall configurations that you have defined.
+%%
+%% DNS Firewall uses the configurations to manage firewall behavior for your
+%% VPCs.
+%%
+%% A single call might return only a partial list of the configurations. For
+%% information, see `MaxResults'.
+list_firewall_configs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_firewall_configs(Client, Input, []).
+list_firewall_configs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFirewallConfigs">>, Input, Options).
+
+%% @doc Retrieves the firewall domain lists that you have defined.
+%%
+%% For each firewall domain list, you can retrieve the domains that are
+%% defined for a list by calling `ListFirewallDomains'.
+%%
+%% A single call to this list operation might return only a partial list of
+%% the domain lists. For information, see `MaxResults'.
+list_firewall_domain_lists(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_firewall_domain_lists(Client, Input, []).
+list_firewall_domain_lists(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFirewallDomainLists">>, Input, Options).
+
+%% @doc Retrieves the domains that you have defined for the specified
+%% firewall domain list.
+%%
+%% A single call might return only a partial list of the domains. For
+%% information, see `MaxResults'.
+list_firewall_domains(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_firewall_domains(Client, Input, []).
+list_firewall_domains(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFirewallDomains">>, Input, Options).
+
+%% @doc Retrieves the firewall rule group associations that you have defined.
+%%
+%% Each association enables DNS filtering for a VPC with one rule group.
+%%
+%% A single call might return only a partial list of the associations. For
+%% information, see `MaxResults'.
+list_firewall_rule_group_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_firewall_rule_group_associations(Client, Input, []).
+list_firewall_rule_group_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFirewallRuleGroupAssociations">>, Input, Options).
+
+%% @doc Retrieves the minimal high-level information for the rule groups that
+%% you have defined.
+%%
+%% A single call might return only a partial list of the rule groups. For
+%% information, see `MaxResults'.
+list_firewall_rule_groups(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_firewall_rule_groups(Client, Input, []).
+list_firewall_rule_groups(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFirewallRuleGroups">>, Input, Options).
+
+%% @doc Retrieves the firewall rules that you have defined for the specified
+%% firewall rule group.
+%%
+%% DNS Firewall uses the rules in a rule group to filter DNS network traffic
+%% for a VPC.
+%%
+%% A single call might return only a partial list of the rules. For
+%% information, see `MaxResults'.
+list_firewall_rules(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_firewall_rules(Client, Input, []).
+list_firewall_rules(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFirewallRules">>, Input, Options).
+
+%% @doc Retrieves the Resolver configurations that you have defined.
+%%
+%% Route 53 Resolver uses the configurations to manage DNS resolution
+%% behavior for your VPCs.
+list_resolver_configs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_resolver_configs(Client, Input, []).
+list_resolver_configs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListResolverConfigs">>, Input, Options).
+
 %% @doc Lists the configurations for DNSSEC validation that are associated
-%% with the current AWS account.
+%% with the current Amazon Web Services account.
 list_resolver_dnssec_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resolver_dnssec_configs(Client, Input, []).
@@ -420,7 +722,7 @@ list_resolver_endpoint_ip_addresses(Client, Input, Options)
     request(Client, <<"ListResolverEndpointIpAddresses">>, Input, Options).
 
 %% @doc Lists all the Resolver endpoints that were created using the current
-%% AWS account.
+%% Amazon Web Services account.
 list_resolver_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resolver_endpoints(Client, Input, []).
@@ -449,7 +751,7 @@ list_resolver_query_log_configs(Client, Input, Options)
     request(Client, <<"ListResolverQueryLogConfigs">>, Input, Options).
 
 %% @doc Lists the associations that were created between Resolver rules and
-%% VPCs using the current AWS account.
+%% VPCs using the current Amazon Web Services account.
 list_resolver_rule_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resolver_rule_associations(Client, Input, []).
@@ -457,8 +759,8 @@ list_resolver_rule_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResolverRuleAssociations">>, Input, Options).
 
-%% @doc Lists the Resolver rules that were created using the current AWS
-%% account.
+%% @doc Lists the Resolver rules that were created using the current Amazon
+%% Web Services account.
 list_resolver_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resolver_rules(Client, Input, []).
@@ -474,10 +776,22 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Specifies an AWS account that you want to share a query logging
-%% configuration with, the query logging configuration that you want to
-%% share, and the operations that you want the account to be able to perform
-%% on the configuration.
+%% @doc Attaches an Identity and Access Management (Amazon Web Services IAM)
+%% policy for sharing the rule group.
+%%
+%% You can use the policy to share the rule group using Resource Access
+%% Manager (RAM).
+put_firewall_rule_group_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_firewall_rule_group_policy(Client, Input, []).
+put_firewall_rule_group_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutFirewallRuleGroupPolicy">>, Input, Options).
+
+%% @doc Specifies an Amazon Web Services account that you want to share a
+%% query logging configuration with, the query logging configuration that you
+%% want to share, and the operations that you want the account to be able to
+%% perform on the configuration.
 put_resolver_query_log_config_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resolver_query_log_config_policy(Client, Input, []).
@@ -485,9 +799,9 @@ put_resolver_query_log_config_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResolverQueryLogConfigPolicy">>, Input, Options).
 
-%% @doc Specifies an AWS rule that you want to share with another account,
-%% the account that you want to share the rule with, and the operations that
-%% you want the account to be able to perform on the rule.
+%% @doc Specifies an Amazon Web Services rule that you want to share with
+%% another account, the account that you want to share the rule with, and the
+%% operations that you want the account to be able to perform on the rule.
 put_resolver_rule_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resolver_rule_policy(Client, Input, []).
@@ -510,6 +824,51 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates the configuration of the firewall behavior provided by DNS
+%% Firewall for a single VPC from Amazon Virtual Private Cloud (Amazon VPC).
+update_firewall_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_firewall_config(Client, Input, []).
+update_firewall_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateFirewallConfig">>, Input, Options).
+
+%% @doc Updates the firewall domain list from an array of domain
+%% specifications.
+update_firewall_domains(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_firewall_domains(Client, Input, []).
+update_firewall_domains(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateFirewallDomains">>, Input, Options).
+
+%% @doc Updates the specified firewall rule.
+update_firewall_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_firewall_rule(Client, Input, []).
+update_firewall_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateFirewallRule">>, Input, Options).
+
+%% @doc Changes the association of a `FirewallRuleGroup' with a VPC.
+%%
+%% The association enables DNS filtering for the VPC.
+update_firewall_rule_group_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_firewall_rule_group_association(Client, Input, []).
+update_firewall_rule_group_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateFirewallRuleGroupAssociation">>, Input, Options).
+
+%% @doc Updates the behavior configuration of Route 53 Resolver behavior for
+%% a single VPC from Amazon Virtual Private Cloud.
+update_resolver_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_resolver_config(Client, Input, []).
+update_resolver_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateResolverConfig">>, Input, Options).
 
 %% @doc Updates an existing DNSSEC validation configuration.
 %%

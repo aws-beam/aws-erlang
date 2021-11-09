@@ -2,11 +2,11 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc You can use Amazon CloudWatch Logs to monitor, store, and access your
-%% log files from EC2 instances, AWS CloudTrail, or other sources.
+%% log files from EC2 instances, CloudTrail, and other sources.
 %%
 %% You can then retrieve the associated log data from CloudWatch Logs using
-%% the CloudWatch console, CloudWatch Logs commands in the AWS CLI,
-%% CloudWatch Logs API, or CloudWatch Logs SDK.
+%% the CloudWatch console, CloudWatch Logs commands in the Amazon Web
+%% Services CLI, CloudWatch Logs API, or CloudWatch Logs SDK.
 %%
 %% You can use CloudWatch Logs to:
 %%
@@ -22,7 +22,7 @@
 %% an Apache access log). When the term you are searching for is found,
 %% CloudWatch Logs reports the data to a CloudWatch metric that you specify.
 %%
-%% </li> <li> Monitor AWS CloudTrail logged events: You can create alarms in
+%% </li> <li> Monitor CloudTrail logged events: You can create alarms in
 %% CloudWatch and receive notifications of particular API activity as
 %% captured by CloudTrail. You can use the notification to perform
 %% troubleshooting.
@@ -128,15 +128,15 @@
 %% API
 %%====================================================================
 
-%% @doc Associates the specified AWS Key Management Service (AWS KMS)
-%% customer master key (CMK) with the specified log group.
+%% @doc Associates the specified Key Management Service customer master key
+%% (CMK) with the specified log group.
 %%
-%% Associating an AWS KMS CMK with a log group overrides any existing
+%% Associating an KMS CMK with a log group overrides any existing
 %% associations between the log group and a CMK. After a CMK is associated
 %% with a log group, all newly ingested data for the log group is encrypted
 %% using the CMK. This association is stored as long as the data encrypted
-%% with the CMK is still within Amazon CloudWatch Logs. This enables Amazon
-%% CloudWatch Logs to decrypt this data whenever it is requested.
+%% with the CMK is still within CloudWatch Logs. This enables CloudWatch Logs
+%% to decrypt this data whenever it is requested.
 %%
 %% CloudWatch Logs supports only symmetric CMKs. Do not use an associate an
 %% asymmetric CMK with your log group. For more information, see Using
@@ -198,8 +198,8 @@ create_export_task(Client, Input, Options)
 %%
 %% You must use the following guidelines when naming a log group:
 %%
-%% <ul> <li> Log group names must be unique within a region for an AWS
-%% account.
+%% <ul> <li> Log group names must be unique within a region for an Amazon Web
+%% Services account.
 %%
 %% </li> <li> Log group names can be between 1 and 512 characters long.
 %%
@@ -211,11 +211,11 @@ create_export_task(Client, Input, Options)
 %% log group never expire. To set a retention policy so that events expire
 %% and are deleted after a specified time, use PutRetentionPolicy.
 %%
-%% If you associate a AWS Key Management Service (AWS KMS) customer master
-%% key (CMK) with the log group, ingested data is encrypted using the CMK.
-%% This association is stored as long as the data encrypted with the CMK is
-%% still within Amazon CloudWatch Logs. This enables Amazon CloudWatch Logs
-%% to decrypt this data whenever it is requested.
+%% If you associate a Key Management Service customer master key (CMK) with
+%% the log group, ingested data is encrypted using the CMK. This association
+%% is stored as long as the data encrypted with the CMK is still within
+%% CloudWatch Logs. This enables CloudWatch Logs to decrypt this data
+%% whenever it is requested.
 %%
 %% If you attempt to associate a CMK with the log group but the CMK does not
 %% exist or the CMK is disabled, you receive an `InvalidParameterException'
@@ -366,6 +366,13 @@ describe_export_tasks(Client, Input, Options)
 %%
 %% You can list all your log groups or filter the results by prefix. The
 %% results are ASCII-sorted by log group name.
+%%
+%% CloudWatch Logs doesn’t support IAM policies that control access to the
+%% `DescribeLogGroups' action by using the `aws:ResourceTag/key-name '
+%% condition key. Other CloudWatch Logs actions do support the use of the
+%% `aws:ResourceTag/key-name ' condition key to control access. For more
+%% information about using tags to control access, see Controlling access to
+%% Amazon Web Services resources using tags.
 describe_log_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_log_groups(Client, Input, []).
@@ -443,13 +450,13 @@ describe_subscription_filters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSubscriptionFilters">>, Input, Options).
 
-%% @doc Disassociates the associated AWS Key Management Service (AWS KMS)
-%% customer master key (CMK) from the specified log group.
+%% @doc Disassociates the associated Key Management Service customer master
+%% key (CMK) from the specified log group.
 %%
-%% After the AWS KMS CMK is disassociated from the log group, AWS CloudWatch
-%% Logs stops encrypting newly ingested data for the log group. All
-%% previously ingested data remains encrypted, and AWS CloudWatch Logs
-%% requires permissions for the CMK whenever the encrypted data is requested.
+%% After the KMS CMK is disassociated from the log group, CloudWatch Logs
+%% stops encrypting newly ingested data for the log group. All previously
+%% ingested data remains encrypted, and CloudWatch Logs requires permissions
+%% for the CMK whenever the encrypted data is requested.
 %%
 %% Note that it can take up to 5 minutes for this operation to take effect.
 disassociate_kms_key(Client, Input)
@@ -588,6 +595,11 @@ put_destination(Client, Input, Options)
 %%
 %% An access policy is an IAM policy document that is used to authorize
 %% claims to register a subscription filter against a given destination.
+%%
+%% If multiple Amazon Web Services accounts are sending logs to this
+%% destination, each sender account must be listed separately in the policy.
+%% The policy does not support specifying `*' as the Principal or the use of
+%% the `aws:PrincipalOrgId' global key.
 put_destination_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_destination_policy(Client, Input, []).
@@ -619,9 +631,10 @@ put_destination_policy(Client, Input, Options)
 %%
 %% </li> <li> The log events in the batch must be in chronological order by
 %% their timestamp. The timestamp is the time the event occurred, expressed
-%% as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. (In AWS
-%% Tools for PowerShell and the AWS SDK for .NET, the timestamp is specified
-%% in .NET format: yyyy-mm-ddThh:mm:ss. For example, 2017-09-15T13:45:30.)
+%% as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. (In Amazon
+%% Web Services Tools for PowerShell and the Amazon Web Services SDK for
+%% .NET, the timestamp is specified in .NET format: yyyy-mm-ddThh:mm:ss. For
+%% example, 2017-09-15T13:45:30.)
 %%
 %% </li> <li> A batch of log events in a single request cannot span more than
 %% 24 hours. Otherwise, the operation fails.
@@ -632,8 +645,8 @@ put_destination_policy(Client, Input, Options)
 %% Additional requests are throttled. This quota can't be changed.
 %%
 %% </li> </ul> If a call to `PutLogEvents' returns
-%% "UnrecognizedClientException" the most likely cause is an invalid AWS
-%% access key ID or secret key.
+%% "UnrecognizedClientException" the most likely cause is an invalid Amazon
+%% Web Services access key ID or secret key.
 put_log_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_log_events(Client, Input, []).
@@ -649,6 +662,23 @@ put_log_events(Client, Input, Options)
 %%
 %% The maximum number of metric filters that can be associated with a log
 %% group is 100.
+%%
+%% When you create a metric filter, you can also optionally assign a unit and
+%% dimensions to the metric that is created.
+%%
+%% Metrics extracted from log events are charged as custom metrics. To
+%% prevent unexpected high charges, do not specify high-cardinality fields
+%% such as `IPAddress' or `requestID' as dimensions. Each different value
+%% found for a dimension is treated as a separate metric and accrues charges
+%% as a separate custom metric.
+%%
+%% To help prevent accidental high charges, Amazon disables a metric filter
+%% if it generates 1000 different name/value pairs for the dimensions that
+%% you have specified within a certain amount of time.
+%%
+%% You can also set up a billing alarm to alert you if your charges are
+%% higher than expected. For more information, see Creating a Billing Alarm
+%% to Monitor Your Estimated Amazon Web Services Charges.
 put_metric_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_metric_filter(Client, Input, []).
@@ -678,10 +708,12 @@ put_query_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutQueryDefinition">>, Input, Options).
 
-%% @doc Creates or updates a resource policy allowing other AWS services to
-%% put log events to this account, such as Amazon Route 53.
+%% @doc Creates or updates a resource policy allowing other Amazon Web
+%% Services services to put log events to this account, such as Amazon Route
+%% 53.
 %%
-%% An account can have up to 10 resource policies per AWS Region.
+%% An account can have up to 10 resource policies per Amazon Web Services
+%% Region.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
@@ -719,13 +751,12 @@ put_retention_policy(Client, Input, Options)
 %% </li> <li> An Amazon Kinesis Firehose delivery stream that belongs to the
 %% same account as the subscription filter, for same-account delivery.
 %%
-%% </li> <li> An AWS Lambda function that belongs to the same account as the
+%% </li> <li> An Lambda function that belongs to the same account as the
 %% subscription filter, for same-account delivery.
 %%
-%% </li> </ul> There can only be one subscription filter associated with a
-%% log group. If you are updating an existing filter, you must specify the
-%% correct name in `filterName'. Otherwise, the call fails because you cannot
-%% associate a second filter with a log group.
+%% </li> </ul> Each log group can have up to two subscription filters
+%% associated with it. If you are updating an existing filter, you must
+%% specify the correct name in `filterName'.
 %%
 %% To perform a `PutSubscriptionFilter' operation, you must also have the
 %% `iam:PassRole' permission.
@@ -771,6 +802,12 @@ stop_query(Client, Input, Options)
 %%
 %% For more information about tags, see Tag Log Groups in Amazon CloudWatch
 %% Logs in the Amazon CloudWatch Logs User Guide.
+%%
+%% CloudWatch Logs doesn’t support IAM policies that prevent users from
+%% assigning specified tags to log groups using the `aws:Resource/key-name '
+%% or `aws:TagKeys' condition keys. For more information about using tags to
+%% control access, see Controlling access to Amazon Web Services resources
+%% using tags.
 tag_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_log_group(Client, Input, []).
@@ -794,6 +831,10 @@ test_metric_filter(Client, Input, Options)
 %%
 %% To list the tags for a log group, use ListTagsLogGroup. To add tags, use
 %% TagLogGroup.
+%%
+%% CloudWatch Logs doesn’t support IAM policies that prevent users from
+%% assigning specified tags to log groups using the `aws:Resource/key-name '
+%% or `aws:TagKeys' condition keys.
 untag_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_log_group(Client, Input, []).

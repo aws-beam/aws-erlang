@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Glue DataBrew is a visual, cloud-scale data-preparation service.
+%% @doc Glue DataBrew is a visual, cloud-scale data-preparation service.
 %%
 %% DataBrew simplifies data preparation tasks, targeting data issues that are
 %% hard to spot and time-consuming to fix. DataBrew empowers users of all
@@ -252,7 +252,7 @@ create_recipe(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new job to transform input data, using steps defined in an
-%% existing AWS Glue DataBrew recipe
+%% existing Glue DataBrew recipe
 create_recipe_job(Client, Input) ->
     create_recipe_job(Client, Input, []).
 create_recipe_job(Client, Input0, Options0) ->
@@ -1122,6 +1122,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

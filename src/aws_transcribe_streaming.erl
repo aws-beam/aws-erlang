@@ -79,10 +79,11 @@ start_medical_stream_transcription(Client, Input0, Options0) ->
         Result
     end.
 
-%% @doc Starts a bidirectional HTTP2 stream where audio is streamed to Amazon
-%% Transcribe and the transcription results are streamed to your application.
+%% @doc Starts a bidirectional HTTP/2 stream where audio is streamed to
+%% Amazon Transcribe and the transcription results are streamed to your
+%% application.
 %%
-%% The following are encoded as HTTP2 headers:
+%% The following are encoded as HTTP/2 headers:
 %%
 %% <ul> <li> x-amzn-transcribe-language-code
 %%
@@ -92,7 +93,7 @@ start_medical_stream_transcription(Client, Input0, Options0) ->
 %%
 %% </li> <li> x-amzn-transcribe-session-id
 %%
-%% </li> </ul>
+%% </li> </ul> See the SDK for Go API Reference for more detail.
 start_stream_transcription(Client, Input) ->
     start_stream_transcription(Client, Input, []).
 start_stream_transcription(Client, Input0, Options0) ->
@@ -105,11 +106,17 @@ start_stream_transcription(Client, Input0, Options0) ->
 
 
     HeadersMapping = [
+                       {<<"x-amzn-transcribe-content-identification-type">>, <<"ContentIdentificationType">>},
+                       {<<"x-amzn-transcribe-content-redaction-type">>, <<"ContentRedactionType">>},
                        {<<"x-amzn-transcribe-enable-channel-identification">>, <<"EnableChannelIdentification">>},
+                       {<<"x-amzn-transcribe-enable-partial-results-stabilization">>, <<"EnablePartialResultsStabilization">>},
                        {<<"x-amzn-transcribe-language-code">>, <<"LanguageCode">>},
+                       {<<"x-amzn-transcribe-language-model-name">>, <<"LanguageModelName">>},
                        {<<"x-amzn-transcribe-media-encoding">>, <<"MediaEncoding">>},
                        {<<"x-amzn-transcribe-sample-rate">>, <<"MediaSampleRateHertz">>},
                        {<<"x-amzn-transcribe-number-of-channels">>, <<"NumberOfChannels">>},
+                       {<<"x-amzn-transcribe-partial-results-stability">>, <<"PartialResultsStability">>},
+                       {<<"x-amzn-transcribe-pii-entity-types">>, <<"PiiEntityTypes">>},
                        {<<"x-amzn-transcribe-session-id">>, <<"SessionId">>},
                        {<<"x-amzn-transcribe-show-speaker-label">>, <<"ShowSpeakerLabel">>},
                        {<<"x-amzn-transcribe-vocabulary-filter-method">>, <<"VocabularyFilterMethod">>},
@@ -128,11 +135,17 @@ start_stream_transcription(Client, Input0, Options0) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
+            {<<"x-amzn-transcribe-content-identification-type">>, <<"ContentIdentificationType">>},
+            {<<"x-amzn-transcribe-content-redaction-type">>, <<"ContentRedactionType">>},
             {<<"x-amzn-transcribe-enable-channel-identification">>, <<"EnableChannelIdentification">>},
+            {<<"x-amzn-transcribe-enable-partial-results-stabilization">>, <<"EnablePartialResultsStabilization">>},
             {<<"x-amzn-transcribe-language-code">>, <<"LanguageCode">>},
+            {<<"x-amzn-transcribe-language-model-name">>, <<"LanguageModelName">>},
             {<<"x-amzn-transcribe-media-encoding">>, <<"MediaEncoding">>},
             {<<"x-amzn-transcribe-sample-rate">>, <<"MediaSampleRateHertz">>},
             {<<"x-amzn-transcribe-number-of-channels">>, <<"NumberOfChannels">>},
+            {<<"x-amzn-transcribe-partial-results-stability">>, <<"PartialResultsStability">>},
+            {<<"x-amzn-transcribe-pii-entity-types">>, <<"PiiEntityTypes">>},
             {<<"x-amzn-request-id">>, <<"RequestId">>},
             {<<"x-amzn-transcribe-session-id">>, <<"SessionId">>},
             {<<"x-amzn-transcribe-show-speaker-label">>, <<"ShowSpeakerLabel">>},
@@ -187,6 +200,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

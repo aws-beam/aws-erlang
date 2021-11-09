@@ -1,7 +1,71 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Organizations
+%% @doc AWS Organizations is a web service that enables you to consolidate
+%% your multiple AWS accounts into an organization and centrally manage your
+%% accounts and their resources.
+%%
+%% This guide provides descriptions of the Organizations operations. For more
+%% information about using this service, see the AWS Organizations User
+%% Guide.
+%%
+%% Support and feedback for AWS Organizations
+%%
+%% We welcome your feedback. Send your comments to
+%% feedback-awsorganizations@amazon.com or post your feedback and questions
+%% in the AWS Organizations support forum. For more information about the AWS
+%% support forums, see Forums Help.
+%%
+%% Endpoint to call When using the AWS CLI or the AWS SDK
+%%
+%% For the current release of Organizations, specify the `us-east-1' region
+%% for all AWS API and AWS CLI calls made from the commercial AWS Regions
+%% outside of China. If calling from one of the AWS Regions in China, then
+%% specify `cn-northwest-1'. You can do this in the AWS CLI by using these
+%% parameters and commands:
+%%
+%% <ul> <li> Use the following parameter with each command to specify both
+%% the endpoint and its region:
+%%
+%% `--endpoint-url https://organizations.us-east-1.amazonaws.com' (from
+%% commercial AWS Regions outside of China)
+%%
+%% or
+%%
+%% `--endpoint-url https://organizations.cn-northwest-1.amazonaws.com.cn'
+%% (from AWS Regions in China)
+%%
+%% </li> <li> Use the default endpoint, but configure your default region
+%% with this command:
+%%
+%% `aws configure set default.region us-east-1' (from commercial AWS Regions
+%% outside of China)
+%%
+%% or
+%%
+%% `aws configure set default.region cn-northwest-1' (from AWS Regions in
+%% China)
+%%
+%% </li> <li> Use the following parameter with each command to specify the
+%% endpoint:
+%%
+%% `--region us-east-1' (from commercial AWS Regions outside of China)
+%%
+%% or
+%%
+%% `--region cn-northwest-1' (from AWS Regions in China)
+%%
+%% </li> </ul> Recording API Requests
+%%
+%% AWS Organizations supports AWS CloudTrail, a service that records AWS API
+%% calls for your AWS account and delivers log files to an Amazon S3 bucket.
+%% By using information collected by AWS CloudTrail, you can determine which
+%% requests the Organizations service received, who made the request and
+%% when, and so on. For more about AWS Organizations and its support for AWS
+%% CloudTrail, see Logging AWS Organizations Events with AWS CloudTrail in
+%% the AWS Organizations User Guide. To learn more about AWS CloudTrail,
+%% including how to turn it on and find your log files, see the AWS
+%% CloudTrail User Guide.
 -module(aws_organizations).
 
 -export([accept_handshake/2,
@@ -206,7 +270,7 @@ cancel_handshake(Client, Input, Options)
 %%
 %% </li> <li> Check the AWS CloudTrail log for the `CreateAccountResult'
 %% event. For information on using AWS CloudTrail with AWS Organizations, see
-%% Monitoring the Activity in Your Organization in the AWS Organizations User
+%% Logging and monitoring in AWS Organizations in the AWS Organizations User
 %% Guide.
 %%
 %% </li> </ul> The user who calls the API to create an account must have the
@@ -924,6 +988,10 @@ invite_account_to_organization(Client, Input, Options)
 %% After the account leaves the organization, all tags that were attached to
 %% the account object in the organization are deleted. AWS accounts outside
 %% of an organization do not support tags.
+%%
+%% A newly created account has a waiting period before it can be removed from
+%% its organization. If you get an error that indicates that a wait period is
+%% required, then try again in a few days.
 leave_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     leave_organization(Client, Input, []).

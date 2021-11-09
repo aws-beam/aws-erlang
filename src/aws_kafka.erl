@@ -77,7 +77,9 @@
          update_configuration/3,
          update_configuration/4,
          update_monitoring/3,
-         update_monitoring/4]).
+         update_monitoring/4,
+         update_security/3,
+         update_security/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -835,6 +837,30 @@ update_monitoring(Client, ClusterArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc You can use this operation to update the encrypting and
+%% authentication settings for an existing cluster.
+update_security(Client, ClusterArn, Input) ->
+    update_security(Client, ClusterArn, Input, []).
+update_security(Client, ClusterArn, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/security"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %%====================================================================
 %% Internal functions
 %%====================================================================
@@ -870,6 +896,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

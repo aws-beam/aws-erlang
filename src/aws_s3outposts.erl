@@ -18,14 +18,17 @@
 %% API
 %%====================================================================
 
-%% @doc S3 on Outposts access points simplify managing data access at scale
-%% for shared datasets in Amazon S3 on Outposts.
+%% @doc Amazon S3 on Outposts Access Points simplify managing data access at
+%% scale for shared datasets in S3 on Outposts.
 %%
 %% S3 on Outposts uses endpoints to connect to Outposts buckets so that you
-%% can perform actions within your virtual private cloud (VPC).
+%% can perform actions within your virtual private cloud (VPC). For more
+%% information, see Accessing S3 on Outposts using VPC only access points.
 %%
 %% This action creates an endpoint and associates it with the specified
-%% Outpost.
+%% Outposts.
+%%
+%% It can take up to 5 minutes for this action to complete.
 %%
 %% Related actions include:
 %%
@@ -56,13 +59,16 @@ create_endpoint(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc S3 on Outposts access points simplify managing data access at scale
-%% for shared datasets in Amazon S3 on Outposts.
+%% @doc Amazon S3 on Outposts Access Points simplify managing data access at
+%% scale for shared datasets in S3 on Outposts.
 %%
 %% S3 on Outposts uses endpoints to connect to Outposts buckets so that you
-%% can perform actions within your virtual private cloud (VPC).
+%% can perform actions within your virtual private cloud (VPC). For more
+%% information, see Accessing S3 on Outposts using VPC only access points.
 %%
 %% This action deletes an endpoint.
+%%
+%% It can take up to 5 minutes for this action to complete.
 %%
 %% Related actions include:
 %%
@@ -95,13 +101,14 @@ delete_endpoint(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc S3 on Outposts access points simplify managing data access at scale
-%% for shared datasets in Amazon S3 on Outposts.
+%% @doc Amazon S3 on Outposts Access Points simplify managing data access at
+%% scale for shared datasets in S3 on Outposts.
 %%
 %% S3 on Outposts uses endpoints to connect to Outposts buckets so that you
-%% can perform actions within your virtual private cloud (VPC).
+%% can perform actions within your virtual private cloud (VPC). For more
+%% information, see Accessing S3 on Outposts using VPC only access points.
 %%
-%% This action lists endpoints associated with the Outpost.
+%% This action lists endpoints associated with the Outposts.
 %%
 %% Related actions include:
 %%
@@ -172,6 +179,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

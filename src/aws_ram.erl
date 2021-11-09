@@ -1,16 +1,23 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Use AWS Resource Access Manager to share AWS resources between AWS
-%% accounts.
+%% @doc This is the Resource Access Manager API Reference.
 %%
-%% To share a resource, you create a resource share, associate the resource
-%% with the resource share, and specify the principals that can access the
-%% resources associated with the resource share. The following principals are
-%% supported: AWS accounts, organizational units (OU) from AWS Organizations,
-%% and organizations from AWS Organizations.
+%% This documentation provides descriptions and syntax for each of the
+%% actions and data types in RAM. RAM is a service that helps you securely
+%% share your Amazon Web Services resources across Amazon Web Services
+%% accounts and within your organization or organizational units (OUs) in
+%% Organizations. For supported resource types, you can also share resources
+%% with IAM roles and IAM users. If you have multiple Amazon Web Services
+%% accounts, you can use RAM to share those resources with other accounts.
 %%
-%% For more information, see the AWS Resource Access Manager User Guide.
+%% To learn more about RAM, see the following resources:
+%%
+%% <ul> <li> Resource Access Manager product page
+%%
+%% </li> <li> Resource Access Manager User Guide
+%%
+%% </li> </ul>
 -module(aws_ram).
 
 -export([accept_resource_share_invitation/2,
@@ -68,7 +75,8 @@
 %% API
 %%====================================================================
 
-%% @doc Accepts an invitation to a resource share from another AWS account.
+%% @doc Accepts an invitation to a resource share from another Amazon Web
+%% Services account.
 accept_resource_share_invitation(Client, Input) ->
     accept_resource_share_invitation(Client, Input, []).
 accept_resource_share_invitation(Client, Input0, Options0) ->
@@ -139,6 +147,15 @@ associate_resource_share_permission(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a resource share.
+%%
+%% You must provide a list of the Amazon Resource Names (ARNs) for the
+%% resources you want to share. You must also specify who you want to share
+%% the resources with, and the permissions that you grant them.
+%%
+%% Sharing a resource makes it available for use by principals outside of the
+%% Amazon Web Services account that created the resource. Sharing doesn't
+%% change any permissions or quotas that apply to the resource in the account
+%% that created it.
 create_resource_share(Client, Input) ->
     create_resource_share(Client, Input, []).
 create_resource_share(Client, Input0, Options0) ->
@@ -210,7 +227,7 @@ disassociate_resource_share(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disassociates an AWS RAM permission from a resource share.
+%% @doc Disassociates an RAM permission from a resource share.
 disassociate_resource_share_permission(Client, Input) ->
     disassociate_resource_share_permission(Client, Input, []).
 disassociate_resource_share_permission(Client, Input0, Options0) ->
@@ -233,9 +250,9 @@ disassociate_resource_share_permission(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Enables resource sharing within your AWS Organization.
+%% @doc Enables resource sharing within your organization in Organizations.
 %%
-%% The caller must be the master account for the AWS Organization.
+%% The caller must be the master account for the organization.
 enable_sharing_with_aws_organization(Client, Input) ->
     enable_sharing_with_aws_organization(Client, Input, []).
 enable_sharing_with_aws_organization(Client, Input0, Options0) ->
@@ -258,7 +275,7 @@ enable_sharing_with_aws_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets the contents of an AWS RAM permission in JSON format.
+%% @doc Gets the contents of an RAM permission in JSON format.
 get_permission(Client, Input) ->
     get_permission(Client, Input, []).
 get_permission(Client, Input0, Options0) ->
@@ -329,7 +346,7 @@ get_resource_share_associations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets the invitations for resource sharing that you've received.
+%% @doc Gets the invitations that you have received for resource shares.
 get_resource_share_invitations(Client, Input) ->
     get_resource_share_invitations(Client, Input, []).
 get_resource_share_invitations(Client, Input0, Options0) ->
@@ -400,7 +417,7 @@ list_pending_invitation_resources(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the AWS RAM permissions.
+%% @doc Lists the RAM permissions.
 list_permissions(Client, Input) ->
     list_permissions(Client, Input, []).
 list_permissions(Client, Input0, Options0) ->
@@ -447,8 +464,7 @@ list_principals(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the AWS RAM permissions that are associated with a resource
-%% share.
+%% @doc Lists the RAM permissions that are associated with a resource share.
 list_resource_share_permissions(Client, Input) ->
     list_resource_share_permissions(Client, Input, []).
 list_resource_share_permissions(Client, Input0, Options0) ->
@@ -471,7 +487,7 @@ list_resource_share_permissions(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the shareable resource types supported by AWS RAM.
+%% @doc Lists the shareable resource types supported by RAM.
 list_resource_types(Client, Input) ->
     list_resource_types(Client, Input, []).
 list_resource_types(Client, Input0, Options0) ->
@@ -520,14 +536,14 @@ list_resources(Client, Input0, Options0) ->
 
 %% @doc Resource shares that were created by attaching a policy to a resource
 %% are visible only to the resource share owner, and the resource share
-%% cannot be modified in AWS RAM.
+%% cannot be modified in RAM.
 %%
 %% Use this API action to promote the resource share. When you promote the
 %% resource share, it becomes:
 %%
 %% <ul> <li> Visible to all principals that it is shared with.
 %%
-%% </li> <li> Modifiable in AWS RAM.
+%% </li> <li> Modifiable in RAM.
 %%
 %% </li> </ul>
 promote_resource_share_created_from_policy(Client, Input) ->
@@ -553,7 +569,8 @@ promote_resource_share_created_from_policy(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Rejects an invitation to a resource share from another AWS account.
+%% @doc Rejects an invitation to a resource share from another Amazon Web
+%% Services account.
 reject_resource_share_invitation(Client, Input) ->
     reject_resource_share_invitation(Client, Input, []).
 reject_resource_share_invitation(Client, Input0, Options0) ->
@@ -681,6 +698,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

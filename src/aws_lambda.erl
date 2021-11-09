@@ -1,16 +1,15 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Lambda
+%% @doc Lambda
 %%
 %% Overview
 %%
-%% This is the AWS Lambda API Reference.
+%% This is the Lambda API Reference.
 %%
-%% The AWS Lambda Developer Guide provides additional information. For the
-%% service overview, see What is AWS Lambda, and for information about how
-%% the service works, see AWS Lambda: How it Works in the AWS Lambda
-%% Developer Guide.
+%% The Lambda Developer Guide provides additional information. For the
+%% service overview, see What is Lambda, and for information about how the
+%% service works, see Lambda: How it Works in the Lambda Developer Guide.
 -module(aws_lambda).
 
 -export([add_layer_version_permission/4,
@@ -161,12 +160,12 @@
 %% API
 %%====================================================================
 
-%% @doc Adds permissions to the resource-based policy of a version of an AWS
+%% @doc Adds permissions to the resource-based policy of a version of an
 %% Lambda layer.
 %%
 %% Use this action to grant layer usage permission to other accounts. You can
-%% grant permission to a single account, all AWS accounts, or all accounts in
-%% an organization.
+%% grant permission to a single account, all accounts in an organization, or
+%% all Amazon Web Services accounts.
 %%
 %% To revoke permission, call `RemoveLayerVersionPermission' with the
 %% statement ID that you specified when you added it.
@@ -193,21 +192,23 @@ add_layer_version_permission(Client, LayerName, VersionNumber, Input0, Options0)
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants an AWS service or another account permission to use a
-%% function.
+%% @doc Grants an Amazon Web Services service or another account permission
+%% to use a function.
 %%
 %% You can apply the policy at the function level, or specify a qualifier to
 %% restrict access to a single version or alias. If you use a qualifier, the
 %% invoker must use the full Amazon Resource Name (ARN) of that version or
-%% alias to invoke the function.
+%% alias to invoke the function. Note: Lambda does not support adding
+%% policies to version $LATEST.
 %%
 %% To grant permission to another account, specify the account ID as the
-%% `Principal'. For AWS services, the principal is a domain-style identifier
-%% defined by the service, like `s3.amazonaws.com' or `sns.amazonaws.com'.
-%% For AWS services, you can also specify the ARN of the associated resource
-%% as the `SourceArn'. If you grant permission to a service principal without
-%% specifying the source, other accounts could potentially configure
-%% resources in their account to invoke your Lambda function.
+%% `Principal'. For Amazon Web Services services, the principal is a
+%% domain-style identifier defined by the service, like `s3.amazonaws.com' or
+%% `sns.amazonaws.com'. For Amazon Web Services services, you can also
+%% specify the ARN of the associated resource as the `SourceArn'. If you
+%% grant permission to a service principal without specifying the source,
+%% other accounts could potentially configure resources in their account to
+%% invoke your Lambda function.
 %%
 %% This action adds a statement to a resource-based permissions policy for
 %% the function. For more information about function policies, see Lambda
@@ -292,23 +293,23 @@ create_code_signing_config(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a mapping between an event source and an AWS Lambda function.
+%% @doc Creates a mapping between an event source and an Lambda function.
 %%
 %% Lambda reads items from the event source and triggers the function.
 %%
 %% For details about each event source type, see the following topics.
 %%
-%% <ul> <li> Using AWS Lambda with Amazon DynamoDB
+%% <ul> <li> Configuring a Dynamo DB stream as an event source
 %%
-%% </li> <li> Using AWS Lambda with Amazon Kinesis
+%% </li> <li> Configuring a Kinesis stream as an event source
 %%
-%% </li> <li> Using AWS Lambda with Amazon SQS
+%% </li> <li> Configuring an Amazon SQS queue as an event source
 %%
-%% </li> <li> Using AWS Lambda with Amazon MQ
+%% </li> <li> Configuring an MQ broker as an event source
 %%
-%% </li> <li> Using AWS Lambda with Amazon MSK
+%% </li> <li> Configuring MSK as an event source
 %%
-%% </li> <li> Using AWS Lambda with Self-Managed Apache Kafka
+%% </li> <li> Configuring Self-Managed Apache Kafka as an event source
 %%
 %% </li> </ul> The following error handling options are only available for
 %% stream sources (DynamoDB and Kinesis):
@@ -358,8 +359,20 @@ create_event_source_mapping(Client, Input0, Options0) ->
 %% To create a function, you need a deployment package and an execution role.
 %% The deployment package is a .zip file archive or container image that
 %% contains your function code. The execution role grants the function
-%% permission to use AWS services, such as Amazon CloudWatch Logs for log
-%% streaming and AWS X-Ray for request tracing.
+%% permission to use Amazon Web Services services, such as Amazon CloudWatch
+%% Logs for log streaming and X-Ray for request tracing.
+%%
+%% You set the package type to `Image' if the deployment package is a
+%% container image. For a container image, the code property must include the
+%% URI of a container image in the Amazon ECR registry. You do not need to
+%% specify the handler and runtime properties.
+%%
+%% You set the package type to `Zip' if the deployment package is a .zip file
+%% archive. For a .zip file archive, the code property specifies the location
+%% of the .zip file. You must also specify the handler and runtime
+%% properties. The code in the deployment package must be compatible with the
+%% target instruction set architecture of the function (`x86-64' or `arm64').
+%% If you do not specify the architecture, the default value is `x86-64'.
 %%
 %% When you create a function, Lambda provisions an instance of the function
 %% and its supporting resources. If your function connects to a VPC, this
@@ -391,15 +404,16 @@ create_event_source_mapping(Client, Input0, Options0) ->
 %% includes set set of signing profiles, which define the trusted publishers
 %% for this function.
 %%
-%% If another account or an AWS service invokes your function, use
-%% `AddPermission' to grant permission by creating a resource-based IAM
-%% policy. You can grant permissions at the function level, on a version, or
-%% on an alias.
+%% If another account or an Amazon Web Services service invokes your
+%% function, use `AddPermission' to grant permission by creating a
+%% resource-based IAM policy. You can grant permissions at the function
+%% level, on a version, or on an alias.
 %%
 %% To invoke your function directly, use `Invoke'. To invoke your function in
-%% response to events in other AWS services, create an event source mapping
-%% (`CreateEventSourceMapping'), or configure a function trigger in the other
-%% service. For more information, see Invoking Functions.
+%% response to events in other Amazon Web Services services, create an event
+%% source mapping (`CreateEventSourceMapping'), or configure a function
+%% trigger in the other service. For more information, see Invoking
+%% Functions.
 create_function(Client, Input) ->
     create_function(Client, Input, []).
 create_function(Client, Input0, Options0) ->
@@ -506,9 +520,9 @@ delete_event_source_mapping(Client, UUID, Input0, Options0) ->
 %% Otherwise, all versions and aliases are deleted.
 %%
 %% To delete Lambda event source mappings that invoke a function, use
-%% `DeleteEventSourceMapping'. For AWS services and resources that invoke
-%% your function directly, delete the trigger in the service where you
-%% originally configured it.
+%% `DeleteEventSourceMapping'. For Amazon Web Services services and resources
+%% that invoke your function directly, delete the trigger in the service
+%% where you originally configured it.
 delete_function(Client, FunctionName, Input) ->
     delete_function(Client, FunctionName, Input, []).
 delete_function(Client, FunctionName, Input0, Options0) ->
@@ -606,7 +620,7 @@ delete_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a version of an AWS Lambda layer.
+%% @doc Deletes a version of an Lambda layer.
 %%
 %% Deleted versions can no longer be viewed or added to functions. To avoid
 %% breaking functions, a copy of the version remains in Lambda until no
@@ -657,8 +671,8 @@ delete_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves details about your account's limits and usage in an AWS
-%% Region.
+%% @doc Retrieves details about your account's limits and usage in an Amazon
+%% Web Services Region.
 get_account_settings(Client)
   when is_map(Client) ->
     get_account_settings(Client, #{}, #{}).
@@ -898,8 +912,8 @@ get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about a version of an AWS Lambda layer, with a
-%% link to download the layer archive that's valid for 10 minutes.
+%% @doc Returns information about a version of an Lambda layer, with a link
+%% to download the layer archive that's valid for 10 minutes.
 get_layer_version(Client, LayerName, VersionNumber)
   when is_map(Client) ->
     get_layer_version(Client, LayerName, VersionNumber, #{}, #{}).
@@ -922,8 +936,8 @@ get_layer_version(Client, LayerName, VersionNumber, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about a version of an AWS Lambda layer, with a
-%% link to download the layer archive that's valid for 10 minutes.
+%% @doc Returns information about a version of an Lambda layer, with a link
+%% to download the layer archive that's valid for 10 minutes.
 get_layer_version_by_arn(Client, Arn)
   when is_map(Client) ->
     get_layer_version_by_arn(Client, Arn, #{}, #{}).
@@ -950,7 +964,7 @@ get_layer_version_by_arn(Client, Arn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the permission policy for a version of an AWS Lambda layer.
+%% @doc Returns the permission policy for a version of an Lambda layer.
 %%
 %% For more information, see `AddLayerVersionPermission'.
 get_layer_version_policy(Client, LayerName, VersionNumber)
@@ -1271,8 +1285,12 @@ list_function_event_invoke_configs(Client, FunctionName, QueryMap, HeadersMap, O
 %% Lambda returns up to 50 functions per call.
 %%
 %% Set `FunctionVersion' to `ALL' to include all published versions of each
-%% function in addition to the unpublished version. To get more information
-%% about a function or version, use `GetFunction'.
+%% function in addition to the unpublished version.
+%%
+%% The `ListFunctions' action returns a subset of the `FunctionConfiguration'
+%% fields. To get the additional fields (State, StateReasonCode, StateReason,
+%% LastUpdateStatus, LastUpdateStatusReason, LastUpdateStatusReasonCode) for
+%% a function or version, use `GetFunction'.
 list_functions(Client)
   when is_map(Client) ->
     list_functions(Client, #{}, #{}).
@@ -1333,11 +1351,12 @@ list_functions_by_code_signing_config(Client, CodeSigningConfigArn, QueryMap, He
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the versions of an AWS Lambda layer.
+%% @doc Lists the versions of an Lambda layer.
 %%
 %% Versions that have been deleted aren't listed. Specify a runtime
 %% identifier to list only versions that indicate that they're compatible
-%% with that runtime.
+%% with that runtime. Specify a compatible architecture to include only layer
+%% versions that are compatible with that architecture.
 list_layer_versions(Client, LayerName)
   when is_map(Client) ->
     list_layer_versions(Client, LayerName, #{}, #{}).
@@ -1358,6 +1377,7 @@ list_layer_versions(Client, LayerName, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"CompatibleArchitecture">>, maps:get(<<"CompatibleArchitecture">>, QueryMap, undefined)},
         {<<"CompatibleRuntime">>, maps:get(<<"CompatibleRuntime">>, QueryMap, undefined)},
         {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
         {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
@@ -1366,11 +1386,13 @@ list_layer_versions(Client, LayerName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists AWS Lambda layers and shows information about the latest
-%% version of each.
+%% @doc Lists Lambda layers and shows information about the latest version of
+%% each.
 %%
 %% Specify a runtime identifier to list only layers that indicate that
-%% they're compatible with that runtime.
+%% they're compatible with that runtime. Specify a compatible architecture to
+%% include only layers that are compatible with that instruction set
+%% architecture.
 list_layers(Client)
   when is_map(Client) ->
     list_layers(Client, #{}, #{}).
@@ -1391,6 +1413,7 @@ list_layers(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"CompatibleArchitecture">>, maps:get(<<"CompatibleArchitecture">>, QueryMap, undefined)},
         {<<"CompatibleRuntime">>, maps:get(<<"CompatibleRuntime">>, QueryMap, undefined)},
         {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
         {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
@@ -1484,7 +1507,7 @@ list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Creates an AWS Lambda layer from a ZIP archive.
+%% @doc Creates an Lambda layer from a ZIP archive.
 %%
 %% Each time you call `PublishLayerVersion' with the same layer name, a new
 %% version is created.
@@ -1519,8 +1542,8 @@ publish_layer_version(Client, LayerName, Input0, Options0) ->
 %% Use versions to create a snapshot of your function code and configuration
 %% that doesn't change.
 %%
-%% AWS Lambda doesn't publish a version if the function's configuration and
-%% code haven't changed since the last version. Use `UpdateFunctionCode' or
+%% Lambda doesn't publish a version if the function's configuration and code
+%% haven't changed since the last version. Use `UpdateFunctionCode' or
 %% `UpdateFunctionConfiguration' to update the function before publishing a
 %% version.
 %%
@@ -1679,7 +1702,7 @@ put_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a statement from the permissions policy for a version of an
-%% AWS Lambda layer.
+%% Lambda layer.
 %%
 %% For more information, see `AddLayerVersionPermission'.
 remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, Input) ->
@@ -1705,8 +1728,8 @@ remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, I
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Revokes function-use permission from an AWS service or another
-%% account.
+%% @doc Revokes function-use permission from an Amazon Web Services service
+%% or another account.
 %%
 %% You can get the ID of the statement from the output of `GetPolicy'.
 remove_permission(Client, FunctionName, StatementId, Input) ->
@@ -1831,8 +1854,8 @@ update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
 
 %% @doc Updates an event source mapping.
 %%
-%% You can change the function that AWS Lambda invokes, or pause invocation
-%% and resume later from the same location.
+%% You can change the function that Lambda invokes, or pause invocation and
+%% resume later from the same location.
 %%
 %% The following error handling options are only available for stream sources
 %% (DynamoDB and Kinesis):
@@ -1927,7 +1950,8 @@ update_function_code(Client, FunctionName, Input0, Options0) ->
 %% version, only the unpublished version.
 %%
 %% To configure function concurrency, use `PutFunctionConcurrency'. To grant
-%% invoke permissions to an account or AWS service, use `AddPermission'.
+%% invoke permissions to an account or Amazon Web Services service, use
+%% `AddPermission'.
 update_function_configuration(Client, FunctionName, Input) ->
     update_function_configuration(Client, FunctionName, Input, []).
 update_function_configuration(Client, FunctionName, Input0, Options0) ->
@@ -2013,6 +2037,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

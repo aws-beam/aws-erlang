@@ -1,13 +1,13 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Backup
+%% @doc Backup
 %%
-%% AWS Backup is a unified backup service designed to protect AWS services
-%% and their associated data.
+%% Backup is a unified backup service designed to protect Amazon Web Services
+%% services and their associated data.
 %%
-%% AWS Backup simplifies the creation, migration, restoration, and deletion
-%% of backups, while also providing reporting and auditing.
+%% Backup simplifies the creation, migration, restoration, and deletion of
+%% backups, while also providing reporting and auditing.
 -module(aws_backup).
 
 -export([create_backup_plan/2,
@@ -16,6 +16,10 @@
          create_backup_selection/4,
          create_backup_vault/3,
          create_backup_vault/4,
+         create_framework/2,
+         create_framework/3,
+         create_report_plan/2,
+         create_report_plan/3,
          delete_backup_plan/3,
          delete_backup_plan/4,
          delete_backup_selection/4,
@@ -24,10 +28,16 @@
          delete_backup_vault/4,
          delete_backup_vault_access_policy/3,
          delete_backup_vault_access_policy/4,
+         delete_backup_vault_lock_configuration/3,
+         delete_backup_vault_lock_configuration/4,
          delete_backup_vault_notifications/3,
          delete_backup_vault_notifications/4,
+         delete_framework/3,
+         delete_framework/4,
          delete_recovery_point/4,
          delete_recovery_point/5,
+         delete_report_plan/3,
+         delete_report_plan/4,
          describe_backup_job/2,
          describe_backup_job/4,
          describe_backup_job/5,
@@ -37,6 +47,9 @@
          describe_copy_job/2,
          describe_copy_job/4,
          describe_copy_job/5,
+         describe_framework/2,
+         describe_framework/4,
+         describe_framework/5,
          describe_global_settings/1,
          describe_global_settings/3,
          describe_global_settings/4,
@@ -49,9 +62,17 @@
          describe_region_settings/1,
          describe_region_settings/3,
          describe_region_settings/4,
+         describe_report_job/2,
+         describe_report_job/4,
+         describe_report_job/5,
+         describe_report_plan/2,
+         describe_report_plan/4,
+         describe_report_plan/5,
          describe_restore_job/2,
          describe_restore_job/4,
          describe_restore_job/5,
+         disassociate_recovery_point/4,
+         disassociate_recovery_point/5,
          export_backup_plan_template/2,
          export_backup_plan_template/4,
          export_backup_plan_template/5,
@@ -99,6 +120,9 @@
          list_copy_jobs/1,
          list_copy_jobs/3,
          list_copy_jobs/4,
+         list_frameworks/1,
+         list_frameworks/3,
+         list_frameworks/4,
          list_protected_resources/1,
          list_protected_resources/3,
          list_protected_resources/4,
@@ -108,6 +132,12 @@
          list_recovery_points_by_resource/2,
          list_recovery_points_by_resource/4,
          list_recovery_points_by_resource/5,
+         list_report_jobs/1,
+         list_report_jobs/3,
+         list_report_jobs/4,
+         list_report_plans/1,
+         list_report_plans/3,
+         list_report_plans/4,
          list_restore_jobs/1,
          list_restore_jobs/3,
          list_restore_jobs/4,
@@ -116,12 +146,16 @@
          list_tags/5,
          put_backup_vault_access_policy/3,
          put_backup_vault_access_policy/4,
+         put_backup_vault_lock_configuration/3,
+         put_backup_vault_lock_configuration/4,
          put_backup_vault_notifications/3,
          put_backup_vault_notifications/4,
          start_backup_job/2,
          start_backup_job/3,
          start_copy_job/2,
          start_copy_job/3,
+         start_report_job/3,
+         start_report_job/4,
          start_restore_job/2,
          start_restore_job/3,
          stop_backup_job/3,
@@ -132,12 +166,16 @@
          untag_resource/4,
          update_backup_plan/3,
          update_backup_plan/4,
+         update_framework/3,
+         update_framework/4,
          update_global_settings/2,
          update_global_settings/3,
          update_recovery_point_lifecycle/4,
          update_recovery_point_lifecycle/5,
          update_region_settings/2,
-         update_region_settings/3]).
+         update_region_settings/3,
+         update_report_plan/3,
+         update_report_plan/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -147,11 +185,11 @@
 
 %% @doc Creates a backup plan using a backup plan name and backup rules.
 %%
-%% A backup plan is a document that contains information that AWS Backup uses
-%% to schedule tasks that create recovery points for resources.
+%% A backup plan is a document that contains information that Backup uses to
+%% schedule tasks that create recovery points for resources.
 %%
-%% If you call `CreateBackupPlan' with a plan that already exists, an
-%% `AlreadyExistsException' is returned.
+%% If you call `CreateBackupPlan' with a plan that already exists, you
+%% receive an `AlreadyExistsException' exception.
 create_backup_plan(Client, Input) ->
     create_backup_plan(Client, Input, []).
 create_backup_plan(Client, Input0, Options0) ->
@@ -233,13 +271,70 @@ create_backup_selection(Client, BackupPlanId, Input0, Options0) ->
 %% A `CreateBackupVault' request includes a name, optionally one or more
 %% resource tags, an encryption key, and a request ID.
 %%
-%% Sensitive data, such as passport numbers, should not be included the name
-%% of a backup vault.
+%% Do not include sensitive data, such as passport numbers, in the name of a
+%% backup vault.
 create_backup_vault(Client, BackupVaultName, Input) ->
     create_backup_vault(Client, BackupVaultName, Input, []).
 create_backup_vault(Client, BackupVaultName, Input0, Options0) ->
     Method = put,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a framework with one or more controls.
+%%
+%% A framework is a collection of controls that you can use to evaluate your
+%% backup practices. By using pre-built customizable controls to define your
+%% policies, you can evaluate whether your backup practices comply with your
+%% policies and which resources are not yet in compliance.
+create_framework(Client, Input) ->
+    create_framework(Client, Input, []).
+create_framework(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/audit/frameworks"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a report plan.
+%%
+%% A report plan is a document that contains information about the contents
+%% of the report and where Backup will deliver it.
+%%
+%% If you call `CreateReportPlan' with a plan that already exists, you
+%% receive an `AlreadyExistsException' exception.
+create_report_plan(Client, Input) ->
+    create_report_plan(Client, Input, []).
+create_report_plan(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/audit/report-plans"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -357,6 +452,35 @@ delete_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes Backup Vault Lock from a backup vault specified by a backup
+%% vault name.
+%%
+%% If the Vault Lock configuration is immutable, then you cannot delete Vault
+%% Lock using API operations, and you will receive an
+%% `InvalidRequestException' if you attempt to do so. For more information,
+%% see Vault Lock in the Backup Developer Guide.
+delete_backup_vault_lock_configuration(Client, BackupVaultName, Input) ->
+    delete_backup_vault_lock_configuration(Client, BackupVaultName, Input, []).
+delete_backup_vault_lock_configuration(Client, BackupVaultName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/vault-lock"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes event notifications for the specified backup vault.
 delete_backup_vault_notifications(Client, BackupVaultName, Input) ->
     delete_backup_vault_notifications(Client, BackupVaultName, Input, []).
@@ -380,12 +504,62 @@ delete_backup_vault_notifications(Client, BackupVaultName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the framework specified by a framework name.
+delete_framework(Client, FrameworkName, Input) ->
+    delete_framework(Client, FrameworkName, Input, []).
+delete_framework(Client, FrameworkName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/audit/frameworks/", aws_util:encode_uri(FrameworkName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the recovery point specified by a recovery point ID.
+%%
+%% If the recovery point ID belongs to a continuous backup, calling this
+%% endpoint deletes the existing continuous backup and stops future
+%% continuous backup.
 delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input) ->
     delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input, []).
 delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, Options0) ->
     Method = delete,
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the report plan specified by a report plan name.
+delete_report_plan(Client, ReportPlanName, Input) ->
+    delete_report_plan(Client, ReportPlanName, Input, []).
+delete_report_plan(Client, ReportPlanName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/audit/report-plans/", aws_util:encode_uri(ReportPlanName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -472,8 +646,34 @@ describe_copy_job(Client, CopyJobId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes the global settings of the AWS account, including whether
-%% it is opted in to cross-account backup.
+%% @doc Returns the framework details for the specified `FrameworkName'.
+describe_framework(Client, FrameworkName)
+  when is_map(Client) ->
+    describe_framework(Client, FrameworkName, #{}, #{}).
+
+describe_framework(Client, FrameworkName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_framework(Client, FrameworkName, QueryMap, HeadersMap, []).
+
+describe_framework(Client, FrameworkName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/audit/frameworks/", aws_util:encode_uri(FrameworkName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes whether the Amazon Web Services account is opted in to
+%% cross-account backup.
+%%
+%% Returns an error if the account is not a member of an Organizations
+%% organization. Example: `describe-global-settings --region us-west-2'
 describe_global_settings(Client)
   when is_map(Client) ->
     describe_global_settings(Client, #{}, #{}).
@@ -497,8 +697,8 @@ describe_global_settings(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a saved resource, including the last time
-%% it was backed up, its Amazon Resource Name (ARN), and the AWS service type
-%% of the saved resource.
+%% it was backed up, its Amazon Resource Name (ARN), and the Amazon Web
+%% Services service type of the saved resource.
 describe_protected_resource(Client, ResourceArn)
   when is_map(Client) ->
     describe_protected_resource(Client, ResourceArn, #{}, #{}).
@@ -547,11 +747,10 @@ describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, Hea
 
 %% @doc Returns the current service opt-in settings for the Region.
 %%
-%% If service-opt-in is enabled for a service, AWS Backup tries to protect
-%% that service's resources in this Region, when the resource is included in
-%% an on-demand backup or scheduled backup plan. Otherwise, AWS Backup does
-%% not try to protect that service's resources in this Region, AWS Backup
-%% does not try to protect that service's resources in this Region.
+%% If service opt-in is enabled for a service, Backup tries to protect that
+%% service's resources in this Region, when the resource is included in an
+%% on-demand backup or scheduled backup plan. Otherwise, Backup does not try
+%% to protect that service's resources in this Region.
 describe_region_settings(Client)
   when is_map(Client) ->
     describe_region_settings(Client, #{}, #{}).
@@ -563,6 +762,54 @@ describe_region_settings(Client, QueryMap, HeadersMap)
 describe_region_settings(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/account-settings"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the details associated with creating a report as specified by
+%% its `ReportJobId'.
+describe_report_job(Client, ReportJobId)
+  when is_map(Client) ->
+    describe_report_job(Client, ReportJobId, #{}, #{}).
+
+describe_report_job(Client, ReportJobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_report_job(Client, ReportJobId, QueryMap, HeadersMap, []).
+
+describe_report_job(Client, ReportJobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/audit/report-jobs/", aws_util:encode_uri(ReportJobId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of all report plans for an Amazon Web Services account
+%% and Amazon Web Services Region.
+describe_report_plan(Client, ReportPlanName)
+  when is_map(Client) ->
+    describe_report_plan(Client, ReportPlanName, #{}, #{}).
+
+describe_report_plan(Client, ReportPlanName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_report_plan(Client, ReportPlanName, QueryMap, HeadersMap, []).
+
+describe_report_plan(Client, ReportPlanName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/audit/report-plans/", aws_util:encode_uri(ReportPlanName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -598,6 +845,36 @@ describe_restore_job(Client, RestoreJobId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Deletes the specified continuous backup recovery point from Backup
+%% and releases control of that continuous backup to the source service, such
+%% as Amazon RDS.
+%%
+%% The source service will continue to create and retain continuous backups
+%% using the lifecycle that you specified in your original backup plan.
+%%
+%% Does not support snapshot backup recovery points.
+disassociate_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input) ->
+    disassociate_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input, []).
+disassociate_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), "/disassociate"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns the backup plan that is specified by the plan ID as a backup
 %% template.
 export_backup_plan_template(Client, BackupPlanId)
@@ -624,8 +901,8 @@ export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap, Options0
 
 %% @doc Returns `BackupPlan' details for the specified `BackupPlanId'.
 %%
-%% Returns the body of a backup plan in JSON format, in addition to plan
-%% metadata.
+%% The details are the body of a backup plan in JSON format, in addition to
+%% plan metadata.
 get_backup_plan(Client, BackupPlanId)
   when is_map(Client) ->
     get_backup_plan(Client, BackupPlanId, #{}, #{}).
@@ -793,7 +1070,7 @@ get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, Q
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the AWS resource types supported by AWS Backup.
+%% @doc Returns the Amazon Web Services resource types supported by Backup.
 get_supported_resource_types(Client)
   when is_map(Client) ->
     get_supported_resource_types(Client, #{}, #{}).
@@ -816,7 +1093,10 @@ get_supported_resource_types(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of existing backup jobs for an authenticated account.
+%% @doc Returns a list of existing backup jobs for an authenticated account
+%% for the last 30 days.
+%%
+%% For a longer period of time, consider using these monitoring tools.
 list_backup_jobs(Client)
   when is_map(Client) ->
     list_backup_jobs(Client, #{}, #{}).
@@ -910,12 +1190,12 @@ list_backup_plan_versions(Client, BackupPlanId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of existing backup plans for an authenticated account.
+%% @doc Returns a list of all active backup plans for an authenticated
+%% account.
 %%
-%% The list is populated only if the advanced option is set for the backup
-%% plan. The list contains information such as Amazon Resource Names (ARNs),
-%% plan IDs, creation and deletion dates, version IDs, plan names, and
-%% creator request IDs.
+%% The list contains information such as Amazon Resource Names (ARNs), plan
+%% IDs, creation and deletion dates, version IDs, plan names, and creator
+%% request IDs.
 list_backup_plans(Client)
   when is_map(Client) ->
     list_backup_plans(Client, #{}, #{}).
@@ -1037,7 +1317,36 @@ list_copy_jobs(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns an array of resources successfully backed up by AWS Backup,
+%% @doc Returns a list of all frameworks for an Amazon Web Services account
+%% and Amazon Web Services Region.
+list_frameworks(Client)
+  when is_map(Client) ->
+    list_frameworks(Client, #{}, #{}).
+
+list_frameworks(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_frameworks(Client, QueryMap, HeadersMap, []).
+
+list_frameworks(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/audit/frameworks"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns an array of resources successfully backed up by Backup,
 %% including the time the resource was saved, an Amazon Resource Name (ARN)
 %% of the resource, and a resource type.
 list_protected_resources(Client)
@@ -1101,8 +1410,11 @@ list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns detailed information about recovery points of the type
-%% specified by a resource Amazon Resource Name (ARN).
+%% @doc Returns detailed information about all the recovery points of the
+%% type specified by a resource Amazon Resource Name (ARN).
+%%
+%% For Amazon EFS and Amazon EC2, this action only lists recovery points
+%% created by Backup.
 list_recovery_points_by_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_recovery_points_by_resource(Client, ResourceArn, #{}, #{}).
@@ -1130,8 +1442,71 @@ list_recovery_points_by_resource(Client, ResourceArn, QueryMap, HeadersMap, Opti
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of jobs that AWS Backup initiated to restore a saved
-%% resource, including metadata about the recovery process.
+%% @doc Returns details about your report jobs.
+list_report_jobs(Client)
+  when is_map(Client) ->
+    list_report_jobs(Client, #{}, #{}).
+
+list_report_jobs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_report_jobs(Client, QueryMap, HeadersMap, []).
+
+list_report_jobs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/audit/report-jobs"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"CreationAfter">>, maps:get(<<"CreationAfter">>, QueryMap, undefined)},
+        {<<"CreationBefore">>, maps:get(<<"CreationBefore">>, QueryMap, undefined)},
+        {<<"ReportPlanName">>, maps:get(<<"ReportPlanName">>, QueryMap, undefined)},
+        {<<"Status">>, maps:get(<<"Status">>, QueryMap, undefined)},
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of your report plans.
+%%
+%% For detailed information about a single report plan, use
+%% `DescribeReportPlan'.
+list_report_plans(Client)
+  when is_map(Client) ->
+    list_report_plans(Client, #{}, #{}).
+
+list_report_plans(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_report_plans(Client, QueryMap, HeadersMap, []).
+
+list_report_plans(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/audit/report-plans"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of jobs that Backup initiated to restore a saved
+%% resource, including details about the recovery process.
 list_restore_jobs(Client)
   when is_map(Client) ->
     list_restore_jobs(Client, #{}, #{}).
@@ -1220,6 +1595,36 @@ put_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Applies Backup Vault Lock to a backup vault, preventing attempts to
+%% delete any recovery point stored in or created in a backup vault.
+%%
+%% Vault Lock also prevents attempts to update the lifecycle policy that
+%% controls the retention period of any recovery point currently stored in a
+%% backup vault. If specified, Vault Lock enforces a minimum and maximum
+%% retention period for future backup and copy jobs that target a backup
+%% vault.
+put_backup_vault_lock_configuration(Client, BackupVaultName, Input) ->
+    put_backup_vault_lock_configuration(Client, BackupVaultName, Input, []).
+put_backup_vault_lock_configuration(Client, BackupVaultName, Input0, Options0) ->
+    Method = put,
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/vault-lock"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Turns on notifications on a backup vault for the specified topic and
 %% events.
 put_backup_vault_notifications(Client, BackupVaultName, Input) ->
@@ -1268,11 +1673,36 @@ start_backup_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a job to create a one-time copy of the specified resource.
+%%
+%% Does not support continuous backups.
 start_copy_job(Client, Input) ->
     start_copy_job(Client, Input, []).
 start_copy_job(Client, Input0, Options0) ->
     Method = put,
     Path = ["/copy-jobs"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts an on-demand report job for the specified report plan.
+start_report_job(Client, ReportPlanName, Input) ->
+    start_report_job(Client, ReportPlanName, Input, []).
+start_report_job(Client, ReportPlanName, Input0, Options0) ->
+    Method = post,
+    Path = ["/audit/report-jobs/", aws_util:encode_uri(ReportPlanName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1411,9 +1841,36 @@ update_backup_plan(Client, BackupPlanId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the current global settings for the AWS account.
+%% @doc Updates an existing framework identified by its `FrameworkName' with
+%% the input document in JSON format.
+update_framework(Client, FrameworkName, Input) ->
+    update_framework(Client, FrameworkName, Input, []).
+update_framework(Client, FrameworkName, Input0, Options0) ->
+    Method = put,
+    Path = ["/audit/frameworks/", aws_util:encode_uri(FrameworkName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates whether the Amazon Web Services account is opted in to
+%% cross-account backup.
 %%
-%% Use the `DescribeGlobalSettings' API to determine the current settings.
+%% Returns an error if the account is not an Organizations management
+%% account. Use the `DescribeGlobalSettings' API to determine the current
+%% settings.
 update_global_settings(Client, Input) ->
     update_global_settings(Client, Input, []).
 update_global_settings(Client, Input0, Options0) ->
@@ -1439,7 +1896,7 @@ update_global_settings(Client, Input0, Options0) ->
 %% @doc Sets the transition lifecycle of a recovery point.
 %%
 %% The lifecycle defines when a protected resource is transitioned to cold
-%% storage and when it expires. AWS Backup transitions and expires backups
+%% storage and when it expires. Backup transitions and expires backups
 %% automatically according to the lifecycle that you define.
 %%
 %% Backups transitioned to cold storage must be stored in cold storage for a
@@ -1449,6 +1906,8 @@ update_global_settings(Client, Input0, Options0) ->
 %% has been transitioned to cold.
 %%
 %% Only Amazon EFS file system backups can be transitioned to cold storage.
+%%
+%% Does not support continuous backups.
 update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input) ->
     update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input, []).
 update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input0, Options0) ->
@@ -1473,10 +1932,10 @@ update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input
 
 %% @doc Updates the current service opt-in settings for the Region.
 %%
-%% If service-opt-in is enabled for a service, AWS Backup tries to protect
-%% that service's resources in this Region, when the resource is included in
-%% an on-demand backup or scheduled backup plan. Otherwise, AWS Backup does
-%% not try to protect that service's resources in this Region. Use the
+%% If service-opt-in is enabled for a service, Backup tries to protect that
+%% service's resources in this Region, when the resource is included in an
+%% on-demand backup or scheduled backup plan. Otherwise, Backup does not try
+%% to protect that service's resources in this Region. Use the
 %% `DescribeRegionSettings' API to determine the resource types that are
 %% supported.
 update_region_settings(Client, Input) ->
@@ -1484,6 +1943,30 @@ update_region_settings(Client, Input) ->
 update_region_settings(Client, Input0, Options0) ->
     Method = put,
     Path = ["/account-settings"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing report plan identified by its `ReportPlanName'
+%% with the input document in JSON format.
+update_report_plan(Client, ReportPlanName, Input) ->
+    update_report_plan(Client, ReportPlanName, Input, []).
+update_report_plan(Client, ReportPlanName, Input0, Options0) ->
+    Method = put,
+    Path = ["/audit/report-plans/", aws_util:encode_uri(ReportPlanName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1536,6 +2019,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

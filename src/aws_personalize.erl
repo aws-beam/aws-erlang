@@ -11,6 +11,8 @@
          create_campaign/3,
          create_dataset/2,
          create_dataset/3,
+         create_dataset_export_job/2,
+         create_dataset_export_job/3,
          create_dataset_group/2,
          create_dataset_group/3,
          create_dataset_import_job/2,
@@ -47,6 +49,8 @@
          describe_campaign/3,
          describe_dataset/2,
          describe_dataset/3,
+         describe_dataset_export_job/2,
+         describe_dataset_export_job/3,
          describe_dataset_group/2,
          describe_dataset_group/3,
          describe_dataset_import_job/2,
@@ -71,6 +75,8 @@
          list_batch_inference_jobs/3,
          list_campaigns/2,
          list_campaigns/3,
+         list_dataset_export_jobs/2,
+         list_dataset_export_jobs/3,
          list_dataset_groups/2,
          list_dataset_groups/3,
          list_dataset_import_jobs/2,
@@ -89,6 +95,8 @@
          list_solution_versions/3,
          list_solutions/2,
          list_solutions/3,
+         stop_solution_version_creation/2,
+         stop_solution_version_creation/3,
          update_campaign/2,
          update_campaign/3]).
 
@@ -206,6 +214,32 @@ create_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataset">>, Input, Options).
 
+%% @doc Creates a job that exports data from your dataset to an Amazon S3
+%% bucket.
+%%
+%% To allow Amazon Personalize to export the training data, you must specify
+%% an service-linked IAM role that gives Amazon Personalize `PutObject'
+%% permissions for your Amazon S3 bucket. For information, see Exporting a
+%% dataset in the Amazon Personalize developer guide.
+%%
+%% Status
+%%
+%% A dataset export job can be in one of the following states:
+%%
+%% <ul> <li> CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE FAILED
+%%
+%% </li> </ul> To get the status of the export job, call
+%% `DescribeDatasetExportJob', and specify the Amazon Resource Name (ARN) of
+%% the dataset export job. The dataset export is complete when the status
+%% shows as ACTIVE. If the status shows as CREATE FAILED, the response
+%% includes a `failureReason' key, which describes why the job failed.
+create_dataset_export_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_dataset_export_job(Client, Input, []).
+create_dataset_export_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateDatasetExportJob">>, Input, Options).
+
 %% @doc Creates an empty dataset group.
 %%
 %% A dataset group contains related datasets that supply data for training a
@@ -235,10 +269,10 @@ create_dataset(Client, Input, Options)
 %% You must wait until the `status' of the dataset group is `ACTIVE' before
 %% adding a dataset to the group.
 %%
-%% You can specify an AWS Key Management Service (KMS) key to encrypt the
+%% You can specify an Key Management Service (KMS) key to encrypt the
 %% datasets in the group. If you specify a KMS key, you must also include an
-%% AWS Identity and Access Management (IAM) role that has permission to
-%% access the key.
+%% Identity and Access Management (IAM) role that has permission to access
+%% the key.
 %%
 %% == APIs that require a dataset group ARN in the request ==
 %%
@@ -268,9 +302,10 @@ create_dataset_group(Client, Input, Options)
 %% Amazon S3 bucket) to an Amazon Personalize dataset.
 %%
 %% To allow Amazon Personalize to import the training data, you must specify
-%% an AWS Identity and Access Management (IAM) role that has permission to
-%% read from the data source, as Amazon Personalize makes a copy of your data
-%% and processes it in an internal AWS system.
+%% an IAM service role that has permission to read from the data source, as
+%% Amazon Personalize makes a copy of your data and processes it internally.
+%% For information on granting access to your Amazon S3 bucket, see Giving
+%% Amazon Personalize Access to Amazon S3 Resources.
 %%
 %% The dataset import job replaces any existing data in the dataset that you
 %% imported in bulk.
@@ -446,7 +481,17 @@ create_solution(Client, Input, Options)
 %%
 %% A solution version can be in one of the following states:
 %%
-%% <ul> <li> CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE FAILED
+%% <ul> <li> CREATE PENDING
+%%
+%% </li> <li> CREATE IN_PROGRESS
+%%
+%% </li> <li> ACTIVE
+%%
+%% </li> <li> CREATE FAILED
+%%
+%% </li> <li> CREATE STOPPING
+%%
+%% </li> <li> CREATE STOPPED
 %%
 %% </li> </ul> To get the status of the version, call
 %% `DescribeSolutionVersion'. Wait until the status shows as ACTIVE before
@@ -612,6 +657,15 @@ describe_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataset">>, Input, Options).
 
+%% @doc Describes the dataset export job created by `CreateDatasetExportJob',
+%% including the export job status.
+describe_dataset_export_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_dataset_export_job(Client, Input, []).
+describe_dataset_export_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDatasetExportJob">>, Input, Options).
+
 %% @doc Describes the given dataset group.
 %%
 %% For more information on dataset groups, see `CreateDatasetGroup'.
@@ -741,6 +795,20 @@ list_campaigns(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCampaigns">>, Input, Options).
 
+%% @doc Returns a list of dataset export jobs that use the given dataset.
+%%
+%% When a dataset is not specified, all the dataset export jobs associated
+%% with the account are listed. The response provides the properties for each
+%% dataset export job, including the Amazon Resource Name (ARN). For more
+%% information on dataset export jobs, see `CreateDatasetExportJob'. For more
+%% information on datasets, see `CreateDataset'.
+list_dataset_export_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_dataset_export_jobs(Client, Input, []).
+list_dataset_export_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDatasetExportJobs">>, Input, Options).
+
 %% @doc Returns a list of dataset groups.
 %%
 %% The response provides the properties for each dataset group, including the
@@ -846,6 +914,28 @@ list_solutions(Client, Input)
 list_solutions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSolutions">>, Input, Options).
+
+%% @doc Stops creating a solution version that is in a state of
+%% CREATE_PENDING or CREATE IN_PROGRESS.
+%%
+%% Depending on the current state of the solution version, the solution
+%% version state changes as follows:
+%%
+%% <ul> <li> CREATE_PENDING > CREATE_STOPPED
+%%
+%% or
+%%
+%% </li> <li> CREATE_IN_PROGRESS > CREATE_STOPPING > CREATE_STOPPED
+%%
+%% </li> </ul> You are billed for all of the training completed up until you
+%% stop the solution version creation. You cannot resume creating a solution
+%% version once it has been stopped.
+stop_solution_version_creation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_solution_version_creation(Client, Input, []).
+stop_solution_version_creation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopSolutionVersionCreation">>, Input, Options).
 
 %% @doc Updates a campaign by either deploying a new solution or changing the
 %% value of the campaign's `minProvisionedTPS' parameter.

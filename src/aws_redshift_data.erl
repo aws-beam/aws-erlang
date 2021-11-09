@@ -4,14 +4,15 @@
 %% @doc You can use the Amazon Redshift Data API to run queries on Amazon
 %% Redshift tables.
 %%
-%% You can run individual SQL statements, which are committed if the
-%% statement succeeds.
+%% You can run SQL statements, which are committed if the statement succeeds.
 %%
 %% For more information about the Amazon Redshift Data API, see Using the
 %% Amazon Redshift Data API in the Amazon Redshift Cluster Management Guide.
 -module(aws_redshift_data).
 
--export([cancel_statement/2,
+-export([batch_execute_statement/2,
+         batch_execute_statement/3,
+         cancel_statement/2,
          cancel_statement/3,
          describe_statement/2,
          describe_statement/3,
@@ -35,6 +36,28 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Runs one or more SQL statements, which can be data manipulation
+%% language (DML) or data definition language (DDL).
+%%
+%% Depending on the authorization method, use one of the following
+%% combinations of request parameters:
+%%
+%% <ul> <li> Secrets Manager - specify the Amazon Resource Name (ARN) of the
+%% secret, the database name, and the cluster identifier that matches the
+%% cluster in the secret.
+%%
+%% </li> <li> Temporary credentials - specify the cluster identifier, the
+%% database name, and the database user name. Permission to call the
+%% `redshift:GetClusterCredentials' operation is required to use this method.
+%%
+%% </li> </ul>
+batch_execute_statement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_execute_statement(Client, Input, []).
+batch_execute_statement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchExecuteStatement">>, Input, Options).
 
 %% @doc Cancels a running query.
 %%
@@ -65,9 +88,9 @@ describe_statement(Client, Input, Options)
 %% the column list. Depending on the authorization method, use one of the
 %% following combinations of request parameters:
 %%
-%% <ul> <li> AWS Secrets Manager - specify the Amazon Resource Name (ARN) of
-%% the secret and the cluster identifier that matches the cluster in the
-%% secret.
+%% <ul> <li> Secrets Manager - specify the Amazon Resource Name (ARN) of the
+%% secret, the database name, and the cluster identifier that matches the
+%% cluster in the secret.
 %%
 %% </li> <li> Temporary credentials - specify the cluster identifier, the
 %% database name, and the database user name. Permission to call the
@@ -88,9 +111,9 @@ describe_table(Client, Input, Options)
 %% authorization method, use one of the following combinations of request
 %% parameters:
 %%
-%% <ul> <li> AWS Secrets Manager - specify the Amazon Resource Name (ARN) of
-%% the secret and the cluster identifier that matches the cluster in the
-%% secret.
+%% <ul> <li> Secrets Manager - specify the Amazon Resource Name (ARN) of the
+%% secret, the database name, and the cluster identifier that matches the
+%% cluster in the secret.
 %%
 %% </li> <li> Temporary credentials - specify the cluster identifier, the
 %% database name, and the database user name. Permission to call the
@@ -120,9 +143,9 @@ get_statement_result(Client, Input, Options)
 %% authorization method, use one of the following combinations of request
 %% parameters:
 %%
-%% <ul> <li> AWS Secrets Manager - specify the Amazon Resource Name (ARN) of
-%% the secret and the cluster identifier that matches the cluster in the
-%% secret.
+%% <ul> <li> Secrets Manager - specify the Amazon Resource Name (ARN) of the
+%% secret, the database name, and the cluster identifier that matches the
+%% cluster in the secret.
 %%
 %% </li> <li> Temporary credentials - specify the cluster identifier, the
 %% database name, and the database user name. Permission to call the
@@ -142,9 +165,9 @@ list_databases(Client, Input, Options)
 %% authorization method, use one of the following combinations of request
 %% parameters:
 %%
-%% <ul> <li> AWS Secrets Manager - specify the Amazon Resource Name (ARN) of
-%% the secret and the cluster identifier that matches the cluster in the
-%% secret.
+%% <ul> <li> Secrets Manager - specify the Amazon Resource Name (ARN) of the
+%% secret, the database name, and the cluster identifier that matches the
+%% cluster in the secret.
 %%
 %% </li> <li> Temporary credentials - specify the cluster identifier, the
 %% database name, and the database user name. Permission to call the
@@ -176,9 +199,9 @@ list_statements(Client, Input, Options)
 %% the table list. Depending on the authorization method, use one of the
 %% following combinations of request parameters:
 %%
-%% <ul> <li> AWS Secrets Manager - specify the Amazon Resource Name (ARN) of
-%% the secret and the cluster identifier that matches the cluster in the
-%% secret.
+%% <ul> <li> Secrets Manager - specify the Amazon Resource Name (ARN) of the
+%% secret, the database name, and the cluster identifier that matches the
+%% cluster in the secret.
 %%
 %% </li> <li> Temporary credentials - specify the cluster identifier, the
 %% database name, and the database user name. Permission to call the

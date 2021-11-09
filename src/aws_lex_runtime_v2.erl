@@ -66,9 +66,9 @@ delete_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0)
 %% For example, you can use this operation to retrieve session information
 %% for a user that has left a long-running session in use.
 %%
-%% If the bot, alias, or session identifier doesn't exist, Amazon Lex returns
-%% a `BadRequestException'. If the locale doesn't exist or is not enabled for
-%% the alias, you receive a `BadRequestException'.
+%% If the bot, alias, or session identifier doesn't exist, Amazon Lex V2
+%% returns a `BadRequestException'. If the locale doesn't exist or is not
+%% enabled for the alias, you receive a `BadRequestException'.
 get_session(Client, BotAliasId, BotId, LocaleId, SessionId)
   when is_map(Client) ->
     get_session(Client, BotAliasId, BotId, LocaleId, SessionId, #{}, #{}).
@@ -92,7 +92,7 @@ get_session(Client, BotAliasId, BotId, LocaleId, SessionId, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Creates a new session or modifies an existing session with an Amazon
-%% Lex bot.
+%% Lex V2 bot.
 %%
 %% Use this operation to enable your application to set the state of the bot.
 put_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
@@ -139,14 +139,33 @@ put_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
         Result
     end.
 
-%% @doc Sends user input to Amazon Lex.
+%% @doc Sends user input to Amazon Lex V2.
 %%
-%% Client applications use this API to send requests to Amazon Lex at
-%% runtime. Amazon Lex then interprets the user input using the machine
+%% Client applications use this API to send requests to Amazon Lex V2 at
+%% runtime. Amazon Lex V2 then interprets the user input using the machine
 %% learning model that it build for the bot.
 %%
-%% In response, Amazon Lex returns the next message to convey to the user and
-%% an optional response card to display.
+%% In response, Amazon Lex V2 returns the next message to convey to the user
+%% and an optional response card to display.
+%%
+%% If the optional post-fulfillment response is specified, the messages are
+%% returned as follows. For more information, see
+%% PostFulfillmentStatusSpecification.
+%%
+%% <ul> <li> Success message - Returned if the Lambda function completes
+%% successfully and the intent state is fulfilled or ready fulfillment if the
+%% message is present.
+%%
+%% </li> <li> Failed message - The failed message is returned if the Lambda
+%% function throws an exception or if the Lambda function returns a failed
+%% intent state without a message.
+%%
+%% </li> <li> Timeout message - If you don't configure a timeout message and
+%% a timeout, and the Lambda function doesn't return within 30 seconds, the
+%% timeout message is returned. If you configure a timeout, the timeout
+%% message is returned when the period times out.
+%%
+%% </li> </ul> For more information, see Completion message.
 recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
 recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
@@ -169,11 +188,55 @@ recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Sends user input to Amazon Lex.
+%% @doc Sends user input to Amazon Lex V2.
 %%
 %% You can send text or speech. Clients use this API to send text and audio
-%% requests to Amazon Lex at runtime. Amazon Lex interprets the user input
-%% using the machine learning model built for the bot.
+%% requests to Amazon Lex V2 at runtime. Amazon Lex V2 interprets the user
+%% input using the machine learning model built for the bot.
+%%
+%% The following request fields must be compressed with gzip and then base64
+%% encoded before you send them to Amazon Lex V2.
+%%
+%% <ul> <li> requestAttributes
+%%
+%% </li> <li> sessionState
+%%
+%% </li> </ul> The following response fields are compressed using gzip and
+%% then base64 encoded by Amazon Lex V2. Before you can use these fields, you
+%% must decode and decompress them.
+%%
+%% <ul> <li> inputTranscript
+%%
+%% </li> <li> interpretations
+%%
+%% </li> <li> messages
+%%
+%% </li> <li> requestAttributes
+%%
+%% </li> <li> sessionState
+%%
+%% </li> </ul> The example contains a Java application that compresses and
+%% encodes a Java object to send to Amazon Lex V2, and a second that decodes
+%% and decompresses a response from Amazon Lex V2.
+%%
+%% If the optional post-fulfillment response is specified, the messages are
+%% returned as follows. For more information, see
+%% PostFulfillmentStatusSpecification.
+%%
+%% <ul> <li> Success message - Returned if the Lambda function completes
+%% successfully and the intent state is fulfilled or ready fulfillment if the
+%% message is present.
+%%
+%% </li> <li> Failed message - The failed message is returned if the Lambda
+%% function throws an exception or if the Lambda function returns a failed
+%% intent state without a message.
+%%
+%% </li> <li> Timeout message - If you don't configure a timeout message and
+%% a timeout, and the Lambda function doesn't return within 30 seconds, the
+%% timeout message is returned. If you configure a timeout, the timeout
+%% message is returned when the period times out.
+%%
+%% </li> </ul> For more information, see Completion message.
 recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
 recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
@@ -228,8 +291,47 @@ recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Opti
 %% audio, text, or DTMF input in real time.
 %%
 %% After your application starts a conversation, users send input to Amazon
-%% Lex as a stream of events. Amazon Lex processes the incoming events and
-%% responds with streaming text or audio events.
+%% Lex V2 as a stream of events. Amazon Lex V2 processes the incoming events
+%% and responds with streaming text or audio events.
+%%
+%% Audio input must be in the following format: `audio/lpcm sample-rate=8000
+%% sample-size-bits=16 channel-count=1; is-big-endian=false'.
+%%
+%% If the optional post-fulfillment response is specified, the messages are
+%% returned as follows. For more information, see
+%% PostFulfillmentStatusSpecification.
+%%
+%% <ul> <li> Success message - Returned if the Lambda function completes
+%% successfully and the intent state is fulfilled or ready fulfillment if the
+%% message is present.
+%%
+%% </li> <li> Failed message - The failed message is returned if the Lambda
+%% function throws an exception or if the Lambda function returns a failed
+%% intent state without a message.
+%%
+%% </li> <li> Timeout message - If you don't configure a timeout message and
+%% a timeout, and the Lambda function doesn't return within 30 seconds, the
+%% timeout message is returned. If you configure a timeout, the timeout
+%% message is returned when the period times out.
+%%
+%% </li> </ul> For more information, see Completion message.
+%%
+%% If the optional update message is configured, it is played at the
+%% specified frequency while the Lambda function is running and the update
+%% message state is active. If the fulfillment update message is not active,
+%% the Lambda function runs with a 30 second timeout.
+%%
+%% For more information, see Update message
+%%
+%% The `StartConversation' operation is supported only in the following SDKs:
+%%
+%% <ul> <li> AWS SDK for C++
+%%
+%% </li> <li> AWS SDK for Java V2
+%%
+%% </li> <li> AWS SDK for Ruby V3
+%%
+%% </li> </ul>
 start_conversation(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     start_conversation(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
 start_conversation(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
@@ -289,6 +391,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

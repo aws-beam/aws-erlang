@@ -206,9 +206,10 @@ activate_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
 %% already exist. You can't convert a public hosted zone into a private
 %% hosted zone.
 %%
-%% If you want to associate a VPC that was created by using one AWS account
-%% with a private hosted zone that was created by using a different account,
-%% the AWS account that created the private hosted zone must first submit a
+%% If you want to associate a VPC that was created by using one Amazon Web
+%% Services account with a private hosted zone that was created by using a
+%% different account, the Amazon Web Services account that created the
+%% private hosted zone must first submit a
 %% `CreateVPCAssociationAuthorization' request. Then the account that created
 %% the VPC must submit an `AssociateVPCWithHostedZone' request.
 associate_vpc_with_hosted_zone(Client, HostedZoneId, Input) ->
@@ -289,9 +290,9 @@ associate_vpc_with_hosted_zone(Client, HostedZoneId, Input0, Options0) ->
 %% </li> <li> `DELETE': Deletes an existing resource record set that has the
 %% specified values.
 %%
-%% </li> <li> `UPSERT': If a resource record set does not already exist, AWS
-%% creates it. If a resource set does exist, Route 53 updates it with the
-%% values in the request.
+%% </li> <li> `UPSERT': If a resource record set does not already exist,
+%% Amazon Web Services creates it. If a resource set does exist, Route 53
+%% updates it with the values in the request.
 %%
 %% </li> </ul> Syntaxes for Creating, Updating, and Deleting Resource Record
 %% Sets
@@ -345,7 +346,7 @@ change_resource_record_sets(Client, HostedZoneId, Input0, Options0) ->
 %% @doc Adds, edits, or deletes tags for a health check or a hosted zone.
 %%
 %% For information about using tags for cost allocation, see Using Cost
-%% Allocation Tags in the AWS Billing and Cost Management User Guide.
+%% Allocation Tags in the Billing and Cost Management User Guide.
 change_tags_for_resource(Client, ResourceId, ResourceType, Input) ->
     change_tags_for_resource(Client, ResourceId, ResourceType, Input, []).
 change_tags_for_resource(Client, ResourceId, ResourceType, Input0, Options0) ->
@@ -481,6 +482,9 @@ create_health_check(Client, Input0, Options0) ->
 %% means that the NS and SOA records are not yet available on all Route 53
 %% DNS servers. When the NS and SOA records are available, the status of the
 %% zone changes to `INSYNC'.
+%%
+%% The `CreateHostedZone' request requires the caller to have an
+%% `ec2:DescribeVpcs' permission.
 create_hosted_zone(Client, Input) ->
     create_hosted_zone(Client, Input, []).
 create_hosted_zone(Client, Input0, Options0) ->
@@ -588,8 +592,9 @@ create_key_signing_key(Client, Input0, Options0) ->
 %%
 %% <ul> <li> You must create the log group in the us-east-1 region.
 %%
-%% </li> <li> You must use the same AWS account to create the log group and
-%% the hosted zone that you want to configure query logging for.
+%% </li> <li> You must use the same Amazon Web Services account to create the
+%% log group and the hosted zone that you want to configure query logging
+%% for.
 %%
 %% </li> <li> When you create log groups for query logging, we recommend that
 %% you use a consistent prefix, for example:
@@ -597,11 +602,11 @@ create_key_signing_key(Client, Input0, Options0) ->
 %% `/aws/route53/hosted zone name '
 %%
 %% In the next step, you'll create a resource policy, which controls access
-%% to one or more log groups and the associated AWS resources, such as Route
-%% 53 hosted zones. There's a limit on the number of resource policies that
-%% you can create, so we recommend that you use a consistent prefix so you
-%% can use the same resource policy for all the log groups that you create
-%% for query logging.
+%% to one or more log groups and the associated Amazon Web Services
+%% resources, such as Route 53 hosted zones. There's a limit on the number of
+%% resource policies that you can create, so we recommend that you use a
+%% consistent prefix so you can use the same resource policy for all the log
+%% groups that you create for query logging.
 %%
 %% </li> </ul> </li> <li> Create a CloudWatch Logs resource policy, and give
 %% it the permissions that Route 53 needs to create log streams and to send
@@ -614,7 +619,8 @@ create_key_signing_key(Client, Input0, Options0) ->
 %% `arn:aws:logs:us-east-1:123412341234:log-group:/aws/route53/*'
 %%
 %% You can't use the CloudWatch console to create or edit a resource policy.
-%% You must use the CloudWatch API, one of the AWS SDKs, or the AWS CLI.
+%% You must use the CloudWatch API, one of the Amazon Web Services SDKs, or
+%% the CLI.
 %%
 %% </li> </ol> </dd> <dt>Log Streams and Edge Locations</dt> <dd> When Route
 %% 53 finishes creating the configuration for DNS query logging, it does the
@@ -702,7 +708,8 @@ create_query_logging_config(Client, Input0, Options0) ->
     end.
 
 %% @doc Creates a delegation set (a group of four name servers) that can be
-%% reused by multiple hosted zones that were created by the same AWS account.
+%% reused by multiple hosted zones that were created by the same Amazon Web
+%% Services account.
 %%
 %% You can also create a reusable delegation set that uses the four name
 %% servers that are associated with an existing hosted zone. Specify the
@@ -924,9 +931,9 @@ create_traffic_policy_version(Client, Id, Input0, Options0) ->
         Result
     end.
 
-%% @doc Authorizes the AWS account that created a specified VPC to submit an
-%% `AssociateVPCWithHostedZone' request to associate the VPC with a specified
-%% hosted zone that was created by a different account.
+%% @doc Authorizes the Amazon Web Services account that created a specified
+%% VPC to submit an `AssociateVPCWithHostedZone' request to associate the VPC
+%% with a specified hosted zone that was created by a different account.
 %%
 %% To submit a `CreateVPCAssociationAuthorization' request, you must use the
 %% account that created the hosted zone. After you authorize the association,
@@ -994,12 +1001,11 @@ deactivate_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
 %% failover configuration. For more information, see Replacing and Deleting
 %% Health Checks in the Amazon Route 53 Developer Guide.
 %%
-%% If you're using AWS Cloud Map and you configured Cloud Map to create a
-%% Route 53 health check when you register an instance, you can't use the
-%% Route 53 `DeleteHealthCheck' command to delete the health check. The
-%% health check is deleted automatically when you deregister the instance;
-%% there can be a delay of several hours before the health check is deleted
-%% from Route 53.
+%% If you're using Cloud Map and you configured Cloud Map to create a Route
+%% 53 health check when you register an instance, you can't use the Route 53
+%% `DeleteHealthCheck' command to delete the health check. The health check
+%% is deleted automatically when you deregister the instance; there can be a
+%% delay of several hours before the health check is deleted from Route 53.
 delete_health_check(Client, HealthCheckId, Input) ->
     delete_health_check(Client, HealthCheckId, Input, []).
 delete_health_check(Client, HealthCheckId, Input0, Options0) ->
@@ -1024,10 +1030,10 @@ delete_health_check(Client, HealthCheckId, Input0, Options0) ->
 
 %% @doc Deletes a hosted zone.
 %%
-%% If the hosted zone was created by another service, such as AWS Cloud Map,
-%% see Deleting Public Hosted Zones That Were Created by Another Service in
-%% the Amazon Route 53 Developer Guide for information about how to delete
-%% it. (The process is the same for public and private hosted zones that were
+%% If the hosted zone was created by another service, such as Cloud Map, see
+%% Deleting Public Hosted Zones That Were Created by Another Service in the
+%% Amazon Route 53 Developer Guide for information about how to delete it.
+%% (The process is the same for public and private hosted zones that were
 %% created by another service.)
 %%
 %% If you want to keep your domain registration but you want to stop routing
@@ -1067,7 +1073,7 @@ delete_health_check(Client, HealthCheckId, Input0, Options0) ->
 %% hosted zone.
 %%
 %% </li> <li> Use the `ListHostedZones' action to get a list of the hosted
-%% zones associated with the current AWS account.
+%% zones associated with the current Amazon Web Services account.
 %%
 %% </li> </ul>
 delete_hosted_zone(Client, Id, Input) ->
@@ -1095,7 +1101,7 @@ delete_hosted_zone(Client, Id, Input0, Options0) ->
 %% @doc Deletes a key-signing key (KSK).
 %%
 %% Before you can delete a KSK, you must deactivate it. The KSK must be
-%% deactived before you can delete it regardless of whether the hosted zone
+%% deactivated before you can delete it regardless of whether the hosted zone
 %% is enabled for DNSSEC signing.
 delete_key_signing_key(Client, HostedZoneId, Name, Input) ->
     delete_key_signing_key(Client, HostedZoneId, Name, Input, []).
@@ -1250,9 +1256,9 @@ delete_traffic_policy_instance(Client, Id, Input0, Options0) ->
 %% You must use the account that created the hosted zone to submit a
 %% `DeleteVPCAssociationAuthorization' request.
 %%
-%% Sending this request only prevents the AWS account that created the VPC
-%% from associating the VPC with the Amazon Route 53 hosted zone in the
-%% future. If the VPC is already associated with the hosted zone,
+%% Sending this request only prevents the Amazon Web Services account that
+%% created the VPC from associating the VPC with the Amazon Route 53 hosted
+%% zone in the future. If the VPC is already associated with the hosted zone,
 %% `DeleteVPCAssociationAuthorization' won't disassociate the VPC from the
 %% hosted zone. If you want to delete an existing association, use
 %% `DisassociateVPCFromHostedZone'.
@@ -1319,11 +1325,11 @@ disable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options0) ->
 %% either the account that created the hosted zone or the account that
 %% created the Amazon VPC.
 %%
-%% </li> <li> Some services, such as AWS Cloud Map and Amazon Elastic File
-%% System (Amazon EFS) automatically create hosted zones and associate VPCs
-%% with the hosted zones. A service can create a hosted zone using your
-%% account or using its own account. You can disassociate a VPC from a hosted
-%% zone only if the service created the hosted zone using your account.
+%% </li> <li> Some services, such as Cloud Map and Amazon Elastic File System
+%% (Amazon EFS) automatically create hosted zones and associate VPCs with the
+%% hosted zones. A service can create a hosted zone using your account or
+%% using its own account. You can disassociate a VPC from a hosted zone only
+%% if the service created the hosted zone using your account.
 %%
 %% When you run DisassociateVPCFromHostedZone, if the hosted zone has a value
 %% for `OwningAccount', you can use `DisassociateVPCFromHostedZone'. If the
@@ -1382,10 +1388,10 @@ enable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options0) ->
 %% For the default limit, see Limits in the Amazon Route 53 Developer Guide.
 %% To request a higher limit, open a case.
 %%
-%% You can also view account limits in AWS Trusted Advisor. Sign in to the
-%% AWS Management Console and open the Trusted Advisor console at
-%% https://console.aws.amazon.com/trustedadvisor/. Then choose Service limits
-%% in the navigation pane.
+%% You can also view account limits in Amazon Web Services Trusted Advisor.
+%% Sign in to the Amazon Web Services Management Console and open the Trusted
+%% Advisor console at https://console.aws.amazon.com/trustedadvisor/. Then
+%% choose Service limits in the navigation pane.
 get_account_limit(Client, Type)
   when is_map(Client) ->
     get_account_limit(Client, Type, #{}, #{}).
@@ -1446,9 +1452,9 @@ get_change(Client, Id, QueryMap, HeadersMap, Options0)
 %% retrieves information that is already available to the public.
 %%
 %% `GetCheckerIpRanges' still works, but we recommend that you download
-%% ip-ranges.json, which includes IP address ranges for all AWS services. For
-%% more information, see IP Address Ranges of Amazon Route 53 Servers in the
-%% Amazon Route 53 Developer Guide.
+%% ip-ranges.json, which includes IP address ranges for all Amazon Web
+%% Services services. For more information, see IP Address Ranges of Amazon
+%% Route 53 Servers in the Amazon Route 53 Developer Guide.
 get_checker_ip_ranges(Client)
   when is_map(Client) ->
     get_checker_ip_ranges(Client, #{}, #{}).
@@ -1569,7 +1575,7 @@ get_health_check(Client, HealthCheckId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the number of health checks that are associated with the
-%% current AWS account.
+%% current Amazon Web Services account.
 get_health_check_count(Client)
   when is_map(Client) ->
     get_health_check_count(Client, #{}, #{}).
@@ -1616,6 +1622,10 @@ get_health_check_last_failure_reason(Client, HealthCheckId, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets status of a specified health check.
+%%
+%% This API is intended for use during development to diagnose behavior. It
+%% doesn’t support production use-cases with high query rates that require
+%% immediate and actionable responses.
 get_health_check_status(Client, HealthCheckId)
   when is_map(Client) ->
     get_health_check_status(Client, HealthCheckId, #{}, #{}).
@@ -1663,7 +1673,7 @@ get_hosted_zone(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the number of hosted zones that are associated with the
-%% current AWS account.
+%% current Amazon Web Services account.
 get_hosted_zone_count(Client)
   when is_map(Client) ->
     get_hosted_zone_count(Client, #{}, #{}).
@@ -1850,7 +1860,7 @@ get_traffic_policy_instance(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the number of traffic policy instances that are associated with
-%% the current AWS account.
+%% the current Amazon Web Services account.
 get_traffic_policy_instance_count(Client)
   when is_map(Client) ->
     get_traffic_policy_instance_count(Client, #{}, #{}).
@@ -1914,7 +1924,7 @@ list_geo_locations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieve a list of the health checks that are associated with the
-%% current AWS account.
+%% current Amazon Web Services account.
 list_health_checks(Client)
   when is_map(Client) ->
     list_health_checks(Client, #{}, #{}).
@@ -1943,7 +1953,7 @@ list_health_checks(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of the public and private hosted zones that are
-%% associated with the current AWS account.
+%% associated with the current Amazon Web Services account.
 %%
 %% The response includes a `HostedZones' child element for each hosted zone.
 %%
@@ -1981,7 +1991,7 @@ list_hosted_zones(Client, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves a list of your hosted zones in lexicographic order.
 %%
 %% The response includes a `HostedZones' child element for each hosted zone
-%% created by the current AWS account.
+%% created by the current Amazon Web Services account.
 %%
 %% `ListHostedZonesByName' sorts hosted zones by name with the labels
 %% reversed. For example:
@@ -2019,7 +2029,8 @@ list_hosted_zones(Client, QueryMap, HeadersMap, Options0)
 %% produced the current response.
 %%
 %% </li> <li> If the value of `IsTruncated' in the response is true, there
-%% are more hosted zones associated with the current AWS account.
+%% are more hosted zones associated with the current Amazon Web Services
+%% account.
 %%
 %% If `IsTruncated' is false, this response includes the last hosted zone
 %% that is associated with the current account. The `NextDNSName' element and
@@ -2027,10 +2038,11 @@ list_hosted_zones(Client, QueryMap, HeadersMap, Options0)
 %%
 %% </li> <li> The `NextDNSName' and `NextHostedZoneId' elements in the
 %% response contain the domain name and the hosted zone ID of the next hosted
-%% zone that is associated with the current AWS account. If you want to list
-%% more hosted zones, make another call to `ListHostedZonesByName', and
-%% specify the value of `NextDNSName' and `NextHostedZoneId' in the `dnsname'
-%% and `hostedzoneid' parameters, respectively.
+%% zone that is associated with the current Amazon Web Services account. If
+%% you want to list more hosted zones, make another call to
+%% `ListHostedZonesByName', and specify the value of `NextDNSName' and
+%% `NextHostedZoneId' in the `dnsname' and `hostedzoneid' parameters,
+%% respectively.
 %%
 %% </li> </ul>
 list_hosted_zones_by_name(Client)
@@ -2062,20 +2074,21 @@ list_hosted_zones_by_name(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the private hosted zones that a specified VPC is associated
-%% with, regardless of which AWS account or AWS service owns the hosted
-%% zones.
+%% with, regardless of which Amazon Web Services account or Amazon Web
+%% Services service owns the hosted zones.
 %%
 %% The `HostedZoneOwner' structure in the response contains one of the
 %% following values:
 %%
 %% <ul> <li> An `OwningAccount' element, which contains the account number of
-%% either the current AWS account or another AWS account. Some services, such
-%% as AWS Cloud Map, create hosted zones using the current account.
+%% either the current Amazon Web Services account or another Amazon Web
+%% Services account. Some services, such as Cloud Map, create hosted zones
+%% using the current account.
 %%
-%% </li> <li> An `OwningService' element, which identifies the AWS service
-%% that created and owns the hosted zone. For example, if a hosted zone was
-%% created by Amazon Elastic File System (Amazon EFS), the value of `Owner'
-%% is `efs.amazonaws.com'.
+%% </li> <li> An `OwningService' element, which identifies the Amazon Web
+%% Services service that created and owns the hosted zone. For example, if a
+%% hosted zone was created by Amazon Elastic File System (Amazon EFS), the
+%% value of `Owner' is `efs.amazonaws.com'.
 %%
 %% </li> </ul>
 list_hosted_zones_by_vpc(Client, VPCId, VPCRegion)
@@ -2108,8 +2121,8 @@ list_hosted_zones_by_vpc(Client, VPCId, VPCRegion, QueryMap, HeadersMap, Options
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the configurations for DNS query logging that are associated
-%% with the current AWS account or the configuration that is associated with
-%% a specified hosted zone.
+%% with the current Amazon Web Services account or the configuration that is
+%% associated with a specified hosted zone.
 %%
 %% For more information about DNS query logs, see CreateQueryLoggingConfig.
 %% Additional information, including the format of DNS query logs, appears in
@@ -2144,7 +2157,7 @@ list_query_logging_configs(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the resource record sets in a specified hosted zone.
 %%
-%% `ListResourceRecordSets' returns up to 100 resource record sets at a time
+%% `ListResourceRecordSets' returns up to 300 resource record sets at a time
 %% in ASCII order, beginning at a position specified by the `name' and `type'
 %% elements.
 %%
@@ -2234,7 +2247,7 @@ list_resource_record_sets(Client, HostedZoneId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of the reusable delegation sets that are associated
-%% with the current AWS account.
+%% with the current Amazon Web Services account.
 list_reusable_delegation_sets(Client)
   when is_map(Client) ->
     list_reusable_delegation_sets(Client, #{}, #{}).
@@ -2265,7 +2278,7 @@ list_reusable_delegation_sets(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists tags for one health check or hosted zone.
 %%
 %% For information about using tags for cost allocation, see Using Cost
-%% Allocation Tags in the AWS Billing and Cost Management User Guide.
+%% Allocation Tags in the Billing and Cost Management User Guide.
 list_tags_for_resource(Client, ResourceId, ResourceType)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceId, ResourceType, #{}, #{}).
@@ -2291,7 +2304,7 @@ list_tags_for_resource(Client, ResourceId, ResourceType, QueryMap, HeadersMap, O
 %% @doc Lists tags for up to 10 health checks or hosted zones.
 %%
 %% For information about using tags for cost allocation, see Using Cost
-%% Allocation Tags in the AWS Billing and Cost Management User Guide.
+%% Allocation Tags in the Billing and Cost Management User Guide.
 list_tags_for_resources(Client, ResourceType, Input) ->
     list_tags_for_resources(Client, ResourceType, Input, []).
 list_tags_for_resources(Client, ResourceType, Input0, Options0) ->
@@ -2315,7 +2328,7 @@ list_tags_for_resources(Client, ResourceType, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about the latest version for every traffic policy
-%% that is associated with the current AWS account.
+%% that is associated with the current Amazon Web Services account.
 %%
 %% Policies are listed in the order that they were created in.
 %%
@@ -2349,7 +2362,7 @@ list_traffic_policies(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the traffic policy instances that you created
-%% by using the current AWS account.
+%% by using the current Amazon Web Services account.
 %%
 %% After you submit an `UpdateTrafficPolicyInstance' request, there's a brief
 %% delay while Amazon Route 53 creates the resource record sets that are
@@ -2541,6 +2554,8 @@ list_vpc_association_authorizations(Client, HostedZoneId, QueryMap, HeadersMap, 
 %%
 %% You can optionally specify the IP address of a DNS resolver, an EDNS0
 %% client subnet IP address, and a subnet mask.
+%%
+%% This call only supports querying public hosted zones.
 test_dns_answer(Client, HostedZoneId, RecordName, RecordType)
   when is_map(Client) ->
     test_dns_answer(Client, HostedZoneId, RecordName, RecordType, #{}, #{}).
@@ -2725,6 +2740,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

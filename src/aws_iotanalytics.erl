@@ -1,10 +1,10 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS IoT Analytics allows you to collect large amounts of device data,
+%% @doc IoT Analytics allows you to collect large amounts of device data,
 %% process messages, and store them.
 %%
-%% You can then query the data and run sophisticated analytics on it. AWS IoT
+%% You can then query the data and run sophisticated analytics on it. IoT
 %% Analytics enables advanced data exploration through integration with
 %% Jupyter Notebooks and data visualization through integration with Amazon
 %% QuickSight.
@@ -17,15 +17,15 @@
 %% IoT data is often only meaningful in the context of other data from
 %% external sources.
 %%
-%% AWS IoT Analytics automates the steps required to analyze data from IoT
-%% devices. AWS IoT Analytics filters, transforms, and enriches IoT data
-%% before storing it in a time-series data store for analysis. You can set up
-%% the service to collect only the data you need from your devices, apply
+%% IoT Analytics automates the steps required to analyze data from IoT
+%% devices. IoT Analytics filters, transforms, and enriches IoT data before
+%% storing it in a time-series data store for analysis. You can set up the
+%% service to collect only the data you need from your devices, apply
 %% mathematical transforms to process the data, and enrich the data with
 %% device-specific metadata such as device type and location before storing
 %% it. Then, you can analyze your data by running queries using the built-in
 %% SQL query engine, or perform more complex analytics and machine learning
-%% inference. AWS IoT Analytics includes pre-built models for common IoT use
+%% inference. IoT Analytics includes pre-built models for common IoT use
 %% cases so you can answer questions like which devices are about to fail or
 %% which customers are at risk of abandoning their wearable devices.
 -module(aws_iotanalytics).
@@ -164,7 +164,7 @@ cancel_pipeline_reprocessing(Client, PipelineName, ReprocessingId, Input0, Optio
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a channel.
+%% @doc Used to create a channel.
 %%
 %% A channel collects data from an MQTT topic and archives the raw,
 %% unprocessed messages before publishing the data to a pipeline.
@@ -190,7 +190,7 @@ create_channel(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a dataset.
+%% @doc Used to create a dataset.
 %%
 %% A dataset stores data retrieved from a data store by applying a
 %% `queryAction' (a SQL query) or a `containerAction' (executing a
@@ -220,7 +220,7 @@ create_dataset(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates the content of a data set by applying a `queryAction' (a SQL
+%% @doc Creates the content of a dataset by applying a `queryAction' (a SQL
 %% query) or a `containerAction' (executing a containerized application).
 create_dataset_content(Client, DatasetName, Input) ->
     create_dataset_content(Client, DatasetName, Input, []).
@@ -491,8 +491,7 @@ describe_datastore(Client, DatastoreName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the current settings of the AWS IoT Analytics logging
-%% options.
+%% @doc Retrieves the current settings of the IoT Analytics logging options.
 describe_logging_options(Client)
   when is_map(Client) ->
     describe_logging_options(Client, #{}, #{}).
@@ -538,7 +537,7 @@ describe_pipeline(Client, PipelineName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the contents of a data set as presigned URIs.
+%% @doc Retrieves the contents of a dataset as presigned URIs.
 get_dataset_content(Client, DatasetName)
   when is_map(Client) ->
     get_dataset_content(Client, DatasetName, #{}, #{}).
@@ -593,7 +592,7 @@ list_channels(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists information about data set contents that have been created.
+%% @doc Lists information about dataset contents that have been created.
 list_dataset_contents(Client, DatasetName)
   when is_map(Client) ->
     list_dataset_contents(Client, DatasetName, #{}, #{}).
@@ -623,7 +622,7 @@ list_dataset_contents(Client, DatasetName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about data sets.
+%% @doc Retrieves information about datasets.
 list_datasets(Client)
   when is_map(Client) ->
     list_datasets(Client, #{}, #{}).
@@ -734,7 +733,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Sets or updates the AWS IoT Analytics logging options.
+%% @doc Sets or updates the IoT Analytics logging options.
 %%
 %% If you update the value of any `loggingOptions' field, it takes up to one
 %% minute for the change to take effect. Also, if you change the policy
@@ -893,7 +892,7 @@ untag_resource(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the settings of a channel.
+%% @doc Used to update the settings of a channel.
 update_channel(Client, ChannelName, Input) ->
     update_channel(Client, ChannelName, Input, []).
 update_channel(Client, ChannelName, Input0, Options0) ->
@@ -916,7 +915,7 @@ update_channel(Client, ChannelName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the settings of a data set.
+%% @doc Updates the settings of a dataset.
 update_dataset(Client, DatasetName, Input) ->
     update_dataset(Client, DatasetName, Input, []).
 update_dataset(Client, DatasetName, Input0, Options0) ->
@@ -939,7 +938,7 @@ update_dataset(Client, DatasetName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the settings of a data store.
+%% @doc Used to update the settings of a data store.
 update_datastore(Client, DatastoreName, Input) ->
     update_datastore(Client, DatastoreName, Input, []).
 update_datastore(Client, DatastoreName, Input0, Options0) ->
@@ -1024,6 +1023,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

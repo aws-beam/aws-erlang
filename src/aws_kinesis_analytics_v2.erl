@@ -45,14 +45,20 @@
          describe_application/3,
          describe_application_snapshot/2,
          describe_application_snapshot/3,
+         describe_application_version/2,
+         describe_application_version/3,
          discover_input_schema/2,
          discover_input_schema/3,
          list_application_snapshots/2,
          list_application_snapshots/3,
+         list_application_versions/2,
+         list_application_versions/3,
          list_applications/2,
          list_applications/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         rollback_application/2,
+         rollback_application/3,
          start_application/2,
          start_application/3,
          stop_application/2,
@@ -62,7 +68,9 @@
          untag_resource/2,
          untag_resource/3,
          update_application/2,
-         update_application/3]).
+         update_application/3,
+         update_application_maintenance_configuration/2,
+         update_application_maintenance_configuration/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -101,7 +109,7 @@ add_application_input(Client, Input, Options)
 %%
 %% An input processor pre-processes records on the input stream before the
 %% application's SQL code executes. Currently, the only input processor
-%% available is AWS Lambda.
+%% available is Amazon Lambda.
 add_application_input_processing_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_input_processing_configuration(Client, Input, []).
@@ -114,7 +122,7 @@ add_application_input_processing_configuration(Client, Input, Options)
 %%
 %% If you want Kinesis Data Analytics to deliver data from an in-application
 %% stream within your application to an external destination (such as an
-%% Kinesis data stream, a Kinesis Data Firehose delivery stream, or an AWS
+%% Kinesis data stream, a Kinesis Data Firehose delivery stream, or an Amazon
 %% Lambda function), you add the relevant configuration to your application
 %% using this operation. You can configure one or more outputs for your
 %% application. Each output configuration maps an in-application stream and
@@ -189,10 +197,14 @@ create_application(Client, Input, Options)
 %% Currently, the only available extension is the Apache Flink dashboard.
 %%
 %% The IAM role or user used to call this API defines the permissions to
-%% access the extension. Once the presigned URL is created, no additional
+%% access the extension. After the presigned URL is created, no additional
 %% permission is required to access this URL. IAM authorization policies for
 %% this API are also enforced for every HTTP request that attempts to connect
 %% to the extension.
+%%
+%% You control the amount of time that the URL will be valid using the
+%% `SessionExpirationDurationInSeconds' parameter. If you do not provide this
+%% parameter, the returned URL is valid for twelve hours.
 %%
 %% The URL that you get from a call to CreateApplicationPresignedUrl must be
 %% used within 3 minutes to be valid. If you first try to use the URL after
@@ -303,6 +315,21 @@ describe_application_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeApplicationSnapshot">>, Input, Options).
 
+%% @doc Provides a detailed description of a specified version of the
+%% application.
+%%
+%% To see a list of all the versions of an application, invoke the
+%% `ListApplicationVersions' operation.
+%%
+%% This operation is supported only for Amazon Kinesis Data Analytics for
+%% Apache Flink.
+describe_application_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_application_version(Client, Input, []).
+describe_application_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeApplicationVersion">>, Input, Options).
+
 %% @doc Infers a schema for a SQL-based Kinesis Data Analytics application by
 %% evaluating sample records on the specified streaming source (Kinesis data
 %% stream or Kinesis Data Firehose delivery stream) or Amazon S3 object.
@@ -329,6 +356,24 @@ list_application_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplicationSnapshots">>, Input, Options).
 
+%% @doc Lists all the versions for the specified application, including
+%% versions that were rolled back.
+%%
+%% The response also includes a summary of the configuration associated with
+%% each version.
+%%
+%% To get the complete description of a specific application version, invoke
+%% the `DescribeApplicationVersion' operation.
+%%
+%% This operation is supported only for Amazon Kinesis Data Analytics for
+%% Apache Flink.
+list_application_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_application_versions(Client, Input, []).
+list_application_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListApplicationVersions">>, Input, Options).
+
 %% @doc Returns a list of Kinesis Data Analytics applications in your
 %% account.
 %%
@@ -353,6 +398,27 @@ list_tags_for_resource(Client, Input)
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Reverts the application to the previous running version.
+%%
+%% You can roll back an application if you suspect it is stuck in a transient
+%% status.
+%%
+%% You can roll back an application only if it is in the `UPDATING' or
+%% `AUTOSCALING' status.
+%%
+%% When you rollback an application, it loads state data from the last
+%% successful snapshot. If the application has no snapshots, Kinesis Data
+%% Analytics rejects the rollback request.
+%%
+%% This action is not supported for Kinesis Data Analytics for SQL
+%% applications.
+rollback_application(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    rollback_application(Client, Input, []).
+rollback_application(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RollbackApplication">>, Input, Options).
 
 %% @doc Starts the specified Kinesis Data Analytics application.
 %%
@@ -422,6 +488,36 @@ update_application(Client, Input)
 update_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateApplication">>, Input, Options).
+
+%% @doc Updates the maintenance configuration of the Kinesis Data Analytics
+%% application.
+%%
+%% You can invoke this operation on an application that is in one of the two
+%% following states: `READY' or `RUNNING'. If you invoke it when the
+%% application is in a state other than these two states, it throws a
+%% `ResourceInUseException'. The service makes use of the updated
+%% configuration the next time it schedules maintenance for the application.
+%% If you invoke this operation after the service schedules maintenance, the
+%% service will apply the configuration update the next time it schedules
+%% maintenance for the application. This means that you might not see the
+%% maintenance configuration update applied to the maintenance process that
+%% follows a successful invocation of this operation, but to the following
+%% maintenance process instead.
+%%
+%% To see the current maintenance configuration of your application, invoke
+%% the `DescribeApplication' operation.
+%%
+%% For information about application maintenance, see Kinesis Data Analytics
+%% for Apache Flink Maintenance.
+%%
+%% This operation is supported only for Amazon Kinesis Data Analytics for
+%% Apache Flink.
+update_application_maintenance_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_application_maintenance_configuration(Client, Input, []).
+update_application_maintenance_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateApplicationMaintenanceConfiguration">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

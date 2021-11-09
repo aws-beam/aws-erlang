@@ -49,7 +49,9 @@
          untag_resource/3,
          untag_resource/4,
          update_ledger/3,
-         update_ledger/4]).
+         update_ledger/4,
+         update_ledger_permissions_mode/3,
+         update_ledger_permissions_mode/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -86,7 +88,7 @@ cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new ledger in your AWS account.
+%% @doc Creates a new ledger in your account in the current Region.
 create_ledger(Client, Input) ->
     create_ledger(Client, Input, []).
 create_ledger(Client, Input0, Options0) ->
@@ -114,10 +116,8 @@ create_ledger(Client, Input0, Options0) ->
 %% This action is irreversible.
 %%
 %% If deletion protection is enabled, you must first disable it before you
-%% can delete the ledger using the QLDB API or the AWS Command Line Interface
-%% (AWS CLI). You can disable it by calling the `UpdateLedger' operation to
-%% set the flag to `false'. The QLDB console disables deletion protection for
-%% you when you use it to delete a ledger.
+%% can delete the ledger. You can disable it by calling the `UpdateLedger'
+%% operation to set the flag to `false'.
 delete_ledger(Client, Name, Input) ->
     delete_ledger(Client, Name, Input, []).
 delete_ledger(Client, Name, Input0, Options0) ->
@@ -144,8 +144,12 @@ delete_ledger(Client, Name, Input0, Options0) ->
 %% stream.
 %%
 %% The output includes the Amazon Resource Name (ARN), stream name, current
-%% status, creation time, and the parameters of your original stream creation
+%% status, creation time, and the parameters of the original stream creation
 %% request.
+%%
+%% This action does not return any expired journal streams. For more
+%% information, see Expiration for terminal streams in the Amazon QLDB
+%% Developer Guide.
 describe_journal_kinesis_stream(Client, LedgerName, StreamId)
   when is_map(Client) ->
     describe_journal_kinesis_stream(Client, LedgerName, StreamId, #{}, #{}).
@@ -169,11 +173,11 @@ describe_journal_kinesis_stream(Client, LedgerName, StreamId, QueryMap, HeadersM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a journal export job, including the ledger
-%% name, export ID, when it was created, current status, and its start and
-%% end time export parameters.
+%% name, export ID, creation time, current status, and the parameters of the
+%% original export creation request.
 %%
 %% This action does not return any expired export jobs. For more information,
-%% see Export Job Expiration in the Amazon QLDB Developer Guide.
+%% see Export job expiration in the Amazon QLDB Developer Guide.
 %%
 %% If the export job with the given `ExportId' doesn't exist, then throws
 %% `ResourceNotFoundException'.
@@ -202,8 +206,8 @@ describe_journal_s3_export(Client, ExportId, Name, QueryMap, HeadersMap, Options
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about a ledger, including its state and when it
-%% was created.
+%% @doc Returns information about a ledger, including its state, permissions
+%% mode, encryption at rest settings, and when it was created.
 describe_ledger(Client, Name)
   when is_map(Client) ->
     describe_ledger(Client, Name, #{}, #{}).
@@ -359,6 +363,10 @@ get_revision(Client, Name, Input0, Options0) ->
 %% The output of each stream descriptor includes the same details that are
 %% returned by `DescribeJournalKinesisStream'.
 %%
+%% This action does not return any expired journal streams. For more
+%% information, see Expiration for terminal streams in the Amazon QLDB
+%% Developer Guide.
+%%
 %% This action returns a maximum of `MaxResults' items. It is paginated so
 %% that you can retrieve all the items by calling
 %% `ListJournalKinesisStreamsForLedger' multiple times.
@@ -390,14 +398,14 @@ list_journal_kinesis_streams_for_ledger(Client, LedgerName, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns an array of journal export job descriptions for all ledgers
-%% that are associated with the current AWS account and Region.
+%% that are associated with the current account and Region.
 %%
 %% This action returns a maximum of `MaxResults' items, and is paginated so
 %% that you can retrieve all the items by calling `ListJournalS3Exports'
 %% multiple times.
 %%
 %% This action does not return any expired export jobs. For more information,
-%% see Export Job Expiration in the Amazon QLDB Developer Guide.
+%% see Export job expiration in the Amazon QLDB Developer Guide.
 list_journal_s3_exports(Client)
   when is_map(Client) ->
     list_journal_s3_exports(Client, #{}, #{}).
@@ -433,7 +441,7 @@ list_journal_s3_exports(Client, QueryMap, HeadersMap, Options0)
 %% `ListJournalS3ExportsForLedger' multiple times.
 %%
 %% This action does not return any expired export jobs. For more information,
-%% see Export Job Expiration in the Amazon QLDB Developer Guide.
+%% see Export job expiration in the Amazon QLDB Developer Guide.
 list_journal_s3_exports_for_ledger(Client, Name)
   when is_map(Client) ->
     list_journal_s3_exports_for_ledger(Client, Name, #{}, #{}).
@@ -462,7 +470,7 @@ list_journal_s3_exports_for_ledger(Client, Name, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns an array of ledger summaries that are associated with the
-%% current AWS account and Region.
+%% current account and Region.
 %%
 %% This action returns a maximum of 100 items and is paginated so that you
 %% can retrieve all the items by calling `ListLedgers' multiple times.
@@ -618,6 +626,34 @@ update_ledger(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the permissions mode of a ledger.
+%%
+%% Before you switch to the `STANDARD' permissions mode, you must first
+%% create all required IAM policies and table tags to avoid disruption to
+%% your users. To learn more, see Migrating to the standard permissions mode
+%% in the Amazon QLDB Developer Guide.
+update_ledger_permissions_mode(Client, Name, Input) ->
+    update_ledger_permissions_mode(Client, Name, Input, []).
+update_ledger_permissions_mode(Client, Name, Input0, Options0) ->
+    Method = patch,
+    Path = ["/ledgers/", aws_util:encode_uri(Name), "/permissions-mode"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %%====================================================================
 %% Internal functions
 %%====================================================================
@@ -653,6 +689,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

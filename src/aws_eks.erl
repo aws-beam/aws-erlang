@@ -2,8 +2,8 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Elastic Kubernetes Service (Amazon EKS) is a managed service
-%% that makes it easy for you to run Kubernetes on AWS without needing to
-%% stand up or maintain your own Kubernetes control plane.
+%% that makes it easy for you to run Kubernetes on Amazon Web Services
+%% without needing to stand up or maintain your own Kubernetes control plane.
 %%
 %% Kubernetes is an open-source system for automating the deployment,
 %% scaling, and management of containerized applications.
@@ -37,6 +37,8 @@
          delete_fargate_profile/5,
          delete_nodegroup/4,
          delete_nodegroup/5,
+         deregister_cluster/3,
+         deregister_cluster/4,
          describe_addon/3,
          describe_addon/5,
          describe_addon/6,
@@ -80,6 +82,8 @@
          list_updates/2,
          list_updates/4,
          list_updates/5,
+         register_cluster/2,
+         register_cluster/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -106,7 +110,7 @@
 %% You can use this API to enable encryption on existing clusters which do
 %% not have encryption already enabled. This allows you to implement a
 %% defense-in-depth security strategy without migrating applications to new
-%% EKS clusters.
+%% Amazon EKS clusters.
 associate_encryption_config(Client, ClusterName, Input) ->
     associate_encryption_config(Client, ClusterName, Input, []).
 associate_encryption_config(Client, ClusterName, Input0, Options0) ->
@@ -194,10 +198,10 @@ create_addon(Client, ClusterName, Input0, Options0) ->
 %%
 %% The Amazon EKS control plane consists of control plane instances that run
 %% the Kubernetes software, such as `etcd' and the API server. The control
-%% plane runs in an account managed by AWS, and the Kubernetes API is exposed
-%% via the Amazon EKS API server endpoint. Each Amazon EKS cluster control
-%% plane is single-tenant and unique and runs on its own set of Amazon EC2
-%% instances.
+%% plane runs in an account managed by Amazon Web Services, and the
+%% Kubernetes API is exposed via the Amazon EKS API server endpoint. Each
+%% Amazon EKS cluster control plane is single-tenant and unique and runs on
+%% its own set of Amazon EC2 instances.
 %%
 %% The cluster control plane is provisioned across multiple Availability
 %% Zones and fronted by an Elastic Load Balancing Network Load Balancer.
@@ -205,9 +209,9 @@ create_addon(Client, ClusterName, Input0, Options0) ->
 %% to provide connectivity from the control plane instances to the nodes (for
 %% example, to support `kubectl exec', `logs', and `proxy' data flows).
 %%
-%% Amazon EKS nodes run in your AWS account and connect to your cluster's
-%% control plane via the Kubernetes API server endpoint and a certificate
-%% file that is created for your cluster.
+%% Amazon EKS nodes run in your Amazon Web Services account and connect to
+%% your cluster's control plane via the Kubernetes API server endpoint and a
+%% certificate file that is created for your cluster.
 %%
 %% Cluster creation typically takes several minutes. After you create an
 %% Amazon EKS cluster, you must configure your Kubernetes tooling to
@@ -236,7 +240,7 @@ create_cluster(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an AWS Fargate profile for your Amazon EKS cluster.
+%% @doc Creates an Fargate profile for your Amazon EKS cluster.
 %%
 %% You must have at least one Fargate profile in a cluster to be able to run
 %% pods on Fargate.
@@ -268,8 +272,7 @@ create_cluster(Client, Input0, Options0) ->
 %% must wait for that Fargate profile to finish deleting before you can
 %% create any other profiles in that cluster.
 %%
-%% For more information, see AWS Fargate Profile in the Amazon EKS User
-%% Guide.
+%% For more information, see Fargate Profile in the Amazon EKS User Guide.
 create_fargate_profile(Client, ClusterName, Input) ->
     create_fargate_profile(Client, ClusterName, Input, []).
 create_fargate_profile(Client, ClusterName, Input0, Options0) ->
@@ -302,10 +305,10 @@ create_fargate_profile(Client, ClusterName, Input0, Options0) ->
 %% template support.
 %%
 %% An Amazon EKS managed node group is an Amazon EC2 Auto Scaling group and
-%% associated Amazon EC2 instances that are managed by AWS for an Amazon EKS
-%% cluster. Each node group uses a version of the Amazon EKS optimized Amazon
-%% Linux 2 AMI. For more information, see Managed Node Groups in the Amazon
-%% EKS User Guide.
+%% associated Amazon EC2 instances that are managed by Amazon Web Services
+%% for an Amazon EKS cluster. Each node group uses a version of the Amazon
+%% EKS optimized Amazon Linux 2 AMI. For more information, see Managed Node
+%% Groups in the Amazon EKS User Guide.
 create_nodegroup(Client, ClusterName, Input) ->
     create_nodegroup(Client, ClusterName, Input, []).
 create_nodegroup(Client, ClusterName, Input0, Options0) ->
@@ -350,9 +353,10 @@ delete_addon(Client, AddonName, ClusterName, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"preserve">>, <<"preserve">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the Amazon EKS cluster control plane.
@@ -389,7 +393,7 @@ delete_cluster(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an AWS Fargate profile.
+%% @doc Deletes an Fargate profile.
 %%
 %% When you delete a Fargate profile, any pods running on Fargate that were
 %% created with the profile are deleted. If those pods match another Fargate
@@ -428,6 +432,30 @@ delete_nodegroup(Client, ClusterName, NodegroupName, Input) ->
 delete_nodegroup(Client, ClusterName, NodegroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/clusters/", aws_util:encode_uri(ClusterName), "/node-groups/", aws_util:encode_uri(NodegroupName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deregisters a connected cluster to remove it from the Amazon EKS
+%% control plane.
+deregister_cluster(Client, Name, Input) ->
+    deregister_cluster(Client, Name, Input, []).
+deregister_cluster(Client, Name, Input0, Options0) ->
+    Method = delete,
+    Path = ["/cluster-registrations/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -529,7 +557,7 @@ describe_cluster(Client, Name, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns descriptive information about an AWS Fargate profile.
+%% @doc Returns descriptive information about an Fargate profile.
 describe_fargate_profile(Client, ClusterName, FargateProfileName)
   when is_map(Client) ->
     describe_fargate_profile(Client, ClusterName, FargateProfileName, #{}, #{}).
@@ -636,7 +664,7 @@ describe_update(Client, Name, UpdateId, QueryMap, HeadersMap, Options0)
 %%
 %% If you disassociate an identity provider from your cluster, users included
 %% in the provider can no longer access the cluster. However, you can still
-%% access the cluster with AWS IAM users.
+%% access the cluster with Amazon Web Services IAM users.
 disassociate_identity_provider_config(Client, ClusterName, Input) ->
     disassociate_identity_provider_config(Client, ClusterName, Input, []).
 disassociate_identity_provider_config(Client, ClusterName, Input0, Options0) ->
@@ -687,8 +715,8 @@ list_addons(Client, ClusterName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the Amazon EKS clusters in your AWS account in the specified
-%% Region.
+%% @doc Lists the Amazon EKS clusters in your Amazon Web Services account in
+%% the specified Region.
 list_clusters(Client)
   when is_map(Client) ->
     list_clusters(Client, #{}, #{}).
@@ -709,6 +737,7 @@ list_clusters(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"include">>, maps:get(<<"include">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
@@ -716,8 +745,8 @@ list_clusters(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the AWS Fargate profiles associated with the specified cluster
-%% in your AWS account in the specified Region.
+%% @doc Lists the Fargate profiles associated with the specified cluster in
+%% your Amazon Web Services account in the specified Region.
 list_fargate_profiles(Client, ClusterName)
   when is_map(Client) ->
     list_fargate_profiles(Client, ClusterName, #{}, #{}).
@@ -774,7 +803,8 @@ list_identity_provider_configs(Client, ClusterName, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Amazon EKS managed node groups associated with the
-%% specified cluster in your AWS account in the specified Region.
+%% specified cluster in your Amazon Web Services account in the specified
+%% Region.
 %%
 %% Self-managed node groups are not listed.
 list_nodegroups(Client, ClusterName)
@@ -828,7 +858,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the updates associated with an Amazon EKS cluster or managed
-%% node group in your AWS account, in the specified Region.
+%% node group in your Amazon Web Services account, in the specified Region.
 list_updates(Client, Name)
   when is_map(Client) ->
     list_updates(Client, Name, #{}, #{}).
@@ -857,6 +887,44 @@ list_updates(Client, Name, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Connects a Kubernetes cluster to the Amazon EKS control plane.
+%%
+%% Any Kubernetes cluster can be connected to the Amazon EKS control plane to
+%% view current information about the cluster and its nodes.
+%%
+%% Cluster connection requires two steps. First, send a `
+%% `RegisterClusterRequest' ' to add it to the Amazon EKS control plane.
+%%
+%% Second, a Manifest containing the `activationID' and `activationCode' must
+%% be applied to the Kubernetes cluster through it's native provider to
+%% provide visibility.
+%%
+%% After the Manifest is updated and applied, then the connected cluster is
+%% visible to the Amazon EKS control plane. If the Manifest is not applied
+%% within a set amount of time, then the connected cluster will no longer be
+%% visible and must be deregistered. See `DeregisterCluster'.
+register_cluster(Client, Input) ->
+    register_cluster(Client, Input, []).
+register_cluster(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/cluster-registrations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates the specified tags to a resource with the specified
 %% `resourceArn'.
@@ -950,17 +1018,17 @@ update_addon(Client, AddonName, ClusterName, Input0, Options0) ->
 %% Amazon EKS User Guide .
 %%
 %% CloudWatch Logs ingestion, archive storage, and data scanning rates apply
-%% to exported control plane logs. For more information, see Amazon
-%% CloudWatch Pricing.
+%% to exported control plane logs. For more information, see CloudWatch
+%% Pricing.
 %%
 %% You can also use this API operation to enable or disable public and
 %% private access to your cluster's Kubernetes API server endpoint. By
 %% default, public access is enabled, and private access is disabled. For
-%% more information, see Amazon EKS Cluster Endpoint Access Control in the
+%% more information, see Amazon EKS cluster endpoint access control in the
 %% Amazon EKS User Guide .
 %%
-%% At this time, you can not update the subnets or security group IDs for an
-%% existing cluster.
+%% You can't update the subnets or security group IDs for an existing
+%% cluster.
 %%
 %% Cluster updates are asynchronous, and they should finish within a few
 %% minutes. During an update, the cluster status moves to `UPDATING' (this
@@ -1136,6 +1204,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

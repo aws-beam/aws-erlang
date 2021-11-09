@@ -1,23 +1,30 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS IAM Access Analyzer helps identify potential resource-access
-%% risks by enabling you to identify any policies that grant access to an
-%% external principal.
+%% @doc Identity and Access Management Access Analyzer helps identify
+%% potential resource-access risks by enabling you to identify any policies
+%% that grant access to an external principal.
 %%
 %% It does this by using logic-based reasoning to analyze resource-based
-%% policies in your AWS environment. An external principal can be another AWS
-%% account, a root user, an IAM user or role, a federated user, an AWS
-%% service, or an anonymous user. This guide describes the AWS IAM Access
+%% policies in your Amazon Web Services environment. An external principal
+%% can be another Amazon Web Services account, a root user, an IAM user or
+%% role, a federated user, an Amazon Web Services service, or an anonymous
+%% user. You can also use IAM Access Analyzer to preview and validate public
+%% and cross-account access to your resources before deploying permissions
+%% changes. This guide describes the Identity and Access Management Access
 %% Analyzer operations that you can call programmatically. For general
-%% information about Access Analyzer, see AWS IAM Access Analyzer in the IAM
-%% User Guide.
+%% information about IAM Access Analyzer, see Identity and Access Management
+%% Access Analyzer in the IAM User Guide.
 %%
-%% To start using Access Analyzer, you first need to create an analyzer.
+%% To start using IAM Access Analyzer, you first need to create an analyzer.
 -module(aws_accessanalyzer).
 
 -export([apply_archive_rule/2,
          apply_archive_rule/3,
+         cancel_policy_generation/3,
+         cancel_policy_generation/4,
+         create_access_preview/2,
+         create_access_preview/3,
          create_analyzer/2,
          create_analyzer/3,
          create_archive_rule/3,
@@ -26,6 +33,9 @@
          delete_analyzer/4,
          delete_archive_rule/4,
          delete_archive_rule/5,
+         get_access_preview/3,
+         get_access_preview/5,
+         get_access_preview/6,
          get_analyzed_resource/3,
          get_analyzed_resource/5,
          get_analyzed_resource/6,
@@ -38,6 +48,14 @@
          get_finding/3,
          get_finding/5,
          get_finding/6,
+         get_generated_policy/2,
+         get_generated_policy/4,
+         get_generated_policy/5,
+         list_access_preview_findings/3,
+         list_access_preview_findings/4,
+         list_access_previews/2,
+         list_access_previews/4,
+         list_access_previews/5,
          list_analyzed_resources/2,
          list_analyzed_resources/3,
          list_analyzers/1,
@@ -48,9 +66,14 @@
          list_archive_rules/5,
          list_findings/2,
          list_findings/3,
+         list_policy_generations/1,
+         list_policy_generations/3,
+         list_policy_generations/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         start_policy_generation/2,
+         start_policy_generation/3,
          start_resource_scan/2,
          start_resource_scan/3,
          tag_resource/3,
@@ -60,7 +83,9 @@
          update_archive_rule/4,
          update_archive_rule/5,
          update_findings/2,
-         update_findings/3]).
+         update_findings/3,
+         validate_policy/2,
+         validate_policy/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -75,6 +100,53 @@ apply_archive_rule(Client, Input) ->
 apply_archive_rule(Client, Input0, Options0) ->
     Method = put,
     Path = ["/archive-rule"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Cancels the requested policy generation.
+cancel_policy_generation(Client, JobId, Input) ->
+    cancel_policy_generation(Client, JobId, Input, []).
+cancel_policy_generation(Client, JobId, Input0, Options0) ->
+    Method = put,
+    Path = ["/policy/generation/", aws_util:encode_uri(JobId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an access preview that allows you to preview IAM Access
+%% Analyzer findings for your resource before deploying resource permissions.
+create_access_preview(Client, Input) ->
+    create_access_preview(Client, Input, []).
+create_access_preview(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/access-preview"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -119,6 +191,9 @@ create_analyzer(Client, Input0, Options0) ->
 %%
 %% Archive rules automatically archive new findings that meet the criteria
 %% you define when you create the rule.
+%%
+%% To learn about filter keys that you can use to create an archive rule, see
+%% IAM Access Analyzer filter keys in the IAM User Guide.
 create_archive_rule(Client, AnalyzerName, Input) ->
     create_archive_rule(Client, AnalyzerName, Input, []).
 create_archive_rule(Client, AnalyzerName, Input0, Options0) ->
@@ -143,9 +218,10 @@ create_archive_rule(Client, AnalyzerName, Input0, Options0) ->
 
 %% @doc Deletes the specified analyzer.
 %%
-%% When you delete an analyzer, Access Analyzer is disabled for the account
-%% or organization in the current or specific Region. All findings that were
-%% generated by the analyzer are deleted. You cannot undo this action.
+%% When you delete an analyzer, IAM Access Analyzer is disabled for the
+%% account or organization in the current or specific Region. All findings
+%% that were generated by the analyzer are deleted. You cannot undo this
+%% action.
 delete_analyzer(Client, AnalyzerName, Input) ->
     delete_analyzer(Client, AnalyzerName, Input, []).
 delete_analyzer(Client, AnalyzerName, Input0, Options0) ->
@@ -192,6 +268,34 @@ delete_archive_rule(Client, AnalyzerName, RuleName, Input0, Options0) ->
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about an access preview for the specified
+%% analyzer.
+get_access_preview(Client, AccessPreviewId, AnalyzerArn)
+  when is_map(Client) ->
+    get_access_preview(Client, AccessPreviewId, AnalyzerArn, #{}, #{}).
+
+get_access_preview(Client, AccessPreviewId, AnalyzerArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_access_preview(Client, AccessPreviewId, AnalyzerArn, QueryMap, HeadersMap, []).
+
+get_access_preview(Client, AccessPreviewId, AnalyzerArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/access-preview/", aws_util:encode_uri(AccessPreviewId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"analyzerArn">>, AnalyzerArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about a resource that was analyzed.
 get_analyzed_resource(Client, AnalyzerArn, ResourceArn)
@@ -247,7 +351,7 @@ get_analyzer(Client, AnalyzerName, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves information about an archive rule.
 %%
 %% To learn about filter keys that you can use to create an archive rule, see
-%% Access Analyzer filter keys in the IAM User Guide.
+%% IAM Access Analyzer filter keys in the IAM User Guide.
 get_archive_rule(Client, AnalyzerName, RuleName)
   when is_map(Client) ->
     get_archive_rule(Client, AnalyzerName, RuleName, #{}, #{}).
@@ -292,6 +396,88 @@ get_finding(Client, Id, AnalyzerArn, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"analyzerArn">>, AnalyzerArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the policy that was generated using
+%% `StartPolicyGeneration'.
+get_generated_policy(Client, JobId)
+  when is_map(Client) ->
+    get_generated_policy(Client, JobId, #{}, #{}).
+
+get_generated_policy(Client, JobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_generated_policy(Client, JobId, QueryMap, HeadersMap, []).
+
+get_generated_policy(Client, JobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/policy/generation/", aws_util:encode_uri(JobId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"includeResourcePlaceholders">>, maps:get(<<"includeResourcePlaceholders">>, QueryMap, undefined)},
+        {<<"includeServiceLevelTemplate">>, maps:get(<<"includeServiceLevelTemplate">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of access preview findings generated by the
+%% specified access preview.
+list_access_preview_findings(Client, AccessPreviewId, Input) ->
+    list_access_preview_findings(Client, AccessPreviewId, Input, []).
+list_access_preview_findings(Client, AccessPreviewId, Input0, Options0) ->
+    Method = post,
+    Path = ["/access-preview/", aws_util:encode_uri(AccessPreviewId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of access previews for the specified analyzer.
+list_access_previews(Client, AnalyzerArn)
+  when is_map(Client) ->
+    list_access_previews(Client, AnalyzerArn, #{}, #{}).
+
+list_access_previews(Client, AnalyzerArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_access_previews(Client, AnalyzerArn, QueryMap, HeadersMap, []).
+
+list_access_previews(Client, AnalyzerArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/access-preview"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"analyzerArn">>, AnalyzerArn},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -380,8 +566,8 @@ list_archive_rules(Client, AnalyzerName, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a list of findings generated by the specified analyzer.
 %%
-%% To learn about filter keys that you can use to create an archive rule, see
-%% Access Analyzer filter keys in the IAM User Guide.
+%% To learn about filter keys that you can use to retrieve a list of
+%% findings, see IAM Access Analyzer filter keys in the IAM User Guide.
 list_findings(Client, Input) ->
     list_findings(Client, Input, []).
 list_findings(Client, Input0, Options0) ->
@@ -403,6 +589,35 @@ list_findings(Client, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all of the policy generations requested in the last seven days.
+list_policy_generations(Client)
+  when is_map(Client) ->
+    list_policy_generations(Client, #{}, #{}).
+
+list_policy_generations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_policy_generations(Client, QueryMap, HeadersMap, []).
+
+list_policy_generations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/policy/generation"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"principalArn">>, maps:get(<<"principalArn">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of tags applied to the specified resource.
 list_tags_for_resource(Client, ResourceArn)
@@ -426,6 +641,29 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Starts the policy generation request.
+start_policy_generation(Client, Input) ->
+    start_policy_generation(Client, Input, []).
+start_policy_generation(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/policy/generation"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Immediately starts a scan of the policies applied to the specified
 %% resource.
@@ -544,6 +782,35 @@ update_findings(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Requests the validation of a policy and returns a list of findings.
+%%
+%% The findings help you identify issues and provide actionable
+%% recommendations to resolve the issue and enable you to author functional
+%% policies that meet security best practices.
+validate_policy(Client, Input) ->
+    validate_policy(Client, Input, []).
+validate_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/policy/validation"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %%====================================================================
 %% Internal functions
 %%====================================================================
@@ -579,6 +846,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

@@ -18,6 +18,8 @@
          add_tags/3,
          associate_trial_component/2,
          associate_trial_component/3,
+         batch_describe_model_package/2,
+         batch_describe_model_package/3,
          create_action/2,
          create_action/3,
          create_algorithm/2,
@@ -92,6 +94,8 @@
          create_processing_job/3,
          create_project/2,
          create_project/3,
+         create_studio_lifecycle_config/2,
+         create_studio_lifecycle_config/3,
          create_training_job/2,
          create_training_job/3,
          create_transform_job/2,
@@ -168,6 +172,8 @@
          delete_pipeline/3,
          delete_project/2,
          delete_project/3,
+         delete_studio_lifecycle_config/2,
+         delete_studio_lifecycle_config/3,
          delete_tags/2,
          delete_tags/3,
          delete_trial/2,
@@ -258,6 +264,8 @@
          describe_processing_job/3,
          describe_project/2,
          describe_project/3,
+         describe_studio_lifecycle_config/2,
+         describe_studio_lifecycle_config/3,
          describe_subscribed_workteam/2,
          describe_subscribed_workteam/3,
          describe_training_job/2,
@@ -374,6 +382,8 @@
          list_processing_jobs/3,
          list_projects/2,
          list_projects/3,
+         list_studio_lifecycle_configs/2,
+         list_studio_lifecycle_configs/3,
          list_subscribed_workteams/2,
          list_subscribed_workteams/3,
          list_tags/2,
@@ -400,8 +410,14 @@
          register_devices/3,
          render_ui_template/2,
          render_ui_template/3,
+         retry_pipeline_execution/2,
+         retry_pipeline_execution/3,
          search/2,
          search/3,
+         send_pipeline_execution_step_failure/2,
+         send_pipeline_execution_step_failure/3,
+         send_pipeline_execution_step_success/2,
+         send_pipeline_execution_step_success/3,
          start_monitoring_schedule/2,
          start_monitoring_schedule/3,
          start_notebook_instance/2,
@@ -466,6 +482,8 @@
          update_pipeline/3,
          update_pipeline_execution/2,
          update_pipeline_execution/3,
+         update_project/2,
+         update_project/3,
          update_training_job/2,
          update_training_job/3,
          update_trial/2,
@@ -507,7 +525,7 @@ add_association(Client, Input, Options)
 %%
 %% Each tag consists of a key and an optional value. Tag keys must be unique
 %% per resource. For more information about tags, see For more information,
-%% see AWS Tagging Strategies.
+%% see Amazon Web Services Tagging Strategies.
 %%
 %% Tags that you add to a hyperparameter tuning job by calling this API are
 %% also added to any training jobs that the hyperparameter tuning job
@@ -517,6 +535,15 @@ add_association(Client, Input, Options)
 %% added to all training jobs that the hyperparameter tuning job launches,
 %% add the tags when you first create the tuning job by specifying them in
 %% the `Tags' parameter of `CreateHyperParameterTuningJob'
+%%
+%% Tags that you add to a SageMaker Studio Domain or User Profile by calling
+%% this API are also added to any Apps that the Domain or User Profile
+%% launches after you call this API, but not to Apps that the Domain or User
+%% Profile launched before you called this API. To make sure that the tags
+%% associated with a Domain or User Profile are also added to all Apps that
+%% the Domain or User Profile launches, add the tags when you first create
+%% the Domain or User Profile by specifying them in the `Tags' parameter of
+%% `CreateDomain' or `CreateUserProfile'.
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -535,6 +562,14 @@ associate_trial_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateTrialComponent">>, Input, Options).
 
+%% @doc This action batch describes a list of versioned model packages
+batch_describe_model_package(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_describe_model_package(Client, Input, []).
+batch_describe_model_package(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchDescribeModelPackage">>, Input, Options).
+
 %% @doc Creates an action.
 %%
 %% An action is a lineage tracking entity that represents an action or
@@ -549,7 +584,7 @@ create_action(Client, Input, Options)
     request(Client, <<"CreateAction">>, Input, Options).
 
 %% @doc Create a machine learning algorithm that you can use in Amazon
-%% SageMaker and list in the AWS Marketplace.
+%% SageMaker and list in the Amazon Web Services Marketplace.
 create_algorithm(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_algorithm(Client, Input, []).
@@ -557,9 +592,9 @@ create_algorithm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAlgorithm">>, Input, Options).
 
-%% @doc Creates a running App for the specified UserProfile.
+%% @doc Creates a running app for the specified UserProfile.
 %%
-%% Supported Apps are JupyterServer and KernelGateway. This operation is
+%% Supported apps are `JupyterServer' and `KernelGateway'. This operation is
 %% automatically invoked by Amazon SageMaker Studio upon access to the
 %% associated Domain, and when new kernel configurations are selected by the
 %% user. A user may have multiple Apps active simultaneously.
@@ -597,9 +632,7 @@ create_artifact(Client, Input, Options)
 
 %% @doc Creates an Autopilot job.
 %%
-%% Find the best performing model after you run an Autopilot job by calling .
-%% Deploy that model by following the steps described in Step 6.1: Deploy the
-%% Model to Amazon SageMaker Hosting Services.
+%% Find the best-performing model after you run an Autopilot job by calling .
 %%
 %% For information about how to use Autopilot, see Automate Model Development
 %% with Amazon SageMaker Autopilot.
@@ -619,8 +652,8 @@ create_auto_ml_job(Client, Input, Options)
 %% more than one notebook instance, and it persists independently from the
 %% lifecycle of any notebook instances it is associated with.
 %%
-%% The repository can be hosted either in AWS CodeCommit or in any other Git
-%% repository.
+%% The repository can be hosted either in Amazon Web Services CodeCommit or
+%% in any other Git repository.
 create_code_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_code_repository(Client, Input, []).
@@ -636,8 +669,8 @@ create_code_repository(Client, Input, Options)
 %%
 %% If you choose to host your model using Amazon SageMaker hosting services,
 %% you can use the resulting model artifacts as part of the model. You can
-%% also use the artifacts with AWS IoT Greengrass. In that case, deploy them
-%% as an ML resource.
+%% also use the artifacts with Amazon Web Services IoT Greengrass. In that
+%% case, deploy them as an ML resource.
 %%
 %% In the request body, you provide the following:
 %%
@@ -702,9 +735,9 @@ create_device_fleet(Client, Input, Options)
 %% A domain consists of an associated Amazon Elastic File System (EFS)
 %% volume, a list of authorized users, and a variety of security,
 %% application, policy, and Amazon Virtual Private Cloud (VPC)
-%% configurations. An AWS account is limited to one domain per region. Users
-%% within a domain can share notebook files and other artifacts with each
-%% other.
+%% configurations. An Amazon Web Services account is limited to one domain
+%% per region. Users within a domain can share notebook files and other
+%% artifacts with each other.
 %%
 %% EFS storage
 %%
@@ -712,10 +745,11 @@ create_device_fleet(Client, Input, Options)
 %% users within the domain. Each user receives a private home directory
 %% within the EFS volume for notebooks, Git repositories, and data files.
 %%
-%% SageMaker uses the AWS Key Management Service (AWS KMS) to encrypt the EFS
-%% volume attached to the domain with an AWS managed customer master key
-%% (CMK) by default. For more control, you can specify a customer managed
-%% CMK. For more information, see Protect Data at Rest Using Encryption.
+%% SageMaker uses the Amazon Web Services Key Management Service (Amazon Web
+%% Services KMS) to encrypt the EFS volume attached to the domain with an
+%% Amazon Web Services managed key by default. For more control, you can
+%% specify a customer managed key. For more information, see Protect Data at
+%% Rest Using Encryption.
 %%
 %% VPC configuration
 %%
@@ -738,8 +772,12 @@ create_device_fleet(Client, Input, Options)
 %% endpoint to the SageMaker API and runtime or a NAT gateway and your
 %% security groups allow outbound connections.
 %%
-%% </li> </ul> For more information, see Connect SageMaker Studio Notebooks
-%% to Resources in a VPC.
+%% </li> </ul> NFS traffic over TCP on port 2049 needs to be allowed in both
+%% inbound and outbound rules in order to launch a SageMaker Studio app
+%% successfully.
+%%
+%% For more information, see Connect SageMaker Studio Notebooks to Resources
+%% in a VPC.
 create_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_domain(Client, Input, []).
@@ -769,15 +807,15 @@ create_edge_packaging_job(Client, Input, Options)
 %% Use this API to deploy models using Amazon SageMaker hosting services.
 %%
 %% For an example that calls this method when deploying a model to Amazon
-%% SageMaker hosting services, see Deploy the Model to Amazon SageMaker
-%% Hosting Services (AWS SDK for Python (Boto 3)).
+%% SageMaker hosting services, see the Create Endpoint example notebook.
 %%
 %% You must not delete an `EndpointConfig' that is in use by an endpoint that
 %% is live or while the `UpdateEndpoint' or `CreateEndpoint' operations are
 %% being performed on the endpoint. To update an endpoint, you must create a
 %% new `EndpointConfig'.
 %%
-%% The endpoint name must be unique within an AWS Region in your AWS account.
+%% The endpoint name must be unique within an Amazon Web Services Region in
+%% your Amazon Web Services account.
 %%
 %% When it receives the request, Amazon SageMaker creates the endpoint,
 %% launches the resources (ML compute instances), and deploys the model(s) on
@@ -802,12 +840,14 @@ create_edge_packaging_job(Client, Input, Options)
 %% API.
 %%
 %% If any of the models hosted at this endpoint get model data from an Amazon
-%% S3 location, Amazon SageMaker uses AWS Security Token Service to download
-%% model artifacts from the S3 path you provided. AWS STS is activated in
-%% your IAM user account by default. If you previously deactivated AWS STS
-%% for a region, you need to reactivate AWS STS for that region. For more
-%% information, see Activating and Deactivating AWS STS in an AWS Region in
-%% the AWS Identity and Access Management User Guide.
+%% S3 location, Amazon SageMaker uses Amazon Web Services Security Token
+%% Service to download model artifacts from the S3 path you provided. Amazon
+%% Web Services STS is activated in your IAM user account by default. If you
+%% previously deactivated Amazon Web Services STS for a region, you need to
+%% reactivate Amazon Web Services STS for that region. For more information,
+%% see Activating and Deactivating Amazon Web Services STS in an Amazon Web
+%% Services Region in the Amazon Web Services Identity and Access Management
+%% User Guide.
 %%
 %% To add the IAM role policies for using this API operation, go to the IAM
 %% console, and choose Roles in the left navigation pane. Search the IAM role
@@ -815,7 +855,7 @@ create_edge_packaging_job(Client, Input, Options)
 %% `CreateEndpointConfig' API operations, add the following policies to the
 %% role.
 %%
-%% Option 1: For a full Amazon SageMaker access, search and attach the
+%% Option 1: For a full SageMaker access, search and attach the
 %% `AmazonSageMakerFullAccess' policy.
 %%
 %% Option 2: For granting a limited access to an IAM role, paste the
@@ -831,8 +871,8 @@ create_edge_packaging_job(Client, Input, Options)
 %%
 %% `]'
 %%
-%% For more information, see Amazon SageMaker API Permissions: Actions,
-%% Permissions, and Resources Reference.
+%% For more information, see SageMaker API Permissions: Actions, Permissions,
+%% and Resources Reference.
 create_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint(Client, Input, []).
@@ -860,10 +900,6 @@ create_endpoint(Client, Input, Options)
 %% suppose that you want to host two models, A and B, and you assign traffic
 %% weight 2 for model A and 1 for model B. Amazon SageMaker distributes
 %% two-thirds of the traffic to Model A, and one-third to model B.
-%%
-%% For an example that calls this method when deploying a model to Amazon
-%% SageMaker hosting services, see Deploy the Model to Amazon SageMaker
-%% Hosting Services (AWS SDK for Python (Boto 3)).
 %%
 %% When you call `CreateEndpoint', a load call is made to DynamoDB to verify
 %% that your endpoint configuration exists. When you read data from a
@@ -894,10 +930,10 @@ create_endpoint_config(Client, Input, Options)
 %% measuring the impact of a change to one or more inputs, while keeping the
 %% remaining inputs constant.
 %%
-%% When you use Amazon SageMaker Studio or the Amazon SageMaker Python SDK,
-%% all experiments, trials, and trial components are automatically tracked,
-%% logged, and indexed. When you use the AWS SDK for Python (Boto), you must
-%% use the logging APIs provided by the SDK.
+%% When you use SageMaker Studio or the SageMaker Python SDK, all
+%% experiments, trials, and trial components are automatically tracked,
+%% logged, and indexed. When you use the Amazon Web Services SDK for Python
+%% (Boto), you must use the logging APIs provided by the SDK.
 %%
 %% You can add tags to experiments, trials, trial components and then use the
 %% `Search' API to search for the tags.
@@ -925,8 +961,9 @@ create_experiment(Client, Input, Options)
 %% The `FeatureGroup' defines the schema and features contained in the
 %% FeatureGroup. A `FeatureGroup' definition is composed of a list of
 %% `Features', a `RecordIdentifierFeatureName', an `EventTimeFeatureName' and
-%% configurations for its `OnlineStore' and `OfflineStore'. Check AWS service
-%% quotas to see the `FeatureGroup's quota for your AWS account.
+%% configurations for its `OnlineStore' and `OfflineStore'. Check Amazon Web
+%% Services service quotas to see the `FeatureGroup's quota for your Amazon
+%% Web Services account.
 %%
 %% You must include at least one of `OnlineStoreConfig' and
 %% `OfflineStoreConfig' to create a `FeatureGroup'.
@@ -1006,8 +1043,8 @@ create_image_version(Client, Input, Options)
 %% data to stay within your organization or when a specific set of skills is
 %% required.
 %%
-%% </li> <li> One or more vendors that you select from the AWS Marketplace.
-%% Vendors provide expertise in specific areas.
+%% </li> <li> One or more vendors that you select from the Amazon Web
+%% Services Marketplace. Vendors provide expertise in specific areas.
 %%
 %% </li> <li> The Amazon Mechanical Turk workforce. This is the largest
 %% workforce, but it should only be used for public data or data that has
@@ -1060,7 +1097,7 @@ create_labeling_job(Client, Input, Options)
 %%
 %% For an example that calls this method when deploying a model to Amazon
 %% SageMaker hosting services, see Deploy the Model to Amazon SageMaker
-%% Hosting Services (AWS SDK for Python (Boto 3)).
+%% Hosting Services (Amazon Web Services SDK for Python (Boto 3)).
 %%
 %% To run a batch transform using your model, you start a job with the
 %% `CreateTransformJob' API. Amazon SageMaker uses your model and your
@@ -1073,8 +1110,8 @@ create_labeling_job(Client, Input, Options)
 %% assume to access model artifacts and docker image for deployment on ML
 %% compute hosting instances or for batch transform jobs. In addition, you
 %% also use the IAM role to manage permissions the inference code needs. For
-%% example, if the inference code access any other AWS resources, you grant
-%% necessary permissions via this role.
+%% example, if the inference code access any other Amazon Web Services
+%% resources, you grant necessary permissions via this role.
 create_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model(Client, Input, []).
@@ -1099,17 +1136,17 @@ create_model_explainability_job_definition(Client, Input, Options)
     request(Client, <<"CreateModelExplainabilityJobDefinition">>, Input, Options).
 
 %% @doc Creates a model package that you can use to create Amazon SageMaker
-%% models or list on AWS Marketplace, or a versioned model that is part of a
-%% model group.
+%% models or list on Amazon Web Services Marketplace, or a versioned model
+%% that is part of a model group.
 %%
-%% Buyers can subscribe to model packages listed on AWS Marketplace to create
-%% models in Amazon SageMaker.
+%% Buyers can subscribe to model packages listed on Amazon Web Services
+%% Marketplace to create models in Amazon SageMaker.
 %%
 %% To create a model package by specifying a Docker container that contains
 %% your inference code and the Amazon S3 location of your model artifacts,
 %% provide values for `InferenceSpecification'. To create a model from an
-%% algorithm resource that you created or subscribed to in AWS Marketplace,
-%% provide a value for `SourceAlgorithmSpecification'.
+%% algorithm resource that you created or subscribed to in Amazon Web
+%% Services Marketplace, provide a value for `SourceAlgorithmSpecification'.
 %%
 %% There are two types of model packages:
 %%
@@ -1244,10 +1281,21 @@ create_pipeline(Client, Input, Options)
 %% volume. This operation can only be called when the authentication mode
 %% equals IAM.
 %%
+%% The IAM role or user used to call this API defines the permissions to
+%% access the app. Once the presigned URL is created, no additional
+%% permission is required to access this URL. IAM authorization policies for
+%% this API are also enforced for every HTTP request and WebSocket frame that
+%% attempts to connect to the app.
+%%
+%% You can restrict access to this API and to the URL that it returns to a
+%% list of IP addresses, Amazon VPCs or Amazon VPC Endpoints that you
+%% specify. For more information, see Connect to SageMaker Studio Through an
+%% Interface VPC Endpoint .
+%%
 %% The URL that you get from a call to `CreatePresignedDomainUrl' has a
 %% default timeout of 5 minutes. You can configure this value using
 %% `ExpiresInSeconds'. If you try to use the URL after the timeout limit
-%% expires, you are directed to the AWS console sign-in page.
+%% expires, you are directed to the Amazon Web Services console sign-in page.
 create_presigned_domain_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_presigned_domain_url(Client, Input, []).
@@ -1277,7 +1325,8 @@ create_presigned_domain_url(Client, Input, Options)
 %%
 %% The URL that you get from a call to `CreatePresignedNotebookInstanceUrl'
 %% is valid only for 5 minutes. If you try to use the URL after the 5-minute
-%% limit expires, you are directed to the AWS console sign-in page.
+%% limit expires, you are directed to the Amazon Web Services console sign-in
+%% page.
 create_presigned_notebook_instance_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_presigned_notebook_instance_url(Client, Input, []).
@@ -1302,6 +1351,14 @@ create_project(Client, Input)
 create_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProject">>, Input, Options).
+
+%% @doc Creates a new Studio Lifecycle Configuration.
+create_studio_lifecycle_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_studio_lifecycle_config(Client, Input, []).
+create_studio_lifecycle_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateStudioLifecycleConfig">>, Input, Options).
 
 %% @doc Starts a model training job.
 %%
@@ -1345,8 +1402,14 @@ create_project(Client, Input, Options)
 %%
 %% </li> <li> `StoppingCondition' - To help cap training costs, use
 %% `MaxRuntimeInSeconds' to set a time limit for training. Use
-%% `MaxWaitTimeInSeconds' to specify how long you are willing to wait for a
-%% managed spot training job to complete.
+%% `MaxWaitTimeInSeconds' to specify how long a managed spot training job has
+%% to complete.
+%%
+%% </li> <li> `Environment' - The environment variables to set in the Docker
+%% container.
+%%
+%% </li> <li> `RetryStrategy' - The number of times to retry the job when the
+%% job fails due to an `InternalServerError'.
 %%
 %% </li> </ul> For more information about Amazon SageMaker, see How It Works.
 create_training_job(Client, Input)
@@ -1367,11 +1430,13 @@ create_training_job(Client, Input, Options)
 %% In the request body, you provide the following:
 %%
 %% <ul> <li> `TransformJobName' - Identifies the transform job. The name must
-%% be unique within an AWS Region in an AWS account.
+%% be unique within an Amazon Web Services Region in an Amazon Web Services
+%% account.
 %%
 %% </li> <li> `ModelName' - Identifies the model to use. `ModelName' must be
-%% the name of an existing Amazon SageMaker model in the same AWS Region and
-%% AWS account. For information on creating a model, see `CreateModel'.
+%% the name of an existing Amazon SageMaker model in the same Amazon Web
+%% Services Region and Amazon Web Services account. For information on
+%% creating a model, see `CreateModel'.
 %%
 %% </li> <li> `TransformInput' - Describes the dataset to be transformed and
 %% the Amazon S3 location where it is stored.
@@ -1391,15 +1456,15 @@ create_transform_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTransformJob">>, Input, Options).
 
-%% @doc Creates an Amazon SageMaker trial.
+%% @doc Creates an SageMaker trial.
 %%
 %% A trial is a set of steps called trial components that produce a machine
-%% learning model. A trial is part of a single Amazon SageMaker experiment.
+%% learning model. A trial is part of a single SageMaker experiment.
 %%
-%% When you use Amazon SageMaker Studio or the Amazon SageMaker Python SDK,
-%% all experiments, trials, and trial components are automatically tracked,
-%% logged, and indexed. When you use the AWS SDK for Python (Boto), you must
-%% use the logging APIs provided by the SDK.
+%% When you use SageMaker Studio or the SageMaker Python SDK, all
+%% experiments, trials, and trial components are automatically tracked,
+%% logged, and indexed. When you use the Amazon Web Services SDK for Python
+%% (Boto), you must use the logging APIs provided by the SDK.
 %%
 %% You can add tags to a trial and then use the `Search' API to search for
 %% the tags.
@@ -1423,19 +1488,13 @@ create_trial(Client, Input, Options)
 %% Trial components include pre-processing jobs, training jobs, and batch
 %% transform jobs.
 %%
-%% When you use Amazon SageMaker Studio or the Amazon SageMaker Python SDK,
-%% all experiments, trials, and trial components are automatically tracked,
-%% logged, and indexed. When you use the AWS SDK for Python (Boto), you must
-%% use the logging APIs provided by the SDK.
+%% When you use SageMaker Studio or the SageMaker Python SDK, all
+%% experiments, trials, and trial components are automatically tracked,
+%% logged, and indexed. When you use the Amazon Web Services SDK for Python
+%% (Boto), you must use the logging APIs provided by the SDK.
 %%
 %% You can add tags to a trial component and then use the `Search' API to
 %% search for the tags.
-%%
-%% `CreateTrialComponent' can only be invoked from within an Amazon SageMaker
-%% managed environment. This includes Amazon SageMaker training jobs,
-%% processing jobs, transform jobs, and Amazon SageMaker notebooks. A call to
-%% `CreateTrialComponent' from outside one of these environments results in
-%% an error.
 create_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trial_component(Client, Input, []).
@@ -1463,12 +1522,14 @@ create_user_profile(Client, Input, Options)
 %% @doc Use this operation to create a workforce.
 %%
 %% This operation will return an error if a workforce already exists in the
-%% AWS Region that you specify. You can only create one workforce in each AWS
-%% Region per AWS account.
+%% Amazon Web Services Region that you specify. You can only create one
+%% workforce in each Amazon Web Services Region per Amazon Web Services
+%% account.
 %%
-%% If you want to create a new workforce in an AWS Region where a workforce
-%% already exists, use the API operation to delete the existing workforce and
-%% then use `CreateWorkforce' to create a new workforce.
+%% If you want to create a new workforce in an Amazon Web Services Region
+%% where a workforce already exists, use the API operation to delete the
+%% existing workforce and then use `CreateWorkforce' to create a new
+%% workforce.
 %%
 %% To create a private workforce using Amazon Cognito, you must specify a
 %% Cognito user pool in `CognitoConfig'. You can also create an Amazon
@@ -1627,7 +1688,7 @@ delete_endpoint_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEndpointConfig">>, Input, Options).
 
-%% @doc Deletes an Amazon SageMaker experiment.
+%% @doc Deletes an SageMaker experiment.
 %%
 %% All trials associated with the experiment must be deleted first. Use the
 %% `ListTrials' API to get a list of the trials associated with the
@@ -1645,9 +1706,9 @@ delete_experiment(Client, Input, Options)
 %% Data cannot be accessed from the `OnlineStore' immediately after
 %% `DeleteFeatureGroup' is called.
 %%
-%% Data written into the `OfflineStore' will not be deleted. The AWS Glue
-%% database and tables that are automatically created for your `OfflineStore'
-%% are not deleted.
+%% Data written into the `OfflineStore' will not be deleted. The Amazon Web
+%% Services Glue database and tables that are automatically created for your
+%% `OfflineStore' are not deleted.
 delete_feature_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_feature_group(Client, Input, []).
@@ -1727,9 +1788,10 @@ delete_model_explainability_job_definition(Client, Input, Options)
 
 %% @doc Deletes a model package.
 %%
-%% A model package is used to create Amazon SageMaker models or list on AWS
-%% Marketplace. Buyers can subscribe to model packages listed on AWS
-%% Marketplace to create models in Amazon SageMaker.
+%% A model package is used to create Amazon SageMaker models or list on
+%% Amazon Web Services Marketplace. Buyers can subscribe to model packages
+%% listed on Amazon Web Services Marketplace to create models in Amazon
+%% SageMaker.
 delete_model_package(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_package(Client, Input, []).
@@ -1795,7 +1857,11 @@ delete_notebook_instance_lifecycle_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNotebookInstanceLifecycleConfig">>, Input, Options).
 
-%% @doc Deletes a pipeline if there are no in-progress executions.
+%% @doc Deletes a pipeline if there are no running instances of the pipeline.
+%%
+%% To delete a pipeline, you must stop all running instances of the pipeline
+%% using the `StopPipelineExecution' API. When you delete a pipeline, all
+%% instances of the pipeline are deleted.
 delete_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_pipeline(Client, Input, []).
@@ -1811,6 +1877,18 @@ delete_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProject">>, Input, Options).
 
+%% @doc Deletes the Studio Lifecycle Configuration.
+%%
+%% In order to delete the Lifecycle Configuration, there must be no running
+%% apps using the Lifecycle Configuration. You must also remove the Lifecycle
+%% Configuration from UserSettings in all Domains and UserProfiles.
+delete_studio_lifecycle_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_studio_lifecycle_config(Client, Input, []).
+delete_studio_lifecycle_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteStudioLifecycleConfig">>, Input, Options).
+
 %% @doc Deletes the specified tags from an Amazon SageMaker resource.
 %%
 %% To list a resource's tags, use the `ListTags' API.
@@ -1818,6 +1896,11 @@ delete_project(Client, Input, Options)
 %% When you call this API to delete tags from a hyperparameter tuning job,
 %% the deleted tags are not removed from training jobs that the
 %% hyperparameter tuning job launched before you called this API.
+%%
+%% When you call this API to delete tags from a SageMaker Studio Domain or
+%% User Profile, the deleted tags are not removed from Apps that the
+%% SageMaker Studio Domain or User Profile launched before you called this
+%% API.
 delete_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_tags(Client, Input, []).
@@ -1861,9 +1944,9 @@ delete_user_profile(Client, Input, Options)
 
 %% @doc Use this operation to delete a workforce.
 %%
-%% If you want to create a new workforce in an AWS Region where a workforce
-%% already exists, use this operation to delete the existing workforce and
-%% then use to create a new workforce.
+%% If you want to create a new workforce in an Amazon Web Services Region
+%% where a workforce already exists, use this operation to delete the
+%% existing workforce and then use to create a new workforce.
 %%
 %% If a private workforce contains one or more work teams, you must use the
 %% operation to delete all work teams before you delete the workforce. If you
@@ -1937,7 +2020,7 @@ describe_artifact(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeArtifact">>, Input, Options).
 
-%% @doc Returns information about an Amazon SageMaker job.
+%% @doc Returns information about an Amazon SageMaker AutoML job.
 describe_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_auto_ml_job(Client, Input, []).
@@ -2123,10 +2206,11 @@ describe_model_explainability_job_definition(Client, Input, Options)
     request(Client, <<"DescribeModelExplainabilityJobDefinition">>, Input, Options).
 
 %% @doc Returns a description of the specified model package, which is used
-%% to create Amazon SageMaker models or list them on AWS Marketplace.
+%% to create SageMaker models or list them on Amazon Web Services
+%% Marketplace.
 %%
-%% To create models in Amazon SageMaker, buyers can subscribe to model
-%% packages listed on AWS Marketplace.
+%% To create models in SageMaker, buyers can subscribe to model packages
+%% listed on Amazon Web Services Marketplace.
 describe_model_package(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_model_package(Client, Input, []).
@@ -2217,10 +2301,18 @@ describe_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProject">>, Input, Options).
 
+%% @doc Describes the Studio Lifecycle Configuration.
+describe_studio_lifecycle_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_studio_lifecycle_config(Client, Input, []).
+describe_studio_lifecycle_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeStudioLifecycleConfig">>, Input, Options).
+
 %% @doc Gets information about a work team provided by a vendor.
 %%
-%% It returns details about the subscription with a vendor in the AWS
-%% Marketplace.
+%% It returns details about the subscription with a vendor in the Amazon Web
+%% Services Marketplace.
 describe_subscribed_workteam(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_subscribed_workteam(Client, Input, []).
@@ -2351,8 +2443,8 @@ get_device_fleet_report(Client, Input, Options)
 %% @doc Gets a resource policy that manages access for a model group.
 %%
 %% For information about resource policies, see Identity-based policies and
-%% resource-based policies in the AWS Identity and Access Management User
-%% Guide..
+%% resource-based policies in the Amazon Web Services Identity and Access
+%% Management User Guide..
 get_model_package_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_model_package_group_policy(Client, Input, []).
@@ -2442,7 +2534,7 @@ list_auto_ml_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAutoMLJobs">>, Input, Options).
 
-%% @doc List the Candidates created for the job.
+%% @doc List the candidates created for the job.
 list_candidates_for_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_candidates_for_auto_ml_job(Client, Input, []).
@@ -2634,7 +2726,7 @@ list_model_explainability_job_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListModelExplainabilityJobDefinitions">>, Input, Options).
 
-%% @doc Gets a list of the model groups in your AWS account.
+%% @doc Gets a list of the model groups in your Amazon Web Services account.
 list_model_package_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_package_groups(Client, Input, []).
@@ -2693,7 +2785,7 @@ list_notebook_instance_lifecycle_configs(Client, Input, Options)
     request(Client, <<"ListNotebookInstanceLifecycleConfigs">>, Input, Options).
 
 %% @doc Returns a list of the Amazon SageMaker notebook instances in the
-%% requester's account in an AWS Region.
+%% requester's account in an Amazon Web Services Region.
 list_notebook_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_notebook_instances(Client, Input, []).
@@ -2741,7 +2833,7 @@ list_processing_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProcessingJobs">>, Input, Options).
 
-%% @doc Gets a list of the projects in an AWS account.
+%% @doc Gets a list of the projects in an Amazon Web Services account.
 list_projects(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_projects(Client, Input, []).
@@ -2749,8 +2841,17 @@ list_projects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProjects">>, Input, Options).
 
-%% @doc Gets a list of the work teams that you are subscribed to in the AWS
-%% Marketplace.
+%% @doc Lists the Studio Lifecycle Configurations in your Amazon Web Services
+%% Account.
+list_studio_lifecycle_configs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_studio_lifecycle_configs(Client, Input, []).
+list_studio_lifecycle_configs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListStudioLifecycleConfigs">>, Input, Options).
+
+%% @doc Gets a list of the work teams that you are subscribed to in the
+%% Amazon Web Services Marketplace.
 %%
 %% The list may be empty if no work team satisfies the filter specified in
 %% the `NameContains' parameter.
@@ -2774,16 +2875,20 @@ list_tags(Client, Input, Options)
 %% When `StatusEquals' and `MaxResults' are set at the same time, the
 %% `MaxResults' number of training jobs are first retrieved ignoring the
 %% `StatusEquals' parameter and then they are filtered by the `StatusEquals'
-%% parameter, which is returned as a response. For example, if
-%% `ListTrainingJobs' is invoked with the following parameters:
+%% parameter, which is returned as a response.
+%%
+%% For example, if `ListTrainingJobs' is invoked with the following
+%% parameters:
 %%
 %% `{ ... MaxResults: 100, StatusEquals: InProgress ... }'
 %%
-%% Then, 100 trainings jobs with any status including those other than
-%% `InProgress' are selected first (sorted according the creation time, from
-%% the latest to the oldest) and those with status `InProgress' are returned.
+%% First, 100 trainings jobs with any status, including those other than
+%% `InProgress', are selected (sorted according to the creation time, from
+%% the most current to the oldest). Next, those with a status of `InProgress'
+%% are returned.
 %%
-%% You can quickly test the API using the following AWS CLI code.
+%% You can quickly test the API using the following Amazon Web Services CLI
+%% code.
 %%
 %% `aws sagemaker list-training-jobs --max-results 100 --status-equals
 %% InProgress'
@@ -2854,9 +2959,10 @@ list_user_profiles(Client, Input, Options)
     request(Client, <<"ListUserProfiles">>, Input, Options).
 
 %% @doc Use this operation to list all private and vendor workforces in an
-%% AWS Region.
+%% Amazon Web Services Region.
 %%
-%% Note that you can only have one private workforce per AWS Region.
+%% Note that you can only have one private workforce per Amazon Web Services
+%% Region.
 list_workforces(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_workforces(Client, Input, []).
@@ -2878,8 +2984,8 @@ list_workteams(Client, Input, Options)
 %% @doc Adds a resouce policy to control access to a model group.
 %%
 %% For information about resoure policies, see Identity-based policies and
-%% resource-based policies in the AWS Identity and Access Management User
-%% Guide..
+%% resource-based policies in the Amazon Web Services Identity and Access
+%% Management User Guide..
 put_model_package_group_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_model_package_group_policy(Client, Input, []).
@@ -2904,6 +3010,14 @@ render_ui_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RenderUiTemplate">>, Input, Options).
 
+%% @doc Retry the execution of the pipeline.
+retry_pipeline_execution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    retry_pipeline_execution(Client, Input, []).
+retry_pipeline_execution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RetryPipelineExecution">>, Input, Options).
+
 %% @doc Finds Amazon SageMaker resources that match a search query.
 %%
 %% Matching resources are returned as a list of `SearchRecord' objects in the
@@ -2918,6 +3032,32 @@ search(Client, Input)
 search(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Search">>, Input, Options).
+
+%% @doc Notifies the pipeline that the execution of a callback step failed,
+%% along with a message describing why.
+%%
+%% When a callback step is run, the pipeline generates a callback token and
+%% includes the token in a message sent to Amazon Simple Queue Service
+%% (Amazon SQS).
+send_pipeline_execution_step_failure(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    send_pipeline_execution_step_failure(Client, Input, []).
+send_pipeline_execution_step_failure(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SendPipelineExecutionStepFailure">>, Input, Options).
+
+%% @doc Notifies the pipeline that the execution of a callback step succeeded
+%% and provides a list of the step's output parameters.
+%%
+%% When a callback step is run, the pipeline generates a callback token and
+%% includes the token in a message sent to Amazon Simple Queue Service
+%% (Amazon SQS).
+send_pipeline_execution_step_success(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    send_pipeline_execution_step_success(Client, Input, []).
+send_pipeline_execution_step_success(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SendPipelineExecutionStepSuccess">>, Input, Options).
 
 %% @doc Starts a previously stopped monitoring schedule.
 %%
@@ -3038,6 +3178,32 @@ stop_notebook_instance(Client, Input, Options)
     request(Client, <<"StopNotebookInstance">>, Input, Options).
 
 %% @doc Stops a pipeline execution.
+%%
+%% Callback Step
+%%
+%% A pipeline execution won't stop while a callback step is running. When you
+%% call `StopPipelineExecution' on a pipeline execution with a running
+%% callback step, SageMaker Pipelines sends an additional Amazon SQS message
+%% to the specified SQS queue. The body of the SQS message contains a
+%% "Status" field which is set to "Stopping".
+%%
+%% You should add logic to your Amazon SQS message consumer to take any
+%% needed action (for example, resource cleanup) upon receipt of the message
+%% followed by a call to `SendPipelineExecutionStepSuccess' or
+%% `SendPipelineExecutionStepFailure'.
+%%
+%% Only when SageMaker Pipelines receives one of these calls will it stop the
+%% pipeline execution.
+%%
+%% Lambda Step
+%%
+%% A pipeline execution can't be stopped while a lambda step is running
+%% because the Lambda function invoked by the lambda step can't be stopped.
+%% If you attempt to stop the execution while the Lambda function is running,
+%% the pipeline waits for the Lambda function to finish or until the timeout
+%% is hit, whichever occurs first, and then stops. If the Lambda function
+%% finishes, the pipeline execution status is `Stopped'. If the timeout is
+%% hit the pipeline execution status is `Failed'.
 stop_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_pipeline_execution(Client, Input, []).
@@ -3260,6 +3426,21 @@ update_pipeline_execution(Client, Input)
 update_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePipelineExecution">>, Input, Options).
+
+%% @doc Updates a machine learning (ML) project that is created from a
+%% template that sets up an ML pipeline from training to deploying an
+%% approved model.
+%%
+%% You must not update a project that is in use. If you update the
+%% `ServiceCatalogProvisioningUpdateDetails' of a project that is active or
+%% being created, or updated, you may lose resources already created by the
+%% project.
+update_project(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_project(Client, Input, []).
+update_project(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateProject">>, Input, Options).
 
 %% @doc Update a model training job to request a new Debugger profiling
 %% configuration.

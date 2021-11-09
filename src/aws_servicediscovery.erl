@@ -1,15 +1,17 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Cloud Map lets you configure public DNS, private DNS, or HTTP
+%% @doc Cloud Map
+%%
+%% With Cloud Map, you can configure public DNS, private DNS, or HTTP
 %% namespaces that your microservice applications run in.
 %%
-%% When an instance of the service becomes available, you can call the AWS
-%% Cloud Map API to register the instance with AWS Cloud Map. For public or
-%% private DNS namespaces, AWS Cloud Map automatically creates DNS records
-%% and an optional health check. Clients that submit public or private DNS
-%% queries, or HTTP requests, for the service receive an answer that contains
-%% up to eight healthy records.
+%% When an instance becomes available, you can call the Cloud Map API to
+%% register the instance with Cloud Map. For public or private DNS
+%% namespaces, Cloud Map automatically creates DNS records and an optional
+%% health check. Clients that submit public or private DNS queries, or HTTP
+%% requests, for the service receive an answer that contains up to eight
+%% healthy records.
 -module(aws_servicediscovery).
 
 -export([create_http_namespace/2,
@@ -54,8 +56,14 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_http_namespace/2,
+         update_http_namespace/3,
          update_instance_custom_health_status/2,
          update_instance_custom_health_status/3,
+         update_private_dns_namespace/2,
+         update_private_dns_namespace/3,
+         update_public_dns_namespace/2,
+         update_public_dns_namespace/3,
          update_service/2,
          update_service/3]).
 
@@ -67,13 +75,12 @@
 
 %% @doc Creates an HTTP namespace.
 %%
-%% Service instances that you register using an HTTP namespace can be
-%% discovered using a `DiscoverInstances' request but can't be discovered
-%% using DNS.
+%% Service instances registered using an HTTP namespace can be discovered
+%% using a `DiscoverInstances' request but can't be discovered using DNS.
 %%
 %% For the current quota on the number of namespaces that you can create
-%% using the same AWS account, see AWS Cloud Map quotas in the AWS Cloud Map
-%% Developer Guide.
+%% using the same account, see Cloud Map quotas in the Cloud Map Developer
+%% Guide.
 create_http_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_http_namespace(Client, Input, []).
@@ -81,15 +88,16 @@ create_http_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHttpNamespace">>, Input, Options).
 
-%% @doc Creates a private namespace based on DNS, which will be visible only
+%% @doc Creates a private namespace based on DNS, which is visible only
 %% inside a specified Amazon VPC.
 %%
 %% The namespace defines your service naming scheme. For example, if you name
 %% your namespace `example.com' and name your service `backend', the
-%% resulting DNS name for the service will be `backend.example.com'. For the
-%% current quota on the number of namespaces that you can create using the
-%% same AWS account, see AWS Cloud Map Limits in the AWS Cloud Map Developer
-%% Guide.
+%% resulting DNS name for the service is `backend.example.com'. Service
+%% instances that are registered using a private DNS namespace can be
+%% discovered using either a `DiscoverInstances' request or using DNS. For
+%% the current quota on the number of namespaces that you can create using
+%% the same account, see Cloud Map quotas in the Cloud Map Developer Guide.
 create_private_dns_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_private_dns_namespace(Client, Input, []).
@@ -97,15 +105,16 @@ create_private_dns_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePrivateDnsNamespace">>, Input, Options).
 
-%% @doc Creates a public namespace based on DNS, which will be visible on the
+%% @doc Creates a public namespace based on DNS, which is visible on the
 %% internet.
 %%
 %% The namespace defines your service naming scheme. For example, if you name
 %% your namespace `example.com' and name your service `backend', the
-%% resulting DNS name for the service will be `backend.example.com'. For the
-%% current quota on the number of namespaces that you can create using the
-%% same AWS account, see AWS Cloud Map Limits in the AWS Cloud Map Developer
-%% Guide.
+%% resulting DNS name for the service is `backend.example.com'. You can
+%% discover instances that were registered with a public DNS namespace by
+%% using either a `DiscoverInstances' request or using DNS. For the current
+%% quota on the number of namespaces that you can create using the same
+%% account, see Cloud Map quotas in the Cloud Map Developer Guide.
 create_public_dns_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_public_dns_namespace(Client, Input, []).
@@ -113,11 +122,12 @@ create_public_dns_namespace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePublicDnsNamespace">>, Input, Options).
 
-%% @doc Creates a service, which defines the configuration for the following
-%% entities:
+%% @doc Creates a service.
+%%
+%% This action defines the configuration for the following entities:
 %%
 %% <ul> <li> For public and private DNS namespaces, one of the following
-%% combinations of DNS records in Amazon Route 53:
+%% combinations of DNS records in Amazon Route 53:
 %%
 %% <ul> <li> `A'
 %%
@@ -132,12 +142,12 @@ create_public_dns_namespace(Client, Input, Options)
 %% </li> </ul> </li> <li> Optionally, a health check
 %%
 %% </li> </ul> After you create the service, you can submit a
-%% RegisterInstance request, and AWS Cloud Map uses the values in the
+%% RegisterInstance request, and Cloud Map uses the values in the
 %% configuration to create the specified entities.
 %%
 %% For the current quota on the number of instances that you can register
-%% using the same namespace and using the same service, see AWS Cloud Map
-%% Limits in the AWS Cloud Map Developer Guide.
+%% using the same namespace and using the same service, see Cloud Map quotas
+%% in the Cloud Map Developer Guide.
 create_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service(Client, Input, []).
@@ -166,8 +176,8 @@ delete_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteService">>, Input, Options).
 
-%% @doc Deletes the Amazon Route 53 DNS records and health check, if any,
-%% that AWS Cloud Map created for the specified instance.
+%% @doc Deletes the Amazon Route 53 DNS records and health check, if any,
+%% that Cloud Map created for the specified instance.
 deregister_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_instance(Client, Input, []).
@@ -198,7 +208,7 @@ get_instance(Client, Input, Options)
 %% @doc Gets the current health status (`Healthy', `Unhealthy', or `Unknown')
 %% of one or more instances that are associated with a specified service.
 %%
-%% There is a brief delay between when you register an instance and when the
+%% There's a brief delay between when you register an instance and when the
 %% health status for the instance is available.
 get_instances_health_status(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -245,7 +255,7 @@ list_instances(Client, Input, Options)
     request(Client, <<"ListInstances">>, Input, Options).
 
 %% @doc Lists summary information about the namespaces that were created by
-%% the current AWS account.
+%% the current account.
 list_namespaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_namespaces(Client, Input, []).
@@ -283,9 +293,9 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% When you submit a `RegisterInstance' request, the following occurs:
 %%
-%% <ul> <li> For each DNS record that you define in the service that is
+%% <ul> <li> For each DNS record that you define in the service that's
 %% specified by `ServiceId', a record is created or updated in the hosted
-%% zone that is associated with the corresponding namespace.
+%% zone that's associated with the corresponding namespace.
 %%
 %% </li> <li> If the service includes `HealthCheckConfig', a health check is
 %% created based on the settings in the health check configuration.
@@ -298,8 +308,8 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% For more information, see CreateService.
 %%
-%% When AWS Cloud Map receives a DNS query for the specified DNS name, it
-%% returns the applicable value:
+%% When Cloud Map receives a DNS query for the specified DNS name, it returns
+%% the applicable value:
 %%
 %% <ul> <li> If the health check is healthy: returns all the records
 %%
@@ -310,8 +320,8 @@ list_tags_for_resource(Client, Input, Options)
 %% the records
 %%
 %% </li> </ul> For the current quota on the number of instances that you can
-%% register using the same namespace and using the same service, see AWS
-%% Cloud Map Limits in the AWS Cloud Map Developer Guide.
+%% register using the same namespace and using the same service, see Cloud
+%% Map quotas in the Cloud Map Developer Guide.
 register_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_instance(Client, Input, []).
@@ -335,13 +345,21 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
+%% @doc Updates an HTTP namespace.
+update_http_namespace(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_http_namespace(Client, Input, []).
+update_http_namespace(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateHttpNamespace">>, Input, Options).
+
 %% @doc Submits a request to change the health status of a custom health
 %% check to healthy or unhealthy.
 %%
 %% You can use `UpdateInstanceCustomHealthStatus' to change the status only
 %% for custom health checks, which you define using `HealthCheckCustomConfig'
-%% when you create a service. You can't use it to change the status for
-%% Route 53 health checks, which you define using `HealthCheckConfig'.
+%% when you create a service. You can't use it to change the status for Route
+%% 53 health checks, which you define using `HealthCheckConfig'.
 %%
 %% For more information, see HealthCheckCustomConfig.
 update_instance_custom_health_status(Client, Input)
@@ -350,6 +368,22 @@ update_instance_custom_health_status(Client, Input)
 update_instance_custom_health_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInstanceCustomHealthStatus">>, Input, Options).
+
+%% @doc Updates a private DNS namespace.
+update_private_dns_namespace(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_private_dns_namespace(Client, Input, []).
+update_private_dns_namespace(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdatePrivateDnsNamespace">>, Input, Options).
+
+%% @doc Updates a public DNS namespace.
+update_public_dns_namespace(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_public_dns_namespace(Client, Input, []).
+update_public_dns_namespace(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdatePublicDnsNamespace">>, Input, Options).
 
 %% @doc Submits a request to perform the following operations:
 %%
@@ -368,12 +402,12 @@ update_instance_custom_health_status(Client, Input, Options)
 %% deleted from the service.
 %%
 %% </li> <li> If you omit an existing `HealthCheckCustomConfig' configuration
-%% from an `UpdateService' request, the configuration is not deleted from the
+%% from an `UpdateService' request, the configuration isn't deleted from the
 %% service.
 %%
-%% </li> </ul> When you update settings for a service, AWS Cloud Map also
-%% updates the corresponding settings in all the records and health checks
-%% that were created by using the specified service.
+%% </li> </ul> When you update settings for a service, Cloud Map also updates
+%% the corresponding settings in all the records and health checks that were
+%% created by using the specified service.
 update_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service(Client, Input, []).

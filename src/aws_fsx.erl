@@ -9,6 +9,8 @@
          associate_file_system_aliases/3,
          cancel_data_repository_task/2,
          cancel_data_repository_task/3,
+         copy_backup/2,
+         copy_backup/3,
          create_backup/2,
          create_backup/3,
          create_data_repository_task/2,
@@ -17,10 +19,20 @@
          create_file_system/3,
          create_file_system_from_backup/2,
          create_file_system_from_backup/3,
+         create_storage_virtual_machine/2,
+         create_storage_virtual_machine/3,
+         create_volume/2,
+         create_volume/3,
+         create_volume_from_backup/2,
+         create_volume_from_backup/3,
          delete_backup/2,
          delete_backup/3,
          delete_file_system/2,
          delete_file_system/3,
+         delete_storage_virtual_machine/2,
+         delete_storage_virtual_machine/3,
+         delete_volume/2,
+         delete_volume/3,
          describe_backups/2,
          describe_backups/3,
          describe_data_repository_tasks/2,
@@ -29,6 +41,10 @@
          describe_file_system_aliases/3,
          describe_file_systems/2,
          describe_file_systems/3,
+         describe_storage_virtual_machines/2,
+         describe_storage_virtual_machines/3,
+         describe_volumes/2,
+         describe_volumes/3,
          disassociate_file_system_aliases/2,
          disassociate_file_system_aliases/3,
          list_tags_for_resource/2,
@@ -38,7 +54,11 @@
          untag_resource/2,
          untag_resource/3,
          update_file_system/2,
-         update_file_system/3]).
+         update_file_system/3,
+         update_storage_virtual_machine/2,
+         update_storage_virtual_machine/3,
+         update_volume/2,
+         update_volume/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -49,7 +69,7 @@
 %% @doc Use this action to associate one or more Domain Name Server (DNS)
 %% aliases with an existing Amazon FSx for Windows File Server file system.
 %%
-%% A file systen can have a maximum of 50 DNS aliases associated with it at
+%% A file system can have a maximum of 50 DNS aliases associated with it at
 %% any one time. If you try to associate a DNS alias that is already
 %% associated with the file system, FSx takes no action on that alias in the
 %% request. For more information, see Working with DNS Aliases and
@@ -87,29 +107,70 @@ cancel_data_repository_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelDataRepositoryTask">>, Input, Options).
 
-%% @doc Creates a backup of an existing Amazon FSx file system.
+%% @doc Copies an existing backup within the same Amazon Web Services account
+%% to another Amazon Web Services Region (cross-Region copy) or within the
+%% same Amazon Web Services Region (in-Region copy).
 %%
-%% Creating regular backups for your file system is a best practice, enabling
-%% you to restore a file system from a backup if an issue arises with the
-%% original file system.
+%% You can have up to five backup copy requests in progress to a single
+%% destination Region per account.
+%%
+%% You can use cross-Region backup copies for cross-region disaster recovery.
+%% You periodically take backups and copy them to another Region so that in
+%% the event of a disaster in the primary Region, you can restore from backup
+%% and recover availability quickly in the other Region. You can make
+%% cross-Region copies only within your Amazon Web Services partition.
+%%
+%% You can also use backup copies to clone your file data set to another
+%% Region or within the same Region.
+%%
+%% You can use the `SourceRegion' parameter to specify the Amazon Web
+%% Services Region from which the backup will be copied. For example, if you
+%% make the call from the `us-west-1' Region and want to copy a backup from
+%% the `us-east-2' Region, you specify `us-east-2' in the `SourceRegion'
+%% parameter to make a cross-Region copy. If you don't specify a Region, the
+%% backup copy is created in the same Region where the request is sent from
+%% (in-Region copy).
+%%
+%% For more information on creating backup copies, see Copying backups in the
+%% Amazon FSx for Windows User Guide and Copying backups in the Amazon FSx
+%% for Lustre User Guide.
+copy_backup(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    copy_backup(Client, Input, []).
+copy_backup(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CopyBackup">>, Input, Options).
+
+%% @doc Creates a backup of an existing Amazon FSx for Windows File Server or
+%% Amazon FSx for Lustre file system, or of an Amazon FSx for NetApp ONTAP
+%% volume.
+%%
+%% Creating regular backups is a best practice, enabling you to restore a
+%% file system or volume from a backup if an issue arises with the original
+%% file system or volume.
 %%
 %% For Amazon FSx for Lustre file systems, you can create a backup only for
 %% file systems with the following configuration:
 %%
 %% <ul> <li> a Persistent deployment type
 %%
-%% </li> <li> is not linked to a data respository.
+%% </li> <li> is not linked to a data repository.
 %%
-%% </li> </ul> For more information about backing up Amazon FSx for Lustre
-%% file systems, see Working with FSx for Lustre backups.
+%% </li> </ul> For more information about backups, see the following:
 %%
-%% For more information about backing up Amazon FSx for Windows file systems,
-%% see Working with FSx for Windows backups.
+%% <ul> <li> For Amazon FSx for Lustre, see Working with FSx for Lustre
+%% backups.
 %%
-%% If a backup with the specified client request token exists, and the
-%% parameters match, this operation returns the description of the existing
-%% backup. If a backup specified client request token exists, and the
-%% parameters don't match, this operation returns
+%% </li> <li> For Amazon FSx for Windows, see Working with FSx for Windows
+%% backups.
+%%
+%% </li> <li> For Amazon FSx for NetApp ONTAP, see Working with FSx for
+%% NetApp ONTAP backups.
+%%
+%% </li> </ul> If a backup with the specified client request token exists,
+%% and the parameters match, this operation returns the description of the
+%% existing backup. If a backup specified client request token exists, and
+%% the parameters don't match, this operation returns
 %% `IncompatibleParameterError'. If a backup with the specified client
 %% request token doesn't exist, `CreateBackup' does the following:
 %%
@@ -190,8 +251,8 @@ create_file_system(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFileSystem">>, Input, Options).
 
-%% @doc Creates a new Amazon FSx file system from an existing Amazon FSx
-%% backup.
+%% @doc Creates a new Amazon FSx for Lustre or Amazon FSx for Windows File
+%% Server file system from an existing Amazon FSx backup.
 %%
 %% If a file system with the specified client request token exists and the
 %% parameters match, this operation returns the description of the file
@@ -230,6 +291,32 @@ create_file_system_from_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFileSystemFromBackup">>, Input, Options).
 
+%% @doc Creates a storage virtual machine (SVM) for an Amazon FSx for ONTAP
+%% file system.
+create_storage_virtual_machine(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_storage_virtual_machine(Client, Input, []).
+create_storage_virtual_machine(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateStorageVirtualMachine">>, Input, Options).
+
+%% @doc Creates an Amazon FSx for NetApp ONTAP storage volume.
+create_volume(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_volume(Client, Input, []).
+create_volume(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateVolume">>, Input, Options).
+
+%% @doc Creates a new Amazon FSx for NetApp ONTAP volume from an existing
+%% Amazon FSx volume backup.
+create_volume_from_backup(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_volume_from_backup(Client, Input, []).
+create_volume_from_backup(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateVolumeFromBackup">>, Input, Options).
+
 %% @doc Deletes an Amazon FSx backup, deleting its contents.
 %%
 %% After deletion, the backup no longer exists, and its data is gone.
@@ -250,6 +337,10 @@ delete_backup(Client, Input, Options)
 %%
 %% After deletion, the file system no longer exists, and its data is gone.
 %% Any existing automatic backups will also be deleted.
+%%
+%% To delete an Amazon FSx for NetApp ONTAP file system, first delete all the
+%% volumes and SVMs on the file system. Then provide a `FileSystemId' value
+%% to the `DeleFileSystem' operation.
 %%
 %% By default, when you delete an Amazon FSx for Windows File Server file
 %% system, a final backup is created upon deletion. This final backup is not
@@ -275,11 +366,37 @@ delete_file_system(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFileSystem">>, Input, Options).
 
+%% @doc Deletes an existing Amazon FSx for ONTAP storage virtual machine
+%% (SVM).
+%%
+%% Prior to deleting an SVM, you must delete all non-root volumes in the SVM,
+%% otherwise the operation will fail.
+delete_storage_virtual_machine(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_storage_virtual_machine(Client, Input, []).
+delete_storage_virtual_machine(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteStorageVirtualMachine">>, Input, Options).
+
+%% @doc Deletes an Amazon FSx for NetApp ONTAP volume.
+%%
+%% When deleting a volume, you have the option of creating a final backup. If
+%% you create a final backup, you have the option to apply Tags to the
+%% backup. You need to have `fsx:TagResource' permission in order to apply
+%% tags to the backup.
+delete_volume(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_volume(Client, Input, []).
+delete_volume(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteVolume">>, Input, Options).
+
 %% @doc Returns the description of specific Amazon FSx backups, if a
 %% `BackupIds' value is provided for that backup.
 %%
-%% Otherwise, it returns all backups owned by your AWS account in the AWS
-%% Region of the endpoint that you're calling.
+%% Otherwise, it returns all backups owned by your Amazon Web Services
+%% account in the Amazon Web Services Region of the endpoint that you're
+%% calling.
 %%
 %% When retrieving all backups, you can optionally specify the `MaxResults'
 %% parameter to limit the number of backups in a response. If more backups
@@ -295,8 +412,8 @@ delete_file_system(Client, Input, Options)
 %%
 %% When using this action, keep the following in mind:
 %%
-%% <ul> <li> The implementation might return fewer than `MaxResults' file
-%% system descriptions while still including a `NextToken' value.
+%% <ul> <li> The implementation might return fewer than `MaxResults' backup
+%% descriptions while still including a `NextToken' value.
 %%
 %% </li> <li> The order of backups returned in the response of one
 %% `DescribeBackups' call and the order of backups returned across the
@@ -316,8 +433,9 @@ describe_backups(Client, Input, Options)
 %%
 %% You can use filters to narrow the response to include just tasks for
 %% specific file systems, or tasks in a specific lifecycle state. Otherwise,
-%% it returns all data repository tasks owned by your AWS account in the AWS
-%% Region of the endpoint that you're calling.
+%% it returns all data repository tasks owned by your Amazon Web Services
+%% account in the Amazon Web Services Region of the endpoint that you're
+%% calling.
 %%
 %% When retrieving all tasks, you can paginate the response by using the
 %% optional `MaxResults' parameter to limit the number of tasks returned in a
@@ -348,8 +466,9 @@ describe_file_system_aliases(Client, Input, Options)
 %% @doc Returns the description of specific Amazon FSx file systems, if a
 %% `FileSystemIds' value is provided for that file system.
 %%
-%% Otherwise, it returns descriptions of all file systems owned by your AWS
-%% account in the AWS Region of the endpoint that you're calling.
+%% Otherwise, it returns descriptions of all file systems owned by your
+%% Amazon Web Services account in the Amazon Web Services Region of the
+%% endpoint that you're calling.
 %%
 %% When retrieving all file system descriptions, you can optionally specify
 %% the `MaxResults' parameter to limit the number of descriptions in a
@@ -380,6 +499,23 @@ describe_file_systems(Client, Input)
 describe_file_systems(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFileSystems">>, Input, Options).
+
+%% @doc Describes one or more Amazon FSx for NetApp ONTAP storage virtual
+%% machines (SVMs).
+describe_storage_virtual_machines(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_storage_virtual_machines(Client, Input, []).
+describe_storage_virtual_machines(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeStorageVirtualMachines">>, Input, Options).
+
+%% @doc Describes one or more Amazon FSx for NetApp ONTAP volumes.
+describe_volumes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_volumes(Client, Input, []).
+describe_volumes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeVolumes">>, Input, Options).
 
 %% @doc Use this action to disassociate, or remove, one or more Domain Name
 %% Service (DNS) aliases from an Amazon FSx for Windows File Server file
@@ -456,7 +592,9 @@ untag_resource(Client, Input, Options)
 %% For Amazon FSx for Windows File Server file systems, you can update the
 %% following properties:
 %%
-%% <ul> <li> AutomaticBackupRetentionDays
+%% <ul> <li> AuditLogConfiguration
+%%
+%% </li> <li> AutomaticBackupRetentionDays
 %%
 %% </li> <li> DailyAutomaticBackupStartTime
 %%
@@ -477,7 +615,20 @@ untag_resource(Client, Input, Options)
 %%
 %% </li> <li> DailyAutomaticBackupStartTime
 %%
+%% </li> <li> DataCompressionType
+%%
 %% </li> <li> StorageCapacity
+%%
+%% </li> <li> WeeklyMaintenanceStartTime
+%%
+%% </li> </ul> For Amazon FSx for NetApp ONTAP file systems, you can update
+%% the following properties:
+%%
+%% <ul> <li> AutomaticBackupRetentionDays
+%%
+%% </li> <li> DailyAutomaticBackupStartTime
+%%
+%% </li> <li> FsxAdminPassword
 %%
 %% </li> <li> WeeklyMaintenanceStartTime
 %%
@@ -488,6 +639,22 @@ update_file_system(Client, Input)
 update_file_system(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFileSystem">>, Input, Options).
+
+%% @doc Updates an Amazon FSx for ONTAP storage virtual machine (SVM).
+update_storage_virtual_machine(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_storage_virtual_machine(Client, Input, []).
+update_storage_virtual_machine(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateStorageVirtualMachine">>, Input, Options).
+
+%% @doc Updates an Amazon FSx for NetApp ONTAP volume's configuration.
+update_volume(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_volume(Client, Input, []).
+update_volume(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateVolume">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

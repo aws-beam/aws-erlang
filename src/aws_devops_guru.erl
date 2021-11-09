@@ -41,6 +41,9 @@
          describe_service_integration/1,
          describe_service_integration/3,
          describe_service_integration/4,
+         get_cost_estimation/1,
+         get_cost_estimation/3,
+         get_cost_estimation/4,
          get_resource_collection/2,
          get_resource_collection/4,
          get_resource_collection/5,
@@ -60,6 +63,8 @@
          remove_notification_channel/4,
          search_insights/2,
          search_insights/3,
+         start_cost_estimation/2,
+         start_cost_estimation/3,
          update_resource_collection/2,
          update_resource_collection/3,
          update_service_integration/2,
@@ -238,7 +243,7 @@ describe_insight(Client, Id, QueryMap, HeadersMap, Options0)
 %% You specify the type of AWS resources collection. The one type of AWS
 %% resource collection supported is AWS CloudFormation stacks. DevOps Guru
 %% can be configured to analyze only the AWS resources that are defined in
-%% the stacks.
+%% the stacks. You can specify up to 500 AWS CloudFormation stacks.
 describe_resource_collection_health(Client, ResourceCollectionType)
   when is_map(Client) ->
     describe_resource_collection_health(Client, ResourceCollectionType, #{}, #{}).
@@ -293,12 +298,44 @@ describe_service_integration(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns an estimate of the monthly cost for DevOps Guru to analyze
+%% your AWS resources.
+%%
+%% For more information, see Estimate your Amazon DevOps Guru costs and
+%% Amazon DevOps Guru pricing.
+get_cost_estimation(Client)
+  when is_map(Client) ->
+    get_cost_estimation(Client, #{}, #{}).
+
+get_cost_estimation(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_cost_estimation(Client, QueryMap, HeadersMap, []).
+
+get_cost_estimation(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/cost-estimation"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns lists AWS resources that are of the specified resource
 %% collection type.
 %%
 %% The one type of AWS resource collection supported is AWS CloudFormation
 %% stacks. DevOps Guru can be configured to analyze only the AWS resources
-%% that are defined in the stacks.
+%% that are defined in the stacks. You can specify up to 500 AWS
+%% CloudFormation stacks.
 get_resource_collection(Client, ResourceCollectionType)
   when is_map(Client) ->
     get_resource_collection(Client, ResourceCollectionType, #{}, #{}).
@@ -535,12 +572,37 @@ search_insights(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts the creation of an estimate of the monthly cost to analyze
+%% your AWS resources.
+start_cost_estimation(Client, Input) ->
+    start_cost_estimation(Client, Input, []).
+start_cost_estimation(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/cost-estimation"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates the collection of resources that DevOps Guru analyzes.
 %%
 %% The one type of AWS resource collection supported is AWS CloudFormation
 %% stacks. DevOps Guru can be configured to analyze only the AWS resources
-%% that are defined in the stacks. This method also creates the IAM role
-%% required for you to use DevOps Guru.
+%% that are defined in the stacks. You can specify up to 500 AWS
+%% CloudFormation stacks. This method also creates the IAM role required for
+%% you to use DevOps Guru.
 update_resource_collection(Client, Input) ->
     update_resource_collection(Client, Input, []).
 update_resource_collection(Client, Input0, Options0) ->
@@ -626,6 +688,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

@@ -21,6 +21,10 @@
          create_ip_group/3,
          create_tags/2,
          create_tags/3,
+         create_updated_workspace_image/2,
+         create_updated_workspace_image/3,
+         create_workspace_bundle/2,
+         create_workspace_bundle/3,
          create_workspaces/2,
          create_workspaces/3,
          delete_connection_alias/2,
@@ -29,6 +33,8 @@
          delete_ip_group/3,
          delete_tags/2,
          delete_tags/3,
+         delete_workspace_bundle/2,
+         delete_workspace_bundle/3,
          delete_workspace_image/2,
          delete_workspace_image/3,
          deregister_workspace_directory/2,
@@ -105,6 +111,8 @@
          update_connection_alias_permission/3,
          update_rules_of_ip_group/2,
          update_rules_of_ip_group/3,
+         update_workspace_bundle/2,
+         update_workspace_bundle/3,
          update_workspace_image_permission/2,
          update_workspace_image_permission/3]).
 
@@ -157,14 +165,14 @@ authorize_ip_rules(Client, Input, Options)
 %% In the China (Ningxia) Region, you can copy images only within the same
 %% Region.
 %%
-%% In the AWS GovCloud (US-West) Region, to copy images to and from other AWS
-%% Regions, contact AWS Support.
+%% In Amazon Web Services GovCloud (US), to copy images to and from other
+%% Regions, contact Amazon Web Services Support.
 %%
 %% Before copying a shared image, be sure to verify that it has been shared
-%% from the correct AWS account. To determine if an image has been shared and
-%% to see the AWS account ID that owns an image, use the
-%% DescribeWorkSpaceImages and DescribeWorkspaceImagePermissions API
-%% operations.
+%% from the correct Amazon Web Services account. To determine if an image has
+%% been shared and to see the ID of the Amazon Web Services account that owns
+%% an image, use the DescribeWorkSpaceImages and
+%% DescribeWorkspaceImagePermissions API operations.
 copy_workspace_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_workspace_image(Client, Input, []).
@@ -210,6 +218,41 @@ create_tags(Client, Input)
 create_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTags">>, Input, Options).
+
+%% @doc Creates a new updated WorkSpace image based on the specified source
+%% image.
+%%
+%% The new updated WorkSpace image has the latest drivers and other updates
+%% required by the Amazon WorkSpaces components.
+%%
+%% To determine which WorkSpace images need to be updated with the latest
+%% Amazon WorkSpaces requirements, use DescribeWorkspaceImages.
+%%
+%% Only Windows 10 WorkSpace images can be programmatically updated at this
+%% time.
+%%
+%% Microsoft Windows updates and other application updates are not included
+%% in the update process.
+%%
+%% The source WorkSpace image is not deleted. You can delete the source image
+%% after you've verified your new updated image and created a new bundle.
+create_updated_workspace_image(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_updated_workspace_image(Client, Input, []).
+create_updated_workspace_image(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateUpdatedWorkspaceImage">>, Input, Options).
+
+%% @doc Creates the specified WorkSpace bundle.
+%%
+%% For more information about creating WorkSpace bundles, see Create a Custom
+%% WorkSpaces Image and Bundle.
+create_workspace_bundle(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_workspace_bundle(Client, Input, []).
+create_workspace_bundle(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateWorkspaceBundle">>, Input, Options).
 
 %% @doc Creates one or more WorkSpaces.
 %%
@@ -263,6 +306,17 @@ delete_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTags">>, Input, Options).
 
+%% @doc Deletes the specified WorkSpace bundle.
+%%
+%% For more information about deleting WorkSpace bundles, see Delete a Custom
+%% WorkSpaces Bundle or Image.
+delete_workspace_bundle(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_workspace_bundle(Client, Input, []).
+delete_workspace_bundle(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteWorkspaceBundle">>, Input, Options).
+
 %% @doc Deletes the specified image from your account.
 %%
 %% To delete an image, you must first delete any bundles that are associated
@@ -284,8 +338,7 @@ delete_workspace_image(Client, Input, Options)
 %% with WorkSpaces. If there are no WorkSpaces being used with your Simple AD
 %% or AD Connector directory for 30 consecutive days, this directory will be
 %% automatically deregistered for use with Amazon WorkSpaces, and you will be
-%% charged for this directory as per the AWS Directory Services pricing
-%% terms.
+%% charged for this directory as per the Directory Service pricing terms.
 %%
 %% To delete empty directories, see Delete the Directory for Your WorkSpaces.
 %% If you delete your Simple AD or AD Connector directory, you can always
@@ -325,7 +378,8 @@ describe_client_properties(Client, Input, Options)
     request(Client, <<"DescribeClientProperties">>, Input, Options).
 
 %% @doc Describes the permissions that the owner of a connection alias has
-%% granted to another AWS account for the specified connection alias.
+%% granted to another Amazon Web Services account for the specified
+%% connection alias.
 %%
 %% For more information, see Cross-Region Redirection for Amazon WorkSpaces.
 describe_connection_alias_permissions(Client, Input)
@@ -382,7 +436,7 @@ describe_workspace_directories(Client, Input, Options)
     request(Client, <<"DescribeWorkspaceDirectories">>, Input, Options).
 
 %% @doc Describes the permissions that the owner of an image has granted to
-%% other AWS accounts for an image.
+%% other Amazon Web Services accounts for an image.
 describe_workspace_image_permissions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workspace_image_permissions(Client, Input, []).
@@ -431,8 +485,8 @@ describe_workspaces_connection_status(Client, Input, Options)
 %% @doc Disassociates a connection alias from a directory.
 %%
 %% Disassociating a connection alias disables cross-Region redirection
-%% between two directories in different AWS Regions. For more information,
-%% see Cross-Region Redirection for Amazon WorkSpaces.
+%% between two directories in different Regions. For more information, see
+%% Cross-Region Redirection for Amazon WorkSpaces.
 %%
 %% Before performing this operation, call DescribeConnectionAliases to make
 %% sure that the current state of the connection alias is `CREATED'.
@@ -455,9 +509,10 @@ disassociate_ip_groups(Client, Input, Options)
 %% @doc Imports the specified Windows 10 Bring Your Own License (BYOL) image
 %% into Amazon WorkSpaces.
 %%
-%% The image must be an already licensed Amazon EC2 image that is in your AWS
-%% account, and you must own the image. For more information about creating
-%% BYOL images, see Bring Your Own Windows Desktop Licenses.
+%% The image must be an already licensed Amazon EC2 image that is in your
+%% Amazon Web Services account, and you must own the image. For more
+%% information about creating BYOL images, see Bring Your Own Windows Desktop
+%% Licenses.
 import_workspace_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_workspace_image(Client, Input, []).
@@ -469,9 +524,9 @@ import_workspace_image(Client, Input, Options)
 %% that you can use for the network management interface when you enable
 %% Bring Your Own License (BYOL).
 %%
-%% This operation can be run only by AWS accounts that are enabled for BYOL.
-%% If your account isn't enabled for BYOL, you'll receive an
-%% `AccessDeniedException' error.
+%% This operation can be run only by Amazon Web Services accounts that are
+%% enabled for BYOL. If your account isn't enabled for BYOL, you'll receive
+%% an `AccessDeniedException' error.
 %%
 %% The management network interface is connected to a secure Amazon
 %% WorkSpaces management network. It is used for interactive streaming of the
@@ -673,7 +728,7 @@ stop_workspaces(Client, Input, Options)
 %%
 %% Terminating a WorkSpace is a permanent action and cannot be undone. The
 %% user's data is destroyed. If you need to archive any user data, contact
-%% AWS Support before terminating the WorkSpace.
+%% Amazon Web Services Support before terminating the WorkSpace.
 %%
 %% You can terminate a WorkSpace that is in any state except `SUSPENDED'.
 %%
@@ -689,8 +744,7 @@ stop_workspaces(Client, Input, Options)
 %% with WorkSpaces. If there are no WorkSpaces being used with your Simple AD
 %% or AD Connector directory for 30 consecutive days, this directory will be
 %% automatically deregistered for use with Amazon WorkSpaces, and you will be
-%% charged for this directory as per the AWS Directory Services pricing
-%% terms.
+%% charged for this directory as per the Directory Service pricing terms.
 %%
 %% To delete empty directories, see Delete the Directory for Your WorkSpaces.
 %% If you delete your Simple AD or AD Connector directory, you can always
@@ -736,21 +790,38 @@ update_rules_of_ip_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRulesOfIpGroup">>, Input, Options).
 
-%% @doc Shares or unshares an image with one account in the same AWS Region
-%% by specifying whether that account has permission to copy the image.
+%% @doc Updates a WorkSpace bundle with a new image.
+%%
+%% For more information about updating WorkSpace bundles, see Update a Custom
+%% WorkSpaces Bundle.
+%%
+%% Existing WorkSpaces aren't automatically updated when you update the
+%% bundle that they're based on. To update existing WorkSpaces that are based
+%% on a bundle that you've updated, you must either rebuild the WorkSpaces or
+%% delete and recreate them.
+update_workspace_bundle(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_workspace_bundle(Client, Input, []).
+update_workspace_bundle(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateWorkspaceBundle">>, Input, Options).
+
+%% @doc Shares or unshares an image with one account in the same Amazon Web
+%% Services Region by specifying whether that account has permission to copy
+%% the image.
 %%
 %% If the copy image permission is granted, the image is shared with that
 %% account. If the copy image permission is revoked, the image is unshared
 %% with the account.
 %%
 %% After an image has been shared, the recipient account can copy the image
-%% to other AWS Regions as needed.
+%% to other Regions as needed.
 %%
 %% In the China (Ningxia) Region, you can copy images only within the same
 %% Region.
 %%
-%% In the AWS GovCloud (US-West) Region, to copy images to and from other AWS
-%% Regions, contact AWS Support.
+%% In Amazon Web Services GovCloud (US), to copy images to and from other
+%% Regions, contact Amazon Web Services Support.
 %%
 %% For more information about sharing images, see Share or Unshare a Custom
 %% WorkSpaces Image.
@@ -758,10 +829,10 @@ update_rules_of_ip_group(Client, Input, Options)
 %% To delete an image that has been shared, you must unshare the image before
 %% you delete it.
 %%
-%% Sharing Bring Your Own License (BYOL) images across AWS accounts isn't
-%% supported at this time in the AWS GovCloud (US-West) Region. To share BYOL
-%% images across accounts in the AWS GovCloud (US-West) Region, contact AWS
-%% Support.
+%% Sharing Bring Your Own License (BYOL) images across Amazon Web Services
+%% accounts isn't supported at this time in Amazon Web Services GovCloud
+%% (US). To share BYOL images across accounts in Amazon Web Services GovCloud
+%% (US), contact Amazon Web Services Support.
 update_workspace_image_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_workspace_image_permission(Client, Input, []).

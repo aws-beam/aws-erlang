@@ -15,7 +15,7 @@
 %% planning (ERP), with contact history from your Amazon Connect contact
 %% center.
 %%
-%% If you're new to Amazon Connect, you might find it helpful to also review
+%% If you're new to Amazon Connect , you might find it helpful to also review
 %% the Amazon Connect Administrator Guide.
 -module(aws_customer_profiles).
 
@@ -42,6 +42,9 @@
          get_domain/5,
          get_integration/3,
          get_integration/4,
+         get_matches/2,
+         get_matches/4,
+         get_matches/5,
          get_profile_object_type/3,
          get_profile_object_type/5,
          get_profile_object_type/6,
@@ -67,6 +70,8 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         merge_profiles/3,
+         merge_profiles/4,
          put_integration/3,
          put_integration/4,
          put_profile_object/3,
@@ -126,6 +131,9 @@ add_profile_key(Client, DomainName, Input0, Options0) ->
 %%
 %% Each Amazon Connect instance can be associated with only one domain.
 %% Multiple Amazon Connect instances can be associated with one domain.
+%%
+%% Use this API or UpdateDomain to enable identity resolution: set `Matching'
+%% to true.
 create_domain(Client, DomainName, Input) ->
     create_domain(Client, DomainName, Input, []).
 create_domain(Client, DomainName, Input0, Options0) ->
@@ -365,6 +373,71 @@ get_integration(Client, DomainName, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and subject to
+%% change.
+%%
+%% Before calling this API, use CreateDomain or UpdateDomain to enable
+%% identity resolution: set `Matching' to true.
+%%
+%% GetMatches returns potentially matching profiles, based on the results of
+%% the latest run of a machine learning process.
+%%
+%% Amazon Connect starts a batch process every Saturday at 12AM UTC to
+%% identify matching profiles. The results are returned up to seven days
+%% after the Saturday run.
+%%
+%% Amazon Connect uses the following profile attributes to identify matches:
+%%
+%% <ul> <li> PhoneNumber
+%%
+%% </li> <li> HomePhoneNumber
+%%
+%% </li> <li> BusinessPhoneNumber
+%%
+%% </li> <li> MobilePhoneNumber
+%%
+%% </li> <li> EmailAddress
+%%
+%% </li> <li> PersonalEmailAddress
+%%
+%% </li> <li> BusinessEmailAddress
+%%
+%% </li> <li> FullName
+%%
+%% </li> <li> BusinessName
+%%
+%% </li> </ul> For example, two or more profiles—with spelling mistakes such
+%% as John Doe and Jhn Doe, or different casing email addresses such as
+%% JOHN_DOE@ANYCOMPANY.COM and johndoe@anycompany.com, or different phone
+%% number formats such as 555-010-0000 and +1-555-010-0000—can be detected as
+%% belonging to the same customer John Doe and merged into a unified profile.
+get_matches(Client, DomainName)
+  when is_map(Client) ->
+    get_matches(Client, DomainName, #{}, #{}).
+
+get_matches(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_matches(Client, DomainName, QueryMap, HeadersMap, []).
+
+get_matches(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/matches"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the object types for a specific domain.
 get_profile_object_type(Client, DomainName, ObjectTypeName)
@@ -609,6 +682,61 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc This API is in preview release for Amazon Connect and subject to
+%% change.
+%%
+%% Runs an AWS Lambda job that does the following:
+%%
+%% <ol> <li> All the profileKeys in the `ProfileToBeMerged' will be moved to
+%% the main profile.
+%%
+%% </li> <li> All the objects in the `ProfileToBeMerged' will be moved to the
+%% main profile.
+%%
+%% </li> <li> All the `ProfileToBeMerged' will be deleted at the end.
+%%
+%% </li> <li> All the profileKeys in the `ProfileIdsToBeMerged' will be moved
+%% to the main profile.
+%%
+%% </li> <li> Standard fields are merged as follows:
+%%
+%% <ol> <li> Fields are always "union"-ed if there are no conflicts in
+%% standard fields or attributeKeys.
+%%
+%% </li> <li> When there are conflicting fields:
+%%
+%% <ol> <li> If no `SourceProfileIds' entry is specified, the main Profile
+%% value is always taken.
+%%
+%% </li> <li> If a `SourceProfileIds' entry is specified, the specified
+%% profileId is always taken, even if it is a NULL value.
+%%
+%% </li> </ol> </li> </ol> </li> </ol> You can use MergeProfiles together
+%% with GetMatches, which returns potentially matching profiles, or use it
+%% with the results of another matching system. After profiles have been
+%% merged, they cannot be separated (unmerged).
+merge_profiles(Client, DomainName, Input) ->
+    merge_profiles(Client, DomainName, Input, []).
+merge_profiles(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/objects/merge"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Adds an integration between the service and a third-party service,
 %% which includes Amazon AppFlow and Amazon Connect.
 %%
@@ -791,7 +919,10 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Updates the properties of a domain, including creating or selecting a
 %% dead letter queue or an encryption key.
 %%
-%% Once a domain is created, the name can’t be changed.
+%% After a domain is created, the name can’t be changed.
+%%
+%% Use this API or CreateDomain to enable identity resolution: set `Matching'
+%% to true.
 update_domain(Client, DomainName, Input) ->
     update_domain(Client, DomainName, Input, []).
 update_domain(Client, DomainName, Input0, Options0) ->
@@ -878,6 +1009,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

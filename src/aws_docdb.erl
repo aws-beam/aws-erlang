@@ -4,7 +4,9 @@
 %% @doc Amazon DocumentDB API documentation
 -module(aws_docdb).
 
--export([add_tags_to_resource/2,
+-export([add_source_identifier_to_subscription/2,
+         add_source_identifier_to_subscription/3,
+         add_tags_to_resource/2,
          add_tags_to_resource/3,
          apply_pending_maintenance_action/2,
          apply_pending_maintenance_action/3,
@@ -22,6 +24,10 @@
          create_db_instance/3,
          create_db_subnet_group/2,
          create_db_subnet_group/3,
+         create_event_subscription/2,
+         create_event_subscription/3,
+         create_global_cluster/2,
+         create_global_cluster/3,
          delete_db_cluster/2,
          delete_db_cluster/3,
          delete_db_cluster_parameter_group/2,
@@ -32,6 +38,10 @@
          delete_db_instance/3,
          delete_db_subnet_group/2,
          delete_db_subnet_group/3,
+         delete_event_subscription/2,
+         delete_event_subscription/3,
+         delete_global_cluster/2,
+         delete_global_cluster/3,
          describe_certificates/2,
          describe_certificates/3,
          describe_db_cluster_parameter_groups/2,
@@ -54,8 +64,12 @@
          describe_engine_default_cluster_parameters/3,
          describe_event_categories/2,
          describe_event_categories/3,
+         describe_event_subscriptions/2,
+         describe_event_subscriptions/3,
          describe_events/2,
          describe_events/3,
+         describe_global_clusters/2,
+         describe_global_clusters/3,
          describe_orderable_db_instance_options/2,
          describe_orderable_db_instance_options/3,
          describe_pending_maintenance_actions/2,
@@ -74,8 +88,16 @@
          modify_db_instance/3,
          modify_db_subnet_group/2,
          modify_db_subnet_group/3,
+         modify_event_subscription/2,
+         modify_event_subscription/3,
+         modify_global_cluster/2,
+         modify_global_cluster/3,
          reboot_db_instance/2,
          reboot_db_instance/3,
+         remove_from_global_cluster/2,
+         remove_from_global_cluster/3,
+         remove_source_identifier_from_subscription/2,
+         remove_source_identifier_from_subscription/3,
          remove_tags_from_resource/2,
          remove_tags_from_resource/3,
          reset_db_cluster_parameter_group/2,
@@ -95,11 +117,20 @@
 %% API
 %%====================================================================
 
+%% @doc Adds a source identifier to an existing event notification
+%% subscription.
+add_source_identifier_to_subscription(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_source_identifier_to_subscription(Client, Input, []).
+add_source_identifier_to_subscription(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddSourceIdentifierToSubscription">>, Input, Options).
+
 %% @doc Adds metadata tags to an Amazon DocumentDB resource.
 %%
 %% You can use these tags with cost allocation reporting to track costs that
-%% are associated with Amazon DocumentDB resources. or in a `Condition'
-%% statement in an AWS Identity and Access Management (IAM) policy for Amazon
+%% are associated with Amazon DocumentDB resources or in a `Condition'
+%% statement in an Identity and Access Management (IAM) policy for Amazon
 %% DocumentDB.
 add_tags_to_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -130,7 +161,7 @@ copy_db_cluster_parameter_group(Client, Input, Options)
 %% To copy a cluster snapshot from a shared manual cluster snapshot,
 %% `SourceDBClusterSnapshotIdentifier' must be the Amazon Resource Name (ARN)
 %% of the shared cluster snapshot. You can only copy a shared DB cluster
-%% snapshot, whether encrypted or not, in the same AWS Region.
+%% snapshot, whether encrypted or not, in the same Region.
 %%
 %% To cancel the copy operation after it is in progress, delete the target
 %% cluster snapshot identified by `TargetDBClusterSnapshotIdentifier' while
@@ -192,13 +223,66 @@ create_db_instance(Client, Input, Options)
 %% @doc Creates a new subnet group.
 %%
 %% subnet groups must contain at least one subnet in at least two
-%% Availability Zones in the AWS Region.
+%% Availability Zones in the Region.
 create_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_subnet_group(Client, Input, []).
 create_db_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDBSubnetGroup">>, Input, Options).
+
+%% @doc Creates an Amazon DocumentDB event notification subscription.
+%%
+%% This action requires a topic Amazon Resource Name (ARN) created by using
+%% the Amazon DocumentDB console, the Amazon SNS console, or the Amazon SNS
+%% API. To obtain an ARN with Amazon SNS, you must create a topic in Amazon
+%% SNS and subscribe to the topic. The ARN is displayed in the Amazon SNS
+%% console.
+%%
+%% You can specify the type of source (`SourceType') that you want to be
+%% notified of. You can also provide a list of Amazon DocumentDB sources
+%% (`SourceIds') that trigger the events, and you can provide a list of event
+%% categories (`EventCategories') for events that you want to be notified of.
+%% For example, you can specify `SourceType = db-instance', `SourceIds =
+%% mydbinstance1, mydbinstance2' and `EventCategories = Availability,
+%% Backup'.
+%%
+%% If you specify both the `SourceType' and `SourceIds' (such as `SourceType
+%% = db-instance' and `SourceIdentifier = myDBInstance1'), you are notified
+%% of all the `db-instance' events for the specified source. If you specify a
+%% `SourceType' but do not specify a `SourceIdentifier', you receive notice
+%% of the events for that source type for all your Amazon DocumentDB sources.
+%% If you do not specify either the `SourceType' or the `SourceIdentifier',
+%% you are notified of events generated from all Amazon DocumentDB sources
+%% belonging to your customer account.
+create_event_subscription(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_event_subscription(Client, Input, []).
+create_event_subscription(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateEventSubscription">>, Input, Options).
+
+%% @doc Creates an Amazon DocumentDB global cluster that can span multiple
+%% multiple Regions.
+%%
+%% The global cluster contains one primary cluster with read-write
+%% capability, and up-to give read-only secondary clusters. Global clusters
+%% uses storage-based fast replication across regions with latencies less
+%% than one second, using dedicated infrastructure with no impact to your
+%% workload’s performance.
+%%
+%% You can create a global cluster that is initially empty, and then add a
+%% primary and a secondary to it. Or you can specify an existing cluster
+%% during the create operation, and this cluster becomes the primary of the
+%% global cluster.
+%%
+%% This action only applies to Amazon DocumentDB clusters.
+create_global_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_global_cluster(Client, Input, []).
+create_global_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateGlobalCluster">>, Input, Options).
 
 %% @doc Deletes a previously provisioned cluster.
 %%
@@ -254,8 +338,29 @@ delete_db_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDBSubnetGroup">>, Input, Options).
 
+%% @doc Deletes an Amazon DocumentDB event notification subscription.
+delete_event_subscription(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_event_subscription(Client, Input, []).
+delete_event_subscription(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteEventSubscription">>, Input, Options).
+
+%% @doc Deletes a global cluster.
+%%
+%% The primary and secondary clusters must already be detached or deleted
+%% before attempting to delete a global cluster.
+%%
+%% This action only applies to Amazon DocumentDB clusters.
+delete_global_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_global_cluster(Client, Input, []).
+delete_global_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteGlobalCluster">>, Input, Options).
+
 %% @doc Returns a list of certificate authority (CA) certificates provided by
-%% Amazon DocumentDB for this AWS account.
+%% Amazon DocumentDB for this account.
 describe_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificates(Client, Input, []).
@@ -286,12 +391,12 @@ describe_db_cluster_parameters(Client, Input, Options)
 %% @doc Returns a list of cluster snapshot attribute names and values for a
 %% manual DB cluster snapshot.
 %%
-%% When you share snapshots with other AWS accounts,
+%% When you share snapshots with other accounts,
 %% `DescribeDBClusterSnapshotAttributes' returns the `restore' attribute and
-%% a list of IDs for the AWS accounts that are authorized to copy or restore
-%% the manual cluster snapshot. If `all' is included in the list of values
-%% for the `restore' attribute, then the manual cluster snapshot is public
-%% and can be copied or restored by all AWS accounts.
+%% a list of IDs for the accounts that are authorized to copy or restore the
+%% manual cluster snapshot. If `all' is included in the list of values for
+%% the `restore' attribute, then the manual cluster snapshot is public and
+%% can be copied or restored by all accounts.
 describe_db_cluster_snapshot_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_snapshot_attributes(Client, Input, []).
@@ -370,6 +475,21 @@ describe_event_categories(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventCategories">>, Input, Options).
 
+%% @doc Lists all the subscription descriptions for a customer account.
+%%
+%% The description for a subscription includes `SubscriptionName',
+%% `SNSTopicARN', `CustomerID', `SourceType', `SourceID', `CreationTime', and
+%% `Status'.
+%%
+%% If you specify a `SubscriptionName', lists the description for that
+%% subscription.
+describe_event_subscriptions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_event_subscriptions(Client, Input, []).
+describe_event_subscriptions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeEventSubscriptions">>, Input, Options).
+
 %% @doc Returns events related to instances, security groups, snapshots, and
 %% DB parameter groups for the past 14 days.
 %%
@@ -382,6 +502,18 @@ describe_events(Client, Input)
 describe_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEvents">>, Input, Options).
+
+%% @doc Returns information about Amazon DocumentDB global clusters.
+%%
+%% This API supports pagination.
+%%
+%% This action only applies to Amazon DocumentDB clusters.
+describe_global_clusters(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_global_clusters(Client, Input, []).
+describe_global_clusters(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeGlobalClusters">>, Input, Options).
 
 %% @doc Returns a list of orderable instance options for the specified
 %% engine.
@@ -462,19 +594,18 @@ modify_db_cluster_parameter_group(Client, Input, Options)
     request(Client, <<"ModifyDBClusterParameterGroup">>, Input, Options).
 
 %% @doc Adds an attribute and values to, or removes an attribute and values
-%% from, a manual DB cluster snapshot.
+%% from, a manual cluster snapshot.
 %%
-%% To share a manual cluster snapshot with other AWS accounts, specify
-%% `restore' as the `AttributeName', and use the `ValuesToAdd' parameter to
-%% add a list of IDs of the AWS accounts that are authorized to restore the
-%% manual cluster snapshot. Use the value `all' to make the manual cluster
-%% snapshot public, which means that it can be copied or restored by all AWS
-%% accounts. Do not add the `all' value for any manual DB cluster snapshots
-%% that contain private information that you don't want available to all AWS
-%% accounts. If a manual cluster snapshot is encrypted, it can be shared, but
-%% only by specifying a list of authorized AWS account IDs for the
-%% `ValuesToAdd' parameter. You can't use `all' as a value for that parameter
-%% in this case.
+%% To share a manual cluster snapshot with other accounts, specify `restore'
+%% as the `AttributeName', and use the `ValuesToAdd' parameter to add a list
+%% of IDs of the accounts that are authorized to restore the manual cluster
+%% snapshot. Use the value `all' to make the manual cluster snapshot public,
+%% which means that it can be copied or restored by all accounts. Do not add
+%% the `all' value for any manual cluster snapshots that contain private
+%% information that you don't want available to all accounts. If a manual
+%% cluster snapshot is encrypted, it can be shared, but only by specifying a
+%% list of authorized account IDs for the `ValuesToAdd' parameter. You can't
+%% use `all' as a value for that parameter in this case.
 modify_db_cluster_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_snapshot_attribute(Client, Input, []).
@@ -496,13 +627,36 @@ modify_db_instance(Client, Input, Options)
 %% @doc Modifies an existing subnet group.
 %%
 %% subnet groups must contain at least one subnet in at least two
-%% Availability Zones in the AWS Region.
+%% Availability Zones in the Region.
 modify_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_subnet_group(Client, Input, []).
 modify_db_subnet_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyDBSubnetGroup">>, Input, Options).
+
+%% @doc Modifies an existing Amazon DocumentDB event notification
+%% subscription.
+modify_event_subscription(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_event_subscription(Client, Input, []).
+modify_event_subscription(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyEventSubscription">>, Input, Options).
+
+%% @doc Modify a setting for an Amazon DocumentDB global cluster.
+%%
+%% You can change one or more configuration parameters (for example: deletion
+%% protection), or the global cluster identifier by specifying these
+%% parameters and the new values in the request.
+%%
+%% This action only applies to Amazon DocumentDB clusters.
+modify_global_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_global_cluster(Client, Input, []).
+modify_global_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyGlobalCluster">>, Input, Options).
 
 %% @doc You might need to reboot your instance, usually for maintenance
 %% reasons.
@@ -520,6 +674,30 @@ reboot_db_instance(Client, Input)
 reboot_db_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RebootDBInstance">>, Input, Options).
+
+%% @doc Detaches an Amazon DocumentDB secondary cluster from a global
+%% cluster.
+%%
+%% The cluster becomes a standalone cluster with read-write capability
+%% instead of being read-only and receiving data from a primary in a
+%% different region.
+%%
+%% This action only applies to Amazon DocumentDB clusters.
+remove_from_global_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_from_global_cluster(Client, Input, []).
+remove_from_global_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveFromGlobalCluster">>, Input, Options).
+
+%% @doc Removes a source identifier from an existing Amazon DocumentDB event
+%% notification subscription.
+remove_source_identifier_from_subscription(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_source_identifier_from_subscription(Client, Input, []).
+remove_source_identifier_from_subscription(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveSourceIdentifierFromSubscription">>, Input, Options).
 
 %% @doc Removes metadata tags from an Amazon DocumentDB resource.
 remove_tags_from_resource(Client, Input)

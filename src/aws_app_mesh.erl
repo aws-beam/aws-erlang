@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS App Mesh is a service mesh based on the Envoy proxy that makes it
+%% @doc App Mesh is a service mesh based on the Envoy proxy that makes it
 %% easy to monitor and control microservices.
 %%
 %% App Mesh standardizes how your microservices communicate, giving you
@@ -9,8 +9,9 @@
 %% applications.
 %%
 %% App Mesh gives you consistent visibility and network traffic controls for
-%% every microservice in an application. You can use App Mesh with AWS
-%% Fargate, Amazon ECS, Amazon EKS, Kubernetes on AWS, and Amazon EC2.
+%% every microservice in an application. You can use App Mesh with Amazon Web
+%% Services Fargate, Amazon ECS, Amazon EKS, Kubernetes on Amazon Web
+%% Services, and Amazon EC2.
 %%
 %% App Mesh supports microservice applications that use service discovery
 %% naming for their components. For more information about service discovery
@@ -266,12 +267,10 @@ create_virtual_gateway(Client, MeshName, Input0, Options0) ->
 %% traces. You can override this behavior by setting the
 %% `APPMESH_RESOURCE_CLUSTER' environment variable with your own name.
 %%
-%% AWS Cloud Map is not available in the eu-south-1 Region.
-%%
 %% For more information about virtual nodes, see Virtual nodes. You must be
 %% using `1.15.0' or later of the Envoy image when setting these variables.
-%% For more information about App Mesh Envoy variables, see Envoy image in
-%% the AWS App Mesh User Guide.
+%% For more information aboutApp Mesh Envoy variables, see Envoy image in the
+%% AWS App Mesh User Guide.
 create_virtual_node(Client, MeshName, Input) ->
     create_virtual_node(Client, MeshName, Input, []).
 create_virtual_node(Client, MeshName, Input0, Options0) ->
@@ -1218,6 +1217,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

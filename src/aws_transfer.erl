@@ -1,38 +1,58 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Transfer Family is a fully managed service that enables the
-%% transfer of files over the File Transfer Protocol (FTP), File Transfer
-%% Protocol over SSL (FTPS), or Secure Shell (SSH) File Transfer Protocol
-%% (SFTP) directly into and out of Amazon Simple Storage Service (Amazon S3).
+%% @doc Amazon Web Services Transfer Family is a fully managed service that
+%% enables the transfer of files over the File Transfer Protocol (FTP), File
+%% Transfer Protocol over SSL (FTPS), or Secure Shell (SSH) File Transfer
+%% Protocol (SFTP) directly into and out of Amazon Simple Storage Service
+%% (Amazon S3).
 %%
-%% AWS helps you seamlessly migrate your file transfer workflows to AWS
-%% Transfer Family by integrating with existing authentication systems, and
-%% providing DNS routing with Amazon Route 53 so nothing changes for your
-%% customers and partners, or their applications. With your data in Amazon
-%% S3, you can use it with AWS services for processing, analytics, machine
-%% learning, and archiving. Getting started with AWS Transfer Family is easy
-%% since there is no infrastructure to buy and set up.
+%% Amazon Web Services helps you seamlessly migrate your file transfer
+%% workflows to Amazon Web Services Transfer Family by integrating with
+%% existing authentication systems, and providing DNS routing with Amazon
+%% Route 53 so nothing changes for your customers and partners, or their
+%% applications. With your data in Amazon S3, you can use it with Amazon Web
+%% Services services for processing, analytics, machine learning, and
+%% archiving. Getting started with Amazon Web Services Transfer Family is
+%% easy since there is no infrastructure to buy and set up.
 -module(aws_transfer).
 
--export([create_server/2,
+-export([create_access/2,
+         create_access/3,
+         create_server/2,
          create_server/3,
          create_user/2,
          create_user/3,
+         create_workflow/2,
+         create_workflow/3,
+         delete_access/2,
+         delete_access/3,
          delete_server/2,
          delete_server/3,
          delete_ssh_public_key/2,
          delete_ssh_public_key/3,
          delete_user/2,
          delete_user/3,
+         delete_workflow/2,
+         delete_workflow/3,
+         describe_access/2,
+         describe_access/3,
+         describe_execution/2,
+         describe_execution/3,
          describe_security_policy/2,
          describe_security_policy/3,
          describe_server/2,
          describe_server/3,
          describe_user/2,
          describe_user/3,
+         describe_workflow/2,
+         describe_workflow/3,
          import_ssh_public_key/2,
          import_ssh_public_key/3,
+         list_accesses/2,
+         list_accesses/3,
+         list_executions/2,
+         list_executions/3,
          list_security_policies/2,
          list_security_policies/3,
          list_servers/2,
@@ -41,6 +61,10 @@
          list_tags_for_resource/3,
          list_users/2,
          list_users/3,
+         list_workflows/2,
+         list_workflows/3,
+         send_workflow_step_state/2,
+         send_workflow_step_state/3,
          start_server/2,
          start_server/3,
          stop_server/2,
@@ -51,6 +75,8 @@
          test_identity_provider/3,
          untag_resource/2,
          untag_resource/3,
+         update_access/2,
+         update_access/3,
          update_server/2,
          update_server/3,
          update_user/2,
@@ -62,8 +88,23 @@
 %% API
 %%====================================================================
 
-%% @doc Instantiates an autoscaling virtual server based on the selected file
-%% transfer protocol in AWS.
+%% @doc Used by administrators to choose which groups in the directory should
+%% have access to upload and download files over the enabled protocols using
+%% Amazon Web Services Transfer Family.
+%%
+%% For example, a Microsoft Active Directory might contain 50,000 users, but
+%% only a small fraction might need the ability to transfer files to the
+%% server. An administrator can use `CreateAccess' to limit the access to the
+%% correct set of users who need this ability.
+create_access(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_access(Client, Input, []).
+create_access(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAccess">>, Input, Options).
+
+%% @doc Instantiates an auto-scaling virtual server based on the selected
+%% file transfer protocol in Amazon Web Services.
 %%
 %% When you make updates to your file transfer protocol-enabled server or
 %% when you work with users, use the service-generated `ServerId' property
@@ -81,16 +122,38 @@ create_server(Client, Input, Options)
 %% You can only create and associate users with servers that have the
 %% `IdentityProviderType' set to `SERVICE_MANAGED'. Using parameters for
 %% `CreateUser', you can specify the user name, set the home directory, store
-%% the user's public key, and assign the user's AWS Identity and Access
-%% Management (IAM) role. You can also optionally add a scope-down policy,
-%% and assign metadata with tags that can be used to group and search for
-%% users.
+%% the user's public key, and assign the user's Amazon Web Services Identity
+%% and Access Management (IAM) role. You can also optionally add a session
+%% policy, and assign metadata with tags that can be used to group and search
+%% for users.
 create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
 create_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUser">>, Input, Options).
+
+%% @doc Allows you to create a workflow with specified steps and step details
+%% the workflow invokes after file transfer completes.
+%%
+%% After creating a workflow, you can associate the workflow created with any
+%% transfer servers by specifying the `workflow-details' field in
+%% `CreateServer' and `UpdateServer' operations.
+create_workflow(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_workflow(Client, Input, []).
+create_workflow(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateWorkflow">>, Input, Options).
+
+%% @doc Allows you to delete the access specified in the `ServerID' and
+%% `ExternalID' parameters.
+delete_access(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_access(Client, Input, []).
+delete_access(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAccess">>, Input, Options).
 
 %% @doc Deletes the file transfer protocol-enabled server that you specify.
 %%
@@ -103,8 +166,6 @@ delete_server(Client, Input, Options)
     request(Client, <<"DeleteServer">>, Input, Options).
 
 %% @doc Deletes a user's Secure Shell (SSH) public key.
-%%
-%% No response is returned from this operation.
 delete_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ssh_public_key(Client, Input, []).
@@ -124,6 +185,36 @@ delete_user(Client, Input)
 delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
+
+%% @doc Deletes the specified workflow.
+delete_workflow(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_workflow(Client, Input, []).
+delete_workflow(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteWorkflow">>, Input, Options).
+
+%% @doc Describes the access that is assigned to the specific file transfer
+%% protocol-enabled server, as identified by its `ServerId' property and its
+%% `ExternalID'.
+%%
+%% The response from this call returns the properties of the access that is
+%% associated with the `ServerId' value that was specified.
+describe_access(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_access(Client, Input, []).
+describe_access(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAccess">>, Input, Options).
+
+%% @doc You can use `DescribeExecution' to check the details of the execution
+%% of the specified workflow.
+describe_execution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_execution(Client, Input, []).
+describe_execution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeExecution">>, Input, Options).
 
 %% @doc Describes the security policy that is attached to your file transfer
 %% protocol-enabled server.
@@ -162,6 +253,14 @@ describe_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeUser">>, Input, Options).
 
+%% @doc Describes the specified workflow.
+describe_workflow(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_workflow(Client, Input, []).
+describe_workflow(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeWorkflow">>, Input, Options).
+
 %% @doc Adds a Secure Shell (SSH) public key to a user account identified by
 %% a `UserName' value assigned to the specific file transfer protocol-enabled
 %% server, identified by `ServerId'.
@@ -175,6 +274,22 @@ import_ssh_public_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportSshPublicKey">>, Input, Options).
 
+%% @doc Lists the details for all the accesses you have on your server.
+list_accesses(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_accesses(Client, Input, []).
+list_accesses(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAccesses">>, Input, Options).
+
+%% @doc Lists all executions for the specified workflow.
+list_executions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_executions(Client, Input, []).
+list_executions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListExecutions">>, Input, Options).
+
 %% @doc Lists the security policies that are attached to your file transfer
 %% protocol-enabled servers.
 list_security_policies(Client, Input)
@@ -185,7 +300,7 @@ list_security_policies(Client, Input, Options)
     request(Client, <<"ListSecurityPolicies">>, Input, Options).
 
 %% @doc Lists the file transfer protocol-enabled servers that are associated
-%% with your AWS account.
+%% with your Amazon Web Services account.
 list_servers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_servers(Client, Input, []).
@@ -193,8 +308,8 @@ list_servers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServers">>, Input, Options).
 
-%% @doc Lists all of the tags associated with the Amazon Resource Number
-%% (ARN) you specify.
+%% @doc Lists all of the tags associated with the Amazon Resource Name (ARN)
+%% that you specify.
 %%
 %% The resource can be a user, server, or role.
 list_tags_for_resource(Client, Input)
@@ -212,6 +327,26 @@ list_users(Client, Input)
 list_users(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUsers">>, Input, Options).
+
+%% @doc Lists all of your workflows.
+list_workflows(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_workflows(Client, Input, []).
+list_workflows(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListWorkflows">>, Input, Options).
+
+%% @doc Sends a callback for asynchronous custom steps.
+%%
+%% The `ExecutionId', `WorkflowId', and `Token' are passed to the target
+%% resource during execution of a custom step of a workflow. You must include
+%% those with their callback as well as providing a status.
+send_workflow_step_state(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    send_workflow_step_state(Client, Input, []).
+send_workflow_step_state(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SendWorkflowStepState">>, Input, Options).
 
 %% @doc Changes the state of a file transfer protocol-enabled server from
 %% `OFFLINE' to `ONLINE'.
@@ -267,13 +402,38 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc If the `IdentityProviderType' of a file transfer protocol-enabled
-%% server is `API_Gateway', tests whether your API Gateway is set up
-%% successfully.
+%% server is `AWS_DIRECTORY_SERVICE' or `API_Gateway', tests whether your
+%% identity provider is set up successfully.
 %%
 %% We highly recommend that you call this operation to test your
 %% authentication method as soon as you create your server. By doing so, you
-%% can troubleshoot issues with the API Gateway integration to ensure that
-%% your users can successfully use the service.
+%% can troubleshoot issues with the identity provider integration to ensure
+%% that your users can successfully use the service.
+%%
+%% The `ServerId' and `UserName' parameters are required. The
+%% `ServerProtocol', `SourceIp', and `UserPassword' are all optional.
+%%
+%% You cannot use `TestIdentityProvider' if the `IdentityProviderType' of
+%% your server is `SERVICE_MANAGED'.
+%%
+%% <ul> <li> If you provide any incorrect values for any parameters, the
+%% `Response' field is empty.
+%%
+%% </li> <li> If you provide a server ID for a server that uses
+%% service-managed users, you get an error:
+%%
+%% ` An error occurred (InvalidRequestException) when calling the
+%% TestIdentityProvider operation: s-server-ID not configured for external
+%% auth '
+%%
+%% </li> <li> If you enter a Server ID for the `--server-id' parameter that
+%% does not identify an actual Transfer server, you receive the following
+%% error:
+%%
+%% `An error occurred (ResourceNotFoundException) when calling the
+%% TestIdentityProvider operation: Unknown server'
+%%
+%% </li> </ul>
 test_identity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_identity_provider(Client, Input, []).
@@ -293,6 +453,15 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Allows you to update parameters for the access specified in the
+%% `ServerID' and `ExternalID' parameters.
+update_access(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_access(Client, Input, []).
+update_access(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateAccess">>, Input, Options).
 
 %% @doc Updates the file transfer protocol-enabled server's properties after
 %% that server has been created.

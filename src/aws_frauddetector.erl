@@ -13,6 +13,14 @@
          batch_create_variable/3,
          batch_get_variable/2,
          batch_get_variable/3,
+         cancel_batch_import_job/2,
+         cancel_batch_import_job/3,
+         cancel_batch_prediction_job/2,
+         cancel_batch_prediction_job/3,
+         create_batch_import_job/2,
+         create_batch_import_job/3,
+         create_batch_prediction_job/2,
+         create_batch_prediction_job/3,
          create_detector_version/2,
          create_detector_version/3,
          create_model/2,
@@ -23,6 +31,10 @@
          create_rule/3,
          create_variable/2,
          create_variable/3,
+         delete_batch_import_job/2,
+         delete_batch_import_job/3,
+         delete_batch_prediction_job/2,
+         delete_batch_prediction_job/3,
          delete_detector/2,
          delete_detector/3,
          delete_detector_version/2,
@@ -33,6 +45,8 @@
          delete_event/3,
          delete_event_type/2,
          delete_event_type/3,
+         delete_events_by_event_type/2,
+         delete_events_by_event_type/3,
          delete_external_model/2,
          delete_external_model/3,
          delete_label/2,
@@ -51,12 +65,20 @@
          describe_detector/3,
          describe_model_versions/2,
          describe_model_versions/3,
+         get_batch_import_jobs/2,
+         get_batch_import_jobs/3,
+         get_batch_prediction_jobs/2,
+         get_batch_prediction_jobs/3,
+         get_delete_events_by_event_type_status/2,
+         get_delete_events_by_event_type_status/3,
          get_detector_version/2,
          get_detector_version/3,
          get_detectors/2,
          get_detectors/3,
          get_entity_types/2,
          get_entity_types/3,
+         get_event/2,
+         get_event/3,
          get_event_prediction/2,
          get_event_prediction/3,
          get_event_types/2,
@@ -93,6 +115,8 @@
          put_label/3,
          put_outcome/2,
          put_outcome/3,
+         send_event/2,
+         send_event/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -103,6 +127,8 @@
          update_detector_version_metadata/3,
          update_detector_version_status/2,
          update_detector_version_status/3,
+         update_event_label/2,
+         update_event_label/3,
          update_model/2,
          update_model/3,
          update_model_version/2,
@@ -137,6 +163,38 @@ batch_get_variable(Client, Input)
 batch_get_variable(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetVariable">>, Input, Options).
+
+%% @doc Cancels an in-progress batch import job.
+cancel_batch_import_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_batch_import_job(Client, Input, []).
+cancel_batch_import_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelBatchImportJob">>, Input, Options).
+
+%% @doc Cancels the specified batch prediction job.
+cancel_batch_prediction_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_batch_prediction_job(Client, Input, []).
+cancel_batch_prediction_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelBatchPredictionJob">>, Input, Options).
+
+%% @doc Creates a batch import job.
+create_batch_import_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_batch_import_job(Client, Input, []).
+create_batch_import_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateBatchImportJob">>, Input, Options).
+
+%% @doc Creates a batch prediction job.
+create_batch_prediction_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_batch_prediction_job(Client, Input, []).
+create_batch_prediction_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateBatchPredictionJob">>, Input, Options).
 
 %% @doc Creates a detector version.
 %%
@@ -180,6 +238,22 @@ create_variable(Client, Input)
 create_variable(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVariable">>, Input, Options).
+
+%% @doc Deletes data that was batch imported to Amazon Fraud Detector.
+delete_batch_import_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_batch_import_job(Client, Input, []).
+delete_batch_import_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteBatchImportJob">>, Input, Options).
+
+%% @doc Deletes a batch prediction job.
+delete_batch_prediction_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_batch_prediction_job(Client, Input, []).
+delete_batch_prediction_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteBatchPredictionJob">>, Input, Options).
 
 %% @doc Deletes the detector.
 %%
@@ -238,15 +312,22 @@ delete_event(Client, Input, Options)
 %%
 %% You cannot delete an event type that is used in a detector or a model.
 %%
-%% When you delete an entity type, Amazon Fraud Detector permanently deletes
-%% that entity type and the data is no longer stored in Amazon Fraud
-%% Detector.
+%% When you delete an event type, Amazon Fraud Detector permanently deletes
+%% that event type and the data is no longer stored in Amazon Fraud Detector.
 delete_event_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_type(Client, Input, []).
 delete_event_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEventType">>, Input, Options).
+
+%% @doc Deletes all events of a particular event type.
+delete_events_by_event_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_events_by_event_type(Client, Input, []).
+delete_events_by_event_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteEventsByEventType">>, Input, Options).
 
 %% @doc Removes a SageMaker model from Amazon Fraud Detector.
 %%
@@ -370,6 +451,44 @@ describe_model_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeModelVersions">>, Input, Options).
 
+%% @doc Gets all batch import jobs or a specific job of the specified ID.
+%%
+%% This is a paginated API. If you provide a null `maxResults', this action
+%% retrieves a maximum of 50 records per page. If you provide a `maxResults',
+%% the value must be between 1 and 50. To get the next page results, provide
+%% the pagination token from the `GetBatchImportJobsResponse' as part of your
+%% request. A null pagination token fetches the records from the beginning.
+get_batch_import_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_batch_import_jobs(Client, Input, []).
+get_batch_import_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetBatchImportJobs">>, Input, Options).
+
+%% @doc Gets all batch prediction jobs or a specific job if you specify a job
+%% ID.
+%%
+%% This is a paginated API. If you provide a null maxResults, this action
+%% retrieves a maximum of 50 records per page. If you provide a maxResults,
+%% the value must be between 1 and 50. To get the next page results, provide
+%% the pagination token from the GetBatchPredictionJobsResponse as part of
+%% your request. A null pagination token fetches the records from the
+%% beginning.
+get_batch_prediction_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_batch_prediction_jobs(Client, Input, []).
+get_batch_prediction_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetBatchPredictionJobs">>, Input, Options).
+
+%% @doc Retrieves the status of a `DeleteEventsByEventType' action.
+get_delete_events_by_event_type_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_delete_events_by_event_type_status(Client, Input, []).
+get_delete_events_by_event_type_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDeleteEventsByEventTypeStatus">>, Input, Options).
+
 %% @doc Gets a particular detector version.
 get_detector_version(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -407,6 +526,16 @@ get_entity_types(Client, Input)
 get_entity_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEntityTypes">>, Input, Options).
+
+%% @doc Retrieves details of events stored with Amazon Fraud Detector.
+%%
+%% This action does not retrieve prediction results.
+get_event(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_event(Client, Input, []).
+get_event(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetEvent">>, Input, Options).
 
 %% @doc Evaluates an event against a detector version.
 %%
@@ -448,9 +577,8 @@ get_external_models(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetExternalModels">>, Input, Options).
 
-%% @doc Gets the encryption key if a Key Management Service (KMS) customer
-%% master key (CMK) has been specified to be used to encrypt content in
-%% Amazon Fraud Detector.
+%% @doc Gets the encryption key if a KMS key has been specified to be used to
+%% encrypt content in Amazon Fraud Detector.
 get_kms_encryption_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_kms_encryption_key(Client, Input, []).
@@ -482,10 +610,11 @@ get_model_version(Client, Input, Options)
 
 %% @doc Gets one or more models.
 %%
-%% Gets all models for the AWS account if no model type and no model id
-%% provided. Gets all models for the AWS account and model type, if the model
-%% type is specified but model id is not provided. Gets a specific model if
-%% (model type, model id) tuple is specified.
+%% Gets all models for the Amazon Web Services account if no model type and
+%% no model id provided. Gets all models for the Amazon Web Services account
+%% and model type, if the model type is specified but model id is not
+%% provided. Gets a specific model if (model type, model id) tuple is
+%% specified.
 %%
 %% This is a paginated API. If you provide a null `maxResults', this action
 %% retrieves a maximum of 10 records per page. If you provide a `maxResults',
@@ -608,8 +737,8 @@ put_external_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutExternalModel">>, Input, Options).
 
-%% @doc Specifies the Key Management Service (KMS) customer master key (CMK)
-%% to be used to encrypt content in Amazon Fraud Detector.
+%% @doc Specifies the KMS key to be used to encrypt content in Amazon Fraud
+%% Detector.
 put_kms_encryption_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_kms_encryption_key(Client, Input, []).
@@ -636,6 +765,18 @@ put_outcome(Client, Input)
 put_outcome(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutOutcome">>, Input, Options).
+
+%% @doc Stores events in Amazon Fraud Detector without generating fraud
+%% predictions for those events.
+%%
+%% For example, you can use `SendEvent' to upload a historical dataset, which
+%% you can then later use to train a model.
+send_event(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    send_event(Client, Input, []).
+send_event(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SendEvent">>, Input, Options).
 
 %% @doc Assigns tags to a resource.
 tag_resource(Client, Input)
@@ -688,9 +829,15 @@ update_detector_version_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDetectorVersionStatus">>, Input, Options).
 
-%% @doc Updates a model.
-%%
-%% You can update the description attribute using this action.
+%% @doc Updates the specified event with a new label.
+update_event_label(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_event_label(Client, Input, []).
+update_event_label(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateEventLabel">>, Input, Options).
+
+%% @doc Updates model description.
 update_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_model(Client, Input, []).
@@ -718,7 +865,7 @@ update_model_version(Client, Input, Options)
 %%
 %% <ol> <li> Change the `TRAINING_COMPLETE' status to `ACTIVE'.
 %%
-%% </li> <li> Change `ACTIVE'to `INACTIVE'.
+%% </li> <li> Change `ACTIVE' to `INACTIVE'.
 %%
 %% </li> </ol>
 update_model_version_status(Client, Input)

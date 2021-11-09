@@ -4,9 +4,10 @@
 %% @doc Amazon EMR is a web service that makes it easier to process large
 %% amounts of data efficiently.
 %%
-%% Amazon EMR uses Hadoop processing combined with several AWS services to do
-%% tasks such as web indexing, data mining, log file analysis, machine
-%% learning, scientific simulation, and data warehouse management.
+%% Amazon EMR uses Hadoop processing combined with several Amazon Web
+%% Services services to do tasks such as web indexing, data mining, log file
+%% analysis, machine learning, scientific simulation, and data warehouse
+%% management.
 -module(aws_emr).
 
 -export([add_instance_fleet/2,
@@ -37,12 +38,16 @@
          describe_job_flows/3,
          describe_notebook_execution/2,
          describe_notebook_execution/3,
+         describe_release_label/2,
+         describe_release_label/3,
          describe_security_configuration/2,
          describe_security_configuration/3,
          describe_step/2,
          describe_step/3,
          describe_studio/2,
          describe_studio/3,
+         get_auto_termination_policy/2,
+         get_auto_termination_policy/3,
          get_block_public_access_configuration/2,
          get_block_public_access_configuration/3,
          get_managed_scaling_policy/2,
@@ -61,6 +66,8 @@
          list_instances/3,
          list_notebook_executions/2,
          list_notebook_executions/3,
+         list_release_labels/2,
+         list_release_labels/3,
          list_security_configurations/2,
          list_security_configurations/3,
          list_steps/2,
@@ -77,12 +84,16 @@
          modify_instance_groups/3,
          put_auto_scaling_policy/2,
          put_auto_scaling_policy/3,
+         put_auto_termination_policy/2,
+         put_auto_termination_policy/3,
          put_block_public_access_configuration/2,
          put_block_public_access_configuration/3,
          put_managed_scaling_policy/2,
          put_managed_scaling_policy/3,
          remove_auto_scaling_policy/2,
          remove_auto_scaling_policy/3,
+         remove_auto_termination_policy/2,
+         remove_auto_termination_policy/3,
          remove_managed_scaling_policy/2,
          remove_managed_scaling_policy/3,
          remove_tags/2,
@@ -161,9 +172,10 @@ add_job_flow_steps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddJobFlowSteps">>, Input, Options).
 
-%% @doc Adds tags to an Amazon EMR resource.
+%% @doc Adds tags to an Amazon EMR resource, such as a cluster or an Amazon
+%% EMR Studio.
 %%
-%% Tags make it easier to associate clusters in various ways, such as
+%% Tags make it easier to associate resources in various ways, such as
 %% grouping clusters to track your Amazon EMR resource allocation costs. For
 %% more information, see Tag Clusters.
 add_tags(Client, Input)
@@ -178,8 +190,10 @@ add_tags(Client, Input, Options)
 %% Available only in Amazon EMR versions 4.8.0 and later, excluding version
 %% 5.0.0. A maximum of 256 steps are allowed in each CancelSteps request.
 %% CancelSteps is idempotent but asynchronous; it does not guarantee that a
-%% step will be canceled, even if the request is successfully submitted. You
-%% can only cancel steps that are in a `PENDING' state.
+%% step will be canceled, even if the request is successfully submitted. When
+%% you use Amazon EMR versions 5.28.0 and later, you can cancel steps that
+%% are in a `PENDING' or `RUNNING' state. In earlier versions of Amazon EMR,
+%% you can only cancel steps that are in a `PENDING' state.
 cancel_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_steps(Client, Input, []).
@@ -207,6 +221,11 @@ create_studio(Client, Input, Options)
 %% @doc Maps a user or group to the Amazon EMR Studio specified by
 %% `StudioId', and applies a session policy to refine Studio permissions for
 %% that user or group.
+%%
+%% Use `CreateStudioSessionMapping' to assign users to a Studio when you use
+%% Amazon Web Services SSO authentication. For instructions on how to assign
+%% users to a Studio when you use IAM authentication, see Assign a user or
+%% group to your EMR Studio.
 create_studio_session_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_studio_session_mapping(Client, Input, []).
@@ -283,6 +302,19 @@ describe_notebook_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNotebookExecution">>, Input, Options).
 
+%% @doc Provides EMR release label details, such as releases available the
+%% region where the API request is run, and the available applications for a
+%% specific EMR release label.
+%%
+%% Can also list EMR release versions that support a specified version of
+%% Spark.
+describe_release_label(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_release_label(Client, Input, []).
+describe_release_label(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeReleaseLabel">>, Input, Options).
+
 %% @doc Provides the details of a security configuration by returning the
 %% configuration JSON.
 describe_security_configuration(Client, Input)
@@ -309,8 +341,16 @@ describe_studio(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStudio">>, Input, Options).
 
-%% @doc Returns the Amazon EMR block public access configuration for your AWS
-%% account in the current Region.
+%% @doc Returns the auto-termination policy for an Amazon EMR cluster.
+get_auto_termination_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_auto_termination_policy(Client, Input, []).
+get_auto_termination_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAutoTerminationPolicy">>, Input, Options).
+
+%% @doc Returns the Amazon EMR block public access configuration for your
+%% Amazon Web Services account in the current Region.
 %%
 %% For more information see Configure Block Public Access for Amazon EMR in
 %% the Amazon EMR Management Guide.
@@ -348,12 +388,14 @@ list_bootstrap_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBootstrapActions">>, Input, Options).
 
-%% @doc Provides the status of all clusters visible to this AWS account.
+%% @doc Provides the status of all clusters visible to this Amazon Web
+%% Services account.
 %%
 %% Allows you to filter the list of clusters based on certain criteria; for
 %% example, filtering by cluster creation date and time or by status. This
-%% call returns a maximum of 50 clusters per call, but returns a marker to
-%% track the paging of the cluster list across multiple ListClusters calls.
+%% call returns a maximum of 50 clusters in unsorted order per call, but
+%% returns a marker to track the paging of the cluster list across multiple
+%% ListClusters calls.
 list_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_clusters(Client, Input, []).
@@ -406,6 +448,15 @@ list_notebook_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListNotebookExecutions">>, Input, Options).
 
+%% @doc Retrieves release labels of EMR services in the region where the API
+%% is called.
+list_release_labels(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_release_labels(Client, Input, []).
+list_release_labels(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListReleaseLabels">>, Input, Options).
+
 %% @doc Lists all the security configurations visible to this account,
 %% providing their creation dates and times, and their names.
 %%
@@ -420,9 +471,12 @@ list_security_configurations(Client, Input, Options)
     request(Client, <<"ListSecurityConfigurations">>, Input, Options).
 
 %% @doc Provides a list of steps for the cluster in reverse order unless you
-%% specify `stepIds' with the request of filter by `StepStates'.
+%% specify `stepIds' with the request or filter by `StepStates'.
 %%
-%% You can specify a maximum of 10 `stepIDs'.
+%% You can specify a maximum of 10 `stepIDs'. The CLI automatically paginates
+%% results to return a list greater than 50 steps. To return more than 50
+%% steps using the CLI, specify a `Marker', which is a pagination token that
+%% indicates the next set of steps to retrieve.
 list_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_steps(Client, Input, []).
@@ -439,8 +493,8 @@ list_studio_session_mappings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListStudioSessionMappings">>, Input, Options).
 
-%% @doc Returns a list of all Amazon EMR Studios associated with the AWS
-%% account.
+%% @doc Returns a list of all Amazon EMR Studios associated with the Amazon
+%% Web Services account.
 %%
 %% The list includes details such as ID, Studio Access URL, and creation time
 %% for each Studio.
@@ -501,8 +555,21 @@ put_auto_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAutoScalingPolicy">>, Input, Options).
 
+%% @doc Creates or updates an auto-termination policy for an Amazon EMR
+%% cluster.
+%%
+%% An auto-termination policy defines the amount of idle time in seconds
+%% after which a cluster automatically terminates. For alternative cluster
+%% termination options, see Control cluster termination.
+put_auto_termination_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_auto_termination_policy(Client, Input, []).
+put_auto_termination_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutAutoTerminationPolicy">>, Input, Options).
+
 %% @doc Creates or updates an Amazon EMR block public access configuration
-%% for your AWS account in the current Region.
+%% for your Amazon Web Services account in the current Region.
 %%
 %% For more information see Configure Block Public Access for Amazon EMR in
 %% the Amazon EMR Management Guide.
@@ -536,6 +603,14 @@ remove_auto_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveAutoScalingPolicy">>, Input, Options).
 
+%% @doc Removes an auto-termination policy from an Amazon EMR cluster.
+remove_auto_termination_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_auto_termination_policy(Client, Input, []).
+remove_auto_termination_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveAutoTerminationPolicy">>, Input, Options).
+
 %% @doc Removes a managed scaling policy from a specified EMR cluster.
 remove_managed_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -544,9 +619,10 @@ remove_managed_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveManagedScalingPolicy">>, Input, Options).
 
-%% @doc Removes tags from an Amazon EMR resource.
+%% @doc Removes tags from an Amazon EMR resource, such as a cluster or Amazon
+%% EMR Studio.
 %%
-%% Tags make it easier to associate clusters in various ways, such as
+%% Tags make it easier to associate resources in various ways, such as
 %% grouping clusters to track your Amazon EMR resource allocation costs. For
 %% more information, see Tag Clusters.
 %%
@@ -624,17 +700,19 @@ set_termination_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetTerminationProtection">>, Input, Options).
 
-%% @doc Sets the `Cluster$VisibleToAllUsers' value, which determines whether
-%% the cluster is visible to all IAM users of the AWS account associated with
-%% the cluster.
+%% @doc Sets the `Cluster$VisibleToAllUsers' value for an EMR cluster.
 %%
-%% Only the IAM user who created the cluster or the AWS account root user can
-%% call this action. The default value, `true', indicates that all IAM users
-%% in the AWS account can perform cluster actions if they have the proper IAM
-%% policy permissions. If set to `false', only the IAM user that created the
-%% cluster can perform actions. This action works on running clusters. You
-%% can override the default `true' setting when you create a cluster by using
-%% the `VisibleToAllUsers' parameter with `RunJobFlow'.
+%% When `true', IAM principals in the Amazon Web Services account can perform
+%% EMR cluster actions that their IAM policies allow. When `false', only the
+%% IAM principal that created the cluster and the Amazon Web Services account
+%% root user can perform EMR actions on the cluster, regardless of IAM
+%% permissions policies attached to other IAM principals.
+%%
+%% This action works on running clusters. When you create a cluster, use the
+%% `RunJobFlowInput$VisibleToAllUsers' parameter.
+%%
+%% For more information, see Understanding the EMR Cluster VisibleToAllUsers
+%% Setting in the Amazon EMRManagement Guide.
 set_visible_to_all_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_visible_to_all_users(Client, Input, []).

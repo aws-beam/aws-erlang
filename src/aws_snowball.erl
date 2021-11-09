@@ -23,6 +23,8 @@
          create_cluster/3,
          create_job/2,
          create_job/3,
+         create_long_term_pricing/2,
+         create_long_term_pricing/3,
          create_return_shipping_label/2,
          create_return_shipping_label/3,
          describe_address/2,
@@ -51,12 +53,16 @@
          list_compatible_images/3,
          list_jobs/2,
          list_jobs/3,
+         list_long_term_pricing/2,
+         list_long_term_pricing/3,
          update_cluster/2,
          update_cluster/3,
          update_job/2,
          update_job/3,
          update_job_shipment_state/2,
-         update_job_shipment_state/3]).
+         update_job_shipment_state/3,
+         update_long_term_pricing/2,
+         update_long_term_pricing/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -120,12 +126,107 @@ create_cluster(Client, Input, Options)
 %% place to create a job for a Snow device. If you're creating a job for a
 %% node in a cluster, you only need to provide the `clusterId' value; the
 %% other job attributes are inherited from the cluster.
+%%
+%% Only the Snowball; Edge device type is supported when ordering clustered
+%% jobs.
+%%
+%% The device capacity is optional.
+%%
+%% Availability of device types differ by AWS Region. For more information
+%% about Region availability, see AWS Regional Services.
+%%
+%% == AWS Snow Family device types and their capacities. ==
+%%
+%% <ul> <li> Snow Family device type: SNC1_SSD
+%%
+%% <ul> <li> Capacity: T14
+%%
+%% </li> <li> Description: Snowcone
+%%
+%% </li> </ul>
+%%
+%% </li> <li> Snow Family device type: SNC1_HDD
+%%
+%% <ul> <li> Capacity: T8
+%%
+%% </li> <li> Description: Snowcone
+%%
+%% </li> </ul>
+%%
+%% </li> <li> Device type: EDGE_S
+%%
+%% <ul> <li> Capacity: T98
+%%
+%% </li> <li> Description: Snowball Edge Storage Optimized for data transfer
+%% only
+%%
+%% </li> </ul>
+%%
+%% </li> <li> Device type: EDGE_CG
+%%
+%% <ul> <li> Capacity: T42
+%%
+%% </li> <li> Description: Snowball Edge Compute Optimized with GPU
+%%
+%% </li> </ul>
+%%
+%% </li> <li> Device type: EDGE_C
+%%
+%% <ul> <li> Capacity: T42
+%%
+%% </li> <li> Description: Snowball Edge Compute Optimized without GPU
+%%
+%% </li> </ul>
+%%
+%% </li> <li> Device type: EDGE
+%%
+%% <ul> <li> Capacity: T100
+%%
+%% </li> <li> Description: Snowball Edge Storage Optimized with EC2 Compute
+%%
+%% </li> </ul>
+%%
+%% </li> <li> Device type: STANDARD
+%%
+%% <ul> <li> Capacity: T50
+%%
+%% </li> <li> Description: Original Snowball device
+%%
+%% This device is only available in the Ningxia, Beijing, and Singapore AWS
+%% Regions.
+%%
+%% </li> </ul>
+%%
+%% </li> <li> Device type: STANDARD
+%%
+%% <ul> <li> Capacity: T80
+%%
+%% </li> <li> Description: Original Snowball device
+%%
+%% This device is only available in the Ningxia, Beijing, and Singapore AWS
+%% Regions.
+%%
+%% </li> </ul>
+%%
+%% </li> </ul>
 create_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_job(Client, Input, []).
 create_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateJob">>, Input, Options).
+
+%% @doc Creates a job with the long-term usage option for a device.
+%%
+%% The long-term usage is a 1-year or 3-year long-term pricing type for the
+%% device. You are billed upfront, and AWS provides discounts for long-term
+%% pricing.
+create_long_term_pricing(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_long_term_pricing(Client, Input, []).
+create_long_term_pricing(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateLongTermPricing">>, Input, Options).
 
 %% @doc Creates a shipping label that will be used to return the Snow device
 %% to AWS.
@@ -201,7 +302,7 @@ describe_return_shipping_label(Client, Input, Options)
 %% access to the Snow device associated with that job.
 %%
 %% The credentials of a given job, including its manifest file and unlock
-%% code, expire 90 days after the job is created.
+%% code, expire 360 days after the job is created.
 get_job_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_job_manifest(Client, Input, []).
@@ -211,7 +312,7 @@ get_job_manifest(Client, Input, Options)
 
 %% @doc Returns the `UnlockCode' code value for the specified job.
 %%
-%% A particular `UnlockCode' value can be accessed for up to 90 days after
+%% A particular `UnlockCode' value can be accessed for up to 360 days after
 %% the associated job has been created.
 %%
 %% The `UnlockCode' value is a 29-character code with 25 alphanumeric
@@ -302,6 +403,14 @@ list_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListJobs">>, Input, Options).
 
+%% @doc Lists all long-term pricing types.
+list_long_term_pricing(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_long_term_pricing(Client, Input, []).
+list_long_term_pricing(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListLongTermPricing">>, Input, Options).
+
 %% @doc While a cluster's `ClusterState' value is in the `AwaitingQuorum'
 %% state, you can update some of the information associated with a cluster.
 %%
@@ -326,14 +435,21 @@ update_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateJob">>, Input, Options).
 
-%% @doc Updates the state when a the shipment states changes to a different
-%% state.
+%% @doc Updates the state when a shipment state changes to a different state.
 update_job_shipment_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_job_shipment_state(Client, Input, []).
 update_job_shipment_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateJobShipmentState">>, Input, Options).
+
+%% @doc Updates the long-term pricing type.
+update_long_term_pricing(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_long_term_pricing(Client, Input, []).
+update_long_term_pricing(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateLongTermPricing">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

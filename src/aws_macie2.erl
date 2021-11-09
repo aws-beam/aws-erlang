@@ -79,6 +79,9 @@
          get_findings_filter/2,
          get_findings_filter/4,
          get_findings_filter/5,
+         get_findings_publication_configuration/1,
+         get_findings_publication_configuration/3,
+         get_findings_publication_configuration/4,
          get_invitations_count/1,
          get_invitations_count/3,
          get_invitations_count/4,
@@ -108,6 +111,8 @@
          list_invitations/1,
          list_invitations/3,
          list_invitations/4,
+         list_managed_data_identifiers/2,
+         list_managed_data_identifiers/3,
          list_members/1,
          list_members/3,
          list_members/4,
@@ -119,6 +124,10 @@
          list_tags_for_resource/5,
          put_classification_export_configuration/2,
          put_classification_export_configuration/3,
+         put_findings_publication_configuration/2,
+         put_findings_publication_configuration/3,
+         search_resources/2,
+         search_resources/3,
          tag_resource/3,
          tag_resource/4,
          test_custom_data_identifier/2,
@@ -494,8 +503,8 @@ describe_classification_job(Client, JobId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the Amazon Macie configuration settings for an AWS
-%% organization.
+%% @doc Retrieves the Amazon Macie configuration settings for an Amazon Web
+%% Services organization.
 describe_organization_configuration(Client)
   when is_map(Client) ->
     describe_organization_configuration(Client, #{}, #{}).
@@ -543,7 +552,7 @@ disable_macie(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disables an account as the delegated Amazon Macie administrator
-%% account for an AWS organization.
+%% account for an Amazon Web Services organization.
 disable_organization_admin_account(Client, Input) ->
     disable_organization_admin_account(Client, Input, []).
 disable_organization_admin_account(Client, Input0, Options0) ->
@@ -667,7 +676,7 @@ enable_macie(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Designates an account as the delegated Amazon Macie administrator
-%% account for an AWS organization.
+%% account for an Amazon Web Services organization.
 enable_organization_admin_account(Client, Input) ->
     enable_organization_admin_account(Client, Input, []).
 enable_organization_admin_account(Client, Input0, Options0) ->
@@ -844,6 +853,30 @@ get_findings_filter(Client, Id, QueryMap, HeadersMap)
 get_findings_filter(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/findingsfilters/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the configuration settings for publishing findings to
+%% Security Hub.
+get_findings_publication_configuration(Client)
+  when is_map(Client) ->
+    get_findings_publication_configuration(Client, #{}, #{}).
+
+get_findings_publication_configuration(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_findings_publication_configuration(Client, QueryMap, HeadersMap, []).
+
+get_findings_publication_configuration(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/findings-publication-configuration"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1104,8 +1137,8 @@ list_findings_filters(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about all the Amazon Macie membership
-%% invitations that were received by an account.
+%% @doc Retrieves information about the Amazon Macie membership invitations
+%% that were received by an account.
 list_invitations(Client)
   when is_map(Client) ->
     list_invitations(Client, #{}, #{}).
@@ -1132,6 +1165,30 @@ list_invitations(Client, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about all the managed data identifiers that
+%% Amazon Macie currently provides.
+list_managed_data_identifiers(Client, Input) ->
+    list_managed_data_identifiers(Client, Input, []).
+list_managed_data_identifiers(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/managed-data-identifiers/list"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the accounts that are associated with an
 %% Amazon Macie administrator account.
@@ -1164,7 +1221,7 @@ list_members(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the delegated Amazon Macie administrator
-%% account for an AWS organization.
+%% account for an Amazon Web Services organization.
 list_organization_admin_accounts(Client)
   when is_map(Client) ->
     list_organization_admin_accounts(Client, #{}, #{}).
@@ -1224,6 +1281,54 @@ put_classification_export_configuration(Client, Input) ->
 put_classification_export_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/classification-export-configuration"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the configuration settings for publishing findings to
+%% Security Hub.
+put_findings_publication_configuration(Client, Input) ->
+    put_findings_publication_configuration(Client, Input, []).
+put_findings_publication_configuration(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/findings-publication-configuration"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves (queries) statistical data and other information about
+%% Amazon Web Services resources that Amazon Macie monitors and analyzes.
+search_resources(Client, Input) ->
+    search_resources(Client, Input, []).
+search_resources(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/datasources/search-resources"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1384,8 +1489,8 @@ update_macie_session(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Enables an Amazon Macie administrator to suspend or re-enable a
-%% member account.
+%% @doc Enables an Amazon Macie administrator to suspend or re-enable Macie
+%% for a member account.
 update_member_session(Client, Id, Input) ->
     update_member_session(Client, Id, Input, []).
 update_member_session(Client, Id, Input0, Options0) ->
@@ -1408,8 +1513,8 @@ update_member_session(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the Amazon Macie configuration settings for an AWS
-%% organization.
+%% @doc Updates the Amazon Macie configuration settings for an Amazon Web
+%% Services organization.
 update_organization_configuration(Client, Input) ->
     update_organization_configuration(Client, Input, []).
 update_organization_configuration(Client, Input0, Options0) ->
@@ -1467,6 +1572,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

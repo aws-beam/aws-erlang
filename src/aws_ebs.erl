@@ -2,32 +2,33 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc You can use the Amazon Elastic Block Store (Amazon EBS) direct APIs
-%% to create EBS snapshots, write data directly to your snapshots, read data
-%% on your snapshots, and identify the differences or changes between two
-%% snapshots.
+%% to create Amazon EBS snapshots, write data directly to your snapshots,
+%% read data on your snapshots, and identify the differences or changes
+%% between two snapshots.
 %%
 %% If you’re an independent software vendor (ISV) who offers backup services
 %% for Amazon EBS, the EBS direct APIs make it more efficient and
-%% cost-effective to track incremental changes on your EBS volumes through
-%% snapshots. This can be done without having to create new volumes from
-%% snapshots, and then use Amazon Elastic Compute Cloud (Amazon EC2)
+%% cost-effective to track incremental changes on your Amazon EBS volumes
+%% through snapshots. This can be done without having to create new volumes
+%% from snapshots, and then use Amazon Elastic Compute Cloud (Amazon EC2)
 %% instances to compare the differences.
 %%
 %% You can create incremental snapshots directly from data on-premises into
-%% EBS volumes and the cloud to use for quick disaster recovery. With the
-%% ability to write and read snapshots, you can write your on-premises data
-%% to an EBS snapshot during a disaster. Then after recovery, you can restore
-%% it back to AWS or on-premises from the snapshot. You no longer need to
-%% build and maintain complex mechanisms to copy data to and from Amazon EBS.
+%% volumes and the cloud to use for quick disaster recovery. With the ability
+%% to write and read snapshots, you can write your on-premises data to an
+%% snapshot during a disaster. Then after recovery, you can restore it back
+%% to Amazon Web Services or on-premises from the snapshot. You no longer
+%% need to build and maintain complex mechanisms to copy data to and from
+%% Amazon EBS.
 %%
 %% This API reference provides detailed information about the actions, data
 %% types, parameters, and errors of the EBS direct APIs. For more information
 %% about the elements that make up the EBS direct APIs, and examples of how
-%% to use them effectively, see Accessing the Contents of an EBS Snapshot in
-%% the Amazon Elastic Compute Cloud User Guide. For more information about
-%% the supported AWS Regions, endpoints, and service quotas for the EBS
-%% direct APIs, see Amazon Elastic Block Store Endpoints and Quotas in the
-%% AWS General Reference.
+%% to use them effectively, see Accessing the Contents of an Amazon EBS
+%% Snapshot in the Amazon Elastic Compute Cloud User Guide. For more
+%% information about the supported Amazon Web Services Regions, endpoints,
+%% and service quotas for the EBS direct APIs, see Amazon Elastic Block Store
+%% Endpoints and Quotas in the Amazon Web Services General Reference.
 -module(aws_ebs).
 
 -export([complete_snapshot/3,
@@ -196,7 +197,7 @@ list_snapshot_blocks(Client, SnapshotId, QueryMap, HeadersMap, Options0)
 %% If the specified block contains data, the existing data is overwritten.
 %% The target snapshot must be in the `pending' state.
 %%
-%% Data written to a snapshot must be aligned with 512-byte sectors.
+%% Data written to a snapshot must be aligned with 512-KiB sectors.
 put_snapshot_block(Client, BlockIndex, SnapshotId, Input) ->
     put_snapshot_block(Client, BlockIndex, SnapshotId, Input, []).
 put_snapshot_block(Client, BlockIndex, SnapshotId, Input0, Options0) ->
@@ -304,6 +305,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

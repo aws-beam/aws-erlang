@@ -1,34 +1,40 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS IoT
+%% @doc IoT data
 %%
-%% AWS IoT-Data enables secure, bi-directional communication between
+%% IoT data enables secure, bi-directional communication between
 %% Internet-connected things (such as sensors, actuators, embedded devices,
-%% or smart appliances) and the AWS cloud.
+%% or smart appliances) and the Amazon Web Services cloud.
 %%
 %% It implements a broker for applications and things to publish messages
 %% over HTTP (Publish) and retrieve, update, and delete shadows. A shadow is
-%% a persistent representation of your things and their state in the AWS
-%% cloud.
+%% a persistent representation of your things and their state in the Amazon
+%% Web Services cloud.
 %%
-%% Find the endpoint address for actions in the AWS IoT data plane by running
-%% this CLI command:
+%% Find the endpoint address for actions in IoT data by running this CLI
+%% command:
 %%
 %% `aws iot describe-endpoint --endpoint-type iot:Data-ATS'
 %%
-%% The service name used by AWS Signature Version 4 to sign requests is:
-%% iotdevicegateway.
+%% The service name used by Amazon Web ServicesSignature Version 4 to sign
+%% requests is: iotdevicegateway.
 -module(aws_iot_data_plane).
 
 -export([delete_thing_shadow/3,
          delete_thing_shadow/4,
+         get_retained_message/2,
+         get_retained_message/4,
+         get_retained_message/5,
          get_thing_shadow/2,
          get_thing_shadow/4,
          get_thing_shadow/5,
          list_named_shadows_for_thing/2,
          list_named_shadows_for_thing/4,
          list_named_shadows_for_thing/5,
+         list_retained_messages/1,
+         list_retained_messages/3,
+         list_retained_messages/4,
          publish/3,
          publish/4,
          update_thing_shadow/3,
@@ -42,8 +48,9 @@
 
 %% @doc Deletes the shadow for the specified thing.
 %%
-%% For more information, see DeleteThingShadow in the AWS IoT Developer
-%% Guide.
+%% Requires permission to access the DeleteThingShadow action.
+%%
+%% For more information, see DeleteThingShadow in the IoT Developer Guide.
 delete_thing_shadow(Client, ThingName, Input) ->
     delete_thing_shadow(Client, ThingName, Input, []).
 delete_thing_shadow(Client, ThingName, Input0, Options0) ->
@@ -67,9 +74,44 @@ delete_thing_shadow(Client, ThingName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Gets the details of a single retained message for the specified
+%% topic.
+%%
+%% This action returns the message payload of the retained message, which can
+%% incur messaging costs. To list only the topic names of the retained
+%% messages, call ListRetainedMessages.
+%%
+%% Requires permission to access the GetRetainedMessage action.
+%%
+%% For more information about messaging costs, see IoT Core pricing -
+%% Messaging.
+get_retained_message(Client, Topic)
+  when is_map(Client) ->
+    get_retained_message(Client, Topic, #{}, #{}).
+
+get_retained_message(Client, Topic, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_retained_message(Client, Topic, QueryMap, HeadersMap, []).
+
+get_retained_message(Client, Topic, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/retainedMessage/", aws_util:encode_uri(Topic), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets the shadow for the specified thing.
 %%
-%% For more information, see GetThingShadow in the AWS IoT Developer Guide.
+%% Requires permission to access the GetThingShadow action.
+%%
+%% For more information, see GetThingShadow in the IoT Developer Guide.
 get_thing_shadow(Client, ThingName)
   when is_map(Client) ->
     get_thing_shadow(Client, ThingName, #{}, #{}).
@@ -97,6 +139,8 @@ get_thing_shadow(Client, ThingName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the shadows for the specified thing.
+%%
+%% Requires permission to access the ListNamedShadowsForThing action.
 list_named_shadows_for_thing(Client, ThingName)
   when is_map(Client) ->
     list_named_shadows_for_thing(Client, ThingName, #{}, #{}).
@@ -124,9 +168,56 @@ list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Publishes state information.
+%% @doc Lists summary information about the retained messages stored for the
+%% account.
 %%
-%% For more information, see HTTP Protocol in the AWS IoT Developer Guide.
+%% This action returns only the topic names of the retained messages. It
+%% doesn't return any message payloads. Although this action doesn't return a
+%% message payload, it can still incur messaging costs.
+%%
+%% To get the message payload of a retained message, call GetRetainedMessage
+%% with the topic name of the retained message.
+%%
+%% Requires permission to access the ListRetainedMessages action.
+%%
+%% For more information about messaging costs, see IoT Core pricing -
+%% Messaging.
+list_retained_messages(Client)
+  when is_map(Client) ->
+    list_retained_messages(Client, #{}, #{}).
+
+list_retained_messages(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_retained_messages(Client, QueryMap, HeadersMap, []).
+
+list_retained_messages(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/retainedMessage"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Publishes an MQTT message.
+%%
+%% Requires permission to access the Publish action.
+%%
+%% For more information about MQTT messages, see MQTT Protocol in the IoT
+%% Developer Guide.
+%%
+%% For more information about messaging costs, see IoT Core pricing -
+%% Messaging.
 publish(Client, Topic, Input) ->
     publish(Client, Topic, Input, []).
 publish(Client, Topic, Input0, Options0) ->
@@ -145,15 +236,17 @@ publish(Client, Topic, Input0, Options0) ->
     Input2 = Input1,
 
     QueryMapping = [
-                     {<<"qos">>, <<"qos">>}
+                     {<<"qos">>, <<"qos">>},
+                     {<<"retain">>, <<"retain">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the shadow for the specified thing.
 %%
-%% For more information, see UpdateThingShadow in the AWS IoT Developer
-%% Guide.
+%% Requires permission to access the UpdateThingShadow action.
+%%
+%% For more information, see UpdateThingShadow in the IoT Developer Guide.
 update_thing_shadow(Client, ThingName, Input) ->
     update_thing_shadow(Client, ThingName, Input, []).
 update_thing_shadow(Client, ThingName, Input0, Options0) ->
@@ -212,6 +305,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

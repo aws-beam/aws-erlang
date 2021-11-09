@@ -1,8 +1,9 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon CloudWatch monitors your Amazon Web Services (AWS) resources
-%% and the applications you run on AWS in real time.
+%% @doc Amazon CloudWatch monitors your Amazon Web Services (Amazon Web
+%% Services) resources and the applications you run on Amazon Web Services in
+%% real time.
 %%
 %% You can use CloudWatch to collect and track metrics, which are the
 %% variables you want to measure for your resources and applications.
@@ -14,10 +15,10 @@
 %% additional instances to handle increased load. You can also use this data
 %% to stop under-used instances to save money.
 %%
-%% In addition to monitoring the built-in metrics that come with AWS, you can
-%% monitor your own custom metrics. With CloudWatch, you gain system-wide
-%% visibility into resource utilization, application performance, and
-%% operational health.
+%% In addition to monitoring the built-in metrics that come with Amazon Web
+%% Services, you can monitor your own custom metrics. With CloudWatch, you
+%% gain system-wide visibility into resource utilization, application
+%% performance, and operational health.
 -module(aws_cloudwatch).
 
 -export([delete_alarms/2,
@@ -28,6 +29,8 @@
          delete_dashboards/3,
          delete_insight_rules/2,
          delete_insight_rules/3,
+         delete_metric_stream/2,
+         delete_metric_stream/3,
          describe_alarm_history/2,
          describe_alarm_history/3,
          describe_alarms/2,
@@ -54,10 +57,14 @@
          get_metric_data/3,
          get_metric_statistics/2,
          get_metric_statistics/3,
+         get_metric_stream/2,
+         get_metric_stream/3,
          get_metric_widget_image/2,
          get_metric_widget_image/3,
          list_dashboards/2,
          list_dashboards/3,
+         list_metric_streams/2,
+         list_metric_streams/3,
          list_metrics/2,
          list_metrics/3,
          list_tags_for_resource/2,
@@ -74,8 +81,14 @@
          put_metric_alarm/3,
          put_metric_data/2,
          put_metric_data/3,
+         put_metric_stream/2,
+         put_metric_stream/3,
          set_alarm_state/2,
          set_alarm_state/3,
+         start_metric_streams/2,
+         start_metric_streams/3,
+         stop_metric_streams/2,
+         stop_metric_streams/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -146,6 +159,14 @@ delete_insight_rules(Client, Input)
 delete_insight_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInsightRules">>, Input, Options).
+
+%% @doc Permanently deletes the metric stream that you specify.
+delete_metric_stream(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_metric_stream(Client, Input, []).
+delete_metric_stream(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteMetricStream">>, Input, Options).
 
 %% @doc Retrieves the history for the specified alarm.
 %%
@@ -412,15 +433,23 @@ get_metric_data(Client, Input, Options)
 %% CloudWatch started retaining 5-minute and 1-hour metric data as of July 9,
 %% 2016.
 %%
-%% For information about metrics and dimensions supported by AWS services,
-%% see the Amazon CloudWatch Metrics and Dimensions Reference in the Amazon
-%% CloudWatch User Guide.
+%% For information about metrics and dimensions supported by Amazon Web
+%% Services services, see the Amazon CloudWatch Metrics and Dimensions
+%% Reference in the Amazon CloudWatch User Guide.
 get_metric_statistics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_metric_statistics(Client, Input, []).
 get_metric_statistics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMetricStatistics">>, Input, Options).
+
+%% @doc Returns information about the metric stream that you specify.
+get_metric_stream(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_metric_stream(Client, Input, []).
+get_metric_stream(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetMetricStream">>, Input, Options).
 
 %% @doc You can use the `GetMetricWidgetImage' API to retrieve a snapshot
 %% graph of one or more Amazon CloudWatch metrics as a bitmap image.
@@ -464,6 +493,14 @@ list_dashboards(Client, Input)
 list_dashboards(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDashboards">>, Input, Options).
+
+%% @doc Returns a list of metric streams in this account.
+list_metric_streams(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_metric_streams(Client, Input, []).
+list_metric_streams(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListMetricStreams">>, Input, Options).
 
 %% @doc List the specified metrics.
 %%
@@ -629,12 +666,34 @@ put_insight_rule(Client, Input, Options)
 %% </li> <li> The `iam:CreateServiceLinkedRole' to create an alarm with
 %% Systems Manager OpsItem actions.
 %%
-%% </li> </ul> The first time you create an alarm in the AWS Management
-%% Console, the CLI, or by using the PutMetricAlarm API, CloudWatch creates
-%% the necessary service-linked rolea for you. The service-linked roles are
-%% called `AWSServiceRoleForCloudWatchEvents' and
+%% </li> </ul> The first time you create an alarm in the Management Console,
+%% the CLI, or by using the PutMetricAlarm API, CloudWatch creates the
+%% necessary service-linked role for you. The service-linked roles are called
+%% `AWSServiceRoleForCloudWatchEvents' and
 %% `AWSServiceRoleForCloudWatchAlarms_ActionSSM'. For more information, see
-%% AWS service-linked role.
+%% Amazon Web Services service-linked role.
+%%
+%% Cross-account alarms
+%%
+%% You can set an alarm on metrics in the current account, or in another
+%% account. To create a cross-account alarm that watches a metric in a
+%% different account, you must have completed the following pre-requisites:
+%%
+%% <ul> <li> The account where the metrics are located (the sharing account)
+%% must already have a sharing role named CloudWatch-CrossAccountSharingRole.
+%% If it does not already have this role, you must create it using the
+%% instructions in Set up a sharing account in Cross-account cross-Region
+%% CloudWatch console. The policy for that role must grant access to the ID
+%% of the account where you are creating the alarm.
+%%
+%% </li> <li> The account where you are creating the alarm (the monitoring
+%% account) must already have a service-linked role named
+%% AWSServiceRoleForCloudWatchCrossAccount to allow CloudWatch to assume the
+%% sharing role in the sharing account. If it does not, you must create it
+%% following the directions in Set up a monitoring account in Cross-account
+%% cross-Region CloudWatch console.
+%%
+%% </li> </ul>
 put_metric_alarm(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_metric_alarm(Client, Input, []).
@@ -699,6 +758,39 @@ put_metric_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutMetricData">>, Input, Options).
 
+%% @doc Creates or updates a metric stream.
+%%
+%% Metric streams can automatically stream CloudWatch metrics to Amazon Web
+%% Services destinations including Amazon S3 and to many third-party
+%% solutions.
+%%
+%% For more information, see Using Metric Streams.
+%%
+%% To create a metric stream, you must be logged on to an account that has
+%% the `iam:PassRole' permission and either the `CloudWatchFullAccess' policy
+%% or the `cloudwatch:PutMetricStream' permission.
+%%
+%% When you create or update a metric stream, you choose one of the
+%% following:
+%%
+%% <ul> <li> Stream metrics from all metric namespaces in the account.
+%%
+%% </li> <li> Stream metrics from all metric namespaces in the account,
+%% except for the namespaces that you list in `ExcludeFilters'.
+%%
+%% </li> <li> Stream metrics from only the metric namespaces that you list in
+%% `IncludeFilters'.
+%%
+%% </li> </ul> When you use `PutMetricStream' to create a new metric stream,
+%% the stream is created in the `running' state. If you use it to update an
+%% existing stream, the state of the stream is not changed.
+put_metric_stream(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_metric_stream(Client, Input, []).
+put_metric_stream(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutMetricStream">>, Input, Options).
+
 %% @doc Temporarily sets the state of an alarm for testing purposes.
 %%
 %% When the updated state differs from the previous value, the action
@@ -727,6 +819,24 @@ set_alarm_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetAlarmState">>, Input, Options).
 
+%% @doc Starts the streaming of metrics for one or more of your metric
+%% streams.
+start_metric_streams(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_metric_streams(Client, Input, []).
+start_metric_streams(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartMetricStreams">>, Input, Options).
+
+%% @doc Stops the streaming of metrics for one or more of your metric
+%% streams.
+stop_metric_streams(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_metric_streams(Client, Input, []).
+stop_metric_streams(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopMetricStreams">>, Input, Options).
+
 %% @doc Assigns one or more tags (key-value pairs) to the specified
 %% CloudWatch resource.
 %%
@@ -737,8 +847,8 @@ set_alarm_state(Client, Input, Options)
 %% them to scope user permissions by granting a user permission to access or
 %% change only resources with certain tag values.
 %%
-%% Tags don't have any semantic meaning to AWS and are interpreted strictly
-%% as strings of characters.
+%% Tags don't have any semantic meaning to Amazon Web Services and are
+%% interpreted strictly as strings of characters.
 %%
 %% You can use the `TagResource' action with an alarm that already has tags.
 %% If you specify a new tag key for the alarm, this tag is appended to the

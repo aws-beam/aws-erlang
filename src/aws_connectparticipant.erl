@@ -36,6 +36,9 @@
 
 %% @doc Allows you to confirm that the attachment has been uploaded using the
 %% pre-signed URL provided in StartAttachmentUpload API.
+%%
+%% The Amazon Connect Participant Service APIs do not use Signature Version 4
+%% authentication.
 complete_attachment_upload(Client, Input) ->
     complete_attachment_upload(Client, Input, []).
 complete_attachment_upload(Client, Input0, Options0) ->
@@ -80,6 +83,16 @@ complete_attachment_upload(Client, Input0, Options0) ->
 %% Upon websocket URL expiry, as specified in the response ConnectionExpiry
 %% parameter, clients need to call this API again to obtain a new websocket
 %% URL and perform the same steps as before.
+%%
+%% Message streaming support: This API can also be used together with the
+%% StartContactStreaming API to create a participant connection for chat
+%% contacts that are not using a websocket. For more information about
+%% message streaming, Enable real-time chat message streaming in the Amazon
+%% Connect Administrator Guide.
+%%
+%% Feature specifications: For information about feature specifications, such
+%% as the allowed number of open websocket connections per participant, see
+%% Feature specifications in the Amazon Connect Administrator Guide.
 %%
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
 %% authentication.
@@ -141,6 +154,9 @@ disconnect_participant(Client, Input0, Options0) ->
 %% @doc Provides a pre-signed URL for download of a completed attachment.
 %%
 %% This is an asynchronous API for use with active contacts.
+%%
+%% The Amazon Connect Participant Service APIs do not use Signature Version 4
+%% authentication.
 get_attachment(Client, Input) ->
     get_attachment(Client, Input, []).
 get_attachment(Client, Input0, Options0) ->
@@ -261,6 +277,9 @@ send_message(Client, Input0, Options0) ->
 
 %% @doc Provides a pre-signed Amazon S3 URL in response for uploading the
 %% file directly to S3.
+%%
+%% The Amazon Connect Participant Service APIs do not use Signature Version 4
+%% authentication.
 start_attachment_upload(Client, Input) ->
     start_attachment_upload(Client, Input, []).
 start_attachment_upload(Client, Input0, Options0) ->
@@ -320,6 +339,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

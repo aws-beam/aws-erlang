@@ -1,30 +1,30 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS CloudTrail
+%% @doc CloudTrail
 %%
 %% This is the CloudTrail API Reference.
 %%
 %% It provides descriptions of actions, data types, common parameters, and
 %% common errors for CloudTrail.
 %%
-%% CloudTrail is a web service that records AWS API calls for your AWS
-%% account and delivers log files to an Amazon S3 bucket. The recorded
-%% information includes the identity of the user, the start time of the AWS
-%% API call, the source IP address, the request parameters, and the response
-%% elements returned by the service.
+%% CloudTrail is a web service that records Amazon Web Services API calls for
+%% your Amazon Web Services account and delivers log files to an Amazon S3
+%% bucket. The recorded information includes the identity of the user, the
+%% start time of the Amazon Web Services API call, the source IP address, the
+%% request parameters, and the response elements returned by the service.
 %%
-%% As an alternative to the API, you can use one of the AWS SDKs, which
-%% consist of libraries and sample code for various programming languages and
-%% platforms (Java, Ruby, .NET, iOS, Android, etc.). The SDKs provide a
-%% convenient way to create programmatic access to AWSCloudTrail. For
-%% example, the SDKs take care of cryptographically signing requests,
-%% managing errors, and retrying requests automatically. For information
-%% about the AWS SDKs, including how to download and install them, see the
-%% Tools for Amazon Web Services page.
+%% As an alternative to the API, you can use one of the Amazon Web Services
+%% SDKs, which consist of libraries and sample code for various programming
+%% languages and platforms (Java, Ruby, .NET, iOS, Android, etc.). The SDKs
+%% provide programmatic access to CloudTrail. For example, the SDKs handle
+%% cryptographically signing requests, managing errors, and retrying requests
+%% automatically. For more information about the Amazon Web Services SDKs,
+%% including how to download and install them, see Tools to Build on Amazon
+%% Web Services.
 %%
-%% See the AWS CloudTrail User Guide for information about the data that is
-%% included with each AWS API call listed in the log files.
+%% See the CloudTrail User Guide for information about the data that is
+%% included with each Amazon Web Services API call listed in the log files.
 -module(aws_cloudtrail).
 
 -export([add_tags/2,
@@ -76,9 +76,9 @@
 %% existing tag key. Tag key names must be unique for a trail; you cannot
 %% have two keys with the same name but different values. If you specify a
 %% key without a value, the tag will be created with the specified key and a
-%% value of null. You can tag a trail that applies to all AWS Regions only
-%% from the Region in which the trail was created (also known as its home
-%% region).
+%% value of null. You can tag a trail that applies to all Amazon Web Services
+%% Regions only from the Region in which the trail was created (also known as
+%% its home region).
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -127,11 +127,11 @@ describe_trails(Client, Input, Options)
 %%
 %% </li> <li> If your event selector includes management events.
 %%
-%% </li> <li> If your event selector includes data events, the Amazon S3
-%% objects or AWS Lambda functions that you are logging for data events.
+%% </li> <li> If your event selector includes data events, the resources on
+%% which you are logging data events.
 %%
 %% </li> </ul> For more information, see Logging Data and Management Events
-%% for Trails in the AWS CloudTrail User Guide.
+%% for Trails in the CloudTrail User Guide.
 get_event_selectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_event_selectors(Client, Input, []).
@@ -149,7 +149,7 @@ get_event_selectors(Client, Input, Options)
 %% `InsightNotEnabledException'
 %%
 %% For more information, see Logging CloudTrail Insights Events for Trails in
-%% the AWS CloudTrail User Guide.
+%% the CloudTrail User Guide.
 get_insight_selectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_insight_selectors(Client, Input, []).
@@ -185,10 +185,10 @@ get_trail_status(Client, Input, Options)
 %% The public key is needed to validate digest files that were signed with
 %% its corresponding private key.
 %%
-%% CloudTrail uses different private/public key pairs per region. Each digest
-%% file is signed with a private key unique to its region. Therefore, when
-%% you validate a digest file from a particular region, you must look in the
-%% same region for its corresponding public key.
+%% CloudTrail uses different private and public key pairs per region. Each
+%% digest file is signed with a private key unique to its region. When you
+%% validate a digest file from a specific region, you must look in the same
+%% region for its corresponding public key.
 list_public_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_public_keys(Client, Input, []).
@@ -218,7 +218,7 @@ list_trails(Client, Input, Options)
 %% You can look up events that occurred in a region within the last 90 days.
 %% Lookup supports the following attributes for management events:
 %%
-%% <ul> <li> AWS access key
+%% <ul> <li> Amazon Web Services access key
 %%
 %% </li> <li> Event ID
 %%
@@ -292,7 +292,7 @@ lookup_events(Client, Input, Options)
 %%
 %% You can configure up to five event selectors for each trail. For more
 %% information, see Logging data and management events for trails and Quotas
-%% in AWS CloudTrail in the AWS CloudTrail User Guide.
+%% in CloudTrail in the CloudTrail User Guide.
 %%
 %% You can add advanced event selectors, and conditions for your advanced
 %% event selectors, up to a maximum of 500 values for all conditions and
@@ -300,7 +300,7 @@ lookup_events(Client, Input, Options)
 %% `EventSelectors', but not both. If you apply `AdvancedEventSelectors' to a
 %% trail, any existing `EventSelectors' are overwritten. For more information
 %% about advanced event selectors, see Logging data events for trails in the
-%% AWS CloudTrail User Guide.
+%% CloudTrail User Guide.
 put_event_selectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_event_selectors(Client, Input, []).
@@ -312,8 +312,8 @@ put_event_selectors(Client, Input, Options)
 %% selectors that you want to enable on an existing trail.
 %%
 %% You also use `PutInsightSelectors' to turn off Insights event logging, by
-%% passing an empty list of insight types. In this release, only
-%% `ApiCallRateInsight' is supported as an Insights selector.
+%% passing an empty list of insight types. The valid Insights event type in
+%% this release is `ApiCallRateInsight'.
 put_insight_selectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_insight_selectors(Client, Input, []).
@@ -329,8 +329,8 @@ remove_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTags">>, Input, Options).
 
-%% @doc Starts the recording of AWS API calls and log file delivery for a
-%% trail.
+%% @doc Starts the recording of Amazon Web Services API calls and log file
+%% delivery for a trail.
 %%
 %% For a trail that is enabled in all regions, this operation must be called
 %% from the region in which the trail was created. This operation cannot be
@@ -343,8 +343,8 @@ start_logging(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartLogging">>, Input, Options).
 
-%% @doc Suspends the recording of AWS API calls and log file delivery for the
-%% specified trail.
+%% @doc Suspends the recording of Amazon Web Services API calls and log file
+%% delivery for the specified trail.
 %%
 %% Under most circumstances, there is no need to use this action. You can
 %% update a trail without stopping it first. This action is the only way to
@@ -360,7 +360,8 @@ stop_logging(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopLogging">>, Input, Options).
 
-%% @doc Updates the settings that specify delivery of log files.
+%% @doc Updates trail settings that control what events you are logging, and
+%% how to handle log files.
 %%
 %% Changes to a trail do not require stopping the CloudTrail service. Use
 %% this action to designate an existing bucket for log delivery. If the

@@ -12,6 +12,10 @@
 %% images. Amazon ECR supports private repositories with resource-based
 %% permissions using IAM so that specific users or Amazon EC2 instances can
 %% access repositories and images.
+%%
+%% Amazon ECR has service endpoints in each supported Region. For more
+%% information, see Amazon ECR endpoints in the Amazon Web Services General
+%% Reference.
 -module(aws_ecr).
 
 -export([batch_check_layer_availability/2,
@@ -32,6 +36,8 @@
          delete_repository/3,
          delete_repository_policy/2,
          delete_repository_policy/3,
+         describe_image_replication_status/2,
+         describe_image_replication_status/3,
          describe_image_scan_findings/2,
          describe_image_scan_findings/3,
          describe_images/2,
@@ -156,7 +162,7 @@ complete_layer_upload(Client, Input, Options)
 
 %% @doc Creates a repository.
 %%
-%% For more information, see Amazon ECR Repositories in the Amazon Elastic
+%% For more information, see Amazon ECR repositories in the Amazon Elastic
 %% Container Registry User Guide.
 create_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -201,6 +207,14 @@ delete_repository_policy(Client, Input)
 delete_repository_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRepositoryPolicy">>, Input, Options).
+
+%% @doc Returns the replication status for a specified image.
+describe_image_replication_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_image_replication_status(Client, Input, []).
+describe_image_replication_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeImageReplicationStatus">>, Input, Options).
 
 %% @doc Returns the scan findings for the specified image.
 describe_image_scan_findings(Client, Input)
@@ -251,9 +265,9 @@ describe_repositories(Client, Input, Options)
 %%
 %% The `authorizationToken' returned is a base64 encoded string that can be
 %% decoded and used in a `docker login' command to authenticate to a
-%% registry. The AWS CLI offers an `get-login-password' command that
-%% simplifies the login process. For more information, see Registry
-%% Authentication in the Amazon Elastic Container Registry User Guide.
+%% registry. The CLI offers an `get-login-password' command that simplifies
+%% the login process. For more information, see Registry authentication in
+%% the Amazon Elastic Container Registry User Guide.
 get_authorization_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_authorization_token(Client, Input, []).
@@ -381,7 +395,7 @@ put_image_scanning_configuration(Client, Input, Options)
 %% @doc Updates the image tag mutability settings for the specified
 %% repository.
 %%
-%% For more information, see Image Tag Mutability in the Amazon Elastic
+%% For more information, see Image tag mutability in the Amazon Elastic
 %% Container Registry User Guide.
 put_image_tag_mutability(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -392,7 +406,7 @@ put_image_tag_mutability(Client, Input, Options)
 
 %% @doc Creates or updates the lifecycle policy for the specified repository.
 %%
-%% For more information, see Lifecycle Policy Template.
+%% For more information, see Lifecycle policy template.
 put_lifecycle_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_lifecycle_policy(Client, Input, []).
@@ -402,10 +416,10 @@ put_lifecycle_policy(Client, Input, Options)
 
 %% @doc Creates or updates the permissions policy for your registry.
 %%
-%% A registry policy is used to specify permissions for another AWS account
-%% and is used when configuring cross-account replication. For more
-%% information, see Registry permissions in the Amazon Elastic Container
-%% Registry User Guide.
+%% A registry policy is used to specify permissions for another Amazon Web
+%% Services account and is used when configuring cross-account replication.
+%% For more information, see Registry permissions in the Amazon Elastic
+%% Container Registry User Guide.
 put_registry_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_registry_policy(Client, Input, []).
@@ -419,7 +433,7 @@ put_registry_policy(Client, Input, Options)
 %% with the `DescribeRegistry' API action. The first time the
 %% PutReplicationConfiguration API is called, a service-linked IAM role is
 %% created in your account for the replication process. For more information,
-%% see Using Service-Linked Roles for Amazon ECR in the Amazon Elastic
+%% see Using service-linked roles for Amazon ECR in the Amazon Elastic
 %% Container Registry User Guide.
 %%
 %% When configuring cross-account replication, the destination account must
@@ -436,7 +450,7 @@ put_replication_configuration(Client, Input, Options)
 %% @doc Applies a repository policy to the specified repository to control
 %% access permissions.
 %%
-%% For more information, see Amazon ECR Repository Policies in the Amazon
+%% For more information, see Amazon ECR Repository policies in the Amazon
 %% Elastic Container Registry User Guide.
 set_repository_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -447,10 +461,10 @@ set_repository_policy(Client, Input, Options)
 
 %% @doc Starts an image vulnerability scan.
 %%
-%% An image scan can only be started once per day on an individual image.
-%% This limit includes if an image was scanned on initial push. For more
-%% information, see Image Scanning in the Amazon Elastic Container Registry
-%% User Guide.
+%% An image scan can only be started once per 24 hours on an individual
+%% image. This limit includes if an image was scanned on initial push. For
+%% more information, see Image scanning in the Amazon Elastic Container
+%% Registry User Guide.
 start_image_scan(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_image_scan(Client, Input, []).

@@ -34,6 +34,8 @@
 
 -export([describe_dimension_keys/2,
          describe_dimension_keys/3,
+         get_dimension_key_details/2,
+         get_dimension_key_details/3,
          get_resource_metrics/2,
          get_resource_metrics/3]).
 
@@ -54,6 +56,21 @@ describe_dimension_keys(Client, Input)
 describe_dimension_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDimensionKeys">>, Input, Options).
+
+%% @doc Get the attributes of the specified dimension group for a DB instance
+%% or data source.
+%%
+%% For example, if you specify a SQL ID, `GetDimensionKeyDetails' retrieves
+%% the full text of the dimension `db.sql.statement' associated with this ID.
+%% This operation is useful because `GetResourceMetrics' and
+%% `DescribeDimensionKeys' don't support retrieval of large SQL statement
+%% text.
+get_dimension_key_details(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_dimension_key_details(Client, Input, []).
+get_dimension_key_details(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDimensionKeyDetails">>, Input, Options).
 
 %% @doc Retrieve Performance Insights metrics for a set of data sources, over
 %% a time period.

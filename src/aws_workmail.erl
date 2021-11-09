@@ -43,6 +43,8 @@
          create_alias/3,
          create_group/2,
          create_group/3,
+         create_mobile_device_access_rule/2,
+         create_mobile_device_access_rule/3,
          create_organization/2,
          create_organization/3,
          create_resource/2,
@@ -57,6 +59,10 @@
          delete_group/3,
          delete_mailbox_permissions/2,
          delete_mailbox_permissions/3,
+         delete_mobile_device_access_override/2,
+         delete_mobile_device_access_override/3,
+         delete_mobile_device_access_rule/2,
+         delete_mobile_device_access_rule/3,
          delete_organization/2,
          delete_organization/3,
          delete_resource/2,
@@ -67,8 +73,12 @@
          delete_user/3,
          deregister_from_work_mail/2,
          deregister_from_work_mail/3,
+         deregister_mail_domain/2,
+         deregister_mail_domain/3,
          describe_group/2,
          describe_group/3,
+         describe_inbound_dmarc_settings/2,
+         describe_inbound_dmarc_settings/3,
          describe_mailbox_export_job/2,
          describe_mailbox_export_job/3,
          describe_organization/2,
@@ -85,8 +95,14 @@
          get_access_control_effect/3,
          get_default_retention_policy/2,
          get_default_retention_policy/3,
+         get_mail_domain/2,
+         get_mail_domain/3,
          get_mailbox_details/2,
          get_mailbox_details/3,
+         get_mobile_device_access_effect/2,
+         get_mobile_device_access_effect/3,
+         get_mobile_device_access_override/2,
+         get_mobile_device_access_override/3,
          list_access_control_rules/2,
          list_access_control_rules/3,
          list_aliases/2,
@@ -95,10 +111,16 @@
          list_group_members/3,
          list_groups/2,
          list_groups/3,
+         list_mail_domains/2,
+         list_mail_domains/3,
          list_mailbox_export_jobs/2,
          list_mailbox_export_jobs/3,
          list_mailbox_permissions/2,
          list_mailbox_permissions/3,
+         list_mobile_device_access_overrides/2,
+         list_mobile_device_access_overrides/3,
+         list_mobile_device_access_rules/2,
+         list_mobile_device_access_rules/3,
          list_organizations/2,
          list_organizations/3,
          list_resource_delegates/2,
@@ -111,10 +133,16 @@
          list_users/3,
          put_access_control_rule/2,
          put_access_control_rule/3,
+         put_inbound_dmarc_settings/2,
+         put_inbound_dmarc_settings/3,
          put_mailbox_permissions/2,
          put_mailbox_permissions/3,
+         put_mobile_device_access_override/2,
+         put_mobile_device_access_override/3,
          put_retention_policy/2,
          put_retention_policy/3,
+         register_mail_domain/2,
+         register_mail_domain/3,
          register_to_work_mail/2,
          register_to_work_mail/3,
          reset_password/2,
@@ -125,8 +153,12 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_default_mail_domain/2,
+         update_default_mail_domain/3,
          update_mailbox_quota/2,
          update_mailbox_quota/3,
+         update_mobile_device_access_rule/2,
+         update_mobile_device_access_rule/3,
          update_primary_email_address/2,
          update_primary_email_address/3,
          update_resource/2,
@@ -183,6 +215,15 @@ create_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGroup">>, Input, Options).
 
+%% @doc Creates a new mobile device access rule for the specified Amazon
+%% WorkMail organization.
+create_mobile_device_access_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_mobile_device_access_rule(Client, Input, []).
+create_mobile_device_access_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateMobileDeviceAccessRule">>, Input, Options).
+
 %% @doc Creates a new Amazon WorkMail organization.
 %%
 %% Optionally, you can choose to associate an existing AWS Directory Service
@@ -229,6 +270,10 @@ create_user(Client, Input, Options)
 
 %% @doc Deletes an access control rule for the specified WorkMail
 %% organization.
+%%
+%% Deleting already deleted and non-existing rules does not produce an error.
+%% In those cases, the service sends back an HTTP 200 response with an empty
+%% HTTP body.
 delete_access_control_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_access_control_rule(Client, Input, []).
@@ -260,6 +305,32 @@ delete_mailbox_permissions(Client, Input)
 delete_mailbox_permissions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMailboxPermissions">>, Input, Options).
+
+%% @doc Deletes the mobile device access override for the given WorkMail
+%% organization, user, and device.
+%%
+%% Deleting already deleted and non-existing overrides does not produce an
+%% error. In those cases, the service sends back an HTTP 200 response with an
+%% empty HTTP body.
+delete_mobile_device_access_override(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_mobile_device_access_override(Client, Input, []).
+delete_mobile_device_access_override(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteMobileDeviceAccessOverride">>, Input, Options).
+
+%% @doc Deletes a mobile device access rule for the specified Amazon WorkMail
+%% organization.
+%%
+%% Deleting already deleted and non-existing rules does not produce an error.
+%% In those cases, the service sends back an HTTP 200 response with an empty
+%% HTTP body.
+delete_mobile_device_access_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_mobile_device_access_rule(Client, Input, []).
+delete_mobile_device_access_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteMobileDeviceAccessRule">>, Input, Options).
 
 %% @doc Deletes an Amazon WorkMail organization and all underlying AWS
 %% resources managed by Amazon WorkMail as part of the organization.
@@ -317,6 +388,19 @@ deregister_from_work_mail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterFromWorkMail">>, Input, Options).
 
+%% @doc Removes a domain from Amazon WorkMail, stops email routing to
+%% WorkMail, and removes the authorization allowing WorkMail use.
+%%
+%% SES keeps the domain because other applications may use it. You must first
+%% remove any email address used by WorkMail entities before you remove the
+%% domain.
+deregister_mail_domain(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    deregister_mail_domain(Client, Input, []).
+deregister_mail_domain(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeregisterMailDomain">>, Input, Options).
+
 %% @doc Returns the data available for the group.
 describe_group(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -324,6 +408,14 @@ describe_group(Client, Input)
 describe_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGroup">>, Input, Options).
+
+%% @doc Lists the settings in a DMARC policy for a specified organization.
+describe_inbound_dmarc_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_inbound_dmarc_settings(Client, Input, []).
+describe_inbound_dmarc_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeInboundDmarcSettings">>, Input, Options).
 
 %% @doc Describes the current status of a mailbox export job.
 describe_mailbox_export_job(Client, Input)
@@ -392,6 +484,15 @@ get_default_retention_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDefaultRetentionPolicy">>, Input, Options).
 
+%% @doc Gets details for a mail domain, including domain records required to
+%% configure your domain with recommended security.
+get_mail_domain(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_mail_domain(Client, Input, []).
+get_mail_domain(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetMailDomain">>, Input, Options).
+
 %% @doc Requests a user's mailbox details for a specified organization and
 %% user.
 get_mailbox_details(Client, Input)
@@ -400,6 +501,28 @@ get_mailbox_details(Client, Input)
 get_mailbox_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMailboxDetails">>, Input, Options).
+
+%% @doc Simulates the effect of the mobile device access rules for the given
+%% attributes of a sample access event.
+%%
+%% Use this method to test the effects of the current set of mobile device
+%% access rules for the Amazon WorkMail organization for a particular user's
+%% attributes.
+get_mobile_device_access_effect(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_mobile_device_access_effect(Client, Input, []).
+get_mobile_device_access_effect(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetMobileDeviceAccessEffect">>, Input, Options).
+
+%% @doc Gets the mobile device access override for the given WorkMail
+%% organization, user, and device.
+get_mobile_device_access_override(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_mobile_device_access_override(Client, Input, []).
+get_mobile_device_access_override(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetMobileDeviceAccessOverride">>, Input, Options).
 
 %% @doc Lists the access control rules for the specified organization.
 list_access_control_rules(Client, Input)
@@ -436,6 +559,14 @@ list_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroups">>, Input, Options).
 
+%% @doc Lists the mail domains in a given Amazon WorkMail organization.
+list_mail_domains(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_mail_domains(Client, Input, []).
+list_mail_domains(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListMailDomains">>, Input, Options).
+
 %% @doc Lists the mailbox export jobs started for the specified organization
 %% within the last seven days.
 list_mailbox_export_jobs(Client, Input)
@@ -453,6 +584,24 @@ list_mailbox_permissions(Client, Input)
 list_mailbox_permissions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMailboxPermissions">>, Input, Options).
+
+%% @doc Lists all the mobile device access overrides for any given
+%% combination of WorkMail organization, user, or device.
+list_mobile_device_access_overrides(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_mobile_device_access_overrides(Client, Input, []).
+list_mobile_device_access_overrides(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListMobileDeviceAccessOverrides">>, Input, Options).
+
+%% @doc Lists the mobile device access rules for the specified Amazon
+%% WorkMail organization.
+list_mobile_device_access_rules(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_mobile_device_access_rules(Client, Input, []).
+list_mobile_device_access_rules(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListMobileDeviceAccessRules">>, Input, Options).
 
 %% @doc Returns summaries of the customer's organizations.
 list_organizations(Client, Input)
@@ -509,6 +658,14 @@ put_access_control_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAccessControlRule">>, Input, Options).
 
+%% @doc Enables or disables a DMARC policy for a given organization.
+put_inbound_dmarc_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_inbound_dmarc_settings(Client, Input, []).
+put_inbound_dmarc_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutInboundDmarcSettings">>, Input, Options).
+
 %% @doc Sets permissions for a user, group, or resource.
 %%
 %% This replaces any pre-existing permissions.
@@ -519,6 +676,15 @@ put_mailbox_permissions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutMailboxPermissions">>, Input, Options).
 
+%% @doc Creates or updates a mobile device access override for the given
+%% WorkMail organization, user, and device.
+put_mobile_device_access_override(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_mobile_device_access_override(Client, Input, []).
+put_mobile_device_access_override(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutMobileDeviceAccessOverride">>, Input, Options).
+
 %% @doc Puts a retention policy to the specified organization.
 put_retention_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -526,6 +692,19 @@ put_retention_policy(Client, Input)
 put_retention_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRetentionPolicy">>, Input, Options).
+
+%% @doc Registers a new domain in Amazon WorkMail and SES, and configures it
+%% for use by WorkMail.
+%%
+%% Emails received by SES for this domain are routed to the specified
+%% WorkMail organization, and WorkMail has permanent permission to use the
+%% specified domain for sending your users' emails.
+register_mail_domain(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    register_mail_domain(Client, Input, []).
+register_mail_domain(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RegisterMailDomain">>, Input, Options).
 
 %% @doc Registers an existing and disabled user, group, or resource for
 %% Amazon WorkMail use by associating a mailbox and calendaring capabilities.
@@ -584,6 +763,18 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
+%% @doc Updates the default mail domain for an organization.
+%%
+%% The default mail domain is used by the WorkMail AWS Console to suggest an
+%% email address when enabling a mail user. You can only have one default
+%% domain.
+update_default_mail_domain(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_default_mail_domain(Client, Input, []).
+update_default_mail_domain(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDefaultMailDomain">>, Input, Options).
+
 %% @doc Updates a user's current mailbox quota for a specified organization
 %% and user.
 update_mailbox_quota(Client, Input)
@@ -592,6 +783,15 @@ update_mailbox_quota(Client, Input)
 update_mailbox_quota(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMailboxQuota">>, Input, Options).
+
+%% @doc Updates a mobile device access rule for the specified Amazon WorkMail
+%% organization.
+update_mobile_device_access_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_mobile_device_access_rule(Client, Input, []).
+update_mobile_device_access_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateMobileDeviceAccessRule">>, Input, Options).
 
 %% @doc Updates the primary email for a user, group, or resource.
 %%

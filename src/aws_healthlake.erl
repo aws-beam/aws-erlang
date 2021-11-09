@@ -18,10 +18,20 @@
          describe_fhir_import_job/3,
          list_fhir_datastores/2,
          list_fhir_datastores/3,
+         list_fhir_export_jobs/2,
+         list_fhir_export_jobs/3,
+         list_fhir_import_jobs/2,
+         list_fhir_import_jobs/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          start_fhir_export_job/2,
          start_fhir_export_job/3,
          start_fhir_import_job/2,
-         start_fhir_import_job/3]).
+         start_fhir_import_job/3,
+         tag_resource/2,
+         tag_resource/3,
+         untag_resource/2,
+         untag_resource/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -82,6 +92,32 @@ list_fhir_datastores(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFHIRDatastores">>, Input, Options).
 
+%% @doc Lists all FHIR export jobs associated with an account and their
+%% statuses.
+list_fhir_export_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_fhir_export_jobs(Client, Input, []).
+list_fhir_export_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFHIRExportJobs">>, Input, Options).
+
+%% @doc Lists all FHIR import jobs associated with an account and their
+%% statuses.
+list_fhir_import_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_fhir_import_jobs(Client, Input, []).
+list_fhir_import_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFHIRImportJobs">>, Input, Options).
+
+%% @doc Returns a list of all existing tags associated with a Data Store.
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
+
 %% @doc Begins a FHIR export job.
 start_fhir_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -97,6 +133,22 @@ start_fhir_import_job(Client, Input)
 start_fhir_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartFHIRImportJob">>, Input, Options).
+
+%% @doc Adds a user specifed key and value tag to a Data Store.
+tag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    tag_resource(Client, Input, []).
+tag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TagResource">>, Input, Options).
+
+%% @doc Removes tags from a Data Store.
+untag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    untag_resource(Client, Input, []).
+untag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UntagResource">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

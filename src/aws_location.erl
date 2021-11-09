@@ -1,12 +1,14 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Suite of geospatial services including Maps, Places, Tracking, and
-%% Geofencing
+%% @doc Suite of geospatial services including Maps, Places, Routes,
+%% Tracking, and Geofencing
 -module(aws_location).
 
 -export([associate_tracker_consumer/3,
          associate_tracker_consumer/4,
+         batch_delete_device_position_history/3,
+         batch_delete_device_position_history/4,
          batch_delete_geofence/3,
          batch_delete_geofence/4,
          batch_evaluate_geofences/3,
@@ -17,12 +19,16 @@
          batch_put_geofence/4,
          batch_update_device_position/3,
          batch_update_device_position/4,
+         calculate_route/3,
+         calculate_route/4,
          create_geofence_collection/2,
          create_geofence_collection/3,
          create_map/2,
          create_map/3,
          create_place_index/2,
          create_place_index/3,
+         create_route_calculator/2,
+         create_route_calculator/3,
          create_tracker/2,
          create_tracker/3,
          delete_geofence_collection/3,
@@ -31,6 +37,8 @@
          delete_map/4,
          delete_place_index/3,
          delete_place_index/4,
+         delete_route_calculator/3,
+         delete_route_calculator/4,
          delete_tracker/3,
          delete_tracker/4,
          describe_geofence_collection/2,
@@ -42,6 +50,9 @@
          describe_place_index/2,
          describe_place_index/4,
          describe_place_index/5,
+         describe_route_calculator/2,
+         describe_route_calculator/4,
+         describe_route_calculator/5,
          describe_tracker/2,
          describe_tracker/4,
          describe_tracker/5,
@@ -67,6 +78,8 @@
          get_map_tile/5,
          get_map_tile/7,
          get_map_tile/8,
+         list_device_positions/3,
+         list_device_positions/4,
          list_geofence_collections/2,
          list_geofence_collections/3,
          list_geofences/3,
@@ -75,6 +88,11 @@
          list_maps/3,
          list_place_indexes/2,
          list_place_indexes/3,
+         list_route_calculators/2,
+         list_route_calculators/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          list_tracker_consumers/3,
          list_tracker_consumers/4,
          list_trackers/2,
@@ -84,7 +102,21 @@
          search_place_index_for_position/3,
          search_place_index_for_position/4,
          search_place_index_for_text/3,
-         search_place_index_for_text/4]).
+         search_place_index_for_text/4,
+         tag_resource/3,
+         tag_resource/4,
+         untag_resource/3,
+         untag_resource/4,
+         update_geofence_collection/3,
+         update_geofence_collection/4,
+         update_map/3,
+         update_map/4,
+         update_place_index/3,
+         update_place_index/4,
+         update_route_calculator/3,
+         update_route_calculator/4,
+         update_tracker/3,
+         update_tracker/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -97,6 +129,13 @@
 %%
 %% This allows the tracker resource to communicate location data to the
 %% linked geofence collection.
+%%
+%% You can associate up to five geofence collections to each tracker
+%% resource.
+%%
+%% Currently not supported — Cross-account configurations, such as creating
+%% associations between a tracker resource in one account and a geofence
+%% collection in another account.
 associate_tracker_consumer(Client, TrackerName, Input) ->
     associate_tracker_consumer(Client, TrackerName, Input, []).
 associate_tracker_consumer(Client, TrackerName, Input0, Options0) ->
@@ -119,9 +158,33 @@ associate_tracker_consumer(Client, TrackerName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the position history of one or more devices from a tracker
+%% resource.
+batch_delete_device_position_history(Client, TrackerName, Input) ->
+    batch_delete_device_position_history(Client, TrackerName, Input, []).
+batch_delete_device_position_history(Client, TrackerName, Input0, Options0) ->
+    Method = post,
+    Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/delete-positions"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a batch of geofences from a geofence collection.
 %%
-%% This action deletes the resource permanently. You can't undo this action.
+%% This operation deletes the resource permanently.
 batch_delete_geofence(Client, CollectionName, Input) ->
     batch_delete_geofence(Client, CollectionName, Input, []).
 batch_delete_geofence(Client, CollectionName, Input0, Options0) ->
@@ -144,10 +207,22 @@ batch_delete_geofence(Client, CollectionName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Used in geofence monitoring.
+%% @doc Evaluates device positions against the geofence geometries from a
+%% given geofence collection.
 %%
-%% Evaluates device positions against the position of geofences in a given
-%% geofence collection.
+%% This operation always returns an empty response because geofences are
+%% asynchronously evaluated. The evaluation determines if the device has
+%% entered or exited a geofenced area, and then publishes one of the
+%% following events to Amazon EventBridge:
+%%
+%% <ul> <li> `ENTER' if Amazon Location determines that the tracked device
+%% has entered a geofenced area.
+%%
+%% </li> <li> `EXIT' if Amazon Location determines that the tracked device
+%% has exited a geofenced area.
+%%
+%% </li> </ul> The last geofence that a device was observed within is tracked
+%% for 30 days after the most recent device position update.
 batch_evaluate_geofences(Client, CollectionName, Input) ->
     batch_evaluate_geofences(Client, CollectionName, Input, []).
 batch_evaluate_geofences(Client, CollectionName, Input0, Options0) ->
@@ -170,9 +245,7 @@ batch_evaluate_geofences(Client, CollectionName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc A batch request to retrieve device positions.
-%%
-%% The response will return the device positions from the last 24 hours.
+%% @doc Lists the latest device positions for requested devices.
 batch_get_device_position(Client, TrackerName, Input) ->
     batch_get_device_position(Client, TrackerName, Input, []).
 batch_get_device_position(Client, TrackerName, Input0, Options0) ->
@@ -195,8 +268,9 @@ batch_get_device_position(Client, TrackerName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc A batch request for storing geofences into a given geofence
-%% collection.
+%% @doc A batch request for storing geofence geometries into a given geofence
+%% collection, or updates the geometry of an existing geofence if a geofence
+%% ID is included in the request.
 batch_put_geofence(Client, CollectionName, Input) ->
     batch_put_geofence(Client, CollectionName, Input, []).
 batch_put_geofence(Client, CollectionName, Input0, Options0) ->
@@ -219,19 +293,72 @@ batch_put_geofence(Client, CollectionName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Uploads a position update for one or more devices to a tracker
+%% @doc Uploads position update data for one or more devices to a tracker
 %% resource.
 %%
-%% The data is used for API queries requesting the device position and
-%% position history.
+%% Amazon Location uses the data when it reports the last known device
+%% position and position history. Amazon Location retains location data for
+%% 30 days.
 %%
-%% Limitation — Location data is sampled at a fixed rate of 1 position per 30
-%% second interval, and retained for 1 year before it is deleted.
+%% Position updates are handled based on the `PositionFiltering' property of
+%% the tracker. When `PositionFiltering' is set to `TimeBased', updates are
+%% evaluated against linked geofence collections, and location data is stored
+%% at a maximum of one position per 30 second interval. If your update
+%% frequency is more often than every 30 seconds, only one update per 30
+%% seconds is stored for each unique device ID. When `PositionFiltering' is
+%% set to `DistanceBased' filtering, location data is stored and evaluated
+%% against linked geofence collections only if the device has moved more than
+%% 30 m (98.4 ft).
 batch_update_device_position(Client, TrackerName, Input) ->
     batch_update_device_position(Client, TrackerName, Input, []).
 batch_update_device_position(Client, TrackerName, Input0, Options0) ->
     Method = post,
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/positions"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Calculates a route given the following required parameters:
+%% `DeparturePostiton' and `DestinationPosition'.
+%%
+%% Requires that you first create a route calculator resource
+%%
+%% By default, a request that doesn't specify a departure time uses the best
+%% time of day to travel with the best traffic conditions when calculating
+%% the route.
+%%
+%% Additional options include:
+%%
+%% <ul> <li> Specifying a departure time using either `DepartureTime' or
+%% `DepartureNow'. This calculates a route based on predictive traffic data
+%% at the given time.
+%%
+%% You can't specify both `DepartureTime' and `DepartureNow' in a single
+%% request. Specifying both parameters returns an error message.
+%%
+%% </li> <li> Specifying a travel mode using TravelMode. This lets you
+%% specify an additional route preference such as `CarModeOptions' if
+%% traveling by `Car', or `TruckModeOptions' if traveling by `Truck'.
+%%
+%% </li> </ul>
+calculate_route(Client, CalculatorName, Input) ->
+    calculate_route(Client, CalculatorName, Input, []).
+calculate_route(Client, CalculatorName, Input0, Options0) ->
+    Method = post,
+    Path = ["/routes/v0/calculators/", aws_util:encode_uri(CalculatorName), "/calculate/route"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -274,11 +401,6 @@ create_geofence_collection(Client, Input0, Options0) ->
 
 %% @doc Creates a map resource in your AWS account, which provides map tiles
 %% of different styles sourced from global location data providers.
-%%
-%% By using Maps, you agree that AWS may transmit your API queries to your
-%% selected third party provider for processing, which may be outside the AWS
-%% region you are currently using. For more information, see the AWS Service
-%% Terms for Amazon Location Service.
 create_map(Client, Input) ->
     create_map(Client, Input, []).
 create_map(Client, Input0, Options0) ->
@@ -301,22 +423,40 @@ create_map(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a Place index resource in your AWS account, which supports
-%% Places functions with geospatial data sourced from your chosen data
-%% provider.
-%%
-%% By using Places, you agree that AWS may transmit your API queries to your
-%% selected third party provider for processing, which may be outside the AWS
-%% region you are currently using.
-%%
-%% Because of licensing limitations, you may not use HERE to store results
-%% for locations in Japan. For more information, see the AWS Service Terms
-%% for Amazon Location Service.
+%% @doc Creates a place index resource in your AWS account, which supports
+%% functions with geospatial data sourced from your chosen data provider.
 create_place_index(Client, Input) ->
     create_place_index(Client, Input, []).
 create_place_index(Client, Input0, Options0) ->
     Method = post,
     Path = ["/places/v0/indexes"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a route calculator resource in your AWS account.
+%%
+%% You can send requests to a route calculator resource to estimate travel
+%% time, distance, and get directions. A route calculator sources traffic and
+%% road network data from your chosen data provider.
+create_route_calculator(Client, Input) ->
+    create_route_calculator(Client, Input, []).
+create_route_calculator(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/routes/v0/calculators"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -360,9 +500,9 @@ create_tracker(Client, Input0, Options0) ->
 
 %% @doc Deletes a geofence collection from your AWS account.
 %%
-%% This action deletes the resource permanently. You can't undo this action.
-%% If the geofence collection is the target of a tracker resource, the
-%% devices will no longer be monitored.
+%% This operation deletes the resource permanently. If the geofence
+%% collection is the target of a tracker resource, the devices will no longer
+%% be monitored.
 delete_geofence_collection(Client, CollectionName, Input) ->
     delete_geofence_collection(Client, CollectionName, Input, []).
 delete_geofence_collection(Client, CollectionName, Input0, Options0) ->
@@ -387,8 +527,8 @@ delete_geofence_collection(Client, CollectionName, Input0, Options0) ->
 
 %% @doc Deletes a map resource from your AWS account.
 %%
-%% This action deletes the resource permanently. You cannot undo this action.
-%% If the map is being used in an application, the map may not render.
+%% This operation deletes the resource permanently. If the map is being used
+%% in an application, the map may not render.
 delete_map(Client, MapName, Input) ->
     delete_map(Client, MapName, Input, []).
 delete_map(Client, MapName, Input0, Options0) ->
@@ -411,9 +551,9 @@ delete_map(Client, MapName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a Place index resource from your AWS account.
+%% @doc Deletes a place index resource from your AWS account.
 %%
-%% This action deletes the resource permanently. You cannot undo this action.
+%% This operation deletes the resource permanently.
 delete_place_index(Client, IndexName, Input) ->
     delete_place_index(Client, IndexName, Input, []).
 delete_place_index(Client, IndexName, Input0, Options0) ->
@@ -436,11 +576,36 @@ delete_place_index(Client, IndexName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a route calculator resource from your AWS account.
+%%
+%% This operation deletes the resource permanently.
+delete_route_calculator(Client, CalculatorName, Input) ->
+    delete_route_calculator(Client, CalculatorName, Input, []).
+delete_route_calculator(Client, CalculatorName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/routes/v0/calculators/", aws_util:encode_uri(CalculatorName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a tracker resource from your AWS account.
 %%
-%% This action deletes the resource permanently. You can't undo this action.
-%% If the tracker resource is in use, you may encounter an error. Make sure
-%% that the target resource is not a dependency for your applications.
+%% This operation deletes the resource permanently. If the tracker resource
+%% is in use, you may encounter an error. Make sure that the target resource
+%% isn't a dependency for your applications.
 delete_tracker(Client, TrackerName, Input) ->
     delete_tracker(Client, TrackerName, Input, []).
 delete_tracker(Client, TrackerName, Input0, Options0) ->
@@ -509,7 +674,7 @@ describe_map(Client, MapName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the Place index resource details.
+%% @doc Retrieves the place index resource details.
 describe_place_index(Client, IndexName)
   when is_map(Client) ->
     describe_place_index(Client, IndexName, #{}, #{}).
@@ -521,6 +686,29 @@ describe_place_index(Client, IndexName, QueryMap, HeadersMap)
 describe_place_index(Client, IndexName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the route calculator resource details.
+describe_route_calculator(Client, CalculatorName)
+  when is_map(Client) ->
+    describe_route_calculator(Client, CalculatorName, #{}, #{}).
+
+describe_route_calculator(Client, CalculatorName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_route_calculator(Client, CalculatorName, QueryMap, HeadersMap, []).
+
+describe_route_calculator(Client, CalculatorName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/routes/v0/calculators/", aws_util:encode_uri(CalculatorName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -555,7 +743,7 @@ describe_tracker(Client, TrackerName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Removes the association bewteen a tracker resource and a geofence
+%% @doc Removes the association between a tracker resource and a geofence
 %% collection.
 %%
 %% Once you unlink a tracker resource from a geofence collection, the tracker
@@ -582,9 +770,10 @@ disassociate_tracker_consumer(Client, ConsumerArn, TrackerName, Input0, Options0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves the latest device position.
+%% @doc Retrieves a device's most recent position according to its sample
+%% time.
 %%
-%% Limitation — Device positions are deleted after one year.
+%% Device positions are deleted after 30 days.
 get_device_position(Client, DeviceId, TrackerName)
   when is_map(Client) ->
     get_device_position(Client, DeviceId, TrackerName, #{}, #{}).
@@ -610,7 +799,7 @@ get_device_position(Client, DeviceId, TrackerName, QueryMap, HeadersMap, Options
 %% @doc Retrieves the device position history from a tracker resource within
 %% a specified range of time.
 %%
-%% Limitation — Device positions are deleted after one year.
+%% Device positions are deleted after 30 days.
 get_device_position_history(Client, DeviceId, TrackerName, Input) ->
     get_device_position_history(Client, DeviceId, TrackerName, Input, []).
 get_device_position_history(Client, DeviceId, TrackerName, Input0, Options0) ->
@@ -783,7 +972,7 @@ get_map_style_descriptor(Client, MapName, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a vector data tile from the map resource.
 %%
-%% Map tiles are used by clients to render a map. They are addressed using a
+%% Map tiles are used by clients to render a map. they're addressed using a
 %% grid arrangement with an X coordinate, Y coordinate, and Z (zoom) level.
 %%
 %% The origin (0, 0) is the top left of the map. Increasing the zoom level by
@@ -827,6 +1016,29 @@ get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap, Options0)
       Result ->
         Result
     end.
+
+%% @doc A batch request to retrieve all device positions.
+list_device_positions(Client, TrackerName, Input) ->
+    list_device_positions(Client, TrackerName, Input, []).
+list_device_positions(Client, TrackerName, Input0, Options0) ->
+    Method = post,
+    Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/list-positions"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists geofence collections in your AWS account.
 list_geofence_collections(Client, Input) ->
@@ -897,7 +1109,7 @@ list_maps(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists Place index resources in your AWS account.
+%% @doc Lists place index resources in your AWS account.
 list_place_indexes(Client, Input) ->
     list_place_indexes(Client, Input, []).
 list_place_indexes(Client, Input0, Options0) ->
@@ -919,6 +1131,53 @@ list_place_indexes(Client, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists route calculator resources in your AWS account.
+list_route_calculators(Client, Input) ->
+    list_route_calculators(Client, Input, []).
+list_route_calculators(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/routes/v0/list-calculators"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of tags that are applied to the specified Amazon
+%% Location resource.
+list_tags_for_resource(Client, ResourceArn)
+  when is_map(Client) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists geofence collections currently associated to the given tracker
 %% resource.
@@ -967,8 +1226,8 @@ list_trackers(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Stores a geofence to a given geofence collection, or updates the
-%% geometry of an existing geofence if a geofence ID is included in the
+%% @doc Stores a geofence geometry in a given geofence collection, or updates
+%% the geometry of an existing geofence if a geofence ID is included in the
 %% request.
 put_geofence(Client, CollectionName, GeofenceId, Input) ->
     put_geofence(Client, CollectionName, GeofenceId, Input, []).
@@ -996,14 +1255,6 @@ put_geofence(Client, CollectionName, GeofenceId, Input0, Options0) ->
 %%
 %% Allows you to search for Places or points of interest near a given
 %% position.
-%%
-%% By using Places, you agree that AWS may transmit your API queries to your
-%% selected third party provider for processing, which may be outside the AWS
-%% region you are currently using.
-%%
-%% Because of licensing limitations, you may not use HERE to store results
-%% for locations in Japan. For more information, see the AWS Service Terms
-%% for Amazon Location Service.
 search_place_index_for_position(Client, IndexName, Input) ->
     search_place_index_for_position(Client, IndexName, Input, []).
 search_place_index_for_position(Client, IndexName, Input0, Options0) ->
@@ -1035,20 +1286,185 @@ search_place_index_for_position(Client, IndexName, Input0, Options0) ->
 %% You can search for places near a given position using `BiasPosition', or
 %% filter results within a bounding box using `FilterBBox'. Providing both
 %% parameters simultaneously returns an error.
-%%
-%% By using Places, you agree that AWS may transmit your API queries to your
-%% selected third party provider for processing, which may be outside the AWS
-%% region you are currently using.
-%%
-%% Also, when using HERE as your data provider, you may not (a) use HERE
-%% Places for Asset Management, or (b) select the `Storage' option for the
-%% `IntendedUse' parameter when requesting Places in Japan. For more
-%% information, see the AWS Service Terms for Amazon Location Service.
 search_place_index_for_text(Client, IndexName, Input) ->
     search_place_index_for_text(Client, IndexName, Input, []).
 search_place_index_for_text(Client, IndexName, Input0, Options0) ->
     Method = post,
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), "/search/text"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Assigns one or more tags (key-value pairs) to the specified Amazon
+%% Location Service resource.
+%%
+%% <p>Tags can help you organize and categorize your resources. You can also
+%% use them to scope user permissions, by granting a user permission to
+%% access or change only resources with certain tag values.</p> <p>You can
+%% use the <code>TagResource</code> operation with an Amazon Location Service
+%% resource that already has tags. If you specify a new tag key for the
+%% resource, this tag is appended to the tags already associated with the
+%% resource. If you specify a tag key that's already associated with the
+%% resource, the new tag value that you specify replaces the previous value
+%% for that tag. </p> <p>You can associate up to 50 tags with a resource.</p>
+tag_resource(Client, ResourceArn, Input) ->
+    tag_resource(Client, ResourceArn, Input, []).
+tag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes one or more tags from the specified Amazon Location resource.
+untag_resource(Client, ResourceArn, Input) ->
+    untag_resource(Client, ResourceArn, Input, []).
+untag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"tagKeys">>, <<"TagKeys">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the specified properties of a given geofence collection.
+update_geofence_collection(Client, CollectionName, Input) ->
+    update_geofence_collection(Client, CollectionName, Input, []).
+update_geofence_collection(Client, CollectionName, Input0, Options0) ->
+    Method = patch,
+    Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the specified properties of a given map resource.
+update_map(Client, MapName, Input) ->
+    update_map(Client, MapName, Input, []).
+update_map(Client, MapName, Input0, Options0) ->
+    Method = patch,
+    Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the specified properties of a given place index resource.
+update_place_index(Client, IndexName, Input) ->
+    update_place_index(Client, IndexName, Input, []).
+update_place_index(Client, IndexName, Input0, Options0) ->
+    Method = patch,
+    Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the specified properties for a given route calculator
+%% resource.
+update_route_calculator(Client, CalculatorName, Input) ->
+    update_route_calculator(Client, CalculatorName, Input, []).
+update_route_calculator(Client, CalculatorName, Input0, Options0) ->
+    Method = patch,
+    Path = ["/routes/v0/calculators/", aws_util:encode_uri(CalculatorName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the specified properties of a given tracker resource.
+update_tracker(Client, TrackerName, Input) ->
+    update_tracker(Client, TrackerName, Input, []).
+update_tracker(Client, TrackerName, Input0, Options0) ->
+    Method = patch,
+    Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1101,6 +1517,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

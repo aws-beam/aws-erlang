@@ -4,11 +4,13 @@
 %% @doc Amazon Elastic File System
 %%
 %% Amazon Elastic File System (Amazon EFS) provides simple, scalable file
-%% storage for use with Amazon EC2 instances in the AWS Cloud.
+%% storage for use with Amazon EC2 instances in the Amazon Web Services
+%% Cloud.
 %%
 %% With Amazon EFS, storage capacity is elastic, growing and shrinking
 %% automatically as you add and remove files, so your applications have the
-%% storage they need, when they need it. For more information, see the User
+%% storage they need, when they need it. For more information, see the Amazon
+%% Elastic File System API Reference and the Amazon Elastic File System User
 %% Guide.
 -module(aws_efs).
 
@@ -33,6 +35,9 @@
          describe_access_points/1,
          describe_access_points/3,
          describe_access_points/4,
+         describe_account_preferences/1,
+         describe_account_preferences/3,
+         describe_account_preferences/4,
          describe_backup_policy/2,
          describe_backup_policy/4,
          describe_backup_policy/5,
@@ -59,6 +64,8 @@
          list_tags_for_resource/5,
          modify_mount_target_security_groups/3,
          modify_mount_target_security_groups/4,
+         put_account_preferences/2,
+         put_account_preferences/3,
          put_backup_policy/3,
          put_backup_policy/4,
          put_file_system_policy/3,
@@ -86,8 +93,8 @@
 %% system user and group override any identity information provided by the
 %% NFS client. The file system path is exposed as the access point's root
 %% directory. Applications using the access point can only access data in its
-%% own directory and below. To learn more, see Mounting a File System Using
-%% EFS Access Points.
+%% own directory and below. To learn more, see Mounting a file system using
+%% EFS access points.
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:CreateAccessPoint' action.
@@ -118,8 +125,8 @@ create_access_point(Client, Input0, Options0) ->
 %% The operation requires a creation token in the request that Amazon EFS
 %% uses to ensure idempotent creation (calling the operation with same
 %% creation token has no effect). If a file system does not currently exist
-%% that is owned by the caller's AWS account with the specified creation
-%% token, this operation does the following:
+%% that is owned by the caller's Amazon Web Services account with the
+%% specified creation token, this operation does the following:
 %%
 %% <ul> <li> Creates a new, empty file system. The file system will have an
 %% Amazon EFS assigned ID, and an initial lifecycle state `creating'.
@@ -141,18 +148,24 @@ create_access_point(Client, Input0, Options0) ->
 %% system, the client can learn of its existence from the
 %% `FileSystemAlreadyExists' error.
 %%
+%% For more information, see Creating a file system in the Amazon EFS User
+%% Guide.
+%%
 %% The `CreateFileSystem' call returns while the file system's lifecycle
 %% state is still `creating'. You can check the file system creation status
 %% by calling the `DescribeFileSystems' operation, which among other things
 %% returns the file system state.
 %%
-%% This operation also takes an optional `PerformanceMode' parameter that you
+%% This operation accepts an optional `PerformanceMode' parameter that you
 %% choose for your file system. We recommend `generalPurpose' performance
 %% mode for most file systems. File systems using the `maxIO' performance
 %% mode can scale to higher levels of aggregate throughput and operations per
 %% second with a tradeoff of slightly higher latencies for most file
 %% operations. The performance mode can't be changed after the file system
-%% has been created. For more information, see Amazon EFS: Performance Modes.
+%% has been created. For more information, see Amazon EFS performance modes.
+%%
+%% You can set the throughput mode for the file system using the
+%% `ThroughputMode' parameter.
 %%
 %% After the file system is fully created, Amazon EFS sets its lifecycle
 %% state to `available', at which point you can create one or more mount
@@ -195,30 +208,44 @@ create_file_system(Client, Input0, Options0) ->
 %% mount target for a given file system. If you have multiple subnets in an
 %% Availability Zone, you create a mount target in one of the subnets. EC2
 %% instances do not need to be in the same subnet as the mount target in
-%% order to access their file system. For more information, see Amazon EFS:
-%% How it Works.
+%% order to access their file system.
 %%
-%% In the request, you also specify a file system ID for which you are
-%% creating the mount target and the file system's lifecycle state must be
-%% `available'. For more information, see `DescribeFileSystems'.
+%% You can create only one mount target for an EFS file system using One Zone
+%% storage classes. You must create that mount target in the same
+%% Availability Zone in which the file system is located. Use the
+%% `AvailabilityZoneName' and `AvailabiltyZoneId' properties in the
+%% `DescribeFileSystems' response object to get this information. Use the
+%% `subnetId' associated with the file system's Availability Zone when
+%% creating the mount target.
 %%
-%% In the request, you also provide a subnet ID, which determines the
-%% following:
+%% For more information, see Amazon EFS: How it Works.
 %%
-%% <ul> <li> VPC in which Amazon EFS creates the mount target
+%% To create a mount target for a file system, the file system's lifecycle
+%% state must be `available'. For more information, see
+%% `DescribeFileSystems'.
 %%
-%% </li> <li> Availability Zone in which Amazon EFS creates the mount target
+%% In the request, provide the following:
 %%
-%% </li> <li> IP address range from which Amazon EFS selects the IP address
-%% of the mount target (if you don't specify an IP address in the request)
+%% <ul> <li> The file system ID for which you are creating the mount target.
 %%
-%% </li> </ul> After creating the mount target, Amazon EFS returns a response
-%% that includes, a `MountTargetId' and an `IpAddress'. You use this IP
-%% address when mounting the file system in an EC2 instance. You can also use
-%% the mount target's DNS name when mounting the file system. The EC2
-%% instance on which you mount the file system by using the mount target can
-%% resolve the mount target's DNS name to its IP address. For more
-%% information, see How it Works: Implementation Overview.
+%% </li> <li> A subnet ID, which determines the following:
+%%
+%% <ul> <li> The VPC in which Amazon EFS creates the mount target
+%%
+%% </li> <li> The Availability Zone in which Amazon EFS creates the mount
+%% target
+%%
+%% </li> <li> The IP address range from which Amazon EFS selects the IP
+%% address of the mount target (if you don't specify an IP address in the
+%% request)
+%%
+%% </li> </ul> </li> </ul> After creating the mount target, Amazon EFS
+%% returns a response that includes, a `MountTargetId' and an `IpAddress'.
+%% You use this IP address when mounting the file system in an EC2 instance.
+%% You can also use the mount target's DNS name when mounting the file
+%% system. The EC2 instance on which you mount the file system by using the
+%% mount target can resolve the mount target's DNS name to its IP address.
+%% For more information, see How it Works: Implementation Overview.
 %%
 %% Note that you can create mount targets for a file system in only one VPC,
 %% and there can be only one mount target per Availability Zone. That is, if
@@ -315,13 +342,16 @@ create_mount_target(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates or overwrites tags associated with a file system.
+%% @doc DEPRECATED - CreateTags is deprecated and not maintained.
 %%
-%% Each tag is a key-value pair. If a tag key specified in the request
-%% already exists on the file system, this operation overwrites its value
-%% with the value provided in the request. If you add the `Name' tag to your
-%% file system, Amazon EFS returns it in the response to the
-%% `DescribeFileSystems' operation.
+%% Please use the API action to create tags for EFS resources.
+%%
+%% Creates or overwrites tags associated with a file system. Each tag is a
+%% key-value pair. If a tag key specified in the request already exists on
+%% the file system, this operation overwrites its value with the value
+%% provided in the request. If you add the `Name' tag to your file system,
+%% Amazon EFS returns it in the response to the `DescribeFileSystems'
+%% operation.
 %%
 %% This operation requires permission for the `elasticfilesystem:CreateTags'
 %% action.
@@ -497,12 +527,14 @@ delete_mount_target(Client, MountTargetId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specified tags from a file system.
+%% @doc DEPRECATED - DeleteTags is deprecated and not maintained.
 %%
-%% If the `DeleteTags' request includes a tag key that doesn't exist, Amazon
-%% EFS ignores it and doesn't cause an error. For more information about tags
-%% and related restrictions, see Tag Restrictions in the AWS Billing and Cost
-%% Management User Guide.
+%% Please use the API action to remove tags from EFS resources.
+%%
+%% Deletes the specified tags from a file system. If the `DeleteTags' request
+%% includes a tag key that doesn't exist, Amazon EFS ignores it and doesn't
+%% cause an error. For more information about tags and related restrictions,
+%% see Tag restrictions in the Billing and Cost Management User Guide.
 %%
 %% This operation requires permissions for the `elasticfilesystem:DeleteTags'
 %% action.
@@ -566,6 +598,33 @@ describe_access_points(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns the account preferences settings for the Amazon Web Services
+%% account associated with the user making the request, in the current Amazon
+%% Web Services Region.
+%%
+%% For more information, see Managing Amazon EFS resource IDs.
+describe_account_preferences(Client)
+  when is_map(Client) ->
+    describe_account_preferences(Client, #{}, #{}).
+
+describe_account_preferences(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_account_preferences(Client, QueryMap, HeadersMap, []).
+
+describe_account_preferences(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2015-02-01/account-preferences"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns the backup policy for the specified EFS file system.
 describe_backup_policy(Client, FileSystemId)
   when is_map(Client) ->
@@ -619,8 +678,8 @@ describe_file_system_policy(Client, FileSystemId, QueryMap, HeadersMap, Options0
 %% either the file system `CreationToken' or the `FileSystemId' is provided.
 %%
 %% Otherwise, it returns descriptions of all file systems owned by the
-%% caller's AWS account in the AWS Region of the endpoint that you're
-%% calling.
+%% caller's Amazon Web Services account in the Amazon Web Services Region of
+%% the endpoint that you're calling.
 %%
 %% When retrieving all file system descriptions, you can optionally specify
 %% the `MaxItems' parameter to limit the number of descriptions in a
@@ -677,6 +736,9 @@ describe_file_systems(Client, QueryMap, HeadersMap, Options0)
 %% identify which files to move to the EFS Infrequent Access (IA) storage
 %% class. For a file system without a `LifecycleConfiguration' object, the
 %% call returns an empty array in the response.
+%%
+%% When EFS Intelligent Tiering is enabled, `TransitionToPrimaryStorageClass'
+%% has a value of `AFTER_1_ACCESS'.
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:DescribeLifecycleConfiguration' operation.
@@ -778,11 +840,14 @@ describe_mount_targets(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the tags associated with a file system.
+%% @doc DEPRECATED - The DeleteTags action is deprecated and not maintained.
 %%
-%% The order of tags returned in the response of one `DescribeTags' call and
-%% the order of tags returned across the responses of a multiple-call
-%% iteration (when using pagination) is unspecified.
+%% Please use the API action to remove tags from EFS resources.
+%%
+%% Returns the tags associated with a file system. The order of tags returned
+%% in the response of one `DescribeTags' call and the order of tags returned
+%% across the responses of a multiple-call iteration (when using pagination)
+%% is unspecified.
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:DescribeTags' action.
@@ -888,6 +953,42 @@ modify_mount_target_security_groups(Client, MountTargetId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Use this operation to set the account preference in the current
+%% Amazon Web Services Region to use long 17 character (63 bit) or short 8
+%% character (32 bit) resource IDs for new EFS file system and mount target
+%% resources.
+%%
+%% All existing resource IDs are not affected by any changes you make. You
+%% can set the ID preference during the opt-in period as EFS transitions to
+%% long resource IDs. For more information, see Managing Amazon EFS resource
+%% IDs.
+%%
+%% Starting in October, 2021, you will receive an error if you try to set the
+%% account preference to use the short 8 character format resource ID.
+%% Contact Amazon Web Services support if you receive an error and need to
+%% use short IDs for file system and mount target resources.
+put_account_preferences(Client, Input) ->
+    put_account_preferences(Client, Input, []).
+put_account_preferences(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/2015-02-01/account-preferences"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates the file system's backup policy.
 %%
 %% Use this action to start or stop automatic backups of the file system.
@@ -919,9 +1020,12 @@ put_backup_policy(Client, FileSystemId, Input0, Options0) ->
 %% A file system policy is an IAM resource-based policy and can contain
 %% multiple policy statements. A file system always has exactly one file
 %% system policy, which can be the default policy or an explicit policy set
-%% or updated using this API operation. When an explicit policy is set, it
-%% overrides the default policy. For more information about the default file
-%% system policy, see Default EFS File System Policy.
+%% or updated using this API operation. EFS file system policies have a
+%% 20,000 character limit. When an explicit policy is set, it overrides the
+%% default policy. For more information about the default file system policy,
+%% see Default EFS File System Policy.
+%%
+%% EFS file system policies have a 20,000 character limit.
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:PutFileSystemPolicy' action.
@@ -952,8 +1056,9 @@ put_file_system_policy(Client, FileSystemId, Input0, Options0) ->
 %%
 %% A `LifecycleConfiguration' object defines when files in an Amazon EFS file
 %% system are automatically transitioned to the lower-cost EFS Infrequent
-%% Access (IA) storage class. A `LifecycleConfiguration' applies to all files
-%% in a file system.
+%% Access (IA) storage class. To enable EFS Intelligent Tiering, set the
+%% value of `TransitionToPrimaryStorageClass' to `AFTER_1_ACCESS'. For more
+%% information, see EFS Lifecycle Management.
 %%
 %% Each Amazon EFS file system supports one lifecycle configuration, which
 %% applies to all files in the file system. If a `LifecycleConfiguration'
@@ -961,7 +1066,7 @@ put_file_system_policy(Client, FileSystemId, Input0, Options0) ->
 %% `PutLifecycleConfiguration' call modifies the existing configuration. A
 %% `PutLifecycleConfiguration' call with an empty `LifecyclePolicies' array
 %% in the request body deletes any existing `LifecycleConfiguration' and
-%% disables lifecycle management.
+%% turns off lifecycle management for the file system.
 %%
 %% In the request, specify the following:
 %%
@@ -969,15 +1074,18 @@ put_file_system_policy(Client, FileSystemId, Input0, Options0) ->
 %% disabling, or modifying lifecycle management.
 %%
 %% </li> <li> A `LifecyclePolicies' array of `LifecyclePolicy' objects that
-%% define when files are moved to the IA storage class. The array can contain
-%% only one `LifecyclePolicy' item.
+%% define when files are moved to the IA storage class. Amazon EFS requires
+%% that each `LifecyclePolicy' object have only have a single transition, so
+%% the `LifecyclePolicies' array needs to be structured with separate
+%% `LifecyclePolicy' objects. See the example requests in the following
+%% section for more information.
 %%
 %% </li> </ul> This operation requires permissions for the
 %% `elasticfilesystem:PutLifecycleConfiguration' operation.
 %%
 %% To apply a `LifecycleConfiguration' object to an encrypted file system,
-%% you need the same AWS Key Management Service (AWS KMS) permissions as when
-%% you created the encrypted file system.
+%% you need the same Key Management Service permissions as when you created
+%% the encrypted file system.
 put_lifecycle_configuration(Client, FileSystemId, Input) ->
     put_lifecycle_configuration(Client, FileSystemId, Input, []).
 put_lifecycle_configuration(Client, FileSystemId, Input0, Options0) ->
@@ -1118,6 +1226,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

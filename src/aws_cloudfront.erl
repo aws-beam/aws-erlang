@@ -10,7 +10,9 @@
 %% about CloudFront features, see the Amazon CloudFront Developer Guide.
 -module(aws_cloudfront).
 
--export([create_cache_policy/2,
+-export([associate_alias/3,
+         associate_alias/4,
+         create_cache_policy/2,
          create_cache_policy/3,
          create_cloud_front_origin_access_identity/2,
          create_cloud_front_origin_access_identity/3,
@@ -22,6 +24,8 @@
          create_field_level_encryption_config/3,
          create_field_level_encryption_profile/2,
          create_field_level_encryption_profile/3,
+         create_function/2,
+         create_function/3,
          create_invalidation/3,
          create_invalidation/4,
          create_key_group/2,
@@ -34,6 +38,8 @@
          create_public_key/3,
          create_realtime_log_config/2,
          create_realtime_log_config/3,
+         create_response_headers_policy/2,
+         create_response_headers_policy/3,
          create_streaming_distribution/2,
          create_streaming_distribution/3,
          create_streaming_distribution_with_tags/2,
@@ -48,6 +54,8 @@
          delete_field_level_encryption_config/4,
          delete_field_level_encryption_profile/3,
          delete_field_level_encryption_profile/4,
+         delete_function/3,
+         delete_function/4,
          delete_key_group/3,
          delete_key_group/4,
          delete_monitoring_subscription/3,
@@ -58,8 +66,13 @@
          delete_public_key/4,
          delete_realtime_log_config/2,
          delete_realtime_log_config/3,
+         delete_response_headers_policy/3,
+         delete_response_headers_policy/4,
          delete_streaming_distribution/3,
          delete_streaming_distribution/4,
+         describe_function/2,
+         describe_function/4,
+         describe_function/5,
          get_cache_policy/2,
          get_cache_policy/4,
          get_cache_policy/5,
@@ -90,6 +103,9 @@
          get_field_level_encryption_profile_config/2,
          get_field_level_encryption_profile_config/4,
          get_field_level_encryption_profile_config/5,
+         get_function/2,
+         get_function/4,
+         get_function/5,
          get_invalidation/3,
          get_invalidation/5,
          get_invalidation/6,
@@ -116,6 +132,12 @@
          get_public_key_config/5,
          get_realtime_log_config/2,
          get_realtime_log_config/3,
+         get_response_headers_policy/2,
+         get_response_headers_policy/4,
+         get_response_headers_policy/5,
+         get_response_headers_policy_config/2,
+         get_response_headers_policy_config/4,
+         get_response_headers_policy_config/5,
          get_streaming_distribution/2,
          get_streaming_distribution/4,
          get_streaming_distribution/5,
@@ -128,6 +150,9 @@
          list_cloud_front_origin_access_identities/1,
          list_cloud_front_origin_access_identities/3,
          list_cloud_front_origin_access_identities/4,
+         list_conflicting_aliases/3,
+         list_conflicting_aliases/5,
+         list_conflicting_aliases/6,
          list_distributions/1,
          list_distributions/3,
          list_distributions/4,
@@ -142,6 +167,9 @@
          list_distributions_by_origin_request_policy_id/5,
          list_distributions_by_realtime_log_config/2,
          list_distributions_by_realtime_log_config/3,
+         list_distributions_by_response_headers_policy_id/2,
+         list_distributions_by_response_headers_policy_id/4,
+         list_distributions_by_response_headers_policy_id/5,
          list_distributions_by_web_acl_id/2,
          list_distributions_by_web_acl_id/4,
          list_distributions_by_web_acl_id/5,
@@ -151,6 +179,9 @@
          list_field_level_encryption_profiles/1,
          list_field_level_encryption_profiles/3,
          list_field_level_encryption_profiles/4,
+         list_functions/1,
+         list_functions/3,
+         list_functions/4,
          list_invalidations/2,
          list_invalidations/4,
          list_invalidations/5,
@@ -166,14 +197,21 @@
          list_realtime_log_configs/1,
          list_realtime_log_configs/3,
          list_realtime_log_configs/4,
+         list_response_headers_policies/1,
+         list_response_headers_policies/3,
+         list_response_headers_policies/4,
          list_streaming_distributions/1,
          list_streaming_distributions/3,
          list_streaming_distributions/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         publish_function/3,
+         publish_function/4,
          tag_resource/2,
          tag_resource/3,
+         test_function/3,
+         test_function/4,
          untag_resource/2,
          untag_resource/3,
          update_cache_policy/3,
@@ -186,6 +224,8 @@
          update_field_level_encryption_config/4,
          update_field_level_encryption_profile/3,
          update_field_level_encryption_profile/4,
+         update_function/3,
+         update_function/4,
          update_key_group/3,
          update_key_group/4,
          update_origin_request_policy/3,
@@ -194,6 +234,8 @@
          update_public_key/4,
          update_realtime_log_config/2,
          update_realtime_log_config/3,
+         update_response_headers_policy/3,
+         update_response_headers_policy/4,
          update_streaming_distribution/3,
          update_streaming_distribution/4]).
 
@@ -202,6 +244,44 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Associates an alias (also known as a CNAME or an alternate domain
+%% name) with a CloudFront distribution.
+%%
+%% With this operation you can move an alias that’s already in use on a
+%% CloudFront distribution to a different distribution in one step. This
+%% prevents the downtime that could occur if you first remove the alias from
+%% one distribution and then separately add the alias to another
+%% distribution.
+%%
+%% To use this operation to associate an alias with a distribution, you
+%% provide the alias and the ID of the target distribution for the alias. For
+%% more information, including how to set up the target distribution,
+%% prerequisites that you must complete, and other restrictions, see Moving
+%% an alternate domain name to a different distribution in the Amazon
+%% CloudFront Developer Guide.
+associate_alias(Client, TargetDistributionId, Input) ->
+    associate_alias(Client, TargetDistributionId, Input, []).
+associate_alias(Client, TargetDistributionId, Input0, Options0) ->
+    Method = put,
+    Path = ["/2020-05-31/distribution/", aws_util:encode_uri(TargetDistributionId), "/associate-alias"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"Alias">>, <<"Alias">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a cache policy.
 %%
@@ -450,6 +530,59 @@ create_field_level_encryption_profile(Client, Input) ->
 create_field_level_encryption_profile(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2020-05-31/field-level-encryption-profile"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>},
+            {<<"Location">>, <<"Location">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Creates a CloudFront function.
+%%
+%% To create a function, you provide the function code and some configuration
+%% information about the function. The response contains an Amazon Resource
+%% Name (ARN) that uniquely identifies the function.
+%%
+%% When you create a function, it’s in the `DEVELOPMENT' stage. In this
+%% stage, you can test the function with `TestFunction', and update it with
+%% `UpdateFunction'.
+%%
+%% When you’re ready to use your function with a CloudFront distribution, use
+%% `PublishFunction' to copy the function from the `DEVELOPMENT' stage to
+%% `LIVE'. When it’s live, you can attach the function to a distribution’s
+%% cache behavior, using the function’s ARN.
+create_function(Client, Input) ->
+    create_function(Client, Input, []).
+create_function(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/function"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -738,6 +871,56 @@ create_realtime_log_config(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a response headers policy.
+%%
+%% A response headers policy contains information about a set of HTTP
+%% response headers and their values. To create a response headers policy,
+%% you provide some metadata about the policy, and a set of configurations
+%% that specify the response headers.
+%%
+%% After you create a response headers policy, you can use its ID to attach
+%% it to one or more cache behaviors in a CloudFront distribution. When it’s
+%% attached to a cache behavior, CloudFront adds the headers in the policy to
+%% HTTP responses that it sends for requests that match the cache behavior.
+create_response_headers_policy(Client, Input) ->
+    create_response_headers_policy(Client, Input, []).
+create_response_headers_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/response-headers-policy"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>},
+            {<<"Location">>, <<"Location">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc This API is deprecated.
 %%
 %% Amazon CloudFront is deprecating real-time messaging protocol (RTMP)
@@ -959,6 +1142,39 @@ delete_field_level_encryption_profile(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a CloudFront function.
+%%
+%% You cannot delete a function if it’s associated with a cache behavior.
+%% First, update your distributions to remove the function association from
+%% all cache behaviors, then delete the function.
+%%
+%% To delete a function, you must provide the function’s name and version
+%% (`ETag' value). To get these values, you can use `ListFunctions' and
+%% `DescribeFunction'.
+delete_function(Client, Name, Input) ->
+    delete_function(Client, Name, Input, []).
+delete_function(Client, Name, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2020-05-31/function/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a key group.
 %%
 %% You cannot delete a key group that is referenced in a cache behavior.
@@ -1107,6 +1323,39 @@ delete_realtime_log_config(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a response headers policy.
+%%
+%% You cannot delete a response headers policy if it’s attached to a cache
+%% behavior. First update your distributions to remove the response headers
+%% policy from all cache behaviors, then delete the response headers policy.
+%%
+%% To delete a response headers policy, you must provide the policy’s
+%% identifier and version. To get these values, you can use
+%% `ListResponseHeadersPolicies' or `GetResponseHeadersPolicy'.
+delete_response_headers_policy(Client, Id, Input) ->
+    delete_response_headers_policy(Client, Id, Input, []).
+delete_response_headers_policy(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2020-05-31/response-headers-policy/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Delete a streaming distribution.
 %%
 %% To delete an RTMP distribution using the CloudFront API, perform the
@@ -1171,6 +1420,56 @@ delete_streaming_distribution(Client, Id, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets configuration information and metadata about a CloudFront
+%% function, but not the function’s code.
+%%
+%% To get a function’s code, use `GetFunction'.
+%%
+%% To get configuration information and metadata about a function, you must
+%% provide the function’s name and stage. To get these values, you can use
+%% `ListFunctions'.
+describe_function(Client, Name)
+  when is_map(Client) ->
+    describe_function(Client, Name, #{}, #{}).
+
+describe_function(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_function(Client, Name, QueryMap, HeadersMap, []).
+
+describe_function(Client, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/function/", aws_util:encode_uri(Name), "/describe"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Stage">>, maps:get(<<"Stage">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
 
 %% @doc Gets a cache policy, including the following metadata:
 %%
@@ -1578,6 +1877,56 @@ get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap, Opti
         Result
     end.
 
+%% @doc Gets the code of a CloudFront function.
+%%
+%% To get configuration information and metadata about a function, use
+%% `DescribeFunction'.
+%%
+%% To get a function’s code, you must provide the function’s name and stage.
+%% To get these values, you can use `ListFunctions'.
+get_function(Client, Name)
+  when is_map(Client) ->
+    get_function(Client, Name, #{}, #{}).
+
+get_function(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_function(Client, Name, QueryMap, HeadersMap, []).
+
+get_function(Client, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/function/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Stage">>, maps:get(<<"Stage">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"Content-Type">>, <<"ContentType">>},
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc Get the information about an invalidation.
 get_invalidation(Client, DistributionId, Id)
   when is_map(Client) ->
@@ -1918,6 +2267,99 @@ get_realtime_log_config(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Gets a response headers policy, including metadata (the policy’s
+%% identifier and the date and time when the policy was last modified).
+%%
+%% To get a response headers policy, you must provide the policy’s
+%% identifier. If the response headers policy is attached to a distribution’s
+%% cache behavior, you can get the policy’s identifier using
+%% `ListDistributions' or `GetDistribution'. If the response headers policy
+%% is not attached to a cache behavior, you can get the identifier using
+%% `ListResponseHeadersPolicies'.
+get_response_headers_policy(Client, Id)
+  when is_map(Client) ->
+    get_response_headers_policy(Client, Id, #{}, #{}).
+
+get_response_headers_policy(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_response_headers_policy(Client, Id, QueryMap, HeadersMap, []).
+
+get_response_headers_policy(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/response-headers-policy/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Gets a response headers policy configuration.
+%%
+%% To get a response headers policy configuration, you must provide the
+%% policy’s identifier. If the response headers policy is attached to a
+%% distribution’s cache behavior, you can get the policy’s identifier using
+%% `ListDistributions' or `GetDistribution'. If the response headers policy
+%% is not attached to a cache behavior, you can get the identifier using
+%% `ListResponseHeadersPolicies'.
+get_response_headers_policy_config(Client, Id)
+  when is_map(Client) ->
+    get_response_headers_policy_config(Client, Id, #{}, #{}).
+
+get_response_headers_policy_config(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_response_headers_policy_config(Client, Id, QueryMap, HeadersMap, []).
+
+get_response_headers_policy_config(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/response-headers-policy/", aws_util:encode_uri(Id), "/config"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc Gets information about a specified RTMP distribution, including the
 %% distribution configuration.
 get_streaming_distribution(Client, Id)
@@ -2000,7 +2442,8 @@ get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Gets a list of cache policies.
 %%
 %% You can optionally apply a filter to return only the managed policies
-%% created by AWS, or only the custom policies created in your AWS account.
+%% created by Amazon Web Services, or only the custom policies created in
+%% your Amazon Web Services account.
 %%
 %% You can optionally specify the maximum number of items to receive in the
 %% response. If the total number of items in the list exceeds the maximum
@@ -2057,6 +2500,65 @@ list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap, Options0
 
     Query0_ =
       [
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a list of aliases (also called CNAMEs or alternate domain names)
+%% that conflict or overlap with the provided alias, and the associated
+%% CloudFront distributions and Amazon Web Services accounts for each
+%% conflicting alias.
+%%
+%% In the returned list, the distribution and account IDs are partially
+%% hidden, which allows you to identify the distributions and accounts that
+%% you own, but helps to protect the information of ones that you don’t own.
+%%
+%% Use this operation to find aliases that are in use in CloudFront that
+%% conflict or overlap with the provided alias. For example, if you provide
+%% `www.example.com' as input, the returned list can include
+%% `www.example.com' and the overlapping wildcard alternate domain name
+%% (`*.example.com'), if they exist. If you provide `*.example.com' as input,
+%% the returned list can include `*.example.com' and any alternate domain
+%% names covered by that wildcard (for example, `www.example.com',
+%% `test.example.com', `dev.example.com', and so on), if they exist.
+%%
+%% To list conflicting aliases, you provide the alias to search and the ID of
+%% a distribution in your account that has an attached SSL/TLS certificate
+%% that includes the provided alias. For more information, including how to
+%% set up the distribution and certificate, see Moving an alternate domain
+%% name to a different distribution in the Amazon CloudFront Developer Guide.
+%%
+%% You can optionally specify the maximum number of items to receive in the
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send a subsequent request that specifies the
+%% `NextMarker' value from the current response as the `Marker' value in the
+%% subsequent request.
+list_conflicting_aliases(Client, Alias, DistributionId)
+  when is_map(Client) ->
+    list_conflicting_aliases(Client, Alias, DistributionId, #{}, #{}).
+
+list_conflicting_aliases(Client, Alias, DistributionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_conflicting_aliases(Client, Alias, DistributionId, QueryMap, HeadersMap, []).
+
+list_conflicting_aliases(Client, Alias, DistributionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/conflicting-alias"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Alias">>, Alias},
+        {<<"DistributionId">>, DistributionId},
         {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
         {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
       ],
@@ -2236,8 +2738,44 @@ list_distributions_by_realtime_log_config(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List the distributions that are associated with a specified AWS WAF
-%% web ACL.
+%% @doc Gets a list of distribution IDs for distributions that have a cache
+%% behavior that’s associated with the specified response headers policy.
+%%
+%% You can optionally specify the maximum number of items to receive in the
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send a subsequent request that specifies the
+%% `NextMarker' value from the current response as the `Marker' value in the
+%% subsequent request.
+list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId)
+  when is_map(Client) ->
+    list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId, #{}, #{}).
+
+list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId, QueryMap, HeadersMap, []).
+
+list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/distributionsByResponseHeadersPolicyId/", aws_util:encode_uri(ResponseHeadersPolicyId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List the distributions that are associated with a specified WAF web
+%% ACL.
 list_distributions_by_web_acl_id(Client, WebACLId)
   when is_map(Client) ->
     list_distributions_by_web_acl_id(Client, WebACLId, #{}, #{}).
@@ -2323,6 +2861,46 @@ list_field_level_encryption_profiles(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets a list of all CloudFront functions in your Amazon Web Services
+%% account.
+%%
+%% You can optionally apply a filter to return only the functions that are in
+%% the specified stage, either `DEVELOPMENT' or `LIVE'.
+%%
+%% You can optionally specify the maximum number of items to receive in the
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send a subsequent request that specifies the
+%% `NextMarker' value from the current response as the `Marker' value in the
+%% subsequent request.
+list_functions(Client)
+  when is_map(Client) ->
+    list_functions(Client, #{}, #{}).
+
+list_functions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_functions(Client, QueryMap, HeadersMap, []).
+
+list_functions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/function"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)},
+        {<<"Stage">>, maps:get(<<"Stage">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists invalidation batches.
 list_invalidations(Client, DistributionId)
   when is_map(Client) ->
@@ -2389,7 +2967,8 @@ list_key_groups(Client, QueryMap, HeadersMap, Options0)
 %% @doc Gets a list of origin request policies.
 %%
 %% You can optionally apply a filter to return only the managed policies
-%% created by AWS, or only the custom policies created in your AWS account.
+%% created by Amazon Web Services, or only the custom policies created in
+%% your Amazon Web Services account.
 %%
 %% You can optionally specify the maximum number of items to receive in the
 %% response. If the total number of items in the list exceeds the maximum
@@ -2489,6 +3068,46 @@ list_realtime_log_configs(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets a list of response headers policies.
+%%
+%% You can optionally apply a filter to get only the managed policies created
+%% by Amazon Web Services, or only the custom policies created in your Amazon
+%% Web Services account.
+%%
+%% You can optionally specify the maximum number of items to receive in the
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send a subsequent request that specifies the
+%% `NextMarker' value from the current response as the `Marker' value in the
+%% subsequent request.
+list_response_headers_policies(Client)
+  when is_map(Client) ->
+    list_response_headers_policies(Client, #{}, #{}).
+
+list_response_headers_policies(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_response_headers_policies(Client, QueryMap, HeadersMap, []).
+
+list_response_headers_policies(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/response-headers-policy"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)},
+        {<<"Type">>, maps:get(<<"Type">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc List streaming distributions.
 list_streaming_distributions(Client)
   when is_map(Client) ->
@@ -2544,6 +3163,43 @@ list_tags_for_resource(Client, Resource, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Publishes a CloudFront function by copying the function code from the
+%% `DEVELOPMENT' stage to `LIVE'.
+%%
+%% This automatically updates all cache behaviors that are using this
+%% function to use the newly published copy in the `LIVE' stage.
+%%
+%% When a function is published to the `LIVE' stage, you can attach the
+%% function to a distribution’s cache behavior, using the function’s Amazon
+%% Resource Name (ARN).
+%%
+%% To publish a function, you must provide the function’s name and version
+%% (`ETag' value). To get these values, you can use `ListFunctions' and
+%% `DescribeFunction'.
+publish_function(Client, Name, Input) ->
+    publish_function(Client, Name, Input, []).
+publish_function(Client, Name, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/function/", aws_util:encode_uri(Name), "/publish"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Add tags to a CloudFront resource.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
@@ -2566,6 +3222,43 @@ tag_resource(Client, Input0, Options0) ->
                      {<<"Resource">>, <<"Resource">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Tests a CloudFront function.
+%%
+%% To test a function, you provide an event object that represents an HTTP
+%% request or response that your CloudFront distribution could receive in
+%% production. CloudFront runs the function, passing it the event object that
+%% you provided, and returns the function’s result (the modified event
+%% object) in the response. The response also contains function logs and
+%% error messages, if any exist. For more information about testing
+%% functions, see Testing functions in the Amazon CloudFront Developer Guide.
+%%
+%% To test a function, you provide the function’s name and version (`ETag'
+%% value) along with the event object. To get the function’s name and
+%% version, you can use `ListFunctions' and `DescribeFunction'.
+test_function(Client, Name, Input) ->
+    test_function(Client, Name, Input, []).
+test_function(Client, Name, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/function/", aws_util:encode_uri(Name), "/test"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Remove tags from a CloudFront resource.
@@ -2878,6 +3571,54 @@ update_field_level_encryption_profile(Client, Id, Input0, Options0) ->
         Result
     end.
 
+%% @doc Updates a CloudFront function.
+%%
+%% You can update a function’s code or the comment that describes the
+%% function. You cannot update a function’s name.
+%%
+%% To update a function, you provide the function’s name and version (`ETag'
+%% value) along with the updated function code. To get the name and version,
+%% you can use `ListFunctions' and `DescribeFunction'.
+update_function(Client, Name, Input) ->
+    update_function(Client, Name, Input, []).
+update_function(Client, Name, Input0, Options0) ->
+    Method = put,
+    Path = ["/2020-05-31/function/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETtag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc Updates a key group.
 %%
 %% When you update a key group, all the fields are updated with the values
@@ -3075,6 +3816,63 @@ update_realtime_log_config(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates a response headers policy.
+%%
+%% When you update a response headers policy, the entire policy is replaced.
+%% You cannot update some policy fields independent of others. To update a
+%% response headers policy configuration:
+%%
+%% <ol> <li> Use `GetResponseHeadersPolicyConfig' to get the current policy’s
+%% configuration.
+%%
+%% </li> <li> Modify the fields in the response headers policy configuration
+%% that you want to update.
+%%
+%% </li> <li> Call `UpdateResponseHeadersPolicy', providing the entire
+%% response headers policy configuration, including the fields that you
+%% modified and those that you didn’t.
+%%
+%% </li> </ol>
+update_response_headers_policy(Client, Id, Input) ->
+    update_response_headers_policy(Client, Id, Input, []).
+update_response_headers_policy(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/2020-05-31/response-headers-policy/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc Update a streaming distribution.
 update_streaming_distribution(Client, Id, Input) ->
     update_streaming_distribution(Client, Id, Input, []).
@@ -3152,6 +3950,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

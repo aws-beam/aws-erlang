@@ -4,7 +4,9 @@
 %% @doc API for AWS Elemental MediaConnect
 -module(aws_mediaconnect).
 
--export([add_flow_outputs/3,
+-export([add_flow_media_streams/3,
+         add_flow_media_streams/4,
+         add_flow_outputs/3,
          add_flow_outputs/4,
          add_flow_sources/3,
          add_flow_sources/4,
@@ -42,6 +44,8 @@
          list_tags_for_resource/5,
          purchase_offering/3,
          purchase_offering/4,
+         remove_flow_media_stream/4,
+         remove_flow_media_stream/5,
          remove_flow_output/4,
          remove_flow_output/5,
          remove_flow_source/4,
@@ -62,6 +66,8 @@
          update_flow/4,
          update_flow_entitlement/4,
          update_flow_entitlement/5,
+         update_flow_media_stream/4,
+         update_flow_media_stream/5,
          update_flow_output/4,
          update_flow_output/5,
          update_flow_source/4,
@@ -72,6 +78,32 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Adds media streams to an existing flow.
+%%
+%% After you add a media stream to a flow, you can associate it with a source
+%% and/or an output that uses the ST 2110 JPEG XS or CDI protocol.
+add_flow_media_streams(Client, FlowArn, Input) ->
+    add_flow_media_streams(Client, FlowArn, Input, []).
+add_flow_media_streams(Client, FlowArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/mediaStreams"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds outputs to an existing flow.
 %%
@@ -472,6 +504,32 @@ purchase_offering(Client, OfferingArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Removes a media stream from a flow.
+%%
+%% This action is only available if the media stream is not associated with a
+%% source or output.
+remove_flow_media_stream(Client, FlowArn, MediaStreamName, Input) ->
+    remove_flow_media_stream(Client, FlowArn, MediaStreamName, Input, []).
+remove_flow_media_stream(Client, FlowArn, MediaStreamName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/mediaStreams/", aws_util:encode_uri(MediaStreamName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Removes an output from an existing flow.
 %%
 %% This request can be made only on an output that does not have an
@@ -728,6 +786,29 @@ update_flow_entitlement(Client, EntitlementArn, FlowArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates an existing media stream.
+update_flow_media_stream(Client, FlowArn, MediaStreamName, Input) ->
+    update_flow_media_stream(Client, FlowArn, MediaStreamName, Input, []).
+update_flow_media_stream(Client, FlowArn, MediaStreamName, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/mediaStreams/", aws_util:encode_uri(MediaStreamName), ""],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates an existing flow output.
 update_flow_output(Client, FlowArn, OutputArn, Input) ->
     update_flow_output(Client, FlowArn, OutputArn, Input, []).
@@ -809,6 +890,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

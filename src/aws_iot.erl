@@ -1,11 +1,11 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS IoT
+%% @doc IoT
 %%
-%% AWS IoT provides secure, bi-directional communication between
+%% IoT provides secure, bi-directional communication between
 %% Internet-connected devices (such as sensors, actuators, embedded devices,
-%% or smart appliances) and the AWS cloud.
+%% or smart appliances) and the Amazon Web Services cloud.
 %%
 %% You can discover your custom IoT-Data endpoint to communicate with,
 %% configure rules for data processing and integration with other services,
@@ -13,17 +13,17 @@
 %% logging, and create and manage policies and credentials to authenticate
 %% devices.
 %%
-%% The service endpoints that expose this API are listed in AWS IoT Core
-%% Endpoints and Quotas. You must use the endpoint for the region that has
-%% the resources you want to access.
+%% The service endpoints that expose this API are listed in Amazon Web
+%% Services IoT Core Endpoints and Quotas. You must use the endpoint for the
+%% region that has the resources you want to access.
 %%
-%% The service name used by AWS Signature Version 4 to sign the request is:
-%% execute-api.
+%% The service name used by Amazon Web Services Signature Version 4 to sign
+%% the request is: execute-api.
 %%
-%% For more information about how AWS IoT works, see the Developer Guide.
+%% For more information about how IoT works, see the Developer Guide.
 %%
-%% For information about how to use the credentials provider for AWS IoT, see
-%% Authorizing Direct Calls to AWS Services.
+%% For information about how to use the credentials provider for IoT, see
+%% Authorizing Direct Calls to Amazon Web Services Services.
 -module(aws_iot).
 
 -export([accept_certificate_transfer/3,
@@ -75,8 +75,12 @@
          create_domain_configuration/4,
          create_dynamic_thing_group/3,
          create_dynamic_thing_group/4,
+         create_fleet_metric/3,
+         create_fleet_metric/4,
          create_job/3,
          create_job/4,
+         create_job_template/3,
+         create_job_template/4,
          create_keys_and_certificate/2,
          create_keys_and_certificate/3,
          create_mitigation_action/3,
@@ -131,10 +135,14 @@
          delete_domain_configuration/4,
          delete_dynamic_thing_group/3,
          delete_dynamic_thing_group/4,
+         delete_fleet_metric/3,
+         delete_fleet_metric/4,
          delete_job/3,
          delete_job/4,
          delete_job_execution/5,
          delete_job_execution/6,
+         delete_job_template/3,
+         delete_job_template/4,
          delete_mitigation_action/3,
          delete_mitigation_action/4,
          delete_ota_update/3,
@@ -218,6 +226,9 @@
          describe_event_configurations/1,
          describe_event_configurations/3,
          describe_event_configurations/4,
+         describe_fleet_metric/2,
+         describe_fleet_metric/4,
+         describe_fleet_metric/5,
          describe_index/2,
          describe_index/4,
          describe_index/5,
@@ -227,6 +238,9 @@
          describe_job_execution/3,
          describe_job_execution/5,
          describe_job_execution/6,
+         describe_job_template/2,
+         describe_job_template/4,
+         describe_job_template/5,
          describe_mitigation_action/2,
          describe_mitigation_action/4,
          describe_mitigation_action/5,
@@ -275,6 +289,8 @@
          get_behavior_model_training_summaries/1,
          get_behavior_model_training_summaries/3,
          get_behavior_model_training_summaries/4,
+         get_buckets_aggregation/2,
+         get_buckets_aggregation/3,
          get_cardinality/2,
          get_cardinality/3,
          get_effective_policies/2,
@@ -361,6 +377,9 @@
          list_domain_configurations/1,
          list_domain_configurations/3,
          list_domain_configurations/4,
+         list_fleet_metrics/1,
+         list_fleet_metrics/3,
+         list_fleet_metrics/4,
          list_indices/1,
          list_indices/3,
          list_indices/4,
@@ -370,6 +389,9 @@
          list_job_executions_for_thing/2,
          list_job_executions_for_thing/4,
          list_job_executions_for_thing/5,
+         list_job_templates/1,
+         list_job_templates/3,
+         list_job_templates/4,
          list_jobs/1,
          list_jobs/3,
          list_jobs/4,
@@ -465,6 +487,8 @@
          list_violation_events/3,
          list_violation_events/5,
          list_violation_events/6,
+         put_verification_state_on_violation/3,
+         put_verification_state_on_violation/4,
          register_ca_certificate/2,
          register_ca_certificate/3,
          register_certificate/2,
@@ -535,6 +559,8 @@
          update_dynamic_thing_group/4,
          update_event_configurations/2,
          update_event_configurations/3,
+         update_fleet_metric/3,
+         update_fleet_metric/4,
          update_indexing_configuration/2,
          update_indexing_configuration/3,
          update_job/3,
@@ -574,6 +600,8 @@
 %%
 %% To check for pending certificate transfers, call `ListCertificates' to
 %% enumerate your certificates.
+%%
+%% Requires permission to access the AcceptCertificateTransfer action.
 accept_certificate_transfer(Client, CertificateId, Input) ->
     accept_certificate_transfer(Client, CertificateId, Input, []).
 accept_certificate_transfer(Client, CertificateId, Input0, Options0) ->
@@ -598,6 +626,8 @@ accept_certificate_transfer(Client, CertificateId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a thing to a billing group.
+%%
+%% Requires permission to access the AddThingToBillingGroup action.
 add_thing_to_billing_group(Client, Input) ->
     add_thing_to_billing_group(Client, Input, []).
 add_thing_to_billing_group(Client, Input0, Options0) ->
@@ -621,6 +651,8 @@ add_thing_to_billing_group(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a thing to a thing group.
+%%
+%% Requires permission to access the AddThingToThingGroup action.
 add_thing_to_thing_group(Client, Input) ->
     add_thing_to_thing_group(Client, Input, []).
 add_thing_to_thing_group(Client, Input0, Options0) ->
@@ -655,7 +687,8 @@ add_thing_to_thing_group(Client, Input0, Options0) ->
 %% </li> <li> The total number of targets associated with a job must not
 %% exceed 100.
 %%
-%% </li> </ul>
+%% </li> </ul> Requires permission to access the AssociateTargetsWithJob
+%% action.
 associate_targets_with_job(Client, JobId, Input) ->
     associate_targets_with_job(Client, JobId, Input, []).
 associate_targets_with_job(Client, JobId, Input0, Options0) ->
@@ -679,7 +712,10 @@ associate_targets_with_job(Client, JobId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Attaches a policy to the specified target.
+%% @doc Attaches the specified policy to the specified principal (certificate
+%% or other credential).
+%%
+%% Requires permission to access the AttachPolicy action.
 attach_policy(Client, PolicyName, Input) ->
     attach_policy(Client, PolicyName, Input, []).
 attach_policy(Client, PolicyName, Input0, Options0) ->
@@ -705,7 +741,9 @@ attach_policy(Client, PolicyName, Input0, Options0) ->
 %% @doc Attaches the specified policy to the specified principal (certificate
 %% or other credential).
 %%
-%% Note: This API is deprecated. Please use `AttachPolicy' instead.
+%% Note: This action is deprecated. Please use `AttachPolicy' instead.
+%%
+%% Requires permission to access the AttachPrincipalPolicy action.
 attach_principal_policy(Client, PolicyName, Input) ->
     attach_principal_policy(Client, PolicyName, Input, []).
 attach_principal_policy(Client, PolicyName, Input0, Options0) ->
@@ -735,6 +773,8 @@ attach_principal_policy(Client, PolicyName, Input0, Options0) ->
 %%
 %% Each thing group or account can have up to five security profiles
 %% associated with it.
+%%
+%% Requires permission to access the AttachSecurityProfile action.
 attach_security_profile(Client, SecurityProfileName, Input) ->
     attach_security_profile(Client, SecurityProfileName, Input, []).
 attach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
@@ -762,6 +802,8 @@ attach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 %%
 %% A principal can be X.509 certificates, IAM users, groups, and roles,
 %% Amazon Cognito identities or federated identities.
+%%
+%% Requires permission to access the AttachThingPrincipal action.
 attach_thing_principal(Client, ThingName, Input) ->
     attach_thing_principal(Client, ThingName, Input, []).
 attach_thing_principal(Client, ThingName, Input0, Options0) ->
@@ -789,6 +831,8 @@ attach_thing_principal(Client, ThingName, Input0, Options0) ->
 %% @doc Cancels a mitigation action task that is in progress.
 %%
 %% If the task is not in progress, an InvalidRequestException occurs.
+%%
+%% Requires permission to access the CancelAuditMitigationActionsTask action.
 cancel_audit_mitigation_actions_task(Client, TaskId, Input) ->
     cancel_audit_mitigation_actions_task(Client, TaskId, Input, []).
 cancel_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
@@ -815,6 +859,8 @@ cancel_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
 %%
 %% The audit can be either scheduled or on demand. If the audit isn't in
 %% progress, an "InvalidRequestException" occurs.
+%%
+%% Requires permission to access the CancelAuditTask action.
 cancel_audit_task(Client, TaskId, Input) ->
     cancel_audit_task(Client, TaskId, Input, []).
 cancel_audit_task(Client, TaskId, Input0, Options0) ->
@@ -841,12 +887,14 @@ cancel_audit_task(Client, TaskId, Input0, Options0) ->
 %%
 %% Note Only the transfer source account can use this operation to cancel a
 %% transfer. (Transfer destinations can use `RejectCertificateTransfer'
-%% instead.) After transfer, AWS IoT returns the certificate to the source
+%% instead.) After transfer, IoT returns the certificate to the source
 %% account in the INACTIVE state. After the destination account has accepted
 %% the transfer, the transfer cannot be cancelled.
 %%
 %% After a certificate transfer is cancelled, the status of the certificate
 %% changes from PENDING_TRANSFER to INACTIVE.
+%%
+%% Requires permission to access the CancelCertificateTransfer action.
 cancel_certificate_transfer(Client, CertificateId, Input) ->
     cancel_certificate_transfer(Client, CertificateId, Input, []).
 cancel_certificate_transfer(Client, CertificateId, Input0, Options0) ->
@@ -870,6 +918,9 @@ cancel_certificate_transfer(Client, CertificateId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels a Device Defender ML Detect mitigation action.
+%%
+%% Requires permission to access the CancelDetectMitigationActionsTask
+%% action.
 cancel_detect_mitigation_actions_task(Client, TaskId, Input) ->
     cancel_detect_mitigation_actions_task(Client, TaskId, Input, []).
 cancel_detect_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
@@ -893,6 +944,8 @@ cancel_detect_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels a job.
+%%
+%% Requires permission to access the CancelJob action.
 cancel_job(Client, JobId, Input) ->
     cancel_job(Client, JobId, Input, []).
 cancel_job(Client, JobId, Input0, Options0) ->
@@ -917,6 +970,8 @@ cancel_job(Client, JobId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the execution of a job for a given thing.
+%%
+%% Requires permission to access the CancelJobExecution action.
 cancel_job_execution(Client, JobId, ThingName, Input) ->
     cancel_job_execution(Client, JobId, ThingName, Input, []).
 cancel_job_execution(Client, JobId, ThingName, Input0, Options0) ->
@@ -941,6 +996,8 @@ cancel_job_execution(Client, JobId, ThingName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Clears the default authorizer.
+%%
+%% Requires permission to access the ClearDefaultAuthorizer action.
 clear_default_authorizer(Client, Input) ->
     clear_default_authorizer(Client, Input, []).
 clear_default_authorizer(Client, Input0, Options0) ->
@@ -965,11 +1022,12 @@ clear_default_authorizer(Client, Input0, Options0) ->
 
 %% @doc Confirms a topic rule destination.
 %%
-%% When you create a rule requiring a destination, AWS IoT sends a
-%% confirmation message to the endpoint or base address you specify. The
-%% message includes a token which you pass back when calling
-%% `ConfirmTopicRuleDestination' to confirm that you own or have access to
-%% the endpoint.
+%% When you create a rule requiring a destination, IoT sends a confirmation
+%% message to the endpoint or base address you specify. The message includes
+%% a token which you pass back when calling `ConfirmTopicRuleDestination' to
+%% confirm that you own or have access to the endpoint.
+%%
+%% Requires permission to access the ConfirmTopicRuleDestination action.
 confirm_topic_rule_destination(Client, ConfirmationToken)
   when is_map(Client) ->
     confirm_topic_rule_destination(Client, ConfirmationToken, #{}, #{}).
@@ -993,6 +1051,8 @@ confirm_topic_rule_destination(Client, ConfirmationToken, QueryMap, HeadersMap, 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Creates a Device Defender audit suppression.
+%%
+%% Requires permission to access the CreateAuditSuppression action.
 create_audit_suppression(Client, Input) ->
     create_audit_suppression(Client, Input, []).
 create_audit_suppression(Client, Input0, Options0) ->
@@ -1016,6 +1076,8 @@ create_audit_suppression(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an authorizer.
+%%
+%% Requires permission to access the CreateAuthorizer action.
 create_authorizer(Client, AuthorizerName, Input) ->
     create_authorizer(Client, AuthorizerName, Input, []).
 create_authorizer(Client, AuthorizerName, Input0, Options0) ->
@@ -1039,6 +1101,8 @@ create_authorizer(Client, AuthorizerName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a billing group.
+%%
+%% Requires permission to access the CreateBillingGroup action.
 create_billing_group(Client, BillingGroupName, Input) ->
     create_billing_group(Client, BillingGroupName, Input, []).
 create_billing_group(Client, BillingGroupName, Input0, Options0) ->
@@ -1071,6 +1135,8 @@ create_billing_group(Client, BillingGroupName, Input0, Options0) ->
 %% Note: Reusing the same certificate signing request (CSR) results in a
 %% distinct certificate.
 %%
+%% Requires permission to access the CreateCertificateFromCsr action.
+%%
 %% You can create multiple certificates in a batch by creating a directory,
 %% copying multiple .csr files into that directory, and then specifying that
 %% directory on the command line. The following commands show how to create a
@@ -1085,8 +1151,8 @@ create_billing_group(Client, BillingGroupName, Input0, Options0) ->
 %% --certificate-signing-request file://my-csr-directory/{}
 %%
 %% This command lists all of the CSRs in my-csr-directory and pipes each CSR
-%% file name to the aws iot create-certificate-from-csr AWS CLI command to
-%% create a certificate for the corresponding CSR.
+%% file name to the aws iot create-certificate-from-csr Amazon Web Services
+%% CLI command to create a certificate for the corresponding CSR.
 %%
 %% The aws iot create-certificate-from-csr part of the command can also be
 %% run in parallel to speed up the certificate creation process:
@@ -1131,6 +1197,8 @@ create_certificate_from_csr(Client, Input0, Options0) ->
 
 %% @doc Use this API to define a Custom Metric published by your devices to
 %% Device Defender.
+%%
+%% Requires permission to access the CreateCustomMetric action.
 create_custom_metric(Client, MetricName, Input) ->
     create_custom_metric(Client, MetricName, Input, []).
 create_custom_metric(Client, MetricName, Input0, Options0) ->
@@ -1154,11 +1222,13 @@ create_custom_metric(Client, MetricName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a dimension that you can use to limit the scope of a metric
-%% used in a security profile for AWS IoT Device Defender.
+%% used in a security profile for IoT Device Defender.
 %%
 %% For example, using a `TOPIC_FILTER' dimension, you can narrow down the
 %% scope of the metric only to MQTT topics whose name match the pattern
 %% specified in the dimension.
+%%
+%% Requires permission to access the CreateDimension action.
 create_dimension(Client, Name, Input) ->
     create_dimension(Client, Name, Input, []).
 create_dimension(Client, Name, Input0, Options0) ->
@@ -1183,8 +1253,7 @@ create_dimension(Client, Name, Input0, Options0) ->
 
 %% @doc Creates a domain configuration.
 %%
-%% The domain configuration feature is in public preview and is subject to
-%% change.
+%% Requires permission to access the CreateDomainConfiguration action.
 create_domain_configuration(Client, DomainConfigurationName, Input) ->
     create_domain_configuration(Client, DomainConfigurationName, Input, []).
 create_domain_configuration(Client, DomainConfigurationName, Input0, Options0) ->
@@ -1208,6 +1277,8 @@ create_domain_configuration(Client, DomainConfigurationName, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a dynamic thing group.
+%%
+%% Requires permission to access the CreateDynamicThingGroup action.
 create_dynamic_thing_group(Client, ThingGroupName, Input) ->
     create_dynamic_thing_group(Client, ThingGroupName, Input, []).
 create_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
@@ -1230,12 +1301,64 @@ create_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a fleet metric.
+%%
+%% Requires permission to access the CreateFleetMetric action.
+create_fleet_metric(Client, MetricName, Input) ->
+    create_fleet_metric(Client, MetricName, Input, []).
+create_fleet_metric(Client, MetricName, Input0, Options0) ->
+    Method = put,
+    Path = ["/fleet-metric/", aws_util:encode_uri(MetricName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a job.
+%%
+%% Requires permission to access the CreateJob action.
 create_job(Client, JobId, Input) ->
     create_job(Client, JobId, Input, []).
 create_job(Client, JobId, Input0, Options0) ->
     Method = put,
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a job template.
+%%
+%% Requires permission to access the CreateJobTemplate action.
+create_job_template(Client, JobTemplateId, Input) ->
+    create_job_template(Client, JobTemplateId, Input, []).
+create_job_template(Client, JobTemplateId, Input0, Options0) ->
+    Method = put,
+    Path = ["/job-templates/", aws_util:encode_uri(JobTemplateId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1259,8 +1382,10 @@ create_job(Client, JobId, Input0, Options0) ->
 %% You can also call `CreateKeysAndCertificate' over MQTT from a device, for
 %% more information, see Provisioning MQTT API.
 %%
-%% Note This is the only time AWS IoT issues the private key for this
+%% Note This is the only time IoT issues the private key for this
 %% certificate, so it is important to keep it in a secure location.
+%%
+%% Requires permission to access the CreateKeysAndCertificate action.
 create_keys_and_certificate(Client, Input) ->
     create_keys_and_certificate(Client, Input, []).
 create_keys_and_certificate(Client, Input0, Options0) ->
@@ -1290,6 +1415,8 @@ create_keys_and_certificate(Client, Input0, Options0) ->
 %% Only certain types of mitigation actions can be applied to specific check
 %% names. For more information, see Mitigation actions. Each mitigation
 %% action can apply only one type of change.
+%%
+%% Requires permission to access the CreateMitigationAction action.
 create_mitigation_action(Client, ActionName, Input) ->
     create_mitigation_action(Client, ActionName, Input, []).
 create_mitigation_action(Client, ActionName, Input0, Options0) ->
@@ -1312,7 +1439,9 @@ create_mitigation_action(Client, ActionName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an AWS IoT OTAUpdate on a target group of things or groups.
+%% @doc Creates an IoT OTA update on a target group of things or groups.
+%%
+%% Requires permission to access the CreateOTAUpdate action.
 create_ota_update(Client, OtaUpdateId, Input) ->
     create_ota_update(Client, OtaUpdateId, Input, []).
 create_ota_update(Client, OtaUpdateId, Input0, Options0) ->
@@ -1335,11 +1464,13 @@ create_ota_update(Client, OtaUpdateId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an AWS IoT policy.
+%% @doc Creates an IoT policy.
 %%
 %% The created policy is the default version for the policy. This operation
 %% creates a policy version with a version identifier of 1 and sets 1 as the
 %% policy's default version.
+%%
+%% Requires permission to access the CreatePolicy action.
 create_policy(Client, PolicyName, Input) ->
     create_policy(Client, PolicyName, Input, []).
 create_policy(Client, PolicyName, Input0, Options0) ->
@@ -1362,7 +1493,7 @@ create_policy(Client, PolicyName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new version of the specified AWS IoT policy.
+%% @doc Creates a new version of the specified IoT policy.
 %%
 %% To update a policy, create a new policy version. A managed policy can have
 %% up to five versions. If the policy has five versions, you must use
@@ -1372,6 +1503,8 @@ create_policy(Client, PolicyName, Input0, Options0) ->
 %% Optionally, you can set the new version as the policy's default version.
 %% The default version is the operative version (that is, the version that is
 %% in effect for the certificates to which the policy is attached).
+%%
+%% Requires permission to access the CreatePolicyVersion action.
 create_policy_version(Client, PolicyName, Input) ->
     create_policy_version(Client, PolicyName, Input, []).
 create_policy_version(Client, PolicyName, Input0, Options0) ->
@@ -1396,6 +1529,8 @@ create_policy_version(Client, PolicyName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a provisioning claim.
+%%
+%% Requires permission to access the CreateProvisioningClaim action.
 create_provisioning_claim(Client, TemplateName, Input) ->
     create_provisioning_claim(Client, TemplateName, Input, []).
 create_provisioning_claim(Client, TemplateName, Input0, Options0) ->
@@ -1419,6 +1554,8 @@ create_provisioning_claim(Client, TemplateName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a fleet provisioning template.
+%%
+%% Requires permission to access the CreateProvisioningTemplate action.
 create_provisioning_template(Client, Input) ->
     create_provisioning_template(Client, Input, []).
 create_provisioning_template(Client, Input0, Options0) ->
@@ -1442,6 +1579,9 @@ create_provisioning_template(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new version of a fleet provisioning template.
+%%
+%% Requires permission to access the CreateProvisioningTemplateVersion
+%% action.
 create_provisioning_template_version(Client, TemplateName, Input) ->
     create_provisioning_template_version(Client, TemplateName, Input, []).
 create_provisioning_template_version(Client, TemplateName, Input0, Options0) ->
@@ -1466,6 +1606,8 @@ create_provisioning_template_version(Client, TemplateName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a role alias.
+%%
+%% Requires permission to access the CreateRoleAlias action.
 create_role_alias(Client, RoleAlias, Input) ->
     create_role_alias(Client, RoleAlias, Input, []).
 create_role_alias(Client, RoleAlias, Input0, Options0) ->
@@ -1489,6 +1631,8 @@ create_role_alias(Client, RoleAlias, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a scheduled audit that is run at a specified time interval.
+%%
+%% Requires permission to access the CreateScheduledAudit action.
 create_scheduled_audit(Client, ScheduledAuditName, Input) ->
     create_scheduled_audit(Client, ScheduledAuditName, Input, []).
 create_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
@@ -1512,6 +1656,8 @@ create_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a Device Defender security profile.
+%%
+%% Requires permission to access the CreateSecurityProfile action.
 create_security_profile(Client, SecurityProfileName, Input) ->
     create_security_profile(Client, SecurityProfileName, Input, []).
 create_security_profile(Client, SecurityProfileName, Input0, Options0) ->
@@ -1540,6 +1686,8 @@ create_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 %% A stream transports data bytes in chunks or blocks packaged as MQTT
 %% messages from a source like S3. You can have one or more files associated
 %% with a stream.
+%%
+%% Requires permission to access the CreateStream action.
 create_stream(Client, StreamId, Input) ->
     create_stream(Client, StreamId, Input, []).
 create_stream(Client, StreamId, Input0, Options0) ->
@@ -1571,6 +1719,8 @@ create_stream(Client, StreamId, Input0, Options0) ->
 %%
 %% This is a control plane operation. See Authorization for information about
 %% authorizing control plane actions.
+%%
+%% Requires permission to access the CreateThing action.
 create_thing(Client, ThingName, Input) ->
     create_thing(Client, ThingName, Input, []).
 create_thing(Client, ThingName, Input0, Options0) ->
@@ -1597,6 +1747,8 @@ create_thing(Client, ThingName, Input0, Options0) ->
 %%
 %% This is a control plane operation. See Authorization for information about
 %% authorizing control plane actions.
+%%
+%% Requires permission to access the CreateThingGroup action.
 create_thing_group(Client, ThingGroupName, Input) ->
     create_thing_group(Client, ThingGroupName, Input, []).
 create_thing_group(Client, ThingGroupName, Input0, Options0) ->
@@ -1620,6 +1772,8 @@ create_thing_group(Client, ThingGroupName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new thing type.
+%%
+%% Requires permission to access the CreateThingType action.
 create_thing_type(Client, ThingTypeName, Input) ->
     create_thing_type(Client, ThingTypeName, Input, []).
 create_thing_type(Client, ThingTypeName, Input0, Options0) ->
@@ -1647,6 +1801,8 @@ create_thing_type(Client, ThingTypeName, Input0, Options0) ->
 %% Creating rules is an administrator-level action. Any user who has
 %% permission to create rules will be able to access data processed by the
 %% rule.
+%%
+%% Requires permission to access the CreateTopicRule action.
 create_topic_rule(Client, RuleName, Input) ->
     create_topic_rule(Client, RuleName, Input, []).
 create_topic_rule(Client, RuleName, Input0, Options0) ->
@@ -1674,6 +1830,8 @@ create_topic_rule(Client, RuleName, Input0, Options0) ->
 %% @doc Creates a topic rule destination.
 %%
 %% The destination must be confirmed prior to use.
+%%
+%% Requires permission to access the CreateTopicRuleDestination action.
 create_topic_rule_destination(Client, Input) ->
     create_topic_rule_destination(Client, Input, []).
 create_topic_rule_destination(Client, Input0, Options0) ->
@@ -1701,6 +1859,8 @@ create_topic_rule_destination(Client, Input0, Options0) ->
 %%
 %% Any configuration data you entered is deleted and all audit checks are
 %% reset to disabled.
+%%
+%% Requires permission to access the DeleteAccountAuditConfiguration action.
 delete_account_audit_configuration(Client, Input) ->
     delete_account_audit_configuration(Client, Input, []).
 delete_account_audit_configuration(Client, Input0, Options0) ->
@@ -1725,6 +1885,8 @@ delete_account_audit_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Device Defender audit suppression.
+%%
+%% Requires permission to access the DeleteAuditSuppression action.
 delete_audit_suppression(Client, Input) ->
     delete_audit_suppression(Client, Input, []).
 delete_audit_suppression(Client, Input0, Options0) ->
@@ -1748,6 +1910,8 @@ delete_audit_suppression(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an authorizer.
+%%
+%% Requires permission to access the DeleteAuthorizer action.
 delete_authorizer(Client, AuthorizerName, Input) ->
     delete_authorizer(Client, AuthorizerName, Input, []).
 delete_authorizer(Client, AuthorizerName, Input0, Options0) ->
@@ -1771,6 +1935,8 @@ delete_authorizer(Client, AuthorizerName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the billing group.
+%%
+%% Requires permission to access the DeleteBillingGroup action.
 delete_billing_group(Client, BillingGroupName, Input) ->
     delete_billing_group(Client, BillingGroupName, Input, []).
 delete_billing_group(Client, BillingGroupName, Input0, Options0) ->
@@ -1795,6 +1961,8 @@ delete_billing_group(Client, BillingGroupName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a registered CA certificate.
+%%
+%% Requires permission to access the DeleteCACertificate action.
 delete_ca_certificate(Client, CertificateId, Input) ->
     delete_ca_certificate(Client, CertificateId, Input, []).
 delete_ca_certificate(Client, CertificateId, Input0, Options0) ->
@@ -1821,8 +1989,10 @@ delete_ca_certificate(Client, CertificateId, Input0, Options0) ->
 %%
 %% A certificate cannot be deleted if it has a policy or IoT thing attached
 %% to it or if its status is set to ACTIVE. To delete a certificate, first
-%% use the `DetachPrincipalPolicy' API to detach all policies. Next, use the
-%% `UpdateCertificate' API to set the certificate to the INACTIVE status.
+%% use the `DetachPolicy' action to detach all policies. Next, use the
+%% `UpdateCertificate' action to set the certificate to the INACTIVE status.
+%%
+%% Requires permission to access the DeleteCertificate action.
 delete_certificate(Client, CertificateId, Input) ->
     delete_certificate(Client, CertificateId, Input, []).
 delete_certificate(Client, CertificateId, Input0, Options0) ->
@@ -1846,14 +2016,14 @@ delete_certificate(Client, CertificateId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Before you can delete a custom metric, you must first remove the
-%% custom metric from all security profiles it's a part of.
+%% @doc Deletes a Device Defender detect custom metric.
 %%
-%% The security profile associated with the custom metric can be found using
-%% the ListSecurityProfiles API with `metricName' set to your custom metric
-%% name.
+%% Requires permission to access the DeleteCustomMetric action.
 %%
-%% Deletes a Device Defender detect custom metric.
+%% Before you can delete a custom metric, you must first remove the custom
+%% metric from all security profiles it's a part of. The security profile
+%% associated with the custom metric can be found using the
+%% ListSecurityProfiles API with `metricName' set to your custom metric name.
 delete_custom_metric(Client, MetricName, Input) ->
     delete_custom_metric(Client, MetricName, Input, []).
 delete_custom_metric(Client, MetricName, Input0, Options0) ->
@@ -1876,7 +2046,10 @@ delete_custom_metric(Client, MetricName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes the specified dimension from your AWS account.
+%% @doc Removes the specified dimension from your Amazon Web Services
+%% accounts.
+%%
+%% Requires permission to access the DeleteDimension action.
 delete_dimension(Client, Name, Input) ->
     delete_dimension(Client, Name, Input, []).
 delete_dimension(Client, Name, Input0, Options0) ->
@@ -1901,8 +2074,7 @@ delete_dimension(Client, Name, Input0, Options0) ->
 
 %% @doc Deletes the specified domain configuration.
 %%
-%% The domain configuration feature is in public preview and is subject to
-%% change.
+%% Requires permission to access the DeleteDomainConfiguration action.
 delete_domain_configuration(Client, DomainConfigurationName, Input) ->
     delete_domain_configuration(Client, DomainConfigurationName, Input, []).
 delete_domain_configuration(Client, DomainConfigurationName, Input0, Options0) ->
@@ -1926,11 +2098,42 @@ delete_domain_configuration(Client, DomainConfigurationName, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a dynamic thing group.
+%%
+%% Requires permission to access the DeleteDynamicThingGroup action.
 delete_dynamic_thing_group(Client, ThingGroupName, Input) ->
     delete_dynamic_thing_group(Client, ThingGroupName, Input, []).
 delete_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Method = delete,
     Path = ["/dynamic-thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"expectedVersion">>, <<"expectedVersion">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified fleet metric.
+%%
+%% Returns successfully with no error if the deletion is successful or you
+%% specify a fleet metric that doesn't exist.
+%%
+%% Requires permission to access the DeleteFleetMetric action.
+delete_fleet_metric(Client, MetricName, Input) ->
+    delete_fleet_metric(Client, MetricName, Input, []).
+delete_fleet_metric(Client, MetricName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/fleet-metric/", aws_util:encode_uri(MetricName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1959,6 +2162,8 @@ delete_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
 %%
 %% Only 10 jobs may have status "DELETION_IN_PROGRESS" at the same time, or a
 %% LimitExceededException will occur.
+%%
+%% Requires permission to access the DeleteJob action.
 delete_job(Client, JobId, Input) ->
     delete_job(Client, JobId, Input, []).
 delete_job(Client, JobId, Input0, Options0) ->
@@ -1984,6 +2189,8 @@ delete_job(Client, JobId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a job execution.
+%%
+%% Requires permission to access the DeleteJobExecution action.
 delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input) ->
     delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input, []).
 delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input0, Options0) ->
@@ -2008,7 +2215,33 @@ delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input0, Options0
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a defined mitigation action from your AWS account.
+%% @doc Deletes the specified job template.
+delete_job_template(Client, JobTemplateId, Input) ->
+    delete_job_template(Client, JobTemplateId, Input, []).
+delete_job_template(Client, JobTemplateId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/job-templates/", aws_util:encode_uri(JobTemplateId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a defined mitigation action from your Amazon Web Services
+%% accounts.
+%%
+%% Requires permission to access the DeleteMitigationAction action.
 delete_mitigation_action(Client, ActionName, Input) ->
     delete_mitigation_action(Client, ActionName, Input, []).
 delete_mitigation_action(Client, ActionName, Input0, Options0) ->
@@ -2032,6 +2265,8 @@ delete_mitigation_action(Client, ActionName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete an OTA update.
+%%
+%% Requires permission to access the DeleteOTAUpdate action.
 delete_ota_update(Client, OtaUpdateId, Input) ->
     delete_ota_update(Client, OtaUpdateId, Input, []).
 delete_ota_update(Client, OtaUpdateId, Input0, Options0) ->
@@ -2061,13 +2296,19 @@ delete_ota_update(Client, OtaUpdateId, Input0, Options0) ->
 %% A policy cannot be deleted if it has non-default versions or it is
 %% attached to any certificate.
 %%
-%% To delete a policy, use the DeletePolicyVersion API to delete all
-%% non-default versions of the policy; use the DetachPrincipalPolicy API to
-%% detach the policy from any certificate; and then use the DeletePolicy API
-%% to delete the policy.
+%% To delete a policy, use the `DeletePolicyVersion' action to delete all
+%% non-default versions of the policy; use the `DetachPolicy' action to
+%% detach the policy from any certificate; and then use the DeletePolicy
+%% action to delete the policy.
 %%
 %% When a policy is deleted using DeletePolicy, its default version is
 %% deleted with it.
+%%
+%% Because of the distributed nature of Amazon Web Services, it can take up
+%% to five minutes after a policy is detached before it's ready to be
+%% deleted.
+%%
+%% Requires permission to access the DeletePolicy action.
 delete_policy(Client, PolicyName, Input) ->
     delete_policy(Client, PolicyName, Input, []).
 delete_policy(Client, PolicyName, Input0, Options0) ->
@@ -2092,10 +2333,12 @@ delete_policy(Client, PolicyName, Input0, Options0) ->
 
 %% @doc Deletes the specified version of the specified policy.
 %%
-%% You cannot delete the default version of a policy using this API. To
+%% You cannot delete the default version of a policy using this action. To
 %% delete the default version of a policy, use `DeletePolicy'. To find out
 %% which version of a policy is marked as the default version, use
 %% ListPolicyVersions.
+%%
+%% Requires permission to access the DeletePolicyVersion action.
 delete_policy_version(Client, PolicyName, PolicyVersionId, Input) ->
     delete_policy_version(Client, PolicyName, PolicyVersionId, Input, []).
 delete_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0) ->
@@ -2119,6 +2362,8 @@ delete_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a fleet provisioning template.
+%%
+%% Requires permission to access the DeleteProvisioningTemplate action.
 delete_provisioning_template(Client, TemplateName, Input) ->
     delete_provisioning_template(Client, TemplateName, Input, []).
 delete_provisioning_template(Client, TemplateName, Input0, Options0) ->
@@ -2142,6 +2387,9 @@ delete_provisioning_template(Client, TemplateName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a fleet provisioning template version.
+%%
+%% Requires permission to access the DeleteProvisioningTemplateVersion
+%% action.
 delete_provisioning_template_version(Client, TemplateName, VersionId, Input) ->
     delete_provisioning_template_version(Client, TemplateName, VersionId, Input, []).
 delete_provisioning_template_version(Client, TemplateName, VersionId, Input0, Options0) ->
@@ -2165,6 +2413,8 @@ delete_provisioning_template_version(Client, TemplateName, VersionId, Input0, Op
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a CA certificate registration code.
+%%
+%% Requires permission to access the DeleteRegistrationCode action.
 delete_registration_code(Client, Input) ->
     delete_registration_code(Client, Input, []).
 delete_registration_code(Client, Input0, Options0) ->
@@ -2188,6 +2438,8 @@ delete_registration_code(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a role alias
+%%
+%% Requires permission to access the DeleteRoleAlias action.
 delete_role_alias(Client, RoleAlias, Input) ->
     delete_role_alias(Client, RoleAlias, Input, []).
 delete_role_alias(Client, RoleAlias, Input0, Options0) ->
@@ -2211,6 +2463,8 @@ delete_role_alias(Client, RoleAlias, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a scheduled audit.
+%%
+%% Requires permission to access the DeleteScheduledAudit action.
 delete_scheduled_audit(Client, ScheduledAuditName, Input) ->
     delete_scheduled_audit(Client, ScheduledAuditName, Input, []).
 delete_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
@@ -2234,6 +2488,8 @@ delete_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Device Defender security profile.
+%%
+%% Requires permission to access the DeleteSecurityProfile action.
 delete_security_profile(Client, SecurityProfileName, Input) ->
     delete_security_profile(Client, SecurityProfileName, Input, []).
 delete_security_profile(Client, SecurityProfileName, Input0, Options0) ->
@@ -2258,6 +2514,8 @@ delete_security_profile(Client, SecurityProfileName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a stream.
+%%
+%% Requires permission to access the DeleteStream action.
 delete_stream(Client, StreamId, Input) ->
     delete_stream(Client, StreamId, Input, []).
 delete_stream(Client, StreamId, Input0, Options0) ->
@@ -2284,6 +2542,8 @@ delete_stream(Client, StreamId, Input0, Options0) ->
 %%
 %% Returns successfully with no error if the deletion is successful or you
 %% specify a thing that doesn't exist.
+%%
+%% Requires permission to access the DeleteThing action.
 delete_thing(Client, ThingName, Input) ->
     delete_thing(Client, ThingName, Input, []).
 delete_thing(Client, ThingName, Input0, Options0) ->
@@ -2308,6 +2568,8 @@ delete_thing(Client, ThingName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a thing group.
+%%
+%% Requires permission to access the DeleteThingGroup action.
 delete_thing_group(Client, ThingGroupName, Input) ->
     delete_thing_group(Client, ThingGroupName, Input, []).
 delete_thing_group(Client, ThingGroupName, Input0, Options0) ->
@@ -2338,6 +2600,8 @@ delete_thing_group(Client, ThingGroupName, Input0, Options0) ->
 %% `DeprecateThingType', then remove any associated things by calling
 %% `UpdateThing' to change the thing type on any associated thing, and
 %% finally use `DeleteThingType' to delete the thing type.
+%%
+%% Requires permission to access the DeleteThingType action.
 delete_thing_type(Client, ThingTypeName, Input) ->
     delete_thing_type(Client, ThingTypeName, Input, []).
 delete_thing_type(Client, ThingTypeName, Input0, Options0) ->
@@ -2361,6 +2625,8 @@ delete_thing_type(Client, ThingTypeName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the rule.
+%%
+%% Requires permission to access the DeleteTopicRule action.
 delete_topic_rule(Client, RuleName, Input) ->
     delete_topic_rule(Client, RuleName, Input, []).
 delete_topic_rule(Client, RuleName, Input0, Options0) ->
@@ -2384,6 +2650,8 @@ delete_topic_rule(Client, RuleName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a topic rule destination.
+%%
+%% Requires permission to access the DeleteTopicRuleDestination action.
 delete_topic_rule_destination(Client, Arn, Input) ->
     delete_topic_rule_destination(Client, Arn, Input, []).
 delete_topic_rule_destination(Client, Arn, Input0, Options0) ->
@@ -2407,6 +2675,8 @@ delete_topic_rule_destination(Client, Arn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a logging level.
+%%
+%% Requires permission to access the DeleteV2LoggingLevel action.
 delete_v2_logging_level(Client, Input) ->
     delete_v2_logging_level(Client, Input, []).
 delete_v2_logging_level(Client, Input0, Options0) ->
@@ -2434,6 +2704,8 @@ delete_v2_logging_level(Client, Input0, Options0) ->
 %% @doc Deprecates a thing type.
 %%
 %% You can not associate new things with deprecated thing type.
+%%
+%% Requires permission to access the DeprecateThingType action.
 deprecate_thing_type(Client, ThingTypeName, Input) ->
     deprecate_thing_type(Client, ThingTypeName, Input, []).
 deprecate_thing_type(Client, ThingTypeName, Input0, Options0) ->
@@ -2461,6 +2733,9 @@ deprecate_thing_type(Client, ThingTypeName, Input0, Options0) ->
 %%
 %% Settings include how audit notifications are sent and which audit checks
 %% are enabled or disabled.
+%%
+%% Requires permission to access the DescribeAccountAuditConfiguration
+%% action.
 describe_account_audit_configuration(Client)
   when is_map(Client) ->
     describe_account_audit_configuration(Client, #{}, #{}).
@@ -2487,6 +2762,8 @@ describe_account_audit_configuration(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Properties include the reason for noncompliance, the severity of the
 %% issue, and the start time when the audit that returned the finding.
+%%
+%% Requires permission to access the DescribeAuditFinding action.
 describe_audit_finding(Client, FindingId)
   when is_map(Client) ->
     describe_audit_finding(Client, FindingId, #{}, #{}).
@@ -2560,6 +2837,8 @@ describe_audit_suppression(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about a Device Defender audit.
+%%
+%% Requires permission to access the DescribeAuditTask action.
 describe_audit_task(Client, TaskId)
   when is_map(Client) ->
     describe_audit_task(Client, TaskId, #{}, #{}).
@@ -2583,6 +2862,8 @@ describe_audit_task(Client, TaskId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes an authorizer.
+%%
+%% Requires permission to access the DescribeAuthorizer action.
 describe_authorizer(Client, AuthorizerName)
   when is_map(Client) ->
     describe_authorizer(Client, AuthorizerName, #{}, #{}).
@@ -2606,6 +2887,8 @@ describe_authorizer(Client, AuthorizerName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a billing group.
+%%
+%% Requires permission to access the DescribeBillingGroup action.
 describe_billing_group(Client, BillingGroupName)
   when is_map(Client) ->
     describe_billing_group(Client, BillingGroupName, #{}, #{}).
@@ -2629,6 +2912,8 @@ describe_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a registered CA certificate.
+%%
+%% Requires permission to access the DescribeCACertificate action.
 describe_ca_certificate(Client, CertificateId)
   when is_map(Client) ->
     describe_ca_certificate(Client, CertificateId, #{}, #{}).
@@ -2652,6 +2937,8 @@ describe_ca_certificate(Client, CertificateId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the specified certificate.
+%%
+%% Requires permission to access the DescribeCertificate action.
 describe_certificate(Client, CertificateId)
   when is_map(Client) ->
     describe_certificate(Client, CertificateId, #{}, #{}).
@@ -2675,6 +2962,8 @@ describe_certificate(Client, CertificateId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a Device Defender detect custom metric.
+%%
+%% Requires permission to access the DescribeCustomMetric action.
 describe_custom_metric(Client, MetricName)
   when is_map(Client) ->
     describe_custom_metric(Client, MetricName, #{}, #{}).
@@ -2698,6 +2987,8 @@ describe_custom_metric(Client, MetricName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the default authorizer.
+%%
+%% Requires permission to access the DescribeDefaultAuthorizer action.
 describe_default_authorizer(Client)
   when is_map(Client) ->
     describe_default_authorizer(Client, #{}, #{}).
@@ -2721,6 +3012,9 @@ describe_default_authorizer(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a Device Defender ML Detect mitigation action.
+%%
+%% Requires permission to access the DescribeDetectMitigationActionsTask
+%% action.
 describe_detect_mitigation_actions_task(Client, TaskId)
   when is_map(Client) ->
     describe_detect_mitigation_actions_task(Client, TaskId, #{}, #{}).
@@ -2743,8 +3037,10 @@ describe_detect_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, Op
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Provides details about a dimension that is defined in your AWS
-%% account.
+%% @doc Provides details about a dimension that is defined in your Amazon Web
+%% Services accounts.
+%%
+%% Requires permission to access the DescribeDimension action.
 describe_dimension(Client, Name)
   when is_map(Client) ->
     describe_dimension(Client, Name, #{}, #{}).
@@ -2769,8 +3065,7 @@ describe_dimension(Client, Name, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets summary information about a domain configuration.
 %%
-%% The domain configuration feature is in public preview and is subject to
-%% change.
+%% Requires permission to access the DescribeDomainConfiguration action.
 describe_domain_configuration(Client, DomainConfigurationName)
   when is_map(Client) ->
     describe_domain_configuration(Client, DomainConfigurationName, #{}, #{}).
@@ -2793,8 +3088,10 @@ describe_domain_configuration(Client, DomainConfigurationName, QueryMap, Headers
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a unique endpoint specific to the AWS account making the
-%% call.
+%% @doc Returns a unique endpoint specific to the Amazon Web Services account
+%% making the call.
+%%
+%% Requires permission to access the DescribeEndpoint action.
 describe_endpoint(Client)
   when is_map(Client) ->
     describe_endpoint(Client, #{}, #{}).
@@ -2822,6 +3119,8 @@ describe_endpoint(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes event configurations.
+%%
+%% Requires permission to access the DescribeEventConfigurations action.
 describe_event_configurations(Client)
   when is_map(Client) ->
     describe_event_configurations(Client, #{}, #{}).
@@ -2844,7 +3143,34 @@ describe_event_configurations(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets information about the specified fleet metric.
+%%
+%% Requires permission to access the DescribeFleetMetric action.
+describe_fleet_metric(Client, MetricName)
+  when is_map(Client) ->
+    describe_fleet_metric(Client, MetricName, #{}, #{}).
+
+describe_fleet_metric(Client, MetricName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_fleet_metric(Client, MetricName, QueryMap, HeadersMap, []).
+
+describe_fleet_metric(Client, MetricName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/fleet-metric/", aws_util:encode_uri(MetricName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Describes a search index.
+%%
+%% Requires permission to access the DescribeIndex action.
 describe_index(Client, IndexName)
   when is_map(Client) ->
     describe_index(Client, IndexName, #{}, #{}).
@@ -2868,6 +3194,8 @@ describe_index(Client, IndexName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a job.
+%%
+%% Requires permission to access the DescribeJob action.
 describe_job(Client, JobId)
   when is_map(Client) ->
     describe_job(Client, JobId, #{}, #{}).
@@ -2891,6 +3219,8 @@ describe_job(Client, JobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a job execution.
+%%
+%% Requires permission to access the DescribeJobExecution action.
 describe_job_execution(Client, JobId, ThingName)
   when is_map(Client) ->
     describe_job_execution(Client, JobId, ThingName, #{}, #{}).
@@ -2917,7 +3247,32 @@ describe_job_execution(Client, JobId, ThingName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns information about a job template.
+describe_job_template(Client, JobTemplateId)
+  when is_map(Client) ->
+    describe_job_template(Client, JobTemplateId, #{}, #{}).
+
+describe_job_template(Client, JobTemplateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_job_template(Client, JobTemplateId, QueryMap, HeadersMap, []).
+
+describe_job_template(Client, JobTemplateId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/job-templates/", aws_util:encode_uri(JobTemplateId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets information about a mitigation action.
+%%
+%% Requires permission to access the DescribeMitigationAction action.
 describe_mitigation_action(Client, ActionName)
   when is_map(Client) ->
     describe_mitigation_action(Client, ActionName, #{}, #{}).
@@ -2941,6 +3296,8 @@ describe_mitigation_action(Client, ActionName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a fleet provisioning template.
+%%
+%% Requires permission to access the DescribeProvisioningTemplate action.
 describe_provisioning_template(Client, TemplateName)
   when is_map(Client) ->
     describe_provisioning_template(Client, TemplateName, #{}, #{}).
@@ -2964,6 +3321,9 @@ describe_provisioning_template(Client, TemplateName, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a fleet provisioning template version.
+%%
+%% Requires permission to access the DescribeProvisioningTemplateVersion
+%% action.
 describe_provisioning_template_version(Client, TemplateName, VersionId)
   when is_map(Client) ->
     describe_provisioning_template_version(Client, TemplateName, VersionId, #{}, #{}).
@@ -2987,6 +3347,8 @@ describe_provisioning_template_version(Client, TemplateName, VersionId, QueryMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a role alias.
+%%
+%% Requires permission to access the DescribeRoleAlias action.
 describe_role_alias(Client, RoleAlias)
   when is_map(Client) ->
     describe_role_alias(Client, RoleAlias, #{}, #{}).
@@ -3010,6 +3372,8 @@ describe_role_alias(Client, RoleAlias, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a scheduled audit.
+%%
+%% Requires permission to access the DescribeScheduledAudit action.
 describe_scheduled_audit(Client, ScheduledAuditName)
   when is_map(Client) ->
     describe_scheduled_audit(Client, ScheduledAuditName, #{}, #{}).
@@ -3033,6 +3397,8 @@ describe_scheduled_audit(Client, ScheduledAuditName, QueryMap, HeadersMap, Optio
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a Device Defender security profile.
+%%
+%% Requires permission to access the DescribeSecurityProfile action.
 describe_security_profile(Client, SecurityProfileName)
   when is_map(Client) ->
     describe_security_profile(Client, SecurityProfileName, #{}, #{}).
@@ -3056,6 +3422,8 @@ describe_security_profile(Client, SecurityProfileName, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a stream.
+%%
+%% Requires permission to access the DescribeStream action.
 describe_stream(Client, StreamId)
   when is_map(Client) ->
     describe_stream(Client, StreamId, #{}, #{}).
@@ -3079,6 +3447,8 @@ describe_stream(Client, StreamId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the specified thing.
+%%
+%% Requires permission to access the DescribeThing action.
 describe_thing(Client, ThingName)
   when is_map(Client) ->
     describe_thing(Client, ThingName, #{}, #{}).
@@ -3102,6 +3472,8 @@ describe_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describe a thing group.
+%%
+%% Requires permission to access the DescribeThingGroup action.
 describe_thing_group(Client, ThingGroupName)
   when is_map(Client) ->
     describe_thing_group(Client, ThingGroupName, #{}, #{}).
@@ -3125,6 +3497,8 @@ describe_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a bulk thing provisioning task.
+%%
+%% Requires permission to access the DescribeThingRegistrationTask action.
 describe_thing_registration_task(Client, TaskId)
   when is_map(Client) ->
     describe_thing_registration_task(Client, TaskId, #{}, #{}).
@@ -3148,6 +3522,8 @@ describe_thing_registration_task(Client, TaskId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the specified thing type.
+%%
+%% Requires permission to access the DescribeThingType action.
 describe_thing_type(Client, ThingTypeName)
   when is_map(Client) ->
     describe_thing_type(Client, ThingTypeName, #{}, #{}).
@@ -3171,6 +3547,12 @@ describe_thing_type(Client, ThingTypeName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Detaches a policy from the specified target.
+%%
+%% Because of the distributed nature of Amazon Web Services, it can take up
+%% to five minutes after a policy is detached before it's ready to be
+%% deleted.
+%%
+%% Requires permission to access the DetachPolicy action.
 detach_policy(Client, PolicyName, Input) ->
     detach_policy(Client, PolicyName, Input, []).
 detach_policy(Client, PolicyName, Input0, Options0) ->
@@ -3195,7 +3577,9 @@ detach_policy(Client, PolicyName, Input0, Options0) ->
 
 %% @doc Removes the specified policy from the specified certificate.
 %%
-%% Note: This API is deprecated. Please use `DetachPolicy' instead.
+%% This action is deprecated. Please use `DetachPolicy' instead.
+%%
+%% Requires permission to access the DetachPrincipalPolicy action.
 detach_principal_policy(Client, PolicyName, Input) ->
     detach_principal_policy(Client, PolicyName, Input, []).
 detach_principal_policy(Client, PolicyName, Input0, Options0) ->
@@ -3222,6 +3606,8 @@ detach_principal_policy(Client, PolicyName, Input0, Options0) ->
 
 %% @doc Disassociates a Device Defender security profile from a thing group
 %% or from this account.
+%%
+%% Requires permission to access the DetachSecurityProfile action.
 detach_security_profile(Client, SecurityProfileName, Input) ->
     detach_security_profile(Client, SecurityProfileName, Input, []).
 detach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
@@ -3252,6 +3638,8 @@ detach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 %%
 %% This call is asynchronous. It might take several seconds for the
 %% detachment to propagate.
+%%
+%% Requires permission to access the DetachThingPrincipal action.
 detach_thing_principal(Client, ThingName, Input) ->
     detach_thing_principal(Client, ThingName, Input, []).
 detach_thing_principal(Client, ThingName, Input0, Options0) ->
@@ -3277,6 +3665,8 @@ detach_thing_principal(Client, ThingName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disables the rule.
+%%
+%% Requires permission to access the DisableTopicRule action.
 disable_topic_rule(Client, RuleName, Input) ->
     disable_topic_rule(Client, RuleName, Input, []).
 disable_topic_rule(Client, RuleName, Input0, Options0) ->
@@ -3300,6 +3690,8 @@ disable_topic_rule(Client, RuleName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Enables the rule.
+%%
+%% Requires permission to access the EnableTopicRule action.
 enable_topic_rule(Client, RuleName, Input) ->
     enable_topic_rule(Client, RuleName, Input, []).
 enable_topic_rule(Client, RuleName, Input0, Options0) ->
@@ -3324,6 +3716,9 @@ enable_topic_rule(Client, RuleName, Input0, Options0) ->
 
 %% @doc Returns a Device Defender's ML Detect Security Profile training
 %% model's status.
+%%
+%% Requires permission to access the GetBehaviorModelTrainingSummaries
+%% action.
 get_behavior_model_training_summaries(Client)
   when is_map(Client) ->
     get_behavior_model_training_summaries(Client, #{}, #{}).
@@ -3352,7 +3747,35 @@ get_behavior_model_training_summaries(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Aggregates on indexed data with search queries pertaining to
+%% particular fields.
+%%
+%% Requires permission to access the GetBucketsAggregation action.
+get_buckets_aggregation(Client, Input) ->
+    get_buckets_aggregation(Client, Input, []).
+get_buckets_aggregation(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/indices/buckets"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns the approximate count of unique values that match the query.
+%%
+%% Requires permission to access the GetCardinality action.
 get_cardinality(Client, Input) ->
     get_cardinality(Client, Input, []).
 get_cardinality(Client, Input0, Options0) ->
@@ -3376,8 +3799,10 @@ get_cardinality(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets a list of the policies that have an effect on the authorization
-%% behavior of the specified device when it connects to the AWS IoT device
+%% behavior of the specified device when it connects to the IoT device
 %% gateway.
+%%
+%% Requires permission to access the GetEffectivePolicies action.
 get_effective_policies(Client, Input) ->
     get_effective_policies(Client, Input, []).
 get_effective_policies(Client, Input0, Options0) ->
@@ -3402,6 +3827,8 @@ get_effective_policies(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the indexing configuration.
+%%
+%% Requires permission to access the GetIndexingConfiguration action.
 get_indexing_configuration(Client)
   when is_map(Client) ->
     get_indexing_configuration(Client, #{}, #{}).
@@ -3425,6 +3852,8 @@ get_indexing_configuration(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a job document.
+%%
+%% Requires permission to access the GetJobDocument action.
 get_job_document(Client, JobId)
   when is_map(Client) ->
     get_job_document(Client, JobId, #{}, #{}).
@@ -3451,6 +3880,8 @@ get_job_document(Client, JobId, QueryMap, HeadersMap, Options0)
 %%
 %% NOTE: use of this command is not recommended. Use `GetV2LoggingOptions'
 %% instead.
+%%
+%% Requires permission to access the GetLoggingOptions action.
 get_logging_options(Client)
   when is_map(Client) ->
     get_logging_options(Client, #{}, #{}).
@@ -3474,6 +3905,8 @@ get_logging_options(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets an OTA update.
+%%
+%% Requires permission to access the GetOTAUpdate action.
 get_ota_update(Client, OtaUpdateId)
   when is_map(Client) ->
     get_ota_update(Client, OtaUpdateId, #{}, #{}).
@@ -3508,6 +3941,8 @@ get_ota_update(Client, OtaUpdateId, QueryMap, HeadersMap, Options0)
 %% occurs in approximately five percent of the values that match the query,
 %% and so on. The result is an approximation, the more values that match the
 %% query, the more accurate the percentile values.
+%%
+%% Requires permission to access the GetPercentiles action.
 get_percentiles(Client, Input) ->
     get_percentiles(Client, Input, []).
 get_percentiles(Client, Input0, Options0) ->
@@ -3532,6 +3967,8 @@ get_percentiles(Client, Input0, Options0) ->
 
 %% @doc Gets information about the specified policy with the policy document
 %% of the default version.
+%%
+%% Requires permission to access the GetPolicy action.
 get_policy(Client, PolicyName)
   when is_map(Client) ->
     get_policy(Client, PolicyName, #{}, #{}).
@@ -3555,6 +3992,8 @@ get_policy(Client, PolicyName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about the specified policy version.
+%%
+%% Requires permission to access the GetPolicyVersion action.
 get_policy_version(Client, PolicyName, PolicyVersionId)
   when is_map(Client) ->
     get_policy_version(Client, PolicyName, PolicyVersionId, #{}, #{}).
@@ -3577,8 +4016,9 @@ get_policy_version(Client, PolicyName, PolicyVersionId, QueryMap, HeadersMap, Op
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets a registration code used to register a CA certificate with AWS
-%% IoT.
+%% @doc Gets a registration code used to register a CA certificate with IoT.
+%%
+%% Requires permission to access the GetRegistrationCode action.
 get_registration_code(Client)
   when is_map(Client) ->
     get_registration_code(Client, #{}, #{}).
@@ -3606,6 +4046,8 @@ get_registration_code(Client, QueryMap, HeadersMap, Options0)
 %%
 %% If the aggregation field is of type `String', only the count statistic is
 %% returned.
+%%
+%% Requires permission to access the GetStatistics action.
 get_statistics(Client, Input) ->
     get_statistics(Client, Input, []).
 get_statistics(Client, Input0, Options0) ->
@@ -3629,6 +4071,8 @@ get_statistics(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets information about the rule.
+%%
+%% Requires permission to access the GetTopicRule action.
 get_topic_rule(Client, RuleName)
   when is_map(Client) ->
     get_topic_rule(Client, RuleName, #{}, #{}).
@@ -3652,6 +4096,8 @@ get_topic_rule(Client, RuleName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a topic rule destination.
+%%
+%% Requires permission to access the GetTopicRuleDestination action.
 get_topic_rule_destination(Client, Arn)
   when is_map(Client) ->
     get_topic_rule_destination(Client, Arn, #{}, #{}).
@@ -3675,6 +4121,8 @@ get_topic_rule_destination(Client, Arn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets the fine grained logging options.
+%%
+%% Requires permission to access the GetV2LoggingOptions action.
 get_v2_logging_options(Client)
   when is_map(Client) ->
     get_v2_logging_options(Client, #{}, #{}).
@@ -3699,6 +4147,8 @@ get_v2_logging_options(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the active violations for a given Device Defender security
 %% profile.
+%%
+%% Requires permission to access the ListActiveViolations action.
 list_active_violations(Client)
   when is_map(Client) ->
     list_active_violations(Client, #{}, #{}).
@@ -3724,13 +4174,16 @@ list_active_violations(Client, QueryMap, HeadersMap, Options0)
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"securityProfileName">>, maps:get(<<"securityProfileName">>, QueryMap, undefined)},
-        {<<"thingName">>, maps:get(<<"thingName">>, QueryMap, undefined)}
+        {<<"thingName">>, maps:get(<<"thingName">>, QueryMap, undefined)},
+        {<<"verificationState">>, maps:get(<<"verificationState">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the policies attached to the specified thing group.
+%%
+%% Requires permission to access the ListAttachedPolicies action.
 list_attached_policies(Client, Target, Input) ->
     list_attached_policies(Client, Target, Input, []).
 list_attached_policies(Client, Target, Input0, Options0) ->
@@ -3760,6 +4213,8 @@ list_attached_policies(Client, Target, Input0, Options0) ->
 %% audits performed during a specified time period.
 %%
 %% (Findings are retained for 90 days.)
+%%
+%% Requires permission to access the ListAuditFindings action.
 list_audit_findings(Client, Input) ->
     list_audit_findings(Client, Input, []).
 list_audit_findings(Client, Input0, Options0) ->
@@ -3783,6 +4238,9 @@ list_audit_findings(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the status of audit mitigation action tasks that were executed.
+%%
+%% Requires permission to access the ListAuditMitigationActionsExecutions
+%% action.
 list_audit_mitigation_actions_executions(Client, FindingId, TaskId)
   when is_map(Client) ->
     list_audit_mitigation_actions_executions(Client, FindingId, TaskId, #{}, #{}).
@@ -3815,6 +4273,8 @@ list_audit_mitigation_actions_executions(Client, FindingId, TaskId, QueryMap, He
 
 %% @doc Gets a list of audit mitigation action tasks that match the specified
 %% filters.
+%%
+%% Requires permission to access the ListAuditMitigationActionsTasks action.
 list_audit_mitigation_actions_tasks(Client, EndTime, StartTime)
   when is_map(Client) ->
     list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, #{}, #{}).
@@ -3848,6 +4308,8 @@ list_audit_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, Header
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists your Device Defender audit listings.
+%%
+%% Requires permission to access the ListAuditSuppressions action.
 list_audit_suppressions(Client, Input) ->
     list_audit_suppressions(Client, Input, []).
 list_audit_suppressions(Client, Input0, Options0) ->
@@ -3872,6 +4334,8 @@ list_audit_suppressions(Client, Input0, Options0) ->
 
 %% @doc Lists the Device Defender audits that have been performed during a
 %% given time period.
+%%
+%% Requires permission to access the ListAuditTasks action.
 list_audit_tasks(Client, EndTime, StartTime)
   when is_map(Client) ->
     list_audit_tasks(Client, EndTime, StartTime, #{}, #{}).
@@ -3904,6 +4368,8 @@ list_audit_tasks(Client, EndTime, StartTime, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the authorizers registered in your account.
+%%
+%% Requires permission to access the ListAuthorizers action.
 list_authorizers(Client)
   when is_map(Client) ->
     list_authorizers(Client, #{}, #{}).
@@ -3934,6 +4400,8 @@ list_authorizers(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the billing groups you have created.
+%%
+%% Requires permission to access the ListBillingGroups action.
 list_billing_groups(Client)
   when is_map(Client) ->
     list_billing_groups(Client, #{}, #{}).
@@ -3962,10 +4430,13 @@ list_billing_groups(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the CA certificates registered for your AWS account.
+%% @doc Lists the CA certificates registered for your Amazon Web Services
+%% account.
 %%
 %% The results are paginated with a default page size of 25. You can use the
 %% returned marker to retrieve additional results.
+%%
+%% Requires permission to access the ListCACertificates action.
 list_ca_certificates(Client)
   when is_map(Client) ->
     list_ca_certificates(Client, #{}, #{}).
@@ -3994,10 +4465,13 @@ list_ca_certificates(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the certificates registered in your AWS account.
+%% @doc Lists the certificates registered in your Amazon Web Services
+%% account.
 %%
 %% The results are paginated with a default page size of 25. You can use the
 %% returned marker to retrieve additional results.
+%%
+%% Requires permission to access the ListCertificates action.
 list_certificates(Client)
   when is_map(Client) ->
     list_certificates(Client, #{}, #{}).
@@ -4027,6 +4501,8 @@ list_certificates(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the device certificates signed by the specified CA certificate.
+%%
+%% Requires permission to access the ListCertificatesByCA action.
 list_certificates_by_ca(Client, CaCertificateId)
   when is_map(Client) ->
     list_certificates_by_ca(Client, CaCertificateId, #{}, #{}).
@@ -4056,6 +4532,8 @@ list_certificates_by_ca(Client, CaCertificateId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists your Device Defender detect custom metrics.
+%%
+%% Requires permission to access the ListCustomMetrics action.
 list_custom_metrics(Client)
   when is_map(Client) ->
     list_custom_metrics(Client, #{}, #{}).
@@ -4085,6 +4563,9 @@ list_custom_metrics(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists mitigation actions executions for a Device Defender ML Detect
 %% Security Profile.
+%%
+%% Requires permission to access the ListDetectMitigationActionsExecutions
+%% action.
 list_detect_mitigation_actions_executions(Client)
   when is_map(Client) ->
     list_detect_mitigation_actions_executions(Client, #{}, #{}).
@@ -4118,6 +4599,8 @@ list_detect_mitigation_actions_executions(Client, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List of Device Defender ML Detect mitigation actions tasks.
+%%
+%% Requires permission to access the ListDetectMitigationActionsTasks action.
 list_detect_mitigation_actions_tasks(Client, EndTime, StartTime)
   when is_map(Client) ->
     list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, #{}, #{}).
@@ -4147,7 +4630,10 @@ list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, Heade
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List the set of dimensions that are defined for your AWS account.
+%% @doc List the set of dimensions that are defined for your Amazon Web
+%% Services accounts.
+%%
+%% Requires permission to access the ListDimensions action.
 list_dimensions(Client)
   when is_map(Client) ->
     list_dimensions(Client, #{}, #{}).
@@ -4179,8 +4665,7 @@ list_dimensions(Client, QueryMap, HeadersMap, Options0)
 %%
 %% This list is sorted alphabetically by domain configuration name.
 %%
-%% The domain configuration feature is in public preview and is subject to
-%% change.
+%% Requires permission to access the ListDomainConfigurations action.
 list_domain_configurations(Client)
   when is_map(Client) ->
     list_domain_configurations(Client, #{}, #{}).
@@ -4209,7 +4694,39 @@ list_domain_configurations(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists all your fleet metrics.
+%%
+%% Requires permission to access the ListFleetMetrics action.
+list_fleet_metrics(Client)
+  when is_map(Client) ->
+    list_fleet_metrics(Client, #{}, #{}).
+
+list_fleet_metrics(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_fleet_metrics(Client, QueryMap, HeadersMap, []).
+
+list_fleet_metrics(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/fleet-metrics"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the search indices.
+%%
+%% Requires permission to access the ListIndices action.
 list_indices(Client)
   when is_map(Client) ->
     list_indices(Client, #{}, #{}).
@@ -4238,6 +4755,8 @@ list_indices(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the job executions for a job.
+%%
+%% Requires permission to access the ListJobExecutionsForJob action.
 list_job_executions_for_job(Client, JobId)
   when is_map(Client) ->
     list_job_executions_for_job(Client, JobId, #{}, #{}).
@@ -4267,6 +4786,8 @@ list_job_executions_for_job(Client, JobId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the job executions for the specified thing.
+%%
+%% Requires permission to access the ListJobExecutionsForThing action.
 list_job_executions_for_thing(Client, ThingName)
   when is_map(Client) ->
     list_job_executions_for_thing(Client, ThingName, #{}, #{}).
@@ -4296,7 +4817,39 @@ list_job_executions_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of job templates.
+%%
+%% Requires permission to access the ListJobTemplates action.
+list_job_templates(Client)
+  when is_map(Client) ->
+    list_job_templates(Client, #{}, #{}).
+
+list_job_templates(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_job_templates(Client, QueryMap, HeadersMap, []).
+
+list_job_templates(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/job-templates"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists jobs.
+%%
+%% Requires permission to access the ListJobs action.
 list_jobs(Client)
   when is_map(Client) ->
     list_jobs(Client, #{}, #{}).
@@ -4331,6 +4884,8 @@ list_jobs(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets a list of all mitigation actions that match the specified filter
 %% criteria.
+%%
+%% Requires permission to access the ListMitigationActions action.
 list_mitigation_actions(Client)
   when is_map(Client) ->
     list_mitigation_actions(Client, #{}, #{}).
@@ -4360,6 +4915,8 @@ list_mitigation_actions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists OTA updates.
+%%
+%% Requires permission to access the ListOTAUpdates action.
 list_ota_updates(Client)
   when is_map(Client) ->
     list_ota_updates(Client, #{}, #{}).
@@ -4389,6 +4946,8 @@ list_ota_updates(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists certificates that are being transferred but not yet accepted.
+%%
+%% Requires permission to access the ListOutgoingCertificates action.
 list_outgoing_certificates(Client)
   when is_map(Client) ->
     list_outgoing_certificates(Client, #{}, #{}).
@@ -4418,6 +4977,8 @@ list_outgoing_certificates(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists your policies.
+%%
+%% Requires permission to access the ListPolicies action.
 list_policies(Client)
   when is_map(Client) ->
     list_policies(Client, #{}, #{}).
@@ -4448,7 +5009,10 @@ list_policies(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the principals associated with the specified policy.
 %%
-%% Note: This API is deprecated. Please use `ListTargetsForPolicy' instead.
+%% Note: This action is deprecated. Please use `ListTargetsForPolicy'
+%% instead.
+%%
+%% Requires permission to access the ListPolicyPrincipals action.
 list_policy_principals(Client, PolicyName)
   when is_map(Client) ->
     list_policy_principals(Client, PolicyName, #{}, #{}).
@@ -4483,6 +5047,8 @@ list_policy_principals(Client, PolicyName, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the versions of the specified policy and identifies the default
 %% version.
+%%
+%% Requires permission to access the ListPolicyVersions action.
 list_policy_versions(Client, PolicyName)
   when is_map(Client) ->
     list_policy_versions(Client, PolicyName, #{}, #{}).
@@ -4510,7 +5076,10 @@ list_policy_versions(Client, PolicyName, QueryMap, HeadersMap, Options0)
 %% If you use an Cognito identity, the ID must be in AmazonCognito Identity
 %% format.
 %%
-%% Note: This API is deprecated. Please use `ListAttachedPolicies' instead.
+%% Note: This action is deprecated. Please use `ListAttachedPolicies'
+%% instead.
+%%
+%% Requires permission to access the ListPrincipalPolicies action.
 list_principal_policies(Client, Principal)
   when is_map(Client) ->
     list_principal_policies(Client, Principal, #{}, #{}).
@@ -4547,6 +5116,8 @@ list_principal_policies(Client, Principal, QueryMap, HeadersMap, Options0)
 %%
 %% A principal can be X.509 certificates, IAM users, groups, and roles,
 %% Amazon Cognito identities or federated identities.
+%%
+%% Requires permission to access the ListPrincipalThings action.
 list_principal_things(Client, Principal)
   when is_map(Client) ->
     list_principal_things(Client, Principal, #{}, #{}).
@@ -4579,6 +5150,8 @@ list_principal_things(Client, Principal, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc A list of fleet provisioning template versions.
+%%
+%% Requires permission to access the ListProvisioningTemplateVersions action.
 list_provisioning_template_versions(Client, TemplateName)
   when is_map(Client) ->
     list_provisioning_template_versions(Client, TemplateName, #{}, #{}).
@@ -4606,7 +5179,10 @@ list_provisioning_template_versions(Client, TemplateName, QueryMap, HeadersMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the fleet provisioning templates in your AWS account.
+%% @doc Lists the fleet provisioning templates in your Amazon Web Services
+%% account.
+%%
+%% Requires permission to access the ListProvisioningTemplates action.
 list_provisioning_templates(Client)
   when is_map(Client) ->
     list_provisioning_templates(Client, #{}, #{}).
@@ -4635,6 +5211,8 @@ list_provisioning_templates(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the role aliases registered in your account.
+%%
+%% Requires permission to access the ListRoleAliases action.
 list_role_aliases(Client)
   when is_map(Client) ->
     list_role_aliases(Client, #{}, #{}).
@@ -4664,6 +5242,8 @@ list_role_aliases(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all of your scheduled audits.
+%%
+%% Requires permission to access the ListScheduledAudits action.
 list_scheduled_audits(Client)
   when is_map(Client) ->
     list_scheduled_audits(Client, #{}, #{}).
@@ -4694,6 +5274,8 @@ list_scheduled_audits(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the Device Defender security profiles you've created.
 %%
 %% You can filter security profiles by dimension or custom metric.
+%%
+%% Requires permission to access the ListSecurityProfiles action.
 %%
 %% `dimensionName' and `metricName' cannot be used in the same request.
 list_security_profiles(Client)
@@ -4727,6 +5309,8 @@ list_security_profiles(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the Device Defender security profiles attached to a target
 %% (thing group).
+%%
+%% Requires permission to access the ListSecurityProfilesForTarget action.
 list_security_profiles_for_target(Client, SecurityProfileTargetArn)
   when is_map(Client) ->
     list_security_profiles_for_target(Client, SecurityProfileTargetArn, #{}, #{}).
@@ -4756,7 +5340,9 @@ list_security_profiles_for_target(Client, SecurityProfileTargetArn, QueryMap, He
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all of the streams in your AWS account.
+%% @doc Lists all of the streams in your Amazon Web Services account.
+%%
+%% Requires permission to access the ListStreams action.
 list_streams(Client)
   when is_map(Client) ->
     list_streams(Client, #{}, #{}).
@@ -4786,6 +5372,8 @@ list_streams(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags (metadata) you have assigned to the resource.
+%%
+%% Requires permission to access the ListTagsForResource action.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -4814,6 +5402,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List targets for the specified policy.
+%%
+%% Requires permission to access the ListTargetsForPolicy action.
 list_targets_for_policy(Client, PolicyName, Input) ->
     list_targets_for_policy(Client, PolicyName, Input, []).
 list_targets_for_policy(Client, PolicyName, Input0, Options0) ->
@@ -4840,6 +5430,8 @@ list_targets_for_policy(Client, PolicyName, Input0, Options0) ->
 
 %% @doc Lists the targets (thing groups) associated with a given Device
 %% Defender security profile.
+%%
+%% Requires permission to access the ListTargetsForSecurityProfile action.
 list_targets_for_security_profile(Client, SecurityProfileName)
   when is_map(Client) ->
     list_targets_for_security_profile(Client, SecurityProfileName, #{}, #{}).
@@ -4868,6 +5460,8 @@ list_targets_for_security_profile(Client, SecurityProfileName, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the thing groups in your account.
+%%
+%% Requires permission to access the ListThingGroups action.
 list_thing_groups(Client)
   when is_map(Client) ->
     list_thing_groups(Client, #{}, #{}).
@@ -4899,6 +5493,8 @@ list_thing_groups(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the thing groups to which the specified thing belongs.
+%%
+%% Requires permission to access the ListThingGroupsForThing action.
 list_thing_groups_for_thing(Client, ThingName)
   when is_map(Client) ->
     list_thing_groups_for_thing(Client, ThingName, #{}, #{}).
@@ -4930,6 +5526,8 @@ list_thing_groups_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
 %%
 %% A principal can be X.509 certificates, IAM users, groups, and roles,
 %% Amazon Cognito identities or federated identities.
+%%
+%% Requires permission to access the ListThingPrincipals action.
 list_thing_principals(Client, ThingName)
   when is_map(Client) ->
     list_thing_principals(Client, ThingName, #{}, #{}).
@@ -4987,6 +5585,8 @@ list_thing_registration_task_reports(Client, TaskId, ReportType, QueryMap, Heade
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List bulk thing provisioning tasks.
+%%
+%% Requires permission to access the ListThingRegistrationTasks action.
 list_thing_registration_tasks(Client)
   when is_map(Client) ->
     list_thing_registration_tasks(Client, #{}, #{}).
@@ -5016,6 +5616,8 @@ list_thing_registration_tasks(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the existing thing types.
+%%
+%% Requires permission to access the ListThingTypes action.
 list_thing_types(Client)
   when is_map(Client) ->
     list_thing_types(Client, #{}, #{}).
@@ -5051,6 +5653,8 @@ list_thing_types(Client, QueryMap, HeadersMap, Options0)
 %% attributeValue=Red retrieves all things in the registry that contain an
 %% attribute Color with the value Red.
 %%
+%% Requires permission to access the ListThings action.
+%%
 %% You will not be charged for calling this API if an `Access denied' error
 %% is returned. You will also not be charged if no attributes or pagination
 %% token was provided in request and no pagination token and no results were
@@ -5079,13 +5683,16 @@ list_things(Client, QueryMap, HeadersMap, Options0)
         {<<"attributeValue">>, maps:get(<<"attributeValue">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
-        {<<"thingTypeName">>, maps:get(<<"thingTypeName">>, QueryMap, undefined)}
+        {<<"thingTypeName">>, maps:get(<<"thingTypeName">>, QueryMap, undefined)},
+        {<<"usePrefixAttributeValue">>, maps:get(<<"usePrefixAttributeValue">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the things you have added to the given billing group.
+%%
+%% Requires permission to access the ListThingsInBillingGroup action.
 list_things_in_billing_group(Client, BillingGroupName)
   when is_map(Client) ->
     list_things_in_billing_group(Client, BillingGroupName, #{}, #{}).
@@ -5114,6 +5721,8 @@ list_things_in_billing_group(Client, BillingGroupName, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the things in the specified group.
+%%
+%% Requires permission to access the ListThingsInThingGroup action.
 list_things_in_thing_group(Client, ThingGroupName)
   when is_map(Client) ->
     list_things_in_thing_group(Client, ThingGroupName, #{}, #{}).
@@ -5142,7 +5751,10 @@ list_things_in_thing_group(Client, ThingGroupName, QueryMap, HeadersMap, Options
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all the topic rule destinations in your AWS account.
+%% @doc Lists all the topic rule destinations in your Amazon Web Services
+%% account.
+%%
+%% Requires permission to access the ListTopicRuleDestinations action.
 list_topic_rule_destinations(Client)
   when is_map(Client) ->
     list_topic_rule_destinations(Client, #{}, #{}).
@@ -5171,6 +5783,8 @@ list_topic_rule_destinations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the rules for the specific topic.
+%%
+%% Requires permission to access the ListTopicRules action.
 list_topic_rules(Client)
   when is_map(Client) ->
     list_topic_rules(Client, #{}, #{}).
@@ -5201,6 +5815,8 @@ list_topic_rules(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists logging levels.
+%%
+%% Requires permission to access the ListV2LoggingLevels action.
 list_v2_logging_levels(Client)
   when is_map(Client) ->
     list_v2_logging_levels(Client, #{}, #{}).
@@ -5234,6 +5850,8 @@ list_v2_logging_levels(Client, QueryMap, HeadersMap, Options0)
 %%
 %% You can use filters to limit the results to those alerts issued for a
 %% particular security profile, behavior, or thing (device).
+%%
+%% Requires permission to access the ListViolationEvents action.
 list_violation_events(Client, EndTime, StartTime)
   when is_map(Client) ->
     list_violation_events(Client, EndTime, StartTime, #{}, #{}).
@@ -5261,21 +5879,48 @@ list_violation_events(Client, EndTime, StartTime, QueryMap, HeadersMap, Options0
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"securityProfileName">>, maps:get(<<"securityProfileName">>, QueryMap, undefined)},
         {<<"startTime">>, StartTime},
-        {<<"thingName">>, maps:get(<<"thingName">>, QueryMap, undefined)}
+        {<<"thingName">>, maps:get(<<"thingName">>, QueryMap, undefined)},
+        {<<"verificationState">>, maps:get(<<"verificationState">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Registers a CA certificate with AWS IoT.
+%% @doc Set a verification state and provide a description of that
+%% verification state on a violation (detect alarm).
+put_verification_state_on_violation(Client, ViolationId, Input) ->
+    put_verification_state_on_violation(Client, ViolationId, Input, []).
+put_verification_state_on_violation(Client, ViolationId, Input0, Options0) ->
+    Method = post,
+    Path = ["/violations/verification-state/", aws_util:encode_uri(ViolationId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Registers a CA certificate with IoT.
 %%
 %% This CA certificate can then be used to sign device certificates, which
-%% can be then registered with AWS IoT. You can register up to 10 CA
-%% certificates per AWS account that have the same subject field. This
+%% can be then registered with IoT. You can register up to 10 CA certificates
+%% per Amazon Web Services account that have the same subject field. This
 %% enables you to have up to 10 certificate authorities sign your device
 %% certificates. If you have more than one CA certificate registered, make
 %% sure you pass the CA certificate when you register your device
-%% certificates with the RegisterCertificate API.
+%% certificates with the `RegisterCertificate' action.
+%%
+%% Requires permission to access the RegisterCACertificate action.
 register_ca_certificate(Client, Input) ->
     register_ca_certificate(Client, Input, []).
 register_ca_certificate(Client, Input0, Options0) ->
@@ -5300,11 +5945,13 @@ register_ca_certificate(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Registers a device certificate with AWS IoT.
+%% @doc Registers a device certificate with IoT.
 %%
 %% If you have more than one CA certificate that has the same subject field,
 %% you must specify the CA certificate that was used to sign the device
 %% certificate being registered.
+%%
+%% Requires permission to access the RegisterCertificate action.
 register_certificate(Client, Input) ->
     register_certificate(Client, Input, []).
 register_certificate(Client, Input0, Options0) ->
@@ -5354,10 +6001,12 @@ register_certificate_without_ca(Client, Input0, Options0) ->
 
 %% @doc Provisions a thing in the device registry.
 %%
-%% RegisterThing calls other AWS IoT control plane APIs. These calls might
-%% exceed your account level AWS IoT Throttling Limits and cause throttle
-%% errors. Please contact AWS Customer Support to raise your throttling
+%% RegisterThing calls other IoT control plane APIs. These calls might exceed
+%% your account level IoT Throttling Limits and cause throttle errors. Please
+%% contact Amazon Web Services Customer Support to raise your throttling
 %% limits if necessary.
+%%
+%% Requires permission to access the RegisterThing action.
 register_thing(Client, Input) ->
     register_thing(Client, Input, []).
 register_thing(Client, Input0, Options0) ->
@@ -5382,8 +6031,8 @@ register_thing(Client, Input0, Options0) ->
 
 %% @doc Rejects a pending certificate transfer.
 %%
-%% After AWS IoT rejects a certificate transfer, the certificate status
-%% changes from PENDING_TRANSFER to INACTIVE.
+%% After IoT rejects a certificate transfer, the certificate status changes
+%% from PENDING_TRANSFER to INACTIVE.
 %%
 %% To check for pending certificate transfers, call `ListCertificates' to
 %% enumerate your certificates.
@@ -5391,6 +6040,8 @@ register_thing(Client, Input0, Options0) ->
 %% This operation can only be called by the transfer destination. After it is
 %% called, the certificate will be returned to the source's account in the
 %% INACTIVE state.
+%%
+%% Requires permission to access the RejectCertificateTransfer action.
 reject_certificate_transfer(Client, CertificateId, Input) ->
     reject_certificate_transfer(Client, CertificateId, Input, []).
 reject_certificate_transfer(Client, CertificateId, Input0, Options0) ->
@@ -5414,6 +6065,8 @@ reject_certificate_transfer(Client, CertificateId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the given thing from the billing group.
+%%
+%% Requires permission to access the RemoveThingFromBillingGroup action.
 remove_thing_from_billing_group(Client, Input) ->
     remove_thing_from_billing_group(Client, Input, []).
 remove_thing_from_billing_group(Client, Input0, Options0) ->
@@ -5441,6 +6094,8 @@ remove_thing_from_billing_group(Client, Input0, Options0) ->
 %% You must specify either a `thingGroupArn' or a `thingGroupName' to
 %% identify the thing group and either a `thingArn' or a `thingName' to
 %% identify the thing to remove from the thing group.
+%%
+%% Requires permission to access the RemoveThingFromThingGroup action.
 remove_thing_from_thing_group(Client, Input) ->
     remove_thing_from_thing_group(Client, Input, []).
 remove_thing_from_thing_group(Client, Input0, Options0) ->
@@ -5468,6 +6123,8 @@ remove_thing_from_thing_group(Client, Input0, Options0) ->
 %% You must specify all parameters for the new rule. Creating rules is an
 %% administrator-level action. Any user who has permission to create rules
 %% will be able to access data processed by the rule.
+%%
+%% Requires permission to access the ReplaceTopicRule action.
 replace_topic_rule(Client, RuleName, Input) ->
     replace_topic_rule(Client, RuleName, Input, []).
 replace_topic_rule(Client, RuleName, Input0, Options0) ->
@@ -5491,6 +6148,8 @@ replace_topic_rule(Client, RuleName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The query search index.
+%%
+%% Requires permission to access the SearchIndex action.
 search_index(Client, Input) ->
     search_index(Client, Input, []).
 search_index(Client, Input0, Options0) ->
@@ -5517,6 +6176,8 @@ search_index(Client, Input0, Options0) ->
 %%
 %% This will be used if a websocket connection is made without specifying an
 %% authorizer.
+%%
+%% Requires permission to access the SetDefaultAuthorizer action.
 set_default_authorizer(Client, Input) ->
     set_default_authorizer(Client, Input, []).
 set_default_authorizer(Client, Input0, Options0) ->
@@ -5543,8 +6204,10 @@ set_default_authorizer(Client, Input0, Options0) ->
 %% default (operative) version.
 %%
 %% This action affects all certificates to which the policy is attached. To
-%% list the principals the policy is attached to, use the ListPrincipalPolicy
-%% API.
+%% list the principals the policy is attached to, use the
+%% `ListPrincipalPolicies' action.
+%%
+%% Requires permission to access the SetDefaultPolicyVersion action.
 set_default_policy_version(Client, PolicyName, PolicyVersionId, Input) ->
     set_default_policy_version(Client, PolicyName, PolicyVersionId, Input, []).
 set_default_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0) ->
@@ -5571,6 +6234,8 @@ set_default_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0
 %%
 %% NOTE: use of this command is not recommended. Use `SetV2LoggingOptions'
 %% instead.
+%%
+%% Requires permission to access the SetLoggingOptions action.
 set_logging_options(Client, Input) ->
     set_logging_options(Client, Input, []).
 set_logging_options(Client, Input0, Options0) ->
@@ -5594,6 +6259,8 @@ set_logging_options(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the logging level.
+%%
+%% Requires permission to access the SetV2LoggingLevel action.
 set_v2_logging_level(Client, Input) ->
     set_v2_logging_level(Client, Input, []).
 set_v2_logging_level(Client, Input0, Options0) ->
@@ -5617,6 +6284,8 @@ set_v2_logging_level(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the logging options for the V2 logging service.
+%%
+%% Requires permission to access the SetV2LoggingOptions action.
 set_v2_logging_options(Client, Input) ->
     set_v2_logging_options(Client, Input, []).
 set_v2_logging_options(Client, Input0, Options0) ->
@@ -5641,6 +6310,8 @@ set_v2_logging_options(Client, Input0, Options0) ->
 
 %% @doc Starts a task that applies a set of mitigation actions to the
 %% specified target.
+%%
+%% Requires permission to access the StartAuditMitigationActionsTask action.
 start_audit_mitigation_actions_task(Client, TaskId, Input) ->
     start_audit_mitigation_actions_task(Client, TaskId, Input, []).
 start_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
@@ -5664,6 +6335,8 @@ start_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a Device Defender ML Detect mitigation actions task.
+%%
+%% Requires permission to access the StartDetectMitigationActionsTask action.
 start_detect_mitigation_actions_task(Client, TaskId, Input) ->
     start_detect_mitigation_actions_task(Client, TaskId, Input, []).
 start_detect_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
@@ -5687,6 +6360,8 @@ start_detect_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts an on-demand Device Defender audit.
+%%
+%% Requires permission to access the StartOnDemandAuditTask action.
 start_on_demand_audit_task(Client, Input) ->
     start_on_demand_audit_task(Client, Input, []).
 start_on_demand_audit_task(Client, Input0, Options0) ->
@@ -5710,6 +6385,8 @@ start_on_demand_audit_task(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a bulk thing provisioning task.
+%%
+%% Requires permission to access the StartThingRegistrationTask action.
 start_thing_registration_task(Client, Input) ->
     start_thing_registration_task(Client, Input, []).
 start_thing_registration_task(Client, Input0, Options0) ->
@@ -5733,6 +6410,8 @@ start_thing_registration_task(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels a bulk thing provisioning task.
+%%
+%% Requires permission to access the StopThingRegistrationTask action.
 stop_thing_registration_task(Client, TaskId, Input) ->
     stop_thing_registration_task(Client, TaskId, Input, []).
 stop_thing_registration_task(Client, TaskId, Input0, Options0) ->
@@ -5758,6 +6437,8 @@ stop_thing_registration_task(Client, TaskId, Input0, Options0) ->
 %% @doc Adds to or modifies the tags of the given resource.
 %%
 %% Tags are metadata which can be used to manage a resource.
+%%
+%% Requires permission to access the TagResource action.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->
@@ -5780,11 +6461,13 @@ tag_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Tests if a specified principal is authorized to perform an AWS IoT
-%% action on a specified resource.
+%% @doc Tests if a specified principal is authorized to perform an IoT action
+%% on a specified resource.
 %%
 %% Use this to test and debug the authorization behavior of devices that
-%% connect to the AWS IoT device gateway.
+%% connect to the IoT device gateway.
+%%
+%% Requires permission to access the TestAuthorization action.
 test_authorization(Client, Input) ->
     test_authorization(Client, Input, []).
 test_authorization(Client, Input0, Options0) ->
@@ -5812,7 +6495,9 @@ test_authorization(Client, Input0, Options0) ->
 %% authorizer.
 %%
 %% Use this to test and debug the custom authorization behavior of devices
-%% that connect to the AWS IoT device gateway.
+%% that connect to the IoT device gateway.
+%%
+%% Requires permission to access the TestInvokeAuthorizer action.
 test_invoke_authorizer(Client, AuthorizerName, Input) ->
     test_invoke_authorizer(Client, AuthorizerName, Input, []).
 test_invoke_authorizer(Client, AuthorizerName, Input0, Options0) ->
@@ -5835,7 +6520,10 @@ test_invoke_authorizer(Client, AuthorizerName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Transfers the specified certificate to the specified AWS account.
+%% @doc Transfers the specified certificate to the specified Amazon Web
+%% Services account.
+%%
+%% Requires permission to access the TransferCertificate action.
 %%
 %% You can cancel the transfer until it is acknowledged by the recipient.
 %%
@@ -5843,10 +6531,10 @@ test_invoke_authorizer(Client, AuthorizerName, Input0, Options0) ->
 %% the caller to notify the transfer target.
 %%
 %% The certificate being transferred must not be in the ACTIVE state. You can
-%% use the UpdateCertificate API to deactivate it.
+%% use the `UpdateCertificate' action to deactivate it.
 %%
 %% The certificate must not have any policies attached to it. You can use the
-%% DetachPrincipalPolicy API to detach them.
+%% `DetachPolicy' action to detach them.
 transfer_certificate(Client, CertificateId, Input) ->
     transfer_certificate(Client, CertificateId, Input, []).
 transfer_certificate(Client, CertificateId, Input0, Options0) ->
@@ -5871,6 +6559,8 @@ transfer_certificate(Client, CertificateId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the given tags (metadata) from the resource.
+%%
+%% Requires permission to access the UntagResource action.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 untag_resource(Client, Input0, Options0) ->
@@ -5898,6 +6588,8 @@ untag_resource(Client, Input0, Options0) ->
 %%
 %% Settings include how audit notifications are sent and which audit checks
 %% are enabled or disabled.
+%%
+%% Requires permission to access the UpdateAccountAuditConfiguration action.
 update_account_audit_configuration(Client, Input) ->
     update_account_audit_configuration(Client, Input, []).
 update_account_audit_configuration(Client, Input0, Options0) ->
@@ -5944,6 +6636,8 @@ update_audit_suppression(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an authorizer.
+%%
+%% Requires permission to access the UpdateAuthorizer action.
 update_authorizer(Client, AuthorizerName, Input) ->
     update_authorizer(Client, AuthorizerName, Input, []).
 update_authorizer(Client, AuthorizerName, Input0, Options0) ->
@@ -5967,6 +6661,8 @@ update_authorizer(Client, AuthorizerName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates information about the billing group.
+%%
+%% Requires permission to access the UpdateBillingGroup action.
 update_billing_group(Client, BillingGroupName, Input) ->
     update_billing_group(Client, BillingGroupName, Input, []).
 update_billing_group(Client, BillingGroupName, Input0, Options0) ->
@@ -5990,6 +6686,8 @@ update_billing_group(Client, BillingGroupName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a registered CA certificate.
+%%
+%% Requires permission to access the UpdateCACertificate action.
 update_ca_certificate(Client, CertificateId, Input) ->
     update_ca_certificate(Client, CertificateId, Input, []).
 update_ca_certificate(Client, CertificateId, Input0, Options0) ->
@@ -6018,13 +6716,15 @@ update_ca_certificate(Client, CertificateId, Input0, Options0) ->
 %%
 %% This operation is idempotent.
 %%
+%% Requires permission to access the UpdateCertificate action.
+%%
 %% Certificates must be in the ACTIVE state to authenticate devices that use
-%% a certificate to connect to AWS IoT.
+%% a certificate to connect to IoT.
 %%
 %% Within a few minutes of updating a certificate from the ACTIVE state to
-%% any other state, AWS IoT disconnects all devices that used that
-%% certificate to connect. Devices cannot use a certificate that is not in
-%% the ACTIVE state to reconnect.
+%% any other state, IoT disconnects all devices that used that certificate to
+%% connect. Devices cannot use a certificate that is not in the ACTIVE state
+%% to reconnect.
 update_certificate(Client, CertificateId, Input) ->
     update_certificate(Client, CertificateId, Input, []).
 update_certificate(Client, CertificateId, Input0, Options0) ->
@@ -6049,6 +6749,8 @@ update_certificate(Client, CertificateId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a Device Defender detect custom metric.
+%%
+%% Requires permission to access the UpdateCustomMetric action.
 update_custom_metric(Client, MetricName, Input) ->
     update_custom_metric(Client, MetricName, Input, []).
 update_custom_metric(Client, MetricName, Input0, Options0) ->
@@ -6075,6 +6777,8 @@ update_custom_metric(Client, MetricName, Input0, Options0) ->
 %%
 %% You cannot change the type of a dimension after it is created (you can
 %% delete it and recreate it).
+%%
+%% Requires permission to access the UpdateDimension action.
 update_dimension(Client, Name, Input) ->
     update_dimension(Client, Name, Input, []).
 update_dimension(Client, Name, Input0, Options0) ->
@@ -6101,8 +6805,7 @@ update_dimension(Client, Name, Input0, Options0) ->
 %%
 %% Domain configurations for default endpoints can't be updated.
 %%
-%% The domain configuration feature is in public preview and is subject to
-%% change.
+%% Requires permission to access the UpdateDomainConfiguration action.
 update_domain_configuration(Client, DomainConfigurationName, Input) ->
     update_domain_configuration(Client, DomainConfigurationName, Input, []).
 update_domain_configuration(Client, DomainConfigurationName, Input0, Options0) ->
@@ -6126,6 +6829,8 @@ update_domain_configuration(Client, DomainConfigurationName, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a dynamic thing group.
+%%
+%% Requires permission to access the UpdateDynamicThingGroup action.
 update_dynamic_thing_group(Client, ThingGroupName, Input) ->
     update_dynamic_thing_group(Client, ThingGroupName, Input, []).
 update_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
@@ -6149,6 +6854,8 @@ update_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the event configurations.
+%%
+%% Requires permission to access the UpdateEventConfigurations action.
 update_event_configurations(Client, Input) ->
     update_event_configurations(Client, Input, []).
 update_event_configurations(Client, Input0, Options0) ->
@@ -6171,7 +6878,34 @@ update_event_configurations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the data for a fleet metric.
+%%
+%% Requires permission to access the UpdateFleetMetric action.
+update_fleet_metric(Client, MetricName, Input) ->
+    update_fleet_metric(Client, MetricName, Input, []).
+update_fleet_metric(Client, MetricName, Input0, Options0) ->
+    Method = patch,
+    Path = ["/fleet-metric/", aws_util:encode_uri(MetricName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates the search configuration.
+%%
+%% Requires permission to access the UpdateIndexingConfiguration action.
 update_indexing_configuration(Client, Input) ->
     update_indexing_configuration(Client, Input, []).
 update_indexing_configuration(Client, Input0, Options0) ->
@@ -6195,6 +6929,8 @@ update_indexing_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates supported fields of the specified job.
+%%
+%% Requires permission to access the UpdateJob action.
 update_job(Client, JobId, Input) ->
     update_job(Client, JobId, Input, []).
 update_job(Client, JobId, Input0, Options0) ->
@@ -6219,6 +6955,8 @@ update_job(Client, JobId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the definition for the specified mitigation action.
+%%
+%% Requires permission to access the UpdateMitigationAction action.
 update_mitigation_action(Client, ActionName, Input) ->
     update_mitigation_action(Client, ActionName, Input, []).
 update_mitigation_action(Client, ActionName, Input0, Options0) ->
@@ -6242,6 +6980,8 @@ update_mitigation_action(Client, ActionName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a fleet provisioning template.
+%%
+%% Requires permission to access the UpdateProvisioningTemplate action.
 update_provisioning_template(Client, TemplateName, Input) ->
     update_provisioning_template(Client, TemplateName, Input, []).
 update_provisioning_template(Client, TemplateName, Input0, Options0) ->
@@ -6265,6 +7005,8 @@ update_provisioning_template(Client, TemplateName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a role alias.
+%%
+%% Requires permission to access the UpdateRoleAlias action.
 update_role_alias(Client, RoleAlias, Input) ->
     update_role_alias(Client, RoleAlias, Input, []).
 update_role_alias(Client, RoleAlias, Input0, Options0) ->
@@ -6289,6 +7031,8 @@ update_role_alias(Client, RoleAlias, Input0, Options0) ->
 
 %% @doc Updates a scheduled audit, including which checks are performed and
 %% how often the audit takes place.
+%%
+%% Requires permission to access the UpdateScheduledAudit action.
 update_scheduled_audit(Client, ScheduledAuditName, Input) ->
     update_scheduled_audit(Client, ScheduledAuditName, Input, []).
 update_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
@@ -6312,6 +7056,8 @@ update_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a Device Defender security profile.
+%%
+%% Requires permission to access the UpdateSecurityProfile action.
 update_security_profile(Client, SecurityProfileName, Input) ->
     update_security_profile(Client, SecurityProfileName, Input, []).
 update_security_profile(Client, SecurityProfileName, Input0, Options0) ->
@@ -6338,6 +7084,8 @@ update_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 %% @doc Updates an existing stream.
 %%
 %% The stream version will be incremented by one.
+%%
+%% Requires permission to access the UpdateStream action.
 update_stream(Client, StreamId, Input) ->
     update_stream(Client, StreamId, Input, []).
 update_stream(Client, StreamId, Input0, Options0) ->
@@ -6361,6 +7109,8 @@ update_stream(Client, StreamId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the data for a thing.
+%%
+%% Requires permission to access the UpdateThing action.
 update_thing(Client, ThingName, Input) ->
     update_thing(Client, ThingName, Input, []).
 update_thing(Client, ThingName, Input0, Options0) ->
@@ -6384,6 +7134,8 @@ update_thing(Client, ThingName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update a thing group.
+%%
+%% Requires permission to access the UpdateThingGroup action.
 update_thing_group(Client, ThingGroupName, Input) ->
     update_thing_group(Client, ThingGroupName, Input, []).
 update_thing_group(Client, ThingGroupName, Input0, Options0) ->
@@ -6407,6 +7159,8 @@ update_thing_group(Client, ThingGroupName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the groups to which the thing belongs.
+%%
+%% Requires permission to access the UpdateThingGroupsForThing action.
 update_thing_groups_for_thing(Client, Input) ->
     update_thing_groups_for_thing(Client, Input, []).
 update_thing_groups_for_thing(Client, Input0, Options0) ->
@@ -6433,6 +7187,8 @@ update_thing_groups_for_thing(Client, Input0, Options0) ->
 %%
 %% You use this to change the status, endpoint URL, or confirmation URL of
 %% the destination.
+%%
+%% Requires permission to access the UpdateTopicRuleDestination action.
 update_topic_rule_destination(Client, Input) ->
     update_topic_rule_destination(Client, Input, []).
 update_topic_rule_destination(Client, Input0, Options0) ->
@@ -6456,6 +7212,8 @@ update_topic_rule_destination(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Validates a Device Defender security profile behaviors specification.
+%%
+%% Requires permission to access the ValidateSecurityProfileBehaviors action.
 validate_security_profile_behaviors(Client, Input) ->
     validate_security_profile_behaviors(Client, Input, []).
 validate_security_profile_behaviors(Client, Input0, Options0) ->
@@ -6513,6 +7271,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

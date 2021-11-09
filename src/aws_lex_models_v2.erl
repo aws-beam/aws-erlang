@@ -14,12 +14,20 @@
          create_bot_locale/5,
          create_bot_version/3,
          create_bot_version/4,
+         create_export/2,
+         create_export/3,
          create_intent/5,
          create_intent/6,
+         create_resource_policy/3,
+         create_resource_policy/4,
+         create_resource_policy_statement/3,
+         create_resource_policy_statement/4,
          create_slot/6,
          create_slot/7,
          create_slot_type/5,
          create_slot_type/6,
+         create_upload_url/2,
+         create_upload_url/3,
          delete_bot/3,
          delete_bot/4,
          delete_bot_alias/4,
@@ -28,12 +36,22 @@
          delete_bot_locale/6,
          delete_bot_version/4,
          delete_bot_version/5,
+         delete_export/3,
+         delete_export/4,
+         delete_import/3,
+         delete_import/4,
          delete_intent/6,
          delete_intent/7,
+         delete_resource_policy/3,
+         delete_resource_policy/4,
+         delete_resource_policy_statement/4,
+         delete_resource_policy_statement/5,
          delete_slot/7,
          delete_slot/8,
          delete_slot_type/6,
          delete_slot_type/7,
+         delete_utterances/3,
+         delete_utterances/4,
          describe_bot/2,
          describe_bot/4,
          describe_bot/5,
@@ -46,15 +64,26 @@
          describe_bot_version/3,
          describe_bot_version/5,
          describe_bot_version/6,
+         describe_export/2,
+         describe_export/4,
+         describe_export/5,
+         describe_import/2,
+         describe_import/4,
+         describe_import/5,
          describe_intent/5,
          describe_intent/7,
          describe_intent/8,
+         describe_resource_policy/2,
+         describe_resource_policy/4,
+         describe_resource_policy/5,
          describe_slot/6,
          describe_slot/8,
          describe_slot/9,
          describe_slot_type/5,
          describe_slot_type/7,
          describe_slot_type/8,
+         list_aggregated_utterances/3,
+         list_aggregated_utterances/4,
          list_bot_aliases/3,
          list_bot_aliases/4,
          list_bot_locales/4,
@@ -67,6 +96,10 @@
          list_built_in_intents/4,
          list_built_in_slot_types/3,
          list_built_in_slot_types/4,
+         list_exports/2,
+         list_exports/3,
+         list_imports/2,
+         list_imports/3,
          list_intents/5,
          list_intents/6,
          list_slot_types/5,
@@ -76,6 +109,8 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         start_import/2,
+         start_import/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -86,8 +121,12 @@
          update_bot_alias/5,
          update_bot_locale/5,
          update_bot_locale/6,
+         update_export/3,
+         update_export/4,
          update_intent/6,
          update_intent/7,
+         update_resource_policy/3,
+         update_resource_policy/4,
          update_slot/7,
          update_slot/8,
          update_slot_type/6,
@@ -235,6 +274,40 @@ create_bot_version(Client, BotId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a zip archive containing the contents of a bot or a bot
+%% locale.
+%%
+%% The archive contains a directory structure that contains JSON files that
+%% define the bot.
+%%
+%% You can create an archive that contains the complete definition of a bot,
+%% or you can specify that the archive contain only the definition of a
+%% single bot locale.
+%%
+%% For more information about exporting bots, and about the structure of the
+%% export archive, see Importing and exporting bots
+create_export(Client, Input) ->
+    create_export(Client, Input, []).
+create_export(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/exports/"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an intent.
 %%
 %% To define the interaction between the user and your bot, you define one or
@@ -289,6 +362,59 @@ create_intent(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new resource policy with the specified policy statements.
+create_resource_policy(Client, ResourceArn, Input) ->
+    create_resource_policy(Client, ResourceArn, Input, []).
+create_resource_policy(Client, ResourceArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/policy/", aws_util:encode_uri(ResourceArn), "/"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds a new resource policy statement to a bot or bot alias.
+%%
+%% If a resource policy exists, the statement is added to the current
+%% resource policy. If a policy doesn't exist, a new policy is created.
+%%
+%% You can't create a resource policy statement that allows cross-account
+%% access.
+create_resource_policy_statement(Client, ResourceArn, Input) ->
+    create_resource_policy_statement(Client, ResourceArn, Input, []).
+create_resource_policy_statement(Client, ResourceArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/policy/", aws_util:encode_uri(ResourceArn), "/statements/"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"expectedRevisionId">>, <<"expectedRevisionId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a slot in an intent.
 %%
 %% A slot is a variable needed to fulfill an intent. For example, an
@@ -326,6 +452,30 @@ create_slot_type(Client, BotId, BotVersion, LocaleId, Input) ->
 create_slot_type(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = put,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/slottypes/"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets a pre-signed S3 write URL that you use to upload the zip archive
+%% when importing a bot or a bot locale.
+create_upload_url(Client, Input) ->
+    create_upload_url(Client, Input, []).
+create_upload_url(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/createuploadurl/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -453,6 +603,54 @@ delete_bot_version(Client, BotId, BotVersion, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Removes a previous export and the associated files stored in an S3
+%% bucket.
+delete_export(Client, ExportId, Input) ->
+    delete_export(Client, ExportId, Input, []).
+delete_export(Client, ExportId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/exports/", aws_util:encode_uri(ExportId), "/"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes a previous import and the associated file stored in an S3
+%% bucket.
+delete_import(Client, ImportId, Input) ->
+    delete_import(Client, ImportId, Input, []).
+delete_import(Client, ImportId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/imports/", aws_util:encode_uri(ImportId), "/"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Removes the specified intent.
 %%
 %% Deleting an intent also deletes the slots associated with the intent.
@@ -476,6 +674,62 @@ delete_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options0) -
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes an existing policy from a bot or bot alias.
+%%
+%% If the resource doesn't have a policy attached, Amazon Lex returns an
+%% exception.
+delete_resource_policy(Client, ResourceArn, Input) ->
+    delete_resource_policy(Client, ResourceArn, Input, []).
+delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/policy/", aws_util:encode_uri(ResourceArn), "/"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"expectedRevisionId">>, <<"expectedRevisionId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a policy statement from a resource policy.
+%%
+%% If you delete the last statement from a policy, the policy is deleted. If
+%% you specify a statement ID that doesn't exist in the policy, or if the bot
+%% or bot alias doesn't have a policy attached, Amazon Lex returns an
+%% exception.
+delete_resource_policy_statement(Client, ResourceArn, StatementId, Input) ->
+    delete_resource_policy_statement(Client, ResourceArn, StatementId, Input, []).
+delete_resource_policy_statement(Client, ResourceArn, StatementId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/policy/", aws_util:encode_uri(ResourceArn), "/statements/", aws_util:encode_uri(StatementId), "/"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"expectedRevisionId">>, <<"expectedRevisionId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified slot from an intent.
@@ -525,6 +779,42 @@ delete_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input0, Option
 
     QueryMapping = [
                      {<<"skipResourceInUseCheck">>, <<"skipResourceInUseCheck">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes stored utterances.
+%%
+%% Amazon Lex stores the utterances that users send to your bot. Utterances
+%% are stored for 15 days for use with the operation, and then stored
+%% indefinitely for use in improving the ability of your bot to respond to
+%% user input..
+%%
+%% Use the `DeleteUtterances' operation to manually delete utterances for a
+%% specific session. When you use the `DeleteUtterances' operation,
+%% utterances stored for improving your bot's ability to respond to user
+%% input are deleted immediately. Utterances stored for use with the
+%% `ListAggregatedUtterances' operation are deleted after 15 days.
+delete_utterances(Client, BotId, Input) ->
+    delete_utterances(Client, BotId, Input, []).
+delete_utterances(Client, BotId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/utterances/"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"localeId">>, <<"localeId">>},
+                     {<<"sessionId">>, <<"sessionId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -621,6 +911,52 @@ describe_bot_version(Client, BotId, BotVersion, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets information about a specific export.
+describe_export(Client, ExportId)
+  when is_map(Client) ->
+    describe_export(Client, ExportId, #{}, #{}).
+
+describe_export(Client, ExportId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_export(Client, ExportId, QueryMap, HeadersMap, []).
+
+describe_export(Client, ExportId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/exports/", aws_util:encode_uri(ExportId), "/"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets information about a specific import.
+describe_import(Client, ImportId)
+  when is_map(Client) ->
+    describe_import(Client, ImportId, #{}, #{}).
+
+describe_import(Client, ImportId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_import(Client, ImportId, QueryMap, HeadersMap, []).
+
+describe_import(Client, ImportId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/imports/", aws_util:encode_uri(ImportId), "/"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns metadata about an intent.
 describe_intent(Client, BotId, BotVersion, IntentId, LocaleId)
   when is_map(Client) ->
@@ -633,6 +969,29 @@ describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, QueryMap, Headers
 describe_intent(Client, BotId, BotVersion, IntentId, LocaleId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), "/"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the resource policy and policy revision for a bot or bot alias.
+describe_resource_policy(Client, ResourceArn)
+  when is_map(Client) ->
+    describe_resource_policy(Client, ResourceArn, #{}, #{}).
+
+describe_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+describe_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/policy/", aws_util:encode_uri(ResourceArn), "/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -689,6 +1048,52 @@ describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, QueryMap, He
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Provides a list of utterances that users have sent to the bot.
+%%
+%% Utterances are aggregated by the text of the utterance. For example, all
+%% instances where customers used the phrase "I want to order pizza" are
+%% aggregated into the same line in the response.
+%%
+%% You can see both detected utterances and missed utterances. A detected
+%% utterance is where the bot properly recognized the utterance and activated
+%% the associated intent. A missed utterance was not recognized by the bot
+%% and didn't activate an intent.
+%%
+%% Utterances can be aggregated for a bot alias or for a bot version, but not
+%% both at the same time.
+%%
+%% Utterances statistics are not generated under the following conditions:
+%%
+%% <ul> <li> The `childDirected' field was set to true when the bot was
+%% created.
+%%
+%% </li> <li> You are using slot obfuscation with one or more slots.
+%%
+%% </li> <li> You opted out of participating in improving Amazon Lex.
+%%
+%% </li> </ul>
+list_aggregated_utterances(Client, BotId, Input) ->
+    list_aggregated_utterances(Client, BotId, Input, []).
+list_aggregated_utterances(Client, BotId, Input0, Options0) ->
+    Method = post,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/aggregatedutterances/"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets a list of aliases for the specified bot.
 list_bot_aliases(Client, BotId, Input) ->
@@ -842,6 +1247,56 @@ list_built_in_slot_types(Client, LocaleId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists the exports for a bot or bot locale.
+%%
+%% Exports are kept in the list for 7 days.
+list_exports(Client, Input) ->
+    list_exports(Client, Input, []).
+list_exports(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/exports/"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the imports for a bot or bot locale.
+%%
+%% Imports are kept in the list for 7 days.
+list_imports(Client, Input) ->
+    list_imports(Client, Input, []).
+list_imports(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/imports/"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Get a list of intents that meet the specified criteria.
 list_intents(Client, BotId, BotVersion, LocaleId, Input) ->
     list_intents(Client, BotId, BotVersion, LocaleId, Input, []).
@@ -936,6 +1391,30 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Starts importing a bot or bot locale from a zip archive that you
+%% uploaded to an S3 bucket.
+start_import(Client, Input) ->
+    start_import(Client, Input, []).
+start_import(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/imports/"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds the specified tags to the specified resource.
 %%
@@ -1056,6 +1535,34 @@ update_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the password used to protect an export zip archive.
+%%
+%% The password is not required. If you don't supply a password, Amazon Lex
+%% generates a zip file that is not protected by a password. This is the
+%% archive that is available at the pre-signed S3 URL provided by the
+%% operation.
+update_export(Client, ExportId, Input) ->
+    update_export(Client, ExportId, Input, []).
+update_export(Client, ExportId, Input0, Options0) ->
+    Method = put,
+    Path = ["/exports/", aws_util:encode_uri(ExportId), "/"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates the settings for an intent.
 update_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input) ->
     update_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input, []).
@@ -1077,6 +1584,33 @@ update_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options0) -
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Replaces the existing resource policy for a bot or bot alias with a
+%% new one.
+%%
+%% If the policy doesn't exist, Amazon Lex returns an exception.
+update_resource_policy(Client, ResourceArn, Input) ->
+    update_resource_policy(Client, ResourceArn, Input, []).
+update_resource_policy(Client, ResourceArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/policy/", aws_util:encode_uri(ResourceArn), "/"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"expectedRevisionId">>, <<"expectedRevisionId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the settings for a slot.
@@ -1160,6 +1694,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

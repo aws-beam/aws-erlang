@@ -1,27 +1,31 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS IoT Greengrass brings local compute, messaging, data management,
+%% @doc IoT Greengrass brings local compute, messaging, data management,
 %% sync, and ML inference capabilities to edge devices.
 %%
 %% This enables devices to collect and analyze data closer to the source of
 %% information, react autonomously to local events, and communicate securely
 %% with each other on local networks. Local devices can also communicate
-%% securely with AWS IoT Core and export IoT data to the AWS Cloud. AWS IoT
-%% Greengrass developers can use AWS Lambda functions and components to
-%% create and deploy applications to fleets of edge devices for local
-%% operation.
+%% securely with Amazon Web Services IoT Core and export IoT data to the
+%% Amazon Web Services Cloud. IoT Greengrass developers can use Lambda
+%% functions and components to create and deploy applications to fleets of
+%% edge devices for local operation.
 %%
-%% AWS IoT Greengrass Version 2 provides a new major version of the AWS IoT
+%% IoT Greengrass Version 2 provides a new major version of the IoT
 %% Greengrass Core software, new APIs, and a new console. Use this API
-%% reference to learn how to use the AWS IoT Greengrass V2 API operations to
+%% reference to learn how to use the IoT Greengrass V2 API operations to
 %% manage components, manage deployments, and core devices.
 %%
-%% For more information, see What is AWS IoT Greengrass? in the AWS IoT
-%% Greengrass V2 Developer Guide.
+%% For more information, see What is IoT Greengrass? in the IoT Greengrass V2
+%% Developer Guide.
 -module(aws_greengrassv2).
 
--export([cancel_deployment/3,
+-export([batch_associate_client_device_with_core_device/3,
+         batch_associate_client_device_with_core_device/4,
+         batch_disassociate_client_device_from_core_device/3,
+         batch_disassociate_client_device_from_core_device/4,
+         cancel_deployment/3,
          cancel_deployment/4,
          create_component_version/2,
          create_component_version/3,
@@ -46,6 +50,9 @@
          get_deployment/2,
          get_deployment/4,
          get_deployment/5,
+         list_client_devices_associated_with_core_device/2,
+         list_client_devices_associated_with_core_device/4,
+         list_client_devices_associated_with_core_device/5,
          list_component_versions/2,
          list_component_versions/4,
          list_component_versions/5,
@@ -80,6 +87,69 @@
 %% API
 %%====================================================================
 
+%% @doc Associate a list of client devices with a core device.
+%%
+%% Use this API operation to specify which client devices can discover a core
+%% device through cloud discovery. With cloud discovery, client devices
+%% connect to IoT Greengrass to retrieve associated core devices'
+%% connectivity information and certificates. For more information, see
+%% Configure cloud discovery in the IoT Greengrass V2 Developer Guide.
+%%
+%% Client devices are local IoT devices that connect to and communicate with
+%% an IoT Greengrass core device over MQTT. You can connect client devices to
+%% a core device to sync MQTT messages and data to Amazon Web Services IoT
+%% Core and interact with client devices in Greengrass components. For more
+%% information, see Interact with local IoT devices in the IoT Greengrass V2
+%% Developer Guide.
+batch_associate_client_device_with_core_device(Client, CoreDeviceThingName, Input) ->
+    batch_associate_client_device_with_core_device(Client, CoreDeviceThingName, Input, []).
+batch_associate_client_device_with_core_device(Client, CoreDeviceThingName, Input0, Options0) ->
+    Method = post,
+    Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), "/associateClientDevices"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disassociate a list of client devices from a core device.
+%%
+%% After you disassociate a client device from a core device, the client
+%% device won't be able to use cloud discovery to retrieve the core device's
+%% connectivity information and certificates.
+batch_disassociate_client_device_from_core_device(Client, CoreDeviceThingName, Input) ->
+    batch_disassociate_client_device_from_core_device(Client, CoreDeviceThingName, Input, []).
+batch_disassociate_client_device_from_core_device(Client, CoreDeviceThingName, Input0, Options0) ->
+    Method = post,
+    Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), "/disassociateClientDevices"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Cancels a deployment.
 %%
 %% This operation cancels the deployment for devices that haven't yet
@@ -109,10 +179,10 @@ cancel_deployment(Client, DeploymentId, Input0, Options0) ->
 
 %% @doc Creates a component.
 %%
-%% Components are software that run on AWS IoT Greengrass core devices. After
-%% you develop and test a component on your core device, you can use this
-%% operation to upload your component to AWS IoT Greengrass. Then, you can
-%% deploy the component to other core devices.
+%% Components are software that run on Greengrass core devices. After you
+%% develop and test a component on your core device, you can use this
+%% operation to upload your component to IoT Greengrass. Then, you can deploy
+%% the component to other core devices.
 %%
 %% You can use this operation to do the following:
 %%
@@ -120,18 +190,18 @@ cancel_deployment(Client, DeploymentId, Input0, Options0) ->
 %%
 %% Create a component from a recipe, which is a file that defines the
 %% component's metadata, parameters, dependencies, lifecycle, artifacts, and
-%% platform capability. For more information, see AWS IoT Greengrass
-%% component recipe reference in the AWS IoT Greengrass V2 Developer Guide.
+%% platform capability. For more information, see IoT Greengrass component
+%% recipe reference in the IoT Greengrass V2 Developer Guide.
 %%
 %% To create a component from a recipe, specify `inlineRecipe' when you call
 %% this operation.
 %%
 %% </li> <li> Create components from Lambda functions
 %%
-%% Create a component from an AWS Lambda function that runs on AWS IoT
-%% Greengrass. This creates a recipe and artifacts from the Lambda function's
-%% deployment package. You can use this operation to migrate Lambda functions
-%% from AWS IoT Greengrass V1 to AWS IoT Greengrass V2.
+%% Create a component from an Lambda function that runs on IoT Greengrass.
+%% This creates a recipe and artifacts from the Lambda function's deployment
+%% package. You can use this operation to migrate Lambda functions from IoT
+%% Greengrass V1 to IoT Greengrass V2.
 %%
 %% This function only accepts Lambda functions that use the following
 %% runtimes:
@@ -174,16 +244,16 @@ create_component_version(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a continuous deployment for a target, which is a AWS IoT
-%% Greengrass core device or group of core devices.
+%% @doc Creates a continuous deployment for a target, which is a Greengrass
+%% core device or group of core devices.
 %%
 %% When you add a new core device to a group of core devices that has a
-%% deployment, AWS IoT Greengrass deploys that group's deployment to the new
+%% deployment, IoT Greengrass deploys that group's deployment to the new
 %% device.
 %%
 %% You can define one deployment for each target. When you create a new
 %% deployment for a target that has an existing deployment, you replace the
-%% previous deployment. AWS IoT Greengrass applies the new deployment to the
+%% previous deployment. IoT Greengrass applies the new deployment to the
 %% target devices.
 %%
 %% Every deployment has a revision number that indicates how many deployment
@@ -191,8 +261,8 @@ create_component_version(Client, Input0, Options0) ->
 %% revision of an existing deployment. This operation returns the revision
 %% number of the new deployment when you create it.
 %%
-%% For more information, see the Create deployments in the AWS IoT Greengrass
-%% V2 Developer Guide.
+%% For more information, see the Create deployments in the IoT Greengrass V2
+%% Developer Guide.
 create_deployment(Client, Input) ->
     create_deployment(Client, Input, []).
 create_deployment(Client, Input0, Options0) ->
@@ -215,7 +285,7 @@ create_deployment(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a version of a component from AWS IoT Greengrass.
+%% @doc Deletes a version of a component from IoT Greengrass.
 %%
 %% This operation deletes the component's recipe and artifacts. As a result,
 %% deployments that refer to this component version will fail. If you have
@@ -243,11 +313,11 @@ delete_component(Client, Arn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a AWS IoT Greengrass core device, which is an AWS IoT thing.
+%% @doc Deletes a Greengrass core device, which is an IoT thing.
 %%
 %% This operation removes the core device from the list of core devices. This
-%% operation doesn't delete the AWS IoT thing. For more information about how
-%% to delete the AWS IoT thing, see DeleteThing in the AWS IoT API Reference.
+%% operation doesn't delete the IoT thing. For more information about how to
+%% delete the IoT thing, see DeleteThing in the IoT API Reference.
 delete_core_device(Client, CoreDeviceThingName, Input) ->
     delete_core_device(Client, CoreDeviceThingName, Input, []).
 delete_core_device(Client, CoreDeviceThingName, Input0, Options0) ->
@@ -349,7 +419,7 @@ get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves metadata for a AWS IoT Greengrass core device.
+%% @doc Retrieves metadata for a Greengrass core device.
 get_core_device(Client, CoreDeviceThingName)
   when is_map(Client) ->
     get_core_device(Client, CoreDeviceThingName, #{}, #{}).
@@ -374,8 +444,7 @@ get_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets a deployment.
 %%
-%% Deployments define the components that run on AWS IoT Greengrass core
-%% devices.
+%% Deployments define the components that run on Greengrass core devices.
 get_deployment(Client, DeploymentId)
   when is_map(Client) ->
     get_deployment(Client, DeploymentId, #{}, #{}).
@@ -398,7 +467,38 @@ get_deployment(Client, DeploymentId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves a paginated list of client devices that are associated with
+%% a core device.
+list_client_devices_associated_with_core_device(Client, CoreDeviceThingName)
+  when is_map(Client) ->
+    list_client_devices_associated_with_core_device(Client, CoreDeviceThingName, #{}, #{}).
+
+list_client_devices_associated_with_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_client_devices_associated_with_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap, []).
+
+list_client_devices_associated_with_core_device(Client, CoreDeviceThingName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/greengrass/v2/coreDevices/", aws_util:encode_uri(CoreDeviceThingName), "/associatedClientDevices"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a paginated list of all versions for a component.
+%%
+%% Greater versions are listed first.
 list_component_versions(Client, Arn)
   when is_map(Client) ->
     list_component_versions(Client, Arn, #{}, #{}).
@@ -457,7 +557,7 @@ list_components(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves a paginated list of AWS IoT Greengrass core devices.
+%% @doc Retrieves a paginated list of Greengrass core devices.
 list_core_devices(Client)
   when is_map(Client) ->
     list_core_devices(Client, #{}, #{}).
@@ -517,8 +617,8 @@ list_deployments(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves a paginated list of deployment jobs that AWS IoT Greengrass
-%% sends to AWS IoT Greengrass core devices.
+%% @doc Retrieves a paginated list of deployment jobs that IoT Greengrass
+%% sends to Greengrass core devices.
 list_effective_deployments(Client, CoreDeviceThingName)
   when is_map(Client) ->
     list_effective_deployments(Client, CoreDeviceThingName, #{}, #{}).
@@ -546,8 +646,8 @@ list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap, Op
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves a paginated list of the components that a AWS IoT
-%% Greengrass core device runs.
+%% @doc Retrieves a paginated list of the components that a Greengrass core
+%% device runs.
 list_installed_components(Client, CoreDeviceThingName)
   when is_map(Client) ->
     list_installed_components(Client, CoreDeviceThingName, #{}, #{}).
@@ -575,7 +675,7 @@ list_installed_components(Client, CoreDeviceThingName, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the list of tags for an AWS IoT Greengrass resource.
+%% @doc Retrieves the list of tags for an IoT Greengrass resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -601,8 +701,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves a list of components that meet the component, version, and
 %% platform requirements of a deployment.
 %%
-%% AWS IoT Greengrass core devices call this operation when they receive a
-%% deployment to identify the components to install.
+%% Greengrass core devices call this operation when they receive a deployment
+%% to identify the components to install.
 %%
 %% This operation identifies components that meet all dependency requirements
 %% for a deployment. If the requirements conflict, then this operation
@@ -610,14 +710,15 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% component `A' requires version `>2.0.0' and component `B' requires version
 %% `<2.0.0' of a component dependency.
 %%
-%% When you specify the component candidates to resolve, AWS IoT Greengrass
+%% When you specify the component candidates to resolve, IoT Greengrass
 %% compares each component's digest from the core device with the component's
-%% digest in the AWS Cloud. If the digests don't match, then AWS IoT
-%% Greengrass specifies to use the version from the AWS Cloud.
+%% digest in the Amazon Web Services Cloud. If the digests don't match, then
+%% IoT Greengrass specifies to use the version from the Amazon Web Services
+%% Cloud.
 %%
 %% To use this operation, you must use the data plane API endpoint and
-%% authenticate with an AWS IoT device certificate. For more information, see
-%% AWS IoT Greengrass endpoints and quotas.
+%% authenticate with an IoT device certificate. For more information, see IoT
+%% Greengrass endpoints and quotas.
 resolve_component_candidates(Client, Input) ->
     resolve_component_candidates(Client, Input, []).
 resolve_component_candidates(Client, Input0, Options0) ->
@@ -640,7 +741,7 @@ resolve_component_candidates(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds tags to an AWS IoT Greengrass resource.
+%% @doc Adds tags to an IoT Greengrass resource.
 %%
 %% If a tag already exists for the resource, this operation updates the tag's
 %% value.
@@ -666,7 +767,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes a tag from an AWS IoT Greengrass resource.
+%% @doc Removes a tag from an IoT Greengrass resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -725,6 +826,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

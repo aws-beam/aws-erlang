@@ -16,6 +16,8 @@
          batch_update_schedule/4,
          cancel_input_device_transfer/3,
          cancel_input_device_transfer/4,
+         claim_device/2,
+         claim_device/3,
          create_channel/2,
          create_channel/3,
          create_input/2,
@@ -266,6 +268,32 @@ cancel_input_device_transfer(Client, InputDeviceId, Input) ->
 cancel_input_device_transfer(Client, InputDeviceId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/cancel"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Send a request to claim an AWS Elemental device that you have
+%% purchased from a third-party vendor.
+%%
+%% After the request succeeds, you will own the device.
+claim_device(Client, Input) ->
+    claim_device(Client, Input, []).
+claim_device(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/prod/claimDevice"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1577,6 +1605,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;

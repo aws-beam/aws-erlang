@@ -1,24 +1,35 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc The Amazon AppIntegrations APIs are in preview release and are
-%% subject to change.
-%%
-%% The Amazon AppIntegrations service enables you to configure and reuse
+%% @doc The Amazon AppIntegrations service enables you to configure and reuse
 %% connections to external applications.
 %%
 %% For information about how you can use external applications with Amazon
-%% Connect, see Set up pre-built integrations in the Amazon Connect
-%% Administrator Guide.
+%% Connect, see Set up pre-built integrations and Deliver information to
+%% agents using Amazon Connect Wisdom in the Amazon Connect Administrator
+%% Guide.
 -module(aws_appintegrations).
 
--export([create_event_integration/2,
+-export([create_data_integration/2,
+         create_data_integration/3,
+         create_event_integration/2,
          create_event_integration/3,
+         delete_data_integration/3,
+         delete_data_integration/4,
          delete_event_integration/3,
          delete_event_integration/4,
+         get_data_integration/2,
+         get_data_integration/4,
+         get_data_integration/5,
          get_event_integration/2,
          get_event_integration/4,
          get_event_integration/5,
+         list_data_integration_associations/2,
+         list_data_integration_associations/4,
+         list_data_integration_associations/5,
+         list_data_integrations/1,
+         list_data_integrations/3,
+         list_data_integrations/4,
          list_event_integration_associations/2,
          list_event_integration_associations/4,
          list_event_integration_associations/5,
@@ -32,6 +43,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_data_integration/3,
+         update_data_integration/4,
          update_event_integration/3,
          update_event_integration/4]).
 
@@ -41,14 +54,39 @@
 %% API
 %%====================================================================
 
-%% @doc The Amazon AppIntegrations APIs are in preview release and are
-%% subject to change.
+%% @doc Creates and persists a DataIntegration resource.
 %%
-%% Creates an EventIntegration, given a specified name, description, and a
-%% reference to an Amazon Eventbridge bus in your account and a partner event
-%% source that will push events to that bus. No objects are created in the
-%% your account, only metadata that is persisted on the EventIntegration
-%% control plane.
+%% You cannot create a DataIntegration association for a DataIntegration that
+%% has been previously associated. Use a different DataIntegration, or
+%% recreate the DataIntegration using the `CreateDataIntegration' API.
+create_data_integration(Client, Input) ->
+    create_data_integration(Client, Input, []).
+create_data_integration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/dataIntegrations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an EventIntegration, given a specified name, description, and
+%% a reference to an Amazon EventBridge bus in your account and a partner
+%% event source that pushes events to that bus.
+%%
+%% No objects are created in the your account, only metadata that is
+%% persisted on the EventIntegration control plane.
 create_event_integration(Client, Input) ->
     create_event_integration(Client, Input, []).
 create_event_integration(Client, Input0, Options0) ->
@@ -71,11 +109,41 @@ create_event_integration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc The Amazon AppIntegrations APIs are in preview release and are
-%% subject to change.
+%% @doc Deletes the DataIntegration.
 %%
-%% Deletes the specified existing event integration. If the event integration
-%% is associated with clients, the request is rejected.
+%% Only DataIntegrations that don't have any DataIntegrationAssociations can
+%% be deleted. Deleting a DataIntegration also deletes the underlying Amazon
+%% AppFlow flow and service linked role.
+%%
+%% You cannot create a DataIntegration association for a DataIntegration that
+%% has been previously associated. Use a different DataIntegration, or
+%% recreate the DataIntegration using the CreateDataIntegration API.
+delete_data_integration(Client, DataIntegrationIdentifier, Input) ->
+    delete_data_integration(Client, DataIntegrationIdentifier, Input, []).
+delete_data_integration(Client, DataIntegrationIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/dataIntegrations/", aws_util:encode_uri(DataIntegrationIdentifier), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified existing event integration.
+%%
+%% If the event integration is associated with clients, the request is
+%% rejected.
 delete_event_integration(Client, Name, Input) ->
     delete_event_integration(Client, Name, Input, []).
 delete_event_integration(Client, Name, Input0, Options0) ->
@@ -98,10 +166,34 @@ delete_event_integration(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc The Amazon AppIntegrations APIs are in preview release and are
-%% subject to change.
+%% @doc Returns information about the DataIntegration.
 %%
-%% Return information about the event integration.
+%% You cannot create a DataIntegration association for a DataIntegration that
+%% has been previously associated. Use a different DataIntegration, or
+%% recreate the DataIntegration using the CreateDataIntegration API.
+get_data_integration(Client, Identifier)
+  when is_map(Client) ->
+    get_data_integration(Client, Identifier, #{}, #{}).
+
+get_data_integration(Client, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_data_integration(Client, Identifier, QueryMap, HeadersMap, []).
+
+get_data_integration(Client, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/dataIntegrations/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about the event integration.
 get_event_integration(Client, Name)
   when is_map(Client) ->
     get_event_integration(Client, Name, #{}, #{}).
@@ -124,10 +216,73 @@ get_event_integration(Client, Name, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc The Amazon AppIntegrations APIs are in preview release and are
-%% subject to change.
+%% @doc Returns a paginated list of DataIntegration associations in the
+%% account.
 %%
-%% Returns a paginated list of event integration associations in the account.
+%% You cannot create a DataIntegration association for a DataIntegration that
+%% has been previously associated. Use a different DataIntegration, or
+%% recreate the DataIntegration using the CreateDataIntegration API.
+list_data_integration_associations(Client, DataIntegrationIdentifier)
+  when is_map(Client) ->
+    list_data_integration_associations(Client, DataIntegrationIdentifier, #{}, #{}).
+
+list_data_integration_associations(Client, DataIntegrationIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_data_integration_associations(Client, DataIntegrationIdentifier, QueryMap, HeadersMap, []).
+
+list_data_integration_associations(Client, DataIntegrationIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/dataIntegrations/", aws_util:encode_uri(DataIntegrationIdentifier), "/associations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of DataIntegrations in the account.
+%%
+%% You cannot create a DataIntegration association for a DataIntegration that
+%% has been previously associated. Use a different DataIntegration, or
+%% recreate the DataIntegration using the CreateDataIntegration API.
+list_data_integrations(Client)
+  when is_map(Client) ->
+    list_data_integrations(Client, #{}, #{}).
+
+list_data_integrations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_data_integrations(Client, QueryMap, HeadersMap, []).
+
+list_data_integrations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/dataIntegrations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of event integration associations in the
+%% account.
 list_event_integration_associations(Client, EventIntegrationName)
   when is_map(Client) ->
     list_event_integration_associations(Client, EventIntegrationName, #{}, #{}).
@@ -155,10 +310,7 @@ list_event_integration_associations(Client, EventIntegrationName, QueryMap, Head
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc The Amazon AppIntegrations APIs are in preview release and are
-%% subject to change.
-%%
-%% Returns a paginated list of event integrations in the account.
+%% @doc Returns a paginated list of event integrations in the account.
 list_event_integrations(Client)
   when is_map(Client) ->
     list_event_integrations(Client, #{}, #{}).
@@ -186,10 +338,7 @@ list_event_integrations(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc The Amazon AppIntegrations APIs are in preview release and are
-%% subject to change.
-%%
-%% Lists the tags for the specified resource.
+%% @doc Lists the tags for the specified resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -212,10 +361,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc The Amazon AppIntegrations APIs are in preview release and are
-%% subject to change.
-%%
-%% Adds the specified tags to the specified resource.
+%% @doc Adds the specified tags to the specified resource.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -238,10 +384,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc The Amazon AppIntegrations APIs are in preview release and are
-%% subject to change.
-%%
-%% Removes the specified tags from the specified resource.
+%% @doc Removes the specified tags from the specified resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -265,10 +408,34 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc The Amazon AppIntegrations APIs are in preview release and are
-%% subject to change.
+%% @doc Updates the description of a DataIntegration.
 %%
-%% Updates the description of an event integration.
+%% You cannot create a DataIntegration association for a DataIntegration that
+%% has been previously associated. Use a different DataIntegration, or
+%% recreate the DataIntegration using the CreateDataIntegration API.
+update_data_integration(Client, Identifier, Input) ->
+    update_data_integration(Client, Identifier, Input, []).
+update_data_integration(Client, Identifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/dataIntegrations/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the description of an event integration.
 update_event_integration(Client, Name, Input) ->
     update_event_integration(Client, Name, Input, []).
 update_event_integration(Client, Name, Input0, Options0) ->
@@ -326,6 +493,14 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
 
+handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
+  when StatusCode =:= 200;
+       StatusCode =:= 202;
+       StatusCode =:= 204;
+       StatusCode =:= SuccessStatusCode ->
+    {ok, {StatusCode, ResponseHeaders}};
+handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
+    {error, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, DecodeBody)
   when StatusCode =:= 200;
        StatusCode =:= 202;
