@@ -72,7 +72,8 @@ describe_object(Client, Path, Input0, Options0) ->
     Input = Input2,
 
     case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
-      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+      {ok, {_, ResponseHeaders} = Response} ->
+        Body0 = #{},
         ResponseHeadersParams =
           [
             {<<"Cache-Control">>, <<"CacheControl">>},
@@ -211,6 +212,7 @@ put_object(Client, Path, Input0, Options0) ->
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->
+    {ok, {integer(), list()}} |
     {ok, Result, {integer(), list(), hackney:client()}} |
     {error, Error, {integer(), list(), hackney:client()}} |
     {error, term()} when
