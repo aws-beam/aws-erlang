@@ -6,6 +6,7 @@
         , build_custom_headers/2
         , method_to_binary/1
         , sign_request/5
+        , request/2
         ]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
@@ -13,6 +14,11 @@
 %%====================================================================
 %% API
 %%====================================================================
+%% Perform the actual request and depending on configuration,
+%% retry if the response is off a retriable type.
+request(RequestFun, Options) ->
+  RetryState = init_retry_state(proplists:get_value(retry_options, Options, undefined)),
+  do_request(RequestFun, RetryState).
 
 %% Generate headers with an AWS signature version 4 for the specified
 %% request.
@@ -223,6 +229,66 @@ signed_header({Name, _}) ->
 
 ensure_path(<<"">>) -> <<"/">>;
 ensure_path(Path) -> Path.
+
+do_request(RequestFun, RetryState) ->
+  Response = RequestFun(),
+  case classify_response(Response) of
+    retriable ->
+      case should_retry(RetryState) of
+        {ok, NewRetryState} ->
+          do_request(RequestFun, NewRetryState);
+        false ->
+          Response
+      end;
+    error ->
+      Response;
+    ok ->
+      Response
+  end.
+
+init_retry_state(undefined) ->
+  undefined;
+init_retry_state({exponential_with_jitter, {MaxAttempts, BaseSleepTime, CapSleepTime}}) ->
+  #{ type => exponential_with_jitter
+   , n => 0
+   , max_attempts => MaxAttempts
+   , base_sleep_time => BaseSleepTime
+   , cap_sleep_time => CapSleepTime
+  }.
+
+classify_response({error, _, {StatusCode, _, _}})
+  when is_integer(StatusCode) andalso StatusCode >= 500 ->
+  retriable;
+classify_response({error, _, {StatusCode, _, _}})
+  when is_integer(StatusCode) ->
+  error;
+classify_response({error, closed}) ->
+  retriable;
+classify_response({error, connect_timeout}) ->
+  retriable;
+classify_response({error, checkout_timeout}) ->
+  retriable;
+classify_response({error, _}) ->
+  error;
+classify_response({ok, {_, _}}) ->
+  ok;
+classify_response({ok, _, {_, _, _}}) ->
+  ok.
+
+should_retry(undefined) ->
+  false;
+should_retry(#{ type := exponential_with_jitter
+              , n := N
+              , max_attempts := MaxAttempts}) when N =:= MaxAttempts ->
+  false;
+should_retry(#{ type := exponential_with_jitter
+              , n := N
+              , base_sleep_time := BaseSleepTime
+              , cap_sleep_time := CapSleepTime} = RetryState0) ->
+  Temp = min(CapSleepTime, BaseSleepTime * trunc(math:pow(2, N))),
+  Sleep = Temp div 2 + rand:uniform(Temp div 2),
+  timer:sleep(Sleep),
+  {ok, RetryState0#{ n => N +1 }}.
 
 %%====================================================================
 %% Unit tests
