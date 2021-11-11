@@ -3927,6 +3927,10 @@ update_streaming_distribution(Client, Id, Input0, Options0) ->
     Result :: map(),
     Error :: map().
 request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
+  RequestFun = fun() -> do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) end,
+  aws_request:request(RequestFun, Options).
+
+do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"cloudfront">>,
                       region => <<"us-east-1">>},
     Host = build_host(<<"cloudfront">>, Client1),

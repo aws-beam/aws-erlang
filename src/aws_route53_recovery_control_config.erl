@@ -626,6 +626,10 @@ update_safety_rule(Client, Input0, Options0) ->
     Result :: map(),
     Error :: map().
 request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
+  RequestFun = fun() -> do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) end,
+  aws_request:request(RequestFun, Options).
+
+do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"route53-recovery-control-config">>},
     Host = build_host(<<"route53-recovery-control-config">>, Client1),
     URL0 = build_url(Host, Path, Client1),
