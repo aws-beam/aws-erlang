@@ -221,6 +221,9 @@ cancel_deployment(Client, DeploymentId, Input0, Options0) ->
 %% </li> </ul> To create a component from a Lambda function, specify
 %% `lambdaFunction' when you call this operation.
 %%
+%% IoT Greengrass currently supports Lambda functions on only Linux core
+%% devices.
+%%
 %% </li> </ul>
 create_component_version(Client, Input) ->
     create_component_version(Client, Input, []).
@@ -804,6 +807,10 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Result :: map(),
     Error :: map().
 request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
+  RequestFun = fun() -> do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) end,
+  aws_request:request(RequestFun, Options).
+
+do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"greengrass">>},
     Host = build_host(<<"greengrass">>, Client1),
     URL0 = build_url(Host, Path, Client1),

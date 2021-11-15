@@ -4,17 +4,19 @@
 %% @doc Amazon DevOps Guru is a fully managed service that helps you identify
 %% anomalous behavior in business critical operational applications.
 %%
-%% You specify the AWS resources that you want DevOps Guru to cover, then the
-%% Amazon CloudWatch metrics and AWS CloudTrail events related to those
-%% resources are analyzed. When anomalous behavior is detected, DevOps Guru
-%% creates an insight that includes recommendations, related events, and
-%% related metrics that can help you improve your operational applications.
-%% For more information, see What is Amazon DevOps Guru.
+%% You specify the Amazon Web Services resources that you want DevOps Guru to
+%% cover, then the Amazon CloudWatch metrics and Amazon Web Services
+%% CloudTrail events related to those resources are analyzed. When anomalous
+%% behavior is detected, DevOps Guru creates an insight that includes
+%% recommendations, related events, and related metrics that can help you
+%% improve your operational applications. For more information, see What is
+%% Amazon DevOps Guru.
 %%
 %% You can specify 1 or 2 Amazon Simple Notification Service topics so you
 %% are notified every time a new insight is created. You can also enable
-%% DevOps Guru to generate an OpsItem in AWS Systems Manager for each insight
-%% to help you manage and track your work addressing insights.
+%% DevOps Guru to generate an OpsItem in Amazon Web Services Systems Manager
+%% for each insight to help you manage and track your work addressing
+%% insights.
 %%
 %% To learn about the DevOps Guru workflow, see How DevOps Guru works. To
 %% learn about DevOps Guru concepts, see Concepts in DevOps Guru.
@@ -35,6 +37,12 @@
          describe_insight/2,
          describe_insight/4,
          describe_insight/5,
+         describe_organization_health/2,
+         describe_organization_health/3,
+         describe_organization_overview/2,
+         describe_organization_overview/3,
+         describe_organization_resource_collection_health/2,
+         describe_organization_resource_collection_health/3,
          describe_resource_collection_health/2,
          describe_resource_collection_health/4,
          describe_resource_collection_health/5,
@@ -55,6 +63,8 @@
          list_insights/3,
          list_notification_channels/2,
          list_notification_channels/3,
+         list_organization_insights/2,
+         list_organization_insights/3,
          list_recommendations/2,
          list_recommendations/3,
          put_feedback/2,
@@ -63,6 +73,8 @@
          remove_notification_channel/4,
          search_insights/2,
          search_insights/3,
+         search_organization_insights/2,
+         search_organization_insights/3,
          start_cost_estimation/2,
          start_cost_estimation/3,
          update_resource_collection/2,
@@ -87,10 +99,10 @@
 %% using Amazon SNS in your account. For more information, see Permissions
 %% for cross account Amazon SNS topics.
 %%
-%% If you use an Amazon SNS topic that is encrypted by an AWS Key Management
-%% Service customer-managed key (CMK), then you must add permissions to the
-%% CMK. For more information, see Permissions for AWS KMS–encrypted Amazon
-%% SNS topics.
+%% If you use an Amazon SNS topic that is encrypted by an Amazon Web Services
+%% Key Management Service customer-managed key (CMK), then you must add
+%% permissions to the CMK. For more information, see Permissions for Amazon
+%% Web Services KMS–encrypted Amazon SNS topics.
 add_notification_channel(Client, Input) ->
     add_notification_channel(Client, Input, []).
 add_notification_channel(Client, Input0, Options0) ->
@@ -114,10 +126,11 @@ add_notification_channel(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the number of open reactive insights, the number of open
-%% proactive insights, and the number of metrics analyzed in your AWS
-%% account.
+%% proactive insights, and the number of metrics analyzed in your Amazon Web
+%% Services account.
 %%
-%% Use these numbers to gauge the health of operations in your AWS account.
+%% Use these numbers to gauge the health of operations in your Amazon Web
+%% Services account.
 describe_account_health(Client)
   when is_map(Client) ->
     describe_account_health(Client, #{}, #{}).
@@ -185,12 +198,16 @@ describe_anomaly(Client, Id, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"AccountId">>, maps:get(<<"AccountId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the most recent feedback submitted in the current AWS account
-%% and Region.
+%% @doc Returns the most recent feedback submitted in the current Amazon Web
+%% Services account and Region.
 describe_feedback(Client, Input) ->
     describe_feedback(Client, Input, []).
 describe_feedback(Client, Input0, Options0) ->
@@ -232,18 +249,99 @@ describe_insight(Client, Id, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"AccountId">>, maps:get(<<"AccountId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns active insights, predictive insights, and resource hours
+%% analyzed in last hour.
+describe_organization_health(Client, Input) ->
+    describe_organization_health(Client, Input, []).
+describe_organization_health(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/organization/health"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns an overview of your organization's history based on the
+%% specified time range.
+%%
+%% The overview includes the total reactive and proactive insights.
+describe_organization_overview(Client, Input) ->
+    describe_organization_overview(Client, Input, []).
+describe_organization_overview(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/organization/overview"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Provides an overview of your system's health.
+%%
+%% If additional member accounts are part of your organization, you can
+%% filter those accounts using the `AccountIds' field.
+describe_organization_resource_collection_health(Client, Input) ->
+    describe_organization_resource_collection_health(Client, Input, []).
+describe_organization_resource_collection_health(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/organization/health/resource-collection/"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the number of open proactive insights, open reactive
 %% insights, and the Mean Time to Recover (MTTR) for all closed insights in
 %% resource collections in your account.
 %%
-%% You specify the type of AWS resources collection. The one type of AWS
-%% resource collection supported is AWS CloudFormation stacks. DevOps Guru
-%% can be configured to analyze only the AWS resources that are defined in
-%% the stacks. You can specify up to 500 AWS CloudFormation stacks.
+%% You specify the type of Amazon Web Services resources collection. The one
+%% type of Amazon Web Services resource collection supported is Amazon Web
+%% Services CloudFormation stacks. DevOps Guru can be configured to analyze
+%% only the Amazon Web Services resources that are defined in the stacks. You
+%% can specify up to 500 Amazon Web Services CloudFormation stacks.
 describe_resource_collection_health(Client, ResourceCollectionType)
   when is_map(Client) ->
     describe_resource_collection_health(Client, ResourceCollectionType, #{}, #{}).
@@ -273,9 +371,9 @@ describe_resource_collection_health(Client, ResourceCollectionType, QueryMap, He
 %% @doc Returns the integration status of services that are integrated with
 %% DevOps Guru.
 %%
-%% The one service that can be integrated with DevOps Guru is AWS Systems
-%% Manager, which can be used to create an OpsItem for each generated
-%% insight.
+%% The one service that can be integrated with DevOps Guru is Amazon Web
+%% Services Systems Manager, which can be used to create an OpsItem for each
+%% generated insight.
 describe_service_integration(Client)
   when is_map(Client) ->
     describe_service_integration(Client, #{}, #{}).
@@ -299,7 +397,7 @@ describe_service_integration(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns an estimate of the monthly cost for DevOps Guru to analyze
-%% your AWS resources.
+%% your Amazon Web Services resources.
 %%
 %% For more information, see Estimate your Amazon DevOps Guru costs and
 %% Amazon DevOps Guru pricing.
@@ -329,13 +427,14 @@ get_cost_estimation(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns lists AWS resources that are of the specified resource
-%% collection type.
+%% @doc Returns lists Amazon Web Services resources that are of the specified
+%% resource collection type.
 %%
-%% The one type of AWS resource collection supported is AWS CloudFormation
-%% stacks. DevOps Guru can be configured to analyze only the AWS resources
-%% that are defined in the stacks. You can specify up to 500 AWS
-%% CloudFormation stacks.
+%% The one type of Amazon Web Services resource collection supported is
+%% Amazon Web Services CloudFormation stacks. DevOps Guru can be configured
+%% to analyze only the Amazon Web Services resources that are defined in the
+%% stacks. You can specify up to 500 Amazon Web Services CloudFormation
+%% stacks.
 get_resource_collection(Client, ResourceCollectionType)
   when is_map(Client) ->
     get_resource_collection(Client, ResourceCollectionType, #{}, #{}).
@@ -412,7 +511,7 @@ list_events(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of insights in your AWS account.
+%% @doc Returns a list of insights in your Amazon Web Services account.
 %%
 %% You can specify which insights are returned by their start time and status
 %% (`ONGOING', `CLOSED', or `ANY').
@@ -449,6 +548,29 @@ list_notification_channels(Client, Input) ->
 list_notification_channels(Client, Input0, Options0) ->
     Method = post,
     Path = ["/channels"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of insights associated with the account or OU Id.
+list_organization_insights(Client, Input) ->
+    list_organization_insights(Client, Input, []).
+list_organization_insights(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/organization/insights"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -541,7 +663,7 @@ remove_notification_channel(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of insights in your AWS account.
+%% @doc Returns a list of insights in your Amazon Web Services account.
 %%
 %% You can specify which insights are returned by their start time, one or
 %% more statuses (`ONGOING', `CLOSED', and `CLOSED'), one or more severities
@@ -572,8 +694,39 @@ search_insights(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns a list of insights in your organization.
+%%
+%% You can specify which insights are returned by their start time, one or
+%% more statuses (`ONGOING', `CLOSED', and `CLOSED'), one or more severities
+%% (`LOW', `MEDIUM', and `HIGH'), and type (`REACTIVE' or `PROACTIVE').
+%%
+%% Use the `Filters' parameter to specify status and severity search
+%% parameters. Use the `Type' parameter to specify `REACTIVE' or `PROACTIVE'
+%% in your search.
+search_organization_insights(Client, Input) ->
+    search_organization_insights(Client, Input, []).
+search_organization_insights(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/organization/insights/search"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Starts the creation of an estimate of the monthly cost to analyze
-%% your AWS resources.
+%% your Amazon Web Services resources.
 start_cost_estimation(Client, Input) ->
     start_cost_estimation(Client, Input, []).
 start_cost_estimation(Client, Input0, Options0) ->
@@ -598,11 +751,12 @@ start_cost_estimation(Client, Input0, Options0) ->
 
 %% @doc Updates the collection of resources that DevOps Guru analyzes.
 %%
-%% The one type of AWS resource collection supported is AWS CloudFormation
-%% stacks. DevOps Guru can be configured to analyze only the AWS resources
-%% that are defined in the stacks. You can specify up to 500 AWS
-%% CloudFormation stacks. This method also creates the IAM role required for
-%% you to use DevOps Guru.
+%% The one type of Amazon Web Services resource collection supported is
+%% Amazon Web Services CloudFormation stacks. DevOps Guru can be configured
+%% to analyze only the Amazon Web Services resources that are defined in the
+%% stacks. You can specify up to 500 Amazon Web Services CloudFormation
+%% stacks. This method also creates the IAM role required for you to use
+%% DevOps Guru.
 update_resource_collection(Client, Input) ->
     update_resource_collection(Client, Input, []).
 update_resource_collection(Client, Input0, Options0) ->
@@ -628,9 +782,9 @@ update_resource_collection(Client, Input0, Options0) ->
 %% @doc Enables or disables integration with a service that can be integrated
 %% with DevOps Guru.
 %%
-%% The one service that can be integrated with DevOps Guru is AWS Systems
-%% Manager, which can be used to create an OpsItem for each generated
-%% insight.
+%% The one service that can be integrated with DevOps Guru is Amazon Web
+%% Services Systems Manager, which can be used to create an OpsItem for each
+%% generated insight.
 update_service_integration(Client, Input) ->
     update_service_integration(Client, Input, []).
 update_service_integration(Client, Input0, Options0) ->
@@ -666,6 +820,10 @@ update_service_integration(Client, Input0, Options0) ->
     Result :: map(),
     Error :: map().
 request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
+  RequestFun = fun() -> do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) end,
+  aws_request:request(RequestFun, Options).
+
+do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"devops-guru">>},
     Host = build_host(<<"devops-guru">>, Client1),
     URL0 = build_url(Host, Path, Client1),

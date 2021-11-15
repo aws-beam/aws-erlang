@@ -806,7 +806,11 @@ update_web_acl(Client, Input, Options)
     {error, term()} when
     Result :: map() | undefined,
     Error :: map().
-request(Client, Action, Input0, Options) ->
+request(Client, Action, Input, Options) ->
+    RequestFun = fun() -> do_request(Client, Action, Input, Options) end,
+    aws_request:request(RequestFun, Options).
+
+do_request(Client, Action, Input0, Options) ->
     Client1 = Client#{service => <<"wafv2">>},
     Host = build_host(<<"wafv2">>, Client1),
     URL = build_url(Host, Client1),

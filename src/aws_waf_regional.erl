@@ -2592,7 +2592,11 @@ update_xss_match_set(Client, Input, Options)
     {error, term()} when
     Result :: map() | undefined,
     Error :: map().
-request(Client, Action, Input0, Options) ->
+request(Client, Action, Input, Options) ->
+    RequestFun = fun() -> do_request(Client, Action, Input, Options) end,
+    aws_request:request(RequestFun, Options).
+
+do_request(Client, Action, Input0, Options) ->
     Client1 = Client#{service => <<"waf-regional">>},
     Host = build_host(<<"waf-regional">>, Client1),
     URL = build_url(Host, Client1),

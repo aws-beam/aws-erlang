@@ -1085,6 +1085,10 @@ validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input0, Op
     Result :: map(),
     Error :: map().
 request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
+  RequestFun = fun() -> do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) end,
+  aws_request:request(RequestFun, Options).
+
+do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"appconfig">>},
     Host = build_host(<<"appconfig">>, Client1),
     URL0 = build_url(Host, Path, Client1),

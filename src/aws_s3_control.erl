@@ -2777,6 +2777,10 @@ update_job_status(Client, JobId, Input0, Options0) ->
     Result :: map(),
     Error :: map().
 request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
+  RequestFun = fun() -> do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) end,
+  aws_request:request(RequestFun, Options).
+
+do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"s3">>},
     AccountId = proplists:get_value(<<"x-amz-account-id">>, Headers0),
     Host = build_host(AccountId, <<"s3-control">>, Client1),

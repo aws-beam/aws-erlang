@@ -4,24 +4,24 @@
 %% @doc Amazon Elastic Container Service
 %%
 %% Amazon Elastic Container Service (Amazon ECS) is a highly scalable, fast,
-%% container management service that makes it easy to run, stop, and manage
-%% Docker containers on a cluster.
+%% container management service.
 %%
-%% You can host your cluster on a serverless infrastructure that is managed
-%% by Amazon ECS by launching your services or tasks on Fargate. For more
+%% It makes it easy to run, stop, and manage Docker containers on a cluster.
+%% You can host your cluster on a serverless infrastructure that's managed by
+%% Amazon ECS by launching your services or tasks on Fargate. For more
 %% control, you can host your tasks on a cluster of Amazon Elastic Compute
 %% Cloud (Amazon EC2) instances that you manage.
 %%
 %% Amazon ECS makes it easy to launch and stop container-based applications
-%% with simple API calls, allows you to get the state of your cluster from a
-%% centralized service, and gives you access to many familiar Amazon EC2
-%% features.
+%% with simple API calls. This makes it easy to get the state of your cluster
+%% from a centralized service, and gives you access to many familiar Amazon
+%% EC2 features.
 %%
 %% You can use Amazon ECS to schedule the placement of containers across your
 %% cluster based on your resource needs, isolation policies, and availability
-%% requirements. Amazon ECS eliminates the need for you to operate your own
-%% cluster management and configuration management systems or worry about
-%% scaling your management infrastructure.
+%% requirements. With Amazon ECS, you don't need to operate your own cluster
+%% management and configuration management systems. You also don't need to
+%% worry about scaling your management infrastructure.
 -module(aws_ecs).
 
 -export([create_capacity_provider/2,
@@ -140,10 +140,10 @@
 %% Capacity providers are associated with an Amazon ECS cluster and are used
 %% in capacity provider strategies to facilitate cluster auto scaling.
 %%
-%% Only capacity providers using an Auto Scaling group can be created. Amazon
-%% ECS tasks on Fargate use the `FARGATE' and `FARGATE_SPOT' capacity
-%% providers which are already created and available to all accounts in
-%% Regions supported by Fargate.
+%% Only capacity providers that use an Auto Scaling group can be created.
+%% Amazon ECS tasks on Fargate use the `FARGATE' and `FARGATE_SPOT' capacity
+%% providers. These providers are available to all accounts in the Amazon Web
+%% Services Regions that Fargate supports.
 create_capacity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_capacity_provider(Client, Input, []).
@@ -158,12 +158,12 @@ create_capacity_provider(Client, Input, Options)
 %% unique name with the `CreateCluster' action.
 %%
 %% When you call the `CreateCluster' API operation, Amazon ECS attempts to
-%% create the Amazon ECS service-linked role for your account so that
-%% required resources in other Amazon Web Services services can be managed on
-%% your behalf. However, if the IAM user that makes the call does not have
-%% permissions to create the service-linked role, it is not created. For more
-%% information, see Using Service-Linked Roles for Amazon ECS in the Amazon
-%% Elastic Container Service Developer Guide.
+%% create the Amazon ECS service-linked role for your account. This is so
+%% that it can manage required resources in other Amazon Web Services
+%% services on your behalf. However, if the IAM user that makes the call
+%% doesn't have permissions to create the service-linked role, it isn't
+%% created. For more information, see Using Service-Linked Roles for Amazon
+%% ECS in the Amazon Elastic Container Service Developer Guide.
 create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cluster(Client, Input, []).
@@ -171,7 +171,7 @@ create_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCluster">>, Input, Options).
 
-%% @doc Runs and maintains a desired number of tasks from a specified task
+%% @doc Runs and maintains your desired number of tasks from a specified task
 %% definition.
 %%
 %% If the number of tasks running in a service drops below the
@@ -184,8 +184,8 @@ create_cluster(Client, Input, Options)
 %% with the service. For more information, see Service Load Balancing in the
 %% Amazon Elastic Container Service Developer Guide.
 %%
-%% Tasks for services that do not use a load balancer are considered healthy
-%% if they're in the `RUNNING' state. Tasks for services that do use a load
+%% Tasks for services that don't use a load balancer are considered healthy
+%% if they're in the `RUNNING' state. Tasks for services that use a load
 %% balancer are considered healthy if they're in the `RUNNING' state and the
 %% container instance that they're hosted on is reported as healthy by the
 %% load balancer.
@@ -193,7 +193,7 @@ create_cluster(Client, Input, Options)
 %% There are two service scheduler strategies available:
 %%
 %% <ul> <li> `REPLICA' - The replica scheduling strategy places and maintains
-%% the desired number of tasks across your cluster. By default, the service
+%% your desired number of tasks across your cluster. By default, the service
 %% scheduler spreads tasks across Availability Zones. You can use task
 %% placement strategies and constraints to customize task placement
 %% decisions. For more information, see Service Scheduler Concepts in the
@@ -202,55 +202,59 @@ create_cluster(Client, Input, Options)
 %% </li> <li> `DAEMON' - The daemon scheduling strategy deploys exactly one
 %% task on each active container instance that meets all of the task
 %% placement constraints that you specify in your cluster. The service
-%% scheduler also evaluates the task placement constraints for running tasks
-%% and will stop tasks that do not meet the placement constraints. When using
+%% scheduler also evaluates the task placement constraints for running tasks.
+%% It also stops tasks that don't meet the placement constraints. When using
 %% this strategy, you don't need to specify a desired number of tasks, a task
 %% placement strategy, or use Service Auto Scaling policies. For more
 %% information, see Service Scheduler Concepts in the Amazon Elastic
 %% Container Service Developer Guide.
 %%
 %% </li> </ul> You can optionally specify a deployment configuration for your
-%% service. The deployment is triggered by changing properties, such as the
-%% task definition or the desired count of a service, with an `UpdateService'
+%% service. The deployment is initiated by changing properties. For example,
+%% the deployment might be initiated by the task definition or by your
+%% desired count of a service. This is done with an `UpdateService'
 %% operation. The default value for a replica service for
 %% `minimumHealthyPercent' is 100%. The default value for a daemon service
 %% for `minimumHealthyPercent' is 0%.
 %%
-%% If a service is using the `ECS' deployment controller, the minimum healthy
+%% If a service uses the `ECS' deployment controller, the minimum healthy
 %% percent represents a lower limit on the number of tasks in a service that
-%% must remain in the `RUNNING' state during a deployment, as a percentage of
-%% the desired number of tasks (rounded up to the nearest integer), and while
-%% any container instances are in the `DRAINING' state if the service
-%% contains tasks using the EC2 launch type. This parameter enables you to
-%% deploy without using additional cluster capacity. For example, if your
-%% service has a desired number of four tasks and a minimum healthy percent
-%% of 50%, the scheduler might stop two existing tasks to free up cluster
-%% capacity before starting two new tasks. Tasks for services that do not use
-%% a load balancer are considered healthy if they're in the `RUNNING' state.
-%% Tasks for services that do use a load balancer are considered healthy if
-%% they're in the `RUNNING' state and they're reported as healthy by the load
-%% balancer. The default value for minimum healthy percent is 100%.
+%% must remain in the `RUNNING' state during a deployment. Specifically, it
+%% represents it as a percentage of your desired number of tasks (rounded up
+%% to the nearest integer). This happens when any of your container instances
+%% are in the `DRAINING' state if the service contains tasks using the EC2
+%% launch type. Using this parameter, you can deploy without using additional
+%% cluster capacity. For example, if you set your service to have desired
+%% number of four tasks and a minimum healthy percent of 50%, the scheduler
+%% might stop two existing tasks to free up cluster capacity before starting
+%% two new tasks. If they're in the `RUNNING' state, tasks for services that
+%% don't use a load balancer are considered healthy . If they're in the
+%% `RUNNING' state and reported as healthy by the load balancer, tasks for
+%% services that do use a load balancer are considered healthy . The default
+%% value for minimum healthy percent is 100%.
 %%
-%% If a service is using the `ECS' deployment controller, the maximum percent
+%% If a service uses the `ECS' deployment controller, the maximum percent
 %% parameter represents an upper limit on the number of tasks in a service
-%% that are allowed in the `RUNNING' or `PENDING' state during a deployment,
-%% as a percentage of the desired number of tasks (rounded down to the
-%% nearest integer), and while any container instances are in the `DRAINING'
-%% state if the service contains tasks using the EC2 launch type. This
-%% parameter enables you to define the deployment batch size. For example, if
-%% your service has a desired number of four tasks and a maximum percent
-%% value of 200%, the scheduler may start four new tasks before stopping the
-%% four older tasks (provided that the cluster resources required to do this
-%% are available). The default value for maximum percent is 200%.
+%% that are allowed in the `RUNNING' or `PENDING' state during a deployment.
+%% Specifically, it represents it as a percentage of the desired number of
+%% tasks (rounded down to the nearest integer). This happens when any of your
+%% container instances are in the `DRAINING' state if the service contains
+%% tasks using the EC2 launch type. Using this parameter, you can define the
+%% deployment batch size. For example, if your service has a desired number
+%% of four tasks and a maximum percent value of 200%, the scheduler may start
+%% four new tasks before stopping the four older tasks (provided that the
+%% cluster resources required to do this are available). The default value
+%% for maximum percent is 200%.
 %%
-%% If a service is using either the `CODE_DEPLOY' or `EXTERNAL' deployment
+%% If a service uses either the `CODE_DEPLOY' or `EXTERNAL' deployment
 %% controller types and tasks that use the EC2 launch type, the minimum
 %% healthy percent and maximum percent values are used only to define the
 %% lower and upper limit on the number of the tasks in the service that
-%% remain in the `RUNNING' state while the container instances are in the
-%% `DRAINING' state. If the tasks in the service use the Fargate launch type,
-%% the minimum healthy percent and maximum percent values aren't used,
-%% although they're currently visible when describing your service.
+%% remain in the `RUNNING' state. This is while the container instances are
+%% in the `DRAINING' state. If the tasks in the service use the Fargate
+%% launch type, the minimum healthy percent and maximum percent values aren't
+%% used. This is the case even if they're currently visible when describing
+%% your service.
 %%
 %% When creating a service that uses the `EXTERNAL' deployment controller,
 %% you can specify only parameters that aren't controlled at the task set
@@ -263,12 +267,13 @@ create_cluster(Client, Input, Options)
 %% placement in your cluster using the following logic:
 %%
 %% <ul> <li> Determine which of the container instances in your cluster can
-%% support your service's task definition (for example, they have the
-%% required CPU, memory, ports, and container instance attributes).
+%% support the task definition of your service. For example, they have the
+%% required CPU, memory, ports, and container instance attributes.
 %%
 %% </li> <li> By default, the service scheduler attempts to balance tasks
-%% across Availability Zones in this manner (although you can choose a
-%% different placement strategy) with the `placementStrategy' parameter):
+%% across Availability Zones in this manner. This is the case even if you can
+%% choose a different placement strategy with the `placementStrategy'
+%% parameter.
 %%
 %% <ul> <li> Sort the valid container instances, giving priority to instances
 %% that have the fewest number of running tasks for this service in their
@@ -277,9 +282,8 @@ create_cluster(Client, Input, Options)
 %% in either zone B or C are considered optimal for placement.
 %%
 %% </li> <li> Place the new service task on a valid container instance in an
-%% optimal Availability Zone (based on the previous steps), favoring
-%% container instances with the fewest number of running tasks for this
-%% service.
+%% optimal Availability Zone based on the previous steps, favoring container
+%% instances with the fewest number of running tasks for this service.
 %%
 %% </li> </ul> </li> </ul>
 create_service(Client, Input)
@@ -320,9 +324,9 @@ delete_attributes(Client, Input, Options)
 
 %% @doc Deletes the specified capacity provider.
 %%
-%% The `FARGATE' and `FARGATE_SPOT' capacity providers are reserved and
-%% cannot be deleted. You can disassociate them from a cluster using either
-%% the `PutClusterCapacityProviders' API or by deleting the cluster.
+%% The `FARGATE' and `FARGATE_SPOT' capacity providers are reserved and can't
+%% be deleted. You can disassociate them from a cluster using either the
+%% `PutClusterCapacityProviders' API or by deleting the cluster.
 %%
 %% Prior to a capacity provider being deleted, the capacity provider must be
 %% removed from the capacity provider strategy from all services. The
@@ -331,7 +335,7 @@ delete_attributes(Client, Input, Options)
 %% `forceNewDeployment' option can be used to ensure that any tasks using the
 %% Amazon EC2 instance capacity provided by the capacity provider are
 %% transitioned to use the capacity from the remaining capacity providers.
-%% Only capacity providers that are not associated with a cluster can be
+%% Only capacity providers that aren't associated with a cluster can be
 %% deleted. To remove a capacity provider from a cluster, you can either use
 %% `PutClusterCapacityProviders' or delete the cluster.
 delete_capacity_provider(Client, Input)
@@ -343,10 +347,10 @@ delete_capacity_provider(Client, Input, Options)
 
 %% @doc Deletes the specified cluster.
 %%
-%% The cluster will transition to the `INACTIVE' state. Clusters with an
-%% `INACTIVE' status may remain discoverable in your account for a period of
-%% time. However, this behavior is subject to change in the future, so you
-%% should not rely on `INACTIVE' clusters persisting.
+%% The cluster transitions to the `INACTIVE' state. Clusters with an
+%% `INACTIVE' status might remain discoverable in your account for a period
+%% of time. However, this behavior is subject to change in the future. We
+%% don't recommend that you rely on `INACTIVE' clusters persisting.
 %%
 %% You must deregister all container instances from this cluster before you
 %% may delete it. You can list the container instances in a cluster with
@@ -363,7 +367,7 @@ delete_cluster(Client, Input, Options)
 %%
 %% You can delete a service if you have no running tasks in it and the
 %% desired task count is zero. If the service is actively maintaining tasks,
-%% you cannot delete it, and you must update the service to a desired task
+%% you can't delete it, and you must update the service to a desired task
 %% count of zero. For more information, see `UpdateService'.
 %%
 %% When you delete a service, if there are still running tasks that require
@@ -404,18 +408,18 @@ delete_task_set(Client, Input, Options)
 %% This instance is no longer available to run tasks.
 %%
 %% If you intend to use the container instance for some other purpose after
-%% deregistration, you should stop all of the tasks running on the container
-%% instance before deregistration. That prevents any orphaned tasks from
-%% consuming resources.
+%% deregistration, we recommend that you stop all of the tasks running on the
+%% container instance before deregistration. That prevents any orphaned tasks
+%% from consuming resources.
 %%
 %% Deregistering a container instance removes the instance from a cluster,
-%% but it does not terminate the EC2 instance. If you are finished using the
+%% but it doesn't terminate the EC2 instance. If you are finished using the
 %% instance, be sure to terminate it in the Amazon EC2 console to stop
 %% billing.
 %%
 %% If you terminate a running container instance, Amazon ECS automatically
 %% deregisters the instance from your cluster (stopped container instances or
-%% instances with disconnected agents are not automatically deregistered when
+%% instances with disconnected agents aren't automatically deregistered when
 %% terminated).
 deregister_container_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -432,16 +436,16 @@ deregister_container_instance(Client, Input, Options)
 %% task definition can still scale up or down by modifying the service's
 %% desired count.
 %%
-%% You cannot use an `INACTIVE' task definition to run new tasks or create
-%% new services, and you cannot update an existing service to reference an
+%% You can't use an `INACTIVE' task definition to run new tasks or create new
+%% services, and you can't update an existing service to reference an
 %% `INACTIVE' task definition. However, there may be up to a 10-minute window
 %% following deregistration where these restrictions have not yet taken
 %% effect.
 %%
 %% At this time, `INACTIVE' task definitions remain discoverable in your
 %% account indefinitely. However, this behavior is subject to change in the
-%% future, so you should not rely on `INACTIVE' task definitions persisting
-%% beyond the lifecycle of any associated tasks and services.
+%% future. We don't recommend that you rely on `INACTIVE' task definitions
+%% persisting beyond the lifecycle of any associated tasks and services.
 deregister_task_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_task_definition(Client, Input, []).
@@ -552,8 +556,8 @@ list_account_settings(Client, Input, Options)
 %% list of attribute objects, one for each attribute on each resource. You
 %% can filter the list of results to a single attribute name to only return
 %% results that have that name. You can also filter the results by attribute
-%% name and value, for example, to see which container instances in a cluster
-%% are running a Linux AMI (`ecs.os-type=linux').
+%% name and value. You can do this, for example, to see which container
+%% instances in a cluster are running a Linux AMI (`ecs.os-type=linux').
 list_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_attributes(Client, Input, []).
@@ -602,10 +606,12 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Returns a list of task definition families that are registered to
-%% your account (which may include task definition families that no longer
-%% have any `ACTIVE' task definition revisions).
+%% your account.
 %%
-%% You can filter out task definition families that do not contain any
+%% This list includes task definition families that no longer have any
+%% `ACTIVE' task definition revisions.
+%%
+%% You can filter out task definition families that don't contain any
 %% `ACTIVE' task definition revisions by setting the `status' parameter to
 %% `ACTIVE'. You can also filter the results with the `familyPrefix'
 %% parameter.
@@ -648,19 +654,18 @@ list_tasks(Client, Input, Options)
 %% Account settings are set on a per-Region basis.
 %%
 %% If you change the account setting for the root user, the default settings
-%% for all of the IAM users and roles for which no individual account setting
-%% has been specified are reset. For more information, see Account Settings
-%% in the Amazon Elastic Container Service Developer Guide.
+%% for all of the IAM users and roles that no individual account setting was
+%% specified are reset for. For more information, see Account Settings in the
+%% Amazon Elastic Container Service Developer Guide.
 %%
 %% When `serviceLongArnFormat', `taskLongArnFormat', or
 %% `containerInstanceLongArnFormat' are specified, the Amazon Resource Name
 %% (ARN) and resource ID format of the resource type for a specified IAM
 %% user, IAM role, or the root user for an account is affected. The opt-in
 %% and opt-out account setting must be set for each Amazon ECS resource
-%% separately. The ARN and resource ID format of a resource will be defined
-%% by the opt-in status of the IAM user or role that created the resource.
-%% You must enable this setting to use Amazon ECS features such as resource
-%% tagging.
+%% separately. The ARN and resource ID format of a resource is defined by the
+%% opt-in status of the IAM user or role that created the resource. You must
+%% enable this setting to use Amazon ECS features such as resource tagging.
 %%
 %% When `awsvpcTrunking' is specified, the elastic network interface (ENI)
 %% limit for any new container instances that support the feature is changed.
@@ -695,9 +700,9 @@ put_account_setting_default(Client, Input, Options)
 
 %% @doc Create or update an attribute on an Amazon ECS resource.
 %%
-%% If the attribute does not exist, it is created. If the attribute exists,
-%% its value is replaced with the specified value. To delete an attribute,
-%% use `DeleteAttributes'. For more information, see Attributes in the Amazon
+%% If the attribute doesn't exist, it's created. If the attribute exists, its
+%% value is replaced with the specified value. To delete an attribute, use
+%% `DeleteAttributes'. For more information, see Attributes in the Amazon
 %% Elastic Container Service Developer Guide.
 put_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -713,16 +718,17 @@ put_attributes(Client, Input, Options)
 %% capacity provider strategy for the cluster. If the specified cluster has
 %% existing capacity providers associated with it, you must specify all
 %% existing capacity providers in addition to any new ones you want to add.
-%% Any existing capacity providers associated with a cluster that are omitted
-%% from a `PutClusterCapacityProviders' API call will be disassociated with
-%% the cluster. You can only disassociate an existing capacity provider from
-%% a cluster if it's not being used by any existing tasks.
+%% Any existing capacity providers that are associated with a cluster that
+%% are omitted from a `PutClusterCapacityProviders' API call will be
+%% disassociated with the cluster. You can only disassociate an existing
+%% capacity provider from a cluster if it's not being used by any existing
+%% tasks.
 %%
 %% When creating a service or running a task on a cluster, if no capacity
 %% provider or launch type is specified, then the cluster's default capacity
-%% provider strategy is used. It is recommended to define a default capacity
-%% provider strategy for your cluster, however you may specify an empty array
-%% (`[]') to bypass defining a default strategy.
+%% provider strategy is used. We recommend that you define a default capacity
+%% provider strategy for your cluster. However, you must specify an empty
+%% array (`[]') to bypass defining a default strategy.
 put_cluster_capacity_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_cluster_capacity_providers(Client, Input, []).
@@ -754,8 +760,8 @@ register_container_instance(Client, Input, Options)
 %% parameter. When you specify an IAM role for a task, its containers can
 %% then use the latest versions of the CLI or SDKs to make API requests to
 %% the Amazon Web Services services that are specified in the IAM policy
-%% associated with the role. For more information, see IAM Roles for Tasks in
-%% the Amazon Elastic Container Service Developer Guide.
+%% that's associated with the role. For more information, see IAM Roles for
+%% Tasks in the Amazon Elastic Container Service Developer Guide.
 %%
 %% You can specify a Docker networking mode for the containers in your task
 %% definition with the `networkMode' parameter. The available network modes
@@ -782,12 +788,12 @@ register_task_definition(Client, Input, Options)
 %% Alternatively, you can use `StartTask' to use your own scheduler or place
 %% tasks manually on specific container instances.
 %%
-%% The Amazon ECS API follows an eventual consistency model, due to the
-%% distributed nature of the system supporting the API. This means that the
-%% result of an API command you run that affects your Amazon ECS resources
-%% might not be immediately visible to all subsequent commands you run. Keep
-%% this in mind when you carry out an API command that immediately follows a
-%% previous API command.
+%% The Amazon ECS API follows an eventual consistency model. This is because
+%% the distributed nature of the system supporting the API. This means that
+%% the result of an API command you run that affects your Amazon ECS
+%% resources might not be immediately visible to all subsequent commands you
+%% run. Keep this in mind when you carry out an API command that immediately
+%% follows a previous API command.
 %%
 %% To manage eventual consistency, you can do the following:
 %%
@@ -882,8 +888,8 @@ submit_task_state_change(Client, Input, Options)
 %% @doc Associates the specified tags to a resource with the specified
 %% `resourceArn'.
 %%
-%% If existing tags on a resource are not specified in the request
-%% parameters, they are not changed. When a resource is deleted, the tags
+%% If existing tags on a resource aren't specified in the request parameters,
+%% they aren't changed. When a resource is deleted, the tags that are
 %% associated with that resource are deleted as well.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -927,16 +933,16 @@ update_cluster_settings(Client, Input, Options)
 %% @doc Updates the Amazon ECS container agent on a specified container
 %% instance.
 %%
-%% Updating the Amazon ECS container agent does not interrupt running tasks
-%% or services on the container instance. The process for updating the agent
+%% Updating the Amazon ECS container agent doesn't interrupt running tasks or
+%% services on the container instance. The process for updating the agent
 %% differs depending on whether your container instance was launched with the
 %% Amazon ECS-optimized AMI or another operating system.
 %%
 %% The `UpdateContainerAgent' API isn't supported for container instances
 %% using the Amazon ECS-optimized Amazon Linux 2 (arm64) AMI. To update the
-%% container agent, you can update the `ecs-init' package which will update
-%% the agent. For more information, see Updating the Amazon ECS container
-%% agent in the Amazon Elastic Container Service Developer Guide.
+%% container agent, you can update the `ecs-init' package. This updates the
+%% agent. For more information, see Updating the Amazon ECS container agent
+%% in the Amazon Elastic Container Service Developer Guide.
 %%
 %% The `UpdateContainerAgent' API requires an Amazon ECS-optimized AMI or
 %% Amazon Linux AMI with the `ecs-init' service installed and running. For
@@ -957,7 +963,7 @@ update_container_agent(Client, Input, Options)
 %% instance from a cluster, for example to perform system updates, update the
 %% Docker daemon, or scale down the cluster size.
 %%
-%% A container instance cannot be changed to `DRAINING' until it has reached
+%% A container instance can't be changed to `DRAINING' until it has reached
 %% an `ACTIVE' status. If the instance is in any other status, an error will
 %% be received.
 %%
@@ -979,13 +985,13 @@ update_container_agent(Client, Input, Options)
 %% stop two existing tasks before starting two new tasks. If the minimum is
 %% 100%, the service scheduler can't remove existing tasks until the
 %% replacement tasks are considered healthy. Tasks for services that do not
-%% use a load balancer are considered healthy if they are in the `RUNNING'
+%% use a load balancer are considered healthy if they're in the `RUNNING'
 %% state. Tasks for services that use a load balancer are considered healthy
-%% if they are in the `RUNNING' state and the container instance they are
+%% if they're in the `RUNNING' state and the container instance they're
 %% hosted on is reported as healthy by the load balancer.
 %%
 %% </li> <li> The `maximumPercent' parameter represents an upper limit on the
-%% number of running tasks during task replacement, which enables you to
+%% number of running tasks during task replacement. You can use this to
 %% define the replacement batch size. For example, if `desiredCount' is four
 %% tasks, a maximum of 200% starts four new tasks before stopping the four
 %% tasks to be drained, provided that the cluster resources required to do
@@ -993,7 +999,7 @@ update_container_agent(Client, Input, Options)
 %% start until the draining tasks have stopped.
 %%
 %% </li> </ul> Any `PENDING' or `RUNNING' tasks that do not belong to a
-%% service are not affected. You must wait for them to finish or stop them
+%% service aren't affected. You must wait for them to finish or stop them
 %% manually.
 %%
 %% A container instance has completed draining when it has no more `RUNNING'
@@ -1027,16 +1033,14 @@ update_container_instances_state(Client, Input, Options)
 %% only the desired count, deployment configuration, task placement
 %% constraints and strategies, and health check grace period can be updated
 %% using this API. If the network configuration, platform version, or task
-%% definition need to be updated, a new CodeDeploy deployment should be
-%% created. For more information, see CreateDeployment in the CodeDeploy API
-%% Reference.
+%% definition need to be updated, a new CodeDeploy deployment is created. For
+%% more information, see CreateDeployment in the CodeDeploy API Reference.
 %%
 %% For services using an external deployment controller, you can update only
 %% the desired count, task placement constraints and strategies, and health
 %% check grace period using this API. If the launch type, load balancer,
 %% network configuration, platform version, or task definition need to be
-%% updated, you should create a new task set. For more information, see
-%% `CreateTaskSet'.
+%% updated, create a new task set. For more information, see `CreateTaskSet'.
 %%
 %% You can add to or subtract from the number of instantiations of a task
 %% definition in a service by specifying the cluster that the service is
@@ -1049,11 +1053,11 @@ update_container_instances_state(Client, Input, Options)
 %% deployment strategy.
 %%
 %% If your updated Docker image uses the same tag as what is in the existing
-%% task definition for your service (for example, `my_image:latest'), you do
-%% not need to create a new revision of your task definition. You can update
-%% the service using the `forceNewDeployment' option. The new tasks launched
-%% by the deployment pull the current image/tag combination from your
-%% repository when they start.
+%% task definition for your service (for example, `my_image:latest'), you
+%% don't need to create a new revision of your task definition. You can
+%% update the service using the `forceNewDeployment' option. The new tasks
+%% launched by the deployment pull the current image/tag combination from
+%% your repository when they start.
 %%
 %% You can also update the deployment configuration of a service. When a
 %% deployment is triggered by updating the task definition of a service, the
@@ -1065,34 +1069,34 @@ update_container_instances_state(Client, Input, Options)
 %% ignore `desiredCount' temporarily during a deployment. For example, if
 %% `desiredCount' is four tasks, a minimum of 50% allows the scheduler to
 %% stop two existing tasks before starting two new tasks. Tasks for services
-%% that do not use a load balancer are considered healthy if they are in the
+%% that don't use a load balancer are considered healthy if they're in the
 %% `RUNNING' state. Tasks for services that use a load balancer are
-%% considered healthy if they are in the `RUNNING' state and the container
-%% instance they are hosted on is reported as healthy by the load balancer.
+%% considered healthy if they're in the `RUNNING' state and the container
+%% instance they're hosted on is reported as healthy by the load balancer.
 %%
 %% </li> <li> The `maximumPercent' parameter represents an upper limit on the
-%% number of running tasks during a deployment, which enables you to define
-%% the deployment batch size. For example, if `desiredCount' is four tasks, a
+%% number of running tasks during a deployment. You can use it to define the
+%% deployment batch size. For example, if `desiredCount' is four tasks, a
 %% maximum of 200% starts four new tasks before stopping the four older tasks
 %% (provided that the cluster resources required to do this are available).
 %%
 %% </li> </ul> When `UpdateService' stops a task during a deployment, the
 %% equivalent of `docker stop' is issued to the containers running in the
-%% task. This results in a `SIGTERM' and a 30-second timeout, after which
+%% task. This results in a `SIGTERM' and a 30-second timeout. After this,
 %% `SIGKILL' is sent and the containers are forcibly stopped. If the
 %% container handles the `SIGTERM' gracefully and exits within 30 seconds
 %% from receiving it, no `SIGKILL' is sent.
 %%
 %% When the service scheduler launches new tasks, it determines task
-%% placement in your cluster with the following logic:
+%% placement in your cluster with the following logic.
 %%
 %% <ul> <li> Determine which of the container instances in your cluster can
-%% support your service's task definition (for example, they have the
-%% required CPU, memory, ports, and container instance attributes).
+%% support your service's task definition. For example, they have the
+%% required CPU, memory, ports, and container instance attributes.
 %%
 %% </li> <li> By default, the service scheduler attempts to balance tasks
-%% across Availability Zones in this manner (although you can choose a
-%% different placement strategy):
+%% across Availability Zones in this manner even though you can choose a
+%% different placement strategy.
 %%
 %% <ul> <li> Sort the valid container instances by the fewest number of
 %% running tasks for this service in the same Availability Zone as the
@@ -1162,7 +1166,11 @@ update_task_set(Client, Input, Options)
     {error, term()} when
     Result :: map() | undefined,
     Error :: map().
-request(Client, Action, Input0, Options) ->
+request(Client, Action, Input, Options) ->
+    RequestFun = fun() -> do_request(Client, Action, Input, Options) end,
+    aws_request:request(RequestFun, Options).
+
+do_request(Client, Action, Input0, Options) ->
     Client1 = Client#{service => <<"ecs">>},
     Host = build_host(<<"ecs">>, Client1),
     URL = build_url(Host, Client1),

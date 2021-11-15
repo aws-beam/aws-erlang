@@ -3,7 +3,8 @@
 
 %% @doc Batch
 %%
-%% Using Batch, you can run batch computing workloads on the Cloud.
+%% Using Batch, you can run batch computing workloads on the Amazon Web
+%% Services Cloud.
 %%
 %% Batch computing is a common means for developers, scientists, and
 %% engineers to access large amounts of compute resources. Batch uses the
@@ -29,10 +30,14 @@
          create_compute_environment/3,
          create_job_queue/2,
          create_job_queue/3,
+         create_scheduling_policy/2,
+         create_scheduling_policy/3,
          delete_compute_environment/2,
          delete_compute_environment/3,
          delete_job_queue/2,
          delete_job_queue/3,
+         delete_scheduling_policy/2,
+         delete_scheduling_policy/3,
          deregister_job_definition/2,
          deregister_job_definition/3,
          describe_compute_environments/2,
@@ -43,8 +48,12 @@
          describe_job_queues/3,
          describe_jobs/2,
          describe_jobs/3,
+         describe_scheduling_policies/2,
+         describe_scheduling_policies/3,
          list_jobs/2,
          list_jobs/3,
+         list_scheduling_policies/2,
+         list_scheduling_policies/3,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -61,7 +70,9 @@
          update_compute_environment/2,
          update_compute_environment/3,
          update_job_queue/2,
-         update_job_queue/3]).
+         update_job_queue/3,
+         update_scheduling_policy/2,
+         update_scheduling_policy/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -198,6 +209,29 @@ create_job_queue(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an Batch scheduling policy.
+create_scheduling_policy(Client, Input) ->
+    create_scheduling_policy(Client, Input, []).
+create_scheduling_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/createschedulingpolicy"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an Batch compute environment.
 %%
 %% Before you can delete a compute environment, you must set its state to
@@ -243,6 +277,31 @@ delete_job_queue(Client, Input) ->
 delete_job_queue(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/deletejobqueue"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified scheduling policy.
+%%
+%% You can't delete a scheduling policy that is used in any job queues.
+delete_scheduling_policy(Client, Input) ->
+    delete_scheduling_policy(Client, Input, []).
+delete_scheduling_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/deleteschedulingpolicy"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -384,6 +443,29 @@ describe_jobs(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Describes one or more of your scheduling policies.
+describe_scheduling_policies(Client, Input) ->
+    describe_scheduling_policies(Client, Input, []).
+describe_scheduling_policies(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/describeschedulingpolicies"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns a list of Batch jobs.
 %%
 %% You must specify only one of the following items:
@@ -420,11 +502,34 @@ list_jobs(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns a list of Batch scheduling policies.
+list_scheduling_policies(Client, Input) ->
+    list_scheduling_policies(Client, Input, []).
+list_scheduling_policies(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/listschedulingpolicies"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists the tags for an Batch resource.
 %%
 %% Batch resources that support tags are compute environments, jobs, job
-%% definitions, and job queues. ARNs for child jobs of array and multi-node
-%% parallel (MNP) jobs are not supported.
+%% definitions, job queues, and scheduling policies. ARNs for child jobs of
+%% array and multi-node parallel (MNP) jobs are not supported.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -474,11 +579,14 @@ register_job_definition(Client, Input0, Options0) ->
 %%
 %% Parameters that are specified during `SubmitJob' override parameters
 %% defined in the job definition. vCPU and memory requirements that are
-%% specified in the `ResourceRequirements' objects in the job definition are
+%% specified in the `resourceRequirements' objects in the job definition are
 %% the exception. They can't be overridden this way using the `memory' and
 %% `vcpus' parameters. Rather, you must specify updates to job definition
 %% parameters in a `ResourceRequirements' object that's included in the
 %% `containerOverrides' parameter.
+%%
+%% Job queues with a scheduling policy are limited to 500 active fair share
+%% identifiers at a time.
 %%
 %% Jobs that run on Fargate resources can't be guaranteed to run for more
 %% than 14 days. This is because, after 14 days, Fargate resources might
@@ -511,9 +619,9 @@ submit_job(Client, Input0, Options0) ->
 %% If existing tags on a resource aren't specified in the request parameters,
 %% they aren't changed. When a resource is deleted, the tags that are
 %% associated with that resource are deleted as well. Batch resources that
-%% support tags are compute environments, jobs, job definitions, and job
-%% queues. ARNs for child jobs of array and multi-node parallel (MNP) jobs
-%% are not supported.
+%% support tags are compute environments, jobs, job definitions, job queues,
+%% and scheduling policies. ARNs for child jobs of array and multi-node
+%% parallel (MNP) jobs are not supported.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -633,6 +741,29 @@ update_job_queue(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates a scheduling policy.
+update_scheduling_policy(Client, Input) ->
+    update_scheduling_policy(Client, Input, []).
+update_scheduling_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/updateschedulingpolicy"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %%====================================================================
 %% Internal functions
 %%====================================================================
@@ -646,6 +777,10 @@ update_job_queue(Client, Input0, Options0) ->
     Result :: map(),
     Error :: map().
 request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
+  RequestFun = fun() -> do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) end,
+  aws_request:request(RequestFun, Options).
+
+do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"batch">>},
     Host = build_host(<<"batch">>, Client1),
     URL0 = build_url(Host, Path, Client1),

@@ -548,7 +548,11 @@ update_subnet_change_protection(Client, Input, Options)
     {error, term()} when
     Result :: map() | undefined,
     Error :: map().
-request(Client, Action, Input0, Options) ->
+request(Client, Action, Input, Options) ->
+    RequestFun = fun() -> do_request(Client, Action, Input, Options) end,
+    aws_request:request(RequestFun, Options).
+
+do_request(Client, Action, Input0, Options) ->
     Client1 = Client#{service => <<"network-firewall">>},
     Host = build_host(<<"network-firewall">>, Client1),
     URL = build_url(Host, Client1),

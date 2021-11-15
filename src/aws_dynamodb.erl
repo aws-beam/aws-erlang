@@ -14,15 +14,15 @@
 %% With DynamoDB, you can create database tables that can store and retrieve
 %% any amount of data, and serve any level of request traffic. You can scale
 %% up or scale down your tables' throughput capacity without downtime or
-%% performance degradation, and use the AWS Management Console to monitor
-%% resource utilization and performance metrics.
+%% performance degradation, and use the Amazon Web Services Management
+%% Console to monitor resource utilization and performance metrics.
 %%
 %% DynamoDB automatically spreads the data and traffic for your tables over a
 %% sufficient number of servers to handle your throughput and storage
 %% requirements, while maintaining consistent and fast performance. All of
 %% your data is stored on solid state disks (SSDs) and automatically
-%% replicated across multiple Availability Zones in an AWS region, providing
-%% built-in high availability and data durability.
+%% replicated across multiple Availability Zones in an Amazon Web Services
+%% Region, providing built-in high availability and data durability.
 -module(aws_dynamodb).
 
 -export([batch_execute_statement/2,
@@ -132,8 +132,11 @@
 %% API
 %%====================================================================
 
-%% @doc This operation allows you to perform batch reads and writes on data
+%% @doc This operation allows you to perform batch reads or writes on data
 %% stored in DynamoDB, using PartiQL.
+%%
+%% The entire batch must consist of either read statements or write
+%% statements, you cannot mix both in one batch.
 batch_execute_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_execute_statement(Client, Input, []).
@@ -386,9 +389,9 @@ create_global_table(Client, Input, Options)
 
 %% @doc The `CreateTable' operation adds a new table to your account.
 %%
-%% In an AWS account, table names must be unique within each Region. That is,
-%% you can have two tables with same name if you create the tables in
-%% different Regions.
+%% In an Amazon Web Services account, table names must be unique within each
+%% Region. That is, you can have two tables with same name if you create the
+%% tables in different Regions.
 %%
 %% `CreateTable' is an asynchronous operation. Upon receiving a `CreateTable'
 %% request, DynamoDB immediately returns a response with a `TableStatus' of
@@ -558,24 +561,25 @@ describe_kinesis_streaming_destination(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeKinesisStreamingDestination">>, Input, Options).
 
-%% @doc Returns the current provisioned-capacity quotas for your AWS account
-%% in a Region, both for the Region as a whole and for any one DynamoDB table
-%% that you create there.
+%% @doc Returns the current provisioned-capacity quotas for your Amazon Web
+%% Services account in a Region, both for the Region as a whole and for any
+%% one DynamoDB table that you create there.
 %%
-%% When you establish an AWS account, the account has initial quotas on the
-%% maximum read capacity units and write capacity units that you can
-%% provision across all of your DynamoDB tables in a given Region. Also,
-%% there are per-table quotas that apply when you create a table there. For
-%% more information, see Service, Account, and Table Quotas page in the
+%% When you establish an Amazon Web Services account, the account has initial
+%% quotas on the maximum read capacity units and write capacity units that
+%% you can provision across all of your DynamoDB tables in a given Region.
+%% Also, there are per-table quotas that apply when you create a table there.
+%% For more information, see Service, Account, and Table Quotas page in the
 %% Amazon DynamoDB Developer Guide.
 %%
-%% Although you can increase these quotas by filing a case at AWS Support
-%% Center, obtaining the increase is not instantaneous. The `DescribeLimits'
-%% action lets you write code to compare the capacity you are currently using
-%% to those quotas imposed by your account so that you have enough time to
-%% apply for an increase before you hit a quota.
+%% Although you can increase these quotas by filing a case at Amazon Web
+%% Services Support Center, obtaining the increase is not instantaneous. The
+%% `DescribeLimits' action lets you write code to compare the capacity you
+%% are currently using to those quotas imposed by your account so that you
+%% have enough time to apply for an increase before you hit a quota.
 %%
-%% For example, you could use one of the AWS SDKs to do the following:
+%% For example, you could use one of the Amazon Web Services SDKs to do the
+%% following:
 %%
 %% <ol> <li> Call `DescribeLimits' for a particular Region to obtain your
 %% current account quotas on provisioned capacity there.
@@ -695,6 +699,12 @@ execute_statement(Client, Input, Options)
 
 %% @doc This operation allows you to perform transactional reads or writes on
 %% data stored in DynamoDB, using PartiQL.
+%%
+%% The entire transaction must consist of either read statements or write
+%% statements, you cannot mix both in one transaction. The EXISTS function is
+%% an exception and can be used to check the condition of specific attributes
+%% of the item in a similar manner to `ConditionCheck' in the
+%% TransactWriteItems API.
 execute_transaction(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_transaction(Client, Input, []).
@@ -730,7 +740,7 @@ get_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetItem">>, Input, Options).
 
-%% @doc List backups associated with an AWS account.
+%% @doc List backups associated with an Amazon Web Services account.
 %%
 %% To list backups for a given table, specify `TableName'. `ListBackups'
 %% returns a paginated list of results with at most 1 MB worth of items in a
@@ -812,26 +822,26 @@ list_tags_of_resource(Client, Input, Options)
 %%
 %% This topic provides general information about the `PutItem' API.
 %%
-%% For information on how to call the `PutItem' API using the AWS SDK in
-%% specific languages, see the following:
+%% For information on how to call the `PutItem' API using the Amazon Web
+%% Services SDK in specific languages, see the following:
 %%
-%% PutItem in the AWS Command Line Interface
+%% PutItem in the Command Line Interface
 %%
-%% PutItem in the AWS SDK for .NET
+%% PutItem in the SDK for .NET
 %%
-%% PutItem in the AWS SDK for C++
+%% PutItem in the SDK for C++
 %%
-%% PutItem in the AWS SDK for Go
+%% PutItem in the SDK for Go
 %%
-%% PutItem in the AWS SDK for Java
+%% PutItem in the SDK for Java
 %%
-%% PutItem in the AWS SDK for JavaScript
+%% PutItem in the SDK for JavaScript
 %%
-%% PutItem in the AWS SDK for PHP V3
+%% PutItem in the SDK for PHP V3
 %%
-%% PutItem in the AWS SDK for Python
+%% PutItem in the SDK for Python (Boto)
 %%
-%% PutItem in the AWS SDK for Ruby V2
+%% PutItem in the SDK for Ruby V2
 %%
 %% When you add an item, the primary key attributes are the only required
 %% attributes. Attribute values cannot be null.
@@ -859,10 +869,12 @@ put_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutItem">>, Input, Options).
 
-%% @doc The `Query' operation finds items based on primary key values.
+%% @doc You must provide the name of the partition key attribute and a single
+%% value for that attribute.
 %%
-%% You can query any table or secondary index that has a composite primary
-%% key (a partition key and a sort key).
+%% `Query' returns all items with that partition key value. Optionally, you
+%% can provide a sort key attribute and use a comparison operator to refine
+%% the search results.
 %%
 %% Use the `KeyConditionExpression' parameter to provide a specific value for
 %% the partition key. The `Query' operation will return all of the items from
@@ -1057,9 +1069,9 @@ tag_resource(Client, Input, Options)
 %% A `TransactGetItems' call can contain up to 25 `TransactGetItem' objects,
 %% each of which contains a `Get' structure that specifies an item to
 %% retrieve from a table in the account and Region. A call to
-%% `TransactGetItems' cannot retrieve items from tables in more than one AWS
-%% account or Region. The aggregate size of the items in the transaction
-%% cannot exceed 4 MB.
+%% `TransactGetItems' cannot retrieve items from tables in more than one
+%% Amazon Web Services account or Region. The aggregate size of the items in
+%% the transaction cannot exceed 4 MB.
 %%
 %% DynamoDB rejects the entire `TransactGetItems' request if any of the
 %% following is true:
@@ -1087,9 +1099,10 @@ transact_get_items(Client, Input, Options)
 %% to 25 action requests.
 %%
 %% These actions can target items in different tables, but not in different
-%% AWS accounts or Regions, and no two actions can target the same item. For
-%% example, you cannot both `ConditionCheck' and `Update' the same item. The
-%% aggregate size of the items in the transaction cannot exceed 4 MB.
+%% Amazon Web Services accounts or Regions, and no two actions can target the
+%% same item. For example, you cannot both `ConditionCheck' and `Update' the
+%% same item. The aggregate size of the items in the transaction cannot
+%% exceed 4 MB.
 %%
 %% The actions are completed atomically so that either all of them succeed,
 %% or all of them fail. They are defined by the following objects:
@@ -1186,6 +1199,13 @@ update_continuous_backups(Client, Input, Options)
 
 %% @doc Updates the status for contributor insights for a specific table or
 %% index.
+%%
+%% CloudWatch Contributor Insights for DynamoDB graphs display the partition
+%% key and (if applicable) sort key of frequently accessed items and
+%% frequently throttled items in plaintext. If you require the use of AWS Key
+%% Management Service (KMS) to encrypt this table’s partition key and sort
+%% key data with an AWS managed key or customer managed key, you should not
+%% enable CloudWatch Contributor Insights for DynamoDB for this table.
 update_contributor_insights(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_contributor_insights(Client, Input, []).
@@ -1332,7 +1352,11 @@ update_time_to_live(Client, Input, Options)
     {error, term()} when
     Result :: map() | undefined,
     Error :: map().
-request(Client, Action, Input0, Options) ->
+request(Client, Action, Input, Options) ->
+    RequestFun = fun() -> do_request(Client, Action, Input, Options) end,
+    aws_request:request(RequestFun, Options).
+
+do_request(Client, Action, Input0, Options) ->
     Client1 = Client#{service => <<"dynamodb">>},
     Host = build_host(<<"dynamodb">>, Client1),
     URL = build_url(Host, Client1),
