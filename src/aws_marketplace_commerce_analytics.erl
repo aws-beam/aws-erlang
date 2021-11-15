@@ -65,7 +65,11 @@ start_support_data_export(Client, Input, Options)
     {error, term()} when
     Result :: map() | undefined,
     Error :: map().
-request(Client, Action, Input0, Options) ->
+request(Client, Action, Input, Options) ->
+    RequestFun = fun() -> do_request(Client, Action, Input, Options) end,
+    aws_request:request(RequestFun, Options).
+
+do_request(Client, Action, Input0, Options) ->
     Client1 = Client#{service => <<"marketplacecommerceanalytics">>},
     Host = build_host(<<"marketplacecommerceanalytics">>, Client1),
     URL = build_url(Host, Client1),

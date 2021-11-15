@@ -14,9 +14,8 @@
 %% per second. For more information, see Amazon Connect Service Quotas in the
 %% Amazon Connect Administrator Guide.
 %%
-%% You can connect programmatically to an Amazon Web Services service by
-%% using an endpoint. For a list of Amazon Connect endpoints, see Amazon
-%% Connect Endpoints.
+%% You can connect programmatically to an AWS service by using an endpoint.
+%% For a list of Amazon Connect endpoints, see Amazon Connect Endpoints.
 %%
 %% Working with contact flows? Check out the Amazon Connect Flow language.
 -module(aws_connect).
@@ -80,6 +79,9 @@
          describe_agent_status/3,
          describe_agent_status/5,
          describe_agent_status/6,
+         describe_contact/3,
+         describe_contact/5,
+         describe_contact/6,
          describe_contact_flow/3,
          describe_contact_flow/5,
          describe_contact_flow/6,
@@ -154,6 +156,9 @@
          list_contact_flows/2,
          list_contact_flows/4,
          list_contact_flows/5,
+         list_contact_references/4,
+         list_contact_references/6,
+         list_contact_references/7,
          list_hours_of_operations/2,
          list_hours_of_operations/4,
          list_hours_of_operations/5,
@@ -243,12 +248,16 @@
          untag_resource/4,
          update_agent_status/4,
          update_agent_status/5,
+         update_contact/4,
+         update_contact/5,
          update_contact_attributes/2,
          update_contact_attributes/3,
          update_contact_flow_content/4,
          update_contact_flow_content/5,
          update_contact_flow_name/4,
          update_contact_flow_name/5,
+         update_contact_schedule/2,
+         update_contact_schedule/3,
          update_hours_of_operation/4,
          update_hours_of_operation/5,
          update_instance_attribute/4,
@@ -626,8 +635,7 @@ create_instance(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an Amazon Web Services resource association with an Amazon
-%% Connect instance.
+%% @doc Creates an AWS resource association with an Amazon Connect instance.
 create_integration_association(Client, InstanceId, Input) ->
     create_integration_association(Client, InstanceId, Input, []).
 create_integration_association(Client, InstanceId, Input0, Options0) ->
@@ -875,8 +883,7 @@ delete_instance(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an Amazon Web Services resource association from an Amazon
-%% Connect instance.
+%% @doc Deletes an AWS resource association from an Amazon Connect instance.
 %%
 %% The association must not have any use cases associated with it.
 delete_integration_association(Client, InstanceId, IntegrationAssociationId, Input) ->
@@ -1040,6 +1047,35 @@ describe_agent_status(Client, AgentStatusId, InstanceId, QueryMap, HeadersMap)
 describe_agent_status(Client, AgentStatusId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/agent-status/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(AgentStatusId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Describes the specified contact.
+%%
+%% Contact information is available in Amazon Connect for 24 months, and then
+%% it is deleted.
+describe_contact(Client, ContactId, InstanceId)
+  when is_map(Client) ->
+    describe_contact(Client, ContactId, InstanceId, #{}, #{}).
+
+describe_contact(Client, ContactId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_contact(Client, ContactId, InstanceId, QueryMap, HeadersMap, []).
+
+describe_contact(Client, ContactId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/contacts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1816,6 +1852,38 @@ list_contact_flows(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% For the specified `referenceTypes', returns a list of references
+%% associated with the contact.
+list_contact_references(Client, ContactId, InstanceId, ReferenceTypes)
+  when is_map(Client) ->
+    list_contact_references(Client, ContactId, InstanceId, ReferenceTypes, #{}, #{}).
+
+list_contact_references(Client, ContactId, InstanceId, ReferenceTypes, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_contact_references(Client, ContactId, InstanceId, ReferenceTypes, QueryMap, HeadersMap, []).
+
+list_contact_references(Client, ContactId, InstanceId, ReferenceTypes, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/contact/references/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"referenceTypes">>, ReferenceTypes}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Provides information about the hours of operation for the specified
 %% Amazon Connect instance.
 %%
@@ -1946,8 +2014,8 @@ list_instances(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Provides summary information about the Amazon Web Services resource
-%% associations for the specified Amazon Connect instance.
+%% @doc Provides summary information about the AWS resource associations for
+%% the specified Amazon Connect instance.
 list_integration_associations(Client, InstanceId)
   when is_map(Client) ->
     list_integration_associations(Client, InstanceId, #{}, #{}).
@@ -2325,11 +2393,8 @@ list_security_profile_permissions(Client, InstanceId, SecurityProfileId, QueryMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and is subject to
-%% change.
-%%
-%% Provides summary information about the security profiles for the specified
-%% Amazon Connect instance.
+%% @doc Provides summary information about the security profiles for the
+%% specified Amazon Connect instance.
 %%
 %% For more information about security profiles, see Security Profiles in the
 %% Amazon Connect Administrator Guide.
@@ -2651,7 +2716,8 @@ start_outbound_voice_contact(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Initiates a contact flow to start a new task.
+%% @doc Initiates a contact flow to start a new task immediately or at a
+%% future date and time.
 start_task_contact(Client, Input) ->
     start_task_contact(Client, Input, []).
 start_task_contact(Client, Input0, Options0) ->
@@ -2867,6 +2933,37 @@ update_agent_status(Client, AgentStatusId, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Adds or updates user defined contact information associated with the
+%% specified contact. At least one field to be updated must be present in the
+%% request.
+%%
+%% You can add or update user-defined contact information for both ongoing
+%% and completed contacts.
+update_contact(Client, ContactId, InstanceId, Input) ->
+    update_contact(Client, ContactId, InstanceId, Input, []).
+update_contact(Client, ContactId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/contacts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates or updates user-defined contact attributes associated with
 %% the specified contact.
 %%
@@ -2948,6 +3045,30 @@ update_contact_flow_name(Client, ContactFlowId, InstanceId, Input) ->
 update_contact_flow_name(Client, ContactFlowId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/name"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the scheduled time of a task contact that is already
+%% scheduled.
+update_contact_schedule(Client, Input) ->
+    update_contact_schedule(Client, Input, []).
+update_contact_schedule(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/contact/schedule"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
