@@ -1401,6 +1401,7 @@ handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBod
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
+       StatusCode =:= 206;
        StatusCode =:= SuccessStatusCode ->
     {ok, {StatusCode, ResponseHeaders}};
 handle_response({ok, StatusCode, ResponseHeaders}, _, _DecodeBody) ->
@@ -1409,6 +1410,7 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, De
   when StatusCode =:= 200;
        StatusCode =:= 202;
        StatusCode =:= 204;
+       StatusCode =:= 206;
        StatusCode =:= SuccessStatusCode ->
     case hackney:body(Client) of
         {ok, <<>>} when StatusCode =:= 200;
