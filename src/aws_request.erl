@@ -199,7 +199,15 @@ split_url(URL) ->
     URI = hackney_url:parse_url(URL),
     %% FIXME(jkakar) Query string name/value pairs should be URL encoded
     %% and sorted alphabetically.
-    {ensure_path(URI#hackney_url.path), URI#hackney_url.qs}.
+    {ensure_path(URI#hackney_url.path), fix_qs(URI#hackney_url.qs)}.
+
+%% When signing a request, the query string for query params that do
+%% no contain a value such as "key" should be encoded as "key=".
+%% Without this fix, the request will result in a SignatureDoesNotMatch error.
+fix_qs(QueryString) ->
+  hackney_url:qs(lists:map(fun({K, true}) -> {K, ""};
+                              ({K, V}) when is_binary(V) -> {K, V}
+                           end, hackney_url:parse_qs(QueryString))).
 
 %% Convert a list of headers to canonical header format.  Leading and
 %% trailing whitespace around header names and values is stripped, header
@@ -435,11 +443,17 @@ split_url_without_query_string_test() ->
     ?assertEqual({<<"/index">>, <<"">>},
                  split_url(<<"https://example.com/index?">>)).
 
-%% split_url/1 returns an empty binary if no query string is present.
+%% split_url/1 returns an binary if a query string is present.
 split_url_with_all_uri_elements_test() ->
     ?assertEqual(
        {<<"/index">>, <<"one=1">>},
        split_url(<<"https://username:secret@example.com:80/index?one=1">>)).
+
+%% split_url/1 returns a patched up binary if a query string with no value is present.
+split_url_with_uri_elements_with_no_value_test() ->
+    ?assertEqual(
+       {<<"/index">>, <<"one=">>},
+       split_url(<<"https://username:secret@example.com:80/index?one">>)).
 
 %% canonical_headers/1 returns a newline-delimited list of trimmed and
 %% lowecase headers, sorted in alphabetical order, and with a trailing
