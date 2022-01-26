@@ -197,17 +197,17 @@ canonical_request(Method, URL, Headers, Body) ->
 %% URL and query string as separate values.
 split_url(URL) ->
     URI = hackney_url:parse_url(URL),
-    %% FIXME(jkakar) Query string name/value pairs should be URL encoded
-    %% and sorted alphabetically.
     {ensure_path(URI#hackney_url.path), fix_qs(URI#hackney_url.qs)}.
 
 %% When signing a request, the query string for query params that do
 %% no contain a value such as "key" should be encoded as "key=".
 %% Without this fix, the request will result in a SignatureDoesNotMatch error.
 fix_qs(QueryString) ->
-  hackney_url:qs(lists:map(fun({K, true}) -> {K, ""};
-                              ({K, V}) when is_binary(V) -> {K, V}
-                           end, hackney_url:parse_qs(QueryString))).
+  hackney_url:qs(
+    lists:sort(
+      lists:map(fun({K, true}) -> {K, ""};
+                   ({K, V}) when is_binary(V) -> {K, V}
+                end, hackney_url:parse_qs(QueryString)))).
 
 %% Convert a list of headers to canonical header format.  Leading and
 %% trailing whitespace around header names and values is stripped, header
@@ -437,6 +437,12 @@ canonical_request_test() ->
 split_url_test() ->
     ?assertEqual({<<"/index">>, <<"one=1&two=2">>},
                  split_url(<<"https://example.com/index?one=1&two=2">>)).
+
+%% split_url/1 splits a URL from its query string, URL encodes the query
+%% string, and returns the URL and sorted query string as separate values.
+split_url_sorted_test() ->
+    ?assertEqual({<<"/index">>, <<"one=1&two=2">>},
+                 split_url(<<"https://example.com/index?two=2&one=1">>)).
 
 %% split_url/1 returns an empty binary if no query string is present.
 split_url_without_query_string_test() ->
