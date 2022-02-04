@@ -283,6 +283,8 @@
          promote_read_replica_db_cluster/3,
          purchase_reserved_db_instances_offering/2,
          purchase_reserved_db_instances_offering/3,
+         reboot_db_cluster/2,
+         reboot_db_cluster/3,
          reboot_db_instance/2,
          reboot_db_instance/3,
          register_db_proxy_targets/2,
@@ -340,14 +342,8 @@
 %% API
 %%====================================================================
 
-%% @doc Associates an Identity and Access Management (IAM) role from an
-%% Amazon Aurora DB cluster.
-%%
-%% For more information, see Authorizing Amazon Aurora MySQL to Access Other
-%% Amazon Web Services Services on Your Behalf in the Amazon Aurora User
-%% Guide.
-%%
-%% This action only applies to Aurora DB clusters.
+%% @doc Associates an Identity and Access Management (IAM) role with a DB
+%% cluster.
 add_role_to_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_role_to_db_cluster(Client, Input, []).
@@ -408,7 +404,7 @@ apply_pending_maintenance_action(Client, Input, Options)
 %% First, EC2 or VPC security groups can be added to the DBSecurityGroup if
 %% the application using the database is running on EC2 or VPC instances.
 %% Second, IP ranges are available if the application accessing your database
-%% is running on the Internet. Required parameters for this API are one of
+%% is running on the internet. Required parameters for this API are one of
 %% CIDR range, EC2SecurityGroupId for VPC, or (EC2SecurityGroupOwnerId and
 %% either EC2SecurityGroupName or EC2SecurityGroupId for non-VPC).
 %%
@@ -451,8 +447,6 @@ cancel_export_task(Client, Input, Options)
     request(Client, <<"CancelExportTask">>, Input, Options).
 
 %% @doc Copies the specified DB cluster parameter group.
-%%
-%% This action only applies to Aurora DB clusters.
 copy_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_cluster_parameter_group(Client, Input, []).
@@ -531,14 +525,17 @@ copy_db_cluster_parameter_group(Client, Input, Options)
 %% `TargetDBClusterSnapshotIdentifier' while that DB cluster snapshot is in
 %% "copying" status.
 %%
-%% For more information on copying encrypted DB cluster snapshots from one
-%% Amazon Web Services Region to another, see Copying a Snapshot in the
-%% Amazon Aurora User Guide.
+%% For more information on copying encrypted Amazon Aurora DB cluster
+%% snapshots from one Amazon Web Services Region to another, see Copying a
+%% Snapshot in the Amazon Aurora User Guide.
 %%
-%% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
-%% Amazon Aurora User Guide.
+%% For more information on Amazon Aurora DB clusters, see What is Amazon
+%% Aurora? in the Amazon Aurora User Guide.
 %%
-%% This action only applies to Aurora DB clusters.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
+%% with two readable standby DB instances in the Amazon RDS User Guide.
+%%
+%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 copy_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_cluster_snapshot(Client, Input, []).
@@ -600,15 +597,13 @@ create_custom_availability_zone(Client, Input, Options)
 %%
 %% A CEV is a binary volume snapshot of a database engine and specific AMI.
 %% The only supported engine is Oracle Database 19c Enterprise Edition with
-%% the January 2021 or later RU/RUR. For more information, see Amazon RDS
-%% Custom requirements and limitations in the Amazon RDS User Guide.
+%% the January 2021 or later RU/RUR.
 %%
 %% Amazon RDS, which is a fully managed service, supplies the Amazon Machine
 %% Image (AMI) and database software. The Amazon RDS database software is
 %% preinstalled, so you need only select a DB engine and version, and create
-%% your database. With Amazon RDS Custom, you upload your database
-%% installation files in Amazon S3. For more information, see Preparing to
-%% create a CEV in the Amazon RDS User Guide.
+%% your database. With Amazon RDS Custom for Oracle, you upload your database
+%% installation files in Amazon S3.
 %%
 %% When you create a custom engine version, you specify the files in a JSON
 %% document called a CEV manifest. This document describes installation .zip
@@ -641,18 +636,21 @@ create_custom_db_engine_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCustomDBEngineVersion">>, Input, Options).
 
-%% @doc Creates a new Amazon Aurora DB cluster.
+%% @doc Creates a new Amazon Aurora DB cluster or Multi-AZ DB cluster.
 %%
-%% You can use the `ReplicationSourceIdentifier' parameter to create the DB
-%% cluster as a read replica of another DB cluster or Amazon RDS MySQL or
-%% PostgreSQL DB instance. For cross-region replication where the DB cluster
-%% identified by `ReplicationSourceIdentifier' is encrypted, you must also
-%% specify the `PreSignedUrl' parameter.
+%% You can use the `ReplicationSourceIdentifier' parameter to create an
+%% Amazon Aurora DB cluster as a read replica of another DB cluster or Amazon
+%% RDS MySQL or PostgreSQL DB instance. For cross-Region replication where
+%% the DB cluster identified by `ReplicationSourceIdentifier' is encrypted,
+%% also specify the `PreSignedUrl' parameter.
 %%
-%% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
+%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
 %%
-%% This action only applies to Aurora DB clusters.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
+%% with two readable standby DB instances in the Amazon RDS User Guide.
+%%
+%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 create_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster(Client, Input, []).
@@ -681,10 +679,15 @@ create_db_cluster_endpoint(Client, Input, Options)
 %% provide custom values for any of the parameters, you must modify the group
 %% after creating it using `ModifyDBClusterParameterGroup'. Once you've
 %% created a DB cluster parameter group, you need to associate it with your
-%% DB cluster using `ModifyDBCluster'. When you associate a new DB cluster
-%% parameter group with a running DB cluster, you need to reboot the DB
-%% instances in the DB cluster without failover for the new DB cluster
-%% parameter group and associated settings to take effect.
+%% DB cluster using `ModifyDBCluster'.
+%%
+%% When you associate a new DB cluster parameter group with a running Aurora
+%% DB cluster, reboot the DB instances in the DB cluster without failover for
+%% the new DB cluster parameter group and associated settings to take effect.
+%%
+%% When you associate a new DB cluster parameter group with a running
+%% Multi-AZ DB cluster, reboot the DB cluster without failover for the new DB
+%% cluster parameter group and associated settings to take effect.
 %%
 %% After you create a DB cluster parameter group, you should wait at least 5
 %% minutes before creating your first DB cluster that uses that DB cluster
@@ -698,10 +701,13 @@ create_db_cluster_endpoint(Client, Input, Options)
 %% action to verify that your DB cluster parameter group has been created or
 %% modified.
 %%
-%% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
+%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
 %%
-%% This action only applies to Aurora DB clusters.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
+%% with two readable standby DB instances in the Amazon RDS User Guide.
+%%
+%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 create_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_parameter_group(Client, Input, []).
@@ -711,10 +717,13 @@ create_db_cluster_parameter_group(Client, Input, Options)
 
 %% @doc Creates a snapshot of a DB cluster.
 %%
-%% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
+%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
 %%
-%% This action only applies to Aurora DB clusters.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
+%% with two readable standby DB instances in the Amazon RDS User Guide.
+%%
+%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 create_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_snapshot(Client, Input, []).
@@ -854,13 +863,12 @@ create_db_subnet_group(Client, Input, Options)
 %% `Backup'.
 %%
 %% If you specify both the `SourceType' and `SourceIds', such as `SourceType'
-%% = `db-instance' and `SourceIdentifier' = `myDBInstance1', you are notified
-%% of all the `db-instance' events for the specified source. If you specify a
-%% `SourceType' but do not specify a `SourceIdentifier', you receive notice
-%% of the events for that source type for all your RDS sources. If you don't
-%% specify either the SourceType or the `SourceIdentifier', you are notified
-%% of events generated from all RDS sources belonging to your customer
-%% account.
+%% = `db-instance' and `SourceIds' = `myDBInstance1', you are notified of all
+%% the `db-instance' events for the specified source. If you specify a
+%% `SourceType' but do not specify `SourceIds', you receive notice of the
+%% events for that source type for all your RDS sources. If you don't specify
+%% either the SourceType or the `SourceIds', you are notified of events
+%% generated from all RDS sources belonging to your customer account.
 %%
 %% RDS event notification is only available for unencrypted SNS topics. If
 %% you specify an encrypted SNS topic, event notifications aren't sent for
@@ -955,10 +963,13 @@ delete_custom_db_engine_version(Client, Input, Options)
 %% are deleted and can't be recovered. Manual DB cluster snapshots of the
 %% specified DB cluster are not deleted.
 %%
-%% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
+%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
 %%
-%% This action only applies to Aurora DB clusters.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
+%% with two readable standby DB instances in the Amazon RDS User Guide.
+%%
+%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 delete_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster(Client, Input, []).
@@ -982,10 +993,13 @@ delete_db_cluster_endpoint(Client, Input, Options)
 %% The DB cluster parameter group to be deleted can't be associated with any
 %% DB clusters.
 %%
-%% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
+%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
 %%
-%% This action only applies to Aurora DB clusters.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
+%% with two readable standby DB instances in the Amazon RDS User Guide.
+%%
+%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 delete_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_parameter_group(Client, Input, []).
@@ -999,10 +1013,13 @@ delete_db_cluster_parameter_group(Client, Input, Options)
 %%
 %% The DB cluster snapshot must be in the `available' state to be deleted.
 %%
-%% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
+%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
 %%
-%% This action only applies to Aurora DB clusters.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
+%% with two readable standby DB instances in the Amazon RDS User Guide.
+%%
+%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 delete_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_snapshot(Client, Input, []).
@@ -1210,7 +1227,7 @@ describe_custom_availability_zones(Client, Input, Options)
 
 %% @doc Returns information about backtracks for a DB cluster.
 %%
-%% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
+%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora MySQL DB clusters.
@@ -1236,10 +1253,13 @@ describe_db_cluster_endpoints(Client, Input, Options)
 %% If a `DBClusterParameterGroupName' parameter is specified, the list will
 %% contain only the description of the specified DB cluster parameter group.
 %%
-%% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
+%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
 %%
-%% This action only applies to Aurora DB clusters.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
+%% with two readable standby DB instances in the Amazon RDS User Guide.
+%%
+%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 describe_db_cluster_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_parameter_groups(Client, Input, []).
@@ -1250,10 +1270,13 @@ describe_db_cluster_parameter_groups(Client, Input, Options)
 %% @doc Returns the detailed parameter list for a particular DB cluster
 %% parameter group.
 %%
-%% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
+%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
 %%
-%% This action only applies to Aurora DB clusters.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
+%% with two readable standby DB instances in the Amazon RDS User Guide.
+%%
+%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 describe_db_cluster_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_parameters(Client, Input, []).
@@ -1276,8 +1299,6 @@ describe_db_cluster_parameters(Client, Input, Options)
 %% restore a manual DB cluster snapshot, or to make the manual DB cluster
 %% snapshot public or private, use the `ModifyDBClusterSnapshotAttribute' API
 %% action.
-%%
-%% This action only applies to Aurora DB clusters.
 describe_db_cluster_snapshot_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_snapshot_attributes(Client, Input, []).
@@ -1289,10 +1310,13 @@ describe_db_cluster_snapshot_attributes(Client, Input, Options)
 %%
 %% This API action supports pagination.
 %%
-%% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
-%% Amazon Aurora User Guide.
+%% For more information on Amazon Aurora DB clusters, see What is Amazon
+%% Aurora? in the Amazon Aurora User Guide.
 %%
-%% This action only applies to Aurora DB clusters.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
+%% with two readable standby DB instances in the Amazon RDS User Guide.
+%%
+%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 describe_db_cluster_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_snapshots(Client, Input, []).
@@ -1300,12 +1324,18 @@ describe_db_cluster_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDBClusterSnapshots">>, Input, Options).
 
-%% @doc Returns information about provisioned Aurora DB clusters.
+%% @doc Returns information about Amazon Aurora DB clusters and Multi-AZ DB
+%% clusters.
 %%
 %% This API supports pagination.
 %%
-%% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
-%% Amazon Aurora User Guide.
+%% For more information on Amazon Aurora DB clusters, see What is Amazon
+%% Aurora? in the Amazon Aurora User Guide.
+%%
+%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
+%% with two readable standby DB instances in the Amazon RDS User Guide.
+%%
+%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 %%
 %% This operation can also return information for Amazon Neptune DB instances
 %% and Amazon DocumentDB instances.
@@ -1474,7 +1504,7 @@ describe_db_subnet_groups(Client, Input, Options)
 %% @doc Returns the default engine and system parameter information for the
 %% cluster database engine.
 %%
-%% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
+%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
 describe_engine_default_cluster_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1495,8 +1525,9 @@ describe_engine_default_parameters(Client, Input, Options)
 %% @doc Displays a list of categories for all event source types, or, if
 %% specified, for a specified source type.
 %%
-%% You can see a list of the event categories and source types in Events in
-%% the Amazon RDS User Guide.
+%% You can also see this list in the "Amazon RDS event categories and event
+%% messages" section of the Amazon RDS User Guide or the Amazon Aurora User
+%% Guide .
 describe_event_categories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_categories(Client, Input, []).
@@ -1520,14 +1551,14 @@ describe_event_subscriptions(Client, Input, Options)
     request(Client, <<"DescribeEventSubscriptions">>, Input, Options).
 
 %% @doc Returns events related to DB instances, DB clusters, DB parameter
-%% groups, DB security groups, DB snapshots, and DB cluster snapshots for the
-%% past 14 days.
+%% groups, DB security groups, DB snapshots, DB cluster snapshots, and RDS
+%% Proxies for the past 14 days.
 %%
-%% Events specific to a particular DB instances, DB clusters, DB parameter
-%% groups, DB security groups, DB snapshots, and DB cluster snapshots group
-%% can be obtained by providing the name as a parameter.
+%% Events specific to a particular DB instance, DB cluster, DB parameter
+%% group, DB security group, DB snapshot, DB cluster snapshot group, or RDS
+%% Proxy can be obtained by providing the name as a parameter.
 %%
-%% By default, the past hour of events are returned.
+%% By default, RDS returns events that were generated in the past hour.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
@@ -1549,7 +1580,7 @@ describe_export_tasks(Client, Input, Options)
 %%
 %% This API supports pagination.
 %%
-%% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
+%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters.
@@ -1586,8 +1617,8 @@ describe_option_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOptionGroups">>, Input, Options).
 
-%% @doc Returns a list of orderable DB instance options for the specified
-%% engine.
+%% @doc Returns a list of orderable DB instance options for the specified DB
+%% engine, DB engine version, and DB instance class.
 describe_orderable_db_instance_options(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_orderable_db_instance_options(Client, Input, []).
@@ -1659,21 +1690,31 @@ download_db_log_file_portion(Client, Input, Options)
 
 %% @doc Forces a failover for a DB cluster.
 %%
-%% A failover for a DB cluster promotes one of the Aurora Replicas (read-only
-%% instances) in the DB cluster to be the primary instance (the cluster
-%% writer).
+%% For an Aurora DB cluster, failover for a DB cluster promotes one of the
+%% Aurora Replicas (read-only instances) in the DB cluster to be the primary
+%% DB instance (the cluster writer).
 %%
-%% Amazon Aurora will automatically fail over to an Aurora Replica, if one
-%% exists, when the primary instance fails. You can force a failover when you
-%% want to simulate a failure of a primary instance for testing. Because each
-%% instance in a DB cluster has its own endpoint address, you will need to
-%% clean up and re-establish any existing connections that use those endpoint
-%% addresses when the failover is complete.
+%% For a Multi-AZ DB cluster, failover for a DB cluster promotes one of the
+%% readable standby DB instances (read-only instances) in the DB cluster to
+%% be the primary DB instance (the cluster writer).
 %%
-%% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
-%% Amazon Aurora User Guide.
+%% An Amazon Aurora DB cluster automatically fails over to an Aurora Replica,
+%% if one exists, when the primary DB instance fails. A Multi-AZ DB cluster
+%% automatically fails over to a readbable standby DB instance when the
+%% primary DB instance fails.
 %%
-%% This action only applies to Aurora DB clusters.
+%% To simulate a failure of a primary instance for testing, you can force a
+%% failover. Because each instance in a DB cluster has its own endpoint
+%% address, make sure to clean up and re-establish any existing connections
+%% that use those endpoint addresses when the failover is complete.
+%%
+%% For more information on Amazon Aurora DB clusters, see What is Amazon
+%% Aurora? in the Amazon Aurora User Guide.
+%%
+%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
+%% with two readable standby DB instances in the Amazon RDS User Guide.
+%%
+%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 failover_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     failover_db_cluster(Client, Input, []).
@@ -1812,14 +1853,19 @@ modify_custom_db_engine_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyCustomDBEngineVersion">>, Input, Options).
 
-%% @doc Modify a setting for an Amazon Aurora DB cluster.
+%% @doc Modify the settings for an Amazon Aurora DB cluster or a Multi-AZ DB
+%% cluster.
 %%
-%% You can change one or more database configuration parameters by specifying
-%% these parameters and the new values in the request. For more information
-%% on Amazon Aurora, see What Is Amazon Aurora? in the Amazon Aurora User
-%% Guide.
+%% You can change one or more settings by specifying these parameters and the
+%% new values in the request.
 %%
-%% This action only applies to Aurora DB clusters.
+%% For more information on Amazon Aurora DB clusters, see What is Amazon
+%% Aurora? in the Amazon Aurora User Guide.
+%%
+%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
+%% with two readable standby DB instances in the Amazon RDS User Guide.
+%%
+%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 modify_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster(Client, Input, []).
@@ -1844,9 +1890,6 @@ modify_db_cluster_endpoint(Client, Input, Options)
 %% `ParameterName', `ParameterValue', and `ApplyMethod'. A maximum of 20
 %% parameters can be modified in a single request.
 %%
-%% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
-%% Amazon Aurora User Guide.
-%%
 %% After you create a DB cluster parameter group, you should wait at least 5
 %% minutes before creating your first DB cluster that uses that DB cluster
 %% parameter group as the default parameter group. This allows Amazon RDS to
@@ -1865,7 +1908,13 @@ modify_db_cluster_endpoint(Client, Input, Options)
 %% connections and retry any transactions that were active when the parameter
 %% changes took effect.
 %%
-%% This action only applies to Aurora DB clusters.
+%% For more information on Amazon Aurora DB clusters, see What is Amazon
+%% Aurora? in the Amazon Aurora User Guide.
+%%
+%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
+%% with two readable standby DB instances in the Amazon RDS User Guide.
+%%
+%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 modify_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_parameter_group(Client, Input, []).
@@ -1897,8 +1946,6 @@ modify_db_cluster_parameter_group(Client, Input, Options)
 %% a manual DB cluster snapshot, or whether a manual DB cluster snapshot is
 %% public or private, use the `DescribeDBClusterSnapshotAttributes' API
 %% action. The accounts are returned as values for the `restore' attribute.
-%%
-%% This action only applies to Aurora DB clusters.
 modify_db_cluster_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_snapshot_attribute(Client, Input, []).
@@ -2041,7 +2088,7 @@ modify_event_subscription(Client, Input, Options)
 %%
 %% You can change one or more database configuration parameters by specifying
 %% these parameters and the new values in the request. For more information
-%% on Amazon Aurora, see What Is Amazon Aurora? in the Amazon Aurora User
+%% on Amazon Aurora, see What is Amazon Aurora? in the Amazon Aurora User
 %% Guide.
 %%
 %% This action only applies to Aurora DB clusters.
@@ -2081,8 +2128,6 @@ promote_read_replica(Client, Input, Options)
     request(Client, <<"PromoteReadReplica">>, Input, Options).
 
 %% @doc Promotes a read replica DB cluster to a standalone DB cluster.
-%%
-%% This action only applies to Aurora DB clusters.
 promote_read_replica_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     promote_read_replica_db_cluster(Client, Input, []).
@@ -2097,6 +2142,29 @@ purchase_reserved_db_instances_offering(Client, Input)
 purchase_reserved_db_instances_offering(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PurchaseReservedDBInstancesOffering">>, Input, Options).
+
+%% @doc You might need to reboot your DB cluster, usually for maintenance
+%% reasons.
+%%
+%% For example, if you make certain modifications, or if you change the DB
+%% cluster parameter group associated with the DB cluster, reboot the DB
+%% cluster for the changes to take effect.
+%%
+%% Rebooting a DB cluster restarts the database engine service. Rebooting a
+%% DB cluster results in a momentary outage, during which the DB cluster
+%% status is set to rebooting.
+%%
+%% Use this operation only for a non-Aurora Multi-AZ DB cluster. The Multi-AZ
+%% DB clusters feature is in preview and is subject to change.
+%%
+%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
+%% with two readable standby DB instances in the Amazon RDS User Guide.
+reboot_db_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    reboot_db_cluster(Client, Input, []).
+reboot_db_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RebootDBCluster">>, Input, Options).
 
 %% @doc You might need to reboot your DB instance, usually for maintenance
 %% reasons.
@@ -2134,7 +2202,7 @@ register_db_proxy_targets(Client, Input, Options)
 %%
 %% The cluster becomes a standalone cluster with read-write capability
 %% instead of being read-only and receiving data from a primary cluster in a
-%% different region.
+%% different Region.
 %%
 %% This action only applies to Aurora DB clusters.
 remove_from_global_cluster(Client, Input)
@@ -2144,14 +2212,16 @@ remove_from_global_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveFromGlobalCluster">>, Input, Options).
 
-%% @doc Disassociates an Amazon Web Services Identity and Access Management
-%% (IAM) role from an Amazon Aurora DB cluster.
+%% @doc Removes the asssociation of an Amazon Web Services Identity and
+%% Access Management (IAM) role from a DB cluster.
 %%
-%% For more information, see Authorizing Amazon Aurora MySQL to Access Other
-%% Amazon Web Services Services on Your Behalf in the Amazon Aurora User
-%% Guide.
+%% For more information on Amazon Aurora DB clusters, see What is Amazon
+%% Aurora? in the Amazon Aurora User Guide.
 %%
-%% This action only applies to Aurora DB clusters.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
+%% with two readable standby DB instances in the Amazon RDS User Guide.
+%%
+%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 remove_role_from_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_role_from_db_cluster(Client, Input, []).
@@ -2202,10 +2272,13 @@ remove_tags_from_resource(Client, Input, Options)
 %% must call `RebootDBInstance' for every DB instance in your DB cluster that
 %% you want the updated static parameter to apply to.
 %%
-%% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
-%% Amazon Aurora User Guide.
+%% For more information on Amazon Aurora DB clusters, see What is Amazon
+%% Aurora? in the Amazon Aurora User Guide.
 %%
-%% This action only applies to Aurora DB clusters.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
+%% with two readable standby DB instances in the Amazon RDS User Guide.
+%%
+%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 reset_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_db_cluster_parameter_group(Client, Input, []).
@@ -2244,7 +2317,7 @@ reset_db_parameter_group(Client, Input, Options)
 %% only after the `RestoreDBClusterFromS3' action has completed and the DB
 %% cluster is available.
 %%
-%% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
+%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
 %%
 %% This action only applies to Aurora DB clusters. The source DB engine must
@@ -2258,8 +2331,6 @@ restore_db_cluster_from_s3(Client, Input, Options)
 
 %% @doc Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
 %%
-%% This action only applies to Aurora DB clusters.
-%%
 %% The target DB cluster is created from the source snapshot with a default
 %% configuration. If you don't specify a security group, the new DB cluster
 %% is associated with the default security group.
@@ -2271,10 +2342,13 @@ restore_db_cluster_from_s3(Client, Input, Options)
 %% only after the `RestoreDBClusterFromSnapshot' action has completed and the
 %% DB cluster is available.
 %%
-%% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
-%% Amazon Aurora User Guide.
+%% For more information on Amazon Aurora DB clusters, see What is Amazon
+%% Aurora? in the Amazon Aurora User Guide.
 %%
-%% This action only applies to Aurora DB clusters.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
+%% with two readable standby DB instances in the Amazon RDS User Guide.
+%%
+%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 restore_db_cluster_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_from_snapshot(Client, Input, []).
@@ -2290,17 +2364,20 @@ restore_db_cluster_from_snapshot(Client, Input, Options)
 %% cluster, except that the new DB cluster is created with the default DB
 %% security group.
 %%
-%% This action only restores the DB cluster, not the DB instances for that DB
-%% cluster. You must invoke the `CreateDBInstance' action to create DB
-%% instances for the restored DB cluster, specifying the identifier of the
-%% restored DB cluster in `DBClusterIdentifier'. You can create DB instances
-%% only after the `RestoreDBClusterToPointInTime' action has completed and
-%% the DB cluster is available.
+%% For Aurora, this action only restores the DB cluster, not the DB instances
+%% for that DB cluster. You must invoke the `CreateDBInstance' action to
+%% create DB instances for the restored DB cluster, specifying the identifier
+%% of the restored DB cluster in `DBClusterIdentifier'. You can create DB
+%% instances only after the `RestoreDBClusterToPointInTime' action has
+%% completed and the DB cluster is available.
 %%
-%% For more information on Amazon Aurora, see What Is Amazon Aurora? in the
-%% Amazon Aurora User Guide.
+%% For more information on Amazon Aurora DB clusters, see What is Amazon
+%% Aurora? in the Amazon Aurora User Guide.
 %%
-%% This action only applies to Aurora DB clusters.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
+%% with two readable standby DB instances in the Amazon RDS User Guide.
+%%
+%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 restore_db_cluster_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_to_point_in_time(Client, Input, []).

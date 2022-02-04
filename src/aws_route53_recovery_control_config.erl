@@ -48,6 +48,13 @@
          list_safety_rules/2,
          list_safety_rules/4,
          list_safety_rules/5,
+         list_tags_for_resource/2,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
+         tag_resource/3,
+         tag_resource/4,
+         untag_resource/3,
+         untag_resource/4,
          update_control_panel/2,
          update_control_panel/3,
          update_routing_control/2,
@@ -67,8 +74,7 @@
 %% run API calls to update or get the state of one or more routing controls.
 %% Each cluster has a name, status, Amazon Resource Name (ARN), and an array
 %% of the five cluster endpoints (one for each supported Amazon Web Services
-%% Region) that you can use with API calls to the Amazon Route 53 Application
-%% Recovery Controller cluster data plane.
+%% Region) that you can use with API calls to the cluster data plane.
 create_cluster(Client, Input) ->
     create_cluster(Client, Input, []).
 create_cluster(Client, Input0, Options0) ->
@@ -97,7 +103,7 @@ create_cluster(Client, Input0, Options0) ->
 %% together in a single transaction. You can use a control panel to centrally
 %% view the operational status of applications across your organization, and
 %% trigger multi-app failovers in a single transaction, for example, to fail
-%% over an Availability Zone or AWS Region.
+%% over an Availability Zone or Amazon Web Services Region.
 create_control_panel(Client, Input) ->
     create_control_panel(Client, Input, []).
 create_control_panel(Client, Input0, Options0) ->
@@ -152,20 +158,25 @@ create_routing_control(Client, Input0, Options0) ->
 
 %% @doc Creates a safety rule in a control panel.
 %%
-%% Safety rules let you add safeguards around enabling and disabling routing
-%% controls, to help prevent unexpected outcomes.
+%% Safety rules let you add safeguards around changing routing control
+%% states, and for enabling and disabling routing controls, to help prevent
+%% unexpected outcomes.
 %%
 %% There are two types of safety rules: assertion rules and gating rules.
 %%
-%% Assertion rule: An assertion rule enforces that, when a routing control
-%% state is changed, the criteria set by the rule configuration is met.
-%% Otherwise, the change to the routing control is not accepted.
+%% Assertion rule: An assertion rule enforces that, when you change a routing
+%% control state, that a certain criteria is met. For example, the criteria
+%% might be that at least one routing control state is On after the
+%% transation so that traffic continues to flow to at least one cell for the
+%% application. This ensures that you avoid a fail-open scenario.
 %%
-%% Gating rule: A gating rule verifies that a set of gating controls
-%% evaluates as true, based on a rule configuration that you specify. If the
-%% gating rule evaluates to true, Amazon Route 53 Application Recovery
-%% Controller allows a set of routing control state changes to run and
-%% complete against the set of target controls.
+%% Gating rule: A gating rule lets you configure a gating routing control as
+%% an overall "on/off" switch for a group of routing controls. Or, you can
+%% configure more complex gating scenarios, for example by configuring
+%% multiple gating routing controls.
+%%
+%% For more information, see Safety rules in the Amazon Route 53 Application
+%% Recovery Controller Developer Guide.
 create_safety_rule(Client, Input) ->
     create_safety_rule(Client, Input, []).
 create_safety_rule(Client, Input0, Options0) ->
@@ -361,8 +372,7 @@ describe_routing_control(Client, RoutingControlArn, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes the safety rules (that is, the assertion rules and gating
-%% rules) for the routing controls in a control panel.
+%% @doc Returns information about a safety rule.
 describe_safety_rule(Client, SafetyRuleArn)
   when is_map(Client) ->
     describe_safety_rule(Client, SafetyRuleArn, #{}, #{}).
@@ -442,7 +452,7 @@ list_clusters(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns an array of control panels for a cluster.
+%% @doc Returns an array of control panels in an account or in a cluster.
 list_control_panels(Client)
   when is_map(Client) ->
     list_control_panels(Client, #{}, #{}).
@@ -533,6 +543,76 @@ list_safety_rules(Client, ControlPanelArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the tags for a resource.
+list_tags_for_resource(Client, ResourceArn)
+  when is_map(Client) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Adds a tag to a resource.
+tag_resource(Client, ResourceArn, Input) ->
+    tag_resource(Client, ResourceArn, Input, []).
+tag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes a tag from a resource.
+untag_resource(Client, ResourceArn, Input) ->
+    untag_resource(Client, ResourceArn, Input, []).
+untag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"TagKeys">>, <<"TagKeys">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates a control panel.
 %%
 %% The only update you can make to a control panel is to change the name of
@@ -586,11 +666,10 @@ update_routing_control(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update a safety rule (an assertion rule or gating rule) for the
-%% routing controls in a control panel.
+%% @doc Update a safety rule (an assertion rule or gating rule).
 %%
 %% You can only update the name and the waiting period for a safety rule. To
-%% make other updates, delete the safety rule and create a new safety rule.
+%% make other updates, delete the safety rule and create a new one.
 update_safety_rule(Client, Input) ->
     update_safety_rule(Client, Input, []).
 update_safety_rule(Client, Input0, Options0) ->

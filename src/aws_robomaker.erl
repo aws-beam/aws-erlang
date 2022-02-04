@@ -174,6 +174,9 @@ batch_describe_simulation_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Cancels the specified deployment job.
+%%
+%% This API will no longer be supported as of May 2, 2022. Use it to remove
+%% resources that were created for Deployment Service.
 cancel_deployment_job(Client, Input) ->
     cancel_deployment_job(Client, Input, []).
 cancel_deployment_job(Client, Input0, Options0) ->
@@ -294,6 +297,8 @@ cancel_world_generation_job(Client, Input0, Options0) ->
 %% @doc Deploys a specific version of a robot application to robots in a
 %% fleet.
 %%
+%% This API is no longer supported and will throw an error if used.
+%%
 %% The robot application must have a numbered `applicationVersion' for
 %% consistency reasons. To create a new version, use
 %% `CreateRobotApplicationVersion' or see Creating a Robot Application
@@ -325,6 +330,8 @@ create_deployment_job(Client, Input0, Options0) ->
 
 %% @doc Creates a fleet, a logical group of robots running the same robot
 %% application.
+%%
+%% This API is no longer supported and will throw an error if used.
 create_fleet(Client, Input) ->
     create_fleet(Client, Input, []).
 create_fleet(Client, Input0, Options0) ->
@@ -348,6 +355,8 @@ create_fleet(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a robot.
+%%
+%% This API is no longer supported and will throw an error if used.
 create_robot(Client, Input) ->
     create_robot(Client, Input, []).
 create_robot(Client, Input0, Options0) ->
@@ -558,6 +567,9 @@ create_world_template(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a fleet.
+%%
+%% This API will no longer be supported as of May 2, 2022. Use it to remove
+%% resources that were created for Deployment Service.
 delete_fleet(Client, Input) ->
     delete_fleet(Client, Input, []).
 delete_fleet(Client, Input0, Options0) ->
@@ -581,6 +593,9 @@ delete_fleet(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a robot.
+%%
+%% This API will no longer be supported as of May 2, 2022. Use it to remove
+%% resources that were created for Deployment Service.
 delete_robot(Client, Input) ->
     delete_robot(Client, Input, []).
 delete_robot(Client, Input0, Options0) ->
@@ -673,6 +688,9 @@ delete_world_template(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deregisters a robot.
+%%
+%% This API will no longer be supported as of May 2, 2022. Use it to remove
+%% resources that were created for Deployment Service.
 deregister_robot(Client, Input) ->
     deregister_robot(Client, Input, []).
 deregister_robot(Client, Input0, Options0) ->
@@ -696,6 +714,9 @@ deregister_robot(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a deployment job.
+%%
+%% This API will no longer be supported as of May 2, 2022. Use it to remove
+%% resources that were created for Deployment Service.
 describe_deployment_job(Client, Input) ->
     describe_deployment_job(Client, Input, []).
 describe_deployment_job(Client, Input0, Options0) ->
@@ -719,6 +740,9 @@ describe_deployment_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a fleet.
+%%
+%% This API will no longer be supported as of May 2, 2022. Use it to remove
+%% resources that were created for Deployment Service.
 describe_fleet(Client, Input) ->
     describe_fleet(Client, Input, []).
 describe_fleet(Client, Input0, Options0) ->
@@ -742,6 +766,9 @@ describe_fleet(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describes a robot.
+%%
+%% This API will no longer be supported as of May 2, 2022. Use it to remove
+%% resources that were created for Deployment Service.
 describe_robot(Client, Input) ->
     describe_robot(Client, Input, []).
 describe_robot(Client, Input0, Options0) ->
@@ -974,6 +1001,9 @@ get_world_template_body(Client, Input0, Options0) ->
 %% @doc Returns a list of deployment jobs for a fleet.
 %%
 %% You can optionally provide filters to retrieve specific deployment jobs.
+%%
+%% This API will no longer be supported as of May 2, 2022. Use it to remove
+%% resources that were created for Deployment Service.
 list_deployment_jobs(Client, Input) ->
     list_deployment_jobs(Client, Input, []).
 list_deployment_jobs(Client, Input0, Options0) ->
@@ -999,6 +1029,9 @@ list_deployment_jobs(Client, Input0, Options0) ->
 %% @doc Returns a list of fleets.
 %%
 %% You can optionally provide filters to retrieve specific fleets.
+%%
+%% This API will no longer be supported as of May 2, 2022. Use it to remove
+%% resources that were created for Deployment Service.
 list_fleets(Client, Input) ->
     list_fleets(Client, Input, []).
 list_fleets(Client, Input0, Options0) ->
@@ -1050,6 +1083,9 @@ list_robot_applications(Client, Input0, Options0) ->
 %% @doc Returns a list of robots.
 %%
 %% You can optionally provide filters to retrieve specific robots.
+%%
+%% This API will no longer be supported as of May 2, 2022. Use it to remove
+%% resources that were created for Deployment Service.
 list_robots(Client, Input) ->
     list_robots(Client, Input, []).
 list_robots(Client, Input0, Options0) ->
@@ -1265,6 +1301,8 @@ list_worlds(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Registers a robot with a fleet.
+%%
+%% This API is no longer supported and will throw an error if used.
 register_robot(Client, Input) ->
     register_robot(Client, Input, []).
 register_robot(Client, Input0, Options0) ->
@@ -1338,6 +1376,9 @@ start_simulation_job_batch(Client, Input0, Options0) ->
 %% @doc Syncrhonizes robots in a fleet to the latest deployment.
 %%
 %% This is helpful if robots were added after a deployment.
+%%
+%% This API will no longer be supported as of May 2, 2022. Use it to remove
+%% resources that were created for Deployment Service.
 sync_deployment_job(Client, Input) ->
     sync_deployment_job(Client, Input, []).
 sync_deployment_job(Client, Input0, Options0) ->

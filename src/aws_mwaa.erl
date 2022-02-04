@@ -7,6 +7,40 @@
 %% (MWAA) API reference documentation.
 %%
 %% For more information, see What Is Amazon MWAA?.
+%%
+%% <p> <b>Endpoints</b> </p> <ul> <li> <p>
+%% <code>api.airflow.{region}.amazonaws.com</code> - This endpoint is used
+%% for environment management.</p> <ul> <li> <p> <a
+%% href="https://docs.aws.amazon.com/mwaa/latest/API/API_CreateEnvironment.html">CreateEnvironment</a>
+%% </p> </li> <li> <p> <a
+%% href="https://docs.aws.amazon.com/mwaa/latest/API/API_DeleteEnvironment.html">DeleteEnvironment</a>
+%% </p> </li> <li> <p> <a
+%% href="https://docs.aws.amazon.com/mwaa/latest/API/API_GetEnvironment.html">GetEnvironment</a>
+%% </p> </li> <li> <p> <a
+%% href="https://docs.aws.amazon.com/mwaa/latest/API/API_ListEnvironments.html">ListEnvironments</a>
+%% </p> </li> <li> <p> <a
+%% href="https://docs.aws.amazon.com/mwaa/latest/API/API_ListTagsForResource.html">ListTagsForResource</a>
+%% </p> </li> <li> <p> <a
+%% href="https://docs.aws.amazon.com/mwaa/latest/API/API_TagResource.html">TagResource</a>
+%% </p> </li> <li> <p> <a
+%% href="https://docs.aws.amazon.com/mwaa/latest/API/API_UntagResource.html">UntagResource</a>
+%% </p> </li> <li> <p> <a
+%% href="https://docs.aws.amazon.com/mwaa/latest/API/API_UpdateEnvironment.html">UpdateEnvironment</a>
+%% </p> </li> </ul> </li> <li> <p>
+%% <code>env.airflow.{region}.amazonaws.com</code> - This endpoint is used to
+%% operate the Airflow environment.</p> <ul> <li> <p> <a
+%% href="https://docs.aws.amazon.com/mwaa/latest/API/API_CreateCliToken.html
+%% ">CreateCliToken</a> </p> </li> <li> <p> <a
+%% href="https://docs.aws.amazon.com/mwaa/latest/API/API_CreateWebLoginToken.html">CreateWebLoginToken</a>
+%% </p> </li> </ul> </li> <li> <p>
+%% <code>ops.airflow.{region}.amazonaws.com</code> - This endpoint is used to
+%% push environment metrics that track environment health.</p> <ul> <li> <p>
+%% <a
+%% href="https://docs.aws.amazon.com/mwaa/latest/API/API_PublishMetrics.html
+%% ">PublishMetrics</a> </p> </li> </ul> </li> </ul> <p> <b>Regions</b> </p>
+%% <p>For a list of regions that Amazon MWAA supports, see <a
+%% href="https://docs.aws.amazon.com/mwaa/latest/userguide/what-is-mwaa.html#regions-mwaa">Region
+%% availability</a> in the <i>Amazon MWAA User Guide</i>.</p>
 -module(aws_mwaa).
 
 -export([create_cli_token/3,
@@ -41,7 +75,9 @@
 %% API
 %%====================================================================
 
-%% @doc Create a CLI token to use Airflow CLI.
+%% @doc Creates a CLI token for the Airflow CLI.
+%%
+%% To learn more, see Creating an Apache Airflow CLI token.
 create_cli_token(Client, Name, Input) ->
     create_cli_token(Client, Name, Input, []).
 create_cli_token(Client, Name, Input0, Options0) ->
@@ -88,8 +124,9 @@ create_environment(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a JWT token to be used to login to Airflow Web UI with claims
-%% based Authentication.
+%% @doc Creates a web login token for the Airflow Web UI.
+%%
+%% To learn more, see Creating an Apache Airflow web login token.
 create_web_login_token(Client, Name, Input) ->
     create_web_login_token(Client, Name, Input, []).
 create_web_login_token(Client, Name, Input0, Options0) ->
@@ -136,8 +173,8 @@ delete_environment(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves the details of an Amazon Managed Workflows for Apache
-%% Airflow (MWAA) environment.
+%% @doc Describes an Amazon Managed Workflows for Apache Airflow (MWAA)
+%% environment.
 get_environment(Client, Name)
   when is_map(Client) ->
     get_environment(Client, Name, #{}, #{}).
@@ -215,8 +252,9 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc An operation for publishing metrics from the customers to the Ops
-%% plane.
+%% @doc Internal only.
+%%
+%% Publishes environment health metrics to Amazon CloudWatch.
 publish_metrics(Client, EnvironmentName, Input) ->
     publish_metrics(Client, EnvironmentName, Input, []).
 publish_metrics(Client, EnvironmentName, Input0, Options0) ->

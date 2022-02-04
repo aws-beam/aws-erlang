@@ -5,13 +5,20 @@
 %% operations and structures supported in Amazon Braket.
 -module(aws_braket).
 
--export([cancel_quantum_task/3,
+-export([cancel_job/3,
+         cancel_job/4,
+         cancel_quantum_task/3,
          cancel_quantum_task/4,
+         create_job/2,
+         create_job/3,
          create_quantum_task/2,
          create_quantum_task/3,
          get_device/2,
          get_device/4,
          get_device/5,
+         get_job/2,
+         get_job/4,
+         get_job/5,
          get_quantum_task/2,
          get_quantum_task/4,
          get_quantum_task/5,
@@ -20,6 +27,8 @@
          list_tags_for_resource/5,
          search_devices/2,
          search_devices/3,
+         search_jobs/2,
+         search_jobs/3,
          search_quantum_tasks/2,
          search_quantum_tasks/3,
          tag_resource/3,
@@ -33,6 +42,29 @@
 %% API
 %%====================================================================
 
+%% @doc Cancels an Amazon Braket job.
+cancel_job(Client, JobArn, Input) ->
+    cancel_job(Client, JobArn, Input, []).
+cancel_job(Client, JobArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/job/", aws_util:encode_uri(JobArn), "/cancel"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Cancels the specified task.
 cancel_quantum_task(Client, QuantumTaskArn, Input) ->
     cancel_quantum_task(Client, QuantumTaskArn, Input, []).
@@ -40,6 +72,29 @@ cancel_quantum_task(Client, QuantumTaskArn, Input0, Options0) ->
     Method = put,
     Path = ["/quantum-task/", aws_util:encode_uri(QuantumTaskArn), "/cancel"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an Amazon Braket job.
+create_job(Client, Input) ->
+    create_job(Client, Input, []).
+create_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/job"],
+    SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -91,6 +146,29 @@ get_device(Client, DeviceArn, QueryMap, HeadersMap)
 get_device(Client, DeviceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/device/", aws_util:encode_uri(DeviceArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the specified Amazon Braket job.
+get_job(Client, JobArn)
+  when is_map(Client) ->
+    get_job(Client, JobArn, #{}, #{}).
+
+get_job(Client, JobArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_job(Client, JobArn, QueryMap, HeadersMap, []).
+
+get_job(Client, JobArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/job/", aws_util:encode_uri(JobArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -154,6 +232,30 @@ search_devices(Client, Input) ->
 search_devices(Client, Input0, Options0) ->
     Method = post,
     Path = ["/devices"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches for Amazon Braket jobs that match the specified filter
+%% values.
+search_jobs(Client, Input) ->
+    search_jobs(Client, Input, []).
+search_jobs(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/jobs"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

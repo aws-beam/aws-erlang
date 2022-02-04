@@ -10,6 +10,8 @@
          batch_disassociate_scram_secret/4,
          create_cluster/2,
          create_cluster/3,
+         create_cluster_v2/2,
+         create_cluster_v2/3,
          create_configuration/2,
          create_configuration/3,
          delete_cluster/3,
@@ -22,6 +24,9 @@
          describe_cluster_operation/2,
          describe_cluster_operation/4,
          describe_cluster_operation/5,
+         describe_cluster_v2/2,
+         describe_cluster_v2/4,
+         describe_cluster_v2/5,
          describe_configuration/2,
          describe_configuration/4,
          describe_configuration/5,
@@ -40,6 +45,9 @@
          list_clusters/1,
          list_clusters/3,
          list_clusters/4,
+         list_clusters_v2/1,
+         list_clusters_v2/3,
+         list_clusters_v2/4,
          list_configuration_revisions/2,
          list_configuration_revisions/4,
          list_configuration_revisions/5,
@@ -76,6 +84,8 @@
          update_cluster_kafka_version/4,
          update_configuration/3,
          update_configuration/4,
+         update_connectivity/3,
+         update_connectivity/4,
          update_monitoring/3,
          update_monitoring/4,
          update_security/3,
@@ -139,6 +149,30 @@ create_cluster(Client, Input) ->
 create_cluster(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/clusters"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new Amazon MSK cluster of either the provisioned or the
+%% serverless type.
+create_cluster_v2(Client, Input) ->
+    create_cluster_v2(Client, Input, []).
+create_cluster_v2(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/api/v2/clusters"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -265,6 +299,31 @@ describe_cluster_operation(Client, ClusterOperationArn, QueryMap, HeadersMap)
 describe_cluster_operation(Client, ClusterOperationArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/operations/", aws_util:encode_uri(ClusterOperationArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a description of the MSK cluster of either the provisioned or
+%% the serverless type whose Amazon Resource Name (ARN) is specified in the
+%% request.
+describe_cluster_v2(Client, ClusterArn)
+  when is_map(Client) ->
+    describe_cluster_v2(Client, ClusterArn, #{}, #{}).
+
+describe_cluster_v2(Client, ClusterArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_cluster_v2(Client, ClusterArn, QueryMap, HeadersMap, []).
+
+describe_cluster_v2(Client, ClusterArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/v2/clusters/", aws_util:encode_uri(ClusterArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -431,6 +490,36 @@ list_clusters(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of all the MSK clusters in the current Region.
+list_clusters_v2(Client)
+  when is_map(Client) ->
+    list_clusters_v2(Client, #{}, #{}).
+
+list_clusters_v2(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_clusters_v2(Client, QueryMap, HeadersMap, []).
+
+list_clusters_v2(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/v2/clusters"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"clusterNameFilter">>, maps:get(<<"clusterNameFilter">>, QueryMap, undefined)},
+        {<<"clusterTypeFilter">>, maps:get(<<"clusterTypeFilter">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of all the revisions of an MSK configuration.
 list_configuration_revisions(Client, Arn)
   when is_map(Client) ->
@@ -487,7 +576,7 @@ list_configurations(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of Kafka versions.
+%% @doc Returns a list of Apache Kafka versions.
 list_kafka_versions(Client)
   when is_map(Client) ->
     list_kafka_versions(Client, #{}, #{}).
@@ -793,6 +882,29 @@ update_configuration(Client, Arn, Input) ->
 update_configuration(Client, Arn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/configurations/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the connectivity configuration for the cluster.
+update_connectivity(Client, ClusterArn, Input) ->
+    update_connectivity(Client, ClusterArn, Input, []).
+update_connectivity(Client, ClusterArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/connectivity"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

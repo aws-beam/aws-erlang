@@ -718,6 +718,20 @@ start_replication_task(Client, Input, Options)
 
 %% @doc Starts the replication task assessment for unsupported data types in
 %% the source database.
+%%
+%% You can only use this operation for a task if the following conditions are
+%% true:
+%%
+%% <ul> <li> The task must be in the `stopped' state.
+%%
+%% </li> <li> The task must have successful connections to the source and
+%% target.
+%%
+%% </li> </ul> If either of these conditions are not met, an
+%% `InvalidResourceStateFault' error will result.
+%%
+%% For information about DMS task assessments, see Creating a task assessment
+%% report in the Database Migration Service User Guide.
 start_replication_task_assessment(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_replication_task_assessment(Client, Input, []).

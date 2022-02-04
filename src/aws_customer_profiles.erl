@@ -37,9 +37,14 @@
          delete_profile_object/4,
          delete_profile_object_type/4,
          delete_profile_object_type/5,
+         get_auto_merging_preview/3,
+         get_auto_merging_preview/4,
          get_domain/2,
          get_domain/4,
          get_domain/5,
+         get_identity_resolution_job/3,
+         get_identity_resolution_job/5,
+         get_identity_resolution_job/6,
          get_integration/3,
          get_integration/4,
          get_matches/2,
@@ -56,6 +61,9 @@
          list_domains/1,
          list_domains/3,
          list_domains/4,
+         list_identity_resolution_jobs/2,
+         list_identity_resolution_jobs/4,
+         list_identity_resolution_jobs/5,
          list_integrations/2,
          list_integrations/4,
          list_integrations/5,
@@ -134,6 +142,10 @@ add_profile_key(Client, DomainName, Input0, Options0) ->
 %%
 %% Use this API or UpdateDomain to enable identity resolution: set `Matching'
 %% to true.
+%%
+%% To prevent cross-service impersonation when you call this API, see
+%% Cross-service confused deputy prevention for sample policies that you
+%% should apply.
 create_domain(Client, DomainName, Input) ->
     create_domain(Client, DomainName, Input, []).
 create_domain(Client, DomainName, Input0, Options0) ->
@@ -328,6 +340,44 @@ delete_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Tests the auto-merging settings of your Identity Resolution Job
+%% without merging your data.
+%%
+%% It randomly selects a sample of matching groups from the existing matching
+%% results, and applies the automerging settings that you provided. You can
+%% then view the number of profiles in the sample, the number of matches, and
+%% the number of profiles identified to be merged. This enables you to
+%% evaluate the accuracy of the attributes in your matching list.
+%%
+%% You can't view which profiles are matched and would be merged.
+%%
+%% We strongly recommend you use this API to do a dry run of the automerging
+%% process before running the Identity Resolution Job. Include at least two
+%% matching attributes. If your matching list includes too few attributes
+%% (such as only `FirstName' or only `LastName'), there may be a large number
+%% of matches. This increases the chances of erroneous merges.
+get_auto_merging_preview(Client, DomainName, Input) ->
+    get_auto_merging_preview(Client, DomainName, Input, []).
+get_auto_merging_preview(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/identity-resolution-jobs/auto-merging-preview"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns information about a specific domain.
 get_domain(Client, DomainName)
   when is_map(Client) ->
@@ -340,6 +390,34 @@ get_domain(Client, DomainName, QueryMap, HeadersMap)
 get_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about an Identity Resolution Job in a specific
+%% domain.
+%%
+%% Identity Resolution Jobs are set up using the Amazon Connect admin
+%% console. For more information, see Use Identity Resolution to consolidate
+%% similar profiles.
+get_identity_resolution_job(Client, DomainName, JobId)
+  when is_map(Client) ->
+    get_identity_resolution_job(Client, DomainName, JobId, #{}, #{}).
+
+get_identity_resolution_job(Client, DomainName, JobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_identity_resolution_job(Client, DomainName, JobId, QueryMap, HeadersMap, []).
+
+get_identity_resolution_job(Client, DomainName, JobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/identity-resolution-jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -374,18 +452,22 @@ get_integration(Client, DomainName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and subject to
-%% change.
-%%
-%% Before calling this API, use CreateDomain or UpdateDomain to enable
+%% @doc Before calling this API, use CreateDomain or UpdateDomain to enable
 %% identity resolution: set `Matching' to true.
 %%
 %% GetMatches returns potentially matching profiles, based on the results of
 %% the latest run of a machine learning process.
 %%
-%% Amazon Connect starts a batch process every Saturday at 12AM UTC to
-%% identify matching profiles. The results are returned up to seven days
-%% after the Saturday run.
+%% The process of matching duplicate profiles. If `Matching' = `true', Amazon
+%% Connect Customer Profiles starts a weekly batch process called Identity
+%% Resolution Job. If you do not specify a date and time for Identity
+%% Resolution Job to run, by default it runs every Saturday at 12AM UTC to
+%% detect duplicate profiles in your domains.
+%%
+%% After the Identity Resolution Job completes, use the GetMatches API to
+%% return and review the results. Or, if you have configured
+%% `ExportingConfig' in the `MatchingRequest', you can download the results
+%% from S3.
 %%
 %% Amazon Connect uses the following profile attributes to identify matches:
 %%
@@ -545,6 +627,36 @@ list_domains(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists all of the Identity Resolution Jobs in your domain.
+%%
+%% The response sorts the list by `JobStartTime'.
+list_identity_resolution_jobs(Client, DomainName)
+  when is_map(Client) ->
+    list_identity_resolution_jobs(Client, DomainName, #{}, #{}).
+
+list_identity_resolution_jobs(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_identity_resolution_jobs(Client, DomainName, QueryMap, HeadersMap, []).
+
+list_identity_resolution_jobs(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/identity-resolution-jobs"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists all of the integrations in your domain.
 list_integrations(Client, DomainName)
   when is_map(Client) ->
@@ -682,10 +794,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API is in preview release for Amazon Connect and subject to
-%% change.
-%%
-%% Runs an AWS Lambda job that does the following:
+%% @doc Runs an AWS Lambda job that does the following:
 %%
 %% <ol> <li> All the profileKeys in the `ProfileToBeMerged' will be moved to
 %% the main profile.
@@ -923,6 +1032,10 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% Use this API or CreateDomain to enable identity resolution: set `Matching'
 %% to true.
+%%
+%% To prevent cross-service impersonation when you call this API, see
+%% Cross-service confused deputy prevention for sample policies that you
+%% should apply.
 update_domain(Client, DomainName, Input) ->
     update_domain(Client, DomainName, Input, []).
 update_domain(Client, DomainName, Input0, Options0) ->

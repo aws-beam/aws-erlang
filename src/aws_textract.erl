@@ -11,6 +11,8 @@
          analyze_document/3,
          analyze_expense/2,
          analyze_expense/3,
+         analyze_id/2,
+         analyze_id/3,
          detect_document_text/2,
          detect_document_text/3,
          get_document_analysis/2,
@@ -71,8 +73,8 @@ analyze_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AnalyzeDocument">>, Input, Options).
 
-%% @doc Analyzes an input document for financially related relationships
-%% between text.
+%% @doc `AnalyzeExpense' synchronously analyzes an input document for
+%% financially related relationships between text.
 %%
 %% Information is returned as `ExpenseDocuments' and seperated as follows.
 %%
@@ -90,6 +92,17 @@ analyze_expense(Client, Input)
 analyze_expense(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AnalyzeExpense">>, Input, Options).
+
+%% @doc Analyzes identity documents for relevant information.
+%%
+%% This information is extracted and returned as `IdentityDocumentFields',
+%% which records both the normalized field and value of the extracted text.
+analyze_id(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    analyze_id(Client, Input, []).
+analyze_id(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AnalyzeID">>, Input, Options).
 
 %% @doc Detects text in the input document.
 %%

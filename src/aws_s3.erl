@@ -338,6 +338,11 @@ abort_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% prepared to retry the failed requests. For more information, see Amazon S3
 %% Error Best Practices.
 %%
+%% You cannot use `Content-Type: application/x-www-form-urlencoded' with
+%% Complete Multipart Upload requests. Also, if you do not provide a
+%% `Content-Type' header, `CompleteMultipartUpload' returns a 200 OK
+%% response.
+%%
 %% For more information about multipart uploads, see Uploading Objects Using
 %% Multipart Upload.
 %%
@@ -554,6 +559,20 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% more information, see Access Control List (ACL) Overview and Managing ACLs
 %% Using the REST API.
 %%
+%% If the bucket that you're copying objects to uses the bucket owner
+%% enforced setting for S3 Object Ownership, ACLs are disabled and no longer
+%% affect permissions. Buckets that use this setting only accept PUT requests
+%% that don't specify an ACL or PUT requests that specify bucket owner full
+%% control ACLs, such as the `bucket-owner-full-control' canned ACL or an
+%% equivalent form of this ACL expressed in the XML format.
+%%
+%% For more information, see Controlling ownership of objects and disabling
+%% ACLs in the Amazon S3 User Guide.
+%%
+%% If your bucket uses the bucket owner enforced setting for Object
+%% Ownership, all objects written to the bucket by any account will be owned
+%% by the bucket owner.
+%%
 %% Storage Class Options
 %%
 %% You can use the `CopyObject' action to change the storage class of an
@@ -702,10 +721,20 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
 %% US East (N. Virginia), your application must be able to handle 307
 %% redirect. For more information, see Virtual hosting of buckets.
 %%
-%% When creating a bucket using this operation, you can optionally specify
-%% the accounts or groups that should be granted specific permissions on the
-%% bucket. There are two ways to grant the appropriate permissions using the
-%% request headers.
+%% Access control lists (ACLs)
+%%
+%% When creating a bucket using this operation, you can optionally configure
+%% the bucket ACL to specify the accounts or groups that should be granted
+%% specific permissions on the bucket.
+%%
+%% If your CreateBucket request sets bucket owner enforced for S3 Object
+%% Ownership and specifies a bucket ACL that provides access to an external
+%% Amazon Web Services account, your request fails with a `400' error and
+%% returns the `InvalidBucketAclWithObjectOwnership' error code. For more
+%% information, see Controlling object ownership in the Amazon S3 User Guide.
+%%
+%% There are two ways to grant the appropriate permissions using the request
+%% headers.
 %%
 %% <ul> <li> Specify a canned ACL using the `x-amz-acl' request header.
 %% Amazon S3 supports a set of predefined ACLs, known as canned ACLs. Each
@@ -762,18 +791,25 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% Permissions
 %%
-%% If your `CreateBucket' request specifies ACL permissions and the ACL is
-%% public-read, public-read-write, authenticated-read, or if you specify
-%% access permissions explicitly through any other ACL, both
-%% `s3:CreateBucket' and `s3:PutBucketAcl' permissions are needed. If the ACL
-%% the `CreateBucket' request is private, only `s3:CreateBucket' permission
-%% is needed.
+%% In addition to `s3:CreateBucket', the following permissions are required
+%% when your CreateBucket includes specific headers:
 %%
-%% If `ObjectLockEnabledForBucket' is set to true in your `CreateBucket'
-%% request, `s3:PutBucketObjectLockConfiguration' and
+%% <ul> <li> ACLs - If your `CreateBucket' request specifies ACL permissions
+%% and the ACL is public-read, public-read-write, authenticated-read, or if
+%% you specify access permissions explicitly through any other ACL, both
+%% `s3:CreateBucket' and `s3:PutBucketAcl' permissions are needed. If the ACL
+%% the `CreateBucket' request is private or doesn't specify any ACLs, only
+%% `s3:CreateBucket' permission is needed.
+%%
+%% </li> <li> Object Lock - If `ObjectLockEnabledForBucket' is set to true in
+%% your `CreateBucket' request, `s3:PutBucketObjectLockConfiguration' and
 %% `s3:PutBucketVersioning' permissions are required.
 %%
-%% The following operations are related to `CreateBucket':
+%% </li> <li> S3 Object Ownership - If your CreateBucket request includes the
+%% the `x-amz-object-ownership' header, `s3:PutBucketOwnershipControls'
+%% permission is required.
+%%
+%% </li> </ul> The following operations are related to `CreateBucket':
 %%
 %% <ul> <li> PutObject
 %%
@@ -798,7 +834,8 @@ create_bucket(Client, Bucket, Input0, Options0) ->
                        {<<"x-amz-grant-read-acp">>, <<"GrantReadACP">>},
                        {<<"x-amz-grant-write">>, <<"GrantWrite">>},
                        {<<"x-amz-grant-write-acp">>, <<"GrantWriteACP">>},
-                       {<<"x-amz-bucket-object-lock-enabled">>, <<"ObjectLockEnabledForBucket">>}
+                       {<<"x-amz-bucket-object-lock-enabled">>, <<"ObjectLockEnabledForBucket">>},
+                       {<<"x-amz-object-ownership">>, <<"ObjectOwnership">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
@@ -1278,17 +1315,17 @@ delete_bucket_encryption(Client, Bucket, Input0, Options0) ->
 %% The S3 Intelligent-Tiering storage class is designed to optimize storage
 %% costs by automatically moving data to the most cost-effective storage
 %% access tier, without performance impact or operational overhead. S3
-%% Intelligent-Tiering delivers automatic cost savings in two low latency and
-%% high throughput access tiers. For data that can be accessed
-%% asynchronously, you can choose to activate automatic archiving
-%% capabilities within the S3 Intelligent-Tiering storage class.
+%% Intelligent-Tiering delivers automatic cost savings in three low latency
+%% and high throughput access tiers. To get the lowest storage cost on data
+%% that can be accessed in minutes to hours, you can choose to activate
+%% additional archiving capabilities.
 %%
 %% The S3 Intelligent-Tiering storage class is the ideal storage class for
 %% data with unknown, changing, or unpredictable access patterns, independent
 %% of object size or retention period. If the size of an object is less than
-%% 128 KB, it is not eligible for auto-tiering. Smaller objects can be
-%% stored, but they are always charged at the Frequent Access tier rates in
-%% the S3 Intelligent-Tiering storage class.
+%% 128 KB, it is not monitored and not eligible for auto-tiering. Smaller
+%% objects can be stored, but they are always charged at the Frequent Access
+%% tier rates in the S3 Intelligent-Tiering storage class.
 %%
 %% For more information, see Storage class for automatically optimizing
 %% frequently and infrequently accessed objects.
@@ -2026,6 +2063,12 @@ get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap, Option
 %% user, you can return the ACL of the bucket without using an authorization
 %% header.
 %%
+%% If your bucket uses the bucket owner enforced setting for S3 Object
+%% Ownership, requests to read ACLs are still supported and return the
+%% `bucket-owner-full-control' ACL with the owner being the account that
+%% created the bucket. For more information, see Controlling object ownership
+%% and disabling ACLs in the Amazon S3 User Guide.
+%%
 %% == Related Resources ==
 %%
 %% <ul> <li> ListObjects
@@ -2207,17 +2250,17 @@ get_bucket_encryption(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% The S3 Intelligent-Tiering storage class is designed to optimize storage
 %% costs by automatically moving data to the most cost-effective storage
 %% access tier, without performance impact or operational overhead. S3
-%% Intelligent-Tiering delivers automatic cost savings in two low latency and
-%% high throughput access tiers. For data that can be accessed
-%% asynchronously, you can choose to activate automatic archiving
-%% capabilities within the S3 Intelligent-Tiering storage class.
+%% Intelligent-Tiering delivers automatic cost savings in three low latency
+%% and high throughput access tiers. To get the lowest storage cost on data
+%% that can be accessed in minutes to hours, you can choose to activate
+%% additional archiving capabilities.
 %%
 %% The S3 Intelligent-Tiering storage class is the ideal storage class for
 %% data with unknown, changing, or unpredictable access patterns, independent
 %% of object size or retention period. If the size of an object is less than
-%% 128 KB, it is not eligible for auto-tiering. Smaller objects can be
-%% stored, but they are always charged at the Frequent Access tier rates in
-%% the S3 Intelligent-Tiering storage class.
+%% 128 KB, it is not monitored and not eligible for auto-tiering. Smaller
+%% objects can be stored, but they are always charged at the Frequent Access
+%% tier rates in the S3 Intelligent-Tiering storage class.
 %%
 %% For more information, see Storage class for automatically optimizing
 %% frequently and infrequently accessed objects.
@@ -2654,7 +2697,7 @@ get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap, Opti
 %%
 %% To use this operation, you must have the `s3:GetBucketOwnershipControls'
 %% permission. For more information about Amazon S3 permissions, see
-%% Specifying Permissions in a Policy.
+%% Specifying permissions in a policy.
 %%
 %% For information about Amazon S3 Object Ownership, see Using Object
 %% Ownership.
@@ -3088,8 +3131,9 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% By default, the GET action returns the current version of an object. To
 %% return a different version, use the `versionId' subresource.
 %%
-%% You need the `s3:GetObjectVersion' permission to access a specific version
-%% of an object.
+%% If you supply a `versionId', you need the `s3:GetObjectVersion' permission
+%% to access a specific version of an object. If you request a specific
+%% version, you do not need to have the `s3:GetObject' permission.
 %%
 %% If the current version of the object is a delete marker, Amazon S3 behaves
 %% as if the object was deleted and includes `x-amz-delete-marker: true' in
@@ -3252,6 +3296,12 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% By default, GET returns ACL information about the current version of an
 %% object. To return ACL information about a different version, use the
 %% versionId subresource.
+%%
+%% If your bucket uses the bucket owner enforced setting for S3 Object
+%% Ownership, requests to read ACLs are still supported and return the
+%% `bucket-owner-full-control' ACL with the owner being the account that
+%% created the bucket. For more information, see Controlling object ownership
+%% and disabling ACLs in the Amazon S3 User Guide.
 %%
 %% The following operations are related to `GetObjectAcl':
 %%
@@ -3875,17 +3925,17 @@ list_bucket_analytics_configurations(Client, Bucket, QueryMap, HeadersMap, Optio
 %% The S3 Intelligent-Tiering storage class is designed to optimize storage
 %% costs by automatically moving data to the most cost-effective storage
 %% access tier, without performance impact or operational overhead. S3
-%% Intelligent-Tiering delivers automatic cost savings in two low latency and
-%% high throughput access tiers. For data that can be accessed
-%% asynchronously, you can choose to activate automatic archiving
-%% capabilities within the S3 Intelligent-Tiering storage class.
+%% Intelligent-Tiering delivers automatic cost savings in three low latency
+%% and high throughput access tiers. To get the lowest storage cost on data
+%% that can be accessed in minutes to hours, you can choose to activate
+%% additional archiving capabilities.
 %%
 %% The S3 Intelligent-Tiering storage class is the ideal storage class for
 %% data with unknown, changing, or unpredictable access patterns, independent
 %% of object size or retention period. If the size of an object is less than
-%% 128 KB, it is not eligible for auto-tiering. Smaller objects can be
-%% stored, but they are always charged at the Frequent Access tier rates in
-%% the S3 Intelligent-Tiering storage class.
+%% 128 KB, it is not monitored and not eligible for auto-tiering. Smaller
+%% objects can be stored, but they are always charged at the Frequent Access
+%% tier rates in the S3 Intelligent-Tiering storage class.
 %%
 %% For more information, see Storage class for automatically optimizing
 %% frequently and infrequently accessed objects.
@@ -4513,6 +4563,14 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
 %% have an existing application that updates a bucket ACL using the request
 %% body, then you can continue to use that approach.
 %%
+%% If your bucket uses the bucket owner enforced setting for S3 Object
+%% Ownership, ACLs are disabled and no longer affect permissions. You must
+%% use policies to grant access to your bucket and the objects in it.
+%% Requests to set ACLs or update ACLs fail and return the
+%% `AccessControlListNotSupported' error code. Requests to read ACLs are
+%% still supported. For more information, see Controlling object ownership in
+%% the Amazon S3 User Guide.
+%%
 %% Access Permissions
 %%
 %% You can set access permissions using one of the following methods:
@@ -4885,17 +4943,17 @@ put_bucket_encryption(Client, Bucket, Input0, Options0) ->
 %% The S3 Intelligent-Tiering storage class is designed to optimize storage
 %% costs by automatically moving data to the most cost-effective storage
 %% access tier, without performance impact or operational overhead. S3
-%% Intelligent-Tiering delivers automatic cost savings in two low latency and
-%% high throughput access tiers. For data that can be accessed
-%% asynchronously, you can choose to activate automatic archiving
-%% capabilities within the S3 Intelligent-Tiering storage class.
+%% Intelligent-Tiering delivers automatic cost savings in three low latency
+%% and high throughput access tiers. To get the lowest storage cost on data
+%% that can be accessed in minutes to hours, you can choose to activate
+%% additional archiving capabilities.
 %%
 %% The S3 Intelligent-Tiering storage class is the ideal storage class for
 %% data with unknown, changing, or unpredictable access patterns, independent
 %% of object size or retention period. If the size of an object is less than
-%% 128 KB, it is not eligible for auto-tiering. Smaller objects can be
-%% stored, but they are always charged at the Frequent Access tier rates in
-%% the S3 Intelligent-Tiering storage class.
+%% 128 KB, it is not monitored and not eligible for auto-tiering. Smaller
+%% objects can be stored, but they are always charged at the Frequent Access
+%% tier rates in the S3 Intelligent-Tiering storage class.
 %%
 %% For more information, see Storage class for automatically optimizing
 %% frequently and infrequently accessed objects.
@@ -5232,6 +5290,12 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 %% `Permissions' request element specifies the kind of access the grantee has
 %% to the logs.
 %%
+%% If the target bucket for log delivery uses the bucket owner enforced
+%% setting for S3 Object Ownership, you can't use the `Grantee' request
+%% element to grant access to others. Permissions can only be granted using
+%% policies. For more information, see Permissions for server access log
+%% delivery in the Amazon S3 User Guide.
+%%
 %% Grantee Values
 %%
 %% You can specify the person (grantee) to whom you're assigning access
@@ -5265,7 +5329,7 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 %% `<BucketLoggingStatus xmlns="http://doc.s3.amazonaws.com/2006-03-01" />'
 %%
 %% For more information about server access logging, see Server Access
-%% Logging.
+%% Logging in the Amazon S3 User Guide.
 %%
 %% For more information about creating a bucket, see CreateBucket. For more
 %% information about returning the logging status of a bucket, see
@@ -5465,7 +5529,8 @@ put_bucket_notification_configuration(Client, Bucket, Input0, Options0) ->
 
 
     HeadersMapping = [
-                       {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
+                       {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
+                       {<<"x-amz-skip-destination-validation">>, <<"SkipDestinationValidation">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
@@ -5481,10 +5546,10 @@ put_bucket_notification_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% To use this operation, you must have the `s3:PutBucketOwnershipControls'
 %% permission. For more information about Amazon S3 permissions, see
-%% Specifying Permissions in a Policy.
+%% Specifying permissions in a policy.
 %%
-%% For information about Amazon S3 Object Ownership, see Using Object
-%% Ownership.
+%% For information about Amazon S3 Object Ownership, see Using object
+%% ownership.
 %%
 %% The following operations are related to `PutBucketOwnershipControls':
 %%
@@ -5985,6 +6050,23 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
 %% are then added to the ACL on the object. For more information, see Access
 %% Control List (ACL) Overview and Managing ACLs Using the REST API.
 %%
+%% If the bucket that you're uploading objects to uses the bucket owner
+%% enforced setting for S3 Object Ownership, ACLs are disabled and no longer
+%% affect permissions. Buckets that use this setting only accept PUT requests
+%% that don't specify an ACL or PUT requests that specify bucket owner full
+%% control ACLs, such as the `bucket-owner-full-control' canned ACL or an
+%% equivalent form of this ACL expressed in the XML format. PUT requests that
+%% contain other ACLs (for example, custom grants to certain Amazon Web
+%% Services accounts) fail and return a `400' error with the error code
+%% `AccessControlListNotSupported'.
+%%
+%% For more information, see Controlling ownership of objects and disabling
+%% ACLs in the Amazon S3 User Guide.
+%%
+%% If your bucket uses the bucket owner enforced setting for Object
+%% Ownership, all objects written to the bucket by any account will be owned
+%% by the bucket owner.
+%%
 %% Storage Class Options
 %%
 %% By default, Amazon S3 uses the STANDARD Storage Class to store newly
@@ -6105,6 +6187,14 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
 %% have an existing application that updates a bucket ACL using the request
 %% body, you can continue to use that approach. For more information, see
 %% Access Control List (ACL) Overview in the Amazon S3 User Guide.
+%%
+%% If your bucket uses the bucket owner enforced setting for S3 Object
+%% Ownership, ACLs are disabled and no longer affect permissions. You must
+%% use policies to grant access to your bucket and the objects in it.
+%% Requests to set ACLs or update ACLs fail and return the
+%% `AccessControlListNotSupported' error code. Requests to read ACLs are
+%% still supported. For more information, see Controlling object ownership in
+%% the Amazon S3 User Guide.
 %%
 %% Access Permissions
 %%
@@ -6865,7 +6955,7 @@ restore_object(Client, Bucket, Key, Input0, Options0) ->
 %% This action is not supported by Amazon S3 on Outposts.
 %%
 %% For more information about Amazon S3 Select, see Selecting Content from
-%% Objects in the Amazon S3 User Guide.
+%% Objects and SELECT Command in the Amazon S3 User Guide.
 %%
 %% For more information about using SQL with Amazon S3 Select, see SQL
 %% Reference for Amazon S3 Select and S3 Glacier Select in the Amazon S3 User

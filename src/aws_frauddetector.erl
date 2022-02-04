@@ -81,6 +81,8 @@
          get_event/3,
          get_event_prediction/2,
          get_event_prediction/3,
+         get_event_prediction_metadata/2,
+         get_event_prediction_metadata/3,
          get_event_types/2,
          get_event_types/3,
          get_external_models/2,
@@ -99,6 +101,8 @@
          get_rules/3,
          get_variables/2,
          get_variables/3,
+         list_event_predictions/2,
+         list_event_predictions/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          put_detector/2,
@@ -548,6 +552,16 @@ get_event_prediction(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEventPrediction">>, Input, Options).
 
+%% @doc Gets details of the past fraud predictions for the specified event
+%% ID, event type, detector ID, and detector version ID that was generated in
+%% the specified time period.
+get_event_prediction_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_event_prediction_metadata(Client, Input, []).
+get_event_prediction_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetEventPredictionMetadata">>, Input, Options).
+
 %% @doc Gets all event types or a specific event type if name is provided.
 %%
 %% This is a paginated API. If you provide a null `maxResults', this action
@@ -676,6 +690,27 @@ get_variables(Client, Input)
 get_variables(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetVariables">>, Input, Options).
+
+%% @doc Gets a list of past predictions.
+%%
+%% The list can be filtered by detector ID, detector version ID, event ID,
+%% event type, or by specifying a time period. If filter is not specified,
+%% the most recent prediction is returned.
+%%
+%% For example, the following filter lists all past predictions for `xyz'
+%% event type - `{ "eventType":{ "value": "xyz" }” } '
+%%
+%% This is a paginated API. If you provide a null `maxResults', this action
+%% will retrieve a maximum of 10 records per page. If you provide a
+%% `maxResults', the value must be between 50 and 100. To get the next page
+%% results, provide the `nextToken' from the response as part of your
+%% request. A null `nextToken' fetches the records from the beginning.
+list_event_predictions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_event_predictions(Client, Input, []).
+list_event_predictions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListEventPredictions">>, Input, Options).
 
 %% @doc Lists all tags associated with the resource.
 %%

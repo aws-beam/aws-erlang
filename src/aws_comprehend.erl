@@ -35,6 +35,8 @@
          delete_endpoint/3,
          delete_entity_recognizer/2,
          delete_entity_recognizer/3,
+         delete_resource_policy/2,
+         delete_resource_policy/3,
          describe_document_classification_job/2,
          describe_document_classification_job/3,
          describe_document_classifier/2,
@@ -53,6 +55,8 @@
          describe_key_phrases_detection_job/3,
          describe_pii_entities_detection_job/2,
          describe_pii_entities_detection_job/3,
+         describe_resource_policy/2,
+         describe_resource_policy/3,
          describe_sentiment_detection_job/2,
          describe_sentiment_detection_job/3,
          describe_topics_detection_job/2,
@@ -69,6 +73,8 @@
          detect_sentiment/3,
          detect_syntax/2,
          detect_syntax/3,
+         import_model/2,
+         import_model/3,
          list_document_classification_jobs/2,
          list_document_classification_jobs/3,
          list_document_classifier_summaries/2,
@@ -97,6 +103,8 @@
          list_tags_for_resource/3,
          list_topics_detection_jobs/2,
          list_topics_detection_jobs/3,
+         put_resource_policy/2,
+         put_resource_policy/3,
          start_document_classification_job/2,
          start_document_classification_job/3,
          start_dominant_language_detection_job/2,
@@ -295,6 +303,14 @@ delete_entity_recognizer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEntityRecognizer">>, Input, Options).
 
+%% @doc Deletes a resource-based policy that is attached to a custom model.
+delete_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_resource_policy(Client, Input, []).
+delete_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteResourcePolicy">>, Input, Options).
+
 %% @doc Gets the properties associated with a document classification job.
 %%
 %% Use this operation to get the status of a classification job.
@@ -381,6 +397,15 @@ describe_pii_entities_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePiiEntitiesDetectionJob">>, Input, Options).
 
+%% @doc Gets the details of a resource-based policy that is attached to a
+%% custom model, including the JSON body of the policy.
+describe_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_resource_policy(Client, Input, []).
+describe_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeResourcePolicy">>, Input, Options).
+
 %% @doc Gets the properties associated with a sentiment detection job.
 %%
 %% Use this operation to get the status of a detection job.
@@ -458,6 +483,23 @@ detect_syntax(Client, Input)
 detect_syntax(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectSyntax">>, Input, Options).
+
+%% @doc Creates a new custom model that replicates a source custom model that
+%% you import.
+%%
+%% The source model can be in your AWS account or another one.
+%%
+%% If the source model is in another AWS account, then it must have a
+%% resource-based policy that authorizes you to import it.
+%%
+%% The source model must be in the same AWS region that you're using when you
+%% import. You can't import a model that's in a different region.
+import_model(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    import_model(Client, Input, []).
+import_model(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ImportModel">>, Input, Options).
 
 %% @doc Gets a list of the documentation classification jobs that you have
 %% submitted.
@@ -582,6 +624,18 @@ list_topics_detection_jobs(Client, Input)
 list_topics_detection_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTopicsDetectionJobs">>, Input, Options).
+
+%% @doc Attaches a resource-based policy to a custom model.
+%%
+%% You can use this policy to authorize an entity in another AWS account to
+%% import the custom model, which replicates it in Amazon Comprehend in their
+%% account.
+put_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_resource_policy(Client, Input, []).
+put_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutResourcePolicy">>, Input, Options).
 
 %% @doc Starts an asynchronous document classification job.
 %%

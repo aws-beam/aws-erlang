@@ -1,14 +1,12 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS AppConfig
-%%
-%% Use AWS AppConfig, a capability of AWS Systems Manager, to create, manage,
-%% and quickly deploy application configurations.
+%% @doc Use AppConfig, a capability of Amazon Web Services Systems Manager,
+%% to create, manage, and quickly deploy application configurations.
 %%
 %% AppConfig supports controlled deployments to applications of any size and
 %% includes built-in validation checks and monitoring. You can use AppConfig
-%% with applications hosted on Amazon EC2 instances, AWS Lambda, containers,
+%% with applications hosted on Amazon EC2 instances, Lambda, containers,
 %% mobile applications, or IoT devices.
 %%
 %% To prevent errors when deploying application configurations, especially
@@ -16,9 +14,9 @@
 %% outage, AppConfig includes validators. A validator provides a syntactic or
 %% semantic check to ensure that the configuration you want to deploy works
 %% as intended. To validate your application configuration data, you provide
-%% a schema or a Lambda function that runs against the configuration. The
-%% configuration deployment or update can only proceed when the configuration
-%% data is valid.
+%% a schema or an Amazon Web Services Lambda function that runs against the
+%% configuration. The configuration deployment or update can only proceed
+%% when the configuration data is valid.
 %%
 %% During a configuration deployment, AppConfig monitors the application to
 %% ensure that the deployment is successful. If the system encounters an
@@ -29,13 +27,14 @@
 %% if a deployment triggers an alarm, AppConfig automatically rolls back to
 %% the previous version.
 %%
-%% AppConfig supports multiple use cases. Here are some examples.
+%% AppConfig supports multiple use cases. Here are some examples:
 %%
-%% <ul> <li> Application tuning: Use AppConfig to carefully introduce changes
-%% to your application that can only be tested with production traffic.
-%%
-%% </li> <li> Feature toggle: Use AppConfig to turn on new features that
+%% <ul> <li> Feature flags: Use AppConfig to turn on new features that
 %% require a timely deployment, such as a product launch or announcement.
+%%
+%% </li> <li> Application tuning: Use AppConfig to carefully introduce
+%% changes to your application that can only be tested with production
+%% traffic.
 %%
 %% </li> <li> Allow list: Use AppConfig to allow premium subscribers to
 %% access paid content.
@@ -43,8 +42,8 @@
 %% </li> <li> Operational issues: Use AppConfig to reduce stress on your
 %% application when a dependency or other external factor impacts the system.
 %%
-%% </li> </ul> This reference is intended to be used with the AWS AppConfig
-%% User Guide.
+%% </li> </ul> This reference is intended to be used with the AppConfig User
+%% Guide.
 -module(aws_appconfig).
 
 -export([create_application/2,
@@ -134,13 +133,13 @@
 %% API
 %%====================================================================
 
-%% @doc An application in AppConfig is a logical unit of code that provides
-%% capabilities for your customers.
+%% @doc Creates an application.
 %%
-%% For example, an application can be a microservice that runs on Amazon EC2
-%% instances, a mobile application installed by your users, a serverless
-%% application using Amazon API Gateway and AWS Lambda, or any system you run
-%% on behalf of others.
+%% An application in AppConfig is a logical unit of code that provides
+%% capabilities for your customers. For example, an application can be a
+%% microservice that runs on Amazon EC2 instances, a mobile application
+%% installed by your users, a serverless application using Amazon API Gateway
+%% and Lambda, or any system you run on behalf of others.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
 create_application(Client, Input0, Options0) ->
@@ -163,23 +162,25 @@ create_application(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Information that enables AppConfig to access the configuration
-%% source.
+%% @doc Creates a configuration profile, which is information that enables
+%% AppConfig to access the configuration source.
 %%
-%% Valid configuration sources include Systems Manager (SSM) documents, SSM
-%% Parameter Store parameters, and Amazon S3 objects. A configuration profile
-%% includes the following information.
+%% Valid configuration sources include the AppConfig hosted configuration
+%% store, Amazon Web Services Systems Manager (SSM) documents, SSM Parameter
+%% Store parameters, Amazon S3 objects, or any integration source action
+%% supported by CodePipeline. A configuration profile includes the following
+%% information:
 %%
-%% <ul> <li> The Uri location of the configuration data.
+%% <ul> <li> The URI location of the configuration data.
 %%
-%% </li> <li> The AWS Identity and Access Management (IAM) role that provides
+%% </li> <li> The Identity and Access Management (IAM) role that provides
 %% access to the configuration data.
 %%
 %% </li> <li> A validator for the configuration data. Available validators
-%% include either a JSON Schema or an AWS Lambda function.
+%% include either a JSON Schema or an Amazon Web Services Lambda function.
 %%
 %% </li> </ul> For more information, see Create a Configuration and a
-%% Configuration Profile in the AWS AppConfig User Guide.
+%% Configuration Profile in the AppConfig User Guide.
 create_configuration_profile(Client, ApplicationId, Input) ->
     create_configuration_profile(Client, ApplicationId, Input, []).
 create_configuration_profile(Client, ApplicationId, Input0, Options0) ->
@@ -202,12 +203,12 @@ create_configuration_profile(Client, ApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc A deployment strategy defines important criteria for rolling out your
-%% configuration to the designated targets.
+%% @doc Creates a deployment strategy that defines important criteria for
+%% rolling out your configuration to the designated targets.
 %%
-%% A deployment strategy includes: the overall duration required, a
-%% percentage of targets to receive the deployment during each interval, an
-%% algorithm that defines how percentage grows, and bake time.
+%% A deployment strategy includes the overall duration required, a percentage
+%% of targets to receive the deployment during each interval, an algorithm
+%% that defines how percentage grows, and bake time.
 create_deployment_strategy(Client, Input) ->
     create_deployment_strategy(Client, Input, []).
 create_deployment_strategy(Client, Input0, Options0) ->
@@ -230,15 +231,16 @@ create_deployment_strategy(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc For each application, you define one or more environments.
+%% @doc Creates an environment.
 %%
-%% An environment is a logical deployment group of AppConfig targets, such as
-%% applications in a `Beta' or `Production' environment. You can also define
-%% environments for application subcomponents such as the `Web', `Mobile' and
-%% `Back-end' components for your application. You can configure Amazon
-%% CloudWatch alarms for each environment. The system monitors alarms during
-%% a configuration deployment. If an alarm is triggered, the system rolls
-%% back the configuration.
+%% For each application, you define one or more environments. An environment
+%% is a logical deployment group of AppConfig targets, such as applications
+%% in a `Beta' or `Production' environment. You can also define environments
+%% for application subcomponents such as the `Web', `Mobile' and `Back-end'
+%% components for your application. You can configure Amazon CloudWatch
+%% alarms for each environment. The system monitors alarms during a
+%% configuration deployment. If an alarm is triggered, the system rolls back
+%% the configuration.
 create_environment(Client, ApplicationId, Input) ->
     create_environment(Client, ApplicationId, Input, []).
 create_environment(Client, ApplicationId, Input0, Options0) ->
@@ -261,7 +263,8 @@ create_environment(Client, ApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a new configuration in the AppConfig configuration store.
+%% @doc Creates a new configuration in the AppConfig hosted configuration
+%% store.
 create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, Input) ->
     create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, Input, []).
 create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, Input0, Options0) ->
@@ -308,7 +311,7 @@ create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileI
         Result
     end.
 
-%% @doc Delete an application.
+%% @doc Deletes an application.
 %%
 %% Deleting an application does not delete a configuration from a host.
 delete_application(Client, ApplicationId, Input) ->
@@ -333,7 +336,7 @@ delete_application(Client, ApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete a configuration profile.
+%% @doc Deletes a configuration profile.
 %%
 %% Deleting a configuration profile does not delete a configuration from a
 %% host.
@@ -359,7 +362,7 @@ delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Inpu
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete a deployment strategy.
+%% @doc Deletes a deployment strategy.
 %%
 %% Deleting a deployment strategy does not delete a configuration from a
 %% host.
@@ -385,7 +388,7 @@ delete_deployment_strategy(Client, DeploymentStrategyId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete an environment.
+%% @doc Deletes an environment.
 %%
 %% Deleting an environment does not delete a configuration from a host.
 delete_environment(Client, ApplicationId, EnvironmentId, Input) ->
@@ -410,8 +413,8 @@ delete_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete a version of a configuration from the AppConfig configuration
-%% store.
+%% @doc Deletes a version of a configuration from the AppConfig hosted
+%% configuration store.
 delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input) ->
     delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input, []).
 delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input0, Options0) ->
@@ -434,7 +437,7 @@ delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileI
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieve information about an application.
+%% @doc Retrieves information about an application.
 get_application(Client, ApplicationId)
   when is_map(Client) ->
     get_application(Client, ApplicationId, #{}, #{}).
@@ -457,19 +460,31 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Receive information about a configuration.
+%% @doc Retrieves the latest deployed configuration.
 %%
-%% AWS AppConfig uses the value of the `ClientConfigurationVersion' parameter
-%% to identify the configuration version on your clients. If you don’t send
+%% Note the following important information.
+%%
+%% This API action has been deprecated. Calls to receive configuration data
+%% should use the StartConfigurationSession and GetLatestConfiguration APIs
+%% instead.
+%%
+%% `GetConfiguration' is a priced call. For more information, see Pricing.
+%%
+%% AppConfig uses the value of the `ClientConfigurationVersion' parameter to
+%% identify the configuration version on your clients. If you don’t send
 %% `ClientConfigurationVersion' with each call to `GetConfiguration', your
 %% clients receive the current configuration. You are charged each time your
 %% clients receive a configuration.
 %%
-%% To avoid excess charges, we recommend that you include the
+%% To avoid excess charges, we recommend you use the
+%% StartConfigurationSession and GetLatestConfiguration APIs, which track the
+%% client configuration version on your behalf. If you choose to continue
+%% using `GetConfiguration', we recommend that you include the
 %% `ClientConfigurationVersion' value with every call to `GetConfiguration'.
-%% This value must be saved on your client. Subsequent calls to
-%% `GetConfiguration' must pass this value by using the
-%% `ClientConfigurationVersion' parameter.
+%% The value to use for `ClientConfigurationVersion' comes from the
+%% `ConfigurationVersion' attribute returned by `GetConfiguration' when there
+%% is new or updated data, and should be saved for subsequent calls to
+%% `GetConfiguration'.
 get_configuration(Client, Application, Configuration, Environment, ClientId)
   when is_map(Client) ->
     get_configuration(Client, Application, Configuration, Environment, ClientId, #{}, #{}).
@@ -514,7 +529,7 @@ get_configuration(Client, Application, Configuration, Environment, ClientId, Que
         Result
     end.
 
-%% @doc Retrieve information about a configuration profile.
+%% @doc Retrieves information about a configuration profile.
 get_configuration_profile(Client, ApplicationId, ConfigurationProfileId)
   when is_map(Client) ->
     get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, #{}, #{}).
@@ -537,7 +552,7 @@ get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, QueryMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieve information about a configuration deployment.
+%% @doc Retrieves information about a configuration deployment.
 get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId)
   when is_map(Client) ->
     get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, #{}, #{}).
@@ -560,10 +575,10 @@ get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, QueryMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieve information about a deployment strategy.
+%% @doc Retrieves information about a deployment strategy.
 %%
 %% A deployment strategy defines important criteria for rolling out your
-%% configuration to the designated targets. A deployment strategy includes:
+%% configuration to the designated targets. A deployment strategy includes
 %% the overall duration required, a percentage of targets to receive the
 %% deployment during each interval, an algorithm that defines how percentage
 %% grows, and bake time.
@@ -589,7 +604,7 @@ get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap, Opti
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieve information about an environment.
+%% @doc Retrieves information about an environment.
 %%
 %% An environment is a logical deployment group of AppConfig applications,
 %% such as applications in a `Production' environment or in an `EU_Region'
@@ -619,7 +634,7 @@ get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, Opti
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get information about a specific configuration version.
+%% @doc Retrieves information about a specific configuration version.
 get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber)
   when is_map(Client) ->
     get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, #{}, #{}).
@@ -662,7 +677,7 @@ get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, 
         Result
     end.
 
-%% @doc List all applications in your AWS account.
+%% @doc Lists all applications in your Amazon Web Services account.
 list_applications(Client)
   when is_map(Client) ->
     list_applications(Client, #{}, #{}).
@@ -712,13 +727,14 @@ list_configuration_profiles(Client, ApplicationId, QueryMap, HeadersMap, Options
     Query0_ =
       [
         {<<"max_results">>, maps:get(<<"max_results">>, QueryMap, undefined)},
-        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)}
+        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List deployment strategies.
+%% @doc Lists deployment strategies.
 list_deployment_strategies(Client)
   when is_map(Client) ->
     list_deployment_strategies(Client, #{}, #{}).
@@ -746,7 +762,8 @@ list_deployment_strategies(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the deployments for an environment.
+%% @doc Lists the deployments for an environment in descending deployment
+%% number order.
 list_deployments(Client, ApplicationId, EnvironmentId)
   when is_map(Client) ->
     list_deployments(Client, ApplicationId, EnvironmentId, #{}, #{}).
@@ -774,7 +791,7 @@ list_deployments(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List the environments for an application.
+%% @doc Lists the environments for an application.
 list_environments(Client, ApplicationId)
   when is_map(Client) ->
     list_environments(Client, ApplicationId, #{}, #{}).
@@ -802,7 +819,7 @@ list_environments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc View a list of configurations stored in the AppConfig configuration
+%% @doc Lists configurations stored in the AppConfig hosted configuration
 %% store by version.
 list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId)
   when is_map(Client) ->
@@ -904,7 +921,7 @@ stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input0, 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Metadata to assign to an AppConfig resource.
+%% @doc Assigns metadata to an AppConfig resource.
 %%
 %% Tags help organize and categorize your AppConfig resources. Each tag
 %% consists of a key and an optional value, both of which you define. You can

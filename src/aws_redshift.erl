@@ -169,6 +169,8 @@
          describe_orderable_cluster_options/3,
          describe_partners/2,
          describe_partners/3,
+         describe_reserved_node_exchange_status/2,
+         describe_reserved_node_exchange_status/3,
          describe_reserved_node_offerings/2,
          describe_reserved_node_offerings/3,
          describe_reserved_nodes/2,
@@ -201,6 +203,8 @@
          enable_snapshot_copy/3,
          get_cluster_credentials/2,
          get_cluster_credentials/3,
+         get_reserved_node_exchange_configuration_options/2,
+         get_reserved_node_exchange_configuration_options/3,
          get_reserved_node_exchange_offerings/2,
          get_reserved_node_exchange_offerings/3,
          modify_aqua_configuration/2,
@@ -333,7 +337,7 @@ authorize_cluster_security_group_ingress(Client, Input, Options)
     request(Client, <<"AuthorizeClusterSecurityGroupIngress">>, Input, Options).
 
 %% @doc From a data producer account, authorizes the sharing of a datashare
-%% with one or more consumer accounts.
+%% with one or more consumer accounts or managing entities.
 %%
 %% To authorize a datashare for a data consumer, the producer account must
 %% have the correct access privileges.
@@ -1182,6 +1186,17 @@ describe_partners(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePartners">>, Input, Options).
 
+%% @doc Returns exchange status details and associated metadata for a
+%% reserved-node exchange.
+%%
+%% Statuses include such values as in progress and requested.
+describe_reserved_node_exchange_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_reserved_node_exchange_status(Client, Input, []).
+describe_reserved_node_exchange_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeReservedNodeExchangeStatus">>, Input, Options).
+
 %% @doc Returns a list of the available reserved node offerings by Amazon
 %% Redshift with their descriptions including the node type, the fixed and
 %% recurring costs of reserving the node and duration the node will be
@@ -1420,6 +1435,18 @@ get_cluster_credentials(Client, Input)
 get_cluster_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetClusterCredentials">>, Input, Options).
+
+%% @doc Gets the configuration options for the reserved-node exchange.
+%%
+%% These options include information about the source reserved node and
+%% target reserved node offering. Details include the node type, the price,
+%% the node count, and the offering type.
+get_reserved_node_exchange_configuration_options(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_reserved_node_exchange_configuration_options(Client, Input, []).
+get_reserved_node_exchange_configuration_options(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetReservedNodeExchangeConfigurationOptions">>, Input, Options).
 
 %% @doc Returns an array of DC2 ReservedNodeOfferings that matches the
 %% payment type, term, and usage price of the given DC1 reserved node.

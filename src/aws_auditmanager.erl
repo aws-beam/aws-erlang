@@ -108,6 +108,12 @@
          get_evidence_folders_by_assessment_control/4,
          get_evidence_folders_by_assessment_control/6,
          get_evidence_folders_by_assessment_control/7,
+         get_insights/1,
+         get_insights/3,
+         get_insights/4,
+         get_insights_by_assessment/2,
+         get_insights_by_assessment/4,
+         get_insights_by_assessment/5,
          get_organization_admin_account/1,
          get_organization_admin_account/3,
          get_organization_admin_account/4,
@@ -117,6 +123,9 @@
          get_settings/2,
          get_settings/4,
          get_settings/5,
+         list_assessment_control_insights_by_control_domain/3,
+         list_assessment_control_insights_by_control_domain/5,
+         list_assessment_control_insights_by_control_domain/6,
          list_assessment_framework_share_requests/2,
          list_assessment_framework_share_requests/4,
          list_assessment_framework_share_requests/5,
@@ -129,6 +138,15 @@
          list_assessments/1,
          list_assessments/3,
          list_assessments/4,
+         list_control_domain_insights/1,
+         list_control_domain_insights/3,
+         list_control_domain_insights/4,
+         list_control_domain_insights_by_assessment/2,
+         list_control_domain_insights_by_assessment/4,
+         list_control_domain_insights_by_assessment/5,
+         list_control_insights_by_control_domain/2,
+         list_control_insights_by_control_domain/4,
+         list_control_insights_by_control_domain/5,
          list_controls/2,
          list_controls/4,
          list_controls/5,
@@ -911,6 +929,53 @@ get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, Cont
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets the latest analytics data for all your current active
+%% assessments.
+get_insights(Client)
+  when is_map(Client) ->
+    get_insights(Client, #{}, #{}).
+
+get_insights(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_insights(Client, QueryMap, HeadersMap, []).
+
+get_insights(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/insights"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the latest analytics data for a specific active assessment.
+get_insights_by_assessment(Client, AssessmentId)
+  when is_map(Client) ->
+    get_insights_by_assessment(Client, AssessmentId, #{}, #{}).
+
+get_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, []).
+
+get_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/insights/assessments/", aws_util:encode_uri(AssessmentId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns the name of the delegated Amazon Web Services administrator
 %% account for the organization.
 get_organization_admin_account(Client)
@@ -979,6 +1044,43 @@ get_settings(Client, Attribute, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the latest analytics data for controls within a specific
+%% control domain and a specific active assessment.
+%%
+%% Control insights are listed only if the control belongs to the control
+%% domain and assessment that was specified. Moreover, the control must have
+%% collected evidence on the `lastUpdated' date of
+%% `controlInsightsByAssessment'. If neither of these conditions are met, no
+%% data is listed for that control.
+list_assessment_control_insights_by_control_domain(Client, AssessmentId, ControlDomainId)
+  when is_map(Client) ->
+    list_assessment_control_insights_by_control_domain(Client, AssessmentId, ControlDomainId, #{}, #{}).
+
+list_assessment_control_insights_by_control_domain(Client, AssessmentId, ControlDomainId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_assessment_control_insights_by_control_domain(Client, AssessmentId, ControlDomainId, QueryMap, HeadersMap, []).
+
+list_assessment_control_insights_by_control_domain(Client, AssessmentId, ControlDomainId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/insights/controls-by-assessment"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"assessmentId">>, AssessmentId},
+        {<<"controlDomainId">>, ControlDomainId},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -1091,6 +1193,111 @@ list_assessments(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the latest analytics data for control domains across all of
+%% your active assessments.
+%%
+%% A control domain is listed only if at least one of the controls within
+%% that domain collected evidence on the `lastUpdated' date of
+%% `controlDomainInsights'. If this condition isn’t met, no data is listed
+%% for that control domain.
+list_control_domain_insights(Client)
+  when is_map(Client) ->
+    list_control_domain_insights(Client, #{}, #{}).
+
+list_control_domain_insights(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_control_domain_insights(Client, QueryMap, HeadersMap, []).
+
+list_control_domain_insights(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/insights/control-domains"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists analytics data for control domains within a specified active
+%% assessment.
+%%
+%% A control domain is listed only if at least one of the controls within
+%% that domain collected evidence on the `lastUpdated' date of
+%% `controlDomainInsights'. If this condition isn’t met, no data is listed
+%% for that domain.
+list_control_domain_insights_by_assessment(Client, AssessmentId)
+  when is_map(Client) ->
+    list_control_domain_insights_by_assessment(Client, AssessmentId, #{}, #{}).
+
+list_control_domain_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_control_domain_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, []).
+
+list_control_domain_insights_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/insights/control-domains-by-assessment"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"assessmentId">>, AssessmentId},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the latest analytics data for controls within a specific
+%% control domain across all active assessments.
+%%
+%% Control insights are listed only if the control belongs to the control
+%% domain that was specified and the control collected evidence on the
+%% `lastUpdated' date of `controlInsightsMetadata'. If neither of these
+%% conditions are met, no data is listed for that control.
+list_control_insights_by_control_domain(Client, ControlDomainId)
+  when is_map(Client) ->
+    list_control_insights_by_control_domain(Client, ControlDomainId, #{}, #{}).
+
+list_control_insights_by_control_domain(Client, ControlDomainId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_control_insights_by_control_domain(Client, ControlDomainId, QueryMap, HeadersMap, []).
+
+list_control_insights_by_control_domain(Client, ControlDomainId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/insights/controls"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"controlDomainId">>, ControlDomainId},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],

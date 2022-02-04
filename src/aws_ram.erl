@@ -6,10 +6,12 @@
 %% This documentation provides descriptions and syntax for each of the
 %% actions and data types in RAM. RAM is a service that helps you securely
 %% share your Amazon Web Services resources across Amazon Web Services
-%% accounts and within your organization or organizational units (OUs) in
-%% Organizations. For supported resource types, you can also share resources
-%% with IAM roles and IAM users. If you have multiple Amazon Web Services
-%% accounts, you can use RAM to share those resources with other accounts.
+%% accounts. If you have multiple Amazon Web Services accounts, you can use
+%% RAM to share those resources with other accounts. If you use Organizations
+%% to manage your accounts, then you share your resources with your
+%% organization or organizational units (OUs). For supported resource types,
+%% you can also share resources with individual Identity and Access
+%% Management (IAM) roles an users.
 %%
 %% To learn more about RAM, see the following resources:
 %%
@@ -48,6 +50,8 @@
          get_resource_shares/3,
          list_pending_invitation_resources/2,
          list_pending_invitation_resources/3,
+         list_permission_versions/2,
+         list_permission_versions/3,
          list_permissions/2,
          list_permissions/3,
          list_principals/2,
@@ -77,6 +81,10 @@
 
 %% @doc Accepts an invitation to a resource share from another Amazon Web
 %% Services account.
+%%
+%% After you accept the invitation, the resources included in the resource
+%% share are available to interact with in the relevant Amazon Web Services
+%% Management Consoles and tools.
 accept_resource_share_invitation(Client, Input) ->
     accept_resource_share_invitation(Client, Input, []).
 accept_resource_share_invitation(Client, Input0, Options0) ->
@@ -99,8 +107,12 @@ accept_resource_share_invitation(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates the specified resource share with the specified principals
-%% and resources.
+%% @doc Adds the specified list of principals and list of resources to a
+%% resource share.
+%%
+%% Principals that already have access to this resource share immediately
+%% receive access to the added resources. Newly added principals immediately
+%% receive access to the resources shared in this resource share.
 associate_resource_share(Client, Input) ->
     associate_resource_share(Client, Input, []).
 associate_resource_share(Client, Input0, Options0) ->
@@ -123,7 +135,13 @@ associate_resource_share(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates a permission with a resource share.
+%% @doc Adds or replaces the RAM permission for a resource type included in a
+%% resource share.
+%%
+%% You can have exactly one permission associated with each resource type in
+%% the resource share. You can add a new RAM permission only if there are
+%% currently no resources of that resource type currently in the resource
+%% share.
 associate_resource_share_permission(Client, Input) ->
     associate_resource_share_permission(Client, Input, []).
 associate_resource_share_permission(Client, Input0, Options0) ->
@@ -148,9 +166,9 @@ associate_resource_share_permission(Client, Input0, Options0) ->
 
 %% @doc Creates a resource share.
 %%
-%% You must provide a list of the Amazon Resource Names (ARNs) for the
-%% resources you want to share. You must also specify who you want to share
-%% the resources with, and the permissions that you grant them.
+%% You can provide a list of the Amazon Resource Names (ARNs) for the
+%% resources that you want to share, a list of principals you want to share
+%% the resources with, and the permissions to grant those principals.
 %%
 %% Sharing a resource makes it available for use by principals outside of the
 %% Amazon Web Services account that created the resource. Sharing doesn't
@@ -179,6 +197,10 @@ create_resource_share(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified resource share.
+%%
+%% This doesn't delete any of the resources that were associated with the
+%% resource share; it only stops the sharing of those resources outside of
+%% the Amazon Web Services account that created them.
 delete_resource_share(Client, Input) ->
     delete_resource_share(Client, Input, []).
 delete_resource_share(Client, Input0, Options0) ->
@@ -228,6 +250,10 @@ disassociate_resource_share(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates an RAM permission from a resource share.
+%%
+%% Permission changes take effect immediately. You can remove a RAM
+%% permission from a resource share only if there are currently no resources
+%% of the relevant resource type currently attached to the resource share.
 disassociate_resource_share_permission(Client, Input) ->
     disassociate_resource_share_permission(Client, Input, []).
 disassociate_resource_share_permission(Client, Input0, Options0) ->
@@ -252,7 +278,16 @@ disassociate_resource_share_permission(Client, Input0, Options0) ->
 
 %% @doc Enables resource sharing within your organization in Organizations.
 %%
-%% The caller must be the master account for the organization.
+%% Calling this operation enables RAM to retrieve information about the
+%% organization and its structure. This lets you share resources with all of
+%% the accounts in an organization by specifying the organization's ID, or
+%% all of the accounts in an organizational unit (OU) by specifying the OU's
+%% ID. Until you enable sharing within the organization, you can specify only
+%% individual Amazon Web Services accounts, or for supported resource types,
+%% IAM users and roles.
+%%
+%% You must call this operation from an IAM user or role in the
+%% organization's management account.
 enable_sharing_with_aws_organization(Client, Input) ->
     enable_sharing_with_aws_organization(Client, Input, []).
 enable_sharing_with_aws_organization(Client, Input0, Options0) ->
@@ -298,8 +333,8 @@ get_permission(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets the policies for the specified resources that you own and have
-%% shared.
+%% @doc Retrieves the resource policies for the specified resources that you
+%% own and have shared.
 get_resource_policies(Client, Input) ->
     get_resource_policies(Client, Input, []).
 get_resource_policies(Client, Input0, Options0) ->
@@ -322,8 +357,8 @@ get_resource_policies(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets the resources or principals for the resource shares that you
-%% own.
+%% @doc Retrieves the resource and principal associations for resource shares
+%% that you own.
 get_resource_share_associations(Client, Input) ->
     get_resource_share_associations(Client, Input, []).
 get_resource_share_associations(Client, Input0, Options0) ->
@@ -346,7 +381,8 @@ get_resource_share_associations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets the invitations that you have received for resource shares.
+%% @doc Retrieves details about invitations that you have received for
+%% resource shares.
 get_resource_share_invitations(Client, Input) ->
     get_resource_share_invitations(Client, Input, []).
 get_resource_share_invitations(Client, Input0, Options0) ->
@@ -369,7 +405,7 @@ get_resource_share_invitations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets the resource shares that you own or the resource shares that are
+%% @doc Retrieves details about the resource shares that you own or that are
 %% shared with you.
 get_resource_shares(Client, Input) ->
     get_resource_shares(Client, Input, []).
@@ -394,7 +430,10 @@ get_resource_shares(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the resources in a resource share that is shared with you but
-%% that the invitation is still pending for.
+%% for which the invitation is still `PENDING'.
+%%
+%% That means that you haven't accepted or rejected the invitation and the
+%% invitation hasn't expired.
 list_pending_invitation_resources(Client, Input) ->
     list_pending_invitation_resources(Client, Input, []).
 list_pending_invitation_resources(Client, Input0, Options0) ->
@@ -417,7 +456,31 @@ list_pending_invitation_resources(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the RAM permissions.
+%% @doc Lists the available versions of the specified RAM permission.
+list_permission_versions(Client, Input) ->
+    list_permission_versions(Client, Input, []).
+list_permission_versions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/listpermissionversions"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of available RAM permissions that you can use for
+%% the supported resource types.
 list_permissions(Client, Input) ->
     list_permissions(Client, Input, []).
 list_permissions(Client, Input0, Options0) ->
@@ -440,8 +503,8 @@ list_permissions(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the principals that you have shared resources with or that have
-%% shared resources with you.
+%% @doc Lists the principals that you are sharing resources with or that are
+%% sharing resources with you.
 list_principals(Client, Input) ->
     list_principals(Client, Input, []).
 list_principals(Client, Input0, Options0) ->
@@ -487,7 +550,7 @@ list_resource_share_permissions(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the shareable resource types supported by RAM.
+%% @doc Lists the resource types that can be shared by RAM.
 list_resource_types(Client, Input) ->
     list_resource_types(Client, Input, []).
 list_resource_types(Client, Input0, Options0) ->
@@ -534,18 +597,16 @@ list_resources(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Resource shares that were created by attaching a policy to a resource
-%% are visible only to the resource share owner, and the resource share
-%% cannot be modified in RAM.
+%% @doc When you attach a resource-based permission policy to a resource, it
+%% automatically creates a resource share.
 %%
-%% Use this API action to promote the resource share. When you promote the
-%% resource share, it becomes:
+%% However, resource shares created this way are visible only to the resource
+%% share owner, and the resource share can't be modified in RAM.
 %%
-%% <ul> <li> Visible to all principals that it is shared with.
-%%
-%% </li> <li> Modifiable in RAM.
-%%
-%% </li> </ul>
+%% You can use this operation to promote the resource share to a full RAM
+%% resource share. When you promote a resource share, you can then manage the
+%% resource share in RAM and it becomes visible to all of the principals you
+%% shared it with.
 promote_resource_share_created_from_policy(Client, Input) ->
     promote_resource_share_created_from_policy(Client, Input, []).
 promote_resource_share_created_from_policy(Client, Input0, Options0) ->
@@ -593,7 +654,11 @@ reject_resource_share_invitation(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds the specified tags to the specified resource share that you own.
+%% @doc Adds the specified tag keys and values to the specified resource
+%% share.
+%%
+%% The tags are attached only to the resource share, not to the resources
+%% that are in the resource share.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->
@@ -616,8 +681,8 @@ tag_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes the specified tags from the specified resource share that you
-%% own.
+%% @doc Removes the specified tag key and value pairs from the specified
+%% resource share.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 untag_resource(Client, Input0, Options0) ->
@@ -640,7 +705,7 @@ untag_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the specified resource share that you own.
+%% @doc Modifies some of the properties of the specified resource share.
 update_resource_share(Client, Input) ->
     update_resource_share(Client, Input, []).
 update_resource_share(Client, Input0, Options0) ->

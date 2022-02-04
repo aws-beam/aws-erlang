@@ -789,8 +789,8 @@ register_task_definition(Client, Input, Options)
 %% tasks manually on specific container instances.
 %%
 %% The Amazon ECS API follows an eventual consistency model. This is because
-%% the distributed nature of the system supporting the API. This means that
-%% the result of an API command you run that affects your Amazon ECS
+%% of the distributed nature of the system supporting the API. This means
+%% that the result of an API command you run that affects your Amazon ECS
 %% resources might not be immediately visible to all subsequent commands you
 %% run. Keep this in mind when you carry out an API command that immediately
 %% follows a previous API command.

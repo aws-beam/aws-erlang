@@ -2,27 +2,27 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon GuardDuty is a continuous security monitoring service that
-%% analyzes and processes the following data sources: VPC Flow Logs, AWS
-%% CloudTrail event logs, and DNS logs.
+%% analyzes and processes the following data sources: VPC Flow Logs, Amazon
+%% Web Services CloudTrail event logs, and DNS logs.
 %%
 %% It uses threat intelligence feeds (such as lists of malicious IPs and
 %% domains) and machine learning to identify unexpected, potentially
-%% unauthorized, and malicious activity within your AWS environment. This can
-%% include issues like escalations of privileges, uses of exposed
-%% credentials, or communication with malicious IPs, URLs, or domains. For
-%% example, GuardDuty can detect compromised EC2 instances that serve malware
-%% or mine bitcoin.
+%% unauthorized, and malicious activity within your Amazon Web Services
+%% environment. This can include issues like escalations of privileges, uses
+%% of exposed credentials, or communication with malicious IPs, URLs, or
+%% domains. For example, GuardDuty can detect compromised EC2 instances that
+%% serve malware or mine bitcoin.
 %%
-%% GuardDuty also monitors AWS account access behavior for signs of
-%% compromise. Some examples of this are unauthorized infrastructure
+%% GuardDuty also monitors Amazon Web Services account access behavior for
+%% signs of compromise. Some examples of this are unauthorized infrastructure
 %% deployments such as EC2 instances deployed in a Region that has never been
 %% used, or unusual API calls like a password policy change to reduce
 %% password strength.
 %%
-%% GuardDuty informs you of the status of your AWS environment by producing
-%% security findings that you can view in the GuardDuty console or through
-%% Amazon CloudWatch events. For more information, see the Amazon GuardDuty
-%% User Guide .
+%% GuardDuty informs you of the status of your Amazon Web Services
+%% environment by producing security findings that you can view in the
+%% GuardDuty console or through Amazon CloudWatch events. For more
+%% information, see the Amazon GuardDuty User Guide .
 -module(aws_guardduty).
 
 -export([accept_invitation/3,
@@ -271,9 +271,9 @@ create_filter(Client, DetectorId, Input0, Options0) ->
 %% user interface.
 %%
 %% An IPSet is a list of IP addresses that are trusted for secure
-%% communication with AWS infrastructure and applications. GuardDuty doesn't
-%% generate findings for IP addresses that are included in IPSets. Only users
-%% from the administrator account can use this operation.
+%% communication with Amazon Web Services infrastructure and applications.
+%% GuardDuty doesn't generate findings for IP addresses that are included in
+%% IPSets. Only users from the administrator account can use this operation.
 create_ip_set(Client, DetectorId, Input) ->
     create_ip_set(Client, DetectorId, Input, []).
 create_ip_set(Client, DetectorId, Input0, Options0) ->
@@ -296,8 +296,8 @@ create_ip_set(Client, DetectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates member accounts of the current AWS account by specifying a
-%% list of AWS account IDs.
+%% @doc Creates member accounts of the current Amazon Web Services account by
+%% specifying a list of Amazon Web Services account IDs.
 %%
 %% This step is a prerequisite for managing the associated member accounts
 %% either by invitation or through an organization.
@@ -412,8 +412,8 @@ create_threat_intel_set(Client, DetectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Declines invitations sent to the current member account by AWS
-%% accounts specified by their account IDs.
+%% @doc Declines invitations sent to the current member account by Amazon Web
+%% Services accounts specified by their account IDs.
 decline_invitations(Client, Input) ->
     decline_invitations(Client, Input, []).
 decline_invitations(Client, Input0, Options0) ->
@@ -483,8 +483,8 @@ delete_filter(Client, DetectorId, FilterName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes invitations sent to the current member account by AWS
-%% accounts specified by their account IDs.
+%% @doc Deletes invitations sent to the current member account by Amazon Web
+%% Services accounts specified by their account IDs.
 delete_invitations(Client, Input) ->
     delete_invitations(Client, Input, []).
 delete_invitations(Client, Input0, Options0) ->
@@ -650,8 +650,8 @@ describe_publishing_destination(Client, DestinationId, DetectorId, QueryMap, Hea
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Disables an AWS account within the Organization as the GuardDuty
-%% delegated administrator.
+%% @doc Disables an Amazon Web Services account within the Organization as
+%% the GuardDuty delegated administrator.
 disable_organization_admin_account(Client, Input) ->
     disable_organization_admin_account(Client, Input, []).
 disable_organization_admin_account(Client, Input0, Options0) ->
@@ -722,8 +722,8 @@ disassociate_members(Client, DetectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Enables an AWS account within the organization as the GuardDuty
-%% delegated administrator.
+%% @doc Enables an Amazon Web Services account within the organization as the
+%% GuardDuty delegated administrator.
 enable_organization_admin_account(Client, Input) ->
     enable_organization_admin_account(Client, Input, []).
 enable_organization_admin_account(Client, Input0, Options0) ->
@@ -1013,10 +1013,10 @@ get_usage_statistics(Client, DetectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Invites other AWS accounts (created as members of the current AWS
-%% account by CreateMembers) to enable GuardDuty, and allow the current AWS
-%% account to view and manage these accounts' findings on their behalf as the
-%% GuardDuty administrator account.
+%% @doc Invites other Amazon Web Services accounts (created as members of the
+%% current Amazon Web Services account by CreateMembers) to enable GuardDuty,
+%% and allow the current Amazon Web Services account to view and manage these
+%% accounts' findings on their behalf as the GuardDuty administrator account.
 invite_members(Client, DetectorId, Input) ->
     invite_members(Client, DetectorId, Input, []).
 invite_members(Client, DetectorId, Input0, Options0) ->
@@ -1120,7 +1120,7 @@ list_findings(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all GuardDuty membership invitations that were sent to the
-%% current AWS account.
+%% current Amazon Web Services account.
 list_invitations(Client)
   when is_map(Client) ->
     list_invitations(Client, #{}, #{}).
@@ -1239,7 +1239,7 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of publishing destinations associated with the
-%% specified `dectectorId'.
+%% specified `detectorId'.
 list_publishing_destinations(Client, DetectorId)
   when is_map(Client) ->
     list_publishing_destinations(Client, DetectorId, #{}, #{}).

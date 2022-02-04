@@ -15,27 +15,6 @@
 %% This version of the Secrets Manager API Reference documents the Secrets
 %% Manager API version 2017-10-17.
 %%
-%% As an alternative to using the API, you can use one of the Amazon Web
-%% Services SDKs, which consist of libraries and sample code for various
-%% programming languages and platforms such as Java, Ruby, .NET, iOS, and
-%% Android. The SDKs provide a convenient way to create programmatic access
-%% to Amazon Web Services Secrets Manager. For example, the SDKs provide
-%% cryptographically signing requests, managing errors, and retrying requests
-%% automatically. For more information about the Amazon Web Services SDKs,
-%% including downloading and installing them, see Tools for Amazon Web
-%% Services.
-%%
-%% We recommend you use the Amazon Web Services SDKs to make programmatic API
-%% calls to Secrets Manager. However, you also can use the Secrets Manager
-%% HTTP Query API to make direct calls to the Secrets Manager web service. To
-%% learn more about the Secrets Manager HTTP Query API, see Making Query
-%% Requests in the Amazon Web Services Secrets Manager User Guide.
-%%
-%% Secrets Manager API supports GET and POST requests for all actions, and
-%% doesn't require you to use GET for some actions and POST for others.
-%% However, GET requests are subject to the limitation size of a URL.
-%% Therefore, for operations that require larger sizes, use a POST request.
-%%
 %% Support and Feedback for Amazon Web Services Secrets Manager
 %%
 %% We welcome your feedback. Send your comments to
@@ -43,17 +22,6 @@
 %% in the Amazon Web Services Secrets Manager Discussion Forum. For more
 %% information about the Amazon Web Services Discussion Forums, see Forums
 %% Help.
-%%
-%% How examples are presented
-%%
-%% The JSON that Amazon Web Services Secrets Manager expects as your request
-%% parameters and the service returns as a response to HTTP query requests
-%% contain single, long strings without line breaks or white space
-%% formatting. The JSON shown in the examples displays the code formatted
-%% with both line breaks and white space to improve readability. When example
-%% input parameters can also cause long strings extending beyond the screen,
-%% you can insert line breaks to enhance readability. You should always
-%% submit the input as a single JSON text string.
 %%
 %% Logging API Requests
 %%
@@ -121,53 +89,22 @@
 %% API
 %%====================================================================
 
-%% @doc Disables automatic scheduled rotation and cancels the rotation of a
-%% secret if currently in progress.
+%% @doc Turns off automatic rotation, and if a rotation is currently in
+%% progress, cancels the rotation.
 %%
-%% To re-enable scheduled rotation, call `RotateSecret' with
-%% `AutomaticallyRotateAfterDays' set to a value greater than 0. This
-%% immediately rotates your secret and then enables the automatic schedule.
+%% To turn on automatic rotation again, call `RotateSecret'.
 %%
-%% If you cancel a rotation while in progress, it can leave the
-%% `VersionStage' labels in an unexpected state. Depending on the step of the
-%% rotation in progress, you might need to remove the staging label
-%% `AWSPENDING' from the partially created version, specified by the
-%% `VersionId' response value. You should also evaluate the partially rotated
-%% new version to see if it should be deleted, which you can do by removing
-%% all staging labels from the new version `VersionStage' field.
+%% If you cancel a rotation in progress, it can leave the `VersionStage'
+%% labels in an unexpected state. Depending on the step of the rotation in
+%% progress, you might need to remove the staging label `AWSPENDING' from the
+%% partially created version, specified by the `VersionId' response value. We
+%% recommend you also evaluate the partially rotated new version to see if it
+%% should be deleted. You can delete a version by removing all staging labels
+%% from it.
 %%
-%% To successfully start a rotation, the staging label `AWSPENDING' must be
-%% in one of the following states:
-%%
-%% <ul> <li> Not attached to any version at all
-%%
-%% </li> <li> Attached to the same version as the staging label `AWSCURRENT'
-%%
-%% </li> </ul> If the staging label `AWSPENDING' attached to a different
-%% version than the version with `AWSCURRENT' then the attempt to rotate
-%% fails.
-%%
-%% Minimum permissions
-%%
-%% To run this command, you must have the following permissions:
-%%
-%% <ul> <li> secretsmanager:CancelRotateSecret
-%%
-%% </li> </ul> Related operations
-%%
-%% <ul> <li> To configure rotation for a secret or to manually trigger a
-%% rotation, use `RotateSecret'.
-%%
-%% </li> <li> To get the rotation configuration details for a secret, use
-%% `DescribeSecret'.
-%%
-%% </li> <li> To list all of the currently available secrets, use
-%% `ListSecrets'.
-%%
-%% </li> <li> To list all of the versions currently associated with a secret,
-%% use `ListSecretVersionIds'.
-%%
-%% </li> </ul>
+%% Required permissions: `secretsmanager:CancelRotateSecret'. For more
+%% information, see IAM policy actions for Secrets Manager and Authentication
+%% and access control in Secrets Manager.
 cancel_rotate_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_rotate_secret(Client, Input, []).
@@ -177,86 +114,38 @@ cancel_rotate_secret(Client, Input, Options)
 
 %% @doc Creates a new secret.
 %%
-%% A secret in Secrets Manager consists of both the protected secret data and
-%% the important information needed to manage the secret.
+%% A secret is a set of credentials, such as a user name and password, that
+%% you store in an encrypted form in Secrets Manager. The secret also
+%% includes the connection information to access a database or other service,
+%% which Secrets Manager doesn't encrypt. A secret in Secrets Manager
+%% consists of both the protected secret data and the important information
+%% needed to manage the secret.
 %%
-%% Secrets Manager stores the encrypted secret data in one of a collection of
-%% "versions" associated with the secret. Each version contains a copy of the
-%% encrypted secret data. Each version is associated with one or more
-%% "staging labels" that identify where the version is in the rotation cycle.
-%% The `SecretVersionsToStages' field of the secret contains the mapping of
-%% staging labels to the active versions of the secret. Versions without a
-%% staging label are considered deprecated and not included in the list.
+%% For information about creating a secret in the console, see Create a
+%% secret.
 %%
-%% You provide the secret data to be encrypted by putting text in either the
-%% `SecretString' parameter or binary data in the `SecretBinary' parameter,
-%% but not both. If you include `SecretString' or `SecretBinary' then Secrets
-%% Manager also creates an initial secret version and automatically attaches
-%% the staging label `AWSCURRENT' to the new version.
+%% To create a secret, you can provide the secret value to be encrypted in
+%% either the `SecretString' parameter or the `SecretBinary' parameter, but
+%% not both. If you include `SecretString' or `SecretBinary' then Secrets
+%% Manager creates an initial secret version and automatically attaches the
+%% staging label `AWSCURRENT' to it.
 %%
-%% If you call an operation to encrypt or decrypt the `SecretString' or
-%% `SecretBinary' for a secret in the same account as the calling user and
-%% that secret doesn't specify a Amazon Web Services KMS encryption key,
-%% Secrets Manager uses the account's default Amazon Web Services managed
-%% customer master key (CMK) with the alias `aws/secretsmanager'. If this key
-%% doesn't already exist in your account then Secrets Manager creates it for
-%% you automatically. All users and roles in the same Amazon Web Services
-%% account automatically have access to use the default CMK. Note that if an
-%% Secrets Manager API call results in Amazon Web Services creating the
-%% account's Amazon Web Services-managed CMK, it can result in a one-time
-%% significant delay in returning the result.
+%% If you don't specify an KMS encryption key, Secrets Manager uses the
+%% Amazon Web Services managed key `aws/secretsmanager'. If this key doesn't
+%% already exist in your account, then Secrets Manager creates it for you
+%% automatically. All users and roles in the Amazon Web Services account
+%% automatically have access to use `aws/secretsmanager'. Creating
+%% `aws/secretsmanager' can result in a one-time significant delay in
+%% returning the result.
 %%
-%% If the secret resides in a different Amazon Web Services account from the
-%% credentials calling an API that requires encryption or decryption of the
-%% secret value then you must create and use a custom Amazon Web Services KMS
-%% CMK because you can't access the default CMK for the account using
-%% credentials from a different Amazon Web Services account. Store the ARN of
-%% the CMK in the secret when you create the secret or when you update it by
-%% including it in the `KMSKeyId'. If you call an API that must encrypt or
-%% decrypt `SecretString' or `SecretBinary' using credentials from a
-%% different account then the Amazon Web Services KMS key policy must grant
-%% cross-account access to that other account's user or role for both the
-%% kms:GenerateDataKey and kms:Decrypt operations.
+%% If the secret is in a different Amazon Web Services account from the
+%% credentials calling the API, then you can't use `aws/secretsmanager' to
+%% encrypt the secret, and you must create and use a customer managed KMS
+%% key.
 %%
-%% Minimum permissions
-%%
-%% To run this command, you must have the following permissions:
-%%
-%% <ul> <li> secretsmanager:CreateSecret
-%%
-%% </li> <li> kms:GenerateDataKey - needed only if you use a customer-managed
-%% Amazon Web Services KMS key to encrypt the secret. You do not need this
-%% permission to use the account default Amazon Web Services managed CMK for
-%% Secrets Manager.
-%%
-%% </li> <li> kms:Decrypt - needed only if you use a customer-managed Amazon
-%% Web Services KMS key to encrypt the secret. You do not need this
-%% permission to use the account default Amazon Web Services managed CMK for
-%% Secrets Manager.
-%%
-%% </li> <li> secretsmanager:TagResource - needed only if you include the
-%% `Tags' parameter.
-%%
-%% </li> </ul> Related operations
-%%
-%% <ul> <li> To delete a secret, use `DeleteSecret'.
-%%
-%% </li> <li> To modify an existing secret, use `UpdateSecret'.
-%%
-%% </li> <li> To create a new version of a secret, use `PutSecretValue'.
-%%
-%% </li> <li> To retrieve the encrypted secure string and secure binary
-%% values, use `GetSecretValue'.
-%%
-%% </li> <li> To retrieve all other details for a secret, use
-%% `DescribeSecret'. This does not include the encrypted secure string and
-%% secure binary values.
-%%
-%% </li> <li> To retrieve the list of secret versions associated with the
-%% current secret, use `DescribeSecret' and examine the
-%% `SecretVersionsToStages' response value.
-%%
-%% </li> </ul>
+%% Required permissions: `secretsmanager:CreateSecret'. For more information,
+%% see IAM policy actions for Secrets Manager and Authentication and access
+%% control in Secrets Manager.
 create_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_secret(Client, Input, []).
@@ -266,24 +155,11 @@ create_secret(Client, Input, Options)
 
 %% @doc Deletes the resource-based permission policy attached to the secret.
 %%
-%% Minimum permissions
+%% To attach a policy to a secret, use `PutResourcePolicy'.
 %%
-%% To run this command, you must have the following permissions:
-%%
-%% <ul> <li> secretsmanager:DeleteResourcePolicy
-%%
-%% </li> </ul> Related operations
-%%
-%% <ul> <li> To attach a resource policy to a secret, use
-%% `PutResourcePolicy'.
-%%
-%% </li> <li> To retrieve the current resource-based policy attached to a
-%% secret, use `GetResourcePolicy'.
-%%
-%% </li> <li> To list all of the currently available secrets, use
-%% `ListSecrets'.
-%%
-%% </li> </ul>
+%% Required permissions: `secretsmanager:DeleteResourcePolicy'. For more
+%% information, see IAM policy actions for Secrets Manager and Authentication
+%% and access control in Secrets Manager.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
@@ -291,46 +167,32 @@ delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
 
-%% @doc Deletes an entire secret and all of the versions.
+%% @doc Deletes a secret and all of its versions.
 %%
-%% You can optionally include a recovery window during which you can restore
-%% the secret. If you don't specify a recovery window value, the operation
-%% defaults to 30 days. Secrets Manager attaches a `DeletionDate' stamp to
-%% the secret that specifies the end of the recovery window. At the end of
-%% the recovery window, Secrets Manager deletes the secret permanently.
+%% You can specify a recovery window during which you can restore the secret.
+%% The minimum recovery window is 7 days. The default recovery window is 30
+%% days. Secrets Manager attaches a `DeletionDate' stamp to the secret that
+%% specifies the end of the recovery window. At the end of the recovery
+%% window, Secrets Manager deletes the secret permanently.
+%%
+%% For information about deleting a secret in the console, see
+%% [https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage_delete-secret.html].
+%%
+%% Secrets Manager performs the permanent secret deletion at the end of the
+%% waiting period as a background task with low priority. There is no
+%% guarantee of a specific time after the recovery window for the permanent
+%% delete to occur.
 %%
 %% At any time before recovery window ends, you can use `RestoreSecret' to
 %% remove the `DeletionDate' and cancel the deletion of the secret.
 %%
-%% You cannot access the encrypted secret information in any secret scheduled
-%% for deletion. If you need to access that information, you must cancel the
-%% deletion with `RestoreSecret' and then retrieve the information.
+%% In a secret scheduled for deletion, you cannot access the encrypted secret
+%% value. To access that information, first cancel the deletion with
+%% `RestoreSecret' and then retrieve the information.
 %%
-%% There is no explicit operation to delete a version of a secret. Instead,
-%% remove all staging labels from the `VersionStage' field of a version. That
-%% marks the version as deprecated and allows Secrets Manager to delete it as
-%% needed. Versions without any staging labels do not show up in
-%% `ListSecretVersionIds' unless you specify `IncludeDeprecated'.
-%%
-%% The permanent secret deletion at the end of the waiting period is
-%% performed as a background task with low priority. There is no guarantee of
-%% a specific time after the recovery window for the actual delete operation
-%% to occur.
-%%
-%% Minimum permissions
-%%
-%% To run this command, you must have the following permissions:
-%%
-%% <ul> <li> secretsmanager:DeleteSecret
-%%
-%% </li> </ul> Related operations
-%%
-%% <ul> <li> To create a secret, use `CreateSecret'.
-%%
-%% </li> <li> To cancel deletion of a version of a secret before the recovery
-%% window has expired, use `RestoreSecret'.
-%%
-%% </li> </ul>
+%% Required permissions: `secretsmanager:DeleteSecret'. For more information,
+%% see IAM policy actions for Secrets Manager and Authentication and access
+%% control in Secrets Manager.
 delete_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_secret(Client, Input, []).
@@ -340,28 +202,12 @@ delete_secret(Client, Input, Options)
 
 %% @doc Retrieves the details of a secret.
 %%
-%% It does not include the encrypted fields. Secrets Manager only returns
-%% fields populated with a value in the response.
+%% It does not include the encrypted secret value. Secrets Manager only
+%% returns fields that have a value in the response.
 %%
-%% Minimum permissions
-%%
-%% To run this command, you must have the following permissions:
-%%
-%% <ul> <li> secretsmanager:DescribeSecret
-%%
-%% </li> </ul> Related operations
-%%
-%% <ul> <li> To create a secret, use `CreateSecret'.
-%%
-%% </li> <li> To modify a secret, use `UpdateSecret'.
-%%
-%% </li> <li> To retrieve the encrypted secret information in a version of
-%% the secret, use `GetSecretValue'.
-%%
-%% </li> <li> To list all of the secrets in the Amazon Web Services account,
-%% use `ListSecrets'.
-%%
-%% </li> </ul>
+%% Required permissions: `secretsmanager:DescribeSecret'. For more
+%% information, see IAM policy actions for Secrets Manager and Authentication
+%% and access control in Secrets Manager.
 describe_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_secret(Client, Input, []).
@@ -369,20 +215,15 @@ describe_secret(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSecret">>, Input, Options).
 
-%% @doc Generates a random password of the specified complexity.
+%% @doc Generates a random password.
 %%
-%% This operation is intended for use in the Lambda rotation function. Per
-%% best practice, we recommend that you specify the maximum length and
-%% include every character type that the system you are generating a password
-%% for can support.
+%% We recommend that you specify the maximum length and include every
+%% character type that the system you are generating a password for can
+%% support.
 %%
-%% Minimum permissions
-%%
-%% To run this command, you must have the following permissions:
-%%
-%% <ul> <li> secretsmanager:GetRandomPassword
-%%
-%% </li> </ul>
+%% Required permissions: `secretsmanager:GetRandomPassword'. For more
+%% information, see IAM policy actions for Secrets Manager and Authentication
+%% and access control in Secrets Manager.
 get_random_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_random_password(Client, Input, []).
@@ -391,30 +232,14 @@ get_random_password(Client, Input, Options)
     request(Client, <<"GetRandomPassword">>, Input, Options).
 
 %% @doc Retrieves the JSON text of the resource-based policy document
-%% attached to the specified secret.
+%% attached to the secret.
 %%
-%% The JSON request string input and response output displays formatted code
-%% with white space and line breaks for better readability. Submit your input
-%% as a single line JSON string.
+%% For more information about permissions policies attached to a secret, see
+%% Permissions policies attached to a secret.
 %%
-%% Minimum permissions
-%%
-%% To run this command, you must have the following permissions:
-%%
-%% <ul> <li> secretsmanager:GetResourcePolicy
-%%
-%% </li> </ul> Related operations
-%%
-%% <ul> <li> To attach a resource policy to a secret, use
-%% `PutResourcePolicy'.
-%%
-%% </li> <li> To delete the resource-based policy attached to a secret, use
-%% `DeleteResourcePolicy'.
-%%
-%% </li> <li> To list all of the currently available secrets, use
-%% `ListSecrets'.
-%%
-%% </li> </ul>
+%% Required permissions: `secretsmanager:GetResourcePolicy'. For more
+%% information, see IAM policy actions for Secrets Manager and Authentication
+%% and access control in Secrets Manager.
 get_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_policy(Client, Input, []).
@@ -426,26 +251,15 @@ get_resource_policy(Client, Input, Options)
 %% `SecretBinary' from the specified version of a secret, whichever contains
 %% content.
 %%
-%% Minimum permissions
+%% We recommend that you cache your secret values by using client-side
+%% caching. Caching secrets improves speed and reduces your costs. For more
+%% information, see Cache secrets for your applications.
 %%
-%% To run this command, you must have the following permissions:
-%%
-%% <ul> <li> secretsmanager:GetSecretValue
-%%
-%% </li> <li> kms:Decrypt - required only if you use a customer-managed
-%% Amazon Web Services KMS key to encrypt the secret. You do not need this
-%% permission to use the account's default Amazon Web Services managed CMK
-%% for Secrets Manager.
-%%
-%% </li> </ul> Related operations
-%%
-%% <ul> <li> To create a new version of the secret with different encrypted
-%% information, use `PutSecretValue'.
-%%
-%% </li> <li> To retrieve the non-encrypted details for the secret, use
-%% `DescribeSecret'.
-%%
-%% </li> </ul>
+%% Required permissions: `secretsmanager:GetSecretValue'. If the secret is
+%% encrypted using a customer-managed key instead of the Amazon Web Services
+%% managed key `aws/secretsmanager', then you also need `kms:Decrypt'
+%% permissions for that key. For more information, see IAM policy actions for
+%% Secrets Manager and Authentication and access control in Secrets Manager.
 get_secret_value(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_secret_value(Client, Input, []).
@@ -453,30 +267,16 @@ get_secret_value(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSecretValue">>, Input, Options).
 
-%% @doc Lists all of the versions attached to the specified secret.
+%% @doc Lists the versions for a secret.
 %%
-%% The output does not include the `SecretString' or `SecretBinary' fields.
-%% By default, the list includes only versions that have at least one staging
-%% label in `VersionStage' attached.
+%% To list the secrets in the account, use `ListSecrets'.
 %%
-%% Always check the `NextToken' response parameter when calling any of the
-%% `List*' operations. These operations can occasionally return an empty or
-%% shorter than expected list of results even when there more results become
-%% available. When this happens, the `NextToken' response parameter contains
-%% a value to pass to the next call to the same API to request the next part
-%% of the list.
+%% To get the secret value from `SecretString' or `SecretBinary', call
+%% `GetSecretValue'.
 %%
-%% Minimum permissions
-%%
-%% To run this command, you must have the following permissions:
-%%
-%% <ul> <li> secretsmanager:ListSecretVersionIds
-%%
-%% </li> </ul> Related operations
-%%
-%% <ul> <li> To list the secrets in an account, use `ListSecrets'.
-%%
-%% </li> </ul>
+%% Required permissions: `secretsmanager:ListSecretVersionIds'. For more
+%% information, see IAM policy actions for Secrets Manager and Authentication
+%% and access control in Secrets Manager.
 list_secret_version_ids(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_secret_version_ids(Client, Input, []).
@@ -484,33 +284,20 @@ list_secret_version_ids(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSecretVersionIds">>, Input, Options).
 
-%% @doc Lists all of the secrets that are stored by Secrets Manager in the
-%% Amazon Web Services account.
+%% @doc Lists the secrets that are stored by Secrets Manager in the Amazon
+%% Web Services account.
 %%
-%% To list the versions currently stored for a specific secret, use
-%% `ListSecretVersionIds'. The encrypted fields `SecretString' and
-%% `SecretBinary' are not included in the output. To get that information,
-%% call the `GetSecretValue' operation.
+%% To list the versions of a secret, use `ListSecretVersionIds'.
 %%
-%% Always check the `NextToken' response parameter when calling any of the
-%% `List*' operations. These operations can occasionally return an empty or
-%% shorter than expected list of results even when there more results become
-%% available. When this happens, the `NextToken' response parameter contains
-%% a value to pass to the next call to the same API to request the next part
-%% of the list.
+%% To get the secret value from `SecretString' or `SecretBinary', call
+%% `GetSecretValue'.
 %%
-%% Minimum permissions
+%% For information about finding secrets in the console, see Enhanced search
+%% capabilities for secrets in Secrets Manager.
 %%
-%% To run this command, you must have the following permissions:
-%%
-%% <ul> <li> secretsmanager:ListSecrets
-%%
-%% </li> </ul> Related operations
-%%
-%% <ul> <li> To list the versions attached to a secret, use
-%% `ListSecretVersionIds'.
-%%
-%% </li> </ul>
+%% Required permissions: `secretsmanager:ListSecrets'. For more information,
+%% see IAM policy actions for Secrets Manager and Authentication and access
+%% control in Secrets Manager.
 list_secrets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_secrets(Client, Input, []).
@@ -518,37 +305,17 @@ list_secrets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSecrets">>, Input, Options).
 
-%% @doc Attaches the contents of the specified resource-based permission
-%% policy to a secret.
+%% @doc Attaches a resource-based permission policy to a secret.
 %%
-%% A resource-based policy is optional. Alternatively, you can use IAM
-%% identity-based policies that specify the secret's Amazon Resource Name
-%% (ARN) in the policy statement's `Resources' element. You can also use a
-%% combination of both identity-based and resource-based policies. The
-%% affected users and roles receive the permissions that are permitted by all
-%% of the relevant policies. For more information, see Using Resource-Based
-%% Policies for Amazon Web Services Secrets Manager. For the complete
-%% description of the Amazon Web Services policy syntax and grammar, see IAM
-%% JSON Policy Reference in the IAM User Guide.
+%% A resource-based policy is optional. For more information, see
+%% Authentication and access control for Secrets Manager
 %%
-%% Minimum permissions
+%% For information about attaching a policy in the console, see Attach a
+%% permissions policy to a secret.
 %%
-%% To run this command, you must have the following permissions:
-%%
-%% <ul> <li> secretsmanager:PutResourcePolicy
-%%
-%% </li> </ul> Related operations
-%%
-%% <ul> <li> To retrieve the resource policy attached to a secret, use
-%% `GetResourcePolicy'.
-%%
-%% </li> <li> To delete the resource-based policy attached to a secret, use
-%% `DeleteResourcePolicy'.
-%%
-%% </li> <li> To list all of the currently available secrets, use
-%% `ListSecrets'.
-%%
-%% </li> </ul>
+%% Required permissions: `secretsmanager:PutResourcePolicy'. For more
+%% information, see IAM policy actions for Secrets Manager and Authentication
+%% and access control in Secrets Manager.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
@@ -556,12 +323,11 @@ put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
 
-%% @doc Stores a new encrypted secret value in the specified secret.
+%% @doc Creates a new version with a new encrypted secret value and attaches
+%% it to the secret.
 %%
-%% To do this, the operation creates a new version and attaches it to the
-%% secret. The version can contain a new `SecretString' value or a new
-%% `SecretBinary' value. You can also specify the staging labels that are
-%% initially attached to the new version.
+%% The version can contain a new `SecretString' value or a new `SecretBinary'
+%% value.
 %%
 %% We recommend you avoid calling `PutSecretValue' at a sustained rate of
 %% more than once every 10 minutes. When you update the secret value, Secrets
@@ -571,75 +337,27 @@ put_resource_policy(Client, Input, Options)
 %% than once every 10 minutes, you create more versions than Secrets Manager
 %% removes, and you will reach the quota for secret versions.
 %%
-%% <ul> <li> If this operation creates the first version for the secret then
+%% You can specify the staging labels to attach to the new version in
+%% `VersionStages'. If you don't include `VersionStages', then Secrets
+%% Manager automatically moves the staging label `AWSCURRENT' to this
+%% version. If this operation creates the first version for the secret, then
 %% Secrets Manager automatically attaches the staging label `AWSCURRENT' to
-%% the new version.
+%% it .
 %%
-%% </li> <li> If you do not specify a value for VersionStages then Secrets
-%% Manager automatically moves the staging label `AWSCURRENT' to this new
-%% version.
+%% If this operation moves the staging label `AWSCURRENT' from another
+%% version to this version, then Secrets Manager also automatically moves the
+%% staging label `AWSPREVIOUS' to the version that `AWSCURRENT' was removed
+%% from.
 %%
-%% </li> <li> If this operation moves the staging label `AWSCURRENT' from
-%% another version to this version, then Secrets Manager also automatically
-%% moves the staging label `AWSPREVIOUS' to the version that `AWSCURRENT' was
-%% removed from.
+%% This operation is idempotent. If a version with a `VersionId' with the
+%% same value as the `ClientRequestToken' parameter already exists, and you
+%% specify the same secret data, the operation succeeds but does nothing.
+%% However, if the secret data is different, then the operation fails because
+%% you can't modify an existing version; you can only create new ones.
 %%
-%% </li> <li> This operation is idempotent. If a version with a `VersionId'
-%% with the same value as the `ClientRequestToken' parameter already exists
-%% and you specify the same secret data, the operation succeeds but does
-%% nothing. However, if the secret data is different, then the operation
-%% fails because you cannot modify an existing version; you can only create
-%% new ones.
-%%
-%% </li> </ul> If you call an operation to encrypt or decrypt the
-%% `SecretString' or `SecretBinary' for a secret in the same account as the
-%% calling user and that secret doesn't specify a Amazon Web Services KMS
-%% encryption key, Secrets Manager uses the account's default Amazon Web
-%% Services managed customer master key (CMK) with the alias
-%% `aws/secretsmanager'. If this key doesn't already exist in your account
-%% then Secrets Manager creates it for you automatically. All users and roles
-%% in the same Amazon Web Services account automatically have access to use
-%% the default CMK. Note that if an Secrets Manager API call results in
-%% Amazon Web Services creating the account's Amazon Web Services-managed
-%% CMK, it can result in a one-time significant delay in returning the
-%% result.
-%%
-%% If the secret resides in a different Amazon Web Services account from the
-%% credentials calling an API that requires encryption or decryption of the
-%% secret value then you must create and use a custom Amazon Web Services KMS
-%% CMK because you can't access the default CMK for the account using
-%% credentials from a different Amazon Web Services account. Store the ARN of
-%% the CMK in the secret when you create the secret or when you update it by
-%% including it in the `KMSKeyId'. If you call an API that must encrypt or
-%% decrypt `SecretString' or `SecretBinary' using credentials from a
-%% different account then the Amazon Web Services KMS key policy must grant
-%% cross-account access to that other account's user or role for both the
-%% kms:GenerateDataKey and kms:Decrypt operations.
-%%
-%% Minimum permissions
-%%
-%% To run this command, you must have the following permissions:
-%%
-%% <ul> <li> secretsmanager:PutSecretValue
-%%
-%% </li> <li> kms:GenerateDataKey - needed only if you use a customer-managed
-%% Amazon Web Services KMS key to encrypt the secret. You do not need this
-%% permission to use the account's default Amazon Web Services managed CMK
-%% for Secrets Manager.
-%%
-%% </li> </ul> Related operations
-%%
-%% <ul> <li> To retrieve the encrypted value you store in the version of a
-%% secret, use `GetSecretValue'.
-%%
-%% </li> <li> To create a secret, use `CreateSecret'.
-%%
-%% </li> <li> To get the details for a secret, use `DescribeSecret'.
-%%
-%% </li> <li> To list the versions attached to a secret, use
-%% `ListSecretVersionIds'.
-%%
-%% </li> </ul>
+%% Required permissions: `secretsmanager:PutSecretValue'. For more
+%% information, see IAM policy actions for Secrets Manager and Authentication
+%% and access control in Secrets Manager.
 put_secret_value(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_secret_value(Client, Input, []).
@@ -647,7 +365,12 @@ put_secret_value(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutSecretValue">>, Input, Options).
 
-%% @doc Remove regions from replication.
+%% @doc For a secret that is replicated to other Regions, deletes the secret
+%% replicas from the Regions you specify.
+%%
+%% Required permissions: `secretsmanager:RemoveRegionsFromReplication'. For
+%% more information, see IAM policy actions for Secrets Manager and
+%% Authentication and access control in Secrets Manager.
 remove_regions_from_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_regions_from_replication(Client, Input, []).
@@ -655,8 +378,13 @@ remove_regions_from_replication(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveRegionsFromReplication">>, Input, Options).
 
-%% @doc Converts an existing secret to a multi-Region secret and begins
-%% replication the secret to a list of new regions.
+%% @doc Replicates the secret to a new Regions.
+%%
+%% See Multi-Region secrets.
+%%
+%% Required permissions: `secretsmanager:ReplicateSecretToRegions'. For more
+%% information, see IAM policy actions for Secrets Manager and Authentication
+%% and access control in Secrets Manager.
 replicate_secret_to_regions(Client, Input)
   when is_map(Client), is_map(Input) ->
     replicate_secret_to_regions(Client, Input, []).
@@ -667,19 +395,11 @@ replicate_secret_to_regions(Client, Input, Options)
 %% @doc Cancels the scheduled deletion of a secret by removing the
 %% `DeletedDate' time stamp.
 %%
-%% This makes the secret accessible to query once again.
+%% You can access a secret again after it has been restored.
 %%
-%% Minimum permissions
-%%
-%% To run this command, you must have the following permissions:
-%%
-%% <ul> <li> secretsmanager:RestoreSecret
-%%
-%% </li> </ul> Related operations
-%%
-%% <ul> <li> To delete a secret, use `DeleteSecret'.
-%%
-%% </li> </ul>
+%% Required permissions: `secretsmanager:RestoreSecret'. For more
+%% information, see IAM policy actions for Secrets Manager and Authentication
+%% and access control in Secrets Manager.
 restore_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_secret(Client, Input, []).
@@ -687,71 +407,37 @@ restore_secret(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreSecret">>, Input, Options).
 
-%% @doc Configures and starts the asynchronous process of rotating this
+%% @doc Configures and starts the asynchronous process of rotating the
 %% secret.
 %%
-%% If you include the configuration parameters, the operation sets those
-%% values for the secret and then immediately starts a rotation. If you do
-%% not include the configuration parameters, the operation starts a rotation
-%% with the values already stored in the secret. After the rotation
-%% completes, the protected service and its clients all use the new version
-%% of the secret.
+%% If you include the configuration parameters, the operation sets the values
+%% for the secret and then immediately starts a rotation. If you don't
+%% include the configuration parameters, the operation starts a rotation with
+%% the values already stored in the secret. For more information about
+%% rotation, see Rotate secrets.
 %%
-%% This required configuration information includes the ARN of an Amazon Web
-%% Services Lambda function and optionally, the time between scheduled
-%% rotations. The Lambda rotation function creates a new version of the
-%% secret and creates or updates the credentials on the protected service to
-%% match. After testing the new credentials, the function marks the new
-%% secret with the staging label `AWSCURRENT' so that your clients all
-%% immediately begin to use the new version. For more information about
-%% rotating secrets and how to configure a Lambda function to rotate the
-%% secrets for your protected service, see Rotating Secrets in Amazon Web
-%% Services Secrets Manager in the Amazon Web Services Secrets Manager User
-%% Guide.
+%% To configure rotation, you include the ARN of an Amazon Web Services
+%% Lambda function and the schedule for the rotation. The Lambda rotation
+%% function creates a new version of the secret and creates or updates the
+%% credentials on the database or service to match. After testing the new
+%% credentials, the function marks the new secret version with the staging
+%% label `AWSCURRENT'. Then anyone who retrieves the secret gets the new
+%% version. For more information, see How rotation works.
 %%
-%% Secrets Manager schedules the next rotation when the previous one
-%% completes. Secrets Manager schedules the date by adding the rotation
-%% interval (number of days) to the actual date of the last rotation. The
-%% service chooses the hour within that 24-hour date window randomly. The
-%% minute is also chosen somewhat randomly, but weighted towards the top of
-%% the hour and influenced by a variety of factors that help distribute load.
+%% When rotation is successful, the `AWSPENDING' staging label might be
+%% attached to the same version as the `AWSCURRENT' version, or it might not
+%% be attached to any version.
 %%
-%% The rotation function must end with the versions of the secret in one of
-%% two states:
+%% If the `AWSPENDING' staging label is present but not attached to the same
+%% version as `AWSCURRENT', then any later invocation of `RotateSecret'
+%% assumes that a previous rotation request is still in progress and returns
+%% an error.
 %%
-%% <ul> <li> The `AWSPENDING' and `AWSCURRENT' staging labels are attached to
-%% the same version of the secret, or
-%%
-%% </li> <li> The `AWSPENDING' staging label is not attached to any version
-%% of the secret.
-%%
-%% </li> </ul> If the `AWSPENDING' staging label is present but not attached
-%% to the same version as `AWSCURRENT' then any later invocation of
-%% `RotateSecret' assumes that a previous rotation request is still in
-%% progress and returns an error.
-%%
-%% Minimum permissions
-%%
-%% To run this command, you must have the following permissions:
-%%
-%% <ul> <li> secretsmanager:RotateSecret
-%%
-%% </li> <li> lambda:InvokeFunction (on the function specified in the
-%% secret's metadata)
-%%
-%% </li> </ul> Related operations
-%%
-%% <ul> <li> To list the secrets in your account, use `ListSecrets'.
-%%
-%% </li> <li> To get the details for a version of a secret, use
-%% `DescribeSecret'.
-%%
-%% </li> <li> To create a new version of a secret, use `CreateSecret'.
-%%
-%% </li> <li> To attach staging labels to or remove staging labels from a
-%% version of a secret, use `UpdateSecretVersionStage'.
-%%
-%% </li> </ul>
+%% Required permissions: `secretsmanager:RotateSecret'. For more information,
+%% see IAM policy actions for Secrets Manager and Authentication and access
+%% control in Secrets Manager. You also need `lambda:InvokeFunction'
+%% permissions on the rotation function. For more information, see
+%% Permissions for rotation.
 rotate_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     rotate_secret(Client, Input, []).
@@ -759,8 +445,15 @@ rotate_secret(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RotateSecret">>, Input, Options).
 
-%% @doc Removes the secret from replication and promotes the secret to a
-%% regional secret in the replica Region.
+%% @doc Removes the link between the replica secret and the primary secret
+%% and promotes the replica to a primary secret in the replica Region.
+%%
+%% You must call this operation from the Region in which you want to promote
+%% the replica to a primary secret.
+%%
+%% Required permissions: `secretsmanager:StopReplicationToReplica'. For more
+%% information, see IAM policy actions for Secrets Manager and Authentication
+%% and access control in Secrets Manager.
 stop_replication_to_replica(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_replication_to_replica(Client, Input, []).
@@ -768,21 +461,19 @@ stop_replication_to_replica(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopReplicationToReplica">>, Input, Options).
 
-%% @doc Attaches one or more tags, each consisting of a key name and a value,
-%% to the specified secret.
+%% @doc Attaches tags to a secret.
 %%
-%% Tags are part of the secret's overall metadata, and are not associated
-%% with any specific version of the secret. This operation only appends tags
-%% to the existing list of tags. To remove tags, you must use
-%% `UntagResource'.
+%% Tags consist of a key name and a value. Tags are part of the secret's
+%% metadata. They are not associated with specific versions of the secret.
+%% This operation appends tags to the existing list of tags.
 %%
-%% The following basic restrictions apply to tags:
+%% The following restrictions apply to tags:
 %%
-%% <ul> <li> Maximum number of tags per secret—50
+%% <ul> <li> Maximum number of tags per secret: 50
 %%
-%% </li> <li> Maximum key length—127 Unicode characters in UTF-8
+%% </li> <li> Maximum key length: 127 Unicode characters in UTF-8
 %%
-%% </li> <li> Maximum value length—255 Unicode characters in UTF-8
+%% </li> <li> Maximum value length: 255 Unicode characters in UTF-8
 %%
 %% </li> <li> Tag keys and values are case sensitive.
 %%
@@ -792,31 +483,18 @@ stop_replication_to_replica(Client, Input, Options)
 %% prefix do not count against your tags per secret limit.
 %%
 %% </li> <li> If you use your tagging schema across multiple services and
-%% resources, remember other services might have restrictions on allowed
-%% characters. Generally allowed characters: letters, spaces, and numbers
-%% representable in UTF-8, plus the following special characters: + - = . _ :
-%% / @.
+%% resources, other services might have restrictions on allowed characters.
+%% Generally allowed characters: letters, spaces, and numbers representable
+%% in UTF-8, plus the following special characters: + - = . _ : / @.
 %%
 %% </li> </ul> If you use tags as part of your security strategy, then adding
 %% or removing a tag can change permissions. If successfully completing this
 %% operation would result in you losing your permissions for this secret,
 %% then the operation is blocked and returns an Access Denied error.
 %%
-%% Minimum permissions
-%%
-%% To run this command, you must have the following permissions:
-%%
-%% <ul> <li> secretsmanager:TagResource
-%%
-%% </li> </ul> Related operations
-%%
-%% <ul> <li> To remove one or more tags from the collection attached to a
-%% secret, use `UntagResource'.
-%%
-%% </li> <li> To view the list of tags attached to a secret, use
-%% `DescribeSecret'.
-%%
-%% </li> </ul>
+%% Required permissions: `secretsmanager:TagResource'. For more information,
+%% see IAM policy actions for Secrets Manager and Authentication and access
+%% control in Secrets Manager.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -824,7 +502,7 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Removes one or more tags from the specified secret.
+%% @doc Removes specific tags from a secret.
 %%
 %% This operation is idempotent. If a requested tag is not attached to the
 %% secret, no error is returned and the secret metadata is unchanged.
@@ -834,21 +512,9 @@ tag_resource(Client, Input, Options)
 %% in you losing your permissions for this secret, then the operation is
 %% blocked and returns an Access Denied error.
 %%
-%% Minimum permissions
-%%
-%% To run this command, you must have the following permissions:
-%%
-%% <ul> <li> secretsmanager:UntagResource
-%%
-%% </li> </ul> Related operations
-%%
-%% <ul> <li> To add one or more tags to the collection attached to a secret,
-%% use `TagResource'.
-%%
-%% </li> <li> To view the list of tags attached to a secret, use
-%% `DescribeSecret'.
-%%
-%% </li> </ul>
+%% Required permissions: `secretsmanager:UntagResource'. For more
+%% information, see IAM policy actions for Secrets Manager and Authentication
+%% and access control in Secrets Manager.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -856,7 +522,8 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc Modifies many of the details of the specified secret.
+%% @doc Modifies the details of a secret, including metadata and the secret
+%% value.
 %%
 %% To change the secret value, you can also use `PutSecretValue'.
 %%
@@ -872,74 +539,33 @@ untag_resource(Client, Input, Options)
 %% than Secrets Manager removes, and you will reach the quota for secret
 %% versions.
 %%
-%% The Secrets Manager console uses only the `SecretString' parameter and
-%% therefore limits you to encrypting and storing only a text string. To
-%% encrypt and store binary data as part of the version of a secret, you must
-%% use either the Amazon Web Services CLI or one of the Amazon Web Services
-%% SDKs.
-%%
-%% <ul> <li> If a version with a `VersionId' with the same value as the
-%% `ClientRequestToken' parameter already exists, the operation results in an
-%% error. You cannot modify an existing version, you can only create a new
-%% version.
-%%
-%% </li> <li> If you include `SecretString' or `SecretBinary' to create a new
-%% secret version, Secrets Manager automatically attaches the staging label
+%% If you include `SecretString' or `SecretBinary' to create a new secret
+%% version, Secrets Manager automatically attaches the staging label
 %% `AWSCURRENT' to the new version.
 %%
-%% </li> </ul> If you call an operation to encrypt or decrypt the
-%% `SecretString' or `SecretBinary' for a secret in the same account as the
-%% calling user and that secret doesn't specify a Amazon Web Services KMS
-%% encryption key, Secrets Manager uses the account's default Amazon Web
-%% Services managed customer master key (CMK) with the alias
-%% `aws/secretsmanager'. If this key doesn't already exist in your account
-%% then Secrets Manager creates it for you automatically. All users and roles
-%% in the same Amazon Web Services account automatically have access to use
-%% the default CMK. Note that if an Secrets Manager API call results in
-%% Amazon Web Services creating the account's Amazon Web Services-managed
-%% CMK, it can result in a one-time significant delay in returning the
-%% result.
+%% If you call this operation with a `VersionId' that matches an existing
+%% version's `ClientRequestToken', the operation results in an error. You
+%% can't modify an existing version, you can only create a new version. To
+%% remove a version, remove all staging labels from it. See
+%% `UpdateSecretVersionStage'.
 %%
-%% If the secret resides in a different Amazon Web Services account from the
-%% credentials calling an API that requires encryption or decryption of the
-%% secret value then you must create and use a custom Amazon Web Services KMS
-%% CMK because you can't access the default CMK for the account using
-%% credentials from a different Amazon Web Services account. Store the ARN of
-%% the CMK in the secret when you create the secret or when you update it by
-%% including it in the `KMSKeyId'. If you call an API that must encrypt or
-%% decrypt `SecretString' or `SecretBinary' using credentials from a
-%% different account then the Amazon Web Services KMS key policy must grant
-%% cross-account access to that other account's user or role for both the
-%% kms:GenerateDataKey and kms:Decrypt operations.
+%% If you don't specify an KMS encryption key, Secrets Manager uses the
+%% Amazon Web Services managed key `aws/secretsmanager'. If this key doesn't
+%% already exist in your account, then Secrets Manager creates it for you
+%% automatically. All users and roles in the Amazon Web Services account
+%% automatically have access to use `aws/secretsmanager'. Creating
+%% `aws/secretsmanager' can result in a one-time significant delay in
+%% returning the result.
 %%
-%% Minimum permissions
+%% If the secret is in a different Amazon Web Services account from the
+%% credentials calling the API, then you can't use `aws/secretsmanager' to
+%% encrypt the secret, and you must create and use a customer managed key.
 %%
-%% To run this command, you must have the following permissions:
-%%
-%% <ul> <li> secretsmanager:UpdateSecret
-%%
-%% </li> <li> kms:GenerateDataKey - needed only if you use a custom Amazon
-%% Web Services KMS key to encrypt the secret. You do not need this
-%% permission to use the account's Amazon Web Services managed CMK for
-%% Secrets Manager.
-%%
-%% </li> <li> kms:Decrypt - needed only if you use a custom Amazon Web
-%% Services KMS key to encrypt the secret. You do not need this permission to
-%% use the account's Amazon Web Services managed CMK for Secrets Manager.
-%%
-%% </li> </ul> Related operations
-%%
-%% <ul> <li> To create a new secret, use `CreateSecret'.
-%%
-%% </li> <li> To add only a new version to an existing secret, use
-%% `PutSecretValue'.
-%%
-%% </li> <li> To get the details for a secret, use `DescribeSecret'.
-%%
-%% </li> <li> To list the versions contained in a secret, use
-%% `ListSecretVersionIds'.
-%%
-%% </li> </ul>
+%% Required permissions: `secretsmanager:UpdateSecret'. For more information,
+%% see IAM policy actions for Secrets Manager and Authentication and access
+%% control in Secrets Manager. If you use a customer managed key, you must
+%% also have `kms:GenerateDataKey' and `kms:Decrypt' permissions on the key.
+%% For more information, see Secret encryption and decryption.
 update_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_secret(Client, Input, []).
@@ -949,16 +575,15 @@ update_secret(Client, Input, Options)
 
 %% @doc Modifies the staging labels attached to a version of a secret.
 %%
-%% Staging labels are used to track a version as it progresses through the
-%% secret rotation process. You can attach a staging label to only one
-%% version of a secret at a time. If a staging label to be added is already
-%% attached to another version, then it is moved--removed from the other
-%% version first and then attached to this one. For more information about
-%% staging labels, see Staging Labels in the Amazon Web Services Secrets
-%% Manager User Guide.
+%% Secrets Manager uses staging labels to track a version as it progresses
+%% through the secret rotation process. Each staging label can be attached to
+%% only one version at a time. To add a staging label to a version when it is
+%% already attached to another version, Secrets Manager first removes it from
+%% the other version first and then attaches it to this one. For more
+%% information about versions and staging labels, see Concepts: Version.
 %%
 %% The staging labels that you specify in the `VersionStage' parameter are
-%% added to the existing list of staging labels--they don't replace it.
+%% added to the existing list of staging labels for the version.
 %%
 %% You can move the `AWSCURRENT' staging label to this version by including
 %% it in this call.
@@ -970,19 +595,9 @@ update_secret(Client, Input, Options)
 %% then the version is considered to be 'deprecated' and can be deleted by
 %% Secrets Manager.
 %%
-%% Minimum permissions
-%%
-%% To run this command, you must have the following permissions:
-%%
-%% <ul> <li> secretsmanager:UpdateSecretVersionStage
-%%
-%% </li> </ul> Related operations
-%%
-%% <ul> <li> To get the list of staging labels that are currently associated
-%% with a version of a secret, use ` `DescribeSecret' ' and examine the
-%% `SecretVersionsToStages' response value.
-%%
-%% </li> </ul>
+%% Required permissions: `secretsmanager:UpdateSecretVersionStage'. For more
+%% information, see IAM policy actions for Secrets Manager and Authentication
+%% and access control in Secrets Manager.
 update_secret_version_stage(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_secret_version_stage(Client, Input, []).
@@ -990,32 +605,24 @@ update_secret_version_stage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSecretVersionStage">>, Input, Options).
 
-%% @doc Validates that the resource policy does not grant a wide range of IAM
+%% @doc Validates that a resource policy does not grant a wide range of
 %% principals access to your secret.
 %%
-%% The JSON request string input and response output displays formatted code
-%% with white space and line breaks for better readability. Submit your input
-%% as a single line JSON string. A resource-based policy is optional for
-%% secrets.
+%% A resource-based policy is optional for secrets.
 %%
-%% The API performs three checks when validating the secret:
+%% The API performs three checks when validating the policy:
 %%
 %% <ul> <li> Sends a call to Zelkova, an automated reasoning engine, to
-%% ensure your Resource Policy does not allow broad access to your secret.
+%% ensure your resource policy does not allow broad access to your secret,
+%% for example policies that use a wildcard for the principal.
 %%
 %% </li> <li> Checks for correct syntax in a policy.
 %%
 %% </li> <li> Verifies the policy does not lock out a caller.
 %%
-%% </li> </ul> Minimum Permissions
-%%
-%% You must have the permissions required to access the following APIs:
-%%
-%% <ul> <li> `secretsmanager:PutResourcePolicy'
-%%
-%% </li> <li> `secretsmanager:ValidateResourcePolicy'
-%%
-%% </li> </ul>
+%% </li> </ul> Required permissions: `secretsmanager:ValidateResourcePolicy'.
+%% For more information, see IAM policy actions for Secrets Manager and
+%% Authentication and access control in Secrets Manager.
 validate_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     validate_resource_policy(Client, Input, []).

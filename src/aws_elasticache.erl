@@ -438,7 +438,7 @@ create_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshot">>, Input, Options).
 
-%% @doc For Redis engine version 6.x onwards: Creates a Redis user.
+%% @doc For Redis engine version 6.0 onwards: Creates a Redis user.
 %%
 %% For more information, see Using Role Based Access Control (RBAC).
 create_user(Client, Input)
@@ -448,7 +448,7 @@ create_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUser">>, Input, Options).
 
-%% @doc For Redis engine version 6.x onwards: Creates a Redis user group.
+%% @doc For Redis engine version 6.0 onwards: Creates a Redis user group.
 %%
 %% For more information, see Using Role Based Access Control (RBAC)
 create_user_group(Client, Input)
@@ -603,7 +603,7 @@ delete_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSnapshot">>, Input, Options).
 
-%% @doc For Redis engine version 6.x onwards: Deletes a user.
+%% @doc For Redis engine version 6.0 onwards: Deletes a user.
 %%
 %% The user will be removed from all user groups and in turn removed from all
 %% replication groups. For more information, see Using Role Based Access
@@ -615,7 +615,7 @@ delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
 
-%% @doc For Redis engine version 6.x onwards: Deletes a user group.
+%% @doc For Redis engine version 6.0 onwards: Deletes a user group.
 %%
 %% The user group must first be disassociated from the replication group
 %% before it can be deleted. For more information, see Using Role Based
@@ -1072,6 +1072,12 @@ start_migration(Client, Input, Options)
 %% @doc Represents the input of a `TestFailover' operation which test
 %% automatic failover on a specified node group (called shard in the console)
 %% in a replication group (called cluster in the console).
+%%
+%% This API is designed for testing the behavior of your application in case
+%% of ElastiCache failover. It is not designed to be an operational tool for
+%% initiating a failover to overcome a problem you may have with the cluster.
+%% Moreover, in certain conditions such as large-scale operational events,
+%% Amazon may block this API.
 %%
 %% == Note the following ==
 %%

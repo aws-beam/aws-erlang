@@ -1,38 +1,39 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc This is the AWS Proton Service API Reference.
+%% @doc This is the Proton Service API Reference.
 %%
 %% It provides descriptions, syntax and usage examples for each of the
-%% actions and data types for the AWS Proton service.
+%% actions and data types for the Proton service.
 %%
 %% The documentation for each action shows the Query API request parameters
 %% and the XML response.
 %%
-%% Alternatively, you can use the AWS CLI to access an API. For more
-%% information, see the AWS Command Line Interface User Guide.
+%% Alternatively, you can use the Amazon Web Services CLI to access an API.
+%% For more information, see the Amazon Web Services Command Line Interface
+%% User Guide.
 %%
-%% The AWS Proton service is a two-pronged automation framework.
-%% Administrators create service templates to provide standardized
-%% infrastructure and deployment tooling for serverless and container based
-%% applications. Developers, in turn, select from the available service
-%% templates to automate their application or service deployments.
+%% The Proton service is a two-pronged automation framework. Administrators
+%% create service templates to provide standardized infrastructure and
+%% deployment tooling for serverless and container based applications.
+%% Developers, in turn, select from the available service templates to
+%% automate their application or service deployments.
 %%
-%% Because administrators define the infrastructure and tooling that AWS
-%% Proton deploys and manages, they need permissions to use all of the listed
-%% API operations.
+%% Because administrators define the infrastructure and tooling that Proton
+%% deploys and manages, they need permissions to use all of the listed API
+%% operations.
 %%
-%% When developers select a specific infrastructure and tooling set, AWS
-%% Proton deploys their applications. To monitor their applications that are
-%% running on AWS Proton, developers need permissions to the service create,
-%% list, update and delete API operations and the service instance list and
-%% update API operations.
+%% When developers select a specific infrastructure and tooling set, Proton
+%% deploys their applications. To monitor their applications that are running
+%% on Proton, developers need permissions to the service create, list, update
+%% and delete API operations and the service instance list and update API
+%% operations.
 %%
-%% To learn more about AWS Proton administration, see the AWS Proton
-%% Administrator Guide.
+%% To learn more about Proton administration, see the Proton Administrator
+%% Guide.
 %%
 %% To learn more about deploying serverless and containerized applications on
-%% AWS Proton, see the AWS Proton User Guide.
+%% Proton, see the Proton User Guide.
 %%
 %% Ensuring Idempotency
 %%
@@ -59,13 +60,13 @@
 %% Idempotent create APIs with a client token
 %%
 %% The API actions in this list support idempotency with the use of a client
-%% token. The corresponding AWS CLI commands also support idempotency using a
-%% client token. A client token is a unique, case-sensitive string of up to
-%% 64 ASCII characters. To make an idempotent API request using one of these
-%% actions, specify a client token in the request. We recommend that you
-%% don't reuse the same client token for other API requests. If you don’t
-%% provide a client token for these APIs, a default client token is
-%% automatically provided by SDKs.
+%% token. The corresponding Amazon Web Services CLI commands also support
+%% idempotency using a client token. A client token is a unique,
+%% case-sensitive string of up to 64 ASCII characters. To make an idempotent
+%% API request using one of these actions, specify a client token in the
+%% request. We recommend that you don't reuse the same client token for other
+%% API requests. If you don’t provide a client token for these APIs, a
+%% default client token is automatically provided by SDKs.
 %%
 %% Given a request action that has succeeded:
 %%
@@ -176,12 +177,16 @@
          create_environment_template/3,
          create_environment_template_version/2,
          create_environment_template_version/3,
+         create_repository/2,
+         create_repository/3,
          create_service/2,
          create_service/3,
          create_service_template/2,
          create_service_template/3,
          create_service_template_version/2,
          create_service_template_version/3,
+         create_template_sync_config/2,
+         create_template_sync_config/3,
          delete_environment/2,
          delete_environment/3,
          delete_environment_account_connection/2,
@@ -190,12 +195,16 @@
          delete_environment_template/3,
          delete_environment_template_version/2,
          delete_environment_template_version/3,
+         delete_repository/2,
+         delete_repository/3,
          delete_service/2,
          delete_service/3,
          delete_service_template/2,
          delete_service_template/3,
          delete_service_template_version/2,
          delete_service_template_version/3,
+         delete_template_sync_config/2,
+         delete_template_sync_config/3,
          get_account_settings/2,
          get_account_settings/3,
          get_environment/2,
@@ -206,6 +215,10 @@
          get_environment_template/3,
          get_environment_template_version/2,
          get_environment_template_version/3,
+         get_repository/2,
+         get_repository/3,
+         get_repository_sync_status/2,
+         get_repository_sync_status/3,
          get_service/2,
          get_service/3,
          get_service_instance/2,
@@ -214,16 +227,36 @@
          get_service_template/3,
          get_service_template_version/2,
          get_service_template_version/3,
+         get_template_sync_config/2,
+         get_template_sync_config/3,
+         get_template_sync_status/2,
+         get_template_sync_status/3,
          list_environment_account_connections/2,
          list_environment_account_connections/3,
+         list_environment_outputs/2,
+         list_environment_outputs/3,
+         list_environment_provisioned_resources/2,
+         list_environment_provisioned_resources/3,
          list_environment_template_versions/2,
          list_environment_template_versions/3,
          list_environment_templates/2,
          list_environment_templates/3,
          list_environments/2,
          list_environments/3,
+         list_repositories/2,
+         list_repositories/3,
+         list_repository_sync_definitions/2,
+         list_repository_sync_definitions/3,
+         list_service_instance_outputs/2,
+         list_service_instance_outputs/3,
+         list_service_instance_provisioned_resources/2,
+         list_service_instance_provisioned_resources/3,
          list_service_instances/2,
          list_service_instances/3,
+         list_service_pipeline_outputs/2,
+         list_service_pipeline_outputs/3,
+         list_service_pipeline_provisioned_resources/2,
+         list_service_pipeline_provisioned_resources/3,
          list_service_template_versions/2,
          list_service_template_versions/3,
          list_service_templates/2,
@@ -232,6 +265,8 @@
          list_services/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         notify_resource_deployment_status_change/2,
+         notify_resource_deployment_status_change/3,
          reject_environment_account_connection/2,
          reject_environment_account_connection/3,
          tag_resource/2,
@@ -257,7 +292,9 @@
          update_service_template/2,
          update_service_template/3,
          update_service_template_version/2,
-         update_service_template_version/3]).
+         update_service_template_version/3,
+         update_template_sync_config/2,
+         update_template_sync_config/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -268,12 +305,12 @@
 %% @doc In a management account, an environment account connection request is
 %% accepted.
 %%
-%% When the environment account connection request is accepted, AWS Proton
-%% can use the associated IAM role to provision environment infrastructure
+%% When the environment account connection request is accepted, Proton can
+%% use the associated IAM role to provision environment infrastructure
 %% resources in the associated environment account.
 %%
-%% For more information, see Environment account connections in the AWS
-%% Proton Administrator guide.
+%% For more information, see Environment account connections in the Proton
+%% Administrator guide.
 accept_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_environment_account_connection(Client, Input, []).
@@ -284,7 +321,7 @@ accept_environment_account_connection(Client, Input, Options)
 %% @doc Attempts to cancel an environment deployment on an
 %% `UpdateEnvironment' action, if the deployment is `IN_PROGRESS'.
 %%
-%% For more information, see Update an environment in the AWS Proton
+%% For more information, see Update an environment in the Proton
 %% Administrator guide.
 %%
 %% The following list includes potential cancellation scenarios.
@@ -310,8 +347,8 @@ cancel_environment_deployment(Client, Input, Options)
 %% @doc Attempts to cancel a service instance deployment on an
 %% `UpdateServiceInstance' action, if the deployment is `IN_PROGRESS'.
 %%
-%% For more information, see Update a service instance in the AWS Proton
-%% Administrator guide or the AWS Proton User guide.
+%% For more information, see Update a service instance in the Proton
+%% Administrator guide or the Proton User guide.
 %%
 %% The following list includes potential cancellation scenarios.
 %%
@@ -336,8 +373,8 @@ cancel_service_instance_deployment(Client, Input, Options)
 %% @doc Attempts to cancel a service pipeline deployment on an
 %% `UpdateServicePipeline' action, if the deployment is `IN_PROGRESS'.
 %%
-%% For more information, see Update a service pipeline in the AWS Proton
-%% Administrator guide or the AWS Proton User guide.
+%% For more information, see Update a service pipeline in the Proton
+%% Administrator guide or the Proton User guide.
 %%
 %% The following list includes potential cancellation scenarios.
 %%
@@ -361,10 +398,20 @@ cancel_service_pipeline_deployment(Client, Input, Options)
 
 %% @doc Deploy a new environment.
 %%
-%% An AWS Proton environment is created from an environment template that
-%% defines infrastructure and resources that can be shared across services.
-%% For more information, see the Environments in the AWS Proton Administrator
-%% Guide.
+%% An Proton environment is created from an environment template that defines
+%% infrastructure and resources that can be shared across services.
+%%
+%% == You can provision environments using the following methods: ==
+%%
+%% <ul> <li> Standard provisioning: Proton makes direct calls to provision
+%% your resources.
+%%
+%% </li> <li> Pull request provisioning: Proton makes pull requests on your
+%% repository to provide compiled infrastructure as code (IaC) files that
+%% your IaC engine uses to provision resources.
+%%
+%% </li> </ul> For more information, see the Environments in the Proton
+%% Administrator Guide.
 create_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment(Client, Input, []).
@@ -379,7 +426,7 @@ create_environment(Client, Input, Options)
 %% An environment account connection is a secure bi-directional connection
 %% between a management account and an environment account that maintains
 %% authorization and permissions. For more information, see Environment
-%% account connections in the AWS Proton Administrator guide.
+%% account connections in the Proton Administrator guide.
 create_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment_account_connection(Client, Input, []).
@@ -387,23 +434,23 @@ create_environment_account_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEnvironmentAccountConnection">>, Input, Options).
 
-%% @doc Create an environment template for AWS Proton.
+%% @doc Create an environment template for Proton.
 %%
-%% For more information, see Environment Templates in the AWS Proton
+%% For more information, see Environment Templates in the Proton
 %% Administrator Guide.
 %%
 %% You can create an environment template in one of the two following ways:
 %%
 %% <ul> <li> Register and publish a standard environment template that
-%% instructs AWS Proton to deploy and manage environment infrastructure.
+%% instructs Proton to deploy and manage environment infrastructure.
 %%
 %% </li> <li> Register and publish a customer managed environment template
-%% that connects AWS Proton to your existing provisioned infrastructure that
-%% you manage. AWS Proton doesn't manage your existing provisioned
-%% infrastructure. To create an environment template for customer provisioned
-%% and managed infrastructure, include the `provisioning' parameter and set
-%% the value to `CUSTOMER_MANAGED'. For more information, see Register and
-%% publish an environment template in the AWS Proton Administrator Guide.
+%% that connects Proton to your existing provisioned infrastructure that you
+%% manage. Proton doesn't manage your existing provisioned infrastructure. To
+%% create an environment template for customer provisioned and managed
+%% infrastructure, include the `provisioning' parameter and set the value to
+%% `CUSTOMER_MANAGED'. For more information, see Register and publish an
+%% environment template in the Proton Administrator Guide.
 %%
 %% </li> </ul>
 create_environment_template(Client, Input)
@@ -425,12 +472,24 @@ create_environment_template_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEnvironmentTemplateVersion">>, Input, Options).
 
-%% @doc Create an AWS Proton service.
+%% @doc Create and register a link to a repository that can be used with pull
+%% request provisioning or template sync configurations.
 %%
-%% An AWS Proton service is an instantiation of a service template and often
+%% For more information, see Template bundles and Template sync
+%% configurations in the Proton Administrator Guide.
+create_repository(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_repository(Client, Input, []).
+create_repository(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateRepository">>, Input, Options).
+
+%% @doc Create an Proton service.
+%%
+%% An Proton service is an instantiation of a service template and often
 %% includes several service instances and pipeline. For more information, see
-%% Services in the AWS Proton Administrator Guide and Services in the AWS
-%% Proton User Guide.
+%% Services in the Proton Administrator Guide and Services in the Proton User
+%% Guide.
 create_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service(Client, Input, []).
@@ -442,11 +501,11 @@ create_service(Client, Input, Options)
 %%
 %% The administrator creates a service template to define standardized
 %% infrastructure and an optional CICD service pipeline. Developers, in turn,
-%% select the service template from AWS Proton. If the selected service
-%% template includes a service pipeline definition, they provide a link to
-%% their source code repository. AWS Proton then deploys and manages the
-%% infrastructure defined by the selected service template. For more
-%% information, see Service Templates in the AWS Proton Administrator Guide.
+%% select the service template from Proton. If the selected service template
+%% includes a service pipeline definition, they provide a link to their
+%% source code repository. Proton then deploys and manages the infrastructure
+%% defined by the selected service template. For more information, see
+%% Service Templates in the Proton Administrator Guide.
 create_service_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service_template(Client, Input, []).
@@ -456,15 +515,29 @@ create_service_template(Client, Input, Options)
 
 %% @doc Create a new major or minor version of a service template.
 %%
-%% A major version of a service template is a version that isn't backwards
+%% A major version of a service template is a version that isn't backward
 %% compatible. A minor version of a service template is a version that's
-%% backwards compatible within its major version.
+%% backward compatible within its major version.
 create_service_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service_template_version(Client, Input, []).
 create_service_template_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateServiceTemplateVersion">>, Input, Options).
+
+%% @doc Set up a template for automated template version creation.
+%%
+%% When a commit is pushed to your registered repository, Proton checks for
+%% changes to your repository template bundles. If it detects a template
+%% bundle change, a new minor or major version of its template is created, if
+%% the version doesn’t already exist. For more information, see Template sync
+%% configurations in the Proton Administrator Guide.
+create_template_sync_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_template_sync_config(Client, Input, []).
+create_template_sync_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateTemplateSyncConfig">>, Input, Options).
 
 %% @doc Delete an environment.
 delete_environment(Client, Input)
@@ -476,15 +549,15 @@ delete_environment(Client, Input, Options)
 
 %% @doc In an environment account, delete an environment account connection.
 %%
-%% After you delete an environment account connection that’s in use by an AWS
-%% Proton environment, AWS Proton can’t manage the environment infrastructure
+%% After you delete an environment account connection that’s in use by an
+%% Proton environment, Proton can’t manage the environment infrastructure
 %% resources until a new environment account connection is accepted for the
 %% environment account and associated environment. You're responsible for
 %% cleaning up provisioned resources that remain without an environment
 %% connection.
 %%
-%% For more information, see Environment account connections in the AWS
-%% Proton Administrator guide.
+%% For more information, see Environment account connections in the Proton
+%% Administrator guide.
 delete_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment_account_connection(Client, Input, []).
@@ -507,20 +580,28 @@ delete_environment_template(Client, Input, Options)
 %%
 %% Delete the `Recommended' version of the environment template if no other
 %% major versions or minor versions of the environment template exist. A
-%% major version of an environment template is a version that's not backwards
+%% major version of an environment template is a version that's not backward
 %% compatible.
 %%
 %% Delete a minor version of an environment template if it isn't the
 %% `Recommended' version. Delete a `Recommended' minor version of the
 %% environment template if no other minor versions of the environment
 %% template exist. A minor version of an environment template is a version
-%% that's backwards compatible.
+%% that's backward compatible.
 delete_environment_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment_template_version(Client, Input, []).
 delete_environment_template_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEnvironmentTemplateVersion">>, Input, Options).
+
+%% @doc De-register and unlink your repository.
+delete_repository(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_repository(Client, Input, []).
+delete_repository(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteRepository">>, Input, Options).
 
 %% @doc Delete a service.
 delete_service(Client, Input)
@@ -558,7 +639,15 @@ delete_service_template_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteServiceTemplateVersion">>, Input, Options).
 
-%% @doc Get detail data for the AWS Proton pipeline service role.
+%% @doc Delete a template sync configuration.
+delete_template_sync_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_template_sync_config(Client, Input, []).
+delete_template_sync_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteTemplateSyncConfig">>, Input, Options).
+
+%% @doc Get detail data for the Proton pipeline service role.
 get_account_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_settings(Client, Input, []).
@@ -577,8 +666,8 @@ get_environment(Client, Input, Options)
 %% @doc In an environment account, view the detail data for an environment
 %% account connection.
 %%
-%% For more information, see Environment account connections in the AWS
-%% Proton Administrator guide.
+%% For more information, see Environment account connections in the Proton
+%% Administrator guide.
 get_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_environment_account_connection(Client, Input, []).
@@ -602,6 +691,22 @@ get_environment_template_version(Client, Input)
 get_environment_template_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEnvironmentTemplateVersion">>, Input, Options).
+
+%% @doc Get detail data for a repository.
+get_repository(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_repository(Client, Input, []).
+get_repository(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetRepository">>, Input, Options).
+
+%% @doc Get the repository sync status.
+get_repository_sync_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_repository_sync_status(Client, Input, []).
+get_repository_sync_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetRepositorySyncStatus">>, Input, Options).
 
 %% @doc Get detail data for a service.
 get_service(Client, Input)
@@ -638,16 +743,48 @@ get_service_template_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceTemplateVersion">>, Input, Options).
 
+%% @doc Get detail data for a template sync configuration.
+get_template_sync_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_template_sync_config(Client, Input, []).
+get_template_sync_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetTemplateSyncConfig">>, Input, Options).
+
+%% @doc Get the status of a template sync.
+get_template_sync_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_template_sync_status(Client, Input, []).
+get_template_sync_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetTemplateSyncStatus">>, Input, Options).
+
 %% @doc View a list of environment account connections.
 %%
-%% For more information, see Environment account connections in the AWS
-%% Proton Administrator guide.
+%% For more information, see Environment account connections in the Proton
+%% Administrator guide.
 list_environment_account_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_environment_account_connections(Client, Input, []).
 list_environment_account_connections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEnvironmentAccountConnections">>, Input, Options).
+
+%% @doc List the infrastructure as code outputs for your environment.
+list_environment_outputs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_environment_outputs(Client, Input, []).
+list_environment_outputs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListEnvironmentOutputs">>, Input, Options).
+
+%% @doc List the provisioned resources for your environment.
+list_environment_provisioned_resources(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_environment_provisioned_resources(Client, Input, []).
+list_environment_provisioned_resources(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListEnvironmentProvisionedResources">>, Input, Options).
 
 %% @doc List major or minor versions of an environment template with detail
 %% data.
@@ -674,6 +811,39 @@ list_environments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEnvironments">>, Input, Options).
 
+%% @doc List repositories with detail data.
+list_repositories(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_repositories(Client, Input, []).
+list_repositories(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListRepositories">>, Input, Options).
+
+%% @doc List repository sync definitions with detail data.
+list_repository_sync_definitions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_repository_sync_definitions(Client, Input, []).
+list_repository_sync_definitions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListRepositorySyncDefinitions">>, Input, Options).
+
+%% @doc View a list service instance infrastructure as code outputs with
+%% detail data.
+list_service_instance_outputs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_service_instance_outputs(Client, Input, []).
+list_service_instance_outputs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListServiceInstanceOutputs">>, Input, Options).
+
+%% @doc List provisioned resources for a service instance with details.
+list_service_instance_provisioned_resources(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_service_instance_provisioned_resources(Client, Input, []).
+list_service_instance_provisioned_resources(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListServiceInstanceProvisionedResources">>, Input, Options).
+
 %% @doc List service instances with summaries of detail data.
 list_service_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -681,6 +851,23 @@ list_service_instances(Client, Input)
 list_service_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceInstances">>, Input, Options).
+
+%% @doc View a list service pipeline infrastructure as code outputs with
+%% detail.
+list_service_pipeline_outputs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_service_pipeline_outputs(Client, Input, []).
+list_service_pipeline_outputs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListServicePipelineOutputs">>, Input, Options).
+
+%% @doc List provisioned resources for a service and pipeline with details.
+list_service_pipeline_provisioned_resources(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_service_pipeline_provisioned_resources(Client, Input, []).
+list_service_pipeline_provisioned_resources(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListServicePipelineProvisionedResources">>, Input, Options).
 
 %% @doc List major or minor versions of a service template with detail data.
 list_service_template_versions(Client, Input)
@@ -708,14 +895,29 @@ list_services(Client, Input, Options)
 
 %% @doc List tags for a resource.
 %%
-%% For more information, see AWS Proton resources and tagging in the AWS
-%% Proton Administrator Guide or AWS Proton User Guide.
+%% For more information, see Proton resources and tagging in the Proton
+%% Administrator Guide or Proton User Guide.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Notify Proton of status changes to a provisioned resource when you
+%% use pull request provisioning.
+%%
+%% For more information, see Template bundles.
+%%
+%% Provisioning by pull request is currently in feature preview and is only
+%% usable with Terraform based Proton Templates. To learn more about Amazon
+%% Web Services Feature Preview terms, see section 2 on Beta and Previews.
+notify_resource_deployment_status_change(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    notify_resource_deployment_status_change(Client, Input, []).
+notify_resource_deployment_status_change(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"NotifyResourceDeploymentStatusChange">>, Input, Options).
 
 %% @doc In a management account, reject an environment account connection
 %% from another environment account.
@@ -726,8 +928,8 @@ list_tags_for_resource(Client, Input, Options)
 %% You can’t reject an environment account connection that is connected to an
 %% environment.
 %%
-%% For more information, see Environment account connections in the AWS
-%% Proton Administrator guide.
+%% For more information, see Environment account connections in the Proton
+%% Administrator guide.
 reject_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_environment_account_connection(Client, Input, []).
@@ -737,8 +939,8 @@ reject_environment_account_connection(Client, Input, Options)
 
 %% @doc Tag a resource.
 %%
-%% For more information, see AWS Proton resources and tagging in the AWS
-%% Proton Administrator Guide or AWS Proton User Guide.
+%% For more information, see Proton resources and tagging in the Proton
+%% Administrator Guide or Proton User Guide.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -748,8 +950,8 @@ tag_resource(Client, Input, Options)
 
 %% @doc Remove a tag from a resource.
 %%
-%% For more information, see AWS Proton resources and tagging in the AWS
-%% Proton Administrator Guide or AWS Proton User Guide.
+%% For more information, see Proton resources and tagging in the Proton
+%% Administrator Guide or Proton User Guide.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -757,7 +959,7 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc Update the AWS Proton pipeline service account settings.
+%% @doc Update the Proton service pipeline role or repository settings.
 update_account_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_account_settings(Client, Input, []).
@@ -768,8 +970,9 @@ update_account_settings(Client, Input, Options)
 %% @doc Update an environment.
 %%
 %% If the environment is associated with an environment account connection,
-%% don't update or include the `protonServiceRoleArn' parameter to update or
-%% connect to an environment account connection.
+%% don't update or include the `protonServiceRoleArn' and
+%% `provisioningRepository' parameter to update or connect to an environment
+%% account connection.
 %%
 %% You can only update to a new environment account connection if it was
 %% created in the same environment account that the current environment
@@ -782,6 +985,13 @@ update_account_settings(Client, Input, Options)
 %%
 %% You can update either the `environmentAccountConnectionId' or
 %% `protonServiceRoleArn' parameter and value. You can’t update both.
+%%
+%% If the environment was provisioned with pull request provisioning, include
+%% the `provisioningRepository' parameter and omit the `protonServiceRoleArn'
+%% and `environmentAccountConnectionId' parameters.
+%%
+%% If the environment wasn't provisioned with pull request provisioning, omit
+%% the `provisioningRepository' parameter.
 %%
 %% There are four modes for updating an environment as described in the
 %% following. The `deploymentType' field defines the mode.
@@ -822,8 +1032,8 @@ update_environment(Client, Input, Options)
 %% @doc In an environment account, update an environment account connection
 %% to use a new IAM role.
 %%
-%% For more information, see Environment account connections in the AWS
-%% Proton Administrator guide.
+%% For more information, see Environment account connections in the Proton
+%% Administrator guide.
 update_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment_account_connection(Client, Input, []).
@@ -956,6 +1166,15 @@ update_service_template_version(Client, Input)
 update_service_template_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServiceTemplateVersion">>, Input, Options).
+
+%% @doc Update template sync configuration parameters, except for the
+%% `templateName' and `templateType'.
+update_template_sync_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_template_sync_config(Client, Input, []).
+update_template_sync_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateTemplateSyncConfig">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

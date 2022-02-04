@@ -36,6 +36,8 @@
          delete_bot_locale/6,
          delete_bot_version/4,
          delete_bot_version/5,
+         delete_custom_vocabulary/5,
+         delete_custom_vocabulary/6,
          delete_export/3,
          delete_export/4,
          delete_import/3,
@@ -61,9 +63,15 @@
          describe_bot_locale/4,
          describe_bot_locale/6,
          describe_bot_locale/7,
+         describe_bot_recommendation/5,
+         describe_bot_recommendation/7,
+         describe_bot_recommendation/8,
          describe_bot_version/3,
          describe_bot_version/5,
          describe_bot_version/6,
+         describe_custom_vocabulary_metadata/4,
+         describe_custom_vocabulary_metadata/6,
+         describe_custom_vocabulary_metadata/7,
          describe_export/2,
          describe_export/4,
          describe_export/5,
@@ -88,6 +96,8 @@
          list_bot_aliases/4,
          list_bot_locales/4,
          list_bot_locales/5,
+         list_bot_recommendations/5,
+         list_bot_recommendations/6,
          list_bot_versions/3,
          list_bot_versions/4,
          list_bots/2,
@@ -102,6 +112,8 @@
          list_imports/3,
          list_intents/5,
          list_intents/6,
+         list_recommended_intents/6,
+         list_recommended_intents/7,
          list_slot_types/5,
          list_slot_types/6,
          list_slots/6,
@@ -109,6 +121,10 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         search_associated_transcripts/6,
+         search_associated_transcripts/7,
+         start_bot_recommendation/5,
+         start_bot_recommendation/6,
          start_import/2,
          start_import/3,
          tag_resource/3,
@@ -121,6 +137,8 @@
          update_bot_alias/5,
          update_bot_locale/5,
          update_bot_locale/6,
+         update_bot_recommendation/6,
+         update_bot_recommendation/7,
          update_export/3,
          update_export/4,
          update_intent/6,
@@ -579,7 +597,7 @@ delete_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
 
 %% @doc Deletes a specific version of a bot.
 %%
-%% To delete all version of a bot, use the `DeleteBot' operation.
+%% To delete all version of a bot, use the DeleteBot operation.
 delete_bot_version(Client, BotId, BotVersion, Input) ->
     delete_bot_version(Client, BotId, BotVersion, Input, []).
 delete_bot_version(Client, BotId, BotVersion, Input0, Options0) ->
@@ -601,6 +619,30 @@ delete_bot_version(Client, BotId, BotVersion, Input0, Options0) ->
                      {<<"skipResourceInUseCheck">>, <<"skipResourceInUseCheck">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes a custom vocabulary from the specified locale in the
+%% specified bot.
+delete_custom_vocabulary(Client, BotId, BotVersion, LocaleId, Input) ->
+    delete_custom_vocabulary(Client, BotId, BotVersion, LocaleId, Input, []).
+delete_custom_vocabulary(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/customvocabulary"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a previous export and the associated files stored in an S3
@@ -786,9 +828,9 @@ delete_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input0, Option
 %% @doc Deletes stored utterances.
 %%
 %% Amazon Lex stores the utterances that users send to your bot. Utterances
-%% are stored for 15 days for use with the operation, and then stored
-%% indefinitely for use in improving the ability of your bot to respond to
-%% user input..
+%% are stored for 15 days for use with the ListAggregatedUtterances
+%% operation, and then stored indefinitely for use in improving the ability
+%% of your bot to respond to user input..
 %%
 %% Use the `DeleteUtterances' operation to manually delete utterances for a
 %% specific session. When you use the `DeleteUtterances' operation,
@@ -888,6 +930,34 @@ describe_bot_locale(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap, O
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Provides metadata information about a bot recommendation.
+%%
+%% This information will enable you to get a description on the request
+%% inputs, to download associated transcripts after processing is complete,
+%% and to download intents and slot-types generated by the bot
+%% recommendation.
+describe_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId)
+  when is_map(Client) ->
+    describe_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, #{}, #{}).
+
+describe_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, QueryMap, HeadersMap, []).
+
+describe_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations/", aws_util:encode_uri(BotRecommendationId), "/"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Provides metadata about a version of a bot.
 describe_bot_version(Client, BotId, BotVersion)
   when is_map(Client) ->
@@ -900,6 +970,29 @@ describe_bot_version(Client, BotId, BotVersion, QueryMap, HeadersMap)
 describe_bot_version(Client, BotId, BotVersion, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Provides metadata information about a custom vocabulary.
+describe_custom_vocabulary_metadata(Client, BotId, BotVersion, LocaleId)
+  when is_map(Client) ->
+    describe_custom_vocabulary_metadata(Client, BotId, BotVersion, LocaleId, #{}, #{}).
+
+describe_custom_vocabulary_metadata(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_custom_vocabulary_metadata(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap, []).
+
+describe_custom_vocabulary_metadata(Client, BotId, BotVersion, LocaleId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/customvocabulary/DEFAULT/metadata"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1141,6 +1234,29 @@ list_bot_locales(Client, BotId, BotVersion, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Get a list of bot recommendations that meet the specified criteria.
+list_bot_recommendations(Client, BotId, BotVersion, LocaleId, Input) ->
+    list_bot_recommendations(Client, BotId, BotVersion, LocaleId, Input, []).
+list_bot_recommendations(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
+    Method = post,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations/"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets information about all of the versions of a bot.
 %%
 %% The `ListBotVersions' operation returns a summary of each version of a
@@ -1201,7 +1317,7 @@ list_bots(Client, Input0, Options0) ->
 %% To use a built-in intent as a the base for your own intent, include the
 %% built-in intent signature in the `parentIntentSignature' parameter when
 %% you call the `CreateIntent' operation. For more information, see
-%% `CreateIntent'.
+%% CreateIntent.
 list_built_in_intents(Client, LocaleId, Input) ->
     list_built_in_intents(Client, LocaleId, Input, []).
 list_built_in_intents(Client, LocaleId, Input0, Options0) ->
@@ -1247,7 +1363,7 @@ list_built_in_slot_types(Client, LocaleId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the exports for a bot or bot locale.
+%% @doc Lists the exports for a bot, bot locale, or custom vocabulary.
 %%
 %% Exports are kept in the list for 7 days.
 list_exports(Client, Input) ->
@@ -1272,7 +1388,7 @@ list_exports(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the imports for a bot or bot locale.
+%% @doc Lists the imports for a bot, bot locale, or custom vocabulary.
 %%
 %% Imports are kept in the list for 7 days.
 list_imports(Client, Input) ->
@@ -1303,6 +1419,30 @@ list_intents(Client, BotId, BotVersion, LocaleId, Input) ->
 list_intents(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Method = post,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets a list of recommended intents provided by the bot recommendation
+%% that you can use in your bot.
+list_recommended_intents(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input) ->
+    list_recommended_intents(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input, []).
+list_recommended_intents(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input0, Options0) ->
+    Method = post,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations/", aws_util:encode_uri(BotRecommendationId), "/intents"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1392,8 +1532,55 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Starts importing a bot or bot locale from a zip archive that you
-%% uploaded to an S3 bucket.
+%% @doc Search for associated transcripts that meet the specified criteria.
+search_associated_transcripts(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input) ->
+    search_associated_transcripts(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input, []).
+search_associated_transcripts(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input0, Options0) ->
+    Method = post,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations/", aws_util:encode_uri(BotRecommendationId), "/associatedtranscripts"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Use this to provide your transcript data, and to start the bot
+%% recommendation process.
+start_bot_recommendation(Client, BotId, BotVersion, LocaleId, Input) ->
+    start_bot_recommendation(Client, BotId, BotVersion, LocaleId, Input, []).
+start_bot_recommendation(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
+    Method = put,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations/"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts importing a bot, bot locale, or custom vocabulary from a zip
+%% archive that you uploaded to an S3 bucket.
 start_import(Client, Input) ->
     start_import(Client, Input, []).
 start_import(Client, Input0, Options0) ->
@@ -1535,12 +1722,35 @@ update_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates an existing bot recommendation request.
+update_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input) ->
+    update_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input, []).
+update_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input0, Options0) ->
+    Method = put,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations/", aws_util:encode_uri(BotRecommendationId), "/"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates the password used to protect an export zip archive.
 %%
 %% The password is not required. If you don't supply a password, Amazon Lex
 %% generates a zip file that is not protected by a password. This is the
 %% archive that is available at the pre-signed S3 URL provided by the
-%% operation.
+%% DescribeExport operation.
 update_export(Client, ExportId, Input) ->
     update_export(Client, ExportId, Input, []).
 update_export(Client, ExportId, Input0, Options0) ->

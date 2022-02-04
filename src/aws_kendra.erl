@@ -4,7 +4,11 @@
 %% @doc Amazon Kendra is a service for indexing large document sets.
 -module(aws_kendra).
 
--export([batch_delete_document/2,
+-export([associate_entities_to_experience/2,
+         associate_entities_to_experience/3,
+         associate_personas_to_entities/2,
+         associate_personas_to_entities/3,
+         batch_delete_document/2,
          batch_delete_document/3,
          batch_get_document_status/2,
          batch_get_document_status/3,
@@ -14,6 +18,8 @@
          clear_query_suggestions/3,
          create_data_source/2,
          create_data_source/3,
+         create_experience/2,
+         create_experience/3,
          create_faq/2,
          create_faq/3,
          create_index/2,
@@ -24,6 +30,8 @@
          create_thesaurus/3,
          delete_data_source/2,
          delete_data_source/3,
+         delete_experience/2,
+         delete_experience/3,
          delete_faq/2,
          delete_faq/3,
          delete_index/2,
@@ -36,6 +44,8 @@
          delete_thesaurus/3,
          describe_data_source/2,
          describe_data_source/3,
+         describe_experience/2,
+         describe_experience/3,
          describe_faq/2,
          describe_faq/3,
          describe_index/2,
@@ -48,12 +58,24 @@
          describe_query_suggestions_config/3,
          describe_thesaurus/2,
          describe_thesaurus/3,
+         disassociate_entities_from_experience/2,
+         disassociate_entities_from_experience/3,
+         disassociate_personas_from_entities/2,
+         disassociate_personas_from_entities/3,
          get_query_suggestions/2,
          get_query_suggestions/3,
+         get_snapshots/2,
+         get_snapshots/3,
          list_data_source_sync_jobs/2,
          list_data_source_sync_jobs/3,
          list_data_sources/2,
          list_data_sources/3,
+         list_entity_personas/2,
+         list_entity_personas/3,
+         list_experience_entities/2,
+         list_experience_entities/3,
+         list_experiences/2,
+         list_experiences/3,
          list_faqs/2,
          list_faqs/3,
          list_groups_older_than_ordering_id/2,
@@ -82,6 +104,8 @@
          untag_resource/3,
          update_data_source/2,
          update_data_source/3,
+         update_experience/2,
+         update_experience/3,
          update_index/2,
          update_index/3,
          update_query_suggestions_block_list/2,
@@ -96,6 +120,33 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Grants users or groups in your Amazon Web Services SSO identity
+%% source access to your Amazon Kendra experience.
+%%
+%% You can create an Amazon Kendra experience such as a search application.
+%% For more information on creating a search application experience, see
+%% Building a search experience with no code.
+associate_entities_to_experience(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_entities_to_experience(Client, Input, []).
+associate_entities_to_experience(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateEntitiesToExperience">>, Input, Options).
+
+%% @doc Defines the specific permissions of users or groups in your Amazon
+%% Web Services SSO identity source with access to your Amazon Kendra
+%% experience.
+%%
+%% You can create an Amazon Kendra experience such as a search application.
+%% For more information on creating a search application experience, see
+%% Building a search experience with no code.
+associate_personas_to_entities(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_personas_to_entities(Client, Input, []).
+associate_personas_to_entities(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociatePersonasToEntities">>, Input, Options).
 
 %% @doc Removes one or more documents from an index.
 %%
@@ -154,6 +205,9 @@ batch_put_document(Client, Input, Options)
 %% new queries added to the query log from the time you cleared suggestions.
 %% If you do not see any new suggestions, then please allow Amazon Kendra to
 %% collect enough queries to learn new suggestions.
+%%
+%% `ClearQuerySuggestions' is currently not supported in the Amazon Web
+%% Services GovCloud (US-West) region.
 clear_query_suggestions(Client, Input)
   when is_map(Client), is_map(Input) ->
     clear_query_suggestions(Client, Input, []).
@@ -171,6 +225,9 @@ clear_query_suggestions(Client, Input, Options)
 %% `CreateDataSource' is a synchronous operation. The operation returns 200
 %% if the data source was successfully created. Otherwise, an exception is
 %% raised.
+%%
+%% Amazon S3 and custom data sources are the only supported data sources in
+%% the Amazon Web Services GovCloud (US-West) region.
 create_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_source(Client, Input, []).
@@ -178,8 +235,21 @@ create_data_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataSource">>, Input, Options).
 
+%% @doc Creates an Amazon Kendra experience such as a search application.
+%%
+%% For more information on creating a search application experience, see
+%% Building a search experience with no code.
+create_experience(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_experience(Client, Input, []).
+create_experience(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateExperience">>, Input, Options).
+
 %% @doc Creates an new set of frequently asked question (FAQ) questions and
 %% answers.
+%%
+%% Adding FAQs to an index is an asynchronous operation.
 create_faq(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_faq(Client, Input, []).
@@ -214,6 +284,9 @@ create_index(Client, Input, Options)
 %%
 %% For information on the current quota limits for block lists, see Quotas
 %% for Amazon Kendra.
+%%
+%% `CreateQuerySuggestionsBlockList' is currently not supported in the Amazon
+%% Web Services GovCloud (US-West) region.
 create_query_suggestions_block_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_query_suggestions_block_list(Client, Input, []).
@@ -243,6 +316,17 @@ delete_data_source(Client, Input)
 delete_data_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDataSource">>, Input, Options).
+
+%% @doc Deletes your Amazon Kendra experience such as a search application.
+%%
+%% For more information on creating a search application experience, see
+%% Building a search experience with no code.
+delete_experience(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_experience(Client, Input, []).
+delete_experience(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteExperience">>, Input, Options).
 
 %% @doc Removes an FAQ from an index.
 delete_faq(Client, Input)
@@ -278,6 +362,9 @@ delete_index(Client, Input, Options)
 %% belong to the "Engineering" group when calling `PutPrincipalMapping'. You
 %% can update your internal list of users or sub groups and input this list
 %% when calling `PutPrincipalMapping'.
+%%
+%% `DeletePrincipalMapping' is currently not supported in the Amazon Web
+%% Services GovCloud (US-West) region.
 delete_principal_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_principal_mapping(Client, Input, []).
@@ -290,6 +377,9 @@ delete_principal_mapping(Client, Input, Options)
 %% A deleted block list might not take effect right away. Amazon Kendra needs
 %% to refresh the entire suggestions list to add back the queries that were
 %% previously blocked.
+%%
+%% `DeleteQuerySuggestionsBlockList' is currently not supported in the Amazon
+%% Web Services GovCloud (US-West) region.
 delete_query_suggestions_block_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_query_suggestions_block_list(Client, Input, []).
@@ -312,6 +402,18 @@ describe_data_source(Client, Input)
 describe_data_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataSource">>, Input, Options).
+
+%% @doc Gets information about your Amazon Kendra experience such as a search
+%% application.
+%%
+%% For more information on creating a search application experience, see
+%% Building a search experience with no code.
+describe_experience(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_experience(Client, Input, []).
+describe_experience(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeExperience">>, Input, Options).
 
 %% @doc Gets information about an FAQ list.
 describe_faq(Client, Input)
@@ -337,6 +439,9 @@ describe_index(Client, Input, Options)
 %% received by Amazon Kendra, the latest action that should process and apply
 %% after other actions, and useful error messages if an action could not be
 %% processed.
+%%
+%% `DescribePrincipalMapping' is currently not supported in the Amazon Web
+%% Services GovCloud (US-West) region.
 describe_principal_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_principal_mapping(Client, Input, []).
@@ -348,6 +453,9 @@ describe_principal_mapping(Client, Input, Options)
 %%
 %% This is used to check the current settings that are applied to a block
 %% list.
+%%
+%% `DescribeQuerySuggestionsBlockList' is currently not supported in the
+%% Amazon Web Services GovCloud (US-West) region.
 describe_query_suggestions_block_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_query_suggestions_block_list(Client, Input, []).
@@ -358,6 +466,9 @@ describe_query_suggestions_block_list(Client, Input, Options)
 %% @doc Describes the settings of query suggestions for an index.
 %%
 %% This is used to check the current settings applied to query suggestions.
+%%
+%% `DescribeQuerySuggestionsConfig' is currently not supported in the Amazon
+%% Web Services GovCloud (US-West) region.
 describe_query_suggestions_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_query_suggestions_config(Client, Input, []).
@@ -373,13 +484,54 @@ describe_thesaurus(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeThesaurus">>, Input, Options).
 
+%% @doc Prevents users or groups in your Amazon Web Services SSO identity
+%% source from accessing your Amazon Kendra experience.
+%%
+%% You can create an Amazon Kendra experience such as a search application.
+%% For more information on creating a search application experience, see
+%% Building a search experience with no code.
+disassociate_entities_from_experience(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_entities_from_experience(Client, Input, []).
+disassociate_entities_from_experience(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateEntitiesFromExperience">>, Input, Options).
+
+%% @doc Removes the specific permissions of users or groups in your Amazon
+%% Web Services SSO identity source with access to your Amazon Kendra
+%% experience.
+%%
+%% You can create an Amazon Kendra experience such as a search application.
+%% For more information on creating a search application experience, see
+%% Building a search experience with no code.
+disassociate_personas_from_entities(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_personas_from_entities(Client, Input, []).
+disassociate_personas_from_entities(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociatePersonasFromEntities">>, Input, Options).
+
 %% @doc Fetches the queries that are suggested to your users.
+%%
+%% `GetQuerySuggestions' is currently not supported in the Amazon Web
+%% Services GovCloud (US-West) region.
 get_query_suggestions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_query_suggestions(Client, Input, []).
 get_query_suggestions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQuerySuggestions">>, Input, Options).
+
+%% @doc Retrieves search metrics data.
+%%
+%% The data provides a snapshot of how your users interact with your search
+%% application and how effective the application is.
+get_snapshots(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_snapshots(Client, Input, []).
+get_snapshots(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetSnapshots">>, Input, Options).
 
 %% @doc Gets statistics about synchronizing Amazon Kendra with a data source.
 list_data_source_sync_jobs(Client, Input)
@@ -397,6 +549,40 @@ list_data_sources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDataSources">>, Input, Options).
 
+%% @doc Lists specific permissions of users and groups with access to your
+%% Amazon Kendra experience.
+list_entity_personas(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_entity_personas(Client, Input, []).
+list_entity_personas(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListEntityPersonas">>, Input, Options).
+
+%% @doc Lists users or groups in your Amazon Web Services SSO identity source
+%% that are granted access to your Amazon Kendra experience.
+%%
+%% You can create an Amazon Kendra experience such as a search application.
+%% For more information on creating a search application experience, see
+%% Building a search experience with no code.
+list_experience_entities(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_experience_entities(Client, Input, []).
+list_experience_entities(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListExperienceEntities">>, Input, Options).
+
+%% @doc Lists one or more Amazon Kendra experiences.
+%%
+%% You can create an Amazon Kendra experience such as a search application.
+%% For more information on creating a search application experience, see
+%% Building a search experience with no code.
+list_experiences(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_experiences(Client, Input, []).
+list_experiences(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListExperiences">>, Input, Options).
+
 %% @doc Gets a list of FAQ lists associated with an index.
 list_faqs(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -407,6 +593,9 @@ list_faqs(Client, Input, Options)
 
 %% @doc Provides a list of groups that are mapped to users before a given
 %% ordering or timestamp identifier.
+%%
+%% `ListGroupsOlderThanOrderingId' is currently not supported in the Amazon
+%% Web Services GovCloud (US-West) region.
 list_groups_older_than_ordering_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups_older_than_ordering_id(Client, Input, []).
@@ -426,6 +615,9 @@ list_indices(Client, Input, Options)
 %%
 %% For information on the current quota limits for block lists, see Quotas
 %% for Amazon Kendra.
+%%
+%% `ListQuerySuggestionsBlockLists' is currently not supported in the Amazon
+%% Web Services GovCloud (US-West) region.
 list_query_suggestions_block_lists(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_query_suggestions_block_lists(Client, Input, []).
@@ -468,6 +660,9 @@ list_thesauri(Client, Input, Options)
 %%
 %% If more than five `PUT' actions for a group are currently processing, a
 %% validation exception is thrown.
+%%
+%% `PutPrincipalMapping' is currently not supported in the Amazon Web
+%% Services GovCloud (US-West) region.
 put_principal_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_principal_mapping(Client, Input, []).
@@ -527,6 +722,9 @@ stop_data_source_sync_job(Client, Input, Options)
 
 %% @doc Enables you to provide feedback to Amazon Kendra to improve the
 %% performance of your index.
+%%
+%% `SubmitFeedback' is currently not supported in the Amazon Web Services
+%% GovCloud (US-West) region.
 submit_feedback(Client, Input)
   when is_map(Client), is_map(Input) ->
     submit_feedback(Client, Input, []).
@@ -562,6 +760,17 @@ update_data_source(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDataSource">>, Input, Options).
 
+%% @doc Updates your Amazon Kendra experience such as a search application.
+%%
+%% For more information on creating a search application experience, see
+%% Building a search experience with no code.
+update_experience(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_experience(Client, Input, []).
+update_experience(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateExperience">>, Input, Options).
+
 %% @doc Updates an existing Amazon Kendra index.
 update_index(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -581,6 +790,9 @@ update_index(Client, Input, Options)
 %%
 %% Amazon Kendra supports partial updates, so you only need to provide the
 %% fields you want to update.
+%%
+%% `UpdateQuerySuggestionsBlockList' is currently not supported in the Amazon
+%% Web Services GovCloud (US-West) region.
 update_query_suggestions_block_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_query_suggestions_block_list(Client, Input, []).
@@ -601,6 +813,9 @@ update_query_suggestions_block_list(Client, Input, Options)
 %% made and the number of search queries in your index.
 %%
 %% You can still enable/disable query suggestions at any time.
+%%
+%% `UpdateQuerySuggestionsConfig' is currently not supported in the Amazon
+%% Web Services GovCloud (US-West) region.
 update_query_suggestions_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_query_suggestions_config(Client, Input, []).

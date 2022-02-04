@@ -1103,6 +1103,11 @@ delete_hosted_zone(Client, Id, Input0, Options0) ->
 %% Before you can delete a KSK, you must deactivate it. The KSK must be
 %% deactivated before you can delete it regardless of whether the hosted zone
 %% is enabled for DNSSEC signing.
+%%
+%% You can use DeactivateKeySigningKey to deactivate the key before you
+%% delete it.
+%%
+%% Use GetDNSSEC to verify that the KSK is in an `INACTIVE' status.
 delete_key_signing_key(Client, HostedZoneId, Name, Input) ->
     delete_key_signing_key(Client, HostedZoneId, Name, Input, []).
 delete_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->

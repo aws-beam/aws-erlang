@@ -55,6 +55,8 @@
          delete_access_control_rule/3,
          delete_alias/2,
          delete_alias/3,
+         delete_email_monitoring_configuration/2,
+         delete_email_monitoring_configuration/3,
          delete_group/2,
          delete_group/3,
          delete_mailbox_permissions/2,
@@ -75,6 +77,8 @@
          deregister_from_work_mail/3,
          deregister_mail_domain/2,
          deregister_mail_domain/3,
+         describe_email_monitoring_configuration/2,
+         describe_email_monitoring_configuration/3,
          describe_group/2,
          describe_group/3,
          describe_inbound_dmarc_settings/2,
@@ -133,6 +137,8 @@
          list_users/3,
          put_access_control_rule/2,
          put_access_control_rule/3,
+         put_email_monitoring_configuration/2,
+         put_email_monitoring_configuration/3,
          put_inbound_dmarc_settings/2,
          put_inbound_dmarc_settings/3,
          put_mailbox_permissions/2,
@@ -290,6 +296,15 @@ delete_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAlias">>, Input, Options).
 
+%% @doc Deletes the email monitoring configuration for a specified
+%% organization.
+delete_email_monitoring_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_email_monitoring_configuration(Client, Input, []).
+delete_email_monitoring_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteEmailMonitoringConfiguration">>, Input, Options).
+
 %% @doc Deletes a group from Amazon WorkMail.
 delete_group(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -400,6 +415,15 @@ deregister_mail_domain(Client, Input)
 deregister_mail_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterMailDomain">>, Input, Options).
+
+%% @doc Describes the current email monitoring configuration for a specified
+%% organization.
+describe_email_monitoring_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_email_monitoring_configuration(Client, Input, []).
+describe_email_monitoring_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeEmailMonitoringConfiguration">>, Input, Options).
 
 %% @doc Returns the data available for the group.
 describe_group(Client, Input)
@@ -657,6 +681,15 @@ put_access_control_rule(Client, Input)
 put_access_control_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAccessControlRule">>, Input, Options).
+
+%% @doc Creates or updates the email monitoring configuration for a specified
+%% organization.
+put_email_monitoring_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_email_monitoring_configuration(Client, Input, []).
+put_email_monitoring_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutEmailMonitoringConfiguration">>, Input, Options).
 
 %% @doc Enables or disables a DMARC policy for a given organization.
 put_inbound_dmarc_settings(Client, Input)

@@ -29,22 +29,38 @@
 
 -export([add_tags/2,
          add_tags/3,
+         cancel_query/2,
+         cancel_query/3,
+         create_event_data_store/2,
+         create_event_data_store/3,
          create_trail/2,
          create_trail/3,
+         delete_event_data_store/2,
+         delete_event_data_store/3,
          delete_trail/2,
          delete_trail/3,
+         describe_query/2,
+         describe_query/3,
          describe_trails/2,
          describe_trails/3,
+         get_event_data_store/2,
+         get_event_data_store/3,
          get_event_selectors/2,
          get_event_selectors/3,
          get_insight_selectors/2,
          get_insight_selectors/3,
+         get_query_results/2,
+         get_query_results/3,
          get_trail/2,
          get_trail/3,
          get_trail_status/2,
          get_trail_status/3,
+         list_event_data_stores/2,
+         list_event_data_stores/3,
          list_public_keys/2,
          list_public_keys/3,
+         list_queries/2,
+         list_queries/3,
          list_tags/2,
          list_tags/3,
          list_trails/2,
@@ -57,10 +73,16 @@
          put_insight_selectors/3,
          remove_tags/2,
          remove_tags/3,
+         restore_event_data_store/2,
+         restore_event_data_store/3,
          start_logging/2,
          start_logging/3,
+         start_query/2,
+         start_query/3,
          stop_logging/2,
          stop_logging/3,
+         update_event_data_store/2,
+         update_event_data_store/3,
          update_trail/2,
          update_trail/3]).
 
@@ -86,6 +108,28 @@ add_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTags">>, Input, Options).
 
+%% @doc Cancels a query if the query is not in a terminated state, such as
+%% `CANCELLED', `FAILED' or `FINISHED'.
+%%
+%% You must specify an ARN value for `EventDataStore'. The ID of the query
+%% that you want to cancel is also required. When you run `CancelQuery', the
+%% query status might show as `CANCELLED' even if the operation is not yet
+%% finished.
+cancel_query(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_query(Client, Input, []).
+cancel_query(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelQuery">>, Input, Options).
+
+%% @doc Creates a new event data store.
+create_event_data_store(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_event_data_store(Client, Input, []).
+create_event_data_store(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateEventDataStore">>, Input, Options).
+
 %% @doc Creates a trail that specifies the settings for delivery of log data
 %% to an Amazon S3 bucket.
 create_trail(Client, Input)
@@ -94,6 +138,26 @@ create_trail(Client, Input)
 create_trail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrail">>, Input, Options).
+
+%% @doc Disables the event data store specified by `EventDataStore', which
+%% accepts an event data store ARN.
+%%
+%% After you run `DeleteEventDataStore', the event data store enters a
+%% `PENDING_DELETION' state, and is automatically deleted after a wait period
+%% of seven days. `TerminationProtectionEnabled' must be set to `False' on
+%% the event data store; this operation cannot work if
+%% `TerminationProtectionEnabled' is `True'.
+%%
+%% After you run `DeleteEventDataStore' on an event data store, you cannot
+%% run `ListQueries', `DescribeQuery', or `GetQueryResults' on queries that
+%% are using an event data store in a `PENDING_DELETION' state. An event data
+%% store in the `PENDING_DELETION' state does not incur costs.
+delete_event_data_store(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_event_data_store(Client, Input, []).
+delete_event_data_store(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteEventDataStore">>, Input, Options).
 
 %% @doc Deletes a trail.
 %%
@@ -107,6 +171,17 @@ delete_trail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTrail">>, Input, Options).
 
+%% @doc Returns metadata about a query, including query run time in
+%% milliseconds, number of events scanned and matched, and query status.
+%%
+%% You must specify an ARN for `EventDataStore', and a value for `QueryID'.
+describe_query(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_query(Client, Input, []).
+describe_query(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeQuery">>, Input, Options).
+
 %% @doc Retrieves settings for one or more trails associated with the current
 %% region for your account.
 describe_trails(Client, Input)
@@ -115,6 +190,15 @@ describe_trails(Client, Input)
 describe_trails(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrails">>, Input, Options).
+
+%% @doc Returns information about an event data store specified as either an
+%% ARN or the ID portion of the ARN.
+get_event_data_store(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_event_data_store(Client, Input, []).
+get_event_data_store(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetEventDataStore">>, Input, Options).
 
 %% @doc Describes the settings for the event selectors that you configured
 %% for your trail.
@@ -157,6 +241,17 @@ get_insight_selectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInsightSelectors">>, Input, Options).
 
+%% @doc Gets event data results of a query.
+%%
+%% You must specify the `QueryID' value returned by the `StartQuery'
+%% operation, and an ARN for `EventDataStore'.
+get_query_results(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_query_results(Client, Input, []).
+get_query_results(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetQueryResults">>, Input, Options).
+
 %% @doc Returns settings information for a specified trail.
 get_trail(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -179,6 +274,15 @@ get_trail_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTrailStatus">>, Input, Options).
 
+%% @doc Returns information about all event data stores in the account, in
+%% the current region.
+list_event_data_stores(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_event_data_stores(Client, Input, []).
+list_event_data_stores(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListEventDataStores">>, Input, Options).
+
 %% @doc Returns all public keys whose private keys were used to sign the
 %% digest files within the specified time range.
 %%
@@ -195,6 +299,20 @@ list_public_keys(Client, Input)
 list_public_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPublicKeys">>, Input, Options).
+
+%% @doc Returns a list of queries and query statuses for the past seven days.
+%%
+%% You must specify an ARN value for `EventDataStore'. Optionally, to shorten
+%% the list of results, you can specify a time range, formatted as
+%% timestamps, by adding `StartTime' and `EndTime' parameters, and a
+%% `QueryStatus' value. Valid values for `QueryStatus' include `QUEUED',
+%% `RUNNING', `FINISHED', `FAILED', or `CANCELLED'.
+list_queries(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_queries(Client, Input, []).
+list_queries(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListQueries">>, Input, Options).
 
 %% @doc Lists the tags for the trail in the current region.
 list_tags(Client, Input)
@@ -312,8 +430,8 @@ put_event_selectors(Client, Input, Options)
 %% selectors that you want to enable on an existing trail.
 %%
 %% You also use `PutInsightSelectors' to turn off Insights event logging, by
-%% passing an empty list of insight types. The valid Insights event type in
-%% this release is `ApiCallRateInsight'.
+%% passing an empty list of insight types. The valid Insights event types in
+%% this release are `ApiErrorRateInsight' and `ApiCallRateInsight'.
 put_insight_selectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_insight_selectors(Client, Input, []).
@@ -329,6 +447,19 @@ remove_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTags">>, Input, Options).
 
+%% @doc Restores a deleted event data store specified by `EventDataStore',
+%% which accepts an event data store ARN.
+%%
+%% You can only restore a deleted event data store within the seven-day wait
+%% period after deletion. Restoring an event data store can take several
+%% minutes, depending on the size of the event data store.
+restore_event_data_store(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    restore_event_data_store(Client, Input, []).
+restore_event_data_store(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RestoreEventDataStore">>, Input, Options).
+
 %% @doc Starts the recording of Amazon Web Services API calls and log file
 %% delivery for a trail.
 %%
@@ -342,6 +473,17 @@ start_logging(Client, Input)
 start_logging(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartLogging">>, Input, Options).
+
+%% @doc Starts a CloudTrail Lake query.
+%%
+%% The required `QueryStatement' parameter provides your SQL query, enclosed
+%% in single quotation marks.
+start_query(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_query(Client, Input, []).
+start_query(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartQuery">>, Input, Options).
 
 %% @doc Suspends the recording of Amazon Web Services API calls and log file
 %% delivery for the specified trail.
@@ -359,6 +501,23 @@ stop_logging(Client, Input)
 stop_logging(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopLogging">>, Input, Options).
+
+%% @doc Updates an event data store.
+%%
+%% The required `EventDataStore' value is an ARN or the ID portion of the
+%% ARN. Other parameters are optional, but at least one optional parameter
+%% must be specified, or CloudTrail throws an error. `RetentionPeriod' is in
+%% days, and valid values are integers between 90 and 2555. By default,
+%% `TerminationProtection' is enabled. `AdvancedEventSelectors' includes or
+%% excludes management and data events in your event data store; for more
+%% information about `AdvancedEventSelectors', see
+%% `PutEventSelectorsRequest$AdvancedEventSelectors'.
+update_event_data_store(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_event_data_store(Client, Input, []).
+update_event_data_store(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateEventDataStore">>, Input, Options).
 
 %% @doc Updates trail settings that control what events you are logging, and
 %% how to handle log files.

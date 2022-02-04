@@ -55,6 +55,8 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         send_api_asset/2,
+         send_api_asset/3,
          start_job/3,
          start_job/4,
          tag_resource/3,
@@ -573,6 +575,40 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This operation invokes an API Gateway API asset.
+%%
+%% The request is proxied to the provider’s API Gateway API.
+send_api_asset(Client, Input) ->
+    send_api_asset(Client, Input, []).
+send_api_asset(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, true},
+               {receive_body_as_binary, true}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"x-amzn-dataexchange-asset-id">>, <<"AssetId">>},
+                       {<<"x-amzn-dataexchange-data-set-id">>, <<"DataSetId">>},
+                       {<<"x-amzn-dataexchange-http-method">>, <<"Method">>},
+                       {<<"x-amzn-dataexchange-path">>, <<"Path">>},
+                       {<<"x-amzn-dataexchange-revision-id">>, <<"RevisionId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeadersMapping = [
+                             {<<"x-amzn-dataexchange-header-">>, <<"RequestHeaders">>}
+                          ],
+    {CustomHeaders, Input2} = aws_request:build_custom_headers(CustomHeadersMapping, Input1),
+
+    QueryMapping = [
+                     {<<"">>, <<"QueryStringParameters">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation starts a job.
 start_job(Client, JobId, Input) ->

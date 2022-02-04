@@ -42,15 +42,15 @@
 %% key, and a security token. Typically, you use `AssumeRole' within your
 %% account or for cross-account access. For a comparison of `AssumeRole' with
 %% other API operations that produce temporary credentials, see Requesting
-%% Temporary Security Credentials and Comparing the STS API operations in the
-%% IAM User Guide.
+%% Temporary Security Credentials and Comparing the Amazon Web Services STS
+%% API operations in the IAM User Guide.
 %%
 %% Permissions
 %%
 %% The temporary security credentials created by `AssumeRole' can be used to
 %% make API calls to any Amazon Web Services service with the following
-%% exception: You cannot call the STS `GetFederationToken' or
-%% `GetSessionToken' API operations.
+%% exception: You cannot call the Amazon Web Services STS
+%% `GetFederationToken' or `GetSessionToken' API operations.
 %%
 %% (Optional) You can pass inline or managed session policies to this
 %% operation. You can pass a single JSON policy document to use as an inline
@@ -66,27 +66,36 @@
 %% identity-based policy of the role that is being assumed. For more
 %% information, see Session Policies in the IAM User Guide.
 %%
-%% To assume a role from a different account, your account must be trusted by
-%% the role. The trust relationship is defined in the role's trust policy
-%% when the role is created. That trust policy states which accounts are
-%% allowed to delegate that access to users in the account.
+%% When you create a role, you create two policies: A role trust policy that
+%% specifies who can assume the role and a permissions policy that specifies
+%% what can be done with the role. You specify the trusted principal who is
+%% allowed to assume the role in the role trust policy.
+%%
+%% To assume a role from a different account, your Amazon Web Services
+%% account must be trusted by the role. The trust relationship is defined in
+%% the role's trust policy when the role is created. That trust policy states
+%% which accounts are allowed to delegate that access to users in the
+%% account.
 %%
 %% A user who wants to access a role in a different account must also have
 %% permissions that are delegated from the user account administrator. The
 %% administrator must attach a policy that allows the user to call
-%% `AssumeRole' for the ARN of the role in the other account. If the user is
-%% in the same account as the role, then you can do either of the following:
+%% `AssumeRole' for the ARN of the role in the other account.
 %%
-%% <ul> <li> Attach a policy to the user (identical to the previous user in a
-%% different account).
+%% To allow a user to assume a role in the same account, you can do either of
+%% the following:
+%%
+%% <ul> <li> Attach a policy to the user that allows the user to call
+%% `AssumeRole' (as long as the role's trust policy trusts the account).
 %%
 %% </li> <li> Add the user as a principal directly in the role's trust
 %% policy.
 %%
-%% </li> </ul> In this case, the trust policy acts as an IAM resource-based
-%% policy. Users in the same account as the role do not need explicit
-%% permission to assume the role. For more information about trust policies
-%% and resource-based policies, see IAM Policies in the IAM User Guide.
+%% </li> </ul> You can do either because the role’s trust policy acts as an
+%% IAM resource-based policy. When a resource-based policy grants access to a
+%% principal in the same account, no additional identity-based policy is
+%% required. For more information about trust policies and resource-based
+%% policies, see IAM Policies in the IAM User Guide.
 %%
 %% Tags
 %%
@@ -138,7 +147,7 @@ assume_role(Client, Input, Options)
 %% user-specific credentials or configuration. For a comparison of
 %% `AssumeRoleWithSAML' with the other API operations that produce temporary
 %% credentials, see Requesting Temporary Security Credentials and Comparing
-%% the STS API operations in the IAM User Guide.
+%% the Amazon Web Services STS API operations in the IAM User Guide.
 %%
 %% The temporary security credentials returned by this operation consist of
 %% an access key ID, a secret access key, and a security token. Applications
@@ -289,8 +298,8 @@ assume_role_with_saml(Client, Input, Options)
 %% Instead, the identity of the caller is validated by using a token from the
 %% web identity provider. For a comparison of `AssumeRoleWithWebIdentity'
 %% with the other API operations that produce temporary credentials, see
-%% Requesting Temporary Security Credentials and Comparing the STS API
-%% operations in the IAM User Guide.
+%% Requesting Temporary Security Credentials and Comparing the Amazon Web
+%% Services STS API operations in the IAM User Guide.
 %%
 %% The temporary security credentials returned by this API consist of an
 %% access key ID, a secret access key, and a security token. Applications can
@@ -426,9 +435,9 @@ assume_role_with_web_identity(Client, Input, Options)
 %% returning an HTTP code.
 %%
 %% The message is encoded because the details of the authorization status can
-%% constitute privileged information that the user who requested the
-%% operation should not see. To decode an authorization status message, a
-%% user must be granted permissions via an IAM policy to request the
+%% contain privileged information that the user who requested the operation
+%% should not see. To decode an authorization status message, a user must be
+%% granted permissions through an IAM policy to request the
 %% `DecodeAuthorizationMessage' (`sts:DecodeAuthorizationMessage') action.
 %%
 %% The decoded message includes the following type of information:
@@ -512,7 +521,7 @@ get_caller_identity(Client, Input, Options)
 %% usually in a server-based application. For a comparison of
 %% `GetFederationToken' with the other API operations that produce temporary
 %% credentials, see Requesting Temporary Security Credentials and Comparing
-%% the STS API operations in the IAM User Guide.
+%% the Amazon Web Services STS API operations in the IAM User Guide.
 %%
 %% You can create a mobile-based or browser-based app that can authenticate
 %% users using a web identity provider like Login with Amazon, Facebook,
@@ -534,8 +543,8 @@ get_caller_identity(Client, Input, Options)
 %% The temporary credentials are valid for the specified duration, from 900
 %% seconds (15 minutes) up to a maximum of 129,600 seconds (36 hours). The
 %% default session duration is 43,200 seconds (12 hours). Temporary
-%% credentials that are obtained by using Amazon Web Services account root
-%% user credentials have a maximum duration of 3,600 seconds (1 hour).
+%% credentials obtained by using the Amazon Web Services account root user
+%% credentials have a maximum duration of 3,600 seconds (1 hour).
 %%
 %% Permissions
 %%
@@ -583,61 +592,6 @@ get_caller_identity(Client, Input, Options)
 %% For more information, see Federation Through a Web-based Identity Provider
 %% in the IAM User Guide.
 %%
-%% You can also call `GetFederationToken' using the security credentials of
-%% an Amazon Web Services account root user, but we do not recommend it.
-%% Instead, we recommend that you create an IAM user for the purpose of the
-%% proxy application. Then attach a policy to the IAM user that limits
-%% federated users to only the actions and resources that they need to
-%% access. For more information, see IAM Best Practices in the IAM User
-%% Guide.
-%%
-%% Session duration
-%%
-%% The temporary credentials are valid for the specified duration, from 900
-%% seconds (15 minutes) up to a maximum of 129,600 seconds (36 hours). The
-%% default session duration is 43,200 seconds (12 hours). Temporary
-%% credentials that are obtained by using Amazon Web Services account root
-%% user credentials have a maximum duration of 3,600 seconds (1 hour).
-%%
-%% Permissions
-%%
-%% You can use the temporary credentials created by `GetFederationToken' in
-%% any Amazon Web Services service except the following:
-%%
-%% <ul> <li> You cannot call any IAM operations using the CLI or the Amazon
-%% Web Services API.
-%%
-%% </li> <li> You cannot call any STS operations except `GetCallerIdentity'.
-%%
-%% </li> </ul> You must pass an inline or managed session policy to this
-%% operation. You can pass a single JSON policy document to use as an inline
-%% session policy. You can also specify up to 10 managed policies to use as
-%% managed session policies. The plain text that you use for both inline and
-%% managed session policies can't exceed 2,048 characters.
-%%
-%% Though the session policy parameters are optional, if you do not pass a
-%% policy, then the resulting federated user session has no permissions. When
-%% you pass session policies, the session permissions are the intersection of
-%% the IAM user policies and the session policies that you pass. This gives
-%% you a way to further restrict the permissions for a federated user. You
-%% cannot use session policies to grant more permissions than those that are
-%% defined in the permissions policy of the IAM user. For more information,
-%% see Session Policies in the IAM User Guide. For information about using
-%% `GetFederationToken' to create temporary security credentials, see
-%% GetFederationToken—Federation Through a Custom Identity Broker.
-%%
-%% You can use the credentials to access a resource that has a resource-based
-%% policy. If that policy specifically references the federated user session
-%% in the `Principal' element of the policy, the session has the permissions
-%% allowed by the policy. These permissions are granted in addition to the
-%% permissions granted by the session policies.
-%%
-%% Tags
-%%
-%% (Optional) You can pass tag key-value pairs to your session. These are
-%% called session tags. For more information about session tags, see Passing
-%% Session Tags in STS in the IAM User Guide.
-%%
 %% An administrator must grant you the permissions necessary to pass session
 %% tags. The administrator can also create granular permissions to allow you
 %% to pass only specific session tags. For more information, see Tutorial:
@@ -671,7 +625,7 @@ get_federation_token(Client, Input, Options)
 %% MFA code, then the API returns an access denied error. For a comparison of
 %% `GetSessionToken' with the other API operations that produce temporary
 %% credentials, see Requesting Temporary Security Credentials and Comparing
-%% the STS API operations in the IAM User Guide.
+%% the Amazon Web Services STS API operations in the IAM User Guide.
 %%
 %% Session Duration
 %%

@@ -675,7 +675,7 @@ get_streaming_image(Client, StreamingImageId, StudioId, QueryMap, HeadersMap, Op
 
 %% @doc Gets StreamingSession resource.
 %%
-%% anvoke this operation to poll for a streaming session state while creating
+%% Invoke this operation to poll for a streaming session state while creating
 %% or deleting a session.
 get_streaming_session(Client, SessionId, StudioId)
   when is_map(Client) ->
@@ -1003,6 +1003,8 @@ list_studio_components(Client, StudioId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get all users in a given studio membership.
+%%
+%% `ListStudioMembers' only returns admin members.
 list_studio_members(Client, StudioId)
   when is_map(Client) ->
     list_studio_members(Client, StudioId, #{}, #{}).

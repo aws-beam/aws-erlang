@@ -241,6 +241,9 @@
          describe_job_template/2,
          describe_job_template/4,
          describe_job_template/5,
+         describe_managed_job_template/2,
+         describe_managed_job_template/4,
+         describe_managed_job_template/5,
          describe_mitigation_action/2,
          describe_mitigation_action/4,
          describe_mitigation_action/5,
@@ -395,6 +398,9 @@
          list_jobs/1,
          list_jobs/3,
          list_jobs/4,
+         list_managed_job_templates/1,
+         list_managed_job_templates/3,
+         list_managed_job_templates/4,
          list_mitigation_actions/1,
          list_mitigation_actions/3,
          list_mitigation_actions/4,
@@ -1129,8 +1135,9 @@ create_billing_group(Client, BillingGroupName, Input0, Options0) ->
 %% request.
 %%
 %% Note: The CSR must include a public key that is either an RSA key with a
-%% length of at least 2048 bits or an ECC key from NIST P-256 or NIST P-384
-%% curves.
+%% length of at least 2048 bits or an ECC key from NIST P-256, NIST P-384, or
+%% NIST P-512 curves. For supported certificates, consult Certificate signing
+%% algorithms supported by IoT.
 %%
 %% Note: Reusing the same certificate signing request (CSR) results in a
 %% distinct certificate.
@@ -3270,6 +3277,33 @@ describe_job_template(Client, JobTemplateId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc View details of a managed job template.
+describe_managed_job_template(Client, TemplateName)
+  when is_map(Client) ->
+    describe_managed_job_template(Client, TemplateName, #{}, #{}).
+
+describe_managed_job_template(Client, TemplateName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_managed_job_template(Client, TemplateName, QueryMap, HeadersMap, []).
+
+describe_managed_job_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/managed-job-templates/", aws_util:encode_uri(TemplateName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"templateVersion">>, maps:get(<<"templateVersion">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets information about a mitigation action.
 %%
 %% Requires permission to access the DescribeMitigationAction action.
@@ -4808,6 +4842,7 @@ list_job_executions_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"jobId">>, maps:get(<<"jobId">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"namespaceId">>, maps:get(<<"namespaceId">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
@@ -4877,6 +4912,35 @@ list_jobs(Client, QueryMap, HeadersMap, Options0)
         {<<"targetSelection">>, maps:get(<<"targetSelection">>, QueryMap, undefined)},
         {<<"thingGroupId">>, maps:get(<<"thingGroupId">>, QueryMap, undefined)},
         {<<"thingGroupName">>, maps:get(<<"thingGroupName">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of managed job templates.
+list_managed_job_templates(Client)
+  when is_map(Client) ->
+    list_managed_job_templates(Client, #{}, #{}).
+
+list_managed_job_templates(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_managed_job_templates(Client, QueryMap, HeadersMap, []).
+
+list_managed_job_templates(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/managed-job-templates"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"templateName">>, maps:get(<<"templateName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -5977,6 +6041,9 @@ register_certificate(Client, Input0, Options0) ->
 
 %% @doc Register a certificate that does not have a certificate authority
 %% (CA).
+%%
+%% For supported certificates, consult Certificate signing algorithms
+%% supported by IoT.
 register_certificate_without_ca(Client, Input) ->
     register_certificate_without_ca(Client, Input, []).
 register_certificate_without_ca(Client, Input0, Options0) ->
@@ -6067,6 +6134,9 @@ reject_certificate_transfer(Client, CertificateId, Input0, Options0) ->
 %% @doc Removes the given thing from the billing group.
 %%
 %% Requires permission to access the RemoveThingFromBillingGroup action.
+%%
+%% This call is asynchronous. It might take several seconds for the
+%% detachment to propagate.
 remove_thing_from_billing_group(Client, Input) ->
     remove_thing_from_billing_group(Client, Input, []).
 remove_thing_from_billing_group(Client, Input0, Options0) ->
