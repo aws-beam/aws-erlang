@@ -14,6 +14,8 @@
          delete_replication_configuration_template/3,
          delete_source_server/2,
          delete_source_server/3,
+         delete_vcenter_client/2,
+         delete_vcenter_client/3,
          describe_job_log_items/2,
          describe_job_log_items/3,
          describe_jobs/2,
@@ -22,6 +24,9 @@
          describe_replication_configuration_templates/3,
          describe_source_servers/2,
          describe_source_servers/3,
+         describe_vcenter_clients/1,
+         describe_vcenter_clients/3,
+         describe_vcenter_clients/4,
          disconnect_from_service/2,
          disconnect_from_service/3,
          finalize_cutover/2,
@@ -41,6 +46,8 @@
          retry_data_replication/3,
          start_cutover/2,
          start_cutover/3,
+         start_replication/2,
+         start_replication/3,
          start_test/2,
          start_test/3,
          tag_resource/3,
@@ -54,7 +61,9 @@
          update_replication_configuration/2,
          update_replication_configuration/3,
          update_replication_configuration_template/2,
-         update_replication_configuration_template/3]).
+         update_replication_configuration_template/3,
+         update_source_server_replication_type/2,
+         update_source_server_replication_type/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -182,6 +191,29 @@ delete_source_server(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a single vCenter client by ID.
+delete_vcenter_client(Client, Input) ->
+    delete_vcenter_client(Client, Input, []).
+delete_vcenter_client(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteVcenterClient"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves detailed Job log with paging.
 describe_job_log_items(Client, Input) ->
     describe_job_log_items(Client, Input, []).
@@ -281,6 +313,34 @@ describe_source_servers(Client, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all vCenter clients.
+describe_vcenter_clients(Client)
+  when is_map(Client) ->
+    describe_vcenter_clients(Client, #{}, #{}).
+
+describe_vcenter_clients(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_vcenter_clients(Client, QueryMap, HeadersMap, []).
+
+describe_vcenter_clients(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/DescribeVcenterClients"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Disconnects specific Source Servers from Application Migration
 %% Service.
@@ -530,6 +590,29 @@ start_cutover(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts replication on source server by ID.
+start_replication(Client, Input) ->
+    start_replication(Client, Input, []).
+start_replication(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StartReplication"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lauches a Test Instance for specific Source Servers.
 %%
 %% This command starts a LAUNCH job whose initiatedBy property is StartTest
@@ -689,6 +772,29 @@ update_replication_configuration_template(Client, Input) ->
 update_replication_configuration_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateReplicationConfigurationTemplate"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates source server Replication Type by ID.
+update_source_server_replication_type(Client, Input) ->
+    update_source_server_replication_type(Client, Input, []).
+update_source_server_replication_type(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateSourceServerReplicationType"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

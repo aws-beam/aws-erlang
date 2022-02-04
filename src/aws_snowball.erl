@@ -1,16 +1,18 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Snow Family is a petabyte-scale data transport solution that uses
-%% secure devices to transfer large amounts of data between your on-premises
-%% data centers and Amazon Simple Storage Service (Amazon S3).
+%% @doc The Amazon Web Services Snow Family provides a petabyte-scale data
+%% transport solution that uses secure devices to transfer large amounts of
+%% data between your on-premises data centers and Amazon Simple Storage
+%% Service (Amazon S3).
 %%
-%% The Snow commands described here provide access to the same functionality
-%% that is available in the AWS Snow Family Management Console, which enables
-%% you to create and manage jobs for a Snow device. To transfer data locally
-%% with a Snow device, you'll need to use the Snowball Edge client or the
-%% Amazon S3 API Interface for Snowball or AWS OpsHub for Snow Family. For
-%% more information, see the User Guide.
+%% The Snow Family commands described here provide access to the same
+%% functionality that is available in the Amazon Web Services Snow Family
+%% Management Console, which enables you to create and manage jobs for a Snow
+%% Family device. To transfer data locally with a Snow Family device, you'll
+%% need to use the Snowball Edge client or the Amazon S3 API Interface for
+%% Snowball or OpsHub for Snow Family. For more information, see the User
+%% Guide.
 -module(aws_snowball).
 
 -export([cancel_cluster/2,
@@ -122,20 +124,21 @@ create_cluster(Client, Input, Options)
 %% @doc Creates a job to import or export data between Amazon S3 and your
 %% on-premises data center.
 %%
-%% Your AWS account must have the right trust policies and permissions in
-%% place to create a job for a Snow device. If you're creating a job for a
-%% node in a cluster, you only need to provide the `clusterId' value; the
-%% other job attributes are inherited from the cluster.
+%% Your Amazon Web Services account must have the right trust policies and
+%% permissions in place to create a job for a Snow device. If you're creating
+%% a job for a node in a cluster, you only need to provide the `clusterId'
+%% value; the other job attributes are inherited from the cluster.
 %%
 %% Only the Snowball; Edge device type is supported when ordering clustered
 %% jobs.
 %%
 %% The device capacity is optional.
 %%
-%% Availability of device types differ by AWS Region. For more information
-%% about Region availability, see AWS Regional Services.
+%% Availability of device types differ by Amazon Web Services Region. For
+%% more information about Region availability, see Amazon Web Services
+%% Regional Services.
 %%
-%% == AWS Snow Family device types and their capacities. ==
+%% == Snow Family Devices and their capacities. ==
 %%
 %% <ul> <li> Snow Family device type: SNC1_SSD
 %%
@@ -192,8 +195,8 @@ create_cluster(Client, Input, Options)
 %%
 %% </li> <li> Description: Original Snowball device
 %%
-%% This device is only available in the Ningxia, Beijing, and Singapore AWS
-%% Regions.
+%% This device is only available in the Ningxia, Beijing, and Singapore
+%% Amazon Web Services Region
 %%
 %% </li> </ul>
 %%
@@ -203,8 +206,8 @@ create_cluster(Client, Input, Options)
 %%
 %% </li> <li> Description: Original Snowball device
 %%
-%% This device is only available in the Ningxia, Beijing, and Singapore AWS
-%% Regions.
+%% This device is only available in the Ningxia, Beijing, and Singapore
+%% Amazon Web Services Region.
 %%
 %% </li> </ul>
 %%
@@ -219,8 +222,8 @@ create_job(Client, Input, Options)
 %% @doc Creates a job with the long-term usage option for a device.
 %%
 %% The long-term usage is a 1-year or 3-year long-term pricing type for the
-%% device. You are billed upfront, and AWS provides discounts for long-term
-%% pricing.
+%% device. You are billed upfront, and Amazon Web Services provides discounts
+%% for long-term pricing.
 create_long_term_pricing(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_long_term_pricing(Client, Input, []).
@@ -229,7 +232,7 @@ create_long_term_pricing(Client, Input, Options)
     request(Client, <<"CreateLongTermPricing">>, Input, Options).
 
 %% @doc Creates a shipping label that will be used to return the Snow device
-%% to AWS.
+%% to Amazon Web Services.
 create_return_shipping_label(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_return_shipping_label(Client, Input, []).
@@ -276,7 +279,7 @@ describe_job(Client, Input, Options)
     request(Client, <<"DescribeJob">>, Input, Options).
 
 %% @doc Information on the shipping label of a Snow device that is being
-%% returned to AWS.
+%% returned to Amazon Web Services.
 describe_return_shipping_label(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_return_shipping_label(Client, Input, []).
@@ -335,8 +338,8 @@ get_job_unlock_code(Client, Input, Options)
 %% account, and also the number of Snow devices your account has in use.
 %%
 %% The default service limit for the number of Snow devices that you can have
-%% at one time is 1. If you want to increase your service limit, contact AWS
-%% Support.
+%% at one time is 1. If you want to increase your service limit, contact
+%% Amazon Web Services Support.
 get_snowball_usage(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_snowball_usage(Client, Input, []).
@@ -377,12 +380,12 @@ list_clusters(Client, Input, Options)
     request(Client, <<"ListClusters">>, Input, Options).
 
 %% @doc This action returns a list of the different Amazon EC2 Amazon Machine
-%% Images (AMIs) that are owned by your AWS account that would be supported
-%% for use on a Snow device.
+%% Images (AMIs) that are owned by your Amazon Web Services accountthat would
+%% be supported for use on a Snow device.
 %%
 %% Currently, supported AMIs are based on the CentOS 7 (x86_64) - with
 %% Updates HVM, Ubuntu Server 14.04 LTS (HVM), and Ubuntu 16.04 LTS - Xenial
-%% (HVM) images, available on the AWS Marketplace.
+%% (HVM) images, available on the Amazon Web Services Marketplace.
 list_compatible_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_compatible_images(Client, Input, []).

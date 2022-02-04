@@ -503,8 +503,8 @@ describe_classification_job(Client, JobId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the Amazon Macie configuration settings for an Amazon Web
-%% Services organization.
+%% @doc Retrieves the Amazon Macie configuration settings for an organization
+%% in Organizations.
 describe_organization_configuration(Client)
   when is_map(Client) ->
     describe_organization_configuration(Client, #{}, #{}).
@@ -527,8 +527,8 @@ describe_organization_configuration(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Disables an Amazon Macie account and deletes Macie resources for the
-%% account.
+%% @doc Disables Amazon Macie and deletes all settings and resources for a
+%% Macie account.
 disable_macie(Client, Input) ->
     disable_macie(Client, Input, []).
 disable_macie(Client, Input0, Options0) ->
@@ -552,7 +552,7 @@ disable_macie(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disables an account as the delegated Amazon Macie administrator
-%% account for an Amazon Web Services organization.
+%% account for an organization in Organizations.
 disable_organization_admin_account(Client, Input) ->
     disable_organization_admin_account(Client, Input, []).
 disable_organization_admin_account(Client, Input0, Options0) ->
@@ -676,7 +676,7 @@ enable_macie(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Designates an account as the delegated Amazon Macie administrator
-%% account for an Amazon Web Services organization.
+%% account for an organization in Organizations.
 enable_organization_admin_account(Client, Input) ->
     enable_organization_admin_account(Client, Input, []).
 enable_organization_admin_account(Client, Input0, Options0) ->
@@ -723,8 +723,8 @@ get_administrator_account(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves (queries) aggregated statistical data for all the S3
-%% buckets that Amazon Macie monitors and analyzes.
+%% @doc Retrieves (queries) aggregated statistical data about S3 buckets that
+%% Amazon Macie monitors and analyzes.
 get_bucket_statistics(Client, Input) ->
     get_bucket_statistics(Client, Input, []).
 get_bucket_statistics(Client, Input0, Options0) ->
@@ -1221,7 +1221,7 @@ list_members(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the delegated Amazon Macie administrator
-%% account for an Amazon Web Services organization.
+%% account for an organization in Organizations.
 list_organization_admin_accounts(Client)
   when is_map(Client) ->
     list_organization_admin_accounts(Client, #{}, #{}).
@@ -1465,8 +1465,8 @@ update_findings_filter(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Suspends or re-enables an Amazon Macie account, or updates the
-%% configuration settings for a Macie account.
+%% @doc Suspends or re-enables Amazon Macie, or updates the configuration
+%% settings for a Macie account.
 update_macie_session(Client, Input) ->
     update_macie_session(Client, Input, []).
 update_macie_session(Client, Input0, Options0) ->
@@ -1513,8 +1513,8 @@ update_member_session(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the Amazon Macie configuration settings for an Amazon Web
-%% Services organization.
+%% @doc Updates the Amazon Macie configuration settings for an organization
+%% in Organizations.
 update_organization_configuration(Client, Input) ->
     update_organization_configuration(Client, Input, []).
 update_organization_configuration(Client, Input0, Options0) ->

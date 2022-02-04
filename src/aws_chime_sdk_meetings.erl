@@ -42,7 +42,10 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a group of meeting attendees.
+%% @doc Creates up to 100 attendees for an active Amazon Chime SDK meeting.
+%%
+%% For more information about the Amazon Chime SDK, see Using the Amazon
+%% Chime SDK in the Amazon Chime Developer Guide.
 batch_create_attendee(Client, MeetingId, Input) ->
     batch_create_attendee(Client, MeetingId, Input, []).
 batch_create_attendee(Client, MeetingId, Input0, Options0) ->

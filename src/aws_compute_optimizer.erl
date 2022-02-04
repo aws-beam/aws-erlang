@@ -18,7 +18,9 @@
 %% see the Compute Optimizer User Guide.
 -module(aws_compute_optimizer).
 
--export([describe_recommendation_export_jobs/2,
+-export([delete_recommendation_preferences/2,
+         delete_recommendation_preferences/3,
+         describe_recommendation_export_jobs/2,
          describe_recommendation_export_jobs/3,
          export_auto_scaling_group_recommendations/2,
          export_auto_scaling_group_recommendations/3,
@@ -36,14 +38,20 @@
          get_ec2_instance_recommendations/3,
          get_ec2_recommendation_projected_metrics/2,
          get_ec2_recommendation_projected_metrics/3,
+         get_effective_recommendation_preferences/2,
+         get_effective_recommendation_preferences/3,
          get_enrollment_status/2,
          get_enrollment_status/3,
          get_enrollment_statuses_for_organization/2,
          get_enrollment_statuses_for_organization/3,
          get_lambda_function_recommendations/2,
          get_lambda_function_recommendations/3,
+         get_recommendation_preferences/2,
+         get_recommendation_preferences/3,
          get_recommendation_summaries/2,
          get_recommendation_summaries/3,
+         put_recommendation_preferences/2,
+         put_recommendation_preferences/3,
          update_enrollment_status/2,
          update_enrollment_status/3]).
 
@@ -52,6 +60,18 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Deletes a recommendation preference, such as enhanced infrastructure
+%% metrics.
+%%
+%% For more information, see Activating enhanced infrastructure metrics in
+%% the Compute Optimizer User Guide.
+delete_recommendation_preferences(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_recommendation_preferences(Client, Input, []).
+delete_recommendation_preferences(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteRecommendationPreferences">>, Input, Options).
 
 %% @doc Describes recommendation export jobs created in the last seven days.
 %%
@@ -188,6 +208,22 @@ get_ec2_recommendation_projected_metrics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEC2RecommendationProjectedMetrics">>, Input, Options).
 
+%% @doc Returns the recommendation preferences that are in effect for a given
+%% resource, such as enhanced infrastructure metrics.
+%%
+%% Considers all applicable preferences that you might have set at the
+%% resource, account, and organization level.
+%%
+%% When you create a recommendation preference, you can set its status to
+%% `Active' or `Inactive'. Use this action to view the recommendation
+%% preferences that are in effect, or `Active'.
+get_effective_recommendation_preferences(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_effective_recommendation_preferences(Client, Input, []).
+get_effective_recommendation_preferences(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetEffectiveRecommendationPreferences">>, Input, Options).
+
 %% @doc Returns the enrollment (opt in) status of an account to the Compute
 %% Optimizer service.
 %%
@@ -228,6 +264,23 @@ get_lambda_function_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLambdaFunctionRecommendations">>, Input, Options).
 
+%% @doc Returns existing recommendation preferences, such as enhanced
+%% infrastructure metrics.
+%%
+%% Use the `scope' parameter to specify which preferences to return. You can
+%% specify to return preferences for an organization, a specific account ID,
+%% or a specific EC2 instance or Auto Scaling group Amazon Resource Name
+%% (ARN).
+%%
+%% For more information, see Activating enhanced infrastructure metrics in
+%% the Compute Optimizer User Guide.
+get_recommendation_preferences(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_recommendation_preferences(Client, Input, []).
+get_recommendation_preferences(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetRecommendationPreferences">>, Input, Options).
+
 %% @doc Returns the optimization findings for an account.
 %%
 %% It returns the number of:
@@ -251,6 +304,18 @@ get_recommendation_summaries(Client, Input)
 get_recommendation_summaries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRecommendationSummaries">>, Input, Options).
+
+%% @doc Creates a new recommendation preference or updates an existing
+%% recommendation preference, such as enhanced infrastructure metrics.
+%%
+%% For more information, see Activating enhanced infrastructure metrics in
+%% the Compute Optimizer User Guide.
+put_recommendation_preferences(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_recommendation_preferences(Client, Input, []).
+put_recommendation_preferences(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutRecommendationPreferences">>, Input, Options).
 
 %% @doc Updates the enrollment (opt in and opt out) status of an account to
 %% the Compute Optimizer service.

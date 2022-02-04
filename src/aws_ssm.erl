@@ -8,17 +8,21 @@
 %% and applications at scale.
 %%
 %% Systems Manager lets you remotely and securely manage the configuration of
-%% your managed instances. A managed instance is any Amazon Elastic Compute
-%% Cloud instance (EC2 instance), or any on-premises server or virtual
-%% machine (VM) in your hybrid environment that has been configured for
-%% Systems Manager.
+%% your managed nodes. A managed node is any Amazon Elastic Compute Cloud
+%% (Amazon EC2) instance, edge device, or on-premises server or virtual
+%% machine (VM) that has been configured for Systems Manager.
+%%
+%% With support for IoT Greengrass core devices, the phrase managed instance
+%% has been changed to managed node in most of the Systems Manager
+%% documentation. The Systems Manager console, API calls, error messages, and
+%% SSM documents still use the term instance.
 %%
 %% This reference is intended to be used with the Amazon Web Services Systems
 %% Manager User Guide.
 %%
-%% To get started, verify prerequisites and configure managed instances. For
-%% more information, see Setting up Amazon Web Services Systems Manager in
-%% the Amazon Web Services Systems Manager User Guide.
+%% To get started, verify prerequisites and configure managed nodes. For more
+%% information, see Setting up Amazon Web Services Systems Manager in the
+%% Amazon Web Services Systems Manager User Guide.
 %%
 %% == Related resources ==
 %%
@@ -317,13 +321,13 @@
 
 %% @doc Adds or overwrites one or more tags for the specified resource.
 %%
-%% Tags are metadata that you can assign to your documents, managed
-%% instances, maintenance windows, Parameter Store parameters, and patch
-%% baselines. Tags enable you to categorize your resources in different ways,
-%% for example, by purpose, owner, or environment. Each tag consists of a key
-%% and an optional value, both of which you define. For example, you could
-%% define a set of tags for your account's managed instances that helps you
-%% track each instance's owner and stack level. For example:
+%% Tags are metadata that you can assign to your documents, managed nodes,
+%% maintenance windows, Parameter Store parameters, and patch baselines. Tags
+%% enable you to categorize your resources in different ways, for example, by
+%% purpose, owner, or environment. Each tag consists of a key and an optional
+%% value, both of which you define. For example, you could define a set of
+%% tags for your account's managed nodes that helps you track each node's
+%% owner and stack level. For example:
 %%
 %% <ul> <li> `Key=Owner,Value=DbAdmin'
 %%
@@ -390,20 +394,20 @@ cancel_maintenance_window_execution(Client, Input, Options)
     request(Client, <<"CancelMaintenanceWindowExecution">>, Input, Options).
 
 %% @doc Generates an activation code and activation ID you can use to
-%% register your on-premises server or virtual machine (VM) with Amazon Web
-%% Services Systems Manager.
+%% register your on-premises servers, edge devices, or virtual machine (VM)
+%% with Amazon Web Services Systems Manager.
 %%
 %% Registering these machines with Systems Manager makes it possible to
 %% manage them using Systems Manager capabilities. You use the activation
 %% code and ID when installing SSM Agent on machines in your hybrid
 %% environment. For more information about requirements for managing
-%% on-premises instances and VMs using Systems Manager, see Setting up Amazon
-%% Web Services Systems Manager for hybrid environments in the Amazon Web
+%% on-premises machines using Systems Manager, see Setting up Amazon Web
+%% Services Systems Manager for hybrid environments in the Amazon Web
 %% Services Systems Manager User Guide.
 %%
-%% On-premises servers or VMs that are registered with Systems Manager and
-%% Amazon Elastic Compute Cloud (Amazon EC2) instances that you manage with
-%% Systems Manager are all called managed instances.
+%% Amazon Elastic Compute Cloud (Amazon EC2) instances, edge devices, and
+%% on-premises servers and VMs that are configured for Systems Manager are
+%% all called managed nodes.
 create_activation(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_activation(Client, Input, []).
@@ -412,20 +416,20 @@ create_activation(Client, Input, Options)
     request(Client, <<"CreateActivation">>, Input, Options).
 
 %% @doc A State Manager association defines the state that you want to
-%% maintain on your instances.
+%% maintain on your managed nodes.
 %%
 %% For example, an association can specify that anti-virus software must be
-%% installed and running on your instances, or that certain ports must be
+%% installed and running on your managed nodes, or that certain ports must be
 %% closed. For static targets, the association specifies a schedule for when
 %% the configuration is reapplied. For dynamic targets, such as an Amazon Web
 %% Services resource group or an Amazon Web Services autoscaling group, State
 %% Manager, a capability of Amazon Web Services Systems Manager applies the
-%% configuration when new instances are added to the group. The association
-%% also specifies actions to take when applying the configuration. For
-%% example, an association for anti-virus software might run once a day. If
-%% the software isn't installed, then State Manager installs it. If the
-%% software is installed, but the service isn't running, then the association
-%% might instruct State Manager to start the service.
+%% configuration when new managed nodes are added to the group. The
+%% association also specifies actions to take when applying the
+%% configuration. For example, an association for anti-virus software might
+%% run once a day. If the software isn't installed, then State Manager
+%% installs it. If the software is installed, but the service isn't running,
+%% then the association might instruct State Manager to start the service.
 create_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_association(Client, Input, []).
@@ -434,14 +438,13 @@ create_association(Client, Input, Options)
     request(Client, <<"CreateAssociation">>, Input, Options).
 
 %% @doc Associates the specified Amazon Web Services Systems Manager document
-%% (SSM document) with the specified instances or targets.
+%% (SSM document) with the specified managed nodes or targets.
 %%
-%% When you associate a document with one or more instances using instance
-%% IDs or tags, Amazon Web Services Systems Manager Agent (SSM Agent) running
-%% on the instance processes the document and configures the instance as
-%% specified.
+%% When you associate a document with one or more managed nodes using IDs or
+%% tags, Amazon Web Services Systems Manager Agent (SSM Agent) running on the
+%% managed node processes the document and configures the node as specified.
 %%
-%% If you associate a document with an instance that already has an
+%% If you associate a document with a managed node that already has an
 %% associated document, the system returns the AssociationAlreadyExists
 %% exception.
 create_association_batch(Client, Input)
@@ -454,7 +457,7 @@ create_association_batch(Client, Input, Options)
 %% @doc Creates a Amazon Web Services Systems Manager (SSM document).
 %%
 %% An SSM document defines the actions that Systems Manager performs on your
-%% managed instances. For more information about SSM documents, including
+%% managed nodes. For more information about SSM documents, including
 %% information about supported schemas, features, and syntax, see Amazon Web
 %% Services Systems Manager Documents in the Amazon Web Services Systems
 %% Manager User Guide.
@@ -559,9 +562,9 @@ create_resource_data_sync(Client, Input, Options)
 %% @doc Deletes an activation.
 %%
 %% You aren't required to delete an activation. If you delete an activation,
-%% you can no longer use it to register additional managed instances.
-%% Deleting an activation doesn't de-register managed instances. You must
-%% manually de-register managed instances.
+%% you can no longer use it to register additional managed nodes. Deleting an
+%% activation doesn't de-register managed nodes. You must manually
+%% de-register managed nodes.
 delete_activation(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_activation(Client, Input, []).
@@ -570,15 +573,15 @@ delete_activation(Client, Input, Options)
     request(Client, <<"DeleteActivation">>, Input, Options).
 
 %% @doc Disassociates the specified Amazon Web Services Systems Manager
-%% document (SSM document) from the specified instance.
+%% document (SSM document) from the specified managed node.
 %%
 %% If you created the association by using the `Targets' parameter, then you
 %% must delete the association by using the association ID.
 %%
-%% When you disassociate a document from an instance, it doesn't change the
-%% configuration of the instance. To change the configuration state of an
-%% instance after you disassociate a document, you must create a new document
-%% with the desired configuration and associate it with the instance.
+%% When you disassociate a document from a managed node, it doesn't change
+%% the configuration of the node. To change the configuration state of a
+%% managed node after you disassociate a document, you must create a new
+%% document with the desired configuration and associate it with the node.
 delete_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_association(Client, Input, []).
@@ -587,11 +590,11 @@ delete_association(Client, Input, Options)
     request(Client, <<"DeleteAssociation">>, Input, Options).
 
 %% @doc Deletes the Amazon Web Services Systems Manager document (SSM
-%% document) and all instance associations to the document.
+%% document) and all managed node associations to the document.
 %%
 %% Before you delete the document, we recommend that you use
-%% `DeleteAssociation' to disassociate all instances that are associated with
-%% the document.
+%% `DeleteAssociation' to disassociate all managed nodes that are associated
+%% with the document.
 delete_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_document(Client, Input, []).
@@ -659,8 +662,8 @@ delete_patch_baseline(Client, Input, Options)
 
 %% @doc Deletes a resource data sync configuration.
 %%
-%% After the configuration is deleted, changes to data on managed instances
-%% are no longer synced to or from the target. Deleting a sync configuration
+%% After the configuration is deleted, changes to data on managed nodes are
+%% no longer synced to or from the target. Deleting a sync configuration
 %% doesn't delete data.
 delete_resource_data_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -672,8 +675,8 @@ delete_resource_data_sync(Client, Input, Options)
 %% @doc Removes the server or virtual machine from the list of registered
 %% servers.
 %%
-%% You can reregister the instance again at any time. If you don't plan to
-%% use Run Command on the server, we suggest uninstalling SSM Agent first.
+%% You can reregister the node again at any time. If you don't plan to use
+%% Run Command on the server, we suggest uninstalling SSM Agent first.
 deregister_managed_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_managed_instance(Client, Input, []).
@@ -707,8 +710,8 @@ deregister_task_from_maintenance_window(Client, Input, Options)
 
 %% @doc Describes details about the activation, such as the date and time the
 %% activation was created, its expiration date, the Identity and Access
-%% Management (IAM) role assigned to the instances in the activation, and the
-%% number of instances registered by using this activation.
+%% Management (IAM) role assigned to the managed nodes in the activation, and
+%% the number of nodes registered by using this activation.
 describe_activations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_activations(Client, Input, []).
@@ -716,7 +719,7 @@ describe_activations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeActivations">>, Input, Options).
 
-%% @doc Describes the association for the specified target or instance.
+%% @doc Describes the association for the specified target or managed node.
 %%
 %% If you created the association by using the `Targets' parameter, then you
 %% must retrieve the association by using the association ID.
@@ -792,7 +795,7 @@ describe_document_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDocumentPermission">>, Input, Options).
 
-%% @doc All associations for the instance(s).
+%% @doc All associations for the managed node(s).
 describe_effective_instance_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_effective_instance_associations(Client, Input, []).
@@ -811,7 +814,7 @@ describe_effective_patches_for_patch_baseline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEffectivePatchesForPatchBaseline">>, Input, Options).
 
-%% @doc The status of the associations for the instance(s).
+%% @doc The status of the associations for the managed node(s).
 describe_instance_associations_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_associations_status(Client, Input, []).
@@ -819,18 +822,18 @@ describe_instance_associations_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstanceAssociationsStatus">>, Input, Options).
 
-%% @doc Describes one or more of your instances, including information about
-%% the operating system platform, the version of SSM Agent installed on the
-%% instance, instance status, and so on.
+%% @doc Describes one or more of your managed nodes, including information
+%% about the operating system platform, the version of SSM Agent installed on
+%% the managed node, node status, and so on.
 %%
-%% If you specify one or more instance IDs, it returns information for those
-%% instances. If you don't specify instance IDs, it returns information for
-%% all your instances. If you specify an instance ID that isn't valid or an
-%% instance that you don't own, you receive an error.
+%% If you specify one or more managed node IDs, it returns information for
+%% those managed nodes. If you don't specify node IDs, it returns information
+%% for all your managed nodes. If you specify a node ID that isn't valid or a
+%% node that you don't own, you receive an error.
 %%
 %% The `IamRole' field for this API operation is the Identity and Access
-%% Management (IAM) role assigned to on-premises instances. This call doesn't
-%% return the IAM role for EC2 instances.
+%% Management (IAM) role assigned to on-premises managed nodes. This call
+%% doesn't return the IAM role for EC2 instances.
 describe_instance_information(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_information(Client, Input, []).
@@ -838,7 +841,7 @@ describe_instance_information(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstanceInformation">>, Input, Options).
 
-%% @doc Retrieves the high-level patch state of one or more instances.
+%% @doc Retrieves the high-level patch state of one or more managed nodes.
 describe_instance_patch_states(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_patch_states(Client, Input, []).
@@ -846,7 +849,7 @@ describe_instance_patch_states(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstancePatchStates">>, Input, Options).
 
-%% @doc Retrieves the high-level patch state for the instances in the
+%% @doc Retrieves the high-level patch state for the managed nodes in the
 %% specified patch group.
 describe_instance_patch_states_for_patch_group(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -855,8 +858,8 @@ describe_instance_patch_states_for_patch_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInstancePatchStatesForPatchGroup">>, Input, Options).
 
-%% @doc Retrieves information about the patches on the specified instance and
-%% their state relative to the patch baseline being used for the instance.
+%% @doc Retrieves information about the patches on the specified managed node
+%% and their state relative to the patch baseline being used for the node.
 describe_instance_patches(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_patches(Client, Input, []).
@@ -942,7 +945,7 @@ describe_maintenance_windows(Client, Input, Options)
     request(Client, <<"DescribeMaintenanceWindows">>, Input, Options).
 
 %% @doc Retrieves information about the maintenance window targets or tasks
-%% that an instance is associated with.
+%% that a managed node is associated with.
 describe_maintenance_windows_for_target(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_windows_for_target(Client, Input, []).
@@ -1118,9 +1121,9 @@ get_calendar_state(Client, Input, Options)
 %% invocation or plugin.
 %%
 %% `GetCommandInvocation' only gives the execution status of a plugin in a
-%% document. To get the command execution status on a specific instance, use
-%% `ListCommandInvocations'. To get the command execution status across
-%% instances, use `ListCommands'.
+%% document. To get the command execution status on a specific managed node,
+%% use `ListCommandInvocations'. To get the command execution status across
+%% managed nodes, use `ListCommands'.
 get_command_invocation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_command_invocation(Client, Input, []).
@@ -1128,7 +1131,7 @@ get_command_invocation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCommandInvocation">>, Input, Options).
 
-%% @doc Retrieves the Session Manager connection status for an instance to
+%% @doc Retrieves the Session Manager connection status for a managed node to
 %% determine whether it is running and ready to receive Session Manager
 %% connections.
 get_connection_status(Client, Input)
@@ -1153,8 +1156,8 @@ get_default_patch_baseline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDefaultPatchBaseline">>, Input, Options).
 
-%% @doc Retrieves the current snapshot for the patch baseline the instance
-%% uses.
+%% @doc Retrieves the current snapshot for the patch baseline the managed
+%% node uses.
 %%
 %% This API is primarily used by the `AWS-RunPatchBaseline' Systems Manager
 %% document (SSM document).
@@ -1164,9 +1167,9 @@ get_default_patch_baseline(Client, Input, Options)
 %% credentials and the operation fails. To avoid this, you can run the
 %% command in the Amazon Web Services Systems Manager console. Use Run
 %% Command, a capability of Amazon Web Services Systems Manager, with an SSM
-%% document that enables you to target an instance with a script or command.
-%% For example, run the command using the `AWS-RunShellScript' document or
-%% the `AWS-RunPowerShellScript' document.
+%% document that enables you to target a managed node with a script or
+%% command. For example, run the command using the `AWS-RunShellScript'
+%% document or the `AWS-RunPowerShellScript' document.
 get_deployable_patch_snapshot_for_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_deployable_patch_snapshot_for_instance(Client, Input, []).
@@ -1185,7 +1188,7 @@ get_document(Client, Input, Options)
 
 %% @doc Query inventory information.
 %%
-%% This includes instance status, such as `Stopped' or `Terminated'.
+%% This includes managed node status, such as `Stopped' or `Terminated'.
 get_inventory(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_inventory(Client, Input, []).
@@ -1444,7 +1447,7 @@ list_association_versions(Client, Input, Options)
 %% Services account and Amazon Web Services Region.
 %%
 %% You can limit the results to a specific State Manager association document
-%% or instance by specifying a filter. State Manager is a capability of
+%% or managed node by specifying a filter. State Manager is a capability of
 %% Amazon Web Services Systems Manager.
 list_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1453,13 +1456,13 @@ list_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAssociations">>, Input, Options).
 
-%% @doc An invocation is copy of a command sent to a specific instance.
+%% @doc An invocation is copy of a command sent to a specific managed node.
 %%
-%% A command can apply to one or more instances. A command invocation applies
-%% to one instance. For example, if a user runs `SendCommand' against three
-%% instances, then a command invocation is created for each requested
-%% instance ID. `ListCommandInvocations' provide status about command
-%% execution.
+%% A command can apply to one or more managed nodes. A command invocation
+%% applies to one managed node. For example, if a user runs `SendCommand'
+%% against three managed nodes, then a command invocation is created for each
+%% requested managed node ID. `ListCommandInvocations' provide status about
+%% command execution.
 list_command_invocations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_command_invocations(Client, Input, []).
@@ -1639,7 +1642,7 @@ modify_document_permission(Client, Input, Options)
 %% </li> <li> ExecutionType: Specify patch, association, or Custom:`string'.
 %%
 %% </li> <li> ExecutionTime. The time the patch, association, or custom
-%% compliance item was applied to the instance.
+%% compliance item was applied to the managed node.
 %%
 %% </li> <li> Id: The patch, association, or custom compliance ID.
 %%
@@ -1680,7 +1683,7 @@ put_compliance_items(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutComplianceItems">>, Input, Options).
 
-%% @doc Bulk update custom inventory items on one more instance.
+%% @doc Bulk update custom inventory items on one or more managed nodes.
 %%
 %% The request adds an inventory item, if it doesn't already exist, or
 %% updates an inventory item, if it does exist.
@@ -1771,7 +1774,8 @@ reset_service_setting(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResetServiceSetting">>, Input, Options).
 
-%% @doc Reconnects a session to an instance after it has been disconnected.
+%% @doc Reconnects a session to a managed node after it has been
+%% disconnected.
 %%
 %% Connections can be resumed for disconnected sessions, but not terminated
 %% sessions.
@@ -1795,7 +1799,7 @@ send_automation_signal(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendAutomationSignal">>, Input, Options).
 
-%% @doc Runs commands on one or more managed instances.
+%% @doc Runs commands on one or more managed nodes.
 send_command(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_command(Client, Input, []).
@@ -1832,8 +1836,8 @@ start_change_request_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartChangeRequestExecution">>, Input, Options).
 
-%% @doc Initiates a connection to a target (for example, an instance) for a
-%% Session Manager session.
+%% @doc Initiates a connection to a target (for example, a managed node) for
+%% a Session Manager session.
 %%
 %% Returns a URL and token that can be used to open a WebSocket connection
 %% for sending input and receiving outputs.
@@ -1863,7 +1867,7 @@ stop_automation_execution(Client, Input, Options)
     request(Client, <<"StopAutomationExecution">>, Input, Options).
 
 %% @doc Permanently ends a session and closes the data connection between the
-%% Session Manager client and SSM Agent on the instance.
+%% Session Manager client and SSM Agent on the managed node.
 %%
 %% A terminated session isn't be resumed.
 terminate_session(Client, Input)
@@ -1885,7 +1889,14 @@ unlabel_parameter_version(Client, Input, Options)
 %%
 %% You can update the association name and version, the document version,
 %% schedule, parameters, and Amazon Simple Storage Service (Amazon S3)
-%% output.
+%% output. When you call `UpdateAssociation', the system drops all optional
+%% parameters from the request and overwrites the association with null
+%% values for those parameters. This is by design. You must specify all
+%% optional parameters in the call, even if you are not changing the
+%% parameters. This includes the `Name' parameter. Before calling this API
+%% action, we recommend that you call the `DescribeAssociation' API operation
+%% and make a note of all optional parameters required for your
+%% `UpdateAssociation' call.
 %%
 %% In order to call this API operation, your Identity and Access Management
 %% (IAM) user account, group, or role must be configured with permission to
@@ -1896,7 +1907,8 @@ unlabel_parameter_version(Client, Input, Options)
 %% ssm:DescribeAssociation on resource: <resource_arn>'
 %%
 %% When you update an association, the association immediately runs against
-%% the specified targets.
+%% the specified targets. You can add the `ApplyOnlyAtCronInterval' parameter
+%% to run the association during the next schedule run.
 update_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_association(Client, Input, []).
@@ -1905,7 +1917,7 @@ update_association(Client, Input, Options)
     request(Client, <<"UpdateAssociation">>, Input, Options).
 
 %% @doc Updates the status of the Amazon Web Services Systems Manager
-%% document (SSM document) associated with the specified instance.
+%% document (SSM document) associated with the specified managed node.
 %%
 %% `UpdateAssociationStatus' is primarily used by the Amazon Web Services
 %% Systems Manager Agent (SSM Agent) to report status updates about your
@@ -2034,10 +2046,10 @@ update_maintenance_window_task(Client, Input, Options)
     request(Client, <<"UpdateMaintenanceWindowTask">>, Input, Options).
 
 %% @doc Changes the Identity and Access Management (IAM) role that is
-%% assigned to the on-premises instance or virtual machines (VM).
+%% assigned to the on-premises server, edge device, or virtual machines (VM).
 %%
-%% IAM roles are first assigned to these hybrid instances during the
-%% activation process. For more information, see `CreateActivation'.
+%% IAM roles are first assigned to these hybrid nodes during the activation
+%% process. For more information, see `CreateActivation'.
 update_managed_instance_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_managed_instance_role(Client, Input, []).

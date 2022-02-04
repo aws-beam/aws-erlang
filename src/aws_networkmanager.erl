@@ -6,14 +6,24 @@
 %% and on-premises networks that are built around transit gateways.
 -module(aws_networkmanager).
 
--export([associate_customer_gateway/3,
+-export([accept_attachment/3,
+         accept_attachment/4,
+         associate_connect_peer/3,
+         associate_connect_peer/4,
+         associate_customer_gateway/3,
          associate_customer_gateway/4,
          associate_link/3,
          associate_link/4,
          associate_transit_gateway_connect_peer/3,
          associate_transit_gateway_connect_peer/4,
+         create_connect_attachment/2,
+         create_connect_attachment/3,
+         create_connect_peer/2,
+         create_connect_peer/3,
          create_connection/3,
          create_connection/4,
+         create_core_network/2,
+         create_core_network/3,
          create_device/3,
          create_device/4,
          create_global_network/2,
@@ -22,14 +32,28 @@
          create_link/4,
          create_site/3,
          create_site/4,
+         create_site_to_site_vpn_attachment/2,
+         create_site_to_site_vpn_attachment/3,
+         create_vpc_attachment/2,
+         create_vpc_attachment/3,
+         delete_attachment/3,
+         delete_attachment/4,
+         delete_connect_peer/3,
+         delete_connect_peer/4,
          delete_connection/4,
          delete_connection/5,
+         delete_core_network/3,
+         delete_core_network/4,
+         delete_core_network_policy_version/4,
+         delete_core_network_policy_version/5,
          delete_device/4,
          delete_device/5,
          delete_global_network/3,
          delete_global_network/4,
          delete_link/4,
          delete_link/5,
+         delete_resource_policy/3,
+         delete_resource_policy/4,
          delete_site/4,
          delete_site/5,
          deregister_transit_gateway/4,
@@ -37,15 +61,37 @@
          describe_global_networks/1,
          describe_global_networks/3,
          describe_global_networks/4,
+         disassociate_connect_peer/4,
+         disassociate_connect_peer/5,
          disassociate_customer_gateway/4,
          disassociate_customer_gateway/5,
          disassociate_link/3,
          disassociate_link/4,
          disassociate_transit_gateway_connect_peer/4,
          disassociate_transit_gateway_connect_peer/5,
+         execute_core_network_change_set/4,
+         execute_core_network_change_set/5,
+         get_connect_attachment/2,
+         get_connect_attachment/4,
+         get_connect_attachment/5,
+         get_connect_peer/2,
+         get_connect_peer/4,
+         get_connect_peer/5,
+         get_connect_peer_associations/2,
+         get_connect_peer_associations/4,
+         get_connect_peer_associations/5,
          get_connections/2,
          get_connections/4,
          get_connections/5,
+         get_core_network/2,
+         get_core_network/4,
+         get_core_network/5,
+         get_core_network_change_set/3,
+         get_core_network_change_set/5,
+         get_core_network_change_set/6,
+         get_core_network_policy/2,
+         get_core_network_policy/4,
+         get_core_network_policy/5,
          get_customer_gateway_associations/2,
          get_customer_gateway_associations/4,
          get_customer_gateway_associations/5,
@@ -72,9 +118,15 @@
          get_network_telemetry/2,
          get_network_telemetry/4,
          get_network_telemetry/5,
+         get_resource_policy/2,
+         get_resource_policy/4,
+         get_resource_policy/5,
          get_route_analysis/3,
          get_route_analysis/5,
          get_route_analysis/6,
+         get_site_to_site_vpn_attachment/2,
+         get_site_to_site_vpn_attachment/4,
+         get_site_to_site_vpn_attachment/5,
          get_sites/2,
          get_sites/4,
          get_sites/5,
@@ -84,11 +136,34 @@
          get_transit_gateway_registrations/2,
          get_transit_gateway_registrations/4,
          get_transit_gateway_registrations/5,
+         get_vpc_attachment/2,
+         get_vpc_attachment/4,
+         get_vpc_attachment/5,
+         list_attachments/1,
+         list_attachments/3,
+         list_attachments/4,
+         list_connect_peers/1,
+         list_connect_peers/3,
+         list_connect_peers/4,
+         list_core_network_policy_versions/2,
+         list_core_network_policy_versions/4,
+         list_core_network_policy_versions/5,
+         list_core_networks/1,
+         list_core_networks/3,
+         list_core_networks/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         put_core_network_policy/3,
+         put_core_network_policy/4,
+         put_resource_policy/3,
+         put_resource_policy/4,
          register_transit_gateway/3,
          register_transit_gateway/4,
+         reject_attachment/3,
+         reject_attachment/4,
+         restore_core_network_policy_version/4,
+         restore_core_network_policy_version/5,
          start_route_analysis/3,
          start_route_analysis/4,
          tag_resource/3,
@@ -97,6 +172,8 @@
          untag_resource/4,
          update_connection/4,
          update_connection/5,
+         update_core_network/3,
+         update_core_network/4,
          update_device/4,
          update_device/5,
          update_global_network/3,
@@ -106,13 +183,69 @@
          update_network_resource_metadata/4,
          update_network_resource_metadata/5,
          update_site/4,
-         update_site/5]).
+         update_site/5,
+         update_vpc_attachment/3,
+         update_vpc_attachment/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Accepts a core network attachment request.
+%%
+%% Once the attachment request is accepted by a core network owner, the
+%% attachment is created and connected to a core network.
+accept_attachment(Client, AttachmentId, Input) ->
+    accept_attachment(Client, AttachmentId, Input, []).
+accept_attachment(Client, AttachmentId, Input0, Options0) ->
+    Method = post,
+    Path = ["/attachments/", aws_util:encode_uri(AttachmentId), "/accept"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates a core network Connect peer with a device and optionally,
+%% with a link.
+%%
+%% If you specify a link, it must be associated with the specified device.
+%% You can only associate core network Connect peers that have been created
+%% on a core network Connect attachment on a core network.
+associate_connect_peer(Client, GlobalNetworkId, Input) ->
+    associate_connect_peer(Client, GlobalNetworkId, Input, []).
+associate_connect_peer(Client, GlobalNetworkId, Input0, Options0) ->
+    Method = post,
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connect-peer-associations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a customer gateway with a device and optionally, with a
 %% link.
@@ -210,6 +343,62 @@ associate_transit_gateway_connect_peer(Client, GlobalNetworkId, Input0, Options0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a core network Connect attachment from a specified core
+%% network attachment.
+%%
+%% A core network Connect attachment is a GRE-based tunnel attachment that
+%% you can use to establish a connection between a core network and an
+%% appliance. A core network Connect attachment uses an existing VPC
+%% attachment as the underlying transport mechanism.
+create_connect_attachment(Client, Input) ->
+    create_connect_attachment(Client, Input, []).
+create_connect_attachment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/connect-attachments"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a core network connect peer for a specified core network
+%% connect attachment between a core network and an appliance.
+%%
+%% The peer address and transit gateway address must be the same IP address
+%% family (IPv4 or IPv6).
+create_connect_peer(Client, Input) ->
+    create_connect_peer(Client, Input, []).
+create_connect_peer(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/connect-peers"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a connection between two devices.
 %%
 %% The devices can be a physical or virtual appliance that connects to a
@@ -220,6 +409,30 @@ create_connection(Client, GlobalNetworkId, Input) ->
 create_connection(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a core network as part of your global network, and
+%% optionally, with a core network policy.
+create_core_network(Client, Input) ->
+    create_core_network(Client, Input, []).
+create_core_network(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/core-networks"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -332,12 +545,157 @@ create_site(Client, GlobalNetworkId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a site-to-site VPN attachment on an edge location of a core
+%% network.
+create_site_to_site_vpn_attachment(Client, Input) ->
+    create_site_to_site_vpn_attachment(Client, Input, []).
+create_site_to_site_vpn_attachment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/site-to-site-vpn-attachments"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a VPC attachment on an edge location of a core network.
+create_vpc_attachment(Client, Input) ->
+    create_vpc_attachment(Client, Input, []).
+create_vpc_attachment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/vpc-attachments"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an attachment.
+%%
+%% Supports all attachment types.
+delete_attachment(Client, AttachmentId, Input) ->
+    delete_attachment(Client, AttachmentId, Input, []).
+delete_attachment(Client, AttachmentId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/attachments/", aws_util:encode_uri(AttachmentId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a Connect peer.
+delete_connect_peer(Client, ConnectPeerId, Input) ->
+    delete_connect_peer(Client, ConnectPeerId, Input, []).
+delete_connect_peer(Client, ConnectPeerId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/connect-peers/", aws_util:encode_uri(ConnectPeerId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the specified connection in your global network.
 delete_connection(Client, ConnectionId, GlobalNetworkId, Input) ->
     delete_connection(Client, ConnectionId, GlobalNetworkId, Input, []).
 delete_connection(Client, ConnectionId, GlobalNetworkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections/", aws_util:encode_uri(ConnectionId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a core network along with all core network policies.
+%%
+%% This can only be done if there are no attachments on a core network.
+delete_core_network(Client, CoreNetworkId, Input) ->
+    delete_core_network(Client, CoreNetworkId, Input, []).
+delete_core_network(Client, CoreNetworkId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a policy version from a core network.
+%%
+%% You can't delete the current LIVE policy.
+delete_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Input) ->
+    delete_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Input, []).
+delete_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-policy-versions/", aws_util:encode_uri(PolicyVersionId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -416,6 +774,32 @@ delete_link(Client, GlobalNetworkId, LinkId, Input) ->
 delete_link(Client, GlobalNetworkId, LinkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/links/", aws_util:encode_uri(LinkId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a resource policy for the specified resource.
+%%
+%% This revokes the access of the principals specified in the resource
+%% policy.
+delete_resource_policy(Client, ResourceArn, Input) ->
+    delete_resource_policy(Client, ResourceArn, Input, []).
+delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/resource-policy/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -518,6 +902,29 @@ describe_global_networks(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Disassociates a core network Connect peer from a device and a link.
+disassociate_connect_peer(Client, ConnectPeerId, GlobalNetworkId, Input) ->
+    disassociate_connect_peer(Client, ConnectPeerId, GlobalNetworkId, Input, []).
+disassociate_connect_peer(Client, ConnectPeerId, GlobalNetworkId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connect-peer-associations/", aws_util:encode_uri(ConnectPeerId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Disassociates a customer gateway from a device and a link.
 disassociate_customer_gateway(Client, CustomerGatewayArn, GlobalNetworkId, Input) ->
     disassociate_customer_gateway(Client, CustomerGatewayArn, GlobalNetworkId, Input, []).
@@ -592,6 +999,106 @@ disassociate_transit_gateway_connect_peer(Client, GlobalNetworkId, TransitGatewa
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Executes a change set on your core network.
+%%
+%% Deploys changes globally based on the policy submitted..
+execute_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, Input) ->
+    execute_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, Input, []).
+execute_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, Input0, Options0) ->
+    Method = post,
+    Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-change-sets/", aws_util:encode_uri(PolicyVersionId), "/execute"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns information about a core network Connect attachment.
+get_connect_attachment(Client, AttachmentId)
+  when is_map(Client) ->
+    get_connect_attachment(Client, AttachmentId, #{}, #{}).
+
+get_connect_attachment(Client, AttachmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_connect_attachment(Client, AttachmentId, QueryMap, HeadersMap, []).
+
+get_connect_attachment(Client, AttachmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/connect-attachments/", aws_util:encode_uri(AttachmentId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about a core network Connect peer.
+get_connect_peer(Client, ConnectPeerId)
+  when is_map(Client) ->
+    get_connect_peer(Client, ConnectPeerId, #{}, #{}).
+
+get_connect_peer(Client, ConnectPeerId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_connect_peer(Client, ConnectPeerId, QueryMap, HeadersMap, []).
+
+get_connect_peer(Client, ConnectPeerId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/connect-peers/", aws_util:encode_uri(ConnectPeerId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about a core network Connect peer associations.
+get_connect_peer_associations(Client, GlobalNetworkId)
+  when is_map(Client) ->
+    get_connect_peer_associations(Client, GlobalNetworkId, #{}, #{}).
+
+get_connect_peer_associations(Client, GlobalNetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_connect_peer_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, []).
+
+get_connect_peer_associations(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connect-peer-associations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"connectPeerIds">>, maps:get(<<"connectPeerIds">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets information about one or more of your connections in a global
 %% network.
 get_connections(Client, GlobalNetworkId)
@@ -618,6 +1125,91 @@ get_connections(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
         {<<"deviceId">>, maps:get(<<"deviceId">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about a core network.
+%%
+%% By default it returns the LIVE policy.
+get_core_network(Client, CoreNetworkId)
+  when is_map(Client) ->
+    get_core_network(Client, CoreNetworkId, #{}, #{}).
+
+get_core_network(Client, CoreNetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_core_network(Client, CoreNetworkId, QueryMap, HeadersMap, []).
+
+get_core_network(Client, CoreNetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a change set between the LIVE core network policy and a
+%% submitted policy.
+get_core_network_change_set(Client, CoreNetworkId, PolicyVersionId)
+  when is_map(Client) ->
+    get_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, #{}, #{}).
+
+get_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, QueryMap, HeadersMap, []).
+
+get_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-change-sets/", aws_util:encode_uri(PolicyVersionId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets details about a core network policy.
+%%
+%% You can get details about your current live policy or any previous policy
+%% version.
+get_core_network_policy(Client, CoreNetworkId)
+  when is_map(Client) ->
+    get_core_network_policy(Client, CoreNetworkId, #{}, #{}).
+
+get_core_network_policy(Client, CoreNetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_core_network_policy(Client, CoreNetworkId, QueryMap, HeadersMap, []).
+
+get_core_network_policy(Client, CoreNetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-policy"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"alias">>, maps:get(<<"alias">>, QueryMap, undefined)},
+        {<<"policyVersionId">>, maps:get(<<"policyVersionId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -806,6 +1398,7 @@ get_network_resource_relationships(Client, GlobalNetworkId, QueryMap, HeadersMap
       [
         {<<"accountId">>, maps:get(<<"accountId">>, QueryMap, undefined)},
         {<<"awsRegion">>, maps:get(<<"awsRegion">>, QueryMap, undefined)},
+        {<<"coreNetworkId">>, maps:get(<<"coreNetworkId">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"registeredGatewayArn">>, maps:get(<<"registeredGatewayArn">>, QueryMap, undefined)},
@@ -842,6 +1435,7 @@ get_network_resources(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
       [
         {<<"accountId">>, maps:get(<<"accountId">>, QueryMap, undefined)},
         {<<"awsRegion">>, maps:get(<<"awsRegion">>, QueryMap, undefined)},
+        {<<"coreNetworkId">>, maps:get(<<"coreNetworkId">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"registeredGatewayArn">>, maps:get(<<"registeredGatewayArn">>, QueryMap, undefined)},
@@ -898,6 +1492,7 @@ get_network_telemetry(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
       [
         {<<"accountId">>, maps:get(<<"accountId">>, QueryMap, undefined)},
         {<<"awsRegion">>, maps:get(<<"awsRegion">>, QueryMap, undefined)},
+        {<<"coreNetworkId">>, maps:get(<<"coreNetworkId">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"registeredGatewayArn">>, maps:get(<<"registeredGatewayArn">>, QueryMap, undefined)},
@@ -905,6 +1500,29 @@ get_network_telemetry(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
         {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about a resource policy.
+get_resource_policy(Client, ResourceArn)
+  when is_map(Client) ->
+    get_resource_policy(Client, ResourceArn, #{}, #{}).
+
+get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/resource-policy/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -920,6 +1538,29 @@ get_route_analysis(Client, GlobalNetworkId, RouteAnalysisId, QueryMap, HeadersMa
 get_route_analysis(Client, GlobalNetworkId, RouteAnalysisId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/route-analyses/", aws_util:encode_uri(RouteAnalysisId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about a site-to-site VPN attachment.
+get_site_to_site_vpn_attachment(Client, AttachmentId)
+  when is_map(Client) ->
+    get_site_to_site_vpn_attachment(Client, AttachmentId, #{}, #{}).
+
+get_site_to_site_vpn_attachment(Client, AttachmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_site_to_site_vpn_attachment(Client, AttachmentId, QueryMap, HeadersMap, []).
+
+get_site_to_site_vpn_attachment(Client, AttachmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/site-to-site-vpn-attachments/", aws_util:encode_uri(AttachmentId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1020,6 +1661,147 @@ get_transit_gateway_registrations(Client, GlobalNetworkId, QueryMap, HeadersMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns information about a VPC attachment.
+get_vpc_attachment(Client, AttachmentId)
+  when is_map(Client) ->
+    get_vpc_attachment(Client, AttachmentId, #{}, #{}).
+
+get_vpc_attachment(Client, AttachmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_vpc_attachment(Client, AttachmentId, QueryMap, HeadersMap, []).
+
+get_vpc_attachment(Client, AttachmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/vpc-attachments/", aws_util:encode_uri(AttachmentId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of core network attachments.
+list_attachments(Client)
+  when is_map(Client) ->
+    list_attachments(Client, #{}, #{}).
+
+list_attachments(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_attachments(Client, QueryMap, HeadersMap, []).
+
+list_attachments(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/attachments"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"attachmentType">>, maps:get(<<"attachmentType">>, QueryMap, undefined)},
+        {<<"coreNetworkId">>, maps:get(<<"coreNetworkId">>, QueryMap, undefined)},
+        {<<"edgeLocation">>, maps:get(<<"edgeLocation">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"state">>, maps:get(<<"state">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of core network Connect peers.
+list_connect_peers(Client)
+  when is_map(Client) ->
+    list_connect_peers(Client, #{}, #{}).
+
+list_connect_peers(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_connect_peers(Client, QueryMap, HeadersMap, []).
+
+list_connect_peers(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/connect-peers"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"connectAttachmentId">>, maps:get(<<"connectAttachmentId">>, QueryMap, undefined)},
+        {<<"coreNetworkId">>, maps:get(<<"coreNetworkId">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of core network policy versions.
+list_core_network_policy_versions(Client, CoreNetworkId)
+  when is_map(Client) ->
+    list_core_network_policy_versions(Client, CoreNetworkId, #{}, #{}).
+
+list_core_network_policy_versions(Client, CoreNetworkId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_core_network_policy_versions(Client, CoreNetworkId, QueryMap, HeadersMap, []).
+
+list_core_network_policy_versions(Client, CoreNetworkId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-policy-versions"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of owned and shared core networks.
+list_core_networks(Client)
+  when is_map(Client) ->
+    list_core_networks(Client, #{}, #{}).
+
+list_core_networks(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_core_networks(Client, QueryMap, HeadersMap, []).
+
+list_core_networks(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/core-networks"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the tags for a specified resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
@@ -1043,6 +1825,55 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Creates a new, immutable version of a core network policy.
+%%
+%% A subsequent change set is created showing the differences between the
+%% LIVE policy and the submitted policy.
+put_core_network_policy(Client, CoreNetworkId, Input) ->
+    put_core_network_policy(Client, CoreNetworkId, Input, []).
+put_core_network_policy(Client, CoreNetworkId, Input0, Options0) ->
+    Method = post,
+    Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-policy"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates or updates a resource policy.
+put_resource_policy(Client, ResourceArn, Input) ->
+    put_resource_policy(Client, ResourceArn, Input, []).
+put_resource_policy(Client, ResourceArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/resource-policy/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Registers a transit gateway in your global network.
 %%
 %% The transit gateway can be in any Amazon Web Services Region, but it must
@@ -1054,6 +1885,56 @@ register_transit_gateway(Client, GlobalNetworkId, Input) ->
 register_transit_gateway(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-registrations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Rejects a core network attachment request.
+reject_attachment(Client, AttachmentId, Input) ->
+    reject_attachment(Client, AttachmentId, Input, []).
+reject_attachment(Client, AttachmentId, Input0, Options0) ->
+    Method = post,
+    Path = ["/attachments/", aws_util:encode_uri(AttachmentId), "/reject"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Restores a previous policy version as a new, immutable version of a
+%% core network policy.
+%%
+%% A subsequent change set is created showing the differences between the
+%% LIVE policy and restored policy.
+restore_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Input) ->
+    restore_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Input, []).
+restore_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Input0, Options0) ->
+    Method = post,
+    Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-policy-versions/", aws_util:encode_uri(PolicyVersionId), "/restore"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1152,6 +2033,29 @@ update_connection(Client, ConnectionId, GlobalNetworkId, Input) ->
 update_connection(Client, ConnectionId, GlobalNetworkId, Input0, Options0) ->
     Method = patch,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections/", aws_util:encode_uri(ConnectionId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the description of a core network.
+update_core_network(Client, CoreNetworkId, Input) ->
+    update_core_network(Client, CoreNetworkId, Input, []).
+update_core_network(Client, CoreNetworkId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1275,6 +2179,29 @@ update_site(Client, GlobalNetworkId, SiteId, Input) ->
 update_site(Client, GlobalNetworkId, SiteId, Input0, Options0) ->
     Method = patch,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/sites/", aws_util:encode_uri(SiteId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a VPC attachment.
+update_vpc_attachment(Client, AttachmentId, Input) ->
+    update_vpc_attachment(Client, AttachmentId, Input, []).
+update_vpc_attachment(Client, AttachmentId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/vpc-attachments/", aws_util:encode_uri(AttachmentId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

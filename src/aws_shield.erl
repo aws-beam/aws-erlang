@@ -46,6 +46,8 @@
          describe_protection_group/3,
          describe_subscription/2,
          describe_subscription/3,
+         disable_application_layer_automatic_response/2,
+         disable_application_layer_automatic_response/3,
          disable_proactive_engagement/2,
          disable_proactive_engagement/3,
          disassociate_drt_log_bucket/2,
@@ -54,6 +56,8 @@
          disassociate_drt_role/3,
          disassociate_health_check/2,
          disassociate_health_check/3,
+         enable_application_layer_automatic_response/2,
+         enable_application_layer_automatic_response/3,
          enable_proactive_engagement/2,
          enable_proactive_engagement/3,
          get_subscription_state/2,
@@ -72,6 +76,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_application_layer_automatic_response/2,
+         update_application_layer_automatic_response/3,
          update_emergency_contact_settings/2,
          update_emergency_contact_settings/3,
          update_protection_group/2,
@@ -113,11 +119,12 @@ associate_drt_log_bucket(Client, Input, Options)
 %% associated role, the new `RoleArn' will replace the existing `RoleArn'.
 %%
 %% Prior to making the `AssociateDRTRole' request, you must attach the
-%% AWSShieldDRTAccessPolicy managed policy to the role you will specify in
-%% the request. For more information see Attaching and Detaching IAM
-%% Policies. The role must also trust the service principal `
-%% drt.shield.amazonaws.com'. For more information, see IAM JSON Policy
-%% Elements: Principal.
+%% `AWSShieldDRTAccessPolicy' managed policy to the role that you'll specify
+%% in the request. You can access this policy in the IAM console at
+%% AWSShieldDRTAccessPolicy. For more information see Adding and removing IAM
+%% identity permissions. The role must also trust the service principal
+%% `drt.shield.amazonaws.com'. For more information, see IAM JSON policy
+%% elements: Principal.
 %%
 %% The SRT will have access only to your WAF and Shield resources. By
 %% submitting this request, you authorize the SRT to inspect your WAF and
@@ -125,8 +132,8 @@ associate_drt_log_bucket(Client, Input, Options)
 %% behalf. The SRT takes these actions only if explicitly authorized by you.
 %%
 %% You must have the `iam:PassRole' permission to make an `AssociateDRTRole'
-%% request. For more information, see Granting a User Permissions to Pass a
-%% Role to an Amazon Web Services Service.
+%% request. For more information, see Granting a user permissions to pass a
+%% role to an Amazon Web Services service.
 %%
 %% To use the services of the SRT and make an `AssociateDRTRole' request, you
 %% must be subscribed to the Business Support plan or the Enterprise Support
@@ -143,9 +150,9 @@ associate_drt_role(Client, Input, Options)
 %%
 %% Shield Advanced health-based detection uses the health of your Amazon Web
 %% Services resource to improve responsiveness and accuracy in attack
-%% detection and mitigation.
+%% detection and response.
 %%
-%% You define the health check in Route 53 and then associate it with your
+%% You define the health check in Route 53 and then associate it with your
 %% Shield Advanced protection. For more information, see Shield Advanced
 %% Health-Based Detection in the WAF Developer Guide.
 associate_health_check(Client, Input)
@@ -183,13 +190,14 @@ associate_proactive_engagement_details(Client, Input, Options)
 %%
 %% The resource can be an Amazon CloudFront distribution, Elastic Load
 %% Balancing load balancer, Global Accelerator accelerator, Elastic IP
-%% Address, or an Amazon Route 53 hosted zone.
+%% Address, or an Amazon Route 53 hosted zone.
 %%
 %% You can add protection to only a single resource with each
-%% CreateProtection request. If you want to add protection to multiple
-%% resources at once, use the WAF console. For more information see Getting
-%% Started with Shield Advanced and Add Shield Advanced Protection to more
-%% Amazon Web Services Resources.
+%% `CreateProtection' request. You can add protection to multiple resources
+%% at once through the Shield Advanced console at
+%% [https://console.aws.amazon.com/wafv2/shieldv2#/]. For more information
+%% see Getting Started with Shield Advanced and Adding Shield Advanced
+%% protection to Amazon Web Services resources.
 create_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_protection(Client, Input, []).
@@ -324,6 +332,18 @@ describe_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSubscription">>, Input, Options).
 
+%% @doc Disable the Shield Advanced automatic application layer DDoS
+%% mitigation feature for the resource.
+%%
+%% This stops Shield Advanced from creating, verifying, and applying WAF
+%% rules for attacks that it detects for the resource.
+disable_application_layer_automatic_response(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_application_layer_automatic_response(Client, Input, []).
+disable_application_layer_automatic_response(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableApplicationLayerAutomaticResponse">>, Input, Options).
+
 %% @doc Removes authorization from the Shield Response Team (SRT) to notify
 %% contacts about escalations to the SRT and to initiate proactive customer
 %% support.
@@ -336,12 +356,6 @@ disable_proactive_engagement(Client, Input, Options)
 
 %% @doc Removes the Shield Response Team's (SRT) access to the specified
 %% Amazon S3 bucket containing the logs that you shared previously.
-%%
-%% To make a `DisassociateDRTLogBucket' request, you must be subscribed to
-%% the Business Support plan or the Enterprise Support plan. However, if you
-%% are not subscribed to one of these support plans, but had been previously
-%% and had granted the SRT access to your account, you can submit a
-%% `DisassociateDRTLogBucket' request to remove this access.
 disassociate_drt_log_bucket(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_drt_log_bucket(Client, Input, []).
@@ -351,12 +365,6 @@ disassociate_drt_log_bucket(Client, Input, Options)
 
 %% @doc Removes the Shield Response Team's (SRT) access to your Amazon Web
 %% Services account.
-%%
-%% To make a `DisassociateDRTRole' request, you must be subscribed to the
-%% Business Support plan or the Enterprise Support plan. However, if you are
-%% not subscribed to one of these support plans, but had been previously and
-%% had granted the SRT access to your account, you can submit a
-%% `DisassociateDRTRole' request to remove this access.
 disassociate_drt_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_drt_role(Client, Input, []).
@@ -369,9 +377,9 @@ disassociate_drt_role(Client, Input, Options)
 %%
 %% Shield Advanced health-based detection uses the health of your Amazon Web
 %% Services resource to improve responsiveness and accuracy in attack
-%% detection and mitigation.
+%% detection and response.
 %%
-%% You define the health check in Route 53 and then associate or disassociate
+%% You define the health check in Route 53 and then associate or disassociate
 %% it with your Shield Advanced protection. For more information, see Shield
 %% Advanced Health-Based Detection in the WAF Developer Guide.
 disassociate_health_check(Client, Input)
@@ -380,6 +388,38 @@ disassociate_health_check(Client, Input)
 disassociate_health_check(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateHealthCheck">>, Input, Options).
+
+%% @doc Enable the Shield Advanced automatic application layer DDoS
+%% mitigation for the resource.
+%%
+%% This feature is available for Amazon CloudFront distributions only.
+%%
+%% This causes Shield Advanced to create, verify, and apply WAF rules for
+%% DDoS attacks that it detects for the resource. Shield Advanced applies the
+%% rules in a Shield rule group inside the web ACL that you've associated
+%% with the resource. For information about how automatic mitigation works
+%% and the requirements for using it, see Shield Advanced automatic
+%% application layer DDoS mitigation.
+%%
+%% Don't use this action to make changes to automatic mitigation settings
+%% when it's already enabled for a resource. Instead, use
+%% `UpdateApplicationLayerAutomaticResponse'.
+%%
+%% To use this feature, you must associate a web ACL with the protected
+%% resource. The web ACL must be created using the latest version of WAF
+%% (v2). You can associate the web ACL through the Shield Advanced console at
+%% [https://console.aws.amazon.com/wafv2/shieldv2#/]. For more information,
+%% see Getting Started with Shield Advanced.
+%%
+%% You can also do this through the WAF console or the WAF API, but you must
+%% manage Shield Advanced automatic mitigation through Shield Advanced. For
+%% information about WAF, see WAF Developer Guide.
+enable_application_layer_automatic_response(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_application_layer_automatic_response(Client, Input, []).
+enable_application_layer_automatic_response(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableApplicationLayerAutomaticResponse">>, Input, Options).
 
 %% @doc Authorizes the Shield Response Team (SRT) to use email and phone to
 %% notify contacts about escalations to the SRT and to initiate proactive
@@ -456,6 +496,15 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates an existing Shield Advanced automatic application layer DDoS
+%% mitigation configuration for the specified resource.
+update_application_layer_automatic_response(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_application_layer_automatic_response(Client, Input, []).
+update_application_layer_automatic_response(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateApplicationLayerAutomaticResponse">>, Input, Options).
 
 %% @doc Updates the details of the list of email addresses and phone numbers
 %% that the Shield Response Team (SRT) can use to contact you if you have

@@ -586,25 +586,21 @@ list_web_acls(Client, Input, Options)
 %% You can access information about all traffic that WAF inspects using the
 %% following steps:
 %%
-%% <ol> <li> Create an Amazon Kinesis Data Firehose.
+%% <ol> <li> Create your logging destination. You can use an Amazon
+%% CloudWatch Logs log group, an Amazon Simple Storage Service (Amazon S3)
+%% bucket, or an Amazon Kinesis Data Firehose. For information about
+%% configuring logging destinations and the permissions that are required for
+%% each, see Logging web ACL traffic information in the WAF Developer Guide.
 %%
-%% Create the data firehose with a PUT source and in the Region that you are
-%% operating. If you are capturing logs for Amazon CloudFront, always create
-%% the firehose in US East (N. Virginia).
-%%
-%% Give the data firehose a name that starts with the prefix `aws-waf-logs-'.
-%% For example, `aws-waf-logs-us-east-2-analytics'.
-%%
-%% Do not create the data firehose using a `Kinesis stream' as your source.
-%%
-%% </li> <li> Associate that firehose to your web ACL using a
+%% </li> <li> Associate your logging destination to your web ACL using a
 %% `PutLoggingConfiguration' request.
 %%
 %% </li> </ol> When you successfully enable logging using a
-%% `PutLoggingConfiguration' request, WAF will create a service linked role
-%% with the necessary permissions to write logs to the Amazon Kinesis Data
-%% Firehose. For more information, see Logging Web ACL Traffic Information in
-%% the WAF Developer Guide.
+%% `PutLoggingConfiguration' request, WAF creates an additional role or
+%% policy that is required to write logs to the logging destination. For an
+%% Amazon CloudWatch Logs log group, WAF creates a resource policy on the log
+%% group. For an Amazon S3 bucket, WAF creates a bucket policy. For an Amazon
+%% Kinesis Data Firehose, WAF creates a service-linked role.
 %%
 %% This operation completely replaces the mutable specifications that you
 %% already have for the logging configuration with the ones that you provide

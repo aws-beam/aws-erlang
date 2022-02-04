@@ -12,6 +12,8 @@
 
 -export([associate_assets/3,
          associate_assets/4,
+         associate_time_series_to_asset_property/2,
+         associate_time_series_to_asset_property/3,
          batch_associate_project_assets/3,
          batch_associate_project_assets/4,
          batch_disassociate_project_assets/3,
@@ -46,6 +48,8 @@
          delete_portal/4,
          delete_project/3,
          delete_project/4,
+         delete_time_series/2,
+         delete_time_series/3,
          describe_access_policy/2,
          describe_access_policy/4,
          describe_access_policy/5,
@@ -82,8 +86,13 @@
          describe_storage_configuration/1,
          describe_storage_configuration/3,
          describe_storage_configuration/4,
+         describe_time_series/1,
+         describe_time_series/3,
+         describe_time_series/4,
          disassociate_assets/3,
          disassociate_assets/4,
+         disassociate_time_series_from_asset_property/2,
+         disassociate_time_series_from_asset_property/3,
          get_asset_property_aggregates/5,
          get_asset_property_aggregates/7,
          get_asset_property_aggregates/8,
@@ -129,6 +138,9 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_time_series/1,
+         list_time_series/3,
+         list_time_series/4,
          put_default_encryption_configuration/2,
          put_default_encryption_configuration/3,
          put_logging_options/2,
@@ -189,6 +201,32 @@ associate_assets(Client, AssetId, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates a time series (data stream) with an asset property.
+associate_time_series_to_asset_property(Client, Input) ->
+    associate_time_series_to_asset_property(Client, Input, []).
+associate_time_series_to_asset_property(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/timeseries/associate/"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"alias">>, <<"alias">>},
+                     {<<"assetId">>, <<"assetId">>},
+                     {<<"propertyId">>, <<"propertyId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a group (batch) of assets with an IoT SiteWise Monitor
@@ -450,6 +488,9 @@ create_portal(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a project in the specified portal.
+%%
+%% Make sure that the project name and description don't contain confidential
+%% information.
 create_project(Client, Input) ->
     create_project(Client, Input, []).
 create_project(Client, Input0, Options0) ->
@@ -655,6 +696,51 @@ delete_project(Client, ProjectId, Input0, Options0) ->
 
     QueryMapping = [
                      {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a time series (data stream).
+%%
+%% If you delete a time series that's associated with an asset property, the
+%% asset property still exists, but the time series will no longer be
+%% associated with this asset property.
+%%
+%% To identify a time series, do one of the following:
+%%
+%% <ul> <li> If the time series isn't associated with an asset property,
+%% specify the `alias' of the time series.
+%%
+%% </li> <li> If the time series is associated with an asset property,
+%% specify one of the following:
+%%
+%% <ul> <li> The `alias' of the time series.
+%%
+%% </li> <li> The `assetId' and `propertyId' that identifies the asset
+%% property.
+%%
+%% </li> </ul> </li> </ul>
+delete_time_series(Client, Input) ->
+    delete_time_series(Client, Input, []).
+delete_time_series(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/timeseries/delete/"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"alias">>, <<"alias">>},
+                     {<<"assetId">>, <<"assetId">>},
+                     {<<"propertyId">>, <<"propertyId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -954,6 +1040,50 @@ describe_storage_configuration(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves information about a time series (data stream).
+%%
+%% To identify a time series, do one of the following:
+%%
+%% <ul> <li> If the time series isn't associated with an asset property,
+%% specify the `alias' of the time series.
+%%
+%% </li> <li> If the time series is associated with an asset property,
+%% specify one of the following:
+%%
+%% <ul> <li> The `alias' of the time series.
+%%
+%% </li> <li> The `assetId' and `propertyId' that identifies the asset
+%% property.
+%%
+%% </li> </ul> </li> </ul>
+describe_time_series(Client)
+  when is_map(Client) ->
+    describe_time_series(Client, #{}, #{}).
+
+describe_time_series(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_time_series(Client, QueryMap, HeadersMap, []).
+
+describe_time_series(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/timeseries/describe/"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"alias">>, maps:get(<<"alias">>, QueryMap, undefined)},
+        {<<"assetId">>, maps:get(<<"assetId">>, QueryMap, undefined)},
+        {<<"propertyId">>, maps:get(<<"propertyId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Disassociates a child asset from the given parent asset through a
 %% hierarchy defined in the parent asset's model.
 disassociate_assets(Client, AssetId, Input) ->
@@ -976,6 +1106,32 @@ disassociate_assets(Client, AssetId, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disassociates a time series (data stream) from an asset property.
+disassociate_time_series_from_asset_property(Client, Input) ->
+    disassociate_time_series_from_asset_property(Client, Input, []).
+disassociate_time_series_from_asset_property(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/timeseries/disassociate/"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"alias">>, <<"alias">>},
+                     {<<"assetId">>, <<"assetId">>},
+                     {<<"propertyId">>, <<"propertyId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets aggregated values for an asset property.
@@ -1517,6 +1673,37 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"resourceArn">>, ResourceArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a paginated list of time series (data streams).
+list_time_series(Client)
+  when is_map(Client) ->
+    list_time_series(Client, #{}, #{}).
+
+list_time_series(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_time_series(Client, QueryMap, HeadersMap, []).
+
+list_time_series(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/timeseries/"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"aliasPrefix">>, maps:get(<<"aliasPrefix">>, QueryMap, undefined)},
+        {<<"assetId">>, maps:get(<<"assetId">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"timeSeriesType">>, maps:get(<<"timeSeriesType">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

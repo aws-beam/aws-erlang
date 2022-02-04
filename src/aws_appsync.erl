@@ -5,12 +5,16 @@
 %% sources using GraphQL from your application.
 -module(aws_appsync).
 
--export([create_api_cache/3,
+-export([associate_api/3,
+         associate_api/4,
+         create_api_cache/3,
          create_api_cache/4,
          create_api_key/3,
          create_api_key/4,
          create_data_source/3,
          create_data_source/4,
+         create_domain_name/2,
+         create_domain_name/3,
          create_function/3,
          create_function/4,
          create_graphql_api/2,
@@ -25,6 +29,8 @@
          delete_api_key/5,
          delete_data_source/4,
          delete_data_source/5,
+         delete_domain_name/3,
+         delete_domain_name/4,
          delete_function/4,
          delete_function/5,
          delete_graphql_api/3,
@@ -33,14 +39,22 @@
          delete_resolver/6,
          delete_type/4,
          delete_type/5,
+         disassociate_api/3,
+         disassociate_api/4,
          flush_api_cache/3,
          flush_api_cache/4,
+         get_api_association/2,
+         get_api_association/4,
+         get_api_association/5,
          get_api_cache/2,
          get_api_cache/4,
          get_api_cache/5,
          get_data_source/3,
          get_data_source/5,
          get_data_source/6,
+         get_domain_name/2,
+         get_domain_name/4,
+         get_domain_name/5,
          get_function/3,
          get_function/5,
          get_function/6,
@@ -65,6 +79,9 @@
          list_data_sources/2,
          list_data_sources/4,
          list_data_sources/5,
+         list_domain_names/1,
+         list_domain_names/3,
+         list_domain_names/4,
          list_functions/2,
          list_functions/4,
          list_functions/5,
@@ -95,6 +112,8 @@
          update_api_key/5,
          update_data_source/4,
          update_data_source/5,
+         update_domain_name/3,
+         update_domain_name/4,
          update_function/4,
          update_function/5,
          update_graphql_api/3,
@@ -109,6 +128,29 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Maps an endpoint to your custom domain.
+associate_api(Client, DomainName, Input) ->
+    associate_api(Client, DomainName, Input, []).
+associate_api(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), "/apiassociation"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a cache for the GraphQL API.
 create_api_cache(Client, ApiId, Input) ->
@@ -133,8 +175,8 @@ create_api_cache(Client, ApiId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a unique key that you can distribute to clients who are
-%% executing your API.
+%% @doc Creates a unique key that you can distribute to clients who invoke
+%% your API.
 create_api_key(Client, ApiId, Input) ->
     create_api_key(Client, ApiId, Input, []).
 create_api_key(Client, ApiId, Input0, Options0) ->
@@ -180,9 +222,32 @@ create_data_source(Client, ApiId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a custom `DomainName' object.
+create_domain_name(Client, Input) ->
+    create_domain_name(Client, Input, []).
+create_domain_name(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/domainnames"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a `Function' object.
 %%
-%% A function is a reusable entity. Multiple functions can be used to compose
+%% A function is a reusable entity. You can use multiple functions to compose
 %% the resolver logic.
 create_function(Client, ApiId, Input) ->
     create_function(Client, ApiId, Input, []).
@@ -232,7 +297,7 @@ create_graphql_api(Client, Input0, Options0) ->
 %% @doc Creates a `Resolver' object.
 %%
 %% A resolver converts incoming requests into a format that a data source can
-%% understand and converts the data source's responses into GraphQL.
+%% understand, and converts the data source's responses into GraphQL.
 create_resolver(Client, ApiId, TypeName, Input) ->
     create_resolver(Client, ApiId, TypeName, Input, []).
 create_resolver(Client, ApiId, TypeName, Input0, Options0) ->
@@ -347,6 +412,29 @@ delete_data_source(Client, ApiId, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a custom `DomainName' object.
+delete_domain_name(Client, DomainName, Input) ->
+    delete_domain_name(Client, DomainName, Input, []).
+delete_domain_name(Client, DomainName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a `Function'.
 delete_function(Client, ApiId, FunctionId, Input) ->
     delete_function(Client, ApiId, FunctionId, Input, []).
@@ -439,6 +527,29 @@ delete_type(Client, ApiId, TypeName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Removes an `ApiAssociation' object from a custom domain.
+disassociate_api(Client, DomainName, Input) ->
+    disassociate_api(Client, DomainName, Input, []).
+disassociate_api(Client, DomainName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), "/apiassociation"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Flushes an `ApiCache' object.
 flush_api_cache(Client, ApiId, Input) ->
     flush_api_cache(Client, ApiId, Input, []).
@@ -461,6 +572,29 @@ flush_api_cache(Client, ApiId, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves an `ApiAssociation' object.
+get_api_association(Client, DomainName)
+  when is_map(Client) ->
+    get_api_association(Client, DomainName, #{}, #{}).
+
+get_api_association(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_api_association(Client, DomainName, QueryMap, HeadersMap, []).
+
+get_api_association(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), "/apiassociation"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves an `ApiCache' object.
 get_api_cache(Client, ApiId)
@@ -497,6 +631,29 @@ get_data_source(Client, ApiId, Name, QueryMap, HeadersMap)
 get_data_source(Client, ApiId, Name, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a custom `DomainName' object.
+get_domain_name(Client, DomainName)
+  when is_map(Client) ->
+    get_domain_name(Client, DomainName, #{}, #{}).
+
+get_domain_name(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_domain_name(Client, DomainName, QueryMap, HeadersMap, []).
+
+get_domain_name(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -700,6 +857,34 @@ list_data_sources(Client, ApiId, QueryMap, HeadersMap)
 list_data_sources(Client, ApiId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists multiple custom domain names.
+list_domain_names(Client)
+  when is_map(Client) ->
+    list_domain_names(Client, #{}, #{}).
+
+list_domain_names(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_domain_names(Client, QueryMap, HeadersMap, []).
+
+list_domain_names(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/domainnames"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -977,7 +1162,7 @@ update_api_cache(Client, ApiId, Input0, Options0) ->
 
 %% @doc Updates an API key.
 %%
-%% The key can be updated while it is not deleted.
+%% You can update the key as long as it's not deleted.
 update_api_key(Client, ApiId, Id, Input) ->
     update_api_key(Client, ApiId, Id, Input, []).
 update_api_key(Client, ApiId, Id, Input0, Options0) ->
@@ -1006,6 +1191,29 @@ update_data_source(Client, ApiId, Name, Input) ->
 update_data_source(Client, ApiId, Name, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a custom `DomainName' object.
+update_domain_name(Client, DomainName, Input) ->
+    update_domain_name(Client, DomainName, Input, []).
+update_domain_name(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

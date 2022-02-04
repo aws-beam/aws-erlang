@@ -1,48 +1,63 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Well-Architected Tool
+%% @doc Well-Architected Tool
 %%
-%% This is the AWS Well-Architected Tool API Reference.
+%% This is the Well-Architected Tool API Reference.
 %%
-%% The AWS Well-Architected Tool API provides programmatic access to the AWS
-%% Well-Architected Tool in the AWS Management Console. For information about
-%% the AWS Well-Architected Tool, see the AWS Well-Architected Tool User
-%% Guide.
+%% The WA Tool API provides programmatic access to the Well-Architected Tool
+%% in the Amazon Web Services Management Console. For information about the
+%% Well-Architected Tool, see the Well-Architected Tool User Guide.
 -module(aws_wellarchitected).
 
 -export([associate_lenses/3,
          associate_lenses/4,
+         create_lens_share/3,
+         create_lens_share/4,
+         create_lens_version/3,
+         create_lens_version/4,
          create_milestone/3,
          create_milestone/4,
          create_workload/2,
          create_workload/3,
          create_workload_share/3,
          create_workload_share/4,
+         delete_lens/3,
+         delete_lens/4,
+         delete_lens_share/4,
+         delete_lens_share/5,
          delete_workload/3,
          delete_workload/4,
          delete_workload_share/4,
          delete_workload_share/5,
          disassociate_lenses/3,
          disassociate_lenses/4,
+         export_lens/2,
+         export_lens/4,
+         export_lens/5,
          get_answer/4,
          get_answer/6,
          get_answer/7,
+         get_lens/2,
+         get_lens/4,
+         get_lens/5,
          get_lens_review/3,
          get_lens_review/5,
          get_lens_review/6,
          get_lens_review_report/3,
          get_lens_review_report/5,
          get_lens_review_report/6,
-         get_lens_version_difference/3,
+         get_lens_version_difference/2,
+         get_lens_version_difference/4,
          get_lens_version_difference/5,
-         get_lens_version_difference/6,
          get_milestone/3,
          get_milestone/5,
          get_milestone/6,
          get_workload/2,
          get_workload/4,
          get_workload/5,
+         import_lens/2,
+         import_lens/3,
          list_answers/3,
          list_answers/5,
          list_answers/6,
@@ -52,6 +67,9 @@
          list_lens_reviews/2,
          list_lens_reviews/4,
          list_lens_reviews/5,
+         list_lens_shares/2,
+         list_lens_shares/4,
+         list_lens_shares/5,
          list_lenses/1,
          list_lenses/3,
          list_lenses/4,
@@ -94,11 +112,87 @@
 %%====================================================================
 
 %% @doc Associate a lens to a workload.
+%%
+%% Up to 10 lenses can be associated with a workload in a single API
+%% operation. A maximum of 20 lenses can be associated with a workload.
+%%
+%% Disclaimer
+%%
+%% By accessing and/or applying custom lenses created by another Amazon Web
+%% Services user or account, you acknowledge that custom lenses created by
+%% other users and shared with you are Third Party Content as defined in the
+%% Amazon Web Services Customer Agreement.
 associate_lenses(Client, WorkloadId, Input) ->
     associate_lenses(Client, WorkloadId, Input, []).
 associate_lenses(Client, WorkloadId, Input0, Options0) ->
     Method = patch,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/associateLenses"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Create a lens share.
+%%
+%% The owner of a lens can share it with other Amazon Web Services accounts
+%% and IAM users in the same Amazon Web Services Region. Shared access to a
+%% lens is not removed until the lens invitation is deleted.
+%%
+%% Disclaimer
+%%
+%% By sharing your custom lenses with other Amazon Web Services accounts, you
+%% acknowledge that Amazon Web Services will make your custom lenses
+%% available to those other accounts. Those other accounts may continue to
+%% access and use your shared custom lenses even if you delete the custom
+%% lenses from your own Amazon Web Services account or terminate your Amazon
+%% Web Services account.
+create_lens_share(Client, LensAlias, Input) ->
+    create_lens_share(Client, LensAlias, Input, []).
+create_lens_share(Client, LensAlias, Input0, Options0) ->
+    Method = post,
+    Path = ["/lenses/", aws_util:encode_uri(LensAlias), "/shares"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Create a new lens version.
+%%
+%% A lens can have up to 100 versions.
+%%
+%% After a lens has been imported, create a new lens version to publish it.
+%% The owner of a lens can share the lens with other Amazon Web Services
+%% accounts and IAM users in the same Amazon Web Services Region. Only the
+%% owner of a lens can delete it.
+create_lens_version(Client, LensAlias, Input) ->
+    create_lens_version(Client, LensAlias, Input, []).
+create_lens_version(Client, LensAlias, Input0, Options0) ->
+    Method = post,
+    Path = ["/lenses/", aws_util:encode_uri(LensAlias), "/versions"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -141,12 +235,12 @@ create_milestone(Client, WorkloadId, Input0, Options0) ->
 
 %% @doc Create a new workload.
 %%
-%% The owner of a workload can share the workload with other AWS accounts and
-%% IAM users in the same AWS Region. Only the owner of a workload can delete
-%% it.
+%% The owner of a workload can share the workload with other Amazon Web
+%% Services accounts and IAM users in the same Amazon Web Services Region.
+%% Only the owner of a workload can delete it.
 %%
-%% For more information, see Defining a Workload in the AWS Well-Architected
-%% Tool User Guide.
+%% For more information, see Defining a Workload in the Well-Architected Tool
+%% User Guide.
 create_workload(Client, Input) ->
     create_workload(Client, Input, []).
 create_workload(Client, Input0, Options0) ->
@@ -171,12 +265,13 @@ create_workload(Client, Input0, Options0) ->
 
 %% @doc Create a workload share.
 %%
-%% The owner of a workload can share it with other AWS accounts and IAM users
-%% in the same AWS Region. Shared access to a workload is not removed until
-%% the workload invitation is deleted.
+%% The owner of a workload can share it with other Amazon Web Services
+%% accounts and IAM users in the same Amazon Web Services Region. Shared
+%% access to a workload is not removed until the workload invitation is
+%% deleted.
 %%
-%% For more information, see Sharing a Workload in the AWS Well-Architected
-%% Tool User Guide.
+%% For more information, see Sharing a Workload in the Well-Architected Tool
+%% User Guide.
 create_workload_share(Client, WorkloadId, Input) ->
     create_workload_share(Client, WorkloadId, Input, []).
 create_workload_share(Client, WorkloadId, Input0, Options0) ->
@@ -197,6 +292,82 @@ create_workload_share(Client, WorkloadId, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete an existing lens.
+%%
+%% Only the owner of a lens can delete it. After the lens is deleted, Amazon
+%% Web Services accounts and IAM users that you shared the lens with can
+%% continue to use it, but they will no longer be able to apply it to new
+%% workloads.
+%%
+%% Disclaimer
+%%
+%% By sharing your custom lenses with other Amazon Web Services accounts, you
+%% acknowledge that Amazon Web Services will make your custom lenses
+%% available to those other accounts. Those other accounts may continue to
+%% access and use your shared custom lenses even if you delete the custom
+%% lenses from your own Amazon Web Services account or terminate your Amazon
+%% Web Services account.
+delete_lens(Client, LensAlias, Input) ->
+    delete_lens(Client, LensAlias, Input, []).
+delete_lens(Client, LensAlias, Input0, Options0) ->
+    Method = delete,
+    Path = ["/lenses/", aws_util:encode_uri(LensAlias), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"ClientRequestToken">>, <<"ClientRequestToken">>},
+                     {<<"LensStatus">>, <<"LensStatus">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete a lens share.
+%%
+%% After the lens share is deleted, Amazon Web Services accounts and IAM
+%% users that you shared the lens with can continue to use it, but they will
+%% no longer be able to apply it to new workloads.
+%%
+%% Disclaimer
+%%
+%% By sharing your custom lenses with other Amazon Web Services accounts, you
+%% acknowledge that Amazon Web Services will make your custom lenses
+%% available to those other accounts. Those other accounts may continue to
+%% access and use your shared custom lenses even if you delete the custom
+%% lenses from your own Amazon Web Services account or terminate your Amazon
+%% Web Services account.
+delete_lens_share(Client, LensAlias, ShareId, Input) ->
+    delete_lens_share(Client, LensAlias, ShareId, Input, []).
+delete_lens_share(Client, LensAlias, ShareId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/lenses/", aws_util:encode_uri(LensAlias), "/shares/", aws_util:encode_uri(ShareId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"ClientRequestToken">>, <<"ClientRequestToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Delete an existing workload.
@@ -249,8 +420,11 @@ delete_workload_share(Client, ShareId, WorkloadId, Input0, Options0) ->
 
 %% @doc Disassociate a lens from a workload.
 %%
-%% The AWS Well-Architected Framework lens (`wellarchitected') cannot be
-%% removed from a workload.
+%% Up to 10 lenses can be disassociated from a workload in a single API
+%% operation.
+%%
+%% The Amazon Web Services Well-Architected Framework lens
+%% (`wellarchitected') cannot be removed from a workload.
 disassociate_lenses(Client, WorkloadId, Input) ->
     disassociate_lenses(Client, WorkloadId, Input, []).
 disassociate_lenses(Client, WorkloadId, Input0, Options0) ->
@@ -272,6 +446,47 @@ disassociate_lenses(Client, WorkloadId, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Export an existing lens.
+%%
+%% Lenses are defined in JSON. For more information, see JSON format
+%% specification in the Well-Architected Tool User Guide. Only the owner of a
+%% lens can export it.
+%%
+%% Disclaimer
+%%
+%% Do not include or gather personal identifiable information (PII) of end
+%% users or other identifiable individuals in or via your custom lenses. If
+%% your custom lens or those shared with you and used in your account do
+%% include or collect PII you are responsible for: ensuring that the included
+%% PII is processed in accordance with applicable law, providing adequate
+%% privacy notices, and obtaining necessary consents for processing such
+%% data.
+export_lens(Client, LensAlias)
+  when is_map(Client) ->
+    export_lens(Client, LensAlias, #{}, #{}).
+
+export_lens(Client, LensAlias, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    export_lens(Client, LensAlias, QueryMap, HeadersMap, []).
+
+export_lens(Client, LensAlias, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/lenses/", aws_util:encode_uri(LensAlias), "/export"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"LensVersion">>, maps:get(<<"LensVersion">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get the answer to a specific question in a workload review.
 get_answer(Client, LensAlias, QuestionId, WorkloadId)
@@ -295,6 +510,33 @@ get_answer(Client, LensAlias, QuestionId, WorkloadId, QueryMap, HeadersMap, Opti
     Query0_ =
       [
         {<<"MilestoneNumber">>, maps:get(<<"MilestoneNumber">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get an existing lens.
+get_lens(Client, LensAlias)
+  when is_map(Client) ->
+    get_lens(Client, LensAlias, #{}, #{}).
+
+get_lens(Client, LensAlias, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_lens(Client, LensAlias, QueryMap, HeadersMap, []).
+
+get_lens(Client, LensAlias, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/lenses/", aws_util:encode_uri(LensAlias), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"LensVersion">>, maps:get(<<"LensVersion">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -355,15 +597,15 @@ get_lens_review_report(Client, LensAlias, WorkloadId, QueryMap, HeadersMap, Opti
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get lens version differences.
-get_lens_version_difference(Client, LensAlias, BaseLensVersion)
+get_lens_version_difference(Client, LensAlias)
   when is_map(Client) ->
-    get_lens_version_difference(Client, LensAlias, BaseLensVersion, #{}, #{}).
+    get_lens_version_difference(Client, LensAlias, #{}, #{}).
 
-get_lens_version_difference(Client, LensAlias, BaseLensVersion, QueryMap, HeadersMap)
+get_lens_version_difference(Client, LensAlias, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_lens_version_difference(Client, LensAlias, BaseLensVersion, QueryMap, HeadersMap, []).
+    get_lens_version_difference(Client, LensAlias, QueryMap, HeadersMap, []).
 
-get_lens_version_difference(Client, LensAlias, BaseLensVersion, QueryMap, HeadersMap, Options0)
+get_lens_version_difference(Client, LensAlias, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/lenses/", aws_util:encode_uri(LensAlias), "/versionDifference"],
     SuccessStatusCode = undefined,
@@ -375,7 +617,8 @@ get_lens_version_difference(Client, LensAlias, BaseLensVersion, QueryMap, Header
 
     Query0_ =
       [
-        {<<"BaseLensVersion">>, BaseLensVersion}
+        {<<"BaseLensVersion">>, maps:get(<<"BaseLensVersion">>, QueryMap, undefined)},
+        {<<"TargetLensVersion">>, maps:get(<<"TargetLensVersion">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -426,6 +669,47 @@ get_workload(Client, WorkloadId, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Import a new lens.
+%%
+%% The lens cannot be applied to workloads or shared with other Amazon Web
+%% Services accounts until it's published with `CreateLensVersion'
+%%
+%% Lenses are defined in JSON. For more information, see JSON format
+%% specification in the Well-Architected Tool User Guide.
+%%
+%% A custom lens cannot exceed 500 KB in size.
+%%
+%% Disclaimer
+%%
+%% Do not include or gather personal identifiable information (PII) of end
+%% users or other identifiable individuals in or via your custom lenses. If
+%% your custom lens or those shared with you and used in your account do
+%% include or collect PII you are responsible for: ensuring that the included
+%% PII is processed in accordance with applicable law, providing adequate
+%% privacy notices, and obtaining necessary consents for processing such
+%% data.
+import_lens(Client, Input) ->
+    import_lens(Client, Input, []).
+import_lens(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/importLens"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc List of answers.
 list_answers(Client, LensAlias, WorkloadId)
@@ -516,6 +800,35 @@ list_lens_reviews(Client, WorkloadId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc List the lens shares associated with the lens.
+list_lens_shares(Client, LensAlias)
+  when is_map(Client) ->
+    list_lens_shares(Client, LensAlias, #{}, #{}).
+
+list_lens_shares(Client, LensAlias, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_lens_shares(Client, LensAlias, QueryMap, HeadersMap, []).
+
+list_lens_shares(Client, LensAlias, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/lenses/", aws_util:encode_uri(LensAlias), "/shares"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"SharedWithPrefix">>, maps:get(<<"SharedWithPrefix">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc List the available lenses.
 list_lenses(Client)
   when is_map(Client) ->
@@ -537,6 +850,9 @@ list_lenses(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"LensName">>, maps:get(<<"LensName">>, QueryMap, undefined)},
+        {<<"LensStatus">>, maps:get(<<"LensStatus">>, QueryMap, undefined)},
+        {<<"LensType">>, maps:get(<<"LensType">>, QueryMap, undefined)},
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
@@ -611,8 +927,10 @@ list_share_invitations(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"LensNamePrefix">>, maps:get(<<"LensNamePrefix">>, QueryMap, undefined)},
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"ShareResourceType">>, maps:get(<<"ShareResourceType">>, QueryMap, undefined)},
         {<<"WorkloadNamePrefix">>, maps:get(<<"WorkloadNamePrefix">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],

@@ -168,10 +168,10 @@ associate_identity_provider_config(Client, ClusterName, Input0, Options0) ->
 %%
 %% Amazon EKS add-ons help to automate the provisioning and lifecycle
 %% management of common operational software for Amazon EKS clusters. Amazon
-%% EKS add-ons can only be used with Amazon EKS clusters running version 1.18
-%% with platform version `eks.3' or later because add-ons rely on the
-%% Server-side Apply Kubernetes feature, which is only available in
-%% Kubernetes 1.18 and later.
+%% EKS add-ons require clusters running version 1.18 or later because Amazon
+%% EKS add-ons rely on the Server-side Apply Kubernetes feature, which is
+%% only available in Kubernetes 1.18 and later. For more information, see
+%% Amazon EKS add-ons in the Amazon EKS User Guide.
 create_addon(Client, ClusterName, Input) ->
     create_addon(Client, ClusterName, Input, []).
 create_addon(Client, ClusterName, Input0, Options0) ->
@@ -199,8 +199,8 @@ create_addon(Client, ClusterName, Input0, Options0) ->
 %% The Amazon EKS control plane consists of control plane instances that run
 %% the Kubernetes software, such as `etcd' and the API server. The control
 %% plane runs in an account managed by Amazon Web Services, and the
-%% Kubernetes API is exposed via the Amazon EKS API server endpoint. Each
-%% Amazon EKS cluster control plane is single-tenant and unique and runs on
+%% Kubernetes API is exposed by the Amazon EKS API server endpoint. Each
+%% Amazon EKS cluster control plane is single tenant and unique. It runs on
 %% its own set of Amazon EC2 instances.
 %%
 %% The cluster control plane is provisioned across multiple Availability
@@ -210,12 +210,12 @@ create_addon(Client, ClusterName, Input0, Options0) ->
 %% example, to support `kubectl exec', `logs', and `proxy' data flows).
 %%
 %% Amazon EKS nodes run in your Amazon Web Services account and connect to
-%% your cluster's control plane via the Kubernetes API server endpoint and a
+%% your cluster's control plane over the Kubernetes API server endpoint and a
 %% certificate file that is created for your cluster.
 %%
-%% Cluster creation typically takes several minutes. After you create an
-%% Amazon EKS cluster, you must configure your Kubernetes tooling to
-%% communicate with the API server and launch nodes into your cluster. For
+%% In most cases, it takes several minutes to create a cluster. After you
+%% create an Amazon EKS cluster, you must configure your Kubernetes tooling
+%% to communicate with the API server and launch nodes into your cluster. For
 %% more information, see Managing Cluster Authentication and Launching Amazon
 %% EKS nodes in the Amazon EKS User Guide.
 create_cluster(Client, Input) ->
@@ -902,8 +902,8 @@ list_updates(Client, Name, QueryMap, HeadersMap, Options0)
 %%
 %% After the Manifest is updated and applied, then the connected cluster is
 %% visible to the Amazon EKS control plane. If the Manifest is not applied
-%% within a set amount of time, then the connected cluster will no longer be
-%% visible and must be deregistered. See `DeregisterCluster'.
+%% within three days, then the connected cluster will no longer be visible
+%% and must be deregistered. See `DeregisterCluster'.
 register_cluster(Client, Input) ->
     register_cluster(Client, Input, []).
 register_cluster(Client, Input0, Options0) ->

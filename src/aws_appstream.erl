@@ -27,7 +27,11 @@
 %% </li> </ul>
 -module(aws_appstream).
 
--export([associate_fleet/2,
+-export([associate_application_fleet/2,
+         associate_application_fleet/3,
+         associate_application_to_entitlement/2,
+         associate_application_to_entitlement/3,
+         associate_fleet/2,
          associate_fleet/3,
          batch_associate_user_stack/2,
          batch_associate_user_stack/3,
@@ -35,8 +39,14 @@
          batch_disassociate_user_stack/3,
          copy_image/2,
          copy_image/3,
+         create_app_block/2,
+         create_app_block/3,
+         create_application/2,
+         create_application/3,
          create_directory_config/2,
          create_directory_config/3,
+         create_entitlement/2,
+         create_entitlement/3,
          create_fleet/2,
          create_fleet/3,
          create_image_builder/2,
@@ -53,8 +63,14 @@
          create_usage_report_subscription/3,
          create_user/2,
          create_user/3,
+         delete_app_block/2,
+         delete_app_block/3,
+         delete_application/2,
+         delete_application/3,
          delete_directory_config/2,
          delete_directory_config/3,
+         delete_entitlement/2,
+         delete_entitlement/3,
          delete_fleet/2,
          delete_fleet/3,
          delete_image/2,
@@ -69,8 +85,16 @@
          delete_usage_report_subscription/3,
          delete_user/2,
          delete_user/3,
+         describe_app_blocks/2,
+         describe_app_blocks/3,
+         describe_application_fleet_associations/2,
+         describe_application_fleet_associations/3,
+         describe_applications/2,
+         describe_applications/3,
          describe_directory_configs/2,
          describe_directory_configs/3,
+         describe_entitlements/2,
+         describe_entitlements/3,
          describe_fleets/2,
          describe_fleets/3,
          describe_image_builders/2,
@@ -91,6 +115,10 @@
          describe_users/3,
          disable_user/2,
          disable_user/3,
+         disassociate_application_fleet/2,
+         disassociate_application_fleet/3,
+         disassociate_application_from_entitlement/2,
+         disassociate_application_from_entitlement/3,
          disassociate_fleet/2,
          disassociate_fleet/3,
          enable_user/2,
@@ -101,6 +129,8 @@
          list_associated_fleets/3,
          list_associated_stacks/2,
          list_associated_stacks/3,
+         list_entitled_applications/2,
+         list_entitled_applications/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          start_fleet/2,
@@ -115,8 +145,12 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_application/2,
+         update_application/3,
          update_directory_config/2,
          update_directory_config/3,
+         update_entitlement/2,
+         update_entitlement/3,
          update_fleet/2,
          update_fleet/3,
          update_image_permissions/2,
@@ -129,6 +163,24 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Associates the specified application with the specified fleet.
+%%
+%% This is only supported for Elastic fleets.
+associate_application_fleet(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_application_fleet(Client, Input, []).
+associate_application_fleet(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateApplicationFleet">>, Input, Options).
+
+%% @doc Associates an application to entitle.
+associate_application_to_entitlement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_application_to_entitlement(Client, Input, []).
+associate_application_to_entitlement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateApplicationToEntitlement">>, Input, Options).
 
 %% @doc Associates the specified fleet with the specified stack.
 associate_fleet(Client, Input)
@@ -168,6 +220,40 @@ copy_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyImage">>, Input, Options).
 
+%% @doc Creates an app block.
+%%
+%% App blocks are an Amazon AppStream 2.0 resource that stores the details
+%% about the virtual hard disk in an S3 bucket. It also stores the setup
+%% script with details about how to mount the virtual hard disk. The virtual
+%% hard disk includes the application binaries and other files necessary to
+%% launch your applications. Multiple applications can be assigned to a
+%% single app block.
+%%
+%% This is only supported for Elastic fleets.
+create_app_block(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_app_block(Client, Input, []).
+create_app_block(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAppBlock">>, Input, Options).
+
+%% @doc Creates an application.
+%%
+%% Applications are an Amazon AppStream 2.0 resource that stores the details
+%% about how to launch applications on Elastic fleet streaming instances. An
+%% application consists of the launch details, icon, and display name.
+%% Applications are associated with an app block that contains the
+%% application binaries and other files. The applications assigned to an
+%% Elastic fleet are the applications users can launch.
+%%
+%% This is only supported for Elastic fleets.
+create_application(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_application(Client, Input, []).
+create_application(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateApplication">>, Input, Options).
+
 %% @doc Creates a Directory Config object in AppStream 2.0.
 %%
 %% This object includes the configuration information required to join fleets
@@ -179,9 +265,25 @@ create_directory_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDirectoryConfig">>, Input, Options).
 
+%% @doc Creates a new entitlement.
+%%
+%% Entitlements control access to specific applications within a stack, based
+%% on user attributes. Entitlements apply to SAML 2.0 federated user
+%% identities. Amazon AppStream 2.0 user pool and streaming URL users are
+%% entitled to all applications in a stack. Entitlements don't apply to the
+%% desktop stream view application, or to applications managed by a dynamic
+%% app provider using the Dynamic Application Framework.
+create_entitlement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_entitlement(Client, Input, []).
+create_entitlement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateEntitlement">>, Input, Options).
+
 %% @doc Creates a fleet.
 %%
-%% A fleet consists of streaming instances that run a specified image.
+%% A fleet consists of streaming instances that run a specified image when
+%% using Always-On or On-Demand.
 create_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fleet(Client, Input, []).
@@ -264,6 +366,22 @@ create_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUser">>, Input, Options).
 
+%% @doc Deletes an app block.
+delete_app_block(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_app_block(Client, Input, []).
+delete_app_block(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAppBlock">>, Input, Options).
+
+%% @doc Deletes an application.
+delete_application(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_application(Client, Input, []).
+delete_application(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteApplication">>, Input, Options).
+
 %% @doc Deletes the specified Directory Config object from AppStream 2.0.
 %%
 %% This object includes the information required to join streaming instances
@@ -274,6 +392,14 @@ delete_directory_config(Client, Input)
 delete_directory_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDirectoryConfig">>, Input, Options).
+
+%% @doc Deletes the specified entitlement.
+delete_entitlement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_entitlement(Client, Input, []).
+delete_entitlement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteEntitlement">>, Input, Options).
 
 %% @doc Deletes the specified fleet.
 delete_fleet(Client, Input)
@@ -341,6 +467,33 @@ delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
 
+%% @doc Retrieves a list that describes one or more app blocks.
+describe_app_blocks(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_app_blocks(Client, Input, []).
+describe_app_blocks(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAppBlocks">>, Input, Options).
+
+%% @doc Retrieves a list that describes one or more application fleet
+%% associations.
+%%
+%% Either ApplicationArn or FleetName must be specified.
+describe_application_fleet_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_application_fleet_associations(Client, Input, []).
+describe_application_fleet_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeApplicationFleetAssociations">>, Input, Options).
+
+%% @doc Retrieves a list that describes one or more applications.
+describe_applications(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_applications(Client, Input, []).
+describe_applications(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeApplications">>, Input, Options).
+
 %% @doc Retrieves a list that describes one or more specified Directory
 %% Config objects for AppStream 2.0, if the names for these objects are
 %% provided.
@@ -357,6 +510,14 @@ describe_directory_configs(Client, Input)
 describe_directory_configs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDirectoryConfigs">>, Input, Options).
+
+%% @doc Retrieves a list that describes one of more entitlements.
+describe_entitlements(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_entitlements(Client, Input, []).
+describe_entitlements(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeEntitlements">>, Input, Options).
 
 %% @doc Retrieves a list that describes one or more specified fleets, if the
 %% fleet names are provided.
@@ -470,6 +631,22 @@ disable_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableUser">>, Input, Options).
 
+%% @doc Disassociates the specified application from the fleet.
+disassociate_application_fleet(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_application_fleet(Client, Input, []).
+disassociate_application_fleet(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateApplicationFleet">>, Input, Options).
+
+%% @doc Deletes the specified application from the specified entitlement.
+disassociate_application_from_entitlement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_application_from_entitlement(Client, Input, []).
+disassociate_application_from_entitlement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateApplicationFromEntitlement">>, Input, Options).
+
 %% @doc Disassociates the specified fleet from the specified stack.
 disassociate_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -514,6 +691,14 @@ list_associated_stacks(Client, Input)
 list_associated_stacks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAssociatedStacks">>, Input, Options).
+
+%% @doc Retrieves a list of entitled applications.
+list_entitled_applications(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_entitled_applications(Client, Input, []).
+list_entitled_applications(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListEntitledApplications">>, Input, Options).
 
 %% @doc Retrieves a list of all tags for the specified AppStream 2.0
 %% resource.
@@ -595,6 +780,14 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
+%% @doc Updates the specified application.
+update_application(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_application(Client, Input, []).
+update_application(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateApplication">>, Input, Options).
+
 %% @doc Updates the specified Directory Config object in AppStream 2.0.
 %%
 %% This object includes the configuration information required to join fleets
@@ -606,13 +799,35 @@ update_directory_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDirectoryConfig">>, Input, Options).
 
+%% @doc Updates the specified entitlement.
+update_entitlement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_entitlement(Client, Input, []).
+update_entitlement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateEntitlement">>, Input, Options).
+
 %% @doc Updates the specified fleet.
 %%
 %% If the fleet is in the `STOPPED' state, you can update any attribute
-%% except the fleet name. If the fleet is in the `RUNNING' state, you can
-%% update the `DisplayName', `ComputeCapacity', `ImageARN', `ImageName',
-%% `IdleDisconnectTimeoutInSeconds', and `DisconnectTimeoutInSeconds'
-%% attributes. If the fleet is in the `STARTING' or `STOPPING' state, you
+%% except the fleet name.
+%%
+%% If the fleet is in the `RUNNING' state, you can update the following based
+%% on the fleet type:
+%%
+%% <ul> <li> Always-On and On-Demand fleet types
+%%
+%% You can update the `DisplayName', `ComputeCapacity', `ImageARN',
+%% `ImageName', `IdleDisconnectTimeoutInSeconds', and
+%% `DisconnectTimeoutInSeconds' attributes.
+%%
+%% </li> <li> Elastic fleet type
+%%
+%% You can update the `DisplayName', `IdleDisconnectTimeoutInSeconds',
+%% `DisconnectTimeoutInSeconds', `MaxConcurrentSessions', and
+%% `UsbDeviceFilterStrings' attributes.
+%%
+%% </li> </ul> If the fleet is in the `STARTING' or `STOPPED' state, you
 %% can't update it.
 update_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->

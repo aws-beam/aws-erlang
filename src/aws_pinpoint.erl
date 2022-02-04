@@ -234,6 +234,8 @@
          remove_attributes/5,
          send_messages/3,
          send_messages/4,
+         send_o_t_p_message/3,
+         send_o_t_p_message/4,
          send_users_messages/3,
          send_users_messages/4,
          tag_resource/3,
@@ -287,7 +289,9 @@
          update_voice_channel/3,
          update_voice_channel/4,
          update_voice_template/3,
-         update_voice_template/4]).
+         update_voice_template/4,
+         verify_o_t_p_message/3,
+         verify_o_t_p_message/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -2568,6 +2572,29 @@ send_messages(Client, ApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Send an OTP message
+send_o_t_p_message(Client, ApplicationId, Input) ->
+    send_o_t_p_message(Client, ApplicationId, Input, []).
+send_o_t_p_message(Client, ApplicationId, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/otp"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates and sends a message to a list of users.
 send_users_messages(Client, ApplicationId, Input) ->
     send_users_messages(Client, ApplicationId, Input, []).
@@ -3232,6 +3259,29 @@ update_voice_template(Client, TemplateName, Input0, Options0) ->
                      {<<"version">>, <<"Version">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Verify an OTP
+verify_o_t_p_message(Client, ApplicationId, Input) ->
+    verify_o_t_p_message(Client, ApplicationId, Input, []).
+verify_o_t_p_message(Client, ApplicationId, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/verify-otp"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================

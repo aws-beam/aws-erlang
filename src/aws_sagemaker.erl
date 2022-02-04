@@ -64,6 +64,8 @@
          create_image/3,
          create_image_version/2,
          create_image_version/3,
+         create_inference_recommendations_job/2,
+         create_inference_recommendations_job/3,
          create_labeling_job/2,
          create_labeling_job/3,
          create_model/2,
@@ -234,8 +236,12 @@
          describe_image/3,
          describe_image_version/2,
          describe_image_version/3,
+         describe_inference_recommendations_job/2,
+         describe_inference_recommendations_job/3,
          describe_labeling_job/2,
          describe_labeling_job/3,
+         describe_lineage_group/2,
+         describe_lineage_group/3,
          describe_model/2,
          describe_model/3,
          describe_model_bias_job_definition/2,
@@ -290,6 +296,8 @@
          enable_sagemaker_servicecatalog_portfolio/3,
          get_device_fleet_report/2,
          get_device_fleet_report/3,
+         get_lineage_group_policy/2,
+         get_lineage_group_policy/3,
          get_model_package_group_policy/2,
          get_model_package_group_policy/3,
          get_sagemaker_servicecatalog_portfolio_status/2,
@@ -346,14 +354,20 @@
          list_image_versions/3,
          list_images/2,
          list_images/3,
+         list_inference_recommendations_jobs/2,
+         list_inference_recommendations_jobs/3,
          list_labeling_jobs/2,
          list_labeling_jobs/3,
          list_labeling_jobs_for_workteam/2,
          list_labeling_jobs_for_workteam/3,
+         list_lineage_groups/2,
+         list_lineage_groups/3,
          list_model_bias_job_definitions/2,
          list_model_bias_job_definitions/3,
          list_model_explainability_job_definitions/2,
          list_model_explainability_job_definitions/3,
+         list_model_metadata/2,
+         list_model_metadata/3,
          list_model_package_groups/2,
          list_model_package_groups/3,
          list_model_packages/2,
@@ -406,6 +420,8 @@
          list_workteams/3,
          put_model_package_group_policy/2,
          put_model_package_group_policy/3,
+         query_lineage/2,
+         query_lineage/3,
          register_devices/2,
          register_devices/3,
          render_ui_template/2,
@@ -432,6 +448,8 @@
          stop_edge_packaging_job/3,
          stop_hyper_parameter_tuning_job/2,
          stop_hyper_parameter_tuning_job/3,
+         stop_inference_recommendations_job/2,
+         stop_inference_recommendations_job/3,
          stop_labeling_job/2,
          stop_labeling_job/3,
          stop_monitoring_schedule/2,
@@ -1030,6 +1048,16 @@ create_image_version(Client, Input)
 create_image_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateImageVersion">>, Input, Options).
+
+%% @doc Starts a recommendation job.
+%%
+%% You can create either an instance recommendation or load test job.
+create_inference_recommendations_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_inference_recommendations_job(Client, Input, []).
+create_inference_recommendations_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateInferenceRecommendationsJob">>, Input, Options).
 
 %% @doc Creates a job that uses workers to label the data objects in your
 %% input dataset.
@@ -2173,6 +2201,16 @@ describe_image_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImageVersion">>, Input, Options).
 
+%% @doc Provides the results of the Inference Recommender job.
+%%
+%% One or more recommendation jobs are returned.
+describe_inference_recommendations_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_inference_recommendations_job(Client, Input, []).
+describe_inference_recommendations_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeInferenceRecommendationsJob">>, Input, Options).
+
 %% @doc Gets information about a labeling job.
 describe_labeling_job(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -2180,6 +2218,17 @@ describe_labeling_job(Client, Input)
 describe_labeling_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLabelingJob">>, Input, Options).
+
+%% @doc Provides a list of properties for the requested lineage group.
+%%
+%% For more information, see Cross-Account Lineage Tracking in the Amazon
+%% SageMaker Developer Guide.
+describe_lineage_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_lineage_group(Client, Input, []).
+describe_lineage_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeLineageGroup">>, Input, Options).
 
 %% @doc Describes a model that you created using the `CreateModel' API.
 describe_model(Client, Input)
@@ -2440,6 +2489,14 @@ get_device_fleet_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDeviceFleetReport">>, Input, Options).
 
+%% @doc The resource policy for the lineage group.
+get_lineage_group_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_lineage_group_policy(Client, Input, []).
+get_lineage_group_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetLineageGroupPolicy">>, Input, Options).
+
 %% @doc Gets a resource policy that manages access for a model group.
 %%
 %% For information about resource policies, see Identity-based policies and
@@ -2693,6 +2750,14 @@ list_images(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListImages">>, Input, Options).
 
+%% @doc Lists recommendation jobs that satisfy various filters.
+list_inference_recommendations_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_inference_recommendations_jobs(Client, Input, []).
+list_inference_recommendations_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListInferenceRecommendationsJobs">>, Input, Options).
+
 %% @doc Gets a list of labeling jobs.
 list_labeling_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -2708,6 +2773,18 @@ list_labeling_jobs_for_workteam(Client, Input)
 list_labeling_jobs_for_workteam(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLabelingJobsForWorkteam">>, Input, Options).
+
+%% @doc A list of lineage groups shared with your Amazon Web Services
+%% account.
+%%
+%% For more information, see Cross-Account Lineage Tracking in the Amazon
+%% SageMaker Developer Guide.
+list_lineage_groups(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_lineage_groups(Client, Input, []).
+list_lineage_groups(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListLineageGroups">>, Input, Options).
 
 %% @doc Lists model bias jobs definitions that satisfy various filters.
 list_model_bias_job_definitions(Client, Input)
@@ -2725,6 +2802,15 @@ list_model_explainability_job_definitions(Client, Input)
 list_model_explainability_job_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListModelExplainabilityJobDefinitions">>, Input, Options).
+
+%% @doc Lists the domain, framework, task, and model name of standard machine
+%% learning models found in common model zoos.
+list_model_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_model_metadata(Client, Input, []).
+list_model_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListModelMetadata">>, Input, Options).
 
 %% @doc Gets a list of the model groups in your Amazon Web Services account.
 list_model_package_groups(Client, Input)
@@ -2993,6 +3079,18 @@ put_model_package_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutModelPackageGroupPolicy">>, Input, Options).
 
+%% @doc Use this action to inspect your lineage and discover relationships
+%% between entities.
+%%
+%% For more information, see Querying Lineage Entities in the Amazon
+%% SageMaker Developer Guide.
+query_lineage(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    query_lineage(Client, Input, []).
+query_lineage(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"QueryLineage">>, Input, Options).
+
 %% @doc Register devices.
 register_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -3139,6 +3237,14 @@ stop_hyper_parameter_tuning_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopHyperParameterTuningJob">>, Input, Options).
 
+%% @doc Stops an Inference Recommender job.
+stop_inference_recommendations_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_inference_recommendations_job(Client, Input, []).
+stop_inference_recommendations_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopInferenceRecommendationsJob">>, Input, Options).
+
 %% @doc Stops a running labeling job.
 %%
 %% A job that is stopped cannot be restarted. Any results obtained before the
@@ -3236,12 +3342,13 @@ stop_training_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopTrainingJob">>, Input, Options).
 
-%% @doc Stops a transform job.
+%% @doc Stops a batch transform job.
 %%
 %% When Amazon SageMaker receives a `StopTransformJob' request, the status of
 %% the job changes to `Stopping'. After Amazon SageMaker stops the job, the
-%% status is set to `Stopped'. When you stop a transform job before it is
-%% completed, Amazon SageMaker doesn't store the job's output in Amazon S3.
+%% status is set to `Stopped'. When you stop a batch transform job before it
+%% is completed, Amazon SageMaker doesn't store the job's output in Amazon
+%% S3.
 stop_transform_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_transform_job(Client, Input, []).

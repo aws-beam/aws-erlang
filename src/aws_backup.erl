@@ -215,35 +215,7 @@ create_backup_plan(Client, Input0, Options0) ->
 %% @doc Creates a JSON document that specifies a set of resources to assign
 %% to a backup plan.
 %%
-%% Resources can be included by specifying patterns for a `ListOfTags' and
-%% selected `Resources'.
-%%
-%% For example, consider the following patterns:
-%%
-%% <ul> <li> `Resources: "arn:aws:ec2:region:account-id:volume/volume-id"'
-%%
-%% </li> <li> `ConditionKey:"department"'
-%%
-%% `ConditionValue:"finance"'
-%%
-%% `ConditionType:"StringEquals"'
-%%
-%% </li> <li> `ConditionKey:"importance"'
-%%
-%% `ConditionValue:"critical"'
-%%
-%% `ConditionType:"StringEquals"'
-%%
-%% </li> </ul> Using these patterns would back up all Amazon Elastic Block
-%% Store (Amazon EBS) volumes that are tagged as `"department=finance"',
-%% `"importance=critical"', in addition to an EBS volume with the specified
-%% volume ID.
-%%
-%% Resources and conditions are additive in that all resources that match the
-%% pattern are selected. This shouldn't be confused with a logical AND, where
-%% all conditions must match. The matching patterns are logically put
-%% together using the OR operator. In other words, all patterns that match
-%% are selected for backup.
+%% For examples, see Assigning resources programmatically.
 create_backup_selection(Client, BackupPlanId, Input) ->
     create_backup_selection(Client, BackupPlanId, Input, []).
 create_backup_selection(Client, BackupPlanId, Input0, Options0) ->
@@ -1603,6 +1575,9 @@ put_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
 %% backup vault. If specified, Vault Lock enforces a minimum and maximum
 %% retention period for future backup and copy jobs that target a backup
 %% vault.
+%%
+%% Backup Vault Lock has yet to receive a third-party assessment for SEC
+%% 17a-4(f) and CFTC.
 put_backup_vault_lock_configuration(Client, BackupVaultName, Input) ->
     put_backup_vault_lock_configuration(Client, BackupVaultName, Input, []).
 put_backup_vault_lock_configuration(Client, BackupVaultName, Input0, Options0) ->

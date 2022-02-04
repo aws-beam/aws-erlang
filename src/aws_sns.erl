@@ -78,6 +78,8 @@
          opt_in_phone_number/3,
          publish/2,
          publish/3,
+         publish_batch/2,
+         publish_batch/3,
          remove_permission/2,
          remove_permission/3,
          set_endpoint_attributes/2,
@@ -108,7 +110,7 @@
 %%====================================================================
 
 %% @doc Adds a statement to a topic's access control policy, granting access
-%% for the specified accounts to the specified actions.
+%% for the specified Amazon Web Services accounts to the specified actions.
 add_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_permission(Client, Input, []).
@@ -117,7 +119,7 @@ add_permission(Client, Input, Options)
     request(Client, <<"AddPermission">>, Input, Options).
 
 %% @doc Accepts a phone number and indicates whether the phone holder has
-%% opted out of receiving SMS messages from your account.
+%% opted out of receiving SMS messages from your Amazon Web Services account.
 %%
 %% You cannot send SMS messages to a number that is opted out.
 %%
@@ -159,8 +161,13 @@ confirm_subscription(Client, Input, Options)
 %% </li> <li> For `Baidu', `PlatformPrincipal' is `API key' and
 %% `PlatformCredential' is `secret key'.
 %%
-%% </li> <li> For `APNS' and `APNS_SANDBOX', `PlatformPrincipal' is `SSL
-%% certificate' and `PlatformCredential' is `private key'.
+%% </li> <li> For `APNS' and `APNS_SANDBOX' using certificate credentials,
+%% `PlatformPrincipal' is `SSL certificate' and `PlatformCredential' is
+%% `private key'.
+%%
+%% </li> <li> For `APNS' and `APNS_SANDBOX' using token credentials,
+%% `PlatformPrincipal' is `signing key ID' and `PlatformCredential' is
+%% `signing key'.
 %%
 %% </li> <li> For `GCM' (Firebase Cloud Messaging), there is no
 %% `PlatformPrincipal' and the `PlatformCredential' is `API key'.
@@ -204,17 +211,18 @@ create_platform_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePlatformEndpoint">>, Input, Options).
 
-%% @doc Adds a destination phone number to an account in the SMS sandbox and
-%% sends a one-time password (OTP) to that phone number.
+%% @doc Adds a destination phone number to an Amazon Web Services account in
+%% the SMS sandbox and sends a one-time password (OTP) to that phone number.
 %%
-%% When you start using Amazon SNS to send SMS messages, your account is in
-%% the SMS sandbox. The SMS sandbox provides a safe environment for you to
-%% try Amazon SNS features without risking your reputation as an SMS sender.
-%% While your account is in the SMS sandbox, you can use all of the features
-%% of Amazon SNS. However, you can send SMS messages only to verified
-%% destination phone numbers. For more information, including how to move out
-%% of the sandbox to send messages without restrictions, see SMS sandbox in
-%% the Amazon SNS Developer Guide.
+%% When you start using Amazon SNS to send SMS messages, your Amazon Web
+%% Services account is in the SMS sandbox. The SMS sandbox provides a safe
+%% environment for you to try Amazon SNS features without risking your
+%% reputation as an SMS sender. While your Amazon Web Services account is in
+%% the SMS sandbox, you can use all of the features of Amazon SNS. However,
+%% you can send SMS messages only to verified destination phone numbers. For
+%% more information, including how to move out of the sandbox to send
+%% messages without restrictions, see SMS sandbox in the Amazon SNS Developer
+%% Guide.
 create_sms_sandbox_phone_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_sms_sandbox_phone_number(Client, Input, []).
@@ -261,17 +269,18 @@ delete_platform_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePlatformApplication">>, Input, Options).
 
-%% @doc Deletes an account's verified or pending phone number from the SMS
-%% sandbox.
+%% @doc Deletes an Amazon Web Services account's verified or pending phone
+%% number from the SMS sandbox.
 %%
-%% When you start using Amazon SNS to send SMS messages, your account is in
-%% the SMS sandbox. The SMS sandbox provides a safe environment for you to
-%% try Amazon SNS features without risking your reputation as an SMS sender.
-%% While your account is in the SMS sandbox, you can use all of the features
-%% of Amazon SNS. However, you can send SMS messages only to verified
-%% destination phone numbers. For more information, including how to move out
-%% of the sandbox to send messages without restrictions, see SMS sandbox in
-%% the Amazon SNS Developer Guide.
+%% When you start using Amazon SNS to send SMS messages, your Amazon Web
+%% Services account is in the SMS sandbox. The SMS sandbox provides a safe
+%% environment for you to try Amazon SNS features without risking your
+%% reputation as an SMS sender. While your Amazon Web Services account is in
+%% the SMS sandbox, you can use all of the features of Amazon SNS. However,
+%% you can send SMS messages only to verified destination phone numbers. For
+%% more information, including how to move out of the sandbox to send
+%% messages without restrictions, see SMS sandbox in the Amazon SNS Developer
+%% Guide.
 delete_sms_sandbox_phone_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_sms_sandbox_phone_number(Client, Input, []).
@@ -315,7 +324,8 @@ get_platform_application_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPlatformApplicationAttributes">>, Input, Options).
 
-%% @doc Returns the settings for sending SMS messages from your account.
+%% @doc Returns the settings for sending SMS messages from your Amazon Web
+%% Services account.
 %%
 %% These settings are set with the `SetSMSAttributes' action.
 get_sms_attributes(Client, Input)
@@ -325,17 +335,18 @@ get_sms_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSMSAttributes">>, Input, Options).
 
-%% @doc Retrieves the SMS sandbox status for the calling account in the
-%% target Region.
+%% @doc Retrieves the SMS sandbox status for the calling Amazon Web Services
+%% account in the target Amazon Web Services Region.
 %%
-%% When you start using Amazon SNS to send SMS messages, your account is in
-%% the SMS sandbox. The SMS sandbox provides a safe environment for you to
-%% try Amazon SNS features without risking your reputation as an SMS sender.
-%% While your account is in the SMS sandbox, you can use all of the features
-%% of Amazon SNS. However, you can send SMS messages only to verified
-%% destination phone numbers. For more information, including how to move out
-%% of the sandbox to send messages without restrictions, see SMS sandbox in
-%% the Amazon SNS Developer Guide.
+%% When you start using Amazon SNS to send SMS messages, your Amazon Web
+%% Services account is in the SMS sandbox. The SMS sandbox provides a safe
+%% environment for you to try Amazon SNS features without risking your
+%% reputation as an SMS sender. While your Amazon Web Services account is in
+%% the SMS sandbox, you can use all of the features of Amazon SNS. However,
+%% you can send SMS messages only to verified destination phone numbers. For
+%% more information, including how to move out of the sandbox to send
+%% messages without restrictions, see SMS sandbox in the Amazon SNS Developer
+%% Guide.
 get_sms_sandbox_account_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sms_sandbox_account_status(Client, Input, []).
@@ -383,8 +394,8 @@ list_endpoints_by_platform_application(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEndpointsByPlatformApplication">>, Input, Options).
 
-%% @doc Lists the calling account's dedicated origination numbers and their
-%% metadata.
+%% @doc Lists the calling Amazon Web Services account's dedicated origination
+%% numbers and their metadata.
 %%
 %% For more information about origination numbers, see Origination numbers in
 %% the Amazon SNS Developer Guide.
@@ -430,17 +441,18 @@ list_platform_applications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPlatformApplications">>, Input, Options).
 
-%% @doc Lists the calling account's current verified and pending destination
-%% phone numbers in the SMS sandbox.
+%% @doc Lists the calling Amazon Web Services account's current verified and
+%% pending destination phone numbers in the SMS sandbox.
 %%
-%% When you start using Amazon SNS to send SMS messages, your account is in
-%% the SMS sandbox. The SMS sandbox provides a safe environment for you to
-%% try Amazon SNS features without risking your reputation as an SMS sender.
-%% While your account is in the SMS sandbox, you can use all of the features
-%% of Amazon SNS. However, you can send SMS messages only to verified
-%% destination phone numbers. For more information, including how to move out
-%% of the sandbox to send messages without restrictions, see SMS sandbox in
-%% the Amazon SNS Developer Guide.
+%% When you start using Amazon SNS to send SMS messages, your Amazon Web
+%% Services account is in the SMS sandbox. The SMS sandbox provides a safe
+%% environment for you to try Amazon SNS features without risking your
+%% reputation as an SMS sender. While your Amazon Web Services account is in
+%% the SMS sandbox, you can use all of the features of Amazon SNS. However,
+%% you can send SMS messages only to verified destination phone numbers. For
+%% more information, including how to move out of the sandbox to send
+%% messages without restrictions, see SMS sandbox in the Amazon SNS Developer
+%% Guide.
 list_sms_sandbox_phone_numbers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_sms_sandbox_phone_numbers(Client, Input, []).
@@ -520,10 +532,10 @@ opt_in_phone_number(Client, Input, Options)
 %% endpoint that is subscribed to the topic. The format of the message
 %% depends on the notification protocol for each subscribed endpoint.
 %%
-%% When a `messageId' is returned, the message has been saved and Amazon SNS
-%% will attempt to deliver it shortly.
+%% When a `messageId' is returned, the message is saved and Amazon SNS
+%% immediately deliverers it to subscribers.
 %%
-%% To use the `Publish' action for sending a message to a mobile endpoint,
+%% To use the `Publish' action for publishing a message to a mobile endpoint,
 %% such as an app on a Kindle device or mobile phone, you must specify the
 %% EndpointArn for the TargetArn parameter. The EndpointArn is returned when
 %% making a call with the `CreatePlatformEndpoint' action.
@@ -531,13 +543,52 @@ opt_in_phone_number(Client, Input, Options)
 %% For more information about formatting messages, see Send Custom
 %% Platform-Specific Payloads in Messages to Mobile Devices.
 %%
-%% You can publish messages only to topics and endpoints in the same Region.
+%% You can publish messages only to topics and endpoints in the same Amazon
+%% Web Services Region.
 publish(Client, Input)
   when is_map(Client), is_map(Input) ->
     publish(Client, Input, []).
 publish(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Publish">>, Input, Options).
+
+%% @doc Publishes up to ten messages to the specified topic.
+%%
+%% This is a batch version of `Publish'. For FIFO topics, multiple messages
+%% within a single batch are published in the order they are sent, and
+%% messages are deduplicated within the batch and across batches for 5
+%% minutes.
+%%
+%% The result of publishing each message is reported individually in the
+%% response. Because the batch request can result in a combination of
+%% successful and unsuccessful actions, you should check for batch errors
+%% even when the call returns an HTTP status code of `200'.
+%%
+%% The maximum allowed individual message size and the maximum total payload
+%% size (the sum of the individual lengths of all of the batched messages)
+%% are both 256 KB (262,144 bytes).
+%%
+%% Some actions take lists of parameters. These lists are specified using the
+%% `param.n' notation. Values of `n' are integers starting from 1. For
+%% example, a parameter list with two elements looks like this:
+%%
+%% &AttributeName.1=first
+%%
+%% &AttributeName.2=second
+%%
+%% If you send a batch message to a topic, Amazon SNS publishes the batch
+%% message to each endpoint that is subscribed to the topic. The format of
+%% the batch message depends on the notification protocol for each subscribed
+%% endpoint.
+%%
+%% When a `messageId' is returned, the batch message is saved and Amazon SNS
+%% immediately delivers the message to subscribers.
+publish_batch(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    publish_batch(Client, Input, []).
+publish_batch(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PublishBatch">>, Input, Options).
 
 %% @doc Removes a statement from a topic's access control policy.
 remove_permission(Client, Input)
@@ -610,8 +661,8 @@ set_topic_attributes(Client, Input, Options)
 %% @doc Subscribes an endpoint to an Amazon SNS topic.
 %%
 %% If the endpoint type is HTTP/S or email, or if the endpoint and the topic
-%% are not in the same account, the endpoint owner must run the
-%% `ConfirmSubscription' action to confirm the subscription.
+%% are not in the same Amazon Web Services account, the endpoint owner must
+%% run the `ConfirmSubscription' action to confirm the subscription.
 %%
 %% You call the `ConfirmSubscription' action with the token from the
 %% subscription response. Confirmation tokens are valid for three days.
@@ -640,9 +691,9 @@ subscribe(Client, Input, Options)
 %% </li> <li> A new tag with a key identical to that of an existing tag
 %% overwrites the existing tag.
 %%
-%% </li> <li> Tagging actions are limited to 10 TPS per account, per Region.
-%% If your application requires a higher throughput, file a technical support
-%% request.
+%% </li> <li> Tagging actions are limited to 10 TPS per Amazon Web Services
+%% account, per Amazon Web Services Region. If your application requires a
+%% higher throughput, file a technical support request.
 %%
 %% </li> </ul>
 tag_resource(Client, Input)
@@ -681,16 +732,17 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Verifies a destination phone number with a one-time password (OTP)
-%% for the calling account.
+%% for the calling Amazon Web Services account.
 %%
-%% When you start using Amazon SNS to send SMS messages, your account is in
-%% the SMS sandbox. The SMS sandbox provides a safe environment for you to
-%% try Amazon SNS features without risking your reputation as an SMS sender.
-%% While your account is in the SMS sandbox, you can use all of the features
-%% of Amazon SNS. However, you can send SMS messages only to verified
-%% destination phone numbers. For more information, including how to move out
-%% of the sandbox to send messages without restrictions, see SMS sandbox in
-%% the Amazon SNS Developer Guide.
+%% When you start using Amazon SNS to send SMS messages, your Amazon Web
+%% Services account is in the SMS sandbox. The SMS sandbox provides a safe
+%% environment for you to try Amazon SNS features without risking your
+%% reputation as an SMS sender. While your Amazon Web Services account is in
+%% the SMS sandbox, you can use all of the features of Amazon SNS. However,
+%% you can send SMS messages only to verified destination phone numbers. For
+%% more information, including how to move out of the sandbox to send
+%% messages without restrictions, see SMS sandbox in the Amazon SNS Developer
+%% Guide.
 verify_sms_sandbox_phone_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_sms_sandbox_phone_number(Client, Input, []).

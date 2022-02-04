@@ -1,7 +1,23 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS IoT Wireless API documentation
+%% @doc AWS IoT Wireless provides bi-directional communication between
+%% internet-connected wireless devices and the AWS Cloud.
+%%
+%% To onboard both LoRaWAN and Sidewalk devices to AWS IoT, use the IoT
+%% Wireless API. These wireless devices use the Low Power Wide Area
+%% Networking (LPWAN) communication protocol to communicate with AWS IoT.
+%%
+%% Using the API, you can perform create, read, update, and delete operations
+%% for your wireless devices, gateways, destinations, and profiles. After
+%% onboarding your devices, you can use the API operations to set log levels
+%% and monitor your devices with CloudWatch.
+%%
+%% You can also use the API operations to create multicast groups and
+%% schedule a multicast session for sending a downlink message to devices in
+%% the group. By using Firmware Updates Over-The-Air (FUOTA) API operations,
+%% you can create a FUOTA task and schedule a session to update the firmware
+%% of individual devices or an entire group of devices in a multicast group.
 -module(aws_iot_wireless).
 
 -export([associate_aws_account_with_partner_account/2,
@@ -46,6 +62,8 @@
          delete_fuota_task/4,
          delete_multicast_group/3,
          delete_multicast_group/4,
+         delete_queued_messages/3,
+         delete_queued_messages/4,
          delete_service_profile/3,
          delete_service_profile/4,
          delete_wireless_device/3,
@@ -88,6 +106,9 @@
          get_multicast_group_session/2,
          get_multicast_group_session/4,
          get_multicast_group_session/5,
+         get_network_analyzer_configuration/2,
+         get_network_analyzer_configuration/4,
+         get_network_analyzer_configuration/5,
          get_partner_account/3,
          get_partner_account/5,
          get_partner_account/6,
@@ -145,6 +166,9 @@
          list_partner_accounts/1,
          list_partner_accounts/3,
          list_partner_accounts/4,
+         list_queued_messages/2,
+         list_queued_messages/4,
+         list_queued_messages/5,
          list_service_profiles/1,
          list_service_profiles/3,
          list_service_profiles/4,
@@ -192,6 +216,8 @@
          update_log_levels_by_resource_types/3,
          update_multicast_group/3,
          update_multicast_group/4,
+         update_network_analyzer_configuration/3,
+         update_network_analyzer_configuration/4,
          update_partner_account/3,
          update_partner_account/4,
          update_resource_event_configuration/3,
@@ -691,6 +717,31 @@ delete_multicast_group(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc The operation to delete queued messages.
+delete_queued_messages(Client, Id, Input) ->
+    delete_queued_messages(Client, Id, Input, []).
+delete_queued_messages(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/wireless-devices/", aws_util:encode_uri(Id), "/data"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"messageId">>, <<"MessageId">>},
+                     {<<"WirelessDeviceType">>, <<"WirelessDeviceType">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a service profile.
 delete_service_profile(Client, Id, Input) ->
     delete_service_profile(Client, Id, Input, []).
@@ -1106,6 +1157,29 @@ get_multicast_group_session(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/multicast-groups/", aws_util:encode_uri(Id), "/session"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get NetworkAnalyzer configuration.
+get_network_analyzer_configuration(Client, ConfigurationName)
+  when is_map(Client) ->
+    get_network_analyzer_configuration(Client, ConfigurationName, #{}, #{}).
+
+get_network_analyzer_configuration(Client, ConfigurationName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_network_analyzer_configuration(Client, ConfigurationName, QueryMap, HeadersMap, []).
+
+get_network_analyzer_configuration(Client, ConfigurationName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/network-analyzer-configurations/", aws_util:encode_uri(ConfigurationName), ""],
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -1612,6 +1686,35 @@ list_partner_accounts(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc The operation to list queued messages.
+list_queued_messages(Client, Id)
+  when is_map(Client) ->
+    list_queued_messages(Client, Id, #{}, #{}).
+
+list_queued_messages(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_queued_messages(Client, Id, QueryMap, HeadersMap, []).
+
+list_queued_messages(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/wireless-devices/", aws_util:encode_uri(Id), "/data"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"WirelessDeviceType">>, maps:get(<<"WirelessDeviceType">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2134,6 +2237,29 @@ update_multicast_group(Client, Id, Input) ->
 update_multicast_group(Client, Id, Input0, Options0) ->
     Method = patch,
     Path = ["/multicast-groups/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update NetworkAnalyzer configuration.
+update_network_analyzer_configuration(Client, ConfigurationName, Input) ->
+    update_network_analyzer_configuration(Client, ConfigurationName, Input, []).
+update_network_analyzer_configuration(Client, ConfigurationName, Input0, Options0) ->
+    Method = patch,
+    Path = ["/network-analyzer-configurations/", aws_util:encode_uri(ConfigurationName), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

@@ -175,6 +175,11 @@ delete_metric_stream(Client, Input, Options)
 %% alarms are returned.
 %%
 %% CloudWatch retains the history of an alarm even if you delete the alarm.
+%%
+%% To use this operation and return information about a composite alarm, you
+%% must be signed on with the `cloudwatch:DescribeAlarmHistory' permission
+%% that is scoped to `*'. You can't return information about composite alarms
+%% if your `cloudwatch:DescribeAlarmHistory' permission has a narrower scope.
 describe_alarm_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_alarm_history(Client, Input, []).
@@ -186,6 +191,11 @@ describe_alarm_history(Client, Input, Options)
 %%
 %% You can filter the results by specifying a prefix for the alarm name, the
 %% alarm state, or a prefix for any action.
+%%
+%% To use this operation and return information about composite alarms, you
+%% must be signed on with the `cloudwatch:DescribeAlarms' permission that is
+%% scoped to `*'. You can't return information about composite alarms if your
+%% `cloudwatch:DescribeAlarms' permission has a narrower scope.
 describe_alarms(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_alarms(Client, Input, []).
@@ -211,9 +221,12 @@ describe_alarms_for_metric(Client, Input, Options)
 %% @doc Lists the anomaly detection models that you have created in your
 %% account.
 %%
-%% You can list all models in your account or filter the results to only the
-%% models that are related to a certain namespace, metric name, or metric
-%% dimension.
+%% For single metric anomaly detectors, you can list all of the models in
+%% your account or filter the results to only the models that are related to
+%% a certain namespace, metric name, or metric dimension. For metric math
+%% anomaly detectors, you can list them by adding `METRIC_MATH' to the
+%% `AnomalyDetectorTypes' array. This will return all metric math anomaly
+%% detectors in your account.
 describe_anomaly_detectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_anomaly_detectors(Client, Input, []).
@@ -589,6 +602,11 @@ put_anomaly_detector(Client, Input, Options)
 %% When you update an existing alarm, its state is left unchanged, but the
 %% update completely overwrites the previous configuration of the alarm.
 %%
+%% To use this operation, you must be signed on with the
+%% `cloudwatch:PutCompositeAlarm' permission that is scoped to `*'. You can't
+%% create a composite alarms if your `cloudwatch:PutCompositeAlarm'
+%% permission has a narrower scope.
+%%
 %% If you are an IAM user, you must have `iam:CreateServiceLinkedRole' to
 %% create a composite alarm that has Systems Manager OpsItem actions.
 put_composite_alarm(Client, Input)
@@ -666,10 +684,10 @@ put_insight_rule(Client, Input, Options)
 %% </li> <li> The `iam:CreateServiceLinkedRole' to create an alarm with
 %% Systems Manager OpsItem actions.
 %%
-%% </li> </ul> The first time you create an alarm in the Management Console,
-%% the CLI, or by using the PutMetricAlarm API, CloudWatch creates the
-%% necessary service-linked role for you. The service-linked roles are called
-%% `AWSServiceRoleForCloudWatchEvents' and
+%% </li> </ul> The first time you create an alarm in the Amazon Web Services
+%% Management Console, the CLI, or by using the PutMetricAlarm API,
+%% CloudWatch creates the necessary service-linked role for you. The
+%% service-linked roles are called `AWSServiceRoleForCloudWatchEvents' and
 %% `AWSServiceRoleForCloudWatchAlarms_ActionSSM'. For more information, see
 %% Amazon Web Services service-linked role.
 %%

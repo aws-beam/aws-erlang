@@ -7,9 +7,10 @@
 %%
 %% This guide provides detailed information about the Amazon Chime API,
 %% including operations, types, inputs and outputs, and error codes. It also
-%% includes some server-side API actions to use with the Amazon Chime SDK.
-%% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK in the Amazon Chime Developer Guide.
+%% includes API actions for use with the Amazon Chime SDK, which developers
+%% use to build their own communication applications. For more information
+%% about the Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon
+%% Chime Developer Guide.
 %%
 %% You can use an AWS SDK, the AWS Command Line Interface (AWS CLI), or the
 %% REST API to make API calls. We recommend using an AWS SDK or the AWS CLI.

@@ -1,10 +1,10 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Fault Injection Simulator is a managed service that enables you
-%% to perform fault injection experiments on your AWS workloads.
+%% @doc Fault Injection Simulator is a managed service that enables you to
+%% perform fault injection experiments on your Amazon Web Services workloads.
 %%
-%% For more information, see the AWS Fault Injection Simulator User Guide.
+%% For more information, see the Fault Injection Simulator User Guide.
 -module(aws_fis).
 
 -export([create_experiment_template/2,
@@ -20,6 +20,9 @@
          get_experiment_template/2,
          get_experiment_template/4,
          get_experiment_template/5,
+         get_target_resource_type/2,
+         get_target_resource_type/4,
+         get_target_resource_type/5,
          list_actions/1,
          list_actions/3,
          list_actions/4,
@@ -32,6 +35,9 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_target_resource_types/1,
+         list_target_resource_types/3,
+         list_target_resource_types/4,
          start_experiment/2,
          start_experiment/3,
          stop_experiment/3,
@@ -51,11 +57,11 @@
 
 %% @doc Creates an experiment template.
 %%
-%% To create a template, specify the following information:
+%% An experiment template includes the following components:
 %%
-%% <ul> <li> Targets: A target can be a specific resource in your AWS
-%% environment, or one or more resources that match criteria that you
-%% specify, for example, resources that have specific tags.
+%% <ul> <li> Targets: A target can be a specific resource in your Amazon Web
+%% Services environment, or one or more resources that match criteria that
+%% you specify, for example, resources that have specific tags.
 %%
 %% </li> <li> Actions: The actions to carry out on the target. You can
 %% specify multiple actions, the duration of each action, and when to start
@@ -65,8 +71,8 @@
 %% experiment is running, the experiment is automatically stopped. You can
 %% define a stop condition as a CloudWatch alarm.
 %%
-%% </li> </ul> For more information, see the AWS Fault Injection Simulator
-%% User Guide.
+%% </li> </ul> For more information, see Experiment templates in the Fault
+%% Injection Simulator User Guide.
 create_experiment_template(Client, Input) ->
     create_experiment_template(Client, Input, []).
 create_experiment_template(Client, Input0, Options0) ->
@@ -112,7 +118,7 @@ delete_experiment_template(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets information about the specified AWS FIS action.
+%% @doc Gets information about the specified FIS action.
 get_action(Client, Id)
   when is_map(Client) ->
     get_action(Client, Id, #{}, #{}).
@@ -181,7 +187,30 @@ get_experiment_template(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the available AWS FIS actions.
+%% @doc Gets information about the specified resource type.
+get_target_resource_type(Client, ResourceType)
+  when is_map(Client) ->
+    get_target_resource_type(Client, ResourceType, #{}, #{}).
+
+get_target_resource_type(Client, ResourceType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_target_resource_type(Client, ResourceType, QueryMap, HeadersMap, []).
+
+get_target_resource_type(Client, ResourceType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/targetResourceTypes/", aws_util:encode_uri(ResourceType), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the available FIS actions.
 list_actions(Client)
   when is_map(Client) ->
     list_actions(Client, #{}, #{}).
@@ -285,6 +314,34 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the target resource types.
+list_target_resource_types(Client)
+  when is_map(Client) ->
+    list_target_resource_types(Client, #{}, #{}).
+
+list_target_resource_types(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_target_resource_types(Client, QueryMap, HeadersMap, []).
+
+list_target_resource_types(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/targetResourceTypes"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 

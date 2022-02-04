@@ -296,7 +296,7 @@ delete_job_queue(Client, Input0, Options0) ->
 
 %% @doc Deletes the specified scheduling policy.
 %%
-%% You can't delete a scheduling policy that is used in any job queues.
+%% You can't delete a scheduling policy that's used in any job queues.
 delete_scheduling_policy(Client, Input) ->
     delete_scheduling_policy(Client, Input, []).
 delete_scheduling_policy(Client, Input0, Options0) ->

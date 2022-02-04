@@ -104,6 +104,8 @@
          describe_resource_policy/3,
          describe_rule_group/2,
          describe_rule_group/3,
+         describe_rule_group_metadata/2,
+         describe_rule_group_metadata/3,
          disassociate_subnets/2,
          disassociate_subnets/3,
          list_firewall_policies/2,
@@ -313,6 +315,19 @@ describe_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRuleGroup">>, Input, Options).
 
+%% @doc High-level information about a rule group, returned by operations
+%% like create and describe.
+%%
+%% You can use the information provided in the metadata to retrieve and
+%% manage a rule group. You can retrieve all objects for a rule group by
+%% calling `DescribeRuleGroup'.
+describe_rule_group_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_rule_group_metadata(Client, Input, []).
+describe_rule_group_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeRuleGroupMetadata">>, Input, Options).
+
 %% @doc Removes the specified subnet associations from the firewall.
 %%
 %% This removes the firewall endpoints from the subnets and removes any
@@ -475,7 +490,12 @@ update_firewall_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFirewallPolicy">>, Input, Options).
 
-%% @doc
+%% @doc Modifies the flag, `ChangeProtection', which indicates whether it is
+%% possible to change the firewall.
+%%
+%% If the flag is set to `TRUE', the firewall is protected from changes. This
+%% setting helps protect against accidentally changing a firewall that's in
+%% use.
 update_firewall_policy_change_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_policy_change_protection(Client, Input, []).

@@ -4,12 +4,18 @@
 %% @doc Provides APIs for creating and managing Amazon Forecast resources.
 -module(aws_forecast).
 
--export([create_dataset/2,
+-export([create_auto_predictor/2,
+         create_auto_predictor/3,
+         create_dataset/2,
          create_dataset/3,
          create_dataset_group/2,
          create_dataset_group/3,
          create_dataset_import_job/2,
          create_dataset_import_job/3,
+         create_explainability/2,
+         create_explainability/3,
+         create_explainability_export/2,
+         create_explainability_export/3,
          create_forecast/2,
          create_forecast/3,
          create_forecast_export_job/2,
@@ -24,6 +30,10 @@
          delete_dataset_group/3,
          delete_dataset_import_job/2,
          delete_dataset_import_job/3,
+         delete_explainability/2,
+         delete_explainability/3,
+         delete_explainability_export/2,
+         delete_explainability_export/3,
          delete_forecast/2,
          delete_forecast/3,
          delete_forecast_export_job/2,
@@ -34,12 +44,18 @@
          delete_predictor_backtest_export_job/3,
          delete_resource_tree/2,
          delete_resource_tree/3,
+         describe_auto_predictor/2,
+         describe_auto_predictor/3,
          describe_dataset/2,
          describe_dataset/3,
          describe_dataset_group/2,
          describe_dataset_group/3,
          describe_dataset_import_job/2,
          describe_dataset_import_job/3,
+         describe_explainability/2,
+         describe_explainability/3,
+         describe_explainability_export/2,
+         describe_explainability_export/3,
          describe_forecast/2,
          describe_forecast/3,
          describe_forecast_export_job/2,
@@ -56,6 +72,10 @@
          list_dataset_import_jobs/3,
          list_datasets/2,
          list_datasets/3,
+         list_explainabilities/2,
+         list_explainabilities/3,
+         list_explainability_exports/2,
+         list_explainability_exports/3,
          list_forecast_export_jobs/2,
          list_forecast_export_jobs/3,
          list_forecasts/2,
@@ -80,6 +100,49 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Creates an Amazon Forecast predictor.
+%%
+%% Amazon Forecast creates predictors with AutoPredictor, which involves
+%% applying the optimal combination of algorithms to each time series in your
+%% datasets. You can use `CreateAutoPredictor' to create new predictors or
+%% upgrade/retrain existing predictors.
+%%
+%% Creating new predictors
+%%
+%% The following parameters are required when creating a new predictor:
+%%
+%% <ul> <li> `PredictorName' - A unique name for the predictor.
+%%
+%% </li> <li> `DatasetGroupArn' - The ARN of the dataset group used to train
+%% the predictor.
+%%
+%% </li> <li> `ForecastFrequency' - The granularity of your forecasts
+%% (hourly, daily, weekly, etc).
+%%
+%% </li> <li> `ForecastHorizon' - The number of time steps being forecasted.
+%%
+%% </li> </ul> When creating a new predictor, do not specify a value for
+%% `ReferencePredictorArn'.
+%%
+%% Upgrading and retraining predictors
+%%
+%% The following parameters are required when retraining or upgrading a
+%% predictor:
+%%
+%% <ul> <li> `PredictorName' - A unique name for the predictor.
+%%
+%% </li> <li> `ReferencePredictorArn' - The ARN of the predictor to retrain
+%% or upgrade.
+%%
+%% </li> </ul> When upgrading or retraining a predictor, only specify values
+%% for the `ReferencePredictorArn' and `PredictorName'.
+create_auto_predictor(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_auto_predictor(Client, Input, []).
+create_auto_predictor(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAutoPredictor">>, Input, Options).
 
 %% @doc Creates an Amazon Forecast dataset.
 %%
@@ -174,6 +237,114 @@ create_dataset_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDatasetImportJob">>, Input, Options).
 
+%% @doc Explainability is only available for Forecasts and Predictors
+%% generated from an AutoPredictor (`CreateAutoPredictor')
+%%
+%% Creates an Amazon Forecast Explainability.
+%%
+%% Explainability helps you better understand how the attributes in your
+%% datasets impact forecast. Amazon Forecast uses a metric called Impact
+%% scores to quantify the relative impact of each attribute and determine
+%% whether they increase or decrease forecast values.
+%%
+%% To enable Forecast Explainability, your predictor must include at least
+%% one of the following: related time series, item metadata, or additional
+%% datasets like Holidays and the Weather Index.
+%%
+%% CreateExplainability accepts either a Predictor ARN or Forecast ARN. To
+%% receive aggregated Impact scores for all time series and time points in
+%% your datasets, provide a Predictor ARN. To receive Impact scores for
+%% specific time series and time points, provide a Forecast ARN.
+%%
+%% CreateExplainability with a Predictor ARN
+%%
+%% You can only have one Explainability resource per predictor. If you
+%% already enabled `ExplainPredictor' in `CreateAutoPredictor', that
+%% predictor already has an Explainability resource.
+%%
+%% The following parameters are required when providing a Predictor ARN:
+%%
+%% <ul> <li> `ExplainabilityName' - A unique name for the Explainability.
+%%
+%% </li> <li> `ResourceArn' - The Arn of the predictor.
+%%
+%% </li> <li> `TimePointGranularity' - Must be set to “ALL”.
+%%
+%% </li> <li> `TimeSeriesGranularity' - Must be set to “ALL”.
+%%
+%% </li> </ul> Do not specify a value for the following parameters:
+%%
+%% <ul> <li> `DataSource' - Only valid when TimeSeriesGranularity is
+%% “SPECIFIC”.
+%%
+%% </li> <li> `Schema' - Only valid when TimeSeriesGranularity is “SPECIFIC”.
+%%
+%% </li> <li> `StartDateTime' - Only valid when TimePointGranularity is
+%% “SPECIFIC”.
+%%
+%% </li> <li> `EndDateTime' - Only valid when TimePointGranularity is
+%% “SPECIFIC”.
+%%
+%% </li> </ul> CreateExplainability with a Forecast ARN
+%%
+%% You can specify a maximum of 50 time series and 500 time points.
+%%
+%% The following parameters are required when providing a Predictor ARN:
+%%
+%% <ul> <li> `ExplainabilityName' - A unique name for the Explainability.
+%%
+%% </li> <li> `ResourceArn' - The Arn of the forecast.
+%%
+%% </li> <li> `TimePointGranularity' - Either “ALL” or “SPECIFIC”.
+%%
+%% </li> <li> `TimeSeriesGranularity' - Either “ALL” or “SPECIFIC”.
+%%
+%% </li> </ul> If you set TimeSeriesGranularity to “SPECIFIC”, you must also
+%% provide the following:
+%%
+%% <ul> <li> `DataSource' - The S3 location of the CSV file specifying your
+%% time series.
+%%
+%% </li> <li> `Schema' - The Schema defines the attributes and attribute
+%% types listed in the Data Source.
+%%
+%% </li> </ul> If you set TimePointGranularity to “SPECIFIC”, you must also
+%% provide the following:
+%%
+%% <ul> <li> `StartDateTime' - The first timestamp in the range of time
+%% points.
+%%
+%% </li> <li> `EndDateTime' - The last timestamp in the range of time points.
+%%
+%% </li> </ul>
+create_explainability(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_explainability(Client, Input, []).
+create_explainability(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateExplainability">>, Input, Options).
+
+%% @doc Exports an Explainability resource created by the
+%% `CreateExplainability' operation.
+%%
+%% Exported files are exported to an Amazon Simple Storage Service (Amazon
+%% S3) bucket.
+%%
+%% You must specify a `DataDestination' object that includes an Amazon S3
+%% bucket and an AWS Identity and Access Management (IAM) role that Amazon
+%% Forecast can assume to access the Amazon S3 bucket. For more information,
+%% see `aws-forecast-iam-roles'.
+%%
+%% The `Status' of the export job must be `ACTIVE' before you can access the
+%% export in your Amazon S3 bucket. To get the status, use the
+%% `DescribeExplainabilityExport' operation.
+create_explainability_export(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_explainability_export(Client, Input, []).
+create_explainability_export(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateExplainabilityExport">>, Input, Options).
+
 %% @doc Creates a forecast for each item in the `TARGET_TIME_SERIES' dataset
 %% that was used to train the predictor.
 %%
@@ -232,7 +403,13 @@ create_forecast_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateForecastExportJob">>, Input, Options).
 
-%% @doc Creates an Amazon Forecast predictor.
+%% @doc This operation creates a legacy predictor that does not include all
+%% the predictor functionalities provided by Amazon Forecast.
+%%
+%% To create a predictor that is compatible with all aspects of Forecast, use
+%% `CreateAutoPredictor'.
+%%
+%% Creates an Amazon Forecast predictor.
 %%
 %% In the request, provide a dataset group and either specify an algorithm or
 %% let Amazon Forecast choose an algorithm for you using AutoML. If you
@@ -291,7 +468,7 @@ create_predictor(Client, Input, Options)
     request(Client, <<"CreatePredictor">>, Input, Options).
 
 %% @doc Exports backtest forecasts and accuracy metrics generated by the
-%% `CreatePredictor' operation.
+%% `CreateAutoPredictor' or `CreatePredictor' operations.
 %%
 %% Two folders containing CSV files are exported to your specified S3 bucket.
 %%
@@ -362,6 +539,26 @@ delete_dataset_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDatasetImportJob">>, Input, Options).
 
+%% @doc Deletes an Explainability resource.
+%%
+%% You can delete only predictor that have a status of `ACTIVE' or
+%% `CREATE_FAILED'. To get the status, use the `DescribeExplainability'
+%% operation.
+delete_explainability(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_explainability(Client, Input, []).
+delete_explainability(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteExplainability">>, Input, Options).
+
+%% @doc Deletes an Explainability export.
+delete_explainability_export(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_explainability_export(Client, Input, []).
+delete_explainability_export(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteExplainabilityExport">>, Input, Options).
+
 %% @doc Deletes a forecast created using the `CreateForecast' operation.
 %%
 %% You can delete only forecasts that have a status of `ACTIVE' or
@@ -389,7 +586,8 @@ delete_forecast_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteForecastExportJob">>, Input, Options).
 
-%% @doc Deletes a predictor created using the `CreatePredictor' operation.
+%% @doc Deletes a predictor created using the `DescribePredictor' or
+%% `CreatePredictor' operations.
 %%
 %% You can delete only predictor that have a status of `ACTIVE' or
 %% `CREATE_FAILED'. To get the status, use the `DescribePredictor' operation.
@@ -438,6 +636,15 @@ delete_resource_tree(Client, Input)
 delete_resource_tree(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourceTree">>, Input, Options).
+
+%% @doc Describes a predictor created using the CreateAutoPredictor
+%% operation.
+describe_auto_predictor(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_auto_predictor(Client, Input, []).
+describe_auto_predictor(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAutoPredictor">>, Input, Options).
 
 %% @doc Describes an Amazon Forecast dataset created using the
 %% `CreateDataset' operation.
@@ -508,6 +715,24 @@ describe_dataset_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDatasetImportJob">>, Input, Options).
 
+%% @doc Describes an Explainability resource created using the
+%% `CreateExplainability' operation.
+describe_explainability(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_explainability(Client, Input, []).
+describe_explainability(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeExplainability">>, Input, Options).
+
+%% @doc Describes an Explainability export created using the
+%% `CreateExplainabilityExport' operation.
+describe_explainability_export(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_explainability_export(Client, Input, []).
+describe_explainability_export(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeExplainabilityExport">>, Input, Options).
+
 %% @doc Describes a forecast created using the `CreateForecast' operation.
 %%
 %% In addition to listing the properties provided in the `CreateForecast'
@@ -555,7 +780,12 @@ describe_forecast_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeForecastExportJob">>, Input, Options).
 
-%% @doc Describes a predictor created using the `CreatePredictor' operation.
+%% @doc This operation is only valid for legacy predictors created with
+%% CreatePredictor.
+%%
+%% If you are not using a legacy predictor, use `DescribeAutoPredictor'.
+%%
+%% Describes a predictor created using the `CreatePredictor' operation.
 %%
 %% In addition to listing the properties provided in the `CreatePredictor'
 %% request, this operation lists the following properties:
@@ -676,6 +906,36 @@ list_datasets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatasets">>, Input, Options).
 
+%% @doc Returns a list of Explainability resources created using the
+%% `CreateExplainability' operation.
+%%
+%% This operation returns a summary for each Explainability. You can filter
+%% the list using an array of `Filter' objects.
+%%
+%% To retrieve the complete set of properties for a particular Explainability
+%% resource, use the ARN with the `DescribeExplainability' operation.
+list_explainabilities(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_explainabilities(Client, Input, []).
+list_explainabilities(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListExplainabilities">>, Input, Options).
+
+%% @doc Returns a list of Explainability exports created using the
+%% `CreateExplainabilityExport' operation.
+%%
+%% This operation returns a summary for each Explainability export. You can
+%% filter the list using an array of `Filter' objects.
+%%
+%% To retrieve the complete set of properties for a particular Explainability
+%% export, use the ARN with the `DescribeExplainability' operation.
+list_explainability_exports(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_explainability_exports(Client, Input, []).
+list_explainability_exports(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListExplainabilityExports">>, Input, Options).
+
 %% @doc Returns a list of forecast export jobs created using the
 %% `CreateForecastExportJob' operation.
 %%
@@ -721,13 +981,15 @@ list_predictor_backtest_export_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPredictorBacktestExportJobs">>, Input, Options).
 
-%% @doc Returns a list of predictors created using the `CreatePredictor'
-%% operation.
+%% @doc Returns a list of predictors created using the `CreateAutoPredictor'
+%% or `CreatePredictor' operations.
 %%
 %% For each predictor, this operation returns a summary of its properties,
-%% including its Amazon Resource Name (ARN). You can retrieve the complete
-%% set of properties by using the ARN with the `DescribePredictor' operation.
-%% You can filter the list using an array of `Filter' objects.
+%% including its Amazon Resource Name (ARN).
+%%
+%% You can retrieve the complete set of properties by using the ARN with the
+%% `DescribeAutoPredictor' and `DescribePredictor' operations. You can filter
+%% the list using an array of `Filter' objects.
 list_predictors(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_predictors(Client, Input, []).
@@ -760,6 +1022,10 @@ list_tags_for_resource(Client, Input, Options)
 %% </li> <li> Forecast Export Job
 %%
 %% </li> <li> Predictor Backtest Export Job
+%%
+%% </li> <li> Explainability Job
+%%
+%% </li> <li> Explainability Export Job
 %%
 %% </li> </ul>
 stop_resource(Client, Input)

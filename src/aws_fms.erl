@@ -326,7 +326,7 @@ put_notification_channel(Client, Input, Options)
 %% </li> <li> An Network Firewall policy, which provides firewall rules to
 %% filter network traffic in specified Amazon VPCs.
 %%
-%% </li> <li> A DNS Firewall policy, which provides Route 53 Resolver DNS
+%% </li> <li> A DNS Firewall policy, which provides Route 53 Resolver DNS
 %% Firewall rules to filter DNS queries for specified VPCs.
 %%
 %% </li> </ul> Each policy is specific to one of the types. If you want to

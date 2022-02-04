@@ -5,11 +5,74 @@
 %%
 %% Overview
 %%
-%% This is the Lambda API Reference.
+%% Lambda is a compute service that lets you run code without provisioning or
+%% managing servers.
 %%
-%% The Lambda Developer Guide provides additional information. For the
-%% service overview, see What is Lambda, and for information about how the
-%% service works, see Lambda: How it Works in the Lambda Developer Guide.
+%% Lambda runs your code on a high-availability compute infrastructure and
+%% performs all of the administration of the compute resources, including
+%% server and operating system maintenance, capacity provisioning and
+%% automatic scaling, code monitoring and logging. With Lambda, you can run
+%% code for virtually any type of application or backend service. For more
+%% information about the Lambda service, see What is Lambda in the Lambda
+%% Developer Guide.
+%%
+%% The Lambda API Reference provides information about each of the API
+%% methods, including details about the parameters in each API request and
+%% response.
+%%
+%% You can use Software Development Kits (SDKs), Integrated Development
+%% Environment (IDE) Toolkits, and command line tools to access the API. For
+%% installation instructions, see Tools for Amazon Web Services.
+%%
+%% For a list of Region-specific endpoints that Lambda supports, see Lambda
+%% endpoints and quotas in the Amazon Web Services General Reference..
+%%
+%% When making the API calls, you will need to authenticate your request by
+%% providing a signature. Lambda supports signature version 4. For more
+%% information, see Signature Version 4 signing process in the Amazon Web
+%% Services General Reference..
+%%
+%% CA certificates
+%%
+%% Because Amazon Web Services SDKs use the CA certificates from your
+%% computer, changes to the certificates on the Amazon Web Services servers
+%% can cause connection failures when you attempt to use an SDK. You can
+%% prevent these failures by keeping your computer's CA certificates and
+%% operating system up-to-date. If you encounter this issue in a corporate
+%% environment and do not manage your own computer, you might need to ask an
+%% administrator to assist with the update process. The following list shows
+%% minimum operating system and Java versions:
+%%
+%% <ul> <li> Microsoft Windows versions that have updates from January 2005
+%% or later installed contain at least one of the required CAs in their trust
+%% list.
+%%
+%% </li> <li> Mac OS X 10.4 with Java for Mac OS X 10.4 Release 5 (February
+%% 2007), Mac OS X 10.5 (October 2007), and later versions contain at least
+%% one of the required CAs in their trust list.
+%%
+%% </li> <li> Red Hat Enterprise Linux 5 (March 2007), 6, and 7 and CentOS 5,
+%% 6, and 7 all contain at least one of the required CAs in their default
+%% trusted CA list.
+%%
+%% </li> <li> Java 1.4.2_12 (May 2006), 5 Update 2 (March 2005), and all
+%% later versions, including Java 6 (December 2006), 7, and 8, contain at
+%% least one of the required CAs in their default trusted CA list.
+%%
+%% </li> </ul> When accessing the Lambda management console or Lambda API
+%% endpoints, whether through browsers or programmatically, you will need to
+%% ensure your client machines support any of the following CAs:
+%%
+%% <ul> <li> Amazon Root CA 1
+%%
+%% </li> <li> Starfield Services Root Certificate Authority - G2
+%%
+%% </li> <li> Starfield Class 2 Certification Authority
+%%
+%% </li> </ul> Root certificates from the first two authorities are available
+%% from Amazon trust services, but keeping your computer up-to-date is the
+%% more straightforward solution. To learn more about ACM-provided
+%% certificates, see Amazon Web Services Certificate Manager FAQs.
 -module(aws_lambda).
 
 -export([add_layer_version_permission/4,
@@ -297,19 +360,20 @@ create_code_signing_config(Client, Input0, Options0) ->
 %%
 %% Lambda reads items from the event source and triggers the function.
 %%
-%% For details about each event source type, see the following topics.
+%% For details about how to configure different event sources, see the
+%% following topics.
 %%
-%% <ul> <li> Configuring a Dynamo DB stream as an event source
+%% <ul> <li> Amazon DynamoDB Streams
 %%
-%% </li> <li> Configuring a Kinesis stream as an event source
+%% </li> <li> Amazon Kinesis
 %%
-%% </li> <li> Configuring an Amazon SQS queue as an event source
+%% </li> <li> Amazon SQS
 %%
-%% </li> <li> Configuring an MQ broker as an event source
+%% </li> <li> Amazon MQ and RabbitMQ
 %%
-%% </li> <li> Configuring MSK as an event source
+%% </li> <li> Amazon MSK
 %%
-%% </li> <li> Configuring Self-Managed Apache Kafka as an event source
+%% </li> <li> Apache Kafka
 %%
 %% </li> </ul> The following error handling options are only available for
 %% stream sources (DynamoDB and Kinesis):
@@ -330,6 +394,21 @@ create_code_signing_config(Client, Input0, Options0) ->
 %%
 %% </li> <li> `ParallelizationFactor' - Process multiple batches from each
 %% shard concurrently.
+%%
+%% </li> </ul> For information about which configuration parameters apply to
+%% each event source, see the following topics.
+%%
+%% <ul> <li> Amazon DynamoDB Streams
+%%
+%% </li> <li> Amazon Kinesis
+%%
+%% </li> <li> Amazon SQS
+%%
+%% </li> <li> Amazon MQ and RabbitMQ
+%%
+%% </li> <li> Amazon MSK
+%%
+%% </li> <li> Apache Kafka
 %%
 %% </li> </ul>
 create_event_source_mapping(Client, Input) ->
@@ -1857,8 +1936,23 @@ update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
 %% You can change the function that Lambda invokes, or pause invocation and
 %% resume later from the same location.
 %%
-%% The following error handling options are only available for stream sources
-%% (DynamoDB and Kinesis):
+%% For details about how to configure different event sources, see the
+%% following topics.
+%%
+%% <ul> <li> Amazon DynamoDB Streams
+%%
+%% </li> <li> Amazon Kinesis
+%%
+%% </li> <li> Amazon SQS
+%%
+%% </li> <li> Amazon MQ and RabbitMQ
+%%
+%% </li> <li> Amazon MSK
+%%
+%% </li> <li> Apache Kafka
+%%
+%% </li> </ul> The following error handling options are only available for
+%% stream sources (DynamoDB and Kinesis):
 %%
 %% <ul> <li> `BisectBatchOnFunctionError' - If the function returns an error,
 %% split the batch in two and retry.
@@ -1876,6 +1970,21 @@ update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
 %%
 %% </li> <li> `ParallelizationFactor' - Process multiple batches from each
 %% shard concurrently.
+%%
+%% </li> </ul> For information about which configuration parameters apply to
+%% each event source, see the following topics.
+%%
+%% <ul> <li> Amazon DynamoDB Streams
+%%
+%% </li> <li> Amazon Kinesis
+%%
+%% </li> <li> Amazon SQS
+%%
+%% </li> <li> Amazon MQ and RabbitMQ
+%%
+%% </li> <li> Amazon MSK
+%%
+%% </li> <li> Apache Kafka
 %%
 %% </li> </ul>
 update_event_source_mapping(Client, UUID, Input) ->

@@ -1,24 +1,29 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS IoT Core Device Advisor is a cloud-based, fully managed test
-%% capability for validating IoT devices during device software development.
+%% @doc Amazon Web Services IoT Core Device Advisor is a cloud-based, fully
+%% managed test capability for validating IoT devices during device software
+%% development.
 %%
 %% Device Advisor provides pre-built tests that you can use to validate IoT
-%% devices for reliable and secure connectivity with AWS IoT Core before
-%% deploying devices to production. By using Device Advisor, you can confirm
-%% that your devices can connect to AWS IoT Core, follow security best
-%% practices and, if applicable, receive software updates from IoT Device
-%% Management. You can also download signed qualification reports to submit
-%% to the AWS Partner Network to get your device qualified for the AWS
-%% Partner Device Catalog without the need to send your device in and wait
-%% for it to be tested.
+%% devices for reliable and secure connectivity with Amazon Web Services IoT
+%% Core before deploying devices to production. By using Device Advisor, you
+%% can confirm that your devices can connect to Amazon Web Services IoT Core,
+%% follow security best practices and, if applicable, receive software
+%% updates from IoT Device Management. You can also download signed
+%% qualification reports to submit to the Amazon Web Services Partner Network
+%% to get your device qualified for the Amazon Web Services Partner Device
+%% Catalog without the need to send your device in and wait for it to be
+%% tested.
 -module(aws_iotdeviceadvisor).
 
 -export([create_suite_definition/2,
          create_suite_definition/3,
          delete_suite_definition/3,
          delete_suite_definition/4,
+         get_endpoint/1,
+         get_endpoint/3,
+         get_endpoint/4,
          get_suite_definition/2,
          get_suite_definition/4,
          get_suite_definition/5,
@@ -55,6 +60,8 @@
 %%====================================================================
 
 %% @doc Creates a Device Advisor test suite.
+%%
+%% Requires permission to access the CreateSuiteDefinition action.
 create_suite_definition(Client, Input) ->
     create_suite_definition(Client, Input, []).
 create_suite_definition(Client, Input0, Options0) ->
@@ -78,6 +85,8 @@ create_suite_definition(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Device Advisor test suite.
+%%
+%% Requires permission to access the DeleteSuiteDefinition action.
 delete_suite_definition(Client, SuiteDefinitionId, Input) ->
     delete_suite_definition(Client, SuiteDefinitionId, Input, []).
 delete_suite_definition(Client, SuiteDefinitionId, Input0, Options0) ->
@@ -100,7 +109,37 @@ delete_suite_definition(Client, SuiteDefinitionId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Gets information about an Device Advisor endpoint.
+get_endpoint(Client)
+  when is_map(Client) ->
+    get_endpoint(Client, #{}, #{}).
+
+get_endpoint(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_endpoint(Client, QueryMap, HeadersMap, []).
+
+get_endpoint(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/endpoint"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"certificateArn">>, maps:get(<<"certificateArn">>, QueryMap, undefined)},
+        {<<"thingArn">>, maps:get(<<"thingArn">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets information about a Device Advisor test suite.
+%%
+%% Requires permission to access the GetSuiteDefinition action.
 get_suite_definition(Client, SuiteDefinitionId)
   when is_map(Client) ->
     get_suite_definition(Client, SuiteDefinitionId, #{}, #{}).
@@ -128,6 +167,8 @@ get_suite_definition(Client, SuiteDefinitionId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets information about a Device Advisor test suite run.
+%%
+%% Requires permission to access the GetSuiteRun action.
 get_suite_run(Client, SuiteDefinitionId, SuiteRunId)
   when is_map(Client) ->
     get_suite_run(Client, SuiteDefinitionId, SuiteRunId, #{}, #{}).
@@ -152,6 +193,8 @@ get_suite_run(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, Optio
 
 %% @doc Gets a report download link for a successful Device Advisor
 %% qualifying test suite run.
+%%
+%% Requires permission to access the GetSuiteRunReport action.
 get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId)
   when is_map(Client) ->
     get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, #{}, #{}).
@@ -175,6 +218,8 @@ get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Device Advisor test suites you have created.
+%%
+%% Requires permission to access the ListSuiteDefinitions action.
 list_suite_definitions(Client)
   when is_map(Client) ->
     list_suite_definitions(Client, #{}, #{}).
@@ -202,10 +247,12 @@ list_suite_definitions(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the runs of the specified Device Advisor test suite.
+%% @doc Lists runs of the specified Device Advisor test suite.
 %%
 %% You can list all runs of the test suite, or the runs of a specific version
 %% of the test suite.
+%%
+%% Requires permission to access the ListSuiteRuns action.
 list_suite_runs(Client)
   when is_map(Client) ->
     list_suite_runs(Client, #{}, #{}).
@@ -236,6 +283,8 @@ list_suite_runs(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the tags attached to an IoT Device Advisor resource.
+%%
+%% Requires permission to access the ListTagsForResource action.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -259,6 +308,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Starts a Device Advisor test suite run.
+%%
+%% Requires permission to access the StartSuiteRun action.
 start_suite_run(Client, SuiteDefinitionId, Input) ->
     start_suite_run(Client, SuiteDefinitionId, Input, []).
 start_suite_run(Client, SuiteDefinitionId, Input0, Options0) ->
@@ -282,6 +333,8 @@ start_suite_run(Client, SuiteDefinitionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops a Device Advisor test suite run that is currently running.
+%%
+%% Requires permission to access the StopSuiteRun action.
 stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input) ->
     stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input, []).
 stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input0, Options0) ->
@@ -305,6 +358,8 @@ stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds to and modifies existing tags of an IoT Device Advisor resource.
+%%
+%% Requires permission to access the TagResource action.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -328,6 +383,8 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from an IoT Device Advisor resource.
+%%
+%% Requires permission to access the UntagResource action.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -352,6 +409,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a Device Advisor test suite.
+%%
+%% Requires permission to access the UpdateSuiteDefinition action.
 update_suite_definition(Client, SuiteDefinitionId, Input) ->
     update_suite_definition(Client, SuiteDefinitionId, Input, []).
 update_suite_definition(Client, SuiteDefinitionId, Input0, Options0) ->

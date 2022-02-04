@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Route53 Recovery Readiness
+%% @doc Recovery readiness
 -module(aws_route53_recovery_readiness).
 
 -export([create_cell/2,
@@ -91,7 +91,7 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a new Cell.
+%% @doc Creates a cell in an account.
 create_cell(Client, Input) ->
     create_cell(Client, Input, []).
 create_cell(Client, Input0, Options0) ->
@@ -114,7 +114,11 @@ create_cell(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a new cross account readiness authorization.
+%% @doc Creates a cross-account readiness authorization.
+%%
+%% This lets you authorize another account to work with Route 53 Application
+%% Recovery Controller, for example, to check the readiness status of
+%% resources in a separate account.
 create_cross_account_authorization(Client, Input) ->
     create_cross_account_authorization(Client, Input, []).
 create_cross_account_authorization(Client, Input0, Options0) ->
@@ -137,7 +141,12 @@ create_cross_account_authorization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new Readiness Check.
+%% @doc Creates a readiness check in an account.
+%%
+%% A readiness check monitors a resource set in your application, such as a
+%% set of Amazon Aurora instances, that Application Recovery Controller is
+%% auditing recovery readiness for. The audits run once every minute on every
+%% resource that's associated with a readiness check.
 create_readiness_check(Client, Input) ->
     create_readiness_check(Client, Input, []).
 create_readiness_check(Client, Input0, Options0) ->
@@ -160,7 +169,10 @@ create_readiness_check(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new Recovery Group.
+%% @doc Creates a recovery group in an account.
+%%
+%% A recovery group corresponds to an application and includes a list of the
+%% cells that make up the application.
 create_recovery_group(Client, Input) ->
     create_recovery_group(Client, Input, []).
 create_recovery_group(Client, Input0, Options0) ->
@@ -183,7 +195,11 @@ create_recovery_group(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new Resource Set.
+%% @doc Creates a resource set.
+%%
+%% A resource set is a set of resources of one type that span multiple cells.
+%% You can associate a resource set with a readiness check to monitor the
+%% resources for failover readiness.
 create_resource_set(Client, Input) ->
     create_resource_set(Client, Input, []).
 create_resource_set(Client, Input0, Options0) ->
@@ -206,7 +222,9 @@ create_resource_set(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an existing Cell.
+%% @doc Delete a cell.
+%%
+%% When successful, the response code is 204, with no response body.
 delete_cell(Client, CellName, Input) ->
     delete_cell(Client, CellName, Input, []).
 delete_cell(Client, CellName, Input0, Options0) ->
@@ -229,7 +247,7 @@ delete_cell(Client, CellName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete cross account readiness authorization
+%% @doc Deletes cross account readiness authorization.
 delete_cross_account_authorization(Client, CrossAccountAuthorization, Input) ->
     delete_cross_account_authorization(Client, CrossAccountAuthorization, Input, []).
 delete_cross_account_authorization(Client, CrossAccountAuthorization, Input0, Options0) ->
@@ -252,7 +270,7 @@ delete_cross_account_authorization(Client, CrossAccountAuthorization, Input0, Op
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an existing Readiness Check.
+%% @doc Deletes a readiness check.
 delete_readiness_check(Client, ReadinessCheckName, Input) ->
     delete_readiness_check(Client, ReadinessCheckName, Input, []).
 delete_readiness_check(Client, ReadinessCheckName, Input0, Options0) ->
@@ -275,7 +293,7 @@ delete_readiness_check(Client, ReadinessCheckName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an existing Recovery Group.
+%% @doc Deletes a recovery group.
 delete_recovery_group(Client, RecoveryGroupName, Input) ->
     delete_recovery_group(Client, RecoveryGroupName, Input, []).
 delete_recovery_group(Client, RecoveryGroupName, Input0, Options0) ->
@@ -298,7 +316,7 @@ delete_recovery_group(Client, RecoveryGroupName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an existing Resource Set.
+%% @doc Deletes a resource set.
 delete_resource_set(Client, ResourceSetName, Input) ->
     delete_resource_set(Client, ResourceSetName, Input, []).
 delete_resource_set(Client, ResourceSetName, Input0, Options0) ->
@@ -321,8 +339,8 @@ delete_resource_set(Client, ResourceSetName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a collection of recommendations to improve resilliance and
-%% readiness check quality for a Recovery Group.
+%% @doc Gets recommendations about architecture designs for improving
+%% resiliency for an application, based on a recovery group.
 get_architecture_recommendations(Client, RecoveryGroupName)
   when is_map(Client) ->
     get_architecture_recommendations(Client, RecoveryGroupName, #{}, #{}).
@@ -350,7 +368,9 @@ get_architecture_recommendations(Client, RecoveryGroupName, QueryMap, HeadersMap
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about a Cell.
+%% @doc Gets information about a cell including cell name, cell Amazon
+%% Resource Name (ARN), ARNs of nested cells for this cell, and a list of
+%% those cell ARNs with their associated recovery group ARNs.
 get_cell(Client, CellName)
   when is_map(Client) ->
     get_cell(Client, CellName, #{}, #{}).
@@ -373,7 +393,10 @@ get_cell(Client, CellName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about readiness of a Cell.
+%% @doc Gets readiness for a cell.
+%%
+%% Aggregates the readiness of all the resources that are associated with the
+%% cell into a single value.
 get_cell_readiness_summary(Client, CellName)
   when is_map(Client) ->
     get_cell_readiness_summary(Client, CellName, #{}, #{}).
@@ -401,7 +424,7 @@ get_cell_readiness_summary(Client, CellName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about a ReadinessCheck.
+%% @doc Gets details about a readiness check.
 get_readiness_check(Client, ReadinessCheckName)
   when is_map(Client) ->
     get_readiness_check(Client, ReadinessCheckName, #{}, #{}).
@@ -424,8 +447,11 @@ get_readiness_check(Client, ReadinessCheckName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns detailed information about the status of an individual
-%% resource within a Readiness Check's Resource Set.
+%% @doc Gets individual readiness status for a readiness check.
+%%
+%% To see the overall readiness status for a recovery group, that considers
+%% the readiness status for all the readiness checks in the recovery group,
+%% use GetRecoveryGroupReadinessSummary.
 get_readiness_check_resource_status(Client, ReadinessCheckName, ResourceIdentifier)
   when is_map(Client) ->
     get_readiness_check_resource_status(Client, ReadinessCheckName, ResourceIdentifier, #{}, #{}).
@@ -453,7 +479,11 @@ get_readiness_check_resource_status(Client, ReadinessCheckName, ResourceIdentifi
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about the status of a Readiness Check.
+%% @doc Gets the readiness status for an individual readiness check.
+%%
+%% To see the overall readiness status for a recovery group, that considers
+%% the readiness status for all the readiness checks in a recovery group, use
+%% GetRecoveryGroupReadinessSummary.
 get_readiness_check_status(Client, ReadinessCheckName)
   when is_map(Client) ->
     get_readiness_check_status(Client, ReadinessCheckName, #{}, #{}).
@@ -481,7 +511,8 @@ get_readiness_check_status(Client, ReadinessCheckName, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about a Recovery Group.
+%% @doc Gets details about a recovery group, including a list of the cells
+%% that are included in it.
 get_recovery_group(Client, RecoveryGroupName)
   when is_map(Client) ->
     get_recovery_group(Client, RecoveryGroupName, #{}, #{}).
@@ -504,7 +535,11 @@ get_recovery_group(Client, RecoveryGroupName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about a Recovery Group.
+%% @doc Displays a summary of information about a recovery group's readiness
+%% status.
+%%
+%% Includes the readiness checks for resources in the recovery group and the
+%% readiness status of each one.
 get_recovery_group_readiness_summary(Client, RecoveryGroupName)
   when is_map(Client) ->
     get_recovery_group_readiness_summary(Client, RecoveryGroupName, #{}, #{}).
@@ -532,7 +567,8 @@ get_recovery_group_readiness_summary(Client, RecoveryGroupName, QueryMap, Header
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about a Resource Set.
+%% @doc Displays the details about a resource set, including a list of the
+%% resources in the set.
 get_resource_set(Client, ResourceSetName)
   when is_map(Client) ->
     get_resource_set(Client, ResourceSetName, #{}, #{}).
@@ -555,7 +591,7 @@ get_resource_set(Client, ResourceSetName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a collection of Cells.
+%% @doc Lists the cells for an account.
 list_cells(Client)
   when is_map(Client) ->
     list_cells(Client, #{}, #{}).
@@ -583,7 +619,8 @@ list_cells(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a collection of cross account readiness authorizations.
+%% @doc Lists the cross-account readiness authorizations that are in place
+%% for an account.
 list_cross_account_authorizations(Client)
   when is_map(Client) ->
     list_cross_account_authorizations(Client, #{}, #{}).
@@ -611,7 +648,7 @@ list_cross_account_authorizations(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a collection of Readiness Checks.
+%% @doc Lists the readiness checks for an account.
 list_readiness_checks(Client)
   when is_map(Client) ->
     list_readiness_checks(Client, #{}, #{}).
@@ -639,7 +676,7 @@ list_readiness_checks(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a collection of Recovery Groups.
+%% @doc Lists the recovery groups in an account.
 list_recovery_groups(Client)
   when is_map(Client) ->
     list_recovery_groups(Client, #{}, #{}).
@@ -667,7 +704,7 @@ list_recovery_groups(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a collection of Resource Sets.
+%% @doc Lists the resource sets in an account.
 list_resource_sets(Client)
   when is_map(Client) ->
     list_resource_sets(Client, #{}, #{}).
@@ -695,8 +732,8 @@ list_resource_sets(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a collection of rules that are applied as part of Readiness
-%% Checks.
+%% @doc Lists all readiness rules, or lists the readiness rules for a
+%% specific resource type.
 list_rules(Client)
   when is_map(Client) ->
     list_rules(Client, #{}, #{}).
@@ -725,7 +762,7 @@ list_rules(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of the tags assigned to the specified resource.
+%% @doc Lists the tags for a resource.
 list_tags_for_resources(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resources(Client, ResourceArn, #{}, #{}).
@@ -748,9 +785,7 @@ list_tags_for_resources(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Adds tags to the specified resource.
-%%
-%% You can specify one or more tags to add.
+%% @doc Adds a tag to a resource.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -773,9 +808,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes tags from the specified resource.
-%%
-%% You can specify one or more tags to remove.
+%% @doc Removes a tag from a resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -799,7 +832,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing Cell.
+%% @doc Updates a cell to replace the list of nested cells with a new list of
+%% nested cells.
 update_cell(Client, CellName, Input) ->
     update_cell(Client, CellName, Input, []).
 update_cell(Client, CellName, Input0, Options0) ->
@@ -822,7 +856,7 @@ update_cell(Client, CellName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an exisiting Readiness Check.
+%% @doc Updates a readiness check.
 update_readiness_check(Client, ReadinessCheckName, Input) ->
     update_readiness_check(Client, ReadinessCheckName, Input, []).
 update_readiness_check(Client, ReadinessCheckName, Input0, Options0) ->
@@ -845,7 +879,7 @@ update_readiness_check(Client, ReadinessCheckName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing Recovery Group.
+%% @doc Updates a recovery group.
 update_recovery_group(Client, RecoveryGroupName, Input) ->
     update_recovery_group(Client, RecoveryGroupName, Input, []).
 update_recovery_group(Client, RecoveryGroupName, Input0, Options0) ->
@@ -868,7 +902,7 @@ update_recovery_group(Client, RecoveryGroupName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing Resource Set.
+%% @doc Updates a resource set.
 update_resource_set(Client, ResourceSetName, Input) ->
     update_resource_set(Client, ResourceSetName, Input, []).
 update_resource_set(Client, ResourceSetName, Input0, Options0) ->

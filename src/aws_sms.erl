@@ -1,16 +1,28 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Server Migration Service
+%% @doc Product update
 %%
-%% AWS Server Migration Service (AWS SMS) makes it easier and faster for you
-%% to migrate your on-premises workloads to AWS.
+%% As of March 31, 2022, Amazon Web Services will discontinue Server
+%% Migration Service (Amazon Web Services SMS).
 %%
-%% To learn more about AWS SMS, see the following resources:
+%% Going forward, we recommend Amazon Web Services Application Migration
+%% Service (Amazon Web Services MGN) as the primary migration service for
+%% lift-and-shift migrations.
 %%
-%% <ul> <li> AWS Server Migration Service product page
+%% You can initiate new migration jobs in Server Migration Service until
+%% January 1, 2022. Complete these active migration projects by March 31,
+%% 2022. For more information, see When to Choose AWS Application Migration
+%% Service.
 %%
-%% </li> <li> AWS Server Migration Service User Guide
+%% Server Migration Service (Server Migration Service) makes it easier and
+%% faster for you to migrate your on-premises workloads to Amazon Web
+%% Services. To learn more about Server Migration Service, see the following
+%% resources:
+%%
+%% <ul> <li> Server Migration Service product page
+%%
+%% </li> <li> Server Migration Service User Guide
 %%
 %% </li> </ul>
 -module(aws_sms).
@@ -106,7 +118,8 @@ create_app(Client, Input, Options)
 %% @doc Creates a replication job.
 %%
 %% The replication job schedules periodic replication runs to replicate your
-%% server to AWS. Each replication run creates an Amazon Machine Image (AMI).
+%% server to Amazon Web Services. Each replication run creates an Amazon
+%% Machine Image (AMI).
 create_replication_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_replication_job(Client, Input, []).
@@ -117,7 +130,8 @@ create_replication_job(Client, Input, Options)
 %% @doc Deletes the specified application.
 %%
 %% Optionally deletes the launched stack associated with the application and
-%% all AWS SMS replication jobs for servers in the application.
+%% all Server Migration Service replication jobs for servers in the
+%% application.
 delete_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_app(Client, Input, []).
@@ -152,8 +166,9 @@ delete_app_validation_configuration(Client, Input, Options)
 %% @doc Deletes the specified replication job.
 %%
 %% After you delete a replication job, there are no further replication runs.
-%% AWS deletes the contents of the Amazon S3 bucket used to store AWS SMS
-%% artifacts. The AMIs created by the replication runs are not deleted.
+%% Amazon Web Services deletes the contents of the Amazon S3 bucket used to
+%% store Server Migration Service artifacts. The AMIs created by the
+%% replication runs are not deleted.
 delete_replication_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_replication_job(Client, Input, []).
@@ -169,7 +184,7 @@ delete_server_catalog(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteServerCatalog">>, Input, Options).
 
-%% @doc Disassociates the specified connector from AWS SMS.
+%% @doc Disassociates the specified connector from Server Migration Service.
 %%
 %% After you disassociate a connector, it is no longer available to support
 %% replication jobs.
@@ -189,7 +204,7 @@ generate_change_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateChangeSet">>, Input, Options).
 
-%% @doc Generates an AWS CloudFormation template based on the current launch
+%% @doc Generates an CloudFormation template based on the current launch
 %% configuration and writes it to an Amazon S3 object in the customer’s
 %% Amazon S3 bucket.
 generate_template(Client, Input)
@@ -242,7 +257,8 @@ get_app_validation_output(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAppValidationOutput">>, Input, Options).
 
-%% @doc Describes the connectors registered with the AWS SMS.
+%% @doc Describes the connectors registered with the Server Migration
+%% Service.
 get_connectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_connectors(Client, Input, []).
@@ -278,7 +294,7 @@ get_servers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServers">>, Input, Options).
 
-%% @doc Allows application import from AWS Migration Hub.
+%% @doc Allows application import from Migration Hub.
 import_app_catalog(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_app_catalog(Client, Input, []).
@@ -299,7 +315,7 @@ import_server_catalog(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportServerCatalog">>, Input, Options).
 
-%% @doc Launches the specified application as a stack in AWS CloudFormation.
+%% @doc Launches the specified application as a stack in CloudFormation.
 launch_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     launch_app(Client, Input, []).
@@ -315,8 +331,8 @@ list_apps(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApps">>, Input, Options).
 
-%% @doc Provides information to AWS SMS about whether application validation
-%% is successful.
+%% @doc Provides information to Server Migration Service about whether
+%% application validation is successful.
 notify_app_validation_output(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_app_validation_output(Client, Input, []).

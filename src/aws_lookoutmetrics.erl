@@ -17,6 +17,8 @@
          create_anomaly_detector/3,
          create_metric_set/2,
          create_metric_set/3,
+         deactivate_anomaly_detector/2,
+         deactivate_anomaly_detector/3,
          delete_alert/2,
          delete_alert/3,
          delete_anomaly_detector/2,
@@ -39,6 +41,8 @@
          list_alerts/3,
          list_anomaly_detectors/2,
          list_anomaly_detectors/3,
+         list_anomaly_group_related_metrics/2,
+         list_anomaly_group_related_metrics/3,
          list_anomaly_group_summaries/2,
          list_anomaly_group_summaries/3,
          list_anomaly_group_time_series/2,
@@ -163,6 +167,29 @@ create_metric_set(Client, Input) ->
 create_metric_set(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateMetricSet"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deactivates an anomaly detector.
+deactivate_anomaly_detector(Client, Input) ->
+    deactivate_anomaly_detector(Client, Input, []).
+deactivate_anomaly_detector(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeactivateAnomalyDetector"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -440,6 +467,30 @@ list_anomaly_detectors(Client, Input) ->
 list_anomaly_detectors(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListAnomalyDetectors"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of measures that are potential causes or effects of an
+%% anomaly group.
+list_anomaly_group_related_metrics(Client, Input) ->
+    list_anomaly_group_related_metrics(Client, Input, []).
+list_anomaly_group_related_metrics(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListAnomalyGroupRelatedMetrics"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

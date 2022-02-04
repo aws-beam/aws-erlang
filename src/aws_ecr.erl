@@ -24,12 +24,18 @@
          batch_delete_image/3,
          batch_get_image/2,
          batch_get_image/3,
+         batch_get_repository_scanning_configuration/2,
+         batch_get_repository_scanning_configuration/3,
          complete_layer_upload/2,
          complete_layer_upload/3,
+         create_pull_through_cache_rule/2,
+         create_pull_through_cache_rule/3,
          create_repository/2,
          create_repository/3,
          delete_lifecycle_policy/2,
          delete_lifecycle_policy/3,
+         delete_pull_through_cache_rule/2,
+         delete_pull_through_cache_rule/3,
          delete_registry_policy/2,
          delete_registry_policy/3,
          delete_repository/2,
@@ -42,6 +48,8 @@
          describe_image_scan_findings/3,
          describe_images/2,
          describe_images/3,
+         describe_pull_through_cache_rules/2,
+         describe_pull_through_cache_rules/3,
          describe_registry/2,
          describe_registry/3,
          describe_repositories/2,
@@ -56,6 +64,8 @@
          get_lifecycle_policy_preview/3,
          get_registry_policy/2,
          get_registry_policy/3,
+         get_registry_scanning_configuration/2,
+         get_registry_scanning_configuration/3,
          get_repository_policy/2,
          get_repository_policy/3,
          initiate_layer_upload/2,
@@ -74,6 +84,8 @@
          put_lifecycle_policy/3,
          put_registry_policy/2,
          put_registry_policy/3,
+         put_registry_scanning_configuration/2,
+         put_registry_scanning_configuration/3,
          put_replication_configuration/2,
          put_replication_configuration/3,
          set_repository_policy/2,
@@ -141,6 +153,14 @@ batch_get_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetImage">>, Input, Options).
 
+%% @doc Gets the scanning configuration for one or more repositories.
+batch_get_repository_scanning_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_repository_scanning_configuration(Client, Input, []).
+batch_get_repository_scanning_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetRepositoryScanningConfiguration">>, Input, Options).
+
 %% @doc Informs Amazon ECR that the image layer upload has completed for a
 %% specified registry, repository name, and upload ID.
 %%
@@ -159,6 +179,17 @@ complete_layer_upload(Client, Input)
 complete_layer_upload(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CompleteLayerUpload">>, Input, Options).
+
+%% @doc Creates a pull through cache rule.
+%%
+%% A pull through cache rule provides a way to cache images from an external
+%% public registry in your Amazon ECR private registry.
+create_pull_through_cache_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_pull_through_cache_rule(Client, Input, []).
+create_pull_through_cache_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreatePullThroughCacheRule">>, Input, Options).
 
 %% @doc Creates a repository.
 %%
@@ -179,6 +210,14 @@ delete_lifecycle_policy(Client, Input)
 delete_lifecycle_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLifecyclePolicy">>, Input, Options).
+
+%% @doc Deletes a pull through cache rule.
+delete_pull_through_cache_rule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_pull_through_cache_rule(Client, Input, []).
+delete_pull_through_cache_rule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeletePullThroughCacheRule">>, Input, Options).
 
 %% @doc Deletes the registry permissions policy.
 delete_registry_policy(Client, Input)
@@ -237,6 +276,14 @@ describe_images(Client, Input)
 describe_images(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImages">>, Input, Options).
+
+%% @doc Returns the pull through cache rules for a registry.
+describe_pull_through_cache_rules(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_pull_through_cache_rules(Client, Input, []).
+describe_pull_through_cache_rules(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribePullThroughCacheRules">>, Input, Options).
 
 %% @doc Describes the settings for a registry.
 %%
@@ -317,6 +364,14 @@ get_registry_policy(Client, Input)
 get_registry_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRegistryPolicy">>, Input, Options).
+
+%% @doc Retrieves the scanning configuration for a registry.
+get_registry_scanning_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_registry_scanning_configuration(Client, Input, []).
+get_registry_scanning_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetRegistryScanningConfiguration">>, Input, Options).
 
 %% @doc Retrieves the repository policy for the specified repository.
 get_repository_policy(Client, Input)
@@ -426,6 +481,15 @@ put_registry_policy(Client, Input)
 put_registry_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRegistryPolicy">>, Input, Options).
+
+%% @doc Creates or updates the scanning configuration for your private
+%% registry.
+put_registry_scanning_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_registry_scanning_configuration(Client, Input, []).
+put_registry_scanning_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutRegistryScanningConfiguration">>, Input, Options).
 
 %% @doc Creates or updates the replication configuration for a registry.
 %%
