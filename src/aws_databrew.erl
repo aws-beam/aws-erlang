@@ -21,6 +21,8 @@
          create_recipe/3,
          create_recipe_job/2,
          create_recipe_job/3,
+         create_ruleset/2,
+         create_ruleset/3,
          create_schedule/2,
          create_schedule/3,
          delete_dataset/3,
@@ -31,6 +33,8 @@
          delete_project/4,
          delete_recipe_version/4,
          delete_recipe_version/5,
+         delete_ruleset/3,
+         delete_ruleset/4,
          delete_schedule/3,
          delete_schedule/4,
          describe_dataset/2,
@@ -48,6 +52,9 @@
          describe_recipe/2,
          describe_recipe/4,
          describe_recipe/5,
+         describe_ruleset/2,
+         describe_ruleset/4,
+         describe_ruleset/5,
          describe_schedule/2,
          describe_schedule/4,
          describe_schedule/5,
@@ -69,6 +76,9 @@
          list_recipes/1,
          list_recipes/3,
          list_recipes/4,
+         list_rulesets/1,
+         list_rulesets/3,
+         list_rulesets/4,
          list_schedules/1,
          list_schedules/3,
          list_schedules/4,
@@ -99,6 +109,8 @@
          update_recipe/4,
          update_recipe_job/3,
          update_recipe_job/4,
+         update_ruleset/3,
+         update_ruleset/4,
          update_schedule/3,
          update_schedule/4]).
 
@@ -275,6 +287,30 @@ create_recipe_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new ruleset that can be used in a profile job to validate
+%% the data quality of a dataset.
+create_ruleset(Client, Input) ->
+    create_ruleset(Client, Input, []).
+create_ruleset(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/rulesets"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a new schedule for one or more DataBrew jobs.
 %%
 %% Jobs can be run at a specific date and time, or at regular intervals.
@@ -375,6 +411,29 @@ delete_recipe_version(Client, Name, RecipeVersion, Input) ->
 delete_recipe_version(Client, Name, RecipeVersion, Input0, Options0) ->
     Method = delete,
     Path = ["/recipes/", aws_util:encode_uri(Name), "/recipeVersion/", aws_util:encode_uri(RecipeVersion), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a ruleset.
+delete_ruleset(Client, Name, Input) ->
+    delete_ruleset(Client, Name, Input, []).
+delete_ruleset(Client, Name, Input0, Options0) ->
+    Method = delete,
+    Path = ["/rulesets/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -532,6 +591,29 @@ describe_recipe(Client, Name, QueryMap, HeadersMap, Options0)
         {<<"recipeVersion">>, maps:get(<<"recipeVersion">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about the ruleset.
+describe_ruleset(Client, Name)
+  when is_map(Client) ->
+    describe_ruleset(Client, Name, #{}, #{}).
+
+describe_ruleset(Client, Name, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_ruleset(Client, Name, QueryMap, HeadersMap, []).
+
+describe_ruleset(Client, Name, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/rulesets/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -726,6 +808,36 @@ list_recipes(Client, QueryMap, HeadersMap, Options0)
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"recipeVersion">>, maps:get(<<"recipeVersion">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List all rulesets available in the current account or rulesets
+%% associated with a specific resource (dataset).
+list_rulesets(Client)
+  when is_map(Client) ->
+    list_rulesets(Client, #{}, #{}).
+
+list_rulesets(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_rulesets(Client, QueryMap, HeadersMap, []).
+
+list_rulesets(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/rulesets"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"targetArn">>, maps:get(<<"targetArn">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1047,6 +1159,29 @@ update_recipe_job(Client, Name, Input) ->
 update_recipe_job(Client, Name, Input0, Options0) ->
     Method = put,
     Path = ["/recipeJobs/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates specified ruleset.
+update_ruleset(Client, Name, Input) ->
+    update_ruleset(Client, Name, Input, []).
+update_ruleset(Client, Name, Input0, Options0) ->
+    Method = put,
+    Path = ["/rulesets/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

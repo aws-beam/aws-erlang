@@ -1,8 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Comprehend Medical extracts structured information from
-%% unstructured clinical text.
+%% @doc Comprehend Medical; extracts structured information from unstructured
+%% clinical text.
 %%
 %% Use these actions to gain insight in your documents.
 -module(aws_comprehendmedical).
@@ -15,6 +15,8 @@
          describe_phi_detection_job/3,
          describe_rx_norm_inference_job/2,
          describe_rx_norm_inference_job/3,
+         describe_s_n_o_m_e_d_c_t_inference_job/2,
+         describe_s_n_o_m_e_d_c_t_inference_job/3,
          detect_entities/2,
          detect_entities/3,
          detect_entities_v2/2,
@@ -25,6 +27,8 @@
          infer_icd10_cm/3,
          infer_rx_norm/2,
          infer_rx_norm/3,
+         infer_s_n_o_m_e_d_c_t/2,
+         infer_s_n_o_m_e_d_c_t/3,
          list_entities_detection_v2_jobs/2,
          list_entities_detection_v2_jobs/3,
          list_icd10_cm_inference_jobs/2,
@@ -33,6 +37,8 @@
          list_phi_detection_jobs/3,
          list_rx_norm_inference_jobs/2,
          list_rx_norm_inference_jobs/3,
+         list_s_n_o_m_e_d_c_t_inference_jobs/2,
+         list_s_n_o_m_e_d_c_t_inference_jobs/3,
          start_entities_detection_v2_job/2,
          start_entities_detection_v2_job/3,
          start_icd10_cm_inference_job/2,
@@ -41,6 +47,8 @@
          start_phi_detection_job/3,
          start_rx_norm_inference_job/2,
          start_rx_norm_inference_job/3,
+         start_s_n_o_m_e_d_c_t_inference_job/2,
+         start_s_n_o_m_e_d_c_t_inference_job/3,
          stop_entities_detection_v2_job/2,
          stop_entities_detection_v2_job/3,
          stop_icd10_cm_inference_job/2,
@@ -48,7 +56,9 @@
          stop_phi_detection_job/2,
          stop_phi_detection_job/3,
          stop_rx_norm_inference_job/2,
-         stop_rx_norm_inference_job/3]).
+         stop_rx_norm_inference_job/3,
+         stop_s_n_o_m_e_d_c_t_inference_job/2,
+         stop_s_n_o_m_e_d_c_t_inference_job/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -96,6 +106,16 @@ describe_rx_norm_inference_job(Client, Input)
 describe_rx_norm_inference_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRxNormInferenceJob">>, Input, Options).
+
+%% @doc Gets the properties associated with an InferSNOMEDCT job.
+%%
+%% Use this operation to get the status of an inference job.
+describe_s_n_o_m_e_d_c_t_inference_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_s_n_o_m_e_d_c_t_inference_job(Client, Input, []).
+describe_s_n_o_m_e_d_c_t_inference_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeSNOMEDCTInferenceJob">>, Input, Options).
 
 %% @doc The `DetectEntities' operation is deprecated.
 %%
@@ -171,6 +191,16 @@ infer_rx_norm(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InferRxNorm">>, Input, Options).
 
+%% @doc InferSNOMEDCT detects possible medical concepts as entities and links
+%% them to codes from the Systematized Nomenclature of Medicine, Clinical
+%% Terms (SNOMED-CT) ontology
+infer_s_n_o_m_e_d_c_t(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    infer_s_n_o_m_e_d_c_t(Client, Input, []).
+infer_s_n_o_m_e_d_c_t(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"InferSNOMEDCT">>, Input, Options).
+
 %% @doc Gets a list of medical entity detection jobs that you have submitted.
 list_entities_detection_v2_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -203,6 +233,14 @@ list_rx_norm_inference_jobs(Client, Input)
 list_rx_norm_inference_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRxNormInferenceJobs">>, Input, Options).
+
+%% @doc Gets a list of InferSNOMEDCT jobs a user has submitted.
+list_s_n_o_m_e_d_c_t_inference_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_s_n_o_m_e_d_c_t_inference_jobs(Client, Input, []).
+list_s_n_o_m_e_d_c_t_inference_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSNOMEDCTInferenceJobs">>, Input, Options).
 
 %% @doc Starts an asynchronous medical entity detection job for a collection
 %% of documents.
@@ -251,6 +289,18 @@ start_rx_norm_inference_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartRxNormInferenceJob">>, Input, Options).
 
+%% @doc Starts an asynchronous job to detect medical concepts and link them
+%% to the SNOMED-CT ontology.
+%%
+%% Use the DescribeSNOMEDCTInferenceJob operation to track the status of a
+%% job.
+start_s_n_o_m_e_d_c_t_inference_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_s_n_o_m_e_d_c_t_inference_job(Client, Input, []).
+start_s_n_o_m_e_d_c_t_inference_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartSNOMEDCTInferenceJob">>, Input, Options).
+
 %% @doc Stops a medical entities detection job in progress.
 stop_entities_detection_v2_job(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -282,6 +332,14 @@ stop_rx_norm_inference_job(Client, Input)
 stop_rx_norm_inference_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopRxNormInferenceJob">>, Input, Options).
+
+%% @doc Stops an InferSNOMEDCT inference job in progress.
+stop_s_n_o_m_e_d_c_t_inference_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_s_n_o_m_e_d_c_t_inference_job(Client, Input, []).
+stop_s_n_o_m_e_d_c_t_inference_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopSNOMEDCTInferenceJob">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

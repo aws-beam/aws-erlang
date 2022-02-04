@@ -32,6 +32,9 @@
          describe_model/3,
          describe_model/5,
          describe_model/6,
+         describe_model_packaging_job/3,
+         describe_model_packaging_job/5,
+         describe_model_packaging_job/6,
          describe_project/2,
          describe_project/4,
          describe_project/5,
@@ -40,6 +43,9 @@
          list_dataset_entries/3,
          list_dataset_entries/5,
          list_dataset_entries/6,
+         list_model_packaging_jobs/2,
+         list_model_packaging_jobs/4,
+         list_model_packaging_jobs/5,
          list_models/2,
          list_models/4,
          list_models/5,
@@ -51,6 +57,8 @@
          list_tags_for_resource/5,
          start_model/4,
          start_model/5,
+         start_model_packaging_job/3,
+         start_model_packaging_job/4,
          stop_model/4,
          stop_model/5,
          tag_resource/3,
@@ -226,7 +234,7 @@ delete_dataset(Client, DatasetType, ProjectName, Input0, Options0) ->
 %% `StopModel' operation.
 %%
 %% It might take a few seconds to delete a model. To determine if a model has
-%% been deleted, call `ListProjects' and check if the version of the model
+%% been deleted, call `ListModels' and check if the version of the model
 %% (`ModelVersion') is in the `Models' array.
 %%
 %% This operation requires permissions to perform the
@@ -343,6 +351,35 @@ describe_model(Client, ModelVersion, ProjectName, QueryMap, HeadersMap, Options0
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Describes an Amazon Lookout for Vision model packaging job.
+%%
+%% This operation requires permissions to perform the
+%% `lookoutvision:DescribeModelPackagingJob' operation.
+%%
+%% For more information, see Using your Amazon Lookout for Vision model on an
+%% edge device in the Amazon Lookout for Vision Developer Guide.
+describe_model_packaging_job(Client, JobName, ProjectName)
+  when is_map(Client) ->
+    describe_model_packaging_job(Client, JobName, ProjectName, #{}, #{}).
+
+describe_model_packaging_job(Client, JobName, ProjectName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_model_packaging_job(Client, JobName, ProjectName, QueryMap, HeadersMap, []).
+
+describe_model_packaging_job(Client, JobName, ProjectName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/modelpackagingjobs/", aws_util:encode_uri(JobName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Describes an Amazon Lookout for Vision project.
 %%
 %% This operation requires permissions to perform the
@@ -446,8 +483,47 @@ list_dataset_entries(Client, DatasetType, ProjectName, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the model packaging jobs created for an Amazon Lookout for
+%% Vision project.
+%%
+%% This operation requires permissions to perform the
+%% `lookoutvision:ListModelPackagingJobs' operation.
+%%
+%% For more information, see Using your Amazon Lookout for Vision model on an
+%% edge device in the Amazon Lookout for Vision Developer Guide.
+list_model_packaging_jobs(Client, ProjectName)
+  when is_map(Client) ->
+    list_model_packaging_jobs(Client, ProjectName, #{}, #{}).
+
+list_model_packaging_jobs(Client, ProjectName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_model_packaging_jobs(Client, ProjectName, QueryMap, HeadersMap, []).
+
+list_model_packaging_jobs(Client, ProjectName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/modelpackagingjobs"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the versions of a model in an Amazon Lookout for Vision
 %% project.
+%%
+%% The `ListModels' operation is eventually consistent. Recent calls to
+%% `CreateModel' might take a while to appear in the response from
+%% `ListProjects'.
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:ListModels' operation.
@@ -479,6 +555,10 @@ list_models(Client, ProjectName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Amazon Lookout for Vision projects in your AWS account.
+%%
+%% The `ListProjects' operation is eventually consistent. Recent calls to
+%% `CreateProject' and `DeleteProject' might take a while to appear in the
+%% response from `ListProjects'.
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:ListProjects' operation.
@@ -558,6 +638,60 @@ start_model(Client, ModelVersion, ProjectName, Input0, Options0) ->
     Method = post,
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/models/", aws_util:encode_uri(ModelVersion), "/start"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"X-Amzn-Client-Token">>, <<"ClientToken">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts an Amazon Lookout for Vision model packaging job.
+%%
+%% A model packaging job creates an AWS IoT Greengrass component for a
+%% Lookout for Vision model. You can use the component to deploy your model
+%% to an edge device managed by Greengrass.
+%%
+%% Use the `DescribeModelPackagingJob' API to determine the current status of
+%% the job. The model packaging job is complete if the value of `Status' is
+%% `SUCCEEDED'.
+%%
+%% To deploy the component to the target device, use the component name and
+%% component version with the AWS IoT Greengrass CreateDeployment API.
+%%
+%% This operation requires the following permissions:
+%%
+%% <ul> <li> `lookoutvision:StartModelPackagingJobs'
+%%
+%% </li> <li> `s3:PutObject'
+%%
+%% </li> <li> `s3:GetBucketLocation'
+%%
+%% </li> <li> `greengrass:CreateComponentVersion'
+%%
+%% </li> <li> `greengrass:DescribeComponent'
+%%
+%% </li> <li> (Optional) `greengrass:TagResource'. Only required if you want
+%% to tag the component.
+%%
+%% </li> </ul> For more information, see Using your Amazon Lookout for Vision
+%% model on an edge device in the Amazon Lookout for Vision Developer Guide.
+start_model_packaging_job(Client, ProjectName, Input) ->
+    start_model_packaging_job(Client, ProjectName, Input, []).
+start_model_packaging_job(Client, ProjectName, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/modelpackagingjobs"],
+    SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -669,11 +803,21 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds one or more JSON Line entries to a dataset.
+%% @doc Adds or updates one or more JSON Line entries in a dataset.
 %%
 %% A JSON Line includes information about an image used for training or
-%% testing an Amazon Lookout for Vision model. The following is an example
-%% JSON Line.
+%% testing an Amazon Lookout for Vision model.
+%%
+%% To update an existing JSON Line, use the `source-ref' field to identify
+%% the JSON Line. The JSON line that you supply replaces the existing JSON
+%% line. Any existing annotations that are not in the new JSON line are
+%% removed from the dataset.
+%%
+%% For more information, see Defining JSON lines for anomaly classification
+%% in the Amazon Lookout for Vision Developer Guide.
+%%
+%% The images you reference in the `source-ref' field of a JSON line, must be
+%% in the same S3 bucket as the existing images in the dataset.
 %%
 %% Updating a dataset might take a while to complete. To check the current
 %% status, call `DescribeDataset' and check the `Status' field in the

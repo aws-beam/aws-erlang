@@ -13,6 +13,8 @@
          check_domain_availability/3,
          check_domain_transferability/2,
          check_domain_transferability/3,
+         delete_domain/2,
+         delete_domain/3,
          delete_tags_for_domain/2,
          delete_tags_for_domain/3,
          disable_domain_auto_renew/2,
@@ -35,6 +37,8 @@
          list_domains/3,
          list_operations/2,
          list_operations/3,
+         list_prices/2,
+         list_prices/3,
          list_tags_for_domain/2,
          list_tags_for_domain/3,
          register_domain/2,
@@ -68,11 +72,16 @@
 %% API
 %%====================================================================
 
-%% @doc Accepts the transfer of a domain from another AWS account to the
-%% current AWS account.
+%% @doc Accepts the transfer of a domain from another Amazon Web Services
+%% account to the currentAmazon Web Services account.
 %%
-%% You initiate a transfer between AWS accounts using
+%% You initiate a transfer between Amazon Web Services accounts using
 %% TransferDomainToAnotherAwsAccount.
+%%
+%% If you use the CLI command at
+%% accept-domain-transfer-from-another-aws-account, use JSON format as input
+%% instead of text because otherwise CLI will throw an error from domain
+%% transfer input that includes single quotes.
 %%
 %% Use either ListOperations or GetOperationDetail to determine whether the
 %% operation succeeded. GetOperationDetail provides additional information,
@@ -85,14 +94,14 @@ accept_domain_transfer_from_another_aws_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptDomainTransferFromAnotherAwsAccount">>, Input, Options).
 
-%% @doc Cancels the transfer of a domain from the current AWS account to
-%% another AWS account.
+%% @doc Cancels the transfer of a domain from the current Amazon Web Services
+%% account to another Amazon Web Services account.
 %%
-%% You initiate a transfer between AWS accounts using
+%% You initiate a transfer betweenAmazon Web Services accounts using
 %% TransferDomainToAnotherAwsAccount.
 %%
-%% You must cancel the transfer before the other AWS account accepts the
-%% transfer using AcceptDomainTransferFromAnotherAwsAccount.
+%% You must cancel the transfer before the other Amazon Web Services account
+%% accepts the transfer using AcceptDomainTransferFromAnotherAwsAccount.
 %%
 %% Use either ListOperations or GetOperationDetail to determine whether the
 %% operation succeeded. GetOperationDetail provides additional information,
@@ -123,6 +132,34 @@ check_domain_transferability(Client, Input)
 check_domain_transferability(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CheckDomainTransferability">>, Input, Options).
+
+%% @doc This operation deletes the specified domain.
+%%
+%% This action is permanent. For more information, see Deleting a domain name
+%% registration.
+%%
+%% To transfer the domain registration to another registrar, use the transfer
+%% process that’s provided by the registrar to which you want to transfer the
+%% registration. Otherwise, the following apply:
+%%
+%% <ol> <li> You can’t get a refund for the cost of a deleted domain
+%% registration.
+%%
+%% </li> <li> The registry for the top-level domain might hold the domain
+%% name for a brief time before releasing it for other users to register
+%% (varies by registry).
+%%
+%% </li> <li> When the registration has been deleted, we'll send you a
+%% confirmation to the registrant contact. The email will come from
+%% `noreply@domainnameverification.net' or `noreply@registrar.amazon.com'.
+%%
+%% </li> </ol>
+delete_domain(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_domain(Client, Input, []).
+delete_domain(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDomain">>, Input, Options).
 
 %% @doc This operation deletes the specified tags for a domain.
 %%
@@ -162,8 +199,8 @@ disable_domain_transfer_lock(Client, Input, Options)
 %% @doc This operation configures Amazon Route 53 to automatically renew the
 %% specified domain before the domain registration expires.
 %%
-%% The cost of renewing your domain registration is billed to your AWS
-%% account.
+%% The cost of renewing your domain registration is billed to your Amazon Web
+%% Services account.
 %%
 %% The period during which you can renew a domain name varies by TLD. For a
 %% list of TLDs and their renewal policies, see Domains That You Can Register
@@ -205,7 +242,7 @@ get_contact_reachability_status(Client, Input, Options)
     request(Client, <<"GetContactReachabilityStatus">>, Input, Options).
 
 %% @doc This operation returns detailed information about a specified domain
-%% that is associated with the current AWS account.
+%% that is associated with the current Amazon Web Services account.
 %%
 %% Contact information for the domain is also returned as part of the output.
 get_domain_detail(Client, Input)
@@ -234,7 +271,8 @@ get_operation_detail(Client, Input, Options)
     request(Client, <<"GetOperationDetail">>, Input, Options).
 
 %% @doc This operation returns all the domain names registered with Amazon
-%% Route 53 for the current AWS account.
+%% Route 53 for the current Amazon Web Services account if no filtering
+%% conditions are used.
 list_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_domains(Client, Input, []).
@@ -245,12 +283,35 @@ list_domains(Client, Input, Options)
 %% @doc Returns information about all of the operations that return an
 %% operation ID and that have ever been performed on domains that were
 %% registered by the current account.
+%%
+%% This command runs only in the us-east-1 Region.
 list_operations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_operations(Client, Input, []).
 list_operations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOperations">>, Input, Options).
+
+%% @doc Lists the following prices for either all the TLDs supported by
+%% Route 53, or the specified TLD:
+%%
+%% <ul> <li> Registration
+%%
+%% </li> <li> Transfer
+%%
+%% </li> <li> Owner change
+%%
+%% </li> <li> Domain renewal
+%%
+%% </li> <li> Domain restoration
+%%
+%% </li> </ul>
+list_prices(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_prices(Client, Input, []).
+list_prices(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListPrices">>, Input, Options).
 
 %% @doc This operation returns all of the tags that are associated with the
 %% specified domain.
@@ -286,14 +347,18 @@ list_tags_for_domain(Client, Input, Options)
 %% contact information either for Amazon Registrar (for .com, .net, and .org
 %% domains) or for our registrar associate, Gandi (for all other TLDs). If
 %% you don't enable privacy protection, WHOIS queries return the information
-%% that you entered for the registrant, admin, and tech contacts.
+%% that you entered for the administrative, registrant, and technical
+%% contacts.
+%%
+%% You must specify the same privacy setting for the administrative,
+%% registrant, and technical contacts.
 %%
 %% </li> <li> If registration is successful, returns an operation ID that you
 %% can use to track the progress and completion of the action. If the request
 %% is not completed successfully, the domain registrant is notified by email.
 %%
-%% </li> <li> Charges your AWS account an amount based on the top-level
-%% domain. For more information, see Amazon Route 53 Pricing.
+%% </li> <li> Charges your Amazon Web Services account an amount based on the
+%% top-level domain. For more information, see Amazon Route 53 Pricing.
 %%
 %% </li> </ul>
 register_domain(Client, Input)
@@ -303,10 +368,10 @@ register_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterDomain">>, Input, Options).
 
-%% @doc Rejects the transfer of a domain from another AWS account to the
-%% current AWS account.
+%% @doc Rejects the transfer of a domain from another Amazon Web Services
+%% account to the current Amazon Web Services account.
 %%
-%% You initiate a transfer between AWS accounts using
+%% You initiate a transfer betweenAmazon Web Services accounts using
 %% TransferDomainToAnotherAwsAccount.
 %%
 %% Use either ListOperations or GetOperationDetail to determine whether the
@@ -322,7 +387,8 @@ reject_domain_transfer_from_another_aws_account(Client, Input, Options)
 
 %% @doc This operation renews a domain for the specified number of years.
 %%
-%% The cost of renewing your domain is billed to your AWS account.
+%% The cost of renewing your domain is billed to your Amazon Web Services
+%% account.
 %%
 %% We recommend that you renew your domain several weeks before the
 %% expiration date. Some TLD registries delete domains before the expiration
@@ -371,8 +437,8 @@ retrieve_domain_auth_code(Client, Input, Options)
 %% see Transferring Registration for a Domain to Amazon Route 53 in the
 %% Amazon Route 53 Developer Guide.
 %%
-%% </li> <li> For information about how to transfer a domain from one AWS
-%% account to another, see TransferDomainToAnotherAwsAccount.
+%% </li> <li> For information about how to transfer a domain from one Amazon
+%% Web Services account to another, see TransferDomainToAnotherAwsAccount.
 %%
 %% </li> <li> For information about how to transfer a domain to another
 %% domain registrar, see Transferring a Domain from Amazon Route 53 to
@@ -402,14 +468,14 @@ transfer_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TransferDomain">>, Input, Options).
 
-%% @doc Transfers a domain from the current AWS account to another AWS
-%% account.
+%% @doc Transfers a domain from the current Amazon Web Services account to
+%% another Amazon Web Services account.
 %%
 %% Note the following:
 %%
-%% <ul> <li> The AWS account that you're transferring the domain to must
-%% accept the transfer. If the other account doesn't accept the transfer
-%% within 3 days, we cancel the transfer. See
+%% <ul> <li> The Amazon Web Services account that you're transferring the
+%% domain to must accept the transfer. If the other account doesn't accept
+%% the transfer within 3 days, we cancel the transfer. See
 %% AcceptDomainTransferFromAnotherAwsAccount.
 %%
 %% </li> <li> You can cancel the transfer before the other account accepts
@@ -418,13 +484,14 @@ transfer_domain(Client, Input, Options)
 %% </li> <li> The other account can reject the transfer. See
 %% RejectDomainTransferFromAnotherAwsAccount.
 %%
-%% </li> </ul> When you transfer a domain from one AWS account to another,
-%% Route 53 doesn't transfer the hosted zone that is associated with the
-%% domain. DNS resolution isn't affected if the domain and the hosted zone
-%% are owned by separate accounts, so transferring the hosted zone is
-%% optional. For information about transferring the hosted zone to another
-%% AWS account, see Migrating a Hosted Zone to a Different AWS Account in the
-%% Amazon Route 53 Developer Guide.
+%% </li> </ul> When you transfer a domain from one Amazon Web Services
+%% account to another, Route 53 doesn't transfer the hosted zone that is
+%% associated with the domain. DNS resolution isn't affected if the domain
+%% and the hosted zone are owned by separate accounts, so transferring the
+%% hosted zone is optional. For information about transferring the hosted
+%% zone to another Amazon Web Services account, see Migrating a Hosted Zone
+%% to a Different Amazon Web Services Account in the Amazon Route 53
+%% Developer Guide.
 %%
 %% Use either ListOperations or GetOperationDetail to determine whether the
 %% operation succeeded. GetOperationDetail provides additional information,
@@ -462,8 +529,11 @@ update_domain_contact(Client, Input, Options)
 %% (for .com, .net, and .org domains) or with contact information for our
 %% registrar associate, Gandi.
 %%
+%% You must specify the same privacy setting for the administrative,
+%% registrant, and technical contacts.
+%%
 %% This operation affects only the contact information for the specified
-%% contact type (registrant, administrator, or tech). If the request
+%% contact type (administrative, registrant, or technical). If the request
 %% succeeds, Amazon Route 53 returns an operation ID that you can use with
 %% GetOperationDetail to track the progress and completion of the action. If
 %% the request doesn't complete successfully, the domain registrant will be
@@ -512,8 +582,8 @@ update_tags_for_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTagsForDomain">>, Input, Options).
 
-%% @doc Returns all the domain-related billing records for the current AWS
-%% account for a specified period
+%% @doc Returns all the domain-related billing records for the current Amazon
+%% Web Services account for a specified period
 view_billing(Client, Input)
   when is_map(Client), is_map(Input) ->
     view_billing(Client, Input, []).

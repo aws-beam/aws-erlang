@@ -44,6 +44,8 @@
          delete_connector_profile/3,
          delete_flow/2,
          delete_flow/3,
+         describe_connector/2,
+         describe_connector/3,
          describe_connector_entity/2,
          describe_connector_entity/3,
          describe_connector_profiles/2,
@@ -56,17 +58,23 @@
          describe_flow_execution_records/3,
          list_connector_entities/2,
          list_connector_entities/3,
+         list_connectors/2,
+         list_connectors/3,
          list_flows/2,
          list_flows/3,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         register_connector/2,
+         register_connector/3,
          start_flow/2,
          start_flow/3,
          stop_flow/2,
          stop_flow/3,
          tag_resource/3,
          tag_resource/4,
+         unregister_connector/2,
+         unregister_connector/3,
          untag_resource/3,
          untag_resource/4,
          update_connector_profile/2,
@@ -170,6 +178,33 @@ delete_flow(Client, Input) ->
 delete_flow(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-flow"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Describes the given custom connector registered in your Amazon Web
+%% Services account.
+%%
+%% This API can be used for custom connectors that are registered in your
+%% account and also for Amazon authored connectors.
+describe_connector(Client, Input) ->
+    describe_connector(Client, Input, []).
+describe_connector(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/describe-connector"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -344,6 +379,33 @@ list_connector_entities(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns the list of all registered custom connectors in your Amazon
+%% Web Services account.
+%%
+%% This API lists only custom connectors registered in this account, not the
+%% Amazon Web Services authored connectors.
+list_connectors(Client, Input) ->
+    list_connectors(Client, Input, []).
+list_connectors(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-connectors"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists all of the flows associated with your account.
 list_flows(Client, Input) ->
     list_flows(Client, Input, []).
@@ -389,6 +451,32 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Registers a new connector with your Amazon Web Services account.
+%%
+%% Before you can register the connector, you must deploy lambda in your
+%% account.
+register_connector(Client, Input) ->
+    register_connector(Client, Input, []).
+register_connector(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/register-connector"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Activates an existing flow.
 %%
@@ -449,6 +537,30 @@ tag_resource(Client, ResourceArn, Input) ->
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Unregisters the custom connector registered in your account that
+%% matches the connectorLabel provided in the request.
+unregister_connector(Client, Input) ->
+    unregister_connector(Client, Input, []).
+unregister_connector(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/unregister-connector"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

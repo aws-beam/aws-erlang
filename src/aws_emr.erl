@@ -165,6 +165,9 @@ add_instance_groups(Client, Input, Options)
 %%
 %% You can only add steps to a cluster that is in one of the following
 %% states: STARTING, BOOTSTRAPPING, RUNNING, or WAITING.
+%%
+%% The string values passed into `HadoopJarStep' object cannot exceed a total
+%% of 10240 characters.
 add_job_flow_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_job_flow_steps(Client, Input, []).
@@ -555,9 +558,12 @@ put_auto_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAutoScalingPolicy">>, Input, Options).
 
-%% @doc Creates or updates an auto-termination policy for an Amazon EMR
-%% cluster.
+%% @doc Auto-termination is supported in Amazon EMR versions 5.30.0 and 6.1.0
+%% and later.
 %%
+%% For more information, see Using an auto-termination policy.
+%%
+%% Creates or updates an auto-termination policy for an Amazon EMR cluster.
 %% An auto-termination policy defines the amount of idle time in seconds
 %% after which a cluster automatically terminates. For alternative cluster
 %% termination options, see Control cluster termination.
@@ -700,11 +706,16 @@ set_termination_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetTerminationProtection">>, Input, Options).
 
-%% @doc Sets the `Cluster$VisibleToAllUsers' value for an EMR cluster.
+%% @doc The SetVisibleToAllUsers parameter is no longer supported.
 %%
-%% When `true', IAM principals in the Amazon Web Services account can perform
-%% EMR cluster actions that their IAM policies allow. When `false', only the
-%% IAM principal that created the cluster and the Amazon Web Services account
+%% Your cluster may be visible to all users in your account. To restrict
+%% cluster access using an IAM policy, see Identity and Access Management for
+%% EMR.
+%%
+%% Sets the `Cluster$VisibleToAllUsers' value for an EMR cluster. When
+%% `true', IAM principals in the Amazon Web Services account can perform EMR
+%% cluster actions that their IAM policies allow. When `false', only the IAM
+%% principal that created the cluster and the Amazon Web Services account
 %% root user can perform EMR actions on the cluster, regardless of IAM
 %% permissions policies attached to other IAM principals.
 %%

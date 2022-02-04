@@ -88,7 +88,8 @@ cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new ledger in your account in the current Region.
+%% @doc Creates a new ledger in your Amazon Web Services account in the
+%% current Region.
 create_ledger(Client, Input) ->
     create_ledger(Client, Input, []).
 create_ledger(Client, Input0, Options0) ->
@@ -233,7 +234,14 @@ describe_ledger(Client, Name, QueryMap, HeadersMap, Options0)
 %% @doc Exports journal contents within a date and time range from a ledger
 %% into a specified Amazon Simple Storage Service (Amazon S3) bucket.
 %%
-%% The data is written as files in Amazon Ion format.
+%% A journal export job can write the data objects in either the text or
+%% binary representation of Amazon Ion format, or in JSON Lines text format.
+%%
+%% In JSON Lines format, each journal block in the exported data object is a
+%% valid JSON object that is delimited by a newline. You can use this format
+%% to easily integrate JSON exports with analytics tools such as Glue and
+%% Amazon Athena because these services can parse newline-delimited JSON
+%% automatically. For more information about the format, see JSON Lines.
 %%
 %% If the ledger with the given `Name' doesn't exist, then throws
 %% `ResourceNotFoundException'.
@@ -398,7 +406,8 @@ list_journal_kinesis_streams_for_ledger(Client, LedgerName, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns an array of journal export job descriptions for all ledgers
-%% that are associated with the current account and Region.
+%% that are associated with the current Amazon Web Services account and
+%% Region.
 %%
 %% This action returns a maximum of `MaxResults' items, and is paginated so
 %% that you can retrieve all the items by calling `ListJournalS3Exports'
@@ -470,7 +479,7 @@ list_journal_s3_exports_for_ledger(Client, Name, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns an array of ledger summaries that are associated with the
-%% current account and Region.
+%% current Amazon Web Services account and Region.
 %%
 %% This action returns a maximum of 100 items and is paginated so that you
 %% can retrieve all the items by calling `ListLedgers' multiple times.

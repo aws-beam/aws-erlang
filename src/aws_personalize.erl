@@ -7,6 +7,8 @@
 
 -export([create_batch_inference_job/2,
          create_batch_inference_job/3,
+         create_batch_segment_job/2,
+         create_batch_segment_job/3,
          create_campaign/2,
          create_campaign/3,
          create_dataset/2,
@@ -21,6 +23,8 @@
          create_event_tracker/3,
          create_filter/2,
          create_filter/3,
+         create_recommender/2,
+         create_recommender/3,
          create_schema/2,
          create_schema/3,
          create_solution/2,
@@ -37,6 +41,8 @@
          delete_event_tracker/3,
          delete_filter/2,
          delete_filter/3,
+         delete_recommender/2,
+         delete_recommender/3,
          delete_schema/2,
          delete_schema/3,
          delete_solution/2,
@@ -45,6 +51,8 @@
          describe_algorithm/3,
          describe_batch_inference_job/2,
          describe_batch_inference_job/3,
+         describe_batch_segment_job/2,
+         describe_batch_segment_job/3,
          describe_campaign/2,
          describe_campaign/3,
          describe_dataset/2,
@@ -63,6 +71,8 @@
          describe_filter/3,
          describe_recipe/2,
          describe_recipe/3,
+         describe_recommender/2,
+         describe_recommender/3,
          describe_schema/2,
          describe_schema/3,
          describe_solution/2,
@@ -73,6 +83,8 @@
          get_solution_metrics/3,
          list_batch_inference_jobs/2,
          list_batch_inference_jobs/3,
+         list_batch_segment_jobs/2,
+         list_batch_segment_jobs/3,
          list_campaigns/2,
          list_campaigns/3,
          list_dataset_export_jobs/2,
@@ -89,6 +101,8 @@
          list_filters/3,
          list_recipes/2,
          list_recipes/3,
+         list_recommenders/2,
+         list_recommenders/3,
          list_schemas/2,
          list_schemas/3,
          list_solution_versions/2,
@@ -98,7 +112,9 @@
          stop_solution_version_creation/2,
          stop_solution_version_creation/3,
          update_campaign/2,
-         update_campaign/3]).
+         update_campaign/3,
+         update_recommender/2,
+         update_recommender/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -117,7 +133,18 @@ create_batch_inference_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBatchInferenceJob">>, Input, Options).
 
-%% @doc Creates a campaign by deploying a solution version.
+%% @doc Creates a batch segment job.
+%%
+%% The operation can handle up to 50 million records and the input file must
+%% be in JSON format. For more information, see `recommendations-batch'.
+create_batch_segment_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_batch_segment_job(Client, Input, []).
+create_batch_segment_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateBatchSegmentJob">>, Input, Options).
+
+%% @doc Creates a campaign that deploys a solution version.
 %%
 %% When a client calls the GetRecommendations and GetPersonalizedRanking
 %% APIs, a campaign is specified in the request.
@@ -242,9 +269,8 @@ create_dataset_export_job(Client, Input, Options)
 
 %% @doc Creates an empty dataset group.
 %%
-%% A dataset group contains related datasets that supply data for training a
-%% model. A dataset group can contain at most three datasets, one for each
-%% type of dataset:
+%% A dataset group is a container for Amazon Personalize resources. A dataset
+%% group can contain at most three datasets, one for each type of dataset:
 %%
 %% <ul> <li> Interactions
 %%
@@ -252,9 +278,13 @@ create_dataset_export_job(Client, Input, Options)
 %%
 %% </li> <li> Users
 %%
-%% </li> </ul> To train a model (create a solution), a dataset group that
-%% contains an `Interactions' dataset is required. Call `CreateDataset' to
-%% add a dataset to the group.
+%% </li> </ul> A dataset group can be a Domain dataset group, where you
+%% specify a domain and use pre-configured resources like recommenders, or a
+%% Custom dataset group, where you use custom resources, such as a solution
+%% with a solution version, that you deploy with a campaign. If you start
+%% with a Domain dataset group, you can still add custom resources such as
+%% solutions and solution versions trained with recipes for custom use cases
+%% and deployed with campaigns.
 %%
 %% A dataset group can be in one of the following states:
 %%
@@ -389,6 +419,70 @@ create_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFilter">>, Input, Options).
 
+%% @doc Creates a recommender with the recipe (a Domain dataset group use
+%% case) you specify.
+%%
+%% You create recommenders for a Domain dataset group and specify the
+%% recommender's Amazon Resource Name (ARN) when you make a
+%% GetRecommendations request.
+%%
+%% Minimum recommendation requests per second
+%%
+%% When you create a recommender, you can configure the recommender's minimum
+%% recommendation requests per second. The minimum recommendation requests
+%% per second (`minRecommendationRequestsPerSecond') specifies the baseline
+%% recommendation request throughput provisioned by Amazon Personalize. The
+%% default minRecommendationRequestsPerSecond is `1'. A recommendation
+%% request is a single `GetRecommendations' operation. Request throughput is
+%% measured in requests per second and Amazon Personalize uses your requests
+%% per second to derive your requests per hour and the price of your
+%% recommender usage.
+%%
+%% If your requests per second increases beyond
+%% `minRecommendationRequestsPerSecond', Amazon Personalize auto-scales the
+%% provisioned capacity up and down, but never below
+%% `minRecommendationRequestsPerSecond'. There's a short time delay while the
+%% capacity is increased that might cause loss of requests.
+%%
+%% Your bill is the greater of either the minimum requests per hour (based on
+%% minRecommendationRequestsPerSecond) or the actual number of requests. The
+%% actual request throughput used is calculated as the average
+%% requests/second within a one-hour window. We recommend starting with the
+%% default `minRecommendationRequestsPerSecond', track your usage using
+%% Amazon CloudWatch metrics, and then increase the
+%% `minRecommendationRequestsPerSecond' as necessary.
+%%
+%% Status
+%%
+%% A recommender can be in one of the following states:
+%%
+%% <ul> <li> CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE FAILED
+%%
+%% </li> <li> DELETE PENDING > DELETE IN_PROGRESS
+%%
+%% </li> </ul> To get the recommender status, call `DescribeRecommender'.
+%%
+%% Wait until the `status' of the recommender is `ACTIVE' before asking the
+%% recommender for recommendations.
+%%
+%% == Related APIs ==
+%%
+%% <ul> <li> `ListRecommenders'
+%%
+%% </li> <li> `DescribeRecommender'
+%%
+%% </li> <li> `UpdateRecommender'
+%%
+%% </li> <li> `DeleteRecommender'
+%%
+%% </li> </ul>
+create_recommender(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_recommender(Client, Input, []).
+create_recommender(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateRecommender">>, Input, Options).
+
 %% @doc Creates an Amazon Personalize schema from the specified schema
 %% string.
 %%
@@ -396,7 +490,9 @@ create_filter(Client, Input, Options)
 %%
 %% Amazon Personalize recognizes three schema variants. Each schema is
 %% associated with a dataset type and has a set of required field and
-%% keywords. You specify a schema when you call `CreateDataset'.
+%% keywords. If you are creating a schema for a dataset in a Domain dataset
+%% group, you provide the domain of the Domain dataset group. You specify a
+%% schema when you call `CreateDataset'.
 %%
 %% == Related APIs ==
 %%
@@ -471,7 +567,7 @@ create_solution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSolution">>, Input, Options).
 
-%% @doc Trains or retrains an active solution.
+%% @doc Trains or retrains an active solution in a Custom dataset group.
 %%
 %% A solution is created using the `CreateSolution' operation and must be in
 %% the ACTIVE state before calling `CreateSolutionVersion'. A new version of
@@ -584,6 +680,17 @@ delete_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFilter">>, Input, Options).
 
+%% @doc Deactivates and removes a recommender.
+%%
+%% A deleted recommender can no longer be specified in a GetRecommendations
+%% request.
+delete_recommender(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_recommender(Client, Input, []).
+delete_recommender(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteRecommender">>, Input, Options).
+
 %% @doc Deletes a schema.
 %%
 %% Before deleting a schema, you must delete all datasets referencing the
@@ -627,6 +734,16 @@ describe_batch_inference_job(Client, Input)
 describe_batch_inference_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBatchInferenceJob">>, Input, Options).
+
+%% @doc Gets the properties of a batch segment job including name, Amazon
+%% Resource Name (ARN), status, input and output configurations, and the ARN
+%% of the solution version used to generate segments.
+describe_batch_segment_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_batch_segment_job(Client, Input, []).
+describe_batch_segment_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeBatchSegmentJob">>, Input, Options).
 
 %% @doc Describes the given campaign, including its status.
 %%
@@ -735,6 +852,25 @@ describe_recipe(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRecipe">>, Input, Options).
 
+%% @doc Describes the given recommender, including its status.
+%%
+%% A recommender can be in one of the following states:
+%%
+%% <ul> <li> CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE FAILED
+%%
+%% </li> <li> DELETE PENDING > DELETE IN_PROGRESS
+%%
+%% </li> </ul> When the `status' is `CREATE FAILED', the response includes
+%% the `failureReason' key, which describes why.
+%%
+%% For more information on recommenders, see CreateRecommender.
+describe_recommender(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_recommender(Client, Input, []).
+describe_recommender(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeRecommender">>, Input, Options).
+
 %% @doc Describes a schema.
 %%
 %% For more information on schemas, see `CreateSchema'.
@@ -781,6 +917,15 @@ list_batch_inference_jobs(Client, Input)
 list_batch_inference_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBatchInferenceJobs">>, Input, Options).
+
+%% @doc Gets a list of the batch segment jobs that have been performed off of
+%% a solution version that you specify.
+list_batch_segment_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_batch_segment_jobs(Client, Input, []).
+list_batch_segment_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListBatchSegmentJobs">>, Input, Options).
 
 %% @doc Returns a list of campaigns that use the given solution.
 %%
@@ -878,6 +1023,19 @@ list_recipes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRecipes">>, Input, Options).
 
+%% @doc Returns a list of recommenders in a given Domain dataset group.
+%%
+%% When a Domain dataset group is not specified, all the recommenders
+%% associated with the account are listed. The response provides the
+%% properties for each recommender, including the Amazon Resource Name (ARN).
+%% For more information on recommenders, see CreateRecommender.
+list_recommenders(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_recommenders(Client, Input, []).
+list_recommenders(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListRecommenders">>, Input, Options).
+
 %% @doc Returns the list of schemas associated with the account.
 %%
 %% The response provides the properties for each schema, including the Amazon
@@ -953,6 +1111,14 @@ update_campaign(Client, Input)
 update_campaign(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCampaign">>, Input, Options).
+
+%% @doc Updates the recommender to modify the recommender configuration.
+update_recommender(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_recommender(Client, Input, []).
+update_recommender(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateRecommender">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

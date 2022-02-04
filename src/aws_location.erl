@@ -21,6 +21,8 @@
          batch_update_device_position/4,
          calculate_route/3,
          calculate_route/4,
+         calculate_route_matrix/3,
+         calculate_route_matrix/4,
          create_geofence_collection/2,
          create_geofence_collection/3,
          create_map/2,
@@ -101,6 +103,8 @@
          put_geofence/5,
          search_place_index_for_position/3,
          search_place_index_for_position/4,
+         search_place_index_for_suggestions/3,
+         search_place_index_for_suggestions/4,
          search_place_index_for_text/3,
          search_place_index_for_text/4,
          tag_resource/3,
@@ -223,6 +227,9 @@ batch_delete_geofence(Client, CollectionName, Input0, Options0) ->
 %%
 %% </li> </ul> The last geofence that a device was observed within is tracked
 %% for 30 days after the most recent device position update.
+%%
+%% Geofence evaluation uses the given device position. It does not account
+%% for the optional `Accuracy' of a `DevicePositionUpdate'.
 batch_evaluate_geofences(Client, CollectionName, Input) ->
     batch_evaluate_geofences(Client, CollectionName, Input, []).
 batch_evaluate_geofences(Client, CollectionName, Input0, Options0) ->
@@ -305,10 +312,20 @@ batch_put_geofence(Client, CollectionName, Input0, Options0) ->
 %% evaluated against linked geofence collections, and location data is stored
 %% at a maximum of one position per 30 second interval. If your update
 %% frequency is more often than every 30 seconds, only one update per 30
-%% seconds is stored for each unique device ID. When `PositionFiltering' is
-%% set to `DistanceBased' filtering, location data is stored and evaluated
-%% against linked geofence collections only if the device has moved more than
-%% 30 m (98.4 ft).
+%% seconds is stored for each unique device ID.
+%%
+%% When `PositionFiltering' is set to `DistanceBased' filtering, location
+%% data is stored and evaluated against linked geofence collections only if
+%% the device has moved more than 30 m (98.4 ft).
+%%
+%% When `PositionFiltering' is set to `AccuracyBased' filtering, location
+%% data is stored and evaluated against linked geofence collections only if
+%% the device has moved more than the measured accuracy. For example, if two
+%% consecutive updates from a device have a horizontal accuracy of 5 m and 10
+%% m, the second update is neither stored or evaluated if the device has
+%% moved less than 15 m. If `PositionFiltering' is set to `AccuracyBased'
+%% filtering, Amazon Location uses the default value `{ "Horizontal": 0}'
+%% when accuracy is not provided on a `DevicePositionUpdate'.
 batch_update_device_position(Client, TrackerName, Input) ->
     batch_update_device_position(Client, TrackerName, Input, []).
 batch_update_device_position(Client, TrackerName, Input0, Options0) ->
@@ -332,9 +349,9 @@ batch_update_device_position(Client, TrackerName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Calculates a route given the following required parameters:
-%% `DeparturePostiton' and `DestinationPosition'.
+%% `DeparturePosition' and `DestinationPosition'.
 %%
-%% Requires that you first create a route calculator resource
+%% Requires that you first create a route calculator resource.
 %%
 %% By default, a request that doesn't specify a departure time uses the best
 %% time of day to travel with the best traffic conditions when calculating
@@ -343,15 +360,16 @@ batch_update_device_position(Client, TrackerName, Input0, Options0) ->
 %% Additional options include:
 %%
 %% <ul> <li> Specifying a departure time using either `DepartureTime' or
-%% `DepartureNow'. This calculates a route based on predictive traffic data
-%% at the given time.
+%% `DepartNow'. This calculates a route based on predictive traffic data at
+%% the given time.
 %%
-%% You can't specify both `DepartureTime' and `DepartureNow' in a single
-%% request. Specifying both parameters returns an error message.
+%% You can't specify both `DepartureTime' and `DepartNow' in a single
+%% request. Specifying both parameters returns a validation error.
 %%
-%% </li> <li> Specifying a travel mode using TravelMode. This lets you
-%% specify an additional route preference such as `CarModeOptions' if
-%% traveling by `Car', or `TruckModeOptions' if traveling by `Truck'.
+%% </li> <li> Specifying a travel mode using TravelMode sets the
+%% transportation mode used to calculate the routes. This also lets you
+%% specify additional route preferences in `CarModeOptions' if traveling by
+%% `Car', or `TruckModeOptions' if traveling by `Truck'.
 %%
 %% </li> </ul>
 calculate_route(Client, CalculatorName, Input) ->
@@ -359,6 +377,63 @@ calculate_route(Client, CalculatorName, Input) ->
 calculate_route(Client, CalculatorName, Input0, Options0) ->
     Method = post,
     Path = ["/routes/v0/calculators/", aws_util:encode_uri(CalculatorName), "/calculate/route"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Calculates a route matrix given the following required parameters:
+%% `DeparturePositions' and `DestinationPositions'.
+%%
+%% `CalculateRouteMatrix' calculates routes and returns the travel time and
+%% travel distance from each departure position to each destination position
+%% in the request. For example, given departure positions A and B, and
+%% destination positions X and Y, `CalculateRouteMatrix' will return time and
+%% distance for routes from A to X, A to Y, B to X, and B to Y (in that
+%% order). The number of results returned (and routes calculated) will be the
+%% number of `DeparturePositions' times the number of `DestinationPositions'.
+%%
+%% Your account is charged for each route calculated, not the number of
+%% requests.
+%%
+%% Requires that you first create a route calculator resource.
+%%
+%% By default, a request that doesn't specify a departure time uses the best
+%% time of day to travel with the best traffic conditions when calculating
+%% routes.
+%%
+%% Additional options include:
+%%
+%% <ul> <li> Specifying a departure time using either `DepartureTime' or
+%% `DepartNow'. This calculates routes based on predictive traffic data at
+%% the given time.
+%%
+%% You can't specify both `DepartureTime' and `DepartNow' in a single
+%% request. Specifying both parameters returns a validation error.
+%%
+%% </li> <li> Specifying a travel mode using TravelMode sets the
+%% transportation mode used to calculate the routes. This also lets you
+%% specify additional route preferences in `CarModeOptions' if traveling by
+%% `Car', or `TruckModeOptions' if traveling by `Truck'.
+%%
+%% </li> </ul>
+calculate_route_matrix(Client, CalculatorName, Input) ->
+    calculate_route_matrix(Client, CalculatorName, Input, []).
+calculate_route_matrix(Client, CalculatorName, Input0, Options0) ->
+    Method = post,
+    Path = ["/routes/v0/calculators/", aws_util:encode_uri(CalculatorName), "/calculate/route-matrix"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -401,6 +476,11 @@ create_geofence_collection(Client, Input0, Options0) ->
 
 %% @doc Creates a map resource in your AWS account, which provides map tiles
 %% of different styles sourced from global location data providers.
+%%
+%% If your application is tracking or routing assets you use in your
+%% business, such as delivery vehicles or employees, you may only use HERE as
+%% your geolocation provider. See section 82 of the AWS service terms for
+%% more details.
 create_map(Client, Input) ->
     create_map(Client, Input, []).
 create_map(Client, Input0, Options0) ->
@@ -423,8 +503,18 @@ create_map(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a place index resource in your AWS account, which supports
-%% functions with geospatial data sourced from your chosen data provider.
+%% @doc Creates a place index resource in your AWS account.
+%%
+%% Use a place index resource to geocode addresses and other text queries by
+%% using the `SearchPlaceIndexForText' operation, and reverse geocode
+%% coordinates by using the `SearchPlaceIndexForPosition' operation, and
+%% enable autosuggestions by using the `SearchPlaceIndexForSuggestions'
+%% operation.
+%%
+%% If your application is tracking or routing assets you use in your
+%% business, such as delivery vehicles or employees, you may only use HERE as
+%% your geolocation provider. See section 82 of the AWS service terms for
+%% more details.
 create_place_index(Client, Input) ->
     create_place_index(Client, Input, []).
 create_place_index(Client, Input0, Options0) ->
@@ -452,6 +542,11 @@ create_place_index(Client, Input0, Options0) ->
 %% You can send requests to a route calculator resource to estimate travel
 %% time, distance, and get directions. A route calculator sources traffic and
 %% road network data from your chosen data provider.
+%%
+%% If your application is tracking or routing assets you use in your
+%% business, such as delivery vehicles or employees, you may only use HERE as
+%% your geolocation provider. See section 82 of the AWS service terms for
+%% more details.
 create_route_calculator(Client, Input) ->
     create_route_calculator(Client, Input, []).
 create_route_calculator(Client, Input0, Options0) ->
@@ -1277,15 +1372,52 @@ search_place_index_for_position(Client, IndexName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Generates suggestions for addresses and points of interest based on
+%% partial or misspelled free-form text.
+%%
+%% This operation is also known as autocomplete, autosuggest, or fuzzy
+%% matching.
+%%
+%% Optional parameters let you narrow your search results by bounding box or
+%% country, or bias your search toward a specific position on the globe.
+%%
+%% You can search for suggested place names near a specified position by
+%% using `BiasPosition', or filter results within a bounding box by using
+%% `FilterBBox'. These parameters are mutually exclusive; using both
+%% `BiasPosition' and `FilterBBox' in the same command returns an error.
+search_place_index_for_suggestions(Client, IndexName, Input) ->
+    search_place_index_for_suggestions(Client, IndexName, Input, []).
+search_place_index_for_suggestions(Client, IndexName, Input0, Options0) ->
+    Method = post,
+    Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), "/search/suggestions"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Geocodes free-form text, such as an address, name, city, or region to
 %% allow you to search for Places or points of interest.
 %%
-%% Includes the option to apply additional parameters to narrow your list of
-%% results.
+%% Optional parameters let you narrow your search results by bounding box or
+%% country, or bias your search toward a specific position on the globe.
 %%
 %% You can search for places near a given position using `BiasPosition', or
 %% filter results within a bounding box using `FilterBBox'. Providing both
 %% parameters simultaneously returns an error.
+%%
+%% Search results are returned in order of highest to lowest relevance.
 search_place_index_for_text(Client, IndexName, Input) ->
     search_place_index_for_text(Client, IndexName, Input, []).
 search_place_index_for_text(Client, IndexName, Input0, Options0) ->

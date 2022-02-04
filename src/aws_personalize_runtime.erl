@@ -46,15 +46,21 @@ get_personalized_ranking(Client, Input0, Options0) ->
 
 %% @doc Returns a list of recommended items.
 %%
-%% The required input depends on the recipe type used to create the solution
-%% backing the campaign, as follows:
+%% For campaigns, the campaign's Amazon Resource Name (ARN) is required and
+%% the required user and item input depends on the recipe type used to create
+%% the solution backing the campaign as follows:
 %%
-%% <ul> <li> RELATED_ITEMS - `itemId' required, `userId' not used
+%% <ul> <li> USER_PERSONALIZATION - `userId' required, `itemId' not used
 %%
-%% </li> <li> USER_PERSONALIZATION - `itemId' optional, `userId' required
+%% </li> <li> RELATED_ITEMS - `itemId' required, `userId' not used
 %%
 %% </li> </ul> Campaigns that are backed by a solution created using a recipe
 %% of type PERSONALIZED_RANKING use the API.
+%%
+%% For recommenders, the recommender's ARN is required and the required item
+%% and user input depends on the use case (domain-based recipe) backing the
+%% recommender. For information on use case requirements see Choosing
+%% recommender use cases.
 get_recommendations(Client, Input) ->
     get_recommendations(Client, Input, []).
 get_recommendations(Client, Input0, Options0) ->

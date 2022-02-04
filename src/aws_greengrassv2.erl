@@ -21,7 +21,9 @@
 %% Developer Guide.
 -module(aws_greengrassv2).
 
--export([batch_associate_client_device_with_core_device/3,
+-export([associate_service_role_to_account/2,
+         associate_service_role_to_account/3,
+         batch_associate_client_device_with_core_device/3,
          batch_associate_client_device_with_core_device/4,
          batch_disassociate_client_device_from_core_device/3,
          batch_disassociate_client_device_from_core_device/4,
@@ -38,18 +40,26 @@
          describe_component/2,
          describe_component/4,
          describe_component/5,
+         disassociate_service_role_from_account/2,
+         disassociate_service_role_from_account/3,
          get_component/2,
          get_component/4,
          get_component/5,
          get_component_version_artifact/3,
          get_component_version_artifact/5,
          get_component_version_artifact/6,
+         get_connectivity_info/2,
+         get_connectivity_info/4,
+         get_connectivity_info/5,
          get_core_device/2,
          get_core_device/4,
          get_core_device/5,
          get_deployment/2,
          get_deployment/4,
          get_deployment/5,
+         get_service_role_for_account/1,
+         get_service_role_for_account/3,
+         get_service_role_for_account/4,
          list_client_devices_associated_with_core_device/2,
          list_client_devices_associated_with_core_device/4,
          list_client_devices_associated_with_core_device/5,
@@ -79,7 +89,9 @@
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
-         untag_resource/4]).
+         untag_resource/4,
+         update_connectivity_info/3,
+         update_connectivity_info/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -87,7 +99,38 @@
 %% API
 %%====================================================================
 
-%% @doc Associate a list of client devices with a core device.
+%% @doc Associates a Greengrass service role with IoT Greengrass for your
+%% Amazon Web Services account in this Amazon Web Services Region.
+%%
+%% IoT Greengrass uses this role to verify the identity of client devices and
+%% manage core device connectivity information. The role must include the
+%% AWSGreengrassResourceAccessRolePolicy managed policy or a custom policy
+%% that defines equivalent permissions for the IoT Greengrass features that
+%% you use. For more information, see Greengrass service role in the IoT
+%% Greengrass Version 2 Developer Guide.
+associate_service_role_to_account(Client, Input) ->
+    associate_service_role_to_account(Client, Input, []).
+associate_service_role_to_account(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/greengrass/servicerole"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates a list of client devices with a core device.
 %%
 %% Use this API operation to specify which client devices can discover a core
 %% device through cloud discovery. With cloud discovery, client devices
@@ -123,7 +166,7 @@ batch_associate_client_device_with_core_device(Client, CoreDeviceThingName, Inpu
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disassociate a list of client devices from a core device.
+%% @doc Disassociates a list of client devices from a core device.
 %%
 %% After you disassociate a client device from a core device, the client
 %% device won't be able to use cloud discovery to retrieve the core device's
@@ -366,6 +409,35 @@ describe_component(Client, Arn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Disassociates the Greengrass service role from IoT Greengrass for
+%% your Amazon Web Services account in this Amazon Web Services Region.
+%%
+%% Without a service role, IoT Greengrass can't verify the identity of client
+%% devices or manage core device connectivity information. For more
+%% information, see Greengrass service role in the IoT Greengrass Version 2
+%% Developer Guide.
+disassociate_service_role_from_account(Client, Input) ->
+    disassociate_service_role_from_account(Client, Input, []).
+disassociate_service_role_from_account(Client, Input0, Options0) ->
+    Method = delete,
+    Path = ["/greengrass/servicerole"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets the recipe for a version of a component.
 %%
 %% Core devices can call this operation to identify the artifacts and
@@ -422,6 +494,36 @@ get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves connectivity information for a Greengrass core device.
+%%
+%% Connectivity information includes endpoints and ports where client devices
+%% can connect to an MQTT broker on the core device. When a client device
+%% calls the Greengrass discovery API, IoT Greengrass returns connectivity
+%% information for all of the core devices where the client device can
+%% connect. For more information, see Connect client devices to core devices
+%% in the IoT Greengrass Version 2 Developer Guide.
+get_connectivity_info(Client, ThingName)
+  when is_map(Client) ->
+    get_connectivity_info(Client, ThingName, #{}, #{}).
+
+get_connectivity_info(Client, ThingName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, []).
+
+get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/connectivityInfo"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves metadata for a Greengrass core device.
 get_core_device(Client, CoreDeviceThingName)
   when is_map(Client) ->
@@ -460,6 +562,34 @@ get_deployment(Client, DeploymentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/greengrass/v2/deployments/", aws_util:encode_uri(DeploymentId), ""],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the service role associated with IoT Greengrass for your Amazon
+%% Web Services account in this Amazon Web Services Region.
+%%
+%% IoT Greengrass uses this role to verify the identity of client devices and
+%% manage core device connectivity information. For more information, see
+%% Greengrass service role in the IoT Greengrass Version 2 Developer Guide.
+get_service_role_for_account(Client)
+  when is_map(Client) ->
+    get_service_role_for_account(Client, #{}, #{}).
+
+get_service_role_for_account(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_service_role_for_account(Client, QueryMap, HeadersMap, []).
+
+get_service_role_for_account(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/greengrass/servicerole"],
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -792,6 +922,36 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates connectivity information for a Greengrass core device.
+%%
+%% Connectivity information includes endpoints and ports where client devices
+%% can connect to an MQTT broker on the core device. When a client device
+%% calls the Greengrass discovery API, IoT Greengrass returns connectivity
+%% information for all of the core devices where the client device can
+%% connect. For more information, see Connect client devices to core devices
+%% in the IoT Greengrass Version 2 Developer Guide.
+update_connectivity_info(Client, ThingName, Input) ->
+    update_connectivity_info(Client, ThingName, Input, []).
+update_connectivity_info(Client, ThingName, Input0, Options0) ->
+    Method = put,
+    Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/connectivityInfo"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================

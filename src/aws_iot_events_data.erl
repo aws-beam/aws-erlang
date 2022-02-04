@@ -1,14 +1,14 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS IoT Events monitors your equipment or device fleets for failures
-%% or changes in operation, and triggers actions when such events occur.
+%% @doc IoT Events monitors your equipment or device fleets for failures or
+%% changes in operation, and triggers actions when such events occur.
 %%
-%% You can use AWS IoT Events Data API commands to send inputs to detectors,
-%% list detectors, and view or update a detector's status.
+%% You can use IoT Events Data API commands to send inputs to detectors, list
+%% detectors, and view or update a detector's status.
 %%
-%% For more information, see What is AWS IoT Events? in the AWS IoT Events
-%% Developer Guide.
+%% For more information, see What is IoT Events? in the IoT Events Developer
+%% Guide.
 -module(aws_iot_events_data).
 
 -export([batch_acknowledge_alarm/2,
@@ -119,7 +119,7 @@ batch_enable_alarm(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Sends a set of messages to the AWS IoT Events system.
+%% @doc Sends a set of messages to the IoT Events system.
 %%
 %% Each message payload is transformed into the input you specify
 %% (`"inputName"') and ingested into any detectors that monitor that input.

@@ -315,7 +315,7 @@ describe_organization_resource_collection_health(Client, Input) ->
     describe_organization_resource_collection_health(Client, Input, []).
 describe_organization_resource_collection_health(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/organization/health/resource-collection/"],
+    Path = ["/organization/health/resource-collection"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -337,11 +337,13 @@ describe_organization_resource_collection_health(Client, Input0, Options0) ->
 %% insights, and the Mean Time to Recover (MTTR) for all closed insights in
 %% resource collections in your account.
 %%
-%% You specify the type of Amazon Web Services resources collection. The one
-%% type of Amazon Web Services resource collection supported is Amazon Web
-%% Services CloudFormation stacks. DevOps Guru can be configured to analyze
-%% only the Amazon Web Services resources that are defined in the stacks. You
-%% can specify up to 500 Amazon Web Services CloudFormation stacks.
+%% You specify the type of Amazon Web Services resources collection. The two
+%% types of Amazon Web Services resource collections supported are Amazon Web
+%% Services CloudFormation stacks and Amazon Web Services resources that
+%% contain the same Amazon Web Services tag. DevOps Guru can be configured to
+%% analyze the Amazon Web Services resources that are defined in the stacks
+%% or that are tagged using the same tag key. You can specify up to 500
+%% Amazon Web Services CloudFormation stacks.
 describe_resource_collection_health(Client, ResourceCollectionType)
   when is_map(Client) ->
     describe_resource_collection_health(Client, ResourceCollectionType, #{}, #{}).
@@ -430,11 +432,12 @@ get_cost_estimation(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns lists Amazon Web Services resources that are of the specified
 %% resource collection type.
 %%
-%% The one type of Amazon Web Services resource collection supported is
-%% Amazon Web Services CloudFormation stacks. DevOps Guru can be configured
-%% to analyze only the Amazon Web Services resources that are defined in the
-%% stacks. You can specify up to 500 Amazon Web Services CloudFormation
-%% stacks.
+%% The two types of Amazon Web Services resource collections supported are
+%% Amazon Web Services CloudFormation stacks and Amazon Web Services
+%% resources that contain the same Amazon Web Services tag. DevOps Guru can
+%% be configured to analyze the Amazon Web Services resources that are
+%% defined in the stacks or that are tagged using the same tag key. You can
+%% specify up to 500 Amazon Web Services CloudFormation stacks.
 get_resource_collection(Client, ResourceCollectionType)
   when is_map(Client) ->
     get_resource_collection(Client, ResourceCollectionType, #{}, #{}).
@@ -751,12 +754,13 @@ start_cost_estimation(Client, Input0, Options0) ->
 
 %% @doc Updates the collection of resources that DevOps Guru analyzes.
 %%
-%% The one type of Amazon Web Services resource collection supported is
-%% Amazon Web Services CloudFormation stacks. DevOps Guru can be configured
-%% to analyze only the Amazon Web Services resources that are defined in the
-%% stacks. You can specify up to 500 Amazon Web Services CloudFormation
-%% stacks. This method also creates the IAM role required for you to use
-%% DevOps Guru.
+%% The two types of Amazon Web Services resource collections supported are
+%% Amazon Web Services CloudFormation stacks and Amazon Web Services
+%% resources that contain the same Amazon Web Services tag. DevOps Guru can
+%% be configured to analyze the Amazon Web Services resources that are
+%% defined in the stacks or that are tagged using the same tag key. You can
+%% specify up to 500 Amazon Web Services CloudFormation stacks. This method
+%% also creates the IAM role required for you to use DevOps Guru.
 update_resource_collection(Client, Input) ->
     update_resource_collection(Client, Input, []).
 update_resource_collection(Client, Input0, Options0) ->

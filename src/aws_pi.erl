@@ -12,11 +12,11 @@
 %%
 %% When Performance Insights is enabled, the Amazon RDS Performance Insights
 %% API provides visibility into the performance of your DB instance. Amazon
-%% CloudWatch provides the authoritative source for AWS service-vended
-%% monitoring metrics. Performance Insights offers a domain-specific view of
-%% DB load.
+%% CloudWatch provides the authoritative source for Amazon Web Services
+%% service-vended monitoring metrics. Performance Insights offers a
+%% domain-specific view of DB load.
 %%
-%% DB load is measured as Average Active Sessions. Performance Insights
+%% DB load is measured as average active sessions. Performance Insights
 %% provides the data to API consumers as a two-dimensional time-series
 %% dataset. The time dimension provides DB load data for each time point in
 %% the queried time range. Each time point decomposes overall load in
@@ -36,8 +36,14 @@
          describe_dimension_keys/3,
          get_dimension_key_details/2,
          get_dimension_key_details/3,
+         get_resource_metadata/2,
+         get_resource_metadata/3,
          get_resource_metrics/2,
-         get_resource_metrics/3]).
+         get_resource_metrics/3,
+         list_available_resource_dimensions/2,
+         list_available_resource_dimensions/3,
+         list_available_resource_metrics/2,
+         list_available_resource_metrics/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -61,7 +67,7 @@ describe_dimension_keys(Client, Input, Options)
 %% or data source.
 %%
 %% For example, if you specify a SQL ID, `GetDimensionKeyDetails' retrieves
-%% the full text of the dimension `db.sql.statement' associated with this ID.
+%% the full text of the dimension `db.sql.statement'cassociated with this ID.
 %% This operation is useful because `GetResourceMetrics' and
 %% `DescribeDimensionKeys' don't support retrieval of large SQL statement
 %% text.
@@ -71,6 +77,17 @@ get_dimension_key_details(Client, Input)
 get_dimension_key_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDimensionKeyDetails">>, Input, Options).
+
+%% @doc Retrieve the metadata for different features.
+%%
+%% For example, the metadata might indicate that a feature is turned on or
+%% off on a specific DB instance.
+get_resource_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_resource_metadata(Client, Input, []).
+get_resource_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetResourceMetadata">>, Input, Options).
 
 %% @doc Retrieve Performance Insights metrics for a set of data sources, over
 %% a time period.
@@ -86,6 +103,24 @@ get_resource_metrics(Client, Input)
 get_resource_metrics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourceMetrics">>, Input, Options).
+
+%% @doc Retrieve the dimensions that can be queried for each specified metric
+%% type on a specified DB instance.
+list_available_resource_dimensions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_available_resource_dimensions(Client, Input, []).
+list_available_resource_dimensions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAvailableResourceDimensions">>, Input, Options).
+
+%% @doc Retrieve metrics of the specified types that can be queried for a
+%% specified DB instance.
+list_available_resource_metrics(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_available_resource_metrics(Client, Input, []).
+list_available_resource_metrics(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAvailableResourceMetrics">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

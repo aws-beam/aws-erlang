@@ -14,8 +14,9 @@
 %% per second. For more information, see Amazon Connect Service Quotas in the
 %% Amazon Connect Administrator Guide.
 %%
-%% You can connect programmatically to an AWS service by using an endpoint.
-%% For a list of Amazon Connect endpoints, see Amazon Connect Endpoints.
+%% You can connect programmatically to an Amazon Web Services service by
+%% using an endpoint. For a list of Amazon Connect endpoints, see Amazon
+%% Connect Endpoints.
 %%
 %% Working with contact flows? Check out the Amazon Connect Flow language.
 -module(aws_connect).
@@ -24,6 +25,8 @@
          associate_approved_origin/4,
          associate_bot/3,
          associate_bot/4,
+         associate_default_vocabulary/4,
+         associate_default_vocabulary/5,
          associate_instance_storage_config/3,
          associate_instance_storage_config/4,
          associate_lambda_function/3,
@@ -40,6 +43,8 @@
          create_agent_status/4,
          create_contact_flow/3,
          create_contact_flow/4,
+         create_contact_flow_module/3,
+         create_contact_flow_module/4,
          create_hours_of_operation/3,
          create_hours_of_operation/4,
          create_instance/2,
@@ -60,6 +65,12 @@
          create_user/4,
          create_user_hierarchy_group/3,
          create_user_hierarchy_group/4,
+         create_vocabulary/3,
+         create_vocabulary/4,
+         delete_contact_flow/4,
+         delete_contact_flow/5,
+         delete_contact_flow_module/4,
+         delete_contact_flow_module/5,
          delete_hours_of_operation/4,
          delete_hours_of_operation/5,
          delete_instance/3,
@@ -76,6 +87,8 @@
          delete_user/5,
          delete_user_hierarchy_group/4,
          delete_user_hierarchy_group/5,
+         delete_vocabulary/4,
+         delete_vocabulary/5,
          describe_agent_status/3,
          describe_agent_status/5,
          describe_agent_status/6,
@@ -85,6 +98,9 @@
          describe_contact_flow/3,
          describe_contact_flow/5,
          describe_contact_flow/6,
+         describe_contact_flow_module/3,
+         describe_contact_flow_module/5,
+         describe_contact_flow_module/6,
          describe_hours_of_operation/3,
          describe_hours_of_operation/5,
          describe_hours_of_operation/6,
@@ -118,6 +134,9 @@
          describe_user_hierarchy_structure/2,
          describe_user_hierarchy_structure/4,
          describe_user_hierarchy_structure/5,
+         describe_vocabulary/3,
+         describe_vocabulary/5,
+         describe_vocabulary/6,
          disassociate_approved_origin/3,
          disassociate_approved_origin/4,
          disassociate_bot/3,
@@ -153,12 +172,17 @@
          list_bots/3,
          list_bots/5,
          list_bots/6,
+         list_contact_flow_modules/2,
+         list_contact_flow_modules/4,
+         list_contact_flow_modules/5,
          list_contact_flows/2,
          list_contact_flows/4,
          list_contact_flows/5,
          list_contact_references/4,
          list_contact_references/6,
          list_contact_references/7,
+         list_default_vocabularies/3,
+         list_default_vocabularies/4,
          list_hours_of_operations/2,
          list_hours_of_operations/4,
          list_hours_of_operations/5,
@@ -224,6 +248,8 @@
          list_users/5,
          resume_contact_recording/2,
          resume_contact_recording/3,
+         search_vocabularies/3,
+         search_vocabularies/4,
          start_chat_contact/2,
          start_chat_contact/3,
          start_contact_recording/2,
@@ -254,6 +280,12 @@
          update_contact_attributes/3,
          update_contact_flow_content/4,
          update_contact_flow_content/5,
+         update_contact_flow_metadata/4,
+         update_contact_flow_metadata/5,
+         update_contact_flow_module_content/4,
+         update_contact_flow_module_content/5,
+         update_contact_flow_module_metadata/4,
+         update_contact_flow_module_metadata/5,
          update_contact_flow_name/4,
          update_contact_flow_name/5,
          update_contact_schedule/2,
@@ -345,6 +377,32 @@ associate_bot(Client, InstanceId, Input) ->
 associate_bot(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/bot"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates an existing vocabulary as the default.
+%%
+%% Contact Lens for Amazon Connect uses the vocabulary in post-call and
+%% real-time analysis sessions for the given language.
+associate_default_vocabulary(Client, InstanceId, LanguageCode, Input) ->
+    associate_default_vocabulary(Client, InstanceId, LanguageCode, Input, []).
+associate_default_vocabulary(Client, InstanceId, LanguageCode, Input0, Options0) ->
+    Method = put,
+    Path = ["/default-vocabulary/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(LanguageCode), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -577,7 +635,34 @@ create_contact_flow(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates hours of operation.
+%% @doc Creates a contact flow module for the specified Amazon Connect
+%% instance.
+create_contact_flow_module(Client, InstanceId, Input) ->
+    create_contact_flow_module(Client, InstanceId, Input, []).
+create_contact_flow_module(Client, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Creates hours of operation.
 create_hours_of_operation(Client, InstanceId, Input) ->
     create_hours_of_operation(Client, InstanceId, Input, []).
 create_hours_of_operation(Client, InstanceId, Input0, Options0) ->
@@ -635,7 +720,8 @@ create_instance(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an AWS resource association with an Amazon Connect instance.
+%% @doc Creates an Amazon Web Services resource association with an Amazon
+%% Connect instance.
 create_integration_association(Client, InstanceId, Input) ->
     create_integration_association(Client, InstanceId, Input, []).
 create_integration_association(Client, InstanceId, Input0, Options0) ->
@@ -828,7 +914,84 @@ create_user_hierarchy_group(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an hours of operation.
+%% @doc Creates a custom vocabulary associated with your Amazon Connect
+%% instance.
+%%
+%% You can set a custom vocabulary to be your default vocabulary for a given
+%% language. Contact Lens for Amazon Connect uses the default vocabulary in
+%% post-call and real-time contact analysis sessions for that language.
+create_vocabulary(Client, InstanceId, Input) ->
+    create_vocabulary(Client, InstanceId, Input, []).
+create_vocabulary(Client, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/vocabulary/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a contact flow for the specified Amazon Connect instance.
+delete_contact_flow(Client, ContactFlowId, InstanceId, Input) ->
+    delete_contact_flow(Client, ContactFlowId, InstanceId, Input, []).
+delete_contact_flow(Client, ContactFlowId, InstanceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified contact flow module.
+delete_contact_flow_module(Client, ContactFlowModuleId, InstanceId, Input) ->
+    delete_contact_flow_module(Client, ContactFlowModuleId, InstanceId, Input, []).
+delete_contact_flow_module(Client, ContactFlowModuleId, InstanceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Deletes an hours of operation.
 delete_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input) ->
     delete_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input, []).
 delete_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input0, Options0) ->
@@ -883,7 +1046,8 @@ delete_instance(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an AWS resource association from an Amazon Connect instance.
+%% @doc Deletes an Amazon Web Services resource association from an Amazon
+%% Connect instance.
 %%
 %% The association must not have any use cases associated with it.
 delete_integration_association(Client, InstanceId, IntegrationAssociationId, Input) ->
@@ -1032,6 +1196,29 @@ delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input0, Option
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the vocabulary that has the given identifier.
+delete_vocabulary(Client, InstanceId, VocabularyId, Input) ->
+    delete_vocabulary(Client, InstanceId, VocabularyId, Input, []).
+delete_vocabulary(Client, InstanceId, VocabularyId, Input0, Options0) ->
+    Method = post,
+    Path = ["/vocabulary-remove/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(VocabularyId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This API is in preview release for Amazon Connect and is subject to
 %% change.
 %%
@@ -1063,8 +1250,8 @@ describe_agent_status(Client, AgentStatusId, InstanceId, QueryMap, HeadersMap, O
 %%
 %% Describes the specified contact.
 %%
-%% Contact information is available in Amazon Connect for 24 months, and then
-%% it is deleted.
+%% Contact information remains available in Amazon Connect for 24 months, and
+%% then it is deleted.
 describe_contact(Client, ContactId, InstanceId)
   when is_map(Client) ->
     describe_contact(Client, ContactId, InstanceId, #{}, #{}).
@@ -1113,7 +1300,33 @@ describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap, O
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes the hours of operation.
+%% @doc Describes the specified contact flow module.
+describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId)
+  when is_map(Client) ->
+    describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, #{}, #{}).
+
+describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, QueryMap, HeadersMap, []).
+
+describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Describes the hours of operation.
 describe_hours_of_operation(Client, HoursOfOperationId, InstanceId)
   when is_map(Client) ->
     describe_hours_of_operation(Client, HoursOfOperationId, InstanceId, #{}, #{}).
@@ -1387,6 +1600,29 @@ describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap)
 describe_user_hierarchy_structure(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/user-hierarchy-structure/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the specified vocabulary.
+describe_vocabulary(Client, InstanceId, VocabularyId)
+  when is_map(Client) ->
+    describe_vocabulary(Client, InstanceId, VocabularyId, #{}, #{}).
+
+describe_vocabulary(Client, InstanceId, VocabularyId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_vocabulary(Client, InstanceId, VocabularyId, QueryMap, HeadersMap, []).
+
+describe_vocabulary(Client, InstanceId, VocabularyId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/vocabulary/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(VocabularyId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1816,6 +2052,36 @@ list_bots(Client, InstanceId, LexVersion, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Provides information about the contact flow modules for the specified
+%% Amazon Connect instance.
+list_contact_flow_modules(Client, InstanceId)
+  when is_map(Client) ->
+    list_contact_flow_modules(Client, InstanceId, #{}, #{}).
+
+list_contact_flow_modules(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_contact_flow_modules(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_contact_flow_modules(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/contact-flow-modules-summary/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"state">>, maps:get(<<"state">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Provides information about the contact flows for the specified Amazon
 %% Connect instance.
 %%
@@ -1883,6 +2149,30 @@ list_contact_references(Client, ContactId, InstanceId, ReferenceTypes, QueryMap,
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the default vocabularies for the specified Amazon Connect
+%% instance.
+list_default_vocabularies(Client, InstanceId, Input) ->
+    list_default_vocabularies(Client, InstanceId, Input, []).
+list_default_vocabularies(Client, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/default-vocabulary-summary/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provides information about the hours of operation for the specified
 %% Amazon Connect instance.
@@ -2014,8 +2304,8 @@ list_instances(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Provides summary information about the AWS resource associations for
-%% the specified Amazon Connect instance.
+%% @doc Provides summary information about the Amazon Web Services resource
+%% associations for the specified Amazon Connect instance.
 list_integration_associations(Client, InstanceId)
   when is_map(Client) ->
     list_integration_associations(Client, InstanceId, #{}, #{}).
@@ -2567,6 +2857,30 @@ resume_contact_recording(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Searches for vocabularies within a specific Amazon Connect instance
+%% using `State', `NameStartsWith', and `LanguageCode'.
+search_vocabularies(Client, InstanceId, Input) ->
+    search_vocabularies(Client, InstanceId, Input, []).
+search_vocabularies(Client, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/vocabulary-summary/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Initiates a contact flow to start a new chat for the customer.
 %%
 %% Response of this API provides a token required to obtain credentials from
@@ -2578,7 +2892,7 @@ resume_contact_recording(Client, Input0, Options0) ->
 %% is achieved by invoking CreateParticipantConnection with WEBSOCKET and
 %% CONNECTION_CREDENTIALS.
 %%
-%% A 429 error occurs in two situations:
+%% A 429 error occurs in the following situations:
 %%
 %% <ul> <li> API rate limit is exceeded. API TPS throttling returns a
 %% `TooManyRequests' exception.
@@ -2586,8 +2900,12 @@ resume_contact_recording(Client, Input0, Options0) ->
 %% </li> <li> The quota for concurrent active chats is exceeded. Active chat
 %% throttling returns a `LimitExceededException'.
 %%
-%% </li> </ul> For more information about chat, see Chat in the Amazon
-%% Connect Administrator Guide.
+%% </li> </ul> If you use the `ChatDurationInMinutes' parameter and receive a
+%% 400 error, your account may not support the ability to configure custom
+%% chat durations. For more information, contact Amazon Web Services Support.
+%%
+%% For more information about chat, see Chat in the Amazon Connect
+%% Administrator Guide.
 start_chat_contact(Client, Input) ->
     start_chat_contact(Client, Input, []).
 start_chat_contact(Client, Input0, Options0) ->
@@ -2716,8 +3034,7 @@ start_outbound_voice_contact(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Initiates a contact flow to start a new task immediately or at a
-%% future date and time.
+%% @doc Initiates a contact flow to start a new task.
 start_task_contact(Client, Input) ->
     start_task_contact(Client, Input, []).
 start_task_contact(Client, Input0, Options0) ->
@@ -2936,7 +3253,7 @@ update_agent_status(Client, AgentStatusId, InstanceId, Input0, Options0) ->
 %% @doc This API is in preview release for Amazon Connect and is subject to
 %% change.
 %%
-%% Adds or updates user defined contact information associated with the
+%% Adds or updates user-defined contact information associated with the
 %% specified contact. At least one field to be updated must be present in the
 %% request.
 %%
@@ -3036,6 +3353,76 @@ update_contact_flow_content(Client, ContactFlowId, InstanceId, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates metadata about specified contact flow.
+update_contact_flow_metadata(Client, ContactFlowId, InstanceId, Input) ->
+    update_contact_flow_metadata(Client, ContactFlowId, InstanceId, Input, []).
+update_contact_flow_metadata(Client, ContactFlowId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/metadata"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates specified contact flow module for the specified Amazon
+%% Connect instance.
+update_contact_flow_module_content(Client, ContactFlowModuleId, InstanceId, Input) ->
+    update_contact_flow_module_content(Client, ContactFlowModuleId, InstanceId, Input, []).
+update_contact_flow_module_content(Client, ContactFlowModuleId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), "/content"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates metadata about specified contact flow module.
+update_contact_flow_module_metadata(Client, ContactFlowModuleId, InstanceId, Input) ->
+    update_contact_flow_module_metadata(Client, ContactFlowModuleId, InstanceId, Input, []).
+update_contact_flow_module_metadata(Client, ContactFlowModuleId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), "/metadata"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc The name of the contact flow.
 %%
 %% You can also create and update contact flows using the Amazon Connect Flow
@@ -3086,7 +3473,10 @@ update_contact_schedule(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the hours of operation.
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Updates the hours of operation.
 update_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input) ->
     update_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input, []).
 update_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input0, Options0) ->

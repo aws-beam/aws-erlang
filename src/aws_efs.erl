@@ -4,8 +4,8 @@
 %% @doc Amazon Elastic File System
 %%
 %% Amazon Elastic File System (Amazon EFS) provides simple, scalable file
-%% storage for use with Amazon EC2 instances in the Amazon Web Services
-%% Cloud.
+%% storage for use with Amazon EC2 Linux and Mac instances in the Amazon Web
+%% Services Cloud.
 %%
 %% With Amazon EFS, storage capacity is elastic, growing and shrinking
 %% automatically as you add and remove files, so your applications have the
@@ -20,6 +20,8 @@
          create_file_system/3,
          create_mount_target/2,
          create_mount_target/3,
+         create_replication_configuration/3,
+         create_replication_configuration/4,
          create_tags/3,
          create_tags/4,
          delete_access_point/3,
@@ -30,6 +32,8 @@
          delete_file_system_policy/4,
          delete_mount_target/3,
          delete_mount_target/4,
+         delete_replication_configuration/3,
+         delete_replication_configuration/4,
          delete_tags/3,
          delete_tags/4,
          describe_access_points/1,
@@ -56,6 +60,9 @@
          describe_mount_targets/1,
          describe_mount_targets/3,
          describe_mount_targets/4,
+         describe_replication_configurations/1,
+         describe_replication_configurations/3,
+         describe_replication_configurations/4,
          describe_tags/2,
          describe_tags/4,
          describe_tags/5,
@@ -342,6 +349,84 @@ create_mount_target(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a replication configuration that replicates an existing EFS
+%% file system to a new, read-only file system.
+%%
+%% For more information, see Amazon EFS replication. The replication
+%% configuration specifies the following:
+%%
+%% <ul> <li> Source file system - an existing EFS file system that you want
+%% replicated. The source file system cannot be a destination file system in
+%% an existing replication configuration.
+%%
+%% </li> <li> Destination file system configuration - the configuration of
+%% the destination file system to which the source file system will be
+%% replicated. There can only be one destination file system in a replication
+%% configuration.
+%%
+%% <ul> <li> Amazon Web Services Region - The Amazon Web Services Region in
+%% which the destination file system is created. EFS Replication is available
+%% in all Amazon Web Services Region that Amazon EFS is available in, except
+%% the following regions: Asia Pacific (Hong Kong) Europe (Milan), Middle
+%% East (Bahrain), Africa (Cape Town), and Asia Pacific (Jakarta).
+%%
+%% </li> <li> Availability zone - If you want the destination file system to
+%% use One Zone availability and durability, you must specify the
+%% Availability Zone to create the file system in. For more information about
+%% EFS storage classes, see Amazon EFS storage classes in the Amazon EFS User
+%% Guide.
+%%
+%% </li> <li> Encryption - All destination file systems are created with
+%% encryption at rest enabled. You can specify the KMS key that is used to
+%% encrypt the destination file system. Your service-managed KMS key for
+%% Amazon EFS is used if you don't specify a KMS key. You cannot change this
+%% after the file system is created.
+%%
+%% </li> </ul> </li> </ul> The following properties are set by default:
+%%
+%% <ul> <li> Performance mode - The destination file system's performance
+%% mode will match that of the source file system, unless the destination
+%% file system uses One Zone storage. In that case, the General Purpose
+%% performance mode is used. The Performance mode cannot be changed.
+%%
+%% </li> <li> Throughput mode - The destination file system use the Bursting
+%% throughput mode by default. You can modify the throughput mode once the
+%% file system is created.
+%%
+%% </li> </ul> The following properties are turned off by default:
+%%
+%% <ul> <li> Lifecycle management - EFS lifecycle management and intelligent
+%% tiering are not enabled on the destination file system. You can enable EFS
+%% lifecycle management and intelligent tiering after the destination file
+%% system is created.
+%%
+%% </li> <li> Automatic backups - Automatic daily backups not enabled on the
+%% destination file system. You can change this setting after the file system
+%% is created.
+%%
+%% </li> </ul> For more information, see Amazon EFS replication.
+create_replication_configuration(Client, SourceFileSystemId, Input) ->
+    create_replication_configuration(Client, SourceFileSystemId, Input, []).
+create_replication_configuration(Client, SourceFileSystemId, Input0, Options0) ->
+    Method = post,
+    Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(SourceFileSystemId), "/replication-configuration"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc DEPRECATED - CreateTags is deprecated and not maintained.
 %%
 %% Please use the API action to create tags for EFS resources.
@@ -510,6 +595,35 @@ delete_mount_target(Client, MountTargetId, Input) ->
 delete_mount_target(Client, MountTargetId, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-02-01/mount-targets/", aws_util:encode_uri(MountTargetId), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an existing replication configuration.
+%%
+%% To delete a replication configuration, you must make the request from the
+%% Amazon Web Services Region in which the destination file system is
+%% located. Deleting a replication configuration ends the replication
+%% process. You can write to the destination file system once it's status
+%% becomes `Writeable'.
+delete_replication_configuration(Client, SourceFileSystemId, Input) ->
+    delete_replication_configuration(Client, SourceFileSystemId, Input, []).
+delete_replication_configuration(Client, SourceFileSystemId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(SourceFileSystemId), "/replication-configuration"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -835,6 +949,37 @@ describe_mount_targets(Client, QueryMap, HeadersMap, Options0)
         {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
         {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)},
         {<<"MountTargetId">>, maps:get(<<"MountTargetId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the replication configurations for either a specific file
+%% system, or all configurations for the Amazon Web Services account in an
+%% Amazon Web Services Region if a file system is not specified.
+describe_replication_configurations(Client)
+  when is_map(Client) ->
+    describe_replication_configurations(Client, #{}, #{}).
+
+describe_replication_configurations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_replication_configurations(Client, QueryMap, HeadersMap, []).
+
+describe_replication_configurations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2015-02-01/file-systems/replication-configurations"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"FileSystemId">>, maps:get(<<"FileSystemId">>, QueryMap, undefined)},
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

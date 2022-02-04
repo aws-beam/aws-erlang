@@ -14,6 +14,8 @@
          create_backend_auth/4,
          create_backend_config/3,
          create_backend_config/4,
+         create_backend_storage/3,
+         create_backend_storage/4,
          create_token/3,
          create_token/4,
          delete_backend/4,
@@ -22,6 +24,8 @@
          delete_backend_api/5,
          delete_backend_auth/4,
          delete_backend_auth/5,
+         delete_backend_storage/4,
+         delete_backend_storage/5,
          delete_token/4,
          delete_token/5,
          generate_backend_api_models/4,
@@ -37,13 +41,19 @@
          get_backend_job/4,
          get_backend_job/6,
          get_backend_job/7,
+         get_backend_storage/4,
+         get_backend_storage/5,
          get_token/3,
          get_token/5,
          get_token/6,
          import_backend_auth/4,
          import_backend_auth/5,
+         import_backend_storage/4,
+         import_backend_storage/5,
          list_backend_jobs/4,
          list_backend_jobs/5,
+         list_s3_buckets/2,
+         list_s3_buckets/3,
          remove_all_backends/3,
          remove_all_backends/4,
          remove_backend_config/3,
@@ -55,7 +65,9 @@
          update_backend_config/3,
          update_backend_config/4,
          update_backend_job/5,
-         update_backend_job/6]).
+         update_backend_job/6,
+         update_backend_storage/4,
+         update_backend_storage/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -180,6 +192,29 @@ create_backend_config(Client, AppId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a backend storage resource.
+create_backend_storage(Client, AppId, Input) ->
+    create_backend_storage(Client, AppId, Input, []).
+create_backend_storage(Client, AppId, Input0, Options0) ->
+    Method = post,
+    Path = ["/backend/", aws_util:encode_uri(AppId), "/storage"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Generates a one-time challenge code to authenticate a user into your
 %% Amplify Admin UI.
 create_token(Client, AppId, Input) ->
@@ -256,6 +291,29 @@ delete_backend_auth(Client, AppId, BackendEnvironmentName, Input) ->
 delete_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/auth/", aws_util:encode_uri(BackendEnvironmentName), "/remove"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes the specified backend storage resource.
+delete_backend_storage(Client, AppId, BackendEnvironmentName, Input) ->
+    delete_backend_storage(Client, AppId, BackendEnvironmentName, Input, []).
+delete_backend_storage(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
+    Method = post,
+    Path = ["/backend/", aws_util:encode_uri(AppId), "/storage/", aws_util:encode_uri(BackendEnvironmentName), "/remove"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -434,6 +492,29 @@ get_backend_job(Client, AppId, BackendEnvironmentName, JobId, QueryMap, HeadersM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets details for a backend storage resource.
+get_backend_storage(Client, AppId, BackendEnvironmentName, Input) ->
+    get_backend_storage(Client, AppId, BackendEnvironmentName, Input, []).
+get_backend_storage(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
+    Method = post,
+    Path = ["/backend/", aws_util:encode_uri(AppId), "/storage/", aws_util:encode_uri(BackendEnvironmentName), "/details"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets the challenge token based on the given appId and sessionId.
 get_token(Client, AppId, SessionId)
   when is_map(Client) ->
@@ -480,12 +561,58 @@ import_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Imports an existing backend storage resource.
+import_backend_storage(Client, AppId, BackendEnvironmentName, Input) ->
+    import_backend_storage(Client, AppId, BackendEnvironmentName, Input, []).
+import_backend_storage(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
+    Method = post,
+    Path = ["/backend/", aws_util:encode_uri(AppId), "/storage/", aws_util:encode_uri(BackendEnvironmentName), "/import"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists the jobs for the backend of an Amplify app.
 list_backend_jobs(Client, AppId, BackendEnvironmentName, Input) ->
     list_backend_jobs(Client, AppId, BackendEnvironmentName, Input, []).
 list_backend_jobs(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/job/", aws_util:encode_uri(BackendEnvironmentName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The list of S3 buckets in your account.
+list_s3_buckets(Client, Input) ->
+    list_s3_buckets(Client, Input, []).
+list_s3_buckets(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/s3Buckets"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -624,6 +751,29 @@ update_backend_job(Client, AppId, BackendEnvironmentName, JobId, Input) ->
 update_backend_job(Client, AppId, BackendEnvironmentName, JobId, Input0, Options0) ->
     Method = post,
     Path = ["/backend/", aws_util:encode_uri(AppId), "/job/", aws_util:encode_uri(BackendEnvironmentName), "/", aws_util:encode_uri(JobId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing backend storage resource.
+update_backend_storage(Client, AppId, BackendEnvironmentName, Input) ->
+    update_backend_storage(Client, AppId, BackendEnvironmentName, Input, []).
+update_backend_storage(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
+    Method = post,
+    Path = ["/backend/", aws_util:encode_uri(AppId), "/storage/", aws_util:encode_uri(BackendEnvironmentName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

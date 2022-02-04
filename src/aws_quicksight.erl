@@ -330,7 +330,7 @@ cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0)
 %% Amazon QuickSight in the Amazon QuickSight User Guide.
 %%
 %% You can create customizations for your Amazon Web Services account or, if
-%% you specify a namespace, for a Amazon QuickSight namespace instead.
+%% you specify a namespace, for a QuickSight namespace instead.
 %% Customizations that apply to a namespace always override customizations
 %% that apply to an Amazon Web Services account. To find out which
 %% customizations apply, use the `DescribeAccountCustomization' API
@@ -341,8 +341,8 @@ cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0)
 %% with the namespace. If you don't share it with the namespace, the theme
 %% isn't visible to your users even if you make it the default theme. To
 %% check if the theme is shared, view the current permissions by using the `
-%% `DescribeThemePermissions' ' API operation. To share the theme, grant
-%% permissions by using the ` `UpdateThemePermissions' ' API operation.
+%% DescribeThemePermissions ' API operation. To share the theme, grant
+%% permissions by using the ` UpdateThemePermissions ' API operation.
 create_account_customization(Client, AwsAccountId, Input) ->
     create_account_customization(Client, AwsAccountId, Input, []).
 create_account_customization(Client, AwsAccountId, Input0, Options0) ->
@@ -391,7 +391,7 @@ create_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
 
 %% @doc Creates a dashboard from a template.
 %%
-%% To first create a template, see the ` `CreateTemplate' ' API operation.
+%% To first create a template, see the ` CreateTemplate ' API operation.
 %%
 %% A dashboard is an entity in Amazon QuickSight that identifies Amazon
 %% QuickSight reports, created from analyses. You can share Amazon QuickSight
@@ -422,6 +422,9 @@ create_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a dataset.
+%%
+%% This operation doesn't support datasets that include uploaded files as a
+%% source.
 create_data_set(Client, AwsAccountId, Input) ->
     create_data_set(Client, AwsAccountId, Input, []).
 create_data_set(Client, AwsAccountId, Input0, Options0) ->
@@ -566,8 +569,8 @@ create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an assignment with one specified IAMpolicy, identified by its
-%% Amazon Resource Name (ARN).
+%% @doc Creates an assignment with one specified IAM policy, identified by
+%% its Amazon Resource Name (ARN).
 %%
 %% This policy assignment is attached to the specified groups or users of
 %% Amazon QuickSight. Assignment names are unique per Amazon Web Services
@@ -595,15 +598,18 @@ create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates and starts a new SPICE ingestion on a dataset
+%% @doc Creates and starts a new SPICE ingestion for a dataset.
+%%
+%% You can manually refresh datasets in an Enterprise edition account 32
+%% times in a 24-hour period. You can manually refresh datasets in a Standard
+%% edition account 8 times in a 24-hour period. Each 24-hour period is
+%% measured starting 24 hours before the current date and time.
 %%
 %% Any ingestions operating on tagged datasets inherit the same tags
-%% automatically for use in access control.
-%%
-%% For an example, see How do I create an IAM policy to control access to
-%% Amazon EC2 resources using tags? in the Amazon Web Services Knowledge
-%% Center. Tags are visible on the tagged dataset, but not on the ingestion
-%% resource.
+%% automatically for use in access control. For an example, see How do I
+%% create an IAM policy to control access to Amazon EC2 resources using tags?
+%% in the Amazon Web Services Knowledge Center. Tags are visible on the
+%% tagged dataset, but not on the ingestion resource.
 create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input) ->
     create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input, []).
 create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0) ->
@@ -1000,7 +1006,7 @@ delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an existing IAMpolicy assignment.
+%% @doc Deletes an existing IAM policy assignment.
 delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input) ->
     delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input, []).
 delete_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options0) ->
@@ -1214,10 +1220,11 @@ delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0
 %%
 %% <ul> <li> `Amazon Web Services account' - The Amazon Web Services account
 %% exists at the top of the hierarchy. It has the potential to use all of the
-%% Amazon Web Services Regions and AWS Services. When you subscribe to Amazon
-%% QuickSight, you choose one Amazon Web Services Region to use as your home
-%% Region. That's where your free SPICE capacity is located. You can use
-%% Amazon QuickSight in any supported Amazon Web Services Region.
+%% Amazon Web Services Regions and Amazon Web Services Services. When you
+%% subscribe to Amazon QuickSight, you choose one Amazon Web Services Region
+%% to use as your home Region. That's where your free SPICE capacity is
+%% located. You can use Amazon QuickSight in any supported Amazon Web
+%% Services Region.
 %%
 %% </li> <li> `Amazon Web Services Region' - In each Amazon Web Services
 %% Region where you sign in to Amazon QuickSight at least once, Amazon
@@ -1228,7 +1235,7 @@ delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0
 %% to a namespace.
 %%
 %% To run the command in a different Amazon Web Services Region, you change
-%% your Region settings. If you're using the AWS CLI, you can use one of the
+%% your Region settings. If you're using the CLI, you can use one of the
 %% following options:
 %%
 %% <ul> <li> Use command line options.
@@ -1237,15 +1244,15 @@ delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0
 %%
 %% </li> <li> Run `aws configure' to change your default Amazon Web Services
 %% Region. Use Enter to key the same settings for your keys. For more
-%% information, see Configuring the AWS CLI.
+%% information, see Configuring the CLI.
 %%
-%% </li> </ul> </li> <li> `Namespace' - A Amazon QuickSight namespace is a
-%% partition that contains users and assets (data sources, datasets,
-%% dashboards, and so on). To access assets that are in a specific namespace,
-%% users and groups must also be part of the same namespace. People who share
-%% a namespace are completely isolated from users and assets in other
-%% namespaces, even if they are in the same Amazon Web Services account and
-%% Amazon Web Services Region.
+%% </li> </ul> </li> <li> `Namespace' - A QuickSight namespace is a partition
+%% that contains users and assets (data sources, datasets, dashboards, and so
+%% on). To access assets that are in a specific namespace, users and groups
+%% must also be part of the same namespace. People who share a namespace are
+%% completely isolated from users and assets in other namespaces, even if
+%% they are in the same Amazon Web Services account and Amazon Web Services
+%% Region.
 %%
 %% </li> <li> `Applied customizations' - Within an Amazon Web Services
 %% Region, a set of Amazon QuickSight customizations can apply to an Amazon
@@ -1406,6 +1413,9 @@ describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, Head
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a dataset.
+%%
+%% This operation doesn't support datasets that include uploaded files as a
+%% source.
 describe_data_set(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
     describe_data_set(Client, AwsAccountId, DataSetId, #{}, #{}).
@@ -1596,7 +1606,7 @@ describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes an existing IAMpolicy assignment, as specified by the
+%% @doc Describes an existing IAM policy assignment, as specified by the
 %% assignment name.
 describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace)
   when is_map(Client) ->
@@ -1643,7 +1653,7 @@ describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, QueryMap, Heade
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Provides a summary and status of IP Rules.
+%% @doc Provides a summary and status of IP rules.
 describe_ip_restriction(Client, AwsAccountId)
   when is_map(Client) ->
     describe_ip_restriction(Client, AwsAccountId, #{}, #{}).
@@ -2027,8 +2037,8 @@ get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMa
 %% dashboards. The users who access an embedded Amazon QuickSight console
 %% need belong to the author or admin security cohort. If you want to
 %% restrict permissions to some of these features, add a custom permissions
-%% profile to the user with the ` `UpdateUser' ' API operation. Use `
-%% `RegisterUser' ' API operation to add a new user with a custom permission
+%% profile to the user with the ` UpdateUser ' API operation. Use `
+%% RegisterUser ' API operation to add a new user with a custom permission
 %% profile attached. For more information, see the following sections in the
 %% Amazon QuickSight User Guide:
 %%
@@ -2324,7 +2334,8 @@ list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists IAMpolicy assignments in the current Amazon QuickSight account.
+%% @doc Lists IAM policy assignments in the current Amazon QuickSight
+%% account.
 list_iam_policy_assignments(Client, AwsAccountId, Namespace)
   when is_map(Client) ->
     list_iam_policy_assignments(Client, AwsAccountId, Namespace, #{}, #{}).
@@ -2352,7 +2363,7 @@ list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all the IAMpolicy assignments, including the Amazon Resource
+%% @doc Lists all the IAM policy assignments, including the Amazon Resource
 %% Names (ARNs) for the IAM policies assigned to the specified user and group
 %% or groups that the user belongs to.
 list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName)
@@ -2691,8 +2702,8 @@ list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon QuickSight user, whose identity is associated with
-%% the AWS Identity and Access Management (IAM) identity or role specified in
-%% the request.
+%% the Identity and Access Management (IAM) identity or role specified in the
+%% request.
 register_user(Client, AwsAccountId, Namespace, Input) ->
     register_user(Client, AwsAccountId, Namespace, Input, []).
 register_user(Client, AwsAccountId, Namespace, Input0, Options0) ->
@@ -2830,13 +2841,14 @@ search_folders(Client, AwsAccountId, Input0, Options0) ->
 %% supports tagging on data set, data source, dashboard, and template.
 %%
 %% Tagging for Amazon QuickSight works in a similar way to tagging for other
-%% AWS services, except for the following:
+%% Amazon Web Services services, except for the following:
 %%
-%% <ul> <li> You can't use tags to track AWS costs for Amazon QuickSight.
-%% This restriction is because Amazon QuickSight costs are based on users and
-%% SPICE capacity, which aren't taggable resources.
+%% <ul> <li> You can't use tags to track costs for Amazon QuickSight. This
+%% isn't possible because you can't tag the resources that Amazon QuickSight
+%% costs are based on, for example Amazon QuickSight storage capacity
+%% (SPICE), number of users, type of users, and usage metrics.
 %%
-%% </li> <li> Amazon QuickSight doesn't currently support the Tag Editor for
+%% </li> <li> Amazon QuickSight doesn't currently support the tag editor for
 %% Resource Groups.
 %%
 %% </li> </ul>
@@ -2993,7 +3005,7 @@ update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input0, Options0) 
 %%
 %% Updating a Dashboard creates a new dashboard version but does not
 %% immediately publish the new version. You can update the published version
-%% of a dashboard by using the `UpdateDashboardPublishedVersion' API
+%% of a dashboard by using the ` UpdateDashboardPublishedVersion ' API
 %% operation.
 update_dashboard(Client, AwsAccountId, DashboardId, Input) ->
     update_dashboard(Client, AwsAccountId, DashboardId, Input, []).
@@ -3064,6 +3076,9 @@ update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNum
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a dataset.
+%%
+%% This operation doesn't support datasets that include uploaded files as a
+%% source.
 update_data_set(Client, AwsAccountId, DataSetId, Input) ->
     update_data_set(Client, AwsAccountId, DataSetId, Input, []).
 update_data_set(Client, AwsAccountId, DataSetId, Input0, Options0) ->
@@ -3227,7 +3242,7 @@ update_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing IAMpolicy assignment.
+%% @doc Updates an existing IAM policy assignment.
 %%
 %% This operation updates only the optional parameter or parameters that are
 %% specified in the request. This overwrites all of the users included in
@@ -3254,7 +3269,10 @@ update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, In
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates content and status of IP Rules.
+%% @doc Updates the content and status of IP rules.
+%%
+%% To use this operation, you need to provide the entire map of rules. You
+%% can use the `DescribeIpRestriction' operation to get the current rule map.
 update_ip_restriction(Client, AwsAccountId, Input) ->
     update_ip_restriction(Client, AwsAccountId, Input, []).
 update_ip_restriction(Client, AwsAccountId, Input0, Options0) ->

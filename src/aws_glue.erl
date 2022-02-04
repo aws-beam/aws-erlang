@@ -216,6 +216,12 @@
          get_trigger/3,
          get_triggers/2,
          get_triggers/3,
+         get_unfiltered_partition_metadata/2,
+         get_unfiltered_partition_metadata/3,
+         get_unfiltered_partitions_metadata/2,
+         get_unfiltered_partitions_metadata/3,
+         get_unfiltered_table_metadata/2,
+         get_unfiltered_table_metadata/3,
          get_user_defined_function/2,
          get_user_defined_function/3,
          get_user_defined_functions/2,
@@ -1410,6 +1416,30 @@ get_triggers(Client, Input)
 get_triggers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTriggers">>, Input, Options).
+
+
+get_unfiltered_partition_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_unfiltered_partition_metadata(Client, Input, []).
+get_unfiltered_partition_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetUnfilteredPartitionMetadata">>, Input, Options).
+
+
+get_unfiltered_partitions_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_unfiltered_partitions_metadata(Client, Input, []).
+get_unfiltered_partitions_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetUnfilteredPartitionsMetadata">>, Input, Options).
+
+
+get_unfiltered_table_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_unfiltered_table_metadata(Client, Input, []).
+get_unfiltered_table_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetUnfilteredTableMetadata">>, Input, Options).
 
 %% @doc Retrieves a specified function definition from the Data Catalog.
 get_user_defined_function(Client, Input)

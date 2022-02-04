@@ -73,6 +73,8 @@
          get_infrastructure_configuration/5,
          import_component/2,
          import_component/3,
+         import_vm_image/2,
+         import_vm_image/3,
          list_component_build_versions/2,
          list_component_build_versions/3,
          list_components/2,
@@ -835,6 +837,37 @@ import_component(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc When you export your virtual machine (VM) from its virtualization
+%% environment, that process creates a set of one or more disk container
+%% files that act as snapshots of your VM’s environment, settings, and data.
+%%
+%% The Amazon EC2 API ImportImage action uses those files to import your VM
+%% and create an AMI. To import using the CLI command, see import-image
+%%
+%% You can reference the task ID from the VM import to pull in the AMI that
+%% the import created as the base image for your Image Builder recipe.
+import_vm_image(Client, Input) ->
+    import_vm_image(Client, Input, []).
+import_vm_image(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/ImportVmImage"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns the list of component build versions for the specified
 %% semantic version.
 %%
@@ -1164,11 +1197,11 @@ put_component_policy(Client, Input0, Options0) ->
 %% @doc Applies a policy to a container image.
 %%
 %% We recommend that you call the RAM API CreateResourceShare
-%% (https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html)
+%% (https://docs.aws.amazon.com//ram/latest/APIReference/API_CreateResourceShare.html)
 %% to share resources. If you call the Image Builder API
 %% `PutContainerImagePolicy', you must also call the RAM API
 %% PromoteResourceShareCreatedFromPolicy
-%% (https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html)
+%% (https://docs.aws.amazon.com//ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html)
 %% in order for the resource to be visible to all principals with whom the
 %% resource is shared.
 put_container_recipe_policy(Client, Input) ->

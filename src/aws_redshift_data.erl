@@ -43,13 +43,17 @@
 %% Depending on the authorization method, use one of the following
 %% combinations of request parameters:
 %%
-%% <ul> <li> Secrets Manager - specify the Amazon Resource Name (ARN) of the
-%% secret, the database name, and the cluster identifier that matches the
-%% cluster in the secret.
+%% <ul> <li> Secrets Manager - when connecting to a cluster, specify the
+%% Amazon Resource Name (ARN) of the secret, the database name, and the
+%% cluster identifier that matches the cluster in the secret. When connecting
+%% to a serverless endpoint, specify the Amazon Resource Name (ARN) of the
+%% secret and the database name.
 %%
-%% </li> <li> Temporary credentials - specify the cluster identifier, the
-%% database name, and the database user name. Permission to call the
-%% `redshift:GetClusterCredentials' operation is required to use this method.
+%% </li> <li> Temporary credentials - when connecting to a cluster, specify
+%% the cluster identifier, the database name, and the database user name.
+%% Also, permission to call the `redshift:GetClusterCredentials' operation is
+%% required. When connecting to a serverless endpoint, specify the database
+%% name.
 %%
 %% </li> </ul>
 batch_execute_statement(Client, Input)
@@ -88,13 +92,17 @@ describe_statement(Client, Input, Options)
 %% the column list. Depending on the authorization method, use one of the
 %% following combinations of request parameters:
 %%
-%% <ul> <li> Secrets Manager - specify the Amazon Resource Name (ARN) of the
-%% secret, the database name, and the cluster identifier that matches the
-%% cluster in the secret.
+%% <ul> <li> Secrets Manager - when connecting to a cluster, specify the
+%% Amazon Resource Name (ARN) of the secret, the database name, and the
+%% cluster identifier that matches the cluster in the secret. When connecting
+%% to a serverless endpoint, specify the Amazon Resource Name (ARN) of the
+%% secret and the database name.
 %%
-%% </li> <li> Temporary credentials - specify the cluster identifier, the
-%% database name, and the database user name. Permission to call the
-%% `redshift:GetClusterCredentials' operation is required to use this method.
+%% </li> <li> Temporary credentials - when connecting to a cluster, specify
+%% the cluster identifier, the database name, and the database user name.
+%% Also, permission to call the `redshift:GetClusterCredentials' operation is
+%% required. When connecting to a serverless endpoint, specify the database
+%% name.
 %%
 %% </li> </ul>
 describe_table(Client, Input)
@@ -111,13 +119,17 @@ describe_table(Client, Input, Options)
 %% authorization method, use one of the following combinations of request
 %% parameters:
 %%
-%% <ul> <li> Secrets Manager - specify the Amazon Resource Name (ARN) of the
-%% secret, the database name, and the cluster identifier that matches the
-%% cluster in the secret.
+%% <ul> <li> Secrets Manager - when connecting to a cluster, specify the
+%% Amazon Resource Name (ARN) of the secret, the database name, and the
+%% cluster identifier that matches the cluster in the secret. When connecting
+%% to a serverless endpoint, specify the Amazon Resource Name (ARN) of the
+%% secret and the database name.
 %%
-%% </li> <li> Temporary credentials - specify the cluster identifier, the
-%% database name, and the database user name. Permission to call the
-%% `redshift:GetClusterCredentials' operation is required to use this method.
+%% </li> <li> Temporary credentials - when connecting to a cluster, specify
+%% the cluster identifier, the database name, and the database user name.
+%% Also, permission to call the `redshift:GetClusterCredentials' operation is
+%% required. When connecting to a serverless endpoint, specify the database
+%% name.
 %%
 %% </li> </ul>
 execute_statement(Client, Input)
@@ -143,13 +155,17 @@ get_statement_result(Client, Input, Options)
 %% authorization method, use one of the following combinations of request
 %% parameters:
 %%
-%% <ul> <li> Secrets Manager - specify the Amazon Resource Name (ARN) of the
-%% secret, the database name, and the cluster identifier that matches the
-%% cluster in the secret.
+%% <ul> <li> Secrets Manager - when connecting to a cluster, specify the
+%% Amazon Resource Name (ARN) of the secret, the database name, and the
+%% cluster identifier that matches the cluster in the secret. When connecting
+%% to a serverless endpoint, specify the Amazon Resource Name (ARN) of the
+%% secret and the database name.
 %%
-%% </li> <li> Temporary credentials - specify the cluster identifier, the
-%% database name, and the database user name. Permission to call the
-%% `redshift:GetClusterCredentials' operation is required to use this method.
+%% </li> <li> Temporary credentials - when connecting to a cluster, specify
+%% the cluster identifier, the database name, and the database user name.
+%% Also, permission to call the `redshift:GetClusterCredentials' operation is
+%% required. When connecting to a serverless endpoint, specify the database
+%% name.
 %%
 %% </li> </ul>
 list_databases(Client, Input)
@@ -165,13 +181,17 @@ list_databases(Client, Input, Options)
 %% authorization method, use one of the following combinations of request
 %% parameters:
 %%
-%% <ul> <li> Secrets Manager - specify the Amazon Resource Name (ARN) of the
-%% secret, the database name, and the cluster identifier that matches the
-%% cluster in the secret.
+%% <ul> <li> Secrets Manager - when connecting to a cluster, specify the
+%% Amazon Resource Name (ARN) of the secret, the database name, and the
+%% cluster identifier that matches the cluster in the secret. When connecting
+%% to a serverless endpoint, specify the Amazon Resource Name (ARN) of the
+%% secret and the database name.
 %%
-%% </li> <li> Temporary credentials - specify the cluster identifier, the
-%% database name, and the database user name. Permission to call the
-%% `redshift:GetClusterCredentials' operation is required to use this method.
+%% </li> <li> Temporary credentials - when connecting to a cluster, specify
+%% the cluster identifier, the database name, and the database user name.
+%% Also, permission to call the `redshift:GetClusterCredentials' operation is
+%% required. When connecting to a serverless endpoint, specify the database
+%% name.
 %%
 %% </li> </ul>
 list_schemas(Client, Input)
@@ -199,13 +219,17 @@ list_statements(Client, Input, Options)
 %% the table list. Depending on the authorization method, use one of the
 %% following combinations of request parameters:
 %%
-%% <ul> <li> Secrets Manager - specify the Amazon Resource Name (ARN) of the
-%% secret, the database name, and the cluster identifier that matches the
-%% cluster in the secret.
+%% <ul> <li> Secrets Manager - when connecting to a cluster, specify the
+%% Amazon Resource Name (ARN) of the secret, the database name, and the
+%% cluster identifier that matches the cluster in the secret. When connecting
+%% to a serverless endpoint, specify the Amazon Resource Name (ARN) of the
+%% secret and the database name.
 %%
-%% </li> <li> Temporary credentials - specify the cluster identifier, the
-%% database name, and the database user name. Permission to call the
-%% `redshift:GetClusterCredentials' operation is required to use this method.
+%% </li> <li> Temporary credentials - when connecting to a cluster, specify
+%% the cluster identifier, the database name, and the database user name.
+%% Also, permission to call the `redshift:GetClusterCredentials' operation is
+%% required. When connecting to a serverless endpoint, specify the database
+%% name.
 %%
 %% </li> </ul>
 list_tables(Client, Input)

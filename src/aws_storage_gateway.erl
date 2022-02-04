@@ -623,7 +623,8 @@ delete_automatic_tape_creation_policy(Client, Input, Options)
 %% can delete both. If you delete only one of the limits, the other limit
 %% remains unchanged. To specify which gateway to work with, use the Amazon
 %% Resource Name (ARN) of the gateway in your request. This operation is
-%% supported for the stored volume, cached volume and tape gateway types.
+%% supported only for the stored volume, cached volume, and tape gateway
+%% types.
 delete_bandwidth_rate_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_bandwidth_rate_limit(Client, Input, []).
@@ -768,10 +769,11 @@ describe_availability_monitor_test(Client, Input, Options)
 %% @doc Returns the bandwidth rate limits of a gateway.
 %%
 %% By default, these limits are not set, which means no bandwidth rate
-%% limiting is in effect. This operation is supported for the stored volume,
-%% cached volume, and tape gateway types.
+%% limiting is in effect. This operation is supported only for the stored
+%% volume, cached volume, and tape gateway types. To describe bandwidth rate
+%% limits for S3 file gateways, use `DescribeBandwidthRateLimitSchedule'.
 %%
-%% This operation only returns a value for a bandwidth rate limit only if the
+%% This operation returns a value for a bandwidth rate limit only if the
 %% limit is set. If no limits are set for the gateway, then this operation
 %% returns only the gateway ARN in the response body. To specify which
 %% gateway to describe, use the Amazon Resource Name (ARN) of the gateway in
@@ -788,7 +790,8 @@ describe_bandwidth_rate_limit(Client, Input, Options)
 %%
 %% By default, gateways do not have bandwidth rate limit schedules, which
 %% means no bandwidth rate limiting is in effect. This operation is supported
-%% only in the volume and tape gateway types.
+%% only for volume, tape and S3 file gateways. FSx file gateways do not
+%% support bandwidth rate limits.
 %%
 %% This operation returns information about a gateway's bandwidth rate limit
 %% schedule. A bandwidth rate limit schedule consists of one or more
@@ -1501,8 +1504,9 @@ update_automatic_tape_creation_policy(Client, Input, Options)
 %%
 %% You can update both the upload and download bandwidth rate limit or
 %% specify only one of the two. If you don't set a bandwidth rate limit, the
-%% existing rate limit remains. This operation is supported for the stored
-%% volume, cached volume, and tape gateway types.
+%% existing rate limit remains. This operation is supported only for the
+%% stored volume, cached volume, and tape gateway types. To update bandwidth
+%% rate limits for S3 file gateways, use `UpdateBandwidthRateLimitSchedule'.
 %%
 %% By default, a gateway's bandwidth rate limits are not set. If you don't
 %% set any limit, the gateway does not have any limitations on its bandwidth
@@ -1522,7 +1526,8 @@ update_bandwidth_rate_limit(Client, Input, Options)
 %% By default, gateways do not have bandwidth rate limit schedules, which
 %% means no bandwidth rate limiting is in effect. Use this to initiate or
 %% update a gateway's bandwidth rate limit schedule. This operation is
-%% supported in the volume and tape gateway types.
+%% supported only for volume, tape and S3 file gateways. FSx file gateways do
+%% not support bandwidth rate limits.
 update_bandwidth_rate_limit_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_bandwidth_rate_limit_schedule(Client, Input, []).

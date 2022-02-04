@@ -184,6 +184,9 @@ attach_instances(Client, Input, Options)
 %% from the Auto Scaling group, call the `DetachLoadBalancerTargetGroups'
 %% API.
 %%
+%% This operation is additive and does not detach existing target groups or
+%% Classic Load Balancers from the Auto Scaling group.
+%%
 %% For more information, see Elastic Load Balancing and Amazon EC2 Auto
 %% Scaling in the Amazon EC2 Auto Scaling User Guide.
 attach_load_balancer_target_groups(Client, Input)
@@ -204,6 +207,9 @@ attach_load_balancer_target_groups(Client, Input, Options)
 %% To describe the load balancers for an Auto Scaling group, call the
 %% `DescribeLoadBalancers' API. To detach the load balancer from the Auto
 %% Scaling group, call the `DetachLoadBalancers' API.
+%%
+%% This operation is additive and does not detach existing Classic Load
+%% Balancers or target groups from the Auto Scaling group.
 %%
 %% For more information, see Elastic Load Balancing and Amazon EC2 Auto
 %% Scaling in the Amazon EC2 Auto Scaling User Guide.
@@ -254,7 +260,7 @@ cancel_instance_refresh(Client, Input, Options)
 %% Auto Scaling group:
 %%
 %% <ol> <li> (Optional) Create a Lambda function and a rule that allows
-%% CloudWatch Events to invoke your Lambda function when Amazon EC2 Auto
+%% Amazon EventBridge to invoke your Lambda function when Amazon EC2 Auto
 %% Scaling launches or terminates instances.
 %%
 %% </li> <li> (Optional) Create a notification target and an IAM role. The
@@ -268,8 +274,8 @@ cancel_instance_refresh(Client, Input, Options)
 %% </li> <li> If you need more time, record the lifecycle action heartbeat to
 %% keep the instance in a pending state.
 %%
-%% </li> <li> If you finish before the timeout period ends, complete the
-%% lifecycle action.
+%% </li> <li> If you finish before the timeout period ends, send a callback
+%% by using the `CompleteLifecycleAction' API call.
 %%
 %% </li> </ol> For more information, see Amazon EC2 Auto Scaling lifecycle
 %% hooks in the Amazon EC2 Auto Scaling User Guide.
@@ -899,15 +905,15 @@ get_predictive_scaling_forecast(Client, Input, Options)
 %% @doc Creates or updates a lifecycle hook for the specified Auto Scaling
 %% group.
 %%
-%% A lifecycle hook tells Amazon EC2 Auto Scaling to perform an action on an
-%% instance when the instance launches (before it is put into service) or as
-%% the instance terminates (before it is fully terminated).
+%% A lifecycle hook enables an Auto Scaling group to be aware of events in
+%% the Auto Scaling instance lifecycle, and then perform a custom action when
+%% the corresponding lifecycle event occurs.
 %%
 %% This step is a part of the procedure for adding a lifecycle hook to an
 %% Auto Scaling group:
 %%
 %% <ol> <li> (Optional) Create a Lambda function and a rule that allows
-%% CloudWatch Events to invoke your Lambda function when Amazon EC2 Auto
+%% Amazon EventBridge to invoke your Lambda function when Amazon EC2 Auto
 %% Scaling launches or terminates instances.
 %%
 %% </li> <li> (Optional) Create a notification target and an IAM role. The
@@ -922,8 +928,8 @@ get_predictive_scaling_forecast(Client, Input, Options)
 %% keep the instance in a pending state using the
 %% `RecordLifecycleActionHeartbeat' API call.
 %%
-%% </li> <li> If you finish before the timeout period ends, complete the
-%% lifecycle action using the `CompleteLifecycleAction' API call.
+%% </li> <li> If you finish before the timeout period ends, send a callback
+%% by using the `CompleteLifecycleAction' API call.
 %%
 %% </li> </ol> For more information, see Amazon EC2 Auto Scaling lifecycle
 %% hooks in the Amazon EC2 Auto Scaling User Guide.
@@ -1035,7 +1041,7 @@ put_warm_pool(Client, Input, Options)
 %% Auto Scaling group:
 %%
 %% <ol> <li> (Optional) Create a Lambda function and a rule that allows
-%% CloudWatch Events to invoke your Lambda function when Amazon EC2 Auto
+%% Amazon EventBridge to invoke your Lambda function when Amazon EC2 Auto
 %% Scaling launches or terminates instances.
 %%
 %% </li> <li> (Optional) Create a notification target and an IAM role. The
@@ -1049,8 +1055,8 @@ put_warm_pool(Client, Input, Options)
 %% </li> <li> If you need more time, record the lifecycle action heartbeat to
 %% keep the instance in a pending state.
 %%
-%% </li> <li> If you finish before the timeout period ends, complete the
-%% lifecycle action.
+%% </li> <li> If you finish before the timeout period ends, send a callback
+%% by using the `CompleteLifecycleAction' API call.
 %%
 %% </li> </ol> For more information, see Amazon EC2 Auto Scaling lifecycle
 %% hooks in the Amazon EC2 Auto Scaling User Guide.
@@ -1104,7 +1110,7 @@ set_instance_health(Client, Input, Options)
 %% This operation cannot be called on instances in a warm pool.
 %%
 %% For more information about preventing instances that are part of an Auto
-%% Scaling group from terminating on scale in, see Instance scale-in
+%% Scaling group from terminating on scale in, see Using instance scale-in
 %% protection in the Amazon EC2 Auto Scaling User Guide.
 %%
 %% If you exceed your maximum limit of instance IDs, which is 50 per Auto

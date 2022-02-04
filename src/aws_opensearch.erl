@@ -44,6 +44,9 @@
          describe_domain_auto_tunes/2,
          describe_domain_auto_tunes/4,
          describe_domain_auto_tunes/5,
+         describe_domain_change_progress/2,
+         describe_domain_change_progress/4,
+         describe_domain_change_progress/5,
          describe_domain_config/2,
          describe_domain_config/4,
          describe_domain_config/5,
@@ -432,6 +435,34 @@ describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about the current blue/green deployment happening
+%% on a domain, including a change ID, status, and progress stages.
+describe_domain_change_progress(Client, DomainName)
+  when is_map(Client) ->
+    describe_domain_change_progress(Client, DomainName, #{}, #{}).
+
+describe_domain_change_progress(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_domain_change_progress(Client, DomainName, QueryMap, HeadersMap, []).
+
+describe_domain_change_progress(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/progress"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"changeid">>, maps:get(<<"changeid">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 

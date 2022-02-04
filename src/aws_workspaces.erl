@@ -15,6 +15,8 @@
          authorize_ip_rules/3,
          copy_workspace_image/2,
          copy_workspace_image/3,
+         create_connect_client_add_in/2,
+         create_connect_client_add_in/3,
          create_connection_alias/2,
          create_connection_alias/3,
          create_ip_group/2,
@@ -27,6 +29,8 @@
          create_workspace_bundle/3,
          create_workspaces/2,
          create_workspaces/3,
+         delete_connect_client_add_in/2,
+         delete_connect_client_add_in/3,
          delete_connection_alias/2,
          delete_connection_alias/3,
          delete_ip_group/2,
@@ -45,6 +49,8 @@
          describe_account_modifications/3,
          describe_client_properties/2,
          describe_client_properties/3,
+         describe_connect_client_add_ins/2,
+         describe_connect_client_add_ins/3,
          describe_connection_alias_permissions/2,
          describe_connection_alias_permissions/3,
          describe_connection_aliases/2,
@@ -107,6 +113,8 @@
          stop_workspaces/3,
          terminate_workspaces/2,
          terminate_workspaces/3,
+         update_connect_client_add_in/2,
+         update_connect_client_add_in/3,
          update_connection_alias_permission/2,
          update_connection_alias_permission/3,
          update_rules_of_ip_group/2,
@@ -180,6 +188,19 @@ copy_workspace_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyWorkspaceImage">>, Input, Options).
 
+%% @doc Creates a client-add-in for Amazon Connect within a directory.
+%%
+%% You can create only one Amazon Connect client add-in within a directory.
+%%
+%% This client add-in allows WorkSpaces users to seamlessly connect to Amazon
+%% Connect.
+create_connect_client_add_in(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_connect_client_add_in(Client, Input, []).
+create_connect_client_add_in(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateConnectClientAddIn">>, Input, Options).
+
 %% @doc Creates the specified connection alias for use with cross-Region
 %% redirection.
 %%
@@ -228,8 +249,8 @@ create_tags(Client, Input, Options)
 %% To determine which WorkSpace images need to be updated with the latest
 %% Amazon WorkSpaces requirements, use DescribeWorkspaceImages.
 %%
-%% Only Windows 10 WorkSpace images can be programmatically updated at this
-%% time.
+%% Only Windows 10, Windows Sever 2016, and Windows Server 2019 WorkSpace
+%% images can be programmatically updated at this time.
 %%
 %% Microsoft Windows updates and other application updates are not included
 %% in the update process.
@@ -264,6 +285,15 @@ create_workspaces(Client, Input)
 create_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkspaces">>, Input, Options).
+
+%% @doc Deletes a client-add-in for Amazon Connect that is configured within
+%% a directory.
+delete_connect_client_add_in(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_connect_client_add_in(Client, Input, []).
+delete_connect_client_add_in(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteConnectClientAddIn">>, Input, Options).
 
 %% @doc Deletes the specified connection alias.
 %%
@@ -376,6 +406,15 @@ describe_client_properties(Client, Input)
 describe_client_properties(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClientProperties">>, Input, Options).
+
+%% @doc Retrieves a list of Amazon Connect client add-ins that have been
+%% created.
+describe_connect_client_add_ins(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_connect_client_add_ins(Client, Input, []).
+describe_connect_client_add_ins(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeConnectClientAddIns">>, Input, Options).
 
 %% @doc Describes the permissions that the owner of a connection alias has
 %% granted to another Amazon Web Services account for the specified
@@ -755,6 +794,17 @@ terminate_workspaces(Client, Input)
 terminate_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateWorkspaces">>, Input, Options).
+
+%% @doc Updates a Amazon Connect client add-in.
+%%
+%% Use this action to update the name and endpoint URL of a Amazon Connect
+%% client add-in.
+update_connect_client_add_in(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_connect_client_add_in(Client, Input, []).
+update_connect_client_add_in(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateConnectClientAddIn">>, Input, Options).
 
 %% @doc Shares or unshares a connection alias with one account by specifying
 %% whether that account has permission to associate the connection alias with

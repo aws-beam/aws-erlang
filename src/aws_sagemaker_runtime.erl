@@ -25,9 +25,9 @@
 %% API. Amazon SageMaker might add additional headers. You should not rely on
 %% the behavior of headers outside those enumerated in the request syntax.
 %%
-%% Calls to `InvokeEndpoint' are authenticated by using AWS Signature Version
-%% 4. For information, see Authenticating Requests (AWS Signature Version 4)
-%% in the Amazon S3 API Reference.
+%% Calls to `InvokeEndpoint' are authenticated by using Amazon Web Services
+%% Signature Version 4. For information, see Authenticating Requests (Amazon
+%% Web Services Signature Version 4) in the Amazon S3 API Reference.
 %%
 %% A customer's model containers must respond to requests within 60 seconds.
 %% The model itself can have a maximum processing time of 60 seconds before
@@ -99,9 +99,9 @@ invoke_endpoint(Client, EndpointName, Input0, Options0) ->
 %% API. Amazon SageMaker might add additional headers. You should not rely on
 %% the behavior of headers outside those enumerated in the request syntax.
 %%
-%% Calls to `InvokeEndpointAsync' are authenticated by using AWS Signature
-%% Version 4. For information, see Authenticating Requests (AWS Signature
-%% Version 4) in the Amazon S3 API Reference.
+%% Calls to `InvokeEndpointAsync' are authenticated by using Amazon Web
+%% Services Signature Version 4. For information, see Authenticating Requests
+%% (Amazon Web Services Signature Version 4) in the Amazon S3 API Reference.
 invoke_endpoint_async(Client, EndpointName, Input) ->
     invoke_endpoint_async(Client, EndpointName, Input, []).
 invoke_endpoint_async(Client, EndpointName, Input0, Options0) ->
