@@ -704,6 +704,8 @@ put_rule(Client, Input, Options)
 %%
 %% Targets are the resources that are invoked when a rule is triggered.
 %%
+%% Each rule can have up to five (5) targets associated with it at one time.
+%%
 %% You can configure the following as targets for Events:
 %%
 %% <ul> <li> API destination
@@ -721,6 +723,8 @@ put_rule(Client, Input, Options)
 %% </li> <li> CodePipeline
 %%
 %% </li> <li> Amazon EC2 `CreateSnapshot' API call
+%%
+%% </li> <li> EC2 Image Builder
 %%
 %% </li> <li> Amazon EC2 `RebootInstances' API call
 %%
@@ -748,7 +752,7 @@ put_rule(Client, Input, Options)
 %%
 %% </li> <li> Amazon SNS topic
 %%
-%% </li> <li> Amazon SQS queues (includes FIFO queues
+%% </li> <li> Amazon SQS queues (includes FIFO queues)
 %%
 %% </li> <li> SSM Automation
 %%
@@ -855,6 +859,10 @@ remove_permission(Client, Input, Options)
 %% @doc Removes the specified targets from the specified rule.
 %%
 %% When the rule is triggered, those targets are no longer be invoked.
+%%
+%% A successful execution of `RemoveTargets' doesn't guarantee all targets
+%% are removed from the rule, it means that the target(s) listed in the
+%% request are removed.
 %%
 %% When you remove a target, when the associated rule triggers, removed
 %% targets might continue to be invoked. Allow a short period of time for
