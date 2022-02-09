@@ -1913,13 +1913,12 @@ list_access_points(Client, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of the access points associated with the Object Lambda
-%% Access Point.
+%% @doc Returns some or all (up to 1,000) access points associated with the
+%% Object Lambda Access Point per call.
 %%
-%% You can retrieve up to 1000 access points per call. If there are more than
-%% 1,000 access points (or the number specified in `maxResults', whichever is
-%% less), the response will include a continuation token that you can use to
-%% list the additional access points.
+%% If there are more access points than what can be returned in one call, the
+%% response will include a continuation token that you can use to list the
+%% additional access points.
 %%
 %% The following actions are related to `ListAccessPointsForObjectLambda':
 %%
@@ -2581,7 +2580,8 @@ put_multi_region_access_point_policy(Client, Input0, Options0) ->
 %% @doc Creates or modifies the `PublicAccessBlock' configuration for an
 %% Amazon Web Services account.
 %%
-%% For more information, see Using Amazon S3 block public access.
+%% For this operation, users must have the `s3:PutBucketPublicAccessBlock'
+%% permission. For more information, see Using Amazon S3 block public access.
 %%
 %% Related actions include:
 %%

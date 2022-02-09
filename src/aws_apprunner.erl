@@ -37,18 +37,24 @@
          create_connection/3,
          create_service/2,
          create_service/3,
+         create_vpc_connector/2,
+         create_vpc_connector/3,
          delete_auto_scaling_configuration/2,
          delete_auto_scaling_configuration/3,
          delete_connection/2,
          delete_connection/3,
          delete_service/2,
          delete_service/3,
+         delete_vpc_connector/2,
+         delete_vpc_connector/3,
          describe_auto_scaling_configuration/2,
          describe_auto_scaling_configuration/3,
          describe_custom_domains/2,
          describe_custom_domains/3,
          describe_service/2,
          describe_service/3,
+         describe_vpc_connector/2,
+         describe_vpc_connector/3,
          disassociate_custom_domain/2,
          disassociate_custom_domain/3,
          list_auto_scaling_configurations/2,
@@ -61,6 +67,8 @@
          list_services/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         list_vpc_connectors/2,
+         list_vpc_connectors/3,
          pause_service/2,
          pause_service/3,
          resume_service/2,
@@ -104,11 +112,11 @@ associate_custom_domain(Client, Input, Options)
 %% require non-default auto scaling settings. You can share an auto scaling
 %% configuration across multiple services.
 %%
-%% Create multiple revisions of a configuration by using the same
-%% `AutoScalingConfigurationName' and different
-%% `AutoScalingConfigurationRevision' values. When you create a service, you
-%% can set it to use the latest active revision of an auto scaling
-%% configuration or a specific revision.
+%% Create multiple revisions of a configuration by calling this action
+%% multiple times using the same `AutoScalingConfigurationName'. The call
+%% returns incremental `AutoScalingConfigurationRevision' values. When you
+%% create a service, you can set it to use the latest active revision of an
+%% auto scaling configuration or a specific revision.
 %%
 %% Configure a higher `MinSize' to increase the spread of your App Runner
 %% service over more Availability Zones in the Amazon Web Services Region.
@@ -154,6 +162,17 @@ create_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateService">>, Input, Options).
 
+%% @doc Create an App Runner VPC connector resource.
+%%
+%% App Runner requires this resource when you want to associate your App
+%% Runner service to a custom Amazon Virtual Private Cloud (Amazon VPC).
+create_vpc_connector(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_vpc_connector(Client, Input, []).
+create_vpc_connector(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateVpcConnector">>, Input, Options).
+
 %% @doc Delete an App Runner automatic scaling configuration resource.
 %%
 %% You can delete a specific revision or the latest active revision. You
@@ -190,6 +209,17 @@ delete_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteService">>, Input, Options).
 
+%% @doc Delete an App Runner VPC connector resource.
+%%
+%% You can't delete a connector that's used by one or more App Runner
+%% services.
+delete_vpc_connector(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_vpc_connector(Client, Input, []).
+delete_vpc_connector(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteVpcConnector">>, Input, Options).
+
 %% @doc Return a full description of an App Runner automatic scaling
 %% configuration resource.
 describe_auto_scaling_configuration(Client, Input)
@@ -215,6 +245,14 @@ describe_service(Client, Input)
 describe_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeService">>, Input, Options).
+
+%% @doc Return a description of an App Runner VPC connector resource.
+describe_vpc_connector(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_vpc_connector(Client, Input, []).
+describe_vpc_connector(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeVpcConnector">>, Input, Options).
 
 %% @doc Disassociate a custom domain name from an App Runner service.
 %%
@@ -281,6 +319,15 @@ list_tags_for_resource(Client, Input)
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Returns a list of App Runner VPC connectors in your Amazon Web
+%% Services account.
+list_vpc_connectors(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_vpc_connectors(Client, Input, []).
+list_vpc_connectors(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListVpcConnectors">>, Input, Options).
 
 %% @doc Pause an active App Runner service.
 %%
