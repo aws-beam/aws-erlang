@@ -98,12 +98,16 @@
          describe_managed_rule_group/3,
          disassociate_web_acl/2,
          disassociate_web_acl/3,
+         generate_mobile_sdk_release_url/2,
+         generate_mobile_sdk_release_url/3,
          get_ip_set/2,
          get_ip_set/3,
          get_logging_configuration/2,
          get_logging_configuration/3,
          get_managed_rule_set/2,
          get_managed_rule_set/3,
+         get_mobile_sdk_release/2,
+         get_mobile_sdk_release/3,
          get_permission_policy/2,
          get_permission_policy/3,
          get_rate_based_statement_managed_keys/2,
@@ -128,6 +132,8 @@
          list_logging_configurations/3,
          list_managed_rule_sets/2,
          list_managed_rule_sets/3,
+         list_mobile_sdk_releases/2,
+         list_mobile_sdk_releases/3,
          list_regex_pattern_sets/2,
          list_regex_pattern_sets/3,
          list_resources_for_web_acl/2,
@@ -347,6 +353,20 @@ disassociate_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateWebACL">>, Input, Options).
 
+%% @doc Generates a presigned download URL for the specified release of the
+%% mobile SDK.
+%%
+%% The mobile SDK is not generally available. Customers who have access to
+%% the mobile SDK can use it to establish and manage Security Token Service
+%% (STS) security tokens for use in HTTP(S) requests from a mobile device to
+%% WAF.
+generate_mobile_sdk_release_url(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    generate_mobile_sdk_release_url(Client, Input, []).
+generate_mobile_sdk_release_url(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GenerateMobileSdkReleaseUrl">>, Input, Options).
+
 %% @doc Retrieves the specified `IPSet'.
 get_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -378,6 +398,20 @@ get_managed_rule_set(Client, Input)
 get_managed_rule_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetManagedRuleSet">>, Input, Options).
+
+%% @doc Retrieves information for the specified mobile SDK release, including
+%% release notes and tags.
+%%
+%% The mobile SDK is not generally available. Customers who have access to
+%% the mobile SDK can use it to establish and manage Security Token Service
+%% (STS) security tokens for use in HTTP(S) requests from a mobile device to
+%% WAF.
+get_mobile_sdk_release(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_mobile_sdk_release(Client, Input, []).
+get_mobile_sdk_release(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetMobileSdkRelease">>, Input, Options).
 
 %% @doc Returns the IAM policy that is attached to the specified rule group.
 %%
@@ -522,6 +556,20 @@ list_managed_rule_sets(Client, Input)
 list_managed_rule_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListManagedRuleSets">>, Input, Options).
+
+%% @doc Retrieves a list of the available releases for the mobile SDK and the
+%% specified device platform.
+%%
+%% The mobile SDK is not generally available. Customers who have access to
+%% the mobile SDK can use it to establish and manage Security Token Service
+%% (STS) security tokens for use in HTTP(S) requests from a mobile device to
+%% WAF.
+list_mobile_sdk_releases(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_mobile_sdk_releases(Client, Input, []).
+list_mobile_sdk_releases(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListMobileSdkReleases">>, Input, Options).
 
 %% @doc Retrieves an array of `RegexPatternSetSummary' objects for the regex
 %% pattern sets that you manage.
