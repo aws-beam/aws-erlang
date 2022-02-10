@@ -267,6 +267,9 @@ init_retry_state({exponential_with_jitter, {MaxAttempts, BaseSleepTime, CapSleep
 classify_response({error, _, {StatusCode, _, _}})
   when is_integer(StatusCode) andalso StatusCode >= 500 ->
   retriable;
+classify_response({error, {StatusCode, _}})
+  when is_integer(StatusCode) andalso StatusCode >= 500 ->
+  retriable;
 classify_response({error, _, {StatusCode, _, _}})
   when is_integer(StatusCode) ->
   error;
