@@ -72,7 +72,7 @@ uri_encode_path_byte(Byte)
 uri_encode_path_byte(Byte) ->
     H = Byte band 16#F0 bsr 4,
     L = Byte band 16#0F,
-    <<"%", (hex(H)), (hex(L))>>.
+    <<"%", (hex(H, upper)), (hex(L, upper))>>.
 
 %% @doc Encode the map's key/value pairs as a querystring.
 encode_query(List) when is_list(List) ->
@@ -191,11 +191,17 @@ content_to_map(X, Acc) when is_map(X), is_binary(Acc) ->
 
 %% @doc Convert an integer in the 0-16 range to a hexadecimal byte
 %% representation.
-hex(N) when N >= 0, N < 10 ->
-    N + $0;
-hex(N) when N < 16 ->
-    N - 10 + $a.
+hex(N) ->
+  hex(N, lower).
 
+hex(N, upper) ->
+  hex(N, $A);
+hex(N, lower) ->
+  hex(N, $a);
+hex(N, _Char) when N >= 0, N < 10 ->
+  N + $0;
+hex(N, Char) when N < 16 ->
+  N - 10 + Char.
 binary_join([], Acc, _) ->
     Acc;
 binary_join([H|T], Acc, Sep) ->
@@ -354,6 +360,11 @@ encode_uri_test() ->
 encode_uri_parenthesis_test() ->
   Segment = <<"hello world(!)">>,
   ?assertEqual(<<"hello%20world%28%21%29">>, encode_uri(Segment)).
+
+encode_uri_special_chars_test() ->
+  Segment = <<"file_!-_.(*)&=;:+ ,?{^}%]>[~<#`|.content">>,
+  ?assertEqual(<<"file_%21-_.%28%2A%29%26%3D%3B%3A%2B%20%2C%3F%7B%5E%7D%25%5D%3E%5B~%3C%23%60%7C.content">>,
+               encode_uri(Segment)).
 
 %% encode_multi_segment_uri correctly encode each segment of an URI
 encode_multi_segment_uri_test() ->
