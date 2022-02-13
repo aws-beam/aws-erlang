@@ -53,9 +53,26 @@ encode_multi_segment_uri(Value) ->
     binary_join(Encoded, <<"/">>).
 
 %% @doc Encode URI into a percent-encoding string.
-encode_uri(Value) ->
-  %% @todo Replace with uri_string module.
-  http_uri:encode(Value).
+encode_uri(Value) when is_list(Value) ->
+  list_to_binary(Value);
+encode_uri(Value) when is_binary(Value) ->
+  << (uri_encode_path_byte(Byte)) || <<Byte>> <= Value >>.
+
+-spec uri_encode_path_byte(byte()) -> binary().
+uri_encode_path_byte($/) -> <<"/">>;
+uri_encode_path_byte(Byte)
+    when $0 =< Byte, Byte =< $9;
+        $a =< Byte, Byte =< $z;
+        $A =< Byte, Byte =< $Z;
+        Byte =:= $~;
+        Byte =:= $_;
+        Byte =:= $-;
+        Byte =:= $. ->
+    <<Byte>>;
+uri_encode_path_byte(Byte) ->
+    H = Byte band 16#F0 bsr 4,
+    L = Byte band 16#0F,
+    <<"%", (hex(H)), (hex(L))>>.
 
 %% @doc Encode the map's key/value pairs as a querystring.
 encode_query(List) when is_list(List) ->
@@ -332,11 +349,15 @@ get_in_test() ->
 %% encode_uri correctly encode segment of an URI
 encode_uri_test() ->
   Segment = <<"hello world!">>,
-  ?assertEqual(<<"hello%20world!">>, encode_uri(Segment)).
+  ?assertEqual(<<"hello%20world%21">>, encode_uri(Segment)).
+
+encode_uri_parenthesis_test() ->
+  Segment = <<"hello world(!)">>,
+  ?assertEqual(<<"hello%20world%28%21%29">>, encode_uri(Segment)).
 
 %% encode_multi_segment_uri correctly encode each segment of an URI
 encode_multi_segment_uri_test() ->
   MultiSegment = <<"hello /world!">>,
-  ?assertEqual(<<"hello%20/world!">>, encode_multi_segment_uri(MultiSegment)).
+  ?assertEqual(<<"hello%20/world%21">>, encode_multi_segment_uri(MultiSegment)).
 
 -endif.
