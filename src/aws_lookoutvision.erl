@@ -671,7 +671,7 @@ start_model(Client, ModelVersion, ProjectName, Input0, Options0) ->
 %%
 %% This operation requires the following permissions:
 %%
-%% <ul> <li> `lookoutvision:StartModelPackagingJobs'
+%% <ul> <li> `lookoutvision:StartModelPackagingJob'
 %%
 %% </li> <li> `s3:PutObject'
 %%
