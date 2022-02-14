@@ -47,7 +47,7 @@ how to upload a file to _S3_ and how to fetch it back:
 Simply add the library to your `rebar.config`:
 
 ```erlang
-{deps, [{aws, "0.3.0", {pkg, aws_erlang}}]}.
+{deps, [{aws, "1.0.0", {pkg, aws_erlang}}]}.
 ```
 
 ## Obtaining Credentials
