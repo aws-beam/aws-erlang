@@ -79,11 +79,12 @@ build_custom_headers(ParamsCustomHeadersMapping, Params0)
 
 %% @doc Add querystring to url is there are any parameters in the list
 -spec add_query(binary(), [{binary(), any()}]) -> binary().
-add_query(Url, []) ->
-    Url;
-add_query(Url, Query) ->
-    QueryString = aws_util:encode_query(Query),
-    aws_util:binary_join([Url, QueryString], <<"?">>).
+add_query(Url0, Query0) ->
+  Url = hd(string:split(Url0, <<"?">>)),
+  HackneyUrl = hackney_url:parse_url(Url0),
+  Query = hackney_url:parse_qs(HackneyUrl#hackney_url.qs) ++ Query0,
+  QueryString = iolist_to_binary(aws_util:encode_query(Query)),
+  aws_util:binary_join([Url, QueryString], <<"?">>).
 
 -spec method_to_binary(atom()) -> binary().
 method_to_binary(delete)  -> <<"DELETE">>;
@@ -197,17 +198,7 @@ canonical_request(Method, URL, Headers, Body) ->
 %% URL and query string as separate values.
 split_url(URL) ->
     URI = hackney_url:parse_url(URL),
-    {ensure_path(URI#hackney_url.path), fix_qs(URI#hackney_url.qs)}.
-
-%% When signing a request, the query string for query params that do
-%% no contain a value such as "key" should be encoded as "key=".
-%% Without this fix, the request will result in a SignatureDoesNotMatch error.
-fix_qs(QueryString) ->
-  hackney_url:qs(
-    lists:sort(
-      lists:map(fun({K, true}) -> {K, ""};
-                   ({K, V}) when is_binary(V) -> {K, V}
-                end, hackney_url:parse_qs(QueryString)))).
+    {ensure_path(URI#hackney_url.path), URI#hackney_url.qs}.
 
 %% Convert a list of headers to canonical header format.  Leading and
 %% trailing whitespace around header names and values is stripped, header
@@ -441,28 +432,23 @@ split_url_test() ->
     ?assertEqual({<<"/index">>, <<"one=1&two=2">>},
                  split_url(<<"https://example.com/index?one=1&two=2">>)).
 
-%% split_url/1 splits a URL from its query string, URL encodes the query
-%% string, and returns the URL and sorted query string as separate values.
-split_url_sorted_test() ->
-    ?assertEqual({<<"/index">>, <<"one=1&two=2">>},
-                 split_url(<<"https://example.com/index?two=2&one=1">>)).
-
-%% split_url/1 returns an empty binary if no query string is present.
-split_url_without_query_string_test() ->
-    ?assertEqual({<<"/index">>, <<"">>},
-                 split_url(<<"https://example.com/index?">>)).
-
 %% split_url/1 returns an binary if a query string is present.
 split_url_with_all_uri_elements_test() ->
     ?assertEqual(
        {<<"/index">>, <<"one=1">>},
        split_url(<<"https://username:secret@example.com:80/index?one=1">>)).
 
-%% split_url/1 returns a patched up binary if a query string with no value is present.
-split_url_with_uri_elements_with_no_value_test() ->
-    ?assertEqual(
-       {<<"/index">>, <<"one=">>},
-       split_url(<<"https://username:secret@example.com:80/index?one">>)).
+add_query_test() ->
+  ?assertEqual(<<"https://example.com/index?one=">>,
+               add_query(<<"https://example.com/index?one">>, [])).
+
+add_query_without_query_string_test() ->
+  ?assertEqual(<<"https://example.com?">>,
+              add_query(<<"https://example.com?">>, [])).
+
+add_query_sorted_test() ->
+  ?assertEqual(<<"https://example.com/index?one=1&two=2">>,
+               add_query(<<"https://example.com/index">>, [{<<"two">>, <<"2">>}, {<<"one">>, <<"1">>}])).
 
 %% canonical_headers/1 returns a newline-delimited list of trimmed and
 %% lowecase headers, sorted in alphabetical order, and with a trailing

@@ -76,18 +76,21 @@ uri_encode_path_byte(Byte) ->
 
 %% @doc Encode the map's key/value pairs as a querystring.
 encode_query(List) when is_list(List) ->
-  FoldFun = fun
-              ({K, V}, Acc) when is_integer(V) ->
-                [{K, integer_to_binary(V)} | Acc];
-              ({K, V}, Acc) when is_float(V) ->
-                [{K, float_to_binary(V)} | Acc];
-              (KV = {_, V}, Acc) when is_binary(V) ->
-                [KV | Acc]
-            end,
-  KVs = lists:foldr(FoldFun, [], List),
-  uri_string:compose_query(KVs);
+  fix_qs(List);
 encode_query(Map) when is_map(Map) ->
   encode_query(maps:to_list(Map)).
+
+%% When signing a request, the query string for query params that do
+%% no contain a value such as "key" should be encoded as "key=".
+%% Without this fix, the request will result in a SignatureDoesNotMatch error.
+fix_qs(Query) when is_list(Query) ->
+  uri_string:compose_query(
+    lists:sort(
+      lists:map(fun({K, true}) -> {K, ""};
+                    ({K, V}) when is_binary(V) -> {K, V};
+                    ({K, V}) when is_float(V) -> {K, float_to_binary(V)};
+                    ({K, V}) when is_integer(V) -> {K, integer_to_binary(V)}
+                end, Query))).
 
 %% @doc Encode an Erlang map as XML
 %%
