@@ -80,7 +80,7 @@ build_custom_headers(ParamsCustomHeadersMapping, Params0)
 %% @doc Add querystring to url is there are any parameters in the list
 -spec add_query(binary(), [{binary(), any()}]) -> binary().
 add_query(Url0, Query0) ->
-  Url = hd(string:split(Url0, <<"?">>)),
+  [Url | _] = string:split(Url0, <<"?">>),
   HackneyUrl = hackney_url:parse_url(Url0),
   Query = hackney_url:parse_qs(HackneyUrl#hackney_url.qs) ++ Query0,
   QueryString = iolist_to_binary(aws_util:encode_query(Query)),
@@ -449,6 +449,11 @@ add_query_without_query_string_test() ->
 add_query_sorted_test() ->
   ?assertEqual(<<"https://example.com/index?one=1&two=2">>,
                add_query(<<"https://example.com/index">>, [{<<"two">>, <<"2">>}, {<<"one">>, <<"1">>}])).
+
+add_query_sorted_with_existing_query_test() ->
+  ?assertEqual(<<"https://example.com/index?one=1&two=2&x=y">>,
+               add_query(<<"https://example.com/index?x=y">>, [{<<"two">>, <<"2">>}, {<<"one">>, <<"1">>}])).
+
 
 %% canonical_headers/1 returns a newline-delimited list of trimmed and
 %% lowecase headers, sorted in alphabetical order, and with a trailing
