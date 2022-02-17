@@ -1869,7 +1869,7 @@ stop_automation_execution(Client, Input, Options)
 %% @doc Permanently ends a session and closes the data connection between the
 %% Session Manager client and SSM Agent on the managed node.
 %%
-%% A terminated session isn't be resumed.
+%% A terminated session can't be resumed.
 terminate_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_session(Client, Input, []).
@@ -1889,7 +1889,7 @@ unlabel_parameter_version(Client, Input, Options)
 %%
 %% You can update the association name and version, the document version,
 %% schedule, parameters, and Amazon Simple Storage Service (Amazon S3)
-%% output. When you call `UpdateAssociation', the system drops all optional
+%% output. When you call `UpdateAssociation', the system removes all optional
 %% parameters from the request and overwrites the association with null
 %% values for those parameters. This is by design. You must specify all
 %% optional parameters in the call, even if you are not changing the
