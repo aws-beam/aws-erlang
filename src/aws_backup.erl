@@ -1513,7 +1513,9 @@ list_restore_jobs(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns a list of key-value pairs assigned to a target recovery
 %% point, backup plan, or backup vault.
 %%
-%% `ListTags' are currently only supported with Amazon EFS backups.
+%% `ListTags' only works for resource types that support full Backup
+%% management of their backups. Those resource types are listed in the "Full
+%% Backup management" section of the Feature availability by resource table.
 list_tags(Client, ResourceArn)
   when is_map(Client) ->
     list_tags(Client, ResourceArn, #{}, #{}).
@@ -1875,14 +1877,17 @@ update_global_settings(Client, Input0, Options0) ->
 %% automatically according to the lifecycle that you define.
 %%
 %% Backups transitioned to cold storage must be stored in cold storage for a
-%% minimum of 90 days. Therefore, the “expire after days” setting must be 90
-%% days greater than the “transition to cold after days” setting. The
-%% “transition to cold after days” setting cannot be changed after a backup
-%% has been transitioned to cold.
+%% minimum of 90 days. Therefore, the “retention” setting must be 90 days
+%% greater than the “transition to cold after days” setting. The “transition
+%% to cold after days” setting cannot be changed after a backup has been
+%% transitioned to cold.
 %%
-%% Only Amazon EFS file system backups can be transitioned to cold storage.
+%% Only resource types that support full Backup management can transition
+%% their backups to cold storage. Those resource types are listed in the
+%% "Full Backup management" section of the Feature availability by resource
+%% table. Backup ignores this expression for other resource types.
 %%
-%% Does not support continuous backups.
+%% This operation does not support continuous backups.
 update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input) ->
     update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input, []).
 update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input0, Options0) ->

@@ -580,8 +580,8 @@ create_scheduled_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateScheduledAction">>, Input, Options).
 
-%% @doc Creates a snapshot copy grant that permits Amazon Redshift to use a
-%% customer master key (CMK) from Key Management Service (KMS) to encrypt
+%% @doc Creates a snapshot copy grant that permits Amazon Redshift to use an
+%% encrypted symmetric key from Key Management Service (KMS) to encrypt
 %% copied snapshots in a destination region.
 %%
 %% For more information about managing snapshot copy grants, go to Amazon
@@ -1365,10 +1365,10 @@ disable_logging(Client, Input, Options)
 %% @doc Disables the automatic copying of snapshots from one region to
 %% another region for a specified cluster.
 %%
-%% If your cluster and its snapshots are encrypted using a customer master
-%% key (CMK) from Key Management Service, use `DeleteSnapshotCopyGrant' to
-%% delete the grant that grants Amazon Redshift permission to the CMK in the
-%% destination region.
+%% If your cluster and its snapshots are encrypted using an encrypted
+%% symmetric key from Key Management Service, use `DeleteSnapshotCopyGrant'
+%% to delete the grant that grants Amazon Redshift permission to the key in
+%% the destination region.
 disable_snapshot_copy(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_snapshot_copy(Client, Input, []).
@@ -1506,7 +1506,9 @@ modify_cluster_db_revision(Client, Input, Options)
 %% @doc Modifies the list of Identity and Access Management (IAM) roles that
 %% can be used by the cluster to access other Amazon Web Services services.
 %%
-%% A cluster can have up to 10 IAM roles associated at any time.
+%% The maximum number of IAM roles that you can associate is subject to a
+%% quota. For more information, go to Quotas and limits in the Amazon
+%% Redshift Cluster Management Guide.
 modify_cluster_iam_roles(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_cluster_iam_roles(Client, Input, []).
