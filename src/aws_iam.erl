@@ -1320,9 +1320,9 @@ generate_organizations_access_report(Client, Input, Options)
 %% Amazon Web Services services.
 %%
 %% Recent activity usually appears within four hours. IAM reports activity
-%% for the last 365 days, or less if your Region began supporting this
-%% feature within the last year. For more information, see Regions where data
-%% is tracked.
+%% for at least the last 400 days, or less if your Region began supporting
+%% this feature within the last year. For more information, see Regions where
+%% data is tracked.
 %%
 %% The service last accessed data includes all attempts to access an Amazon
 %% Web Services API, not just the successful ones. This includes all attempts
@@ -2455,8 +2455,7 @@ list_users(Client, Input, Options)
 %% IAM resource-listing operations return a subset of the available
 %% attributes for the resource. For example, this operation does not return
 %% tags, even though they are an attribute of the returned object. To view
-%% all of the information for a virtual MFA device, see
-%% `ListVirtualMFADevices'.
+%% tag information for a virtual MFA device, see `ListMFADeviceTags'.
 %%
 %% You can paginate the results using the `MaxItems' and `Marker' parameters.
 list_virtual_mfa_devices(Client, Input)
