@@ -77,6 +77,8 @@
          describe_budget_actions_for_account/3,
          describe_budget_actions_for_budget/2,
          describe_budget_actions_for_budget/3,
+         describe_budget_notifications_for_account/2,
+         describe_budget_notifications_for_account/3,
          describe_budget_performance_history/2,
          describe_budget_performance_history/3,
          describe_budgets/2,
@@ -229,6 +231,15 @@ describe_budget_actions_for_budget(Client, Input)
 describe_budget_actions_for_budget(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBudgetActionsForBudget">>, Input, Options).
+
+%% @doc Lists the budget names and notifications that are associated with an
+%% account.
+describe_budget_notifications_for_account(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_budget_notifications_for_account(Client, Input, []).
+describe_budget_notifications_for_account(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeBudgetNotificationsForAccount">>, Input, Options).
 
 %% @doc Describes the history for `DAILY', `MONTHLY', and `QUARTERLY'
 %% budgets.
