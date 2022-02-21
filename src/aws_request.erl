@@ -80,11 +80,12 @@ build_custom_headers(ParamsCustomHeadersMapping, Params0)
 %% @doc Add querystring to url is there are any parameters in the list
 -spec add_query(binary(), [{binary(), any()}]) -> binary().
 add_query(Url0, Query0) ->
-  [Url | _] = string:split(Url0, <<"?">>),
   HackneyUrl = hackney_url:parse_url(Url0),
-  Query = hackney_url:parse_qs(HackneyUrl#hackney_url.qs) ++ Query0,
-  QueryString = iolist_to_binary(aws_util:encode_query(Query)),
-  aws_util:binary_join([Url, QueryString], <<"?">>).
+  NewQs = iolist_to_binary(
+            aws_util:encode_query(
+              hackney_url:parse_qs(HackneyUrl#hackney_url.qs) ++ Query0)),
+  HackneyUrlWithAddedQs = HackneyUrl#hackney_url{qs = NewQs},
+  hackney_url:unparse_url(HackneyUrlWithAddedQs).
 
 -spec method_to_binary(atom()) -> binary().
 method_to_binary(delete)  -> <<"DELETE">>;
@@ -443,7 +444,7 @@ add_query_test() ->
                add_query(<<"https://example.com/index?one">>, [])).
 
 add_query_without_query_string_test() ->
-  ?assertEqual(<<"https://example.com?">>,
+  ?assertEqual(<<"https://example.com">>,
               add_query(<<"https://example.com?">>, [])).
 
 add_query_sorted_test() ->
@@ -454,6 +455,10 @@ add_query_sorted_with_existing_query_test() ->
   ?assertEqual(<<"https://example.com/index?one=1&two=2&x=y">>,
                add_query(<<"https://example.com/index?x=y">>, [{<<"two">>, <<"2">>}, {<<"one">>, <<"1">>}])).
 
+add_query_with_fragment_test() ->
+  ?assertEqual(<<"https://example.com/index?one=1&two=2&x=y#heyhey">>,
+               add_query(<<"https://example.com/index?x=y#heyhey">>,
+                         [{<<"two">>, <<"2">>}, {<<"one">>, <<"1">>}])).
 
 %% canonical_headers/1 returns a newline-delimited list of trimmed and
 %% lowecase headers, sorted in alphabetical order, and with a trailing
