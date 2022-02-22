@@ -23,6 +23,8 @@
          add_profile_key/4,
          create_domain/3,
          create_domain/4,
+         create_integration_workflow/3,
+         create_integration_workflow/4,
          create_profile/3,
          create_profile/4,
          delete_domain/3,
@@ -37,6 +39,8 @@
          delete_profile_object/4,
          delete_profile_object_type/4,
          delete_profile_object_type/5,
+         delete_workflow/4,
+         delete_workflow/5,
          get_auto_merging_preview/3,
          get_auto_merging_preview/4,
          get_domain/2,
@@ -56,6 +60,12 @@
          get_profile_object_type_template/2,
          get_profile_object_type_template/4,
          get_profile_object_type_template/5,
+         get_workflow/3,
+         get_workflow/5,
+         get_workflow/6,
+         get_workflow_steps/3,
+         get_workflow_steps/5,
+         get_workflow_steps/6,
          list_account_integrations/2,
          list_account_integrations/3,
          list_domains/1,
@@ -78,6 +88,8 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_workflows/3,
+         list_workflows/4,
          merge_profiles/3,
          merge_profiles/4,
          put_integration/3,
@@ -151,6 +163,33 @@ create_domain(Client, DomainName, Input) ->
 create_domain(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an integration workflow.
+%%
+%% An integration workflow is an async process which ingests historic data
+%% and sets up an integration for ongoing updates. The supported Amazon
+%% AppFlow sources are Salesforce, ServiceNow, and Marketo.
+create_integration_workflow(Client, DomainName, Input) ->
+    create_integration_workflow(Client, DomainName, Input, []).
+create_integration_workflow(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/workflows/integrations"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -340,6 +379,31 @@ delete_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the specified workflow and all its corresponding resources.
+%%
+%% This is an async process.
+delete_workflow(Client, DomainName, WorkflowId, Input) ->
+    delete_workflow(Client, DomainName, WorkflowId, Input, []).
+delete_workflow(Client, DomainName, WorkflowId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/workflows/", aws_util:encode_uri(WorkflowId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Tests the auto-merging settings of your Identity Resolution Job
 %% without merging your data.
 %%
@@ -487,8 +551,6 @@ get_integration(Client, DomainName, Input0, Options0) ->
 %%
 %% </li> <li> FullName
 %%
-%% </li> <li> BusinessName
-%%
 %% </li> </ul> For example, two or more profiles—with spelling mistakes such
 %% as John Doe and Jhn Doe, or different casing email addresses such as
 %% JOHN_DOE@ANYCOMPANY.COM and johndoe@anycompany.com, or different phone
@@ -572,6 +634,57 @@ get_profile_object_type_template(Client, TemplateId, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Get details of specified workflow.
+get_workflow(Client, DomainName, WorkflowId)
+  when is_map(Client) ->
+    get_workflow(Client, DomainName, WorkflowId, #{}, #{}).
+
+get_workflow(Client, DomainName, WorkflowId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_workflow(Client, DomainName, WorkflowId, QueryMap, HeadersMap, []).
+
+get_workflow(Client, DomainName, WorkflowId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/workflows/", aws_util:encode_uri(WorkflowId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get granular list of steps in workflow.
+get_workflow_steps(Client, DomainName, WorkflowId)
+  when is_map(Client) ->
+    get_workflow_steps(Client, DomainName, WorkflowId, #{}, #{}).
+
+get_workflow_steps(Client, DomainName, WorkflowId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_workflow_steps(Client, DomainName, WorkflowId, QueryMap, HeadersMap, []).
+
+get_workflow_steps(Client, DomainName, WorkflowId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/workflows/", aws_util:encode_uri(WorkflowId), "/steps"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists all of the integrations associated to a specific URI in the AWS
 %% account.
 list_account_integrations(Client, Input) ->
@@ -592,6 +705,7 @@ list_account_integrations(Client, Input0, Options0) ->
     Input2 = Input1,
 
     QueryMapping = [
+                     {<<"include-hidden">>, <<"IncludeHidden">>},
                      {<<"max-results">>, <<"MaxResults">>},
                      {<<"next-token">>, <<"NextToken">>}
                    ],
@@ -678,6 +792,7 @@ list_integrations(Client, DomainName, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"include-hidden">>, maps:get(<<"include-hidden">>, QueryMap, undefined)},
         {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
         {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
@@ -793,6 +908,31 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Query to list all workflows.
+list_workflows(Client, DomainName, Input) ->
+    list_workflows(Client, DomainName, Input, []).
+list_workflows(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/workflows"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"max-results">>, <<"MaxResults">>},
+                     {<<"next-token">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Runs an AWS Lambda job that does the following:
 %%

@@ -154,6 +154,16 @@ cancel_image_creation(Client, Input0, Options0) ->
 
 %% @doc Creates a new component that can be used to build, validate, test,
 %% and assess your image.
+%%
+%% The component is based on a YAML document that you specify using exactly
+%% one of the following methods:
+%%
+%% <ul> <li> Inline, using the `data' property in the request body.
+%%
+%% </li> <li> A URL that points to a YAML document file stored in Amazon S3,
+%% using the `uri' property in the request body.
+%%
+%% </li> </ul>
 create_component(Client, Input) ->
     create_component(Client, Input, []).
 create_component(Client, Input0, Options0) ->
