@@ -277,6 +277,7 @@ abort_multipart_upload(Client, Bucket, Key, Input) ->
 abort_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
+
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -296,7 +297,7 @@ abort_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
                      {<<"uploadId">>, <<"UploadId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -401,6 +402,7 @@ complete_multipart_upload(Client, Bucket, Key, Input) ->
 complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -420,7 +422,7 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
                      {<<"uploadId">>, <<"UploadId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -612,6 +614,7 @@ copy_object(Client, Bucket, Key, Input) ->
 copy_object(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -667,7 +670,7 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -821,6 +824,7 @@ create_bucket(Client, Bucket, Input) ->
 create_bucket(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), ""],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -845,7 +849,7 @@ create_bucket(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1071,6 +1075,7 @@ create_multipart_upload(Client, Bucket, Key, Input) ->
 create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?uploads"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1115,7 +1120,7 @@ create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1158,6 +1163,7 @@ delete_bucket(Client, Bucket, Input) ->
 delete_bucket(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), ""],
+
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1175,7 +1181,7 @@ delete_bucket(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Deletes an analytics configuration for the bucket (specified by the
 %% analytics configuration ID).
@@ -1205,6 +1211,7 @@ delete_bucket_analytics_configuration(Client, Bucket, Input) ->
 delete_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?analytics"],
+
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1223,7 +1230,7 @@ delete_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
                      {<<"id">>, <<"Id">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Deletes the `cors' configuration information set for the bucket.
 %%
@@ -1246,6 +1253,7 @@ delete_bucket_cors(Client, Bucket, Input) ->
 delete_bucket_cors(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?cors"],
+
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1263,7 +1271,7 @@ delete_bucket_cors(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc This implementation of the DELETE action removes default encryption
 %% from the bucket.
@@ -1290,6 +1298,7 @@ delete_bucket_encryption(Client, Bucket, Input) ->
 delete_bucket_encryption(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?encryption"],
+
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1307,7 +1316,7 @@ delete_bucket_encryption(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Deletes the S3 Intelligent-Tiering configuration from the specified
 %% bucket.
@@ -1345,6 +1354,7 @@ delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input) ->
 delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?intelligent-tiering"],
+
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1361,7 +1371,7 @@ delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0
                      {<<"id">>, <<"Id">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Deletes an inventory configuration (identified by the inventory ID)
 %% from the bucket.
@@ -1390,6 +1400,7 @@ delete_bucket_inventory_configuration(Client, Bucket, Input) ->
 delete_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?inventory"],
+
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1408,7 +1419,7 @@ delete_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
                      {<<"id">>, <<"Id">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Deletes the lifecycle configuration from the specified bucket.
 %%
@@ -1439,6 +1450,7 @@ delete_bucket_lifecycle(Client, Bucket, Input) ->
 delete_bucket_lifecycle(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?lifecycle"],
+
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1456,7 +1468,7 @@ delete_bucket_lifecycle(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Deletes a metrics configuration for the Amazon CloudWatch request
 %% metrics (specified by the metrics configuration ID) from the bucket.
@@ -1490,6 +1502,7 @@ delete_bucket_metrics_configuration(Client, Bucket, Input) ->
 delete_bucket_metrics_configuration(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?metrics"],
+
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1508,7 +1521,7 @@ delete_bucket_metrics_configuration(Client, Bucket, Input0, Options0) ->
                      {<<"id">>, <<"Id">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Removes `OwnershipControls' for an Amazon S3 bucket.
 %%
@@ -1531,6 +1544,7 @@ delete_bucket_ownership_controls(Client, Bucket, Input) ->
 delete_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?ownershipControls"],
+
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1548,7 +1562,7 @@ delete_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc This implementation of the DELETE action uses the policy subresource
 %% to delete the policy of a specified bucket.
@@ -1582,6 +1596,7 @@ delete_bucket_policy(Client, Bucket, Input) ->
 delete_bucket_policy(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?policy"],
+
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1599,7 +1614,7 @@ delete_bucket_policy(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Deletes the replication configuration from the bucket.
 %%
@@ -1627,6 +1642,7 @@ delete_bucket_replication(Client, Bucket, Input) ->
 delete_bucket_replication(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?replication"],
+
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1644,7 +1660,7 @@ delete_bucket_replication(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Deletes the tags from the bucket.
 %%
@@ -1664,6 +1680,7 @@ delete_bucket_tagging(Client, Bucket, Input) ->
 delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?tagging"],
+
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1681,7 +1698,7 @@ delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc This action removes the website configuration for a bucket.
 %%
@@ -1712,6 +1729,7 @@ delete_bucket_website(Client, Bucket, Input) ->
 delete_bucket_website(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?website"],
+
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1729,7 +1747,7 @@ delete_bucket_website(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Removes the null version (if there is one) of an object and inserts a
 %% delete marker, which becomes the latest version of the object.
@@ -1766,6 +1784,7 @@ delete_object(Client, Bucket, Key, Input) ->
 delete_object(Client, Bucket, Key, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
+
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1787,7 +1806,7 @@ delete_object(Client, Bucket, Key, Input0, Options0) ->
                      {<<"versionId">>, <<"VersionId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1831,6 +1850,7 @@ delete_object_tagging(Client, Bucket, Key, Input) ->
 delete_object_tagging(Client, Bucket, Key, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?tagging"],
+
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1849,7 +1869,7 @@ delete_object_tagging(Client, Bucket, Key, Input0, Options0) ->
                      {<<"versionId">>, <<"VersionId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1919,6 +1939,7 @@ delete_objects(Client, Bucket, Input) ->
 delete_objects(Client, Bucket, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(Bucket), "?delete"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1939,7 +1960,7 @@ delete_objects(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -1981,6 +2002,7 @@ delete_public_access_block(Client, Bucket, Input) ->
 delete_public_access_block(Client, Bucket, Input0, Options0) ->
     Method = delete,
     Path = ["/", aws_util:encode_uri(Bucket), "?publicAccessBlock"],
+
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1998,7 +2020,7 @@ delete_public_access_block(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc This implementation of the GET action uses the `accelerate'
 %% subresource to return the Transfer Acceleration state of a bucket, which
@@ -2040,6 +2062,7 @@ get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap)
 get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?accelerate"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2053,7 +2076,7 @@ get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap, Option
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc This implementation of the `GET' action uses the `acl' subresource to
 %% return the access control list (ACL) of a bucket.
@@ -2085,6 +2108,7 @@ get_bucket_acl(Client, Bucket, QueryMap, HeadersMap)
 get_bucket_acl(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?acl"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2098,7 +2122,7 @@ get_bucket_acl(Client, Bucket, QueryMap, HeadersMap, Options0)
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc This implementation of the GET action returns an analytics
 %% configuration (identified by the analytics configuration ID) from the
@@ -2134,6 +2158,7 @@ get_bucket_analytics_configuration(Client, Bucket, Id, QueryMap, HeadersMap)
 get_bucket_analytics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?analytics"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2151,7 +2176,7 @@ get_bucket_analytics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Opt
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Returns the cors configuration information set for the bucket.
 %%
@@ -2180,6 +2205,7 @@ get_bucket_cors(Client, Bucket, QueryMap, HeadersMap)
 get_bucket_cors(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?cors"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2193,7 +2219,7 @@ get_bucket_cors(Client, Bucket, QueryMap, HeadersMap, Options0)
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Returns the default encryption configuration for an Amazon S3 bucket.
 %%
@@ -2229,6 +2255,7 @@ get_bucket_encryption(Client, Bucket, QueryMap, HeadersMap)
 get_bucket_encryption(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?encryption"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2242,7 +2269,7 @@ get_bucket_encryption(Client, Bucket, QueryMap, HeadersMap, Options0)
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Gets the S3 Intelligent-Tiering configuration from the specified
 %% bucket.
@@ -2285,6 +2312,7 @@ get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, Heade
 get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?intelligent-tiering"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2298,7 +2326,7 @@ get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, Heade
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Returns an inventory configuration (identified by the inventory
 %% configuration ID) from the bucket.
@@ -2333,6 +2361,7 @@ get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap)
 get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?inventory"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2350,7 +2379,7 @@ get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Opt
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc For an updated version of this API, see
 %% GetBucketLifecycleConfiguration.
@@ -2401,6 +2430,7 @@ get_bucket_lifecycle(Client, Bucket, QueryMap, HeadersMap)
 get_bucket_lifecycle(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?lifecycle"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2414,7 +2444,7 @@ get_bucket_lifecycle(Client, Bucket, QueryMap, HeadersMap, Options0)
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Bucket lifecycle configuration now supports specifying a lifecycle
 %% rule using an object key name prefix, one or more object tags, or a
@@ -2468,6 +2498,7 @@ get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap)
 get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?lifecycle"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2481,7 +2512,7 @@ get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap, Options
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Returns the Region the bucket resides in.
 %%
@@ -2512,6 +2543,7 @@ get_bucket_location(Client, Bucket, QueryMap, HeadersMap)
 get_bucket_location(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?location"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2525,7 +2557,7 @@ get_bucket_location(Client, Bucket, QueryMap, HeadersMap, Options0)
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Returns the logging status of a bucket and the permissions users have
 %% to view and modify that status.
@@ -2550,6 +2582,7 @@ get_bucket_logging(Client, Bucket, QueryMap, HeadersMap)
 get_bucket_logging(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?logging"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2563,7 +2596,7 @@ get_bucket_logging(Client, Bucket, QueryMap, HeadersMap, Options0)
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Gets a metrics configuration (specified by the metrics configuration
 %% ID) from the bucket.
@@ -2602,6 +2635,7 @@ get_bucket_metrics_configuration(Client, Bucket, Id, QueryMap, HeadersMap)
 get_bucket_metrics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?metrics"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2619,7 +2653,7 @@ get_bucket_metrics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Optio
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc No longer used, see GetBucketNotificationConfiguration.
 get_bucket_notification(Client, Bucket)
@@ -2633,6 +2667,7 @@ get_bucket_notification(Client, Bucket, QueryMap, HeadersMap)
 get_bucket_notification(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?notification"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2646,7 +2681,7 @@ get_bucket_notification(Client, Bucket, QueryMap, HeadersMap, Options0)
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Returns the notification configuration of a bucket.
 %%
@@ -2678,6 +2713,7 @@ get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap)
 get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?notification"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2691,7 +2727,7 @@ get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap, Opti
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Retrieves `OwnershipControls' for an Amazon S3 bucket.
 %%
@@ -2720,6 +2756,7 @@ get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap)
 get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?ownershipControls"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2733,7 +2770,7 @@ get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap, Options0)
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Returns the policy of a specified bucket.
 %%
@@ -2770,6 +2807,7 @@ get_bucket_policy(Client, Bucket, QueryMap, HeadersMap)
 get_bucket_policy(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?policy"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2783,7 +2821,7 @@ get_bucket_policy(Client, Bucket, QueryMap, HeadersMap, Options0)
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Retrieves the policy status for an Amazon S3 bucket, indicating
 %% whether the bucket is public.
@@ -2817,6 +2855,7 @@ get_bucket_policy_status(Client, Bucket, QueryMap, HeadersMap)
 get_bucket_policy_status(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?policyStatus"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2830,7 +2869,7 @@ get_bucket_policy_status(Client, Bucket, QueryMap, HeadersMap, Options0)
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Returns the replication configuration of a bucket.
 %%
@@ -2870,6 +2909,7 @@ get_bucket_replication(Client, Bucket, QueryMap, HeadersMap)
 get_bucket_replication(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?replication"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2883,7 +2923,7 @@ get_bucket_replication(Client, Bucket, QueryMap, HeadersMap, Options0)
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Returns the request payment configuration of a bucket.
 %%
@@ -2906,6 +2946,7 @@ get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap)
 get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?requestPayment"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2919,7 +2960,7 @@ get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap, Options0)
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Returns the tag set associated with the bucket.
 %%
@@ -2952,6 +2993,7 @@ get_bucket_tagging(Client, Bucket, QueryMap, HeadersMap)
 get_bucket_tagging(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?tagging"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2965,7 +3007,7 @@ get_bucket_tagging(Client, Bucket, QueryMap, HeadersMap, Options0)
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Returns the versioning state of a bucket.
 %%
@@ -2996,6 +3038,7 @@ get_bucket_versioning(Client, Bucket, QueryMap, HeadersMap)
 get_bucket_versioning(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?versioning"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -3009,7 +3052,7 @@ get_bucket_versioning(Client, Bucket, QueryMap, HeadersMap, Options0)
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Returns the website configuration for a bucket.
 %%
@@ -3041,6 +3084,7 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap)
 get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?website"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -3054,7 +3098,7 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Retrieves objects from Amazon S3.
 %%
@@ -3205,6 +3249,7 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap)
 get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, true}
@@ -3238,7 +3283,7 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -3323,6 +3368,7 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap)
 get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?acl"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -3341,7 +3387,7 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -3375,6 +3421,7 @@ get_object_legal_hold(Client, Bucket, Key, QueryMap, HeadersMap)
 get_object_legal_hold(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?legal-hold"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -3393,7 +3440,7 @@ get_object_legal_hold(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Gets the Object Lock configuration for a bucket.
 %%
@@ -3411,6 +3458,7 @@ get_object_lock_configuration(Client, Bucket, QueryMap, HeadersMap)
 get_object_lock_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?object-lock"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -3424,7 +3472,7 @@ get_object_lock_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Retrieves an object's retention settings.
 %%
@@ -3442,6 +3490,7 @@ get_object_retention(Client, Bucket, Key, QueryMap, HeadersMap)
 get_object_retention(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?retention"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -3460,7 +3509,7 @@ get_object_retention(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Returns the tag-set of an object.
 %%
@@ -3498,6 +3547,7 @@ get_object_tagging(Client, Bucket, Key, QueryMap, HeadersMap)
 get_object_tagging(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?tagging"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -3516,7 +3566,7 @@ get_object_tagging(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -3564,6 +3614,7 @@ get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap)
 get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?torrent"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, true}
@@ -3578,7 +3629,7 @@ get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 
     Query_ = [],
 
-    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -3635,6 +3686,7 @@ get_public_access_block(Client, Bucket, QueryMap, HeadersMap)
 get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?publicAccessBlock"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -3648,7 +3700,7 @@ get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options0)
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc This action is useful to determine if a bucket exists and you have
 %% permission to access it.
@@ -3679,6 +3731,7 @@ head_bucket(Client, Bucket, Input) ->
 head_bucket(Client, Bucket, Input0, Options0) ->
     Method = head,
     Path = ["/", aws_util:encode_uri(Bucket), ""],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -3696,7 +3749,7 @@ head_bucket(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc The HEAD action retrieves metadata from an object without returning
 %% the object itself.
@@ -3781,6 +3834,7 @@ head_object(Client, Bucket, Key, Input) ->
 head_object(Client, Bucket, Key, Input0, Options0) ->
     Method = head,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -3809,7 +3863,7 @@ head_object(Client, Bucket, Key, Input0, Options0) ->
                      {<<"versionId">>, <<"VersionId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket) of
       {ok, {_, ResponseHeaders} = Response} ->
         Body0 = #{},
         ResponseHeadersParams =
@@ -3900,6 +3954,7 @@ list_bucket_analytics_configurations(Client, Bucket, QueryMap, HeadersMap)
 list_bucket_analytics_configurations(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?analytics"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -3917,7 +3972,7 @@ list_bucket_analytics_configurations(Client, Bucket, QueryMap, HeadersMap, Optio
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Lists the S3 Intelligent-Tiering configuration from the specified
 %% bucket.
@@ -3961,6 +4016,7 @@ list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, Headers
 list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?intelligent-tiering"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -3974,7 +4030,7 @@ list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, Headers
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Returns a list of inventory configurations for the bucket.
 %%
@@ -4020,6 +4076,7 @@ list_bucket_inventory_configurations(Client, Bucket, QueryMap, HeadersMap)
 list_bucket_inventory_configurations(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?inventory"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -4037,7 +4094,7 @@ list_bucket_inventory_configurations(Client, Bucket, QueryMap, HeadersMap, Optio
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Lists the metrics configurations for the bucket.
 %%
@@ -4084,6 +4141,7 @@ list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap)
 list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?metrics"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -4101,7 +4159,7 @@ list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap, Options
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Returns a list of all buckets owned by the authenticated sender of
 %% the request.
@@ -4116,6 +4174,7 @@ list_buckets(Client, QueryMap, HeadersMap)
 list_buckets(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/"],
+    Bucket = undefined,
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -4125,7 +4184,7 @@ list_buckets(Client, QueryMap, HeadersMap, Options0)
 
     Query_ = [],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc This action lists in-progress multipart uploads.
 %%
@@ -4177,6 +4236,7 @@ list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap)
 list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?uploads"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -4199,7 +4259,7 @@ list_multipart_uploads(Client, Bucket, QueryMap, HeadersMap, Options0)
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Returns metadata about all versions of the objects in a bucket.
 %%
@@ -4239,6 +4299,7 @@ list_object_versions(Client, Bucket, QueryMap, HeadersMap)
 list_object_versions(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?versions"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -4261,7 +4322,7 @@ list_object_versions(Client, Bucket, QueryMap, HeadersMap, Options0)
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Returns some or all (up to 1,000) of the objects in a bucket.
 %%
@@ -4298,6 +4359,7 @@ list_objects(Client, Bucket, QueryMap, HeadersMap)
 list_objects(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), ""],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -4320,7 +4382,7 @@ list_objects(Client, Bucket, QueryMap, HeadersMap, Options0)
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Returns some or all (up to 1,000) of the objects in a bucket with
 %% each request.
@@ -4369,6 +4431,7 @@ list_objects_v2(Client, Bucket, QueryMap, HeadersMap)
 list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "?list-type=2"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -4393,7 +4456,7 @@ list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options0)
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
 %% @doc Lists the parts that have been uploaded for a specific multipart
 %% upload.
@@ -4439,6 +4502,7 @@ list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap)
 list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -4459,7 +4523,7 @@ list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, Options0)
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
-    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -4524,6 +4588,7 @@ put_bucket_accelerate_configuration(Client, Bucket, Input) ->
 put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?accelerate"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -4541,7 +4606,7 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Sets the permissions on an existing bucket using access control lists
 %% (ACL).
@@ -4698,6 +4763,7 @@ put_bucket_acl(Client, Bucket, Input) ->
 put_bucket_acl(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?acl"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -4722,7 +4788,7 @@ put_bucket_acl(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Sets an analytics configuration for the bucket (specified by the
 %% analytics configuration ID).
@@ -4788,6 +4854,7 @@ put_bucket_analytics_configuration(Client, Bucket, Input) ->
 put_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?analytics"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -4806,7 +4873,7 @@ put_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
                      {<<"id">>, <<"Id">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Sets the `cors' configuration for your bucket.
 %%
@@ -4862,6 +4929,7 @@ put_bucket_cors(Client, Bucket, Input) ->
 put_bucket_cors(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?cors"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -4880,7 +4948,7 @@ put_bucket_cors(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc This action uses the `encryption' subresource to configure default
 %% encryption and Amazon S3 Bucket Key for an existing bucket.
@@ -4916,6 +4984,7 @@ put_bucket_encryption(Client, Bucket, Input) ->
 put_bucket_encryption(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?encryption"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -4934,7 +5003,7 @@ put_bucket_encryption(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Puts a S3 Intelligent-Tiering configuration to the specified bucket.
 %%
@@ -5000,6 +5069,7 @@ put_bucket_intelligent_tiering_configuration(Client, Bucket, Input) ->
 put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?intelligent-tiering"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -5016,7 +5086,7 @@ put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) -
                      {<<"id">>, <<"Id">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc This implementation of the `PUT' action adds an inventory
 %% configuration (identified by the inventory ID) to the bucket.
@@ -5086,6 +5156,7 @@ put_bucket_inventory_configuration(Client, Bucket, Input) ->
 put_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?inventory"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -5104,7 +5175,7 @@ put_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
                      {<<"id">>, <<"Id">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc For an updated version of this API, see
 %% PutBucketLifecycleConfiguration.
@@ -5166,6 +5237,7 @@ put_bucket_lifecycle(Client, Bucket, Input) ->
 put_bucket_lifecycle(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?lifecycle"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -5184,7 +5256,7 @@ put_bucket_lifecycle(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Creates a new lifecycle configuration for the bucket or replaces an
 %% existing lifecycle configuration.
@@ -5259,6 +5331,7 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input) ->
 put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?lifecycle"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -5276,7 +5349,7 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Set the logging parameters for a bucket and to specify permissions
 %% for who can view and modify the logging parameters.
@@ -5351,6 +5424,7 @@ put_bucket_logging(Client, Bucket, Input) ->
 put_bucket_logging(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?logging"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -5369,7 +5443,7 @@ put_bucket_logging(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Sets a metrics configuration (specified by the metrics configuration
 %% ID) for the bucket.
@@ -5412,6 +5486,7 @@ put_bucket_metrics_configuration(Client, Bucket, Input) ->
 put_bucket_metrics_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?metrics"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -5430,7 +5505,7 @@ put_bucket_metrics_configuration(Client, Bucket, Input0, Options0) ->
                      {<<"id">>, <<"Id">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc No longer used, see the PutBucketNotificationConfiguration operation.
 put_bucket_notification(Client, Bucket, Input) ->
@@ -5438,6 +5513,7 @@ put_bucket_notification(Client, Bucket, Input) ->
 put_bucket_notification(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?notification"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -5456,7 +5532,7 @@ put_bucket_notification(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Enables notifications of specified events for a bucket.
 %%
@@ -5522,6 +5598,7 @@ put_bucket_notification_configuration(Client, Bucket, Input) ->
 put_bucket_notification_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?notification"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -5540,7 +5617,7 @@ put_bucket_notification_configuration(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Creates or modifies `OwnershipControls' for an Amazon S3 bucket.
 %%
@@ -5563,6 +5640,7 @@ put_bucket_ownership_controls(Client, Bucket, Input) ->
 put_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?ownershipControls"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -5581,7 +5659,7 @@ put_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Applies an Amazon S3 bucket policy to an Amazon S3 bucket.
 %%
@@ -5613,6 +5691,7 @@ put_bucket_policy(Client, Bucket, Input) ->
 put_bucket_policy(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?policy"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -5632,7 +5711,7 @@ put_bucket_policy(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Creates a replication configuration or replaces an existing one.
 %%
@@ -5702,6 +5781,7 @@ put_bucket_replication(Client, Bucket, Input) ->
 put_bucket_replication(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?replication"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -5721,7 +5801,7 @@ put_bucket_replication(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Sets the request payment configuration for a bucket.
 %%
@@ -5742,6 +5822,7 @@ put_bucket_request_payment(Client, Bucket, Input) ->
 put_bucket_request_payment(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?requestPayment"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -5760,7 +5841,7 @@ put_bucket_request_payment(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Sets the tags for a bucket.
 %%
@@ -5820,6 +5901,7 @@ put_bucket_tagging(Client, Bucket, Input) ->
 put_bucket_tagging(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?tagging"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -5838,7 +5920,7 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Sets the versioning state of an existing bucket.
 %%
@@ -5883,6 +5965,7 @@ put_bucket_versioning(Client, Bucket, Input) ->
 put_bucket_versioning(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?versioning"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -5902,7 +5985,7 @@ put_bucket_versioning(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Sets the configuration of the website that is specified in the
 %% `website' subresource.
@@ -5978,6 +6061,7 @@ put_bucket_website(Client, Bucket, Input) ->
 put_bucket_website(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?website"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -5996,7 +6080,7 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Adds an object to a bucket.
 %%
@@ -6100,6 +6184,7 @@ put_object(Client, Bucket, Key, Input) ->
 put_object(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, true},
                {receive_body_as_binary, false}
@@ -6146,7 +6231,7 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -6326,6 +6411,7 @@ put_object_acl(Client, Bucket, Key, Input) ->
 put_object_acl(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?acl"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -6352,7 +6438,7 @@ put_object_acl(Client, Bucket, Key, Input0, Options0) ->
                      {<<"versionId">>, <<"VersionId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -6380,6 +6466,7 @@ put_object_legal_hold(Client, Bucket, Key, Input) ->
 put_object_legal_hold(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?legal-hold"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -6400,7 +6487,7 @@ put_object_legal_hold(Client, Bucket, Key, Input0, Options0) ->
                      {<<"versionId">>, <<"VersionId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -6436,6 +6523,7 @@ put_object_lock_configuration(Client, Bucket, Input) ->
 put_object_lock_configuration(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?object-lock"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -6456,7 +6544,7 @@ put_object_lock_configuration(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -6494,6 +6582,7 @@ put_object_retention(Client, Bucket, Key, Input) ->
 put_object_retention(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?retention"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -6515,7 +6604,7 @@ put_object_retention(Client, Bucket, Key, Input0, Options0) ->
                      {<<"versionId">>, <<"VersionId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -6589,6 +6678,7 @@ put_object_tagging(Client, Bucket, Key, Input) ->
 put_object_tagging(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?tagging"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -6609,7 +6699,7 @@ put_object_tagging(Client, Bucket, Key, Input0, Options0) ->
                      {<<"versionId">>, <<"VersionId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -6660,6 +6750,7 @@ put_public_access_block(Client, Bucket, Input) ->
 put_public_access_block(Client, Bucket, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "?publicAccessBlock"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -6678,7 +6769,7 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Restores an archived copy of an object back into Amazon S3
 %%
@@ -6905,6 +6996,7 @@ restore_object(Client, Bucket, Key, Input) ->
 restore_object(Client, Bucket, Key, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?restore"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -6924,7 +7016,7 @@ restore_object(Client, Bucket, Key, Input0, Options0) ->
                      {<<"versionId">>, <<"VersionId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -7043,6 +7135,7 @@ select_object_content(Client, Bucket, Key, Input) ->
 select_object_content(Client, Bucket, Key, Input0, Options0) ->
     Method = post,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?select&select-type=2"],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -7063,7 +7156,7 @@ select_object_content(Client, Bucket, Key, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc Uploads a part in a multipart upload.
 %%
@@ -7164,6 +7257,7 @@ upload_part(Client, Bucket, Key, Input) ->
 upload_part(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, true},
                {receive_body_as_binary, false}
@@ -7189,7 +7283,7 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
                      {<<"uploadId">>, <<"UploadId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -7328,6 +7422,7 @@ upload_part_copy(Client, Bucket, Key, Input) ->
 upload_part_copy(Client, Bucket, Key, Input0, Options0) ->
     Method = put,
     Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), ""],
+
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -7361,7 +7456,7 @@ upload_part_copy(Client, Bucket, Key, Input0, Options0) ->
                      {<<"uploadId">>, <<"UploadId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
@@ -7438,6 +7533,7 @@ write_get_object_response(Client, Input) ->
 write_get_object_response(Client, Input0, Options0) ->
     Method = post,
     Path = ["/WriteGetObjectResponse"],
+    Bucket = undefined,
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, true},
                {receive_body_as_binary, false}
@@ -7490,28 +7586,32 @@ write_get_object_response(Client, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %%====================================================================
 %% Internal functions
 %%====================================================================
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
-              list(), map() | undefined, list(), pos_integer() | undefined) ->
+              list(), map() | undefined, list(), pos_integer() | undefined, map()) ->
     {ok, {integer(), list()}} |
     {ok, Result, {integer(), list(), hackney:client()}} |
     {error, Error, {integer(), list(), hackney:client()}} |
     {error, term()} when
     Result :: map(),
     Error :: map().
-request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-  RequestFun = fun() -> do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) end,
+request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode, Bucket0) ->
+  Bucket = case Bucket0 of
+             undefined -> undefined;
+             _ -> iolist_to_binary(Bucket0)
+           end,
+  RequestFun = fun() -> do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode, Bucket) end,
   aws_request:request(RequestFun, Options).
 
-do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
+do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode, Bucket) ->
     Client1 = Client#{service => <<"s3">>},
-    Host = build_host(<<"s3">>, Client1),
-    URL0 = build_url(Host, Path, Client1),
+    Host = build_host(<<"s3">>, Client1, Bucket),
+    URL0 = build_url(Host, Path, Client1, Bucket),
     URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders = [ {<<"Host">>, Host}
                         , {<<"Content-Type">>, <<"text/xml">>}
@@ -7565,16 +7665,34 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
 handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
-build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
-    Endpoint;
-build_host(_EndpointPrefix, #{region := <<"local">>}) ->
-    <<"localhost">>;
-build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
 
-build_url(Host, Path0, Client) ->
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}, undefined) ->
+    Endpoint;
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}, Bucket) ->
+    <<Bucket/binary, ".", Endpoint/binary>>;
+build_host(_EndpointPrefix, #{region := <<"local">>}, undefined) ->
+    "localhost";
+build_host(_EndpointPrefix, #{region := <<"local">>}, Bucket) ->
+    <<Bucket/binary, ".", "localhost">>;
+build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}, undefined) ->
+    aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>);
+build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}, Bucket) ->
+    aws_util:binary_join([Bucket, EndpointPrefix, Region, Endpoint], <<".">>).
+
+build_url(Host0, Path0, Client, Bucket) ->
     Proto = maps:get(proto, Client),
-    Path = erlang:iolist_to_binary(Path0),
+    Path = case Bucket of
+              undefined ->
+                erlang:iolist_to_binary(Path0);
+              _ ->
+                erlang:iolist_to_binary(string:replace(erlang:iolist_to_binary(Path0), <<Bucket/binary, "/">>, <<"">>, all))
+            end,
+    Host = case Bucket of
+          undefined ->
+            erlang:iolist_to_binary(Host0);
+          _ ->
+            erlang:iolist_to_binary(string:replace(erlang:iolist_to_binary(Host0), <<Bucket/binary, ".">>, <<"">>, all))
+        end,
     Port = maps:get(port, Client),
     aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, Path], <<"">>).
 
