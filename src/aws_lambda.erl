@@ -2015,6 +2015,18 @@ update_event_source_mapping(Client, UUID, Input0, Options0) ->
 %% signed by a trusted publisher. For more information, see Configuring code
 %% signing.
 %%
+%% If the function's package type is `Image', you must specify the code
+%% package in `ImageUri' as the URI of a container image in the Amazon ECR
+%% registry.
+%%
+%% If the function's package type is `Zip', you must specify the deployment
+%% package as a .zip file archive. Enter the Amazon S3 bucket and key of the
+%% code .zip file location. You can also provide the function code inline
+%% using the `ZipFile' field.
+%%
+%% The code in the deployment package must be compatible with the target
+%% instruction set architecture of the function (`x86-64' or `arm64').
+%%
 %% The function's code is locked when you publish a version. You can't modify
 %% the code of a published version, only the unpublished version.
 %%

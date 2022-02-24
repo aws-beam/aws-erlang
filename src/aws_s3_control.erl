@@ -2847,6 +2847,7 @@ build_host(undefined, _EndpointPrefix, _Client) ->
 build_host(AccountId, EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
     aws_util:binary_join([AccountId, EndpointPrefix, Region, Endpoint],
                          <<".">>).
+
 build_url(Host, Path0, Client) ->
     Proto = maps:get(proto, Client),
     Path = erlang:iolist_to_binary(Path0),
