@@ -259,9 +259,13 @@ cancel_instance_refresh(Client, Input, Options)
 %% This step is a part of the procedure for adding a lifecycle hook to an
 %% Auto Scaling group:
 %%
-%% <ol> <li> (Optional) Create a Lambda function and a rule that allows
-%% Amazon EventBridge to invoke your Lambda function when Amazon EC2 Auto
-%% Scaling launches or terminates instances.
+%% <ol> <li> (Optional) Create a launch template or launch configuration with
+%% a user data script that runs while an instance is in a wait state due to a
+%% lifecycle hook.
+%%
+%% </li> <li> (Optional) Create a Lambda function and a rule that allows
+%% Amazon EventBridge to invoke your Lambda function when an instance is put
+%% into a wait state due to a lifecycle hook.
 %%
 %% </li> <li> (Optional) Create a notification target and an IAM role. The
 %% target can be either an Amazon SQS queue or an Amazon SNS topic. The role
@@ -272,7 +276,7 @@ cancel_instance_refresh(Client, Input, Options)
 %% when the instances launch or terminate.
 %%
 %% </li> <li> If you need more time, record the lifecycle action heartbeat to
-%% keep the instance in a pending state.
+%% keep the instance in a wait state.
 %%
 %% </li> <li> If you finish before the timeout period ends, send a callback
 %% by using the `CompleteLifecycleAction' API call.
@@ -905,16 +909,20 @@ get_predictive_scaling_forecast(Client, Input, Options)
 %% @doc Creates or updates a lifecycle hook for the specified Auto Scaling
 %% group.
 %%
-%% A lifecycle hook enables an Auto Scaling group to be aware of events in
-%% the Auto Scaling instance lifecycle, and then perform a custom action when
-%% the corresponding lifecycle event occurs.
+%% Lifecycle hooks let you create solutions that are aware of events in the
+%% Auto Scaling instance lifecycle, and then perform a custom action on
+%% instances when the corresponding lifecycle event occurs.
 %%
 %% This step is a part of the procedure for adding a lifecycle hook to an
 %% Auto Scaling group:
 %%
-%% <ol> <li> (Optional) Create a Lambda function and a rule that allows
-%% Amazon EventBridge to invoke your Lambda function when Amazon EC2 Auto
-%% Scaling launches or terminates instances.
+%% <ol> <li> (Optional) Create a launch template or launch configuration with
+%% a user data script that runs while an instance is in a wait state due to a
+%% lifecycle hook.
+%%
+%% </li> <li> (Optional) Create a Lambda function and a rule that allows
+%% Amazon EventBridge to invoke your Lambda function when an instance is put
+%% into a wait state due to a lifecycle hook.
 %%
 %% </li> <li> (Optional) Create a notification target and an IAM role. The
 %% target can be either an Amazon SQS queue or an Amazon SNS topic. The role
@@ -925,7 +933,7 @@ get_predictive_scaling_forecast(Client, Input, Options)
 %% when the instances launch or terminate.
 %%
 %% </li> <li> If you need more time, record the lifecycle action heartbeat to
-%% keep the instance in a pending state using the
+%% keep the instance in a wait state using the
 %% `RecordLifecycleActionHeartbeat' API call.
 %%
 %% </li> <li> If you finish before the timeout period ends, send a callback
@@ -1040,9 +1048,13 @@ put_warm_pool(Client, Input, Options)
 %% This step is a part of the procedure for adding a lifecycle hook to an
 %% Auto Scaling group:
 %%
-%% <ol> <li> (Optional) Create a Lambda function and a rule that allows
-%% Amazon EventBridge to invoke your Lambda function when Amazon EC2 Auto
-%% Scaling launches or terminates instances.
+%% <ol> <li> (Optional) Create a launch template or launch configuration with
+%% a user data script that runs while an instance is in a wait state due to a
+%% lifecycle hook.
+%%
+%% </li> <li> (Optional) Create a Lambda function and a rule that allows
+%% Amazon EventBridge to invoke your Lambda function when an instance is put
+%% into a wait state due to a lifecycle hook.
 %%
 %% </li> <li> (Optional) Create a notification target and an IAM role. The
 %% target can be either an Amazon SQS queue or an Amazon SNS topic. The role
@@ -1053,7 +1065,7 @@ put_warm_pool(Client, Input, Options)
 %% when the instances launch or terminate.
 %%
 %% </li> <li> If you need more time, record the lifecycle action heartbeat to
-%% keep the instance in a pending state.
+%% keep the instance in a wait state.
 %%
 %% </li> <li> If you finish before the timeout period ends, send a callback
 %% by using the `CompleteLifecycleAction' API call.

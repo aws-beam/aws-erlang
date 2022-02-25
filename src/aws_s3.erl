@@ -120,6 +120,9 @@
          get_object_acl/3,
          get_object_acl/5,
          get_object_acl/6,
+         get_object_attributes/4,
+         get_object_attributes/6,
+         get_object_attributes/7,
          get_object_legal_hold/3,
          get_object_legal_hold/5,
          get_object_legal_hold/6,
@@ -410,8 +413,15 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 
 
     HeadersMapping = [
+                       {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
+                       {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
+                       {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
+                       {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
-                       {<<"x-amz-request-payer">>, <<"RequestPayer">>}
+                       {<<"x-amz-request-payer">>, <<"RequestPayer">>},
+                       {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
+                       {<<"x-amz-server-side-encryption-customer-key">>, <<"SSECustomerKey">>},
+                       {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
@@ -450,8 +460,8 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% You can store individual objects of up to 5 TB in Amazon S3. You create a
 %% copy of your object up to 5 GB in size in a single atomic action using
 %% this API. However, to copy an object greater than 5 GB, you must use the
-%% multipart upload Upload Part - Copy API. For more information, see Copy
-%% Object Using the REST Multipart Upload API.
+%% multipart upload Upload Part - Copy (UploadPartCopy) API. For more
+%% information, see Copy Object Using the REST Multipart Upload API.
 %%
 %% All copy requests must be authenticated. Additionally, you must have read
 %% access to the source object and write access to the destination bucket.
@@ -500,7 +510,7 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% Guide. For a complete list of Amazon S3-specific condition keys, see
 %% Actions, Resources, and Condition Keys for Amazon S3.
 %%
-%% `x-amz-copy-source-if' Headers
+%% x-amz-copy-source-if Headers
 %%
 %% To only copy an object under certain conditions, such as whether the
 %% `Etag' matches or whether the object was modified before or after a
@@ -575,6 +585,13 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% Ownership, all objects written to the bucket by any account will be owned
 %% by the bucket owner.
 %%
+%% Checksums
+%%
+%% When copying an object, if it has a checksum, that checksum will be copied
+%% to the new object by default. When you copy the object over, you may
+%% optionally specify a different checksum algorithm to use with the
+%% `x-amz-checksum-algorithm' header.
+%%
 %% Storage Class Options
 %%
 %% You can use the `CopyObject' action to change the storage class of an
@@ -625,6 +642,7 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
                        {<<"x-amz-copy-source-if-modified-since">>, <<"CopySourceIfModifiedSince">>},
                        {<<"Content-Language">>, <<"ContentLanguage">>},
                        {<<"Expires">>, <<"Expires">>},
+                       {<<"x-amz-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"x-amz-copy-source-server-side-encryption-customer-key-MD5">>, <<"CopySourceSSECustomerKeyMD5">>},
                        {<<"x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
                        {<<"x-amz-copy-source-server-side-encryption-customer-key">>, <<"CopySourceSSECustomerKey">>},
@@ -955,11 +973,11 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %% KMS) – If you want Amazon Web Services to manage the keys used to encrypt
 %% data, specify the following headers in the request.
 %%
-%% <ul> <li> x-amz-server-side-encryption
+%% <ul> <li> `x-amz-server-side-encryption'
 %%
-%% </li> <li> x-amz-server-side-encryption-aws-kms-key-id
+%% </li> <li> `x-amz-server-side-encryption-aws-kms-key-id'
 %%
-%% </li> <li> x-amz-server-side-encryption-context
+%% </li> <li> `x-amz-server-side-encryption-context'
 %%
 %% </li> </ul> If you specify `x-amz-server-side-encryption:aws:kms', but
 %% don't provide `x-amz-server-side-encryption-aws-kms-key-id', Amazon S3
@@ -976,11 +994,11 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %% your own encryption keys, provide all the following headers in the
 %% request.
 %%
-%% <ul> <li> x-amz-server-side-encryption-customer-algorithm
+%% <ul> <li> `x-amz-server-side-encryption-customer-algorithm'
 %%
-%% </li> <li> x-amz-server-side-encryption-customer-key
+%% </li> <li> `x-amz-server-side-encryption-customer-key'
 %%
-%% </li> <li> x-amz-server-side-encryption-customer-key-MD5
+%% </li> <li> `x-amz-server-side-encryption-customer-key-MD5'
 %%
 %% </li> </ul> For more information about server-side encryption with KMS
 %% keys (SSE-KMS), see Protecting Data Using Server-Side Encryption with KMS
@@ -1007,15 +1025,15 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %% List (ACL) Overview. In the header, you specify a list of grantees who get
 %% the specific permission. To grant permissions explicitly, use:
 %%
-%% <ul> <li> x-amz-grant-read
+%% <ul> <li> `x-amz-grant-read'
 %%
-%% </li> <li> x-amz-grant-write
+%% </li> <li> `x-amz-grant-write'
 %%
-%% </li> <li> x-amz-grant-read-acp
+%% </li> <li> `x-amz-grant-read-acp'
 %%
-%% </li> <li> x-amz-grant-write-acp
+%% </li> <li> `x-amz-grant-write-acp'
 %%
-%% </li> <li> x-amz-grant-full-control
+%% </li> <li> `x-amz-grant-full-control'
 %%
 %% </li> </ul> You specify each grantee as a type=value pair, where the type
 %% is one of the following:
@@ -1086,6 +1104,7 @@ create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
                        {<<"x-amz-acl">>, <<"ACL">>},
                        {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
                        {<<"Cache-Control">>, <<"CacheControl">>},
+                       {<<"x-amz-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"Content-Disposition">>, <<"ContentDisposition">>},
                        {<<"Content-Encoding">>, <<"ContentEncoding">>},
                        {<<"Content-Language">>, <<"ContentLanguage">>},
@@ -1127,6 +1146,7 @@ create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
             {<<"x-amz-abort-date">>, <<"AbortDate">>},
             {<<"x-amz-abort-rule-id">>, <<"AbortRuleId">>},
             {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
+            {<<"x-amz-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
             {<<"x-amz-request-charged">>, <<"RequestCharged">>},
             {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
             {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
@@ -1948,6 +1968,7 @@ delete_objects(Client, Bucket, Input0, Options0) ->
 
     HeadersMapping = [
                        {<<"x-amz-bypass-governance-retention">>, <<"BypassGovernanceRetention">>},
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
                        {<<"x-amz-mfa">>, <<"MFA">>},
                        {<<"x-amz-request-payer">>, <<"RequestPayer">>}
@@ -2178,13 +2199,14 @@ get_bucket_analytics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
-%% @doc Returns the cors configuration information set for the bucket.
+%% @doc Returns the Cross-Origin Resource Sharing (CORS) configuration
+%% information set for the bucket.
 %%
 %% To use this operation, you must have permission to perform the
-%% s3:GetBucketCORS action. By default, the bucket owner has this permission
-%% and can grant it to others.
+%% `s3:GetBucketCORS' action. By default, the bucket owner has this
+%% permission and can grant it to others.
 %%
-%% For more information about cors, see Enabling Cross-Origin Resource
+%% For more information about CORS, see Enabling Cross-Origin Resource
 %% Sharing.
 %%
 %% The following operations are related to `GetBucketCors':
@@ -2970,7 +2992,7 @@ get_bucket_request_payment(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% `GetBucketTagging' has the following special error:
 %%
-%% <ul> <li> Error code: `NoSuchTagSetError'
+%% <ul> <li> Error code: `NoSuchTagSet'
 %%
 %% <ul> <li> Description: There is no tag set associated with the bucket.
 %%
@@ -3121,9 +3143,8 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% `/examplebucket/photos/2006/February/sample.jpg'. For more information
 %% about request types, see HTTP Host Header Bucket Specification.
 %%
-%% To distribute large files to many people, you can save bandwidth costs by
-%% using BitTorrent. For more information, see Amazon S3 Torrent. For more
-%% information about returning the ACL of an object, see GetObjectAcl.
+%% For more information about returning the ACL of an object, see
+%% GetObjectAcl.
 %%
 %% If the object you are retrieving is stored in the S3 Glacier or S3 Glacier
 %% Deep Archive storage class, or S3 Intelligent-Tiering Archive or S3
@@ -3188,8 +3209,8 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% Overriding Response Header Values
 %%
 %% There are times when you want to override certain response header values
-%% in a GET response. For example, you might override the Content-Disposition
-%% response header value in your GET request.
+%% in a GET response. For example, you might override the
+%% `Content-Disposition' response header value in your GET request.
 %%
 %% You can override values for a set of response headers using the following
 %% query parameters. These response header values are sent only on a
@@ -3257,6 +3278,7 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 
     Headers0 =
       [
+        {<<"x-amz-checksum-mode">>, maps:get(<<"x-amz-checksum-mode">>, HeadersMap, undefined)},
         {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)},
         {<<"If-Match">>, maps:get(<<"If-Match">>, HeadersMap, undefined)},
         {<<"If-Modified-Since">>, maps:get(<<"If-Modified-Since">>, HeadersMap, undefined)},
@@ -3287,36 +3309,40 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
-            {<<"accept-ranges">>, <<"AcceptRanges">>},
+            {<<"ETag">>, <<"ETag">>},
+            {<<"Content-Language">>, <<"ContentLanguage">>},
+            {<<"Expires">>, <<"Expires">>},
+            {<<"x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
+            {<<"x-amz-expiration">>, <<"Expiration">>},
             {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
-            {<<"Cache-Control">>, <<"CacheControl">>},
+            {<<"x-amz-restore">>, <<"Restore">>},
+            {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
+            {<<"x-amz-object-lock-retain-until-date">>, <<"ObjectLockRetainUntilDate">>},
+            {<<"Content-Length">>, <<"ContentLength">>},
             {<<"Content-Disposition">>, <<"ContentDisposition">>},
             {<<"Content-Encoding">>, <<"ContentEncoding">>},
-            {<<"Content-Language">>, <<"ContentLanguage">>},
-            {<<"Content-Length">>, <<"ContentLength">>},
-            {<<"Content-Range">>, <<"ContentRange">>},
+            {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},
+            {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
+            {<<"accept-ranges">>, <<"AcceptRanges">>},
+            {<<"x-amz-storage-class">>, <<"StorageClass">>},
+            {<<"x-amz-version-id">>, <<"VersionId">>},
             {<<"Content-Type">>, <<"ContentType">>},
+            {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
+            {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
             {<<"x-amz-delete-marker">>, <<"DeleteMarker">>},
-            {<<"ETag">>, <<"ETag">>},
-            {<<"x-amz-expiration">>, <<"Expiration">>},
-            {<<"Expires">>, <<"Expires">>},
+            {<<"x-amz-server-side-encryption-aws-kms-key-id">>, <<"SSEKMSKeyId">>},
+            {<<"Cache-Control">>, <<"CacheControl">>},
+            {<<"x-amz-mp-parts-count">>, <<"PartsCount">>},
+            {<<"x-amz-request-charged">>, <<"RequestCharged">>},
+            {<<"x-amz-website-redirect-location">>, <<"WebsiteRedirectLocation">>},
+            {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
+            {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
             {<<"Last-Modified">>, <<"LastModified">>},
             {<<"x-amz-missing-meta">>, <<"MissingMeta">>},
-            {<<"x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
-            {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
-            {<<"x-amz-object-lock-retain-until-date">>, <<"ObjectLockRetainUntilDate">>},
-            {<<"x-amz-mp-parts-count">>, <<"PartsCount">>},
+            {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
             {<<"x-amz-replication-status">>, <<"ReplicationStatus">>},
-            {<<"x-amz-request-charged">>, <<"RequestCharged">>},
-            {<<"x-amz-restore">>, <<"Restore">>},
-            {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
-            {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
-            {<<"x-amz-server-side-encryption-aws-kms-key-id">>, <<"SSEKMSKeyId">>},
-            {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},
-            {<<"x-amz-storage-class">>, <<"StorageClass">>},
             {<<"x-amz-tagging-count">>, <<"TagCount">>},
-            {<<"x-amz-version-id">>, <<"VersionId">>},
-            {<<"x-amz-website-redirect-location">>, <<"WebsiteRedirectLocation">>}
+            {<<"Content-Range">>, <<"ContentRange">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
                       case lists:keyfind(Name_, 1, ResponseHeaders) of
@@ -3332,7 +3358,9 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns the access control list (ACL) of an object.
 %%
-%% To use this operation, you must have `READ_ACP' access to the object.
+%% To use this operation, you must have `s3:GetObjectAcl' permissions or
+%% `READ_ACP' access to the object. For more information, see Mapping of ACL
+%% permissions and access policy permissions in the Amazon S3 User Guide
 %%
 %% This action is not supported by Amazon S3 on Outposts.
 %%
@@ -3351,6 +3379,8 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% The following operations are related to `GetObjectAcl':
 %%
 %% <ul> <li> GetObject
+%%
+%% </li> <li> GetObjectAttributes
 %%
 %% </li> <li> DeleteObject
 %%
@@ -3405,11 +3435,167 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
         Result
     end.
 
-%% @doc Gets an object's current Legal Hold status.
+%% @doc Retrieves all the metadata from an object without returning the
+%% object itself.
+%%
+%% This action is useful if you're interested only in an object's metadata.
+%% To use `GetObjectAttributes', you must have READ access to the object.
+%%
+%% `GetObjectAttributes' combines the functionality of `GetObjectAcl',
+%% `GetObjectLegalHold', `GetObjectLockConfiguration', `GetObjectRetention',
+%% `GetObjectTagging', `HeadObject', and `ListParts'. All of the data
+%% returned with each of those individual calls can be returned with a single
+%% call to `GetObjectAttributes'.
+%%
+%% If you encrypt an object by using server-side encryption with
+%% customer-provided encryption keys (SSE-C) when you store the object in
+%% Amazon S3, then when you retrieve the metadata from the object, you must
+%% use the following headers:
+%%
+%% <ul> <li> `x-amz-server-side-encryption-customer-algorithm'
+%%
+%% </li> <li> `x-amz-server-side-encryption-customer-key'
+%%
+%% </li> <li> `x-amz-server-side-encryption-customer-key-MD5'
+%%
+%% </li> </ul> For more information about SSE-C, see Server-Side Encryption
+%% (Using Customer-Provided Encryption Keys) in the Amazon S3 User Guide.
+%%
+%% Encryption request headers, such as `x-amz-server-side-encryption', should
+%% not be sent for GET requests if your object uses server-side encryption
+%% with Amazon Web Services KMS keys stored in Amazon Web Services Key
+%% Management Service (SSE-KMS) or server-side encryption with Amazon S3
+%% managed encryption keys (SSE-S3). If your object does use these types of
+%% keys, you'll get an HTTP `400 Bad Request' error.
+%%
+%% The last modified property in this case is the creation date of the
+%% object.
+%%
+%% Consider the following when using request headers:
+%%
+%% <ul> <li> If both of the `If-Match' and `If-Unmodified-Since' headers are
+%% present in the request as follows, then Amazon S3 returns the HTTP status
+%% code `200 OK' and the data requested:
+%%
+%% <ul> <li> `If-Match' condition evaluates to `true'.
+%%
+%% </li> <li> `If-Unmodified-Since' condition evaluates to `false'.
+%%
+%% </li> </ul> </li> <li> If both of the `If-None-Match' and
+%% `If-Modified-Since' headers are present in the request as follows, then
+%% Amazon S3 returns the HTTP status code `304 Not Modified':
+%%
+%% <ul> <li> `If-None-Match' condition evaluates to `false'.
+%%
+%% </li> <li> `If-Modified-Since' condition evaluates to `true'.
+%%
+%% </li> </ul> </li> </ul> For more information about conditional requests,
+%% see RFC 7232.
+%%
+%% Permissions
+%%
+%% The permissions that you need to use this operation depend on whether the
+%% bucket is versioned. If the bucket is versioned, you need both the
+%% `s3:GetObjectVersion' and `s3:GetObjectVersionAttributes' permissions for
+%% this operation. If the bucket is not versioned, you need the
+%% `s3:GetObject' and `s3:GetObjectAttributes' permissions. For more
+%% information, see Specifying Permissions in a Policy in the Amazon S3 User
+%% Guide. If the object that you request does not exist, the error Amazon S3
+%% returns depends on whether you also have the `s3:ListBucket' permission.
+%%
+%% <ul> <li> If you have the `s3:ListBucket' permission on the bucket, Amazon
+%% S3 returns an HTTP status code `404 Not Found' ("no such key") error.
+%%
+%% </li> <li> If you don't have the `s3:ListBucket' permission, Amazon S3
+%% returns an HTTP status code `403 Forbidden' ("access denied") error.
+%%
+%% </li> </ul> The following actions are related to `GetObjectAttributes':
+%%
+%% <ul> <li> GetObject
+%%
+%% </li> <li> GetObjectAcl
+%%
+%% </li> <li> GetObjectLegalHold
+%%
+%% </li> <li> GetObjectLockConfiguration
+%%
+%% </li> <li> GetObjectRetention
+%%
+%% </li> <li> GetObjectTagging
+%%
+%% </li> <li> HeadObject
+%%
+%% </li> <li> ListParts
+%%
+%% </li> </ul>
+get_object_attributes(Client, Bucket, Key, ObjectAttributes)
+  when is_map(Client) ->
+    get_object_attributes(Client, Bucket, Key, ObjectAttributes, #{}, #{}).
+
+get_object_attributes(Client, Bucket, Key, ObjectAttributes, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_object_attributes(Client, Bucket, Key, ObjectAttributes, QueryMap, HeadersMap, []).
+
+get_object_attributes(Client, Bucket, Key, ObjectAttributes, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/", aws_util:encode_uri(Bucket), "/", aws_util:encode_multi_segment_uri(Key), "?attributes"],
+
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers0 =
+      [
+        {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)},
+        {<<"x-amz-max-parts">>, maps:get(<<"x-amz-max-parts">>, HeadersMap, undefined)},
+        {<<"x-amz-object-attributes">>, ObjectAttributes},
+        {<<"x-amz-part-number-marker">>, maps:get(<<"x-amz-part-number-marker">>, HeadersMap, undefined)},
+        {<<"x-amz-request-payer">>, maps:get(<<"x-amz-request-payer">>, HeadersMap, undefined)},
+        {<<"x-amz-server-side-encryption-customer-algorithm">>, maps:get(<<"x-amz-server-side-encryption-customer-algorithm">>, HeadersMap, undefined)},
+        {<<"x-amz-server-side-encryption-customer-key">>, maps:get(<<"x-amz-server-side-encryption-customer-key">>, HeadersMap, undefined)},
+        {<<"x-amz-server-side-encryption-customer-key-MD5">>, maps:get(<<"x-amz-server-side-encryption-customer-key-MD5">>, HeadersMap, undefined)}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query0_ =
+      [
+        {<<"versionId">>, maps:get(<<"versionId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"x-amz-delete-marker">>, <<"DeleteMarker">>},
+            {<<"Last-Modified">>, <<"LastModified">>},
+            {<<"x-amz-request-charged">>, <<"RequestCharged">>},
+            {<<"x-amz-version-id">>, <<"VersionId">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Gets an object's current legal hold status.
 %%
 %% For more information, see Locking Objects.
 %%
 %% This action is not supported by Amazon S3 on Outposts.
+%%
+%% The following action is related to `GetObjectLegalHold':
+%%
+%% <ul> <li> GetObjectAttributes
+%%
+%% </li> </ul>
 get_object_legal_hold(Client, Bucket, Key)
   when is_map(Client) ->
     get_object_legal_hold(Client, Bucket, Key, #{}, #{}).
@@ -3447,6 +3633,12 @@ get_object_legal_hold(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% The rule specified in the Object Lock configuration will be applied by
 %% default to every new object placed in the specified bucket. For more
 %% information, see Locking Objects.
+%%
+%% The following action is related to `GetObjectLockConfiguration':
+%%
+%% <ul> <li> GetObjectAttributes
+%%
+%% </li> </ul>
 get_object_lock_configuration(Client, Bucket)
   when is_map(Client) ->
     get_object_lock_configuration(Client, Bucket, #{}, #{}).
@@ -3479,6 +3671,12 @@ get_object_lock_configuration(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% For more information, see Locking Objects.
 %%
 %% This action is not supported by Amazon S3 on Outposts.
+%%
+%% The following action is related to `GetObjectRetention':
+%%
+%% <ul> <li> GetObjectAttributes
+%%
+%% </li> </ul>
 get_object_retention(Client, Bucket, Key)
   when is_map(Client) ->
     get_object_retention(Client, Bucket, Key, #{}, #{}).
@@ -3529,11 +3727,13 @@ get_object_retention(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% For information about the Amazon S3 object tagging feature, see Object
 %% Tagging.
 %%
-%% The following action is related to `GetObjectTagging':
+%% The following actions are related to `GetObjectTagging':
 %%
-%% <ul> <li> PutObjectTagging
+%% <ul> <li> DeleteObjectTagging
 %%
-%% </li> <li> DeleteObjectTagging
+%% </li> <li> GetObjectAttributes
+%%
+%% </li> <li> PutObjectTagging
 %%
 %% </li> </ul>
 get_object_tagging(Client, Bucket, Key)
@@ -3824,9 +4024,11 @@ head_bucket(Client, Bucket, Input0, Options0) ->
 %% </li> <li> If you don’t have the `s3:ListBucket' permission, Amazon S3
 %% returns an HTTP status code 403 ("access denied") error.
 %%
-%% </li> </ul> The following action is related to `HeadObject':
+%% </li> </ul> The following actions are related to `HeadObject':
 %%
 %% <ul> <li> GetObject
+%%
+%% </li> <li> GetObjectAttributes
 %%
 %% </li> </ul>
 head_object(Client, Bucket, Key, Input) ->
@@ -3842,6 +4044,7 @@ head_object(Client, Bucket, Key, Input0, Options0) ->
 
 
     HeadersMapping = [
+                       {<<"x-amz-checksum-mode">>, <<"ChecksumMode">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
                        {<<"If-Match">>, <<"IfMatch">>},
                        {<<"If-Modified-Since">>, <<"IfModifiedSince">>},
@@ -3868,35 +4071,39 @@ head_object(Client, Bucket, Key, Input0, Options0) ->
         Body0 = #{},
         ResponseHeadersParams =
           [
-            {<<"accept-ranges">>, <<"AcceptRanges">>},
-            {<<"x-amz-archive-status">>, <<"ArchiveStatus">>},
+            {<<"ETag">>, <<"ETag">>},
+            {<<"Content-Language">>, <<"ContentLanguage">>},
+            {<<"Expires">>, <<"Expires">>},
+            {<<"x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
+            {<<"x-amz-expiration">>, <<"Expiration">>},
             {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
-            {<<"Cache-Control">>, <<"CacheControl">>},
+            {<<"x-amz-restore">>, <<"Restore">>},
+            {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
+            {<<"x-amz-object-lock-retain-until-date">>, <<"ObjectLockRetainUntilDate">>},
+            {<<"Content-Length">>, <<"ContentLength">>},
             {<<"Content-Disposition">>, <<"ContentDisposition">>},
             {<<"Content-Encoding">>, <<"ContentEncoding">>},
-            {<<"Content-Language">>, <<"ContentLanguage">>},
-            {<<"Content-Length">>, <<"ContentLength">>},
-            {<<"Content-Type">>, <<"ContentType">>},
-            {<<"x-amz-delete-marker">>, <<"DeleteMarker">>},
-            {<<"ETag">>, <<"ETag">>},
-            {<<"x-amz-expiration">>, <<"Expiration">>},
-            {<<"Expires">>, <<"Expires">>},
-            {<<"Last-Modified">>, <<"LastModified">>},
-            {<<"x-amz-missing-meta">>, <<"MissingMeta">>},
-            {<<"x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
-            {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
-            {<<"x-amz-object-lock-retain-until-date">>, <<"ObjectLockRetainUntilDate">>},
-            {<<"x-amz-mp-parts-count">>, <<"PartsCount">>},
-            {<<"x-amz-replication-status">>, <<"ReplicationStatus">>},
-            {<<"x-amz-request-charged">>, <<"RequestCharged">>},
-            {<<"x-amz-restore">>, <<"Restore">>},
-            {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
-            {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
-            {<<"x-amz-server-side-encryption-aws-kms-key-id">>, <<"SSEKMSKeyId">>},
             {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},
+            {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
+            {<<"accept-ranges">>, <<"AcceptRanges">>},
             {<<"x-amz-storage-class">>, <<"StorageClass">>},
             {<<"x-amz-version-id">>, <<"VersionId">>},
-            {<<"x-amz-website-redirect-location">>, <<"WebsiteRedirectLocation">>}
+            {<<"Content-Type">>, <<"ContentType">>},
+            {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
+            {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
+            {<<"x-amz-delete-marker">>, <<"DeleteMarker">>},
+            {<<"x-amz-server-side-encryption-aws-kms-key-id">>, <<"SSEKMSKeyId">>},
+            {<<"Cache-Control">>, <<"CacheControl">>},
+            {<<"x-amz-mp-parts-count">>, <<"PartsCount">>},
+            {<<"x-amz-request-charged">>, <<"RequestCharged">>},
+            {<<"x-amz-website-redirect-location">>, <<"WebsiteRedirectLocation">>},
+            {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
+            {<<"x-amz-archive-status">>, <<"ArchiveStatus">>},
+            {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
+            {<<"Last-Modified">>, <<"LastModified">>},
+            {<<"x-amz-missing-meta">>, <<"MissingMeta">>},
+            {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
+            {<<"x-amz-replication-status">>, <<"ReplicationStatus">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
                       case lists:keyfind(Name_, 1, ResponseHeaders) of
@@ -4163,6 +4370,8 @@ list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap, Options
 
 %% @doc Returns a list of all buckets owned by the authenticated sender of
 %% the request.
+%%
+%% To use this operation, you must have the `s3:ListAllMyBuckets' permission.
 list_buckets(Client)
   when is_map(Client) ->
     list_buckets(Client, #{}, #{}).
@@ -4472,6 +4681,9 @@ list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% include the part-number-marker query string parameter and set its value to
 %% the `NextPartNumberMarker' field value from the previous response.
 %%
+%% If the upload was created using a checksum algorithm, you will need to
+%% have permission to the `kms:Decrypt' action for the request to succeed.
+%%
 %% For more information on multipart uploads, see Uploading Objects Using
 %% Multipart Upload.
 %%
@@ -4487,6 +4699,8 @@ list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% </li> <li> CompleteMultipartUpload
 %%
 %% </li> <li> AbortMultipartUpload
+%%
+%% </li> <li> GetObjectAttributes
 %%
 %% </li> <li> ListMultipartUploads
 %%
@@ -4511,7 +4725,10 @@ list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, Options0)
     Headers0 =
       [
         {<<"x-amz-expected-bucket-owner">>, maps:get(<<"x-amz-expected-bucket-owner">>, HeadersMap, undefined)},
-        {<<"x-amz-request-payer">>, maps:get(<<"x-amz-request-payer">>, HeadersMap, undefined)}
+        {<<"x-amz-request-payer">>, maps:get(<<"x-amz-request-payer">>, HeadersMap, undefined)},
+        {<<"x-amz-server-side-encryption-customer-algorithm">>, maps:get(<<"x-amz-server-side-encryption-customer-algorithm">>, HeadersMap, undefined)},
+        {<<"x-amz-server-side-encryption-customer-key">>, maps:get(<<"x-amz-server-side-encryption-customer-key">>, HeadersMap, undefined)},
+        {<<"x-amz-server-side-encryption-customer-key-MD5">>, maps:get(<<"x-amz-server-side-encryption-customer-key-MD5">>, HeadersMap, undefined)}
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
@@ -4549,11 +4766,11 @@ list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, Options0)
 %% to perform faster data transfers to Amazon S3.
 %%
 %% To use this operation, you must have permission to perform the
-%% s3:PutAccelerateConfiguration action. The bucket owner has this permission
-%% by default. The bucket owner can grant this permission to others. For more
-%% information about permissions, see Permissions Related to Bucket
-%% Subresource Operations and Managing Access Permissions to Your Amazon S3
-%% Resources.
+%% `s3:PutAccelerateConfiguration' action. The bucket owner has this
+%% permission by default. The bucket owner can grant this permission to
+%% others. For more information about permissions, see Permissions Related to
+%% Bucket Subresource Operations and Managing Access Permissions to Your
+%% Amazon S3 Resources.
 %%
 %% The Transfer Acceleration state of a bucket can be set to one of the
 %% following two values:
@@ -4596,6 +4813,7 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
 
 
     HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
@@ -4772,6 +4990,7 @@ put_bucket_acl(Client, Bucket, Input0, Options0) ->
 
     HeadersMapping = [
                        {<<"x-amz-acl">>, <<"ACL">>},
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
                        {<<"x-amz-grant-full-control">>, <<"GrantFullControl">>},
@@ -4937,6 +5156,7 @@ put_bucket_cors(Client, Bucket, Input0, Options0) ->
 
 
     HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
                      ],
@@ -4956,10 +5176,12 @@ put_bucket_cors(Client, Bucket, Input0, Options0) ->
 %% Default encryption for a bucket can use server-side encryption with Amazon
 %% S3-managed keys (SSE-S3) or customer managed keys (SSE-KMS). If you
 %% specify default encryption using SSE-KMS, you can also configure Amazon S3
-%% Bucket Key. For information about default encryption, see Amazon S3
-%% default bucket encryption in the Amazon S3 User Guide. For more
-%% information about S3 Bucket Keys, see Amazon S3 Bucket Keys in the Amazon
-%% S3 User Guide.
+%% Bucket Key. When the default encryption is SSE-KMS, if you upload an
+%% object to the bucket and do not specify the KMS key to use for encryption,
+%% Amazon S3 uses the default Amazon Web Services managed KMS key for your
+%% account. For information about default encryption, see Amazon S3 default
+%% bucket encryption in the Amazon S3 User Guide. For more information about
+%% S3 Bucket Keys, see Amazon S3 Bucket Keys in the Amazon S3 User Guide.
 %%
 %% This action requires Amazon Web Services Signature Version 4. For more
 %% information, see Authenticating Requests (Amazon Web Services Signature
@@ -4992,6 +5214,7 @@ put_bucket_encryption(Client, Bucket, Input0, Options0) ->
 
 
     HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
                      ],
@@ -5245,6 +5468,7 @@ put_bucket_lifecycle(Client, Bucket, Input0, Options0) ->
 
 
     HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
                      ],
@@ -5261,8 +5485,10 @@ put_bucket_lifecycle(Client, Bucket, Input0, Options0) ->
 %% @doc Creates a new lifecycle configuration for the bucket or replaces an
 %% existing lifecycle configuration.
 %%
-%% For information about lifecycle configuration, see Managing your storage
-%% lifecycle.
+%% Keep in mind that this will overwrite an existing lifecycle configuration,
+%% so if you want to retain any configuration details, they must be included
+%% in the new lifecycle configuration. For information about lifecycle
+%% configuration, see Managing your storage lifecycle.
 %%
 %% Bucket lifecycle configuration now supports specifying a lifecycle rule
 %% using an object key name prefix, one or more object tags, or a combination
@@ -5301,18 +5527,18 @@ put_bucket_lifecycle(Client, Bucket, Input0, Options0) ->
 %% Web Services account that created it) can access the resource. The
 %% resource owner can optionally grant access permissions to others by
 %% writing an access policy. For this operation, a user must get the
-%% s3:PutLifecycleConfiguration permission.
+%% `s3:PutLifecycleConfiguration' permission.
 %%
 %% You can also explicitly deny permissions. Explicit deny also supersedes
 %% any other permissions. If you want to block users or accounts from
 %% removing or deleting objects from your bucket, you must deny them
 %% permissions for the following actions:
 %%
-%% <ul> <li> s3:DeleteObject
+%% <ul> <li> `s3:DeleteObject'
 %%
-%% </li> <li> s3:DeleteObjectVersion
+%% </li> <li> `s3:DeleteObjectVersion'
 %%
-%% </li> <li> s3:PutLifecycleConfiguration
+%% </li> <li> `s3:PutLifecycleConfiguration'
 %%
 %% </li> </ul> For more information about permissions, see Managing Access
 %% Permissions to Your Amazon S3 Resources.
@@ -5339,6 +5565,7 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 
 
     HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
@@ -5432,6 +5659,7 @@ put_bucket_logging(Client, Bucket, Input0, Options0) ->
 
 
     HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
                      ],
@@ -5521,6 +5749,7 @@ put_bucket_notification(Client, Bucket, Input0, Options0) ->
 
 
     HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
                      ],
@@ -5567,6 +5796,10 @@ put_bucket_notification(Client, Bucket, Input0, Options0) ->
 %%
 %% You can disable notifications by adding the empty
 %% NotificationConfiguration element.
+%%
+%% For more information about the number of event notification configurations
+%% that you can create per bucket, see Amazon S3 service quotas in Amazon Web
+%% Services General Reference.
 %%
 %% By default, only the bucket owner can configure notifications on a bucket.
 %% However, bucket owners can use a bucket policy to grant permission to
@@ -5699,6 +5932,7 @@ put_bucket_policy(Client, Bucket, Input0, Options0) ->
 
 
     HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"x-amz-confirm-remove-self-bucket-access">>, <<"ConfirmRemoveSelfBucketAccess">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -5789,6 +6023,7 @@ put_bucket_replication(Client, Bucket, Input0, Options0) ->
 
 
     HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
                        {<<"x-amz-bucket-object-lock-token">>, <<"Token">>}
@@ -5830,6 +6065,7 @@ put_bucket_request_payment(Client, Bucket, Input0, Options0) ->
 
 
     HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
                      ],
@@ -5909,6 +6145,7 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 
 
     HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
                      ],
@@ -5924,8 +6161,6 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 
 %% @doc Sets the versioning state of an existing bucket.
 %%
-%% To set the versioning state, you must be the bucket owner.
-%%
 %% You can set the versioning state with one of the following values:
 %%
 %% Enabled—Enables versioning for the objects in the bucket. All objects
@@ -5938,10 +6173,11 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %% versioning state; a GetBucketVersioning request does not return a
 %% versioning state value.
 %%
-%% If the bucket owner enables MFA Delete in the bucket versioning
-%% configuration, the bucket owner must include the `x-amz-mfa request'
-%% header and the `Status' and the `MfaDelete' request elements in a request
-%% to set the versioning state of the bucket.
+%% In order to enable MFA Delete, you must be the bucket owner. If you are
+%% the bucket owner and want to enable MFA Delete in the bucket versioning
+%% configuration, you must include the `x-amz-mfa request' header and the
+%% `Status' and the `MfaDelete' request elements in a request to set the
+%% versioning state of the bucket.
 %%
 %% If you have an object expiration lifecycle policy in your non-versioned
 %% bucket and you want to maintain the same permanent delete behavior when
@@ -5973,6 +6209,7 @@ put_bucket_versioning(Client, Bucket, Input0, Options0) ->
 
 
     HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
                        {<<"x-amz-mfa">>, <<"MFA">>}
@@ -6069,6 +6306,7 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
 
 
     HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
                      ],
@@ -6192,34 +6430,39 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
 
 
     HeadersMapping = [
-                       {<<"x-amz-acl">>, <<"ACL">>},
+                       {<<"Content-Language">>, <<"ContentLanguage">>},
+                       {<<"Expires">>, <<"Expires">>},
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
+                       {<<"x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
                        {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
-                       {<<"Cache-Control">>, <<"CacheControl">>},
+                       {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
+                       {<<"x-amz-object-lock-retain-until-date">>, <<"ObjectLockRetainUntilDate">>},
+                       {<<"Content-Length">>, <<"ContentLength">>},
+                       {<<"x-amz-request-payer">>, <<"RequestPayer">>},
+                       {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
                        {<<"Content-Disposition">>, <<"ContentDisposition">>},
                        {<<"Content-Encoding">>, <<"ContentEncoding">>},
-                       {<<"Content-Language">>, <<"ContentLanguage">>},
-                       {<<"Content-Length">>, <<"ContentLength">>},
+                       {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},
+                       {<<"x-amz-tagging">>, <<"Tagging">>},
+                       {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
+                       {<<"x-amz-storage-class">>, <<"StorageClass">>},
+                       {<<"x-amz-acl">>, <<"ACL">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"Content-Type">>, <<"ContentType">>},
-                       {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
-                       {<<"Expires">>, <<"Expires">>},
-                       {<<"x-amz-grant-full-control">>, <<"GrantFullControl">>},
-                       {<<"x-amz-grant-read">>, <<"GrantRead">>},
-                       {<<"x-amz-grant-read-acp">>, <<"GrantReadACP">>},
-                       {<<"x-amz-grant-write-acp">>, <<"GrantWriteACP">>},
-                       {<<"x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
                        {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
-                       {<<"x-amz-object-lock-retain-until-date">>, <<"ObjectLockRetainUntilDate">>},
-                       {<<"x-amz-request-payer">>, <<"RequestPayer">>},
                        {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
-                       {<<"x-amz-server-side-encryption-customer-key">>, <<"SSECustomerKey">>},
-                       {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
-                       {<<"x-amz-server-side-encryption-context">>, <<"SSEKMSEncryptionContext">>},
+                       {<<"x-amz-grant-write-acp">>, <<"GrantWriteACP">>},
+                       {<<"x-amz-grant-read-acp">>, <<"GrantReadACP">>},
+                       {<<"x-amz-grant-full-control">>, <<"GrantFullControl">>},
                        {<<"x-amz-server-side-encryption-aws-kms-key-id">>, <<"SSEKMSKeyId">>},
-                       {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},
-                       {<<"x-amz-storage-class">>, <<"StorageClass">>},
-                       {<<"x-amz-tagging">>, <<"Tagging">>},
-                       {<<"x-amz-website-redirect-location">>, <<"WebsiteRedirectLocation">>}
+                       {<<"Cache-Control">>, <<"CacheControl">>},
+                       {<<"x-amz-server-side-encryption-customer-key">>, <<"SSECustomerKey">>},
+                       {<<"x-amz-website-redirect-location">>, <<"WebsiteRedirectLocation">>},
+                       {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
+                       {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
+                       {<<"x-amz-grant-read">>, <<"GrantRead">>},
+                       {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
+                       {<<"x-amz-server-side-encryption-context">>, <<"SSEKMSEncryptionContext">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
@@ -6236,6 +6479,10 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
         ResponseHeadersParams =
           [
             {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
+            {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
+            {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
+            {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
+            {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
             {<<"ETag">>, <<"ETag">>},
             {<<"x-amz-expiration">>, <<"Expiration">>},
             {<<"x-amz-request-charged">>, <<"RequestCharged">>},
@@ -6420,6 +6667,7 @@ put_object_acl(Client, Bucket, Key, Input0, Options0) ->
 
     HeadersMapping = [
                        {<<"x-amz-acl">>, <<"ACL">>},
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
                        {<<"x-amz-grant-full-control">>, <<"GrantFullControl">>},
@@ -6456,7 +6704,7 @@ put_object_acl(Client, Bucket, Key, Input0, Options0) ->
         Result
     end.
 
-%% @doc Applies a Legal Hold configuration to the specified object.
+%% @doc Applies a legal hold configuration to the specified object.
 %%
 %% For more information, see Locking Objects.
 %%
@@ -6474,6 +6722,7 @@ put_object_legal_hold(Client, Bucket, Key, Input0, Options0) ->
 
 
     HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
                        {<<"x-amz-request-payer">>, <<"RequestPayer">>}
@@ -6531,6 +6780,7 @@ put_object_lock_configuration(Client, Bucket, Input0, Options0) ->
 
 
     HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
                        {<<"x-amz-request-payer">>, <<"RequestPayer">>},
@@ -6570,13 +6820,6 @@ put_object_lock_configuration(Client, Bucket, Input0, Options0) ->
 %% requires the `s3:BypassGovernanceRetention' permission.
 %%
 %% This action is not supported by Amazon S3 on Outposts.
-%%
-%% Permissions
-%%
-%% When the Object Lock retention mode is set to compliance, you need
-%% `s3:PutObjectRetention' and `s3:BypassGovernanceRetention' permissions.
-%% For other requests to `PutObjectRetention', only `s3:PutObjectRetention'
-%% permissions are required.
 put_object_retention(Client, Bucket, Key, Input) ->
     put_object_retention(Client, Bucket, Key, Input, []).
 put_object_retention(Client, Bucket, Key, Input0, Options0) ->
@@ -6591,6 +6834,7 @@ put_object_retention(Client, Bucket, Key, Input0, Options0) ->
 
     HeadersMapping = [
                        {<<"x-amz-bypass-governance-retention">>, <<"BypassGovernanceRetention">>},
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
                        {<<"x-amz-request-payer">>, <<"RequestPayer">>}
@@ -6686,6 +6930,7 @@ put_object_tagging(Client, Bucket, Key, Input0, Options0) ->
 
 
     HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
                        {<<"x-amz-request-payer">>, <<"RequestPayer">>}
@@ -6758,6 +7003,7 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 
 
     HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
                      ],
@@ -7004,6 +7250,7 @@ restore_object(Client, Bucket, Key, Input0, Options0) ->
 
 
     HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
                        {<<"x-amz-request-payer">>, <<"RequestPayer">>}
                      ],
@@ -7265,6 +7512,11 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
 
 
     HeadersMapping = [
+                       {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
+                       {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
+                       {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
+                       {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
+                       {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
                        {<<"Content-Length">>, <<"ContentLength">>},
                        {<<"Content-MD5">>, <<"ContentMD5">>},
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
@@ -7288,6 +7540,10 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
         ResponseHeadersParams =
           [
             {<<"x-amz-server-side-encryption-bucket-key-enabled">>, <<"BucketKeyEnabled">>},
+            {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
+            {<<"x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
+            {<<"x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
+            {<<"x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
             {<<"ETag">>, <<"ETag">>},
             {<<"x-amz-request-charged">>, <<"RequestCharged">>},
             {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
@@ -7336,11 +7592,11 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
 %% Guide.
 %%
 %% </li> <li> For information about copying objects using a single atomic
-%% action vs. the multipart upload, see Operations on Objects in the Amazon
-%% S3 User Guide.
+%% action vs. a multipart upload, see Operations on Objects in the Amazon S3
+%% User Guide.
 %%
 %% </li> <li> For information about using server-side encryption with
-%% customer-provided encryption keys with the UploadPartCopy operation, see
+%% customer-provided encryption keys with the `UploadPartCopy' operation, see
 %% CopyObject and UploadPart.
 %%
 %% </li> </ul> Note the following additional considerations about the request
@@ -7555,6 +7811,7 @@ write_get_object_response(Client, Input0, Options0) ->
                        {<<"x-amz-fwd-header-Content-Disposition">>, <<"ContentDisposition">>},
                        {<<"x-amz-fwd-header-Content-Encoding">>, <<"ContentEncoding">>},
                        {<<"x-amz-fwd-header-x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},
+                       {<<"x-amz-fwd-header-x-amz-checksum-sha256">>, <<"ChecksumSHA256">>},
                        {<<"x-amz-fwd-header-accept-ranges">>, <<"AcceptRanges">>},
                        {<<"x-amz-fwd-header-x-amz-storage-class">>, <<"StorageClass">>},
                        {<<"x-amz-fwd-header-x-amz-version-id">>, <<"VersionId">>},
@@ -7568,8 +7825,11 @@ write_get_object_response(Client, Input0, Options0) ->
                        {<<"x-amz-fwd-header-Cache-Control">>, <<"CacheControl">>},
                        {<<"x-amz-fwd-header-x-amz-mp-parts-count">>, <<"PartsCount">>},
                        {<<"x-amz-fwd-header-x-amz-request-charged">>, <<"RequestCharged">>},
+                       {<<"x-amz-fwd-header-x-amz-checksum-sha1">>, <<"ChecksumSHA1">>},
+                       {<<"x-amz-fwd-header-x-amz-checksum-crc32c">>, <<"ChecksumCRC32C">>},
                        {<<"x-amz-fwd-header-Last-Modified">>, <<"LastModified">>},
                        {<<"x-amz-fwd-header-x-amz-missing-meta">>, <<"MissingMeta">>},
+                       {<<"x-amz-fwd-header-x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
                        {<<"x-amz-fwd-error-message">>, <<"ErrorMessage">>},
                        {<<"x-amz-fwd-header-x-amz-replication-status">>, <<"ReplicationStatus">>},
                        {<<"x-amz-request-token">>, <<"RequestToken">>},
@@ -7593,7 +7853,7 @@ write_get_object_response(Client, Input0, Options0) ->
 %%====================================================================
 
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
-              list(), map() | undefined, list(), pos_integer() | undefined, map()) ->
+              list(), map() | undefined, list(), pos_integer() | undefined, binary() | undefined) ->
     {ok, {integer(), list()}} |
     {ok, Result, {integer(), list(), hackney:client()}} |
     {error, Error, {integer(), list(), hackney:client()}} |
