@@ -477,7 +477,7 @@ create_bucket(Client, Input, Options)
 %%
 %% Access keys grant full programmatic access to the specified bucket and its
 %% objects. You can have a maximum of two access keys per bucket. Use the
-%% `GetBucketAccessKeys' action to get a list of current access keys for a
+%% GetBucketAccessKeys action to get a list of current access keys for a
 %% specific bucket. For more information about access keys, see Creating
 %% access keys for a bucket in Amazon Lightsail in the Amazon Lightsail
 %% Developer Guide.
@@ -756,7 +756,12 @@ create_instances_from_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInstancesFromSnapshot">>, Input, Options).
 
-%% @doc Creates an SSH key pair.
+%% @doc Creates a custom SSH key pair that you can use with an Amazon
+%% Lightsail instance.
+%%
+%% Use the DownloadDefaultKeyPair action to create a Lightsail default key
+%% pair in an Amazon Web Services Region where a default key pair does not
+%% currently exist.
 %%
 %% The `create key pair' operation supports tag-based access control via
 %% request tags. For more information, see the Amazon Lightsail Developer
@@ -1035,7 +1040,13 @@ delete_instance_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInstanceSnapshot">>, Input, Options).
 
-%% @doc Deletes a specific SSH key pair.
+%% @doc Deletes the specified key pair by removing the public key from Amazon
+%% Lightsail.
+%%
+%% You can delete key pairs that were created using the ImportKeyPair and
+%% CreateKeyPair actions, as well as the Lightsail default key pair. A new
+%% default key pair will not be created unless you launch an instance without
+%% specifying a custom key pair, or you call the DownloadDefaultKeyPair API.
 %%
 %% The `delete key pair' operation supports tag-based access control via
 %% resource tags applied to the resource identified by `key pair name'. For
@@ -1183,7 +1194,10 @@ disable_add_on(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableAddOn">>, Input, Options).
 
-%% @doc Downloads the default SSH key pair from the user's account.
+%% @doc Downloads the regional Amazon Lightsail default key pair.
+%%
+%% This action also creates a Lightsail default key pair if a default key
+%% pair does not currently exist in the Amazon Web Services Region.
 download_default_key_pair(Client, Input)
   when is_map(Client), is_map(Input) ->
     download_default_key_pair(Client, Input, []).
@@ -1286,7 +1300,7 @@ get_blueprints(Client, Input, Options)
 %%
 %% This action does not return the secret access key value of an access key.
 %% You can get a secret access key only when you create it from the response
-%% of the `CreateBucketAccessKey' action. If you lose the secret access key,
+%% of the CreateBucketAccessKey action. If you lose the secret access key,
 %% you must create a new access key.
 get_bucket_access_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1300,7 +1314,7 @@ get_bucket_access_keys(Client, Input, Options)
 %% The bucket bundle specifies the monthly cost, storage quota, and data
 %% transfer quota for a bucket.
 %%
-%% Use the `UpdateBucketBundle' action to update the bundle for a bucket.
+%% Use the UpdateBucketBundle action to update the bundle for a bucket.
 get_bucket_bundles(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_bucket_bundles(Client, Input, []).
@@ -1575,7 +1589,7 @@ get_domains(Client, Input, Options)
 %% `export snapshot' operation.
 %%
 %% An export snapshot record can be used to create a new Amazon EC2 instance
-%% and its related resources with the `CreateCloudFormationStack' action.
+%% and its related resources with the CreateCloudFormationStack action.
 get_export_snapshot_records(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_export_snapshot_records(Client, Input, []).
@@ -2236,7 +2250,7 @@ update_bucket(Client, Input, Options)
 %% A bucket bundle specifies the monthly cost, storage space, and data
 %% transfer quota for a bucket. You can update a bucket's bundle only one
 %% time within a monthly AWS billing cycle. To determine if you can update a
-%% bucket's bundle, use the `GetBuckets' action. The `ableToUpdateBundle'
+%% bucket's bundle, use the GetBuckets action. The `ableToUpdateBundle'
 %% parameter in the response will indicate whether you can currently update a
 %% bucket's bundle.
 %%
