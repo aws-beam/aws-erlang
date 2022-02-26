@@ -109,7 +109,7 @@ create_application_instance(Client, Input) ->
 create_application_instance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/application-instances"],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -132,7 +132,7 @@ create_job_for_devices(Client, Input) ->
 create_job_for_devices(Client, Input0, Options0) ->
     Method = post,
     Path = ["/jobs"],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -155,7 +155,7 @@ create_node_from_template_job(Client, Input) ->
 create_node_from_template_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/packages/template-job"],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -178,7 +178,7 @@ create_package(Client, Input) ->
 create_package(Client, Input0, Options0) ->
     Method = post,
     Path = ["/packages"],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -201,7 +201,7 @@ create_package_import_job(Client, Input) ->
 create_package_import_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/packages/import-jobs"],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -224,7 +224,7 @@ delete_device(Client, DeviceId, Input) ->
 delete_device(Client, DeviceId, Input0, Options0) ->
     Method = delete,
     Path = ["/devices/", aws_util:encode_uri(DeviceId), ""],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -242,12 +242,15 @@ delete_device(Client, DeviceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a package.
+%%
+%% To delete a package, you need permission to call `s3:DeleteObject' in
+%% addition to permissions for the AWS Panorama API.
 delete_package(Client, PackageId, Input) ->
     delete_package(Client, PackageId, Input, []).
 delete_package(Client, PackageId, Input0, Options0) ->
     Method = delete,
     Path = ["/packages/", aws_util:encode_uri(PackageId), ""],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -271,7 +274,7 @@ deregister_package_version(Client, PackageId, PackageVersion, PatchVersion, Inpu
 deregister_package_version(Client, PackageId, PackageVersion, PatchVersion, Input0, Options0) ->
     Method = delete,
     Path = ["/packages/", aws_util:encode_uri(PackageId), "/versions/", aws_util:encode_uri(PackageVersion), "/patch/", aws_util:encode_uri(PatchVersion), ""],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -302,7 +305,7 @@ describe_application_instance(Client, ApplicationInstanceId, QueryMap, HeadersMa
 describe_application_instance(Client, ApplicationInstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/application-instances/", aws_util:encode_uri(ApplicationInstanceId), ""],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -326,7 +329,7 @@ describe_application_instance_details(Client, ApplicationInstanceId, QueryMap, H
 describe_application_instance_details(Client, ApplicationInstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/application-instances/", aws_util:encode_uri(ApplicationInstanceId), "/details"],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -349,7 +352,7 @@ describe_device(Client, DeviceId, QueryMap, HeadersMap)
 describe_device(Client, DeviceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/devices/", aws_util:encode_uri(DeviceId), ""],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -372,7 +375,7 @@ describe_device_job(Client, JobId, QueryMap, HeadersMap)
 describe_device_job(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -395,7 +398,7 @@ describe_node(Client, NodeId, QueryMap, HeadersMap)
 describe_node(Client, NodeId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/nodes/", aws_util:encode_uri(NodeId), ""],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -422,7 +425,7 @@ describe_node_from_template_job(Client, JobId, QueryMap, HeadersMap)
 describe_node_from_template_job(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packages/template-job/", aws_util:encode_uri(JobId), ""],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -445,7 +448,7 @@ describe_package(Client, PackageId, QueryMap, HeadersMap)
 describe_package(Client, PackageId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packages/metadata/", aws_util:encode_uri(PackageId), ""],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -468,7 +471,7 @@ describe_package_import_job(Client, JobId, QueryMap, HeadersMap)
 describe_package_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packages/import-jobs/", aws_util:encode_uri(JobId), ""],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -491,7 +494,7 @@ describe_package_version(Client, PackageId, PackageVersion, QueryMap, HeadersMap
 describe_package_version(Client, PackageId, PackageVersion, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packages/metadata/", aws_util:encode_uri(PackageId), "/versions/", aws_util:encode_uri(PackageVersion), ""],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -519,7 +522,7 @@ list_application_instance_dependencies(Client, ApplicationInstanceId, QueryMap, 
 list_application_instance_dependencies(Client, ApplicationInstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/application-instances/", aws_util:encode_uri(ApplicationInstanceId), "/package-dependencies"],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -547,7 +550,7 @@ list_application_instance_node_instances(Client, ApplicationInstanceId, QueryMap
 list_application_instance_node_instances(Client, ApplicationInstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/application-instances/", aws_util:encode_uri(ApplicationInstanceId), "/node-instances"],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -575,7 +578,7 @@ list_application_instances(Client, QueryMap, HeadersMap)
 list_application_instances(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/application-instances"],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -605,7 +608,7 @@ list_devices(Client, QueryMap, HeadersMap)
 list_devices(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/devices"],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -633,7 +636,7 @@ list_devices_jobs(Client, QueryMap, HeadersMap)
 list_devices_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/jobs"],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -662,7 +665,7 @@ list_node_from_template_jobs(Client, QueryMap, HeadersMap)
 list_node_from_template_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packages/template-job"],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -690,7 +693,7 @@ list_nodes(Client, QueryMap, HeadersMap)
 list_nodes(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/nodes"],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -723,7 +726,7 @@ list_package_import_jobs(Client, QueryMap, HeadersMap)
 list_package_import_jobs(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packages/import-jobs"],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -751,7 +754,7 @@ list_packages(Client, QueryMap, HeadersMap)
 list_packages(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/packages"],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -779,7 +782,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
 list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -801,7 +804,7 @@ provision_device(Client, Input) ->
 provision_device(Client, Input0, Options0) ->
     Method = post,
     Path = ["/devices"],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -824,7 +827,7 @@ register_package_version(Client, PackageId, PackageVersion, PatchVersion, Input)
 register_package_version(Client, PackageId, PackageVersion, PatchVersion, Input0, Options0) ->
     Method = put,
     Path = ["/packages/", aws_util:encode_uri(PackageId), "/versions/", aws_util:encode_uri(PackageVersion), "/patch/", aws_util:encode_uri(PatchVersion), ""],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -847,7 +850,7 @@ remove_application_instance(Client, ApplicationInstanceId, Input) ->
 remove_application_instance(Client, ApplicationInstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/application-instances/", aws_util:encode_uri(ApplicationInstanceId), ""],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -870,7 +873,7 @@ tag_resource(Client, ResourceArn, Input) ->
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -893,7 +896,7 @@ untag_resource(Client, ResourceArn, Input) ->
 untag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -917,7 +920,7 @@ update_device_metadata(Client, DeviceId, Input) ->
 update_device_metadata(Client, DeviceId, Input0, Options0) ->
     Method = put,
     Path = ["/devices/", aws_util:encode_uri(DeviceId), ""],
-    SuccessStatusCode = undefined,
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
