@@ -15,7 +15,7 @@
 %% The Amplify Framework is a comprehensive set of SDKs, libraries, tools,
 %% and documentation for client app development. For more information, see
 %% the Amplify Framework. For more information about deploying an Amplify
-%% application to Amazon Web Services, see the Amplify Console User Guide.
+%% application to Amazon Web Services, see the Amplify User Guide.
 -module(aws_amplifyuibuilder).
 
 -export([create_component/4,
@@ -196,7 +196,11 @@ export_components(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -220,7 +224,11 @@ export_themes(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 

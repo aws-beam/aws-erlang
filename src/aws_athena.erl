@@ -84,6 +84,8 @@
          untag_resource/3,
          update_data_catalog/2,
          update_data_catalog/3,
+         update_named_query/2,
+         update_named_query/3,
          update_prepared_statement/2,
          update_prepared_statement/3,
          update_work_group/2,
@@ -451,6 +453,16 @@ update_data_catalog(Client, Input)
 update_data_catalog(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDataCatalog">>, Input, Options).
+
+%% @doc Updates a `NamedQuery' object.
+%%
+%% The database or workgroup cannot be updated.
+update_named_query(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_named_query(Client, Input, []).
+update_named_query(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateNamedQuery">>, Input, Options).
 
 %% @doc Updates a prepared statement.
 update_prepared_statement(Client, Input)
