@@ -327,8 +327,8 @@ create_file_system(Client, Input, Options)
 %%
 %% If a file system with the specified client request token exists and the
 %% parameters match, this operation returns the description of the file
-%% system. If a client request token with the specified by the file system
-%% exists and the parameters don't match, this call returns
+%% system. If a file system with the specified client request token exists
+%% but the parameters don't match, this call returns
 %% `IncompatibleParameterError'. If a file system with the specified client
 %% request token doesn't exist, this operation does the following:
 %%
@@ -362,7 +362,7 @@ create_file_system_from_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFileSystemFromBackup">>, Input, Options).
 
-%% @doc Creates a snapshot of an existing Amazon FSx for OpenZFS file system.
+%% @doc Creates a snapshot of an existing Amazon FSx for OpenZFS volume.
 %%
 %% With snapshots, you can easily undo file changes and compare file versions
 %% by restoring the volume to a previous version.
@@ -489,7 +489,7 @@ delete_file_system(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFileSystem">>, Input, Options).
 
-%% @doc Deletes the Amazon FSx snapshot.
+%% @doc Deletes an Amazon FSx for OpenZFS snapshot.
 %%
 %% After deletion, the snapshot no longer exists, and its data is gone.
 %% Deleting a snapshot doesn't affect snapshots stored in a file system
@@ -662,8 +662,8 @@ describe_file_systems(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFileSystems">>, Input, Options).
 
-%% @doc Returns the description of specific Amazon FSx snapshots, if a
-%% `SnapshotIds' value is provided.
+%% @doc Returns the description of specific Amazon FSx for OpenZFS snapshots,
+%% if a `SnapshotIds' value is provided.
 %%
 %% Otherwise, this operation returns all snapshots owned by your Amazon Web
 %% Services account in the Amazon Web Services Region of the endpoint that
@@ -888,7 +888,7 @@ update_file_system(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFileSystem">>, Input, Options).
 
-%% @doc Updates the name of a snapshot.
+%% @doc Updates the name of an Amazon FSx for OpenZFS snapshot.
 update_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_snapshot(Client, Input, []).

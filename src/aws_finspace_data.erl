@@ -10,8 +10,18 @@
          create_data_view/4,
          create_dataset/2,
          create_dataset/3,
+         create_permission_group/2,
+         create_permission_group/3,
+         create_user/2,
+         create_user/3,
          delete_dataset/3,
          delete_dataset/4,
+         delete_permission_group/3,
+         delete_permission_group/4,
+         disable_user/3,
+         disable_user/4,
+         enable_user/3,
+         enable_user/4,
          get_changeset/3,
          get_changeset/5,
          get_changeset/6,
@@ -24,6 +34,9 @@
          get_programmatic_access_credentials/2,
          get_programmatic_access_credentials/4,
          get_programmatic_access_credentials/5,
+         get_user/2,
+         get_user/4,
+         get_user/5,
          get_working_location/2,
          get_working_location/3,
          list_changesets/2,
@@ -35,10 +48,22 @@
          list_datasets/1,
          list_datasets/3,
          list_datasets/4,
+         list_permission_groups/2,
+         list_permission_groups/4,
+         list_permission_groups/5,
+         list_users/2,
+         list_users/4,
+         list_users/5,
+         reset_user_password/3,
+         reset_user_password/4,
          update_changeset/4,
          update_changeset/5,
          update_dataset/3,
-         update_dataset/4]).
+         update_dataset/4,
+         update_permission_group/3,
+         update_permission_group/4,
+         update_user/3,
+         update_user/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -115,6 +140,53 @@ create_dataset(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a group of permissions for various actions that a user can
+%% perform in FinSpace.
+create_permission_group(Client, Input) ->
+    create_permission_group(Client, Input, []).
+create_permission_group(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/permission-group"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new user in FinSpace.
+create_user(Client, Input) ->
+    create_user(Client, Input, []).
+create_user(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/user"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a FinSpace Dataset.
 delete_dataset(Client, DatasetId, Input) ->
     delete_dataset(Client, DatasetId, Input, []).
@@ -137,6 +209,80 @@ delete_dataset(Client, DatasetId, Input0, Options0) ->
                      {<<"clientToken">>, <<"clientToken">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a permission group.
+%%
+%% This action is irreversible.
+delete_permission_group(Client, PermissionGroupId, Input) ->
+    delete_permission_group(Client, PermissionGroupId, Input, []).
+delete_permission_group(Client, PermissionGroupId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/permission-group/", aws_util:encode_uri(PermissionGroupId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Denies access to the FinSpace web application and API for the
+%% specified user.
+disable_user(Client, UserId, Input) ->
+    disable_user(Client, UserId, Input, []).
+disable_user(Client, UserId, Input0, Options0) ->
+    Method = post,
+    Path = ["/user/", aws_util:encode_uri(UserId), "/disable"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Allows the specified user to access the FinSpace web application and
+%% API.
+enable_user(Client, UserId, Input) ->
+    enable_user(Client, UserId, Input, []).
+enable_user(Client, UserId, Input0, Options0) ->
+    Method = post,
+    Path = ["/user/", aws_util:encode_uri(UserId), "/enable"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get information about a Changeset.
@@ -233,6 +379,29 @@ get_programmatic_access_credentials(Client, EnvironmentId, QueryMap, HeadersMap,
         {<<"environmentId">>, EnvironmentId}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves details for a specific user.
+get_user(Client, UserId)
+  when is_map(Client) ->
+    get_user(Client, UserId, #{}, #{}).
+
+get_user(Client, UserId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_user(Client, UserId, QueryMap, HeadersMap, []).
+
+get_user(Client, UserId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/user/", aws_util:encode_uri(UserId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -344,6 +513,90 @@ list_datasets(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists all available permission groups in FinSpace.
+list_permission_groups(Client, MaxResults)
+  when is_map(Client) ->
+    list_permission_groups(Client, MaxResults, #{}, #{}).
+
+list_permission_groups(Client, MaxResults, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_permission_groups(Client, MaxResults, QueryMap, HeadersMap, []).
+
+list_permission_groups(Client, MaxResults, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/permission-group"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all available user accounts in FinSpace.
+list_users(Client, MaxResults)
+  when is_map(Client) ->
+    list_users(Client, MaxResults, #{}, #{}).
+
+list_users(Client, MaxResults, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_users(Client, MaxResults, QueryMap, HeadersMap, []).
+
+list_users(Client, MaxResults, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/user"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Resets the password for a specified user ID and generates a temporary
+%% one.
+%%
+%% Only a superuser can reset password for other users. Resetting the
+%% password immediately invalidates the previous password associated with the
+%% user.
+reset_user_password(Client, UserId, Input) ->
+    reset_user_password(Client, UserId, Input, []).
+reset_user_password(Client, UserId, Input0, Options0) ->
+    Method = post,
+    Path = ["/user/", aws_util:encode_uri(UserId), "/password"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates a FinSpace Changeset.
 update_changeset(Client, ChangesetId, DatasetId, Input) ->
     update_changeset(Client, ChangesetId, DatasetId, Input, []).
@@ -373,6 +626,56 @@ update_dataset(Client, DatasetId, Input) ->
 update_dataset(Client, DatasetId, Input0, Options0) ->
     Method = put,
     Path = ["/datasetsv2/", aws_util:encode_uri(DatasetId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Modifies the details of a permission group.
+%%
+%% You cannot modify a `permissionGroupID'.
+update_permission_group(Client, PermissionGroupId, Input) ->
+    update_permission_group(Client, PermissionGroupId, Input, []).
+update_permission_group(Client, PermissionGroupId, Input0, Options0) ->
+    Method = put,
+    Path = ["/permission-group/", aws_util:encode_uri(PermissionGroupId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Modifies the details of the specified user account.
+%%
+%% You cannot update the `userId' for a user.
+update_user(Client, UserId, Input) ->
+    update_user(Client, UserId, Input, []).
+update_user(Client, UserId, Input0, Options0) ->
+    Method = put,
+    Path = ["/user/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
