@@ -109,7 +109,7 @@ add_tags(Client, Input, Options)
     request(Client, <<"AddTags">>, Input, Options).
 
 %% @doc Cancels a query if the query is not in a terminated state, such as
-%% `CANCELLED', `FAILED' or `FINISHED'.
+%% `CANCELLED', `FAILED', `TIMED_OUT', or `FINISHED'.
 %%
 %% You must specify an ARN value for `EventDataStore'. The ID of the query
 %% that you want to cancel is also required. When you run `CancelQuery', the
@@ -306,7 +306,7 @@ list_public_keys(Client, Input, Options)
 %% the list of results, you can specify a time range, formatted as
 %% timestamps, by adding `StartTime' and `EndTime' parameters, and a
 %% `QueryStatus' value. Valid values for `QueryStatus' include `QUEUED',
-%% `RUNNING', `FINISHED', `FAILED', or `CANCELLED'.
+%% `RUNNING', `FINISHED', `FAILED', `TIMED_OUT', or `CANCELLED'.
 list_queries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_queries(Client, Input, []).
