@@ -75,17 +75,18 @@ uri_encode_path_byte(Byte) ->
     <<"%", (hex(H, upper)), (hex(L, upper))>>.
 
 %% @doc Encode the map's key/value pairs as a querystring.
-encode_query(List) when is_list(List) ->
-  FoldFun = fun
-              ({K, V}, Acc) when is_integer(V) ->
-                [{K, integer_to_binary(V)} | Acc];
-              ({K, V}, Acc) when is_float(V) ->
-                [{K, float_to_binary(V)} | Acc];
-              (KV = {_, V}, Acc) when is_binary(V) ->
-                [KV | Acc]
-            end,
-  KVs = lists:foldr(FoldFun, [], List),
-  uri_string:compose_query(KVs);
+%% The query string must be sorted.
+%% The query string for query params that do not contain a value such as "key"
+%% should be encoded as "key=".
+%% Without this fix, the request will result in a SignatureDoesNotMatch error.
+encode_query(QueryL) when is_list(QueryL) ->
+  uri_string:compose_query(
+    lists:sort(
+      lists:map(fun({K, true}) -> {K, ""};
+                    ({K, V}) when is_binary(V) -> {K, V};
+                    ({K, V}) when is_float(V) -> {K, float_to_binary(V)};
+                    ({K, V}) when is_integer(V) -> {K, integer_to_binary(V)}
+                end, QueryL)));
 encode_query(Map) when is_map(Map) ->
   encode_query(maps:to_list(Map)).
 
@@ -370,5 +371,13 @@ encode_uri_special_chars_test() ->
 encode_multi_segment_uri_test() ->
   MultiSegment = <<"hello /world!">>,
   ?assertEqual(<<"hello%20/world%21">>, encode_multi_segment_uri(MultiSegment)).
+
+encode_query_test() ->
+  Query = [{<<"two">>, <<"2">>}],
+  ?assertEqual(<<"two=2">>, encode_query(Query)).
+
+encode_query_sorted_test() ->
+  Query = [{<<"two">>, <<"2">>}, {<<"one">>, <<"1">>}],
+  ?assertEqual(<<"one=1&two=2">>, encode_query(Query)).
 
 -endif.
