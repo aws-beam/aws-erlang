@@ -534,8 +534,6 @@ copy_db_cluster_parameter_group(Client, Input, Options)
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
 %% with two readable standby DB instances in the Amazon RDS User Guide.
-%%
-%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 copy_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_cluster_snapshot(Client, Input, []).
@@ -654,8 +652,6 @@ create_custom_db_engine_version(Client, Input, Options)
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
 %% with two readable standby DB instances in the Amazon RDS User Guide.
-%%
-%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 create_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster(Client, Input, []).
@@ -711,8 +707,6 @@ create_db_cluster_endpoint(Client, Input, Options)
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
 %% with two readable standby DB instances in the Amazon RDS User Guide.
-%%
-%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 create_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_parameter_group(Client, Input, []).
@@ -727,8 +721,6 @@ create_db_cluster_parameter_group(Client, Input, Options)
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
 %% with two readable standby DB instances in the Amazon RDS User Guide.
-%%
-%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 create_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_snapshot(Client, Input, []).
@@ -973,8 +965,6 @@ delete_custom_db_engine_version(Client, Input, Options)
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
 %% with two readable standby DB instances in the Amazon RDS User Guide.
-%%
-%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 delete_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster(Client, Input, []).
@@ -1003,8 +993,6 @@ delete_db_cluster_endpoint(Client, Input, Options)
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
 %% with two readable standby DB instances in the Amazon RDS User Guide.
-%%
-%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 delete_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_parameter_group(Client, Input, []).
@@ -1023,8 +1011,6 @@ delete_db_cluster_parameter_group(Client, Input, Options)
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
 %% with two readable standby DB instances in the Amazon RDS User Guide.
-%%
-%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 delete_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_snapshot(Client, Input, []).
@@ -1263,8 +1249,6 @@ describe_db_cluster_endpoints(Client, Input, Options)
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
 %% with two readable standby DB instances in the Amazon RDS User Guide.
-%%
-%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 describe_db_cluster_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_parameter_groups(Client, Input, []).
@@ -1280,8 +1264,6 @@ describe_db_cluster_parameter_groups(Client, Input, Options)
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
 %% with two readable standby DB instances in the Amazon RDS User Guide.
-%%
-%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 describe_db_cluster_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_parameters(Client, Input, []).
@@ -1320,8 +1302,6 @@ describe_db_cluster_snapshot_attributes(Client, Input, Options)
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
 %% with two readable standby DB instances in the Amazon RDS User Guide.
-%%
-%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 describe_db_cluster_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_snapshots(Client, Input, []).
@@ -1339,8 +1319,6 @@ describe_db_cluster_snapshots(Client, Input, Options)
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
 %% with two readable standby DB instances in the Amazon RDS User Guide.
-%%
-%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 %%
 %% This operation can also return information for Amazon Neptune DB instances
 %% and Amazon DocumentDB instances.
@@ -1718,8 +1696,6 @@ download_db_log_file_portion(Client, Input, Options)
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
 %% with two readable standby DB instances in the Amazon RDS User Guide.
-%%
-%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 failover_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     failover_db_cluster(Client, Input, []).
@@ -1869,8 +1845,6 @@ modify_custom_db_engine_version(Client, Input, Options)
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
 %% with two readable standby DB instances in the Amazon RDS User Guide.
-%%
-%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 modify_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster(Client, Input, []).
@@ -1918,8 +1892,6 @@ modify_db_cluster_endpoint(Client, Input, Options)
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
 %% with two readable standby DB instances in the Amazon RDS User Guide.
-%%
-%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 modify_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_parameter_group(Client, Input, []).
@@ -2159,8 +2131,7 @@ purchase_reserved_db_instances_offering(Client, Input, Options)
 %% DB cluster results in a momentary outage, during which the DB cluster
 %% status is set to rebooting.
 %%
-%% Use this operation only for a non-Aurora Multi-AZ DB cluster. The Multi-AZ
-%% DB clusters feature is in preview and is subject to change.
+%% Use this operation only for a non-Aurora Multi-AZ DB cluster.
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
 %% with two readable standby DB instances in the Amazon RDS User Guide.
@@ -2225,8 +2196,6 @@ remove_from_global_cluster(Client, Input, Options)
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
 %% with two readable standby DB instances in the Amazon RDS User Guide.
-%%
-%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 remove_role_from_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_role_from_db_cluster(Client, Input, []).
@@ -2282,8 +2251,6 @@ remove_tags_from_resource(Client, Input, Options)
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
 %% with two readable standby DB instances in the Amazon RDS User Guide.
-%%
-%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 reset_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_db_cluster_parameter_group(Client, Input, []).
@@ -2352,8 +2319,6 @@ restore_db_cluster_from_s3(Client, Input, Options)
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
 %% with two readable standby DB instances in the Amazon RDS User Guide.
-%%
-%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 restore_db_cluster_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_from_snapshot(Client, Input, []).
@@ -2381,8 +2346,6 @@ restore_db_cluster_from_snapshot(Client, Input, Options)
 %%
 %% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
 %% with two readable standby DB instances in the Amazon RDS User Guide.
-%%
-%% The Multi-AZ DB clusters feature is in preview and is subject to change.
 restore_db_cluster_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_to_point_in_time(Client, Input, []).

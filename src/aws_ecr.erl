@@ -438,8 +438,12 @@ put_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutImage">>, Input, Options).
 
-%% @doc Updates the image scanning configuration for the specified
-%% repository.
+%% @doc The `PutImageScanningConfiguration' API is being deprecated, in favor
+%% of specifying the image scanning configuration at the registry level.
+%%
+%% For more information, see `PutRegistryScanningConfiguration'.
+%%
+%% Updates the image scanning configuration for the specified repository.
 put_image_scanning_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_image_scanning_configuration(Client, Input, []).

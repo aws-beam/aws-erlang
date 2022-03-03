@@ -12,6 +12,8 @@
          create_worker_configuration/3,
          delete_connector/3,
          delete_connector/4,
+         delete_custom_plugin/3,
+         delete_custom_plugin/4,
          describe_connector/2,
          describe_connector/4,
          describe_connector/5,
@@ -130,6 +132,29 @@ delete_connector(Client, ConnectorArn, Input0, Options0) ->
                      {<<"currentVersion">>, <<"currentVersion">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a custom plugin.
+delete_custom_plugin(Client, CustomPluginArn, Input) ->
+    delete_custom_plugin(Client, CustomPluginArn, Input, []).
+delete_custom_plugin(Client, CustomPluginArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/custom-plugins/", aws_util:encode_uri(CustomPluginArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns summary information about the connector.

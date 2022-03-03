@@ -191,7 +191,7 @@ delete_source_server(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a single vCenter client by ID.
+%% @doc Deletes a given vCenter client by ID.
 delete_vcenter_client(Client, Input) ->
     delete_vcenter_client(Client, Input, []).
 delete_vcenter_client(Client, Input0, Options0) ->
@@ -214,7 +214,7 @@ delete_vcenter_client(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves detailed Job log with paging.
+%% @doc Retrieves detailed job log items with paging.
 describe_job_log_items(Client, Input) ->
     describe_job_log_items(Client, Input, []).
 describe_job_log_items(Client, Input0, Options0) ->
@@ -241,7 +241,7 @@ describe_job_log_items(Client, Input0, Options0) ->
 %%
 %% Use the JobsID and fromDate and toData filters to limit which jobs are
 %% returned. The response is sorted by creationDataTime - latest date first.
-%% Jobs are normaly created by the StartTest, StartCutover, and
+%% Jobs are normally created by the StartTest, StartCutover, and
 %% TerminateTargetInstances APIs. Jobs are also created by DiagnosticLaunch
 %% and TerminateDiagnosticInstances, which are APIs available only to
 %% *Support* and only used in response to relevant support tickets.
@@ -314,7 +314,7 @@ describe_source_servers(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists all vCenter clients.
+%% @doc Returns a list of the installed vCenter clients.
 describe_vcenter_clients(Client)
   when is_map(Client) ->
     describe_vcenter_clients(Client, #{}, #{}).
@@ -349,14 +349,14 @@ describe_vcenter_clients(Client, QueryMap, HeadersMap, Options0)
 %% Application Migration Service for enabling the replication of these source
 %% servers will be terminated / deleted within 90 minutes. Launched Test or
 %% Cutover instances will NOT be terminated. If the agent on the source
-%% server has not been prevented from communciating with the Application
+%% server has not been prevented from communicating with the Application
 %% Migration Service service, then it will receive a command to uninstall
 %% itself (within approximately 10 minutes). The following properties of the
 %% SourceServer will be changed immediately:
 %% dataReplicationInfo.dataReplicationState will be set to DISCONNECTED; The
 %% totalStorageBytes property for each of dataReplicationInfo.replicatedDisks
 %% will be set to zero; dataReplicationInfo.lagDuration and
-%% dataReplicationInfo.lagDurationwill be nullified.
+%% dataReplicationInfo.lagDuration will be nullified.
 disconnect_from_service(Client, Input) ->
     disconnect_from_service(Client, Input, []).
 disconnect_from_service(Client, Input0, Options0) ->
@@ -387,11 +387,11 @@ disconnect_from_service(Client, Input0, Options0) ->
 %% terminated. The AWS Replication Agent will receive a command to uninstall
 %% itself (within 10 minutes). The following properties of the SourceServer
 %% will be changed immediately: dataReplicationInfo.dataReplicationState will
-%% be to DISCONNECTED; The SourceServer.lifeCycle.state will be changed to
-%% CUTOVER; The totalStorageBytes property fo each of
+%% be changed to DISCONNECTED; The SourceServer.lifeCycle.state will be
+%% changed to CUTOVER; The totalStorageBytes property fo each of
 %% dataReplicationInfo.replicatedDisks will be set to zero;
-%% dataReplicationInfo.lagDuration and dataReplicationInfo.lagDurationwill be
-%% nullified.
+%% dataReplicationInfo.lagDuration and dataReplicationInfo.lagDuration will
+%% be nullified.
 finalize_cutover(Client, Input) ->
     finalize_cutover(Client, Input, []).
 finalize_cutover(Client, Input0, Options0) ->
@@ -511,7 +511,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% SourceServer.isArchived property to true for specified SourceServers by
 %% ID.
 %%
-%% This command only works for SourceServers with a lifecycle.state which
+%% This command only works for SourceServers with a lifecycle. state which
 %% equals DISCONNECTED or CUTOVER.
 mark_as_archived(Client, Input) ->
     mark_as_archived(Client, Input, []).
@@ -590,7 +590,7 @@ start_cutover(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts replication on source server by ID.
+%% @doc Starts replication for SNAPSHOT_SHIPPING agents.
 start_replication(Client, Input) ->
     start_replication(Client, Input, []).
 start_replication(Client, Input0, Options0) ->
@@ -613,7 +613,7 @@ start_replication(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lauches a Test Instance for specific Source Servers.
+%% @doc Launches a Test Instance for specific Source Servers.
 %%
 %% This command starts a LAUNCH job whose initiatedBy property is StartTest
 %% and changes the SourceServer.lifeCycle.state property to TESTING.
@@ -789,7 +789,8 @@ update_replication_configuration_template(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates source server Replication Type by ID.
+%% @doc Allows you to change between the AGENT_BASED replication type and the
+%% SNAPSHOT_SHIPPING replication type.
 update_source_server_replication_type(Client, Input) ->
     update_source_server_replication_type(Client, Input, []).
 update_source_server_replication_type(Client, Input0, Options0) ->
