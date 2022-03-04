@@ -304,8 +304,7 @@ create_component_version(Client, Input0, Options0) ->
 %%
 %% Every deployment has a revision number that indicates how many deployment
 %% revisions you define for a target. Use this operation to create a new
-%% revision of an existing deployment. This operation returns the revision
-%% number of the new deployment when you create it.
+%% revision of an existing deployment.
 %%
 %% For more information, see the Create deployments in the IoT Greengrass V2
 %% Developer Guide.
@@ -498,10 +497,10 @@ get_component_version_artifact(Client, Arn, ArtifactName, QueryMap, HeadersMap, 
 %%
 %% Connectivity information includes endpoints and ports where client devices
 %% can connect to an MQTT broker on the core device. When a client device
-%% calls the Greengrass discovery API, IoT Greengrass returns connectivity
-%% information for all of the core devices where the client device can
-%% connect. For more information, see Connect client devices to core devices
-%% in the IoT Greengrass Version 2 Developer Guide.
+%% calls the IoT Greengrass discovery API, IoT Greengrass returns
+%% connectivity information for all of the core devices where the client
+%% device can connect. For more information, see Connect client devices to
+%% core devices in the IoT Greengrass Version 2 Developer Guide.
 get_connectivity_info(Client, ThingName)
   when is_map(Client) ->
     get_connectivity_info(Client, ThingName, #{}, #{}).
@@ -928,10 +927,10 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% Connectivity information includes endpoints and ports where client devices
 %% can connect to an MQTT broker on the core device. When a client device
-%% calls the Greengrass discovery API, IoT Greengrass returns connectivity
-%% information for all of the core devices where the client device can
-%% connect. For more information, see Connect client devices to core devices
-%% in the IoT Greengrass Version 2 Developer Guide.
+%% calls the IoT Greengrass discovery API, IoT Greengrass returns
+%% connectivity information for all of the core devices where the client
+%% device can connect. For more information, see Connect client devices to
+%% core devices in the IoT Greengrass Version 2 Developer Guide.
 update_connectivity_info(Client, ThingName, Input) ->
     update_connectivity_info(Client, ThingName, Input, []).
 update_connectivity_info(Client, ThingName, Input0, Options0) ->
