@@ -406,8 +406,7 @@ create_storage_virtual_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStorageVirtualMachine">>, Input, Options).
 
-%% @doc Creates an Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS
-%% storage volume.
+%% @doc Creates an FSx for ONTAP or Amazon FSx for OpenZFS storage volume.
 create_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_volume(Client, Input, []).
