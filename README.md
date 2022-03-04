@@ -2,7 +2,7 @@
 
 [![Actions Status](https://github.com/aws-beam/aws-erlang/workflows/Build/badge.svg)](https://github.com/aws-beam/aws-erlang/actions)
 
-:rocket: Create, configure, and manage AWS services from Erlang code. :rocket:
+Create, configure, and manage AWS services from Erlang code. 🚀
 
 ## Features
 
@@ -47,12 +47,12 @@ how to upload a file to _S3_ and how to fetch it back:
 Simply add the library to your `rebar.config`:
 
 ```erlang
-{deps, [{aws, "0.3.0", {pkg, aws_erlang}}]}.
+{deps, [{aws, "0.5.0", {pkg, aws_erlang}}]}.
 ```
 
 ## Obtaining Credentials
 
-Credentials can be obtained via the separate [aws_credentials](https://github.com/aws-beam/aws_credentials) application, which can be configured to fetch credentials from:
+Credentials can be obtained via the separate [`aws_credentials`](https://github.com/aws-beam/aws_credentials) application, which can be configured to fetch credentials from:
 
 * Erlang environment variables
 * OS environment variables
@@ -91,16 +91,16 @@ The rest of the code is manually written and used as support for the generated c
 
 ### Build it locally
 
-Add the [rebar3_docs](https://github.com/jfacorro/rebar3_docs) plugin to your global _rebar3_ config in `~/.config/rebar3/rebar.config`:
+Add the [`rebar3_ex_doc`](https://hexdocs.pm/rebar3_ex_doc) plugin to your global _rebar3_ config in `~/.config/rebar3/rebar.config`:
 
 ```
-{plugins, [rebar3_docs]}.
+{plugins, [rebar3_ex_doc]}.
 ```
 
 Then simply:
 
 ```bash
-$ rebar3 docs
+$ rebar3 ex_doc
 ```
 
 The docs will be available in `./doc`.
