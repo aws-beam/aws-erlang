@@ -32,6 +32,8 @@
          describe_anomaly/2,
          describe_anomaly/4,
          describe_anomaly/5,
+         describe_event_sources_config/2,
+         describe_event_sources_config/3,
          describe_feedback/2,
          describe_feedback/3,
          describe_insight/2,
@@ -77,6 +79,8 @@
          search_organization_insights/3,
          start_cost_estimation/2,
          start_cost_estimation/3,
+         update_event_sources_config/2,
+         update_event_sources_config/3,
          update_resource_collection/2,
          update_resource_collection/3,
          update_service_integration/2,
@@ -205,6 +209,30 @@ describe_anomaly(Client, Id, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This operation lists details about a DevOps Guru event source that is
+%% shared with your account.
+describe_event_sources_config(Client, Input) ->
+    describe_event_sources_config(Client, Input, []).
+describe_event_sources_config(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/event-sources"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the most recent feedback submitted in the current Amazon Web
 %% Services account and Region.
@@ -735,6 +763,29 @@ start_cost_estimation(Client, Input) ->
 start_cost_estimation(Client, Input0, Options0) ->
     Method = put,
     Path = ["/cost-estimation"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the event source configuration.
+update_event_sources_config(Client, Input) ->
+    update_event_sources_config(Client, Input, []).
+update_event_sources_config(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/event-sources"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

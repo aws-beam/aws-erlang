@@ -276,8 +276,9 @@ assume_role_with_saml(Client, Input, Options)
 %% been authenticated in a mobile or web application with a web identity
 %% provider.
 %%
-%% Example providers include Amazon Cognito, Login with Amazon, Facebook,
-%% Google, or any OpenID Connect-compatible identity provider.
+%% Example providers include the OAuth 2.0 providers Login with Amazon and
+%% Facebook, or any OpenID Connect-compatible identity provider such as
+%% Google or Amazon Cognito federated identities.
 %%
 %% For mobile applications, we recommend that you use Amazon Cognito. You can
 %% use Amazon Cognito with the Amazon Web Services SDK for iOS Developer
