@@ -12,6 +12,11 @@
 %% to access an API that is tailored to the programming language or platform
 %% that you're using. For more information, see <a
 %% href="http://aws.amazon.com/tools/#SDKs">Amazon Web Services SDKs</a>.</p>
+%% <p>To share Refactor Spaces environments with other Amazon Web Services
+%% accounts or with Organizations and their OUs, use Resource Access
+%% Manager's <code>CreateResourceShare</code> API. See <a
+%% href="https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html">CreateResourceShare</a>
+%% in the <i>Amazon Web Services RAM API Reference</i>.</p>
 -module(aws_migration_hub_refactor_spaces).
 
 -export([create_application/3,
@@ -83,8 +88,9 @@
 %%
 %% The account that owns the environment also owns the applications created
 %% inside the environment, regardless of the account that creates the
-%% application. Refactor Spaces provisions the Amazon API Gateway and Network
-%% Load Balancer for the application proxy inside your account.
+%% application. Refactor Spaces provisions an Amazon API Gateway, API Gateway
+%% VPC link, and Network Load Balancer for the application proxy inside your
+%% account.
 create_application(Client, EnvironmentIdentifier, Input) ->
     create_application(Client, EnvironmentIdentifier, Input, []).
 create_application(Client, EnvironmentIdentifier, Input0, Options0) ->
@@ -110,11 +116,13 @@ create_application(Client, EnvironmentIdentifier, Input0, Options0) ->
 %% @doc Creates an Amazon Web Services Migration Hub Refactor Spaces
 %% environment.
 %%
-%% The caller owns the environment resource, and they are referred to as the
-%% environment owner. The environment owner has cross-account visibility and
-%% control of Refactor Spaces resources that are added to the environment by
-%% other accounts that the environment is shared with. When creating an
-%% environment, Refactor Spaces provisions a transit gateway in your account.
+%% The caller owns the environment resource, and all Refactor Spaces
+%% applications, services, and routes created within the environment. They
+%% are referred to as the environment owner. The environment owner has
+%% cross-account visibility and control of Refactor Spaces resources that are
+%% added to the environment by other accounts that the environment is shared
+%% with. When creating an environment, Refactor Spaces provisions a transit
+%% gateway in your account.
 create_environment(Client, Input) ->
     create_environment(Client, Input, []).
 create_environment(Client, Input0, Options0) ->
@@ -156,11 +164,12 @@ create_environment(Client, Input0, Options0) ->
 %% internet.
 %%
 %% </li> <li> If the service has an Lambda function endpoint, then Refactor
-%% Spaces uses the API Gateway Lambda integration.
+%% Spaces configures the Lambda function's resource policy to allow the
+%% application's API Gateway to invoke the function.
 %%
-%% </li> </ul> A health check is performed on the service when the route is
-%% created. If the health check fails, the route transitions to `FAILED', and
-%% no traffic is sent to the service.
+%% </li> </ul> A one-time health check is performed on the service when the
+%% route is created. If the health check fails, the route transitions to
+%% `FAILED', and no traffic is sent to the service.
 %%
 %% For Lambda functions, the Lambda function state is checked. If the
 %% function is not active, the function configuration is updated so that
@@ -179,6 +188,11 @@ create_environment(Client, Input0, Options0) ->
 %% checks for your target groups. The health check is considered successful
 %% if at least one target within the target group transitions to a healthy
 %% state.
+%%
+%% Services can have HTTP or HTTPS URL endpoints. For HTTPS URLs,
+%% publicly-signed certificates are supported. Private Certificate
+%% Authorities (CAs) are permitted only if the CA's domain is publicly
+%% resolvable.
 create_route(Client, ApplicationIdentifier, EnvironmentIdentifier, Input) ->
     create_route(Client, ApplicationIdentifier, EnvironmentIdentifier, Input, []).
 create_route(Client, ApplicationIdentifier, EnvironmentIdentifier, Input0, Options0) ->
@@ -208,7 +222,7 @@ create_route(Client, ApplicationIdentifier, EnvironmentIdentifier, Input0, Optio
 %% Services have either a URL endpoint in a virtual private cloud (VPC), or a
 %% Lambda function endpoint.
 %%
-%% If an Amazon Web Services resourceis launched in a service VPC, and you
+%% If an Amazon Web Services resource is launched in a service VPC, and you
 %% want it to be accessible to all of an environment’s services with VPCs and
 %% routes, apply the `RefactorSpacesSecurityGroup' to the resource.
 %% Alternatively, to add more cross-account constraints, apply your own
@@ -505,8 +519,8 @@ list_applications(Client, EnvironmentIdentifier, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all the virtual private clouds (VPCs) that are part of an
-%% Amazon Web Services Migration Hub Refactor Spaces environment.
+%% @doc Lists all Amazon Web Services Migration Hub Refactor Spaces service
+%% virtual private clouds (VPCs) that are part of the environment.
 list_environment_vpcs(Client, EnvironmentIdentifier)
   when is_map(Client) ->
     list_environment_vpcs(Client, EnvironmentIdentifier, #{}, #{}).

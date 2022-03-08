@@ -186,9 +186,8 @@ create_cluster(Client, Input, Options)
 %%
 %% Tasks for services that don't use a load balancer are considered healthy
 %% if they're in the `RUNNING' state. Tasks for services that use a load
-%% balancer are considered healthy if they're in the `RUNNING' state and the
-%% container instance that they're hosted on is reported as healthy by the
-%% load balancer.
+%% balancer are considered healthy if they're in the `RUNNING' state and are
+%% reported as healthy by the load balancer.
 %%
 %% There are two service scheduler strategies available:
 %%
@@ -665,7 +664,7 @@ list_tasks(Client, Input, Options)
 %% and opt-out account setting must be set for each Amazon ECS resource
 %% separately. The ARN and resource ID format of a resource is defined by the
 %% opt-in status of the IAM user or role that created the resource. You must
-%% enable this setting to use Amazon ECS features such as resource tagging.
+%% turn on this setting to use Amazon ECS features such as resource tagging.
 %%
 %% When `awsvpcTrunking' is specified, the elastic network interface (ENI)
 %% limit for any new container instances that support the feature is changed.
@@ -987,8 +986,8 @@ update_container_agent(Client, Input, Options)
 %% replacement tasks are considered healthy. Tasks for services that do not
 %% use a load balancer are considered healthy if they're in the `RUNNING'
 %% state. Tasks for services that use a load balancer are considered healthy
-%% if they're in the `RUNNING' state and the container instance they're
-%% hosted on is reported as healthy by the load balancer.
+%% if they're in the `RUNNING' state and are reported as healthy by the load
+%% balancer..
 %%
 %% </li> <li> The `maximumPercent' parameter represents an upper limit on the
 %% number of running tasks during task replacement. You can use this to
@@ -1024,23 +1023,27 @@ update_container_instances_state(Client, Input, Options)
 %%
 %% Modifies the parameters of a service.
 %%
-%% For services using the rolling update (`ECS') deployment controller, the
-%% desired count, deployment configuration, network configuration, task
-%% placement constraints and strategies, or task definition used can be
-%% updated.
+%% For services using the rolling update (`ECS') you can update the desired
+%% count, the deployment configuration, the network configuration, load
+%% balancers, service registries, enable ECS managed tags option, propagate
+%% tags option, task placement constraints and strategies, and the task
+%% definition. When you update any of these parameters, Amazon ECS starts new
+%% tasks with the new configuration.
 %%
 %% For services using the blue/green (`CODE_DEPLOY') deployment controller,
 %% only the desired count, deployment configuration, task placement
-%% constraints and strategies, and health check grace period can be updated
-%% using this API. If the network configuration, platform version, or task
-%% definition need to be updated, a new CodeDeploy deployment is created. For
-%% more information, see CreateDeployment in the CodeDeploy API Reference.
+%% constraints and strategies, enable ECS managed tags option, and propagate
+%% tags can be updated using this API. If the network configuration, platform
+%% version, task definition, or load balancer need to be updated, create a
+%% new CodeDeploy deployment. For more information, see CreateDeployment in
+%% the CodeDeploy API Reference.
 %%
 %% For services using an external deployment controller, you can update only
-%% the desired count, task placement constraints and strategies, and health
-%% check grace period using this API. If the launch type, load balancer,
-%% network configuration, platform version, or task definition need to be
-%% updated, create a new task set. For more information, see `CreateTaskSet'.
+%% the desired count, task placement constraints and strategies, health check
+%% grace period, enable ECS managed tags option, and propagate tags option,
+%% using this API. If the launch type, load balancer, network configuration,
+%% platform version, or task definition need to be updated, create a new task
+%% set For more information, see `CreateTaskSet'.
 %%
 %% You can add to or subtract from the number of instantiations of a task
 %% definition in a service by specifying the cluster that the service is
@@ -1071,8 +1074,8 @@ update_container_instances_state(Client, Input, Options)
 %% stop two existing tasks before starting two new tasks. Tasks for services
 %% that don't use a load balancer are considered healthy if they're in the
 %% `RUNNING' state. Tasks for services that use a load balancer are
-%% considered healthy if they're in the `RUNNING' state and the container
-%% instance they're hosted on is reported as healthy by the load balancer.
+%% considered healthy if they're in the `RUNNING' state and are reported as
+%% healthy by the load balancer.
 %%
 %% </li> <li> The `maximumPercent' parameter represents an upper limit on the
 %% number of running tasks during a deployment. You can use it to define the
@@ -1123,7 +1126,16 @@ update_container_instances_state(Client, Input, Options)
 %% Availability Zone (based on the previous steps), favoring container
 %% instances with the largest number of running tasks for this service.
 %%
-%% </li> </ul>
+%% </li> </ul> You must have a service-linked role when you update any of the
+%% following service properties. If you specified a custom IAM role when you
+%% created the service, Amazon ECS automatically replaces the roleARN
+%% associated with the service with the ARN of your service-linked role. For
+%% more information, see Service-linked roles in the Amazon Elastic Container
+%% Service Developer Guide.
+%%
+%% `loadBalancers,'
+%%
+%% `serviceRegistries'
 update_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service(Client, Input, []).
