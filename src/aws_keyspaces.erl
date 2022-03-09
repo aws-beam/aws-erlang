@@ -14,15 +14,19 @@
 %% open-source Cassandra drivers, Amazon Keyspaces supports data definition
 %% language (DDL) operations to manage keyspaces and tables using the Amazon
 %% Web Services SDK and CLI. This API reference describes the supported DDL
-%% operations in detail. </p> <note> <p>For the list of all supported CQL
-%% APIs, see <a
+%% operations in detail. </p> <p>For the list of all supported CQL APIs, see
+%% <a
 %% href="https://docs.aws.amazon.com/keyspaces/latest/devguide/cassandra-apis.html">Supported
 %% Cassandra APIs, operations, and data types in Amazon Keyspaces</a> in the
-%% <i>Amazon Keyspaces Developer Guide</i>.</p> <p>For more information about
-%% Amazon Web Services APIs, for example how to implement retry logic or how
-%% to sign Amazon Web Services API requests, see <a
+%% <i>Amazon Keyspaces Developer Guide</i>.</p> <p>To learn how Amazon
+%% Keyspaces API actions are tracked in CloudTrail, see <a
+%% href="https://docs.aws.amazon.com/keyspaces/latest/devguide/logging-using-cloudtrail.html#service-name-info-in-cloudtrail">Amazon
+%% Keyspaces information in CloudTrail</a> in the <i>Amazon Keyspaces
+%% Developer Guide</i>.</p> <p>For more information about Amazon Web Services
+%% APIs, for example how to implement retry logic or how to sign Amazon Web
+%% Services API requests, see <a
 %% href="https://docs.aws.amazon.com/general/latest/gr/aws-apis.html">Amazon
-%% Web Services APIs</a> in the <i>General Reference</i>. </p> </note>
+%% Web Services APIs</a> in the <i>General Reference</i>. </p>
 -module(aws_keyspaces).
 
 -export([create_keyspace/2,
@@ -131,6 +135,9 @@ get_keyspace(Client, Input, Options)
 
 %% @doc Returns information about the table, including the table's name and
 %% current status, the keyspace name, configuration settings, and metadata.
+%%
+%% To read table metadata using `GetTable', `Select' action permissions for
+%% the table and system tables are required to complete the operation.
 get_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_table(Client, Input, []).
@@ -219,10 +226,13 @@ restore_table(Client, Input, Options)
 %% @doc Associates a set of tags with a Amazon Keyspaces resource.
 %%
 %% You can then activate these user-defined tags so that they appear on the
-%% Cost Management Console for cost allocation tracking.
+%% Cost Management Console for cost allocation tracking. For more
+%% information, see Adding tags and labels to Amazon Keyspaces resources in
+%% the Amazon Keyspaces Developer Guide.
 %%
-%% For more information, see Adding tags and labels to Amazon Keyspaces
-%% resources in the Amazon Keyspaces Developer Guide.
+%% For IAM policy examples that show how to control access to Amazon
+%% Keyspaces resources based on tags, see Amazon Keyspaces resource access
+%% based on tags in the Amazon Keyspaces Developer Guide.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
