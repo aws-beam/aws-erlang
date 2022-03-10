@@ -59,6 +59,8 @@
          describe_resource_policy/3,
          describe_sentiment_detection_job/2,
          describe_sentiment_detection_job/3,
+         describe_targeted_sentiment_detection_job/2,
+         describe_targeted_sentiment_detection_job/3,
          describe_topics_detection_job/2,
          describe_topics_detection_job/3,
          detect_dominant_language/2,
@@ -101,6 +103,8 @@
          list_sentiment_detection_jobs/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         list_targeted_sentiment_detection_jobs/2,
+         list_targeted_sentiment_detection_jobs/3,
          list_topics_detection_jobs/2,
          list_topics_detection_jobs/3,
          put_resource_policy/2,
@@ -119,6 +123,8 @@
          start_pii_entities_detection_job/3,
          start_sentiment_detection_job/2,
          start_sentiment_detection_job/3,
+         start_targeted_sentiment_detection_job/2,
+         start_targeted_sentiment_detection_job/3,
          start_topics_detection_job/2,
          start_topics_detection_job/3,
          stop_dominant_language_detection_job/2,
@@ -133,6 +139,8 @@
          stop_pii_entities_detection_job/3,
          stop_sentiment_detection_job/2,
          stop_sentiment_detection_job/3,
+         stop_targeted_sentiment_detection_job/2,
+         stop_targeted_sentiment_detection_job/3,
          stop_training_document_classifier/2,
          stop_training_document_classifier/3,
          stop_training_entity_recognizer/2,
@@ -416,6 +424,17 @@ describe_sentiment_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSentimentDetectionJob">>, Input, Options).
 
+%% @doc Gets the properties associated with a targeted sentiment detection
+%% job.
+%%
+%% Use this operation to get the status of the job.
+describe_targeted_sentiment_detection_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_targeted_sentiment_detection_job(Client, Input, []).
+describe_targeted_sentiment_detection_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTargetedSentimentDetectionJob">>, Input, Options).
+
 %% @doc Gets the properties associated with a topic detection job.
 %%
 %% Use this operation to get the status of a detection job.
@@ -617,6 +636,15 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
+%% @doc Gets a list of targeted sentiment detection jobs that you have
+%% submitted.
+list_targeted_sentiment_detection_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_targeted_sentiment_detection_jobs(Client, Input, []).
+list_targeted_sentiment_detection_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTargetedSentimentDetectionJobs">>, Input, Options).
+
 %% @doc Gets a list of the topic detection jobs that you have submitted.
 list_topics_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -706,13 +734,24 @@ start_pii_entities_detection_job(Client, Input, Options)
 %% @doc Starts an asynchronous sentiment detection job for a collection of
 %% documents.
 %%
-%% use the operation to track the status of a job.
+%% Use the operation to track the status of a job.
 start_sentiment_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_sentiment_detection_job(Client, Input, []).
 start_sentiment_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartSentimentDetectionJob">>, Input, Options).
+
+%% @doc Starts an asynchronous targeted sentiment detection job for a
+%% collection of documents.
+%%
+%% Use the operation to track the status of a job.
+start_targeted_sentiment_detection_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_targeted_sentiment_detection_job(Client, Input, []).
+start_targeted_sentiment_detection_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartTargetedSentimentDetectionJob">>, Input, Options).
 
 %% @doc Starts an asynchronous topic detection job.
 %%
@@ -820,6 +859,26 @@ stop_sentiment_detection_job(Client, Input)
 stop_sentiment_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopSentimentDetectionJob">>, Input, Options).
+
+%% @doc Stops a targeted sentiment detection job in progress.
+%%
+%% If the job state is `IN_PROGRESS' the job is marked for termination and
+%% put into the `STOP_REQUESTED' state. If the job completes before it can be
+%% stopped, it is put into the `COMPLETED' state; otherwise the job is be
+%% stopped and put into the `STOPPED' state.
+%%
+%% If the job is in the `COMPLETED' or `FAILED' state when you call the
+%% `StopDominantLanguageDetectionJob' operation, the operation returns a 400
+%% Internal Request Exception.
+%%
+%% When a job is stopped, any documents already processed are written to the
+%% output location.
+stop_targeted_sentiment_detection_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_targeted_sentiment_detection_job(Client, Input, []).
+stop_targeted_sentiment_detection_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopTargetedSentimentDetectionJob">>, Input, Options).
 
 %% @doc Stops a document classifier training job while in progress.
 %%
