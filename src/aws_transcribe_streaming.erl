@@ -124,7 +124,9 @@ start_stream_transcription(Client, Input0, Options0) ->
                        {<<"x-amzn-transcribe-show-speaker-label">>, <<"ShowSpeakerLabel">>},
                        {<<"x-amzn-transcribe-vocabulary-filter-method">>, <<"VocabularyFilterMethod">>},
                        {<<"x-amzn-transcribe-vocabulary-filter-name">>, <<"VocabularyFilterName">>},
-                       {<<"x-amzn-transcribe-vocabulary-name">>, <<"VocabularyName">>}
+                       {<<"x-amzn-transcribe-vocabulary-filter-names">>, <<"VocabularyFilterNames">>},
+                       {<<"x-amzn-transcribe-vocabulary-name">>, <<"VocabularyName">>},
+                       {<<"x-amzn-transcribe-vocabulary-names">>, <<"VocabularyNames">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
@@ -157,7 +159,9 @@ start_stream_transcription(Client, Input0, Options0) ->
             {<<"x-amzn-transcribe-show-speaker-label">>, <<"ShowSpeakerLabel">>},
             {<<"x-amzn-transcribe-vocabulary-filter-method">>, <<"VocabularyFilterMethod">>},
             {<<"x-amzn-transcribe-vocabulary-filter-name">>, <<"VocabularyFilterName">>},
-            {<<"x-amzn-transcribe-vocabulary-name">>, <<"VocabularyName">>}
+            {<<"x-amzn-transcribe-vocabulary-filter-names">>, <<"VocabularyFilterNames">>},
+            {<<"x-amzn-transcribe-vocabulary-name">>, <<"VocabularyName">>},
+            {<<"x-amzn-transcribe-vocabulary-names">>, <<"VocabularyNames">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
                       case lists:keyfind(Name_, 1, ResponseHeaders) of

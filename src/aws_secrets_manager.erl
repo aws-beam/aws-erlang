@@ -285,7 +285,9 @@ list_secret_version_ids(Client, Input, Options)
     request(Client, <<"ListSecretVersionIds">>, Input, Options).
 
 %% @doc Lists the secrets that are stored by Secrets Manager in the Amazon
-%% Web Services account.
+%% Web Services account, not including secrets that are marked for deletion.
+%%
+%% To see secrets marked for deletion, use the Secrets Manager console.
 %%
 %% To list the versions of a secret, use `ListSecretVersionIds'.
 %%

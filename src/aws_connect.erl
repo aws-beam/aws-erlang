@@ -2928,12 +2928,18 @@ start_chat_contact(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts recording the contact when the agent joins the call.
+%% @doc Starts recording the contact:
 %%
-%% StartContactRecording is a one-time action. For example, if you use
-%% StopContactRecording to stop recording an ongoing call, you can't use
-%% StartContactRecording to restart it. For scenarios where the recording has
-%% started and you want to suspend and resume it, such as when collecting
+%% <ul> <li> If the API is called before the agent joins the call, recording
+%% starts when the agent joins the call.
+%%
+%% </li> <li> If the API is called after the agent joins the call, recording
+%% starts at the time of the API call.
+%%
+%% </li> </ul> StartContactRecording is a one-time action. For example, if
+%% you use StopContactRecording to stop recording an ongoing call, you can't
+%% use StartContactRecording to restart it. For scenarios where the recording
+%% has started and you want to suspend and resume it, such as when collecting
 %% sensitive information (for example, a credit card number), use
 %% SuspendContactRecording and ResumeContactRecording.
 %%
@@ -3058,6 +3064,18 @@ start_task_contact(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Ends the specified contact.
+%%
+%% This call does not work for the following initiation methods:
+%%
+%% <ul> <li> CALLBACK
+%%
+%% </li> <li> DISCONNECT
+%%
+%% </li> <li> TRANSFER
+%%
+%% </li> <li> QUEUE_TRANSFER
+%%
+%% </li> </ul>
 stop_contact(Client, Input) ->
     stop_contact(Client, Input, []).
 stop_contact(Client, Input0, Options0) ->
