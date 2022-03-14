@@ -5549,9 +5549,10 @@ update_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Allows you to trigger a Lambda function at any time while a call is
-%% active, and replace the current actions with new actions returned by the
-%% invocation.
+%% @doc Invokes the AWS Lambda function associated with the SIP media
+%% application and transaction ID in an update request.
+%%
+%% The Lambda function can then return a new set of actions.
 update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input) ->
     update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input, []).
 update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input0, Options0) ->
