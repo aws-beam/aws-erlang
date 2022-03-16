@@ -55,6 +55,8 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         revoke_revision/4,
+         revoke_revision/5,
          send_api_asset/2,
          send_api_asset/3,
          start_job/3,
@@ -575,6 +577,29 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This operation revokes subscribers' access to a revision.
+revoke_revision(Client, DataSetId, RevisionId, Input) ->
+    revoke_revision(Client, DataSetId, RevisionId, Input, []).
+revoke_revision(Client, DataSetId, RevisionId, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), "/revoke"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation invokes an API Gateway API asset.
 %%

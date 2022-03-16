@@ -1785,27 +1785,28 @@ modify_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyCertificates">>, Input, Options).
 
-%% @doc Set the capacity of an Aurora Serverless DB cluster to a specific
+%% @doc Set the capacity of an Aurora Serverless v1 DB cluster to a specific
 %% value.
 %%
-%% Aurora Serverless scales seamlessly based on the workload on the DB
+%% Aurora Serverless v1 scales seamlessly based on the workload on the DB
 %% cluster. In some cases, the capacity might not scale fast enough to meet a
 %% sudden change in workload, such as a large number of new transactions.
 %% Call `ModifyCurrentDBClusterCapacity' to set the capacity explicitly.
 %%
-%% After this call sets the DB cluster capacity, Aurora Serverless can
+%% After this call sets the DB cluster capacity, Aurora Serverless v1 can
 %% automatically scale the DB cluster based on the cooldown period for
 %% scaling up and the cooldown period for scaling down.
 %%
-%% For more information about Aurora Serverless, see Using Amazon Aurora
-%% Serverless in the Amazon Aurora User Guide.
+%% For more information about Aurora Serverless v1, see Using Amazon Aurora
+%% Serverless v1 in the Amazon Aurora User Guide.
 %%
 %% If you call `ModifyCurrentDBClusterCapacity' with the default
-%% `TimeoutAction', connections that prevent Aurora Serverless from finding a
-%% scaling point might be dropped. For more information about scaling points,
-%% see Autoscaling for Aurora Serverless in the Amazon Aurora User Guide.
+%% `TimeoutAction', connections that prevent Aurora Serverless v1 from
+%% finding a scaling point might be dropped. For more information about
+%% scaling points, see Autoscaling for Aurora Serverless v1 in the Amazon
+%% Aurora User Guide.
 %%
-%% This action only applies to Aurora Serverless DB clusters.
+%% This action only applies to Aurora Serverless v1 DB clusters.
 modify_current_db_cluster_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_current_db_cluster_capacity(Client, Input, []).
@@ -1882,10 +1883,10 @@ modify_db_cluster_endpoint(Client, Input, Options)
 %% modified.
 %%
 %% If the modified DB cluster parameter group is used by an Aurora Serverless
-%% cluster, Aurora applies the update immediately. The cluster restart might
-%% interrupt your workload. In that case, your application must reopen any
-%% connections and retry any transactions that were active when the parameter
-%% changes took effect.
+%% v1 cluster, Aurora applies the update immediately. The cluster restart
+%% might interrupt your workload. In that case, your application must reopen
+%% any connections and retry any transactions that were active when the
+%% parameter changes took effect.
 %%
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
 %% Aurora? in the Amazon Aurora User Guide.
