@@ -10,7 +10,10 @@
          delete_endpoint/3,
          list_endpoints/1,
          list_endpoints/3,
-         list_endpoints/4]).
+         list_endpoints/4,
+         list_shared_endpoints/2,
+         list_shared_endpoints/4,
+         list_shared_endpoints/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -18,17 +21,9 @@
 %% API
 %%====================================================================
 
-%% @doc Amazon S3 on Outposts Access Points simplify managing data access at
-%% scale for shared datasets in S3 on Outposts.
+%% @doc Creates an endpoint and associates it with the specified Outpost.
 %%
-%% S3 on Outposts uses endpoints to connect to Outposts buckets so that you
-%% can perform actions within your virtual private cloud (VPC). For more
-%% information, see Accessing S3 on Outposts using VPC only access points.
-%%
-%% This action creates an endpoint and associates it with the specified
-%% Outposts.
-%%
-%% It can take up to 5 minutes for this action to complete.
+%% It can take up to 5 minutes for this action to finish.
 %%
 %% Related actions include:
 %%
@@ -59,16 +54,9 @@ create_endpoint(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Amazon S3 on Outposts Access Points simplify managing data access at
-%% scale for shared datasets in S3 on Outposts.
+%% @doc Deletes an endpoint.
 %%
-%% S3 on Outposts uses endpoints to connect to Outposts buckets so that you
-%% can perform actions within your virtual private cloud (VPC). For more
-%% information, see Accessing S3 on Outposts using VPC only access points.
-%%
-%% This action deletes an endpoint.
-%%
-%% It can take up to 5 minutes for this action to complete.
+%% It can take up to 5 minutes for this action to finish.
 %%
 %% Related actions include:
 %%
@@ -101,14 +89,7 @@ delete_endpoint(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Amazon S3 on Outposts Access Points simplify managing data access at
-%% scale for shared datasets in S3 on Outposts.
-%%
-%% S3 on Outposts uses endpoints to connect to Outposts buckets so that you
-%% can perform actions within your virtual private cloud (VPC). For more
-%% information, see Accessing S3 on Outposts using VPC only access points.
-%%
-%% This action lists endpoints associated with the Outposts.
+%% @doc Lists endpoints associated with the specified Outpost.
 %%
 %% Related actions include:
 %%
@@ -139,6 +120,44 @@ list_endpoints(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all endpoints associated with an Outpost that has been shared
+%% by Amazon Web Services Resource Access Manager (RAM).
+%%
+%% Related actions include:
+%%
+%% <ul> <li> CreateEndpoint
+%%
+%% </li> <li> DeleteEndpoint
+%%
+%% </li> </ul>
+list_shared_endpoints(Client, OutpostId)
+  when is_map(Client) ->
+    list_shared_endpoints(Client, OutpostId, #{}, #{}).
+
+list_shared_endpoints(Client, OutpostId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_shared_endpoints(Client, OutpostId, QueryMap, HeadersMap, []).
+
+list_shared_endpoints(Client, OutpostId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/S3Outposts/ListSharedEndpoints"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"outpostId">>, OutpostId}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
