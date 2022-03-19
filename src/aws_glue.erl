@@ -36,6 +36,8 @@
          batch_update_partition/3,
          cancel_ml_task_run/2,
          cancel_ml_task_run/3,
+         cancel_statement/2,
+         cancel_statement/3,
          check_schema_version_validity/2,
          check_schema_version_validity/3,
          create_blueprint/2,
@@ -66,6 +68,8 @@
          create_script/3,
          create_security_configuration/2,
          create_security_configuration/3,
+         create_session/2,
+         create_session/3,
          create_table/2,
          create_table/3,
          create_trigger/2,
@@ -108,6 +112,8 @@
          delete_schema_versions/3,
          delete_security_configuration/2,
          delete_security_configuration/3,
+         delete_session/2,
+         delete_session/3,
          delete_table/2,
          delete_table/3,
          delete_table_version/2,
@@ -202,6 +208,10 @@
          get_security_configuration/3,
          get_security_configurations/2,
          get_security_configurations/3,
+         get_session/2,
+         get_session/3,
+         get_statement/2,
+         get_statement/3,
          get_table/2,
          get_table/3,
          get_table_version/2,
@@ -252,6 +262,10 @@
          list_schema_versions/3,
          list_schemas/2,
          list_schemas/3,
+         list_sessions/2,
+         list_sessions/3,
+         list_statements/2,
+         list_statements/3,
          list_triggers/2,
          list_triggers/3,
          list_workflows/2,
@@ -274,6 +288,8 @@
          reset_job_bookmark/3,
          resume_workflow_run/2,
          resume_workflow_run/3,
+         run_statement/2,
+         run_statement/3,
          search_tables/2,
          search_tables/3,
          start_blueprint_run/2,
@@ -300,6 +316,8 @@
          stop_crawler/3,
          stop_crawler_schedule/2,
          stop_crawler_schedule/3,
+         stop_session/2,
+         stop_session/3,
          stop_trigger/2,
          stop_trigger/3,
          stop_workflow_run/2,
@@ -516,6 +534,14 @@ cancel_ml_task_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelMLTaskRun">>, Input, Options).
 
+%% @doc Cancels the statement..
+cancel_statement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_statement(Client, Input, []).
+cancel_statement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelStatement">>, Input, Options).
+
 %% @doc Validates the supplied schema.
 %%
 %% This call has no side effects, it simply validates using the supplied
@@ -680,6 +706,14 @@ create_security_configuration(Client, Input)
 create_security_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSecurityConfiguration">>, Input, Options).
+
+%% @doc Creates a new session.
+create_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_session(Client, Input, []).
+create_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateSession">>, Input, Options).
 
 %% @doc Creates a new table definition in the Data Catalog.
 create_table(Client, Input)
@@ -906,6 +940,14 @@ delete_security_configuration(Client, Input)
 delete_security_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSecurityConfiguration">>, Input, Options).
+
+%% @doc Deletes the session.
+delete_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_session(Client, Input, []).
+delete_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteSession">>, Input, Options).
 
 %% @doc Removes a table definition from the Data Catalog.
 %%
@@ -1358,6 +1400,22 @@ get_security_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSecurityConfigurations">>, Input, Options).
 
+%% @doc Retrieves the session.
+get_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_session(Client, Input, []).
+get_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetSession">>, Input, Options).
+
+%% @doc Retrieves the statement.
+get_statement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_statement(Client, Input, []).
+get_statement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetStatement">>, Input, Options).
+
 %% @doc Retrieves the `Table' definition in a Data Catalog for a specified
 %% table.
 get_table(Client, Input)
@@ -1609,6 +1667,22 @@ list_schemas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSchemas">>, Input, Options).
 
+%% @doc Retrieve a session..
+list_sessions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_sessions(Client, Input, []).
+list_sessions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSessions">>, Input, Options).
+
+%% @doc Lists statements for the session.
+list_statements(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_statements(Client, Input, []).
+list_statements(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListStatements">>, Input, Options).
+
 %% @doc Retrieves the names of all trigger resources in this Amazon Web
 %% Services account, or the resources with the specified tag.
 %%
@@ -1734,6 +1808,14 @@ resume_workflow_run(Client, Input)
 resume_workflow_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResumeWorkflowRun">>, Input, Options).
+
+%% @doc Executes the statement.
+run_statement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    run_statement(Client, Input, []).
+run_statement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RunStatement">>, Input, Options).
 
 %% @doc Searches a set of tables based on properties in the table metadata as
 %% well as on the parent database.
@@ -1918,6 +2000,14 @@ stop_crawler_schedule(Client, Input)
 stop_crawler_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopCrawlerSchedule">>, Input, Options).
+
+%% @doc Stops the session.
+stop_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_session(Client, Input, []).
+stop_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopSession">>, Input, Options).
 
 %% @doc Stops a specified trigger.
 stop_trigger(Client, Input)
