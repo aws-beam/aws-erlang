@@ -573,7 +573,7 @@ list_resource_types(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the resources that you added to a resource shares or the
+%% @doc Lists the resources that you added to a resource share or the
 %% resources that are shared with you.
 list_resources(Client, Input) ->
     list_resources(Client, Input, []).

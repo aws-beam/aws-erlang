@@ -121,6 +121,9 @@
          describe_group/4,
          describe_group/6,
          describe_group/7,
+         describe_group_membership/5,
+         describe_group_membership/7,
+         describe_group_membership/8,
          describe_iam_policy_assignment/4,
          describe_iam_policy_assignment/6,
          describe_iam_policy_assignment/7,
@@ -240,6 +243,8 @@
          search_dashboards/4,
          search_folders/3,
          search_folders/4,
+         search_groups/4,
+         search_groups/5,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -520,7 +525,7 @@ create_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, I
 %% @doc Creates an Amazon QuickSight group.
 %%
 %% The permissions resource is
-%% `arn:aws:quicksight:us-east-1:<relevant-aws-account-id>:group/default/<group-name>
+%% `arn:aws:quicksight:<your-region>:<relevant-aws-account-id>:group/default/<group-name>
 %% '.
 %%
 %% The response is a group object.
@@ -1595,6 +1600,33 @@ describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap)
 describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Use the `DescribeGroupMembership' operation to determine if a user is
+%% a member of the specified group.
+%%
+%% If the user exists and is a member of the specified group, an associated
+%% `GroupMember' object is returned.
+describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace)
+  when is_map(Client) ->
+    describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, #{}, #{}).
+
+describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, QueryMap, HeadersMap, []).
+
+describe_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups/", aws_util:encode_uri(GroupName), "/members/", aws_util:encode_uri(MemberName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2823,6 +2855,32 @@ search_folders(Client, AwsAccountId, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Use the `SearchGroups' operation to search groups in a specified
+%% Amazon QuickSight namespace using the supplied filters.
+search_groups(Client, AwsAccountId, Namespace, Input) ->
+    search_groups(Client, AwsAccountId, Namespace, Input, []).
+search_groups(Client, AwsAccountId, Namespace, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/groups-search"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"max-results">>, <<"MaxResults">>},
+                     {<<"next-token">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Assigns one or more tags (key-value pairs) to the specified Amazon
