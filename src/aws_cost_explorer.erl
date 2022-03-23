@@ -71,8 +71,14 @@
          get_usage_forecast/3,
          list_cost_category_definitions/2,
          list_cost_category_definitions/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          provide_anomaly_feedback/2,
          provide_anomaly_feedback/3,
+         tag_resource/2,
+         tag_resource/3,
+         untag_resource/2,
+         untag_resource/3,
          update_anomaly_monitor/2,
          update_anomaly_monitor/3,
          update_anomaly_subscription/2,
@@ -462,6 +468,15 @@ list_cost_category_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCostCategoryDefinitions">>, Input, Options).
 
+%% @doc Returns a list of resource tags associated with the resource
+%% specified by the Amazon Resource Name (ARN).
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
+
 %% @doc Modifies the feedback property of a given cost anomaly.
 provide_anomaly_feedback(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -470,9 +485,37 @@ provide_anomaly_feedback(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ProvideAnomalyFeedback">>, Input, Options).
 
+%% @doc An API operation for adding one or more tags (key-value pairs) to a
+%% resource.
+%%
+%% You can use the `TagResource' operation with a resource that already has
+%% tags. If you specify a new tag key for the resource, this tag is appended
+%% to the list of tags associated with the resource. If you specify a tag key
+%% that is already associated with the resource, the new tag value you
+%% specify replaces the previous value for that tag.
+%%
+%% Although the maximum number of array members is 200, user-tag maximum is
+%% 50. The remaining are reserved for Amazon Web Services use.
+tag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    tag_resource(Client, Input, []).
+tag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TagResource">>, Input, Options).
+
+%% @doc Removes one or more tags from a resource.
+%%
+%% Specify only tag key(s) in your request. Do not specify the value.
+untag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    untag_resource(Client, Input, []).
+untag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UntagResource">>, Input, Options).
+
 %% @doc Updates an existing cost anomaly monitor.
 %%
-%% The changes made are applied going forward, and doesn'tt change anomalies
+%% The changes made are applied going forward, and doesn't change anomalies
 %% detected in the past.
 update_anomaly_monitor(Client, Input)
   when is_map(Client), is_map(Input) ->
