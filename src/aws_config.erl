@@ -136,12 +136,16 @@
          get_conformance_pack_compliance_details/3,
          get_conformance_pack_compliance_summary/2,
          get_conformance_pack_compliance_summary/3,
+         get_custom_rule_policy/2,
+         get_custom_rule_policy/3,
          get_discovered_resource_counts/2,
          get_discovered_resource_counts/3,
          get_organization_config_rule_detailed_status/2,
          get_organization_config_rule_detailed_status/3,
          get_organization_conformance_pack_detailed_status/2,
          get_organization_conformance_pack_detailed_status/3,
+         get_organization_custom_rule_policy/2,
+         get_organization_custom_rule_policy/3,
          get_resource_config_history/2,
          get_resource_config_history/3,
          get_stored_query/2,
@@ -332,11 +336,11 @@ delete_evaluation_results(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEvaluationResults">>, Input, Options).
 
-%% @doc Deletes the specified organization config rule and all of its
+%% @doc Deletes the specified organization Config rule and all of its
 %% evaluation results from all member accounts in that organization.
 %%
 %% Only a master account and a delegated administrator account can delete an
-%% organization config rule. When calling this API with a delegated
+%% organization Config rule. When calling this API with a delegated
 %% administrator, you must ensure Organizations `ListDelegatedAdministrator'
 %% permissions are added.
 %%
@@ -350,7 +354,7 @@ delete_organization_config_rule(Client, Input, Options)
     request(Client, <<"DeleteOrganizationConfigRule">>, Input, Options).
 
 %% @doc Deletes the specified organization conformance pack and all of the
-%% config rules and remediation actions from all member accounts in that
+%% Config rules and remediation actions from all member accounts in that
 %% organization.
 %%
 %% Only a master account or a delegated administrator account can delete an
@@ -686,17 +690,17 @@ describe_delivery_channels(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDeliveryChannels">>, Input, Options).
 
-%% @doc Provides organization config rule deployment status for an
+%% @doc Provides organization Config rule deployment status for an
 %% organization.
 %%
-%% The status is not considered successful until organization config rule is
+%% The status is not considered successful until organization Config rule is
 %% successfully deployed in all the member accounts with an exception of
 %% excluded accounts.
 %%
 %% When you specify the limit and the next token, you receive a paginated
 %% response. Limit and next token are not applicable if you specify
-%% organization config rule names. It is only applicable, when you request
-%% all the organization config rules.
+%% organization Config rule names. It is only applicable, when you request
+%% all the organization Config rules.
 describe_organization_config_rule_statuses(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_organization_config_rule_statuses(Client, Input, []).
@@ -704,12 +708,12 @@ describe_organization_config_rule_statuses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeOrganizationConfigRuleStatuses">>, Input, Options).
 
-%% @doc Returns a list of organization config rules.
+%% @doc Returns a list of organization Config rules.
 %%
 %% When you specify the limit and the next token, you receive a paginated
 %% response. Limit and next token are not applicable if you specify
-%% organization config rule names. It is only applicable, when you request
-%% all the organization config rules.
+%% organization Config rule names. It is only applicable, when you request
+%% all the organization Config rules.
 describe_organization_config_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_organization_config_rules(Client, Input, []).
@@ -950,6 +954,15 @@ get_conformance_pack_compliance_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetConformancePackComplianceSummary">>, Input, Options).
 
+%% @doc Returns the policy definition containing the logic for your Config
+%% Custom Policy rule.
+get_custom_rule_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_custom_rule_policy(Client, Input, []).
+get_custom_rule_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCustomRulePolicy">>, Input, Options).
+
 %% @doc Returns the resource types, the number of each resource type, and the
 %% total number of resources that Config is recording in this region for your
 %% Amazon Web Services account.
@@ -995,7 +1008,7 @@ get_discovered_resource_counts(Client, Input, Options)
     request(Client, <<"GetDiscoveredResourceCounts">>, Input, Options).
 
 %% @doc Returns detailed status for each member account within an
-%% organization for a given organization config rule.
+%% organization for a given organization Config rule.
 get_organization_config_rule_detailed_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_organization_config_rule_detailed_status(Client, Input, []).
@@ -1011,6 +1024,15 @@ get_organization_conformance_pack_detailed_status(Client, Input)
 get_organization_conformance_pack_detailed_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOrganizationConformancePackDetailedStatus">>, Input, Options).
+
+%% @doc Returns the policy definition containing the logic for your
+%% organization Config Custom Policy rule.
+get_organization_custom_rule_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_organization_custom_rule_policy(Client, Input, []).
+get_organization_custom_rule_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetOrganizationCustomRulePolicy">>, Input, Options).
 
 %% @doc Returns a list of `ConfigurationItems' for the specified resource.
 %%
@@ -1270,12 +1292,12 @@ put_external_evaluation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutExternalEvaluation">>, Input, Options).
 
-%% @doc Adds or updates organization config rule for your entire organization
+%% @doc Adds or updates organization Config rule for your entire organization
 %% evaluating whether your Amazon Web Services resources comply with your
 %% desired configurations.
 %%
 %% Only a master account and a delegated administrator can create or update
-%% an organization config rule. When calling this API with a delegated
+%% an organization Config rule. When calling this API with a delegated
 %% administrator, you must ensure Organizations `ListDelegatedAdministrator'
 %% permissions are added.
 %%
@@ -1301,7 +1323,7 @@ put_external_evaluation(Client, Input, Options)
 %% Lambda assigns to the function. If you are adding an Config managed rule,
 %% specify the rule's identifier for the `RuleIdentifier' key.
 %%
-%% The maximum number of organization config rules that Config supports is
+%% The maximum number of organization Config rules that Config supports is
 %% 150 and 3 delegated administrator per organization.
 %%
 %% Prerequisite: Ensure you call `EnableAllFeatures' API to enable all
