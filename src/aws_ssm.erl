@@ -321,13 +321,13 @@
 
 %% @doc Adds or overwrites one or more tags for the specified resource.
 %%
-%% Tags are metadata that you can assign to your automations, documents,
-%% managed nodes, maintenance windows, Parameter Store parameters, and patch
-%% baselines. Tags enable you to categorize your resources in different ways,
-%% for example, by purpose, owner, or environment. Each tag consists of a key
-%% and an optional value, both of which you define. For example, you could
-%% define a set of tags for your account's managed nodes that helps you track
-%% each node's owner and stack level. For example:
+%% Tags are metadata that you can assign to your documents, managed nodes,
+%% maintenance windows, Parameter Store parameters, and patch baselines. Tags
+%% enable you to categorize your resources in different ways, for example, by
+%% purpose, owner, or environment. Each tag consists of a key and an optional
+%% value, both of which you define. For example, you could define a set of
+%% tags for your account's managed nodes that helps you track each node's
+%% owner and stack level. For example:
 %%
 %% <ul> <li> `Key=Owner,Value=DbAdmin'
 %%
@@ -341,8 +341,7 @@
 %%
 %% </li> <li> `Key=Stack,Value=Test'
 %%
-%% </li> </ul> Most resources can have a maximum of 50 tags. Automations can
-%% have a maximum of 5 tags.
+%% </li> </ul> Each resource can have a maximum of 50 tags.
 %%
 %% We recommend that you devise a set of tag keys that meets your needs for
 %% each resource type. Using a consistent set of tag keys makes it easier for
@@ -1240,13 +1239,16 @@ get_maintenance_window_execution_task_invocation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMaintenanceWindowExecutionTaskInvocation">>, Input, Options).
 
-%% @doc Lists the tasks in a maintenance window.
+%% @doc Retrieves the details of a maintenance window task.
 %%
 %% For maintenance window tasks without a specified target, you can't supply
 %% values for `--max-errors' and `--max-concurrency'. Instead, the system
 %% inserts a placeholder value of `1', which may be reported in the response
 %% to this command. These values don't affect the running of your task and
 %% can be ignored.
+%%
+%% To retrieve a list of tasks in a maintenance window, instead use the
+%% `DescribeMaintenanceWindowTasks' command.
 get_maintenance_window_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_maintenance_window_task(Client, Input, []).
@@ -1940,6 +1942,10 @@ update_document(Client, Input, Options)
     request(Client, <<"UpdateDocument">>, Input, Options).
 
 %% @doc Set the default version of a document.
+%%
+%% If you change a document version for a State Manager association, Systems
+%% Manager immediately runs the association unless you previously specifed
+%% the `apply-only-at-cron-interval' parameter.
 update_document_default_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_document_default_version(Client, Input, []).
