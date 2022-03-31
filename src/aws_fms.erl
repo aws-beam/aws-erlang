@@ -15,6 +15,8 @@
 
 -export([associate_admin_account/2,
          associate_admin_account/3,
+         associate_third_party_firewall/2,
+         associate_third_party_firewall/3,
          delete_apps_list/2,
          delete_apps_list/3,
          delete_notification_channel/2,
@@ -25,6 +27,8 @@
          delete_protocols_list/3,
          disassociate_admin_account/2,
          disassociate_admin_account/3,
+         disassociate_third_party_firewall/2,
+         disassociate_third_party_firewall/3,
          get_admin_account/2,
          get_admin_account/3,
          get_apps_list/2,
@@ -39,6 +43,8 @@
          get_protection_status/3,
          get_protocols_list/2,
          get_protocols_list/3,
+         get_third_party_firewall_association_status/2,
+         get_third_party_firewall_association_status/3,
          get_violation_details/2,
          get_violation_details/3,
          list_apps_lists/2,
@@ -53,6 +59,8 @@
          list_protocols_lists/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         list_third_party_firewall_firewall_policies/2,
+         list_third_party_firewall_firewall_policies/3,
          put_apps_list/2,
          put_apps_list/3,
          put_notification_channel/2,
@@ -86,6 +94,18 @@ associate_admin_account(Client, Input)
 associate_admin_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateAdminAccount">>, Input, Options).
+
+%% @doc Sets the Firewall Manager policy administrator as a tenant
+%% administrator of a third-party firewall service.
+%%
+%% A tenant is an instance of the third-party firewall service that's
+%% associated with your Amazon Web Services customer account.
+associate_third_party_firewall(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_third_party_firewall(Client, Input, []).
+associate_third_party_firewall(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateThirdPartyFirewall">>, Input, Options).
 
 %% @doc Permanently deletes an Firewall Manager applications list.
 delete_apps_list(Client, Input)
@@ -132,6 +152,18 @@ disassociate_admin_account(Client, Input)
 disassociate_admin_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateAdminAccount">>, Input, Options).
+
+%% @doc Disassociates a Firewall Manager policy administrator from a
+%% third-party firewall tenant.
+%%
+%% When you call `DisassociateThirdPartyFirewall', the third-party firewall
+%% vendor deletes all of the firewalls that are associated with the account.
+disassociate_third_party_firewall(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_third_party_firewall(Client, Input, []).
+disassociate_third_party_firewall(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateThirdPartyFirewall">>, Input, Options).
 
 %% @doc Returns the Organizations account that is associated with Firewall
 %% Manager as the Firewall Manager administrator.
@@ -220,6 +252,15 @@ get_protocols_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetProtocolsList">>, Input, Options).
 
+%% @doc The onboarding status of a Firewall Manager admin account to
+%% third-party firewall vendor tenant.
+get_third_party_firewall_association_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_third_party_firewall_association_status(Client, Input, []).
+get_third_party_firewall_association_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetThirdPartyFirewallAssociationStatus">>, Input, Options).
+
 %% @doc Retrieves violations for a resource based on the specified Firewall
 %% Manager policy and Amazon Web Services account.
 get_violation_details(Client, Input)
@@ -284,6 +325,15 @@ list_tags_for_resource(Client, Input)
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Retrieves a list of all of the third-party firewall policies that are
+%% associated with the third-party firewall administrator's account.
+list_third_party_firewall_firewall_policies(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_third_party_firewall_firewall_policies(Client, Input, []).
+list_third_party_firewall_firewall_policies(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListThirdPartyFirewallFirewallPolicies">>, Input, Options).
 
 %% @doc Creates an Firewall Manager applications list.
 put_apps_list(Client, Input)

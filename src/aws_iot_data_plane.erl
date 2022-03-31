@@ -83,8 +83,8 @@ delete_thing_shadow(Client, ThingName, Input0, Options0) ->
 %%
 %% Requires permission to access the GetRetainedMessage action.
 %%
-%% For more information about messaging costs, see IoT Core pricing -
-%% Messaging.
+%% For more information about messaging costs, see Amazon Web Services IoT
+%% Core pricing - Messaging.
 get_retained_message(Client, Topic)
   when is_map(Client) ->
     get_retained_message(Client, Topic, #{}, #{}).
@@ -180,8 +180,8 @@ list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
 %%
 %% Requires permission to access the ListRetainedMessages action.
 %%
-%% For more information about messaging costs, see IoT Core pricing -
-%% Messaging.
+%% For more information about messaging costs, see Amazon Web Services IoT
+%% Core pricing - Messaging.
 list_retained_messages(Client)
   when is_map(Client) ->
     list_retained_messages(Client, #{}, #{}).
@@ -216,8 +216,8 @@ list_retained_messages(Client, QueryMap, HeadersMap, Options0)
 %% For more information about MQTT messages, see MQTT Protocol in the IoT
 %% Developer Guide.
 %%
-%% For more information about messaging costs, see IoT Core pricing -
-%% Messaging.
+%% For more information about messaging costs, see Amazon Web Services IoT
+%% Core pricing - Messaging.
 publish(Client, Topic, Input) ->
     publish(Client, Topic, Input, []).
 publish(Client, Topic, Input0, Options0) ->
@@ -288,7 +288,7 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
     Client1 = Client#{service => <<"iotdata">>},
-    Host = build_host(<<"data.iot">>, Client1),
+    Host = build_host(<<"data-ats.iot">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders = [ {<<"Host">>, Host}

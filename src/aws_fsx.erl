@@ -296,7 +296,7 @@ create_data_repository_task(Client, Input, Options)
 %% <ul> <li> Creates a new, empty Amazon FSx file system with an assigned ID,
 %% and an initial lifecycle state of `CREATING'.
 %%
-%% </li> <li> Returns the description of the file system.
+%% </li> <li> Returns the description of the file system in JSON format.
 %%
 %% </li> </ul> This operation requires a client request token in the request
 %% that Amazon FSx uses to ensure idempotent creation. This means that
@@ -861,6 +861,8 @@ update_data_repository_association(Client, Input, Options)
 %% </li> <li> `FsxAdminPassword'
 %%
 %% </li> <li> `StorageCapacity'
+%%
+%% </li> <li> `ThroughputCapacity'
 %%
 %% </li> <li> `WeeklyMaintenanceStartTime'
 %%
