@@ -1,18 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Use Amazon Web Services Cloud Control API to create, read, update,
-%% delete, and list (CRUD-L) your cloud resources that belong to a wide range
-%% of services--both Amazon Web Services and third-party.
-%%
-%% With the Cloud Control API standardized set of application programming
-%% interfaces (APIs), you can perform CRUD-L operations on any supported
-%% resources in your Amazon Web Services account. Using Cloud Control API,
-%% you won't have to generate code or scripts specific to each individual
-%% service responsible for those resources.
-%%
-%% For more information about Amazon Web Services Cloud Control API, see the
-%% Amazon Web Services Cloud Control API User Guide.
+%% @doc For more information about Amazon Web Services Cloud Control API, see
+%% the Amazon Web Services Cloud Control API User Guide.
 -module(aws_cloudcontrol).
 
 -export([cancel_resource_request/2,
@@ -44,7 +34,7 @@
 %% Amazon Web Services Cloud Control API User Guide.
 %%
 %% Only resource operations requests with a status of `PENDING' or
-%% `IN_PROGRESS' can be cancelled.
+%% `IN_PROGRESS' can be canceled.
 cancel_resource_request(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_resource_request(Client, Input, []).
@@ -88,8 +78,8 @@ delete_resource(Client, Input, Options)
 %% For details, see Reading a resource's current state.
 %%
 %% You can use this action to return information about an existing resource
-%% in your account and Amazon Web Services Region, whether or not those
-%% resources were provisioned using Cloud Control API.
+%% in your account and Amazon Web Services Region, whether those resources
+%% were provisioned using Cloud Control API.
 get_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource(Client, Input, []).
@@ -114,7 +104,7 @@ get_resource_request_status(Client, Input, Options)
 %% Listing active resource operation requests in the Amazon Web Services
 %% Cloud Control API User Guide.
 %%
-%% Resource operation requests expire after seven days.
+%% Resource operation requests expire after 7 days.
 list_resource_requests(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_requests(Client, Input, []).
@@ -128,8 +118,8 @@ list_resource_requests(Client, Input, Options)
 %% Cloud Control API User Guide.
 %%
 %% You can use this action to return information about existing resources in
-%% your account and Amazon Web Services Region, whether or not those
-%% resources were provisioned using Cloud Control API.
+%% your account and Amazon Web Services Region, whether those resources were
+%% provisioned using Cloud Control API.
 list_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resources(Client, Input, []).
@@ -153,7 +143,7 @@ list_resources(Client, Input, Options)
 %%
 %% For more information about the properties of a specific resource, refer to
 %% the related topic for the resource in the Resource and property types
-%% reference in the Amazon Web Services CloudFormation Users Guide.
+%% reference in the CloudFormation Users Guide.
 update_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resource(Client, Input, []).

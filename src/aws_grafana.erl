@@ -32,9 +32,16 @@
          list_permissions/2,
          list_permissions/4,
          list_permissions/5,
+         list_tags_for_resource/2,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          list_workspaces/1,
          list_workspaces/3,
          list_workspaces/4,
+         tag_resource/3,
+         tag_resource/4,
+         untag_resource/3,
+         untag_resource/4,
          update_permissions/3,
          update_permissions/4,
          update_workspace/3,
@@ -235,6 +242,33 @@ list_permissions(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc The `ListTagsForResource' operation returns the tags that are
+%% associated with the Amazon Managed Service for Grafana resource specified
+%% by the `resourceArn'.
+%%
+%% Currently, the only resource that can be tagged is a workspace.
+list_tags_for_resource(Client, ResourceArn)
+  when is_map(Client) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of Amazon Managed Grafana workspaces in the account,
 %% with some information about each workspace.
 %%
@@ -265,6 +299,62 @@ list_workspaces(Client, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc The `TagResource' operation associates tags with an Amazon Managed
+%% Grafana resource.
+%%
+%% Currently, the only resource that can be tagged is workspaces.
+%%
+%% If you specify a new tag key for the resource, this tag is appended to the
+%% list of tags associated with the resource. If you specify a tag key that
+%% is already associated with the resource, the new tag value that you
+%% specify replaces the previous value for that tag.
+tag_resource(Client, ResourceArn, Input) ->
+    tag_resource(Client, ResourceArn, Input, []).
+tag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The `UntagResource' operation removes the association of the tag with
+%% the Amazon Managed Grafana resource.
+untag_resource(Client, ResourceArn, Input) ->
+    untag_resource(Client, ResourceArn, Input, []).
+untag_resource(Client, ResourceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"tagKeys">>, <<"tagKeys">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates which users in a workspace have the Grafana `Admin' or
 %% `Editor' roles.

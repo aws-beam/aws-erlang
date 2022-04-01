@@ -545,6 +545,33 @@ delete_control(Client, ControlId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deregisters an account in Audit Manager.
+%%
+%% When you deregister your account from Audit Manager, your data isn’t
+%% deleted. If you want to delete your resource data, you must perform that
+%% task separately before you deregister your account. Either, you can do
+%% this in the Audit Manager console. Or, you can use one of the delete API
+%% operations that are provided by Audit Manager.
+%%
+%% To delete your Audit Manager resource data, see the following
+%% instructions:
+%%
+%% DeleteAssessment (see also: Deleting an assessment in the Audit Manager
+%% User Guide)
+%%
+%% DeleteAssessmentFramework (see also: Deleting a custom framework in the
+%% Audit Manager User Guide)
+%%
+%% DeleteAssessmentFrameworkShare (see also: Deleting a share request in the
+%% Audit Manager User Guide)
+%%
+%% DeleteAssessmentReport (see also: Deleting an assessment report in the
+%% Audit Manager User Guide)
+%%
+%% DeleteControl (see also: Deleting a custom control in the Audit Manager
+%% User Guide)
+%%
+%% At this time, Audit Manager doesn't provide an option to delete evidence.
+%% All available delete operations are listed above.
 deregister_account(Client, Input) ->
     deregister_account(Client, Input, []).
 deregister_account(Client, Input0, Options0) ->
@@ -567,15 +594,43 @@ deregister_account(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes the specified member Amazon Web Services account as a
-%% delegated administrator for Audit Manager.
+%% @doc Removes the specified Amazon Web Services account as a delegated
+%% administrator for Audit Manager.
 %%
 %% When you remove a delegated administrator from your Audit Manager
 %% settings, you continue to have access to the evidence that you previously
 %% collected under that account. This is also the case when you deregister a
-%% delegated administrator from Audit Manager. However, Audit Manager will
+%% delegated administrator from Organizations. However, Audit Manager will
 %% stop collecting and attaching evidence to that delegated administrator
 %% account moving forward.
+%%
+%% When you deregister a delegated administrator account for Audit Manager,
+%% the data for that account isn’t deleted. If you want to delete resource
+%% data for a delegated administrator account, you must perform that task
+%% separately before you deregister the account. Either, you can do this in
+%% the Audit Manager console. Or, you can use one of the delete API
+%% operations that are provided by Audit Manager.
+%%
+%% To delete your Audit Manager resource data, see the following
+%% instructions:
+%%
+%% DeleteAssessment (see also: Deleting an assessment in the Audit Manager
+%% User Guide)
+%%
+%% DeleteAssessmentFramework (see also: Deleting a custom framework in the
+%% Audit Manager User Guide)
+%%
+%% DeleteAssessmentFrameworkShare (see also: Deleting a share request in the
+%% Audit Manager User Guide)
+%%
+%% DeleteAssessmentReport (see also: Deleting an assessment report in the
+%% Audit Manager User Guide)
+%%
+%% DeleteControl (see also: Deleting a custom control in the Audit Manager
+%% User Guide)
+%%
+%% At this time, Audit Manager doesn't provide an option to delete evidence.
+%% All available delete operations are listed above.
 deregister_organization_admin_account(Client, Input) ->
     deregister_organization_admin_account(Client, Input, []).
 deregister_organization_admin_account(Client, Input0, Options0) ->

@@ -4,7 +4,27 @@
 %% @doc Amazon WorkSpaces Service
 %%
 %% Amazon WorkSpaces enables you to provision virtual, cloud-based Microsoft
-%% Windows and Amazon Linux desktops for your users.
+%% Windows or Amazon Linux desktops for your users, known as WorkSpaces.
+%%
+%% WorkSpaces eliminates the need to procure and deploy hardware or install
+%% complex software. You can quickly add or remove users as your needs
+%% change. Users can access their virtual desktops from multiple devices or
+%% web browsers.
+%%
+%% This API Reference provides detailed information about the actions, data
+%% types, parameters, and errors of the WorkSpaces service. For more
+%% information about the supported Amazon Web Services Regions, endpoints,
+%% and service quotas of the Amazon WorkSpaces service, see WorkSpaces
+%% endpoints and quotas in the Amazon Web Services General Reference.
+%%
+%% You can also manage your WorkSpaces resources using the WorkSpaces
+%% console, Command Line Interface (CLI), and SDKs. For more information
+%% about administering WorkSpaces, see the Amazon WorkSpaces Administration
+%% Guide. For more information about using the Amazon WorkSpaces client
+%% application or web browser to access provisioned WorkSpaces, see the
+%% Amazon WorkSpaces User Guide. For more information about using the CLI to
+%% manage your WorkSpaces resources, see the WorkSpaces section of the CLI
+%% Reference.
 -module(aws_workspaces).
 
 -export([associate_connection_alias/2,
@@ -29,6 +49,8 @@
          create_workspace_bundle/3,
          create_workspaces/2,
          create_workspaces/3,
+         delete_client_branding/2,
+         delete_client_branding/3,
          delete_connect_client_add_in/2,
          delete_connect_client_add_in/3,
          delete_connection_alias/2,
@@ -47,6 +69,8 @@
          describe_account/3,
          describe_account_modifications/2,
          describe_account_modifications/3,
+         describe_client_branding/2,
+         describe_client_branding/3,
          describe_client_properties/2,
          describe_client_properties/3,
          describe_connect_client_add_ins/2,
@@ -77,6 +101,8 @@
          disassociate_connection_alias/3,
          disassociate_ip_groups/2,
          disassociate_ip_groups/3,
+         import_client_branding/2,
+         import_client_branding/3,
          import_workspace_image/2,
          import_workspace_image/3,
          list_available_management_cidr_ranges/2,
@@ -286,6 +312,22 @@ create_workspaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkspaces">>, Input, Options).
 
+%% @doc Deletes customized client branding.
+%%
+%% Client branding allows you to customize your WorkSpace's client login
+%% portal. You can tailor your login portal company logo, the support email
+%% address, support link, link to reset password, and a custom message for
+%% users trying to sign in.
+%%
+%% After you delete your customized client branding, your login portal
+%% reverts to the default client branding.
+delete_client_branding(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_client_branding(Client, Input, []).
+delete_client_branding(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteClientBranding">>, Input, Options).
+
 %% @doc Deletes a client-add-in for Amazon Connect that is configured within
 %% a directory.
 delete_connect_client_add_in(Client, Input)
@@ -397,6 +439,22 @@ describe_account_modifications(Client, Input)
 describe_account_modifications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountModifications">>, Input, Options).
+
+%% @doc Describes the specified client branding.
+%%
+%% Client branding allows you to customize the log in page of various device
+%% types for your users. You can add your company logo, the support email
+%% address, support link, link to reset password, and a custom message for
+%% users trying to sign in.
+%%
+%% Only device types that have branding information configured will be shown
+%% in the response.
+describe_client_branding(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_client_branding(Client, Input, []).
+describe_client_branding(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeClientBranding">>, Input, Options).
 
 %% @doc Retrieves a list that describes one or more specified Amazon
 %% WorkSpaces clients.
@@ -544,6 +602,35 @@ disassociate_ip_groups(Client, Input)
 disassociate_ip_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateIpGroups">>, Input, Options).
+
+%% @doc Imports client branding.
+%%
+%% Client branding allows you to customize your WorkSpace's client login
+%% portal. You can tailor your login portal company logo, the support email
+%% address, support link, link to reset password, and a custom message for
+%% users trying to sign in.
+%%
+%% After you import client branding, the default branding experience for the
+%% specified platform type is replaced with the imported experience
+%%
+%% You must specify at least one platform type when importing client
+%% branding.
+%%
+%% You can import up to 6 MB of data with each request. If your request
+%% exceeds this limit, you can import client branding for different platform
+%% types using separate requests.
+%%
+%% In each platform type, the `SupportEmail' and `SupportLink' parameters are
+%% mutually exclusive. You can specify only one parameter for each platform
+%% type, but not both.
+%%
+%% Imported data can take up to a minute to appear in the WorkSpaces client.
+import_client_branding(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    import_client_branding(Client, Input, []).
+import_client_branding(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ImportClientBranding">>, Input, Options).
 
 %% @doc Imports the specified Windows 10 Bring Your Own License (BYOL) image
 %% into Amazon WorkSpaces.
