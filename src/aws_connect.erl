@@ -3067,9 +3067,7 @@ start_task_contact(Client, Input0, Options0) ->
 %%
 %% This call does not work for the following initiation methods:
 %%
-%% <ul> <li> CALLBACK
-%%
-%% </li> <li> DISCONNECT
+%% <ul> <li> DISCONNECT
 %%
 %% </li> <li> TRANSFER
 %%
