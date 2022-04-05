@@ -401,6 +401,9 @@
          list_managed_job_templates/1,
          list_managed_job_templates/3,
          list_managed_job_templates/4,
+         list_metric_values/5,
+         list_metric_values/7,
+         list_metric_values/8,
          list_mitigation_actions/1,
          list_mitigation_actions/3,
          list_mitigation_actions/4,
@@ -4941,6 +4944,42 @@ list_managed_job_templates(Client, QueryMap, HeadersMap, Options0)
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"templateName">>, maps:get(<<"templateName">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the values reported for an IoT Device Defender metric
+%% (device-side metric, cloud-side metric, or custom metric) by the given
+%% thing during the specified time period.
+list_metric_values(Client, EndTime, MetricName, StartTime, ThingName)
+  when is_map(Client) ->
+    list_metric_values(Client, EndTime, MetricName, StartTime, ThingName, #{}, #{}).
+
+list_metric_values(Client, EndTime, MetricName, StartTime, ThingName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_metric_values(Client, EndTime, MetricName, StartTime, ThingName, QueryMap, HeadersMap, []).
+
+list_metric_values(Client, EndTime, MetricName, StartTime, ThingName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/metric-values"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"dimensionName">>, maps:get(<<"dimensionName">>, QueryMap, undefined)},
+        {<<"dimensionValueOperator">>, maps:get(<<"dimensionValueOperator">>, QueryMap, undefined)},
+        {<<"endTime">>, EndTime},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"metricName">>, MetricName},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"startTime">>, StartTime},
+        {<<"thingName">>, ThingName}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

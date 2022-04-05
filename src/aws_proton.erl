@@ -403,15 +403,15 @@ cancel_service_pipeline_deployment(Client, Input, Options)
 %%
 %% == You can provision environments using the following methods: ==
 %%
-%% <ul> <li> Standard provisioning: Proton makes direct calls to provision
-%% your resources.
+%% <ul> <li> Amazon Web Services-managed provisioning: Proton makes direct
+%% calls to provision your resources.
 %%
-%% </li> <li> Pull request provisioning: Proton makes pull requests on your
+%% </li> <li> Self-managed provisioning: Proton makes pull requests on your
 %% repository to provide compiled infrastructure as code (IaC) files that
 %% your IaC engine uses to provision resources.
 %%
-%% </li> </ul> For more information, see the Environments in the Proton
-%% Administrator Guide.
+%% </li> </ul> For more information, see Environments and Provisioning
+%% methods in the Proton Administrator Guide.
 create_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment(Client, Input, []).
@@ -472,11 +472,15 @@ create_environment_template_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEnvironmentTemplateVersion">>, Input, Options).
 
-%% @doc Create and register a link to a repository that can be used with pull
-%% request provisioning or template sync configurations.
+%% @doc Create and register a link to a repository that can be used with
+%% self-managed provisioning (infrastructure or pipelines) or for template
+%% sync configurations.
 %%
-%% For more information, see Template bundles and Template sync
-%% configurations in the Proton Administrator Guide.
+%% When you create a repository link, Proton creates a service-linked role
+%% for you.
+%%
+%% For more information, see Self-managed provisioning, Template bundles, and
+%% Template sync configurations in the Proton Administrator Guide.
 create_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_repository(Client, Input, []).
@@ -500,12 +504,12 @@ create_service(Client, Input, Options)
 %% @doc Create a service template.
 %%
 %% The administrator creates a service template to define standardized
-%% infrastructure and an optional CICD service pipeline. Developers, in turn,
-%% select the service template from Proton. If the selected service template
-%% includes a service pipeline definition, they provide a link to their
-%% source code repository. Proton then deploys and manages the infrastructure
-%% defined by the selected service template. For more information, see
-%% Service Templates in the Proton Administrator Guide.
+%% infrastructure and an optional CI/CD service pipeline. Developers, in
+%% turn, select the service template from Proton. If the selected service
+%% template includes a service pipeline definition, they provide a link to
+%% their source code repository. Proton then deploys and manages the
+%% infrastructure defined by the selected service template. For more
+%% information, see Service Templates in the Proton Administrator Guide.
 create_service_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service_template(Client, Input, []).
@@ -525,11 +529,11 @@ create_service_template_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateServiceTemplateVersion">>, Input, Options).
 
-%% @doc Set up a template for automated template version creation.
+%% @doc Set up a template to create new template versions automatically.
 %%
 %% When a commit is pushed to your registered repository, Proton checks for
 %% changes to your repository template bundles. If it detects a template
-%% bundle change, a new minor or major version of its template is created, if
+%% bundle change, a new major or minor version of its template is created, if
 %% the version doesn’t already exist. For more information, see Template sync
 %% configurations in the Proton Administrator Guide.
 create_template_sync_config(Client, Input)
@@ -700,7 +704,18 @@ get_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRepository">>, Input, Options).
 
-%% @doc Get the repository sync status.
+%% @doc Get the sync status of a repository used for Proton template sync.
+%%
+%% For more information about template sync, see .
+%%
+%% A repository sync status isn't tied to the Proton Repository resource (or
+%% any other Proton resource). Therefore, tags on an Proton Repository
+%% resource have no effect on this action. Specifically, you can't use these
+%% tags to control access to this action using Attribute-based access control
+%% (ABAC).
+%%
+%% For more information about ABAC, see ABAC in the Proton Administrator
+%% Guide.
 get_repository_sync_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository_sync_status(Client, Input, []).
@@ -718,8 +733,8 @@ get_service(Client, Input, Options)
 
 %% @doc Get detail data for a service instance.
 %%
-%% A service instance is an instantiation of service template, which is
-%% running in a specific environment.
+%% A service instance is an instantiation of service template and it runs in
+%% a specific environment.
 get_service_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_instance(Client, Input, []).
@@ -905,13 +920,10 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Notify Proton of status changes to a provisioned resource when you
-%% use pull request provisioning.
+%% use self-managed provisioning.
 %%
-%% For more information, see Template bundles.
-%%
-%% Provisioning by pull request is currently in feature preview and is only
-%% usable with Terraform based Proton Templates. To learn more about Amazon
-%% Web Services Feature Preview terms, see section 2 on Beta and Previews.
+%% For more information, see Self-managed provisioning in the Proton
+%% Administrator Guide.
 notify_resource_deployment_status_change(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_resource_deployment_status_change(Client, Input, []).
@@ -922,10 +934,10 @@ notify_resource_deployment_status_change(Client, Input, Options)
 %% @doc In a management account, reject an environment account connection
 %% from another environment account.
 %%
-%% After you reject an environment account connection request, you won’t be
-%% able to accept or use the rejected environment account connection.
+%% After you reject an environment account connection request, you can't
+%% accept or use the rejected environment account connection.
 %%
-%% You can’t reject an environment account connection that is connected to an
+%% You can’t reject an environment account connection that's connected to an
 %% environment.
 %%
 %% For more information, see Environment account connections in the Proton
@@ -939,6 +951,9 @@ reject_environment_account_connection(Client, Input, Options)
 
 %% @doc Tag a resource.
 %%
+%% A tag is a key-value pair of metadata that you associate with an Proton
+%% resource.
+%%
 %% For more information, see Proton resources and tagging in the Proton
 %% Administrator Guide or Proton User Guide.
 tag_resource(Client, Input)
@@ -948,7 +963,9 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Remove a tag from a resource.
+%% @doc Remove a customer tag from a resource.
+%%
+%% A tag is a key-value pair of metadata associated with an Proton resource.
 %%
 %% For more information, see Proton resources and tagging in the Proton
 %% Administrator Guide or Proton User Guide.
@@ -974,27 +991,32 @@ update_account_settings(Client, Input, Options)
 %% `provisioningRepository' parameter to update or connect to an environment
 %% account connection.
 %%
-%% You can only update to a new environment account connection if it was
-%% created in the same environment account that the current environment
-%% account connection was created in and is associated with the current
-%% environment.
+%% You can only update to a new environment account connection if that
+%% connection was created in the same environment account that the current
+%% environment account connection was created in. The account connection must
+%% also be associated with the current environment.
 %%
 %% If the environment isn't associated with an environment account
 %% connection, don't update or include the `environmentAccountConnectionId'
-%% parameter to update or connect to an environment account connection.
+%% parameter. You can't update or connect the environment to an environment
+%% account connection if it isn't already associated with an environment
+%% connection.
 %%
 %% You can update either the `environmentAccountConnectionId' or
 %% `protonServiceRoleArn' parameter and value. You can’t update both.
 %%
-%% If the environment was provisioned with pull request provisioning, include
+%% If the environment was configured for Amazon Web Services-managed
+%% provisioning, omit the `provisioningRepository' parameter.
+%%
+%% If the environment was configured for self-managed provisioning, specify
 %% the `provisioningRepository' parameter and omit the `protonServiceRoleArn'
 %% and `environmentAccountConnectionId' parameters.
 %%
-%% If the environment wasn't provisioned with pull request provisioning, omit
-%% the `provisioningRepository' parameter.
+%% For more information, see Environments and Provisioning methods in the
+%% Proton Administrator Guide.
 %%
-%% There are four modes for updating an environment as described in the
-%% following. The `deploymentType' field defines the mode.
+%% There are four modes for updating an environment. The `deploymentType'
+%% field defines the mode.
 %%
 %% <dl> <dt> </dt><dd> `NONE'
 %%
@@ -1019,7 +1041,7 @@ update_account_settings(Client, Input, Options)
 %% In this mode, the environment is deployed and updated with the published,
 %% recommended (latest) major and minor version of the current template, by
 %% default. You can also specify a different major version that's higher than
-%% the major version in use and a minor version (optional).
+%% the major version in use and a minor version.
 %%
 %% </dd> </dl>
 update_environment(Client, Input)
@@ -1075,8 +1097,8 @@ update_service(Client, Input, Options)
 
 %% @doc Update a service instance.
 %%
-%% There are four modes for updating a service instance as described in the
-%% following. The `deploymentType' field defines the mode.
+%% There are four modes for updating a service instance. The `deploymentType'
+%% field defines the mode.
 %%
 %% <dl> <dt> </dt><dd> `NONE'
 %%
@@ -1101,8 +1123,8 @@ update_service(Client, Input, Options)
 %%
 %% In this mode, the service instance is deployed and updated with the
 %% published, recommended (latest) major and minor version of the current
-%% template, by default. You can also specify a different major version that
-%% is higher than the major version in use and a minor version (optional).
+%% template, by default. You can also specify a different major version
+%% that's higher than the major version in use and a minor version.
 %%
 %% </dd> </dl>
 update_service_instance(Client, Input)
@@ -1114,8 +1136,8 @@ update_service_instance(Client, Input, Options)
 
 %% @doc Update the service pipeline.
 %%
-%% There are four modes for updating a service pipeline as described in the
-%% following. The `deploymentType' field defines the mode.
+%% There are four modes for updating a service pipeline. The `deploymentType'
+%% field defines the mode.
 %%
 %% <dl> <dt> </dt><dd> `NONE'
 %%
@@ -1126,22 +1148,22 @@ update_service_instance(Client, Input, Options)
 %%
 %% In this mode, the service pipeline is deployed and updated with the new
 %% spec that you provide. Only requested parameters are updated. Don’t
-%% include minor or major version parameters when you use this
+%% include major or minor version parameters when you use this
 %% `deployment-type'.
 %%
 %% </dd> <dt> </dt><dd> `MINOR_VERSION'
 %%
 %% In this mode, the service pipeline is deployed and updated with the
 %% published, recommended (latest) minor version of the current major version
-%% in use, by default. You can also specify a different minor version of the
+%% in use, by default. You can specify a different minor version of the
 %% current major version in use.
 %%
 %% </dd> <dt> </dt><dd> `MAJOR_VERSION'
 %%
 %% In this mode, the service pipeline is deployed and updated with the
 %% published, recommended (latest) major and minor version of the current
-%% template by default. You can also specify a different major version that
-%% is higher than the major version in use and a minor version (optional).
+%% template by default. You can specify a different major version that's
+%% higher than the major version in use and a minor version.
 %%
 %% </dd> </dl>
 update_service_pipeline(Client, Input)
