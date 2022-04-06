@@ -2503,7 +2503,7 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %%
 %% Related actions include:
 %%
-%% <ul> <li> CreatJob
+%% <ul> <li> CreateJob
 %%
 %% </li> <li> GetJobTagging
 %%

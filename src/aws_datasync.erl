@@ -19,6 +19,8 @@
          create_location_efs/3,
          create_location_fsx_lustre/2,
          create_location_fsx_lustre/3,
+         create_location_fsx_open_zfs/2,
+         create_location_fsx_open_zfs/3,
          create_location_fsx_windows/2,
          create_location_fsx_windows/3,
          create_location_hdfs/2,
@@ -45,6 +47,8 @@
          describe_location_efs/3,
          describe_location_fsx_lustre/2,
          describe_location_fsx_lustre/3,
+         describe_location_fsx_open_zfs/2,
+         describe_location_fsx_open_zfs/3,
          describe_location_fsx_windows/2,
          describe_location_fsx_windows/3,
          describe_location_hdfs/2,
@@ -157,6 +161,14 @@ create_location_fsx_lustre(Client, Input)
 create_location_fsx_lustre(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationFsxLustre">>, Input, Options).
+
+%% @doc Creates an endpoint for an Amazon FSx for OpenZFS file system.
+create_location_fsx_open_zfs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_location_fsx_open_zfs(Client, Input, []).
+create_location_fsx_open_zfs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateLocationFsxOpenZfs">>, Input, Options).
 
 %% @doc Creates an endpoint for an Amazon FSx for Windows File Server file
 %% system.
@@ -292,8 +304,8 @@ describe_location_efs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationEfs">>, Input, Options).
 
-%% @doc Returns metadata, such as the path information about an Amazon FSx
-%% for Lustre location.
+%% @doc Returns metadata about an Amazon FSx for Lustre location, such as
+%% information about its path.
 describe_location_fsx_lustre(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_fsx_lustre(Client, Input, []).
@@ -301,8 +313,17 @@ describe_location_fsx_lustre(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationFsxLustre">>, Input, Options).
 
-%% @doc Returns metadata, such as the path information about an Amazon FSx
-%% for Windows File Server location.
+%% @doc Returns metadata about an Amazon FSx for OpenZFS location, such as
+%% information about its path.
+describe_location_fsx_open_zfs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_location_fsx_open_zfs(Client, Input, []).
+describe_location_fsx_open_zfs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeLocationFsxOpenZfs">>, Input, Options).
+
+%% @doc Returns metadata about an Amazon FSx for Windows File Server
+%% location, such as information about its path.
 describe_location_fsx_windows(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_fsx_windows(Client, Input, []).
