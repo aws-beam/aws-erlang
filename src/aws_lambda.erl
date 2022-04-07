@@ -87,6 +87,8 @@
          create_event_source_mapping/3,
          create_function/2,
          create_function/3,
+         create_function_url_config/3,
+         create_function_url_config/4,
          delete_alias/4,
          delete_alias/5,
          delete_code_signing_config/3,
@@ -101,6 +103,8 @@
          delete_function_concurrency/4,
          delete_function_event_invoke_config/3,
          delete_function_event_invoke_config/4,
+         delete_function_url_config/3,
+         delete_function_url_config/4,
          delete_layer_version/4,
          delete_layer_version/5,
          delete_provisioned_concurrency_config/3,
@@ -132,6 +136,9 @@
          get_function_event_invoke_config/2,
          get_function_event_invoke_config/4,
          get_function_event_invoke_config/5,
+         get_function_url_config/2,
+         get_function_url_config/4,
+         get_function_url_config/5,
          get_layer_version/3,
          get_layer_version/5,
          get_layer_version/6,
@@ -163,6 +170,9 @@
          list_function_event_invoke_configs/2,
          list_function_event_invoke_configs/4,
          list_function_event_invoke_configs/5,
+         list_function_url_configs/2,
+         list_function_url_configs/4,
+         list_function_url_configs/5,
          list_functions/1,
          list_functions/3,
          list_functions/4,
@@ -215,7 +225,9 @@
          update_function_configuration/3,
          update_function_configuration/4,
          update_function_event_invoke_config/3,
-         update_function_event_invoke_config/4]).
+         update_function_event_invoke_config/4,
+         update_function_url_config/3,
+         update_function_url_config/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -517,6 +529,34 @@ create_function(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a Lambda function URL with the specified configuration
+%% parameters.
+%%
+%% A function URL is a dedicated HTTP(S) endpoint that you can use to invoke
+%% your function.
+create_function_url_config(Client, FunctionName, Input) ->
+    create_function_url_config(Client, FunctionName, Input, []).
+create_function_url_config(Client, FunctionName, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-10-31/functions/", aws_util:encode_uri(FunctionName), "/url"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"Qualifier">>, <<"Qualifier">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a Lambda function alias.
 delete_alias(Client, FunctionName, Name, Input) ->
     delete_alias(Client, FunctionName, Name, Input, []).
@@ -683,6 +723,33 @@ delete_function_event_invoke_config(Client, FunctionName, Input) ->
 delete_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
     Method = delete,
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"Qualifier">>, <<"Qualifier">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a Lambda function URL.
+%%
+%% When you delete a function URL, you can't recover it. Creating a new
+%% function URL results in a different URL address.
+delete_function_url_config(Client, FunctionName, Input) ->
+    delete_function_url_config(Client, FunctionName, Input, []).
+delete_function_url_config(Client, FunctionName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2021-10-31/functions/", aws_util:encode_uri(FunctionName), "/url"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -978,6 +1045,33 @@ get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap)
 get_function_event_invoke_config(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Qualifier">>, maps:get(<<"Qualifier">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns details about a Lambda function URL.
+get_function_url_config(Client, FunctionName)
+  when is_map(Client) ->
+    get_function_url_config(Client, FunctionName, #{}, #{}).
+
+get_function_url_config(Client, FunctionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_function_url_config(Client, FunctionName, QueryMap, HeadersMap, []).
+
+get_function_url_config(Client, FunctionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-10-31/functions/", aws_util:encode_uri(FunctionName), "/url"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1344,6 +1438,34 @@ list_function_event_invoke_configs(Client, FunctionName, QueryMap, HeadersMap)
 list_function_event_invoke_configs(Client, FunctionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config/list"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of Lambda function URLs for the specified function.
+list_function_url_configs(Client, FunctionName)
+  when is_map(Client) ->
+    list_function_url_configs(Client, FunctionName, #{}, #{}).
+
+list_function_url_configs(Client, FunctionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_function_url_configs(Client, FunctionName, QueryMap, HeadersMap, []).
+
+list_function_url_configs(Client, FunctionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-10-31/functions/", aws_util:encode_uri(FunctionName), "/urls"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2107,6 +2229,30 @@ update_function_event_invoke_config(Client, FunctionName, Input) ->
 update_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
     Method = post,
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"Qualifier">>, <<"Qualifier">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the configuration for a Lambda function URL.
+update_function_url_config(Client, FunctionName, Input) ->
+    update_function_url_config(Client, FunctionName, Input, []).
+update_function_url_config(Client, FunctionName, Input0, Options0) ->
+    Method = put,
+    Path = ["/2021-10-31/functions/", aws_util:encode_uri(FunctionName), "/url"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

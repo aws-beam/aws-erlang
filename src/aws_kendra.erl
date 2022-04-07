@@ -423,7 +423,7 @@ describe_faq(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFaq">>, Input, Options).
 
-%% @doc Describes an existing Amazon Kendra index
+%% @doc Describes an existing Amazon Kendra index.
 describe_index(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_index(Client, Input, []).
@@ -603,7 +603,7 @@ list_groups_older_than_ordering_id(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroupsOlderThanOrderingId">>, Input, Options).
 
-%% @doc Lists the Amazon Kendra indexes that you have created.
+%% @doc Lists the Amazon Kendra indexes that you created.
 list_indices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_indices(Client, Input, []).

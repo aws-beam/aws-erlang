@@ -796,9 +796,10 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Creates a device and returns a configuration archive.
 %%
 %% The configuration archive is a ZIP file that contains a provisioning
-%% certificate that is valid for 5 minutes. Transfer the configuration
-%% archive to the device with the included USB storage device within 5
-%% minutes.
+%% certificate that is valid for 5 minutes. Name the configuration archive
+%% `certificates-omni_device-name.zip' and transfer it to the device within 5
+%% minutes. Use the included USB storage device and connect it to the USB 3.0
+%% port next to the HDMI output.
 provision_device(Client, Input) ->
     provision_device(Client, Input, []).
 provision_device(Client, Input0, Options0) ->
