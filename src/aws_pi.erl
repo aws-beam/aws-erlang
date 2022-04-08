@@ -24,10 +24,13 @@
 %% Examples include SQL, Wait event, User, and Host.
 %%
 %% <ul> <li> To learn more about Performance Insights and Amazon Aurora DB
-%% instances, go to the Amazon Aurora User Guide.
+%% instances, go to the Amazon Aurora User Guide .
 %%
 %% </li> <li> To learn more about Performance Insights and Amazon RDS DB
-%% instances, go to the Amazon RDS User Guide.
+%% instances, go to the Amazon RDS User Guide .
+%%
+%% </li> <li> To learn more about Performance Insights and Amazon DocumentDB
+%% clusters, go to the Amazon DocumentDB Developer Guide .
 %%
 %% </li> </ul>
 -module(aws_pi).
@@ -67,7 +70,7 @@ describe_dimension_keys(Client, Input, Options)
 %% or data source.
 %%
 %% For example, if you specify a SQL ID, `GetDimensionKeyDetails' retrieves
-%% the full text of the dimension `db.sql.statement'cassociated with this ID.
+%% the full text of the dimension `db.sql.statement' associated with this ID.
 %% This operation is useful because `GetResourceMetrics' and
 %% `DescribeDimensionKeys' don't support retrieval of large SQL statement
 %% text.
@@ -89,7 +92,7 @@ get_resource_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourceMetadata">>, Input, Options).
 
-%% @doc Retrieve Performance Insights metrics for a set of data sources, over
+%% @doc Retrieve Performance Insights metrics for a set of data sources over
 %% a time period.
 %%
 %% You can provide specific dimension groups and dimensions, and provide

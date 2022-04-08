@@ -109,8 +109,14 @@
          list_solution_versions/3,
          list_solutions/2,
          list_solutions/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          stop_solution_version_creation/2,
          stop_solution_version_creation/3,
+         tag_resource/2,
+         tag_resource/3,
+         untag_resource/2,
+         untag_resource/3,
          update_campaign/2,
          update_campaign/3,
          update_recommender/2,
@@ -125,7 +131,8 @@
 %% @doc Creates a batch inference job.
 %%
 %% The operation can handle up to 50 million records and the input file must
-%% be in JSON format. For more information, see `recommendations-batch'.
+%% be in JSON format. For more information, see Creating a batch inference
+%% job.
 create_batch_inference_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_batch_inference_job(Client, Input, []).
@@ -136,7 +143,8 @@ create_batch_inference_job(Client, Input, Options)
 %% @doc Creates a batch segment job.
 %%
 %% The operation can handle up to 50 million records and the input file must
-%% be in JSON format. For more information, see `recommendations-batch'.
+%% be in JSON format. For more information, see Getting batch recommendations
+%% and user segments.
 create_batch_segment_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_batch_segment_job(Client, Input, []).
@@ -176,20 +184,20 @@ create_batch_segment_job(Client, Input, Options)
 %%
 %% </li> <li> DELETE PENDING > DELETE IN_PROGRESS
 %%
-%% </li> </ul> To get the campaign status, call `DescribeCampaign'.
+%% </li> </ul> To get the campaign status, call DescribeCampaign.
 %%
 %% Wait until the `status' of the campaign is `ACTIVE' before asking the
 %% campaign for recommendations.
 %%
 %% == Related APIs ==
 %%
-%% <ul> <li> `ListCampaigns'
+%% <ul> <li> ListCampaigns
 %%
-%% </li> <li> `DescribeCampaign'
+%% </li> <li> DescribeCampaign
 %%
-%% </li> <li> `UpdateCampaign'
+%% </li> <li> UpdateCampaign
 %%
-%% </li> <li> `DeleteCampaign'
+%% </li> <li> DeleteCampaign
 %%
 %% </li> </ul>
 create_campaign(Client, Input)
@@ -201,7 +209,7 @@ create_campaign(Client, Input, Options)
 
 %% @doc Creates an empty dataset and adds it to the specified dataset group.
 %%
-%% Use `CreateDatasetImportJob' to import your training data to a dataset.
+%% Use CreateDatasetImportJob to import your training data to a dataset.
 %%
 %% There are three types of datasets:
 %%
@@ -221,17 +229,17 @@ create_campaign(Client, Input, Options)
 %%
 %% </li> <li> DELETE PENDING > DELETE IN_PROGRESS
 %%
-%% </li> </ul> To get the status of the dataset, call `DescribeDataset'.
+%% </li> </ul> To get the status of the dataset, call DescribeDataset.
 %%
 %% == Related APIs ==
 %%
-%% <ul> <li> `CreateDatasetGroup'
+%% <ul> <li> CreateDatasetGroup
 %%
-%% </li> <li> `ListDatasets'
+%% </li> <li> ListDatasets
 %%
-%% </li> <li> `DescribeDataset'
+%% </li> <li> DescribeDataset
 %%
-%% </li> <li> `DeleteDataset'
+%% </li> <li> DeleteDataset
 %%
 %% </li> </ul>
 create_dataset(Client, Input)
@@ -256,7 +264,7 @@ create_dataset(Client, Input, Options)
 %% <ul> <li> CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE FAILED
 %%
 %% </li> </ul> To get the status of the export job, call
-%% `DescribeDatasetExportJob', and specify the Amazon Resource Name (ARN) of
+%% DescribeDatasetExportJob, and specify the Amazon Resource Name (ARN) of
 %% the dataset export job. The dataset export is complete when the status
 %% shows as ACTIVE. If the status shows as CREATE FAILED, the response
 %% includes a `failureReason' key, which describes why the job failed.
@@ -293,7 +301,7 @@ create_dataset_export_job(Client, Input, Options)
 %% </li> <li> DELETE PENDING
 %%
 %% </li> </ul> To get the status of the dataset group, call
-%% `DescribeDatasetGroup'. If the status shows as CREATE FAILED, the response
+%% DescribeDatasetGroup. If the status shows as CREATE FAILED, the response
 %% includes a `failureReason' key, which describes why the creation failed.
 %%
 %% You must wait until the `status' of the dataset group is `ACTIVE' before
@@ -306,19 +314,19 @@ create_dataset_export_job(Client, Input, Options)
 %%
 %% == APIs that require a dataset group ARN in the request ==
 %%
-%% <ul> <li> `CreateDataset'
+%% <ul> <li> CreateDataset
 %%
-%% </li> <li> `CreateEventTracker'
+%% </li> <li> CreateEventTracker
 %%
-%% </li> <li> `CreateSolution'
+%% </li> <li> CreateSolution
 %%
 %% </li> </ul> == Related APIs ==
 %%
-%% <ul> <li> `ListDatasetGroups'
+%% <ul> <li> ListDatasetGroups
 %%
-%% </li> <li> `DescribeDatasetGroup'
+%% </li> <li> DescribeDatasetGroup
 %%
-%% </li> <li> `DeleteDatasetGroup'
+%% </li> <li> DeleteDatasetGroup
 %%
 %% </li> </ul>
 create_dataset_group(Client, Input)
@@ -347,19 +355,19 @@ create_dataset_group(Client, Input, Options)
 %% <ul> <li> CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE FAILED
 %%
 %% </li> </ul> To get the status of the import job, call
-%% `DescribeDatasetImportJob', providing the Amazon Resource Name (ARN) of
-%% the dataset import job. The dataset import is complete when the status
-%% shows as ACTIVE. If the status shows as CREATE FAILED, the response
-%% includes a `failureReason' key, which describes why the job failed.
+%% DescribeDatasetImportJob, providing the Amazon Resource Name (ARN) of the
+%% dataset import job. The dataset import is complete when the status shows
+%% as ACTIVE. If the status shows as CREATE FAILED, the response includes a
+%% `failureReason' key, which describes why the job failed.
 %%
 %% Importing takes time. You must wait until the status shows as ACTIVE
 %% before training a model using the dataset.
 %%
 %% == Related APIs ==
 %%
-%% <ul> <li> `ListDatasetImportJobs'
+%% <ul> <li> ListDatasetImportJobs
 %%
-%% </li> <li> `DescribeDatasetImportJob'
+%% </li> <li> DescribeDatasetImportJob
 %%
 %% </li> </ul>
 create_dataset_import_job(Client, Input)
@@ -388,18 +396,18 @@ create_dataset_import_job(Client, Input, Options)
 %% </li> <li> DELETE PENDING > DELETE IN_PROGRESS
 %%
 %% </li> </ul> To get the status of the event tracker, call
-%% `DescribeEventTracker'.
+%% DescribeEventTracker.
 %%
 %% The event tracker must be in the ACTIVE state before using the tracking
 %% ID.
 %%
 %% == Related APIs ==
 %%
-%% <ul> <li> `ListEventTrackers'
+%% <ul> <li> ListEventTrackers
 %%
-%% </li> <li> `DescribeEventTracker'
+%% </li> <li> DescribeEventTracker
 %%
-%% </li> <li> `DeleteEventTracker'
+%% </li> <li> DeleteEventTracker
 %%
 %% </li> </ul>
 create_event_tracker(Client, Input)
@@ -411,7 +419,7 @@ create_event_tracker(Client, Input, Options)
 
 %% @doc Creates a recommendation filter.
 %%
-%% For more information, see `filter'.
+%% For more information, see Filtering recommendations and user segments.
 create_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_filter(Client, Input, []).
@@ -460,20 +468,20 @@ create_filter(Client, Input, Options)
 %%
 %% </li> <li> DELETE PENDING > DELETE IN_PROGRESS
 %%
-%% </li> </ul> To get the recommender status, call `DescribeRecommender'.
+%% </li> </ul> To get the recommender status, call DescribeRecommender.
 %%
 %% Wait until the `status' of the recommender is `ACTIVE' before asking the
 %% recommender for recommendations.
 %%
 %% == Related APIs ==
 %%
-%% <ul> <li> `ListRecommenders'
+%% <ul> <li> ListRecommenders
 %%
-%% </li> <li> `DescribeRecommender'
+%% </li> <li> DescribeRecommender
 %%
-%% </li> <li> `UpdateRecommender'
+%% </li> <li> UpdateRecommender
 %%
-%% </li> <li> `DeleteRecommender'
+%% </li> <li> DeleteRecommender
 %%
 %% </li> </ul>
 create_recommender(Client, Input)
@@ -492,15 +500,15 @@ create_recommender(Client, Input, Options)
 %% associated with a dataset type and has a set of required field and
 %% keywords. If you are creating a schema for a dataset in a Domain dataset
 %% group, you provide the domain of the Domain dataset group. You specify a
-%% schema when you call `CreateDataset'.
+%% schema when you call CreateDataset.
 %%
 %% == Related APIs ==
 %%
-%% <ul> <li> `ListSchemas'
+%% <ul> <li> ListSchemas
 %%
-%% </li> <li> `DescribeSchema'
+%% </li> <li> DescribeSchema
 %%
-%% </li> <li> `DeleteSchema'
+%% </li> <li> DeleteSchema
 %%
 %% </li> </ul>
 create_schema(Client, Input)
@@ -514,13 +522,13 @@ create_schema(Client, Input, Options)
 %%
 %% A trained model is known as a solution. After the configuration is
 %% created, you train the model (create a solution) by calling the
-%% `CreateSolutionVersion' operation. Every time you call
+%% CreateSolutionVersion operation. Every time you call
 %% `CreateSolutionVersion', a new version of the solution is created.
 %%
 %% After creating a solution version, you check its accuracy by calling
-%% `GetSolutionMetrics'. When you are satisfied with the version, you deploy
-%% it using `CreateCampaign'. The campaign provides recommendations to a
-%% client through the GetRecommendations API.
+%% GetSolutionMetrics. When you are satisfied with the version, you deploy it
+%% using CreateCampaign. The campaign provides recommendations to a client
+%% through the GetRecommendations API.
 %%
 %% To train a model, Amazon Personalize requires training data and a recipe.
 %% The training data comes from the dataset group that you provide in the
@@ -541,23 +549,22 @@ create_schema(Client, Input, Options)
 %%
 %% </li> <li> DELETE PENDING > DELETE IN_PROGRESS
 %%
-%% </li> </ul> To get the status of the solution, call `DescribeSolution'.
-%% Wait until the status shows as ACTIVE before calling
-%% `CreateSolutionVersion'.
+%% </li> </ul> To get the status of the solution, call DescribeSolution. Wait
+%% until the status shows as ACTIVE before calling `CreateSolutionVersion'.
 %%
 %% == Related APIs ==
 %%
-%% <ul> <li> `ListSolutions'
+%% <ul> <li> ListSolutions
 %%
-%% </li> <li> `CreateSolutionVersion'
+%% </li> <li> CreateSolutionVersion
 %%
-%% </li> <li> `DescribeSolution'
+%% </li> <li> DescribeSolution
 %%
-%% </li> <li> `DeleteSolution'
+%% </li> <li> DeleteSolution
 %%
-%% </li> </ul> <ul> <li> `ListSolutionVersions'
+%% </li> </ul> <ul> <li> ListSolutionVersions
 %%
-%% </li> <li> `DescribeSolutionVersion'
+%% </li> <li> DescribeSolutionVersion
 %%
 %% </li> </ul>
 create_solution(Client, Input)
@@ -569,7 +576,7 @@ create_solution(Client, Input, Options)
 
 %% @doc Trains or retrains an active solution in a Custom dataset group.
 %%
-%% A solution is created using the `CreateSolution' operation and must be in
+%% A solution is created using the CreateSolution operation and must be in
 %% the ACTIVE state before calling `CreateSolutionVersion'. A new version of
 %% the solution is created every time you call this operation.
 %%
@@ -590,7 +597,7 @@ create_solution(Client, Input, Options)
 %% </li> <li> CREATE STOPPED
 %%
 %% </li> </ul> To get the status of the version, call
-%% `DescribeSolutionVersion'. Wait until the status shows as ACTIVE before
+%% DescribeSolutionVersion. Wait until the status shows as ACTIVE before
 %% calling `CreateCampaign'.
 %%
 %% If the status shows as CREATE FAILED, the response includes a
@@ -598,17 +605,17 @@ create_solution(Client, Input, Options)
 %%
 %% == Related APIs ==
 %%
-%% <ul> <li> `ListSolutionVersions'
+%% <ul> <li> ListSolutionVersions
 %%
-%% </li> <li> `DescribeSolutionVersion'
+%% </li> <li> DescribeSolutionVersion
 %%
-%% </li> </ul> <ul> <li> `ListSolutions'
+%% </li> <li> ListSolutions
 %%
-%% </li> <li> `CreateSolution'
+%% </li> <li> CreateSolution
 %%
-%% </li> <li> `DescribeSolution'
+%% </li> <li> DescribeSolution
 %%
-%% </li> <li> `DeleteSolution'
+%% </li> <li> DeleteSolution
 %%
 %% </li> </ul>
 create_solution_version(Client, Input)
@@ -622,8 +629,8 @@ create_solution_version(Client, Input, Options)
 %%
 %% The solution that the campaign is based on is not deleted and can be
 %% redeployed when needed. A deleted campaign can no longer be specified in a
-%% GetRecommendations request. For more information on campaigns, see
-%% `CreateCampaign'.
+%% GetRecommendations request. For information on creating campaigns, see
+%% CreateCampaign.
 delete_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_campaign(Client, Input, []).
@@ -635,7 +642,7 @@ delete_campaign(Client, Input, Options)
 %%
 %% You can't delete a dataset if an associated `DatasetImportJob' or
 %% `SolutionVersion' is in the CREATE PENDING or IN PROGRESS state. For more
-%% information on datasets, see `CreateDataset'.
+%% information on datasets, see CreateDataset.
 delete_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset(Client, Input, []).
@@ -664,7 +671,7 @@ delete_dataset_group(Client, Input, Options)
 %% @doc Deletes the event tracker.
 %%
 %% Does not delete the event-interactions dataset from the associated dataset
-%% group. For more information on event trackers, see `CreateEventTracker'.
+%% group. For more information on event trackers, see CreateEventTracker.
 delete_event_tracker(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_tracker(Client, Input, []).
@@ -694,7 +701,7 @@ delete_recommender(Client, Input, Options)
 %% @doc Deletes a schema.
 %%
 %% Before deleting a schema, you must delete all datasets referencing the
-%% schema. For more information on schemas, see `CreateSchema'.
+%% schema. For more information on schemas, see CreateSchema.
 delete_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_schema(Client, Input, []).
@@ -706,10 +713,10 @@ delete_schema(Client, Input, Options)
 %%
 %% Before deleting a solution, you must delete all campaigns based on the
 %% solution. To determine what campaigns are using the solution, call
-%% `ListCampaigns' and supply the Amazon Resource Name (ARN) of the solution.
+%% ListCampaigns and supply the Amazon Resource Name (ARN) of the solution.
 %% You can't delete a solution if an associated `SolutionVersion' is in the
 %% CREATE PENDING or IN PROGRESS state. For more information on solutions,
-%% see `CreateSolution'.
+%% see CreateSolution.
 delete_solution(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_solution(Client, Input, []).
@@ -756,7 +763,7 @@ describe_batch_segment_job(Client, Input, Options)
 %% </li> </ul> When the `status' is `CREATE FAILED', the response includes
 %% the `failureReason' key, which describes why.
 %%
-%% For more information on campaigns, see `CreateCampaign'.
+%% For more information on campaigns, see CreateCampaign.
 describe_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_campaign(Client, Input, []).
@@ -766,7 +773,7 @@ describe_campaign(Client, Input, Options)
 
 %% @doc Describes the given dataset.
 %%
-%% For more information on datasets, see `CreateDataset'.
+%% For more information on datasets, see CreateDataset.
 describe_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset(Client, Input, []).
@@ -774,7 +781,7 @@ describe_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataset">>, Input, Options).
 
-%% @doc Describes the dataset export job created by `CreateDatasetExportJob',
+%% @doc Describes the dataset export job created by CreateDatasetExportJob,
 %% including the export job status.
 describe_dataset_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -785,7 +792,7 @@ describe_dataset_export_job(Client, Input, Options)
 
 %% @doc Describes the given dataset group.
 %%
-%% For more information on dataset groups, see `CreateDatasetGroup'.
+%% For more information on dataset groups, see CreateDatasetGroup.
 describe_dataset_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset_group(Client, Input, []).
@@ -793,7 +800,7 @@ describe_dataset_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDatasetGroup">>, Input, Options).
 
-%% @doc Describes the dataset import job created by `CreateDatasetImportJob',
+%% @doc Describes the dataset import job created by CreateDatasetImportJob,
 %% including the import job status.
 describe_dataset_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -805,7 +812,7 @@ describe_dataset_import_job(Client, Input, Options)
 %% @doc Describes an event tracker.
 %%
 %% The response includes the `trackingId' and `status' of the event tracker.
-%% For more information on event trackers, see `CreateEventTracker'.
+%% For more information on event trackers, see CreateEventTracker.
 describe_event_tracker(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_tracker(Client, Input, []).
@@ -841,7 +848,7 @@ describe_filter(Client, Input, Options)
 %% before training.
 %%
 %% </li> </ul> Amazon Personalize provides a set of predefined recipes. You
-%% specify a recipe when you create a solution with the `CreateSolution' API.
+%% specify a recipe when you create a solution with the CreateSolution API.
 %% `CreateSolution' trains a model by using the algorithm in the specified
 %% recipe and a training dataset. The solution, when deployed as a campaign,
 %% can provide recommendations using the GetRecommendations API.
@@ -873,7 +880,7 @@ describe_recommender(Client, Input, Options)
 
 %% @doc Describes a schema.
 %%
-%% For more information on schemas, see `CreateSchema'.
+%% For more information on schemas, see CreateSchema.
 describe_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_schema(Client, Input, []).
@@ -883,7 +890,7 @@ describe_schema(Client, Input, Options)
 
 %% @doc Describes a solution.
 %%
-%% For more information on solutions, see `CreateSolution'.
+%% For more information on solutions, see CreateSolution.
 describe_solution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_solution(Client, Input, []).
@@ -893,7 +900,7 @@ describe_solution(Client, Input, Options)
 
 %% @doc Describes a specific version of a solution.
 %%
-%% For more information on solutions, see `CreateSolution'.
+%% For more information on solutions, see CreateSolution
 describe_solution_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_solution_version(Client, Input, []).
@@ -932,7 +939,7 @@ list_batch_segment_jobs(Client, Input, Options)
 %% When a solution is not specified, all the campaigns associated with the
 %% account are listed. The response provides the properties for each
 %% campaign, including the Amazon Resource Name (ARN). For more information
-%% on campaigns, see `CreateCampaign'.
+%% on campaigns, see CreateCampaign.
 list_campaigns(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_campaigns(Client, Input, []).
@@ -945,8 +952,8 @@ list_campaigns(Client, Input, Options)
 %% When a dataset is not specified, all the dataset export jobs associated
 %% with the account are listed. The response provides the properties for each
 %% dataset export job, including the Amazon Resource Name (ARN). For more
-%% information on dataset export jobs, see `CreateDatasetExportJob'. For more
-%% information on datasets, see `CreateDataset'.
+%% information on dataset export jobs, see CreateDatasetExportJob. For more
+%% information on datasets, see CreateDataset.
 list_dataset_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dataset_export_jobs(Client, Input, []).
@@ -958,7 +965,7 @@ list_dataset_export_jobs(Client, Input, Options)
 %%
 %% The response provides the properties for each dataset group, including the
 %% Amazon Resource Name (ARN). For more information on dataset groups, see
-%% `CreateDatasetGroup'.
+%% CreateDatasetGroup.
 list_dataset_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dataset_groups(Client, Input, []).
@@ -971,8 +978,8 @@ list_dataset_groups(Client, Input, Options)
 %% When a dataset is not specified, all the dataset import jobs associated
 %% with the account are listed. The response provides the properties for each
 %% dataset import job, including the Amazon Resource Name (ARN). For more
-%% information on dataset import jobs, see `CreateDatasetImportJob'. For more
-%% information on datasets, see `CreateDataset'.
+%% information on dataset import jobs, see CreateDatasetImportJob. For more
+%% information on datasets, see CreateDataset.
 list_dataset_import_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dataset_import_jobs(Client, Input, []).
@@ -984,7 +991,7 @@ list_dataset_import_jobs(Client, Input, Options)
 %%
 %% The response provides the properties for each dataset, including the
 %% Amazon Resource Name (ARN). For more information on datasets, see
-%% `CreateDataset'.
+%% CreateDataset.
 list_datasets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_datasets(Client, Input, []).
@@ -996,7 +1003,7 @@ list_datasets(Client, Input, Options)
 %%
 %% The response provides the properties for each event tracker, including the
 %% Amazon Resource Name (ARN) and tracking ID. For more information on event
-%% trackers, see `CreateEventTracker'.
+%% trackers, see CreateEventTracker.
 list_event_trackers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_event_trackers(Client, Input, []).
@@ -1039,7 +1046,7 @@ list_recommenders(Client, Input, Options)
 %% @doc Returns the list of schemas associated with the account.
 %%
 %% The response provides the properties for each schema, including the Amazon
-%% Resource Name (ARN). For more information on schemas, see `CreateSchema'.
+%% Resource Name (ARN). For more information on schemas, see CreateSchema.
 list_schemas(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_schemas(Client, Input, []).
@@ -1051,8 +1058,7 @@ list_schemas(Client, Input, Options)
 %%
 %% When a solution is not specified, all the solution versions associated
 %% with the account are listed. The response provides the properties for each
-%% solution version, including the Amazon Resource Name (ARN). For more
-%% information on solutions, see `CreateSolution'.
+%% solution version, including the Amazon Resource Name (ARN).
 list_solution_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_solution_versions(Client, Input, []).
@@ -1065,13 +1071,21 @@ list_solution_versions(Client, Input, Options)
 %% When a dataset group is not specified, all the solutions associated with
 %% the account are listed. The response provides the properties for each
 %% solution, including the Amazon Resource Name (ARN). For more information
-%% on solutions, see `CreateSolution'.
+%% on solutions, see CreateSolution.
 list_solutions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_solutions(Client, Input, []).
 list_solutions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSolutions">>, Input, Options).
+
+%% @doc Get a list of tags attached to a resource.
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Stops creating a solution version that is in a state of
 %% CREATE_PENDING or CREATE IN_PROGRESS.
@@ -1095,16 +1109,32 @@ stop_solution_version_creation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopSolutionVersionCreation">>, Input, Options).
 
+%% @doc Add a list of tags to a resource.
+tag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    tag_resource(Client, Input, []).
+tag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TagResource">>, Input, Options).
+
+%% @doc Remove tags that are attached to a resource.
+untag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    untag_resource(Client, Input, []).
+untag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UntagResource">>, Input, Options).
+
 %% @doc Updates a campaign by either deploying a new solution or changing the
 %% value of the campaign's `minProvisionedTPS' parameter.
 %%
 %% To update a campaign, the campaign status must be ACTIVE or CREATE FAILED.
-%% Check the campaign status using the `DescribeCampaign' API.
+%% Check the campaign status using the DescribeCampaign operation.
 %%
 %% You must wait until the `status' of the updated campaign is `ACTIVE'
 %% before asking the campaign for recommendations.
 %%
-%% For more information on campaigns, see `CreateCampaign'.
+%% For more information on campaigns, see CreateCampaign.
 update_campaign(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_campaign(Client, Input, []).

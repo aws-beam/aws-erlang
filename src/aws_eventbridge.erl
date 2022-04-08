@@ -35,6 +35,8 @@
          create_archive/3,
          create_connection/2,
          create_connection/3,
+         create_endpoint/2,
+         create_endpoint/3,
          create_event_bus/2,
          create_event_bus/3,
          create_partner_event_source/2,
@@ -49,6 +51,8 @@
          delete_archive/3,
          delete_connection/2,
          delete_connection/3,
+         delete_endpoint/2,
+         delete_endpoint/3,
          delete_event_bus/2,
          delete_event_bus/3,
          delete_partner_event_source/2,
@@ -61,6 +65,8 @@
          describe_archive/3,
          describe_connection/2,
          describe_connection/3,
+         describe_endpoint/2,
+         describe_endpoint/3,
          describe_event_bus/2,
          describe_event_bus/3,
          describe_event_source/2,
@@ -81,6 +87,8 @@
          list_archives/3,
          list_connections/2,
          list_connections/3,
+         list_endpoints/2,
+         list_endpoints/3,
          list_event_buses/2,
          list_event_buses/3,
          list_event_sources/2,
@@ -126,7 +134,9 @@
          update_archive/2,
          update_archive/3,
          update_connection/2,
-         update_connection/3]).
+         update_connection/3,
+         update_endpoint/2,
+         update_endpoint/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -186,6 +196,22 @@ create_connection(Client, Input)
 create_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConnection">>, Input, Options).
+
+%% @doc Creates a global endpoint.
+%%
+%% Global endpoints improve your application's availability by making it
+%% regional-fault tolerant. To do this, you define a primary and secondary
+%% Region with event buses in each Region. You also create a Amazon Route 53
+%% health check that will tell EventBridge to route events to the secondary
+%% Region when an "unhealthy" state is encountered and events will be routed
+%% back to the primary Region when the health check reports a "healthy"
+%% state.
+create_endpoint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_endpoint(Client, Input, []).
+create_endpoint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateEndpoint">>, Input, Options).
 
 %% @doc Creates a new event bus within your account.
 %%
@@ -286,6 +312,18 @@ delete_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConnection">>, Input, Options).
 
+%% @doc Delete an existing global endpoint.
+%%
+%% For more information about global endpoints, see Making applications
+%% Regional-fault tolerant with global endpoints and event replication in the
+%% Amazon EventBridge User Guide.
+delete_endpoint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_endpoint(Client, Input, []).
+delete_endpoint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteEndpoint">>, Input, Options).
+
 %% @doc Deletes the specified custom event bus or partner event bus.
 %%
 %% All rules associated with this event bus need to be deleted. You can't
@@ -358,6 +396,18 @@ describe_connection(Client, Input)
 describe_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConnection">>, Input, Options).
+
+%% @doc Get the information about an existing global endpoint.
+%%
+%% For more information about global endpoints, see Making applications
+%% Regional-fault tolerant with global endpoints and event replication in the
+%% Amazon EventBridge User Guide..
+describe_endpoint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_endpoint(Client, Input, []).
+describe_endpoint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeEndpoint">>, Input, Options).
 
 %% @doc Displays details about an event bus in your account.
 %%
@@ -484,6 +534,18 @@ list_connections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListConnections">>, Input, Options).
 
+%% @doc List the global endpoints associated with this account.
+%%
+%% For more information about global endpoints, see Making applications
+%% Regional-fault tolerant with global endpoints and event replication in the
+%% Amazon EventBridge User Guide..
+list_endpoints(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_endpoints(Client, Input, []).
+list_endpoints(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListEndpoints">>, Input, Options).
+
 %% @doc Lists all the event buses in your account, including the default
 %% event bus, custom event buses, and partner event buses.
 list_event_buses(Client, Input)
@@ -583,6 +645,8 @@ list_targets_by_rule(Client, Input, Options)
 
 %% @doc Sends custom events to Amazon EventBridge so that they can be matched
 %% to rules.
+%%
+%% PutEvents will only process nested JSON up to 1100 levels deep.
 put_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_events(Client, Input, []).
@@ -710,57 +774,59 @@ put_rule(Client, Input, Options)
 %%
 %% <ul> <li> API destination
 %%
-%% </li> <li> Amazon API Gateway REST API endpoints
-%%
 %% </li> <li> API Gateway
 %%
 %% </li> <li> Batch job queue
 %%
-%% </li> <li> CloudWatch Logs group
+%% </li> <li> CloudWatch group
 %%
 %% </li> <li> CodeBuild project
 %%
 %% </li> <li> CodePipeline
 %%
-%% </li> <li> Amazon EC2 `CreateSnapshot' API call
+%% </li> <li> EC2 `CreateSnapshot' API call
 %%
 %% </li> <li> EC2 Image Builder
 %%
-%% </li> <li> Amazon EC2 `RebootInstances' API call
+%% </li> <li> EC2 `RebootInstances' API call
 %%
-%% </li> <li> Amazon EC2 `StopInstances' API call
+%% </li> <li> EC2 `StopInstances' API call
 %%
-%% </li> <li> Amazon EC2 `TerminateInstances' API call
+%% </li> <li> EC2 `TerminateInstances' API call
 %%
-%% </li> <li> Amazon ECS tasks
+%% </li> <li> ECS task
 %%
-%% </li> <li> Event bus in a different Amazon Web Services account or Region.
+%% </li> <li> Event bus in a different account or Region
 %%
-%% You can use an event bus in the US East (N. Virginia) us-east-1, US West
-%% (Oregon) us-west-2, or Europe (Ireland) eu-west-1 Regions as a target for
-%% a rule.
+%% </li> <li> Event bus in the same account and Region
 %%
-%% </li> <li> Firehose delivery stream (Kinesis Data Firehose)
+%% </li> <li> Firehose delivery stream
 %%
-%% </li> <li> Inspector assessment template (Amazon Inspector)
+%% </li> <li> Glue workflow
 %%
-%% </li> <li> Kinesis stream (Kinesis Data Stream)
+%% </li> <li> Incident Manager response plan
+%%
+%% </li> <li> Inspector assessment template
+%%
+%% </li> <li> Kinesis stream
 %%
 %% </li> <li> Lambda function
 %%
-%% </li> <li> Redshift clusters (Data API statement execution)
+%% </li> <li> Redshift cluster
 %%
-%% </li> <li> Amazon SNS topic
+%% </li> <li> SageMaker Pipeline
 %%
-%% </li> <li> Amazon SQS queues (includes FIFO queues)
+%% </li> <li> SNS topic
 %%
-%% </li> <li> SSM Automation
+%% </li> <li> SQS queue
 %%
-%% </li> <li> SSM OpsItem
+%% </li> <li> Step Functions state machine
 %%
-%% </li> <li> SSM Run Command
+%% </li> <li> Systems Manager Automation
 %%
-%% </li> <li> Step Functions state machines
+%% </li> <li> Systems Manager OpsItem
+%%
+%% </li> <li> Systems Manager Run Command
 %%
 %% </li> </ul> Creating rules with built-in targets is supported only in the
 %% Amazon Web Services Management Console. The built-in targets are `EC2
@@ -970,6 +1036,18 @@ update_connection(Client, Input)
 update_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConnection">>, Input, Options).
+
+%% @doc Update an existing endpoint.
+%%
+%% For more information about global endpoints, see Making applications
+%% Regional-fault tolerant with global endpoints and event replication in the
+%% Amazon EventBridge User Guide..
+update_endpoint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_endpoint(Client, Input, []).
+update_endpoint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateEndpoint">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

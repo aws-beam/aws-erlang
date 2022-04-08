@@ -161,7 +161,8 @@ copy_db_cluster_parameter_group(Client, Input, Options)
 %% To copy a cluster snapshot from a shared manual cluster snapshot,
 %% `SourceDBClusterSnapshotIdentifier' must be the Amazon Resource Name (ARN)
 %% of the shared cluster snapshot. You can only copy a shared DB cluster
-%% snapshot, whether encrypted or not, in the same Region.
+%% snapshot, whether encrypted or not, in the same Amazon Web Services
+%% Region.
 %%
 %% To cancel the copy operation after it is in progress, delete the target
 %% cluster snapshot identified by `TargetDBClusterSnapshotIdentifier' while
@@ -223,7 +224,7 @@ create_db_instance(Client, Input, Options)
 %% @doc Creates a new subnet group.
 %%
 %% subnet groups must contain at least one subnet in at least two
-%% Availability Zones in the Region.
+%% Availability Zones in the Amazon Web Services Region.
 create_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_subnet_group(Client, Input, []).
@@ -263,7 +264,7 @@ create_event_subscription(Client, Input, Options)
     request(Client, <<"CreateEventSubscription">>, Input, Options).
 
 %% @doc Creates an Amazon DocumentDB global cluster that can span multiple
-%% multiple Regions.
+%% multiple Amazon Web Services Regions.
 %%
 %% The global cluster contains one primary cluster with read-write
 %% capability, and up-to give read-only secondary clusters. Global clusters
@@ -360,7 +361,7 @@ delete_global_cluster(Client, Input, Options)
     request(Client, <<"DeleteGlobalCluster">>, Input, Options).
 
 %% @doc Returns a list of certificate authority (CA) certificates provided by
-%% Amazon DocumentDB for this account.
+%% Amazon DocumentDB for this Amazon Web Services account.
 describe_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificates(Client, Input, []).
@@ -391,12 +392,13 @@ describe_db_cluster_parameters(Client, Input, Options)
 %% @doc Returns a list of cluster snapshot attribute names and values for a
 %% manual DB cluster snapshot.
 %%
-%% When you share snapshots with other accounts,
+%% When you share snapshots with other Amazon Web Services accounts,
 %% `DescribeDBClusterSnapshotAttributes' returns the `restore' attribute and
-%% a list of IDs for the accounts that are authorized to copy or restore the
-%% manual cluster snapshot. If `all' is included in the list of values for
-%% the `restore' attribute, then the manual cluster snapshot is public and
-%% can be copied or restored by all accounts.
+%% a list of IDs for the Amazon Web Services accounts that are authorized to
+%% copy or restore the manual cluster snapshot. If `all' is included in the
+%% list of values for the `restore' attribute, then the manual cluster
+%% snapshot is public and can be copied or restored by all Amazon Web
+%% Services accounts.
 describe_db_cluster_snapshot_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_snapshot_attributes(Client, Input, []).
@@ -596,16 +598,18 @@ modify_db_cluster_parameter_group(Client, Input, Options)
 %% @doc Adds an attribute and values to, or removes an attribute and values
 %% from, a manual cluster snapshot.
 %%
-%% To share a manual cluster snapshot with other accounts, specify `restore'
-%% as the `AttributeName', and use the `ValuesToAdd' parameter to add a list
-%% of IDs of the accounts that are authorized to restore the manual cluster
-%% snapshot. Use the value `all' to make the manual cluster snapshot public,
-%% which means that it can be copied or restored by all accounts. Do not add
-%% the `all' value for any manual cluster snapshots that contain private
-%% information that you don't want available to all accounts. If a manual
-%% cluster snapshot is encrypted, it can be shared, but only by specifying a
-%% list of authorized account IDs for the `ValuesToAdd' parameter. You can't
-%% use `all' as a value for that parameter in this case.
+%% To share a manual cluster snapshot with other Amazon Web Services
+%% accounts, specify `restore' as the `AttributeName', and use the
+%% `ValuesToAdd' parameter to add a list of IDs of the Amazon Web Services
+%% accounts that are authorized to restore the manual cluster snapshot. Use
+%% the value `all' to make the manual cluster snapshot public, which means
+%% that it can be copied or restored by all Amazon Web Services accounts. Do
+%% not add the `all' value for any manual cluster snapshots that contain
+%% private information that you don't want available to all Amazon Web
+%% Services accounts. If a manual cluster snapshot is encrypted, it can be
+%% shared, but only by specifying a list of authorized Amazon Web Services
+%% account IDs for the `ValuesToAdd' parameter. You can't use `all' as a
+%% value for that parameter in this case.
 modify_db_cluster_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_snapshot_attribute(Client, Input, []).
@@ -627,7 +631,7 @@ modify_db_instance(Client, Input, Options)
 %% @doc Modifies an existing subnet group.
 %%
 %% subnet groups must contain at least one subnet in at least two
-%% Availability Zones in the Region.
+%% Availability Zones in the Amazon Web Services Region.
 modify_db_subnet_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_subnet_group(Client, Input, []).
