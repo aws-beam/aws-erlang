@@ -1,14 +1,14 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc TwinMaker is in public preview and is subject to change.
+%% @doc IoT TwinMaker is a service that enables you to build operational
+%% digital twins of physical systems.
 %%
-%% IoT TwinMaker is a service that enables you to build operational digital
-%% twins of physical systems. IoT TwinMaker overlays measurements and
-%% analysis from real-world sensors, cameras, and enterprise applications so
-%% you can create data visualizations to monitor your physical factory,
-%% building, or industrial plant. You can use this real-world data to monitor
-%% operations and diagnose and repair errors.
+%% IoT TwinMaker overlays measurements and analysis from real-world sensors,
+%% cameras, and enterprise applications so you can create data visualizations
+%% to monitor your physical factory, building, or industrial plant. You can
+%% use this real-world data to monitor operations and diagnose and repair
+%% errors.
 -module(aws_iottwinmaker).
 
 -export([batch_put_property_values/3,
@@ -98,8 +98,6 @@ batch_put_property_values(Client, WorkspaceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a component type.
-%%
-%% TwinMaker is in public preview and is subject to change.
 create_component_type(Client, ComponentTypeId, WorkspaceId, Input) ->
     create_component_type(Client, ComponentTypeId, WorkspaceId, Input, []).
 create_component_type(Client, ComponentTypeId, WorkspaceId, Input0, Options0) ->

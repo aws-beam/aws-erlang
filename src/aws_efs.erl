@@ -8,10 +8,10 @@
 %% Services Cloud.
 %%
 %% With Amazon EFS, storage capacity is elastic, growing and shrinking
-%% automatically as you add and remove files, so your applications have the
-%% storage they need, when they need it. For more information, see the Amazon
-%% Elastic File System API Reference and the Amazon Elastic File System User
-%% Guide.
+%% automatically as you add and remove files, so that your applications have
+%% the storage they need, when they need it. For more information, see the
+%% Amazon Elastic File System API Reference and the Amazon Elastic File
+%% System User Guide.
 -module(aws_efs).
 
 -export([create_access_point/2,
@@ -99,9 +99,9 @@
 %% to any file system request made through the access point. The operating
 %% system user and group override any identity information provided by the
 %% NFS client. The file system path is exposed as the access point's root
-%% directory. Applications using the access point can only access data in its
-%% own directory and below. To learn more, see Mounting a file system using
-%% EFS access points.
+%% directory. Applications using the access point can only access data in the
+%% application's own directory and any subdirectories. To learn more, see
+%% Mounting a file system using EFS access points.
 %%
 %% This operation requires permissions for the
 %% `elasticfilesystem:CreateAccessPoint' action.
@@ -352,59 +352,63 @@ create_mount_target(Client, Input0, Options0) ->
 %% @doc Creates a replication configuration that replicates an existing EFS
 %% file system to a new, read-only file system.
 %%
-%% For more information, see Amazon EFS replication. The replication
-%% configuration specifies the following:
+%% For more information, see Amazon EFS replication in the Amazon EFS User
+%% Guide. The replication configuration specifies the following:
 %%
-%% <ul> <li> Source file system - an existing EFS file system that you want
+%% <ul> <li> Source file system - An existing EFS file system that you want
 %% replicated. The source file system cannot be a destination file system in
 %% an existing replication configuration.
 %%
-%% </li> <li> Destination file system configuration - the configuration of
+%% </li> <li> Destination file system configuration - The configuration of
 %% the destination file system to which the source file system will be
 %% replicated. There can only be one destination file system in a replication
-%% configuration.
+%% configuration. The destination file system configuration consists of the
+%% following properties:
 %%
 %% <ul> <li> Amazon Web Services Region - The Amazon Web Services Region in
-%% which the destination file system is created. EFS Replication is available
-%% in all Amazon Web Services Region that Amazon EFS is available in, except
-%% the following regions: Asia Pacific (Hong Kong) Europe (Milan), Middle
-%% East (Bahrain), Africa (Cape Town), and Asia Pacific (Jakarta).
+%% which the destination file system is created. Amazon EFS replication is
+%% available in all Amazon Web Services Regions that Amazon EFS is available
+%% in, except Africa (Cape Town), Asia Pacific (Hong Kong), Asia Pacific
+%% (Jakarta), Europe (Milan), and Middle East (Bahrain).
 %%
-%% </li> <li> Availability zone - If you want the destination file system to
-%% use One Zone availability and durability, you must specify the
+%% </li> <li> Availability Zone - If you want the destination file system to
+%% use EFS One Zone availability and durability, you must specify the
 %% Availability Zone to create the file system in. For more information about
 %% EFS storage classes, see Amazon EFS storage classes in the Amazon EFS User
 %% Guide.
 %%
 %% </li> <li> Encryption - All destination file systems are created with
-%% encryption at rest enabled. You can specify the KMS key that is used to
-%% encrypt the destination file system. Your service-managed KMS key for
-%% Amazon EFS is used if you don't specify a KMS key. You cannot change this
-%% after the file system is created.
+%% encryption at rest enabled. You can specify the Key Management Service
+%% (KMS) key that is used to encrypt the destination file system. If you
+%% don't specify a KMS key, your service-managed KMS key for Amazon EFS is
+%% used.
+%%
+%% After the file system is created, you cannot change the KMS key.
 %%
 %% </li> </ul> </li> </ul> The following properties are set by default:
 %%
 %% <ul> <li> Performance mode - The destination file system's performance
-%% mode will match that of the source file system, unless the destination
-%% file system uses One Zone storage. In that case, the General Purpose
-%% performance mode is used. The Performance mode cannot be changed.
+%% mode matches that of the source file system, unless the destination file
+%% system uses EFS One Zone storage. In that case, the General Purpose
+%% performance mode is used. The performance mode cannot be changed.
 %%
-%% </li> <li> Throughput mode - The destination file system use the Bursting
-%% throughput mode by default. You can modify the throughput mode once the
-%% file system is created.
+%% </li> <li> Throughput mode - The destination file system uses the Bursting
+%% Throughput mode by default. After the file system is created, you can
+%% modify the throughput mode.
 %%
 %% </li> </ul> The following properties are turned off by default:
 %%
-%% <ul> <li> Lifecycle management - EFS lifecycle management and intelligent
-%% tiering are not enabled on the destination file system. You can enable EFS
-%% lifecycle management and intelligent tiering after the destination file
-%% system is created.
+%% <ul> <li> Lifecycle management - EFS lifecycle management and EFS
+%% Intelligent-Tiering are not enabled on the destination file system. After
+%% the destination file system is created, you can enable EFS lifecycle
+%% management and EFS Intelligent-Tiering.
 %%
 %% </li> <li> Automatic backups - Automatic daily backups not enabled on the
-%% destination file system. You can change this setting after the file system
-%% is created.
+%% destination file system. After the file system is created, you can change
+%% this setting.
 %%
-%% </li> </ul> For more information, see Amazon EFS replication.
+%% </li> </ul> For more information, see Amazon EFS replication in the Amazon
+%% EFS User Guide.
 create_replication_configuration(Client, SourceFileSystemId, Input) ->
     create_replication_configuration(Client, SourceFileSystemId, Input, []).
 create_replication_configuration(Client, SourceFileSystemId, Input0, Options0) ->
@@ -427,9 +431,9 @@ create_replication_configuration(Client, SourceFileSystemId, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc DEPRECATED - CreateTags is deprecated and not maintained.
+%% @doc DEPRECATED - `CreateTags' is deprecated and not maintained.
 %%
-%% Please use the API action to create tags for EFS resources.
+%% To create tags for EFS resources, use the API action.
 %%
 %% Creates or overwrites tags associated with a file system. Each tag is a
 %% key-value pair. If a tag key specified in the request already exists on
@@ -496,6 +500,13 @@ delete_access_point(Client, AccessPointId, Input0, Options0) ->
 %%
 %% Upon return, the file system no longer exists and you can't access any
 %% contents of the deleted file system.
+%%
+%% You need to manually delete mount targets attached to a file system before
+%% you can delete an EFS file system. This step is performed for you when you
+%% use the Amazon Web Services console to delete a file system.
+%%
+%% You cannot delete a file system that is part of an EFS Replication
+%% configuration. You need to delete the replication configuration first.
 %%
 %% You can't delete a file system that is in use. That is, if the file system
 %% has any mount targets, you must first delete them. For more information,
@@ -617,8 +628,9 @@ delete_mount_target(Client, MountTargetId, Input0, Options0) ->
 %% To delete a replication configuration, you must make the request from the
 %% Amazon Web Services Region in which the destination file system is
 %% located. Deleting a replication configuration ends the replication
-%% process. You can write to the destination file system once it's status
-%% becomes `Writeable'.
+%% process. After a replication configuration is deleted, the destination
+%% file system is no longer read-only. You can write to the destination file
+%% system after its status becomes `Writeable'.
 delete_replication_configuration(Client, SourceFileSystemId, Input) ->
     delete_replication_configuration(Client, SourceFileSystemId, Input, []).
 delete_replication_configuration(Client, SourceFileSystemId, Input0, Options0) ->
@@ -641,9 +653,9 @@ delete_replication_configuration(Client, SourceFileSystemId, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc DEPRECATED - DeleteTags is deprecated and not maintained.
+%% @doc DEPRECATED - `DeleteTags' is deprecated and not maintained.
 %%
-%% Please use the API action to remove tags from EFS resources.
+%% To remove tags from EFS resources, use the API action.
 %%
 %% Deletes the specified tags from a file system. If the `DeleteTags' request
 %% includes a tag key that doesn't exist, Amazon EFS ignores it and doesn't
@@ -851,7 +863,7 @@ describe_file_systems(Client, QueryMap, HeadersMap, Options0)
 %% class. For a file system without a `LifecycleConfiguration' object, the
 %% call returns an empty array in the response.
 %%
-%% When EFS Intelligent Tiering is enabled, `TransitionToPrimaryStorageClass'
+%% When EFS Intelligent-Tiering is enabled, `TransitionToPrimaryStorageClass'
 %% has a value of `AFTER_1_ACCESS'.
 %%
 %% This operation requires permissions for the
@@ -954,9 +966,11 @@ describe_mount_targets(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the replication configurations for either a specific file
-%% system, or all configurations for the Amazon Web Services account in an
-%% Amazon Web Services Region if a file system is not specified.
+%% @doc Retrieves the replication configuration for a specific file system.
+%%
+%% If a file system is not specified, all of the replication configurations
+%% for the Amazon Web Services account in an Amazon Web Services Region are
+%% retrieved.
 describe_replication_configurations(Client)
   when is_map(Client) ->
     describe_replication_configurations(Client, #{}, #{}).
@@ -985,9 +999,11 @@ describe_replication_configurations(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc DEPRECATED - The DeleteTags action is deprecated and not maintained.
+%% @doc DEPRECATED - The `DescribeTags' action is deprecated and not
+%% maintained.
 %%
-%% Please use the API action to remove tags from EFS resources.
+%% To view tags associated with EFS resources, use the `ListTagsForResource'
+%% API action.
 %%
 %% Returns the tags associated with a file system. The order of tags returned
 %% in the response of one `DescribeTags' call and the order of tags returned
@@ -1110,8 +1126,8 @@ modify_mount_target_security_groups(Client, MountTargetId, Input0, Options0) ->
 %%
 %% Starting in October, 2021, you will receive an error if you try to set the
 %% account preference to use the short 8 character format resource ID.
-%% Contact Amazon Web Services support if you receive an error and need to
-%% use short IDs for file system and mount target resources.
+%% Contact Amazon Web Services support if you receive an error and must use
+%% short IDs for file system and mount target resources.
 put_account_preferences(Client, Input) ->
     put_account_preferences(Client, Input, []).
 put_account_preferences(Client, Input0, Options0) ->
@@ -1196,14 +1212,27 @@ put_file_system_policy(Client, FileSystemId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Enables lifecycle management by creating a new
-%% `LifecycleConfiguration' object.
+%% @doc Use this action to manage EFS lifecycle management and intelligent
+%% tiering.
 %%
-%% A `LifecycleConfiguration' object defines when files in an Amazon EFS file
-%% system are automatically transitioned to the lower-cost EFS Infrequent
-%% Access (IA) storage class. To enable EFS Intelligent Tiering, set the
-%% value of `TransitionToPrimaryStorageClass' to `AFTER_1_ACCESS'. For more
-%% information, see EFS Lifecycle Management.
+%% A `LifecycleConfiguration' consists of one or more `LifecyclePolicy'
+%% objects that define the following:
+%%
+%% <ul> <li> EFS Lifecycle management - When Amazon EFS automatically
+%% transitions files in a file system into the lower-cost Infrequent Access
+%% (IA) storage class.
+%%
+%% To enable EFS Lifecycle management, set the value of `TransitionToIA' to
+%% one of the available options.
+%%
+%% </li> <li> EFS Intelligent tiering - When Amazon EFS automatically
+%% transitions files from IA back into the file system's primary storage
+%% class (Standard or One Zone Standard.
+%%
+%% To enable EFS Intelligent Tiering, set the value of
+%% `TransitionToPrimaryStorageClass' to `AFTER_1_ACCESS'.
+%%
+%% </li> </ul> For more information, see EFS Lifecycle Management.
 %%
 %% Each Amazon EFS file system supports one lifecycle configuration, which
 %% applies to all files in the file system. If a `LifecycleConfiguration'
@@ -1211,19 +1240,22 @@ put_file_system_policy(Client, FileSystemId, Input0, Options0) ->
 %% `PutLifecycleConfiguration' call modifies the existing configuration. A
 %% `PutLifecycleConfiguration' call with an empty `LifecyclePolicies' array
 %% in the request body deletes any existing `LifecycleConfiguration' and
-%% turns off lifecycle management for the file system.
+%% turns off lifecycle management and intelligent tiering for the file
+%% system.
 %%
 %% In the request, specify the following:
 %%
 %% <ul> <li> The ID for the file system for which you are enabling,
-%% disabling, or modifying lifecycle management.
+%% disabling, or modifying lifecycle management and intelligent tiering.
 %%
 %% </li> <li> A `LifecyclePolicies' array of `LifecyclePolicy' objects that
-%% define when files are moved to the IA storage class. Amazon EFS requires
-%% that each `LifecyclePolicy' object have only have a single transition, so
-%% the `LifecyclePolicies' array needs to be structured with separate
-%% `LifecyclePolicy' objects. See the example requests in the following
-%% section for more information.
+%% define when files are moved into IA storage, and when they are moved back
+%% to Standard storage.
+%%
+%% Amazon EFS requires that each `LifecyclePolicy' object have only have a
+%% single transition, so the `LifecyclePolicies' array needs to be structured
+%% with separate `LifecyclePolicy' objects. See the example requests in the
+%% following section for more information.
 %%
 %% </li> </ul> This operation requires permissions for the
 %% `elasticfilesystem:PutLifecycleConfiguration' operation.

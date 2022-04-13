@@ -24,6 +24,8 @@
 
 -export([add_notification_channel/2,
          add_notification_channel/3,
+         delete_insight/3,
+         delete_insight/4,
          describe_account_health/1,
          describe_account_health/3,
          describe_account_health/4,
@@ -100,6 +102,13 @@
 %% If you use an Amazon SNS topic in another account, you must attach a
 %% policy to it that grants DevOps Guru permission to it notifications.
 %% DevOps Guru adds the required policy on your behalf to send notifications
+%% using Amazon SNS in your account. DevOps Guru only supports standard SNS
+%% topics. For more information, see Permissions for cross account Amazon SNS
+%% topics.
+%%
+%% If you use an Amazon SNS topic in another account, you must attach a
+%% policy to it that grants DevOps Guru permission to it notifications.
+%% DevOps Guru adds the required policy on your behalf to send notifications
 %% using Amazon SNS in your account. For more information, see Permissions
 %% for cross account Amazon SNS topics.
 %%
@@ -112,6 +121,30 @@ add_notification_channel(Client, Input) ->
 add_notification_channel(Client, Input0, Options0) ->
     Method = put,
     Path = ["/channels"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the insight along with the associated anomalies, events and
+%% recommendations.
+delete_insight(Client, Id, Input) ->
+    delete_insight(Client, Id, Input, []).
+delete_insight(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/insights/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -210,8 +243,12 @@ describe_anomaly(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation lists details about a DevOps Guru event source that is
-%% shared with your account.
+%% @doc Returns the integration status of services that are integrated with
+%% DevOps Guru as Consumer via EventBridge.
+%%
+%% The one service that can be integrated with DevOps Guru is Amazon CodeGuru
+%% Profiler, which can produce proactive recommendations which can be stored
+%% and viewed in DevOps Guru.
 describe_event_sources_config(Client, Input) ->
     describe_event_sources_config(Client, Input, []).
 describe_event_sources_config(Client, Input0, Options0) ->
@@ -780,7 +817,12 @@ start_cost_estimation(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the event source configuration.
+%% @doc Enables or disables integration with a service that can be integrated
+%% with DevOps Guru.
+%%
+%% The one service that can be integrated with DevOps Guru is Amazon CodeGuru
+%% Profiler, which can produce proactive recommendations which can be stored
+%% and viewed in DevOps Guru.
 update_event_sources_config(Client, Input) ->
     update_event_sources_config(Client, Input, []).
 update_event_sources_config(Client, Input0, Options0) ->
