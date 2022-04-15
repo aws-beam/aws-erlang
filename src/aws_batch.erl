@@ -348,7 +348,7 @@ deregister_job_definition(Client, Input0, Options0) ->
 %%
 %% If you're using an unmanaged compute environment, you can use the
 %% `DescribeComputeEnvironment' operation to determine the `ecsClusterArn'
-%% that you should launch your Amazon ECS container instances into.
+%% that you launch your Amazon ECS container instances into.
 describe_compute_environments(Client, Input) ->
     describe_compute_environments(Client, Input, []).
 describe_compute_environments(Client, Input0, Options0) ->

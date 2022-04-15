@@ -827,9 +827,9 @@ put_metric_data(Client, Input, Options)
 %% </li> </ul> By default, a metric stream always sends the `MAX', `MIN',
 %% `SUM', and `SAMPLECOUNT' statistics for each metric that is streamed. You
 %% can use the `StatisticsConfigurations' parameter to have the metric stream
-%% also send extended statistics in the stream. Streaming extended statistics
-%% incurs additional costs. For more information, see Amazon CloudWatch
-%% Pricing.
+%% also send additional statistics in the stream. Streaming additional
+%% statistics incurs additional costs. For more information, see Amazon
+%% CloudWatch Pricing.
 %%
 %% When you use `PutMetricStream' to create a new metric stream, the stream
 %% is created in the `running' state. If you use it to update an existing
