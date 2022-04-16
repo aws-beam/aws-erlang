@@ -79,8 +79,6 @@
          copy_db_snapshot/3,
          copy_option_group/2,
          copy_option_group/3,
-         create_custom_availability_zone/2,
-         create_custom_availability_zone/3,
          create_custom_db_engine_version/2,
          create_custom_db_engine_version/3,
          create_db_cluster/2,
@@ -113,8 +111,6 @@
          create_global_cluster/3,
          create_option_group/2,
          create_option_group/3,
-         delete_custom_availability_zone/2,
-         delete_custom_availability_zone/3,
          delete_custom_db_engine_version/2,
          delete_custom_db_engine_version/3,
          delete_db_cluster/2,
@@ -145,8 +141,6 @@
          delete_event_subscription/3,
          delete_global_cluster/2,
          delete_global_cluster/3,
-         delete_installation_media/2,
-         delete_installation_media/3,
          delete_option_group/2,
          delete_option_group/3,
          deregister_db_proxy_targets/2,
@@ -155,8 +149,6 @@
          describe_account_attributes/3,
          describe_certificates/2,
          describe_certificates/3,
-         describe_custom_availability_zones/2,
-         describe_custom_availability_zones/3,
          describe_db_cluster_backtracks/2,
          describe_db_cluster_backtracks/3,
          describe_db_cluster_endpoints/2,
@@ -213,8 +205,6 @@
          describe_export_tasks/3,
          describe_global_clusters/2,
          describe_global_clusters/3,
-         describe_installation_media/2,
-         describe_installation_media/3,
          describe_option_group_options/2,
          describe_option_group_options/3,
          describe_option_groups/2,
@@ -237,8 +227,6 @@
          failover_db_cluster/3,
          failover_global_cluster/2,
          failover_global_cluster/3,
-         import_installation_media/2,
-         import_installation_media/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          modify_certificates/2,
@@ -577,20 +565,6 @@ copy_option_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyOptionGroup">>, Input, Options).
 
-%% @doc Creates a custom Availability Zone (AZ).
-%%
-%% A custom AZ is an on-premises AZ that is integrated with a VMware vSphere
-%% cluster.
-%%
-%% For more information about RDS on VMware, see the RDS on VMware User
-%% Guide.
-create_custom_availability_zone(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    create_custom_availability_zone(Client, Input, []).
-create_custom_availability_zone(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"CreateCustomAvailabilityZone">>, Input, Options).
-
 %% @doc Creates a custom DB engine version (CEV).
 %%
 %% A CEV is a binary volume snapshot of a database engine and specific AMI.
@@ -910,20 +884,6 @@ create_option_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOptionGroup">>, Input, Options).
 
-%% @doc Deletes a custom Availability Zone (AZ).
-%%
-%% A custom AZ is an on-premises AZ that is integrated with a VMware vSphere
-%% cluster.
-%%
-%% For more information about RDS on VMware, see the RDS on VMware User
-%% Guide.
-delete_custom_availability_zone(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    delete_custom_availability_zone(Client, Input, []).
-delete_custom_availability_zone(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"DeleteCustomAvailabilityZone">>, Input, Options).
-
 %% @doc Deletes a custom engine version.
 %%
 %% To run this command, make sure you meet the following prerequisites:
@@ -1152,15 +1112,6 @@ delete_global_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGlobalCluster">>, Input, Options).
 
-%% @doc Deletes the installation medium for a DB engine that requires an
-%% on-premises customer provided license, such as Microsoft SQL Server.
-delete_installation_media(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    delete_installation_media(Client, Input, []).
-delete_installation_media(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"DeleteInstallationMedia">>, Input, Options).
-
 %% @doc Deletes an existing option group.
 delete_option_group(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1201,20 +1152,6 @@ describe_certificates(Client, Input)
 describe_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCertificates">>, Input, Options).
-
-%% @doc Returns information about custom Availability Zones (AZs).
-%%
-%% A custom AZ is an on-premises AZ that is integrated with a VMware vSphere
-%% cluster.
-%%
-%% For more information about RDS on VMware, see the RDS on VMware User
-%% Guide.
-describe_custom_availability_zones(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    describe_custom_availability_zones(Client, Input, []).
-describe_custom_availability_zones(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"DescribeCustomAvailabilityZones">>, Input, Options).
 
 %% @doc Returns information about backtracks for a DB cluster.
 %%
@@ -1574,16 +1511,6 @@ describe_global_clusters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGlobalClusters">>, Input, Options).
 
-%% @doc Describes the available installation media for a DB engine that
-%% requires an on-premises customer provided license, such as Microsoft SQL
-%% Server.
-describe_installation_media(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    describe_installation_media(Client, Input, []).
-describe_installation_media(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"DescribeInstallationMedia">>, Input, Options).
-
 %% @doc Describes all available options.
 describe_option_group_options(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1728,15 +1655,6 @@ failover_global_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"FailoverGlobalCluster">>, Input, Options).
 
-%% @doc Imports the installation media for a DB engine that requires an
-%% on-premises customer provided license, such as SQL Server.
-import_installation_media(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    import_installation_media(Client, Input, []).
-import_installation_media(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"ImportInstallationMedia">>, Input, Options).
-
 %% @doc Lists all tags on an Amazon RDS resource.
 %%
 %% For an overview on tagging an Amazon RDS resource, see Tagging Amazon RDS
@@ -1749,8 +1667,8 @@ list_tags_for_resource(Client, Input, Options)
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
 %% @doc Override the system-default Secure Sockets Layer/Transport Layer
-%% Security (SSL/TLS) certificate for Amazon RDS for new DB instances
-%% temporarily, or remove the override.
+%% Security (SSL/TLS) certificate for Amazon RDS for new DB instances, or
+%% remove the override.
 %%
 %% By using this operation, you can specify an RDS-approved SSL/TLS
 %% certificate for new DB instances that is different from the default

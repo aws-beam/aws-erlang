@@ -569,9 +569,10 @@ create_container_service(Client, Input, Options)
 %% the health check configuration.
 %%
 %% You can deploy containers to your container service using container images
-%% from a public registry like Docker Hub, or from your local machine. For
-%% more information, see Creating container images for your Amazon Lightsail
-%% container services in the Amazon Lightsail Developer Guide.
+%% from a public registry such as Amazon ECR Public, or from your local
+%% machine. For more information, see Creating container images for your
+%% Amazon Lightsail container services in the Amazon Lightsail Developer
+%% Guide.
 create_container_service_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_container_service_deployment(Client, Input, []).
@@ -1337,8 +1338,12 @@ get_bucket_metric_data(Client, Input, Options)
 
 %% @doc Returns information about one or more Amazon Lightsail buckets.
 %%
+%% The information returned includes the synchronization status of the Amazon
+%% Simple Storage Service (Amazon S3) account-level block public access
+%% feature for your Lightsail buckets.
+%%
 %% For more information about buckets, see Buckets in Amazon Lightsail in the
-%% Amazon Lightsail Developer Guide..
+%% Amazon Lightsail Developer Guide.
 get_buckets(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_buckets(Client, Input, []).
@@ -1530,7 +1535,7 @@ get_disks(Client, Input, Options)
 %% content delivery network (CDN) distributions.
 %%
 %% A distribution bundle specifies the monthly network transfer quota and
-%% monthly cost of your dsitribution.
+%% monthly cost of your distribution.
 get_distribution_bundles(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_distribution_bundles(Client, Input, []).
@@ -2293,7 +2298,7 @@ update_distribution(Client, Input, Options)
 %% (CDN) distribution.
 %%
 %% A distribution bundle specifies the monthly network transfer quota and
-%% monthly cost of your dsitribution.
+%% monthly cost of your distribution.
 %%
 %% Update your distribution's bundle if your distribution is going over its
 %% monthly network transfer quota and is incurring an overage fee.
