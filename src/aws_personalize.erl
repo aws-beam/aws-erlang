@@ -111,6 +111,10 @@
          list_solutions/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         start_recommender/2,
+         start_recommender/3,
+         stop_recommender/2,
+         stop_recommender/3,
          stop_solution_version_creation/2,
          stop_solution_version_creation/3,
          tag_resource/2,
@@ -1087,6 +1091,28 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
+%% @doc Starts a recommender that is INACTIVE.
+%%
+%% Starting a recommender does not create any new models, but resumes billing
+%% and automatic retraining for the recommender.
+start_recommender(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_recommender(Client, Input, []).
+start_recommender(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartRecommender">>, Input, Options).
+
+%% @doc Stops a recommender that is ACTIVE.
+%%
+%% Stopping a recommender halts billing and automatic retraining for the
+%% recommender.
+stop_recommender(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_recommender(Client, Input, []).
+stop_recommender(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopRecommender">>, Input, Options).
+
 %% @doc Stops creating a solution version that is in a state of
 %% CREATE_PENDING or CREATE IN_PROGRESS.
 %%
@@ -1131,8 +1157,10 @@ untag_resource(Client, Input, Options)
 %% To update a campaign, the campaign status must be ACTIVE or CREATE FAILED.
 %% Check the campaign status using the DescribeCampaign operation.
 %%
-%% You must wait until the `status' of the updated campaign is `ACTIVE'
-%% before asking the campaign for recommendations.
+%% You can still get recommendations from a campaign while an update is in
+%% progress. The campaign will use the previous solution version and campaign
+%% configuration to generate recommendations until the latest campaign update
+%% status is `Active'.
 %%
 %% For more information on campaigns, see CreateCampaign.
 update_campaign(Client, Input)

@@ -52,6 +52,10 @@
 %% document are returned (including text that doesn't have a relationship
 %% with the value of `FeatureTypes').
 %%
+%% </li> <li> Queries.A QUERIES_RESULT Block object contains the answer to
+%% the query, the alias associated and an ID that connect it to the query
+%% asked. This Block also contains a location and attached confidence score.
+%%
 %% </li> </ul> Selection elements such as check boxes and option buttons
 %% (radio buttons) can be detected in form data and in tables. A
 %% SELECTION_ELEMENT `Block' object contains information about a selection
@@ -96,7 +100,9 @@ analyze_expense(Client, Input, Options)
 %% @doc Analyzes identity documents for relevant information.
 %%
 %% This information is extracted and returned as `IdentityDocumentFields',
-%% which records both the normalized field and value of the extracted text.
+%% which records both the normalized field and value of the extracted
+%% text.Unlike other Amazon Textract operations, `AnalyzeID' doesn't return
+%% any Geometry data.
 analyze_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     analyze_id(Client, Input, []).
@@ -107,9 +113,9 @@ analyze_id(Client, Input, Options)
 %% @doc Detects text in the input document.
 %%
 %% Amazon Textract can detect lines of text and the words that make up a line
-%% of text. The input document must be an image in JPEG or PNG format.
-%% `DetectDocumentText' returns the detected text in an array of `Block'
-%% objects.
+%% of text. The input document must be an image in JPEG, PNG, PDF, or TIFF
+%% format. `DetectDocumentText' returns the detected text in an array of
+%% `Block' objects.
 %%
 %% Each document page has as an associated `Block' of type PAGE. Each PAGE
 %% `Block' object is the parent of LINE `Block' objects that represent the
@@ -158,6 +164,10 @@ detect_document_text(Client, Input, Options)
 %% document are returned (including text that doesn't have a relationship
 %% with the value of the `StartDocumentAnalysis' `FeatureTypes' input
 %% parameter).
+%%
+%% </li> <li> Queries. A QUERIES_RESULT Block object contains the answer to
+%% the query, the alias associated and an ID that connect it to the query
+%% asked. This Block also contains a location and attached confidence score
 %%
 %% </li> </ul> Selection elements such as check boxes and option buttons
 %% (radio buttons) can be detected in form data and in tables. A
