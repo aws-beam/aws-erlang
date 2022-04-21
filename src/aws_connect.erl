@@ -33,12 +33,16 @@
          associate_lambda_function/4,
          associate_lex_bot/3,
          associate_lex_bot/4,
+         associate_phone_number_contact_flow/3,
+         associate_phone_number_contact_flow/4,
          associate_queue_quick_connects/4,
          associate_queue_quick_connects/5,
          associate_routing_profile_queues/4,
          associate_routing_profile_queues/5,
          associate_security_key/3,
          associate_security_key/4,
+         claim_phone_number/2,
+         claim_phone_number/3,
          create_agent_status/3,
          create_agent_status/4,
          create_contact_flow/3,
@@ -113,6 +117,9 @@
          describe_instance_storage_config/4,
          describe_instance_storage_config/6,
          describe_instance_storage_config/7,
+         describe_phone_number/2,
+         describe_phone_number/4,
+         describe_phone_number/5,
          describe_queue/3,
          describe_queue/5,
          describe_queue/6,
@@ -147,6 +154,8 @@
          disassociate_lambda_function/4,
          disassociate_lex_bot/3,
          disassociate_lex_bot/4,
+         disassociate_phone_number_contact_flow/3,
+         disassociate_phone_number_contact_flow/4,
          disassociate_queue_quick_connects/4,
          disassociate_queue_quick_connects/5,
          disassociate_routing_profile_queues/4,
@@ -207,6 +216,8 @@
          list_phone_numbers/2,
          list_phone_numbers/4,
          list_phone_numbers/5,
+         list_phone_numbers_v2/2,
+         list_phone_numbers_v2/3,
          list_prompts/2,
          list_prompts/4,
          list_prompts/5,
@@ -246,8 +257,12 @@
          list_users/2,
          list_users/4,
          list_users/5,
+         release_phone_number/3,
+         release_phone_number/4,
          resume_contact_recording/2,
          resume_contact_recording/3,
+         search_available_phone_numbers/2,
+         search_available_phone_numbers/3,
          search_vocabularies/3,
          search_vocabularies/4,
          start_chat_contact/2,
@@ -296,6 +311,8 @@
          update_instance_attribute/5,
          update_instance_storage_config/4,
          update_instance_storage_config/5,
+         update_phone_number/3,
+         update_phone_number/4,
          update_queue_hours_of_operation/4,
          update_queue_hours_of_operation/5,
          update_queue_max_contacts/4,
@@ -508,6 +525,30 @@ associate_lex_bot(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Associates a contact flow with a phone number claimed to your Amazon
+%% Connect instance.
+associate_phone_number_contact_flow(Client, PhoneNumberId, Input) ->
+    associate_phone_number_contact_flow(Client, PhoneNumberId, Input, []).
+associate_phone_number_contact_flow(Client, PhoneNumberId, Input0, Options0) ->
+    Method = put,
+    Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), "/contact-flow"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This API is in preview release for Amazon Connect and is subject to
 %% change.
 %%
@@ -566,6 +607,29 @@ associate_security_key(Client, InstanceId, Input) ->
 associate_security_key(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/security-key"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Claims an available phone number to your Amazon Connect instance.
+claim_phone_number(Client, Input) ->
+    claim_phone_number(Client, Input, []).
+claim_phone_number(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/phone-number/claim"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1439,6 +1503,30 @@ describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets details and status of a phone number that’s claimed to your
+%% Amazon Connect instance
+describe_phone_number(Client, PhoneNumberId)
+  when is_map(Client) ->
+    describe_phone_number(Client, PhoneNumberId, #{}, #{}).
+
+describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, []).
+
+describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc This API is in preview release for Amazon Connect and is subject to
 %% change.
 %%
@@ -1769,6 +1857,31 @@ disassociate_lex_bot(Client, InstanceId, Input0, Options0) ->
     QueryMapping = [
                      {<<"botName">>, <<"BotName">>},
                      {<<"lexRegion">>, <<"LexRegion">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes the contact flow association from a phone number claimed to
+%% your Amazon Connect instance, if a contact flow association exists.
+disassociate_phone_number_contact_flow(Client, PhoneNumberId, Input) ->
+    disassociate_phone_number_contact_flow(Client, PhoneNumberId, Input, []).
+disassociate_phone_number_contact_flow(Client, PhoneNumberId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), "/contact-flow"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"instanceId">>, <<"InstanceId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -2432,6 +2545,32 @@ list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists phone numbers claimed to your Amazon Connect instance.
+%%
+%% For more information about phone numbers, see Set Up Phone Numbers for
+%% Your Contact Center in the Amazon Connect Administrator Guide.
+list_phone_numbers_v2(Client, Input) ->
+    list_phone_numbers_v2(Client, Input, []).
+list_phone_numbers_v2(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/phone-number/list"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Provides information about the prompts for the specified Amazon
 %% Connect instance.
 list_prompts(Client, InstanceId)
@@ -2830,6 +2969,31 @@ list_users(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Releases a phone number previously claimed to an Amazon Connect
+%% instance.
+release_phone_number(Client, PhoneNumberId, Input) ->
+    release_phone_number(Client, PhoneNumberId, Input, []).
+release_phone_number(Client, PhoneNumberId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"ClientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc When a contact is being recorded, and the recording has been
 %% suspended using SuspendContactRecording, this API resumes recording the
 %% call.
@@ -2840,6 +3004,30 @@ resume_contact_recording(Client, Input) ->
 resume_contact_recording(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/resume-recording"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches for available phone numbers that you can claim to your
+%% Amazon Connect instance.
+search_available_phone_numbers(Client, Input) ->
+    search_available_phone_numbers(Client, Input, []).
+search_available_phone_numbers(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/phone-number/search-available"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -3190,7 +3378,8 @@ suspend_contact_recording(Client, Input0, Options0) ->
 %% @doc Adds the specified tags to the specified resource.
 %%
 %% The supported resource types are users, routing profiles, queues, quick
-%% connects, contact flows, agent status, and hours of operation.
+%% connects, contact flows, agent status, hours of operation, and phone
+%% number.
 %%
 %% For sample policies that use tags, see Amazon Connect Identity-Based
 %% Policy Examples in the Amazon Connect Administrator Guide.
@@ -3567,6 +3756,30 @@ update_instance_storage_config(Client, AssociationId, InstanceId, Input0, Option
                      {<<"resourceType">>, <<"ResourceType">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates your claimed phone number from its current Amazon Connect
+%% instance to another Amazon Connect instance in the same Region.
+update_phone_number(Client, PhoneNumberId, Input) ->
+    update_phone_number(Client, PhoneNumberId, Input, []).
+update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
+    Method = put,
+    Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This API is in preview release for Amazon Connect and is subject to
