@@ -20,6 +20,8 @@
          configure_logs_for_playback_configuration/3,
          create_channel/3,
          create_channel/4,
+         create_live_source/4,
+         create_live_source/5,
          create_prefetch_schedule/4,
          create_prefetch_schedule/5,
          create_program/4,
@@ -32,6 +34,8 @@
          delete_channel/4,
          delete_channel_policy/3,
          delete_channel_policy/4,
+         delete_live_source/4,
+         delete_live_source/5,
          delete_playback_configuration/3,
          delete_playback_configuration/4,
          delete_prefetch_schedule/4,
@@ -45,6 +49,9 @@
          describe_channel/2,
          describe_channel/4,
          describe_channel/5,
+         describe_live_source/3,
+         describe_live_source/5,
+         describe_live_source/6,
          describe_program/3,
          describe_program/5,
          describe_program/6,
@@ -72,6 +79,9 @@
          list_channels/1,
          list_channels/3,
          list_channels/4,
+         list_live_sources/2,
+         list_live_sources/4,
+         list_live_sources/5,
          list_playback_configurations/1,
          list_playback_configurations/3,
          list_playback_configurations/4,
@@ -100,6 +110,8 @@
          untag_resource/4,
          update_channel/3,
          update_channel/4,
+         update_live_source/4,
+         update_live_source/5,
          update_source_location/3,
          update_source_location/4,
          update_vod_source/4,
@@ -141,6 +153,29 @@ create_channel(Client, ChannelName, Input) ->
 create_channel(Client, ChannelName, Input0, Options0) ->
     Method = post,
     Path = ["/channel/", aws_util:encode_uri(ChannelName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates name for a specific live source in a source location.
+create_live_source(Client, LiveSourceName, SourceLocationName, Input) ->
+    create_live_source(Client, LiveSourceName, SourceLocationName, Input, []).
+create_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0) ->
+    Method = post,
+    Path = ["/sourceLocation/", aws_util:encode_uri(SourceLocationName), "/liveSource/", aws_util:encode_uri(LiveSourceName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -299,6 +334,29 @@ delete_channel_policy(Client, ChannelName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a specific live source in a specific source location.
+delete_live_source(Client, LiveSourceName, SourceLocationName, Input) ->
+    delete_live_source(Client, LiveSourceName, SourceLocationName, Input, []).
+delete_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/sourceLocation/", aws_util:encode_uri(SourceLocationName), "/liveSource/", aws_util:encode_uri(LiveSourceName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the playback configuration for the specified name.
 delete_playback_configuration(Client, Name, Input) ->
     delete_playback_configuration(Client, Name, Input, []).
@@ -429,6 +487,30 @@ describe_channel(Client, ChannelName, QueryMap, HeadersMap)
 describe_channel(Client, ChannelName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channel/", aws_util:encode_uri(ChannelName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Provides details about a specific live source in a specific source
+%% location.
+describe_live_source(Client, LiveSourceName, SourceLocationName)
+  when is_map(Client) ->
+    describe_live_source(Client, LiveSourceName, SourceLocationName, #{}, #{}).
+
+describe_live_source(Client, LiveSourceName, SourceLocationName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_live_source(Client, LiveSourceName, SourceLocationName, QueryMap, HeadersMap, []).
+
+describe_live_source(Client, LiveSourceName, SourceLocationName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/sourceLocation/", aws_util:encode_uri(SourceLocationName), "/liveSource/", aws_util:encode_uri(LiveSourceName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -653,6 +735,34 @@ list_channels(Client, QueryMap, HeadersMap)
 list_channels(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/channels"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc lists all the live sources in a source location.
+list_live_sources(Client, SourceLocationName)
+  when is_map(Client) ->
+    list_live_sources(Client, SourceLocationName, #{}, #{}).
+
+list_live_sources(Client, SourceLocationName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_live_sources(Client, SourceLocationName, QueryMap, HeadersMap, []).
+
+list_live_sources(Client, SourceLocationName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/sourceLocation/", aws_util:encode_uri(SourceLocationName), "/liveSources"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -956,6 +1066,29 @@ update_channel(Client, ChannelName, Input) ->
 update_channel(Client, ChannelName, Input0, Options0) ->
     Method = put,
     Path = ["/channel/", aws_util:encode_uri(ChannelName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a specific live source in a specific source location.
+update_live_source(Client, LiveSourceName, SourceLocationName, Input) ->
+    update_live_source(Client, LiveSourceName, SourceLocationName, Input, []).
+update_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0) ->
+    Method = put,
+    Path = ["/sourceLocation/", aws_util:encode_uri(SourceLocationName), "/liveSource/", aws_util:encode_uri(LiveSourceName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

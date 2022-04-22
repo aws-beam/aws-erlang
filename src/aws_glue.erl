@@ -20,6 +20,8 @@
          batch_get_blueprints/3,
          batch_get_crawlers/2,
          batch_get_crawlers/3,
+         batch_get_custom_entity_types/2,
+         batch_get_custom_entity_types/3,
          batch_get_dev_endpoints/2,
          batch_get_dev_endpoints/3,
          batch_get_jobs/2,
@@ -48,6 +50,8 @@
          create_connection/3,
          create_crawler/2,
          create_crawler/3,
+         create_custom_entity_type/2,
+         create_custom_entity_type/3,
          create_database/2,
          create_database/3,
          create_dev_endpoint/2,
@@ -90,6 +94,8 @@
          delete_connection/3,
          delete_crawler/2,
          delete_crawler/3,
+         delete_custom_entity_type/2,
+         delete_custom_entity_type/3,
          delete_database/2,
          delete_database/3,
          delete_dev_endpoint/2,
@@ -150,6 +156,8 @@
          get_crawler_metrics/3,
          get_crawlers/2,
          get_crawlers/3,
+         get_custom_entity_type/2,
+         get_custom_entity_type/3,
          get_data_catalog_encryption_settings/2,
          get_data_catalog_encryption_settings/3,
          get_database/2,
@@ -250,6 +258,8 @@
          list_blueprints/3,
          list_crawlers/2,
          list_crawlers/3,
+         list_custom_entity_types/2,
+         list_custom_entity_types/3,
          list_dev_endpoints/2,
          list_dev_endpoints/3,
          list_jobs/2,
@@ -441,6 +451,14 @@ batch_get_crawlers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetCrawlers">>, Input, Options).
 
+
+batch_get_custom_entity_types(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_custom_entity_types(Client, Input, []).
+batch_get_custom_entity_types(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetCustomEntityTypes">>, Input, Options).
+
 %% @doc Returns a list of resource metadata for a given list of development
 %% endpoint names.
 %%
@@ -592,6 +610,14 @@ create_crawler(Client, Input)
 create_crawler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCrawler">>, Input, Options).
+
+
+create_custom_entity_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_custom_entity_type(Client, Input, []).
+create_custom_entity_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateCustomEntityType">>, Input, Options).
 
 %% @doc Creates a new database in a Data Catalog.
 create_database(Client, Input)
@@ -801,6 +827,14 @@ delete_crawler(Client, Input)
 delete_crawler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCrawler">>, Input, Options).
+
+
+delete_custom_entity_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_custom_entity_type(Client, Input, []).
+delete_custom_entity_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteCustomEntityType">>, Input, Options).
 
 %% @doc Removes a specified database from a Data Catalog.
 %%
@@ -1110,6 +1144,14 @@ get_crawlers(Client, Input)
 get_crawlers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCrawlers">>, Input, Options).
+
+
+get_custom_entity_type(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_custom_entity_type(Client, Input, []).
+get_custom_entity_type(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCustomEntityType">>, Input, Options).
 
 %% @doc Retrieves the security configuration for a specified catalog.
 get_data_catalog_encryption_settings(Client, Input)
@@ -1579,6 +1621,14 @@ list_crawlers(Client, Input)
 list_crawlers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCrawlers">>, Input, Options).
+
+
+list_custom_entity_types(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_custom_entity_types(Client, Input, []).
+list_custom_entity_types(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCustomEntityTypes">>, Input, Options).
 
 %% @doc Retrieves the names of all `DevEndpoint' resources in this Amazon Web
 %% Services account, or the resources with the specified tag.

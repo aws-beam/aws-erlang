@@ -348,8 +348,6 @@ add_working_storage(Client, Input, Options)
 %% associated with the pool. When you use your backup application to eject
 %% the tape, the tape is archived directly into the S3 storage class (S3
 %% Glacier or S3 Glacier Deep Archive) that corresponds to the pool.
-%%
-%% Valid Values: `GLACIER' | `DEEP_ARCHIVE'
 assign_tape_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     assign_tape_pool(Client, Input, []).
@@ -685,8 +683,8 @@ delete_gateway(Client, Input, Options)
 %% basis. This API action enables you to delete a snapshot schedule for a
 %% volume. For more information, see Backing up your volumes. In the
 %% `DeleteSnapshotSchedule' request, you identify the volume by providing its
-%% Amazon Resource Name (ARN). This operation is only supported in stored and
-%% cached volume gateway types.
+%% Amazon Resource Name (ARN). This operation is only supported for cached
+%% volume gateway types.
 %%
 %% To list or delete a snapshot, you must use the Amazon EC2 API. For more
 %% information, go to DescribeSnapshots in the Amazon Elastic Compute Cloud
@@ -1260,7 +1258,9 @@ list_volumes(Client, Input, Options)
     request(Client, <<"ListVolumes">>, Input, Options).
 
 %% @doc Sends you notification through CloudWatch Events when all files
-%% written to your file share have been uploaded to Amazon S3.
+%% written to your file share have been uploaded to S3.
+%%
+%% Amazon S3.
 %%
 %% Storage Gateway can send a notification through Amazon CloudWatch Events
 %% when all files written to your file share up to that point in time have
@@ -1309,9 +1309,17 @@ notify_when_uploaded(Client, Input, Options)
 %% requests. For more information, see Getting notified about file operations
 %% in the Storage Gateway User Guide.
 %%
+%% Wait at least 60 seconds between consecutive RefreshCache API requests.
+%%
+%% RefreshCache does not evict cache entries if invoked consecutively within
+%% 60 seconds of a previous RefreshCache request.
+%%
 %% If you invoke the RefreshCache API when two requests are already being
 %% processed, any new request will cause an `InvalidGatewayRequestException'
 %% error because too many requests were sent to the server.
+%%
+%% The S3 bucket name does not need to be included when entering the list of
+%% folders in the FolderList parameter.
 %%
 %% For more information, see Getting notified about file operations in the
 %% Storage Gateway User Guide.

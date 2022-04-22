@@ -31,6 +31,8 @@
          describe_anomaly_detector/3,
          describe_metric_set/2,
          describe_metric_set/3,
+         detect_metric_set_config/2,
+         detect_metric_set_config/3,
          get_anomaly_group/2,
          get_anomaly_group/3,
          get_feedback/2,
@@ -344,6 +346,29 @@ describe_metric_set(Client, Input) ->
 describe_metric_set(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeMetricSet"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Detects an Amazon S3 dataset's file format, interval, and offset.
+detect_metric_set_config(Client, Input) ->
+    detect_metric_set_config(Client, Input, []).
+detect_metric_set_config(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DetectMetricSetConfig"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

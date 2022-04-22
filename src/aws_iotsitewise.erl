@@ -18,6 +18,12 @@
          batch_associate_project_assets/4,
          batch_disassociate_project_assets/3,
          batch_disassociate_project_assets/4,
+         batch_get_asset_property_aggregates/2,
+         batch_get_asset_property_aggregates/3,
+         batch_get_asset_property_value/2,
+         batch_get_asset_property_value/3,
+         batch_get_asset_property_value_history/2,
+         batch_get_asset_property_value_history/3,
          batch_put_asset_property_value/2,
          batch_put_asset_property_value/3,
          create_access_policy/2,
@@ -261,6 +267,85 @@ batch_disassociate_project_assets(Client, ProjectId, Input0, Options0) ->
     Method = post,
     Path = ["/projects/", aws_util:encode_uri(ProjectId), "/assets/disassociate"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets aggregated values (for example, average, minimum, and maximum)
+%% for one or more asset properties.
+%%
+%% For more information, see Querying aggregates in the IoT SiteWise User
+%% Guide.
+batch_get_asset_property_aggregates(Client, Input) ->
+    batch_get_asset_property_aggregates(Client, Input, []).
+batch_get_asset_property_aggregates(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/properties/batch/aggregates"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets the current value for one or more asset properties.
+%%
+%% For more information, see Querying current values in the IoT SiteWise User
+%% Guide.
+batch_get_asset_property_value(Client, Input) ->
+    batch_get_asset_property_value(Client, Input, []).
+batch_get_asset_property_value(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/properties/batch/latest"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets the historical values for one or more asset properties.
+%%
+%% For more information, see Querying historical values in the IoT SiteWise
+%% User Guide.
+batch_get_asset_property_value_history(Client, Input) ->
+    batch_get_asset_property_value_history(Client, Input, []).
+batch_get_asset_property_value_history(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/properties/batch/history"],
+    SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
