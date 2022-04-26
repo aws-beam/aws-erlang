@@ -8,8 +8,8 @@
 %%
 %% To run these statements, you work with the Data Service API.
 %%
-%% For more information about the Data Service API, see Using the Data API
-%% for Aurora Serverless in the Amazon Aurora User Guide.
+%% For more information about the Data Service API, see Using the Data API in
+%% the Amazon Aurora User Guide.
 -module(aws_rds_data).
 
 -export([batch_execute_statement/2,
@@ -151,8 +151,8 @@ execute_sql(Client, Input0, Options0) ->
 %% `transactionID' parameter, changes that result from the call are committed
 %% automatically.
 %%
-%% The response size limit is 1 MB. If the call returns more than 1 MB of
-%% response data, the call is terminated.
+%% If the binary response data from the database is more than 1 MB, the call
+%% is terminated.
 execute_statement(Client, Input) ->
     execute_statement(Client, Input, []).
 execute_statement(Client, Input0, Options0) ->

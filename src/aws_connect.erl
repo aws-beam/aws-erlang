@@ -263,6 +263,8 @@
          resume_contact_recording/3,
          search_available_phone_numbers/2,
          search_available_phone_numbers/3,
+         search_users/2,
+         search_users/3,
          search_vocabularies/3,
          search_vocabularies/4,
          start_chat_contact/2,
@@ -3028,6 +3030,30 @@ search_available_phone_numbers(Client, Input) ->
 search_available_phone_numbers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-number/search-available"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches users in an Amazon Connect instance, with optional
+%% filtering.
+search_users(Client, Input) ->
+    search_users(Client, Input, []).
+search_users(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-users"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
