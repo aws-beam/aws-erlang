@@ -451,7 +451,8 @@ batch_get_crawlers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetCrawlers">>, Input, Options).
 
-
+%% @doc Retrieves the details for the custom patterns specified by a list of
+%% names.
 batch_get_custom_entity_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_custom_entity_types(Client, Input, []).
@@ -611,7 +612,12 @@ create_crawler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCrawler">>, Input, Options).
 
-
+%% @doc Creates a custom pattern that is used to detect sensitive data across
+%% the columns and rows of your structured data.
+%%
+%% Each custom pattern you create specifies a regular expression and an
+%% optional list of context words. If no context words are passed only a
+%% regular expression is checked.
 create_custom_entity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_custom_entity_type(Client, Input, []).
@@ -828,7 +834,7 @@ delete_crawler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCrawler">>, Input, Options).
 
-
+%% @doc Deletes a custom pattern by specifying its name.
 delete_custom_entity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_custom_entity_type(Client, Input, []).
@@ -1145,7 +1151,7 @@ get_crawlers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCrawlers">>, Input, Options).
 
-
+%% @doc Retrieves the details of a custom pattern by specifying its name.
 get_custom_entity_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_custom_entity_type(Client, Input, []).
@@ -1622,7 +1628,7 @@ list_crawlers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCrawlers">>, Input, Options).
 
-
+%% @doc Lists all the custom patterns that have been created.
 list_custom_entity_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_custom_entity_types(Client, Input, []).

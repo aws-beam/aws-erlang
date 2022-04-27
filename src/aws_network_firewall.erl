@@ -1,21 +1,22 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc This is the API Reference for AWS Network Firewall.
+%% @doc This is the API Reference for Network Firewall.
 %%
 %% This guide is for developers who need detailed information about the
 %% Network Firewall API actions, data types, and errors.
 %%
 %% <ul> <li> The REST API requires you to handle connection details, such as
 %% calculating signatures, handling request retries, and error handling. For
-%% general information about using the AWS REST APIs, see AWS APIs.
+%% general information about using the Amazon Web Services REST APIs, see
+%% Amazon Web Services APIs.
 %%
 %% To access Network Firewall using the REST API endpoint:
 %% `https://network-firewall.<region>.amazonaws.com '
 %%
-%% </li> <li> Alternatively, you can use one of the AWS SDKs to access an API
-%% that's tailored to the programming language or platform that you're using.
-%% For more information, see AWS SDKs.
+%% </li> <li> Alternatively, you can use one of the Amazon Web Services SDKs
+%% to access an API that's tailored to the programming language or platform
+%% that you're using. For more information, see Amazon Web Services SDKs.
 %%
 %% </li> <li> For descriptions of Network Firewall features, including and
 %% step-by-step instructions on how to use them through the Network Firewall
@@ -25,17 +26,18 @@
 %% intrusion detection and prevention service for Amazon Virtual Private
 %% Cloud (Amazon VPC). With Network Firewall, you can filter traffic at the
 %% perimeter of your VPC. This includes filtering traffic going to and coming
-%% from an internet gateway, NAT gateway, or over VPN or AWS Direct Connect.
+%% from an internet gateway, NAT gateway, or over VPN or Direct Connect.
 %% Network Firewall uses rules that are compatible with Suricata, a free,
-%% open source intrusion detection system (IDS) engine. AWS Network Firewall
+%% open source intrusion detection system (IDS) engine. Network Firewall
 %% supports Suricata version 5.0.2. For information about Suricata, see the
 %% Suricata website.
 %%
 %% You can use Network Firewall to monitor and protect your VPC traffic in a
 %% number of ways. The following are just a few examples:
 %%
-%% <ul> <li> Allow domains or IP addresses for known AWS service endpoints,
-%% such as Amazon S3, and block all other forms of traffic.
+%% <ul> <li> Allow domains or IP addresses for known Amazon Web Services
+%% service endpoints, such as Amazon S3, and block all other forms of
+%% traffic.
 %%
 %% </li> <li> Use custom lists of known bad domains to limit the types of
 %% domain names that your applications can access.
@@ -126,6 +128,8 @@
          update_firewall_delete_protection/3,
          update_firewall_description/2,
          update_firewall_description/3,
+         update_firewall_encryption_configuration/2,
+         update_firewall_encryption_configuration/3,
          update_firewall_policy/2,
          update_firewall_policy/3,
          update_firewall_policy_change_protection/2,
@@ -161,11 +165,11 @@ associate_firewall_policy(Client, Input, Options)
 %% You can specify one subnet for each of the Availability Zones that the VPC
 %% spans.
 %%
-%% This request creates an AWS Network Firewall firewall endpoint in each of
-%% the subnets. To enable the firewall's protections, you must also modify
-%% the VPC's route tables for each subnet's Availability Zone, to redirect
-%% the traffic that's coming into and going out of the zone through the
-%% firewall endpoint.
+%% This request creates an Network Firewall firewall endpoint in each of the
+%% subnets. To enable the firewall's protections, you must also modify the
+%% VPC's route tables for each subnet's Availability Zone, to redirect the
+%% traffic that's coming into and going out of the zone through the firewall
+%% endpoint.
 associate_subnets(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_subnets(Client, Input, []).
@@ -173,13 +177,14 @@ associate_subnets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateSubnets">>, Input, Options).
 
-%% @doc Creates an AWS Network Firewall `Firewall' and accompanying
+%% @doc Creates an Network Firewall `Firewall' and accompanying
 %% `FirewallStatus' for a VPC.
 %%
-%% The firewall defines the configuration settings for an AWS Network
-%% Firewall firewall. The settings that you can define at creation include
-%% the firewall policy, the subnets in your VPC to use for the firewall
-%% endpoints, and any tags that are attached to the firewall AWS resource.
+%% The firewall defines the configuration settings for an Network Firewall
+%% firewall. The settings that you can define at creation include the
+%% firewall policy, the subnets in your VPC to use for the firewall
+%% endpoints, and any tags that are attached to the firewall Amazon Web
+%% Services resource.
 %%
 %% After you create a firewall, you can provide additional settings, like the
 %% logging configuration.
@@ -188,8 +193,9 @@ associate_subnets(Client, Input, Options)
 %% to the settings themselves, for example `UpdateLoggingConfiguration',
 %% `AssociateSubnets', and `UpdateFirewallDeleteProtection'.
 %%
-%% To manage a firewall's tags, use the standard AWS resource tagging
-%% operations, `ListTagsForResource', `TagResource', and `UntagResource'.
+%% To manage a firewall's tags, use the standard Amazon Web Services resource
+%% tagging operations, `ListTagsForResource', `TagResource', and
+%% `UntagResource'.
 %%
 %% To retrieve information about firewalls, use `ListFirewalls' and
 %% `DescribeFirewall'.
@@ -203,9 +209,9 @@ create_firewall(Client, Input, Options)
 %% @doc Creates the firewall policy for the firewall according to the
 %% specifications.
 %%
-%% An AWS Network Firewall firewall policy defines the behavior of a
-%% firewall, in a collection of stateless and stateful rule groups and other
-%% settings. You can use one firewall policy for multiple firewalls.
+%% An Network Firewall firewall policy defines the behavior of a firewall, in
+%% a collection of stateless and stateful rule groups and other settings. You
+%% can use one firewall policy for multiple firewalls.
 create_firewall_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_firewall_policy(Client, Input, []).
@@ -381,11 +387,11 @@ list_rule_groups(Client, Input, Options)
 %% Tags are key:value pairs that you can use to categorize and manage your
 %% resources, for purposes like billing. For example, you might set the tag
 %% key to "customer" and the value to the customer name or ID. You can
-%% specify one or more tags to add to each AWS resource, up to 50 tags for a
-%% resource.
+%% specify one or more tags to add to each Amazon Web Services resource, up
+%% to 50 tags for a resource.
 %%
-%% You can tag the AWS resources that you manage through AWS Network
-%% Firewall: firewalls, firewall policies, and rule groups.
+%% You can tag the Amazon Web Services resources that you manage through
+%% Network Firewall: firewalls, firewall policies, and rule groups.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -393,12 +399,13 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Creates or updates an AWS Identity and Access Management policy for
-%% your rule group or firewall policy.
+%% @doc Creates or updates an IAM policy for your rule group or firewall
+%% policy.
 %%
 %% Use this to share rule groups and firewall policies between accounts. This
-%% operation works in conjunction with the AWS Resource Access Manager (RAM)
-%% service to manage resource sharing for Network Firewall.
+%% operation works in conjunction with the Amazon Web Services Resource
+%% Access Manager (RAM) service to manage resource sharing for Network
+%% Firewall.
 %%
 %% Use this operation to create or update a resource policy for your rule
 %% group or firewall policy. In the policy, you specify the accounts that you
@@ -416,7 +423,7 @@ list_tags_for_resource(Client, Input, Options)
 %% for a specified resource share.
 %%
 %% </li> </ul> For additional information about resource sharing using RAM,
-%% see AWS Resource Access Manager User Guide.
+%% see Resource Access Manager User Guide.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
@@ -429,11 +436,11 @@ put_resource_policy(Client, Input, Options)
 %% Tags are key:value pairs that you can use to categorize and manage your
 %% resources, for purposes like billing. For example, you might set the tag
 %% key to "customer" and the value to the customer name or ID. You can
-%% specify one or more tags to add to each AWS resource, up to 50 tags for a
-%% resource.
+%% specify one or more tags to add to each Amazon Web Services resource, up
+%% to 50 tags for a resource.
 %%
-%% You can tag the AWS resources that you manage through AWS Network
-%% Firewall: firewalls, firewall policies, and rule groups.
+%% You can tag the Amazon Web Services resources that you manage through
+%% Network Firewall: firewalls, firewall policies, and rule groups.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -446,11 +453,11 @@ tag_resource(Client, Input, Options)
 %% Tags are key:value pairs that you can use to categorize and manage your
 %% resources, for purposes like billing. For example, you might set the tag
 %% key to "customer" and the value to the customer name or ID. You can
-%% specify one or more tags to add to each AWS resource, up to 50 tags for a
-%% resource.
+%% specify one or more tags to add to each Amazon Web Services resource, up
+%% to 50 tags for a resource.
 %%
-%% You can manage tags for the AWS resources that you manage through AWS
-%% Network Firewall: firewalls, firewall policies, and rule groups.
+%% You can manage tags for the Amazon Web Services resources that you manage
+%% through Network Firewall: firewalls, firewall policies, and rule groups.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -481,6 +488,15 @@ update_firewall_description(Client, Input)
 update_firewall_description(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFirewallDescription">>, Input, Options).
+
+%% @doc A complex type that contains settings for encryption of your firewall
+%% resources.
+update_firewall_encryption_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_firewall_encryption_configuration(Client, Input, []).
+update_firewall_encryption_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateFirewallEncryptionConfiguration">>, Input, Options).
 
 %% @doc Updates the properties of the specified firewall policy.
 update_firewall_policy(Client, Input)

@@ -14,7 +14,7 @@
 %% Amazon Web Services.
 %%
 %% Use `GetServices' without a service code to retrieve the service codes for
-%% all AWS services, then `GetServices' with a service code to retreive the
+%% all AWS services, then `GetServices' with a service code to retrieve the
 %% attribute names for that service. After you have the service code and
 %% attribute names, you can use `GetAttributeValues' to see what values are
 %% available for an attribute. With the service code and an attribute name
@@ -65,9 +65,9 @@ describe_services(Client, Input, Options)
 
 %% @doc Returns a list of attribute values.
 %%
-%% Attibutes are similar to the details in a Price List API offer file. For a
-%% list of available attributes, see Offer File Definitions in the Amazon Web
-%% Services Billing and Cost Management User Guide.
+%% Attributes are similar to the details in a Price List API offer file. For
+%% a list of available attributes, see Offer File Definitions in the Amazon
+%% Web Services Billing and Cost Management User Guide.
 get_attribute_values(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_attribute_values(Client, Input, []).

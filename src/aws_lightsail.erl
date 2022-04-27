@@ -2,8 +2,8 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Lightsail is the easiest way to get started with Amazon Web
-%% Services (AWS) for developers who need to build websites or web
-%% applications.
+%% Services (Amazon Web Services) for developers who need to build websites
+%% or web applications.
 %%
 %% It includes everything you need to launch your project quickly - instances
 %% (virtual private servers), container services, storage buckets, managed
@@ -19,9 +19,9 @@
 %%
 %% This API Reference provides detailed information about the actions, data
 %% types, parameters, and errors of the Lightsail service. For more
-%% information about the supported AWS Regions, endpoints, and service quotas
-%% of the Lightsail service, see Amazon Lightsail Endpoints and Quotas in the
-%% AWS General Reference.
+%% information about the supported Amazon Web Services Regions, endpoints,
+%% and service quotas of the Lightsail service, see Amazon Lightsail
+%% Endpoints and Quotas in the Amazon Web Services General Reference.
 -module(aws_lightsail).
 
 -export([allocate_static_ip/2,
@@ -230,6 +230,8 @@
          get_load_balancer_metric_data/3,
          get_load_balancer_tls_certificates/2,
          get_load_balancer_tls_certificates/3,
+         get_load_balancer_tls_policies/2,
+         get_load_balancer_tls_policies/3,
          get_load_balancers/2,
          get_load_balancers/3,
          get_operation/2,
@@ -354,11 +356,11 @@ allocate_static_ip(Client, Input, Options)
 %% Use the `CreateCertificate' action to create a certificate that you can
 %% attach to your distribution.
 %%
-%% Only certificates created in the `us-east-1' AWS Region can be attached to
-%% Lightsail distributions. Lightsail distributions are global resources that
-%% can reference an origin in any AWS Region, and distribute its content
-%% globally. However, all distributions are located in the `us-east-1'
-%% Region.
+%% Only certificates created in the `us-east-1' Amazon Web Services Region
+%% can be attached to Lightsail distributions. Lightsail distributions are
+%% global resources that can reference an origin in any Amazon Web Services
+%% Region, and distribute its content globally. However, all distributions
+%% are located in the `us-east-1' Region.
 attach_certificate_to_distribution(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_certificate_to_distribution(Client, Input, []).
@@ -442,7 +444,8 @@ close_instance_public_ports(Client, Input, Options)
 %% manual snapshot.
 %%
 %% This operation can also be used to copy a manual or automatic snapshot of
-%% an instance or a disk from one AWS Region to another in Amazon Lightsail.
+%% an instance or a disk from one Amazon Web Services Region to another in
+%% Amazon Lightsail.
 %%
 %% When copying a manual snapshot, be sure to define the `source region',
 %% `source snapshot name', and `target snapshot name' parameters.
@@ -502,11 +505,11 @@ create_bucket_access_key(Client, Input, Options)
 %% use the `UpdateContainerService' action to use the certificate and its
 %% domains with your container service.
 %%
-%% Only certificates created in the `us-east-1' AWS Region can be attached to
-%% Lightsail distributions. Lightsail distributions are global resources that
-%% can reference an origin in any AWS Region, and distribute its content
-%% globally. However, all distributions are located in the `us-east-1'
-%% Region.
+%% Only certificates created in the `us-east-1' Amazon Web Services Region
+%% can be attached to Lightsail distributions. Lightsail distributions are
+%% global resources that can reference an origin in any Amazon Web Services
+%% Region, and distribute its content globally. However, all distributions
+%% are located in the `us-east-1' Region.
 create_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_certificate(Client, Input, []).
@@ -536,10 +539,10 @@ create_cloud_formation_stack(Client, Input, Options)
 %%
 %% A contact method is used to send you notifications about your Amazon
 %% Lightsail resources. You can add one email address and one mobile phone
-%% number contact method in each AWS Region. However, SMS text messaging is
-%% not supported in some AWS Regions, and SMS text messages cannot be sent to
-%% some countries/regions. For more information, see Notifications in Amazon
-%% Lightsail.
+%% number contact method in each Amazon Web Services Region. However, SMS
+%% text messaging is not supported in some Amazon Web Services Regions, and
+%% SMS text messages cannot be sent to some countries/regions. For more
+%% information, see Notifications in Amazon Lightsail.
 create_contact_method(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_contact_method(Client, Input, []).
@@ -880,7 +883,7 @@ delete_auto_snapshot(Client, Input, Options)
 %% @doc Deletes a Amazon Lightsail bucket.
 %%
 %% When you delete your bucket, the bucket name is released and can be reused
-%% for a new bucket in your account or another AWS account.
+%% for a new bucket in your account or another Amazon Web Services account.
 delete_bucket(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_bucket(Client, Input, []).
@@ -919,10 +922,10 @@ delete_certificate(Client, Input, Options)
 %%
 %% A contact method is used to send you notifications about your Amazon
 %% Lightsail resources. You can add one email address and one mobile phone
-%% number contact method in each AWS Region. However, SMS text messaging is
-%% not supported in some AWS Regions, and SMS text messages cannot be sent to
-%% some countries/regions. For more information, see Notifications in Amazon
-%% Lightsail.
+%% number contact method in each Amazon Web Services Region. However, SMS
+%% text messaging is not supported in some Amazon Web Services Regions, and
+%% SMS text messages cannot be sent to some countries/regions. For more
+%% information, see Notifications in Amazon Lightsail.
 delete_contact_method(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_contact_method(Client, Input, []).
@@ -1394,10 +1397,10 @@ get_cloud_formation_stack_records(Client, Input, Options)
 %%
 %% A contact method is used to send you notifications about your Amazon
 %% Lightsail resources. You can add one email address and one mobile phone
-%% number contact method in each AWS Region. However, SMS text messaging is
-%% not supported in some AWS Regions, and SMS text messages cannot be sent to
-%% some countries/regions. For more information, see Notifications in Amazon
-%% Lightsail.
+%% number contact method in each Amazon Web Services Region. However, SMS
+%% text messaging is not supported in some Amazon Web Services Regions, and
+%% SMS text messages cannot be sent to some countries/regions. For more
+%% information, see Notifications in Amazon Lightsail.
 get_contact_methods(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_contact_methods(Client, Input, []).
@@ -1732,6 +1735,18 @@ get_load_balancer_tls_certificates(Client, Input)
 get_load_balancer_tls_certificates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLoadBalancerTlsCertificates">>, Input, Options).
+
+%% @doc Returns a list of TLS security policies that you can apply to
+%% Lightsail load balancers.
+%%
+%% For more information about load balancer TLS security policies, see Load
+%% balancer TLS security policies in the Amazon Lightsail Developer Guide.
+get_load_balancer_tls_policies(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_load_balancer_tls_policies(Client, Input, []).
+get_load_balancer_tls_policies(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetLoadBalancerTlsPolicies">>, Input, Options).
 
 %% @doc Returns information about all load balancers in an account.
 get_load_balancers(Client, Input)
@@ -2074,10 +2089,10 @@ reset_distribution_cache(Client, Input, Options)
 %%
 %% A contact method is used to send you notifications about your Amazon
 %% Lightsail resources. You can add one email address and one mobile phone
-%% number contact method in each AWS Region. However, SMS text messaging is
-%% not supported in some AWS Regions, and SMS text messages cannot be sent to
-%% some countries/regions. For more information, see Notifications in Amazon
-%% Lightsail.
+%% number contact method in each Amazon Web Services Region. However, SMS
+%% text messaging is not supported in some Amazon Web Services Regions, and
+%% SMS text messages cannot be sent to some countries/regions. For more
+%% information, see Notifications in Amazon Lightsail.
 %%
 %% A verification request is sent to the contact method when you initially
 %% create it. Use this action to send another verification request if a
@@ -2108,7 +2123,7 @@ set_ip_address_type(Client, Input, Options)
 %% Lightsail bucket.
 %%
 %% Lightsail buckets currently support setting access for Lightsail instances
-%% in the same AWS Region.
+%% in the same Amazon Web Services Region.
 set_resource_access_for_bucket(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_resource_access_for_bucket(Client, Input, []).
@@ -2240,8 +2255,8 @@ untag_resource(Client, Input, Options)
 %% @doc Updates an existing Amazon Lightsail bucket.
 %%
 %% Use this action to update the configuration of an existing bucket, such as
-%% versioning, public accessibility, and the AWS accounts that can access the
-%% bucket.
+%% versioning, public accessibility, and the Amazon Web Services accounts
+%% that can access the bucket.
 update_bucket(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_bucket(Client, Input, []).
