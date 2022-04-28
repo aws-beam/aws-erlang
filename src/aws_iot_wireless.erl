@@ -44,6 +44,8 @@
          create_fuota_task/3,
          create_multicast_group/2,
          create_multicast_group/3,
+         create_network_analyzer_configuration/2,
+         create_network_analyzer_configuration/3,
          create_service_profile/2,
          create_service_profile/3,
          create_wireless_device/2,
@@ -62,6 +64,8 @@
          delete_fuota_task/4,
          delete_multicast_group/3,
          delete_multicast_group/4,
+         delete_network_analyzer_configuration/3,
+         delete_network_analyzer_configuration/4,
          delete_queued_messages/3,
          delete_queued_messages/4,
          delete_service_profile/3,
@@ -94,6 +98,9 @@
          get_device_profile/2,
          get_device_profile/4,
          get_device_profile/5,
+         get_event_configuration_by_resource_types/1,
+         get_event_configuration_by_resource_types/3,
+         get_event_configuration_by_resource_types/4,
          get_fuota_task/2,
          get_fuota_task/4,
          get_fuota_task/5,
@@ -154,6 +161,9 @@
          list_device_profiles/1,
          list_device_profiles/3,
          list_device_profiles/4,
+         list_event_configurations/2,
+         list_event_configurations/4,
+         list_event_configurations/5,
          list_fuota_tasks/1,
          list_fuota_tasks/3,
          list_fuota_tasks/4,
@@ -163,6 +173,9 @@
          list_multicast_groups_by_fuota_task/2,
          list_multicast_groups_by_fuota_task/4,
          list_multicast_groups_by_fuota_task/5,
+         list_network_analyzer_configurations/1,
+         list_network_analyzer_configurations/3,
+         list_network_analyzer_configurations/4,
          list_partner_accounts/1,
          list_partner_accounts/3,
          list_partner_accounts/4,
@@ -210,6 +223,8 @@
          untag_resource/3,
          update_destination/3,
          update_destination/4,
+         update_event_configuration_by_resource_types/2,
+         update_event_configuration_by_resource_types/3,
          update_fuota_task/3,
          update_fuota_task/4,
          update_log_levels_by_resource_types/2,
@@ -510,6 +525,29 @@ create_multicast_group(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new network analyzer configuration.
+create_network_analyzer_configuration(Client, Input) ->
+    create_network_analyzer_configuration(Client, Input, []).
+create_network_analyzer_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-analyzer-configurations"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a new service profile.
 create_service_profile(Client, Input) ->
     create_service_profile(Client, Input, []).
@@ -717,7 +755,30 @@ delete_multicast_group(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc The operation to delete queued messages.
+%% @doc Deletes a network analyzer configuration.
+delete_network_analyzer_configuration(Client, ConfigurationName, Input) ->
+    delete_network_analyzer_configuration(Client, ConfigurationName, Input, []).
+delete_network_analyzer_configuration(Client, ConfigurationName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/network-analyzer-configurations/", aws_util:encode_uri(ConfigurationName), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Remove queued messages from the downlink queue.
 delete_queued_messages(Client, Id, Input) ->
     delete_queued_messages(Client, Id, Input, []).
 delete_queued_messages(Client, Id, Input0, Options0) ->
@@ -1072,6 +1133,29 @@ get_device_profile(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Get the event configuration by resource types.
+get_event_configuration_by_resource_types(Client)
+  when is_map(Client) ->
+    get_event_configuration_by_resource_types(Client, #{}, #{}).
+
+get_event_configuration_by_resource_types(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_event_configuration_by_resource_types(Client, QueryMap, HeadersMap, []).
+
+get_event_configuration_by_resource_types(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/event-configurations-resource-types"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets information about a FUOTA task.
 get_fuota_task(Client, Id)
   when is_map(Client) ->
@@ -1167,7 +1251,7 @@ get_multicast_group_session(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get NetworkAnalyzer configuration.
+%% @doc Get network analyzer configuration.
 get_network_analyzer_configuration(Client, ConfigurationName)
   when is_map(Client) ->
     get_network_analyzer_configuration(Client, ConfigurationName, #{}, #{}).
@@ -1579,6 +1663,36 @@ list_device_profiles(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc List event configurations where at least one event topic has been
+%% enabled.
+list_event_configurations(Client, ResourceType)
+  when is_map(Client) ->
+    list_event_configurations(Client, ResourceType, #{}, #{}).
+
+list_event_configurations(Client, ResourceType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_event_configurations(Client, ResourceType, QueryMap, HeadersMap, []).
+
+list_event_configurations(Client, ResourceType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/event-configurations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resourceType">>, ResourceType}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the FUOTA tasks registered to your AWS account.
 list_fuota_tasks(Client)
   when is_map(Client) ->
@@ -1663,6 +1777,34 @@ list_multicast_groups_by_fuota_task(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the network analyzer configurations.
+list_network_analyzer_configurations(Client)
+  when is_map(Client) ->
+    list_network_analyzer_configurations(Client, #{}, #{}).
+
+list_network_analyzer_configurations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_network_analyzer_configurations(Client, QueryMap, HeadersMap, []).
+
+list_network_analyzer_configurations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/network-analyzer-configurations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the partner accounts associated with your AWS account.
 list_partner_accounts(Client)
   when is_map(Client) ->
@@ -1691,7 +1833,7 @@ list_partner_accounts(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc The operation to list queued messages.
+%% @doc List queued messages in the downlink queue.
 list_queued_messages(Client, Id)
   when is_map(Client) ->
     list_queued_messages(Client, Id, #{}, #{}).
@@ -2181,6 +2323,29 @@ update_destination(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Update the event configuration by resource types.
+update_event_configuration_by_resource_types(Client, Input) ->
+    update_event_configuration_by_resource_types(Client, Input, []).
+update_event_configuration_by_resource_types(Client, Input0, Options0) ->
+    Method = patch,
+    Path = ["/event-configurations-resource-types"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates properties of a FUOTA task.
 update_fuota_task(Client, Id, Input) ->
     update_fuota_task(Client, Id, Input, []).
@@ -2254,7 +2419,7 @@ update_multicast_group(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update NetworkAnalyzer configuration.
+%% @doc Update network analyzer configuration.
 update_network_analyzer_configuration(Client, ConfigurationName, Input) ->
     update_network_analyzer_configuration(Client, ConfigurationName, Input, []).
 update_network_analyzer_configuration(Client, ConfigurationName, Input0, Options0) ->

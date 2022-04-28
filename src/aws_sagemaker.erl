@@ -1,11 +1,11 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Provides APIs for creating and managing Amazon SageMaker resources.
+%% @doc Provides APIs for creating and managing SageMaker resources.
 %%
 %% Other Resources:
 %%
-%% <ul> <li> Amazon SageMaker Developer Guide
+%% <ul> <li> SageMaker Developer Guide
 %%
 %% </li> <li> Amazon Augmented AI Runtime API Reference
 %%
@@ -534,8 +534,8 @@ add_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddAssociation">>, Input, Options).
 
-%% @doc Adds or overwrites one or more tags for the specified Amazon
-%% SageMaker resource.
+%% @doc Adds or overwrites one or more tags for the specified SageMaker
+%% resource.
 %%
 %% You can add tags to notebook instances, training jobs, hyperparameter
 %% tuning jobs, batch transform jobs, models, labeling jobs, work teams,
@@ -601,8 +601,8 @@ create_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAction">>, Input, Options).
 
-%% @doc Create a machine learning algorithm that you can use in Amazon
-%% SageMaker and list in the Amazon Web Services Marketplace.
+%% @doc Create a machine learning algorithm that you can use in SageMaker and
+%% list in the Amazon Web Services Marketplace.
 create_algorithm(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_algorithm(Client, Input, []).
@@ -661,13 +661,12 @@ create_auto_ml_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAutoMLJob">>, Input, Options).
 
-%% @doc Creates a Git repository as a resource in your Amazon SageMaker
-%% account.
+%% @doc Creates a Git repository as a resource in your SageMaker account.
 %%
 %% You can associate the repository with notebook instances so that you can
 %% use Git source control for the notebooks you create. The Git repository is
-%% a resource in your Amazon SageMaker account, so it can be associated with
-%% more than one notebook instance, and it persists independently from the
+%% a resource in your SageMaker account, so it can be associated with more
+%% than one notebook instance, and it persists independently from the
 %% lifecycle of any notebook instances it is associated with.
 %%
 %% The repository can be hosted either in Amazon Web Services CodeCommit or
@@ -818,14 +817,13 @@ create_edge_packaging_job(Client, Input, Options)
 %% @doc Creates an endpoint using the endpoint configuration specified in the
 %% request.
 %%
-%% Amazon SageMaker uses the endpoint to provision resources and deploy
-%% models. You create the endpoint configuration with the
-%% `CreateEndpointConfig' API.
+%% SageMaker uses the endpoint to provision resources and deploy models. You
+%% create the endpoint configuration with the `CreateEndpointConfig' API.
 %%
-%% Use this API to deploy models using Amazon SageMaker hosting services.
+%% Use this API to deploy models using SageMaker hosting services.
 %%
-%% For an example that calls this method when deploying a model to Amazon
-%% SageMaker hosting services, see the Create Endpoint example notebook.
+%% For an example that calls this method when deploying a model to SageMaker
+%% hosting services, see the Create Endpoint example notebook.
 %%
 %% You must not delete an `EndpointConfig' that is in use by an endpoint that
 %% is live or while the `UpdateEndpoint' or `CreateEndpoint' operations are
@@ -835,9 +833,8 @@ create_edge_packaging_job(Client, Input, Options)
 %% The endpoint name must be unique within an Amazon Web Services Region in
 %% your Amazon Web Services account.
 %%
-%% When it receives the request, Amazon SageMaker creates the endpoint,
-%% launches the resources (ML compute instances), and deploys the model(s) on
-%% them.
+%% When it receives the request, SageMaker creates the endpoint, launches the
+%% resources (ML compute instances), and deploys the model(s) on them.
 %%
 %% When you call `CreateEndpoint', a load call is made to DynamoDB to verify
 %% that your endpoint configuration exists. When you read data from a
@@ -851,16 +848,15 @@ create_edge_packaging_job(Client, Input, Options)
 %% `CreateEndpoint' to minimize the potential impact of a DynamoDB eventually
 %% consistent read.
 %%
-%% When Amazon SageMaker receives the request, it sets the endpoint status to
+%% When SageMaker receives the request, it sets the endpoint status to
 %% `Creating'. After it creates the endpoint, it sets the status to
-%% `InService'. Amazon SageMaker can then process incoming requests for
-%% inferences. To check the status of an endpoint, use the `DescribeEndpoint'
-%% API.
+%% `InService'. SageMaker can then process incoming requests for inferences.
+%% To check the status of an endpoint, use the `DescribeEndpoint' API.
 %%
 %% If any of the models hosted at this endpoint get model data from an Amazon
-%% S3 location, Amazon SageMaker uses Amazon Web Services Security Token
-%% Service to download model artifacts from the S3 path you provided. Amazon
-%% Web Services STS is activated in your IAM user account by default. If you
+%% S3 location, SageMaker uses Amazon Web Services Security Token Service to
+%% download model artifacts from the S3 path you provided. Amazon Web
+%% Services STS is activated in your IAM user account by default. If you
 %% previously deactivated Amazon Web Services STS for a region, you need to
 %% reactivate Amazon Web Services STS for that region. For more information,
 %% see Activating and Deactivating Amazon Web Services STS in an Amazon Web
@@ -898,26 +894,26 @@ create_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEndpoint">>, Input, Options).
 
-%% @doc Creates an endpoint configuration that Amazon SageMaker hosting
-%% services uses to deploy models.
+%% @doc Creates an endpoint configuration that SageMaker hosting services
+%% uses to deploy models.
 %%
 %% In the configuration, you identify one or more models, created using the
-%% `CreateModel' API, to deploy and the resources that you want Amazon
-%% SageMaker to provision. Then you call the `CreateEndpoint' API.
+%% `CreateModel' API, to deploy and the resources that you want SageMaker to
+%% provision. Then you call the `CreateEndpoint' API.
 %%
-%% Use this API if you want to use Amazon SageMaker hosting services to
-%% deploy models into production.
+%% Use this API if you want to use SageMaker hosting services to deploy
+%% models into production.
 %%
 %% In the request, you define a `ProductionVariant', for each model that you
 %% want to deploy. Each `ProductionVariant' parameter also describes the
-%% resources that you want Amazon SageMaker to provision. This includes the
-%% number and type of ML compute instances to deploy.
+%% resources that you want SageMaker to provision. This includes the number
+%% and type of ML compute instances to deploy.
 %%
 %% If you are hosting multiple models, you also assign a `VariantWeight' to
 %% specify how much traffic you want to allocate to each model. For example,
 %% suppose that you want to host two models, A and B, and you assign traffic
-%% weight 2 for model A and 1 for model B. Amazon SageMaker distributes
-%% two-thirds of the traffic to Model A, and one-third to model B.
+%% weight 2 for model A and 1 for model B. SageMaker distributes two-thirds
+%% of the traffic to Model A, and one-third to model B.
 %%
 %% When you call `CreateEndpoint', a load call is made to DynamoDB to verify
 %% that your endpoint configuration exists. When you read data from a
@@ -1029,8 +1025,8 @@ create_hyper_parameter_tuning_job(Client, Input, Options)
 %% @doc Creates a custom SageMaker image.
 %%
 %% A SageMaker image is a set of image versions. Each image version
-%% represents a container image stored in Amazon Container Registry (ECR).
-%% For more information, see Bring your own SageMaker image.
+%% represents a container image stored in Amazon Elastic Container Registry
+%% (ECR). For more information, see Bring your own SageMaker image.
 create_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_image(Client, Input, []).
@@ -1040,8 +1036,8 @@ create_image(Client, Input, Options)
 
 %% @doc Creates a version of the SageMaker image specified by `ImageName'.
 %%
-%% The version represents the Amazon Container Registry (ECR) container image
-%% specified by `BaseImage'.
+%% The version represents the Amazon Elastic Container Registry (ECR)
+%% container image specified by `BaseImage'.
 create_image_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_image_version(Client, Input, []).
@@ -1107,7 +1103,7 @@ create_labeling_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLabelingJob">>, Input, Options).
 
-%% @doc Creates a model in Amazon SageMaker.
+%% @doc Creates a model in SageMaker.
 %%
 %% In the request, you name the model and describe a primary container. For
 %% the primary container, you specify the Docker image that contains
@@ -1115,31 +1111,28 @@ create_labeling_job(Client, Input, Options)
 %% map that the inference code uses when you deploy the model for
 %% predictions.
 %%
-%% Use this API to create a model if you want to use Amazon SageMaker hosting
+%% Use this API to create a model if you want to use SageMaker hosting
 %% services or run a batch transform job.
 %%
 %% To host your model, you create an endpoint configuration with the
 %% `CreateEndpointConfig' API, and then create an endpoint with the
-%% `CreateEndpoint' API. Amazon SageMaker then deploys all of the containers
-%% that you defined for the model in the hosting environment.
+%% `CreateEndpoint' API. SageMaker then deploys all of the containers that
+%% you defined for the model in the hosting environment.
 %%
-%% For an example that calls this method when deploying a model to Amazon
-%% SageMaker hosting services, see Deploy the Model to Amazon SageMaker
-%% Hosting Services (Amazon Web Services SDK for Python (Boto 3)).
+%% For an example that calls this method when deploying a model to SageMaker
+%% hosting services, see Deploy the Model to Amazon SageMaker Hosting
+%% Services (Amazon Web Services SDK for Python (Boto 3)).
 %%
 %% To run a batch transform using your model, you start a job with the
-%% `CreateTransformJob' API. Amazon SageMaker uses your model and your
-%% dataset to get inferences which are then saved to a specified S3 location.
+%% `CreateTransformJob' API. SageMaker uses your model and your dataset to
+%% get inferences which are then saved to a specified S3 location.
 %%
-%% In the `CreateModel' request, you must define a container with the
-%% `PrimaryContainer' parameter.
-%%
-%% In the request, you also provide an IAM role that Amazon SageMaker can
-%% assume to access model artifacts and docker image for deployment on ML
-%% compute hosting instances or for batch transform jobs. In addition, you
-%% also use the IAM role to manage permissions the inference code needs. For
-%% example, if the inference code access any other Amazon Web Services
-%% resources, you grant necessary permissions via this role.
+%% In the request, you also provide an IAM role that SageMaker can assume to
+%% access model artifacts and docker image for deployment on ML compute
+%% hosting instances or for batch transform jobs. In addition, you also use
+%% the IAM role to manage permissions the inference code needs. For example,
+%% if the inference code access any other Amazon Web Services resources, you
+%% grant necessary permissions via this role.
 create_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_model(Client, Input, []).
@@ -1163,12 +1156,12 @@ create_model_explainability_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModelExplainabilityJobDefinition">>, Input, Options).
 
-%% @doc Creates a model package that you can use to create Amazon SageMaker
-%% models or list on Amazon Web Services Marketplace, or a versioned model
-%% that is part of a model group.
+%% @doc Creates a model package that you can use to create SageMaker models
+%% or list on Amazon Web Services Marketplace, or a versioned model that is
+%% part of a model group.
 %%
 %% Buyers can subscribe to model packages listed on Amazon Web Services
-%% Marketplace to create models in Amazon SageMaker.
+%% Marketplace to create models in SageMaker.
 %%
 %% To create a model package by specifying a Docker container that contains
 %% your inference code and the Amazon S3 location of your model artifacts,
@@ -1217,45 +1210,45 @@ create_monitoring_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMonitoringSchedule">>, Input, Options).
 
-%% @doc Creates an Amazon SageMaker notebook instance.
+%% @doc Creates an SageMaker notebook instance.
 %%
 %% A notebook instance is a machine learning (ML) compute instance running on
 %% a Jupyter notebook.
 %%
 %% In a `CreateNotebookInstance' request, specify the type of ML compute
-%% instance that you want to run. Amazon SageMaker launches the instance,
-%% installs common libraries that you can use to explore datasets for model
-%% training, and attaches an ML storage volume to the notebook instance.
+%% instance that you want to run. SageMaker launches the instance, installs
+%% common libraries that you can use to explore datasets for model training,
+%% and attaches an ML storage volume to the notebook instance.
 %%
-%% Amazon SageMaker also provides a set of example notebooks. Each notebook
-%% demonstrates how to use Amazon SageMaker with a specific algorithm or with
-%% a machine learning framework.
+%% SageMaker also provides a set of example notebooks. Each notebook
+%% demonstrates how to use SageMaker with a specific algorithm or with a
+%% machine learning framework.
 %%
-%% After receiving the request, Amazon SageMaker does the following:
+%% After receiving the request, SageMaker does the following:
 %%
-%% <ol> <li> Creates a network interface in the Amazon SageMaker VPC.
+%% <ol> <li> Creates a network interface in the SageMaker VPC.
 %%
-%% </li> <li> (Option) If you specified `SubnetId', Amazon SageMaker creates
-%% a network interface in your own VPC, which is inferred from the subnet ID
+%% </li> <li> (Option) If you specified `SubnetId', SageMaker creates a
+%% network interface in your own VPC, which is inferred from the subnet ID
 %% that you provide in the input. When creating this network interface,
-%% Amazon SageMaker attaches the security group that you specified in the
-%% request to the network interface that it creates in your VPC.
+%% SageMaker attaches the security group that you specified in the request to
+%% the network interface that it creates in your VPC.
 %%
 %% </li> <li> Launches an EC2 instance of the type specified in the request
-%% in the Amazon SageMaker VPC. If you specified `SubnetId' of your VPC,
-%% Amazon SageMaker specifies both network interfaces when launching this
-%% instance. This enables inbound traffic from your own VPC to the notebook
-%% instance, assuming that the security groups allow it.
+%% in the SageMaker VPC. If you specified `SubnetId' of your VPC, SageMaker
+%% specifies both network interfaces when launching this instance. This
+%% enables inbound traffic from your own VPC to the notebook instance,
+%% assuming that the security groups allow it.
 %%
-%% </li> </ol> After creating the notebook instance, Amazon SageMaker returns
-%% its Amazon Resource Name (ARN). You can't change the name of a notebook
+%% </li> </ol> After creating the notebook instance, SageMaker returns its
+%% Amazon Resource Name (ARN). You can't change the name of a notebook
 %% instance after you create it.
 %%
-%% After Amazon SageMaker creates the notebook instance, you can connect to
-%% the Jupyter server and work in Jupyter notebooks. For example, you can
-%% write code to explore a dataset that you can use for model training, train
-%% a model, host models by creating Amazon SageMaker endpoints, and validate
-%% hosted models.
+%% After SageMaker creates the notebook instance, you can connect to the
+%% Jupyter server and work in Jupyter notebooks. For example, you can write
+%% code to explore a dataset that you can use for model training, train a
+%% model, host models by creating SageMaker endpoints, and validate hosted
+%% models.
 %%
 %% For more information, see How It Works.
 create_notebook_instance(Client, Input)
@@ -1334,10 +1327,10 @@ create_presigned_domain_url(Client, Input, Options)
 %% @doc Returns a URL that you can use to connect to the Jupyter server from
 %% a notebook instance.
 %%
-%% In the Amazon SageMaker console, when you choose `Open' next to a notebook
-%% instance, Amazon SageMaker opens a new tab showing the Jupyter server home
-%% page from the notebook instance. The console uses this API to get the URL
-%% and show the page.
+%% In the SageMaker console, when you choose `Open' next to a notebook
+%% instance, SageMaker opens a new tab showing the Jupyter server home page
+%% from the notebook instance. The console uses this API to get the URL and
+%% show the page.
 %%
 %% The IAM role or user used to call this API defines the permissions to
 %% access the notebook instance. Once the presigned URL is created, no
@@ -1390,13 +1383,13 @@ create_studio_lifecycle_config(Client, Input, Options)
 
 %% @doc Starts a model training job.
 %%
-%% After training completes, Amazon SageMaker saves the resulting model
-%% artifacts to an Amazon S3 location that you specify.
+%% After training completes, SageMaker saves the resulting model artifacts to
+%% an Amazon S3 location that you specify.
 %%
-%% If you choose to host your model using Amazon SageMaker hosting services,
-%% you can use the resulting model artifacts as part of the model. You can
-%% also use the artifacts in a machine learning service other than Amazon
-%% SageMaker, provided that you know how to use them for inference.
+%% If you choose to host your model using SageMaker hosting services, you can
+%% use the resulting model artifacts as part of the model. You can also use
+%% the artifacts in a machine learning service other than SageMaker, provided
+%% that you know how to use them for inference.
 %%
 %% In the request body, you provide the following:
 %%
@@ -1406,14 +1399,14 @@ create_studio_lifecycle_config(Client, Input, Options)
 %% </li> <li> `HyperParameters' - Specify these algorithm-specific parameters
 %% to enable the estimation of model parameters during training.
 %% Hyperparameters can be tuned to optimize this learning process. For a list
-%% of hyperparameters for each training algorithm provided by Amazon
-%% SageMaker, see Algorithms.
+%% of hyperparameters for each training algorithm provided by SageMaker, see
+%% Algorithms.
 %%
 %% </li> <li> `InputDataConfig' - Describes the training dataset and the
 %% Amazon S3, EFS, or FSx location where it is stored.
 %%
 %% </li> <li> `OutputDataConfig' - Identifies the Amazon S3 bucket where you
-%% want Amazon SageMaker to save the results of model training.
+%% want SageMaker to save the results of model training.
 %%
 %% </li> <li> `ResourceConfig' - Identifies the resources, ML compute
 %% instances, and ML storage volumes to deploy for model training. In
@@ -1423,10 +1416,10 @@ create_studio_lifecycle_config(Client, Input, Options)
 %% machine learning models by up to 80% by using Amazon EC2 Spot instances.
 %% For more information, see Managed Spot Training.
 %%
-%% </li> <li> `RoleArn' - The Amazon Resource Name (ARN) that Amazon
-%% SageMaker assumes to perform tasks on your behalf during model training.
-%% You must grant this role the necessary permissions so that Amazon
-%% SageMaker can successfully complete model training.
+%% </li> <li> `RoleArn' - The Amazon Resource Name (ARN) that SageMaker
+%% assumes to perform tasks on your behalf during model training. You must
+%% grant this role the necessary permissions so that SageMaker can
+%% successfully complete model training.
 %%
 %% </li> <li> `StoppingCondition' - To help cap training costs, use
 %% `MaxRuntimeInSeconds' to set a time limit for training. Use
@@ -1439,7 +1432,7 @@ create_studio_lifecycle_config(Client, Input, Options)
 %% </li> <li> `RetryStrategy' - The number of times to retry the job when the
 %% job fails due to an `InternalServerError'.
 %%
-%% </li> </ul> For more information about Amazon SageMaker, see How It Works.
+%% </li> </ul> For more information about SageMaker, see How It Works.
 create_training_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_training_job(Client, Input, []).
@@ -1686,11 +1679,17 @@ delete_domain(Client, Input, Options)
 
 %% @doc Deletes an endpoint.
 %%
-%% Amazon SageMaker frees up all of the resources that were deployed when the
+%% SageMaker frees up all of the resources that were deployed when the
 %% endpoint was created.
 %%
-%% Amazon SageMaker retires any custom KMS key grants associated with the
-%% endpoint, meaning you don't need to use the RevokeGrant API call.
+%% SageMaker retires any custom KMS key grants associated with the endpoint,
+%% meaning you don't need to use the RevokeGrant API call.
+%%
+%% When you delete your endpoint, SageMaker asynchronously deletes associated
+%% endpoint resources such as KMS key grants. You might still see these
+%% resources in your account for a few minutes after deleting your endpoint.
+%% Do not delete or revoke the permissions for your ` ExecutionRoleArn ',
+%% otherwise SageMaker cannot delete these resources.
 delete_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint(Client, Input, []).
@@ -1788,8 +1787,8 @@ delete_image_version(Client, Input, Options)
 %% @doc Deletes a model.
 %%
 %% The `DeleteModel' API deletes only the model entry that was created in
-%% Amazon SageMaker when you called the `CreateModel' API. It does not delete
-%% model artifacts, inference code, or the IAM role that you specified when
+%% SageMaker when you called the `CreateModel' API. It does not delete model
+%% artifacts, inference code, or the IAM role that you specified when
 %% creating the model.
 delete_model(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1816,10 +1815,9 @@ delete_model_explainability_job_definition(Client, Input, Options)
 
 %% @doc Deletes a model package.
 %%
-%% A model package is used to create Amazon SageMaker models or list on
-%% Amazon Web Services Marketplace. Buyers can subscribe to model packages
-%% listed on Amazon Web Services Marketplace to create models in Amazon
-%% SageMaker.
+%% A model package is used to create SageMaker models or list on Amazon Web
+%% Services Marketplace. Buyers can subscribe to model packages listed on
+%% Amazon Web Services Marketplace to create models in SageMaker.
 delete_model_package(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_model_package(Client, Input, []).
@@ -1862,14 +1860,14 @@ delete_monitoring_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMonitoringSchedule">>, Input, Options).
 
-%% @doc Deletes an Amazon SageMaker notebook instance.
+%% @doc Deletes an SageMaker notebook instance.
 %%
 %% Before you can delete a notebook instance, you must call the
 %% `StopNotebookInstance' API.
 %%
-%% When you delete a notebook instance, you lose all of your data. Amazon
-%% SageMaker removes the ML compute instance, and deletes the ML storage
-%% volume and the network interface associated with the notebook instance.
+%% When you delete a notebook instance, you lose all of your data. SageMaker
+%% removes the ML compute instance, and deletes the ML storage volume and the
+%% network interface associated with the notebook instance.
 delete_notebook_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_notebook_instance(Client, Input, []).
@@ -1917,7 +1915,7 @@ delete_studio_lifecycle_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStudioLifecycleConfig">>, Input, Options).
 
-%% @doc Deletes the specified tags from an Amazon SageMaker resource.
+%% @doc Deletes the specified tags from an SageMaker resource.
 %%
 %% To list a resource's tags, use the `ListTags' API.
 %%
@@ -2870,8 +2868,8 @@ list_notebook_instance_lifecycle_configs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListNotebookInstanceLifecycleConfigs">>, Input, Options).
 
-%% @doc Returns a list of the Amazon SageMaker notebook instances in the
-%% requester's account in an Amazon Web Services Region.
+%% @doc Returns a list of the SageMaker notebook instances in the requester's
+%% account in an Amazon Web Services Region.
 list_notebook_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_notebook_instances(Client, Input, []).
@@ -2948,7 +2946,7 @@ list_subscribed_workteams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSubscribedWorkteams">>, Input, Options).
 
-%% @doc Returns the tags for the specified Amazon SageMaker resource.
+%% @doc Returns the tags for the specified SageMaker resource.
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
@@ -3171,9 +3169,9 @@ start_monitoring_schedule(Client, Input, Options)
 %% @doc Launches an ML compute instance with the latest version of the
 %% libraries and attaches your ML storage volume.
 %%
-%% After configuring the notebook instance, Amazon SageMaker sets the
-%% notebook instance status to `InService'. A notebook instance's status must
-%% be `InService' before you can connect to your Jupyter notebook.
+%% After configuring the notebook instance, SageMaker sets the notebook
+%% instance status to `InService'. A notebook instance's status must be
+%% `InService' before you can connect to your Jupyter notebook.
 start_notebook_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_notebook_instance(Client, Input, []).
@@ -3266,10 +3264,10 @@ stop_monitoring_schedule(Client, Input, Options)
 
 %% @doc Terminates the ML compute instance.
 %%
-%% Before terminating the instance, Amazon SageMaker disconnects the ML
-%% storage volume from it. Amazon SageMaker preserves the ML storage volume.
-%% Amazon SageMaker stops charging you for the ML compute instance when you
-%% call `StopNotebookInstance'.
+%% Before terminating the instance, SageMaker disconnects the ML storage
+%% volume from it. SageMaker preserves the ML storage volume. SageMaker stops
+%% charging you for the ML compute instance when you call
+%% `StopNotebookInstance'.
 %%
 %% To access data on the ML storage volume for a notebook instance that has
 %% been terminated, call the `StartNotebookInstance' API.
@@ -3327,14 +3325,14 @@ stop_processing_job(Client, Input, Options)
 
 %% @doc Stops a training job.
 %%
-%% To stop a job, Amazon SageMaker sends the algorithm the `SIGTERM' signal,
-%% which delays job termination for 120 seconds. Algorithms might use this
+%% To stop a job, SageMaker sends the algorithm the `SIGTERM' signal, which
+%% delays job termination for 120 seconds. Algorithms might use this
 %% 120-second window to save the model artifacts, so the results of the
 %% training is not lost.
 %%
-%% When it receives a `StopTrainingJob' request, Amazon SageMaker changes the
-%% status of the job to `Stopping'. After Amazon SageMaker stops the job, it
-%% sets the status to `Stopped'.
+%% When it receives a `StopTrainingJob' request, SageMaker changes the status
+%% of the job to `Stopping'. After SageMaker stops the job, it sets the
+%% status to `Stopped'.
 stop_training_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_training_job(Client, Input, []).
@@ -3425,7 +3423,7 @@ update_domain(Client, Input, Options)
 %% for the endpoint using the previous `EndpointConfig' (there is no
 %% availability loss).
 %%
-%% When Amazon SageMaker receives the request, it sets the endpoint status to
+%% When SageMaker receives the request, it sets the endpoint status to
 %% `Updating'. After updating the endpoint, it sets the status to
 %% `InService'. To check the status of an endpoint, use the
 %% `DescribeEndpoint' API.
@@ -3450,7 +3448,7 @@ update_endpoint(Client, Input, Options)
 %% existing endpoint, or capacity of one variant associated with an existing
 %% endpoint.
 %%
-%% When it receives the request, Amazon SageMaker sets the endpoint status to
+%% When it receives the request, SageMaker sets the endpoint status to
 %% `Updating'. After updating the endpoint, it sets the status to
 %% `InService'. To check the status of an endpoint, use the
 %% `DescribeEndpoint' API.

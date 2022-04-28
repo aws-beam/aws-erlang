@@ -36,6 +36,8 @@
          list_inference_schedulers/3,
          list_models/2,
          list_models/3,
+         list_sensor_statistics/2,
+         list_sensor_statistics/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          start_data_ingestion_job/2,
@@ -144,7 +146,7 @@ delete_model(Client, Input, Options)
     request(Client, <<"DeleteModel">>, Input, Options).
 
 %% @doc Provides information on a specific data ingestion job such as
-%% creation time, dataset ARN, status, and so on.
+%% creation time, dataset ARN, and status.
 describe_data_ingestion_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_ingestion_job(Client, Input, []).
@@ -152,8 +154,8 @@ describe_data_ingestion_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataIngestionJob">>, Input, Options).
 
-%% @doc Provides a JSON description of the data that is in each time series
-%% dataset, including names, column names, and data types.
+%% @doc Provides a JSON description of the data in each time series dataset,
+%% including names, column names, and data types.
 describe_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_dataset(Client, Input, []).
@@ -224,6 +226,18 @@ list_models(Client, Input)
 list_models(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListModels">>, Input, Options).
+
+%% @doc Lists statistics about the data collected for each of the sensors
+%% that have been successfully ingested in the particular dataset.
+%%
+%% Can also be used to retreive Sensor Statistics for a previous ingestion
+%% job.
+list_sensor_statistics(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_sensor_statistics(Client, Input, []).
+list_sensor_statistics(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSensorStatistics">>, Input, Options).
 
 %% @doc Lists all the tags for a specified resource, including key and value.
 list_tags_for_resource(Client, Input)

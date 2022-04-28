@@ -92,15 +92,16 @@
 %% API
 %%====================================================================
 
-%% @doc Adds one or more tags to a trail, up to a limit of 50.
+%% @doc Adds one or more tags to a trail or event data store, up to a limit
+%% of 50.
 %%
 %% Overwrites an existing tag's value when a new value is specified for an
 %% existing tag key. Tag key names must be unique for a trail; you cannot
 %% have two keys with the same name but different values. If you specify a
 %% key without a value, the tag will be created with the specified key and a
-%% value of null. You can tag a trail that applies to all Amazon Web Services
-%% Regions only from the Region in which the trail was created (also known as
-%% its home region).
+%% value of null. You can tag a trail or event data store that applies to all
+%% Amazon Web Services Regions only from the Region in which the trail or
+%% event data store was created (also known as its home region).
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -314,7 +315,8 @@ list_queries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListQueries">>, Input, Options).
 
-%% @doc Lists the tags for the trail in the current region.
+%% @doc Lists the tags for the trail or event data store in the current
+%% region.
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
@@ -439,7 +441,7 @@ put_insight_selectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutInsightSelectors">>, Input, Options).
 
-%% @doc Removes the specified tags from a trail.
+%% @doc Removes the specified tags from a trail or event data store.
 remove_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags(Client, Input, []).

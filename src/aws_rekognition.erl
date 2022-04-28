@@ -1,7 +1,132 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc This is the Amazon Rekognition API reference.
+%% @doc This is the API Reference for Amazon Rekognition Image, Amazon
+%% Rekognition Custom Labels, Amazon Rekognition Stored Video, Amazon
+%% Rekognition Streaming Video.
+%%
+%% It provides descriptions of actions, data types, common parameters, and
+%% common errors.
+%%
+%% Amazon Rekognition Image
+%%
+%% <ul> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> </ul> Amazon Rekognition Custom Labels
+%%
+%% <ul> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> </ul> Amazon Rekognition Video Stored Video
+%%
+%% <ul> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> </ul> Amazon Rekognition Video Streaming Video
+%%
+%% <ul> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> <li>
+%%
+%% </li> </ul>
 -module(aws_rekognition).
 
 -export([compare_faces/2,
@@ -119,7 +244,9 @@
          untag_resource/2,
          untag_resource/3,
          update_dataset_entries/2,
-         update_dataset_entries/3]).
+         update_dataset_entries/3,
+         update_stream_processor/2,
+         update_stream_processor/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -314,23 +441,35 @@ create_project_version(Client, Input, Options)
     request(Client, <<"CreateProjectVersion">>, Input, Options).
 
 %% @doc Creates an Amazon Rekognition stream processor that you can use to
-%% detect and recognize faces in a streaming video.
+%% detect and recognize faces or to detect labels in a streaming video.
 %%
 %% Amazon Rekognition Video is a consumer of live video from Amazon Kinesis
-%% Video Streams. Amazon Rekognition Video sends analysis results to Amazon
-%% Kinesis Data Streams.
+%% Video Streams. There are two different settings for stream processors in
+%% Amazon Rekognition: detecting faces and detecting labels.
 %%
-%% You provide as input a Kinesis video stream (`Input') and a Kinesis data
+%% <ul> <li> If you are creating a stream processor for detecting faces, you
+%% provide as input a Kinesis video stream (`Input') and a Kinesis data
 %% stream (`Output') stream. You also specify the face recognition criteria
 %% in `Settings'. For example, the collection containing faces that you want
-%% to recognize. Use `Name' to assign an identifier for the stream processor.
+%% to recognize. After you have finished analyzing a streaming video, use
+%% `StopStreamProcessor' to stop processing.
+%%
+%% </li> <li> If you are creating a stream processor to detect labels, you
+%% provide as input a Kinesis video stream (`Input'), Amazon S3 bucket
+%% information (`Output'), and an Amazon SNS topic ARN
+%% (`NotificationChannel'). You can also provide a KMS key ID to encrypt the
+%% data sent to your Amazon S3 bucket. You specify what you want to detect in
+%% `ConnectedHomeSettings', such as people, packages and people, or pets,
+%% people, and packages. You can also specify where in the frame you want
+%% Amazon Rekognition to monitor with `RegionsOfInterest'. When you run the
+%% `StartStreamProcessor' operation on a label detection stream processor,
+%% you input start and stop information to determine the length of the
+%% processing time.
+%%
+%% </li> </ul> Use `Name' to assign an identifier for the stream processor.
 %% You use `Name' to manage the stream processor. For example, you can start
 %% processing the source video by calling `StartStreamProcessor' with the
 %% `Name' field.
-%%
-%% After you have finished analyzing a streaming video, use
-%% `StopStreamProcessor' to stop processing. You can delete the stream
-%% processor by calling `DeleteStreamProcessor'.
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:CreateStreamProcessor' action. If you want to tag your stream
@@ -346,7 +485,7 @@ create_stream_processor(Client, Input, Options)
 %% @doc Deletes the specified collection.
 %%
 %% Note that this operation removes all faces in the collection. For an
-%% example, see `delete-collection-procedure'.
+%% example, see Deleting a collection.
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DeleteCollection' action.
@@ -593,7 +732,7 @@ detect_faces(Client, Input, Options)
 %% graduation, and birthday party; and concepts like landscape, evening, and
 %% nature.
 %%
-%% For an example, see Analyzing Images Stored in an Amazon S3 Bucket in the
+%% For an example, see Analyzing images stored in an Amazon S3 bucket in the
 %% Amazon Rekognition Developer Guide.
 %%
 %% `DetectLabels' does not support the detection of activities. However,
@@ -772,8 +911,8 @@ detect_protective_equipment(Client, Input, Options)
 %% To be detected, text must be within +/- 90 degrees orientation of the
 %% horizontal axis.
 %%
-%% For more information, see DetectText in the Amazon Rekognition Developer
-%% Guide.
+%% For more information, see Detecting text in the Amazon Rekognition
+%% Developer Guide.
 detect_text(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_text(Client, Input, []).
@@ -813,7 +952,7 @@ distribute_dataset_entries(Client, Input, Options)
 %% The additional information is returned as an array of URLs. If there is no
 %% additional information about the celebrity, this list is empty.
 %%
-%% For more information, see Recognizing Celebrities in an Image in the
+%% For more information, see Getting information about a celebrity in the
 %% Amazon Rekognition Developer Guide.
 %%
 %% This operation requires permissions to perform the
@@ -921,7 +1060,7 @@ get_celebrity_recognition(Client, Input, Options)
 %% `NextToken' request parameter with the value of `NextToken' returned from
 %% the previous call to `GetContentModeration'.
 %%
-%% For more information, see Content moderation in the Amazon Rekognition
+%% For more information, see moderating content in the Amazon Rekognition
 %% Developer Guide.
 get_content_moderation(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1111,7 +1250,7 @@ get_person_tracking(Client, Input, Options)
 %% `GetSegmentDetection' and populate the `NextToken' request parameter with
 %% the token value returned from the previous call to `GetSegmentDetection'.
 %%
-%% For more information, see Detecting Video Segments in Stored Video in the
+%% For more information, see Detecting video segments in stored video in the
 %% Amazon Rekognition Developer Guide.
 get_segment_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1165,7 +1304,7 @@ get_text_detection(Client, Input, Options)
 %% uses feature vectors when it performs face match and search operations
 %% using the `SearchFaces' and `SearchFacesByImage' operations.
 %%
-%% For more information, see Adding Faces to a Collection in the Amazon
+%% For more information, see Adding faces to a collection in the Amazon
 %% Rekognition Developer Guide.
 %%
 %% To get the number of faces in a collection, call `DescribeCollection'.
@@ -1245,9 +1384,9 @@ get_text_detection(Client, Input, Options)
 %% `detectionAttributes' parameter), Amazon Rekognition returns detailed
 %% facial attributes, such as facial landmarks (for example, location of eye
 %% and mouth) and other facial attributes. If you provide the same image,
-%% specify the same collection, use the same external ID, and use the same
-%% model version in the `IndexFaces' operation, Amazon Rekognition doesn't
-%% save duplicate face metadata.
+%% specify the same collection, and use the same external ID in the
+%% `IndexFaces' operation, Amazon Rekognition doesn't save duplicate face
+%% metadata.
 %%
 %% The input image is passed either as base64-encoded image bytes, or as a
 %% reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
@@ -1269,7 +1408,7 @@ index_faces(Client, Input, Options)
 %% you can use in the subsequent request to fetch the next set of collection
 %% IDs.
 %%
-%% For an example, see Listing Collections in the Amazon Rekognition
+%% For an example, see Listing collections in the Amazon Rekognition
 %% Developer Guide.
 %%
 %% This operation requires permissions to perform the
@@ -1359,7 +1498,7 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc Returns an array of celebrities recognized in the input image.
 %%
-%% For more information, see Recognizing Celebrities in the Amazon
+%% For more information, see Recognizing celebrities in the Amazon
 %% Rekognition Developer Guide.
 %%
 %% `RecognizeCelebrities' returns the 64 largest faces in the image. It lists
@@ -1386,7 +1525,7 @@ list_tags_for_resource(Client, Input, Options)
 %% call Amazon Rekognition operations, passing image bytes is not supported.
 %% The image must be either a PNG or JPEG formatted file.
 %%
-%% For an example, see Recognizing Celebrities in an Image in the Amazon
+%% For an example, see Recognizing celebrities in an image in the Amazon
 %% Rekognition Developer Guide.
 %%
 %% This operation requires permissions to perform the
@@ -1415,7 +1554,7 @@ recognize_celebrities(Client, Input, Options)
 %% match, indicating the confidence that the specific face matches the input
 %% face.
 %%
-%% For an example, see Searching for a Face Using Its Face ID in the Amazon
+%% For an example, see Searching for a face using its face ID in the Amazon
 %% Rekognition Developer Guide.
 %%
 %% This operation requires permissions to perform the
@@ -1493,7 +1632,7 @@ search_faces_by_image(Client, Input, Options)
 %% `GetCelebrityRecognition' and pass the job identifier (`JobId') from the
 %% initial call to `StartCelebrityRecognition'.
 %%
-%% For more information, see Recognizing Celebrities in the Amazon
+%% For more information, see Recognizing celebrities in the Amazon
 %% Rekognition Developer Guide.
 start_celebrity_recognition(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1521,7 +1660,7 @@ start_celebrity_recognition(Client, Input, Options)
 %% `GetContentModeration' and pass the job identifier (`JobId') from the
 %% initial call to `StartContentModeration'.
 %%
-%% For more information, see Content moderation in the Amazon Rekognition
+%% For more information, see Moderating content in the Amazon Rekognition
 %% Developer Guide.
 start_content_moderation(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1543,7 +1682,7 @@ start_content_moderation(Client, Input, Options)
 %% `SUCCEEDED'. If so, call `GetFaceDetection' and pass the job identifier
 %% (`JobId') from the initial call to `StartFaceDetection'.
 %%
-%% For more information, see Detecting Faces in a Stored Video in the Amazon
+%% For more information, see Detecting faces in a stored video in the Amazon
 %% Rekognition Developer Guide.
 start_face_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1564,7 +1703,7 @@ start_face_detection(Client, Input, Options)
 %% results, first check that the status value published to the Amazon SNS
 %% topic is `SUCCEEDED'. If so, call `GetFaceSearch' and pass the job
 %% identifier (`JobId') from the initial call to `StartFaceSearch'. For more
-%% information, see `procedure-person-search-videos'.
+%% information, see Searching stored videos for faces.
 start_face_search(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_face_search(Client, Input, []).
@@ -1661,7 +1800,7 @@ start_project_version(Client, Input, Options)
 %% call `GetSegmentDetection' and pass the job identifier (`JobId') from the
 %% initial call to `StartSegmentDetection'.
 %%
-%% For more information, see Detecting Video Segments in Stored Video in the
+%% For more information, see Detecting video segments in stored video in the
 %% Amazon Rekognition Developer Guide.
 start_segment_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1675,6 +1814,10 @@ start_segment_detection(Client, Input, Options)
 %% You create a stream processor by calling `CreateStreamProcessor'. To tell
 %% `StartStreamProcessor' which stream processor to start, use the value of
 %% the `Name' field specified in the call to `CreateStreamProcessor'.
+%%
+%% If you are using a label detection stream processor to detect labels, you
+%% need to provide a `Start selector' and a `Stop selector' to determine the
+%% length of the stream processing time.
 start_stream_processor(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_stream_processor(Client, Input, []).
@@ -1786,6 +1929,17 @@ update_dataset_entries(Client, Input)
 update_dataset_entries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDatasetEntries">>, Input, Options).
+
+%% @doc Allows you to update a stream processor.
+%%
+%% You can change some settings and regions of interest and delete certain
+%% parameters.
+update_stream_processor(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_stream_processor(Client, Input, []).
+update_stream_processor(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateStreamProcessor">>, Input, Options).
 
 %%====================================================================
 %% Internal functions
