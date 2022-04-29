@@ -257,6 +257,8 @@
          list_users/2,
          list_users/4,
          list_users/5,
+         put_user_status/4,
+         put_user_status/5,
          release_phone_number/3,
          release_phone_number/4,
          resume_contact_recording/2,
@@ -2970,6 +2972,35 @@ list_users(Client, InstanceId, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Changes the current status of a user or agent in Amazon Connect.
+%%
+%% If the agent is currently handling a contact, this sets the agent's next
+%% status.
+%%
+%% For more information, see Agent status and Set your next status in the
+%% Amazon Connect Administrator Guide.
+put_user_status(Client, InstanceId, UserId, Input) ->
+    put_user_status(Client, InstanceId, UserId, Input, []).
+put_user_status(Client, InstanceId, UserId, Input0, Options0) ->
+    Method = put,
+    Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/status"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Releases a phone number previously claimed to an Amazon Connect
 %% instance.

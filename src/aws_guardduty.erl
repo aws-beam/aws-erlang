@@ -700,6 +700,9 @@ disassociate_from_master_account(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Disassociates GuardDuty member accounts (to the current GuardDuty
 %% administrator account) specified by the account IDs.
+%%
+%% Member accounts added through Invitation get deleted from the current
+%% GuardDuty administrator account after 30 days of disassociation.
 disassociate_members(Client, DetectorId, Input) ->
     disassociate_members(Client, DetectorId, Input, []).
 disassociate_members(Client, DetectorId, Input0, Options0) ->
