@@ -181,6 +181,20 @@
 %% distribution configuration. To associate a web ACL, in the CloudFront call
 %% `UpdateDistribution', set the web ACL ID to the Amazon Resource Name (ARN)
 %% of the web ACL. For information, see UpdateDistribution.
+%%
+%% When you make changes to web ACLs or web ACL components, like rules and
+%% rule groups, WAF propagates the changes everywhere that the web ACL and
+%% its components are stored and used. Your changes are applied within
+%% seconds, but there might be a brief period of inconsistency when the
+%% changes have arrived in some places and not in others. So, for example, if
+%% you change a rule action setting, the action might be the old action in
+%% one area and the new action in another area. Or if you add an IP address
+%% to an IP set used in a blocking rule, the new address might briefly be
+%% blocked in one area while still allowed in another. This temporary
+%% inconsistency can occur when you first associate a web ACL with an Amazon
+%% Web Services resource and when you change a web ACL that is already
+%% associated with a resource. Generally, any inconsistencies of this type
+%% last only a few seconds.
 associate_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_web_acl(Client, Input, []).
@@ -321,6 +335,25 @@ delete_rule_group(Client, Input, Options)
 %%
 %% You can only use this if `ManagedByFirewallManager' is false in the
 %% specified `WebACL'.
+%%
+%% Before deleting any web ACL, first disassociate it from all resources.
+%%
+%% To retrieve a list of the resources that are associated with a web ACL,
+%% use the following calls:
+%%
+%% For regional resources, call `ListResourcesForWebACL'.
+%%
+%% For Amazon CloudFront distributions, use the CloudFront call
+%% `ListDistributionsByWebACLId'. For information, see
+%% ListDistributionsByWebACLId.
+%%
+%% To disassociate a resource from a web ACL, use the following calls:
+%%
+%% For regional resources, call `DisassociateWebACL'.
+%%
+%% For Amazon CloudFront distributions, provide an empty web ACL ID in the
+%% CloudFront call `UpdateDistribution'. For information, see
+%% UpdateDistribution.
 delete_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_web_acl(Client, Input, []).
@@ -337,10 +370,12 @@ describe_managed_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeManagedRuleGroup">>, Input, Options).
 
-%% @doc Disassociates a web ACL from a regional application resource.
+%% @doc Disassociates the specified regional application resource from any
+%% existing web ACL association.
 %%
-%% A regional application can be an Application Load Balancer (ALB), an
-%% Amazon API Gateway REST API, or an AppSync GraphQL API.
+%% A resource can have at most one web ACL association. A regional
+%% application can be an Application Load Balancer (ALB), an Amazon API
+%% Gateway REST API, or an AppSync GraphQL API.
 %%
 %% For Amazon CloudFront, don't use this call. Instead, use your CloudFront
 %% distribution configuration. To disassociate a web ACL, provide an empty
@@ -763,6 +798,20 @@ untag_resource(Client, Input, Options)
 %% To modify the IP set, retrieve it by calling `GetIPSet', update the
 %% settings as needed, and then provide the complete IP set specification to
 %% this call.
+%%
+%% When you make changes to web ACLs or web ACL components, like rules and
+%% rule groups, WAF propagates the changes everywhere that the web ACL and
+%% its components are stored and used. Your changes are applied within
+%% seconds, but there might be a brief period of inconsistency when the
+%% changes have arrived in some places and not in others. So, for example, if
+%% you change a rule action setting, the action might be the old action in
+%% one area and the new action in another area. Or if you add an IP address
+%% to an IP set used in a blocking rule, the new address might briefly be
+%% blocked in one area while still allowed in another. This temporary
+%% inconsistency can occur when you first associate a web ACL with an Amazon
+%% Web Services resource and when you change a web ACL that is already
+%% associated with a resource. Generally, any inconsistencies of this type
+%% last only a few seconds.
 update_ip_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_ip_set(Client, Input, []).
@@ -797,6 +846,20 @@ update_managed_rule_set_version_expiry_date(Client, Input, Options)
 %% this call. To modify the regex pattern set, retrieve it by calling
 %% `GetRegexPatternSet', update the settings as needed, and then provide the
 %% complete regex pattern set specification to this call.
+%%
+%% When you make changes to web ACLs or web ACL components, like rules and
+%% rule groups, WAF propagates the changes everywhere that the web ACL and
+%% its components are stored and used. Your changes are applied within
+%% seconds, but there might be a brief period of inconsistency when the
+%% changes have arrived in some places and not in others. So, for example, if
+%% you change a rule action setting, the action might be the old action in
+%% one area and the new action in another area. Or if you add an IP address
+%% to an IP set used in a blocking rule, the new address might briefly be
+%% blocked in one area while still allowed in another. This temporary
+%% inconsistency can occur when you first associate a web ACL with an Amazon
+%% Web Services resource and when you change a web ACL that is already
+%% associated with a resource. Generally, any inconsistencies of this type
+%% last only a few seconds.
 update_regex_pattern_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_regex_pattern_set(Client, Input, []).
@@ -812,6 +875,20 @@ update_regex_pattern_set(Client, Input, Options)
 %% update the settings as needed, and then provide the complete rule group
 %% specification to this call.
 %%
+%% When you make changes to web ACLs or web ACL components, like rules and
+%% rule groups, WAF propagates the changes everywhere that the web ACL and
+%% its components are stored and used. Your changes are applied within
+%% seconds, but there might be a brief period of inconsistency when the
+%% changes have arrived in some places and not in others. So, for example, if
+%% you change a rule action setting, the action might be the old action in
+%% one area and the new action in another area. Or if you add an IP address
+%% to an IP set used in a blocking rule, the new address might briefly be
+%% blocked in one area while still allowed in another. This temporary
+%% inconsistency can occur when you first associate a web ACL with an Amazon
+%% Web Services resource and when you change a web ACL that is already
+%% associated with a resource. Generally, any inconsistencies of this type
+%% last only a few seconds.
+%%
 %% A rule group defines a collection of rules to inspect and control web
 %% requests that you can use in a `WebACL'. When you create a rule group, you
 %% define an immutable capacity limit. If you update a rule group, you must
@@ -825,6 +902,23 @@ update_rule_group(Client, Input, Options)
     request(Client, <<"UpdateRuleGroup">>, Input, Options).
 
 %% @doc Updates the specified `WebACL'.
+%%
+%% While updating a web ACL, WAF provides continous coverage to the resources
+%% that you have associated with the web ACL.
+%%
+%% When you make changes to web ACLs or web ACL components, like rules and
+%% rule groups, WAF propagates the changes everywhere that the web ACL and
+%% its components are stored and used. Your changes are applied within
+%% seconds, but there might be a brief period of inconsistency when the
+%% changes have arrived in some places and not in others. So, for example, if
+%% you change a rule action setting, the action might be the old action in
+%% one area and the new action in another area. Or if you add an IP address
+%% to an IP set used in a blocking rule, the new address might briefly be
+%% blocked in one area while still allowed in another. This temporary
+%% inconsistency can occur when you first associate a web ACL with an Amazon
+%% Web Services resource and when you change a web ACL that is already
+%% associated with a resource. Generally, any inconsistencies of this type
+%% last only a few seconds.
 %%
 %% This operation completely replaces the mutable specifications that you
 %% already have for the web ACL with the ones that you provide to this call.
