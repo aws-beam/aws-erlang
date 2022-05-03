@@ -41,6 +41,9 @@
          get_site_address/3,
          get_site_address/5,
          get_site_address/6,
+         list_assets/2,
+         list_assets/4,
+         list_assets/5,
          list_catalog_items/1,
          list_catalog_items/3,
          list_catalog_items/4,
@@ -284,7 +287,7 @@ get_outpost(Client, OutpostId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the instance types for the specified Outpost.
+%% @doc Gets the instance types for the specified Outpost.
 get_outpost_instance_types(Client, OutpostId)
   when is_map(Client) ->
     get_outpost_instance_types(Client, OutpostId, #{}, #{}).
@@ -362,7 +365,40 @@ get_site_address(Client, SiteId, AddressType, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Use to create a list of every item in the catalog.
+%% @doc Lists the hardware assets in an Outpost.
+%%
+%% If you are using Dedicated Hosts on Amazon Web Services Outposts, you can
+%% filter your request by host ID to return a list of hardware assets that
+%% allocate resources for Dedicated Hosts.
+list_assets(Client, OutpostIdentifier)
+  when is_map(Client) ->
+    list_assets(Client, OutpostIdentifier, #{}, #{}).
+
+list_assets(Client, OutpostIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_assets(Client, OutpostIdentifier, QueryMap, HeadersMap, []).
+
+list_assets(Client, OutpostIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/outposts/", aws_util:encode_uri(OutpostIdentifier), "/assets"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"HostIdFilter">>, maps:get(<<"HostIdFilter">>, QueryMap, undefined)},
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the items in the catalog.
 %%
 %% Add filters to your request to return a more specific list of results. Use
 %% filters to match an item class, storage option, or EC2 family.
@@ -399,8 +435,7 @@ list_catalog_items(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Create a list of the Outpost orders for your Amazon Web Services
-%% account.
+%% @doc Lists the Outpost orders for your Amazon Web Services account.
 %%
 %% You can filter your request by Outpost to return a more specific list of
 %% results.
@@ -432,7 +467,7 @@ list_orders(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Create a list of the Outposts for your Amazon Web Services account.
+%% @doc Lists the Outposts for your Amazon Web Services account.
 %%
 %% Add filters to your request to return a more specific list of results. Use
 %% filters to match an Outpost lifecycle status, Availability Zone
@@ -470,8 +505,7 @@ list_outposts(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Create a list of the Outpost sites for your Amazon Web Services
-%% account.
+%% @doc Lists the Outpost sites for your Amazon Web Services account.
 %%
 %% Add operating address filters to your request to return a more specific
 %% list of results. Use filters to match site city, country code, or

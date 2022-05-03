@@ -100,15 +100,15 @@ create_canary(Client, Input0, Options0) ->
 
 %% @doc Permanently deletes the specified canary.
 %%
-%% When you delete a canary, resources used and created by the canary are not
-%% automatically deleted. After you delete a canary that you do not intend to
-%% use again, you should also delete the following:
+%% If you specify `DeleteLambda' to `true', CloudWatch Synthetics also
+%% deletes the Lambda functions and layers that are used by the canary.
 %%
-%% <ul> <li> The Lambda functions and layers used by this canary. These have
-%% the prefix `cwsyn-MyCanaryName '.
+%% Other esources used and created by the canary are not automatically
+%% deleted. After you delete a canary that you do not intend to use again,
+%% you should also delete the following:
 %%
-%% </li> <li> The CloudWatch alarms created for this canary. These alarms
-%% have a name of `Synthetics-SharpDrop-Alarm-MyCanaryName '.
+%% <ul> <li> The CloudWatch alarms created for this canary. These alarms have
+%% a name of `Synthetics-SharpDrop-Alarm-MyCanaryName '.
 %%
 %% </li> <li> Amazon S3 objects and buckets, such as the canary's artifact
 %% location.
@@ -141,9 +141,10 @@ delete_canary(Client, Name, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"deleteLambda">>, <<"DeleteLambda">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation returns a list of the canaries in your account, along

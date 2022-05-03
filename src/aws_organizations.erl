@@ -255,9 +255,43 @@ cancel_handshake(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelHandshake">>, Input, Options).
 
-%% @doc Closes an Amazon Web Services account that is now a part of an
-%% Organizations, either created within the organization, or invited to join
-%% the organization.
+%% @doc Closes an Amazon Web Services member account within an organization.
+%%
+%% You can't close the management account with this API. This is an
+%% asynchronous request that Amazon Web Services performs in the background.
+%% Because `CloseAccount' operates asynchronously, it can return a successful
+%% completion message even though account closure might still be in progress.
+%% You need to wait a few minutes before the account is fully closed. To
+%% check the status of the request, do one of the following:
+%%
+%% <ul> <li> Use the `AccountId' that you sent in the `CloseAccount' request
+%% to provide as a parameter to the `DescribeAccount' operation.
+%%
+%% While the close account request is in progress, Account status will
+%% indicate PENDING_CLOSURE. When the close account request completes, the
+%% status will change to SUSPENDED.
+%%
+%% </li> <li> Check the CloudTrail log for the `CloseAccountResult' event
+%% that gets published after the account closes successfully. For information
+%% on using CloudTrail with Organizations, see Logging and monitoring in
+%% Organizations in the Organizations User Guide.
+%%
+%% </li> </ul> You can only close 10% of active member accounts within a
+%% rolling 30 day period. This quota is not bound by a calendar month, but
+%% starts when you close an account. Within 30 days of that initial account
+%% closure, you can't exceed the 10% account closure limit.
+%%
+%% To reinstate a closed account, contact Amazon Web Services Support within
+%% the 90-day grace period while the account is in SUSPENDED status.
+%%
+%% If the Amazon Web Services account you attempt to close is linked to an
+%% Amazon Web Services GovCloud (US) account, the `CloseAccount' request will
+%% close both accounts. To learn important pre-closure details, see Closing
+%% an Amazon Web Services GovCloud (US) account in the Amazon Web Services
+%% GovCloud User Guide.
+%%
+%% For more information about closing accounts, see Closing an Amazon Web
+%% Services account in the Organizations User Guide.
 close_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     close_account(Client, Input, []).
