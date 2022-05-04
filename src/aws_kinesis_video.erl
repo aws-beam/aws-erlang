@@ -12,6 +12,10 @@
          delete_signaling_channel/3,
          delete_stream/2,
          delete_stream/3,
+         describe_image_generation_configuration/2,
+         describe_image_generation_configuration/3,
+         describe_notification_configuration/2,
+         describe_notification_configuration/3,
          describe_signaling_channel/2,
          describe_signaling_channel/3,
          describe_stream/2,
@@ -38,6 +42,10 @@
          untag_stream/3,
          update_data_retention/2,
          update_data_retention/3,
+         update_image_generation_configuration/2,
+         update_image_generation_configuration/3,
+         update_notification_configuration/2,
+         update_notification_configuration/3,
          update_signaling_channel/2,
          update_signaling_channel/3,
          update_stream/2,
@@ -151,6 +159,54 @@ delete_stream(Client, Input) ->
 delete_stream(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteStream"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets the `ImageGenerationConfiguration' for a given Kinesis video
+%% stream.
+describe_image_generation_configuration(Client, Input) ->
+    describe_image_generation_configuration(Client, Input, []).
+describe_image_generation_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/describeImageGenerationConfiguration"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets the `NotificationConfiguration' for a given Kinesis video
+%% stream.
+describe_notification_configuration(Client, Input) ->
+    describe_notification_configuration(Client, Input, []).
+describe_notification_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/describeNotificationConfiguration"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -396,10 +452,10 @@ list_tags_for_stream(Client, Input0, Options0) ->
 %% @doc Adds one or more tags to a signaling channel.
 %%
 %% A tag is a key-value pair (the value is optional) that you can define and
-%% assign to AWS resources. If you specify a tag that already exists, the tag
-%% value is replaced with the value that you specify in the request. For more
-%% information, see Using Cost Allocation Tags in the AWS Billing and Cost
-%% Management User Guide.
+%% assign to Amazon Web Services resources. If you specify a tag that already
+%% exists, the tag value is replaced with the value that you specify in the
+%% request. For more information, see Using Cost Allocation Tags in the
+%% Billing and Cost Management and Cost Management User Guide.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->
@@ -425,17 +481,17 @@ tag_resource(Client, Input0, Options0) ->
 %% @doc Adds one or more tags to a stream.
 %%
 %% A tag is a key-value pair (the value is optional) that you can define and
-%% assign to AWS resources. If you specify a tag that already exists, the tag
-%% value is replaced with the value that you specify in the request. For more
-%% information, see Using Cost Allocation Tags in the AWS Billing and Cost
-%% Management User Guide.
+%% assign to Amazon Web Services resources. If you specify a tag that already
+%% exists, the tag value is replaced with the value that you specify in the
+%% request. For more information, see Using Cost Allocation Tags in the
+%% Billing and Cost Management and Cost Management User Guide.
 %%
 %% You must provide either the `StreamName' or the `StreamARN'.
 %%
 %% This operation requires permission for the `KinesisVideo:TagStream'
 %% action.
 %%
-%% Kinesis video streams support up to 50 tags.
+%% A Kinesis video stream can support up to 50 tags.
 tag_stream(Client, Input) ->
     tag_stream(Client, Input, []).
 tag_stream(Client, Input0, Options0) ->
@@ -544,6 +600,52 @@ update_data_retention(Client, Input) ->
 update_data_retention(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateDataRetention"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the `StreamInfo' and `ImageProcessingConfiguration' fields.
+update_image_generation_configuration(Client, Input) ->
+    update_image_generation_configuration(Client, Input, []).
+update_image_generation_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/updateImageGenerationConfiguration"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the notification information for a stream.
+update_notification_configuration(Client, Input) ->
+    update_notification_configuration(Client, Input, []).
+update_notification_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/updateNotificationConfiguration"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

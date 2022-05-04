@@ -10,6 +10,8 @@
          get_dash_streaming_session_url/3,
          get_hls_streaming_session_url/2,
          get_hls_streaming_session_url/3,
+         get_images/2,
+         get_images/3,
          get_media_for_fragment_list/2,
          get_media_for_fragment_list/3,
          list_fragments/2,
@@ -393,6 +395,30 @@ get_hls_streaming_session_url(Client, Input) ->
 get_hls_streaming_session_url(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getHLSStreamingSessionURL"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of Images corresponding to each timestamp for a
+%% given time range, sampling interval, and image format configuration.
+get_images(Client, Input) ->
+    get_images(Client, Input, []).
+get_images(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/getImages"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
