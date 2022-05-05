@@ -1091,6 +1091,8 @@ list_backup_jobs(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"accountId">>, maps:get(<<"accountId">>, QueryMap, undefined)},
         {<<"backupVaultName">>, maps:get(<<"backupVaultName">>, QueryMap, undefined)},
+        {<<"completeAfter">>, maps:get(<<"completeAfter">>, QueryMap, undefined)},
+        {<<"completeBefore">>, maps:get(<<"completeBefore">>, QueryMap, undefined)},
         {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
         {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
         {<<"resourceArn">>, maps:get(<<"resourceArn">>, QueryMap, undefined)},
@@ -1276,6 +1278,8 @@ list_copy_jobs(Client, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"accountId">>, maps:get(<<"accountId">>, QueryMap, undefined)},
+        {<<"completeAfter">>, maps:get(<<"completeAfter">>, QueryMap, undefined)},
+        {<<"completeBefore">>, maps:get(<<"completeBefore">>, QueryMap, undefined)},
         {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
         {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
         {<<"destinationVaultArn">>, maps:get(<<"destinationVaultArn">>, QueryMap, undefined)},
@@ -1500,6 +1504,8 @@ list_restore_jobs(Client, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"accountId">>, maps:get(<<"accountId">>, QueryMap, undefined)},
+        {<<"completeAfter">>, maps:get(<<"completeAfter">>, QueryMap, undefined)},
+        {<<"completeBefore">>, maps:get(<<"completeBefore">>, QueryMap, undefined)},
         {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
         {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
         {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)},

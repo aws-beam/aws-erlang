@@ -1,13 +1,13 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS IoT Secure Tunneling
+%% @doc IoT Secure Tunneling
 %%
-%% AWS IoT Secure Tunnling enables you to create remote connections to
-%% devices deployed in the field.
+%% IoT Secure Tunneling creates remote connections to devices deployed in the
+%% field.
 %%
-%% For more information about how AWS IoT Secure Tunneling works, see AWS IoT
-%% Secure Tunneling.
+%% For more information about how IoT Secure Tunneling works, see IoT Secure
+%% Tunneling.
 -module(aws_iotsecuretunneling).
 
 -export([close_tunnel/2,
@@ -20,6 +20,8 @@
          list_tunnels/3,
          open_tunnel/2,
          open_tunnel/3,
+         rotate_tunnel_access_token/2,
+         rotate_tunnel_access_token/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -36,6 +38,8 @@
 %% When a `CloseTunnel' request is received, we close the WebSocket
 %% connections between the client and proxy server so no data can be
 %% transmitted.
+%%
+%% Requires permission to access the CloseTunnel action.
 close_tunnel(Client, Input)
   when is_map(Client), is_map(Input) ->
     close_tunnel(Client, Input, []).
@@ -44,6 +48,8 @@ close_tunnel(Client, Input, Options)
     request(Client, <<"CloseTunnel">>, Input, Options).
 
 %% @doc Gets information about a tunnel identified by the unique tunnel id.
+%%
+%% Requires permission to access the DescribeTunnel action.
 describe_tunnel(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tunnel(Client, Input, []).
@@ -59,10 +65,12 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc List all tunnels for an AWS account.
+%% @doc List all tunnels for an Amazon Web Services account.
 %%
 %% Tunnels are listed by creation time in descending order, newer tunnels
 %% will be listed before older tunnels.
+%%
+%% Requires permission to access the ListTunnels action.
 list_tunnels(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tunnels(Client, Input, []).
@@ -71,13 +79,32 @@ list_tunnels(Client, Input, Options)
     request(Client, <<"ListTunnels">>, Input, Options).
 
 %% @doc Creates a new tunnel, and returns two client access tokens for
-%% clients to use to connect to the AWS IoT Secure Tunneling proxy server.
+%% clients to use to connect to the IoT Secure Tunneling proxy server.
+%%
+%% Requires permission to access the OpenTunnel action.
 open_tunnel(Client, Input)
   when is_map(Client), is_map(Input) ->
     open_tunnel(Client, Input, []).
 open_tunnel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"OpenTunnel">>, Input, Options).
+
+%% @doc Revokes the current client access token (CAT) and returns new CAT for
+%% clients to use when reconnecting to secure tunneling to access the same
+%% tunnel.
+%%
+%% Requires permission to access the RotateTunnelAccessToken action.
+%%
+%% Rotating the CAT doesn't extend the tunnel duration. For example, say the
+%% tunnel duration is 12 hours and the tunnel has already been open for 4
+%% hours. When you rotate the access tokens, the new tokens that are
+%% generated can only be used for the remaining 8 hours.
+rotate_tunnel_access_token(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    rotate_tunnel_access_token(Client, Input, []).
+rotate_tunnel_access_token(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RotateTunnelAccessToken">>, Input, Options).
 
 %% @doc A resource tag.
 tag_resource(Client, Input)
