@@ -33,8 +33,11 @@
 %% </li> <li> `GetFindings' - `RateLimit' of 3 requests per second.
 %% `BurstLimit' of 6 requests per second.
 %%
-%% </li> <li> `UpdateFindings' - `RateLimit' of 1 request per second.
-%% `BurstLimit' of 5 requests per second.
+%% </li> <li> `BatchImportFindings' - `RateLimit' of 10 requests per second.
+%% `BurstLimit' of 30 requests per second.
+%%
+%% </li> <li> `BatchUpdateFindings' - `RateLimit' of 10 requests per second.
+%% `BurstLimit' of 30 requests per second.
 %%
 %% </li> <li> `UpdateStandardsControl' - `RateLimit' of 1 request per second,
 %% `BurstLimit' of 5 requests per second.
@@ -316,12 +319,17 @@ batch_enable_standards(Client, Input0, Options0) ->
 %%
 %% `BatchImportFindings' must be called by one of the following:
 %%
-%% <ul> <li> The account that is associated with the findings. The identifier
-%% of the associated account is the value of the `AwsAccountId' attribute for
-%% the finding.
+%% <ul> <li> The Amazon Web Services account that is associated with a
+%% finding if you are using the default product ARN or are a partner sending
+%% findings from within a customer's Amazon Web Services account. In these
+%% cases, the identifier of the account that you are calling
+%% `BatchImportFindings' from needs to be the same as the `AwsAccountId'
+%% attribute for the finding.
 %%
-%% </li> <li> An account that is allow-listed for an official Security Hub
-%% partner integration.
+%% </li> <li> An Amazon Web Services account that Security Hub has
+%% allow-listed for an official partner integration. In this case, you can
+%% call `BatchImportFindings' from the allow-listed account and send findings
+%% from different customer accounts in the same batch.
 %%
 %% </li> </ul> The maximum allowed size for a finding is 240 Kb. An error is
 %% returned for any finding larger than 240 Kb.

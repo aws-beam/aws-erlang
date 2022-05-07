@@ -230,6 +230,9 @@ batch_delete_geofence(Client, CollectionName, Input0, Options0) ->
 %%
 %% Geofence evaluation uses the given device position. It does not account
 %% for the optional `Accuracy' of a `DevicePositionUpdate'.
+%%
+%% The `DeviceID' is used as a string to represent the device. You do not
+%% need to have a `Tracker' associated with the `DeviceID'.
 batch_evaluate_geofences(Client, CollectionName, Input) ->
     batch_evaluate_geofences(Client, CollectionName, Input, []).
 batch_evaluate_geofences(Client, CollectionName, Input0, Options0) ->
