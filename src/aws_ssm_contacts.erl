@@ -255,7 +255,11 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Adds a resource to the specified contact or escalation plan.
+%% @doc Adds a resource policy to the specified contact or escalation plan.
+%%
+%% The resource policy is used to share the contact or escalation plan using
+%% Resource Access Manager (RAM). For more information about cross-account
+%% sharing, see Setting up cross-account functionality.
 put_contact_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_contact_policy(Client, Input, []).
