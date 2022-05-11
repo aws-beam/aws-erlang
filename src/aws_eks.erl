@@ -628,7 +628,7 @@ describe_nodegroup(Client, ClusterName, NodegroupName, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns descriptive information about an update against your Amazon
-%% EKS cluster or associated managed node group.
+%% EKS cluster or associated managed node group or Amazon EKS add-on.
 %%
 %% When the status of the update is `Succeeded', the update is complete. If
 %% an update fails, the status is `Failed', and an error detail explains the
