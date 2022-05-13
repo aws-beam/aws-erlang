@@ -563,6 +563,10 @@ list_timeline_events(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds a resource policy to the specified response plan.
+%%
+%% The resource policy is used to share the response plan using Resource
+%% Access Manager (RAM). For more information about cross-account sharing,
+%% see Setting up cross-account functionality.
 put_resource_policy(Client, Input) ->
     put_resource_policy(Client, Input, []).
 put_resource_policy(Client, Input0, Options0) ->

@@ -22,74 +22,104 @@
 %% Android/iOS apps) using the Amazon IVS Chat Messaging API. We refer to
 %% these as clients.
 %%
-%% </li> </ul> <p> <b>Resources</b> </p> <p>The following resource is part of
-%% Amazon IVS Chat:</p> <ul> <li> <p> <b>Room</b> — The central Amazon IVS
-%% Chat resource through which clients connect to and exchange chat messages.
-%% See the Room endpoints for more information.</p> </li> </ul> <p> <b>API
-%% Access Security</b> </p> <p>Your Amazon IVS Chat applications (service
-%% applications and clients) must be authenticated and authorized to access
-%% Amazon IVS Chat resources. Note the differences between these
-%% concepts:</p> <ul> <li> <p> <i>Authentication</i> is about verifying
-%% identity. Requests to the Amazon IVS Chat API must be signed to verify
-%% your identity.</p> </li> <li> <p> <i>Authorization</i> is about granting
-%% permissions. Your IAM roles need to have permissions for Amazon IVS Chat
-%% API requests.</p> </li> </ul> <p>Users (viewers) connect to a room using
-%% secure access tokens that you create using the <a>CreateChatToken</a>
-%% endpoint through the AWS SDK. You call CreateChatToken for every user’s
-%% chat session, passing identity and authorization information about the
-%% user.</p> <p> <b>Signing API Requests</b> </p> <p>HTTP API requests must
-%% be signed with an AWS SigV4 signature using your AWS security credentials.
-%% The AWS Command Line Interface (CLI) and the AWS SDKs take care of signing
-%% the underlying API calls for you. However, if your application calls the
-%% Amazon IVS Chat HTTP API directly, it’s your responsibility to sign the
-%% requests.</p> <p>You generate a signature using valid AWS credentials for
-%% an IAM role that has permission to perform the requested action. For
-%% example, DeleteMessage requests must be made using an IAM role that has
-%% the <code>ivschat:DeleteMessage</code> permission.</p> <p>For more
-%% information:</p> <ul> <li> <p>Authentication and generating signatures —
-%% See <a
-%% href="https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html">Authenticating
-%% Requests (Amazon Web Services Signature Version 4)</a> in the <i>Amazon
-%% Web Services General Reference</i>.</p> </li> <li> <p>Managing Amazon IVS
-%% permissions — See <a
-%% href="https://docs.aws.amazon.com/ivs/latest/userguide/security-iam.html">Identity
-%% and Access Management</a> on the Security page of the <i>Amazon IVS User
-%% Guide</i>.</p> </li> </ul> <p> <b>Messaging Endpoints</b> </p> <ul> <li>
-%% <p> <a>DeleteMessage</a> — Sends an event to a specific room which directs
-%% clients to delete a specific message; that is, unrender it from view and
-%% delete it from the client’s chat history. This event’s
-%% <code>EventName</code> is <code>aws:DELETE_MESSAGE</code>. This replicates
-%% the <a
-%% href="https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-deletemessage-publish.html">
-%% DeleteMessage</a> WebSocket operation in the Amazon IVS Chat Messaging
-%% API.</p> </li> <li> <p> <a>DisconnectUser</a> — Disconnects all
-%% connections using a specified user ID from a room. This replicates the <a
-%% href="https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-disconnectuser-publish.html">
-%% DisconnectUser</a> WebSocket operation in the Amazon IVS Chat Messaging
-%% API.</p> </li> <li> <p> <a>SendEvent</a> — Sends an event to a room. Use
-%% this within your application’s business logic to send events to clients of
-%% a room; e.g., to notify clients to change the way the chat UI is
-%% rendered.</p> </li> </ul> <p> <b>Chat Token Endpoint</b> </p> <ul> <li>
-%% <p> <a>CreateChatToken</a> — Creates an encrypted token that is used to
+%% </li> </ul> Resources
+%%
+%% The following resource is part of Amazon IVS Chat:
+%%
+%% <ul> <li> Room — The central Amazon IVS Chat resource through which
+%% clients connect to and exchange chat messages. See the Room endpoints for
+%% more information.
+%%
+%% </li> </ul> API Access Security
+%%
+%% Your Amazon IVS Chat applications (service applications and clients) must
+%% be authenticated and authorized to access Amazon IVS Chat resources. Note
+%% the differences between these concepts:
+%%
+%% <ul> <li> Authentication is about verifying identity. Requests to the
+%% Amazon IVS Chat API must be signed to verify your identity.
+%%
+%% </li> <li> Authorization is about granting permissions. Your IAM roles
+%% need to have permissions for Amazon IVS Chat API requests.
+%%
+%% </li> </ul> Users (viewers) connect to a room using secure access tokens
+%% that you create using the `CreateChatToken' endpoint through the AWS SDK.
+%% You call CreateChatToken for every user’s chat session, passing identity
+%% and authorization information about the user.
+%%
+%% Signing API Requests
+%%
+%% HTTP API requests must be signed with an AWS SigV4 signature using your
+%% AWS security credentials. The AWS Command Line Interface (CLI) and the AWS
+%% SDKs take care of signing the underlying API calls for you. However, if
+%% your application calls the Amazon IVS Chat HTTP API directly, it’s your
+%% responsibility to sign the requests.
+%%
+%% You generate a signature using valid AWS credentials for an IAM role that
+%% has permission to perform the requested action. For example, DeleteMessage
+%% requests must be made using an IAM role that has the
+%% `ivschat:DeleteMessage' permission.
+%%
+%% For more information:
+%%
+%% <ul> <li> Authentication and generating signatures — See Authenticating
+%% Requests (Amazon Web Services Signature Version 4) in the Amazon Web
+%% Services General Reference.
+%%
+%% </li> <li> Managing Amazon IVS permissions — See Identity and Access
+%% Management on the Security page of the Amazon IVS User Guide.
+%%
+%% </li> </ul> Messaging Endpoints
+%%
+%% <ul> <li> `DeleteMessage' — Sends an event to a specific room which
+%% directs clients to delete a specific message; that is, unrender it from
+%% view and delete it from the client’s chat history. This event’s
+%% `EventName' is `aws:DELETE_MESSAGE'. This replicates the DeleteMessage
+%% WebSocket operation in the Amazon IVS Chat Messaging API.
+%%
+%% </li> <li> `DisconnectUser' — Disconnects all connections using a
+%% specified user ID from a room. This replicates the DisconnectUser
+%% WebSocket operation in the Amazon IVS Chat Messaging API.
+%%
+%% </li> <li> `SendEvent' — Sends an event to a room. Use this within your
+%% application’s business logic to send events to clients of a room; e.g., to
+%% notify clients to change the way the chat UI is rendered.
+%%
+%% </li> </ul> Chat Token Endpoint
+%%
+%% <ul> <li> `CreateChatToken' — Creates an encrypted token that is used to
 %% establish an individual WebSocket connection to a room. The token is valid
 %% for one minute, and a connection (session) established with the token is
-%% valid for the specified duration.</p> </li> </ul> <p> <b>Room
-%% Endpoints</b> </p> <ul> <li> <p> <a>CreateRoom</a> — Creates a room that
-%% allows clients to connect and pass messages.</p> </li> <li> <p>
-%% <a>DeleteRoom</a> — Deletes the specified room.</p> </li> <li> <p>
-%% <a>GetRoom</a> — Gets the specified room.</p> </li> <li> <p>
-%% <a>ListRooms</a> — Gets summary information about all your rooms in the
-%% AWS region where the API request is processed. </p> </li> <li> <p>
-%% <a>UpdateRoom</a> — Updates a room’s configuration.</p> </li> </ul> <p>
-%% <b>Tags Endpoints</b> </p> <ul> <li> <p> <a>ListTagsForResource</a> — Gets
-%% information about AWS tags for the specified ARN.</p> </li> <li> <p>
-%% <a>TagResource</a> — Adds or updates tags for the AWS resource with the
-%% specified ARN.</p> </li> <li> <p> <a>UntagResource</a> — Removes tags from
-%% the resource with the specified ARN.</p> </li> </ul> <p>All the above are
-%% HTTP operations. There is a separate <i>messaging</i> API for managing
-%% Chat resources; see the <a
-%% href="https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/chat-messaging-api.html">
-%% Amazon IVS Chat Messaging API Reference</a>.</p>
+%% valid for the specified duration.
+%%
+%% </li> </ul> Room Endpoints
+%%
+%% <ul> <li> `CreateRoom' — Creates a room that allows clients to connect and
+%% pass messages.
+%%
+%% </li> <li> `DeleteRoom' — Deletes the specified room.
+%%
+%% </li> <li> `GetRoom' — Gets the specified room.
+%%
+%% </li> <li> `ListRooms' — Gets summary information about all your rooms in
+%% the AWS region where the API request is processed.
+%%
+%% </li> <li> `UpdateRoom' — Updates a room’s configuration.
+%%
+%% </li> </ul> Tags Endpoints
+%%
+%% <ul> <li> `ListTagsForResource' — Gets information about AWS tags for the
+%% specified ARN.
+%%
+%% </li> <li> `TagResource' — Adds or updates tags for the AWS resource with
+%% the specified ARN.
+%%
+%% </li> <li> `UntagResource' — Removes tags from the resource with the
+%% specified ARN.
+%%
+%% </li> </ul> All the above are HTTP operations. There is a separate
+%% messaging API for managing Chat resources; see the Amazon IVS Chat
+%% Messaging API Reference.
 -module(aws_ivschat).
 
 -export([create_chat_token/2,

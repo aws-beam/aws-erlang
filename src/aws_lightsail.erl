@@ -1354,10 +1354,14 @@ get_buckets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBuckets">>, Input, Options).
 
-%% @doc Returns the list of bundles that are available for purchase.
+%% @doc Returns the bundles that you can apply to an Amazon Lightsail
+%% instance when you create it.
 %%
-%% A bundle describes the specs for your virtual private server (or
-%% instance).
+%% A bundle describes the specifications of an instance, such as the monthly
+%% cost, amount of memory, the number of vCPUs, amount of storage space, and
+%% monthly network data transfer quota.
+%%
+%% Bundles are referred to as instance plans in the Lightsail console.
 get_bundles(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_bundles(Client, Input, []).
