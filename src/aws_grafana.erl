@@ -19,8 +19,12 @@
          associate_license/5,
          create_workspace/2,
          create_workspace/3,
+         create_workspace_api_key/3,
+         create_workspace_api_key/4,
          delete_workspace/3,
          delete_workspace/4,
+         delete_workspace_api_key/4,
+         delete_workspace_api_key/5,
          describe_workspace/2,
          describe_workspace/4,
          describe_workspace/5,
@@ -111,6 +115,34 @@ create_workspace(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an API key for the workspace.
+%%
+%% This key can be used to authenticate requests sent to the workspace's HTTP
+%% API. See [
+%% https://docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html]
+%% for available APIs and example requests.
+create_workspace_api_key(Client, WorkspaceId, Input) ->
+    create_workspace_api_key(Client, WorkspaceId, Input, []).
+create_workspace_api_key(Client, WorkspaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/apikeys"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an Amazon Managed Grafana workspace.
 delete_workspace(Client, WorkspaceId, Input) ->
     delete_workspace(Client, WorkspaceId, Input, []).
@@ -118,6 +150,29 @@ delete_workspace(Client, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an API key for a workspace.
+delete_workspace_api_key(Client, KeyName, WorkspaceId, Input) ->
+    delete_workspace_api_key(Client, KeyName, WorkspaceId, Input, []).
+delete_workspace_api_key(Client, KeyName, WorkspaceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/apikeys/", aws_util:encode_uri(KeyName), ""],
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
