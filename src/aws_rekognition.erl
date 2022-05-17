@@ -10,121 +10,121 @@
 %%
 %% Amazon Rekognition Image
 %%
-%% <ul> <li>
+%% <ul> <li> CompareFaces
 %%
-%% </li> <li>
+%% </li> <li> CreateCollection
 %%
-%% </li> <li>
+%% </li> <li> DeleteCollection
 %%
-%% </li> <li>
+%% </li> <li> DeleteFaces
 %%
-%% </li> <li>
+%% </li> <li> DescribeCollection
 %%
-%% </li> <li>
+%% </li> <li> DetectFaces
 %%
-%% </li> <li>
+%% </li> <li> DetectLabels
 %%
-%% </li> <li>
+%% </li> <li> DetectModerationLabels
 %%
-%% </li> <li>
+%% </li> <li> DetectProtectiveEquipment
 %%
-%% </li> <li>
+%% </li> <li> DetectText
 %%
-%% </li> <li>
+%% </li> <li> GetCelebrityInfo
 %%
-%% </li> <li>
+%% </li> <li> IndexFaces
 %%
-%% </li> <li>
+%% </li> <li> ListCollections
 %%
-%% </li> <li>
+%% </li> <li> ListFaces
 %%
-%% </li> <li>
+%% </li> <li> RecognizeCelebrities
 %%
-%% </li> <li>
+%% </li> <li> SearchFaces
 %%
-%% </li> <li>
+%% </li> <li> SearchFacesByImage
 %%
 %% </li> </ul> Amazon Rekognition Custom Labels
 %%
-%% <ul> <li>
+%% <ul> <li> CreateDataset
 %%
-%% </li> <li>
+%% </li> <li> CreateProject
 %%
-%% </li> <li>
+%% </li> <li> CreateProjectVersion
 %%
-%% </li> <li>
+%% </li> <li> DeleteDataset
 %%
-%% </li> <li>
+%% </li> <li> DeleteProject
 %%
-%% </li> <li>
+%% </li> <li> DeleteProjectVersion
 %%
-%% </li> <li>
+%% </li> <li> DescribeDataset
 %%
-%% </li> <li>
+%% </li> <li> DescribeProjects
 %%
-%% </li> <li>
+%% </li> <li> DescribeProjectVersions
 %%
-%% </li> <li>
+%% </li> <li> DetectCustomLabels
 %%
-%% </li> <li>
+%% </li> <li> DistributeDatasetEntries
 %%
-%% </li> <li>
+%% </li> <li> ListDatasetEntries
 %%
-%% </li> <li>
+%% </li> <li> ListDatasetLabels
 %%
-%% </li> <li>
+%% </li> <li> StartProjectVersion
 %%
-%% </li> <li>
+%% </li> <li> StopProjectVersion
 %%
-%% </li> <li>
+%% </li> <li> UpdateDatasetEntries
 %%
 %% </li> </ul> Amazon Rekognition Video Stored Video
 %%
-%% <ul> <li>
+%% <ul> <li> GetCelebrityRecognition
 %%
-%% </li> <li>
+%% </li> <li> GetContentModeration
 %%
-%% </li> <li>
+%% </li> <li> GetFaceDetection
 %%
-%% </li> <li>
+%% </li> <li> GetFaceSearch
 %%
-%% </li> <li>
+%% </li> <li> GetLabelDetection
 %%
-%% </li> <li>
+%% </li> <li> GetPersonTracking
 %%
-%% </li> <li>
+%% </li> <li> GetSegmentDetection
 %%
-%% </li> <li>
+%% </li> <li> GetTextDetection
 %%
-%% </li> <li>
+%% </li> <li> StartCelebrityRecognition
 %%
-%% </li> <li>
+%% </li> <li> StartContentModeration
 %%
-%% </li> <li>
+%% </li> <li> StartFaceDetection
 %%
-%% </li> <li>
+%% </li> <li> StartFaceSearch
 %%
-%% </li> <li>
+%% </li> <li> StartLabelDetection
 %%
-%% </li> <li>
+%% </li> <li> StartPersonTracking
 %%
-%% </li> <li>
+%% </li> <li> StartSegmentDetection
 %%
-%% </li> <li>
+%% </li> <li> StartTextDetection
 %%
 %% </li> </ul> Amazon Rekognition Video Streaming Video
 %%
-%% <ul> <li>
+%% <ul> <li> CreateStreamProcessor
 %%
-%% </li> <li>
+%% </li> <li> DeleteStreamProcessor
 %%
-%% </li> <li>
+%% </li> <li> DescribeStreamProcessor
 %%
-%% </li> <li>
+%% </li> <li> ListStreamProcessors
 %%
-%% </li> <li>
+%% </li> <li> StartStreamProcessor
 %%
-%% </li> <li>
+%% </li> <li> StopStreamProcessor
 %%
 %% </li> </ul>
 -module(aws_rekognition).
@@ -404,8 +404,9 @@ create_project(Client, Input, Options)
 %% For more information, see Creating training and test dataset in the Amazon
 %% Rekognition Custom Labels Developer Guide.
 %%
-%% You can train a modelin a project that doesn't have associated datasets by
-%% specifying manifest files in the `TrainingData' and `TestingData' fields.
+%% You can train a model in a project that doesn't have associated datasets
+%% by specifying manifest files in the `TrainingData' and `TestingData'
+%% fields.
 %%
 %% If you open the console after training a model with manifest files, Amazon
 %% Rekognition Custom Labels creates the datasets for you using the most

@@ -1,16 +1,16 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Application Discovery Service
+%% @doc Amazon Web Services Application Discovery Service
 %%
-%% AWS Application Discovery Service helps you plan application migration
-%% projects.
+%% Amazon Web Services Application Discovery Service helps you plan
+%% application migration projects.
 %%
 %% It automatically identifies servers, virtual machines (VMs), and network
 %% dependencies in your on-premises data centers. For more information, see
-%% the AWS Application Discovery Service FAQ. Application Discovery Service
-%% offers three ways of performing discovery and collecting data about your
-%% on-premises servers:
+%% the Amazon Web Services Application Discovery Service FAQ. Application
+%% Discovery Service offers three ways of performing discovery and collecting
+%% data about your on-premises servers:
 %%
 %% <ul> <li> Agentless discovery is recommended for environments that use
 %% VMware vCenter Server. This mode doesn't require you to install an agent
@@ -24,9 +24,9 @@
 %% dependencies, only agent-based discovery collects that information.
 %%
 %% </li> </ul> </li> </ul> <ul> <li> Agent-based discovery collects a richer
-%% set of data than agentless discovery by using the AWS Application
-%% Discovery Agent, which you install on one or more hosts in your data
-%% center.
+%% set of data than agentless discovery by using the Amazon Web Services
+%% Application Discovery Agent, which you install on one or more hosts in
+%% your data center.
 %%
 %% <ul> <li> The agent captures infrastructure and application information,
 %% including an inventory of running processes, system performance
@@ -35,14 +35,14 @@
 %% </li> <li> The information collected by agents is secured at rest and in
 %% transit to the Application Discovery Service database in the cloud.
 %%
-%% </li> </ul> </li> </ul> <ul> <li> AWS Partner Network (APN) solutions
-%% integrate with Application Discovery Service, enabling you to import
-%% details of your on-premises environment directly into Migration Hub
-%% without using the discovery connector or discovery agent.
+%% </li> </ul> </li> </ul> <ul> <li> Amazon Web Services Partner Network
+%% (APN) solutions integrate with Application Discovery Service, enabling you
+%% to import details of your on-premises environment directly into Migration
+%% Hub without using the discovery connector or discovery agent.
 %%
-%% <ul> <li> Third-party application discovery tools can query AWS
-%% Application Discovery Service, and they can write to the Application
-%% Discovery Service database using the public API.
+%% <ul> <li> Third-party application discovery tools can query Amazon Web
+%% Services Application Discovery Service, and they can write to the
+%% Application Discovery Service database using the public API.
 %%
 %% </li> <li> In this way, you can import data into Migration Hub and view
 %% it, so that you can associate applications with servers and track
@@ -62,9 +62,9 @@
 %% This API reference provides descriptions, syntax, and usage examples for
 %% each of the actions and data types for Application Discovery Service. The
 %% topic for each action shows the API request parameters and the response.
-%% Alternatively, you can use one of the AWS SDKs to access an API that is
-%% tailored to the programming language or platform that you're using. For
-%% more information, see AWS SDKs.
+%% Alternatively, you can use one of the Amazon Web Services SDKs to access
+%% an API that is tailored to the programming language or platform that
+%% you're using. For more information, see Amazon Web Services SDKs.
 %%
 %% Remember that you must set your Migration Hub home region before you call
 %% any of these APIs.
@@ -83,12 +83,12 @@
 %% You must call `GetHomeRegion' to obtain the latest Migration Hub home
 %% region.
 %%
-%% This guide is intended for use with the AWS Application Discovery Service
-%% User Guide.
+%% This guide is intended for use with the Amazon Web Services Application
+%% Discovery Service User Guide.
 %%
-%% All data is handled according to the AWS Privacy Policy. You can operate
-%% Application Discovery Service offline to inspect collected data before it
-%% is shared with the service.
+%% All data is handled according to the Amazon Web Services Privacy Policy.
+%% You can operate Application Discovery Service offline to inspect collected
+%% data before it is shared with the service.
 -module(aws_application_discovery).
 
 -export([associate_configuration_items_to_application/2,
@@ -161,12 +161,13 @@ associate_configuration_items_to_application(Client, Input, Options)
 %% Each import task has a number of records that can identify servers or
 %% applications.
 %%
-%% AWS Application Discovery Service has built-in matching logic that will
-%% identify when discovered servers match existing entries that you've
-%% previously discovered, the information for the already-existing discovered
-%% server is updated. When you delete an import task that contains records
-%% that were used to match, the information in those matched records that
-%% comes from the deleted records will also be deleted.
+%% Amazon Web Services Application Discovery Service has built-in matching
+%% logic that will identify when discovered servers match existing entries
+%% that you've previously discovered, the information for the
+%% already-existing discovered server is updated. When you delete an import
+%% task that contains records that were used to match, the information in
+%% those matched records that comes from the deleted records will also be
+%% deleted.
 batch_delete_import_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_import_data(Client, Input, []).
@@ -186,6 +187,8 @@ create_application(Client, Input, Options)
 %%
 %% Tags are metadata that help you categorize IT assets. This API accepts a
 %% list of multiple configuration items.
+%%
+%% Do not store sensitive information (like personal data) in tags.
 create_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_tags(Client, Input, []).
@@ -243,8 +246,8 @@ describe_agents(Client, Input, Options)
 %% etc.
 %%
 %% For a complete list of outputs for each asset type, see Using the
-%% DescribeConfigurations Action in the AWS Application Discovery Service
-%% User Guide.
+%% DescribeConfigurations Action in the Amazon Web Services Application
+%% Discovery Service User Guide.
 describe_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configurations(Client, Input, []).
@@ -265,7 +268,7 @@ describe_continuous_exports(Client, Input, Options)
 
 %% @doc `DescribeExportConfigurations' is deprecated.
 %%
-%% Use DescribeImportTasks, instead.
+%% Use DescribeExportTasks, instead.
 describe_export_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_export_configurations(Client, Input, []).
@@ -398,9 +401,9 @@ start_data_collection_by_agent_ids(Client, Input, Options)
 %% of detailed agent data is limited to five concurrently running exports.
 %%
 %% If you do not include an `agentIds' filter, summary data is exported that
-%% includes both AWS Agentless Discovery Connector data and summary data from
-%% AWS Discovery Agents. Export of summary data is limited to two exports per
-%% day.
+%% includes both Amazon Web Services Agentless Discovery Connector data and
+%% summary data from Amazon Web Services Discovery Agents. Export of summary
+%% data is limited to two exports per day.
 start_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_export_task(Client, Input, []).
@@ -409,9 +412,9 @@ start_export_task(Client, Input, Options)
     request(Client, <<"StartExportTask">>, Input, Options).
 
 %% @doc Starts an import task, which allows you to import details of your
-%% on-premises environment directly into AWS Migration Hub without having to
-%% use the Application Discovery Service (ADS) tools such as the Discovery
-%% Connector or Discovery Agent.
+%% on-premises environment directly into Amazon Web Services Migration Hub
+%% without having to use the Application Discovery Service (ADS) tools such
+%% as the Discovery Connector or Discovery Agent.
 %%
 %% This gives you the option to perform migration assessment and planning
 %% directly from your imported data, including the ability to group your
@@ -421,22 +424,25 @@ start_export_task(Client, Input, Options)
 %%
 %% <ol> <li> Download the specially formatted comma separated value (CSV)
 %% import template, which you can find here:
-%% [https://s3-us-west-2.amazonaws.com/templates-7cffcf56-bd96-4b1c-b45b-a5b42f282e46/import_template.csv].
+%% [https://s3.us-west-2.amazonaws.com/templates-7cffcf56-bd96-4b1c-b45b-a5b42f282e46/import_template.csv].
 %%
 %% </li> <li> Fill out the template with your server and application data.
 %%
 %% </li> <li> Upload your import file to an Amazon S3 bucket, and make a note
 %% of it's Object URL. Your import file must be in the CSV format.
 %%
-%% </li> <li> Use the console or the `StartImportTask' command with the AWS
-%% CLI or one of the AWS SDKs to import the records from your file.
+%% </li> <li> Use the console or the `StartImportTask' command with the
+%% Amazon Web Services CLI or one of the Amazon Web Services SDKs to import
+%% the records from your file.
 %%
 %% </li> </ol> For more information, including step-by-step procedures, see
-%% Migration Hub Import in the AWS Application Discovery Service User Guide.
+%% Migration Hub Import in the Amazon Web Services Application Discovery
+%% Service User Guide.
 %%
 %% There are limits to the number of import tasks you can create (and delete)
-%% in an AWS account. For more information, see AWS Application Discovery
-%% Service Limits in the AWS Application Discovery Service User Guide.
+%% in an Amazon Web Services account. For more information, see Amazon Web
+%% Services Application Discovery Service Limits in the Amazon Web Services
+%% Application Discovery Service User Guide.
 start_import_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_import_task(Client, Input, []).

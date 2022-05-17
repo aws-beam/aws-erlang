@@ -793,7 +793,11 @@ import_as_provisioned_product(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportAsProvisionedProduct">>, Input, Options).
 
-%% @doc Lists all portfolios for which sharing was accepted by this account.
+%% @doc Lists all imported portfolios for which account-to-account shares
+%% were accepted by this account.
+%%
+%% By specifying the `PortfolioShareType', you can list portfolios for which
+%% organizational shares were accepted by this account.
 list_accepted_portfolio_shares(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_accepted_portfolio_shares(Client, Input, []).

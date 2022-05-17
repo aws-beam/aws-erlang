@@ -628,6 +628,12 @@ get_federation_token(Client, Input, Options)
 %% credentials, see Requesting Temporary Security Credentials and Comparing
 %% the Amazon Web Services STS API operations in the IAM User Guide.
 %%
+%% No permissions are required for users to perform this operation. The
+%% purpose of the `sts:GetSessionToken' operation is to authenticate the user
+%% using MFA. You cannot use policies to control authentication operations.
+%% For more information, see Permissions for GetSessionToken in the IAM User
+%% Guide.
+%%
 %% Session Duration
 %%
 %% The `GetSessionToken' operation must be called by using the long-term
