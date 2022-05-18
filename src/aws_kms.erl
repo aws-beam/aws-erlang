@@ -32,11 +32,12 @@
 %% available FIPS endpoints, see Service endpoints in the Key Management
 %% Service topic of the Amazon Web Services General Reference.
 %%
-%% Clients must support TLS (Transport Layer Security) 1.0. We recommend TLS
-%% 1.2. Clients must also support cipher suites with Perfect Forward Secrecy
-%% (PFS) such as Ephemeral Diffie-Hellman (DHE) or Elliptic Curve Ephemeral
-%% Diffie-Hellman (ECDHE). Most modern systems such as Java 7 and later
-%% support these modes.
+%% All KMS API calls must be signed and be transmitted using Transport Layer
+%% Security (TLS). KMS recommends you always use the latest supported TLS
+%% version. Clients must also support cipher suites with Perfect Forward
+%% Secrecy (PFS) such as Ephemeral Diffie-Hellman (DHE) or Elliptic Curve
+%% Ephemeral Diffie-Hellman (ECDHE). Most modern systems such as Java 7 and
+%% later support these modes.
 %%
 %% Signing Requests
 %%
@@ -488,9 +489,9 @@ create_grant(Client, Input, Options)
 %% these properties after the KMS key is created.
 %%
 %% Asymmetric KMS keys contain an RSA key pair or an Elliptic Curve (ECC) key
-%% pair. The private key in an asymmetric KMS key never leaves AWS KMS
+%% pair. The private key in an asymmetric KMS key never leaves KMS
 %% unencrypted. However, you can use the `GetPublicKey' operation to download
-%% the public key so it can be used outside of AWS KMS. KMS keys with RSA key
+%% the public key so it can be used outside of KMS. KMS keys with RSA key
 %% pairs can be used to encrypt or decrypt data or sign and verify messages
 %% (but not both). KMS keys with ECC key pairs can be used only to sign and
 %% verify messages. For information about asymmetric KMS keys, see Asymmetric
@@ -618,10 +619,9 @@ create_key(Client, Input, Options)
 %%
 %% The `Decrypt' operation also decrypts ciphertext that was encrypted
 %% outside of KMS by the public key in an KMS asymmetric KMS key. However, it
-%% cannot decrypt symmetric ciphertext produced by other libraries, such as
-%% the Amazon Web Services Encryption SDK or Amazon S3 client-side
-%% encryption. These libraries return a ciphertext format that is
-%% incompatible with KMS.
+%% cannot decrypt ciphertext produced by other libraries, such as the Amazon
+%% Web Services Encryption SDK or Amazon S3 client-side encryption. These
+%% libraries return a ciphertext format that is incompatible with KMS.
 %%
 %% If the ciphertext was encrypted under a symmetric encryption KMS key, the
 %% `KeyId' parameter is optional. KMS can get this information from metadata
@@ -956,13 +956,25 @@ disable_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableKey">>, Input, Options).
 
-%% @doc Disables automatic rotation of the key material for the specified
+%% @doc Disables automatic rotation of the key material of the specified
 %% symmetric encryption KMS key.
 %%
-%% You cannot enable automatic rotation of asymmetric KMS keys, HMAC KMS
-%% keys, KMS keys with imported key material, or KMS keys in a custom key
-%% store. To enable or disable automatic rotation of a set of related
+%% Automatic key rotation is supported only on symmetric encryption KMS keys.
+%% You cannot enable or disable automatic rotation of asymmetric KMS keys,
+%% HMAC KMS keys, KMS keys with imported key material, or KMS keys in a
+%% custom key store. The key rotation status of these KMS keys is always
+%% `false'. To enable or disable automatic rotation of a set of related
 %% multi-Region keys, set the property on the primary key.
+%%
+%% You can enable (`EnableKeyRotation') and disable automatic rotation of the
+%% key material in customer managed KMS keys. Key material rotation of Amazon
+%% Web Services managed KMS keys is not configurable. KMS always rotates the
+%% key material for every year. Rotation of Amazon Web Services owned KMS
+%% keys varies.
+%%
+%% In May 2022, KMS changed the rotation schedule for Amazon Web Services
+%% managed keys from every three years to every year. For details, see
+%% `EnableKeyRotation'.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For details, see Key states of KMS keys in the Key Management
@@ -1055,13 +1067,37 @@ enable_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableKey">>, Input, Options).
 
-%% @doc Enables automatic rotation of the key material for the specified
+%% @doc Enables automatic rotation of the key material of the specified
 %% symmetric encryption KMS key.
 %%
-%% You cannot enable automatic rotation of asymmetric KMS keys, HMAC KMS
-%% keys, KMS keys with imported key material, or KMS keys in a custom key
-%% store. To enable or disable automatic rotation of a set of related
+%% When you enable automatic rotation of acustomer managed KMS key, KMS
+%% rotates the key material of the KMS key one year (approximately 365 days)
+%% from the enable date and every year thereafter. You can monitor rotation
+%% of the key material for your KMS keys in CloudTrail and Amazon CloudWatch.
+%% To disable rotation of the key material in a customer managed KMS key, use
+%% the `DisableKeyRotation' operation.
+%%
+%% Automatic key rotation is supported only on symmetric encryption KMS keys.
+%% You cannot enable or disable automatic rotation of asymmetric KMS keys,
+%% HMAC KMS keys, KMS keys with imported key material, or KMS keys in a
+%% custom key store. The key rotation status of these KMS keys is always
+%% `false'. To enable or disable automatic rotation of a set of related
 %% multi-Region keys, set the property on the primary key.
+%%
+%% You cannot enable or disable automatic rotation Amazon Web Services
+%% managed KMS keys. KMS always rotates the key material of Amazon Web
+%% Services managed keys every year. Rotation of Amazon Web Services owned
+%% KMS keys varies.
+%%
+%% In May 2022, KMS changed the rotation schedule for Amazon Web Services
+%% managed keys from every three years (approximately 1,095 days) to every
+%% year (approximately 365 days).
+%%
+%% New Amazon Web Services managed keys are automatically rotated one year
+%% after they are created, and approximately every year thereafter.
+%%
+%% Existing Amazon Web Services managed keys are automatically rotated one
+%% year after their most recent rotation, and every year thereafter.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For details, see Key states of KMS keys in the Key Management
@@ -1418,14 +1454,15 @@ generate_data_key_pair_without_plaintext(Client, Input, Options)
 %%
 %% This operation is useful for systems that need to encrypt data at some
 %% point, but not immediately. When you need to encrypt the data, you call
-%% the `Decrypt' operation on the encrypted copy of the key. It's also useful
-%% in distributed systems with different levels of trust. For example, you
-%% might store encrypted data in containers. One component of your system
-%% creates new containers and stores an encrypted data key with each
-%% container. Then, a different component puts the data into the containers.
-%% That component first decrypts the data key, uses the plaintext data key to
-%% encrypt data, puts the encrypted data into the container, and then
-%% destroys the plaintext data key. In this system, the component that
+%% the `Decrypt' operation on the encrypted copy of the key.
+%%
+%% It's also useful in distributed systems with different levels of trust.
+%% For example, you might store encrypted data in containers. One component
+%% of your system creates new containers and stores an encrypted data key
+%% with each container. Then, a different component puts the data into the
+%% containers. That component first decrypts the data key, uses the plaintext
+%% data key to encrypt data, puts the encrypted data into the container, and
+%% then destroys the plaintext data key. In this system, the component that
 %% creates the containers never sees the plaintext data key.
 %%
 %% To request an asymmetric data key pair, use the `GenerateDataKeyPair' or
@@ -1489,6 +1526,13 @@ generate_data_key_without_plaintext(Client, Input, Options)
 %% is part of KMS support for HMAC KMS keys. For details, see HMAC keys in
 %% KMS in the Key Management Service Developer Guide .
 %%
+%% Best practices recommend that you limit the time during which any signing
+%% mechanism, including an HMAC, is effective. This deters an attack where
+%% the actor uses a signed message to establish validity repeatedly or long
+%% after the message is superseded. HMAC tags do not include a timestamp, but
+%% you can include a timestamp in the token or message to help you detect
+%% when its time to refresh the HMAC.
+%%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For details, see Key states of KMS keys in the Key Management
 %% Service Developer Guide.
@@ -1547,11 +1591,28 @@ get_key_policy(Client, Input, Options)
 %% @doc Gets a Boolean value that indicates whether automatic rotation of the
 %% key material is enabled for the specified KMS key.
 %%
-%% You cannot enable automatic rotation of asymmetric KMS keys, HMAC KMS
-%% keys, KMS keys with imported key material, or KMS keys in a custom key
-%% store. To enable or disable automatic rotation of a set of related
-%% multi-Region keys, set the property on the primary key. The key rotation
-%% status for these KMS keys is always `false'.
+%% When you enable automatic rotation for customer managed KMS keys, KMS
+%% rotates the key material of the KMS key one year (approximately 365 days)
+%% from the enable date and every year thereafter. You can monitor rotation
+%% of the key material for your KMS keys in CloudTrail and Amazon CloudWatch.
+%%
+%% Automatic key rotation is supported only on symmetric encryption KMS keys.
+%% You cannot enable or disable automatic rotation of asymmetric KMS keys,
+%% HMAC KMS keys, KMS keys with imported key material, or KMS keys in a
+%% custom key store. The key rotation status of these KMS keys is always
+%% `false'. To enable or disable automatic rotation of a set of related
+%% multi-Region keys, set the property on the primary key..
+%%
+%% You can enable (`EnableKeyRotation') and disable automatic rotation
+%% (`DisableKeyRotation') of the key material in customer managed KMS keys.
+%% Key material rotation of Amazon Web Services managed KMS keys is not
+%% configurable. KMS always rotates the key material in Amazon Web Services
+%% managed KMS keys every year. The key rotation status for Amazon Web
+%% Services managed KMS keys is always `true'.
+%%
+%% In May 2022, KMS changed the rotation schedule for Amazon Web Services
+%% managed keys from every three years to every year. For details, see
+%% `EnableKeyRotation'.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For details, see Key states of KMS keys in the Key Management
@@ -1559,11 +1620,16 @@ get_key_policy(Client, Input, Options)
 %%
 %% <ul> <li> Disabled: The key rotation status does not change when you
 %% disable a KMS key. However, while the KMS key is disabled, KMS does not
-%% rotate the key material.
+%% rotate the key material. When you re-enable the KMS key, rotation resumes.
+%% If the key material in the re-enabled KMS key hasn't been rotated in one
+%% year, KMS rotates it immediately, and every year thereafter. If it's been
+%% less than a year since the key material in the re-enabled KMS key was
+%% rotated, the KMS key resumes its prior rotation schedule.
 %%
 %% </li> <li> Pending deletion: While a KMS key is pending deletion, its key
 %% rotation status is `false' and KMS does not rotate the key material. If
-%% you cancel the deletion, the original key rotation status is restored.
+%% you cancel the deletion, the original key rotation status returns to
+%% `true'.
 %%
 %% </li> </ul> Cross-account use: Yes. To perform this operation on a KMS key
 %% in a different Amazon Web Services account, specify the key ARN in the
@@ -2348,6 +2414,13 @@ schedule_key_deletion(Client, Input, Options)
 %%
 %% </li> </ul> When signing a message, be sure to record the KMS key and the
 %% signing algorithm. This information is required to verify the signature.
+%%
+%% Best practices recommend that you limit the time during which any
+%% signature is effective. This deters an attack where the actor uses a
+%% signed message to establish validity repeatedly or long after the message
+%% is superseded. Signatures do not include a timestamp, but you can include
+%% a timestamp in the signed message to help you detect when its time to
+%% refresh the signature.
 %%
 %% To verify the signature that this operation generates, use the `Verify'
 %% operation. Or use the `GetPublicKey' operation to download the public key
