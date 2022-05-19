@@ -37,6 +37,8 @@
          delete_component/4,
          delete_core_device/3,
          delete_core_device/4,
+         delete_deployment/3,
+         delete_deployment/4,
          describe_component/2,
          describe_component/4,
          describe_component/5,
@@ -255,11 +257,17 @@ cancel_deployment(Client, DeploymentId, Input0, Options0) ->
 %%
 %% </li> <li> Python 3.8 – `python3.8'
 %%
+%% </li> <li> Python 3.9 – `python3.9'
+%%
 %% </li> <li> Java 8 – `java8'
+%%
+%% </li> <li> Java 11 – `java11'
 %%
 %% </li> <li> Node.js 10 – `nodejs10.x'
 %%
 %% </li> <li> Node.js 12 – `nodejs12.x'
+%%
+%% </li> <li> Node.js 14 – `nodejs14.x'
 %%
 %% </li> </ul> To create a component from a Lambda function, specify
 %% `lambdaFunction' when you call this operation.
@@ -385,6 +393,37 @@ delete_core_device(Client, CoreDeviceThingName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a deployment.
+%%
+%% To delete an active deployment, you must first cancel it. For more
+%% information, see CancelDeployment.
+%%
+%% Deleting a deployment doesn't affect core devices that run that
+%% deployment, because core devices store the deployment's configuration on
+%% the device. Additionally, core devices can roll back to a previous
+%% deployment that has been deleted.
+delete_deployment(Client, DeploymentId, Input) ->
+    delete_deployment(Client, DeploymentId, Input, []).
+delete_deployment(Client, DeploymentId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/greengrass/v2/deployments/", aws_util:encode_uri(DeploymentId), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves metadata for a version of a component.
 describe_component(Client, Arn)
   when is_map(Client) ->
@@ -467,7 +506,8 @@ get_component(Client, Arn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets the pre-signed URL to download a public component artifact.
+%% @doc Gets the pre-signed URL to download a public or a Lambda component
+%% artifact.
 %%
 %% Core devices call this operation to identify the URL that they can use to
 %% download an artifact to install.
@@ -524,6 +564,24 @@ get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves metadata for a Greengrass core device.
+%%
+%% IoT Greengrass relies on individual devices to send status updates to the
+%% Amazon Web Services Cloud. If the IoT Greengrass Core software isn't
+%% running on the device, or if device isn't connected to the Amazon Web
+%% Services Cloud, then the reported status of that device might not reflect
+%% its current status. The status timestamp indicates when the device status
+%% was last updated.
+%%
+%% Core devices send status updates at the following times:
+%%
+%% When the IoT Greengrass Core software starts
+%%
+%% When the core device receives a deployment from the Amazon Web Services
+%% Cloud
+%%
+%% When the status of any component on the core device becomes `BROKEN'
+%%
+%% At a regular interval that you can configure, which defaults to 24 hours
 get_core_device(Client, CoreDeviceThingName)
   when is_map(Client) ->
     get_core_device(Client, CoreDeviceThingName, #{}, #{}).
@@ -690,6 +748,24 @@ list_components(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a paginated list of Greengrass core devices.
+%%
+%% IoT Greengrass relies on individual devices to send status updates to the
+%% Amazon Web Services Cloud. If the IoT Greengrass Core software isn't
+%% running on the device, or if device isn't connected to the Amazon Web
+%% Services Cloud, then the reported status of that device might not reflect
+%% its current status. The status timestamp indicates when the device status
+%% was last updated.
+%%
+%% Core devices send status updates at the following times:
+%%
+%% When the IoT Greengrass Core software starts
+%%
+%% When the core device receives a deployment from the Amazon Web Services
+%% Cloud
+%%
+%% When the status of any component on the core device becomes `BROKEN'
+%%
+%% At a regular interval that you can configure, which defaults to 24 hours
 list_core_devices(Client)
   when is_map(Client) ->
     list_core_devices(Client, #{}, #{}).
@@ -780,6 +856,28 @@ list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap, Op
 
 %% @doc Retrieves a paginated list of the components that a Greengrass core
 %% device runs.
+%%
+%% This list doesn't include components that are deployed from local
+%% deployments or components that are deployed as dependencies of other
+%% components.
+%%
+%% IoT Greengrass relies on individual devices to send status updates to the
+%% Amazon Web Services Cloud. If the IoT Greengrass Core software isn't
+%% running on the device, or if device isn't connected to the Amazon Web
+%% Services Cloud, then the reported status of that device might not reflect
+%% its current status. The status timestamp indicates when the device status
+%% was last updated.
+%%
+%% Core devices send status updates at the following times:
+%%
+%% When the IoT Greengrass Core software starts
+%%
+%% When the core device receives a deployment from the Amazon Web Services
+%% Cloud
+%%
+%% When the status of any component on the core device becomes `BROKEN'
+%%
+%% At a regular interval that you can configure, which defaults to 24 hours
 list_installed_components(Client, CoreDeviceThingName)
   when is_map(Client) ->
     list_installed_components(Client, CoreDeviceThingName, #{}, #{}).

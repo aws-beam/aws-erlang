@@ -13,6 +13,8 @@
 
 -export([batch_acknowledge_alarm/2,
          batch_acknowledge_alarm/3,
+         batch_delete_detector/2,
+         batch_delete_detector/3,
          batch_disable_alarm/2,
          batch_disable_alarm/3,
          batch_enable_alarm/2,
@@ -53,6 +55,33 @@ batch_acknowledge_alarm(Client, Input0, Options0) ->
     Method = post,
     Path = ["/alarms/acknowledge"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes one or more detectors that were created.
+%%
+%% When a detector is deleted, its state will be cleared and the detector
+%% will be removed from the list of detectors. The deleted detector will no
+%% longer appear if referenced in the ListDetectors API call.
+batch_delete_detector(Client, Input) ->
+    batch_delete_detector(Client, Input, []).
+batch_delete_detector(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/detectors/delete"],
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],

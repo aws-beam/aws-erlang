@@ -281,6 +281,8 @@
          update_iam_policy_assignment/6,
          update_ip_restriction/3,
          update_ip_restriction/4,
+         update_public_sharing_settings/3,
+         update_public_sharing_settings/4,
          update_template/4,
          update_template/5,
          update_template_alias/5,
@@ -1918,8 +1920,8 @@ describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, O
 %% session lifetime that can be customized using the `
 %% SessionLifetimeInMinutes ' parameter.
 %%
-%% The resulting user session is valid for 15 minutes (default) to 10 hours
-%% (maximum).
+%% The resulting user session is valid for 15 minutes (minimum) to 10 hours
+%% (maximum). The default session duration is 10 hours.
 %%
 %% </li> <li> You are charged only when the URL is used or there is
 %% interaction with Amazon QuickSight.
@@ -1969,8 +1971,8 @@ generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input0, Options0) ->
 %% session lifetime that can be customized using the `
 %% SessionLifetimeInMinutes ' parameter.
 %%
-%% The resulting user session is valid for 15 minutes (default) to 10 hours
-%% (maximum).
+%% The resulting user session is valid for 15 minutes (minimum) to 10 hours
+%% (maximum). The default session duration is 10 hours.
 %%
 %% </li> <li> You are charged only when the URL is used or there is
 %% interaction with Amazon QuickSight.
@@ -3336,6 +3338,38 @@ update_ip_restriction(Client, AwsAccountId, Input) ->
 update_ip_restriction(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/ip-restriction"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Use the UpdatePublicSharingSettings operation to enable or disable
+%% the public sharing settings of an Amazon QuickSight dashboard.
+%%
+%% To use this operation, enable session capacity pricing on your Amazon
+%% QuickSight account.
+%%
+%% Before you can enable public sharing on your account, you need to allow
+%% public sharing permissions to an administrative user in the IAM console.
+%% For more information on using IAM with Amazon QuickSight, see Using Amazon
+%% QuickSight with IAM.
+update_public_sharing_settings(Client, AwsAccountId, Input) ->
+    update_public_sharing_settings(Client, AwsAccountId, Input, []).
+update_public_sharing_settings(Client, AwsAccountId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/public-sharing-settings"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

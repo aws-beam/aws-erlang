@@ -270,7 +270,7 @@ create_virtual_gateway(Client, MeshName, Input0, Options0) ->
 %% For more information about virtual nodes, see Virtual nodes. You must be
 %% using `1.15.0' or later of the Envoy image when setting these variables.
 %% For more information aboutApp Mesh Envoy variables, see Envoy image in the
-%% AWS App Mesh User Guide.
+%% App Mesh User Guide.
 create_virtual_node(Client, MeshName, Input) ->
     create_virtual_node(Client, MeshName, Input, []).
 create_virtual_node(Client, MeshName, Input0, Options0) ->
