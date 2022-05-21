@@ -245,7 +245,8 @@ create_document_classifier(Client, Input, Options)
     request(Client, <<"CreateDocumentClassifier">>, Input, Options).
 
 %% @doc Creates a model-specific endpoint for synchronous inference for a
-%% previously trained custom model
+%% previously trained custom model For information about endpoints, see
+%% Managing endpoints.
 create_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint(Client, Input, []).
@@ -286,7 +287,8 @@ delete_document_classifier(Client, Input, Options)
 %% @doc Deletes a model-specific endpoint for a previously-trained custom
 %% model.
 %%
-%% All endpoints must be deleted in order for the model to be deleted.
+%% All endpoints must be deleted in order for the model to be deleted. For
+%% information about endpoints, see Managing endpoints.
 delete_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint(Client, Input, []).
@@ -350,7 +352,8 @@ describe_dominant_language_detection_job(Client, Input, Options)
 
 %% @doc Gets the properties associated with a specific endpoint.
 %%
-%% Use this operation to get the status of an endpoint.
+%% Use this operation to get the status of an endpoint. For information about
+%% endpoints, see Managing endpoints.
 describe_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoint(Client, Input, []).
@@ -556,6 +559,8 @@ list_dominant_language_detection_jobs(Client, Input, Options)
     request(Client, <<"ListDominantLanguageDetectionJobs">>, Input, Options).
 
 %% @doc Gets a list of all existing endpoints that you've created.
+%%
+%% For information about endpoints, see Managing endpoints.
 list_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_endpoints(Client, Input, []).
@@ -842,7 +847,7 @@ stop_pii_entities_detection_job(Client, Input, Options)
 
 %% @doc Stops a sentiment detection job in progress.
 %%
-%% If the job state is `IN_PROGRESS' the job is marked for termination and
+%% If the job state is `IN_PROGRESS', the job is marked for termination and
 %% put into the `STOP_REQUESTED' state. If the job completes before it can be
 %% stopped, it is put into the `COMPLETED' state; otherwise the job is be
 %% stopped and put into the `STOPPED' state.
@@ -862,7 +867,7 @@ stop_sentiment_detection_job(Client, Input, Options)
 
 %% @doc Stops a targeted sentiment detection job in progress.
 %%
-%% If the job state is `IN_PROGRESS' the job is marked for termination and
+%% If the job state is `IN_PROGRESS', the job is marked for termination and
 %% put into the `STOP_REQUESTED' state. If the job completes before it can be
 %% stopped, it is put into the `COMPLETED' state; otherwise the job is be
 %% stopped and put into the `STOPPED' state.
@@ -929,6 +934,8 @@ untag_resource(Client, Input, Options)
     request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates information about the specified endpoint.
+%%
+%% For information about endpoints, see Managing endpoints.
 update_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_endpoint(Client, Input, []).

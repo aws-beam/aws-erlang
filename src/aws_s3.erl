@@ -7932,12 +7932,12 @@ handle_response({error, Reason}, _, _DecodeBody) ->
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}, undefined) ->
     Endpoint;
-build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}, Bucket) ->
-    <<Bucket/binary, ".", Endpoint/binary>>;
+build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}, _Bucket) ->
+    <<Endpoint/binary>>;
 build_host(_EndpointPrefix, #{region := <<"local">>}, undefined) ->
     "localhost";
-build_host(_EndpointPrefix, #{region := <<"local">>}, Bucket) ->
-    <<Bucket/binary, ".", "localhost">>;
+build_host(_EndpointPrefix, #{region := <<"local">>}, _Bucket) ->
+    <<"localhost">>;
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}, undefined) ->
     aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>);
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}, Bucket) ->
@@ -7945,18 +7945,22 @@ build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}, Bucket) ->
 
 build_url(Host0, Path0, Client, Bucket) ->
     Proto = maps:get(proto, Client),
+    %% Mocks are notoriously bad with host-style requests, just skip it and use path-style for anything local
+    %% At some points once the mocks catch up, we should remove this ugly hack...
+    Host1 = erlang:iolist_to_binary(Host0),
+    IsLocalHost = maps:get(region, Client) =:= <<"local">>,
     Path = case Bucket of
-              undefined ->
-                erlang:iolist_to_binary(Path0);
+              _ when not IsLocalHost andalso Bucket =/= undefined ->
+                erlang:iolist_to_binary(binary:replace(iolist_to_binary(Path0), [Bucket, <<Bucket/binary, "/">>], <<"">>, [global]));
               _ ->
-                erlang:iolist_to_binary(string:replace(erlang:iolist_to_binary(Path0), <<Bucket/binary, "/">>, <<"">>, all))
+                erlang:iolist_to_binary(Path0)
             end,
     Host = case Bucket of
-          undefined ->
-            erlang:iolist_to_binary(Host0);
-          _ ->
-            erlang:iolist_to_binary(string:replace(erlang:iolist_to_binary(Host0), <<Bucket/binary, ".">>, <<"">>, all))
-        end,
+             _ when not IsLocalHost andalso Bucket =/= undefined ->
+               erlang:iolist_to_binary(string:replace(Host1, <<Bucket/binary, ".">>, <<"">>, all));
+             _ ->
+              Host1
+           end,
     Port = maps:get(port, Client),
     aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, Path], <<"">>).
 
