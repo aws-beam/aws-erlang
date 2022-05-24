@@ -470,6 +470,9 @@ create_filter(Client, Input, Options)
 %%
 %% <ul> <li> CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE FAILED
 %%
+%% </li> <li> STOP PENDING > STOP IN_PROGRESS > INACTIVE > START PENDING >
+%% START IN_PROGRESS > ACTIVE
+%%
 %% </li> <li> DELETE PENDING > DELETE IN_PROGRESS
 %%
 %% </li> </ul> To get the recommender status, call DescribeRecommender.
@@ -869,10 +872,16 @@ describe_recipe(Client, Input, Options)
 %%
 %% <ul> <li> CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE FAILED
 %%
+%% </li> <li> STOP PENDING > STOP IN_PROGRESS > INACTIVE > START PENDING >
+%% START IN_PROGRESS > ACTIVE
+%%
 %% </li> <li> DELETE PENDING > DELETE IN_PROGRESS
 %%
 %% </li> </ul> When the `status' is `CREATE FAILED', the response includes
 %% the `failureReason' key, which describes why.
+%%
+%% The `modelMetrics' key is null when the recommender is being created or
+%% deleted.
 %%
 %% For more information on recommenders, see CreateRecommender.
 describe_recommender(Client, Input)
