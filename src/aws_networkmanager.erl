@@ -1,9 +1,9 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Transit Gateway Network Manager (Network Manager) enables you to
-%% create a global network, in which you can monitor your Amazon Web Services
-%% and on-premises networks that are built around transit gateways.
+%% @doc Amazon Web Services enables you to centrally manage your Amazon Web
+%% Services Cloud WAN core network and your Transit Gateway network across
+%% Amazon Web Services accounts, Regions, and on-premises locations.
 -module(aws_networkmanager).
 
 -export([accept_attachment/3,
@@ -151,6 +151,9 @@
          list_core_networks/1,
          list_core_networks/3,
          list_core_networks/4,
+         list_organization_service_access_status/1,
+         list_organization_service_access_status/3,
+         list_organization_service_access_status/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -164,6 +167,8 @@
          reject_attachment/4,
          restore_core_network_policy_version/4,
          restore_core_network_policy_version/5,
+         start_organization_service_access_update/2,
+         start_organization_service_access_update/3,
          start_route_analysis/3,
          start_route_analysis/4,
          tag_resource/3,
@@ -253,8 +258,8 @@ associate_connect_peer(Client, GlobalNetworkId, Input0, Options0) ->
 %% If you specify a link, it must be associated with the specified device.
 %%
 %% You can only associate customer gateways that are connected to a VPN
-%% attachment on a transit gateway. The transit gateway must be registered in
-%% your global network. When you register a transit gateway, customer
+%% attachment on a transit gateway or core network registered in your global
+%% network. When you register a transit gateway or core network, customer
 %% gateways that are connected to the transit gateway are automatically
 %% included in the global network. To list customer gateways that are
 %% connected to a transit gateway, use the DescribeVpnConnections EC2 API and
@@ -372,7 +377,7 @@ create_connect_attachment(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a core network connect peer for a specified core network
+%% @doc Creates a core network Connect peer for a specified core network
 %% connect attachment between a core network and an appliance.
 %%
 %% The peer address and transit gateway address must be the same IP address
@@ -545,8 +550,8 @@ create_site(Client, GlobalNetworkId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a site-to-site VPN attachment on an edge location of a core
-%% network.
+%% @doc Creates an Amazon Web Services site-to-site VPN attachment on an edge
+%% location of a core network.
 create_site_to_site_vpn_attachment(Client, Input) ->
     create_site_to_site_vpn_attachment(Client, Input, []).
 create_site_to_site_vpn_attachment(Client, Input0, Options0) ->
@@ -742,7 +747,7 @@ delete_device(Client, DeviceId, GlobalNetworkId, Input0, Options0) ->
 %% @doc Deletes an existing global network.
 %%
 %% You must first delete all global network objects (devices, links, and
-%% sites) and deregister all transit gateways.
+%% sites), deregister all transit gateways, and delete any core networks.
 delete_global_network(Client, GlobalNetworkId, Input) ->
     delete_global_network(Client, GlobalNetworkId, Input, []).
 delete_global_network(Client, GlobalNetworkId, Input0, Options0) ->
@@ -1130,9 +1135,7 @@ get_connections(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about a core network.
-%%
-%% By default it returns the LIVE policy.
+%% @doc Returns information about the LIVE policy for a core network.
 get_core_network(Client, CoreNetworkId)
   when is_map(Client) ->
     get_core_network(Client, CoreNetworkId, #{}, #{}).
@@ -1802,6 +1805,34 @@ list_core_networks(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+
+list_organization_service_access_status(Client)
+  when is_map(Client) ->
+    list_organization_service_access_status(Client, #{}, #{}).
+
+list_organization_service_access_status(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_organization_service_access_status(Client, QueryMap, HeadersMap, []).
+
+list_organization_service_access_status(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/organizations/service-access"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the tags for a specified resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
@@ -1935,6 +1966,29 @@ restore_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Inpu
 restore_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Input0, Options0) ->
     Method = post,
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-policy-versions/", aws_util:encode_uri(PolicyVersionId), "/restore"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+
+start_organization_service_access_update(Client, Input) ->
+    start_organization_service_access_update(Client, Input, []).
+start_organization_service_access_update(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/organizations/service-access"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

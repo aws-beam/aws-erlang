@@ -317,15 +317,15 @@ admin_delete_user_attributes(Client, Input, Options)
     request(Client, <<"AdminDeleteUserAttributes">>, Input, Options).
 
 %% @doc Prevents the user from signing in with the specified external (SAML
-%% or social) identity provider.
+%% or social) identity provider (IdP).
 %%
 %% If the user that you want to deactivate is a Amazon Cognito user pools
 %% native username + password user, they can't use their password to sign in.
-%% If the user to deactivate is a linked external identity provider (IdP)
-%% user, any link between that user and an existing user is removed. When the
-%% external user signs in again, and the user is no longer attached to the
-%% previously linked `DestinationUser', the user must create a new user
-%% account. See AdminLinkProviderForUser.
+%% If the user to deactivate is a linked external IdP user, any link between
+%% that user and an existing user is removed. When the external user signs in
+%% again, and the user is no longer attached to the previously linked
+%% `DestinationUser', the user must create a new user account. See
+%% AdminLinkProviderForUser.
 %%
 %% This action is enabled only for admin access and requires developer
 %% credentials.
@@ -339,9 +339,8 @@ admin_delete_user_attributes(Client, Input, Options)
 %% used in the user pool for the user.
 %%
 %% The `ProviderAttributeName' must always be `Cognito_Subject' for social
-%% identity providers. The `ProviderAttributeValue' must always be the exact
-%% subject that was used when the user was originally linked as a source
-%% user.
+%% IdPs. The `ProviderAttributeValue' must always be the exact subject that
+%% was used when the user was originally linked as a source user.
 %%
 %% For de-linking a SAML identity, there are two scenarios. If the linked
 %% identity has not yet been used to sign in, the `ProviderAttributeName' and
@@ -441,8 +440,8 @@ admin_initiate_auth(Client, Input, Options)
     request(Client, <<"AdminInitiateAuth">>, Input, Options).
 
 %% @doc Links an existing user account in a user pool (`DestinationUser') to
-%% an identity from an external identity provider (`SourceUser') based on a
-%% specified attribute name and value from the external identity provider.
+%% an identity from an external IdP (`SourceUser') based on a specified
+%% attribute name and value from the external IdP.
 %%
 %% This allows you to create a link from the existing user account to an
 %% external federated user identity that has not yet been used to sign in.
@@ -454,12 +453,12 @@ admin_initiate_auth(Client, Input, Options)
 %% in with a federated user identity, they sign in as the existing user
 %% account.
 %%
-%% The maximum number of federated identities linked to a user is 5.
+%% The maximum number of federated identities linked to a user is five.
 %%
 %% Because this API allows a user with an external federated identity to sign
 %% in as an existing user in the user pool, it is critical that it only be
-%% used with external identity providers and provider attributes that have
-%% been trusted by the application owner.
+%% used with external IdPs and provider attributes that have been trusted by
+%% the application owner.
 %%
 %% This action is administrative and requires developer credentials.
 admin_link_provider_for_user(Client, Input)
@@ -677,11 +676,14 @@ admin_update_user_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminUpdateUserAttributes">>, Input, Options).
 
-%% @doc Signs out users from all devices, as an administrator.
+%% @doc Signs out a user from all devices.
 %%
-%% It also invalidates all refresh tokens issued to a user. The user's
-%% current access and Id tokens remain valid until their expiry. Access and
-%% Id tokens expire one hour after they're issued.
+%% You must sign `AdminUserGlobalSignOut' requests with Amazon Web Services
+%% credentials. It also invalidates all refresh tokens that Amazon Cognito
+%% has issued to a user. The user's current access and ID tokens remain valid
+%% until they expire. By default, access and ID tokens expire one hour after
+%% they're issued. A user can still use a hosted UI cookie to retrieve new
+%% tokens for the duration of the cookie validity period of 1 hour.
 %%
 %% Calling this action requires developer credentials.
 admin_user_global_sign_out(Client, Input)
@@ -736,8 +738,7 @@ confirm_forgot_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConfirmForgotPassword">>, Input, Options).
 
-%% @doc Confirms registration of a user and handles the existing alias from a
-%% previous user.
+%% @doc Confirms registration of a new user.
 confirm_sign_up(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_sign_up(Client, Input, []).
@@ -755,7 +756,7 @@ create_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGroup">>, Input, Options).
 
-%% @doc Creates an identity provider for a user pool.
+%% @doc Creates an IdP for a user pool.
 create_identity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_identity_provider(Client, Input, []).
@@ -834,7 +835,7 @@ delete_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGroup">>, Input, Options).
 
-%% @doc Deletes an identity provider for a user pool.
+%% @doc Deletes an IdP for a user pool.
 delete_identity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_identity_provider(Client, Input, []).
@@ -890,7 +891,7 @@ delete_user_pool_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUserPoolDomain">>, Input, Options).
 
-%% @doc Gets information about a specific identity provider.
+%% @doc Gets information about a specific IdP.
 describe_identity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_identity_provider(Client, Input, []).
@@ -1016,7 +1017,7 @@ get_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGroup">>, Input, Options).
 
-%% @doc Gets the specified identity provider.
+%% @doc Gets the specified IdP.
 get_identity_provider_by_identifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_identity_provider_by_identifier(Client, Input, []).
@@ -1055,8 +1056,11 @@ get_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUser">>, Input, Options).
 
-%% @doc Gets the user attribute verification code for the specified attribute
-%% name.
+%% @doc Generates a user attribute verification code for the specified
+%% attribute name.
+%%
+%% Sends a message to a user with a code that they must return in a
+%% VerifyUserAttribute request.
 %%
 %% This action might generate an SMS text message. Starting June 1, 2021, US
 %% telecom carriers require you to register an origination phone number
@@ -1090,9 +1094,11 @@ get_user_pool_mfa_config(Client, Input, Options)
 
 %% @doc Signs out users from all devices.
 %%
-%% It also invalidates all refresh tokens issued to a user. The user's
-%% current access and ID tokens remain valid until their expiry. Access and
-%% Id tokens expire one hour after they're issued.
+%% It also invalidates all refresh tokens that Amazon Cognito has issued to a
+%% user. The user's current access and ID tokens remain valid until their
+%% expiry. By default, access and ID tokens expire one hour after Amazon
+%% Cognito issues them. A user can still use a hosted UI cookie to retrieve
+%% new tokens for the duration of the cookie validity period of 1 hour.
 global_sign_out(Client, Input)
   when is_map(Client), is_map(Input) ->
     global_sign_out(Client, Input, []).
@@ -1100,7 +1106,10 @@ global_sign_out(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GlobalSignOut">>, Input, Options).
 
-%% @doc Initiates the authentication flow.
+%% @doc Initiates sign-in for a user in the Amazon Cognito user directory.
+%%
+%% You can't sign in a user with a federated IdP with `InitiateAuth'. For
+%% more information, see Adding user pool sign-in through a third party.
 %%
 %% This action might generate an SMS text message. Starting June 1, 2021, US
 %% telecom carriers require you to register an origination phone number
@@ -1124,7 +1133,8 @@ initiate_auth(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InitiateAuth">>, Input, Options).
 
-%% @doc Lists the devices.
+%% @doc Lists the sign-in devices that Amazon Cognito has registered to the
+%% current user.
 list_devices(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_devices(Client, Input, []).
@@ -1142,7 +1152,7 @@ list_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroups">>, Input, Options).
 
-%% @doc Lists information about all identity providers for a user pool.
+%% @doc Lists information about all IdPs for a user pool.
 list_identity_providers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_identity_providers(Client, Input, []).
@@ -1472,7 +1482,7 @@ update_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGroup">>, Input, Options).
 
-%% @doc Updates identity provider information for a user pool.
+%% @doc Updates IdP information for a user pool.
 update_identity_provider(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_identity_provider(Client, Input, []).
@@ -1613,6 +1623,10 @@ verify_software_token(Client, Input, Options)
     request(Client, <<"VerifySoftwareToken">>, Input, Options).
 
 %% @doc Verifies the specified user attributes in the user pool.
+%%
+%% If your user pool requires verification before Amazon Cognito updates the
+%% attribute value, VerifyUserAttribute updates the affected attribute to its
+%% pending value. For more information, see UserAttributeUpdateSettingsType.
 verify_user_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     verify_user_attribute(Client, Input, []).
