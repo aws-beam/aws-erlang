@@ -353,8 +353,8 @@ delete_stack_instances(Client, Input, Options)
 
 %% @doc Deletes a stack set.
 %%
-%% Before you can delete a stack set, all of its member stack instances must
-%% be deleted. For more information about how to do this, see
+%% Before you can delete a stack set, all its member stack instances must be
+%% deleted. For more information about how to complete this, see
 %% `DeleteStackInstances'.
 delete_stack_set(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -427,7 +427,7 @@ describe_change_set_hooks(Client, Input, Options)
 %% extension publisher, `DescribePublisher' returns information about your
 %% own publisher account.
 %%
-%% For more information on registering as a publisher, see:
+%% For more information about registering as a publisher, see:
 %%
 %% <ul> <li> RegisterPublisher
 %%
@@ -448,8 +448,9 @@ describe_publisher(Client, Input, Options)
 %% configuration differs, or has drifted, from it's expected configuration,
 %% as defined in the stack template and any values specified as template
 %% parameters. A stack is considered to have drifted if one or more of its
-%% resources have drifted. For more information on stack and resource drift,
-%% see Detecting Unregulated Configuration Changes to Stacks and Resources.
+%% resources have drifted. For more information about stack and resource
+%% drift, see Detecting Unregulated Configuration Changes to Stacks and
+%% Resources.
 %%
 %% Use `DetectStackDrift' to initiate a stack drift detection operation.
 %% `DetectStackDrift' returns a `StackDriftDetectionId' you can use to
@@ -700,8 +701,8 @@ detect_stack_resource_drift(Client, Input, Options)
 %% about a specific stack instance, including its drift status and last drift
 %% time checked.
 %%
-%% </li> </ul> For more information on performing a drift detection operation
-%% on a stack set, see Detecting unmanaged changes in stack sets.
+%% </li> </ul> For more information about performing a drift detection
+%% operation on a stack set, see Detecting unmanaged changes in stack sets.
 %%
 %% You can only run a single drift detection operation on a given stack set
 %% at one time.
@@ -960,7 +961,7 @@ list_types(Client, Input, Options)
 %% public extension in this region.
 %%
 %% Public extensions are available for use by all CloudFormation users. For
-%% more information on publishing extensions, see Publishing extensions to
+%% more information about publishing extensions, see Publishing extensions to
 %% make them available for public use in the CloudFormation CLI User Guide.
 %%
 %% To publish an extension, you must be registered as a publisher with
@@ -989,7 +990,7 @@ record_handler_progress(Client, Input, Options)
 %% Public extensions are available for use by all CloudFormation users. This
 %% publisher ID applies to your account in all Amazon Web Services Regions.
 %%
-%% For information on requirements for registering as a public extension
+%% For information about requirements for registering as a public extension
 %% publisher, see Registering your account to publish CloudFormation
 %% extensions in the CloudFormation CLI User Guide.
 register_publisher(Client, Input)
@@ -1011,7 +1012,7 @@ register_publisher(Client, Input, Options)
 %%
 %% </li> <li> Making the extension available for use in your account.
 %%
-%% </li> </ul> For more information on how to develop extensions and ready
+%% </li> </ul> For more information about how to develop extensions and ready
 %% them for registration, see Creating Resource Providers in the
 %% CloudFormation CLI User Guide.
 %%

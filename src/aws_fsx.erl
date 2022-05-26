@@ -845,6 +845,8 @@ update_data_repository_association(Client, Input, Options)
 %%
 %% </li> <li> `DataCompressionType'
 %%
+%% </li> <li> `LustreRootSquashConfiguration'
+%%
 %% </li> <li> `StorageCapacity'
 %%
 %% </li> <li> `WeeklyMaintenanceStartTime'

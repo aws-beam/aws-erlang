@@ -1457,7 +1457,7 @@ create_training_job(Client, Input, Options)
 %% </li> <li> `ModelName' - Identifies the model to use. `ModelName' must be
 %% the name of an existing Amazon SageMaker model in the same Amazon Web
 %% Services Region and Amazon Web Services account. For information on
-%% creating a model, see `CreateModel'.
+%% creating a model, see CreateModel.
 %%
 %% </li> <li> `TransformInput' - Describes the dataset to be transformed and
 %% the Amazon S3 location where it is stored.
