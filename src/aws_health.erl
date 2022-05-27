@@ -409,8 +409,7 @@ request(Client, Action, Input, Options) ->
     aws_request:request(RequestFun, Options).
 
 do_request(Client, Action, Input0, Options) ->
-    Client1 = Client#{service => <<"health">>,
-                      region => <<"">>},
+    Client1 = Client#{service => <<"health">>},
     Host = build_host(<<"health">>, Client1),
     URL = build_url(Host, Client1),
     Headers = [
@@ -445,8 +444,8 @@ build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
     Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>}) ->
     <<"localhost">>;
-build_host(EndpointPrefix, #{endpoint := Endpoint}) ->
-    aws_util:binary_join([EndpointPrefix, Endpoint], <<".">>).
+build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
+    aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
 
 build_url(Host, Client) ->
     Proto = maps:get(proto, Client),

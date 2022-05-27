@@ -1028,7 +1028,7 @@ list_forecasts(Client, Input, Options)
 %% @doc Returns a list of the monitoring evaluation results and predictor
 %% events collected by the monitor resource during different windows of time.
 %%
-%% For information about monitoring see Viewing Monitoring Results. For more
+%% For information about monitoring see `predictor-monitoring'. For more
 %% information about retrieving monitoring results see Viewing Monitoring
 %% Results.
 list_monitor_evaluations(Client, Input)
