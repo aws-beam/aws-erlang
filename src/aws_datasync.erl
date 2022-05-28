@@ -146,7 +146,10 @@ create_agent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAgent">>, Input, Options).
 
-%% @doc Creates an endpoint for an Amazon EFS file system.
+%% @doc Creates an endpoint for an Amazon EFS file system that DataSync can
+%% access for a transfer.
+%%
+%% For more information, see Creating a location for Amazon EFS.
 create_location_efs(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_efs(Client, Input, []).
@@ -295,8 +298,8 @@ describe_agent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAgent">>, Input, Options).
 
-%% @doc Returns metadata, such as the path information about an Amazon EFS
-%% location.
+%% @doc Returns metadata about your DataSync location for an Amazon EFS file
+%% system.
 describe_location_efs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_efs(Client, Input, []).

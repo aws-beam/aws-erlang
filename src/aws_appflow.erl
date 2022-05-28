@@ -94,7 +94,8 @@
 %% There is a soft quota of 100 connector profiles per Amazon Web Services
 %% account. If you need more connector profiles than this quota allows, you
 %% can submit a request to the Amazon AppFlow team through the Amazon AppFlow
-%% support channel.
+%% support channel. In each connector profile that you create, you can
+%% provide the credentials and properties for only one connector.
 create_connector_profile(Client, Input) ->
     create_connector_profile(Client, Input, []).
 create_connector_profile(Client, Input0, Options0) ->
@@ -223,7 +224,7 @@ describe_connector(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Provides details regarding the entity used with the connector, with a
-%% description of the data model for each entity.
+%% description of the data model for each field in that entity.
 describe_connector_entity(Client, Input) ->
     describe_connector_entity(Client, Input, []).
 describe_connector_entity(Client, Input0, Options0) ->
