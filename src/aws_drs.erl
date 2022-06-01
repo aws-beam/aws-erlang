@@ -4,7 +4,9 @@
 %% @doc AWS Elastic Disaster Recovery Service.
 -module(aws_drs).
 
--export([create_replication_configuration_template/2,
+-export([create_extended_source_server/2,
+         create_extended_source_server/3,
+         create_replication_configuration_template/2,
          create_replication_configuration_template/3,
          delete_job/2,
          delete_job/3,
@@ -38,6 +40,11 @@
          get_replication_configuration/3,
          initialize_service/2,
          initialize_service/3,
+         list_extensible_source_servers/2,
+         list_extensible_source_servers/3,
+         list_staging_accounts/1,
+         list_staging_accounts/3,
+         list_staging_accounts/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -69,6 +76,30 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Create an extended source server in the target Account based on the
+%% source server in staging account.
+create_extended_source_server(Client, Input) ->
+    create_extended_source_server(Client, Input, []).
+create_extended_source_server(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateExtendedSourceServer"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new ReplicationConfigurationTemplate.
 create_replication_configuration_template(Client, Input) ->
@@ -500,6 +531,63 @@ initialize_service(Client, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of source servers on a staging account that are
+%% extensible, which means that: a.
+%%
+%% The source server is not already extended into this Account. b. The source
+%% server on the Account we’re reading from is not an extension of another
+%% source server.
+list_extensible_source_servers(Client, Input) ->
+    list_extensible_source_servers(Client, Input, []).
+list_extensible_source_servers(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListExtensibleSourceServers"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns an array of staging accounts for existing extended source
+%% servers.
+list_staging_accounts(Client)
+  when is_map(Client) ->
+    list_staging_accounts(Client, #{}, #{}).
+
+list_staging_accounts(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_staging_accounts(Client, QueryMap, HeadersMap, []).
+
+list_staging_accounts(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/ListStagingAccounts"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List all tags for your Elastic Disaster Recovery resources.
 list_tags_for_resource(Client, ResourceArn)
