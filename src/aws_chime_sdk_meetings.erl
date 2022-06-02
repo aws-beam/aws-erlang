@@ -12,6 +12,8 @@
 
 -export([batch_create_attendee/3,
          batch_create_attendee/4,
+         batch_update_attendee_capabilities_except/3,
+         batch_update_attendee_capabilities_except/4,
          create_attendee/3,
          create_attendee/4,
          create_meeting/2,
@@ -34,7 +36,9 @@
          start_meeting_transcription/3,
          start_meeting_transcription/4,
          stop_meeting_transcription/3,
-         stop_meeting_transcription/4]).
+         stop_meeting_transcription/4,
+         update_attendee_capabilities/4,
+         update_attendee_capabilities/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -52,6 +56,30 @@ batch_create_attendee(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees?operation=batch-create"],
     SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates `AttendeeCapabilities' except the capabilities listed in an
+%% `ExcludedAttendeeIds' table.
+batch_update_attendee_capabilities_except(Client, MeetingId, Input) ->
+    batch_update_attendee_capabilities_except(Client, MeetingId, Input, []).
+batch_update_attendee_capabilities_except(Client, MeetingId, Input0, Options0) ->
+    Method = put,
+    Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/capabilities?operation=batch-update-except"],
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -323,6 +351,29 @@ stop_meeting_transcription(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/transcription?operation=stop"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The capabilties that you want to update.
+update_attendee_capabilities(Client, AttendeeId, MeetingId, Input) ->
+    update_attendee_capabilities(Client, AttendeeId, MeetingId, Input, []).
+update_attendee_capabilities(Client, AttendeeId, MeetingId, Input0, Options0) ->
+    Method = put,
+    Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), "/capabilities"],
+    SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],

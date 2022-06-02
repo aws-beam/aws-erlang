@@ -28,6 +28,8 @@
          delete_hypervisor/3,
          disassociate_gateway_from_server/2,
          disassociate_gateway_from_server/3,
+         get_gateway/2,
+         get_gateway/3,
          import_hypervisor_configuration/2,
          import_hypervisor_configuration/3,
          list_gateways/2,
@@ -48,6 +50,8 @@
          untag_resource/3,
          update_gateway_information/2,
          update_gateway_information/3,
+         update_gateway_software_now/2,
+         update_gateway_software_now/3,
          update_hypervisor/2,
          update_hypervisor/3]).
 
@@ -105,6 +109,15 @@ disassociate_gateway_from_server(Client, Input)
 disassociate_gateway_from_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateGatewayFromServer">>, Input, Options).
+
+%% @doc By providing the ARN (Amazon Resource Name), this API returns the
+%% gateway.
+get_gateway(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_gateway(Client, Input, []).
+get_gateway(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetGateway">>, Input, Options).
 
 %% @doc Connect to a hypervisor by importing its configuration.
 import_hypervisor_configuration(Client, Input)
@@ -193,6 +206,19 @@ update_gateway_information(Client, Input)
 update_gateway_information(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGatewayInformation">>, Input, Options).
+
+%% @doc Updates the gateway virtual machine (VM) software.
+%%
+%% The request immediately triggers the software update.
+%%
+%% When you make this request, you get a `200 OK' success response
+%% immediately. However, it might take some time for the update to complete.
+update_gateway_software_now(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_gateway_software_now(Client, Input, []).
+update_gateway_software_now(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateGatewaySoftwareNow">>, Input, Options).
 
 %% @doc Updates a hypervisor metadata, including its host, username, and
 %% password.

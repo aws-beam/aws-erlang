@@ -9,10 +9,14 @@
          activate_key_signing_key/5,
          associate_vpc_with_hosted_zone/3,
          associate_vpc_with_hosted_zone/4,
+         change_cidr_collection/3,
+         change_cidr_collection/4,
          change_resource_record_sets/3,
          change_resource_record_sets/4,
          change_tags_for_resource/4,
          change_tags_for_resource/5,
+         create_cidr_collection/2,
+         create_cidr_collection/3,
          create_health_check/2,
          create_health_check/3,
          create_hosted_zone/2,
@@ -33,6 +37,8 @@
          create_vpc_association_authorization/4,
          deactivate_key_signing_key/4,
          deactivate_key_signing_key/5,
+         delete_cidr_collection/3,
+         delete_cidr_collection/4,
          delete_health_check/3,
          delete_health_check/4,
          delete_hosted_zone/3,
@@ -109,6 +115,15 @@
          get_traffic_policy_instance_count/1,
          get_traffic_policy_instance_count/3,
          get_traffic_policy_instance_count/4,
+         list_cidr_blocks/2,
+         list_cidr_blocks/4,
+         list_cidr_blocks/5,
+         list_cidr_collections/1,
+         list_cidr_collections/3,
+         list_cidr_collections/4,
+         list_cidr_locations/2,
+         list_cidr_locations/4,
+         list_cidr_locations/5,
          list_geo_locations/1,
          list_geo_locations/3,
          list_geo_locations/4,
@@ -232,6 +247,52 @@ associate_vpc_with_hosted_zone(Client, HostedZoneId, Input) ->
 associate_vpc_with_hosted_zone(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/associatevpc"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates, changes, or deletes CIDR blocks within a collection.
+%%
+%% Contains authoritative IP information mapping blocks to one or multiple
+%% locations.
+%%
+%% A change request can update multiple locations in a collection at a time,
+%% which is helpful if you want to move one or more CIDR blocks from one
+%% location to another in one transaction, without downtime.
+%%
+%% Limits
+%%
+%% The max number of CIDR blocks included in the request is 1000. As a
+%% result, big updates require multiple API calls.
+%%
+%% PUT and DELETE_IF_EXISTS
+%%
+%% Use `ChangeCidrCollection' to perform the following actions:
+%%
+%% <ul> <li> `PUT': Create a CIDR block within the specified collection.
+%%
+%% </li> <li> ` DELETE_IF_EXISTS': Delete an existing CIDR block from the
+%% collection.
+%%
+%% </li> </ul>
+change_cidr_collection(Client, Id, Input) ->
+    change_cidr_collection(Client, Id, Input, []).
+change_cidr_collection(Client, Id, Input0, Options0) ->
+    Method = post,
+    Path = ["/2013-04-01/cidrcollection/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -383,6 +444,45 @@ change_tags_for_resource(Client, ResourceId, ResourceType, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a CIDR collection in the current Amazon Web Services account.
+create_cidr_collection(Client, Input) ->
+    create_cidr_collection(Client, Input, []).
+create_cidr_collection(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2013-04-01/cidrcollection"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"Location">>, <<"Location">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc Creates a new health check.
 %%
 %% For information about adding health checks to resource record sets, see
@@ -468,7 +568,7 @@ create_health_check(Client, Input0, Options0) ->
 %% versa. Instead, you must create a new hosted zone with the same name and
 %% create new resource record sets.
 %%
-%% For more information about charges for hosted zones, see Amazon Route 53
+%% For more information about charges for hosted zones, see Amazon Route 53
 %% Pricing.
 %%
 %% Note the following:
@@ -478,22 +578,22 @@ create_health_check(Client, Input0, Options0) ->
 %%
 %% </li> <li> For public hosted zones, Route 53 automatically creates a
 %% default SOA record and four NS records for the zone. For more information
-%% about SOA and NS records, see NS and SOA Records that Route 53 Creates for
+%% about SOA and NS records, see NS and SOA Records that Route 53 Creates for
 %% a Hosted Zone in the Amazon Route 53 Developer Guide.
 %%
 %% If you want to use the same name servers for multiple public hosted zones,
 %% you can optionally associate a reusable delegation set with the hosted
 %% zone. See the `DelegationSetId' element.
 %%
-%% </li> <li> If your domain is registered with a registrar other than Route
-%% 53, you must update the name servers with your registrar to make Route 53
-%% the DNS service for the domain. For more information, see Migrating DNS
-%% Service for an Existing Domain to Amazon Route 53 in the Amazon Route 53
-%% Developer Guide.
+%% </li> <li> If your domain is registered with a registrar other than
+%% Route 53, you must update the name servers with your registrar to make
+%% Route 53 the DNS service for the domain. For more information, see
+%% Migrating DNS Service for an Existing Domain to Amazon Route 53 in the
+%% Amazon Route 53 Developer Guide.
 %%
 %% </li> </ul> When you submit a `CreateHostedZone' request, the initial
 %% status of the hosted zone is `PENDING'. For public hosted zones, this
-%% means that the NS and SOA records are not yet available on all Route 53
+%% means that the NS and SOA records are not yet available on all Route 53
 %% DNS servers. When the NS and SOA records are available, the status of the
 %% zone changes to `INSYNC'.
 %%
@@ -1037,6 +1137,31 @@ deactivate_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a CIDR collection in the current Amazon Web Services account.
+%%
+%% The collection must be empty before it can be deleted.
+delete_cidr_collection(Client, Id, Input) ->
+    delete_cidr_collection(Client, Id, Input, []).
+delete_cidr_collection(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2013-04-01/cidrcollection/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a health check.
 %%
 %% Amazon Route 53 does not prevent you from deleting a health check even if
@@ -1078,7 +1203,7 @@ delete_health_check(Client, HealthCheckId, Input0, Options0) ->
 %%
 %% If the hosted zone was created by another service, such as Cloud Map, see
 %% Deleting Public Hosted Zones That Were Created by Another Service in the
-%% Amazon Route 53 Developer Guide for information about how to delete it.
+%% Amazon Route 53 Developer Guide for information about how to delete it.
 %% (The process is the same for public and private hosted zones that were
 %% created by another service.)
 %%
@@ -1098,8 +1223,8 @@ delete_health_check(Client, HealthCheckId, Input0, Options0) ->
 %% If you want to avoid the monthly charge for the hosted zone, you can
 %% transfer DNS service for the domain to a free DNS service. When you
 %% transfer DNS service, you have to update the name servers for the domain
-%% registration. If the domain is registered with Route 53, see
-%% UpdateDomainNameservers for information about how to replace Route 53 name
+%% registration. If the domain is registered with Route 53, see
+%% UpdateDomainNameservers for information about how to replace Route 53 name
 %% servers with name servers for the new DNS service. If the domain is
 %% registered with another registrar, use the method provided by the
 %% registrar to update name servers for the domain registration. For more
@@ -1109,7 +1234,7 @@ delete_health_check(Client, HealthCheckId, Input0, Options0) ->
 %% record and NS resource record sets. If the hosted zone contains other
 %% resource record sets, you must delete them before you can delete the
 %% hosted zone. If you try to delete a hosted zone that contains other
-%% resource record sets, the request fails, and Route 53 returns a
+%% resource record sets, the request fails, and Route 53 returns a
 %% `HostedZoneNotEmpty' error. For information about deleting records from
 %% your hosted zone, see ChangeResourceRecordSets.
 %%
@@ -1945,6 +2070,93 @@ get_traffic_policy_instance_count(Client, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of location objects and their CIDR blocks.
+list_cidr_blocks(Client, CollectionId)
+  when is_map(Client) ->
+    list_cidr_blocks(Client, CollectionId, #{}, #{}).
+
+list_cidr_blocks(Client, CollectionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_cidr_blocks(Client, CollectionId, QueryMap, HeadersMap, []).
+
+list_cidr_blocks(Client, CollectionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2013-04-01/cidrcollection/", aws_util:encode_uri(CollectionId), "/cidrblocks"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"location">>, maps:get(<<"location">>, QueryMap, undefined)},
+        {<<"maxresults">>, maps:get(<<"maxresults">>, QueryMap, undefined)},
+        {<<"nexttoken">>, maps:get(<<"nexttoken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of CIDR collections in the Amazon Web
+%% Services account (metadata only).
+list_cidr_collections(Client)
+  when is_map(Client) ->
+    list_cidr_collections(Client, #{}, #{}).
+
+list_cidr_collections(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_cidr_collections(Client, QueryMap, HeadersMap, []).
+
+list_cidr_collections(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2013-04-01/cidrcollection"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxresults">>, maps:get(<<"maxresults">>, QueryMap, undefined)},
+        {<<"nexttoken">>, maps:get(<<"nexttoken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of CIDR locations for the given collection
+%% (metadata only, does not include CIDR blocks).
+list_cidr_locations(Client, CollectionId)
+  when is_map(Client) ->
+    list_cidr_locations(Client, CollectionId, #{}, #{}).
+
+list_cidr_locations(Client, CollectionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_cidr_locations(Client, CollectionId, QueryMap, HeadersMap, []).
+
+list_cidr_locations(Client, CollectionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2013-04-01/cidrcollection/", aws_util:encode_uri(CollectionId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxresults">>, maps:get(<<"maxresults">>, QueryMap, undefined)},
+        {<<"nexttoken">>, maps:get(<<"nexttoken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
