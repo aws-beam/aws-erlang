@@ -65,7 +65,7 @@ create_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDomain">>, Input, Options).
 
-%% @doc Deletes the specified domain from the Amazon Connect Voice ID system.
+%% @doc Deletes the specified domain from Voice ID.
 delete_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_domain(Client, Input, []).
@@ -73,8 +73,7 @@ delete_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDomain">>, Input, Options).
 
-%% @doc Deletes the specified fraudster from the Amazon Connect Voice ID
-%% system.
+%% @doc Deletes the specified fraudster from Voice ID.
 delete_fraudster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fraudster(Client, Input, []).
@@ -82,8 +81,7 @@ delete_fraudster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFraudster">>, Input, Options).
 
-%% @doc Deletes the specified speaker from the Amazon Connect Voice ID
-%% system.
+%% @doc Deletes the specified speaker from Voice ID.
 delete_speaker(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_speaker(Client, Input, []).
@@ -188,14 +186,14 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Opts out a speaker from Voice ID system.
+%% @doc Opts out a speaker from Voice ID.
 %%
 %% A speaker can be opted out regardless of whether or not they already exist
-%% in the system. If they don't yet exist, a new speaker is created in an
-%% opted out state. If they already exist, their existing status is
-%% overridden and they are opted out. Enrollment and evaluation
-%% authentication requests are rejected for opted out speakers, and opted out
-%% speakers have no voice embeddings stored in the system.
+%% in Voice ID. If they don't yet exist, a new speaker is created in an opted
+%% out state. If they already exist, their existing status is overridden and
+%% they are opted out. Enrollment and evaluation authentication requests are
+%% rejected for opted out speakers, and opted out speakers have no voice
+%% embeddings stored in Voice ID.
 opt_out_speaker(Client, Input)
   when is_map(Client), is_map(Input) ->
     opt_out_speaker(Client, Input, []).
@@ -219,8 +217,7 @@ start_speaker_enrollment_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartSpeakerEnrollmentJob">>, Input, Options).
 
-%% @doc Tags an Amazon Connect Voice ID resource with the provided list of
-%% tags.
+%% @doc Tags a Voice ID resource with the provided list of tags.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).

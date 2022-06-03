@@ -163,12 +163,16 @@
 
 -export([accept_environment_account_connection/2,
          accept_environment_account_connection/3,
+         cancel_component_deployment/2,
+         cancel_component_deployment/3,
          cancel_environment_deployment/2,
          cancel_environment_deployment/3,
          cancel_service_instance_deployment/2,
          cancel_service_instance_deployment/3,
          cancel_service_pipeline_deployment/2,
          cancel_service_pipeline_deployment/3,
+         create_component/2,
+         create_component/3,
          create_environment/2,
          create_environment/3,
          create_environment_account_connection/2,
@@ -187,6 +191,8 @@
          create_service_template_version/3,
          create_template_sync_config/2,
          create_template_sync_config/3,
+         delete_component/2,
+         delete_component/3,
          delete_environment/2,
          delete_environment/3,
          delete_environment_account_connection/2,
@@ -207,6 +213,8 @@
          delete_template_sync_config/3,
          get_account_settings/2,
          get_account_settings/3,
+         get_component/2,
+         get_component/3,
          get_environment/2,
          get_environment/3,
          get_environment_account_connection/2,
@@ -231,6 +239,12 @@
          get_template_sync_config/3,
          get_template_sync_status/2,
          get_template_sync_status/3,
+         list_component_outputs/2,
+         list_component_outputs/3,
+         list_component_provisioned_resources/2,
+         list_component_provisioned_resources/3,
+         list_components/2,
+         list_components/3,
          list_environment_account_connections/2,
          list_environment_account_connections/3,
          list_environment_outputs/2,
@@ -275,6 +289,8 @@
          untag_resource/3,
          update_account_settings/2,
          update_account_settings/3,
+         update_component/2,
+         update_component/3,
          update_environment/2,
          update_environment/3,
          update_environment_account_connection/2,
@@ -317,6 +333,18 @@ accept_environment_account_connection(Client, Input)
 accept_environment_account_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptEnvironmentAccountConnection">>, Input, Options).
+
+%% @doc Attempts to cancel a component deployment (for a component that is in
+%% the `IN_PROGRESS' deployment status).
+%%
+%% For more information about components, see Proton components in the Proton
+%% Administrator Guide.
+cancel_component_deployment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_component_deployment(Client, Input, []).
+cancel_component_deployment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelComponentDeployment">>, Input, Options).
 
 %% @doc Attempts to cancel an environment deployment on an
 %% `UpdateEnvironment' action, if the deployment is `IN_PROGRESS'.
@@ -395,6 +423,19 @@ cancel_service_pipeline_deployment(Client, Input)
 cancel_service_pipeline_deployment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelServicePipelineDeployment">>, Input, Options).
+
+%% @doc Create an Proton component.
+%%
+%% A component is an infrastructure extension for a service instance.
+%%
+%% For more information about components, see Proton components in the Proton
+%% Administrator Guide.
+create_component(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_component(Client, Input, []).
+create_component(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateComponent">>, Input, Options).
 
 %% @doc Deploy a new environment.
 %%
@@ -543,6 +584,17 @@ create_template_sync_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTemplateSyncConfig">>, Input, Options).
 
+%% @doc Delete an Proton component resource.
+%%
+%% For more information about components, see Proton components in the Proton
+%% Administrator Guide.
+delete_component(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_component(Client, Input, []).
+delete_component(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteComponent">>, Input, Options).
+
 %% @doc Delete an environment.
 delete_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -607,7 +659,13 @@ delete_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRepository">>, Input, Options).
 
-%% @doc Delete a service.
+%% @doc Delete a service, with its instances and pipeline.
+%%
+%% You can't delete a service if it has any service instances that have
+%% components attached to them.
+%%
+%% For more information about components, see Proton components in the Proton
+%% Administrator Guide.
 delete_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service(Client, Input, []).
@@ -659,7 +717,18 @@ get_account_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccountSettings">>, Input, Options).
 
-%% @doc Get detail data for an environment.
+%% @doc Get detailed data for a component.
+%%
+%% For more information about components, see Proton components in the Proton
+%% Administrator Guide.
+get_component(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_component(Client, Input, []).
+get_component(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetComponent">>, Input, Options).
+
+%% @doc Get detailed data for an environment.
 get_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_environment(Client, Input, []).
@@ -667,7 +736,7 @@ get_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEnvironment">>, Input, Options).
 
-%% @doc In an environment account, view the detail data for an environment
+%% @doc In an environment account, get the detailed data for an environment
 %% account connection.
 %%
 %% For more information, see Environment account connections in the Proton
@@ -679,7 +748,7 @@ get_environment_account_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEnvironmentAccountConnection">>, Input, Options).
 
-%% @doc Get detail data for an environment template.
+%% @doc Get detailed data for an environment template.
 get_environment_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_environment_template(Client, Input, []).
@@ -687,7 +756,7 @@ get_environment_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEnvironmentTemplate">>, Input, Options).
 
-%% @doc View detail data for a major or minor version of an environment
+%% @doc Get detailed data for a major or minor version of an environment
 %% template.
 get_environment_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -723,7 +792,7 @@ get_repository_sync_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRepositorySyncStatus">>, Input, Options).
 
-%% @doc Get detail data for a service.
+%% @doc Get detailed data for a service.
 get_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service(Client, Input, []).
@@ -731,7 +800,7 @@ get_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetService">>, Input, Options).
 
-%% @doc Get detail data for a service instance.
+%% @doc Get detailed data for a service instance.
 %%
 %% A service instance is an instantiation of service template and it runs in
 %% a specific environment.
@@ -742,7 +811,7 @@ get_service_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceInstance">>, Input, Options).
 
-%% @doc Get detail data for a service template.
+%% @doc Get detailed data for a service template.
 get_service_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_template(Client, Input, []).
@@ -750,7 +819,7 @@ get_service_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceTemplate">>, Input, Options).
 
-%% @doc View detail data for a major or minor version of a service template.
+%% @doc Get detailed data for a major or minor version of a service template.
 get_service_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_service_template_version(Client, Input, []).
@@ -773,6 +842,42 @@ get_template_sync_status(Client, Input)
 get_template_sync_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTemplateSyncStatus">>, Input, Options).
+
+%% @doc Get a list of component Infrastructure as Code (IaC) outputs.
+%%
+%% For more information about components, see Proton components in the Proton
+%% Administrator Guide.
+list_component_outputs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_component_outputs(Client, Input, []).
+list_component_outputs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListComponentOutputs">>, Input, Options).
+
+%% @doc List provisioned resources for a component with details.
+%%
+%% For more information about components, see Proton components in the Proton
+%% Administrator Guide.
+list_component_provisioned_resources(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_component_provisioned_resources(Client, Input, []).
+list_component_provisioned_resources(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListComponentProvisionedResources">>, Input, Options).
+
+%% @doc List components with summary data.
+%%
+%% You can filter the result list by environment, service, or a single
+%% service instance.
+%%
+%% For more information about components, see Proton components in the Proton
+%% Administrator Guide.
+list_components(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_components(Client, Input, []).
+list_components(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListComponents">>, Input, Options).
 
 %% @doc View a list of environment account connections.
 %%
@@ -842,8 +947,7 @@ list_repository_sync_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRepositorySyncDefinitions">>, Input, Options).
 
-%% @doc View a list service instance infrastructure as code outputs with
-%% detail data.
+%% @doc Get a list service of instance Infrastructure as Code (IaC) outputs.
 list_service_instance_outputs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_instance_outputs(Client, Input, []).
@@ -859,7 +963,7 @@ list_service_instance_provisioned_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceInstanceProvisionedResources">>, Input, Options).
 
-%% @doc List service instances with summaries of detail data.
+%% @doc List service instances with summary data.
 list_service_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_instances(Client, Input, []).
@@ -867,8 +971,7 @@ list_service_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServiceInstances">>, Input, Options).
 
-%% @doc View a list service pipeline infrastructure as code outputs with
-%% detail.
+%% @doc Get a list of service pipeline Infrastructure as Code (IaC) outputs.
 list_service_pipeline_outputs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_service_pipeline_outputs(Client, Input, []).
@@ -984,6 +1087,23 @@ update_account_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAccountSettings">>, Input, Options).
 
+%% @doc Update a component.
+%%
+%% There are a few modes for updating a component. The `deploymentType' field
+%% defines the mode.
+%%
+%% You can't update a component while its deployment status, or the
+%% deployment status of a service instance attached to it, is `IN_PROGRESS'.
+%%
+%% For more information about components, see Proton components in the Proton
+%% Administrator Guide.
+update_component(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_component(Client, Input, []).
+update_component(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateComponent">>, Input, Options).
+
 %% @doc Update an environment.
 %%
 %% If the environment is associated with an environment account connection,
@@ -1088,6 +1208,12 @@ update_environment_template_version(Client, Input, Options)
 %% Use the `description' parameter to modify the description.
 %%
 %% Edit the `spec' parameter to add or delete instances.
+%%
+%% You can't delete a service instance (remove it from the spec) if it has an
+%% attached component.
+%%
+%% For more information about components, see Proton components in the Proton
+%% Administrator Guide.
 update_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service(Client, Input, []).
@@ -1097,36 +1223,14 @@ update_service(Client, Input, Options)
 
 %% @doc Update a service instance.
 %%
-%% There are four modes for updating a service instance. The `deploymentType'
-%% field defines the mode.
+%% There are a few modes for updating a service instance. The
+%% `deploymentType' field defines the mode.
 %%
-%% <dl> <dt> </dt><dd> `NONE'
+%% You can't update a service instance while its deployment status, or the
+%% deployment status of a component attached to it, is `IN_PROGRESS'.
 %%
-%% In this mode, a deployment doesn't occur. Only the requested metadata
-%% parameters are updated.
-%%
-%% </dd> <dt> </dt><dd> `CURRENT_VERSION'
-%%
-%% In this mode, the service instance is deployed and updated with the new
-%% spec that you provide. Only requested parameters are updated. Don’t
-%% include minor or major version parameters when you use this
-%% `deployment-type'.
-%%
-%% </dd> <dt> </dt><dd> `MINOR_VERSION'
-%%
-%% In this mode, the service instance is deployed and updated with the
-%% published, recommended (latest) minor version of the current major version
-%% in use, by default. You can also specify a different minor version of the
-%% current major version in use.
-%%
-%% </dd> <dt> </dt><dd> `MAJOR_VERSION'
-%%
-%% In this mode, the service instance is deployed and updated with the
-%% published, recommended (latest) major and minor version of the current
-%% template, by default. You can also specify a different major version
-%% that's higher than the major version in use and a minor version.
-%%
-%% </dd> </dl>
+%% For more information about components, see Proton components in the Proton
+%% Administrator Guide.
 update_service_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_instance(Client, Input, []).

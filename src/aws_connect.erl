@@ -63,6 +63,8 @@
          create_routing_profile/4,
          create_security_profile/3,
          create_security_profile/4,
+         create_task_template/3,
+         create_task_template/4,
          create_use_case/4,
          create_use_case/5,
          create_user/3,
@@ -85,6 +87,8 @@
          delete_quick_connect/5,
          delete_security_profile/4,
          delete_security_profile/5,
+         delete_task_template/4,
+         delete_task_template/5,
          delete_use_case/5,
          delete_use_case/6,
          delete_user/4,
@@ -172,6 +176,9 @@
          get_federation_token/5,
          get_metric_data/3,
          get_metric_data/4,
+         get_task_template/3,
+         get_task_template/5,
+         get_task_template/6,
          list_agent_statuses/2,
          list_agent_statuses/4,
          list_agent_statuses/5,
@@ -248,6 +255,9 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_task_templates/2,
+         list_task_templates/4,
+         list_task_templates/5,
          list_use_cases/3,
          list_use_cases/5,
          list_use_cases/6,
@@ -289,6 +299,8 @@
          suspend_contact_recording/3,
          tag_resource/3,
          tag_resource/4,
+         transfer_contact/2,
+         transfer_contact/3,
          untag_resource/3,
          untag_resource/4,
          update_agent_status/4,
@@ -341,6 +353,8 @@
          update_routing_profile_queues/5,
          update_security_profile/4,
          update_security_profile/5,
+         update_task_template/4,
+         update_task_template/5,
          update_user_hierarchy/4,
          update_user_hierarchy/5,
          update_user_hierarchy_group_name/4,
@@ -910,6 +924,29 @@ create_security_profile(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new task template in the specified Amazon Connect instance.
+create_task_template(Client, InstanceId, Input) ->
+    create_task_template(Client, InstanceId, Input, []).
+create_task_template(Client, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/task/template"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a use case for an integration association.
 create_use_case(Client, InstanceId, IntegrationAssociationId, Input) ->
     create_use_case(Client, InstanceId, IntegrationAssociationId, Input, []).
@@ -1172,6 +1209,29 @@ delete_security_profile(Client, InstanceId, SecurityProfileId, Input) ->
 delete_security_profile(Client, InstanceId, SecurityProfileId, Input0, Options0) ->
     Method = delete,
     Path = ["/security-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(SecurityProfileId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the task template.
+delete_task_template(Client, InstanceId, TaskTemplateId, Input) ->
+    delete_task_template(Client, InstanceId, TaskTemplateId, Input, []).
+delete_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/task/template/", aws_util:encode_uri(TaskTemplateId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2072,6 +2132,34 @@ get_metric_data(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Gets details about a specific task template in the specified Amazon
+%% Connect instance.
+get_task_template(Client, InstanceId, TaskTemplateId)
+  when is_map(Client) ->
+    get_task_template(Client, InstanceId, TaskTemplateId, #{}, #{}).
+
+get_task_template(Client, InstanceId, TaskTemplateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_task_template(Client, InstanceId, TaskTemplateId, QueryMap, HeadersMap, []).
+
+get_task_template(Client, InstanceId, TaskTemplateId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/task/template/", aws_util:encode_uri(TaskTemplateId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"snapshotVersion">>, maps:get(<<"snapshotVersion">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc This API is in preview release for Amazon Connect and is subject to
 %% change.
 %%
@@ -2884,6 +2972,36 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists task templates for the specified Amazon Connect instance.
+list_task_templates(Client, InstanceId)
+  when is_map(Client) ->
+    list_task_templates(Client, InstanceId, #{}, #{}).
+
+list_task_templates(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_task_templates(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_task_templates(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/task/template"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the use cases for the integration association.
 list_use_cases(Client, InstanceId, IntegrationAssociationId)
   when is_map(Client) ->
@@ -3435,8 +3553,8 @@ suspend_contact_recording(Client, Input0, Options0) ->
 %% @doc Adds the specified tags to the specified resource.
 %%
 %% The supported resource types are users, routing profiles, queues, quick
-%% connects, contact flows, agent status, hours of operation, and phone
-%% number.
+%% connects, contact flows, agent status, hours of operation, phone number,
+%% security profiles, and task templates.
 %%
 %% For sample policies that use tags, see Amazon Connect Identity-Based
 %% Policy Examples in the Amazon Connect Administrator Guide.
@@ -3445,6 +3563,51 @@ tag_resource(Client, ResourceArn, Input) ->
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Transfers contacts from one agent or queue to another agent or queue
+%% at any point after a contact is created.
+%%
+%% You can transfer a contact to another queue by providing the contact flow
+%% which orchestrates the contact to the destination queue. This gives you
+%% more control over contact handling and helps you adhere to the service
+%% level agreement (SLA) guaranteed to your customers.
+%%
+%% Note the following requirements:
+%%
+%% <ul> <li> Transfer is supported for only `TASK' contacts.
+%%
+%% </li> <li> Do not use both `QueueId' and `UserId' in the same call.
+%%
+%% </li> <li> The following contact flow types are supported: Inbound contact
+%% flow, Transfer to agent flow, and Transfer to queue flow.
+%%
+%% </li> <li> The `TransferContact' API can be called only on active
+%% contacts.
+%%
+%% </li> <li> A contact cannot be transferred more than 11 times.
+%%
+%% </li> </ul>
+transfer_contact(Client, Input) ->
+    transfer_contact(Client, Input, []).
+transfer_contact(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/contact/transfer"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -4127,6 +4290,33 @@ update_security_profile(Client, InstanceId, SecurityProfileId, Input) ->
 update_security_profile(Client, InstanceId, SecurityProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/security-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(SecurityProfileId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates details about a specific task template in the specified
+%% Amazon Connect instance.
+%%
+%% This operation does not support partial updates. Instead it does a full
+%% update of template content.
+update_task_template(Client, InstanceId, TaskTemplateId, Input) ->
+    update_task_template(Client, InstanceId, TaskTemplateId, Input, []).
+update_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
+    Method = post,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/task/template/", aws_util:encode_uri(TaskTemplateId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

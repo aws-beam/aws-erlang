@@ -1,9 +1,9 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS CodeArtifact is a fully managed artifact repository compatible
-%% with language-native package managers and build tools such as npm, Apache
-%% Maven, and pip.
+%% @doc CodeArtifact is a fully managed artifact repository compatible with
+%% language-native package managers and build tools such as npm, Apache
+%% Maven, pip, and dotnet.
 %%
 %% You can use CodeArtifact to share packages with development teams and pull
 %% packages. Packages can be pulled from both public and CodeArtifact
@@ -11,7 +11,7 @@
 %% CodeArtifact repository and another repository, which effectively merges
 %% their contents from the point of view of a package manager client.
 %%
-%% AWS CodeArtifact Components
+%% CodeArtifact Components
 %%
 %% Use the information in this guide to help you work with the following
 %% CodeArtifact components:
@@ -20,16 +20,16 @@
 %% versions, each of which maps to a set of assets, or files. Repositories
 %% are polyglot, so a single repository can contain packages of any supported
 %% type. Each repository exposes endpoints for fetching and publishing
-%% packages using tools like the `npm' CLI, the Maven CLI ( `mvn' ), and
-%% `pip' .
+%% packages using tools like the `npm' CLI, the Maven CLI ( `mvn' ), Python
+%% CLIs ( `pip' and `twine'), and NuGet CLIs (`nuget' and `dotnet').
 %%
 %% </li> <li> Domain: Repositories are aggregated into a higher-level entity
 %% known as a domain. All package assets and metadata are stored in the
 %% domain, but are consumed through repositories. A given package asset, such
 %% as a Maven JAR file, is stored once per domain, no matter how many
 %% repositories it's present in. All of the assets and metadata in a domain
-%% are encrypted with the same customer master key (CMK) stored in AWS Key
-%% Management Service (AWS KMS).
+%% are encrypted with the same customer master key (CMK) stored in Key
+%% Management Service (KMS).
 %%
 %% Each repository is a member of a single domain and can't be moved to a
 %% different domain.
@@ -44,7 +44,7 @@
 %%
 %% </li> <li> Package: A package is a bundle of software and the metadata
 %% required to resolve dependencies and install the software. CodeArtifact
-%% supports npm, PyPI, and Maven package formats.
+%% supports npm, PyPI, Maven, and NuGet package formats.
 %%
 %% In CodeArtifact, a package consists of:
 %%
@@ -138,11 +138,13 @@
 %% for a specific package format. A repository has one endpoint for each
 %% package format:
 %%
-%% <ul> <li> `npm'
+%% <ul> <li> `maven'
+%%
+%% </li> <li> `npm'
+%%
+%% </li> <li> `nuget'
 %%
 %% </li> <li> `pypi'
-%%
-%% </li> <li> `maven'
 %%
 %% </li> </ul> </li> <li> `GetRepositoryPermissionsPolicy': Returns the
 %% resource policy that is set on a repository.
@@ -162,7 +164,7 @@
 %% specified package in a repository.
 %%
 %% </li> <li> `ListRepositories': Returns a list of repositories owned by the
-%% AWS account that called this method.
+%% Amazon Web Services account that called this method.
 %%
 %% </li> <li> `ListRepositoriesInDomain': Returns a list of the repositories
 %% in a domain.
@@ -334,8 +336,8 @@ copy_package_versions(Client, Input0, Options0) ->
 %%
 %% CodeArtifact domains make it easier to manage multiple repositories across
 %% an organization. You can use a domain to apply permissions across many
-%% repositories owned by different AWS accounts. An asset is stored only once
-%% in a domain, even if it's in multiple repositories.
+%% repositories owned by different Amazon Web Services accounts. An asset is
+%% stored only once in a domain, even if it's in multiple repositories.
 %%
 %% Although you can have multiple domains, we recommend a single production
 %% domain that contains all published artifacts so that your development
@@ -513,8 +515,8 @@ delete_repository(Client, Input0, Options0) ->
 %% might not be immediate.
 %%
 %% Use `DeleteRepositoryPermissionsPolicy' with caution. After a policy is
-%% deleted, AWS users, roles, and accounts lose permissions to perform the
-%% repository actions granted by the deleted policy.
+%% deleted, Amazon Web Services users, roles, and accounts lose permissions
+%% to perform the repository actions granted by the deleted policy.
 delete_repository_permissions_policy(Client, Input) ->
     delete_repository_permissions_policy(Client, Input, []).
 delete_repository_permissions_policy(Client, Input0, Options0) ->
@@ -705,7 +707,7 @@ dispose_package_versions(Client, Input0, Options0) ->
 %%
 %% This API requires the `codeartifact:GetAuthorizationToken' and
 %% `sts:GetServiceBearerToken' permissions. For more information about
-%% authorization tokens, see AWS CodeArtifact authentication and tokens.
+%% authorization tokens, see CodeArtifact authentication and tokens.
 %%
 %% CodeArtifact authorization tokens are valid for a period of 12 hours when
 %% created with the `login' command. You can call `login' periodically to
@@ -751,7 +753,7 @@ get_authorization_token(Client, Input0, Options0) ->
 %%
 %% The policy is a resource-based policy, not an identity-based policy. For
 %% more information, see Identity-based policies and resource-based policies
-%% in the AWS Identity and Access Management User Guide.
+%% in the IAM User Guide.
 get_domain_permissions_policy(Client, Domain)
   when is_map(Client) ->
     get_domain_permissions_policy(Client, Domain, #{}, #{}).
@@ -838,10 +840,6 @@ get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion
 
 %% @doc Gets the readme file or descriptive text for a package version.
 %%
-%% For packages that do not contain a readme file, CodeArtifact extracts a
-%% description from a metadata file. For example, from the `<description>'
-%% element in the `pom.xml' file of a Maven package.
-%%
 %% The returned text might contain formatting. For example, it might contain
 %% formatting for Markdown or reStructuredText.
 get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repository)
@@ -880,11 +878,13 @@ get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repo
 %%
 %% A repository has one endpoint for each package format:
 %%
-%% <ul> <li> `npm'
+%% <ul> <li> `maven'
+%%
+%% </li> <li> `npm'
+%%
+%% </li> <li> `nuget'
 %%
 %% </li> <li> `pypi'
-%%
-%% </li> <li> `maven'
 %%
 %% </li> </ul>
 get_repository_endpoint(Client, Domain, Format, Repository)
@@ -946,7 +946,7 @@ get_repository_permissions_policy(Client, Domain, Repository, QueryMap, HeadersM
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of DomainSummary objects for all domains owned by the
-%% AWS account that makes this call.
+%% Amazon Web Services account that makes this call.
 %%
 %% Each returned `DomainSummary' object contains information about a domain.
 list_domains(Client, Input) ->
@@ -1110,7 +1110,8 @@ list_packages(Client, Input0, Options0) ->
 %% @doc Returns a list of RepositorySummary objects.
 %%
 %% Each `RepositorySummary' contains information about a repository in the
-%% specified AWS account and that matches the input parameters.
+%% specified Amazon Web Services account and that matches the input
+%% parameters.
 list_repositories(Client, Input) ->
     list_repositories(Client, Input, []).
 list_repositories(Client, Input0, Options0) ->
@@ -1168,8 +1169,8 @@ list_repositories_in_domain(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets information about AWS tags for a specified Amazon Resource Name
-%% (ARN) in AWS CodeArtifact.
+%% @doc Gets information about Amazon Web Services tags for a specified
+%% Amazon Resource Name (ARN) in CodeArtifact.
 list_tags_for_resource(Client, Input) ->
     list_tags_for_resource(Client, Input, []).
 list_tags_for_resource(Client, Input0, Options0) ->
@@ -1254,7 +1255,7 @@ put_repository_permissions_policy(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds or updates tags for a resource in AWS CodeArtifact.
+%% @doc Adds or updates tags for a resource in CodeArtifact.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->
@@ -1278,7 +1279,7 @@ tag_resource(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes tags from a resource in AWS CodeArtifact.
+%% @doc Removes tags from a resource in CodeArtifact.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 untag_resource(Client, Input0, Options0) ->
@@ -1303,6 +1304,10 @@ untag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the status of one or more versions of a package.
+%%
+%% Using `UpdatePackageVersionsStatus', you can update the status of package
+%% versions to `Archived', `Published', or `Unlisted'. To set the status of a
+%% package version to `Disposed', use DisposePackageVersions.
 update_package_versions_status(Client, Input) ->
     update_package_versions_status(Client, Input, []).
 update_package_versions_status(Client, Input0, Options0) ->
