@@ -171,6 +171,8 @@
          get_contact_attributes/6,
          get_current_metric_data/3,
          get_current_metric_data/4,
+         get_current_user_data/3,
+         get_current_user_data/4,
          get_federation_token/2,
          get_federation_token/4,
          get_federation_token/5,
@@ -2058,6 +2060,30 @@ get_current_metric_data(Client, InstanceId, Input) ->
 get_current_metric_data(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/metrics/current/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets the real-time active user data from the specified Amazon Connect
+%% instance.
+get_current_user_data(Client, InstanceId, Input) ->
+    get_current_user_data(Client, InstanceId, Input, []).
+get_current_user_data(Client, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/metrics/userdata/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

@@ -6,7 +6,7 @@
 %%
 %% These APIs depend on the frameworks provided by the Amazon Chime SDK
 %% Identity APIs. For more information about the messaging APIs, see Amazon
-%% Chime SDK messaging
+%% Chime SDK messaging.
 -module(aws_chime_sdk_messaging).
 
 -export([associate_channel_flow/3,
@@ -106,6 +106,8 @@
          put_channel_membership_preferences/5,
          redact_channel_message/4,
          redact_channel_message/5,
+         search_channels/2,
+         search_channels/3,
          send_channel_message/3,
          send_channel_message/4,
          tag_resource/2,
@@ -1433,6 +1435,38 @@ redact_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Allows an `AppInstanceUser' to search the channels that they belong
+%% to.
+%%
+%% The `AppInstanceUser' can search by membership or external ID. An
+%% `AppInstanceAdmin' can search across all channels within the
+%% `AppInstance'.
+search_channels(Client, Input) ->
+    search_channels(Client, Input, []).
+search_channels(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/channels?operation=search"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"max-results">>, <<"MaxResults">>},
+                     {<<"next-token">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sends a message to a particular channel that the member is a part of.
