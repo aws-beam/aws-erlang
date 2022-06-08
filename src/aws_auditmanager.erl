@@ -1078,8 +1078,8 @@ get_organization_admin_account(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of the in-scope Amazon Web Services services for the
-%% specified assessment.
+%% @doc Returns a list of the in-scope Amazon Web Services for the specified
+%% assessment.
 get_services_in_scope(Client)
   when is_map(Client) ->
     get_services_in_scope(Client, #{}, #{}).
@@ -1545,6 +1545,32 @@ register_organization_admin_account(Client, Input0, Options0) ->
 %% The share request specifies a recipient and notifies them that a custom
 %% framework is available. Recipients have 120 days to accept or decline the
 %% request. If no action is taken, the share request expires.
+%%
+%% When you create a share request, Audit Manager stores a snapshot of your
+%% custom framework in the US East (N. Virginia) Amazon Web Services Region.
+%% Audit Manager also stores a backup of the same snapshot in the US West
+%% (Oregon) Amazon Web Services Region.
+%%
+%% Audit Manager deletes the snapshot and the backup snapshot when one of the
+%% following events occurs:
+%%
+%% <ul> <li> The sender revokes the share request.
+%%
+%% </li> <li> The recipient declines the share request.
+%%
+%% </li> <li> The recipient encounters an error and doesn't successfully
+%% accept the share request.
+%%
+%% </li> <li> The share request expires before the recipient responds to the
+%% request.
+%%
+%% </li> </ul> When a sender resends a share request, the snapshot is
+%% replaced with an updated version that corresponds with the latest version
+%% of the custom framework.
+%%
+%% When a recipient accepts a share request, the snapshot is replicated into
+%% their Amazon Web Services account under the Amazon Web Services Region
+%% that was specified in the share request.
 %%
 %% When you invoke the `StartAssessmentFrameworkShare' API, you are about to
 %% share a custom framework with another Amazon Web Services account. You may

@@ -69,6 +69,8 @@
          get_tags/3,
          get_usage_forecast/2,
          get_usage_forecast/3,
+         list_cost_allocation_tags/2,
+         list_cost_allocation_tags/3,
          list_cost_category_definitions/2,
          list_cost_category_definitions/3,
          list_tags_for_resource/2,
@@ -83,6 +85,8 @@
          update_anomaly_monitor/3,
          update_anomaly_subscription/2,
          update_anomaly_subscription/3,
+         update_cost_allocation_tags_status/2,
+         update_cost_allocation_tags_status/3,
          update_cost_category_definition/2,
          update_cost_category_definition/3]).
 
@@ -148,13 +152,13 @@ delete_cost_category_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCostCategoryDefinition">>, Input, Options).
 
-%% @doc Returns the name, ARN, rules, definition, and effective dates of a
-%% Cost Category that's defined in the account.
+%% @doc Returns the name, Amazon Resource Name (ARN), rules, definition, and
+%% effective dates of a Cost Category that's defined in the account.
 %%
-%% You have the option to use `EffectiveOn' to return a Cost Category that is
-%% active on a specific date. If there is no `EffectiveOn' specified, you’ll
-%% see a Cost Category that is effective on the current date. If Cost
-%% Category is still effective, `EffectiveEnd' is omitted in the response.
+%% You have the option to use `EffectiveOn' to return a Cost Category that's
+%% active on a specific date. If there's no `EffectiveOn' specified, you see
+%% a Cost Category that's effective on the current date. If Cost Category is
+%% still effective, `EffectiveEnd' is omitted in the response.
 describe_cost_category_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_cost_category_definition(Client, Input, []).
@@ -224,7 +228,7 @@ get_cost_and_usage(Client, Input, Options)
 %% service only.
 %%
 %% This is an opt-in only feature. You can enable this feature from the Cost
-%% Explorer Settings page. For information on how to access the Settings
+%% Explorer Settings page. For information about how to access the Settings
 %% page, see Controlling Access for Cost Explorer in the Billing and Cost
 %% Management User Guide.
 get_cost_and_usage_with_resources(Client, Input)
@@ -266,14 +270,15 @@ get_dimension_values(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDimensionValues">>, Input, Options).
 
-%% @doc Retrieves the reservation coverage for your account.
+%% @doc Retrieves the reservation coverage for your account, which you can
+%% use to see how much of your Amazon Elastic Compute Cloud, Amazon
+%% ElastiCache, Amazon Relational Database Service, or Amazon Redshift usage
+%% is covered by a reservation.
 %%
-%% This enables you to see how much of your Amazon Elastic Compute Cloud,
-%% Amazon ElastiCache, Amazon Relational Database Service, or Amazon Redshift
-%% usage is covered by a reservation. An organization's management account
-%% can see the coverage of the associated member accounts. This supports
-%% dimensions, Cost Categories, and nested expressions. For any time period,
-%% you can filter data about reservation usage by the following dimensions:
+%% An organization's management account can see the coverage of the
+%% associated member accounts. This supports dimensions, Cost Categories, and
+%% nested expressions. For any time period, you can filter data about
+%% reservation usage by the following dimensions:
 %%
 %% <ul> <li> AZ
 %%
@@ -308,9 +313,9 @@ get_reservation_coverage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetReservationCoverage">>, Input, Options).
 
-%% @doc Gets recommendations for which reservations to purchase.
+%% @doc Gets recommendations for reservation purchases.
 %%
-%% These recommendations could help you reduce your costs. Reservations
+%% These recommendations might help you to reduce your costs. Reservations
 %% provide a discounted hourly rate (up to 75%) compared to On-Demand
 %% pricing.
 %%
@@ -319,17 +324,19 @@ get_reservation_coverage(Client, Input, Options)
 %% into categories that are eligible for a reservation. After Amazon Web
 %% Services has these categories, it simulates every combination of
 %% reservations in each category of usage to identify the best number of each
-%% type of RI to purchase to maximize your estimated savings.
+%% type of Reserved Instance (RI) to purchase to maximize your estimated
+%% savings.
 %%
 %% For example, Amazon Web Services automatically aggregates your Amazon EC2
 %% Linux, shared tenancy, and c4 family usage in the US West (Oregon) Region
 %% and recommends that you buy size-flexible regional reservations to apply
 %% to the c4 family usage. Amazon Web Services recommends the smallest size
 %% instance in an instance family. This makes it easier to purchase a
-%% size-flexible RI. Amazon Web Services also shows the equal number of
-%% normalized units so that you can purchase any instance size that you want.
-%% For this example, your RI recommendation would be for `c4.large' because
-%% that is the smallest size instance in the c4 instance family.
+%% size-flexible Reserved Instance (RI). Amazon Web Services also shows the
+%% equal number of normalized units. This way, you can purchase any instance
+%% size that you want. For this example, your RI recommendation is for
+%% `c4.large' because that is the smallest size instance in the c4 instance
+%% family.
 get_reservation_purchase_recommendation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_reservation_purchase_recommendation(Client, Input, []).
@@ -354,8 +361,8 @@ get_reservation_utilization(Client, Input, Options)
 %% and underutilized Amazon EC2 instances.
 %%
 %% Recommendations are generated to either downsize or terminate instances,
-%% along with providing savings detail and metrics. For details on
-%% calculation and function, see Optimizing Your Cost with Rightsizing
+%% along with providing savings detail and metrics. For more information
+%% about calculation and function, see Optimizing Your Cost with Rightsizing
 %% Recommendations in the Billing and Cost Management User Guide.
 get_rightsizing_recommendation(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -405,7 +412,7 @@ get_savings_plans_purchase_recommendation(Client, Input, Options)
 %% can use `GetDimensionValues' in `SAVINGS_PLANS' to determine the possible
 %% dimension values.
 %%
-%% You cannot group by any dimension values for `GetSavingsPlansUtilization'.
+%% You can't group by any dimension values for `GetSavingsPlansUtilization'.
 get_savings_plans_utilization(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_savings_plans_utilization(Client, Input, []).
@@ -452,8 +459,19 @@ get_usage_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUsageForecast">>, Input, Options).
 
-%% @doc Returns the name, ARN, `NumberOfRules' and effective dates of all
-%% Cost Categories defined in the account.
+%% @doc Get a list of cost allocation tags.
+%%
+%% All inputs in the API are optional and serve as filters. By default, all
+%% cost allocation tags are returned.
+list_cost_allocation_tags(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_cost_allocation_tags(Client, Input, []).
+list_cost_allocation_tags(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCostAllocationTags">>, Input, Options).
+
+%% @doc Returns the name, Amazon Resource Name (ARN), `NumberOfRules' and
+%% effective dates of all Cost Categories defined in the account.
 %%
 %% You have the option to use `EffectiveOn' to return a list of Cost
 %% Categories that were active on a specific date. If there is no
@@ -505,7 +523,7 @@ tag_resource(Client, Input, Options)
 
 %% @doc Removes one or more tags from a resource.
 %%
-%% Specify only tag key(s) in your request. Do not specify the value.
+%% Specify only tag keys in your request. Don't specify the value.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -531,6 +549,19 @@ update_anomaly_subscription(Client, Input)
 update_anomaly_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAnomalySubscription">>, Input, Options).
+
+%% @doc Updates status for cost allocation tags in bulk, with maximum batch
+%% size of 20.
+%%
+%% If the tag status that's updated is the same as the existing tag status,
+%% the request doesn't fail. Instead, it doesn't have any effect on the tag
+%% status (for example, activating the active tag).
+update_cost_allocation_tags_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_cost_allocation_tags_status(Client, Input, []).
+update_cost_allocation_tags_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateCostAllocationTagsStatus">>, Input, Options).
 
 %% @doc Updates an existing Cost Category.
 %%
