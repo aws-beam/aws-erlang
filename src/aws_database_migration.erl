@@ -26,6 +26,8 @@
          create_endpoint/3,
          create_event_subscription/2,
          create_event_subscription/3,
+         create_fleet_advisor_collector/2,
+         create_fleet_advisor_collector/3,
          create_replication_instance/2,
          create_replication_instance/3,
          create_replication_subnet_group/2,
@@ -40,6 +42,10 @@
          delete_endpoint/3,
          delete_event_subscription/2,
          delete_event_subscription/3,
+         delete_fleet_advisor_collector/2,
+         delete_fleet_advisor_collector/3,
+         delete_fleet_advisor_databases/2,
+         delete_fleet_advisor_databases/3,
          delete_replication_instance/2,
          delete_replication_instance/3,
          delete_replication_subnet_group/2,
@@ -68,6 +74,16 @@
          describe_event_subscriptions/3,
          describe_events/2,
          describe_events/3,
+         describe_fleet_advisor_collectors/2,
+         describe_fleet_advisor_collectors/3,
+         describe_fleet_advisor_databases/2,
+         describe_fleet_advisor_databases/3,
+         describe_fleet_advisor_lsa_analysis/2,
+         describe_fleet_advisor_lsa_analysis/3,
+         describe_fleet_advisor_schema_object_summary/2,
+         describe_fleet_advisor_schema_object_summary/3,
+         describe_fleet_advisor_schemas/2,
+         describe_fleet_advisor_schemas/3,
          describe_orderable_replication_instances/2,
          describe_orderable_replication_instances/3,
          describe_pending_maintenance_actions/2,
@@ -116,6 +132,8 @@
          reload_tables/3,
          remove_tags_from_resource/2,
          remove_tags_from_resource/3,
+         run_fleet_advisor_lsa_analysis/2,
+         run_fleet_advisor_lsa_analysis/3,
          start_replication_task/2,
          start_replication_task/3,
          start_replication_task_assessment/2,
@@ -206,6 +224,14 @@ create_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEventSubscription">>, Input, Options).
 
+%% @doc Creates a Fleet Advisor collector using the specified parameters.
+create_fleet_advisor_collector(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_fleet_advisor_collector(Client, Input, []).
+create_fleet_advisor_collector(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateFleetAdvisorCollector">>, Input, Options).
+
 %% @doc Creates the replication instance using the specified parameters.
 %%
 %% DMS requires that your account have certain roles with appropriate
@@ -276,6 +302,22 @@ delete_event_subscription(Client, Input)
 delete_event_subscription(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEventSubscription">>, Input, Options).
+
+%% @doc Deletes the specified Fleet Advisor collector.
+delete_fleet_advisor_collector(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_fleet_advisor_collector(Client, Input, []).
+delete_fleet_advisor_collector(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteFleetAdvisorCollector">>, Input, Options).
+
+%% @doc Deletes the specified Fleet Advisor collector databases.
+delete_fleet_advisor_databases(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_fleet_advisor_databases(Client, Input, []).
+delete_fleet_advisor_databases(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteFleetAdvisorDatabases">>, Input, Options).
 
 %% @doc Deletes the specified replication instance.
 %%
@@ -447,6 +489,49 @@ describe_events(Client, Input)
 describe_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEvents">>, Input, Options).
+
+%% @doc Returns a list of the Fleet Advisor collectors in your account.
+describe_fleet_advisor_collectors(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_fleet_advisor_collectors(Client, Input, []).
+describe_fleet_advisor_collectors(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeFleetAdvisorCollectors">>, Input, Options).
+
+%% @doc Returns a list of Fleet Advisor databases in your account.
+describe_fleet_advisor_databases(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_fleet_advisor_databases(Client, Input, []).
+describe_fleet_advisor_databases(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeFleetAdvisorDatabases">>, Input, Options).
+
+%% @doc Provides descriptions of large-scale assessment (LSA) analyses
+%% produced by your Fleet Advisor collectors.
+describe_fleet_advisor_lsa_analysis(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_fleet_advisor_lsa_analysis(Client, Input, []).
+describe_fleet_advisor_lsa_analysis(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeFleetAdvisorLsaAnalysis">>, Input, Options).
+
+%% @doc Provides descriptions of the schemas discovered by your Fleet Advisor
+%% collectors.
+describe_fleet_advisor_schema_object_summary(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_fleet_advisor_schema_object_summary(Client, Input, []).
+describe_fleet_advisor_schema_object_summary(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeFleetAdvisorSchemaObjectSummary">>, Input, Options).
+
+%% @doc Returns a list of schemas detected by Fleet Advisor Collectors in
+%% your account.
+describe_fleet_advisor_schemas(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_fleet_advisor_schemas(Client, Input, []).
+describe_fleet_advisor_schemas(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeFleetAdvisorSchemas">>, Input, Options).
 
 %% @doc Returns information about the replication instance types that can be
 %% created in the specified region.
@@ -704,6 +789,15 @@ remove_tags_from_resource(Client, Input)
 remove_tags_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromResource">>, Input, Options).
+
+%% @doc Runs large-scale assessment (LSA) analysis on every Fleet Advisor
+%% collector in your account.
+run_fleet_advisor_lsa_analysis(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    run_fleet_advisor_lsa_analysis(Client, Input, []).
+run_fleet_advisor_lsa_analysis(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RunFleetAdvisorLsaAnalysis">>, Input, Options).
 
 %% @doc Starts the replication task.
 %%

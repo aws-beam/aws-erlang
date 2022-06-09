@@ -203,6 +203,8 @@
          enable_snapshot_copy/3,
          get_cluster_credentials/2,
          get_cluster_credentials/3,
+         get_cluster_credentials_with_iam/2,
+         get_cluster_credentials_with_iam/3,
          get_reserved_node_exchange_configuration_options/2,
          get_reserved_node_exchange_configuration_options/3,
          get_reserved_node_exchange_offerings/2,
@@ -1435,6 +1437,26 @@ get_cluster_credentials(Client, Input)
 get_cluster_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetClusterCredentials">>, Input, Options).
+
+%% @doc Returns a database user name and temporary password with temporary
+%% authorization to log in to an Amazon Redshift database.
+%%
+%% The database user is mapped 1:1 to the source Identity and Access
+%% Management (IAM) identity. For more information about IAM identities, see
+%% IAM Identities (users, user groups, and roles) in the Amazon Web Services
+%% Identity and Access Management User Guide.
+%%
+%% The Identity and Access Management (IAM) identity that runs this operation
+%% must have an IAM policy attached that allows access to all necessary
+%% actions and resources. For more information about permissions, see Using
+%% identity-based policies (IAM policies) in the Amazon Redshift Cluster
+%% Management Guide.
+get_cluster_credentials_with_iam(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_cluster_credentials_with_iam(Client, Input, []).
+get_cluster_credentials_with_iam(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetClusterCredentialsWithIAM">>, Input, Options).
 
 %% @doc Gets the configuration options for the reserved-node exchange.
 %%
