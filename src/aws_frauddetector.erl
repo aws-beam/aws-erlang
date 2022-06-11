@@ -7,6 +7,19 @@
 %% Fraud Detector API actions, data types, and errors. For more information
 %% about Amazon Fraud Detector features, see the Amazon Fraud Detector User
 %% Guide.
+%%
+%% We provide the Query API as well as AWS software development kits (SDK)
+%% for Amazon Fraud Detector in Java and Python programming languages.
+%%
+%% The Amazon Fraud Detector Query API provides HTTPS requests that use the
+%% HTTP verb GET or POST and a Query parameter `Action'. AWS SDK provides
+%% libraries, sample code, tutorials, and other resources for software
+%% developers who prefer to build applications using language-specific APIs
+%% instead of submitting a request over HTTP or HTTPS. These libraries
+%% provide basic functions that automatically take care of tasks such as
+%% cryptographically signing your requests, retrying requests, and handling
+%% error responses, so that it is easier for you to get started. For more
+%% information about the AWS SDKs, see Tools to build on AWS.
 -module(aws_frauddetector).
 
 -export([batch_create_variable/2,
@@ -243,7 +256,9 @@ create_variable(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVariable">>, Input, Options).
 
-%% @doc Deletes data that was batch imported to Amazon Fraud Detector.
+%% @doc Deletes the specified batch import job ID record.
+%%
+%% This action does not delete the data that was batch imported.
 delete_batch_import_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_batch_import_job(Client, Input, []).
@@ -898,7 +913,10 @@ update_model_version(Client, Input, Options)
 %%
 %% You can perform the following status updates:
 %%
-%% <ol> <li> Change the `TRAINING_COMPLETE' status to `ACTIVE'.
+%% <ol> <li> Change the `TRAINING_IN_PROGRESS' status to
+%% `TRAINING_CANCELLED'.
+%%
+%% </li> <li> Change the `TRAINING_COMPLETE' status to `ACTIVE'.
 %%
 %% </li> <li> Change `ACTIVE' to `INACTIVE'.
 %%
