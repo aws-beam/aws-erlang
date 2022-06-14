@@ -26,6 +26,9 @@
          get_catalog_item/2,
          get_catalog_item/4,
          get_catalog_item/5,
+         get_connection/2,
+         get_connection/4,
+         get_connection/5,
          get_order/2,
          get_order/4,
          get_order/5,
@@ -59,6 +62,8 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         start_connection/2,
+         start_connection/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -230,6 +235,38 @@ get_catalog_item(Client, CatalogItemId, QueryMap, HeadersMap)
 get_catalog_item(Client, CatalogItemId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/catalog/item/", aws_util:encode_uri(CatalogItemId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Amazon Web Services uses this action to install Outpost servers.
+%%
+%% Gets information about a specified connection.
+%%
+%% Use CloudTrail to monitor this action or Amazon Web Services managed
+%% policy for Amazon Web Services Outposts to secure it. For more
+%% information, see Amazon Web Services managed policies for Amazon Web
+%% Services Outposts and Logging Amazon Web Services Outposts API calls with
+%% Amazon Web Services CloudTrail in the Amazon Web Services Outposts User
+%% Guide.
+get_connection(Client, ConnectionId)
+  when is_map(Client) ->
+    get_connection(Client, ConnectionId, #{}, #{}).
+
+get_connection(Client, ConnectionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_connection(Client, ConnectionId, QueryMap, HeadersMap, []).
+
+get_connection(Client, ConnectionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/connections/", aws_util:encode_uri(ConnectionId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -565,6 +602,38 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Amazon Web Services uses this action to install Outpost servers.
+%%
+%% Starts the connection required for Outpost server installation.
+%%
+%% Use CloudTrail to monitor this action or Amazon Web Services managed
+%% policy for Amazon Web Services Outposts to secure it. For more
+%% information, see Amazon Web Services managed policies for Amazon Web
+%% Services Outposts and Logging Amazon Web Services Outposts API calls with
+%% Amazon Web Services CloudTrail in the Amazon Web Services Outposts User
+%% Guide.
+start_connection(Client, Input) ->
+    start_connection(Client, Input, []).
+start_connection(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/connections"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds tags to the specified resource.
 tag_resource(Client, ResourceArn, Input) ->
