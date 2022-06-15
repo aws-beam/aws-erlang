@@ -60,6 +60,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_alert/2,
+         update_alert/3,
          update_anomaly_detector/2,
          update_anomaly_detector/3,
          update_metric_set/2,
@@ -697,6 +699,29 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"TagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Make changes to an existing alert.
+update_alert(Client, Input) ->
+    update_alert(Client, Input, []).
+update_alert(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateAlert"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a detector.

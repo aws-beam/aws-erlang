@@ -1,12 +1,12 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc The Amazon Web Services Budgets API enables you to use Amazon Web
-%% Services Budgets to plan your service usage, service costs, and instance
-%% reservations.
+%% @doc Use the Amazon Web Services Budgets API to plan your service usage,
+%% service costs, and instance reservations.
 %%
-%% The API reference provides descriptions, syntax, and usage examples for
-%% each of the actions and data types for Amazon Web Services Budgets.
+%% This API reference provides descriptions, syntax, and usage examples for
+%% each of the actions and data types for the Amazon Web Services Budgets
+%% feature.
 %%
 %% Budgets provide you with a way to see the following information:
 %%
