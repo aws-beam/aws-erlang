@@ -2,8 +2,9 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon GuardDuty is a continuous security monitoring service that
-%% analyzes and processes the following data sources: VPC Flow Logs, Amazon
-%% Web Services CloudTrail event logs, and DNS logs.
+%% analyzes and processes the following data sources: VPC Flow Logs, AWS
+%% CloudTrail management event logs, CloudTrail S3 data event logs, EKS audit
+%% logs, and DNS logs.
 %%
 %% It uses threat intelligence feeds (such as lists of malicious IPs and
 %% domains) and machine learning to identify unexpected, potentially
@@ -25,7 +26,9 @@
 %% information, see the Amazon GuardDuty User Guide .
 -module(aws_guardduty).
 
--export([accept_invitation/3,
+-export([accept_administrator_invitation/3,
+         accept_administrator_invitation/4,
+         accept_invitation/3,
          accept_invitation/4,
          archive_findings/3,
          archive_findings/4,
@@ -67,12 +70,17 @@
          describe_publishing_destination/6,
          disable_organization_admin_account/2,
          disable_organization_admin_account/3,
+         disassociate_from_administrator_account/3,
+         disassociate_from_administrator_account/4,
          disassociate_from_master_account/3,
          disassociate_from_master_account/4,
          disassociate_members/3,
          disassociate_members/4,
          enable_organization_admin_account/2,
          enable_organization_admin_account/3,
+         get_administrator_account/2,
+         get_administrator_account/4,
+         get_administrator_account/5,
          get_detector/2,
          get_detector/4,
          get_detector/5,
@@ -96,6 +104,8 @@
          get_member_detectors/4,
          get_members/3,
          get_members/4,
+         get_remaining_free_trial_days/3,
+         get_remaining_free_trial_days/4,
          get_threat_intel_set/3,
          get_threat_intel_set/5,
          get_threat_intel_set/6,
@@ -164,6 +174,30 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Accepts the invitation to be a member account and get monitored by a
+%% GuardDuty administrator account that sent the invitation.
+accept_administrator_invitation(Client, DetectorId, Input) ->
+    accept_administrator_invitation(Client, DetectorId, Input, []).
+accept_administrator_invitation(Client, DetectorId, Input0, Options0) ->
+    Method = post,
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/administrator"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Accepts the invitation to be monitored by a GuardDuty administrator
 %% account.
@@ -676,6 +710,30 @@ disable_organization_admin_account(Client, Input0, Options0) ->
 
 %% @doc Disassociates the current GuardDuty member account from its
 %% administrator account.
+disassociate_from_administrator_account(Client, DetectorId, Input) ->
+    disassociate_from_administrator_account(Client, DetectorId, Input, []).
+disassociate_from_administrator_account(Client, DetectorId, Input0, Options0) ->
+    Method = post,
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/administrator/disassociate"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disassociates the current GuardDuty member account from its
+%% administrator account.
 disassociate_from_master_account(Client, DetectorId, Input) ->
     disassociate_from_master_account(Client, DetectorId, Input, []).
 disassociate_from_master_account(Client, DetectorId, Input0, Options0) ->
@@ -700,9 +758,6 @@ disassociate_from_master_account(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Disassociates GuardDuty member accounts (to the current GuardDuty
 %% administrator account) specified by the account IDs.
-%%
-%% Member accounts added through Invitation get deleted from the current
-%% GuardDuty administrator account after 30 days of disassociation.
 disassociate_members(Client, DetectorId, Input) ->
     disassociate_members(Client, DetectorId, Input, []).
 disassociate_members(Client, DetectorId, Input0, Options0) ->
@@ -748,6 +803,30 @@ enable_organization_admin_account(Client, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Provides the details for the GuardDuty administrator account
+%% associated with the current GuardDuty member account.
+get_administrator_account(Client, DetectorId)
+  when is_map(Client) ->
+    get_administrator_account(Client, DetectorId, #{}, #{}).
+
+get_administrator_account(Client, DetectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_administrator_account(Client, DetectorId, QueryMap, HeadersMap, []).
+
+get_administrator_account(Client, DetectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/administrator"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves an Amazon GuardDuty detector specified by the detectorId.
 get_detector(Client, DetectorId)
@@ -962,6 +1041,30 @@ get_members(Client, DetectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Provides the number of days left for each data source used in the
+%% free trial period.
+get_remaining_free_trial_days(Client, DetectorId, Input) ->
+    get_remaining_free_trial_days(Client, DetectorId, Input, []).
+get_remaining_free_trial_days(Client, DetectorId, Input0, Options0) ->
+    Method = post,
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/freeTrial/daysRemaining"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet
 %% ID.
 get_threat_intel_set(Client, DetectorId, ThreatIntelSetId)
@@ -989,11 +1092,11 @@ get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, QueryMap, HeadersMap,
 %% @doc Lists Amazon GuardDuty usage statistics over the last 30 days for the
 %% specified detector ID.
 %%
-%% For newly enabled detectors or data sources the cost returned will include
-%% only the usage so far under 30 days, this may differ from the cost metrics
-%% in the console, which projects usage over 30 days to provide a monthly
-%% cost estimate. For more information see Understanding How Usage Costs are
-%% Calculated.
+%% For newly enabled detectors or data sources, the cost returned will
+%% include only the usage so far under 30 days. This may differ from the cost
+%% metrics in the console, which project usage over 30 days to provide a
+%% monthly cost estimate. For more information, see Understanding How Usage
+%% Costs are Calculated.
 get_usage_statistics(Client, DetectorId, Input) ->
     get_usage_statistics(Client, DetectorId, Input, []).
 get_usage_statistics(Client, DetectorId, Input0, Options0) ->

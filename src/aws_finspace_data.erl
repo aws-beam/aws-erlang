@@ -4,7 +4,9 @@
 %% @doc The FinSpace APIs let you take actions inside the FinSpace.
 -module(aws_finspace_data).
 
--export([create_changeset/3,
+-export([associate_user_to_permission_group/4,
+         associate_user_to_permission_group/5,
+         create_changeset/3,
          create_changeset/4,
          create_data_view/3,
          create_data_view/4,
@@ -20,6 +22,8 @@
          delete_permission_group/4,
          disable_user/3,
          disable_user/4,
+         disassociate_user_from_permission_group/4,
+         disassociate_user_from_permission_group/5,
          enable_user/3,
          enable_user/4,
          get_changeset/3,
@@ -31,6 +35,9 @@
          get_dataset/2,
          get_dataset/4,
          get_dataset/5,
+         get_permission_group/2,
+         get_permission_group/4,
+         get_permission_group/5,
          get_programmatic_access_credentials/2,
          get_programmatic_access_credentials/4,
          get_programmatic_access_credentials/5,
@@ -51,9 +58,15 @@
          list_permission_groups/2,
          list_permission_groups/4,
          list_permission_groups/5,
+         list_permission_groups_by_user/3,
+         list_permission_groups_by_user/5,
+         list_permission_groups_by_user/6,
          list_users/2,
          list_users/4,
          list_users/5,
+         list_users_by_permission_group/3,
+         list_users_by_permission_group/5,
+         list_users_by_permission_group/6,
          reset_user_password/3,
          reset_user_password/4,
          update_changeset/4,
@@ -70,6 +83,30 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Adds a user account to a permission group to grant permissions for
+%% actions a user can perform in FinSpace.
+associate_user_to_permission_group(Client, PermissionGroupId, UserId, Input) ->
+    associate_user_to_permission_group(Client, PermissionGroupId, UserId, Input, []).
+associate_user_to_permission_group(Client, PermissionGroupId, UserId, Input0, Options0) ->
+    Method = post,
+    Path = ["/permission-group/", aws_util:encode_uri(PermissionGroupId), "/users/", aws_util:encode_uri(UserId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new Changeset in a FinSpace Dataset.
 create_changeset(Client, DatasetId, Input) ->
@@ -261,6 +298,30 @@ disable_user(Client, UserId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Removes a user account from a permission group.
+disassociate_user_from_permission_group(Client, PermissionGroupId, UserId, Input) ->
+    disassociate_user_from_permission_group(Client, PermissionGroupId, UserId, Input, []).
+disassociate_user_from_permission_group(Client, PermissionGroupId, UserId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/permission-group/", aws_util:encode_uri(PermissionGroupId), "/users/", aws_util:encode_uri(UserId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Allows the specified user to access the FinSpace web application and
 %% API.
 enable_user(Client, UserId, Input) ->
@@ -343,6 +404,29 @@ get_dataset(Client, DatasetId, QueryMap, HeadersMap)
 get_dataset(Client, DatasetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/datasetsv2/", aws_util:encode_uri(DatasetId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the details of a specific permission group.
+get_permission_group(Client, PermissionGroupId)
+  when is_map(Client) ->
+    get_permission_group(Client, PermissionGroupId, #{}, #{}).
+
+get_permission_group(Client, PermissionGroupId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_permission_group(Client, PermissionGroupId, QueryMap, HeadersMap, []).
+
+get_permission_group(Client, PermissionGroupId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/permission-group/", aws_util:encode_uri(PermissionGroupId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -541,6 +625,35 @@ list_permission_groups(Client, MaxResults, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists all the permission groups that are associated with a specific
+%% user account.
+list_permission_groups_by_user(Client, UserId, MaxResults)
+  when is_map(Client) ->
+    list_permission_groups_by_user(Client, UserId, MaxResults, #{}, #{}).
+
+list_permission_groups_by_user(Client, UserId, MaxResults, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_permission_groups_by_user(Client, UserId, MaxResults, QueryMap, HeadersMap, []).
+
+list_permission_groups_by_user(Client, UserId, MaxResults, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/user/", aws_util:encode_uri(UserId), "/permission-groups"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists all available user accounts in FinSpace.
 list_users(Client, MaxResults)
   when is_map(Client) ->
@@ -553,6 +666,34 @@ list_users(Client, MaxResults, QueryMap, HeadersMap)
 list_users(Client, MaxResults, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/user"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, MaxResults},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists details of all the users in a specific permission group.
+list_users_by_permission_group(Client, PermissionGroupId, MaxResults)
+  when is_map(Client) ->
+    list_users_by_permission_group(Client, PermissionGroupId, MaxResults, #{}, #{}).
+
+list_users_by_permission_group(Client, PermissionGroupId, MaxResults, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_users_by_permission_group(Client, PermissionGroupId, MaxResults, QueryMap, HeadersMap, []).
+
+list_users_by_permission_group(Client, PermissionGroupId, MaxResults, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/permission-group/", aws_util:encode_uri(PermissionGroupId), "/users"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

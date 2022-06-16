@@ -46,6 +46,9 @@
          list_attribute_groups/1,
          list_attribute_groups/3,
          list_attribute_groups/4,
+         list_attribute_groups_for_application/2,
+         list_attribute_groups_for_application/4,
+         list_attribute_groups_for_application/5,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -458,6 +461,37 @@ list_attribute_groups(Client, QueryMap, HeadersMap)
 list_attribute_groups(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/attribute-groups"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the details of all attribute groups associated with a specific
+%% application.
+%%
+%% The results display in pages.
+list_attribute_groups_for_application(Client, Application)
+  when is_map(Client) ->
+    list_attribute_groups_for_application(Client, Application, #{}, #{}).
+
+list_attribute_groups_for_application(Client, Application, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_attribute_groups_for_application(Client, Application, QueryMap, HeadersMap, []).
+
+list_attribute_groups_for_application(Client, Application, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(Application), "/attribute-group-details"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
