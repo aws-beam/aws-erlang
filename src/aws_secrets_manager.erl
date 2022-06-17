@@ -311,6 +311,10 @@ list_secret_version_ids(Client, Input, Options)
 %%
 %% To see secrets marked for deletion, use the Secrets Manager console.
 %%
+%% ListSecrets is eventually consistent, however it might not reflect changes
+%% from the last five minutes. To get the latest information for a specific
+%% secret, use `DescribeSecret'.
+%%
 %% To list the versions of a secret, use `ListSecretVersionIds'.
 %%
 %% To get the secret value from `SecretString' or `SecretBinary', call
@@ -373,8 +377,8 @@ put_resource_policy(Client, Input, Options)
 %% staging label `AWSPREVIOUS' to the version that `AWSCURRENT' was removed
 %% from.
 %%
-%% This operation is idempotent. If a version with a `VersionId' with the
-%% same value as the `ClientRequestToken' parameter already exists, and you
+%% This operation is idempotent. If you call this operation with a
+%% `ClientRequestToken' that matches an existing version's VersionId, and you
 %% specify the same secret data, the operation succeeds but does nothing.
 %% However, if the secret data is different, then the operation fails because
 %% you can't modify an existing version; you can only create new ones.
@@ -576,8 +580,8 @@ untag_resource(Client, Input, Options)
 %% version, Secrets Manager automatically attaches the staging label
 %% `AWSCURRENT' to the new version.
 %%
-%% If you call this operation with a `VersionId' that matches an existing
-%% version's `ClientRequestToken', the operation results in an error. You
+%% If you call this operation with a `ClientRequestToken' that matches an
+%% existing version's `VersionId', the operation results in an error. You
 %% can't modify an existing version, you can only create a new version. To
 %% remove a version, remove all staging labels from it. See
 %% `UpdateSecretVersionStage'.
