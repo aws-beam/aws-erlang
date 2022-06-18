@@ -135,8 +135,17 @@
 %% @doc This operation allows you to perform batch reads or writes on data
 %% stored in DynamoDB, using PartiQL.
 %%
+%% Each read statement in a `BatchExecuteStatement' must specify an equality
+%% condition on all key attributes. This enforces that each `SELECT'
+%% statement in a batch returns at most a single item.
+%%
 %% The entire batch must consist of either read statements or write
 %% statements, you cannot mix both in one batch.
+%%
+%% A HTTP 200 response does not mean that all statements in the
+%% BatchExecuteStatement succeeded. Error details for individual statements
+%% can be found under the Error field of the `BatchStatementResponse' for
+%% each statement.
 batch_execute_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_execute_statement(Client, Input, []).
@@ -835,29 +844,6 @@ list_tags_of_resource(Client, Input, Options)
 %% it has certain attribute values. You can return the item's attribute
 %% values in the same operation, using the `ReturnValues' parameter.
 %%
-%% This topic provides general information about the `PutItem' API.
-%%
-%% For information on how to call the `PutItem' API using the Amazon Web
-%% Services SDK in specific languages, see the following:
-%%
-%% PutItem in the Command Line Interface
-%%
-%% PutItem in the SDK for .NET
-%%
-%% PutItem in the SDK for C++
-%%
-%% PutItem in the SDK for Go
-%%
-%% PutItem in the SDK for Java
-%%
-%% PutItem in the SDK for JavaScript
-%%
-%% PutItem in the SDK for PHP V3
-%%
-%% PutItem in the SDK for Python (Boto)
-%%
-%% PutItem in the SDK for Ruby V2
-%%
 %% When you add an item, the primary key attributes are the only required
 %% attributes. Attribute values cannot be null.
 %%
@@ -1290,8 +1276,6 @@ update_item(Client, Input, Options)
 %% You can only perform one of the following operations at once:
 %%
 %% <ul> <li> Modify the provisioned throughput settings of the table.
-%%
-%% </li> <li> Enable or disable DynamoDB Streams on the table.
 %%
 %% </li> <li> Remove a global secondary index from the table.
 %%
