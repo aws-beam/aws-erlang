@@ -80,6 +80,8 @@
          describe_ldaps_settings/3,
          describe_regions/2,
          describe_regions/3,
+         describe_settings/2,
+         describe_settings/3,
          describe_shared_directories/2,
          describe_shared_directories/3,
          describe_snapshots/2,
@@ -144,6 +146,8 @@
          update_number_of_domain_controllers/3,
          update_radius/2,
          update_radius/3,
+         update_settings/2,
+         update_settings/3,
          update_trust/2,
          update_trust/3,
          verify_trust/2,
@@ -500,6 +504,15 @@ describe_regions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRegions">>, Input, Options).
 
+%% @doc Retrieves information about the configurable settings for the
+%% specified directory.
+describe_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_settings(Client, Input, []).
+describe_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeSettings">>, Input, Options).
+
 %% @doc Returns the shared directories in your account.
 describe_shared_directories(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -848,6 +861,14 @@ update_radius(Client, Input)
 update_radius(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRadius">>, Input, Options).
+
+%% @doc Updates the configurable settings for the specified directory.
+update_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_settings(Client, Input, []).
+update_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateSettings">>, Input, Options).
 
 %% @doc Updates the trust that has been set up between your Managed Microsoft
 %% AD directory and an self-managed Active Directory.
