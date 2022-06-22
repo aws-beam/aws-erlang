@@ -938,6 +938,9 @@ list_share_invitations(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List the tags for a resource.
+%%
+%% The WorkloadArn parameter can be either a workload ARN or a custom lens
+%% ARN.
 list_tags_for_resource(Client, WorkloadArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, WorkloadArn, #{}, #{}).
@@ -1015,6 +1018,9 @@ list_workloads(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds one or more tags to the specified resource.
+%%
+%% The WorkloadArn parameter can be either a workload ARN or a custom lens
+%% ARN.
 tag_resource(Client, WorkloadArn, Input) ->
     tag_resource(Client, WorkloadArn, Input, []).
 tag_resource(Client, WorkloadArn, Input0, Options0) ->
@@ -1038,6 +1044,9 @@ tag_resource(Client, WorkloadArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes specified tags from a resource.
+%%
+%% The WorkloadArn parameter can be either a workload ARN or a custom lens
+%% ARN.
 %%
 %% To specify multiple tags, use separate tagKeys parameters, for example:
 %%

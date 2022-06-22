@@ -6,11 +6,11 @@
 %% Amazon Elastic Container Service (Amazon ECS) is a highly scalable, fast,
 %% container management service.
 %%
-%% It makes it easy to run, stop, and manage Docker containers on a cluster.
-%% You can host your cluster on a serverless infrastructure that's managed by
-%% Amazon ECS by launching your services or tasks on Fargate. For more
-%% control, you can host your tasks on a cluster of Amazon Elastic Compute
-%% Cloud (Amazon EC2) instances that you manage.
+%% It makes it easy to run, stop, and manage Docker containers. You can host
+%% your cluster on a serverless infrastructure that's managed by Amazon ECS
+%% by launching your services or tasks on Fargate. For more control, you can
+%% host your tasks on a cluster of Amazon Elastic Compute Cloud (Amazon EC2)
+%% or External (on-premises) instances that you manage.
 %%
 %% Amazon ECS makes it easy to launch and stop container-based applications
 %% with simple API calls. This makes it easy to get the state of your cluster
@@ -162,7 +162,7 @@ create_capacity_provider(Client, Input, Options)
 %% that it can manage required resources in other Amazon Web Services
 %% services on your behalf. However, if the IAM user that makes the call
 %% doesn't have permissions to create the service-linked role, it isn't
-%% created. For more information, see Using Service-Linked Roles for Amazon
+%% created. For more information, see Using service-linked roles for Amazon
 %% ECS in the Amazon Elastic Container Service Developer Guide.
 create_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -176,12 +176,12 @@ create_cluster(Client, Input, Options)
 %%
 %% If the number of tasks running in a service drops below the
 %% `desiredCount', Amazon ECS runs another copy of the task in the specified
-%% cluster. To update an existing service, see the UpdateService action.
+%% cluster. To update an existing service, see the `UpdateService' action.
 %%
 %% In addition to maintaining the desired count of tasks in your service, you
 %% can optionally run your service behind one or more load balancers. The
 %% load balancers distribute traffic across the tasks that are associated
-%% with the service. For more information, see Service Load Balancing in the
+%% with the service. For more information, see Service load balancing in the
 %% Amazon Elastic Container Service Developer Guide.
 %%
 %% Tasks for services that don't use a load balancer are considered healthy
@@ -195,7 +195,7 @@ create_cluster(Client, Input, Options)
 %% your desired number of tasks across your cluster. By default, the service
 %% scheduler spreads tasks across Availability Zones. You can use task
 %% placement strategies and constraints to customize task placement
-%% decisions. For more information, see Service Scheduler Concepts in the
+%% decisions. For more information, see Service scheduler concepts in the
 %% Amazon Elastic Container Service Developer Guide.
 %%
 %% </li> <li> `DAEMON' - The daemon scheduling strategy deploys exactly one
@@ -205,7 +205,7 @@ create_cluster(Client, Input, Options)
 %% It also stops tasks that don't meet the placement constraints. When using
 %% this strategy, you don't need to specify a desired number of tasks, a task
 %% placement strategy, or use Service Auto Scaling policies. For more
-%% information, see Service Scheduler Concepts in the Amazon Elastic
+%% information, see Service scheduler concepts in the Amazon Elastic
 %% Container Service Developer Guide.
 %%
 %% </li> </ul> You can optionally specify a deployment configuration for your
@@ -259,7 +259,7 @@ create_cluster(Client, Input, Options)
 %% you can specify only parameters that aren't controlled at the task set
 %% level. The only required parameter is the service name. You control your
 %% services using the `CreateTaskSet' operation. For more information, see
-%% Amazon ECS Deployment Types in the Amazon Elastic Container Service
+%% Amazon ECS deployment types in the Amazon Elastic Container Service
 %% Developer Guide.
 %%
 %% When the service scheduler launches new tasks, it determines task
@@ -295,7 +295,7 @@ create_service(Client, Input, Options)
 %% @doc Create a task set in the specified cluster and service.
 %%
 %% This is used when a service uses the `EXTERNAL' deployment controller
-%% type. For more information, see Amazon ECS Deployment Types in the Amazon
+%% type. For more information, see Amazon ECS deployment types in the Amazon
 %% Elastic Container Service Developer Guide.
 create_task_set(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -392,7 +392,7 @@ delete_service(Client, Input, Options)
 %% @doc Deletes a specified task set within a service.
 %%
 %% This is used when a service uses the `EXTERNAL' deployment controller
-%% type. For more information, see Amazon ECS Deployment Types in the Amazon
+%% type. For more information, see Amazon ECS deployment types in the Amazon
 %% Elastic Container Service Developer Guide.
 delete_task_set(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -514,6 +514,9 @@ describe_task_sets(Client, Input, Options)
     request(Client, <<"DescribeTaskSets">>, Input, Options).
 
 %% @doc Describes a specified task or tasks.
+%%
+%% Currently, stopped tasks appear in the returned results for at least one
+%% hour.
 describe_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_tasks(Client, Input, []).
@@ -533,6 +536,11 @@ discover_poll_endpoint(Client, Input, Options)
     request(Client, <<"DiscoverPollEndpoint">>, Input, Options).
 
 %% @doc Runs a command remotely on a container within a task.
+%%
+%% If you use a condition key in your IAM policy to refine the conditions for
+%% the policy statement, for example limit the actions to a specific cluster,
+%% you recevie an `AccessDeniedException' when there is a mismatch between
+%% the condition key value and the corresponding parameter value.
 execute_command(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_command(Client, Input, []).
@@ -1014,14 +1022,7 @@ update_container_instances_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateContainerInstancesState">>, Input, Options).
 
-%% @doc Updating the task placement strategies and constraints on an Amazon
-%% ECS service remains in preview and is a Beta Service as defined by and
-%% subject to the Beta Service Participation Service Terms located at
-%% [https://aws.amazon.com/service-terms] ("Beta Terms").
-%%
-%% These Beta Terms apply to your participation in this preview.
-%%
-%% Modifies the parameters of a service.
+%% @doc Modifies the parameters of a service.
 %%
 %% For services using the rolling update (`ECS') you can update the desired
 %% count, deployment configuration, network configuration, load balancers,
