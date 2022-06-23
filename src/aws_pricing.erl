@@ -1,17 +1,16 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Web Services Price List Service API (Amazon Web Services Price
-%% List Service) is a centralized and convenient way to programmatically
-%% query Amazon Web Services for services, products, and pricing information.
+%% @doc Amazon Web Services Price List API is a centralized and convenient
+%% way to programmatically query Amazon Web Services for services, products,
+%% and pricing information.
 %%
-%% The Amazon Web Services Price List Service uses standardized product
-%% attributes such as `Location', `Storage Class', and `Operating System',
-%% and provides prices at the SKU level. You can use the Amazon Web Services
-%% Price List Service to build cost control and scenario planning tools,
-%% reconcile billing data, forecast future spend for budgeting purposes, and
-%% provide cost benefit analysis that compare your internal workloads with
-%% Amazon Web Services.
+%% The Amazon Web Services Price List uses standardized product attributes
+%% such as `Location', `Storage Class', and `Operating System', and provides
+%% prices at the SKU level. You can use the Amazon Web Services Price List to
+%% build cost control and scenario planning tools, reconcile billing data,
+%% forecast future spend for budgeting purposes, and provide cost benefit
+%% analysis that compare your internal workloads with Amazon Web Services.
 %%
 %% Use `GetServices' without a service code to retrieve the service codes for
 %% all AWS services, then `GetServices' with a service code to retrieve the
@@ -24,7 +23,7 @@
 %%
 %% Service Endpoint
 %%
-%% Amazon Web Services Price List Service API provides the following two
+%% Amazon Web Services Price List service API provides the following two
 %% endpoints:
 %%
 %% <ul> <li> https://api.pricing.us-east-1.amazonaws.com
@@ -66,8 +65,8 @@ describe_services(Client, Input, Options)
 %% @doc Returns a list of attribute values.
 %%
 %% Attributes are similar to the details in a Price List API offer file. For
-%% a list of available attributes, see Offer File Definitions in the Amazon
-%% Web Services Billing and Cost Management User Guide.
+%% a list of available attributes, see Offer File Definitions in the Billing
+%% and Cost Management User Guide.
 get_attribute_values(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_attribute_values(Client, Input, []).
