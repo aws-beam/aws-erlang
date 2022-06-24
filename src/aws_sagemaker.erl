@@ -1120,8 +1120,8 @@ create_labeling_job(Client, Input, Options)
 %% you defined for the model in the hosting environment.
 %%
 %% For an example that calls this method when deploying a model to SageMaker
-%% hosting services, see Deploy the Model to Amazon SageMaker Hosting
-%% Services (Amazon Web Services SDK for Python (Boto 3)).
+%% hosting services, see Create a Model (Amazon Web Services SDK for Python
+%% (Boto 3)).
 %%
 %% To run a batch transform using your model, you start a job with the
 %% `CreateTransformJob' API. SageMaker uses your model and your dataset to
@@ -3586,12 +3586,20 @@ update_user_profile(Client, Input, Options)
 %% addresses to work on tasks and to update your OpenID Connect (OIDC)
 %% Identity Provider (IdP) workforce configuration.
 %%
+%% The worker portal is now supported in VPC and public internet.
+%%
 %% Use `SourceIpConfig' to restrict worker access to tasks to a specific
 %% range of IP addresses. You specify allowed IP addresses by creating a list
 %% of up to ten CIDRs. By default, a workforce isn't restricted to specific
 %% IP addresses. If you specify a range of IP addresses, workers who attempt
 %% to access tasks using any IP address outside the specified range are
 %% denied and get a `Not Found' error message on the worker portal.
+%%
+%% To restrict access to all the workers in public internet, add the
+%% `SourceIpConfig' CIDR value as "0.0.0.0/0".
+%%
+%% Amazon SageMaker does not support Source Ip restriction for worker portals
+%% in VPC.
 %%
 %% Use `OidcConfig' to update the configuration of a workforce created using
 %% your own OIDC IdP.

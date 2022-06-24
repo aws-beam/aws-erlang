@@ -6,10 +6,14 @@
 
 -export([change_server_life_cycle_state/2,
          change_server_life_cycle_state/3,
+         create_launch_configuration_template/2,
+         create_launch_configuration_template/3,
          create_replication_configuration_template/2,
          create_replication_configuration_template/3,
          delete_job/2,
          delete_job/3,
+         delete_launch_configuration_template/2,
+         delete_launch_configuration_template/3,
          delete_replication_configuration_template/2,
          delete_replication_configuration_template/3,
          delete_source_server/2,
@@ -20,6 +24,8 @@
          describe_job_log_items/3,
          describe_jobs/2,
          describe_jobs/3,
+         describe_launch_configuration_templates/2,
+         describe_launch_configuration_templates/3,
          describe_replication_configuration_templates/2,
          describe_replication_configuration_templates/3,
          describe_source_servers/2,
@@ -58,6 +64,8 @@
          untag_resource/4,
          update_launch_configuration/2,
          update_launch_configuration/3,
+         update_launch_configuration_template/2,
+         update_launch_configuration_template/3,
          update_replication_configuration/2,
          update_replication_configuration/3,
          update_replication_configuration_template/2,
@@ -83,6 +91,29 @@ change_server_life_cycle_state(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ChangeServerLifeCycleState"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new ReplicationConfigurationTemplate.
+create_launch_configuration_template(Client, Input) ->
+    create_launch_configuration_template(Client, Input, []).
+create_launch_configuration_template(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateLaunchConfigurationTemplate"],
+    SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -128,6 +159,29 @@ delete_job(Client, Input) ->
 delete_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteJob"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new ReplicationConfigurationTemplate.
+delete_launch_configuration_template(Client, Input) ->
+    delete_launch_configuration_template(Client, Input, []).
+delete_launch_configuration_template(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteLaunchConfigurationTemplate"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -250,6 +304,29 @@ describe_jobs(Client, Input) ->
 describe_jobs(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeJobs"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new ReplicationConfigurationTemplate.
+describe_launch_configuration_templates(Client, Input) ->
+    describe_launch_configuration_templates(Client, Input, []).
+describe_launch_configuration_templates(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DescribeLaunchConfigurationTemplates"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -725,6 +802,29 @@ update_launch_configuration(Client, Input) ->
 update_launch_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateLaunchConfiguration"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new ReplicationConfigurationTemplate.
+update_launch_configuration_template(Client, Input) ->
+    update_launch_configuration_template(Client, Input, []).
+update_launch_configuration_template(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateLaunchConfigurationTemplate"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

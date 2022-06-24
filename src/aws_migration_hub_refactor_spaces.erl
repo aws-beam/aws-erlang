@@ -75,7 +75,9 @@
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
-         untag_resource/4]).
+         untag_resource/4,
+         update_route/5,
+         update_route/6]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -152,6 +154,12 @@ create_environment(Client, Input0, Options0) ->
 %% the application. If an application does not have any routes, then the
 %% first route must be created as a `DEFAULT' `RouteType'.
 %%
+%% When created, the default route defaults to an active state so state is
+%% not a required input. However, like all other state values the state of
+%% the default route can be updated after creation, but only when all other
+%% routes are also inactive. Conversely, no route can be active without the
+%% default route also being active.
+%%
 %% When you create a route, Refactor Spaces configures the Amazon API Gateway
 %% to send traffic to the target service as follows:
 %%
@@ -167,9 +175,12 @@ create_environment(Client, Input0, Options0) ->
 %% Spaces configures the Lambda function's resource policy to allow the
 %% application's API Gateway to invoke the function.
 %%
-%% </li> </ul> A one-time health check is performed on the service when the
-%% route is created. If the health check fails, the route transitions to
-%% `FAILED', and no traffic is sent to the service.
+%% </li> </ul> A one-time health check is performed on the service when
+%% either the route is updated from inactive to active, or when it is created
+%% with an active state. If the health check fails, the route transitions the
+%% route state to `FAILED', an error code of
+%% `SERVICE_ENDPOINT_HEALTH_CHECK_FAILURE' is provided, and no traffic is
+%% sent to the service.
 %%
 %% For Lambda functions, the Lambda function state is checked. If the
 %% function is not active, the function configuration is updated so that
@@ -178,20 +189,22 @@ create_environment(Client, Input0, Options0) ->
 %% GetFunctionConfiguration's State response parameter in the Lambda
 %% Developer Guide.
 %%
-%% For public URLs, a connection is opened to the public endpoint. If the URL
-%% is not reachable, the health check fails. For private URLs, a target group
-%% is created and the target group health check is run.
+%% For Lambda endpoints, a check is performed to determine that a Lambda
+%% function with the specified ARN exists. If it does not exist, the health
+%% check fails. For public URLs, a connection is opened to the public
+%% endpoint. If the URL is not reachable, the health check fails.
 %%
-%% The `HealthCheckProtocol', `HealthCheckPort', and `HealthCheckPath' are
-%% the same protocol, port, and path specified in the URL or health URL, if
-%% used. All other settings use the default values, as described in Health
-%% checks for your target groups. The health check is considered successful
-%% if at least one target within the target group transitions to a healthy
-%% state.
+%% For private URLS, a target group is created on the Elastic Load Balancing
+%% and the target group health check is run. The `HealthCheckProtocol',
+%% `HealthCheckPort', and `HealthCheckPath' are the same protocol, port, and
+%% path specified in the URL or health URL, if used. All other settings use
+%% the default values, as described in Health checks for your target groups.
+%% The health check is considered successful if at least one target within
+%% the target group transitions to a healthy state.
 %%
 %% Services can have HTTP or HTTPS URL endpoints. For HTTPS URLs,
 %% publicly-signed certificates are supported. Private Certificate
-%% Authorities (CAs) are permitted only if the CA's domain is publicly
+%% Authorities (CAs) are permitted only if the CA's domain is also publicly
 %% resolvable.
 create_route(Client, ApplicationIdentifier, EnvironmentIdentifier, Input) ->
     create_route(Client, ApplicationIdentifier, EnvironmentIdentifier, Input, []).
@@ -746,6 +759,29 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"TagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an Amazon Web Services Migration Hub Refactor Spaces route.
+update_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier, Input) ->
+    update_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier, Input, []).
+update_route(Client, ApplicationIdentifier, EnvironmentIdentifier, RouteIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/environments/", aws_util:encode_uri(EnvironmentIdentifier), "/applications/", aws_util:encode_uri(ApplicationIdentifier), "/routes/", aws_util:encode_uri(RouteIdentifier), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================

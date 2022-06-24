@@ -30,6 +30,8 @@
          list_data_ingestion_jobs/3,
          list_datasets/2,
          list_datasets/3,
+         list_inference_events/2,
+         list_inference_events/3,
          list_inference_executions/2,
          list_inference_executions/3,
          list_inference_schedulers/2,
@@ -199,6 +201,15 @@ list_datasets(Client, Input)
 list_datasets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDatasets">>, Input, Options).
+
+%% @doc Lists all inference events that have been found for the specified
+%% inference scheduler.
+list_inference_events(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_inference_events(Client, Input, []).
+list_inference_events(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListInferenceEvents">>, Input, Options).
 
 %% @doc Lists all inference executions that have been performed by the
 %% specified inference scheduler.
