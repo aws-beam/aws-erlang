@@ -258,6 +258,8 @@
          list_blueprints/3,
          list_crawlers/2,
          list_crawlers/3,
+         list_crawls/2,
+         list_crawls/3,
          list_custom_entity_types/2,
          list_custom_entity_types/3,
          list_dev_endpoints/2,
@@ -1627,6 +1629,33 @@ list_crawlers(Client, Input)
 list_crawlers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCrawlers">>, Input, Options).
+
+%% @doc Returns all the crawls of a specified crawler.
+%%
+%% Returns only the crawls that have occurred since the launch date of the
+%% crawler history feature, and only retains up to 12 months of crawls. Older
+%% crawls will not be returned.
+%%
+%% You may use this API to:
+%%
+%% <ul> <li> Retrive all the crawls of a specified crawler.
+%%
+%% </li> <li> Retrieve all the crawls of a specified crawler within a limited
+%% count.
+%%
+%% </li> <li> Retrieve all the crawls of a specified crawler in a specific
+%% time range.
+%%
+%% </li> <li> Retrieve all the crawls of a specified crawler with a
+%% particular state, crawl ID, or DPU hour value.
+%%
+%% </li> </ul>
+list_crawls(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_crawls(Client, Input, []).
+list_crawls(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCrawls">>, Input, Options).
 
 %% @doc Lists all the custom patterns that have been created.
 list_custom_entity_types(Client, Input)
