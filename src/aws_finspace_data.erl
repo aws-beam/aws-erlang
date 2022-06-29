@@ -35,6 +35,8 @@
          get_dataset/2,
          get_dataset/4,
          get_dataset/5,
+         get_external_data_view_access_details/4,
+         get_external_data_view_access_details/5,
          get_permission_group/2,
          get_permission_group/4,
          get_permission_group/5,
@@ -414,6 +416,39 @@ get_dataset(Client, DatasetId, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the credentials to access the external Dataview from an S3
+%% location.
+%%
+%% To call this API:
+%%
+%% <ul> <li> You must retrieve the programmatic credentials.
+%%
+%% </li> <li> You must be a member of a FinSpace user group, where the
+%% dataset that you want to access has `Read Dataset Data' permissions.
+%%
+%% </li> </ul>
+get_external_data_view_access_details(Client, DataViewId, DatasetId, Input) ->
+    get_external_data_view_access_details(Client, DataViewId, DatasetId, Input, []).
+get_external_data_view_access_details(Client, DataViewId, DatasetId, Input0, Options0) ->
+    Method = post,
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/dataviewsv2/", aws_util:encode_uri(DataViewId), "/external-access-details"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the details of a specific permission group.
 get_permission_group(Client, PermissionGroupId)

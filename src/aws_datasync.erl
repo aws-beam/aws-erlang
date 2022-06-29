@@ -19,6 +19,8 @@
          create_location_efs/3,
          create_location_fsx_lustre/2,
          create_location_fsx_lustre/3,
+         create_location_fsx_ontap/2,
+         create_location_fsx_ontap/3,
          create_location_fsx_open_zfs/2,
          create_location_fsx_open_zfs/3,
          create_location_fsx_windows/2,
@@ -47,6 +49,8 @@
          describe_location_efs/3,
          describe_location_fsx_lustre/2,
          describe_location_fsx_lustre/3,
+         describe_location_fsx_ontap/2,
+         describe_location_fsx_ontap/3,
          describe_location_fsx_open_zfs/2,
          describe_location_fsx_open_zfs/3,
          describe_location_fsx_windows/2,
@@ -165,6 +169,17 @@ create_location_fsx_lustre(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationFsxLustre">>, Input, Options).
 
+%% @doc Creates an endpoint for an Amazon FSx for NetApp ONTAP file system
+%% that DataSync can access for a transfer.
+%%
+%% For more information, see Creating a location for FSx for ONTAP.
+create_location_fsx_ontap(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_location_fsx_ontap(Client, Input, []).
+create_location_fsx_ontap(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateLocationFsxOntap">>, Input, Options).
+
 %% @doc Creates an endpoint for an Amazon FSx for OpenZFS file system.
 create_location_fsx_open_zfs(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -199,10 +214,10 @@ create_location_nfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationNfs">>, Input, Options).
 
-%% @doc Creates an endpoint for a self-managed object storage bucket.
+%% @doc Creates an endpoint for an object storage system that DataSync can
+%% access for a transfer.
 %%
-%% For more information about self-managed object storage locations, see
-%% Creating a location for object storage.
+%% For more information, see Creating a location for object storage.
 create_location_object_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_object_storage(Client, Input, []).
@@ -316,6 +331,15 @@ describe_location_fsx_lustre(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationFsxLustre">>, Input, Options).
 
+%% @doc Provides details about how an DataSync location for an Amazon FSx for
+%% NetApp ONTAP file system is configured.
+describe_location_fsx_ontap(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_location_fsx_ontap(Client, Input, []).
+describe_location_fsx_ontap(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeLocationFsxOntap">>, Input, Options).
+
 %% @doc Returns metadata about an Amazon FSx for OpenZFS location, such as
 %% information about its path.
 describe_location_fsx_open_zfs(Client, Input)
@@ -352,10 +376,8 @@ describe_location_nfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationNfs">>, Input, Options).
 
-%% @doc Returns metadata about a self-managed object storage server location.
-%%
-%% For more information about self-managed object storage locations, see
-%% Creating a location for object storage.
+%% @doc Returns metadata about your DataSync location for an object storage
+%% system.
 describe_location_object_storage(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_object_storage(Client, Input, []).
