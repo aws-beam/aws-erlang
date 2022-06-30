@@ -485,6 +485,10 @@ modify_rule(Client, Input, Options)
 
 %% @doc Modifies the health checks used when evaluating the health state of
 %% the targets in the specified target group.
+%%
+%% If the protocol of the target group is TCP, TLS, UDP, or TCP_UDP, you
+%% can't modify the health check protocol, interval, timeout, or success
+%% codes.
 modify_target_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_target_group(Client, Input, []).

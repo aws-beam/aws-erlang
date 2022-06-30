@@ -452,7 +452,7 @@ do_request(Client, Action, Input0, Options) ->
     Headers = [
         {<<"Host">>, Host},
         {<<"Content-Type">>, <<"application/x-amz-json-1.1">>},
-        {<<"X-Amz-Target">>, <<"redshift-serverless.", Action/binary>>}
+        {<<"X-Amz-Target">>, <<"RedshiftServerless.", Action/binary>>}
     ],
 
     Input = Input0,

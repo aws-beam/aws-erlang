@@ -19,6 +19,8 @@
          get_terminology/3,
          import_terminology/2,
          import_terminology/3,
+         list_languages/2,
+         list_languages/3,
          list_parallel_data/2,
          list_parallel_data/3,
          list_terminologies/2,
@@ -95,24 +97,32 @@ get_terminology(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTerminology">>, Input, Options).
 
-%% @doc Creates or updates a custom terminology, depending on whether or not
-%% one already exists for the given terminology name.
+%% @doc Creates or updates a custom terminology, depending on whether one
+%% already exists for the given terminology name.
 %%
 %% Importing a terminology with the same name as an existing one will merge
-%% the terminologies based on the chosen merge strategy. Currently, the only
-%% supported merge strategy is OVERWRITE, and so the imported terminology
-%% will overwrite an existing terminology of the same name.
+%% the terminologies based on the chosen merge strategy. The only supported
+%% merge strategy is OVERWRITE, where the imported terminology overwrites the
+%% existing terminology of the same name.
 %%
 %% If you import a terminology that overwrites an existing one, the new
-%% terminology take up to 10 minutes to fully propagate and be available for
-%% use in a translation due to cache policies with the DataPlane service that
-%% performs the translations.
+%% terminology takes up to 10 minutes to fully propagate. After that,
+%% translations have access to the new terminology.
 import_terminology(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_terminology(Client, Input, []).
 import_terminology(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportTerminology">>, Input, Options).
+
+%% @doc Provides a list of languages (RFC-5646 codes and names) that Amazon
+%% Translate supports.
+list_languages(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_languages(Client, Input, []).
+list_languages(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListLanguages">>, Input, Options).
 
 %% @doc Provides a list of your parallel data resources in Amazon Translate.
 list_parallel_data(Client, Input)

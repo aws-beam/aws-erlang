@@ -226,6 +226,8 @@
          describe_experiment/3,
          describe_feature_group/2,
          describe_feature_group/3,
+         describe_feature_metadata/2,
+         describe_feature_metadata/3,
          describe_flow_definition/2,
          describe_flow_definition/3,
          describe_human_task_ui/2,
@@ -486,6 +488,10 @@
          update_endpoint_weights_and_capacities/3,
          update_experiment/2,
          update_experiment/3,
+         update_feature_group/2,
+         update_feature_group/3,
+         update_feature_metadata/2,
+         update_feature_metadata/3,
          update_image/2,
          update_image/3,
          update_model_package/2,
@@ -2158,6 +2164,14 @@ describe_feature_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFeatureGroup">>, Input, Options).
 
+%% @doc Shows the metadata for a feature within a feature group.
+describe_feature_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_feature_metadata(Client, Input, []).
+describe_feature_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeFeatureMetadata">>, Input, Options).
+
 %% @doc Returns information about the specified flow definition.
 describe_flow_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -3468,6 +3482,22 @@ update_experiment(Client, Input)
 update_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateExperiment">>, Input, Options).
+
+%% @doc Updates the feature group.
+update_feature_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_feature_group(Client, Input, []).
+update_feature_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateFeatureGroup">>, Input, Options).
+
+%% @doc Updates the description and parameters of the feature group.
+update_feature_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_feature_metadata(Client, Input, []).
+update_feature_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateFeatureMetadata">>, Input, Options).
 
 %% @doc Updates the properties of a SageMaker image.
 %%
