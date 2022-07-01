@@ -22,6 +22,8 @@
 
 -export([batch_get_named_query/2,
          batch_get_named_query/3,
+         batch_get_prepared_statement/2,
+         batch_get_prepared_statement/3,
          batch_get_query_execution/2,
          batch_get_query_execution/3,
          create_data_catalog/2,
@@ -114,6 +116,21 @@ batch_get_named_query(Client, Input)
 batch_get_named_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetNamedQuery">>, Input, Options).
+
+%% @doc Returns the details of a single prepared statement or a list of up to
+%% 256 prepared statements for the array of prepared statement names that you
+%% provide.
+%%
+%% Requires you to have access to the workgroup to which the prepared
+%% statements belong. If a prepared statement cannot be retrieved for the
+%% name specified, the statement is listed in
+%% `UnprocessedPreparedStatementNames'.
+batch_get_prepared_statement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_prepared_statement(Client, Input, []).
+batch_get_prepared_statement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetPreparedStatement">>, Input, Options).
 
 %% @doc Returns the details of a single query execution or a list of up to 50
 %% query executions, which you provide as an array of query execution ID
@@ -340,7 +357,7 @@ list_named_queries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListNamedQueries">>, Input, Options).
 
-%% @doc Lists the prepared statements in the specfied workgroup.
+%% @doc Lists the prepared statements in the specified workgroup.
 list_prepared_statements(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_prepared_statements(Client, Input, []).

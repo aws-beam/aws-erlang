@@ -94,6 +94,8 @@
          untag_resource/4,
          update_answer/5,
          update_answer/6,
+         update_global_settings/2,
+         update_global_settings/3,
          update_lens_review/4,
          update_lens_review/5,
          update_share_invitation/3,
@@ -823,7 +825,8 @@ list_lens_shares(Client, LensAlias, QueryMap, HeadersMap, Options0)
       [
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
-        {<<"SharedWithPrefix">>, maps:get(<<"SharedWithPrefix">>, QueryMap, undefined)}
+        {<<"SharedWithPrefix">>, maps:get(<<"SharedWithPrefix">>, QueryMap, undefined)},
+        {<<"Status">>, maps:get(<<"Status">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -986,7 +989,8 @@ list_workload_shares(Client, WorkloadId, QueryMap, HeadersMap, Options0)
       [
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
-        {<<"SharedWithPrefix">>, maps:get(<<"SharedWithPrefix">>, QueryMap, undefined)}
+        {<<"SharedWithPrefix">>, maps:get(<<"SharedWithPrefix">>, QueryMap, undefined)},
+        {<<"Status">>, maps:get(<<"Status">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1080,6 +1084,30 @@ update_answer(Client, LensAlias, QuestionId, WorkloadId, Input) ->
 update_answer(Client, LensAlias, QuestionId, WorkloadId, Input0, Options0) ->
     Method = patch,
     Path = ["/workloads/", aws_util:encode_uri(WorkloadId), "/lensReviews/", aws_util:encode_uri(LensAlias), "/answers/", aws_util:encode_uri(QuestionId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates whether the Amazon Web Services account is opted into
+%% organization sharing features.
+update_global_settings(Client, Input) ->
+    update_global_settings(Client, Input, []).
+update_global_settings(Client, Input0, Options0) ->
+    Method = patch,
+    Path = ["/global-settings"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

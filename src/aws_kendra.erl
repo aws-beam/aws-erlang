@@ -191,6 +191,9 @@ batch_get_document_status(Client, Input, Options)
 %% The documents are indexed asynchronously. You can see the progress of the
 %% batch using Amazon Web Services CloudWatch. Any error messages related to
 %% processing the batch are sent to your Amazon Web Services CloudWatch log.
+%%
+%% For an example of ingesting inline documents using Python and Java SDKs,
+%% see Adding files directly to an index.
 batch_put_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_put_document(Client, Input, []).
@@ -228,6 +231,10 @@ clear_query_suggestions(Client, Input, Options)
 %%
 %% Amazon S3 and custom data sources are the only supported data sources in
 %% the Amazon Web Services GovCloud (US-West) region.
+%%
+%% For an example of creating an index and data source using the Python SDK,
+%% see Getting started with Python SDK. For an example of creating an index
+%% and data source using the Java SDK, see Getting started with Java SDK.
 create_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_source(Client, Input, []).
@@ -237,8 +244,9 @@ create_data_source(Client, Input, Options)
 
 %% @doc Creates an Amazon Kendra experience such as a search application.
 %%
-%% For more information on creating a search application experience, see
-%% Building a search experience with no code.
+%% For more information on creating a search application experience,
+%% including using the Python and Java SDKs, see Building a search experience
+%% with no code.
 create_experience(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_experience(Client, Input, []).
@@ -250,6 +258,9 @@ create_experience(Client, Input, Options)
 %% answers.
 %%
 %% Adding FAQs to an index is an asynchronous operation.
+%%
+%% For an example of adding an FAQ to an index using Python and Java SDKs,
+%% see Using you FAQ file.
 create_faq(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_faq(Client, Input, []).
@@ -266,6 +277,10 @@ create_faq(Client, Input, Options)
 %%
 %% Once the index is active you can index your documents using the
 %% `BatchPutDocument' API or using one of the supported data sources.
+%%
+%% For an example of creating an index and data source using the Python SDK,
+%% see Getting started with Python SDK. For an example of creating an index
+%% and data source using the Java SDK, see Getting started with Java SDK.
 create_index(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_index(Client, Input, []).
@@ -287,6 +302,9 @@ create_index(Client, Input, Options)
 %%
 %% `CreateQuerySuggestionsBlockList' is currently not supported in the Amazon
 %% Web Services GovCloud (US-West) region.
+%%
+%% For an example of creating a block list for query suggestions using the
+%% Python SDK, see Query suggestions block list.
 create_query_suggestions_block_list(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_query_suggestions_block_list(Client, Input, []).
@@ -297,6 +315,9 @@ create_query_suggestions_block_list(Client, Input, Options)
 %% @doc Creates a thesaurus for an index.
 %%
 %% The thesaurus contains a list of synonyms in Solr format.
+%%
+%% For an example of adding a thesaurus file to an index, see Adding custom
+%% synonyms to an index.
 create_thesaurus(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_thesaurus(Client, Input, []).

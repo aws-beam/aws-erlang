@@ -41,6 +41,8 @@
          cancel_mailbox_export_job/3,
          create_alias/2,
          create_alias/3,
+         create_availability_configuration/2,
+         create_availability_configuration/3,
          create_group/2,
          create_group/3,
          create_mobile_device_access_rule/2,
@@ -55,6 +57,8 @@
          delete_access_control_rule/3,
          delete_alias/2,
          delete_alias/3,
+         delete_availability_configuration/2,
+         delete_availability_configuration/3,
          delete_email_monitoring_configuration/2,
          delete_email_monitoring_configuration/3,
          delete_group/2,
@@ -111,6 +115,8 @@
          list_access_control_rules/3,
          list_aliases/2,
          list_aliases/3,
+         list_availability_configurations/2,
+         list_availability_configurations/3,
          list_group_members/2,
          list_group_members/3,
          list_groups/2,
@@ -157,8 +163,12 @@
          start_mailbox_export_job/3,
          tag_resource/2,
          tag_resource/3,
+         test_availability_configuration/2,
+         test_availability_configuration/3,
          untag_resource/2,
          untag_resource/3,
+         update_availability_configuration/2,
+         update_availability_configuration/3,
          update_default_mail_domain/2,
          update_default_mail_domain/3,
          update_mailbox_quota/2,
@@ -211,6 +221,15 @@ create_alias(Client, Input)
 create_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAlias">>, Input, Options).
+
+%% @doc Creates an `AvailabilityConfiguration' for the given WorkMail
+%% organization and domain.
+create_availability_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_availability_configuration(Client, Input, []).
+create_availability_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAvailabilityConfiguration">>, Input, Options).
 
 %% @doc Creates a group that can be used in Amazon WorkMail by calling the
 %% `RegisterToWorkMail' operation.
@@ -295,6 +314,15 @@ delete_alias(Client, Input)
 delete_alias(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAlias">>, Input, Options).
+
+%% @doc Deletes the `AvailabilityConfiguration' for the given WorkMail
+%% organization and domain.
+delete_availability_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_availability_configuration(Client, Input, []).
+delete_availability_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAvailabilityConfiguration">>, Input, Options).
 
 %% @doc Deletes the email monitoring configuration for a specified
 %% organization.
@@ -565,6 +593,15 @@ list_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAliases">>, Input, Options).
 
+%% @doc List all the `AvailabilityConfiguration''s for the given WorkMail
+%% organization.
+list_availability_configurations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_availability_configurations(Client, Input, []).
+list_availability_configurations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAvailabilityConfigurations">>, Input, Options).
+
 %% @doc Returns an overview of the members of a group.
 %%
 %% Users and groups can be members of a group.
@@ -787,6 +824,26 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
+%% @doc Performs a test on an availability provider to ensure that access is
+%% allowed.
+%%
+%% For EWS, it verifies the provided credentials can be used to successfully
+%% log in. For Lambda, it verifies that the Lambda function can be invoked
+%% and that the resource access policy was configured to deny anonymous
+%% access. An anonymous invocation is one done without providing either a
+%% `SourceArn' or `SourceAccount' header.
+%%
+%% The request must contain either one provider definition (`EwsProvider' or
+%% `LambdaProvider') or the `DomainName' parameter. If the `DomainName'
+%% parameter is provided, the configuration stored under the `DomainName'
+%% will be tested.
+test_availability_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    test_availability_configuration(Client, Input, []).
+test_availability_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TestAvailabilityConfiguration">>, Input, Options).
+
 %% @doc Untags the specified tags from the specified Amazon WorkMail
 %% organization resource.
 untag_resource(Client, Input)
@@ -795,6 +852,15 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates an existing `AvailabilityConfiguration' for the given
+%% WorkMail organization and domain.
+update_availability_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_availability_configuration(Client, Input, []).
+update_availability_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateAvailabilityConfiguration">>, Input, Options).
 
 %% @doc Updates the default mail domain for an organization.
 %%
