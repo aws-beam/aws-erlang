@@ -711,9 +711,25 @@ describe_organization_config_rule_statuses(Client, Input, Options)
 %% @doc Returns a list of organization Config rules.
 %%
 %% When you specify the limit and the next token, you receive a paginated
-%% response. Limit and next token are not applicable if you specify
-%% organization Config rule names. It is only applicable, when you request
-%% all the organization Config rules.
+%% response.
+%%
+%% Limit and next token are not applicable if you specify organization Config
+%% rule names. It is only applicable, when you request all the organization
+%% Config rules.
+%%
+%% For accounts within an organzation
+%%
+%% If you deploy an organizational rule or conformance pack in an
+%% organization administrator account, and then establish a delegated
+%% administrator and deploy an organizational rule or conformance pack in the
+%% delegated administrator account, you won't be able to see the
+%% organizational rule or conformance pack in the organization administrator
+%% account from the delegated administrator account or see the organizational
+%% rule or conformance pack in the delegated administrator account from
+%% organization administrator account. The `DescribeOrganizationConfigRules'
+%% and `DescribeOrganizationConformancePacks' APIs can only see and interact
+%% with the organization-related resource that were deployed from within the
+%% account calling those APIs.
 describe_organization_config_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_organization_config_rules(Client, Input, []).
@@ -747,6 +763,20 @@ describe_organization_conformance_pack_statuses(Client, Input, Options)
 %% Limit and next token are not applicable if you specify organization
 %% conformance packs names. They are only applicable, when you request all
 %% the organization conformance packs.
+%%
+%% For accounts within an organzation
+%%
+%% If you deploy an organizational rule or conformance pack in an
+%% organization administrator account, and then establish a delegated
+%% administrator and deploy an organizational rule or conformance pack in the
+%% delegated administrator account, you won't be able to see the
+%% organizational rule or conformance pack in the organization administrator
+%% account from the delegated administrator account or see the organizational
+%% rule or conformance pack in the delegated administrator account from
+%% organization administrator account. The `DescribeOrganizationConfigRules'
+%% and `DescribeOrganizationConformancePacks' APIs can only see and interact
+%% with the organization-related resource that were deployed from within the
+%% account calling those APIs.
 describe_organization_conformance_packs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_organization_conformance_packs(Client, Input, []).
@@ -1341,9 +1371,14 @@ put_organization_config_rule(Client, Input, Options)
 %% @doc Deploys conformance packs across member accounts in an Amazon Web
 %% Services Organization.
 %%
+%% For information on how many organization conformance packs and how many
+%% Config rules you can have per account, see Service Limits in the Config
+%% Developer Guide.
+%%
 %% Only a master account and a delegated administrator can call this API.
 %% When calling this API with a delegated administrator, you must ensure
-%% Organizations `ListDelegatedAdministrator' permissions are added.
+%% Organizations `ListDelegatedAdministrator' permissions are added. An
+%% organization can have up to 3 delegated administrators.
 %%
 %% This API enables organization service access for
 %% `config-multiaccountsetup.amazonaws.com' through the
@@ -1365,9 +1400,6 @@ put_organization_config_rule(Client, Input, Options)
 %% Config sets the state of a conformance pack to CREATE_IN_PROGRESS and
 %% UPDATE_IN_PROGRESS until the conformance pack is created or updated. You
 %% cannot update a conformance pack while it is in this state.
-%%
-%% You can create 50 conformance packs with 25 Config rules in each pack and
-%% 3 delegated administrator per organization.
 put_organization_conformance_pack(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_organization_conformance_pack(Client, Input, []).
@@ -1390,6 +1422,15 @@ put_organization_conformance_pack(Client, Input, Options)
 %% service-linked Config Rules such as Organization Config rules, the rules
 %% deployed by conformance packs, and rules deployed by Amazon Web Services
 %% Security Hub.
+%%
+%% For manual remediation configuration, you need to provide a value for
+%% `automationAssumeRole' or use a value in the `assumeRole'field to
+%% remediate your resources. The SSM automation document can use either as
+%% long as it maps to a valid parameter.
+%%
+%% However, for automatic remediation configuration, the only valid
+%% `assumeRole' field value is `AutomationAssumeRole' and you need to provide
+%% a value for `AutomationAssumeRole' to remediate your resources.
 put_remediation_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_remediation_configurations(Client, Input, []).
