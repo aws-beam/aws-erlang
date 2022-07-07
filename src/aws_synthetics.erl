@@ -21,21 +21,38 @@
 %% Synthetics Canaries.
 -module(aws_synthetics).
 
--export([create_canary/2,
+-export([associate_resource/3,
+         associate_resource/4,
+         create_canary/2,
          create_canary/3,
+         create_group/2,
+         create_group/3,
          delete_canary/3,
          delete_canary/4,
+         delete_group/3,
+         delete_group/4,
          describe_canaries/2,
          describe_canaries/3,
          describe_canaries_last_run/2,
          describe_canaries_last_run/3,
          describe_runtime_versions/2,
          describe_runtime_versions/3,
+         disassociate_resource/3,
+         disassociate_resource/4,
          get_canary/2,
          get_canary/4,
          get_canary/5,
          get_canary_runs/3,
          get_canary_runs/4,
+         get_group/2,
+         get_group/4,
+         get_group/5,
+         list_associated_groups/3,
+         list_associated_groups/4,
+         list_group_resources/3,
+         list_group_resources/4,
+         list_groups/2,
+         list_groups/3,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -56,6 +73,35 @@
 %% API
 %%====================================================================
 
+%% @doc Associates a canary with a group.
+%%
+%% Using groups can help you with managing and automating your canaries, and
+%% you can also view aggregated run results and statistics for all canaries
+%% in a group.
+%%
+%% You must run this operation in the Region where the canary exists.
+associate_resource(Client, GroupIdentifier, Input) ->
+    associate_resource(Client, GroupIdentifier, Input, []).
+associate_resource(Client, GroupIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/group/", aws_util:encode_uri(GroupIdentifier), "/associate"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a canary.
 %%
 %% Canaries are scripts that monitor your endpoints and APIs from the
@@ -69,7 +115,7 @@
 %%
 %% To create canaries, you must have the `CloudWatchSyntheticsFullAccess'
 %% policy. If you are creating a new IAM role for the canary, you also need
-%% the the `iam:CreateRole', `iam:CreatePolicy' and `iam:AttachRolePolicy'
+%% the `iam:CreateRole', `iam:CreatePolicy' and `iam:AttachRolePolicy'
 %% permissions. For more information, see Necessary Roles and Permissions.
 %%
 %% Do not include secrets or proprietary information in your canary names.
@@ -98,12 +144,56 @@ create_canary(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a group which you can use to associate canaries with each
+%% other, including cross-Region canaries.
+%%
+%% Using groups can help you with managing and automating your canaries, and
+%% you can also view aggregated run results and statistics for all canaries
+%% in a group.
+%%
+%% Groups are global resources. When you create a group, it is replicated
+%% across Amazon Web Services Regions, and you can view it and add canaries
+%% to it from any Region. Although the group ARN format reflects the Region
+%% name where it was created, a group is not constrained to any Region. This
+%% means that you can put canaries from multiple Regions into the same group,
+%% and then use that group to view and manage all of those canaries in a
+%% single view.
+%%
+%% Groups are supported in all Regions except the Regions that are disabled
+%% by default. For more information about these Regions, see Enabling a
+%% Region.
+%%
+%% Each group can contain as many as 10 canaries. You can have as many as 20
+%% groups in your account. Any single canary can be a member of up to 10
+%% groups.
+create_group(Client, Input) ->
+    create_group(Client, Input, []).
+create_group(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/group"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Permanently deletes the specified canary.
 %%
 %% If you specify `DeleteLambda' to `true', CloudWatch Synthetics also
 %% deletes the Lambda functions and layers that are used by the canary.
 %%
-%% Other esources used and created by the canary are not automatically
+%% Other resources used and created by the canary are not automatically
 %% deleted. After you delete a canary that you do not intend to use again,
 %% you should also delete the following:
 %%
@@ -145,6 +235,36 @@ delete_canary(Client, Name, Input0, Options0) ->
                      {<<"deleteLambda">>, <<"DeleteLambda">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a group.
+%%
+%% The group doesn't need to be empty to be deleted. If there are canaries in
+%% the group, they are not deleted when you delete the group.
+%%
+%% Groups are a global resource that appear in all Regions, but the request
+%% to delete a group must be made from its home Region. You can find the home
+%% Region of a group within its ARN.
+delete_group(Client, GroupIdentifier, Input) ->
+    delete_group(Client, GroupIdentifier, Input, []).
+delete_group(Client, GroupIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/group/", aws_util:encode_uri(GroupIdentifier), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This operation returns a list of the canaries in your account, along
@@ -242,6 +362,31 @@ describe_runtime_versions(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Removes a canary from a group.
+%%
+%% You must run this operation in the Region where the canary exists.
+disassociate_resource(Client, GroupIdentifier, Input) ->
+    disassociate_resource(Client, GroupIdentifier, Input, []).
+disassociate_resource(Client, GroupIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/group/", aws_util:encode_uri(GroupIdentifier), "/disassociate"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves complete information about one canary.
 %%
 %% You must specify the name of the canary that you want. To get a list of
@@ -291,7 +436,109 @@ get_canary_runs(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Displays the tags associated with a canary.
+%% @doc Returns information about one group.
+%%
+%% Groups are a global resource, so you can use this operation from any
+%% Region.
+get_group(Client, GroupIdentifier)
+  when is_map(Client) ->
+    get_group(Client, GroupIdentifier, #{}, #{}).
+
+get_group(Client, GroupIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_group(Client, GroupIdentifier, QueryMap, HeadersMap, []).
+
+get_group(Client, GroupIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/group/", aws_util:encode_uri(GroupIdentifier), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of the groups that the specified canary is associated
+%% with.
+%%
+%% The canary that you specify must be in the current Region.
+list_associated_groups(Client, ResourceArn, Input) ->
+    list_associated_groups(Client, ResourceArn, Input, []).
+list_associated_groups(Client, ResourceArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/resource/", aws_util:encode_uri(ResourceArn), "/groups"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This operation returns a list of the ARNs of the canaries that are
+%% associated with the specified group.
+list_group_resources(Client, GroupIdentifier, Input) ->
+    list_group_resources(Client, GroupIdentifier, Input, []).
+list_group_resources(Client, GroupIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/group/", aws_util:encode_uri(GroupIdentifier), "/resources"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of all groups in the account, displaying their names,
+%% unique IDs, and ARNs.
+%%
+%% The groups from all Regions are returned.
+list_groups(Client, Input) ->
+    list_groups(Client, Input, []).
+list_groups(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/groups"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Displays the tags associated with a canary or group.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -342,10 +589,9 @@ start_canary(Client, Name, Input0, Options0) ->
 
 %% @doc Stops the canary to prevent all future runs.
 %%
-%% If the canary is currently running, Synthetics stops waiting for the
-%% current run of the specified canary to complete. The run that is in
-%% progress completes on its own, publishes metrics, and uploads artifacts,
-%% but it is not recorded in Synthetics as a completed run.
+%% If the canary is currently running,the run that is in progress completes
+%% on its own, publishes metrics, and uploads artifacts, but it is not
+%% recorded in Synthetics as a completed run.
 %%
 %% You can use `StartCanary' to start it running again with the canary’s
 %% current schedule at any point in the future.
@@ -371,7 +617,8 @@ stop_canary(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Assigns one or more tags (key-value pairs) to the specified canary.
+%% @doc Assigns one or more tags (key-value pairs) to the specified canary or
+%% group.
 %%
 %% Tags can help you organize and categorize your resources. You can also use
 %% them to scope user permissions, by granting a user permission to access or
@@ -380,13 +627,13 @@ stop_canary(Client, Name, Input0, Options0) ->
 %% Tags don't have any semantic meaning to Amazon Web Services and are
 %% interpreted strictly as strings of characters.
 %%
-%% You can use the `TagResource' action with a canary that already has tags.
-%% If you specify a new tag key for the alarm, this tag is appended to the
-%% list of tags associated with the alarm. If you specify a tag key that is
-%% already associated with the alarm, the new tag value that you specify
-%% replaces the previous value for that tag.
+%% You can use the `TagResource' action with a resource that already has
+%% tags. If you specify a new tag key for the resource, this tag is appended
+%% to the list of tags associated with the resource. If you specify a tag key
+%% that is already associated with the resource, the new tag value that you
+%% specify replaces the previous value for that tag.
 %%
-%% You can associate as many as 50 tags with a canary.
+%% You can associate as many as 50 tags with a canary or group.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -409,7 +656,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes one or more tags from the specified canary.
+%% @doc Removes one or more tags from the specified resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -433,8 +680,7 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Use this operation to change the settings of a canary that has
-%% already been created.
+%% @doc Updates the configuration of a canary that has already been created.
 %%
 %% You can't use this operation to update the tags of an existing canary. To
 %% change the tags of an existing canary, use TagResource.
