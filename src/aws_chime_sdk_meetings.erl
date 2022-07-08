@@ -74,6 +74,32 @@ batch_create_attendee(Client, MeetingId, Input0, Options0) ->
 
 %% @doc Updates `AttendeeCapabilities' except the capabilities listed in an
 %% `ExcludedAttendeeIds' table.
+%%
+%% You use the capabilities with a set of values that control what the
+%% capabilities can do, such as `SendReceive' data. For more information
+%% about those values, see .
+%%
+%% When using capabilities, be aware of these corner cases:
+%%
+%% <ul> <li> You can't set `content' capabilities to `SendReceive' or
+%% `Receive' unless you also set `video' capabilities to `SendReceive' or
+%% `Receive'. If you don't set the `video' capability to receive, the
+%% response will contain an HTTP 400 Bad Request status code. However, you
+%% can set your `video' capability to receive and you set your `content'
+%% capability to not receive.
+%%
+%% </li> <li> When you change an `audio' capability from `None' or `Receive'
+%% to `Send' or `SendReceive' , and if the attendee left their microphone
+%% unmuted, audio will flow from the attendee to the other meeting
+%% participants.
+%%
+%% </li> <li> When you change a `video' or `content' capability from `None'
+%% or `Receive' to `Send' or `SendReceive' , and if the attendee turned on
+%% their video or content streams, remote attendess can receive those
+%% streams, but only after media renegotiation between the client and the
+%% Amazon Chime back-end server.
+%%
+%% </li> </ul>
 batch_update_attendee_capabilities_except(Client, MeetingId, Input) ->
     batch_update_attendee_capabilities_except(Client, MeetingId, Input, []).
 batch_update_attendee_capabilities_except(Client, MeetingId, Input0, Options0) ->
@@ -368,6 +394,32 @@ stop_meeting_transcription(Client, MeetingId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc The capabilties that you want to update.
+%%
+%% You use the capabilities with a set of values that control what the
+%% capabilities can do, such as `SendReceive' data. For more information
+%% about those values, see .
+%%
+%% When using capabilities, be aware of these corner cases:
+%%
+%% <ul> <li> You can't set `content' capabilities to `SendReceive' or
+%% `Receive' unless you also set `video' capabilities to `SendReceive' or
+%% `Receive'. If you don't set the `video' capability to receive, the
+%% response will contain an HTTP 400 Bad Request status code. However, you
+%% can set your `video' capability to receive and you set your `content'
+%% capability to not receive.
+%%
+%% </li> <li> When you change an `audio' capability from `None' or `Receive'
+%% to `Send' or `SendReceive' , and if the attendee left their microphone
+%% unmuted, audio will flow from the attendee to the other meeting
+%% participants.
+%%
+%% </li> <li> When you change a `video' or `content' capability from `None'
+%% or `Receive' to `Send' or `SendReceive' , and if the attendee turned on
+%% their video or content streams, remote attendess can receive those
+%% streams, but only after media renegotiation between the client and the
+%% Amazon Chime back-end server.
+%%
+%% </li> </ul>
 update_attendee_capabilities(Client, AttendeeId, MeetingId, Input) ->
     update_attendee_capabilities(Client, AttendeeId, MeetingId, Input, []).
 update_attendee_capabilities(Client, AttendeeId, MeetingId, Input0, Options0) ->

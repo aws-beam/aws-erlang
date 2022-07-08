@@ -143,7 +143,9 @@
          stop_replication_task/2,
          stop_replication_task/3,
          test_connection/2,
-         test_connection/3]).
+         test_connection/3,
+         update_subscriptions_to_event_bridge/2,
+         update_subscriptions_to_event_bridge/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -865,6 +867,28 @@ test_connection(Client, Input)
 test_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestConnection">>, Input, Options).
+
+%% @doc Migrates 10 active and enabled Amazon SNS subscriptions at a time and
+%% converts them to corresponding Amazon EventBridge rules.
+%%
+%% By default, this operation migrates subscriptions only when all your
+%% replication instance versions are 3.4.6 or higher. If any replication
+%% instances are from versions earlier than 3.4.6, the operation raises an
+%% error and tells you to upgrade these instances to version 3.4.6 or higher.
+%% To enable migration regardless of version, set the `Force' option to true.
+%% However, if you don't upgrade instances earlier than version 3.4.6, some
+%% types of events might not be available when you use Amazon EventBridge.
+%%
+%% To call this operation, make sure that you have certain permissions added
+%% to your user account. For more information, see Migrating event
+%% subscriptions to Amazon EventBridge in the Amazon Web Services Database
+%% Migration Service User Guide.
+update_subscriptions_to_event_bridge(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_subscriptions_to_event_bridge(Client, Input, []).
+update_subscriptions_to_event_bridge(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateSubscriptionsToEventBridge">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

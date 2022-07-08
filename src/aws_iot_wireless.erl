@@ -119,6 +119,12 @@
          get_partner_account/3,
          get_partner_account/5,
          get_partner_account/6,
+         get_position/3,
+         get_position/5,
+         get_position/6,
+         get_position_configuration/3,
+         get_position_configuration/5,
+         get_position_configuration/6,
          get_resource_event_configuration/3,
          get_resource_event_configuration/5,
          get_resource_event_configuration/6,
@@ -179,6 +185,9 @@
          list_partner_accounts/1,
          list_partner_accounts/3,
          list_partner_accounts/4,
+         list_position_configurations/1,
+         list_position_configurations/3,
+         list_position_configurations/4,
          list_queued_messages/2,
          list_queued_messages/4,
          list_queued_messages/5,
@@ -197,6 +206,8 @@
          list_wireless_gateways/1,
          list_wireless_gateways/3,
          list_wireless_gateways/4,
+         put_position_configuration/3,
+         put_position_configuration/4,
          put_resource_log_level/3,
          put_resource_log_level/4,
          reset_all_resource_log_levels/2,
@@ -235,6 +246,8 @@
          update_network_analyzer_configuration/4,
          update_partner_account/3,
          update_partner_account/4,
+         update_position/3,
+         update_position/4,
          update_resource_event_configuration/3,
          update_resource_event_configuration/4,
          update_wireless_device/3,
@@ -1133,7 +1146,7 @@ get_device_profile(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get the event configuration by resource types.
+%% @doc Get the event configuration based on resource types.
 get_event_configuration_by_resource_types(Client)
   when is_map(Client) ->
     get_event_configuration_by_resource_types(Client, #{}, #{}).
@@ -1299,6 +1312,60 @@ get_partner_account(Client, PartnerAccountId, PartnerType, QueryMap, HeadersMap,
     Query0_ =
       [
         {<<"partnerType">>, PartnerType}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get the position information for a given resource.
+get_position(Client, ResourceIdentifier, ResourceType)
+  when is_map(Client) ->
+    get_position(Client, ResourceIdentifier, ResourceType, #{}, #{}).
+
+get_position(Client, ResourceIdentifier, ResourceType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_position(Client, ResourceIdentifier, ResourceType, QueryMap, HeadersMap, []).
+
+get_position(Client, ResourceIdentifier, ResourceType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/positions/", aws_util:encode_uri(ResourceIdentifier), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"resourceType">>, ResourceType}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get position configuration for a given resource.
+get_position_configuration(Client, ResourceIdentifier, ResourceType)
+  when is_map(Client) ->
+    get_position_configuration(Client, ResourceIdentifier, ResourceType, #{}, #{}).
+
+get_position_configuration(Client, ResourceIdentifier, ResourceType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_position_configuration(Client, ResourceIdentifier, ResourceType, QueryMap, HeadersMap, []).
+
+get_position_configuration(Client, ResourceIdentifier, ResourceType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/position-configurations/", aws_util:encode_uri(ResourceIdentifier), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"resourceType">>, ResourceType}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1833,6 +1900,36 @@ list_partner_accounts(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc List position configurations for a given resource, such as
+%% positioning solvers.
+list_position_configurations(Client)
+  when is_map(Client) ->
+    list_position_configurations(Client, #{}, #{}).
+
+list_position_configurations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_position_configurations(Client, QueryMap, HeadersMap, []).
+
+list_position_configurations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/position-configurations"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc List queued messages in the downlink queue.
 list_queued_messages(Client, Id)
   when is_map(Client) ->
@@ -2008,6 +2105,30 @@ list_wireless_gateways(Client, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Put position configuration for a given resource.
+put_position_configuration(Client, ResourceIdentifier, Input) ->
+    put_position_configuration(Client, ResourceIdentifier, Input, []).
+put_position_configuration(Client, ResourceIdentifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/position-configurations/", aws_util:encode_uri(ResourceIdentifier), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"resourceType">>, <<"ResourceType">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the log-level override for a resource-ID and resource-type.
 %%
@@ -2323,7 +2444,7 @@ update_destination(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update the event configuration by resource types.
+%% @doc Update the event configuration based on resource types.
 update_event_configuration_by_resource_types(Client, Input) ->
     update_event_configuration_by_resource_types(Client, Input, []).
 update_event_configuration_by_resource_types(Client, Input0, Options0) ->
@@ -2462,6 +2583,30 @@ update_partner_account(Client, PartnerAccountId, Input0, Options0) ->
 
     QueryMapping = [
                      {<<"partnerType">>, <<"PartnerType">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update the position information of a resource.
+update_position(Client, ResourceIdentifier, Input) ->
+    update_position(Client, ResourceIdentifier, Input, []).
+update_position(Client, ResourceIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/positions/", aws_util:encode_uri(ResourceIdentifier), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"resourceType">>, <<"ResourceType">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
