@@ -1888,10 +1888,9 @@ update_global_settings(Client, Input0, Options0) ->
 %% to cold after days” setting cannot be changed after a backup has been
 %% transitioned to cold.
 %%
-%% Only resource types that support full Backup management can transition
-%% their backups to cold storage. Those resource types are listed in the
-%% "Full Backup management" section of the Feature availability by resource
-%% table. Backup ignores this expression for other resource types.
+%% Resource types that are able to be transitioned to cold storage are listed
+%% in the "Lifecycle to cold storage" section of the Feature availability by
+%% resource table. Backup ignores this expression for other resource types.
 %%
 %% This operation does not support continuous backups.
 update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input) ->
