@@ -34,6 +34,10 @@
          create_site/4,
          create_site_to_site_vpn_attachment/2,
          create_site_to_site_vpn_attachment/3,
+         create_transit_gateway_peering/2,
+         create_transit_gateway_peering/3,
+         create_transit_gateway_route_table_attachment/2,
+         create_transit_gateway_route_table_attachment/3,
          create_vpc_attachment/2,
          create_vpc_attachment/3,
          delete_attachment/3,
@@ -52,6 +56,8 @@
          delete_global_network/4,
          delete_link/4,
          delete_link/5,
+         delete_peering/3,
+         delete_peering/4,
          delete_resource_policy/3,
          delete_resource_policy/4,
          delete_site/4,
@@ -86,6 +92,9 @@
          get_core_network/2,
          get_core_network/4,
          get_core_network/5,
+         get_core_network_change_events/3,
+         get_core_network_change_events/5,
+         get_core_network_change_events/6,
          get_core_network_change_set/3,
          get_core_network_change_set/5,
          get_core_network_change_set/6,
@@ -133,9 +142,15 @@
          get_transit_gateway_connect_peer_associations/2,
          get_transit_gateway_connect_peer_associations/4,
          get_transit_gateway_connect_peer_associations/5,
+         get_transit_gateway_peering/2,
+         get_transit_gateway_peering/4,
+         get_transit_gateway_peering/5,
          get_transit_gateway_registrations/2,
          get_transit_gateway_registrations/4,
          get_transit_gateway_registrations/5,
+         get_transit_gateway_route_table_attachment/2,
+         get_transit_gateway_route_table_attachment/4,
+         get_transit_gateway_route_table_attachment/5,
          get_vpc_attachment/2,
          get_vpc_attachment/4,
          get_vpc_attachment/5,
@@ -154,6 +169,9 @@
          list_organization_service_access_status/1,
          list_organization_service_access_status/3,
          list_organization_service_access_status/4,
+         list_peerings/1,
+         list_peerings/3,
+         list_peerings/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -574,6 +592,52 @@ create_site_to_site_vpn_attachment(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a transit gateway peering connection.
+create_transit_gateway_peering(Client, Input) ->
+    create_transit_gateway_peering(Client, Input, []).
+create_transit_gateway_peering(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/transit-gateway-peerings"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a transit gateway route table attachment.
+create_transit_gateway_route_table_attachment(Client, Input) ->
+    create_transit_gateway_route_table_attachment(Client, Input, []).
+create_transit_gateway_route_table_attachment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/transit-gateway-route-table-attachments"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a VPC attachment on an edge location of a core network.
 create_vpc_attachment(Client, Input) ->
     create_vpc_attachment(Client, Input, []).
@@ -779,6 +843,29 @@ delete_link(Client, GlobalNetworkId, LinkId, Input) ->
 delete_link(Client, GlobalNetworkId, LinkId, Input0, Options0) ->
     Method = delete,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/links/", aws_util:encode_uri(LinkId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an existing peering connection.
+delete_peering(Client, PeeringId, Input) ->
+    delete_peering(Client, PeeringId, Input, []).
+delete_peering(Client, PeeringId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/peerings/", aws_util:encode_uri(PeeringId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1158,6 +1245,34 @@ get_core_network(Client, CoreNetworkId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns information about a core network change event.
+get_core_network_change_events(Client, CoreNetworkId, PolicyVersionId)
+  when is_map(Client) ->
+    get_core_network_change_events(Client, CoreNetworkId, PolicyVersionId, #{}, #{}).
+
+get_core_network_change_events(Client, CoreNetworkId, PolicyVersionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_core_network_change_events(Client, CoreNetworkId, PolicyVersionId, QueryMap, HeadersMap, []).
+
+get_core_network_change_events(Client, CoreNetworkId, PolicyVersionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-change-events/", aws_util:encode_uri(PolicyVersionId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a change set between the LIVE core network policy and a
 %% submitted policy.
 get_core_network_change_set(Client, CoreNetworkId, PolicyVersionId)
@@ -1187,7 +1302,7 @@ get_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, QueryMap, He
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets details about a core network policy.
+%% @doc Returns details about a core network policy.
 %%
 %% You can get details about your current live policy or any previous policy
 %% version.
@@ -1634,6 +1749,29 @@ get_transit_gateway_connect_peer_associations(Client, GlobalNetworkId, QueryMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns information about a transit gateway peer.
+get_transit_gateway_peering(Client, PeeringId)
+  when is_map(Client) ->
+    get_transit_gateway_peering(Client, PeeringId, #{}, #{}).
+
+get_transit_gateway_peering(Client, PeeringId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_transit_gateway_peering(Client, PeeringId, QueryMap, HeadersMap, []).
+
+get_transit_gateway_peering(Client, PeeringId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/transit-gateway-peerings/", aws_util:encode_uri(PeeringId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets information about the transit gateway registrations in a
 %% specified global network.
 get_transit_gateway_registrations(Client, GlobalNetworkId)
@@ -1661,6 +1799,29 @@ get_transit_gateway_registrations(Client, GlobalNetworkId, QueryMap, HeadersMap,
         {<<"transitGatewayArns">>, maps:get(<<"transitGatewayArns">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about a transit gateway route table attachment.
+get_transit_gateway_route_table_attachment(Client, AttachmentId)
+  when is_map(Client) ->
+    get_transit_gateway_route_table_attachment(Client, AttachmentId, #{}, #{}).
+
+get_transit_gateway_route_table_attachment(Client, AttachmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_transit_gateway_route_table_attachment(Client, AttachmentId, QueryMap, HeadersMap, []).
+
+get_transit_gateway_route_table_attachment(Client, AttachmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/transit-gateway-route-table-attachments/", aws_util:encode_uri(AttachmentId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -1805,7 +1966,8 @@ list_core_networks(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Gets the status of the Service Linked Role (SLR) deployment for the
+%% accounts in a given Amazon Web Services Organization.
 list_organization_service_access_status(Client)
   when is_map(Client) ->
     list_organization_service_access_status(Client, #{}, #{}).
@@ -1828,6 +1990,38 @@ list_organization_service_access_status(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the peerings for a core network.
+list_peerings(Client)
+  when is_map(Client) ->
+    list_peerings(Client, #{}, #{}).
+
+list_peerings(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_peerings(Client, QueryMap, HeadersMap, []).
+
+list_peerings(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/peerings"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"coreNetworkId">>, maps:get(<<"coreNetworkId">>, QueryMap, undefined)},
+        {<<"edgeLocation">>, maps:get(<<"edgeLocation">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"peeringType">>, maps:get(<<"peeringType">>, QueryMap, undefined)},
+        {<<"state">>, maps:get(<<"state">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1983,7 +2177,10 @@ restore_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Inpu
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Enables for the Network Manager service for an Amazon Web Services
+%% Organization.
+%%
+%% This can only be called by a management account within the organization.
 start_organization_service_access_update(Client, Input) ->
     start_organization_service_access_update(Client, Input, []).
 start_organization_service_access_update(Client, Input0, Options0) ->
