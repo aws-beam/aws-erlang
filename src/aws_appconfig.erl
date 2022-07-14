@@ -54,6 +54,10 @@
          create_deployment_strategy/3,
          create_environment/3,
          create_environment/4,
+         create_extension/2,
+         create_extension/3,
+         create_extension_association/2,
+         create_extension_association/3,
          create_hosted_configuration_version/4,
          create_hosted_configuration_version/5,
          delete_application/3,
@@ -64,6 +68,10 @@
          delete_deployment_strategy/4,
          delete_environment/4,
          delete_environment/5,
+         delete_extension/3,
+         delete_extension/4,
+         delete_extension_association/3,
+         delete_extension_association/4,
          delete_hosted_configuration_version/5,
          delete_hosted_configuration_version/6,
          get_application/2,
@@ -84,6 +92,12 @@
          get_environment/3,
          get_environment/5,
          get_environment/6,
+         get_extension/2,
+         get_extension/4,
+         get_extension/5,
+         get_extension_association/2,
+         get_extension_association/4,
+         get_extension_association/5,
          get_hosted_configuration_version/4,
          get_hosted_configuration_version/6,
          get_hosted_configuration_version/7,
@@ -102,6 +116,12 @@
          list_environments/2,
          list_environments/4,
          list_environments/5,
+         list_extension_associations/1,
+         list_extension_associations/3,
+         list_extension_associations/4,
+         list_extensions/1,
+         list_extensions/3,
+         list_extensions/4,
          list_hosted_configuration_versions/3,
          list_hosted_configuration_versions/5,
          list_hosted_configuration_versions/6,
@@ -124,6 +144,10 @@
          update_deployment_strategy/4,
          update_environment/4,
          update_environment/5,
+         update_extension/3,
+         update_extension/4,
+         update_extension_association/3,
+         update_extension_association/4,
          validate_configuration/4,
          validate_configuration/5]).
 
@@ -135,11 +159,11 @@
 
 %% @doc Creates an application.
 %%
-%% An application in AppConfig is a logical unit of code that provides
-%% capabilities for your customers. For example, an application can be a
-%% microservice that runs on Amazon EC2 instances, a mobile application
-%% installed by your users, a serverless application using Amazon API Gateway
-%% and Lambda, or any system you run on behalf of others.
+%% In AppConfig, an application is simply an organizational construct like a
+%% folder. This organizational construct has a relationship with some unit of
+%% executable code. For example, you could create an application called
+%% MyMobileApp to organize and manage configuration data for a mobile
+%% application installed by your users.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
 create_application(Client, Input0, Options0) ->
@@ -234,9 +258,9 @@ create_deployment_strategy(Client, Input0, Options0) ->
 %% @doc Creates an environment.
 %%
 %% For each application, you define one or more environments. An environment
-%% is a logical deployment group of AppConfig targets, such as applications
-%% in a `Beta' or `Production' environment. You can also define environments
-%% for application subcomponents such as the `Web', `Mobile' and `Back-end'
+%% is a deployment group of AppConfig targets, such as applications in a
+%% `Beta' or `Production' environment. You can also define environments for
+%% application subcomponents such as the `Web', `Mobile' and `Back-end'
 %% components for your application. You can configure Amazon CloudWatch
 %% alarms for each environment. The system monitors alarms during a
 %% configuration deployment. If an alarm is triggered, the system rolls back
@@ -246,6 +270,77 @@ create_environment(Client, ApplicationId, Input) ->
 create_environment(Client, ApplicationId, Input0, Options0) ->
     Method = post,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an AppConfig extension.
+%%
+%% An extension augments your ability to inject logic or behavior at
+%% different points during the AppConfig workflow of creating or deploying a
+%% configuration.
+%%
+%% You can create your own extensions or use the Amazon Web Services-authored
+%% extensions provided by AppConfig. For most use-cases, to create your own
+%% extension, you must create an Lambda function to perform any computation
+%% and processing defined in the extension. For more information about
+%% extensions, see Working with AppConfig extensions in the AppConfig User
+%% Guide.
+create_extension(Client, Input) ->
+    create_extension(Client, Input, []).
+create_extension(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/extensions"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"Latest-Version-Number">>, <<"LatestVersionNumber">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc When you create an extension or configure an Amazon Web
+%% Services-authored extension, you associate the extension with an AppConfig
+%% application, environment, or configuration profile.
+%%
+%% For example, you can choose to run the `AppConfig deployment events to
+%% Amazon SNS' Amazon Web Services-authored extension and receive
+%% notifications on an Amazon SNS topic anytime a configuration deployment is
+%% started for a specific application. Defining which extension to associate
+%% with an AppConfig resource is called an extension association. An
+%% extension association is a specified relationship between an extension and
+%% an AppConfig resource, such as an application or a configuration profile.
+%% For more information about extensions and associations, see Working with
+%% AppConfig extensions in the AppConfig User Guide.
+create_extension_association(Client, Input) ->
+    create_extension_association(Client, Input, []).
+create_extension_association(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/extensionassociations"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -396,6 +491,58 @@ delete_environment(Client, ApplicationId, EnvironmentId, Input) ->
 delete_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
     Method = delete,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an AppConfig extension.
+%%
+%% You must delete all associations to an extension before you delete the
+%% extension.
+delete_extension(Client, ExtensionIdentifier, Input) ->
+    delete_extension(Client, ExtensionIdentifier, Input, []).
+delete_extension(Client, ExtensionIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/extensions/", aws_util:encode_uri(ExtensionIdentifier), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"version">>, <<"VersionNumber">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an extension association.
+%%
+%% This action doesn't delete extensions defined in the association.
+delete_extension_association(Client, ExtensionAssociationId, Input) ->
+    delete_extension_association(Client, ExtensionAssociationId, Input, []).
+delete_extension_association(Client, ExtensionAssociationId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/extensionassociations/", aws_util:encode_uri(ExtensionAssociationId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -606,8 +753,8 @@ get_deployment_strategy(Client, DeploymentStrategyId, QueryMap, HeadersMap, Opti
 
 %% @doc Retrieves information about an environment.
 %%
-%% An environment is a logical deployment group of AppConfig applications,
-%% such as applications in a `Production' environment or in an `EU_Region'
+%% An environment is a deployment group of AppConfig applications, such as
+%% applications in a `Production' environment or in an `EU_Region'
 %% environment. Each configuration deployment targets an environment. You can
 %% enable one or more Amazon CloudWatch alarms for an environment. If an
 %% alarm is triggered during a deployment, AppConfig roles back the
@@ -623,6 +770,59 @@ get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap)
 get_environment(Client, ApplicationId, EnvironmentId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about an AppConfig extension.
+get_extension(Client, ExtensionIdentifier)
+  when is_map(Client) ->
+    get_extension(Client, ExtensionIdentifier, #{}, #{}).
+
+get_extension(Client, ExtensionIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_extension(Client, ExtensionIdentifier, QueryMap, HeadersMap, []).
+
+get_extension(Client, ExtensionIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/extensions/", aws_util:encode_uri(ExtensionIdentifier), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"version_number">>, maps:get(<<"version_number">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about an AppConfig extension association.
+%%
+%% For more information about extensions and associations, see Working with
+%% AppConfig extensions in the AppConfig User Guide.
+get_extension_association(Client, ExtensionAssociationId)
+  when is_map(Client) ->
+    get_extension_association(Client, ExtensionAssociationId, #{}, #{}).
+
+get_extension_association(Client, ExtensionAssociationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_extension_association(Client, ExtensionAssociationId, QueryMap, HeadersMap, []).
+
+get_extension_association(Client, ExtensionAssociationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/extensionassociations/", aws_util:encode_uri(ExtensionAssociationId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -813,6 +1013,73 @@ list_environments(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"max_results">>, maps:get(<<"max_results">>, QueryMap, undefined)},
+        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all AppConfig extension associations in the account.
+%%
+%% For more information about extensions and associations, see Working with
+%% AppConfig extensions in the AppConfig User Guide.
+list_extension_associations(Client)
+  when is_map(Client) ->
+    list_extension_associations(Client, #{}, #{}).
+
+list_extension_associations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_extension_associations(Client, QueryMap, HeadersMap, []).
+
+list_extension_associations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/extensionassociations"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"extension_identifier">>, maps:get(<<"extension_identifier">>, QueryMap, undefined)},
+        {<<"extension_version_number">>, maps:get(<<"extension_version_number">>, QueryMap, undefined)},
+        {<<"max_results">>, maps:get(<<"max_results">>, QueryMap, undefined)},
+        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)},
+        {<<"resource_identifier">>, maps:get(<<"resource_identifier">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all custom and Amazon Web Services-authored AppConfig
+%% extensions in the account.
+%%
+%% For more information about extensions, see Working with AppConfig
+%% extensions in the AppConfig User Guide.
+list_extensions(Client)
+  when is_map(Client) ->
+    list_extensions(Client, #{}, #{}).
+
+list_extensions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_extensions(Client, QueryMap, HeadersMap, []).
+
+list_extensions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/extensions"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max_results">>, maps:get(<<"max_results">>, QueryMap, undefined)},
+        {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
         {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -1047,6 +1314,58 @@ update_environment(Client, ApplicationId, EnvironmentId, Input) ->
 update_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
     Method = patch,
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/environments/", aws_util:encode_uri(EnvironmentId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an AppConfig extension.
+%%
+%% For more information about extensions, see Working with AppConfig
+%% extensions in the AppConfig User Guide.
+update_extension(Client, ExtensionIdentifier, Input) ->
+    update_extension(Client, ExtensionIdentifier, Input, []).
+update_extension(Client, ExtensionIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/extensions/", aws_util:encode_uri(ExtensionIdentifier), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an association.
+%%
+%% For more information about extensions and associations, see Working with
+%% AppConfig extensions in the AppConfig User Guide.
+update_extension_association(Client, ExtensionAssociationId, Input) ->
+    update_extension_association(Client, ExtensionAssociationId, Input, []).
+update_extension_association(Client, ExtensionAssociationId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/extensionassociations/", aws_util:encode_uri(ExtensionAssociationId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
