@@ -16,6 +16,8 @@
          batch_put_document/3,
          clear_query_suggestions/2,
          clear_query_suggestions/3,
+         create_access_control_configuration/2,
+         create_access_control_configuration/3,
          create_data_source/2,
          create_data_source/3,
          create_experience/2,
@@ -28,6 +30,8 @@
          create_query_suggestions_block_list/3,
          create_thesaurus/2,
          create_thesaurus/3,
+         delete_access_control_configuration/2,
+         delete_access_control_configuration/3,
          delete_data_source/2,
          delete_data_source/3,
          delete_experience/2,
@@ -42,6 +46,8 @@
          delete_query_suggestions_block_list/3,
          delete_thesaurus/2,
          delete_thesaurus/3,
+         describe_access_control_configuration/2,
+         describe_access_control_configuration/3,
          describe_data_source/2,
          describe_data_source/3,
          describe_experience/2,
@@ -66,6 +72,8 @@
          get_query_suggestions/3,
          get_snapshots/2,
          get_snapshots/3,
+         list_access_control_configurations/2,
+         list_access_control_configurations/3,
          list_data_source_sync_jobs/2,
          list_data_source_sync_jobs/3,
          list_data_sources/2,
@@ -102,6 +110,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_access_control_configuration/2,
+         update_access_control_configuration/3,
          update_data_source/2,
          update_data_source/3,
          update_experience/2,
@@ -218,6 +228,39 @@ clear_query_suggestions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ClearQuerySuggestions">>, Input, Options).
 
+%% @doc Creates an access configuration for your documents.
+%%
+%% This includes user and group access information for your documents. This
+%% is useful for user context filtering, where search results are filtered
+%% based on the user or their group access to documents.
+%%
+%% You can use this to re-configure your existing document level access
+%% control without indexing all of your documents again. For example, your
+%% index contains top-secret company documents that only certain employees or
+%% users should access. One of these users leaves the company or switches to
+%% a team that should be blocked from access to top-secret documents. Your
+%% documents in your index still give this user access to top-secret
+%% documents due to the user having access at the time your documents were
+%% indexed. You can create a specific access control configuration for this
+%% user with deny access. You can later update the access control
+%% configuration to allow access in the case the user returns to the company
+%% and re-joins the 'top-secret' team. You can re-configure access control
+%% for your documents circumstances change.
+%%
+%% To apply your access control configuration to certain documents, you call
+%% the BatchPutDocument API with the `AccessControlConfigurationId' included
+%% in the Document object. If you use an S3 bucket as a data source, you
+%% update the `.metadata.json' with the `AccessControlConfigurationId' and
+%% synchronize your data source. Amazon Kendra currently only supports access
+%% control configuration for S3 data sources and documents indexed using the
+%% `BatchPutDocument' API.
+create_access_control_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_access_control_configuration(Client, Input, []).
+create_access_control_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAccessControlConfiguration">>, Input, Options).
+
 %% @doc Creates a data source that you want to use with an Amazon Kendra
 %% index.
 %%
@@ -260,7 +303,7 @@ create_experience(Client, Input, Options)
 %% Adding FAQs to an index is an asynchronous operation.
 %%
 %% For an example of adding an FAQ to an index using Python and Java SDKs,
-%% see Using you FAQ file.
+%% see Using your FAQ file.
 create_faq(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_faq(Client, Input, []).
@@ -268,7 +311,7 @@ create_faq(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFaq">>, Input, Options).
 
-%% @doc Creates a new Amazon Kendra index.
+%% @doc Creates an Amazon Kendra index.
 %%
 %% Index creation is an asynchronous API. To determine if index creation has
 %% completed, check the `Status' field returned from a call to
@@ -324,6 +367,19 @@ create_thesaurus(Client, Input)
 create_thesaurus(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateThesaurus">>, Input, Options).
+
+%% @doc Deletes an access control configuration that you created for your
+%% documents in an index.
+%%
+%% This includes user and group access information for your documents. This
+%% is useful for user context filtering, where search results are filtered
+%% based on the user or their group access to documents.
+delete_access_control_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_access_control_configuration(Client, Input, []).
+delete_access_control_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAccessControlConfiguration">>, Input, Options).
 
 %% @doc Deletes an Amazon Kendra data source.
 %%
@@ -416,6 +472,19 @@ delete_thesaurus(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteThesaurus">>, Input, Options).
 
+%% @doc Gets information about an access control configuration that you
+%% created for your documents in an index.
+%%
+%% This includes user and group access information for your documents. This
+%% is useful for user context filtering, where search results are filtered
+%% based on the user or their group access to documents.
+describe_access_control_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_access_control_configuration(Client, Input, []).
+describe_access_control_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAccessControlConfiguration">>, Input, Options).
+
 %% @doc Gets information about an Amazon Kendra data source.
 describe_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -444,7 +513,7 @@ describe_faq(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFaq">>, Input, Options).
 
-%% @doc Describes an existing Amazon Kendra index.
+%% @doc Gets information about an existing Amazon Kendra index.
 describe_index(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_index(Client, Input, []).
@@ -470,7 +539,8 @@ describe_principal_mapping(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePrincipalMapping">>, Input, Options).
 
-%% @doc Describes a block list used for query suggestions for an index.
+%% @doc Gets information about a block list used for query suggestions for an
+%% index.
 %%
 %% This is used to check the current settings that are applied to a block
 %% list.
@@ -484,7 +554,7 @@ describe_query_suggestions_block_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeQuerySuggestionsBlockList">>, Input, Options).
 
-%% @doc Describes the settings of query suggestions for an index.
+%% @doc Gets information on the settings of query suggestions for an index.
 %%
 %% This is used to check the current settings applied to query suggestions.
 %%
@@ -497,7 +567,7 @@ describe_query_suggestions_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeQuerySuggestionsConfig">>, Input, Options).
 
-%% @doc Describes an existing Amazon Kendra thesaurus.
+%% @doc Gets information about an existing Amazon Kendra thesaurus.
 describe_thesaurus(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_thesaurus(Client, Input, []).
@@ -553,6 +623,18 @@ get_snapshots(Client, Input)
 get_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSnapshots">>, Input, Options).
+
+%% @doc Lists one or more access control configurations for an index.
+%%
+%% This includes user and group access information for your documents. This
+%% is useful for user context filtering, where search results are filtered
+%% based on the user or their group access to documents.
+list_access_control_configurations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_access_control_configurations(Client, Input, []).
+list_access_control_configurations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAccessControlConfigurations">>, Input, Options).
 
 %% @doc Gets statistics about synchronizing Amazon Kendra with a data source.
 list_data_source_sync_jobs(Client, Input)
@@ -656,7 +738,7 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Lists the Amazon Kendra thesauri associated with an index.
+%% @doc Lists the thesauri for an index.
 list_thesauri(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_thesauri(Client, Input, []).
@@ -674,10 +756,9 @@ list_thesauri(Client, Input, Options)
 %% and therefore belong in the intellectual property group, can see
 %% top-secret company documents in their search results.
 %%
-%% You map users to their groups when you want to filter search results for
-%% different users based on their group’s access to documents. For more
-%% information on filtering search results for different users, see Filtering
-%% on user context.
+%% This is useful for user context filtering, where search results are
+%% filtered based on the user or their group access to documents. For more
+%% information, see Filtering on user context.
 %%
 %% If more than five `PUT' actions for a group are currently processing, a
 %% validation exception is thrown.
@@ -772,6 +853,37 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
+%% @doc Updates an access control configuration for your documents in an
+%% index.
+%%
+%% This includes user and group access information for your documents. This
+%% is useful for user context filtering, where search results are filtered
+%% based on the user or their group access to documents.
+%%
+%% You can update an access control configuration you created without
+%% indexing all of your documents again. For example, your index contains
+%% top-secret company documents that only certain employees or users should
+%% access. You created an 'allow' access control configuration for one user
+%% who recently joined the 'top-secret' team, switching from a team with
+%% 'deny' access to top-secret documents. However, the user suddenly returns
+%% to their previous team and should no longer have access to top secret
+%% documents. You can update the access control configuration to re-configure
+%% access control for your documents as circumstances change.
+%%
+%% You call the BatchPutDocument API to apply the updated access control
+%% configuration, with the `AccessControlConfigurationId' included in the
+%% Document object. If you use an S3 bucket as a data source, you synchronize
+%% your data source to apply the the `AccessControlConfigurationId' in the
+%% `.metadata.json' file. Amazon Kendra currently only supports access
+%% control configuration for S3 data sources and documents indexed using the
+%% `BatchPutDocument' API.
+update_access_control_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_access_control_configuration(Client, Input, []).
+update_access_control_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateAccessControlConfiguration">>, Input, Options).
+
 %% @doc Updates an existing Amazon Kendra data source.
 update_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -843,7 +955,7 @@ update_query_suggestions_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateQuerySuggestionsConfig">>, Input, Options).
 
-%% @doc Updates a thesaurus file associated with an index.
+%% @doc Updates a thesaurus for an index.
 update_thesaurus(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_thesaurus(Client, Input, []).

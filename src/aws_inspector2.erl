@@ -32,6 +32,8 @@
          enable/3,
          enable_delegated_admin_account/2,
          enable_delegated_admin_account/3,
+         get_configuration/2,
+         get_configuration/3,
          get_delegated_admin_account/2,
          get_delegated_admin_account/3,
          get_findings_report_status/2,
@@ -63,6 +65,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_configuration/2,
+         update_configuration/3,
          update_filter/2,
          update_filter/3,
          update_organization_configuration/2,
@@ -367,6 +371,29 @@ enable_delegated_admin_account(Client, Input) ->
 enable_delegated_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delegatedadminaccounts/enable"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves setting configurations for Inspector scans.
+get_configuration(Client, Input) ->
+    get_configuration(Client, Input, []).
+get_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/configuration/get"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -732,6 +759,33 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates setting configurations for your Amazon Inspector account.
+%%
+%% When you use this API as an Amazon Inspector delegated administrator this
+%% updates the setting for all accounts you manage. Member accounts in an
+%% organization cannot update this setting.
+update_configuration(Client, Input) ->
+    update_configuration(Client, Input, []).
+update_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/configuration/update"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Specifies the action that is to be applied to the findings that match

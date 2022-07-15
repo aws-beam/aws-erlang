@@ -942,7 +942,7 @@ list_streaming_images(Client, StudioId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the streaming image resources in a studio.
+%% @doc Lists the streaming sessions in a studio.
 list_streaming_sessions(Client, StudioId)
   when is_map(Client) ->
     list_streaming_sessions(Client, StudioId, #{}, #{}).

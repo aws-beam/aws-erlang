@@ -1194,10 +1194,8 @@ put_aggregation_authorization(Client, Input, Options)
 %% rule by `ConfigRuleName', `ConfigRuleId', or `ConfigRuleArn' in the
 %% `ConfigRule' data type that you use in this request.
 %%
-%% The maximum number of rules that Config supports is 150.
-%%
-%% For information about requesting a rule limit increase, see Config Limits
-%% in the Amazon Web Services General Reference Guide.
+%% For information on how many Config rules you can have per account, see
+%% Service Limits in the Config Developer Guide.
 %%
 %% For more information about developing and using Config rules, see
 %% Evaluating Amazon Web Services resource Configurations with Config in the
@@ -1263,7 +1261,8 @@ put_configuration_recorder(Client, Input, Options)
 %%
 %% A conformance pack is a collection of Config rules that can be easily
 %% deployed in an account and a region and across Amazon Web Services
-%% Organization.
+%% Organization. For information on how many conformance packs you can have
+%% per account, see Service Limits in the Config Developer Guide.
 %%
 %% This API creates a service linked role `AWSServiceRoleForConfigConforms'
 %% in your account. The service linked role is created only when the role
@@ -1326,10 +1325,14 @@ put_external_evaluation(Client, Input, Options)
 %% evaluating whether your Amazon Web Services resources comply with your
 %% desired configurations.
 %%
+%% For information on how many organization Config rules you can have per
+%% account, see Service Limits in the Config Developer Guide.
+%%
 %% Only a master account and a delegated administrator can create or update
 %% an organization Config rule. When calling this API with a delegated
 %% administrator, you must ensure Organizations `ListDelegatedAdministrator'
-%% permissions are added.
+%% permissions are added. An organization can have up to 3 delegated
+%% administrators.
 %%
 %% This API enables organization service access through the
 %% `EnableAWSServiceAccess' action and creates a service linked role
@@ -1352,9 +1355,6 @@ put_external_evaluation(Client, Input, Options)
 %% rule to Config, you must specify the Amazon Resource Name (ARN) that
 %% Lambda assigns to the function. If you are adding an Config managed rule,
 %% specify the rule's identifier for the `RuleIdentifier' key.
-%%
-%% The maximum number of organization Config rules that Config supports is
-%% 150 and 3 delegated administrator per organization.
 %%
 %% Prerequisite: Ensure you call `EnableAllFeatures' API to enable all
 %% features in an organization.

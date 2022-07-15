@@ -555,7 +555,7 @@ cancel_ml_task_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelMLTaskRun">>, Input, Options).
 
-%% @doc Cancels the statement..
+%% @doc Cancels the statement.
 cancel_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_statement(Client, Input, []).
@@ -1752,7 +1752,7 @@ list_schemas(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSchemas">>, Input, Options).
 
-%% @doc Retrieve a session..
+%% @doc Retrieve a list of sessions.
 list_sessions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_sessions(Client, Input, []).
@@ -2214,6 +2214,8 @@ update_dev_endpoint(Client, Input, Options)
     request(Client, <<"UpdateDevEndpoint">>, Input, Options).
 
 %% @doc Updates an existing job definition.
+%%
+%% The previous job definition is completely overwritten by this information.
 update_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_job(Client, Input, []).

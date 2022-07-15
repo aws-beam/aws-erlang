@@ -107,6 +107,9 @@
 %% </li> <li> `DescribeDomain': Returns a `DomainDescription' object that
 %% contains information about the requested domain.
 %%
+%% </li> <li> `DescribePackage': Returns a PackageDescription object that
+%% contains details about a package.
+%%
 %% </li> <li> `DescribePackageVersion': Returns a PackageVersionDescription
 %% object that contains details about a package version.
 %%
@@ -172,6 +175,10 @@
 %% </li> <li> `PutDomainPermissionsPolicy': Attaches a resource policy to a
 %% domain.
 %%
+%% </li> <li> `PutPackageOriginConfiguration': Sets the package origin
+%% configuration for a package, which determine how new versions of the
+%% package can be added to a specific repository.
+%%
 %% </li> <li> `PutRepositoryPermissionsPolicy': Sets the resource policy on a
 %% repository that specifies permissions to access it.
 %%
@@ -204,6 +211,9 @@
          describe_domain/2,
          describe_domain/4,
          describe_domain/5,
+         describe_package/5,
+         describe_package/7,
+         describe_package/8,
          describe_package_version/6,
          describe_package_version/8,
          describe_package_version/9,
@@ -249,6 +259,8 @@
          list_tags_for_resource/3,
          put_domain_permissions_policy/2,
          put_domain_permissions_policy/3,
+         put_package_origin_configuration/2,
+         put_package_origin_configuration/3,
          put_repository_permissions_policy/2,
          put_repository_permissions_policy/3,
          tag_resource/2,
@@ -572,6 +584,39 @@ describe_domain(Client, Domain, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a PackageDescription object that contains information about
+%% the requested package.
+describe_package(Client, Domain, Format, Package, Repository)
+  when is_map(Client) ->
+    describe_package(Client, Domain, Format, Package, Repository, #{}, #{}).
+
+describe_package(Client, Domain, Format, Package, Repository, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_package(Client, Domain, Format, Package, Repository, QueryMap, HeadersMap, []).
+
+describe_package(Client, Domain, Format, Package, Repository, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/package"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"domain">>, Domain},
+        {<<"domain-owner">>, maps:get(<<"domain-owner">>, QueryMap, undefined)},
+        {<<"format">>, Format},
+        {<<"namespace">>, maps:get(<<"namespace">>, QueryMap, undefined)},
+        {<<"package">>, Package},
+        {<<"repository">>, Repository}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a PackageVersionDescription object that contains information
 %% about the requested package version.
 describe_package_version(Client, Domain, Format, Package, PackageVersion, Repository)
@@ -840,6 +885,10 @@ get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion
 
 %% @doc Gets the readme file or descriptive text for a package version.
 %%
+%% For packages that do not contain a readme file, CodeArtifact extracts a
+%% description from a metadata file. For example, from the `<description>'
+%% element in the `pom.xml' file of a Maven package.
+%%
 %% The returned text might contain formatting. For example, it might contain
 %% formatting for Markdown or reStructuredText.
 get_package_version_readme(Client, Domain, Format, Package, PackageVersion, Repository)
@@ -1067,6 +1116,7 @@ list_package_versions(Client, Input0, Options0) ->
                      {<<"max-results">>, <<"maxResults">>},
                      {<<"namespace">>, <<"namespace">>},
                      {<<"next-token">>, <<"nextToken">>},
+                     {<<"originType">>, <<"originType">>},
                      {<<"package">>, <<"package">>},
                      {<<"repository">>, <<"repository">>},
                      {<<"sortBy">>, <<"sortBy">>},
@@ -1102,7 +1152,9 @@ list_packages(Client, Input0, Options0) ->
                      {<<"namespace">>, <<"namespace">>},
                      {<<"next-token">>, <<"nextToken">>},
                      {<<"package-prefix">>, <<"packagePrefix">>},
-                     {<<"repository">>, <<"repository">>}
+                     {<<"publish">>, <<"publish">>},
+                     {<<"repository">>, <<"repository">>},
+                     {<<"upstream">>, <<"upstream">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -1221,6 +1273,51 @@ put_domain_permissions_policy(Client, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Sets the package origin configuration for a package.
+%%
+%% The package origin configuration determines how new versions of a package
+%% can be added to a repository. You can allow or block direct publishing of
+%% new package versions, or ingestion and retaining of new package versions
+%% from an external connection or upstream source. For more information about
+%% package origin controls and configuration, see Editing package origin
+%% controls in the CodeArtifact User Guide.
+%%
+%% `PutPackageOriginConfiguration' can be called on a package that doesn't
+%% yet exist in the repository. When called on a package that does not exist,
+%% a package is created in the repository with no versions and the requested
+%% restrictions are set on the package. This can be used to preemptively
+%% block ingesting or retaining any versions from external connections or
+%% upstream repositories, or to block publishing any versions of the package
+%% into the repository before connecting any package managers or publishers
+%% to the repository.
+put_package_origin_configuration(Client, Input) ->
+    put_package_origin_configuration(Client, Input, []).
+put_package_origin_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/package"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"domain">>, <<"domain">>},
+                     {<<"domain-owner">>, <<"domainOwner">>},
+                     {<<"format">>, <<"format">>},
+                     {<<"namespace">>, <<"namespace">>},
+                     {<<"package">>, <<"package">>},
+                     {<<"repository">>, <<"repository">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the resource policy on a repository that specifies permissions
