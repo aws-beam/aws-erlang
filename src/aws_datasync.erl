@@ -245,26 +245,24 @@ create_location_smb(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationSmb">>, Input, Options).
 
-%% @doc Creates a task.
+%% @doc Configures a task, which defines where and how DataSync transfers
+%% your data.
 %%
-%% A task includes a source location and a destination location, and a
-%% configuration that specifies how data is transferred. A task always
-%% transfers data from the source location to the destination location. The
-%% configuration specifies options such as task scheduling, bandwidth limits,
-%% etc. A task is the complete definition of a data transfer.
+%% A task includes a source location, a destination location, and the
+%% preferences for how and when you want to transfer your data (such as
+%% bandwidth limits, scheduling, among other options).
 %%
 %% When you create a task that transfers data between Amazon Web Services
-%% services in different Amazon Web Services Regions, one of the two
-%% locations that you specify must reside in the Region where DataSync is
-%% being used. The other location must be specified in a different Region.
+%% services in different Amazon Web Services Regions, one of your locations
+%% must reside in the Region where you're using DataSync.
 %%
-%% You can transfer data between commercial Amazon Web Services Regions
-%% except for China, or between Amazon Web Services GovCloud (US) Regions.
+%% For more information, see the following topics:
 %%
-%% When you use DataSync to copy files or objects between Amazon Web Services
-%% Regions, you pay for data transfer between Regions. This is billed as data
-%% transfer OUT from your source Region to your destination Region. For more
-%% information, see Data Transfer pricing.
+%% <ul> <li> Working with DataSync locations
+%%
+%% </li> <li> Configure DataSync task settings
+%%
+%% </li> </ul>
 create_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_task(Client, Input, []).
@@ -468,7 +466,7 @@ list_task_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTaskExecutions">>, Input, Options).
 
-%% @doc Returns a list of all the tasks.
+%% @doc Returns a list of the DataSync tasks you created.
 list_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tasks(Client, Input, []).

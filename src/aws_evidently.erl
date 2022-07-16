@@ -27,6 +27,8 @@
          create_launch/4,
          create_project/2,
          create_project/3,
+         create_segment/2,
+         create_segment/3,
          delete_experiment/4,
          delete_experiment/5,
          delete_feature/4,
@@ -35,6 +37,8 @@
          delete_launch/5,
          delete_project/3,
          delete_project/4,
+         delete_segment/3,
+         delete_segment/4,
          evaluate_feature/4,
          evaluate_feature/5,
          get_experiment/3,
@@ -51,6 +55,9 @@
          get_project/2,
          get_project/4,
          get_project/5,
+         get_segment/2,
+         get_segment/4,
+         get_segment/5,
          list_experiments/2,
          list_experiments/4,
          list_experiments/5,
@@ -63,6 +70,12 @@
          list_projects/1,
          list_projects/3,
          list_projects/4,
+         list_segment_references/3,
+         list_segment_references/5,
+         list_segment_references/6,
+         list_segments/1,
+         list_segments/3,
+         list_segments/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -78,6 +91,8 @@
          stop_launch/5,
          tag_resource/3,
          tag_resource/4,
+         test_segment_pattern/2,
+         test_segment_pattern/3,
          untag_resource/3,
          untag_resource/4,
          update_experiment/4,
@@ -152,6 +167,10 @@ batch_evaluate_feature(Client, Project, Input0, Options0) ->
 %% and data. An experiment can test as many as five variations at once.
 %% Evidently collects experiment data and analyzes it by statistical methods,
 %% and provides clear recommendations about which variations perform better.
+%%
+%% You can optionally specify a `segment' to have the experiment consider
+%% only certain audience types in the experiment, such as using only user
+%% sessions from a certain location or who use a certain internet browser.
 %%
 %% Don't use this operation to update an existing experiment. Instead, use
 %% UpdateExperiment.
@@ -253,6 +272,47 @@ create_project(Client, Input) ->
 create_project(Client, Input0, Options0) ->
     Method = post,
     Path = ["/projects"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Use this operation to define a segment of your audience.
+%%
+%% A segment is a portion of your audience that share one or more
+%% characteristics. Examples could be Chrome browser users, users in Europe,
+%% or Firefox browser users in Europe who also fit other criteria that your
+%% application collects, such as age.
+%%
+%% Using a segment in an experiment limits that experiment to evaluate only
+%% the users who match the segment criteria. Using one or more segments in a
+%% launch allow you to define different traffic splits for the different
+%% audience segments.
+%%
+%% <p>For more information about segment pattern syntax, see <a
+%% href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments-syntax.html">
+%% Segment rule pattern syntax</a>.</p> <p>The pattern that you define for a
+%% segment is matched against the value of <code>evaluationContext</code>,
+%% which is passed into Evidently in the <a
+%% href="https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_EvaluateFeature.html">EvaluateFeature</a>
+%% operation, when Evidently assigns a feature variation to a user.</p>
+create_segment(Client, Input) ->
+    create_segment(Client, Input, []).
+create_segment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/segments"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -373,6 +433,32 @@ delete_project(Client, Project, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a segment.
+%%
+%% You can't delete a segment that is being used in a launch or experiment,
+%% even if that launch or experiment is not currently running.
+delete_segment(Client, Segment, Input) ->
+    delete_segment(Client, Segment, Input, []).
+delete_segment(Client, Segment, Input0, Options0) ->
+    Method = delete,
+    Path = ["/segments/", aws_util:encode_uri(Segment), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This operation assigns a feature variation to one given user session.
 %%
 %% You pass in an `entityID' that represents the user. Evidently then checks
@@ -382,21 +468,29 @@ delete_project(Client, Project, Input0, Options0) ->
 %% `entityID' matches an override rule, the user is served the variation
 %% specified by that rule.
 %%
-%% Next, if there is a launch of the feature, the user might be assigned to a
-%% variation in the launch. The chance of this depends on the percentage of
-%% users that are allocated to that launch. If the user is enrolled in the
-%% launch, the variation they are served depends on the allocation of the
-%% various feature variations used for the launch.
-%%
-%% If the user is not assigned to a launch, and there is an ongoing
-%% experiment for this feature, the user might be assigned to a variation in
-%% the experiment. The chance of this depends on the percentage of users that
-%% are allocated to that experiment. If the user is enrolled in the
+%% <p>If there is a current launch with this feature that uses segment
+%% overrides, and if the user session's <code>evaluationContext</code>
+%% matches a segment rule defined in a segment override, the configuration in
+%% the segment overrides is used. For more information about segments, see <a
+%% href="https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_CreateSegment.html">CreateSegment</a>
+%% and <a
+%% href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html">Use
+%% segments to focus your audience</a>.</p> <p>If there is a launch with no
+%% segment overrides, the user might be assigned to a variation in the
+%% launch. The chance of this depends on the percentage of users that are
+%% allocated to that launch. If the user is enrolled in the launch, the
+%% variation they are served depends on the allocation of the various feature
+%% variations used for the launch.</p> <p>If the user is not assigned to a
+%% launch, and there is an ongoing experiment for this feature, the user
+%% might be assigned to a variation in the experiment. The chance of this
+%% depends on the percentage of users that are allocated to that
+%% experiment.</p> <p>If the experiment uses a segment, then only user
+%% sessions with <code>evaluationContext</code> values that match the segment
+%% rule are used in the experiment.</p> <p>If the user is enrolled in the
 %% experiment, the variation they are served depends on the allocation of the
-%% various feature variations used for the experiment.
-%%
-%% If the user is not assigned to a launch or experiment, they are served the
-%% default variation.
+%% various feature variations used for the experiment. </p> <p>If the user is
+%% not assigned to a launch or experiment, they are served the default
+%% variation.</p>
 evaluate_feature(Client, Feature, Project, Input) ->
     evaluate_feature(Client, Feature, Project, Input, []).
 evaluate_feature(Client, Feature, Project, Input0, Options0) ->
@@ -554,6 +648,31 @@ get_project(Client, Project, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns information about the specified segment.
+%%
+%% Specify the segment you want to view by specifying its ARN.
+get_segment(Client, Segment)
+  when is_map(Client) ->
+    get_segment(Client, Segment, #{}, #{}).
+
+get_segment(Client, Segment, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_segment(Client, Segment, QueryMap, HeadersMap, []).
+
+get_segment(Client, Segment, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/segments/", aws_util:encode_uri(Segment), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns configuration details about all the experiments in the
 %% specified project.
 list_experiments(Client, Project)
@@ -656,6 +775,65 @@ list_projects(Client, QueryMap, HeadersMap)
 list_projects(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/projects"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Use this operation to find which experiments or launches are using a
+%% specified segment.
+list_segment_references(Client, Segment, Type)
+  when is_map(Client) ->
+    list_segment_references(Client, Segment, Type, #{}, #{}).
+
+list_segment_references(Client, Segment, Type, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_segment_references(Client, Segment, Type, QueryMap, HeadersMap, []).
+
+list_segment_references(Client, Segment, Type, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/segments/", aws_util:encode_uri(Segment), "/references"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"type">>, Type}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of audience segments that you have created in your
+%% account in this Region.
+list_segments(Client)
+  when is_map(Client) ->
+    list_segments(Client, #{}, #{}).
+
+list_segments(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_segments(Client, QueryMap, HeadersMap, []).
+
+list_segments(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/segments"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -850,6 +1028,32 @@ tag_resource(Client, ResourceArn, Input) ->
 tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Use this operation to test a rules pattern that you plan to use to
+%% create an audience segment.
+%%
+%% For more information about segments, see CreateSegment.
+test_segment_pattern(Client, Input) ->
+    test_segment_pattern(Client, Input, []).
+test_segment_pattern(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/test-segment-pattern"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

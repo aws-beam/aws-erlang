@@ -23,7 +23,7 @@
 %% WAF is a web application firewall that lets you monitor the HTTP and HTTPS
 %% requests that are forwarded to Amazon CloudFront, an Amazon API Gateway
 %% REST API, an Application Load Balancer, or an AppSync GraphQL API. WAF
-%% also lets you control access to your content. Based on conditions that you
+%% also lets you control access to your content. Based on criteria that you
 %% specify, such as the IP addresses that requests originate from or the
 %% values of query strings, the Amazon API Gateway REST API, CloudFront
 %% distribution, the Application Load Balancer, or the AppSync GraphQL API
@@ -822,8 +822,8 @@ update_ip_set(Client, Input, Options)
 %% @doc Updates the expiration information for your managed rule set.
 %%
 %% Use this to initiate the expiration of a managed rule group version. After
-%% you initiate expiration for a version, WAF excludes it from the reponse to
-%% `ListAvailableManagedRuleGroupVersions' for the managed rule group.
+%% you initiate expiration for a version, WAF excludes it from the response
+%% to `ListAvailableManagedRuleGroupVersions' for the managed rule group.
 %%
 %% This is intended for use only by vendors of managed rule sets. Vendors are
 %% Amazon Web Services and Amazon Web Services Marketplace sellers.
@@ -903,8 +903,8 @@ update_rule_group(Client, Input, Options)
 
 %% @doc Updates the specified `WebACL'.
 %%
-%% While updating a web ACL, WAF provides continous coverage to the resources
-%% that you have associated with the web ACL.
+%% While updating a web ACL, WAF provides continuous coverage to the
+%% resources that you have associated with the web ACL.
 %%
 %% When you make changes to web ACLs or web ACL components, like rules and
 %% rule groups, WAF propagates the changes everywhere that the web ACL and
