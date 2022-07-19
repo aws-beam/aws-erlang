@@ -44,6 +44,10 @@
          create_device_fleet/3,
          create_domain/2,
          create_domain/3,
+         create_edge_deployment_plan/2,
+         create_edge_deployment_plan/3,
+         create_edge_deployment_stage/2,
+         create_edge_deployment_stage/3,
          create_edge_packaging_job/2,
          create_edge_packaging_job/3,
          create_endpoint/2,
@@ -134,6 +138,10 @@
          delete_device_fleet/3,
          delete_domain/2,
          delete_domain/3,
+         delete_edge_deployment_plan/2,
+         delete_edge_deployment_plan/3,
+         delete_edge_deployment_stage/2,
+         delete_edge_deployment_stage/3,
          delete_endpoint/2,
          delete_endpoint/3,
          delete_endpoint_config/2,
@@ -216,6 +224,8 @@
          describe_device_fleet/3,
          describe_domain/2,
          describe_domain/3,
+         describe_edge_deployment_plan/2,
+         describe_edge_deployment_plan/3,
          describe_edge_packaging_job/2,
          describe_edge_packaging_job/3,
          describe_endpoint/2,
@@ -336,6 +346,8 @@
          list_devices/3,
          list_domains/2,
          list_domains/3,
+         list_edge_deployment_plans/2,
+         list_edge_deployment_plans/3,
          list_edge_packaging_jobs/2,
          list_edge_packaging_jobs/3,
          list_endpoint_configs/2,
@@ -398,6 +410,8 @@
          list_processing_jobs/3,
          list_projects/2,
          list_projects/3,
+         list_stage_devices/2,
+         list_stage_devices/3,
          list_studio_lifecycle_configs/2,
          list_studio_lifecycle_configs/3,
          list_subscribed_workteams/2,
@@ -436,6 +450,8 @@
          send_pipeline_execution_step_failure/3,
          send_pipeline_execution_step_success/2,
          send_pipeline_execution_step_success/3,
+         start_edge_deployment_stage/2,
+         start_edge_deployment_stage/3,
          start_monitoring_schedule/2,
          start_monitoring_schedule/3,
          start_notebook_instance/2,
@@ -446,6 +462,8 @@
          stop_auto_ml_job/3,
          stop_compilation_job/2,
          stop_compilation_job/3,
+         stop_edge_deployment_stage/2,
+         stop_edge_deployment_stage/3,
          stop_edge_packaging_job/2,
          stop_edge_packaging_job/3,
          stop_hyper_parameter_tuning_job/2,
@@ -807,6 +825,24 @@ create_domain(Client, Input)
 create_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDomain">>, Input, Options).
+
+%% @doc Creates an edge deployment plan, consisting of multiple stages.
+%%
+%% Each stage may have a different deployment configuration and devices.
+create_edge_deployment_plan(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_edge_deployment_plan(Client, Input, []).
+create_edge_deployment_plan(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateEdgeDeploymentPlan">>, Input, Options).
+
+%% @doc Creates a new stage in an existing edge deployment plan.
+create_edge_deployment_stage(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_edge_deployment_stage(Client, Input, []).
+create_edge_deployment_stage(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateEdgeDeploymentStage">>, Input, Options).
 
 %% @doc Starts a SageMaker Edge Manager model packaging job.
 %%
@@ -1683,6 +1719,24 @@ delete_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDomain">>, Input, Options).
 
+%% @doc Deletes an edge deployment plan if (and only if) all the stages in
+%% the plan are inactive or there are no stages in the plan.
+delete_edge_deployment_plan(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_edge_deployment_plan(Client, Input, []).
+delete_edge_deployment_plan(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteEdgeDeploymentPlan">>, Input, Options).
+
+%% @doc Delete a stage in an edge deployment plan if (and only if) the stage
+%% is inactive.
+delete_edge_deployment_stage(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_edge_deployment_stage(Client, Input, []).
+delete_edge_deployment_stage(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteEdgeDeploymentStage">>, Input, Options).
+
 %% @doc Deletes an endpoint.
 %%
 %% SageMaker frees up all of the resources that were deployed when the
@@ -2119,6 +2173,14 @@ describe_domain(Client, Input)
 describe_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDomain">>, Input, Options).
+
+%% @doc Describes an edge deployment plan with deployment status per stage.
+describe_edge_deployment_plan(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_edge_deployment_plan(Client, Input, []).
+describe_edge_deployment_plan(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeEdgeDeploymentPlan">>, Input, Options).
 
 %% @doc A description of edge packaging jobs.
 describe_edge_packaging_job(Client, Input)
@@ -2671,6 +2733,14 @@ list_domains(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDomains">>, Input, Options).
 
+%% @doc Lists all edge deployment plans.
+list_edge_deployment_plans(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_edge_deployment_plans(Client, Input, []).
+list_edge_deployment_plans(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListEdgeDeploymentPlans">>, Input, Options).
+
 %% @doc Returns a list of edge packaging jobs.
 list_edge_packaging_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -2939,6 +3009,15 @@ list_projects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProjects">>, Input, Options).
 
+%% @doc Lists devices allocated to the stage, containing detailed device
+%% information and deployment status.
+list_stage_devices(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_stage_devices(Client, Input, []).
+list_stage_devices(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListStageDevices">>, Input, Options).
+
 %% @doc Lists the Studio Lifecycle Configurations in your Amazon Web Services
 %% Account.
 list_studio_lifecycle_configs(Client, Input)
@@ -3169,6 +3248,14 @@ send_pipeline_execution_step_success(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendPipelineExecutionStepSuccess">>, Input, Options).
 
+%% @doc Starts a stage in an edge deployment plan.
+start_edge_deployment_stage(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_edge_deployment_stage(Client, Input, []).
+start_edge_deployment_stage(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartEdgeDeploymentStage">>, Input, Options).
+
 %% @doc Starts a previously stopped monitoring schedule.
 %%
 %% By default, when you successfully create a new schedule, the status of a
@@ -3225,6 +3312,14 @@ stop_compilation_job(Client, Input)
 stop_compilation_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopCompilationJob">>, Input, Options).
+
+%% @doc Stops a stage in an edge deployment plan.
+stop_edge_deployment_stage(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_edge_deployment_stage(Client, Input, []).
+stop_edge_deployment_stage(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopEdgeDeploymentStage">>, Input, Options).
 
 %% @doc Request to stop an edge packaging job.
 stop_edge_packaging_job(Client, Input)

@@ -352,7 +352,7 @@ create_alias(Client, Input, Options)
 %% @doc Creates a custom key store that is associated with an CloudHSM
 %% cluster that you own and manage.
 %%
-%% This operation is part of the Custom Key Store feature feature in KMS,
+%% This operation is part of the custom key store feature feature in KMS,
 %% which combines the convenience and extensive integration of KMS with the
 %% isolation and control of a single-tenant key store.
 %%
@@ -473,6 +473,8 @@ create_grant(Client, Input, Options)
 %% encryption KMS key, you aren't required to specify any parameters. The
 %% default value for `KeySpec', `SYMMETRIC_DEFAULT', and the default value
 %% for `KeyUsage', `ENCRYPT_DECRYPT', create a symmetric encryption KMS key.
+%% For technical details, see SYMMETRIC_DEFAULT key spec in the Key
+%% Management Service Developer Guide.
 %%
 %% If you need a key for basic encryption and decryption or you are creating
 %% a KMS key to protect your resources in an Amazon Web Services service,
@@ -488,14 +490,15 @@ create_grant(Client, Input, Options)
 %% will be used to encrypt and decrypt or sign and verify. You can't change
 %% these properties after the KMS key is created.
 %%
-%% Asymmetric KMS keys contain an RSA key pair or an Elliptic Curve (ECC) key
-%% pair. The private key in an asymmetric KMS key never leaves KMS
-%% unencrypted. However, you can use the `GetPublicKey' operation to download
-%% the public key so it can be used outside of KMS. KMS keys with RSA key
-%% pairs can be used to encrypt or decrypt data or sign and verify messages
-%% (but not both). KMS keys with ECC key pairs can be used only to sign and
-%% verify messages. For information about asymmetric KMS keys, see Asymmetric
-%% KMS keys in the Key Management Service Developer Guide.
+%% Asymmetric KMS keys contain an RSA key pair, Elliptic Curve (ECC) key
+%% pair, or an SM2 key pair (China Regions only). The private key in an
+%% asymmetric KMS key never leaves KMS unencrypted. However, you can use the
+%% `GetPublicKey' operation to download the public key so it can be used
+%% outside of KMS. KMS keys with RSA or SM2 key pairs can be used to encrypt
+%% or decrypt data or sign and verify messages (but not both). KMS keys with
+%% ECC key pairs can be used only to sign and verify messages. For
+%% information about asymmetric KMS keys, see Asymmetric KMS keys in the Key
+%% Management Service Developer Guide.
 %%
 %% </dd> <dt>HMAC KMS key</dt> <dd> To create an HMAC KMS key, set the
 %% `KeySpec' parameter to a key spec value for HMAC KMS keys. Then set the
@@ -726,11 +729,11 @@ delete_alias(Client, Input, Options)
 %% This operation does not delete the CloudHSM cluster that is associated
 %% with the custom key store, or affect any users or keys in the cluster.
 %%
-%% The custom key store that you delete cannot contain any KMS KMS keys.
-%% Before deleting the key store, verify that you will never need to use any
-%% of the KMS keys in the key store for any cryptographic operations. Then,
-%% use `ScheduleKeyDeletion' to delete the KMS keys from the key store. When
-%% the scheduled waiting period expires, the `ScheduleKeyDeletion' operation
+%% The custom key store that you delete cannot contain any KMS keys. Before
+%% deleting the key store, verify that you will never need to use any of the
+%% KMS keys in the key store for any cryptographic operations. Then, use
+%% `ScheduleKeyDeletion' to delete the KMS keys from the key store. When the
+%% scheduled waiting period expires, the `ScheduleKeyDeletion' operation
 %% deletes the KMS keys. Then it makes a best effort to delete the key
 %% material from the associated cluster. However, you might need to manually
 %% delete the orphaned key material from the cluster and its backups.
@@ -747,7 +750,7 @@ delete_alias(Client, Input, Options)
 %%
 %% If the operation succeeds, it returns a JSON object with no properties.
 %%
-%% This operation is part of the Custom Key Store feature feature in KMS,
+%% This operation is part of the custom key store feature feature in KMS,
 %% which combines the convenience and extensive integration of KMS with the
 %% isolation and control of a single-tenant key store.
 %%
@@ -814,7 +817,7 @@ delete_imported_key_material(Client, Input, Options)
 
 %% @doc Gets information about custom key stores in the account and Region.
 %%
-%% This operation is part of the Custom Key Store feature feature in KMS,
+%% This operation is part of the custom key store feature feature in KMS,
 %% which combines the convenience and extensive integration of KMS with the
 %% isolation and control of a single-tenant key store.
 %%
@@ -888,7 +891,8 @@ describe_custom_key_stores(Client, Input, Options)
 %% </li> <li> Whether automatic key rotation is enabled on the KMS key. To
 %% get this information, use `GetKeyRotationStatus'. Also, some key states
 %% prevent a KMS key from being automatically rotated. For details, see How
-%% Automatic Key Rotation Works in Key Management Service Developer Guide.
+%% Automatic Key Rotation Works in the Key Management Service Developer
+%% Guide.
 %%
 %% </li> <li> Tags on the KMS key. To get this information, use
 %% `ListResourceTags'.
@@ -1017,7 +1021,7 @@ disable_key_rotation(Client, Input, Options)
 %%
 %% If the operation succeeds, it returns a JSON object with no properties.
 %%
-%% This operation is part of the Custom Key Store feature feature in KMS,
+%% This operation is part of the custom key store feature feature in KMS,
 %% which combines the convenience and extensive integration of KMS with the
 %% isolation and control of a single-tenant key store.
 %%
@@ -1142,7 +1146,7 @@ enable_key_rotation(Client, Input, Options)
 %% in the Key Management Service Developer Guide.
 %%
 %% If you specify an asymmetric KMS key, you must also specify the encryption
-%% algorithm. The algorithm must be compatible with the KMS key type.
+%% algorithm. The algorithm must be compatible with the KMS key spec.
 %%
 %% When you use an asymmetric KMS key to encrypt or reencrypt data, be sure
 %% to record the KMS key and encryption algorithm that you choose. You will
@@ -1181,9 +1185,11 @@ enable_key_rotation(Client, Input, Options)
 %%
 %% </li> <li> `RSAES_OAEP_SHA_256': 446 bytes
 %%
-%% </li> </ul> </li> </ul> The KMS key that you use for this operation must
-%% be in a compatible key state. For details, see Key states of KMS keys in
-%% the Key Management Service Developer Guide.
+%% </li> </ul> </li> <li> `SM2PKE': 1024 bytes (China Regions only)
+%%
+%% </li> </ul> The KMS key that you use for this operation must be in a
+%% compatible key state. For details, see Key states of KMS keys in the Key
+%% Management Service Developer Guide.
 %%
 %% Cross-account use: Yes. To perform this operation with a KMS key in a
 %% different Amazon Web Services account, specify the key ARN or alias ARN in
@@ -1218,9 +1224,16 @@ encrypt(Client, Input, Options)
 %% To generate a data key, specify the symmetric encryption KMS key that will
 %% be used to encrypt the data key. You cannot use an asymmetric KMS key to
 %% encrypt data keys. To get the type of your KMS key, use the `DescribeKey'
-%% operation. You must also specify the length of the data key. Use either
-%% the `KeySpec' or `NumberOfBytes' parameters (but not both). For 128-bit
-%% and 256-bit data keys, use the `KeySpec' parameter.
+%% operation.
+%%
+%% You must also specify the length of the data key. Use either the `KeySpec'
+%% or `NumberOfBytes' parameters (but not both). For 128-bit and 256-bit data
+%% keys, use the `KeySpec' parameter.
+%%
+%% To generate an SM4 data key (China Regions only), specify a `KeySpec'
+%% value of `AES_128' or `NumberOfBytes' value of `128'. The symmetric
+%% encryption key used in China Regions to encrypt your data key is an SM4
+%% encryption key.
 %%
 %% To get only an encrypted copy of the data key, use
 %% `GenerateDataKeyWithoutPlaintext'. To generate an asymmetric data key
@@ -1318,10 +1331,11 @@ generate_data_key(Client, Input, Options)
 %% origin of your KMS key, use the `DescribeKey' operation.
 %%
 %% Use the `KeyPairSpec' parameter to choose an RSA or Elliptic Curve (ECC)
-%% data key pair. KMS recommends that your use ECC key pairs for signing, and
-%% use RSA key pairs for either encryption or signing, but not both. However,
-%% KMS cannot enforce any restrictions on the use of data key pairs outside
-%% of KMS.
+%% data key pair. In China Regions, you can also choose an SM2 data key pair.
+%% KMS recommends that you use ECC key pairs for signing, and use RSA and SM2
+%% key pairs for either encryption or signing, but not both. However, KMS
+%% cannot enforce any restrictions on the use of data key pairs outside of
+%% KMS.
 %%
 %% If you are using the data key pair to encrypt data, or for any operation
 %% where you don't immediately need a private key, consider using the
@@ -1396,10 +1410,11 @@ generate_data_key_pair(Client, Input, Options)
 %% origin of your KMS key, use the `DescribeKey' operation.
 %%
 %% Use the `KeyPairSpec' parameter to choose an RSA or Elliptic Curve (ECC)
-%% data key pair. KMS recommends that your use ECC key pairs for signing, and
-%% use RSA key pairs for either encryption or signing, but not both. However,
-%% KMS cannot enforce any restrictions on the use of data key pairs outside
-%% of KMS.
+%% data key pair. In China Regions, you can also choose an SM2 data key pair.
+%% KMS recommends that you use ECC key pairs for signing, and use RSA and SM2
+%% key pairs for either encryption or signing, but not both. However, KMS
+%% cannot enforce any restrictions on the use of data key pairs outside of
+%% KMS.
 %%
 %% `GenerateDataKeyPairWithoutPlaintext' returns a unique data key pair for
 %% each request. The bytes in the key are not related to the caller or KMS
@@ -1553,6 +1568,9 @@ generate_mac(Client, Input, Options)
 
 %% @doc Returns a random byte string that is cryptographically secure.
 %%
+%% You must use the `NumberOfBytes' parameter to specify the length of the
+%% random byte string. There is no default value for string length.
+%%
 %% By default, the random byte string is generated in KMS. To generate the
 %% byte string in the CloudHSM cluster that is associated with a custom key
 %% store, specify the custom key store ID.
@@ -1564,6 +1582,9 @@ generate_mac(Client, Input, Options)
 %%
 %% For more information about entropy and random number generation, see Key
 %% Management Service Cryptographic Details.
+%%
+%% Cross-account use: Not applicable. `GenerateRandom' does not use any
+%% account-specific resources, such as KMS keys.
 %%
 %% Required permissions: kms:GenerateRandom (IAM policy)
 generate_random(Client, Input)
@@ -1712,8 +1733,12 @@ get_parameters_for_import(Client, Input, Options)
 %% public key within KMS, you benefit from the authentication, authorization,
 %% and logging that are part of every KMS operation. You also reduce of risk
 %% of encrypting data that cannot be decrypted. These features are not
-%% effective outside of KMS. For details, see Special Considerations for
-%% Downloading Public Keys.
+%% effective outside of KMS.
+%%
+%% To verify a signature outside of KMS with an SM2 public key (China Regions
+%% only), you must specify the distinguishing ID. By default, KMS uses
+%% `1234567812345678' as the distinguishing ID. For more information, see
+%% Offline verification with SM2 key pairs.
 %%
 %% To help you use the public key safely outside of KMS, `GetPublicKey'
 %% returns important information about the public key in the response,
@@ -2635,7 +2660,7 @@ update_alias(Client, Input, Options)
 %% </li> </ul> If the operation succeeds, it returns a JSON object with no
 %% properties.
 %%
-%% This operation is part of the Custom Key Store feature feature in KMS,
+%% This operation is part of the custom key store feature feature in KMS,
 %% which combines the convenience and extensive integration of KMS with the
 %% isolation and control of a single-tenant key store.
 %%
@@ -2789,11 +2814,15 @@ update_primary_region(Client, Input, Options)
 %% You can also verify the digital signature by using the public key of the
 %% KMS key outside of KMS. Use the `GetPublicKey' operation to download the
 %% public key in the asymmetric KMS key and then use the public key to verify
-%% the signature outside of KMS. The advantage of using the `Verify'
-%% operation is that it is performed within KMS. As a result, it's easy to
-%% call, the operation is performed within the FIPS boundary, it is logged in
-%% CloudTrail, and you can use key policy and IAM policy to determine who is
-%% authorized to use the KMS key to verify signatures.
+%% the signature outside of KMS. To verify a signature outside of KMS with an
+%% SM2 public key, you must specify the distinguishing ID. By default, KMS
+%% uses `1234567812345678' as the distinguishing ID. For more information,
+%% see Offline verification with SM2 key pairs in Key Management Service
+%% Developer Guide. The advantage of using the `Verify' operation is that it
+%% is performed within KMS. As a result, it's easy to call, the operation is
+%% performed within the FIPS boundary, it is logged in CloudTrail, and you
+%% can use key policy and IAM policy to determine who is authorized to use
+%% the KMS key to verify signatures.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For details, see Key states of KMS keys in the Key Management

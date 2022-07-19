@@ -1,22 +1,12 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Web Services Single Sign On (SSO) is a cloud SSO service that
-%% makes it easy to centrally manage SSO access to multiple Amazon Web
-%% Services accounts and business applications.
-%%
-%% This guide provides information on SSO operations which could be used for
-%% access management of Amazon Web Services accounts. For information about
-%% Amazon Web Services SSO features, see the Amazon Web Services Single
-%% Sign-On User Guide.
-%%
-%% Many operations in the SSO APIs rely on identifiers for users and groups,
-%% known as principals. For more information about how to work with
-%% principals and principal IDs in Amazon Web Services SSO, see the Amazon
-%% Web Services SSO Identity Store API Reference.
+
 -module(aws_sso_admin).
 
--export([attach_managed_policy_to_permission_set/2,
+-export([attach_customer_managed_policy_reference_to_permission_set/2,
+         attach_customer_managed_policy_reference_to_permission_set/3,
+         attach_managed_policy_to_permission_set/2,
          attach_managed_policy_to_permission_set/3,
          create_account_assignment/2,
          create_account_assignment/3,
@@ -32,6 +22,8 @@
          delete_instance_access_control_attribute_configuration/3,
          delete_permission_set/2,
          delete_permission_set/3,
+         delete_permissions_boundary_from_permission_set/2,
+         delete_permissions_boundary_from_permission_set/3,
          describe_account_assignment_creation_status/2,
          describe_account_assignment_creation_status/3,
          describe_account_assignment_deletion_status/2,
@@ -42,10 +34,14 @@
          describe_permission_set/3,
          describe_permission_set_provisioning_status/2,
          describe_permission_set_provisioning_status/3,
+         detach_customer_managed_policy_reference_from_permission_set/2,
+         detach_customer_managed_policy_reference_from_permission_set/3,
          detach_managed_policy_from_permission_set/2,
          detach_managed_policy_from_permission_set/3,
          get_inline_policy_for_permission_set/2,
          get_inline_policy_for_permission_set/3,
+         get_permissions_boundary_for_permission_set/2,
+         get_permissions_boundary_for_permission_set/3,
          list_account_assignment_creation_status/2,
          list_account_assignment_creation_status/3,
          list_account_assignment_deletion_status/2,
@@ -54,6 +50,8 @@
          list_account_assignments/3,
          list_accounts_for_provisioned_permission_set/2,
          list_accounts_for_provisioned_permission_set/3,
+         list_customer_managed_policy_references_in_permission_set/2,
+         list_customer_managed_policy_references_in_permission_set/3,
          list_instances/2,
          list_instances/3,
          list_managed_policies_in_permission_set/2,
@@ -70,6 +68,8 @@
          provision_permission_set/3,
          put_inline_policy_to_permission_set/2,
          put_inline_policy_to_permission_set/3,
+         put_permissions_boundary_to_permission_set/2,
+         put_permissions_boundary_to_permission_set/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -85,7 +85,17 @@
 %% API
 %%====================================================================
 
-%% @doc Attaches an IAM managed policy ARN to a permission set.
+%% @doc Attaches the specified IAM customer managed policy to the specified
+%% `PermissionSet'.
+attach_customer_managed_policy_reference_to_permission_set(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    attach_customer_managed_policy_reference_to_permission_set(Client, Input, []).
+attach_customer_managed_policy_reference_to_permission_set(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AttachCustomerManagedPolicyReferenceToPermissionSet">>, Input, Options).
+
+%% @doc Attaches an Amazon Web Services managed IAM policy ARN to a
+%% permission set.
 %%
 %% If the permission set is already referenced by one or more account
 %% assignments, you will need to call ` `ProvisionPermissionSet' ' after this
@@ -182,6 +192,14 @@ delete_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePermissionSet">>, Input, Options).
 
+%% @doc Deletes the permissions boundary from a specified `PermissionSet'.
+delete_permissions_boundary_from_permission_set(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_permissions_boundary_from_permission_set(Client, Input, []).
+delete_permissions_boundary_from_permission_set(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeletePermissionsBoundaryFromPermissionSet">>, Input, Options).
+
 %% @doc Describes the status of the assignment creation request.
 describe_account_assignment_creation_status(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -229,8 +247,17 @@ describe_permission_set_provisioning_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePermissionSetProvisioningStatus">>, Input, Options).
 
-%% @doc Detaches the attached IAM managed policy ARN from the specified
-%% permission set.
+%% @doc Detaches the specified IAM customer managed policy from the specified
+%% `PermissionSet'.
+detach_customer_managed_policy_reference_from_permission_set(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    detach_customer_managed_policy_reference_from_permission_set(Client, Input, []).
+detach_customer_managed_policy_reference_from_permission_set(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DetachCustomerManagedPolicyReferenceFromPermissionSet">>, Input, Options).
+
+%% @doc Detaches the attached Amazon Web Services managed IAM policy ARN from
+%% the specified permission set.
 detach_managed_policy_from_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_managed_policy_from_permission_set(Client, Input, []).
@@ -245,6 +272,14 @@ get_inline_policy_for_permission_set(Client, Input)
 get_inline_policy_for_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInlinePolicyForPermissionSet">>, Input, Options).
+
+%% @doc Obtains the permissions boundary for a specified `PermissionSet'.
+get_permissions_boundary_for_permission_set(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_permissions_boundary_for_permission_set(Client, Input, []).
+get_permissions_boundary_for_permission_set(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetPermissionsBoundaryForPermissionSet">>, Input, Options).
 
 %% @doc Lists the status of the Amazon Web Services account assignment
 %% creation requests for a specified SSO instance.
@@ -282,6 +317,15 @@ list_accounts_for_provisioned_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccountsForProvisionedPermissionSet">>, Input, Options).
 
+%% @doc Lists all IAM customer managed policies attached to a specified
+%% `PermissionSet'.
+list_customer_managed_policy_references_in_permission_set(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_customer_managed_policy_references_in_permission_set(Client, Input, []).
+list_customer_managed_policy_references_in_permission_set(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCustomerManagedPolicyReferencesInPermissionSet">>, Input, Options).
+
 %% @doc Lists the SSO instances that the caller has access to.
 list_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -290,8 +334,8 @@ list_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInstances">>, Input, Options).
 
-%% @doc Lists the IAM managed policy that is attached to a specified
-%% permission set.
+%% @doc Lists the Amazon Web Services managed IAM policy that is attached to
+%% a specified permission set.
 list_managed_policies_in_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_managed_policies_in_permission_set(Client, Input, []).
@@ -354,6 +398,15 @@ put_inline_policy_to_permission_set(Client, Input)
 put_inline_policy_to_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutInlinePolicyToPermissionSet">>, Input, Options).
+
+%% @doc Attaches an Amazon Web Services managed or customer managed IAM
+%% policy to the specified `PermissionSet' as a permissions boundary.
+put_permissions_boundary_to_permission_set(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_permissions_boundary_to_permission_set(Client, Input, []).
+put_permissions_boundary_to_permission_set(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutPermissionsBoundaryToPermissionSet">>, Input, Options).
 
 %% @doc Associates a set of tags with a specified resource.
 tag_resource(Client, Input)
