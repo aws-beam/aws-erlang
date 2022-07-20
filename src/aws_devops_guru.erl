@@ -61,10 +61,14 @@
          get_resource_collection/5,
          list_anomalies_for_insight/3,
          list_anomalies_for_insight/4,
+         list_anomalous_log_groups/2,
+         list_anomalous_log_groups/3,
          list_events/2,
          list_events/3,
          list_insights/2,
          list_insights/3,
+         list_monitored_resources/2,
+         list_monitored_resources/3,
          list_notification_channels/2,
          list_notification_channels/3,
          list_organization_insights/2,
@@ -553,6 +557,29 @@ list_anomalies_for_insight(Client, InsightId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns the list of log groups that contain log anomalies.
+list_anomalous_log_groups(Client, Input) ->
+    list_anomalous_log_groups(Client, Input, []).
+list_anomalous_log_groups(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-log-anomalies"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns a list of the events emitted by the resources that are
 %% evaluated by DevOps Guru.
 %%
@@ -588,6 +615,30 @@ list_insights(Client, Input) ->
 list_insights(Client, Input0, Options0) ->
     Method = post,
     Path = ["/insights"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the list of all log groups that are being monitored and
+%% tagged by DevOps Guru.
+list_monitored_resources(Client, Input) ->
+    list_monitored_resources(Client, Input, []).
+list_monitored_resources(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/monitoredResources"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

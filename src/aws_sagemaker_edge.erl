@@ -5,7 +5,9 @@
 %% active agents.
 -module(aws_sagemaker_edge).
 
--export([get_device_registration/2,
+-export([get_deployments/2,
+         get_deployments/3,
+         get_device_registration/2,
          get_device_registration/3,
          send_heartbeat/2,
          send_heartbeat/3]).
@@ -15,6 +17,29 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Use to get the active deployments from a device.
+get_deployments(Client, Input) ->
+    get_deployments(Client, Input, []).
+get_deployments(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetDeployments"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Use to check if a device is registered with SageMaker Edge Manager.
 get_device_registration(Client, Input) ->
