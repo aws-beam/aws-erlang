@@ -750,7 +750,8 @@ attach_policy(Client, PolicyName, Input0, Options0) ->
 %% @doc Attaches the specified policy to the specified principal (certificate
 %% or other credential).
 %%
-%% Note: This action is deprecated. Please use `AttachPolicy' instead.
+%% Note: This action is deprecated and works as expected for backward
+%% compatibility, but we won't add enhancements. Use `AttachPolicy' instead.
 %%
 %% Requires permission to access the AttachPrincipalPolicy action.
 attach_principal_policy(Client, PolicyName, Input) ->
