@@ -32,6 +32,8 @@
          create_asset/3,
          create_asset_model/2,
          create_asset_model/3,
+         create_bulk_import_job/2,
+         create_bulk_import_job/3,
          create_dashboard/2,
          create_dashboard/3,
          create_gateway/2,
@@ -68,6 +70,9 @@
          describe_asset_property/3,
          describe_asset_property/5,
          describe_asset_property/6,
+         describe_bulk_import_job/2,
+         describe_bulk_import_job/4,
+         describe_bulk_import_job/5,
          describe_dashboard/2,
          describe_dashboard/4,
          describe_dashboard/5,
@@ -126,6 +131,9 @@
          list_associated_assets/2,
          list_associated_assets/4,
          list_associated_assets/5,
+         list_bulk_import_jobs/1,
+         list_bulk_import_jobs/3,
+         list_bulk_import_jobs/4,
          list_dashboards/2,
          list_dashboards/4,
          list_dashboards/5,
@@ -475,6 +483,41 @@ create_asset_model(Client, Input) ->
 create_asset_model(Client, Input0, Options0) ->
     Method = post,
     Path = ["/asset-models"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API operation is in preview release for IoT SiteWise and is
+%% subject to change.
+%%
+%% We recommend that you use this operation only with test data, and not in
+%% production environments.
+%%
+%% Defines a job to ingest data to IoT SiteWise from Amazon S3. For more
+%% information, see Create a bulk import job (CLI) in the Amazon Simple
+%% Storage Service User Guide.
+%%
+%% You must enable IoT SiteWise to export data to Amazon S3 before you create
+%% a bulk import job. For more information about how to configure storage
+%% settings, see PutStorageConfiguration.
+create_bulk_import_job(Client, Input) ->
+    create_bulk_import_job(Client, Input, []).
+create_bulk_import_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/jobs"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -920,6 +963,37 @@ describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap)
 describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/assets/", aws_util:encode_uri(AssetId), "/properties/", aws_util:encode_uri(PropertyId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This API operation is in preview release for IoT SiteWise and is
+%% subject to change.
+%%
+%% We recommend that you use this operation only with test data, and not in
+%% production environments.
+%%
+%% Retrieves information about a bulk import job request. For more
+%% information, see Describe a bulk import job (CLI) in the Amazon Simple
+%% Storage Service User Guide.
+describe_bulk_import_job(Client, JobId)
+  when is_map(Client) ->
+    describe_bulk_import_job(Client, JobId, #{}, #{}).
+
+describe_bulk_import_job(Client, JobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_bulk_import_job(Client, JobId, QueryMap, HeadersMap, []).
+
+describe_bulk_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1586,6 +1660,43 @@ list_associated_assets(Client, AssetId, QueryMap, HeadersMap, Options0)
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"traversalDirection">>, maps:get(<<"traversalDirection">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This API operation is in preview release for IoT SiteWise and is
+%% subject to change.
+%%
+%% We recommend that you use this operation only with test data, and not in
+%% production environments.
+%%
+%% Retrieves a paginated list of bulk import job requests. For more
+%% information, see List bulk import jobs (CLI) in the Amazon Simple Storage
+%% Service User Guide.
+list_bulk_import_jobs(Client)
+  when is_map(Client) ->
+    list_bulk_import_jobs(Client, #{}, #{}).
+
+list_bulk_import_jobs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_bulk_import_jobs(Client, QueryMap, HeadersMap, []).
+
+list_bulk_import_jobs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/jobs"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"filter">>, maps:get(<<"filter">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

@@ -54,6 +54,8 @@
          get_query_execution/3,
          get_query_results/2,
          get_query_results/3,
+         get_query_runtime_statistics/2,
+         get_query_runtime_statistics/3,
          get_table_metadata/2,
          get_table_metadata/3,
          get_work_group/2,
@@ -299,6 +301,19 @@ get_query_results(Client, Input)
 get_query_results(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQueryResults">>, Input, Options).
+
+%% @doc Returns query execution runtime statistics related to a single
+%% execution of a query if you have access to the workgroup in which the
+%% query ran.
+%%
+%% The query execution runtime statistics is returned only when
+%% `QueryExecutionStatus$State' is in a SUCCEEDED or FAILED state.
+get_query_runtime_statistics(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_query_runtime_statistics(Client, Input, []).
+get_query_runtime_statistics(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetQueryRuntimeStatistics">>, Input, Options).
 
 %% @doc Returns table metadata for the specified catalog, database, and
 %% table.
