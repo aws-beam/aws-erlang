@@ -110,10 +110,14 @@
          list_tags_for_resource/5,
          purchase_offering/3,
          purchase_offering/4,
+         reboot_input_device/3,
+         reboot_input_device/4,
          reject_input_device_transfer/3,
          reject_input_device_transfer/4,
          start_channel/3,
          start_channel/4,
+         start_input_device_maintenance_window/3,
+         start_input_device_maintenance_window/4,
          start_multiplex/3,
          start_multiplex/4,
          stop_channel/3,
@@ -1239,6 +1243,33 @@ purchase_offering(Client, OfferingId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Send a reboot command to the specified input device.
+%%
+%% The device will begin rebooting within a few seconds of sending the
+%% command. When the reboot is complete, the device’s connection status will
+%% change to connected.
+reboot_input_device(Client, InputDeviceId, Input) ->
+    reboot_input_device(Client, InputDeviceId, Input, []).
+reboot_input_device(Client, InputDeviceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/reboot"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Reject the transfer of the specified input device to your AWS
 %% account.
 reject_input_device_transfer(Client, InputDeviceId, Input) ->
@@ -1269,6 +1300,38 @@ start_channel(Client, ChannelId, Input) ->
 start_channel(Client, ChannelId, Input0, Options0) ->
     Method = post,
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/start"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Start a maintenance window for the specified input device.
+%%
+%% Starting a maintenance window will give the device up to two hours to
+%% install software. If the device was streaming prior to the maintenance, it
+%% will resume streaming when the software is fully installed. Devices
+%% automatically install updates while they are powered on and their
+%% MediaLive channels are stopped. A maintenance window allows you to update
+%% a device without having to stop MediaLive channels that use the device.
+%% The device must remain powered on and connected to the internet for the
+%% duration of the maintenance.
+start_input_device_maintenance_window(Client, InputDeviceId, Input) ->
+    start_input_device_maintenance_window(Client, InputDeviceId, Input, []).
+start_input_device_maintenance_window(Client, InputDeviceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/startInputDeviceMaintenanceWindow"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

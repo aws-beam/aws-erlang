@@ -229,6 +229,8 @@
          failover_global_cluster/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         modify_activity_stream/2,
+         modify_activity_stream/3,
          modify_certificates/2,
          modify_certificates/3,
          modify_current_db_cluster_capacity/2,
@@ -1639,6 +1641,23 @@ list_tags_for_resource(Client, Input)
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Changes the audit policy state of a database activity stream to
+%% either locked (default) or unlocked.
+%%
+%% A locked policy is read-only, whereas an unlocked policy is read/write. If
+%% your activity stream is started and locked, you can unlock it, customize
+%% your audit policy, and then lock your activity stream. Restarting the
+%% activity stream isn't required. For more information, see Modifying a
+%% database activity stream in the Amazon RDS User Guide.
+%%
+%% This operation is supported for RDS for Oracle only.
+modify_activity_stream(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_activity_stream(Client, Input, []).
+modify_activity_stream(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyActivityStream">>, Input, Options).
 
 %% @doc Override the system-default Secure Sockets Layer/Transport Layer
 %% Security (SSL/TLS) certificate for Amazon RDS for new DB instances, or

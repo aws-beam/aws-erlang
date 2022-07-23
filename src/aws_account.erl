@@ -8,8 +8,12 @@
          delete_alternate_contact/3,
          get_alternate_contact/2,
          get_alternate_contact/3,
+         get_contact_information/2,
+         get_contact_information/3,
          put_alternate_contact/2,
-         put_alternate_contact/3]).
+         put_alternate_contact/3,
+         put_contact_information/2,
+         put_contact_information/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -22,6 +26,12 @@
 %%
 %% For complete details about how to use the alternate contact operations,
 %% see Access or updating the alternate contacts.
+%%
+%% Before you can update the alternate contact information for an Amazon Web
+%% Services account that is managed by Organizations, you must first enable
+%% integration between Amazon Web Services Account Management and
+%% Organizations. For more information, see Enabling trusted access for
+%% Amazon Web Services Account Management.
 delete_alternate_contact(Client, Input) ->
     delete_alternate_contact(Client, Input, []).
 delete_alternate_contact(Client, Input0, Options0) ->
@@ -49,6 +59,12 @@ delete_alternate_contact(Client, Input0, Options0) ->
 %%
 %% For complete details about how to use the alternate contact operations,
 %% see Access or updating the alternate contacts.
+%%
+%% Before you can update the alternate contact information for an Amazon Web
+%% Services account that is managed by Organizations, you must first enable
+%% integration between Amazon Web Services Account Management and
+%% Organizations. For more information, see Enabling trusted access for
+%% Amazon Web Services Account Management.
 get_alternate_contact(Client, Input) ->
     get_alternate_contact(Client, Input, []).
 get_alternate_contact(Client, Input0, Options0) ->
@@ -71,16 +87,76 @@ get_alternate_contact(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves the primary contact information of an Amazon Web Services
+%% account.
+%%
+%% For complete details about how to use the primary contact operations, see
+%% Update the primary and alternate contact information.
+get_contact_information(Client, Input) ->
+    get_contact_information(Client, Input, []).
+get_contact_information(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/getContactInformation"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Modifies the specified alternate contact attached to an Amazon Web
 %% Services account.
 %%
 %% For complete details about how to use the alternate contact operations,
 %% see Access or updating the alternate contacts.
+%%
+%% Before you can update the alternate contact information for an Amazon Web
+%% Services account that is managed by Organizations, you must first enable
+%% integration between Amazon Web Services Account Management and
+%% Organizations. For more information, see Enabling trusted access for
+%% Amazon Web Services Account Management.
 put_alternate_contact(Client, Input) ->
     put_alternate_contact(Client, Input, []).
 put_alternate_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/putAlternateContact"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the primary contact information of an Amazon Web Services
+%% account.
+%%
+%% For complete details about how to use the primary contact operations, see
+%% Update the primary and alternate contact information.
+put_contact_information(Client, Input) ->
+    put_contact_information(Client, Input, []).
+put_contact_information(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/putContactInformation"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
