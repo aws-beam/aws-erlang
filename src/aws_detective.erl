@@ -22,11 +22,13 @@
 %% Detective is also integrated with Organizations. The organization
 %% management account designates the Detective administrator account for the
 %% organization. That account becomes the administrator account for the
-%% organization behavior graph. The Detective administrator account can
-%% enable any organization account as a member account in the organization
-%% behavior graph. The organization accounts do not receive invitations. The
-%% Detective administrator account can also invite other accounts to the
-%% organization behavior graph.
+%% organization behavior graph. The Detective administrator account is also
+%% the delegated administrator account for Detective in Organizations.
+%%
+%% The Detective administrator account can enable any organization account as
+%% a member account in the organization behavior graph. The organization
+%% accounts do not receive invitations. The Detective administrator account
+%% can also invite other accounts to the organization behavior graph.
 %%
 %% Every behavior graph is specific to a Region. You can only use the API to
 %% manage behavior graphs that belong to the Region that is associated with
@@ -79,6 +81,10 @@
 
 -export([accept_invitation/2,
          accept_invitation/3,
+         batch_get_graph_member_datasources/2,
+         batch_get_graph_member_datasources/3,
+         batch_get_membership_datasources/2,
+         batch_get_membership_datasources/3,
          create_graph/2,
          create_graph/3,
          create_members/2,
@@ -97,6 +103,8 @@
          enable_organization_admin_account/3,
          get_members/2,
          get_members/3,
+         list_datasource_packages/2,
+         list_datasource_packages/3,
          list_graphs/2,
          list_graphs/3,
          list_invitations/2,
@@ -116,6 +124,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_datasource_packages/2,
+         update_datasource_packages/3,
          update_organization_configuration/2,
          update_organization_configuration/3]).
 
@@ -138,6 +148,52 @@ accept_invitation(Client, Input) ->
 accept_invitation(Client, Input0, Options0) ->
     Method = put,
     Path = ["/invitation"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets data source package information for the behavior graph.
+batch_get_graph_member_datasources(Client, Input) ->
+    batch_get_graph_member_datasources(Client, Input, []).
+batch_get_graph_member_datasources(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/graph/datasources/get"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets information on the data source package history for an account.
+batch_get_membership_datasources(Client, Input) ->
+    batch_get_membership_datasources(Client, Input, []).
+batch_get_membership_datasources(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/membership/datasources/get"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -356,14 +412,20 @@ describe_organization_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes the Detective administrator account for the organization in
-%% the current Region.
+%% @doc Removes the Detective administrator account in the current Region.
 %%
-%% Deletes the behavior graph for that account.
+%% Deletes the organization behavior graph.
 %%
-%% Can only be called by the organization management account. Before you can
-%% select a different Detective administrator account, you must remove the
-%% Detective administrator account in all Regions.
+%% Can only be called by the organization management account.
+%%
+%% Removing the Detective administrator account does not affect the delegated
+%% administrator account for Detective in Organizations.
+%%
+%% To remove the delegated administrator account in Organizations, use the
+%% Organizations API. Removing the delegated administrator account also
+%% removes the Detective administrator account in all Regions, except for
+%% Regions where the Detective administrator account is the organization
+%% management account.
 disable_organization_admin_account(Client, Input) ->
     disable_organization_admin_account(Client, Input, []).
 disable_organization_admin_account(Client, Input0, Options0) ->
@@ -425,9 +487,16 @@ disassociate_membership(Client, Input0, Options0) ->
 %%
 %% Can only be called by the organization management account.
 %%
-%% The Detective administrator account for an organization must be the same
-%% in all Regions. If you already designated a Detective administrator
-%% account in another Region, then you must designate the same account.
+%% If the organization has a delegated administrator account in
+%% Organizations, then the Detective administrator account must be either the
+%% delegated administrator account or the organization management account.
+%%
+%% If the organization does not have a delegated administrator account in
+%% Organizations, then you can choose any account in the organization. If you
+%% choose an account other than the organization management account,
+%% Detective calls Organizations to make that account the delegated
+%% administrator account for Detective. The organization management account
+%% cannot be the delegated administrator account.
 enable_organization_admin_account(Client, Input) ->
     enable_organization_admin_account(Client, Input, []).
 enable_organization_admin_account(Client, Input0, Options0) ->
@@ -457,6 +526,29 @@ get_members(Client, Input) ->
 get_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/graph/members/get"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists data source packages in the behavior graph.
+list_datasource_packages(Client, Input) ->
+    list_datasource_packages(Client, Input, []).
+list_datasource_packages(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/graph/datasources/list"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -725,6 +817,29 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"TagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a data source packages for the behavior graph.
+update_datasource_packages(Client, Input) ->
+    update_datasource_packages(Client, Input, []).
+update_datasource_packages(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/graph/datasources/update"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the configuration for the Organizations integration in the

@@ -41,6 +41,8 @@
          delete_type/5,
          disassociate_api/3,
          disassociate_api/4,
+         evaluate_mapping_template/2,
+         evaluate_mapping_template/3,
          flush_api_cache/3,
          flush_api_cache/4,
          get_api_association/2,
@@ -533,6 +535,39 @@ disassociate_api(Client, DomainName, Input) ->
 disassociate_api(Client, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), "/apiassociation"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Evaluates a given template and returns the response.
+%%
+%% The mapping template can be a request or response template.
+%%
+%% Request templates take the incoming request after a GraphQL operation is
+%% parsed and convert it into a request configuration for the selected data
+%% source operation. Response templates interpret responses from the data
+%% source and map it to the shape of the GraphQL field output type.
+%%
+%% Mapping templates are written in the Apache Velocity Template Language
+%% (VTL).
+evaluate_mapping_template(Client, Input) ->
+    evaluate_mapping_template(Client, Input, []).
+evaluate_mapping_template(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/dataplane-evaluatetemplate"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

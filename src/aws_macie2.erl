@@ -94,6 +94,15 @@
          get_member/2,
          get_member/4,
          get_member/5,
+         get_reveal_configuration/1,
+         get_reveal_configuration/3,
+         get_reveal_configuration/4,
+         get_sensitive_data_occurrences/2,
+         get_sensitive_data_occurrences/4,
+         get_sensitive_data_occurrences/5,
+         get_sensitive_data_occurrences_availability/2,
+         get_sensitive_data_occurrences_availability/4,
+         get_sensitive_data_occurrences_availability/5,
          get_usage_statistics/2,
          get_usage_statistics/3,
          get_usage_totals/1,
@@ -143,7 +152,9 @@
          update_member_session/3,
          update_member_session/4,
          update_organization_configuration/2,
-         update_organization_configuration/3]).
+         update_organization_configuration/3,
+         update_reveal_configuration/2,
+         update_reveal_configuration/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -986,6 +997,78 @@ get_member(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the status and configuration settings for retrieving
+%% (revealing) occurrences of sensitive data reported by findings.
+get_reveal_configuration(Client)
+  when is_map(Client) ->
+    get_reveal_configuration(Client, #{}, #{}).
+
+get_reveal_configuration(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_reveal_configuration(Client, QueryMap, HeadersMap, []).
+
+get_reveal_configuration(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/reveal-configuration"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves (reveals) occurrences of sensitive data reported by a
+%% finding.
+get_sensitive_data_occurrences(Client, FindingId)
+  when is_map(Client) ->
+    get_sensitive_data_occurrences(Client, FindingId, #{}, #{}).
+
+get_sensitive_data_occurrences(Client, FindingId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_sensitive_data_occurrences(Client, FindingId, QueryMap, HeadersMap, []).
+
+get_sensitive_data_occurrences(Client, FindingId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/findings/", aws_util:encode_uri(FindingId), "/reveal"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Checks whether occurrences of sensitive data can be retrieved
+%% (revealed) for a finding.
+get_sensitive_data_occurrences_availability(Client, FindingId)
+  when is_map(Client) ->
+    get_sensitive_data_occurrences_availability(Client, FindingId, #{}, #{}).
+
+get_sensitive_data_occurrences_availability(Client, FindingId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_sensitive_data_occurrences_availability(Client, FindingId, QueryMap, HeadersMap, []).
+
+get_sensitive_data_occurrences_availability(Client, FindingId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/findings/", aws_util:encode_uri(FindingId), "/reveal/availability"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves (queries) quotas and aggregated usage data for one or more
 %% accounts.
 get_usage_statistics(Client, Input) ->
@@ -1520,6 +1603,30 @@ update_organization_configuration(Client, Input) ->
 update_organization_configuration(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/admin/configuration"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the status and configuration settings for retrieving
+%% (revealing) occurrences of sensitive data reported by findings.
+update_reveal_configuration(Client, Input) ->
+    update_reveal_configuration(Client, Input, []).
+update_reveal_configuration(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/reveal-configuration"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

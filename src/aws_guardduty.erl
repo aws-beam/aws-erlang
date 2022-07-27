@@ -62,6 +62,8 @@
          delete_publishing_destination/5,
          delete_threat_intel_set/4,
          delete_threat_intel_set/5,
+         describe_malware_scans/3,
+         describe_malware_scans/4,
          describe_organization_configuration/2,
          describe_organization_configuration/4,
          describe_organization_configuration/5,
@@ -97,6 +99,9 @@
          get_ip_set/3,
          get_ip_set/5,
          get_ip_set/6,
+         get_malware_scan_settings/2,
+         get_malware_scan_settings/4,
+         get_malware_scan_settings/5,
          get_master_account/2,
          get_master_account/4,
          get_master_account/5,
@@ -160,6 +165,8 @@
          update_findings_feedback/4,
          update_ip_set/4,
          update_ip_set/5,
+         update_malware_scan_settings/3,
+         update_malware_scan_settings/4,
          update_member_detectors/3,
          update_member_detectors/4,
          update_organization_configuration/3,
@@ -636,6 +643,29 @@ delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns a list of malware scans.
+describe_malware_scans(Client, DetectorId, Input) ->
+    describe_malware_scans(Client, DetectorId, Input, []).
+describe_malware_scans(Client, DetectorId, Input0, Options0) ->
+    Method = post,
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/malware-scans"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns information about the account selected as the delegated
 %% administrator for GuardDuty.
 describe_organization_configuration(Client, DetectorId)
@@ -958,6 +988,29 @@ get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap)
 get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the details of the malware scan settings.
+get_malware_scan_settings(Client, DetectorId)
+  when is_map(Client) ->
+    get_malware_scan_settings(Client, DetectorId, #{}, #{}).
+
+get_malware_scan_settings(Client, DetectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_malware_scan_settings(Client, DetectorId, QueryMap, HeadersMap, []).
+
+get_malware_scan_settings(Client, DetectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/malware-scan-settings"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1629,6 +1682,29 @@ update_ip_set(Client, DetectorId, IpSetId, Input) ->
 update_ip_set(Client, DetectorId, IpSetId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the malware scan settings.
+update_malware_scan_settings(Client, DetectorId, Input) ->
+    update_malware_scan_settings(Client, DetectorId, Input, []).
+update_malware_scan_settings(Client, DetectorId, Input0, Options0) ->
+    Method = post,
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/malware-scan-settings"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

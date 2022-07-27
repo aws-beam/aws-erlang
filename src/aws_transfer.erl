@@ -1,24 +1,28 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Web Services Transfer Family is a fully managed service that
-%% enables the transfer of files over the File Transfer Protocol (FTP), File
-%% Transfer Protocol over SSL (FTPS), or Secure Shell (SSH) File Transfer
-%% Protocol (SFTP) directly into and out of Amazon Simple Storage Service
-%% (Amazon S3).
+%% @doc Transfer Family is a fully managed service that enables the transfer
+%% of files over the File Transfer Protocol (FTP), File Transfer Protocol
+%% over SSL (FTPS), or Secure Shell (SSH) File Transfer Protocol (SFTP)
+%% directly into and out of Amazon Simple Storage Service (Amazon S3).
 %%
 %% Amazon Web Services helps you seamlessly migrate your file transfer
-%% workflows to Amazon Web Services Transfer Family by integrating with
-%% existing authentication systems, and providing DNS routing with Amazon
-%% Route 53 so nothing changes for your customers and partners, or their
-%% applications. With your data in Amazon S3, you can use it with Amazon Web
-%% Services services for processing, analytics, machine learning, and
-%% archiving. Getting started with Amazon Web Services Transfer Family is
-%% easy since there is no infrastructure to buy and set up.
+%% workflows to Transfer Family by integrating with existing authentication
+%% systems, and providing DNS routing with Amazon Route 53 so nothing changes
+%% for your customers and partners, or their applications. With your data in
+%% Amazon S3, you can use it with Amazon Web Services for processing,
+%% analytics, machine learning, and archiving. Getting started with Transfer
+%% Family is easy since there is no infrastructure to buy and set up.
 -module(aws_transfer).
 
 -export([create_access/2,
          create_access/3,
+         create_agreement/2,
+         create_agreement/3,
+         create_connector/2,
+         create_connector/3,
+         create_profile/2,
+         create_profile/3,
          create_server/2,
          create_server/3,
          create_user/2,
@@ -27,6 +31,14 @@
          create_workflow/3,
          delete_access/2,
          delete_access/3,
+         delete_agreement/2,
+         delete_agreement/3,
+         delete_certificate/2,
+         delete_certificate/3,
+         delete_connector/2,
+         delete_connector/3,
+         delete_profile/2,
+         delete_profile/3,
          delete_server/2,
          delete_server/3,
          delete_ssh_public_key/2,
@@ -37,8 +49,16 @@
          delete_workflow/3,
          describe_access/2,
          describe_access/3,
+         describe_agreement/2,
+         describe_agreement/3,
+         describe_certificate/2,
+         describe_certificate/3,
+         describe_connector/2,
+         describe_connector/3,
          describe_execution/2,
          describe_execution/3,
+         describe_profile/2,
+         describe_profile/3,
          describe_security_policy/2,
          describe_security_policy/3,
          describe_server/2,
@@ -47,12 +67,22 @@
          describe_user/3,
          describe_workflow/2,
          describe_workflow/3,
+         import_certificate/2,
+         import_certificate/3,
          import_ssh_public_key/2,
          import_ssh_public_key/3,
          list_accesses/2,
          list_accesses/3,
+         list_agreements/2,
+         list_agreements/3,
+         list_certificates/2,
+         list_certificates/3,
+         list_connectors/2,
+         list_connectors/3,
          list_executions/2,
          list_executions/3,
+         list_profiles/2,
+         list_profiles/3,
          list_security_policies/2,
          list_security_policies/3,
          list_servers/2,
@@ -65,6 +95,8 @@
          list_workflows/3,
          send_workflow_step_state/2,
          send_workflow_step_state/3,
+         start_file_transfer/2,
+         start_file_transfer/3,
          start_server/2,
          start_server/3,
          stop_server/2,
@@ -77,6 +109,14 @@
          untag_resource/3,
          update_access/2,
          update_access/3,
+         update_agreement/2,
+         update_agreement/3,
+         update_certificate/2,
+         update_certificate/3,
+         update_connector/2,
+         update_connector/3,
+         update_profile/2,
+         update_profile/3,
          update_server/2,
          update_server/3,
          update_user/2,
@@ -90,7 +130,7 @@
 
 %% @doc Used by administrators to choose which groups in the directory should
 %% have access to upload and download files over the enabled protocols using
-%% Amazon Web Services Transfer Family.
+%% Transfer Family.
 %%
 %% For example, a Microsoft Active Directory might contain 50,000 users, but
 %% only a small fraction might need the ability to transfer files to the
@@ -102,6 +142,45 @@ create_access(Client, Input)
 create_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAccess">>, Input, Options).
+
+%% @doc Creates an agreement.
+%%
+%% An agreement is a bilateral trading partner agreement, or partnership,
+%% between an Transfer Family server and an AS2 process. The agreement
+%% defines the file and message transfer relationship between the server and
+%% the AS2 process. To define an agreement, Transfer Family combines a
+%% server, local profile, partner profile, certificate, and other attributes.
+%%
+%% The partner is identified with the `PartnerProfileId', and the AS2 process
+%% is identified with the `LocalProfileId'.
+create_agreement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_agreement(Client, Input, []).
+create_agreement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAgreement">>, Input, Options).
+
+%% @doc Creates the connector, which captures the parameters for an outbound
+%% connection for the AS2 protocol.
+%%
+%% The connector is required for sending files from a customer's non Amazon
+%% Web Services server.
+create_connector(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_connector(Client, Input, []).
+create_connector(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateConnector">>, Input, Options).
+
+%% @doc Creates the profile for the AS2 process.
+%%
+%% The agreement is between the partner and the AS2 process.
+create_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_profile(Client, Input, []).
+create_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateProfile">>, Input, Options).
 
 %% @doc Instantiates an auto-scaling virtual server based on the selected
 %% file transfer protocol in Amazon Web Services.
@@ -122,10 +201,9 @@ create_server(Client, Input, Options)
 %% You can only create and associate users with servers that have the
 %% `IdentityProviderType' set to `SERVICE_MANAGED'. Using parameters for
 %% `CreateUser', you can specify the user name, set the home directory, store
-%% the user's public key, and assign the user's Amazon Web Services Identity
-%% and Access Management (IAM) role. You can also optionally add a session
-%% policy, and assign metadata with tags that can be used to group and search
-%% for users.
+%% the user's public key, and assign the user's Identity and Access
+%% Management (IAM) role. You can also optionally add a session policy, and
+%% assign metadata with tags that can be used to group and search for users.
 create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
@@ -154,6 +232,39 @@ delete_access(Client, Input)
 delete_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAccess">>, Input, Options).
+
+%% @doc Delete the agreement that's specified in the provided `AgreementId'.
+delete_agreement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_agreement(Client, Input, []).
+delete_agreement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteAgreement">>, Input, Options).
+
+%% @doc Deletes the certificate that's specified in the `CertificateId'
+%% parameter.
+delete_certificate(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_certificate(Client, Input, []).
+delete_certificate(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteCertificate">>, Input, Options).
+
+%% @doc Deletes the agreement that's specified in the provided `ConnectorId'.
+delete_connector(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_connector(Client, Input, []).
+delete_connector(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteConnector">>, Input, Options).
+
+%% @doc Deletes the profile that's specified in the `ProfileId' parameter.
+delete_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_profile(Client, Input, []).
+delete_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteProfile">>, Input, Options).
 
 %% @doc Deletes the file transfer protocol-enabled server that you specify.
 %%
@@ -196,7 +307,7 @@ delete_workflow(Client, Input, Options)
 
 %% @doc Describes the access that is assigned to the specific file transfer
 %% protocol-enabled server, as identified by its `ServerId' property and its
-%% `ExternalID'.
+%% `ExternalId'.
 %%
 %% The response from this call returns the properties of the access that is
 %% associated with the `ServerId' value that was specified.
@@ -207,6 +318,30 @@ describe_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccess">>, Input, Options).
 
+%% @doc Describes the agreement that's identified by the `AgreementId'.
+describe_agreement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_agreement(Client, Input, []).
+describe_agreement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAgreement">>, Input, Options).
+
+%% @doc Describes the certificate that's identified by the `CertificateId'.
+describe_certificate(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_certificate(Client, Input, []).
+describe_certificate(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCertificate">>, Input, Options).
+
+%% @doc Describes the connector that's identified by the `ConnectorId.'
+describe_connector(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_connector(Client, Input, []).
+describe_connector(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeConnector">>, Input, Options).
+
 %% @doc You can use `DescribeExecution' to check the details of the execution
 %% of the specified workflow.
 describe_execution(Client, Input)
@@ -215,6 +350,15 @@ describe_execution(Client, Input)
 describe_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExecution">>, Input, Options).
+
+%% @doc Returns the details of the profile that's specified by the
+%% `ProfileId'.
+describe_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_profile(Client, Input, []).
+describe_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeProfile">>, Input, Options).
 
 %% @doc Describes the security policy that is attached to your file transfer
 %% protocol-enabled server.
@@ -261,6 +405,15 @@ describe_workflow(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeWorkflow">>, Input, Options).
 
+%% @doc Imports the signing and encryption certificates that you need to
+%% create local (AS2) profiles and partner profiles.
+import_certificate(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    import_certificate(Client, Input, []).
+import_certificate(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ImportCertificate">>, Input, Options).
+
 %% @doc Adds a Secure Shell (SSH) public key to a user account identified by
 %% a `UserName' value assigned to the specific file transfer protocol-enabled
 %% server, identified by `ServerId'.
@@ -282,6 +435,42 @@ list_accesses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccesses">>, Input, Options).
 
+%% @doc Returns a list of the agreements for the server that's identified by
+%% the `ServerId' that you supply.
+%%
+%% If you want to limit the results to a certain number, supply a value for
+%% the `MaxResults' parameter. If you ran the command previously and received
+%% a value for `NextToken', you can supply that value to continue listing
+%% agreements from where you left off.
+list_agreements(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_agreements(Client, Input, []).
+list_agreements(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAgreements">>, Input, Options).
+
+%% @doc Returns a list of the current certificates that have been imported
+%% into Transfer Family.
+%%
+%% If you want to limit the results to a certain number, supply a value for
+%% the `MaxResults' parameter. If you ran the command previously and received
+%% a value for the `NextToken' parameter, you can supply that value to
+%% continue listing certificates from where you left off.
+list_certificates(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_certificates(Client, Input, []).
+list_certificates(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCertificates">>, Input, Options).
+
+%% @doc Lists the connectors for the specified Region.
+list_connectors(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_connectors(Client, Input, []).
+list_connectors(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListConnectors">>, Input, Options).
+
 %% @doc Lists all executions for the specified workflow.
 list_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -289,6 +478,19 @@ list_executions(Client, Input)
 list_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExecutions">>, Input, Options).
+
+%% @doc Returns a list of the profiles for your system.
+%%
+%% If you want to limit the results to a certain number, supply a value for
+%% the `MaxResults' parameter. If you ran the command previously and received
+%% a value for `NextToken', you can supply that value to continue listing
+%% profiles from where you left off.
+list_profiles(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_profiles(Client, Input, []).
+list_profiles(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListProfiles">>, Input, Options).
 
 %% @doc Lists the security policies that are attached to your file transfer
 %% protocol-enabled servers.
@@ -348,6 +550,17 @@ send_workflow_step_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendWorkflowStepState">>, Input, Options).
 
+%% @doc Begins an outbound file transfer.
+%%
+%% You specify the `ConnectorId' and the file paths for where to send the
+%% files.
+start_file_transfer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_file_transfer(Client, Input, []).
+start_file_transfer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartFileTransfer">>, Input, Options).
+
 %% @doc Changes the state of a file transfer protocol-enabled server from
 %% `OFFLINE' to `ONLINE'.
 %%
@@ -373,7 +586,7 @@ start_server(Client, Input, Options)
 %% Information tied to your server, such as server and user properties, are
 %% not affected by stopping your server.
 %%
-%% Stopping the server will not reduce or impact your file transfer protocol
+%% Stopping the server does not reduce or impact your file transfer protocol
 %% endpoint billing; you must delete the server to stop being billed.
 %%
 %% The state of `STOPPING' indicates that the server is in an intermediate
@@ -462,6 +675,47 @@ update_access(Client, Input)
 update_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAccess">>, Input, Options).
+
+%% @doc Updates some of the parameters for an existing agreement.
+%%
+%% Provide the `AgreementId' and the `ServerId' for the agreement that you
+%% want to update, along with the new values for the parameters to update.
+update_agreement(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_agreement(Client, Input, []).
+update_agreement(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateAgreement">>, Input, Options).
+
+%% @doc Updates the active and inactive dates for a certificate.
+update_certificate(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_certificate(Client, Input, []).
+update_certificate(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateCertificate">>, Input, Options).
+
+%% @doc Updates some of the parameters for an existing connector.
+%%
+%% Provide the `ConnectorId' for the connector that you want to update, along
+%% with the new values for the parameters to update.
+update_connector(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_connector(Client, Input, []).
+update_connector(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateConnector">>, Input, Options).
+
+%% @doc Updates some of the parameters for an existing profile.
+%%
+%% Provide the `ProfileId' for the profile that you want to update, along
+%% with the new values for the parameters to update.
+update_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_profile(Client, Input, []).
+update_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateProfile">>, Input, Options).
 
 %% @doc Updates the file transfer protocol-enabled server's properties after
 %% that server has been created.
