@@ -47,6 +47,8 @@
          create_updated_workspace_image/3,
          create_workspace_bundle/2,
          create_workspace_bundle/3,
+         create_workspace_image/2,
+         create_workspace_image/3,
          create_workspaces/2,
          create_workspaces/3,
          delete_client_branding/2,
@@ -300,6 +302,14 @@ create_workspace_bundle(Client, Input)
 create_workspace_bundle(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkspaceBundle">>, Input, Options).
+
+%% @doc Creates a new WorkSpace image from an existing WorkSpace.
+create_workspace_image(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_workspace_image(Client, Input, []).
+create_workspace_image(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateWorkspaceImage">>, Input, Options).
 
 %% @doc Creates one or more WorkSpaces.
 %%

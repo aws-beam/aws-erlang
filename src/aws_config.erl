@@ -152,6 +152,8 @@
          get_stored_query/3,
          list_aggregate_discovered_resources/2,
          list_aggregate_discovered_resources/3,
+         list_conformance_pack_compliance_scores/2,
+         list_conformance_pack_compliance_scores/3,
          list_discovered_resources/2,
          list_discovered_resources/3,
          list_stored_queries/2,
@@ -1115,6 +1117,21 @@ list_aggregate_discovered_resources(Client, Input)
 list_aggregate_discovered_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAggregateDiscoveredResources">>, Input, Options).
+
+%% @doc Returns a list of conformance pack compliance scores.
+%%
+%% A compliance score is the percentage of the number of compliant
+%% rule-resource combinations in a conformance pack compared to the number of
+%% total possible rule-resource combinations in the conformance pack. This
+%% metric provides you with a high-level view of the compliance state of your
+%% conformance packs, and can be used to identify, investigate, and
+%% understand compliance deviations in your conformance packs.
+list_conformance_pack_compliance_scores(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_conformance_pack_compliance_scores(Client, Input, []).
+list_conformance_pack_compliance_scores(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListConformancePackComplianceScores">>, Input, Options).
 
 %% @doc Accepts a resource type and returns a list of resource identifiers
 %% for the resources of that type.

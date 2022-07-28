@@ -492,7 +492,9 @@
          update_voice_connector/3,
          update_voice_connector/4,
          update_voice_connector_group/3,
-         update_voice_connector_group/4]).
+         update_voice_connector_group/4,
+         validate_e911_address/2,
+         validate_e911_address/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -4662,8 +4664,8 @@ put_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
 %% Connector.
 %%
 %% The streaming configuration specifies whether media streaming is enabled
-%% for sending to Indonesians. It also sets the retention period, in hours,
-%% for the Amazon Kinesis data.
+%% for sending to Kinesis. It also sets the retention period, in hours, for
+%% the Amazon Kinesis data.
 put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input, []).
 put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Options0) ->
@@ -5677,6 +5679,35 @@ update_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
 update_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Validates an address to be used for 911 calls made with Amazon Chime
+%% Voice Connectors.
+%%
+%% You can use validated addresses in a Presence Information Data Format
+%% Location Object file that you include in SIP requests. That helps ensure
+%% that addresses are routed to the appropriate Public Safety Answering
+%% Point.
+validate_e911_address(Client, Input) ->
+    validate_e911_address(Client, Input, []).
+validate_e911_address(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/emergency-calling/address"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
