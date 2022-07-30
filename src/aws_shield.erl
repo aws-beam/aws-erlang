@@ -188,9 +188,11 @@ associate_proactive_engagement_details(Client, Input, Options)
 
 %% @doc Enables Shield Advanced for a specific Amazon Web Services resource.
 %%
-%% The resource can be an Amazon CloudFront distribution, Elastic Load
-%% Balancing load balancer, Global Accelerator accelerator, Elastic IP
-%% Address, or an Amazon Route 53 hosted zone.
+%% The resource can be an Amazon CloudFront distribution, Amazon Route 53
+%% hosted zone, Global Accelerator standard accelerator, Elastic IP Address,
+%% Application Load Balancer, or a Classic Load Balancer. You can protect
+%% Amazon EC2 instances and Network Load Balancers by association with
+%% protected Amazon EC2 Elastic IP addresses.
 %%
 %% You can add protection to only a single resource with each
 %% `CreateProtection' request. You can add protection to multiple resources
@@ -219,7 +221,11 @@ create_protection_group(Client, Input, Options)
 
 %% @doc Activates Shield Advanced for an account.
 %%
-%% When you initally create a subscription, your subscription is set to be
+%% For accounts that are members of an Organizations organization, Shield
+%% Advanced subscriptions are billed against the organization's payer
+%% account, regardless of whether the payer account itself is subscribed.
+%%
+%% When you initially create a subscription, your subscription is set to be
 %% automatically renewed at the end of the existing subscription period. You
 %% can change this by submitting an `UpdateSubscription' request.
 create_subscription(Client, Input)
@@ -333,7 +339,7 @@ describe_subscription(Client, Input, Options)
     request(Client, <<"DescribeSubscription">>, Input, Options).
 
 %% @doc Disable the Shield Advanced automatic application layer DDoS
-%% mitigation feature for the resource.
+%% mitigation feature for the protected resource.
 %%
 %% This stops Shield Advanced from creating, verifying, and applying WAF
 %% rules for attacks that it detects for the resource.
@@ -390,9 +396,10 @@ disassociate_health_check(Client, Input, Options)
     request(Client, <<"DisassociateHealthCheck">>, Input, Options).
 
 %% @doc Enable the Shield Advanced automatic application layer DDoS
-%% mitigation for the resource.
+%% mitigation for the protected resource.
 %%
-%% This feature is available for Amazon CloudFront distributions only.
+%% This feature is available for Amazon CloudFront distributions and
+%% Application Load Balancers only.
 %%
 %% This causes Shield Advanced to create, verify, and apply WAF rules for
 %% DDoS attacks that it detects for the resource. Shield Advanced applies the
@@ -409,9 +416,8 @@ disassociate_health_check(Client, Input, Options)
 %% resource. The web ACL must be created using the latest version of WAF
 %% (v2). You can associate the web ACL through the Shield Advanced console at
 %% [https://console.aws.amazon.com/wafv2/shieldv2#/]. For more information,
-%% see Getting Started with Shield Advanced.
-%%
-%% You can also do this through the WAF console or the WAF API, but you must
+%% see Getting Started with Shield Advanced. You can also associate the web
+%% ACL to the resource through the WAF console or the WAF API, but you must
 %% manage Shield Advanced automatic mitigation through Shield Advanced. For
 %% information about WAF, see WAF Developer Guide.
 enable_application_layer_automatic_response(Client, Input)
@@ -448,7 +454,11 @@ list_attacks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAttacks">>, Input, Options).
 
-%% @doc Retrieves the `ProtectionGroup' objects for the account.
+%% @doc Retrieves `ProtectionGroup' objects for the account.
+%%
+%% You can retrieve all protection groups or you can provide filtering
+%% criteria and retrieve just the subset of protection groups that match the
+%% criteria.
 list_protection_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_protection_groups(Client, Input, []).
@@ -456,7 +466,10 @@ list_protection_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProtectionGroups">>, Input, Options).
 
-%% @doc Lists all `Protection' objects for the account.
+%% @doc Retrieves `Protection' objects for the account.
+%%
+%% You can retrieve all protections or you can provide filtering criteria and
+%% retrieve just the subset of protections that match the criteria.
 list_protections(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_protections(Client, Input, []).
@@ -533,6 +546,10 @@ update_protection_group(Client, Input, Options)
 %%
 %% Only enter values for parameters you want to change. Empty parameters are
 %% not updated.
+%%
+%% For accounts that are members of an Organizations organization, Shield
+%% Advanced subscriptions are billed against the organization's payer
+%% account, regardless of whether the payer account itself is subscribed.
 update_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_subscription(Client, Input, []).

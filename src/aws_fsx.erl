@@ -734,8 +734,7 @@ disassociate_file_system_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateFileSystemAliases">>, Input, Options).
 
-%% @doc Lists tags for an Amazon FSx file systems and backups in the case of
-%% Amazon FSx for Windows File Server.
+%% @doc Lists tags for Amazon FSx resources.
 %%
 %% When retrieving all tags, you can optionally specify the `MaxResults'
 %% parameter to limit the number of tags in a response. If more tags remain,
