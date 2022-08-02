@@ -115,6 +115,8 @@
          modify_account/3,
          modify_client_properties/2,
          modify_client_properties/3,
+         modify_saml_properties/2,
+         modify_saml_properties/3,
          modify_selfservice_permissions/2,
          modify_selfservice_permissions/3,
          modify_workspace_access_properties/2,
@@ -711,6 +713,17 @@ modify_client_properties(Client, Input)
 modify_client_properties(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyClientProperties">>, Input, Options).
+
+%% @doc Modifies multiple properties related to SAML 2.0 authentication,
+%% including the enablement status, user access URL, and relay state
+%% parameter name that are used for configuring federation with an SAML 2.0
+%% identity provider.
+modify_saml_properties(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_saml_properties(Client, Input, []).
+modify_saml_properties(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifySamlProperties">>, Input, Options).
 
 %% @doc Modifies the self-service WorkSpace management capabilities for your
 %% users.
