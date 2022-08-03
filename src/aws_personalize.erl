@@ -349,8 +349,10 @@ create_dataset_group(Client, Input, Options)
 %% For information on granting access to your Amazon S3 bucket, see Giving
 %% Amazon Personalize Access to Amazon S3 Resources.
 %%
-%% The dataset import job replaces any existing data in the dataset that you
-%% imported in bulk.
+%% By default, a dataset import job replaces any existing data in the dataset
+%% that you imported in bulk. To add new records without replacing existing
+%% data, specify INCREMENTAL for the import mode in the
+%% CreateDatasetImportJob operation.
 %%
 %% Status
 %%
