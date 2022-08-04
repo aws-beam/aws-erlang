@@ -22,11 +22,12 @@
 %%
 %% WAF is a web application firewall that lets you monitor the HTTP and HTTPS
 %% requests that are forwarded to Amazon CloudFront, an Amazon API Gateway
-%% REST API, an Application Load Balancer, or an AppSync GraphQL API. WAF
-%% also lets you control access to your content. Based on criteria that you
-%% specify, such as the IP addresses that requests originate from or the
-%% values of query strings, the Amazon API Gateway REST API, CloudFront
-%% distribution, the Application Load Balancer, or the AppSync GraphQL API
+%% REST API, an Application Load Balancer, an AppSync GraphQL API, or an
+%% Amazon Cognito user pool. WAF also lets you control access to your
+%% content. Based on conditions that you specify, such as the IP addresses
+%% that requests originate from or the values of query strings, the Amazon
+%% API Gateway REST API, CloudFront distribution, the Application Load
+%% Balancer, the AppSync GraphQL API, or the Amazon Cognito user pool
 %% responds to requests either with the requested content or with an HTTP 403
 %% status code (Forbidden). You also can configure CloudFront to return a
 %% custom error page when a request is blocked.
@@ -39,7 +40,8 @@
 %%
 %% <ul> <li> For regional applications, you can use any of the endpoints in
 %% the list. A regional application can be an Application Load Balancer
-%% (ALB), an Amazon API Gateway REST API, or an AppSync GraphQL API.
+%% (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, or an
+%% Amazon Cognito user pool.
 %%
 %% </li> <li> For Amazon CloudFront applications, you must use the API
 %% endpoint listed for US East (N. Virginia): us-east-1.
@@ -175,7 +177,8 @@
 %% the resource.
 %%
 %% A regional application can be an Application Load Balancer (ALB), an
-%% Amazon API Gateway REST API, or an AppSync GraphQL API.
+%% Amazon API Gateway REST API, an AppSync GraphQL API, or an Amazon Cognito
+%% user pool.
 %%
 %% For Amazon CloudFront, don't use this call. Instead, use your CloudFront
 %% distribution configuration. To associate a web ACL, in the CloudFront call
@@ -269,7 +272,8 @@ create_rule_group(Client, Input, Options)
 %% types `Rule', `RuleGroup', and managed rule group. You can associate a web
 %% ACL with one or more Amazon Web Services resources to protect. The
 %% resources can be an Amazon CloudFront distribution, an Amazon API Gateway
-%% REST API, an Application Load Balancer, or an AppSync GraphQL API.
+%% REST API, an Application Load Balancer, an AppSync GraphQL API, or an
+%% Amazon Cognito user pool.
 create_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_web_acl(Client, Input, []).
@@ -375,7 +379,7 @@ describe_managed_rule_group(Client, Input, Options)
 %%
 %% A resource can have at most one web ACL association. A regional
 %% application can be an Application Load Balancer (ALB), an Amazon API
-%% Gateway REST API, or an AppSync GraphQL API.
+%% Gateway REST API, an AppSync GraphQL API, or an Amazon Cognito user pool.
 %%
 %% For Amazon CloudFront, don't use this call. Instead, use your CloudFront
 %% distribution configuration. To disassociate a web ACL, provide an empty
@@ -934,7 +938,8 @@ update_rule_group(Client, Input, Options)
 %% types `Rule', `RuleGroup', and managed rule group. You can associate a web
 %% ACL with one or more Amazon Web Services resources to protect. The
 %% resources can be an Amazon CloudFront distribution, an Amazon API Gateway
-%% REST API, an Application Load Balancer, or an AppSync GraphQL API.
+%% REST API, an Application Load Balancer, an AppSync GraphQL API, or an
+%% Amazon Cognito user pool.
 update_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_web_acl(Client, Input, []).
