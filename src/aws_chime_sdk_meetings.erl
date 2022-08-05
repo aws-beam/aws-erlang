@@ -33,10 +33,17 @@
          list_attendees/2,
          list_attendees/4,
          list_attendees/5,
+         list_tags_for_resource/2,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          start_meeting_transcription/3,
          start_meeting_transcription/4,
          stop_meeting_transcription/3,
          stop_meeting_transcription/4,
+         tag_resource/2,
+         tag_resource/3,
+         untag_resource/2,
+         untag_resource/3,
          update_attendee_capabilities/4,
          update_attendee_capabilities/5]).
 
@@ -347,6 +354,33 @@ list_attendees(Client, MeetingId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of the tags available for the specified resource.
+list_tags_for_resource(Client, ResourceARN)
+  when is_map(Client) ->
+    list_tags_for_resource(Client, ResourceARN, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/tags"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"arn">>, ResourceARN}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Starts transcription for the specified `meetingId'.
 start_meeting_transcription(Client, MeetingId, Input) ->
     start_meeting_transcription(Client, MeetingId, Input, []).
@@ -377,6 +411,76 @@ stop_meeting_transcription(Client, MeetingId, Input0, Options0) ->
     Method = post,
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/transcription?operation=stop"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc The resource that supports tags.
+tag_resource(Client, Input) ->
+    tag_resource(Client, Input, []).
+tag_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/tags?operation=tag-resource"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes the specified tags from the specified resources.
+%%
+%% When you specify a tag key, the action removes both that key and its
+%% associated value. The operation succeeds even if you attempt to remove
+%% tags from a resource that were already removed. Note the following:
+%%
+%% <ul> <li> To remove tags from a resource, you need the necessary
+%% permissions for the service that the resource belongs to as well as
+%% permissions for removing tags. For more information, see the documentation
+%% for the service whose resource you want to untag.
+%%
+%% </li> <li> You can only tag resources that are located in the specified
+%% AWS Region for the calling AWS account.
+%%
+%% </li> </ul> Minimum permissions
+%%
+%% In addition to the `tag:UntagResources' permission required by this
+%% operation, you must also have the remove tags permission defined by the
+%% service that created the resource. For example, to remove the tags from an
+%% Amazon EC2 instance using the `UntagResources' operation, you must have
+%% both of the following permissions:
+%%
+%% `tag:UntagResource'
+%%
+%% `ChimeSDKMeetings:DeleteTags'
+untag_resource(Client, Input) ->
+    untag_resource(Client, Input, []).
+untag_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/tags?operation=untag-resource"],
+    SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],

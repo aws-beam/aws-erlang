@@ -1564,7 +1564,7 @@ create_provisioning_claim(Client, TemplateName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a fleet provisioning template.
+%% @doc Creates a provisioning template.
 %%
 %% Requires permission to access the CreateProvisioningTemplate action.
 create_provisioning_template(Client, Input) ->
@@ -1589,7 +1589,7 @@ create_provisioning_template(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new version of a fleet provisioning template.
+%% @doc Creates a new version of a provisioning template.
 %%
 %% Requires permission to access the CreateProvisioningTemplateVersion
 %% action.
@@ -2372,7 +2372,7 @@ delete_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a fleet provisioning template.
+%% @doc Deletes a provisioning template.
 %%
 %% Requires permission to access the DeleteProvisioningTemplate action.
 delete_provisioning_template(Client, TemplateName, Input) ->
@@ -2397,7 +2397,7 @@ delete_provisioning_template(Client, TemplateName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a fleet provisioning template version.
+%% @doc Deletes a provisioning template version.
 %%
 %% Requires permission to access the DeleteProvisioningTemplateVersion
 %% action.
@@ -3333,7 +3333,7 @@ describe_mitigation_action(Client, ActionName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about a fleet provisioning template.
+%% @doc Returns information about a provisioning template.
 %%
 %% Requires permission to access the DescribeProvisioningTemplate action.
 describe_provisioning_template(Client, TemplateName)
@@ -3358,7 +3358,7 @@ describe_provisioning_template(Client, TemplateName, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about a fleet provisioning template version.
+%% @doc Returns information about a provisioning template version.
 %%
 %% Requires permission to access the DescribeProvisioningTemplateVersion
 %% action.
@@ -3615,7 +3615,8 @@ detach_policy(Client, PolicyName, Input0, Options0) ->
 
 %% @doc Removes the specified policy from the specified certificate.
 %%
-%% This action is deprecated. Please use `DetachPolicy' instead.
+%% Note: This action is deprecated and works as expected for backward
+%% compatibility, but we won't add enhancements. Use `DetachPolicy' instead.
 %%
 %% Requires permission to access the DetachPrincipalPolicy action.
 detach_principal_policy(Client, PolicyName, Input) ->
@@ -4497,7 +4498,8 @@ list_ca_certificates(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"isAscendingOrder">>, maps:get(<<"isAscendingOrder">>, QueryMap, undefined)},
         {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
-        {<<"pageSize">>, maps:get(<<"pageSize">>, QueryMap, undefined)}
+        {<<"pageSize">>, maps:get(<<"pageSize">>, QueryMap, undefined)},
+        {<<"templateName">>, maps:get(<<"templateName">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -5113,7 +5115,8 @@ list_policies(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the principals associated with the specified policy.
 %%
-%% Note: This action is deprecated. Please use `ListTargetsForPolicy'
+%% Note: This action is deprecated and works as expected for backward
+%% compatibility, but we won't add enhancements. Use `ListTargetsForPolicy'
 %% instead.
 %%
 %% Requires permission to access the ListPolicyPrincipals action.
@@ -5180,7 +5183,8 @@ list_policy_versions(Client, PolicyName, QueryMap, HeadersMap, Options0)
 %% If you use an Cognito identity, the ID must be in AmazonCognito Identity
 %% format.
 %%
-%% Note: This action is deprecated. Please use `ListAttachedPolicies'
+%% Note: This action is deprecated and works as expected for backward
+%% compatibility, but we won't add enhancements. Use `ListAttachedPolicies'
 %% instead.
 %%
 %% Requires permission to access the ListPrincipalPolicies action.
@@ -5253,7 +5257,7 @@ list_principal_things(Client, Principal, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc A list of fleet provisioning template versions.
+%% @doc A list of provisioning template versions.
 %%
 %% Requires permission to access the ListProvisioningTemplateVersions action.
 list_provisioning_template_versions(Client, TemplateName)
@@ -5283,8 +5287,7 @@ list_provisioning_template_versions(Client, TemplateName, QueryMap, HeadersMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the fleet provisioning templates in your Amazon Web Services
-%% account.
+%% @doc Lists the provisioning templates in your Amazon Web Services account.
 %%
 %% Requires permission to access the ListProvisioningTemplates action.
 list_provisioning_templates(Client)
@@ -7087,7 +7090,7 @@ update_mitigation_action(Client, ActionName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a fleet provisioning template.
+%% @doc Updates a provisioning template.
 %%
 %% Requires permission to access the UpdateProvisioningTemplate action.
 update_provisioning_template(Client, TemplateName, Input) ->
