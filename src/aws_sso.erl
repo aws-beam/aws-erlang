@@ -1,23 +1,27 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Single Sign-On Portal is a web service that makes it easy for you
-%% to assign user access to AWS SSO resources such as the user portal.
+%% @doc Amazon Web Services Single Sign On Portal is a web service that makes
+%% it easy for you to assign user access to Amazon Web Services SSO resources
+%% such as the AWS access portal.
 %%
-%% Users can get AWS account applications and roles assigned to them and get
-%% federated into the application.
+%% Users can get Amazon Web Services account applications and roles assigned
+%% to them and get federated into the application.
 %%
-%% For general information about AWS SSO, see What is AWS Single Sign-On? in
-%% the AWS SSO User Guide.
+%% Although Amazon Web Services Single Sign-On was renamed, the `sso' and
+%% `identitystore' API namespaces will continue to retain their original name
+%% for backward compatibility purposes. For more information, see Amazon Web
+%% Services SSO rename.
 %%
-%% This API reference guide describes the AWS SSO Portal operations that you
-%% can call programatically and includes detailed information on data types
-%% and errors.
+%% This API reference guide describes the Amazon Web Services SSO Portal
+%% operations that you can call programatically and includes detailed
+%% information on data types and errors.
 %%
-%% AWS provides SDKs that consist of libraries and sample code for various
-%% programming languages and platforms, such as Java, Ruby, .Net, iOS, or
-%% Android. The SDKs provide a convenient way to create programmatic access
-%% to AWS SSO and other AWS services. For more information about the AWS
+%% Amazon Web Services provides SDKs that consist of libraries and sample
+%% code for various programming languages and platforms, such as Java, Ruby,
+%% .Net, iOS, or Android. The SDKs provide a convenient way to create
+%% programmatic access to Amazon Web Services SSO and other Amazon Web
+%% Services services. For more information about the Amazon Web Services
 %% SDKs, including how to download and install them, see Tools for Amazon Web
 %% Services.
 -module(aws_sso).
@@ -73,8 +77,8 @@ get_role_credentials(Client, AccountId, RoleName, AccessToken, QueryMap, Headers
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all roles that are assigned to the user for a given AWS
-%% account.
+%% @doc Lists all roles that are assigned to the user for a given Amazon Web
+%% Services account.
 list_account_roles(Client, AccountId, AccessToken)
   when is_map(Client) ->
     list_account_roles(Client, AccountId, AccessToken, #{}, #{}).
@@ -107,11 +111,11 @@ list_account_roles(Client, AccountId, AccessToken, QueryMap, HeadersMap, Options
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all AWS accounts assigned to the user.
+%% @doc Lists all Amazon Web Services accounts assigned to the user.
 %%
-%% These AWS accounts are assigned by the administrator of the account. For
-%% more information, see Assign User Access in the AWS SSO User Guide. This
-%% operation returns a paginated response.
+%% These Amazon Web Services accounts are assigned by the administrator of
+%% the account. For more information, see Assign User Access in the Amazon
+%% Web Services SSO User Guide. This operation returns a paginated response.
 list_accounts(Client, AccessToken)
   when is_map(Client) ->
     list_accounts(Client, AccessToken, #{}, #{}).
@@ -143,8 +147,21 @@ list_accounts(Client, AccessToken, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Removes the client- and server-side session that is associated with
-%% the user.
+%% @doc Removes the locally stored SSO tokens from the client-side cache and
+%% sends an API call to the Amazon Web Services SSO service to invalidate the
+%% corresponding server-side Amazon Web Services SSO sign in session.
+%%
+%% If a user uses Amazon Web Services SSO to access the AWS CLI, the user’s
+%% Amazon Web Services SSO sign in session is used to obtain an IAM session,
+%% as specified in the corresponding Amazon Web Services SSO permission set.
+%% More specifically, Amazon Web Services SSO assumes an IAM role in the
+%% target account on behalf of the user, and the corresponding temporary
+%% Amazon Web Services credentials are returned to the client.
+%%
+%% After user logout, any existing IAM role sessions that were created by
+%% using Amazon Web Services SSO permission sets continue based on the
+%% duration configured in the permission set. For more information, see User
+%% authentications in the Amazon Web Services SSO User Guide.
 logout(Client, Input) ->
     logout(Client, Input, []).
 logout(Client, Input0, Options0) ->
