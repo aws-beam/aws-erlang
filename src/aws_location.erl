@@ -1,8 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Suite of geospatial services including Maps, Places, Routes,
-%% Tracking, and Geofencing
+%% @doc "Suite of geospatial services including Maps, Places, Routes,
+%% Tracking, and Geofencing"
 -module(aws_location).
 
 -export([associate_tracker_consumer/3,
@@ -373,6 +373,9 @@ batch_update_device_position(Client, TrackerName, Input0, Options0) ->
 %% transportation mode used to calculate the routes. This also lets you
 %% specify additional route preferences in `CarModeOptions' if traveling by
 %% `Car', or `TruckModeOptions' if traveling by `Truck'.
+%%
+%% If you specify `walking' for the travel mode and your data provider is
+%% Esri, the start and destination must be within 40km.
 %%
 %% </li> </ul>
 calculate_route(Client, CalculatorName, Input) ->

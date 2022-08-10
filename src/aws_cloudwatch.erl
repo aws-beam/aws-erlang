@@ -130,6 +130,9 @@ delete_alarms(Client, Input, Options)
     request(Client, <<"DeleteAlarms">>, Input, Options).
 
 %% @doc Deletes the specified anomaly detection model from your account.
+%%
+%% For more information about how to delete an anomaly detection model, see
+%% Deleting an anomaly detection model in the CloudWatch User Guide.
 delete_anomaly_detector(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_anomaly_detector(Client, Input, []).
@@ -758,16 +761,16 @@ put_metric_alarm(Client, Input, Options)
 %% up to 150 values per metric with one `PutMetricData' request, and supports
 %% retrieving percentile statistics on this data.
 %%
-%% Each `PutMetricData' request is limited to 40 KB in size for HTTP POST
+%% Each `PutMetricData' request is limited to 1 MB in size for HTTP POST
 %% requests. You can send a payload compressed by gzip. Each request is also
-%% limited to no more than 20 different metrics.
+%% limited to no more than 1000 different metrics.
 %%
 %% Although the `Value' parameter accepts numbers of type `Double',
 %% CloudWatch rejects values that are either too small or too large. Values
 %% must be in the range of -2^360 to 2^360. In addition, special values (for
 %% example, NaN, +Infinity, -Infinity) are not supported.
 %%
-%% You can use up to 10 dimensions per metric to further clarify what data
+%% You can use up to 30 dimensions per metric to further clarify what data
 %% the metric collects. Each dimension consists of a Name and Value pair. For
 %% more information about specifying dimensions, see Publishing Metrics in
 %% the Amazon CloudWatch User Guide.
