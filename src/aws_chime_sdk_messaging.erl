@@ -99,6 +99,9 @@
          list_channels_moderated_by_app_instance_user/2,
          list_channels_moderated_by_app_instance_user/4,
          list_channels_moderated_by_app_instance_user/5,
+         list_sub_channels/3,
+         list_sub_channels/5,
+         list_sub_channels/6,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -447,9 +450,10 @@ delete_channel(Client, ChannelArn, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"sub-channel-id">>, <<"SubChannelId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a user from a channel's ban list.
@@ -536,9 +540,10 @@ delete_channel_membership(Client, ChannelArn, MemberArn, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"sub-channel-id">>, <<"SubChannelId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a channel message.
@@ -569,9 +574,10 @@ delete_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"sub-channel-id">>, <<"SubChannelId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a channel moderator.
@@ -719,7 +725,11 @@ describe_channel_membership(Client, ChannelArn, MemberArn, ChimeBearer, QueryMap
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"sub-channel-id">>, maps:get(<<"sub-channel-id">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -920,7 +930,11 @@ get_channel_message(Client, ChannelArn, MessageId, ChimeBearer, QueryMap, Header
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"sub-channel-id">>, maps:get(<<"sub-channel-id">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -971,7 +985,11 @@ get_channel_message_status(Client, ChannelArn, MessageId, ChimeBearer, QueryMap,
       ],
     Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"sub-channel-id">>, maps:get(<<"sub-channel-id">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -1100,6 +1118,7 @@ list_channel_memberships(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, 
       [
         {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
         {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"sub-channel-id">>, maps:get(<<"sub-channel-id">>, QueryMap, undefined)},
         {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -1186,7 +1205,8 @@ list_channel_messages(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, Opt
         {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
         {<<"not-after">>, maps:get(<<"not-after">>, QueryMap, undefined)},
         {<<"not-before">>, maps:get(<<"not-before">>, QueryMap, undefined)},
-        {<<"sort-order">>, maps:get(<<"sort-order">>, QueryMap, undefined)}
+        {<<"sort-order">>, maps:get(<<"sort-order">>, QueryMap, undefined)},
+        {<<"sub-channel-id">>, maps:get(<<"sub-channel-id">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1339,6 +1359,42 @@ list_channels_moderated_by_app_instance_user(Client, ChimeBearer, QueryMap, Head
     Query0_ =
       [
         {<<"app-instance-user-arn">>, maps:get(<<"app-instance-user-arn">>, QueryMap, undefined)},
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all the SubChannels in an elastic channel when given a channel
+%% ID.
+%%
+%% Available only to the app instance admins and channel moderators of
+%% elastic channels.
+list_sub_channels(Client, ChannelArn, ChimeBearer)
+  when is_map(Client) ->
+    list_sub_channels(Client, ChannelArn, ChimeBearer, #{}, #{}).
+
+list_sub_channels(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_sub_channels(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, []).
+
+list_sub_channels(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/subchannels"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers0 =
+      [
+        {<<"x-amz-chime-bearer">>, ChimeBearer}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query0_ =
+      [
         {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
         {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],

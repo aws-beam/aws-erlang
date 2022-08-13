@@ -57,7 +57,9 @@
 %% resource. A tag comprises a key and a value, both set by you. For example,
 %% you might set a tag as `topic:nature' to label a particular video
 %% category. See Tagging Amazon Web Services Resources for more information,
-%% including restrictions that apply to tags.
+%% including restrictions that apply to tags and "Tag naming limits and
+%% requirements"; Amazon IVS has no service-specific constraints beyond what
+%% is documented there.
 %%
 %% Tags can help you identify and organize your Amazon Web Services
 %% resources. For example, you can use the same tag for different resources
@@ -78,9 +80,10 @@
 %% <ul> <li> Authentication is about verifying identity. You need to be
 %% authenticated to sign Amazon IVS API requests.
 %%
-%% </li> <li> Authorization is about granting permissions. You need to be
-%% authorized to view Amazon IVS private channels. (Private channels are
-%% channels that are enabled for "playback authorization.")
+%% </li> <li> Authorization is about granting permissions. Your IAM roles
+%% need to have permissions for Amazon IVS API requests. In addition,
+%% authorization is needed to view Amazon IVS private channels. (Private
+%% channels are channels that are enabled for "playback authorization.")
 %%
 %% </li> </ul> Authentication
 %%

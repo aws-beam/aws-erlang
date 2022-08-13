@@ -6,12 +6,16 @@
 
 -export([create_alert_manager_definition/3,
          create_alert_manager_definition/4,
+         create_logging_configuration/3,
+         create_logging_configuration/4,
          create_rule_groups_namespace/3,
          create_rule_groups_namespace/4,
          create_workspace/2,
          create_workspace/3,
          delete_alert_manager_definition/3,
          delete_alert_manager_definition/4,
+         delete_logging_configuration/3,
+         delete_logging_configuration/4,
          delete_rule_groups_namespace/4,
          delete_rule_groups_namespace/5,
          delete_workspace/3,
@@ -19,6 +23,9 @@
          describe_alert_manager_definition/2,
          describe_alert_manager_definition/4,
          describe_alert_manager_definition/5,
+         describe_logging_configuration/2,
+         describe_logging_configuration/4,
+         describe_logging_configuration/5,
          describe_rule_groups_namespace/3,
          describe_rule_groups_namespace/5,
          describe_rule_groups_namespace/6,
@@ -42,6 +49,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_logging_configuration/3,
+         update_logging_configuration/4,
          update_workspace_alias/3,
          update_workspace_alias/4]).
 
@@ -57,6 +66,29 @@ create_alert_manager_definition(Client, WorkspaceId, Input) ->
 create_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Create logging configuration.
+create_logging_configuration(Client, WorkspaceId, Input) ->
+    create_logging_configuration(Client, WorkspaceId, Input, []).
+create_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -144,6 +176,30 @@ delete_alert_manager_definition(Client, WorkspaceId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Delete logging configuration.
+delete_logging_configuration(Client, WorkspaceId, Input) ->
+    delete_logging_configuration(Client, WorkspaceId, Input, []).
+delete_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Delete a rule groups namespace.
 delete_rule_groups_namespace(Client, Name, WorkspaceId, Input) ->
     delete_rule_groups_namespace(Client, Name, WorkspaceId, Input, []).
@@ -204,6 +260,29 @@ describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap)
 describe_alert_manager_definition(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/alertmanager/definition"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes logging configuration.
+describe_logging_configuration(Client, WorkspaceId)
+  when is_map(Client) ->
+    describe_logging_configuration(Client, WorkspaceId, #{}, #{}).
+
+describe_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap, []).
+
+describe_logging_configuration(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -434,6 +513,29 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update logging configuration.
+update_logging_configuration(Client, WorkspaceId, Input) ->
+    update_logging_configuration(Client, WorkspaceId, Input, []).
+update_logging_configuration(Client, WorkspaceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/logging"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an AMP workspace alias.
