@@ -1,11 +1,20 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc The identity store service used by Amazon Web Services Single Sign On
+%% @doc The Identity Store service used by Amazon Web Services Single Sign On
 %% provides a single place to retrieve all of your identities (users and
 %% groups).
 %%
 %% For more information, see the Amazon Web Services SSO User Guide.
+%%
+%% Although Amazon Web Services Single Sign-On was renamed, the `sso' and
+%% `identitystore' API namespaces will continue to retain their original name
+%% for backward compatibility purposes. For more information, see Amazon Web
+%% Services SSO rename.
+%%
+%% This reference guide describes the identity store operations that you can
+%% call programatically and includes detailed information on data types and
+%% errors.
 -module(aws_identitystore).
 
 -export([describe_group/2,

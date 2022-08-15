@@ -13,7 +13,7 @@
 %% for backward compatibility purposes. For more information, see Amazon Web
 %% Services SSO rename.
 %%
-%% This API reference guide describes the Amazon Web Services SSO Portal
+%% This reference guide describes the Amazon Web Services SSO Portal
 %% operations that you can call programatically and includes detailed
 %% information on data types and errors.
 %%
