@@ -46,7 +46,9 @@
 %%
 %% </li> </ul> Amazon Rekognition Custom Labels
 %%
-%% <ul> <li> CreateDataset
+%% <ul> <li> CopyProjectVersion
+%%
+%% </li> <li> CreateDataset
 %%
 %% </li> <li> CreateProject
 %%
@@ -55,6 +57,8 @@
 %% </li> <li> DeleteDataset
 %%
 %% </li> <li> DeleteProject
+%%
+%% </li> <li> DeleteProjectPolicy
 %%
 %% </li> <li> DeleteProjectVersion
 %%
@@ -71,6 +75,10 @@
 %% </li> <li> ListDatasetEntries
 %%
 %% </li> <li> ListDatasetLabels
+%%
+%% </li> <li> ListProjectPolicies
+%%
+%% </li> <li> PutProjectPolicy
 %%
 %% </li> <li> StartProjectVersion
 %%
@@ -126,11 +134,15 @@
 %%
 %% </li> <li> StopStreamProcessor
 %%
+%% </li> <li> UpdateStreamProcessor
+%%
 %% </li> </ul>
 -module(aws_rekognition).
 
 -export([compare_faces/2,
          compare_faces/3,
+         copy_project_version/2,
+         copy_project_version/3,
          create_collection/2,
          create_collection/3,
          create_dataset/2,
@@ -149,6 +161,8 @@
          delete_faces/3,
          delete_project/2,
          delete_project/3,
+         delete_project_policy/2,
+         delete_project_policy/3,
          delete_project_version/2,
          delete_project_version/3,
          delete_stream_processor/2,
@@ -205,10 +219,14 @@
          list_dataset_labels/3,
          list_faces/2,
          list_faces/3,
+         list_project_policies/2,
+         list_project_policies/3,
          list_stream_processors/2,
          list_stream_processors/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         put_project_policy/2,
+         put_project_policy/3,
          recognize_celebrities/2,
          recognize_celebrities/3,
          search_faces/2,
@@ -319,6 +337,40 @@ compare_faces(Client, Input)
 compare_faces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CompareFaces">>, Input, Options).
+
+%% @doc Copies a version of an Amazon Rekognition Custom Labels model from a
+%% source project to a destination project.
+%%
+%% The source and destination projects can be in different AWS accounts but
+%% must be in the same AWS Region. You can't copy a model to another AWS
+%% service.
+%%
+%% To copy a model version to a different AWS account, you need to create a
+%% resource-based policy known as a project policy. You attach the project
+%% policy to the source project by calling `PutProjectPolicy'. The project
+%% policy gives permission to copy the model version from a trusting AWS
+%% account to a trusted account.
+%%
+%% For more information creating and attaching a project policy, see
+%% Attaching a project policy (SDK) in the Amazon Rekognition Custom Labels
+%% Developer Guide.
+%%
+%% If you are copying a model version to a project in the same AWS account,
+%% you don't need to create a project policy.
+%%
+%% To copy a model, the destination project, source project, and source model
+%% version must already exist.
+%%
+%% Copying a model version takes a while to complete. To get the current
+%% status, call `DescribeProjectVersions' and check the value of `Status' in
+%% the `ProjectVersionDescription' object. The copy operation has finished
+%% when the value of `Status' is `COPYING_COMPLETED'.
+copy_project_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    copy_project_version(Client, Input, []).
+copy_project_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CopyProjectVersion">>, Input, Options).
 
 %% @doc Creates a collection in an AWS Region.
 %%
@@ -538,7 +590,8 @@ delete_faces(Client, Input, Options)
 %%
 %% `DeleteProject' is an asynchronous operation. To check if the project is
 %% deleted, call `DescribeProjects'. The project is deleted when the project
-%% no longer appears in the response.
+%% no longer appears in the response. Be aware that deleting a given project
+%% will also delete any `ProjectPolicies' associated with that project.
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DeleteProject' action.
@@ -548,6 +601,18 @@ delete_project(Client, Input)
 delete_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProject">>, Input, Options).
+
+%% @doc Deletes an existing project policy.
+%%
+%% To get a list of project policies attached to a project, call
+%% `ListProjectPolicies'. To attach a project policy to a project, call
+%% `PutProjectPolicy'.
+delete_project_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_project_policy(Client, Input, []).
+delete_project_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteProjectPolicy">>, Input, Options).
 
 %% @doc Deletes an Amazon Rekognition Custom Labels model.
 %%
@@ -1476,6 +1541,17 @@ list_faces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFaces">>, Input, Options).
 
+%% @doc Gets a list of the project policies attached to a project.
+%%
+%% To attach a project policy to a project, call `PutProjectPolicy'. To
+%% remove a project policy from a project, call `DeleteProjectPolicy'.
+list_project_policies(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_project_policies(Client, Input, []).
+list_project_policies(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListProjectPolicies">>, Input, Options).
+
 %% @doc Gets a list of stream processors that you have created with
 %% `CreateStreamProcessor'.
 list_stream_processors(Client, Input)
@@ -1496,6 +1572,35 @@ list_tags_for_resource(Client, Input)
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Attaches a project policy to a Amazon Rekognition Custom Labels
+%% project in a trusting AWS account.
+%%
+%% A project policy specifies that a trusted AWS account can copy a model
+%% version from a trusting AWS account to a project in the trusted AWS
+%% account. To copy a model version you use the `CopyProjectVersion'
+%% operation.
+%%
+%% For more information about the format of a project policy document, see
+%% Attaching a project policy (SDK) in the Amazon Rekognition Custom Labels
+%% Developer Guide.
+%%
+%% The response from `PutProjectPolicy' is a revision ID for the project
+%% policy. You can attach multiple project policies to a project. You can
+%% also update an existing project policy by specifying the policy revision
+%% ID of the existing policy.
+%%
+%% To remove a project policy from a project, call `DeleteProjectPolicy'. To
+%% get a list of project policies attached to a project, call
+%% `ListProjectPolicies'.
+%%
+%% You copy a model version by calling `CopyProjectVersion'.
+put_project_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_project_policy(Client, Input, []).
+put_project_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutProjectPolicy">>, Input, Options).
 
 %% @doc Returns an array of celebrities recognized in the input image.
 %%

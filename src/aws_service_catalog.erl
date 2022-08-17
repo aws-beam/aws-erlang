@@ -3,11 +3,11 @@
 
 %% @doc AWS Service Catalog
 %%
-%% AWS Service Catalog enables organizations to create and manage catalogs of
-%% IT services that are approved for AWS.
+%% Service Catalog enables organizations to create and manage catalogs of IT
+%% services that are approved for Amazon Web Services.
 %%
 %% To get the most out of this documentation, you should be familiar with the
-%% terminology discussed in AWS Service Catalog Concepts.
+%% terminology discussed in Service Catalog Concepts.
 -module(aws_service_catalog).
 
 -export([accept_portfolio_share/2,
@@ -263,7 +263,9 @@ batch_disassociate_service_action_from_provisioning_artifact(Client, Input, Opti
 %% or a new product.
 %%
 %% You can copy a product to the same account or another account. You can
-%% copy a product to the same region or another region.
+%% copy a product to the same Region or another Region. If you copy a product
+%% to another account, you must first share the product in a portfolio using
+%% `CreatePortfolioShare'.
 %%
 %% This operation is performed asynchronously. To track the progress of the
 %% operation, use `DescribeCopyProductStatus'.
@@ -343,8 +345,8 @@ create_product(Client, Input, Options)
 %% new product) or modified (when updating a provisioned product) when the
 %% plan is executed.
 %%
-%% You can create one plan per provisioned product. To create a plan for an
-%% existing provisioned product, the product status must be AVAILBLE or
+%% You can create one plan for each provisioned product. To create a plan for
+%% an existing provisioned product, the product status must be AVAILABLE or
 %% TAINTED.
 %%
 %% To view the resource changes in the change set, use
@@ -645,19 +647,26 @@ describe_tag_option(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTagOption">>, Input, Options).
 
-%% @doc Disable portfolio sharing through AWS Organizations feature.
+%% @doc Disable portfolio sharing through the Organizations service.
 %%
-%% This feature will not delete your current shares but it will prevent you
-%% from creating new shares throughout your organization. Current shares will
-%% not be in sync with your organization structure if it changes after
-%% calling this API. This API can only be called by the management account in
-%% the organization.
+%% This command will not delete your current shares, but prevents you from
+%% creating new shares throughout your organization. Current shares are not
+%% kept in sync with your organization structure if the structure changes
+%% after calling this API. Only the management account in the organization
+%% can call this API.
 %%
-%% This API can't be invoked if there are active delegated administrators in
+%% You cannot call this API if there are active delegated administrators in
 %% the organization.
 %%
 %% Note that a delegated administrator is not authorized to invoke
 %% `DisableAWSOrganizationsAccess'.
+%%
+%% If you share an Service Catalog portfolio in an organization within
+%% Organizations, and then disable Organizations access for Service Catalog,
+%% the portfolio access permissions will not sync with the latest changes to
+%% the organization structure. Specifically, accounts that you removed from
+%% the organization after disabling Service Catalog access will retain access
+%% to the previously shared portfolio.
 disable_aws_organizations_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     disable_aws_organizations_access(Client, Input, []).
@@ -709,18 +718,28 @@ disassociate_tag_option_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateTagOptionFromResource">>, Input, Options).
 
-%% @doc Enable portfolio sharing feature through AWS Organizations.
+%% @doc Enable portfolio sharing feature through Organizations.
 %%
 %% This API will allow Service Catalog to receive updates on your
 %% organization in order to sync your shares with the current structure. This
 %% API can only be called by the management account in the organization.
 %%
-%% By calling this API Service Catalog will make a call to
-%% organizations:EnableAWSServiceAccess on your behalf so that your shares
-%% can be in sync with any changes in your AWS Organizations structure.
+%% When you call this API, Service Catalog calls
+%% `organizations:EnableAWSServiceAccess' on your behalf so that your shares
+%% stay in sync with any changes in your Organizations structure.
 %%
 %% Note that a delegated administrator is not authorized to invoke
 %% `EnableAWSOrganizationsAccess'.
+%%
+%% If you have previously disabled Organizations access for Service Catalog,
+%% and then enable access again, the portfolio access permissions might not
+%% sync with the latest changes to the organization structure. Specifically,
+%% accounts that you removed from the organization after disabling Service
+%% Catalog access, and before you enabled access again, can retain access to
+%% the previously shared portfolio. As a result, an account that has been
+%% removed from the organization might still be able to create or manage
+%% Amazon Web Services resources when it is no longer authorized to do so.
+%% Amazon Web Services is working to resolve this issue.
 enable_aws_organizations_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     enable_aws_organizations_access(Client, Input, []).
@@ -745,7 +764,7 @@ execute_provisioned_product_service_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExecuteProvisionedProductServiceAction">>, Input, Options).
 
-%% @doc Get the Access Status for AWS Organization portfolio share feature.
+%% @doc Get the Access Status for Organizations portfolio share feature.
 %%
 %% This API can only be called by the management account in the organization
 %% or by a delegated admin.
@@ -766,12 +785,12 @@ get_provisioned_product_outputs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetProvisionedProductOutputs">>, Input, Options).
 
-%% @doc Requests the import of a resource as a Service Catalog provisioned
-%% product that is associated to a Service Catalog product and provisioning
-%% artifact.
+%% @doc Requests the import of a resource as a Amazon Web Services Service
+%% Catalog provisioned product that is associated to a Amazon Web Services
+%% Service Catalog product and provisioning artifact.
 %%
-%% Once imported, all supported Service Catalog governance actions are
-%% supported on the provisioned product.
+%% Once imported, all supported Amazon Web Services Service Catalog
+%% governance actions are supported on the provisioned product.
 %%
 %% Resource import only supports CloudFormation stack ARNs. CloudFormation
 %% StackSets and non-root nested stacks are not supported.
@@ -781,7 +800,8 @@ get_provisioned_product_outputs(Client, Input, Options)
 %% `UPDATE_ROLLBACK_COMPLETE', `IMPORT_COMPLETE', `IMPORT_ROLLBACK_COMPLETE'.
 %%
 %% Import of the resource requires that the CloudFormation stack template
-%% matches the associated Service Catalog product provisioning artifact.
+%% matches the associated Amazon Web Services Service Catalog product
+%% provisioning artifact.
 %%
 %% The user or role that performs this operation must have the
 %% `cloudformation:GetTemplate' and `cloudformation:DescribeStacks' IAM
@@ -947,8 +967,8 @@ list_service_actions_for_provisioning_artifact(Client, Input, Options)
 %% @doc Returns summary information about stack instances that are associated
 %% with the specified `CFN_STACKSET' type provisioned product.
 %%
-%% You can filter for stack instances that are associated with a specific AWS
-%% account name or region.
+%% You can filter for stack instances that are associated with a specific
+%% Amazon Web Services account name or Region.
 list_stack_instances_for_provisioned_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_stack_instances_for_provisioned_product(Client, Input, []).
@@ -1019,6 +1039,13 @@ search_products_as_admin(Client, Input, Options)
 
 %% @doc Gets information about the provisioned products that meet the
 %% specified criteria.
+%%
+%% To ensure a complete list of provisioned products and remove duplicate
+%% products, use `sort-by createdTime'.
+%%
+%% Here is a CLI example: ` '
+%%
+%% `aws servicecatalog search-provisioned-products --sort-by createdTime '
 search_provisioned_products(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_provisioned_products(Client, Input, []).
