@@ -372,7 +372,7 @@ create_code_signing_config(Client, Input0, Options0) ->
 
 %% @doc Creates a mapping between an event source and an Lambda function.
 %%
-%% Lambda reads items from the event source and triggers the function.
+%% Lambda reads items from the event source and invokes the function.
 %%
 %% For details about how to configure different event sources, see the
 %% following topics.
@@ -389,7 +389,7 @@ create_code_signing_config(Client, Input0, Options0) ->
 %%
 %% </li> <li> Apache Kafka
 %%
-%% </li> </ul> The following error handling options are only available for
+%% </li> </ul> The following error handling options are available only for
 %% stream sources (DynamoDB and Kinesis):
 %%
 %% <ul> <li> `BisectBatchOnFunctionError' - If the function returns an error,
@@ -1259,6 +1259,8 @@ get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, He
 %% long connections with timeout or keep-alive settings.
 %%
 %% This operation requires permission for the lambda:InvokeFunction action.
+%% For details on how to set up permissions for cross-account invocations,
+%% see Granting function access to other accounts.
 invoke(Client, FunctionName, Input) ->
     invoke(Client, FunctionName, Input, []).
 invoke(Client, FunctionName, Input0, Options0) ->
@@ -1391,7 +1393,7 @@ list_code_signing_configs(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists event source mappings.
 %%
-%% Specify an `EventSourceArn' to only show event source mappings for a
+%% Specify an `EventSourceArn' to show only event source mappings for a
 %% single event source.
 list_event_source_mappings(Client)
   when is_map(Client) ->
@@ -2075,7 +2077,7 @@ update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
 %%
 %% </li> <li> Apache Kafka
 %%
-%% </li> </ul> The following error handling options are only available for
+%% </li> </ul> The following error handling options are available only for
 %% stream sources (DynamoDB and Kinesis):
 %%
 %% <ul> <li> `BisectBatchOnFunctionError' - If the function returns an error,

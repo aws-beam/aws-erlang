@@ -404,6 +404,13 @@ apply_pending_maintenance_action(Client, Input, Options)
 %% instance in another.
 %%
 %% For an overview of CIDR ranges, go to the Wikipedia Tutorial.
+%%
+%% EC2-Classic was retired on August 15, 2022. If you haven't migrated from
+%% EC2-Classic to a VPC, we recommend that you migrate as soon as possible.
+%% For more information, see Migrate from EC2-Classic to a VPC in the Amazon
+%% EC2 User Guide, the blog EC2-Classic Networking is Retiring – Here’s How
+%% to Prepare, and Moving a DB instance not in a VPC into a VPC in the Amazon
+%% RDS User Guide.
 authorize_db_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     authorize_db_security_group_ingress(Client, Input, []).
@@ -761,6 +768,13 @@ create_db_proxy_endpoint(Client, Input, Options)
 %%
 %% A DB security group controls access to EC2-Classic DB instances that are
 %% not in a VPC.
+%%
+%% EC2-Classic was retired on August 15, 2022. If you haven't migrated from
+%% EC2-Classic to a VPC, we recommend that you migrate as soon as possible.
+%% For more information, see Migrate from EC2-Classic to a VPC in the Amazon
+%% EC2 User Guide, the blog EC2-Classic Networking is Retiring – Here’s How
+%% to Prepare, and Moving a DB instance not in a VPC into a VPC in the Amazon
+%% RDS User Guide.
 create_db_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_security_group(Client, Input, []).
@@ -813,9 +827,12 @@ create_db_subnet_group(Client, Input, Options)
 %% either the SourceType or the `SourceIds', you are notified of events
 %% generated from all RDS sources belonging to your customer account.
 %%
-%% RDS event notification is only available for unencrypted SNS topics. If
-%% you specify an encrypted SNS topic, event notifications aren't sent for
-%% the topic.
+%% For more information about subscribing to an event for RDS DB engines, see
+%% Subscribing to Amazon RDS event notification in the Amazon RDS User Guide.
+%%
+%% For more information about subscribing to an event for Aurora DB engines,
+%% see Subscribing to Amazon RDS event notification in the Amazon Aurora User
+%% Guide.
 create_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_subscription(Client, Input, []).
@@ -1033,6 +1050,13 @@ delete_db_proxy_endpoint(Client, Input, Options)
 %%
 %% The specified DB security group must not be associated with any DB
 %% instances.
+%%
+%% EC2-Classic was retired on August 15, 2022. If you haven't migrated from
+%% EC2-Classic to a VPC, we recommend that you migrate as soon as possible.
+%% For more information, see Migrate from EC2-Classic to a VPC in the Amazon
+%% EC2 User Guide, the blog EC2-Classic Networking is Retiring – Here’s How
+%% to Prepare, and Moving a DB instance not in a VPC into a VPC in the Amazon
+%% RDS User Guide.
 delete_db_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_security_group(Client, Input, []).
@@ -1343,6 +1367,13 @@ describe_db_proxy_targets(Client, Input, Options)
 %%
 %% If a `DBSecurityGroupName' is specified, the list will contain only the
 %% descriptions of the specified DB security group.
+%%
+%% EC2-Classic was retired on August 15, 2022. If you haven't migrated from
+%% EC2-Classic to a VPC, we recommend that you migrate as soon as possible.
+%% For more information, see Migrate from EC2-Classic to a VPC in the Amazon
+%% EC2 User Guide, the blog EC2-Classic Networking is Retiring – Here’s How
+%% to Prepare, and Moving a DB instance not in a VPC into a VPC in the Amazon
+%% RDS User Guide.
 describe_db_security_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_security_groups(Client, Input, []).
@@ -2346,6 +2377,13 @@ restore_db_instance_to_point_in_time(Client, Input, Options)
 %% Required parameters for this API are one of CIDRIP, EC2SecurityGroupId for
 %% VPC, or (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or
 %% EC2SecurityGroupId).
+%%
+%% EC2-Classic was retired on August 15, 2022. If you haven't migrated from
+%% EC2-Classic to a VPC, we recommend that you migrate as soon as possible.
+%% For more information, see Migrate from EC2-Classic to a VPC in the Amazon
+%% EC2 User Guide, the blog EC2-Classic Networking is Retiring – Here’s How
+%% to Prepare, and Moving a DB instance not in a VPC into a VPC in the Amazon
+%% RDS User Guide.
 revoke_db_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_db_security_group_ingress(Client, Input, []).
