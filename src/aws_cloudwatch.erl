@@ -63,6 +63,8 @@
          get_metric_widget_image/3,
          list_dashboards/2,
          list_dashboards/3,
+         list_managed_insight_rules/2,
+         list_managed_insight_rules/3,
          list_metric_streams/2,
          list_metric_streams/3,
          list_metrics/2,
@@ -77,6 +79,8 @@
          put_dashboard/3,
          put_insight_rule/2,
          put_insight_rule/3,
+         put_managed_insight_rules/2,
+         put_managed_insight_rules/3,
          put_metric_alarm/2,
          put_metric_alarm/3,
          put_metric_data/2,
@@ -532,6 +536,15 @@ list_dashboards(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDashboards">>, Input, Options).
 
+%% @doc Returns a list that contains the number of managed Contributor
+%% Insights rules in your account.
+list_managed_insight_rules(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_managed_insight_rules(Client, Input, []).
+list_managed_insight_rules(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListManagedInsightRules">>, Input, Options).
+
 %% @doc Returns a list of metric streams in this account.
 list_metric_streams(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -689,6 +702,23 @@ put_insight_rule(Client, Input)
 put_insight_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutInsightRule">>, Input, Options).
+
+%% @doc Creates a managed Contributor Insights rule for a specified Amazon
+%% Web Services resource.
+%%
+%% When you enable a managed rule, you create a Contributor Insights rule
+%% that collects data from Amazon Web Services services. You cannot edit
+%% these rules with `PutInsightRule'. The rules can be enabled, disabled, and
+%% deleted using `EnableInsightRules', `DisableInsightRules', and
+%% `DeleteInsightRules'. If a previously created managed rule is currently
+%% disabled, a subsequent call to this API will re-enable it. Use
+%% `ListManagedInsightRules' to describe all available rules.
+put_managed_insight_rules(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_managed_insight_rules(Client, Input, []).
+put_managed_insight_rules(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutManagedInsightRules">>, Input, Options).
 
 %% @doc Creates or updates an alarm and associates it with the specified
 %% metric, metric math expression, or anomaly detection model.

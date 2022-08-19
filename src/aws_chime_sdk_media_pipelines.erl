@@ -2,23 +2,35 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc The Amazon Chime SDK media pipeline APIs in this section allow
-%% software developers to create Amazon Chime SDK media pipelines and capture
-%% audio, video, events, and data messages from Amazon Chime SDK meetings.
+%% software developers to create Amazon Chime SDK media pipelines that
+%% capture, concatenate, or stream your Amazon Chime SDK meetings.
 %%
-%% For more information about media pipleines, see Amzon Chime SDK media
+%% For more information about media pipleines, see Amazon Chime SDK media
 %% pipelines.
 -module(aws_chime_sdk_media_pipelines).
 
 -export([create_media_capture_pipeline/2,
          create_media_capture_pipeline/3,
+         create_media_concatenation_pipeline/2,
+         create_media_concatenation_pipeline/3,
+         create_media_live_connector_pipeline/2,
+         create_media_live_connector_pipeline/3,
          delete_media_capture_pipeline/3,
          delete_media_capture_pipeline/4,
+         delete_media_pipeline/3,
+         delete_media_pipeline/4,
          get_media_capture_pipeline/2,
          get_media_capture_pipeline/4,
          get_media_capture_pipeline/5,
+         get_media_pipeline/2,
+         get_media_pipeline/4,
+         get_media_pipeline/5,
          list_media_capture_pipelines/1,
          list_media_capture_pipelines/3,
          list_media_capture_pipelines/4,
+         list_media_pipelines/1,
+         list_media_pipelines/3,
+         list_media_pipelines/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -33,7 +45,7 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a media capture pipeline.
+%% @doc Creates a media pipeline.
 create_media_capture_pipeline(Client, Input) ->
     create_media_capture_pipeline(Client, Input, []).
 create_media_capture_pipeline(Client, Input0, Options0) ->
@@ -56,7 +68,53 @@ create_media_capture_pipeline(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the media capture pipeline.
+%% @doc Creates a media concatenation pipeline.
+create_media_concatenation_pipeline(Client, Input) ->
+    create_media_concatenation_pipeline(Client, Input, []).
+create_media_concatenation_pipeline(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/sdk-media-concatenation-pipelines"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a streaming media pipeline in an Amazon Chime SDK meeting.
+create_media_live_connector_pipeline(Client, Input) ->
+    create_media_live_connector_pipeline(Client, Input, []).
+create_media_live_connector_pipeline(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/sdk-media-live-connector-pipelines"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the media pipeline.
 delete_media_capture_pipeline(Client, MediaPipelineId, Input) ->
     delete_media_capture_pipeline(Client, MediaPipelineId, Input, []).
 delete_media_capture_pipeline(Client, MediaPipelineId, Input0, Options0) ->
@@ -79,7 +137,30 @@ delete_media_capture_pipeline(Client, MediaPipelineId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets an existing media capture pipeline.
+%% @doc Deletes the media pipeline.
+delete_media_pipeline(Client, MediaPipelineId, Input) ->
+    delete_media_pipeline(Client, MediaPipelineId, Input, []).
+delete_media_pipeline(Client, MediaPipelineId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/sdk-media-pipelines/", aws_util:encode_uri(MediaPipelineId), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets an existing media pipeline.
 get_media_capture_pipeline(Client, MediaPipelineId)
   when is_map(Client) ->
     get_media_capture_pipeline(Client, MediaPipelineId, #{}, #{}).
@@ -102,7 +183,30 @@ get_media_capture_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of media capture pipelines.
+%% @doc Gets an existing media pipeline.
+get_media_pipeline(Client, MediaPipelineId)
+  when is_map(Client) ->
+    get_media_pipeline(Client, MediaPipelineId, #{}, #{}).
+
+get_media_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_media_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap, []).
+
+get_media_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/sdk-media-pipelines/", aws_util:encode_uri(MediaPipelineId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of media pipelines.
 list_media_capture_pipelines(Client)
   when is_map(Client) ->
     list_media_capture_pipelines(Client, #{}, #{}).
@@ -130,7 +234,35 @@ list_media_capture_pipelines(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the tags applied to an Amazon Chime SDK media capture pipeline.
+%% @doc Returns a list of media pipelines.
+list_media_pipelines(Client)
+  when is_map(Client) ->
+    list_media_pipelines(Client, #{}, #{}).
+
+list_media_pipelines(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_media_pipelines(Client, QueryMap, HeadersMap, []).
+
+list_media_pipelines(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/sdk-media-pipelines"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the tags available for a media pipeline.
 list_tags_for_resource(Client, ResourceARN)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceARN, #{}, #{}).
@@ -157,8 +289,9 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Applies the specified tags to the specified Amazon Chime SDK media
-%% capture pipeline.
+%% @doc The ARN of the media pipeline that you want to tag.
+%%
+%% Consists of he pipeline's endpoint region, resource ID, and pipeline ID.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->
@@ -181,8 +314,7 @@ tag_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes the specified tags from the specified Amazon Chime SDK media
-%% capture pipeline.
+%% @doc Removes any tags from a media pipeline.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 untag_resource(Client, Input0, Options0) ->

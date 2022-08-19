@@ -57,6 +57,8 @@
          describe_global_table/3,
          describe_global_table_settings/2,
          describe_global_table_settings/3,
+         describe_import/2,
+         describe_import/3,
          describe_kinesis_streaming_destination/2,
          describe_kinesis_streaming_destination/3,
          describe_limits/2,
@@ -79,6 +81,8 @@
          export_table_to_point_in_time/3,
          get_item/2,
          get_item/3,
+         import_table/2,
+         import_table/3,
          list_backups/2,
          list_backups/3,
          list_contributor_insights/2,
@@ -87,6 +91,8 @@
          list_exports/3,
          list_global_tables/2,
          list_global_tables/3,
+         list_imports/2,
+         list_imports/3,
          list_tables/2,
          list_tables/3,
          list_tags_of_resource/2,
@@ -565,6 +571,14 @@ describe_global_table_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGlobalTableSettings">>, Input, Options).
 
+%% @doc Represents the properties of the import.
+describe_import(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_import(Client, Input, []).
+describe_import(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeImport">>, Input, Options).
+
 %% @doc Returns information about the status of Kinesis streaming.
 describe_kinesis_streaming_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -764,6 +778,14 @@ get_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetItem">>, Input, Options).
 
+%% @doc Imports table data from an S3 bucket.
+import_table(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    import_table(Client, Input, []).
+import_table(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ImportTable">>, Input, Options).
+
 %% @doc List backups associated with an Amazon Web Services account.
 %%
 %% To list backups for a given table, specify `TableName'. `ListBackups'
@@ -809,6 +831,14 @@ list_global_tables(Client, Input)
 list_global_tables(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGlobalTables">>, Input, Options).
+
+%% @doc Lists completed imports within the past 90 days.
+list_imports(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_imports(Client, Input, []).
+list_imports(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListImports">>, Input, Options).
 
 %% @doc Returns an array of table names associated with the current account
 %% and endpoint.
