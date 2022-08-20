@@ -18,7 +18,7 @@
 %% using an endpoint. For a list of Amazon Connect endpoints, see Amazon
 %% Connect Endpoints.
 %%
-%% Working with contact flows? Check out the Amazon Connect Flow language.
+%% Working with flows? Check out the Amazon Connect Flow language.
 -module(aws_connect).
 
 -export([associate_approved_origin/3,
@@ -277,6 +277,8 @@
          resume_contact_recording/3,
          search_available_phone_numbers/2,
          search_available_phone_numbers/3,
+         search_security_profiles/2,
+         search_security_profiles/3,
          search_users/2,
          search_users/3,
          search_vocabularies/3,
@@ -545,8 +547,8 @@ associate_lex_bot(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates a contact flow with a phone number claimed to your Amazon
-%% Connect instance.
+%% @doc Associates a flow with a phone number claimed to your Amazon Connect
+%% instance.
 associate_phone_number_contact_flow(Client, PhoneNumberId, Input) ->
     associate_phone_number_contact_flow(Client, PhoneNumberId, Input, []).
 associate_phone_number_contact_flow(Client, PhoneNumberId, Input0, Options0) ->
@@ -693,9 +695,9 @@ create_agent_status(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a contact flow for the specified Amazon Connect instance.
+%% @doc Creates a flow for the specified Amazon Connect instance.
 %%
-%% You can also create and update contact flows using the Amazon Connect Flow
+%% You can also create and update flows using the Amazon Connect Flow
 %% language.
 create_contact_flow(Client, InstanceId, Input) ->
     create_contact_flow(Client, InstanceId, Input, []).
@@ -719,8 +721,7 @@ create_contact_flow(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a contact flow module for the specified Amazon Connect
-%% instance.
+%% @doc Creates a flow module for the specified Amazon Connect instance.
 create_contact_flow_module(Client, InstanceId, Input) ->
     create_contact_flow_module(Client, InstanceId, Input, []).
 create_contact_flow_module(Client, InstanceId, Input0, Options0) ->
@@ -1049,7 +1050,7 @@ create_vocabulary(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a contact flow for the specified Amazon Connect instance.
+%% @doc Deletes a flow for the specified Amazon Connect instance.
 delete_contact_flow(Client, ContactFlowId, InstanceId, Input) ->
     delete_contact_flow(Client, ContactFlowId, InstanceId, Input, []).
 delete_contact_flow(Client, ContactFlowId, InstanceId, Input0, Options0) ->
@@ -1072,7 +1073,7 @@ delete_contact_flow(Client, ContactFlowId, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specified contact flow module.
+%% @doc Deletes the specified flow module.
 delete_contact_flow_module(Client, ContactFlowModuleId, InstanceId, Input) ->
     delete_contact_flow_module(Client, ContactFlowModuleId, InstanceId, Input, []).
 delete_contact_flow_module(Client, ContactFlowModuleId, InstanceId, Input0, Options0) ->
@@ -1404,9 +1405,9 @@ describe_contact(Client, ContactId, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes the specified contact flow.
+%% @doc Describes the specified flow.
 %%
-%% You can also create and update contact flows using the Amazon Connect Flow
+%% You can also create and update flows using the Amazon Connect Flow
 %% language.
 describe_contact_flow(Client, ContactFlowId, InstanceId)
   when is_map(Client) ->
@@ -1430,7 +1431,7 @@ describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap, O
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes the specified contact flow module.
+%% @doc Describes the specified flow module.
 describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId)
   when is_map(Client) ->
     describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, #{}, #{}).
@@ -1874,7 +1875,7 @@ disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input0, 
 %% change.
 %%
 %% Remove the Lambda function from the dropdown options available in the
-%% relevant contact flow blocks.
+%% relevant flow blocks.
 disassociate_lambda_function(Client, InstanceId, Input) ->
     disassociate_lambda_function(Client, InstanceId, Input, []).
 disassociate_lambda_function(Client, InstanceId, Input0, Options0) ->
@@ -1927,8 +1928,8 @@ disassociate_lex_bot(Client, InstanceId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes the contact flow association from a phone number claimed to
-%% your Amazon Connect instance, if a contact flow association exists.
+%% @doc Removes the flow association from a phone number claimed to your
+%% Amazon Connect instance, if a flow association exists.
 disassociate_phone_number_contact_flow(Client, PhoneNumberId, Input) ->
     disassociate_phone_number_contact_flow(Client, PhoneNumberId, Input, []).
 disassociate_phone_number_contact_flow(Client, PhoneNumberId, Input0, Options0) ->
@@ -2283,8 +2284,8 @@ list_bots(Client, InstanceId, LexVersion, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Provides information about the contact flow modules for the specified
-%% Amazon Connect instance.
+%% @doc Provides information about the flow modules for the specified Amazon
+%% Connect instance.
 list_contact_flow_modules(Client, InstanceId)
   when is_map(Client) ->
     list_contact_flow_modules(Client, InstanceId, #{}, #{}).
@@ -2313,14 +2314,14 @@ list_contact_flow_modules(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Provides information about the contact flows for the specified Amazon
-%% Connect instance.
+%% @doc Provides information about the flows for the specified Amazon Connect
+%% instance.
 %%
-%% You can also create and update contact flows using the Amazon Connect Flow
+%% You can also create and update flows using the Amazon Connect Flow
 %% language.
 %%
-%% For more information about contact flows, see Contact Flows in the Amazon
-%% Connect Administrator Guide.
+%% For more information about flows, see Flows in the Amazon Connect
+%% Administrator Guide.
 list_contact_flows(Client, InstanceId)
   when is_map(Client) ->
     list_contact_flows(Client, InstanceId, #{}, #{}).
@@ -2569,7 +2570,7 @@ list_integration_associations(Client, InstanceId, QueryMap, HeadersMap, Options0
 %% change.
 %%
 %% Returns a paginated list of all Lambda functions that display in the
-%% dropdown options in the relevant contact flow blocks.
+%% dropdown options in the relevant flow blocks.
 list_lambda_functions(Client, InstanceId)
   when is_map(Client) ->
     list_lambda_functions(Client, InstanceId, #{}, #{}).
@@ -3222,6 +3223,33 @@ search_available_phone_numbers(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Searches security profiles in an Amazon Connect instance, with optional
+%% filtering.
+search_security_profiles(Client, Input) ->
+    search_security_profiles(Client, Input, []).
+search_security_profiles(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-security-profiles"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Searches users in an Amazon Connect instance, with optional
 %% filtering.
 search_users(Client, Input) ->
@@ -3270,7 +3298,7 @@ search_vocabularies(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Initiates a contact flow to start a new chat for the customer.
+%% @doc Initiates a flow to start a new chat for the customer.
 %%
 %% Response of this API provides a token required to obtain credentials from
 %% the CreateParticipantConnection API in the Amazon Connect Participant
@@ -3384,16 +3412,14 @@ start_contact_streaming(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Places an outbound call to a contact, and then initiates the contact
-%% flow.
+%% @doc Places an outbound call to a contact, and then initiates the flow.
 %%
-%% It performs the actions in the contact flow that's specified (in
-%% `ContactFlowId').
+%% It performs the actions in the flow that's specified (in `ContactFlowId').
 %%
 %% Agents do not initiate the outbound API, which means that they do not dial
-%% the contact. If the contact flow places an outbound call to a contact, and
-%% then puts the contact in queue, the call is then routed to the agent, like
-%% any other inbound case.
+%% the contact. If the flow places an outbound call to a contact, and then
+%% puts the contact in queue, the call is then routed to the agent, like any
+%% other inbound case.
 %%
 %% There is a 60-second dialing timeout for this operation. If the call is
 %% not connected after 60 seconds, it fails.
@@ -3405,8 +3431,7 @@ start_contact_streaming(Client, Input0, Options0) ->
 %%
 %% Campaign calls are not allowed by default. Before you can make a call with
 %% `TrafficType' = `CAMPAIGN', you must submit a service quota increase
-%% request. For more information, see Amazon Connect Service Quotas in the
-%% Amazon Connect Administrator Guide.
+%% request to the quota Amazon Connect campaigns.
 start_outbound_voice_contact(Client, Input) ->
     start_outbound_voice_contact(Client, Input, []).
 start_outbound_voice_contact(Client, Input0, Options0) ->
@@ -3429,7 +3454,7 @@ start_outbound_voice_contact(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Initiates a contact flow to start a new task.
+%% @doc Initiates a flow to start a new task.
 start_task_contact(Client, Input) ->
     start_task_contact(Client, Input, []).
 start_task_contact(Client, Input0, Options0) ->
@@ -3578,9 +3603,10 @@ suspend_contact_recording(Client, Input0, Options0) ->
 
 %% @doc Adds the specified tags to the specified resource.
 %%
-%% The supported resource types are users, routing profiles, queues, quick
-%% connects, contact flows, agent status, hours of operation, phone number,
-%% security profiles, and task templates.
+%% Some of the supported resource types are agents, routing profiles, queues,
+%% quick connects, contact flows, agent statuses, hours of operation, phone
+%% numbers, security profiles, and task templates. For a complete list, see
+%% Tagging resources in Amazon Connect.
 %%
 %% For sample policies that use tags, see Amazon Connect Identity-Based
 %% Policy Examples in the Amazon Connect Administrator Guide.
@@ -3609,10 +3635,10 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Transfers contacts from one agent or queue to another agent or queue
 %% at any point after a contact is created.
 %%
-%% You can transfer a contact to another queue by providing the contact flow
-%% which orchestrates the contact to the destination queue. This gives you
-%% more control over contact handling and helps you adhere to the service
-%% level agreement (SLA) guaranteed to your customers.
+%% You can transfer a contact to another queue by providing the flow which
+%% orchestrates the contact to the destination queue. This gives you more
+%% control over contact handling and helps you adhere to the service level
+%% agreement (SLA) guaranteed to your customers.
 %%
 %% Note the following requirements:
 %%
@@ -3620,8 +3646,8 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% </li> <li> Do not use both `QueueId' and `UserId' in the same call.
 %%
-%% </li> <li> The following contact flow types are supported: Inbound contact
-%% flow, Transfer to agent flow, and Transfer to queue flow.
+%% </li> <li> The following flow types are supported: Inbound flow, Transfer
+%% to agent flow, and Transfer to queue flow.
 %%
 %% </li> <li> The `TransferContact' API can be called only on active
 %% contacts.
@@ -3745,17 +3771,9 @@ update_contact(Client, ContactId, InstanceId, Input0, Options0) ->
 %% legal review or to identify abusive callers.
 %%
 %% Contact attributes are available in Amazon Connect for 24 months, and are
-%% then deleted. For information about CTR retention and the maximum size of
-%% the CTR attributes section, see Feature specifications in the Amazon
-%% Connect Administrator Guide.
-%%
-%% Important: You cannot use the operation to update attributes for contacts
-%% that occurred prior to the release of the API, which was September 12,
-%% 2018. You can update attributes only for contacts that started after the
-%% release of the API. If you attempt to update attributes for a contact that
-%% occurred prior to the release of the API, a 400 error is returned. This
-%% applies also to queued callbacks that were initiated prior to the release
-%% of the API but are still active in your instance.
+%% then deleted. For information about contact record retention and the
+%% maximum size of the contact record attributes section, see Feature
+%% specifications in the Amazon Connect Administrator Guide.
 update_contact_attributes(Client, Input) ->
     update_contact_attributes(Client, Input, []).
 update_contact_attributes(Client, Input0, Options0) ->
@@ -3778,9 +3796,9 @@ update_contact_attributes(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the specified contact flow.
+%% @doc Updates the specified flow.
 %%
-%% You can also create and update contact flows using the Amazon Connect Flow
+%% You can also create and update flows using the Amazon Connect Flow
 %% language.
 update_contact_flow_content(Client, ContactFlowId, InstanceId, Input) ->
     update_contact_flow_content(Client, ContactFlowId, InstanceId, Input, []).
@@ -3804,7 +3822,7 @@ update_contact_flow_content(Client, ContactFlowId, InstanceId, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates metadata about specified contact flow.
+%% @doc Updates metadata about specified flow.
 update_contact_flow_metadata(Client, ContactFlowId, InstanceId, Input) ->
     update_contact_flow_metadata(Client, ContactFlowId, InstanceId, Input, []).
 update_contact_flow_metadata(Client, ContactFlowId, InstanceId, Input0, Options0) ->
@@ -3827,8 +3845,8 @@ update_contact_flow_metadata(Client, ContactFlowId, InstanceId, Input0, Options0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates specified contact flow module for the specified Amazon
-%% Connect instance.
+%% @doc Updates specified flow module for the specified Amazon Connect
+%% instance.
 update_contact_flow_module_content(Client, ContactFlowModuleId, InstanceId, Input) ->
     update_contact_flow_module_content(Client, ContactFlowModuleId, InstanceId, Input, []).
 update_contact_flow_module_content(Client, ContactFlowModuleId, InstanceId, Input0, Options0) ->
@@ -3851,7 +3869,7 @@ update_contact_flow_module_content(Client, ContactFlowModuleId, InstanceId, Inpu
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates metadata about specified contact flow module.
+%% @doc Updates metadata about specified flow module.
 update_contact_flow_module_metadata(Client, ContactFlowModuleId, InstanceId, Input) ->
     update_contact_flow_module_metadata(Client, ContactFlowModuleId, InstanceId, Input, []).
 update_contact_flow_module_metadata(Client, ContactFlowModuleId, InstanceId, Input0, Options0) ->
@@ -3874,9 +3892,9 @@ update_contact_flow_module_metadata(Client, ContactFlowModuleId, InstanceId, Inp
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc The name of the contact flow.
+%% @doc The name of the flow.
 %%
-%% You can also create and update contact flows using the Amazon Connect Flow
+%% You can also create and update flows using the Amazon Connect Flow
 %% language.
 update_contact_flow_name(Client, ContactFlowId, InstanceId, Input) ->
     update_contact_flow_name(Client, ContactFlowId, InstanceId, Input, []).

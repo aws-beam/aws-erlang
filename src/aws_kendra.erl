@@ -260,8 +260,8 @@ create_access_control_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAccessControlConfiguration">>, Input, Options).
 
-%% @doc Creates a data source that you want to use with an Amazon Kendra
-%% index.
+%% @doc Creates a data source connector that you want to use with an Amazon
+%% Kendra index.
 %%
 %% You specify a name, data source connector type and description for your
 %% data source. You also specify configuration information for the data
@@ -380,7 +380,7 @@ delete_access_control_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAccessControlConfiguration">>, Input, Options).
 
-%% @doc Deletes an Amazon Kendra data source.
+%% @doc Deletes an Amazon Kendra data source connector.
 %%
 %% An exception is not thrown if the data source is already being deleted.
 %% While the data source is being deleted, the `Status' field returned by a
@@ -484,7 +484,7 @@ describe_access_control_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccessControlConfiguration">>, Input, Options).
 
-%% @doc Gets information about an Amazon Kendra data source.
+%% @doc Gets information about an Amazon Kendra data source connector.
 describe_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_source(Client, Input, []).
@@ -635,7 +635,7 @@ list_access_control_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccessControlConfigurations">>, Input, Options).
 
-%% @doc Gets statistics about synchronizing Amazon Kendra with a data source.
+%% @doc Gets statistics about synchronizing a data source connector.
 list_data_source_sync_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_data_source_sync_jobs(Client, Input, []).
@@ -643,7 +643,7 @@ list_data_source_sync_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDataSourceSyncJobs">>, Input, Options).
 
-%% @doc Lists the data sources that you have created.
+%% @doc Lists the data source connectors that you have created.
 list_data_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_data_sources(Client, Input, []).
@@ -799,7 +799,7 @@ query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"Query">>, Input, Options).
 
-%% @doc Starts a synchronization job for a data source.
+%% @doc Starts a synchronization job for a data source connector.
 %%
 %% If a synchronization job is already in progress, Amazon Kendra returns a
 %% `ResourceInUseException' exception.
@@ -883,7 +883,7 @@ update_access_control_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAccessControlConfiguration">>, Input, Options).
 
-%% @doc Updates an existing Amazon Kendra data source.
+%% @doc Updates an existing Amazon Kendra data source connector.
 update_data_source(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_data_source(Client, Input, []).

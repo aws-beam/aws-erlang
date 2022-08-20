@@ -35,6 +35,8 @@
          detect_metric_set_config/3,
          get_anomaly_group/2,
          get_anomaly_group/3,
+         get_data_quality_metrics/2,
+         get_data_quality_metrics/3,
          get_feedback/2,
          get_feedback/3,
          get_sample_data/2,
@@ -394,6 +396,29 @@ get_anomaly_group(Client, Input) ->
 get_anomaly_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetAnomalyGroup"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns details about the requested data quality metrics.
+get_data_quality_metrics(Client, Input) ->
+    get_data_quality_metrics(Client, Input, []).
+get_data_quality_metrics(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetDataQualityMetrics"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
