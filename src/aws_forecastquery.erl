@@ -5,7 +5,9 @@
 -module(aws_forecastquery).
 
 -export([query_forecast/2,
-         query_forecast/3]).
+         query_forecast/3,
+         query_what_if_forecast/2,
+         query_what_if_forecast/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -34,6 +36,14 @@ query_forecast(Client, Input)
 query_forecast(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"QueryForecast">>, Input, Options).
+
+%% @doc Retrieves a what-if forecast.
+query_what_if_forecast(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    query_what_if_forecast(Client, Input, []).
+query_what_if_forecast(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"QueryWhatIfForecast">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

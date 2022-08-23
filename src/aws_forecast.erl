@@ -26,6 +26,12 @@
          create_predictor/3,
          create_predictor_backtest_export_job/2,
          create_predictor_backtest_export_job/3,
+         create_what_if_analysis/2,
+         create_what_if_analysis/3,
+         create_what_if_forecast/2,
+         create_what_if_forecast/3,
+         create_what_if_forecast_export/2,
+         create_what_if_forecast_export/3,
          delete_dataset/2,
          delete_dataset/3,
          delete_dataset_group/2,
@@ -48,6 +54,12 @@
          delete_predictor_backtest_export_job/3,
          delete_resource_tree/2,
          delete_resource_tree/3,
+         delete_what_if_analysis/2,
+         delete_what_if_analysis/3,
+         delete_what_if_forecast/2,
+         delete_what_if_forecast/3,
+         delete_what_if_forecast_export/2,
+         delete_what_if_forecast_export/3,
          describe_auto_predictor/2,
          describe_auto_predictor/3,
          describe_dataset/2,
@@ -70,6 +82,12 @@
          describe_predictor/3,
          describe_predictor_backtest_export_job/2,
          describe_predictor_backtest_export_job/3,
+         describe_what_if_analysis/2,
+         describe_what_if_analysis/3,
+         describe_what_if_forecast/2,
+         describe_what_if_forecast/3,
+         describe_what_if_forecast_export/2,
+         describe_what_if_forecast_export/3,
          get_accuracy_metrics/2,
          get_accuracy_metrics/3,
          list_dataset_groups/2,
@@ -96,6 +114,12 @@
          list_predictors/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         list_what_if_analyses/2,
+         list_what_if_analyses/3,
+         list_what_if_forecast_exports/2,
+         list_what_if_forecast_exports/3,
+         list_what_if_forecasts/2,
+         list_what_if_forecasts/3,
          resume_resource/2,
          resume_resource/3,
          stop_resource/2,
@@ -525,6 +549,80 @@ create_predictor_backtest_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePredictorBacktestExportJob">>, Input, Options).
 
+%% @doc What-if analysis is a scenario modeling technique where you make a
+%% hypothetical change to a time series and compare the forecasts generated
+%% by these changes against the baseline, unchanged time series.
+%%
+%% It is important to remember that the purpose of a what-if analysis is to
+%% understand how a forecast can change given different modifications to the
+%% baseline time series.
+%%
+%% For example, imagine you are a clothing retailer who is considering an end
+%% of season sale to clear space for new styles. After creating a baseline
+%% forecast, you can use a what-if analysis to investigate how different
+%% sales tactics might affect your goals. You could create a scenario where
+%% everything is given a 25% markdown and another where everything is given a
+%% fixed dollar markdown. You can create a scenario where the sale lasts for
+%% 1 week and another where the sale lasts for 1 month. Your what-if analysis
+%% enables you to compare many different scenarios against each other.
+%%
+%% Note that a what-if analysis is meant to display what the forecasting
+%% model has learned and how it will behave in the scenarios that you are
+%% evaluating. Do not blindly use the results of the what-if analysis to make
+%% business decisions. For instance, forecasts might not be accurate for
+%% novel scenarios where there is no reference available to determine whether
+%% a forecast is good.
+%%
+%% The `TimeSeriesSelector' object defines the items that you want in the
+%% what-if analysis.
+create_what_if_analysis(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_what_if_analysis(Client, Input, []).
+create_what_if_analysis(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateWhatIfAnalysis">>, Input, Options).
+
+%% @doc A what-if forecast is a forecast that is created from a modified
+%% version of the baseline forecast.
+%%
+%% Each what-if forecast incorporates either a replacement dataset or a set
+%% of transformations to the original dataset.
+create_what_if_forecast(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_what_if_forecast(Client, Input, []).
+create_what_if_forecast(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateWhatIfForecast">>, Input, Options).
+
+%% @doc Exports a forecast created by the `CreateWhatIfForecast' operation to
+%% your Amazon Simple Storage Service (Amazon S3) bucket.
+%%
+%% The forecast file name will match the following conventions:
+%%
+%% `≈<ForecastExportJobName>_<ExportTimestamp>_<PartNumber>'
+%%
+%% The <ExportTimestamp> component is in Java SimpleDateFormat
+%% (yyyy-MM-ddTHH-mm-ssZ).
+%%
+%% You must specify a `DataDestination' object that includes an AWS Identity
+%% and Access Management (IAM) role that Amazon Forecast can assume to access
+%% the Amazon S3 bucket. For more information, see `aws-forecast-iam-roles'.
+%%
+%% For more information, see `howitworks-forecast'.
+%%
+%% To get a list of all your what-if forecast export jobs, use the
+%% `ListWhatIfForecastExports' operation.
+%%
+%% The `Status' of the forecast export job must be `ACTIVE' before you can
+%% access the forecast in your Amazon S3 bucket. To get the status, use the
+%% `DescribeWhatIfForecastExport' operation.
+create_what_if_forecast_export(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_what_if_forecast_export(Client, Input, []).
+create_what_if_forecast_export(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateWhatIfForecastExport">>, Input, Options).
+
 %% @doc Deletes an Amazon Forecast dataset that was created using the
 %% CreateDataset operation.
 %%
@@ -678,6 +776,51 @@ delete_resource_tree(Client, Input)
 delete_resource_tree(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourceTree">>, Input, Options).
+
+%% @doc Deletes a what-if analysis created using the `CreateWhatIfAnalysis'
+%% operation.
+%%
+%% You can delete only what-if analyses that have a status of `ACTIVE' or
+%% `CREATE_FAILED'. To get the status, use the `DescribeWhatIfAnalysis'
+%% operation.
+%%
+%% You can't delete a what-if analysis while any of its forecasts are being
+%% exported.
+delete_what_if_analysis(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_what_if_analysis(Client, Input, []).
+delete_what_if_analysis(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteWhatIfAnalysis">>, Input, Options).
+
+%% @doc Deletes a what-if forecast created using the `CreateWhatIfForecast'
+%% operation.
+%%
+%% You can delete only what-if forecasts that have a status of `ACTIVE' or
+%% `CREATE_FAILED'. To get the status, use the `DescribeWhatIfForecast'
+%% operation.
+%%
+%% You can't delete a what-if forecast while it is being exported. After a
+%% what-if forecast is deleted, you can no longer query the what-if analysis.
+delete_what_if_forecast(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_what_if_forecast(Client, Input, []).
+delete_what_if_forecast(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteWhatIfForecast">>, Input, Options).
+
+%% @doc Deletes a what-if forecast export created using the
+%% `CreateWhatIfForecastExport' operation.
+%%
+%% You can delete only what-if forecast exports that have a status of
+%% `ACTIVE' or `CREATE_FAILED'. To get the status, use the
+%% `DescribeWhatIfForecastExport' operation.
+delete_what_if_forecast_export(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_what_if_forecast_export(Client, Input, []).
+delete_what_if_forecast_export(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteWhatIfForecastExport">>, Input, Options).
 
 %% @doc Describes a predictor created using the CreateAutoPredictor
 %% operation.
@@ -904,6 +1047,75 @@ describe_predictor_backtest_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePredictorBacktestExportJob">>, Input, Options).
 
+%% @doc Describes the what-if analysis created using the
+%% `CreateWhatIfAnalysis' operation.
+%%
+%% In addition to listing the properties provided in the
+%% `CreateWhatIfAnalysis' request, this operation lists the following
+%% properties:
+%%
+%% <ul> <li> `CreationTime'
+%%
+%% </li> <li> `LastModificationTime'
+%%
+%% </li> <li> `Message' - If an error occurred, information about the error.
+%%
+%% </li> <li> `Status'
+%%
+%% </li> </ul>
+describe_what_if_analysis(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_what_if_analysis(Client, Input, []).
+describe_what_if_analysis(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeWhatIfAnalysis">>, Input, Options).
+
+%% @doc Describes the what-if forecast created using the
+%% `CreateWhatIfForecast' operation.
+%%
+%% In addition to listing the properties provided in the
+%% `CreateWhatIfForecast' request, this operation lists the following
+%% properties:
+%%
+%% <ul> <li> `CreationTime'
+%%
+%% </li> <li> `LastModificationTime'
+%%
+%% </li> <li> `Message' - If an error occurred, information about the error.
+%%
+%% </li> <li> `Status'
+%%
+%% </li> </ul>
+describe_what_if_forecast(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_what_if_forecast(Client, Input, []).
+describe_what_if_forecast(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeWhatIfForecast">>, Input, Options).
+
+%% @doc Describes the what-if forecast export created using the
+%% `CreateWhatIfForecastExport' operation.
+%%
+%% In addition to listing the properties provided in the
+%% `CreateWhatIfForecastExport' request, this operation lists the following
+%% properties:
+%%
+%% <ul> <li> `CreationTime'
+%%
+%% </li> <li> `LastModificationTime'
+%%
+%% </li> <li> `Message' - If an error occurred, information about the error.
+%%
+%% </li> <li> `Status'
+%%
+%% </li> </ul>
+describe_what_if_forecast_export(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_what_if_forecast_export(Client, Input, []).
+describe_what_if_forecast_export(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeWhatIfForecastExport">>, Input, Options).
+
 %% @doc Provides metrics on the accuracy of the models that were trained by
 %% the `CreatePredictor' operation.
 %%
@@ -1099,6 +1311,48 @@ list_tags_for_resource(Client, Input)
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Returns a list of what-if analyses created using the
+%% `CreateWhatIfAnalysis' operation.
+%%
+%% For each what-if analysis, this operation returns a summary of its
+%% properties, including its Amazon Resource Name (ARN). You can retrieve the
+%% complete set of properties by using the what-if analysis ARN with the
+%% `DescribeWhatIfAnalysis' operation.
+list_what_if_analyses(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_what_if_analyses(Client, Input, []).
+list_what_if_analyses(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListWhatIfAnalyses">>, Input, Options).
+
+%% @doc Returns a list of what-if forecast exports created using the
+%% `CreateWhatIfForecastExport' operation.
+%%
+%% For each what-if forecast export, this operation returns a summary of its
+%% properties, including its Amazon Resource Name (ARN). You can retrieve the
+%% complete set of properties by using the what-if forecast export ARN with
+%% the `DescribeWhatIfForecastExport' operation.
+list_what_if_forecast_exports(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_what_if_forecast_exports(Client, Input, []).
+list_what_if_forecast_exports(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListWhatIfForecastExports">>, Input, Options).
+
+%% @doc Returns a list of what-if forecasts created using the
+%% `CreateWhatIfForecast' operation.
+%%
+%% For each what-if forecast, this operation returns a summary of its
+%% properties, including its Amazon Resource Name (ARN). You can retrieve the
+%% complete set of properties by using the what-if forecast ARN with the
+%% `DescribeWhatIfForecast' operation.
+list_what_if_forecasts(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_what_if_forecasts(Client, Input, []).
+list_what_if_forecasts(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListWhatIfForecasts">>, Input, Options).
 
 %% @doc Resumes a stopped monitor resource.
 resume_resource(Client, Input)

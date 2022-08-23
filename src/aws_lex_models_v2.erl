@@ -127,6 +127,8 @@
          start_bot_recommendation/6,
          start_import/2,
          start_import/3,
+         stop_bot_recommendation/6,
+         stop_bot_recommendation/7,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -1586,6 +1588,29 @@ start_import(Client, Input) ->
 start_import(Client, Input0, Options0) ->
     Method = put,
     Path = ["/imports/"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stop an already running Bot Recommendation request.
+stop_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input) ->
+    stop_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input, []).
+stop_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input0, Options0) ->
+    Method = put,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations/", aws_util:encode_uri(BotRecommendationId), "/stopbotrecommendation"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
