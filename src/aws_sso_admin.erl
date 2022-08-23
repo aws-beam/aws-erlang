@@ -1,7 +1,36 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-
+%% @doc Amazon Web Services Single Sign On helps you securely create, or
+%% connect, your workforce identities and manage their access centrally
+%% across Amazon Web Services accounts and applications.
+%%
+%% Amazon Web Services SSO is the recommended approach for workforce
+%% authentication and authorization in Amazon Web Services, for organizations
+%% of any size and type.
+%%
+%% Although Amazon Web Services Single Sign-On was renamed, the `sso' and
+%% `identitystore' API namespaces will continue to retain their original name
+%% for backward compatibility purposes. For more information, see Amazon Web
+%% Services SSO rename.
+%%
+%% This reference guide provides information on single sign-on operations
+%% which could be used for access management of Amazon Web Services accounts.
+%% For information about Amazon Web Services SSO features, see the Amazon Web
+%% Services SSO User Guide.
+%%
+%% Many operations in the Amazon Web Services SSO APIs rely on identifiers
+%% for users and groups, known as principals. For more information about how
+%% to work with principals and principal IDs in Amazon Web Services SSO, see
+%% the Identity Store API Reference.
+%%
+%% Amazon Web Services provides SDKs that consist of libraries and sample
+%% code for various programming languages and platforms (Java, Ruby, .Net,
+%% iOS, Android, and more). The SDKs provide a convenient way to create
+%% programmatic access to Amazon Web Services SSO and other Amazon Web
+%% Services services. For more information about the Amazon Web Services
+%% SDKs, including how to download and install them, see Tools for Amazon Web
+%% Services.
 -module(aws_sso_admin).
 
 -export([attach_customer_managed_policy_reference_to_permission_set/2,
@@ -121,6 +150,10 @@ attach_managed_policy_to_permission_set(Client, Input, Options)
 %% the corresponding IAM policies attached to roles in your accounts will not
 %% be updated automatically. In this case, you must call `
 %% `ProvisionPermissionSet' ' to make these updates.
+%%
+%% After a successful response, call
+%% `DescribeAccountAssignmentCreationStatus' to describe the status of an
+%% assignment creation request.
 create_account_assignment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_account_assignment(Client, Input, []).
@@ -134,6 +167,10 @@ create_account_assignment(Client, Input, Options)
 %% You can also specify new attributes to add to your ABAC configuration
 %% during the enabling process. For more information about ABAC, see
 %% Attribute-Based Access Control in the Amazon Web Services SSO User Guide.
+%%
+%% After a successful response, call
+%% `DescribeInstanceAccessControlAttributeConfiguration' to validate that
+%% `InstanceAccessControlAttributeConfiguration' was created.
 create_instance_access_control_attribute_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_instance_access_control_attribute_configuration(Client, Input, []).
@@ -155,6 +192,10 @@ create_permission_set(Client, Input, Options)
 
 %% @doc Deletes a principal's access from a specified Amazon Web Services
 %% account using a specified permission set.
+%%
+%% After a successful response, call
+%% `DescribeAccountAssignmentCreationStatus' to describe the status of an
+%% assignment deletion request.
 delete_account_assignment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_account_assignment(Client, Input, []).

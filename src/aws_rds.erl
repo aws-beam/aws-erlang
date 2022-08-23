@@ -324,7 +324,9 @@
          stop_db_instance/2,
          stop_db_instance/3,
          stop_db_instance_automated_backups_replication/2,
-         stop_db_instance_automated_backups_replication/3]).
+         stop_db_instance_automated_backups_replication/3,
+         switchover_read_replica/2,
+         switchover_read_replica/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -2522,6 +2524,18 @@ stop_db_instance_automated_backups_replication(Client, Input)
 stop_db_instance_automated_backups_replication(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDBInstanceAutomatedBackupsReplication">>, Input, Options).
+
+%% @doc Switches over an Oracle standby database in an Oracle Data Guard
+%% environment, making it the new primary database.
+%%
+%% Issue this command in the AWS Region that hosts the current standby
+%% database.
+switchover_read_replica(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    switchover_read_replica(Client, Input, []).
+switchover_read_replica(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SwitchoverReadReplica">>, Input, Options).
 
 %%====================================================================
 %% Internal functions
