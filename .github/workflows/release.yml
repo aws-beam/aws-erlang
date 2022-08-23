@@ -6,11 +6,13 @@ on:
     - '*'
 
 jobs:
-  release:
 
+  build:
     runs-on: ubuntu-latest
     container:
       image: erlang:24.3.4.2
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -21,13 +23,7 @@ jobs:
       - name: Run EUnit Tests
         run: rebar3 eunit
 
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: ncipollo/release-action@v1
         with:
-          tag_name: ${{ github.ref_name }}
-          release_name: Release ${{ github.ref_name }}
-          draft: false
-          prerelease: false
+          generateReleaseNotes: true
+          token: ${{ secrets.YOUR_GITHUB_TOKEN }}
