@@ -107,13 +107,20 @@
 %% </li> <li> Managing Amazon IVS permissions — See Identity and Access
 %% Management on the Security page of the Amazon IVS User Guide.
 %%
-%% </li> </ul> Channel Endpoints
+%% </li> </ul> Amazon Resource Names (ARNs)
+%%
+%% ARNs uniquely identify AWS resources. An ARN is required when you need to
+%% specify a resource unambiguously across all of AWS, such as in IAM
+%% policies and API calls. For more information, see Amazon Resource Names in
+%% the AWS General Reference.
+%%
+%% Channel Endpoints
 %%
 %% <ul> <li> `CreateChannel' — Creates a new channel and an associated stream
 %% key to start streaming.
 %%
 %% </li> <li> `GetChannel' — Gets the channel configuration for the specified
-%% channel ARN (Amazon Resource Name).
+%% channel ARN.
 %%
 %% </li> <li> `BatchGetChannel' — Performs `GetChannel' on multiple ARNs
 %% simultaneously.

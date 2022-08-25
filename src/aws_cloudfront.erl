@@ -32,6 +32,8 @@
          create_key_group/3,
          create_monitoring_subscription/3,
          create_monitoring_subscription/4,
+         create_origin_access_control/2,
+         create_origin_access_control/3,
          create_origin_request_policy/2,
          create_origin_request_policy/3,
          create_public_key/2,
@@ -60,6 +62,8 @@
          delete_key_group/4,
          delete_monitoring_subscription/3,
          delete_monitoring_subscription/4,
+         delete_origin_access_control/3,
+         delete_origin_access_control/4,
          delete_origin_request_policy/3,
          delete_origin_request_policy/4,
          delete_public_key/3,
@@ -118,6 +122,12 @@
          get_monitoring_subscription/2,
          get_monitoring_subscription/4,
          get_monitoring_subscription/5,
+         get_origin_access_control/2,
+         get_origin_access_control/4,
+         get_origin_access_control/5,
+         get_origin_access_control_config/2,
+         get_origin_access_control_config/4,
+         get_origin_access_control_config/5,
          get_origin_request_policy/2,
          get_origin_request_policy/4,
          get_origin_request_policy/5,
@@ -188,6 +198,9 @@
          list_key_groups/1,
          list_key_groups/3,
          list_key_groups/4,
+         list_origin_access_controls/1,
+         list_origin_access_controls/3,
+         list_origin_access_controls/4,
          list_origin_request_policies/1,
          list_origin_request_policies/3,
          list_origin_request_policies/4,
@@ -228,6 +241,8 @@
          update_function/4,
          update_key_group/3,
          update_key_group/4,
+         update_origin_access_control/3,
+         update_origin_access_control/4,
          update_origin_request_policy/3,
          update_origin_request_policy/4,
          update_public_key/3,
@@ -718,7 +733,7 @@ create_monitoring_subscription(Client, DistributionId, Input) ->
     create_monitoring_subscription(Client, DistributionId, Input, []).
 create_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
     Method = post,
-    Path = ["/2020-05-31/distributions/", aws_util:encode_uri(DistributionId), "/monitoring-subscription"],
+    Path = ["/2020-05-31/distributions/", aws_util:encode_uri(DistributionId), "/monitoring-subscription/"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -735,6 +750,58 @@ create_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new origin access control in CloudFront.
+%%
+%% After you create an origin access control, you can add it to an origin in
+%% a CloudFront distribution so that CloudFront sends authenticated (signed)
+%% requests to the origin.
+%%
+%% For an Amazon S3 origin, this makes it possible to block public access to
+%% the Amazon S3 bucket so that viewers (users) can access the content in the
+%% bucket only through CloudFront.
+%%
+%% For more information about using a CloudFront origin access control, see
+%% Restricting access to an Amazon S3 origin in the Amazon CloudFront
+%% Developer Guide.
+create_origin_access_control(Client, Input) ->
+    create_origin_access_control(Client, Input, []).
+create_origin_access_control(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/origin-access-control"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>},
+            {<<"Location">>, <<"Location">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
 
 %% @doc Creates an origin request policy.
 %%
@@ -1214,7 +1281,7 @@ delete_monitoring_subscription(Client, DistributionId, Input) ->
     delete_monitoring_subscription(Client, DistributionId, Input, []).
 delete_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
     Method = delete,
-    Path = ["/2020-05-31/distributions/", aws_util:encode_uri(DistributionId), "/monitoring-subscription"],
+    Path = ["/2020-05-31/distributions/", aws_util:encode_uri(DistributionId), "/monitoring-subscription/"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1223,6 +1290,35 @@ delete_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
 
     Headers = [],
     Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a CloudFront origin access control.
+%%
+%% You cannot delete an origin access control if it's in use. First, update
+%% all distributions to remove the origin access control from all origins,
+%% then delete the origin access control.
+delete_origin_access_control(Client, Id, Input) ->
+    delete_origin_access_control(Client, Id, Input, []).
+delete_origin_access_control(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2020-05-31/origin-access-control/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,
@@ -2053,7 +2149,7 @@ get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap)
 
 get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/2020-05-31/distributions/", aws_util:encode_uri(DistributionId), "/monitoring-subscription"],
+    Path = ["/2020-05-31/distributions/", aws_util:encode_uri(DistributionId), "/monitoring-subscription/"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2064,6 +2160,84 @@ get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap, Option
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a CloudFront origin access control.
+get_origin_access_control(Client, Id)
+  when is_map(Client) ->
+    get_origin_access_control(Client, Id, #{}, #{}).
+
+get_origin_access_control(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_origin_access_control(Client, Id, QueryMap, HeadersMap, []).
+
+get_origin_access_control(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/origin-access-control/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Gets a CloudFront origin access control.
+get_origin_access_control_config(Client, Id)
+  when is_map(Client) ->
+    get_origin_access_control_config(Client, Id, #{}, #{}).
+
+get_origin_access_control_config(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_origin_access_control_config(Client, Id, QueryMap, HeadersMap, []).
+
+get_origin_access_control_config(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/origin-access-control/", aws_util:encode_uri(Id), "/config"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
 
 %% @doc Gets an origin request policy, including the following metadata:
 %%
@@ -2964,6 +3138,42 @@ list_key_groups(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets the list of CloudFront origin access controls in this Amazon Web
+%% Services account.
+%%
+%% You can optionally specify the maximum number of items to receive in the
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send another request that specifies the
+%% `NextMarker' value from the current response as the `Marker' value in the
+%% next request.
+list_origin_access_controls(Client)
+  when is_map(Client) ->
+    list_origin_access_controls(Client, #{}, #{}).
+
+list_origin_access_controls(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_origin_access_controls(Client, QueryMap, HeadersMap, []).
+
+list_origin_access_controls(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/origin-access-control"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets a list of origin request policies.
 %%
 %% You can optionally apply a filter to return only the managed policies
@@ -3640,6 +3850,47 @@ update_key_group(Client, Id, Input) ->
 update_key_group(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/2020-05-31/key-group/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Updates a CloudFront origin access control.
+update_origin_access_control(Client, Id, Input) ->
+    update_origin_access_control(Client, Id, Input, []).
+update_origin_access_control(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/2020-05-31/origin-access-control/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
