@@ -617,8 +617,12 @@ list_devices(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"DeviceAggregatedStatusFilter">>, maps:get(<<"DeviceAggregatedStatusFilter">>, QueryMap, undefined)},
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
-        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+        {<<"NameFilter">>, maps:get(<<"NameFilter">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"SortBy">>, maps:get(<<"SortBy">>, QueryMap, undefined)},
+        {<<"SortOrder">>, maps:get(<<"SortOrder">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

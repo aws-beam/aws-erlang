@@ -88,7 +88,14 @@
 %% </li> <li> Managing Amazon IVS permissions — See Identity and Access
 %% Management on the Security page of the Amazon IVS User Guide.
 %%
-%% </li> </ul> Messaging Endpoints
+%% </li> </ul> Amazon Resource Names (ARNs)
+%%
+%% ARNs uniquely identify AWS resources. An ARN is required when you need to
+%% specify a resource unambiguously across all of AWS, such as in IAM
+%% policies and API calls. For more information, see Amazon Resource Names in
+%% the AWS General Reference.
+%%
+%% Messaging Endpoints
 %%
 %% <ul> <li> `DeleteMessage' — Sends an event to a specific room which
 %% directs clients to delete a specific message; that is, unrender it from
