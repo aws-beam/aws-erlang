@@ -2528,8 +2528,7 @@ stop_db_instance_automated_backups_replication(Client, Input, Options)
 %% @doc Switches over an Oracle standby database in an Oracle Data Guard
 %% environment, making it the new primary database.
 %%
-%% Issue this command in the AWS Region that hosts the current standby
-%% database.
+%% Issue this command in the Region that hosts the current standby database.
 switchover_read_replica(Client, Input)
   when is_map(Client), is_map(Input) ->
     switchover_read_replica(Client, Input, []).
