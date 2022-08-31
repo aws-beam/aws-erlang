@@ -10,12 +10,20 @@
          create_dataset/3,
          create_inference_scheduler/2,
          create_inference_scheduler/3,
+         create_label/2,
+         create_label/3,
+         create_label_group/2,
+         create_label_group/3,
          create_model/2,
          create_model/3,
          delete_dataset/2,
          delete_dataset/3,
          delete_inference_scheduler/2,
          delete_inference_scheduler/3,
+         delete_label/2,
+         delete_label/3,
+         delete_label_group/2,
+         delete_label_group/3,
          delete_model/2,
          delete_model/3,
          describe_data_ingestion_job/2,
@@ -24,6 +32,10 @@
          describe_dataset/3,
          describe_inference_scheduler/2,
          describe_inference_scheduler/3,
+         describe_label/2,
+         describe_label/3,
+         describe_label_group/2,
+         describe_label_group/3,
          describe_model/2,
          describe_model/3,
          list_data_ingestion_jobs/2,
@@ -36,6 +48,10 @@
          list_inference_executions/3,
          list_inference_schedulers/2,
          list_inference_schedulers/3,
+         list_label_groups/2,
+         list_label_groups/3,
+         list_labels/2,
+         list_labels/3,
          list_models/2,
          list_models/3,
          list_sensor_statistics/2,
@@ -53,7 +69,9 @@
          untag_resource/2,
          untag_resource/3,
          update_inference_scheduler/2,
-         update_inference_scheduler/3]).
+         update_inference_scheduler/3,
+         update_label_group/2,
+         update_label_group/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -89,6 +107,22 @@ create_inference_scheduler(Client, Input)
 create_inference_scheduler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInferenceScheduler">>, Input, Options).
+
+%% @doc Creates a label for an event.
+create_label(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_label(Client, Input, []).
+create_label(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateLabel">>, Input, Options).
+
+%% @doc Creates a group of labels.
+create_label_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_label_group(Client, Input, []).
+create_label_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateLabelGroup">>, Input, Options).
 
 %% @doc Creates an ML model for data inference.
 %%
@@ -135,6 +169,22 @@ delete_inference_scheduler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInferenceScheduler">>, Input, Options).
 
+%% @doc Deletes a label.
+delete_label(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_label(Client, Input, []).
+delete_label(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteLabel">>, Input, Options).
+
+%% @doc Deletes a group of labels.
+delete_label_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_label_group(Client, Input, []).
+delete_label_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteLabelGroup">>, Input, Options).
+
 %% @doc Deletes an ML model currently available for Amazon Lookout for
 %% Equipment.
 %%
@@ -173,6 +223,22 @@ describe_inference_scheduler(Client, Input)
 describe_inference_scheduler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInferenceScheduler">>, Input, Options).
+
+%% @doc Returns the name of the label.
+describe_label(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_label(Client, Input, []).
+describe_label(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeLabel">>, Input, Options).
+
+%% @doc Returns information about the label group.
+describe_label_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_label_group(Client, Input, []).
+describe_label_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeLabelGroup">>, Input, Options).
 
 %% @doc Provides a JSON containing the overall information about a specific
 %% ML model, including model name and ARN, dataset, training and evaluation
@@ -228,6 +294,22 @@ list_inference_schedulers(Client, Input)
 list_inference_schedulers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInferenceSchedulers">>, Input, Options).
+
+%% @doc Returns a list of the label groups.
+list_label_groups(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_label_groups(Client, Input, []).
+list_label_groups(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListLabelGroups">>, Input, Options).
+
+%% @doc Provides a list of labels.
+list_labels(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_labels(Client, Input, []).
+list_labels(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListLabels">>, Input, Options).
 
 %% @doc Generates a list of all models in the account, including model name
 %% and ARN, dataset, and status.
@@ -315,6 +397,14 @@ update_inference_scheduler(Client, Input)
 update_inference_scheduler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInferenceScheduler">>, Input, Options).
+
+%% @doc Updates the label group.
+update_label_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_label_group(Client, Input, []).
+update_label_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateLabelGroup">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

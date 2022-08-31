@@ -477,9 +477,6 @@ disassociate_service_role_from_account(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets the recipe for a version of a component.
-%%
-%% Core devices can call this operation to identify the artifacts and
-%% requirements to install a component.
 get_component(Client, Arn)
   when is_map(Client) ->
     get_component(Client, Arn, #{}, #{}).
@@ -582,6 +579,9 @@ get_connectivity_info(Client, ThingName, QueryMap, HeadersMap, Options0)
 %% When the status of any component on the core device becomes `BROKEN'
 %%
 %% At a regular interval that you can configure, which defaults to 24 hours
+%%
+%% For IoT Greengrass Core v2.7.0, the core device sends status updates upon
+%% local deployment and cloud deployment
 get_core_device(Client, CoreDeviceThingName)
   when is_map(Client) ->
     get_core_device(Client, CoreDeviceThingName, #{}, #{}).
@@ -766,6 +766,9 @@ list_components(Client, QueryMap, HeadersMap, Options0)
 %% When the status of any component on the core device becomes `BROKEN'
 %%
 %% At a regular interval that you can configure, which defaults to 24 hours
+%%
+%% For IoT Greengrass Core v2.7.0, the core device sends status updates upon
+%% local deployment and cloud deployment
 list_core_devices(Client)
   when is_map(Client) ->
     list_core_devices(Client, #{}, #{}).
@@ -857,9 +860,9 @@ list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap, Op
 %% @doc Retrieves a paginated list of the components that a Greengrass core
 %% device runs.
 %%
-%% This list doesn't include components that are deployed from local
-%% deployments or components that are deployed as dependencies of other
-%% components.
+%% By default, this list doesn't include components that are deployed as
+%% dependencies of other components. To include dependencies in the response,
+%% set the `topologyFilter' parameter to `ALL'.
 %%
 %% IoT Greengrass relies on individual devices to send status updates to the
 %% Amazon Web Services Cloud. If the IoT Greengrass Core software isn't
@@ -878,6 +881,9 @@ list_effective_deployments(Client, CoreDeviceThingName, QueryMap, HeadersMap, Op
 %% When the status of any component on the core device becomes `BROKEN'
 %%
 %% At a regular interval that you can configure, which defaults to 24 hours
+%%
+%% For IoT Greengrass Core v2.7.0, the core device sends status updates upon
+%% local deployment and cloud deployment
 list_installed_components(Client, CoreDeviceThingName)
   when is_map(Client) ->
     list_installed_components(Client, CoreDeviceThingName, #{}, #{}).
@@ -899,7 +905,8 @@ list_installed_components(Client, CoreDeviceThingName, QueryMap, HeadersMap, Opt
     Query0_ =
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
-        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"topologyFilter">>, maps:get(<<"topologyFilter">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

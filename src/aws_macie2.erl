@@ -17,6 +17,8 @@
          accept_invitation/3,
          batch_get_custom_data_identifiers/2,
          batch_get_custom_data_identifiers/3,
+         create_allow_list/2,
+         create_allow_list/3,
          create_classification_job/2,
          create_classification_job/3,
          create_custom_data_identifier/2,
@@ -31,6 +33,8 @@
          create_sample_findings/3,
          decline_invitations/2,
          decline_invitations/3,
+         delete_allow_list/3,
+         delete_allow_list/4,
          delete_custom_data_identifier/3,
          delete_custom_data_identifier/4,
          delete_findings_filter/3,
@@ -64,6 +68,9 @@
          get_administrator_account/1,
          get_administrator_account/3,
          get_administrator_account/4,
+         get_allow_list/2,
+         get_allow_list/4,
+         get_allow_list/5,
          get_bucket_statistics/2,
          get_bucket_statistics/3,
          get_classification_export_configuration/1,
@@ -108,6 +115,9 @@
          get_usage_totals/1,
          get_usage_totals/3,
          get_usage_totals/4,
+         list_allow_lists/1,
+         list_allow_lists/3,
+         list_allow_lists/4,
          list_classification_jobs/2,
          list_classification_jobs/3,
          list_custom_data_identifiers/2,
@@ -143,6 +153,8 @@
          test_custom_data_identifier/3,
          untag_resource/3,
          untag_resource/4,
+         update_allow_list/3,
+         update_allow_list/4,
          update_classification_job/3,
          update_classification_job/4,
          update_findings_filter/3,
@@ -192,6 +204,29 @@ batch_get_custom_data_identifiers(Client, Input) ->
 batch_get_custom_data_identifiers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/custom-data-identifiers/get"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates and defines the settings for an allow list.
+create_allow_list(Client, Input) ->
+    create_allow_list(Client, Input, []).
+create_allow_list(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/allow-lists"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -371,6 +406,30 @@ decline_invitations(Client, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an allow list.
+delete_allow_list(Client, Id, Input) ->
+    delete_allow_list(Client, Id, Input, []).
+delete_allow_list(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/allow-lists/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"ignoreJobChecks">>, <<"ignoreJobChecks">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Soft deletes a custom data identifier.
@@ -734,6 +793,29 @@ get_administrator_account(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the settings and status of an allow list.
+get_allow_list(Client, Id)
+  when is_map(Client) ->
+    get_allow_list(Client, Id, #{}, #{}).
+
+get_allow_list(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_allow_list(Client, Id, QueryMap, HeadersMap, []).
+
+get_allow_list(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/allow-lists/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves (queries) aggregated statistical data about S3 buckets that
 %% Amazon Macie monitors and analyzes.
 get_bucket_statistics(Client, Input) ->
@@ -998,7 +1080,7 @@ get_member(Client, Id, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the status and configuration settings for retrieving
-%% (revealing) occurrences of sensitive data reported by findings.
+%% occurrences of sensitive data reported by findings.
 get_reveal_configuration(Client)
   when is_map(Client) ->
     get_reveal_configuration(Client, #{}, #{}).
@@ -1021,8 +1103,7 @@ get_reveal_configuration(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves (reveals) occurrences of sensitive data reported by a
-%% finding.
+%% @doc Retrieves occurrences of sensitive data reported by a finding.
 get_sensitive_data_occurrences(Client, FindingId)
   when is_map(Client) ->
     get_sensitive_data_occurrences(Client, FindingId, #{}, #{}).
@@ -1045,8 +1126,8 @@ get_sensitive_data_occurrences(Client, FindingId, QueryMap, HeadersMap, Options0
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Checks whether occurrences of sensitive data can be retrieved
-%% (revealed) for a finding.
+%% @doc Checks whether occurrences of sensitive data can be retrieved for a
+%% finding.
 get_sensitive_data_occurrences_availability(Client, FindingId)
   when is_map(Client) ->
     get_sensitive_data_occurrences_availability(Client, FindingId, #{}, #{}).
@@ -1115,6 +1196,35 @@ get_usage_totals(Client, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"timeRange">>, maps:get(<<"timeRange">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a subset of information about all the allow lists for an
+%% account.
+list_allow_lists(Client)
+  when is_map(Client) ->
+    list_allow_lists(Client, #{}, #{}).
+
+list_allow_lists(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_allow_lists(Client, QueryMap, HeadersMap, []).
+
+list_allow_lists(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/allow-lists"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1332,9 +1442,8 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the tags (keys and values) that are associated with a
-%% classification job, custom data identifier, findings filter, or member
-%% account.
+%% @doc Retrieves the tags (keys and values) that are associated with an
+%% Amazon Macie resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -1430,8 +1539,7 @@ search_resources(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds or updates one or more tags (keys and values) that are
-%% associated with a classification job, custom data identifier, findings
-%% filter, or member account.
+%% associated with an Amazon Macie resource.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -1477,8 +1585,8 @@ test_custom_data_identifier(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes one or more tags (keys and values) from a classification job,
-%% custom data identifier, findings filter, or member account.
+%% @doc Removes one or more tags (keys and values) from an Amazon Macie
+%% resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -1500,6 +1608,29 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the settings for an allow list.
+update_allow_list(Client, Id, Input) ->
+    update_allow_list(Client, Id, Input, []).
+update_allow_list(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/allow-lists/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Changes the status of a classification job.
@@ -1621,7 +1752,7 @@ update_organization_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the status and configuration settings for retrieving
-%% (revealing) occurrences of sensitive data reported by findings.
+%% occurrences of sensitive data reported by findings.
 update_reveal_configuration(Client, Input) ->
     update_reveal_configuration(Client, Input, []).
 update_reveal_configuration(Client, Input0, Options0) ->

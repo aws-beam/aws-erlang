@@ -1,36 +1,35 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Web Services Single Sign On helps you securely create, or
-%% connect, your workforce identities and manage their access centrally
-%% across Amazon Web Services accounts and applications.
+%% @doc AWS IAM Identity Center (successor to AWS Single Sign-On) helps you
+%% securely create, or connect, your workforce identities and manage their
+%% access centrally across AWS accounts and applications.
 %%
-%% Amazon Web Services SSO is the recommended approach for workforce
-%% authentication and authorization in Amazon Web Services, for organizations
-%% of any size and type.
+%% IAM Identity Center is the recommended approach for workforce
+%% authentication and authorization in AWS, for organizations of any size and
+%% type.
 %%
-%% Although Amazon Web Services Single Sign-On was renamed, the `sso' and
-%% `identitystore' API namespaces will continue to retain their original name
-%% for backward compatibility purposes. For more information, see Amazon Web
-%% Services SSO rename.
+%% Although AWS Single Sign-On was renamed, the `sso' and `identitystore' API
+%% namespaces will continue to retain their original name for backward
+%% compatibility purposes. For more information, see IAM Identity Center
+%% rename.
 %%
 %% This reference guide provides information on single sign-on operations
-%% which could be used for access management of Amazon Web Services accounts.
-%% For information about Amazon Web Services SSO features, see the Amazon Web
-%% Services SSO User Guide.
+%% which could be used for access management of AWS accounts. For information
+%% about IAM Identity Center features, see the IAM Identity Center User
+%% Guide.
 %%
-%% Many operations in the Amazon Web Services SSO APIs rely on identifiers
-%% for users and groups, known as principals. For more information about how
-%% to work with principals and principal IDs in Amazon Web Services SSO, see
-%% the Identity Store API Reference.
+%% Many operations in the IAM Identity Center APIs rely on identifiers for
+%% users and groups, known as principals. For more information about how to
+%% work with principals and principal IDs in IAM Identity Center, see the
+%% Identity Store API Reference.
 %%
-%% Amazon Web Services provides SDKs that consist of libraries and sample
-%% code for various programming languages and platforms (Java, Ruby, .Net,
-%% iOS, Android, and more). The SDKs provide a convenient way to create
-%% programmatic access to Amazon Web Services SSO and other Amazon Web
-%% Services services. For more information about the Amazon Web Services
-%% SDKs, including how to download and install them, see Tools for Amazon Web
-%% Services.
+%% AWS provides SDKs that consist of libraries and sample code for various
+%% programming languages and platforms (Java, Ruby, .Net, iOS, Android, and
+%% more). The SDKs provide a convenient way to create programmatic access to
+%% IAM Identity Center and other AWS services. For more information about the
+%% AWS SDKs, including how to download and install them, see Tools for Amazon
+%% Web Services.
 -module(aws_sso_admin).
 
 -export([attach_customer_managed_policy_reference_to_permission_set/2,
@@ -123,8 +122,7 @@ attach_customer_managed_policy_reference_to_permission_set(Client, Input, Option
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachCustomerManagedPolicyReferenceToPermissionSet">>, Input, Options).
 
-%% @doc Attaches an Amazon Web Services managed policy ARN to a permission
-%% set.
+%% @doc Attaches an AWS managed policy ARN to a permission set.
 %%
 %% If the permission set is already referenced by one or more account
 %% assignments, you will need to call ` `ProvisionPermissionSet' ' after this
@@ -137,18 +135,18 @@ attach_managed_policy_to_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachManagedPolicyToPermissionSet">>, Input, Options).
 
-%% @doc Assigns access to a principal for a specified Amazon Web Services
-%% account using a specified permission set.
+%% @doc Assigns access to a principal for a specified AWS account using a
+%% specified permission set.
 %%
-%% The term principal here refers to a user or group that is defined in
-%% Amazon Web Services SSO.
+%% The term principal here refers to a user or group that is defined in IAM
+%% Identity Center.
 %%
 %% As part of a successful `CreateAccountAssignment' call, the specified
 %% permission set will automatically be provisioned to the account in the
 %% form of an IAM policy. That policy is attached to the IAM role created in
-%% Amazon Web Services SSO. If the permission set is subsequently updated,
-%% the corresponding IAM policies attached to roles in your accounts will not
-%% be updated automatically. In this case, you must call `
+%% IAM Identity Center. If the permission set is subsequently updated, the
+%% corresponding IAM policies attached to roles in your accounts will not be
+%% updated automatically. In this case, you must call `
 %% `ProvisionPermissionSet' ' to make these updates.
 %%
 %% After a successful response, call
@@ -162,11 +160,11 @@ create_account_assignment(Client, Input, Options)
     request(Client, <<"CreateAccountAssignment">>, Input, Options).
 
 %% @doc Enables the attributes-based access control (ABAC) feature for the
-%% specified Amazon Web Services SSO instance.
+%% specified IAM Identity Center instance.
 %%
 %% You can also specify new attributes to add to your ABAC configuration
 %% during the enabling process. For more information about ABAC, see
-%% Attribute-Based Access Control in the Amazon Web Services SSO User Guide.
+%% Attribute-Based Access Control in the IAM Identity Center User Guide.
 %%
 %% After a successful response, call
 %% `DescribeInstanceAccessControlAttributeConfiguration' to validate that
@@ -178,11 +176,11 @@ create_instance_access_control_attribute_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInstanceAccessControlAttributeConfiguration">>, Input, Options).
 
-%% @doc Creates a permission set within a specified Amazon Web Services SSO
+%% @doc Creates a permission set within a specified IAM Identity Center
 %% instance.
 %%
-%% To grant users and groups access to Amazon Web Services account resources,
-%% use ` `CreateAccountAssignment' '.
+%% To grant users and groups access to AWS account resources, use `
+%% `CreateAccountAssignment' '.
 create_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_permission_set(Client, Input, []).
@@ -190,8 +188,8 @@ create_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePermissionSet">>, Input, Options).
 
-%% @doc Deletes a principal's access from a specified Amazon Web Services
-%% account using a specified permission set.
+%% @doc Deletes a principal's access from a specified AWS account using a
+%% specified permission set.
 %%
 %% After a successful response, call
 %% `DescribeAccountAssignmentCreationStatus' to describe the status of an
@@ -212,13 +210,13 @@ delete_inline_policy_from_permission_set(Client, Input, Options)
     request(Client, <<"DeleteInlinePolicyFromPermissionSet">>, Input, Options).
 
 %% @doc Disables the attributes-based access control (ABAC) feature for the
-%% specified Amazon Web Services SSO instance and deletes all of the
-%% attribute mappings that have been configured.
+%% specified IAM Identity Center instance and deletes all of the attribute
+%% mappings that have been configured.
 %%
 %% Once deleted, any attributes that are received from an identity source and
 %% any custom attributes you have previously configured will not be passed.
 %% For more information about ABAC, see Attribute-Based Access Control in the
-%% Amazon Web Services SSO User Guide.
+%% IAM Identity Center User Guide.
 delete_instance_access_control_attribute_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_instance_access_control_attribute_configuration(Client, Input, []).
@@ -258,13 +256,13 @@ describe_account_assignment_deletion_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountAssignmentDeletionStatus">>, Input, Options).
 
-%% @doc Returns the list of Amazon Web Services SSO identity store attributes
+%% @doc Returns the list of IAM Identity Center identity store attributes
 %% that have been configured to work with attributes-based access control
-%% (ABAC) for the specified Amazon Web Services SSO instance.
+%% (ABAC) for the specified IAM Identity Center instance.
 %%
 %% This will not return attributes configured and sent by an external
 %% identity provider. For more information about ABAC, see Attribute-Based
-%% Access Control in the Amazon Web Services SSO User Guide.
+%% Access Control in the IAM Identity Center User Guide.
 describe_instance_access_control_attribute_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_access_control_attribute_configuration(Client, Input, []).
@@ -298,8 +296,8 @@ detach_customer_managed_policy_reference_from_permission_set(Client, Input, Opti
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachCustomerManagedPolicyReferenceFromPermissionSet">>, Input, Options).
 
-%% @doc Detaches the attached Amazon Web Services managed policy ARN from the
-%% specified permission set.
+%% @doc Detaches the attached AWS managed policy ARN from the specified
+%% permission set.
 detach_managed_policy_from_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_managed_policy_from_permission_set(Client, Input, []).
@@ -323,8 +321,8 @@ get_permissions_boundary_for_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPermissionsBoundaryForPermissionSet">>, Input, Options).
 
-%% @doc Lists the status of the Amazon Web Services account assignment
-%% creation requests for a specified Amazon Web Services SSO instance.
+%% @doc Lists the status of the AWS account assignment creation requests for
+%% a specified IAM Identity Center instance.
 list_account_assignment_creation_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_account_assignment_creation_status(Client, Input, []).
@@ -332,8 +330,8 @@ list_account_assignment_creation_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccountAssignmentCreationStatus">>, Input, Options).
 
-%% @doc Lists the status of the Amazon Web Services account assignment
-%% deletion requests for a specified Amazon Web Services SSO instance.
+%% @doc Lists the status of the AWS account assignment deletion requests for
+%% a specified IAM Identity Center instance.
 list_account_assignment_deletion_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_account_assignment_deletion_status(Client, Input, []).
@@ -341,8 +339,8 @@ list_account_assignment_deletion_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccountAssignmentDeletionStatus">>, Input, Options).
 
-%% @doc Lists the assignee of the specified Amazon Web Services account with
-%% the specified permission set.
+%% @doc Lists the assignee of the specified AWS account with the specified
+%% permission set.
 list_account_assignments(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_account_assignments(Client, Input, []).
@@ -350,8 +348,8 @@ list_account_assignments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccountAssignments">>, Input, Options).
 
-%% @doc Lists all the Amazon Web Services accounts where the specified
-%% permission set is provisioned.
+%% @doc Lists all the AWS accounts where the specified permission set is
+%% provisioned.
 list_accounts_for_provisioned_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_accounts_for_provisioned_permission_set(Client, Input, []).
@@ -368,8 +366,8 @@ list_customer_managed_policy_references_in_permission_set(Client, Input, Options
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCustomerManagedPolicyReferencesInPermissionSet">>, Input, Options).
 
-%% @doc Lists the Amazon Web Services SSO instances that the caller has
-%% access to.
+%% @doc Lists the IAM Identity Center instances that the caller has access
+%% to.
 list_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_instances(Client, Input, []).
@@ -377,8 +375,8 @@ list_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInstances">>, Input, Options).
 
-%% @doc Lists the Amazon Web Services managed policy that is attached to a
-%% specified permission set.
+%% @doc Lists the AWS managed policy that is attached to a specified
+%% permission set.
 list_managed_policies_in_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_managed_policies_in_permission_set(Client, Input, []).
@@ -387,7 +385,7 @@ list_managed_policies_in_permission_set(Client, Input, Options)
     request(Client, <<"ListManagedPoliciesInPermissionSet">>, Input, Options).
 
 %% @doc Lists the status of the permission set provisioning requests for a
-%% specified Amazon Web Services SSO instance.
+%% specified IAM Identity Center instance.
 list_permission_set_provisioning_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_permission_set_provisioning_status(Client, Input, []).
@@ -395,7 +393,7 @@ list_permission_set_provisioning_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPermissionSetProvisioningStatus">>, Input, Options).
 
-%% @doc Lists the `PermissionSet's in an Amazon Web Services SSO instance.
+%% @doc Lists the `PermissionSet's in an IAM Identity Center instance.
 list_permission_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_permission_sets(Client, Input, []).
@@ -403,8 +401,8 @@ list_permission_sets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPermissionSets">>, Input, Options).
 
-%% @doc Lists all the permission sets that are provisioned to a specified
-%% Amazon Web Services account.
+%% @doc Lists all the permission sets that are provisioned to a specified AWS
+%% account.
 list_permission_sets_provisioned_to_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_permission_sets_provisioned_to_account(Client, Input, []).
@@ -442,8 +440,8 @@ put_inline_policy_to_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutInlinePolicyToPermissionSet">>, Input, Options).
 
-%% @doc Attaches an Amazon Web Services managed or customer managed policy to
-%% the specified `PermissionSet' as a permissions boundary.
+%% @doc Attaches an AWS managed or customer managed policy to the specified
+%% `PermissionSet' as a permissions boundary.
 put_permissions_boundary_to_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_permissions_boundary_to_permission_set(Client, Input, []).
@@ -467,17 +465,17 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc Updates the Amazon Web Services SSO identity store attributes that
-%% you can use with the Amazon Web Services SSO instance for attributes-based
-%% access control (ABAC).
+%% @doc Updates the IAM Identity Center identity store attributes that you
+%% can use with the IAM Identity Center instance for attributes-based access
+%% control (ABAC).
 %%
 %% When using an external identity provider as an identity source, you can
 %% pass attributes through the SAML assertion as an alternative to
-%% configuring attributes from the Amazon Web Services SSO identity store. If
-%% a SAML assertion passes any of these attributes, Amazon Web Services SSO
-%% replaces the attribute value with the value from the Amazon Web Services
-%% SSO identity store. For more information about ABAC, see Attribute-Based
-%% Access Control in the Amazon Web Services SSO User Guide.
+%% configuring attributes from the IAM Identity Center identity store. If a
+%% SAML assertion passes any of these attributes, IAM Identity Center
+%% replaces the attribute value with the value from the IAM Identity Center
+%% identity store. For more information about ABAC, see Attribute-Based
+%% Access Control in the IAM Identity Center User Guide.
 update_instance_access_control_attribute_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_instance_access_control_attribute_configuration(Client, Input, []).
