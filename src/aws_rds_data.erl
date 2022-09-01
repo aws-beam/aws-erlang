@@ -4,9 +4,12 @@
 %% @doc Amazon RDS Data Service
 %%
 %% Amazon RDS provides an HTTP endpoint to run SQL statements on an Amazon
-%% Aurora Serverless DB cluster.
+%% Aurora Serverless v1 DB cluster.
 %%
 %% To run these statements, you work with the Data Service API.
+%%
+%% The Data Service API isn't supported on Amazon Aurora Serverless v2 DB
+%% clusters.
 %%
 %% For more information about the Data Service API, see Using the Data API in
 %% the Amazon Aurora User Guide.
@@ -76,14 +79,16 @@ batch_execute_statement(Client, Input0, Options0) ->
 
 %% @doc Starts a SQL transaction.
 %%
-%% <important> <p>A transaction can run for a maximum of 24 hours. A
-%% transaction is terminated and rolled back automatically after 24
-%% hours.</p> <p>A transaction times out if no calls use its transaction ID
-%% in three minutes. If a transaction times out before it's committed, it's
-%% rolled back automatically.</p> <p>DDL statements inside a transaction
-%% cause an implicit commit. We recommend that you run each DDL statement in
-%% a separate <code>ExecuteStatement</code> call with
-%% <code>continueAfterTimeout</code> enabled.</p> </important>
+%% A transaction can run for a maximum of 24 hours. A transaction is
+%% terminated and rolled back automatically after 24 hours.
+%%
+%% A transaction times out if no calls use its transaction ID in three
+%% minutes. If a transaction times out before it's committed, it's rolled
+%% back automatically.
+%%
+%% DDL statements inside a transaction cause an implicit commit. We recommend
+%% that you run each DDL statement in a separate `ExecuteStatement' call with
+%% `continueAfterTimeout' enabled.
 begin_transaction(Client, Input) ->
     begin_transaction(Client, Input, []).
 begin_transaction(Client, Input0, Options0) ->

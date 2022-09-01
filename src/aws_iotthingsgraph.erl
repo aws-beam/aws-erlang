@@ -13,6 +13,8 @@
 %%
 %% For more information about how AWS IoT Things Graph works, see the User
 %% Guide.
+%%
+%% The AWS IoT Things Graph service is discontinued.
 -module(aws_iotthingsgraph).
 
 -export([associate_entity_to_thing/2,
@@ -174,7 +176,7 @@ delete_flow_template(Client, Input, Options)
 %%
 %% This action deletes all of the entities in the namespace. Delete the
 %% systems and flows that use entities in the namespace before performing
-%% this action.
+%% this action. This action takes no request parameters.
 delete_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_namespace(Client, Input, []).

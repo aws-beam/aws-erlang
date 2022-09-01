@@ -2161,7 +2161,8 @@ get_monitoring_subscription(Client, DistributionId, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets a CloudFront origin access control.
+%% @doc Gets a CloudFront origin access control, including its unique
+%% identifier.
 get_origin_access_control(Client, Id)
   when is_map(Client) ->
     get_origin_access_control(Client, Id, #{}, #{}).
@@ -2200,7 +2201,7 @@ get_origin_access_control(Client, Id, QueryMap, HeadersMap, Options0)
         Result
     end.
 
-%% @doc Gets a CloudFront origin access control.
+%% @doc Gets a CloudFront origin access control configuration.
 get_origin_access_control_config(Client, Id)
   when is_map(Client) ->
     get_origin_access_control_config(Client, Id, #{}, #{}).
