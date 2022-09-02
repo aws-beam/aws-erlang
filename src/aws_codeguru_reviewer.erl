@@ -65,7 +65,7 @@
 %%====================================================================
 
 %% @doc Use to associate an Amazon Web Services CodeCommit repository or a
-%% repostory managed by Amazon Web Services CodeStar Connections with Amazon
+%% repository managed by Amazon Web Services CodeStar Connections with Amazon
 %% CodeGuru Reviewer.
 %%
 %% When you associate a repository, CodeGuru Reviewer reviews source code
@@ -109,7 +109,7 @@ associate_repository(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Use to create a code review with a `CodeReviewType' of
+%% @doc Use to create a code review with a CodeReviewType of
 %% `RepositoryAnalysis'.
 %%
 %% This type of code review analyzes all code under a specified branch in an
@@ -190,7 +190,7 @@ describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, QueryM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a `RepositoryAssociation' object that contains information
+%% @doc Returns a RepositoryAssociation object that contains information
 %% about the requested repository association.
 describe_repository_association(Client, AssociationArn)
   when is_map(Client) ->
@@ -271,8 +271,8 @@ list_code_reviews(Client, Type, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of `RecommendationFeedbackSummary' objects that
-%% contain customer recommendation feedback for all CodeGuru Reviewer users.
+%% @doc Returns a list of RecommendationFeedbackSummary objects that contain
+%% customer recommendation feedback for all CodeGuru Reviewer users.
 list_recommendation_feedback(Client, CodeReviewArn)
   when is_map(Client) ->
     list_recommendation_feedback(Client, CodeReviewArn, #{}, #{}).
@@ -330,11 +330,10 @@ list_recommendations(Client, CodeReviewArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of `RepositoryAssociationSummary' objects that contain
+%% @doc Returns a list of RepositoryAssociationSummary objects that contain
 %% summary information about a repository association.
 %%
-%% You can filter the returned list by `ProviderType' , `Name' , `State' ,
-%% and `Owner' .
+%% You can filter the returned list by ProviderType, Name, State, and Owner.
 list_repository_associations(Client)
   when is_map(Client) ->
     list_repository_associations(Client, #{}, #{}).
