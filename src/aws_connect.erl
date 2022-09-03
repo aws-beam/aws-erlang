@@ -277,6 +277,10 @@
          resume_contact_recording/3,
          search_available_phone_numbers/2,
          search_available_phone_numbers/3,
+         search_queues/2,
+         search_queues/3,
+         search_routing_profiles/2,
+         search_routing_profiles/3,
          search_security_profiles/2,
          search_security_profiles/3,
          search_users/2,
@@ -1383,6 +1387,8 @@ describe_agent_status(Client, AgentStatusId, InstanceId, QueryMap, HeadersMap, O
 %%
 %% Contact information remains available in Amazon Connect for 24 months, and
 %% then it is deleted.
+%%
+%% Only data from November 12, 2021, and later is returned by this API.
 describe_contact(Client, ContactId, InstanceId)
   when is_map(Client) ->
     describe_contact(Client, ContactId, InstanceId, #{}, #{}).
@@ -2255,7 +2261,8 @@ list_approved_origins(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% change.
 %%
 %% For the specified version of Amazon Lex, returns a paginated list of all
-%% the Amazon Lex bots currently associated with the instance.
+%% the Amazon Lex bots currently associated with the instance. Use this API
+%% to returns both Amazon Lex V1 and V2 bots.
 list_bots(Client, InstanceId, LexVersion)
   when is_map(Client) ->
     list_bots(Client, InstanceId, LexVersion, #{}, #{}).
@@ -2601,8 +2608,9 @@ list_lambda_functions(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% @doc This API is in preview release for Amazon Connect and is subject to
 %% change.
 %%
-%% Returns a paginated list of all the Amazon Lex bots currently associated
-%% with the instance.
+%% Returns a paginated list of all the Amazon Lex V1 bots currently
+%% associated with the instance. To return both Amazon Lex V1 and V2 bots,
+%% use the ListBots API.
 list_lex_bots(Client, InstanceId)
   when is_map(Client) ->
     list_lex_bots(Client, InstanceId, #{}, #{}).
@@ -3206,6 +3214,59 @@ search_available_phone_numbers(Client, Input) ->
 search_available_phone_numbers(Client, Input0, Options0) ->
     Method = post,
     Path = ["/phone-number/search-available"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Searches queues in an Amazon Connect instance, with optional filtering.
+search_queues(Client, Input) ->
+    search_queues(Client, Input, []).
+search_queues(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-queues"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is in preview release for Amazon Connect and is subject to
+%% change.
+%%
+%% Searches routing profiles in an Amazon Connect instance, with optional
+%% filtering.
+search_routing_profiles(Client, Input) ->
+    search_routing_profiles(Client, Input, []).
+search_routing_profiles(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-routing-profiles"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
