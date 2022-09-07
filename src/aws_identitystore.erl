@@ -1,10 +1,20 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc The AWS Single Sign-On (SSO) Identity Store service provides a single
-%% place to retrieve all of your identities (users and groups).
+%% @doc The Identity Store service used by AWS IAM Identity Center (successor
+%% to AWS Single Sign-On) provides a single place to retrieve all of your
+%% identities (users and groups).
 %%
-%% For more information about AWS, see the AWS Single Sign-On User Guide.
+%% For more information, see the IAM Identity Center User Guide.
+%%
+%% <note> <p>Although AWS Single Sign-On was renamed, the <code>sso</code>
+%% and <code>identitystore</code> API namespaces will continue to retain
+%% their original name for backward compatibility purposes. For more
+%% information, see <a
+%% href="https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html#renamed">IAM
+%% Identity Center rename</a>.</p> </note> <p>This reference guide describes
+%% the identity store operations that you can call programatically and
+%% includes detailed information on data types and errors.</p>
 -module(aws_identitystore).
 
 -export([create_group/2,
@@ -112,8 +122,8 @@ describe_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGroup">>, Input, Options).
 
-%% @doc Retrieves membership metadata and attributes from `MembershipId' in a
-%% group.
+%% @doc Retrieves membership metadata and attributes from `MembershipId' in
+%% an identity store.
 describe_group_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_group_membership(Client, Input, []).
@@ -138,7 +148,7 @@ get_group_id(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGroupId">>, Input, Options).
 
-%% @doc Retrieves the `MembershipId' in a group.
+%% @doc Retrieves the `MembershipId' in an identity store.
 get_group_membership_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_group_membership_id(Client, Input, []).
@@ -154,7 +164,8 @@ get_user_id(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUserId">>, Input, Options).
 
-%% @doc Returns if a member exists in specified groups.
+%% @doc Checks the user's membership in all requested groups and returns if
+%% the member exists in all queried groups.
 is_member_in_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     is_member_in_groups(Client, Input, []).
@@ -182,13 +193,12 @@ list_group_memberships_for_member(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroupMembershipsForMember">>, Input, Options).
 
-%% @doc Filtering for a group by the group `DisplayName' attribute is
-%% deprecated.
+%% @doc Lists the attribute name and value of the group that you specified in
+%% the search.
 %%
-%% Instead, use the `GetGroupId' API action.
-%%
-%% Lists all groups in the identity store. Returns a paginated list of
-%% complete `Group' objects.
+%% We only support `DisplayName' as a valid filter attribute path currently,
+%% and filter is required. This API returns minimum attributes, including
+%% `GroupId' and group `DisplayName' in the response.
 list_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups(Client, Input, []).
@@ -196,12 +206,12 @@ list_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroups">>, Input, Options).
 
-%% @doc Filtering for a user by the `UserName' attribute is deprecated.
+%% @doc Lists the attribute name and value of the user that you specified in
+%% the search.
 %%
-%% Instead, use the `GetUserId' API action.
-%%
-%% Lists all users in the identity store. Returns a paginated list of
-%% complete `User' objects.
+%% We only support `UserName' as a valid filter attribute path currently, and
+%% filter is required. This API returns minimum attributes, including
+%% `UserId' and `UserName' in the response.
 list_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_users(Client, Input, []).
