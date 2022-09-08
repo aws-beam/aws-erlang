@@ -44,6 +44,8 @@
          delete_sms_sandbox_phone_number/3,
          delete_topic/2,
          delete_topic/3,
+         get_data_protection_policy/2,
+         get_data_protection_policy/3,
          get_endpoint_attributes/2,
          get_endpoint_attributes/3,
          get_platform_application_attributes/2,
@@ -80,6 +82,8 @@
          publish/3,
          publish_batch/2,
          publish_batch/3,
+         put_data_protection_policy/2,
+         put_data_protection_policy/3,
          remove_permission/2,
          remove_permission/3,
          set_endpoint_attributes/2,
@@ -299,6 +303,15 @@ delete_topic(Client, Input)
 delete_topic(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTopic">>, Input, Options).
+
+%% @doc Retrieves the specified inline `DataProtectionPolicy' document that
+%% is stored in the specified Amazon SNS topic.
+get_data_protection_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_data_protection_policy(Client, Input, []).
+get_data_protection_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDataProtectionPolicy">>, Input, Options).
 
 %% @doc Retrieves the endpoint attributes for a device on one of the
 %% supported push notification services, such as GCM (Firebase Cloud
@@ -589,6 +602,15 @@ publish_batch(Client, Input)
 publish_batch(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PublishBatch">>, Input, Options).
+
+%% @doc Adds or updates an inline policy document that is stored in the
+%% specified Amazon SNS topic.
+put_data_protection_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_data_protection_policy(Client, Input, []).
+put_data_protection_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutDataProtectionPolicy">>, Input, Options).
 
 %% @doc Removes a statement from a topic's access control policy.
 remove_permission(Client, Input)

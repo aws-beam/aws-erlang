@@ -500,15 +500,10 @@ create_asset_model(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API operation is in preview release for IoT SiteWise and is
-%% subject to change.
+%% @doc Defines a job to ingest data to IoT SiteWise from Amazon S3.
 %%
-%% We recommend that you use this operation only with test data, and not in
-%% production environments.
-%%
-%% Defines a job to ingest data to IoT SiteWise from Amazon S3. For more
-%% information, see Create a bulk import job (CLI) in the Amazon Simple
-%% Storage Service User Guide.
+%% For more information, see Create a bulk import job (CLI) in the Amazon
+%% Simple Storage Service User Guide.
 %%
 %% You must enable IoT SiteWise to export data to Amazon S3 before you create
 %% a bulk import job. For more information about how to configure storage
@@ -974,15 +969,10 @@ describe_asset_property(Client, AssetId, PropertyId, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API operation is in preview release for IoT SiteWise and is
-%% subject to change.
+%% @doc Retrieves information about a bulk import job request.
 %%
-%% We recommend that you use this operation only with test data, and not in
-%% production environments.
-%%
-%% Retrieves information about a bulk import job request. For more
-%% information, see Describe a bulk import job (CLI) in the Amazon Simple
-%% Storage Service User Guide.
+%% For more information, see Describe a bulk import job (CLI) in the Amazon
+%% Simple Storage Service User Guide.
 describe_bulk_import_job(Client, JobId)
   when is_map(Client) ->
     describe_bulk_import_job(Client, JobId, #{}, #{}).
@@ -1665,15 +1655,10 @@ list_associated_assets(Client, AssetId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This API operation is in preview release for IoT SiteWise and is
-%% subject to change.
+%% @doc Retrieves a paginated list of bulk import job requests.
 %%
-%% We recommend that you use this operation only with test data, and not in
-%% production environments.
-%%
-%% Retrieves a paginated list of bulk import job requests. For more
-%% information, see List bulk import jobs (CLI) in the Amazon Simple Storage
-%% Service User Guide.
+%% For more information, see List bulk import jobs (CLI) in the IoT SiteWise
+%% User Guide.
 list_bulk_import_jobs(Client)
   when is_map(Client) ->
     list_bulk_import_jobs(Client, #{}, #{}).
