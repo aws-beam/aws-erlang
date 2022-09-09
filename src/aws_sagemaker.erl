@@ -1444,6 +1444,11 @@ create_studio_lifecycle_config(Client, Input, Options)
 %% of hyperparameters for each training algorithm provided by SageMaker, see
 %% Algorithms.
 %%
+%% You must not include any security-sensitive information, such as account
+%% access IDs, secrets, and tokens, in the dictionary for configuring
+%% hyperparameters. SageMaker rejects the training job request and returns an
+%% exception error for detected credentials, if such user input is found.
+%%
 %% </li> <li> `InputDataConfig' - Describes the training dataset and the
 %% Amazon S3, EFS, or FSx location where it is stored.
 %%

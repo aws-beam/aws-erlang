@@ -1,26 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Route 53 is a highly available and scalable Domain Name System
+%% @doc Amazon Route 53 is a highly available and scalable Domain Name System
 %% (DNS) web service.
-%%
-%% You can use Route 53 to:
-%%
-%% <ul> <li> Register domain names.
-%%
-%% For more information, see How domain registration works.
-%%
-%% </li> <li> Route internet traffic to the resources for your domain
-%%
-%% For more information, see How internet traffic is routed to your website
-%% or web application.
-%%
-%% </li> <li> Check the health of your resources.
-%%
-%% For more information, see How Route 53 checks the health of your
-%% resources.
-%%
-%% </li> </ul>
 -module(aws_route53).
 
 -export([activate_key_signing_key/4,
