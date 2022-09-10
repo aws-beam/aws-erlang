@@ -1479,7 +1479,10 @@ get_reserved_node_exchange_offerings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetReservedNodeExchangeOfferings">>, Input, Options).
 
-%% @doc Modifies whether a cluster can use AQUA (Advanced Query Accelerator).
+%% @doc This operation is retired.
+%%
+%% Calling this operation does not change AQUA configuration. Amazon Redshift
+%% automatically determines whether to use AQUA (Advanced Query Accelerator).
 modify_aqua_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_aqua_configuration(Client, Input, []).

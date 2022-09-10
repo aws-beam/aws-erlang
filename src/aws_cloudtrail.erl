@@ -43,6 +43,8 @@
          describe_query/3,
          describe_trails/2,
          describe_trails/3,
+         get_channel/2,
+         get_channel/3,
          get_event_data_store/2,
          get_event_data_store/3,
          get_event_selectors/2,
@@ -55,6 +57,8 @@
          get_trail/3,
          get_trail_status/2,
          get_trail_status/3,
+         list_channels/2,
+         list_channels/3,
          list_event_data_stores/2,
          list_event_data_stores/3,
          list_public_keys/2,
@@ -192,6 +196,17 @@ describe_trails(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrails">>, Input, Options).
 
+%% @doc Returns the specified CloudTrail service-linked channel.
+%%
+%% Amazon Web Services services create service-linked channels to view
+%% CloudTrail events.
+get_channel(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_channel(Client, Input, []).
+get_channel(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetChannel">>, Input, Options).
+
 %% @doc Returns information about an event data store specified as either an
 %% ARN or the ID portion of the ARN.
 get_event_data_store(Client, Input)
@@ -274,6 +289,14 @@ get_trail_status(Client, Input)
 get_trail_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTrailStatus">>, Input, Options).
+
+%% @doc Returns all CloudTrail channels.
+list_channels(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_channels(Client, Input, []).
+list_channels(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListChannels">>, Input, Options).
 
 %% @doc Returns information about all event data stores in the account, in
 %% the current region.
@@ -509,7 +532,7 @@ stop_logging(Client, Input, Options)
 %% The required `EventDataStore' value is an ARN or the ID portion of the
 %% ARN. Other parameters are optional, but at least one optional parameter
 %% must be specified, or CloudTrail throws an error. `RetentionPeriod' is in
-%% days, and valid values are integers between 90 and 2555. By default,
+%% days, and valid values are integers between 90 and 2557. By default,
 %% `TerminationProtection' is enabled. `AdvancedEventSelectors' includes or
 %% excludes management and data events in your event data store; for more
 %% information about `AdvancedEventSelectors', see
