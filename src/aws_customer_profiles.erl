@@ -116,7 +116,7 @@
 %%====================================================================
 
 %% @doc Associates a new key value with a specific profile, such as a Contact
-%% Trace Record (CTR) ContactId.
+%% Record ContactId.
 %%
 %% A profile object can have a single unique key and any number of additional
 %% keys that can be used to identify the profile that it belongs to.
@@ -990,6 +990,9 @@ merge_profiles(Client, DomainName, Input0, Options0) ->
 %% which includes Amazon AppFlow and Amazon Connect.
 %%
 %% An integration can belong to only one domain.
+%%
+%% To add or remove tags on an existing Integration, see TagResource /
+%% UntagResource.
 put_integration(Client, DomainName, Input) ->
     put_integration(Client, DomainName, Input, []).
 put_integration(Client, DomainName, Input0, Options0) ->
@@ -1014,10 +1017,10 @@ put_integration(Client, DomainName, Input0, Options0) ->
 
 %% @doc Adds additional objects to customer profiles of a given ObjectType.
 %%
-%% When adding a specific profile object, like a Contact Trace Record (CTR),
-%% an inferred profile can get created if it is not mapped to an existing
-%% profile. The resulting profile will only have a phone number populated in
-%% the standard ProfileObject. Any additional CTRs with the same phone number
+%% When adding a specific profile object, like a Contact Record, an inferred
+%% profile can get created if it is not mapped to an existing profile. The
+%% resulting profile will only have a phone number populated in the standard
+%% ProfileObject. Any additional Contact Records with the same phone number
 %% will be mapped to the same inferred profile.
 %%
 %% When a ProfileObject is created and if a ProfileObjectType already exists
@@ -1049,6 +1052,9 @@ put_profile_object(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Defines a ProfileObjectType.
+%%
+%% To add or remove tags on an existing ObjectType, see
+%% TagResource/UntagResource.
 put_profile_object_type(Client, DomainName, ObjectTypeName, Input) ->
     put_profile_object_type(Client, DomainName, ObjectTypeName, Input, []).
 put_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options0) ->
@@ -1176,6 +1182,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% To prevent cross-service impersonation when you call this API, see
 %% Cross-service confused deputy prevention for sample policies that you
 %% should apply.
+%%
+%% To add or remove tags on an existing Domain, see
+%% TagResource/UntagResource.
 update_domain(Client, DomainName, Input) ->
     update_domain(Client, DomainName, Input, []).
 update_domain(Client, DomainName, Input0, Options0) ->

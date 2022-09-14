@@ -298,11 +298,11 @@ create_project(Client, Input0, Options0) ->
 %%
 %% Using a segment in an experiment limits that experiment to evaluate only
 %% the users who match the segment criteria. Using one or more segments in a
-%% launch allow you to define different traffic splits for the different
+%% launch allows you to define different traffic splits for the different
 %% audience segments.
 %%
 %% <p>For more information about segment pattern syntax, see <a
-%% href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments-syntax.html">
+%% href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html#CloudWatch-Evidently-segments-syntax.html">
 %% Segment rule pattern syntax</a>.</p> <p>The pattern that you define for a
 %% segment is matched against the value of <code>evaluationContext</code>,
 %% which is passed into Evidently in the <a
@@ -543,7 +543,11 @@ get_experiment(Client, Experiment, Project, QueryMap, HeadersMap, Options0)
 %%
 %% No results are available until there have been 100 events for each
 %% variation and at least 10 minutes have passed since the start of the
-%% experiment.
+%% experiment. To increase the statistical power, Evidently performs an
+%% additional offline p-value analysis at the end of the experiment. Offline
+%% p-value analysis can detect statistical significance in some cases where
+%% the anytime p-values used during the experiment do not find statistical
+%% significance.
 %%
 %% Experiment results are available up to 63 days after the start of the
 %% experiment. They are not available after that because of CloudWatch data

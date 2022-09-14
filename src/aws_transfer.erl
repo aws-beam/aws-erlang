@@ -40,6 +40,8 @@
          delete_certificate/3,
          delete_connector/2,
          delete_connector/3,
+         delete_host_key/2,
+         delete_host_key/3,
          delete_profile/2,
          delete_profile/3,
          delete_server/2,
@@ -60,6 +62,8 @@
          describe_connector/3,
          describe_execution/2,
          describe_execution/3,
+         describe_host_key/2,
+         describe_host_key/3,
          describe_profile/2,
          describe_profile/3,
          describe_security_policy/2,
@@ -72,6 +76,8 @@
          describe_workflow/3,
          import_certificate/2,
          import_certificate/3,
+         import_host_key/2,
+         import_host_key/3,
          import_ssh_public_key/2,
          import_ssh_public_key/3,
          list_accesses/2,
@@ -84,6 +90,8 @@
          list_connectors/3,
          list_executions/2,
          list_executions/3,
+         list_host_keys/2,
+         list_host_keys/3,
          list_profiles/2,
          list_profiles/3,
          list_security_policies/2,
@@ -118,6 +126,8 @@
          update_certificate/3,
          update_connector/2,
          update_connector/3,
+         update_host_key/2,
+         update_host_key/3,
          update_profile/2,
          update_profile/3,
          update_server/2,
@@ -261,6 +271,14 @@ delete_connector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConnector">>, Input, Options).
 
+%% @doc Deletes the host key that's specified in the `HoskKeyId' parameter.
+delete_host_key(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_host_key(Client, Input, []).
+delete_host_key(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteHostKey">>, Input, Options).
+
 %% @doc Deletes the profile that's specified in the `ProfileId' parameter.
 delete_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -354,6 +372,15 @@ describe_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExecution">>, Input, Options).
 
+%% @doc Returns the details of the host key that's specified by the
+%% `HostKeyId' and `ServerId'.
+describe_host_key(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_host_key(Client, Input, []).
+describe_host_key(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeHostKey">>, Input, Options).
+
 %% @doc Returns the details of the profile that's specified by the
 %% `ProfileId'.
 describe_profile(Client, Input)
@@ -416,6 +443,14 @@ import_certificate(Client, Input)
 import_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportCertificate">>, Input, Options).
+
+%% @doc Adds a host key to the server specified by the `ServerId' parameter.
+import_host_key(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    import_host_key(Client, Input, []).
+import_host_key(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ImportHostKey">>, Input, Options).
 
 %% @doc Adds a Secure Shell (SSH) public key to a user account identified by
 %% a `UserName' value assigned to the specific file transfer protocol-enabled
@@ -481,6 +516,15 @@ list_executions(Client, Input)
 list_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExecutions">>, Input, Options).
+
+%% @doc Returns a list of host keys for the server specified by the
+%% `ServerId' paramter.
+list_host_keys(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_host_keys(Client, Input, []).
+list_host_keys(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListHostKeys">>, Input, Options).
 
 %% @doc Returns a list of the profiles for your system.
 %%
@@ -708,6 +752,15 @@ update_connector(Client, Input)
 update_connector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConnector">>, Input, Options).
+
+%% @doc Updates the description for the host key specified by the specified
+%% by the `ServerId' and `HostKeyId' parameters.
+update_host_key(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_host_key(Client, Input, []).
+update_host_key(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateHostKey">>, Input, Options).
 
 %% @doc Updates some of the parameters for an existing profile.
 %%
