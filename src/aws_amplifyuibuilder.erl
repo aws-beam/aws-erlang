@@ -20,10 +20,14 @@
 
 -export([create_component/4,
          create_component/5,
+         create_form/4,
+         create_form/5,
          create_theme/4,
          create_theme/5,
          delete_component/5,
          delete_component/6,
+         delete_form/5,
+         delete_form/6,
          delete_theme/5,
          delete_theme/6,
          exchange_code_for_token/3,
@@ -31,25 +35,41 @@
          export_components/3,
          export_components/5,
          export_components/6,
+         export_forms/3,
+         export_forms/5,
+         export_forms/6,
          export_themes/3,
          export_themes/5,
          export_themes/6,
          get_component/4,
          get_component/6,
          get_component/7,
+         get_form/4,
+         get_form/6,
+         get_form/7,
+         get_metadata/3,
+         get_metadata/5,
+         get_metadata/6,
          get_theme/4,
          get_theme/6,
          get_theme/7,
          list_components/3,
          list_components/5,
          list_components/6,
+         list_forms/3,
+         list_forms/5,
+         list_forms/6,
          list_themes/3,
          list_themes/5,
          list_themes/6,
+         put_metadata_flag/5,
+         put_metadata_flag/6,
          refresh_token/3,
          refresh_token/4,
          update_component/5,
          update_component/6,
+         update_form/5,
+         update_form/6,
          update_theme/5,
          update_theme/6]).
 
@@ -65,6 +85,30 @@ create_component(Client, AppId, EnvironmentName, Input) ->
 create_component(Client, AppId, EnvironmentName, Input0, Options0) ->
     Method = post,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/components"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new form for an Amplify app.
+create_form(Client, AppId, EnvironmentName, Input) ->
+    create_form(Client, AppId, EnvironmentName, Input, []).
+create_form(Client, AppId, EnvironmentName, Input0, Options0) ->
+    Method = post,
+    Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/forms"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -113,6 +157,29 @@ delete_component(Client, AppId, EnvironmentName, Id, Input) ->
 delete_component(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/components/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a form from an Amplify app.
+delete_form(Client, AppId, EnvironmentName, Id, Input) ->
+    delete_form(Client, AppId, EnvironmentName, Id, Input, []).
+delete_form(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/forms/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -204,6 +271,34 @@ export_components(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Exports form configurations to code that is ready to integrate into
+%% an Amplify app.
+export_forms(Client, AppId, EnvironmentName)
+  when is_map(Client) ->
+    export_forms(Client, AppId, EnvironmentName, #{}, #{}).
+
+export_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    export_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap, []).
+
+export_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/export/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/forms"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Exports theme configurations to code that is ready to integrate into
 %% an Amplify app.
 export_themes(Client, AppId, EnvironmentName)
@@ -244,6 +339,52 @@ get_component(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap)
 get_component(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/components/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns an existing form for an Amplify app.
+get_form(Client, AppId, EnvironmentName, Id)
+  when is_map(Client) ->
+    get_form(Client, AppId, EnvironmentName, Id, #{}, #{}).
+
+get_form(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_form(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, []).
+
+get_form(Client, AppId, EnvironmentName, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/forms/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns existing metadata for an Amplify app.
+get_metadata(Client, AppId, EnvironmentName)
+  when is_map(Client) ->
+    get_metadata(Client, AppId, EnvironmentName, #{}, #{}).
+
+get_metadata(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_metadata(Client, AppId, EnvironmentName, QueryMap, HeadersMap, []).
+
+get_metadata(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/metadata"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -307,6 +448,35 @@ list_components(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves a list of forms for a specified Amplify app and backend
+%% environment.
+list_forms(Client, AppId, EnvironmentName)
+  when is_map(Client) ->
+    list_forms(Client, AppId, EnvironmentName, #{}, #{}).
+
+list_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap, []).
+
+list_forms(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/forms"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a list of themes for a specified Amplify app and backend
 %% environment.
 list_themes(Client, AppId, EnvironmentName)
@@ -335,6 +505,29 @@ list_themes(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Stores the metadata information about a feature on a form or view.
+put_metadata_flag(Client, AppId, EnvironmentName, FeatureName, Input) ->
+    put_metadata_flag(Client, AppId, EnvironmentName, FeatureName, Input, []).
+put_metadata_flag(Client, AppId, EnvironmentName, FeatureName, Input0, Options0) ->
+    Method = put,
+    Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/metadata/features/", aws_util:encode_uri(FeatureName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Refreshes a previously issued access token that might have expired.
 refresh_token(Client, Provider, Input) ->
@@ -365,6 +558,30 @@ update_component(Client, AppId, EnvironmentName, Id, Input) ->
 update_component(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
     Method = patch,
     Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/components/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing form.
+update_form(Client, AppId, EnvironmentName, Id, Input) ->
+    update_form(Client, AppId, EnvironmentName, Id, Input, []).
+update_form(Client, AppId, EnvironmentName, Id, Input0, Options0) ->
+    Method = patch,
+    Path = ["/app/", aws_util:encode_uri(AppId), "/environment/", aws_util:encode_uri(EnvironmentName), "/forms/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
