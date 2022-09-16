@@ -1097,7 +1097,7 @@ tag_resource(Client, Input, Options)
 %% retrieves multiple items from one or more tables (but not from indexes) in
 %% a single account and Region.
 %%
-%% A `TransactGetItems' call can contain up to 25 `TransactGetItem' objects,
+%% A `TransactGetItems' call can contain up to 100 `TransactGetItem' objects,
 %% each of which contains a `Get' structure that specifies an item to
 %% retrieve from a table in the account and Region. A call to
 %% `TransactGetItems' cannot retrieve items from tables in more than one
@@ -1127,7 +1127,7 @@ transact_get_items(Client, Input, Options)
     request(Client, <<"TransactGetItems">>, Input, Options).
 
 %% @doc `TransactWriteItems' is a synchronous write operation that groups up
-%% to 25 action requests.
+%% to 100 action requests.
 %%
 %% These actions can target items in different tables, but not in different
 %% Amazon Web Services accounts or Regions, and no two actions can target the

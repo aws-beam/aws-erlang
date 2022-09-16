@@ -636,10 +636,9 @@ create_algorithm(Client, Input, Options)
 
 %% @doc Creates a running app for the specified UserProfile.
 %%
-%% Supported apps are `JupyterServer' and `KernelGateway'. This operation is
-%% automatically invoked by Amazon SageMaker Studio upon access to the
-%% associated Domain, and when new kernel configurations are selected by the
-%% user. A user may have multiple Apps active simultaneously.
+%% This operation is automatically invoked by Amazon SageMaker Studio upon
+%% access to the associated Domain, and when new kernel configurations are
+%% selected by the user. A user may have multiple Apps active simultaneously.
 create_app(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_app(Client, Input, []).
