@@ -30,8 +30,8 @@
 %%
 %% </li> </ul> Targets, by calling the following:
 %%
-%% <ul> <li> `DeleteTarget', which removes a notification rule target (SNS
-%% topic) from a notification rule.
+%% <ul> <li> `DeleteTarget', which removes a notification rule target from a
+%% notification rule.
 %%
 %% </li> <li> `ListTargets', which lists the targets associated with a
 %% notification rule.
@@ -53,7 +53,7 @@
 %% in your account.
 %%
 %% </li> </ul> For information about how to use AWS CodeStar Notifications,
-%% see link in the CodeStarNotifications User Guide.
+%% see the Amazon Web Services Developer Tools Console User Guide.
 -module(aws_codestar_notifications).
 
 -export([create_notification_rule/2,
@@ -78,8 +78,8 @@
          tag_resource/3,
          unsubscribe/2,
          unsubscribe/3,
-         untag_resource/2,
          untag_resource/3,
+         untag_resource/4,
          update_notification_rule/2,
          update_notification_rule/3]).
 
@@ -92,7 +92,8 @@
 %% @doc Creates a notification rule for a resource.
 %%
 %% The rule specifies the events you want notifications about and the targets
-%% (such as SNS topics) where you want to receive them.
+%% (such as Chatbot topics or Chatbot clients configured for Slack) where you
+%% want to receive them.
 create_notification_rule(Client, Input) ->
     create_notification_rule(Client, Input, []).
 create_notification_rule(Client, Input0, Options0) ->
@@ -208,7 +209,8 @@ list_event_types(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of the notification rules for an AWS account.
+%% @doc Returns a list of the notification rules for an Amazon Web Services
+%% account.
 list_notification_rules(Client, Input) ->
     list_notification_rules(Client, Input, []).
 list_notification_rules(Client, Input0, Options0) ->
@@ -254,7 +256,8 @@ list_tags_for_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of the notification rule targets for an AWS account.
+%% @doc Returns a list of the notification rule targets for an Amazon Web
+%% Services account.
 list_targets(Client, Input) ->
     list_targets(Client, Input, []).
 list_targets(Client, Input0, Options0) ->
@@ -277,9 +280,9 @@ list_targets(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an association between a notification rule and an SNS topic
-%% so that the associated target can receive notifications when the events
-%% described in the rule are triggered.
+%% @doc Creates an association between a notification rule and an Chatbot
+%% topic or Chatbot client so that the associated target can receive
+%% notifications when the events described in the rule are triggered.
 subscribe(Client, Input) ->
     subscribe(Client, Input, []).
 subscribe(Client, Input0, Options0) ->
@@ -325,7 +328,7 @@ tag_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes an association between a notification rule and an Amazon SNS
+%% @doc Removes an association between a notification rule and an Chatbot
 %% topic so that subscribers to that topic stop receiving notifications when
 %% the events described in the rule are triggered.
 unsubscribe(Client, Input) ->
@@ -352,11 +355,11 @@ unsubscribe(Client, Input0, Options0) ->
 
 %% @doc Removes the association between one or more provided tags and a
 %% notification rule.
-untag_resource(Client, Input) ->
-    untag_resource(Client, Input, []).
-untag_resource(Client, Input0, Options0) ->
+untag_resource(Client, Arn, Input) ->
+    untag_resource(Client, Arn, Input, []).
+untag_resource(Client, Arn, Input0, Options0) ->
     Method = post,
-    Path = ["/untagResource"],
+    Path = ["/untagResource/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -369,9 +372,10 @@ untag_resource(Client, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"tagKeys">>, <<"TagKeys">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a notification rule for a resource.
