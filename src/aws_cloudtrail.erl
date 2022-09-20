@@ -49,6 +49,8 @@
          get_event_data_store/3,
          get_event_selectors/2,
          get_event_selectors/3,
+         get_import/2,
+         get_import/3,
          get_insight_selectors/2,
          get_insight_selectors/3,
          get_query_results/2,
@@ -61,6 +63,10 @@
          list_channels/3,
          list_event_data_stores/2,
          list_event_data_stores/3,
+         list_import_failures/2,
+         list_import_failures/3,
+         list_imports/2,
+         list_imports/3,
          list_public_keys/2,
          list_public_keys/3,
          list_queries/2,
@@ -79,10 +85,14 @@
          remove_tags/3,
          restore_event_data_store/2,
          restore_event_data_store/3,
+         start_import/2,
+         start_import/3,
          start_logging/2,
          start_logging/3,
          start_query/2,
          start_query/3,
+         stop_import/2,
+         stop_import/3,
          stop_logging/2,
          stop_logging/3,
          update_event_data_store/2,
@@ -230,14 +240,28 @@ get_event_data_store(Client, Input, Options)
 %% </li> <li> If your event selector includes data events, the resources on
 %% which you are logging data events.
 %%
-%% </li> </ul> For more information, see Logging Data and Management Events
-%% for Trails in the CloudTrail User Guide.
+%% </li> </ul> For more information about logging management and data events,
+%% see the following topics in the CloudTrail User Guide:
+%%
+%% <ul> <li> Logging management events for trails
+%%
+%% </li> <li> Logging data events for trails
+%%
+%% </li> </ul>
 get_event_selectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_event_selectors(Client, Input, []).
 get_event_selectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEventSelectors">>, Input, Options).
+
+%% @doc Returns information for the specified import.
+get_import(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_import(Client, Input, []).
+get_import(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetImport">>, Input, Options).
 
 %% @doc Describes the settings for the Insights event selectors that you
 %% configured for your trail.
@@ -306,6 +330,23 @@ list_event_data_stores(Client, Input)
 list_event_data_stores(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEventDataStores">>, Input, Options).
+
+%% @doc Returns a list of failures for the specified import.
+list_import_failures(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_import_failures(Client, Input, []).
+list_import_failures(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListImportFailures">>, Input, Options).
+
+%% @doc Returns information on all imports, or a select set of imports by
+%% `ImportStatus' or `Destination'.
+list_imports(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_imports(Client, Input, []).
+list_imports(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListImports">>, Input, Options).
 
 %% @doc Returns all public keys whose private keys were used to sign the
 %% digest files within the specified time range.
@@ -434,8 +475,8 @@ lookup_events(Client, Input, Options)
 %% `InvalidHomeRegionException' exception is thrown.
 %%
 %% You can configure up to five event selectors for each trail. For more
-%% information, see Logging data and management events for trails and Quotas
-%% in CloudTrail in the CloudTrail User Guide.
+%% information, see Logging management events for trails , Logging data
+%% events for trails , and Quotas in CloudTrail in the CloudTrail User Guide.
 %%
 %% You can add advanced event selectors, and conditions for your advanced
 %% event selectors, up to a maximum of 500 values for all conditions and
@@ -485,6 +526,23 @@ restore_event_data_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreEventDataStore">>, Input, Options).
 
+%% @doc Starts an import of logged trail events from a source S3 bucket to a
+%% destination event data store.
+%%
+%% When you start a new import, the `Destinations' and `ImportSource'
+%% parameters are required. Before starting a new import, disable any access
+%% control lists (ACLs) attached to the source S3 bucket. For more
+%% information about disabling ACLs, see Controlling ownership of objects and
+%% disabling ACLs for your bucket.
+%%
+%% When you retry an import, the `ImportID' parameter is required.
+start_import(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_import(Client, Input, []).
+start_import(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartImport">>, Input, Options).
+
 %% @doc Starts the recording of Amazon Web Services API calls and log file
 %% delivery for a trail.
 %%
@@ -509,6 +567,14 @@ start_query(Client, Input)
 start_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartQuery">>, Input, Options).
+
+%% @doc Stops a specified import.
+stop_import(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_import(Client, Input, []).
+stop_import(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopImport">>, Input, Options).
 
 %% @doc Suspends the recording of Amazon Web Services API calls and log file
 %% delivery for the specified trail.

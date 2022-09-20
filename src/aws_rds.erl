@@ -1575,7 +1575,13 @@ describe_reserved_db_instances_offerings(Client, Input, Options)
 %% current Amazon Web Services Region can create a read replica, copy a DB
 %% snapshot from, or replicate automated backups from.
 %%
-%% This API action supports pagination.
+%% Use this operation to determine whether cross-Region features are
+%% supported between other Regions and your current Region. This operation
+%% supports pagination.
+%%
+%% To return information about the Regions that are enabled for your account,
+%% or all Regions, use the EC2 operation `DescribeRegions'. For more
+%% information, see DescribeRegions in the Amazon EC2 API Reference.
 describe_source_regions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_source_regions(Client, Input, []).
