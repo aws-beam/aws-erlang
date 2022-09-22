@@ -19,6 +19,8 @@
          batch_detect_sentiment/3,
          batch_detect_syntax/2,
          batch_detect_syntax/3,
+         batch_detect_targeted_sentiment/2,
+         batch_detect_targeted_sentiment/3,
          classify_document/2,
          classify_document/3,
          contains_pii_entities/2,
@@ -75,6 +77,8 @@
          detect_sentiment/3,
          detect_syntax/2,
          detect_syntax/3,
+         detect_targeted_sentiment/2,
+         detect_targeted_sentiment/3,
          import_model/2,
          import_model/3,
          list_document_classification_jobs/2,
@@ -173,7 +177,8 @@ batch_detect_dominant_language(Client, Input, Options)
 %% @doc Inspects the text of a batch of documents for named entities and
 %% returns information about them.
 %%
-%% For more information about named entities, see `how-entities'
+%% For more information about named entities, see Entities in the Comprehend
+%% Developer Guide.
 batch_detect_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_detect_entities(Client, Input, []).
@@ -202,13 +207,24 @@ batch_detect_sentiment(Client, Input, Options)
 %% @doc Inspects the text of a batch of documents for the syntax and part of
 %% speech of the words in the document and returns information about them.
 %%
-%% For more information, see `how-syntax'.
+%% For more information, see Syntax in the Comprehend Developer Guide.
 batch_detect_syntax(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_detect_syntax(Client, Input, []).
 batch_detect_syntax(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDetectSyntax">>, Input, Options).
+
+%% @doc Inspects a batch of documents and returns a sentiment analysis for
+%% each entity identified in the documents.
+%%
+%% For more information about targeted sentiment, see Targeted sentiment.
+batch_detect_targeted_sentiment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_detect_targeted_sentiment(Client, Input, []).
+batch_detect_targeted_sentiment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchDetectTargetedSentiment">>, Input, Options).
 
 %% @doc Creates a new document classification request to analyze a single
 %% document in real-time, using a previously created and trained custom model
@@ -236,7 +252,8 @@ contains_pii_entities(Client, Input, Options)
 %% To create a classifier, you provide a set of training documents that
 %% labeled with the categories that you want to use. After the classifier is
 %% trained you can use it to categorize a set of labeled documents into the
-%% categories. For more information, see `how-document-classification'.
+%% categories. For more information, see Document Classification in the
+%% Comprehend Developer Guide.
 create_document_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_document_classifier(Client, Input, []).
@@ -461,7 +478,8 @@ detect_dominant_language(Client, Input, Options)
 
 %% @doc Inspects text for named entities, and returns information about them.
 %%
-%% For more information, about named entities, see `how-entities'.
+%% For more information, about named entities, see Entities in the Comprehend
+%% Developer Guide.
 detect_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_entities(Client, Input, []).
@@ -498,13 +516,24 @@ detect_sentiment(Client, Input, Options)
 %% @doc Inspects text for syntax and the part of speech of words in the
 %% document.
 %%
-%% For more information, `how-syntax'.
+%% For more information, see Syntax in the Comprehend Developer Guide.
 detect_syntax(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_syntax(Client, Input, []).
 detect_syntax(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectSyntax">>, Input, Options).
+
+%% @doc Inspects the input text and returns a sentiment analysis for each
+%% entity identified in the text.
+%%
+%% For more information about targeted sentiment, see Targeted sentiment.
+detect_targeted_sentiment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    detect_targeted_sentiment(Client, Input, []).
+detect_targeted_sentiment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DetectTargetedSentiment">>, Input, Options).
 
 %% @doc Creates a new custom model that replicates a source custom model that
 %% you import.

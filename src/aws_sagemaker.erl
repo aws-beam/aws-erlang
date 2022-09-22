@@ -1575,10 +1575,10 @@ create_trial_component(Client, Input, Options)
 %% way to reference a "person" for the purposes of sharing, reporting, and
 %% other user-oriented features. This entity is created when a user onboards
 %% to Amazon SageMaker Studio. If an administrator invites a person by email
-%% or imports them from Amazon Web Services SSO, a user profile is
-%% automatically created. A user profile is the primary holder of settings
-%% for an individual user and has a reference to the user's private Amazon
-%% Elastic File System (EFS) home directory.
+%% or imports them from IAM Identity Center, a user profile is automatically
+%% created. A user profile is the primary holder of settings for an
+%% individual user and has a reference to the user's private Amazon Elastic
+%% File System (EFS) home directory.
 create_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_profile(Client, Input, []).
@@ -1713,7 +1713,7 @@ delete_device_fleet(Client, Input, Options)
 %% @doc Used to delete a domain.
 %%
 %% If you onboarded with IAM mode, you will need to delete your domain to
-%% onboard again using Amazon Web Services SSO. Use with caution. All of the
+%% onboard again using IAM Identity Center. Use with caution. All of the
 %% members of the domain will lose access to their EFS volume, including
 %% data, notebooks, and other artifacts.
 delete_domain(Client, Input)

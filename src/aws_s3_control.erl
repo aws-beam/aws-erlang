@@ -80,6 +80,9 @@
          get_bucket_tagging/3,
          get_bucket_tagging/5,
          get_bucket_tagging/6,
+         get_bucket_versioning/3,
+         get_bucket_versioning/5,
+         get_bucket_versioning/6,
          get_job_tagging/3,
          get_job_tagging/5,
          get_job_tagging/6,
@@ -131,6 +134,8 @@
          put_bucket_policy/4,
          put_bucket_tagging/3,
          put_bucket_tagging/4,
+         put_bucket_versioning/3,
+         put_bucket_versioning/4,
          put_job_tagging/3,
          put_job_tagging/4,
          put_multi_region_access_point_policy/2,
@@ -163,11 +168,12 @@
 %% private cloud (VPC) only access points in the Amazon S3 User Guide.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of `x-amz-outpost-id' to be passed with the request
-%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
-%% For an example of the request syntax for Amazon S3 on Outposts that uses
-%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
-%% derived using the access point ARN, see the Examples section.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request.
+%% In addition, you must use an S3 on Outposts endpoint hostname prefix
+%% instead of `s3-control'. For an example of the request syntax for Amazon
+%% S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and
+%% the `x-amz-outpost-id' derived by using the access point ARN, see the
+%% Examples section.
 %%
 %% The following actions are related to `CreateAccessPoint':
 %%
@@ -427,11 +433,12 @@ create_multi_region_access_point(Client, Input0, Options0) ->
 %% @doc Deletes the specified access point.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of `x-amz-outpost-id' to be passed with the request
-%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
-%% For an example of the request syntax for Amazon S3 on Outposts that uses
-%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
-%% derived using the access point ARN, see the Examples section.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request.
+%% In addition, you must use an S3 on Outposts endpoint hostname prefix
+%% instead of `s3-control'. For an example of the request syntax for Amazon
+%% S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and
+%% the `x-amz-outpost-id' derived by using the access point ARN, see the
+%% Examples section.
 %%
 %% The following actions are related to `DeleteAccessPoint':
 %%
@@ -504,11 +511,12 @@ delete_access_point_for_object_lambda(Client, Name, Input0, Options0) ->
 %% @doc Deletes the access point policy for the specified access point.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of `x-amz-outpost-id' to be passed with the request
-%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
-%% For an example of the request syntax for Amazon S3 on Outposts that uses
-%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
-%% derived using the access point ARN, see the Examples section.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request.
+%% In addition, you must use an S3 on Outposts endpoint hostname prefix
+%% instead of `s3-control'. For an example of the request syntax for Amazon
+%% S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and
+%% the `x-amz-outpost-id' derived by using the access point ARN, see the
+%% Examples section.
 %%
 %% The following actions are related to `DeleteAccessPointPolicy':
 %%
@@ -585,11 +593,12 @@ delete_access_point_policy_for_object_lambda(Client, Name, Input0, Options0) ->
 %% S3 on Outposts in Amazon S3 User Guide.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of `x-amz-outpost-id' to be passed with the request
-%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
-%% For an example of the request syntax for Amazon S3 on Outposts that uses
-%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
-%% derived using the access point ARN, see the Examples section.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request.
+%% In addition, you must use an S3 on Outposts endpoint hostname prefix
+%% instead of `s3-control'. For an example of the request syntax for Amazon
+%% S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and
+%% the `x-amz-outpost-id' derived by using the access point ARN, see the
+%% Examples section.
 %%
 %% == Related Resources ==
 %%
@@ -644,11 +653,12 @@ delete_bucket(Client, Bucket, Input0, Options0) ->
 %% permission to others.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of `x-amz-outpost-id' to be passed with the request
-%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
-%% For an example of the request syntax for Amazon S3 on Outposts that uses
-%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
-%% derived using the access point ARN, see the Examples section.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request.
+%% In addition, you must use an S3 on Outposts endpoint hostname prefix
+%% instead of `s3-control'. For an example of the request syntax for Amazon
+%% S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and
+%% the `x-amz-outpost-id' derived by using the access point ARN, see the
+%% Examples section.
 %%
 %% For more information about object expiration, see Elements to Describe
 %% Lifecycle Actions.
@@ -710,11 +720,12 @@ delete_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 %% User Policies.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of `x-amz-outpost-id' to be passed with the request
-%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
-%% For an example of the request syntax for Amazon S3 on Outposts that uses
-%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
-%% derived using the access point ARN, see the Examples section.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request.
+%% In addition, you must use an S3 on Outposts endpoint hostname prefix
+%% instead of `s3-control'. For an example of the request syntax for Amazon
+%% S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and
+%% the `x-amz-outpost-id' derived by using the access point ARN, see the
+%% Examples section.
 %%
 %% The following actions are related to `DeleteBucketPolicy':
 %%
@@ -760,11 +771,12 @@ delete_bucket_policy(Client, Bucket, Input0, Options0) ->
 %% permission and can grant this permission to others.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of `x-amz-outpost-id' to be passed with the request
-%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
-%% For an example of the request syntax for Amazon S3 on Outposts that uses
-%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
-%% derived using the access point ARN, see the Examples section.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request.
+%% In addition, you must use an S3 on Outposts endpoint hostname prefix
+%% instead of `s3-control'. For an example of the request syntax for Amazon
+%% S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and
+%% the `x-amz-outpost-id' derived by using the access point ARN, see the
+%% Examples section.
 %%
 %% The following actions are related to `DeleteBucketTagging':
 %%
@@ -1080,11 +1092,12 @@ describe_multi_region_access_point_operation(Client, RequestTokenARN, AccountId,
 %% @doc Returns configuration information about the specified access point.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of `x-amz-outpost-id' to be passed with the request
-%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
-%% For an example of the request syntax for Amazon S3 on Outposts that uses
-%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
-%% derived using the access point ARN, see the Examples section.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request.
+%% In addition, you must use an S3 on Outposts endpoint hostname prefix
+%% instead of `s3-control'. For an example of the request syntax for Amazon
+%% S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and
+%% the `x-amz-outpost-id' derived by using the access point ARN, see the
+%% Examples section.
 %%
 %% The following actions are related to `GetAccessPoint':
 %%
@@ -1345,11 +1358,12 @@ get_access_point_policy_status_for_object_lambda(Client, Name, AccountId, QueryM
 %% Outposts:
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of `x-amz-outpost-id' to be passed with the request
-%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
-%% For an example of the request syntax for Amazon S3 on Outposts that uses
-%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
-%% derived using the access point ARN, see the Examples section.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request.
+%% In addition, you must use an S3 on Outposts endpoint hostname prefix
+%% instead of `s3-control'. For an example of the request syntax for Amazon
+%% S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and
+%% the `x-amz-outpost-id' derived by using the access point ARN, see the
+%% Examples section.
 %%
 %% <ul> <li> PutObject
 %%
@@ -1403,11 +1417,12 @@ get_bucket(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 %% Permissions to Your Amazon S3 Resources.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of `x-amz-outpost-id' to be passed with the request
-%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
-%% For an example of the request syntax for Amazon S3 on Outposts that uses
-%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
-%% derived using the access point ARN, see the Examples section.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request.
+%% In addition, you must use an S3 on Outposts endpoint hostname prefix
+%% instead of `s3-control'. For an example of the request syntax for Amazon
+%% S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and
+%% the `x-amz-outpost-id' derived by using the access point ARN, see the
+%% Examples section.
 %%
 %% `GetBucketLifecycleConfiguration' has the following special error:
 %%
@@ -1480,11 +1495,12 @@ get_bucket_lifecycle_configuration(Client, Bucket, AccountId, QueryMap, HeadersM
 %% User Policies.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of `x-amz-outpost-id' to be passed with the request
-%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
-%% For an example of the request syntax for Amazon S3 on Outposts that uses
-%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
-%% derived using the access point ARN, see the Examples section.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request.
+%% In addition, you must use an S3 on Outposts endpoint hostname prefix
+%% instead of `s3-control'. For an example of the request syntax for Amazon
+%% S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and
+%% the `x-amz-outpost-id' derived by using the access point ARN, see the
+%% Examples section.
 %%
 %% The following actions are related to `GetBucketPolicy':
 %%
@@ -1541,11 +1557,11 @@ get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 %%
 %% </li> </ul> </li> </ul> All Amazon S3 on Outposts REST API requests for
 %% this action require an additional parameter of `x-amz-outpost-id' to be
-%% passed with the request and an S3 on Outposts endpoint hostname prefix
-%% instead of `s3-control'. For an example of the request syntax for Amazon
-%% S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and
-%% the `x-amz-outpost-id' derived using the access point ARN, see the
-%% Examples section.
+%% passed with the request. In addition, you must use an S3 on Outposts
+%% endpoint hostname prefix instead of `s3-control'. For an example of the
+%% request syntax for Amazon S3 on Outposts that uses the S3 on Outposts
+%% endpoint hostname prefix and the `x-amz-outpost-id' derived by using the
+%% access point ARN, see the Examples section.
 %%
 %% The following actions are related to `GetBucketTagging':
 %%
@@ -1565,6 +1581,67 @@ get_bucket_tagging(Client, Bucket, AccountId, QueryMap, HeadersMap)
 get_bucket_tagging(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/tagging"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers0 =
+      [
+        {<<"x-amz-account-id">>, AccountId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This operation returns the versioning state only for S3 on Outposts
+%% buckets.
+%%
+%% To return the versioning state for an S3 bucket, see GetBucketVersioning
+%% in the Amazon S3 API Reference.
+%%
+%% Returns the versioning state for an S3 on Outposts bucket. With
+%% versioning, you can save multiple distinct copies of your data and recover
+%% from unintended user actions and application failures.
+%%
+%% If you've never set versioning on your bucket, it has no versioning state.
+%% In that case, the `GetBucketVersioning' request does not return a
+%% versioning state value.
+%%
+%% For more information about versioning, see Versioning in the Amazon S3
+%% User Guide.
+%%
+%% All Amazon S3 on Outposts REST API requests for this action require an
+%% additional parameter of `x-amz-outpost-id' to be passed with the request.
+%% In addition, you must use an S3 on Outposts endpoint hostname prefix
+%% instead of `s3-control'. For an example of the request syntax for Amazon
+%% S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and
+%% the `x-amz-outpost-id' derived by using the access point ARN, see the
+%% Examples section.
+%%
+%% The following operations are related to `GetBucketVersioning' for S3 on
+%% Outposts.
+%%
+%% <ul> <li> PutBucketVersioning
+%%
+%% </li> <li> PutBucketLifecycleConfiguration
+%%
+%% </li> <li> GetBucketLifecycleConfiguration
+%%
+%% </li> </ul>
+get_bucket_versioning(Client, Bucket, AccountId)
+  when is_map(Client) ->
+    get_bucket_versioning(Client, Bucket, AccountId, #{}, #{}).
+
+get_bucket_versioning(Client, Bucket, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_versioning(Client, Bucket, AccountId, QueryMap, HeadersMap, []).
+
+get_bucket_versioning(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/versioning"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1866,11 +1943,12 @@ get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, QueryMap, He
 %% token that you can use to list the additional access points.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of `x-amz-outpost-id' to be passed with the request
-%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
-%% For an example of the request syntax for Amazon S3 on Outposts that uses
-%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
-%% derived using the access point ARN, see the Examples section.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request.
+%% In addition, you must use an S3 on Outposts endpoint hostname prefix
+%% instead of `s3-control'. For an example of the request syntax for Amazon
+%% S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and
+%% the `x-amz-outpost-id' derived by using the access point ARN, see the
+%% Examples section.
 %%
 %% The following actions are related to `ListAccessPoints':
 %%
@@ -2182,11 +2260,12 @@ put_access_point_configuration_for_object_lambda(Client, Name, Input0, Options0)
 %% replaces any existing policy associated with the specified access point.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of `x-amz-outpost-id' to be passed with the request
-%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
-%% For an example of the request syntax for Amazon S3 on Outposts that uses
-%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
-%% derived using the access point ARN, see the Examples section.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request.
+%% In addition, you must use an S3 on Outposts endpoint hostname prefix
+%% instead of `s3-control'. For an example of the request syntax for Amazon
+%% S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and
+%% the `x-amz-outpost-id' derived by using the access point ARN, see the
+%% Examples section.
 %%
 %% The following actions are related to `PutAccessPointPolicy':
 %%
@@ -2269,11 +2348,12 @@ put_access_point_policy_for_object_lambda(Client, Name, Input0, Options0) ->
 %% certain period of time and abort incomplete multipart uploads.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of `x-amz-outpost-id' to be passed with the request
-%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
-%% For an example of the request syntax for Amazon S3 on Outposts that uses
-%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
-%% derived using the access point ARN, see the Examples section.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request.
+%% In addition, you must use an S3 on Outposts endpoint hostname prefix
+%% instead of `s3-control'. For an example of the request syntax for Amazon
+%% S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and
+%% the `x-amz-outpost-id' derived by using the access point ARN, see the
+%% Examples section.
 %%
 %% The following actions are related to `PutBucketLifecycleConfiguration':
 %%
@@ -2332,11 +2412,12 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 %% User Policies.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
-%% additional parameter of `x-amz-outpost-id' to be passed with the request
-%% and an S3 on Outposts endpoint hostname prefix instead of `s3-control'.
-%% For an example of the request syntax for Amazon S3 on Outposts that uses
-%% the S3 on Outposts endpoint hostname prefix and the `x-amz-outpost-id'
-%% derived using the access point ARN, see the Examples section.
+%% additional parameter of `x-amz-outpost-id' to be passed with the request.
+%% In addition, you must use an S3 on Outposts endpoint hostname prefix
+%% instead of `s3-control'. For an example of the request syntax for Amazon
+%% S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and
+%% the `x-amz-outpost-id' derived by using the access point ARN, see the
+%% Examples section.
 %%
 %% The following actions are related to `PutBucketPolicy':
 %%
@@ -2423,11 +2504,11 @@ put_bucket_policy(Client, Bucket, Input0, Options0) ->
 %%
 %% </li> </ul> </li> </ul> All Amazon S3 on Outposts REST API requests for
 %% this action require an additional parameter of `x-amz-outpost-id' to be
-%% passed with the request and an S3 on Outposts endpoint hostname prefix
-%% instead of `s3-control'. For an example of the request syntax for Amazon
-%% S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and
-%% the `x-amz-outpost-id' derived using the access point ARN, see the
-%% Examples section.
+%% passed with the request. In addition, you must use an S3 on Outposts
+%% endpoint hostname prefix instead of `s3-control'. For an example of the
+%% request syntax for Amazon S3 on Outposts that uses the S3 on Outposts
+%% endpoint hostname prefix and the `x-amz-outpost-id' derived by using the
+%% access point ARN, see the Examples section.
 %%
 %% The following actions are related to `PutBucketTagging':
 %%
@@ -2449,6 +2530,85 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This operation sets the versioning state only for S3 on Outposts
+%% buckets.
+%%
+%% To set the versioning state for an S3 bucket, see PutBucketVersioning in
+%% the Amazon S3 API Reference.
+%%
+%% Sets the versioning state for an S3 on Outposts bucket. With versioning,
+%% you can save multiple distinct copies of your data and recover from
+%% unintended user actions and application failures.
+%%
+%% You can set the versioning state to one of the following:
+%%
+%% <ul> <li> Enabled - Enables versioning for the objects in the bucket. All
+%% objects added to the bucket receive a unique version ID.
+%%
+%% </li> <li> Suspended - Suspends versioning for the objects in the bucket.
+%% All objects added to the bucket receive the version ID `null'.
+%%
+%% </li> </ul> If you've never set versioning on your bucket, it has no
+%% versioning state. In that case, a GetBucketVersioning request does not
+%% return a versioning state value.
+%%
+%% When you enable S3 Versioning, for each object in your bucket, you have a
+%% current version and zero or more noncurrent versions. You can configure
+%% your bucket S3 Lifecycle rules to expire noncurrent versions after a
+%% specified time period. For more information, see Creating and managing a
+%% lifecycle configuration for your S3 on Outposts bucket in the Amazon S3
+%% User Guide.
+%%
+%% If you have an object expiration lifecycle policy in your non-versioned
+%% bucket and you want to maintain the same permanent delete behavior when
+%% you enable versioning, you must add a noncurrent expiration policy. The
+%% noncurrent expiration lifecycle policy will manage the deletes of the
+%% noncurrent object versions in the version-enabled bucket. For more
+%% information, see Versioning in the Amazon S3 User Guide.
+%%
+%% All Amazon S3 on Outposts REST API requests for this action require an
+%% additional parameter of `x-amz-outpost-id' to be passed with the request.
+%% In addition, you must use an S3 on Outposts endpoint hostname prefix
+%% instead of `s3-control'. For an example of the request syntax for Amazon
+%% S3 on Outposts that uses the S3 on Outposts endpoint hostname prefix and
+%% the `x-amz-outpost-id' derived by using the access point ARN, see the
+%% Examples section.
+%%
+%% The following operations are related to `PutBucketVersioning' for S3 on
+%% Outposts.
+%%
+%% <ul> <li> GetBucketVersioning
+%%
+%% </li> <li> PutBucketLifecycleConfiguration
+%%
+%% </li> <li> GetBucketLifecycleConfiguration
+%%
+%% </li> </ul>
+put_bucket_versioning(Client, Bucket, Input) ->
+    put_bucket_versioning(Client, Bucket, Input, []).
+put_bucket_versioning(Client, Bucket, Input0, Options0) ->
+    Method = put,
+    Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/versioning"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>},
+                       {<<"x-amz-mfa">>, <<"MFA">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
@@ -2580,7 +2740,7 @@ put_multi_region_access_point_policy(Client, Input0, Options0) ->
 %% @doc Creates or modifies the `PublicAccessBlock' configuration for an
 %% Amazon Web Services account.
 %%
-%% For this operation, users must have the `s3:PutBucketPublicAccessBlock'
+%% For this operation, users must have the `s3:PutAccountPublicAccessBlock'
 %% permission. For more information, see Using Amazon S3 block public access.
 %%
 %% Related actions include:
