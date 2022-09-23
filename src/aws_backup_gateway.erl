@@ -30,6 +30,8 @@
          disassociate_gateway_from_server/3,
          get_gateway/2,
          get_gateway/3,
+         get_virtual_machine/2,
+         get_virtual_machine/3,
          import_hypervisor_configuration/2,
          import_hypervisor_configuration/3,
          list_gateways/2,
@@ -118,6 +120,15 @@ get_gateway(Client, Input)
 get_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGateway">>, Input, Options).
+
+%% @doc By providing the ARN (Amazon Resource Name), this API returns the
+%% virtual machine.
+get_virtual_machine(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_virtual_machine(Client, Input, []).
+get_virtual_machine(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetVirtualMachine">>, Input, Options).
 
 %% @doc Connect to a hypervisor by importing its configuration.
 import_hypervisor_configuration(Client, Input)
