@@ -326,6 +326,8 @@
          update_distribution_bundle/3,
          update_domain_entry/2,
          update_domain_entry/3,
+         update_instance_metadata_options/2,
+         update_instance_metadata_options/3,
          update_load_balancer_attribute/2,
          update_load_balancer_attribute/3,
          update_relational_database/2,
@@ -2346,6 +2348,22 @@ update_domain_entry(Client, Input)
 update_domain_entry(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDomainEntry">>, Input, Options).
+
+%% @doc Modifies the Amazon Lightsail instance metadata parameters on a
+%% running or stopped instance.
+%%
+%% When you modify the parameters on a running instance, the `GetInstance' or
+%% `GetInstances' API operation initially responds with a state of `pending'.
+%% After the parameter modifications are successfully applied, the state
+%% changes to `applied' in subsequent `GetInstance' or `GetInstances' API
+%% calls. For more information, see Use IMDSv2 with an Amazon Lightsail
+%% instance in the Amazon Lightsail Developer Guide.
+update_instance_metadata_options(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_instance_metadata_options(Client, Input, []).
+update_instance_metadata_options(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateInstanceMetadataOptions">>, Input, Options).
 
 %% @doc Updates the specified attribute for a load balancer.
 %%

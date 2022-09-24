@@ -1167,18 +1167,17 @@ start_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Repairs the Amazon Web Services SSO configuration for a given studio.
+%% @doc Repairs the IAM Identity Center configuration for a given studio.
 %%
-%% If the studio has a valid Amazon Web Services SSO configuration currently
+%% If the studio has a valid IAM Identity Center configuration currently
 %% associated with it, this operation will fail with a validation error.
 %%
-%% If the studio does not have a valid Amazon Web Services SSO configuration
-%% currently associated with it, then a new Amazon Web Services SSO
-%% application is created for the studio and the studio is changed to the
-%% READY state.
+%% If the studio does not have a valid IAM Identity Center configuration
+%% currently associated with it, then a new IAM Identity Center application
+%% is created for the studio and the studio is changed to the READY state.
 %%
-%% After the Amazon Web Services SSO application is repaired, you must use
-%% the Amazon Nimble Studio console to add administrators and users to your
+%% After the IAM Identity Center application is repaired, you must use the
+%% Amazon Nimble Studio console to add administrators and users to your
 %% studio.
 start_studio_s_s_o_configuration_repair(Client, StudioId, Input) ->
     start_studio_s_s_o_configuration_repair(Client, StudioId, Input, []).
