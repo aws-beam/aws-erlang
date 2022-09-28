@@ -80,6 +80,9 @@
          get_map_tile/5,
          get_map_tile/7,
          get_map_tile/8,
+         get_place/3,
+         get_place/5,
+         get_place/6,
          list_device_positions/3,
          list_device_positions/4,
          list_geofence_collections/2,
@@ -1117,6 +1120,44 @@ get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap, Options0)
       Result ->
         Result
     end.
+
+%% @doc Finds a place by its unique ID.
+%%
+%% A `PlaceId' is returned by other search operations.
+%%
+%% A PlaceId is valid only if all of the following are the same in the
+%% original search request and the call to `GetPlace'.
+%%
+%% Customer AWS account
+%%
+%% AWS Region
+%%
+%% Data provider specified in the place index resource
+get_place(Client, IndexName, PlaceId)
+  when is_map(Client) ->
+    get_place(Client, IndexName, PlaceId, #{}, #{}).
+
+get_place(Client, IndexName, PlaceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_place(Client, IndexName, PlaceId, QueryMap, HeadersMap, []).
+
+get_place(Client, IndexName, PlaceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), "/places/", aws_util:encode_uri(PlaceId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"language">>, maps:get(<<"language">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc A batch request to retrieve all device positions.
 list_device_positions(Client, TrackerName, Input) ->
