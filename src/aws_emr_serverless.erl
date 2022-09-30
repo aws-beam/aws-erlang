@@ -34,6 +34,9 @@
          get_application/2,
          get_application/4,
          get_application/5,
+         get_dashboard_for_job_run/3,
+         get_dashboard_for_job_run/5,
+         get_dashboard_for_job_run/6,
          get_job_run/3,
          get_job_run/5,
          get_job_run/6,
@@ -149,6 +152,29 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap)
 get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/applications/", aws_util:encode_uri(ApplicationId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a URL to access the job run dashboard.
+get_dashboard_for_job_run(Client, ApplicationId, JobRunId)
+  when is_map(Client) ->
+    get_dashboard_for_job_run(Client, ApplicationId, JobRunId, #{}, #{}).
+
+get_dashboard_for_job_run(Client, ApplicationId, JobRunId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_dashboard_for_job_run(Client, ApplicationId, JobRunId, QueryMap, HeadersMap, []).
+
+get_dashboard_for_job_run(Client, ApplicationId, JobRunId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/applications/", aws_util:encode_uri(ApplicationId), "/jobruns/", aws_util:encode_uri(JobRunId), "/dashboard"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

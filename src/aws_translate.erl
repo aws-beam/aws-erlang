@@ -23,6 +23,8 @@
          list_languages/3,
          list_parallel_data/2,
          list_parallel_data/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          list_terminologies/2,
          list_terminologies/3,
          list_text_translation_jobs/2,
@@ -31,8 +33,12 @@
          start_text_translation_job/3,
          stop_text_translation_job/2,
          stop_text_translation_job/3,
+         tag_resource/2,
+         tag_resource/3,
          translate_text/2,
          translate_text/3,
+         untag_resource/2,
+         untag_resource/3,
          update_parallel_data/2,
          update_parallel_data/3]).
 
@@ -132,6 +138,14 @@ list_parallel_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListParallelData">>, Input, Options).
 
+
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
+
 %% @doc Provides a list of custom terminologies associated with your account.
 list_terminologies(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -185,6 +199,14 @@ stop_text_translation_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopTextTranslationJob">>, Input, Options).
 
+
+tag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    tag_resource(Client, Input, []).
+tag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TagResource">>, Input, Options).
+
 %% @doc Translates input text from the source language to the target
 %% language.
 %%
@@ -196,6 +218,14 @@ translate_text(Client, Input)
 translate_text(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TranslateText">>, Input, Options).
+
+
+untag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    untag_resource(Client, Input, []).
+untag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UntagResource">>, Input, Options).
 
 %% @doc Updates a previously created parallel data resource by importing a
 %% new input file from Amazon S3.

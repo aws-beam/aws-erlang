@@ -103,6 +103,11 @@
 %%
 %% To turn on automatic rotation again, call `RotateSecret'.
 %%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters because
+%% it might be logged. For more information, see Logging Secrets Manager
+%% events with CloudTrail.
+%%
 %% Required permissions: `secretsmanager:CancelRotateSecret'. For more
 %% information, see IAM policy actions for Secrets Manager and Authentication
 %% and access control in Secrets Manager.
@@ -149,6 +154,11 @@ cancel_rotate_secret(Client, Input, Options)
 %% encrypt the secret, and you must create and use a customer managed KMS
 %% key.
 %%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters except
+%% `SecretBinary' or `SecretString' because it might be logged. For more
+%% information, see Logging Secrets Manager events with CloudTrail.
+%%
 %% Required permissions: `secretsmanager:CreateSecret'. If you include tags
 %% in the secret, you also need `secretsmanager:TagResource'. For more
 %% information, see IAM policy actions for Secrets Manager and Authentication
@@ -166,6 +176,11 @@ create_secret(Client, Input, Options)
 %% @doc Deletes the resource-based permission policy attached to the secret.
 %%
 %% To attach a policy to a secret, use `PutResourcePolicy'.
+%%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters because
+%% it might be logged. For more information, see Logging Secrets Manager
+%% events with CloudTrail.
 %%
 %% Required permissions: `secretsmanager:DeleteResourcePolicy'. For more
 %% information, see IAM policy actions for Secrets Manager and Authentication
@@ -212,6 +227,11 @@ delete_resource_policy(Client, Input, Options)
 %% value. You must first cancel the deletion with `RestoreSecret' and then
 %% you can retrieve the secret.
 %%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters because
+%% it might be logged. For more information, see Logging Secrets Manager
+%% events with CloudTrail.
+%%
 %% Required permissions: `secretsmanager:DeleteSecret'. For more information,
 %% see IAM policy actions for Secrets Manager and Authentication and access
 %% control in Secrets Manager.
@@ -226,6 +246,11 @@ delete_secret(Client, Input, Options)
 %%
 %% It does not include the encrypted secret value. Secrets Manager only
 %% returns fields that have a value in the response.
+%%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters because
+%% it might be logged. For more information, see Logging Secrets Manager
+%% events with CloudTrail.
 %%
 %% Required permissions: `secretsmanager:DescribeSecret'. For more
 %% information, see IAM policy actions for Secrets Manager and Authentication
@@ -243,6 +268,11 @@ describe_secret(Client, Input, Options)
 %% character type that the system you are generating a password for can
 %% support.
 %%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters because
+%% it might be logged. For more information, see Logging Secrets Manager
+%% events with CloudTrail.
+%%
 %% Required permissions: `secretsmanager:GetRandomPassword'. For more
 %% information, see IAM policy actions for Secrets Manager and Authentication
 %% and access control in Secrets Manager.
@@ -258,6 +288,11 @@ get_random_password(Client, Input, Options)
 %%
 %% For more information about permissions policies attached to a secret, see
 %% Permissions policies attached to a secret.
+%%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters because
+%% it might be logged. For more information, see Logging Secrets Manager
+%% events with CloudTrail.
 %%
 %% Required permissions: `secretsmanager:GetResourcePolicy'. For more
 %% information, see IAM policy actions for Secrets Manager and Authentication
@@ -281,6 +316,11 @@ get_resource_policy(Client, Input, Options)
 %% specify AWSPREVIOUS. To revert to the previous version of a secret, call
 %% UpdateSecretVersionStage.
 %%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters because
+%% it might be logged. For more information, see Logging Secrets Manager
+%% events with CloudTrail.
+%%
 %% Required permissions: `secretsmanager:GetSecretValue'. If the secret is
 %% encrypted using a customer-managed key instead of the Amazon Web Services
 %% managed key `aws/secretsmanager', then you also need `kms:Decrypt'
@@ -299,6 +339,11 @@ get_secret_value(Client, Input, Options)
 %% a secret. For more information, see Secrets Manager concepts: Versions.
 %%
 %% To list the secrets in the account, use `ListSecrets'.
+%%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters because
+%% it might be logged. For more information, see Logging Secrets Manager
+%% events with CloudTrail.
 %%
 %% Required permissions: `secretsmanager:ListSecretVersionIds'. For more
 %% information, see IAM policy actions for Secrets Manager and Authentication
@@ -327,6 +372,11 @@ list_secret_version_ids(Client, Input, Options)
 %% For information about finding secrets in the console, see Find secrets in
 %% Secrets Manager.
 %%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters because
+%% it might be logged. For more information, see Logging Secrets Manager
+%% events with CloudTrail.
+%%
 %% Required permissions: `secretsmanager:ListSecrets'. For more information,
 %% see IAM policy actions for Secrets Manager and Authentication and access
 %% control in Secrets Manager.
@@ -344,6 +394,11 @@ list_secrets(Client, Input, Options)
 %%
 %% For information about attaching a policy in the console, see Attach a
 %% permissions policy to a secret.
+%%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters because
+%% it might be logged. For more information, see Logging Secrets Manager
+%% events with CloudTrail.
 %%
 %% Required permissions: `secretsmanager:PutResourcePolicy'. For more
 %% information, see IAM policy actions for Secrets Manager and Authentication
@@ -374,9 +429,7 @@ put_resource_policy(Client, Input, Options)
 %% Manager automatically moves the staging label `AWSCURRENT' to this
 %% version. If this operation creates the first version for the secret, then
 %% Secrets Manager automatically attaches the staging label `AWSCURRENT' to
-%% it .
-%%
-%% If this operation moves the staging label `AWSCURRENT' from another
+%% it. If this operation moves the staging label `AWSCURRENT' from another
 %% version to this version, then Secrets Manager also automatically moves the
 %% staging label `AWSPREVIOUS' to the version that `AWSCURRENT' was removed
 %% from.
@@ -386,6 +439,11 @@ put_resource_policy(Client, Input, Options)
 %% specify the same secret data, the operation succeeds but does nothing.
 %% However, if the secret data is different, then the operation fails because
 %% you can't modify an existing version; you can only create new ones.
+%%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters except
+%% `SecretBinary' or `SecretString' because it might be logged. For more
+%% information, see Logging Secrets Manager events with CloudTrail.
 %%
 %% Required permissions: `secretsmanager:PutSecretValue'. For more
 %% information, see IAM policy actions for Secrets Manager and Authentication
@@ -399,6 +457,11 @@ put_secret_value(Client, Input, Options)
 
 %% @doc For a secret that is replicated to other Regions, deletes the secret
 %% replicas from the Regions you specify.
+%%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters because
+%% it might be logged. For more information, see Logging Secrets Manager
+%% events with CloudTrail.
 %%
 %% Required permissions: `secretsmanager:RemoveRegionsFromReplication'. For
 %% more information, see IAM policy actions for Secrets Manager and
@@ -414,6 +477,11 @@ remove_regions_from_replication(Client, Input, Options)
 %%
 %% See Multi-Region secrets.
 %%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters because
+%% it might be logged. For more information, see Logging Secrets Manager
+%% events with CloudTrail.
+%%
 %% Required permissions: `secretsmanager:ReplicateSecretToRegions'. For more
 %% information, see IAM policy actions for Secrets Manager and Authentication
 %% and access control in Secrets Manager.
@@ -428,6 +496,11 @@ replicate_secret_to_regions(Client, Input, Options)
 %% `DeletedDate' time stamp.
 %%
 %% You can access a secret again after it has been restored.
+%%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters because
+%% it might be logged. For more information, see Logging Secrets Manager
+%% events with CloudTrail.
 %%
 %% Required permissions: `secretsmanager:RestoreSecret'. For more
 %% information, see IAM policy actions for Secrets Manager and Authentication
@@ -474,6 +547,11 @@ restore_secret(Client, Input, Options)
 %% invocation of `RotateSecret' assumes that a previous rotation request is
 %% still in progress and returns an error.
 %%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters because
+%% it might be logged. For more information, see Logging Secrets Manager
+%% events with CloudTrail.
+%%
 %% Required permissions: `secretsmanager:RotateSecret'. For more information,
 %% see IAM policy actions for Secrets Manager and Authentication and access
 %% control in Secrets Manager. You also need `lambda:InvokeFunction'
@@ -491,6 +569,11 @@ rotate_secret(Client, Input, Options)
 %%
 %% You must call this operation from the Region in which you want to promote
 %% the replica to a primary secret.
+%%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters because
+%% it might be logged. For more information, see Logging Secrets Manager
+%% events with CloudTrail.
 %%
 %% Required permissions: `secretsmanager:StopReplicationToReplica'. For more
 %% information, see IAM policy actions for Secrets Manager and Authentication
@@ -533,6 +616,11 @@ stop_replication_to_replica(Client, Input, Options)
 %% operation would result in you losing your permissions for this secret,
 %% then the operation is blocked and returns an Access Denied error.
 %%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters because
+%% it might be logged. For more information, see Logging Secrets Manager
+%% events with CloudTrail.
+%%
 %% Required permissions: `secretsmanager:TagResource'. For more information,
 %% see IAM policy actions for Secrets Manager and Authentication and access
 %% control in Secrets Manager.
@@ -552,6 +640,11 @@ tag_resource(Client, Input, Options)
 %% change permissions. If successfully completing this operation would result
 %% in you losing your permissions for this secret, then the operation is
 %% blocked and returns an Access Denied error.
+%%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters because
+%% it might be logged. For more information, see Logging Secrets Manager
+%% events with CloudTrail.
 %%
 %% Required permissions: `secretsmanager:UntagResource'. For more
 %% information, see IAM policy actions for Secrets Manager and Authentication
@@ -581,14 +674,20 @@ untag_resource(Client, Input, Options)
 %% versions.
 %%
 %% If you include `SecretString' or `SecretBinary' to create a new secret
-%% version, Secrets Manager automatically attaches the staging label
-%% `AWSCURRENT' to the new version.
+%% version, Secrets Manager automatically moves the staging label
+%% `AWSCURRENT' to the new version. Then it attaches the label `AWSPREVIOUS'
+%% to the version that `AWSCURRENT' was removed from.
 %%
 %% If you call this operation with a `ClientRequestToken' that matches an
 %% existing version's `VersionId', the operation results in an error. You
 %% can't modify an existing version, you can only create a new version. To
 %% remove a version, remove all staging labels from it. See
 %% `UpdateSecretVersionStage'.
+%%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters except
+%% `SecretBinary' or `SecretString' because it might be logged. For more
+%% information, see Logging Secrets Manager events with CloudTrail.
 %%
 %% Required permissions: `secretsmanager:UpdateSecret'. For more information,
 %% see IAM policy actions for Secrets Manager and Authentication and access
@@ -624,6 +723,11 @@ update_secret(Client, Input, Options)
 %% then the version is considered to be 'deprecated' and can be deleted by
 %% Secrets Manager.
 %%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters because
+%% it might be logged. For more information, see Logging Secrets Manager
+%% events with CloudTrail.
+%%
 %% Required permissions: `secretsmanager:UpdateSecretVersionStage'. For more
 %% information, see IAM policy actions for Secrets Manager and Authentication
 %% and access control in Secrets Manager.
@@ -649,9 +753,14 @@ update_secret_version_stage(Client, Input, Options)
 %%
 %% </li> <li> Verifies the policy does not lock out a caller.
 %%
-%% </li> </ul> Required permissions: `secretsmanager:ValidateResourcePolicy'.
-%% For more information, see IAM policy actions for Secrets Manager and
-%% Authentication and access control in Secrets Manager.
+%% </li> </ul> Secrets Manager generates a CloudTrail log entry when you call
+%% this action. Do not include sensitive information in request parameters
+%% because it might be logged. For more information, see Logging Secrets
+%% Manager events with CloudTrail.
+%%
+%% Required permissions: `secretsmanager:ValidateResourcePolicy'. For more
+%% information, see IAM policy actions for Secrets Manager and Authentication
+%% and access control in Secrets Manager.
 validate_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     validate_resource_policy(Client, Input, []).

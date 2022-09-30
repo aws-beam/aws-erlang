@@ -17,6 +17,8 @@
          create_data_repository_association/3,
          create_data_repository_task/2,
          create_data_repository_task/3,
+         create_file_cache/2,
+         create_file_cache/3,
          create_file_system/2,
          create_file_system/3,
          create_file_system_from_backup/2,
@@ -33,6 +35,8 @@
          delete_backup/3,
          delete_data_repository_association/2,
          delete_data_repository_association/3,
+         delete_file_cache/2,
+         delete_file_cache/3,
          delete_file_system/2,
          delete_file_system/3,
          delete_snapshot/2,
@@ -47,6 +51,8 @@
          describe_data_repository_associations/3,
          describe_data_repository_tasks/2,
          describe_data_repository_tasks/3,
+         describe_file_caches/2,
+         describe_file_caches/3,
          describe_file_system_aliases/2,
          describe_file_system_aliases/3,
          describe_file_systems/2,
@@ -71,6 +77,8 @@
          untag_resource/3,
          update_data_repository_association/2,
          update_data_repository_association/3,
+         update_file_cache/2,
+         update_file_cache/3,
          update_file_system/2,
          update_file_system/3,
          update_snapshot/2,
@@ -237,6 +245,10 @@ create_backup(Client, Input, Options)
 %% automatic export only, or for both. To learn more about linking a data
 %% repository to your file system, see Linking your file system to an S3
 %% bucket.
+%%
+%% `CreateDataRepositoryAssociation' isn't supported on Amazon File Cache
+%% resources. To create a DRA on Amazon File Cache, use the `CreateFileCache'
+%% operation.
 create_data_repository_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_repository_association(Client, Input, []).
@@ -261,6 +273,33 @@ create_data_repository_task(Client, Input)
 create_data_repository_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataRepositoryTask">>, Input, Options).
+
+%% @doc Creates a new Amazon File Cache resource.
+%%
+%% You can use this operation with a client request token in the request that
+%% Amazon File Cache uses to ensure idempotent creation. If a cache with the
+%% specified client request token exists and the parameters match,
+%% `CreateFileCache' returns the description of the existing cache. If a
+%% cache with the specified client request token exists and the parameters
+%% don't match, this call returns `IncompatibleParameterError'. If a file
+%% cache with the specified client request token doesn't exist,
+%% `CreateFileCache' does the following:
+%%
+%% <ul> <li> Creates a new, empty Amazon File Cache resourcewith an assigned
+%% ID, and an initial lifecycle state of `CREATING'.
+%%
+%% </li> <li> Returns the description of the cache in JSON format.
+%%
+%% </li> </ul> The `CreateFileCache' call returns while the cache's lifecycle
+%% state is still `CREATING'. You can check the cache creation status by
+%% calling the DescribeFileCaches operation, which returns the cache state
+%% along with other information.
+create_file_cache(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_file_cache(Client, Input, []).
+create_file_cache(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateFileCache">>, Input, Options).
 
 %% @doc Creates a new, empty Amazon FSx file system.
 %%
@@ -298,22 +337,10 @@ create_data_repository_task(Client, Input, Options)
 %%
 %% </li> <li> Returns the description of the file system in JSON format.
 %%
-%% </li> </ul> This operation requires a client request token in the request
-%% that Amazon FSx uses to ensure idempotent creation. This means that
-%% calling the operation multiple times with the same client request token
-%% has no effect. By using the idempotent operation, you can retry a
-%% `CreateFileSystem' operation without the risk of creating an extra file
-%% system. This approach can be useful when an initial call fails in a way
-%% that makes it unclear whether a file system was created. Examples are if a
-%% transport-level timeout occurred, or your connection was reset. If you use
-%% the same client request token and the initial call created a file system,
-%% the client receives a success message as long as the parameters are the
-%% same.
-%%
-%% The `CreateFileSystem' call returns while the file system's lifecycle
-%% state is still `CREATING'. You can check the file-system creation status
-%% by calling the DescribeFileSystems operation, which returns the file
-%% system state along with other information.
+%% </li> </ul> The `CreateFileSystem' call returns while the file system's
+%% lifecycle state is still `CREATING'. You can check the file-system
+%% creation status by calling the DescribeFileSystems operation, which
+%% returns the file system state along with other information.
 create_file_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_file_system(Client, Input, []).
@@ -454,6 +481,25 @@ delete_data_repository_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDataRepositoryAssociation">>, Input, Options).
 
+%% @doc Deletes an Amazon File Cache resource.
+%%
+%% After deletion, the cache no longer exists, and its data is gone.
+%%
+%% The `DeleteFileCache' operation returns while the cache has the `DELETING'
+%% status. You can check the cache deletion status by calling the
+%% DescribeFileCaches operation, which returns a list of caches in your
+%% account. If you pass the cache ID for a deleted cache, the
+%% `DescribeFileCaches' operation returns a `FileCacheNotFound' error.
+%%
+%% The data in a deleted cache is also deleted and can't be recovered by any
+%% means.
+delete_file_cache(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_file_cache(Client, Input, []).
+delete_file_cache(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteFileCache">>, Input, Options).
+
 %% @doc Deletes a file system.
 %%
 %% After deletion, the file system no longer exists, and its data is gone.
@@ -560,27 +606,29 @@ describe_backups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBackups">>, Input, Options).
 
-%% @doc Returns the description of specific Amazon FSx for Lustre data
-%% repository associations, if one or more `AssociationIds' values are
-%% provided in the request, or if filters are used in the request.
+%% @doc Returns the description of specific Amazon FSx for Lustre or Amazon
+%% File Cache data repository associations, if one or more `AssociationIds'
+%% values are provided in the request, or if filters are used in the request.
 %%
-%% Data repository associations are supported only for file systems with the
-%% `Persistent_2' deployment type.
+%% Data repository associations are supported only for Amazon FSx for Lustre
+%% file systems with the `Persistent_2' deployment type and for Amazon File
+%% Cache resources.
 %%
 %% You can use filters to narrow the response to include just data repository
 %% associations for specific file systems (use the `file-system-id' filter
-%% with the ID of the file system) or data repository associations for a
-%% specific repository type (use the `data-repository-type' filter with a
-%% value of `S3'). If you don't use filters, the response returns all data
+%% with the ID of the file system) or caches (use the `file-cache-id' filter
+%% with the ID of the cache), or data repository associations for a specific
+%% repository type (use the `data-repository-type' filter with a value of
+%% `S3' or `NFS'). If you don't use filters, the response returns all data
 %% repository associations owned by your Amazon Web Services account in the
 %% Amazon Web Services Region of the endpoint that you're calling.
 %%
 %% When retrieving all data repository associations, you can paginate the
 %% response by using the optional `MaxResults' parameter to limit the number
 %% of data repository associations returned in a response. If more data
-%% repository associations remain, Amazon FSx returns a `NextToken' value in
-%% the response. In this case, send a later request with the `NextToken'
-%% request parameter set to the value of `NextToken' from the last response.
+%% repository associations remain, a `NextToken' value is returned in the
+%% response. In this case, send a later request with the `NextToken' request
+%% parameter set to the value of `NextToken' from the last response.
 describe_data_repository_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_repository_associations(Client, Input, []).
@@ -588,27 +636,64 @@ describe_data_repository_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataRepositoryAssociations">>, Input, Options).
 
-%% @doc Returns the description of specific Amazon FSx for Lustre data
-%% repository tasks, if one or more `TaskIds' values are provided in the
-%% request, or if filters are used in the request.
+%% @doc Returns the description of specific Amazon FSx for Lustre or Amazon
+%% File Cache data repository tasks, if one or more `TaskIds' values are
+%% provided in the request, or if filters are used in the request.
 %%
 %% You can use filters to narrow the response to include just tasks for
-%% specific file systems, or tasks in a specific lifecycle state. Otherwise,
-%% it returns all data repository tasks owned by your Amazon Web Services
-%% account in the Amazon Web Services Region of the endpoint that you're
-%% calling.
+%% specific file systems or caches, or tasks in a specific lifecycle state.
+%% Otherwise, it returns all data repository tasks owned by your Amazon Web
+%% Services account in the Amazon Web Services Region of the endpoint that
+%% you're calling.
 %%
 %% When retrieving all tasks, you can paginate the response by using the
 %% optional `MaxResults' parameter to limit the number of tasks returned in a
-%% response. If more tasks remain, Amazon FSx returns a `NextToken' value in
-%% the response. In this case, send a later request with the `NextToken'
-%% request parameter set to the value of `NextToken' from the last response.
+%% response. If more tasks remain, a `NextToken' value is returned in the
+%% response. In this case, send a later request with the `NextToken' request
+%% parameter set to the value of `NextToken' from the last response.
 describe_data_repository_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_repository_tasks(Client, Input, []).
 describe_data_repository_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeDataRepositoryTasks">>, Input, Options).
+
+%% @doc Returns the description of a specific Amazon File Cache resource, if
+%% a `FileCacheIds' value is provided for that cache.
+%%
+%% Otherwise, it returns descriptions of all caches owned by your Amazon Web
+%% Services account in the Amazon Web Services Region of the endpoint that
+%% you're calling.
+%%
+%% When retrieving all cache descriptions, you can optionally specify the
+%% `MaxResults' parameter to limit the number of descriptions in a response.
+%% If more cache descriptions remain, the operation returns a `NextToken'
+%% value in the response. In this case, send a later request with the
+%% `NextToken' request parameter set to the value of `NextToken' from the
+%% last response.
+%%
+%% This operation is used in an iterative process to retrieve a list of your
+%% cache descriptions. `DescribeFileCaches' is called first without a
+%% `NextToken'value. Then the operation continues to be called with the
+%% `NextToken' parameter set to the value of the last `NextToken' value until
+%% a response has no `NextToken'.
+%%
+%% When using this operation, keep the following in mind:
+%%
+%% <ul> <li> The implementation might return fewer than `MaxResults' cache
+%% descriptions while still including a `NextToken' value.
+%%
+%% </li> <li> The order of caches returned in the response of one
+%% `DescribeFileCaches' call and the order of caches returned across the
+%% responses of a multicall iteration is unspecified.
+%%
+%% </li> </ul>
+describe_file_caches(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_file_caches(Client, Input, []).
+describe_file_caches(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeFileCaches">>, Input, Options).
 
 %% @doc Returns the DNS aliases that are associated with the specified Amazon
 %% FSx for Windows File Server file system.
@@ -810,6 +895,16 @@ update_data_repository_association(Client, Input)
 update_data_repository_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDataRepositoryAssociation">>, Input, Options).
+
+%% @doc Updates the configuration of an existing Amazon File Cache resource.
+%%
+%% You can update multiple properties in a single request.
+update_file_cache(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_file_cache(Client, Input, []).
+update_file_cache(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateFileCache">>, Input, Options).
 
 %% @doc Use this operation to update the configuration of an existing Amazon
 %% FSx file system.

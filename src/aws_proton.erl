@@ -29,11 +29,7 @@
 %% and delete API operations and the service instance list and update API
 %% operations.
 %%
-%% To learn more about Proton administration, see the Proton Administrator
-%% Guide.
-%%
-%% To learn more about deploying serverless and containerized applications on
-%% Proton, see the Proton User Guide.
+%% To learn more about Proton, see the Proton User Guide.
 %%
 %% Ensuring Idempotency
 %%
@@ -326,7 +322,7 @@
 %% resources in the associated environment account.
 %%
 %% For more information, see Environment account connections in the Proton
-%% Administrator guide.
+%% User guide.
 accept_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     accept_environment_account_connection(Client, Input, []).
@@ -338,7 +334,7 @@ accept_environment_account_connection(Client, Input, Options)
 %% the `IN_PROGRESS' deployment status).
 %%
 %% For more information about components, see Proton components in the Proton
-%% Administrator Guide.
+%% User Guide.
 cancel_component_deployment(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_component_deployment(Client, Input, []).
@@ -349,8 +345,7 @@ cancel_component_deployment(Client, Input, Options)
 %% @doc Attempts to cancel an environment deployment on an
 %% `UpdateEnvironment' action, if the deployment is `IN_PROGRESS'.
 %%
-%% For more information, see Update an environment in the Proton
-%% Administrator guide.
+%% For more information, see Update an environment in the Proton User guide.
 %%
 %% The following list includes potential cancellation scenarios.
 %%
@@ -375,8 +370,8 @@ cancel_environment_deployment(Client, Input, Options)
 %% @doc Attempts to cancel a service instance deployment on an
 %% `UpdateServiceInstance' action, if the deployment is `IN_PROGRESS'.
 %%
-%% For more information, see Update a service instance in the Proton
-%% Administrator guide or the Proton User guide.
+%% For more information, see Update a service instance in the Proton User
+%% guide.
 %%
 %% The following list includes potential cancellation scenarios.
 %%
@@ -401,8 +396,8 @@ cancel_service_instance_deployment(Client, Input, Options)
 %% @doc Attempts to cancel a service pipeline deployment on an
 %% `UpdateServicePipeline' action, if the deployment is `IN_PROGRESS'.
 %%
-%% For more information, see Update a service pipeline in the Proton
-%% Administrator guide or the Proton User guide.
+%% For more information, see Update a service pipeline in the Proton User
+%% guide.
 %%
 %% The following list includes potential cancellation scenarios.
 %%
@@ -429,7 +424,7 @@ cancel_service_pipeline_deployment(Client, Input, Options)
 %% A component is an infrastructure extension for a service instance.
 %%
 %% For more information about components, see Proton components in the Proton
-%% Administrator Guide.
+%% User Guide.
 create_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_component(Client, Input, []).
@@ -452,7 +447,7 @@ create_component(Client, Input, Options)
 %% your IaC engine uses to provision resources.
 %%
 %% </li> </ul> For more information, see Environments and Provisioning
-%% methods in the Proton Administrator Guide.
+%% methods in the Proton User Guide.
 create_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment(Client, Input, []).
@@ -467,7 +462,7 @@ create_environment(Client, Input, Options)
 %% An environment account connection is a secure bi-directional connection
 %% between a management account and an environment account that maintains
 %% authorization and permissions. For more information, see Environment
-%% account connections in the Proton Administrator guide.
+%% account connections in the Proton User guide.
 create_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_environment_account_connection(Client, Input, []).
@@ -477,8 +472,7 @@ create_environment_account_connection(Client, Input, Options)
 
 %% @doc Create an environment template for Proton.
 %%
-%% For more information, see Environment Templates in the Proton
-%% Administrator Guide.
+%% For more information, see Environment Templates in the Proton User Guide.
 %%
 %% You can create an environment template in one of the two following ways:
 %%
@@ -491,7 +485,7 @@ create_environment_account_connection(Client, Input, Options)
 %% create an environment template for customer provisioned and managed
 %% infrastructure, include the `provisioning' parameter and set the value to
 %% `CUSTOMER_MANAGED'. For more information, see Register and publish an
-%% environment template in the Proton Administrator Guide.
+%% environment template in the Proton User Guide.
 %%
 %% </li> </ul>
 create_environment_template(Client, Input)
@@ -513,15 +507,16 @@ create_environment_template_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEnvironmentTemplateVersion">>, Input, Options).
 
-%% @doc Create and register a link to a repository that can be used with
-%% self-managed provisioning (infrastructure or pipelines) or for template
-%% sync configurations.
+%% @doc Create and register a link to a repository.
 %%
-%% When you create a repository link, Proton creates a service-linked role
-%% for you.
+%% Proton uses the link to repeatedly access the repository, to either push
+%% to it (self-managed provisioning) or pull from it (template sync). You can
+%% share a linked repository across multiple resources (like environments
+%% using self-managed provisioning, or synced templates). When you create a
+%% repository link, Proton creates a service-linked role for you.
 %%
 %% For more information, see Self-managed provisioning, Template bundles, and
-%% Template sync configurations in the Proton Administrator Guide.
+%% Template sync configurations in the Proton User Guide.
 create_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_repository(Client, Input, []).
@@ -533,8 +528,7 @@ create_repository(Client, Input, Options)
 %%
 %% An Proton service is an instantiation of a service template and often
 %% includes several service instances and pipeline. For more information, see
-%% Services in the Proton Administrator Guide and Services in the Proton User
-%% Guide.
+%% Services in the Proton User Guide.
 create_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service(Client, Input, []).
@@ -550,7 +544,7 @@ create_service(Client, Input, Options)
 %% template includes a service pipeline definition, they provide a link to
 %% their source code repository. Proton then deploys and manages the
 %% infrastructure defined by the selected service template. For more
-%% information, see Service Templates in the Proton Administrator Guide.
+%% information, see Proton templates in the Proton User Guide.
 create_service_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_service_template(Client, Input, []).
@@ -570,13 +564,17 @@ create_service_template_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateServiceTemplateVersion">>, Input, Options).
 
-%% @doc Set up a template to create new template versions automatically.
+%% @doc Set up a template to create new template versions automatically by
+%% tracking a linked repository.
 %%
-%% When a commit is pushed to your registered repository, Proton checks for
+%% A linked repository is a repository that has been registered with Proton.
+%% For more information, see `CreateRepository'.
+%%
+%% When a commit is pushed to your linked repository, Proton checks for
 %% changes to your repository template bundles. If it detects a template
 %% bundle change, a new major or minor version of its template is created, if
 %% the version doesn’t already exist. For more information, see Template sync
-%% configurations in the Proton Administrator Guide.
+%% configurations in the Proton User Guide.
 create_template_sync_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_template_sync_config(Client, Input, []).
@@ -587,7 +585,7 @@ create_template_sync_config(Client, Input, Options)
 %% @doc Delete an Proton component resource.
 %%
 %% For more information about components, see Proton components in the Proton
-%% Administrator Guide.
+%% User Guide.
 delete_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_component(Client, Input, []).
@@ -613,7 +611,7 @@ delete_environment(Client, Input, Options)
 %% connection.
 %%
 %% For more information, see Environment account connections in the Proton
-%% Administrator guide.
+%% User guide.
 delete_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment_account_connection(Client, Input, []).
@@ -665,7 +663,7 @@ delete_repository(Client, Input, Options)
 %% components attached to them.
 %%
 %% For more information about components, see Proton components in the Proton
-%% Administrator Guide.
+%% User Guide.
 delete_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service(Client, Input, []).
@@ -709,7 +707,7 @@ delete_template_sync_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTemplateSyncConfig">>, Input, Options).
 
-%% @doc Get detail data for the Proton pipeline service role.
+%% @doc Get detail data for Proton account-wide settings.
 get_account_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_account_settings(Client, Input, []).
@@ -720,7 +718,7 @@ get_account_settings(Client, Input, Options)
 %% @doc Get detailed data for a component.
 %%
 %% For more information about components, see Proton components in the Proton
-%% Administrator Guide.
+%% User Guide.
 get_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_component(Client, Input, []).
@@ -740,7 +738,7 @@ get_environment(Client, Input, Options)
 %% account connection.
 %%
 %% For more information, see Environment account connections in the Proton
-%% Administrator guide.
+%% User guide.
 get_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_environment_account_connection(Client, Input, []).
@@ -765,7 +763,7 @@ get_environment_template_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEnvironmentTemplateVersion">>, Input, Options).
 
-%% @doc Get detail data for a repository.
+%% @doc Get detail data for a linked repository.
 get_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository(Client, Input, []).
@@ -783,8 +781,7 @@ get_repository(Client, Input, Options)
 %% tags to control access to this action using Attribute-based access control
 %% (ABAC).
 %%
-%% For more information about ABAC, see ABAC in the Proton Administrator
-%% Guide.
+%% For more information about ABAC, see ABAC in the Proton User Guide.
 get_repository_sync_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_repository_sync_status(Client, Input, []).
@@ -846,7 +843,7 @@ get_template_sync_status(Client, Input, Options)
 %% @doc Get a list of component Infrastructure as Code (IaC) outputs.
 %%
 %% For more information about components, see Proton components in the Proton
-%% Administrator Guide.
+%% User Guide.
 list_component_outputs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_component_outputs(Client, Input, []).
@@ -857,7 +854,7 @@ list_component_outputs(Client, Input, Options)
 %% @doc List provisioned resources for a component with details.
 %%
 %% For more information about components, see Proton components in the Proton
-%% Administrator Guide.
+%% User Guide.
 list_component_provisioned_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_component_provisioned_resources(Client, Input, []).
@@ -871,7 +868,7 @@ list_component_provisioned_resources(Client, Input, Options)
 %% service instance.
 %%
 %% For more information about components, see Proton components in the Proton
-%% Administrator Guide.
+%% User Guide.
 list_components(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_components(Client, Input, []).
@@ -882,7 +879,7 @@ list_components(Client, Input, Options)
 %% @doc View a list of environment account connections.
 %%
 %% For more information, see Environment account connections in the Proton
-%% Administrator guide.
+%% User guide.
 list_environment_account_connections(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_environment_account_connections(Client, Input, []).
@@ -931,7 +928,7 @@ list_environments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEnvironments">>, Input, Options).
 
-%% @doc List repositories with detail data.
+%% @doc List linked repositories with detail data.
 list_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_repositories(Client, Input, []).
@@ -1013,8 +1010,8 @@ list_services(Client, Input, Options)
 
 %% @doc List tags for a resource.
 %%
-%% For more information, see Proton resources and tagging in the Proton
-%% Administrator Guide or Proton User Guide.
+%% For more information, see Proton resources and tagging in the Proton User
+%% Guide.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -1025,8 +1022,8 @@ list_tags_for_resource(Client, Input, Options)
 %% @doc Notify Proton of status changes to a provisioned resource when you
 %% use self-managed provisioning.
 %%
-%% For more information, see Self-managed provisioning in the Proton
-%% Administrator Guide.
+%% For more information, see Self-managed provisioning in the Proton User
+%% Guide.
 notify_resource_deployment_status_change(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_resource_deployment_status_change(Client, Input, []).
@@ -1044,7 +1041,7 @@ notify_resource_deployment_status_change(Client, Input, Options)
 %% environment.
 %%
 %% For more information, see Environment account connections in the Proton
-%% Administrator guide.
+%% User guide.
 reject_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     reject_environment_account_connection(Client, Input, []).
@@ -1057,8 +1054,8 @@ reject_environment_account_connection(Client, Input, Options)
 %% A tag is a key-value pair of metadata that you associate with an Proton
 %% resource.
 %%
-%% For more information, see Proton resources and tagging in the Proton
-%% Administrator Guide or Proton User Guide.
+%% For more information, see Proton resources and tagging in the Proton User
+%% Guide.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -1070,8 +1067,8 @@ tag_resource(Client, Input, Options)
 %%
 %% A tag is a key-value pair of metadata associated with an Proton resource.
 %%
-%% For more information, see Proton resources and tagging in the Proton
-%% Administrator Guide or Proton User Guide.
+%% For more information, see Proton resources and tagging in the Proton User
+%% Guide.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -1079,7 +1076,8 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc Update the Proton service pipeline role or repository settings.
+%% @doc Update Proton settings that are used for multiple services in the
+%% Amazon Web Services account.
 update_account_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_account_settings(Client, Input, []).
@@ -1096,7 +1094,7 @@ update_account_settings(Client, Input, Options)
 %% deployment status of a service instance attached to it, is `IN_PROGRESS'.
 %%
 %% For more information about components, see Proton components in the Proton
-%% Administrator Guide.
+%% User Guide.
 update_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_component(Client, Input, []).
@@ -1133,7 +1131,7 @@ update_component(Client, Input, Options)
 %% and `environmentAccountConnectionId' parameters.
 %%
 %% For more information, see Environments and Provisioning methods in the
-%% Proton Administrator Guide.
+%% Proton User Guide.
 %%
 %% There are four modes for updating an environment. The `deploymentType'
 %% field defines the mode.
@@ -1175,7 +1173,7 @@ update_environment(Client, Input, Options)
 %% to use a new IAM role.
 %%
 %% For more information, see Environment account connections in the Proton
-%% Administrator guide.
+%% User guide.
 update_environment_account_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment_account_connection(Client, Input, []).
@@ -1213,7 +1211,7 @@ update_environment_template_version(Client, Input, Options)
 %% attached component.
 %%
 %% For more information about components, see Proton components in the Proton
-%% Administrator Guide.
+%% User Guide.
 update_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service(Client, Input, []).
@@ -1230,7 +1228,7 @@ update_service(Client, Input, Options)
 %% deployment status of a component attached to it, is `IN_PROGRESS'.
 %%
 %% For more information about components, see Proton components in the Proton
-%% Administrator Guide.
+%% User Guide.
 update_service_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_service_instance(Client, Input, []).
@@ -1295,6 +1293,10 @@ update_service_template_version(Client, Input, Options)
 
 %% @doc Update template sync configuration parameters, except for the
 %% `templateName' and `templateType'.
+%%
+%% Repository details (branch, name, and provider) should be of a linked
+%% repository. A linked repository is a repository that has been registered
+%% with Proton. For more information, see `CreateRepository'.
 update_template_sync_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_template_sync_config(Client, Input, []).

@@ -3677,7 +3677,7 @@ update_project(Client, Input, Options)
     request(Client, <<"UpdateProject">>, Input, Options).
 
 %% @doc Update a model training job to request a new Debugger profiling
-%% configuration.
+%% configuration or to change warm pool retention length.
 update_training_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_training_job(Client, Input, []).
