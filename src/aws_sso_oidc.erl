@@ -1,28 +1,46 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Single Sign-On (SSO) OpenID Connect (OIDC) is a web service that
-%% enables a client (such as AWS CLI or a native application) to register
-%% with AWS SSO.
+%% @doc AWS IAM Identity Center (successor to AWS Single Sign-On) OpenID
+%% Connect (OIDC) is a web service that enables a client (such as AWS CLI or
+%% a native application) to register with IAM Identity Center.
 %%
 %% The service also enables the client to fetch the user’s access token upon
-%% successful authentication and authorization with AWS SSO. This service
-%% conforms with the OAuth 2.0 based implementation of the device
-%% authorization grant standard ([https://tools.ietf.org/html/rfc8628]).
+%% successful authentication and authorization with IAM Identity Center.
 %%
-%% For general information about AWS SSO, see What is AWS Single Sign-On? in
-%% the AWS SSO User Guide.
+%% Although AWS Single Sign-On was renamed, the `sso' and `identitystore' API
+%% namespaces will continue to retain their original name for backward
+%% compatibility purposes. For more information, see IAM Identity Center
+%% rename.
 %%
-%% This API reference guide describes the AWS SSO OIDC operations that you
-%% can call programatically and includes detailed information on data types
-%% and errors.
+%% Considerations for Using This Guide
 %%
-%% AWS provides SDKs that consist of libraries and sample code for various
-%% programming languages and platforms such as Java, Ruby, .Net, iOS, and
-%% Android. The SDKs provide a convenient way to create programmatic access
-%% to AWS SSO and other AWS services. For more information about the AWS
-%% SDKs, including how to download and install them, see Tools for Amazon Web
-%% Services.
+%% Before you begin using this guide, we recommend that you first review the
+%% following important information about how the IAM Identity Center OIDC
+%% service works.
+%%
+%% <ul> <li> The IAM Identity Center OIDC service currently implements only
+%% the portions of the OAuth 2.0 Device Authorization Grant standard
+%% ([https://tools.ietf.org/html/rfc8628]) that are necessary to enable
+%% single sign-on authentication with the AWS CLI. Support for other OIDC
+%% flows frequently needed for native applications, such as Authorization
+%% Code Flow (+ PKCE), will be addressed in future releases.
+%%
+%% </li> <li> The service emits only OIDC access tokens, such that obtaining
+%% a new token (For example, token refresh) requires explicit user
+%% re-authentication.
+%%
+%% </li> <li> The access tokens provided by this service grant access to all
+%% AWS account entitlements assigned to an IAM Identity Center user, not just
+%% a particular application.
+%%
+%% </li> <li> The documentation in this guide does not describe the mechanism
+%% to convert the access token into AWS Auth (“sigv4”) credentials for use
+%% with IAM-protected AWS service endpoints. For more information, see
+%% GetRoleCredentials in the IAM Identity Center Portal API Reference Guide.
+%%
+%% </li> </ul> For general information about IAM Identity Center, see What is
+%% IAM Identity Center? in the IAM Identity Center User Guide.
 -module(aws_sso_oidc).
 
 -export([create_token/2,
@@ -64,7 +82,7 @@ create_token(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Registers a client with AWS SSO.
+%% @doc Registers a client with IAM Identity Center.
 %%
 %% This allows clients to initiate device authorization. The output should be
 %% persisted for reuse through many authentication requests.

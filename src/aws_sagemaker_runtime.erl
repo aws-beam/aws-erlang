@@ -52,6 +52,7 @@ invoke_endpoint(Client, EndpointName, Input0, Options0) ->
                        {<<"Accept">>, <<"Accept">>},
                        {<<"Content-Type">>, <<"ContentType">>},
                        {<<"X-Amzn-SageMaker-Custom-Attributes">>, <<"CustomAttributes">>},
+                       {<<"X-Amzn-SageMaker-Enable-Explanations">>, <<"EnableExplanations">>},
                        {<<"X-Amzn-SageMaker-Inference-Id">>, <<"InferenceId">>},
                        {<<"X-Amzn-SageMaker-Target-Container-Hostname">>, <<"TargetContainerHostname">>},
                        {<<"X-Amzn-SageMaker-Target-Model">>, <<"TargetModel">>},
