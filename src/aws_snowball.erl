@@ -138,7 +138,7 @@ create_cluster(Client, Input, Options)
 %% more information about Region availability, see Amazon Web Services
 %% Regional Services.
 %%
-%% == Snow Family Devices and their capacities. ==
+%% == Snow Family devices and their capacities. ==
 %%
 %% <ul> <li> Snow Family device type: SNC1_SSD
 %%
@@ -186,6 +186,14 @@ create_cluster(Client, Input, Options)
 %% <ul> <li> Capacity: T100
 %%
 %% </li> <li> Description: Snowball Edge Storage Optimized with EC2 Compute
+%%
+%% </li> </ul>
+%%
+%% </li> <li> Device type: V3_5C
+%%
+%% <ul> <li> Capacity: T32
+%%
+%% </li> <li> Description: Snowball Edge Compute Optimized without GPU
 %%
 %% </li> </ul>
 %%
@@ -295,9 +303,12 @@ describe_return_shipping_label(Client, Input, Options)
 %% you'll have to make another call to the `GetJobManifest' action.
 %%
 %% The manifest is an encrypted file that you can download after your job
-%% enters the `WithCustomer' status. The manifest is decrypted by using the
-%% `UnlockCode' code value, when you pass both values to the Snow device
-%% through the Snowball client when the client is started for the first time.
+%% enters the `WithCustomer' status. This is the only valid status for
+%% calling this API as the manifest and `UnlockCode' code value are used for
+%% securing your device and should only be used when you have the device. The
+%% manifest is decrypted by using the `UnlockCode' code value, when you pass
+%% both values to the Snow device through the Snowball client when the client
+%% is started for the first time.
 %%
 %% As a best practice, we recommend that you don't save a copy of an
 %% `UnlockCode' value in the same location as the manifest file for that job.
@@ -321,7 +332,10 @@ get_job_manifest(Client, Input, Options)
 %% The `UnlockCode' value is a 29-character code with 25 alphanumeric
 %% characters and 4 hyphens. This code is used to decrypt the manifest file
 %% when it is passed along with the manifest to the Snow device through the
-%% Snowball client when the client is started for the first time.
+%% Snowball client when the client is started for the first time. The only
+%% valid status for calling this API is `WithCustomer' as the manifest and
+%% `Unlock' code values are used for securing your device and should only be
+%% used when you have the device.
 %%
 %% As a best practice, we recommend that you don't save a copy of the
 %% `UnlockCode' in the same location as the manifest file for that job.
