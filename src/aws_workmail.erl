@@ -1,8 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon WorkMail is a secure, managed business email and calendaring
-%% service with support for existing desktop and mobile email clients.
+%% @doc WorkMail is a secure, managed business email and calendaring service
+%% with support for existing desktop and mobile email clients.
 %%
 %% You can access your email, contacts, and calendars using Microsoft
 %% Outlook, your browser, or other native iOS and Android email applications.
@@ -37,6 +37,8 @@
          associate_delegate_to_resource/3,
          associate_member_to_group/2,
          associate_member_to_group/3,
+         assume_impersonation_role/2,
+         assume_impersonation_role/3,
          cancel_mailbox_export_job/2,
          cancel_mailbox_export_job/3,
          create_alias/2,
@@ -45,6 +47,8 @@
          create_availability_configuration/3,
          create_group/2,
          create_group/3,
+         create_impersonation_role/2,
+         create_impersonation_role/3,
          create_mobile_device_access_rule/2,
          create_mobile_device_access_rule/3,
          create_organization/2,
@@ -63,6 +67,8 @@
          delete_email_monitoring_configuration/3,
          delete_group/2,
          delete_group/3,
+         delete_impersonation_role/2,
+         delete_impersonation_role/3,
          delete_mailbox_permissions/2,
          delete_mailbox_permissions/3,
          delete_mobile_device_access_override/2,
@@ -103,6 +109,10 @@
          get_access_control_effect/3,
          get_default_retention_policy/2,
          get_default_retention_policy/3,
+         get_impersonation_role/2,
+         get_impersonation_role/3,
+         get_impersonation_role_effect/2,
+         get_impersonation_role_effect/3,
          get_mail_domain/2,
          get_mail_domain/3,
          get_mailbox_details/2,
@@ -121,6 +131,8 @@
          list_group_members/3,
          list_groups/2,
          list_groups/3,
+         list_impersonation_roles/2,
+         list_impersonation_roles/3,
          list_mail_domains/2,
          list_mail_domains/3,
          list_mailbox_export_jobs/2,
@@ -171,6 +183,8 @@
          update_availability_configuration/3,
          update_default_mail_domain/2,
          update_default_mail_domain/3,
+         update_impersonation_role/2,
+         update_impersonation_role/3,
          update_mailbox_quota/2,
          update_mailbox_quota/3,
          update_mobile_device_access_rule/2,
@@ -202,6 +216,17 @@ associate_member_to_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateMemberToGroup">>, Input, Options).
 
+%% @doc Assumes an impersonation role for the given WorkMail organization.
+%%
+%% This method returns an authentication token you can use to make
+%% impersonated calls.
+assume_impersonation_role(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    assume_impersonation_role(Client, Input, []).
+assume_impersonation_role(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssumeImpersonationRole">>, Input, Options).
+
 %% @doc Cancels a mailbox export job.
 %%
 %% If the mailbox export job is near completion, it might not be possible to
@@ -213,7 +238,7 @@ cancel_mailbox_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelMailboxExportJob">>, Input, Options).
 
-%% @doc Adds an alias to the set of a given member (user or group) of Amazon
+%% @doc Adds an alias to the set of a given member (user or group) of
 %% WorkMail.
 create_alias(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -231,7 +256,7 @@ create_availability_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAvailabilityConfiguration">>, Input, Options).
 
-%% @doc Creates a group that can be used in Amazon WorkMail by calling the
+%% @doc Creates a group that can be used in WorkMail by calling the
 %% `RegisterToWorkMail' operation.
 create_group(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -240,8 +265,21 @@ create_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGroup">>, Input, Options).
 
-%% @doc Creates a new mobile device access rule for the specified Amazon
-%% WorkMail organization.
+%% @doc Creates an impersonation role for the given WorkMail organization.
+%%
+%% Idempotency ensures that an API request completes no more than one time.
+%% With an idempotent request, if the original request completes
+%% successfully, any subsequent retries also complete successfully without
+%% performing any further actions.
+create_impersonation_role(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_impersonation_role(Client, Input, []).
+create_impersonation_role(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateImpersonationRole">>, Input, Options).
+
+%% @doc Creates a new mobile device access rule for the specified WorkMail
+%% organization.
 create_mobile_device_access_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_mobile_device_access_rule(Client, Input, []).
@@ -249,26 +287,25 @@ create_mobile_device_access_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateMobileDeviceAccessRule">>, Input, Options).
 
-%% @doc Creates a new Amazon WorkMail organization.
+%% @doc Creates a new WorkMail organization.
 %%
 %% Optionally, you can choose to associate an existing AWS Directory Service
 %% directory with your organization. If an AWS Directory Service directory ID
 %% is specified, the organization alias must match the directory alias. If
 %% you choose not to associate an existing directory with your organization,
-%% then we create a new Amazon WorkMail directory for you. For more
-%% information, see Adding an organization in the Amazon WorkMail
-%% Administrator Guide.
+%% then we create a new WorkMail directory for you. For more information, see
+%% Adding an organization in the WorkMail Administrator Guide.
 %%
-%% You can associate multiple email domains with an organization, then set
-%% your default email domain from the Amazon WorkMail console. You can also
+%% You can associate multiple email domains with an organization, then choose
+%% your default email domain from the WorkMail console. You can also
 %% associate a domain that is managed in an Amazon Route 53 public hosted
 %% zone. For more information, see Adding a domain and Choosing the default
-%% domain in the Amazon WorkMail Administrator Guide.
+%% domain in the WorkMail Administrator Guide.
 %%
-%% Optionally, you can use a customer managed master key from AWS Key
-%% Management Service (AWS KMS) to encrypt email for your organization. If
-%% you don't associate an AWS KMS key, Amazon WorkMail creates a default AWS
-%% managed master key for you.
+%% Optionally, you can use a customer managed key from AWS Key Management
+%% Service (AWS KMS) to encrypt email for your organization. If you don't
+%% associate an AWS KMS key, WorkMail creates a default, AWS managed key for
+%% you.
 create_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_organization(Client, Input, []).
@@ -276,7 +313,7 @@ create_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOrganization">>, Input, Options).
 
-%% @doc Creates a new Amazon WorkMail resource.
+%% @doc Creates a new WorkMail resource.
 create_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_resource(Client, Input, []).
@@ -284,7 +321,7 @@ create_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateResource">>, Input, Options).
 
-%% @doc Creates a user who can be used in Amazon WorkMail by calling the
+%% @doc Creates a user who can be used in WorkMail by calling the
 %% `RegisterToWorkMail' operation.
 create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -333,13 +370,21 @@ delete_email_monitoring_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEmailMonitoringConfiguration">>, Input, Options).
 
-%% @doc Deletes a group from Amazon WorkMail.
+%% @doc Deletes a group from WorkMail.
 delete_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_group(Client, Input, []).
 delete_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteGroup">>, Input, Options).
+
+%% @doc Deletes an impersonation role for the given WorkMail organization.
+delete_impersonation_role(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_impersonation_role(Client, Input, []).
+delete_impersonation_role(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteImpersonationRole">>, Input, Options).
 
 %% @doc Deletes permissions granted to a member (user or group).
 delete_mailbox_permissions(Client, Input)
@@ -362,7 +407,7 @@ delete_mobile_device_access_override(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMobileDeviceAccessOverride">>, Input, Options).
 
-%% @doc Deletes a mobile device access rule for the specified Amazon WorkMail
+%% @doc Deletes a mobile device access rule for the specified WorkMail
 %% organization.
 %%
 %% Deleting already deleted and non-existing rules does not produce an error.
@@ -375,12 +420,12 @@ delete_mobile_device_access_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMobileDeviceAccessRule">>, Input, Options).
 
-%% @doc Deletes an Amazon WorkMail organization and all underlying AWS
-%% resources managed by Amazon WorkMail as part of the organization.
+%% @doc Deletes an WorkMail organization and all underlying AWS resources
+%% managed by WorkMail as part of the organization.
 %%
 %% You can choose whether to delete the associated directory. For more
-%% information, see Removing an organization in the Amazon WorkMail
-%% Administrator Guide.
+%% information, see Removing an organization in the WorkMail Administrator
+%% Guide.
 delete_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_organization(Client, Input, []).
@@ -405,7 +450,7 @@ delete_retention_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRetentionPolicy">>, Input, Options).
 
-%% @doc Deletes a user from Amazon WorkMail and all subsequent systems.
+%% @doc Deletes a user from WorkMail and all subsequent systems.
 %%
 %% Before you can delete a user, the user state must be `DISABLED'. Use the
 %% `DescribeUser' action to confirm the user state.
@@ -419,7 +464,7 @@ delete_user(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteUser">>, Input, Options).
 
-%% @doc Mark a user, group, or resource as no longer used in Amazon WorkMail.
+%% @doc Mark a user, group, or resource as no longer used in WorkMail.
 %%
 %% This action disassociates the mailbox and schedules it for clean-up.
 %% WorkMail keeps mailboxes for 30 days before they are permanently removed.
@@ -431,8 +476,8 @@ deregister_from_work_mail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterFromWorkMail">>, Input, Options).
 
-%% @doc Removes a domain from Amazon WorkMail, stops email routing to
-%% WorkMail, and removes the authorization allowing WorkMail use.
+%% @doc Removes a domain from WorkMail, stops email routing to WorkMail, and
+%% removes the authorization allowing WorkMail use.
 %%
 %% SES keeps the domain because other applications may use it. You must first
 %% remove any email address used by WorkMail entities before you remove the
@@ -519,7 +564,11 @@ disassociate_member_from_group(Client, Input, Options)
     request(Client, <<"DisassociateMemberFromGroup">>, Input, Options).
 
 %% @doc Gets the effects of an organization's access control rules as they
-%% apply to a specified IPv4 address, access protocol action, or user ID.
+%% apply to a specified IPv4 address, access protocol action, and user ID or
+%% impersonation role ID.
+%%
+%% You must provide either the user ID or impersonation role ID.
+%% Impersonation role ID can only be used with Action EWS.
 get_access_control_effect(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_access_control_effect(Client, Input, []).
@@ -535,6 +584,24 @@ get_default_retention_policy(Client, Input)
 get_default_retention_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDefaultRetentionPolicy">>, Input, Options).
+
+%% @doc Gets the impersonation role details for the given WorkMail
+%% organization.
+get_impersonation_role(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_impersonation_role(Client, Input, []).
+get_impersonation_role(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetImpersonationRole">>, Input, Options).
+
+%% @doc Tests whether the given impersonation role can impersonate a target
+%% user.
+get_impersonation_role_effect(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_impersonation_role_effect(Client, Input, []).
+get_impersonation_role_effect(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetImpersonationRoleEffect">>, Input, Options).
 
 %% @doc Gets details for a mail domain, including domain records required to
 %% configure your domain with recommended security.
@@ -558,7 +625,7 @@ get_mailbox_details(Client, Input, Options)
 %% attributes of a sample access event.
 %%
 %% Use this method to test the effects of the current set of mobile device
-%% access rules for the Amazon WorkMail organization for a particular user's
+%% access rules for the WorkMail organization for a particular user's
 %% attributes.
 get_mobile_device_access_effect(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -620,7 +687,16 @@ list_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroups">>, Input, Options).
 
-%% @doc Lists the mail domains in a given Amazon WorkMail organization.
+%% @doc Lists all the impersonation roles for the given WorkMail
+%% organization.
+list_impersonation_roles(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_impersonation_roles(Client, Input, []).
+list_impersonation_roles(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListImpersonationRoles">>, Input, Options).
+
+%% @doc Lists the mail domains in a given WorkMail organization.
 list_mail_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mail_domains(Client, Input, []).
@@ -655,8 +731,8 @@ list_mobile_device_access_overrides(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMobileDeviceAccessOverrides">>, Input, Options).
 
-%% @doc Lists the mobile device access rules for the specified Amazon
-%% WorkMail organization.
+%% @doc Lists the mobile device access rules for the specified WorkMail
+%% organization.
 list_mobile_device_access_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mobile_device_access_rules(Client, Input, []).
@@ -691,7 +767,7 @@ list_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResources">>, Input, Options).
 
-%% @doc Lists the tags applied to an Amazon WorkMail organization resource.
+%% @doc Lists the tags applied to an WorkMail organization resource.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -710,8 +786,9 @@ list_users(Client, Input, Options)
 %% @doc Adds a new access control rule for the specified organization.
 %%
 %% The rule allows or denies access to the organization for the specified
-%% IPv4 addresses, access protocol actions, and user IDs. Adding a new rule
-%% with the same name as an existing rule replaces the older rule.
+%% IPv4 addresses, access protocol actions, user IDs and impersonation IDs.
+%% Adding a new rule with the same name as an existing rule replaces the
+%% older rule.
 put_access_control_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_access_control_rule(Client, Input, []).
@@ -763,8 +840,8 @@ put_retention_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRetentionPolicy">>, Input, Options).
 
-%% @doc Registers a new domain in Amazon WorkMail and SES, and configures it
-%% for use by WorkMail.
+%% @doc Registers a new domain in WorkMail and SES, and configures it for use
+%% by WorkMail.
 %%
 %% Emails received by SES for this domain are routed to the specified
 %% WorkMail organization, and WorkMail has permanent permission to use the
@@ -777,7 +854,7 @@ register_mail_domain(Client, Input, Options)
     request(Client, <<"RegisterMailDomain">>, Input, Options).
 
 %% @doc Registers an existing and disabled user, group, or resource for
-%% Amazon WorkMail use by associating a mailbox and calendaring capabilities.
+%% WorkMail use by associating a mailbox and calendaring capabilities.
 %%
 %% It performs no change if the user, group, or resource is enabled and fails
 %% if the user, group, or resource is deleted. This operation results in the
@@ -806,7 +883,7 @@ reset_password(Client, Input, Options)
 %% calendar items from the specified mailbox to the specified Amazon Simple
 %% Storage Service (Amazon S3) bucket.
 %%
-%% For more information, see Exporting mailbox content in the Amazon WorkMail
+%% For more information, see Exporting mailbox content in the WorkMail
 %% Administrator Guide.
 start_mailbox_export_job(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -815,8 +892,8 @@ start_mailbox_export_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMailboxExportJob">>, Input, Options).
 
-%% @doc Applies the specified tags to the specified Amazon WorkMail
-%% organization resource.
+%% @doc Applies the specified tags to the specified WorkMailorganization
+%% resource.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -844,8 +921,8 @@ test_availability_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestAvailabilityConfiguration">>, Input, Options).
 
-%% @doc Untags the specified tags from the specified Amazon WorkMail
-%% organization resource.
+%% @doc Untags the specified tags from the specified WorkMail organization
+%% resource.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -874,6 +951,14 @@ update_default_mail_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDefaultMailDomain">>, Input, Options).
 
+%% @doc Updates an impersonation role for the given WorkMail organization.
+update_impersonation_role(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_impersonation_role(Client, Input, []).
+update_impersonation_role(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateImpersonationRole">>, Input, Options).
+
 %% @doc Updates a user's current mailbox quota for a specified organization
 %% and user.
 update_mailbox_quota(Client, Input)
@@ -883,7 +968,7 @@ update_mailbox_quota(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMailboxQuota">>, Input, Options).
 
-%% @doc Updates a mobile device access rule for the specified Amazon WorkMail
+%% @doc Updates a mobile device access rule for the specified WorkMail
 %% organization.
 update_mobile_device_access_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
