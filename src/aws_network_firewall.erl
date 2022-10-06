@@ -28,7 +28,7 @@
 %% perimeter of your VPC. This includes filtering traffic going to and coming
 %% from an internet gateway, NAT gateway, or over VPN or Direct Connect.
 %% Network Firewall uses rules that are compatible with Suricata, a free,
-%% open source intrusion detection system (IDS) engine. Network Firewall
+%% open source network analysis and threat detection engine. Network Firewall
 %% supports Suricata version 5.0.2. For information about Suricata, see the
 %% Suricata website.
 %%

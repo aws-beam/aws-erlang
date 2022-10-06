@@ -358,6 +358,8 @@
          update_dev_endpoint/3,
          update_job/2,
          update_job/3,
+         update_job_from_source_control/2,
+         update_job_from_source_control/3,
          update_ml_transform/2,
          update_ml_transform/3,
          update_partition/2,
@@ -366,6 +368,8 @@
          update_registry/3,
          update_schema/2,
          update_schema/3,
+         update_source_control_from_job/2,
+         update_source_control_from_job/3,
          update_table/2,
          update_table/3,
          update_trigger/2,
@@ -2223,6 +2227,20 @@ update_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateJob">>, Input, Options).
 
+%% @doc Synchronizes a job from the source control repository.
+%%
+%% This operation takes the job artifacts that are located in the remote
+%% repository and updates the Glue internal stores with these artifacts.
+%%
+%% This API supports optional parameters which take in the repository
+%% information.
+update_job_from_source_control(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_job_from_source_control(Client, Input, []).
+update_job_from_source_control(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateJobFromSourceControl">>, Input, Options).
+
 %% @doc Updates an existing machine learning transform.
 %%
 %% Call this operation to tune the algorithm parameters to achieve better
@@ -2279,6 +2297,20 @@ update_schema(Client, Input)
 update_schema(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSchema">>, Input, Options).
+
+%% @doc Synchronizes a job to the source control repository.
+%%
+%% This operation takes the job artifacts from the Glue internal stores and
+%% makes a commit to the remote repository that is configured on the job.
+%%
+%% This API supports optional parameters which take in the repository
+%% information.
+update_source_control_from_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_source_control_from_job(Client, Input, []).
+update_source_control_from_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateSourceControlFromJob">>, Input, Options).
 
 %% @doc Updates a metadata table in the Data Catalog.
 update_table(Client, Input)

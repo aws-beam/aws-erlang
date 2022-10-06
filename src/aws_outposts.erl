@@ -83,7 +83,7 @@
 %% API
 %%====================================================================
 
-%% @doc Cancels an order for an Outpost.
+%% @doc Cancels the specified order for an Outpost.
 cancel_order(Client, OrderId, Input) ->
     cancel_order(Client, OrderId, Input, []).
 cancel_order(Client, OrderId, Input0, Options0) ->
@@ -131,7 +131,7 @@ create_order(Client, Input0, Options0) ->
 
 %% @doc Creates an Outpost.
 %%
-%% You can specify `AvailabilityZone' or `AvailabilityZoneId'.
+%% You can specify either an Availability one or an AZ ID.
 create_outpost(Client, Input) ->
     create_outpost(Client, Input, []).
 create_outpost(Client, Input0, Options0) ->
@@ -177,7 +177,7 @@ create_site(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the Outpost.
+%% @doc Deletes the specified Outpost.
 delete_outpost(Client, OutpostId, Input) ->
     delete_outpost(Client, OutpostId, Input, []).
 delete_outpost(Client, OutpostId, Input0, Options0) ->
@@ -200,7 +200,7 @@ delete_outpost(Client, OutpostId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the site.
+%% @doc Deletes the specified site.
 delete_site(Client, SiteId, Input) ->
     delete_site(Client, SiteId, Input, []).
 delete_site(Client, SiteId, Input0, Options0) ->
@@ -223,7 +223,7 @@ delete_site(Client, SiteId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets information about a catalog item.
+%% @doc Gets information about the specified catalog item.
 get_catalog_item(Client, CatalogItemId)
   when is_map(Client) ->
     get_catalog_item(Client, CatalogItemId, #{}, #{}).
@@ -248,7 +248,7 @@ get_catalog_item(Client, CatalogItemId, QueryMap, HeadersMap, Options0)
 
 %% @doc Amazon Web Services uses this action to install Outpost servers.
 %%
-%% Gets information about a specified connection.
+%% Gets information about the specified connection.
 %%
 %% Use CloudTrail to monitor this action or Amazon Web Services managed
 %% policy for Amazon Web Services Outposts to secure it. For more
@@ -278,7 +278,7 @@ get_connection(Client, ConnectionId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets an order.
+%% @doc Gets information about the specified order.
 get_order(Client, OrderId)
   when is_map(Client) ->
     get_order(Client, OrderId, #{}, #{}).
@@ -375,7 +375,7 @@ get_site(Client, SiteId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets the site address.
+%% @doc Gets the site address of the specified site.
 get_site_address(Client, SiteId, AddressType)
   when is_map(Client) ->
     get_site_address(Client, SiteId, AddressType, #{}, #{}).
@@ -402,11 +402,13 @@ get_site_address(Client, SiteId, AddressType, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the hardware assets in an Outpost.
+%% @doc Lists the hardware assets for the specified Outpost.
 %%
-%% If you are using Dedicated Hosts on Amazon Web Services Outposts, you can
-%% filter your request by host ID to return a list of hardware assets that
-%% allocate resources for Dedicated Hosts.
+%% Use filters to return specific results. If you specify multiple filters,
+%% the results include only the resources that match all of the specified
+%% filters. For a filter where you can specify multiple values, the results
+%% include items that match any of the values that you specify for the
+%% filter.
 list_assets(Client, OutpostIdentifier)
   when is_map(Client) ->
     list_assets(Client, OutpostIdentifier, #{}, #{}).
@@ -429,7 +431,8 @@ list_assets(Client, OutpostIdentifier, QueryMap, HeadersMap, Options0)
       [
         {<<"HostIdFilter">>, maps:get(<<"HostIdFilter">>, QueryMap, undefined)},
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
-        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"StatusFilter">>, maps:get(<<"StatusFilter">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -437,11 +440,11 @@ list_assets(Client, OutpostIdentifier, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the items in the catalog.
 %%
-%% Add filters to your request to return a more specific list of results. Use
-%% filters to match an item class, storage option, or EC2 family.
-%%
-%% If you specify multiple filters, the filters are joined with an `AND', and
-%% the request returns only results that match all of the specified filters.
+%% Use filters to return specific results. If you specify multiple filters,
+%% the results include only the resources that match all of the specified
+%% filters. For a filter where you can specify multiple values, the results
+%% include items that match any of the values that you specify for the
+%% filter.
 list_catalog_items(Client)
   when is_map(Client) ->
     list_catalog_items(Client, #{}, #{}).
@@ -473,9 +476,6 @@ list_catalog_items(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the Outpost orders for your Amazon Web Services account.
-%%
-%% You can filter your request by Outpost to return a more specific list of
-%% results.
 list_orders(Client)
   when is_map(Client) ->
     list_orders(Client, #{}, #{}).
@@ -506,12 +506,11 @@ list_orders(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the Outposts for your Amazon Web Services account.
 %%
-%% Add filters to your request to return a more specific list of results. Use
-%% filters to match an Outpost lifecycle status, Availability Zone
-%% (`us-east-1a'), and AZ ID (`use1-az1').
-%%
-%% If you specify multiple filters, the filters are joined with an `AND', and
-%% the request returns only results that match all of the specified filters.
+%% Use filters to return specific results. If you specify multiple filters,
+%% the results include only the resources that match all of the specified
+%% filters. For a filter where you can specify multiple values, the results
+%% include items that match any of the values that you specify for the
+%% filter.
 list_outposts(Client)
   when is_map(Client) ->
     list_outposts(Client, #{}, #{}).
@@ -544,12 +543,13 @@ list_outposts(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the Outpost sites for your Amazon Web Services account.
 %%
-%% Add operating address filters to your request to return a more specific
-%% list of results. Use filters to match site city, country code, or
-%% state/region of the operating address.
+%% Use filters to return specific results.
 %%
-%% If you specify multiple filters, the filters are joined with an `AND', and
-%% the request returns only results that match all of the specified filters.
+%% Use filters to return specific results. If you specify multiple filters,
+%% the results include only the resources that match all of the specified
+%% filters. For a filter where you can specify multiple values, the results
+%% include items that match any of the values that you specify for the
+%% filter.
 list_sites(Client)
   when is_map(Client) ->
     list_sites(Client, #{}, #{}).
@@ -705,7 +705,7 @@ update_outpost(Client, OutpostId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the site.
+%% @doc Updates the specified site.
 update_site(Client, SiteId, Input) ->
     update_site(Client, SiteId, Input, []).
 update_site(Client, SiteId, Input0, Options0) ->
@@ -728,10 +728,10 @@ update_site(Client, SiteId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the site address.
+%% @doc Updates the address of the specified site.
 %%
-%% To update a site address with an order `IN_PROGRESS', you must wait for
-%% the order to complete or cancel the order.
+%% You can't update a site address if there is an order in progress. You must
+%% wait for the order to complete or cancel the order.
 %%
 %% You can update the operating address before you place an order at the
 %% site, or after all Outposts that belong to the site have been deactivated.
