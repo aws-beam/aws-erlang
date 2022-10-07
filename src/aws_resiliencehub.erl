@@ -133,12 +133,12 @@ add_draft_app_version_resource_mappings(Client, Input0, Options0) ->
 %% provide an application name, resources from one or more–up to
 %% five–CloudFormation stacks, and an appropriate resiliency policy.
 %%
-%% <p>After you create a Resilience Hub application, you publish it so that
-%% you can run a resiliency assessment on it. You can then use
-%% recommendations from the assessment to improve resiliency by running
-%% another assessment, comparing results, and then iterating the process
-%% until you achieve your goals for recovery time objective (RTO) and
-%% recovery point objective (RPO).</p>
+%% After you create a Resilience Hub application, you publish it so that you
+%% can run a resiliency assessment on it. You can then use recommendations
+%% from the assessment to improve resiliency by running another assessment,
+%% comparing results, and then iterating the process until you achieve your
+%% goals for recovery time objective (RTO) and recovery point objective
+%% (RPO).
 create_app(Client, Input) ->
     create_app(Client, Input, []).
 create_app(Client, Input0, Options0) ->
