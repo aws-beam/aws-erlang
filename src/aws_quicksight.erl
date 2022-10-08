@@ -3235,7 +3235,7 @@ update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNum
 %% @doc Updates a dataset.
 %%
 %% This operation doesn't support datasets that include uploaded files as a
-%% source.
+%% source. Partial updates are not supported by this operation.
 update_data_set(Client, AwsAccountId, DataSetId, Input) ->
     update_data_set(Client, AwsAccountId, DataSetId, Input, []).
 update_data_set(Client, AwsAccountId, DataSetId, Input0, Options0) ->

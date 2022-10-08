@@ -549,7 +549,7 @@ remove_tags(Client, Input, Options)
     request(Client, <<"RemoveTags">>, Input, Options).
 
 %% @doc Sets the type of IP addresses used by the subnets of the specified
-%% Application Load Balancer or Network Load Balancer.
+%% load balancer.
 set_ip_address_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_ip_address_type(Client, Input, []).
