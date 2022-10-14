@@ -832,9 +832,8 @@ delete_instance_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInstanceProfile">>, Input, Options).
 
-%% @doc Deletes the password for the specified IAM user, which terminates the
-%% user's ability to access Amazon Web Services services through the Amazon
-%% Web Services Management Console.
+%% @doc Deletes the password for the specified IAM user, For more
+%% information, see Managing passwords for IAM users.
 %%
 %% You can use the CLI, the Amazon Web Services API, or the Users page in the
 %% IAM console to delete a password for any IAM user. You can use

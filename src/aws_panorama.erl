@@ -90,6 +90,8 @@
          register_package_version/6,
          remove_application_instance/3,
          remove_application_instance/4,
+         signal_application_instance_node_instances/3,
+         signal_application_instance_node_instances/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -127,6 +129,8 @@ create_application_instance(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a job to run on one or more devices.
+%%
+%% A job can update a device's software or reboot it.
 create_job_for_devices(Client, Input) ->
     create_job_for_devices(Client, Input, []).
 create_job_for_devices(Client, Input0, Options0) ->
@@ -855,6 +859,29 @@ remove_application_instance(Client, ApplicationInstanceId, Input) ->
 remove_application_instance(Client, ApplicationInstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/application-instances/", aws_util:encode_uri(ApplicationInstanceId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Signal camera nodes to stop or resume.
+signal_application_instance_node_instances(Client, ApplicationInstanceId, Input) ->
+    signal_application_instance_node_instances(Client, ApplicationInstanceId, Input, []).
+signal_application_instance_node_instances(Client, ApplicationInstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/application-instances/", aws_util:encode_uri(ApplicationInstanceId), "/node-signals"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

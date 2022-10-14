@@ -1,8 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Provides translation between one source language and another of the
-%% same set of languages.
+%% @doc Provides language translation for input text in the source language
+%% to the specified target language.
 -module(aws_translate).
 
 -export([create_parallel_data/2,
@@ -138,7 +138,9 @@ list_parallel_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListParallelData">>, Input, Options).
 
-
+%% @doc Lists all tags associated with a given Amazon Translate resource.
+%%
+%% For more information, see Tagging your resources.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -164,8 +166,12 @@ list_text_translation_jobs(Client, Input, Options)
 
 %% @doc Starts an asynchronous batch translation job.
 %%
-%% Batch translation jobs can be used to translate large volumes of text
-%% across multiple documents at once. For more information, see `async'.
+%% Use batch translation jobs to translate large volumes of text across
+%% multiple documents at once. For batch translation, the input documents
+%% must share the same source language. You can specify one or more target
+%% languages. Batch translation translates each input document into each of
+%% the target languages. For more information, see Asynchronous batch
+%% processing
 %%
 %% Batch translation jobs can be described with the
 %% `DescribeTextTranslationJob' operation, listed with the
@@ -199,7 +205,10 @@ stop_text_translation_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopTextTranslationJob">>, Input, Options).
 
-
+%% @doc Associates a specific tag with a resource.
+%%
+%% A tag is a key-value pair that adds as a metadata to a resource. For more
+%% information, see Tagging your resources.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -210,8 +219,8 @@ tag_resource(Client, Input, Options)
 %% @doc Translates input text from the source language to the target
 %% language.
 %%
-%% For a list of available languages and language codes, see
-%% `what-is-languages'.
+%% For a list of available languages and language codes, see Supported
+%% languages.
 translate_text(Client, Input)
   when is_map(Client), is_map(Input) ->
     translate_text(Client, Input, []).
@@ -219,7 +228,9 @@ translate_text(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TranslateText">>, Input, Options).
 
-
+%% @doc Removes a specific tag associated with an Amazon Translate resource.
+%%
+%% For more information, see Tagging your resources.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).

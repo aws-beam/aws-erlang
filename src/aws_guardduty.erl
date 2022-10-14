@@ -2,9 +2,9 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon GuardDuty is a continuous security monitoring service that
-%% analyzes and processes the following data sources: VPC Flow Logs, AWS
-%% CloudTrail management event logs, CloudTrail S3 data event logs, EKS audit
-%% logs, and DNS logs.
+%% analyzes and processes the following data sources: VPC flow logs, Amazon
+%% Web Services CloudTrail management event logs, CloudTrail S3 data event
+%% logs, EKS audit logs, and DNS logs.
 %%
 %% It uses threat intelligence feeds (such as lists of malicious IPs and
 %% domains) and machine learning to identify unexpected, potentially
@@ -644,6 +644,9 @@ delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options0) 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of malware scans.
+%%
+%% Each member account can view the malware scans for their own accounts. An
+%% administrator can view the malware scans for all the member accounts.
 describe_malware_scans(Client, DetectorId, Input) ->
     describe_malware_scans(Client, DetectorId, Input, []).
 describe_malware_scans(Client, DetectorId, Input0, Options0) ->
@@ -786,8 +789,8 @@ disassociate_from_master_account(Client, DetectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disassociates GuardDuty member accounts (to the current GuardDuty
-%% administrator account) specified by the account IDs.
+%% @doc Disassociates GuardDuty member accounts (to the current administrator
+%% account) specified by the account IDs.
 disassociate_members(Client, DetectorId, Input) ->
     disassociate_members(Client, DetectorId, Input, []).
 disassociate_members(Client, DetectorId, Input0, Options0) ->

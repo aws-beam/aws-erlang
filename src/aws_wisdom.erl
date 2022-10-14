@@ -66,8 +66,6 @@
          list_tags_for_resource/5,
          notify_recommendations_received/4,
          notify_recommendations_received/5,
-         put_feedback/3,
-         put_feedback/4,
          query_assistant/3,
          query_assistant/4,
          remove_knowledge_base_template_uri/3,
@@ -651,33 +649,6 @@ notify_recommendations_received(Client, AssistantId, SessionId, Input) ->
 notify_recommendations_received(Client, AssistantId, SessionId, Input0, Options0) ->
     Method = post,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/sessions/", aws_util:encode_uri(SessionId), "/recommendations/notify"],
-    SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
-
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Submits feedback to Wisdom.
-%%
-%% The feedback is used to improve future recommendations from
-%% GetRecommendations or results from QueryAssistant. Feedback can be
-%% resubmitted up to 6 hours after submission.
-put_feedback(Client, AssistantId, Input) ->
-    put_feedback(Client, AssistantId, Input, []).
-put_feedback(Client, AssistantId, Input0, Options0) ->
-    Method = put,
-    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/feedback"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

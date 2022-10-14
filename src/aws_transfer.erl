@@ -176,8 +176,8 @@ create_agreement(Client, Input, Options)
 %% @doc Creates the connector, which captures the parameters for an outbound
 %% connection for the AS2 protocol.
 %%
-%% The connector is required for sending files from a customer's non Amazon
-%% Web Services server.
+%% The connector is required for sending files to an externally hosted AS2
+%% server. For more details about connectors, see Create AS2 connectors.
 create_connector(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_connector(Client, Input, []).
@@ -185,9 +185,7 @@ create_connector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConnector">>, Input, Options).
 
-%% @doc Creates the profile for the AS2 process.
-%%
-%% The agreement is between the partner and the AS2 process.
+%% @doc Creates the local or partner profile to use for AS2 transfers.
 create_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_profile(Client, Input, []).
@@ -444,7 +442,8 @@ import_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportCertificate">>, Input, Options).
 
-%% @doc Adds a host key to the server specified by the `ServerId' parameter.
+%% @doc Adds a host key to the server that's specified by the `ServerId'
+%% parameter.
 import_host_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_host_key(Client, Input, []).
@@ -517,8 +516,8 @@ list_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExecutions">>, Input, Options).
 
-%% @doc Returns a list of host keys for the server specified by the
-%% `ServerId' paramter.
+%% @doc Returns a list of host keys for the server that's specified by the
+%% `ServerId' parameter.
 list_host_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_host_keys(Client, Input, []).
@@ -597,7 +596,7 @@ send_workflow_step_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendWorkflowStepState">>, Input, Options).
 
-%% @doc Begins an outbound file transfer.
+%% @doc Begins an outbound file transfer to a remote AS2 server.
 %%
 %% You specify the `ConnectorId' and the file paths for where to send the
 %% files.
@@ -753,8 +752,8 @@ update_connector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConnector">>, Input, Options).
 
-%% @doc Updates the description for the host key specified by the specified
-%% by the `ServerId' and `HostKeyId' parameters.
+%% @doc Updates the description for the host key that's specified by the
+%% `ServerId' and `HostKeyId' parameters.
 update_host_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_host_key(Client, Input, []).

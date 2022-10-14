@@ -88,6 +88,8 @@
          describe_snapshots/3,
          describe_trusts/2,
          describe_trusts/3,
+         describe_update_directory/2,
+         describe_update_directory/3,
          disable_client_authentication/2,
          disable_client_authentication/3,
          disable_ldaps/2,
@@ -142,6 +144,8 @@
          unshare_directory/3,
          update_conditional_forwarder/2,
          update_conditional_forwarder/3,
+         update_directory_setup/2,
+         update_directory_setup/3,
          update_number_of_domain_controllers/2,
          update_number_of_domain_controllers/3,
          update_radius/2,
@@ -549,6 +553,14 @@ describe_trusts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrusts">>, Input, Options).
 
+%% @doc Describes the updates of a directory for a particular update type.
+describe_update_directory(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_update_directory(Client, Input, []).
+describe_update_directory(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeUpdateDirectory">>, Input, Options).
+
 %% @doc Disables alternative client authentication methods for the specified
 %% directory.
 disable_client_authentication(Client, Input)
@@ -838,6 +850,14 @@ update_conditional_forwarder(Client, Input)
 update_conditional_forwarder(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConditionalForwarder">>, Input, Options).
+
+%% @doc Updates the directory for a particular update type.
+update_directory_setup(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_directory_setup(Client, Input, []).
+update_directory_setup(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDirectorySetup">>, Input, Options).
 
 %% @doc Adds or removes domain controllers to or from the directory.
 %%
