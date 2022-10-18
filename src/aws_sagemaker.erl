@@ -1056,6 +1056,16 @@ create_human_task_ui(Client, Input, Options)
 %% values for hyperparameters within ranges that you specify. It then chooses
 %% the hyperparameter values that result in a model that performs the best,
 %% as measured by an objective metric that you choose.
+%%
+%% A hyperparameter tuning job automatically creates Amazon SageMaker
+%% experiments, trials, and trial components for each training job that it
+%% runs. You can view these entities in Amazon SageMaker Studio. For more
+%% information, see View Experiments, Trials, and Trial Components.
+%%
+%% Do not include any security-sensitive information including account access
+%% IDs, secrets or tokens in any hyperparameter field. If the use of
+%% security-sensitive credentials are detected, SageMaker will reject your
+%% training job request and return an exception error.
 create_hyper_parameter_tuning_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hyper_parameter_tuning_job(Client, Input, []).
@@ -1443,10 +1453,10 @@ create_studio_lifecycle_config(Client, Input, Options)
 %% of hyperparameters for each training algorithm provided by SageMaker, see
 %% Algorithms.
 %%
-%% You must not include any security-sensitive information, such as account
-%% access IDs, secrets, and tokens, in the dictionary for configuring
-%% hyperparameters. SageMaker rejects the training job request and returns an
-%% exception error for detected credentials, if such user input is found.
+%% Do not include any security-sensitive information including account access
+%% IDs, secrets or tokens in any hyperparameter field. If the use of
+%% security-sensitive credentials are detected, SageMaker will reject your
+%% training job request and return an exception error.
 %%
 %% </li> <li> `InputDataConfig' - Describes the training dataset and the
 %% Amazon S3, EFS, or FSx location where it is stored.
