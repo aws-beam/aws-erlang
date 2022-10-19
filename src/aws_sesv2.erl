@@ -78,6 +78,9 @@
          get_dedicated_ip/2,
          get_dedicated_ip/4,
          get_dedicated_ip/5,
+         get_dedicated_ip_pool/2,
+         get_dedicated_ip_pool/4,
+         get_dedicated_ip_pool/5,
          get_dedicated_ips/1,
          get_dedicated_ips/3,
          get_dedicated_ips/4,
@@ -322,7 +325,7 @@ create_contact_list(Client, Input0, Options0) ->
 %% @doc Creates a new custom verification email template.
 %%
 %% For more information about custom verification email templates, see Using
-%% Custom Verification Email Templates in the Amazon SES Developer Guide.
+%% custom verification email templates in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 create_custom_verification_email_template(Client, Input) ->
@@ -658,7 +661,7 @@ delete_contact_list(Client, ContactListName, Input0, Options0) ->
 %% @doc Deletes an existing custom verification email template.
 %%
 %% For more information about custom verification email templates, see Using
-%% Custom Verification Email Templates in the Amazon SES Developer Guide.
+%% custom verification email templates in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 delete_custom_verification_email_template(Client, TemplateName, Input) ->
@@ -981,7 +984,7 @@ get_contact_list(Client, ContactListName, QueryMap, HeadersMap, Options0)
 %% you specify.
 %%
 %% For more information about custom verification email templates, see Using
-%% Custom Verification Email Templates in the Amazon SES Developer Guide.
+%% custom verification email templates in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 get_custom_verification_email_template(Client, TemplateName)
@@ -1020,6 +1023,29 @@ get_dedicated_ip(Client, Ip, QueryMap, HeadersMap)
 get_dedicated_ip(Client, Ip, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/email/dedicated-ips/", aws_util:encode_uri(Ip), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieve information about the dedicated pool.
+get_dedicated_ip_pool(Client, PoolName)
+  when is_map(Client) ->
+    get_dedicated_ip_pool(Client, PoolName, #{}, #{}).
+
+get_dedicated_ip_pool(Client, PoolName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_dedicated_ip_pool(Client, PoolName, QueryMap, HeadersMap, []).
+
+get_dedicated_ip_pool(Client, PoolName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/email/dedicated-ip-pools/", aws_util:encode_uri(PoolName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1403,7 +1429,7 @@ list_contacts(Client, ContactListName, QueryMap, HeadersMap, Options0)
 %% account in the current Amazon Web Services Region.
 %%
 %% For more information about custom verification email templates, see Using
-%% Custom Verification Email Templates in the Amazon SES Developer Guide.
+%% custom verification email templates in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 list_custom_verification_email_templates(Client)
@@ -2190,8 +2216,8 @@ send_bulk_email(Client, Input0, Options0) ->
 %%
 %% To use this operation, you must first create a custom verification email
 %% template. For more information about creating and using custom
-%% verification email templates, see Using Custom Verification Email
-%% Templates in the Amazon SES Developer Guide.
+%% verification email templates, see Using custom verification email
+%% templates in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 send_custom_verification_email(Client, Input) ->
@@ -2426,7 +2452,7 @@ update_contact_list(Client, ContactListName, Input0, Options0) ->
 %% @doc Updates an existing custom verification email template.
 %%
 %% For more information about custom verification email templates, see Using
-%% Custom Verification Email Templates in the Amazon SES Developer Guide.
+%% custom verification email templates in the Amazon SES Developer Guide.
 %%
 %% You can execute this operation no more than once per second.
 update_custom_verification_email_template(Client, TemplateName, Input) ->

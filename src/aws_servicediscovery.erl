@@ -79,8 +79,8 @@
 %% using a `DiscoverInstances' request but can't be discovered using DNS.
 %%
 %% For the current quota on the number of namespaces that you can create
-%% using the same account, see Cloud Map quotas in the Cloud Map Developer
-%% Guide.
+%% using the same Amazon Web Services account, see Cloud Map quotas in the
+%% Cloud Map Developer Guide.
 create_http_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_http_namespace(Client, Input, []).
@@ -97,7 +97,8 @@ create_http_namespace(Client, Input, Options)
 %% instances that are registered using a private DNS namespace can be
 %% discovered using either a `DiscoverInstances' request or using DNS. For
 %% the current quota on the number of namespaces that you can create using
-%% the same account, see Cloud Map quotas in the Cloud Map Developer Guide.
+%% the same Amazon Web Services account, see Cloud Map quotas in the Cloud
+%% Map Developer Guide.
 create_private_dns_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_private_dns_namespace(Client, Input, []).
@@ -114,7 +115,11 @@ create_private_dns_namespace(Client, Input, Options)
 %% discover instances that were registered with a public DNS namespace by
 %% using either a `DiscoverInstances' request or using DNS. For the current
 %% quota on the number of namespaces that you can create using the same
-%% account, see Cloud Map quotas in the Cloud Map Developer Guide.
+%% Amazon Web Services account, see Cloud Map quotas in the Cloud Map
+%% Developer Guide.
+%%
+%% The `CreatePublicDnsNamespace' API operation is not supported in the
+%% Amazon Web Services GovCloud (US) Regions.
 create_public_dns_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_public_dns_namespace(Client, Input, []).
@@ -127,7 +132,7 @@ create_public_dns_namespace(Client, Input, Options)
 %% This action defines the configuration for the following entities:
 %%
 %% <ul> <li> For public and private DNS namespaces, one of the following
-%% combinations of DNS records in Amazon Route 53:
+%% combinations of DNS records in Amazon Route 53:
 %%
 %% <ul> <li> `A'
 %%
@@ -176,7 +181,7 @@ delete_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteService">>, Input, Options).
 
-%% @doc Deletes the Amazon Route 53 DNS records and health check, if any,
+%% @doc Deletes the Amazon Route 53 DNS records and health check, if any,
 %% that Cloud Map created for the specified instance.
 deregister_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -255,7 +260,7 @@ list_instances(Client, Input, Options)
     request(Client, <<"ListInstances">>, Input, Options).
 
 %% @doc Lists summary information about the namespaces that were created by
-%% the current account.
+%% the current Amazon Web Services account.
 list_namespaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_namespaces(Client, Input, []).
@@ -358,8 +363,8 @@ update_http_namespace(Client, Input, Options)
 %%
 %% You can use `UpdateInstanceCustomHealthStatus' to change the status only
 %% for custom health checks, which you define using `HealthCheckCustomConfig'
-%% when you create a service. You can't use it to change the status for Route
-%% 53 health checks, which you define using `HealthCheckConfig'.
+%% when you create a service. You can't use it to change the status for
+%% Route 53 health checks, which you define using `HealthCheckConfig'.
 %%
 %% For more information, see HealthCheckCustomConfig.
 update_instance_custom_health_status(Client, Input)
