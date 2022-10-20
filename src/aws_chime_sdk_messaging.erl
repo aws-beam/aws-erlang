@@ -1493,12 +1493,10 @@ redact_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Allows an `AppInstanceUser' to search the channels that they belong
-%% to.
+%% @doc Allows `ChimeBearer' to search channels by channel members.
 %%
-%% The `AppInstanceUser' can search by membership or external ID. An
-%% `AppInstanceAdmin' can search across all channels within the
-%% `AppInstance'.
+%% AppInstanceUsers can search across the channels that they belong to.
+%% AppInstanceAdmins can search across all channels.
 search_channels(Client, Input) ->
     search_channels(Client, Input, []).
 search_channels(Client, Input0, Options0) ->

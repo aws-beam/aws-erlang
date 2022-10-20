@@ -206,10 +206,12 @@ describe_trails(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrails">>, Input, Options).
 
-%% @doc Returns the specified CloudTrail service-linked channel.
+%% @doc Returns information about a specific channel.
 %%
-%% Amazon Web Services services create service-linked channels to view
-%% CloudTrail events.
+%% Amazon Web Services services create service-linked channels to get
+%% information about CloudTrail events on your behalf. For more information
+%% about service-linked channels, see Viewing service-linked channels for
+%% CloudTrail by using the CLI..
 get_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_channel(Client, Input, []).
@@ -255,7 +257,7 @@ get_event_selectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEventSelectors">>, Input, Options).
 
-%% @doc Returns information for the specified import.
+%% @doc Returns information about a specific import.
 get_import(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_import(Client, Input, []).
@@ -314,7 +316,12 @@ get_trail_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTrailStatus">>, Input, Options).
 
-%% @doc Returns all CloudTrail channels.
+%% @doc Lists the channels in the current account, and their source names.
+%%
+%% Amazon Web Services services create service-linked channels get
+%% information about CloudTrail events on your behalf. For more information
+%% about service-linked channels, see Viewing service-linked channels for
+%% CloudTrail by using the CLI.
 list_channels(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_channels(Client, Input, []).
@@ -529,6 +536,13 @@ restore_event_data_store(Client, Input, Options)
 %% @doc Starts an import of logged trail events from a source S3 bucket to a
 %% destination event data store.
 %%
+%% By default, CloudTrail only imports events contained in the S3 bucket's
+%% `CloudTrail' prefix and the prefixes inside the `CloudTrail' prefix, and
+%% does not check prefixes for other Amazon Web Services services. If you
+%% want to import CloudTrail events contained in another prefix, you must
+%% include the prefix in the `S3LocationUri'. For more considerations about
+%% importing trail events, see Considerations.
+%%
 %% When you start a new import, the `Destinations' and `ImportSource'
 %% parameters are required. Before starting a new import, disable any access
 %% control lists (ACLs) attached to the source S3 bucket. For more
@@ -560,7 +574,8 @@ start_logging(Client, Input, Options)
 %% @doc Starts a CloudTrail Lake query.
 %%
 %% The required `QueryStatement' parameter provides your SQL query, enclosed
-%% in single quotation marks.
+%% in single quotation marks. Use the optional `DeliveryS3Uri' parameter to
+%% deliver the query results to an S3 bucket.
 start_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_query(Client, Input, []).

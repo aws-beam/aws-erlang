@@ -341,8 +341,8 @@ delete_evaluation_results(Client, Input, Options)
 %% @doc Deletes the specified organization Config rule and all of its
 %% evaluation results from all member accounts in that organization.
 %%
-%% Only a master account and a delegated administrator account can delete an
-%% organization Config rule. When calling this API with a delegated
+%% Only a management account and a delegated administrator account can delete
+%% an organization Config rule. When calling this API with a delegated
 %% administrator, you must ensure Organizations `ListDelegatedAdministrator'
 %% permissions are added.
 %%
@@ -359,8 +359,8 @@ delete_organization_config_rule(Client, Input, Options)
 %% Config rules and remediation actions from all member accounts in that
 %% organization.
 %%
-%% Only a master account or a delegated administrator account can delete an
-%% organization conformance pack. When calling this API with a delegated
+%% Only a management account or a delegated administrator account can delete
+%% an organization conformance pack. When calling this API with a delegated
 %% administrator, you must ensure Organizations `ListDelegatedAdministrator'
 %% permissions are added.
 %%
@@ -1124,8 +1124,8 @@ list_aggregate_discovered_resources(Client, Input, Options)
 %% rule-resource combinations in a conformance pack compared to the number of
 %% total possible rule-resource combinations in the conformance pack. This
 %% metric provides you with a high-level view of the compliance state of your
-%% conformance packs, and can be used to identify, investigate, and
-%% understand the level of compliance in your conformance packs.
+%% conformance packs. You can use it to identify, investigate, and understand
+%% the level of compliance in your conformance packs.
 %%
 %% Conformance packs with no evaluation results will have a compliance score
 %% of `INSUFFICIENT_DATA'.
@@ -1285,16 +1285,16 @@ put_configuration_recorder(Client, Input, Options)
 %% @doc Creates or updates a conformance pack.
 %%
 %% A conformance pack is a collection of Config rules that can be easily
-%% deployed in an account and a region and across Amazon Web Services
-%% Organization. For information on how many conformance packs you can have
-%% per account, see Service Limits in the Config Developer Guide.
+%% deployed in an account and a region and across an organization. For
+%% information on how many conformance packs you can have per account, see
+%% Service Limits in the Config Developer Guide.
 %%
 %% This API creates a service-linked role `AWSServiceRoleForConfigConforms'
 %% in your account. The service-linked role is created only when the role
 %% does not exist in your account.
 %%
-%% You must specify one and only one of the`TemplateS3Uri', `TemplateBody' or
-%% `TemplateSSMDocumentDetails' parameters.
+%% You must specify only one of the follow parameters: `TemplateS3Uri',
+%% `TemplateBody' or `TemplateSSMDocumentDetails'.
 put_conformance_pack(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_conformance_pack(Client, Input, []).
@@ -1352,15 +1352,15 @@ put_external_evaluation(Client, Input, Options)
 %% For information on how many organization Config rules you can have per
 %% account, see Service Limits in the Config Developer Guide.
 %%
-%% Only a master account and a delegated administrator can create or update
-%% an organization Config rule. When calling this API with a delegated
+%% Only a management account and a delegated administrator can create or
+%% update an organization Config rule. When calling this API with a delegated
 %% administrator, you must ensure Organizations `ListDelegatedAdministrator'
 %% permissions are added. An organization can have up to 3 delegated
 %% administrators.
 %%
 %% This API enables organization service access through the
 %% `EnableAWSServiceAccess' action and creates a service-linked role
-%% `AWSServiceRoleForConfigMultiAccountSetup' in the master or delegated
+%% `AWSServiceRoleForConfigMultiAccountSetup' in the management or delegated
 %% administrator account of your organization. The service-linked role is
 %% created only when the role does not exist in the caller account. Config
 %% verifies the existence of role with `GetRole' action.
@@ -1379,9 +1379,9 @@ put_external_evaluation(Client, Input, Options)
 %% that allows you to write policies that are enforced by Config Custom
 %% Policy rules. Lambda uses custom code that you upload to evaluate a custom
 %% rule. If you are adding a new Custom Lambda rule, you first need to create
-%% an Lambda function in the master account or a delegated administrator that
-%% the rule invokes to evaluate your resources. You also need to create an
-%% IAM role in the managed account that can be assumed by the Lambda
+%% an Lambda function in the management account or a delegated administrator
+%% that the rule invokes to evaluate your resources. You also need to create
+%% an IAM role in the managed account that can be assumed by the Lambda
 %% function. When you use `PutOrganizationConfigRule' to add a Custom Lambda
 %% rule to Config, you must specify the Amazon Resource Name (ARN) that
 %% Lambda assigns to the function.
@@ -1411,7 +1411,7 @@ put_organization_config_rule(Client, Input, Options)
 %% Config rules you can have per account, see Service Limits in the Config
 %% Developer Guide.
 %%
-%% Only a master account and a delegated administrator can call this API.
+%% Only a management account and a delegated administrator can call this API.
 %% When calling this API with a delegated administrator, you must ensure
 %% Organizations `ListDelegatedAdministrator' permissions are added. An
 %% organization can have up to 3 delegated administrators.
@@ -1419,7 +1419,7 @@ put_organization_config_rule(Client, Input, Options)
 %% This API enables organization service access for
 %% `config-multiaccountsetup.amazonaws.com' through the
 %% `EnableAWSServiceAccess' action and creates a service-linked role
-%% `AWSServiceRoleForConfigMultiAccountSetup' in the master or delegated
+%% `AWSServiceRoleForConfigMultiAccountSetup' in the management or delegated
 %% administrator account of your organization. The service-linked role is
 %% created only when the role does not exist in the caller account. To use
 %% this API with delegated administrator, register a delegated administrator

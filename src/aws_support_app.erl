@@ -34,13 +34,12 @@
 %% configurations. For more information, see Authorize a Slack workspace to
 %% enable the Amazon Web Services Support App.
 %%
-%% <note> <ul> <li> <p>You must have a Business or Enterprise Support plan to
-%% use the Amazon Web Services Support App API. </p> </li> <li> <p>For more
-%% information about the Amazon Web Services Support App endpoints, see the
-%% <a
-%% href="https://docs.aws.amazon.com/general/latest/gr/awssupport.html#awssupport_app_region">Amazon
-%% Web Services Support App in Slack endpoints</a> in the <i>Amazon Web
-%% Services General Reference</i>.</p> </li> </ul> </note>
+%% You must have a Business or Enterprise Support plan to use the Amazon Web
+%% Services Support App API.
+%%
+%% For more information about the Amazon Web Services Support App endpoints,
+%% see the Amazon Web Services Support App in Slack endpoints in the Amazon
+%% Web Services General Reference.
 -module(aws_support_app).
 
 -export([create_slack_channel_configuration/2,
@@ -59,6 +58,8 @@
          list_slack_workspace_configurations/3,
          put_account_alias/2,
          put_account_alias/3,
+         register_slack_workspace_for_organization/2,
+         register_slack_workspace_for_organization/3,
          update_slack_channel_configuration/2,
          update_slack_channel_configuration/3]).
 
@@ -273,6 +274,61 @@ put_account_alias(Client, Input) ->
 put_account_alias(Client, Input0, Options0) ->
     Method = post,
     Path = ["/control/put-account-alias"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Registers a Slack workspace for your Amazon Web Services account.
+%%
+%% To call this API, your account must be part of an organization in
+%% Organizations.
+%%
+%% If you're the management account and you want to register Slack workspaces
+%% for your organization, you must complete the following tasks:
+%%
+%% <ol> <li> Sign in to the Amazon Web Services Support Center and authorize
+%% the Slack workspaces where you want your organization to have access to.
+%% See Authorize a Slack workspace in the Amazon Web Services Support User
+%% Guide.
+%%
+%% </li> <li> Call the `RegisterSlackWorkspaceForOrganization' API to
+%% authorize each Slack workspace for the organization.
+%%
+%% </li> </ol> After the management account authorizes the Slack workspace,
+%% member accounts can call this API to authorize the same Slack workspace
+%% for their individual accounts. Member accounts don't need to authorize the
+%% Slack workspace manually through the Amazon Web Services Support Center.
+%%
+%% To use the Amazon Web Services Support App, each account must then
+%% complete the following tasks:
+%%
+%% <ul> <li> Create an Identity and Access Management (IAM) role with the
+%% required permission. For more information, see Managing access to the
+%% Amazon Web Services Support App.
+%%
+%% </li> <li> Configure a Slack channel to use the Amazon Web Services
+%% Support App for support cases for that account. For more information, see
+%% Configuring a Slack channel.
+%%
+%% </li> </ul>
+register_slack_workspace_for_organization(Client, Input) ->
+    register_slack_workspace_for_organization(Client, Input, []).
+register_slack_workspace_for_organization(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/control/register-slack-workspace-for-organization"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

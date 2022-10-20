@@ -65,6 +65,8 @@
          create_security_profile/4,
          create_task_template/3,
          create_task_template/4,
+         create_traffic_distribution_group/2,
+         create_traffic_distribution_group/3,
          create_use_case/4,
          create_use_case/5,
          create_user/3,
@@ -89,6 +91,8 @@
          delete_security_profile/5,
          delete_task_template/4,
          delete_task_template/5,
+         delete_traffic_distribution_group/3,
+         delete_traffic_distribution_group/4,
          delete_use_case/5,
          delete_use_case/6,
          delete_user/4,
@@ -136,6 +140,9 @@
          describe_security_profile/3,
          describe_security_profile/5,
          describe_security_profile/6,
+         describe_traffic_distribution_group/2,
+         describe_traffic_distribution_group/4,
+         describe_traffic_distribution_group/5,
          describe_user/3,
          describe_user/5,
          describe_user/6,
@@ -181,6 +188,9 @@
          get_task_template/3,
          get_task_template/5,
          get_task_template/6,
+         get_traffic_distribution/2,
+         get_traffic_distribution/4,
+         get_traffic_distribution/5,
          list_agent_statuses/2,
          list_agent_statuses/4,
          list_agent_statuses/5,
@@ -260,6 +270,9 @@
          list_task_templates/2,
          list_task_templates/4,
          list_task_templates/5,
+         list_traffic_distribution_groups/1,
+         list_traffic_distribution_groups/3,
+         list_traffic_distribution_groups/4,
          list_use_cases/3,
          list_use_cases/5,
          list_use_cases/6,
@@ -273,6 +286,8 @@
          put_user_status/5,
          release_phone_number/3,
          release_phone_number/4,
+         replicate_instance/3,
+         replicate_instance/4,
          resume_contact_recording/2,
          resume_contact_recording/3,
          search_available_phone_numbers/2,
@@ -363,6 +378,8 @@
          update_security_profile/5,
          update_task_template/4,
          update_task_template/5,
+         update_traffic_distribution/3,
+         update_traffic_distribution/4,
          update_user_hierarchy/4,
          update_user_hierarchy/5,
          update_user_hierarchy_group_name/4,
@@ -553,6 +570,16 @@ associate_lex_bot(Client, InstanceId, Input0, Options0) ->
 
 %% @doc Associates a flow with a phone number claimed to your Amazon Connect
 %% instance.
+%%
+%% If the number is claimed to a traffic distribution group, and you are
+%% calling this API using an instance in the Amazon Web Services Region where
+%% the traffic distribution group was created, you can use either a full
+%% phone number ARN or UUID value for the `PhoneNumberId' URI request
+%% parameter. However, if the number is claimed to a traffic distribution
+%% group and you are calling this API using an instance in the alternate
+%% Amazon Web Services Region associated with the traffic distribution group,
+%% you must provide a full phone number ARN. If a UUID is provided in this
+%% scenario, you will receive a `ResourceNotFoundException'.
 associate_phone_number_contact_flow(Client, PhoneNumberId, Input) ->
     associate_phone_number_contact_flow(Client, PhoneNumberId, Input, []).
 associate_phone_number_contact_flow(Client, PhoneNumberId, Input0, Options0) ->
@@ -650,7 +677,14 @@ associate_security_key(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Claims an available phone number to your Amazon Connect instance.
+%% @doc Claims an available phone number to your Amazon Connect instance or
+%% traffic distribution group.
+%%
+%% You can call this API only in the same Amazon Web Services Region where
+%% the Amazon Connect instance or traffic distribution group was created.
+%%
+%% You can call the DescribePhoneNumber API to verify the status of a
+%% previous ClaimPhoneNumber operation.
 claim_phone_number(Client, Input) ->
     claim_phone_number(Client, Input, []).
 claim_phone_number(Client, Input0, Options0) ->
@@ -837,6 +871,17 @@ create_integration_association(Client, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% Creates a new queue for the specified Amazon Connect instance.
+%%
+%% If the number being used in the input is claimed to a traffic distribution
+%% group, and you are calling this API using an instance in the Amazon Web
+%% Services Region where the traffic distribution group was created, you can
+%% use either a full phone number ARN or UUID value for the
+%% `OutboundCallerIdNumberId' value of the OutboundCallerConfig request body
+%% parameter. However, if the number is claimed to a traffic distribution
+%% group and you are calling this API using an instance in the alternate
+%% Amazon Web Services Region associated with the traffic distribution group,
+%% you must provide a full phone number ARN. If a UUID is provided in this
+%% scenario, you will receive a `ResourceNotFoundException'.
 create_queue(Client, InstanceId, Input) ->
     create_queue(Client, InstanceId, Input, []).
 create_queue(Client, InstanceId, Input0, Options0) ->
@@ -937,6 +982,33 @@ create_task_template(Client, InstanceId, Input) ->
 create_task_template(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/task/template"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a traffic distribution group given an Amazon Connect instance
+%% that has been replicated.
+%%
+%% For more information about creating traffic distribution groups, see Set
+%% up traffic distribution groups in the Amazon Connect Administrator Guide.
+create_traffic_distribution_group(Client, Input) ->
+    create_traffic_distribution_group(Client, Input, []).
+create_traffic_distribution_group(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/traffic-distribution-group"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1239,6 +1311,36 @@ delete_task_template(Client, InstanceId, TaskTemplateId, Input) ->
 delete_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/task/template/", aws_util:encode_uri(TaskTemplateId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a traffic distribution group.
+%%
+%% This API can be called only in the Region where the traffic distribution
+%% group is created.
+%%
+%% For more information about deleting traffic distribution groups, see
+%% Delete traffic distribution groups in the Amazon Connect Administrator
+%% Guide.
+delete_traffic_distribution_group(Client, TrafficDistributionGroupId, Input) ->
+    delete_traffic_distribution_group(Client, TrafficDistributionGroupId, Input, []).
+delete_traffic_distribution_group(Client, TrafficDistributionGroupId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/traffic-distribution-group/", aws_util:encode_uri(TrafficDistributionGroupId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1577,7 +1679,16 @@ describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets details and status of a phone number that’s claimed to your
-%% Amazon Connect instance
+%% Amazon Connect instance or traffic distribution group.
+%%
+%% If the number is claimed to a traffic distribution group, and you are
+%% calling in the Amazon Web Services Region where the traffic distribution
+%% group was created, you can use either a phone number ARN or UUID value for
+%% the `PhoneNumberId' URI request parameter. However, if the number is
+%% claimed to a traffic distribution group and you are calling this API in
+%% the alternate Amazon Web Services Region associated with the traffic
+%% distribution group, you must provide a full phone number ARN. If a UUID is
+%% provided in this scenario, you will receive a `ResourceNotFoundException'.
 describe_phone_number(Client, PhoneNumberId)
   when is_map(Client) ->
     describe_phone_number(Client, PhoneNumberId, #{}, #{}).
@@ -1687,6 +1798,29 @@ describe_security_profile(Client, InstanceId, SecurityProfileId, QueryMap, Heade
 describe_security_profile(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/security-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(SecurityProfileId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets details and status of a traffic distribution group.
+describe_traffic_distribution_group(Client, TrafficDistributionGroupId)
+  when is_map(Client) ->
+    describe_traffic_distribution_group(Client, TrafficDistributionGroupId, #{}, #{}).
+
+describe_traffic_distribution_group(Client, TrafficDistributionGroupId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_traffic_distribution_group(Client, TrafficDistributionGroupId, QueryMap, HeadersMap, []).
+
+describe_traffic_distribution_group(Client, TrafficDistributionGroupId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/traffic-distribution-group/", aws_util:encode_uri(TrafficDistributionGroupId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1935,7 +2069,17 @@ disassociate_lex_bot(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the flow association from a phone number claimed to your
-%% Amazon Connect instance, if a flow association exists.
+%% Amazon Connect instance.
+%%
+%% If the number is claimed to a traffic distribution group, and you are
+%% calling this API using an instance in the Amazon Web Services Region where
+%% the traffic distribution group was created, you can use either a full
+%% phone number ARN or UUID value for the `PhoneNumberId' URI request
+%% parameter. However, if the number is claimed to a traffic distribution
+%% group and you are calling this API using an instance in the alternate
+%% Amazon Web Services Region associated with the traffic distribution group,
+%% you must provide a full phone number ARN. If a UUID is provided in this
+%% scenario, you will receive a `ResourceNotFoundException'.
 disassociate_phone_number_contact_flow(Client, PhoneNumberId, Input) ->
     disassociate_phone_number_contact_flow(Client, PhoneNumberId, Input, []).
 disassociate_phone_number_contact_flow(Client, PhoneNumberId, Input0, Options0) ->
@@ -2190,6 +2334,30 @@ get_task_template(Client, InstanceId, TaskTemplateId, QueryMap, HeadersMap, Opti
         {<<"snapshotVersion">>, maps:get(<<"snapshotVersion">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the current traffic distribution for a given traffic
+%% distribution group.
+get_traffic_distribution(Client, Id)
+  when is_map(Client) ->
+    get_traffic_distribution(Client, Id, #{}, #{}).
+
+get_traffic_distribution(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_traffic_distribution(Client, Id, QueryMap, HeadersMap, []).
+
+get_traffic_distribution(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/traffic-distribution/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -2643,6 +2811,12 @@ list_lex_bots(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %%
 %% For more information about phone numbers, see Set Up Phone Numbers for
 %% Your Contact Center in the Amazon Connect Administrator Guide.
+%%
+%% The phone number `Arn' value that is returned from each of the items in
+%% the PhoneNumberSummaryList cannot be used to tag phone number resources.
+%% It will fail with a `ResourceNotFoundException'. Instead, use the
+%% ListPhoneNumbersV2 API. It returns the new phone number ARN that can be
+%% used to tag phone number resources.
 list_phone_numbers(Client, InstanceId)
   when is_map(Client) ->
     list_phone_numbers(Client, InstanceId, #{}, #{}).
@@ -2672,7 +2846,12 @@ list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists phone numbers claimed to your Amazon Connect instance.
+%% @doc Lists phone numbers claimed to your Amazon Connect instance or
+%% traffic distribution group.
+%%
+%% If the provided `TargetArn' is a traffic distribution group, you can call
+%% this API in both Amazon Web Services Regions associated with traffic
+%% distribution group.
 %%
 %% For more information about phone numbers, see Set Up Phone Numbers for
 %% Your Contact Center in the Amazon Connect Administrator Guide.
@@ -3037,6 +3216,35 @@ list_task_templates(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists traffic distribution groups.
+list_traffic_distribution_groups(Client)
+  when is_map(Client) ->
+    list_traffic_distribution_groups(Client, #{}, #{}).
+
+list_traffic_distribution_groups(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_traffic_distribution_groups(Client, QueryMap, HeadersMap, []).
+
+list_traffic_distribution_groups(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/traffic-distribution-groups"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"instanceId">>, maps:get(<<"instanceId">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the use cases for the integration association.
 list_use_cases(Client, InstanceId, IntegrationAssociationId)
   when is_map(Client) ->
@@ -3156,7 +3364,18 @@ put_user_status(Client, InstanceId, UserId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Releases a phone number previously claimed to an Amazon Connect
-%% instance.
+%% instance or traffic distribution group.
+%%
+%% You can call this API only in the Amazon Web Services Region where the
+%% number was claimed.
+%%
+%% To release phone numbers from a traffic distribution group, use the
+%% `ReleasePhoneNumber' API, not the Amazon Connect console.
+%%
+%% After releasing a phone number, the phone number enters into a cooldown
+%% period of 30 days. It cannot be searched for or claimed again until the
+%% period has ended. If you accidentally release a phone number, contact
+%% Amazon Web Services Support.
 release_phone_number(Client, PhoneNumberId, Input) ->
     release_phone_number(Client, PhoneNumberId, Input, []).
 release_phone_number(Client, PhoneNumberId, Input0, Options0) ->
@@ -3178,6 +3397,34 @@ release_phone_number(Client, PhoneNumberId, Input0, Options0) ->
                      {<<"clientToken">>, <<"ClientToken">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Replicates an Amazon Connect instance in the specified Amazon Web
+%% Services Region.
+%%
+%% For more information about replicating an Amazon Connect instance, see
+%% Create a replica of your existing Amazon Connect instance in the Amazon
+%% Connect Administrator Guide.
+replicate_instance(Client, InstanceId, Input) ->
+    replicate_instance(Client, InstanceId, Input, []).
+replicate_instance(Client, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/instance/", aws_util:encode_uri(InstanceId), "/replicate"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc When a contact is being recorded, and the recording has been
@@ -3208,7 +3455,11 @@ resume_contact_recording(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches for available phone numbers that you can claim to your
-%% Amazon Connect instance.
+%% Amazon Connect instance or traffic distribution group.
+%%
+%% If the provided `TargetArn' is a traffic distribution group, you can call
+%% this API in both Amazon Web Services Regions associated with the traffic
+%% distribution group.
 search_available_phone_numbers(Client, Input) ->
     search_available_phone_numbers(Client, Input, []).
 search_available_phone_numbers(Client, Input0, Options0) ->
@@ -3313,6 +3564,8 @@ search_security_profiles(Client, Input0, Options0) ->
 
 %% @doc Searches users in an Amazon Connect instance, with optional
 %% filtering.
+%%
+%% `AfterContactWorkTimeLimit' is returned in milliseconds.
 search_users(Client, Input) ->
     search_users(Client, Input, []).
 search_users(Client, Input0, Options0) ->
@@ -4084,7 +4337,11 @@ update_instance_storage_config(Client, AssociationId, InstanceId, Input0, Option
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates your claimed phone number from its current Amazon Connect
-%% instance to another Amazon Connect instance in the same Region.
+%% instance or traffic distribution group to another Amazon Connect instance
+%% or traffic distribution group in the same Amazon Web Services Region.
+%%
+%% You can call DescribePhoneNumber API to verify the status of a previous
+%% UpdatePhoneNumber operation.
 update_phone_number(Client, PhoneNumberId, Input) ->
     update_phone_number(Client, PhoneNumberId, Input, []).
 update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
@@ -4192,6 +4449,17 @@ update_queue_name(Client, InstanceId, QueueId, Input0, Options0) ->
 %%
 %% Updates the outbound caller ID name, number, and outbound whisper flow for
 %% a specified queue.
+%%
+%% If the number being used in the input is claimed to a traffic distribution
+%% group, and you are calling this API using an instance in the Amazon Web
+%% Services Region where the traffic distribution group was created, you can
+%% use either a full phone number ARN or UUID value for the
+%% `OutboundCallerIdNumberId' value of the OutboundCallerConfig request body
+%% parameter. However, if the number is claimed to a traffic distribution
+%% group and you are calling this API using an instance in the alternate
+%% Amazon Web Services Region associated with the traffic distribution group,
+%% you must provide a full phone number ARN. If a UUID is provided in this
+%% scenario, you will receive a `ResourceNotFoundException'.
 update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input) ->
     update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input, []).
 update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input0, Options0) ->
@@ -4422,6 +4690,34 @@ update_task_template(Client, InstanceId, TaskTemplateId, Input) ->
 update_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
     Method = post,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/task/template/", aws_util:encode_uri(TaskTemplateId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the traffic distribution for a given traffic distribution
+%% group.
+%%
+%% For more information about updating a traffic distribution group see
+%% Update telephony traffic distribution across Amazon Web Services Regions
+%% in the Amazon Connect Administrator Guide.
+update_traffic_distribution(Client, Id, Input) ->
+    update_traffic_distribution(Client, Id, Input, []).
+update_traffic_distribution(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/traffic-distribution/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

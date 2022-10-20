@@ -18,6 +18,8 @@
          associate_network_settings/4,
          associate_trust_store/3,
          associate_trust_store/4,
+         associate_user_access_logging_settings/3,
+         associate_user_access_logging_settings/4,
          associate_user_settings/3,
          associate_user_settings/4,
          create_browser_settings/2,
@@ -30,6 +32,8 @@
          create_portal/3,
          create_trust_store/2,
          create_trust_store/3,
+         create_user_access_logging_settings/2,
+         create_user_access_logging_settings/3,
          create_user_settings/2,
          create_user_settings/3,
          delete_browser_settings/3,
@@ -42,6 +46,8 @@
          delete_portal/4,
          delete_trust_store/3,
          delete_trust_store/4,
+         delete_user_access_logging_settings/3,
+         delete_user_access_logging_settings/4,
          delete_user_settings/3,
          delete_user_settings/4,
          disassociate_browser_settings/3,
@@ -50,6 +56,8 @@
          disassociate_network_settings/4,
          disassociate_trust_store/3,
          disassociate_trust_store/4,
+         disassociate_user_access_logging_settings/3,
+         disassociate_user_access_logging_settings/4,
          disassociate_user_settings/3,
          disassociate_user_settings/4,
          get_browser_settings/2,
@@ -73,6 +81,9 @@
          get_trust_store_certificate/3,
          get_trust_store_certificate/5,
          get_trust_store_certificate/6,
+         get_user_access_logging_settings/2,
+         get_user_access_logging_settings/4,
+         get_user_access_logging_settings/5,
          get_user_settings/2,
          get_user_settings/4,
          get_user_settings/5,
@@ -97,6 +108,9 @@
          list_trust_stores/1,
          list_trust_stores/3,
          list_trust_stores/4,
+         list_user_access_logging_settings/1,
+         list_user_access_logging_settings/3,
+         list_user_access_logging_settings/4,
          list_user_settings/1,
          list_user_settings/3,
          list_user_settings/4,
@@ -114,6 +128,8 @@
          update_portal/4,
          update_trust_store/3,
          update_trust_store/4,
+         update_user_access_logging_settings/3,
+         update_user_access_logging_settings/4,
          update_user_settings/3,
          update_user_settings/4]).
 
@@ -191,6 +207,30 @@ associate_trust_store(Client, PortalArn, Input0, Options0) ->
 
     QueryMapping = [
                      {<<"trustStoreArn">>, <<"trustStoreArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates a user access logging settings resource with a web portal.
+associate_user_access_logging_settings(Client, PortalArn, Input) ->
+    associate_user_access_logging_settings(Client, PortalArn, Input, []).
+associate_user_access_logging_settings(Client, PortalArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/userAccessLoggingSettings"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"userAccessLoggingSettingsArn">>, <<"userAccessLoggingSettingsArn">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -351,6 +391,30 @@ create_trust_store(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a user access logging settings resource that can be
+%% associated with a web portal.
+create_user_access_logging_settings(Client, Input) ->
+    create_user_access_logging_settings(Client, Input, []).
+create_user_access_logging_settings(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/userAccessLoggingSettings"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a user settings resource that can be associated with a web
 %% portal.
 %%
@@ -493,6 +557,29 @@ delete_trust_store(Client, TrustStoreArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes user access logging settings.
+delete_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, Input) ->
+    delete_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, Input, []).
+delete_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/userAccessLoggingSettings/", aws_util:encode_multi_segment_uri(UserAccessLoggingSettingsArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes user settings.
 delete_user_settings(Client, UserSettingsArn, Input) ->
     delete_user_settings(Client, UserSettingsArn, Input, []).
@@ -568,6 +655,29 @@ disassociate_trust_store(Client, PortalArn, Input) ->
 disassociate_trust_store(Client, PortalArn, Input0, Options0) ->
     Method = delete,
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/trustStores"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disassociates user access logging settings from a web portal.
+disassociate_user_access_logging_settings(Client, PortalArn, Input) ->
+    disassociate_user_access_logging_settings(Client, PortalArn, Input, []).
+disassociate_user_access_logging_settings(Client, PortalArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/userAccessLoggingSettings"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -770,6 +880,29 @@ get_trust_store_certificate(Client, TrustStoreArn, Thumbprint, QueryMap, Headers
         {<<"thumbprint">>, Thumbprint}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets user access logging settings.
+get_user_access_logging_settings(Client, UserAccessLoggingSettingsArn)
+  when is_map(Client) ->
+    get_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, #{}, #{}).
+
+get_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, QueryMap, HeadersMap, []).
+
+get_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/userAccessLoggingSettings/", aws_util:encode_multi_segment_uri(UserAccessLoggingSettingsArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -987,6 +1120,34 @@ list_trust_stores(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves a list of user access logging settings.
+list_user_access_logging_settings(Client)
+  when is_map(Client) ->
+    list_user_access_logging_settings(Client, #{}, #{}).
+
+list_user_access_logging_settings(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_user_access_logging_settings(Client, QueryMap, HeadersMap, []).
+
+list_user_access_logging_settings(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/userAccessLoggingSettings"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a list of user settings.
 list_user_settings(Client)
   when is_map(Client) ->
@@ -1160,6 +1321,29 @@ update_trust_store(Client, TrustStoreArn, Input) ->
 update_trust_store(Client, TrustStoreArn, Input0, Options0) ->
     Method = patch,
     Path = ["/trustStores/", aws_util:encode_multi_segment_uri(TrustStoreArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the user access logging settings.
+update_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, Input) ->
+    update_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, Input, []).
+update_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, Input0, Options0) ->
+    Method = patch,
+    Path = ["/userAccessLoggingSettings/", aws_util:encode_multi_segment_uri(UserAccessLoggingSettingsArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
