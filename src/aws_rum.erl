@@ -18,10 +18,19 @@
 %% users, geolocations, and browsers used.</p>
 -module(aws_rum).
 
--export([create_app_monitor/2,
+-export([batch_create_rum_metric_definitions/3,
+         batch_create_rum_metric_definitions/4,
+         batch_delete_rum_metric_definitions/3,
+         batch_delete_rum_metric_definitions/4,
+         batch_get_rum_metric_definitions/3,
+         batch_get_rum_metric_definitions/5,
+         batch_get_rum_metric_definitions/6,
+         create_app_monitor/2,
          create_app_monitor/3,
          delete_app_monitor/3,
          delete_app_monitor/4,
+         delete_rum_metrics_destination/3,
+         delete_rum_metrics_destination/4,
          get_app_monitor/2,
          get_app_monitor/4,
          get_app_monitor/5,
@@ -29,23 +38,149 @@
          get_app_monitor_data/4,
          list_app_monitors/2,
          list_app_monitors/3,
+         list_rum_metrics_destinations/2,
+         list_rum_metrics_destinations/4,
+         list_rum_metrics_destinations/5,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
          put_rum_events/3,
          put_rum_events/4,
+         put_rum_metrics_destination/3,
+         put_rum_metrics_destination/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
          update_app_monitor/3,
-         update_app_monitor/4]).
+         update_app_monitor/4,
+         update_rum_metric_definition/3,
+         update_rum_metric_definition/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Specifies the extended metrics that you want a CloudWatch RUM app
+%% monitor to send to a destination.
+%%
+%% Valid destinations include CloudWatch and Evidently.
+%%
+%% By default, RUM app monitors send some metrics to CloudWatch. These
+%% default metrics are listed in CloudWatch metrics that you can collect with
+%% CloudWatch RUM.
+%%
+%% If you also send extended metrics, you can send metrics to Evidently as
+%% well as CloudWatch, and you can also optionally send the metrics with
+%% additional dimensions. The valid dimension names for the additional
+%% dimensions are `BrowserName', `CountryCode', `DeviceType', `FileType',
+%% `OSName', and `PageId'. For more information, see Extended metrics that
+%% you can send to CloudWatch and CloudWatch Evidently.
+%%
+%% The maximum number of metric definitions that you can specify in one
+%% `BatchCreateRumMetricDefinitions' operation is 200.
+%%
+%% <p>The maximum number of metric definitions that one destination can
+%% contain is 2000.</p> <p>Extended metrics sent are charged as CloudWatch
+%% custom metrics. Each combination of additional dimension name and
+%% dimension value counts as a custom metric. For more information, see <a
+%% href="https://aws.amazon.com/cloudwatch/pricing/">Amazon CloudWatch
+%% Pricing</a>.</p> <p>You must have already created a destination for the
+%% metrics before you send them. For more information, see <a
+%% href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_PutRumMetricsDestination.html">PutRumMetricsDestination</a>.</p>
+%% <p>If some metric definitions specified in a
+%% <code>BatchCreateRumMetricDefinitions</code> operations are not valid,
+%% those metric definitions fail and return errors, but all valid metric
+%% definitions in the same operation still succeed.</p>
+batch_create_rum_metric_definitions(Client, AppMonitorName, Input) ->
+    batch_create_rum_metric_definitions(Client, AppMonitorName, Input, []).
+batch_create_rum_metric_definitions(Client, AppMonitorName, Input0, Options0) ->
+    Method = post,
+    Path = ["/rummetrics/", aws_util:encode_uri(AppMonitorName), "/metrics"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes the specified metrics from being sent to an extended metrics
+%% destination.
+%%
+%% If some metric definition IDs specified in a
+%% `BatchDeleteRumMetricDefinitions' operations are not valid, those metric
+%% definitions fail and return errors, but all valid metric definition IDs in
+%% the same operation are still deleted.
+%%
+%% The maximum number of metric definitions that you can specify in one
+%% `BatchDeleteRumMetricDefinitions' operation is 200.
+batch_delete_rum_metric_definitions(Client, AppMonitorName, Input) ->
+    batch_delete_rum_metric_definitions(Client, AppMonitorName, Input, []).
+batch_delete_rum_metric_definitions(Client, AppMonitorName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/rummetrics/", aws_util:encode_uri(AppMonitorName), "/metrics"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"destination">>, <<"Destination">>},
+                     {<<"destinationArn">>, <<"DestinationArn">>},
+                     {<<"metricDefinitionIds">>, <<"MetricDefinitionIds">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves the list of metrics and dimensions that a RUM app monitor
+%% is sending to a single destination.
+batch_get_rum_metric_definitions(Client, AppMonitorName, Destination)
+  when is_map(Client) ->
+    batch_get_rum_metric_definitions(Client, AppMonitorName, Destination, #{}, #{}).
+
+batch_get_rum_metric_definitions(Client, AppMonitorName, Destination, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    batch_get_rum_metric_definitions(Client, AppMonitorName, Destination, QueryMap, HeadersMap, []).
+
+batch_get_rum_metric_definitions(Client, AppMonitorName, Destination, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/rummetrics/", aws_util:encode_uri(AppMonitorName), "/metrics"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"destination">>, Destination},
+        {<<"destinationArn">>, maps:get(<<"destinationArn">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Creates a Amazon CloudWatch RUM app monitor, which collects telemetry
 %% data from your application and sends that data to RUM.
@@ -104,6 +239,33 @@ delete_app_monitor(Client, Name, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a destination for CloudWatch RUM extended metrics, so that
+%% the specified app monitor stops sending extended metrics to that
+%% destination.
+delete_rum_metrics_destination(Client, AppMonitorName, Input) ->
+    delete_rum_metrics_destination(Client, AppMonitorName, Input, []).
+delete_rum_metrics_destination(Client, AppMonitorName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/rummetrics/", aws_util:encode_uri(AppMonitorName), "/metricsdestination"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"destination">>, <<"Destination">>},
+                     {<<"destinationArn">>, <<"DestinationArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the complete configuration information for one app monitor.
@@ -180,6 +342,37 @@ list_app_monitors(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns a list of destinations that you have created to receive RUM
+%% extended metrics, for the specified app monitor.
+%%
+%% For more information about extended metrics, see AddRumMetrics.
+list_rum_metrics_destinations(Client, AppMonitorName)
+  when is_map(Client) ->
+    list_rum_metrics_destinations(Client, AppMonitorName, #{}, #{}).
+
+list_rum_metrics_destinations(Client, AppMonitorName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_rum_metrics_destinations(Client, AppMonitorName, QueryMap, HeadersMap, []).
+
+list_rum_metrics_destinations(Client, AppMonitorName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/rummetrics/", aws_util:encode_uri(AppMonitorName), "/metricsdestination"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Displays the tags associated with a CloudWatch RUM resource.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
@@ -216,6 +409,35 @@ put_rum_events(Client, Id, Input) ->
 put_rum_events(Client, Id, Input0, Options0) ->
     Method = post,
     Path = ["/appmonitors/", aws_util:encode_uri(Id), "/"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates or updates a destination to receive extended metrics from
+%% CloudWatch RUM.
+%%
+%% You can send extended metrics to CloudWatch or to a CloudWatch Evidently
+%% experiment.
+%%
+%% For more information about extended metrics, see AddRumMetrics.
+put_rum_metrics_destination(Client, AppMonitorName, Input) ->
+    put_rum_metrics_destination(Client, AppMonitorName, Input, []).
+put_rum_metrics_destination(Client, AppMonitorName, Input0, Options0) ->
+    Method = post,
+    Path = ["/rummetrics/", aws_util:encode_uri(AppMonitorName), "/metricsdestination"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -320,6 +542,33 @@ update_app_monitor(Client, Name, Input) ->
 update_app_monitor(Client, Name, Input0, Options0) ->
     Method = patch,
     Path = ["/appmonitor/", aws_util:encode_uri(Name), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Modifies one existing metric definition for CloudWatch RUM extended
+%% metrics.
+%%
+%% For more information about extended metrics, see
+%% BatchCreateRumMetricsDefinitions.
+update_rum_metric_definition(Client, AppMonitorName, Input) ->
+    update_rum_metric_definition(Client, AppMonitorName, Input, []).
+update_rum_metric_definition(Client, AppMonitorName, Input0, Options0) ->
+    Method = patch,
+    Path = ["/rummetrics/", aws_util:encode_uri(AppMonitorName), "/metrics"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

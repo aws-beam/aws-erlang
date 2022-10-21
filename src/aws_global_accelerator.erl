@@ -70,6 +70,8 @@
 
 -export([add_custom_routing_endpoints/2,
          add_custom_routing_endpoints/3,
+         add_endpoints/2,
+         add_endpoints/3,
          advertise_byoip_cidr/2,
          advertise_byoip_cidr/3,
          allow_custom_routing_traffic/2,
@@ -142,6 +144,8 @@
          provision_byoip_cidr/3,
          remove_custom_routing_endpoints/2,
          remove_custom_routing_endpoints/3,
+         remove_endpoints/2,
+         remove_endpoints/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -191,6 +195,30 @@ add_custom_routing_endpoints(Client, Input)
 add_custom_routing_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddCustomRoutingEndpoints">>, Input, Options).
+
+%% @doc Add endpoints to an endpoint group.
+%%
+%% The `AddEndpoints' API operation is the recommended option for adding
+%% endpoints. The alternative options are to add endpoints when you create an
+%% endpoint group (with the CreateEndpointGroup API) or when you update an
+%% endpoint group (with the UpdateEndpointGroup API).
+%%
+%% There are two advantages to using `AddEndpoints' to add endpoints:
+%%
+%% <ul> <li> It's faster, because Global Accelerator only has to resolve the
+%% new endpoints that you're adding.
+%%
+%% </li> <li> It's more convenient, because you don't need to specify all of
+%% the current endpoints that are already in the endpoint group in addition
+%% to the new endpoints that you want to add.
+%%
+%% </li> </ul>
+add_endpoints(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_endpoints(Client, Input, []).
+add_endpoints(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddEndpoints">>, Input, Options).
 
 %% @doc Advertises an IPv4 address range that is provisioned for use with
 %% your Amazon Web Services resources through bring your own IP addresses
@@ -634,6 +662,30 @@ remove_custom_routing_endpoints(Client, Input)
 remove_custom_routing_endpoints(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveCustomRoutingEndpoints">>, Input, Options).
+
+%% @doc Remove endpoints from an endpoint group.
+%%
+%% The `RemoveEndpoints' API operation is the recommended option for removing
+%% endpoints. The alternative is to remove endpoints by updating an endpoint
+%% group by using the UpdateEndpointGroup API operation. There are two
+%% advantages to using `AddEndpoints' to remove endpoints instead:
+%%
+%% <ul> <li> It's more convenient, because you only need to specify the
+%% endpoints that you want to remove. With the `UpdateEndpointGroup' API
+%% operation, you must specify all of the endpoints in the endpoint group
+%% except the ones that you want to remove from the group.
+%%
+%% </li> <li> It's faster, because Global Accelerator doesn't need to resolve
+%% any endpoints. With the `UpdateEndpointGroup' API operation, Global
+%% Accelerator must resolve all of the endpoints that remain in the group.
+%%
+%% </li> </ul>
+remove_endpoints(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_endpoints(Client, Input, []).
+remove_endpoints(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveEndpoints">>, Input, Options).
 
 %% @doc Add tags to an accelerator resource.
 %%
