@@ -8,20 +8,19 @@
 %%
 %% Batch computing is a common means for developers, scientists, and
 %% engineers to access large amounts of compute resources. Batch uses the
-%% advantages of this computing workload to remove the undifferentiated heavy
+%% advantages of the batch computing to remove the undifferentiated heavy
 %% lifting of configuring and managing required infrastructure. At the same
-%% time, it also adopts a familiar batch computing software approach. Given
-%% these advantages, Batch can help you to efficiently provision resources in
-%% response to jobs submitted, thus effectively helping you to eliminate
-%% capacity constraints, reduce compute costs, and deliver your results more
-%% quickly.
+%% time, it also adopts a familiar batch computing software approach. You can
+%% use Batch to efficiently provision resources d, and work toward
+%% eliminating capacity constraints, reducing your overall compute costs, and
+%% delivering results more quickly.
 %%
 %% As a fully managed service, Batch can run batch computing workloads of any
 %% scale. Batch automatically provisions compute resources and optimizes
 %% workload distribution based on the quantity and scale of your specific
 %% workloads. With Batch, there's no need to install or manage batch
-%% computing software. This means that you can focus your time and energy on
-%% analyzing results and solving your specific problems.
+%% computing software. This means that you can focus on analyzing results and
+%% solving your specific problems instead.
 -module(aws_batch).
 
 -export([cancel_job/2,
@@ -83,8 +82,8 @@
 %% @doc Cancels a job in an Batch job queue.
 %%
 %% Jobs that are in the `SUBMITTED', `PENDING', or `RUNNABLE' state are
-%% canceled. Jobs that have progressed to `STARTING' or `RUNNING' aren't
-%% canceled, but the API operation still succeeds, even if no job is
+%% canceled. Jobs that progressed to the `STARTING' or `RUNNING' state aren't
+%% canceled. However, the API operation still succeeds, even if no job is
 %% canceled. These jobs must be terminated with the `TerminateJob' operation.
 cancel_job(Client, Input) ->
     cancel_job(Client, Input, []).
@@ -127,9 +126,9 @@ cancel_job(Client, Input0, Options0) ->
 %% Multi-node parallel jobs aren't supported on Spot Instances.
 %%
 %% In an unmanaged compute environment, you can manage your own EC2 compute
-%% resources and have a lot of flexibility with how you configure your
-%% compute resources. For example, you can use custom AMIs. However, you must
-%% verify that each of your AMIs meet the Amazon ECS container instance AMI
+%% resources and have flexibility with how you configure your compute
+%% resources. For example, you can use custom AMIs. However, you must verify
+%% that each of your AMIs meet the Amazon ECS container instance AMI
 %% specification. For more information, see container instance AMIs in the
 %% Amazon Elastic Container Service Developer Guide. After you created your
 %% unmanaged compute environment, you can use the
@@ -161,7 +160,7 @@ cancel_job(Client, Input0, Options0) ->
 %% use the enhanced updating of compute environments to update AMIs, follow
 %% these rules:
 %%
-%% Either do not set the service role (`serviceRole') parameter or set it to
+%% Either don't set the service role (`serviceRole') parameter or set it to
 %% the AWSBatchServiceRole service-linked role.
 %%
 %% Set the allocation strategy (`allocationStrategy') parameter to
@@ -170,27 +169,27 @@ cancel_job(Client, Input0, Options0) ->
 %% Set the update to latest image version (`updateToLatestImageVersion')
 %% parameter to `true'.
 %%
-%% Do not specify an AMI ID in `imageId', `imageIdOverride' (in
+%% Don't specify an AMI ID in `imageId', `imageIdOverride' (in
 %% `ec2Configuration' ), or in the launch template (`launchTemplate'). In
-%% that case Batch will select the latest Amazon ECS optimized AMI supported
-%% by Batch at the time the infrastructure update is initiated. Alternatively
-%% you can specify the AMI ID in the `imageId' or `imageIdOverride'
-%% parameters, or the launch template identified by the `LaunchTemplate'
-%% properties. Changing any of these properties will trigger an
+%% that case, Batch selects the latest Amazon ECS optimized AMI that's
+%% supported by Batch at the time the infrastructure update is initiated.
+%% Alternatively, you can specify the AMI ID in the `imageId' or
+%% `imageIdOverride' parameters, or the launch template identified by the
+%% `LaunchTemplate' properties. Changing any of these properties starts an
 %% infrastructure update. If the AMI ID is specified in the launch template,
-%% it can not be replaced by specifying an AMI ID in either the `imageId' or
+%% it can't be replaced by specifying an AMI ID in either the `imageId' or
 %% `imageIdOverride' parameters. It can only be replaced by specifying a
 %% different launch template, or if the launch template version is set to
 %% `$Default' or `$Latest', by setting either a new default version for the
-%% launch template (if `$Default')or by adding a new version to the launch
+%% launch template (if `$Default') or by adding a new version to the launch
 %% template (if `$Latest').
 %%
-%% If these rules are followed, any update that triggers an infrastructure
-%% update will cause the AMI ID to be re-selected. If the `version' setting
-%% in the launch template (`launchTemplate') is set to `$Latest' or
-%% `$Default', the latest or default version of the launch template will be
-%% evaluated up at the time of the infrastructure update, even if the
-%% `launchTemplate' was not updated.
+%% If these rules are followed, any update that starts an infrastructure
+%% update causes the AMI ID to be re-selected. If the `version' setting in
+%% the launch template (`launchTemplate') is set to `$Latest' or `$Default',
+%% the latest or default version of the launch template is evaluated up at
+%% the time of the infrastructure update, even if the `launchTemplate' wasn't
+%% updated.
 create_compute_environment(Client, Input) ->
     create_compute_environment(Client, Input, []).
 create_compute_environment(Client, Input0, Options0) ->
@@ -566,7 +565,7 @@ list_scheduling_policies(Client, Input0, Options0) ->
 %%
 %% Batch resources that support tags are compute environments, jobs, job
 %% definitions, job queues, and scheduling policies. ARNs for child jobs of
-%% array and multi-node parallel (MNP) jobs are not supported.
+%% array and multi-node parallel (MNP) jobs aren't supported.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -658,7 +657,7 @@ submit_job(Client, Input0, Options0) ->
 %% associated with that resource are deleted as well. Batch resources that
 %% support tags are compute environments, jobs, job definitions, job queues,
 %% and scheduling policies. ARNs for child jobs of array and multi-node
-%% parallel (MNP) jobs are not supported.
+%% parallel (MNP) jobs aren't supported.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->

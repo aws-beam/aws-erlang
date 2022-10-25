@@ -1,8 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc This is the Certificate Manager Private Certificate Authority (PCA)
-%% API Reference.
+%% @doc This is the Private Certificate Authority (PCA) API Reference.
 %%
 %% It provides descriptions, syntax, and usage examples for each of the
 %% actions and data types involved in creating and managing a private

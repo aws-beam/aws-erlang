@@ -4,11 +4,14 @@
 %% @doc DataSync
 %%
 %% DataSync is a managed data transfer service that makes it simpler for you
-%% to automate moving data between on-premises storage and Amazon Simple
-%% Storage Service (Amazon S3) or Amazon Elastic File System (Amazon EFS).
+%% to automate moving data between on-premises storage and Amazon Web
+%% Services storage services.
 %%
-%% This API interface reference for DataSync contains documentation for a
-%% programming interface that you can use to manage DataSync.
+%% You also can use DataSync to transfer data between other cloud providers
+%% and Amazon Web Services storage services.
+%%
+%% This API interface reference includes documentation for using DataSync
+%% programmatically. For complete information, see the DataSync User Guide .
 -module(aws_datasync).
 
 -export([cancel_task_execution/2,
@@ -106,15 +109,16 @@
 %% API
 %%====================================================================
 
-%% @doc Cancels execution of a task.
+%% @doc Stops an DataSync task execution that's in progress.
 %%
-%% When you cancel a task execution, the transfer of some files is abruptly
-%% interrupted. The contents of files that are transferred to the destination
-%% might be incomplete or inconsistent with the source files. However, if you
-%% start a new task execution on the same task and you allow the task
-%% execution to complete, file content on the destination is complete and
+%% The transfer of some files are abruptly interrupted. File contents that're
+%% transferred to the destination might be incomplete or inconsistent with
+%% the source files.
+%%
+%% However, if you start a new task execution using the same task and allow
+%% it to finish, file content on the destination will be complete and
 %% consistent. This applies to other unexpected failures that interrupt a
-%% task execution. In all of these cases, DataSync successfully complete the
+%% task execution. In all of these cases, DataSync successfully completes the
 %% transfer when you start the next task execution.
 cancel_task_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -123,7 +127,8 @@ cancel_task_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelTaskExecution">>, Input, Options).
 
-%% @doc Activates an DataSync agent that you have deployed on your host.
+%% @doc Activates an DataSync agent that you have deployed in your storage
+%% environment.
 %%
 %% The activation process associates your agent with your account. In the
 %% activation process, you specify information such as the Amazon Web
@@ -180,7 +185,13 @@ create_location_fsx_ontap(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationFsxOntap">>, Input, Options).
 
-%% @doc Creates an endpoint for an Amazon FSx for OpenZFS file system.
+%% @doc Creates an endpoint for an Amazon FSx for OpenZFS file system that
+%% DataSync can access for a transfer.
+%%
+%% For more information, see Creating a location for FSx for OpenZFS.
+%%
+%% Request parameters related to `SMB' aren't supported with the
+%% `CreateLocationFsxOpenZfs' operation.
 create_location_fsx_open_zfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_fsx_open_zfs(Client, Input, []).
@@ -225,7 +236,8 @@ create_location_object_storage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationObjectStorage">>, Input, Options).
 
-%% @doc Creates an endpoint for an Amazon S3 bucket.
+%% @doc Creates an endpoint for an Amazon S3 bucket that DataSync can access
+%% for a transfer.
 %%
 %% For more information, see Create an Amazon S3 location in the DataSync
 %% User Guide.
@@ -320,8 +332,8 @@ describe_location_efs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationEfs">>, Input, Options).
 
-%% @doc Returns metadata about an Amazon FSx for Lustre location, such as
-%% information about its path.
+%% @doc Provides details about how an DataSync location for an Amazon FSx for
+%% Lustre file system is configured.
 describe_location_fsx_lustre(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_fsx_lustre(Client, Input, []).
@@ -331,6 +343,9 @@ describe_location_fsx_lustre(Client, Input, Options)
 
 %% @doc Provides details about how an DataSync location for an Amazon FSx for
 %% NetApp ONTAP file system is configured.
+%%
+%% If your location uses SMB, the `DescribeLocationFsxOntap' operation
+%% doesn't actually return a `Password'.
 describe_location_fsx_ontap(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_fsx_ontap(Client, Input, []).
@@ -338,8 +353,11 @@ describe_location_fsx_ontap(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationFsxOntap">>, Input, Options).
 
-%% @doc Returns metadata about an Amazon FSx for OpenZFS location, such as
-%% information about its path.
+%% @doc Provides details about how an DataSync location for an Amazon FSx for
+%% OpenZFS file system is configured.
+%%
+%% Response elements related to `SMB' aren't supported with the
+%% `DescribeLocationFsxOpenZfs' operation.
 describe_location_fsx_open_zfs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_location_fsx_open_zfs(Client, Input, []).
@@ -536,8 +554,8 @@ update_location_nfs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLocationNfs">>, Input, Options).
 
-%% @doc Updates some of the parameters of a previously created location for
-%% self-managed object storage server access.
+%% @doc Updates some parameters of an existing object storage location that
+%% DataSync accesses for a transfer.
 %%
 %% For information about creating a self-managed object storage location, see
 %% Creating a location for object storage.

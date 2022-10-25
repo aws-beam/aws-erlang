@@ -368,6 +368,8 @@
          list_image_versions/3,
          list_images/2,
          list_images/3,
+         list_inference_recommendations_job_steps/2,
+         list_inference_recommendations_job_steps/3,
          list_inference_recommendations_jobs/2,
          list_inference_recommendations_jobs/3,
          list_labeling_jobs/2,
@@ -2845,6 +2847,17 @@ list_images(Client, Input)
 list_images(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListImages">>, Input, Options).
+
+%% @doc Returns a list of the subtasks for an Inference Recommender job.
+%%
+%% The supported subtasks are benchmarks, which evaluate the performance of
+%% your model on different instance types.
+list_inference_recommendations_job_steps(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_inference_recommendations_job_steps(Client, Input, []).
+list_inference_recommendations_job_steps(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListInferenceRecommendationsJobSteps">>, Input, Options).
 
 %% @doc Lists recommendation jobs that satisfy various filters.
 list_inference_recommendations_jobs(Client, Input)
