@@ -123,8 +123,7 @@
 %% API
 %%====================================================================
 
-%% @doc Configures Amazon CloudWatch log settings for a playback
-%% configuration.
+%% @doc Amazon CloudWatch log settings for a playback configuration.
 configure_logs_for_playback_configuration(Client, Input) ->
     configure_logs_for_playback_configuration(Client, Input, []).
 configure_logs_for_playback_configuration(Client, Input0, Options0) ->
@@ -148,6 +147,9 @@ configure_logs_for_playback_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a channel.
+%%
+%% For information about MediaTailor channels, see Working with channels in
+%% the MediaTailor User Guide.
 create_channel(Client, ChannelName, Input) ->
     create_channel(Client, ChannelName, Input, []).
 create_channel(Client, ChannelName, Input0, Options0) ->
@@ -170,7 +172,7 @@ create_channel(Client, ChannelName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates name for a specific live source in a source location.
+%% @doc The live source configuration.
 create_live_source(Client, LiveSourceName, SourceLocationName, Input) ->
     create_live_source(Client, LiveSourceName, SourceLocationName, Input, []).
 create_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0) ->
@@ -193,8 +195,11 @@ create_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new prefetch schedule for the specified playback
-%% configuration.
+%% @doc Creates a prefetch schedule for a playback configuration.
+%%
+%% A prefetch schedule allows you to tell MediaTailor to fetch and prepare
+%% certain ads before an ad break happens. For more information about ad
+%% prefetching, see Using ad prefetching in the MediaTailor User Guide.
 create_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input) ->
     create_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input, []).
 create_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input0, Options0) ->
@@ -217,7 +222,10 @@ create_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input0, Option
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a program.
+%% @doc Creates a program within a channel.
+%%
+%% For information about programs, see Working with programs in the
+%% MediaTailor User Guide.
 create_program(Client, ChannelName, ProgramName, Input) ->
     create_program(Client, ChannelName, ProgramName, Input, []).
 create_program(Client, ChannelName, ProgramName, Input0, Options0) ->
@@ -240,7 +248,11 @@ create_program(Client, ChannelName, ProgramName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a source location on a specific channel.
+%% @doc Creates a source location.
+%%
+%% A source location is a container for sources. For more information about
+%% source locations, see Working with source locations in the MediaTailor
+%% User Guide.
 create_source_location(Client, SourceLocationName, Input) ->
     create_source_location(Client, SourceLocationName, Input, []).
 create_source_location(Client, SourceLocationName, Input0, Options0) ->
@@ -263,7 +275,7 @@ create_source_location(Client, SourceLocationName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates name for a specific VOD source in a source location.
+%% @doc The VOD source configuration parameters.
 create_vod_source(Client, SourceLocationName, VodSourceName, Input) ->
     create_vod_source(Client, SourceLocationName, VodSourceName, Input, []).
 create_vod_source(Client, SourceLocationName, VodSourceName, Input0, Options0) ->
@@ -288,7 +300,8 @@ create_vod_source(Client, SourceLocationName, VodSourceName, Input0, Options0) -
 
 %% @doc Deletes a channel.
 %%
-%% You must stop the channel before it can be deleted.
+%% For information about MediaTailor channels, see Working with channels in
+%% the MediaTailor User Guide.
 delete_channel(Client, ChannelName, Input) ->
     delete_channel(Client, ChannelName, Input, []).
 delete_channel(Client, ChannelName, Input0, Options0) ->
@@ -311,7 +324,7 @@ delete_channel(Client, ChannelName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a channel's IAM policy.
+%% @doc The channel policy to delete.
 delete_channel_policy(Client, ChannelName, Input) ->
     delete_channel_policy(Client, ChannelName, Input, []).
 delete_channel_policy(Client, ChannelName, Input0, Options0) ->
@@ -334,7 +347,7 @@ delete_channel_policy(Client, ChannelName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a specific live source in a specific source location.
+%% @doc The live source to delete.
 delete_live_source(Client, LiveSourceName, SourceLocationName, Input) ->
     delete_live_source(Client, LiveSourceName, SourceLocationName, Input, []).
 delete_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0) ->
@@ -357,7 +370,10 @@ delete_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the playback configuration for the specified name.
+%% @doc Deletes a playback configuration.
+%%
+%% For information about MediaTailor configurations, see Working with
+%% configurations in AWS Elemental MediaTailor.
 delete_playback_configuration(Client, Name, Input) ->
     delete_playback_configuration(Client, Name, Input, []).
 delete_playback_configuration(Client, Name, Input0, Options0) ->
@@ -382,8 +398,9 @@ delete_playback_configuration(Client, Name, Input0, Options0) ->
 
 %% @doc Deletes a prefetch schedule for a specific playback configuration.
 %%
-%% If you call DeletePrefetchSchedule on an expired prefetch schedule,
-%% MediaTailor returns an HTTP 404 status code.
+%% If you call `DeletePrefetchSchedule' on an expired prefetch schedule,
+%% MediaTailor returns an HTTP 404 status code. For more information about ad
+%% prefetching, see Using ad prefetching in the MediaTailor User Guide.
 delete_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input) ->
     delete_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input, []).
 delete_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input0, Options0) ->
@@ -406,7 +423,10 @@ delete_prefetch_schedule(Client, Name, PlaybackConfigurationName, Input0, Option
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a specific program on a specific channel.
+%% @doc Deletes a program within a channel.
+%%
+%% For information about programs, see Working with programs in the
+%% MediaTailor User Guide.
 delete_program(Client, ChannelName, ProgramName, Input) ->
     delete_program(Client, ChannelName, ProgramName, Input, []).
 delete_program(Client, ChannelName, ProgramName, Input0, Options0) ->
@@ -429,7 +449,11 @@ delete_program(Client, ChannelName, ProgramName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a source location on a specific channel.
+%% @doc Deletes a source location.
+%%
+%% A source location is a container for sources. For more information about
+%% source locations, see Working with source locations in the MediaTailor
+%% User Guide.
 delete_source_location(Client, SourceLocationName, Input) ->
     delete_source_location(Client, SourceLocationName, Input, []).
 delete_source_location(Client, SourceLocationName, Input0, Options0) ->
@@ -452,7 +476,7 @@ delete_source_location(Client, SourceLocationName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a specific VOD source in a specific source location.
+%% @doc The video on demand (VOD) source to delete.
 delete_vod_source(Client, SourceLocationName, VodSourceName, Input) ->
     delete_vod_source(Client, SourceLocationName, VodSourceName, Input, []).
 delete_vod_source(Client, SourceLocationName, VodSourceName, Input0, Options0) ->
@@ -475,7 +499,10 @@ delete_vod_source(Client, SourceLocationName, VodSourceName, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes the properties of a specific channel.
+%% @doc Describes a channel.
+%%
+%% For information about MediaTailor channels, see Working with channels in
+%% the MediaTailor User Guide.
 describe_channel(Client, ChannelName)
   when is_map(Client) ->
     describe_channel(Client, ChannelName, #{}, #{}).
@@ -498,8 +525,7 @@ describe_channel(Client, ChannelName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Provides details about a specific live source in a specific source
-%% location.
+%% @doc The live source to describe.
 describe_live_source(Client, LiveSourceName, SourceLocationName)
   when is_map(Client) ->
     describe_live_source(Client, LiveSourceName, SourceLocationName, #{}, #{}).
@@ -522,7 +548,10 @@ describe_live_source(Client, LiveSourceName, SourceLocationName, QueryMap, Heade
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the properties of the requested program.
+%% @doc Describes a program within a channel.
+%%
+%% For information about programs, see Working with programs in the
+%% MediaTailor User Guide.
 describe_program(Client, ChannelName, ProgramName)
   when is_map(Client) ->
     describe_program(Client, ChannelName, ProgramName, #{}, #{}).
@@ -545,7 +574,11 @@ describe_program(Client, ChannelName, ProgramName, QueryMap, HeadersMap, Options
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the properties of the requested source location.
+%% @doc Describes a source location.
+%%
+%% A source location is a container for sources. For more information about
+%% source locations, see Working with source locations in the MediaTailor
+%% User Guide.
 describe_source_location(Client, SourceLocationName)
   when is_map(Client) ->
     describe_source_location(Client, SourceLocationName, #{}, #{}).
@@ -568,8 +601,8 @@ describe_source_location(Client, SourceLocationName, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Provides details about a specific VOD source in a specific source
-%% location.
+%% @doc Provides details about a specific video on demand (VOD) source in a
+%% specific source location.
 describe_vod_source(Client, SourceLocationName, VodSourceName)
   when is_map(Client) ->
     describe_vod_source(Client, SourceLocationName, VodSourceName, #{}, #{}).
@@ -592,7 +625,9 @@ describe_vod_source(Client, SourceLocationName, VodSourceName, QueryMap, Headers
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about a channel's IAM policy.
+%% @doc Returns the channel's IAM policy.
+%%
+%% IAM policies are used to control access to your channel.
 get_channel_policy(Client, ChannelName)
   when is_map(Client) ->
     get_channel_policy(Client, ChannelName, #{}, #{}).
@@ -644,7 +679,10 @@ get_channel_schedule(Client, ChannelName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the playback configuration for the specified name.
+%% @doc Retrieves a playback configuration.
+%%
+%% For information about MediaTailor configurations, see Working with
+%% configurations in AWS Elemental MediaTailor.
 get_playback_configuration(Client, Name)
   when is_map(Client) ->
     get_playback_configuration(Client, Name, #{}, #{}).
@@ -667,11 +705,11 @@ get_playback_configuration(Client, Name, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about the prefetch schedule for a specific
-%% playback configuration.
+%% @doc Retrieves a prefetch schedule for a playback configuration.
 %%
-%% If you call GetPrefetchSchedule on an expired prefetch schedule,
-%% MediaTailor returns an HTTP 404 status code.
+%% A prefetch schedule allows you to tell MediaTailor to fetch and prepare
+%% certain ads before an ad break happens. For more information about ad
+%% prefetching, see Using ad prefetching in the MediaTailor User Guide.
 get_prefetch_schedule(Client, Name, PlaybackConfigurationName)
   when is_map(Client) ->
     get_prefetch_schedule(Client, Name, PlaybackConfigurationName, #{}, #{}).
@@ -694,7 +732,8 @@ get_prefetch_schedule(Client, Name, PlaybackConfigurationName, QueryMap, Headers
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of alerts for the given resource.
+%% @doc Lists the alerts that are associated with a MediaTailor channel
+%% assembly resource.
 list_alerts(Client, ResourceArn)
   when is_map(Client) ->
     list_alerts(Client, ResourceArn, #{}, #{}).
@@ -723,7 +762,8 @@ list_alerts(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves a list of channels that are associated with this account.
+%% @doc Retrieves information about the channels that are associated with the
+%% current AWS account.
 list_channels(Client)
   when is_map(Client) ->
     list_channels(Client, #{}, #{}).
@@ -751,7 +791,9 @@ list_channels(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc lists all the live sources in a source location.
+%% @doc Lists the live sources contained in a source location.
+%%
+%% A source represents a piece of content.
 list_live_sources(Client, SourceLocationName)
   when is_map(Client) ->
     list_live_sources(Client, SourceLocationName, #{}, #{}).
@@ -779,14 +821,10 @@ list_live_sources(Client, SourceLocationName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of the playback configurations defined in AWS
-%% Elemental MediaTailor.
+%% @doc Retrieves existing playback configurations.
 %%
-%% You can specify a maximum number of configurations to return at a time.
-%% The default maximum is 50. Results are returned in pagefuls. If
-%% MediaTailor has more configurations than the specified maximum, it
-%% provides parameters in the response that you can use to retrieve the next
-%% pageful.
+%% For information about MediaTailor configurations, see Working with
+%% Configurations in AWS Elemental MediaTailor.
 list_playback_configurations(Client)
   when is_map(Client) ->
     list_playback_configurations(Client, #{}, #{}).
@@ -814,7 +852,7 @@ list_playback_configurations(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Creates a new prefetch schedule.
+%% @doc Lists the prefetch schedules for a playback configuration.
 list_prefetch_schedules(Client, PlaybackConfigurationName, Input) ->
     list_prefetch_schedules(Client, PlaybackConfigurationName, Input, []).
 list_prefetch_schedules(Client, PlaybackConfigurationName, Input0, Options0) ->
@@ -837,7 +875,10 @@ list_prefetch_schedules(Client, PlaybackConfigurationName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves a list of source locations.
+%% @doc Lists the source locations for a channel.
+%%
+%% A source location defines the host server URL, and contains a list of
+%% sources.
 list_source_locations(Client)
   when is_map(Client) ->
     list_source_locations(Client, #{}, #{}).
@@ -865,8 +906,11 @@ list_source_locations(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of the tags assigned to the specified playback
-%% configuration resource.
+%% @doc A list of tags that are associated with this resource.
+%%
+%% Tags are key-value pairs that you can associate with Amazon resources to
+%% help with organization, access control, and cost tracking. For more
+%% information, see Tagging AWS Elemental MediaTailor Resources.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -889,7 +933,9 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all the VOD sources in a source location.
+%% @doc Lists the VOD sources contained in a source location.
+%%
+%% A source represents a piece of content.
 list_vod_sources(Client, SourceLocationName)
   when is_map(Client) ->
     list_vod_sources(Client, SourceLocationName, #{}, #{}).
@@ -918,6 +964,8 @@ list_vod_sources(Client, SourceLocationName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Creates an IAM policy for the channel.
+%%
+%% IAM policies are used to control access to your channel.
 put_channel_policy(Client, ChannelName, Input) ->
     put_channel_policy(Client, ChannelName, Input, []).
 put_channel_policy(Client, ChannelName, Input0, Options0) ->
@@ -940,7 +988,10 @@ put_channel_policy(Client, ChannelName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds a new playback configuration to AWS Elemental MediaTailor.
+%% @doc Creates a playback configuration.
+%%
+%% For information about MediaTailor configurations, see Working with
+%% configurations in AWS Elemental MediaTailor.
 put_playback_configuration(Client, Input) ->
     put_playback_configuration(Client, Input, []).
 put_playback_configuration(Client, Input0, Options0) ->
@@ -963,7 +1014,10 @@ put_playback_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts a specific channel.
+%% @doc Starts a channel.
+%%
+%% For information about MediaTailor channels, see Working with channels in
+%% the MediaTailor User Guide.
 start_channel(Client, ChannelName, Input) ->
     start_channel(Client, ChannelName, Input, []).
 start_channel(Client, ChannelName, Input0, Options0) ->
@@ -986,7 +1040,10 @@ start_channel(Client, ChannelName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Stops a specific channel.
+%% @doc Stops a channel.
+%%
+%% For information about MediaTailor channels, see Working with channels in
+%% the MediaTailor User Guide.
 stop_channel(Client, ChannelName, Input) ->
     stop_channel(Client, ChannelName, Input, []).
 stop_channel(Client, ChannelName, Input0, Options0) ->
@@ -1009,9 +1066,11 @@ stop_channel(Client, ChannelName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds tags to the specified playback configuration resource.
+%% @doc The resource to tag.
 %%
-%% You can specify one or more tags to add.
+%% Tags are key-value pairs that you can associate with Amazon resources to
+%% help with organization, access control, and cost tracking. For more
+%% information, see Tagging AWS Elemental MediaTailor Resources.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -1034,9 +1093,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes tags from the specified playback configuration resource.
-%%
-%% You can specify one or more tags to remove.
+%% @doc The resource to untag.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -1060,7 +1117,10 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing channel.
+%% @doc Updates a channel.
+%%
+%% For information about MediaTailor channels, see Working with channels in
+%% the MediaTailor User Guide.
 update_channel(Client, ChannelName, Input) ->
     update_channel(Client, ChannelName, Input, []).
 update_channel(Client, ChannelName, Input0, Options0) ->
@@ -1083,7 +1143,7 @@ update_channel(Client, ChannelName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a specific live source in a specific source location.
+%% @doc Updates a live source's configuration.
 update_live_source(Client, LiveSourceName, SourceLocationName, Input) ->
     update_live_source(Client, LiveSourceName, SourceLocationName, Input, []).
 update_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0) ->
@@ -1106,7 +1166,11 @@ update_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a source location on a specific channel.
+%% @doc Updates a source location.
+%%
+%% A source location is a container for sources. For more information about
+%% source locations, see Working with source locations in the MediaTailor
+%% User Guide.
 update_source_location(Client, SourceLocationName, Input) ->
     update_source_location(Client, SourceLocationName, Input, []).
 update_source_location(Client, SourceLocationName, Input0, Options0) ->
@@ -1129,7 +1193,7 @@ update_source_location(Client, SourceLocationName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a specific VOD source in a specific source location.
+%% @doc Updates a VOD source's configuration.
 update_vod_source(Client, SourceLocationName, VodSourceName, Input) ->
     update_vod_source(Client, SourceLocationName, VodSourceName, Input, []).
 update_vod_source(Client, SourceLocationName, VodSourceName, Input0, Options0) ->

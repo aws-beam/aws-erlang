@@ -317,6 +317,10 @@ create_workspace_image(Client, Input, Options)
 %%
 %% This operation is asynchronous and returns before the WorkSpaces are
 %% created.
+%%
+%% The `MANUAL' running mode value is only supported by Amazon WorkSpaces
+%% Core. Contact your account team to be allow-listed to use this value. For
+%% more information, see Amazon WorkSpaces Core.
 create_workspaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workspaces(Client, Input, []).
@@ -644,8 +648,8 @@ import_client_branding(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportClientBranding">>, Input, Options).
 
-%% @doc Imports the specified Windows 10 Bring Your Own License (BYOL) image
-%% into Amazon WorkSpaces.
+%% @doc Imports the specified Windows 10 Bring Your Own License (BYOL) or
+%% Windows Server 2016 BYOL image into Amazon WorkSpaces.
 %%
 %% The image must be an already licensed Amazon EC2 image that is in your
 %% Amazon Web Services account, and you must own the image. For more
@@ -760,6 +764,10 @@ modify_workspace_creation_properties(Client, Input, Options)
 %%
 %% For important information about how to modify the size of the root and
 %% user volumes, see Modify a WorkSpace.
+%%
+%% The `MANUAL' running mode value is only supported by Amazon WorkSpaces
+%% Core. Contact your account team to be allow-listed to use this value. For
+%% more information, see Amazon WorkSpaces Core.
 modify_workspace_properties(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_workspace_properties(Client, Input, []).
