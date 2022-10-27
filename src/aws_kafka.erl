@@ -89,7 +89,9 @@
          update_monitoring/3,
          update_monitoring/4,
          update_security/3,
-         update_security/4]).
+         update_security/4,
+         update_storage/3,
+         update_storage/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -956,6 +958,30 @@ update_security(Client, ClusterArn, Input) ->
 update_security(Client, ClusterArn, Input0, Options0) ->
     Method = patch,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/security"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates cluster broker volume size (or) sets cluster storage mode to
+%% TIERED.
+update_storage(Client, ClusterArn, Input) ->
+    update_storage(Client, ClusterArn, Input, []).
+update_storage(Client, ClusterArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/storage"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
