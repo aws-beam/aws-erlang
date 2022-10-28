@@ -396,10 +396,9 @@ disassociate_web_acl(Client, Input, Options)
 %% mobile SDK.
 %%
 %% The mobile SDK is not generally available. Customers who have access to
-%% the mobile SDK can use it to establish and manage Security Token Service
-%% (STS) security tokens for use in HTTP(S) requests from a mobile device to
-%% WAF. For more information, see WAF client application integration in the
-%% WAF Developer Guide.
+%% the mobile SDK can use it to establish and manage WAF tokens for use in
+%% HTTP(S) requests from a mobile device to WAF. For more information, see
+%% WAF client application integration in the WAF Developer Guide.
 generate_mobile_sdk_release_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     generate_mobile_sdk_release_url(Client, Input, []).
@@ -443,10 +442,9 @@ get_managed_rule_set(Client, Input, Options)
 %% release notes and tags.
 %%
 %% The mobile SDK is not generally available. Customers who have access to
-%% the mobile SDK can use it to establish and manage Security Token Service
-%% (STS) security tokens for use in HTTP(S) requests from a mobile device to
-%% WAF. For more information, see WAF client application integration in the
-%% WAF Developer Guide.
+%% the mobile SDK can use it to establish and manage WAF tokens for use in
+%% HTTP(S) requests from a mobile device to WAF. For more information, see
+%% WAF client application integration in the WAF Developer Guide.
 get_mobile_sdk_release(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_mobile_sdk_release(Client, Input, []).
@@ -602,10 +600,9 @@ list_managed_rule_sets(Client, Input, Options)
 %% specified device platform.
 %%
 %% The mobile SDK is not generally available. Customers who have access to
-%% the mobile SDK can use it to establish and manage Security Token Service
-%% (STS) security tokens for use in HTTP(S) requests from a mobile device to
-%% WAF. For more information, see WAF client application integration in the
-%% WAF Developer Guide.
+%% the mobile SDK can use it to establish and manage WAF tokens for use in
+%% HTTP(S) requests from a mobile device to WAF. For more information, see
+%% WAF client application integration in the WAF Developer Guide.
 list_mobile_sdk_releases(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_mobile_sdk_releases(Client, Input, []).
