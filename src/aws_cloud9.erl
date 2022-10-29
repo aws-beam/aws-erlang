@@ -110,7 +110,7 @@ delete_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEnvironment">>, Input, Options).
 
-%% @doc Deletes an environment member from an Cloud9 development environment.
+%% @doc Deletes an environment member from a development environment.
 delete_environment_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_environment_membership(Client, Input, []).

@@ -1151,8 +1151,8 @@ stop_stack_set_operation(Client, Input, Options)
 %% when the type was registered. For more information, see RegisterType.
 %%
 %% Once you've initiated testing on an extension using `TestType', you can
-%% use DescribeType to monitor the current test status and test status
-%% description for the extension.
+%% pass the returned `TypeVersionArn' into DescribeType to monitor the
+%% current test status and test status description for the extension.
 %%
 %% An extension must have a test status of `PASSED' before it can be
 %% published. For more information, see Publishing extensions to make them

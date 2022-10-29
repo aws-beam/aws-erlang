@@ -282,8 +282,8 @@ create_entitlement(Client, Input, Options)
 
 %% @doc Creates a fleet.
 %%
-%% A fleet consists of streaming instances that run a specified image when
-%% using Always-On or On-Demand.
+%% A fleet consists of streaming instances that your users access for their
+%% applications and desktops.
 create_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_fleet(Client, Input, []).
