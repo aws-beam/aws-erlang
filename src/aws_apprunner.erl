@@ -41,6 +41,8 @@
          create_service/3,
          create_vpc_connector/2,
          create_vpc_connector/3,
+         create_vpc_ingress_connection/2,
+         create_vpc_ingress_connection/3,
          delete_auto_scaling_configuration/2,
          delete_auto_scaling_configuration/3,
          delete_connection/2,
@@ -51,6 +53,8 @@
          delete_service/3,
          delete_vpc_connector/2,
          delete_vpc_connector/3,
+         delete_vpc_ingress_connection/2,
+         delete_vpc_ingress_connection/3,
          describe_auto_scaling_configuration/2,
          describe_auto_scaling_configuration/3,
          describe_custom_domains/2,
@@ -61,6 +65,8 @@
          describe_service/3,
          describe_vpc_connector/2,
          describe_vpc_connector/3,
+         describe_vpc_ingress_connection/2,
+         describe_vpc_ingress_connection/3,
          disassociate_custom_domain/2,
          disassociate_custom_domain/3,
          list_auto_scaling_configurations/2,
@@ -77,6 +83,8 @@
          list_tags_for_resource/3,
          list_vpc_connectors/2,
          list_vpc_connectors/3,
+         list_vpc_ingress_connections/2,
+         list_vpc_ingress_connections/3,
          pause_service/2,
          pause_service/3,
          resume_service/2,
@@ -88,7 +96,9 @@
          untag_resource/2,
          untag_resource/3,
          update_service/2,
-         update_service/3]).
+         update_service/3,
+         update_vpc_ingress_connection/2,
+         update_vpc_ingress_connection/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -209,6 +219,17 @@ create_vpc_connector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateVpcConnector">>, Input, Options).
 
+%% @doc Create an App Runner VPC Ingress Connection resource.
+%%
+%% App Runner requires this resource when you want to associate your App
+%% Runner service with an Amazon VPC endpoint.
+create_vpc_ingress_connection(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_vpc_ingress_connection(Client, Input, []).
+create_vpc_ingress_connection(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateVpcIngressConnection">>, Input, Options).
+
 %% @doc Delete an App Runner automatic scaling configuration resource.
 %%
 %% You can delete a specific revision or the latest active revision. You
@@ -250,6 +271,9 @@ delete_observability_configuration(Client, Input, Options)
 %% This is an asynchronous operation. On a successful call, you can use the
 %% returned `OperationId' and the `ListOperations' call to track the
 %% operation's progress.
+%%
+%% Make sure that you don't have any active VPCIngressConnections associated
+%% with the service you want to delete.
 delete_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service(Client, Input, []).
@@ -267,6 +291,28 @@ delete_vpc_connector(Client, Input)
 delete_vpc_connector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteVpcConnector">>, Input, Options).
+
+%% @doc Delete an App Runner VPC Ingress Connection resource that's
+%% associated with an App Runner service.
+%%
+%% The VPC Ingress Connection must be in one of the following states to be
+%% deleted:
+%%
+%% <ul> <li> `AVAILABLE'
+%%
+%% </li> <li> `FAILED_CREATION'
+%%
+%% </li> <li> `FAILED_UPDATE'
+%%
+%% </li> <li> `FAILED_DELETION'
+%%
+%% </li> </ul>
+delete_vpc_ingress_connection(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_vpc_ingress_connection(Client, Input, []).
+delete_vpc_ingress_connection(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteVpcIngressConnection">>, Input, Options).
 
 %% @doc Return a full description of an App Runner automatic scaling
 %% configuration resource.
@@ -310,6 +356,15 @@ describe_vpc_connector(Client, Input)
 describe_vpc_connector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeVpcConnector">>, Input, Options).
+
+%% @doc Return a full description of an App Runner VPC Ingress Connection
+%% resource.
+describe_vpc_ingress_connection(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_vpc_ingress_connection(Client, Input, []).
+describe_vpc_ingress_connection(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeVpcIngressConnection">>, Input, Options).
 
 %% @doc Disassociate a custom domain name from an App Runner service.
 %%
@@ -407,6 +462,15 @@ list_vpc_connectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVpcConnectors">>, Input, Options).
 
+%% @doc Return a list of App Runner VPC Ingress Connections in your Amazon
+%% Web Services account.
+list_vpc_ingress_connections(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_vpc_ingress_connections(Client, Input, []).
+list_vpc_ingress_connections(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListVpcIngressConnections">>, Input, Options).
+
 %% @doc Pause an active App Runner service.
 %%
 %% App Runner reduces compute capacity for the service to zero and loses
@@ -493,6 +557,25 @@ update_service(Client, Input)
 update_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateService">>, Input, Options).
+
+%% @doc Update an existing App Runner VPC Ingress Connection resource.
+%%
+%% The VPC Ingress Connection must be in one of the following states to be
+%% updated:
+%%
+%% <ul> <li> AVAILABLE
+%%
+%% </li> <li> FAILED_CREATION
+%%
+%% </li> <li> FAILED_UPDATE
+%%
+%% </li> </ul>
+update_vpc_ingress_connection(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_vpc_ingress_connection(Client, Input, []).
+update_vpc_ingress_connection(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateVpcIngressConnection">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

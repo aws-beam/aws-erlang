@@ -173,6 +173,8 @@
          disassociate_routing_profile_queues/5,
          disassociate_security_key/4,
          disassociate_security_key/5,
+         dismiss_user_contact/4,
+         dismiss_user_contact/5,
          get_contact_attributes/3,
          get_contact_attributes/5,
          get_contact_attributes/6,
@@ -2161,6 +2163,33 @@ disassociate_security_key(Client, AssociationId, InstanceId, Input) ->
 disassociate_security_key(Client, AssociationId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/security-key/", aws_util:encode_uri(AssociationId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Dismisses contacts from an agent’s CCP and returns the agent to an
+%% available state, which allows the agent to receive a new routed contact.
+%%
+%% Contacts can only be dismissed if they are in a `MISSED', `ERROR',
+%% `ENDED', or `REJECTED' state in the Agent Event Stream.
+dismiss_user_contact(Client, InstanceId, UserId, Input) ->
+    dismiss_user_contact(Client, InstanceId, UserId, Input, []).
+dismiss_user_contact(Client, InstanceId, UserId, Input0, Options0) ->
+    Method = post,
+    Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/contact"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -4710,7 +4739,7 @@ update_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
 %% @doc Updates the traffic distribution for a given traffic distribution
 %% group.
 %%
-%% For more information about updating a traffic distribution group see
+%% For more information about updating a traffic distribution group, see
 %% Update telephony traffic distribution across Amazon Web Services Regions
 %% in the Amazon Connect Administrator Guide.
 update_traffic_distribution(Client, Id, Input) ->

@@ -12,7 +12,9 @@
 %% Amazon SES API v2 features programmatically.
 -module(aws_sesv2).
 
--export([create_configuration_set/2,
+-export([batch_get_metric_data/2,
+         batch_get_metric_data/3,
+         create_configuration_set/2,
          create_configuration_set/3,
          create_configuration_set_event_destination/3,
          create_configuration_set_event_destination/4,
@@ -141,6 +143,8 @@
          list_import_jobs/1,
          list_import_jobs/3,
          list_import_jobs/4,
+         list_recommendations/2,
+         list_recommendations/3,
          list_suppressed_destinations/1,
          list_suppressed_destinations/3,
          list_suppressed_destinations/4,
@@ -155,6 +159,8 @@
          put_account_sending_attributes/3,
          put_account_suppression_attributes/2,
          put_account_suppression_attributes/3,
+         put_account_vdm_attributes/2,
+         put_account_vdm_attributes/3,
          put_configuration_set_delivery_options/3,
          put_configuration_set_delivery_options/4,
          put_configuration_set_reputation_options/3,
@@ -165,6 +171,8 @@
          put_configuration_set_suppression_options/4,
          put_configuration_set_tracking_options/3,
          put_configuration_set_tracking_options/4,
+         put_configuration_set_vdm_options/3,
+         put_configuration_set_vdm_options/4,
          put_dedicated_ip_in_pool/3,
          put_dedicated_ip_in_pool/4,
          put_dedicated_ip_warmup_attributes/3,
@@ -213,6 +221,33 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Retrieves batches of metric data collected based on your sending
+%% activity.
+%%
+%% You can execute this operation no more than 16 times per second, and with
+%% at most 160 queries from the batches per second (cumulative).
+batch_get_metric_data(Client, Input) ->
+    batch_get_metric_data(Client, Input, []).
+batch_get_metric_data(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/metrics/batch"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Create a configuration set.
 %%
@@ -1647,6 +1682,32 @@ list_import_jobs(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the recommendations present in your Amazon SES account in the
+%% current Amazon Web Services Region.
+%%
+%% You can execute this operation no more than once per second.
+list_recommendations(Client, Input) ->
+    list_recommendations(Client, Input, []).
+list_recommendations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/vdm/recommendations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves a list of email addresses that are on the suppression list
 %% for your account.
 list_suppressed_destinations(Client)
@@ -1805,6 +1866,31 @@ put_account_suppression_attributes(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Update your Amazon SES account VDM attributes.
+%%
+%% You can execute this operation no more than once per second.
+put_account_vdm_attributes(Client, Input) ->
+    put_account_vdm_attributes(Client, Input, []).
+put_account_vdm_attributes(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/v2/email/account/vdm"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Associate a configuration set with a dedicated IP pool.
 %%
 %% You can use dedicated IP pools to create groups of dedicated IP addresses
@@ -1911,6 +1997,32 @@ put_configuration_set_tracking_options(Client, ConfigurationSetName, Input) ->
 put_configuration_set_tracking_options(Client, ConfigurationSetName, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/tracking-options"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Specify VDM preferences for email that you send using the
+%% configuration set.
+%%
+%% You can execute this operation no more than once per second.
+put_configuration_set_vdm_options(Client, ConfigurationSetName, Input) ->
+    put_configuration_set_vdm_options(Client, ConfigurationSetName, Input, []).
+put_configuration_set_vdm_options(Client, ConfigurationSetName, Input0, Options0) ->
+    Method = put,
+    Path = ["/v2/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/vdm-options"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

@@ -93,6 +93,8 @@
          get_log_record/3,
          get_query_results/2,
          get_query_results/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          list_tags_log_group/2,
          list_tags_log_group/3,
          put_destination/2,
@@ -117,10 +119,14 @@
          stop_query/3,
          tag_log_group/2,
          tag_log_group/3,
+         tag_resource/2,
+         tag_resource/3,
          test_metric_filter/2,
          test_metric_filter/3,
          untag_log_group/2,
-         untag_log_group/3]).
+         untag_log_group/3,
+         untag_resource/2,
+         untag_resource/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -171,12 +177,6 @@ cancel_export_task(Client, Input, Options)
 %% that have permission to write to the S3 bucket that you specify as the
 %% destination.
 %%
-%% Exporting log data to Amazon S3 buckets that are encrypted by KMS is not
-%% supported. Exporting log data to Amazon S3 buckets that have S3 Object
-%% Lock enabled with a retention period is not supported.
-%%
-%% Exporting to S3 buckets that are encrypted with AES-256 is supported.
-%%
 %% This is an asynchronous call. If all the required information is provided,
 %% this operation initiates an export task and responds with the ID of the
 %% task. After the task has started, you can use DescribeExportTasks to get
@@ -189,9 +189,8 @@ cancel_export_task(Client, Input, Options)
 %% specify a prefix to be used as the Amazon S3 key prefix for all exported
 %% objects.
 %%
-%% Time-based sorting on chunks of log data inside an exported file is not
-%% guaranteed. You can sort the exported log fild data by using Linux
-%% utilities.
+%% Exporting to S3 buckets that are encrypted with AES-256 is supported.
+%% Exporting to S3 buckets encrypted with SSE-KMS is not supported.
 create_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_export_task(Client, Input, []).
@@ -565,7 +564,21 @@ get_query_results(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQueryResults">>, Input, Options).
 
-%% @doc Lists the tags for the specified log group.
+%% @doc Displays the tags associated with a CloudWatch Logs resource.
+%%
+%% Currently, log groups and destinations support tagging.
+list_tags_for_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_tags_for_resource(Client, Input, []).
+list_tags_for_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc The ListTagsLogGroup operation is on the path to deprecation.
+%%
+%% We recommend that you use ListTagsForResource instead.
+%%
+%% Lists the tags for the specified log group.
 list_tags_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_log_group(Client, Input, []).
@@ -802,10 +815,14 @@ stop_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopQuery">>, Input, Options).
 
-%% @doc Adds or updates the specified tags for the specified log group.
+%% @doc The TagLogGroup operation is on the path to deprecation.
 %%
-%% To list the tags for a log group, use ListTagsLogGroup. To remove tags,
-%% use UntagLogGroup.
+%% We recommend that you use TagResource instead.
+%%
+%% Adds or updates the specified tags for the specified log group.
+%%
+%% To list the tags for a log group, use ListTagsForResource. To remove tags,
+%% use UntagResource.
 %%
 %% For more information about tags, see Tag Log Groups in Amazon CloudWatch
 %% Logs in the Amazon CloudWatch Logs User Guide.
@@ -822,6 +839,33 @@ tag_log_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagLogGroup">>, Input, Options).
 
+%% @doc Assigns one or more tags (key-value pairs) to the specified
+%% CloudWatch Logs resource.
+%%
+%% Currently, the only CloudWatch Logs resources that can be tagged are log
+%% groups and destinations.
+%%
+%% Tags can help you organize and categorize your resources. You can also use
+%% them to scope user permissions by granting a user permission to access or
+%% change only resources with certain tag values.
+%%
+%% Tags don't have any semantic meaning to Amazon Web Services and are
+%% interpreted strictly as strings of characters.
+%%
+%% You can use the `TagResource' action with a resource that already has
+%% tags. If you specify a new tag key for the alarm, this tag is appended to
+%% the list of tags associated with the alarm. If you specify a tag key that
+%% is already associated with the alarm, the new tag value that you specify
+%% replaces the previous value for that tag.
+%%
+%% You can associate as many as 50 tags with a CloudWatch Logs resource.
+tag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    tag_resource(Client, Input, []).
+tag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TagResource">>, Input, Options).
+
 %% @doc Tests the filter pattern of a metric filter against a sample of log
 %% event messages.
 %%
@@ -834,10 +878,14 @@ test_metric_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TestMetricFilter">>, Input, Options).
 
-%% @doc Removes the specified tags from the specified log group.
+%% @doc The UntagLogGroup operation is on the path to deprecation.
 %%
-%% To list the tags for a log group, use ListTagsLogGroup. To add tags, use
-%% TagLogGroup.
+%% We recommend that you use UntagResource instead.
+%%
+%% Removes the specified tags from the specified log group.
+%%
+%% To list the tags for a log group, use ListTagsForResource. To add tags,
+%% use TagResource.
 %%
 %% CloudWatch Logs doesn’t support IAM policies that prevent users from
 %% assigning specified tags to log groups using the `aws:Resource/key-name '
@@ -848,6 +896,14 @@ untag_log_group(Client, Input)
 untag_log_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagLogGroup">>, Input, Options).
+
+%% @doc Removes one or more tags from the specified resource.
+untag_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    untag_resource(Client, Input, []).
+untag_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UntagResource">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

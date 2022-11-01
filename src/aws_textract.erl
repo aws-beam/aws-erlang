@@ -52,9 +52,12 @@
 %% document are returned (including text that doesn't have a relationship
 %% with the value of `FeatureTypes').
 %%
-%% </li> <li> Queries.A QUERIES_RESULT Block object contains the answer to
-%% the query, the alias associated and an ID that connect it to the query
-%% asked. This Block also contains a location and attached confidence score.
+%% </li> <li> Query. A QUERY Block object contains the query text, alias and
+%% link to the associated Query results block object.
+%%
+%% </li> <li> Query Result. A QUERY_RESULT Block object contains the answer
+%% to the query and an ID that connects it to the query asked. This Block
+%% also contains a confidence score.
 %%
 %% </li> </ul> Selection elements such as check boxes and option buttons
 %% (radio buttons) can be detected in form data and in tables. A
@@ -80,7 +83,7 @@ analyze_document(Client, Input, Options)
 %% @doc `AnalyzeExpense' synchronously analyzes an input document for
 %% financially related relationships between text.
 %%
-%% Information is returned as `ExpenseDocuments' and seperated as follows.
+%% Information is returned as `ExpenseDocuments' and seperated as follows:
 %%
 %% <ul> <li> `LineItemGroups'- A data set containing `LineItems' which store
 %% information about the lines of text, such as an item purchased and its
@@ -113,9 +116,9 @@ analyze_id(Client, Input, Options)
 %% @doc Detects text in the input document.
 %%
 %% Amazon Textract can detect lines of text and the words that make up a line
-%% of text. The input document must be an image in JPEG, PNG, PDF, or TIFF
-%% format. `DetectDocumentText' returns the detected text in an array of
-%% `Block' objects.
+%% of text. The input document must be in one of the following image formats:
+%% JPEG, PNG, PDF, or TIFF. `DetectDocumentText' returns the detected text in
+%% an array of `Block' objects.
 %%
 %% Each document page has as an associated `Block' of type PAGE. Each PAGE
 %% `Block' object is the parent of LINE `Block' objects that represent the
@@ -165,14 +168,22 @@ detect_document_text(Client, Input, Options)
 %% with the value of the `StartDocumentAnalysis' `FeatureTypes' input
 %% parameter).
 %%
-%% </li> <li> Queries. A QUERIES_RESULT Block object contains the answer to
-%% the query, the alias associated and an ID that connect it to the query
-%% asked. This Block also contains a location and attached confidence score
+%% </li> <li> Query. A QUERY Block object contains the query text, alias and
+%% link to the associated Query results block object.
 %%
-%% </li> </ul> Selection elements such as check boxes and option buttons
-%% (radio buttons) can be detected in form data and in tables. A
-%% SELECTION_ELEMENT `Block' object contains information about a selection
-%% element, including the selection status.
+%% </li> <li> Query Results. A QUERY_RESULT Block object contains the answer
+%% to the query and an ID that connects it to the query asked. This Block
+%% also contains a confidence score.
+%%
+%% </li> </ul> While processing a document with queries, look out for
+%% `INVALID_REQUEST_PARAMETERS' output. This indicates that either the per
+%% page query limit has been exceeded or that the operation is trying to
+%% query a page in the document which doesn’t exist.
+%%
+%% Selection elements such as check boxes and option buttons (radio buttons)
+%% can be detected in form data and in tables. A SELECTION_ELEMENT `Block'
+%% object contains information about a selection element, including the
+%% selection status.
 %%
 %% Use the `MaxResults' parameter to limit the number of blocks that are
 %% returned. If there are more results than specified in `MaxResults', the
