@@ -566,7 +566,7 @@ list_timeline_events(Client, Input0, Options0) ->
 %%
 %% The resource policy is used to share the response plan using Resource
 %% Access Manager (RAM). For more information about cross-account sharing,
-%% see Setting up cross-account functionality.
+%% see Cross-Region and cross-account incident management.
 put_resource_policy(Client, Input) ->
     put_resource_policy(Client, Input, []).
 put_resource_policy(Client, Input0, Options0) ->

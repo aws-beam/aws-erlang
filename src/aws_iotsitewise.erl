@@ -119,9 +119,15 @@
          list_access_policies/1,
          list_access_policies/3,
          list_access_policies/4,
+         list_asset_model_properties/2,
+         list_asset_model_properties/4,
+         list_asset_model_properties/5,
          list_asset_models/1,
          list_asset_models/3,
          list_asset_models/4,
+         list_asset_properties/2,
+         list_asset_properties/4,
+         list_asset_properties/5,
          list_asset_relationships/3,
          list_asset_relationships/5,
          list_asset_relationships/6,
@@ -420,9 +426,9 @@ batch_put_asset_property_value(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an access policy that grants the specified identity (Amazon
-%% Web Services SSO user, Amazon Web Services SSO group, or IAM user) access
-%% to the specified IoT SiteWise Monitor portal or project resource.
+%% @doc Creates an access policy that grants the specified identity (IAM
+%% Identity Center user, IAM Identity Center group, or IAM user) access to
+%% the specified IoT SiteWise Monitor portal or project resource.
 create_access_policy(Client, Input) ->
     create_access_policy(Client, Input, []).
 create_access_policy(Client, Input0, Options0) ->
@@ -582,7 +588,7 @@ create_gateway(Client, Input0, Options0) ->
 
 %% @doc Creates a portal, which can contain projects and dashboards.
 %%
-%% IoT SiteWise Monitor uses Amazon Web Services SSO or IAM to authenticate
+%% IoT SiteWise Monitor uses IAM Identity Center or IAM to authenticate
 %% portal users and manage user permissions.
 %%
 %% Before you can sign in to a new portal, you must add at least one identity
@@ -911,7 +917,11 @@ describe_asset(Client, AssetId, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"excludeProperties">>, maps:get(<<"excludeProperties">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -934,7 +944,11 @@ describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"excludeProperties">>, maps:get(<<"excludeProperties">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -1480,9 +1494,9 @@ get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSecon
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves a paginated list of access policies for an identity (an
-%% Amazon Web Services SSO user, an Amazon Web Services SSO group, or an IAM
-%% user) or an IoT SiteWise Monitor resource (a portal or project).
+%% @doc Retrieves a paginated list of access policies for an identity (an IAM
+%% Identity Center user, an IAM Identity Center group, or an IAM user) or an
+%% IoT SiteWise Monitor resource (a portal or project).
 list_access_policies(Client)
   when is_map(Client) ->
     list_access_policies(Client, #{}, #{}).
@@ -1515,6 +1529,39 @@ list_access_policies(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves a paginated list of properties associated with an asset
+%% model.
+%%
+%% If you update properties associated with the model before you finish
+%% listing all the properties, you need to start all over again.
+list_asset_model_properties(Client, AssetModelId)
+  when is_map(Client) ->
+    list_asset_model_properties(Client, AssetModelId, #{}, #{}).
+
+list_asset_model_properties(Client, AssetModelId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_asset_model_properties(Client, AssetModelId, QueryMap, HeadersMap, []).
+
+list_asset_model_properties(Client, AssetModelId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/asset-models/", aws_util:encode_uri(AssetModelId), "/properties"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"filter">>, maps:get(<<"filter">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a paginated list of summaries of all asset models.
 list_asset_models(Client)
   when is_map(Client) ->
@@ -1536,6 +1583,38 @@ list_asset_models(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a paginated list of properties associated with an asset.
+%%
+%% If you update properties associated with the model before you finish
+%% listing all the properties, you need to start all over again.
+list_asset_properties(Client, AssetId)
+  when is_map(Client) ->
+    list_asset_properties(Client, AssetId, #{}, #{}).
+
+list_asset_properties(Client, AssetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_asset_properties(Client, AssetId, QueryMap, HeadersMap, []).
+
+list_asset_properties(Client, AssetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/assets/", aws_util:encode_uri(AssetId), "/properties"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"filter">>, maps:get(<<"filter">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
