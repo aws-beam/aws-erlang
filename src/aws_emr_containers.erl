@@ -29,10 +29,14 @@
 
 -export([cancel_job_run/4,
          cancel_job_run/5,
+         create_job_template/2,
+         create_job_template/3,
          create_managed_endpoint/3,
          create_managed_endpoint/4,
          create_virtual_cluster/2,
          create_virtual_cluster/3,
+         delete_job_template/3,
+         delete_job_template/4,
          delete_managed_endpoint/4,
          delete_managed_endpoint/5,
          delete_virtual_cluster/3,
@@ -40,6 +44,9 @@
          describe_job_run/3,
          describe_job_run/5,
          describe_job_run/6,
+         describe_job_template/2,
+         describe_job_template/4,
+         describe_job_template/5,
          describe_managed_endpoint/3,
          describe_managed_endpoint/5,
          describe_managed_endpoint/6,
@@ -49,6 +56,9 @@
          list_job_runs/2,
          list_job_runs/4,
          list_job_runs/5,
+         list_job_templates/1,
+         list_job_templates/3,
+         list_job_templates/4,
          list_managed_endpoints/2,
          list_managed_endpoints/4,
          list_managed_endpoints/5,
@@ -80,6 +90,34 @@ cancel_job_run(Client, Id, VirtualClusterId, Input) ->
 cancel_job_run(Client, Id, VirtualClusterId, Input0, Options0) ->
     Method = delete,
     Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterId), "/jobruns/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a job template.
+%%
+%% Job template stores values of StartJobRun API request in a template and
+%% can be used to start a job run. Job template allows two use cases: avoid
+%% repeating recurring StartJobRun API request values, enforcing certain
+%% values in StartJobRun API request.
+create_job_template(Client, Input) ->
+    create_job_template(Client, Input, []).
+create_job_template(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/jobtemplates"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -136,6 +174,34 @@ create_virtual_cluster(Client, Input) ->
 create_virtual_cluster(Client, Input0, Options0) ->
     Method = post,
     Path = ["/virtualclusters"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a job template.
+%%
+%% Job template stores values of StartJobRun API request in a template and
+%% can be used to start a job run. Job template allows two use cases: avoid
+%% repeating recurring StartJobRun API request values, enforcing certain
+%% values in StartJobRun API request.
+delete_job_template(Client, Id, Input) ->
+    delete_job_template(Client, Id, Input, []).
+delete_job_template(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/jobtemplates/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -235,6 +301,34 @@ describe_job_run(Client, Id, VirtualClusterId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Displays detailed information about a specified job template.
+%%
+%% Job template stores values of StartJobRun API request in a template and
+%% can be used to start a job run. Job template allows two use cases: avoid
+%% repeating recurring StartJobRun API request values, enforcing certain
+%% values in StartJobRun API request.
+describe_job_template(Client, Id)
+  when is_map(Client) ->
+    describe_job_template(Client, Id, #{}, #{}).
+
+describe_job_template(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_job_template(Client, Id, QueryMap, HeadersMap, []).
+
+describe_job_template(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/jobtemplates/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Displays detailed information about a managed endpoint.
 %%
 %% A managed endpoint is a gateway that connects EMR Studio to Amazon EMR on
@@ -321,6 +415,41 @@ list_job_runs(Client, VirtualClusterId, QueryMap, HeadersMap, Options0)
         {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"states">>, maps:get(<<"states">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists job templates based on a set of parameters.
+%%
+%% Job template stores values of StartJobRun API request in a template and
+%% can be used to start a job run. Job template allows two use cases: avoid
+%% repeating recurring StartJobRun API request values, enforcing certain
+%% values in StartJobRun API request.
+list_job_templates(Client)
+  when is_map(Client) ->
+    list_job_templates(Client, #{}, #{}).
+
+list_job_templates(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_job_templates(Client, QueryMap, HeadersMap, []).
+
+list_job_templates(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/jobtemplates"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
+        {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
