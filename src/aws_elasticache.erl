@@ -832,10 +832,10 @@ disassociate_global_replication_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateGlobalReplicationGroup">>, Input, Options).
 
-%% @doc Used to failover the primary region to a selected secondary region.
+%% @doc Used to failover the primary region to a secondary region.
 %%
-%% The selected secondary region will become primary, and all other clusters
-%% will become secondary.
+%% The secondary region will become primary, and all other clusters will
+%% become secondary.
 failover_global_replication_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     failover_global_replication_group(Client, Input, []).

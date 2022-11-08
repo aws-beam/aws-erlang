@@ -39,6 +39,8 @@
          delete_event_data_store/3,
          delete_trail/2,
          delete_trail/3,
+         deregister_organization_delegated_admin/2,
+         deregister_organization_delegated_admin/3,
          describe_query/2,
          describe_query/3,
          describe_trails/2,
@@ -81,6 +83,8 @@
          put_event_selectors/3,
          put_insight_selectors/2,
          put_insight_selectors/3,
+         register_organization_delegated_admin/2,
+         register_organization_delegated_admin/3,
          remove_tags/2,
          remove_tags/3,
          restore_event_data_store/2,
@@ -186,6 +190,15 @@ delete_trail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTrail">>, Input, Options).
 
+%% @doc Removes CloudTrail delegated administrator permissions from a member
+%% account in an organization.
+deregister_organization_delegated_admin(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    deregister_organization_delegated_admin(Client, Input, []).
+deregister_organization_delegated_admin(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeregisterOrganizationDelegatedAdmin">>, Input, Options).
+
 %% @doc Returns metadata about a query, including query run time in
 %% milliseconds, number of events scanned and matched, and query status.
 %%
@@ -211,7 +224,7 @@ describe_trails(Client, Input, Options)
 %% Amazon Web Services services create service-linked channels to get
 %% information about CloudTrail events on your behalf. For more information
 %% about service-linked channels, see Viewing service-linked channels for
-%% CloudTrail by using the CLI..
+%% CloudTrail by using the CLI.
 get_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_channel(Client, Input, []).
@@ -511,6 +524,15 @@ put_insight_selectors(Client, Input)
 put_insight_selectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutInsightSelectors">>, Input, Options).
+
+%% @doc Registers an organization’s member account as the CloudTrail
+%% delegated administrator.
+register_organization_delegated_admin(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    register_organization_delegated_admin(Client, Input, []).
+register_organization_delegated_admin(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RegisterOrganizationDelegatedAdmin">>, Input, Options).
 
 %% @doc Removes the specified tags from a trail or event data store.
 remove_tags(Client, Input)

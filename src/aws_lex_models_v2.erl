@@ -4,7 +4,13 @@
 
 -module(aws_lex_models_v2).
 
--export([build_bot_locale/5,
+-export([batch_create_custom_vocabulary_item/5,
+         batch_create_custom_vocabulary_item/6,
+         batch_delete_custom_vocabulary_item/5,
+         batch_delete_custom_vocabulary_item/6,
+         batch_update_custom_vocabulary_item/5,
+         batch_update_custom_vocabulary_item/6,
+         build_bot_locale/5,
          build_bot_locale/6,
          create_bot/2,
          create_bot/3,
@@ -106,6 +112,8 @@
          list_built_in_intents/4,
          list_built_in_slot_types/3,
          list_built_in_slot_types/4,
+         list_custom_vocabulary_items/5,
+         list_custom_vocabulary_items/6,
          list_exports/2,
          list_exports/3,
          list_imports/2,
@@ -157,6 +165,78 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Batch create custom vocabulary item for the specified locale in the
+%% specified bot.
+batch_create_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input) ->
+    batch_create_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input, []).
+batch_create_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
+    Method = put,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/customvocabulary/DEFAULT/batchcreate"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Batch delete custom vocabulary item for the specified locale in the
+%% specified bot.
+batch_delete_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input) ->
+    batch_delete_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input, []).
+batch_delete_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
+    Method = post,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/customvocabulary/DEFAULT/batchdelete"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Batch update custom vocabulary item for the specified locale in the
+%% specified bot.
+batch_update_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input) ->
+    batch_update_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input, []).
+batch_update_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
+    Method = put,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/customvocabulary/DEFAULT/batchupdate"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Builds a bot, its intents, and its slot types into a specific locale.
 %%
@@ -1365,6 +1445,30 @@ list_built_in_slot_types(Client, LocaleId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc List custom vocabulary items for the specified locale in the
+%% specified bot.
+list_custom_vocabulary_items(Client, BotId, BotVersion, LocaleId, Input) ->
+    list_custom_vocabulary_items(Client, BotId, BotVersion, LocaleId, Input, []).
+list_custom_vocabulary_items(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
+    Method = post,
+    Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/customvocabulary/DEFAULT/list"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists the exports for a bot, bot locale, or custom vocabulary.
 %%
 %% Exports are kept in the list for 7 days.
@@ -1440,6 +1544,8 @@ list_intents(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
 
 %% @doc Gets a list of recommended intents provided by the bot recommendation
 %% that you can use in your bot.
+%%
+%% Intents in the response are ordered by relevance.
 list_recommended_intents(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input) ->
     list_recommended_intents(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input, []).
 list_recommended_intents(Client, BotId, BotRecommendationId, BotVersion, LocaleId, Input0, Options0) ->
