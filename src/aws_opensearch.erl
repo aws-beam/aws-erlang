@@ -1,19 +1,16 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon OpenSearch Configuration Service
-%%
-%% Use the Amazon OpenSearch configuration API to create, configure, and
-%% manage Amazon OpenSearch Service domains.
+%% @doc Use the Amazon OpenSearch Service configuration API to create,
+%% configure, and manage OpenSearch Service domains.
 %%
 %% For sample code that uses the configuration API, see the Amazon OpenSearch
-%% Service Developer Guide. The guide also contains sample code for sending
-%% signed HTTP requests to the OpenSearch APIs.
-%%
-%% The endpoint for configuration service requests is region-specific:
+%% Service Developer Guide . The guide also contains sample code for sending
+%% signed HTTP requests to the OpenSearch APIs. The endpoint for
+%% configuration service requests is Region specific:
 %% es.region.amazonaws.com. For example, es.us-east-1.amazonaws.com. For a
-%% current list of supported regions and endpoints, see Regions and
-%% Endpoints.
+%% current list of supported Regions and endpoints, see Amazon Web Services
+%% service endpoints.
 -module(aws_opensearch).
 
 -export([accept_inbound_connection/3,
@@ -22,6 +19,8 @@
          add_tags/3,
          associate_package/4,
          associate_package/5,
+         authorize_vpc_endpoint_access/3,
+         authorize_vpc_endpoint_access/4,
          cancel_service_software_update/2,
          cancel_service_software_update/3,
          create_domain/2,
@@ -30,6 +29,8 @@
          create_outbound_connection/3,
          create_package/2,
          create_package/3,
+         create_vpc_endpoint/2,
+         create_vpc_endpoint/3,
          delete_domain/3,
          delete_domain/4,
          delete_inbound_connection/3,
@@ -38,6 +39,8 @@
          delete_outbound_connection/4,
          delete_package/3,
          delete_package/4,
+         delete_vpc_endpoint/3,
+         delete_vpc_endpoint/4,
          describe_domain/2,
          describe_domain/4,
          describe_domain/5,
@@ -67,6 +70,8 @@
          describe_reserved_instances/1,
          describe_reserved_instances/3,
          describe_reserved_instances/4,
+         describe_vpc_endpoints/2,
+         describe_vpc_endpoints/3,
          dissociate_package/4,
          dissociate_package/5,
          get_compatible_versions/1,
@@ -99,18 +104,31 @@
          list_versions/1,
          list_versions/3,
          list_versions/4,
+         list_vpc_endpoint_access/2,
+         list_vpc_endpoint_access/4,
+         list_vpc_endpoint_access/5,
+         list_vpc_endpoints/1,
+         list_vpc_endpoints/3,
+         list_vpc_endpoints/4,
+         list_vpc_endpoints_for_domain/2,
+         list_vpc_endpoints_for_domain/4,
+         list_vpc_endpoints_for_domain/5,
          purchase_reserved_instance_offering/2,
          purchase_reserved_instance_offering/3,
          reject_inbound_connection/3,
          reject_inbound_connection/4,
          remove_tags/2,
          remove_tags/3,
+         revoke_vpc_endpoint_access/3,
+         revoke_vpc_endpoint_access/4,
          start_service_software_update/2,
          start_service_software_update/3,
          update_domain_config/3,
          update_domain_config/4,
          update_package/2,
          update_package/3,
+         update_vpc_endpoint/2,
+         update_vpc_endpoint/3,
          upgrade_domain/2,
          upgrade_domain/3]).
 
@@ -120,8 +138,11 @@
 %% API
 %%====================================================================
 
-%% @doc Allows the remote domain owner to accept an inbound cross-cluster
-%% connection request.
+%% @doc Allows the destination Amazon OpenSearch Service domain owner to
+%% accept an inbound cross-cluster search connection request.
+%%
+%% For more information, see Cross-cluster search for Amazon OpenSearch
+%% Service.
 accept_inbound_connection(Client, ConnectionId, Input) ->
     accept_inbound_connection(Client, ConnectionId, Input, []).
 accept_inbound_connection(Client, ConnectionId, Input0, Options0) ->
@@ -144,11 +165,11 @@ accept_inbound_connection(Client, ConnectionId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Attaches tags to an existing domain.
+%% @doc Attaches tags to an existing Amazon OpenSearch Service domain.
 %%
-%% Tags are a set of case-sensitive key value pairs. An domain can have up to
-%% 10 tags. See Tagging Amazon OpenSearch Service domains for more
-%% information.
+%% Tags are a set of case-sensitive key-value pairs. An domain can have up to
+%% 10 tags. For more information, see Tagging Amazon OpenSearch Service
+%% domains.
 add_tags(Client, Input) ->
     add_tags(Client, Input, []).
 add_tags(Client, Input0, Options0) ->
@@ -172,6 +193,8 @@ add_tags(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates a package with an Amazon OpenSearch Service domain.
+%%
+%% For more information, see Custom packages for Amazon OpenSearch Service.
 associate_package(Client, DomainName, PackageID, Input) ->
     associate_package(Client, DomainName, PackageID, Input, []).
 associate_package(Client, DomainName, PackageID, Input0, Options0) ->
@@ -194,11 +217,36 @@ associate_package(Client, DomainName, PackageID, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Provides access to an Amazon OpenSearch Service domain through the
+%% use of an interface VPC endpoint.
+authorize_vpc_endpoint_access(Client, DomainName, Input) ->
+    authorize_vpc_endpoint_access(Client, DomainName, Input, []).
+authorize_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/authorizeVpcEndpointAccess"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Cancels a scheduled service software update for an Amazon OpenSearch
 %% Service domain.
 %%
 %% You can only perform this operation before the `AutomatedUpdateDate' and
-%% when the `UpdateStatus' is in the `PENDING_UPDATE' state.
+%% when the domain's `UpdateStatus' is `PENDING_UPDATE'. For more
+%% information, see Service software updates in Amazon OpenSearch Service.
 cancel_service_software_update(Client, Input) ->
     cancel_service_software_update(Client, Input, []).
 cancel_service_software_update(Client, Input0, Options0) ->
@@ -221,10 +269,10 @@ cancel_service_software_update(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new Amazon OpenSearch Service domain.
+%% @doc Creates an Amazon OpenSearch Service domain.
 %%
 %% For more information, see Creating and managing Amazon OpenSearch Service
-%% domains in the Amazon OpenSearch Service Developer Guide.
+%% domains.
 create_domain(Client, Input) ->
     create_domain(Client, Input, []).
 create_domain(Client, Input0, Options0) ->
@@ -247,8 +295,11 @@ create_domain(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new cross-cluster connection from a local OpenSearch domain
-%% to a remote OpenSearch domain.
+%% @doc Creates a new cross-cluster search connection from a source Amazon
+%% OpenSearch Service domain to a destination domain.
+%%
+%% For more information, see Cross-cluster search for Amazon OpenSearch
+%% Service.
 create_outbound_connection(Client, Input) ->
     create_outbound_connection(Client, Input, []).
 create_outbound_connection(Client, Input0, Options0) ->
@@ -271,7 +322,9 @@ create_outbound_connection(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a package for use with Amazon OpenSearch Service domains.
+%% @doc Creates a package for use with Amazon OpenSearch Service domains.
+%%
+%% For more information, see Custom packages for Amazon OpenSearch Service.
 create_package(Client, Input) ->
     create_package(Client, Input, []).
 create_package(Client, Input0, Options0) ->
@@ -294,9 +347,32 @@ create_package(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Permanently deletes the specified domain and all of its data.
+%% @doc Creates an Amazon OpenSearch Service-managed VPC endpoint.
+create_vpc_endpoint(Client, Input) ->
+    create_vpc_endpoint(Client, Input, []).
+create_vpc_endpoint(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/vpcEndpoints"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an Amazon OpenSearch Service domain and all of its data.
 %%
-%% Once a domain is deleted, it cannot be recovered.
+%% You can't recover a domain after you delete it.
 delete_domain(Client, DomainName, Input) ->
     delete_domain(Client, DomainName, Input, []).
 delete_domain(Client, DomainName, Input0, Options0) ->
@@ -319,8 +395,11 @@ delete_domain(Client, DomainName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Allows the remote domain owner to delete an existing inbound
-%% cross-cluster connection.
+%% @doc Allows the destination Amazon OpenSearch Service domain owner to
+%% delete an existing inbound cross-cluster search connection.
+%%
+%% For more information, see Cross-cluster search for Amazon OpenSearch
+%% Service.
 delete_inbound_connection(Client, ConnectionId, Input) ->
     delete_inbound_connection(Client, ConnectionId, Input, []).
 delete_inbound_connection(Client, ConnectionId, Input0, Options0) ->
@@ -343,8 +422,11 @@ delete_inbound_connection(Client, ConnectionId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Allows the local domain owner to delete an existing outbound
-%% cross-cluster connection.
+%% @doc Allows the source Amazon OpenSearch Service domain owner to delete an
+%% existing outbound cross-cluster search connection.
+%%
+%% For more information, see Cross-cluster search for Amazon OpenSearch
+%% Service.
 delete_outbound_connection(Client, ConnectionId, Input) ->
     delete_outbound_connection(Client, ConnectionId, Input, []).
 delete_outbound_connection(Client, ConnectionId, Input0, Options0) ->
@@ -367,7 +449,9 @@ delete_outbound_connection(Client, ConnectionId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the package.
+%% @doc Deletes an Amazon OpenSearch Service package.
+%%
+%% For more information, see Custom packages for Amazon OpenSearch Service.
 delete_package(Client, PackageID, Input) ->
     delete_package(Client, PackageID, Input, []).
 delete_package(Client, PackageID, Input0, Options0) ->
@@ -390,8 +474,32 @@ delete_package(Client, PackageID, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns domain configuration information about the specified domain,
-%% including the domain ID, domain endpoint, and domain ARN.
+%% @doc Deletes an Amazon OpenSearch Service-managed interface VPC endpoint.
+delete_vpc_endpoint(Client, VpcEndpointId, Input) ->
+    delete_vpc_endpoint(Client, VpcEndpointId, Input, []).
+delete_vpc_endpoint(Client, VpcEndpointId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2021-01-01/opensearch/vpcEndpoints/", aws_util:encode_uri(VpcEndpointId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Describes the domain configuration for the specified Amazon
+%% OpenSearch Service domain, including the domain ID, domain service
+%% endpoint, and domain ARN.
 describe_domain(Client, DomainName)
   when is_map(Client) ->
     describe_domain(Client, DomainName, #{}, #{}).
@@ -414,8 +522,10 @@ describe_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Provides scheduled Auto-Tune action details for the domain, such as
-%% Auto-Tune action type, description, severity, and scheduled date.
+%% @doc Returns the list of optimizations that Auto-Tune has made to an
+%% Amazon OpenSearch Service domain.
+%%
+%% For more information, see Auto-Tune for Amazon OpenSearch Service.
 describe_domain_auto_tunes(Client, DomainName)
   when is_map(Client) ->
     describe_domain_auto_tunes(Client, DomainName, #{}, #{}).
@@ -439,7 +549,10 @@ describe_domain_auto_tunes(Client, DomainName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about the current blue/green deployment happening
-%% on a domain, including a change ID, status, and progress stages.
+%% on an Amazon OpenSearch Service domain.
+%%
+%% For more information, see Making configuration changes in Amazon
+%% OpenSearch Service.
 describe_domain_change_progress(Client, DomainName)
   when is_map(Client) ->
     describe_domain_change_progress(Client, DomainName, #{}, #{}).
@@ -466,9 +579,7 @@ describe_domain_change_progress(Client, DomainName, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Provides cluster configuration information about the specified
-%% domain, such as the state, creation date, update version, and update date
-%% for cluster options.
+%% @doc Returns the configuration of an Amazon OpenSearch Service domain.
 describe_domain_config(Client, DomainName)
   when is_map(Client) ->
     describe_domain_config(Client, DomainName, #{}, #{}).
@@ -491,8 +602,8 @@ describe_domain_config(Client, DomainName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns domain configuration information about the specified domains,
-%% including the domain ID, domain endpoint, and domain ARN.
+%% @doc Returns domain configuration information about the specified Amazon
+%% OpenSearch Service domains.
 describe_domains(Client, Input) ->
     describe_domains(Client, Input, []).
 describe_domains(Client, Input0, Options0) ->
@@ -515,7 +626,11 @@ describe_domains(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists all the inbound cross-cluster connections for a remote domain.
+%% @doc Lists all the inbound cross-cluster search connections for a
+%% destination (remote) Amazon OpenSearch Service domain.
+%%
+%% For more information, see Cross-cluster search for Amazon OpenSearch
+%% Service.
 describe_inbound_connections(Client, Input) ->
     describe_inbound_connections(Client, Input, []).
 describe_inbound_connections(Client, Input0, Options0) ->
@@ -538,11 +653,8 @@ describe_inbound_connections(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describe the limits for a given instance type and OpenSearch or
-%% Elasticsearch version.
-%%
-%% When modifying an existing domain, specify the ` `DomainName' ' to see
-%% which limits you can modify.
+%% @doc Describes the instance count, storage, and master node limits for a
+%% given OpenSearch or Elasticsearch version and instance type.
 describe_instance_type_limits(Client, EngineVersion, InstanceType)
   when is_map(Client) ->
     describe_instance_type_limits(Client, EngineVersion, InstanceType, #{}, #{}).
@@ -569,7 +681,11 @@ describe_instance_type_limits(Client, EngineVersion, InstanceType, QueryMap, Hea
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all the outbound cross-cluster connections for a local domain.
+%% @doc Lists all the outbound cross-cluster connections for a local (source)
+%% Amazon OpenSearch Service domain.
+%%
+%% For more information, see Cross-cluster search for Amazon OpenSearch
+%% Service.
 describe_outbound_connections(Client, Input) ->
     describe_outbound_connections(Client, Input, []).
 describe_outbound_connections(Client, Input0, Options0) ->
@@ -592,11 +708,9 @@ describe_outbound_connections(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes all packages available to Amazon OpenSearch Service
-%% domains.
+%% @doc Describes all packages available to OpenSearch Service.
 %%
-%% Includes options for filtering, limiting the number of results, and
-%% pagination.
+%% For more information, see Custom packages for Amazon OpenSearch Service.
 describe_packages(Client, Input) ->
     describe_packages(Client, Input, []).
 describe_packages(Client, Input0, Options0) ->
@@ -619,7 +733,10 @@ describe_packages(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists available reserved OpenSearch instance offerings.
+%% @doc Describes the available Amazon OpenSearch Service Reserved Instance
+%% offerings for a given Region.
+%%
+%% For more information, see Reserved Instances in Amazon OpenSearch Service.
 describe_reserved_instance_offerings(Client)
   when is_map(Client) ->
     describe_reserved_instance_offerings(Client, #{}, #{}).
@@ -648,8 +765,10 @@ describe_reserved_instance_offerings(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about reserved OpenSearch instances for this
-%% account.
+%% @doc Describes the Amazon OpenSearch Service instances that you have
+%% reserved in a given Region.
+%%
+%% For more information, see Reserved Instances in Amazon OpenSearch Service.
 describe_reserved_instances(Client)
   when is_map(Client) ->
     describe_reserved_instances(Client, #{}, #{}).
@@ -678,7 +797,37 @@ describe_reserved_instances(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Dissociates a package from the Amazon OpenSearch Service domain.
+%% @doc Describes one or more Amazon OpenSearch Service-managed VPC
+%% endpoints.
+describe_vpc_endpoints(Client, Input) ->
+    describe_vpc_endpoints(Client, Input, []).
+describe_vpc_endpoints(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/vpcEndpoints/describe"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes a package from the specified Amazon OpenSearch Service
+%% domain.
+%%
+%% The package can't be in use with any OpenSearch index for the dissociation
+%% to succeed. The package is still available in OpenSearch Service for
+%% association later. For more information, see Custom packages for Amazon
+%% OpenSearch Service.
 dissociate_package(Client, DomainName, PackageID, Input) ->
     dissociate_package(Client, DomainName, PackageID, Input, []).
 dissociate_package(Client, DomainName, PackageID, Input0, Options0) ->
@@ -701,11 +850,8 @@ dissociate_package(Client, DomainName, PackageID, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of upgrade-compatible versions of
-%% OpenSearch/Elasticsearch.
-%%
-%% You can optionally pass a ` `DomainName' ' to get all upgrade-compatible
-%% versions of OpenSearch/Elasticsearch for that specific domain.
+%% @doc Returns a map of OpenSearch or Elasticsearch versions and the
+%% versions you can upgrade them to.
 get_compatible_versions(Client)
   when is_map(Client) ->
     get_compatible_versions(Client, #{}, #{}).
@@ -732,8 +878,10 @@ get_compatible_versions(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of package versions, along with their creation time
-%% and commit message.
+%% @doc Returns a list of Amazon OpenSearch Service package versions, along
+%% with their creation time and commit message.
+%%
+%% For more information, see Custom packages for Amazon OpenSearch Service.
 get_package_version_history(Client, PackageID)
   when is_map(Client) ->
     get_package_version_history(Client, PackageID, #{}, #{}).
@@ -762,7 +910,7 @@ get_package_version_history(Client, PackageID, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves the complete history of the last 10 upgrades performed on
-%% the domain.
+%% an Amazon OpenSearch Service domain.
 get_upgrade_history(Client, DomainName)
   when is_map(Client) ->
     get_upgrade_history(Client, DomainName, #{}, #{}).
@@ -790,8 +938,8 @@ get_upgrade_history(Client, DomainName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the latest status of the last upgrade or upgrade
-%% eligibility check performed on the domain.
+%% @doc Returns the most recent status of the last upgrade or upgrade
+%% eligibility check performed on an Amazon OpenSearch Service domain.
 get_upgrade_status(Client, DomainName)
   when is_map(Client) ->
     get_upgrade_status(Client, DomainName, #{}, #{}).
@@ -814,7 +962,8 @@ get_upgrade_status(Client, DomainName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the names of all domains owned by the current user's account.
+%% @doc Returns the names of all Amazon OpenSearch Service domains owned by
+%% the current user in the active Region.
 list_domain_names(Client)
   when is_map(Client) ->
     list_domain_names(Client, #{}, #{}).
@@ -841,8 +990,10 @@ list_domain_names(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all Amazon OpenSearch Service domains associated with the
+%% @doc Lists all Amazon OpenSearch Service domains associated with a given
 %% package.
+%%
+%% For more information, see Custom packages for Amazon OpenSearch Service.
 list_domains_for_package(Client, PackageID)
   when is_map(Client) ->
     list_domains_for_package(Client, PackageID, #{}, #{}).
@@ -870,7 +1021,8 @@ list_domains_for_package(Client, PackageID, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Lists all instance types and available features for a given
+%% OpenSearch or Elasticsearch version.
 list_instance_type_details(Client, EngineVersion)
   when is_map(Client) ->
     list_instance_type_details(Client, EngineVersion, #{}, #{}).
@@ -899,8 +1051,10 @@ list_instance_type_details(Client, EngineVersion, QueryMap, HeadersMap, Options0
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all packages associated with the Amazon OpenSearch Service
+%% @doc Lists all packages associated with an Amazon OpenSearch Service
 %% domain.
+%%
+%% For more information, see Custom packages for Amazon OpenSearch Service.
 list_packages_for_domain(Client, DomainName)
   when is_map(Client) ->
     list_packages_for_domain(Client, DomainName, #{}, #{}).
@@ -928,7 +1082,9 @@ list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns all tags for the given domain.
+%% @doc Returns all resource tags for an Amazon OpenSearch Service domain.
+%%
+%% For more information, see Tagging Amazon OpenSearch Service domains.
 list_tags(Client, ARN)
   when is_map(Client) ->
     list_tags(Client, ARN, #{}, #{}).
@@ -955,7 +1111,8 @@ list_tags(Client, ARN, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List all supported versions of OpenSearch and Elasticsearch.
+%% @doc Lists all versions of OpenSearch and Elasticsearch that Amazon
+%% OpenSearch Service supports.
 list_versions(Client)
   when is_map(Client) ->
     list_versions(Client, #{}, #{}).
@@ -983,7 +1140,92 @@ list_versions(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Allows you to purchase reserved OpenSearch instances.
+%% @doc Retrieves information about each Amazon Web Services principal that
+%% is allowed to access a given Amazon OpenSearch Service domain through the
+%% use of an interface VPC endpoint.
+list_vpc_endpoint_access(Client, DomainName)
+  when is_map(Client) ->
+    list_vpc_endpoint_access(Client, DomainName, #{}, #{}).
+
+list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap, []).
+
+list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/listVpcEndpointAccess"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves all Amazon OpenSearch Service-managed VPC endpoints in the
+%% current Amazon Web Services account and Region.
+list_vpc_endpoints(Client)
+  when is_map(Client) ->
+    list_vpc_endpoints(Client, #{}, #{}).
+
+list_vpc_endpoints(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_vpc_endpoints(Client, QueryMap, HeadersMap, []).
+
+list_vpc_endpoints(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-01-01/opensearch/vpcEndpoints"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves all Amazon OpenSearch Service-managed VPC endpoints
+%% associated with a particular domain.
+list_vpc_endpoints_for_domain(Client, DomainName)
+  when is_map(Client) ->
+    list_vpc_endpoints_for_domain(Client, DomainName, #{}, #{}).
+
+list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap, []).
+
+list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/vpcEndpoints"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Allows you to purchase Amazon OpenSearch Service Reserved Instances.
 purchase_reserved_instance_offering(Client, Input) ->
     purchase_reserved_instance_offering(Client, Input, []).
 purchase_reserved_instance_offering(Client, Input0, Options0) ->
@@ -1006,8 +1248,8 @@ purchase_reserved_instance_offering(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Allows the remote domain owner to reject an inbound cross-cluster
-%% connection request.
+%% @doc Allows the remote Amazon OpenSearch Service domain owner to reject an
+%% inbound cross-cluster connection request.
 reject_inbound_connection(Client, ConnectionId, Input) ->
     reject_inbound_connection(Client, ConnectionId, Input, []).
 reject_inbound_connection(Client, ConnectionId, Input0, Options0) ->
@@ -1030,7 +1272,10 @@ reject_inbound_connection(Client, ConnectionId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes the specified set of tags from the given domain.
+%% @doc Removes the specified set of tags from an Amazon OpenSearch Service
+%% domain.
+%%
+%% For more information, see Tagging Amazon OpenSearch Service domains.
 remove_tags(Client, Input) ->
     remove_tags(Client, Input, []).
 remove_tags(Client, Input0, Options0) ->
@@ -1053,8 +1298,35 @@ remove_tags(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Revokes access to an Amazon OpenSearch Service domain that was
+%% provided through an interface VPC endpoint.
+revoke_vpc_endpoint_access(Client, DomainName, Input) ->
+    revoke_vpc_endpoint_access(Client, DomainName, Input, []).
+revoke_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/revokeVpcEndpointAccess"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Schedules a service software update for an Amazon OpenSearch Service
 %% domain.
+%%
+%% For more information, see Service software updates in Amazon OpenSearch
+%% Service.
 start_service_software_update(Client, Input) ->
     start_service_software_update(Client, Input, []).
 start_service_software_update(Client, Input0, Options0) ->
@@ -1077,8 +1349,8 @@ start_service_software_update(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Modifies the cluster configuration of the specified domain, such as
-%% setting the instance type and the number of instances.
+%% @doc Modifies the cluster configuration of the specified Amazon OpenSearch
+%% Service domain.
 update_domain_config(Client, DomainName, Input) ->
     update_domain_config(Client, DomainName, Input, []).
 update_domain_config(Client, DomainName, Input0, Options0) ->
@@ -1102,6 +1374,8 @@ update_domain_config(Client, DomainName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a package for use with Amazon OpenSearch Service domains.
+%%
+%% For more information, see Custom packages for Amazon OpenSearch Service.
 update_package(Client, Input) ->
     update_package(Client, Input, []).
 update_package(Client, Input0, Options0) ->
@@ -1124,8 +1398,32 @@ update_package(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Allows you to either upgrade your domain or perform an upgrade
-%% eligibility check to a compatible version of OpenSearch or Elasticsearch.
+%% @doc Modifies an Amazon OpenSearch Service-managed interface VPC endpoint.
+update_vpc_endpoint(Client, Input) ->
+    update_vpc_endpoint(Client, Input, []).
+update_vpc_endpoint(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/vpcEndpoints/update"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Allows you to either upgrade your Amazon OpenSearch Service domain or
+%% perform an upgrade eligibility check to a compatible version of OpenSearch
+%% or Elasticsearch.
 upgrade_domain(Client, Input) ->
     upgrade_domain(Client, Input, []).
 upgrade_domain(Client, Input0, Options0) ->

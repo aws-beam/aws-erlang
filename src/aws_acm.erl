@@ -269,9 +269,10 @@ remove_tags_from_certificate(Client, Input, Options)
 %% @doc Renews an eligible ACM certificate.
 %%
 %% At this time, only exported private certificates can be renewed with this
-%% operation. In order to renew your ACM Private CA certificates with ACM,
-%% you must first grant the ACM service principal permission to do so. For
-%% more information, see Testing Managed Renewal in the ACM User Guide.
+%% operation. In order to renew your Amazon Web Services Private CA
+%% certificates with ACM, you must first grant the ACM service principal
+%% permission to do so. For more information, see Testing Managed Renewal in
+%% the ACM User Guide.
 renew_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     renew_certificate(Client, Input, []).

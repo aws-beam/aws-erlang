@@ -13,9 +13,9 @@
 %% price.
 %%
 %% You can manage your Lightsail resources using the Lightsail console,
-%% Lightsail API, AWS Command Line Interface (AWS CLI), or SDKs. For more
-%% information about Lightsail concepts and tasks, see the Amazon Lightsail
-%% Developer Guide.
+%% Lightsail API, Command Line Interface (CLI), or SDKs. For more information
+%% about Lightsail concepts and tasks, see the Amazon Lightsail Developer
+%% Guide.
 %%
 %% This API Reference provides detailed information about the actions, data
 %% types, parameters, and errors of the Lightsail service. For more
@@ -1445,8 +1445,8 @@ get_container_images(Client, Input, Options)
 %% are merged from all nodes on your container service.
 %%
 %% Container logs are retained for a certain amount of time. For more
-%% information, see Amazon Lightsail endpoints and quotas in the AWS General
-%% Reference.
+%% information, see Amazon Lightsail endpoints and quotas in the Amazon Web
+%% Services General Reference.
 get_container_log(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_container_log(Client, Input, []).
@@ -1464,7 +1464,7 @@ get_container_log(Client, Input, Options)
 %%
 %% A set number of deployments are kept before the oldest one is replaced
 %% with the newest one. For more information, see Amazon Lightsail endpoints
-%% and quotas in the AWS General Reference.
+%% and quotas in the Amazon Web Services General Reference.
 get_container_service_deployments(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_container_service_deployments(Client, Input, []).
@@ -2276,10 +2276,10 @@ update_bucket(Client, Input, Options)
 %%
 %% A bucket bundle specifies the monthly cost, storage space, and data
 %% transfer quota for a bucket. You can update a bucket's bundle only one
-%% time within a monthly AWS billing cycle. To determine if you can update a
-%% bucket's bundle, use the GetBuckets action. The `ableToUpdateBundle'
-%% parameter in the response will indicate whether you can currently update a
-%% bucket's bundle.
+%% time within a monthly Amazon Web Services billing cycle. To determine if
+%% you can update a bucket's bundle, use the GetBuckets action. The
+%% `ableToUpdateBundle' parameter in the response will indicate whether you
+%% can currently update a bucket's bundle.
 %%
 %% Update a bucket's bundle if it's consistently going over its storage space
 %% or data transfer quota, or if a bucket's usage is consistently in the
@@ -2326,8 +2326,8 @@ update_distribution(Client, Input, Options)
 %% monthly network transfer quota and is incurring an overage fee.
 %%
 %% You can update your distribution's bundle only one time within your
-%% monthly AWS billing cycle. To determine if you can update your
-%% distribution's bundle, use the `GetDistributions' action. The
+%% monthly Amazon Web Services billing cycle. To determine if you can update
+%% your distribution's bundle, use the `GetDistributions' action. The
 %% `ableToUpdateBundle' parameter in the result will indicate whether you can
 %% currently update your distribution's bundle.
 update_distribution_bundle(Client, Input)

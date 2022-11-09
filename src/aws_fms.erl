@@ -17,6 +17,10 @@
          associate_admin_account/3,
          associate_third_party_firewall/2,
          associate_third_party_firewall/3,
+         batch_associate_resource/2,
+         batch_associate_resource/3,
+         batch_disassociate_resource/2,
+         batch_disassociate_resource/3,
          delete_apps_list/2,
          delete_apps_list/3,
          delete_notification_channel/2,
@@ -25,6 +29,8 @@
          delete_policy/3,
          delete_protocols_list/2,
          delete_protocols_list/3,
+         delete_resource_set/2,
+         delete_resource_set/3,
          disassociate_admin_account/2,
          disassociate_admin_account/3,
          disassociate_third_party_firewall/2,
@@ -43,6 +49,8 @@
          get_protection_status/3,
          get_protocols_list/2,
          get_protocols_list/3,
+         get_resource_set/2,
+         get_resource_set/3,
          get_third_party_firewall_association_status/2,
          get_third_party_firewall_association_status/3,
          get_violation_details/2,
@@ -51,12 +59,18 @@
          list_apps_lists/3,
          list_compliance_status/2,
          list_compliance_status/3,
+         list_discovered_resources/2,
+         list_discovered_resources/3,
          list_member_accounts/2,
          list_member_accounts/3,
          list_policies/2,
          list_policies/3,
          list_protocols_lists/2,
          list_protocols_lists/3,
+         list_resource_set_resources/2,
+         list_resource_set_resources/3,
+         list_resource_sets/2,
+         list_resource_sets/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          list_third_party_firewall_firewall_policies/2,
@@ -69,6 +83,8 @@
          put_policy/3,
          put_protocols_list/2,
          put_protocols_list/3,
+         put_resource_set/2,
+         put_resource_set/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -107,6 +123,22 @@ associate_third_party_firewall(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateThirdPartyFirewall">>, Input, Options).
 
+%% @doc Associate resources to a Firewall Manager resource set.
+batch_associate_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_associate_resource(Client, Input, []).
+batch_associate_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchAssociateResource">>, Input, Options).
+
+%% @doc Disassociates resources from a Firewall Manager resource set.
+batch_disassociate_resource(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_disassociate_resource(Client, Input, []).
+batch_disassociate_resource(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchDisassociateResource">>, Input, Options).
+
 %% @doc Permanently deletes an Firewall Manager applications list.
 delete_apps_list(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -140,6 +172,14 @@ delete_protocols_list(Client, Input)
 delete_protocols_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProtocolsList">>, Input, Options).
+
+%% @doc Deletes the specified `ResourceSet'.
+delete_resource_set(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_resource_set(Client, Input, []).
+delete_resource_set(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteResourceSet">>, Input, Options).
 
 %% @doc Disassociates the account that has been set as the Firewall Manager
 %% administrator account.
@@ -252,6 +292,14 @@ get_protocols_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetProtocolsList">>, Input, Options).
 
+%% @doc Gets information about a specific resource set.
+get_resource_set(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_resource_set(Client, Input, []).
+get_resource_set(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetResourceSet">>, Input, Options).
+
 %% @doc The onboarding status of a Firewall Manager admin account to
 %% third-party firewall vendor tenant.
 get_third_party_firewall_association_status(Client, Input)
@@ -289,6 +337,15 @@ list_compliance_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListComplianceStatus">>, Input, Options).
 
+%% @doc Returns an array of resources in the organization's accounts that are
+%% available to be associated with a resource set.
+list_discovered_resources(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_discovered_resources(Client, Input, []).
+list_discovered_resources(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDiscoveredResources">>, Input, Options).
+
 %% @doc Returns a `MemberAccounts' object that lists the member accounts in
 %% the administrator's Amazon Web Services organization.
 %%
@@ -316,6 +373,23 @@ list_protocols_lists(Client, Input)
 list_protocols_lists(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProtocolsLists">>, Input, Options).
+
+%% @doc Returns an array of resources that are currently associated to a
+%% resource set.
+list_resource_set_resources(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_resource_set_resources(Client, Input, []).
+list_resource_set_resources(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListResourceSetResources">>, Input, Options).
+
+%% @doc Returns an array of `ResourceSetSummary' objects.
+list_resource_sets(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_resource_sets(Client, Input, []).
+list_resource_sets(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListResourceSets">>, Input, Options).
 
 %% @doc Retrieves the list of tags for the specified Amazon Web Services
 %% resource.
@@ -400,6 +474,17 @@ put_protocols_list(Client, Input)
 put_protocols_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutProtocolsList">>, Input, Options).
+
+%% @doc Creates the resource set.
+%%
+%% An Firewall Manager resource set defines the resources to import into an
+%% Firewall Manager policy from another Amazon Web Services service.
+put_resource_set(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_resource_set(Client, Input, []).
+put_resource_set(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutResourceSet">>, Input, Options).
 
 %% @doc Adds one or more tags to an Amazon Web Services resource.
 tag_resource(Client, Input)

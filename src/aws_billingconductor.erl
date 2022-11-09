@@ -18,7 +18,7 @@
 %% This documentation shows how you can configure Amazon Web Services Billing
 %% Conductor using its API. For more information about using the Amazon Web
 %% Services Billing Conductor user interface, see the Amazon Web Services
-%% Enterprise Billing Console User Guide.
+%% Billing Conductor User Guide.
 -module(aws_billingconductor).
 
 -export([associate_accounts/2,
@@ -55,6 +55,8 @@
          list_billing_group_cost_reports/3,
          list_billing_groups/2,
          list_billing_groups/3,
+         list_custom_line_item_versions/2,
+         list_custom_line_item_versions/3,
          list_custom_line_items/2,
          list_custom_line_items/3,
          list_pricing_plans/2,
@@ -371,8 +373,8 @@ delete_pricing_plan(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the pricing rule identified by the input Amazon Resource Name
-%% (ARN).
+%% @doc Deletes the pricing rule that's identified by the input Amazon
+%% Resource Name (ARN).
 delete_pricing_rule(Client, Input) ->
     delete_pricing_rule(Client, Input, []).
 delete_pricing_rule(Client, Input0, Options0) ->
@@ -442,17 +444,12 @@ disassociate_pricing_rules(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Amazon Web Services Billing Conductor is in beta release and is
-%% subject to change.
+%% @doc This is a paginated call to list linked accounts that are linked to
+%% the payer account for the specified time period.
 %%
-%% Your use of Amazon Web Services Billing Conductor is subject to the Beta
-%% Service Participation terms of the Amazon Web Services Service Terms
-%% (Section 1.10).
-%%
-%% This is a paginated call to list linked accounts that are linked to the
-%% payer account for the specified time period. If no information is
-%% provided, the current billing period is used. The response will optionally
-%% include the billing group associated with the linked account.
+%% If no information is provided, the current billing period is used. The
+%% response will optionally include the billing group that's associated with
+%% the linked account.
 list_account_associations(Client, Input) ->
     list_account_associations(Client, Input, []).
 list_account_associations(Client, Input0, Options0) ->
@@ -526,6 +523,29 @@ list_billing_groups(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc A paginated call to get a list of all custom line item versions.
+list_custom_line_item_versions(Client, Input) ->
+    list_custom_line_item_versions(Client, Input, []).
+list_custom_line_item_versions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-custom-line-item-versions"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc A paginated call to get a list of all custom line items (FFLIs) for
 %% the given billing period.
 %%
@@ -577,7 +597,7 @@ list_pricing_plans(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc A list of the pricing plans associated with a pricing rule.
+%% @doc A list of the pricing plans that are associated with a pricing rule.
 list_pricing_plans_associated_with_pricing_rule(Client, Input) ->
     list_pricing_plans_associated_with_pricing_rule(Client, Input, []).
 list_pricing_plans_associated_with_pricing_rule(Client, Input0, Options0) ->
@@ -624,7 +644,7 @@ list_pricing_rules(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the pricing rules associated with a pricing plan.
+%% @doc Lists the pricing rules that are associated with a pricing plan.
 list_pricing_rules_associated_to_pricing_plan(Client, Input) ->
     list_pricing_rules_associated_to_pricing_plan(Client, Input, []).
 list_pricing_rules_associated_to_pricing_plan(Client, Input0, Options0) ->
@@ -647,7 +667,7 @@ list_pricing_rules_associated_to_pricing_plan(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List the resources associated to a custom line item.
+%% @doc List the resources that are associated to a custom line item.
 list_resources_associated_to_custom_line_item(Client, Input) ->
     list_resources_associated_to_custom_line_item(Client, Input, []).
 list_resources_associated_to_custom_line_item(Client, Input0, Options0) ->
