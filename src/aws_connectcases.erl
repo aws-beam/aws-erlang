@@ -274,11 +274,13 @@ create_related_item(Client, CaseId, DomainId, Input0, Options0) ->
 
 %% @doc Creates a template in the Cases domain.
 %%
-%% This template is used to define the case object model (that is, define
+%% This template is used to define the case object model (that is, to define
 %% what data can be captured on cases) in a Cases domain. A template must
 %% have a unique name within a domain, and it must reference existing field
 %% IDs and layout IDs. Additionally, multiple fields with same IDs are not
-%% allowed within the same Template.
+%% allowed within the same Template. A template can be either Active or
+%% Inactive, as indicated by its status. Inactive templates cannot be used to
+%% create cases.
 create_template(Client, DomainId, Input) ->
     create_template(Client, DomainId, Input, []).
 create_template(Client, DomainId, Input0, Options0) ->
@@ -589,7 +591,8 @@ list_templates(Client, DomainId, Input0, Options0) ->
 
     QueryMapping = [
                      {<<"maxResults">>, <<"maxResults">>},
-                     {<<"nextToken">>, <<"nextToken">>}
+                     {<<"nextToken">>, <<"nextToken">>},
+                     {<<"status">>, <<"status">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -803,9 +806,10 @@ update_layout(Client, DomainId, LayoutId, Input0, Options0) ->
 %% @doc Updates the attributes of an existing template.
 %%
 %% The template attributes that can be modified include `name',
-%% `description', `layouts', and `requiredFields'. At least one of these
-%% attributes must not be null. If a null value is provided for a given
-%% attribute, that attribute is ignored and its current value is preserved.
+%% `description', `layoutConfiguration', `requiredFields', and `status'. At
+%% least one of these attributes must not be null. If a null value is
+%% provided for a given attribute, that attribute is ignored and its current
+%% value is preserved.
 update_template(Client, DomainId, TemplateId, Input) ->
     update_template(Client, DomainId, TemplateId, Input, []).
 update_template(Client, DomainId, TemplateId, Input0, Options0) ->

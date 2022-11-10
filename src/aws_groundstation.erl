@@ -15,17 +15,24 @@
          create_config/3,
          create_dataflow_endpoint_group/2,
          create_dataflow_endpoint_group/3,
+         create_ephemeris/2,
+         create_ephemeris/3,
          create_mission_profile/2,
          create_mission_profile/3,
          delete_config/4,
          delete_config/5,
          delete_dataflow_endpoint_group/3,
          delete_dataflow_endpoint_group/4,
+         delete_ephemeris/3,
+         delete_ephemeris/4,
          delete_mission_profile/3,
          delete_mission_profile/4,
          describe_contact/2,
          describe_contact/4,
          describe_contact/5,
+         describe_ephemeris/2,
+         describe_ephemeris/4,
+         describe_ephemeris/5,
          get_config/3,
          get_config/5,
          get_config/6,
@@ -48,6 +55,8 @@
          list_dataflow_endpoint_groups/1,
          list_dataflow_endpoint_groups/3,
          list_dataflow_endpoint_groups/4,
+         list_ephemerides/2,
+         list_ephemerides/3,
          list_ground_stations/1,
          list_ground_stations/3,
          list_ground_stations/4,
@@ -68,6 +77,8 @@
          untag_resource/4,
          update_config/4,
          update_config/5,
+         update_ephemeris/3,
+         update_ephemeris/4,
          update_mission_profile/3,
          update_mission_profile/4]).
 
@@ -139,6 +150,29 @@ create_dataflow_endpoint_group(Client, Input) ->
 create_dataflow_endpoint_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/dataflowEndpointGroup"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an Ephemeris with the specified `EphemerisData'.
+create_ephemeris(Client, Input) ->
+    create_ephemeris(Client, Input, []).
+create_ephemeris(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ephemeris"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -228,6 +262,29 @@ delete_dataflow_endpoint_group(Client, DataflowEndpointGroupId, Input0, Options0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes an ephemeris
+delete_ephemeris(Client, EphemerisId, Input) ->
+    delete_ephemeris(Client, EphemerisId, Input, []).
+delete_ephemeris(Client, EphemerisId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/ephemeris/", aws_util:encode_uri(EphemerisId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a mission profile.
 delete_mission_profile(Client, MissionProfileId, Input) ->
     delete_mission_profile(Client, MissionProfileId, Input, []).
@@ -263,6 +320,29 @@ describe_contact(Client, ContactId, QueryMap, HeadersMap)
 describe_contact(Client, ContactId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact/", aws_util:encode_uri(ContactId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes an existing ephemeris.
+describe_ephemeris(Client, EphemerisId)
+  when is_map(Client) ->
+    describe_ephemeris(Client, EphemerisId, #{}, #{}).
+
+describe_ephemeris(Client, EphemerisId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_ephemeris(Client, EphemerisId, QueryMap, HeadersMap, []).
+
+describe_ephemeris(Client, EphemerisId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/ephemeris/", aws_util:encode_uri(EphemerisId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -473,6 +553,31 @@ list_dataflow_endpoint_groups(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc List existing ephemerides.
+list_ephemerides(Client, Input) ->
+    list_ephemerides(Client, Input, []).
+list_ephemerides(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ephemerides"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns a list of ground stations.
 list_ground_stations(Client)
   when is_map(Client) ->
@@ -660,6 +765,29 @@ update_config(Client, ConfigId, ConfigType, Input) ->
 update_config(Client, ConfigId, ConfigType, Input0, Options0) ->
     Method = put,
     Path = ["/config/", aws_util:encode_uri(ConfigType), "/", aws_util:encode_uri(ConfigId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing ephemeris
+update_ephemeris(Client, EphemerisId, Input) ->
+    update_ephemeris(Client, EphemerisId, Input, []).
+update_ephemeris(Client, EphemerisId, Input0, Options0) ->
+    Method = put,
+    Path = ["/ephemeris/", aws_util:encode_uri(EphemerisId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

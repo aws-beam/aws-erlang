@@ -1,7 +1,18 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Operations and objects for transcribing streaming speech to text.
+%% @doc Amazon Transcribe streaming offers two types of real-time
+%% transcription: Standard and Medical.
+%%
+%% <ul> <li> Standard transcriptions are the most common option. Refer to for
+%% details.
+%%
+%% </li> <li> Medical transcriptions are tailored to medical professionals
+%% and incorporate medical terms. A common use case for this service is
+%% transcribing doctor-patient dialogue in real time, so doctors can focus on
+%% their patient instead of taking notes. Refer to for details.
+%%
+%% </li> </ul>
 -module(aws_transcribe_streaming).
 
 -export([start_medical_stream_transcription/2,
@@ -15,9 +26,12 @@
 %% API
 %%====================================================================
 
-%% @doc Starts a bidirectional HTTP/2 stream where audio is streamed to
-%% Amazon Transcribe Medical and the transcription results are streamed to
-%% your application.
+%% @doc Starts a bidirectional HTTP/2 or WebSocket stream where audio is
+%% streamed to Amazon Transcribe Medical and the transcription results are
+%% streamed to your application.
+%%
+%% For more information on streaming with Amazon Transcribe Medical, see
+%% Transcribing streaming audio.
 start_medical_stream_transcription(Client, Input) ->
     start_medical_stream_transcription(Client, Input, []).
 start_medical_stream_transcription(Client, Input0, Options0) ->
@@ -79,21 +93,22 @@ start_medical_stream_transcription(Client, Input0, Options0) ->
         Result
     end.
 
-%% @doc Starts a bidirectional HTTP/2 stream where audio is streamed to
-%% Amazon Transcribe and the transcription results are streamed to your
-%% application.
+%% @doc Starts a bidirectional HTTP/2 or WebSocket stream where audio is
+%% streamed to Amazon Transcribe and the transcription results are streamed
+%% to your application.
 %%
-%% The following are encoded as HTTP/2 headers:
+%% The following are encoded as headers:
 %%
-%% <ul> <li> x-amzn-transcribe-language-code
+%% <ul> <li> language-code
 %%
-%% </li> <li> x-amzn-transcribe-media-encoding
+%% </li> <li> media-encoding
 %%
-%% </li> <li> x-amzn-transcribe-sample-rate
+%% </li> <li> sample-rate
 %%
-%% </li> <li> x-amzn-transcribe-session-id
+%% </li> <li> session-id
 %%
-%% </li> </ul> See the SDK for Go API Reference for more detail.
+%% </li> </ul> For more information on streaming with Amazon Transcribe, see
+%% Transcribing streaming audio.
 start_stream_transcription(Client, Input) ->
     start_stream_transcription(Client, Input, []).
 start_stream_transcription(Client, Input0, Options0) ->
