@@ -66,6 +66,8 @@
          discover_poll_endpoint/3,
          execute_command/2,
          execute_command/3,
+         get_task_protection/2,
+         get_task_protection/3,
          list_account_settings/2,
          list_account_settings/3,
          list_attributes/2,
@@ -126,6 +128,8 @@
          update_service/3,
          update_service_primary_task_set/2,
          update_service_primary_task_set/3,
+         update_task_protection/2,
+         update_task_protection/3,
          update_task_set/2,
          update_task_set/3]).
 
@@ -528,6 +532,14 @@ execute_command(Client, Input)
 execute_command(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExecuteCommand">>, Input, Options).
+
+%% @doc Retrieves the protection status of tasks in an Amazon ECS service.
+get_task_protection(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_task_protection(Client, Input, []).
+get_task_protection(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetTaskProtection">>, Input, Options).
 
 %% @doc Lists the account settings for a specified principal.
 list_account_settings(Client, Input)
@@ -1137,6 +1149,40 @@ update_service_primary_task_set(Client, Input)
 update_service_primary_task_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServicePrimaryTaskSet">>, Input, Options).
+
+%% @doc Updates the protection status of a task.
+%%
+%% You can set `protectionEnabled' to `true' to protect your task from
+%% termination during scale-in events from Service Autoscaling or
+%% deployments.
+%%
+%% Task-protection, by default, expires after 2 hours at which point Amazon
+%% ECS unsets the `protectionEnabled' property making the task eligible for
+%% termination by a subsequent scale-in event.
+%%
+%% You can specify a custom expiration period for task protection from 1
+%% minute to up to 2,880 minutes (48 hours). To specify the custom expiration
+%% period, set the `expiresInMinutes' property. The `expiresInMinutes'
+%% property is always reset when you invoke this operation for a task that
+%% already has `protectionEnabled' set to `true'. You can keep extending the
+%% protection expiration period of a task by invoking this operation
+%% repeatedly.
+%%
+%% To learn more about Amazon ECS task protection, see Task scale-in
+%% protection in the Amazon Elastic Container Service Developer Guide.
+%%
+%% This operation is only supported for tasks belonging to an Amazon ECS
+%% service. Invoking this operation for a standalone task will result in an
+%% `TASK_NOT_VALID' failure. For more information, see API failure reasons.
+%%
+%% If you prefer to set task protection from within the container, we
+%% recommend using the Amazon ECS container agent endpoint.
+update_task_protection(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_task_protection(Client, Input, []).
+update_task_protection(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateTaskProtection">>, Input, Options).
 
 %% @doc Modifies a task set.
 %%

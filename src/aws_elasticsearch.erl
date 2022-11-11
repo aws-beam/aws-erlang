@@ -22,6 +22,8 @@
          add_tags/3,
          associate_package/4,
          associate_package/5,
+         authorize_vpc_endpoint_access/3,
+         authorize_vpc_endpoint_access/4,
          cancel_elasticsearch_service_software_update/2,
          cancel_elasticsearch_service_software_update/3,
          create_elasticsearch_domain/2,
@@ -30,6 +32,8 @@
          create_outbound_cross_cluster_search_connection/3,
          create_package/2,
          create_package/3,
+         create_vpc_endpoint/2,
+         create_vpc_endpoint/3,
          delete_elasticsearch_domain/3,
          delete_elasticsearch_domain/4,
          delete_elasticsearch_service_role/2,
@@ -40,6 +44,8 @@
          delete_outbound_cross_cluster_search_connection/4,
          delete_package/3,
          delete_package/4,
+         delete_vpc_endpoint/3,
+         delete_vpc_endpoint/4,
          describe_domain_auto_tunes/2,
          describe_domain_auto_tunes/4,
          describe_domain_auto_tunes/5,
@@ -69,6 +75,8 @@
          describe_reserved_elasticsearch_instances/1,
          describe_reserved_elasticsearch_instances/3,
          describe_reserved_elasticsearch_instances/4,
+         describe_vpc_endpoints/2,
+         describe_vpc_endpoints/3,
          dissociate_package/4,
          dissociate_package/5,
          get_compatible_elasticsearch_versions/1,
@@ -101,18 +109,31 @@
          list_tags/2,
          list_tags/4,
          list_tags/5,
+         list_vpc_endpoint_access/2,
+         list_vpc_endpoint_access/4,
+         list_vpc_endpoint_access/5,
+         list_vpc_endpoints/1,
+         list_vpc_endpoints/3,
+         list_vpc_endpoints/4,
+         list_vpc_endpoints_for_domain/2,
+         list_vpc_endpoints_for_domain/4,
+         list_vpc_endpoints_for_domain/5,
          purchase_reserved_elasticsearch_instance_offering/2,
          purchase_reserved_elasticsearch_instance_offering/3,
          reject_inbound_cross_cluster_search_connection/3,
          reject_inbound_cross_cluster_search_connection/4,
          remove_tags/2,
          remove_tags/3,
+         revoke_vpc_endpoint_access/3,
+         revoke_vpc_endpoint_access/4,
          start_elasticsearch_service_software_update/2,
          start_elasticsearch_service_software_update/3,
          update_elasticsearch_domain_config/3,
          update_elasticsearch_domain_config/4,
          update_package/2,
          update_package/3,
+         update_vpc_endpoint/2,
+         update_vpc_endpoint/3,
          upgrade_elasticsearch_domain/2,
          upgrade_elasticsearch_domain/3]).
 
@@ -179,6 +200,30 @@ associate_package(Client, DomainName, PackageID, Input) ->
 associate_package(Client, DomainName, PackageID, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/packages/associate/", aws_util:encode_uri(PackageID), "/", aws_util:encode_uri(DomainName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Provides access to an Amazon OpenSearch Service domain through the
+%% use of an interface VPC endpoint.
+authorize_vpc_endpoint_access(Client, DomainName, Input) ->
+    authorize_vpc_endpoint_access(Client, DomainName, Input, []).
+authorize_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/authorizeVpcEndpointAccess"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -278,6 +323,29 @@ create_package(Client, Input) ->
 create_package(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/packages"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an Amazon OpenSearch Service-managed VPC endpoint.
+create_vpc_endpoint(Client, Input) ->
+    create_vpc_endpoint(Client, Input, []).
+create_vpc_endpoint(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2015-01-01/es/vpcEndpoints"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -404,6 +472,29 @@ delete_package(Client, PackageID, Input) ->
 delete_package(Client, PackageID, Input0, Options0) ->
     Method = delete,
     Path = ["/2015-01-01/packages/", aws_util:encode_uri(PackageID), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an Amazon OpenSearch Service-managed interface VPC endpoint.
+delete_vpc_endpoint(Client, VpcEndpointId, Input) ->
+    delete_vpc_endpoint(Client, VpcEndpointId, Input, []).
+delete_vpc_endpoint(Client, VpcEndpointId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2015-01-01/es/vpcEndpoints/", aws_util:encode_uri(VpcEndpointId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -713,6 +804,30 @@ describe_reserved_elasticsearch_instances(Client, QueryMap, HeadersMap, Options0
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Describes one or more Amazon OpenSearch Service-managed VPC
+%% endpoints.
+describe_vpc_endpoints(Client, Input) ->
+    describe_vpc_endpoints(Client, Input, []).
+describe_vpc_endpoints(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2015-01-01/es/vpcEndpoints/describe"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Dissociates a package from the Amazon ES domain.
 dissociate_package(Client, DomainName, PackageID, Input) ->
     dissociate_package(Client, DomainName, PackageID, Input, []).
@@ -1017,6 +1132,91 @@ list_tags(Client, ARN, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves information about each principal that is allowed to access
+%% a given Amazon OpenSearch Service domain through the use of an interface
+%% VPC endpoint.
+list_vpc_endpoint_access(Client, DomainName)
+  when is_map(Client) ->
+    list_vpc_endpoint_access(Client, DomainName, #{}, #{}).
+
+list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap, []).
+
+list_vpc_endpoint_access(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/listVpcEndpointAccess"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves all Amazon OpenSearch Service-managed VPC endpoints in the
+%% current account and Region.
+list_vpc_endpoints(Client)
+  when is_map(Client) ->
+    list_vpc_endpoints(Client, #{}, #{}).
+
+list_vpc_endpoints(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_vpc_endpoints(Client, QueryMap, HeadersMap, []).
+
+list_vpc_endpoints(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2015-01-01/es/vpcEndpoints"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves all Amazon OpenSearch Service-managed VPC endpoints
+%% associated with a particular domain.
+list_vpc_endpoints_for_domain(Client, DomainName)
+  when is_map(Client) ->
+    list_vpc_endpoints_for_domain(Client, DomainName, #{}, #{}).
+
+list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap, []).
+
+list_vpc_endpoints_for_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/vpcEndpoints"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Allows you to purchase reserved Elasticsearch instances.
 purchase_reserved_elasticsearch_instance_offering(Client, Input) ->
     purchase_reserved_elasticsearch_instance_offering(Client, Input, []).
@@ -1088,6 +1288,30 @@ remove_tags(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Revokes access to an Amazon OpenSearch Service domain that was
+%% provided through an interface VPC endpoint.
+revoke_vpc_endpoint_access(Client, DomainName, Input) ->
+    revoke_vpc_endpoint_access(Client, DomainName, Input, []).
+revoke_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/revokeVpcEndpointAccess"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Schedules a service software update for an Amazon ES domain.
 start_elasticsearch_service_software_update(Client, Input) ->
     start_elasticsearch_service_software_update(Client, Input, []).
@@ -1141,6 +1365,29 @@ update_package(Client, Input) ->
 update_package(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/packages/update"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Modifies an Amazon OpenSearch Service-managed interface VPC endpoint.
+update_vpc_endpoint(Client, Input) ->
+    update_vpc_endpoint(Client, Input, []).
+update_vpc_endpoint(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2015-01-01/es/vpcEndpoints/update"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
