@@ -24,8 +24,14 @@
          list_change_sets/3,
          list_entities/2,
          list_entities/3,
+         list_tags_for_resource/2,
+         list_tags_for_resource/3,
          start_change_set/2,
-         start_change_set/3]).
+         start_change_set/3,
+         tag_resource/2,
+         tag_resource/3,
+         untag_resource/2,
+         untag_resource/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -172,18 +178,43 @@ list_entities(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation allows you to request changes for your entities.
+%% @doc Lists all tags that have been added to a resource (either an entity
+%% or change set).
+list_tags_for_resource(Client, Input) ->
+    list_tags_for_resource(Client, Input, []).
+list_tags_for_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListTagsForResource"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Allows you to request changes for your entities.
 %%
-%% Within a single ChangeSet, you cannot start the same change type against
-%% the same entity multiple times. Additionally, when a ChangeSet is running,
-%% all the entities targeted by the different changes are locked until the
-%% ChangeSet has completed (either succeeded, cancelled, or failed). If you
-%% try to start a ChangeSet containing a change against an entity that is
-%% already locked, you will receive a `ResourceInUseException'.
+%% Within a single `ChangeSet', you can't start the same change type against
+%% the same entity multiple times. Additionally, when a `ChangeSet' is
+%% running, all the entities targeted by the different changes are locked
+%% until the change set has completed (either succeeded, cancelled, or
+%% failed). If you try to start a change set containing a change against an
+%% entity that is already locked, you will receive a `ResourceInUseException'
+%% error.
 %%
-%% For example, you cannot start the ChangeSet described in the example later
-%% in this topic, because it contains two changes to execute the same change
-%% type (`AddRevisions') against the same entity (`entity-id@1)'.
+%% For example, you can't start the `ChangeSet' described in the example
+%% later in this topic because it contains two changes to run the same change
+%% type (`AddRevisions') against the same entity (`entity-id@1').
 %%
 %% For more information about working with change sets, see Working with
 %% change sets.
@@ -192,6 +223,53 @@ start_change_set(Client, Input) ->
 start_change_set(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StartChangeSet"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Tags a resource (either an entity or change set).
+tag_resource(Client, Input) ->
+    tag_resource(Client, Input, []).
+tag_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/TagResource"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes a tag or list of tags from a resource (either an entity or
+%% change set).
+untag_resource(Client, Input) ->
+    untag_resource(Client, Input, []).
+untag_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UntagResource"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

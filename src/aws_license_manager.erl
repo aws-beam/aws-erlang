@@ -78,8 +78,12 @@
          list_licenses/3,
          list_received_grants/2,
          list_received_grants/3,
+         list_received_grants_for_organization/2,
+         list_received_grants_for_organization/3,
          list_received_licenses/2,
          list_received_licenses/3,
+         list_received_licenses_for_organization/2,
+         list_received_licenses_for_organization/3,
          list_resource_inventory/2,
          list_resource_inventory/3,
          list_tags_for_resource/2,
@@ -136,6 +140,9 @@ checkout_borrow_license(Client, Input, Options)
     request(Client, <<"CheckoutBorrowLicense">>, Input, Options).
 
 %% @doc Checks out the specified license.
+%%
+%% If the account that created the license is the same that is performing the
+%% check out, you must specify the account as the beneficiary.
 checkout_license(Client, Input)
   when is_map(Client), is_map(Input) ->
     checkout_license(Client, Input, []).
@@ -428,6 +435,14 @@ list_received_grants(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReceivedGrants">>, Input, Options).
 
+%% @doc Lists the grants received for all accounts in the organization.
+list_received_grants_for_organization(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_received_grants_for_organization(Client, Input, []).
+list_received_grants_for_organization(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListReceivedGrantsForOrganization">>, Input, Options).
+
 %% @doc Lists received licenses.
 list_received_licenses(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -435,6 +450,14 @@ list_received_licenses(Client, Input)
 list_received_licenses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListReceivedLicenses">>, Input, Options).
+
+%% @doc Lists the licenses received for all accounts in the organization.
+list_received_licenses_for_organization(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_received_licenses_for_organization(Client, Input, []).
+list_received_licenses_for_organization(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListReceivedLicensesForOrganization">>, Input, Options).
 
 %% @doc Lists resources managed using Systems Manager inventory.
 list_resource_inventory(Client, Input)

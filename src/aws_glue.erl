@@ -1210,7 +1210,8 @@ get_dev_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDevEndpoint">>, Input, Options).
 
-%% @doc Retrieves all the development endpoints in this AWS account.
+%% @doc Retrieves all the development endpoints in this Amazon Web Services
+%% account.
 %%
 %% When you create a development endpoint in a virtual private cloud (VPC),
 %% Glue returns only a private IP address and the public IP address field is
@@ -1232,6 +1233,16 @@ get_job(Client, Input, Options)
     request(Client, <<"GetJob">>, Input, Options).
 
 %% @doc Returns information on a job bookmark entry.
+%%
+%% For more information about enabling and using job bookmarks, see:
+%%
+%% <ul> <li> Tracking processed data using job bookmarks
+%%
+%% </li> <li> Job parameters used by Glue
+%%
+%% </li> <li> Job structure
+%%
+%% </li> </ul>
 get_job_bookmark(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_job_bookmark(Client, Input, []).
@@ -1879,6 +1890,16 @@ remove_schema_version_metadata(Client, Input, Options)
     request(Client, <<"RemoveSchemaVersionMetadata">>, Input, Options).
 
 %% @doc Resets a bookmark entry.
+%%
+%% For more information about enabling and using job bookmarks, see:
+%%
+%% <ul> <li> Tracking processed data using job bookmarks
+%%
+%% </li> <li> Job parameters used by Glue
+%%
+%% </li> <li> Job structure
+%%
+%% </li> </ul>
 reset_job_bookmark(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_job_bookmark(Client, Input, []).

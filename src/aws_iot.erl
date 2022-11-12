@@ -434,6 +434,9 @@
          list_provisioning_templates/1,
          list_provisioning_templates/3,
          list_provisioning_templates/4,
+         list_related_resources_for_audit_finding/2,
+         list_related_resources_for_audit_finding/4,
+         list_related_resources_for_audit_finding/5,
          list_role_aliases/1,
          list_role_aliases/3,
          list_role_aliases/4,
@@ -5317,6 +5320,61 @@ list_provisioning_templates(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc The related resources of an Audit finding.
+%%
+%% The following resources can be returned from calling this API:
+%%
+%% <ul> <li> DEVICE_CERTIFICATE
+%%
+%% </li> <li> CA_CERTIFICATE
+%%
+%% </li> <li> IOT_POLICY
+%%
+%% </li> <li> COGNITO_IDENTITY_POOL
+%%
+%% </li> <li> CLIENT_ID
+%%
+%% </li> <li> ACCOUNT_SETTINGS
+%%
+%% </li> <li> ROLE_ALIAS
+%%
+%% </li> <li> IAM_ROLE
+%%
+%% </li> <li> ISSUER_CERTIFICATE
+%%
+%% </li> </ul> This API is similar to DescribeAuditFinding's RelatedResources
+%% but provides pagination and is not limited to 10 resources. When calling
+%% DescribeAuditFinding for the intermediate CA revoked for active device
+%% certificates check, RelatedResources will not be populated. You must use
+%% this API, ListRelatedResourcesForAuditFinding, to list the certificates.
+list_related_resources_for_audit_finding(Client, FindingId)
+  when is_map(Client) ->
+    list_related_resources_for_audit_finding(Client, FindingId, #{}, #{}).
+
+list_related_resources_for_audit_finding(Client, FindingId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_related_resources_for_audit_finding(Client, FindingId, QueryMap, HeadersMap, []).
+
+list_related_resources_for_audit_finding(Client, FindingId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/audit/relatedResources"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"findingId">>, FindingId},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the role aliases registered in your account.
 %%
 %% Requires permission to access the ListRoleAliases action.
@@ -5758,7 +5816,8 @@ list_thing_types(Client, QueryMap, HeadersMap, Options0)
 %% Use the attributeName and attributeValue parameters to filter your things.
 %% For example, calling `ListThings' with attributeName=Color and
 %% attributeValue=Red retrieves all things in the registry that contain an
-%% attribute Color with the value Red.
+%% attribute Color with the value Red. For more information, see List Things
+%% from the Amazon Web Services IoT Core Developer Guide.
 %%
 %% Requires permission to access the ListThings action.
 %%
