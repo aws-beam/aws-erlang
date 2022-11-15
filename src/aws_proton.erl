@@ -439,12 +439,17 @@ create_component(Client, Input, Options)
 %%
 %% == You can provision environments using the following methods: ==
 %%
-%% <ul> <li> Amazon Web Services-managed provisioning: Proton makes direct
+%% <ul> <li> Amazon Web Services-managed provisioning – Proton makes direct
 %% calls to provision your resources.
 %%
-%% </li> <li> Self-managed provisioning: Proton makes pull requests on your
+%% </li> <li> Self-managed provisioning – Proton makes pull requests on your
 %% repository to provide compiled infrastructure as code (IaC) files that
 %% your IaC engine uses to provision resources.
+%%
+%% </li> <li> CodeBuild-based provisioning – Proton uses CodeBuild to run
+%% shell commands that you provide. Your commands can read inputs that Proton
+%% provides, and are responsible for provisioning or deprovisioning
+%% infrastructure and generating output values.
 %%
 %% </li> </ul> For more information, see Environments and Provisioning
 %% methods in the Proton User Guide.
@@ -1019,11 +1024,18 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Notify Proton of status changes to a provisioned resource when you
-%% use self-managed provisioning.
+%% @doc Notify Proton of the following information related to a provisioned
+%% resource (environment, service instance, or service pipeline):
 %%
-%% For more information, see Self-managed provisioning in the Proton User
-%% Guide.
+%% <ul> <li> For CodeBuild-based provisioning, provide your provisioned
+%% resource output values to Proton.
+%%
+%% </li> <li> For self-managed provisioning, notify Proton about the status
+%% of your provisioned resource. To disambiguate between different
+%% deployments of the same resource, set `deploymentId' to a unique
+%% deployment ID of your choice.
+%%
+%% </li> </ul> </li></ul>
 notify_resource_deployment_status_change(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_resource_deployment_status_change(Client, Input, []).
@@ -1105,9 +1117,8 @@ update_component(Client, Input, Options)
 %% @doc Update an environment.
 %%
 %% If the environment is associated with an environment account connection,
-%% don't update or include the `protonServiceRoleArn' and
-%% `provisioningRepository' parameter to update or connect to an environment
-%% account connection.
+%% don't update or include the `protonServiceRoleArn', `codebuildRoleArn',
+%% and `provisioningRepository' parameters.
 %%
 %% You can only update to a new environment account connection if that
 %% connection was created in the same environment account that the current
@@ -1120,15 +1131,16 @@ update_component(Client, Input, Options)
 %% account connection if it isn't already associated with an environment
 %% connection.
 %%
-%% You can update either the `environmentAccountConnectionId' or
-%% `protonServiceRoleArn' parameter and value. You can’t update both.
+%% You can update either `environmentAccountConnectionId' or one or more of
+%% `protonServiceRoleArn', `codebuildRoleArn', and `provisioningRepository'.
 %%
-%% If the environment was configured for Amazon Web Services-managed
-%% provisioning, omit the `provisioningRepository' parameter.
+%% If the environment was configured for Amazon Web Services-managed or
+%% CodeBuild-based provisioning, omit the `provisioningRepository' parameter.
 %%
 %% If the environment was configured for self-managed provisioning, specify
-%% the `provisioningRepository' parameter and omit the `protonServiceRoleArn'
-%% and `environmentAccountConnectionId' parameters.
+%% the `provisioningRepository' parameter and omit the
+%% `protonServiceRoleArn', `codebuildRoleArn', and `provisioningRepository'
+%% parameters.
 %%
 %% For more information, see Environments and Provisioning methods in the
 %% Proton User Guide.

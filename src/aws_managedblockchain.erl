@@ -243,7 +243,7 @@ create_proposal(Client, NetworkId, Input0, Options0) ->
 %% an accessor is deleted, the status of the accessor changes from
 %% `AVAILABLE' to `PENDING_DELETION'. An accessor in the `PENDING_DELETION'
 %% state can’t be used for new WebSocket requests or HTTP requests. However,
-%% WebSocket connections that are initiated while the accessor was in the
+%% WebSocket connections that were initiated while the accessor was in the
 %% `AVAILABLE' state remain open until they expire (up to 2 hours).
 delete_accessor(Client, AccessorId, Input) ->
     delete_accessor(Client, AccessorId, Input, []).

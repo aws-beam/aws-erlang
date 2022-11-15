@@ -3,11 +3,6 @@
 
 %% @doc Amazon Connect Customer Profiles
 %%
-%% Welcome to the Amazon Connect Customer Profiles API Reference.
-%%
-%% This guide provides information about the Amazon Connect Customer Profiles
-%% API, including supported operations, data types, parameters, and schemas.
-%%
 %% Amazon Connect Customer Profiles is a unified customer profile for your
 %% contact center that has pre-built connectors powered by AppFlow that make
 %% it easy to combine customer information from third party applications,
@@ -15,8 +10,8 @@
 %% planning (ERP), with contact history from your Amazon Connect contact
 %% center.
 %%
-%% If you're new to Amazon Connect , you might find it helpful to also review
-%% the Amazon Connect Administrator Guide.
+%% If you're new to Amazon Connect, you might find it helpful to review the
+%% Amazon Connect Administrator Guide.
 -module(aws_customer_profiles).
 
 -export([add_profile_key/3,
@@ -1077,8 +1072,16 @@ put_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Searches for profiles within a specific domain name using name, phone
-%% number, email address, account number, or a custom defined index.
+%% @doc Searches for profiles within a specific domain using one or more
+%% predefined search keys (e.g., _fullName, _phone, _email, _account, etc.)
+%% and/or custom-defined search keys.
+%%
+%% A search key is a data type pair that consists of a `KeyName' and `Values'
+%% list.
+%%
+%% This operation supports searching for profiles with a minimum of 1
+%% key-value(s) pair and up to 5 key-value(s) pairs using either `AND' or
+%% `OR' logic.
 search_profiles(Client, DomainName, Input) ->
     search_profiles(Client, DomainName, Input, []).
 search_profiles(Client, DomainName, Input0, Options0) ->

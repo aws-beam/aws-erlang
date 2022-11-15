@@ -35,6 +35,20 @@
 %% modify file permissions and upload any file to any user. This allows
 %% developers to perform the three use cases above, as well as give users the
 %% ability to grant access on a selective basis using the IAM model.
+%%
+%% The pricing for Amazon WorkDocs APIs varies depending on the API call type
+%% for these actions:
+%%
+%% `READ (Get*)'
+%%
+%% `WRITE (Activate*, Add*, Create*, Deactivate*, Initiate*, Update*)'
+%%
+%% `LIST (Describe*)'
+%%
+%% `DELETE*, CANCEL'
+%%
+%% For information about Amazon WorkDocs API pricing, see Amazon WorkDocs
+%% Pricing.
 -module(aws_workdocs).
 
 -export([abort_document_version_upload/4,
@@ -63,6 +77,8 @@
          delete_custom_metadata/4,
          delete_document/3,
          delete_document/4,
+         delete_document_version/4,
+         delete_document_version/5,
          delete_folder/3,
          delete_folder/4,
          delete_folder_contents/3,
@@ -127,6 +143,8 @@
          remove_all_resource_permissions/4,
          remove_resource_permission/4,
          remove_resource_permission/5,
+         restore_document_versions/3,
+         restore_document_versions/4,
          update_document/3,
          update_document/4,
          update_document_version/4,
@@ -334,8 +352,8 @@ create_labels(Client, ResourceId, Input0, Options0) ->
 %% The endpoint receives a confirmation message, and must confirm the
 %% subscription.
 %%
-%% For more information, see Subscribe to Notifications in the Amazon
-%% WorkDocs Developer Guide.
+%% For more information, see Setting up notifications for an IAM user or role
+%% in the Amazon WorkDocs Developer Guide.
 create_notification_subscription(Client, OrganizationId, Input) ->
     create_notification_subscription(Client, OrganizationId, Input, []).
 create_notification_subscription(Client, OrganizationId, Input0, Options0) ->
@@ -489,6 +507,34 @@ delete_document(Client, DocumentId, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a version of an Amazon WorkDocs document.
+%%
+%% Use the `DeletePriorVersions' parameter to delete prior versions.
+delete_document_version(Client, DocumentId, VersionId, Input) ->
+    delete_document_version(Client, DocumentId, VersionId, Input, []).
+delete_document_version(Client, DocumentId, VersionId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/api/v1/documentVersions/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"Authentication">>, <<"AuthenticationToken">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"deletePriorVersions">>, <<"DeletePriorVersions">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Permanently deletes the specified folder and its contents.
@@ -1277,6 +1323,31 @@ remove_resource_permission(Client, PrincipalId, ResourceId, Input0, Options0) ->
                      {<<"type">>, <<"PrincipalType">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Recovers a deleted version of an Amazon WorkDocs document.
+restore_document_versions(Client, DocumentId, Input) ->
+    restore_document_versions(Client, DocumentId, Input, []).
+restore_document_versions(Client, DocumentId, Input0, Options0) ->
+    Method = post,
+    Path = ["/api/v1/documentVersions/restore/", aws_util:encode_uri(DocumentId), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"Authentication">>, <<"AuthenticationToken">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the specified attributes of a document.
