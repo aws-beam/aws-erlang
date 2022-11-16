@@ -113,6 +113,8 @@
          migrate_workspace/3,
          modify_account/2,
          modify_account/3,
+         modify_certificate_based_auth_properties/2,
+         modify_certificate_based_auth_properties/3,
          modify_client_properties/2,
          modify_client_properties/3,
          modify_saml_properties/2,
@@ -709,6 +711,15 @@ modify_account(Client, Input)
 modify_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyAccount">>, Input, Options).
+
+%% @doc Modifies the properties of the certificate-based authentication you
+%% want to use with your WorkSpaces.
+modify_certificate_based_auth_properties(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_certificate_based_auth_properties(Client, Input, []).
+modify_certificate_based_auth_properties(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyCertificateBasedAuthProperties">>, Input, Options).
 
 %% @doc Modifies the properties of the specified Amazon WorkSpaces clients.
 modify_client_properties(Client, Input)

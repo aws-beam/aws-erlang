@@ -822,6 +822,7 @@ list_deployments(Client, QueryMap, HeadersMap, Options0)
         {<<"historyFilter">>, maps:get(<<"historyFilter">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"parentTargetArn">>, maps:get(<<"parentTargetArn">>, QueryMap, undefined)},
         {<<"targetArn">>, maps:get(<<"targetArn">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
