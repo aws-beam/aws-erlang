@@ -29,12 +29,17 @@
          delete_scene/5,
          delete_workspace/3,
          delete_workspace/4,
+         execute_query/2,
+         execute_query/3,
          get_component_type/3,
          get_component_type/5,
          get_component_type/6,
          get_entity/3,
          get_entity/5,
          get_entity/6,
+         get_pricing_plan/1,
+         get_pricing_plan/3,
+         get_pricing_plan/4,
          get_property_value/3,
          get_property_value/4,
          get_property_value_history/3,
@@ -63,6 +68,8 @@
          update_component_type/5,
          update_entity/4,
          update_entity/5,
+         update_pricing_plan/2,
+         update_pricing_plan/3,
          update_scene/4,
          update_scene/5,
          update_workspace/3,
@@ -282,6 +289,30 @@ delete_workspace(Client, WorkspaceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Run queries to access information from your knowledge graph of
+%% entities within individual workspaces.
+execute_query(Client, Input) ->
+    execute_query(Client, Input, []).
+execute_query(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/queries/execution"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves information about a component type.
 get_component_type(Client, ComponentTypeId, WorkspaceId)
   when is_map(Client) ->
@@ -317,6 +348,29 @@ get_entity(Client, EntityId, WorkspaceId, QueryMap, HeadersMap)
 get_entity(Client, EntityId, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/entities/", aws_util:encode_uri(EntityId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the pricing plan.
+get_pricing_plan(Client)
+  when is_map(Client) ->
+    get_pricing_plan(Client, #{}, #{}).
+
+get_pricing_plan(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_pricing_plan(Client, QueryMap, HeadersMap, []).
+
+get_pricing_plan(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/pricingplan"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -621,6 +675,29 @@ update_entity(Client, EntityId, WorkspaceId, Input) ->
 update_entity(Client, EntityId, WorkspaceId, Input0, Options0) ->
     Method = put,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/entities/", aws_util:encode_uri(EntityId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update the pricing plan.
+update_pricing_plan(Client, Input) ->
+    update_pricing_plan(Client, Input, []).
+update_pricing_plan(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/pricingplan"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

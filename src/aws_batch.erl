@@ -138,6 +138,9 @@ cancel_job(Client, Input0, Options0) ->
 %% container instance in the Amazon Elastic Container Service Developer
 %% Guide.
 %%
+%% To create a compute environment that uses EKS resources, the caller must
+%% have permissions to call `eks:DescribeCluster'.
+%%
 %% Batch doesn't automatically upgrade the AMIs in a compute environment
 %% after it's created. For example, it also doesn't update the AMIs in your
 %% compute environment when a newer version of the Amazon ECS optimized AMI

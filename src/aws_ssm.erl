@@ -79,6 +79,8 @@
          delete_patch_baseline/3,
          delete_resource_data_sync/2,
          delete_resource_data_sync/3,
+         delete_resource_policy/2,
+         delete_resource_policy/3,
          deregister_managed_instance/2,
          deregister_managed_instance/3,
          deregister_patch_baseline_for_patch_group/2,
@@ -199,6 +201,8 @@
          get_patch_baseline/3,
          get_patch_baseline_for_patch_group/2,
          get_patch_baseline_for_patch_group/3,
+         get_resource_policies/2,
+         get_resource_policies/3,
          get_service_setting/2,
          get_service_setting/3,
          label_parameter_version/2,
@@ -243,6 +247,8 @@
          put_inventory/3,
          put_parameter/2,
          put_parameter/3,
+         put_resource_policy/2,
+         put_resource_policy/3,
          register_default_patch_baseline/2,
          register_default_patch_baseline/3,
          register_patch_baseline_for_patch_group/2,
@@ -663,6 +669,21 @@ delete_resource_data_sync(Client, Input)
 delete_resource_data_sync(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourceDataSync">>, Input, Options).
+
+%% @doc Deletes a Systems Manager resource policy.
+%%
+%% A resource policy helps you to define the IAM entity (for example, an
+%% Amazon Web Services account) that can manage your Systems Manager
+%% resources. Currently, `OpsItemGroup' is the only resource that supports
+%% Systems Manager resource policies. The resource policy for `OpsItemGroup'
+%% enables Amazon Web Services accounts to view and interact with OpsCenter
+%% operational work items (OpsItems).
+delete_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_resource_policy(Client, Input, []).
+delete_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteResourcePolicy">>, Input, Options).
 
 %% @doc Removes the server or virtual machine from the list of registered
 %% servers.
@@ -1360,6 +1381,14 @@ get_patch_baseline_for_patch_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPatchBaselineForPatchGroup">>, Input, Options).
 
+%% @doc Returns an array of the `Policy' object.
+get_resource_policies(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_resource_policies(Client, Input, []).
+get_resource_policies(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetResourcePolicies">>, Input, Options).
+
 %% @doc `ServiceSetting' is an account-level setting for an Amazon Web
 %% Services service.
 %%
@@ -1696,6 +1725,21 @@ put_parameter(Client, Input)
 put_parameter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutParameter">>, Input, Options).
+
+%% @doc Creates or updates a Systems Manager resource policy.
+%%
+%% A resource policy helps you to define the IAM entity (for example, an
+%% Amazon Web Services account) that can manage your Systems Manager
+%% resources. Currently, `OpsItemGroup' is the only resource that supports
+%% Systems Manager resource policies. The resource policy for `OpsItemGroup'
+%% enables Amazon Web Services accounts to view and interact with OpsCenter
+%% operational work items (OpsItems).
+put_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_resource_policy(Client, Input, []).
+put_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutResourcePolicy">>, Input, Options).
 
 %% @doc Defines the default patch baseline for the relevant operating system.
 %%

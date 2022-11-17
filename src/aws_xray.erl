@@ -13,6 +13,8 @@
          create_sampling_rule/3,
          delete_group/2,
          delete_group/3,
+         delete_resource_policy/2,
+         delete_resource_policy/3,
          delete_sampling_rule/2,
          delete_sampling_rule/3,
          get_encryption_config/2,
@@ -43,10 +45,14 @@
          get_trace_graph/3,
          get_trace_summaries/2,
          get_trace_summaries/3,
+         list_resource_policies/2,
+         list_resource_policies/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          put_encryption_config/2,
          put_encryption_config/3,
+         put_resource_policy/2,
+         put_resource_policy/3,
          put_telemetry_records/2,
          put_telemetry_records/3,
          put_trace_segments/2,
@@ -152,6 +158,30 @@ delete_group(Client, Input) ->
 delete_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteGroup"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a resource policy from the target Amazon Web Services
+%% account.
+delete_resource_policy(Client, Input) ->
+    delete_resource_policy(Client, Input, []).
+delete_resource_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteResourcePolicy"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -555,6 +585,30 @@ get_trace_summaries(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns the list of resource policies in the target Amazon Web
+%% Services account.
+list_resource_policies(Client, Input) ->
+    list_resource_policies(Client, Input, []).
+list_resource_policies(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListResourcePolicies"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns a list of tags that are applied to the specified Amazon Web
 %% Services X-Ray group or sampling rule.
 list_tags_for_resource(Client, Input) ->
@@ -585,6 +639,35 @@ put_encryption_config(Client, Input) ->
 put_encryption_config(Client, Input0, Options0) ->
     Method = post,
     Path = ["/PutEncryptionConfig"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Sets the resource policy to grant one or more Amazon Web Services
+%% services and accounts permissions to access X-Ray.
+%%
+%% Each resource policy will be associated with a specific Amazon Web
+%% Services account. Each Amazon Web Services account can have a maximum of 5
+%% resource policies, and each policy name must be unique within that
+%% account. The maximum size of each resource policy is 5KB.
+put_resource_policy(Client, Input) ->
+    put_resource_policy(Client, Input, []).
+put_resource_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/PutResourcePolicy"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

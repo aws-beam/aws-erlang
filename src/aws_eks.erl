@@ -167,11 +167,8 @@ associate_identity_provider_config(Client, ClusterName, Input0, Options0) ->
 %% @doc Creates an Amazon EKS add-on.
 %%
 %% Amazon EKS add-ons help to automate the provisioning and lifecycle
-%% management of common operational software for Amazon EKS clusters. Amazon
-%% EKS add-ons require clusters running version 1.18 or later because Amazon
-%% EKS add-ons rely on the Server-side Apply Kubernetes feature, which is
-%% only available in Kubernetes 1.18 and later. For more information, see
-%% Amazon EKS add-ons in the Amazon EKS User Guide.
+%% management of common operational software for Amazon EKS clusters. For
+%% more information, see Amazon EKS add-ons in the Amazon EKS User Guide.
 create_addon(Client, ClusterName, Input) ->
     create_addon(Client, ClusterName, Input, []).
 create_addon(Client, ClusterName, Input0, Options0) ->
