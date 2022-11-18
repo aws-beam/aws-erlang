@@ -41,6 +41,8 @@
          delete_type/5,
          disassociate_api/3,
          disassociate_api/4,
+         evaluate_code/2,
+         evaluate_code/3,
          evaluate_mapping_template/2,
          evaluate_mapping_template/3,
          flush_api_cache/3,
@@ -535,6 +537,37 @@ disassociate_api(Client, DomainName, Input) ->
 disassociate_api(Client, DomainName, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), "/apiassociation"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Evaluates the given code and returns the response.
+%%
+%% The code definition requirements depend on the specified runtime. For
+%% `APPSYNC_JS' runtimes, the code defines the request and response
+%% functions. The request function takes the incoming request after a GraphQL
+%% operation is parsed and converts it into a request configuration for the
+%% selected data source operation. The response function interprets responses
+%% from the data source and maps it to the shape of the GraphQL field output
+%% type.
+evaluate_code(Client, Input) ->
+    evaluate_code(Client, Input, []).
+evaluate_code(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/dataplane-evaluatecode"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

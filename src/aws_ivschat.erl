@@ -24,9 +24,13 @@
 %%
 %% </li> </ul> Resources
 %%
-%% The following resource is part of Amazon IVS Chat:
+%% The following resources are part of Amazon IVS Chat:
 %%
-%% <ul> <li> Room — The central Amazon IVS Chat resource through which
+%% <ul> <li> LoggingConfiguration — A configuration that allows customers to
+%% store and record sent messages in a chat room. See the Logging
+%% Configuration endpoints for more information.
+%%
+%% </li> <li> Room — The central Amazon IVS Chat resource through which
 %% clients connect to and exchange chat messages. See the Room endpoints for
 %% more information.
 %%
@@ -113,10 +117,11 @@
 %%
 %% </li> </ul> Chat Token Endpoint
 %%
-%% <ul> <li> `CreateChatToken' — Creates an encrypted token that is used to
-%% establish an individual WebSocket connection to a room. The token is valid
-%% for one minute, and a connection (session) established with the token is
-%% valid for the specified duration.
+%% <ul> <li> `CreateChatToken' — Creates an encrypted token that is used by a
+%% chat participant to establish an individual WebSocket chat connection to a
+%% room. When the token is used to connect to chat, the connection is valid
+%% for the session duration specified in the request. The token becomes
+%% invalid at the token-expiration timestamp included in the response.
 %%
 %% </li> </ul> Room Endpoints
 %%
@@ -131,6 +136,24 @@
 %% the AWS region where the API request is processed.
 %%
 %% </li> <li> `UpdateRoom' — Updates a room’s configuration.
+%%
+%% </li> </ul> Logging Configuration Endpoints
+%%
+%% <ul> <li> `CreateLoggingConfiguration' — Creates a logging configuration
+%% that allows clients to store and record sent messages.
+%%
+%% </li> <li> `DeleteLoggingConfiguration' — Deletes the specified logging
+%% configuration.
+%%
+%% </li> <li> `GetLoggingConfiguration' — Gets the specified logging
+%% configuration.
+%%
+%% </li> <li> `ListLoggingConfigurations' — Gets summary information about
+%% all your logging configurations in the AWS region where the API request is
+%% processed.
+%%
+%% </li> <li> `UpdateLoggingConfiguration' — Updates a specified logging
+%% configuration.
 %%
 %% </li> </ul> Tags Endpoints
 %%
@@ -150,16 +173,24 @@
 
 -export([create_chat_token/2,
          create_chat_token/3,
+         create_logging_configuration/2,
+         create_logging_configuration/3,
          create_room/2,
          create_room/3,
+         delete_logging_configuration/2,
+         delete_logging_configuration/3,
          delete_message/2,
          delete_message/3,
          delete_room/2,
          delete_room/3,
          disconnect_user/2,
          disconnect_user/3,
+         get_logging_configuration/2,
+         get_logging_configuration/3,
          get_room/2,
          get_room/3,
+         list_logging_configurations/2,
+         list_logging_configurations/3,
          list_rooms/2,
          list_rooms/3,
          list_tags_for_resource/2,
@@ -171,6 +202,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_logging_configuration/2,
+         update_logging_configuration/3,
          update_room/2,
          update_room/3]).
 
@@ -180,11 +213,21 @@
 %% API
 %%====================================================================
 
-%% @doc Creates an encrypted token that is used to establish an individual
-%% WebSocket connection to a room.
+%% @doc Creates an encrypted token that is used by a chat participant to
+%% establish an individual WebSocket chat connection to a room.
 %%
-%% The token is valid for one minute, and a connection (session) established
-%% with the token is valid for the specified duration.
+%% When the token is used to connect to chat, the connection is valid for the
+%% session duration specified in the request. The token becomes invalid at
+%% the token-expiration timestamp included in the response.
+%%
+%% Use the `capabilities' field to permit an end user to send messages or
+%% moderate a room.
+%%
+%% The `attributes' field securely attaches structured data to the chat
+%% session; the data is included within each message sent by the end user and
+%% received by other participants in the room. Common use cases for
+%% attributes include passing end-user profile data like an icon, display
+%% name, colors, badges, and other display features.
 %%
 %% Encryption keys are owned by Amazon IVS Chat and never used directly by
 %% your application.
@@ -210,6 +253,30 @@ create_chat_token(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a logging configuration that allows clients to store and
+%% record sent messages.
+create_logging_configuration(Client, Input) ->
+    create_logging_configuration(Client, Input, []).
+create_logging_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateLoggingConfiguration"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a room that allows clients to connect and pass messages.
 create_room(Client, Input) ->
     create_room(Client, Input, []).
@@ -217,6 +284,29 @@ create_room(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateRoom"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified logging configuration.
+delete_logging_configuration(Client, Input) ->
+    delete_logging_configuration(Client, Input, []).
+delete_logging_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteLoggingConfiguration"],
+    SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -310,12 +400,59 @@ disconnect_user(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Gets the specified logging configuration.
+get_logging_configuration(Client, Input) ->
+    get_logging_configuration(Client, Input, []).
+get_logging_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetLoggingConfiguration"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets the specified room.
 get_room(Client, Input) ->
     get_room(Client, Input, []).
 get_room(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetRoom"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets summary information about all your logging configurations in the
+%% AWS region where the API request is processed.
+list_logging_configurations(Client, Input) ->
+    list_logging_configurations(Client, Input, []).
+list_logging_configurations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListLoggingConfigurations"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -454,6 +591,29 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a specified logging configuration.
+update_logging_configuration(Client, Input) ->
+    update_logging_configuration(Client, Input, []).
+update_logging_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateLoggingConfiguration"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a room’s configuration.

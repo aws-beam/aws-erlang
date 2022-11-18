@@ -1867,7 +1867,9 @@ get_public_access_block(Client, AccountId, QueryMap, HeadersMap, Options0)
 %% @doc Gets the Amazon S3 Storage Lens configuration.
 %%
 %% For more information, see Assessing your storage activity and usage with
-%% Amazon S3 Storage Lens in the Amazon S3 User Guide.
+%% Amazon S3 Storage Lens in the Amazon S3 User Guide. For a complete list of
+%% S3 Storage Lens metrics, see S3 Storage Lens metrics glossary in the
+%% Amazon S3 User Guide.
 %%
 %% To use this action, you must have permission to perform the
 %% `s3:GetStorageLensConfiguration' action. For more information, see Setting
@@ -2777,7 +2779,9 @@ put_public_access_block(Client, Input0, Options0) ->
 %% @doc Puts an Amazon S3 Storage Lens configuration.
 %%
 %% For more information about S3 Storage Lens, see Working with Amazon S3
-%% Storage Lens in the Amazon S3 User Guide.
+%% Storage Lens in the Amazon S3 User Guide. For a complete list of S3
+%% Storage Lens metrics, see S3 Storage Lens metrics glossary in the Amazon
+%% S3 User Guide.
 %%
 %% To use this action, you must have permission to perform the
 %% `s3:PutStorageLensConfiguration' action. For more information, see Setting

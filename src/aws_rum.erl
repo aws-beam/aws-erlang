@@ -10,12 +10,12 @@
 %% and also see breakdowns by the browsers and devices that your customers
 %% use.
 %%
-%% <p>You can use the collected data to quickly identify and debug
-%% client-side performance issues. CloudWatch RUM helps you visualize
-%% anomalies in your application performance and find relevant debugging data
-%% such as error messages, stack traces, and user sessions. You can also use
-%% RUM to understand the range of end-user impact including the number of
-%% users, geolocations, and browsers used.</p>
+%% You can use the collected data to quickly identify and debug client-side
+%% performance issues. CloudWatch RUM helps you visualize anomalies in your
+%% application performance and find relevant debugging data such as error
+%% messages, stack traces, and user sessions. You can also use RUM to
+%% understand the range of end-user impact including the number of users,
+%% geolocations, and browsers used.
 -module(aws_rum).
 
 -export([batch_create_rum_metric_definitions/3,
@@ -82,18 +82,20 @@
 %% The maximum number of metric definitions that you can specify in one
 %% `BatchCreateRumMetricDefinitions' operation is 200.
 %%
-%% <p>The maximum number of metric definitions that one destination can
-%% contain is 2000.</p> <p>Extended metrics sent are charged as CloudWatch
-%% custom metrics. Each combination of additional dimension name and
-%% dimension value counts as a custom metric. For more information, see <a
-%% href="https://aws.amazon.com/cloudwatch/pricing/">Amazon CloudWatch
-%% Pricing</a>.</p> <p>You must have already created a destination for the
-%% metrics before you send them. For more information, see <a
-%% href="https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/API_PutRumMetricsDestination.html">PutRumMetricsDestination</a>.</p>
-%% <p>If some metric definitions specified in a
-%% <code>BatchCreateRumMetricDefinitions</code> operations are not valid,
-%% those metric definitions fail and return errors, but all valid metric
-%% definitions in the same operation still succeed.</p>
+%% The maximum number of metric definitions that one destination can contain
+%% is 2000.
+%%
+%% Extended metrics sent are charged as CloudWatch custom metrics. Each
+%% combination of additional dimension name and dimension value counts as a
+%% custom metric. For more information, see Amazon CloudWatch Pricing.
+%%
+%% You must have already created a destination for the metrics before you
+%% send them. For more information, see PutRumMetricsDestination.
+%%
+%% If some metric definitions specified in a
+%% `BatchCreateRumMetricDefinitions' operations are not valid, those metric
+%% definitions fail and return errors, but all valid metric definitions in
+%% the same operation still succeed.
 batch_create_rum_metric_definitions(Client, AppMonitorName, Input) ->
     batch_create_rum_metric_definitions(Client, AppMonitorName, Input, []).
 batch_create_rum_metric_definitions(Client, AppMonitorName, Input0, Options0) ->

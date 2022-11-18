@@ -54,15 +54,15 @@
 %%
 %% (Optional) You can pass inline or managed session policies to this
 %% operation. You can pass a single JSON policy document to use as an inline
-%% session policy. You can also specify up to 10 managed policies to use as
-%% managed session policies. The plaintext that you use for both inline and
-%% managed session policies can't exceed 2,048 characters. Passing policies
-%% to this operation returns new temporary credentials. The resulting
-%% session's permissions are the intersection of the role's identity-based
-%% policy and the session policies. You can use the role's temporary
-%% credentials in subsequent Amazon Web Services API calls to access
-%% resources in the account that owns the role. You cannot use session
-%% policies to grant more permissions than those allowed by the
+%% session policy. You can also specify up to 10 managed policy Amazon
+%% Resource Names (ARNs) to use as managed session policies. The plaintext
+%% that you use for both inline and managed session policies can't exceed
+%% 2,048 characters. Passing policies to this operation returns new temporary
+%% credentials. The resulting session's permissions are the intersection of
+%% the role's identity-based policy and the session policies. You can use the
+%% role's temporary credentials in subsequent Amazon Web Services API calls
+%% to access resources in the account that owns the role. You cannot use
+%% session policies to grant more permissions than those allowed by the
 %% identity-based policy of the role that is being assumed. For more
 %% information, see Session Policies in the IAM User Guide.
 %%
@@ -189,15 +189,15 @@ assume_role(Client, Input, Options)
 %%
 %% (Optional) You can pass inline or managed session policies to this
 %% operation. You can pass a single JSON policy document to use as an inline
-%% session policy. You can also specify up to 10 managed policies to use as
-%% managed session policies. The plaintext that you use for both inline and
-%% managed session policies can't exceed 2,048 characters. Passing policies
-%% to this operation returns new temporary credentials. The resulting
-%% session's permissions are the intersection of the role's identity-based
-%% policy and the session policies. You can use the role's temporary
-%% credentials in subsequent Amazon Web Services API calls to access
-%% resources in the account that owns the role. You cannot use session
-%% policies to grant more permissions than those allowed by the
+%% session policy. You can also specify up to 10 managed policy Amazon
+%% Resource Names (ARNs) to use as managed session policies. The plaintext
+%% that you use for both inline and managed session policies can't exceed
+%% 2,048 characters. Passing policies to this operation returns new temporary
+%% credentials. The resulting session's permissions are the intersection of
+%% the role's identity-based policy and the session policies. You can use the
+%% role's temporary credentials in subsequent Amazon Web Services API calls
+%% to access resources in the account that owns the role. You cannot use
+%% session policies to grant more permissions than those allowed by the
 %% identity-based policy of the role that is being assumed. For more
 %% information, see Session Policies in the IAM User Guide.
 %%
@@ -225,12 +225,12 @@ assume_role(Client, Input, Options)
 %% these and additional limits, see IAM and STS Character Limits in the IAM
 %% User Guide.
 %%
-%% An Amazon Web Services conversion compresses the passed session policies
-%% and session tags into a packed binary format that has a separate limit.
-%% Your request can fail for this limit even if your plaintext meets the
-%% other requirements. The `PackedPolicySize' response element indicates by
-%% percentage how close the policies and tags for your request are to the
-%% upper size limit.
+%% An Amazon Web Services conversion compresses the passed inline session
+%% policy, managed policy ARNs, and session tags into a packed binary format
+%% that has a separate limit. Your request can fail for this limit even if
+%% your plaintext meets the other requirements. The `PackedPolicySize'
+%% response element indicates by percentage how close the policies and tags
+%% for your request are to the upper size limit.
 %%
 %% You can pass a session tag with the same key as a tag that is attached to
 %% the role. When you do, session tags override the role's tags with the same
@@ -331,15 +331,15 @@ assume_role_with_saml(Client, Input, Options)
 %%
 %% (Optional) You can pass inline or managed session policies to this
 %% operation. You can pass a single JSON policy document to use as an inline
-%% session policy. You can also specify up to 10 managed policies to use as
-%% managed session policies. The plaintext that you use for both inline and
-%% managed session policies can't exceed 2,048 characters. Passing policies
-%% to this operation returns new temporary credentials. The resulting
-%% session's permissions are the intersection of the role's identity-based
-%% policy and the session policies. You can use the role's temporary
-%% credentials in subsequent Amazon Web Services API calls to access
-%% resources in the account that owns the role. You cannot use session
-%% policies to grant more permissions than those allowed by the
+%% session policy. You can also specify up to 10 managed policy Amazon
+%% Resource Names (ARNs) to use as managed session policies. The plaintext
+%% that you use for both inline and managed session policies can't exceed
+%% 2,048 characters. Passing policies to this operation returns new temporary
+%% credentials. The resulting session's permissions are the intersection of
+%% the role's identity-based policy and the session policies. You can use the
+%% role's temporary credentials in subsequent Amazon Web Services API calls
+%% to access resources in the account that owns the role. You cannot use
+%% session policies to grant more permissions than those allowed by the
 %% identity-based policy of the role that is being assumed. For more
 %% information, see Session Policies in the IAM User Guide.
 %%
@@ -355,12 +355,12 @@ assume_role_with_saml(Client, Input, Options)
 %% these and additional limits, see IAM and STS Character Limits in the IAM
 %% User Guide.
 %%
-%% An Amazon Web Services conversion compresses the passed session policies
-%% and session tags into a packed binary format that has a separate limit.
-%% Your request can fail for this limit even if your plaintext meets the
-%% other requirements. The `PackedPolicySize' response element indicates by
-%% percentage how close the policies and tags for your request are to the
-%% upper size limit.
+%% An Amazon Web Services conversion compresses the passed inline session
+%% policy, managed policy ARNs, and session tags into a packed binary format
+%% that has a separate limit. Your request can fail for this limit even if
+%% your plaintext meets the other requirements. The `PackedPolicySize'
+%% response element indicates by percentage how close the policies and tags
+%% for your request are to the upper size limit.
 %%
 %% You can pass a session tag with the same key as a tag that is attached to
 %% the role. When you do, the session tag overrides the role tag with the
@@ -559,9 +559,10 @@ get_caller_identity(Client, Input, Options)
 %%
 %% </li> </ul> You must pass an inline or managed session policy to this
 %% operation. You can pass a single JSON policy document to use as an inline
-%% session policy. You can also specify up to 10 managed policies to use as
-%% managed session policies. The plaintext that you use for both inline and
-%% managed session policies can't exceed 2,048 characters.
+%% session policy. You can also specify up to 10 managed policy Amazon
+%% Resource Names (ARNs) to use as managed session policies. The plaintext
+%% that you use for both inline and managed session policies can't exceed
+%% 2,048 characters.
 %%
 %% Though the session policy parameters are optional, if you do not pass a
 %% policy, then the resulting federated user session has no permissions. When

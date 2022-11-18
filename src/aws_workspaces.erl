@@ -41,6 +41,8 @@
          create_connection_alias/3,
          create_ip_group/2,
          create_ip_group/3,
+         create_standby_workspaces/2,
+         create_standby_workspaces/3,
          create_tags/2,
          create_tags/3,
          create_updated_workspace_image/2,
@@ -263,6 +265,14 @@ create_ip_group(Client, Input)
 create_ip_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIpGroup">>, Input, Options).
+
+%% @doc Creates a Standby WorkSpace in a secondary region.
+create_standby_workspaces(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_standby_workspaces(Client, Input, []).
+create_standby_workspaces(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateStandbyWorkspaces">>, Input, Options).
 
 %% @doc Creates the specified tags for the specified WorkSpaces resource.
 create_tags(Client, Input)

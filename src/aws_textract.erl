@@ -52,6 +52,11 @@
 %% document are returned (including text that doesn't have a relationship
 %% with the value of `FeatureTypes').
 %%
+%% </li> <li> Signatures. A SIGNATURE `Block' object contains the location
+%% information of a signature in a document. If used in conjunction with
+%% forms or tables, a signature can be given a Key-Value pairing or be
+%% detected in the cell of a table.
+%%
 %% </li> <li> Query. A QUERY Block object contains the query text, alias and
 %% link to the associated Query results block object.
 %%

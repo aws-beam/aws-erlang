@@ -23,6 +23,8 @@
          create_event_tracker/3,
          create_filter/2,
          create_filter/3,
+         create_metric_attribution/2,
+         create_metric_attribution/3,
          create_recommender/2,
          create_recommender/3,
          create_schema/2,
@@ -41,6 +43,8 @@
          delete_event_tracker/3,
          delete_filter/2,
          delete_filter/3,
+         delete_metric_attribution/2,
+         delete_metric_attribution/3,
          delete_recommender/2,
          delete_recommender/3,
          delete_schema/2,
@@ -69,6 +73,8 @@
          describe_feature_transformation/3,
          describe_filter/2,
          describe_filter/3,
+         describe_metric_attribution/2,
+         describe_metric_attribution/3,
          describe_recipe/2,
          describe_recipe/3,
          describe_recommender/2,
@@ -99,6 +105,10 @@
          list_event_trackers/3,
          list_filters/2,
          list_filters/3,
+         list_metric_attribution_metrics/2,
+         list_metric_attribution_metrics/3,
+         list_metric_attributions/2,
+         list_metric_attributions/3,
          list_recipes/2,
          list_recipes/3,
          list_recommenders/2,
@@ -123,6 +133,8 @@
          untag_resource/3,
          update_campaign/2,
          update_campaign/3,
+         update_metric_attribution/2,
+         update_metric_attribution/3,
          update_recommender/2,
          update_recommender/3]).
 
@@ -433,6 +445,19 @@ create_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFilter">>, Input, Options).
 
+%% @doc Creates a metric attribution.
+%%
+%% A metric attribution creates reports on the data that you import into
+%% Amazon Personalize. Depending on how you imported the data, you can view
+%% reports in Amazon CloudWatch or Amazon S3. For more information, see
+%% Measuring impact of recommendations.
+create_metric_attribution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_metric_attribution(Client, Input, []).
+create_metric_attribution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateMetricAttribution">>, Input, Options).
+
 %% @doc Creates a recommender with the recipe (a Domain dataset group use
 %% case) you specify.
 %%
@@ -696,6 +721,14 @@ delete_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFilter">>, Input, Options).
 
+%% @doc Deletes a metric attribution.
+delete_metric_attribution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_metric_attribution(Client, Input, []).
+delete_metric_attribution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteMetricAttribution">>, Input, Options).
+
 %% @doc Deactivates and removes a recommender.
 %%
 %% A deleted recommender can no longer be specified in a GetRecommendations
@@ -844,6 +877,14 @@ describe_filter(Client, Input)
 describe_filter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFilter">>, Input, Options).
+
+%% @doc Describes a metric attribution.
+describe_metric_attribution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_metric_attribution(Client, Input, []).
+describe_metric_attribution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMetricAttribution">>, Input, Options).
 
 %% @doc Describes a recipe.
 %%
@@ -1034,6 +1075,22 @@ list_filters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFilters">>, Input, Options).
 
+%% @doc Lists the metrics for the metric attribution.
+list_metric_attribution_metrics(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_metric_attribution_metrics(Client, Input, []).
+list_metric_attribution_metrics(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListMetricAttributionMetrics">>, Input, Options).
+
+%% @doc Lists metric attributions.
+list_metric_attributions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_metric_attributions(Client, Input, []).
+list_metric_attributions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListMetricAttributions">>, Input, Options).
+
 %% @doc Returns a list of available recipes.
 %%
 %% The response provides the properties for each recipe, including the
@@ -1180,6 +1237,14 @@ update_campaign(Client, Input)
 update_campaign(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCampaign">>, Input, Options).
+
+%% @doc Updates a metric attribution.
+update_metric_attribution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_metric_attribution(Client, Input, []).
+update_metric_attribution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateMetricAttribution">>, Input, Options).
 
 %% @doc Updates the recommender to modify the recommender configuration.
 update_recommender(Client, Input)

@@ -34,6 +34,9 @@
          get_attribute_group/2,
          get_attribute_group/4,
          get_attribute_group/5,
+         get_configuration/1,
+         get_configuration/3,
+         get_configuration/4,
          list_applications/1,
          list_applications/3,
          list_applications/4,
@@ -52,6 +55,8 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         put_configuration/2,
+         put_configuration/3,
          sync_resource/4,
          sync_resource/5,
          tag_resource/3,
@@ -356,6 +361,29 @@ get_attribute_group(Client, AttributeGroup, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves a `TagKey' configuration from an account.
+get_configuration(Client)
+  when is_map(Client) ->
+    get_configuration(Client, #{}, #{}).
+
+get_configuration(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_configuration(Client, QueryMap, HeadersMap, []).
+
+get_configuration(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/configuration"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a list of all of your applications.
 %%
 %% Results are paginated.
@@ -417,9 +445,15 @@ list_associated_attribute_groups(Client, Application, QueryMap, HeadersMap, Opti
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all resources that are associated with specified application.
+%% @doc Lists all of the resources that are associated with the specified
+%% application.
 %%
 %% Results are paginated.
+%%
+%% If you share an application, and a consumer account associates a tag query
+%% to the application, all of the users who can access the application can
+%% also view the tag values in all accounts that are associated with it using
+%% this API.
 list_associated_resources(Client, Application)
   when is_map(Client) ->
     list_associated_resources(Client, Application, #{}, #{}).
@@ -530,6 +564,29 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Associates a `TagKey' configuration to an account.
+put_configuration(Client, Input) ->
+    put_configuration(Client, Input, []).
+put_configuration(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/configuration"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Syncs the resource with current AppRegistry records.
 %%
