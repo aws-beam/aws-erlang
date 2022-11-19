@@ -12,10 +12,14 @@
 
 -export([associate_alias/3,
          associate_alias/4,
+         copy_distribution/3,
+         copy_distribution/4,
          create_cache_policy/2,
          create_cache_policy/3,
          create_cloud_front_origin_access_identity/2,
          create_cloud_front_origin_access_identity/3,
+         create_continuous_deployment_policy/2,
+         create_continuous_deployment_policy/3,
          create_distribution/2,
          create_distribution/3,
          create_distribution_with_tags/2,
@@ -50,6 +54,8 @@
          delete_cache_policy/4,
          delete_cloud_front_origin_access_identity/3,
          delete_cloud_front_origin_access_identity/4,
+         delete_continuous_deployment_policy/3,
+         delete_continuous_deployment_policy/4,
          delete_distribution/3,
          delete_distribution/4,
          delete_field_level_encryption_config/3,
@@ -89,6 +95,12 @@
          get_cloud_front_origin_access_identity_config/2,
          get_cloud_front_origin_access_identity_config/4,
          get_cloud_front_origin_access_identity_config/5,
+         get_continuous_deployment_policy/2,
+         get_continuous_deployment_policy/4,
+         get_continuous_deployment_policy/5,
+         get_continuous_deployment_policy_config/2,
+         get_continuous_deployment_policy_config/4,
+         get_continuous_deployment_policy_config/5,
          get_distribution/2,
          get_distribution/4,
          get_distribution/5,
@@ -163,6 +175,9 @@
          list_conflicting_aliases/3,
          list_conflicting_aliases/5,
          list_conflicting_aliases/6,
+         list_continuous_deployment_policies/1,
+         list_continuous_deployment_policies/3,
+         list_continuous_deployment_policies/4,
          list_distributions/1,
          list_distributions/3,
          list_distributions/4,
@@ -231,6 +246,8 @@
          update_cache_policy/4,
          update_cloud_front_origin_access_identity/3,
          update_cloud_front_origin_access_identity/4,
+         update_continuous_deployment_policy/3,
+         update_continuous_deployment_policy/4,
          update_distribution/3,
          update_distribution/4,
          update_field_level_encryption_config/3,
@@ -297,6 +314,59 @@ associate_alias(Client, TargetDistributionId, Input0, Options0) ->
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a staging distribution using the configuration of the
+%% provided primary distribution.
+%%
+%% A staging distribution is a copy of an existing distribution (called the
+%% primary distribution) that you can use in a continuous deployment
+%% workflow.
+%%
+%% After you create a staging distribution, you can use `UpdateDistribution'
+%% to modify the staging distribution’s configuration. Then you can use
+%% `CreateContinuousDeploymentPolicy' to incrementally move traffic to the
+%% staging distribution.
+copy_distribution(Client, PrimaryDistributionId, Input) ->
+    copy_distribution(Client, PrimaryDistributionId, Input, []).
+copy_distribution(Client, PrimaryDistributionId, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/distribution/", aws_util:encode_uri(PrimaryDistributionId), "/copy"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>},
+                       {<<"Staging">>, <<"Staging">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>},
+            {<<"Location">>, <<"Location">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
 
 %% @doc Creates a cache policy.
 %%
@@ -406,20 +476,58 @@ create_cloud_front_origin_access_identity(Client, Input0, Options0) ->
         Result
     end.
 
-%% @doc Creates a new web distribution.
+%% @doc Creates a continuous deployment policy that distributes traffic for a
+%% custom domain name to two different CloudFront distributions.
 %%
-%% You create a CloudFront distribution to tell CloudFront where you want
-%% content to be delivered from, and the details about how to track and
-%% manage content delivery. Send a `POST' request to the `/CloudFront API
-%% version/distribution'/`distribution ID' resource.
+%% To use a continuous deployment policy, first use `CopyDistribution' to
+%% create a staging distribution, then use `UpdateDistribution' to modify the
+%% staging distribution’s configuration.
 %%
-%% When you update a distribution, there are more required fields than when
-%% you create a distribution. When you update your distribution by using
-%% UpdateDistribution, follow the steps included in the documentation to get
-%% the current configuration and then make your updates. This helps to make
-%% sure that you include all of the required fields. To view a summary, see
-%% Required Fields for Create Distribution and Update Distribution in the
-%% Amazon CloudFront Developer Guide.
+%% After you create and update a staging distribution, you can use a
+%% continuous deployment policy to incrementally move traffic to the staging
+%% distribution. This workflow enables you to test changes to a
+%% distribution’s configuration before moving all of your domain’s production
+%% traffic to the new configuration.
+create_continuous_deployment_policy(Client, Input) ->
+    create_continuous_deployment_policy(Client, Input, []).
+create_continuous_deployment_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2020-05-31/continuous-deployment-policy"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>},
+            {<<"Location">>, <<"Location">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Creates a CloudFront distribution.
 create_distribution(Client, Input) ->
     create_distribution(Client, Input, []).
 create_distribution(Client, Input0, Options0) ->
@@ -1134,6 +1242,35 @@ delete_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a continuous deployment policy.
+%%
+%% You cannot delete a continuous deployment policy that’s attached to a
+%% primary distribution. First update your distribution to remove the
+%% continuous deployment policy, then you can delete the policy.
+delete_continuous_deployment_policy(Client, Id, Input) ->
+    delete_continuous_deployment_policy(Client, Id, Input, []).
+delete_continuous_deployment_policy(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2020-05-31/continuous-deployment-policy/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Delete a distribution.
 delete_distribution(Client, Id, Input) ->
     delete_distribution(Client, Id, Input, []).
@@ -1712,6 +1849,85 @@ get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap)
 get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), "/config"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Gets a continuous deployment policy, including metadata (the policy’s
+%% identifier and the date and time when the policy was last modified).
+get_continuous_deployment_policy(Client, Id)
+  when is_map(Client) ->
+    get_continuous_deployment_policy(Client, Id, #{}, #{}).
+
+get_continuous_deployment_policy(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_continuous_deployment_policy(Client, Id, QueryMap, HeadersMap, []).
+
+get_continuous_deployment_policy(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/continuous-deployment-policy/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Gets configuration information about a continuous deployment policy.
+get_continuous_deployment_policy_config(Client, Id)
+  when is_map(Client) ->
+    get_continuous_deployment_policy_config(Client, Id, #{}, #{}).
+
+get_continuous_deployment_policy_config(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_continuous_deployment_policy_config(Client, Id, QueryMap, HeadersMap, []).
+
+get_continuous_deployment_policy_config(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/continuous-deployment-policy/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2741,6 +2957,42 @@ list_conflicting_aliases(Client, Alias, DistributionId, QueryMap, HeadersMap, Op
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets a list of the continuous deployment policies in your Amazon Web
+%% Services account.
+%%
+%% You can optionally specify the maximum number of items to receive in the
+%% response. If the total number of items in the list exceeds the maximum
+%% that you specify, or the default maximum, the response is paginated. To
+%% get the next page of items, send a subsequent request that specifies the
+%% `NextMarker' value from the current response as the `Marker' value in the
+%% subsequent request.
+list_continuous_deployment_policies(Client)
+  when is_map(Client) ->
+    list_continuous_deployment_policies(Client, #{}, #{}).
+
+list_continuous_deployment_policies(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_continuous_deployment_policies(Client, QueryMap, HeadersMap, []).
+
+list_continuous_deployment_policies(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-05-31/continuous-deployment-policy"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc List CloudFront distributions.
 list_distributions(Client)
   when is_map(Client) ->
@@ -3593,71 +3845,95 @@ update_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
         Result
     end.
 
-%% @doc Updates the configuration for a web distribution.
+%% @doc Updates a continuous deployment policy.
 %%
-%% When you update a distribution, there are more required fields than when
-%% you create a distribution. When you update your distribution by using this
-%% API action, follow the steps here to get the current configuration and
-%% then make your updates, to make sure that you include all of the required
-%% fields. To view a summary, see Required Fields for Create Distribution and
-%% Update Distribution in the Amazon CloudFront Developer Guide.
+%% You can update a continuous deployment policy to enable or disable it, to
+%% change the percentage of traffic that it sends to the staging
+%% distribution, or to change the staging distribution that it sends traffic
+%% to.
+%%
+%% When you update a continuous deployment policy configuration, all the
+%% fields are updated with the values that are provided in the request. You
+%% cannot update some fields independent of others. To update a continuous
+%% deployment policy configuration:
+%%
+%% <ol> <li> Use `GetContinuousDeploymentPolicyConfig' to get the current
+%% configuration.
+%%
+%% </li> <li> Locally modify the fields in the continuous deployment policy
+%% configuration that you want to update.
+%%
+%% </li> <li> Use `UpdateContinuousDeploymentPolicy', providing the entire
+%% continuous deployment policy configuration, including the fields that you
+%% modified and those that you didn’t.
+%%
+%% </li> </ol>
+update_continuous_deployment_policy(Client, Id, Input) ->
+    update_continuous_deployment_policy(Client, Id, Input, []).
+update_continuous_deployment_policy(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/2020-05-31/continuous-deployment-policy/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Updates the configuration for a CloudFront distribution.
 %%
 %% The update process includes getting the current distribution
-%% configuration, updating the XML document that is returned to make your
-%% changes, and then submitting an `UpdateDistribution' request to make the
-%% updates.
-%%
-%% For information about updating a distribution using the CloudFront console
-%% instead, see Creating a Distribution in the Amazon CloudFront Developer
-%% Guide.
+%% configuration, updating it to make your changes, and then submitting an
+%% `UpdateDistribution' request to make the updates.
 %%
 %% To update a web distribution using the CloudFront API
 %%
-%% <ol> <li> Submit a GetDistributionConfig request to get the current
-%% configuration and an `Etag' header for the distribution.
+%% <ol> <li> Use `GetDistributionConfig' to get the current configuration,
+%% including the version identifier (`ETag').
 %%
-%% If you update the distribution again, you must get a new `Etag' header.
+%% </li> <li> Update the distribution configuration that was returned in the
+%% response. Note the following important requirements and restrictions:
 %%
-%% </li> <li> Update the XML document that was returned in the response to
-%% your `GetDistributionConfig' request to include your changes.
+%% <ul> <li> You must rename the `ETag' field to `IfMatch', leaving the value
+%% unchanged. (Set the value of `IfMatch' to the value of `ETag', then remove
+%% the `ETag' field.)
 %%
-%% When you edit the XML file, be aware of the following:
+%% </li> <li> You can’t change the value of `CallerReference'.
 %%
-%% You must strip out the ETag parameter that is returned.
-%%
-%% Additional fields are required when you update a distribution. There may
-%% be fields included in the XML file for features that you haven't
-%% configured for your distribution. This is expected and required to
-%% successfully update the distribution.
-%%
-%% You can't change the value of `CallerReference'. If you try to change this
-%% value, CloudFront returns an `IllegalUpdate' error.
-%%
-%% The new configuration replaces the existing configuration; the values that
-%% you specify in an `UpdateDistribution' request are not merged into your
-%% existing configuration. When you add, delete, or replace values in an
-%% element that allows multiple values (for example, `CNAME'), you must
-%% specify all of the values that you want to appear in the updated
-%% distribution. In addition, you must update the corresponding `Quantity'
-%% element.
-%%
-%% </li> <li> Submit an `UpdateDistribution' request to update the
-%% configuration for your distribution:
-%%
-%% <ul> <li> In the request body, include the XML document that you updated
-%% in Step 2. The request body must include an XML document with a
-%% `DistributionConfig' element.
-%%
-%% </li> <li> Set the value of the HTTP `If-Match' header to the value of the
-%% `ETag' header that CloudFront returned when you submitted the
-%% `GetDistributionConfig' request in Step 1.
-%%
-%% </li> </ul> </li> <li> Review the response to the `UpdateDistribution'
-%% request to confirm that the configuration was successfully updated.
-%%
-%% </li> <li> Optional: Submit a GetDistribution request to confirm that your
-%% changes have propagated. When propagation is complete, the value of
-%% `Status' is `Deployed'.
+%% </li> </ul> </li> <li> Submit an `UpdateDistribution' request, providing
+%% the distribution configuration. The new configuration replaces the
+%% existing configuration. The values that you specify in an
+%% `UpdateDistribution' request are not merged into your existing
+%% configuration. Make sure to include all fields: the ones that you modified
+%% and also the ones that you didn’t.
 %%
 %% </li> </ol>
 update_distribution(Client, Id, Input) ->

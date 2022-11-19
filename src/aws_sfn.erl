@@ -1,9 +1,9 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Step Functions
+%% @doc Step Functions
 %%
-%% AWS Step Functions is a service that lets you coordinate the components of
+%% Step Functions is a service that lets you coordinate the components of
 %% distributed applications and microservices using visual workflows.
 %%
 %% You can use Step Functions to build applications from individual
@@ -17,11 +17,11 @@
 %% issues.
 %%
 %% Step Functions manages operations and underlying infrastructure to ensure
-%% your application is available at any scale. You can run tasks on AWS, your
-%% own servers, or any system that has access to AWS. You can access and use
-%% Step Functions using the console, the AWS SDKs, or an HTTP API. For more
-%% information about Step Functions, see the AWS Step Functions Developer
-%% Guide .
+%% your application is available at any scale. You can run tasks on Amazon
+%% Web Services, your own servers, or any system that has access to Amazon
+%% Web Services. You can access and use Step Functions using the console, the
+%% Amazon Web Services SDKs, or an HTTP API. For more information about Step
+%% Functions, see the Step Functions Developer Guide .
 -module(aws_sfn).
 
 -export([create_activity/2,
@@ -80,7 +80,7 @@
 %% @doc Creates an activity.
 %%
 %% An activity is a task that you write in any programming language and host
-%% on any machine that has access to AWS Step Functions. Activities must poll
+%% on any machine that has access to Step Functions. Activities must poll
 %% Step Functions using the `GetActivityTask' API action and respond using
 %% `SendTask*' API actions. This function lets Step Functions know the
 %% existence of your activity and returns an identifier for use in a state
@@ -108,8 +108,7 @@ create_activity(Client, Input, Options)
 %% (`Task' states), determine to which states to transition next (`Choice'
 %% states), stop an execution with an error (`Fail' states), and so on. State
 %% machines are specified using a JSON-based, structured language. For more
-%% information, see Amazon States Language in the AWS Step Functions User
-%% Guide.
+%% information, see Amazon States Language in the Step Functions User Guide.
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
@@ -142,7 +141,7 @@ delete_activity(Client, Input, Options)
 %% This is an asynchronous operation: It sets the state machine's status to
 %% `DELETING' and begins the deletion process.
 %%
-%% For `EXPRESS'state machines, the deletion will happen eventually (usually
+%% For `EXPRESS' state machines, the deletion will happen eventually (usually
 %% less than a minute). Running executions may emit logs after
 %% `DeleteStateMachine' API is called.
 delete_state_machine(Client, Input)
@@ -208,6 +207,8 @@ describe_state_machine_for_execution(Client, Input, Options)
 %% of a task of this type is needed.) The maximum time the service holds on
 %% to the request before responding is 60 seconds. If no task is available
 %% within 60 seconds, the poll returns a `taskToken' with a null string.
+%%
+%% This API action isn't logged in CloudTrail.
 %%
 %% Workers should set their client side socket timeout to at least 65 seconds
 %% (5 seconds higher than the maximum time the service may hold the poll
@@ -353,11 +354,14 @@ send_task_success(Client, Input, Options)
 
 %% @doc Starts a state machine execution.
 %%
-%% `StartExecution' is idempotent. If `StartExecution' is called with the
-%% same name and input as a running execution, the call will succeed and
-%% return the same response as the original request. If the execution is
-%% closed or if the input is different, it will return a 400
-%% `ExecutionAlreadyExists' error. Names can be reused after 90 days.
+%% `StartExecution' is idempotent for `STANDARD' workflows. For a `STANDARD'
+%% workflow, if `StartExecution' is called with the same name and input as a
+%% running execution, the call will succeed and return the same response as
+%% the original request. If the execution is closed or if the input is
+%% different, it will return a `400 ExecutionAlreadyExists' error. Names can
+%% be reused after 90 days.
+%%
+%% `StartExecution' is not idempotent for `EXPRESS' workflows.
 start_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_execution(Client, Input, []).
@@ -366,6 +370,16 @@ start_execution(Client, Input, Options)
     request(Client, <<"StartExecution">>, Input, Options).
 
 %% @doc Starts a Synchronous Express state machine execution.
+%%
+%% `StartSyncExecution' is not available for `STANDARD' workflows.
+%%
+%% `StartSyncExecution' will return a `200 OK' response, even if your
+%% execution fails, because the status code in the API response doesn't
+%% reflect function errors. Error codes are reserved for errors that prevent
+%% your execution from running, such as permissions errors, limit errors, or
+%% issues with your state machine code and configuration.
+%%
+%% This API action isn't logged in CloudTrail.
 start_sync_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_sync_execution(Client, Input, []).
@@ -386,8 +400,8 @@ stop_execution(Client, Input, Options)
 %% @doc Add a tag to a Step Functions resource.
 %%
 %% An array of key-value pairs. For more information, see Using Cost
-%% Allocation Tags in the AWS Billing and Cost Management User Guide, and
-%% Controlling Access Using IAM Tags.
+%% Allocation Tags in the Amazon Web Services Billing and Cost Management
+%% User Guide, and Controlling Access Using IAM Tags.
 %%
 %% Tags may only contain Unicode letters, digits, white space, or these
 %% symbols: `_ . : / = + - @'.

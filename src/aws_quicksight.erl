@@ -49,6 +49,8 @@
          create_theme_alias/6,
          delete_account_customization/3,
          delete_account_customization/4,
+         delete_account_subscription/3,
+         delete_account_subscription/4,
          delete_analysis/4,
          delete_analysis/5,
          delete_dashboard/4,
@@ -246,6 +248,10 @@
          search_analyses/4,
          search_dashboards/3,
          search_dashboards/4,
+         search_data_sets/3,
+         search_data_sets/4,
+         search_data_sources/3,
+         search_data_sources/4,
          search_folders/3,
          search_folders/4,
          search_groups/4,
@@ -869,6 +875,36 @@ delete_account_customization(Client, AwsAccountId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Use the `DeleteAccountSubscription' operation to delete an Amazon
+%% QuickSight account.
+%%
+%% This operation will result in an error message if you have configured your
+%% account termination protection settings to `True'. To change this setting
+%% and delete your account, call the `UpdateAccountSettings' API and set the
+%% value of the `TerminationProtectionEnabled' parameter to `False', then
+%% make another call to the `DeleteAccountSubscription' API.
+delete_account_subscription(Client, AwsAccountId, Input) ->
+    delete_account_subscription(Client, AwsAccountId, Input, []).
+delete_account_subscription(Client, AwsAccountId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/account/", aws_util:encode_uri(AwsAccountId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an analysis from Amazon QuickSight.
 %%
 %% You can optionally include a recovery window during which you can restore
@@ -1386,7 +1422,7 @@ describe_account_settings(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Use the DescribeAccountSubscription operation to receive a
-%% description of a Amazon QuickSight account's subscription.
+%% description of an Amazon QuickSight account's subscription.
 %%
 %% A successful API call returns an `AccountInfo' object that includes an
 %% account's name, subscription status, authentication type, edition, and
@@ -2916,6 +2952,54 @@ search_dashboards(Client, AwsAccountId, Input) ->
 search_dashboards(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/dashboards"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Use the `SearchDataSets' operation to search for datasets that belong
+%% to an account.
+search_data_sets(Client, AwsAccountId, Input) ->
+    search_data_sets(Client, AwsAccountId, Input, []).
+search_data_sets(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/data-sets"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Use the `SearchDataSources' operation to search for data sources that
+%% belong to an account.
+search_data_sources(Client, AwsAccountId, Input) ->
+    search_data_sources(Client, AwsAccountId, Input, []).
+search_data_sources(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/data-sources"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

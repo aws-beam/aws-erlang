@@ -79,6 +79,8 @@
          untag_resource/4,
          update_connector_profile/2,
          update_connector_profile/3,
+         update_connector_registration/2,
+         update_connector_registration/3,
          update_flow/2,
          update_flow/3]).
 
@@ -453,10 +455,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Registers a new connector with your Amazon Web Services account.
-%%
-%% Before you can register the connector, you must deploy lambda in your
+%% @doc Registers a new custom connector with your Amazon Web Services
 %% account.
+%%
+%% Before you can register the connector, you must deploy the associated AWS
+%% lambda function in your account.
 register_connector(Client, Input) ->
     register_connector(Client, Input, []).
 register_connector(Client, Input0, Options0) ->
@@ -556,7 +559,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Unregisters the custom connector registered in your account that
-%% matches the connectorLabel provided in the request.
+%% matches the connector label provided in the request.
 unregister_connector(Client, Input) ->
     unregister_connector(Client, Input, []).
 unregister_connector(Client, Input0, Options0) ->
@@ -609,6 +612,38 @@ update_connector_profile(Client, Input) ->
 update_connector_profile(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-connector-profile"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a custom connector that you've previously registered.
+%%
+%% This operation updates the connector with one of the following:
+%%
+%% <ul> <li> The latest version of the AWS Lambda function that's assigned to
+%% the connector
+%%
+%% </li> <li> A new AWS Lambda function that you specify
+%%
+%% </li> </ul>
+update_connector_registration(Client, Input) ->
+    update_connector_registration(Client, Input, []).
+update_connector_registration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/update-connector-registration"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

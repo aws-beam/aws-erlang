@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Service Catalog
+%% @doc Service Catalog
 %%
 %% Service Catalog enables organizations to create and manage catalogs of IT
 %% services that are approved for Amazon Web Services.
@@ -208,6 +208,27 @@ associate_budget_with_resource(Client, Input, Options)
     request(Client, <<"AssociateBudgetWithResource">>, Input, Options).
 
 %% @doc Associates the specified principal ARN with the specified portfolio.
+%%
+%% If you share the portfolio with principal name sharing enabled, the
+%% `PrincipalARN' association is included in the share.
+%%
+%% The `PortfolioID', `PrincipalARN', and `PrincipalType' parameters are
+%% required.
+%%
+%% You can associate a maximum of 10 Principals with a portfolio using
+%% `PrincipalType' as `IAM_PATTERN'
+%%
+%% When you associate a principal with portfolio, a potential privilege
+%% escalation path may occur when that portfolio is then shared with other
+%% accounts. For a user in a recipient account who is not an Service Catalog
+%% Admin, but still has the ability to create Principals
+%% (Users/Groups/Roles), that user could create a role that matches a
+%% principal name association for the portfolio. Although this user may not
+%% know which principal names are associated through Service Catalog, they
+%% may be able to guess the user. If this potential escalation path is a
+%% concern, then Service Catalog recommends using `PrincipalType' as `IAM'.
+%% With this configuration, the `PrincipalARN' must already exist in the
+%% recipient account before it can be associated.
 associate_principal_with_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_principal_with_portfolio(Client, Input, []).
@@ -317,6 +338,18 @@ create_portfolio(Client, Input, Options)
 %% already exists, this action will have no effect and will not return an
 %% error. To update an existing share, you must use the `
 %% UpdatePortfolioShare' API instead.
+%%
+%% When you associate a principal with portfolio, a potential privilege
+%% escalation path may occur when that portfolio is then shared with other
+%% accounts. For a user in a recipient account who is not an Service Catalog
+%% Admin, but still has the ability to create Principals
+%% (Users/Groups/Roles), that user could create a role that matches a
+%% principal name association for the portfolio. Although this user may not
+%% know which principal names are associated through Service Catalog, they
+%% may be able to guess the user. If this potential escalation path is a
+%% concern, then Service Catalog recommends using `PrincipalType' as `IAM'.
+%% With this configuration, the `PrincipalARN' must already exist in the
+%% recipient account before it can be associated.
 create_portfolio_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_portfolio_share(Client, Input, []).
@@ -684,6 +717,17 @@ disassociate_budget_from_resource(Client, Input, Options)
 
 %% @doc Disassociates a previously associated principal ARN from a specified
 %% portfolio.
+%%
+%% The `PrincipalType' and `PrincipalARN' must match the
+%% `AssociatePrincipalWithPortfolio' call request details. For example, to
+%% disassociate an association created with a `PrincipalARN' of
+%% `PrincipalType' IAM you must use the `PrincipalType' IAM when calling
+%% `DisassociatePrincipalFromPortfolio'.
+%%
+%% For portfolios that have been shared with principal name sharing enabled:
+%% after disassociating a principal, share recipient accounts will no longer
+%% be able to provision products in this portfolio using a role matching the
+%% name of the associated principal.
 disassociate_principal_from_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_principal_from_portfolio(Client, Input, []).
@@ -785,12 +829,12 @@ get_provisioned_product_outputs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetProvisionedProductOutputs">>, Input, Options).
 
-%% @doc Requests the import of a resource as a Amazon Web Services Service
-%% Catalog provisioned product that is associated to a Amazon Web Services
-%% Service Catalog product and provisioning artifact.
+%% @doc Requests the import of a resource as an Service Catalog provisioned
+%% product that is associated to an Service Catalog product and provisioning
+%% artifact.
 %%
-%% Once imported, all supported Amazon Web Services Service Catalog
-%% governance actions are supported on the provisioned product.
+%% Once imported, all supported Service Catalog governance actions are
+%% supported on the provisioned product.
 %%
 %% Resource import only supports CloudFormation stack ARNs. CloudFormation
 %% StackSets and non-root nested stacks are not supported.
@@ -800,8 +844,7 @@ get_provisioned_product_outputs(Client, Input, Options)
 %% `UPDATE_ROLLBACK_COMPLETE', `IMPORT_COMPLETE', `IMPORT_ROLLBACK_COMPLETE'.
 %%
 %% Import of the resource requires that the CloudFormation stack template
-%% matches the associated Amazon Web Services Service Catalog product
-%% provisioning artifact.
+%% matches the associated Service Catalog product provisioning artifact.
 %%
 %% The user or role that performs this operation must have the
 %% `cloudformation:GetTemplate' and `cloudformation:DescribeStacks' IAM
@@ -896,7 +939,8 @@ list_portfolios_for_product(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPortfoliosForProduct">>, Input, Options).
 
-%% @doc Lists all principal ARNs associated with the specified portfolio.
+%% @doc Lists all `PrincipalARN's and corresponding `PrincipalType's
+%% associated with the specified portfolio.
 list_principals_for_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_principals_for_portfolio(Client, Input, []).
@@ -1086,10 +1130,10 @@ update_portfolio(Client, Input, Options)
 
 %% @doc Updates the specified portfolio share.
 %%
-%% You can use this API to enable or disable TagOptions sharing for an
-%% existing portfolio share.
+%% You can use this API to enable or disable `TagOptions' sharing or
+%% Principal sharing for an existing portfolio share.
 %%
-%% The portfolio share cannot be updated if the ` CreatePortfolioShare'
+%% The portfolio share cannot be updated if the `CreatePortfolioShare'
 %% operation is `IN_PROGRESS', as the share is not available to recipient
 %% entities. In this case, you must wait for the portfolio share to be
 %% COMPLETED.
@@ -1103,6 +1147,18 @@ update_portfolio(Client, Input, Options)
 %%
 %% This API cannot be used for removing the portfolio share. You must use
 %% `DeletePortfolioShare' API for that action.
+%%
+%% When you associate a principal with portfolio, a potential privilege
+%% escalation path may occur when that portfolio is then shared with other
+%% accounts. For a user in a recipient account who is not an Service Catalog
+%% Admin, but still has the ability to create Principals
+%% (Users/Groups/Roles), that user could create a role that matches a
+%% principal name association for the portfolio. Although this user may not
+%% know which principal names are associated through Service Catalog, they
+%% may be able to guess the user. If this potential escalation path is a
+%% concern, then Service Catalog recommends using `PrincipalType' as `IAM'.
+%% With this configuration, the `PrincipalARN' must already exist in the
+%% recipient account before it can be associated.
 update_portfolio_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_portfolio_share(Client, Input, []).

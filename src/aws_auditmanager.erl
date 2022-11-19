@@ -314,6 +314,25 @@ batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input0, Opti
 
 %% @doc Uploads one or more pieces of evidence to a control in an Audit
 %% Manager assessment.
+%%
+%% You can upload manual evidence from any Amazon Simple Storage Service
+%% (Amazon S3) bucket by specifying the S3 URI of the evidence.
+%%
+%% You must upload manual evidence to your S3 bucket before you can upload it
+%% to your assessment. For instructions, see CreateBucket and PutObject in
+%% the Amazon Simple Storage Service API Reference.
+%%
+%% The following restrictions apply to this action:
+%%
+%% <ul> <li> Maximum size of an individual evidence file: 100 MB
+%%
+%% </li> <li> Number of daily manual evidence uploads per control: 100
+%%
+%% </li> <li> Supported file formats: See Supported file types for manual
+%% evidence in the Audit Manager User Guide
+%%
+%% </li> </ul> For more information about Audit Manager service restrictions,
+%% see Quotas and restrictions for Audit Manager.
 batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input) ->
     batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input, []).
 batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input0, Options0) ->
@@ -627,6 +646,23 @@ deregister_account(Client, Input0, Options0) ->
 %% stop collecting and attaching evidence to that delegated administrator
 %% account moving forward.
 %%
+%% Keep in mind the following cleanup task if you use evidence finder:
+%%
+%% Before you use your management account to remove a delegated
+%% administrator, make sure that the current delegated administrator account
+%% signs in to Audit Manager and disables evidence finder first. Disabling
+%% evidence finder automatically deletes the event data store that was
+%% created in their account when they enabled evidence finder. If this task
+%% isn’t completed, the event data store remains in their account. In this
+%% case, we recommend that the original delegated administrator goes to
+%% CloudTrail Lake and manually deletes the event data store.
+%%
+%% This cleanup task is necessary to ensure that you don't end up with
+%% multiple event data stores. Audit Manager will ignore an unused event data
+%% store after you remove or change a delegated administrator account.
+%% However, the unused event data store continues to incur storage costs from
+%% CloudTrail Lake if you don't delete it.
+%%
 %% When you deregister a delegated administrator account for Audit Manager,
 %% the data for that account isn’t deleted. If you want to delete resource
 %% data for a delegated administrator account, you must perform that task
@@ -637,23 +673,23 @@ deregister_account(Client, Input0, Options0) ->
 %% To delete your Audit Manager resource data, see the following
 %% instructions:
 %%
-%% DeleteAssessment (see also: Deleting an assessment in the Audit Manager
-%% User Guide)
+%% <ul> <li> DeleteAssessment (see also: Deleting an assessment in the Audit
+%% Manager User Guide)
 %%
-%% DeleteAssessmentFramework (see also: Deleting a custom framework in the
-%% Audit Manager User Guide)
+%% </li> <li> DeleteAssessmentFramework (see also: Deleting a custom
+%% framework in the Audit Manager User Guide)
 %%
-%% DeleteAssessmentFrameworkShare (see also: Deleting a share request in the
-%% Audit Manager User Guide)
+%% </li> <li> DeleteAssessmentFrameworkShare (see also: Deleting a share
+%% request in the Audit Manager User Guide)
 %%
-%% DeleteAssessmentReport (see also: Deleting an assessment report in the
-%% Audit Manager User Guide)
+%% </li> <li> DeleteAssessmentReport (see also: Deleting an assessment report
+%% in the Audit Manager User Guide)
 %%
-%% DeleteControl (see also: Deleting a custom control in the Audit Manager
-%% User Guide)
+%% </li> <li> DeleteControl (see also: Deleting a custom control in the Audit
+%% Manager User Guide)
 %%
-%% At this time, Audit Manager doesn't provide an option to delete evidence.
-%% All available delete operations are listed above.
+%% </li> </ul> At this time, Audit Manager doesn't provide an option to
+%% delete evidence. All available delete operations are listed above.
 deregister_organization_admin_account(Client, Input) ->
     deregister_organization_admin_account(Client, Input, []).
 deregister_organization_admin_account(Client, Input0, Options0) ->
@@ -1078,8 +1114,11 @@ get_organization_admin_account(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of the in-scope Amazon Web Services for the specified
-%% assessment.
+%% @doc Returns a list of all of the Amazon Web Services that you can choose
+%% to include in your assessment.
+%%
+%% When you create an assessment, specify which of these services you want to
+%% include to narrow the assessment's scope.
 get_services_in_scope(Client)
   when is_map(Client) ->
     get_services_in_scope(Client, #{}, #{}).
