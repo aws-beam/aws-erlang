@@ -31,6 +31,9 @@
          describe_workspace_authentication/2,
          describe_workspace_authentication/4,
          describe_workspace_authentication/5,
+         describe_workspace_configuration/2,
+         describe_workspace_configuration/4,
+         describe_workspace_configuration/5,
          disassociate_license/4,
          disassociate_license/5,
          list_permissions/2,
@@ -51,7 +54,9 @@
          update_workspace/3,
          update_workspace/4,
          update_workspace_authentication/3,
-         update_workspace_authentication/4]).
+         update_workspace_authentication/4,
+         update_workspace_configuration/3,
+         update_workspace_configuration/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -115,11 +120,11 @@ create_workspace(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an API key for the workspace.
+%% @doc Creates a Grafana API key for the workspace.
 %%
 %% This key can be used to authenticate requests sent to the workspace's HTTP
-%% API. See [
-%% https://docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html]
+%% API. See
+%% [https://docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html]
 %% for available APIs and example requests.
 create_workspace_api_key(Client, WorkspaceId, Input) ->
     create_workspace_api_key(Client, WorkspaceId, Input, []).
@@ -166,7 +171,7 @@ delete_workspace(Client, WorkspaceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an API key for a workspace.
+%% @doc Deletes a Grafana API key for the workspace.
 delete_workspace_api_key(Client, KeyName, WorkspaceId, Input) ->
     delete_workspace_api_key(Client, KeyName, WorkspaceId, Input, []).
 delete_workspace_api_key(Client, KeyName, WorkspaceId, Input0, Options0) ->
@@ -225,6 +230,29 @@ describe_workspace_authentication(Client, WorkspaceId, QueryMap, HeadersMap)
 describe_workspace_authentication(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/authentication"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the current configuration string for the given workspace.
+describe_workspace_configuration(Client, WorkspaceId)
+  when is_map(Client) ->
+    describe_workspace_configuration(Client, WorkspaceId, #{}, #{}).
+
+describe_workspace_configuration(Client, WorkspaceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_workspace_configuration(Client, WorkspaceId, QueryMap, HeadersMap, []).
+
+describe_workspace_configuration(Client, WorkspaceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/configuration"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -441,7 +469,7 @@ update_permissions(Client, WorkspaceId, Input0, Options0) ->
 %% values of those parameters are not changed.
 %%
 %% To modify the user authentication methods that the workspace uses, such as
-%% SAML or Amazon Web Services SSO, use UpdateWorkspaceAuthentication.
+%% SAML or IAM Identity Center, use UpdateWorkspaceAuthentication.
 %%
 %% To modify which users in the workspace have the `Admin' and `Editor'
 %% Grafana roles, use UpdatePermissions.
@@ -479,6 +507,29 @@ update_workspace_authentication(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/authentication"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the configuration string for the given workspace
+update_workspace_configuration(Client, WorkspaceId, Input) ->
+    update_workspace_configuration(Client, WorkspaceId, Input, []).
+update_workspace_configuration(Client, WorkspaceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/configuration"],
+    SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],

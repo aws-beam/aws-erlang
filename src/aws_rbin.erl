@@ -33,8 +33,12 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         lock_rule/3,
+         lock_rule/4,
          tag_resource/3,
          tag_resource/4,
+         unlock_rule/3,
+         unlock_rule/4,
          untag_resource/3,
          untag_resource/4,
          update_rule/3,
@@ -167,6 +171,31 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Locks a retention rule.
+%%
+%% A locked retention rule can't be modified or deleted.
+lock_rule(Client, Identifier, Input) ->
+    lock_rule(Client, Identifier, Input, []).
+lock_rule(Client, Identifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/rules/", aws_util:encode_uri(Identifier), "/lock"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Assigns tags to the specified retention rule.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
@@ -174,6 +203,32 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Method = post,
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Unlocks a retention rule.
+%%
+%% After a retention rule is unlocked, it can be modified or deleted only
+%% after the unlock delay period expires.
+unlock_rule(Client, Identifier, Input) ->
+    unlock_rule(Client, Identifier, Input, []).
+unlock_rule(Client, Identifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/rules/", aws_util:encode_uri(Identifier), "/unlock"],
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -216,8 +271,11 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates an existing Recycle Bin retention rule.
 %%
-%% For more information, see Update Recycle Bin retention rules in the Amazon
-%% Elastic Compute Cloud User Guide.
+%% You can update a retention rule's description, resource tags, and
+%% retention period at any time after creation. You can't update a retention
+%% rule's resource type after creation. For more information, see Update
+%% Recycle Bin retention rules in the Amazon Elastic Compute Cloud User
+%% Guide.
 update_rule(Client, Identifier, Input) ->
     update_rule(Client, Identifier, Input, []).
 update_rule(Client, Identifier, Input0, Options0) ->
