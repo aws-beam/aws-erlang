@@ -10,7 +10,9 @@
 %% backups, while also providing reporting and auditing.
 -module(aws_backup).
 
--export([create_backup_plan/2,
+-export([cancel_legal_hold/3,
+         cancel_legal_hold/4,
+         create_backup_plan/2,
          create_backup_plan/3,
          create_backup_selection/3,
          create_backup_selection/4,
@@ -18,6 +20,8 @@
          create_backup_vault/4,
          create_framework/2,
          create_framework/3,
+         create_legal_hold/2,
+         create_legal_hold/3,
          create_report_plan/2,
          create_report_plan/3,
          delete_backup_plan/3,
@@ -73,6 +77,8 @@
          describe_restore_job/5,
          disassociate_recovery_point/4,
          disassociate_recovery_point/5,
+         disassociate_recovery_point_from_parent/4,
+         disassociate_recovery_point_from_parent/5,
          export_backup_plan_template/2,
          export_backup_plan_template/4,
          export_backup_plan_template/5,
@@ -93,6 +99,9 @@
          get_backup_vault_notifications/2,
          get_backup_vault_notifications/4,
          get_backup_vault_notifications/5,
+         get_legal_hold/2,
+         get_legal_hold/4,
+         get_legal_hold/5,
          get_recovery_point_restore_metadata/3,
          get_recovery_point_restore_metadata/5,
          get_recovery_point_restore_metadata/6,
@@ -123,12 +132,18 @@
          list_frameworks/1,
          list_frameworks/3,
          list_frameworks/4,
+         list_legal_holds/1,
+         list_legal_holds/3,
+         list_legal_holds/4,
          list_protected_resources/1,
          list_protected_resources/3,
          list_protected_resources/4,
          list_recovery_points_by_backup_vault/2,
          list_recovery_points_by_backup_vault/4,
          list_recovery_points_by_backup_vault/5,
+         list_recovery_points_by_legal_hold/2,
+         list_recovery_points_by_legal_hold/4,
+         list_recovery_points_by_legal_hold/5,
          list_recovery_points_by_resource/2,
          list_recovery_points_by_resource/4,
          list_recovery_points_by_resource/5,
@@ -182,6 +197,33 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc This action removes the specified legal hold on a recovery point.
+%%
+%% This action can only be performed by a user with sufficient permissions.
+cancel_legal_hold(Client, LegalHoldId, Input) ->
+    cancel_legal_hold(Client, LegalHoldId, Input, []).
+cancel_legal_hold(Client, LegalHoldId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/legal-holds/", aws_util:encode_uri(LegalHoldId), ""],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"cancelDescription">>, <<"CancelDescription">>},
+                     {<<"retainRecordInDays">>, <<"RetainRecordInDays">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a backup plan using a backup plan name and backup rules.
 %%
@@ -278,6 +320,34 @@ create_framework(Client, Input) ->
 create_framework(Client, Input0, Options0) ->
     Method = post,
     Path = ["/audit/frameworks"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This action creates a legal hold on a recovery point (backup).
+%%
+%% A legal hold is a restraint on altering or deleting a backup until an
+%% authorized user cancels the legal hold. Any actions to delete or
+%% disassociate a recovery point will fail with an error if one or more
+%% active legal holds are on the recovery point.
+create_legal_hold(Client, Input) ->
+    create_legal_hold(Client, Input, []).
+create_legal_hold(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/legal-holds/"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -504,6 +574,18 @@ delete_framework(Client, FrameworkName, Input0, Options0) ->
 %% If the recovery point ID belongs to a continuous backup, calling this
 %% endpoint deletes the existing continuous backup and stops future
 %% continuous backup.
+%%
+%% When an IAM role's permissions are insufficient to call this API, the
+%% service sends back an HTTP 200 response with an empty HTTP body, but the
+%% recovery point is not deleted. Instead, it enters an `EXPIRED' state.
+%%
+%% `EXPIRED' recovery points can be deleted with this API once the IAM role
+%% has the `iam:CreateServiceLinkedRole' action. To learn more about adding
+%% this role, see Troubleshooting manual deletions.
+%%
+%% If the user or role is deleted or the permission within the role is
+%% removed, the deletion will not be successful and will enter an `EXPIRED'
+%% state.
 delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input) ->
     delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input, []).
 delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, Options0) ->
@@ -847,6 +929,31 @@ disassociate_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, O
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc This action to a specific child (nested) recovery point removes the
+%% relationship between the specified recovery point and its parent
+%% (composite) recovery point.
+disassociate_recovery_point_from_parent(Client, BackupVaultName, RecoveryPointArn, Input) ->
+    disassociate_recovery_point_from_parent(Client, BackupVaultName, RecoveryPointArn, Input, []).
+disassociate_recovery_point_from_parent(Client, BackupVaultName, RecoveryPointArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), "/parentAssociation"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns the backup plan that is specified by the plan ID as a backup
 %% template.
 export_backup_plan_template(Client, BackupPlanId)
@@ -1018,6 +1125,32 @@ get_backup_vault_notifications(Client, BackupVaultName, QueryMap, HeadersMap, Op
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc This action returns details for a specified legal hold.
+%%
+%% The details are the body of a legal hold in JSON format, in addition to
+%% metadata.
+get_legal_hold(Client, LegalHoldId)
+  when is_map(Client) ->
+    get_legal_hold(Client, LegalHoldId, #{}, #{}).
+
+get_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, []).
+
+get_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/legal-holds/", aws_util:encode_uri(LegalHoldId), "/"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a set of metadata key-value pairs that were used to create
 %% the backup.
 get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn)
@@ -1095,6 +1228,7 @@ list_backup_jobs(Client, QueryMap, HeadersMap, Options0)
         {<<"completeBefore">>, maps:get(<<"completeBefore">>, QueryMap, undefined)},
         {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
         {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
+        {<<"parentJobId">>, maps:get(<<"parentJobId">>, QueryMap, undefined)},
         {<<"resourceArn">>, maps:get(<<"resourceArn">>, QueryMap, undefined)},
         {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)},
         {<<"state">>, maps:get(<<"state">>, QueryMap, undefined)},
@@ -1283,6 +1417,7 @@ list_copy_jobs(Client, QueryMap, HeadersMap, Options0)
         {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
         {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
         {<<"destinationVaultArn">>, maps:get(<<"destinationVaultArn">>, QueryMap, undefined)},
+        {<<"parentJobId">>, maps:get(<<"parentJobId">>, QueryMap, undefined)},
         {<<"resourceArn">>, maps:get(<<"resourceArn">>, QueryMap, undefined)},
         {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)},
         {<<"state">>, maps:get(<<"state">>, QueryMap, undefined)},
@@ -1317,6 +1452,34 @@ list_frameworks(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
         {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This action returns metadata about active and previous legal holds.
+list_legal_holds(Client)
+  when is_map(Client) ->
+    list_legal_holds(Client, #{}, #{}).
+
+list_legal_holds(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_legal_holds(Client, QueryMap, HeadersMap, []).
+
+list_legal_holds(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/legal-holds/"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1377,8 +1540,38 @@ list_recovery_points_by_backup_vault(Client, BackupVaultName, QueryMap, HeadersM
         {<<"backupPlanId">>, maps:get(<<"backupPlanId">>, QueryMap, undefined)},
         {<<"createdAfter">>, maps:get(<<"createdAfter">>, QueryMap, undefined)},
         {<<"createdBefore">>, maps:get(<<"createdBefore">>, QueryMap, undefined)},
+        {<<"parentRecoveryPointArn">>, maps:get(<<"parentRecoveryPointArn">>, QueryMap, undefined)},
         {<<"resourceArn">>, maps:get(<<"resourceArn">>, QueryMap, undefined)},
         {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc This action returns recovery point ARNs (Amazon Resource Names) of
+%% the specified legal hold.
+list_recovery_points_by_legal_hold(Client, LegalHoldId)
+  when is_map(Client) ->
+    list_recovery_points_by_legal_hold(Client, LegalHoldId, #{}, #{}).
+
+list_recovery_points_by_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_recovery_points_by_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, []).
+
+list_recovery_points_by_legal_hold(Client, LegalHoldId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/legal-holds/", aws_util:encode_uri(LegalHoldId), "/recovery-points"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
@@ -1728,6 +1921,11 @@ start_restore_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Attempts to cancel a job to create a one-time backup of a resource.
+%%
+%% This action is not supported for the following services: Amazon FSx for
+%% Windows File Server, Amazon FSx for Lustre, FSx for ONTAP , Amazon FSx for
+%% OpenZFS, Amazon DocumentDB (with MongoDB compatibility), Amazon RDS,
+%% Amazon Aurora, and Amazon Neptune.
 stop_backup_job(Client, BackupJobId, Input) ->
     stop_backup_job(Client, BackupJobId, Input, []).
 stop_backup_job(Client, BackupJobId, Input0, Options0) ->

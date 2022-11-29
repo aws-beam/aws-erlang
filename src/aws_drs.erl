@@ -50,12 +50,18 @@
          list_tags_for_resource/5,
          retry_data_replication/2,
          retry_data_replication/3,
+         reverse_replication/2,
+         reverse_replication/3,
          start_failback_launch/2,
          start_failback_launch/3,
          start_recovery/2,
          start_recovery/3,
+         start_replication/2,
+         start_replication/3,
          stop_failback/2,
          stop_failback/3,
+         stop_replication/2,
+         stop_replication/3,
          tag_resource/3,
          tag_resource/4,
          terminate_recovery_instances/2,
@@ -640,6 +646,34 @@ retry_data_replication(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Start replication to origin / target region - applies only to
+%% protected instances that originated in EC2.
+%%
+%% For recovery instances on target region - starts replication back to
+%% origin region. For failback instances on origin region - starts
+%% replication to target region to re-protect them.
+reverse_replication(Client, Input) ->
+    reverse_replication(Client, Input, []).
+reverse_replication(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ReverseReplication"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Initiates a Job for launching the machine that is being failed back
 %% to from the specified Recovery Instance.
 %%
@@ -693,6 +727,32 @@ start_recovery(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts replication for a stopped Source Server.
+%%
+%% This action would make the Source Server protected again and restart
+%% billing for it.
+start_replication(Client, Input) ->
+    start_replication(Client, Input, []).
+start_replication(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StartReplication"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Stops the failback process for a specified Recovery Instance.
 %%
 %% This changes the Failback State of the Recovery Instance back to
@@ -702,6 +762,32 @@ stop_failback(Client, Input) ->
 stop_failback(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StopFailback"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops replication for a Source Server.
+%%
+%% This action would make the Source Server unprotected, delete its existing
+%% snapshots and stop billing for it.
+stop_replication(Client, Input) ->
+    stop_replication(Client, Input, []).
+stop_replication(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StopReplication"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

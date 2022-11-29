@@ -94,6 +94,8 @@
          delete_organizational_unit/3,
          delete_policy/2,
          delete_policy/3,
+         delete_resource_policy/2,
+         delete_resource_policy/3,
          deregister_delegated_administrator/2,
          deregister_delegated_administrator/3,
          describe_account/2,
@@ -110,6 +112,8 @@
          describe_organizational_unit/3,
          describe_policy/2,
          describe_policy/3,
+         describe_resource_policy/2,
+         describe_resource_policy/3,
          detach_policy/2,
          detach_policy/3,
          disable_aws_service_access/2,
@@ -160,6 +164,8 @@
          list_targets_for_policy/3,
          move_account/2,
          move_account/3,
+         put_resource_policy/2,
+         put_resource_policy/3,
          register_delegated_administrator/2,
          register_delegated_administrator/3,
          remove_account_from_organization/2,
@@ -182,7 +188,7 @@
 %% @doc Sends a response to the originator of a handshake agreeing to the
 %% action proposed by the handshake request.
 %%
-%% This operation can be called only by the following principals when they
+%% You can only call this operation by the following principals when they
 %% also have the relevant IAM permissions:
 %%
 %% <ul> <li> Invitation to join or Approve all features request handshakes:
@@ -309,8 +315,8 @@ close_account(Client, Input, Options)
 %% successfully access the account. To check the status of the request, do
 %% one of the following:
 %%
-%% <ul> <li> Use the `Id' member of the `CreateAccountStatus' response
-%% element from this operation to provide as a parameter to the
+%% <ul> <li> Use the `Id' value of the `CreateAccountStatus' response element
+%% from this operation to provide as a parameter to the
 %% `DescribeCreateAccountStatus' operation.
 %%
 %% </li> <li> Check the CloudTrail log for the `CreateAccountResult' event.
@@ -617,6 +623,17 @@ delete_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePolicy">>, Input, Options).
 
+%% @doc Deletes the resource policy from your organization.
+%%
+%% You can only call this operation from the organization's management
+%% account.
+delete_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_resource_policy(Client, Input, []).
+delete_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteResourcePolicy">>, Input, Options).
+
 %% @doc Removes the specified member Amazon Web Services account as a
 %% delegated administrator for the specified Amazon Web Services service.
 %%
@@ -744,6 +761,18 @@ describe_policy(Client, Input)
 describe_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePolicy">>, Input, Options).
+
+%% @doc Retrieves information about a resource policy.
+%%
+%% You can only call this operation from the organization's management
+%% account or by a member account that is a delegated administrator for an
+%% AWS service.
+describe_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_resource_policy(Client, Input, []).
+describe_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeResourcePolicy">>, Input, Options).
 
 %% @doc Detaches a policy from a target root, organizational unit (OU), or
 %% account.
@@ -925,7 +954,7 @@ enable_all_features(Client, Input, Options)
 %% Organizations, see Integrating Organizations with Other Amazon Web
 %% Services Services in the Organizations User Guide.
 %%
-%% This operation can be called only from the organization's management
+%% You can only call this operation from the organization's management
 %% account and only if the organization has enabled all features.
 enable_aws_service_access(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1392,6 +1421,17 @@ move_account(Client, Input)
 move_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"MoveAccount">>, Input, Options).
+
+%% @doc Creates or updates a resource policy.
+%%
+%% You can only call this operation from the organization's management
+%% account.
+put_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_resource_policy(Client, Input, []).
+put_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutResourcePolicy">>, Input, Options).
 
 %% @doc Enables the specified member account to administer the Organizations
 %% features of the specified Amazon Web Services service.

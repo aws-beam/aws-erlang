@@ -1,8 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Transcribe streaming offers two types of real-time
-%% transcription: Standard and Medical.
+%% @doc Amazon Transcribe streaming offers three main types of real-time
+%% transcription: Standard, Medical, and Call Analytics.
 %%
 %% <ul> <li> Standard transcriptions are the most common option. Refer to for
 %% details.
@@ -12,10 +12,16 @@
 %% transcribing doctor-patient dialogue in real time, so doctors can focus on
 %% their patient instead of taking notes. Refer to for details.
 %%
+%% </li> <li> Call Analytics transcriptions are designed for use with call
+%% center audio on two different channels; if you're looking for insight into
+%% customer service calls, use this option. Refer to for details.
+%%
 %% </li> </ul>
 -module(aws_transcribe_streaming).
 
--export([start_medical_stream_transcription/2,
+-export([start_call_analytics_stream_transcription/2,
+         start_call_analytics_stream_transcription/3,
+         start_medical_stream_transcription/2,
          start_medical_stream_transcription/3,
          start_stream_transcription/2,
          start_stream_transcription/3]).
@@ -27,11 +33,100 @@
 %%====================================================================
 
 %% @doc Starts a bidirectional HTTP/2 or WebSocket stream where audio is
+%% streamed to Amazon Transcribe and the transcription results are streamed
+%% to your application.
+%%
+%% Use this operation for Call Analytics transcriptions.
+%%
+%% The following parameters are required:
+%%
+%% <ul> <li> `language-code'
+%%
+%% </li> <li> `media-encoding'
+%%
+%% </li> <li> `sample-rate'
+%%
+%% </li> </ul> For more information on streaming with Amazon Transcribe, see
+%% Transcribing streaming audio.
+start_call_analytics_stream_transcription(Client, Input) ->
+    start_call_analytics_stream_transcription(Client, Input, []).
+start_call_analytics_stream_transcription(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/call-analytics-stream-transcription"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"x-amzn-transcribe-content-identification-type">>, <<"ContentIdentificationType">>},
+                       {<<"x-amzn-transcribe-content-redaction-type">>, <<"ContentRedactionType">>},
+                       {<<"x-amzn-transcribe-enable-partial-results-stabilization">>, <<"EnablePartialResultsStabilization">>},
+                       {<<"x-amzn-transcribe-language-code">>, <<"LanguageCode">>},
+                       {<<"x-amzn-transcribe-language-model-name">>, <<"LanguageModelName">>},
+                       {<<"x-amzn-transcribe-media-encoding">>, <<"MediaEncoding">>},
+                       {<<"x-amzn-transcribe-sample-rate">>, <<"MediaSampleRateHertz">>},
+                       {<<"x-amzn-transcribe-partial-results-stability">>, <<"PartialResultsStability">>},
+                       {<<"x-amzn-transcribe-pii-entity-types">>, <<"PiiEntityTypes">>},
+                       {<<"x-amzn-transcribe-session-id">>, <<"SessionId">>},
+                       {<<"x-amzn-transcribe-vocabulary-filter-method">>, <<"VocabularyFilterMethod">>},
+                       {<<"x-amzn-transcribe-vocabulary-filter-name">>, <<"VocabularyFilterName">>},
+                       {<<"x-amzn-transcribe-vocabulary-name">>, <<"VocabularyName">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"x-amzn-transcribe-content-identification-type">>, <<"ContentIdentificationType">>},
+            {<<"x-amzn-transcribe-content-redaction-type">>, <<"ContentRedactionType">>},
+            {<<"x-amzn-transcribe-enable-partial-results-stabilization">>, <<"EnablePartialResultsStabilization">>},
+            {<<"x-amzn-transcribe-language-code">>, <<"LanguageCode">>},
+            {<<"x-amzn-transcribe-language-model-name">>, <<"LanguageModelName">>},
+            {<<"x-amzn-transcribe-media-encoding">>, <<"MediaEncoding">>},
+            {<<"x-amzn-transcribe-sample-rate">>, <<"MediaSampleRateHertz">>},
+            {<<"x-amzn-transcribe-partial-results-stability">>, <<"PartialResultsStability">>},
+            {<<"x-amzn-transcribe-pii-entity-types">>, <<"PiiEntityTypes">>},
+            {<<"x-amzn-request-id">>, <<"RequestId">>},
+            {<<"x-amzn-transcribe-session-id">>, <<"SessionId">>},
+            {<<"x-amzn-transcribe-vocabulary-filter-method">>, <<"VocabularyFilterMethod">>},
+            {<<"x-amzn-transcribe-vocabulary-filter-name">>, <<"VocabularyFilterName">>},
+            {<<"x-amzn-transcribe-vocabulary-name">>, <<"VocabularyName">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Starts a bidirectional HTTP/2 or WebSocket stream where audio is
 %% streamed to Amazon Transcribe Medical and the transcription results are
 %% streamed to your application.
 %%
-%% For more information on streaming with Amazon Transcribe Medical, see
-%% Transcribing streaming audio.
+%% The following parameters are required:
+%%
+%% <ul> <li> `language-code'
+%%
+%% </li> <li> `media-encoding'
+%%
+%% </li> <li> `sample-rate'
+%%
+%% </li> </ul> For more information on streaming with Amazon Transcribe
+%% Medical, see Transcribing streaming audio.
 start_medical_stream_transcription(Client, Input) ->
     start_medical_stream_transcription(Client, Input, []).
 start_medical_stream_transcription(Client, Input0, Options0) ->
@@ -97,15 +192,13 @@ start_medical_stream_transcription(Client, Input0, Options0) ->
 %% streamed to Amazon Transcribe and the transcription results are streamed
 %% to your application.
 %%
-%% The following are encoded as headers:
+%% The following parameters are required:
 %%
-%% <ul> <li> language-code
+%% <ul> <li> `language-code' or `identify-language'
 %%
-%% </li> <li> media-encoding
+%% </li> <li> `media-encoding'
 %%
-%% </li> <li> sample-rate
-%%
-%% </li> <li> session-id
+%% </li> <li> `sample-rate'
 %%
 %% </li> </ul> For more information on streaming with Amazon Transcribe, see
 %% Transcribing streaming audio.

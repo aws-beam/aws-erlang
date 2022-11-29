@@ -4,12 +4,26 @@
 %% @doc The Application Migration Service service.
 -module(aws_mgn).
 
--export([change_server_life_cycle_state/2,
+-export([archive_application/2,
+         archive_application/3,
+         archive_wave/2,
+         archive_wave/3,
+         associate_applications/2,
+         associate_applications/3,
+         associate_source_servers/2,
+         associate_source_servers/3,
+         change_server_life_cycle_state/2,
          change_server_life_cycle_state/3,
+         create_application/2,
+         create_application/3,
          create_launch_configuration_template/2,
          create_launch_configuration_template/3,
          create_replication_configuration_template/2,
          create_replication_configuration_template/3,
+         create_wave/2,
+         create_wave/3,
+         delete_application/2,
+         delete_application/3,
          delete_job/2,
          delete_job/3,
          delete_launch_configuration_template/2,
@@ -20,6 +34,8 @@
          delete_source_server/3,
          delete_vcenter_client/2,
          delete_vcenter_client/3,
+         delete_wave/2,
+         delete_wave/3,
          describe_job_log_items/2,
          describe_job_log_items/3,
          describe_jobs/2,
@@ -33,6 +49,10 @@
          describe_vcenter_clients/1,
          describe_vcenter_clients/3,
          describe_vcenter_clients/4,
+         disassociate_applications/2,
+         disassociate_applications/3,
+         disassociate_source_servers/2,
+         disassociate_source_servers/3,
          disconnect_from_service/2,
          disconnect_from_service/3,
          finalize_cutover/2,
@@ -43,11 +63,27 @@
          get_replication_configuration/3,
          initialize_service/2,
          initialize_service/3,
+         list_applications/2,
+         list_applications/3,
+         list_source_server_actions/2,
+         list_source_server_actions/3,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_template_actions/2,
+         list_template_actions/3,
+         list_waves/2,
+         list_waves/3,
          mark_as_archived/2,
          mark_as_archived/3,
+         put_source_server_action/2,
+         put_source_server_action/3,
+         put_template_action/2,
+         put_template_action/3,
+         remove_source_server_action/2,
+         remove_source_server_action/3,
+         remove_template_action/2,
+         remove_template_action/3,
          retry_data_replication/2,
          retry_data_replication/3,
          start_cutover/2,
@@ -60,8 +96,14 @@
          tag_resource/4,
          terminate_target_instances/2,
          terminate_target_instances/3,
+         unarchive_application/2,
+         unarchive_application/3,
+         unarchive_wave/2,
+         unarchive_wave/3,
          untag_resource/3,
          untag_resource/4,
+         update_application/2,
+         update_application/3,
          update_launch_configuration/2,
          update_launch_configuration/3,
          update_launch_configuration_template/2,
@@ -71,13 +113,107 @@
          update_replication_configuration_template/2,
          update_replication_configuration_template/3,
          update_source_server_replication_type/2,
-         update_source_server_replication_type/3]).
+         update_source_server_replication_type/3,
+         update_wave/2,
+         update_wave/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Archive application.
+archive_application(Client, Input) ->
+    archive_application(Client, Input, []).
+archive_application(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ArchiveApplication"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Archive wave.
+archive_wave(Client, Input) ->
+    archive_wave(Client, Input, []).
+archive_wave(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ArchiveWave"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associate applications to wave.
+associate_applications(Client, Input) ->
+    associate_applications(Client, Input, []).
+associate_applications(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/AssociateApplications"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associate source servers to application.
+associate_source_servers(Client, Input) ->
+    associate_source_servers(Client, Input, []).
+associate_source_servers(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/AssociateSourceServers"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Allows the user to set the SourceServer.LifeCycle.state property for
 %% specific Source Server IDs to one of the following: READY_FOR_TEST or
@@ -107,7 +243,30 @@ change_server_life_cycle_state(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new ReplicationConfigurationTemplate.
+%% @doc Create application.
+create_application(Client, Input) ->
+    create_application(Client, Input, []).
+create_application(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateApplication"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new Launch Configuration Template.
 create_launch_configuration_template(Client, Input) ->
     create_launch_configuration_template(Client, Input, []).
 create_launch_configuration_template(Client, Input0, Options0) ->
@@ -153,6 +312,52 @@ create_replication_configuration_template(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Create wave.
+create_wave(Client, Input) ->
+    create_wave(Client, Input, []).
+create_wave(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateWave"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete application.
+delete_application(Client, Input) ->
+    delete_application(Client, Input, []).
+delete_application(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteApplication"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a single Job by ID.
 delete_job(Client, Input) ->
     delete_job(Client, Input, []).
@@ -176,7 +381,7 @@ delete_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new ReplicationConfigurationTemplate.
+%% @doc Deletes a single Launch Configuration Template by ID.
 delete_launch_configuration_template(Client, Input) ->
     delete_launch_configuration_template(Client, Input, []).
 delete_launch_configuration_template(Client, Input0, Options0) ->
@@ -268,6 +473,29 @@ delete_vcenter_client(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Delete wave.
+delete_wave(Client, Input) ->
+    delete_wave(Client, Input, []).
+delete_wave(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteWave"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves detailed job log items with paging.
 describe_job_log_items(Client, Input) ->
     describe_job_log_items(Client, Input, []).
@@ -321,7 +549,8 @@ describe_jobs(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new ReplicationConfigurationTemplate.
+%% @doc Lists all Launch Configuration Templates, filtered by Launch
+%% Configuration Template IDs
 describe_launch_configuration_templates(Client, Input) ->
     describe_launch_configuration_templates(Client, Input, []).
 describe_launch_configuration_templates(Client, Input0, Options0) ->
@@ -418,6 +647,52 @@ describe_vcenter_clients(Client, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Disassociate applications from wave.
+disassociate_applications(Client, Input) ->
+    disassociate_applications(Client, Input, []).
+disassociate_applications(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DisassociateApplications"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disassociate source servers from application.
+disassociate_source_servers(Client, Input) ->
+    disassociate_source_servers(Client, Input, []).
+disassociate_source_servers(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DisassociateSourceServers"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disconnects specific Source Servers from Application Migration
 %% Service.
@@ -561,6 +836,52 @@ initialize_service(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves all applications or multiple applications by ID.
+list_applications(Client, Input) ->
+    list_applications(Client, Input, []).
+list_applications(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListApplications"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc List source server post migration custom actions.
+list_source_server_actions(Client, Input) ->
+    list_source_server_actions(Client, Input, []).
+list_source_server_actions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListSourceServerActions"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc List all tags for your Application Migration Service resources.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
@@ -584,6 +905,52 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc List template post migration custom actions.
+list_template_actions(Client, Input) ->
+    list_template_actions(Client, Input, []).
+list_template_actions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListTemplateActions"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves all waves or multiple waves by ID.
+list_waves(Client, Input) ->
+    list_waves(Client, Input, []).
+list_waves(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListWaves"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Archives specific Source Servers by setting the
 %% SourceServer.isArchived property to true for specified SourceServers by
 %% ID.
@@ -596,6 +963,98 @@ mark_as_archived(Client, Input0, Options0) ->
     Method = post,
     Path = ["/MarkAsArchived"],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Put source server post migration custom action.
+put_source_server_action(Client, Input) ->
+    put_source_server_action(Client, Input, []).
+put_source_server_action(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/PutSourceServerAction"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Put template post migration custom action.
+put_template_action(Client, Input) ->
+    put_template_action(Client, Input, []).
+put_template_action(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/PutTemplateAction"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Remove source server post migration custom action.
+remove_source_server_action(Client, Input) ->
+    remove_source_server_action(Client, Input, []).
+remove_source_server_action(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/RemoveSourceServerAction"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Remove template post migration custom action.
+remove_template_action(Client, Input) ->
+    remove_template_action(Client, Input, []).
+remove_template_action(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/RemoveTemplateAction"],
+    SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -771,6 +1230,52 @@ terminate_target_instances(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Unarchive application.
+unarchive_application(Client, Input) ->
+    unarchive_application(Client, Input, []).
+unarchive_application(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UnarchiveApplication"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Unarchive wave.
+unarchive_wave(Client, Input) ->
+    unarchive_wave(Client, Input, []).
+unarchive_wave(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UnarchiveWave"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the specified set of tags from the specified set of
 %% Application Migration Service resources.
 untag_resource(Client, ResourceArn, Input) ->
@@ -796,6 +1301,29 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Update application.
+update_application(Client, Input) ->
+    update_application(Client, Input, []).
+update_application(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateApplication"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates multiple LaunchConfigurations by Source Server ID.
 update_launch_configuration(Client, Input) ->
     update_launch_configuration(Client, Input, []).
@@ -819,7 +1347,7 @@ update_launch_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new ReplicationConfigurationTemplate.
+%% @doc Updates an existing Launch Configuration Template by ID.
 update_launch_configuration_template(Client, Input) ->
     update_launch_configuration_template(Client, Input, []).
 update_launch_configuration_template(Client, Input0, Options0) ->
@@ -896,6 +1424,29 @@ update_source_server_replication_type(Client, Input) ->
 update_source_server_replication_type(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateSourceServerReplicationType"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update wave.
+update_wave(Client, Input) ->
+    update_wave(Client, Input, []).
+update_wave(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateWave"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

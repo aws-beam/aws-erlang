@@ -78,6 +78,8 @@
          list_container_instances/3,
          list_services/2,
          list_services/3,
+         list_services_by_namespace/2,
+         list_services_by_namespace/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          list_task_definition_families/2,
@@ -524,7 +526,7 @@ discover_poll_endpoint(Client, Input, Options)
 %%
 %% If you use a condition key in your IAM policy to refine the conditions for
 %% the policy statement, for example limit the actions to a specific cluster,
-%% you recevie an `AccessDeniedException' when there is a mismatch between
+%% you receive an `AccessDeniedException' when there is a mismatch between
 %% the condition key value and the corresponding parameter value.
 execute_command(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -596,6 +598,21 @@ list_services(Client, Input)
 list_services(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListServices">>, Input, Options).
+
+%% @doc This operation lists all of the services that are associated with a
+%% Cloud Map namespace.
+%%
+%% This list might include services in different clusters. In contrast,
+%% `ListServices' can only list services in one cluster at a time. If you
+%% need to filter the list of services in a single cluster by various
+%% parameters, use `ListServices'. For more information, see Service Connect
+%% in the Amazon Elastic Container Service Developer Guide.
+list_services_by_namespace(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_services_by_namespace(Client, Input, []).
+list_services_by_namespace(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListServicesByNamespace">>, Input, Options).
 
 %% @doc List the tags for an Amazon ECS resource.
 list_tags_for_resource(Client, Input)
@@ -944,6 +961,10 @@ update_cluster_settings(Client, Input, Options)
 %% agent. For more information, see Updating the Amazon ECS container agent
 %% in the Amazon Elastic Container Service Developer Guide.
 %%
+%% Agent updates with the `UpdateContainerAgent' API operation do not apply
+%% to Windows container instances. We recommend that you launch new container
+%% instances to update the agent version in your Windows clusters.
+%%
 %% The `UpdateContainerAgent' API requires an Amazon ECS-optimized AMI or
 %% Amazon Linux AMI with the `ecs-init' service installed and running. For
 %% help updating the Amazon ECS container agent on other operating systems,
@@ -1169,14 +1190,14 @@ update_service_primary_task_set(Client, Input, Options)
 %% repeatedly.
 %%
 %% To learn more about Amazon ECS task protection, see Task scale-in
-%% protection in the Amazon Elastic Container Service Developer Guide.
+%% protection in the Amazon Elastic Container Service Developer Guide .
 %%
 %% This operation is only supported for tasks belonging to an Amazon ECS
 %% service. Invoking this operation for a standalone task will result in an
 %% `TASK_NOT_VALID' failure. For more information, see API failure reasons.
 %%
 %% If you prefer to set task protection from within the container, we
-%% recommend using the Amazon ECS container agent endpoint.
+%% recommend using the Task scale-in protection endpoint.
 update_task_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_task_protection(Client, Input, []).

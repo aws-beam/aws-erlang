@@ -79,6 +79,8 @@
          copy_db_snapshot/3,
          copy_option_group/2,
          copy_option_group/3,
+         create_blue_green_deployment/2,
+         create_blue_green_deployment/3,
          create_custom_db_engine_version/2,
          create_custom_db_engine_version/3,
          create_db_cluster/2,
@@ -111,6 +113,8 @@
          create_global_cluster/3,
          create_option_group/2,
          create_option_group/3,
+         delete_blue_green_deployment/2,
+         delete_blue_green_deployment/3,
          delete_custom_db_engine_version/2,
          delete_custom_db_engine_version/3,
          delete_db_cluster/2,
@@ -147,6 +151,8 @@
          deregister_db_proxy_targets/3,
          describe_account_attributes/2,
          describe_account_attributes/3,
+         describe_blue_green_deployments/2,
+         describe_blue_green_deployments/3,
          describe_certificates/2,
          describe_certificates/3,
          describe_db_cluster_backtracks/2,
@@ -325,6 +331,8 @@
          stop_db_instance/3,
          stop_db_instance_automated_backups_replication/2,
          stop_db_instance_automated_backups_replication/3,
+         switchover_blue_green_deployment/2,
+         switchover_blue_green_deployment/3,
          switchover_read_replica/2,
          switchover_read_replica/3]).
 
@@ -537,6 +545,33 @@ copy_option_group(Client, Input)
 copy_option_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CopyOptionGroup">>, Input, Options).
+
+%% @doc Creates a blue/green deployment.
+%%
+%% A blue/green deployment creates a staging environment that copies the
+%% production environment. In a blue/green deployment, the blue environment
+%% is the current production environment. The green environment is the
+%% staging environment. The staging environment stays in sync with the
+%% current production environment using logical replication.
+%%
+%% You can make changes to the databases in the green environment without
+%% affecting production workloads. For example, you can upgrade the major or
+%% minor DB engine version, change database parameters, or make schema
+%% changes in the staging environment. You can thoroughly test changes in the
+%% green environment. When ready, you can switch over the environments to
+%% promote the green environment to be the new production environment. The
+%% switchover typically takes under a minute.
+%%
+%% For more information, see Using Amazon RDS Blue/Green Deployments for
+%% database updates in the Amazon RDS User Guide and Using Amazon RDS
+%% Blue/Green Deployments for database updates in the Amazon Aurora User
+%% Guide.
+create_blue_green_deployment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_blue_green_deployment(Client, Input, []).
+create_blue_green_deployment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateBlueGreenDeployment">>, Input, Options).
 
 %% @doc Creates a custom DB engine version (CEV).
 %%
@@ -875,6 +910,19 @@ create_option_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateOptionGroup">>, Input, Options).
 
+%% @doc Deletes a blue/green deployment.
+%%
+%% For more information, see Using Amazon RDS Blue/Green Deployments for
+%% database updates in the Amazon RDS User Guide and Using Amazon RDS
+%% Blue/Green Deployments for database updates in the Amazon Aurora User
+%% Guide.
+delete_blue_green_deployment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_blue_green_deployment(Client, Input, []).
+delete_blue_green_deployment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteBlueGreenDeployment">>, Input, Options).
+
 %% @doc Deletes a custom engine version.
 %%
 %% To run this command, make sure you meet the following prerequisites:
@@ -1141,6 +1189,19 @@ describe_account_attributes(Client, Input)
 describe_account_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountAttributes">>, Input, Options).
+
+%% @doc Returns information about blue/green deployments.
+%%
+%% For more information, see Using Amazon RDS Blue/Green Deployments for
+%% database updates in the Amazon RDS User Guide and Using Amazon RDS
+%% Blue/Green Deployments for database updates in the Amazon Aurora User
+%% Guide.
+describe_blue_green_deployments(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_blue_green_deployments(Client, Input, []).
+describe_blue_green_deployments(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeBlueGreenDeployments">>, Input, Options).
 
 %% @doc Lists the set of CA certificates provided by Amazon RDS for this
 %% Amazon Web Services account.
@@ -2530,6 +2591,23 @@ stop_db_instance_automated_backups_replication(Client, Input)
 stop_db_instance_automated_backups_replication(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopDBInstanceAutomatedBackupsReplication">>, Input, Options).
+
+%% @doc Switches over a blue/green deployment.
+%%
+%% Before you switch over, production traffic is routed to the databases in
+%% the blue environment. After you switch over, production traffic is routed
+%% to the databases in the green environment.
+%%
+%% For more information, see Using Amazon RDS Blue/Green Deployments for
+%% database updates in the Amazon RDS User Guide and Using Amazon RDS
+%% Blue/Green Deployments for database updates in the Amazon Aurora User
+%% Guide.
+switchover_blue_green_deployment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    switchover_blue_green_deployment(Client, Input, []).
+switchover_blue_green_deployment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SwitchoverBlueGreenDeployment">>, Input, Options).
 
 %% @doc Switches over an Oracle standby database in an Oracle Data Guard
 %% environment, making it the new primary database.

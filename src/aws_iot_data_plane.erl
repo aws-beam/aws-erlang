@@ -229,14 +229,21 @@ publish(Client, Topic, Input0, Options0) ->
                | Options0],
 
 
-    Headers = [],
-    Input1 = Input0,
+    HeadersMapping = [
+                       {<<"x-amz-mqtt5-correlation-data">>, <<"correlationData">>},
+                       {<<"x-amz-mqtt5-payload-format-indicator">>, <<"payloadFormatIndicator">>},
+                       {<<"x-amz-mqtt5-user-properties">>, <<"userProperties">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,
 
     QueryMapping = [
+                     {<<"contentType">>, <<"contentType">>},
+                     {<<"messageExpiry">>, <<"messageExpiry">>},
                      {<<"qos">>, <<"qos">>},
+                     {<<"responseTopic">>, <<"responseTopic">>},
                      {<<"retain">>, <<"retain">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),

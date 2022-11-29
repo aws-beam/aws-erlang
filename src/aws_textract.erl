@@ -21,12 +21,18 @@
          get_document_text_detection/3,
          get_expense_analysis/2,
          get_expense_analysis/3,
+         get_lending_analysis/2,
+         get_lending_analysis/3,
+         get_lending_analysis_summary/2,
+         get_lending_analysis_summary/3,
          start_document_analysis/2,
          start_document_analysis/3,
          start_document_text_detection/2,
          start_document_text_detection/3,
          start_expense_analysis/2,
-         start_expense_analysis/3]).
+         start_expense_analysis/3,
+         start_lending_analysis/2,
+         start_lending_analysis/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -279,6 +285,51 @@ get_expense_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetExpenseAnalysis">>, Input, Options).
 
+%% @doc Gets the results for an Amazon Textract asynchronous operation that
+%% analyzes text in a lending document.
+%%
+%% You start asynchronous text analysis by calling `StartLendingAnalysis',
+%% which returns a job identifier (`JobId'). When the text analysis operation
+%% finishes, Amazon Textract publishes a completion status to the Amazon
+%% Simple Notification Service (Amazon SNS) topic that's registered in the
+%% initial call to `StartLendingAnalysis'.
+%%
+%% To get the results of the text analysis operation, first check that the
+%% status value published to the Amazon SNS topic is SUCCEEDED. If so, call
+%% GetLendingAnalysis, and pass the job identifier (`JobId') from the initial
+%% call to `StartLendingAnalysis'.
+get_lending_analysis(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_lending_analysis(Client, Input, []).
+get_lending_analysis(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetLendingAnalysis">>, Input, Options).
+
+%% @doc Gets summarized results for the `StartLendingAnalysis' operation,
+%% which analyzes text in a lending document.
+%%
+%% The returned summary consists of information about documents grouped
+%% together by a common document type. Information like detected signatures,
+%% page numbers, and split documents is returned with respect to the type of
+%% grouped document.
+%%
+%% You start asynchronous text analysis by calling `StartLendingAnalysis',
+%% which returns a job identifier (`JobId'). When the text analysis operation
+%% finishes, Amazon Textract publishes a completion status to the Amazon
+%% Simple Notification Service (Amazon SNS) topic that's registered in the
+%% initial call to `StartLendingAnalysis'.
+%%
+%% To get the results of the text analysis operation, first check that the
+%% status value published to the Amazon SNS topic is SUCCEEDED. If so, call
+%% `GetLendingAnalysisSummary', and pass the job identifier (`JobId') from
+%% the initial call to `StartLendingAnalysis'.
+get_lending_analysis_summary(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_lending_analysis_summary(Client, Input, []).
+get_lending_analysis_summary(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetLendingAnalysisSummary">>, Input, Options).
+
 %% @doc Starts the asynchronous analysis of an input document for
 %% relationships between detected items such as key-value pairs, tables, and
 %% selection elements.
@@ -357,6 +408,44 @@ start_expense_analysis(Client, Input)
 start_expense_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartExpenseAnalysis">>, Input, Options).
+
+%% @doc Starts the classification and analysis of an input document.
+%%
+%% `StartLendingAnalysis' initiates the classification and analysis of a
+%% packet of lending documents. `StartLendingAnalysis' operates on a document
+%% file located in an Amazon S3 bucket.
+%%
+%% `StartLendingAnalysis' can analyze text in documents that are in one of
+%% the following formats: JPEG, PNG, TIFF, PDF. Use `DocumentLocation' to
+%% specify the bucket name and the file name of the document.
+%%
+%% `StartLendingAnalysis' returns a job identifier (`JobId') that you use to
+%% get the results of the operation. When the text analysis is finished,
+%% Amazon Textract publishes a completion status to the Amazon Simple
+%% Notification Service (Amazon SNS) topic that you specify in
+%% `NotificationChannel'. To get the results of the text analysis operation,
+%% first check that the status value published to the Amazon SNS topic is
+%% SUCCEEDED. If the status is SUCCEEDED you can call either
+%% `GetLendingAnalysis' or `GetLendingAnalysisSummary' and provide the
+%% `JobId' to obtain the results of the analysis.
+%%
+%% If using `OutputConfig' to specify an Amazon S3 bucket, the output will be
+%% contained within the specified prefix in a directory labeled with the
+%% job-id. In the directory there are 3 sub-directories:
+%%
+%% <ul> <li> detailedResponse (contains the GetLendingAnalysis response)
+%%
+%% </li> <li> summaryResponse (for the GetLendingAnalysisSummary response)
+%%
+%% </li> <li> splitDocuments (documents split across logical boundaries)
+%%
+%% </li> </ul>
+start_lending_analysis(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_lending_analysis(Client, Input, []).
+start_lending_analysis(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartLendingAnalysis">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

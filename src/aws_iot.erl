@@ -813,8 +813,8 @@ attach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
 
 %% @doc Attaches the specified principal to the specified thing.
 %%
-%% A principal can be X.509 certificates, IAM users, groups, and roles,
-%% Amazon Cognito identities or federated identities.
+%% A principal can be X.509 certificates, Amazon Cognito identities or
+%% federated identities.
 %%
 %% Requires permission to access the AttachThingPrincipal action.
 attach_thing_principal(Client, ThingName, Input) ->

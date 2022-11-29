@@ -125,12 +125,17 @@
          get_position_configuration/3,
          get_position_configuration/5,
          get_position_configuration/6,
+         get_position_estimate/2,
+         get_position_estimate/3,
          get_resource_event_configuration/3,
          get_resource_event_configuration/5,
          get_resource_event_configuration/6,
          get_resource_log_level/3,
          get_resource_log_level/5,
          get_resource_log_level/6,
+         get_resource_position/3,
+         get_resource_position/5,
+         get_resource_position/6,
          get_service_endpoint/1,
          get_service_endpoint/3,
          get_service_endpoint/4,
@@ -250,6 +255,8 @@
          update_position/4,
          update_resource_event_configuration/3,
          update_resource_event_configuration/4,
+         update_resource_position/3,
+         update_resource_position/4,
          update_wireless_device/3,
          update_wireless_device/4,
          update_wireless_gateway/3,
@@ -1318,6 +1325,9 @@ get_partner_account(Client, PartnerAccountId, PartnerType, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get the position information for a given resource.
+%%
+%% This action is no longer supported. Calls to retrieve the position
+%% information should use the GetResourcePosition API operation instead.
 get_position(Client, ResourceIdentifier, ResourceType)
   when is_map(Client) ->
     get_position(Client, ResourceIdentifier, ResourceType, #{}, #{}).
@@ -1345,6 +1355,9 @@ get_position(Client, ResourceIdentifier, ResourceType, QueryMap, HeadersMap, Opt
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get position configuration for a given resource.
+%%
+%% This action is no longer supported. Calls to retrieve the position
+%% configuration should use the GetResourcePosition API operation instead.
 get_position_configuration(Client, ResourceIdentifier, ResourceType)
   when is_map(Client) ->
     get_position_configuration(Client, ResourceIdentifier, ResourceType, #{}, #{}).
@@ -1370,6 +1383,32 @@ get_position_configuration(Client, ResourceIdentifier, ResourceType, QueryMap, H
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get estimated position information as a payload in GeoJSON format.
+%%
+%% The payload measurement data is resolved using solvers that are provided
+%% by third-party vendors.
+get_position_estimate(Client, Input) ->
+    get_position_estimate(Client, Input, []).
+get_position_estimate(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/position-estimate"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Get the event configuration for a particular resource identifier.
 get_resource_event_configuration(Client, Identifier, IdentifierType)
@@ -1415,6 +1454,36 @@ get_resource_log_level(Client, ResourceIdentifier, ResourceType, QueryMap, Heade
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/log-levels/", aws_util:encode_uri(ResourceIdentifier), ""],
     SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"resourceType">>, ResourceType}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get the position information for a given wireless device or a
+%% wireless gateway resource.
+%%
+%% The postion information uses the World Geodetic System (WGS84).
+get_resource_position(Client, ResourceIdentifier, ResourceType)
+  when is_map(Client) ->
+    get_resource_position(Client, ResourceIdentifier, ResourceType, #{}, #{}).
+
+get_resource_position(Client, ResourceIdentifier, ResourceType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resource_position(Client, ResourceIdentifier, ResourceType, QueryMap, HeadersMap, []).
+
+get_resource_position(Client, ResourceIdentifier, ResourceType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/resource-positions/", aws_util:encode_uri(ResourceIdentifier), ""],
+    SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
                | Options0],
@@ -1902,6 +1971,9 @@ list_partner_accounts(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc List position configurations for a given resource, such as
 %% positioning solvers.
+%%
+%% This action is no longer supported. Calls to retrieve position information
+%% should use the GetResourcePosition API operation instead.
 list_position_configurations(Client)
   when is_map(Client) ->
     list_position_configurations(Client, #{}, #{}).
@@ -2107,6 +2179,9 @@ list_wireless_gateways(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Put position configuration for a given resource.
+%%
+%% This action is no longer supported. Calls to update the position
+%% configuration should use the UpdateResourcePosition API operation instead.
 put_position_configuration(Client, ResourceIdentifier, Input) ->
     put_position_configuration(Client, ResourceIdentifier, Input, []).
 put_position_configuration(Client, ResourceIdentifier, Input0, Options0) ->
@@ -2588,6 +2663,9 @@ update_partner_account(Client, PartnerAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update the position information of a resource.
+%%
+%% This action is no longer supported. Calls to update the position
+%% information should use the UpdateResourcePosition API operation instead.
 update_position(Client, ResourceIdentifier, Input) ->
     update_position(Client, ResourceIdentifier, Input, []).
 update_position(Client, ResourceIdentifier, Input0, Options0) ->
@@ -2632,6 +2710,33 @@ update_resource_event_configuration(Client, Identifier, Input0, Options0) ->
     QueryMapping = [
                      {<<"identifierType">>, <<"IdentifierType">>},
                      {<<"partnerType">>, <<"PartnerType">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update the position information of a given wireless device or a
+%% wireless gateway resource.
+%%
+%% The postion coordinates are based on the World Geodetic System (WGS84).
+update_resource_position(Client, ResourceIdentifier, Input) ->
+    update_resource_position(Client, ResourceIdentifier, Input, []).
+update_resource_position(Client, ResourceIdentifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/resource-positions/", aws_util:encode_uri(ResourceIdentifier), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"resourceType">>, <<"ResourceType">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).

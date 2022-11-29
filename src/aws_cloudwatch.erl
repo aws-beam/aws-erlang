@@ -122,7 +122,7 @@
 %% To get out of such a situation, you must break the cycle by changing the
 %% rule of one of the composite alarms in the cycle to remove a dependency
 %% that creates the cycle. The simplest change to make to break a cycle is to
-%% change the `AlarmRule' of one of the alarms to `False'.
+%% change the `AlarmRule' of one of the alarms to `false'.
 %%
 %% Additionally, the evaluation of composite alarms stops if CloudWatch
 %% detects a cycle in the evaluation path.
@@ -556,14 +556,19 @@ list_metric_streams(Client, Input, Options)
 %% @doc List the specified metrics.
 %%
 %% You can use the returned metrics with GetMetricData or GetMetricStatistics
-%% to obtain statistical data.
+%% to get statistical data.
 %%
 %% Up to 500 results are returned for any one call. To retrieve additional
 %% results, use the returned token with subsequent calls.
 %%
-%% After you create a metric, allow up to 15 minutes before the metric
-%% appears. You can see statistics about the metric sooner by using
-%% GetMetricData or GetMetricStatistics.
+%% After you create a metric, allow up to 15 minutes for the metric to
+%% appear. To see metric statistics sooner, use GetMetricData or
+%% GetMetricStatistics.
+%%
+%% If you are using CloudWatch cross-account observability, you can use this
+%% operation in a monitoring account and view metrics from the linked source
+%% accounts. For more information, see CloudWatch cross-account
+%% observability.
 %%
 %% `ListMetrics' doesn't return information about metrics if those metrics
 %% haven't reported data in the past two weeks. To retrieve those metrics,
@@ -629,7 +634,7 @@ put_anomaly_detector(Client, Input, Options)
 %% To get out of such a situation, you must break the cycle by changing the
 %% rule of one of the composite alarms in the cycle to remove a dependency
 %% that creates the cycle. The simplest change to make to break a cycle is to
-%% change the `AlarmRule' of one of the alarms to `False'.
+%% change the `AlarmRule' of one of the alarms to `false'.
 %%
 %% Additionally, the evaluation of composite alarms stops if CloudWatch
 %% detects a cycle in the evaluation path.
@@ -837,12 +842,12 @@ put_metric_data(Client, Input, Options)
 %% @doc Creates or updates a metric stream.
 %%
 %% Metric streams can automatically stream CloudWatch metrics to Amazon Web
-%% Services destinations including Amazon S3 and to many third-party
+%% Services destinations, including Amazon S3, and to many third-party
 %% solutions.
 %%
 %% For more information, see Using Metric Streams.
 %%
-%% To create a metric stream, you must be logged on to an account that has
+%% To create a metric stream, you must be signed in to an account that has
 %% the `iam:PassRole' permission and either the `CloudWatchFullAccess' policy
 %% or the `cloudwatch:PutMetricStream' permission.
 %%
@@ -860,9 +865,9 @@ put_metric_data(Client, Input, Options)
 %% </li> </ul> By default, a metric stream always sends the `MAX', `MIN',
 %% `SUM', and `SAMPLECOUNT' statistics for each metric that is streamed. You
 %% can use the `StatisticsConfigurations' parameter to have the metric stream
-%% also send additional statistics in the stream. Streaming additional
-%% statistics incurs additional costs. For more information, see Amazon
-%% CloudWatch Pricing.
+%% send additional statistics in the stream. Streaming additional statistics
+%% incurs additional costs. For more information, see Amazon CloudWatch
+%% Pricing.
 %%
 %% When you use `PutMetricStream' to create a new metric stream, the stream
 %% is created in the `running' state. If you use it to update an existing
