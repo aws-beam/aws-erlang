@@ -95,12 +95,18 @@
          describe_analysis/3,
          describe_analysis/5,
          describe_analysis/6,
+         describe_analysis_definition/3,
+         describe_analysis_definition/5,
+         describe_analysis_definition/6,
          describe_analysis_permissions/3,
          describe_analysis_permissions/5,
          describe_analysis_permissions/6,
          describe_dashboard/3,
          describe_dashboard/5,
          describe_dashboard/6,
+         describe_dashboard_definition/3,
+         describe_dashboard_definition/5,
+         describe_dashboard_definition/6,
          describe_dashboard_permissions/3,
          describe_dashboard_permissions/5,
          describe_dashboard_permissions/6,
@@ -149,6 +155,9 @@
          describe_template_alias/4,
          describe_template_alias/6,
          describe_template_alias/7,
+         describe_template_definition/3,
+         describe_template_definition/5,
+         describe_template_definition/6,
          describe_template_permissions/3,
          describe_template_permissions/5,
          describe_template_permissions/6,
@@ -1472,6 +1481,33 @@ describe_analysis(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Provides a detailed description of the definition of an analysis.
+%%
+%% If you do not need to know details about the content of an Analysis, for
+%% instance if you are trying to check the status of a recently created or
+%% updated Analysis, use the `DescribeAnalysis' instead.
+describe_analysis_definition(Client, AnalysisId, AwsAccountId)
+  when is_map(Client) ->
+    describe_analysis_definition(Client, AnalysisId, AwsAccountId, #{}, #{}).
+
+describe_analysis_definition(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_analysis_definition(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, []).
+
+describe_analysis_definition(Client, AnalysisId, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/analyses/", aws_util:encode_uri(AnalysisId), "/definition"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Provides the read and write permissions for an analysis.
 describe_analysis_permissions(Client, AnalysisId, AwsAccountId)
   when is_map(Client) ->
@@ -1507,6 +1543,38 @@ describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap)
 describe_dashboard(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"alias-name">>, maps:get(<<"alias-name">>, QueryMap, undefined)},
+        {<<"version-number">>, maps:get(<<"version-number">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Provides a detailed description of the definition of a dashboard.
+%%
+%% If you do not need to know details about the content of a dashboard, for
+%% instance if you are trying to check the status of a recently created or
+%% updated dashboard, use the `DescribeDashboard' instead.
+describe_dashboard_definition(Client, AwsAccountId, DashboardId)
+  when is_map(Client) ->
+    describe_dashboard_definition(Client, AwsAccountId, DashboardId, #{}, #{}).
+
+describe_dashboard_definition(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_dashboard_definition(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, []).
+
+describe_dashboard_definition(Client, AwsAccountId, DashboardId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/dashboards/", aws_util:encode_uri(DashboardId), "/definition"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1908,6 +1976,38 @@ describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, QueryMap, H
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Provides a detailed description of the definition of a template.
+%%
+%% If you do not need to know details about the content of a template, for
+%% instance if you are trying to check the status of a recently created or
+%% updated template, use the `DescribeTemplate' instead.
+describe_template_definition(Client, AwsAccountId, TemplateId)
+  when is_map(Client) ->
+    describe_template_definition(Client, AwsAccountId, TemplateId, #{}, #{}).
+
+describe_template_definition(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_template_definition(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, []).
+
+describe_template_definition(Client, AwsAccountId, TemplateId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/templates/", aws_util:encode_uri(TemplateId), "/definition"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"alias-name">>, maps:get(<<"alias-name">>, QueryMap, undefined)},
+        {<<"version-number">>, maps:get(<<"version-number">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 

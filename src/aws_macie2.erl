@@ -2,8 +2,8 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Macie is a fully managed data security and data privacy
-%% service that uses machine learning and pattern matching to discover and
-%% protect your sensitive data in AWS.
+%% service that uses machine learning and pattern matching to help you
+%% discover and protect your sensitive data in AWS.
 %%
 %% Macie automates the discovery of sensitive data, such as PII and
 %% intellectual property, to provide you with insight into the data that your
@@ -71,11 +71,17 @@
          get_allow_list/2,
          get_allow_list/4,
          get_allow_list/5,
+         get_automated_discovery_configuration/1,
+         get_automated_discovery_configuration/3,
+         get_automated_discovery_configuration/4,
          get_bucket_statistics/2,
          get_bucket_statistics/3,
          get_classification_export_configuration/1,
          get_classification_export_configuration/3,
          get_classification_export_configuration/4,
+         get_classification_scope/2,
+         get_classification_scope/4,
+         get_classification_scope/5,
          get_custom_data_identifier/2,
          get_custom_data_identifier/4,
          get_custom_data_identifier/5,
@@ -101,6 +107,9 @@
          get_member/2,
          get_member/4,
          get_member/5,
+         get_resource_profile/2,
+         get_resource_profile/4,
+         get_resource_profile/5,
          get_reveal_configuration/1,
          get_reveal_configuration/3,
          get_reveal_configuration/4,
@@ -110,6 +119,9 @@
          get_sensitive_data_occurrences_availability/2,
          get_sensitive_data_occurrences_availability/4,
          get_sensitive_data_occurrences_availability/5,
+         get_sensitivity_inspection_template/2,
+         get_sensitivity_inspection_template/4,
+         get_sensitivity_inspection_template/5,
          get_usage_statistics/2,
          get_usage_statistics/3,
          get_usage_totals/1,
@@ -120,6 +132,9 @@
          list_allow_lists/4,
          list_classification_jobs/2,
          list_classification_jobs/3,
+         list_classification_scopes/1,
+         list_classification_scopes/3,
+         list_classification_scopes/4,
          list_custom_data_identifiers/2,
          list_custom_data_identifiers/3,
          list_findings/2,
@@ -138,6 +153,15 @@
          list_organization_admin_accounts/1,
          list_organization_admin_accounts/3,
          list_organization_admin_accounts/4,
+         list_resource_profile_artifacts/2,
+         list_resource_profile_artifacts/4,
+         list_resource_profile_artifacts/5,
+         list_resource_profile_detections/2,
+         list_resource_profile_detections/4,
+         list_resource_profile_detections/5,
+         list_sensitivity_inspection_templates/1,
+         list_sensitivity_inspection_templates/3,
+         list_sensitivity_inspection_templates/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -155,8 +179,12 @@
          untag_resource/4,
          update_allow_list/3,
          update_allow_list/4,
+         update_automated_discovery_configuration/2,
+         update_automated_discovery_configuration/3,
          update_classification_job/3,
          update_classification_job/4,
+         update_classification_scope/3,
+         update_classification_scope/4,
          update_findings_filter/3,
          update_findings_filter/4,
          update_macie_session/2,
@@ -165,8 +193,14 @@
          update_member_session/4,
          update_organization_configuration/2,
          update_organization_configuration/3,
+         update_resource_profile/2,
+         update_resource_profile/3,
+         update_resource_profile_detections/2,
+         update_resource_profile_detections/3,
          update_reveal_configuration/2,
-         update_reveal_configuration/3]).
+         update_reveal_configuration/3,
+         update_sensitivity_inspection_template/3,
+         update_sensitivity_inspection_template/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -527,7 +561,7 @@ delete_member(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves (queries) statistical data and other information about one
-%% or more S3 buckets that Amazon Macie monitors and analyzes.
+%% or more S3 buckets that Amazon Macie monitors and analyzes for an account.
 describe_buckets(Client, Input) ->
     describe_buckets(Client, Input, []).
 describe_buckets(Client, Input0, Options0) ->
@@ -816,8 +850,32 @@ get_allow_list(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves (queries) aggregated statistical data about S3 buckets that
-%% Amazon Macie monitors and analyzes.
+%% @doc Retrieves the configuration settings and status of automated
+%% sensitive data discovery for an account.
+get_automated_discovery_configuration(Client)
+  when is_map(Client) ->
+    get_automated_discovery_configuration(Client, #{}, #{}).
+
+get_automated_discovery_configuration(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_automated_discovery_configuration(Client, QueryMap, HeadersMap, []).
+
+get_automated_discovery_configuration(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/automated-discovery/configuration"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves (queries) aggregated statistical data about all the S3
+%% buckets that Amazon Macie monitors and analyzes for an account.
 get_bucket_statistics(Client, Input) ->
     get_bucket_statistics(Client, Input, []).
 get_bucket_statistics(Client, Input0, Options0) ->
@@ -853,6 +911,29 @@ get_classification_export_configuration(Client, QueryMap, HeadersMap)
 get_classification_export_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/classification-export-configuration"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the classification scope settings for an account.
+get_classification_scope(Client, Id)
+  when is_map(Client) ->
+    get_classification_scope(Client, Id, #{}, #{}).
+
+get_classification_scope(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_classification_scope(Client, Id, QueryMap, HeadersMap, []).
+
+get_classification_scope(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/classification-scopes/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1005,8 +1086,8 @@ get_invitations_count(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the current status and configuration settings for an Amazon
-%% Macie account.
+%% @doc Retrieves the status and configuration settings for an Amazon Macie
+%% account.
 get_macie_session(Client)
   when is_map(Client) ->
     get_macie_session(Client, #{}, #{}).
@@ -1079,6 +1160,34 @@ get_member(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves (queries) sensitive data discovery statistics and the
+%% sensitivity score for an S3 bucket.
+get_resource_profile(Client, ResourceArn)
+  when is_map(Client) ->
+    get_resource_profile(Client, ResourceArn, #{}, #{}).
+
+get_resource_profile(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resource_profile(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+get_resource_profile(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/resource-profiles"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"resourceArn">>, ResourceArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves the status and configuration settings for retrieving
 %% occurrences of sensitive data reported by findings.
 get_reveal_configuration(Client)
@@ -1139,6 +1248,30 @@ get_sensitive_data_occurrences_availability(Client, FindingId, QueryMap, Headers
 get_sensitive_data_occurrences_availability(Client, FindingId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/findings/", aws_util:encode_uri(FindingId), "/reveal/availability"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the settings for the sensitivity inspection template for an
+%% account.
+get_sensitivity_inspection_template(Client, Id)
+  when is_map(Client) ->
+    get_sensitivity_inspection_template(Client, Id, #{}, #{}).
+
+get_sensitivity_inspection_template(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_sensitivity_inspection_template(Client, Id, QueryMap, HeadersMap, []).
+
+get_sensitivity_inspection_template(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/templates/sensitivity-inspections/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1253,6 +1386,35 @@ list_classification_jobs(Client, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves a subset of information about the classification scope for
+%% an account.
+list_classification_scopes(Client)
+  when is_map(Client) ->
+    list_classification_scopes(Client, #{}, #{}).
+
+list_classification_scopes(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_classification_scopes(Client, QueryMap, HeadersMap, []).
+
+list_classification_scopes(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/classification-scopes"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a subset of information about all the custom data
 %% identifiers for an account.
@@ -1426,6 +1588,94 @@ list_organization_admin_accounts(Client, QueryMap, HeadersMap)
 list_organization_admin_accounts(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/admin"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about objects that were selected from an S3
+%% bucket for automated sensitive data discovery.
+list_resource_profile_artifacts(Client, ResourceArn)
+  when is_map(Client) ->
+    list_resource_profile_artifacts(Client, ResourceArn, #{}, #{}).
+
+list_resource_profile_artifacts(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_resource_profile_artifacts(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_resource_profile_artifacts(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/resource-profiles/artifacts"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resourceArn">>, ResourceArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about the types and amount of sensitive data
+%% that Amazon Macie found in an S3 bucket.
+list_resource_profile_detections(Client, ResourceArn)
+  when is_map(Client) ->
+    list_resource_profile_detections(Client, ResourceArn, #{}, #{}).
+
+list_resource_profile_detections(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_resource_profile_detections(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+list_resource_profile_detections(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/resource-profiles/detections"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resourceArn">>, ResourceArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a subset of information about the sensitivity inspection
+%% template for an account.
+list_sensitivity_inspection_templates(Client)
+  when is_map(Client) ->
+    list_sensitivity_inspection_templates(Client, #{}, #{}).
+
+list_sensitivity_inspection_templates(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_sensitivity_inspection_templates(Client, QueryMap, HeadersMap, []).
+
+list_sensitivity_inspection_templates(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/templates/sensitivity-inspections"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1633,12 +1883,59 @@ update_allow_list(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Enables or disables automated sensitive data discovery for an
+%% account.
+update_automated_discovery_configuration(Client, Input) ->
+    update_automated_discovery_configuration(Client, Input, []).
+update_automated_discovery_configuration(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/automated-discovery/configuration"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Changes the status of a classification job.
 update_classification_job(Client, JobId, Input) ->
     update_classification_job(Client, JobId, Input, []).
 update_classification_job(Client, JobId, Input0, Options0) ->
     Method = patch,
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the classification scope settings for an account.
+update_classification_scope(Client, Id, Input) ->
+    update_classification_scope(Client, Id, Input, []).
+update_classification_scope(Client, Id, Input0, Options0) ->
+    Method = patch,
+    Path = ["/classification-scopes/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1751,6 +2048,54 @@ update_organization_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the sensitivity score for an S3 bucket.
+update_resource_profile(Client, Input) ->
+    update_resource_profile(Client, Input, []).
+update_resource_profile(Client, Input0, Options0) ->
+    Method = patch,
+    Path = ["/resource-profiles"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"resourceArn">>, <<"resourceArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the sensitivity scoring settings for an S3 bucket.
+update_resource_profile_detections(Client, Input) ->
+    update_resource_profile_detections(Client, Input, []).
+update_resource_profile_detections(Client, Input0, Options0) ->
+    Method = patch,
+    Path = ["/resource-profiles/detections"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"resourceArn">>, <<"resourceArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates the status and configuration settings for retrieving
 %% occurrences of sensitive data reported by findings.
 update_reveal_configuration(Client, Input) ->
@@ -1758,6 +2103,30 @@ update_reveal_configuration(Client, Input) ->
 update_reveal_configuration(Client, Input0, Options0) ->
     Method = put,
     Path = ["/reveal-configuration"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the settings for the sensitivity inspection template for an
+%% account.
+update_sensitivity_inspection_template(Client, Id, Input) ->
+    update_sensitivity_inspection_template(Client, Id, Input, []).
+update_sensitivity_inspection_template(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/templates/sensitivity-inspections/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

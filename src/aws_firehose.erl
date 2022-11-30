@@ -5,8 +5,8 @@
 %%
 %% Amazon Kinesis Data Firehose is a fully managed service that delivers
 %% real-time streaming data to destinations such as Amazon Simple Storage
-%% Service (Amazon S3), Amazon Elasticsearch Service (Amazon ES), Amazon
-%% Redshift, and Splunk.
+%% Service (Amazon S3), Amazon OpenSearch Service, Amazon Redshift, Splunk,
+%% and various other supportd destinations.
 -module(aws_firehose).
 
 -export([create_delivery_stream/2,
@@ -42,7 +42,8 @@
 
 %% @doc Creates a Kinesis Data Firehose delivery stream.
 %%
-%% By default, you can create up to 50 delivery streams per AWS Region.
+%% By default, you can create up to 50 delivery streams per Amazon Web
+%% Services Region.
 %%
 %% This is an asynchronous operation that immediately returns. The initial
 %% status of the delivery stream is `CREATING'. After the delivery stream is
@@ -395,13 +396,13 @@ stop_delivery_stream_encryption(Client, Input, Options)
 
 %% @doc Adds or updates tags for the specified delivery stream.
 %%
-%% A tag is a key-value pair that you can define and assign to AWS resources.
-%% If you specify a tag that already exists, the tag value is replaced with
-%% the value that you specify in the request. Tags are metadata. For example,
-%% you can add friendly names and descriptions or other types of information
-%% that can help you distinguish the delivery stream. For more information
-%% about tags, see Using Cost Allocation Tags in the AWS Billing and Cost
-%% Management User Guide.
+%% A tag is a key-value pair that you can define and assign to Amazon Web
+%% Services resources. If you specify a tag that already exists, the tag
+%% value is replaced with the value that you specify in the request. Tags are
+%% metadata. For example, you can add friendly names and descriptions or
+%% other types of information that can help you distinguish the delivery
+%% stream. For more information about tags, see Using Cost Allocation Tags in
+%% the Amazon Web Services Billing and Cost Management User Guide.
 %%
 %% Each delivery stream can have up to 50 tags.
 %%

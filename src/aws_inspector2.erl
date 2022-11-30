@@ -242,7 +242,7 @@ delete_filter(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Describe Amazon Inspector configuration settings for an Amazon Web
-%% Services organization
+%% Services organization.
 describe_organization_configuration(Client, Input) ->
     describe_organization_configuration(Client, Input, []).
 describe_organization_configuration(Client, Input0, Options0) ->

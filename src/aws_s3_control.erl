@@ -95,6 +95,9 @@
          get_multi_region_access_point_policy_status/3,
          get_multi_region_access_point_policy_status/5,
          get_multi_region_access_point_policy_status/6,
+         get_multi_region_access_point_routes/3,
+         get_multi_region_access_point_routes/5,
+         get_multi_region_access_point_routes/6,
          get_public_access_block/2,
          get_public_access_block/4,
          get_public_access_block/5,
@@ -146,6 +149,8 @@
          put_storage_lens_configuration/4,
          put_storage_lens_configuration_tagging/3,
          put_storage_lens_configuration_tagging/4,
+         submit_multi_region_access_point_routes/3,
+         submit_multi_region_access_point_routes/4,
          update_job_priority/3,
          update_job_priority/4,
          update_job_status/3,
@@ -1727,7 +1732,7 @@ get_multi_region_access_point(Client, Name, AccountId, QueryMap, HeadersMap)
 
 get_multi_region_access_point(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/v20180820/mrap/instances/", aws_util:encode_uri(Name), ""],
+    Path = ["/v20180820/mrap/instances/", aws_util:encode_multi_segment_uri(Name), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1768,7 +1773,7 @@ get_multi_region_access_point_policy(Client, Name, AccountId, QueryMap, HeadersM
 
 get_multi_region_access_point_policy(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/v20180820/mrap/instances/", aws_util:encode_uri(Name), "/policy"],
+    Path = ["/v20180820/mrap/instances/", aws_util:encode_multi_segment_uri(Name), "/policy"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1810,7 +1815,52 @@ get_multi_region_access_point_policy_status(Client, Name, AccountId, QueryMap, H
 
 get_multi_region_access_point_policy_status(Client, Name, AccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/v20180820/mrap/instances/", aws_util:encode_uri(Name), "/policystatus"],
+    Path = ["/v20180820/mrap/instances/", aws_util:encode_multi_segment_uri(Name), "/policystatus"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers0 =
+      [
+        {<<"x-amz-account-id">>, AccountId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the routing configuration for a Multi-Region Access Point,
+%% indicating which Regions are active or passive.
+%%
+%% To obtain routing control changes and failover requests, use the Amazon S3
+%% failover control infrastructure endpoints in these five Amazon Web
+%% Services Regions:
+%%
+%% <ul> <li> `us-east-1'
+%%
+%% </li> <li> `us-west-2'
+%%
+%% </li> <li> `ap-southeast-2'
+%%
+%% </li> <li> `ap-northeast-1'
+%%
+%% </li> <li> `eu-west-1'
+%%
+%% </li> </ul> Your Amazon S3 bucket does not need to be in these five
+%% Regions.
+get_multi_region_access_point_routes(Client, Mrap, AccountId)
+  when is_map(Client) ->
+    get_multi_region_access_point_routes(Client, Mrap, AccountId, #{}, #{}).
+
+get_multi_region_access_point_routes(Client, Mrap, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_multi_region_access_point_routes(Client, Mrap, AccountId, QueryMap, HeadersMap, []).
+
+get_multi_region_access_point_routes(Client, Mrap, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v20180820/mrap/instances/", aws_util:encode_multi_segment_uri(Mrap), "/routes"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2826,6 +2876,65 @@ put_storage_lens_configuration_tagging(Client, ConfigId, Input) ->
 put_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options0) ->
     Method = put,
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), "/tagging"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Submits an updated route configuration for a Multi-Region Access
+%% Point.
+%%
+%% This API operation updates the routing status for the specified Regions
+%% from active to passive, or from passive to active. A value of `0'
+%% indicates a passive status, which means that traffic won't be routed to
+%% the specified Region. A value of `100' indicates an active status, which
+%% means that traffic will be routed to the specified Region. At least one
+%% Region must be active at all times.
+%%
+%% When the routing configuration is changed, any in-progress operations
+%% (uploads, copies, deletes, and so on) to formerly active Regions will
+%% continue to run to their final completion state (success or failure). The
+%% routing configurations of any Regions that aren’t specified remain
+%% unchanged.
+%%
+%% Updated routing configurations might not be immediately applied. It can
+%% take up to 2 minutes for your changes to take effect.
+%%
+%% To submit routing control changes and failover requests, use the Amazon S3
+%% failover control infrastructure endpoints in these five Amazon Web
+%% Services Regions:
+%%
+%% <ul> <li> `us-east-1'
+%%
+%% </li> <li> `us-west-2'
+%%
+%% </li> <li> `ap-southeast-2'
+%%
+%% </li> <li> `ap-northeast-1'
+%%
+%% </li> <li> `eu-west-1'
+%%
+%% </li> </ul> Your Amazon S3 bucket does not need to be in these five
+%% Regions.
+submit_multi_region_access_point_routes(Client, Mrap, Input) ->
+    submit_multi_region_access_point_routes(Client, Mrap, Input, []).
+submit_multi_region_access_point_routes(Client, Mrap, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v20180820/mrap/instances/", aws_util:encode_multi_segment_uri(Mrap), "/routes"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

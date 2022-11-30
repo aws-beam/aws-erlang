@@ -493,7 +493,10 @@ describe_addon(Client, AddonName, ClusterName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes the Kubernetes versions that the add-on can be used with.
+%% @doc Describes the versions for an add-on.
+%%
+%% Information such as the Kubernetes versions that you can use the add-on
+%% with, the `owner', `publisher', and the `type' of the add-on are returned.
 describe_addon_versions(Client)
   when is_map(Client) ->
     describe_addon_versions(Client, #{}, #{}).
@@ -517,7 +520,10 @@ describe_addon_versions(Client, QueryMap, HeadersMap, Options0)
         {<<"addonName">>, maps:get(<<"addonName">>, QueryMap, undefined)},
         {<<"kubernetesVersion">>, maps:get(<<"kubernetesVersion">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
-        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"owners">>, maps:get(<<"owners">>, QueryMap, undefined)},
+        {<<"publishers">>, maps:get(<<"publishers">>, QueryMap, undefined)},
+        {<<"types">>, maps:get(<<"types">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

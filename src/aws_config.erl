@@ -148,6 +148,8 @@
          get_organization_custom_rule_policy/3,
          get_resource_config_history/2,
          get_resource_config_history/3,
+         get_resource_evaluation_summary/2,
+         get_resource_evaluation_summary/3,
          get_stored_query/2,
          get_stored_query/3,
          list_aggregate_discovered_resources/2,
@@ -156,6 +158,8 @@
          list_conformance_pack_compliance_scores/3,
          list_discovered_resources/2,
          list_discovered_resources/3,
+         list_resource_evaluations/2,
+         list_resource_evaluations/3,
          list_stored_queries/2,
          list_stored_queries/3,
          list_tags_for_resource/2,
@@ -200,6 +204,8 @@
          start_configuration_recorder/3,
          start_remediation_execution/2,
          start_remediation_execution/3,
+         start_resource_evaluation/2,
+         start_resource_evaluation/3,
          stop_configuration_recorder/2,
          stop_configuration_recorder/3,
          tag_resource/2,
@@ -938,8 +944,8 @@ get_compliance_details_by_config_rule(Client, Input, Options)
 %% resource.
 %%
 %% The results indicate which Config rules were used to evaluate the
-%% resource, when each rule was last used, and whether the resource complies
-%% with each rule.
+%% resource, when each rule was last invoked, and whether the resource
+%% complies with each rule.
 get_compliance_details_by_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compliance_details_by_resource(Client, Input, []).
@@ -1090,6 +1096,20 @@ get_resource_config_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourceConfigHistory">>, Input, Options).
 
+%% @doc Returns a summary of resource evaluation for the specified resource
+%% evaluation ID from the proactive rules that were run.
+%%
+%% The results indicate which evaluation context was used to evaluate the
+%% rules, which resource details were evaluated, the evaluation mode that was
+%% run, and whether the resource details comply with the configuration of the
+%% proactive rules.
+get_resource_evaluation_summary(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_resource_evaluation_summary(Client, Input, []).
+get_resource_evaluation_summary(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetResourceEvaluationSummary">>, Input, Options).
+
 %% @doc Returns the details of a specific stored query.
 get_stored_query(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1159,6 +1179,14 @@ list_discovered_resources(Client, Input)
 list_discovered_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDiscoveredResources">>, Input, Options).
+
+%% @doc Returns a list of proactive resource evaluations.
+list_resource_evaluations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_resource_evaluations(Client, Input, []).
+list_resource_evaluations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListResourceEvaluations">>, Input, Options).
 
 %% @doc Lists the stored queries for a single Amazon Web Services account and
 %% a single Amazon Web Services Region.
@@ -1483,6 +1511,9 @@ put_remediation_configurations(Client, Input, Options)
 %% Config generates a remediation exception when a problem occurs executing a
 %% remediation action to a specific resource. Remediation exceptions blocks
 %% auto-remediation until the exception is cleared.
+%%
+%% To place an exception on an Amazon Web Services resource, ensure
+%% remediation is set as manual remediation.
 put_remediation_exceptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_remediation_exceptions(Client, Input, []).
@@ -1654,6 +1685,23 @@ start_remediation_execution(Client, Input)
 start_remediation_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartRemediationExecution">>, Input, Options).
+
+%% @doc Runs an on-demand evaluation for the specified resource to determine
+%% whether the resource details will comply with configured Config rules.
+%%
+%% You can also use it for evaluation purposes. Config recommends using an
+%% evaluation context. It runs an execution against the resource details with
+%% all of the Config rules in your account that match with the specified
+%% proactive mode and resource type.
+%%
+%% Ensure you have the `cloudformation:DescribeType' role setup to validate
+%% the resource type schema.
+start_resource_evaluation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_resource_evaluation(Client, Input, []).
+start_resource_evaluation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartResourceEvaluation">>, Input, Options).
 
 %% @doc Stops recording configurations of the Amazon Web Services resources
 %% you have selected to record in your Amazon Web Services account.
