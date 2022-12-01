@@ -22,6 +22,8 @@
          batch_get_crawlers/3,
          batch_get_custom_entity_types/2,
          batch_get_custom_entity_types/3,
+         batch_get_data_quality_result/2,
+         batch_get_data_quality_result/3,
          batch_get_dev_endpoints/2,
          batch_get_dev_endpoints/3,
          batch_get_jobs/2,
@@ -36,6 +38,10 @@
          batch_stop_job_run/3,
          batch_update_partition/2,
          batch_update_partition/3,
+         cancel_data_quality_rule_recommendation_run/2,
+         cancel_data_quality_rule_recommendation_run/3,
+         cancel_data_quality_ruleset_evaluation_run/2,
+         cancel_data_quality_ruleset_evaluation_run/3,
          cancel_ml_task_run/2,
          cancel_ml_task_run/3,
          cancel_statement/2,
@@ -52,6 +58,8 @@
          create_crawler/3,
          create_custom_entity_type/2,
          create_custom_entity_type/3,
+         create_data_quality_ruleset/2,
+         create_data_quality_ruleset/3,
          create_database/2,
          create_database/3,
          create_dev_endpoint/2,
@@ -96,6 +104,8 @@
          delete_crawler/3,
          delete_custom_entity_type/2,
          delete_custom_entity_type/3,
+         delete_data_quality_ruleset/2,
+         delete_data_quality_ruleset/3,
          delete_database/2,
          delete_database/3,
          delete_dev_endpoint/2,
@@ -160,6 +170,14 @@
          get_custom_entity_type/3,
          get_data_catalog_encryption_settings/2,
          get_data_catalog_encryption_settings/3,
+         get_data_quality_result/2,
+         get_data_quality_result/3,
+         get_data_quality_rule_recommendation_run/2,
+         get_data_quality_rule_recommendation_run/3,
+         get_data_quality_ruleset/2,
+         get_data_quality_ruleset/3,
+         get_data_quality_ruleset_evaluation_run/2,
+         get_data_quality_ruleset_evaluation_run/3,
          get_database/2,
          get_database/3,
          get_databases/2,
@@ -262,6 +280,14 @@
          list_crawls/3,
          list_custom_entity_types/2,
          list_custom_entity_types/3,
+         list_data_quality_results/2,
+         list_data_quality_results/3,
+         list_data_quality_rule_recommendation_runs/2,
+         list_data_quality_rule_recommendation_runs/3,
+         list_data_quality_ruleset_evaluation_runs/2,
+         list_data_quality_ruleset_evaluation_runs/3,
+         list_data_quality_rulesets/2,
+         list_data_quality_rulesets/3,
          list_dev_endpoints/2,
          list_dev_endpoints/3,
          list_jobs/2,
@@ -310,6 +336,10 @@
          start_crawler/3,
          start_crawler_schedule/2,
          start_crawler_schedule/3,
+         start_data_quality_rule_recommendation_run/2,
+         start_data_quality_rule_recommendation_run/3,
+         start_data_quality_ruleset_evaluation_run/2,
+         start_data_quality_ruleset_evaluation_run/3,
          start_export_labels_task_run/2,
          start_export_labels_task_run/3,
          start_import_labels_task_run/2,
@@ -352,6 +382,8 @@
          update_crawler/3,
          update_crawler_schedule/2,
          update_crawler_schedule/3,
+         update_data_quality_ruleset/2,
+         update_data_quality_ruleset/3,
          update_database/2,
          update_database/3,
          update_dev_endpoint/2,
@@ -466,6 +498,15 @@ batch_get_custom_entity_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetCustomEntityTypes">>, Input, Options).
 
+%% @doc Retrieves a list of data quality results for the specified result
+%% IDs.
+batch_get_data_quality_result(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_data_quality_result(Client, Input, []).
+batch_get_data_quality_result(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetDataQualityResult">>, Input, Options).
+
 %% @doc Returns a list of resource metadata for a given list of development
 %% endpoint names.
 %%
@@ -544,6 +585,24 @@ batch_update_partition(Client, Input)
 batch_update_partition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchUpdatePartition">>, Input, Options).
+
+%% @doc Cancels the specified recommendation run that was being used to
+%% generate rules.
+cancel_data_quality_rule_recommendation_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_data_quality_rule_recommendation_run(Client, Input, []).
+cancel_data_quality_rule_recommendation_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelDataQualityRuleRecommendationRun">>, Input, Options).
+
+%% @doc Cancels a run where a ruleset is being evaluated against a data
+%% source.
+cancel_data_quality_ruleset_evaluation_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_data_quality_ruleset_evaluation_run(Client, Input, []).
+cancel_data_quality_ruleset_evaluation_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelDataQualityRulesetEvaluationRun">>, Input, Options).
 
 %% @doc Cancels (stops) a task run.
 %%
@@ -630,6 +689,18 @@ create_custom_entity_type(Client, Input)
 create_custom_entity_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCustomEntityType">>, Input, Options).
+
+%% @doc Creates a data quality ruleset with DQDL rules applied to a specified
+%% Glue table.
+%%
+%% You create the ruleset using the Data Quality Definition Language (DQDL).
+%% For more information, see the Glue developer guide.
+create_data_quality_ruleset(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_data_quality_ruleset(Client, Input, []).
+create_data_quality_ruleset(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateDataQualityRuleset">>, Input, Options).
 
 %% @doc Creates a new database in a Data Catalog.
 create_database(Client, Input)
@@ -847,6 +918,14 @@ delete_custom_entity_type(Client, Input)
 delete_custom_entity_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCustomEntityType">>, Input, Options).
+
+%% @doc Deletes a data quality ruleset.
+delete_data_quality_ruleset(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_data_quality_ruleset(Client, Input, []).
+delete_data_quality_ruleset(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDataQualityRuleset">>, Input, Options).
 
 %% @doc Removes a specified database from a Data Catalog.
 %%
@@ -1172,6 +1251,40 @@ get_data_catalog_encryption_settings(Client, Input)
 get_data_catalog_encryption_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDataCatalogEncryptionSettings">>, Input, Options).
+
+%% @doc Retrieves the result of a data quality rule evaluation.
+get_data_quality_result(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_data_quality_result(Client, Input, []).
+get_data_quality_result(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDataQualityResult">>, Input, Options).
+
+%% @doc Gets the specified recommendation run that was used to generate
+%% rules.
+get_data_quality_rule_recommendation_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_data_quality_rule_recommendation_run(Client, Input, []).
+get_data_quality_rule_recommendation_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDataQualityRuleRecommendationRun">>, Input, Options).
+
+%% @doc Returns an existing ruleset by identifier or name.
+get_data_quality_ruleset(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_data_quality_ruleset(Client, Input, []).
+get_data_quality_ruleset(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDataQualityRuleset">>, Input, Options).
+
+%% @doc Retrieves a specific run where a ruleset is evaluated against a data
+%% source.
+get_data_quality_ruleset_evaluation_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_data_quality_ruleset_evaluation_run(Client, Input, []).
+get_data_quality_ruleset_evaluation_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDataQualityRulesetEvaluationRun">>, Input, Options).
 
 %% @doc Retrieves the definition of a specified database.
 get_database(Client, Input)
@@ -1680,6 +1793,40 @@ list_custom_entity_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCustomEntityTypes">>, Input, Options).
 
+%% @doc Returns all data quality execution results for your account.
+list_data_quality_results(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_data_quality_results(Client, Input, []).
+list_data_quality_results(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDataQualityResults">>, Input, Options).
+
+%% @doc Lists the recommendation runs meeting the filter criteria.
+list_data_quality_rule_recommendation_runs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_data_quality_rule_recommendation_runs(Client, Input, []).
+list_data_quality_rule_recommendation_runs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDataQualityRuleRecommendationRuns">>, Input, Options).
+
+%% @doc Lists all the runs meeting the filter criteria, where a ruleset is
+%% evaluated against a data source.
+list_data_quality_ruleset_evaluation_runs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_data_quality_ruleset_evaluation_runs(Client, Input, []).
+list_data_quality_ruleset_evaluation_runs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDataQualityRulesetEvaluationRuns">>, Input, Options).
+
+%% @doc Returns a paginated list of rulesets for the specified list of Glue
+%% tables.
+list_data_quality_rulesets(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_data_quality_rulesets(Client, Input, []).
+list_data_quality_rulesets(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDataQualityRulesets">>, Input, Options).
+
 %% @doc Retrieves the names of all `DevEndpoint' resources in this Amazon Web
 %% Services account, or the resources with the specified tag.
 %%
@@ -1975,6 +2122,32 @@ start_crawler_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartCrawlerSchedule">>, Input, Options).
 
+%% @doc Starts a recommendation run that is used to generate rules when you
+%% don't know what rules to write.
+%%
+%% Glue Data Quality analyzes the data and comes up with recommendations for
+%% a potential ruleset. You can then triage the ruleset and modify the
+%% generated ruleset to your liking.
+start_data_quality_rule_recommendation_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_data_quality_rule_recommendation_run(Client, Input, []).
+start_data_quality_rule_recommendation_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartDataQualityRuleRecommendationRun">>, Input, Options).
+
+%% @doc Once you have a ruleset definition (either recommended or your own),
+%% you call this operation to evaluate the ruleset against a data source
+%% (Glue table).
+%%
+%% The evaluation computes results which you can retrieve with the
+%% `GetDataQualityResult' API.
+start_data_quality_ruleset_evaluation_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_data_quality_ruleset_evaluation_run(Client, Input, []).
+start_data_quality_ruleset_evaluation_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartDataQualityRulesetEvaluationRun">>, Input, Options).
+
 %% @doc Begins an asynchronous task to export all labeled data for a
 %% particular transform.
 %%
@@ -2221,6 +2394,14 @@ update_crawler_schedule(Client, Input)
 update_crawler_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCrawlerSchedule">>, Input, Options).
+
+%% @doc Updates the specified data quality ruleset.
+update_data_quality_ruleset(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_data_quality_ruleset(Client, Input, []).
+update_data_quality_ruleset(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDataQualityRuleset">>, Input, Options).
 
 %% @doc Updates an existing database definition in a Data Catalog.
 update_database(Client, Input)

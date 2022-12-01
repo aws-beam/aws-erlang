@@ -60,6 +60,8 @@
          create_feature_group/3,
          create_flow_definition/2,
          create_flow_definition/3,
+         create_hub/2,
+         create_hub/3,
          create_human_task_ui/2,
          create_human_task_ui/3,
          create_hyper_parameter_tuning_job/2,
@@ -68,6 +70,8 @@
          create_image/3,
          create_image_version/2,
          create_image_version/3,
+         create_inference_experiment/2,
+         create_inference_experiment/3,
          create_inference_recommendations_job/2,
          create_inference_recommendations_job/3,
          create_labeling_job/2,
@@ -76,6 +80,10 @@
          create_model/3,
          create_model_bias_job_definition/2,
          create_model_bias_job_definition/3,
+         create_model_card/2,
+         create_model_card/3,
+         create_model_card_export_job/2,
+         create_model_card_export_job/3,
          create_model_explainability_job_definition/2,
          create_model_explainability_job_definition/3,
          create_model_package/2,
@@ -100,6 +108,8 @@
          create_processing_job/3,
          create_project/2,
          create_project/3,
+         create_space/2,
+         create_space/3,
          create_studio_lifecycle_config/2,
          create_studio_lifecycle_config/3,
          create_training_job/2,
@@ -152,16 +162,24 @@
          delete_feature_group/3,
          delete_flow_definition/2,
          delete_flow_definition/3,
+         delete_hub/2,
+         delete_hub/3,
+         delete_hub_content/2,
+         delete_hub_content/3,
          delete_human_task_ui/2,
          delete_human_task_ui/3,
          delete_image/2,
          delete_image/3,
          delete_image_version/2,
          delete_image_version/3,
+         delete_inference_experiment/2,
+         delete_inference_experiment/3,
          delete_model/2,
          delete_model/3,
          delete_model_bias_job_definition/2,
          delete_model_bias_job_definition/3,
+         delete_model_card/2,
+         delete_model_card/3,
          delete_model_explainability_job_definition/2,
          delete_model_explainability_job_definition/3,
          delete_model_package/2,
@@ -182,6 +200,8 @@
          delete_pipeline/3,
          delete_project/2,
          delete_project/3,
+         delete_space/2,
+         delete_space/3,
          delete_studio_lifecycle_config/2,
          delete_studio_lifecycle_config/3,
          delete_tags/2,
@@ -240,6 +260,10 @@
          describe_feature_metadata/3,
          describe_flow_definition/2,
          describe_flow_definition/3,
+         describe_hub/2,
+         describe_hub/3,
+         describe_hub_content/2,
+         describe_hub_content/3,
          describe_human_task_ui/2,
          describe_human_task_ui/3,
          describe_hyper_parameter_tuning_job/2,
@@ -248,6 +272,8 @@
          describe_image/3,
          describe_image_version/2,
          describe_image_version/3,
+         describe_inference_experiment/2,
+         describe_inference_experiment/3,
          describe_inference_recommendations_job/2,
          describe_inference_recommendations_job/3,
          describe_labeling_job/2,
@@ -258,6 +284,10 @@
          describe_model/3,
          describe_model_bias_job_definition/2,
          describe_model_bias_job_definition/3,
+         describe_model_card/2,
+         describe_model_card/3,
+         describe_model_card_export_job/2,
+         describe_model_card_export_job/3,
          describe_model_explainability_job_definition/2,
          describe_model_explainability_job_definition/3,
          describe_model_package/2,
@@ -282,6 +312,8 @@
          describe_processing_job/3,
          describe_project/2,
          describe_project/3,
+         describe_space/2,
+         describe_space/3,
          describe_studio_lifecycle_config/2,
          describe_studio_lifecycle_config/3,
          describe_subscribed_workteam/2,
@@ -316,6 +348,8 @@
          get_sagemaker_servicecatalog_portfolio_status/3,
          get_search_suggestions/2,
          get_search_suggestions/3,
+         import_hub_content/2,
+         import_hub_content/3,
          list_actions/2,
          list_actions/3,
          list_algorithms/2,
@@ -360,6 +394,12 @@
          list_feature_groups/3,
          list_flow_definitions/2,
          list_flow_definitions/3,
+         list_hub_content_versions/2,
+         list_hub_content_versions/3,
+         list_hub_contents/2,
+         list_hub_contents/3,
+         list_hubs/2,
+         list_hubs/3,
          list_human_task_uis/2,
          list_human_task_uis/3,
          list_hyper_parameter_tuning_jobs/2,
@@ -368,6 +408,8 @@
          list_image_versions/3,
          list_images/2,
          list_images/3,
+         list_inference_experiments/2,
+         list_inference_experiments/3,
          list_inference_recommendations_job_steps/2,
          list_inference_recommendations_job_steps/3,
          list_inference_recommendations_jobs/2,
@@ -380,6 +422,12 @@
          list_lineage_groups/3,
          list_model_bias_job_definitions/2,
          list_model_bias_job_definitions/3,
+         list_model_card_export_jobs/2,
+         list_model_card_export_jobs/3,
+         list_model_card_versions/2,
+         list_model_card_versions/3,
+         list_model_cards/2,
+         list_model_cards/3,
          list_model_explainability_job_definitions/2,
          list_model_explainability_job_definitions/3,
          list_model_metadata/2,
@@ -392,6 +440,10 @@
          list_model_quality_job_definitions/3,
          list_models/2,
          list_models/3,
+         list_monitoring_alert_history/2,
+         list_monitoring_alert_history/3,
+         list_monitoring_alerts/2,
+         list_monitoring_alerts/3,
          list_monitoring_executions/2,
          list_monitoring_executions/3,
          list_monitoring_schedules/2,
@@ -412,6 +464,8 @@
          list_processing_jobs/3,
          list_projects/2,
          list_projects/3,
+         list_spaces/2,
+         list_spaces/3,
          list_stage_devices/2,
          list_stage_devices/3,
          list_studio_lifecycle_configs/2,
@@ -454,6 +508,8 @@
          send_pipeline_execution_step_success/3,
          start_edge_deployment_stage/2,
          start_edge_deployment_stage/3,
+         start_inference_experiment/2,
+         start_inference_experiment/3,
          start_monitoring_schedule/2,
          start_monitoring_schedule/3,
          start_notebook_instance/2,
@@ -470,6 +526,8 @@
          stop_edge_packaging_job/3,
          stop_hyper_parameter_tuning_job/2,
          stop_hyper_parameter_tuning_job/3,
+         stop_inference_experiment/2,
+         stop_inference_experiment/3,
          stop_inference_recommendations_job/2,
          stop_inference_recommendations_job/3,
          stop_labeling_job/2,
@@ -512,10 +570,18 @@
          update_feature_group/3,
          update_feature_metadata/2,
          update_feature_metadata/3,
+         update_hub/2,
+         update_hub/3,
          update_image/2,
          update_image/3,
+         update_inference_experiment/2,
+         update_inference_experiment/3,
+         update_model_card/2,
+         update_model_card/3,
          update_model_package/2,
          update_model_package/3,
+         update_monitoring_alert/2,
+         update_monitoring_alert/3,
          update_monitoring_schedule/2,
          update_monitoring_schedule/3,
          update_notebook_instance/2,
@@ -528,6 +594,8 @@
          update_pipeline_execution/3,
          update_project/2,
          update_project/3,
+         update_space/2,
+         update_space/3,
          update_training_job/2,
          update_training_job/3,
          update_trial/2,
@@ -1039,6 +1107,14 @@ create_flow_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFlowDefinition">>, Input, Options).
 
+%% @doc Create a hub.
+create_hub(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_hub(Client, Input, []).
+create_hub(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateHub">>, Input, Options).
+
 %% @doc Defines the settings you will use for the human review workflow user
 %% interface.
 %%
@@ -1097,6 +1173,27 @@ create_image_version(Client, Input)
 create_image_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateImageVersion">>, Input, Options).
+
+%% @doc Creates an inference experiment using the configurations specified in
+%% the request.
+%%
+%% Use this API to schedule an experiment to compare model variants on a
+%% Amazon SageMaker inference endpoint. For more information about inference
+%% experiments, see Shadow tests.
+%%
+%% Amazon SageMaker begins your experiment at the scheduled time and routes
+%% traffic to your endpoint's model variants based on your specified
+%% configuration.
+%%
+%% While the experiment is in progress or after it has concluded, you can
+%% view metrics that compare your model variants. For more information, see
+%% View, monitor, and edit shadow tests.
+create_inference_experiment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_inference_experiment(Client, Input, []).
+create_inference_experiment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateInferenceExperiment">>, Input, Options).
 
 %% @doc Starts a recommendation job.
 %%
@@ -1200,6 +1297,25 @@ create_model_bias_job_definition(Client, Input)
 create_model_bias_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateModelBiasJobDefinition">>, Input, Options).
+
+%% @doc Creates an Amazon SageMaker Model Card.
+%%
+%% For information about how to use model cards, see Amazon SageMaker Model
+%% Card.
+create_model_card(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_model_card(Client, Input, []).
+create_model_card(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateModelCard">>, Input, Options).
+
+%% @doc Creates an Amazon SageMaker Model Card export job.
+create_model_card_export_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_model_card_export_job(Client, Input, []).
+create_model_card_export_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateModelCardExportJob">>, Input, Options).
 
 %% @doc Creates the definition for a model explainability job.
 create_model_explainability_job_definition(Client, Input)
@@ -1425,6 +1541,14 @@ create_project(Client, Input)
 create_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProject">>, Input, Options).
+
+%% @doc Creates a space used for real time collaboration in a Domain.
+create_space(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_space(Client, Input, []).
+create_space(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateSpace">>, Input, Options).
 
 %% @doc Creates a new Studio Lifecycle Configuration.
 create_studio_lifecycle_config(Client, Input)
@@ -1827,6 +1951,22 @@ delete_flow_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFlowDefinition">>, Input, Options).
 
+%% @doc Delete a hub.
+delete_hub(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_hub(Client, Input, []).
+delete_hub(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteHub">>, Input, Options).
+
+%% @doc Delete the contents of a hub.
+delete_hub_content(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_hub_content(Client, Input, []).
+delete_hub_content(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteHubContent">>, Input, Options).
+
 %% @doc Use this operation to delete a human task user interface (worker task
 %% template).
 %%
@@ -1860,6 +2000,17 @@ delete_image_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteImageVersion">>, Input, Options).
 
+%% @doc Deletes an inference experiment.
+%%
+%% This operation does not delete your endpoint, variants, or any underlying
+%% resources. This operation only deletes the metadata of your experiment.
+delete_inference_experiment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_inference_experiment(Client, Input, []).
+delete_inference_experiment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteInferenceExperiment">>, Input, Options).
+
 %% @doc Deletes a model.
 %%
 %% The `DeleteModel' API deletes only the model entry that was created in
@@ -1880,6 +2031,14 @@ delete_model_bias_job_definition(Client, Input)
 delete_model_bias_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteModelBiasJobDefinition">>, Input, Options).
+
+%% @doc Deletes an Amazon SageMaker Model Card.
+delete_model_card(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_model_card(Client, Input, []).
+delete_model_card(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteModelCard">>, Input, Options).
 
 %% @doc Deletes an Amazon SageMaker model explainability job definition.
 delete_model_explainability_job_definition(Client, Input)
@@ -1978,6 +2137,14 @@ delete_project(Client, Input)
 delete_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProject">>, Input, Options).
+
+%% @doc Used to delete a space.
+delete_space(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_space(Client, Input, []).
+delete_space(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteSpace">>, Input, Options).
 
 %% @doc Deletes the Studio Lifecycle Configuration.
 %%
@@ -2258,6 +2425,22 @@ describe_flow_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFlowDefinition">>, Input, Options).
 
+%% @doc Describe a hub.
+describe_hub(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_hub(Client, Input, []).
+describe_hub(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeHub">>, Input, Options).
+
+%% @doc Describe the content of a hub.
+describe_hub_content(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_hub_content(Client, Input, []).
+describe_hub_content(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeHubContent">>, Input, Options).
+
 %% @doc Returns information about the requested human task user interface
 %% (worker task template).
 describe_human_task_ui(Client, Input)
@@ -2290,6 +2473,14 @@ describe_image_version(Client, Input)
 describe_image_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImageVersion">>, Input, Options).
+
+%% @doc Returns details about an inference experiment.
+describe_inference_experiment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_inference_experiment(Client, Input, []).
+describe_inference_experiment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeInferenceExperiment">>, Input, Options).
 
 %% @doc Provides the results of the Inference Recommender job.
 %%
@@ -2335,6 +2526,23 @@ describe_model_bias_job_definition(Client, Input)
 describe_model_bias_job_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeModelBiasJobDefinition">>, Input, Options).
+
+%% @doc Describes the content, creation time, and security configuration of
+%% an Amazon SageMaker Model Card.
+describe_model_card(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_model_card(Client, Input, []).
+describe_model_card(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeModelCard">>, Input, Options).
+
+%% @doc Describes an Amazon SageMaker Model Card export job.
+describe_model_card_export_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_model_card_export_job(Client, Input, []).
+describe_model_card_export_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeModelCardExportJob">>, Input, Options).
 
 %% @doc Returns a description of a model explainability job definition.
 describe_model_explainability_job_definition(Client, Input)
@@ -2439,6 +2647,14 @@ describe_project(Client, Input)
 describe_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProject">>, Input, Options).
+
+%% @doc Describes the space.
+describe_space(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_space(Client, Input, []).
+describe_space(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeSpace">>, Input, Options).
 
 %% @doc Describes the Studio Lifecycle Configuration.
 describe_studio_lifecycle_config(Client, Input)
@@ -2621,6 +2837,14 @@ get_search_suggestions(Client, Input)
 get_search_suggestions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSearchSuggestions">>, Input, Options).
+
+%% @doc Import hub content.
+import_hub_content(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    import_hub_content(Client, Input, []).
+import_hub_content(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ImportHubContent">>, Input, Options).
 
 %% @doc Lists the actions in your account and their properties.
 list_actions(Client, Input)
@@ -2809,6 +3033,30 @@ list_flow_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFlowDefinitions">>, Input, Options).
 
+%% @doc List hub content versions.
+list_hub_content_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_hub_content_versions(Client, Input, []).
+list_hub_content_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListHubContentVersions">>, Input, Options).
+
+%% @doc List the contents of a hub.
+list_hub_contents(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_hub_contents(Client, Input, []).
+list_hub_contents(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListHubContents">>, Input, Options).
+
+%% @doc List all existing hubs.
+list_hubs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_hubs(Client, Input, []).
+list_hubs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListHubs">>, Input, Options).
+
 %% @doc Returns information about the human task user interfaces in your
 %% account.
 list_human_task_uis(Client, Input)
@@ -2847,6 +3095,14 @@ list_images(Client, Input)
 list_images(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListImages">>, Input, Options).
+
+%% @doc Returns the list of all inference experiments.
+list_inference_experiments(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_inference_experiments(Client, Input, []).
+list_inference_experiments(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListInferenceExperiments">>, Input, Options).
 
 %% @doc Returns a list of the subtasks for an Inference Recommender job.
 %%
@@ -2903,6 +3159,30 @@ list_model_bias_job_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListModelBiasJobDefinitions">>, Input, Options).
 
+%% @doc List the export jobs for the Amazon SageMaker Model Card.
+list_model_card_export_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_model_card_export_jobs(Client, Input, []).
+list_model_card_export_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListModelCardExportJobs">>, Input, Options).
+
+%% @doc List existing versions of an Amazon SageMaker Model Card.
+list_model_card_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_model_card_versions(Client, Input, []).
+list_model_card_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListModelCardVersions">>, Input, Options).
+
+%% @doc List existing model cards.
+list_model_cards(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_model_cards(Client, Input, []).
+list_model_cards(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListModelCards">>, Input, Options).
+
 %% @doc Lists model explainability job definitions that satisfy various
 %% filters.
 list_model_explainability_job_definitions(Client, Input)
@@ -2953,6 +3233,22 @@ list_models(Client, Input)
 list_models(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListModels">>, Input, Options).
+
+%% @doc Gets a list of past alerts in a model monitoring schedule.
+list_monitoring_alert_history(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_monitoring_alert_history(Client, Input, []).
+list_monitoring_alert_history(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListMonitoringAlertHistory">>, Input, Options).
+
+%% @doc Gets the alerts for a single monitoring schedule.
+list_monitoring_alerts(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_monitoring_alerts(Client, Input, []).
+list_monitoring_alerts(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListMonitoringAlerts">>, Input, Options).
 
 %% @doc Returns list of all monitoring job executions.
 list_monitoring_executions(Client, Input)
@@ -3035,6 +3331,14 @@ list_projects(Client, Input)
 list_projects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProjects">>, Input, Options).
+
+%% @doc Lists spaces.
+list_spaces(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_spaces(Client, Input, []).
+list_spaces(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSpaces">>, Input, Options).
 
 %% @doc Lists devices allocated to the stage, containing detailed device
 %% information and deployment status.
@@ -3283,6 +3587,14 @@ start_edge_deployment_stage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartEdgeDeploymentStage">>, Input, Options).
 
+%% @doc Starts an inference experiment.
+start_inference_experiment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_inference_experiment(Client, Input, []).
+start_inference_experiment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartInferenceExperiment">>, Input, Options).
+
 %% @doc Starts a previously stopped monitoring schedule.
 %%
 %% By default, when you successfully create a new schedule, the status of a
@@ -3370,6 +3682,14 @@ stop_hyper_parameter_tuning_job(Client, Input)
 stop_hyper_parameter_tuning_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopHyperParameterTuningJob">>, Input, Options).
+
+%% @doc Stops an inference experiment.
+stop_inference_experiment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_inference_experiment(Client, Input, []).
+stop_inference_experiment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopInferenceExperiment">>, Input, Options).
 
 %% @doc Stops an Inference Recommender job.
 stop_inference_recommendations_job(Client, Input)
@@ -3621,6 +3941,14 @@ update_feature_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFeatureMetadata">>, Input, Options).
 
+%% @doc Update a hub.
+update_hub(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_hub(Client, Input, []).
+update_hub(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateHub">>, Input, Options).
+
 %% @doc Updates the properties of a SageMaker image.
 %%
 %% To change the image's tags, use the `AddTags' and `DeleteTags' APIs.
@@ -3631,6 +3959,29 @@ update_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateImage">>, Input, Options).
 
+%% @doc Updates an inference experiment that you created.
+%%
+%% The status of the inference experiment has to be either `Created',
+%% `Running'. For more information on the status of an inference experiment,
+%% see `DescribeInferenceExperimentResponse$Status'.
+update_inference_experiment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_inference_experiment(Client, Input, []).
+update_inference_experiment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateInferenceExperiment">>, Input, Options).
+
+%% @doc Update an Amazon SageMaker Model Card.
+%%
+%% You cannot update both model card content and model card status in a
+%% single call.
+update_model_card(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_model_card(Client, Input, []).
+update_model_card(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateModelCard">>, Input, Options).
+
 %% @doc Updates a versioned model.
 update_model_package(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -3638,6 +3989,14 @@ update_model_package(Client, Input)
 update_model_package(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateModelPackage">>, Input, Options).
+
+%% @doc Update the parameters of a model monitor alert.
+update_monitoring_alert(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_monitoring_alert(Client, Input, []).
+update_monitoring_alert(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateMonitoringAlert">>, Input, Options).
 
 %% @doc Updates a previously created schedule.
 update_monitoring_schedule(Client, Input)
@@ -3698,6 +4057,14 @@ update_project(Client, Input)
 update_project(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProject">>, Input, Options).
+
+%% @doc Updates the settings of a space.
+update_space(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_space(Client, Input, []).
+update_space(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateSpace">>, Input, Options).
 
 %% @doc Update a model training job to request a new Debugger profiling
 %% configuration or to change warm pool retention length.

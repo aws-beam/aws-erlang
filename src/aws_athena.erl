@@ -30,24 +30,40 @@
          create_data_catalog/3,
          create_named_query/2,
          create_named_query/3,
+         create_notebook/2,
+         create_notebook/3,
          create_prepared_statement/2,
          create_prepared_statement/3,
+         create_presigned_notebook_url/2,
+         create_presigned_notebook_url/3,
          create_work_group/2,
          create_work_group/3,
          delete_data_catalog/2,
          delete_data_catalog/3,
          delete_named_query/2,
          delete_named_query/3,
+         delete_notebook/2,
+         delete_notebook/3,
          delete_prepared_statement/2,
          delete_prepared_statement/3,
          delete_work_group/2,
          delete_work_group/3,
+         export_notebook/2,
+         export_notebook/3,
+         get_calculation_execution/2,
+         get_calculation_execution/3,
+         get_calculation_execution_code/2,
+         get_calculation_execution_code/3,
+         get_calculation_execution_status/2,
+         get_calculation_execution_status/3,
          get_data_catalog/2,
          get_data_catalog/3,
          get_database/2,
          get_database/3,
          get_named_query/2,
          get_named_query/3,
+         get_notebook_metadata/2,
+         get_notebook_metadata/3,
          get_prepared_statement/2,
          get_prepared_statement/3,
          get_query_execution/2,
@@ -56,40 +72,70 @@
          get_query_results/3,
          get_query_runtime_statistics/2,
          get_query_runtime_statistics/3,
+         get_session/2,
+         get_session/3,
+         get_session_status/2,
+         get_session_status/3,
          get_table_metadata/2,
          get_table_metadata/3,
          get_work_group/2,
          get_work_group/3,
+         import_notebook/2,
+         import_notebook/3,
+         list_application_d_p_u_sizes/2,
+         list_application_d_p_u_sizes/3,
+         list_calculation_executions/2,
+         list_calculation_executions/3,
          list_data_catalogs/2,
          list_data_catalogs/3,
          list_databases/2,
          list_databases/3,
          list_engine_versions/2,
          list_engine_versions/3,
+         list_executors/2,
+         list_executors/3,
          list_named_queries/2,
          list_named_queries/3,
+         list_notebook_metadata/2,
+         list_notebook_metadata/3,
+         list_notebook_sessions/2,
+         list_notebook_sessions/3,
          list_prepared_statements/2,
          list_prepared_statements/3,
          list_query_executions/2,
          list_query_executions/3,
+         list_sessions/2,
+         list_sessions/3,
          list_table_metadata/2,
          list_table_metadata/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          list_work_groups/2,
          list_work_groups/3,
+         start_calculation_execution/2,
+         start_calculation_execution/3,
          start_query_execution/2,
          start_query_execution/3,
+         start_session/2,
+         start_session/3,
+         stop_calculation_execution/2,
+         stop_calculation_execution/3,
          stop_query_execution/2,
          stop_query_execution/3,
          tag_resource/2,
          tag_resource/3,
+         terminate_session/2,
+         terminate_session/3,
          untag_resource/2,
          untag_resource/3,
          update_data_catalog/2,
          update_data_catalog/3,
          update_named_query/2,
          update_named_query/3,
+         update_notebook/2,
+         update_notebook/3,
+         update_notebook_metadata/2,
+         update_notebook_metadata/3,
          update_prepared_statement/2,
          update_prepared_statement/3,
          update_work_group/2,
@@ -175,6 +221,18 @@ create_named_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNamedQuery">>, Input, Options).
 
+%% @doc Creates an empty `ipynb' file in the specified Apache Spark enabled
+%% workgroup.
+%%
+%% Throws an error if a file in the workgroup with the same name already
+%% exists.
+create_notebook(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_notebook(Client, Input, []).
+create_notebook(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateNotebook">>, Input, Options).
+
 %% @doc Creates a prepared statement for use with SQL queries in Athena.
 create_prepared_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -183,7 +241,24 @@ create_prepared_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePreparedStatement">>, Input, Options).
 
+%% @doc Gets an authentication token and the URL at which the notebook can be
+%% accessed.
+%%
+%% During programmatic access, `CreatePresignedNotebookUrl' must be called
+%% every 10 minutes to refresh the authentication token.
+create_presigned_notebook_url(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_presigned_notebook_url(Client, Input, []).
+create_presigned_notebook_url(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreatePresignedNotebookUrl">>, Input, Options).
+
 %% @doc Creates a workgroup with the specified name.
+%%
+%% Only one of `Configurations' or `Configuration' can be specified;
+%% `Configurations' for a workgroup with multi engine support (for example,
+%% an Apache Spark enabled workgroup) or `Configuration' for an Athena SQL
+%% workgroup.
 create_work_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_work_group(Client, Input, []).
@@ -211,6 +286,14 @@ delete_named_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNamedQuery">>, Input, Options).
 
+%% @doc Deletes the specified notebook.
+delete_notebook(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_notebook(Client, Input, []).
+delete_notebook(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteNotebook">>, Input, Options).
+
 %% @doc Deletes the prepared statement with the specified name from the
 %% specified workgroup.
 delete_prepared_statement(Client, Input)
@@ -229,6 +312,39 @@ delete_work_group(Client, Input)
 delete_work_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWorkGroup">>, Input, Options).
+
+%% @doc Exports the specified notebook and its metadata.
+export_notebook(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    export_notebook(Client, Input, []).
+export_notebook(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ExportNotebook">>, Input, Options).
+
+%% @doc Describes a previously submitted calculation execution.
+get_calculation_execution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_calculation_execution(Client, Input, []).
+get_calculation_execution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCalculationExecution">>, Input, Options).
+
+%% @doc Retrieves a pre-signed URL to a copy of the code that was executed
+%% for the calculation.
+get_calculation_execution_code(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_calculation_execution_code(Client, Input, []).
+get_calculation_execution_code(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCalculationExecutionCode">>, Input, Options).
+
+%% @doc Gets the status of a current calculation.
+get_calculation_execution_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_calculation_execution_status(Client, Input, []).
+get_calculation_execution_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCalculationExecutionStatus">>, Input, Options).
 
 %% @doc Returns the specified data catalog.
 get_data_catalog(Client, Input)
@@ -257,6 +373,14 @@ get_named_query(Client, Input)
 get_named_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetNamedQuery">>, Input, Options).
+
+%% @doc Retrieves notebook metadata for the specified notebook ID.
+get_notebook_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_notebook_metadata(Client, Input, []).
+get_notebook_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetNotebookMetadata">>, Input, Options).
 
 %% @doc Retrieves the prepared statement with the specified name from the
 %% specified workgroup.
@@ -315,6 +439,23 @@ get_query_runtime_statistics(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQueryRuntimeStatistics">>, Input, Options).
 
+%% @doc Gets the full details of a previously created session, including the
+%% session status and configuration.
+get_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_session(Client, Input, []).
+get_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetSession">>, Input, Options).
+
+%% @doc Gets the current status of a session.
+get_session_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_session_status(Client, Input, []).
+get_session_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetSessionStatus">>, Input, Options).
+
 %% @doc Returns table metadata for the specified catalog, database, and
 %% table.
 get_table_metadata(Client, Input)
@@ -331,6 +472,37 @@ get_work_group(Client, Input)
 get_work_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWorkGroup">>, Input, Options).
+
+%% @doc Imports a single `ipynb' file to a Spark enabled workgroup.
+%%
+%% The maximum file size that can be imported is 10 megabytes. If an `ipynb'
+%% file with the same name already exists in the workgroup, throws an error.
+import_notebook(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    import_notebook(Client, Input, []).
+import_notebook(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ImportNotebook">>, Input, Options).
+
+%% @doc Returns the supported DPU sizes for the supported application
+%% runtimes (for example, `Jupyter 1.0').
+list_application_d_p_u_sizes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_application_d_p_u_sizes(Client, Input, []).
+list_application_d_p_u_sizes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListApplicationDPUSizes">>, Input, Options).
+
+%% @doc Lists the calculations that have been submitted to a session in
+%% descending order.
+%%
+%% Newer calculations are listed first; older calculations are listed later.
+list_calculation_executions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_calculation_executions(Client, Input, []).
+list_calculation_executions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCalculationExecutions">>, Input, Options).
 
 %% @doc Lists the data catalogs in the current Amazon Web Services account.
 list_data_catalogs(Client, Input)
@@ -357,6 +529,18 @@ list_engine_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEngineVersions">>, Input, Options).
 
+%% @doc Lists, in descending order, the executors that have been submitted to
+%% a session.
+%%
+%% Newer executors are listed first; older executors are listed later. The
+%% result can be optionally filtered by state.
+list_executors(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_executors(Client, Input, []).
+list_executors(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListExecutors">>, Input, Options).
+
 %% @doc Provides a list of available query IDs only for queries saved in the
 %% specified workgroup.
 %%
@@ -371,6 +555,27 @@ list_named_queries(Client, Input)
 list_named_queries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListNamedQueries">>, Input, Options).
+
+%% @doc Displays the notebook files for the specified workgroup in paginated
+%% format.
+list_notebook_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_notebook_metadata(Client, Input, []).
+list_notebook_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListNotebookMetadata">>, Input, Options).
+
+%% @doc Lists, in descending order, the sessions that have been created in a
+%% notebook that are in an active state like `CREATING', `CREATED', `IDLE' or
+%% `BUSY'.
+%%
+%% Newer sessions are listed first; older sessions are listed later.
+list_notebook_sessions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_notebook_sessions(Client, Input, []).
+list_notebook_sessions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListNotebookSessions">>, Input, Options).
 
 %% @doc Lists the prepared statements in the specified workgroup.
 list_prepared_statements(Client, Input)
@@ -395,6 +600,17 @@ list_query_executions(Client, Input)
 list_query_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListQueryExecutions">>, Input, Options).
+
+%% @doc Lists the sessions in a workgroup that are in an active state like
+%% `CREATING', `CREATED', `IDLE', or `BUSY'.
+%%
+%% Newer sessions are listed first; older sessions are listed later.
+list_sessions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_sessions(Client, Input, []).
+list_sessions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSessions">>, Input, Options).
 
 %% @doc Lists the metadata for the tables in the specified data catalog
 %% database.
@@ -422,6 +638,17 @@ list_work_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkGroups">>, Input, Options).
 
+%% @doc Submits calculations for execution within a session.
+%%
+%% You can supply the code to run as an inline code block within the request
+%% or as an Amazon S3 URL.
+start_calculation_execution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_calculation_execution(Client, Input, []).
+start_calculation_execution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartCalculationExecution">>, Input, Options).
+
 %% @doc Runs the SQL query statements contained in the `Query'.
 %%
 %% Requires you to have access to the workgroup in which the query ran.
@@ -435,6 +662,33 @@ start_query_execution(Client, Input)
 start_query_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartQueryExecution">>, Input, Options).
+
+%% @doc Creates a session for running calculations within a workgroup.
+%%
+%% The session is ready when it reaches an `IDLE' state.
+start_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_session(Client, Input, []).
+start_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartSession">>, Input, Options).
+
+%% @doc Requests the cancellation of a calculation.
+%%
+%% A `StopCalculationExecution' call on a calculation that is already in a
+%% terminal state (for example, `STOPPED', `FAILED', or `COMPLETED') succeeds
+%% but has no effect.
+%%
+%% Cancelling a calculation is done on a best effort basis. If a calculation
+%% cannot be cancelled, you can be charged for its completion. If you are
+%% concerned about being charged for a calculation that cannot be cancelled,
+%% consider terminating the session in which the calculation is running.
+stop_calculation_execution(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_calculation_execution(Client, Input, []).
+stop_calculation_execution(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopCalculationExecution">>, Input, Options).
 
 %% @doc Stops a query execution.
 %%
@@ -470,6 +724,20 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
+%% @doc Terminates an active session.
+%%
+%% A `TerminateSession' call on a session that is already inactive (for
+%% example, in a `FAILED', `TERMINATED' or `TERMINATING' state) succeeds but
+%% has no effect. Calculations running in the session when `TerminateSession'
+%% is called are forcefully stopped, but may display as `FAILED' instead of
+%% `STOPPED'.
+terminate_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    terminate_session(Client, Input, []).
+terminate_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TerminateSession">>, Input, Options).
+
 %% @doc Removes one or more tags from a data catalog or workgroup resource.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -496,6 +764,22 @@ update_named_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateNamedQuery">>, Input, Options).
 
+%% @doc Updates the contents of a Spark notebook.
+update_notebook(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_notebook(Client, Input, []).
+update_notebook(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateNotebook">>, Input, Options).
+
+%% @doc Updates the metadata for a notebook.
+update_notebook_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_notebook_metadata(Client, Input, []).
+update_notebook_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateNotebookMetadata">>, Input, Options).
+
 %% @doc Updates a prepared statement.
 update_prepared_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -506,7 +790,11 @@ update_prepared_statement(Client, Input, Options)
 
 %% @doc Updates the workgroup with the specified name.
 %%
-%% The workgroup's name cannot be changed.
+%% The workgroup's name cannot be changed. Only one of
+%% `ConfigurationsUpdates' or `ConfigurationUpdates' can be specified;
+%% `ConfigurationsUpdates' for a workgroup with multi engine support (for
+%% example, an Apache Spark enabled workgroup) or `ConfigurationUpdates' for
+%% an Athena SQL workgroup.
 update_work_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_work_group(Client, Input, []).
