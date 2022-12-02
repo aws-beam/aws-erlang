@@ -36,6 +36,8 @@
          describe_activity/3,
          describe_execution/2,
          describe_execution/3,
+         describe_map_run/2,
+         describe_map_run/3,
          describe_state_machine/2,
          describe_state_machine/3,
          describe_state_machine_for_execution/2,
@@ -48,6 +50,8 @@
          list_activities/3,
          list_executions/2,
          list_executions/3,
+         list_map_runs/2,
+         list_map_runs/3,
          list_state_machines/2,
          list_state_machines/3,
          list_tags_for_resource/2,
@@ -68,6 +72,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_map_run/2,
+         update_map_run/3,
          update_state_machine/2,
          update_state_machine/3]).
 
@@ -141,6 +147,15 @@ delete_activity(Client, Input, Options)
 %% This is an asynchronous operation: It sets the state machine's status to
 %% `DELETING' and begins the deletion process.
 %%
+%% If the given state machine Amazon Resource Name (ARN) is a qualified state
+%% machine ARN, it will fail with ValidationException.
+%%
+%% A qualified state machine ARN refers to a Distributed Map state defined
+%% within a state machine. For example, the qualified state machine ARN
+%% `arn:partition:states:region:account-id:stateMachine:stateMachineName/mapStateLabel'
+%% refers to a Distributed Map state with a label `mapStateLabel' in the
+%% state machine named `stateMachineName'.
+%%
 %% For `EXPRESS' state machines, the deletion will happen eventually (usually
 %% less than a minute). Running executions may emit logs after
 %% `DeleteStateMachine' API is called.
@@ -162,12 +177,18 @@ describe_activity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeActivity">>, Input, Options).
 
-%% @doc Describes an execution.
+%% @doc Provides all information about a state machine execution, such as the
+%% state machine associated with the execution, the execution input and
+%% output, and relevant execution metadata.
+%%
+%% Use this API action to return the Map Run ARN if the execution was
+%% dispatched by a Map Run.
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
 %%
-%% This API action is not supported by `EXPRESS' state machines.
+%% This API action is not supported by `EXPRESS' state machine executions
+%% unless they were dispatched by a Map Run.
 describe_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_execution(Client, Input, []).
@@ -175,7 +196,29 @@ describe_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExecution">>, Input, Options).
 
-%% @doc Describes a state machine.
+%% @doc Provides information about a Map Run's configuration, progress, and
+%% results.
+%%
+%% For more information, see Examining Map Run in the Step Functions
+%% Developer Guide.
+describe_map_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_map_run(Client, Input, []).
+describe_map_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMapRun">>, Input, Options).
+
+%% @doc Provides information about a state machine's definition, its IAM role
+%% Amazon Resource Name (ARN), and configuration.
+%%
+%% If the state machine ARN is a qualified state machine ARN, the response
+%% returned includes the `Map' state's label.
+%%
+%% A qualified state machine ARN refers to a Distributed Map state defined
+%% within a state machine. For example, the qualified state machine ARN
+%% `arn:partition:states:region:account-id:stateMachine:stateMachineName/mapStateLabel'
+%% refers to a Distributed Map state with a label `mapStateLabel' in the
+%% state machine named `stateMachineName'.
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
@@ -186,7 +229,12 @@ describe_state_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStateMachine">>, Input, Options).
 
-%% @doc Describes the state machine associated with a specific execution.
+%% @doc Provides information about a state machine's definition, its
+%% execution role ARN, and configuration.
+%%
+%% If an execution was dispatched by a Map Run, the Map Run is returned in
+%% the response. Additionally, the state machine returned will be the state
+%% machine associated with the Map Run.
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
@@ -261,8 +309,11 @@ list_activities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListActivities">>, Input, Options).
 
-%% @doc Lists the executions of a state machine that meet the filtering
-%% criteria.
+%% @doc Lists all executions of a state machine or a Map Run.
+%%
+%% You can list all executions related to a state machine by specifying a
+%% state machine Amazon Resource Name (ARN), or those related to a Map Run by
+%% specifying a Map Run ARN.
 %%
 %% Results are sorted by time, with the most recent execution first.
 %%
@@ -282,6 +333,18 @@ list_executions(Client, Input)
 list_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExecutions">>, Input, Options).
+
+%% @doc Lists all Map Runs that were started by a given state machine
+%% execution.
+%%
+%% Use this API action to obtain Map Run ARNs, and then call `DescribeMapRun'
+%% to obtain more information, if needed.
+list_map_runs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_map_runs(Client, Input, []).
+list_map_runs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListMapRuns">>, Input, Options).
 
 %% @doc Lists the existing state machines.
 %%
@@ -354,6 +417,15 @@ send_task_success(Client, Input, Options)
 
 %% @doc Starts a state machine execution.
 %%
+%% If the given state machine Amazon Resource Name (ARN) is a qualified state
+%% machine ARN, it will fail with ValidationException.
+%%
+%% A qualified state machine ARN refers to a Distributed Map state defined
+%% within a state machine. For example, the qualified state machine ARN
+%% `arn:partition:states:region:account-id:stateMachine:stateMachineName/mapStateLabel'
+%% refers to a Distributed Map state with a label `mapStateLabel' in the
+%% state machine named `stateMachineName'.
+%%
 %% `StartExecution' is idempotent for `STANDARD' workflows. For a `STANDARD'
 %% workflow, if `StartExecution' is called with the same name and input as a
 %% running execution, the call will succeed and return the same response as
@@ -420,12 +492,30 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
+%% @doc Updates an in-progress Map Run's configuration to include changes to
+%% the settings that control maximum concurrency and Map Run failure.
+update_map_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_map_run(Client, Input, []).
+update_map_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateMapRun">>, Input, Options).
+
 %% @doc Updates an existing state machine by modifying its `definition',
 %% `roleArn', or `loggingConfiguration'.
 %%
 %% Running executions will continue to use the previous `definition' and
 %% `roleArn'. You must include at least one of `definition' or `roleArn' or
 %% you will receive a `MissingRequiredParameter' error.
+%%
+%% If the given state machine Amazon Resource Name (ARN) is a qualified state
+%% machine ARN, it will fail with ValidationException.
+%%
+%% A qualified state machine ARN refers to a Distributed Map state defined
+%% within a state machine. For example, the qualified state machine ARN
+%% `arn:partition:states:region:account-id:stateMachine:stateMachineName/mapStateLabel'
+%% refers to a Distributed Map state with a label `mapStateLabel' in the
+%% state machine named `stateMachineName'.
 %%
 %% All `StartExecution' calls within a few seconds will use the updated
 %% `definition' and `roleArn'. Executions started immediately after calling
