@@ -115,6 +115,10 @@
 
 %% @doc Adds a statement to a topic's access control policy, granting access
 %% for the specified Amazon Web Services accounts to the specified actions.
+%%
+%% To remove the ability to change topic permissions, you must deny
+%% permissions to the `AddPermission', `RemovePermission', and
+%% `SetTopicAttributes' actions in your IAM policy.
 add_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_permission(Client, Input, []).
@@ -613,6 +617,10 @@ put_data_protection_policy(Client, Input, Options)
     request(Client, <<"PutDataProtectionPolicy">>, Input, Options).
 
 %% @doc Removes a statement from a topic's access control policy.
+%%
+%% To remove the ability to change topic permissions, you must deny
+%% permissions to the `AddPermission', `RemovePermission', and
+%% `SetTopicAttributes' actions in your IAM policy.
 remove_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_permission(Client, Input, []).
@@ -673,6 +681,10 @@ set_subscription_attributes(Client, Input, Options)
     request(Client, <<"SetSubscriptionAttributes">>, Input, Options).
 
 %% @doc Allows a topic owner to set an attribute of the topic to a new value.
+%%
+%% To remove the ability to change topic permissions, you must deny
+%% permissions to the `AddPermission', `RemovePermission', and
+%% `SetTopicAttributes' actions in your IAM policy.
 set_topic_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_topic_attributes(Client, Input, []).
@@ -734,6 +746,10 @@ tag_resource(Client, Input, Options)
 %% final cancellation message is delivered to the endpoint, so that the
 %% endpoint owner can easily resubscribe to the topic if the `Unsubscribe'
 %% request was unintended.
+%%
+%% Amazon SQS queue subscriptions require authentication for deletion. Only
+%% the owner of the subscription, or the owner of the topic can unsubscribe
+%% using the required Amazon Web Services signature.
 %%
 %% This action is throttled at 100 transactions per second (TPS).
 unsubscribe(Client, Input)

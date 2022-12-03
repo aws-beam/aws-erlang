@@ -54,6 +54,8 @@
          get_resource_policy/3,
          get_snapshot/2,
          get_snapshot/3,
+         get_table_restore_status/2,
+         get_table_restore_status/3,
          get_usage_limit/2,
          get_usage_limit/3,
          get_workgroup/2,
@@ -66,6 +68,8 @@
          list_recovery_points/3,
          list_snapshots/2,
          list_snapshots/3,
+         list_table_restore_status/2,
+         list_table_restore_status/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          list_usage_limits/2,
@@ -78,6 +82,8 @@
          restore_from_recovery_point/3,
          restore_from_snapshot/2,
          restore_from_snapshot/3,
+         restore_table_from_snapshot/2,
+         restore_table_from_snapshot/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -214,9 +220,9 @@ delete_workgroup(Client, Input, Options)
 %% optionally specify a duration between 900 seconds (15 minutes) and 3600
 %% seconds (60 minutes).
 %%
-%% <p> The Identity and Access Management (IAM) user or role that runs
+%% <p>The Identity and Access Management (IAM) user or role that runs
 %% GetCredentials must have an IAM policy attached that allows access to all
-%% necessary actions and resources. </p> <p> If the <code>DbName</code>
+%% necessary actions and resources.</p> <p>If the <code>DbName</code>
 %% parameter is specified, the IAM policy must allow access to the resource
 %% dbname for the specified database name.</p>
 get_credentials(Client, Input)
@@ -266,6 +272,14 @@ get_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSnapshot">>, Input, Options).
 
+%% @doc Returns information about a `TableRestoreStatus' object.
+get_table_restore_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_table_restore_status(Client, Input, []).
+get_table_restore_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetTableRestoreStatus">>, Input, Options).
+
 %% @doc Returns information about a usage limit.
 get_usage_limit(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -314,6 +328,14 @@ list_snapshots(Client, Input)
 list_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSnapshots">>, Input, Options).
+
+%% @doc Returns information about an array of `TableRestoreStatus' objects.
+list_table_restore_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_table_restore_status(Client, Input, []).
+list_table_restore_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTableRestoreStatus">>, Input, Options).
 
 %% @doc Lists the tags assigned to a resource.
 list_tags_for_resource(Client, Input)
@@ -365,6 +387,15 @@ restore_from_snapshot(Client, Input)
 restore_from_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreFromSnapshot">>, Input, Options).
+
+%% @doc Restores a table from a snapshot to your Amazon Redshift Serverless
+%% instance.
+restore_table_from_snapshot(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    restore_table_from_snapshot(Client, Input, []).
+restore_table_from_snapshot(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RestoreTableFromSnapshot">>, Input, Options).
 
 %% @doc Assigns one or more tags to a resource.
 tag_resource(Client, Input)
