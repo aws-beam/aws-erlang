@@ -73,10 +73,14 @@
          list_cost_allocation_tags/3,
          list_cost_category_definitions/2,
          list_cost_category_definitions/3,
+         list_savings_plans_purchase_recommendation_generation/2,
+         list_savings_plans_purchase_recommendation_generation/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          provide_anomaly_feedback/2,
          provide_anomaly_feedback/3,
+         start_savings_plans_purchase_recommendation_generation/2,
+         start_savings_plans_purchase_recommendation_generation/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -396,8 +400,11 @@ get_savings_plans_coverage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSavingsPlansCoverage">>, Input, Options).
 
-%% @doc Retrieves your request parameters, Savings Plan Recommendations
-%% Summary and Details.
+%% @doc Retrieves the Savings Plans recommendations for your account.
+%%
+%% First use `StartSavingsPlansPurchaseRecommendationGeneration' to generate
+%% a new set of recommendations, and then use
+%% `GetSavingsPlansPurchaseRecommendation' to retrieve them.
 get_savings_plans_purchase_recommendation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_savings_plans_purchase_recommendation(Client, Input, []).
@@ -486,6 +493,15 @@ list_cost_category_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCostCategoryDefinitions">>, Input, Options).
 
+%% @doc Retrieves a list of your historical recommendation generations within
+%% the past 30 days.
+list_savings_plans_purchase_recommendation_generation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_savings_plans_purchase_recommendation_generation(Client, Input, []).
+list_savings_plans_purchase_recommendation_generation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSavingsPlansPurchaseRecommendationGeneration">>, Input, Options).
+
 %% @doc Returns a list of resource tags associated with the resource
 %% specified by the Amazon Resource Name (ARN).
 list_tags_for_resource(Client, Input)
@@ -502,6 +518,22 @@ provide_anomaly_feedback(Client, Input)
 provide_anomaly_feedback(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ProvideAnomalyFeedback">>, Input, Options).
+
+%% @doc Requests a Savings Plans recommendation generation.
+%%
+%% This enables you to calculate a fresh set of Savings Plans recommendations
+%% that takes your latest usage data and current Savings Plans inventory into
+%% account. You can refresh Savings Plans recommendations up to three times
+%% daily for a consolidated billing family.
+%%
+%% `StartSavingsPlansPurchaseRecommendationGeneration' has no request syntax
+%% because no input parameters are needed to support this operation.
+start_savings_plans_purchase_recommendation_generation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_savings_plans_purchase_recommendation_generation(Client, Input, []).
+start_savings_plans_purchase_recommendation_generation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartSavingsPlansPurchaseRecommendationGeneration">>, Input, Options).
 
 %% @doc An API operation for adding one or more tags (key-value pairs) to a
 %% resource.
