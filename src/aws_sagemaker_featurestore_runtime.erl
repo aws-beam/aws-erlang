@@ -62,9 +62,9 @@ batch_get_record(Client, Input0, Options0) ->
 
 %% @doc Deletes a `Record' from a `FeatureGroup'.
 %%
-%% A new record will show up in the `OfflineStore' when the `DeleteRecord'
-%% API is called. This record will have a value of `True' in the `is_deleted'
-%% column.
+%% When the `DeleteRecord' API is called a new record will be added to the
+%% `OfflineStore' and the `Record' will be removed from the `OnlineStore'.
+%% This record will have a value of `True' in the `is_deleted' column.
 delete_record(Client, FeatureGroupName, Input) ->
     delete_record(Client, FeatureGroupName, Input, []).
 delete_record(Client, FeatureGroupName, Input0, Options0) ->
@@ -84,7 +84,8 @@ delete_record(Client, FeatureGroupName, Input0, Options0) ->
 
     QueryMapping = [
                      {<<"EventTime">>, <<"EventTime">>},
-                     {<<"RecordIdentifierValueAsString">>, <<"RecordIdentifierValueAsString">>}
+                     {<<"RecordIdentifierValueAsString">>, <<"RecordIdentifierValueAsString">>},
+                     {<<"TargetStores">>, <<"TargetStores">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).

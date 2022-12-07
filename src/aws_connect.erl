@@ -61,6 +61,8 @@
          create_quick_connect/4,
          create_routing_profile/3,
          create_routing_profile/4,
+         create_rule/3,
+         create_rule/4,
          create_security_profile/3,
          create_security_profile/4,
          create_task_template/3,
@@ -87,6 +89,8 @@
          delete_integration_association/5,
          delete_quick_connect/4,
          delete_quick_connect/5,
+         delete_rule/4,
+         delete_rule/5,
          delete_security_profile/4,
          delete_security_profile/5,
          delete_task_template/4,
@@ -137,6 +141,9 @@
          describe_routing_profile/3,
          describe_routing_profile/5,
          describe_routing_profile/6,
+         describe_rule/3,
+         describe_rule/5,
+         describe_rule/6,
          describe_security_profile/3,
          describe_security_profile/5,
          describe_security_profile/6,
@@ -257,6 +264,9 @@
          list_routing_profiles/2,
          list_routing_profiles/4,
          list_routing_profiles/5,
+         list_rules/2,
+         list_rules/4,
+         list_rules/5,
          list_security_keys/2,
          list_security_keys/4,
          list_security_keys/5,
@@ -378,6 +388,8 @@
          update_routing_profile_name/5,
          update_routing_profile_queues/4,
          update_routing_profile_queues/5,
+         update_rule/4,
+         update_rule/5,
          update_security_profile/4,
          update_security_profile/5,
          update_task_template/4,
@@ -687,8 +699,13 @@ associate_security_key(Client, InstanceId, Input0, Options0) ->
 %% You can call this API only in the same Amazon Web Services Region where
 %% the Amazon Connect instance or traffic distribution group was created.
 %%
-%% You can call the DescribePhoneNumber API to verify the status of a
-%% previous ClaimPhoneNumber operation.
+%% For more information about how to use this operation, see Claim a phone
+%% number in your country and Claim phone numbers to traffic distribution
+%% groups in the Amazon Connect Administrator Guide.
+%%
+%% You can call the SearchAvailablePhoneNumbers API for available phone
+%% numbers that you can claim. Call the DescribePhoneNumber API to verify the
+%% status of a previous ClaimPhoneNumber operation.
 claim_phone_number(Client, Input) ->
     claim_phone_number(Client, Input, []).
 claim_phone_number(Client, Input0, Options0) ->
@@ -937,6 +954,29 @@ create_routing_profile(Client, InstanceId, Input) ->
 create_routing_profile(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a rule for the specified Amazon Connect instance.
+create_rule(Client, InstanceId, Input) ->
+    create_rule(Client, InstanceId, Input, []).
+create_rule(Client, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/rules/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1266,6 +1306,29 @@ delete_quick_connect(Client, InstanceId, QuickConnectId, Input) ->
 delete_quick_connect(Client, InstanceId, QuickConnectId, Input0, Options0) ->
     Method = delete,
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a rule for the specified Amazon Connect instance.
+delete_rule(Client, InstanceId, RuleId, Input) ->
+    delete_rule(Client, InstanceId, RuleId, Input, []).
+delete_rule(Client, InstanceId, RuleId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/rules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RuleId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1776,6 +1839,29 @@ describe_routing_profile(Client, InstanceId, RoutingProfileId, QueryMap, Headers
 describe_routing_profile(Client, InstanceId, RoutingProfileId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes a rule for the specified Amazon Connect instance.
+describe_rule(Client, InstanceId, RuleId)
+  when is_map(Client) ->
+    describe_rule(Client, InstanceId, RuleId, #{}, #{}).
+
+describe_rule(Client, InstanceId, RuleId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_rule(Client, InstanceId, RuleId, QueryMap, HeadersMap, []).
+
+describe_rule(Client, InstanceId, RuleId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/rules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RuleId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -3091,6 +3177,36 @@ list_routing_profiles(Client, InstanceId, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List all rules for the specified Amazon Connect instance.
+list_rules(Client, InstanceId)
+  when is_map(Client) ->
+    list_rules(Client, InstanceId, #{}, #{}).
+
+list_rules(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_rules(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_rules(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/rules/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"eventSourceName">>, maps:get(<<"eventSourceName">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"publishStatus">>, maps:get(<<"publishStatus">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -4694,6 +4810,29 @@ update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input) ->
 update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
     Method = post,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/queues"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a rule for the specified Amazon Connect instance.
+update_rule(Client, InstanceId, RuleId, Input) ->
+    update_rule(Client, InstanceId, RuleId, Input, []).
+update_rule(Client, InstanceId, RuleId, Input0, Options0) ->
+    Method = put,
+    Path = ["/rules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RuleId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
