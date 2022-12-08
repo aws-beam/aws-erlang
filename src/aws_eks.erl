@@ -42,6 +42,9 @@
          describe_addon/3,
          describe_addon/5,
          describe_addon/6,
+         describe_addon_configuration/3,
+         describe_addon_configuration/5,
+         describe_addon_configuration/6,
          describe_addon_versions/1,
          describe_addon_versions/3,
          describe_addon_versions/4,
@@ -490,6 +493,34 @@ describe_addon(Client, AddonName, ClusterName, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns configuration options.
+describe_addon_configuration(Client, AddonName, AddonVersion)
+  when is_map(Client) ->
+    describe_addon_configuration(Client, AddonName, AddonVersion, #{}, #{}).
+
+describe_addon_configuration(Client, AddonName, AddonVersion, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_addon_configuration(Client, AddonName, AddonVersion, QueryMap, HeadersMap, []).
+
+describe_addon_configuration(Client, AddonName, AddonVersion, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/addons/configuration-schemas"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"addonName">>, AddonName},
+        {<<"addonVersion">>, AddonVersion}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 

@@ -250,6 +250,8 @@
          update_continuous_deployment_policy/4,
          update_distribution/3,
          update_distribution/4,
+         update_distribution_with_staging_config/3,
+         update_distribution_with_staging_config/4,
          update_field_level_encryption_config/3,
          update_field_level_encryption_config/4,
          update_field_level_encryption_profile/3,
@@ -3958,6 +3960,63 @@ update_distribution(Client, Id, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"ETag">>, <<"ETag">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Copies the staging distribution's configuration to its corresponding
+%% primary distribution.
+%%
+%% The primary distribution retains its `Aliases' (also known as alternate
+%% domain names or CNAMEs) and `ContinuousDeploymentPolicyId' value, but
+%% otherwise its configuration is overwritten to match the staging
+%% distribution.
+%%
+%% You can use this operation in a continuous deployment workflow after you
+%% have tested configuration changes on the staging distribution. After using
+%% a continuous deployment policy to move a portion of your domain name’s
+%% traffic to the staging distribution and verifying that it works as
+%% intended, you can use this operation to copy the staging distribution’s
+%% configuration to the primary distribution. This action will disable the
+%% continuous deployment policy and move your domain’s traffic back to the
+%% primary distribution.
+update_distribution_with_staging_config(Client, Id, Input) ->
+    update_distribution_with_staging_config(Client, Id, Input, []).
+update_distribution_with_staging_config(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), "/promote-staging-config"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    HeadersMapping = [
+                       {<<"If-Match">>, <<"IfMatch">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"StagingDistributionId">>, <<"StagingDistributionId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
