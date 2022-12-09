@@ -19,6 +19,8 @@
          create_entity/4,
          create_scene/3,
          create_scene/4,
+         create_sync_job/4,
+         create_sync_job/5,
          create_workspace/3,
          create_workspace/4,
          delete_component_type/4,
@@ -27,6 +29,8 @@
          delete_entity/5,
          delete_scene/4,
          delete_scene/5,
+         delete_sync_job/4,
+         delete_sync_job/5,
          delete_workspace/3,
          delete_workspace/4,
          execute_query/2,
@@ -47,6 +51,9 @@
          get_scene/3,
          get_scene/5,
          get_scene/6,
+         get_sync_job/2,
+         get_sync_job/4,
+         get_sync_job/5,
          get_workspace/2,
          get_workspace/4,
          get_workspace/5,
@@ -56,6 +63,10 @@
          list_entities/4,
          list_scenes/3,
          list_scenes/4,
+         list_sync_jobs/3,
+         list_sync_jobs/4,
+         list_sync_resources/4,
+         list_sync_resources/5,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          list_workspaces/2,
@@ -173,6 +184,29 @@ create_scene(Client, WorkspaceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc This action creates a SyncJob.
+create_sync_job(Client, SyncSource, WorkspaceId, Input) ->
+    create_sync_job(Client, SyncSource, WorkspaceId, Input, []).
+create_sync_job(Client, SyncSource, WorkspaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/sync-jobs/", aws_util:encode_uri(SyncSource), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a workplace.
 create_workspace(Client, WorkspaceId, Input) ->
     create_workspace(Client, WorkspaceId, Input, []).
@@ -249,6 +283,29 @@ delete_scene(Client, SceneId, WorkspaceId, Input) ->
 delete_scene(Client, SceneId, WorkspaceId, Input0, Options0) ->
     Method = delete,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/scenes/", aws_util:encode_uri(SceneId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete the SyncJob.
+delete_sync_job(Client, SyncSource, WorkspaceId, Input) ->
+    delete_sync_job(Client, SyncSource, WorkspaceId, Input, []).
+delete_sync_job(Client, SyncSource, WorkspaceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/sync-jobs/", aws_util:encode_uri(SyncSource), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -460,6 +517,33 @@ get_scene(Client, SceneId, WorkspaceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets the SyncJob.
+get_sync_job(Client, SyncSource)
+  when is_map(Client) ->
+    get_sync_job(Client, SyncSource, #{}, #{}).
+
+get_sync_job(Client, SyncSource, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_sync_job(Client, SyncSource, QueryMap, HeadersMap, []).
+
+get_sync_job(Client, SyncSource, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/sync-jobs/", aws_util:encode_uri(SyncSource), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"workspace">>, maps:get(<<"workspace">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves information about a workspace.
 get_workspace(Client, WorkspaceId)
   when is_map(Client) ->
@@ -535,6 +619,52 @@ list_scenes(Client, WorkspaceId, Input) ->
 list_scenes(Client, WorkspaceId, Input0, Options0) ->
     Method = post,
     Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/scenes-list"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc List all SyncJobs.
+list_sync_jobs(Client, WorkspaceId, Input) ->
+    list_sync_jobs(Client, WorkspaceId, Input, []).
+list_sync_jobs(Client, WorkspaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/sync-jobs-list"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the sync resources.
+list_sync_resources(Client, SyncSource, WorkspaceId, Input) ->
+    list_sync_resources(Client, SyncSource, WorkspaceId, Input, []).
+list_sync_resources(Client, SyncSource, WorkspaceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/workspaces/", aws_util:encode_uri(WorkspaceId), "/sync-jobs/", aws_util:encode_uri(SyncSource), "/resources-list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

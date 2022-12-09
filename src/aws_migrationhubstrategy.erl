@@ -26,6 +26,9 @@
          get_import_file_task/2,
          get_import_file_task/4,
          get_import_file_task/5,
+         get_latest_assessment_id/1,
+         get_latest_assessment_id/3,
+         get_latest_assessment_id/4,
          get_portfolio_preferences/1,
          get_portfolio_preferences/3,
          get_portfolio_preferences/4,
@@ -154,6 +157,29 @@ get_import_file_task(Client, Id, QueryMap, HeadersMap)
 get_import_file_task(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/get-import-file-task/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieve the latest ID of a specific assessment task.
+get_latest_assessment_id(Client)
+  when is_map(Client) ->
+    get_latest_assessment_id(Client, #{}, #{}).
+
+get_latest_assessment_id(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_latest_assessment_id(Client, QueryMap, HeadersMap, []).
+
+get_latest_assessment_id(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/get-latest-assessment-id"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

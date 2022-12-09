@@ -17,6 +17,8 @@
          attach_load_balancer_target_groups/3,
          attach_load_balancers/2,
          attach_load_balancers/3,
+         attach_traffic_sources/2,
+         attach_traffic_sources/3,
          batch_delete_scheduled_action/2,
          batch_delete_scheduled_action/3,
          batch_put_scheduled_update_group_action/2,
@@ -85,6 +87,8 @@
          describe_tags/3,
          describe_termination_policy_types/2,
          describe_termination_policy_types/3,
+         describe_traffic_sources/2,
+         describe_traffic_sources/3,
          describe_warm_pool/2,
          describe_warm_pool/3,
          detach_instances/2,
@@ -93,6 +97,8 @@
          detach_load_balancer_target_groups/3,
          detach_load_balancers/2,
          detach_load_balancers/3,
+         detach_traffic_sources/2,
+         detach_traffic_sources/3,
          disable_metrics_collection/2,
          disable_metrics_collection/3,
          enable_metrics_collection/2,
@@ -218,6 +224,27 @@ attach_load_balancers(Client, Input)
 attach_load_balancers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachLoadBalancers">>, Input, Options).
+
+%% @doc Reserved for use with Amazon VPC Lattice, which is in preview and
+%% subject to change.
+%%
+%% Do not use this API for production workloads. This API is also subject to
+%% change.
+%%
+%% Attaches one or more traffic sources to the specified Auto Scaling group.
+%%
+%% To describe the traffic sources for an Auto Scaling group, call the
+%% `DescribeTrafficSources' API. To detach a traffic source from the Auto
+%% Scaling group, call the `DetachTrafficSources' API.
+%%
+%% This operation is additive and does not detach existing traffic sources
+%% from the Auto Scaling group.
+attach_traffic_sources(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    attach_traffic_sources(Client, Input, []).
+attach_traffic_sources(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AttachTrafficSources">>, Input, Options).
 
 %% @doc Deletes one or more scheduled actions for the specified Auto Scaling
 %% group.
@@ -628,6 +655,10 @@ describe_lifecycle_hooks(Client, Input, Options)
 %% information, see Use Elastic Load Balancing to distribute traffic across
 %% the instances in your Auto Scaling group in the Amazon EC2 Auto Scaling
 %% User Guide.
+%%
+%% You can use this operation to describe target groups that were attached by
+%% using `AttachLoadBalancerTargetGroups', but not for target groups that
+%% were attached by using `AttachTrafficSources'.
 describe_load_balancer_target_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_load_balancer_target_groups(Client, Input, []).
@@ -772,6 +803,21 @@ describe_termination_policy_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTerminationPolicyTypes">>, Input, Options).
 
+%% @doc Reserved for use with Amazon VPC Lattice, which is in preview and
+%% subject to change.
+%%
+%% Do not use this API for production workloads. This API is also subject to
+%% change.
+%%
+%% Gets information about the traffic sources for the specified Auto Scaling
+%% group.
+describe_traffic_sources(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_traffic_sources(Client, Input, []).
+describe_traffic_sources(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTrafficSources">>, Input, Options).
+
 %% @doc Gets information about a warm pool and its instances.
 %%
 %% For more information, see Warm pools for Amazon EC2 Auto Scaling in the
@@ -812,6 +858,10 @@ detach_instances(Client, Input, Options)
 %% deregistering the instances in the group. When all instances are
 %% deregistered, then you can no longer describe the target group using the
 %% `DescribeLoadBalancerTargetGroups' API call. The instances remain running.
+%%
+%% You can use this operation to detach target groups that were attached by
+%% using `AttachLoadBalancerTargetGroups', but not for target groups that
+%% were attached by using `AttachTrafficSources'.
 detach_load_balancer_target_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_load_balancer_target_groups(Client, Input, []).
@@ -836,6 +886,21 @@ detach_load_balancers(Client, Input)
 detach_load_balancers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachLoadBalancers">>, Input, Options).
+
+%% @doc Reserved for use with Amazon VPC Lattice, which is in preview and
+%% subject to change.
+%%
+%% Do not use this API for production workloads. This API is also subject to
+%% change.
+%%
+%% Detaches one or more traffic sources from the specified Auto Scaling
+%% group.
+detach_traffic_sources(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    detach_traffic_sources(Client, Input, []).
+detach_traffic_sources(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DetachTrafficSources">>, Input, Options).
 
 %% @doc Disables group metrics collection for the specified Auto Scaling
 %% group.
