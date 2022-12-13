@@ -677,9 +677,14 @@ list_web_acls(Client, Input, Options)
 %%
 %% <ol> <li> Create your logging destination. You can use an Amazon
 %% CloudWatch Logs log group, an Amazon Simple Storage Service (Amazon S3)
-%% bucket, or an Amazon Kinesis Data Firehose. For information about
-%% configuring logging destinations and the permissions that are required for
-%% each, see Logging web ACL traffic information in the WAF Developer Guide.
+%% bucket, or an Amazon Kinesis Data Firehose.
+%%
+%% The name that you give the destination must start with `aws-waf-logs-'.
+%% Depending on the type of destination, you might need to configure
+%% additional settings or permissions.
+%%
+%% For configuration requirements and pricing information for each
+%% destination type, see Logging web ACL traffic in the WAF Developer Guide.
 %%
 %% </li> <li> Associate your logging destination to your web ACL using a
 %% `PutLoggingConfiguration' request.

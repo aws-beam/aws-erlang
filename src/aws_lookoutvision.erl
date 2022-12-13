@@ -683,6 +683,8 @@ start_model(Client, ModelVersion, ProjectName, Input0, Options0) ->
 %%
 %% </li> <li> `s3:GetBucketLocation'
 %%
+%% </li> <li> `kms:GenerateDataKey'
+%%
 %% </li> <li> `greengrass:CreateComponentVersion'
 %%
 %% </li> <li> `greengrass:DescribeComponent'
