@@ -109,11 +109,11 @@ create_anomaly_monitor(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAnomalyMonitor">>, Input, Options).
 
-%% @doc Adds a subscription to a cost anomaly detection monitor.
+%% @doc Adds an alert subscription to a cost anomaly detection monitor.
 %%
 %% You can use each subscription to define subscribers with email or SNS
-%% notifications. Email subscribers can set a dollar threshold and a time
-%% frequency for receiving notifications.
+%% notifications. Email subscribers can set an absolute or percentage
+%% threshold and a time frequency for receiving notifications.
 create_anomaly_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_anomaly_subscription(Client, Input, []).
@@ -172,6 +172,8 @@ describe_cost_category_definition(Client, Input, Options)
 
 %% @doc Retrieves all of the cost anomalies detected on your account during
 %% the time period that's specified by the `DateInterval' object.
+%%
+%% Anomalies are available for up to 90 days.
 get_anomalies(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_anomalies(Client, Input, []).

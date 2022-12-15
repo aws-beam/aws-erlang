@@ -21,8 +21,10 @@
 %% API
 %%====================================================================
 
-%% @doc Used to ingest training metrics into SageMaker which can be
-%% visualized in SageMaker Studio and retrieved with the `GetMetrics' API.
+%% @doc Used to ingest training metrics into SageMaker.
+%%
+%% These metrics can be visualized in SageMaker Studio and retrieved with the
+%% `GetMetrics' API.
 batch_put_metrics(Client, Input) ->
     batch_put_metrics(Client, Input, []).
 batch_put_metrics(Client, Input0, Options0) ->

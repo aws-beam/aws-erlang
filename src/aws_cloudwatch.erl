@@ -726,7 +726,11 @@ put_managed_insight_rules(Client, Input, Options)
     request(Client, <<"PutManagedInsightRules">>, Input, Options).
 
 %% @doc Creates or updates an alarm and associates it with the specified
-%% metric, metric math expression, or anomaly detection model.
+%% metric, metric math expression, anomaly detection model, or Metrics
+%% Insights query.
+%%
+%% For more information about using a Metrics Insights query for an alarm,
+%% see Create alarms on Metrics Insights queries.
 %%
 %% Alarms based on anomaly detection models cannot have Auto Scaling actions.
 %%

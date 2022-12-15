@@ -2177,7 +2177,7 @@ restore_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Inpu
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Enables for the Network Manager service for an Amazon Web Services
+%% @doc Enables the Network Manager service for an Amazon Web Services
 %% Organization.
 %%
 %% This can only be called by a management account within the organization.
