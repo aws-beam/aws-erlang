@@ -1,8 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Provides language translation for input text in the source language
-%% to the specified target language.
+%% @doc Provides translation of the input content from the source language to
+%% the target language.
 -module(aws_translate).
 
 -export([create_parallel_data/2,
@@ -167,19 +167,16 @@ list_text_translation_jobs(Client, Input, Options)
 %% @doc Starts an asynchronous batch translation job.
 %%
 %% Use batch translation jobs to translate large volumes of text across
-%% multiple documents at once. For batch translation, the input documents
-%% must share the same source language. You can specify one or more target
-%% languages. Batch translation translates each input document into each of
-%% the target languages. For more information, see Asynchronous batch
-%% processing
+%% multiple documents at once. For batch translation, you can input documents
+%% with different source languages (specify `auto' as the source language).
+%% You can specify one or more target languages. Batch translation translates
+%% each input document into each of the target languages. For more
+%% information, see Asynchronous batch processing.
 %%
 %% Batch translation jobs can be described with the
 %% `DescribeTextTranslationJob' operation, listed with the
 %% `ListTextTranslationJobs' operation, and stopped with the
 %% `StopTextTranslationJob' operation.
-%%
-%% Amazon Translate does not support batch translation of multiple source
-%% languages at once.
 start_text_translation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_text_translation_job(Client, Input, []).

@@ -306,9 +306,11 @@ create_fargate_profile(Client, ClusterName, Input0, Options0) ->
 %%
 %% An Amazon EKS managed node group is an Amazon EC2 Auto Scaling group and
 %% associated Amazon EC2 instances that are managed by Amazon Web Services
-%% for an Amazon EKS cluster. Each node group uses a version of the Amazon
-%% EKS optimized Amazon Linux 2 AMI. For more information, see Managed Node
-%% Groups in the Amazon EKS User Guide.
+%% for an Amazon EKS cluster. For more information, see Managed node groups
+%% in the Amazon EKS User Guide.
+%%
+%% Windows AMI types are only supported for commercial Regions that support
+%% Windows Amazon EKS.
 create_nodegroup(Client, ClusterName, Input) ->
     create_nodegroup(Client, ClusterName, Input, []).
 create_nodegroup(Client, ClusterName, Input0, Options0) ->
@@ -1169,9 +1171,11 @@ update_nodegroup_config(Client, ClusterName, NodegroupName, Input0, Options0) ->
 %% available AMI version of a node group's current Kubernetes version by not
 %% specifying a Kubernetes version in the request. You can update to the
 %% latest AMI version of your cluster's current Kubernetes version by
-%% specifying your cluster's Kubernetes version in the request. For more
-%% information, see Amazon EKS optimized Amazon Linux 2 AMI versions in the
-%% Amazon EKS User Guide.
+%% specifying your cluster's Kubernetes version in the request. For
+%% information about Linux versions, see Amazon EKS optimized Amazon Linux
+%% AMI versions in the Amazon EKS User Guide. For information about Windows
+%% versions, see Amazon EKS optimized Windows AMI versions in the Amazon EKS
+%% User Guide.
 %%
 %% You cannot roll back a node group to an earlier Kubernetes version or AMI
 %% version.

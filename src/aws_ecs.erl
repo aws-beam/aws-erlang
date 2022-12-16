@@ -528,6 +528,9 @@ discover_poll_endpoint(Client, Input, Options)
 %% the policy statement, for example limit the actions to a specific cluster,
 %% you receive an `AccessDeniedException' when there is a mismatch between
 %% the condition key value and the corresponding parameter value.
+%%
+%% For information about required permissions and considerations, see Using
+%% Amazon ECS Exec for debugging in the Amazon ECS Developer Guide.
 execute_command(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_command(Client, Input, []).

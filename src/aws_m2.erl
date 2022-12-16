@@ -124,7 +124,7 @@ cancel_batch_job_execution(Client, ApplicationId, ExecutionId, Input0, Options0)
 
 %% @doc Creates a new application with given parameters.
 %%
-%% Requires an existing environment and application definition file.
+%% Requires an existing runtime environment and application definition file.
 create_application(Client, Input) ->
     create_application(Client, Input, []).
 create_application(Client, Input0, Options0) ->
@@ -170,8 +170,8 @@ create_data_set_import_task(Client, ApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates and starts a deployment to deploy an application into an
-%% environment.
+%% @doc Creates and starts a deployment to deploy an application into a
+%% runtime environment.
 create_deployment(Client, ApplicationId, Input) ->
     create_deployment(Client, ApplicationId, Input, []).
 create_deployment(Client, ApplicationId, Input0, Options0) ->
@@ -242,13 +242,13 @@ delete_application(Client, ApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a specific application from a specified environment where it
-%% has been previously deployed.
+%% @doc Deletes a specific application from the specific runtime environment
+%% where it was previously deployed.
 %%
-%% You cannot delete an environment using DeleteEnvironment, if any
+%% You cannot delete a runtime environment using DeleteEnvironment if any
 %% application has ever been deployed to it. This API removes the association
-%% of the application with the environment so you can delete the environment
-%% smoothly.
+%% of the application with the runtime environment so you can delete the
+%% environment smoothly.
 delete_application_from_environment(Client, ApplicationId, EnvironmentId, Input) ->
     delete_application_from_environment(Client, ApplicationId, EnvironmentId, Input, []).
 delete_application_from_environment(Client, ApplicationId, EnvironmentId, Input0, Options0) ->
@@ -271,7 +271,7 @@ delete_application_from_environment(Client, ApplicationId, EnvironmentId, Input0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a specific environment.
+%% @doc Deletes a specific runtime environment.
 %%
 %% The environment cannot contain deployed applications. If it does, you must
 %% delete those applications before you delete the environment.
@@ -493,8 +493,9 @@ list_application_versions(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %% @doc Lists the applications associated with a specific Amazon Web Services
 %% account.
 %%
-%% You can provide the unique identifier of a specific environment in a query
-%% parameter to see all applications associated with that environment.
+%% You can provide the unique identifier of a specific runtime environment in
+%% a query parameter to see all applications associated with that
+%% environment.
 list_applications(Client)
   when is_map(Client) ->
     list_applications(Client, #{}, #{}).
@@ -527,7 +528,7 @@ list_applications(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists all the available batch job definitions based on the batch job
 %% resources uploaded during the application creation.
 %%
-%% The listed batch job definitions can then be used to start a batch job.
+%% You can use the batch job definitions in the list to start a batch job.
 list_batch_job_definitions(Client, ApplicationId)
   when is_map(Client) ->
     list_batch_job_definitions(Client, ApplicationId, #{}, #{}).
@@ -621,9 +622,10 @@ list_data_set_import_history(Client, ApplicationId, QueryMap, HeadersMap, Option
 %% @doc Lists the data sets imported for a specific application.
 %%
 %% In Amazon Web Services Mainframe Modernization, data sets are associated
-%% with applications deployed on environments. This is known as importing
-%% data sets. Currently, Amazon Web Services Mainframe Modernization can
-%% import data sets into catalogs using CreateDataSetImportTask.
+%% with applications deployed on runtime environments. This is known as
+%% importing data sets. Currently, Amazon Web Services Mainframe
+%% Modernization can import data sets into catalogs using
+%% CreateDataSetImportTask.
 list_data_sets(Client, ApplicationId)
   when is_map(Client) ->
     list_data_sets(Client, ApplicationId, #{}, #{}).
@@ -909,7 +911,7 @@ update_application(Client, ApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the configuration details for a specific environment.
+%% @doc Updates the configuration details for a specific runtime environment.
 update_environment(Client, EnvironmentId, Input) ->
     update_environment(Client, EnvironmentId, Input, []).
 update_environment(Client, EnvironmentId, Input0, Options0) ->

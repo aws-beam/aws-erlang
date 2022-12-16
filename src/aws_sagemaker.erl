@@ -1177,9 +1177,9 @@ create_image_version(Client, Input, Options)
 %% @doc Creates an inference experiment using the configurations specified in
 %% the request.
 %%
-%% Use this API to schedule an experiment to compare model variants on a
-%% Amazon SageMaker inference endpoint. For more information about inference
-%% experiments, see Shadow tests.
+%% Use this API to setup and schedule an experiment to compare model variants
+%% on a Amazon SageMaker inference endpoint. For more information about
+%% inference experiments, see Shadow tests.
 %%
 %% Amazon SageMaker begins your experiment at the scheduled time and routes
 %% traffic to your endpoint's model variants based on your specified

@@ -28,8 +28,14 @@
          delete_hypervisor/3,
          disassociate_gateway_from_server/2,
          disassociate_gateway_from_server/3,
+         get_bandwidth_rate_limit_schedule/2,
+         get_bandwidth_rate_limit_schedule/3,
          get_gateway/2,
          get_gateway/3,
+         get_hypervisor/2,
+         get_hypervisor/3,
+         get_hypervisor_property_mappings/2,
+         get_hypervisor_property_mappings/3,
          get_virtual_machine/2,
          get_virtual_machine/3,
          import_hypervisor_configuration/2,
@@ -42,8 +48,14 @@
          list_tags_for_resource/3,
          list_virtual_machines/2,
          list_virtual_machines/3,
+         put_bandwidth_rate_limit_schedule/2,
+         put_bandwidth_rate_limit_schedule/3,
+         put_hypervisor_property_mappings/2,
+         put_hypervisor_property_mappings/3,
          put_maintenance_start_time/2,
          put_maintenance_start_time/3,
+         start_virtual_machines_metadata_sync/2,
+         start_virtual_machines_metadata_sync/3,
          tag_resource/2,
          tag_resource/3,
          test_hypervisor_configuration/2,
@@ -112,6 +124,18 @@ disassociate_gateway_from_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateGatewayFromServer">>, Input, Options).
 
+%% @doc Retrieves the bandwidth rate limit schedule for a specified gateway.
+%%
+%% By default, gateways do not have bandwidth rate limit schedules, which
+%% means no bandwidth rate limiting is in effect. Use this to get a gateway's
+%% bandwidth rate limit schedule.
+get_bandwidth_rate_limit_schedule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_bandwidth_rate_limit_schedule(Client, Input, []).
+get_bandwidth_rate_limit_schedule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetBandwidthRateLimitSchedule">>, Input, Options).
+
 %% @doc By providing the ARN (Amazon Resource Name), this API returns the
 %% gateway.
 get_gateway(Client, Input)
@@ -120,6 +144,31 @@ get_gateway(Client, Input)
 get_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetGateway">>, Input, Options).
+
+%% @doc This action requests information about the specified hypervisor to
+%% which the gateway will connect.
+%%
+%% A hypervisor is hardware, software, or firmware that creates and manages
+%% virtual machines, and allocates resources to them.
+get_hypervisor(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_hypervisor(Client, Input, []).
+get_hypervisor(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetHypervisor">>, Input, Options).
+
+%% @doc This action retrieves the property mappings for the specified
+%% hypervisor.
+%%
+%% A hypervisor property mapping displays the relationship of entity
+%% properties available from the on-premises hypervisor to the properties
+%% available in Amazon Web Services.
+get_hypervisor_property_mappings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_hypervisor_property_mappings(Client, Input, []).
+get_hypervisor_property_mappings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetHypervisorPropertyMappings">>, Input, Options).
 
 %% @doc By providing the ARN (Amazon Resource Name), this API returns the
 %% virtual machine.
@@ -174,6 +223,31 @@ list_virtual_machines(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVirtualMachines">>, Input, Options).
 
+%% @doc This action sets the bandwidth rate limit schedule for a specified
+%% gateway.
+%%
+%% By default, gateways do not have a bandwidth rate limit schedule, which
+%% means no bandwidth rate limiting is in effect. Use this to initiate a
+%% gateway's bandwidth rate limit schedule.
+put_bandwidth_rate_limit_schedule(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_bandwidth_rate_limit_schedule(Client, Input, []).
+put_bandwidth_rate_limit_schedule(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutBandwidthRateLimitSchedule">>, Input, Options).
+
+%% @doc This action sets the property mappings for the specified hypervisor.
+%%
+%% A hypervisor property mapping displays the relationship of entity
+%% properties available from the on-premises hypervisor to the properties
+%% available in Amazon Web Services.
+put_hypervisor_property_mappings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_hypervisor_property_mappings(Client, Input, []).
+put_hypervisor_property_mappings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutHypervisorPropertyMappings">>, Input, Options).
+
 %% @doc Set the maintenance start time for a gateway.
 put_maintenance_start_time(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -181,6 +255,15 @@ put_maintenance_start_time(Client, Input)
 put_maintenance_start_time(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutMaintenanceStartTime">>, Input, Options).
+
+%% @doc This action sends a request to sync metadata across the specified
+%% virtual machines.
+start_virtual_machines_metadata_sync(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_virtual_machines_metadata_sync(Client, Input, []).
+start_virtual_machines_metadata_sync(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartVirtualMachinesMetadataSync">>, Input, Options).
 
 %% @doc Tag the resource.
 tag_resource(Client, Input)

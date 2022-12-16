@@ -17,8 +17,6 @@
 %% You can connect programmatically to an Amazon Web Services service by
 %% using an endpoint. For a list of Amazon Connect endpoints, see Amazon
 %% Connect Endpoints.
-%%
-%% Working with flows? Check out the Amazon Connect Flow language.
 -module(aws_connect).
 
 -export([associate_approved_origin/3,
@@ -972,6 +970,8 @@ create_routing_profile(Client, InstanceId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a rule for the specified Amazon Connect instance.
+%%
+%% Use the Rules Function language to code conditions for the rule.
 create_rule(Client, InstanceId, Input) ->
     create_rule(Client, InstanceId, Input, []).
 create_rule(Client, InstanceId, Input0, Options0) ->
@@ -4828,6 +4828,8 @@ update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Opti
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a rule for the specified Amazon Connect instance.
+%%
+%% Use the Rules Function language to code conditions for the rule.
 update_rule(Client, InstanceId, RuleId, Input) ->
     update_rule(Client, InstanceId, RuleId, Input, []).
 update_rule(Client, InstanceId, RuleId, Input0, Options0) ->
