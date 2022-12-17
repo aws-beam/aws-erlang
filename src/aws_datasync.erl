@@ -263,18 +263,6 @@ create_location_smb(Client, Input, Options)
 %% A task includes a source location, a destination location, and the
 %% preferences for how and when you want to transfer your data (such as
 %% bandwidth limits, scheduling, among other options).
-%%
-%% When you create a task that transfers data between Amazon Web Services
-%% services in different Amazon Web Services Regions, one of your locations
-%% must reside in the Region where you're using DataSync.
-%%
-%% For more information, see the following topics:
-%%
-%% <ul> <li> Working with DataSync locations
-%%
-%% </li> <li> Configure DataSync task settings
-%%
-%% </li> </ul>
 create_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_task(Client, Input, []).
@@ -303,7 +291,7 @@ delete_location(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLocation">>, Input, Options).
 
-%% @doc Deletes a task.
+%% @doc Deletes an DataSync task.
 delete_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_task(Client, Input, []).
@@ -468,7 +456,7 @@ list_locations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLocations">>, Input, Options).
 
-%% @doc Returns all the tags associated with a specified resource.
+%% @doc Returns all the tags associated with an Amazon Web Services resource.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -492,16 +480,12 @@ list_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTasks">>, Input, Options).
 
-%% @doc Starts a specific invocation of a task.
+%% @doc Starts an DataSync task.
 %%
-%% A `TaskExecution' value represents an individual run of a task. Each task
-%% can have at most one `TaskExecution' at a time.
+%% For each task, you can only run one task execution at a time.
 %%
-%% `TaskExecution' has the following transition phases: INITIALIZING |
-%% PREPARING | TRANSFERRING | VERIFYING | SUCCESS/FAILURE.
-%%
-%% For detailed information, see the Task Execution section in the Components
-%% and Terminology topic in the DataSync User Guide.
+%% There are several phases to a task execution. For more information, see
+%% Task execution statuses.
 start_task_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_task_execution(Client, Input, []).
@@ -509,7 +493,13 @@ start_task_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartTaskExecution">>, Input, Options).
 
-%% @doc Applies a key-value pair to an Amazon Web Services resource.
+%% @doc Applies a tag to an Amazon Web Services resource.
+%%
+%% Tags are key-value pairs that can help you manage, filter, and search for
+%% your resources.
+%%
+%% These include DataSync resources, such as locations, tasks, and task
+%% executions.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -517,7 +507,7 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Removes a tag from an Amazon Web Services resource.
+%% @doc Removes tags from an Amazon Web Services resource.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).

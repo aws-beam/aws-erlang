@@ -282,7 +282,7 @@
 %% @doc Associates an alias (also known as a CNAME or an alternate domain
 %% name) with a CloudFront distribution.
 %%
-%% With this operation you can move an alias that’s already in use on a
+%% With this operation you can move an alias that's already in use on a
 %% CloudFront distribution to a different distribution in one step. This
 %% prevents the downtime that could occur if you first remove the alias from
 %% one distribution and then separately add the alias to another
@@ -325,7 +325,7 @@ associate_alias(Client, TargetDistributionId, Input0, Options0) ->
 %% workflow.
 %%
 %% After you create a staging distribution, you can use `UpdateDistribution'
-%% to modify the staging distribution’s configuration. Then you can use
+%% to modify the staging distribution's configuration. Then you can use
 %% `CreateContinuousDeploymentPolicy' to incrementally move traffic to the
 %% staging distribution.
 copy_distribution(Client, PrimaryDistributionId, Input) ->
@@ -373,7 +373,7 @@ copy_distribution(Client, PrimaryDistributionId, Input0, Options0) ->
 %% @doc Creates a cache policy.
 %%
 %% After you create a cache policy, you can attach it to one or more cache
-%% behaviors. When it’s attached to a cache behavior, the cache policy
+%% behaviors. When it's attached to a cache behavior, the cache policy
 %% determines the following:
 %%
 %% <ul> <li> The values that CloudFront includes in the cache key. These
@@ -386,8 +386,8 @@ copy_distribution(Client, PrimaryDistributionId, Input0, Options0) ->
 %%
 %% </li> </ul> The headers, cookies, and query strings that are included in
 %% the cache key are automatically included in requests that CloudFront sends
-%% to the origin. CloudFront sends a request when it can’t find an object in
-%% its cache that matches the request’s cache key. If you want to send values
+%% to the origin. CloudFront sends a request when it can't find an object in
+%% its cache that matches the request's cache key. If you want to send values
 %% to the origin but not include them in the cache key, use
 %% `OriginRequestPolicy'.
 %%
@@ -483,12 +483,12 @@ create_cloud_front_origin_access_identity(Client, Input0, Options0) ->
 %%
 %% To use a continuous deployment policy, first use `CopyDistribution' to
 %% create a staging distribution, then use `UpdateDistribution' to modify the
-%% staging distribution’s configuration.
+%% staging distribution's configuration.
 %%
 %% After you create and update a staging distribution, you can use a
 %% continuous deployment policy to incrementally move traffic to the staging
 %% distribution. This workflow enables you to test changes to a
-%% distribution’s configuration before moving all of your domain’s production
+%% distribution's configuration before moving all of your domain's production
 %% traffic to the new configuration.
 create_continuous_deployment_policy(Client, Input) ->
     create_continuous_deployment_policy(Client, Input, []).
@@ -695,14 +695,14 @@ create_field_level_encryption_profile(Client, Input0, Options0) ->
 %% information about the function. The response contains an Amazon Resource
 %% Name (ARN) that uniquely identifies the function.
 %%
-%% When you create a function, it’s in the `DEVELOPMENT' stage. In this
+%% When you create a function, it's in the `DEVELOPMENT' stage. In this
 %% stage, you can test the function with `TestFunction', and update it with
 %% `UpdateFunction'.
 %%
-%% When you’re ready to use your function with a CloudFront distribution, use
+%% When you're ready to use your function with a CloudFront distribution, use
 %% `PublishFunction' to copy the function from the `DEVELOPMENT' stage to
-%% `LIVE'. When it’s live, you can attach the function to a distribution’s
-%% cache behavior, using the function’s ARN.
+%% `LIVE'. When it's live, you can attach the function to a distribution's
+%% cache behavior, using the function's ARN.
 create_function(Client, Input) ->
     create_function(Client, Input, []).
 create_function(Client, Input0, Options0) ->
@@ -916,7 +916,7 @@ create_origin_access_control(Client, Input0, Options0) ->
 %% @doc Creates an origin request policy.
 %%
 %% After you create an origin request policy, you can attach it to one or
-%% more cache behaviors. When it’s attached to a cache behavior, the origin
+%% more cache behaviors. When it's attached to a cache behavior, the origin
 %% request policy determines the values that CloudFront includes in requests
 %% that it sends to the origin. Each request that CloudFront sends to the
 %% origin includes the following:
@@ -932,7 +932,7 @@ create_origin_access_control(Client, Input0, Options0) ->
 %% include items from the viewer request and, in the case of headers,
 %% additional ones that are added by CloudFront.
 %%
-%% </li> </ul> CloudFront sends a request when it can’t find a valid object
+%% </li> </ul> CloudFront sends a request when it can't find a valid object
 %% in its cache that matches the request. If you want to send values to the
 %% origin and also include them in the cache key, use `CachePolicy'.
 %%
@@ -1056,7 +1056,7 @@ create_realtime_log_config(Client, Input0, Options0) ->
 %% that specify the response headers.
 %%
 %% After you create a response headers policy, you can use its ID to attach
-%% it to one or more cache behaviors in a CloudFront distribution. When it’s
+%% it to one or more cache behaviors in a CloudFront distribution. When it's
 %% attached to a cache behavior, CloudFront adds the headers in the policy to
 %% HTTP responses that it sends for requests that match the cache behavior.
 create_response_headers_policy(Client, Input) ->
@@ -1188,11 +1188,11 @@ create_streaming_distribution_with_tags(Client, Input0, Options0) ->
 
 %% @doc Deletes a cache policy.
 %%
-%% You cannot delete a cache policy if it’s attached to a cache behavior.
+%% You cannot delete a cache policy if it's attached to a cache behavior.
 %% First update your distributions to remove the cache policy from all cache
 %% behaviors, then delete the cache policy.
 %%
-%% To delete a cache policy, you must provide the policy’s identifier and
+%% To delete a cache policy, you must provide the policy's identifier and
 %% version. To get these values, you can use `ListCachePolicies' or
 %% `GetCachePolicy'.
 delete_cache_policy(Client, Id, Input) ->
@@ -1246,7 +1246,7 @@ delete_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
 
 %% @doc Deletes a continuous deployment policy.
 %%
-%% You cannot delete a continuous deployment policy that’s attached to a
+%% You cannot delete a continuous deployment policy that's attached to a
 %% primary distribution. First update your distribution to remove the
 %% continuous deployment policy, then you can delete the policy.
 delete_continuous_deployment_policy(Client, Id, Input) ->
@@ -1350,11 +1350,11 @@ delete_field_level_encryption_profile(Client, Id, Input0, Options0) ->
 
 %% @doc Deletes a CloudFront function.
 %%
-%% You cannot delete a function if it’s associated with a cache behavior.
+%% You cannot delete a function if it's associated with a cache behavior.
 %% First, update your distributions to remove the function association from
 %% all cache behaviors, then delete the function.
 %%
-%% To delete a function, you must provide the function’s name and version
+%% To delete a function, you must provide the function's name and version
 %% (`ETag' value). To get these values, you can use `ListFunctions' and
 %% `DescribeFunction'.
 delete_function(Client, Name, Input) ->
@@ -1387,7 +1387,7 @@ delete_function(Client, Name, Input0, Options0) ->
 %% First update your distributions to remove the key group from all cache
 %% behaviors, then delete the key group.
 %%
-%% To delete a key group, you must provide the key group’s identifier and
+%% To delete a key group, you must provide the key group's identifier and
 %% version. To get these values, use `ListKeyGroups' followed by
 %% `GetKeyGroup' or `GetKeyGroupConfig'.
 delete_key_group(Client, Id, Input) ->
@@ -1469,11 +1469,11 @@ delete_origin_access_control(Client, Id, Input0, Options0) ->
 
 %% @doc Deletes an origin request policy.
 %%
-%% You cannot delete an origin request policy if it’s attached to any cache
+%% You cannot delete an origin request policy if it's attached to any cache
 %% behaviors. First update your distributions to remove the origin request
 %% policy from all cache behaviors, then delete the origin request policy.
 %%
-%% To delete an origin request policy, you must provide the policy’s
+%% To delete an origin request policy, you must provide the policy's
 %% identifier and version. To get the identifier, you can use
 %% `ListOriginRequestPolicies' or `GetOriginRequestPolicy'.
 delete_origin_request_policy(Client, Id, Input) ->
@@ -1527,13 +1527,13 @@ delete_public_key(Client, Id, Input0, Options0) ->
 
 %% @doc Deletes a real-time log configuration.
 %%
-%% You cannot delete a real-time log configuration if it’s attached to a
+%% You cannot delete a real-time log configuration if it's attached to a
 %% cache behavior. First update your distributions to remove the real-time
 %% log configuration from all cache behaviors, then delete the real-time log
 %% configuration.
 %%
 %% To delete a real-time log configuration, you can provide the
-%% configuration’s name or its Amazon Resource Name (ARN). You must provide
+%% configuration's name or its Amazon Resource Name (ARN). You must provide
 %% at least one. If you provide both, CloudFront uses the name to identify
 %% the real-time log configuration to delete.
 delete_realtime_log_config(Client, Input) ->
@@ -1560,11 +1560,11 @@ delete_realtime_log_config(Client, Input0, Options0) ->
 
 %% @doc Deletes a response headers policy.
 %%
-%% You cannot delete a response headers policy if it’s attached to a cache
+%% You cannot delete a response headers policy if it's attached to a cache
 %% behavior. First update your distributions to remove the response headers
 %% policy from all cache behaviors, then delete the response headers policy.
 %%
-%% To delete a response headers policy, you must provide the policy’s
+%% To delete a response headers policy, you must provide the policy's
 %% identifier and version. To get these values, you can use
 %% `ListResponseHeadersPolicies' or `GetResponseHeadersPolicy'.
 delete_response_headers_policy(Client, Id, Input) ->
@@ -1657,12 +1657,12 @@ delete_streaming_distribution(Client, Id, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets configuration information and metadata about a CloudFront
-%% function, but not the function’s code.
+%% function, but not the function's code.
 %%
-%% To get a function’s code, use `GetFunction'.
+%% To get a function's code, use `GetFunction'.
 %%
 %% To get configuration information and metadata about a function, you must
-%% provide the function’s name and stage. To get these values, you can use
+%% provide the function's name and stage. To get these values, you can use
 %% `ListFunctions'.
 describe_function(Client, Name)
   when is_map(Client) ->
@@ -1708,13 +1708,13 @@ describe_function(Client, Name, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets a cache policy, including the following metadata:
 %%
-%% <ul> <li> The policy’s identifier.
+%% <ul> <li> The policy's identifier.
 %%
 %% </li> <li> The date and time when the policy was last modified.
 %%
-%% </li> </ul> To get a cache policy, you must provide the policy’s
-%% identifier. If the cache policy is attached to a distribution’s cache
-%% behavior, you can get the policy’s identifier using `ListDistributions' or
+%% </li> </ul> To get a cache policy, you must provide the policy's
+%% identifier. If the cache policy is attached to a distribution's cache
+%% behavior, you can get the policy's identifier using `ListDistributions' or
 %% `GetDistribution'. If the cache policy is not attached to a cache
 %% behavior, you can get the identifier using `ListCachePolicies'.
 get_cache_policy(Client, Id)
@@ -1757,9 +1757,9 @@ get_cache_policy(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets a cache policy configuration.
 %%
-%% To get a cache policy configuration, you must provide the policy’s
-%% identifier. If the cache policy is attached to a distribution’s cache
-%% behavior, you can get the policy’s identifier using `ListDistributions' or
+%% To get a cache policy configuration, you must provide the policy's
+%% identifier. If the cache policy is attached to a distribution's cache
+%% behavior, you can get the policy's identifier using `ListDistributions' or
 %% `GetDistribution'. If the cache policy is not attached to a cache
 %% behavior, you can get the identifier using `ListCachePolicies'.
 get_cache_policy_config(Client, Id)
@@ -1878,7 +1878,7 @@ get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap, 
         Result
     end.
 
-%% @doc Gets a continuous deployment policy, including metadata (the policy’s
+%% @doc Gets a continuous deployment policy, including metadata (the policy's
 %% identifier and the date and time when the policy was last modified).
 get_continuous_deployment_policy(Client, Id)
   when is_map(Client) ->
@@ -2196,7 +2196,7 @@ get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap, Opti
 %% To get configuration information and metadata about a function, use
 %% `DescribeFunction'.
 %%
-%% To get a function’s code, you must provide the function’s name and stage.
+%% To get a function's code, you must provide the function's name and stage.
 %% To get these values, you can use `ListFunctions'.
 get_function(Client, Name)
   when is_map(Client) ->
@@ -2267,9 +2267,9 @@ get_invalidation(Client, DistributionId, Id, QueryMap, HeadersMap, Options0)
 %% @doc Gets a key group, including the date and time when the key group was
 %% last modified.
 %%
-%% To get a key group, you must provide the key group’s identifier. If the
-%% key group is referenced in a distribution’s cache behavior, you can get
-%% the key group’s identifier using `ListDistributions' or `GetDistribution'.
+%% To get a key group, you must provide the key group's identifier. If the
+%% key group is referenced in a distribution's cache behavior, you can get
+%% the key group's identifier using `ListDistributions' or `GetDistribution'.
 %% If the key group is not referenced in a cache behavior, you can get the
 %% identifier using `ListKeyGroups'.
 get_key_group(Client, Id)
@@ -2312,9 +2312,9 @@ get_key_group(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets a key group configuration.
 %%
-%% To get a key group configuration, you must provide the key group’s
-%% identifier. If the key group is referenced in a distribution’s cache
-%% behavior, you can get the key group’s identifier using `ListDistributions'
+%% To get a key group configuration, you must provide the key group's
+%% identifier. If the key group is referenced in a distribution's cache
+%% behavior, you can get the key group's identifier using `ListDistributions'
 %% or `GetDistribution'. If the key group is not referenced in a cache
 %% behavior, you can get the identifier using `ListKeyGroups'.
 get_key_group_config(Client, Id)
@@ -2460,13 +2460,13 @@ get_origin_access_control_config(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets an origin request policy, including the following metadata:
 %%
-%% <ul> <li> The policy’s identifier.
+%% <ul> <li> The policy's identifier.
 %%
 %% </li> <li> The date and time when the policy was last modified.
 %%
-%% </li> </ul> To get an origin request policy, you must provide the policy’s
-%% identifier. If the origin request policy is attached to a distribution’s
-%% cache behavior, you can get the policy’s identifier using
+%% </li> </ul> To get an origin request policy, you must provide the policy's
+%% identifier. If the origin request policy is attached to a distribution's
+%% cache behavior, you can get the policy's identifier using
 %% `ListDistributions' or `GetDistribution'. If the origin request policy is
 %% not attached to a cache behavior, you can get the identifier using
 %% `ListOriginRequestPolicies'.
@@ -2511,8 +2511,8 @@ get_origin_request_policy(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Gets an origin request policy configuration.
 %%
 %% To get an origin request policy configuration, you must provide the
-%% policy’s identifier. If the origin request policy is attached to a
-%% distribution’s cache behavior, you can get the policy’s identifier using
+%% policy's identifier. If the origin request policy is attached to a
+%% distribution's cache behavior, you can get the policy's identifier using
 %% `ListDistributions' or `GetDistribution'. If the origin request policy is
 %% not attached to a cache behavior, you can get the identifier using
 %% `ListOriginRequestPolicies'.
@@ -2634,7 +2634,7 @@ get_public_key_config(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets a real-time log configuration.
 %%
-%% To get a real-time log configuration, you can provide the configuration’s
+%% To get a real-time log configuration, you can provide the configuration's
 %% name or its Amazon Resource Name (ARN). You must provide at least one. If
 %% you provide both, CloudFront uses the name to identify the real-time log
 %% configuration to get.
@@ -2660,12 +2660,12 @@ get_realtime_log_config(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets a response headers policy, including metadata (the policy’s
+%% @doc Gets a response headers policy, including metadata (the policy's
 %% identifier and the date and time when the policy was last modified).
 %%
-%% To get a response headers policy, you must provide the policy’s
-%% identifier. If the response headers policy is attached to a distribution’s
-%% cache behavior, you can get the policy’s identifier using
+%% To get a response headers policy, you must provide the policy's
+%% identifier. If the response headers policy is attached to a distribution's
+%% cache behavior, you can get the policy's identifier using
 %% `ListDistributions' or `GetDistribution'. If the response headers policy
 %% is not attached to a cache behavior, you can get the identifier using
 %% `ListResponseHeadersPolicies'.
@@ -2710,8 +2710,8 @@ get_response_headers_policy(Client, Id, QueryMap, HeadersMap, Options0)
 %% @doc Gets a response headers policy configuration.
 %%
 %% To get a response headers policy configuration, you must provide the
-%% policy’s identifier. If the response headers policy is attached to a
-%% distribution’s cache behavior, you can get the policy’s identifier using
+%% policy's identifier. If the response headers policy is attached to a
+%% distribution's cache behavior, you can get the policy's identifier using
 %% `ListDistributions' or `GetDistribution'. If the response headers policy
 %% is not attached to a cache behavior, you can get the identifier using
 %% `ListResponseHeadersPolicies'.
@@ -2907,7 +2907,7 @@ list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap, Options0
 %%
 %% In the returned list, the distribution and account IDs are partially
 %% hidden, which allows you to identify the distributions and accounts that
-%% you own, but helps to protect the information of ones that you don’t own.
+%% you own, but helps to protect the information of ones that you don't own.
 %%
 %% Use this operation to find aliases that are in use in CloudFront that
 %% conflict or overlap with the provided alias. For example, if you provide
@@ -3024,7 +3024,7 @@ list_distributions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of distribution IDs for distributions that have a cache
-%% behavior that’s associated with the specified cache policy.
+%% behavior that's associated with the specified cache policy.
 %%
 %% You can optionally specify the maximum number of items to receive in the
 %% response. If the total number of items in the list exceeds the maximum
@@ -3096,7 +3096,7 @@ list_distributions_by_key_group(Client, KeyGroupId, QueryMap, HeadersMap, Option
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets a list of distribution IDs for distributions that have a cache
-%% behavior that’s associated with the specified origin request policy.
+%% behavior that's associated with the specified origin request policy.
 %%
 %% You can optionally specify the maximum number of items to receive in the
 %% response. If the total number of items in the list exceeds the maximum
@@ -3131,7 +3131,7 @@ list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Qu
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets a list of distributions that have a cache behavior that’s
+%% @doc Gets a list of distributions that have a cache behavior that's
 %% associated with the specified real-time log configuration.
 %%
 %% You can specify the real-time log configuration by its name or its Amazon
@@ -3168,7 +3168,7 @@ list_distributions_by_realtime_log_config(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets a list of distribution IDs for distributions that have a cache
-%% behavior that’s associated with the specified response headers policy.
+%% behavior that's associated with the specified response headers policy.
 %%
 %% You can optionally specify the maximum number of items to receive in the
 %% response. If the total number of items in the list exceeds the maximum
@@ -3635,10 +3635,10 @@ list_tags_for_resource(Client, Resource, QueryMap, HeadersMap, Options0)
 %% function to use the newly published copy in the `LIVE' stage.
 %%
 %% When a function is published to the `LIVE' stage, you can attach the
-%% function to a distribution’s cache behavior, using the function’s Amazon
+%% function to a distribution's cache behavior, using the function's Amazon
 %% Resource Name (ARN).
 %%
-%% To publish a function, you must provide the function’s name and version
+%% To publish a function, you must provide the function's name and version
 %% (`ETag' value). To get these values, you can use `ListFunctions' and
 %% `DescribeFunction'.
 publish_function(Client, Name, Input) ->
@@ -3694,13 +3694,13 @@ tag_resource(Client, Input0, Options0) ->
 %% To test a function, you provide an event object that represents an HTTP
 %% request or response that your CloudFront distribution could receive in
 %% production. CloudFront runs the function, passing it the event object that
-%% you provided, and returns the function’s result (the modified event
+%% you provided, and returns the function's result (the modified event
 %% object) in the response. The response also contains function logs and
 %% error messages, if any exist. For more information about testing
 %% functions, see Testing functions in the Amazon CloudFront Developer Guide.
 %%
-%% To test a function, you provide the function’s name and version (`ETag'
-%% value) along with the event object. To get the function’s name and
+%% To test a function, you provide the function's name and version (`ETag'
+%% value) along with the event object. To get the function's name and
 %% version, you can use `ListFunctions' and `DescribeFunction'.
 test_function(Client, Name, Input) ->
     test_function(Client, Name, Input, []).
@@ -3763,7 +3763,7 @@ untag_resource(Client, Input0, Options0) ->
 %%
 %% </li> <li> Call `UpdateCachePolicy' by providing the entire cache policy
 %% configuration, including the fields that you modified and those that you
-%% didn’t.
+%% didn't.
 %%
 %% </li> </ol>
 update_cache_policy(Client, Id, Input) ->
@@ -3867,7 +3867,7 @@ update_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
 %%
 %% </li> <li> Use `UpdateContinuousDeploymentPolicy', providing the entire
 %% continuous deployment policy configuration, including the fields that you
-%% modified and those that you didn’t.
+%% modified and those that you didn't.
 %%
 %% </li> </ol>
 update_continuous_deployment_policy(Client, Id, Input) ->
@@ -3928,14 +3928,14 @@ update_continuous_deployment_policy(Client, Id, Input0, Options0) ->
 %% unchanged. (Set the value of `IfMatch' to the value of `ETag', then remove
 %% the `ETag' field.)
 %%
-%% </li> <li> You can’t change the value of `CallerReference'.
+%% </li> <li> You can't change the value of `CallerReference'.
 %%
 %% </li> </ul> </li> <li> Submit an `UpdateDistribution' request, providing
 %% the distribution configuration. The new configuration replaces the
 %% existing configuration. The values that you specify in an
 %% `UpdateDistribution' request are not merged into your existing
 %% configuration. Make sure to include all fields: the ones that you modified
-%% and also the ones that you didn’t.
+%% and also the ones that you didn't.
 %%
 %% </li> </ol>
 update_distribution(Client, Id, Input) ->
@@ -3988,11 +3988,11 @@ update_distribution(Client, Id, Input0, Options0) ->
 %%
 %% You can use this operation in a continuous deployment workflow after you
 %% have tested configuration changes on the staging distribution. After using
-%% a continuous deployment policy to move a portion of your domain name’s
+%% a continuous deployment policy to move a portion of your domain name's
 %% traffic to the staging distribution and verifying that it works as
-%% intended, you can use this operation to copy the staging distribution’s
+%% intended, you can use this operation to copy the staging distribution's
 %% configuration to the primary distribution. This action will disable the
-%% continuous deployment policy and move your domain’s traffic back to the
+%% continuous deployment policy and move your domain's traffic back to the
 %% primary distribution.
 update_distribution_with_staging_config(Client, Id, Input) ->
     update_distribution_with_staging_config(Client, Id, Input, []).
@@ -4119,10 +4119,10 @@ update_field_level_encryption_profile(Client, Id, Input0, Options0) ->
 
 %% @doc Updates a CloudFront function.
 %%
-%% You can update a function’s code or the comment that describes the
-%% function. You cannot update a function’s name.
+%% You can update a function's code or the comment that describes the
+%% function. You cannot update a function's name.
 %%
-%% To update a function, you provide the function’s name and version (`ETag'
+%% To update a function, you provide the function's name and version (`ETag'
 %% value) along with the updated function code. To get the name and version,
 %% you can use `ListFunctions' and `DescribeFunction'.
 update_function(Client, Name, Input) ->
@@ -4178,7 +4178,7 @@ update_function(Client, Name, Input0, Options0) ->
 %% update. For example, add or remove public key IDs.
 %%
 %% </li> <li> Call `UpdateKeyGroup' with the entire key group object,
-%% including the fields that you modified and those that you didn’t.
+%% including the fields that you modified and those that you didn't.
 %%
 %% </li> </ol>
 update_key_group(Client, Id, Input) ->
@@ -4277,7 +4277,7 @@ update_origin_access_control(Client, Id, Input0, Options0) ->
 %%
 %% </li> <li> Call `UpdateOriginRequestPolicy' by providing the entire origin
 %% request policy configuration, including the fields that you modified and
-%% those that you didn’t.
+%% those that you didn't.
 %%
 %% </li> </ol>
 update_origin_request_policy(Client, Id, Input) ->
@@ -4377,9 +4377,9 @@ update_public_key(Client, Id, Input0, Options0) ->
 %%
 %% </li> <li> Call this API (`UpdateRealtimeLogConfig') by providing the
 %% entire real-time log configuration, including the parameters that you
-%% modified and those that you didn’t.
+%% modified and those that you didn't.
 %%
-%% </li> </ol> You cannot update a real-time log configuration’s `Name' or
+%% </li> </ol> You cannot update a real-time log configuration's `Name' or
 %% `ARN'.
 update_realtime_log_config(Client, Input) ->
     update_realtime_log_config(Client, Input, []).
@@ -4409,7 +4409,7 @@ update_realtime_log_config(Client, Input0, Options0) ->
 %% You cannot update some policy fields independent of others. To update a
 %% response headers policy configuration:
 %%
-%% <ol> <li> Use `GetResponseHeadersPolicyConfig' to get the current policy’s
+%% <ol> <li> Use `GetResponseHeadersPolicyConfig' to get the current policy's
 %% configuration.
 %%
 %% </li> <li> Modify the fields in the response headers policy configuration
@@ -4417,7 +4417,7 @@ update_realtime_log_config(Client, Input0, Options0) ->
 %%
 %% </li> <li> Call `UpdateResponseHeadersPolicy', providing the entire
 %% response headers policy configuration, including the fields that you
-%% modified and those that you didn’t.
+%% modified and those that you didn't.
 %%
 %% </li> </ol>
 update_response_headers_policy(Client, Id, Input) ->
