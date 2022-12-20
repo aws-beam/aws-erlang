@@ -430,8 +430,10 @@ get_query_results(Client, Input, Options)
 %% execution of a query if you have access to the workgroup in which the
 %% query ran.
 %%
-%% The query execution runtime statistics is returned only when
+%% Query execution runtime statistics are returned only when
 %% `QueryExecutionStatus$State' is in a SUCCEEDED or FAILED state.
+%% Stage-level input and output row count and data size statistics are not
+%% shown when a query has row-level filters defined in Lake Formation.
 get_query_runtime_statistics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_query_runtime_statistics(Client, Input, []).

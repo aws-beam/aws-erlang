@@ -354,6 +354,8 @@
          list_actions/3,
          list_algorithms/2,
          list_algorithms/3,
+         list_aliases/2,
+         list_aliases/3,
          list_app_image_configs/2,
          list_app_image_configs/3,
          list_apps/2,
@@ -574,6 +576,8 @@
          update_hub/3,
          update_image/2,
          update_image/3,
+         update_image_version/2,
+         update_image_version/3,
          update_inference_experiment/2,
          update_inference_experiment/3,
          update_model_card/2,
@@ -2862,6 +2866,14 @@ list_algorithms(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAlgorithms">>, Input, Options).
 
+%% @doc Lists the aliases of a specified image or image version.
+list_aliases(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_aliases(Client, Input, []).
+list_aliases(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAliases">>, Input, Options).
+
 %% @doc Lists the AppImageConfigs in your account and their properties.
 %%
 %% The list can be filtered by creation time or modified time, and whether
@@ -3958,6 +3970,14 @@ update_image(Client, Input)
 update_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateImage">>, Input, Options).
+
+%% @doc Updates the properties of a SageMaker image version.
+update_image_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_image_version(Client, Input, []).
+update_image_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateImageVersion">>, Input, Options).
 
 %% @doc Updates an inference experiment that you created.
 %%

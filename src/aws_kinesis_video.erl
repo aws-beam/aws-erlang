@@ -16,6 +16,10 @@
          describe_edge_configuration/3,
          describe_image_generation_configuration/2,
          describe_image_generation_configuration/3,
+         describe_mapped_resource_configuration/2,
+         describe_mapped_resource_configuration/3,
+         describe_media_storage_configuration/2,
+         describe_media_storage_configuration/3,
          describe_notification_configuration/2,
          describe_notification_configuration/3,
          describe_signaling_channel/2,
@@ -48,6 +52,8 @@
          update_data_retention/3,
          update_image_generation_configuration/2,
          update_image_generation_configuration/3,
+         update_media_storage_configuration/2,
+         update_media_storage_configuration/3,
          update_notification_configuration/2,
          update_notification_configuration/3,
          update_signaling_channel/2,
@@ -214,6 +220,59 @@ describe_image_generation_configuration(Client, Input) ->
 describe_image_generation_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/describeImageGenerationConfiguration"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the most current information about the stream.
+%%
+%% Either streamName or streamARN should be provided in the input.
+%%
+%% Returns the most current information about the stream. The `streamName' or
+%% `streamARN' should be provided in the input.
+describe_mapped_resource_configuration(Client, Input) ->
+    describe_mapped_resource_configuration(Client, Input, []).
+describe_mapped_resource_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/describeMappedResourceConfiguration"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the most current information about the channel.
+%%
+%% Specify the `ChannelName' or `ChannelARN' in the input.
+describe_media_storage_configuration(Client, Input) ->
+    describe_media_storage_configuration(Client, Input, []).
+describe_media_storage_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/describeMediaStorageConfiguration"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -483,21 +542,20 @@ list_tags_for_stream(Client, Input0, Options0) ->
 %% @doc An asynchronous API that updates a stream’s existing edge
 %% configuration.
 %%
-%% If this API is invoked for the first time, a new edge configuration will
-%% be created for the stream, and the sync status will be set to `SYNCING'.
-%%
 %% The Kinesis Video Stream will sync the stream’s edge configuration with
-%% the Edge Agent IoT Greengrass component that runs on an IoT Hub Device
+%% the Edge Agent IoT Greengrass component that runs on an IoT Hub Device,
 %% setup at your premise. The time to sync can vary and depends on the
 %% connectivity of the Hub Device. The `SyncStatus' will be updated as the
-%% edge configuration is acknowledged, and synced with the Edge Agent. You
-%% will have to wait for the sync status to reach a terminal state such as:
-%% `IN_SYNC' and `SYNC_FAILED', before using this API again.
+%% edge configuration is acknowledged, and synced with the Edge Agent.
 %%
-%% If you invoke this API during the syncing process, a
-%% `ResourceInUseException' will be thrown. The connectivity of the stream's
-%% edge configuration and the Edge Agent will be retried for 15 minutes.
-%% After 15 minutes, the status will transition into the `SYNC_FAILED' state.
+%% If this API is invoked for the first time, a new edge configuration will
+%% be created for the stream, and the sync status will be set to `SYNCING'.
+%% You will have to wait for the sync status to reach a terminal state such
+%% as: `IN_SYNC', or `SYNC_FAILED', before using this API again. If you
+%% invoke this API during the syncing process, a `ResourceInUseException'
+%% will be thrown. The connectivity of the stream’s edge configuration and
+%% the Edge Agent will be retried for 15 minutes. After 15 minutes, the
+%% status will transition into the `SYNC_FAILED' state.
 start_edge_configuration_update(Client, Input) ->
     start_edge_configuration_update(Client, Input, []).
 start_edge_configuration_update(Client, Input0, Options0) ->
@@ -694,6 +752,39 @@ update_image_generation_configuration(Client, Input) ->
 update_image_generation_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/updateImageGenerationConfiguration"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates a `SignalingChannel' to a stream to store the media.
+%%
+%% There are two signaling modes that can specified :
+%%
+%% <ul> <li> If the `StorageStatus' is disabled, no data will be stored, and
+%% the `StreamARN' parameter will not be needed.
+%%
+%% </li> <li> If the `StorageStatus' is enabled, the data will be stored in
+%% the `StreamARN' provided.
+%%
+%% </li> </ul>
+update_media_storage_configuration(Client, Input) ->
+    update_media_storage_configuration(Client, Input, []).
+update_media_storage_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/updateMediaStorageConfiguration"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
