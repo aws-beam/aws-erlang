@@ -60,6 +60,9 @@
          get_streaming_session/3,
          get_streaming_session/5,
          get_streaming_session/6,
+         get_streaming_session_backup/3,
+         get_streaming_session_backup/5,
+         get_streaming_session_backup/6,
          get_streaming_session_stream/4,
          get_streaming_session_stream/6,
          get_streaming_session_stream/7,
@@ -87,6 +90,9 @@
          list_streaming_images/2,
          list_streaming_images/4,
          list_streaming_images/5,
+         list_streaming_session_backups/2,
+         list_streaming_session_backups/4,
+         list_streaming_session_backups/5,
          list_streaming_sessions/2,
          list_streaming_sessions/4,
          list_streaming_sessions/5,
@@ -211,7 +217,7 @@ create_streaming_image(Client, StudioId, Input0, Options0) ->
 %% @doc Creates a streaming session in a studio.
 %%
 %% After invoking this operation, you must poll GetStreamingSession until the
-%% streaming session is in state READY.
+%% streaming session is in the `READY' state.
 create_streaming_session(Client, StudioId, Input) ->
     create_streaming_session(Client, StudioId, Input, []).
 create_streaming_session(Client, StudioId, Input0, Options0) ->
@@ -239,7 +245,7 @@ create_streaming_session(Client, StudioId, Input0, Options0) ->
 %% @doc Creates a streaming session stream for a streaming session.
 %%
 %% After invoking this API, invoke GetStreamingSessionStream with the
-%% returned streamId to poll the resource until it is in state READY.
+%% returned streamId to poll the resource until it is in the `READY' state.
 create_streaming_session_stream(Client, SessionId, StudioId, Input) ->
     create_streaming_session_stream(Client, SessionId, StudioId, Input, []).
 create_streaming_session_stream(Client, SessionId, StudioId, Input0, Options0) ->
@@ -264,24 +270,25 @@ create_streaming_session_stream(Client, SessionId, StudioId, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a new Studio.
+%% @doc Create a new studio.
 %%
-%% When creating a Studio, two IAM roles must be provided: the admin role and
-%% the user Role. These roles are assumed by your users when they log in to
+%% When creating a studio, two IAM roles must be provided: the admin role and
+%% the user role. These roles are assumed by your users when they log in to
 %% the Nimble Studio portal.
 %%
-%% The user role must have the AmazonNimbleStudio-StudioUser managed policy
+%% The user role must have the `AmazonNimbleStudio-StudioUser' managed policy
 %% attached for the portal to function properly.
 %%
-%% The Admin Role must have the AmazonNimbleStudio-StudioAdmin managed policy
-%% attached for the portal to function properly.
+%% The admin role must have the `AmazonNimbleStudio-StudioAdmin' managed
+%% policy attached for the portal to function properly.
 %%
-%% You may optionally specify a KMS key in the StudioEncryptionConfiguration.
+%% You may optionally specify a KMS key in the
+%% `StudioEncryptionConfiguration'.
 %%
 %% In Nimble Studio, resource names, descriptions, initialization scripts,
 %% and other data you provide are always encrypted at rest using an KMS key.
 %% By default, this key is owned by Amazon Web Services and managed on your
-%% behalf. You may provide your own KMS key when calling CreateStudio to
+%% behalf. You may provide your own KMS key when calling `CreateStudio' to
 %% encrypt this data using a key you own and manage.
 %%
 %% When providing an KMS key during studio creation, Nimble Studio creates
@@ -420,10 +427,10 @@ delete_streaming_image(Client, StreamingImageId, StudioId, Input0, Options0) ->
 %% @doc Deletes streaming session resource.
 %%
 %% After invoking this operation, use GetStreamingSession to poll the
-%% resource until it transitions to a DELETED state.
+%% resource until it transitions to a `DELETED' state.
 %%
 %% A streaming session will count against your streaming session quota until
-%% it is marked DELETED.
+%% it is marked `DELETED'.
 delete_streaming_session(Client, SessionId, StudioId, Input) ->
     delete_streaming_session(Client, SessionId, StudioId, Input, []).
 delete_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->
@@ -523,7 +530,7 @@ delete_studio_member(Client, PrincipalId, StudioId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Get Eula.
+%% @doc Get EULA.
 get_eula(Client, EulaId)
   when is_map(Client) ->
     get_eula(Client, EulaId, #{}, #{}).
@@ -699,12 +706,38 @@ get_streaming_session(Client, SessionId, StudioId, QueryMap, HeadersMap, Options
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets `StreamingSessionBackup' resource.
+%%
+%% Invoke this operation to poll for a streaming session backup while
+%% stopping a streaming session.
+get_streaming_session_backup(Client, BackupId, StudioId)
+  when is_map(Client) ->
+    get_streaming_session_backup(Client, BackupId, StudioId, #{}, #{}).
+
+get_streaming_session_backup(Client, BackupId, StudioId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_streaming_session_backup(Client, BackupId, StudioId, QueryMap, HeadersMap, []).
+
+get_streaming_session_backup(Client, BackupId, StudioId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-session-backups/", aws_util:encode_uri(BackupId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets a StreamingSessionStream for a streaming session.
 %%
 %% Invoke this operation to poll the resource after invoking
-%% CreateStreamingSessionStream.
+%% `CreateStreamingSessionStream'.
 %%
-%% After the StreamingSessionStream changes to the state READY, the url
+%% After the `StreamingSessionStream' changes to the `READY' state, the url
 %% property will contain a stream to be used with the DCV streaming client.
 get_streaming_session_stream(Client, SessionId, StreamId, StudioId)
   when is_map(Client) ->
@@ -728,7 +761,7 @@ get_streaming_session_stream(Client, SessionId, StreamId, StudioId, QueryMap, He
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get a Studio resource.
+%% @doc Get a studio resource.
 get_studio(Client, StudioId)
   when is_map(Client) ->
     get_studio(Client, StudioId, #{}, #{}).
@@ -797,7 +830,7 @@ get_studio_member(Client, PrincipalId, StudioId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List Eula Acceptances.
+%% @doc List EULA acceptances.
 list_eula_acceptances(Client, StudioId)
   when is_map(Client) ->
     list_eula_acceptances(Client, StudioId, #{}, #{}).
@@ -825,7 +858,7 @@ list_eula_acceptances(Client, StudioId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List Eulas.
+%% @doc List EULAs.
 list_eulas(Client)
   when is_map(Client) ->
     list_eulas(Client, #{}, #{}).
@@ -942,6 +975,34 @@ list_streaming_images(Client, StudioId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the backups of a streaming session in a studio.
+list_streaming_session_backups(Client, StudioId)
+  when is_map(Client) ->
+    list_streaming_session_backups(Client, StudioId, #{}, #{}).
+
+list_streaming_session_backups(Client, StudioId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_streaming_session_backups(Client, StudioId, QueryMap, HeadersMap, []).
+
+list_streaming_session_backups(Client, StudioId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-session-backups"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"ownedBy">>, maps:get(<<"ownedBy">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the streaming sessions in a studio.
 list_streaming_sessions(Client, StudioId)
   when is_map(Client) ->
@@ -972,7 +1033,7 @@ list_streaming_sessions(Client, StudioId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the StudioComponents in a studio.
+%% @doc Lists the `StudioComponents' in a studio.
 list_studio_components(Client, StudioId)
   when is_map(Client) ->
     list_studio_components(Client, StudioId, #{}, #{}).
@@ -1032,7 +1093,7 @@ list_studio_members(Client, StudioId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List studios in your Amazon Web Services account in the requested
+%% @doc List studios in your Amazon Web Services accounts in the requested
 %% Amazon Web Services Region.
 list_studios(Client)
   when is_map(Client) ->
@@ -1139,10 +1200,10 @@ put_studio_members(Client, StudioId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Transitions sessions from the STOPPED state into the READY state.
+%% @doc Transitions sessions from the `STOPPED' state into the `READY' state.
 %%
-%% The START_IN_PROGRESS state is the intermediate state between the STOPPED
-%% and READY states.
+%% The `START_IN_PROGRESS' state is the intermediate state between the
+%% `STOPPED' and `READY' states.
 start_streaming_session(Client, SessionId, StudioId, Input) ->
     start_streaming_session(Client, SessionId, StudioId, Input, []).
 start_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->
@@ -1174,7 +1235,7 @@ start_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->
 %%
 %% If the studio does not have a valid IAM Identity Center configuration
 %% currently associated with it, then a new IAM Identity Center application
-%% is created for the studio and the studio is changed to the READY state.
+%% is created for the studio and the studio is changed to the `READY' state.
 %%
 %% After the IAM Identity Center application is repaired, you must use the
 %% Amazon Nimble Studio console to add administrators and users to your
@@ -1203,10 +1264,10 @@ start_studio_s_s_o_configuration_repair(Client, StudioId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Transitions sessions from the READY state into the STOPPED state.
+%% @doc Transitions sessions from the `READY' state into the `STOPPED' state.
 %%
-%% The STOP_IN_PROGRESS state is the intermediate state between the READY and
-%% STOPPED states.
+%% The `STOP_IN_PROGRESS' state is the intermediate state between the `READY'
+%% and `STOPPED' states.
 stop_streaming_session(Client, SessionId, StudioId, Input) ->
     stop_streaming_session(Client, SessionId, StudioId, Input, []).
 stop_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->

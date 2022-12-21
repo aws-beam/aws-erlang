@@ -1048,11 +1048,14 @@ create_endpoint_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEndpointConfig">>, Input, Options).
 
-%% @doc Creates an SageMaker experiment.
+%% @doc Creates a SageMaker experiment.
 %%
 %% An experiment is a collection of trials that are observed, compared and
 %% evaluated as a group. A trial is a set of steps, called trial components,
 %% that produce a machine learning model.
+%%
+%% In the Studio UI, trials are referred to as run groups and trial
+%% components are referred to as runs.
 %%
 %% The goal of an experiment is to determine the components that produce the
 %% best model. Multiple trials are performed, each one isolating and

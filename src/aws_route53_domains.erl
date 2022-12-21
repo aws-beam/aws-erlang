@@ -7,6 +7,8 @@
 
 -export([accept_domain_transfer_from_another_aws_account/2,
          accept_domain_transfer_from_another_aws_account/3,
+         associate_delegation_signer_to_domain/2,
+         associate_delegation_signer_to_domain/3,
          cancel_domain_transfer_to_another_aws_account/2,
          cancel_domain_transfer_to_another_aws_account/3,
          check_domain_availability/2,
@@ -21,6 +23,8 @@
          disable_domain_auto_renew/3,
          disable_domain_transfer_lock/2,
          disable_domain_transfer_lock/3,
+         disassociate_delegation_signer_from_domain/2,
+         disassociate_delegation_signer_from_domain/3,
          enable_domain_auto_renew/2,
          enable_domain_auto_renew/3,
          enable_domain_transfer_lock/2,
@@ -41,6 +45,8 @@
          list_prices/3,
          list_tags_for_domain/2,
          list_tags_for_domain/3,
+         push_domain/2,
+         push_domain/3,
          register_domain/2,
          register_domain/3,
          reject_domain_transfer_from_another_aws_account/2,
@@ -49,6 +55,8 @@
          renew_domain/3,
          resend_contact_reachability_email/2,
          resend_contact_reachability_email/3,
+         resend_operation_authorization/2,
+         resend_operation_authorization/3,
          retrieve_domain_auth_code/2,
          retrieve_domain_auth_code/3,
          transfer_domain/2,
@@ -93,6 +101,21 @@ accept_domain_transfer_from_another_aws_account(Client, Input)
 accept_domain_transfer_from_another_aws_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptDomainTransferFromAnotherAwsAccount">>, Input, Options).
+
+%% @doc Creates a delegation signer (DS) record in the registry zone for this
+%% domain name.
+%%
+%% Note that creating DS record at the registry impacts DNSSEC validation of
+%% your DNS records. This action may render your domain name unavailable on
+%% the internet if the steps are completed in the wrong order, or with
+%% incorrect timing. For more information about DNSSEC signing, see
+%% Configuring DNSSEC signing in the Route 53 developer guide.
+associate_delegation_signer_to_domain(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_delegation_signer_to_domain(Client, Input, []).
+associate_delegation_signer_to_domain(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateDelegationSignerToDomain">>, Input, Options).
 
 %% @doc Cancels the transfer of a domain from the current Amazon Web Services
 %% account to another Amazon Web Services account.
@@ -195,6 +218,15 @@ disable_domain_transfer_lock(Client, Input)
 disable_domain_transfer_lock(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableDomainTransferLock">>, Input, Options).
+
+%% @doc Deletes a delegation signer (DS) record in the registry zone for this
+%% domain name.
+disassociate_delegation_signer_from_domain(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_delegation_signer_from_domain(Client, Input, []).
+disassociate_delegation_signer_from_domain(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateDelegationSignerFromDomain">>, Input, Options).
 
 %% @doc This operation configures Amazon Route 53 to automatically renew the
 %% specified domain before the domain registration expires.
@@ -325,6 +357,22 @@ list_tags_for_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForDomain">>, Input, Options).
 
+%% @doc Moves a domain from Amazon Web Services to another registrar.
+%%
+%% Supported actions:
+%%
+%% <ul> <li> Changes the IPS tags of a .uk domain, and pushes it to transit.
+%% Transit means that the domain is ready to be transferred to another
+%% registrar.
+%%
+%% </li> </ul>
+push_domain(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    push_domain(Client, Input, []).
+push_domain(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PushDomain">>, Input, Options).
+
 %% @doc This operation registers a domain.
 %%
 %% Domains are registered either by Amazon Registrar (for .com, .net, and
@@ -339,7 +387,7 @@ list_tags_for_domain(Client, Input, Options)
 %% automatically updates your domain registration with the names of these
 %% name servers.
 %%
-%% </li> <li> Enables autorenew, so your domain registration will renew
+%% </li> <li> Enables auto renew, so your domain registration will renew
 %% automatically each year. We'll notify you in advance of the renewal date
 %% so you can choose whether to renew the registration.
 %%
@@ -413,7 +461,15 @@ resend_contact_reachability_email(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResendContactReachabilityEmail">>, Input, Options).
 
-%% @doc This operation returns the AuthCode for the domain.
+%% @doc Resend the form of authorization email for this operation.
+resend_operation_authorization(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    resend_operation_authorization(Client, Input, []).
+resend_operation_authorization(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ResendOperationAuthorization">>, Input, Options).
+
+%% @doc This operation returns the authorization code for the domain.
 %%
 %% To transfer a domain to another registrar, you provide this value to the
 %% new registrar.
@@ -511,9 +567,9 @@ transfer_domain_to_another_aws_account(Client, Input, Options)
 %% administrator, or technical.
 %%
 %% If the update is successful, this method returns an operation ID that you
-%% can use to track the progress and completion of the action. If the request
-%% is not completed successfully, the domain registrant will be notified by
-%% email.
+%% can use to track the progress and completion of the operation. If the
+%% request is not completed successfully, the domain registrant will be
+%% notified by email.
 update_domain_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_domain_contact(Client, Input, []).
