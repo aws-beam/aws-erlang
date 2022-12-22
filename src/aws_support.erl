@@ -14,62 +14,42 @@
 %% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
 %% to use the Amazon Web Services Support API.
 %%
-%% If you call the Amazon Web Services Support API from an account that does
-%% not have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
-%% `SubscriptionRequiredException' error message appears. For information
+%% If you call the Amazon Web Services Support API from an account that
+%% doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan,
+%% the `SubscriptionRequiredException' error message appears. For information
 %% about changing your support plan, see Amazon Web Services Support.
 %%
-%% The Amazon Web Services Support service also exposes a set of Trusted
-%% Advisor features. You can retrieve a list of checks and their
+%% You can also use the Amazon Web Services Support API to access features
+%% for Trusted Advisor. You can return a list of checks and their
 %% descriptions, get check results, specify checks to refresh, and get the
 %% refresh status of checks.
 %%
-%% The following list describes the Amazon Web Services Support case
-%% management operations:
+%% You can manage your support cases with the following Amazon Web Services
+%% Support API operations:
 %%
-%% <ul> <li> Service names, issue categories, and available severity levels -
-%% The `DescribeServices' and `DescribeSeverityLevels' operations return
-%% Amazon Web Services service names, service codes, service categories, and
+%% <ul> <li> The `CreateCase', `DescribeCases', `DescribeAttachment', and
+%% `ResolveCase' operations create Amazon Web Services Support cases,
+%% retrieve information about cases, and resolve cases.
+%%
+%% </li> <li> The `DescribeCommunications', `AddCommunicationToCase', and
+%% `AddAttachmentsToSet' operations retrieve and add communications and
+%% attachments to Amazon Web Services Support cases.
+%%
+%% </li> <li> The `DescribeServices' and `DescribeSeverityLevels' operations
+%% return Amazon Web Service names, service codes, service categories, and
 %% problem severity levels. You use these values when you call the
 %% `CreateCase' operation.
 %%
-%% </li> <li> Case creation, case details, and case resolution - The
-%% `CreateCase', `DescribeCases', `DescribeAttachment', and `ResolveCase'
-%% operations create Amazon Web Services Support cases, retrieve information
-%% about cases, and resolve cases.
+%% </li> </ul> You can also use the Amazon Web Services Support API to call
+%% the Trusted Advisor operations. For more information, see Trusted Advisor
+%% in the Amazon Web Services Support User Guide.
 %%
-%% </li> <li> Case communication - The `DescribeCommunications',
-%% `AddCommunicationToCase', and `AddAttachmentsToSet' operations retrieve
-%% and add communications and attachments to Amazon Web Services Support
-%% cases.
+%% For authentication of requests, Amazon Web Services Support uses Signature
+%% Version 4 Signing Process.
 %%
-%% </li> </ul> The following list describes the operations available from the
-%% Amazon Web Services Support service for Trusted Advisor:
-%%
-%% <ul> <li> `DescribeTrustedAdvisorChecks' returns the list of checks that
-%% run against your Amazon Web Services resources.
-%%
-%% </li> <li> Using the `checkId' for a specific check returned by
-%% `DescribeTrustedAdvisorChecks', you can call
-%% `DescribeTrustedAdvisorCheckResult' to obtain the results for the check
-%% that you specified.
-%%
-%% </li> <li> `DescribeTrustedAdvisorCheckSummaries' returns summarized
-%% results for one or more Trusted Advisor checks.
-%%
-%% </li> <li> `RefreshTrustedAdvisorCheck' requests that Trusted Advisor
-%% rerun a specified check.
-%%
-%% </li> <li> `DescribeTrustedAdvisorCheckRefreshStatuses' reports the
-%% refresh status of one or more checks.
-%%
-%% </li> </ul> For authentication of requests, Amazon Web Services Support
-%% uses Signature Version 4 Signing Process.
-%%
-%% See About the Amazon Web Services Support API in the Amazon Web Services
-%% Support User Guide for information about how to use this service to create
-%% and manage your support cases, and how to call Trusted Advisor for results
-%% of checks on your resources.
+%% For more information about this service and the endpoints to use, see
+%% About the Amazon Web Services Support API in the Amazon Web Services
+%% Support User Guide.
 -module(aws_support).
 
 -export([add_attachments_to_set/2,
@@ -117,9 +97,9 @@
 %% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
 %% to use the Amazon Web Services Support API.
 %%
-%% If you call the Amazon Web Services Support API from an account that does
-%% not have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
-%% `SubscriptionRequiredException' error message appears. For information
+%% If you call the Amazon Web Services Support API from an account that
+%% doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan,
+%% the `SubscriptionRequiredException' error message appears. For information
 %% about changing your support plan, see Amazon Web Services Support.
 add_attachments_to_set(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -139,9 +119,9 @@ add_attachments_to_set(Client, Input, Options)
 %% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
 %% to use the Amazon Web Services Support API.
 %%
-%% If you call the Amazon Web Services Support API from an account that does
-%% not have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
-%% `SubscriptionRequiredException' error message appears. For information
+%% If you call the Amazon Web Services Support API from an account that
+%% doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan,
+%% the `SubscriptionRequiredException' error message appears. For information
 %% about changing your support plan, see Amazon Web Services Support.
 add_communication_to_case(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -177,9 +157,9 @@ add_communication_to_case(Client, Input, Options)
 %% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
 %% to use the Amazon Web Services Support API.
 %%
-%% If you call the Amazon Web Services Support API from an account that does
-%% not have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
-%% `SubscriptionRequiredException' error message appears. For information
+%% If you call the Amazon Web Services Support API from an account that
+%% doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan,
+%% the `SubscriptionRequiredException' error message appears. For information
 %% about changing your support plan, see Amazon Web Services Support.
 create_case(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -199,9 +179,9 @@ create_case(Client, Input, Options)
 %% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
 %% to use the Amazon Web Services Support API.
 %%
-%% If you call the Amazon Web Services Support API from an account that does
-%% not have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
-%% `SubscriptionRequiredException' error message appears. For information
+%% If you call the Amazon Web Services Support API from an account that
+%% doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan,
+%% the `SubscriptionRequiredException' error message appears. For information
 %% about changing your support plan, see Amazon Web Services Support.
 describe_attachment(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -231,9 +211,9 @@ describe_attachment(Client, Input, Options)
 %% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
 %% to use the Amazon Web Services Support API.
 %%
-%% If you call the Amazon Web Services Support API from an account that does
-%% not have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
-%% `SubscriptionRequiredException' error message appears. For information
+%% If you call the Amazon Web Services Support API from an account that
+%% doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan,
+%% the `SubscriptionRequiredException' error message appears. For information
 %% about changing your support plan, see Amazon Web Services Support.
 describe_cases(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -258,9 +238,9 @@ describe_cases(Client, Input, Options)
 %% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
 %% to use the Amazon Web Services Support API.
 %%
-%% If you call the Amazon Web Services Support API from an account that does
-%% not have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
-%% `SubscriptionRequiredException' error message appears. For information
+%% If you call the Amazon Web Services Support API from an account that
+%% doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan,
+%% the `SubscriptionRequiredException' error message appears. For information
 %% about changing your support plan, see Amazon Web Services Support.
 describe_communications(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -286,9 +266,9 @@ describe_communications(Client, Input, Options)
 %% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
 %% to use the Amazon Web Services Support API.
 %%
-%% If you call the Amazon Web Services Support API from an account that does
-%% not have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
-%% `SubscriptionRequiredException' error message appears. For information
+%% If you call the Amazon Web Services Support API from an account that
+%% doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan,
+%% the `SubscriptionRequiredException' error message appears. For information
 %% about changing your support plan, see Amazon Web Services Support.
 describe_services(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -306,9 +286,9 @@ describe_services(Client, Input, Options)
 %% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
 %% to use the Amazon Web Services Support API.
 %%
-%% If you call the Amazon Web Services Support API from an account that does
-%% not have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
-%% `SubscriptionRequiredException' error message appears. For information
+%% If you call the Amazon Web Services Support API from an account that
+%% doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan,
+%% the `SubscriptionRequiredException' error message appears. For information
 %% about changing your support plan, see Amazon Web Services Support.
 describe_severity_levels(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -331,10 +311,16 @@ describe_severity_levels(Client, Input, Options)
 %% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
 %% to use the Amazon Web Services Support API.
 %%
-%% If you call the Amazon Web Services Support API from an account that does
-%% not have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
-%% `SubscriptionRequiredException' error message appears. For information
+%% If you call the Amazon Web Services Support API from an account that
+%% doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan,
+%% the `SubscriptionRequiredException' error message appears. For information
 %% about changing your support plan, see Amazon Web Services Support.
+%%
+%% To call the Trusted Advisor operations in the Amazon Web Services Support
+%% API, you must use the US East (N. Virginia) endpoint. Currently, the US
+%% West (Oregon) and Europe (Ireland) endpoints don't support the Trusted
+%% Advisor operations. For more information, see About the Amazon Web
+%% Services Support API in the Amazon Web Services Support User Guide.
 describe_trusted_advisor_check_refresh_statuses(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trusted_advisor_check_refresh_statuses(Client, Input, []).
@@ -369,10 +355,16 @@ describe_trusted_advisor_check_refresh_statuses(Client, Input, Options)
 %% </li> </ul> You must have a Business, Enterprise On-Ramp, or Enterprise
 %% Support plan to use the Amazon Web Services Support API.
 %%
-%% If you call the Amazon Web Services Support API from an account that does
-%% not have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
-%% `SubscriptionRequiredException' error message appears. For information
+%% If you call the Amazon Web Services Support API from an account that
+%% doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan,
+%% the `SubscriptionRequiredException' error message appears. For information
 %% about changing your support plan, see Amazon Web Services Support.
+%%
+%% To call the Trusted Advisor operations in the Amazon Web Services Support
+%% API, you must use the US East (N. Virginia) endpoint. Currently, the US
+%% West (Oregon) and Europe (Ireland) endpoints don't support the Trusted
+%% Advisor operations. For more information, see About the Amazon Web
+%% Services Support API in the Amazon Web Services Support User Guide.
 describe_trusted_advisor_check_result(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trusted_advisor_check_result(Client, Input, []).
@@ -391,10 +383,16 @@ describe_trusted_advisor_check_result(Client, Input, Options)
 %% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
 %% to use the Amazon Web Services Support API.
 %%
-%% If you call the Amazon Web Services Support API from an account that does
-%% not have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
-%% `SubscriptionRequiredException' error message appears. For information
+%% If you call the Amazon Web Services Support API from an account that
+%% doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan,
+%% the `SubscriptionRequiredException' error message appears. For information
 %% about changing your support plan, see Amazon Web Services Support.
+%%
+%% To call the Trusted Advisor operations in the Amazon Web Services Support
+%% API, you must use the US East (N. Virginia) endpoint. Currently, the US
+%% West (Oregon) and Europe (Ireland) endpoints don't support the Trusted
+%% Advisor operations. For more information, see About the Amazon Web
+%% Services Support API in the Amazon Web Services Support User Guide.
 describe_trusted_advisor_check_summaries(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trusted_advisor_check_summaries(Client, Input, []).
@@ -405,22 +403,28 @@ describe_trusted_advisor_check_summaries(Client, Input, Options)
 %% @doc Returns information about all available Trusted Advisor checks,
 %% including the name, ID, category, description, and metadata.
 %%
-%% You must specify a language code. The Amazon Web Services Support API
-%% currently supports English ("en") and Japanese ("ja"). The response
-%% contains a `TrustedAdvisorCheckDescription' object for each check. You
-%% must set the Amazon Web Services Region to us-east-1.
+%% You must specify a language code.
+%%
+%% The response contains a `TrustedAdvisorCheckDescription' object for each
+%% check. You must set the Amazon Web Services Region to us-east-1.
 %%
 %% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
 %% to use the Amazon Web Services Support API.
 %%
-%% If you call the Amazon Web Services Support API from an account that does
-%% not have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
-%% `SubscriptionRequiredException' error message appears. For information
+%% If you call the Amazon Web Services Support API from an account that
+%% doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan,
+%% the `SubscriptionRequiredException' error message appears. For information
 %% about changing your support plan, see Amazon Web Services Support.
 %%
 %% The names and descriptions for Trusted Advisor checks are subject to
 %% change. We recommend that you specify the check ID in your code to
 %% uniquely identify a check.
+%%
+%% To call the Trusted Advisor operations in the Amazon Web Services Support
+%% API, you must use the US East (N. Virginia) endpoint. Currently, the US
+%% West (Oregon) and Europe (Ireland) endpoints don't support the Trusted
+%% Advisor operations. For more information, see About the Amazon Web
+%% Services Support API in the Amazon Web Services Support User Guide.
 describe_trusted_advisor_checks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trusted_advisor_checks(Client, Input, []).
@@ -443,10 +447,16 @@ describe_trusted_advisor_checks(Client, Input, Options)
 %% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
 %% to use the Amazon Web Services Support API.
 %%
-%% If you call the Amazon Web Services Support API from an account that does
-%% not have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
-%% `SubscriptionRequiredException' error message appears. For information
+%% If you call the Amazon Web Services Support API from an account that
+%% doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan,
+%% the `SubscriptionRequiredException' error message appears. For information
 %% about changing your support plan, see Amazon Web Services Support.
+%%
+%% To call the Trusted Advisor operations in the Amazon Web Services Support
+%% API, you must use the US East (N. Virginia) endpoint. Currently, the US
+%% West (Oregon) and Europe (Ireland) endpoints don't support the Trusted
+%% Advisor operations. For more information, see About the Amazon Web
+%% Services Support API in the Amazon Web Services Support User Guide.
 refresh_trusted_advisor_check(Client, Input)
   when is_map(Client), is_map(Input) ->
     refresh_trusted_advisor_check(Client, Input, []).
@@ -462,9 +472,9 @@ refresh_trusted_advisor_check(Client, Input, Options)
 %% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
 %% to use the Amazon Web Services Support API.
 %%
-%% If you call the Amazon Web Services Support API from an account that does
-%% not have a Business, Enterprise On-Ramp, or Enterprise Support plan, the
-%% `SubscriptionRequiredException' error message appears. For information
+%% If you call the Amazon Web Services Support API from an account that
+%% doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan,
+%% the `SubscriptionRequiredException' error message appears. For information
 %% about changing your support plan, see Amazon Web Services Support.
 resolve_case(Client, Input)
   when is_map(Client), is_map(Input) ->
