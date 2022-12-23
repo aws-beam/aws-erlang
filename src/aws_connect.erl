@@ -362,6 +362,8 @@
          update_instance_attribute/5,
          update_instance_storage_config/4,
          update_instance_storage_config/5,
+         update_participant_role_config/4,
+         update_participant_role_config/5,
          update_phone_number/3,
          update_phone_number/4,
          update_queue_hours_of_operation/4,
@@ -3484,7 +3486,8 @@ list_users(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% @doc Initiates silent monitoring of a contact.
 %%
 %% The Contact Control Panel (CCP) of the user specified by userId will be
-%% set to silent monitoring mode on the contact.
+%% set to silent monitoring mode on the contact. Supports voice and chat
+%% contacts.
 monitor_contact(Client, Input) ->
     monitor_contact(Client, Input, []).
 monitor_contact(Client, Input0, Options0) ->
@@ -4507,6 +4510,44 @@ update_instance_storage_config(Client, AssociationId, InstanceId, Input0, Option
                      {<<"resourceType">>, <<"ResourceType">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates timeouts for when human chat participants are to be
+%% considered idle, and when agents are automatically disconnected from a
+%% chat due to idleness.
+%%
+%% You can set four timers:
+%%
+%% <ul> <li> Customer idle timeout
+%%
+%% </li> <li> Customer auto-disconnect timeout
+%%
+%% </li> <li> Agent idle timeout
+%%
+%% </li> <li> Agent auto-disconnect timeout
+%%
+%% </li> </ul> For more information about how chat timeouts work, see Set up
+%% chat timeouts for human participants.
+update_participant_role_config(Client, ContactId, InstanceId, Input) ->
+    update_participant_role_config(Client, ContactId, InstanceId, Input, []).
+update_participant_role_config(Client, ContactId, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/contact/participant-role-config/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates your claimed phone number from its current Amazon Connect

@@ -5,9 +5,7 @@
 -module(aws_kinesis_video_webrtc_storage).
 
 -export([join_storage_session/2,
-         join_storage_session/3,
-         join_storage_session_as_viewer/2,
-         join_storage_session_as_viewer/3]).
+         join_storage_session/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -43,47 +41,6 @@ join_storage_session(Client, Input) ->
 join_storage_session(Client, Input0, Options0) ->
     Method = post,
     Path = ["/joinStorageSession"],
-    SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
-
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Join the ongoing one way-video and/or multi-way audio WebRTC session
-%% as a viewer for an input channel.
-%%
-%% If there’s no existing session for the channel, create a new streaming
-%% session and provide the Amazon Resource Name (ARN) of the signaling
-%% channel (`channelArn') and client id (`clientId').
-%%
-%% Currently for `SINGLE_MASTER' type, a video producing device is able to
-%% ingest both audio and video media into a stream, while viewers can only
-%% ingest audio. Both a video producing device and viewers can join a session
-%% first and wait for other participants. While participants are having peer
-%% to peer conversations through webRTC, the ingested media session will be
-%% stored into the Kinesis Video Stream. Multiple viewers are able to
-%% playback real-time media.
-%%
-%% Customers can also use existing Kinesis Video Streams features like `HLS'
-%% or `DASH' playback, Image generation, and more with ingested WebRTC media.
-%% If there’s an existing session with the same `clientId' that's found in
-%% the join session request, the new request takes precedence.
-join_storage_session_as_viewer(Client, Input) ->
-    join_storage_session_as_viewer(Client, Input, []).
-join_storage_session_as_viewer(Client, Input0, Options0) ->
-    Method = post,
-    Path = ["/joinStorageSessionAsViewer"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

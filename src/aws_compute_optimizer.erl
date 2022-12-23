@@ -4,7 +4,7 @@
 %% @doc Compute Optimizer is a service that analyzes the configuration and
 %% utilization metrics of your Amazon Web Services compute resources, such as
 %% Amazon EC2 instances, Amazon EC2 Auto Scaling groups, Lambda functions,
-%% and Amazon EBS volumes.
+%% Amazon EBS volumes, and Amazon ECS services on Fargate.
 %%
 %% It reports whether your resources are optimal, and generates optimization
 %% recommendations to reduce the cost and improve the performance of your
@@ -24,6 +24,8 @@
          describe_recommendation_export_jobs/3,
          export_auto_scaling_group_recommendations/2,
          export_auto_scaling_group_recommendations/3,
+         export_e_c_s_service_recommendations/2,
+         export_e_c_s_service_recommendations/3,
          export_ebs_volume_recommendations/2,
          export_ebs_volume_recommendations/3,
          export_ec2_instance_recommendations/2,
@@ -32,6 +34,10 @@
          export_lambda_function_recommendations/3,
          get_auto_scaling_group_recommendations/2,
          get_auto_scaling_group_recommendations/3,
+         get_e_c_s_service_recommendation_projected_metrics/2,
+         get_e_c_s_service_recommendation_projected_metrics/3,
+         get_e_c_s_service_recommendations/2,
+         get_e_c_s_service_recommendations/3,
          get_ebs_volume_recommendations/2,
          get_ebs_volume_recommendations/3,
          get_ec2_instance_recommendations/2,
@@ -103,6 +109,23 @@ export_auto_scaling_group_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportAutoScalingGroupRecommendations">>, Input, Options).
 
+%% @doc Exports optimization recommendations for Amazon ECS services on
+%% Fargate.
+%%
+%% Recommendations are exported in a CSV file, and its metadata in a JSON
+%% file, to an existing Amazon Simple Storage Service (Amazon S3) bucket that
+%% you specify. For more information, see Exporting Recommendations in the
+%% Compute Optimizer User Guide.
+%%
+%% You can only have one Amazon ECS service export job in progress per Amazon
+%% Web Services Region.
+export_e_c_s_service_recommendations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    export_e_c_s_service_recommendations(Client, Input, []).
+export_e_c_s_service_recommendations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ExportECSServiceRecommendations">>, Input, Options).
+
 %% @doc Exports optimization recommendations for Amazon EBS volumes.
 %%
 %% Recommendations are exported in a comma-separated values (.csv) file, and
@@ -166,6 +189,27 @@ get_auto_scaling_group_recommendations(Client, Input)
 get_auto_scaling_group_recommendations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAutoScalingGroupRecommendations">>, Input, Options).
+
+%% @doc Returns the projected metrics of Amazon ECS service recommendations.
+get_e_c_s_service_recommendation_projected_metrics(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_e_c_s_service_recommendation_projected_metrics(Client, Input, []).
+get_e_c_s_service_recommendation_projected_metrics(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetECSServiceRecommendationProjectedMetrics">>, Input, Options).
+
+%% @doc Returns Amazon ECS service recommendations.
+%%
+%% Compute Optimizer generates recommendations for Amazon ECS services on
+%% Fargate that meet a specific set of requirements. For more information,
+%% see the Supported resources and requirements in the Compute Optimizer User
+%% Guide.
+get_e_c_s_service_recommendations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_e_c_s_service_recommendations(Client, Input, []).
+get_e_c_s_service_recommendations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetECSServiceRecommendations">>, Input, Options).
 
 %% @doc Returns Amazon Elastic Block Store (Amazon EBS) volume
 %% recommendations.
@@ -296,6 +340,9 @@ get_recommendation_preferences(Client, Input, Options)
 %%
 %% </li> <li> Lambda functions in an account that are `NotOptimized', or
 %% `Optimized'.
+%%
+%% </li> <li> Amazon ECS services in an account that are `Underprovisioned',
+%% `Overprovisioned', or `Optimized'.
 %%
 %% </li> </ul>
 get_recommendation_summaries(Client, Input)
