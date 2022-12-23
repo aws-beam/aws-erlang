@@ -1,6 +1,11 @@
 # AWS clients for Erlang
 
 [![Actions Status](https://github.com/aws-beam/aws-erlang/workflows/Build/badge.svg)](https://github.com/aws-beam/aws-erlang/actions)
+[![Module Version](https://img.shields.io/hexpm/v/aws_erlang.svg)](https://hex.pm/packages/aws_erlang)
+[![Hex Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg)](https://hexdocs.pm/aws_erlang/)
+[![Total Download](https://img.shields.io/hexpm/dt/aws_erlang.svg)](https://hex.pm/packages/aws_erlang)
+[![License](https://img.shields.io/hexpm/l/aws_erlang.svg)](https://github.com/aws-beam/aws-erlang/blob/master/LICENSE.md)
+[![Last Updated](https://img.shields.io/github/last-commit/aws-beam/aws-erlang.svg)](https://github.com/aws-beam/aws-erlang/commits/master)
 
 :rocket: Create, configure, and manage AWS services from Erlang code. :rocket:
 
