@@ -2,13 +2,11 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Connect is a cloud-based contact center solution that makes it
-%% easy to set up and manage a customer contact center and provide reliable
-%% customer engagement at any scale.
+%% easy to set up and manage a customer contact center.
 %%
-%% Amazon Connect enables customer contacts through voice or chat.
-%%
-%% The APIs described here are used by chat participants, such as agents and
-%% customers.
+%% Amazon Connect enables customer contacts through voice or chat. Use the
+%% Amazon Connect Participant Service to manage chat participants, such as
+%% agents and customers.
 -module(aws_connectparticipant).
 
 -export([complete_attachment_upload/2,
@@ -36,6 +34,9 @@
 
 %% @doc Allows you to confirm that the attachment has been uploaded using the
 %% pre-signed URL provided in StartAttachmentUpload API.
+%%
+%% `ConnectionToken' is used for invoking this API instead of
+%% `ParticipantToken'.
 %%
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
 %% authentication.
@@ -65,8 +66,8 @@ complete_attachment_upload(Client, Input0, Options0) ->
 
 %% @doc Creates the participant's connection.
 %%
-%% Note that ParticipantToken is used for invoking this API instead of
-%% ConnectionToken.
+%% `ParticipantToken' is used for invoking this API instead of
+%% `ConnectionToken'.
 %%
 %% The participant token is valid for the lifetime of the participant – until
 %% they are part of a contact.
@@ -122,8 +123,8 @@ create_participant_connection(Client, Input0, Options0) ->
 
 %% @doc Disconnects a participant.
 %%
-%% Note that ConnectionToken is used for invoking this API instead of
-%% ParticipantToken.
+%% `ConnectionToken' is used for invoking this API instead of
+%% `ParticipantToken'.
 %%
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
 %% authentication.
@@ -155,6 +156,9 @@ disconnect_participant(Client, Input0, Options0) ->
 %%
 %% This is an asynchronous API for use with active contacts.
 %%
+%% `ConnectionToken' is used for invoking this API instead of
+%% `ParticipantToken'.
+%%
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
 %% authentication.
 get_attachment(Client, Input) ->
@@ -184,8 +188,8 @@ get_attachment(Client, Input0, Options0) ->
 %% @doc Retrieves a transcript of the session, including details about any
 %% attachments.
 %%
-%% Note that ConnectionToken is used for invoking this API instead of
-%% ParticipantToken.
+%% `ConnectionToken' is used for invoking this API instead of
+%% `ParticipantToken'.
 %%
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
 %% authentication.
@@ -215,8 +219,8 @@ get_transcript(Client, Input0, Options0) ->
 
 %% @doc Sends an event.
 %%
-%% Note that ConnectionToken is used for invoking this API instead of
-%% ParticipantToken.
+%% `ConnectionToken' is used for invoking this API instead of
+%% `ParticipantToken'.
 %%
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
 %% authentication.
@@ -246,8 +250,8 @@ send_event(Client, Input0, Options0) ->
 
 %% @doc Sends a message.
 %%
-%% Note that ConnectionToken is used for invoking this API instead of
-%% ParticipantToken.
+%% `ConnectionToken' is used for invoking this API instead of
+%% `ParticipantToken'.
 %%
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
 %% authentication.
@@ -277,6 +281,9 @@ send_message(Client, Input0, Options0) ->
 
 %% @doc Provides a pre-signed Amazon S3 URL in response for uploading the
 %% file directly to S3.
+%%
+%% `ConnectionToken' is used for invoking this API instead of
+%% `ParticipantToken'.
 %%
 %% The Amazon Connect Participant Service APIs do not use Signature Version 4
 %% authentication.

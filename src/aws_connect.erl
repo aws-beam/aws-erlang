@@ -3486,8 +3486,7 @@ list_users(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% @doc Initiates silent monitoring of a contact.
 %%
 %% The Contact Control Panel (CCP) of the user specified by userId will be
-%% set to silent monitoring mode on the contact. Supports voice and chat
-%% contacts.
+%% set to silent monitoring mode on the contact.
 monitor_contact(Client, Input) ->
     monitor_contact(Client, Input, []).
 monitor_contact(Client, Input0, Options0) ->
