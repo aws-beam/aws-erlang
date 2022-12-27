@@ -275,6 +275,8 @@ classify_response({error, closed}) ->
   retriable;
 classify_response({error, connect_timeout}) ->
   retriable;
+classify_response({error, timeout}) ->
+  retriable;
 classify_response({error, checkout_timeout}) ->
   retriable;
 classify_response({error, _}) ->
