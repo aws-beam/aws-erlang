@@ -51,6 +51,10 @@
          describe_parameter_groups/3,
          describe_parameters/2,
          describe_parameters/3,
+         describe_reserved_nodes/2,
+         describe_reserved_nodes/3,
+         describe_reserved_nodes_offerings/2,
+         describe_reserved_nodes_offerings/3,
          describe_service_updates/2,
          describe_service_updates/3,
          describe_snapshots/2,
@@ -65,6 +69,8 @@
          list_allowed_node_type_updates/3,
          list_tags/2,
          list_tags/3,
+         purchase_reserved_nodes_offering/2,
+         purchase_reserved_nodes_offering/3,
          reset_parameter_group/2,
          reset_parameter_group/3,
          tag_resource/2,
@@ -300,6 +306,23 @@ describe_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeParameters">>, Input, Options).
 
+%% @doc Returns information about reserved nodes for this account, or about a
+%% specified reserved node.
+describe_reserved_nodes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_reserved_nodes(Client, Input, []).
+describe_reserved_nodes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeReservedNodes">>, Input, Options).
+
+%% @doc Lists available reserved node offerings.
+describe_reserved_nodes_offerings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_reserved_nodes_offerings(Client, Input, []).
+describe_reserved_nodes_offerings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeReservedNodesOfferings">>, Input, Options).
+
 %% @doc Returns details of the service updates
 describe_service_updates(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -377,6 +400,16 @@ list_tags(Client, Input)
 list_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTags">>, Input, Options).
+
+%% @doc Allows you to purchase a reserved node offering.
+%%
+%% Reserved nodes are not eligible for cancellation and are non-refundable.
+purchase_reserved_nodes_offering(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    purchase_reserved_nodes_offering(Client, Input, []).
+purchase_reserved_nodes_offering(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PurchaseReservedNodesOffering">>, Input, Options).
 
 %% @doc Modifies the parameters of a parameter group to the engine or system
 %% default value.
