@@ -43,8 +43,9 @@ jobs:
 
     env:
       LATEST_AWS_SDK_GO_TAG: ${{ needs.check.outputs.latest_tag }}
-      OTP_VERSION: "23.3.4"
+      OTP_VERSION: "25.0.4"
       ELIXIR_VERSION: "1.13.2"
+      REBAR3_VERSION: "3.20.0"
 
     strategy:
       fail-fast: false
@@ -56,6 +57,7 @@ jobs:
         with:
           otp-version: ${{ env.OTP_VERSION }}
           elixir-version: ${{ env.ELIXIR_VERSION }}
+          rebar3-version: ${{ env.REBAR3_VERSION }}
 
       - name: Checkout aws/aws-sdk-go (official Go SDK)
         uses: actions/checkout@v2
