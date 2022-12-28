@@ -113,8 +113,13 @@ decode_xml(Xml) ->
     %% See: https://elixirforum.com/t/utf-8-issue-with-erlang-xmerl-scan-function/1668/9
     XmlString = erlang:binary_to_list(Xml),
     Opts = [{hook_fun, fun hook_fun/2}],
-    {Element, []} = xmerl_scan:string(XmlString, Opts),
-    Element.
+    try
+      {Element, []} = xmerl_scan:string(XmlString, Opts),
+      Element
+    catch
+      Error:Reason:Stack ->
+        erlang:raise(error, {invalid_xml, Error, Reason, Xml}, Stack)
+    end.
 
 %% @doc Get a value from nested maps
 -spec get_in([any()], any()) -> any().
@@ -322,6 +327,13 @@ decode_xml_text_test() ->
                                "  <age>42</age>"
                                "  text"
                                "</person>">>)
+                ).
+
+decode_bad_xml_test() ->
+    ?assertError({invalid_xml,exit,{fatal,{unexpected_end,{file,file_name_unknown},_,_}}, _}
+                 , decode_xml(<<"<person>"
+                                "  <name>foo</name>"
+                                "  random">>)
                 ).
 
 decode_utf8_xml_text_test() ->
