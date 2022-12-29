@@ -167,7 +167,7 @@ create_routing_control(Client, Input0, Options0) ->
 %% Assertion rule: An assertion rule enforces that, when you change a routing
 %% control state, that a certain criteria is met. For example, the criteria
 %% might be that at least one routing control state is On after the
-%% transation so that traffic continues to flow to at least one cell for the
+%% transaction so that traffic continues to flow to at least one cell for the
 %% application. This ensures that you avoid a fail-open scenario.
 %%
 %% Gating rule: A gating rule lets you configure a gating routing control as
@@ -753,7 +753,13 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, De
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
             Result = case DecodeBody of
-                       true -> jsx:decode(Body);
+                       true ->
+                         try
+                           jsx:decode(Body)
+                         catch
+                           Error:Reason:Stack ->
+                             erlang:raise(error, {body_decode_failed, Error, Reason, StatusCode, Body}, Stack)
+                         end;
                        false -> #{<<"Body">> => Body}
                      end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}

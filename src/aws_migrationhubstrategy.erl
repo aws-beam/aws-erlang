@@ -637,7 +637,13 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, De
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
         {ok, Body} ->
             Result = case DecodeBody of
-                       true -> jsx:decode(Body);
+                       true ->
+                         try
+                           jsx:decode(Body)
+                         catch
+                           Error:Reason:Stack ->
+                             erlang:raise(error, {body_decode_failed, Error, Reason, StatusCode, Body}, Stack)
+                         end;
                        false -> #{<<"Body">> => Body}
                      end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
