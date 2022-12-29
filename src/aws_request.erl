@@ -115,8 +115,7 @@ sign_request(AccessKeyID, SecretAccessKey, Region, Service, Token, Now,
     ShortDate = list_to_binary(ec_date:format("Ymd", Now)),
     Headers1 = add_date_header(Headers0, LongDate),
     Headers2 = add_content_hash_header(Headers1, Body),
-    Headers3 = add_checksum_hash_header(Headers2, Body),
-    Headers = maybe_add_token_header(Headers3, Token),
+    Headers = maybe_add_token_header(Headers2, Token),
 
     CanonicalRequest = canonical_request(Method, URL, Headers, Body),
     HashedCanonicalRequest = aws_util:sha256_hexdigest(CanonicalRequest),
@@ -147,11 +146,6 @@ add_content_hash_header(Headers, Body) ->
     [ {<<"X-Amz-Content-SHA256">>, aws_util:sha256_hexdigest(Body)}
     | Headers
     ].
-
-add_checksum_hash_header(Headers, Body) ->
-  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
-  | Headers
-  ].
 
 %% Add an X-Amz-Security-Token header with the user-submitted security token
 %% to a list of headers
@@ -358,8 +352,7 @@ sign_request_test() ->
     Headers = [{<<"Host">>, <<"ec2.us-east-1.amazonaws.com">>},
                {<<"Header">>, <<"Value">>}],
     Body = <<"">>,
-    ?assertEqual([{<<"Authorization">>, <<"AWS4-HMAC-SHA256 Credential=access-key-id/20150403/us-east-1/ec2/aws4_request, SignedHeaders=header;host;x-amz-checksum-sha256;x-amz-content-sha256;x-amz-date, Signature=d8df9584891c2194326521b47afb1efcdd632c39222f1e3fe95f3e190e5d84b5">>},
-                  {<<"X-Amz-CheckSum-SHA256">>, <<"47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=">>},
+    ?assertEqual([{<<"Authorization">>, <<"AWS4-HMAC-SHA256 Credential=access-key-id/20150403/us-east-1/ec2/aws4_request, SignedHeaders=header;host;x-amz-content-sha256;x-amz-date, Signature=65b6f4bd9f9577791a2d4bac1b1390e96352ecb1ac47171cc49ae295a42577c5">>},
                   {<<"X-Amz-Content-SHA256">>, <<"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855">>},
                   {<<"X-Amz-Date">>, <<"20150403T213117Z">>},
                   {<<"Host">>, <<"ec2.us-east-1.amazonaws.com">>},
