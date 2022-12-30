@@ -502,7 +502,7 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
-    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options, false) of
                           true ->
                             add_checksum_hash_header(AdditionalHeaders1, Payload);
                           false ->
