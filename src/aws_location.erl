@@ -150,9 +150,9 @@ associate_tracker_consumer(Client, TrackerName, Input0, Options0) ->
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/consumers"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -174,9 +174,9 @@ batch_delete_device_position_history(Client, TrackerName, Input0, Options0) ->
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/delete-positions"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -199,9 +199,9 @@ batch_delete_geofence(Client, CollectionName, Input0, Options0) ->
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/delete-geofences"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -243,9 +243,9 @@ batch_evaluate_geofences(Client, CollectionName, Input0, Options0) ->
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/positions"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -266,9 +266,9 @@ batch_get_device_position(Client, TrackerName, Input0, Options0) ->
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/get-positions"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -291,9 +291,9 @@ batch_put_geofence(Client, CollectionName, Input0, Options0) ->
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/put-geofences"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -339,9 +339,9 @@ batch_update_device_position(Client, TrackerName, Input0, Options0) ->
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/positions"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -388,9 +388,9 @@ calculate_route(Client, CalculatorName, Input0, Options0) ->
     Path = ["/routes/v0/calculators/", aws_util:encode_uri(CalculatorName), "/calculate/route"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -445,9 +445,9 @@ calculate_route_matrix(Client, CalculatorName, Input0, Options0) ->
     Path = ["/routes/v0/calculators/", aws_util:encode_uri(CalculatorName), "/calculate/route-matrix"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -468,9 +468,9 @@ create_geofence_collection(Client, Input0, Options0) ->
     Path = ["/geofencing/v0/collections"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -497,9 +497,9 @@ create_map(Client, Input0, Options0) ->
     Path = ["/maps/v0/maps"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -531,9 +531,9 @@ create_place_index(Client, Input0, Options0) ->
     Path = ["/places/v0/indexes"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -563,9 +563,9 @@ create_route_calculator(Client, Input0, Options0) ->
     Path = ["/routes/v0/calculators"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -587,9 +587,9 @@ create_tracker(Client, Input0, Options0) ->
     Path = ["/tracking/v0/trackers"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -614,9 +614,9 @@ delete_geofence_collection(Client, CollectionName, Input0, Options0) ->
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -640,9 +640,9 @@ delete_map(Client, MapName, Input0, Options0) ->
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -665,9 +665,9 @@ delete_place_index(Client, IndexName, Input0, Options0) ->
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -690,9 +690,9 @@ delete_route_calculator(Client, CalculatorName, Input0, Options0) ->
     Path = ["/routes/v0/calculators/", aws_util:encode_uri(CalculatorName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -717,9 +717,9 @@ delete_tracker(Client, TrackerName, Input0, Options0) ->
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -859,9 +859,9 @@ disassociate_tracker_consumer(Client, ConsumerArn, TrackerName, Input0, Options0
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/consumers/", aws_util:encode_uri(ConsumerArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -911,9 +911,9 @@ get_device_position_history(Client, DeviceId, TrackerName, Input0, Options0) ->
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/devices/", aws_util:encode_uri(DeviceId), "/list-positions"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1167,9 +1167,9 @@ list_device_positions(Client, TrackerName, Input0, Options0) ->
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/list-positions"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1190,9 +1190,9 @@ list_geofence_collections(Client, Input0, Options0) ->
     Path = ["/geofencing/v0/list-collections"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1213,9 +1213,9 @@ list_geofences(Client, CollectionName, Input0, Options0) ->
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/list-geofences"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1236,9 +1236,9 @@ list_maps(Client, Input0, Options0) ->
     Path = ["/maps/v0/list-maps"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1259,9 +1259,9 @@ list_place_indexes(Client, Input0, Options0) ->
     Path = ["/places/v0/list-indexes"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1282,9 +1282,9 @@ list_route_calculators(Client, Input0, Options0) ->
     Path = ["/routes/v0/list-calculators"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1330,9 +1330,9 @@ list_tracker_consumers(Client, TrackerName, Input0, Options0) ->
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), "/list-consumers"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1353,9 +1353,9 @@ list_trackers(Client, Input0, Options0) ->
     Path = ["/tracking/v0/list-trackers"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1378,9 +1378,9 @@ put_geofence(Client, CollectionName, GeofenceId, Input0, Options0) ->
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), "/geofences/", aws_util:encode_uri(GeofenceId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1404,9 +1404,9 @@ search_place_index_for_position(Client, IndexName, Input0, Options0) ->
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), "/search/position"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1439,9 +1439,9 @@ search_place_index_for_suggestions(Client, IndexName, Input0, Options0) ->
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), "/search/suggestions"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1472,9 +1472,9 @@ search_place_index_for_text(Client, IndexName, Input0, Options0) ->
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), "/search/text"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1506,9 +1506,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1529,9 +1529,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1553,9 +1553,9 @@ update_geofence_collection(Client, CollectionName, Input0, Options0) ->
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1576,9 +1576,9 @@ update_map(Client, MapName, Input0, Options0) ->
     Path = ["/maps/v0/maps/", aws_util:encode_uri(MapName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1599,9 +1599,9 @@ update_place_index(Client, IndexName, Input0, Options0) ->
     Path = ["/places/v0/indexes/", aws_util:encode_uri(IndexName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1623,9 +1623,9 @@ update_route_calculator(Client, CalculatorName, Input0, Options0) ->
     Path = ["/routes/v0/calculators/", aws_util:encode_uri(CalculatorName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1646,9 +1646,9 @@ update_tracker(Client, TrackerName, Input0, Options0) ->
     Path = ["/tracking/v0/trackers/", aws_util:encode_uri(TrackerName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1682,11 +1682,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"geo">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -1694,12 +1692,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

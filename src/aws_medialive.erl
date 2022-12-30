@@ -159,9 +159,9 @@ accept_input_device_transfer(Client, InputDeviceId, Input0, Options0) ->
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/accept"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -182,9 +182,9 @@ batch_delete(Client, Input0, Options0) ->
     Path = ["/prod/batch/delete"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -205,9 +205,9 @@ batch_start(Client, Input0, Options0) ->
     Path = ["/prod/batch/start"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -228,9 +228,9 @@ batch_stop(Client, Input0, Options0) ->
     Path = ["/prod/batch/stop"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -251,9 +251,9 @@ batch_update_schedule(Client, ChannelId, Input0, Options0) ->
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/schedule"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -274,9 +274,9 @@ cancel_input_device_transfer(Client, InputDeviceId, Input0, Options0) ->
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/cancel"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -300,9 +300,9 @@ claim_device(Client, Input0, Options0) ->
     Path = ["/prod/claimDevice"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -323,9 +323,9 @@ create_channel(Client, Input0, Options0) ->
     Path = ["/prod/channels"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -346,9 +346,9 @@ create_input(Client, Input0, Options0) ->
     Path = ["/prod/inputs"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -369,9 +369,9 @@ create_input_security_group(Client, Input0, Options0) ->
     Path = ["/prod/inputSecurityGroups"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -392,9 +392,9 @@ create_multiplex(Client, Input0, Options0) ->
     Path = ["/prod/multiplexes"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -415,9 +415,9 @@ create_multiplex_program(Client, MultiplexId, Input0, Options0) ->
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -438,9 +438,9 @@ create_partner_input(Client, InputId, Input0, Options0) ->
     Path = ["/prod/inputs/", aws_util:encode_uri(InputId), "/partners"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -461,9 +461,9 @@ create_tags(Client, ResourceArn, Input0, Options0) ->
     Path = ["/prod/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -486,9 +486,9 @@ delete_channel(Client, ChannelId, Input0, Options0) ->
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -509,9 +509,9 @@ delete_input(Client, InputId, Input0, Options0) ->
     Path = ["/prod/inputs/", aws_util:encode_uri(InputId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -532,9 +532,9 @@ delete_input_security_group(Client, InputSecurityGroupId, Input0, Options0) ->
     Path = ["/prod/inputSecurityGroups/", aws_util:encode_uri(InputSecurityGroupId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -557,9 +557,9 @@ delete_multiplex(Client, MultiplexId, Input0, Options0) ->
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -580,9 +580,9 @@ delete_multiplex_program(Client, MultiplexId, ProgramName, Input0, Options0) ->
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs/", aws_util:encode_uri(ProgramName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -603,9 +603,9 @@ delete_reservation(Client, ReservationId, Input0, Options0) ->
     Path = ["/prod/reservations/", aws_util:encode_uri(ReservationId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -626,9 +626,9 @@ delete_schedule(Client, ChannelId, Input0, Options0) ->
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/schedule"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -649,9 +649,9 @@ delete_tags(Client, ResourceArn, Input0, Options0) ->
     Path = ["/prod/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1228,9 +1228,9 @@ purchase_offering(Client, OfferingId, Input0, Options0) ->
     Path = ["/prod/offerings/", aws_util:encode_uri(OfferingId), "/purchase"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1255,9 +1255,9 @@ reboot_input_device(Client, InputDeviceId, Input0, Options0) ->
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/reboot"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1279,9 +1279,9 @@ reject_input_device_transfer(Client, InputDeviceId, Input0, Options0) ->
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/reject"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1302,9 +1302,9 @@ start_channel(Client, ChannelId, Input0, Options0) ->
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/start"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1334,9 +1334,9 @@ start_input_device_maintenance_window(Client, InputDeviceId, Input0, Options0) -
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/startInputDeviceMaintenanceWindow"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1360,9 +1360,9 @@ start_multiplex(Client, MultiplexId, Input0, Options0) ->
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/start"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1383,9 +1383,9 @@ stop_channel(Client, ChannelId, Input0, Options0) ->
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/stop"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1408,9 +1408,9 @@ stop_multiplex(Client, MultiplexId, Input0, Options0) ->
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/stop"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1434,9 +1434,9 @@ transfer_input_device(Client, InputDeviceId, Input0, Options0) ->
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), "/transfer"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1457,9 +1457,9 @@ update_channel(Client, ChannelId, Input0, Options0) ->
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1480,9 +1480,9 @@ update_channel_class(Client, ChannelId, Input0, Options0) ->
     Path = ["/prod/channels/", aws_util:encode_uri(ChannelId), "/channelClass"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1503,9 +1503,9 @@ update_input(Client, InputId, Input0, Options0) ->
     Path = ["/prod/inputs/", aws_util:encode_uri(InputId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1526,9 +1526,9 @@ update_input_device(Client, InputDeviceId, Input0, Options0) ->
     Path = ["/prod/inputDevices/", aws_util:encode_uri(InputDeviceId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1549,9 +1549,9 @@ update_input_security_group(Client, InputSecurityGroupId, Input0, Options0) ->
     Path = ["/prod/inputSecurityGroups/", aws_util:encode_uri(InputSecurityGroupId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1572,9 +1572,9 @@ update_multiplex(Client, MultiplexId, Input0, Options0) ->
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1595,9 +1595,9 @@ update_multiplex_program(Client, MultiplexId, ProgramName, Input0, Options0) ->
     Path = ["/prod/multiplexes/", aws_util:encode_uri(MultiplexId), "/programs/", aws_util:encode_uri(ProgramName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1618,9 +1618,9 @@ update_reservation(Client, ReservationId, Input0, Options0) ->
     Path = ["/prod/reservations/", aws_util:encode_uri(ReservationId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1654,11 +1654,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"medialive">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -1666,12 +1664,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

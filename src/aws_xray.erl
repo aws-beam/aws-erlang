@@ -83,9 +83,9 @@ batch_get_traces(Client, Input0, Options0) ->
     Path = ["/Traces"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -106,9 +106,9 @@ create_group(Client, Input0, Options0) ->
     Path = ["/CreateGroup"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -137,9 +137,9 @@ create_sampling_rule(Client, Input0, Options0) ->
     Path = ["/CreateSamplingRule"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -160,9 +160,9 @@ delete_group(Client, Input0, Options0) ->
     Path = ["/DeleteGroup"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -184,9 +184,9 @@ delete_resource_policy(Client, Input0, Options0) ->
     Path = ["/DeleteResourcePolicy"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -207,9 +207,9 @@ delete_sampling_rule(Client, Input0, Options0) ->
     Path = ["/DeleteSamplingRule"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -230,9 +230,9 @@ get_encryption_config(Client, Input0, Options0) ->
     Path = ["/EncryptionConfig"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -253,9 +253,9 @@ get_group(Client, Input0, Options0) ->
     Path = ["/GetGroup"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -276,9 +276,9 @@ get_groups(Client, Input0, Options0) ->
     Path = ["/Groups"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -303,9 +303,9 @@ get_insight(Client, Input0, Options0) ->
     Path = ["/Insight"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -330,9 +330,9 @@ get_insight_events(Client, Input0, Options0) ->
     Path = ["/InsightEvents"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -357,9 +357,9 @@ get_insight_impact_graph(Client, Input0, Options0) ->
     Path = ["/InsightImpactGraph"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -381,9 +381,9 @@ get_insight_summaries(Client, Input0, Options0) ->
     Path = ["/InsightSummaries"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -404,9 +404,9 @@ get_sampling_rules(Client, Input0, Options0) ->
     Path = ["/GetSamplingRules"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -428,9 +428,9 @@ get_sampling_statistic_summaries(Client, Input0, Options0) ->
     Path = ["/SamplingStatisticSummaries"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -452,9 +452,9 @@ get_sampling_targets(Client, Input0, Options0) ->
     Path = ["/SamplingTargets"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -481,9 +481,9 @@ get_service_graph(Client, Input0, Options0) ->
     Path = ["/ServiceGraph"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -505,9 +505,9 @@ get_time_series_service_statistics(Client, Input0, Options0) ->
     Path = ["/TimeSeriesServiceStatistics"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -528,9 +528,9 @@ get_trace_graph(Client, Input0, Options0) ->
     Path = ["/TraceGraph"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -570,9 +570,9 @@ get_trace_summaries(Client, Input0, Options0) ->
     Path = ["/TraceSummaries"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -594,9 +594,9 @@ list_resource_policies(Client, Input0, Options0) ->
     Path = ["/ListResourcePolicies"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -618,9 +618,9 @@ list_tags_for_resource(Client, Input0, Options0) ->
     Path = ["/ListTagsForResource"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -641,9 +641,9 @@ put_encryption_config(Client, Input0, Options0) ->
     Path = ["/PutEncryptionConfig"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -670,9 +670,9 @@ put_resource_policy(Client, Input0, Options0) ->
     Path = ["/PutResourcePolicy"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -693,9 +693,9 @@ put_telemetry_records(Client, Input0, Options0) ->
     Path = ["/TelemetryRecords"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -765,9 +765,9 @@ put_trace_segments(Client, Input0, Options0) ->
     Path = ["/TraceSegments"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -789,9 +789,9 @@ tag_resource(Client, Input0, Options0) ->
     Path = ["/TagResource"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -815,9 +815,9 @@ untag_resource(Client, Input0, Options0) ->
     Path = ["/UntagResource"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -838,9 +838,9 @@ update_group(Client, Input0, Options0) ->
     Path = ["/UpdateGroup"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -861,9 +861,9 @@ update_sampling_rule(Client, Input0, Options0) ->
     Path = ["/UpdateSamplingRule"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -897,11 +897,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"xray">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -909,12 +907,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

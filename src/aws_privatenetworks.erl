@@ -82,9 +82,9 @@ acknowledge_order_receipt(Client, Input0, Options0) ->
     Path = ["/v1/orders/acknowledge"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -105,9 +105,9 @@ activate_device_identifier(Client, Input0, Options0) ->
     Path = ["/v1/device-identifiers/activate"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -128,9 +128,9 @@ activate_network_site(Client, Input0, Options0) ->
     Path = ["/v1/network-sites/activate"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -156,9 +156,9 @@ configure_access_point(Client, Input0, Options0) ->
     Path = ["/v1/network-resources/configure"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -179,9 +179,9 @@ create_network(Client, Input0, Options0) ->
     Path = ["/v1/networks"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -202,9 +202,9 @@ create_network_site(Client, Input0, Options0) ->
     Path = ["/v1/network-sites"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -225,9 +225,9 @@ deactivate_device_identifier(Client, Input0, Options0) ->
     Path = ["/v1/device-identifiers/deactivate"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -252,9 +252,9 @@ delete_network(Client, NetworkArn, Input0, Options0) ->
     Path = ["/v1/networks/", aws_util:encode_uri(NetworkArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -280,9 +280,9 @@ delete_network_site(Client, NetworkSiteArn, Input0, Options0) ->
     Path = ["/v1/network-sites/", aws_util:encode_uri(NetworkSiteArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -426,9 +426,9 @@ list_device_identifiers(Client, Input0, Options0) ->
     Path = ["/v1/device-identifiers/list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -456,9 +456,9 @@ list_network_resources(Client, Input0, Options0) ->
     Path = ["/v1/network-resources"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -482,9 +482,9 @@ list_network_sites(Client, Input0, Options0) ->
     Path = ["/v1/network-sites/list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -508,9 +508,9 @@ list_networks(Client, Input0, Options0) ->
     Path = ["/v1/networks/list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -538,9 +538,9 @@ list_orders(Client, Input0, Options0) ->
     Path = ["/v1/orders/list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -607,9 +607,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -630,9 +630,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -654,9 +654,9 @@ update_network_site(Client, Input0, Options0) ->
     Path = ["/v1/network-sites/site"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -677,9 +677,9 @@ update_network_site_plan(Client, Input0, Options0) ->
     Path = ["/v1/network-sites/plan"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -713,11 +713,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"private-networks">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -725,12 +723,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

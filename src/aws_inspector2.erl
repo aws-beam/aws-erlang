@@ -87,9 +87,9 @@ associate_member(Client, Input0, Options0) ->
     Path = ["/members/associate"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -111,9 +111,9 @@ batch_get_account_status(Client, Input0, Options0) ->
     Path = ["/status/batch/get"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -134,9 +134,9 @@ batch_get_free_trial_info(Client, Input0, Options0) ->
     Path = ["/freetrialinfo/batchget"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -157,9 +157,9 @@ cancel_findings_report(Client, Input0, Options0) ->
     Path = ["/reporting/cancel"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -180,9 +180,9 @@ create_filter(Client, Input0, Options0) ->
     Path = ["/filters/create"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -203,9 +203,9 @@ create_findings_report(Client, Input0, Options0) ->
     Path = ["/reporting/create"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -226,9 +226,9 @@ delete_filter(Client, Input0, Options0) ->
     Path = ["/filters/delete"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -250,9 +250,9 @@ describe_organization_configuration(Client, Input0, Options0) ->
     Path = ["/organizationconfiguration/describe"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -277,9 +277,9 @@ disable(Client, Input0, Options0) ->
     Path = ["/disable"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -301,9 +301,9 @@ disable_delegated_admin_account(Client, Input0, Options0) ->
     Path = ["/delegatedadminaccounts/disable"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -325,9 +325,9 @@ disassociate_member(Client, Input0, Options0) ->
     Path = ["/members/disassociate"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -349,9 +349,9 @@ enable(Client, Input0, Options0) ->
     Path = ["/enable"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -373,9 +373,9 @@ enable_delegated_admin_account(Client, Input0, Options0) ->
     Path = ["/delegatedadminaccounts/enable"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -396,9 +396,9 @@ get_configuration(Client, Input0, Options0) ->
     Path = ["/configuration/get"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -420,9 +420,9 @@ get_delegated_admin_account(Client, Input0, Options0) ->
     Path = ["/delegatedadminaccounts/get"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -443,9 +443,9 @@ get_findings_report_status(Client, Input0, Options0) ->
     Path = ["/reporting/status/get"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -466,9 +466,9 @@ get_member(Client, Input0, Options0) ->
     Path = ["/members/get"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -489,9 +489,9 @@ list_account_permissions(Client, Input0, Options0) ->
     Path = ["/accountpermissions/list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -512,9 +512,9 @@ list_coverage(Client, Input0, Options0) ->
     Path = ["/coverage/list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -535,9 +535,9 @@ list_coverage_statistics(Client, Input0, Options0) ->
     Path = ["/coverage/statistics/list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -559,9 +559,9 @@ list_delegated_admin_accounts(Client, Input0, Options0) ->
     Path = ["/delegatedadminaccounts/list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -582,9 +582,9 @@ list_filters(Client, Input0, Options0) ->
     Path = ["/filters/list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -606,9 +606,9 @@ list_finding_aggregations(Client, Input0, Options0) ->
     Path = ["/findings/aggregation/list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -629,9 +629,9 @@ list_findings(Client, Input0, Options0) ->
     Path = ["/findings/list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -653,9 +653,9 @@ list_members(Client, Input0, Options0) ->
     Path = ["/members/list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -699,9 +699,9 @@ list_usage_totals(Client, Input0, Options0) ->
     Path = ["/usage/list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -722,9 +722,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -745,9 +745,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -773,9 +773,9 @@ update_configuration(Client, Input0, Options0) ->
     Path = ["/configuration/update"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -797,9 +797,9 @@ update_filter(Client, Input0, Options0) ->
     Path = ["/filters/update"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -820,9 +820,9 @@ update_organization_configuration(Client, Input0, Options0) ->
     Path = ["/organizationconfiguration/update"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -856,11 +856,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"inspector2">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -868,12 +866,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

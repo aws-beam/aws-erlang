@@ -190,9 +190,9 @@ create_api(Client, Input0, Options0) ->
     Path = ["/v2/apis"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -213,9 +213,9 @@ create_api_mapping(Client, DomainName, Input0, Options0) ->
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/apimappings"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -236,9 +236,9 @@ create_authorizer(Client, ApiId, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/authorizers"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -259,9 +259,9 @@ create_deployment(Client, ApiId, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/deployments"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -282,9 +282,9 @@ create_domain_name(Client, Input0, Options0) ->
     Path = ["/v2/domainnames"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -305,9 +305,9 @@ create_integration(Client, ApiId, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -328,9 +328,9 @@ create_integration_response(Client, ApiId, IntegrationId, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), "/integrationresponses"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -351,9 +351,9 @@ create_model(Client, ApiId, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -374,9 +374,9 @@ create_route(Client, ApiId, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -397,9 +397,9 @@ create_route_response(Client, ApiId, RouteId, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/routeresponses"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -420,9 +420,9 @@ create_stage(Client, ApiId, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -443,9 +443,9 @@ create_vpc_link(Client, Input0, Options0) ->
     Path = ["/v2/vpclinks"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -468,9 +468,9 @@ delete_access_log_settings(Client, ApiId, StageName, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), "/accesslogsettings"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -491,9 +491,9 @@ delete_api(Client, ApiId, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -514,9 +514,9 @@ delete_api_mapping(Client, ApiMappingId, DomainName, Input0, Options0) ->
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/apimappings/", aws_util:encode_uri(ApiMappingId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -537,9 +537,9 @@ delete_authorizer(Client, ApiId, AuthorizerId, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -560,9 +560,9 @@ delete_cors_configuration(Client, ApiId, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/cors"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -583,9 +583,9 @@ delete_deployment(Client, ApiId, DeploymentId, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -606,9 +606,9 @@ delete_domain_name(Client, DomainName, Input0, Options0) ->
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -629,9 +629,9 @@ delete_integration(Client, ApiId, IntegrationId, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -652,9 +652,9 @@ delete_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), "/integrationresponses/", aws_util:encode_uri(IntegrationResponseId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -675,9 +675,9 @@ delete_model(Client, ApiId, ModelId, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models/", aws_util:encode_uri(ModelId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -698,9 +698,9 @@ delete_route(Client, ApiId, RouteId, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -721,9 +721,9 @@ delete_route_request_parameter(Client, ApiId, RequestParameterKey, RouteId, Inpu
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/requestparameters/", aws_util:encode_uri(RequestParameterKey), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -744,9 +744,9 @@ delete_route_response(Client, ApiId, RouteId, RouteResponseId, Input0, Options0)
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/routeresponses/", aws_util:encode_uri(RouteResponseId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -767,9 +767,9 @@ delete_route_settings(Client, ApiId, RouteKey, StageName, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), "/routesettings/", aws_util:encode_uri(RouteKey), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -790,9 +790,9 @@ delete_stage(Client, ApiId, StageName, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -813,9 +813,9 @@ delete_vpc_link(Client, VpcLinkId, Input0, Options0) ->
     Path = ["/v2/vpclinks/", aws_util:encode_uri(VpcLinkId), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1525,9 +1525,9 @@ import_api(Client, Input0, Options0) ->
     Path = ["/v2/apis"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, true},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1550,9 +1550,9 @@ reimport_api(Client, ApiId, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), ""],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, true},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1577,9 +1577,9 @@ reset_authorizers_cache(Client, ApiId, StageName, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), "/cache/authorizers"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1600,9 +1600,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/v2/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1623,9 +1623,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/v2/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1647,9 +1647,9 @@ update_api(Client, ApiId, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1670,9 +1670,9 @@ update_api_mapping(Client, ApiMappingId, DomainName, Input0, Options0) ->
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), "/apimappings/", aws_util:encode_uri(ApiMappingId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1693,9 +1693,9 @@ update_authorizer(Client, ApiId, AuthorizerId, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1716,9 +1716,9 @@ update_deployment(Client, ApiId, DeploymentId, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1739,9 +1739,9 @@ update_domain_name(Client, DomainName, Input0, Options0) ->
     Path = ["/v2/domainnames/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1762,9 +1762,9 @@ update_integration(Client, ApiId, IntegrationId, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1785,9 +1785,9 @@ update_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId,
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/integrations/", aws_util:encode_uri(IntegrationId), "/integrationresponses/", aws_util:encode_uri(IntegrationResponseId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1808,9 +1808,9 @@ update_model(Client, ApiId, ModelId, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/models/", aws_util:encode_uri(ModelId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1831,9 +1831,9 @@ update_route(Client, ApiId, RouteId, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1854,9 +1854,9 @@ update_route_response(Client, ApiId, RouteId, RouteResponseId, Input0, Options0)
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/routes/", aws_util:encode_uri(RouteId), "/routeresponses/", aws_util:encode_uri(RouteResponseId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1877,9 +1877,9 @@ update_stage(Client, ApiId, StageName, Input0, Options0) ->
     Path = ["/v2/apis/", aws_util:encode_uri(ApiId), "/stages/", aws_util:encode_uri(StageName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1900,9 +1900,9 @@ update_vpc_link(Client, VpcLinkId, Input0, Options0) ->
     Path = ["/v2/vpclinks/", aws_util:encode_uri(VpcLinkId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1936,11 +1936,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"apigateway">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -1948,12 +1946,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

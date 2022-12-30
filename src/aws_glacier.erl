@@ -149,9 +149,9 @@ abort_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Options0)
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads/", aws_util:encode_uri(UploadId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -189,9 +189,9 @@ abort_vault_lock(Client, AccountId, VaultName, Input0, Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/lock-policy"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -219,9 +219,9 @@ add_tags_to_vault(Client, AccountId, VaultName, Input0, Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/tags?operation=add"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -286,9 +286,9 @@ complete_multipart_upload(Client, AccountId, UploadId, VaultName, Input0, Option
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads/", aws_util:encode_uri(UploadId), ""],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-archive-size">>, <<"archiveSize">>},
@@ -347,9 +347,9 @@ complete_vault_lock(Client, AccountId, LockId, VaultName, Input0, Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/lock-policy/", aws_util:encode_uri(LockId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -392,9 +392,9 @@ create_vault(Client, AccountId, VaultName, Input0, Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), ""],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -456,9 +456,9 @@ delete_archive(Client, AccountId, ArchiveId, VaultName, Input0, Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/archives/", aws_util:encode_uri(ArchiveId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -501,9 +501,9 @@ delete_vault(Client, AccountId, VaultName, Input0, Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -535,9 +535,9 @@ delete_vault_access_policy(Client, AccountId, VaultName, Input0, Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/access-policy"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -574,9 +574,9 @@ delete_vault_notifications(Client, AccountId, VaultName, Input0, Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/notification-configuration"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -923,9 +923,9 @@ initiate_job(Client, AccountId, VaultName, Input0, Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/jobs"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -999,9 +999,9 @@ initiate_multipart_upload(Client, AccountId, VaultName, Input0, Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-archive-description">>, <<"archiveDescription">>},
@@ -1073,9 +1073,9 @@ initiate_vault_lock(Client, AccountId, VaultName, Input0, Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/lock-policy"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1391,9 +1391,9 @@ purchase_provisioned_capacity(Client, AccountId, Input0, Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/provisioned-capacity"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1435,9 +1435,9 @@ remove_tags_from_vault(Client, AccountId, VaultName, Input0, Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/tags?operation=remove"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1466,9 +1466,9 @@ set_data_retrieval_policy(Client, AccountId, Input0, Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/policies/data-retrieval"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1497,9 +1497,9 @@ set_vault_access_policy(Client, AccountId, VaultName, Input0, Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/access-policy"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1555,9 +1555,9 @@ set_vault_notifications(Client, AccountId, VaultName, Input0, Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/notification-configuration"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1615,9 +1615,9 @@ upload_archive(Client, AccountId, VaultName, Input0, Options0) ->
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/archives"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-archive-description">>, <<"archiveDescription">>},
@@ -1703,9 +1703,9 @@ upload_multipart_part(Client, AccountId, UploadId, VaultName, Input0, Options0) 
     Path = ["/", aws_util:encode_uri(AccountId), "/vaults/", aws_util:encode_uri(VaultName), "/multipart-uploads/", aws_util:encode_uri(UploadId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-sha256-tree-hash">>, <<"checksum">>},
@@ -1758,11 +1758,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"glacier">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -1770,12 +1768,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

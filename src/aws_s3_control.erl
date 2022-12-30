@@ -196,9 +196,9 @@ create_access_point(Client, Name, Input0, Options0) ->
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -234,9 +234,9 @@ create_access_point_for_object_lambda(Client, Name, Input0, Options0) ->
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -298,9 +298,9 @@ create_bucket(Client, Bucket, Input0, Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-acl">>, <<"ACL">>},
@@ -367,9 +367,9 @@ create_job(Client, Input0, Options0) ->
     Path = ["/v20180820/jobs"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -418,9 +418,9 @@ create_multi_region_access_point(Client, Input0, Options0) ->
     Path = ["/v20180820/async-requests/mrap/create"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -461,9 +461,9 @@ delete_access_point(Client, Name, Input0, Options0) ->
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -496,9 +496,9 @@ delete_access_point_for_object_lambda(Client, Name, Input0, Options0) ->
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -537,9 +537,9 @@ delete_access_point_policy(Client, Name, Input0, Options0) ->
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/policy"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -571,9 +571,9 @@ delete_access_point_policy_for_object_lambda(Client, Name, Input0, Options0) ->
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), "/policy"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -621,9 +621,9 @@ delete_bucket(Client, Bucket, Input0, Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -682,9 +682,9 @@ delete_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/lifecycleconfiguration"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -746,9 +746,9 @@ delete_bucket_policy(Client, Bucket, Input0, Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/policy"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -797,9 +797,9 @@ delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/tagging"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -837,9 +837,9 @@ delete_job_tagging(Client, JobId, Input0, Options0) ->
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/tagging"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -887,9 +887,9 @@ delete_multi_region_access_point(Client, Input0, Options0) ->
     Path = ["/v20180820/async-requests/mrap/delete"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -923,9 +923,9 @@ delete_public_access_block(Client, Input0, Options0) ->
     Path = ["/v20180820/configuration/publicAccessBlock"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -957,9 +957,9 @@ delete_storage_lens_configuration(Client, ConfigId, Input0, Options0) ->
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -991,9 +991,9 @@ delete_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options0) ->
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), "/tagging"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -2289,9 +2289,9 @@ put_access_point_configuration_for_object_lambda(Client, Name, Input0, Options0)
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), "/configuration"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -2333,9 +2333,9 @@ put_access_point_policy(Client, Name, Input0, Options0) ->
     Path = ["/v20180820/accesspoint/", aws_util:encode_uri(Name), "/policy"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -2371,9 +2371,9 @@ put_access_point_policy_for_object_lambda(Client, Name, Input0, Options0) ->
     Path = ["/v20180820/accesspointforobjectlambda/", aws_util:encode_uri(Name), "/policy"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -2421,9 +2421,9 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/lifecycleconfiguration"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -2485,9 +2485,9 @@ put_bucket_policy(Client, Bucket, Input0, Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/policy"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>},
@@ -2576,9 +2576,9 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/tagging"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, true}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -2654,9 +2654,9 @@ put_bucket_versioning(Client, Bucket, Input0, Options0) ->
     Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/versioning"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>},
@@ -2729,9 +2729,9 @@ put_job_tagging(Client, JobId, Input0, Options0) ->
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/tagging"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -2772,9 +2772,9 @@ put_multi_region_access_point_policy(Client, Input0, Options0) ->
     Path = ["/v20180820/async-requests/mrap/put-policy"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -2809,9 +2809,9 @@ put_public_access_block(Client, Input0, Options0) ->
     Path = ["/v20180820/configuration/publicAccessBlock"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -2843,9 +2843,9 @@ put_storage_lens_configuration(Client, ConfigId, Input0, Options0) ->
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -2878,9 +2878,9 @@ put_storage_lens_configuration_tagging(Client, ConfigId, Input0, Options0) ->
     Path = ["/v20180820/storagelens/", aws_util:encode_uri(ConfigId), "/tagging"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -2937,9 +2937,9 @@ submit_multi_region_access_point_routes(Client, Mrap, Input0, Options0) ->
     Path = ["/v20180820/mrap/instances/", aws_util:encode_multi_segment_uri(Mrap), "/routes"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -2976,9 +2976,9 @@ update_job_priority(Client, JobId, Input0, Options0) ->
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/priority"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -3018,9 +3018,9 @@ update_job_status(Client, JobId, Input0, Options0) ->
     Path = ["/v20180820/jobs/", aws_util:encode_uri(JobId), "/status"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-account-id">>, <<"AccountId">>}
@@ -3059,11 +3059,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(AccountId, <<"s3-control">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"text/xml">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"text/xml">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -3071,12 +3069,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

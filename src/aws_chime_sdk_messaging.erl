@@ -148,9 +148,9 @@ associate_channel_flow(Client, ChannelArn, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/channel-flow"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -173,9 +173,9 @@ batch_create_channel_membership(Client, ChannelArn, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships?operation=batch-create"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -210,9 +210,9 @@ channel_flow_callback(Client, ChannelArn, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "?operation=channel-flow-callback"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -239,9 +239,9 @@ create_channel(Client, Input0, Options0) ->
     Path = ["/channels"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -275,9 +275,9 @@ create_channel_ban(Client, ChannelArn, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -317,9 +317,9 @@ create_channel_flow(Client, Input0, Options0) ->
     Path = ["/channel-flows"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -365,9 +365,9 @@ create_channel_membership(Client, ChannelArn, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -406,9 +406,9 @@ create_channel_moderator(Client, ChannelArn, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -438,9 +438,9 @@ delete_channel(Client, ChannelArn, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -468,9 +468,9 @@ delete_channel_ban(Client, ChannelArn, MemberArn, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans/", aws_util:encode_uri(MemberArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -501,9 +501,9 @@ delete_channel_flow(Client, ChannelFlowArn, Input0, Options0) ->
     Path = ["/channel-flows/", aws_util:encode_uri(ChannelFlowArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -528,9 +528,9 @@ delete_channel_membership(Client, ChannelArn, MemberArn, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships/", aws_util:encode_uri(MemberArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -562,9 +562,9 @@ delete_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -592,9 +592,9 @@ delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input0, Option
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators/", aws_util:encode_uri(ChannelModeratorArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -852,9 +852,9 @@ disassociate_channel_flow(Client, ChannelArn, ChannelFlowArn, Input0, Options0) 
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/channel-flow/", aws_util:encode_uri(ChannelFlowArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1444,9 +1444,9 @@ put_channel_membership_preferences(Client, ChannelArn, MemberArn, Input0, Option
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships/", aws_util:encode_uri(MemberArn), "/preferences"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1476,9 +1476,9 @@ redact_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), "?operation=redact"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1504,9 +1504,9 @@ search_channels(Client, Input0, Options0) ->
     Path = ["/channels?operation=search"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1538,9 +1538,9 @@ send_channel_message(Client, ChannelArn, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1564,9 +1564,9 @@ tag_resource(Client, Input0, Options0) ->
     Path = ["/tags?operation=tag-resource"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1588,9 +1588,9 @@ untag_resource(Client, Input0, Options0) ->
     Path = ["/tags?operation=untag-resource"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1617,9 +1617,9 @@ update_channel(Client, ChannelArn, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1644,9 +1644,9 @@ update_channel_flow(Client, ChannelFlowArn, Input0, Options0) ->
     Path = ["/channel-flows/", aws_util:encode_uri(ChannelFlowArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1671,9 +1671,9 @@ update_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1700,9 +1700,9 @@ update_channel_read_marker(Client, ChannelArn, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/readMarker"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1738,11 +1738,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"messaging-chime">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -1750,12 +1748,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

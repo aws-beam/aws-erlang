@@ -191,9 +191,9 @@ accept_administrator_invitation(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/administrator"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -215,9 +215,9 @@ accept_invitation(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/master"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -242,9 +242,9 @@ archive_findings(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/archive"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -270,9 +270,9 @@ create_detector(Client, Input0, Options0) ->
     Path = ["/detector"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -293,9 +293,9 @@ create_filter(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -322,9 +322,9 @@ create_ip_set(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -358,9 +358,9 @@ create_members(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -384,9 +384,9 @@ create_publishing_destination(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -411,9 +411,9 @@ create_sample_findings(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/create"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -438,9 +438,9 @@ create_threat_intel_set(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -462,9 +462,9 @@ decline_invitations(Client, Input0, Options0) ->
     Path = ["/invitation/decline"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -486,9 +486,9 @@ delete_detector(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -509,9 +509,9 @@ delete_filter(Client, DetectorId, FilterName, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter/", aws_util:encode_uri(FilterName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -533,9 +533,9 @@ delete_invitations(Client, Input0, Options0) ->
     Path = ["/invitation/delete"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -558,9 +558,9 @@ delete_ip_set(Client, DetectorId, IpSetId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -582,9 +582,9 @@ delete_members(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/delete"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -605,9 +605,9 @@ delete_publishing_destination(Client, DestinationId, DetectorId, Input0, Options
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination/", aws_util:encode_uri(DestinationId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -628,9 +628,9 @@ delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options0) 
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset/", aws_util:encode_uri(ThreatIntelSetId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -654,9 +654,9 @@ describe_malware_scans(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/malware-scans"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -726,9 +726,9 @@ disable_organization_admin_account(Client, Input0, Options0) ->
     Path = ["/admin/disable"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -750,9 +750,9 @@ disassociate_from_administrator_account(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/administrator/disassociate"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -774,9 +774,9 @@ disassociate_from_master_account(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/master/disassociate"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -798,9 +798,9 @@ disassociate_members(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/disassociate"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -822,9 +822,9 @@ enable_organization_admin_account(Client, Input0, Options0) ->
     Path = ["/admin/enable"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -915,9 +915,9 @@ get_findings(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/get"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -939,9 +939,9 @@ get_findings_statistics(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/statistics"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1058,9 +1058,9 @@ get_member_detectors(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/detector/get"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1082,9 +1082,9 @@ get_members(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/get"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1106,9 +1106,9 @@ get_remaining_free_trial_days(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/freeTrial/daysRemaining"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1160,9 +1160,9 @@ get_usage_statistics(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/usage/statistics"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1186,9 +1186,9 @@ invite_members(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/invite"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1266,9 +1266,9 @@ list_findings(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1499,9 +1499,9 @@ start_monitoring_members(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/start"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1525,9 +1525,9 @@ stop_monitoring_members(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/stop"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1548,9 +1548,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1571,9 +1571,9 @@ unarchive_findings(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/unarchive"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1594,9 +1594,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1618,9 +1618,9 @@ update_detector(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1641,9 +1641,9 @@ update_filter(Client, DetectorId, FilterName, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/filter/", aws_util:encode_uri(FilterName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1664,9 +1664,9 @@ update_findings_feedback(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/feedback"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1687,9 +1687,9 @@ update_ip_set(Client, DetectorId, IpSetId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/ipset/", aws_util:encode_uri(IpSetId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1710,9 +1710,9 @@ update_malware_scan_settings(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/malware-scan-settings"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1733,9 +1733,9 @@ update_member_detectors(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/detector/update"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1756,9 +1756,9 @@ update_organization_configuration(Client, DetectorId, Input0, Options0) ->
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/admin"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1780,9 +1780,9 @@ update_publishing_destination(Client, DestinationId, DetectorId, Input0, Options
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/publishingDestination/", aws_util:encode_uri(DestinationId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1803,9 +1803,9 @@ update_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options0) 
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/threatintelset/", aws_util:encode_uri(ThreatIntelSetId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1839,11 +1839,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"guardduty">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -1851,12 +1849,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

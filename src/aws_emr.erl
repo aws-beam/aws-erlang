@@ -50,6 +50,8 @@
          get_auto_termination_policy/3,
          get_block_public_access_configuration/2,
          get_block_public_access_configuration/3,
+         get_cluster_session_credentials/2,
+         get_cluster_session_credentials/3,
          get_managed_scaling_policy/2,
          get_managed_scaling_policy/3,
          get_studio_session_mapping/2,
@@ -148,9 +150,7 @@ add_instance_groups(Client, Input, Options)
 %% complex, you may require more than 256 steps to process your data. You can
 %% bypass the 256-step limitation in various ways, including using SSH to
 %% connect to the master node and submitting queries directly to the software
-%% running on the master node, such as Hive and Hadoop. For more information
-%% on how to do this, see Add More than 256 Steps to a Cluster in the Amazon
-%% EMR Management Guide.
+%% running on the master node, such as Hive and Hadoop.
 %%
 %% A step specifies the location of a JAR file stored either on the master
 %% node of the cluster or in Amazon S3. Each step is performed by the main
@@ -226,7 +226,7 @@ create_studio(Client, Input, Options)
 %% that user or group.
 %%
 %% Use `CreateStudioSessionMapping' to assign users to a Studio when you use
-%% Amazon Web Services SSO authentication. For instructions on how to assign
+%% IAM Identity Center authentication. For instructions on how to assign
 %% users to a Studio when you use IAM authentication, see Assign a user or
 %% group to your EMR Studio.
 create_studio_session_mapping(Client, Input)
@@ -363,6 +363,19 @@ get_block_public_access_configuration(Client, Input)
 get_block_public_access_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBlockPublicAccessConfiguration">>, Input, Options).
+
+%% @doc Provides Temporary, basic HTTP credentials that are associated with a
+%% given runtime IAM role and used by a cluster with fine-grained access
+%% control activated.
+%%
+%% You can use these credentials to connect to cluster endpoints that support
+%% username-based and password-based authentication.
+get_cluster_session_credentials(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_cluster_session_credentials(Client, Input, []).
+get_cluster_session_credentials(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetClusterSessionCredentials">>, Input, Options).
 
 %% @doc Fetches the attached managed scaling policy for an Amazon EMR
 %% cluster.
@@ -661,11 +674,9 @@ remove_tags(Client, Input, Options)
 %% complex, you may require more than 256 steps to process your data. You can
 %% bypass the 256-step limitation in various ways, including using the SSH
 %% shell to connect to the master node and submitting queries directly to the
-%% software running on the master node, such as Hive and Hadoop. For more
-%% information on how to do this, see Add More than 256 Steps to a Cluster in
-%% the Amazon EMR Management Guide.
+%% software running on the master node, such as Hive and Hadoop.
 %%
-%% For long running clusters, we recommend that you periodically store your
+%% For long-running clusters, we recommend that you periodically store your
 %% results.
 %%
 %% The instance fleets configuration is available only in Amazon EMR versions

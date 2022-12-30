@@ -87,9 +87,9 @@ batch_get_field(Client, DomainId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/fields-batch"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -111,9 +111,9 @@ batch_put_field_options(Client, DomainId, FieldId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/fields/", aws_util:encode_uri(FieldId), "/options"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -139,9 +139,9 @@ create_case(Client, DomainId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -168,9 +168,9 @@ create_domain(Client, Input0, Options0) ->
     Path = ["/domains"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -194,9 +194,9 @@ create_field(Client, DomainId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/fields"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -227,9 +227,9 @@ create_layout(Client, DomainId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/layouts"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -257,9 +257,9 @@ create_related_item(Client, CaseId, DomainId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases/", aws_util:encode_uri(CaseId), "/related-items/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -288,9 +288,9 @@ create_template(Client, DomainId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/templates"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -311,9 +311,9 @@ get_case(Client, CaseId, DomainId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases/", aws_util:encode_uri(CaseId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -334,9 +334,9 @@ get_case_event_configuration(Client, DomainId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/case-event-configuration"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -357,9 +357,9 @@ get_domain(Client, DomainId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -380,9 +380,9 @@ get_layout(Client, DomainId, LayoutId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/layouts/", aws_util:encode_uri(LayoutId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -403,9 +403,9 @@ get_template(Client, DomainId, TemplateId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/templates/", aws_util:encode_uri(TemplateId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -426,9 +426,9 @@ list_cases_for_contact(Client, DomainId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/list-cases-for-contact"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -451,9 +451,9 @@ list_domains(Client, Input0, Options0) ->
     Path = ["/domains-list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -476,9 +476,9 @@ list_field_options(Client, DomainId, FieldId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/fields/", aws_util:encode_uri(FieldId), "/options-list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -502,9 +502,9 @@ list_fields(Client, DomainId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/fields-list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -529,9 +529,9 @@ list_layouts(Client, DomainId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/layouts-list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -579,9 +579,9 @@ list_templates(Client, DomainId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/templates-list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -605,9 +605,9 @@ put_case_event_configuration(Client, DomainId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/case-event-configuration"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -631,9 +631,9 @@ search_cases(Client, DomainId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases-search"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -657,9 +657,9 @@ search_related_items(Client, CaseId, DomainId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases/", aws_util:encode_uri(CaseId), "/related-items-search"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -680,9 +680,9 @@ tag_resource(Client, Arn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -703,9 +703,9 @@ untag_resource(Client, Arn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -733,9 +733,9 @@ update_case(Client, CaseId, DomainId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/cases/", aws_util:encode_uri(CaseId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -756,9 +756,9 @@ update_field(Client, DomainId, FieldId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/fields/", aws_util:encode_uri(FieldId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -788,9 +788,9 @@ update_layout(Client, DomainId, LayoutId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/layouts/", aws_util:encode_uri(LayoutId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -817,9 +817,9 @@ update_template(Client, DomainId, TemplateId, Input0, Options0) ->
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/templates/", aws_util:encode_uri(TemplateId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -853,11 +853,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"cases">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -865,12 +863,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

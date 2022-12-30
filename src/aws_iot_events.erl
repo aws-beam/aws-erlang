@@ -91,9 +91,9 @@ create_alarm_model(Client, Input0, Options0) ->
     Path = ["/alarm-models"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -114,9 +114,9 @@ create_detector_model(Client, Input0, Options0) ->
     Path = ["/detector-models"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -137,9 +137,9 @@ create_input(Client, Input0, Options0) ->
     Path = ["/inputs"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -163,9 +163,9 @@ delete_alarm_model(Client, AlarmModelName, Input0, Options0) ->
     Path = ["/alarm-models/", aws_util:encode_uri(AlarmModelName), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -188,9 +188,9 @@ delete_detector_model(Client, DetectorModelName, Input0, Options0) ->
     Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -211,9 +211,9 @@ delete_input(Client, InputName, Input0, Options0) ->
     Path = ["/inputs/", aws_util:encode_uri(InputName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -518,9 +518,9 @@ list_input_routings(Client, Input0, Options0) ->
     Path = ["/input-routings"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -602,9 +602,9 @@ put_logging_options(Client, Input0, Options0) ->
     Path = ["/logging"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -628,9 +628,9 @@ start_detector_model_analysis(Client, Input0, Options0) ->
     Path = ["/analysis/detector-models/"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -653,9 +653,9 @@ tag_resource(Client, Input0, Options0) ->
     Path = ["/tags"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -677,9 +677,9 @@ untag_resource(Client, Input0, Options0) ->
     Path = ["/tags"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -705,9 +705,9 @@ update_alarm_model(Client, AlarmModelName, Input0, Options0) ->
     Path = ["/alarm-models/", aws_util:encode_uri(AlarmModelName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -731,9 +731,9 @@ update_detector_model(Client, DetectorModelName, Input0, Options0) ->
     Path = ["/detector-models/", aws_util:encode_uri(DetectorModelName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -754,9 +754,9 @@ update_input(Client, InputName, Input0, Options0) ->
     Path = ["/inputs/", aws_util:encode_uri(InputName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -790,11 +790,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"iotevents">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -802,12 +800,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

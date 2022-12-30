@@ -92,9 +92,9 @@ cancel_job(Client, Input0, Options0) ->
     Path = ["/v1/canceljob"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -200,9 +200,9 @@ create_compute_environment(Client, Input0, Options0) ->
     Path = ["/v1/createcomputeenvironment"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -233,9 +233,9 @@ create_job_queue(Client, Input0, Options0) ->
     Path = ["/v1/createjobqueue"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -256,9 +256,9 @@ create_scheduling_policy(Client, Input0, Options0) ->
     Path = ["/v1/createschedulingpolicy"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -287,9 +287,9 @@ delete_compute_environment(Client, Input0, Options0) ->
     Path = ["/v1/deletecomputeenvironment"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -318,9 +318,9 @@ delete_job_queue(Client, Input0, Options0) ->
     Path = ["/v1/deletejobqueue"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -343,9 +343,9 @@ delete_scheduling_policy(Client, Input0, Options0) ->
     Path = ["/v1/deleteschedulingpolicy"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -368,9 +368,9 @@ deregister_job_definition(Client, Input0, Options0) ->
     Path = ["/v1/deregisterjobdefinition"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -395,9 +395,9 @@ describe_compute_environments(Client, Input0, Options0) ->
     Path = ["/v1/describecomputeenvironments"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -421,9 +421,9 @@ describe_job_definitions(Client, Input0, Options0) ->
     Path = ["/v1/describejobdefinitions"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -444,9 +444,9 @@ describe_job_queues(Client, Input0, Options0) ->
     Path = ["/v1/describejobqueues"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -467,9 +467,9 @@ describe_jobs(Client, Input0, Options0) ->
     Path = ["/v1/describejobs"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -490,9 +490,9 @@ describe_scheduling_policies(Client, Input0, Options0) ->
     Path = ["/v1/describeschedulingpolicies"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -526,9 +526,9 @@ list_jobs(Client, Input0, Options0) ->
     Path = ["/v1/listjobs"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -549,9 +549,9 @@ list_scheduling_policies(Client, Input0, Options0) ->
     Path = ["/v1/listschedulingpolicies"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -599,9 +599,9 @@ register_job_definition(Client, Input0, Options0) ->
     Path = ["/v1/registerjobdefinition"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -637,9 +637,9 @@ submit_job(Client, Input0, Options0) ->
     Path = ["/v1/submitjob"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -668,9 +668,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -695,9 +695,9 @@ terminate_job(Client, Input0, Options0) ->
     Path = ["/v1/terminatejob"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -718,9 +718,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -742,9 +742,9 @@ update_compute_environment(Client, Input0, Options0) ->
     Path = ["/v1/updatecomputeenvironment"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -765,9 +765,9 @@ update_job_queue(Client, Input0, Options0) ->
     Path = ["/v1/updatejobqueue"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -788,9 +788,9 @@ update_scheduling_policy(Client, Input0, Options0) ->
     Path = ["/v1/updateschedulingpolicy"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -824,11 +824,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"batch">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -836,12 +834,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

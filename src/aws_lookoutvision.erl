@@ -96,9 +96,9 @@ create_dataset(Client, ProjectName, Input0, Options0) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/datasets"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"ClientToken">>}
@@ -140,9 +140,9 @@ create_model(Client, ProjectName, Input0, Options0) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/models"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"ClientToken">>}
@@ -170,9 +170,9 @@ create_project(Client, Input0, Options0) ->
     Path = ["/2020-11-20/projects"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"ClientToken">>}
@@ -211,9 +211,9 @@ delete_dataset(Client, DatasetType, ProjectName, Input0, Options0) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/datasets/", aws_util:encode_uri(DatasetType), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"ClientToken">>}
@@ -246,9 +246,9 @@ delete_model(Client, ModelVersion, ProjectName, Input0, Options0) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/models/", aws_util:encode_uri(ModelVersion), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"ClientToken">>}
@@ -282,9 +282,9 @@ delete_project(Client, ProjectName, Input0, Options0) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"ClientToken">>}
@@ -432,9 +432,9 @@ detect_anomalies(Client, ModelVersion, ProjectName, Input0, Options0) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/models/", aws_util:encode_uri(ModelVersion), "/detect"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, true},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Content-Type">>, <<"ContentType">>}
@@ -645,9 +645,9 @@ start_model(Client, ModelVersion, ProjectName, Input0, Options0) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/models/", aws_util:encode_uri(ModelVersion), "/start"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"ClientToken">>}
@@ -701,9 +701,9 @@ start_model_packaging_job(Client, ProjectName, Input0, Options0) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/modelpackagingjobs"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"ClientToken">>}
@@ -734,9 +734,9 @@ stop_model(Client, ModelVersion, ProjectName, Input0, Options0) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/models/", aws_util:encode_uri(ModelVersion), "/stop"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"ClientToken">>}
@@ -766,9 +766,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/2020-11-20/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -795,9 +795,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/2020-11-20/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -840,9 +840,9 @@ update_dataset_entries(Client, DatasetType, ProjectName, Input0, Options0) ->
     Path = ["/2020-11-20/projects/", aws_util:encode_uri(ProjectName), "/datasets/", aws_util:encode_uri(DatasetType), "/entries"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"ClientToken">>}
@@ -878,11 +878,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"lookoutvision">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -890,12 +888,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

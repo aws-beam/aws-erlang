@@ -147,9 +147,9 @@ accept_eulas(Client, StudioId, Input0, Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/eula-acceptances"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -172,9 +172,9 @@ create_launch_profile(Client, StudioId, Input0, Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -197,9 +197,9 @@ create_streaming_image(Client, StudioId, Input0, Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-images"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -225,9 +225,9 @@ create_streaming_session(Client, StudioId, Input0, Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-sessions"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -253,9 +253,9 @@ create_streaming_session_stream(Client, SessionId, StudioId, Input0, Options0) -
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-sessions/", aws_util:encode_uri(SessionId), "/streams"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -307,9 +307,9 @@ create_studio(Client, Input0, Options0) ->
     Path = ["/2020-08-01/studios"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -332,9 +332,9 @@ create_studio_component(Client, StudioId, Input0, Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/studio-components"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -357,9 +357,9 @@ delete_launch_profile(Client, LaunchProfileId, StudioId, Input0, Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -382,9 +382,9 @@ delete_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, Inp
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), "/membership/", aws_util:encode_uri(PrincipalId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -407,9 +407,9 @@ delete_streaming_image(Client, StreamingImageId, StudioId, Input0, Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-images/", aws_util:encode_uri(StreamingImageId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -438,9 +438,9 @@ delete_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-sessions/", aws_util:encode_uri(SessionId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -463,9 +463,9 @@ delete_studio(Client, StudioId, Input0, Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -488,9 +488,9 @@ delete_studio_component(Client, StudioComponentId, StudioId, Input0, Options0) -
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/studio-components/", aws_util:encode_uri(StudioComponentId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -513,9 +513,9 @@ delete_studio_member(Client, PrincipalId, StudioId, Input0, Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/membership/", aws_util:encode_uri(PrincipalId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -1158,9 +1158,9 @@ put_launch_profile_members(Client, LaunchProfileId, StudioId, Input0, Options0) 
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), "/membership"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -1183,9 +1183,9 @@ put_studio_members(Client, StudioId, Input0, Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/membership"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -1211,9 +1211,9 @@ start_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-sessions/", aws_util:encode_uri(SessionId), "/start"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -1247,9 +1247,9 @@ start_studio_s_s_o_configuration_repair(Client, StudioId, Input0, Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/sso-configuration"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -1275,9 +1275,9 @@ stop_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-sessions/", aws_util:encode_uri(SessionId), "/stop"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -1300,9 +1300,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/2020-08-01/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1323,9 +1323,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/2020-08-01/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1347,9 +1347,9 @@ update_launch_profile(Client, LaunchProfileId, StudioId, Input0, Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -1372,9 +1372,9 @@ update_launch_profile_member(Client, LaunchProfileId, PrincipalId, StudioId, Inp
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/launch-profiles/", aws_util:encode_uri(LaunchProfileId), "/membership/", aws_util:encode_uri(PrincipalId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -1397,9 +1397,9 @@ update_streaming_image(Client, StreamingImageId, StudioId, Input0, Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/streaming-images/", aws_util:encode_uri(StreamingImageId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -1425,9 +1425,9 @@ update_studio(Client, StudioId, Input0, Options0) ->
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -1450,9 +1450,9 @@ update_studio_component(Client, StudioComponentId, StudioId, Input0, Options0) -
     Path = ["/2020-08-01/studios/", aws_util:encode_uri(StudioId), "/studio-components/", aws_util:encode_uri(StudioComponentId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Token">>, <<"clientToken">>}
@@ -1488,11 +1488,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"nimble">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -1500,12 +1498,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

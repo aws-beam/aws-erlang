@@ -203,9 +203,9 @@ associate_assessment_report_evidence_folder(Client, AssessmentId, Input0, Option
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/associateToAssessmentReport"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -227,9 +227,9 @@ batch_associate_assessment_report_evidence(Client, AssessmentId, Input0, Options
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/batchAssociateToAssessmentReport"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -250,9 +250,9 @@ batch_create_delegation_by_assessment(Client, AssessmentId, Input0, Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/delegations"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -273,9 +273,9 @@ batch_delete_delegation_by_assessment(Client, AssessmentId, Input0, Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/delegations"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -297,9 +297,9 @@ batch_disassociate_assessment_report_evidence(Client, AssessmentId, Input0, Opti
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/batchDisassociateFromAssessmentReport"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -340,9 +340,9 @@ batch_import_evidence_to_assessment_control(Client, AssessmentId, ControlId, Con
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/controls/", aws_util:encode_uri(ControlId), "/evidence"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -363,9 +363,9 @@ create_assessment(Client, Input0, Options0) ->
     Path = ["/assessments"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -386,9 +386,9 @@ create_assessment_framework(Client, Input0, Options0) ->
     Path = ["/assessmentFrameworks"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -409,9 +409,9 @@ create_assessment_report(Client, AssessmentId, Input0, Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/reports"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -432,9 +432,9 @@ create_control(Client, Input0, Options0) ->
     Path = ["/controls"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -455,9 +455,9 @@ delete_assessment(Client, AssessmentId, Input0, Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -478,9 +478,9 @@ delete_assessment_framework(Client, FrameworkId, Input0, Options0) ->
     Path = ["/assessmentFrameworks/", aws_util:encode_uri(FrameworkId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -501,9 +501,9 @@ delete_assessment_framework_share(Client, RequestId, Input0, Options0) ->
     Path = ["/assessmentFrameworkShareRequests/", aws_util:encode_uri(RequestId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -548,9 +548,9 @@ delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input0, Optio
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/reports/", aws_util:encode_uri(AssessmentReportId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -571,9 +571,9 @@ delete_control(Client, ControlId, Input0, Options0) ->
     Path = ["/controls/", aws_util:encode_uri(ControlId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -621,9 +621,9 @@ deregister_account(Client, Input0, Options0) ->
     Path = ["/account/deregisterAccount"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -697,9 +697,9 @@ deregister_organization_admin_account(Client, Input0, Options0) ->
     Path = ["/account/deregisterOrganizationAdminAccount"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -721,9 +721,9 @@ disassociate_assessment_report_evidence_folder(Client, AssessmentId, Input0, Opt
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/disassociateFromAssessmentReport"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1540,9 +1540,9 @@ register_account(Client, Input0, Options0) ->
     Path = ["/account/registerAccount"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1564,9 +1564,9 @@ register_organization_admin_account(Client, Input0, Options0) ->
     Path = ["/account/registerOrganizationAdminAccount"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1626,9 +1626,9 @@ start_assessment_framework_share(Client, FrameworkId, Input0, Options0) ->
     Path = ["/assessmentFrameworks/", aws_util:encode_uri(FrameworkId), "/shareRequests"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1649,9 +1649,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1672,9 +1672,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1696,9 +1696,9 @@ update_assessment(Client, AssessmentId, Input0, Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1719,9 +1719,9 @@ update_assessment_control(Client, AssessmentId, ControlId, ControlSetId, Input0,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/controls/", aws_util:encode_uri(ControlId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1742,9 +1742,9 @@ update_assessment_control_set_status(Client, AssessmentId, ControlSetId, Input0,
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/controlSets/", aws_util:encode_uri(ControlSetId), "/status"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1765,9 +1765,9 @@ update_assessment_framework(Client, FrameworkId, Input0, Options0) ->
     Path = ["/assessmentFrameworks/", aws_util:encode_uri(FrameworkId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1788,9 +1788,9 @@ update_assessment_framework_share(Client, RequestId, Input0, Options0) ->
     Path = ["/assessmentFrameworkShareRequests/", aws_util:encode_uri(RequestId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1811,9 +1811,9 @@ update_assessment_status(Client, AssessmentId, Input0, Options0) ->
     Path = ["/assessments/", aws_util:encode_uri(AssessmentId), "/status"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1834,9 +1834,9 @@ update_control(Client, ControlId, Input0, Options0) ->
     Path = ["/controls/", aws_util:encode_uri(ControlId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1857,9 +1857,9 @@ update_settings(Client, Input0, Options0) ->
     Path = ["/settings"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1880,9 +1880,9 @@ validate_assessment_report_integrity(Client, Input0, Options0) ->
     Path = ["/assessmentReports/integrity"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1916,11 +1916,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"auditmanager">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -1928,12 +1926,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

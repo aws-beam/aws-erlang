@@ -227,9 +227,9 @@ accept_attachment(Client, AttachmentId, Input0, Options0) ->
     Path = ["/attachments/", aws_util:encode_uri(AttachmentId), "/accept"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -255,9 +255,9 @@ associate_connect_peer(Client, GlobalNetworkId, Input0, Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connect-peer-associations"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -292,9 +292,9 @@ associate_customer_gateway(Client, GlobalNetworkId, Input0, Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/customer-gateway-associations"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -319,9 +319,9 @@ associate_link(Client, GlobalNetworkId, Input0, Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/link-associations"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -351,9 +351,9 @@ associate_transit_gateway_connect_peer(Client, GlobalNetworkId, Input0, Options0
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-connect-peer-associations"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -380,9 +380,9 @@ create_connect_attachment(Client, Input0, Options0) ->
     Path = ["/connect-attachments"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -407,9 +407,9 @@ create_connect_peer(Client, Input0, Options0) ->
     Path = ["/connect-peers"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -434,9 +434,9 @@ create_connection(Client, GlobalNetworkId, Input0, Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -458,9 +458,9 @@ create_core_network(Client, Input0, Options0) ->
     Path = ["/core-networks"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -484,9 +484,9 @@ create_device(Client, GlobalNetworkId, Input0, Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/devices"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -507,9 +507,9 @@ create_global_network(Client, Input0, Options0) ->
     Path = ["/global-networks"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -530,9 +530,9 @@ create_link(Client, GlobalNetworkId, Input0, Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/links"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -553,9 +553,9 @@ create_site(Client, GlobalNetworkId, Input0, Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/sites"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -577,9 +577,9 @@ create_site_to_site_vpn_attachment(Client, Input0, Options0) ->
     Path = ["/site-to-site-vpn-attachments"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -600,9 +600,9 @@ create_transit_gateway_peering(Client, Input0, Options0) ->
     Path = ["/transit-gateway-peerings"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -623,9 +623,9 @@ create_transit_gateway_route_table_attachment(Client, Input0, Options0) ->
     Path = ["/transit-gateway-route-table-attachments"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -646,9 +646,9 @@ create_vpc_attachment(Client, Input0, Options0) ->
     Path = ["/vpc-attachments"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -671,9 +671,9 @@ delete_attachment(Client, AttachmentId, Input0, Options0) ->
     Path = ["/attachments/", aws_util:encode_uri(AttachmentId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -694,9 +694,9 @@ delete_connect_peer(Client, ConnectPeerId, Input0, Options0) ->
     Path = ["/connect-peers/", aws_util:encode_uri(ConnectPeerId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -717,9 +717,9 @@ delete_connection(Client, ConnectionId, GlobalNetworkId, Input0, Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections/", aws_util:encode_uri(ConnectionId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -742,9 +742,9 @@ delete_core_network(Client, CoreNetworkId, Input0, Options0) ->
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -767,9 +767,9 @@ delete_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Input
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-policy-versions/", aws_util:encode_uri(PolicyVersionId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -793,9 +793,9 @@ delete_device(Client, DeviceId, GlobalNetworkId, Input0, Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/devices/", aws_util:encode_uri(DeviceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -819,9 +819,9 @@ delete_global_network(Client, GlobalNetworkId, Input0, Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -845,9 +845,9 @@ delete_link(Client, GlobalNetworkId, LinkId, Input0, Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/links/", aws_util:encode_uri(LinkId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -868,9 +868,9 @@ delete_peering(Client, PeeringId, Input0, Options0) ->
     Path = ["/peerings/", aws_util:encode_uri(PeeringId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -894,9 +894,9 @@ delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
     Path = ["/resource-policy/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -919,9 +919,9 @@ delete_site(Client, GlobalNetworkId, SiteId, Input0, Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/sites/", aws_util:encode_uri(SiteId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -945,9 +945,9 @@ deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input0, O
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-registrations/", aws_util:encode_uri(TransitGatewayArn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1002,9 +1002,9 @@ disassociate_connect_peer(Client, ConnectPeerId, GlobalNetworkId, Input0, Option
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connect-peer-associations/", aws_util:encode_uri(ConnectPeerId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1025,9 +1025,9 @@ disassociate_customer_gateway(Client, CustomerGatewayArn, GlobalNetworkId, Input
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/customer-gateway-associations/", aws_util:encode_uri(CustomerGatewayArn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1051,9 +1051,9 @@ disassociate_link(Client, GlobalNetworkId, Input0, Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/link-associations"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1076,9 +1076,9 @@ disassociate_transit_gateway_connect_peer(Client, GlobalNetworkId, TransitGatewa
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-connect-peer-associations/", aws_util:encode_uri(TransitGatewayConnectPeerArn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1101,9 +1101,9 @@ execute_core_network_change_set(Client, CoreNetworkId, PolicyVersionId, Input0, 
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-change-sets/", aws_util:encode_uri(PolicyVersionId), "/execute"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1572,9 +1572,9 @@ get_network_routes(Client, GlobalNetworkId, Input0, Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/network-routes"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2061,9 +2061,9 @@ put_core_network_policy(Client, CoreNetworkId, Input0, Options0) ->
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-policy"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2084,9 +2084,9 @@ put_resource_policy(Client, ResourceArn, Input0, Options0) ->
     Path = ["/resource-policy/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2112,9 +2112,9 @@ register_transit_gateway(Client, GlobalNetworkId, Input0, Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/transit-gateway-registrations"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2135,9 +2135,9 @@ reject_attachment(Client, AttachmentId, Input0, Options0) ->
     Path = ["/attachments/", aws_util:encode_uri(AttachmentId), "/reject"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2162,9 +2162,9 @@ restore_core_network_policy_version(Client, CoreNetworkId, PolicyVersionId, Inpu
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), "/core-network-policy-versions/", aws_util:encode_uri(PolicyVersionId), "/restore"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2188,9 +2188,9 @@ start_organization_service_access_update(Client, Input0, Options0) ->
     Path = ["/organizations/service-access"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2214,9 +2214,9 @@ start_route_analysis(Client, GlobalNetworkId, Input0, Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/route-analyses"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2237,9 +2237,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2260,9 +2260,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2286,9 +2286,9 @@ update_connection(Client, ConnectionId, GlobalNetworkId, Input0, Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections/", aws_util:encode_uri(ConnectionId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2309,9 +2309,9 @@ update_core_network(Client, CoreNetworkId, Input0, Options0) ->
     Path = ["/core-networks/", aws_util:encode_uri(CoreNetworkId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2334,9 +2334,9 @@ update_device(Client, DeviceId, GlobalNetworkId, Input0, Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/devices/", aws_util:encode_uri(DeviceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2359,9 +2359,9 @@ update_global_network(Client, GlobalNetworkId, Input0, Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2384,9 +2384,9 @@ update_link(Client, GlobalNetworkId, LinkId, Input0, Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/links/", aws_util:encode_uri(LinkId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2407,9 +2407,9 @@ update_network_resource_metadata(Client, GlobalNetworkId, ResourceArn, Input0, O
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/network-resources/", aws_util:encode_uri(ResourceArn), "/metadata"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2432,9 +2432,9 @@ update_site(Client, GlobalNetworkId, SiteId, Input0, Options0) ->
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/sites/", aws_util:encode_uri(SiteId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2455,9 +2455,9 @@ update_vpc_attachment(Client, AttachmentId, Input0, Options0) ->
     Path = ["/vpc-attachments/", aws_util:encode_uri(AttachmentId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2492,11 +2492,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"networkmanager">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -2504,12 +2502,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

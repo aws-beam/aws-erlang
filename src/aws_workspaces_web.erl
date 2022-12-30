@@ -147,9 +147,9 @@ associate_browser_settings(Client, PortalArn, Input0, Options0) ->
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/browserSettings"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -171,9 +171,9 @@ associate_network_settings(Client, PortalArn, Input0, Options0) ->
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/networkSettings"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -195,9 +195,9 @@ associate_trust_store(Client, PortalArn, Input0, Options0) ->
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/trustStores"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -219,9 +219,9 @@ associate_user_access_logging_settings(Client, PortalArn, Input0, Options0) ->
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/userAccessLoggingSettings"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -243,9 +243,9 @@ associate_user_settings(Client, PortalArn, Input0, Options0) ->
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/userSettings"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -272,9 +272,9 @@ create_browser_settings(Client, Input0, Options0) ->
     Path = ["/browserSettings"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -296,9 +296,9 @@ create_identity_provider(Client, Input0, Options0) ->
     Path = ["/identityProviders"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -323,9 +323,9 @@ create_network_settings(Client, Input0, Options0) ->
     Path = ["/networkSettings"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -346,9 +346,9 @@ create_portal(Client, Input0, Options0) ->
     Path = ["/portals"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -376,9 +376,9 @@ create_trust_store(Client, Input0, Options0) ->
     Path = ["/trustStores"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -400,9 +400,9 @@ create_user_access_logging_settings(Client, Input0, Options0) ->
     Path = ["/userAccessLoggingSettings"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -427,9 +427,9 @@ create_user_settings(Client, Input0, Options0) ->
     Path = ["/userSettings"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -450,9 +450,9 @@ delete_browser_settings(Client, BrowserSettingsArn, Input0, Options0) ->
     Path = ["/browserSettings/", aws_util:encode_multi_segment_uri(BrowserSettingsArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -473,9 +473,9 @@ delete_identity_provider(Client, IdentityProviderArn, Input0, Options0) ->
     Path = ["/identityProviders/", aws_util:encode_multi_segment_uri(IdentityProviderArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -496,9 +496,9 @@ delete_network_settings(Client, NetworkSettingsArn, Input0, Options0) ->
     Path = ["/networkSettings/", aws_util:encode_multi_segment_uri(NetworkSettingsArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -519,9 +519,9 @@ delete_portal(Client, PortalArn, Input0, Options0) ->
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -542,9 +542,9 @@ delete_trust_store(Client, TrustStoreArn, Input0, Options0) ->
     Path = ["/trustStores/", aws_util:encode_multi_segment_uri(TrustStoreArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -565,9 +565,9 @@ delete_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, Input0
     Path = ["/userAccessLoggingSettings/", aws_util:encode_multi_segment_uri(UserAccessLoggingSettingsArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -588,9 +588,9 @@ delete_user_settings(Client, UserSettingsArn, Input0, Options0) ->
     Path = ["/userSettings/", aws_util:encode_multi_segment_uri(UserSettingsArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -611,9 +611,9 @@ disassociate_browser_settings(Client, PortalArn, Input0, Options0) ->
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/browserSettings"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -634,9 +634,9 @@ disassociate_network_settings(Client, PortalArn, Input0, Options0) ->
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/networkSettings"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -657,9 +657,9 @@ disassociate_trust_store(Client, PortalArn, Input0, Options0) ->
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/trustStores"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -680,9 +680,9 @@ disassociate_user_access_logging_settings(Client, PortalArn, Input0, Options0) -
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/userAccessLoggingSettings"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -703,9 +703,9 @@ disassociate_user_settings(Client, PortalArn, Input0, Options0) ->
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/userSettings"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1184,9 +1184,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_multi_segment_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1207,9 +1207,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_multi_segment_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1231,9 +1231,9 @@ update_browser_settings(Client, BrowserSettingsArn, Input0, Options0) ->
     Path = ["/browserSettings/", aws_util:encode_multi_segment_uri(BrowserSettingsArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1254,9 +1254,9 @@ update_identity_provider(Client, IdentityProviderArn, Input0, Options0) ->
     Path = ["/identityProviders/", aws_util:encode_multi_segment_uri(IdentityProviderArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1277,9 +1277,9 @@ update_network_settings(Client, NetworkSettingsArn, Input0, Options0) ->
     Path = ["/networkSettings/", aws_util:encode_multi_segment_uri(NetworkSettingsArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1300,9 +1300,9 @@ update_portal(Client, PortalArn, Input0, Options0) ->
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1323,9 +1323,9 @@ update_trust_store(Client, TrustStoreArn, Input0, Options0) ->
     Path = ["/trustStores/", aws_util:encode_multi_segment_uri(TrustStoreArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1346,9 +1346,9 @@ update_user_access_logging_settings(Client, UserAccessLoggingSettingsArn, Input0
     Path = ["/userAccessLoggingSettings/", aws_util:encode_multi_segment_uri(UserAccessLoggingSettingsArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1369,9 +1369,9 @@ update_user_settings(Client, UserSettingsArn, Input0, Options0) ->
     Path = ["/userSettings/", aws_util:encode_multi_segment_uri(UserSettingsArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1405,11 +1405,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"workspaces-web">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -1417,12 +1415,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

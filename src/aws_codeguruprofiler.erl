@@ -96,9 +96,9 @@ add_notification_channels(Client, ProfilingGroupName, Input0, Options0) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/notificationConfiguration"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -120,9 +120,9 @@ batch_get_frame_metric_data(Client, ProfilingGroupName, Input0, Options0) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/frames/-/metrics"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -151,9 +151,9 @@ configure_agent(Client, ProfilingGroupName, Input0, Options0) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/configureAgent"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -174,9 +174,9 @@ create_profiling_group(Client, Input0, Options0) ->
     Path = ["/profilingGroups"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -198,9 +198,9 @@ delete_profiling_group(Client, ProfilingGroupName, Input0, Options0) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -567,9 +567,9 @@ post_agent_profile(Client, ProfilingGroupName, Input0, Options0) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/agentProfile"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Content-Type">>, <<"contentType">>}
@@ -615,9 +615,9 @@ put_permission(Client, ActionGroup, ProfilingGroupName, Input0, Options0) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/policy/", aws_util:encode_uri(ActionGroup), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -638,9 +638,9 @@ remove_notification_channel(Client, ChannelId, ProfilingGroupName, Input0, Optio
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/notificationConfiguration/", aws_util:encode_uri(ChannelId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -668,9 +668,9 @@ remove_permission(Client, ActionGroup, ProfilingGroupName, Input0, Options0) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/policy/", aws_util:encode_uri(ActionGroup), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -693,9 +693,9 @@ submit_feedback(Client, AnomalyInstanceId, ProfilingGroupName, Input0, Options0)
     Path = ["/internal/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), "/anomalies/", aws_util:encode_uri(AnomalyInstanceId), "/feedback"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -716,9 +716,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -739,9 +739,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -763,9 +763,9 @@ update_profiling_group(Client, ProfilingGroupName, Input0, Options0) ->
     Path = ["/profilingGroups/", aws_util:encode_uri(ProfilingGroupName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -799,11 +799,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"codeguru-profiler">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -811,12 +809,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

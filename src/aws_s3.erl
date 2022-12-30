@@ -283,9 +283,9 @@ abort_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
@@ -408,9 +408,9 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-checksum-crc32">>, <<"ChecksumCRC32">>},
@@ -634,9 +634,9 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
@@ -845,9 +845,9 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-acl">>, <<"ACL">>},
@@ -1096,9 +1096,9 @@ create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-acl">>, <<"ACL">>},
@@ -1186,9 +1186,9 @@ delete_bucket(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1234,9 +1234,9 @@ delete_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1276,9 +1276,9 @@ delete_bucket_cors(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1321,9 +1321,9 @@ delete_bucket_encryption(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1377,9 +1377,9 @@ delete_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0
 
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1423,9 +1423,9 @@ delete_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1473,9 +1473,9 @@ delete_bucket_lifecycle(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1525,9 +1525,9 @@ delete_bucket_metrics_configuration(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1567,9 +1567,9 @@ delete_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1619,9 +1619,9 @@ delete_bucket_policy(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1665,9 +1665,9 @@ delete_bucket_replication(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1703,9 +1703,9 @@ delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1752,9 +1752,9 @@ delete_bucket_website(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1807,9 +1807,9 @@ delete_object(Client, Bucket, Key, Input0, Options0) ->
 
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-bypass-governance-retention">>, <<"BypassGovernanceRetention">>},
@@ -1873,9 +1873,9 @@ delete_object_tagging(Client, Bucket, Key, Input0, Options0) ->
 
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -1962,9 +1962,9 @@ delete_objects(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, true}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-bypass-governance-retention">>, <<"BypassGovernanceRetention">>},
@@ -2026,9 +2026,9 @@ delete_public_access_block(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -3934,9 +3934,9 @@ head_bucket(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -4039,9 +4039,9 @@ head_object(Client, Bucket, Key, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-checksum-mode">>, <<"ChecksumMode">>},
@@ -4808,9 +4808,9 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
@@ -4984,9 +4984,9 @@ put_bucket_acl(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-acl">>, <<"ACL">>},
@@ -5076,9 +5076,9 @@ put_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -5151,9 +5151,9 @@ put_bucket_cors(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, true}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
@@ -5209,9 +5209,9 @@ put_bucket_encryption(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
@@ -5295,9 +5295,9 @@ put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) -
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5382,9 +5382,9 @@ put_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -5463,9 +5463,9 @@ put_bucket_lifecycle(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, true}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
@@ -5561,9 +5561,9 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
@@ -5655,9 +5655,9 @@ put_bucket_logging(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
@@ -5718,9 +5718,9 @@ put_bucket_metrics_configuration(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>}
@@ -5745,9 +5745,9 @@ put_bucket_notification(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
@@ -5835,9 +5835,9 @@ put_bucket_notification_configuration(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
@@ -5877,9 +5877,9 @@ put_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Content-MD5">>, <<"ContentMD5">>},
@@ -5928,9 +5928,9 @@ put_bucket_policy(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
@@ -6019,9 +6019,9 @@ put_bucket_replication(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
@@ -6061,9 +6061,9 @@ put_bucket_request_payment(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
@@ -6141,9 +6141,9 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, true}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
@@ -6205,9 +6205,9 @@ put_bucket_versioning(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
@@ -6302,9 +6302,9 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
@@ -6426,9 +6426,9 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, true},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
@@ -6662,9 +6662,9 @@ put_object_acl(Client, Bucket, Key, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-acl">>, <<"ACL">>},
@@ -6718,9 +6718,9 @@ put_object_legal_hold(Client, Bucket, Key, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
@@ -6776,9 +6776,9 @@ put_object_lock_configuration(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
@@ -6829,9 +6829,9 @@ put_object_retention(Client, Bucket, Key, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-bypass-governance-retention">>, <<"BypassGovernanceRetention">>},
@@ -6926,9 +6926,9 @@ put_object_tagging(Client, Bucket, Key, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
@@ -6999,9 +6999,9 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
@@ -7246,9 +7246,9 @@ restore_object(Client, Bucket, Key, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
@@ -7386,9 +7386,9 @@ select_object_content(Client, Bucket, Key, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-expected-bucket-owner">>, <<"ExpectedBucketOwner">>},
@@ -7511,9 +7511,9 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, true},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-sdk-checksum-algorithm">>, <<"ChecksumAlgorithm">>},
@@ -7685,9 +7685,9 @@ upload_part_copy(Client, Bucket, Key, Input0, Options0) ->
 
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-copy-source">>, <<"CopySource">>},
@@ -7796,9 +7796,9 @@ write_get_object_response(Client, Input0, Options0) ->
     Bucket = undefined,
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, true},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-fwd-error-message">>, <<"ErrorMessage">>},
@@ -7877,11 +7877,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"s3">>, Client1, Bucket),
     URL0 = build_url(Host, Path, Client1, Bucket),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"text/xml">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"text/xml">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -7889,12 +7887,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

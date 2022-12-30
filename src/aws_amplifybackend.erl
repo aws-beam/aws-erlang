@@ -83,9 +83,9 @@ clone_backend(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/environments/", aws_util:encode_uri(BackendEnvironmentName), "/clone"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -108,9 +108,9 @@ create_backend(Client, Input0, Options0) ->
     Path = ["/backend"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -131,9 +131,9 @@ create_backend_api(Client, AppId, Input0, Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/api"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -154,9 +154,9 @@ create_backend_auth(Client, AppId, Input0, Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/auth"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -177,9 +177,9 @@ create_backend_config(Client, AppId, Input0, Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/config"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -200,9 +200,9 @@ create_backend_storage(Client, AppId, Input0, Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/storage"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -224,9 +224,9 @@ create_token(Client, AppId, Input0, Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/challenge"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -247,9 +247,9 @@ delete_backend(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/environments/", aws_util:encode_uri(BackendEnvironmentName), "/remove"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -270,9 +270,9 @@ delete_backend_api(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/api/", aws_util:encode_uri(BackendEnvironmentName), "/remove"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -293,9 +293,9 @@ delete_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/auth/", aws_util:encode_uri(BackendEnvironmentName), "/remove"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -316,9 +316,9 @@ delete_backend_storage(Client, AppId, BackendEnvironmentName, Input0, Options0) 
     Path = ["/backend/", aws_util:encode_uri(AppId), "/storage/", aws_util:encode_uri(BackendEnvironmentName), "/remove"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -339,9 +339,9 @@ delete_token(Client, AppId, SessionId, Input0, Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/challenge/", aws_util:encode_uri(SessionId), "/remove"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -362,9 +362,9 @@ generate_backend_api_models(Client, AppId, BackendEnvironmentName, Input0, Optio
     Path = ["/backend/", aws_util:encode_uri(AppId), "/api/", aws_util:encode_uri(BackendEnvironmentName), "/generateModels"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -385,9 +385,9 @@ get_backend(Client, AppId, Input0, Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/details"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -408,9 +408,9 @@ get_backend_api(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/api/", aws_util:encode_uri(BackendEnvironmentName), "/details"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -431,9 +431,9 @@ get_backend_api_models(Client, AppId, BackendEnvironmentName, Input0, Options0) 
     Path = ["/backend/", aws_util:encode_uri(AppId), "/api/", aws_util:encode_uri(BackendEnvironmentName), "/getModels"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -454,9 +454,9 @@ get_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/auth/", aws_util:encode_uri(BackendEnvironmentName), "/details"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -500,9 +500,9 @@ get_backend_storage(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/storage/", aws_util:encode_uri(BackendEnvironmentName), "/details"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -546,9 +546,9 @@ import_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/auth/", aws_util:encode_uri(BackendEnvironmentName), "/import"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -569,9 +569,9 @@ import_backend_storage(Client, AppId, BackendEnvironmentName, Input0, Options0) 
     Path = ["/backend/", aws_util:encode_uri(AppId), "/storage/", aws_util:encode_uri(BackendEnvironmentName), "/import"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -592,9 +592,9 @@ list_backend_jobs(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/job/", aws_util:encode_uri(BackendEnvironmentName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -615,9 +615,9 @@ list_s3_buckets(Client, Input0, Options0) ->
     Path = ["/s3Buckets"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -638,9 +638,9 @@ remove_all_backends(Client, AppId, Input0, Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/remove"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -661,9 +661,9 @@ remove_backend_config(Client, AppId, Input0, Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/config/remove"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -684,9 +684,9 @@ update_backend_api(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/api/", aws_util:encode_uri(BackendEnvironmentName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -707,9 +707,9 @@ update_backend_auth(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/auth/", aws_util:encode_uri(BackendEnvironmentName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -730,9 +730,9 @@ update_backend_config(Client, AppId, Input0, Options0) ->
     Path = ["/backend/", aws_util:encode_uri(AppId), "/config/update"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -753,9 +753,9 @@ update_backend_job(Client, AppId, BackendEnvironmentName, JobId, Input0, Options
     Path = ["/backend/", aws_util:encode_uri(AppId), "/job/", aws_util:encode_uri(BackendEnvironmentName), "/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -776,9 +776,9 @@ update_backend_storage(Client, AppId, BackendEnvironmentName, Input0, Options0) 
     Path = ["/backend/", aws_util:encode_uri(AppId), "/storage/", aws_util:encode_uri(BackendEnvironmentName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -812,11 +812,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"amplifybackend">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -824,12 +822,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

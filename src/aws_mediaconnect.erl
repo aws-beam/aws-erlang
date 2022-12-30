@@ -90,9 +90,9 @@ add_flow_media_streams(Client, FlowArn, Input0, Options0) ->
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/mediaStreams"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -115,9 +115,9 @@ add_flow_outputs(Client, FlowArn, Input0, Options0) ->
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/outputs"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -138,9 +138,9 @@ add_flow_sources(Client, FlowArn, Input0, Options0) ->
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/source"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -161,9 +161,9 @@ add_flow_vpc_interfaces(Client, FlowArn, Input0, Options0) ->
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/vpcInterfaces"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -187,9 +187,9 @@ create_flow(Client, Input0, Options0) ->
     Path = ["/v1/flows"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -212,9 +212,9 @@ delete_flow(Client, FlowArn, Input0, Options0) ->
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -314,9 +314,9 @@ grant_flow_entitlements(Client, FlowArn, Input0, Options0) ->
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/entitlements"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -489,9 +489,9 @@ purchase_offering(Client, OfferingArn, Input0, Options0) ->
     Path = ["/v1/offerings/", aws_util:encode_uri(OfferingArn), ""],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -515,9 +515,9 @@ remove_flow_media_stream(Client, FlowArn, MediaStreamName, Input0, Options0) ->
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/mediaStreams/", aws_util:encode_uri(MediaStreamName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -543,9 +543,9 @@ remove_flow_output(Client, FlowArn, OutputArn, Input0, Options0) ->
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/outputs/", aws_util:encode_uri(OutputArn), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -569,9 +569,9 @@ remove_flow_source(Client, FlowArn, SourceArn, Input0, Options0) ->
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/source/", aws_util:encode_uri(SourceArn), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -597,9 +597,9 @@ remove_flow_vpc_interface(Client, FlowArn, VpcInterfaceName, Input0, Options0) -
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/vpcInterfaces/", aws_util:encode_uri(VpcInterfaceName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -623,9 +623,9 @@ revoke_flow_entitlement(Client, EntitlementArn, FlowArn, Input0, Options0) ->
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/entitlements/", aws_util:encode_uri(EntitlementArn), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -646,9 +646,9 @@ start_flow(Client, FlowArn, Input0, Options0) ->
     Path = ["/v1/flows/start/", aws_util:encode_uri(FlowArn), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -669,9 +669,9 @@ stop_flow(Client, FlowArn, Input0, Options0) ->
     Path = ["/v1/flows/stop/", aws_util:encode_uri(FlowArn), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -697,9 +697,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -720,9 +720,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -744,9 +744,9 @@ update_flow(Client, FlowArn, Input0, Options0) ->
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -771,9 +771,9 @@ update_flow_entitlement(Client, EntitlementArn, FlowArn, Input0, Options0) ->
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/entitlements/", aws_util:encode_uri(EntitlementArn), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -794,9 +794,9 @@ update_flow_media_stream(Client, FlowArn, MediaStreamName, Input0, Options0) ->
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/mediaStreams/", aws_util:encode_uri(MediaStreamName), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -817,9 +817,9 @@ update_flow_output(Client, FlowArn, OutputArn, Input0, Options0) ->
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/outputs/", aws_util:encode_uri(OutputArn), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -840,9 +840,9 @@ update_flow_source(Client, FlowArn, SourceArn, Input0, Options0) ->
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/source/", aws_util:encode_uri(SourceArn), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -876,11 +876,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"mediaconnect">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -888,12 +886,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

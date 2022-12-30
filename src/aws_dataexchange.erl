@@ -113,9 +113,9 @@ cancel_job(Client, JobId, Input0, Options0) ->
     Path = ["/v1/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -136,9 +136,9 @@ create_data_set(Client, Input0, Options0) ->
     Path = ["/v1/data-sets"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -159,9 +159,9 @@ create_event_action(Client, Input0, Options0) ->
     Path = ["/v1/event-actions"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -182,9 +182,9 @@ create_job(Client, Input0, Options0) ->
     Path = ["/v1/jobs"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -205,9 +205,9 @@ create_revision(Client, DataSetId, Input0, Options0) ->
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -228,9 +228,9 @@ delete_asset(Client, AssetId, DataSetId, RevisionId, Input0, Options0) ->
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), "/assets/", aws_util:encode_uri(AssetId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -251,9 +251,9 @@ delete_data_set(Client, DataSetId, Input0, Options0) ->
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -274,9 +274,9 @@ delete_event_action(Client, EventActionId, Input0, Options0) ->
     Path = ["/v1/event-actions/", aws_util:encode_uri(EventActionId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -297,9 +297,9 @@ delete_revision(Client, DataSetId, RevisionId, Input0, Options0) ->
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -609,9 +609,9 @@ revoke_revision(Client, DataSetId, RevisionId, Input0, Options0) ->
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), "/revoke"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -634,9 +634,9 @@ send_api_asset(Client, Input0, Options0) ->
     Path = ["/v1"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, true},
-               {receive_body_as_binary, true}
+               {receive_body_as_binary, true},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amzn-dataexchange-asset-id">>, <<"AssetId">>},
@@ -666,9 +666,9 @@ start_job(Client, JobId, Input0, Options0) ->
     Path = ["/v1/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -689,9 +689,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -712,9 +712,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -736,9 +736,9 @@ update_asset(Client, AssetId, DataSetId, RevisionId, Input0, Options0) ->
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), "/assets/", aws_util:encode_uri(AssetId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -759,9 +759,9 @@ update_data_set(Client, DataSetId, Input0, Options0) ->
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -782,9 +782,9 @@ update_event_action(Client, EventActionId, Input0, Options0) ->
     Path = ["/v1/event-actions/", aws_util:encode_uri(EventActionId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -805,9 +805,9 @@ update_revision(Client, DataSetId, RevisionId, Input0, Options0) ->
     Path = ["/v1/data-sets/", aws_util:encode_uri(DataSetId), "/revisions/", aws_util:encode_uri(RevisionId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -841,11 +841,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"dataexchange">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -853,12 +851,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

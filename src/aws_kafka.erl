@@ -107,9 +107,9 @@ batch_associate_scram_secret(Client, ClusterArn, Input0, Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/scram-secrets"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -130,9 +130,9 @@ batch_disassociate_scram_secret(Client, ClusterArn, Input0, Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/scram-secrets"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -153,9 +153,9 @@ create_cluster(Client, Input0, Options0) ->
     Path = ["/v1/clusters"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -177,9 +177,9 @@ create_cluster_v2(Client, Input0, Options0) ->
     Path = ["/api/v2/clusters"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -200,9 +200,9 @@ create_configuration(Client, Input0, Options0) ->
     Path = ["/v1/configurations"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -224,9 +224,9 @@ delete_cluster(Client, ClusterArn, Input0, Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -250,9 +250,9 @@ delete_configuration(Client, Arn, Input0, Options0) ->
     Path = ["/v1/configurations/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -694,9 +694,9 @@ reboot_broker(Client, ClusterArn, Input0, Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/reboot-broker"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -717,9 +717,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -741,9 +741,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -768,9 +768,9 @@ update_broker_count(Client, ClusterArn, Input0, Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/nodes/count"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -791,9 +791,9 @@ update_broker_storage(Client, ClusterArn, Input0, Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/nodes/storage"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -814,9 +814,9 @@ update_broker_type(Client, ClusterArn, Input0, Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/nodes/type"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -838,9 +838,9 @@ update_cluster_configuration(Client, ClusterArn, Input0, Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/configuration"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -861,9 +861,9 @@ update_cluster_kafka_version(Client, ClusterArn, Input0, Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/version"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -886,9 +886,9 @@ update_configuration(Client, Arn, Input0, Options0) ->
     Path = ["/v1/configurations/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -909,9 +909,9 @@ update_connectivity(Client, ClusterArn, Input0, Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/connectivity"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -936,9 +936,9 @@ update_monitoring(Client, ClusterArn, Input0, Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/monitoring"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -960,9 +960,9 @@ update_security(Client, ClusterArn, Input0, Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/security"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -984,9 +984,9 @@ update_storage(Client, ClusterArn, Input0, Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/storage"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1020,11 +1020,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"kafka">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -1032,12 +1030,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

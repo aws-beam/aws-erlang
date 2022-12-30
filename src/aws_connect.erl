@@ -428,9 +428,9 @@ associate_approved_origin(Client, InstanceId, Input0, Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/approved-origin"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -455,9 +455,9 @@ associate_bot(Client, InstanceId, Input0, Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/bot"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -481,9 +481,9 @@ associate_default_vocabulary(Client, InstanceId, LanguageCode, Input0, Options0)
     Path = ["/default-vocabulary/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(LanguageCode), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -515,9 +515,9 @@ associate_instance_storage_config(Client, InstanceId, Input0, Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-config"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -542,9 +542,9 @@ associate_lambda_function(Client, InstanceId, Input0, Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lambda-function"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -569,9 +569,9 @@ associate_lex_bot(Client, InstanceId, Input0, Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lex-bot"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -603,9 +603,9 @@ associate_phone_number_contact_flow(Client, PhoneNumberId, Input0, Options0) ->
     Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), "/contact-flow"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -629,9 +629,9 @@ associate_queue_quick_connects(Client, InstanceId, QueueId, Input0, Options0) ->
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/associate-quick-connects"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -652,9 +652,9 @@ associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, O
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/associate-queues"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -678,9 +678,9 @@ associate_security_key(Client, InstanceId, Input0, Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/security-key"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -713,9 +713,9 @@ claim_phone_number(Client, Input0, Options0) ->
     Path = ["/phone-number/claim"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -739,9 +739,9 @@ create_agent_status(Client, InstanceId, Input0, Options0) ->
     Path = ["/agent-status/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -765,9 +765,9 @@ create_contact_flow(Client, InstanceId, Input0, Options0) ->
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -788,9 +788,9 @@ create_contact_flow_module(Client, InstanceId, Input0, Options0) ->
     Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -814,9 +814,9 @@ create_hours_of_operation(Client, InstanceId, Input0, Options0) ->
     Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -849,9 +849,9 @@ create_instance(Client, Input0, Options0) ->
     Path = ["/instance"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -873,9 +873,9 @@ create_integration_association(Client, InstanceId, Input0, Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -910,9 +910,9 @@ create_queue(Client, InstanceId, Input0, Options0) ->
     Path = ["/queues/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -933,9 +933,9 @@ create_quick_connect(Client, InstanceId, Input0, Options0) ->
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -956,9 +956,9 @@ create_routing_profile(Client, InstanceId, Input0, Options0) ->
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -981,9 +981,9 @@ create_rule(Client, InstanceId, Input0, Options0) ->
     Path = ["/rules/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1007,9 +1007,9 @@ create_security_profile(Client, InstanceId, Input0, Options0) ->
     Path = ["/security-profiles/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1030,9 +1030,9 @@ create_task_template(Client, InstanceId, Input0, Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/task/template"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1057,9 +1057,9 @@ create_traffic_distribution_group(Client, Input0, Options0) ->
     Path = ["/traffic-distribution-group"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1080,9 +1080,9 @@ create_use_case(Client, InstanceId, IntegrationAssociationId, Input0, Options0) 
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations/", aws_util:encode_uri(IntegrationAssociationId), "/use-cases"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1106,9 +1106,9 @@ create_user(Client, InstanceId, Input0, Options0) ->
     Path = ["/users/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1129,9 +1129,9 @@ create_user_hierarchy_group(Client, InstanceId, Input0, Options0) ->
     Path = ["/user-hierarchy-groups/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1157,9 +1157,9 @@ create_vocabulary(Client, InstanceId, Input0, Options0) ->
     Path = ["/vocabulary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1180,9 +1180,9 @@ delete_contact_flow(Client, ContactFlowId, InstanceId, Input0, Options0) ->
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1203,9 +1203,9 @@ delete_contact_flow_module(Client, ContactFlowModuleId, InstanceId, Input0, Opti
     Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1229,9 +1229,9 @@ delete_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input0, Option
     Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1261,9 +1261,9 @@ delete_instance(Client, InstanceId, Input0, Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1287,9 +1287,9 @@ delete_integration_association(Client, InstanceId, IntegrationAssociationId, Inp
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations/", aws_util:encode_uri(IntegrationAssociationId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1310,9 +1310,9 @@ delete_quick_connect(Client, InstanceId, QuickConnectId, Input0, Options0) ->
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1333,9 +1333,9 @@ delete_rule(Client, InstanceId, RuleId, Input0, Options0) ->
     Path = ["/rules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RuleId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1359,9 +1359,9 @@ delete_security_profile(Client, InstanceId, SecurityProfileId, Input0, Options0)
     Path = ["/security-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(SecurityProfileId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1382,9 +1382,9 @@ delete_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/task/template/", aws_util:encode_uri(TaskTemplateId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1412,9 +1412,9 @@ delete_traffic_distribution_group(Client, TrafficDistributionGroupId, Input0, Op
     Path = ["/traffic-distribution-group/", aws_util:encode_uri(TrafficDistributionGroupId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1435,9 +1435,9 @@ delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input0,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations/", aws_util:encode_uri(IntegrationAssociationId), "/use-cases/", aws_util:encode_uri(UseCaseId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1462,9 +1462,9 @@ delete_user(Client, InstanceId, UserId, Input0, Options0) ->
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1487,9 +1487,9 @@ delete_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Input0, Option
     Path = ["/user-hierarchy-groups/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HierarchyGroupId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1510,9 +1510,9 @@ delete_vocabulary(Client, InstanceId, VocabularyId, Input0, Options0) ->
     Path = ["/vocabulary-remove/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(VocabularyId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2032,9 +2032,9 @@ disassociate_approved_origin(Client, InstanceId, Input0, Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/approved-origin"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2060,9 +2060,9 @@ disassociate_bot(Client, InstanceId, Input0, Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/bot"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2087,9 +2087,9 @@ disassociate_instance_storage_config(Client, AssociationId, InstanceId, Input0, 
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-config/", aws_util:encode_uri(AssociationId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2115,9 +2115,9 @@ disassociate_lambda_function(Client, InstanceId, Input0, Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lambda-function"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2143,9 +2143,9 @@ disassociate_lex_bot(Client, InstanceId, Input0, Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/lex-bot"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2179,9 +2179,9 @@ disassociate_phone_number_contact_flow(Client, PhoneNumberId, Input0, Options0) 
     Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), "/contact-flow"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2206,9 +2206,9 @@ disassociate_queue_quick_connects(Client, InstanceId, QueueId, Input0, Options0)
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/disassociate-quick-connects"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2229,9 +2229,9 @@ disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/disassociate-queues"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2255,9 +2255,9 @@ disassociate_security_key(Client, AssociationId, InstanceId, Input0, Options0) -
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/security-key/", aws_util:encode_uri(AssociationId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2282,9 +2282,9 @@ dismiss_user_contact(Client, InstanceId, UserId, Input0, Options0) ->
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/contact"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2332,9 +2332,9 @@ get_current_metric_data(Client, InstanceId, Input0, Options0) ->
     Path = ["/metrics/current/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2356,9 +2356,9 @@ get_current_user_data(Client, InstanceId, Input0, Options0) ->
     Path = ["/metrics/userdata/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2413,9 +2413,9 @@ get_metric_data(Client, InstanceId, Input0, Options0) ->
     Path = ["/metrics/historical/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2685,9 +2685,9 @@ list_default_vocabularies(Client, InstanceId, Input0, Options0) ->
     Path = ["/default-vocabulary-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2981,9 +2981,9 @@ list_phone_numbers_v2(Client, Input0, Options0) ->
     Path = ["/phone-number/list"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3494,9 +3494,9 @@ monitor_contact(Client, Input0, Options0) ->
     Path = ["/contact/monitor"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3523,9 +3523,9 @@ put_user_status(Client, InstanceId, UserId, Input0, Options0) ->
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/status"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3558,9 +3558,9 @@ release_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3587,9 +3587,9 @@ replicate_instance(Client, InstanceId, Input0, Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/replicate"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3614,9 +3614,9 @@ resume_contact_recording(Client, Input0, Options0) ->
     Path = ["/contact/resume-recording"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3642,9 +3642,9 @@ search_available_phone_numbers(Client, Input0, Options0) ->
     Path = ["/phone-number/search-available"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3668,9 +3668,9 @@ search_queues(Client, Input0, Options0) ->
     Path = ["/search-queues"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3695,9 +3695,9 @@ search_routing_profiles(Client, Input0, Options0) ->
     Path = ["/search-routing-profiles"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3722,9 +3722,9 @@ search_security_profiles(Client, Input0, Options0) ->
     Path = ["/search-security-profiles"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3748,9 +3748,9 @@ search_users(Client, Input0, Options0) ->
     Path = ["/search-users"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3772,9 +3772,9 @@ search_vocabularies(Client, InstanceId, Input0, Options0) ->
     Path = ["/vocabulary-summary/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3819,9 +3819,9 @@ start_chat_contact(Client, Input0, Options0) ->
     Path = ["/contact/chat"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3860,9 +3860,9 @@ start_contact_recording(Client, Input0, Options0) ->
     Path = ["/contact/start-recording"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3886,9 +3886,9 @@ start_contact_streaming(Client, Input0, Options0) ->
     Path = ["/contact/start-streaming"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3928,9 +3928,9 @@ start_outbound_voice_contact(Client, Input0, Options0) ->
     Path = ["/contact/outbound-voice"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3951,9 +3951,9 @@ start_task_contact(Client, Input0, Options0) ->
     Path = ["/contact/task"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3984,9 +3984,9 @@ stop_contact(Client, Input0, Options0) ->
     Path = ["/contact/stop"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4016,9 +4016,9 @@ stop_contact_recording(Client, Input0, Options0) ->
     Path = ["/contact/stop-recording"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4042,9 +4042,9 @@ stop_contact_streaming(Client, Input0, Options0) ->
     Path = ["/contact/stop-streaming"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4075,9 +4075,9 @@ suspend_contact_recording(Client, Input0, Options0) ->
     Path = ["/contact/suspend-recording"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4106,9 +4106,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4151,9 +4151,9 @@ transfer_contact(Client, Input0, Options0) ->
     Path = ["/contact/transfer"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4174,9 +4174,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4201,9 +4201,9 @@ update_agent_status(Client, AgentStatusId, InstanceId, Input0, Options0) ->
     Path = ["/agent-status/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(AgentStatusId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4232,9 +4232,9 @@ update_contact(Client, ContactId, InstanceId, Input0, Options0) ->
     Path = ["/contacts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4270,9 +4270,9 @@ update_contact_attributes(Client, Input0, Options0) ->
     Path = ["/contact/attributes"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4296,9 +4296,9 @@ update_contact_flow_content(Client, ContactFlowId, InstanceId, Input0, Options0)
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/content"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4319,9 +4319,9 @@ update_contact_flow_metadata(Client, ContactFlowId, InstanceId, Input0, Options0
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/metadata"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4343,9 +4343,9 @@ update_contact_flow_module_content(Client, ContactFlowModuleId, InstanceId, Inpu
     Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), "/content"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4366,9 +4366,9 @@ update_contact_flow_module_metadata(Client, ContactFlowModuleId, InstanceId, Inp
     Path = ["/contact-flow-modules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowModuleId), "/metadata"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4392,9 +4392,9 @@ update_contact_flow_name(Client, ContactFlowId, InstanceId, Input0, Options0) ->
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/name"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4416,9 +4416,9 @@ update_contact_schedule(Client, Input0, Options0) ->
     Path = ["/contact/schedule"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4442,9 +4442,9 @@ update_hours_of_operation(Client, HoursOfOperationId, InstanceId, Input0, Option
     Path = ["/hours-of-operations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HoursOfOperationId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4468,9 +4468,9 @@ update_instance_attribute(Client, AttributeType, InstanceId, Input0, Options0) -
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/attribute/", aws_util:encode_uri(AttributeType), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4495,9 +4495,9 @@ update_instance_storage_config(Client, AssociationId, InstanceId, Input0, Option
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/storage-config/", aws_util:encode_uri(AssociationId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4534,9 +4534,9 @@ update_participant_role_config(Client, ContactId, InstanceId, Input0, Options0) 
     Path = ["/contact/participant-role-config/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4562,9 +4562,9 @@ update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4588,9 +4588,9 @@ update_queue_hours_of_operation(Client, InstanceId, QueueId, Input0, Options0) -
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/hours-of-operation"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4615,9 +4615,9 @@ update_queue_max_contacts(Client, InstanceId, QueueId, Input0, Options0) ->
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/max-contacts"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4642,9 +4642,9 @@ update_queue_name(Client, InstanceId, QueueId, Input0, Options0) ->
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/name"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4680,9 +4680,9 @@ update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input0, Options
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/outbound-caller-config"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4706,9 +4706,9 @@ update_queue_status(Client, InstanceId, QueueId, Input0, Options0) ->
     Path = ["/queues/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QueueId), "/status"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4729,9 +4729,9 @@ update_quick_connect_config(Client, InstanceId, QuickConnectId, Input0, Options0
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), "/config"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4755,9 +4755,9 @@ update_quick_connect_name(Client, InstanceId, QuickConnectId, Input0, Options0) 
     Path = ["/quick-connects/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(QuickConnectId), "/name"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4779,9 +4779,9 @@ update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input0,
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/concurrency"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4802,9 +4802,9 @@ update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfile
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/default-outbound-queue"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4828,9 +4828,9 @@ update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input0, Option
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/name"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4852,9 +4852,9 @@ update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Opti
     Path = ["/routing-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RoutingProfileId), "/queues"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4877,9 +4877,9 @@ update_rule(Client, InstanceId, RuleId, Input0, Options0) ->
     Path = ["/rules/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(RuleId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4903,9 +4903,9 @@ update_security_profile(Client, InstanceId, SecurityProfileId, Input0, Options0)
     Path = ["/security-profiles/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(SecurityProfileId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4930,9 +4930,9 @@ update_task_template(Client, InstanceId, TaskTemplateId, Input0, Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/task/template/", aws_util:encode_uri(TaskTemplateId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4958,9 +4958,9 @@ update_traffic_distribution(Client, Id, Input0, Options0) ->
     Path = ["/traffic-distribution/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4981,9 +4981,9 @@ update_user_hierarchy(Client, InstanceId, UserId, Input0, Options0) ->
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/hierarchy"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5004,9 +5004,9 @@ update_user_hierarchy_group_name(Client, HierarchyGroupId, InstanceId, Input0, O
     Path = ["/user-hierarchy-groups/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(HierarchyGroupId), "/name"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5028,9 +5028,9 @@ update_user_hierarchy_structure(Client, InstanceId, Input0, Options0) ->
     Path = ["/user-hierarchy-structure/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5059,9 +5059,9 @@ update_user_identity_info(Client, InstanceId, UserId, Input0, Options0) ->
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/identity-info"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5082,9 +5082,9 @@ update_user_phone_config(Client, InstanceId, UserId, Input0, Options0) ->
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/phone-config"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5105,9 +5105,9 @@ update_user_routing_profile(Client, InstanceId, UserId, Input0, Options0) ->
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/routing-profile"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5128,9 +5128,9 @@ update_user_security_profiles(Client, InstanceId, UserId, Input0, Options0) ->
     Path = ["/users/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(UserId), "/security-profiles"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5164,11 +5164,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"connect">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -5176,12 +5174,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

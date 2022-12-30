@@ -118,9 +118,9 @@ create_access_point(Client, Input0, Options0) ->
     Path = ["/2015-02-01/access-points"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -196,9 +196,9 @@ create_file_system(Client, Input0, Options0) ->
     Path = ["/2015-02-01/file-systems"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -340,9 +340,9 @@ create_mount_target(Client, Input0, Options0) ->
     Path = ["/2015-02-01/mount-targets"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -422,9 +422,9 @@ create_replication_configuration(Client, SourceFileSystemId, Input0, Options0) -
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(SourceFileSystemId), "/replication-configuration"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -457,9 +457,9 @@ create_tags(Client, FileSystemId, Input0, Options0) ->
     Path = ["/2015-02-01/create-tags/", aws_util:encode_uri(FileSystemId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -487,9 +487,9 @@ delete_access_point(Client, AccessPointId, Input0, Options0) ->
     Path = ["/2015-02-01/access-points/", aws_util:encode_uri(AccessPointId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -534,9 +534,9 @@ delete_file_system(Client, FileSystemId, Input0, Options0) ->
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -564,9 +564,9 @@ delete_file_system_policy(Client, FileSystemId, Input0, Options0) ->
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/policy"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -614,9 +614,9 @@ delete_mount_target(Client, MountTargetId, Input0, Options0) ->
     Path = ["/2015-02-01/mount-targets/", aws_util:encode_uri(MountTargetId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -644,9 +644,9 @@ delete_replication_configuration(Client, SourceFileSystemId, Input0, Options0) -
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(SourceFileSystemId), "/replication-configuration"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -677,9 +677,9 @@ delete_tags(Client, FileSystemId, Input0, Options0) ->
     Path = ["/2015-02-01/delete-tags/", aws_util:encode_uri(FileSystemId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1105,9 +1105,9 @@ modify_mount_target_security_groups(Client, MountTargetId, Input0, Options0) ->
     Path = ["/2015-02-01/mount-targets/", aws_util:encode_uri(MountTargetId), "/security-groups"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1141,9 +1141,9 @@ put_account_preferences(Client, Input0, Options0) ->
     Path = ["/2015-02-01/account-preferences"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1166,9 +1166,9 @@ put_backup_policy(Client, FileSystemId, Input0, Options0) ->
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/backup-policy"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1203,9 +1203,9 @@ put_file_system_policy(Client, FileSystemId, Input0, Options0) ->
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/policy"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1276,9 +1276,9 @@ put_lifecycle_configuration(Client, FileSystemId, Input0, Options0) ->
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), "/lifecycle-configuration"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1305,9 +1305,9 @@ tag_resource(Client, ResourceId, Input0, Options0) ->
     Path = ["/2015-02-01/resource-tags/", aws_util:encode_uri(ResourceId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1334,9 +1334,9 @@ untag_resource(Client, ResourceId, Input0, Options0) ->
     Path = ["/2015-02-01/resource-tags/", aws_util:encode_uri(ResourceId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1359,9 +1359,9 @@ update_file_system(Client, FileSystemId, Input0, Options0) ->
     Path = ["/2015-02-01/file-systems/", aws_util:encode_uri(FileSystemId), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1395,11 +1395,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"elasticfilesystem">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -1407,12 +1405,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

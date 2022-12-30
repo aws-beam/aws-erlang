@@ -172,9 +172,9 @@ abort_document_version_upload(Client, DocumentId, VersionId, Input0, Options0) -
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -199,9 +199,9 @@ activate_user(Client, UserId, Input0, Options0) ->
     Path = ["/api/v1/users/", aws_util:encode_uri(UserId), "/activation"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -227,9 +227,9 @@ add_resource_permissions(Client, ResourceId, Input0, Options0) ->
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/permissions"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -252,9 +252,9 @@ create_comment(Client, DocumentId, VersionId, Input0, Options0) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), "/comment"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -278,9 +278,9 @@ create_custom_metadata(Client, ResourceId, Input0, Options0) ->
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/customMetadata"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -304,9 +304,9 @@ create_folder(Client, Input0, Options0) ->
     Path = ["/api/v1/folders"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -330,9 +330,9 @@ create_labels(Client, ResourceId, Input0, Options0) ->
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/labels"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -361,9 +361,9 @@ create_notification_subscription(Client, OrganizationId, Input0, Options0) ->
     Path = ["/api/v1/organizations/", aws_util:encode_uri(OrganizationId), "/subscriptions"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -387,9 +387,9 @@ create_user(Client, Input0, Options0) ->
     Path = ["/api/v1/users"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -413,9 +413,9 @@ deactivate_user(Client, UserId, Input0, Options0) ->
     Path = ["/api/v1/users/", aws_util:encode_uri(UserId), "/activation"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -438,9 +438,9 @@ delete_comment(Client, CommentId, DocumentId, VersionId, Input0, Options0) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), "/comment/", aws_util:encode_uri(CommentId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -463,9 +463,9 @@ delete_custom_metadata(Client, ResourceId, Input0, Options0) ->
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/customMetadata"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -492,9 +492,9 @@ delete_document(Client, DocumentId, Input0, Options0) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -519,9 +519,9 @@ delete_document_version(Client, DocumentId, VersionId, Input0, Options0) ->
     Path = ["/api/v1/documentVersions/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -545,9 +545,9 @@ delete_folder(Client, FolderId, Input0, Options0) ->
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -570,9 +570,9 @@ delete_folder_contents(Client, FolderId, Input0, Options0) ->
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), "/contents"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -595,9 +595,9 @@ delete_labels(Client, ResourceId, Input0, Options0) ->
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/labels"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -622,9 +622,9 @@ delete_notification_subscription(Client, OrganizationId, SubscriptionId, Input0,
     Path = ["/api/v1/organizations/", aws_util:encode_uri(OrganizationId), "/subscriptions/", aws_util:encode_uri(SubscriptionId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -646,9 +646,9 @@ delete_user(Client, UserId, Input0, Options0) ->
     Path = ["/api/v1/users/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1256,9 +1256,9 @@ initiate_document_version_upload(Client, Input0, Options0) ->
     Path = ["/api/v1/documents"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1281,9 +1281,9 @@ remove_all_resource_permissions(Client, ResourceId, Input0, Options0) ->
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/permissions"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1307,9 +1307,9 @@ remove_resource_permission(Client, PrincipalId, ResourceId, Input0, Options0) ->
     Path = ["/api/v1/resources/", aws_util:encode_uri(ResourceId), "/permissions/", aws_util:encode_uri(PrincipalId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1333,9 +1333,9 @@ restore_document_versions(Client, DocumentId, Input0, Options0) ->
     Path = ["/api/v1/documentVersions/restore/", aws_util:encode_uri(DocumentId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1361,9 +1361,9 @@ update_document(Client, DocumentId, Input0, Options0) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1390,9 +1390,9 @@ update_document_version(Client, DocumentId, VersionId, Input0, Options0) ->
     Path = ["/api/v1/documents/", aws_util:encode_uri(DocumentId), "/versions/", aws_util:encode_uri(VersionId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1418,9 +1418,9 @@ update_folder(Client, FolderId, Input0, Options0) ->
     Path = ["/api/v1/folders/", aws_util:encode_uri(FolderId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1444,9 +1444,9 @@ update_user(Client, UserId, Input0, Options0) ->
     Path = ["/api/v1/users/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"Authentication">>, <<"AuthenticationToken">>}
@@ -1482,11 +1482,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"workdocs">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -1494,12 +1492,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

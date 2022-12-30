@@ -143,9 +143,9 @@ batch_evaluate_feature(Client, Project, Input0, Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/evaluations"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -181,9 +181,9 @@ create_experiment(Client, Project, Input0, Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/experiments"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -211,9 +211,9 @@ create_feature(Client, Project, Input0, Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/features"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -246,9 +246,9 @@ create_launch(Client, Project, Input0, Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/launches"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -274,9 +274,9 @@ create_project(Client, Input0, Options0) ->
     Path = ["/projects"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -315,9 +315,9 @@ create_segment(Client, Input0, Options0) ->
     Path = ["/segments"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -342,9 +342,9 @@ delete_experiment(Client, Experiment, Project, Input0, Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/experiments/", aws_util:encode_uri(Experiment), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -365,9 +365,9 @@ delete_feature(Client, Feature, Project, Input0, Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/features/", aws_util:encode_uri(Feature), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -392,9 +392,9 @@ delete_launch(Client, Launch, Project, Input0, Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/launches/", aws_util:encode_uri(Launch), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -418,9 +418,9 @@ delete_project(Client, Project, Input0, Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -444,9 +444,9 @@ delete_segment(Client, Segment, Input0, Options0) ->
     Path = ["/segments/", aws_util:encode_uri(Segment), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -498,9 +498,9 @@ evaluate_feature(Client, Feature, Project, Input0, Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/evaluations/", aws_util:encode_uri(Feature), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -559,9 +559,9 @@ get_experiment_results(Client, Experiment, Project, Input0, Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/experiments/", aws_util:encode_uri(Experiment), "/results"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -887,9 +887,9 @@ put_project_events(Client, Project, Input0, Options0) ->
     Path = ["/events/projects/", aws_util:encode_uri(Project), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -912,9 +912,9 @@ start_experiment(Client, Experiment, Project, Input0, Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/experiments/", aws_util:encode_uri(Experiment), "/start"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -937,9 +937,9 @@ start_launch(Client, Launch, Project, Input0, Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/launches/", aws_util:encode_uri(Launch), "/start"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -962,9 +962,9 @@ stop_experiment(Client, Experiment, Project, Input0, Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/experiments/", aws_util:encode_uri(Experiment), "/cancel"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -991,9 +991,9 @@ stop_launch(Client, Launch, Project, Input0, Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/launches/", aws_util:encode_uri(Launch), "/cancel"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1034,9 +1034,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1060,9 +1060,9 @@ test_segment_pattern(Client, Input0, Options0) ->
     Path = ["/test-segment-pattern"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1083,9 +1083,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1110,9 +1110,9 @@ update_experiment(Client, Experiment, Project, Input0, Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/experiments/", aws_util:encode_uri(Experiment), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1136,9 +1136,9 @@ update_feature(Client, Feature, Project, Input0, Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/features/", aws_util:encode_uri(Feature), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1162,9 +1162,9 @@ update_launch(Client, Launch, Project, Input0, Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/launches/", aws_util:encode_uri(Launch), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1193,9 +1193,9 @@ update_project(Client, Project, Input0, Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1224,9 +1224,9 @@ update_project_data_delivery(Client, Project, Input0, Options0) ->
     Path = ["/projects/", aws_util:encode_uri(Project), "/data-delivery"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1260,11 +1260,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"evidently">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -1272,12 +1270,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

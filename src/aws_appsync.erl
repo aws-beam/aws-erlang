@@ -141,9 +141,9 @@ associate_api(Client, DomainName, Input0, Options0) ->
     Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), "/apiassociation"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -164,9 +164,9 @@ create_api_cache(Client, ApiId, Input0, Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/ApiCaches"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -188,9 +188,9 @@ create_api_key(Client, ApiId, Input0, Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -211,9 +211,9 @@ create_data_source(Client, ApiId, Input0, Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -234,9 +234,9 @@ create_domain_name(Client, Input0, Options0) ->
     Path = ["/v1/domainnames"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -260,9 +260,9 @@ create_function(Client, ApiId, Input0, Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -283,9 +283,9 @@ create_graphql_api(Client, Input0, Options0) ->
     Path = ["/v1/apis"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -309,9 +309,9 @@ create_resolver(Client, ApiId, TypeName, Input0, Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -332,9 +332,9 @@ create_type(Client, ApiId, Input0, Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -355,9 +355,9 @@ delete_api_cache(Client, ApiId, Input0, Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/ApiCaches"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -378,9 +378,9 @@ delete_api_key(Client, ApiId, Id, Input0, Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -401,9 +401,9 @@ delete_data_source(Client, ApiId, Name, Input0, Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -424,9 +424,9 @@ delete_domain_name(Client, DomainName, Input0, Options0) ->
     Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -447,9 +447,9 @@ delete_function(Client, ApiId, FunctionId, Input0, Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions/", aws_util:encode_uri(FunctionId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -470,9 +470,9 @@ delete_graphql_api(Client, ApiId, Input0, Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -493,9 +493,9 @@ delete_resolver(Client, ApiId, FieldName, TypeName, Input0, Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers/", aws_util:encode_uri(FieldName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -516,9 +516,9 @@ delete_type(Client, ApiId, TypeName, Input0, Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -539,9 +539,9 @@ disassociate_api(Client, DomainName, Input0, Options0) ->
     Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), "/apiassociation"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -570,9 +570,9 @@ evaluate_code(Client, Input0, Options0) ->
     Path = ["/v1/dataplane-evaluatecode"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -603,9 +603,9 @@ evaluate_mapping_template(Client, Input0, Options0) ->
     Path = ["/v1/dataplane-evaluatetemplate"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -626,9 +626,9 @@ flush_api_cache(Client, ApiId, Input0, Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/FlushCache"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1143,9 +1143,9 @@ start_schema_creation(Client, ApiId, Input0, Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/schemacreation"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1166,9 +1166,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1189,9 +1189,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1213,9 +1213,9 @@ update_api_cache(Client, ApiId, Input0, Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/ApiCaches/update"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1238,9 +1238,9 @@ update_api_key(Client, ApiId, Id, Input0, Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/apikeys/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1261,9 +1261,9 @@ update_data_source(Client, ApiId, Name, Input0, Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/datasources/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1284,9 +1284,9 @@ update_domain_name(Client, DomainName, Input0, Options0) ->
     Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1307,9 +1307,9 @@ update_function(Client, ApiId, FunctionId, Input0, Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions/", aws_util:encode_uri(FunctionId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1330,9 +1330,9 @@ update_graphql_api(Client, ApiId, Input0, Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1353,9 +1353,9 @@ update_resolver(Client, ApiId, FieldName, TypeName, Input0, Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers/", aws_util:encode_uri(FieldName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1376,9 +1376,9 @@ update_type(Client, ApiId, TypeName, Input0, Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1412,11 +1412,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"appsync">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -1424,12 +1422,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

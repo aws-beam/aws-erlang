@@ -259,9 +259,9 @@ associate_role_to_group(Client, GroupId, Input0, Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/role"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -287,9 +287,9 @@ associate_service_role_to_account(Client, Input0, Options0) ->
     Path = ["/greengrass/servicerole"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -313,9 +313,9 @@ create_connector_definition(Client, Input0, Options0) ->
     Path = ["/greengrass/definition/connectors"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -339,9 +339,9 @@ create_connector_definition_version(Client, ConnectorDefinitionId, Input0, Optio
     Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), "/versions"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -368,9 +368,9 @@ create_core_definition(Client, Input0, Options0) ->
     Path = ["/greengrass/definition/cores"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -395,9 +395,9 @@ create_core_definition_version(Client, CoreDefinitionId, Input0, Options0) ->
     Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), "/versions"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -423,9 +423,9 @@ create_deployment(Client, GroupId, Input0, Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/deployments"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -451,9 +451,9 @@ create_device_definition(Client, Input0, Options0) ->
     Path = ["/greengrass/definition/devices"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -477,9 +477,9 @@ create_device_definition_version(Client, DeviceDefinitionId, Input0, Options0) -
     Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), "/versions"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -507,9 +507,9 @@ create_function_definition(Client, Input0, Options0) ->
     Path = ["/greengrass/definition/functions"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -533,9 +533,9 @@ create_function_definition_version(Client, FunctionDefinitionId, Input0, Options
     Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), "/versions"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -564,9 +564,9 @@ create_group(Client, Input0, Options0) ->
     Path = ["/greengrass/groups"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -591,9 +591,9 @@ create_group_certificate_authority(Client, GroupId, Input0, Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/certificateauthorities"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -616,9 +616,9 @@ create_group_version(Client, GroupId, Input0, Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/versions"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -644,9 +644,9 @@ create_logger_definition(Client, Input0, Options0) ->
     Path = ["/greengrass/definition/loggers"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -670,9 +670,9 @@ create_logger_definition_version(Client, LoggerDefinitionId, Input0, Options0) -
     Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), "/versions"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -699,9 +699,9 @@ create_resource_definition(Client, Input0, Options0) ->
     Path = ["/greengrass/definition/resources"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -725,9 +725,9 @@ create_resource_definition_version(Client, ResourceDefinitionId, Input0, Options
     Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), "/versions"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -755,9 +755,9 @@ create_software_update_job(Client, Input0, Options0) ->
     Path = ["/greengrass/updates"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -783,9 +783,9 @@ create_subscription_definition(Client, Input0, Options0) ->
     Path = ["/greengrass/definition/subscriptions"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -809,9 +809,9 @@ create_subscription_definition_version(Client, SubscriptionDefinitionId, Input0,
     Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), "/versions"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -834,9 +834,9 @@ delete_connector_definition(Client, ConnectorDefinitionId, Input0, Options0) ->
     Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -857,9 +857,9 @@ delete_core_definition(Client, CoreDefinitionId, Input0, Options0) ->
     Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -880,9 +880,9 @@ delete_device_definition(Client, DeviceDefinitionId, Input0, Options0) ->
     Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -903,9 +903,9 @@ delete_function_definition(Client, FunctionDefinitionId, Input0, Options0) ->
     Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -926,9 +926,9 @@ delete_group(Client, GroupId, Input0, Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -949,9 +949,9 @@ delete_logger_definition(Client, LoggerDefinitionId, Input0, Options0) ->
     Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -972,9 +972,9 @@ delete_resource_definition(Client, ResourceDefinitionId, Input0, Options0) ->
     Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -995,9 +995,9 @@ delete_subscription_definition(Client, SubscriptionDefinitionId, Input0, Options
     Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1018,9 +1018,9 @@ disassociate_role_from_group(Client, GroupId, Input0, Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/role"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1043,9 +1043,9 @@ disassociate_service_role_from_account(Client, Input0, Options0) ->
     Path = ["/greengrass/servicerole"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2233,9 +2233,9 @@ reset_deployments(Client, GroupId, Input0, Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/deployments/$reset"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -2265,9 +2265,9 @@ start_bulk_deployment(Client, Input0, Options0) ->
     Path = ["/greengrass/bulk/deployments"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amzn-Client-Token">>, <<"AmznClientToken">>}
@@ -2295,9 +2295,9 @@ stop_bulk_deployment(Client, BulkDeploymentId, Input0, Options0) ->
     Path = ["/greengrass/bulk/deployments/", aws_util:encode_uri(BulkDeploymentId), "/$stop"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2322,9 +2322,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2345,9 +2345,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2372,9 +2372,9 @@ update_connectivity_info(Client, ThingName, Input0, Options0) ->
     Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/connectivityInfo"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2395,9 +2395,9 @@ update_connector_definition(Client, ConnectorDefinitionId, Input0, Options0) ->
     Path = ["/greengrass/definition/connectors/", aws_util:encode_uri(ConnectorDefinitionId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2418,9 +2418,9 @@ update_core_definition(Client, CoreDefinitionId, Input0, Options0) ->
     Path = ["/greengrass/definition/cores/", aws_util:encode_uri(CoreDefinitionId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2441,9 +2441,9 @@ update_device_definition(Client, DeviceDefinitionId, Input0, Options0) ->
     Path = ["/greengrass/definition/devices/", aws_util:encode_uri(DeviceDefinitionId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2464,9 +2464,9 @@ update_function_definition(Client, FunctionDefinitionId, Input0, Options0) ->
     Path = ["/greengrass/definition/functions/", aws_util:encode_uri(FunctionDefinitionId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2487,9 +2487,9 @@ update_group(Client, GroupId, Input0, Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2510,9 +2510,9 @@ update_group_certificate_configuration(Client, GroupId, Input0, Options0) ->
     Path = ["/greengrass/groups/", aws_util:encode_uri(GroupId), "/certificateauthorities/configuration/expiry"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2533,9 +2533,9 @@ update_logger_definition(Client, LoggerDefinitionId, Input0, Options0) ->
     Path = ["/greengrass/definition/loggers/", aws_util:encode_uri(LoggerDefinitionId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2556,9 +2556,9 @@ update_resource_definition(Client, ResourceDefinitionId, Input0, Options0) ->
     Path = ["/greengrass/definition/resources/", aws_util:encode_uri(ResourceDefinitionId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2579,9 +2579,9 @@ update_subscription_definition(Client, SubscriptionDefinitionId, Input0, Options
     Path = ["/greengrass/definition/subscriptions/", aws_util:encode_uri(SubscriptionDefinitionId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2602,9 +2602,9 @@ update_thing_runtime_configuration(Client, ThingName, Input0, Options0) ->
     Path = ["/greengrass/things/", aws_util:encode_uri(ThingName), "/runtimeconfig"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2638,11 +2638,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"greengrass">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -2650,12 +2648,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

@@ -175,9 +175,9 @@ batch_create_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input0,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/customvocabulary/DEFAULT/batchcreate"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -199,9 +199,9 @@ batch_delete_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input0,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/customvocabulary/DEFAULT/batchdelete"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -223,9 +223,9 @@ batch_update_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input0,
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/customvocabulary/DEFAULT/batchupdate"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -249,9 +249,9 @@ build_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -272,9 +272,9 @@ create_bot(Client, Input0, Options0) ->
     Path = ["/bots/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -301,9 +301,9 @@ create_bot_alias(Client, BotId, Input0, Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botaliases/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -329,9 +329,9 @@ create_bot_locale(Client, BotId, BotVersion, Input0, Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -359,9 +359,9 @@ create_bot_version(Client, BotId, Input0, Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -393,9 +393,9 @@ create_export(Client, Input0, Options0) ->
     Path = ["/exports/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -447,9 +447,9 @@ create_intent(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -470,9 +470,9 @@ create_resource_policy(Client, ResourceArn, Input0, Options0) ->
     Path = ["/policy/", aws_util:encode_uri(ResourceArn), "/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -499,9 +499,9 @@ create_resource_policy_statement(Client, ResourceArn, Input0, Options0) ->
     Path = ["/policy/", aws_util:encode_uri(ResourceArn), "/statements/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -528,9 +528,9 @@ create_slot(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), "/slots/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -554,9 +554,9 @@ create_slot_type(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/slottypes/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -578,9 +578,9 @@ create_upload_url(Client, Input0, Options0) ->
     Path = ["/createuploadurl/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -611,9 +611,9 @@ delete_bot(Client, BotId, Input0, Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -635,9 +635,9 @@ delete_bot_alias(Client, BotAliasId, BotId, Input0, Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botaliases/", aws_util:encode_uri(BotAliasId), "/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -662,9 +662,9 @@ delete_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -687,9 +687,9 @@ delete_bot_version(Client, BotId, BotVersion, Input0, Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -712,9 +712,9 @@ delete_custom_vocabulary(Client, BotId, BotVersion, LocaleId, Input0, Options0) 
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/customvocabulary"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -736,9 +736,9 @@ delete_export(Client, ExportId, Input0, Options0) ->
     Path = ["/exports/", aws_util:encode_uri(ExportId), "/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -760,9 +760,9 @@ delete_import(Client, ImportId, Input0, Options0) ->
     Path = ["/imports/", aws_util:encode_uri(ImportId), "/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -785,9 +785,9 @@ delete_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options0) -
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), "/"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -811,9 +811,9 @@ delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
     Path = ["/policy/", aws_util:encode_uri(ResourceArn), "/"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -840,9 +840,9 @@ delete_resource_policy_statement(Client, ResourceArn, StatementId, Input0, Optio
     Path = ["/policy/", aws_util:encode_uri(ResourceArn), "/statements/", aws_util:encode_uri(StatementId), "/"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -864,9 +864,9 @@ delete_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input0, Optio
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), "/slots/", aws_util:encode_uri(SlotId), "/"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -891,9 +891,9 @@ delete_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input0, Option
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/slottypes/", aws_util:encode_uri(SlotTypeId), "/"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -926,9 +926,9 @@ delete_utterances(Client, BotId, Input0, Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/utterances/"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1255,9 +1255,9 @@ list_aggregated_utterances(Client, BotId, Input0, Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/aggregatedutterances/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1278,9 +1278,9 @@ list_bot_aliases(Client, BotId, Input0, Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botaliases/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1301,9 +1301,9 @@ list_bot_locales(Client, BotId, BotVersion, Input0, Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1324,9 +1324,9 @@ list_bot_recommendations(Client, BotId, BotVersion, LocaleId, Input0, Options0) 
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1355,9 +1355,9 @@ list_bot_versions(Client, BotId, Input0, Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1378,9 +1378,9 @@ list_bots(Client, Input0, Options0) ->
     Path = ["/bots/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1407,9 +1407,9 @@ list_built_in_intents(Client, LocaleId, Input0, Options0) ->
     Path = ["/builtins/locales/", aws_util:encode_uri(LocaleId), "/intents/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1430,9 +1430,9 @@ list_built_in_slot_types(Client, LocaleId, Input0, Options0) ->
     Path = ["/builtins/locales/", aws_util:encode_uri(LocaleId), "/slottypes/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1454,9 +1454,9 @@ list_custom_vocabulary_items(Client, BotId, BotVersion, LocaleId, Input0, Option
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/customvocabulary/DEFAULT/list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1479,9 +1479,9 @@ list_exports(Client, Input0, Options0) ->
     Path = ["/exports/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1504,9 +1504,9 @@ list_imports(Client, Input0, Options0) ->
     Path = ["/imports/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1527,9 +1527,9 @@ list_intents(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1553,9 +1553,9 @@ list_recommended_intents(Client, BotId, BotRecommendationId, BotVersion, LocaleI
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations/", aws_util:encode_uri(BotRecommendationId), "/intents"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1576,9 +1576,9 @@ list_slot_types(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/slottypes/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1599,9 +1599,9 @@ list_slots(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), "/slots/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1648,9 +1648,9 @@ search_associated_transcripts(Client, BotId, BotRecommendationId, BotVersion, Lo
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations/", aws_util:encode_uri(BotRecommendationId), "/associatedtranscripts"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1672,9 +1672,9 @@ start_bot_recommendation(Client, BotId, BotVersion, LocaleId, Input0, Options0) 
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1696,9 +1696,9 @@ start_import(Client, Input0, Options0) ->
     Path = ["/imports/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1719,9 +1719,9 @@ stop_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, LocaleId
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations/", aws_util:encode_uri(BotRecommendationId), "/stopbotrecommendation"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1745,9 +1745,9 @@ tag_resource(Client, ResourceARN, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceARN), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1768,9 +1768,9 @@ untag_resource(Client, ResourceARN, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceARN), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1792,9 +1792,9 @@ update_bot(Client, BotId, Input0, Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1815,9 +1815,9 @@ update_bot_alias(Client, BotAliasId, BotId, Input0, Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botaliases/", aws_util:encode_uri(BotAliasId), "/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1838,9 +1838,9 @@ update_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1861,9 +1861,9 @@ update_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, Locale
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/botrecommendations/", aws_util:encode_uri(BotRecommendationId), "/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1889,9 +1889,9 @@ update_export(Client, ExportId, Input0, Options0) ->
     Path = ["/exports/", aws_util:encode_uri(ExportId), "/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1912,9 +1912,9 @@ update_intent(Client, BotId, BotVersion, IntentId, LocaleId, Input0, Options0) -
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), "/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1938,9 +1938,9 @@ update_resource_policy(Client, ResourceArn, Input0, Options0) ->
     Path = ["/policy/", aws_util:encode_uri(ResourceArn), "/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1962,9 +1962,9 @@ update_slot(Client, BotId, BotVersion, IntentId, LocaleId, SlotId, Input0, Optio
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/intents/", aws_util:encode_uri(IntentId), "/slots/", aws_util:encode_uri(SlotId), "/"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1985,9 +1985,9 @@ update_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input0, Option
     Path = ["/bots/", aws_util:encode_uri(BotId), "/botversions/", aws_util:encode_uri(BotVersion), "/botlocales/", aws_util:encode_uri(LocaleId), "/slottypes/", aws_util:encode_uri(SlotTypeId), "/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2021,11 +2021,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"models-v2-lex">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -2033,12 +2031,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

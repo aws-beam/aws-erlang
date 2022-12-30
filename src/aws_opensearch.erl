@@ -150,9 +150,9 @@ accept_inbound_connection(Client, ConnectionId, Input0, Options0) ->
     Path = ["/2021-01-01/opensearch/cc/inboundConnection/", aws_util:encode_uri(ConnectionId), "/accept"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -177,9 +177,9 @@ add_tags(Client, Input0, Options0) ->
     Path = ["/2021-01-01/tags"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -202,9 +202,9 @@ associate_package(Client, DomainName, PackageID, Input0, Options0) ->
     Path = ["/2021-01-01/packages/associate/", aws_util:encode_uri(PackageID), "/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -226,9 +226,9 @@ authorize_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/authorizeVpcEndpointAccess"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -254,9 +254,9 @@ cancel_service_software_update(Client, Input0, Options0) ->
     Path = ["/2021-01-01/opensearch/serviceSoftwareUpdate/cancel"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -280,9 +280,9 @@ create_domain(Client, Input0, Options0) ->
     Path = ["/2021-01-01/opensearch/domain"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -307,9 +307,9 @@ create_outbound_connection(Client, Input0, Options0) ->
     Path = ["/2021-01-01/opensearch/cc/outboundConnection"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -332,9 +332,9 @@ create_package(Client, Input0, Options0) ->
     Path = ["/2021-01-01/packages"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -355,9 +355,9 @@ create_vpc_endpoint(Client, Input0, Options0) ->
     Path = ["/2021-01-01/opensearch/vpcEndpoints"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -380,9 +380,9 @@ delete_domain(Client, DomainName, Input0, Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -407,9 +407,9 @@ delete_inbound_connection(Client, ConnectionId, Input0, Options0) ->
     Path = ["/2021-01-01/opensearch/cc/inboundConnection/", aws_util:encode_uri(ConnectionId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -434,9 +434,9 @@ delete_outbound_connection(Client, ConnectionId, Input0, Options0) ->
     Path = ["/2021-01-01/opensearch/cc/outboundConnection/", aws_util:encode_uri(ConnectionId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -459,9 +459,9 @@ delete_package(Client, PackageID, Input0, Options0) ->
     Path = ["/2021-01-01/packages/", aws_util:encode_uri(PackageID), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -482,9 +482,9 @@ delete_vpc_endpoint(Client, VpcEndpointId, Input0, Options0) ->
     Path = ["/2021-01-01/opensearch/vpcEndpoints/", aws_util:encode_uri(VpcEndpointId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -611,9 +611,9 @@ describe_domains(Client, Input0, Options0) ->
     Path = ["/2021-01-01/opensearch/domain-info"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -638,9 +638,9 @@ describe_inbound_connections(Client, Input0, Options0) ->
     Path = ["/2021-01-01/opensearch/cc/inboundConnection/search"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -693,9 +693,9 @@ describe_outbound_connections(Client, Input0, Options0) ->
     Path = ["/2021-01-01/opensearch/cc/outboundConnection/search"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -718,9 +718,9 @@ describe_packages(Client, Input0, Options0) ->
     Path = ["/2021-01-01/packages/describe"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -806,9 +806,9 @@ describe_vpc_endpoints(Client, Input0, Options0) ->
     Path = ["/2021-01-01/opensearch/vpcEndpoints/describe"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -835,9 +835,9 @@ dissociate_package(Client, DomainName, PackageID, Input0, Options0) ->
     Path = ["/2021-01-01/packages/dissociate/", aws_util:encode_uri(PackageID), "/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1233,9 +1233,9 @@ purchase_reserved_instance_offering(Client, Input0, Options0) ->
     Path = ["/2021-01-01/opensearch/purchaseReservedInstanceOffering"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1257,9 +1257,9 @@ reject_inbound_connection(Client, ConnectionId, Input0, Options0) ->
     Path = ["/2021-01-01/opensearch/cc/inboundConnection/", aws_util:encode_uri(ConnectionId), "/reject"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1283,9 +1283,9 @@ remove_tags(Client, Input0, Options0) ->
     Path = ["/2021-01-01/tags-removal"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1307,9 +1307,9 @@ revoke_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/revokeVpcEndpointAccess"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1334,9 +1334,9 @@ start_service_software_update(Client, Input0, Options0) ->
     Path = ["/2021-01-01/opensearch/serviceSoftwareUpdate/start"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1358,9 +1358,9 @@ update_domain_config(Client, DomainName, Input0, Options0) ->
     Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/config"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1383,9 +1383,9 @@ update_package(Client, Input0, Options0) ->
     Path = ["/2021-01-01/packages/update"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1406,9 +1406,9 @@ update_vpc_endpoint(Client, Input0, Options0) ->
     Path = ["/2021-01-01/opensearch/vpcEndpoints/update"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1431,9 +1431,9 @@ upgrade_domain(Client, Input0, Options0) ->
     Path = ["/2021-01-01/opensearch/upgradeDomain"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1467,11 +1467,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"es">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -1479,12 +1477,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

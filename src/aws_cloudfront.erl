@@ -301,9 +301,9 @@ associate_alias(Client, TargetDistributionId, Input0, Options0) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(TargetDistributionId), "/associate-alias"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -335,9 +335,9 @@ copy_distribution(Client, PrimaryDistributionId, Input0, Options0) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(PrimaryDistributionId), "/copy"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>},
@@ -400,9 +400,9 @@ create_cache_policy(Client, Input0, Options0) ->
     Path = ["/2020-05-31/cache-policy"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -446,9 +446,9 @@ create_cloud_front_origin_access_identity(Client, Input0, Options0) ->
     Path = ["/2020-05-31/origin-access-identity/cloudfront"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -497,9 +497,9 @@ create_continuous_deployment_policy(Client, Input0, Options0) ->
     Path = ["/2020-05-31/continuous-deployment-policy"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -537,9 +537,9 @@ create_distribution(Client, Input0, Options0) ->
     Path = ["/2020-05-31/distribution"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -577,9 +577,9 @@ create_distribution_with_tags(Client, Input0, Options0) ->
     Path = ["/2020-05-31/distribution?WithTags"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -617,9 +617,9 @@ create_field_level_encryption_config(Client, Input0, Options0) ->
     Path = ["/2020-05-31/field-level-encryption"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -657,9 +657,9 @@ create_field_level_encryption_profile(Client, Input0, Options0) ->
     Path = ["/2020-05-31/field-level-encryption-profile"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -710,9 +710,9 @@ create_function(Client, Input0, Options0) ->
     Path = ["/2020-05-31/function"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -750,9 +750,9 @@ create_invalidation(Client, DistributionId, Input0, Options0) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(DistributionId), "/invalidation"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -800,9 +800,9 @@ create_key_group(Client, Input0, Options0) ->
     Path = ["/2020-05-31/key-group"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -846,9 +846,9 @@ create_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
     Path = ["/2020-05-31/distributions/", aws_util:encode_uri(DistributionId), "/monitoring-subscription/"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -881,9 +881,9 @@ create_origin_access_control(Client, Input0, Options0) ->
     Path = ["/2020-05-31/origin-access-control"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -945,9 +945,9 @@ create_origin_request_policy(Client, Input0, Options0) ->
     Path = ["/2020-05-31/origin-request-policy"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -986,9 +986,9 @@ create_public_key(Client, Input0, Options0) ->
     Path = ["/2020-05-31/public-key"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1033,9 +1033,9 @@ create_realtime_log_config(Client, Input0, Options0) ->
     Path = ["/2020-05-31/realtime-log-config"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1066,9 +1066,9 @@ create_response_headers_policy(Client, Input0, Options0) ->
     Path = ["/2020-05-31/response-headers-policy"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1110,9 +1110,9 @@ create_streaming_distribution(Client, Input0, Options0) ->
     Path = ["/2020-05-31/streaming-distribution"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1154,9 +1154,9 @@ create_streaming_distribution_with_tags(Client, Input0, Options0) ->
     Path = ["/2020-05-31/streaming-distribution?WithTags"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1202,9 +1202,9 @@ delete_cache_policy(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/cache-policy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -1227,9 +1227,9 @@ delete_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -1256,9 +1256,9 @@ delete_continuous_deployment_policy(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/continuous-deployment-policy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -1281,9 +1281,9 @@ delete_distribution(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -1306,9 +1306,9 @@ delete_field_level_encryption_config(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/field-level-encryption/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -1331,9 +1331,9 @@ delete_field_level_encryption_profile(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/field-level-encryption-profile/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -1364,9 +1364,9 @@ delete_function(Client, Name, Input0, Options0) ->
     Path = ["/2020-05-31/function/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -1397,9 +1397,9 @@ delete_key_group(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/key-group/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -1423,9 +1423,9 @@ delete_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
     Path = ["/2020-05-31/distributions/", aws_util:encode_uri(DistributionId), "/monitoring-subscription/"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1450,9 +1450,9 @@ delete_origin_access_control(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/origin-access-control/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -1483,9 +1483,9 @@ delete_origin_request_policy(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/origin-request-policy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -1508,9 +1508,9 @@ delete_public_key(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/public-key/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -1543,9 +1543,9 @@ delete_realtime_log_config(Client, Input0, Options0) ->
     Path = ["/2020-05-31/delete-realtime-log-config/"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1574,9 +1574,9 @@ delete_response_headers_policy(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/response-headers-policy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -1639,9 +1639,9 @@ delete_streaming_distribution(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/streaming-distribution/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -2645,9 +2645,9 @@ get_realtime_log_config(Client, Input0, Options0) ->
     Path = ["/2020-05-31/get-realtime-log-config/"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3152,9 +3152,9 @@ list_distributions_by_realtime_log_config(Client, Input0, Options0) ->
     Path = ["/2020-05-31/distributionsByRealtimeLogConfig/"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3648,9 +3648,9 @@ publish_function(Client, Name, Input0, Options0) ->
     Path = ["/2020-05-31/function/", aws_util:encode_uri(Name), "/publish"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -3673,9 +3673,9 @@ tag_resource(Client, Input0, Options0) ->
     Path = ["/2020-05-31/tagging?Operation=Tag"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3709,9 +3709,9 @@ test_function(Client, Name, Input0, Options0) ->
     Path = ["/2020-05-31/function/", aws_util:encode_uri(Name), "/test"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -3734,9 +3734,9 @@ untag_resource(Client, Input0, Options0) ->
     Path = ["/2020-05-31/tagging?Operation=Untag"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3773,9 +3773,9 @@ update_cache_policy(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/cache-policy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -3814,9 +3814,9 @@ update_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/origin-access-identity/cloudfront/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -3877,9 +3877,9 @@ update_continuous_deployment_policy(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/continuous-deployment-policy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -3945,9 +3945,9 @@ update_distribution(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -4001,9 +4001,9 @@ update_distribution_with_staging_config(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/distribution/", aws_util:encode_uri(Id), "/promote-staging-config"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -4043,9 +4043,9 @@ update_field_level_encryption_config(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/field-level-encryption/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -4084,9 +4084,9 @@ update_field_level_encryption_profile(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/field-level-encryption-profile/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -4132,9 +4132,9 @@ update_function(Client, Name, Input0, Options0) ->
     Path = ["/2020-05-31/function/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -4188,9 +4188,9 @@ update_key_group(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/key-group/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -4229,9 +4229,9 @@ update_origin_access_control(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/origin-access-control/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -4287,9 +4287,9 @@ update_origin_request_policy(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/origin-request-policy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -4330,9 +4330,9 @@ update_public_key(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/public-key/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -4388,9 +4388,9 @@ update_realtime_log_config(Client, Input0, Options0) ->
     Path = ["/2020-05-31/realtime-log-config/"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4427,9 +4427,9 @@ update_response_headers_policy(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/response-headers-policy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -4468,9 +4468,9 @@ update_streaming_distribution(Client, Id, Input0, Options0) ->
     Path = ["/2020-05-31/streaming-distribution/", aws_util:encode_uri(Id), "/config"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"If-Match">>, <<"IfMatch">>}
@@ -4523,11 +4523,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"cloudfront">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"text/xml">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"text/xml">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -4535,12 +4533,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

@@ -251,9 +251,9 @@ add_layer_version_permission(Client, LayerName, VersionNumber, Input0, Options0)
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), "/policy"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -296,9 +296,9 @@ add_permission(Client, FunctionName, Input0, Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/policy"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -327,9 +327,9 @@ create_alias(Client, FunctionName, Input0, Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -354,9 +354,9 @@ create_code_signing_config(Client, Input0, Options0) ->
     Path = ["/2020-04-22/code-signing-configs/"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -431,9 +431,9 @@ create_event_source_mapping(Client, Input0, Options0) ->
     Path = ["/2015-03-31/event-source-mappings/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -514,9 +514,9 @@ create_function(Client, Input0, Options0) ->
     Path = ["/2015-03-31/functions"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -541,9 +541,9 @@ create_function_url_config(Client, FunctionName, Input0, Options0) ->
     Path = ["/2021-10-31/functions/", aws_util:encode_uri(FunctionName), "/url"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -565,9 +565,9 @@ delete_alias(Client, FunctionName, Name, Input0, Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -591,9 +591,9 @@ delete_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
     Path = ["/2020-04-22/code-signing-configs/", aws_util:encode_uri(CodeSigningConfigArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -620,9 +620,9 @@ delete_event_source_mapping(Client, UUID, Input0, Options0) ->
     Path = ["/2015-03-31/event-source-mappings/", aws_util:encode_uri(UUID), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -651,9 +651,9 @@ delete_function(Client, FunctionName, Input0, Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -675,9 +675,9 @@ delete_function_code_signing_config(Client, FunctionName, Input0, Options0) ->
     Path = ["/2020-06-30/functions/", aws_util:encode_uri(FunctionName), "/code-signing-config"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -698,9 +698,9 @@ delete_function_concurrency(Client, FunctionName, Input0, Options0) ->
     Path = ["/2017-10-31/functions/", aws_util:encode_uri(FunctionName), "/concurrency"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -725,9 +725,9 @@ delete_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -752,9 +752,9 @@ delete_function_url_config(Client, FunctionName, Input0, Options0) ->
     Path = ["/2021-10-31/functions/", aws_util:encode_uri(FunctionName), "/url"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -780,9 +780,9 @@ delete_layer_version(Client, LayerName, VersionNumber, Input0, Options0) ->
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -803,9 +803,9 @@ delete_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
     Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/provisioned-concurrency"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1268,9 +1268,9 @@ invoke(Client, FunctionName, Input0, Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/invocations"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"X-Amz-Client-Context">>, <<"ClientContext">>},
@@ -1316,9 +1316,9 @@ invoke_async(Client, FunctionName, Input0, Options0) ->
     Path = ["/2014-11-13/functions/", aws_util:encode_uri(FunctionName), "/invoke-async/"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1726,9 +1726,9 @@ publish_layer_version(Client, LayerName, Input0, Options0) ->
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1761,9 +1761,9 @@ publish_version(Client, FunctionName, Input0, Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/versions"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1787,9 +1787,9 @@ put_function_code_signing_config(Client, FunctionName, Input0, Options0) ->
     Path = ["/2020-06-30/functions/", aws_util:encode_uri(FunctionName), "/code-signing-config"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1823,9 +1823,9 @@ put_function_concurrency(Client, FunctionName, Input0, Options0) ->
     Path = ["/2017-10-31/functions/", aws_util:encode_uri(FunctionName), "/concurrency"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1865,9 +1865,9 @@ put_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1890,9 +1890,9 @@ put_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
     Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/provisioned-concurrency"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1917,9 +1917,9 @@ remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, I
     Path = ["/2018-10-31/layers/", aws_util:encode_uri(LayerName), "/versions/", aws_util:encode_uri(VersionNumber), "/policy/", aws_util:encode_uri(StatementId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1944,9 +1944,9 @@ remove_permission(Client, FunctionName, StatementId, Input0, Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/policy/", aws_util:encode_uri(StatementId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1969,9 +1969,9 @@ tag_resource(Client, Resource, Input0, Options0) ->
     Path = ["/2017-03-31/tags/", aws_util:encode_uri(Resource), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1992,9 +1992,9 @@ untag_resource(Client, Resource, Input0, Options0) ->
     Path = ["/2017-03-31/tags/", aws_util:encode_uri(Resource), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2016,9 +2016,9 @@ update_alias(Client, FunctionName, Name, Input0, Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/aliases/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2042,9 +2042,9 @@ update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
     Path = ["/2020-04-22/code-signing-configs/", aws_util:encode_uri(CodeSigningConfigArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2120,9 +2120,9 @@ update_event_source_mapping(Client, UUID, Input0, Options0) ->
     Path = ["/2015-03-31/event-source-mappings/", aws_util:encode_uri(UUID), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2166,9 +2166,9 @@ update_function_code(Client, FunctionName, Input0, Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/code"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2206,9 +2206,9 @@ update_function_configuration(Client, FunctionName, Input0, Options0) ->
     Path = ["/2015-03-31/functions/", aws_util:encode_uri(FunctionName), "/configuration"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2233,9 +2233,9 @@ update_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
     Path = ["/2019-09-25/functions/", aws_util:encode_uri(FunctionName), "/event-invoke-config"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2257,9 +2257,9 @@ update_function_url_config(Client, FunctionName, Input0, Options0) ->
     Path = ["/2021-10-31/functions/", aws_util:encode_uri(FunctionName), "/url"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2294,11 +2294,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"lambda">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -2306,12 +2304,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

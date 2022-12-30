@@ -621,9 +621,9 @@ accept_certificate_transfer(Client, CertificateId, Input0, Options0) ->
     Path = ["/accept-certificate-transfer/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -647,9 +647,9 @@ add_thing_to_billing_group(Client, Input0, Options0) ->
     Path = ["/billing-groups/addThingToBillingGroup"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -672,9 +672,9 @@ add_thing_to_thing_group(Client, Input0, Options0) ->
     Path = ["/thing-groups/addThingToThingGroup"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -708,9 +708,9 @@ associate_targets_with_job(Client, JobId, Input0, Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), "/targets"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -735,9 +735,9 @@ attach_policy(Client, PolicyName, Input0, Options0) ->
     Path = ["/target-policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -764,9 +764,9 @@ attach_principal_policy(Client, PolicyName, Input0, Options0) ->
     Path = ["/principal-policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amzn-iot-principal">>, <<"principal">>}
@@ -795,9 +795,9 @@ attach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), "/targets"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -824,9 +824,9 @@ attach_thing_principal(Client, ThingName, Input0, Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/principals"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amzn-principal">>, <<"principal">>}
@@ -853,9 +853,9 @@ cancel_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
     Path = ["/audit/mitigationactions/tasks/", aws_util:encode_uri(TaskId), "/cancel"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -881,9 +881,9 @@ cancel_audit_task(Client, TaskId, Input0, Options0) ->
     Path = ["/audit/tasks/", aws_util:encode_uri(TaskId), "/cancel"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -915,9 +915,9 @@ cancel_certificate_transfer(Client, CertificateId, Input0, Options0) ->
     Path = ["/cancel-certificate-transfer/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -941,9 +941,9 @@ cancel_detect_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
     Path = ["/detect/mitigationactions/tasks/", aws_util:encode_uri(TaskId), "/cancel"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -966,9 +966,9 @@ cancel_job(Client, JobId, Input0, Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), "/cancel"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -992,9 +992,9 @@ cancel_job_execution(Client, JobId, ThingName, Input0, Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/", aws_util:encode_uri(JobId), "/cancel"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1018,9 +1018,9 @@ clear_default_authorizer(Client, Input0, Options0) ->
     Path = ["/default-authorizer"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1073,9 +1073,9 @@ create_audit_suppression(Client, Input0, Options0) ->
     Path = ["/audit/suppressions/create"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1098,9 +1098,9 @@ create_authorizer(Client, AuthorizerName, Input0, Options0) ->
     Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1123,9 +1123,9 @@ create_billing_group(Client, BillingGroupName, Input0, Options0) ->
     Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1193,9 +1193,9 @@ create_certificate_from_csr(Client, Input0, Options0) ->
     Path = ["/certificates"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1220,9 +1220,9 @@ create_custom_metric(Client, MetricName, Input0, Options0) ->
     Path = ["/custom-metric/", aws_util:encode_uri(MetricName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1250,9 +1250,9 @@ create_dimension(Client, Name, Input0, Options0) ->
     Path = ["/dimensions/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1275,9 +1275,9 @@ create_domain_configuration(Client, DomainConfigurationName, Input0, Options0) -
     Path = ["/domainConfigurations/", aws_util:encode_uri(DomainConfigurationName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1300,9 +1300,9 @@ create_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Path = ["/dynamic-thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1325,9 +1325,9 @@ create_fleet_metric(Client, MetricName, Input0, Options0) ->
     Path = ["/fleet-metric/", aws_util:encode_uri(MetricName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1350,9 +1350,9 @@ create_job(Client, JobId, Input0, Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1375,9 +1375,9 @@ create_job_template(Client, JobTemplateId, Input0, Options0) ->
     Path = ["/job-templates/", aws_util:encode_uri(JobTemplateId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1407,9 +1407,9 @@ create_keys_and_certificate(Client, Input0, Options0) ->
     Path = ["/keys-and-certificate"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1438,9 +1438,9 @@ create_mitigation_action(Client, ActionName, Input0, Options0) ->
     Path = ["/mitigationactions/actions/", aws_util:encode_uri(ActionName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1463,9 +1463,9 @@ create_ota_update(Client, OtaUpdateId, Input0, Options0) ->
     Path = ["/otaUpdates/", aws_util:encode_uri(OtaUpdateId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1492,9 +1492,9 @@ create_policy(Client, PolicyName, Input0, Options0) ->
     Path = ["/policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1526,9 +1526,9 @@ create_policy_version(Client, PolicyName, Input0, Options0) ->
     Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1552,9 +1552,9 @@ create_provisioning_claim(Client, TemplateName, Input0, Options0) ->
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/provisioning-claim"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1577,9 +1577,9 @@ create_provisioning_template(Client, Input0, Options0) ->
     Path = ["/provisioning-templates"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1603,9 +1603,9 @@ create_provisioning_template_version(Client, TemplateName, Input0, Options0) ->
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/versions"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1629,9 +1629,9 @@ create_role_alias(Client, RoleAlias, Input0, Options0) ->
     Path = ["/role-aliases/", aws_util:encode_uri(RoleAlias), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1654,9 +1654,9 @@ create_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
     Path = ["/audit/scheduledaudits/", aws_util:encode_uri(ScheduledAuditName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1679,9 +1679,9 @@ create_security_profile(Client, SecurityProfileName, Input0, Options0) ->
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1709,9 +1709,9 @@ create_stream(Client, StreamId, Input0, Options0) ->
     Path = ["/streams/", aws_util:encode_uri(StreamId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1742,9 +1742,9 @@ create_thing(Client, ThingName, Input0, Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1770,9 +1770,9 @@ create_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1795,9 +1795,9 @@ create_thing_type(Client, ThingTypeName, Input0, Options0) ->
     Path = ["/thing-types/", aws_util:encode_uri(ThingTypeName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1824,9 +1824,9 @@ create_topic_rule(Client, RuleName, Input0, Options0) ->
     Path = ["/rules/", aws_util:encode_uri(RuleName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-tagging">>, <<"tags">>}
@@ -1853,9 +1853,9 @@ create_topic_rule_destination(Client, Input0, Options0) ->
     Path = ["/destinations"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1882,9 +1882,9 @@ delete_account_audit_configuration(Client, Input0, Options0) ->
     Path = ["/audit/configuration"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1908,9 +1908,9 @@ delete_audit_suppression(Client, Input0, Options0) ->
     Path = ["/audit/suppressions/delete"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1933,9 +1933,9 @@ delete_authorizer(Client, AuthorizerName, Input0, Options0) ->
     Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1958,9 +1958,9 @@ delete_billing_group(Client, BillingGroupName, Input0, Options0) ->
     Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1984,9 +1984,9 @@ delete_ca_certificate(Client, CertificateId, Input0, Options0) ->
     Path = ["/cacertificate/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2014,9 +2014,9 @@ delete_certificate(Client, CertificateId, Input0, Options0) ->
     Path = ["/certificates/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2045,9 +2045,9 @@ delete_custom_metric(Client, MetricName, Input0, Options0) ->
     Path = ["/custom-metric/", aws_util:encode_uri(MetricName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2071,9 +2071,9 @@ delete_dimension(Client, Name, Input0, Options0) ->
     Path = ["/dimensions/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2096,9 +2096,9 @@ delete_domain_configuration(Client, DomainConfigurationName, Input0, Options0) -
     Path = ["/domainConfigurations/", aws_util:encode_uri(DomainConfigurationName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2121,9 +2121,9 @@ delete_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Path = ["/dynamic-thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2150,9 +2150,9 @@ delete_fleet_metric(Client, MetricName, Input0, Options0) ->
     Path = ["/fleet-metric/", aws_util:encode_uri(MetricName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2185,9 +2185,9 @@ delete_job(Client, JobId, Input0, Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2212,9 +2212,9 @@ delete_job_execution(Client, ExecutionNumber, JobId, ThingName, Input0, Options0
     Path = ["/things/", aws_util:encode_uri(ThingName), "/jobs/", aws_util:encode_uri(JobId), "/executionNumber/", aws_util:encode_uri(ExecutionNumber), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2237,9 +2237,9 @@ delete_job_template(Client, JobTemplateId, Input0, Options0) ->
     Path = ["/job-templates/", aws_util:encode_uri(JobTemplateId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2263,9 +2263,9 @@ delete_mitigation_action(Client, ActionName, Input0, Options0) ->
     Path = ["/mitigationactions/actions/", aws_util:encode_uri(ActionName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2288,9 +2288,9 @@ delete_ota_update(Client, OtaUpdateId, Input0, Options0) ->
     Path = ["/otaUpdates/", aws_util:encode_uri(OtaUpdateId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2330,9 +2330,9 @@ delete_policy(Client, PolicyName, Input0, Options0) ->
     Path = ["/policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2360,9 +2360,9 @@ delete_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0) ->
     Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version/", aws_util:encode_uri(PolicyVersionId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2385,9 +2385,9 @@ delete_provisioning_template(Client, TemplateName, Input0, Options0) ->
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2411,9 +2411,9 @@ delete_provisioning_template_version(Client, TemplateName, VersionId, Input0, Op
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), "/versions/", aws_util:encode_uri(VersionId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2436,9 +2436,9 @@ delete_registration_code(Client, Input0, Options0) ->
     Path = ["/registrationcode"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2461,9 +2461,9 @@ delete_role_alias(Client, RoleAlias, Input0, Options0) ->
     Path = ["/role-aliases/", aws_util:encode_uri(RoleAlias), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2486,9 +2486,9 @@ delete_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
     Path = ["/audit/scheduledaudits/", aws_util:encode_uri(ScheduledAuditName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2511,9 +2511,9 @@ delete_security_profile(Client, SecurityProfileName, Input0, Options0) ->
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2537,9 +2537,9 @@ delete_stream(Client, StreamId, Input0, Options0) ->
     Path = ["/streams/", aws_util:encode_uri(StreamId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2565,9 +2565,9 @@ delete_thing(Client, ThingName, Input0, Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2591,9 +2591,9 @@ delete_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2623,9 +2623,9 @@ delete_thing_type(Client, ThingTypeName, Input0, Options0) ->
     Path = ["/thing-types/", aws_util:encode_uri(ThingTypeName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2648,9 +2648,9 @@ delete_topic_rule(Client, RuleName, Input0, Options0) ->
     Path = ["/rules/", aws_util:encode_uri(RuleName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2673,9 +2673,9 @@ delete_topic_rule_destination(Client, Arn, Input0, Options0) ->
     Path = ["/destinations/", aws_util:encode_multi_segment_uri(Arn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2698,9 +2698,9 @@ delete_v2_logging_level(Client, Input0, Options0) ->
     Path = ["/v2LoggingLevel"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2727,9 +2727,9 @@ deprecate_thing_type(Client, ThingTypeName, Input0, Options0) ->
     Path = ["/thing-types/", aws_util:encode_uri(ThingTypeName), "/deprecate"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2835,9 +2835,9 @@ describe_audit_suppression(Client, Input0, Options0) ->
     Path = ["/audit/suppressions/describe"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3601,9 +3601,9 @@ detach_policy(Client, PolicyName, Input0, Options0) ->
     Path = ["/target-policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3629,9 +3629,9 @@ detach_principal_policy(Client, PolicyName, Input0, Options0) ->
     Path = ["/principal-policies/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amzn-iot-principal">>, <<"principal">>}
@@ -3657,9 +3657,9 @@ detach_security_profile(Client, SecurityProfileName, Input0, Options0) ->
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), "/targets"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3689,9 +3689,9 @@ detach_thing_principal(Client, ThingName, Input0, Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), "/principals"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amzn-principal">>, <<"principal">>}
@@ -3716,9 +3716,9 @@ disable_topic_rule(Client, RuleName, Input0, Options0) ->
     Path = ["/rules/", aws_util:encode_uri(RuleName), "/disable"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3741,9 +3741,9 @@ enable_topic_rule(Client, RuleName, Input0, Options0) ->
     Path = ["/rules/", aws_util:encode_uri(RuleName), "/enable"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3800,9 +3800,9 @@ get_buckets_aggregation(Client, Input0, Options0) ->
     Path = ["/indices/buckets"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3825,9 +3825,9 @@ get_cardinality(Client, Input0, Options0) ->
     Path = ["/indices/cardinality"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3852,9 +3852,9 @@ get_effective_policies(Client, Input0, Options0) ->
     Path = ["/effective-policies"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3992,9 +3992,9 @@ get_percentiles(Client, Input0, Options0) ->
     Path = ["/indices/percentiles"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4097,9 +4097,9 @@ get_statistics(Client, Input0, Options0) ->
     Path = ["/indices/statistics"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4233,9 +4233,9 @@ list_attached_policies(Client, Target, Input0, Options0) ->
     Path = ["/attached-policies/", aws_util:encode_uri(Target), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4264,9 +4264,9 @@ list_audit_findings(Client, Input0, Options0) ->
     Path = ["/audit/findings"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4359,9 +4359,9 @@ list_audit_suppressions(Client, Input0, Options0) ->
     Path = ["/audit/suppressions/list"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5576,9 +5576,9 @@ list_targets_for_policy(Client, PolicyName, Input0, Options0) ->
     Path = ["/policy-targets/", aws_util:encode_uri(PolicyName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6061,9 +6061,9 @@ put_verification_state_on_violation(Client, ViolationId, Input0, Options0) ->
     Path = ["/violations/verification-state/", aws_util:encode_uri(ViolationId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6091,9 +6091,9 @@ register_ca_certificate(Client, Input0, Options0) ->
     Path = ["/cacertificate"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6123,9 +6123,9 @@ register_certificate(Client, Input0, Options0) ->
     Path = ["/certificate/register"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6151,9 +6151,9 @@ register_certificate_without_ca(Client, Input0, Options0) ->
     Path = ["/certificate/register-no-ca"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6181,9 +6181,9 @@ register_thing(Client, Input0, Options0) ->
     Path = ["/things"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6216,9 +6216,9 @@ reject_certificate_transfer(Client, CertificateId, Input0, Options0) ->
     Path = ["/reject-certificate-transfer/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6244,9 +6244,9 @@ remove_thing_from_billing_group(Client, Input0, Options0) ->
     Path = ["/billing-groups/removeThingFromBillingGroup"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6273,9 +6273,9 @@ remove_thing_from_thing_group(Client, Input0, Options0) ->
     Path = ["/thing-groups/removeThingFromThingGroup"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6302,9 +6302,9 @@ replace_topic_rule(Client, RuleName, Input0, Options0) ->
     Path = ["/rules/", aws_util:encode_uri(RuleName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6327,9 +6327,9 @@ search_index(Client, Input0, Options0) ->
     Path = ["/indices/search"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6355,9 +6355,9 @@ set_default_authorizer(Client, Input0, Options0) ->
     Path = ["/default-authorizer"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6385,9 +6385,9 @@ set_default_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0
     Path = ["/policies/", aws_util:encode_uri(PolicyName), "/version/", aws_util:encode_uri(PolicyVersionId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6413,9 +6413,9 @@ set_logging_options(Client, Input0, Options0) ->
     Path = ["/loggingOptions"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6438,9 +6438,9 @@ set_v2_logging_level(Client, Input0, Options0) ->
     Path = ["/v2LoggingLevel"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6463,9 +6463,9 @@ set_v2_logging_options(Client, Input0, Options0) ->
     Path = ["/v2LoggingOptions"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6489,9 +6489,9 @@ start_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
     Path = ["/audit/mitigationactions/tasks/", aws_util:encode_uri(TaskId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6514,9 +6514,9 @@ start_detect_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
     Path = ["/detect/mitigationactions/tasks/", aws_util:encode_uri(TaskId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6539,9 +6539,9 @@ start_on_demand_audit_task(Client, Input0, Options0) ->
     Path = ["/audit/tasks"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6564,9 +6564,9 @@ start_thing_registration_task(Client, Input0, Options0) ->
     Path = ["/thing-registration-tasks"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6589,9 +6589,9 @@ stop_thing_registration_task(Client, TaskId, Input0, Options0) ->
     Path = ["/thing-registration-tasks/", aws_util:encode_uri(TaskId), "/cancel"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6616,9 +6616,9 @@ tag_resource(Client, Input0, Options0) ->
     Path = ["/tags"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6645,9 +6645,9 @@ test_authorization(Client, Input0, Options0) ->
     Path = ["/test-authorization"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6675,9 +6675,9 @@ test_invoke_authorizer(Client, AuthorizerName, Input0, Options0) ->
     Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), "/test"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6712,9 +6712,9 @@ transfer_certificate(Client, CertificateId, Input0, Options0) ->
     Path = ["/transfer-certificate/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6738,9 +6738,9 @@ untag_resource(Client, Input0, Options0) ->
     Path = ["/untag"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6767,9 +6767,9 @@ update_account_audit_configuration(Client, Input0, Options0) ->
     Path = ["/audit/configuration"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6790,9 +6790,9 @@ update_audit_suppression(Client, Input0, Options0) ->
     Path = ["/audit/suppressions/update"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6815,9 +6815,9 @@ update_authorizer(Client, AuthorizerName, Input0, Options0) ->
     Path = ["/authorizer/", aws_util:encode_uri(AuthorizerName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6840,9 +6840,9 @@ update_billing_group(Client, BillingGroupName, Input0, Options0) ->
     Path = ["/billing-groups/", aws_util:encode_uri(BillingGroupName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6865,9 +6865,9 @@ update_ca_certificate(Client, CertificateId, Input0, Options0) ->
     Path = ["/cacertificate/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6902,9 +6902,9 @@ update_certificate(Client, CertificateId, Input0, Options0) ->
     Path = ["/certificates/", aws_util:encode_uri(CertificateId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6928,9 +6928,9 @@ update_custom_metric(Client, MetricName, Input0, Options0) ->
     Path = ["/custom-metric/", aws_util:encode_uri(MetricName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6956,9 +6956,9 @@ update_dimension(Client, Name, Input0, Options0) ->
     Path = ["/dimensions/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -6983,9 +6983,9 @@ update_domain_configuration(Client, DomainConfigurationName, Input0, Options0) -
     Path = ["/domainConfigurations/", aws_util:encode_uri(DomainConfigurationName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -7008,9 +7008,9 @@ update_dynamic_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Path = ["/dynamic-thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -7033,9 +7033,9 @@ update_event_configurations(Client, Input0, Options0) ->
     Path = ["/event-configurations"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -7058,9 +7058,9 @@ update_fleet_metric(Client, MetricName, Input0, Options0) ->
     Path = ["/fleet-metric/", aws_util:encode_uri(MetricName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -7083,9 +7083,9 @@ update_indexing_configuration(Client, Input0, Options0) ->
     Path = ["/indexing/config"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -7108,9 +7108,9 @@ update_job(Client, JobId, Input0, Options0) ->
     Path = ["/jobs/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -7134,9 +7134,9 @@ update_mitigation_action(Client, ActionName, Input0, Options0) ->
     Path = ["/mitigationactions/actions/", aws_util:encode_uri(ActionName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -7159,9 +7159,9 @@ update_provisioning_template(Client, TemplateName, Input0, Options0) ->
     Path = ["/provisioning-templates/", aws_util:encode_uri(TemplateName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -7184,9 +7184,9 @@ update_role_alias(Client, RoleAlias, Input0, Options0) ->
     Path = ["/role-aliases/", aws_util:encode_uri(RoleAlias), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -7210,9 +7210,9 @@ update_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
     Path = ["/audit/scheduledaudits/", aws_util:encode_uri(ScheduledAuditName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -7235,9 +7235,9 @@ update_security_profile(Client, SecurityProfileName, Input0, Options0) ->
     Path = ["/security-profiles/", aws_util:encode_uri(SecurityProfileName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -7263,9 +7263,9 @@ update_stream(Client, StreamId, Input0, Options0) ->
     Path = ["/streams/", aws_util:encode_uri(StreamId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -7288,9 +7288,9 @@ update_thing(Client, ThingName, Input0, Options0) ->
     Path = ["/things/", aws_util:encode_uri(ThingName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -7313,9 +7313,9 @@ update_thing_group(Client, ThingGroupName, Input0, Options0) ->
     Path = ["/thing-groups/", aws_util:encode_uri(ThingGroupName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -7338,9 +7338,9 @@ update_thing_groups_for_thing(Client, Input0, Options0) ->
     Path = ["/thing-groups/updateThingGroupsForThing"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -7366,9 +7366,9 @@ update_topic_rule_destination(Client, Input0, Options0) ->
     Path = ["/destinations"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -7391,9 +7391,9 @@ validate_security_profile_behaviors(Client, Input0, Options0) ->
     Path = ["/security-profile-behaviors/validate"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -7427,11 +7427,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"iot">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -7439,12 +7437,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

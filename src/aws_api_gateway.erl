@@ -312,9 +312,9 @@ create_api_key(Client, Input0, Options0) ->
     Path = ["/apikeys"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -335,9 +335,9 @@ create_authorizer(Client, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/authorizers"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -358,9 +358,9 @@ create_base_path_mapping(Client, DomainName, Input0, Options0) ->
     Path = ["/domainnames/", aws_util:encode_uri(DomainName), "/basepathmappings"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -382,9 +382,9 @@ create_deployment(Client, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/deployments"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -405,9 +405,9 @@ create_documentation_part(Client, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/parts"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -428,9 +428,9 @@ create_documentation_version(Client, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/versions"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -451,9 +451,9 @@ create_domain_name(Client, Input0, Options0) ->
     Path = ["/domainnames"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -474,9 +474,9 @@ create_model(Client, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/models"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -497,9 +497,9 @@ create_request_validator(Client, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/requestvalidators"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -520,9 +520,9 @@ create_resource(Client, ParentId, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ParentId), ""],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -543,9 +543,9 @@ create_rest_api(Client, Input0, Options0) ->
     Path = ["/restapis"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -567,9 +567,9 @@ create_stage(Client, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -591,9 +591,9 @@ create_usage_plan(Client, Input0, Options0) ->
     Path = ["/usageplans"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -615,9 +615,9 @@ create_usage_plan_key(Client, UsagePlanId, Input0, Options0) ->
     Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), "/keys"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -643,9 +643,9 @@ create_vpc_link(Client, Input0, Options0) ->
     Path = ["/vpclinks"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -666,9 +666,9 @@ delete_api_key(Client, ApiKey, Input0, Options0) ->
     Path = ["/apikeys/", aws_util:encode_uri(ApiKey), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -689,9 +689,9 @@ delete_authorizer(Client, AuthorizerId, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -712,9 +712,9 @@ delete_base_path_mapping(Client, BasePath, DomainName, Input0, Options0) ->
     Path = ["/domainnames/", aws_util:encode_uri(DomainName), "/basepathmappings/", aws_util:encode_uri(BasePath), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -735,9 +735,9 @@ delete_client_certificate(Client, ClientCertificateId, Input0, Options0) ->
     Path = ["/clientcertificates/", aws_util:encode_uri(ClientCertificateId), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -761,9 +761,9 @@ delete_deployment(Client, DeploymentId, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -784,9 +784,9 @@ delete_documentation_part(Client, DocumentationPartId, RestApiId, Input0, Option
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/parts/", aws_util:encode_uri(DocumentationPartId), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -807,9 +807,9 @@ delete_documentation_version(Client, DocumentationVersion, RestApiId, Input0, Op
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/versions/", aws_util:encode_uri(DocumentationVersion), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -830,9 +830,9 @@ delete_domain_name(Client, DomainName, Input0, Options0) ->
     Path = ["/domainnames/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -854,9 +854,9 @@ delete_gateway_response(Client, ResponseType, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/gatewayresponses/", aws_util:encode_uri(ResponseType), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -877,9 +877,9 @@ delete_integration(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) 
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -900,9 +900,9 @@ delete_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCod
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration/responses/", aws_util:encode_uri(StatusCode), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -923,9 +923,9 @@ delete_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -946,9 +946,9 @@ delete_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, In
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/responses/", aws_util:encode_uri(StatusCode), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -969,9 +969,9 @@ delete_model(Client, ModelName, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/models/", aws_util:encode_uri(ModelName), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -992,9 +992,9 @@ delete_request_validator(Client, RequestValidatorId, RestApiId, Input0, Options0
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/requestvalidators/", aws_util:encode_uri(RequestValidatorId), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1015,9 +1015,9 @@ delete_resource(Client, ResourceId, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1038,9 +1038,9 @@ delete_rest_api(Client, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1061,9 +1061,9 @@ delete_stage(Client, RestApiId, StageName, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages/", aws_util:encode_uri(StageName), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1084,9 +1084,9 @@ delete_usage_plan(Client, UsagePlanId, Input0, Options0) ->
     Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1108,9 +1108,9 @@ delete_usage_plan_key(Client, KeyId, UsagePlanId, Input0, Options0) ->
     Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), "/keys/", aws_util:encode_uri(KeyId), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1131,9 +1131,9 @@ delete_vpc_link(Client, VpcLinkId, Input0, Options0) ->
     Path = ["/vpclinks/", aws_util:encode_uri(VpcLinkId), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1154,9 +1154,9 @@ flush_stage_authorizers_cache(Client, RestApiId, StageName, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages/", aws_util:encode_uri(StageName), "/cache/authorizers"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1177,9 +1177,9 @@ flush_stage_cache(Client, RestApiId, StageName, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages/", aws_util:encode_uri(StageName), "/cache/data"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1200,9 +1200,9 @@ generate_client_certificate(Client, Input0, Options0) ->
     Path = ["/clientcertificates"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2465,9 +2465,9 @@ import_api_keys(Client, Input0, Options0) ->
     Path = ["/apikeys?mode=import"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2490,9 +2490,9 @@ import_documentation_parts(Client, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/parts"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2516,9 +2516,9 @@ import_rest_api(Client, Input0, Options0) ->
     Path = ["/restapis?mode=import"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2542,9 +2542,9 @@ put_gateway_response(Client, ResponseType, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/gatewayresponses/", aws_util:encode_uri(ResponseType), ""],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2565,9 +2565,9 @@ put_integration(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2588,9 +2588,9 @@ put_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, 
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration/responses/", aws_util:encode_uri(StatusCode), ""],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2611,9 +2611,9 @@ put_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), ""],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2634,9 +2634,9 @@ put_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/responses/", aws_util:encode_uri(StatusCode), ""],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2661,9 +2661,9 @@ put_rest_api(Client, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2687,9 +2687,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2711,9 +2711,9 @@ test_invoke_authorizer(Client, AuthorizerId, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2735,9 +2735,9 @@ test_invoke_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) 
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2758,9 +2758,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2782,9 +2782,9 @@ update_account(Client, Input0, Options0) ->
     Path = ["/account"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2805,9 +2805,9 @@ update_api_key(Client, ApiKey, Input0, Options0) ->
     Path = ["/apikeys/", aws_util:encode_uri(ApiKey), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2828,9 +2828,9 @@ update_authorizer(Client, AuthorizerId, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/authorizers/", aws_util:encode_uri(AuthorizerId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2851,9 +2851,9 @@ update_base_path_mapping(Client, BasePath, DomainName, Input0, Options0) ->
     Path = ["/domainnames/", aws_util:encode_uri(DomainName), "/basepathmappings/", aws_util:encode_uri(BasePath), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2874,9 +2874,9 @@ update_client_certificate(Client, ClientCertificateId, Input0, Options0) ->
     Path = ["/clientcertificates/", aws_util:encode_uri(ClientCertificateId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2897,9 +2897,9 @@ update_deployment(Client, DeploymentId, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/deployments/", aws_util:encode_uri(DeploymentId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2920,9 +2920,9 @@ update_documentation_part(Client, DocumentationPartId, RestApiId, Input0, Option
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/parts/", aws_util:encode_uri(DocumentationPartId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2943,9 +2943,9 @@ update_documentation_version(Client, DocumentationVersion, RestApiId, Input0, Op
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/documentation/versions/", aws_util:encode_uri(DocumentationVersion), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2966,9 +2966,9 @@ update_domain_name(Client, DomainName, Input0, Options0) ->
     Path = ["/domainnames/", aws_util:encode_uri(DomainName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2990,9 +2990,9 @@ update_gateway_response(Client, ResponseType, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/gatewayresponses/", aws_util:encode_uri(ResponseType), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3013,9 +3013,9 @@ update_integration(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) 
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3036,9 +3036,9 @@ update_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCod
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/integration/responses/", aws_util:encode_uri(StatusCode), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3059,9 +3059,9 @@ update_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3082,9 +3082,9 @@ update_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, In
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), "/methods/", aws_util:encode_uri(HttpMethod), "/responses/", aws_util:encode_uri(StatusCode), ""],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3105,9 +3105,9 @@ update_model(Client, ModelName, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/models/", aws_util:encode_uri(ModelName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3128,9 +3128,9 @@ update_request_validator(Client, RequestValidatorId, RestApiId, Input0, Options0
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/requestvalidators/", aws_util:encode_uri(RequestValidatorId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3151,9 +3151,9 @@ update_resource(Client, ResourceId, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/resources/", aws_util:encode_uri(ResourceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3174,9 +3174,9 @@ update_rest_api(Client, RestApiId, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3197,9 +3197,9 @@ update_stage(Client, RestApiId, StageName, Input0, Options0) ->
     Path = ["/restapis/", aws_util:encode_uri(RestApiId), "/stages/", aws_util:encode_uri(StageName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3221,9 +3221,9 @@ update_usage(Client, KeyId, UsagePlanId, Input0, Options0) ->
     Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), "/keys/", aws_util:encode_uri(KeyId), "/usage"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3244,9 +3244,9 @@ update_usage_plan(Client, UsagePlanId, Input0, Options0) ->
     Path = ["/usageplans/", aws_util:encode_uri(UsagePlanId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3267,9 +3267,9 @@ update_vpc_link(Client, VpcLinkId, Input0, Options0) ->
     Path = ["/vpclinks/", aws_util:encode_uri(VpcLinkId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3303,11 +3303,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"apigateway">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -3315,12 +3313,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

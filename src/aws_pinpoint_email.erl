@@ -163,9 +163,9 @@ create_configuration_set(Client, Input0, Options0) ->
     Path = ["/v1/email/configuration-sets"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -195,9 +195,9 @@ create_configuration_set_event_destination(Client, ConfigurationSetName, Input0,
     Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -224,9 +224,9 @@ create_dedicated_ip_pool(Client, Input0, Options0) ->
     Path = ["/v1/email/dedicated-ip-pools"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -256,9 +256,9 @@ create_deliverability_test_report(Client, Input0, Options0) ->
     Path = ["/v1/email/deliverability-dashboard/test"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -296,9 +296,9 @@ create_email_identity(Client, Input0, Options0) ->
     Path = ["/v1/email/identities"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -325,9 +325,9 @@ delete_configuration_set(Client, ConfigurationSetName, Input0, Options0) ->
     Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -355,9 +355,9 @@ delete_configuration_set_event_destination(Client, ConfigurationSetName, EventDe
     Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations/", aws_util:encode_uri(EventDestinationName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -378,9 +378,9 @@ delete_dedicated_ip_pool(Client, PoolName, Input0, Options0) ->
     Path = ["/v1/email/dedicated-ip-pools/", aws_util:encode_uri(PoolName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -404,9 +404,9 @@ delete_email_identity(Client, EmailIdentity, Input0, Options0) ->
     Path = ["/v1/email/identities/", aws_util:encode_uri(EmailIdentity), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -931,9 +931,9 @@ put_account_dedicated_ip_warmup_attributes(Client, Input0, Options0) ->
     Path = ["/v1/email/account/dedicated-ips/warmup"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -954,9 +954,9 @@ put_account_sending_attributes(Client, Input0, Options0) ->
     Path = ["/v1/email/account/sending"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -980,9 +980,9 @@ put_configuration_set_delivery_options(Client, ConfigurationSetName, Input0, Opt
     Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/delivery-options"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1004,9 +1004,9 @@ put_configuration_set_reputation_options(Client, ConfigurationSetName, Input0, O
     Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/reputation-options"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1028,9 +1028,9 @@ put_configuration_set_sending_options(Client, ConfigurationSetName, Input0, Opti
     Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/sending"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1052,9 +1052,9 @@ put_configuration_set_tracking_options(Client, ConfigurationSetName, Input0, Opt
     Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/tracking-options"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1081,9 +1081,9 @@ put_dedicated_ip_in_pool(Client, Ip, Input0, Options0) ->
     Path = ["/v1/email/dedicated-ips/", aws_util:encode_uri(Ip), "/pool"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1104,9 +1104,9 @@ put_dedicated_ip_warmup_attributes(Client, Ip, Input0, Options0) ->
     Path = ["/v1/email/dedicated-ips/", aws_util:encode_uri(Ip), "/warmup"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1138,9 +1138,9 @@ put_deliverability_dashboard_option(Client, Input0, Options0) ->
     Path = ["/v1/email/deliverability-dashboard"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1161,9 +1161,9 @@ put_email_identity_dkim_attributes(Client, EmailIdentity, Input0, Options0) ->
     Path = ["/v1/email/identities/", aws_util:encode_uri(EmailIdentity), "/dkim"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1199,9 +1199,9 @@ put_email_identity_feedback_attributes(Client, EmailIdentity, Input0, Options0) 
     Path = ["/v1/email/identities/", aws_util:encode_uri(EmailIdentity), "/feedback"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1223,9 +1223,9 @@ put_email_identity_mail_from_attributes(Client, EmailIdentity, Input0, Options0)
     Path = ["/v1/email/identities/", aws_util:encode_uri(EmailIdentity), "/mail-from"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1260,9 +1260,9 @@ send_email(Client, Input0, Options0) ->
     Path = ["/v1/email/outbound-emails"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1293,9 +1293,9 @@ tag_resource(Client, Input0, Options0) ->
     Path = ["/v1/email/tags"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1316,9 +1316,9 @@ untag_resource(Client, Input0, Options0) ->
     Path = ["/v1/email/tags"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1349,9 +1349,9 @@ update_configuration_set_event_destination(Client, ConfigurationSetName, EventDe
     Path = ["/v1/email/configuration-sets/", aws_util:encode_uri(ConfigurationSetName), "/event-destinations/", aws_util:encode_uri(EventDestinationName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1385,11 +1385,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"email">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -1397,12 +1395,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

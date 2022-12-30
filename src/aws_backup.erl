@@ -208,9 +208,9 @@ cancel_legal_hold(Client, LegalHoldId, Input0, Options0) ->
     Path = ["/legal-holds/", aws_util:encode_uri(LegalHoldId), ""],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -239,9 +239,9 @@ create_backup_plan(Client, Input0, Options0) ->
     Path = ["/backup/plans/"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -265,9 +265,9 @@ create_backup_selection(Client, BackupPlanId, Input0, Options0) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections/"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -294,9 +294,9 @@ create_backup_vault(Client, BackupVaultName, Input0, Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -322,9 +322,9 @@ create_framework(Client, Input0, Options0) ->
     Path = ["/audit/frameworks"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -350,9 +350,9 @@ create_legal_hold(Client, Input0, Options0) ->
     Path = ["/legal-holds/"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -379,9 +379,9 @@ create_report_plan(Client, Input0, Options0) ->
     Path = ["/audit/report-plans"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -406,9 +406,9 @@ delete_backup_plan(Client, BackupPlanId, Input0, Options0) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -430,9 +430,9 @@ delete_backup_selection(Client, BackupPlanId, SelectionId, Input0, Options0) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), "/selections/", aws_util:encode_uri(SelectionId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -455,9 +455,9 @@ delete_backup_vault(Client, BackupVaultName, Input0, Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -479,9 +479,9 @@ delete_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/access-policy"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -508,9 +508,9 @@ delete_backup_vault_lock_configuration(Client, BackupVaultName, Input0, Options0
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/vault-lock"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -531,9 +531,9 @@ delete_backup_vault_notifications(Client, BackupVaultName, Input0, Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/notification-configuration"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -554,9 +554,9 @@ delete_framework(Client, FrameworkName, Input0, Options0) ->
     Path = ["/audit/frameworks/", aws_util:encode_uri(FrameworkName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -593,9 +593,9 @@ delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, Options
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -616,9 +616,9 @@ delete_report_plan(Client, ReportPlanName, Input0, Options0) ->
     Path = ["/audit/report-plans/", aws_util:encode_uri(ReportPlanName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -914,9 +914,9 @@ disassociate_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, O
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), "/disassociate"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -939,9 +939,9 @@ disassociate_recovery_point_from_parent(Client, BackupVaultName, RecoveryPointAr
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), "/parentAssociation"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1016,9 +1016,9 @@ get_backup_plan_from_json(Client, Input0, Options0) ->
     Path = ["/backup/template/json/toPlan"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1753,9 +1753,9 @@ put_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/access-policy"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1786,9 +1786,9 @@ put_backup_vault_lock_configuration(Client, BackupVaultName, Input0, Options0) -
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/vault-lock"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1810,9 +1810,9 @@ put_backup_vault_notifications(Client, BackupVaultName, Input0, Options0) ->
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/notification-configuration"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1833,9 +1833,9 @@ start_backup_job(Client, Input0, Options0) ->
     Path = ["/backup-jobs"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1858,9 +1858,9 @@ start_copy_job(Client, Input0, Options0) ->
     Path = ["/copy-jobs"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1881,9 +1881,9 @@ start_report_job(Client, ReportPlanName, Input0, Options0) ->
     Path = ["/audit/report-jobs/", aws_util:encode_uri(ReportPlanName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1905,9 +1905,9 @@ start_restore_job(Client, Input0, Options0) ->
     Path = ["/restore-jobs"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1933,9 +1933,9 @@ stop_backup_job(Client, BackupJobId, Input0, Options0) ->
     Path = ["/backup-jobs/", aws_util:encode_uri(BackupJobId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1957,9 +1957,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1981,9 +1981,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/untag/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2007,9 +2007,9 @@ update_backup_plan(Client, BackupPlanId, Input0, Options0) ->
     Path = ["/backup/plans/", aws_util:encode_uri(BackupPlanId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2031,9 +2031,9 @@ update_framework(Client, FrameworkName, Input0, Options0) ->
     Path = ["/audit/frameworks/", aws_util:encode_uri(FrameworkName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2059,9 +2059,9 @@ update_global_settings(Client, Input0, Options0) ->
     Path = ["/global-settings"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2098,9 +2098,9 @@ update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input
     Path = ["/backup-vaults/", aws_util:encode_uri(BackupVaultName), "/recovery-points/", aws_util:encode_uri(RecoveryPointArn), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2128,9 +2128,9 @@ update_region_settings(Client, Input0, Options0) ->
     Path = ["/account-settings"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2152,9 +2152,9 @@ update_report_plan(Client, ReportPlanName, Input0, Options0) ->
     Path = ["/audit/report-plans/", aws_util:encode_uri(ReportPlanName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2188,11 +2188,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"backup">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -2200,12 +2198,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

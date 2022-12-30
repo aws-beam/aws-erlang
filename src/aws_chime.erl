@@ -510,9 +510,9 @@ associate_phone_number_with_user(Client, AccountId, UserId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "?operation=associate-phone-number"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -534,9 +534,9 @@ associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input0, O
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "?operation=associate-phone-numbers"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -558,9 +558,9 @@ associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), "?operation=associate-phone-numbers"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -582,9 +582,9 @@ associate_signin_delegate_groups_with_account(Client, AccountId, Input0, Options
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "?operation=associate-signin-delegate-groups"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -609,9 +609,9 @@ batch_create_attendee(Client, MeetingId, Input0, Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees?operation=batch-create"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -632,9 +632,9 @@ batch_create_channel_membership(Client, ChannelArn, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships?operation=batch-create"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -661,9 +661,9 @@ batch_create_room_membership(Client, AccountId, RoomId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships?operation=batch-create"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -690,9 +690,9 @@ batch_delete_phone_number(Client, Input0, Options0) ->
     Path = ["/phone-numbers?operation=batch-delete"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -729,9 +729,9 @@ batch_suspend_user(Client, AccountId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users?operation=suspend"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -762,9 +762,9 @@ batch_unsuspend_user(Client, AccountId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users?operation=unsuspend"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -797,9 +797,9 @@ batch_update_phone_number(Client, Input0, Options0) ->
     Path = ["/phone-numbers?operation=batch-update"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -823,9 +823,9 @@ batch_update_user(Client, AccountId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -851,9 +851,9 @@ create_account(Client, Input0, Options0) ->
     Path = ["/accounts"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -878,9 +878,9 @@ create_app_instance(Client, Input0, Options0) ->
     Path = ["/app-instances"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -911,9 +911,9 @@ create_app_instance_admin(Client, AppInstanceArn, Input0, Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -937,9 +937,9 @@ create_app_instance_user(Client, Input0, Options0) ->
     Path = ["/app-instance-users"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -963,9 +963,9 @@ create_attendee(Client, MeetingId, Input0, Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -986,9 +986,9 @@ create_bot(Client, AccountId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1015,9 +1015,9 @@ create_channel(Client, Input0, Options0) ->
     Path = ["/channels"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1051,9 +1051,9 @@ create_channel_ban(Client, ChannelArn, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1101,9 +1101,9 @@ create_channel_membership(Client, ChannelArn, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1142,9 +1142,9 @@ create_channel_moderator(Client, ChannelArn, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1167,9 +1167,9 @@ create_media_capture_pipeline(Client, Input0, Options0) ->
     Path = ["/media-capture-pipelines"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1196,9 +1196,9 @@ create_meeting(Client, Input0, Options0) ->
     Path = ["/meetings"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1227,9 +1227,9 @@ create_meeting_dial_out(Client, MeetingId, Input0, Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/dial-outs"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1256,9 +1256,9 @@ create_meeting_with_attendees(Client, Input0, Options0) ->
     Path = ["/meetings?operation=create-attendees"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1283,9 +1283,9 @@ create_phone_number_order(Client, Input0, Options0) ->
     Path = ["/phone-number-orders"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1307,9 +1307,9 @@ create_proxy_session(Client, VoiceConnectorId, Input0, Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1331,9 +1331,9 @@ create_room(Client, AccountId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1357,9 +1357,9 @@ create_room_membership(Client, AccountId, RoomId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1380,9 +1380,9 @@ create_sip_media_application(Client, Input0, Options0) ->
     Path = ["/sip-media-applications"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1405,9 +1405,9 @@ create_sip_media_application_call(Client, SipMediaApplicationId, Input0, Options
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/calls"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1429,9 +1429,9 @@ create_sip_rule(Client, Input0, Options0) ->
     Path = ["/sip-rules"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1452,9 +1452,9 @@ create_user(Client, AccountId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users?operation=create"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1484,9 +1484,9 @@ create_voice_connector(Client, Input0, Options0) ->
     Path = ["/voice-connectors"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1515,9 +1515,9 @@ create_voice_connector_group(Client, Input0, Options0) ->
     Path = ["/voice-connector-groups"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1552,9 +1552,9 @@ delete_account(Client, AccountId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1575,9 +1575,9 @@ delete_app_instance(Client, AppInstanceArn, Input0, Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1600,9 +1600,9 @@ delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input0, O
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins/", aws_util:encode_uri(AppInstanceAdminArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1623,9 +1623,9 @@ delete_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Opt
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/streaming-configurations"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1646,9 +1646,9 @@ delete_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1674,9 +1674,9 @@ delete_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1704,9 +1704,9 @@ delete_channel(Client, ChannelArn, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1733,9 +1733,9 @@ delete_channel_ban(Client, ChannelArn, MemberArn, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/bans/", aws_util:encode_uri(MemberArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1762,9 +1762,9 @@ delete_channel_membership(Client, ChannelArn, MemberArn, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/memberships/", aws_util:encode_uri(MemberArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1795,9 +1795,9 @@ delete_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1824,9 +1824,9 @@ delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input0, Option
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/moderators/", aws_util:encode_uri(ChannelModeratorArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -1850,9 +1850,9 @@ delete_events_configuration(Client, AccountId, BotId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), "/events-configuration"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1873,9 +1873,9 @@ delete_media_capture_pipeline(Client, MediaPipelineId, Input0, Options0) ->
     Path = ["/media-capture-pipelines/", aws_util:encode_uri(MediaPipelineId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1901,9 +1901,9 @@ delete_meeting(Client, MeetingId, Input0, Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1930,9 +1930,9 @@ delete_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1954,9 +1954,9 @@ delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0)
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions/", aws_util:encode_uri(ProxySessionId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1977,9 +1977,9 @@ delete_room(Client, AccountId, RoomId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2001,9 +2001,9 @@ delete_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships/", aws_util:encode_uri(MemberId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2024,9 +2024,9 @@ delete_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2049,9 +2049,9 @@ delete_sip_rule(Client, SipRuleId, Input0, Options0) ->
     Path = ["/sip-rules/", aws_util:encode_uri(SipRuleId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2075,9 +2075,9 @@ delete_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2099,9 +2099,9 @@ delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2125,9 +2125,9 @@ delete_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2152,9 +2152,9 @@ delete_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) -
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/origination"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2176,9 +2176,9 @@ delete_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/programmable-numbers/proxy"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2200,9 +2200,9 @@ delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/streaming-configuration"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2227,9 +2227,9 @@ delete_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) -
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2251,9 +2251,9 @@ delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0,
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/credentials?operation=delete"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2541,9 +2541,9 @@ disassociate_phone_number_from_user(Client, AccountId, UserId, Input0, Options0)
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "?operation=disassociate-phone-number"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2565,9 +2565,9 @@ disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input0
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "?operation=disassociate-phone-numbers"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2589,9 +2589,9 @@ disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGrou
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), "?operation=disassociate-phone-numbers"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2613,9 +2613,9 @@ disassociate_signin_delegate_groups_from_account(Client, AccountId, Input0, Opti
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "?operation=disassociate-signin-delegate-groups"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3434,9 +3434,9 @@ invite_users(Client, AccountId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users?operation=add"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4408,9 +4408,9 @@ logout_user(Client, AccountId, UserId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "?operation=logout"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4432,9 +4432,9 @@ put_app_instance_retention_settings(Client, AppInstanceArn, Input0, Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/retention-settings"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4455,9 +4455,9 @@ put_app_instance_streaming_configurations(Client, AppInstanceArn, Input0, Option
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/streaming-configurations"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4482,9 +4482,9 @@ put_events_configuration(Client, AccountId, BotId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), "/events-configuration"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4515,9 +4515,9 @@ put_retention_settings(Client, AccountId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/retention-settings"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4539,9 +4539,9 @@ put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, I
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/logging-configuration"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4567,9 +4567,9 @@ put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, In
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/emergency-calling-configuration"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4594,9 +4594,9 @@ put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input0, Opti
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/logging-configuration"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4621,9 +4621,9 @@ put_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/origination"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4645,9 +4645,9 @@ put_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/programmable-numbers/proxy"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4673,9 +4673,9 @@ put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Op
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/streaming-configuration"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4700,9 +4700,9 @@ put_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4724,9 +4724,9 @@ put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Op
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/termination/credentials?operation=put"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4754,9 +4754,9 @@ redact_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), "?operation=redact"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -4780,9 +4780,9 @@ redact_conversation_message(Client, AccountId, ConversationId, MessageId, Input0
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/conversations/", aws_util:encode_uri(ConversationId), "/messages/", aws_util:encode_uri(MessageId), "?operation=redact"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4804,9 +4804,9 @@ redact_room_message(Client, AccountId, MessageId, RoomId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/messages/", aws_util:encode_uri(MessageId), "?operation=redact"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4827,9 +4827,9 @@ regenerate_security_token(Client, AccountId, BotId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), "?operation=regenerate-security-token"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4853,9 +4853,9 @@ reset_personal_pin(Client, AccountId, UserId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "?operation=reset-personal-pin"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4877,9 +4877,9 @@ restore_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), "?operation=restore"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4946,9 +4946,9 @@ send_channel_message(Client, ChannelArn, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -4971,9 +4971,9 @@ start_meeting_transcription(Client, MeetingId, Input0, Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/transcription?operation=start"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -4994,9 +4994,9 @@ stop_meeting_transcription(Client, MeetingId, Input0, Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/transcription?operation=stop"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5018,9 +5018,9 @@ tag_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), "/tags?operation=add"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5041,9 +5041,9 @@ tag_meeting(Client, MeetingId, Input0, Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/tags?operation=add"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5065,9 +5065,9 @@ tag_resource(Client, Input0, Options0) ->
     Path = ["/tags?operation=tag-resource"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5089,9 +5089,9 @@ untag_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/attendees/", aws_util:encode_uri(AttendeeId), "/tags?operation=delete"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5113,9 +5113,9 @@ untag_meeting(Client, MeetingId, Input0, Options0) ->
     Path = ["/meetings/", aws_util:encode_uri(MeetingId), "/tags?operation=delete"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5137,9 +5137,9 @@ untag_resource(Client, Input0, Options0) ->
     Path = ["/tags?operation=untag-resource"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5163,9 +5163,9 @@ update_account(Client, AccountId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5190,9 +5190,9 @@ update_account_settings(Client, AccountId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/settings"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5213,9 +5213,9 @@ update_app_instance(Client, AppInstanceArn, Input0, Options0) ->
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5238,9 +5238,9 @@ update_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
     Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5262,9 +5262,9 @@ update_bot(Client, AccountId, BotId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/bots/", aws_util:encode_uri(BotId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5291,9 +5291,9 @@ update_channel(Client, ChannelArn, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -5320,9 +5320,9 @@ update_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/messages/", aws_util:encode_uri(MessageId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -5349,9 +5349,9 @@ update_channel_read_marker(Client, ChannelArn, Input0, Options0) ->
     Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/readMarker"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
@@ -5375,9 +5375,9 @@ update_global_settings(Client, Input0, Options0) ->
     Path = ["/settings"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5410,9 +5410,9 @@ update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Path = ["/phone-numbers/", aws_util:encode_uri(PhoneNumberId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5437,9 +5437,9 @@ update_phone_number_settings(Client, Input0, Options0) ->
     Path = ["/settings/phone-number"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5461,9 +5461,9 @@ update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0)
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/proxy-sessions/", aws_util:encode_uri(ProxySessionId), ""],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5485,9 +5485,9 @@ update_room(Client, AccountId, RoomId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5513,9 +5513,9 @@ update_room_membership(Client, AccountId, MemberId, RoomId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/rooms/", aws_util:encode_uri(RoomId), "/memberships/", aws_util:encode_uri(MemberId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5536,9 +5536,9 @@ update_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5562,9 +5562,9 @@ update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, 
     Path = ["/sip-media-applications/", aws_util:encode_uri(SipMediaApplicationId), "/calls/", aws_util:encode_uri(TransactionId), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5585,9 +5585,9 @@ update_sip_rule(Client, SipRuleId, Input0, Options0) ->
     Path = ["/sip-rules/", aws_util:encode_uri(SipRuleId), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5610,9 +5610,9 @@ update_user(Client, AccountId, UserId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5634,9 +5634,9 @@ update_user_settings(Client, AccountId, UserId, Input0, Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AccountId), "/users/", aws_util:encode_uri(UserId), "/settings"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5657,9 +5657,9 @@ update_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
     Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5681,9 +5681,9 @@ update_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5710,9 +5710,9 @@ validate_e911_address(Client, Input0, Options0) ->
     Path = ["/emergency-calling/address"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -5747,11 +5747,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"chime">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -5759,12 +5757,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

@@ -276,9 +276,9 @@ associate_aws_account_with_partner_account(Client, Input0, Options0) ->
     Path = ["/partner-accounts"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -299,9 +299,9 @@ associate_multicast_group_with_fuota_task(Client, Id, Input0, Options0) ->
     Path = ["/fuota-tasks/", aws_util:encode_uri(Id), "/multicast-group"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -322,9 +322,9 @@ associate_wireless_device_with_fuota_task(Client, Id, Input0, Options0) ->
     Path = ["/fuota-tasks/", aws_util:encode_uri(Id), "/wireless-device"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -345,9 +345,9 @@ associate_wireless_device_with_multicast_group(Client, Id, Input0, Options0) ->
     Path = ["/multicast-groups/", aws_util:encode_uri(Id), "/wireless-device"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -368,9 +368,9 @@ associate_wireless_device_with_thing(Client, Id, Input0, Options0) ->
     Path = ["/wireless-devices/", aws_util:encode_uri(Id), "/thing"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -391,9 +391,9 @@ associate_wireless_gateway_with_certificate(Client, Id, Input0, Options0) ->
     Path = ["/wireless-gateways/", aws_util:encode_uri(Id), "/certificate"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -414,9 +414,9 @@ associate_wireless_gateway_with_thing(Client, Id, Input0, Options0) ->
     Path = ["/wireless-gateways/", aws_util:encode_uri(Id), "/thing"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -437,9 +437,9 @@ cancel_multicast_group_session(Client, Id, Input0, Options0) ->
     Path = ["/multicast-groups/", aws_util:encode_uri(Id), "/session"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -461,9 +461,9 @@ create_destination(Client, Input0, Options0) ->
     Path = ["/destinations"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -484,9 +484,9 @@ create_device_profile(Client, Input0, Options0) ->
     Path = ["/device-profiles"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -507,9 +507,9 @@ create_fuota_task(Client, Input0, Options0) ->
     Path = ["/fuota-tasks"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -530,9 +530,9 @@ create_multicast_group(Client, Input0, Options0) ->
     Path = ["/multicast-groups"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -553,9 +553,9 @@ create_network_analyzer_configuration(Client, Input0, Options0) ->
     Path = ["/network-analyzer-configurations"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -576,9 +576,9 @@ create_service_profile(Client, Input0, Options0) ->
     Path = ["/service-profiles"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -599,9 +599,9 @@ create_wireless_device(Client, Input0, Options0) ->
     Path = ["/wireless-devices"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -622,9 +622,9 @@ create_wireless_gateway(Client, Input0, Options0) ->
     Path = ["/wireless-gateways"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -645,9 +645,9 @@ create_wireless_gateway_task(Client, Id, Input0, Options0) ->
     Path = ["/wireless-gateways/", aws_util:encode_uri(Id), "/tasks"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -668,9 +668,9 @@ create_wireless_gateway_task_definition(Client, Input0, Options0) ->
     Path = ["/wireless-gateway-task-definitions"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -691,9 +691,9 @@ delete_destination(Client, Name, Input0, Options0) ->
     Path = ["/destinations/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -714,9 +714,9 @@ delete_device_profile(Client, Id, Input0, Options0) ->
     Path = ["/device-profiles/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -737,9 +737,9 @@ delete_fuota_task(Client, Id, Input0, Options0) ->
     Path = ["/fuota-tasks/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -760,9 +760,9 @@ delete_multicast_group(Client, Id, Input0, Options0) ->
     Path = ["/multicast-groups/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -783,9 +783,9 @@ delete_network_analyzer_configuration(Client, ConfigurationName, Input0, Options
     Path = ["/network-analyzer-configurations/", aws_util:encode_uri(ConfigurationName), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -806,9 +806,9 @@ delete_queued_messages(Client, Id, Input0, Options0) ->
     Path = ["/wireless-devices/", aws_util:encode_uri(Id), "/data"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -831,9 +831,9 @@ delete_service_profile(Client, Id, Input0, Options0) ->
     Path = ["/service-profiles/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -854,9 +854,9 @@ delete_wireless_device(Client, Id, Input0, Options0) ->
     Path = ["/wireless-devices/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -877,9 +877,9 @@ delete_wireless_gateway(Client, Id, Input0, Options0) ->
     Path = ["/wireless-gateways/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -900,9 +900,9 @@ delete_wireless_gateway_task(Client, Id, Input0, Options0) ->
     Path = ["/wireless-gateways/", aws_util:encode_uri(Id), "/tasks"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -926,9 +926,9 @@ delete_wireless_gateway_task_definition(Client, Id, Input0, Options0) ->
     Path = ["/wireless-gateway-task-definitions/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -952,9 +952,9 @@ disassociate_aws_account_from_partner_account(Client, PartnerAccountId, Input0, 
     Path = ["/partner-accounts/", aws_util:encode_uri(PartnerAccountId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -976,9 +976,9 @@ disassociate_multicast_group_from_fuota_task(Client, Id, MulticastGroupId, Input
     Path = ["/fuota-tasks/", aws_util:encode_uri(Id), "/multicast-groups/", aws_util:encode_uri(MulticastGroupId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -999,9 +999,9 @@ disassociate_wireless_device_from_fuota_task(Client, Id, WirelessDeviceId, Input
     Path = ["/fuota-tasks/", aws_util:encode_uri(Id), "/wireless-devices/", aws_util:encode_uri(WirelessDeviceId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1022,9 +1022,9 @@ disassociate_wireless_device_from_multicast_group(Client, Id, WirelessDeviceId, 
     Path = ["/multicast-groups/", aws_util:encode_uri(Id), "/wireless-devices/", aws_util:encode_uri(WirelessDeviceId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1045,9 +1045,9 @@ disassociate_wireless_device_from_thing(Client, Id, Input0, Options0) ->
     Path = ["/wireless-devices/", aws_util:encode_uri(Id), "/thing"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1069,9 +1069,9 @@ disassociate_wireless_gateway_from_certificate(Client, Id, Input0, Options0) ->
     Path = ["/wireless-gateways/", aws_util:encode_uri(Id), "/certificate"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1092,9 +1092,9 @@ disassociate_wireless_gateway_from_thing(Client, Id, Input0, Options0) ->
     Path = ["/wireless-gateways/", aws_util:encode_uri(Id), "/thing"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1395,9 +1395,9 @@ get_position_estimate(Client, Input0, Options0) ->
     Path = ["/position-estimate"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2189,9 +2189,9 @@ put_position_configuration(Client, ResourceIdentifier, Input0, Options0) ->
     Path = ["/position-configurations/", aws_util:encode_uri(ResourceIdentifier), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2216,9 +2216,9 @@ put_resource_log_level(Client, ResourceIdentifier, Input0, Options0) ->
     Path = ["/log-levels/", aws_util:encode_uri(ResourceIdentifier), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2241,9 +2241,9 @@ reset_all_resource_log_levels(Client, Input0, Options0) ->
     Path = ["/log-levels"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2267,9 +2267,9 @@ reset_resource_log_level(Client, ResourceIdentifier, Input0, Options0) ->
     Path = ["/log-levels/", aws_util:encode_uri(ResourceIdentifier), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2291,9 +2291,9 @@ send_data_to_multicast_group(Client, Id, Input0, Options0) ->
     Path = ["/multicast-groups/", aws_util:encode_uri(Id), "/data"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2314,9 +2314,9 @@ send_data_to_wireless_device(Client, Id, Input0, Options0) ->
     Path = ["/wireless-devices/", aws_util:encode_uri(Id), "/data"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2338,9 +2338,9 @@ start_bulk_associate_wireless_device_with_multicast_group(Client, Id, Input0, Op
     Path = ["/multicast-groups/", aws_util:encode_uri(Id), "/bulk"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2362,9 +2362,9 @@ start_bulk_disassociate_wireless_device_from_multicast_group(Client, Id, Input0,
     Path = ["/multicast-groups/", aws_util:encode_uri(Id), "/bulk"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2385,9 +2385,9 @@ start_fuota_task(Client, Id, Input0, Options0) ->
     Path = ["/fuota-tasks/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2408,9 +2408,9 @@ start_multicast_group_session(Client, Id, Input0, Options0) ->
     Path = ["/multicast-groups/", aws_util:encode_uri(Id), "/session"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2431,9 +2431,9 @@ tag_resource(Client, Input0, Options0) ->
     Path = ["/tags"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2456,9 +2456,9 @@ test_wireless_device(Client, Id, Input0, Options0) ->
     Path = ["/wireless-devices/", aws_util:encode_uri(Id), "/test"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2479,9 +2479,9 @@ untag_resource(Client, Input0, Options0) ->
     Path = ["/tags"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2504,9 +2504,9 @@ update_destination(Client, Name, Input0, Options0) ->
     Path = ["/destinations/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2527,9 +2527,9 @@ update_event_configuration_by_resource_types(Client, Input0, Options0) ->
     Path = ["/event-configurations-resource-types"],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2550,9 +2550,9 @@ update_fuota_task(Client, Id, Input0, Options0) ->
     Path = ["/fuota-tasks/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2577,9 +2577,9 @@ update_log_levels_by_resource_types(Client, Input0, Options0) ->
     Path = ["/log-levels"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2600,9 +2600,9 @@ update_multicast_group(Client, Id, Input0, Options0) ->
     Path = ["/multicast-groups/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2623,9 +2623,9 @@ update_network_analyzer_configuration(Client, ConfigurationName, Input0, Options
     Path = ["/network-analyzer-configurations/", aws_util:encode_uri(ConfigurationName), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2646,9 +2646,9 @@ update_partner_account(Client, PartnerAccountId, Input0, Options0) ->
     Path = ["/partner-accounts/", aws_util:encode_uri(PartnerAccountId), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2673,9 +2673,9 @@ update_position(Client, ResourceIdentifier, Input0, Options0) ->
     Path = ["/positions/", aws_util:encode_uri(ResourceIdentifier), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2697,9 +2697,9 @@ update_resource_event_configuration(Client, Identifier, Input0, Options0) ->
     Path = ["/event-configurations/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2725,9 +2725,9 @@ update_resource_position(Client, ResourceIdentifier, Input0, Options0) ->
     Path = ["/resource-positions/", aws_util:encode_uri(ResourceIdentifier), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2749,9 +2749,9 @@ update_wireless_device(Client, Id, Input0, Options0) ->
     Path = ["/wireless-devices/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2772,9 +2772,9 @@ update_wireless_gateway(Client, Id, Input0, Options0) ->
     Path = ["/wireless-gateways/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2808,11 +2808,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"api.iotwireless">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -2820,12 +2818,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

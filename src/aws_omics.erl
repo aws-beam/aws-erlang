@@ -177,9 +177,9 @@ batch_delete_read_set(Client, SequenceStoreId, Input0, Options0) ->
     Path = ["/sequencestore/", aws_util:encode_uri(SequenceStoreId), "/readset/batch/delete"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -200,9 +200,9 @@ cancel_annotation_import_job(Client, JobId, Input0, Options0) ->
     Path = ["/import/annotation/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -223,9 +223,9 @@ cancel_run(Client, Id, Input0, Options0) ->
     Path = ["/run/", aws_util:encode_uri(Id), "/cancel"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -246,9 +246,9 @@ cancel_variant_import_job(Client, JobId, Input0, Options0) ->
     Path = ["/import/variant/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -269,9 +269,9 @@ create_annotation_store(Client, Input0, Options0) ->
     Path = ["/annotationStore"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -292,9 +292,9 @@ create_reference_store(Client, Input0, Options0) ->
     Path = ["/referencestore"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -315,9 +315,9 @@ create_run_group(Client, Input0, Options0) ->
     Path = ["/runGroup"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -338,9 +338,9 @@ create_sequence_store(Client, Input0, Options0) ->
     Path = ["/sequencestore"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -361,9 +361,9 @@ create_variant_store(Client, Input0, Options0) ->
     Path = ["/variantStore"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -384,9 +384,9 @@ create_workflow(Client, Input0, Options0) ->
     Path = ["/workflow"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -407,9 +407,9 @@ delete_annotation_store(Client, Name, Input0, Options0) ->
     Path = ["/annotationStore/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -431,9 +431,9 @@ delete_reference(Client, Id, ReferenceStoreId, Input0, Options0) ->
     Path = ["/referencestore/", aws_util:encode_uri(ReferenceStoreId), "/reference/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -454,9 +454,9 @@ delete_reference_store(Client, Id, Input0, Options0) ->
     Path = ["/referencestore/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -477,9 +477,9 @@ delete_run(Client, Id, Input0, Options0) ->
     Path = ["/run/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -500,9 +500,9 @@ delete_run_group(Client, Id, Input0, Options0) ->
     Path = ["/runGroup/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -523,9 +523,9 @@ delete_sequence_store(Client, Id, Input0, Options0) ->
     Path = ["/sequencestore/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -546,9 +546,9 @@ delete_variant_store(Client, Name, Input0, Options0) ->
     Path = ["/variantStore/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -570,9 +570,9 @@ delete_workflow(Client, Id, Input0, Options0) ->
     Path = ["/workflow/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1030,9 +1030,9 @@ list_annotation_import_jobs(Client, Input0, Options0) ->
     Path = ["/import/annotations"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1055,9 +1055,9 @@ list_annotation_stores(Client, Input0, Options0) ->
     Path = ["/annotationStores"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1080,9 +1080,9 @@ list_read_set_activation_jobs(Client, SequenceStoreId, Input0, Options0) ->
     Path = ["/sequencestore/", aws_util:encode_uri(SequenceStoreId), "/activationjobs"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1105,9 +1105,9 @@ list_read_set_export_jobs(Client, SequenceStoreId, Input0, Options0) ->
     Path = ["/sequencestore/", aws_util:encode_uri(SequenceStoreId), "/exportjobs"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1130,9 +1130,9 @@ list_read_set_import_jobs(Client, SequenceStoreId, Input0, Options0) ->
     Path = ["/sequencestore/", aws_util:encode_uri(SequenceStoreId), "/importjobs"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1155,9 +1155,9 @@ list_read_sets(Client, SequenceStoreId, Input0, Options0) ->
     Path = ["/sequencestore/", aws_util:encode_uri(SequenceStoreId), "/readsets"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1180,9 +1180,9 @@ list_reference_import_jobs(Client, ReferenceStoreId, Input0, Options0) ->
     Path = ["/referencestore/", aws_util:encode_uri(ReferenceStoreId), "/importjobs"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1205,9 +1205,9 @@ list_reference_stores(Client, Input0, Options0) ->
     Path = ["/referencestores"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1230,9 +1230,9 @@ list_references(Client, ReferenceStoreId, Input0, Options0) ->
     Path = ["/referencestore/", aws_util:encode_uri(ReferenceStoreId), "/references"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1343,9 +1343,9 @@ list_sequence_stores(Client, Input0, Options0) ->
     Path = ["/sequencestores"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1391,9 +1391,9 @@ list_variant_import_jobs(Client, Input0, Options0) ->
     Path = ["/import/variants"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1416,9 +1416,9 @@ list_variant_stores(Client, Input0, Options0) ->
     Path = ["/variantStores"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1471,9 +1471,9 @@ start_annotation_import_job(Client, Input0, Options0) ->
     Path = ["/import/annotation"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1494,9 +1494,9 @@ start_read_set_activation_job(Client, SequenceStoreId, Input0, Options0) ->
     Path = ["/sequencestore/", aws_util:encode_uri(SequenceStoreId), "/activationjob"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1517,9 +1517,9 @@ start_read_set_export_job(Client, SequenceStoreId, Input0, Options0) ->
     Path = ["/sequencestore/", aws_util:encode_uri(SequenceStoreId), "/exportjob"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1540,9 +1540,9 @@ start_read_set_import_job(Client, SequenceStoreId, Input0, Options0) ->
     Path = ["/sequencestore/", aws_util:encode_uri(SequenceStoreId), "/importjob"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1563,9 +1563,9 @@ start_reference_import_job(Client, ReferenceStoreId, Input0, Options0) ->
     Path = ["/referencestore/", aws_util:encode_uri(ReferenceStoreId), "/importjob"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1586,9 +1586,9 @@ start_run(Client, Input0, Options0) ->
     Path = ["/run"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1609,9 +1609,9 @@ start_variant_import_job(Client, Input0, Options0) ->
     Path = ["/import/variant"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1632,9 +1632,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1655,9 +1655,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1679,9 +1679,9 @@ update_annotation_store(Client, Name, Input0, Options0) ->
     Path = ["/annotationStore/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1702,9 +1702,9 @@ update_run_group(Client, Id, Input0, Options0) ->
     Path = ["/runGroup/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1725,9 +1725,9 @@ update_variant_store(Client, Name, Input0, Options0) ->
     Path = ["/variantStore/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1748,9 +1748,9 @@ update_workflow(Client, Id, Input0, Options0) ->
     Path = ["/workflow/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1784,11 +1784,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"omics">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -1796,12 +1794,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

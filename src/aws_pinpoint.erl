@@ -307,9 +307,9 @@ create_app(Client, Input0, Options0) ->
     Path = ["/v1/apps"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -331,9 +331,9 @@ create_campaign(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -355,9 +355,9 @@ create_email_template(Client, TemplateName, Input0, Options0) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/email"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -378,9 +378,9 @@ create_export_job(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/jobs/export"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -401,9 +401,9 @@ create_import_job(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/jobs/import"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -425,9 +425,9 @@ create_in_app_template(Client, TemplateName, Input0, Options0) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/inapp"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -448,9 +448,9 @@ create_journey(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -472,9 +472,9 @@ create_push_template(Client, TemplateName, Input0, Options0) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/push"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -495,9 +495,9 @@ create_recommender_configuration(Client, Input0, Options0) ->
     Path = ["/v1/recommenders"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -520,9 +520,9 @@ create_segment(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -544,9 +544,9 @@ create_sms_template(Client, TemplateName, Input0, Options0) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/sms"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -568,9 +568,9 @@ create_voice_template(Client, TemplateName, Input0, Options0) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/voice"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -592,9 +592,9 @@ delete_adm_channel(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/adm"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -616,9 +616,9 @@ delete_apns_channel(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -640,9 +640,9 @@ delete_apns_sandbox_channel(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_sandbox"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -664,9 +664,9 @@ delete_apns_voip_channel(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_voip"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -688,9 +688,9 @@ delete_apns_voip_sandbox_channel(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_voip_sandbox"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -711,9 +711,9 @@ delete_app(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -735,9 +735,9 @@ delete_baidu_channel(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/baidu"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -758,9 +758,9 @@ delete_campaign(Client, ApplicationId, CampaignId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns/", aws_util:encode_uri(CampaignId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -782,9 +782,9 @@ delete_email_channel(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/email"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -806,9 +806,9 @@ delete_email_template(Client, TemplateName, Input0, Options0) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/email"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -830,9 +830,9 @@ delete_endpoint(Client, ApplicationId, EndpointId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/endpoints/", aws_util:encode_uri(EndpointId), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -853,9 +853,9 @@ delete_event_stream(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/eventstream"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -877,9 +877,9 @@ delete_gcm_channel(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/gcm"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -901,9 +901,9 @@ delete_in_app_template(Client, TemplateName, Input0, Options0) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/inapp"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -925,9 +925,9 @@ delete_journey(Client, ApplicationId, JourneyId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -949,9 +949,9 @@ delete_push_template(Client, TemplateName, Input0, Options0) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/push"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -973,9 +973,9 @@ delete_recommender_configuration(Client, RecommenderId, Input0, Options0) ->
     Path = ["/v1/recommenders/", aws_util:encode_uri(RecommenderId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -996,9 +996,9 @@ delete_segment(Client, ApplicationId, SegmentId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments/", aws_util:encode_uri(SegmentId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1020,9 +1020,9 @@ delete_sms_channel(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/sms"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1044,9 +1044,9 @@ delete_sms_template(Client, TemplateName, Input0, Options0) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/sms"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1069,9 +1069,9 @@ delete_user_endpoints(Client, ApplicationId, UserId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/users/", aws_util:encode_uri(UserId), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1093,9 +1093,9 @@ delete_voice_channel(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/voice"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1117,9 +1117,9 @@ delete_voice_template(Client, TemplateName, Input0, Options0) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/voice"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2462,9 +2462,9 @@ phone_number_validate(Client, Input0, Options0) ->
     Path = ["/v1/phone/number/validate"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2486,9 +2486,9 @@ put_event_stream(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/eventstream"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2510,9 +2510,9 @@ put_events(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/events"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2534,9 +2534,9 @@ remove_attributes(Client, ApplicationId, AttributeType, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/attributes/", aws_util:encode_uri(AttributeType), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2557,9 +2557,9 @@ send_messages(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/messages"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2580,9 +2580,9 @@ send_o_t_p_message(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/otp"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2603,9 +2603,9 @@ send_users_messages(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/users-messages"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2627,9 +2627,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2651,9 +2651,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Path = ["/v1/tags/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2676,9 +2676,9 @@ update_adm_channel(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/adm"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2700,9 +2700,9 @@ update_apns_channel(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2724,9 +2724,9 @@ update_apns_sandbox_channel(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_sandbox"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2748,9 +2748,9 @@ update_apns_voip_channel(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_voip"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2773,9 +2773,9 @@ update_apns_voip_sandbox_channel(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/apns_voip_sandbox"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2796,9 +2796,9 @@ update_application_settings(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/settings"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2820,9 +2820,9 @@ update_baidu_channel(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/baidu"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2843,9 +2843,9 @@ update_campaign(Client, ApplicationId, CampaignId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/campaigns/", aws_util:encode_uri(CampaignId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2867,9 +2867,9 @@ update_email_channel(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/email"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2891,9 +2891,9 @@ update_email_template(Client, TemplateName, Input0, Options0) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/email"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2922,9 +2922,9 @@ update_endpoint(Client, ApplicationId, EndpointId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/endpoints/", aws_util:encode_uri(EndpointId), ""],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2952,9 +2952,9 @@ update_endpoints_batch(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/endpoints"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2976,9 +2976,9 @@ update_gcm_channel(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/gcm"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3000,9 +3000,9 @@ update_in_app_template(Client, TemplateName, Input0, Options0) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/inapp"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3025,9 +3025,9 @@ update_journey(Client, ApplicationId, JourneyId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3048,9 +3048,9 @@ update_journey_state(Client, ApplicationId, JourneyId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), "/state"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3072,9 +3072,9 @@ update_push_template(Client, TemplateName, Input0, Options0) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/push"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3097,9 +3097,9 @@ update_recommender_configuration(Client, RecommenderId, Input0, Options0) ->
     Path = ["/v1/recommenders/", aws_util:encode_uri(RecommenderId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3122,9 +3122,9 @@ update_segment(Client, ApplicationId, SegmentId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/segments/", aws_util:encode_uri(SegmentId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3146,9 +3146,9 @@ update_sms_channel(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/sms"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3170,9 +3170,9 @@ update_sms_template(Client, TemplateName, Input0, Options0) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/sms"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3196,9 +3196,9 @@ update_template_active_version(Client, TemplateName, TemplateType, Input0, Optio
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/", aws_util:encode_uri(TemplateType), "/active-version"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3220,9 +3220,9 @@ update_voice_channel(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/channels/voice"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3244,9 +3244,9 @@ update_voice_template(Client, TemplateName, Input0, Options0) ->
     Path = ["/v1/templates/", aws_util:encode_uri(TemplateName), "/voice"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3269,9 +3269,9 @@ verify_o_t_p_message(Client, ApplicationId, Input0, Options0) ->
     Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/verify-otp"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3305,11 +3305,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"pinpoint">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -3317,12 +3315,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

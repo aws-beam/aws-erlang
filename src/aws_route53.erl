@@ -218,9 +218,9 @@ activate_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
     Path = ["/2013-04-01/keysigningkey/", aws_util:encode_uri(HostedZoneId), "/", aws_util:encode_uri(Name), "/activate"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -267,9 +267,9 @@ associate_vpc_with_hosted_zone(Client, HostedZoneId, Input0, Options0) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/associatevpc"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -313,9 +313,9 @@ change_cidr_collection(Client, Id, Input0, Options0) ->
     Path = ["/2013-04-01/cidrcollection/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -421,9 +421,9 @@ change_resource_record_sets(Client, HostedZoneId, Input0, Options0) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/rrset/"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -447,9 +447,9 @@ change_tags_for_resource(Client, ResourceId, ResourceType, Input0, Options0) ->
     Path = ["/2013-04-01/tags/", aws_util:encode_uri(ResourceType), "/", aws_util:encode_uri(ResourceId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -470,9 +470,9 @@ create_cidr_collection(Client, Input0, Options0) ->
     Path = ["/2013-04-01/cidrcollection"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -542,9 +542,9 @@ create_health_check(Client, Input0, Options0) ->
     Path = ["/2013-04-01/healthcheck"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -640,9 +640,9 @@ create_hosted_zone(Client, Input0, Options0) ->
     Path = ["/2013-04-01/hostedzone"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -681,9 +681,9 @@ create_key_signing_key(Client, Input0, Options0) ->
     Path = ["/2013-04-01/keysigningkey"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -840,9 +840,9 @@ create_query_logging_config(Client, Input0, Options0) ->
     Path = ["/2013-04-01/queryloggingconfig"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -929,9 +929,9 @@ create_reusable_delegation_set(Client, Input0, Options0) ->
     Path = ["/2013-04-01/delegationset"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -970,9 +970,9 @@ create_traffic_policy(Client, Input0, Options0) ->
     Path = ["/2013-04-01/trafficpolicy"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1016,9 +1016,9 @@ create_traffic_policy_instance(Client, Input0, Options0) ->
     Path = ["/2013-04-01/trafficpolicyinstance"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1064,9 +1064,9 @@ create_traffic_policy_version(Client, Id, Input0, Options0) ->
     Path = ["/2013-04-01/trafficpolicy/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1114,9 +1114,9 @@ create_vpc_association_authorization(Client, HostedZoneId, Input0, Options0) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/authorizevpcassociation"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1140,9 +1140,9 @@ deactivate_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
     Path = ["/2013-04-01/keysigningkey/", aws_util:encode_uri(HostedZoneId), "/", aws_util:encode_uri(Name), "/deactivate"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1165,9 +1165,9 @@ delete_cidr_collection(Client, Id, Input0, Options0) ->
     Path = ["/2013-04-01/cidrcollection/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1202,9 +1202,9 @@ delete_health_check(Client, HealthCheckId, Input0, Options0) ->
     Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1272,9 +1272,9 @@ delete_hosted_zone(Client, Id, Input0, Options0) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1304,9 +1304,9 @@ delete_key_signing_key(Client, HostedZoneId, Name, Input0, Options0) ->
     Path = ["/2013-04-01/keysigningkey/", aws_util:encode_uri(HostedZoneId), "/", aws_util:encode_uri(Name), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1333,9 +1333,9 @@ delete_query_logging_config(Client, Id, Input0, Options0) ->
     Path = ["/2013-04-01/queryloggingconfig/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1363,9 +1363,9 @@ delete_reusable_delegation_set(Client, Id, Input0, Options0) ->
     Path = ["/2013-04-01/delegationset/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1401,9 +1401,9 @@ delete_traffic_policy(Client, Id, Version, Input0, Options0) ->
     Path = ["/2013-04-01/trafficpolicy/", aws_util:encode_uri(Id), "/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1428,9 +1428,9 @@ delete_traffic_policy_instance(Client, Id, Input0, Options0) ->
     Path = ["/2013-04-01/trafficpolicyinstance/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1463,9 +1463,9 @@ delete_vpc_association_authorization(Client, HostedZoneId, Input0, Options0) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/deauthorizevpcassociation"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1489,9 +1489,9 @@ disable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options0) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/disable-dnssec"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1552,9 +1552,9 @@ disassociate_vpc_from_hosted_zone(Client, HostedZoneId, Input0, Options0) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/disassociatevpc"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1575,9 +1575,9 @@ enable_hosted_zone_dns_sec(Client, HostedZoneId, Input0, Options0) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/enable-dnssec"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2621,9 +2621,9 @@ list_tags_for_resources(Client, ResourceType, Input0, Options0) ->
     Path = ["/2013-04-01/tags/", aws_util:encode_uri(ResourceType), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2909,9 +2909,9 @@ update_health_check(Client, HealthCheckId, Input0, Options0) ->
     Path = ["/2013-04-01/healthcheck/", aws_util:encode_uri(HealthCheckId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2932,9 +2932,9 @@ update_hosted_zone_comment(Client, Id, Input0, Options0) ->
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2955,9 +2955,9 @@ update_traffic_policy_comment(Client, Id, Version, Input0, Options0) ->
     Path = ["/2013-04-01/trafficpolicy/", aws_util:encode_uri(Id), "/", aws_util:encode_uri(Version), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -2998,9 +2998,9 @@ update_traffic_policy_instance(Client, Id, Input0, Options0) ->
     Path = ["/2013-04-01/trafficpolicyinstance/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -3035,11 +3035,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"route53">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"text/xml">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"text/xml">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -3047,12 +3045,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;

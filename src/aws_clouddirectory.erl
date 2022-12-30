@@ -162,9 +162,9 @@ add_facet_to_object(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/object/facets"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -189,9 +189,9 @@ apply_schema(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/schema/apply"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -222,9 +222,9 @@ attach_object(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/object/attach"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -249,9 +249,9 @@ attach_policy(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/policy/attach"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -274,9 +274,9 @@ attach_to_index(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/index/attach"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -301,9 +301,9 @@ attach_typed_link(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/attach"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -326,9 +326,9 @@ batch_read(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/batchread"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -354,9 +354,9 @@ batch_write(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/batchwrite"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -386,9 +386,9 @@ create_directory(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/directory/create"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -413,9 +413,9 @@ create_facet(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/facet/create"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -440,9 +440,9 @@ create_index(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/index"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -470,9 +470,9 @@ create_object(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/object"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -511,9 +511,9 @@ create_schema(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/schema/create"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -536,9 +536,9 @@ create_typed_link_facet(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet/create"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -564,9 +564,9 @@ delete_directory(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/directory"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -592,9 +592,9 @@ delete_facet(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/facet/delete"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -621,9 +621,9 @@ delete_object(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/object/delete"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -648,9 +648,9 @@ delete_schema(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/schema"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -675,9 +675,9 @@ delete_typed_link_facet(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet/delete"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -700,9 +700,9 @@ detach_from_index(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/index/detach"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -728,9 +728,9 @@ detach_object(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/object/detach"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -753,9 +753,9 @@ detach_policy(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/policy/detach"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -780,9 +780,9 @@ detach_typed_link(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/detach"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -808,9 +808,9 @@ disable_directory(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/directory/disable"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -836,9 +836,9 @@ enable_directory(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/directory/enable"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -862,9 +862,9 @@ get_applied_schema_version(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/schema/getappliedschema"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -885,9 +885,9 @@ get_directory(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/directory/get"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -914,9 +914,9 @@ get_facet(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/facet"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -939,9 +939,9 @@ get_link_attributes(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/attributes/get"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -965,9 +965,9 @@ get_object_attributes(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/object/attributes/get"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -991,9 +991,9 @@ get_object_information(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/object/information"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -1019,9 +1019,9 @@ get_schema_as_json(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/schema/json"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1046,9 +1046,9 @@ get_typed_link_facet_information(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet/get"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1073,9 +1073,9 @@ list_applied_schema_arns(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/schema/applied"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1096,9 +1096,9 @@ list_attached_indices(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/object/indices"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -1123,9 +1123,9 @@ list_development_schema_arns(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/schema/development"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1146,9 +1146,9 @@ list_directories(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/directory/list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1169,9 +1169,9 @@ list_facet_attributes(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/facet/attributes"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1194,9 +1194,9 @@ list_facet_names(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/facet/list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1223,9 +1223,9 @@ list_incoming_typed_links(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/incoming"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -1248,9 +1248,9 @@ list_index(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/index/targets"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -1277,9 +1277,9 @@ list_managed_schema_arns(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/schema/managed"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1300,9 +1300,9 @@ list_object_attributes(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/object/attributes"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -1327,9 +1327,9 @@ list_object_children(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/object/children"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -1364,9 +1364,9 @@ list_object_parent_paths(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/object/parentpaths"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -1390,9 +1390,9 @@ list_object_parents(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/object/parent"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -1416,9 +1416,9 @@ list_object_policies(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/object/policy"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -1446,9 +1446,9 @@ list_outgoing_typed_links(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/outgoing"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -1472,9 +1472,9 @@ list_policy_attachments(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/policy/attachment"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-consistency-level">>, <<"ConsistencyLevel">>},
@@ -1501,9 +1501,9 @@ list_published_schema_arns(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/schema/published"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1528,9 +1528,9 @@ list_tags_for_resource(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/tags"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1554,9 +1554,9 @@ list_typed_link_facet_attributes(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet/attributes"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1582,9 +1582,9 @@ list_typed_link_facet_names(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet/list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1615,9 +1615,9 @@ lookup_policy(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/policy/lookup"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -1641,9 +1641,9 @@ publish_schema(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/schema/publish"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DevelopmentSchemaArn">>}
@@ -1669,9 +1669,9 @@ put_schema_from_json(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/schema/json"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1694,9 +1694,9 @@ remove_facet_from_object(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/object/facets/delete"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -1719,9 +1719,9 @@ tag_resource(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/tags/add"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1742,9 +1742,9 @@ untag_resource(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/tags/remove"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1773,9 +1773,9 @@ update_facet(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/facet"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1801,9 +1801,9 @@ update_link_attributes(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/attributes/update"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -1826,9 +1826,9 @@ update_object_attributes(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/object/update"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"DirectoryArn">>}
@@ -1853,9 +1853,9 @@ update_schema(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/schema/update"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1880,9 +1880,9 @@ update_typed_link_facet(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/typedlink/facet"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     HeadersMapping = [
                        {<<"x-amz-data-partition">>, <<"SchemaArn">>}
@@ -1912,9 +1912,9 @@ upgrade_applied_schema(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/schema/upgradeapplied"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1936,9 +1936,9 @@ upgrade_published_schema(Client, Input0, Options0) ->
     Path = ["/amazonclouddirectory/2017-01-11/schema/upgradepublished"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
                | Options0],
-
 
     Headers = [],
     Input1 = Input0,
@@ -1972,11 +1972,9 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
     Host = build_host(<<"clouddirectory">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
-    AdditionalHeaders = [ {<<"Host">>, Host}
-                        , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
-                        ],
-    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
-
+    AdditionalHeaders1 = [ {<<"Host">>, Host}
+                         , {<<"Content-Type">>, <<"application/x-amz-json-1.1">>}
+                         ],
     Payload =
       case proplists:get_value(send_body_as_binary, Options) of
         true ->
@@ -1984,12 +1982,24 @@ do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusC
         false ->
           encode_payload(Input)
       end,
+    AdditionalHeaders = case proplists:get_value(append_sha256_content_hash, Options) of
+                          true ->
+                            add_checksum_hash_header(AdditionalHeaders1, Payload);
+                          false ->
+                            AdditionalHeaders1
+                        end,
+    Headers1 = aws_request:add_headers(AdditionalHeaders, Headers0),
 
     MethodBin = aws_request:method_to_binary(Method),
     SignedHeaders = aws_request:sign_request(Client1, MethodBin, URL, Headers1, Payload),
     Response = hackney:request(Method, URL, SignedHeaders, Payload, Options),
     DecodeBody = not proplists:get_value(receive_body_as_binary, Options),
     handle_response(Response, SuccessStatusCode, DecodeBody).
+
+add_checksum_hash_header(Headers, Body) ->
+  [ {<<"X-Amz-CheckSum-SHA256">>, base64:encode(crypto:hash(sha256, Body))}
+  | Headers
+  ].
 
 handle_response({ok, StatusCode, ResponseHeaders}, SuccessStatusCode, _DecodeBody)
   when StatusCode =:= 200;
