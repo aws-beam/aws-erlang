@@ -423,7 +423,8 @@ get_backend_api(Client, AppId, BackendEnvironmentName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Generates a model schema for existing backend API resource.
+%% @doc Gets a model introspection schema for an existing backend API
+%% resource.
 get_backend_api_models(Client, AppId, BackendEnvironmentName, Input) ->
     get_backend_api_models(Client, AppId, BackendEnvironmentName, Input, []).
 get_backend_api_models(Client, AppId, BackendEnvironmentName, Input0, Options0) ->

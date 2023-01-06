@@ -1165,6 +1165,10 @@ describe_blue_green_deployments(Client, Input, Options)
 
 %% @doc Lists the set of CA certificates provided by Amazon RDS for this
 %% Amazon Web Services account.
+%%
+%% For more information, see Using SSL/TLS to encrypt a connection to a DB
+%% instance in the Amazon RDS User Guide and Using SSL/TLS to encrypt a
+%% connection to a DB cluster in the Amazon Aurora User Guide.
 describe_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificates(Client, Input, []).

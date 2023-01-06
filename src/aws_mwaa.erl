@@ -36,7 +36,7 @@
 %%
 %% </li> <li> CreateWebLoginToken
 %%
-%% </li> </ul><br/> </li> <li> `ops.airflow.{region}.amazonaws.com' - This
+%% </li> </ul> </li> <li> `ops.airflow.{region}.amazonaws.com' - This
 %% endpoint is used to push environment metrics that track environment
 %% health.
 %%
