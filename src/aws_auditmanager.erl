@@ -26,8 +26,7 @@
 %% </li> <li> Data types: An alphabetical list of all Audit Manager data
 %% types.
 %%
-%% </li> <li> Common parameters: Parameters that all Query operations can
-%% use.
+%% </li> <li> Common parameters: Parameters that all operations can use.
 %%
 %% </li> <li> Common errors: Client and server errors that all operations can
 %% return.
@@ -194,7 +193,7 @@
 %% API
 %%====================================================================
 
-%% @doc Associates an evidence folder to an assessment report in a Audit
+%% @doc Associates an evidence folder to an assessment report in an Audit
 %% Manager assessment.
 associate_assessment_report_evidence_folder(Client, AssessmentId, Input) ->
     associate_assessment_report_evidence_folder(Client, AssessmentId, Input, []).
@@ -588,32 +587,13 @@ delete_control(Client, ControlId, Input0, Options0) ->
 
 %% @doc Deregisters an account in Audit Manager.
 %%
-%% When you deregister your account from Audit Manager, your data isn’t
-%% deleted. If you want to delete your resource data, you must perform that
-%% task separately before you deregister your account. Either, you can do
-%% this in the Audit Manager console. Or, you can use one of the delete API
-%% operations that are provided by Audit Manager.
+%% Before you deregister, you can use the UpdateSettings API operation to set
+%% your preferred data retention policy. By default, Audit Manager retains
+%% your data. If you want to delete your data, you can use the
+%% `DeregistrationPolicy' attribute to request the deletion of your data.
 %%
-%% To delete your Audit Manager resource data, see the following
-%% instructions:
-%%
-%% DeleteAssessment (see also: Deleting an assessment in the Audit Manager
-%% User Guide)
-%%
-%% DeleteAssessmentFramework (see also: Deleting a custom framework in the
-%% Audit Manager User Guide)
-%%
-%% DeleteAssessmentFrameworkShare (see also: Deleting a share request in the
-%% Audit Manager User Guide)
-%%
-%% DeleteAssessmentReport (see also: Deleting an assessment report in the
-%% Audit Manager User Guide)
-%%
-%% DeleteControl (see also: Deleting a custom control in the Audit Manager
-%% User Guide)
-%%
-%% At this time, Audit Manager doesn't provide an option to delete evidence.
-%% All available delete operations are listed above.
+%% For more information about data retention, see Data Protection in the
+%% Audit Manager User Guide.
 deregister_account(Client, Input) ->
     deregister_account(Client, Input, []).
 deregister_account(Client, Input0, Options0) ->
@@ -642,9 +622,9 @@ deregister_account(Client, Input0, Options0) ->
 %% When you remove a delegated administrator from your Audit Manager
 %% settings, you continue to have access to the evidence that you previously
 %% collected under that account. This is also the case when you deregister a
-%% delegated administrator from Organizations. However, Audit Manager will
-%% stop collecting and attaching evidence to that delegated administrator
-%% account moving forward.
+%% delegated administrator from Organizations. However, Audit Manager stops
+%% collecting and attaching evidence to that delegated administrator account
+%% moving forward.
 %%
 %% Keep in mind the following cleanup task if you use evidence finder:
 %%
@@ -658,7 +638,7 @@ deregister_account(Client, Input0, Options0) ->
 %% CloudTrail Lake and manually deletes the event data store.
 %%
 %% This cleanup task is necessary to ensure that you don't end up with
-%% multiple event data stores. Audit Manager will ignore an unused event data
+%% multiple event data stores. Audit Manager ignores an unused event data
 %% store after you remove or change a delegated administrator account.
 %% However, the unused event data store continues to incur storage costs from
 %% CloudTrail Lake if you don't delete it.
@@ -689,7 +669,9 @@ deregister_account(Client, Input0, Options0) ->
 %% Manager User Guide)
 %%
 %% </li> </ul> At this time, Audit Manager doesn't provide an option to
-%% delete evidence. All available delete operations are listed above.
+%% delete evidence for a specific delegated administrator. Instead, when your
+%% management account deregisters Audit Manager, we perform a cleanup for the
+%% current delegated administrator account at the time of deregistration.
 deregister_organization_admin_account(Client, Input) ->
     deregister_organization_admin_account(Client, Input, []).
 deregister_organization_admin_account(Client, Input0, Options0) ->
@@ -1015,7 +997,7 @@ get_evidence_folders_by_assessment(Client, AssessmentId, QueryMap, HeadersMap, O
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of evidence folders that are associated with a
-%% specified control of an assessment in Audit Manager.
+%% specified control in an Audit Manager assessment.
 get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId)
   when is_map(Client) ->
     get_evidence_folders_by_assessment_control(Client, AssessmentId, ControlId, ControlSetId, #{}, #{}).
