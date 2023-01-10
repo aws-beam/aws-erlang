@@ -3,16 +3,16 @@
 
 %% @doc Amazon Elastic Container Registry Public
 %%
-%% Amazon Elastic Container Registry (Amazon ECR) is a managed container
-%% image registry service.
+%% Amazon Elastic Container Registry Public (Amazon ECR Public) is a managed
+%% container image registry service.
 %%
 %% Amazon ECR provides both public and private registries to host your
-%% container images. You can use the familiar Docker CLI, or their preferred
-%% client, to push, pull, and manage images. Amazon ECR provides a secure,
-%% scalable, and reliable registry for your Docker or Open Container
-%% Initiative (OCI) images. Amazon ECR supports public repositories with this
-%% API. For information about the Amazon ECR API for private repositories,
-%% see Amazon Elastic Container Registry API Reference.
+%% container images. You can use the Docker CLI or your preferred client to
+%% push, pull, and manage images. Amazon ECR provides a secure, scalable, and
+%% reliable registry for your Docker or Open Container Initiative (OCI)
+%% images. Amazon ECR supports public repositories with this API. For
+%% information about the Amazon ECR API for private repositories, see Amazon
+%% Elastic Container Registry API Reference.
 -module(aws_ecr_public).
 
 -export([batch_check_layer_availability/2,
@@ -68,7 +68,7 @@
 %% API
 %%====================================================================
 
-%% @doc Checks the availability of one or more image layers within a
+%% @doc Checks the availability of one or more image layers that are within a
 %% repository in a public registry.
 %%
 %% When an image is pushed to a repository, each image layer is checked to
@@ -85,8 +85,8 @@ batch_check_layer_availability(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchCheckLayerAvailability">>, Input, Options).
 
-%% @doc Deletes a list of specified images within a repository in a public
-%% registry.
+%% @doc Deletes a list of specified images that are within a repository in a
+%% public registry.
 %%
 %% Images are specified with either an `imageTag' or `imageDigest'.
 %%
@@ -95,7 +95,7 @@ batch_check_layer_availability(Client, Input, Options)
 %% from your repository.
 %%
 %% You can completely delete an image (and all of its tags) by specifying the
-%% image's digest in your request.
+%% digest of the image in your request.
 batch_delete_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_image(Client, Input, []).
@@ -103,14 +103,14 @@ batch_delete_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeleteImage">>, Input, Options).
 
-%% @doc Informs Amazon ECR that the image layer upload has completed for a
+%% @doc Informs Amazon ECR that the image layer upload is complete for a
 %% specified public registry, repository name, and upload ID.
 %%
 %% You can optionally provide a `sha256' digest of the image layer for data
 %% validation purposes.
 %%
-%% When an image is pushed, the CompleteLayerUpload API is called once per
-%% each new image layer to verify that the upload has completed.
+%% When an image is pushed, the CompleteLayerUpload API is called once for
+%% each new image layer to verify that the upload is complete.
 %%
 %% This operation is used by the Amazon ECR proxy and is not generally used
 %% by customers for pulling and pushing images. In most cases, you should use
@@ -135,9 +135,9 @@ create_repository(Client, Input, Options)
 
 %% @doc Deletes a repository in a public registry.
 %%
-%% If the repository contains images, you must either delete all images in
-%% the repository or use the `force' option which deletes all images on your
-%% behalf before deleting the repository.
+%% If the repository contains images, you must either manually delete all
+%% images in the repository or use the `force' option. This option deletes
+%% all images on your behalf before deleting the repository.
 delete_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository(Client, Input, []).
@@ -145,7 +145,7 @@ delete_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRepository">>, Input, Options).
 
-%% @doc Deletes the repository policy associated with the specified
+%% @doc Deletes the repository policy that's associated with the specified
 %% repository.
 delete_repository_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -162,13 +162,13 @@ describe_image_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImageTags">>, Input, Options).
 
-%% @doc Returns metadata about the images in a repository in a public
-%% registry.
+%% @doc Returns metadata that's related to the images in a repository in a
+%% public registry.
 %%
 %% Beginning with Docker version 1.9, the Docker client compresses image
 %% layers before pushing them to a V2 Docker registry. The output of the
-%% `docker images' command shows the uncompressed image size, so it may
-%% return a larger image size than the image sizes returned by
+%% `docker images' command shows the uncompressed image size. Therefore, it
+%% might return a larger image size than the image sizes that are returned by
 %% `DescribeImages'.
 describe_images(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -185,7 +185,7 @@ describe_registries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRegistries">>, Input, Options).
 
-%% @doc Describes repositories in a public registry.
+%% @doc Describes repositories that are in a public registry.
 describe_repositories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_repositories(Client, Input, []).
@@ -195,8 +195,8 @@ describe_repositories(Client, Input, Options)
 
 %% @doc Retrieves an authorization token.
 %%
-%% An authorization token represents your IAM authentication credentials and
-%% can be used to access any Amazon ECR registry that your IAM principal has
+%% An authorization token represents your IAM authentication credentials. You
+%% can use it to access any Amazon ECR registry that your IAM principal has
 %% access to. The authorization token is valid for 12 hours. This API
 %% requires the `ecr-public:GetAuthorizationToken' and
 %% `sts:GetServiceBearerToken' permissions.
@@ -235,10 +235,9 @@ get_repository_policy(Client, Input, Options)
 
 %% @doc Notifies Amazon ECR that you intend to upload an image layer.
 %%
-%% When an image is pushed, the InitiateLayerUpload API is called once per
-%% image layer that has not already been uploaded. Whether or not an image
-%% layer has been uploaded is determined by the BatchCheckLayerAvailability
-%% API action.
+%% When an image is pushed, the InitiateLayerUpload API is called once for
+%% each image layer that hasn't already been uploaded. Whether an image layer
+%% uploads is determined by the BatchCheckLayerAvailability API action.
 %%
 %% This operation is used by the Amazon ECR proxy and is not generally used
 %% by customers for pulling and pushing images. In most cases, you should use
@@ -258,12 +257,12 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Creates or updates the image manifest and tags associated with an
-%% image.
+%% @doc Creates or updates the image manifest and tags that are associated
+%% with an image.
 %%
 %% When an image is pushed and all new image layers have been uploaded, the
 %% PutImage API is called once to create or update the image manifest and the
-%% tags associated with the image.
+%% tags that are associated with the image.
 %%
 %% This operation is used by the Amazon ECR proxy and is not generally used
 %% by customers for pulling and pushing images. In most cases, you should use
@@ -275,7 +274,7 @@ put_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutImage">>, Input, Options).
 
-%% @doc Create or updates the catalog data for a public registry.
+%% @doc Create or update the catalog data for a public registry.
 put_registry_catalog_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_registry_catalog_data(Client, Input, []).
@@ -307,9 +306,9 @@ set_repository_policy(Client, Input, Options)
 %% @doc Associates the specified tags to a resource with the specified
 %% `resourceArn'.
 %%
-%% If existing tags on a resource are not specified in the request
-%% parameters, they are not changed. When a resource is deleted, the tags
-%% associated with that resource are deleted as well.
+%% If existing tags on a resource aren't specified in the request parameters,
+%% they aren't changed. When a resource is deleted, the tags associated with
+%% that resource are also deleted.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -328,9 +327,8 @@ untag_resource(Client, Input, Options)
 %% @doc Uploads an image layer part to Amazon ECR.
 %%
 %% When an image is pushed, each new image layer is uploaded in parts. The
-%% maximum size of each image layer part can be 20971520 bytes (or about
-%% 20MB). The UploadLayerPart API is called once per each new image layer
-%% part.
+%% maximum size of each image layer part can be 20971520 bytes (about 20MB).
+%% The UploadLayerPart API is called once for each new image layer part.
 %%
 %% This operation is used by the Amazon ECR proxy and is not generally used
 %% by customers for pulling and pushing images. In most cases, you should use
