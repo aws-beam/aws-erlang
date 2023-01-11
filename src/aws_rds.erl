@@ -2427,8 +2427,9 @@ revoke_db_security_group_ingress(Client, Input, Options)
 %% @doc Starts a database activity stream to monitor activity on the
 %% database.
 %%
-%% For more information, see Database Activity Streams in the Amazon Aurora
-%% User Guide.
+%% For more information, see Monitoring Amazon Aurora with Database Activity
+%% Streams in the Amazon Aurora User Guide or Monitoring Amazon RDS with
+%% Database Activity Streams in the Amazon RDS User Guide.
 start_activity_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_activity_stream(Client, Input, []).
@@ -2497,8 +2498,9 @@ start_export_task(Client, Input, Options)
 %% Web Services console, the `start-activity-stream' CLI command, or the
 %% `StartActivityStream' action.
 %%
-%% For more information, see Database Activity Streams in the Amazon Aurora
-%% User Guide.
+%% For more information, see Monitoring Amazon Aurora with Database Activity
+%% Streams in the Amazon Aurora User Guide or Monitoring Amazon RDS with
+%% Database Activity Streams in the Amazon RDS User Guide.
 stop_activity_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_activity_stream(Client, Input, []).

@@ -487,7 +487,7 @@ create_geofence_collection(Client, Input0, Options0) ->
 %% of different styles sourced from global location data providers.
 %%
 %% If your application is tracking or routing assets you use in your
-%% business, such as delivery vehicles or employees, you may only use HERE as
+%% business, such as delivery vehicles or employees, you must not use Esri as
 %% your geolocation provider. See section 82 of the AWS service terms for
 %% more details.
 create_map(Client, Input) ->
@@ -521,7 +521,7 @@ create_map(Client, Input0, Options0) ->
 %% operation.
 %%
 %% If your application is tracking or routing assets you use in your
-%% business, such as delivery vehicles or employees, you may only use HERE as
+%% business, such as delivery vehicles or employees, you must not use Esri as
 %% your geolocation provider. See section 82 of the AWS service terms for
 %% more details.
 create_place_index(Client, Input) ->
@@ -553,7 +553,7 @@ create_place_index(Client, Input0, Options0) ->
 %% road network data from your chosen data provider.
 %%
 %% If your application is tracking or routing assets you use in your
-%% business, such as delivery vehicles or employees, you may only use HERE as
+%% business, such as delivery vehicles or employees, you must not use Esri as
 %% your geolocation provider. See section 82 of the AWS service terms for
 %% more details.
 create_route_calculator(Client, Input) ->
@@ -1490,15 +1490,18 @@ search_place_index_for_text(Client, IndexName, Input0, Options0) ->
 %% @doc Assigns one or more tags (key-value pairs) to the specified Amazon
 %% Location Service resource.
 %%
-%% <p>Tags can help you organize and categorize your resources. You can also
-%% use them to scope user permissions, by granting a user permission to
-%% access or change only resources with certain tag values.</p> <p>You can
-%% use the <code>TagResource</code> operation with an Amazon Location Service
+%% Tags can help you organize and categorize your resources. You can also use
+%% them to scope user permissions, by granting a user permission to access or
+%% change only resources with certain tag values.
+%%
+%% You can use the `TagResource' operation with an Amazon Location Service
 %% resource that already has tags. If you specify a new tag key for the
 %% resource, this tag is appended to the tags already associated with the
 %% resource. If you specify a tag key that's already associated with the
 %% resource, the new tag value that you specify replaces the previous value
-%% for that tag. </p> <p>You can associate up to 50 tags with a resource.</p>
+%% for that tag.
+%%
+%% You can associate up to 50 tags with a resource.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
