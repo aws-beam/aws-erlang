@@ -789,7 +789,7 @@ put_principal_mapping(Client, Input, Options)
 %% </li> <li> Relevant documents
 %%
 %% </li> </ul> You can specify that the query return only one type of result
-%% using the `QueryResultTypeConfig' parameter.
+%% using the `QueryResultTypeFilter' parameter.
 %%
 %% Each query returns the 100 most relevant results.
 query(Client, Input)
