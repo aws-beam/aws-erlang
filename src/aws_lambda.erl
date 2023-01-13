@@ -391,21 +391,21 @@ create_code_signing_config(Client, Input0, Options0) ->
 %% </li> </ul> The following error handling options are available only for
 %% stream sources (DynamoDB and Kinesis):
 %%
-%% <ul> <li> `BisectBatchOnFunctionError' - If the function returns an error,
+%% <ul> <li> `BisectBatchOnFunctionError' – If the function returns an error,
 %% split the batch in two and retry.
 %%
-%% </li> <li> `DestinationConfig' - Send discarded records to an Amazon SQS
+%% </li> <li> `DestinationConfig' – Send discarded records to an Amazon SQS
 %% queue or Amazon SNS topic.
 %%
-%% </li> <li> `MaximumRecordAgeInSeconds' - Discard records older than the
+%% </li> <li> `MaximumRecordAgeInSeconds' – Discard records older than the
 %% specified age. The default value is infinite (-1). When set to infinite
 %% (-1), failed records are retried until the record expires
 %%
-%% </li> <li> `MaximumRetryAttempts' - Discard records after the specified
+%% </li> <li> `MaximumRetryAttempts' – Discard records after the specified
 %% number of retries. The default value is infinite (-1). When set to
 %% infinite (-1), failed records are retried until the record expires.
 %%
-%% </li> <li> `ParallelizationFactor' - Process multiple batches from each
+%% </li> <li> `ParallelizationFactor' – Process multiple batches from each
 %% shard concurrently.
 %%
 %% </li> </ul> For information about which configuration parameters apply to
@@ -2080,21 +2080,21 @@ update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
 %% </li> </ul> The following error handling options are available only for
 %% stream sources (DynamoDB and Kinesis):
 %%
-%% <ul> <li> `BisectBatchOnFunctionError' - If the function returns an error,
+%% <ul> <li> `BisectBatchOnFunctionError' – If the function returns an error,
 %% split the batch in two and retry.
 %%
-%% </li> <li> `DestinationConfig' - Send discarded records to an Amazon SQS
+%% </li> <li> `DestinationConfig' – Send discarded records to an Amazon SQS
 %% queue or Amazon SNS topic.
 %%
-%% </li> <li> `MaximumRecordAgeInSeconds' - Discard records older than the
+%% </li> <li> `MaximumRecordAgeInSeconds' – Discard records older than the
 %% specified age. The default value is infinite (-1). When set to infinite
 %% (-1), failed records are retried until the record expires
 %%
-%% </li> <li> `MaximumRetryAttempts' - Discard records after the specified
+%% </li> <li> `MaximumRetryAttempts' – Discard records after the specified
 %% number of retries. The default value is infinite (-1). When set to
 %% infinite (-1), failed records are retried until the record expires.
 %%
-%% </li> <li> `ParallelizationFactor' - Process multiple batches from each
+%% </li> <li> `ParallelizationFactor' – Process multiple batches from each
 %% shard concurrently.
 %%
 %% </li> </ul> For information about which configuration parameters apply to
