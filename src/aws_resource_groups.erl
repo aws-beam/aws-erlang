@@ -1,32 +1,31 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Resource Groups
-%%
-%% AWS Resource Groups lets you organize AWS resources such as Amazon EC2
-%% instances, Amazon Relational Database Service databases, and Amazon S3
-%% buckets into groups using criteria that you define as tags.
+%% @doc Resource Groups lets you organize Amazon Web Services resources such
+%% as Amazon Elastic Compute Cloud instances, Amazon Relational Database
+%% Service databases, and Amazon Simple Storage Service buckets into groups
+%% using criteria that you define as tags.
 %%
 %% A resource group is a collection of resources that match the resource
 %% types specified in a query, and share one or more tags or portions of
 %% tags. You can create a group of resources based on their roles in your
 %% cloud infrastructure, lifecycle stages, regions, application layers, or
 %% virtually any criteria. Resource Groups enable you to automate management
-%% tasks, such as those in AWS Systems Manager Automation documents, on
-%% tag-related resources in AWS Systems Manager. Groups of tagged resources
-%% also let you quickly view a custom console in AWS Systems Manager that
-%% shows AWS Config compliance and other monitoring data about member
-%% resources.
+%% tasks, such as those in Amazon Web Services Systems Manager Automation
+%% documents, on tag-related resources in Amazon Web Services Systems
+%% Manager. Groups of tagged resources also let you quickly view a custom
+%% console in Amazon Web Services Systems Manager that shows Config
+%% compliance and other monitoring data about member resources.
 %%
 %% To create a resource group, build a resource query, and specify tags that
 %% identify the criteria that members of the group have in common. Tags are
 %% key-value pairs.
 %%
-%% For more information about Resource Groups, see the AWS Resource Groups
-%% User Guide.
+%% For more information about Resource Groups, see the Resource Groups User
+%% Guide.
 %%
-%% AWS Resource Groups uses a REST-compliant API that you can use to perform
-%% the following types of operations.
+%% Resource Groups uses a REST-compliant API that you can use to perform the
+%% following types of operations.
 %%
 %% <ul> <li> Create, Read, Update, and Delete (CRUD) operations on resource
 %% groups and resource query entities
@@ -38,7 +37,8 @@
 %%
 %% </li> <li> Getting data about resources that are members of a group
 %%
-%% </li> <li> Searching AWS resources based on a resource query
+%% </li> <li> Searching Amazon Web Services resources based on a resource
+%% query
 %%
 %% </li> </ul>
 -module(aws_resource_groups).
@@ -47,6 +47,8 @@
          create_group/3,
          delete_group/2,
          delete_group/3,
+         get_account_settings/2,
+         get_account_settings/3,
          get_group/2,
          get_group/3,
          get_group_configuration/2,
@@ -72,6 +74,8 @@
          ungroup_resources/3,
          untag/3,
          untag/4,
+         update_account_settings/2,
+         update_account_settings/3,
          update_group/2,
          update_group/3,
          update_group_query/2,
@@ -85,10 +89,11 @@
 
 %% @doc Creates a resource group with the specified name and description.
 %%
-%% You can optionally include a resource query, or a service configuration.
-%% For more information about constructing a resource query, see Create a
-%% tag-based group in Resource Groups. For more information about service
-%% configurations, see Service configurations for resource groups.
+%% You can optionally include either a resource query or a service
+%% configuration. For more information about constructing a resource query,
+%% see Build queries and groups in Resource Groups in the Resource Groups
+%% User Guide. For more information about service-linked groups and service
+%% configurations, see Service configurations for Resource Groups.
 %%
 %% Minimum permissions
 %%
@@ -153,6 +158,29 @@ delete_group(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves the current status of optional features in Resource Groups.
+get_account_settings(Client, Input) ->
+    get_account_settings(Client, Input, []).
+get_account_settings(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/get-account-settings"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns information about a specified resource group.
 %%
 %% Minimum permissions
@@ -184,11 +212,11 @@ get_group(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns the service configuration associated with the specified
+%% @doc Retrieves the service configuration associated with the specified
 %% resource group.
 %%
 %% For details about the service configuration syntax, see Service
-%% configurations for resource groups.
+%% configurations for Resource Groups.
 %%
 %% Minimum permissions
 %%
@@ -288,6 +316,16 @@ get_tags(Client, Arn, QueryMap, HeadersMap, Options0)
 
 %% @doc Adds the specified resources to the specified group.
 %%
+%% You can use this operation with only resource groups that are configured
+%% with the following types:
+%%
+%% `AWS::EC2::HostManagement'
+%%
+%% `AWS::EC2::CapacityReservationPool'
+%%
+%% Other resource group type and resource types aren't currently supported by
+%% this operation.
+%%
 %% Minimum permissions
 %%
 %% To run this command, you must have the following permissions:
@@ -355,7 +393,7 @@ list_group_resources(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of existing resource groups in your account.
+%% @doc Returns a list of existing Resource Groups in your account.
 %%
 %% Minimum permissions
 %%
@@ -422,11 +460,11 @@ put_group_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of AWS resource identifiers that matches the specified
-%% query.
+%% @doc Returns a list of Amazon Web Services resource identifiers that
+%% matches the specified query.
 %%
-%% The query uses the same format as a resource query in a CreateGroup or
-%% UpdateGroupQuery operation.
+%% The query uses the same format as a resource query in a `CreateGroup' or
+%% `UpdateGroupQuery' operation.
 %%
 %% Minimum permissions
 %%
@@ -504,6 +542,11 @@ tag(Client, Arn, Input0, Options0) ->
 
 %% @doc Removes the specified resources from the specified group.
 %%
+%% This operation works only with static groups that you populated using the
+%% `GroupResources' operation. It doesn't work with any resource groups that
+%% are automatically populated by tag-based or CloudFormation stack-based
+%% queries.
+%%
 %% Minimum permissions
 %%
 %% To run this command, you must have the following permissions:
@@ -547,6 +590,34 @@ untag(Client, Arn, Input) ->
 untag(Client, Arn, Input0, Options0) ->
     Method = patch,
     Path = ["/resources/", aws_util:encode_uri(Arn), "/tags"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Turns on or turns off optional features in Resource Groups.
+%%
+%% The preceding example shows that the request to turn on group lifecycle
+%% events is `IN_PROGRESS'. You can call the `GetAccountSettings' operation
+%% to check for completion by looking for `GroupLifecycleEventsStatus' to
+%% change to `ACTIVE'.
+update_account_settings(Client, Input) ->
+    update_account_settings(Client, Input, []).
+update_account_settings(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/update-account-settings"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
