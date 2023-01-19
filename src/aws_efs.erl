@@ -104,7 +104,7 @@
 %% Mounting a file system using EFS access points.
 %%
 %% If multiple requests to create access points on the same file system are
-%% sent in quick succession, and the file system is near the limit of 120
+%% sent in quick succession, and the file system is near the limit of 1000
 %% access points, you may experience a throttling response for these
 %% requests. This is to ensure that the file system does not exceed the
 %% stated access point limit.
@@ -815,10 +815,10 @@ describe_file_system_policy(Client, FileSystemId, QueryMap, HeadersMap, Options0
 %%
 %% When retrieving all file system descriptions, you can optionally specify
 %% the `MaxItems' parameter to limit the number of descriptions in a
-%% response. Currently, this number is automatically set to 10. If more file
-%% system descriptions remain, Amazon EFS returns a `NextMarker', an opaque
-%% token, in the response. In this case, you should send a subsequent request
-%% with the `Marker' request parameter set to the value of `NextMarker'.
+%% response. This number is automatically set to 100. If more file system
+%% descriptions remain, Amazon EFS returns a `NextMarker', an opaque token,
+%% in the response. In this case, you should send a subsequent request with
+%% the `Marker' request parameter set to the value of `NextMarker'.
 %%
 %% To retrieve a list of your file system descriptions, this operation is
 %% used in an iterative process, where `DescribeFileSystems' is called first

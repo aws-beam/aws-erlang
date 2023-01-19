@@ -876,6 +876,11 @@ put_metric_data(Client, Input, Options)
 %% When you use `PutMetricStream' to create a new metric stream, the stream
 %% is created in the `running' state. If you use it to update an existing
 %% stream, the state of the stream is not changed.
+%%
+%% If you are using CloudWatch cross-account observability and you create a
+%% metric stream in a monitoring account, you can choose whether to include
+%% metrics from source accounts in the stream. For more information, see
+%% CloudWatch cross-account observability.
 put_metric_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_metric_stream(Client, Input, []).
