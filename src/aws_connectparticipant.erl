@@ -188,6 +188,9 @@ get_attachment(Client, Input0, Options0) ->
 %% @doc Retrieves a transcript of the session, including details about any
 %% attachments.
 %%
+%% For information about accessing past chat contact transcripts for a
+%% persistent chat, see Enable persistent chat.
+%%
 %% `ConnectionToken' is used for invoking this API instead of
 %% `ParticipantToken'.
 %%

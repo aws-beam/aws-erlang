@@ -464,7 +464,7 @@ delete_domain_permissions_policy(Client, Input0, Options0) ->
 %% want to remove a package version from your repository and be able to
 %% restore it later, set its status to `Archived'. Archived packages cannot
 %% be downloaded from a repository and don't show up with list package APIs
-%% (for example, ListackageVersions), but you can restore them using
+%% (for example, ListPackageVersions), but you can restore them using
 %% UpdatePackageVersionsStatus.
 delete_package_versions(Client, Input) ->
     delete_package_versions(Client, Input, []).
@@ -884,10 +884,6 @@ get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion
     end.
 
 %% @doc Gets the readme file or descriptive text for a package version.
-%%
-%% For packages that do not contain a readme file, CodeArtifact extracts a
-%% description from a metadata file. For example, from the `<description>'
-%% element in the `pom.xml' file of a Maven package.
 %%
 %% The returned text might contain formatting. For example, it might contain
 %% formatting for Markdown or reStructuredText.

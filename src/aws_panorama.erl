@@ -128,7 +128,7 @@ create_application_instance(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a job to run on one or more devices.
+%% @doc Creates a job to run on a device.
 %%
 %% A job can update a device's software or reboot it.
 create_job_for_devices(Client, Input) ->

@@ -55,6 +55,9 @@
          describe_domain_config/5,
          describe_domains/2,
          describe_domains/3,
+         describe_dry_run_progress/2,
+         describe_dry_run_progress/4,
+         describe_dry_run_progress/5,
          describe_inbound_connections/2,
          describe_inbound_connections/3,
          describe_instance_type_limits/3,
@@ -167,7 +170,7 @@ accept_inbound_connection(Client, ConnectionId, Input0, Options0) ->
 
 %% @doc Attaches tags to an existing Amazon OpenSearch Service domain.
 %%
-%% Tags are a set of case-sensitive key-value pairs. An domain can have up to
+%% Tags are a set of case-sensitive key-value pairs. A domain can have up to
 %% 10 tags. For more information, see Tagging Amazon OpenSearch Service
 %% domains.
 add_tags(Client, Input) ->
@@ -625,6 +628,38 @@ describe_domains(Client, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Describes the progress of a pre-update dry run analysis on an Amazon
+%% OpenSearch Service domain.
+%%
+%% For more information, see Determining whether a change will cause a
+%% blue/green deployment.
+describe_dry_run_progress(Client, DomainName)
+  when is_map(Client) ->
+    describe_dry_run_progress(Client, DomainName, #{}, #{}).
+
+describe_dry_run_progress(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_dry_run_progress(Client, DomainName, QueryMap, HeadersMap, []).
+
+describe_dry_run_progress(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/dryRun"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"dryRunId">>, maps:get(<<"dryRunId">>, QueryMap, undefined)},
+        {<<"loadDryRunConfig">>, maps:get(<<"loadDryRunConfig">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists all the inbound cross-cluster search connections for a
 %% destination (remote) Amazon OpenSearch Service domain.
