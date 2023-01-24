@@ -1458,8 +1458,13 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, De
     end;
 handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
-    Error = jsx:decode(Body),
-    {error, Error, {StatusCode, ResponseHeaders, Client}};
+    try
+      DecodedError = jsx:decode(Body),
+      {error, DecodedError, {StatusCode, ResponseHeaders, Client}}
+    catch
+      Error:Reason:Stack ->
+        erlang:raise(error, {body_decode_failed, Error, Reason, StatusCode, Body}, Stack)
+    end;
 handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 

@@ -154,6 +154,9 @@
          get_provisioned_concurrency_config/3,
          get_provisioned_concurrency_config/5,
          get_provisioned_concurrency_config/6,
+         get_runtime_management_config/2,
+         get_runtime_management_config/4,
+         get_runtime_management_config/5,
          invoke/3,
          invoke/4,
          invoke_async/3,
@@ -206,6 +209,8 @@
          put_function_event_invoke_config/4,
          put_provisioned_concurrency_config/3,
          put_provisioned_concurrency_config/4,
+         put_runtime_management_config/3,
+         put_runtime_management_config/4,
          remove_layer_version_permission/5,
          remove_layer_version_permission/6,
          remove_permission/4,
@@ -1220,6 +1225,39 @@ get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, He
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the runtime management configuration for a function's
+%% version.
+%%
+%% If the runtime update mode is Manual, this includes the ARN of the runtime
+%% version and the runtime update mode. If the runtime update mode is Auto or
+%% Function update, this includes the runtime update mode and `null' is
+%% returned for the ARN. For more information, see Runtime updates.
+get_runtime_management_config(Client, FunctionName)
+  when is_map(Client) ->
+    get_runtime_management_config(Client, FunctionName, #{}, #{}).
+
+get_runtime_management_config(Client, FunctionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_runtime_management_config(Client, FunctionName, QueryMap, HeadersMap, []).
+
+get_runtime_management_config(Client, FunctionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-07-20/functions/", aws_util:encode_uri(FunctionName), "/runtime-management-config"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Qualifier">>, maps:get(<<"Qualifier">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Invokes a Lambda function.
 %%
 %% You can invoke a function synchronously (and wait for the response), or
@@ -1495,7 +1533,8 @@ list_function_url_configs(Client, FunctionName, QueryMap, HeadersMap, Options0)
 %% The `ListFunctions' operation returns a subset of the
 %% `FunctionConfiguration' fields. To get the additional fields (State,
 %% StateReasonCode, StateReason, LastUpdateStatus, LastUpdateStatusReason,
-%% LastUpdateStatusReasonCode) for a function or version, use `GetFunction'.
+%% LastUpdateStatusReasonCode, RuntimeVersionConfig) for a function or
+%% version, use `GetFunction'.
 list_functions(Client)
   when is_map(Client) ->
     list_functions(Client, #{}, #{}).
@@ -1889,6 +1928,32 @@ put_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
     Method = put,
     Path = ["/2019-09-30/functions/", aws_util:encode_uri(FunctionName), "/provisioned-concurrency"],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"Qualifier">>, <<"Qualifier">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Sets the runtime management configuration for a function's version.
+%%
+%% For more information, see Runtime updates.
+put_runtime_management_config(Client, FunctionName, Input) ->
+    put_runtime_management_config(Client, FunctionName, Input, []).
+put_runtime_management_config(Client, FunctionName, Input0, Options0) ->
+    Method = put,
+    Path = ["/2021-07-20/functions/", aws_util:encode_uri(FunctionName), "/runtime-management-config"],
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
                {append_sha256_content_hash, false}
@@ -2357,8 +2422,13 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, De
     end;
 handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
-    Error = jsx:decode(Body),
-    {error, Error, {StatusCode, ResponseHeaders, Client}};
+    try
+      DecodedError = jsx:decode(Body),
+      {error, DecodedError, {StatusCode, ResponseHeaders, Client}}
+    catch
+      Error:Reason:Stack ->
+        erlang:raise(error, {body_decode_failed, Error, Reason, StatusCode, Body}, Stack)
+    end;
 handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
 
