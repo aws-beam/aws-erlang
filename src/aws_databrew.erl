@@ -141,14 +141,15 @@
 %%
 %% </li> <li> A version is being used by a job.
 %%
-%% </li> <li> You specify `LATEST_WORKING', but it's being used by a project.
+%% </li> <li> You specify `LATEST_WORKING', but it's being used by a
+%% project.
 %%
 %% </li> <li> The version fails to be deleted.
 %%
 %% </li> </ul> The `LATEST_WORKING' version will only be deleted if the
-%% recipe has no other versions. If you try to delete `LATEST_WORKING' while
-%% other versions exist (or if they can't be deleted), then `LATEST_WORKING'
-%% will be listed as partial failure in the response.
+%% recipe has no other versions. If you try to delete `LATEST_WORKING'
+%% while other versions exist (or if they can't be deleted), then
+%% `LATEST_WORKING' will be listed as partial failure in the response.
 batch_delete_recipe_version(Client, Name, Input) ->
     batch_delete_recipe_version(Client, Name, Input, []).
 batch_delete_recipe_version(Client, Name, Input0, Options0) ->
@@ -918,8 +919,8 @@ publish_recipe(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Performs a recipe step within an interactive DataBrew session that's
-%% currently open.
+%% @doc Performs a recipe step within an interactive DataBrew session
+%% that's currently open.
 send_project_session_action(Client, Name, Input) ->
     send_project_session_action(Client, Name, Input, []).
 send_project_session_action(Client, Name, Input0, Options0) ->
@@ -1129,8 +1130,8 @@ update_project(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Modifies the definition of the `LATEST_WORKING' version of a DataBrew
-%% recipe.
+%% @doc Modifies the definition of the `LATEST_WORKING' version of a
+%% DataBrew recipe.
 update_recipe(Client, Name, Input) ->
     update_recipe(Client, Name, Input, []).
 update_recipe(Client, Name, Input0, Options0) ->

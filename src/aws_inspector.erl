@@ -218,7 +218,8 @@ describe_cross_account_access_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCrossAccountAccessRole">>, Input, Options).
 
-%% @doc Describes the exclusions that are specified by the exclusions' ARNs.
+%% @doc Describes the exclusions that are specified by the exclusions'
+%% ARNs.
 describe_exclusions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_exclusions(Client, Input, []).
@@ -324,7 +325,8 @@ list_assessment_templates(Client, Input, Options)
 %% @doc Lists all the event subscriptions for the assessment template that is
 %% specified by the ARN of the assessment template.
 %%
-%% For more information, see `SubscribeToEvent' and `UnsubscribeFromEvent'.
+%% For more information, see `SubscribeToEvent' and
+%% `UnsubscribeFromEvent'.
 list_event_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_event_subscriptions(Client, Input, []).

@@ -147,8 +147,8 @@
 %%
 %% For example, a Microsoft Active Directory might contain 50,000 users, but
 %% only a small fraction might need the ability to transfer files to the
-%% server. An administrator can use `CreateAccess' to limit the access to the
-%% correct set of users who need this ability.
+%% server. An administrator can use `CreateAccess' to limit the access to
+%% the correct set of users who need this ability.
 create_access(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_access(Client, Input, []).
@@ -164,8 +164,8 @@ create_access(Client, Input, Options)
 %% the AS2 process. To define an agreement, Transfer Family combines a
 %% server, local profile, partner profile, certificate, and other attributes.
 %%
-%% The partner is identified with the `PartnerProfileId', and the AS2 process
-%% is identified with the `LocalProfileId'.
+%% The partner is identified with the `PartnerProfileId', and the AS2
+%% process is identified with the `LocalProfileId'.
 create_agreement(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_agreement(Client, Input, []).
@@ -197,8 +197,8 @@ create_profile(Client, Input, Options)
 %% file transfer protocol in Amazon Web Services.
 %%
 %% When you make updates to your file transfer protocol-enabled server or
-%% when you work with users, use the service-generated `ServerId' property
-%% that is assigned to the newly created server.
+%% when you work with users, use the service-generated `ServerId'
+%% property that is assigned to the newly created server.
 create_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_server(Client, Input, []).
@@ -210,11 +210,12 @@ create_server(Client, Input, Options)
 %% protocol-enabled server.
 %%
 %% You can only create and associate users with servers that have the
-%% `IdentityProviderType' set to `SERVICE_MANAGED'. Using parameters for
-%% `CreateUser', you can specify the user name, set the home directory, store
-%% the user's public key, and assign the user's Identity and Access
-%% Management (IAM) role. You can also optionally add a session policy, and
-%% assign metadata with tags that can be used to group and search for users.
+%% `IdentityProviderType' set to `SERVICE_MANAGED'. Using parameters
+%% for `CreateUser', you can specify the user name, set the home
+%% directory, store the user's public key, and assign the user's
+%% Identity and Access Management (IAM) role. You can also optionally add a
+%% session policy, and assign metadata with tags that can be used to group
+%% and search for users.
 create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).
@@ -244,7 +245,8 @@ delete_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAccess">>, Input, Options).
 
-%% @doc Delete the agreement that's specified in the provided `AgreementId'.
+%% @doc Delete the agreement that's specified in the provided
+%% `AgreementId'.
 delete_agreement(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_agreement(Client, Input, []).
@@ -252,8 +254,8 @@ delete_agreement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAgreement">>, Input, Options).
 
-%% @doc Deletes the certificate that's specified in the `CertificateId'
-%% parameter.
+%% @doc Deletes the certificate that's specified in the
+%% `CertificateId' parameter.
 delete_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_certificate(Client, Input, []).
@@ -261,7 +263,8 @@ delete_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCertificate">>, Input, Options).
 
-%% @doc Deletes the agreement that's specified in the provided `ConnectorId'.
+%% @doc Deletes the agreement that's specified in the provided
+%% `ConnectorId'.
 delete_connector(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_connector(Client, Input, []).
@@ -269,7 +272,8 @@ delete_connector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteConnector">>, Input, Options).
 
-%% @doc Deletes the host key that's specified in the `HoskKeyId' parameter.
+%% @doc Deletes the host key that's specified in the `HoskKeyId'
+%% parameter.
 delete_host_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_host_key(Client, Input, []).
@@ -277,7 +281,8 @@ delete_host_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteHostKey">>, Input, Options).
 
-%% @doc Deletes the profile that's specified in the `ProfileId' parameter.
+%% @doc Deletes the profile that's specified in the `ProfileId'
+%% parameter.
 delete_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_profile(Client, Input, []).
@@ -325,8 +330,8 @@ delete_workflow(Client, Input, Options)
     request(Client, <<"DeleteWorkflow">>, Input, Options).
 
 %% @doc Describes the access that is assigned to the specific file transfer
-%% protocol-enabled server, as identified by its `ServerId' property and its
-%% `ExternalId'.
+%% protocol-enabled server, as identified by its `ServerId' property and
+%% its `ExternalId'.
 %%
 %% The response from this call returns the properties of the access that is
 %% associated with the `ServerId' value that was specified.
@@ -337,7 +342,8 @@ describe_access(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccess">>, Input, Options).
 
-%% @doc Describes the agreement that's identified by the `AgreementId'.
+%% @doc Describes the agreement that's identified by the
+%% `AgreementId'.
 describe_agreement(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_agreement(Client, Input, []).
@@ -345,7 +351,8 @@ describe_agreement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAgreement">>, Input, Options).
 
-%% @doc Describes the certificate that's identified by the `CertificateId'.
+%% @doc Describes the certificate that's identified by the
+%% `CertificateId'.
 describe_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_certificate(Client, Input, []).
@@ -353,7 +360,8 @@ describe_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCertificate">>, Input, Options).
 
-%% @doc Describes the connector that's identified by the `ConnectorId.'
+%% @doc Describes the connector that's identified by the
+%% `ConnectorId.'
 describe_connector(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_connector(Client, Input, []).
@@ -361,8 +369,8 @@ describe_connector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConnector">>, Input, Options).
 
-%% @doc You can use `DescribeExecution' to check the details of the execution
-%% of the specified workflow.
+%% @doc You can use `DescribeExecution' to check the details of the
+%% execution of the specified workflow.
 describe_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_execution(Client, Input, []).
@@ -391,9 +399,9 @@ describe_profile(Client, Input, Options)
 %% @doc Describes the security policy that is attached to your file transfer
 %% protocol-enabled server.
 %%
-%% The response contains a description of the security policy's properties.
-%% For more information about security policies, see Working with security
-%% policies.
+%% The response contains a description of the security policy's
+%% properties. For more information about security policies, see Working with
+%% security policies.
 describe_security_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_security_policy(Client, Input, []).
@@ -404,8 +412,9 @@ describe_security_policy(Client, Input, Options)
 %% @doc Describes a file transfer protocol-enabled server that you specify by
 %% passing the `ServerId' parameter.
 %%
-%% The response contains a description of a server's properties. When you set
-%% `EndpointType' to VPC, the response will contain the `EndpointDetails'.
+%% The response contains a description of a server's properties. When you
+%% set `EndpointType' to VPC, the response will contain the
+%% `EndpointDetails'.
 describe_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_server(Client, Input, []).
@@ -442,8 +451,8 @@ import_certificate(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportCertificate">>, Input, Options).
 
-%% @doc Adds a host key to the server that's specified by the `ServerId'
-%% parameter.
+%% @doc Adds a host key to the server that's specified by the
+%% `ServerId' parameter.
 import_host_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_host_key(Client, Input, []).
@@ -452,11 +461,11 @@ import_host_key(Client, Input, Options)
     request(Client, <<"ImportHostKey">>, Input, Options).
 
 %% @doc Adds a Secure Shell (SSH) public key to a user account identified by
-%% a `UserName' value assigned to the specific file transfer protocol-enabled
-%% server, identified by `ServerId'.
+%% a `UserName' value assigned to the specific file transfer
+%% protocol-enabled server, identified by `ServerId'.
 %%
-%% The response returns the `UserName' value, the `ServerId' value, and the
-%% name of the `SshPublicKeyId'.
+%% The response returns the `UserName' value, the `ServerId' value,
+%% and the name of the `SshPublicKeyId'.
 import_ssh_public_key(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_ssh_public_key(Client, Input, []).
@@ -472,13 +481,13 @@ list_accesses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAccesses">>, Input, Options).
 
-%% @doc Returns a list of the agreements for the server that's identified by
-%% the `ServerId' that you supply.
+%% @doc Returns a list of the agreements for the server that's identified
+%% by the `ServerId' that you supply.
 %%
 %% If you want to limit the results to a certain number, supply a value for
-%% the `MaxResults' parameter. If you ran the command previously and received
-%% a value for `NextToken', you can supply that value to continue listing
-%% agreements from where you left off.
+%% the `MaxResults' parameter. If you ran the command previously and
+%% received a value for `NextToken', you can supply that value to
+%% continue listing agreements from where you left off.
 list_agreements(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_agreements(Client, Input, []).
@@ -490,9 +499,9 @@ list_agreements(Client, Input, Options)
 %% into Transfer Family.
 %%
 %% If you want to limit the results to a certain number, supply a value for
-%% the `MaxResults' parameter. If you ran the command previously and received
-%% a value for the `NextToken' parameter, you can supply that value to
-%% continue listing certificates from where you left off.
+%% the `MaxResults' parameter. If you ran the command previously and
+%% received a value for the `NextToken' parameter, you can supply that
+%% value to continue listing certificates from where you left off.
 list_certificates(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_certificates(Client, Input, []).
@@ -516,8 +525,8 @@ list_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExecutions">>, Input, Options).
 
-%% @doc Returns a list of host keys for the server that's specified by the
-%% `ServerId' parameter.
+%% @doc Returns a list of host keys for the server that's specified by
+%% the `ServerId' parameter.
 list_host_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_host_keys(Client, Input, []).
@@ -528,9 +537,9 @@ list_host_keys(Client, Input, Options)
 %% @doc Returns a list of the profiles for your system.
 %%
 %% If you want to limit the results to a certain number, supply a value for
-%% the `MaxResults' parameter. If you ran the command previously and received
-%% a value for `NextToken', you can supply that value to continue listing
-%% profiles from where you left off.
+%% the `MaxResults' parameter. If you ran the command previously and
+%% received a value for `NextToken', you can supply that value to
+%% continue listing profiles from where you left off.
 list_profiles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_profiles(Client, Input, []).
@@ -586,9 +595,9 @@ list_workflows(Client, Input, Options)
 
 %% @doc Sends a callback for asynchronous custom steps.
 %%
-%% The `ExecutionId', `WorkflowId', and `Token' are passed to the target
-%% resource during execution of a custom step of a workflow. You must include
-%% those with their callback as well as providing a status.
+%% The `ExecutionId', `WorkflowId', and `Token' are passed to the
+%% target resource during execution of a custom step of a workflow. You must
+%% include those with their callback as well as providing a status.
 send_workflow_step_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_workflow_step_state(Client, Input, []).
@@ -610,12 +619,12 @@ start_file_transfer(Client, Input, Options)
 %% @doc Changes the state of a file transfer protocol-enabled server from
 %% `OFFLINE' to `ONLINE'.
 %%
-%% It has no impact on a server that is already `ONLINE'. An `ONLINE' server
-%% can accept and process file transfer jobs.
+%% It has no impact on a server that is already `ONLINE'. An `ONLINE'
+%% server can accept and process file transfer jobs.
 %%
-%% The state of `STARTING' indicates that the server is in an intermediate
-%% state, either not fully able to respond, or not fully online. The values
-%% of `START_FAILED' can indicate an error condition.
+%% The state of `STARTING' indicates that the server is in an
+%% intermediate state, either not fully able to respond, or not fully online.
+%% The values of `START_FAILED' can indicate an error condition.
 %%
 %% No response is returned from this call.
 start_server(Client, Input)
@@ -635,9 +644,9 @@ start_server(Client, Input, Options)
 %% Stopping the server does not reduce or impact your file transfer protocol
 %% endpoint billing; you must delete the server to stop being billed.
 %%
-%% The state of `STOPPING' indicates that the server is in an intermediate
-%% state, either not fully able to respond, or not fully offline. The values
-%% of `STOP_FAILED' can indicate an error condition.
+%% The state of `STOPPING' indicates that the server is in an
+%% intermediate state, either not fully able to respond, or not fully
+%% offline. The values of `STOP_FAILED' can indicate an error condition.
 %%
 %% No response is returned from this call.
 stop_server(Client, Input)
@@ -661,8 +670,8 @@ tag_resource(Client, Input, Options)
     request(Client, <<"TagResource">>, Input, Options).
 
 %% @doc If the `IdentityProviderType' of a file transfer protocol-enabled
-%% server is `AWS_DIRECTORY_SERVICE' or `API_Gateway', tests whether your
-%% identity provider is set up successfully.
+%% server is `AWS_DIRECTORY_SERVICE' or `API_Gateway', tests whether
+%% your identity provider is set up successfully.
 %%
 %% We highly recommend that you call this operation to test your
 %% authentication method as soon as you create your server. By doing so, you
@@ -670,10 +679,11 @@ tag_resource(Client, Input, Options)
 %% that your users can successfully use the service.
 %%
 %% The `ServerId' and `UserName' parameters are required. The
-%% `ServerProtocol', `SourceIp', and `UserPassword' are all optional.
+%% `ServerProtocol', `SourceIp', and `UserPassword' are all
+%% optional.
 %%
-%% You cannot use `TestIdentityProvider' if the `IdentityProviderType' of
-%% your server is `SERVICE_MANAGED'.
+%% You cannot use `TestIdentityProvider' if the
+%% `IdentityProviderType' of your server is `SERVICE_MANAGED'.
 %%
 %% <ul> <li> If you provide any incorrect values for any parameters, the
 %% `Response' field is empty.
@@ -685,9 +695,9 @@ tag_resource(Client, Input, Options)
 %% TestIdentityProvider operation: s-server-ID not configured for external
 %% auth '
 %%
-%% </li> <li> If you enter a Server ID for the `--server-id' parameter that
-%% does not identify an actual Transfer server, you receive the following
-%% error:
+%% </li> <li> If you enter a Server ID for the `--server-id' parameter
+%% that does not identify an actual Transfer server, you receive the
+%% following error:
 %%
 %% `An error occurred (ResourceNotFoundException) when calling the
 %% TestIdentityProvider operation: Unknown server'
@@ -724,8 +734,9 @@ update_access(Client, Input, Options)
 
 %% @doc Updates some of the parameters for an existing agreement.
 %%
-%% Provide the `AgreementId' and the `ServerId' for the agreement that you
-%% want to update, along with the new values for the parameters to update.
+%% Provide the `AgreementId' and the `ServerId' for the agreement
+%% that you want to update, along with the new values for the parameters to
+%% update.
 update_agreement(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_agreement(Client, Input, []).
@@ -743,8 +754,8 @@ update_certificate(Client, Input, Options)
 
 %% @doc Updates some of the parameters for an existing connector.
 %%
-%% Provide the `ConnectorId' for the connector that you want to update, along
-%% with the new values for the parameters to update.
+%% Provide the `ConnectorId' for the connector that you want to update,
+%% along with the new values for the parameters to update.
 update_connector(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_connector(Client, Input, []).
@@ -772,10 +783,11 @@ update_profile(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateProfile">>, Input, Options).
 
-%% @doc Updates the file transfer protocol-enabled server's properties after
-%% that server has been created.
+%% @doc Updates the file transfer protocol-enabled server's properties
+%% after that server has been created.
 %%
-%% The `UpdateServer' call returns the `ServerId' of the server you updated.
+%% The `UpdateServer' call returns the `ServerId' of the server you
+%% updated.
 update_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_server(Client, Input, []).
@@ -786,10 +798,11 @@ update_server(Client, Input, Options)
 %% @doc Assigns new properties to a user.
 %%
 %% Parameters you pass modify any or all of the following: the home
-%% directory, role, and policy for the `UserName' and `ServerId' you specify.
+%% directory, role, and policy for the `UserName' and `ServerId' you
+%% specify.
 %%
-%% The response returns the `ServerId' and the `UserName' for the updated
-%% user.
+%% The response returns the `ServerId' and the `UserName' for the
+%% updated user.
 update_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user(Client, Input, []).

@@ -82,9 +82,9 @@ delete_recommendation_preferences(Client, Input, Options)
 %% @doc Describes recommendation export jobs created in the last seven days.
 %%
 %% Use the `ExportAutoScalingGroupRecommendations' or
-%% `ExportEC2InstanceRecommendations' actions to request an export of your
-%% recommendations. Then use the `DescribeRecommendationExportJobs' action to
-%% view your export jobs.
+%% `ExportEC2InstanceRecommendations' actions to request an export of
+%% your recommendations. Then use the `DescribeRecommendationExportJobs'
+%% action to view your export jobs.
 describe_recommendation_export_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_recommendation_export_jobs(Client, Input, []).
@@ -240,11 +240,11 @@ get_ec2_instance_recommendations(Client, Input, Options)
 %% @doc Returns the projected utilization metrics of Amazon EC2 instance
 %% recommendations.
 %%
-%% The `Cpu' and `Memory' metrics are the only projected utilization metrics
-%% returned when you run this action. Additionally, the `Memory' metric is
-%% returned only for resources that have the unified CloudWatch agent
-%% installed on them. For more information, see Enabling Memory Utilization
-%% with the CloudWatch Agent.
+%% The `Cpu' and `Memory' metrics are the only projected utilization
+%% metrics returned when you run this action. Additionally, the `Memory'
+%% metric is returned only for resources that have the unified CloudWatch
+%% agent installed on them. For more information, see Enabling Memory
+%% Utilization with the CloudWatch Agent.
 get_ec2_recommendation_projected_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ec2_recommendation_projected_metrics(Client, Input, []).
@@ -273,9 +273,9 @@ get_effective_recommendation_preferences(Client, Input, Options)
 %%
 %% If the account is the management account of an organization, this action
 %% also confirms the enrollment status of member accounts of the
-%% organization. Use the `GetEnrollmentStatusesForOrganization' action to get
-%% detailed information about the enrollment status of member accounts of an
-%% organization.
+%% organization. Use the `GetEnrollmentStatusesForOrganization' action to
+%% get detailed information about the enrollment status of member accounts of
+%% an organization.
 get_enrollment_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_enrollment_status(Client, Input, []).
@@ -311,9 +311,9 @@ get_lambda_function_recommendations(Client, Input, Options)
 %% @doc Returns existing recommendation preferences, such as enhanced
 %% infrastructure metrics.
 %%
-%% Use the `scope' parameter to specify which preferences to return. You can
-%% specify to return preferences for an organization, a specific account ID,
-%% or a specific EC2 instance or Auto Scaling group Amazon Resource Name
+%% Use the `scope' parameter to specify which preferences to return. You
+%% can specify to return preferences for an organization, a specific account
+%% ID, or a specific EC2 instance or Auto Scaling group Amazon Resource Name
 %% (ARN).
 %%
 %% For more information, see Activating enhanced infrastructure metrics in
@@ -329,20 +329,20 @@ get_recommendation_preferences(Client, Input, Options)
 %%
 %% It returns the number of:
 %%
-%% <ul> <li> Amazon EC2 instances in an account that are `Underprovisioned',
-%% `Overprovisioned', or `Optimized'.
+%% <ul> <li> Amazon EC2 instances in an account that are
+%% `Underprovisioned', `Overprovisioned', or `Optimized'.
 %%
-%% </li> <li> Auto Scaling groups in an account that are `NotOptimized', or
-%% `Optimized'.
+%% </li> <li> Auto Scaling groups in an account that are `NotOptimized',
+%% or `Optimized'.
 %%
-%% </li> <li> Amazon EBS volumes in an account that are `NotOptimized', or
-%% `Optimized'.
+%% </li> <li> Amazon EBS volumes in an account that are `NotOptimized',
+%% or `Optimized'.
 %%
 %% </li> <li> Lambda functions in an account that are `NotOptimized', or
 %% `Optimized'.
 %%
-%% </li> <li> Amazon ECS services in an account that are `Underprovisioned',
-%% `Overprovisioned', or `Optimized'.
+%% </li> <li> Amazon ECS services in an account that are
+%% `Underprovisioned', `Overprovisioned', or `Optimized'.
 %%
 %% </li> </ul>
 get_recommendation_summaries(Client, Input)

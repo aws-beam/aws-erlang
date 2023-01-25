@@ -111,7 +111,8 @@ cancel_contact(Client, ContactId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a `Config' with the specified `configData' parameters.
+%% @doc Creates a `Config' with the specified `configData'
+%% parameters.
 %%
 %% Only one type of `configData' can be specified.
 create_config(Client, Input) ->
@@ -136,8 +137,8 @@ create_config(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a `DataflowEndpoint' group containing the specified list of
-%% `DataflowEndpoint' objects.
+%% @doc Creates a `DataflowEndpoint' group containing the specified list
+%% of `DataflowEndpoint' objects.
 %%
 %% The `name' field in each endpoint is used in your mission profile
 %% `DataflowEndpointConfig' to specify which endpoints to use during a
@@ -192,8 +193,8 @@ create_ephemeris(Client, Input0, Options0) ->
 
 %% @doc Creates a mission profile.
 %%
-%% `dataflowEdges' is a list of lists of strings. Each lower level list of
-%% strings has two elements: a from ARN and a to ARN.
+%% `dataflowEdges' is a list of lists of strings. Each lower level list
+%% of strings has two elements: a from ARN and a to ARN.
 create_mission_profile(Client, Input) ->
     create_mission_profile(Client, Input, []).
 create_mission_profile(Client, Input0, Options0) ->
@@ -758,8 +759,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates the `Config' used when scheduling contacts.
 %%
-%% Updating a `Config' will not update the execution parameters for existing
-%% future contacts scheduled with this `Config'.
+%% Updating a `Config' will not update the execution parameters for
+%% existing future contacts scheduled with this `Config'.
 update_config(Client, ConfigId, ConfigType, Input) ->
     update_config(Client, ConfigId, ConfigType, Input, []).
 update_config(Client, ConfigId, ConfigType, Input0, Options0) ->

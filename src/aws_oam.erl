@@ -10,15 +10,16 @@
 %% Seamlessly search, visualize, and analyze your metrics, logs, and traces
 %% in any of the linked accounts without account boundaries.
 %%
-%% <p>Set up one or more Amazon Web Services accounts as <i>monitoring
-%% accounts</i> and link them with multiple <i>source accounts</i>. A
-%% monitoring account is a central Amazon Web Services account that can view
-%% and interact with observability data generated from source accounts. A
-%% source account is an individual Amazon Web Services account that generates
-%% observability data for the resources that reside in it. Source accounts
-%% share their observability data with the monitoring account. The shared
-%% observability data can include metrics in Amazon CloudWatch, logs in
-%% Amazon CloudWatch Logs, and traces in X-Ray.</p>
+%% &lt;p&gt;Set up one or more Amazon Web Services accounts as
+%% &lt;i&gt;monitoring accounts&lt;/i&gt; and link them with multiple
+%% &lt;i&gt;source accounts&lt;/i&gt;. A monitoring account is a central
+%% Amazon Web Services account that can view and interact with observability
+%% data generated from source accounts. A source account is an individual
+%% Amazon Web Services account that generates observability data for the
+%% resources that reside in it. Source accounts share their observability
+%% data with the monitoring account. The shared observability data can
+%% include metrics in Amazon CloudWatch, logs in Amazon CloudWatch Logs, and
+%% traces in X-Ray.&lt;/p&gt;
 -module(aws_oam).
 
 -export([create_link/2,
@@ -422,9 +423,9 @@ put_sink_policy(Client, Input0, Options0) ->
 %% You can associate as many as 50 tags with a resource.
 %%
 %% Unlike tagging permissions in other Amazon Web Services services, to tag
-%% or untag links and sinks you must have the `oam:ResourceTag' permission.
-%% The `iam:ResourceTag' permission does not allow you to tag and untag links
-%% and sinks.
+%% or untag links and sinks you must have the `oam:ResourceTag'
+%% permission. The `iam:ResourceTag' permission does not allow you to tag
+%% and untag links and sinks.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -450,9 +451,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Removes one or more tags from the specified resource.
 %%
 %% Unlike tagging permissions in other Amazon Web Services services, to tag
-%% or untag links and sinks you must have the `oam:ResourceTag' permission.
-%% The `iam:TagResource' permission does not allow you to tag and untag links
-%% and sinks.
+%% or untag links and sinks you must have the `oam:ResourceTag'
+%% permission. The `iam:TagResource' permission does not allow you to tag
+%% and untag links and sinks.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->

@@ -159,14 +159,14 @@ copy_db_cluster_parameter_group(Client, Input, Options)
 %% @doc Copies a snapshot of a cluster.
 %%
 %% To copy a cluster snapshot from a shared manual cluster snapshot,
-%% `SourceDBClusterSnapshotIdentifier' must be the Amazon Resource Name (ARN)
-%% of the shared cluster snapshot. You can only copy a shared DB cluster
-%% snapshot, whether encrypted or not, in the same Amazon Web Services
-%% Region.
+%% `SourceDBClusterSnapshotIdentifier' must be the Amazon Resource Name
+%% (ARN) of the shared cluster snapshot. You can only copy a shared DB
+%% cluster snapshot, whether encrypted or not, in the same Amazon Web
+%% Services Region.
 %%
 %% To cancel the copy operation after it is in progress, delete the target
-%% cluster snapshot identified by `TargetDBClusterSnapshotIdentifier' while
-%% that cluster snapshot is in the copying status.
+%% cluster snapshot identified by `TargetDBClusterSnapshotIdentifier'
+%% while that cluster snapshot is in the copying status.
 copy_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_cluster_snapshot(Client, Input, []).
@@ -242,20 +242,21 @@ create_db_subnet_group(Client, Input, Options)
 %%
 %% You can specify the type of source (`SourceType') that you want to be
 %% notified of. You can also provide a list of Amazon DocumentDB sources
-%% (`SourceIds') that trigger the events, and you can provide a list of event
-%% categories (`EventCategories') for events that you want to be notified of.
-%% For example, you can specify `SourceType = db-instance', `SourceIds =
-%% mydbinstance1, mydbinstance2' and `EventCategories = Availability,
-%% Backup'.
+%% (`SourceIds') that trigger the events, and you can provide a list of
+%% event categories (`EventCategories') for events that you want to be
+%% notified of. For example, you can specify `SourceType = db-instance',
+%% `SourceIds = mydbinstance1, mydbinstance2' and `EventCategories =
+%% Availability, Backup'.
 %%
-%% If you specify both the `SourceType' and `SourceIds' (such as `SourceType
-%% = db-instance' and `SourceIdentifier = myDBInstance1'), you are notified
-%% of all the `db-instance' events for the specified source. If you specify a
-%% `SourceType' but do not specify a `SourceIdentifier', you receive notice
-%% of the events for that source type for all your Amazon DocumentDB sources.
-%% If you do not specify either the `SourceType' or the `SourceIdentifier',
-%% you are notified of events generated from all Amazon DocumentDB sources
-%% belonging to your customer account.
+%% If you specify both the `SourceType' and `SourceIds' (such as
+%% `SourceType = db-instance' and `SourceIdentifier =
+%% myDBInstance1'), you are notified of all the `db-instance' events
+%% for the specified source. If you specify a `SourceType' but do not
+%% specify a `SourceIdentifier', you receive notice of the events for
+%% that source type for all your Amazon DocumentDB sources. If you do not
+%% specify either the `SourceType' or the `SourceIdentifier', you are
+%% notified of events generated from all Amazon DocumentDB sources belonging
+%% to your customer account.
 create_event_subscription(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_event_subscription(Client, Input, []).
@@ -393,12 +394,12 @@ describe_db_cluster_parameters(Client, Input, Options)
 %% manual DB cluster snapshot.
 %%
 %% When you share snapshots with other Amazon Web Services accounts,
-%% `DescribeDBClusterSnapshotAttributes' returns the `restore' attribute and
-%% a list of IDs for the Amazon Web Services accounts that are authorized to
-%% copy or restore the manual cluster snapshot. If `all' is included in the
-%% list of values for the `restore' attribute, then the manual cluster
-%% snapshot is public and can be copied or restored by all Amazon Web
-%% Services accounts.
+%% `DescribeDBClusterSnapshotAttributes' returns the `restore'
+%% attribute and a list of IDs for the Amazon Web Services accounts that are
+%% authorized to copy or restore the manual cluster snapshot. If `all' is
+%% included in the list of values for the `restore' attribute, then the
+%% manual cluster snapshot is public and can be copied or restored by all
+%% Amazon Web Services accounts.
 describe_db_cluster_snapshot_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_snapshot_attributes(Client, Input, []).
@@ -480,8 +481,8 @@ describe_event_categories(Client, Input, Options)
 %% @doc Lists all the subscription descriptions for a customer account.
 %%
 %% The description for a subscription includes `SubscriptionName',
-%% `SNSTopicARN', `CustomerID', `SourceType', `SourceID', `CreationTime', and
-%% `Status'.
+%% `SNSTopicARN', `CustomerID', `SourceType', `SourceID',
+%% `CreationTime', and `Status'.
 %%
 %% If you specify a `SubscriptionName', lists the description for that
 %% subscription.
@@ -573,8 +574,8 @@ modify_db_cluster(Client, Input, Options)
 %% @doc Modifies the parameters of a cluster parameter group.
 %%
 %% To modify more than one parameter, submit a list of the following:
-%% `ParameterName', `ParameterValue', and `ApplyMethod'. A maximum of 20
-%% parameters can be modified in a single request.
+%% `ParameterName', `ParameterValue', and `ApplyMethod'. A
+%% maximum of 20 parameters can be modified in a single request.
 %%
 %% Changes to dynamic parameters are applied immediately. Changes to static
 %% parameters require a reboot or maintenance window before the change can
@@ -600,16 +601,17 @@ modify_db_cluster_parameter_group(Client, Input, Options)
 %%
 %% To share a manual cluster snapshot with other Amazon Web Services
 %% accounts, specify `restore' as the `AttributeName', and use the
-%% `ValuesToAdd' parameter to add a list of IDs of the Amazon Web Services
-%% accounts that are authorized to restore the manual cluster snapshot. Use
-%% the value `all' to make the manual cluster snapshot public, which means
-%% that it can be copied or restored by all Amazon Web Services accounts. Do
-%% not add the `all' value for any manual cluster snapshots that contain
-%% private information that you don't want available to all Amazon Web
-%% Services accounts. If a manual cluster snapshot is encrypted, it can be
-%% shared, but only by specifying a list of authorized Amazon Web Services
-%% account IDs for the `ValuesToAdd' parameter. You can't use `all' as a
-%% value for that parameter in this case.
+%% `ValuesToAdd' parameter to add a list of IDs of the Amazon Web
+%% Services accounts that are authorized to restore the manual cluster
+%% snapshot. Use the value `all' to make the manual cluster snapshot
+%% public, which means that it can be copied or restored by all Amazon Web
+%% Services accounts. Do not add the `all' value for any manual cluster
+%% snapshots that contain private information that you don't want
+%% available to all Amazon Web Services accounts. If a manual cluster
+%% snapshot is encrypted, it can be shared, but only by specifying a list of
+%% authorized Amazon Web Services account IDs for the `ValuesToAdd'
+%% parameter. You can't use `all' as a value for that parameter in
+%% this case.
 modify_db_cluster_snapshot_attribute(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_snapshot_attribute(Client, Input, []).
@@ -715,9 +717,9 @@ remove_tags_from_resource(Client, Input, Options)
 %% value.
 %%
 %% To reset specific parameters, submit a list of the following:
-%% `ParameterName' and `ApplyMethod'. To reset the entire cluster parameter
-%% group, specify the `DBClusterParameterGroupName' and `ResetAllParameters'
-%% parameters.
+%% `ParameterName' and `ApplyMethod'. To reset the entire cluster
+%% parameter group, specify the `DBClusterParameterGroupName' and
+%% `ResetAllParameters' parameters.
 %%
 %% When you reset the entire group, dynamic parameters are updated
 %% immediately and static parameters are set to `pending-reboot' to take
@@ -747,10 +749,11 @@ restore_db_cluster_from_snapshot(Client, Input, Options)
 
 %% @doc Restores a cluster to an arbitrary point in time.
 %%
-%% Users can restore to any point in time before `LatestRestorableTime' for
-%% up to `BackupRetentionPeriod' days. The target cluster is created from the
-%% source cluster with the same configuration as the original cluster, except
-%% that the new cluster is created with the default security group.
+%% Users can restore to any point in time before `LatestRestorableTime'
+%% for up to `BackupRetentionPeriod' days. The target cluster is created
+%% from the source cluster with the same configuration as the original
+%% cluster, except that the new cluster is created with the default security
+%% group.
 restore_db_cluster_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_to_point_in_time(Client, Input, []).
@@ -770,7 +773,8 @@ start_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDBCluster">>, Input, Options).
 
-%% @doc Stops the running cluster that is specified by `DBClusterIdentifier'.
+%% @doc Stops the running cluster that is specified by
+%% `DBClusterIdentifier'.
 %%
 %% The cluster must be in the available state. For more information, see
 %% Stopping and Starting an Amazon DocumentDB Cluster.

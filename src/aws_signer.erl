@@ -93,7 +93,8 @@ add_profile_permission(Client, ProfileName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Changes the state of an `ACTIVE' signing profile to `CANCELED'.
+%% @doc Changes the state of an `ACTIVE' signing profile to
+%% `CANCELED'.
 %%
 %% A canceled profile is still viewable with the `ListSigningProfiles'
 %% operation, but it cannot perform new signing jobs, and is deleted two
@@ -226,13 +227,14 @@ list_profile_permissions(Client, ProfileName, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all your signing jobs.
 %%
-%% You can use the `maxResults' parameter to limit the number of signing jobs
-%% that are returned in the response. If additional jobs remain to be listed,
-%% code signing returns a `nextToken' value. Use this value in subsequent
-%% calls to `ListSigningJobs' to fetch the remaining values. You can continue
-%% calling `ListSigningJobs' with your `maxResults' parameter and with new
-%% values that code signing returns in the `nextToken' parameter until all of
-%% your signing jobs have been returned.
+%% You can use the `maxResults' parameter to limit the number of signing
+%% jobs that are returned in the response. If additional jobs remain to be
+%% listed, code signing returns a `nextToken' value. Use this value in
+%% subsequent calls to `ListSigningJobs' to fetch the remaining values.
+%% You can continue calling `ListSigningJobs' with your `maxResults'
+%% parameter and with new values that code signing returns in the
+%% `nextToken' parameter until all of your signing jobs have been
+%% returned.
 list_signing_jobs(Client)
   when is_map(Client) ->
     list_signing_jobs(Client, #{}, #{}).
@@ -270,12 +272,12 @@ list_signing_jobs(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists all signing platforms available in code signing that match the
 %% request parameters.
 %%
-%% If additional jobs remain to be listed, code signing returns a `nextToken'
-%% value. Use this value in subsequent calls to `ListSigningJobs' to fetch
-%% the remaining values. You can continue calling `ListSigningJobs' with your
-%% `maxResults' parameter and with new values that code signing returns in
-%% the `nextToken' parameter until all of your signing jobs have been
-%% returned.
+%% If additional jobs remain to be listed, code signing returns a
+%% `nextToken' value. Use this value in subsequent calls to
+%% `ListSigningJobs' to fetch the remaining values. You can continue
+%% calling `ListSigningJobs' with your `maxResults' parameter and
+%% with new values that code signing returns in the `nextToken' parameter
+%% until all of your signing jobs have been returned.
 list_signing_platforms(Client)
   when is_map(Client) ->
     list_signing_platforms(Client, #{}, #{}).
@@ -308,13 +310,14 @@ list_signing_platforms(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all available signing profiles in your AWS account.
 %%
-%% Returns only profiles with an `ACTIVE' status unless the `includeCanceled'
-%% request field is set to `true'. If additional jobs remain to be listed,
-%% code signing returns a `nextToken' value. Use this value in subsequent
-%% calls to `ListSigningJobs' to fetch the remaining values. You can continue
-%% calling `ListSigningJobs' with your `maxResults' parameter and with new
-%% values that code signing returns in the `nextToken' parameter until all of
-%% your signing jobs have been returned.
+%% Returns only profiles with an `ACTIVE' status unless the
+%% `includeCanceled' request field is set to `true'. If additional
+%% jobs remain to be listed, code signing returns a `nextToken' value.
+%% Use this value in subsequent calls to `ListSigningJobs' to fetch the
+%% remaining values. You can continue calling `ListSigningJobs' with your
+%% `maxResults' parameter and with new values that code signing returns
+%% in the `nextToken' parameter until all of your signing jobs have been
+%% returned.
 list_signing_profiles(Client)
   when is_map(Client) ->
     list_signing_profiles(Client, #{}, #{}).
@@ -473,8 +476,8 @@ revoke_signing_profile(Client, ProfileName, Input0, Options0) ->
 
 %% @doc Initiates a signing job to be performed on the code provided.
 %%
-%% Signing jobs are viewable by the `ListSigningJobs' operation for two years
-%% after they are performed. Note the following requirements:
+%% Signing jobs are viewable by the `ListSigningJobs' operation for two
+%% years after they are performed. Note the following requirements:
 %%
 %% <ul> <li> You must create an Amazon S3 source bucket. For more
 %% information, see Create a Bucket in the Amazon S3 Getting Started Guide.

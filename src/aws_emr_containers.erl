@@ -17,8 +17,9 @@
 %% example, `aws emr-containers start-job-run'.
 %%
 %% </li> <li> It is the prefix before IAM policy actions for Amazon EMR on
-%% EKS. For example, `"Action": [ "emr-containers:StartJobRun"]'. For more
-%% information, see Policy actions for Amazon EMR on EKS.
+%% EKS. For example, `&quot;Action&quot;: [
+%% &quot;emr-containers:StartJobRun&quot;]'. For more information, see
+%% Policy actions for Amazon EMR on EKS.
 %%
 %% </li> <li> It is the prefix used in Amazon EMR on EKS service endpoints.
 %% For example, `emr-containers.us-east-2.amazonaws.com'. For more
@@ -585,12 +586,12 @@ start_job_run(Client, VirtualClusterId, Input0, Options0) ->
 %% a key and an optional value, both of which you define. Tags enable you to
 %% categorize your AWS resources by attributes such as purpose, owner, or
 %% environment. When you have many resources of the same type, you can
-%% quickly identify a specific resource based on the tags you've assigned to
-%% it. For example, you can define a set of tags for your Amazon EMR on EKS
-%% clusters to help you track each cluster's owner and stack level. We
-%% recommend that you devise a consistent set of tag keys for each resource
-%% type. You can then search and filter the resources based on the tags that
-%% you add.
+%% quickly identify a specific resource based on the tags you've assigned
+%% to it. For example, you can define a set of tags for your Amazon EMR on
+%% EKS clusters to help you track each cluster's owner and stack level.
+%% We recommend that you devise a consistent set of tag keys for each
+%% resource type. You can then search and filter the resources based on the
+%% tags that you add.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->

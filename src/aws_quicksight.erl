@@ -365,11 +365,12 @@ cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0)
 %%
 %% Before you use the `CreateAccountCustomization' API operation to add a
 %% theme as the namespace default, make sure that you first share the theme
-%% with the namespace. If you don't share it with the namespace, the theme
-%% isn't visible to your users even if you make it the default theme. To
-%% check if the theme is shared, view the current permissions by using the `
-%% DescribeThemePermissions ' API operation. To share the theme, grant
-%% permissions by using the ` UpdateThemePermissions ' API operation.
+%% with the namespace. If you don't share it with the namespace, the
+%% theme isn't visible to your users even if you make it the default
+%% theme. To check if the theme is shared, view the current permissions by
+%% using the ` DescribeThemePermissions ' API operation. To share the
+%% theme, grant permissions by using the ` UpdateThemePermissions ' API
+%% operation.
 create_account_customization(Client, AwsAccountId, Input) ->
     create_account_customization(Client, AwsAccountId, Input, []).
 create_account_customization(Client, AwsAccountId, Input0, Options0) ->
@@ -410,21 +411,21 @@ create_account_customization(Client, AwsAccountId, Input0, Options0) ->
 %% Amazon QuickSight User Guide.
 %%
 %% If your IAM policy includes both the `Subscribe' and
-%% `CreateAccountSubscription' actions, make sure that both actions are set
-%% to `Allow'. If either action is set to `Deny', the `Deny' action prevails
-%% and your API call fails.
+%% `CreateAccountSubscription' actions, make sure that both actions are
+%% set to `Allow'. If either action is set to `Deny', the `Deny'
+%% action prevails and your API call fails.
 %%
-%% You can't pass an existing IAM role to access other Amazon Web Services
-%% services using this API operation. To pass your existing IAM role to
-%% Amazon QuickSight, see Passing IAM roles to Amazon QuickSight in the
+%% You can't pass an existing IAM role to access other Amazon Web
+%% Services services using this API operation. To pass your existing IAM role
+%% to Amazon QuickSight, see Passing IAM roles to Amazon QuickSight in the
 %% Amazon QuickSight User Guide.
 %%
-%% You can't set default resource access on the new account from the Amazon
-%% QuickSight API. Instead, add default resource access from the Amazon
-%% QuickSight console. For more information about setting default resource
-%% access to Amazon Web Services services, see Setting default resource
-%% access to Amazon Web Services services in the Amazon QuickSight User
-%% Guide.
+%% You can't set default resource access on the new account from the
+%% Amazon QuickSight API. Instead, add default resource access from the
+%% Amazon QuickSight console. For more information about setting default
+%% resource access to Amazon Web Services services, see Setting default
+%% resource access to Amazon Web Services services in the Amazon QuickSight
+%% User Guide.
 create_account_subscription(Client, AwsAccountId, Input) ->
     create_account_subscription(Client, AwsAccountId, Input, []).
 create_account_subscription(Client, AwsAccountId, Input0, Options0) ->
@@ -504,8 +505,8 @@ create_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
 
 %% @doc Creates a dataset.
 %%
-%% This operation doesn't support datasets that include uploaded files as a
-%% source.
+%% This operation doesn't support datasets that include uploaded files as
+%% a source.
 create_data_set(Client, AwsAccountId, Input) ->
     create_data_set(Client, AwsAccountId, Input, []).
 create_data_set(Client, AwsAccountId, Input0, Options0) ->
@@ -605,7 +606,7 @@ create_folder_membership(Client, AwsAccountId, FolderId, MemberId, MemberType, I
 %% more than 10,000 groups in a namespace, contact AWS Support.
 %%
 %% The permissions resource is
-%% `arn:aws:quicksight:<your-region>:<relevant-aws-account-id>:group/default/<group-name>
+%% `arn:aws:quicksight:&lt;your-region&gt;:&lt;relevant-aws-account-id&gt;:group/default/&lt;group-name&gt;
 %% '.
 %%
 %% The response is a group object.
@@ -888,10 +889,11 @@ delete_account_customization(Client, AwsAccountId, Input0, Options0) ->
 %% QuickSight account.
 %%
 %% This operation will result in an error message if you have configured your
-%% account termination protection settings to `True'. To change this setting
-%% and delete your account, call the `UpdateAccountSettings' API and set the
-%% value of the `TerminationProtectionEnabled' parameter to `False', then
-%% make another call to the `DeleteAccountSubscription' API.
+%% account termination protection settings to `True'. To change this
+%% setting and delete your account, call the `UpdateAccountSettings' API
+%% and set the value of the `TerminationProtectionEnabled' parameter to
+%% `False', then make another call to the `DeleteAccountSubscription'
+%% API.
 delete_account_subscription(Client, AwsAccountId, Input) ->
     delete_account_subscription(Client, AwsAccountId, Input, []).
 delete_account_subscription(Client, AwsAccountId, Input0, Options0) ->
@@ -917,19 +919,22 @@ delete_account_subscription(Client, AwsAccountId, Input0, Options0) ->
 %% @doc Deletes an analysis from Amazon QuickSight.
 %%
 %% You can optionally include a recovery window during which you can restore
-%% the analysis. If you don't specify a recovery window value, the operation
-%% defaults to 30 days. Amazon QuickSight attaches a `DeletionTime' stamp to
-%% the response that specifies the end of the recovery window. At the end of
-%% the recovery window, Amazon QuickSight deletes the analysis permanently.
+%% the analysis. If you don't specify a recovery window value, the
+%% operation defaults to 30 days. Amazon QuickSight attaches a
+%% `DeletionTime' stamp to the response that specifies the end of the
+%% recovery window. At the end of the recovery window, Amazon QuickSight
+%% deletes the analysis permanently.
 %%
-%% At any time before recovery window ends, you can use the `RestoreAnalysis'
-%% API operation to remove the `DeletionTime' stamp and cancel the deletion
-%% of the analysis. The analysis remains visible in the API until it's
-%% deleted, so you can describe it but you can't make a template from it.
+%% At any time before recovery window ends, you can use the
+%% `RestoreAnalysis' API operation to remove the `DeletionTime' stamp
+%% and cancel the deletion of the analysis. The analysis remains visible in
+%% the API until it's deleted, so you can describe it but you can't
+%% make a template from it.
 %%
-%% An analysis that's scheduled for deletion isn't accessible in the Amazon
-%% QuickSight console. To access it in the console, restore it. Deleting an
-%% analysis doesn't delete the dashboards that you publish from it.
+%% An analysis that's scheduled for deletion isn't accessible in the
+%% Amazon QuickSight console. To access it in the console, restore it.
+%% Deleting an analysis doesn't delete the dashboards that you publish
+%% from it.
 delete_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     delete_analysis(Client, AnalysisId, AwsAccountId, Input, []).
 delete_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
@@ -1274,8 +1279,8 @@ delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the Amazon QuickSight user that is associated with the
-%% identity of the Identity and Access Management (IAM) user or role that's
-%% making the call.
+%% identity of the Identity and Access Management (IAM) user or role
+%% that's making the call.
 %%
 %% The IAM user isn't deleted as a result of this call.
 delete_user(Client, AwsAccountId, Namespace, UserName, Input) ->
@@ -1333,13 +1338,13 @@ delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0
 %% To determine what customizations display when you run this command, it can
 %% help to visualize the relationship of the entities involved.
 %%
-%% <ul> <li> `Amazon Web Services account' - The Amazon Web Services account
-%% exists at the top of the hierarchy. It has the potential to use all of the
-%% Amazon Web Services Regions and Amazon Web Services Services. When you
-%% subscribe to Amazon QuickSight, you choose one Amazon Web Services Region
-%% to use as your home Region. That's where your free SPICE capacity is
-%% located. You can use Amazon QuickSight in any supported Amazon Web
-%% Services Region.
+%% <ul> <li> `Amazon Web Services account' - The Amazon Web Services
+%% account exists at the top of the hierarchy. It has the potential to use
+%% all of the Amazon Web Services Regions and Amazon Web Services Services.
+%% When you subscribe to Amazon QuickSight, you choose one Amazon Web
+%% Services Region to use as your home Region. That's where your free
+%% SPICE capacity is located. You can use Amazon QuickSight in any supported
+%% Amazon Web Services Region.
 %%
 %% </li> <li> `Amazon Web Services Region' - In each Amazon Web Services
 %% Region where you sign in to Amazon QuickSight at least once, Amazon
@@ -1357,17 +1362,17 @@ delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0
 %%
 %% </li> <li> Use named profiles.
 %%
-%% </li> <li> Run `aws configure' to change your default Amazon Web Services
-%% Region. Use Enter to key the same settings for your keys. For more
-%% information, see Configuring the CLI.
+%% </li> <li> Run `aws configure' to change your default Amazon Web
+%% Services Region. Use Enter to key the same settings for your keys. For
+%% more information, see Configuring the CLI.
 %%
-%% </li> </ul> </li> <li> `Namespace' - A QuickSight namespace is a partition
-%% that contains users and assets (data sources, datasets, dashboards, and so
-%% on). To access assets that are in a specific namespace, users and groups
-%% must also be part of the same namespace. People who share a namespace are
-%% completely isolated from users and assets in other namespaces, even if
-%% they are in the same Amazon Web Services account and Amazon Web Services
-%% Region.
+%% </li> </ul> </li> <li> `Namespace' - A QuickSight namespace is a
+%% partition that contains users and assets (data sources, datasets,
+%% dashboards, and so on). To access assets that are in a specific namespace,
+%% users and groups must also be part of the same namespace. People who share
+%% a namespace are completely isolated from users and assets in other
+%% namespaces, even if they are in the same Amazon Web Services account and
+%% Amazon Web Services Region.
 %%
 %% </li> <li> `Applied customizations' - Within an Amazon Web Services
 %% Region, a set of Amazon QuickSight customizations can apply to an Amazon
@@ -1375,8 +1380,8 @@ delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0
 %% namespace override settings that you apply to an Amazon Web Services
 %% account. All settings are isolated to a single Amazon Web Services Region.
 %% To apply them in other Amazon Web Services Regions, run the
-%% `CreateAccountCustomization' command in each Amazon Web Services Region
-%% where you want to apply the same customizations.
+%% `CreateAccountCustomization' command in each Amazon Web Services
+%% Region where you want to apply the same customizations.
 %%
 %% </li> </ul>
 describe_account_customization(Client, AwsAccountId)
@@ -1616,8 +1621,8 @@ describe_dashboard_permissions(Client, AwsAccountId, DashboardId, QueryMap, Head
 
 %% @doc Describes a dataset.
 %%
-%% This operation doesn't support datasets that include uploaded files as a
-%% source.
+%% This operation doesn't support datasets that include uploaded files as
+%% a source.
 describe_data_set(Client, AwsAccountId, DataSetId)
   when is_map(Client) ->
     describe_data_set(Client, AwsAccountId, DataSetId, #{}, #{}).
@@ -1784,8 +1789,8 @@ describe_folder_resolved_permissions(Client, AwsAccountId, FolderId, QueryMap, H
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns an Amazon QuickSight group's description and Amazon Resource
-%% Name (ARN).
+%% @doc Returns an Amazon QuickSight group's description and Amazon
+%% Resource Name (ARN).
 describe_group(Client, AwsAccountId, GroupName, Namespace)
   when is_map(Client) ->
     describe_group(Client, AwsAccountId, GroupName, Namespace, #{}, #{}).
@@ -1808,8 +1813,8 @@ describe_group(Client, AwsAccountId, GroupName, Namespace, QueryMap, HeadersMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Use the `DescribeGroupMembership' operation to determine if a user is
-%% a member of the specified group.
+%% @doc Use the `DescribeGroupMembership' operation to determine if a
+%% user is a member of the specified group.
 %%
 %% If the user exists and is a member of the specified group, an associated
 %% `GroupMember' object is returned.
@@ -2146,8 +2151,8 @@ describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, O
 %%
 %% </li> <li> The URL validity period should not be confused with the actual
 %% session lifetime that can be customized using the `
-%% SessionLifetimeInMinutes ' parameter. The resulting user session is valid
-%% for 15 minutes (minimum) to 10 hours (maximum). The default session
+%% SessionLifetimeInMinutes ' parameter. The resulting user session is
+%% valid for 15 minutes (minimum) to 10 hours (maximum). The default session
 %% duration is 10 hours.
 %%
 %% </li> <li> You are charged only when the URL is used or there is
@@ -2239,8 +2244,9 @@ generate_embed_url_for_registered_user(Client, AwsAccountId, Input0, Options0) -
 %% Before you use this command, make sure that you have configured the
 %% dashboards and permissions.
 %%
-%% Currently, you can use `GetDashboardEmbedURL' only from the server, not
-%% from the user's browser. The following rules apply to the generated URL:
+%% Currently, you can use `GetDashboardEmbedURL' only from the server,
+%% not from the user's browser. The following rules apply to the
+%% generated URL:
 %%
 %% <ul> <li> They must be used together.
 %%
@@ -2252,8 +2258,8 @@ generate_embed_url_for_registered_user(Client, AwsAccountId, Input0, Options0) -
 %% interaction with Amazon QuickSight.
 %%
 %% </li> <li> The resulting user session is valid for 15 minutes (default) up
-%% to 10 hours (maximum). You can use the optional `SessionLifetimeInMinutes'
-%% parameter to customize session duration.
+%% to 10 hours (maximum). You can use the optional
+%% `SessionLifetimeInMinutes' parameter to customize session duration.
 %%
 %% </li> </ul> For more information, see Embedding Analytics Using
 %% GetDashboardEmbedUrl in the Amazon QuickSight User Guide.
@@ -2303,9 +2309,9 @@ get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, QueryMa
 %% need belong to the author or admin security cohort. If you want to
 %% restrict permissions to some of these features, add a custom permissions
 %% profile to the user with the ` UpdateUser ' API operation. Use `
-%% RegisterUser ' API operation to add a new user with a custom permission
-%% profile attached. For more information, see the following sections in the
-%% Amazon QuickSight User Guide:
+%% RegisterUser ' API operation to add a new user with a custom
+%% permission profile attached. For more information, see the following
+%% sections in the Amazon QuickSight User Guide:
 %%
 %% <ul> <li> Embedding Analytics
 %%
@@ -2487,7 +2493,8 @@ list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List all assets (`DASHBOARD', `ANALYSIS', and `DATASET') in a folder.
+%% @doc List all assets (`DASHBOARD', `ANALYSIS', and `DATASET')
+%% in a folder.
 list_folder_members(Client, AwsAccountId, FolderId)
   when is_map(Client) ->
     list_folder_members(Client, AwsAccountId, FolderId, #{}, #{}).
@@ -2974,12 +2981,12 @@ list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
 %%
 %% When you register a new user from the Amazon QuickSight API, Amazon
 %% QuickSight generates a registration URL. The user accesses this
-%% registration URL to create their account. Amazon QuickSight doesn't send a
-%% registration email to users who are registered from the Amazon QuickSight
-%% API. If you want new users to receive a registration email, then add those
-%% users in the Amazon QuickSight console. For more information on
-%% registering a new user in the Amazon QuickSight console, see Inviting
-%% users to access Amazon QuickSight.
+%% registration URL to create their account. Amazon QuickSight doesn't
+%% send a registration email to users who are registered from the Amazon
+%% QuickSight API. If you want new users to receive a registration email,
+%% then add those users in the Amazon QuickSight console. For more
+%% information on registering a new user in the Amazon QuickSight console,
+%% see Inviting users to access Amazon QuickSight.
 register_user(Client, AwsAccountId, Namespace, Input) ->
     register_user(Client, AwsAccountId, Namespace, Input, []).
 register_user(Client, AwsAccountId, Namespace, Input0, Options0) ->
@@ -3078,8 +3085,8 @@ search_dashboards(Client, AwsAccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Use the `SearchDataSets' operation to search for datasets that belong
-%% to an account.
+%% @doc Use the `SearchDataSets' operation to search for datasets that
+%% belong to an account.
 search_data_sets(Client, AwsAccountId, Input) ->
     search_data_sets(Client, AwsAccountId, Input, []).
 search_data_sets(Client, AwsAccountId, Input0, Options0) ->
@@ -3102,8 +3109,8 @@ search_data_sets(Client, AwsAccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Use the `SearchDataSources' operation to search for data sources that
-%% belong to an account.
+%% @doc Use the `SearchDataSources' operation to search for data sources
+%% that belong to an account.
 search_data_sources(Client, AwsAccountId, Input) ->
     search_data_sources(Client, AwsAccountId, Input, []).
 search_data_sources(Client, AwsAccountId, Input0, Options0) ->
@@ -3193,13 +3200,14 @@ search_groups(Client, AwsAccountId, Namespace, Input0, Options0) ->
 %% Tagging for Amazon QuickSight works in a similar way to tagging for other
 %% Amazon Web Services services, except for the following:
 %%
-%% <ul> <li> You can't use tags to track costs for Amazon QuickSight. This
-%% isn't possible because you can't tag the resources that Amazon QuickSight
-%% costs are based on, for example Amazon QuickSight storage capacity
-%% (SPICE), number of users, type of users, and usage metrics.
+%% <ul> <li> You can't use tags to track costs for Amazon QuickSight.
+%% This isn't possible because you can't tag the resources that
+%% Amazon QuickSight costs are based on, for example Amazon QuickSight
+%% storage capacity (SPICE), number of users, type of users, and usage
+%% metrics.
 %%
-%% </li> <li> Amazon QuickSight doesn't currently support the tag editor for
-%% Resource Groups.
+%% </li> <li> Amazon QuickSight doesn't currently support the tag editor
+%% for Resource Groups.
 %%
 %% </li> </ul>
 tag_resource(Client, ResourceArn, Input) ->
@@ -3427,8 +3435,8 @@ update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNum
 
 %% @doc Updates a dataset.
 %%
-%% This operation doesn't support datasets that include uploaded files as a
-%% source. Partial updates are not supported by this operation.
+%% This operation doesn't support datasets that include uploaded files as
+%% a source. Partial updates are not supported by this operation.
 update_data_set(Client, AwsAccountId, DataSetId, Input) ->
     update_data_set(Client, AwsAccountId, DataSetId, Input, []).
 update_data_set(Client, AwsAccountId, DataSetId, Input0, Options0) ->
@@ -3622,7 +3630,8 @@ update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, In
 %% @doc Updates the content and status of IP rules.
 %%
 %% To use this operation, you need to provide the entire map of rules. You
-%% can use the `DescribeIpRestriction' operation to get the current rule map.
+%% can use the `DescribeIpRestriction' operation to get the current rule
+%% map.
 update_ip_restriction(Client, AwsAccountId, Input) ->
     update_ip_restriction(Client, AwsAccountId, Input, []).
 update_ip_restriction(Client, AwsAccountId, Input0, Options0) ->
@@ -3645,8 +3654,8 @@ update_ip_restriction(Client, AwsAccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Use the `UpdatePublicSharingSettings' operation to turn on or turn
-%% off the public sharing settings of an Amazon QuickSight dashboard.
+%% @doc Use the `UpdatePublicSharingSettings' operation to turn on or
+%% turn off the public sharing settings of an Amazon QuickSight dashboard.
 %%
 %% To use this operation, turn on session capacity pricing for your Amazon
 %% QuickSight account.
@@ -3797,7 +3806,7 @@ update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) -
 %% @doc Updates the resource permissions for a theme.
 %%
 %% Permissions apply to the action to grant or revoke permissions on, for
-%% example `"quicksight:DescribeTheme"'.
+%% example `&quot;quicksight:DescribeTheme&quot;'.
 %%
 %% Theme permissions apply in groupings. Valid groupings include the
 %% following for the three levels of permissions, which are user, owner, or
@@ -3805,37 +3814,37 @@ update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) -
 %%
 %% <ul> <li> User
 %%
-%% <ul> <li> `"quicksight:DescribeTheme"'
+%% <ul> <li> `&quot;quicksight:DescribeTheme&quot;'
 %%
-%% </li> <li> `"quicksight:DescribeThemeAlias"'
+%% </li> <li> `&quot;quicksight:DescribeThemeAlias&quot;'
 %%
-%% </li> <li> `"quicksight:ListThemeAliases"'
+%% </li> <li> `&quot;quicksight:ListThemeAliases&quot;'
 %%
-%% </li> <li> `"quicksight:ListThemeVersions"'
+%% </li> <li> `&quot;quicksight:ListThemeVersions&quot;'
 %%
 %% </li> </ul> </li> <li> Owner
 %%
-%% <ul> <li> `"quicksight:DescribeTheme"'
+%% <ul> <li> `&quot;quicksight:DescribeTheme&quot;'
 %%
-%% </li> <li> `"quicksight:DescribeThemeAlias"'
+%% </li> <li> `&quot;quicksight:DescribeThemeAlias&quot;'
 %%
-%% </li> <li> `"quicksight:ListThemeAliases"'
+%% </li> <li> `&quot;quicksight:ListThemeAliases&quot;'
 %%
-%% </li> <li> `"quicksight:ListThemeVersions"'
+%% </li> <li> `&quot;quicksight:ListThemeVersions&quot;'
 %%
-%% </li> <li> `"quicksight:DeleteTheme"'
+%% </li> <li> `&quot;quicksight:DeleteTheme&quot;'
 %%
-%% </li> <li> `"quicksight:UpdateTheme"'
+%% </li> <li> `&quot;quicksight:UpdateTheme&quot;'
 %%
-%% </li> <li> `"quicksight:CreateThemeAlias"'
+%% </li> <li> `&quot;quicksight:CreateThemeAlias&quot;'
 %%
-%% </li> <li> `"quicksight:DeleteThemeAlias"'
+%% </li> <li> `&quot;quicksight:DeleteThemeAlias&quot;'
 %%
-%% </li> <li> `"quicksight:UpdateThemeAlias"'
+%% </li> <li> `&quot;quicksight:UpdateThemeAlias&quot;'
 %%
-%% </li> <li> `"quicksight:UpdateThemePermissions"'
+%% </li> <li> `&quot;quicksight:UpdateThemePermissions&quot;'
 %%
-%% </li> <li> `"quicksight:DescribeThemePermissions"'
+%% </li> <li> `&quot;quicksight:DescribeThemePermissions&quot;'
 %%
 %% </li> </ul> </li> <li> To specify no permissions, omit the permissions
 %% list.

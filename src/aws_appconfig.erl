@@ -259,12 +259,12 @@ create_deployment_strategy(Client, Input0, Options0) ->
 %%
 %% For each application, you define one or more environments. An environment
 %% is a deployment group of AppConfig targets, such as applications in a
-%% `Beta' or `Production' environment. You can also define environments for
-%% application subcomponents such as the `Web', `Mobile' and `Back-end'
-%% components for your application. You can configure Amazon CloudWatch
-%% alarms for each environment. The system monitors alarms during a
-%% configuration deployment. If an alarm is triggered, the system rolls back
-%% the configuration.
+%% `Beta' or `Production' environment. You can also define
+%% environments for application subcomponents such as the `Web',
+%% `Mobile' and `Back-end' components for your application. You can
+%% configure Amazon CloudWatch alarms for each environment. The system
+%% monitors alarms during a configuration deployment. If an alarm is
+%% triggered, the system rolls back the configuration.
 create_environment(Client, ApplicationId, Input) ->
     create_environment(Client, ApplicationId, Input, []).
 create_environment(Client, ApplicationId, Input0, Options0) ->
@@ -615,23 +615,24 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 %% should use the StartConfigurationSession and GetLatestConfiguration APIs
 %% instead.
 %%
-%% `GetConfiguration' is a priced call. For more information, see Pricing.
+%% `GetConfiguration' is a priced call. For more information, see
+%% Pricing.
 %%
-%% AppConfig uses the value of the `ClientConfigurationVersion' parameter to
-%% identify the configuration version on your clients. If you don’t send
-%% `ClientConfigurationVersion' with each call to `GetConfiguration', your
-%% clients receive the current configuration. You are charged each time your
-%% clients receive a configuration.
+%% AppConfig uses the value of the `ClientConfigurationVersion' parameter
+%% to identify the configuration version on your clients. If you don’t send
+%% `ClientConfigurationVersion' with each call to `GetConfiguration',
+%% your clients receive the current configuration. You are charged each time
+%% your clients receive a configuration.
 %%
 %% To avoid excess charges, we recommend you use the
 %% StartConfigurationSession and GetLatestConfiguration APIs, which track the
 %% client configuration version on your behalf. If you choose to continue
 %% using `GetConfiguration', we recommend that you include the
-%% `ClientConfigurationVersion' value with every call to `GetConfiguration'.
-%% The value to use for `ClientConfigurationVersion' comes from the
-%% `ConfigurationVersion' attribute returned by `GetConfiguration' when there
-%% is new or updated data, and should be saved for subsequent calls to
-%% `GetConfiguration'.
+%% `ClientConfigurationVersion' value with every call to
+%% `GetConfiguration'. The value to use for
+%% `ClientConfigurationVersion' comes from the `ConfigurationVersion'
+%% attribute returned by `GetConfiguration' when there is new or updated
+%% data, and should be saved for subsequent calls to `GetConfiguration'.
 get_configuration(Client, Application, Configuration, Environment, ClientId)
   when is_map(Client) ->
     get_configuration(Client, Application, Configuration, Environment, ClientId, #{}, #{}).

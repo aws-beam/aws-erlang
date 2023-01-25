@@ -7,14 +7,15 @@
 %%
 %% For more information, see the IAM Identity Center User Guide.
 %%
-%% <note> <p>Although AWS Single Sign-On was renamed, the <code>sso</code>
-%% and <code>identitystore</code> API namespaces will continue to retain
-%% their original name for backward compatibility purposes. For more
-%% information, see <a
-%% href="https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html#renamed">IAM
-%% Identity Center rename</a>.</p> </note> <p>This reference guide describes
-%% the identity store operations that you can call programatically and
-%% includes detailed information on data types and errors.</p>
+%% &lt;note&gt; &lt;p&gt;Although AWS Single Sign-On was renamed, the
+%% &lt;code&gt;sso&lt;/code&gt; and &lt;code&gt;identitystore&lt;/code&gt;
+%% API namespaces will continue to retain their original name for backward
+%% compatibility purposes. For more information, see &lt;a
+%% href=&quot;https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html#renamed&quot;&gt;IAM
+%% Identity Center rename&lt;/a&gt;.&lt;/p&gt; &lt;/note&gt; &lt;p&gt;This
+%% reference guide describes the identity store operations that you can call
+%% programatically and includes detailed information on data types and
+%% errors.&lt;/p&gt;
 -module(aws_identitystore).
 
 -export([create_group/2,
@@ -72,8 +73,8 @@ create_group(Client, Input, Options)
 
 %% @doc Creates a relationship between a member and a group.
 %%
-%% The following identifiers must be specified: `GroupId', `IdentityStoreId',
-%% and `MemberId'.
+%% The following identifiers must be specified: `GroupId',
+%% `IdentityStoreId', and `MemberId'.
 create_group_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_group_membership(Client, Input, []).
@@ -122,8 +123,8 @@ describe_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGroup">>, Input, Options).
 
-%% @doc Retrieves membership metadata and attributes from `MembershipId' in
-%% an identity store.
+%% @doc Retrieves membership metadata and attributes from `MembershipId'
+%% in an identity store.
 describe_group_membership(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_group_membership(Client, Input, []).
@@ -131,8 +132,8 @@ describe_group_membership(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGroupMembership">>, Input, Options).
 
-%% @doc Retrieves the user metadata and attributes from the `UserId' in an
-%% identity store.
+%% @doc Retrieves the user metadata and attributes from the `UserId' in
+%% an identity store.
 describe_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_user(Client, Input, []).
@@ -164,8 +165,8 @@ get_user_id(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUserId">>, Input, Options).
 
-%% @doc Checks the user's membership in all requested groups and returns if
-%% the member exists in all queried groups.
+%% @doc Checks the user's membership in all requested groups and returns
+%% if the member exists in all queried groups.
 is_member_in_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     is_member_in_groups(Client, Input, []).
@@ -196,8 +197,8 @@ list_group_memberships_for_member(Client, Input, Options)
 %% @doc Lists all groups in the identity store.
 %%
 %% Returns a paginated list of complete `Group' objects. Filtering for a
-%% `Group' by the `DisplayName' attribute is deprecated. Instead, use the
-%% `GetGroupId' API action.
+%% `Group' by the `DisplayName' attribute is deprecated. Instead, use
+%% the `GetGroupId' API action.
 list_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_groups(Client, Input, []).

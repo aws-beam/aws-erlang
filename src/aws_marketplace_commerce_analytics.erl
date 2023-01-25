@@ -42,12 +42,12 @@ generate_data_set(Client, Input, Options)
 %% Returns a unique request identifier that can be used to correlate requests
 %% with notifications from the SNS topic. Data sets will be published in
 %% comma-separated values (CSV) format with the file name
-%% {data_set_type}_YYYY-MM-DD'T'HH-mm-ss'Z'.csv. If a file with the same name
-%% already exists (e.g. if the same data set is requested twice), the
-%% original file will be overwritten by the new file. Requires a Role with an
-%% attached permissions policy providing Allow permissions for the following
-%% actions: s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes,
-%% sns:Publish, iam:GetRolePolicy.
+%% {data_set_type}_YYYY-MM-DD'T'HH-mm-ss'Z'.csv. If a file
+%% with the same name already exists (e.g. if the same data set is requested
+%% twice), the original file will be overwritten by the new file. Requires a
+%% Role with an attached permissions policy providing Allow permissions for
+%% the following actions: s3:PutObject, s3:GetBucketLocation,
+%% sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
 start_support_data_export(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_support_data_export(Client, Input, []).

@@ -75,9 +75,9 @@
 %% If you also send extended metrics, you can send metrics to Evidently as
 %% well as CloudWatch, and you can also optionally send the metrics with
 %% additional dimensions. The valid dimension names for the additional
-%% dimensions are `BrowserName', `CountryCode', `DeviceType', `FileType',
-%% `OSName', and `PageId'. For more information, see Extended metrics that
-%% you can send to CloudWatch and CloudWatch Evidently.
+%% dimensions are `BrowserName', `CountryCode', `DeviceType',
+%% `FileType', `OSName', and `PageId'. For more information, see
+%% Extended metrics that you can send to CloudWatch and CloudWatch Evidently.
 %%
 %% The maximum number of metric definitions that you can specify in one
 %% `BatchCreateRumMetricDefinitions' operation is 200.
@@ -93,9 +93,9 @@
 %% send them. For more information, see PutRumMetricsDestination.
 %%
 %% If some metric definitions specified in a
-%% `BatchCreateRumMetricDefinitions' operations are not valid, those metric
-%% definitions fail and return errors, but all valid metric definitions in
-%% the same operation still succeed.
+%% `BatchCreateRumMetricDefinitions' operations are not valid, those
+%% metric definitions fail and return errors, but all valid metric
+%% definitions in the same operation still succeed.
 batch_create_rum_metric_definitions(Client, AppMonitorName, Input) ->
     batch_create_rum_metric_definitions(Client, AppMonitorName, Input, []).
 batch_create_rum_metric_definitions(Client, AppMonitorName, Input0, Options0) ->
@@ -122,9 +122,9 @@ batch_create_rum_metric_definitions(Client, AppMonitorName, Input0, Options0) ->
 %% destination.
 %%
 %% If some metric definition IDs specified in a
-%% `BatchDeleteRumMetricDefinitions' operations are not valid, those metric
-%% definitions fail and return errors, but all valid metric definition IDs in
-%% the same operation are still deleted.
+%% `BatchDeleteRumMetricDefinitions' operations are not valid, those
+%% metric definitions fail and return errors, but all valid metric definition
+%% IDs in the same operation are still deleted.
 %%
 %% The maximum number of metric definitions that you can specify in one
 %% `BatchDeleteRumMetricDefinitions' operation is 200.
@@ -195,7 +195,8 @@ batch_get_rum_metric_definitions(Client, AppMonitorName, Destination, QueryMap, 
 %%
 %% After you create an app monitor, sign in to the CloudWatch RUM console to
 %% get the JavaScript code snippet to add to your web application. For more
-%% information, see How do I find a code snippet that I've already generated?
+%% information, see How do I find a code snippet that I've already
+%% generated?
 create_app_monitor(Client, Input) ->
     create_app_monitor(Client, Input, []).
 create_app_monitor(Client, Input0, Options0) ->
@@ -537,8 +538,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% After you update an app monitor, sign in to the CloudWatch RUM console to
 %% get the updated JavaScript code snippet to add to your web application.
-%% For more information, see How do I find a code snippet that I've already
-%% generated?
+%% For more information, see How do I find a code snippet that I've
+%% already generated?
 update_app_monitor(Client, Name, Input) ->
     update_app_monitor(Client, Name, Input, []).
 update_app_monitor(Client, Name, Input0, Options0) ->

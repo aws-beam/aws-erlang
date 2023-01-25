@@ -96,7 +96,8 @@ add_application_cloud_watch_logging_option(Client, Input, Options)
 %%
 %% Any configuration update, including adding a streaming source using this
 %% operation, results in a new version of the application. You can use the
-%% `DescribeApplication' operation to find the current application version.
+%% `DescribeApplication' operation to find the current application
+%% version.
 add_application_input(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_input(Client, Input, []).
@@ -104,8 +105,8 @@ add_application_input(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddApplicationInput">>, Input, Options).
 
-%% @doc Adds an `InputProcessingConfiguration' to a SQL-based Kinesis Data
-%% Analytics application.
+%% @doc Adds an `InputProcessingConfiguration' to a SQL-based Kinesis
+%% Data Analytics application.
 %%
 %% An input processor pre-processes records on the input stream before the
 %% application's SQL code executes. Currently, the only input processor
@@ -134,7 +135,8 @@ add_application_input_processing_configuration(Client, Input, Options)
 %%
 %% Any configuration update, including adding a streaming source using this
 %% operation, results in a new version of the application. You can use the
-%% `DescribeApplication' operation to find the current application version.
+%% `DescribeApplication' operation to find the current application
+%% version.
 add_application_output(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_output(Client, Input, []).
@@ -201,8 +203,8 @@ create_application(Client, Input, Options)
 %% to the extension.
 %%
 %% You control the amount of time that the URL will be valid using the
-%% `SessionExpirationDurationInSeconds' parameter. If you do not provide this
-%% parameter, the returned URL is valid for twelve hours.
+%% `SessionExpirationDurationInSeconds' parameter. If you do not provide
+%% this parameter, the returned URL is valid for twelve hours.
 %%
 %% The URL that you get from a call to CreateApplicationPresignedUrl must be
 %% used within 3 minutes to be valid. If you first try to use the URL after
@@ -434,8 +436,8 @@ start_application(Client, Input, Options)
 %% You can stop an application only if it is in the running status, unless
 %% you set the `Force' parameter to `true'.
 %%
-%% You can use the `DescribeApplication' operation to find the application
-%% status.
+%% You can use the `DescribeApplication' operation to find the
+%% application status.
 %%
 %% Kinesis Data Analytics takes a snapshot when the application is stopped,
 %% unless `Force' is set to `true'.
@@ -474,12 +476,12 @@ untag_resource(Client, Input, Options)
 %% Using this operation, you can update application code, input
 %% configuration, and output configuration.
 %%
-%% Kinesis Data Analytics updates the `ApplicationVersionId' each time you
-%% update your application.
+%% Kinesis Data Analytics updates the `ApplicationVersionId' each time
+%% you update your application.
 %%
-%% You cannot update the `RuntimeEnvironment' of an existing application. If
-%% you need to update an application's `RuntimeEnvironment', you must delete
-%% the application and create it again.
+%% You cannot update the `RuntimeEnvironment' of an existing application.
+%% If you need to update an application's `RuntimeEnvironment', you
+%% must delete the application and create it again.
 update_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_application(Client, Input, []).

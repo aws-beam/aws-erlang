@@ -57,9 +57,9 @@
 %% resource. A tag comprises a key and a value, both set by you. For example,
 %% you might set a tag as `topic:nature' to label a particular video
 %% category. See Tagging Amazon Web Services Resources for more information,
-%% including restrictions that apply to tags and "Tag naming limits and
-%% requirements"; Amazon IVS has no service-specific constraints beyond what
-%% is documented there.
+%% including restrictions that apply to tags and &quot;Tag naming limits and
+%% requirements&quot;; Amazon IVS has no service-specific constraints beyond
+%% what is documented there.
 %%
 %% Tags can help you identify and organize your Amazon Web Services
 %% resources. For example, you can use the same tag for different resources
@@ -67,9 +67,9 @@
 %% (see Access Tags).
 %%
 %% The Amazon IVS API has these tag-related endpoints: `TagResource',
-%% `UntagResource', and `ListTagsForResource'. The following resources
-%% support tagging: Channels, Stream Keys, Playback Key Pairs, and Recording
-%% Configurations.
+%% `UntagResource', and `ListTagsForResource'. The following
+%% resources support tagging: Channels, Stream Keys, Playback Key Pairs, and
+%% Recording Configurations.
 %%
 %% At most 50 tags can be applied to a resource.
 %%
@@ -83,7 +83,8 @@
 %% </li> <li> Authorization is about granting permissions. Your IAM roles
 %% need to have permissions for Amazon IVS API requests. In addition,
 %% authorization is needed to view Amazon IVS private channels. (Private
-%% channels are channels that are enabled for "playback authorization.")
+%% channels are channels that are enabled for &quot;playback
+%% authorization.&quot;)
 %%
 %% </li> </ul> Authentication
 %%
@@ -116,25 +117,25 @@
 %%
 %% Channel Endpoints
 %%
-%% <ul> <li> `CreateChannel' — Creates a new channel and an associated stream
-%% key to start streaming.
+%% <ul> <li> `CreateChannel' — Creates a new channel and an associated
+%% stream key to start streaming.
 %%
-%% </li> <li> `GetChannel' — Gets the channel configuration for the specified
-%% channel ARN.
+%% </li> <li> `GetChannel' — Gets the channel configuration for the
+%% specified channel ARN.
 %%
-%% </li> <li> `BatchGetChannel' — Performs `GetChannel' on multiple ARNs
-%% simultaneously.
+%% </li> <li> `BatchGetChannel' — Performs `GetChannel' on multiple
+%% ARNs simultaneously.
 %%
-%% </li> <li> `ListChannels' — Gets summary information about all channels in
-%% your account, in the Amazon Web Services region where the API request is
-%% processed. This list can be filtered to match a specified name or
-%% recording-configuration ARN. Filters are mutually exclusive and cannot be
-%% used together. If you try to use both filters, you will get an error (409
-%% Conflict Exception).
+%% </li> <li> `ListChannels' — Gets summary information about all
+%% channels in your account, in the Amazon Web Services region where the API
+%% request is processed. This list can be filtered to match a specified name
+%% or recording-configuration ARN. Filters are mutually exclusive and cannot
+%% be used together. If you try to use both filters, you will get an error
+%% (409 Conflict Exception).
 %%
-%% </li> <li> `UpdateChannel' — Updates a channel's configuration. This does
-%% not affect an ongoing stream of this channel. You must stop and restart
-%% the stream for the changes to take effect.
+%% </li> <li> `UpdateChannel' — Updates a channel's configuration.
+%% This does not affect an ongoing stream of this channel. You must stop and
+%% restart the stream for the changes to take effect.
 %%
 %% </li> <li> `DeleteChannel' — Deletes the specified channel.
 %%
@@ -143,84 +144,85 @@
 %% <ul> <li> `CreateStreamKey' — Creates a stream key, used to initiate a
 %% stream, for the specified channel ARN.
 %%
-%% </li> <li> `GetStreamKey' — Gets stream key information for the specified
-%% ARN.
+%% </li> <li> `GetStreamKey' — Gets stream key information for the
+%% specified ARN.
 %%
-%% </li> <li> `BatchGetStreamKey' — Performs `GetStreamKey' on multiple ARNs
-%% simultaneously.
+%% </li> <li> `BatchGetStreamKey' — Performs `GetStreamKey' on
+%% multiple ARNs simultaneously.
 %%
-%% </li> <li> `ListStreamKeys' — Gets summary information about stream keys
-%% for the specified channel.
+%% </li> <li> `ListStreamKeys' — Gets summary information about stream
+%% keys for the specified channel.
 %%
-%% </li> <li> `DeleteStreamKey' — Deletes the stream key for the specified
-%% ARN, so it can no longer be used to stream.
+%% </li> <li> `DeleteStreamKey' — Deletes the stream key for the
+%% specified ARN, so it can no longer be used to stream.
 %%
 %% </li> </ul> Stream Endpoints
 %%
-%% <ul> <li> `GetStream' — Gets information about the active (live) stream on
-%% a specified channel.
+%% <ul> <li> `GetStream' — Gets information about the active (live)
+%% stream on a specified channel.
 %%
 %% </li> <li> `GetStreamSession' — Gets metadata on a specified stream.
 %%
-%% </li> <li> `ListStreams' — Gets summary information about live streams in
-%% your account, in the Amazon Web Services region where the API request is
-%% processed.
+%% </li> <li> `ListStreams' — Gets summary information about live streams
+%% in your account, in the Amazon Web Services region where the API request
+%% is processed.
 %%
-%% </li> <li> `ListStreamSessions' — Gets a summary of current and previous
-%% streams for a specified channel in your account, in the AWS region where
-%% the API request is processed.
+%% </li> <li> `ListStreamSessions' — Gets a summary of current and
+%% previous streams for a specified channel in your account, in the AWS
+%% region where the API request is processed.
 %%
-%% </li> <li> `StopStream' — Disconnects the incoming RTMPS stream for the
-%% specified channel. Can be used in conjunction with `DeleteStreamKey' to
-%% prevent further streaming to a channel.
+%% </li> <li> `StopStream' — Disconnects the incoming RTMPS stream for
+%% the specified channel. Can be used in conjunction with
+%% `DeleteStreamKey' to prevent further streaming to a channel.
 %%
-%% </li> <li> `PutMetadata' — Inserts metadata into the active stream of the
-%% specified channel. At most 5 requests per second per channel are allowed,
-%% each with a maximum 1 KB payload. (If 5 TPS is not sufficient for your
-%% needs, we recommend batching your data into a single PutMetadata call.) At
-%% most 155 requests per second per account are allowed.
+%% </li> <li> `PutMetadata' — Inserts metadata into the active stream of
+%% the specified channel. At most 5 requests per second per channel are
+%% allowed, each with a maximum 1 KB payload. (If 5 TPS is not sufficient for
+%% your needs, we recommend batching your data into a single PutMetadata
+%% call.) At most 155 requests per second per account are allowed.
 %%
 %% </li> </ul> PlaybackKeyPair Endpoints
 %%
 %% For more information, see Setting Up Private Channels in the Amazon IVS
 %% User Guide.
 %%
-%% <ul> <li> `ImportPlaybackKeyPair' — Imports the public portion of a new
-%% key pair and returns its `arn' and `fingerprint'. The `privateKey' can
-%% then be used to generate viewer authorization tokens, to grant viewers
-%% access to private channels (channels enabled for playback authorization).
+%% <ul> <li> `ImportPlaybackKeyPair' — Imports the public portion of a
+%% new key pair and returns its `arn' and `fingerprint'. The
+%% `privateKey' can then be used to generate viewer authorization tokens,
+%% to grant viewers access to private channels (channels enabled for playback
+%% authorization).
 %%
-%% </li> <li> `GetPlaybackKeyPair' — Gets a specified playback authorization
-%% key pair and returns the `arn' and `fingerprint'. The `privateKey' held by
-%% the caller can be used to generate viewer authorization tokens, to grant
-%% viewers access to private channels.
+%% </li> <li> `GetPlaybackKeyPair' — Gets a specified playback
+%% authorization key pair and returns the `arn' and `fingerprint'.
+%% The `privateKey' held by the caller can be used to generate viewer
+%% authorization tokens, to grant viewers access to private channels.
 %%
 %% </li> <li> `ListPlaybackKeyPairs' — Gets summary information about
 %% playback key pairs.
 %%
-%% </li> <li> `DeletePlaybackKeyPair' — Deletes a specified authorization key
-%% pair. This invalidates future viewer tokens generated using the key pair’s
-%% `privateKey'.
+%% </li> <li> `DeletePlaybackKeyPair' — Deletes a specified authorization
+%% key pair. This invalidates future viewer tokens generated using the key
+%% pair’s `privateKey'.
 %%
 %% </li> </ul> RecordingConfiguration Endpoints
 %%
 %% <ul> <li> `CreateRecordingConfiguration' — Creates a new recording
 %% configuration, used to enable recording to Amazon S3.
 %%
-%% </li> <li> `GetRecordingConfiguration' — Gets the recording-configuration
-%% metadata for the specified ARN.
+%% </li> <li> `GetRecordingConfiguration' — Gets the
+%% recording-configuration metadata for the specified ARN.
 %%
-%% </li> <li> `ListRecordingConfigurations' — Gets summary information about
-%% all recording configurations in your account, in the Amazon Web Services
-%% region where the API request is processed.
+%% </li> <li> `ListRecordingConfigurations' — Gets summary information
+%% about all recording configurations in your account, in the Amazon Web
+%% Services region where the API request is processed.
 %%
 %% </li> <li> `DeleteRecordingConfiguration' — Deletes the recording
 %% configuration for the specified ARN.
 %%
 %% </li> </ul> Amazon Web Services Tags Endpoints
 %%
-%% <ul> <li> `TagResource' — Adds or updates tags for the Amazon Web Services
-%% resource with the specified ARN.
+%% <ul> <li> `TagResource' — Adds or updates tags for the Amazon Web
+%% Services resource with the specified ARN.
 %%
 %% </li> <li> `UntagResource' — Removes tags from the resource with the
 %% specified ARN.
@@ -371,8 +373,8 @@ create_channel(Client, Input0, Options0) ->
 %% Known issue: In the us-east-1 region, if you use the Amazon Web Services
 %% CLI to create a recording configuration, it returns success even if the S3
 %% bucket is in a different region. In this case, the `state' of the
-%% recording configuration is `CREATE_FAILED' (instead of `ACTIVE'). (In
-%% other regions, the CLI correctly returns failure if the bucket is in a
+%% recording configuration is `CREATE_FAILED' (instead of `ACTIVE').
+%% (In other regions, the CLI correctly returns failure if the bucket is in a
 %% different region.)
 %%
 %% Workaround: Ensure that your S3 bucket is in the same region as the
@@ -404,8 +406,8 @@ create_recording_configuration(Client, Input0, Options0) ->
 %% @doc Creates a stream key, used to initiate a stream, for the specified
 %% channel ARN.
 %%
-%% Note that `CreateChannel' creates a stream key. If you subsequently use
-%% CreateStreamKey on the same channel, it will fail because a stream key
+%% Note that `CreateChannel' creates a stream key. If you subsequently
+%% use CreateStreamKey on the same channel, it will fail because a stream key
 %% already exists and there is a limit of 1 stream key per channel. To reset
 %% the stream key on a channel, use `DeleteStreamKey' and then
 %% CreateStreamKey.
@@ -434,10 +436,11 @@ create_stream_key(Client, Input0, Options0) ->
 %% @doc Deletes the specified channel and its associated stream keys.
 %%
 %% If you try to delete a live channel, you will get an error (409
-%% ConflictException). To delete a channel that is live, call `StopStream',
-%% wait for the Amazon EventBridge "Stream End" event (to verify that the
-%% stream's state was changed from Live to Offline), then call DeleteChannel.
-%% (See Using EventBridge with Amazon IVS.)
+%% ConflictException). To delete a channel that is live, call
+%% `StopStream', wait for the Amazon EventBridge &quot;Stream End&quot;
+%% event (to verify that the stream's state was changed from Live to
+%% Offline), then call DeleteChannel. (See Using EventBridge with Amazon
+%% IVS.)
 delete_channel(Client, Input) ->
     delete_channel(Client, Input, []).
 delete_channel(Client, Input0, Options0) ->
@@ -463,8 +466,8 @@ delete_channel(Client, Input0, Options0) ->
 %% @doc Deletes a specified authorization key pair.
 %%
 %% This invalidates future viewer tokens generated using the key pair’s
-%% `privateKey'. For more information, see Setting Up Private Channels in the
-%% Amazon IVS User Guide.
+%% `privateKey'. For more information, see Setting Up Private Channels in
+%% the Amazon IVS User Guide.
 delete_playback_key_pair(Client, Input) ->
     delete_playback_key_pair(Client, Input, []).
 delete_playback_key_pair(Client, Input0, Options0) ->
@@ -492,8 +495,8 @@ delete_playback_key_pair(Client, Input0, Options0) ->
 %% If you try to delete a recording configuration that is associated with a
 %% channel, you will get an error (409 ConflictException). To avoid this, for
 %% all channels that reference the recording configuration, first use
-%% `UpdateChannel' to set the `recordingConfigurationArn' field to an empty
-%% string, then use DeleteRecordingConfiguration.
+%% `UpdateChannel' to set the `recordingConfigurationArn' field to an
+%% empty string, then use DeleteRecordingConfiguration.
 delete_recording_configuration(Client, Input) ->
     delete_recording_configuration(Client, Input, []).
 delete_recording_configuration(Client, Input0, Options0) ->
@@ -687,12 +690,12 @@ get_stream_session(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Imports the public portion of a new key pair and returns its `arn'
-%% and `fingerprint'.
+%% @doc Imports the public portion of a new key pair and returns its
+%% `arn' and `fingerprint'.
 %%
-%% The `privateKey' can then be used to generate viewer authorization tokens,
-%% to grant viewers access to private channels. For more information, see
-%% Setting Up Private Channels in the Amazon IVS User Guide.
+%% The `privateKey' can then be used to generate viewer authorization
+%% tokens, to grant viewers access to private channels. For more information,
+%% see Setting Up Private Channels in the Amazon IVS User Guide.
 import_playback_key_pair(Client, Input) ->
     import_playback_key_pair(Client, Input, []).
 import_playback_key_pair(Client, Input0, Options0) ->

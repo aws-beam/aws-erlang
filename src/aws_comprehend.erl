@@ -195,8 +195,8 @@ batch_detect_key_phrases(Client, Input, Options)
     request(Client, <<"BatchDetectKeyPhrases">>, Input, Options).
 
 %% @doc Inspects a batch of documents and returns an inference of the
-%% prevailing sentiment, `POSITIVE', `NEUTRAL', `MIXED', or `NEGATIVE', in
-%% each one.
+%% prevailing sentiment, `POSITIVE', `NEUTRAL', `MIXED', or
+%% `NEGATIVE', in each one.
 batch_detect_sentiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_detect_sentiment(Client, Input, []).
@@ -234,13 +234,13 @@ batch_detect_targeted_sentiment(Client, Input, Options)
 %% (text, PDF, Word, or image).
 %%
 %% If the system detects errors while processing a page in the input
-%% document, the API response includes an entry in `Errors' that describes
-%% the errors.
+%% document, the API response includes an entry in `Errors' that
+%% describes the errors.
 %%
 %% If the system detects a document-level error in your input document, the
-%% API returns an `InvalidRequestException' error response. For details about
-%% this exception, see Errors in semi-structured documents in the Comprehend
-%% Developer Guide.
+%% API returns an `InvalidRequestException' error response. For details
+%% about this exception, see Errors in semi-structured documents in the
+%% Comprehend Developer Guide.
 classify_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     classify_document(Client, Input, []).
@@ -285,8 +285,8 @@ create_endpoint(Client, Input, Options)
 
 %% @doc Creates an entity recognizer using submitted files.
 %%
-%% After your `CreateEntityRecognizer' request is submitted, you can check
-%% job status using the API.
+%% After your `CreateEntityRecognizer' request is submitted, you can
+%% check job status using the API.
 create_entity_recognizer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_entity_recognizer(Client, Input, []).
@@ -299,8 +299,8 @@ create_entity_recognizer(Client, Input, Options)
 %% Only those classifiers that are in terminated states (IN_ERROR, TRAINED)
 %% will be deleted.
 %%
-%% If an active inference job is using the model, a `ResourceInUseException'
-%% will be returned.
+%% If an active inference job is using the model, a
+%% `ResourceInUseException' will be returned.
 %%
 %% This is an asynchronous action that puts the classifier into a DELETING
 %% state, and it is then removed by a background job. Once removed, the
@@ -502,12 +502,13 @@ detect_dominant_language(Client, Input, Options)
 %% image).
 %%
 %% If the system detects errors while processing a page in the input
-%% document, the API response includes an entry in `Errors' for each error.
+%% document, the API response includes an entry in `Errors' for each
+%% error.
 %%
 %% If the system detects a document-level error in your input document, the
-%% API returns an `InvalidRequestException' error response. For details about
-%% this exception, see Errors in semi-structured documents in the Comprehend
-%% Developer Guide.
+%% API returns an `InvalidRequestException' error response. For details
+%% about this exception, see Errors in semi-structured documents in the
+%% Comprehend Developer Guide.
 detect_entities(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_entities(Client, Input, []).
@@ -571,8 +572,8 @@ detect_targeted_sentiment(Client, Input, Options)
 %% If the source model is in another AWS account, then it must have a
 %% resource-based policy that authorizes you to import it.
 %%
-%% The source model must be in the same AWS region that you're using when you
-%% import. You can't import a model that's in a different region.
+%% The source model must be in the same AWS region that you're using when
+%% you import. You can't import a model that's in a different region.
 import_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_model(Client, Input, []).
@@ -755,8 +756,8 @@ start_dominant_language_detection_job(Client, Input, Options)
 %%
 %% This API can be used for either standard entity detection or custom entity
 %% recognition. In order to be used for custom entity recognition, the
-%% optional `EntityRecognizerArn' must be used in order to provide access to
-%% the recognizer being used to detect the custom entity.
+%% optional `EntityRecognizerArn' must be used in order to provide access
+%% to the recognizer being used to detect the custom entity.
 start_entities_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_entities_detection_job(Client, Input, []).
@@ -828,14 +829,14 @@ start_topics_detection_job(Client, Input, Options)
 
 %% @doc Stops a dominant language detection job in progress.
 %%
-%% If the job state is `IN_PROGRESS' the job is marked for termination and
-%% put into the `STOP_REQUESTED' state. If the job completes before it can be
-%% stopped, it is put into the `COMPLETED' state; otherwise the job is
-%% stopped and put into the `STOPPED' state.
+%% If the job state is `IN_PROGRESS' the job is marked for termination
+%% and put into the `STOP_REQUESTED' state. If the job completes before
+%% it can be stopped, it is put into the `COMPLETED' state; otherwise the
+%% job is stopped and put into the `STOPPED' state.
 %%
-%% If the job is in the `COMPLETED' or `FAILED' state when you call the
-%% `StopDominantLanguageDetectionJob' operation, the operation returns a 400
-%% Internal Request Exception.
+%% If the job is in the `COMPLETED' or `FAILED' state when you call
+%% the `StopDominantLanguageDetectionJob' operation, the operation
+%% returns a 400 Internal Request Exception.
 %%
 %% When a job is stopped, any documents already processed are written to the
 %% output location.
@@ -848,14 +849,14 @@ stop_dominant_language_detection_job(Client, Input, Options)
 
 %% @doc Stops an entities detection job in progress.
 %%
-%% If the job state is `IN_PROGRESS' the job is marked for termination and
-%% put into the `STOP_REQUESTED' state. If the job completes before it can be
-%% stopped, it is put into the `COMPLETED' state; otherwise the job is
-%% stopped and put into the `STOPPED' state.
+%% If the job state is `IN_PROGRESS' the job is marked for termination
+%% and put into the `STOP_REQUESTED' state. If the job completes before
+%% it can be stopped, it is put into the `COMPLETED' state; otherwise the
+%% job is stopped and put into the `STOPPED' state.
 %%
-%% If the job is in the `COMPLETED' or `FAILED' state when you call the
-%% `StopDominantLanguageDetectionJob' operation, the operation returns a 400
-%% Internal Request Exception.
+%% If the job is in the `COMPLETED' or `FAILED' state when you call
+%% the `StopDominantLanguageDetectionJob' operation, the operation
+%% returns a 400 Internal Request Exception.
 %%
 %% When a job is stopped, any documents already processed are written to the
 %% output location.
@@ -876,14 +877,14 @@ stop_events_detection_job(Client, Input, Options)
 
 %% @doc Stops a key phrases detection job in progress.
 %%
-%% If the job state is `IN_PROGRESS' the job is marked for termination and
-%% put into the `STOP_REQUESTED' state. If the job completes before it can be
-%% stopped, it is put into the `COMPLETED' state; otherwise the job is
-%% stopped and put into the `STOPPED' state.
+%% If the job state is `IN_PROGRESS' the job is marked for termination
+%% and put into the `STOP_REQUESTED' state. If the job completes before
+%% it can be stopped, it is put into the `COMPLETED' state; otherwise the
+%% job is stopped and put into the `STOPPED' state.
 %%
-%% If the job is in the `COMPLETED' or `FAILED' state when you call the
-%% `StopDominantLanguageDetectionJob' operation, the operation returns a 400
-%% Internal Request Exception.
+%% If the job is in the `COMPLETED' or `FAILED' state when you call
+%% the `StopDominantLanguageDetectionJob' operation, the operation
+%% returns a 400 Internal Request Exception.
 %%
 %% When a job is stopped, any documents already processed are written to the
 %% output location.
@@ -904,14 +905,14 @@ stop_pii_entities_detection_job(Client, Input, Options)
 
 %% @doc Stops a sentiment detection job in progress.
 %%
-%% If the job state is `IN_PROGRESS', the job is marked for termination and
-%% put into the `STOP_REQUESTED' state. If the job completes before it can be
-%% stopped, it is put into the `COMPLETED' state; otherwise the job is be
-%% stopped and put into the `STOPPED' state.
+%% If the job state is `IN_PROGRESS', the job is marked for termination
+%% and put into the `STOP_REQUESTED' state. If the job completes before
+%% it can be stopped, it is put into the `COMPLETED' state; otherwise the
+%% job is be stopped and put into the `STOPPED' state.
 %%
-%% If the job is in the `COMPLETED' or `FAILED' state when you call the
-%% `StopDominantLanguageDetectionJob' operation, the operation returns a 400
-%% Internal Request Exception.
+%% If the job is in the `COMPLETED' or `FAILED' state when you call
+%% the `StopDominantLanguageDetectionJob' operation, the operation
+%% returns a 400 Internal Request Exception.
 %%
 %% When a job is stopped, any documents already processed are written to the
 %% output location.
@@ -924,14 +925,14 @@ stop_sentiment_detection_job(Client, Input, Options)
 
 %% @doc Stops a targeted sentiment detection job in progress.
 %%
-%% If the job state is `IN_PROGRESS', the job is marked for termination and
-%% put into the `STOP_REQUESTED' state. If the job completes before it can be
-%% stopped, it is put into the `COMPLETED' state; otherwise the job is be
-%% stopped and put into the `STOPPED' state.
+%% If the job state is `IN_PROGRESS', the job is marked for termination
+%% and put into the `STOP_REQUESTED' state. If the job completes before
+%% it can be stopped, it is put into the `COMPLETED' state; otherwise the
+%% job is be stopped and put into the `STOPPED' state.
 %%
-%% If the job is in the `COMPLETED' or `FAILED' state when you call the
-%% `StopDominantLanguageDetectionJob' operation, the operation returns a 400
-%% Internal Request Exception.
+%% If the job is in the `COMPLETED' or `FAILED' state when you call
+%% the `StopDominantLanguageDetectionJob' operation, the operation
+%% returns a 400 Internal Request Exception.
 %%
 %% When a job is stopped, any documents already processed are written to the
 %% output location.
@@ -944,11 +945,11 @@ stop_targeted_sentiment_detection_job(Client, Input, Options)
 
 %% @doc Stops a document classifier training job while in progress.
 %%
-%% If the training job state is `TRAINING', the job is marked for termination
-%% and put into the `STOP_REQUESTED' state. If the training job completes
-%% before it can be stopped, it is put into the `TRAINED'; otherwise the
-%% training job is stopped and put into the `STOPPED' state and the service
-%% sends back an HTTP 200 response with an empty HTTP body.
+%% If the training job state is `TRAINING', the job is marked for
+%% termination and put into the `STOP_REQUESTED' state. If the training
+%% job completes before it can be stopped, it is put into the `TRAINED';
+%% otherwise the training job is stopped and put into the `STOPPED' state
+%% and the service sends back an HTTP 200 response with an empty HTTP body.
 stop_training_document_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_training_document_classifier(Client, Input, []).
@@ -958,11 +959,12 @@ stop_training_document_classifier(Client, Input, Options)
 
 %% @doc Stops an entity recognizer training job while in progress.
 %%
-%% If the training job state is `TRAINING', the job is marked for termination
-%% and put into the `STOP_REQUESTED' state. If the training job completes
-%% before it can be stopped, it is put into the `TRAINED'; otherwise the
-%% training job is stopped and putted into the `STOPPED' state and the
-%% service sends back an HTTP 200 response with an empty HTTP body.
+%% If the training job state is `TRAINING', the job is marked for
+%% termination and put into the `STOP_REQUESTED' state. If the training
+%% job completes before it can be stopped, it is put into the `TRAINED';
+%% otherwise the training job is stopped and putted into the `STOPPED'
+%% state and the service sends back an HTTP 200 response with an empty HTTP
+%% body.
 stop_training_entity_recognizer(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_training_entity_recognizer(Client, Input, []).
@@ -973,8 +975,8 @@ stop_training_entity_recognizer(Client, Input, Options)
 %% @doc Associates a specific tag with an Amazon Comprehend resource.
 %%
 %% A tag is a key-value pair that adds as a metadata to a resource used by
-%% Amazon Comprehend. For example, a tag with "Sales" as the key might be
-%% added to a resource to indicate its use by the sales department.
+%% Amazon Comprehend. For example, a tag with &quot;Sales&quot; as the key
+%% might be added to a resource to indicate its use by the sales department.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).

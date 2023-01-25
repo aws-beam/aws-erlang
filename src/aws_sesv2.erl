@@ -6,10 +6,10 @@
 %% Amazon SES is an Amazon Web Services service that you can use to send
 %% email messages to your customers.
 %%
-%% If you're new to Amazon SES API v2, you might find it helpful to review
-%% the Amazon Simple Email Service Developer Guide. The Amazon SES Developer
-%% Guide provides information and code samples that demonstrate how to use
-%% Amazon SES API v2 features programmatically.
+%% If you're new to Amazon SES API v2, you might find it helpful to
+%% review the Amazon Simple Email Service Developer Guide. The Amazon SES
+%% Developer Guide provides information and code samples that demonstrate how
+%% to use Amazon SES API v2 features programmatically.
 -module(aws_sesv2).
 
 -export([batch_get_metric_data/2,
@@ -421,8 +421,8 @@ create_dedicated_ip_pool(Client, Input0, Options0) ->
 %% that contains the content that you plan to send to your customers. Amazon
 %% SES then sends that message to special email addresses spread across
 %% several major email providers. After about 24 hours, the test is complete,
-%% and you can use the `GetDeliverabilityTestReport' operation to view the
-%% results of the test.
+%% and you can use the `GetDeliverabilityTestReport' operation to view
+%% the results of the test.
 create_deliverability_test_report(Client, Input) ->
     create_deliverability_test_report(Client, Input, []).
 create_deliverability_test_report(Client, Input0, Options0) ->
@@ -449,28 +449,28 @@ create_deliverability_test_report(Client, Input0, Options0) ->
 %%
 %% An identity is an email address or domain that you use when you send
 %% email. Before you can use an identity to send email, you first have to
-%% verify it. By verifying an identity, you demonstrate that you're the owner
-%% of the identity, and that you've given Amazon SES API v2 permission to
-%% send email from the identity.
+%% verify it. By verifying an identity, you demonstrate that you're the
+%% owner of the identity, and that you've given Amazon SES API v2
+%% permission to send email from the identity.
 %%
 %% When you verify an email address, Amazon SES sends an email to the
 %% address. Your email address is verified as soon as you follow the link in
 %% the verification email.
 %%
-%% When you verify a domain without specifying the `DkimSigningAttributes'
-%% object, this operation provides a set of DKIM tokens. You can convert
-%% these tokens into CNAME records, which you then add to the DNS
-%% configuration for your domain. Your domain is verified when Amazon SES
-%% detects these records in the DNS configuration for your domain. This
-%% verification method is known as Easy DKIM.
+%% When you verify a domain without specifying the
+%% `DkimSigningAttributes' object, this operation provides a set of DKIM
+%% tokens. You can convert these tokens into CNAME records, which you then
+%% add to the DNS configuration for your domain. Your domain is verified when
+%% Amazon SES detects these records in the DNS configuration for your domain.
+%% This verification method is known as Easy DKIM.
 %%
 %% Alternatively, you can perform the verification process by providing your
 %% own public-private key pair. This verification method is known as Bring
 %% Your Own DKIM (BYODKIM). To use BYODKIM, your call to the
-%% `CreateEmailIdentity' operation has to include the `DkimSigningAttributes'
-%% object. When you specify this object, you provide a selector (a component
-%% of the DNS record name that identifies the public key to use for DKIM
-%% authentication) and a private key.
+%% `CreateEmailIdentity' operation has to include the
+%% `DkimSigningAttributes' object. When you specify this object, you
+%% provide a selector (a component of the DNS record name that identifies the
+%% public key to use for DKIM authentication) and a private key.
 %%
 %% When you verify a domain, this operation provides a set of DKIM tokens,
 %% which you can convert into CNAME tokens. You add these CNAME tokens to the
@@ -906,8 +906,8 @@ get_blacklist_reports(Client, BlacklistItemNames, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get information about an existing configuration set, including the
-%% dedicated IP pool that it's associated with, whether or not it's enabled
-%% for sending email, and more.
+%% dedicated IP pool that it's associated with, whether or not it's
+%% enabled for sending email, and more.
 %%
 %% Configuration sets are groups of rules that you can apply to the emails
 %% you send. You apply a configuration set to an email by including a
@@ -1045,8 +1045,8 @@ get_custom_verification_email_template(Client, TemplateName, QueryMap, HeadersMa
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get information about a dedicated IP address, including the name of
-%% the dedicated IP pool that it's associated with, as well information about
-%% the automatic warm-up process for the address.
+%% the dedicated IP pool that it's associated with, as well information
+%% about the automatic warm-up process for the address.
 get_dedicated_ip(Client, Ip)
   when is_map(Client) ->
     get_dedicated_ip(Client, Ip, #{}, #{}).
@@ -1236,8 +1236,8 @@ get_domain_statistics_report(Client, Domain, EndDate, StartDate, QueryMap, Heade
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides information about a specific identity, including the
-%% identity's verification status, sending authorization policies, its DKIM
-%% authentication status, and its custom Mail-From settings.
+%% identity's verification status, sending authorization policies, its
+%% DKIM authentication status, and its custom Mail-From settings.
 get_email_identity(Client, EmailIdentity)
   when is_map(Client) ->
     get_email_identity(Client, EmailIdentity, #{}, #{}).
@@ -1345,8 +1345,8 @@ get_import_job(Client, JobId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about a specific email address that's on the
-%% suppression list for your account.
+%% @doc Retrieves information about a specific email address that's on
+%% the suppression list for your account.
 get_suppressed_destination(Client, EmailAddress)
   when is_map(Client) ->
     get_suppressed_destination(Client, EmailAddress, #{}, #{}).
@@ -1593,8 +1593,8 @@ list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDat
 %% with your Amazon Web Services account.
 %%
 %% An identity can be either an email address or a domain. This operation
-%% returns identities that are verified as well as those that aren't. This
-%% operation returns identities that are associated with Amazon SES and
+%% returns identities that are verified as well as those that aren't.
+%% This operation returns identities that are associated with Amazon SES and
 %% Amazon Pinpoint.
 list_email_identities(Client)
   when is_map(Client) ->
@@ -2222,10 +2222,10 @@ put_email_identity_dkim_signing_attributes(Client, EmailIdentity, Input0, Option
 %% complaint events occur. These notifications are sent to the address that
 %% you specified in the `Return-Path' header of the original email.
 %%
-%% You're required to have a method of tracking bounces and complaints. If
-%% you haven't set up another mechanism for receiving bounce or complaint
-%% notifications (for example, by setting up an event destination), you
-%% receive an email notification when these events occur (even if this
+%% You're required to have a method of tracking bounces and complaints.
+%% If you haven't set up another mechanism for receiving bounce or
+%% complaint notifications (for example, by setting up an event destination),
+%% you receive an email notification when these events occur (even if this
 %% setting is disabled).
 put_email_identity_feedback_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_feedback_attributes(Client, EmailIdentity, Input, []).

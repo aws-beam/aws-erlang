@@ -83,9 +83,9 @@
 %% `DatasetType'.
 %%
 %% To have a project with separate training and test datasets, call
-%% `CreateDataset' twice. On the first call, specify `train' for the value of
-%% `DatasetType'. On the second call, specify `test' for the value of
-%% `DatasetType'.
+%% `CreateDataset' twice. On the first call, specify `train' for the
+%% value of `DatasetType'. On the second call, specify `test' for the
+%% value of `DatasetType'.
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:CreateDataset' operation.
@@ -131,8 +131,9 @@ create_dataset(Client, ProjectName, Input0, Options0) ->
 %% location specified in `OutputConfig'.
 %%
 %% This operation requires permissions to perform the
-%% `lookoutvision:CreateModel' operation. If you want to tag your model, you
-%% also require permission to the `lookoutvision:TagResource' operation.
+%% `lookoutvision:CreateModel' operation. If you want to tag your model,
+%% you also require permission to the `lookoutvision:TagResource'
+%% operation.
 create_model(Client, ProjectName, Input) ->
     create_model(Client, ProjectName, Input, []).
 create_model(Client, ProjectName, Input0, Options0) ->
@@ -159,7 +160,8 @@ create_model(Client, ProjectName, Input0, Options0) ->
 
 %% @doc Creates an empty Amazon Lookout for Vision project.
 %%
-%% After you create the project, add a dataset by calling `CreateDataset'.
+%% After you create the project, add a dataset by calling
+%% `CreateDataset'.
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:CreateProject' operation.
@@ -270,8 +272,8 @@ delete_model(Client, ModelVersion, ProjectName, Input0, Options0) ->
 %% operation.
 %%
 %% You also have to delete the dataset(s) associated with the model. For more
-%% information, see `DeleteDataset'. The images referenced by the training
-%% and test datasets aren't deleted.
+%% information, see `DeleteDataset'. The images referenced by the
+%% training and test datasets aren't deleted.
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:DeleteProject' operation.
@@ -408,17 +410,17 @@ describe_project(Client, ProjectName, QueryMap, HeadersMap, Options0)
 
 %% @doc Detects anomalies in an image that you supply.
 %%
-%% The response from `DetectAnomalies' includes a boolean prediction that the
-%% image contains one or more anomalies and a confidence value for the
+%% The response from `DetectAnomalies' includes a boolean prediction that
+%% the image contains one or more anomalies and a confidence value for the
 %% prediction. If the model is an image segmentation model, the response also
 %% includes segmentation information for each type of anomaly found in the
 %% image.
 %%
-%% Before calling `DetectAnomalies', you must first start your model with the
-%% `StartModel' operation. You are charged for the amount of time, in
+%% Before calling `DetectAnomalies', you must first start your model with
+%% the `StartModel' operation. You are charged for the amount of time, in
 %% minutes, that a model runs and for the number of anomaly detection units
-%% that your model uses. If you are not using a model, use the `StopModel'
-%% operation to stop your model.
+%% that your model uses. If you are not using a model, use the
+%% `StopModel' operation to stop your model.
 %%
 %% For more information, see Detecting anomalies in an image in the Amazon
 %% Lookout for Vision developer guide.
@@ -563,8 +565,8 @@ list_models(Client, ProjectName, QueryMap, HeadersMap, Options0)
 %% are in the AWS Region in which you call `ListProjects'.
 %%
 %% The `ListProjects' operation is eventually consistent. Recent calls to
-%% `CreateProject' and `DeleteProject' might take a while to appear in the
-%% response from `ListProjects'.
+%% `CreateProject' and `DeleteProject' might take a while to appear
+%% in the response from `ListProjects'.
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:ListProjects' operation.
@@ -668,9 +670,9 @@ start_model(Client, ModelVersion, ProjectName, Input0, Options0) ->
 %% Lookout for Vision model. You can use the component to deploy your model
 %% to an edge device managed by Greengrass.
 %%
-%% Use the `DescribeModelPackagingJob' API to determine the current status of
-%% the job. The model packaging job is complete if the value of `Status' is
-%% `SUCCEEDED'.
+%% Use the `DescribeModelPackagingJob' API to determine the current
+%% status of the job. The model packaging job is complete if the value of
+%% `Status' is `SUCCEEDED'.
 %%
 %% To deploy the component to the target device, use the component name and
 %% component version with the AWS IoT Greengrass CreateDeployment API.
@@ -689,8 +691,8 @@ start_model(Client, ModelVersion, ProjectName, Input0, Options0) ->
 %%
 %% </li> <li> `greengrass:DescribeComponent'
 %%
-%% </li> <li> (Optional) `greengrass:TagResource'. Only required if you want
-%% to tag the component.
+%% </li> <li> (Optional) `greengrass:TagResource'. Only required if you
+%% want to tag the component.
 %%
 %% </li> </ul> For more information, see Using your Amazon Lookout for Vision
 %% model on an edge device in the Amazon Lookout for Vision Developer Guide.
@@ -723,7 +725,8 @@ start_model_packaging_job(Client, ProjectName, Input0, Options0) ->
 %% The operation might take a while to complete. To check the current status,
 %% call `DescribeModel'.
 %%
-%% After the model hosting stops, the `Status' of the model is `TRAINED'.
+%% After the model hosting stops, the `Status' of the model is
+%% `TRAINED'.
 %%
 %% This operation requires permissions to perform the
 %% `lookoutvision:StopModel' operation.
@@ -816,16 +819,16 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% A JSON Line includes information about an image used for training or
 %% testing an Amazon Lookout for Vision model.
 %%
-%% To update an existing JSON Line, use the `source-ref' field to identify
-%% the JSON Line. The JSON line that you supply replaces the existing JSON
-%% line. Any existing annotations that are not in the new JSON line are
-%% removed from the dataset.
+%% To update an existing JSON Line, use the `source-ref' field to
+%% identify the JSON Line. The JSON line that you supply replaces the
+%% existing JSON line. Any existing annotations that are not in the new JSON
+%% line are removed from the dataset.
 %%
 %% For more information, see Defining JSON lines for anomaly classification
 %% in the Amazon Lookout for Vision Developer Guide.
 %%
-%% The images you reference in the `source-ref' field of a JSON line, must be
-%% in the same S3 bucket as the existing images in the dataset.
+%% The images you reference in the `source-ref' field of a JSON line,
+%% must be in the same S3 bucket as the existing images in the dataset.
 %%
 %% Updating a dataset might take a while to complete. To check the current
 %% status, call `DescribeDataset' and check the `Status' field in the

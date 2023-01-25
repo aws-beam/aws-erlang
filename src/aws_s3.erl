@@ -255,9 +255,9 @@
 %% might be necessary to abort a given multipart upload multiple times in
 %% order to completely free all storage consumed by all parts.
 %%
-%% To verify that all parts have been removed, so you don't get charged for
-%% the part storage, you should call the ListParts action and ensure that the
-%% parts list is empty.
+%% To verify that all parts have been removed, so you don't get charged
+%% for the part storage, you should call the ListParts action and ensure that
+%% the parts list is empty.
 %%
 %% For information about permissions required to use the multipart upload,
 %% see Multipart Upload and Permissions.
@@ -473,8 +473,8 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% request or while Amazon S3 is copying the files. If the error occurs
 %% before the copy action starts, you receive a standard Amazon S3 error. If
 %% the error occurs during the copy operation, the error response is embedded
-%% in the `200 OK' response. This means that a `200 OK' response can contain
-%% either a success or an error. Design your application to parse the
+%% in the `200 OK' response. This means that a `200 OK' response can
+%% contain either a success or an error. Design your application to parse the
 %% contents of the response and handle it appropriately.
 %%
 %% If the copy is successful, you receive a response with information about
@@ -504,10 +504,10 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% To specify whether you want the object metadata copied from the source
 %% object or replaced with metadata provided in the request, you can
 %% optionally add the `x-amz-metadata-directive' header. When you grant
-%% permissions, you can use the `s3:x-amz-metadata-directive' condition key
-%% to enforce certain metadata behavior when objects are uploaded. For more
-%% information, see Specifying Conditions in a Policy in the Amazon S3 User
-%% Guide. For a complete list of Amazon S3-specific condition keys, see
+%% permissions, you can use the `s3:x-amz-metadata-directive' condition
+%% key to enforce certain metadata behavior when objects are uploaded. For
+%% more information, see Specifying Conditions in a Policy in the Amazon S3
+%% User Guide. For a complete list of Amazon S3-specific condition keys, see
 %% Actions, Resources, and Condition Keys for Amazon S3.
 %%
 %% x-amz-copy-source-if Headers
@@ -525,23 +525,25 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% </li> <li> `x-amz-copy-source-if-modified-since'
 %%
 %% </li> </ul> If both the `x-amz-copy-source-if-match' and
-%% `x-amz-copy-source-if-unmodified-since' headers are present in the request
-%% and evaluate as follows, Amazon S3 returns `200 OK' and copies the data:
+%% `x-amz-copy-source-if-unmodified-since' headers are present in the
+%% request and evaluate as follows, Amazon S3 returns `200 OK' and copies
+%% the data:
 %%
 %% <ul> <li> `x-amz-copy-source-if-match' condition evaluates to true
 %%
-%% </li> <li> `x-amz-copy-source-if-unmodified-since' condition evaluates to
-%% false
+%% </li> <li> `x-amz-copy-source-if-unmodified-since' condition evaluates
+%% to false
 %%
 %% </li> </ul> If both the `x-amz-copy-source-if-none-match' and
-%% `x-amz-copy-source-if-modified-since' headers are present in the request
-%% and evaluate as follows, Amazon S3 returns the `412 Precondition Failed'
-%% response code:
+%% `x-amz-copy-source-if-modified-since' headers are present in the
+%% request and evaluate as follows, Amazon S3 returns the `412 Precondition
+%% Failed' response code:
 %%
-%% <ul> <li> `x-amz-copy-source-if-none-match' condition evaluates to false
+%% <ul> <li> `x-amz-copy-source-if-none-match' condition evaluates to
+%% false
 %%
-%% </li> <li> `x-amz-copy-source-if-modified-since' condition evaluates to
-%% true
+%% </li> <li> `x-amz-copy-source-if-modified-since' condition evaluates
+%% to true
 %%
 %% </li> </ul> All headers with the `x-amz-' prefix, including
 %% `x-amz-copy-source', must be signed.
@@ -574,9 +576,9 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% If the bucket that you're copying objects to uses the bucket owner
 %% enforced setting for S3 Object Ownership, ACLs are disabled and no longer
 %% affect permissions. Buckets that use this setting only accept PUT requests
-%% that don't specify an ACL or PUT requests that specify bucket owner full
-%% control ACLs, such as the `bucket-owner-full-control' canned ACL or an
-%% equivalent form of this ACL expressed in the XML format.
+%% that don't specify an ACL or PUT requests that specify bucket owner
+%% full control ACLs, such as the `bucket-owner-full-control' canned ACL
+%% or an equivalent form of this ACL expressed in the XML format.
 %%
 %% For more information, see Controlling ownership of objects and disabling
 %% ACLs in the Amazon S3 User Guide.
@@ -609,14 +611,14 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% If you enable versioning on the target bucket, Amazon S3 generates a
 %% unique version ID for the object being copied. This version ID is
 %% different from the version ID of the source object. Amazon S3 returns the
-%% version ID of the copied object in the `x-amz-version-id' response header
-%% in the response.
+%% version ID of the copied object in the `x-amz-version-id' response
+%% header in the response.
 %%
 %% If you do not enable versioning or suspend it on the target bucket, the
 %% version ID that Amazon S3 generates is always null.
 %%
-%% If the source object's storage class is GLACIER, you must restore a copy
-%% of this object before you can use it as a source object for the copy
+%% If the source object's storage class is GLACIER, you must restore a
+%% copy of this object before you can use it as a source object for the copy
 %% operation. For more information, see RestoreObject.
 %%
 %% The following operations are related to `CopyObject':
@@ -734,13 +736,13 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
 %% it advantageous to create buckets in the Europe (Ireland) Region. For more
 %% information, see Accessing a bucket.
 %%
-%% If you send your create bucket request to the `s3.amazonaws.com' endpoint,
-%% the request goes to the us-east-1 Region. Accordingly, the signature
-%% calculations in Signature Version 4 must use us-east-1 as the Region, even
-%% if the location constraint in the request specifies another Region where
-%% the bucket is to be created. If you create a bucket in a Region other than
-%% US East (N. Virginia), your application must be able to handle 307
-%% redirect. For more information, see Virtual hosting of buckets.
+%% If you send your create bucket request to the `s3.amazonaws.com'
+%% endpoint, the request goes to the us-east-1 Region. Accordingly, the
+%% signature calculations in Signature Version 4 must use us-east-1 as the
+%% Region, even if the location constraint in the request specifies another
+%% Region where the bucket is to be created. If you create a bucket in a
+%% Region other than US East (N. Virginia), your application must be able to
+%% handle 307 redirect. For more information, see Virtual hosting of buckets.
 %%
 %% Access control lists (ACLs)
 %%
@@ -763,10 +765,11 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
 %% information, see Canned ACL.
 %%
 %% </li> <li> Specify access permissions explicitly using the
-%% `x-amz-grant-read', `x-amz-grant-write', `x-amz-grant-read-acp',
-%% `x-amz-grant-write-acp', and `x-amz-grant-full-control' headers. These
-%% headers map to the set of permissions Amazon S3 supports in an ACL. For
-%% more information, see Access control list (ACL) overview.
+%% `x-amz-grant-read', `x-amz-grant-write',
+%% `x-amz-grant-read-acp', `x-amz-grant-write-acp', and
+%% `x-amz-grant-full-control' headers. These headers map to the set of
+%% permissions Amazon S3 supports in an ACL. For more information, see Access
+%% control list (ACL) overview.
 %%
 %% You specify each grantee as a type=value pair, where the type is one of
 %% the following:
@@ -774,10 +777,11 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
 %% <ul> <li> `id' – if the value specified is the canonical user ID of an
 %% Amazon Web Services account
 %%
-%% </li> <li> `uri' – if you are granting permissions to a predefined group
+%% </li> <li> `uri' – if you are granting permissions to a predefined
+%% group
 %%
-%% </li> <li> `emailAddress' – if the value specified is the email address of
-%% an Amazon Web Services account
+%% </li> <li> `emailAddress' – if the value specified is the email
+%% address of an Amazon Web Services account
 %%
 %% Using email addresses to specify a grantee is only supported in the
 %% following Amazon Web Services Regions:
@@ -801,34 +805,37 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
 %% For a list of all the Amazon S3 supported Regions and endpoints, see
 %% Regions and Endpoints in the Amazon Web Services General Reference.
 %%
-%% </li> </ul> For example, the following `x-amz-grant-read' header grants
-%% the Amazon Web Services accounts identified by account IDs permissions to
-%% read object data and its metadata:
+%% </li> </ul> For example, the following `x-amz-grant-read' header
+%% grants the Amazon Web Services accounts identified by account IDs
+%% permissions to read object data and its metadata:
 %%
-%% `x-amz-grant-read: id="11112222333", id="444455556666" '
+%% `x-amz-grant-read: id=&quot;11112222333&quot;, id=&quot;444455556666&quot;
+%% '
 %%
 %% </li> </ul> You can use either a canned ACL or specify access permissions
 %% explicitly. You cannot do both.
 %%
 %% Permissions
 %%
-%% In addition to `s3:CreateBucket', the following permissions are required
-%% when your CreateBucket includes specific headers:
+%% In addition to `s3:CreateBucket', the following permissions are
+%% required when your CreateBucket includes specific headers:
 %%
-%% <ul> <li> ACLs - If your `CreateBucket' request specifies ACL permissions
-%% and the ACL is public-read, public-read-write, authenticated-read, or if
-%% you specify access permissions explicitly through any other ACL, both
-%% `s3:CreateBucket' and `s3:PutBucketAcl' permissions are needed. If the ACL
-%% the `CreateBucket' request is private or doesn't specify any ACLs, only
-%% `s3:CreateBucket' permission is needed.
+%% <ul> <li> ACLs - If your `CreateBucket' request specifies ACL
+%% permissions and the ACL is public-read, public-read-write,
+%% authenticated-read, or if you specify access permissions explicitly
+%% through any other ACL, both `s3:CreateBucket' and
+%% `s3:PutBucketAcl' permissions are needed. If the ACL the
+%% `CreateBucket' request is private or doesn't specify any ACLs,
+%% only `s3:CreateBucket' permission is needed.
 %%
-%% </li> <li> Object Lock - If `ObjectLockEnabledForBucket' is set to true in
-%% your `CreateBucket' request, `s3:PutBucketObjectLockConfiguration' and
-%% `s3:PutBucketVersioning' permissions are required.
+%% </li> <li> Object Lock - If `ObjectLockEnabledForBucket' is set to
+%% true in your `CreateBucket' request,
+%% `s3:PutBucketObjectLockConfiguration' and `s3:PutBucketVersioning'
+%% permissions are required.
 %%
 %% </li> <li> S3 Object Ownership - If your CreateBucket request includes the
-%% the `x-amz-object-ownership' header, `s3:PutBucketOwnershipControls'
-%% permission is required.
+%% the `x-amz-object-ownership' header,
+%% `s3:PutBucketOwnershipControls' permission is required.
 %%
 %% </li> </ul> The following operations are related to `CreateBucket':
 %%
@@ -930,10 +937,10 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% To perform a multipart upload with encryption using an Amazon Web Services
 %% KMS key, the requester must have permission to the `kms:Decrypt' and
-%% `kms:GenerateDataKey*' actions on the key. These permissions are required
-%% because Amazon S3 must decrypt and read data from the encrypted file parts
-%% before it completes the multipart upload. For more information, see
-%% Multipart upload API and permissions in the Amazon S3 User Guide.
+%% `kms:GenerateDataKey*' actions on the key. These permissions are
+%% required because Amazon S3 must decrypt and read data from the encrypted
+%% file parts before it completes the multipart upload. For more information,
+%% see Multipart upload API and permissions in the Amazon S3 User Guide.
 %%
 %% If your Identity and Access Management (IAM) user or role is in the same
 %% Amazon Web Services account as the KMS key, then you must have these
@@ -948,14 +955,14 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %% permissions on the new object. There are two ways to grant the permissions
 %% using the request headers:
 %%
-%% <ul> <li> Specify a canned ACL with the `x-amz-acl' request header. For
-%% more information, see Canned ACL.
+%% <ul> <li> Specify a canned ACL with the `x-amz-acl' request header.
+%% For more information, see Canned ACL.
 %%
 %% </li> <li> Specify access permissions explicitly with the
-%% `x-amz-grant-read', `x-amz-grant-read-acp', `x-amz-grant-write-acp', and
-%% `x-amz-grant-full-control' headers. These parameters map to the set of
-%% permissions that Amazon S3 supports in an ACL. For more information, see
-%% Access Control List (ACL) Overview.
+%% `x-amz-grant-read', `x-amz-grant-read-acp',
+%% `x-amz-grant-write-acp', and `x-amz-grant-full-control' headers.
+%% These parameters map to the set of permissions that Amazon S3 supports in
+%% an ACL. For more information, see Access Control List (ACL) Overview.
 %%
 %% </li> </ul> You can use either a canned ACL or specify access permissions
 %% explicitly. You cannot do both.
@@ -980,9 +987,9 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %% </li> <li> `x-amz-server-side-encryption-context'
 %%
 %% </li> </ul> If you specify `x-amz-server-side-encryption:aws:kms', but
-%% don't provide `x-amz-server-side-encryption-aws-kms-key-id', Amazon S3
-%% uses the Amazon Web Services managed key in Amazon Web Services KMS to
-%% protect the data.
+%% don't provide `x-amz-server-side-encryption-aws-kms-key-id',
+%% Amazon S3 uses the Amazon Web Services managed key in Amazon Web Services
+%% KMS to protect the data.
 %%
 %% All GET and PUT requests for an object protected by Amazon Web Services
 %% KMS fail if you don't make them with SSL or by using SigV4.
@@ -1014,9 +1021,10 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %% ACLs. With this operation, you can grant access permissions using one of
 %% the following two methods:
 %%
-%% <ul> <li> Specify a canned ACL (`x-amz-acl') — Amazon S3 supports a set of
-%% predefined ACLs, known as canned ACLs. Each canned ACL has a predefined
-%% set of grantees and permissions. For more information, see Canned ACL.
+%% <ul> <li> Specify a canned ACL (`x-amz-acl') — Amazon S3 supports a
+%% set of predefined ACLs, known as canned ACLs. Each canned ACL has a
+%% predefined set of grantees and permissions. For more information, see
+%% Canned ACL.
 %%
 %% </li> <li> Specify access permissions explicitly — To explicitly grant
 %% access permissions to specific Amazon Web Services accounts or groups, use
@@ -1041,10 +1049,11 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %% <ul> <li> `id' – if the value specified is the canonical user ID of an
 %% Amazon Web Services account
 %%
-%% </li> <li> `uri' – if you are granting permissions to a predefined group
+%% </li> <li> `uri' – if you are granting permissions to a predefined
+%% group
 %%
-%% </li> <li> `emailAddress' – if the value specified is the email address of
-%% an Amazon Web Services account
+%% </li> <li> `emailAddress' – if the value specified is the email
+%% address of an Amazon Web Services account
 %%
 %% Using email addresses to specify a grantee is only supported in the
 %% following Amazon Web Services Regions:
@@ -1068,11 +1077,12 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %% For a list of all the Amazon S3 supported Regions and endpoints, see
 %% Regions and Endpoints in the Amazon Web Services General Reference.
 %%
-%% </li> </ul> For example, the following `x-amz-grant-read' header grants
-%% the Amazon Web Services accounts identified by account IDs permissions to
-%% read object data and its metadata:
+%% </li> </ul> For example, the following `x-amz-grant-read' header
+%% grants the Amazon Web Services accounts identified by account IDs
+%% permissions to read object data and its metadata:
 %%
-%% `x-amz-grant-read: id="11112222333", id="444455556666" '
+%% `x-amz-grant-read: id=&quot;11112222333&quot;, id=&quot;444455556666&quot;
+%% '
 %%
 %% </li> </ul> </dd> </dl> The following operations are related to
 %% `CreateMultipartUpload':
@@ -1255,11 +1265,11 @@ delete_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
 %% @doc Deletes the `cors' configuration information set for the bucket.
 %%
 %% To use this operation, you must have permission to perform the
-%% `s3:PutBucketCORS' action. The bucket owner has this permission by default
-%% and can grant this permission to others.
+%% `s3:PutBucketCORS' action. The bucket owner has this permission by
+%% default and can grant this permission to others.
 %%
-%% For information about `cors', see Enabling Cross-Origin Resource Sharing
-%% in the Amazon S3 User Guide.
+%% For information about `cors', see Enabling Cross-Origin Resource
+%% Sharing in the Amazon S3 User Guide.
 %%
 %% == Related Resources: ==
 %%
@@ -1449,8 +1459,9 @@ delete_bucket_inventory_configuration(Client, Bucket, Input0, Options0) ->
 %% rules contained in the deleted lifecycle configuration.
 %%
 %% To use this operation, you must have permission to perform the
-%% `s3:PutLifecycleConfiguration' action. By default, the bucket owner has
-%% this permission and the bucket owner can grant this permission to others.
+%% `s3:PutLifecycleConfiguration' action. By default, the bucket owner
+%% has this permission and the bucket owner can grant this permission to
+%% others.
 %%
 %% There is usually some time lag before lifecycle configuration deletion is
 %% fully propagated to all the Amazon S3 systems.
@@ -1496,11 +1507,11 @@ delete_bucket_lifecycle(Client, Bucket, Input0, Options0) ->
 %% Note that this doesn't include the daily storage metrics.
 %%
 %% To use this operation, you must have permissions to perform the
-%% `s3:PutMetricsConfiguration' action. The bucket owner has this permission
-%% by default. The bucket owner can grant this permission to others. For more
-%% information about permissions, see Permissions Related to Bucket
-%% Subresource Operations and Managing Access Permissions to Your Amazon S3
-%% Resources.
+%% `s3:PutMetricsConfiguration' action. The bucket owner has this
+%% permission by default. The bucket owner can grant this permission to
+%% others. For more information about permissions, see Permissions Related to
+%% Bucket Subresource Operations and Managing Access Permissions to Your
+%% Amazon S3 Resources.
 %%
 %% For information about CloudWatch request metrics for Amazon S3, see
 %% Monitoring Metrics with Amazon CloudWatch.
@@ -1545,14 +1556,15 @@ delete_bucket_metrics_configuration(Client, Bucket, Input0, Options0) ->
 
 %% @doc Removes `OwnershipControls' for an Amazon S3 bucket.
 %%
-%% To use this operation, you must have the `s3:PutBucketOwnershipControls'
-%% permission. For more information about Amazon S3 permissions, see
-%% Specifying Permissions in a Policy.
+%% To use this operation, you must have the
+%% `s3:PutBucketOwnershipControls' permission. For more information about
+%% Amazon S3 permissions, see Specifying Permissions in a Policy.
 %%
 %% For information about Amazon S3 Object Ownership, see Using Object
 %% Ownership.
 %%
-%% The following operations are related to `DeleteBucketOwnershipControls':
+%% The following operations are related to
+%% `DeleteBucketOwnershipControls':
 %%
 %% <ul> <li> `GetBucketOwnershipControls'
 %%
@@ -1589,13 +1601,14 @@ delete_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
 %%
 %% If you are using an identity other than the root user of the Amazon Web
 %% Services account that owns the bucket, the calling identity must have the
-%% `DeleteBucketPolicy' permissions on the specified bucket and belong to the
-%% bucket owner's account to use this operation.
+%% `DeleteBucketPolicy' permissions on the specified bucket and belong to
+%% the bucket owner's account to use this operation.
 %%
-%% If you don't have `DeleteBucketPolicy' permissions, Amazon S3 returns a
-%% `403 Access Denied' error. If you have the correct permissions, but you're
-%% not using an identity that belongs to the bucket owner's account, Amazon
-%% S3 returns a `405 Method Not Allowed' error.
+%% If you don't have `DeleteBucketPolicy' permissions, Amazon S3
+%% returns a `403 Access Denied' error. If you have the correct
+%% permissions, but you're not using an identity that belongs to the
+%% bucket owner's account, Amazon S3 returns a `405 Method Not
+%% Allowed' error.
 %%
 %% As a security precaution, the root user of the Amazon Web Services account
 %% that owns a bucket can always use this operation, even if the policy
@@ -1722,14 +1735,14 @@ delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
 
 %% @doc This action removes the website configuration for a bucket.
 %%
-%% Amazon S3 returns a `200 OK' response upon successfully deleting a website
-%% configuration on the specified bucket. You will get a `200 OK' response if
-%% the website configuration you are trying to delete does not exist on the
-%% bucket. Amazon S3 returns a `404' response if the bucket specified in the
-%% request does not exist.
+%% Amazon S3 returns a `200 OK' response upon successfully deleting a
+%% website configuration on the specified bucket. You will get a `200 OK'
+%% response if the website configuration you are trying to delete does not
+%% exist on the bucket. Amazon S3 returns a `404' response if the bucket
+%% specified in the request does not exist.
 %%
-%% This DELETE action requires the `S3:DeleteBucketWebsite' permission. By
-%% default, only the bucket owner can delete the website configuration
+%% This DELETE action requires the `S3:DeleteBucketWebsite' permission.
+%% By default, only the bucket owner can delete the website configuration
 %% attached to a bucket. However, bucket owners can grant other users
 %% permission to delete the website configuration by writing a bucket policy
 %% granting them the `S3:DeleteBucketWebsite' permission.
@@ -1772,8 +1785,8 @@ delete_bucket_website(Client, Bucket, Input0, Options0) ->
 %% @doc Removes the null version (if there is one) of an object and inserts a
 %% delete marker, which becomes the latest version of the object.
 %%
-%% If there isn't a null version, Amazon S3 does not remove any objects but
-%% will still respond that the command was successful.
+%% If there isn't a null version, Amazon S3 does not remove any objects
+%% but will still respond that the command was successful.
 %%
 %% To remove a specific version, you must be the bucket owner and you must
 %% use the version Id subresource. Using this subresource permanently deletes
@@ -1782,8 +1795,8 @@ delete_bucket_website(Client, Bucket, Input0, Options0) ->
 %%
 %% If the object you want to delete is in a bucket where the bucket
 %% versioning configuration is MFA Delete enabled, you must include the
-%% `x-amz-mfa' request header in the DELETE `versionId' request. Requests
-%% that include `x-amz-mfa' must use HTTPS.
+%% `x-amz-mfa' request header in the DELETE `versionId' request.
+%% Requests that include `x-amz-mfa' must use HTTPS.
 %%
 %% For more information about MFA Delete, see Using MFA Delete. To see sample
 %% requests that use versioning, see Sample Request.
@@ -1792,7 +1805,8 @@ delete_bucket_website(Client, Bucket, Input0, Options0) ->
 %% its lifecycle (PutBucketLifecycle) to enable Amazon S3 to remove them for
 %% you. If you want to block users or accounts from removing or deleting
 %% objects from your bucket, you must deny them the `s3:DeleteObject',
-%% `s3:DeleteObjectVersion', and `s3:PutLifeCycleConfiguration' actions.
+%% `s3:DeleteObjectVersion', and `s3:PutLifeCycleConfiguration'
+%% actions.
 %%
 %% The following action is related to `DeleteObject':
 %%
@@ -2002,10 +2016,10 @@ delete_objects(Client, Bucket, Input0, Options0) ->
 %% @doc Removes the `PublicAccessBlock' configuration for an Amazon S3
 %% bucket.
 %%
-%% To use this operation, you must have the `s3:PutBucketPublicAccessBlock'
-%% permission. For more information about permissions, see Permissions
-%% Related to Bucket Subresource Operations and Managing Access Permissions
-%% to Your Amazon S3 Resources.
+%% To use this operation, you must have the
+%% `s3:PutBucketPublicAccessBlock' permission. For more information about
+%% permissions, see Permissions Related to Bucket Subresource Operations and
+%% Managing Access Permissions to Your Amazon S3 Resources.
 %%
 %% The following operations are related to `DeletePublicAccessBlock':
 %%
@@ -2057,12 +2071,13 @@ delete_public_access_block(Client, Bucket, Input0, Options0) ->
 %% Bucket Subresource Operations and Managing Access Permissions to your
 %% Amazon S3 Resources in the Amazon S3 User Guide.
 %%
-%% You set the Transfer Acceleration state of an existing bucket to `Enabled'
-%% or `Suspended' by using the PutBucketAccelerateConfiguration operation.
+%% You set the Transfer Acceleration state of an existing bucket to
+%% `Enabled' or `Suspended' by using the
+%% PutBucketAccelerateConfiguration operation.
 %%
-%% A GET `accelerate' request does not return a state value for a bucket that
-%% has no transfer acceleration state. A bucket has no Transfer Acceleration
-%% state if a state has never been set on the bucket.
+%% A GET `accelerate' request does not return a state value for a bucket
+%% that has no transfer acceleration state. A bucket has no Transfer
+%% Acceleration state if a state has never been set on the bucket.
 %%
 %% For more information about transfer acceleration, see Transfer
 %% Acceleration in the Amazon S3 User Guide.
@@ -2099,13 +2114,13 @@ get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode, Bucket).
 
-%% @doc This implementation of the `GET' action uses the `acl' subresource to
-%% return the access control list (ACL) of a bucket.
+%% @doc This implementation of the `GET' action uses the `acl'
+%% subresource to return the access control list (ACL) of a bucket.
 %%
-%% To use `GET' to return the ACL of the bucket, you must have `READ_ACP'
-%% access to the bucket. If `READ_ACP' permission is granted to the anonymous
-%% user, you can return the ACL of the bucket without using an authorization
-%% header.
+%% To use `GET' to return the ACL of the bucket, you must have
+%% `READ_ACP' access to the bucket. If `READ_ACP' permission is
+%% granted to the anonymous user, you can return the ACL of the bucket
+%% without using an authorization header.
 %%
 %% If your bucket uses the bucket owner enforced setting for S3 Object
 %% Ownership, requests to read ACLs are still supported and return the
@@ -2314,7 +2329,8 @@ get_bucket_encryption(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% For more information, see Storage class for automatically optimizing
 %% frequently and infrequently accessed objects.
 %%
-%% Operations related to `GetBucketIntelligentTieringConfiguration' include:
+%% Operations related to `GetBucketIntelligentTieringConfiguration'
+%% include:
 %%
 %% <ul> <li> DeleteBucketIntelligentTieringConfiguration
 %%
@@ -2363,7 +2379,8 @@ get_bucket_intelligent_tiering_configuration(Client, Bucket, Id, QueryMap, Heade
 %% For information about the Amazon S3 inventory feature, see Amazon S3
 %% Inventory.
 %%
-%% The following operations are related to `GetBucketInventoryConfiguration':
+%% The following operations are related to
+%% `GetBucketInventoryConfiguration':
 %%
 %% <ul> <li> DeleteBucketInventoryConfiguration
 %%
@@ -2626,16 +2643,17 @@ get_bucket_logging(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% Note that this doesn't include the daily storage metrics.
 %%
 %% To use this operation, you must have permissions to perform the
-%% `s3:GetMetricsConfiguration' action. The bucket owner has this permission
-%% by default. The bucket owner can grant this permission to others. For more
-%% information about permissions, see Permissions Related to Bucket
-%% Subresource Operations and Managing Access Permissions to Your Amazon S3
-%% Resources.
+%% `s3:GetMetricsConfiguration' action. The bucket owner has this
+%% permission by default. The bucket owner can grant this permission to
+%% others. For more information about permissions, see Permissions Related to
+%% Bucket Subresource Operations and Managing Access Permissions to Your
+%% Amazon S3 Resources.
 %%
 %% For information about CloudWatch request metrics for Amazon S3, see
 %% Monitoring Metrics with Amazon CloudWatch.
 %%
-%% The following operations are related to `GetBucketMetricsConfiguration':
+%% The following operations are related to
+%% `GetBucketMetricsConfiguration':
 %%
 %% <ul> <li> PutBucketMetricsConfiguration
 %%
@@ -2753,9 +2771,9 @@ get_bucket_notification_configuration(Client, Bucket, QueryMap, HeadersMap, Opti
 
 %% @doc Retrieves `OwnershipControls' for an Amazon S3 bucket.
 %%
-%% To use this operation, you must have the `s3:GetBucketOwnershipControls'
-%% permission. For more information about Amazon S3 permissions, see
-%% Specifying permissions in a policy.
+%% To use this operation, you must have the
+%% `s3:GetBucketOwnershipControls' permission. For more information about
+%% Amazon S3 permissions, see Specifying permissions in a policy.
 %%
 %% For information about Amazon S3 Object Ownership, see Using Object
 %% Ownership.
@@ -2798,13 +2816,13 @@ get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% If you are using an identity other than the root user of the Amazon Web
 %% Services account that owns the bucket, the calling identity must have the
-%% `GetBucketPolicy' permissions on the specified bucket and belong to the
-%% bucket owner's account in order to use this operation.
+%% `GetBucketPolicy' permissions on the specified bucket and belong to
+%% the bucket owner's account in order to use this operation.
 %%
-%% If you don't have `GetBucketPolicy' permissions, Amazon S3 returns a `403
-%% Access Denied' error. If you have the correct permissions, but you're not
-%% using an identity that belongs to the bucket owner's account, Amazon S3
-%% returns a `405 Method Not Allowed' error.
+%% If you don't have `GetBucketPolicy' permissions, Amazon S3 returns
+%% a `403 Access Denied' error. If you have the correct permissions, but
+%% you're not using an identity that belongs to the bucket owner's
+%% account, Amazon S3 returns a `405 Method Not Allowed' error.
 %%
 %% As a security precaution, the root user of the Amazon Web Services account
 %% that owns a bucket can always use this operation, even if the policy
@@ -2849,11 +2867,11 @@ get_bucket_policy(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% whether the bucket is public.
 %%
 %% In order to use this operation, you must have the
-%% `s3:GetBucketPolicyStatus' permission. For more information about Amazon
-%% S3 permissions, see Specifying Permissions in a Policy.
+%% `s3:GetBucketPolicyStatus' permission. For more information about
+%% Amazon S3 permissions, see Specifying Permissions in a Policy.
 %%
 %% For more information about when Amazon S3 considers a bucket public, see
-%% The Meaning of "Public".
+%% The Meaning of &quot;Public&quot;.
 %%
 %% The following operations are related to `GetBucketPolicyStatus':
 %%
@@ -2902,13 +2920,13 @@ get_bucket_policy_status(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% For information about replication configuration, see Replication in the
 %% Amazon S3 User Guide.
 %%
-%% This action requires permissions for the `s3:GetReplicationConfiguration'
-%% action. For more information about permissions, see Using Bucket Policies
-%% and User Policies.
+%% This action requires permissions for the
+%% `s3:GetReplicationConfiguration' action. For more information about
+%% permissions, see Using Bucket Policies and User Policies.
 %%
-%% If you include the `Filter' element in a replication configuration, you
-%% must also include the `DeleteMarkerReplication' and `Priority' elements.
-%% The response also returns those elements.
+%% If you include the `Filter' element in a replication configuration,
+%% you must also include the `DeleteMarkerReplication' and `Priority'
+%% elements. The response also returns those elements.
 %%
 %% For information about `GetBucketReplication' errors, see List of
 %% replication-related error codes
@@ -3037,8 +3055,8 @@ get_bucket_tagging(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% owner.
 %%
 %% This implementation also returns the MFA Delete status of the versioning
-%% state. If the MFA Delete status is `enabled', the bucket owner must use an
-%% authentication device to change the versioning state of the bucket.
+%% state. If the MFA Delete status is `enabled', the bucket owner must
+%% use an authentication device to change the versioning state of the bucket.
 %%
 %% The following operations are related to `GetBucketVersioning':
 %%
@@ -3082,11 +3100,11 @@ get_bucket_versioning(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% adding a website configuration. For more information about hosting
 %% websites, see Hosting Websites on Amazon S3.
 %%
-%% This GET action requires the `S3:GetBucketWebsite' permission. By default,
-%% only the bucket owner can read the bucket website configuration. However,
-%% bucket owners can allow other users to read the website configuration by
-%% writing a bucket policy granting them the `S3:GetBucketWebsite'
-%% permission.
+%% This GET action requires the `S3:GetBucketWebsite' permission. By
+%% default, only the bucket owner can read the bucket website configuration.
+%% However, bucket owners can allow other users to read the website
+%% configuration by writing a bucket policy granting them the
+%% `S3:GetBucketWebsite' permission.
 %%
 %% The following operations are related to `DeleteBucketWebsite':
 %%
@@ -3124,9 +3142,9 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves objects from Amazon S3.
 %%
-%% To use `GET', you must have `READ' access to the object. If you grant
-%% `READ' access to the anonymous user, you can return the object without
-%% using an authorization header.
+%% To use `GET', you must have `READ' access to the object. If you
+%% grant `READ' access to the anonymous user, you can return the object
+%% without using an authorization header.
 %%
 %% An Amazon S3 bucket has no directory hierarchy such as you would find in a
 %% typical computer file system. You can, however, create a logical hierarchy
@@ -3135,11 +3153,12 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% `photos/2006/February/sample.jpg'.
 %%
 %% To get an object from such a logical hierarchy, specify the full key name
-%% for the object in the `GET' operation. For a virtual hosted-style request
-%% example, if you have the object `photos/2006/February/sample.jpg', specify
-%% the resource as `/photos/2006/February/sample.jpg'. For a path-style
-%% request example, if you have the object `photos/2006/February/sample.jpg'
-%% in the bucket named `examplebucket', specify the resource as
+%% for the object in the `GET' operation. For a virtual hosted-style
+%% request example, if you have the object
+%% `photos/2006/February/sample.jpg', specify the resource as
+%% `/photos/2006/February/sample.jpg'. For a path-style request example,
+%% if you have the object `photos/2006/February/sample.jpg' in the bucket
+%% named `examplebucket', specify the resource as
 %% `/examplebucket/photos/2006/February/sample.jpg'. For more information
 %% about request types, see HTTP Host Header Bucket Specification.
 %%
@@ -3153,11 +3172,11 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% returns an `InvalidObjectStateError' error. For information about
 %% restoring archived objects, see Restoring Archived Objects.
 %%
-%% Encryption request headers, like `x-amz-server-side-encryption', should
-%% not be sent for GET requests if your object uses server-side encryption
-%% with KMS keys (SSE-KMS) or server-side encryption with Amazon S3–managed
-%% encryption keys (SSE-S3). If your object does use these types of keys,
-%% you’ll get an HTTP 400 BadRequest error.
+%% Encryption request headers, like `x-amz-server-side-encryption',
+%% should not be sent for GET requests if your object uses server-side
+%% encryption with KMS keys (SSE-KMS) or server-side encryption with Amazon
+%% S3–managed encryption keys (SSE-S3). If your object does use these types
+%% of keys, you’ll get an HTTP 400 BadRequest error.
 %%
 %% If you encrypt an object by using server-side encryption with
 %% customer-provided encryption keys (SSE-C) when you store the object in
@@ -3174,8 +3193,8 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% (Using Customer-Provided Encryption Keys).
 %%
 %% Assuming you have the relevant permission to read object tags, the
-%% response also returns the `x-amz-tagging-count' header that provides the
-%% count of number of tags associated with the object. You can use
+%% response also returns the `x-amz-tagging-count' header that provides
+%% the count of number of tags associated with the object. You can use
 %% GetObjectTagging to retrieve the tag set associated with an object.
 %%
 %% Permissions
@@ -3185,24 +3204,26 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% If the object you request does not exist, the error Amazon S3 returns
 %% depends on whether you also have the `s3:ListBucket' permission.
 %%
-%% <ul> <li> If you have the `s3:ListBucket' permission on the bucket, Amazon
-%% S3 will return an HTTP status code 404 ("no such key") error.
+%% <ul> <li> If you have the `s3:ListBucket' permission on the bucket,
+%% Amazon S3 will return an HTTP status code 404 (&quot;no such key&quot;)
+%% error.
 %%
 %% </li> <li> If you don’t have the `s3:ListBucket' permission, Amazon S3
-%% will return an HTTP status code 403 ("access denied") error.
+%% will return an HTTP status code 403 (&quot;access denied&quot;) error.
 %%
 %% </li> </ul> Versioning
 %%
 %% By default, the GET action returns the current version of an object. To
 %% return a different version, use the `versionId' subresource.
 %%
-%% If you supply a `versionId', you need the `s3:GetObjectVersion' permission
-%% to access a specific version of an object. If you request a specific
-%% version, you do not need to have the `s3:GetObject' permission.
+%% If you supply a `versionId', you need the `s3:GetObjectVersion'
+%% permission to access a specific version of an object. If you request a
+%% specific version, you do not need to have the `s3:GetObject'
+%% permission.
 %%
 %% If the current version of the object is a delete marker, Amazon S3 behaves
-%% as if the object was deleted and includes `x-amz-delete-marker: true' in
-%% the response.
+%% as if the object was deleted and includes `x-amz-delete-marker: true'
+%% in the response.
 %%
 %% For more information about versioning, see PutBucketVersioning.
 %%
@@ -3218,9 +3239,10 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% of headers you can override using these parameters is a subset of the
 %% headers that Amazon S3 accepts when you create an object. The response
 %% headers that you can override for the GET response are `Content-Type',
-%% `Content-Language', `Expires', `Cache-Control', `Content-Disposition', and
-%% `Content-Encoding'. To override these header values in the GET response,
-%% you use the following request parameters.
+%% `Content-Language', `Expires', `Cache-Control',
+%% `Content-Disposition', and `Content-Encoding'. To override these
+%% header values in the GET response, you use the following request
+%% parameters.
 %%
 %% You must sign the request, either using an Authorization header or a
 %% presigned URL, when using these parameters. They cannot be used with an
@@ -3240,15 +3262,15 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %%
 %% </li> </ul> Additional Considerations about Request Headers
 %%
-%% If both of the `If-Match' and `If-Unmodified-Since' headers are present in
-%% the request as follows: `If-Match' condition evaluates to `true', and;
-%% `If-Unmodified-Since' condition evaluates to `false'; then, S3 returns 200
-%% OK and the data requested.
+%% If both of the `If-Match' and `If-Unmodified-Since' headers are
+%% present in the request as follows: `If-Match' condition evaluates to
+%% `true', and; `If-Unmodified-Since' condition evaluates to
+%% `false'; then, S3 returns 200 OK and the data requested.
 %%
-%% If both of the `If-None-Match' and `If-Modified-Since' headers are present
-%% in the request as follows:` If-None-Match' condition evaluates to `false',
-%% and; `If-Modified-Since' condition evaluates to `true'; then, S3 returns
-%% 304 Not Modified response code.
+%% If both of the `If-None-Match' and `If-Modified-Since' headers are
+%% present in the request as follows:` If-None-Match' condition evaluates
+%% to `false', and; `If-Modified-Since' condition evaluates to
+%% `true'; then, S3 returns 304 Not Modified response code.
 %%
 %% For more information about conditional requests, see RFC 7232.
 %%
@@ -3359,8 +3381,8 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% @doc Returns the access control list (ACL) of an object.
 %%
 %% To use this operation, you must have `s3:GetObjectAcl' permissions or
-%% `READ_ACP' access to the object. For more information, see Mapping of ACL
-%% permissions and access policy permissions in the Amazon S3 User Guide
+%% `READ_ACP' access to the object. For more information, see Mapping of
+%% ACL permissions and access policy permissions in the Amazon S3 User Guide
 %%
 %% This action is not supported by Amazon S3 on Outposts.
 %%
@@ -3438,14 +3460,16 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves all the metadata from an object without returning the
 %% object itself.
 %%
-%% This action is useful if you're interested only in an object's metadata.
-%% To use `GetObjectAttributes', you must have READ access to the object.
+%% This action is useful if you're interested only in an object's
+%% metadata. To use `GetObjectAttributes', you must have READ access to
+%% the object.
 %%
-%% `GetObjectAttributes' combines the functionality of `GetObjectAcl',
-%% `GetObjectLegalHold', `GetObjectLockConfiguration', `GetObjectRetention',
-%% `GetObjectTagging', `HeadObject', and `ListParts'. All of the data
-%% returned with each of those individual calls can be returned with a single
-%% call to `GetObjectAttributes'.
+%% `GetObjectAttributes' combines the functionality of
+%% `GetObjectAcl', `GetObjectLegalHold',
+%% `GetObjectLockConfiguration', `GetObjectRetention',
+%% `GetObjectTagging', `HeadObject', and `ListParts'. All of the
+%% data returned with each of those individual calls can be returned with a
+%% single call to `GetObjectAttributes'.
 %%
 %% If you encrypt an object by using server-side encryption with
 %% customer-provided encryption keys (SSE-C) when you store the object in
@@ -3461,10 +3485,10 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% </li> </ul> For more information about SSE-C, see Server-Side Encryption
 %% (Using Customer-Provided Encryption Keys) in the Amazon S3 User Guide.
 %%
-%% Encryption request headers, such as `x-amz-server-side-encryption', should
-%% not be sent for GET requests if your object uses server-side encryption
-%% with Amazon Web Services KMS keys stored in Amazon Web Services Key
-%% Management Service (SSE-KMS) or server-side encryption with Amazon S3
+%% Encryption request headers, such as `x-amz-server-side-encryption',
+%% should not be sent for GET requests if your object uses server-side
+%% encryption with Amazon Web Services KMS keys stored in Amazon Web Services
+%% Key Management Service (SSE-KMS) or server-side encryption with Amazon S3
 %% managed encryption keys (SSE-S3). If your object does use these types of
 %% keys, you'll get an HTTP `400 Bad Request' error.
 %%
@@ -3473,17 +3497,17 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% Consider the following when using request headers:
 %%
-%% <ul> <li> If both of the `If-Match' and `If-Unmodified-Since' headers are
-%% present in the request as follows, then Amazon S3 returns the HTTP status
-%% code `200 OK' and the data requested:
+%% <ul> <li> If both of the `If-Match' and `If-Unmodified-Since'
+%% headers are present in the request as follows, then Amazon S3 returns the
+%% HTTP status code `200 OK' and the data requested:
 %%
 %% <ul> <li> `If-Match' condition evaluates to `true'.
 %%
 %% </li> <li> `If-Unmodified-Since' condition evaluates to `false'.
 %%
 %% </li> </ul> </li> <li> If both of the `If-None-Match' and
-%% `If-Modified-Since' headers are present in the request as follows, then
-%% Amazon S3 returns the HTTP status code `304 Not Modified':
+%% `If-Modified-Since' headers are present in the request as follows,
+%% then Amazon S3 returns the HTTP status code `304 Not Modified':
 %%
 %% <ul> <li> `If-None-Match' condition evaluates to `false'.
 %%
@@ -3496,20 +3520,24 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %%
 %% The permissions that you need to use this operation depend on whether the
 %% bucket is versioned. If the bucket is versioned, you need both the
-%% `s3:GetObjectVersion' and `s3:GetObjectVersionAttributes' permissions for
-%% this operation. If the bucket is not versioned, you need the
-%% `s3:GetObject' and `s3:GetObjectAttributes' permissions. For more
-%% information, see Specifying Permissions in a Policy in the Amazon S3 User
-%% Guide. If the object that you request does not exist, the error Amazon S3
-%% returns depends on whether you also have the `s3:ListBucket' permission.
+%% `s3:GetObjectVersion' and `s3:GetObjectVersionAttributes'
+%% permissions for this operation. If the bucket is not versioned, you need
+%% the `s3:GetObject' and `s3:GetObjectAttributes' permissions. For
+%% more information, see Specifying Permissions in a Policy in the Amazon S3
+%% User Guide. If the object that you request does not exist, the error
+%% Amazon S3 returns depends on whether you also have the `s3:ListBucket'
+%% permission.
 %%
-%% <ul> <li> If you have the `s3:ListBucket' permission on the bucket, Amazon
-%% S3 returns an HTTP status code `404 Not Found' ("no such key") error.
+%% <ul> <li> If you have the `s3:ListBucket' permission on the bucket,
+%% Amazon S3 returns an HTTP status code `404 Not Found' (&quot;no such
+%% key&quot;) error.
 %%
-%% </li> <li> If you don't have the `s3:ListBucket' permission, Amazon S3
-%% returns an HTTP status code `403 Forbidden' ("access denied") error.
+%% </li> <li> If you don't have the `s3:ListBucket' permission,
+%% Amazon S3 returns an HTTP status code `403 Forbidden' (&quot;access
+%% denied&quot;) error.
 %%
-%% </li> </ul> The following actions are related to `GetObjectAttributes':
+%% </li> </ul> The following actions are related to
+%% `GetObjectAttributes':
 %%
 %% <ul> <li> GetObject
 %%
@@ -3786,9 +3814,9 @@ get_object_tagging(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns torrent files from a bucket.
 %%
-%% BitTorrent can save you bandwidth when you're distributing large files.
-%% For more information about BitTorrent, see Using BitTorrent with Amazon
-%% S3.
+%% BitTorrent can save you bandwidth when you're distributing large
+%% files. For more information about BitTorrent, see Using BitTorrent with
+%% Amazon S3.
 %%
 %% You can get torrent only for objects that are less than 5 GB in size, and
 %% that are not encrypted using server-side encryption with a
@@ -3850,19 +3878,19 @@ get_object_torrent(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves the `PublicAccessBlock' configuration for an Amazon S3
 %% bucket.
 %%
-%% To use this operation, you must have the `s3:GetBucketPublicAccessBlock'
-%% permission. For more information about Amazon S3 permissions, see
-%% Specifying Permissions in a Policy.
+%% To use this operation, you must have the
+%% `s3:GetBucketPublicAccessBlock' permission. For more information about
+%% Amazon S3 permissions, see Specifying Permissions in a Policy.
 %%
 %% When Amazon S3 evaluates the `PublicAccessBlock' configuration for a
-%% bucket or an object, it checks the `PublicAccessBlock' configuration for
-%% both the bucket (or the bucket that contains the object) and the bucket
-%% owner's account. If the `PublicAccessBlock' settings are different between
-%% the bucket and the account, Amazon S3 uses the most restrictive
-%% combination of the bucket-level and account-level settings.
+%% bucket or an object, it checks the `PublicAccessBlock' configuration
+%% for both the bucket (or the bucket that contains the object) and the
+%% bucket owner's account. If the `PublicAccessBlock' settings are
+%% different between the bucket and the account, Amazon S3 uses the most
+%% restrictive combination of the bucket-level and account-level settings.
 %%
 %% For more information about when Amazon S3 considers a bucket or an object
-%% public, see The Meaning of "Public".
+%% public, see The Meaning of &quot;Public&quot;.
 %%
 %% The following operations are related to `GetPublicAccessBlock':
 %%
@@ -3905,19 +3933,19 @@ get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% @doc This action is useful to determine if a bucket exists and you have
 %% permission to access it.
 %%
-%% The action returns a `200 OK' if the bucket exists and you have permission
-%% to access it.
+%% The action returns a `200 OK' if the bucket exists and you have
+%% permission to access it.
 %%
 %% If the bucket does not exist or you do not have permission to access it,
-%% the `HEAD' request returns a generic `404 Not Found' or `403 Forbidden'
-%% code. A message body is not included, so you cannot determine the
-%% exception beyond these error codes.
+%% the `HEAD' request returns a generic `404 Not Found' or `403
+%% Forbidden' code. A message body is not included, so you cannot
+%% determine the exception beyond these error codes.
 %%
 %% To use this operation, you must have permissions to perform the
-%% `s3:ListBucket' action. The bucket owner has this permission by default
-%% and can grant this permission to others. For more information about
-%% permissions, see Permissions Related to Bucket Subresource Operations and
-%% Managing Access Permissions to Your Amazon S3 Resources.
+%% `s3:ListBucket' action. The bucket owner has this permission by
+%% default and can grant this permission to others. For more information
+%% about permissions, see Permissions Related to Bucket Subresource
+%% Operations and Managing Access Permissions to Your Amazon S3 Resources.
 %%
 %% To use this API against an access point, you must provide the alias of the
 %% access point in place of the bucket name or specify the access point ARN.
@@ -3954,14 +3982,15 @@ head_bucket(Client, Bucket, Input0, Options0) ->
 %% @doc The HEAD action retrieves metadata from an object without returning
 %% the object itself.
 %%
-%% This action is useful if you're only interested in an object's metadata.
-%% To use HEAD, you must have READ access to the object.
+%% This action is useful if you're only interested in an object's
+%% metadata. To use HEAD, you must have READ access to the object.
 %%
-%% A `HEAD' request has the same options as a `GET' action on an object. The
-%% response is identical to the `GET' response except that there is no
-%% response body. Because of this, if the `HEAD' request generates an error,
-%% it returns a generic `404 Not Found' or `403 Forbidden' code. It is not
-%% possible to retrieve the exact exception beyond these error codes.
+%% A `HEAD' request has the same options as a `GET' action on an
+%% object. The response is identical to the `GET' response except that
+%% there is no response body. Because of this, if the `HEAD' request
+%% generates an error, it returns a generic `404 Not Found' or `403
+%% Forbidden' code. It is not possible to retrieve the exact exception
+%% beyond these error codes.
 %%
 %% If you encrypt an object by using server-side encryption with
 %% customer-provided encryption keys (SSE-C) when you store the object in
@@ -3977,11 +4006,11 @@ head_bucket(Client, Bucket, Input0, Options0) ->
 %% </li> </ul> For more information about SSE-C, see Server-Side Encryption
 %% (Using Customer-Provided Encryption Keys).
 %%
-%% Encryption request headers, like `x-amz-server-side-encryption', should
-%% not be sent for GET requests if your object uses server-side encryption
-%% with KMS keys (SSE-KMS) or server-side encryption with Amazon S3–managed
-%% encryption keys (SSE-S3). If your object does use these types of keys,
-%% you’ll get an HTTP 400 BadRequest error.
+%% Encryption request headers, like `x-amz-server-side-encryption',
+%% should not be sent for GET requests if your object uses server-side
+%% encryption with KMS keys (SSE-KMS) or server-side encryption with Amazon
+%% S3–managed encryption keys (SSE-S3). If your object does use these types
+%% of keys, you’ll get an HTTP 400 BadRequest error.
 %%
 %% The last modified property in this case is the creation date of the
 %% object.
@@ -4007,7 +4036,8 @@ head_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% </li> <li> `If-Modified-Since' condition evaluates to `true';
 %%
-%% </li> </ul> Then Amazon S3 returns the `304 Not Modified' response code.
+%% </li> </ul> Then Amazon S3 returns the `304 Not Modified' response
+%% code.
 %%
 %% </li> </ul> For more information about conditional requests, see RFC 7232.
 %%
@@ -4018,11 +4048,11 @@ head_bucket(Client, Bucket, Input0, Options0) ->
 %% If the object you request does not exist, the error Amazon S3 returns
 %% depends on whether you also have the s3:ListBucket permission.
 %%
-%% <ul> <li> If you have the `s3:ListBucket' permission on the bucket, Amazon
-%% S3 returns an HTTP status code 404 ("no such key") error.
+%% <ul> <li> If you have the `s3:ListBucket' permission on the bucket,
+%% Amazon S3 returns an HTTP status code 404 (&quot;no such key&quot;) error.
 %%
 %% </li> <li> If you don’t have the `s3:ListBucket' permission, Amazon S3
-%% returns an HTTP status code 403 ("access denied") error.
+%% returns an HTTP status code 403 (&quot;access denied&quot;) error.
 %%
 %% </li> </ul> The following actions are related to `HeadObject':
 %%
@@ -4124,10 +4154,10 @@ head_object(Client, Bucket, Key, Input0, Options0) ->
 %% This action supports list pagination and does not return more than 100
 %% configurations at a time. You should always check the `IsTruncated'
 %% element in the response. If there are no more configurations to list,
-%% `IsTruncated' is set to false. If there are more configurations to list,
-%% `IsTruncated' is set to true, and there will be a value in
-%% `NextContinuationToken'. You use the `NextContinuationToken' value to
-%% continue the pagination of the list by passing the value in
+%% `IsTruncated' is set to false. If there are more configurations to
+%% list, `IsTruncated' is set to true, and there will be a value in
+%% `NextContinuationToken'. You use the `NextContinuationToken' value
+%% to continue the pagination of the list by passing the value in
 %% continuation-token in the request to `GET' the next page.
 %%
 %% To use this operation, you must have permissions to perform the
@@ -4244,13 +4274,13 @@ list_bucket_intelligent_tiering_configurations(Client, Bucket, QueryMap, Headers
 %% You can have up to 1,000 analytics configurations per bucket.
 %%
 %% This action supports list pagination and does not return more than 100
-%% configurations at a time. Always check the `IsTruncated' element in the
-%% response. If there are no more configurations to list, `IsTruncated' is
-%% set to false. If there are more configurations to list, `IsTruncated' is
-%% set to true, and there is a value in `NextContinuationToken'. You use the
-%% `NextContinuationToken' value to continue the pagination of the list by
-%% passing the value in continuation-token in the request to `GET' the next
-%% page.
+%% configurations at a time. Always check the `IsTruncated' element in
+%% the response. If there are no more configurations to list,
+%% `IsTruncated' is set to false. If there are more configurations to
+%% list, `IsTruncated' is set to true, and there is a value in
+%% `NextContinuationToken'. You use the `NextContinuationToken' value
+%% to continue the pagination of the list by passing the value in
+%% continuation-token in the request to `GET' the next page.
 %%
 %% To use this operation, you must have permissions to perform the
 %% `s3:GetInventoryConfiguration' action. The bucket owner has this
@@ -4310,25 +4340,26 @@ list_bucket_inventory_configurations(Client, Bucket, QueryMap, HeadersMap, Optio
 %% to 1,000 configurations per bucket.
 %%
 %% This action supports list pagination and does not return more than 100
-%% configurations at a time. Always check the `IsTruncated' element in the
-%% response. If there are no more configurations to list, `IsTruncated' is
-%% set to false. If there are more configurations to list, `IsTruncated' is
-%% set to true, and there is a value in `NextContinuationToken'. You use the
-%% `NextContinuationToken' value to continue the pagination of the list by
-%% passing the value in `continuation-token' in the request to `GET' the next
-%% page.
+%% configurations at a time. Always check the `IsTruncated' element in
+%% the response. If there are no more configurations to list,
+%% `IsTruncated' is set to false. If there are more configurations to
+%% list, `IsTruncated' is set to true, and there is a value in
+%% `NextContinuationToken'. You use the `NextContinuationToken' value
+%% to continue the pagination of the list by passing the value in
+%% `continuation-token' in the request to `GET' the next page.
 %%
 %% To use this operation, you must have permissions to perform the
-%% `s3:GetMetricsConfiguration' action. The bucket owner has this permission
-%% by default. The bucket owner can grant this permission to others. For more
-%% information about permissions, see Permissions Related to Bucket
-%% Subresource Operations and Managing Access Permissions to Your Amazon S3
-%% Resources.
+%% `s3:GetMetricsConfiguration' action. The bucket owner has this
+%% permission by default. The bucket owner can grant this permission to
+%% others. For more information about permissions, see Permissions Related to
+%% Bucket Subresource Operations and Managing Access Permissions to Your
+%% Amazon S3 Resources.
 %%
 %% For more information about metrics configurations and CloudWatch request
 %% metrics, see Monitoring Metrics with Amazon CloudWatch.
 %%
-%% The following operations are related to `ListBucketMetricsConfigurations':
+%% The following operations are related to
+%% `ListBucketMetricsConfigurations':
 %%
 %% <ul> <li> PutBucketMetricsConfiguration
 %%
@@ -4371,7 +4402,8 @@ list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap, Options
 %% @doc Returns a list of all buckets owned by the authenticated sender of
 %% the request.
 %%
-%% To use this operation, you must have the `s3:ListAllMyBuckets' permission.
+%% To use this operation, you must have the `s3:ListAllMyBuckets'
+%% permission.
 list_buckets(Client)
   when is_map(Client) ->
     list_buckets(Client, #{}, #{}).
@@ -4597,20 +4629,20 @@ list_objects(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% each request.
 %%
 %% You can use the request parameters as selection criteria to return a
-%% subset of the objects in a bucket. A `200 OK' response can contain valid
-%% or invalid XML. Make sure to design your application to parse the contents
-%% of the response and handle it appropriately. Objects are returned sorted
-%% in an ascending order of the respective key names in the list. For more
-%% information about listing objects, see Listing object keys
+%% subset of the objects in a bucket. A `200 OK' response can contain
+%% valid or invalid XML. Make sure to design your application to parse the
+%% contents of the response and handle it appropriately. Objects are returned
+%% sorted in an ascending order of the respective key names in the list. For
+%% more information about listing objects, see Listing object keys
 %% programmatically
 %%
 %% To use this operation, you must have READ access to the bucket.
 %%
 %% To use this action in an Identity and Access Management (IAM) policy, you
-%% must have permissions to perform the `s3:ListBucket' action. The bucket
-%% owner has this permission by default and can grant this permission to
-%% others. For more information about permissions, see Permissions Related to
-%% Bucket Subresource Operations and Managing Access Permissions to Your
+%% must have permissions to perform the `s3:ListBucket' action. The
+%% bucket owner has this permission by default and can grant this permission
+%% to others. For more information about permissions, see Permissions Related
+%% to Bucket Subresource Operations and Managing Access Permissions to Your
 %% Amazon S3 Resources.
 %%
 %% This section describes the latest revision of this action. We recommend
@@ -4677,12 +4709,14 @@ list_objects_v2(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% returned by specifying the `max-parts' request parameter. If your
 %% multipart upload consists of more than 1,000 parts, the response returns
 %% an `IsTruncated' field with the value of true, and a
-%% `NextPartNumberMarker' element. In subsequent `ListParts' requests you can
-%% include the part-number-marker query string parameter and set its value to
-%% the `NextPartNumberMarker' field value from the previous response.
+%% `NextPartNumberMarker' element. In subsequent `ListParts' requests
+%% you can include the part-number-marker query string parameter and set its
+%% value to the `NextPartNumberMarker' field value from the previous
+%% response.
 %%
 %% If the upload was created using a checksum algorithm, you will need to
-%% have permission to the `kms:Decrypt' action for the request to succeed.
+%% have permission to the `kms:Decrypt' action for the request to
+%% succeed.
 %%
 %% For more information on multipart uploads, see Uploading Objects Using
 %% Multipart Upload.
@@ -4787,7 +4821,7 @@ list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, Options0)
 %% bucket increase.
 %%
 %% The name of the bucket used for Transfer Acceleration must be
-%% DNS-compliant and must not contain periods (".").
+%% DNS-compliant and must not contain periods (&quot;.&quot;).
 %%
 %% For more information about transfer acceleration, see Transfer
 %% Acceleration.
@@ -4832,7 +4866,8 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
 %% For more information, see Using ACLs. To set the ACL of a bucket, you must
 %% have `WRITE_ACP' permission.
 %%
-%% You can use one of the following two ways to set a bucket's permissions:
+%% You can use one of the following two ways to set a bucket's
+%% permissions:
 %%
 %% <ul> <li> Specify the ACL in the request body
 %%
@@ -4858,22 +4893,22 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% You can set access permissions using one of the following methods:
 %%
-%% <ul> <li> Specify a canned ACL with the `x-amz-acl' request header. Amazon
-%% S3 supports a set of predefined ACLs, known as canned ACLs. Each canned
-%% ACL has a predefined set of grantees and permissions. Specify the canned
-%% ACL name as the value of `x-amz-acl'. If you use this header, you cannot
-%% use other access control-specific headers in your request. For more
-%% information, see Canned ACL.
+%% <ul> <li> Specify a canned ACL with the `x-amz-acl' request header.
+%% Amazon S3 supports a set of predefined ACLs, known as canned ACLs. Each
+%% canned ACL has a predefined set of grantees and permissions. Specify the
+%% canned ACL name as the value of `x-amz-acl'. If you use this header,
+%% you cannot use other access control-specific headers in your request. For
+%% more information, see Canned ACL.
 %%
 %% </li> <li> Specify access permissions explicitly with the
-%% `x-amz-grant-read', `x-amz-grant-read-acp', `x-amz-grant-write-acp', and
-%% `x-amz-grant-full-control' headers. When using these headers, you specify
-%% explicit access permissions and grantees (Amazon Web Services accounts or
-%% Amazon S3 groups) who will receive the permission. If you use these
-%% ACL-specific headers, you cannot use the `x-amz-acl' header to set a
-%% canned ACL. These parameters map to the set of permissions that Amazon S3
-%% supports in an ACL. For more information, see Access Control List (ACL)
-%% Overview.
+%% `x-amz-grant-read', `x-amz-grant-read-acp',
+%% `x-amz-grant-write-acp', and `x-amz-grant-full-control' headers.
+%% When using these headers, you specify explicit access permissions and
+%% grantees (Amazon Web Services accounts or Amazon S3 groups) who will
+%% receive the permission. If you use these ACL-specific headers, you cannot
+%% use the `x-amz-acl' header to set a canned ACL. These parameters map
+%% to the set of permissions that Amazon S3 supports in an ACL. For more
+%% information, see Access Control List (ACL) Overview.
 %%
 %% You specify each grantee as a type=value pair, where the type is one of
 %% the following:
@@ -4881,10 +4916,11 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
 %% <ul> <li> `id' – if the value specified is the canonical user ID of an
 %% Amazon Web Services account
 %%
-%% </li> <li> `uri' – if you are granting permissions to a predefined group
+%% </li> <li> `uri' – if you are granting permissions to a predefined
+%% group
 %%
-%% </li> <li> `emailAddress' – if the value specified is the email address of
-%% an Amazon Web Services account
+%% </li> <li> `emailAddress' – if the value specified is the email
+%% address of an Amazon Web Services account
 %%
 %% Using email addresses to specify a grantee is only supported in the
 %% following Amazon Web Services Regions:
@@ -4908,13 +4944,14 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
 %% For a list of all the Amazon S3 supported Regions and endpoints, see
 %% Regions and Endpoints in the Amazon Web Services General Reference.
 %%
-%% </li> </ul> For example, the following `x-amz-grant-write' header grants
-%% create, overwrite, and delete objects permission to LogDelivery group
-%% predefined by Amazon S3 and two Amazon Web Services accounts identified by
-%% their email addresses.
+%% </li> </ul> For example, the following `x-amz-grant-write' header
+%% grants create, overwrite, and delete objects permission to LogDelivery
+%% group predefined by Amazon S3 and two Amazon Web Services accounts
+%% identified by their email addresses.
 %%
-%% `x-amz-grant-write: uri="http://acs.amazonaws.com/groups/s3/LogDelivery",
-%% id="111122223333", id="555566667777" '
+%% `x-amz-grant-write:
+%% uri=&quot;http://acs.amazonaws.com/groups/s3/LogDelivery&quot;,
+%% id=&quot;111122223333&quot;, id=&quot;555566667777&quot; '
 %%
 %% </li> </ul> You can use either a canned ACL or specify access permissions
 %% explicitly. You cannot do both.
@@ -4926,21 +4963,24 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% <ul> <li> By the person's ID:
 %%
-%% `<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-%% xsi:type="CanonicalUser"><ID><>ID<></ID><DisplayName><>GranteesEmail<></DisplayName>
-%% </Grantee>'
+%% `&lt;Grantee
+%% xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+%% xsi:type=&quot;CanonicalUser&quot;&gt;&lt;ID&gt;&lt;&gt;ID&lt;&gt;&lt;/ID&gt;&lt;DisplayName&gt;&lt;&gt;GranteesEmail&lt;&gt;&lt;/DisplayName&gt;
+%% &lt;/Grantee&gt;'
 %%
 %% DisplayName is optional and ignored in the request
 %%
 %% </li> <li> By URI:
 %%
-%% `<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-%% xsi:type="Group"><URI><>http://acs.amazonaws.com/groups/global/AuthenticatedUsers<></URI></Grantee>'
+%% `&lt;Grantee
+%% xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+%% xsi:type=&quot;Group&quot;&gt;&lt;URI&gt;&lt;&gt;http://acs.amazonaws.com/groups/global/AuthenticatedUsers&lt;&gt;&lt;/URI&gt;&lt;/Grantee&gt;'
 %%
 %% </li> <li> By Email address:
 %%
-%% `<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-%% xsi:type="AmazonCustomerByEmail"><EmailAddress><>Grantees@email.com<></EmailAddress>lt;/Grantee>'
+%% `&lt;Grantee
+%% xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+%% xsi:type=&quot;AmazonCustomerByEmail&quot;&gt;&lt;EmailAddress&gt;&lt;&gt;Grantees@email.com&lt;&gt;&lt;/EmailAddress&gt;lt;/Grantee&gt;'
 %%
 %% The grantee is resolved to the CanonicalUser and, in a response to a GET
 %% Object acl request, appears as the CanonicalUser.
@@ -5015,13 +5055,13 @@ put_bucket_acl(Client, Bucket, Input0, Options0) ->
 %% You can have up to 1,000 analytics configurations per bucket.
 %%
 %% You can choose to have storage class analysis export analysis reports sent
-%% to a comma-separated values (CSV) flat file. See the `DataExport' request
-%% element. Reports are updated daily and are based on the object filters
-%% that you configure. When selecting data export, you specify a destination
-%% bucket and an optional destination prefix where the file is written. You
-%% can export the data to a destination bucket in a different account.
-%% However, the destination bucket must be in the same Region as the bucket
-%% that you are making the PUT analytics configuration to. For more
+%% to a comma-separated values (CSV) flat file. See the `DataExport'
+%% request element. Reports are updated daily and are based on the object
+%% filters that you configure. When selecting data export, you specify a
+%% destination bucket and an optional destination prefix where the file is
+%% written. You can export the data to a destination bucket in a different
+%% account. However, the destination bucket must be in the same Region as the
+%% bucket that you are making the PUT analytics configuration to. For more
 %% information, see Amazon S3 Analytics – Storage Class Analysis.
 %%
 %% You must create a bucket policy on the destination bucket where the
@@ -5104,9 +5144,9 @@ put_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% You set this configuration on a bucket so that the bucket can service
 %% cross-origin requests. For example, you might want to enable a request
-%% whose origin is `http://www.example.com' to access your Amazon S3 bucket
-%% at `my.example.bucket.com' by using the browser's `XMLHttpRequest'
-%% capability.
+%% whose origin is `http://www.example.com' to access your Amazon S3
+%% bucket at `my.example.bucket.com' by using the browser's
+%% `XMLHttpRequest' capability.
 %%
 %% To enable cross-origin resource sharing (CORS) on a bucket, you add the
 %% `cors' subresource to the bucket. The `cors' subresource is an XML
@@ -5115,21 +5155,21 @@ put_bucket_analytics_configuration(Client, Bucket, Input0, Options0) ->
 %% KB in size.
 %%
 %% When Amazon S3 receives a cross-origin request (or a pre-flight OPTIONS
-%% request) against a bucket, it evaluates the `cors' configuration on the
-%% bucket and uses the first `CORSRule' rule that matches the incoming
-%% browser request to enable a cross-origin request. For a rule to match, the
-%% following conditions must be met:
+%% request) against a bucket, it evaluates the `cors' configuration on
+%% the bucket and uses the first `CORSRule' rule that matches the
+%% incoming browser request to enable a cross-origin request. For a rule to
+%% match, the following conditions must be met:
 %%
-%% <ul> <li> The request's `Origin' header must match `AllowedOrigin'
-%% elements.
+%% <ul> <li> The request's `Origin' header must match
+%% `AllowedOrigin' elements.
 %%
 %% </li> <li> The request method (for example, GET, PUT, HEAD, and so on) or
 %% the `Access-Control-Request-Method' header in case of a pre-flight
 %% `OPTIONS' request must be one of the `AllowedMethod' elements.
 %%
-%% </li> <li> Every header specified in the `Access-Control-Request-Headers'
-%% request header of a pre-flight request must match an `AllowedHeader'
-%% element.
+%% </li> <li> Every header specified in the
+%% `Access-Control-Request-Headers' request header of a pre-flight
+%% request must match an `AllowedHeader' element.
 %%
 %% </li> </ul> For more information about CORS, go to Enabling Cross-Origin
 %% Resource Sharing in the Amazon S3 User Guide.
@@ -5170,8 +5210,8 @@ put_bucket_cors(Client, Bucket, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
-%% @doc This action uses the `encryption' subresource to configure default
-%% encryption and Amazon S3 Bucket Key for an existing bucket.
+%% @doc This action uses the `encryption' subresource to configure
+%% default encryption and Amazon S3 Bucket Key for an existing bucket.
 %%
 %% Default encryption for a bucket can use server-side encryption with Amazon
 %% S3-managed keys (SSE-S3) or customer managed keys (SSE-KMS). If you
@@ -5250,7 +5290,8 @@ put_bucket_encryption(Client, Bucket, Input0, Options0) ->
 %% For more information, see Storage class for automatically optimizing
 %% frequently and infrequently accessed objects.
 %%
-%% Operations related to `PutBucketIntelligentTieringConfiguration' include:
+%% Operations related to `PutBucketIntelligentTieringConfiguration'
+%% include:
 %%
 %% <ul> <li> DeleteBucketIntelligentTieringConfiguration
 %%
@@ -5283,8 +5324,8 @@ put_bucket_encryption(Client, Bucket, Input0, Options0) ->
 %% <ul> <li> Code: AccessDenied
 %%
 %% </li> <li> Cause: You are not the owner of the specified bucket, or you do
-%% not have the `s3:PutIntelligentTieringConfiguration' bucket permission to
-%% set the configuration on the bucket.
+%% not have the `s3:PutIntelligentTieringConfiguration' bucket permission
+%% to set the configuration on the bucket.
 %%
 %% </li> </ul> </li> </ul>
 put_bucket_intelligent_tiering_configuration(Client, Bucket, Input) ->
@@ -5362,8 +5403,8 @@ put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) -
 %% <ul> <li> Code: AccessDenied
 %%
 %% </li> <li> Cause: You are not the owner of the specified bucket, or you do
-%% not have the `s3:PutInventoryConfiguration' bucket permission to set the
-%% configuration on the bucket.
+%% not have the `s3:PutInventoryConfiguration' bucket permission to set
+%% the configuration on the bucket.
 %%
 %% </li> </ul> </li> </ul> == Related Resources ==
 %%
@@ -5588,14 +5629,14 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% The bucket owner is automatically granted FULL_CONTROL to all logs. You
 %% use the `Grantee' request element to grant access to other people. The
-%% `Permissions' request element specifies the kind of access the grantee has
-%% to the logs.
+%% `Permissions' request element specifies the kind of access the grantee
+%% has to the logs.
 %%
 %% If the target bucket for log delivery uses the bucket owner enforced
-%% setting for S3 Object Ownership, you can't use the `Grantee' request
-%% element to grant access to others. Permissions can only be granted using
-%% policies. For more information, see Permissions for server access log
-%% delivery in the Amazon S3 User Guide.
+%% setting for S3 Object Ownership, you can't use the `Grantee'
+%% request element to grant access to others. Permissions can only be granted
+%% using policies. For more information, see Permissions for server access
+%% log delivery in the Amazon S3 User Guide.
 %%
 %% Grantee Values
 %%
@@ -5604,30 +5645,34 @@ put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% <ul> <li> By the person's ID:
 %%
-%% `<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-%% xsi:type="CanonicalUser"><ID><>ID<></ID><DisplayName><>GranteesEmail<></DisplayName>
-%% </Grantee>'
+%% `&lt;Grantee
+%% xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+%% xsi:type=&quot;CanonicalUser&quot;&gt;&lt;ID&gt;&lt;&gt;ID&lt;&gt;&lt;/ID&gt;&lt;DisplayName&gt;&lt;&gt;GranteesEmail&lt;&gt;&lt;/DisplayName&gt;
+%% &lt;/Grantee&gt;'
 %%
 %% DisplayName is optional and ignored in the request.
 %%
 %% </li> <li> By Email address:
 %%
-%% ` <Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-%% xsi:type="AmazonCustomerByEmail"><EmailAddress><>Grantees@email.com<></EmailAddress></Grantee>'
+%% ` &lt;Grantee
+%% xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+%% xsi:type=&quot;AmazonCustomerByEmail&quot;&gt;&lt;EmailAddress&gt;&lt;&gt;Grantees@email.com&lt;&gt;&lt;/EmailAddress&gt;&lt;/Grantee&gt;'
 %%
 %% The grantee is resolved to the CanonicalUser and, in a response to a GET
 %% Object acl request, appears as the CanonicalUser.
 %%
 %% </li> <li> By URI:
 %%
-%% `<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-%% xsi:type="Group"><URI><>http://acs.amazonaws.com/groups/global/AuthenticatedUsers<></URI></Grantee>'
+%% `&lt;Grantee
+%% xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+%% xsi:type=&quot;Group&quot;&gt;&lt;URI&gt;&lt;&gt;http://acs.amazonaws.com/groups/global/AuthenticatedUsers&lt;&gt;&lt;/URI&gt;&lt;/Grantee&gt;'
 %%
 %% </li> </ul> To enable logging, you use LoggingEnabled and its children
 %% request elements. To disable logging, you use an empty BucketLoggingStatus
 %% request element:
 %%
-%% `<BucketLoggingStatus xmlns="http://doc.s3.amazonaws.com/2006-03-01" />'
+%% `&lt;BucketLoggingStatus
+%% xmlns=&quot;http://doc.s3.amazonaws.com/2006-03-01&quot; /&gt;'
 %%
 %% For more information about server access logging, see Server Access
 %% Logging in the Amazon S3 User Guide.
@@ -5679,20 +5724,21 @@ put_bucket_logging(Client, Bucket, Input0, Options0) ->
 %%
 %% You can have up to 1,000 metrics configurations per bucket. If you're
 %% updating an existing metrics configuration, note that this is a full
-%% replacement of the existing metrics configuration. If you don't include
-%% the elements you want to keep, they are erased.
+%% replacement of the existing metrics configuration. If you don't
+%% include the elements you want to keep, they are erased.
 %%
 %% To use this operation, you must have permissions to perform the
-%% `s3:PutMetricsConfiguration' action. The bucket owner has this permission
-%% by default. The bucket owner can grant this permission to others. For more
-%% information about permissions, see Permissions Related to Bucket
-%% Subresource Operations and Managing Access Permissions to Your Amazon S3
-%% Resources.
+%% `s3:PutMetricsConfiguration' action. The bucket owner has this
+%% permission by default. The bucket owner can grant this permission to
+%% others. For more information about permissions, see Permissions Related to
+%% Bucket Subresource Operations and Managing Access Permissions to Your
+%% Amazon S3 Resources.
 %%
 %% For information about CloudWatch request metrics for Amazon S3, see
 %% Monitoring Metrics with Amazon CloudWatch.
 %%
-%% The following operations are related to `PutBucketMetricsConfiguration':
+%% The following operations are related to
+%% `PutBucketMetricsConfiguration':
 %%
 %% <ul> <li> DeleteBucketMetricsConfiguration
 %%
@@ -5779,9 +5825,9 @@ put_bucket_notification(Client, Bucket, Input0, Options0) ->
 %% the notification configuration will be an empty
 %% `NotificationConfiguration'.
 %%
-%% `<NotificationConfiguration>'
+%% `&lt;NotificationConfiguration&gt;'
 %%
-%% `</NotificationConfiguration>'
+%% `&lt;/NotificationConfiguration&gt;'
 %%
 %% This action replaces the existing notification configuration with the
 %% configuration you include in the request body.
@@ -5817,12 +5863,13 @@ put_bucket_notification(Client, Bucket, Input0, Options0) ->
 %% Responses
 %%
 %% If the configuration in the request body includes only one
-%% `TopicConfiguration' specifying only the `s3:ReducedRedundancyLostObject'
-%% event type, the response will also include the `x-amz-sns-test-message-id'
-%% header containing the message ID of the test notification sent to the
-%% topic.
+%% `TopicConfiguration' specifying only the
+%% `s3:ReducedRedundancyLostObject' event type, the response will also
+%% include the `x-amz-sns-test-message-id' header containing the message
+%% ID of the test notification sent to the topic.
 %%
-%% The following action is related to `PutBucketNotificationConfiguration':
+%% The following action is related to
+%% `PutBucketNotificationConfiguration':
 %%
 %% <ul> <li> GetBucketNotificationConfiguration
 %%
@@ -5855,9 +5902,9 @@ put_bucket_notification_configuration(Client, Bucket, Input0, Options0) ->
 
 %% @doc Creates or modifies `OwnershipControls' for an Amazon S3 bucket.
 %%
-%% To use this operation, you must have the `s3:PutBucketOwnershipControls'
-%% permission. For more information about Amazon S3 permissions, see
-%% Specifying permissions in a policy.
+%% To use this operation, you must have the
+%% `s3:PutBucketOwnershipControls' permission. For more information about
+%% Amazon S3 permissions, see Specifying permissions in a policy.
 %%
 %% For information about Amazon S3 Object Ownership, see Using object
 %% ownership.
@@ -5899,13 +5946,13 @@ put_bucket_ownership_controls(Client, Bucket, Input0, Options0) ->
 %%
 %% If you are using an identity other than the root user of the Amazon Web
 %% Services account that owns the bucket, the calling identity must have the
-%% `PutBucketPolicy' permissions on the specified bucket and belong to the
-%% bucket owner's account in order to use this operation.
+%% `PutBucketPolicy' permissions on the specified bucket and belong to
+%% the bucket owner's account in order to use this operation.
 %%
-%% If you don't have `PutBucketPolicy' permissions, Amazon S3 returns a `403
-%% Access Denied' error. If you have the correct permissions, but you're not
-%% using an identity that belongs to the bucket owner's account, Amazon S3
-%% returns a `405 Method Not Allowed' error.
+%% If you don't have `PutBucketPolicy' permissions, Amazon S3 returns
+%% a `403 Access Denied' error. If you have the correct permissions, but
+%% you're not using an identity that belongs to the bucket owner's
+%% account, Amazon S3 returns a `405 Method Not Allowed' error.
 %%
 %% As a security precaution, the root user of the Amazon Web Services account
 %% that owns a bucket can always use this operation, even if the policy
@@ -5979,13 +6026,13 @@ put_bucket_policy(Client, Bucket, Input0, Options0) ->
 %%
 %% Handling Replication of Encrypted Objects
 %%
-%% By default, Amazon S3 doesn't replicate objects that are stored at rest
-%% using server-side encryption with KMS keys. To replicate Amazon Web
+%% By default, Amazon S3 doesn't replicate objects that are stored at
+%% rest using server-side encryption with KMS keys. To replicate Amazon Web
 %% Services KMS-encrypted objects, add the following:
 %% `SourceSelectionCriteria', `SseKmsEncryptedObjects', `Status',
-%% `EncryptionConfiguration', and `ReplicaKmsKeyID'. For information about
-%% replication configuration, see Replicating Objects Created with SSE Using
-%% KMS keys.
+%% `EncryptionConfiguration', and `ReplicaKmsKeyID'. For information
+%% about replication configuration, see Replicating Objects Created with SSE
+%% Using KMS keys.
 %%
 %% For information on `PutBucketReplication' errors, see List of
 %% replication-related error codes
@@ -6177,8 +6224,8 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %% In order to enable MFA Delete, you must be the bucket owner. If you are
 %% the bucket owner and want to enable MFA Delete in the bucket versioning
 %% configuration, you must include the `x-amz-mfa request' header and the
-%% `Status' and the `MfaDelete' request elements in a request to set the
-%% versioning state of the bucket.
+%% `Status' and the `MfaDelete' request elements in a request to set
+%% the versioning state of the bucket.
 %%
 %% If you have an object expiration lifecycle policy in your non-versioned
 %% bucket and you want to maintain the same permanent delete behavior when
@@ -6233,16 +6280,16 @@ put_bucket_versioning(Client, Bucket, Input0, Options0) ->
 %% index document and any redirect rules. For more information, see Hosting
 %% Websites on Amazon S3.
 %%
-%% This PUT action requires the `S3:PutBucketWebsite' permission. By default,
-%% only the bucket owner can configure the website attached to a bucket;
-%% however, bucket owners can allow other users to set the website
+%% This PUT action requires the `S3:PutBucketWebsite' permission. By
+%% default, only the bucket owner can configure the website attached to a
+%% bucket; however, bucket owners can allow other users to set the website
 %% configuration by writing a bucket policy that grants them the
 %% `S3:PutBucketWebsite' permission.
 %%
-%% To redirect all website requests sent to the bucket's website endpoint,
-%% you add a website configuration with the following elements. Because all
-%% requests are sent to another website, you don't need to provide index
-%% document name for the bucket.
+%% To redirect all website requests sent to the bucket's website
+%% endpoint, you add a website configuration with the following elements.
+%% Because all requests are sent to another website, you don't need to
+%% provide index document name for the bucket.
 %%
 %% <ul> <li> `WebsiteConfiguration'
 %%
@@ -6342,12 +6389,12 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
 %% To successfully complete the `PutObject' request, you must have the
 %% `s3:PutObject' in your IAM permissions.
 %%
-%% To successfully change the objects acl of your `PutObject' request, you
-%% must have the `s3:PutObjectAcl' in your IAM permissions.
+%% To successfully change the objects acl of your `PutObject' request,
+%% you must have the `s3:PutObjectAcl' in your IAM permissions.
 %%
-%% The `Content-MD5' header is required for any request to upload an object
-%% with a retention period configured using Amazon S3 Object Lock. For more
-%% information about Amazon S3 Object Lock, see Amazon S3 Object Lock
+%% The `Content-MD5' header is required for any request to upload an
+%% object with a retention period configured using Amazon S3 Object Lock. For
+%% more information about Amazon S3 Object Lock, see Amazon S3 Object Lock
 %% Overview in the Amazon S3 User Guide.
 %%
 %% Server-side Encryption
@@ -6376,12 +6423,12 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
 %% If the bucket that you're uploading objects to uses the bucket owner
 %% enforced setting for S3 Object Ownership, ACLs are disabled and no longer
 %% affect permissions. Buckets that use this setting only accept PUT requests
-%% that don't specify an ACL or PUT requests that specify bucket owner full
-%% control ACLs, such as the `bucket-owner-full-control' canned ACL or an
-%% equivalent form of this ACL expressed in the XML format. PUT requests that
-%% contain other ACLs (for example, custom grants to certain Amazon Web
-%% Services accounts) fail and return a `400' error with the error code
-%% `AccessControlListNotSupported'.
+%% that don't specify an ACL or PUT requests that specify bucket owner
+%% full control ACLs, such as the `bucket-owner-full-control' canned ACL
+%% or an equivalent form of this ACL expressed in the XML format. PUT
+%% requests that contain other ACLs (for example, custom grants to certain
+%% Amazon Web Services accounts) fail and return a `400' error with the
+%% error code `AccessControlListNotSupported'.
 %%
 %% For more information, see Controlling ownership of objects and disabling
 %% ACLs in the Amazon S3 User Guide.
@@ -6509,8 +6556,8 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
 %% @doc Uses the `acl' subresource to set the access control list (ACL)
 %% permissions for a new or existing object in an S3 bucket.
 %%
-%% You must have `WRITE_ACP' permission to set the ACL of an object. For more
-%% information, see What permissions can I grant? in the Amazon S3 User
+%% You must have `WRITE_ACP' permission to set the ACL of an object. For
+%% more information, see What permissions can I grant? in the Amazon S3 User
 %% Guide.
 %%
 %% This action is not supported by Amazon S3 on Outposts.
@@ -6533,22 +6580,22 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% You can set access permissions using one of the following methods:
 %%
-%% <ul> <li> Specify a canned ACL with the `x-amz-acl' request header. Amazon
-%% S3 supports a set of predefined ACLs, known as canned ACLs. Each canned
-%% ACL has a predefined set of grantees and permissions. Specify the canned
-%% ACL name as the value of `x-amz-ac'l. If you use this header, you cannot
-%% use other access control-specific headers in your request. For more
-%% information, see Canned ACL.
+%% <ul> <li> Specify a canned ACL with the `x-amz-acl' request header.
+%% Amazon S3 supports a set of predefined ACLs, known as canned ACLs. Each
+%% canned ACL has a predefined set of grantees and permissions. Specify the
+%% canned ACL name as the value of `x-amz-ac'l. If you use this header,
+%% you cannot use other access control-specific headers in your request. For
+%% more information, see Canned ACL.
 %%
 %% </li> <li> Specify access permissions explicitly with the
-%% `x-amz-grant-read', `x-amz-grant-read-acp', `x-amz-grant-write-acp', and
-%% `x-amz-grant-full-control' headers. When using these headers, you specify
-%% explicit access permissions and grantees (Amazon Web Services accounts or
-%% Amazon S3 groups) who will receive the permission. If you use these
-%% ACL-specific headers, you cannot use `x-amz-acl' header to set a canned
-%% ACL. These parameters map to the set of permissions that Amazon S3
-%% supports in an ACL. For more information, see Access Control List (ACL)
-%% Overview.
+%% `x-amz-grant-read', `x-amz-grant-read-acp',
+%% `x-amz-grant-write-acp', and `x-amz-grant-full-control' headers.
+%% When using these headers, you specify explicit access permissions and
+%% grantees (Amazon Web Services accounts or Amazon S3 groups) who will
+%% receive the permission. If you use these ACL-specific headers, you cannot
+%% use `x-amz-acl' header to set a canned ACL. These parameters map to
+%% the set of permissions that Amazon S3 supports in an ACL. For more
+%% information, see Access Control List (ACL) Overview.
 %%
 %% You specify each grantee as a type=value pair, where the type is one of
 %% the following:
@@ -6556,10 +6603,11 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
 %% <ul> <li> `id' – if the value specified is the canonical user ID of an
 %% Amazon Web Services account
 %%
-%% </li> <li> `uri' – if you are granting permissions to a predefined group
+%% </li> <li> `uri' – if you are granting permissions to a predefined
+%% group
 %%
-%% </li> <li> `emailAddress' – if the value specified is the email address of
-%% an Amazon Web Services account
+%% </li> <li> `emailAddress' – if the value specified is the email
+%% address of an Amazon Web Services account
 %%
 %% Using email addresses to specify a grantee is only supported in the
 %% following Amazon Web Services Regions:
@@ -6583,12 +6631,12 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
 %% For a list of all the Amazon S3 supported Regions and endpoints, see
 %% Regions and Endpoints in the Amazon Web Services General Reference.
 %%
-%% </li> </ul> For example, the following `x-amz-grant-read' header grants
-%% list objects permission to the two Amazon Web Services accounts identified
-%% by their email addresses.
+%% </li> </ul> For example, the following `x-amz-grant-read' header
+%% grants list objects permission to the two Amazon Web Services accounts
+%% identified by their email addresses.
 %%
-%% `x-amz-grant-read: emailAddress="xyz@amazon.com",
-%% emailAddress="abc@amazon.com" '
+%% `x-amz-grant-read: emailAddress=&quot;xyz@amazon.com&quot;,
+%% emailAddress=&quot;abc@amazon.com&quot; '
 %%
 %% </li> </ul> You can use either a canned ACL or specify access permissions
 %% explicitly. You cannot do both.
@@ -6600,21 +6648,24 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% <ul> <li> By the person's ID:
 %%
-%% `<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-%% xsi:type="CanonicalUser"><ID><>ID<></ID><DisplayName><>GranteesEmail<></DisplayName>
-%% </Grantee>'
+%% `&lt;Grantee
+%% xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+%% xsi:type=&quot;CanonicalUser&quot;&gt;&lt;ID&gt;&lt;&gt;ID&lt;&gt;&lt;/ID&gt;&lt;DisplayName&gt;&lt;&gt;GranteesEmail&lt;&gt;&lt;/DisplayName&gt;
+%% &lt;/Grantee&gt;'
 %%
 %% DisplayName is optional and ignored in the request.
 %%
 %% </li> <li> By URI:
 %%
-%% `<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-%% xsi:type="Group"><URI><>http://acs.amazonaws.com/groups/global/AuthenticatedUsers<></URI></Grantee>'
+%% `&lt;Grantee
+%% xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+%% xsi:type=&quot;Group&quot;&gt;&lt;URI&gt;&lt;&gt;http://acs.amazonaws.com/groups/global/AuthenticatedUsers&lt;&gt;&lt;/URI&gt;&lt;/Grantee&gt;'
 %%
 %% </li> <li> By Email address:
 %%
-%% `<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-%% xsi:type="AmazonCustomerByEmail"><EmailAddress><>Grantees@email.com<></EmailAddress>lt;/Grantee>'
+%% `&lt;Grantee
+%% xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+%% xsi:type=&quot;AmazonCustomerByEmail&quot;&gt;&lt;EmailAddress&gt;&lt;&gt;Grantees@email.com&lt;&gt;&lt;/EmailAddress&gt;lt;/Grantee&gt;'
 %%
 %% The grantee is resolved to the CanonicalUser and, in a response to a GET
 %% Object acl request, appears as the CanonicalUser.
@@ -6763,8 +6814,9 @@ put_object_legal_hold(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% The `DefaultRetention' settings require both a mode and a period.
 %%
-%% The `DefaultRetention' period can be either `Days' or `Years' but you must
-%% select one. You cannot specify `Days' and `Years' at the same time.
+%% The `DefaultRetention' period can be either `Days' or `Years'
+%% but you must select one. You cannot specify `Days' and `Years' at
+%% the same time.
 %%
 %% You can only enable Object Lock for new buckets. If you want to turn on
 %% Object Lock for an existing bucket, contact Amazon Web Services Support.
@@ -6816,9 +6868,9 @@ put_object_lock_configuration(Client, Bucket, Input0, Options0) ->
 %% @doc Places an Object Retention configuration on an object.
 %%
 %% For more information, see Locking Objects. Users or accounts require the
-%% `s3:PutObjectRetention' permission in order to place an Object Retention
-%% configuration on objects. Bypassing a Governance Retention configuration
-%% requires the `s3:BypassGovernanceRetention' permission.
+%% `s3:PutObjectRetention' permission in order to place an Object
+%% Retention configuration on objects. Bypassing a Governance Retention
+%% configuration requires the `s3:BypassGovernanceRetention' permission.
 %%
 %% This action is not supported by Amazon S3 on Outposts.
 put_object_retention(Client, Bucket, Key, Input) ->
@@ -6883,8 +6935,8 @@ put_object_retention(Client, Bucket, Key, Input0, Options0) ->
 %% `s3:PutObjectTagging' action. By default, the bucket owner has this
 %% permission and can grant this permission to others.
 %%
-%% To put tags of any other version, use the `versionId' query parameter. You
-%% also need permission for the `s3:PutObjectVersionTagging' action.
+%% To put tags of any other version, use the `versionId' query parameter.
+%% You also need permission for the `s3:PutObjectVersionTagging' action.
 %%
 %% For information about the Amazon S3 object tagging feature, see Object
 %% Tagging.
@@ -6966,19 +7018,19 @@ put_object_tagging(Client, Bucket, Key, Input0, Options0) ->
 %% @doc Creates or modifies the `PublicAccessBlock' configuration for an
 %% Amazon S3 bucket.
 %%
-%% To use this operation, you must have the `s3:PutBucketPublicAccessBlock'
-%% permission. For more information about Amazon S3 permissions, see
-%% Specifying Permissions in a Policy.
+%% To use this operation, you must have the
+%% `s3:PutBucketPublicAccessBlock' permission. For more information about
+%% Amazon S3 permissions, see Specifying Permissions in a Policy.
 %%
 %% When Amazon S3 evaluates the `PublicAccessBlock' configuration for a
-%% bucket or an object, it checks the `PublicAccessBlock' configuration for
-%% both the bucket (or the bucket that contains the object) and the bucket
-%% owner's account. If the `PublicAccessBlock' configurations are different
-%% between the bucket and the account, Amazon S3 uses the most restrictive
-%% combination of the bucket-level and account-level settings.
+%% bucket or an object, it checks the `PublicAccessBlock' configuration
+%% for both the bucket (or the bucket that contains the object) and the
+%% bucket owner's account. If the `PublicAccessBlock' configurations
+%% are different between the bucket and the account, Amazon S3 uses the most
+%% restrictive combination of the bucket-level and account-level settings.
 %%
 %% For more information about when Amazon S3 considers a bucket or an object
-%% public, see The Meaning of "Public".
+%% public, see The Meaning of &quot;Public&quot;.
 %%
 %% == Related Resources ==
 %%
@@ -7047,16 +7099,17 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %%
 %% When making a select request, do the following:
 %%
-%% <ul> <li> Define an output location for the select query's output. This
-%% must be an Amazon S3 bucket in the same Amazon Web Services Region as the
-%% bucket that contains the archive object that is being queried. The Amazon
-%% Web Services account that initiates the job must have permissions to write
-%% to the S3 bucket. You can specify the storage class and encryption for the
-%% output objects stored in the bucket. For more information about output,
-%% see Querying Archived Objects in the Amazon S3 User Guide.
+%% <ul> <li> Define an output location for the select query's output.
+%% This must be an Amazon S3 bucket in the same Amazon Web Services Region as
+%% the bucket that contains the archive object that is being queried. The
+%% Amazon Web Services account that initiates the job must have permissions
+%% to write to the S3 bucket. You can specify the storage class and
+%% encryption for the output objects stored in the bucket. For more
+%% information about output, see Querying Archived Objects in the Amazon S3
+%% User Guide.
 %%
-%% For more information about the `S3' structure in the request body, see the
-%% following:
+%% For more information about the `S3' structure in the request body, see
+%% the following:
 %%
 %% <ul> <li> PutObject
 %%
@@ -7065,9 +7118,10 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %% </li> <li> Protecting Data Using Server-Side Encryption in the Amazon S3
 %% User Guide
 %%
-%% </li> </ul> </li> <li> Define the SQL expression for the `SELECT' type of
-%% restoration for your query in the request body's `SelectParameters'
-%% structure. You can use expressions like the following examples.
+%% </li> </ul> </li> <li> Define the SQL expression for the `SELECT' type
+%% of restoration for your query in the request body's
+%% `SelectParameters' structure. You can use expressions like the
+%% following examples.
 %%
 %% <ul> <li> The following expression returns all records from the specified
 %% object.
@@ -7077,13 +7131,13 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %% </li> <li> Assuming that you are not using any headers for data stored in
 %% the object, you can specify columns with positional headers.
 %%
-%% `SELECT s._1, s._2 FROM Object s WHERE s._3 > 100'
+%% `SELECT s._1, s._2 FROM Object s WHERE s._3 &gt; 100'
 %%
 %% </li> <li> If you have headers and you set the `fileHeaderInfo' in the
-%% `CSV' structure in the request body to `USE', you can specify headers in
-%% the query. (If you set the `fileHeaderInfo' field to `IGNORE', the first
-%% row is skipped for the query.) You cannot mix ordinal positions with
-%% header column names.
+%% `CSV' structure in the request body to `USE', you can specify
+%% headers in the query. (If you set the `fileHeaderInfo' field to
+%% `IGNORE', the first row is skipped for the query.) You cannot mix
+%% ordinal positions with header column names.
 %%
 %% `SELECT s.Id, s.FirstName, s.SSN FROM S3Object s'
 %%
@@ -7093,8 +7147,9 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %%
 %% When making a select request, you can also do the following:
 %%
-%% <ul> <li> To expedite your queries, specify the `Expedited' tier. For more
-%% information about tiers, see "Restoring Archives," later in this topic.
+%% <ul> <li> To expedite your queries, specify the `Expedited' tier. For
+%% more information about tiers, see &quot;Restoring Archives,&quot; later in
+%% this topic.
 %%
 %% </li> <li> Specify details about the data serialization format of both the
 %% input object that is being queried and the serialization of the
@@ -7135,16 +7190,16 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %% specify one of the following data access tier options in the `Tier'
 %% element of the request body:
 %%
-%% <ul> <li> `Expedited' - Expedited retrievals allow you to quickly access
-%% your data stored in the S3 Glacier storage class or S3 Intelligent-Tiering
-%% Archive tier when occasional urgent requests for a subset of archives are
-%% required. For all but the largest archived objects (250 MB+), data
-%% accessed using Expedited retrievals is typically made available within 1–5
-%% minutes. Provisioned capacity ensures that retrieval capacity for
-%% Expedited retrievals is available when you need it. Expedited retrievals
-%% and provisioned capacity are not available for objects stored in the S3
-%% Glacier Deep Archive storage class or S3 Intelligent-Tiering Deep Archive
-%% tier.
+%% <ul> <li> `Expedited' - Expedited retrievals allow you to quickly
+%% access your data stored in the S3 Glacier storage class or S3
+%% Intelligent-Tiering Archive tier when occasional urgent requests for a
+%% subset of archives are required. For all but the largest archived objects
+%% (250 MB+), data accessed using Expedited retrievals is typically made
+%% available within 1–5 minutes. Provisioned capacity ensures that retrieval
+%% capacity for Expedited retrievals is available when you need it. Expedited
+%% retrievals and provisioned capacity are not available for objects stored
+%% in the S3 Glacier Deep Archive storage class or S3 Intelligent-Tiering
+%% Deep Archive tier.
 %%
 %% </li> <li> `Standard' - Standard retrievals allow you to access any of
 %% your archived objects within several hours. This is the default option for
@@ -7155,29 +7210,29 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %% Archive storage class or S3 Intelligent-Tiering Deep Archive tier.
 %% Standard retrievals are free for objects stored in S3 Intelligent-Tiering.
 %%
-%% </li> <li> `Bulk' - Bulk retrievals are the lowest-cost retrieval option
-%% in S3 Glacier, enabling you to retrieve large amounts, even petabytes, of
-%% data inexpensively. Bulk retrievals typically finish within 5–12 hours for
-%% objects stored in the S3 Glacier storage class or S3 Intelligent-Tiering
-%% Archive tier. They typically finish within 48 hours for objects stored in
-%% the S3 Glacier Deep Archive storage class or S3 Intelligent-Tiering Deep
-%% Archive tier. Bulk retrievals are free for objects stored in S3
-%% Intelligent-Tiering.
+%% </li> <li> `Bulk' - Bulk retrievals are the lowest-cost retrieval
+%% option in S3 Glacier, enabling you to retrieve large amounts, even
+%% petabytes, of data inexpensively. Bulk retrievals typically finish within
+%% 5–12 hours for objects stored in the S3 Glacier storage class or S3
+%% Intelligent-Tiering Archive tier. They typically finish within 48 hours
+%% for objects stored in the S3 Glacier Deep Archive storage class or S3
+%% Intelligent-Tiering Deep Archive tier. Bulk retrievals are free for
+%% objects stored in S3 Intelligent-Tiering.
 %%
 %% </li> </ul> For more information about archive retrieval options and
-%% provisioned capacity for `Expedited' data access, see Restoring Archived
-%% Objects in the Amazon S3 User Guide.
+%% provisioned capacity for `Expedited' data access, see Restoring
+%% Archived Objects in the Amazon S3 User Guide.
 %%
 %% You can use Amazon S3 restore speed upgrade to change the restore speed to
 %% a faster speed while it is in progress. For more information, see
 %% Upgrading the speed of an in-progress restore in the Amazon S3 User Guide.
 %%
-%% To get the status of object restoration, you can send a `HEAD' request.
-%% Operations return the `x-amz-restore' header, which provides information
-%% about the restoration status, in the response. You can use Amazon S3 event
-%% notifications to notify you when a restore is initiated or completed. For
-%% more information, see Configuring Amazon S3 Event Notifications in the
-%% Amazon S3 User Guide.
+%% To get the status of object restoration, you can send a `HEAD'
+%% request. Operations return the `x-amz-restore' header, which provides
+%% information about the restoration status, in the response. You can use
+%% Amazon S3 event notifications to notify you when a restore is initiated or
+%% completed. For more information, see Configuring Amazon S3 Event
+%% Notifications in the Amazon S3 User Guide.
 %%
 %% After restoring an archived object, you can update the restoration period
 %% by reissuing the request with a new period. Amazon S3 updates the
@@ -7196,8 +7251,8 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %%
 %% Responses
 %%
-%% A successful action returns either the `200 OK' or `202 Accepted' status
-%% code.
+%% A successful action returns either the `200 OK' or `202 Accepted'
+%% status code.
 %%
 %% <ul> <li> If the object is not previously restored, then Amazon S3 returns
 %% `202 Accepted' in the response.
@@ -7353,9 +7408,10 @@ restore_object(Client, Bucket, Key, Input0, Options0) ->
 %% The `SelectObjectContent' action does not support the following
 %% `GetObject' functionality. For more information, see GetObject.
 %%
-%% <ul> <li> `Range': Although you can specify a scan range for an Amazon S3
-%% Select request (see SelectObjectContentRequest - ScanRange in the request
-%% parameters), you cannot specify the range of bytes of an object to return.
+%% <ul> <li> `Range': Although you can specify a scan range for an Amazon
+%% S3 Select request (see SelectObjectContentRequest - ScanRange in the
+%% request parameters), you cannot specify the range of bytes of an object to
+%% return.
 %%
 %% </li> <li> GLACIER, DEEP_ARCHIVE and REDUCED_REDUNDANCY storage classes:
 %% You cannot specify the GLACIER, DEEP_ARCHIVE, or `REDUCED_REDUNDANCY'
@@ -7429,14 +7485,15 @@ select_object_content(Client, Bucket, Key, Input0, Options0) ->
 %% Guide.
 %%
 %% To ensure that data is not corrupted when traversing the network, specify
-%% the `Content-MD5' header in the upload part request. Amazon S3 checks the
-%% part data against the provided MD5 value. If they do not match, Amazon S3
-%% returns an error.
+%% the `Content-MD5' header in the upload part request. Amazon S3 checks
+%% the part data against the provided MD5 value. If they do not match, Amazon
+%% S3 returns an error.
 %%
 %% If the upload request is signed with Signature Version 4, then Amazon Web
-%% Services S3 uses the `x-amz-content-sha256' header as a checksum instead
-%% of `Content-MD5'. For more information see Authenticating Requests: Using
-%% the Authorization Header (Amazon Web Services Signature Version 4).
+%% Services S3 uses the `x-amz-content-sha256' header as a checksum
+%% instead of `Content-MD5'. For more information see Authenticating
+%% Requests: Using the Authorization Header (Amazon Web Services Signature
+%% Version 4).
 %%
 %% Note: After you initiate multipart upload and upload one or more parts,
 %% you must either complete or abort multipart upload in order to stop
@@ -7461,10 +7518,10 @@ select_object_content(Client, Bucket, Key, Input0, Options0) ->
 %% Guide.
 %%
 %% Server-side encryption is supported by the S3 Multipart Upload actions.
-%% Unless you are using a customer-provided encryption key, you don't need to
-%% specify the encryption parameters in each UploadPart request. Instead, you
-%% only need to specify the server-side encryption parameters in the initial
-%% Initiate Multipart request. For more information, see
+%% Unless you are using a customer-provided encryption key, you don't
+%% need to specify the encryption parameters in each UploadPart request.
+%% Instead, you only need to specify the server-side encryption parameters in
+%% the initial Initiate Multipart request. For more information, see
 %% CreateMultipartUpload.
 %%
 %% If you requested server-side encryption using a customer-provided
@@ -7571,8 +7628,8 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
 %% source.
 %%
 %% You specify the data source by adding the request header
-%% `x-amz-copy-source' in your request and a byte range by adding the request
-%% header `x-amz-copy-source-range' in your request.
+%% `x-amz-copy-source' in your request and a byte range by adding the
+%% request header `x-amz-copy-source-range' in your request.
 %%
 %% For information about maximum and minimum part sizes and other multipart
 %% upload specifications, see Multipart upload limits in the Amazon S3 User
@@ -7585,8 +7642,8 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
 %% response to your initiate request. Amazon S3 returns a unique identifier,
 %% the upload ID, that you must include in your upload part request.
 %%
-%% For more information about using the `UploadPartCopy' operation, see the
-%% following:
+%% For more information about using the `UploadPartCopy' operation, see
+%% the following:
 %%
 %% <ul> <li> For conceptual information about multipart uploads, see
 %% Uploading Objects Using Multipart Upload in the Amazon S3 User Guide.
@@ -7600,48 +7657,55 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
 %% User Guide.
 %%
 %% </li> <li> For information about using server-side encryption with
-%% customer-provided encryption keys with the `UploadPartCopy' operation, see
-%% CopyObject and UploadPart.
+%% customer-provided encryption keys with the `UploadPartCopy' operation,
+%% see CopyObject and UploadPart.
 %%
 %% </li> </ul> Note the following additional considerations about the request
-%% headers `x-amz-copy-source-if-match', `x-amz-copy-source-if-none-match',
+%% headers `x-amz-copy-source-if-match',
+%% `x-amz-copy-source-if-none-match',
 %% `x-amz-copy-source-if-unmodified-since', and
 %% `x-amz-copy-source-if-modified-since':
 %%
-%% <ul> <li> Consideration 1 - If both of the `x-amz-copy-source-if-match'
-%% and `x-amz-copy-source-if-unmodified-since' headers are present in the
+%% <ul> <li> Consideration 1 - If both of the
+%% `x-amz-copy-source-if-match' and
+%% `x-amz-copy-source-if-unmodified-since' headers are present in the
 %% request as follows:
 %%
 %% `x-amz-copy-source-if-match' condition evaluates to `true', and;
 %%
-%% `x-amz-copy-source-if-unmodified-since' condition evaluates to `false';
+%% `x-amz-copy-source-if-unmodified-since' condition evaluates to
+%% `false';
 %%
 %% Amazon S3 returns `200 OK' and copies the data.
 %%
 %% </li> <li> Consideration 2 - If both of the
 %% `x-amz-copy-source-if-none-match' and
-%% `x-amz-copy-source-if-modified-since' headers are present in the request
-%% as follows:
+%% `x-amz-copy-source-if-modified-since' headers are present in the
+%% request as follows:
 %%
-%% `x-amz-copy-source-if-none-match' condition evaluates to `false', and;
+%% `x-amz-copy-source-if-none-match' condition evaluates to `false',
+%% and;
 %%
-%% `x-amz-copy-source-if-modified-since' condition evaluates to `true';
+%% `x-amz-copy-source-if-modified-since' condition evaluates to
+%% `true';
 %%
 %% Amazon S3 returns `412 Precondition Failed' response code.
 %%
 %% </li> </ul> Versioning
 %%
 %% If your bucket has versioning enabled, you could have multiple versions of
-%% the same object. By default, `x-amz-copy-source' identifies the current
-%% version of the object to copy. If the current version is a delete marker
-%% and you don't specify a versionId in the `x-amz-copy-source', Amazon S3
-%% returns a 404 error, because the object does not exist. If you specify
-%% versionId in the `x-amz-copy-source' and the versionId is a delete marker,
-%% Amazon S3 returns an HTTP 400 error, because you are not allowed to
-%% specify a delete marker as a version for the `x-amz-copy-source'.
+%% the same object. By default, `x-amz-copy-source' identifies the
+%% current version of the object to copy. If the current version is a delete
+%% marker and you don't specify a versionId in the
+%% `x-amz-copy-source', Amazon S3 returns a 404 error, because the object
+%% does not exist. If you specify versionId in the `x-amz-copy-source'
+%% and the versionId is a delete marker, Amazon S3 returns an HTTP 400 error,
+%% because you are not allowed to specify a delete marker as a version for
+%% the `x-amz-copy-source'.
 %%
 %% You can optionally specify a specific version of the source object to copy
-%% by adding the `versionId' subresource as shown in the following example:
+%% by adding the `versionId' subresource as shown in the following
+%% example:
 %%
 %% `x-amz-copy-source: /bucket/object?versionId=version id'
 %%
@@ -7747,13 +7811,14 @@ upload_part_copy(Client, Bucket, Key, Input0, Options0) ->
 %% objects with Object Lambda access points in the Amazon S3 User Guide.
 %%
 %% This operation supports metadata that can be returned by GetObject, in
-%% addition to `RequestRoute', `RequestToken', `StatusCode', `ErrorCode', and
-%% `ErrorMessage'. The `GetObject' response metadata is supported so that the
-%% `WriteGetObjectResponse' caller, typically an Lambda function, can provide
-%% the same metadata when it internally invokes `GetObject'. When
-%% `WriteGetObjectResponse' is called by a customer-owned Lambda function,
-%% the metadata returned to the end user `GetObject' call might differ from
-%% what Amazon S3 would normally return.
+%% addition to `RequestRoute', `RequestToken', `StatusCode',
+%% `ErrorCode', and `ErrorMessage'. The `GetObject' response
+%% metadata is supported so that the `WriteGetObjectResponse' caller,
+%% typically an Lambda function, can provide the same metadata when it
+%% internally invokes `GetObject'. When `WriteGetObjectResponse' is
+%% called by a customer-owned Lambda function, the metadata returned to the
+%% end user `GetObject' call might differ from what Amazon S3 would
+%% normally return.
 %%
 %% You can include any number of metadata headers. When including a metadata
 %% header, it should be prefaced with `x-amz-meta'. For example,

@@ -73,10 +73,10 @@
 %% </li> </ul> All API actions are logged as CloudTrail events. See Logging
 %% Detective API Calls with CloudTrail.
 %%
-%% We replaced the term "master account" with the term "administrator
-%% account." An administrator account is used to centrally manage multiple
-%% accounts. In the case of Detective, the administrator account manages the
-%% accounts in their behavior graph.
+%% We replaced the term &quot;master account&quot; with the term
+%% &quot;administrator account.&quot; An administrator account is used to
+%% centrally manage multiple accounts. In the case of Detective, the
+%% administrator account manages the accounts in their behavior graph.
 -module(aws_detective).
 
 -export([accept_invitation/2,
@@ -226,8 +226,8 @@ batch_get_membership_datasources(Client, Input0, Options0) ->
 %% The operation also enables Detective for the calling account in the
 %% currently selected Region. It returns the ARN of the new behavior graph.
 %%
-%% `CreateGraph' triggers a process to create the corresponding data tables
-%% for the new behavior graph.
+%% `CreateGraph' triggers a process to create the corresponding data
+%% tables for the new behavior graph.
 %%
 %% An account can only be the administrator account for one behavior graph
 %% within a Region. If the same account calls `CreateGraph' with the same
@@ -258,7 +258,8 @@ create_graph(Client, Input0, Options0) ->
 %% @doc `CreateMembers' is used to send invitations to accounts.
 %%
 %% For the organization behavior graph, the Detective administrator account
-%% uses `CreateMembers' to enable organization accounts as member accounts.
+%% uses `CreateMembers' to enable organization accounts as member
+%% accounts.
 %%
 %% For invited accounts, `CreateMembers' sends a request to invite the
 %% specified Amazon Web Services accounts to be member accounts in the
@@ -271,8 +272,8 @@ create_graph(Client, Input0, Options0) ->
 %% manages their member accounts centrally.
 %%
 %% For organization accounts in the organization behavior graph,
-%% `CreateMembers' attempts to enable the accounts. The organization accounts
-%% do not receive invitations.
+%% `CreateMembers' attempts to enable the accounts. The organization
+%% accounts do not receive invitations.
 %%
 %% The request provides the behavior graph ARN and the list of accounts to
 %% invite or to enable.
@@ -285,9 +286,9 @@ create_graph(Client, Input0, Options0) ->
 %% verification. For organization accounts in the organization behavior
 %% graph, includes accounts that can be enabled and that cannot be enabled.
 %%
-%% </li> <li> The accounts that `CreateMembers' was unable to process. This
-%% list includes accounts that were already invited to be member accounts in
-%% the behavior graph.
+%% </li> <li> The accounts that `CreateMembers' was unable to process.
+%% This list includes accounts that were already invited to be member
+%% accounts in the behavior graph.
 %%
 %% </li> </ul>
 create_members(Client, Input) ->
@@ -314,8 +315,8 @@ create_members(Client, Input0, Options0) ->
 
 %% @doc Disables the specified behavior graph and queues it to be deleted.
 %%
-%% This operation removes the behavior graph from each member account's list
-%% of behavior graphs.
+%% This operation removes the behavior graph from each member account's
+%% list of behavior graphs.
 %%
 %% `DeleteGraph' can only be called by the administrator account for a
 %% behavior graph.
@@ -354,11 +355,11 @@ delete_graph(Client, Input0, Options0) ->
 %% For organization accounts in the organization behavior graph, the
 %% Detective administrator account can always enable the organization account
 %% again. Organization accounts that are not enabled as member accounts are
-%% not included in the `ListMembers' results for the organization behavior
-%% graph.
+%% not included in the `ListMembers' results for the organization
+%% behavior graph.
 %%
-%% An administrator account cannot use `DeleteMembers' to remove their own
-%% account from the behavior graph. To disable a behavior graph, the
+%% An administrator account cannot use `DeleteMembers' to remove their
+%% own account from the behavior graph. To disable a behavior graph, the
 %% administrator account uses the `DeleteGraph' API method.
 delete_members(Client, Input) ->
     delete_members(Client, Input, []).
@@ -453,10 +454,10 @@ disable_organization_admin_account(Client, Input0, Options0) ->
 %% This operation can only be called by an invited member account that has
 %% the `ENABLED' status.
 %%
-%% `DisassociateMembership' cannot be called by an organization account in
-%% the organization behavior graph. For the organization behavior graph, the
-%% Detective administrator account determines which organization accounts to
-%% enable or disable as member accounts.
+%% `DisassociateMembership' cannot be called by an organization account
+%% in the organization behavior graph. For the organization behavior graph,
+%% the Detective administrator account determines which organization accounts
+%% to enable or disable as member accounts.
 disassociate_membership(Client, Input) ->
     disassociate_membership(Client, Input, []).
 disassociate_membership(Client, Input0, Options0) ->

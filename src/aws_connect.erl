@@ -501,12 +501,12 @@ associate_default_vocabulary(Client, InstanceId, LanguageCode, Input0, Options0)
 %%
 %% Associates a storage resource type for the first time. You can only
 %% associate one type of storage configuration in a single call. This means,
-%% for example, that you can't define an instance with multiple S3 buckets
-%% for storing chat transcripts.
+%% for example, that you can't define an instance with multiple S3
+%% buckets for storing chat transcripts.
 %%
-%% This API does not create a resource that doesn't exist. It only associates
-%% it to the instance. Ensure that the resource being specified in the
-%% storage configuration, like an S3 bucket, exists when being used for
+%% This API does not create a resource that doesn't exist. It only
+%% associates it to the instance. Ensure that the resource being specified in
+%% the storage configuration, like an S3 bucket, exists when being used for
 %% association.
 associate_instance_storage_config(Client, InstanceId, Input) ->
     associate_instance_storage_config(Client, InstanceId, Input, []).
@@ -897,12 +897,13 @@ create_integration_association(Client, InstanceId, Input0, Options0) ->
 %% group, and you are calling this API using an instance in the Amazon Web
 %% Services Region where the traffic distribution group was created, you can
 %% use either a full phone number ARN or UUID value for the
-%% `OutboundCallerIdNumberId' value of the OutboundCallerConfig request body
-%% parameter. However, if the number is claimed to a traffic distribution
-%% group and you are calling this API using an instance in the alternate
-%% Amazon Web Services Region associated with the traffic distribution group,
-%% you must provide a full phone number ARN. If a UUID is provided in this
-%% scenario, you will receive a `ResourceNotFoundException'.
+%% `OutboundCallerIdNumberId' value of the OutboundCallerConfig request
+%% body parameter. However, if the number is claimed to a traffic
+%% distribution group and you are calling this API using an instance in the
+%% alternate Amazon Web Services Region associated with the traffic
+%% distribution group, you must provide a full phone number ARN. If a UUID is
+%% provided in this scenario, you will receive a
+%% `ResourceNotFoundException'.
 create_queue(Client, InstanceId, Input) ->
     create_queue(Client, InstanceId, Input, []).
 create_queue(Client, InstanceId, Input0, Options0) ->
@@ -1452,9 +1453,9 @@ delete_use_case(Client, InstanceId, IntegrationAssociationId, UseCaseId, Input0,
 
 %% @doc Deletes a user account from the specified Amazon Connect instance.
 %%
-%% For information about what happens to a user's data when their account is
-%% deleted, see Delete Users from Your Amazon Connect Instance in the Amazon
-%% Connect Administrator Guide.
+%% For information about what happens to a user's data when their account
+%% is deleted, see Delete Users from Your Amazon Connect Instance in the
+%% Amazon Connect Administrator Guide.
 delete_user(Client, InstanceId, UserId, Input) ->
     delete_user(Client, InstanceId, UserId, Input, []).
 delete_user(Client, InstanceId, UserId, Input0, Options0) ->
@@ -1757,7 +1758,8 @@ describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType
 %% claimed to a traffic distribution group and you are calling this API in
 %% the alternate Amazon Web Services Region associated with the traffic
 %% distribution group, you must provide a full phone number ARN. If a UUID is
-%% provided in this scenario, you will receive a `ResourceNotFoundException'.
+%% provided in this scenario, you will receive a
+%% `ResourceNotFoundException'.
 describe_phone_number(Client, PhoneNumberId)
   when is_map(Client) ->
     describe_phone_number(Client, PhoneNumberId, #{}, #{}).
@@ -2800,8 +2802,8 @@ list_instance_storage_configs(Client, InstanceId, ResourceType, QueryMap, Header
 %% change.
 %%
 %% Return a list of instances which are in active state, creation-in-progress
-%% state, and failed state. Instances that aren't successfully created (they
-%% are in a failed state) are returned only for 24 hours after the
+%% state, and failed state. Instances that aren't successfully created
+%% (they are in a failed state) are returned only for 24 hours after the
 %% CreateInstance API was invoked.
 list_instances(Client)
   when is_map(Client) ->
@@ -2931,11 +2933,11 @@ list_lex_bots(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% For more information about phone numbers, see Set Up Phone Numbers for
 %% Your Contact Center in the Amazon Connect Administrator Guide.
 %%
-%% The phone number `Arn' value that is returned from each of the items in
-%% the PhoneNumberSummaryList cannot be used to tag phone number resources.
-%% It will fail with a `ResourceNotFoundException'. Instead, use the
-%% ListPhoneNumbersV2 API. It returns the new phone number ARN that can be
-%% used to tag phone number resources.
+%% The phone number `Arn' value that is returned from each of the items
+%% in the PhoneNumberSummaryList cannot be used to tag phone number
+%% resources. It will fail with a `ResourceNotFoundException'. Instead,
+%% use the ListPhoneNumbersV2 API. It returns the new phone number ARN that
+%% can be used to tag phone number resources.
 list_phone_numbers(Client, InstanceId)
   when is_map(Client) ->
     list_phone_numbers(Client, InstanceId, #{}, #{}).
@@ -2968,8 +2970,8 @@ list_phone_numbers(Client, InstanceId, QueryMap, HeadersMap, Options0)
 %% @doc Lists phone numbers claimed to your Amazon Connect instance or
 %% traffic distribution group.
 %%
-%% If the provided `TargetArn' is a traffic distribution group, you can call
-%% this API in both Amazon Web Services Regions associated with traffic
+%% If the provided `TargetArn' is a traffic distribution group, you can
+%% call this API in both Amazon Web Services Regions associated with traffic
 %% distribution group.
 %%
 %% For more information about phone numbers, see Set Up Phone Numbers for
@@ -3059,10 +3061,10 @@ list_queue_quick_connects(Client, InstanceId, QueueId, QueryMap, HeadersMap, Opt
 %% @doc Provides information about the queues for the specified Amazon
 %% Connect instance.
 %%
-%% If you do not specify a `QueueTypes' parameter, both standard and agent
-%% queues are returned. This might cause an unexpected truncation of results
-%% if you have more than 1000 agents and you limit the number of results of
-%% the API call in code.
+%% If you do not specify a `QueueTypes' parameter, both standard and
+%% agent queues are returned. This might cause an unexpected truncation of
+%% results if you have more than 1000 agents and you limit the number of
+%% results of the API call in code.
 %%
 %% For more information about queues, see Queues: Standard and Agent in the
 %% Amazon Connect Administrator Guide.
@@ -3511,8 +3513,8 @@ monitor_contact(Client, Input0, Options0) ->
 
 %% @doc Changes the current status of a user or agent in Amazon Connect.
 %%
-%% If the agent is currently handling a contact, this sets the agent's next
-%% status.
+%% If the agent is currently handling a contact, this sets the agent's
+%% next status.
 %%
 %% For more information, see Agent status and Set your next status in the
 %% Amazon Connect Administrator Guide.
@@ -3632,9 +3634,9 @@ resume_contact_recording(Client, Input0, Options0) ->
 %% @doc Searches for available phone numbers that you can claim to your
 %% Amazon Connect instance or traffic distribution group.
 %%
-%% If the provided `TargetArn' is a traffic distribution group, you can call
-%% this API in both Amazon Web Services Regions associated with the traffic
-%% distribution group.
+%% If the provided `TargetArn' is a traffic distribution group, you can
+%% call this API in both Amazon Web Services Regions associated with the
+%% traffic distribution group.
 search_available_phone_numbers(Client, Input) ->
     search_available_phone_numbers(Client, Input, []).
 search_available_phone_numbers(Client, Input0, Options0) ->
@@ -3806,9 +3808,10 @@ search_vocabularies(Client, InstanceId, Input0, Options0) ->
 %% </li> <li> The quota for concurrent active chats is exceeded. Active chat
 %% throttling returns a `LimitExceededException'.
 %%
-%% </li> </ul> If you use the `ChatDurationInMinutes' parameter and receive a
-%% 400 error, your account may not support the ability to configure custom
-%% chat durations. For more information, contact Amazon Web Services Support.
+%% </li> </ul> If you use the `ChatDurationInMinutes' parameter and
+%% receive a 400 error, your account may not support the ability to configure
+%% custom chat durations. For more information, contact Amazon Web Services
+%% Support.
 %%
 %% For more information about chat, see Chat in the Amazon Connect
 %% Administrator Guide.
@@ -3843,10 +3846,10 @@ start_chat_contact(Client, Input0, Options0) ->
 %% starts at the time of the API call.
 %%
 %% </li> </ul> StartContactRecording is a one-time action. For example, if
-%% you use StopContactRecording to stop recording an ongoing call, you can't
-%% use StartContactRecording to restart it. For scenarios where the recording
-%% has started and you want to suspend and resume it, such as when collecting
-%% sensitive information (for example, a credit card number), use
+%% you use StopContactRecording to stop recording an ongoing call, you
+%% can't use StartContactRecording to restart it. For scenarios where the
+%% recording has started and you want to suspend and resume it, such as when
+%% collecting sensitive information (for example, a credit card number), use
 %% SuspendContactRecording and ResumeContactRecording.
 %%
 %% You can use this API to override the recording behavior configured in the
@@ -3903,7 +3906,8 @@ start_contact_streaming(Client, Input0, Options0) ->
 
 %% @doc Places an outbound call to a contact, and then initiates the flow.
 %%
-%% It performs the actions in the flow that's specified (in `ContactFlowId').
+%% It performs the actions in the flow that's specified (in
+%% `ContactFlowId').
 %%
 %% Agents do not initiate the outbound API, which means that they do not dial
 %% the contact. If the flow places an outbound call to a contact, and then
@@ -3919,8 +3923,8 @@ start_contact_streaming(Client, Input0, Options0) ->
 %% Amazon Connect Administrator Guide.
 %%
 %% Campaign calls are not allowed by default. Before you can make a call with
-%% `TrafficType' = `CAMPAIGN', you must submit a service quota increase
-%% request to the quota Amazon Connect campaigns.
+%% `TrafficType' = `CAMPAIGN', you must submit a service quota
+%% increase request to the quota Amazon Connect campaigns.
 start_outbound_voice_contact(Client, Input) ->
     start_outbound_voice_contact(Client, Input, []).
 start_outbound_voice_contact(Client, Input0, Options0) ->
@@ -4002,9 +4006,9 @@ stop_contact(Client, Input0, Options0) ->
 %% @doc Stops recording a call when a contact is being recorded.
 %%
 %% StopContactRecording is a one-time action. If you use StopContactRecording
-%% to stop recording an ongoing call, you can't use StartContactRecording to
-%% restart it. For scenarios where the recording has started and you want to
-%% suspend it for sensitive information (for example, to collect a credit
+%% to stop recording an ongoing call, you can't use StartContactRecording
+%% to restart it. For scenarios where the recording has started and you want
+%% to suspend it for sensitive information (for example, to collect a credit
 %% card number), and then restart it, use SuspendContactRecording and
 %% ResumeContactRecording.
 %%
@@ -4133,7 +4137,8 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% <ul> <li> Transfer is supported for only `TASK' contacts.
 %%
-%% </li> <li> Do not use both `QueueId' and `UserId' in the same call.
+%% </li> <li> Do not use both `QueueId' and `UserId' in the same
+%% call.
 %%
 %% </li> <li> The following flow types are supported: Inbound flow, Transfer
 %% to agent flow, and Transfer to queue flow.
@@ -4252,12 +4257,12 @@ update_contact(Client, ContactId, InstanceId, Input0, Options0) ->
 %%
 %% You can create or update user-defined attributes for both ongoing and
 %% completed contacts. For example, while the call is active, you can update
-%% the customer's name or the reason the customer called. You can add notes
-%% about steps that the agent took during the call that display to the next
-%% agent that takes the call. You can also update attributes for a contact
-%% using data from your CRM application and save the data with the contact in
-%% Amazon Connect. You could also flag calls for additional analysis, such as
-%% legal review or to identify abusive callers.
+%% the customer's name or the reason the customer called. You can add
+%% notes about steps that the agent took during the call that display to the
+%% next agent that takes the call. You can also update attributes for a
+%% contact using data from your CRM application and save the data with the
+%% contact in Amazon Connect. You could also flag calls for additional
+%% analysis, such as legal review or to identify abusive callers.
 %%
 %% Contact attributes are available in Amazon Connect for 24 months, and are
 %% then deleted. For information about contact record retention and the
@@ -4667,12 +4672,13 @@ update_queue_name(Client, InstanceId, QueueId, Input0, Options0) ->
 %% group, and you are calling this API using an instance in the Amazon Web
 %% Services Region where the traffic distribution group was created, you can
 %% use either a full phone number ARN or UUID value for the
-%% `OutboundCallerIdNumberId' value of the OutboundCallerConfig request body
-%% parameter. However, if the number is claimed to a traffic distribution
-%% group and you are calling this API using an instance in the alternate
-%% Amazon Web Services Region associated with the traffic distribution group,
-%% you must provide a full phone number ARN. If a UUID is provided in this
-%% scenario, you will receive a `ResourceNotFoundException'.
+%% `OutboundCallerIdNumberId' value of the OutboundCallerConfig request
+%% body parameter. However, if the number is claimed to a traffic
+%% distribution group and you are calling this API using an instance in the
+%% alternate Amazon Web Services Region associated with the traffic
+%% distribution group, you must provide a full phone number ARN. If a UUID is
+%% provided in this scenario, you will receive a
+%% `ResourceNotFoundException'.
 update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input) ->
     update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input, []).
 update_queue_outbound_caller_config(Client, InstanceId, QueueId, Input0, Options0) ->
@@ -4746,8 +4752,8 @@ update_quick_connect_config(Client, InstanceId, QuickConnectId, Input0, Options0
 
 %% @doc Updates the name and description of a quick connect.
 %%
-%% The request accepts the following data in JSON format. At least `Name' or
-%% `Description' must be provided.
+%% The request accepts the following data in JSON format. At least `Name'
+%% or `Description' must be provided.
 update_quick_connect_name(Client, InstanceId, QuickConnectId, Input) ->
     update_quick_connect_name(Client, InstanceId, QuickConnectId, Input, []).
 update_quick_connect_name(Client, InstanceId, QuickConnectId, Input0, Options0) ->
@@ -4819,8 +4825,8 @@ update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfile
 
 %% @doc Updates the name and description of a routing profile.
 %%
-%% The request accepts the following data in JSON format. At least `Name' or
-%% `Description' must be provided.
+%% The request accepts the following data in JSON format. At least `Name'
+%% or `Description' must be provided.
 update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input) ->
     update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input, []).
 update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input0, Options0) ->
@@ -5046,12 +5052,12 @@ update_user_hierarchy_structure(Client, InstanceId, Input0, Options0) ->
 %% @doc Updates the identity information for the specified user.
 %%
 %% We strongly recommend limiting who has the ability to invoke
-%% `UpdateUserIdentityInfo'. Someone with that ability can change the login
-%% credentials of other users by changing their email address. This poses a
-%% security risk to your organization. They can change the email address of a
-%% user to the attacker's email address, and then reset the password through
-%% email. For more information, see Best Practices for Security Profiles in
-%% the Amazon Connect Administrator Guide.
+%% `UpdateUserIdentityInfo'. Someone with that ability can change the
+%% login credentials of other users by changing their email address. This
+%% poses a security risk to your organization. They can change the email
+%% address of a user to the attacker's email address, and then reset the
+%% password through email. For more information, see Best Practices for
+%% Security Profiles in the Amazon Connect Administrator Guide.
 update_user_identity_info(Client, InstanceId, UserId, Input) ->
     update_user_identity_info(Client, InstanceId, UserId, Input, []).
 update_user_identity_info(Client, InstanceId, UserId, Input0, Options0) ->

@@ -5,15 +5,16 @@
 %% you can use to customize a pro forma version of your billing data each
 %% month, to accurately show or chargeback your end customers.
 %%
-%% Amazon Web Services Billing Conductor doesn't change the way you're billed
-%% by Amazon Web Services each month by design. Instead, it provides you with
-%% a mechanism to configure, generate, and display rates to certain customers
-%% over a given billing period. You can also analyze the difference between
-%% the rates you apply to your accounting groupings relative to your actual
-%% rates from Amazon Web Services. As a result of your Amazon Web Services
-%% Billing Conductor configuration, the payer account can also see the custom
-%% rate applied on the billing details page of the Amazon Web Services
-%% Billing console, or configure a cost and usage report per billing group.
+%% Amazon Web Services Billing Conductor doesn't change the way
+%% you're billed by Amazon Web Services each month by design. Instead, it
+%% provides you with a mechanism to configure, generate, and display rates to
+%% certain customers over a given billing period. You can also analyze the
+%% difference between the rates you apply to your accounting groupings
+%% relative to your actual rates from Amazon Web Services. As a result of
+%% your Amazon Web Services Billing Conductor configuration, the payer
+%% account can also see the custom rate applied on the billing details page
+%% of the Amazon Web Services Billing console, or configure a cost and usage
+%% report per billing group.
 %%
 %% This documentation shows how you can configure Amazon Web Services Billing
 %% Conductor using its API. For more information about using the Amazon Web
@@ -119,10 +120,11 @@ associate_accounts(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Connects an array of `PricingRuleArns' to a defined `PricingPlan'.
+%% @doc Connects an array of `PricingRuleArns' to a defined
+%% `PricingPlan'.
 %%
-%% The maximum number `PricingRuleArn' that can be associated in one call is
-%% 30.
+%% The maximum number `PricingRuleArn' that can be associated in one call
+%% is 30.
 associate_pricing_rules(Client, Input) ->
     associate_pricing_rules(Client, Input, []).
 associate_pricing_rules(Client, Input0, Options0) ->
@@ -448,8 +450,8 @@ disassociate_pricing_rules(Client, Input0, Options0) ->
 %% the payer account for the specified time period.
 %%
 %% If no information is provided, the current billing period is used. The
-%% response will optionally include the billing group that's associated with
-%% the linked account.
+%% response will optionally include the billing group that's associated
+%% with the linked account.
 list_account_associations(Client, Input) ->
     list_account_associations(Client, Input, []).
 list_account_associations(Client, Input0, Options0) ->
@@ -500,7 +502,8 @@ list_billing_group_cost_reports(Client, Input0, Options0) ->
 %% @doc A paginated call to retrieve a list of billing groups for the given
 %% billing period.
 %%
-%% If you don't provide a billing group, the current billing period is used.
+%% If you don't provide a billing group, the current billing period is
+%% used.
 list_billing_groups(Client, Input) ->
     list_billing_groups(Client, Input, []).
 list_billing_groups(Client, Input0, Options0) ->
@@ -549,7 +552,8 @@ list_custom_line_item_versions(Client, Input0, Options0) ->
 %% @doc A paginated call to get a list of all custom line items (FFLIs) for
 %% the given billing period.
 %%
-%% If you don't provide a billing period, the current billing period is used.
+%% If you don't provide a billing period, the current billing period is
+%% used.
 list_custom_line_items(Client, Input) ->
     list_custom_line_items(Client, Input, []).
 list_custom_line_items(Client, Input0, Options0) ->
@@ -574,7 +578,8 @@ list_custom_line_items(Client, Input0, Options0) ->
 
 %% @doc A paginated call to get pricing plans for the given billing period.
 %%
-%% If you don't provide a billing period, the current billing period is used.
+%% If you don't provide a billing period, the current billing period is
+%% used.
 list_pricing_plans(Client, Input) ->
     list_pricing_plans(Client, Input, []).
 list_pricing_plans(Client, Input0, Options0) ->

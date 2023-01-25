@@ -14,14 +14,14 @@
 %% options that are unique to the SMS and voice channels and supplements the
 %% resources provided by the Amazon Pinpoint API.
 %%
-%% If you're new to Amazon Pinpoint, it's also helpful to review the Amazon
-%% Pinpoint Developer Guide. The Amazon Pinpoint Developer Guide provides
-%% tutorials, code samples, and procedures that demonstrate how to use Amazon
-%% Pinpoint features programmatically and how to integrate Amazon Pinpoint
-%% functionality into mobile apps and other types of applications. The guide
-%% also provides key information, such as Amazon Pinpoint integration with
-%% other Amazon Web Services services, and the quotas that apply to use of
-%% the service.
+%% If you're new to Amazon Pinpoint, it's also helpful to review the
+%% Amazon Pinpoint Developer Guide. The Amazon Pinpoint Developer Guide
+%% provides tutorials, code samples, and procedures that demonstrate how to
+%% use Amazon Pinpoint features programmatically and how to integrate Amazon
+%% Pinpoint functionality into mobile apps and other types of applications.
+%% The guide also provides key information, such as Amazon Pinpoint
+%% integration with other Amazon Web Services services, and the quotas that
+%% apply to use of the service.
 -module(aws_pinpoint_sms_voice_v2).
 
 -export([associate_origination_identity/2,
@@ -173,9 +173,9 @@ create_event_destination(Client, Input, Options)
 %%
 %% An opt-out list is a list of phone numbers that are opted out, meaning you
 %% can't send SMS or voice messages to them. If end user replies with the
-%% keyword "STOP," an entry for the phone number is added to the opt-out
-%% list. In addition to STOP, your recipients can use any supported opt-out
-%% keyword, such as CANCEL or OPTOUT. For a list of supported opt-out
+%% keyword &quot;STOP,&quot; an entry for the phone number is added to the
+%% opt-out list. In addition to STOP, your recipients can use any supported
+%% opt-out keyword, such as CANCEL or OPTOUT. For a list of supported opt-out
 %% keywords, see SMS opt out in the Amazon Pinpoint User Guide.
 create_opt_out_list(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -234,9 +234,9 @@ delete_default_message_type(Client, Input, Options)
 
 %% @doc Deletes an existing default sender ID on a configuration set.
 %%
-%% A default sender ID is the identity that appears on recipients' devices
-%% when they receive SMS messages. Support for sender ID capabilities varies
-%% by country or region.
+%% A default sender ID is the identity that appears on recipients'
+%% devices when they receive SMS messages. Support for sender ID capabilities
+%% varies by country or region.
 delete_default_sender_id(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_default_sender_id(Client, Input, []).
@@ -266,7 +266,8 @@ delete_event_destination(Client, Input, Options)
 %% special offer. When your number receives a message that begins with a
 %% keyword, Amazon Pinpoint responds with a customizable message.
 %%
-%% Keywords "HELP" and "STOP" can't be deleted or modified.
+%% Keywords &quot;HELP&quot; and &quot;STOP&quot; can't be deleted or
+%% modified.
 delete_keyword(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_keyword(Client, Input, []).
@@ -292,8 +293,8 @@ delete_opt_out_list(Client, Input, Options)
 %%
 %% Each destination phone number can only be deleted once every 30 days.
 %%
-%% If the specified destination phone number doesn't exist or if the opt-out
-%% list doesn't exist, an Error is returned.
+%% If the specified destination phone number doesn't exist or if the
+%% opt-out list doesn't exist, an Error is returned.
 delete_opted_out_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_opted_out_number(Client, Input, []).
@@ -305,8 +306,8 @@ delete_opted_out_number(Client, Input, Options)
 %%
 %% Deleting a pool disassociates all origination identities from that pool.
 %%
-%% If the pool status isn't active or if deletion protection is enabled, an
-%% Error is returned.
+%% If the pool status isn't active or if deletion protection is enabled,
+%% an Error is returned.
 %%
 %% A pool is a collection of phone numbers and SenderIds. A pool can include
 %% one or more phone numbers and SenderIds that are associated with your
@@ -321,8 +322,8 @@ delete_pool(Client, Input, Options)
 %% @doc Deletes an account-level monthly spending limit override for sending
 %% text messages.
 %%
-%% Deleting a spend limit override will set the `EnforcedLimit' to equal the
-%% `MaxLimit', which is controlled by Amazon Web Services. For more
+%% Deleting a spend limit override will set the `EnforcedLimit' to equal
+%% the `MaxLimit', which is controlled by Amazon Web Services. For more
 %% information on spend limits (quotas) see Amazon Pinpoint quotas in the
 %% Amazon Pinpoint Developer Guide.
 delete_text_message_spend_limit_override(Client, Input)
@@ -350,8 +351,8 @@ delete_voice_message_spend_limit_override(Client, Input, Options)
 %%
 %% The supported account attributes include account tier, which indicates
 %% whether your account is in the sandbox or production environment. When
-%% you're ready to move your account out of the sandbox, create an Amazon Web
-%% Services Support case for a service limit increase request.
+%% you're ready to move your account out of the sandbox, create an Amazon
+%% Web Services Support case for a service limit increase request.
 %%
 %% New Amazon Pinpoint accounts are placed into an SMS or voice sandbox. The
 %% sandbox protects both Amazon Web Services end recipients and SMS or voice
@@ -438,11 +439,12 @@ describe_opt_out_lists(Client, Input, Options)
 %% If you specify opted out numbers, the output includes information for only
 %% the specified opted out numbers. If you specify filters, the output
 %% includes information for only those opted out numbers that meet the filter
-%% criteria. If you don't specify opted out numbers or filters, the output
-%% includes information for all opted out destination numbers in your opt-out
-%% list.
+%% criteria. If you don't specify opted out numbers or filters, the
+%% output includes information for all opted out destination numbers in your
+%% opt-out list.
 %%
-%% If you specify an opted out number that isn't valid, an Error is returned.
+%% If you specify an opted out number that isn't valid, an Error is
+%% returned.
 describe_opted_out_numbers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_opted_out_numbers(Client, Input, []).
@@ -459,7 +461,8 @@ describe_opted_out_numbers(Client, Input, Options)
 %% you don't specify phone number IDs or filters, the output includes
 %% information for all phone numbers.
 %%
-%% If you specify a phone number ID that isn't valid, an Error is returned.
+%% If you specify a phone number ID that isn't valid, an Error is
+%% returned.
 describe_phone_numbers(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_phone_numbers(Client, Input, []).
@@ -472,8 +475,9 @@ describe_phone_numbers(Client, Input, Options)
 %%
 %% If you specify pool IDs, the output includes information for only the
 %% specified pools. If you specify filters, the output includes information
-%% for only those pools that meet the filter criteria. If you don't specify
-%% pool IDs or filters, the output includes information for all pools.
+%% for only those pools that meet the filter criteria. If you don't
+%% specify pool IDs or filters, the output includes information for all
+%% pools.
 %%
 %% If you specify a pool ID that isn't valid, an Error is returned.
 %%
@@ -493,8 +497,8 @@ describe_pools(Client, Input, Options)
 %% If you specify SenderIds, the output includes information for only the
 %% specified SenderIds. If you specify filters, the output includes
 %% information for only those SenderIds that meet the filter criteria. If you
-%% don't specify SenderIds or filters, the output includes information for
-%% all SenderIds.
+%% don't specify SenderIds or filters, the output includes information
+%% for all SenderIds.
 %%
 %% f you specify a sender ID that isn't valid, an Error is returned.
 describe_sender_ids(Client, Input)
@@ -520,8 +524,8 @@ describe_spend_limits(Client, Input, Options)
 
 %% @doc Removes the specified origination identity from an existing pool.
 %%
-%% If the origination identity isn't associated with the specified pool, an
-%% Error is returned.
+%% If the origination identity isn't associated with the specified pool,
+%% an Error is returned.
 disassociate_origination_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_origination_identity(Client, Input, []).
@@ -567,8 +571,8 @@ put_keyword(Client, Input, Options)
 
 %% @doc Creates an opted out destination phone number in the opt-out list.
 %%
-%% If the destination phone number isn't valid or if the specified opt-out
-%% list doesn't exist, an Error is returned.
+%% If the destination phone number isn't valid or if the specified
+%% opt-out list doesn't exist, an Error is returned.
 put_opted_out_number(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_opted_out_number(Client, Input, []).
@@ -658,8 +662,8 @@ set_default_sender_id(Client, Input, Options)
 %% @doc Sets an account level monthly spend limit override for sending text
 %% messages.
 %%
-%% The requested spend limit must be less than or equal to the `MaxLimit',
-%% which is set by Amazon Web Services.
+%% The requested spend limit must be less than or equal to the
+%% `MaxLimit', which is set by Amazon Web Services.
 set_text_message_spend_limit_override(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_text_message_spend_limit_override(Client, Input, []).
@@ -670,8 +674,8 @@ set_text_message_spend_limit_override(Client, Input, Options)
 %% @doc Sets an account level monthly spend limit override for sending voice
 %% messages.
 %%
-%% The requested spend limit must be less than or equal to the `MaxLimit',
-%% which is set by Amazon Web Services.
+%% The requested spend limit must be less than or equal to the
+%% `MaxLimit', which is set by Amazon Web Services.
 set_voice_message_spend_limit_override(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_voice_message_spend_limit_override(Client, Input, []).
@@ -712,9 +716,9 @@ untag_resource(Client, Input, Options)
 %% Firehose. You can also enable or disable the event destination.
 %%
 %% You may want to update an event destination to change its matching event
-%% types or updating the destination resource ARN. You can't change an event
-%% destination's type between CloudWatch Logs, Kinesis Data Firehose, and
-%% Amazon SNS.
+%% types or updating the destination resource ARN. You can't change an
+%% event destination's type between CloudWatch Logs, Kinesis Data
+%% Firehose, and Amazon SNS.
 update_event_destination(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_event_destination(Client, Input, []).
@@ -740,9 +744,9 @@ update_phone_number(Client, Input, Options)
 %% @doc Updates the configuration of an existing pool.
 %%
 %% You can update the opt-out list, enable or disable two-way messaging,
-%% change the `TwoWayChannelArn', enable or disable self-managed opt-outs,
-%% enable or disable deletion protection, and enable or disable shared
-%% routes.
+%% change the `TwoWayChannelArn', enable or disable self-managed
+%% opt-outs, enable or disable deletion protection, and enable or disable
+%% shared routes.
 update_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_pool(Client, Input, []).

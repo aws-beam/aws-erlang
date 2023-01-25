@@ -400,7 +400,7 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates a placement with the given attributes.
 %%
-%% To clear an attribute, pass an empty value (i.e., "").
+%% To clear an attribute, pass an empty value (i.e., &quot;&quot;).
 update_placement(Client, PlacementName, ProjectName, Input) ->
     update_placement(Client, PlacementName, ProjectName, Input, []).
 update_placement(Client, PlacementName, ProjectName, Input0, Options0) ->
@@ -428,7 +428,7 @@ update_placement(Client, PlacementName, ProjectName, Input0, Options0) ->
 %% With the exception of device template names, you can pass just the values
 %% that need to be updated because the update request will change only the
 %% values that are provided. To clear a value, pass the empty string (i.e.,
-%% `""').
+%% `&quot;&quot;').
 update_project(Client, ProjectName, Input) ->
     update_project(Client, ProjectName, Input, []).
 update_project(Client, ProjectName, Input0, Options0) ->

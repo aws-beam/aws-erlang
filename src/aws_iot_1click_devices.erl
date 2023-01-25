@@ -183,7 +183,7 @@ initiate_device_claim(Client, DeviceId, Input0, Options0) ->
 %% (with possible
 %% parameters).
 %%
-%% See the "Example POST" code snippet below.
+%% See the &quot;Example POST&quot; code snippet below.
 invoke_device_method(Client, DeviceId, Input) ->
     invoke_device_method(Client, DeviceId, Input, []).
 invoke_device_method(Client, DeviceId, Input0, Options0) ->

@@ -13,8 +13,8 @@
 %% data and providing a simple API for storage and access. This approach
 %% eliminates the administrative burden of data modeling, index maintenance,
 %% and performance tuning. Developers gain access to this functionality
-%% within Amazon's proven computing environment, are able to scale instantly,
-%% and pay only for what they use.
+%% within Amazon's proven computing environment, are able to scale
+%% instantly, and pay only for what they use.
 %%
 %% Visit [http://aws.amazon.com/simpledb/] for more information.
 -module(aws_simpledb).
@@ -84,37 +84,42 @@ batch_delete_attributes(Client, Input, Options)
 %% @doc The `BatchPutAttributes' operation creates or replaces attributes
 %% within one or more items.
 %%
-%% By using this operation, the client can perform multiple `PutAttribute'
-%% operation with a single call. This helps yield savings in round trips and
-%% latencies, enabling Amazon SimpleDB to optimize requests and generally
-%% produce better throughput.
+%% By using this operation, the client can perform multiple
+%% `PutAttribute' operation with a single call. This helps yield savings
+%% in round trips and latencies, enabling Amazon SimpleDB to optimize
+%% requests and generally produce better throughput.
 %%
-%% The client may specify the item name with the `Item.X.ItemName' parameter.
-%% The client may specify new attributes using a combination of the
-%% `Item.X.Attribute.Y.Name' and `Item.X.Attribute.Y.Value' parameters. The
-%% client may specify the first attribute for the first item using the
-%% parameters `Item.0.Attribute.0.Name' and `Item.0.Attribute.0.Value', and
-%% for the second attribute for the first item by the parameters
-%% `Item.0.Attribute.1.Name' and `Item.0.Attribute.1.Value', and so on.
+%% The client may specify the item name with the `Item.X.ItemName'
+%% parameter. The client may specify new attributes using a combination of
+%% the `Item.X.Attribute.Y.Name' and `Item.X.Attribute.Y.Value'
+%% parameters. The client may specify the first attribute for the first item
+%% using the parameters `Item.0.Attribute.0.Name' and
+%% `Item.0.Attribute.0.Value', and for the second attribute for the first
+%% item by the parameters `Item.0.Attribute.1.Name' and
+%% `Item.0.Attribute.1.Value', and so on.
 %%
 %% Attributes are uniquely identified within an item by their name/value
 %% combination. For example, a single item can have the attributes `{
-%% "first_name", "first_value" }' and `{ "first_name", "second_value" }'.
-%% However, it cannot have two attribute instances where both the
-%% `Item.X.Attribute.Y.Name' and `Item.X.Attribute.Y.Value' are the same.
+%% &quot;first_name&quot;, &quot;first_value&quot; }' and `{
+%% &quot;first_name&quot;, &quot;second_value&quot; }'. However, it
+%% cannot have two attribute instances where both the
+%% `Item.X.Attribute.Y.Name' and `Item.X.Attribute.Y.Value' are the
+%% same.
 %%
 %% Optionally, the requester can supply the `Replace' parameter for each
 %% individual value. Setting this value to `true' will cause the new
 %% attribute values to replace the existing attribute values. For example, if
-%% an item `I' has the attributes `{ 'a', '1' }, { 'b', '2'}' and `{ 'b', '3'
-%% }' and the requester does a BatchPutAttributes of `{'I', 'b', '4' }' with
-%% the Replace parameter set to true, the final attributes of the item will
-%% be `{ 'a', '1' }' and `{ 'b', '4' }', replacing the previous values of the
+%% an item `I' has the attributes `{ 'a', '1' }, {
+%% 'b', '2'}' and `{ 'b', '3' }' and
+%% the requester does a BatchPutAttributes of `{'I', 'b',
+%% '4' }' with the Replace parameter set to true, the final
+%% attributes of the item will be `{ 'a', '1' }' and `{
+%% 'b', '4' }', replacing the previous values of the
 %% 'b' attribute with the new value.
 %%
 %% You cannot specify an empty string as an item or as an attribute name. The
-%% `BatchPutAttributes' operation succeeds or fails in its entirety. There
-%% are no partial puts.
+%% `BatchPutAttributes' operation succeeds or fails in its entirety.
+%% There are no partial puts.
 %%
 %% This operation is vulnerable to exceeding the maximum URL size when making
 %% a REST request using the HTTP GET method. This operation does not support
@@ -130,8 +135,8 @@ batch_delete_attributes(Client, Input, Options)
 %%
 %% <ul> <li>256 attribute name-value pairs per item</li> <li>1 MB request
 %% size</li> <li>1 billion attributes per domain</li> <li>10 GB of total user
-%% data storage per domain</li> <li>25 item limit per `BatchPutAttributes'
-%% operation</li> </ul>
+%% data storage per domain</li> <li>25 item limit per
+%% `BatchPutAttributes' operation</li> </ul>
 batch_put_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_put_attributes(Client, Input, []).
@@ -142,8 +147,8 @@ batch_put_attributes(Client, Input, Options)
 %% @doc The `CreateDomain' operation creates a new domain.
 %%
 %% The domain name should be unique among the domains associated with the
-%% Access Key ID provided in the request. The `CreateDomain' operation may
-%% take 10 or more seconds to complete.
+%% Access Key ID provided in the request. The `CreateDomain' operation
+%% may take 10 or more seconds to complete.
 %%
 %% CreateDomain is an idempotent operation; running it multiple times using
 %% the same domain name will not result in an error response.
@@ -166,13 +171,14 @@ create_domain(Client, Input, Options)
 %% If `DeleteAttributes' is called without being passed any attributes or
 %% values specified, all the attributes for the item are deleted.
 %%
-%% `DeleteAttributes' is an idempotent operation; running it multiple times
-%% on the same item or attribute does not result in an error response.
+%% `DeleteAttributes' is an idempotent operation; running it multiple
+%% times on the same item or attribute does not result in an error response.
 %%
 %% Because Amazon SimpleDB makes multiple copies of item data and uses an
 %% eventual consistency update model, performing a `GetAttributes' or
-%% `Select' operation (read) immediately after a `DeleteAttributes' or
-%% `PutAttributes' operation (write) might not return updated item data.
+%% `Select' operation (read) immediately after a `DeleteAttributes'
+%% or `PutAttributes' operation (write) might not return updated item
+%% data.
 delete_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_attributes(Client, Input, []).
@@ -227,10 +233,11 @@ get_attributes(Client, Input, Options)
 %% Access Key ID.
 %%
 %% It returns domain names up to the limit set by MaxNumberOfDomains. A
-%% NextToken is returned if there are more than `MaxNumberOfDomains' domains.
-%% Calling `ListDomains' successive times with the `NextToken' provided by
-%% the operation returns up to `MaxNumberOfDomains' more domain names with
-%% each successive operation call.
+%% NextToken is returned if there are more than `MaxNumberOfDomains'
+%% domains. Calling `ListDomains' successive times with the
+%% `NextToken' provided by the operation returns up to
+%% `MaxNumberOfDomains' more domain names with each successive operation
+%% call.
 list_domains(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_domains(Client, Input, []).
@@ -249,28 +256,32 @@ list_domains(Client, Input, Options)
 %%
 %% Attributes are uniquely identified in an item by their name/value
 %% combination. For example, a single item can have the attributes `{
-%% "first_name", "first_value" }' and `{ "first_name", second_value" }'.
-%% However, it cannot have two attribute instances where both the
-%% `Attribute.X.Name' and `Attribute.X.Value' are the same.
+%% &quot;first_name&quot;, &quot;first_value&quot; }' and `{
+%% &quot;first_name&quot;, second_value&quot; }'. However, it cannot have
+%% two attribute instances where both the `Attribute.X.Name' and
+%% `Attribute.X.Value' are the same.
 %%
 %% Optionally, the requestor can supply the `Replace' parameter for each
 %% individual attribute. Setting this value to `true' causes the new
 %% attribute value to replace the existing attribute value(s). For example,
-%% if an item has the attributes `{ 'a', '1' }', `{ 'b', '2'}' and `{ 'b',
-%% '3' }' and the requestor calls `PutAttributes' using the attributes `{
-%% 'b', '4' }' with the `Replace' parameter set to true, the final attributes
-%% of the item are changed to `{ 'a', '1' }' and `{ 'b', '4' }', which
-%% replaces the previous values of the 'b' attribute with the new value.
+%% if an item has the attributes `{ 'a', '1' }', `{
+%% 'b', '2'}' and `{ 'b', '3' }' and
+%% the requestor calls `PutAttributes' using the attributes `{
+%% 'b', '4' }' with the `Replace' parameter set to
+%% true, the final attributes of the item are changed to `{ 'a',
+%% '1' }' and `{ 'b', '4' }', which replaces
+%% the previous values of the 'b' attribute with the new value.
 %%
-%% Using `PutAttributes' to replace attribute values that do not exist will
-%% not result in an error response.
+%% Using `PutAttributes' to replace attribute values that do not exist
+%% will not result in an error response.
 %%
 %% You cannot specify an empty string as an attribute name.
 %%
 %% Because Amazon SimpleDB makes multiple copies of client data and uses an
 %% eventual consistency update model, an immediate `GetAttributes' or
 %% `Select' operation (read) immediately after a `PutAttributes' or
-%% `DeleteAttributes' operation (write) might not return the updated data.
+%% `DeleteAttributes' operation (write) might not return the updated
+%% data.
 %%
 %% The following limitations are enforced for this operation:
 %%
@@ -284,8 +295,8 @@ put_attributes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAttributes">>, Input, Options).
 
-%% @doc The `Select' operation returns a set of attributes for `ItemNames'
-%% that match the select expression.
+%% @doc The `Select' operation returns a set of attributes for
+%% `ItemNames' that match the select expression.
 %%
 %% `Select' is similar to the standard SQL SELECT statement.
 %%

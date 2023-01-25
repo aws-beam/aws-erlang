@@ -112,9 +112,9 @@ create_pipeline(Client, Input, Options)
 %% The pipeline is set to the `DEACTIVATING' state until the deactivation
 %% process completes.
 %%
-%% To resume a deactivated pipeline, use `ActivatePipeline'. By default, the
-%% pipeline resumes from the last completed execution. Optionally, you can
-%% specify the date and time to resume the pipeline.
+%% To resume a deactivated pipeline, use `ActivatePipeline'. By default,
+%% the pipeline resumes from the last completed execution. Optionally, you
+%% can specify the date and time to resume the pipeline.
 deactivate_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     deactivate_pipeline(Client, Input, []).
@@ -129,8 +129,8 @@ deactivate_pipeline(Client, Input, Options)
 %%
 %% Deleting a pipeline cannot be undone. You cannot query or restore a
 %% deleted pipeline. To temporarily pause a pipeline instead of deleting it,
-%% call `SetStatus' with the status set to `PAUSE' on individual components.
-%% Components that are paused by `SetStatus' can be resumed.
+%% call `SetStatus' with the status set to `PAUSE' on individual
+%% components. Components that are paused by `SetStatus' can be resumed.
 delete_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_pipeline(Client, Input, []).
@@ -168,8 +168,8 @@ describe_pipelines(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePipelines">>, Input, Options).
 
-%% @doc Task runners call `EvaluateExpression' to evaluate a string in the
-%% context of the specified object.
+%% @doc Task runners call `EvaluateExpression' to evaluate a string in
+%% the context of the specified object.
 %%
 %% For example, a task runner can evaluate SQL queries stored in Amazon S3.
 evaluate_expression(Client, Input)
@@ -181,8 +181,8 @@ evaluate_expression(Client, Input, Options)
 
 %% @doc Gets the definition of the specified pipeline.
 %%
-%% You can call `GetPipelineDefinition' to retrieve the pipeline definition
-%% that you provided using `PutPipelineDefinition'.
+%% You can call `GetPipelineDefinition' to retrieve the pipeline
+%% definition that you provided using `PutPipelineDefinition'.
 get_pipeline_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pipeline_definition(Client, Input, []).
@@ -199,23 +199,23 @@ list_pipelines(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPipelines">>, Input, Options).
 
-%% @doc Task runners call `PollForTask' to receive a task to perform from AWS
-%% Data Pipeline.
+%% @doc Task runners call `PollForTask' to receive a task to perform from
+%% AWS Data Pipeline.
 %%
 %% The task runner specifies which tasks it can perform by setting a value
-%% for the `workerGroup' parameter. The task returned can come from any of
-%% the pipelines that match the `workerGroup' value passed in by the task
-%% runner and that was launched using the IAM user credentials specified by
-%% the task runner.
+%% for the `workerGroup' parameter. The task returned can come from any
+%% of the pipelines that match the `workerGroup' value passed in by the
+%% task runner and that was launched using the IAM user credentials specified
+%% by the task runner.
 %%
 %% If tasks are ready in the work queue, `PollForTask' returns a response
-%% immediately. If no tasks are available in the queue, `PollForTask' uses
-%% long-polling and holds on to a poll connection for up to a 90 seconds,
-%% during which time the first newly scheduled task is handed to the task
-%% runner. To accomodate this, set the socket timeout in your task runner to
-%% 90 seconds. The task runner should not call `PollForTask' again on the
-%% same `workerGroup' until it receives a response, and this can take up to
-%% 90 seconds.
+%% immediately. If no tasks are available in the queue, `PollForTask'
+%% uses long-polling and holds on to a poll connection for up to a 90
+%% seconds, during which time the first newly scheduled task is handed to the
+%% task runner. To accomodate this, set the socket timeout in your task
+%% runner to 90 seconds. The task runner should not call `PollForTask'
+%% again on the same `workerGroup' until it receives a response, and this
+%% can take up to 90 seconds.
 poll_for_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     poll_for_task(Client, Input, []).
@@ -227,16 +227,16 @@ poll_for_task(Client, Input, Options)
 %%
 %% You can use `PutPipelineDefinition' to populate a new pipeline.
 %%
-%% `PutPipelineDefinition' also validates the configuration as it adds it to
-%% the pipeline. Changes to the pipeline are saved unless one of the
+%% `PutPipelineDefinition' also validates the configuration as it adds it
+%% to the pipeline. Changes to the pipeline are saved unless one of the
 %% following three validation errors exists in the pipeline.
 %%
 %% <ol> <li>An object is missing a name or identifier field.</li> <li>A
 %% string or reference field is empty.</li> <li>The number of objects in the
 %% pipeline exceeds the maximum allowed objects.</li> <li>The pipeline is in
 %% a FINISHED state.</li> </ol> Pipeline object definitions are passed to the
-%% `PutPipelineDefinition' action and returned by the `GetPipelineDefinition'
-%% action.
+%% `PutPipelineDefinition' action and returned by the
+%% `GetPipelineDefinition' action.
 put_pipeline_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_pipeline_definition(Client, Input, []).
@@ -265,16 +265,16 @@ remove_tags(Client, Input, Options)
 %% acknowledge that it has the task.
 %%
 %% If the web service does not receive this acknowledgement within 2 minutes,
-%% it assigns the task in a subsequent `PollForTask' call. After this initial
-%% acknowledgement, the task runner only needs to report progress every 15
-%% minutes to maintain its ownership of the task. You can change this
-%% reporting time from 15 minutes by specifying a `reportProgressTimeout'
-%% field in your pipeline.
+%% it assigns the task in a subsequent `PollForTask' call. After this
+%% initial acknowledgement, the task runner only needs to report progress
+%% every 15 minutes to maintain its ownership of the task. You can change
+%% this reporting time from 15 minutes by specifying a
+%% `reportProgressTimeout' field in your pipeline.
 %%
 %% If a task runner does not report its status after 5 minutes, AWS Data
 %% Pipeline assumes that the task runner is unable to process the task and
-%% reassigns the task in a subsequent response to `PollForTask'. Task runners
-%% should call `ReportTaskProgress' every 60 seconds.
+%% reassigns the task in a subsequent response to `PollForTask'. Task
+%% runners should call `ReportTaskProgress' every 60 seconds.
 report_task_progress(Client, Input)
   when is_map(Client), is_map(Input) ->
     report_task_progress(Client, Input, []).
@@ -309,12 +309,12 @@ set_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetStatus">>, Input, Options).
 
-%% @doc Task runners call `SetTaskStatus' to notify AWS Data Pipeline that a
-%% task is completed and provide information about the final status.
+%% @doc Task runners call `SetTaskStatus' to notify AWS Data Pipeline
+%% that a task is completed and provide information about the final status.
 %%
 %% A task runner makes this call regardless of whether the task was
-%% sucessful. A task runner does not need to call `SetTaskStatus' for tasks
-%% that are canceled by the web service during a call to
+%% sucessful. A task runner does not need to call `SetTaskStatus' for
+%% tasks that are canceled by the web service during a call to
 %% `ReportTaskProgress'.
 set_task_status(Client, Input)
   when is_map(Client), is_map(Input) ->

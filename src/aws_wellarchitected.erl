@@ -1109,7 +1109,7 @@ tag_resource(Client, WorkloadArn, Input0, Options0) ->
 %%
 %% To specify multiple tags, use separate tagKeys parameters, for example:
 %%
-%% `DELETE /tags/WorkloadArn?tagKeys=key1&tagKeys=key2'
+%% `DELETE /tags/WorkloadArn?tagKeys=key1&amp;tagKeys=key2'
 untag_resource(Client, WorkloadArn, Input) ->
     untag_resource(Client, WorkloadArn, Input, []).
 untag_resource(Client, WorkloadArn, Input0, Options0) ->

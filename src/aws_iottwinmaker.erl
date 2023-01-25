@@ -442,8 +442,8 @@ get_pricing_plan(Client, QueryMap, HeadersMap, Options0)
 %% @doc Gets the property values for a component, component type, entity, or
 %% workspace.
 %%
-%% You must specify a value for either `componentName', `componentTypeId',
-%% `entityId', or `workspaceId'.
+%% You must specify a value for either `componentName',
+%% `componentTypeId', `entityId', or `workspaceId'.
 get_property_value(Client, WorkspaceId, Input) ->
     get_property_value(Client, WorkspaceId, Input, []).
 get_property_value(Client, WorkspaceId, Input0, Options0) ->
@@ -469,9 +469,9 @@ get_property_value(Client, WorkspaceId, Input0, Options0) ->
 %% @doc Retrieves information about the history of a time series property
 %% value for a component, component type, entity, or workspace.
 %%
-%% You must specify a value for `workspaceId'. For entity-specific queries,
-%% specify values for `componentName' and `entityId'. For cross-entity
-%% quries, specify a value for `componentTypeId'.
+%% You must specify a value for `workspaceId'. For entity-specific
+%% queries, specify values for `componentName' and `entityId'. For
+%% cross-entity quries, specify a value for `componentTypeId'.
 get_property_value_history(Client, WorkspaceId, Input) ->
     get_property_value_history(Client, WorkspaceId, Input, []).
 get_property_value_history(Client, WorkspaceId, Input0, Options0) ->

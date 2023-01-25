@@ -943,8 +943,8 @@ delete_wireless_gateway_task_definition(Client, Id, Input0, Options0) ->
 
 %% @doc Disassociates your AWS account from a partner account.
 %%
-%% If `PartnerAccountId' and `PartnerType' are `null', disassociates your AWS
-%% account from all partner accounts.
+%% If `PartnerAccountId' and `PartnerType' are `null',
+%% disassociates your AWS account from all partner accounts.
 disassociate_aws_account_from_partner_account(Client, PartnerAccountId, Input) ->
     disassociate_aws_account_from_partner_account(Client, PartnerAccountId, Input, []).
 disassociate_aws_account_from_partner_account(Client, PartnerAccountId, Input0, Options0) ->
@@ -1296,8 +1296,8 @@ get_network_analyzer_configuration(Client, ConfigurationName, QueryMap, HeadersM
 
 %% @doc Gets information about a partner account.
 %%
-%% If `PartnerAccountId' and `PartnerType' are `null', returns all partner
-%% accounts.
+%% If `PartnerAccountId' and `PartnerType' are `null', returns
+%% all partner accounts.
 get_partner_account(Client, PartnerAccountId, PartnerType)
   when is_map(Client) ->
     get_partner_account(Client, PartnerAccountId, PartnerType, #{}, #{}).
@@ -2568,8 +2568,8 @@ update_fuota_task(Client, Id, Input0, Options0) ->
 %% @doc Set default log level, or log levels by resource types.
 %%
 %% This can be for wireless device log options or wireless gateways log
-%% options and is used to control the log messages that'll be displayed in
-%% CloudWatch.
+%% options and is used to control the log messages that'll be displayed
+%% in CloudWatch.
 update_log_levels_by_resource_types(Client, Input) ->
     update_log_levels_by_resource_types(Client, Input, []).
 update_log_levels_by_resource_types(Client, Input0, Options0) ->

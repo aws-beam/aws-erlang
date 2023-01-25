@@ -377,8 +377,8 @@ batch_write(Client, Input0, Options0) ->
 %% A directory cannot be created without a schema.
 %%
 %% You can also quickly create a directory using a managed schema, called the
-%% `QuickStartSchema'. For more information, see Managed Schema in the Amazon
-%% Cloud Directory Developer Guide.
+%% `QuickStartSchema'. For more information, see Managed Schema in the
+%% Amazon Cloud Directory Developer Guide.
 create_directory(Client, Input) ->
     create_directory(Client, Input, []).
 create_directory(Client, Input0, Options0) ->
@@ -460,9 +460,9 @@ create_index(Client, Input0, Options0) ->
 %% @doc Creates an object in a `Directory'.
 %%
 %% Additionally attaches the object to a parent, if a parent reference and
-%% `LinkName' is specified. An object is simply a collection of `Facet'
-%% attributes. You can also use this API call to create a policy object, if
-%% the facet from which you create the object is a policy facet.
+%% `LinkName' is specified. An object is simply a collection of
+%% `Facet' attributes. You can also use this API call to create a policy
+%% object, if the facet from which you create the object is a policy facet.
 create_object(Client, Input) ->
     create_object(Client, Input, []).
 create_object(Client, Input0, Options0) ->
@@ -902,8 +902,8 @@ get_directory(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets details of the `Facet', such as facet name, attributes, `Rule's,
-%% or `ObjectType'.
+%% @doc Gets details of the `Facet', such as facet name, attributes,
+%% `Rule's, or `ObjectType'.
 %%
 %% You can call this on all kinds of schema facets -- published, development,
 %% or applied.
@@ -1036,7 +1036,8 @@ get_schema_as_json(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns the identity attribute order for a specific `TypedLinkFacet'.
+%% @doc Returns the identity attribute order for a specific
+%% `TypedLinkFacet'.
 %%
 %% For more information, see Typed Links.
 get_typed_link_facet_information(Client, Input) ->
@@ -1352,11 +1353,11 @@ list_object_children(Client, Input0, Options0) ->
 %%
 %% Use this API to evaluate all parents for an object. The call returns all
 %% objects from the root of the directory up to the requested object. The API
-%% returns the number of paths based on user-defined `MaxResults', in case
-%% there are multiple paths to the parent. The order of the paths and nodes
-%% returned is consistent among multiple API calls unless the objects are
-%% deleted or moved. Paths not leading to the directory root are ignored from
-%% the target object.
+%% returns the number of paths based on user-defined `MaxResults', in
+%% case there are multiple paths to the parent. The order of the paths and
+%% nodes returned is consistent among multiple API calls unless the objects
+%% are deleted or moved. Paths not leading to the directory root are ignored
+%% from the target object.
 list_object_parent_paths(Client, Input) ->
     list_object_parent_paths(Client, Input, []).
 list_object_parent_paths(Client, Input0, Options0) ->
@@ -1571,8 +1572,8 @@ list_typed_link_facet_attributes(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a paginated list of `TypedLink' facet names for a particular
-%% schema.
+%% @doc Returns a paginated list of `TypedLink' facet names for a
+%% particular schema.
 %%
 %% For more information, see Typed Links.
 list_typed_link_facet_names(Client, Input) ->
@@ -1604,10 +1605,10 @@ list_typed_link_facet_names(Client, Input0, Options0) ->
 %%
 %% If there are no policies present, an empty list is returned. If policies
 %% are present, and if some objects don't have the policies attached, it
-%% returns the `ObjectIdentifier' for such objects. If policies are present,
-%% it returns `ObjectIdentifier', `policyId', and `policyType'. Paths that
-%% don't lead to the root from the target object are ignored. For more
-%% information, see Policies.
+%% returns the `ObjectIdentifier' for such objects. If policies are
+%% present, it returns `ObjectIdentifier', `policyId', and
+%% `policyType'. Paths that don't lead to the root from the target
+%% object are ignored. For more information, see Policies.
 lookup_policy(Client, Input) ->
     lookup_policy(Client, Input, []).
 lookup_policy(Client, Input0, Options0) ->
@@ -1761,9 +1762,11 @@ untag_resource(Client, Input0, Options0) ->
 %%
 %% <ol> <li> Adds new `Attributes', `Rules', or `ObjectTypes'.
 %%
-%% </li> <li> Updates existing `Attributes', `Rules', or `ObjectTypes'.
+%% </li> <li> Updates existing `Attributes', `Rules', or
+%% `ObjectTypes'.
 %%
-%% </li> <li> Deletes existing `Attributes', `Rules', or `ObjectTypes'.
+%% </li> <li> Deletes existing `Attributes', `Rules', or
+%% `ObjectTypes'.
 %%
 %% </li> </ol>
 update_facet(Client, Input) ->
@@ -1897,8 +1900,8 @@ update_typed_link_facet(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Upgrades a single directory in-place using the `PublishedSchemaArn'
-%% with schema updates found in `MinorVersion'.
+%% @doc Upgrades a single directory in-place using the
+%% `PublishedSchemaArn' with schema updates found in `MinorVersion'.
 %%
 %% Backwards-compatible minor version upgrades are instantaneously available
 %% for readers on all objects in the directory. Note: This is a synchronous

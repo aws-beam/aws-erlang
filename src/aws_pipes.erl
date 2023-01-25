@@ -233,9 +233,9 @@ stop_pipe(Client, Name, Input0, Options0) ->
 %% Tags don't have any semantic meaning to Amazon Web Services and are
 %% interpreted strictly as strings of characters.
 %%
-%% You can use the `TagResource' action with a pipe that already has tags. If
-%% you specify a new tag key, this tag is appended to the list of tags
-%% associated with the pipe. If you specify a tag key that is already
+%% You can use the `TagResource' action with a pipe that already has
+%% tags. If you specify a new tag key, this tag is appended to the list of
+%% tags associated with the pipe. If you specify a tag key that is already
 %% associated with the pipe, the new tag value that you specify replaces the
 %% previous value for that tag.
 %%
@@ -291,15 +291,17 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% When you call `UpdatePipe', only the fields that are included in the
 %% request are changed, the rest are unchanged. The exception to this is if
 %% you modify any Amazon Web Services-service specific fields in the
-%% `SourceParameters', `EnrichmentParameters', or `TargetParameters' objects.
-%% The fields in these objects are updated atomically as one and override
-%% existing values. This is by design and means that if you don't specify an
-%% optional field in one of these Parameters objects, that field will be set
-%% to its system-default value after the update.
+%% `SourceParameters', `EnrichmentParameters', or
+%% `TargetParameters' objects. The fields in these objects are updated
+%% atomically as one and override existing values. This is by design and
+%% means that if you don't specify an optional field in one of these
+%% Parameters objects, that field will be set to its system-default value
+%% after the update.
 %%
-%% <p>For more information about pipes, see <a
-%% href="https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html">
-%% Amazon EventBridge Pipes</a> in the Amazon EventBridge User Guide.</p>
+%% &lt;p&gt;For more information about pipes, see &lt;a
+%% href=&quot;https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html&quot;&gt;
+%% Amazon EventBridge Pipes&lt;/a&gt; in the Amazon EventBridge User
+%% Guide.&lt;/p&gt;
 update_pipe(Client, Name, Input) ->
     update_pipe(Client, Name, Input, []).
 update_pipe(Client, Name, Input0, Options0) ->

@@ -1,8 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc "Suite of geospatial services including Maps, Places, Routes,
-%% Tracking, and Geofencing"
+%% @doc &quot;Suite of geospatial services including Maps, Places, Routes,
+%% Tracking, and Geofencing&quot;
 -module(aws_location).
 
 -export([associate_tracker_consumer/3,
@@ -222,11 +222,11 @@ batch_delete_geofence(Client, CollectionName, Input0, Options0) ->
 %% entered or exited a geofenced area, and then publishes one of the
 %% following events to Amazon EventBridge:
 %%
-%% <ul> <li> `ENTER' if Amazon Location determines that the tracked device
-%% has entered a geofenced area.
+%% <ul> <li> `ENTER' if Amazon Location determines that the tracked
+%% device has entered a geofenced area.
 %%
-%% </li> <li> `EXIT' if Amazon Location determines that the tracked device
-%% has exited a geofenced area.
+%% </li> <li> `EXIT' if Amazon Location determines that the tracked
+%% device has exited a geofenced area.
 %%
 %% </li> </ul> The last geofence that a device was observed within is tracked
 %% for 30 days after the most recent device position update.
@@ -313,25 +313,26 @@ batch_put_geofence(Client, CollectionName, Input0, Options0) ->
 %% position and position history. Amazon Location retains location data for
 %% 30 days.
 %%
-%% Position updates are handled based on the `PositionFiltering' property of
-%% the tracker. When `PositionFiltering' is set to `TimeBased', updates are
-%% evaluated against linked geofence collections, and location data is stored
-%% at a maximum of one position per 30 second interval. If your update
-%% frequency is more often than every 30 seconds, only one update per 30
-%% seconds is stored for each unique device ID.
+%% Position updates are handled based on the `PositionFiltering' property
+%% of the tracker. When `PositionFiltering' is set to `TimeBased',
+%% updates are evaluated against linked geofence collections, and location
+%% data is stored at a maximum of one position per 30 second interval. If
+%% your update frequency is more often than every 30 seconds, only one update
+%% per 30 seconds is stored for each unique device ID.
 %%
-%% When `PositionFiltering' is set to `DistanceBased' filtering, location
-%% data is stored and evaluated against linked geofence collections only if
-%% the device has moved more than 30 m (98.4 ft).
+%% When `PositionFiltering' is set to `DistanceBased' filtering,
+%% location data is stored and evaluated against linked geofence collections
+%% only if the device has moved more than 30 m (98.4 ft).
 %%
-%% When `PositionFiltering' is set to `AccuracyBased' filtering, location
-%% data is stored and evaluated against linked geofence collections only if
-%% the device has moved more than the measured accuracy. For example, if two
-%% consecutive updates from a device have a horizontal accuracy of 5 m and 10
-%% m, the second update is neither stored or evaluated if the device has
-%% moved less than 15 m. If `PositionFiltering' is set to `AccuracyBased'
-%% filtering, Amazon Location uses the default value `{ "Horizontal": 0}'
-%% when accuracy is not provided on a `DevicePositionUpdate'.
+%% When `PositionFiltering' is set to `AccuracyBased' filtering,
+%% location data is stored and evaluated against linked geofence collections
+%% only if the device has moved more than the measured accuracy. For example,
+%% if two consecutive updates from a device have a horizontal accuracy of 5 m
+%% and 10 m, the second update is neither stored or evaluated if the device
+%% has moved less than 15 m. If `PositionFiltering' is set to
+%% `AccuracyBased' filtering, Amazon Location uses the default value `{
+%% &quot;Horizontal&quot;: 0}' when accuracy is not provided on a
+%% `DevicePositionUpdate'.
 batch_update_device_position(Client, TrackerName, Input) ->
     batch_update_device_position(Client, TrackerName, Input, []).
 batch_update_device_position(Client, TrackerName, Input0, Options0) ->
@@ -359,23 +360,23 @@ batch_update_device_position(Client, TrackerName, Input0, Options0) ->
 %%
 %% Requires that you first create a route calculator resource.
 %%
-%% By default, a request that doesn't specify a departure time uses the best
-%% time of day to travel with the best traffic conditions when calculating
-%% the route.
+%% By default, a request that doesn't specify a departure time uses the
+%% best time of day to travel with the best traffic conditions when
+%% calculating the route.
 %%
 %% Additional options include:
 %%
 %% <ul> <li> Specifying a departure time using either `DepartureTime' or
-%% `DepartNow'. This calculates a route based on predictive traffic data at
-%% the given time.
+%% `DepartNow'. This calculates a route based on predictive traffic data
+%% at the given time.
 %%
-%% You can't specify both `DepartureTime' and `DepartNow' in a single
-%% request. Specifying both parameters returns a validation error.
+%% You can't specify both `DepartureTime' and `DepartNow' in a
+%% single request. Specifying both parameters returns a validation error.
 %%
 %% </li> <li> Specifying a travel mode using TravelMode sets the
 %% transportation mode used to calculate the routes. This also lets you
-%% specify additional route preferences in `CarModeOptions' if traveling by
-%% `Car', or `TruckModeOptions' if traveling by `Truck'.
+%% specify additional route preferences in `CarModeOptions' if traveling
+%% by `Car', or `TruckModeOptions' if traveling by `Truck'.
 %%
 %% If you specify `walking' for the travel mode and your data provider is
 %% Esri, the start and destination must be within 40km.
@@ -406,36 +407,37 @@ calculate_route(Client, CalculatorName, Input0, Options0) ->
 %% @doc Calculates a route matrix given the following required parameters:
 %% `DeparturePositions' and `DestinationPositions'.
 %%
-%% `CalculateRouteMatrix' calculates routes and returns the travel time and
-%% travel distance from each departure position to each destination position
-%% in the request. For example, given departure positions A and B, and
-%% destination positions X and Y, `CalculateRouteMatrix' will return time and
-%% distance for routes from A to X, A to Y, B to X, and B to Y (in that
-%% order). The number of results returned (and routes calculated) will be the
-%% number of `DeparturePositions' times the number of `DestinationPositions'.
+%% `CalculateRouteMatrix' calculates routes and returns the travel time
+%% and travel distance from each departure position to each destination
+%% position in the request. For example, given departure positions A and B,
+%% and destination positions X and Y, `CalculateRouteMatrix' will return
+%% time and distance for routes from A to X, A to Y, B to X, and B to Y (in
+%% that order). The number of results returned (and routes calculated) will
+%% be the number of `DeparturePositions' times the number of
+%% `DestinationPositions'.
 %%
 %% Your account is charged for each route calculated, not the number of
 %% requests.
 %%
 %% Requires that you first create a route calculator resource.
 %%
-%% By default, a request that doesn't specify a departure time uses the best
-%% time of day to travel with the best traffic conditions when calculating
-%% routes.
+%% By default, a request that doesn't specify a departure time uses the
+%% best time of day to travel with the best traffic conditions when
+%% calculating routes.
 %%
 %% Additional options include:
 %%
 %% <ul> <li> Specifying a departure time using either `DepartureTime' or
-%% `DepartNow'. This calculates routes based on predictive traffic data at
-%% the given time.
+%% `DepartNow'. This calculates routes based on predictive traffic data
+%% at the given time.
 %%
-%% You can't specify both `DepartureTime' and `DepartNow' in a single
-%% request. Specifying both parameters returns a validation error.
+%% You can't specify both `DepartureTime' and `DepartNow' in a
+%% single request. Specifying both parameters returns a validation error.
 %%
 %% </li> <li> Specifying a travel mode using TravelMode sets the
 %% transportation mode used to calculate the routes. This also lets you
-%% specify additional route preferences in `CarModeOptions' if traveling by
-%% `Car', or `TruckModeOptions' if traveling by `Truck'.
+%% specify additional route preferences in `CarModeOptions' if traveling
+%% by `Car', or `TruckModeOptions' if traveling by `Truck'.
 %%
 %% </li> </ul>
 calculate_route_matrix(Client, CalculatorName, Input) ->
@@ -1076,8 +1078,8 @@ get_map_style_descriptor(Client, MapName, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves a vector data tile from the map resource.
 %%
-%% Map tiles are used by clients to render a map. they're addressed using a
-%% grid arrangement with an X coordinate, Y coordinate, and Z (zoom) level.
+%% Map tiles are used by clients to render a map. they're addressed using
+%% a grid arrangement with an X coordinate, Y coordinate, and Z (zoom) level.
 %%
 %% The origin (0, 0) is the top left of the map. Increasing the zoom level by
 %% 1 doubles both the X and Y dimensions, so a tile containing data for the
@@ -1431,7 +1433,8 @@ search_place_index_for_position(Client, IndexName, Input0, Options0) ->
 %% You can search for suggested place names near a specified position by
 %% using `BiasPosition', or filter results within a bounding box by using
 %% `FilterBBox'. These parameters are mutually exclusive; using both
-%% `BiasPosition' and `FilterBBox' in the same command returns an error.
+%% `BiasPosition' and `FilterBBox' in the same command returns an
+%% error.
 search_place_index_for_suggestions(Client, IndexName, Input) ->
     search_place_index_for_suggestions(Client, IndexName, Input, []).
 search_place_index_for_suggestions(Client, IndexName, Input0, Options0) ->
@@ -1460,9 +1463,9 @@ search_place_index_for_suggestions(Client, IndexName, Input0, Options0) ->
 %% Optional parameters let you narrow your search results by bounding box or
 %% country, or bias your search toward a specific position on the globe.
 %%
-%% You can search for places near a given position using `BiasPosition', or
-%% filter results within a bounding box using `FilterBBox'. Providing both
-%% parameters simultaneously returns an error.
+%% You can search for places near a given position using `BiasPosition',
+%% or filter results within a bounding box using `FilterBBox'. Providing
+%% both parameters simultaneously returns an error.
 %%
 %% Search results are returned in order of highest to lowest relevance.
 search_place_index_for_text(Client, IndexName, Input) ->
@@ -1494,9 +1497,9 @@ search_place_index_for_text(Client, IndexName, Input0, Options0) ->
 %% them to scope user permissions, by granting a user permission to access or
 %% change only resources with certain tag values.
 %%
-%% You can use the `TagResource' operation with an Amazon Location Service
-%% resource that already has tags. If you specify a new tag key for the
-%% resource, this tag is appended to the tags already associated with the
+%% You can use the `TagResource' operation with an Amazon Location
+%% Service resource that already has tags. If you specify a new tag key for
+%% the resource, this tag is appended to the tags already associated with the
 %% resource. If you specify a tag key that's already associated with the
 %% resource, the new tag value that you specify replaces the previous value
 %% for that tag.

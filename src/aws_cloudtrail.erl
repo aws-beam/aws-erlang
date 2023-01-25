@@ -113,8 +113,8 @@
 %% @doc Adds one or more tags to a trail or event data store, up to a limit
 %% of 50.
 %%
-%% Overwrites an existing tag's value when a new value is specified for an
-%% existing tag key. Tag key names must be unique for a trail; you cannot
+%% Overwrites an existing tag's value when a new value is specified for
+%% an existing tag key. Tag key names must be unique for a trail; you cannot
 %% have two keys with the same name but different values. If you specify a
 %% key without a value, the tag will be created with the specified key and a
 %% value of null. You can tag a trail or event data store that applies to all
@@ -130,10 +130,10 @@ add_tags(Client, Input, Options)
 %% @doc Cancels a query if the query is not in a terminated state, such as
 %% `CANCELLED', `FAILED', `TIMED_OUT', or `FINISHED'.
 %%
-%% You must specify an ARN value for `EventDataStore'. The ID of the query
-%% that you want to cancel is also required. When you run `CancelQuery', the
-%% query status might show as `CANCELLED' even if the operation is not yet
-%% finished.
+%% You must specify an ARN value for `EventDataStore'. The ID of the
+%% query that you want to cancel is also required. When you run
+%% `CancelQuery', the query status might show as `CANCELLED' even if
+%% the operation is not yet finished.
 cancel_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_query(Client, Input, []).
@@ -158,19 +158,20 @@ create_trail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrail">>, Input, Options).
 
-%% @doc Disables the event data store specified by `EventDataStore', which
-%% accepts an event data store ARN.
+%% @doc Disables the event data store specified by `EventDataStore',
+%% which accepts an event data store ARN.
 %%
 %% After you run `DeleteEventDataStore', the event data store enters a
-%% `PENDING_DELETION' state, and is automatically deleted after a wait period
-%% of seven days. `TerminationProtectionEnabled' must be set to `False' on
-%% the event data store; this operation cannot work if
+%% `PENDING_DELETION' state, and is automatically deleted after a wait
+%% period of seven days. `TerminationProtectionEnabled' must be set to
+%% `False' on the event data store; this operation cannot work if
 %% `TerminationProtectionEnabled' is `True'.
 %%
-%% After you run `DeleteEventDataStore' on an event data store, you cannot
-%% run `ListQueries', `DescribeQuery', or `GetQueryResults' on queries that
-%% are using an event data store in a `PENDING_DELETION' state. An event data
-%% store in the `PENDING_DELETION' state does not incur costs.
+%% After you run `DeleteEventDataStore' on an event data store, you
+%% cannot run `ListQueries', `DescribeQuery', or
+%% `GetQueryResults' on queries that are using an event data store in a
+%% `PENDING_DELETION' state. An event data store in the
+%% `PENDING_DELETION' state does not incur costs.
 delete_event_data_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_event_data_store(Client, Input, []).
@@ -181,8 +182,9 @@ delete_event_data_store(Client, Input, Options)
 %% @doc Deletes a trail.
 %%
 %% This operation must be called from the region in which the trail was
-%% created. `DeleteTrail' cannot be called on the shadow trails (replicated
-%% trails in other regions) of a trail that is enabled in all regions.
+%% created. `DeleteTrail' cannot be called on the shadow trails
+%% (replicated trails in other regions) of a trail that is enabled in all
+%% regions.
 delete_trail(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trail(Client, Input, []).
@@ -202,7 +204,8 @@ deregister_organization_delegated_admin(Client, Input, Options)
 %% @doc Returns metadata about a query, including query run time in
 %% milliseconds, number of events scanned and matched, and query status.
 %%
-%% You must specify an ARN for `EventDataStore', and a value for `QueryID'.
+%% You must specify an ARN for `EventDataStore', and a value for
+%% `QueryID'.
 describe_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_query(Client, Input, []).
@@ -387,11 +390,12 @@ list_public_keys(Client, Input, Options)
 
 %% @doc Returns a list of queries and query statuses for the past seven days.
 %%
-%% You must specify an ARN value for `EventDataStore'. Optionally, to shorten
-%% the list of results, you can specify a time range, formatted as
+%% You must specify an ARN value for `EventDataStore'. Optionally, to
+%% shorten the list of results, you can specify a time range, formatted as
 %% timestamps, by adding `StartTime' and `EndTime' parameters, and a
-%% `QueryStatus' value. Valid values for `QueryStatus' include `QUEUED',
-%% `RUNNING', `FINISHED', `FAILED', `TIMED_OUT', or `CANCELLED'.
+%% `QueryStatus' value. Valid values for `QueryStatus' include
+%% `QUEUED', `RUNNING', `FINISHED', `FAILED',
+%% `TIMED_OUT', or `CANCELLED'.
 list_queries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_queries(Client, Input, []).
@@ -470,25 +474,26 @@ lookup_events(Client, Input, Options)
 %% When an event occurs in your account, CloudTrail evaluates the event
 %% selectors or advanced event selectors in all trails. For each trail, if
 %% the event matches any event selector, the trail processes and logs the
-%% event. If the event doesn't match any event selector, the trail doesn't
-%% log the event.
+%% event. If the event doesn't match any event selector, the trail
+%% doesn't log the event.
 %%
 %% Example
 %%
 %% <ol> <li> You create an event selector for a trail and specify that you
 %% want write-only events.
 %%
-%% </li> <li> The EC2 `GetConsoleOutput' and `RunInstances' API operations
-%% occur in your account.
+%% </li> <li> The EC2 `GetConsoleOutput' and `RunInstances' API
+%% operations occur in your account.
 %%
 %% </li> <li> CloudTrail evaluates whether the events match your event
 %% selectors.
 %%
-%% </li> <li> The `RunInstances' is a write-only event and it matches your
-%% event selector. The trail logs the event.
+%% </li> <li> The `RunInstances' is a write-only event and it matches
+%% your event selector. The trail logs the event.
 %%
-%% </li> <li> The `GetConsoleOutput' is a read-only event that doesn't match
-%% your event selector. The trail doesn't log the event.
+%% </li> <li> The `GetConsoleOutput' is a read-only event that
+%% doesn't match your event selector. The trail doesn't log the
+%% event.
 %%
 %% </li> </ol> The `PutEventSelectors' operation must be called from the
 %% region in which the trail was created; otherwise, an
@@ -501,10 +506,10 @@ lookup_events(Client, Input, Options)
 %% You can add advanced event selectors, and conditions for your advanced
 %% event selectors, up to a maximum of 500 values for all conditions and
 %% selectors on a trail. You can use either `AdvancedEventSelectors' or
-%% `EventSelectors', but not both. If you apply `AdvancedEventSelectors' to a
-%% trail, any existing `EventSelectors' are overwritten. For more information
-%% about advanced event selectors, see Logging data events for trails in the
-%% CloudTrail User Guide.
+%% `EventSelectors', but not both. If you apply
+%% `AdvancedEventSelectors' to a trail, any existing `EventSelectors'
+%% are overwritten. For more information about advanced event selectors, see
+%% Logging data events for trails in the CloudTrail User Guide.
 put_event_selectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_event_selectors(Client, Input, []).
@@ -515,9 +520,10 @@ put_event_selectors(Client, Input, Options)
 %% @doc Lets you enable Insights event logging by specifying the Insights
 %% selectors that you want to enable on an existing trail.
 %%
-%% You also use `PutInsightSelectors' to turn off Insights event logging, by
-%% passing an empty list of insight types. The valid Insights event types in
-%% this release are `ApiErrorRateInsight' and `ApiCallRateInsight'.
+%% You also use `PutInsightSelectors' to turn off Insights event logging,
+%% by passing an empty list of insight types. The valid Insights event types
+%% in this release are `ApiErrorRateInsight' and
+%% `ApiCallRateInsight'.
 put_insight_selectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_insight_selectors(Client, Input, []).
@@ -542,8 +548,8 @@ remove_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTags">>, Input, Options).
 
-%% @doc Restores a deleted event data store specified by `EventDataStore',
-%% which accepts an event data store ARN.
+%% @doc Restores a deleted event data store specified by
+%% `EventDataStore', which accepts an event data store ARN.
 %%
 %% You can only restore a deleted event data store within the seven-day wait
 %% period after deletion. Restoring an event data store can take several
@@ -558,12 +564,12 @@ restore_event_data_store(Client, Input, Options)
 %% @doc Starts an import of logged trail events from a source S3 bucket to a
 %% destination event data store.
 %%
-%% By default, CloudTrail only imports events contained in the S3 bucket's
-%% `CloudTrail' prefix and the prefixes inside the `CloudTrail' prefix, and
-%% does not check prefixes for other Amazon Web Services services. If you
-%% want to import CloudTrail events contained in another prefix, you must
-%% include the prefix in the `S3LocationUri'. For more considerations about
-%% importing trail events, see Considerations.
+%% By default, CloudTrail only imports events contained in the S3
+%% bucket's `CloudTrail' prefix and the prefixes inside the
+%% `CloudTrail' prefix, and does not check prefixes for other Amazon Web
+%% Services services. If you want to import CloudTrail events contained in
+%% another prefix, you must include the prefix in the `S3LocationUri'.
+%% For more considerations about importing trail events, see Considerations.
 %%
 %% When you start a new import, the `Destinations' and `ImportSource'
 %% parameters are required. Before starting a new import, disable any access
@@ -595,9 +601,9 @@ start_logging(Client, Input, Options)
 
 %% @doc Starts a CloudTrail Lake query.
 %%
-%% The required `QueryStatement' parameter provides your SQL query, enclosed
-%% in single quotation marks. Use the optional `DeliveryS3Uri' parameter to
-%% deliver the query results to an S3 bucket.
+%% The required `QueryStatement' parameter provides your SQL query,
+%% enclosed in single quotation marks. Use the optional `DeliveryS3Uri'
+%% parameter to deliver the query results to an S3 bucket.
 start_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_query(Client, Input, []).
@@ -620,9 +626,9 @@ stop_import(Client, Input, Options)
 %% update a trail without stopping it first. This action is the only way to
 %% stop recording. For a trail enabled in all regions, this operation must be
 %% called from the region in which the trail was created, or an
-%% `InvalidHomeRegionException' will occur. This operation cannot be called
-%% on the shadow trails (replicated trails in other regions) of a trail
-%% enabled in all regions.
+%% `InvalidHomeRegionException' will occur. This operation cannot be
+%% called on the shadow trails (replicated trails in other regions) of a
+%% trail enabled in all regions.
 stop_logging(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_logging(Client, Input, []).
@@ -634,11 +640,11 @@ stop_logging(Client, Input, Options)
 %%
 %% The required `EventDataStore' value is an ARN or the ID portion of the
 %% ARN. Other parameters are optional, but at least one optional parameter
-%% must be specified, or CloudTrail throws an error. `RetentionPeriod' is in
-%% days, and valid values are integers between 90 and 2557. By default,
-%% `TerminationProtection' is enabled. `AdvancedEventSelectors' includes or
-%% excludes management and data events in your event data store; for more
-%% information about `AdvancedEventSelectors', see
+%% must be specified, or CloudTrail throws an error. `RetentionPeriod' is
+%% in days, and valid values are integers between 90 and 2557. By default,
+%% `TerminationProtection' is enabled. `AdvancedEventSelectors'
+%% includes or excludes management and data events in your event data store;
+%% for more information about `AdvancedEventSelectors', see
 %% `PutEventSelectorsRequest$AdvancedEventSelectors'.
 update_event_data_store(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -653,8 +659,8 @@ update_event_data_store(Client, Input, Options)
 %% Changes to a trail do not require stopping the CloudTrail service. Use
 %% this action to designate an existing bucket for log delivery. If the
 %% existing bucket has previously been a target for CloudTrail log files, an
-%% IAM policy exists for the bucket. `UpdateTrail' must be called from the
-%% region in which the trail was created; otherwise, an
+%% IAM policy exists for the bucket. `UpdateTrail' must be called from
+%% the region in which the trail was created; otherwise, an
 %% `InvalidHomeRegionException' is thrown.
 update_trail(Client, Input)
   when is_map(Client), is_map(Input) ->

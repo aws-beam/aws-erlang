@@ -220,11 +220,12 @@ delete_workgroup(Client, Input, Options)
 %% optionally specify a duration between 900 seconds (15 minutes) and 3600
 %% seconds (60 minutes).
 %%
-%% <p>The Identity and Access Management (IAM) user or role that runs
+%% &lt;p&gt;The Identity and Access Management (IAM) user or role that runs
 %% GetCredentials must have an IAM policy attached that allows access to all
-%% necessary actions and resources.</p> <p>If the <code>DbName</code>
-%% parameter is specified, the IAM policy must allow access to the resource
-%% dbname for the specified database name.</p>
+%% necessary actions and resources.&lt;/p&gt; &lt;p&gt;If the
+%% &lt;code&gt;DbName&lt;/code&gt; parameter is specified, the IAM policy
+%% must allow access to the resource dbname for the specified database
+%% name.&lt;/p&gt;
 get_credentials(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_credentials(Client, Input, []).
@@ -329,7 +330,8 @@ list_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSnapshots">>, Input, Options).
 
-%% @doc Returns information about an array of `TableRestoreStatus' objects.
+%% @doc Returns information about an array of `TableRestoreStatus'
+%% objects.
 list_table_restore_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_table_restore_status(Client, Input, []).

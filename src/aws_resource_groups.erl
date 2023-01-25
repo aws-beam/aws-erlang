@@ -323,8 +323,8 @@ get_tags(Client, Arn, QueryMap, HeadersMap, Options0)
 %%
 %% `AWS::EC2::CapacityReservationPool'
 %%
-%% Other resource group type and resource types aren't currently supported by
-%% this operation.
+%% Other resource group type and resource types aren't currently
+%% supported by this operation.
 %%
 %% Minimum permissions
 %%
@@ -463,8 +463,8 @@ put_group_configuration(Client, Input0, Options0) ->
 %% @doc Returns a list of Amazon Web Services resource identifiers that
 %% matches the specified query.
 %%
-%% The query uses the same format as a resource query in a `CreateGroup' or
-%% `UpdateGroupQuery' operation.
+%% The query uses the same format as a resource query in a `CreateGroup'
+%% or `UpdateGroupQuery' operation.
 %%
 %% Minimum permissions
 %%
@@ -543,9 +543,9 @@ tag(Client, Arn, Input0, Options0) ->
 %% @doc Removes the specified resources from the specified group.
 %%
 %% This operation works only with static groups that you populated using the
-%% `GroupResources' operation. It doesn't work with any resource groups that
-%% are automatically populated by tag-based or CloudFormation stack-based
-%% queries.
+%% `GroupResources' operation. It doesn't work with any resource
+%% groups that are automatically populated by tag-based or CloudFormation
+%% stack-based queries.
 %%
 %% Minimum permissions
 %%
@@ -610,9 +610,9 @@ untag(Client, Arn, Input0, Options0) ->
 %% @doc Turns on or turns off optional features in Resource Groups.
 %%
 %% The preceding example shows that the request to turn on group lifecycle
-%% events is `IN_PROGRESS'. You can call the `GetAccountSettings' operation
-%% to check for completion by looking for `GroupLifecycleEventsStatus' to
-%% change to `ACTIVE'.
+%% events is `IN_PROGRESS'. You can call the `GetAccountSettings'
+%% operation to check for completion by looking for
+%% `GroupLifecycleEventsStatus' to change to `ACTIVE'.
 update_account_settings(Client, Input) ->
     update_account_settings(Client, Input, []).
 update_account_settings(Client, Input0, Options0) ->

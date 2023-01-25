@@ -384,9 +384,9 @@ get_generated_code_job(Client, GameName, JobId, SnapshotId, QueryMap, HeadersMap
 
 %% @doc Gets the status of a player's connection to the game runtime.
 %%
-%% It's possible for a single player to have multiple connections to the game
-%% runtime. If a player is not connected, this operation returns an empty
-%% list.
+%% It's possible for a single player to have multiple connections to the
+%% game runtime. If a player is not connected, this operation returns an
+%% empty list.
 get_player_connection_status(Client, GameName, PlayerId, StageName)
   when is_map(Client) ->
     get_player_connection_status(Client, GameName, PlayerId, StageName, #{}, #{}).
@@ -490,8 +490,8 @@ get_stage_deployment(Client, GameName, StageName, QueryMap, HeadersMap, Options0
 %%
 %% This operation replaces the current configuration of the game with the
 %% provided input. This is not a reversible operation. If you want to
-%% preserve the previous configuration, use `CreateSnapshot' to make a new
-%% snapshot before importing.
+%% preserve the previous configuration, use `CreateSnapshot' to make a
+%% new snapshot before importing.
 import_game_configuration(Client, GameName, Input) ->
     import_game_configuration(Client, GameName, Input, []).
 import_game_configuration(Client, GameName, Input0, Options0) ->

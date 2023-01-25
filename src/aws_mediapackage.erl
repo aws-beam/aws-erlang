@@ -373,7 +373,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Changes the Channel's first IngestEndpoint's username and password.
+%% @doc Changes the Channel's first IngestEndpoint's username and
+%% password.
 %%
 %% WARNING - This API is deprecated. Please use
 %% RotateIngestEndpointCredentials instead
@@ -399,8 +400,8 @@ rotate_channel_credentials(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Rotate the IngestEndpoint's username and password, as specified by
-%% the IngestEndpoint's id.
+%% @doc Rotate the IngestEndpoint's username and password, as specified
+%% by the IngestEndpoint's id.
 rotate_ingest_endpoint_credentials(Client, Id, IngestEndpointId, Input) ->
     rotate_ingest_endpoint_credentials(Client, Id, IngestEndpointId, Input, []).
 rotate_ingest_endpoint_credentials(Client, Id, IngestEndpointId, Input0, Options0) ->

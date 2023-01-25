@@ -10,8 +10,8 @@
 %% planning (ERP), with contact history from your Amazon Connect contact
 %% center.
 %%
-%% If you're new to Amazon Connect, you might find it helpful to review the
-%% Amazon Connect Administrator Guide.
+%% If you're new to Amazon Connect, you might find it helpful to review
+%% the Amazon Connect Administrator Guide.
 -module(aws_customer_profiles).
 
 -export([add_profile_key/3,
@@ -147,8 +147,8 @@ add_profile_key(Client, DomainName, Input0, Options0) ->
 %% Each Amazon Connect instance can be associated with only one domain.
 %% Multiple Amazon Connect instances can be associated with one domain.
 %%
-%% Use this API or UpdateDomain to enable identity resolution: set `Matching'
-%% to true.
+%% Use this API or UpdateDomain to enable identity resolution: set
+%% `Matching' to true.
 %%
 %% To prevent cross-service impersonation when you call this API, see
 %% Cross-service confused deputy prevention for sample policies that you
@@ -413,8 +413,8 @@ delete_workflow(Client, DomainName, WorkflowId, Input0, Options0) ->
 %% We strongly recommend you use this API to do a dry run of the automerging
 %% process before running the Identity Resolution Job. Include at least two
 %% matching attributes. If your matching list includes too few attributes
-%% (such as only `FirstName' or only `LastName'), there may be a large number
-%% of matches. This increases the chances of erroneous merges.
+%% (such as only `FirstName' or only `LastName'), there may be a
+%% large number of matches. This increases the chances of erroneous merges.
 get_auto_merging_preview(Client, DomainName, Input) ->
     get_auto_merging_preview(Client, DomainName, Input, []).
 get_auto_merging_preview(Client, DomainName, Input0, Options0) ->
@@ -517,16 +517,16 @@ get_integration(Client, DomainName, Input0, Options0) ->
 %% GetMatches returns potentially matching profiles, based on the results of
 %% the latest run of a machine learning process.
 %%
-%% The process of matching duplicate profiles. If `Matching' = `true', Amazon
-%% Connect Customer Profiles starts a weekly batch process called Identity
-%% Resolution Job. If you do not specify a date and time for Identity
-%% Resolution Job to run, by default it runs every Saturday at 12AM UTC to
-%% detect duplicate profiles in your domains.
+%% The process of matching duplicate profiles. If `Matching' =
+%% `true', Amazon Connect Customer Profiles starts a weekly batch process
+%% called Identity Resolution Job. If you do not specify a date and time for
+%% Identity Resolution Job to run, by default it runs every Saturday at 12AM
+%% UTC to detect duplicate profiles in your domains.
 %%
 %% After the Identity Resolution Job completes, use the GetMatches API to
 %% return and review the results. Or, if you have configured
-%% `ExportingConfig' in the `MatchingRequest', you can download the results
-%% from S3.
+%% `ExportingConfig' in the `MatchingRequest', you can download the
+%% results from S3.
 %%
 %% Amazon Connect uses the following profile attributes to identify matches:
 %%
@@ -931,26 +931,26 @@ list_workflows(Client, DomainName, Input0, Options0) ->
 
 %% @doc Runs an AWS Lambda job that does the following:
 %%
-%% <ol> <li> All the profileKeys in the `ProfileToBeMerged' will be moved to
-%% the main profile.
+%% <ol> <li> All the profileKeys in the `ProfileToBeMerged' will be moved
+%% to the main profile.
 %%
-%% </li> <li> All the objects in the `ProfileToBeMerged' will be moved to the
-%% main profile.
+%% </li> <li> All the objects in the `ProfileToBeMerged' will be moved to
+%% the main profile.
 %%
 %% </li> <li> All the `ProfileToBeMerged' will be deleted at the end.
 %%
-%% </li> <li> All the profileKeys in the `ProfileIdsToBeMerged' will be moved
-%% to the main profile.
+%% </li> <li> All the profileKeys in the `ProfileIdsToBeMerged' will be
+%% moved to the main profile.
 %%
 %% </li> <li> Standard fields are merged as follows:
 %%
-%% <ol> <li> Fields are always "union"-ed if there are no conflicts in
-%% standard fields or attributeKeys.
+%% <ol> <li> Fields are always &quot;union&quot;-ed if there are no conflicts
+%% in standard fields or attributeKeys.
 %%
 %% </li> <li> When there are conflicting fields:
 %%
-%% <ol> <li> If no `SourceProfileIds' entry is specified, the main Profile
-%% value is always taken.
+%% <ol> <li> If no `SourceProfileIds' entry is specified, the main
+%% Profile value is always taken.
 %%
 %% </li> <li> If a `SourceProfileIds' entry is specified, the specified
 %% profileId is always taken, even if it is a NULL value.
@@ -1076,8 +1076,8 @@ put_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options0) ->
 %% predefined search keys (e.g., _fullName, _phone, _email, _account, etc.)
 %% and/or custom-defined search keys.
 %%
-%% A search key is a data type pair that consists of a `KeyName' and `Values'
-%% list.
+%% A search key is a data type pair that consists of a `KeyName' and
+%% `Values' list.
 %%
 %% This operation supports searching for profiles with a minimum of 1
 %% key-value(s) pair and up to 5 key-value(s) pairs using either `AND' or
@@ -1114,8 +1114,8 @@ search_profiles(Client, DomainName, Input0, Options0) ->
 %% change only resources with certain tag values. In Connect Customer
 %% Profiles, domains, profile object types, and integrations can be tagged.
 %%
-%% Tags don't have any semantic meaning to AWS and are interpreted strictly
-%% as strings of characters.
+%% Tags don't have any semantic meaning to AWS and are interpreted
+%% strictly as strings of characters.
 %%
 %% You can use the TagResource action with a resource that already has tags.
 %% If you specify a new tag key, this tag is appended to the list of tags
@@ -1179,8 +1179,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% After a domain is created, the name can’t be changed.
 %%
-%% Use this API or CreateDomain to enable identity resolution: set `Matching'
-%% to true.
+%% Use this API or CreateDomain to enable identity resolution: set
+%% `Matching' to true.
 %%
 %% To prevent cross-service impersonation when you call this API, see
 %% Cross-service confused deputy prevention for sample policies that you

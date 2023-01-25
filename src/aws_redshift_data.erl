@@ -52,9 +52,9 @@
 %%
 %% </li> <li> Temporary credentials - when connecting to a cluster, specify
 %% the cluster identifier, the database name, and the database user name.
-%% Also, permission to call the `redshift:GetClusterCredentials' operation is
-%% required. When connecting to a serverless workgroup, specify the workgroup
-%% name and database name. Also, permission to call the
+%% Also, permission to call the `redshift:GetClusterCredentials'
+%% operation is required. When connecting to a serverless workgroup, specify
+%% the workgroup name and database name. Also, permission to call the
 %% `redshift-serverless:GetCredentials' operation is required.
 %%
 %% </li> </ul> For more information about the Amazon Redshift Data API and
@@ -112,9 +112,9 @@ describe_statement(Client, Input, Options)
 %%
 %% </li> <li> Temporary credentials - when connecting to a cluster, specify
 %% the cluster identifier, the database name, and the database user name.
-%% Also, permission to call the `redshift:GetClusterCredentials' operation is
-%% required. When connecting to a serverless workgroup, specify the workgroup
-%% name and database name. Also, permission to call the
+%% Also, permission to call the `redshift:GetClusterCredentials'
+%% operation is required. When connecting to a serverless workgroup, specify
+%% the workgroup name and database name. Also, permission to call the
 %% `redshift-serverless:GetCredentials' operation is required.
 %%
 %% </li> </ul> For more information about the Amazon Redshift Data API and
@@ -142,9 +142,9 @@ describe_table(Client, Input, Options)
 %%
 %% </li> <li> Temporary credentials - when connecting to a cluster, specify
 %% the cluster identifier, the database name, and the database user name.
-%% Also, permission to call the `redshift:GetClusterCredentials' operation is
-%% required. When connecting to a serverless workgroup, specify the workgroup
-%% name and database name. Also, permission to call the
+%% Also, permission to call the `redshift:GetClusterCredentials'
+%% operation is required. When connecting to a serverless workgroup, specify
+%% the workgroup name and database name. Also, permission to call the
 %% `redshift-serverless:GetCredentials' operation is required.
 %%
 %% </li> </ul> For more information about the Amazon Redshift Data API and
@@ -185,9 +185,9 @@ get_statement_result(Client, Input, Options)
 %%
 %% </li> <li> Temporary credentials - when connecting to a cluster, specify
 %% the cluster identifier, the database name, and the database user name.
-%% Also, permission to call the `redshift:GetClusterCredentials' operation is
-%% required. When connecting to a serverless workgroup, specify the workgroup
-%% name and database name. Also, permission to call the
+%% Also, permission to call the `redshift:GetClusterCredentials'
+%% operation is required. When connecting to a serverless workgroup, specify
+%% the workgroup name and database name. Also, permission to call the
 %% `redshift-serverless:GetCredentials' operation is required.
 %%
 %% </li> </ul> For more information about the Amazon Redshift Data API and
@@ -214,9 +214,9 @@ list_databases(Client, Input, Options)
 %%
 %% </li> <li> Temporary credentials - when connecting to a cluster, specify
 %% the cluster identifier, the database name, and the database user name.
-%% Also, permission to call the `redshift:GetClusterCredentials' operation is
-%% required. When connecting to a serverless workgroup, specify the workgroup
-%% name and database name. Also, permission to call the
+%% Also, permission to call the `redshift:GetClusterCredentials'
+%% operation is required. When connecting to a serverless workgroup, specify
+%% the workgroup name and database name. Also, permission to call the
 %% `redshift-serverless:GetCredentials' operation is required.
 %%
 %% </li> </ul> For more information about the Amazon Redshift Data API and
@@ -246,10 +246,10 @@ list_statements(Client, Input, Options)
 
 %% @doc List the tables in a database.
 %%
-%% If neither `SchemaPattern' nor `TablePattern' are specified, then all
-%% tables in the database are returned. A token is returned to page through
-%% the table list. Depending on the authorization method, use one of the
-%% following combinations of request parameters:
+%% If neither `SchemaPattern' nor `TablePattern' are specified, then
+%% all tables in the database are returned. A token is returned to page
+%% through the table list. Depending on the authorization method, use one of
+%% the following combinations of request parameters:
 %%
 %% <ul> <li> Secrets Manager - when connecting to a cluster, specify the
 %% Amazon Resource Name (ARN) of the secret, the database name, and the
@@ -259,9 +259,9 @@ list_statements(Client, Input, Options)
 %%
 %% </li> <li> Temporary credentials - when connecting to a cluster, specify
 %% the cluster identifier, the database name, and the database user name.
-%% Also, permission to call the `redshift:GetClusterCredentials' operation is
-%% required. When connecting to a serverless workgroup, specify the workgroup
-%% name and database name. Also, permission to call the
+%% Also, permission to call the `redshift:GetClusterCredentials'
+%% operation is required. When connecting to a serverless workgroup, specify
+%% the workgroup name and database name. Also, permission to call the
 %% `redshift-serverless:GetCredentials' operation is required.
 %%
 %% </li> </ul> For more information about the Amazon Redshift Data API and

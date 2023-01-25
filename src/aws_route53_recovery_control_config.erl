@@ -171,9 +171,9 @@ create_routing_control(Client, Input0, Options0) ->
 %% application. This ensures that you avoid a fail-open scenario.
 %%
 %% Gating rule: A gating rule lets you configure a gating routing control as
-%% an overall "on/off" switch for a group of routing controls. Or, you can
-%% configure more complex gating scenarios, for example by configuring
-%% multiple gating routing controls.
+%% an overall &quot;on/off&quot; switch for a group of routing controls. Or,
+%% you can configure more complex gating scenarios, for example by
+%% configuring multiple gating routing controls.
 %%
 %% For more information, see Safety rules in the Amazon Route 53 Application
 %% Recovery Controller Developer Guide.
@@ -270,7 +270,7 @@ delete_routing_control(Client, RoutingControlArn, Input0, Options0) ->
 
 %% @doc Deletes a safety rule.
 %%
-%% />
+%% /&gt;
 delete_safety_rule(Client, SafetyRuleArn, Input) ->
     delete_safety_rule(Client, SafetyRuleArn, Input, []).
 delete_safety_rule(Client, SafetyRuleArn, Input0, Options0) ->

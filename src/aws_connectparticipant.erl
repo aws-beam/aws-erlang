@@ -79,7 +79,7 @@ complete_attachment_upload(Client, Input0, Options0) ->
 %% For chat, you need to publish the following on the established websocket
 %% connection:
 %%
-%% `{"topic":"aws/subscribe","content":{"topics":["aws/chat"]}}'
+%% `{&quot;topic&quot;:&quot;aws/subscribe&quot;,&quot;content&quot;:{&quot;topics&quot;:[&quot;aws/chat&quot;]}}'
 %%
 %% Upon websocket URL expiry, as specified in the response ConnectionExpiry
 %% parameter, clients need to call this API again to obtain a new websocket

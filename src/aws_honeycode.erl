@@ -117,7 +117,7 @@ batch_delete_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
 %% table for the specified rows. If a column is not explicitly specified in a
 %% particular row, then that column will not be updated for that row. To
 %% clear out the data in a specific cell, you need to set the value as an
-%% empty string ("").
+%% empty string (&quot;&quot;).
 batch_update_table_rows(Client, TableId, WorkbookId, Input) ->
     batch_update_table_rows(Client, TableId, WorkbookId, Input, []).
 batch_update_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
@@ -154,7 +154,7 @@ batch_update_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
 %% table for the matching or newly appended rows. If a column is not
 %% explicitly specified for a particular row, then that column will not be
 %% updated for that row. To clear out the data in a specific cell, you need
-%% to set the value as an empty string ("").
+%% to set the value as an empty string (&quot;&quot;).
 batch_upsert_table_rows(Client, TableId, WorkbookId, Input) ->
     batch_upsert_table_rows(Client, TableId, WorkbookId, Input, []).
 batch_upsert_table_rows(Client, TableId, WorkbookId, Input0, Options0) ->
@@ -337,7 +337,8 @@ list_tables(Client, WorkbookId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc The ListTagsForResource API allows you to return a resource's tags.
+%% @doc The ListTagsForResource API allows you to return a resource's
+%% tags.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).

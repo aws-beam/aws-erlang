@@ -247,9 +247,10 @@ authorize_vpc_endpoint_access(Client, DomainName, Input0, Options0) ->
 %% @doc Cancels a scheduled service software update for an Amazon OpenSearch
 %% Service domain.
 %%
-%% You can only perform this operation before the `AutomatedUpdateDate' and
-%% when the domain's `UpdateStatus' is `PENDING_UPDATE'. For more
-%% information, see Service software updates in Amazon OpenSearch Service.
+%% You can only perform this operation before the `AutomatedUpdateDate'
+%% and when the domain's `UpdateStatus' is `PENDING_UPDATE'. For
+%% more information, see Service software updates in Amazon OpenSearch
+%% Service.
 cancel_service_software_update(Client, Input) ->
     cancel_service_software_update(Client, Input, []).
 cancel_service_software_update(Client, Input0, Options0) ->
@@ -859,10 +860,10 @@ describe_vpc_endpoints(Client, Input0, Options0) ->
 %% @doc Removes a package from the specified Amazon OpenSearch Service
 %% domain.
 %%
-%% The package can't be in use with any OpenSearch index for the dissociation
-%% to succeed. The package is still available in OpenSearch Service for
-%% association later. For more information, see Custom packages for Amazon
-%% OpenSearch Service.
+%% The package can't be in use with any OpenSearch index for the
+%% dissociation to succeed. The package is still available in OpenSearch
+%% Service for association later. For more information, see Custom packages
+%% for Amazon OpenSearch Service.
 dissociate_package(Client, DomainName, PackageID, Input) ->
     dissociate_package(Client, DomainName, PackageID, Input, []).
 dissociate_package(Client, DomainName, PackageID, Input0, Options0) ->

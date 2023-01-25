@@ -56,9 +56,10 @@
 
 %% @doc The CancelJob operation cancels an unfinished job.
 %%
-%% You can only cancel a job that has a status of `Submitted'. To prevent a
-%% pipeline from starting to process a job while you're getting the job
-%% identifier, use `UpdatePipelineStatus' to temporarily pause the pipeline.
+%% You can only cancel a job that has a status of `Submitted'. To prevent
+%% a pipeline from starting to process a job while you're getting the job
+%% identifier, use `UpdatePipelineStatus' to temporarily pause the
+%% pipeline.
 cancel_job(Client, Id, Input) ->
     cancel_job(Client, Id, Input, []).
 cancel_job(Client, Id, Input0, Options0) ->
@@ -142,12 +143,13 @@ create_pipeline(Client, Input0, Options0) ->
 %% meet Elastic Transcoder requirements and to determine whether they comply
 %% with H.264 standards. If your settings are not valid for Elastic
 %% Transcoder, Elastic Transcoder returns an HTTP 400 response
-%% (`ValidationException') and does not create the preset. If the settings
-%% are valid for Elastic Transcoder but aren't strictly compliant with the
-%% H.264 standard, Elastic Transcoder creates the preset and returns a
-%% warning message in the response. This helps you determine whether your
-%% settings comply with the H.264 standard while giving you greater
-%% flexibility with respect to the video that Elastic Transcoder produces.
+%% (`ValidationException') and does not create the preset. If the
+%% settings are valid for Elastic Transcoder but aren't strictly
+%% compliant with the H.264 standard, Elastic Transcoder creates the preset
+%% and returns a warning message in the response. This helps you determine
+%% whether your settings comply with the H.264 standard while giving you
+%% greater flexibility with respect to the video that Elastic Transcoder
+%% produces.
 %%
 %% Elastic Transcoder uses the H.264 video-compression format. For more
 %% information, see the International Telecommunication Union publication
@@ -202,8 +204,8 @@ delete_pipeline(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc The DeletePreset operation removes a preset that you've added in an
-%% AWS region.
+%% @doc The DeletePreset operation removes a preset that you've added in
+%% an AWS region.
 %%
 %% You can't delete the default presets that are included with Elastic
 %% Transcoder.
@@ -454,7 +456,8 @@ test_role(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Use the `UpdatePipeline' operation to update settings for a pipeline.
+%% @doc Use the `UpdatePipeline' operation to update settings for a
+%% pipeline.
 %%
 %% When you change pipeline settings, your changes take effect immediately.
 %% Jobs that you have already submitted and that Elastic Transcoder has not

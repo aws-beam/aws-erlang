@@ -535,8 +535,8 @@ get_recovery_group(Client, RecoveryGroupName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Displays a summary of information about a recovery group's readiness
-%% status.
+%% @doc Displays a summary of information about a recovery group's
+%% readiness status.
 %%
 %% Includes the readiness checks for resources in the recovery group and the
 %% readiness status of each one.

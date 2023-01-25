@@ -25,14 +25,15 @@
 %% API. Amazon SageMaker might add additional headers. You should not rely on
 %% the behavior of headers outside those enumerated in the request syntax.
 %%
-%% Calls to `InvokeEndpoint' are authenticated by using Amazon Web Services
-%% Signature Version 4. For information, see Authenticating Requests (Amazon
-%% Web Services Signature Version 4) in the Amazon S3 API Reference.
+%% Calls to `InvokeEndpoint' are authenticated by using Amazon Web
+%% Services Signature Version 4. For information, see Authenticating Requests
+%% (Amazon Web Services Signature Version 4) in the Amazon S3 API Reference.
 %%
-%% A customer's model containers must respond to requests within 60 seconds.
-%% The model itself can have a maximum processing time of 60 seconds before
-%% responding to invocations. If your model is going to take 50-60 seconds of
-%% processing time, the SDK socket timeout should be set to be 70 seconds.
+%% A customer's model containers must respond to requests within 60
+%% seconds. The model itself can have a maximum processing time of 60 seconds
+%% before responding to invocations. If your model is going to take 50-60
+%% seconds of processing time, the SDK socket timeout should be set to be 70
+%% seconds.
 %%
 %% Endpoints are scoped to an individual account, and are not public. The URL
 %% does not contain the account ID, but Amazon SageMaker determines the
@@ -96,9 +97,10 @@ invoke_endpoint(Client, EndpointName, Input0, Options0) ->
 %% from this API will not contain the result of the inference request but
 %% contain information about where you can locate it.
 %%
-%% Amazon SageMaker strips all `POST' headers except those supported by the
-%% API. Amazon SageMaker might add additional headers. You should not rely on
-%% the behavior of headers outside those enumerated in the request syntax.
+%% Amazon SageMaker strips all `POST' headers except those supported by
+%% the API. Amazon SageMaker might add additional headers. You should not
+%% rely on the behavior of headers outside those enumerated in the request
+%% syntax.
 %%
 %% Calls to `InvokeEndpointAsync' are authenticated by using Amazon Web
 %% Services Signature Version 4. For information, see Authenticating Requests

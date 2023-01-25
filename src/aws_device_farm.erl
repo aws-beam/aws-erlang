@@ -9,9 +9,9 @@
 %% Device Farm makes it possible for you to test your web applications on
 %% desktop browsers using Selenium.
 %%
-%% The APIs for desktop browser testing contain `TestGrid' in their names.
-%% For more information, see Testing Web Applications on Selenium with Device
-%% Farm.
+%% The APIs for desktop browser testing contain `TestGrid' in their
+%% names. For more information, see Testing Web Applications on Selenium with
+%% Device Farm.
 %%
 %% </li> <li> Testing on real mobile devices
 %%
@@ -416,8 +416,8 @@ get_network_profile(Client, Input, Options)
 %%
 %% The response indicates how many offerings are currently available and the
 %% offerings that will be available in the next period. The API returns a
-%% `NotEligible' error if the user is not permitted to invoke the operation.
-%% If you must be able to invoke this operation, contact
+%% `NotEligible' error if the user is not permitted to invoke the
+%% operation. If you must be able to invoke this operation, contact
 %% aws-devicefarm-support@amazon.com.
 get_offering_status(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -597,9 +597,9 @@ list_offering_promotions(Client, Input, Options)
 %% renewal transactions for an AWS account.
 %%
 %% The list is paginated and ordered by a descending timestamp (most recent
-%% transactions are first). The API returns a `NotEligible' error if the user
-%% is not permitted to invoke the operation. If you must be able to invoke
-%% this operation, contact aws-devicefarm-support@amazon.com.
+%% transactions are first). The API returns a `NotEligible' error if the
+%% user is not permitted to invoke the operation. If you must be able to
+%% invoke this operation, contact aws-devicefarm-support@amazon.com.
 list_offering_transactions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_offering_transactions(Client, Input, []).
@@ -611,8 +611,8 @@ list_offering_transactions(Client, Input, Options)
 %% through the API.
 %%
 %% Each offering record indicates the recurring price per unit and the
-%% frequency for that offering. The API returns a `NotEligible' error if the
-%% user is not permitted to invoke the operation. If you must be able to
+%% frequency for that offering. The API returns a `NotEligible' error if
+%% the user is not permitted to invoke the operation. If you must be able to
 %% invoke this operation, contact aws-devicefarm-support@amazon.com.
 list_offerings(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -744,9 +744,9 @@ list_vpce_configurations(Client, Input, Options)
 %% @doc Immediately purchases offerings for an AWS account.
 %%
 %% Offerings renew with the latest total purchased quantity for an offering,
-%% unless the renewal was overridden. The API returns a `NotEligible' error
-%% if the user is not permitted to invoke the operation. If you must be able
-%% to invoke this operation, contact aws-devicefarm-support@amazon.com.
+%% unless the renewal was overridden. The API returns a `NotEligible'
+%% error if the user is not permitted to invoke the operation. If you must be
+%% able to invoke this operation, contact aws-devicefarm-support@amazon.com.
 purchase_offering(Client, Input)
   when is_map(Client), is_map(Input) ->
     purchase_offering(Client, Input, []).

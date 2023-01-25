@@ -41,17 +41,18 @@
 %% significant performance improvement over individual insert and update
 %% operations.
 %%
-%% If a call isn't part of a transaction because it doesn't include the
-%% `transactionID' parameter, changes that result from the call are committed
-%% automatically.
+%% If a call isn't part of a transaction because it doesn't include
+%% the `transactionID' parameter, changes that result from the call are
+%% committed automatically.
 %%
-%% There isn't a fixed upper limit on the number of parameter sets. However,
-%% the maximum size of the HTTP request submitted through the Data API is 4
-%% MiB. If the request exceeds this limit, the Data API returns an error and
-%% doesn't process the request. This 4-MiB limit includes the size of the
-%% HTTP headers and the JSON notation in the request. Thus, the number of
-%% parameter sets that you can include depends on a combination of factors,
-%% such as the size of the SQL statement and the size of each parameter set.
+%% There isn't a fixed upper limit on the number of parameter sets.
+%% However, the maximum size of the HTTP request submitted through the Data
+%% API is 4 MiB. If the request exceeds this limit, the Data API returns an
+%% error and doesn't process the request. This 4-MiB limit includes the
+%% size of the HTTP headers and the JSON notation in the request. Thus, the
+%% number of parameter sets that you can include depends on a combination of
+%% factors, such as the size of the SQL statement and the size of each
+%% parameter set.
 %%
 %% The response size limit is 1 MiB. If the call returns more than 1 MiB of
 %% response data, the call is terminated.
@@ -83,12 +84,12 @@ batch_execute_statement(Client, Input0, Options0) ->
 %% terminated and rolled back automatically after 24 hours.
 %%
 %% A transaction times out if no calls use its transaction ID in three
-%% minutes. If a transaction times out before it's committed, it's rolled
-%% back automatically.
+%% minutes. If a transaction times out before it's committed, it's
+%% rolled back automatically.
 %%
 %% DDL statements inside a transaction cause an implicit commit. We recommend
-%% that you run each DDL statement in a separate `ExecuteStatement' call with
-%% `continueAfterTimeout' enabled.
+%% that you run each DDL statement in a separate `ExecuteStatement' call
+%% with `continueAfterTimeout' enabled.
 begin_transaction(Client, Input) ->
     begin_transaction(Client, Input, []).
 begin_transaction(Client, Input0, Options0) ->
@@ -111,8 +112,8 @@ begin_transaction(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Ends a SQL transaction started with the `BeginTransaction' operation
-%% and commits the changes.
+%% @doc Ends a SQL transaction started with the `BeginTransaction'
+%% operation and commits the changes.
 commit_transaction(Client, Input) ->
     commit_transaction(Client, Input, []).
 commit_transaction(Client, Input0, Options0) ->
@@ -163,9 +164,9 @@ execute_sql(Client, Input0, Options0) ->
 
 %% @doc Runs a SQL statement against a database.
 %%
-%% If a call isn't part of a transaction because it doesn't include the
-%% `transactionID' parameter, changes that result from the call are committed
-%% automatically.
+%% If a call isn't part of a transaction because it doesn't include
+%% the `transactionID' parameter, changes that result from the call are
+%% committed automatically.
 %%
 %% If the binary response data from the database is more than 1 MB, the call
 %% is terminated.

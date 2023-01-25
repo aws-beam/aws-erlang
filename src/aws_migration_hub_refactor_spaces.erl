@@ -14,8 +14,8 @@
 %%
 %% To share Refactor Spaces environments with other Amazon Web Services
 %% accounts or with Organizations and their OUs, use Resource Access
-%% Manager's `CreateResourceShare' API. See CreateResourceShare in the Amazon
-%% Web Services RAM API Reference.
+%% Manager's `CreateResourceShare' API. See CreateResourceShare in
+%% the Amazon Web Services RAM API Reference.
 -module(aws_migration_hub_refactor_spaces).
 
 -export([create_application/3,
@@ -183,8 +183,8 @@ create_environment(Client, Input0, Options0) ->
 %%
 %% For Lambda functions, the Lambda function state is checked. If the
 %% function is not active, the function configuration is updated so that
-%% Lambda resources are provisioned. If the Lambda state is `Failed', then
-%% the route creation fails. For more information, see the
+%% Lambda resources are provisioned. If the Lambda state is `Failed',
+%% then the route creation fails. For more information, see the
 %% GetFunctionConfiguration's State response parameter in the Lambda
 %% Developer Guide.
 %%
@@ -194,23 +194,23 @@ create_environment(Client, Input0, Options0) ->
 %% endpoint. If the URL is not reachable, the health check fails.
 %%
 %% Refactor Spaces automatically resolves the public Domain Name System (DNS)
-%% names that are set in `CreateServiceRequest$UrlEndpoint' when you create a
-%% service. The DNS names resolve when the DNS time-to-live (TTL) expires, or
-%% every 60 seconds for TTLs less than 60 seconds. This periodic DNS
-%% resolution ensures that the route configuration remains up-to-date.
+%% names that are set in `CreateServiceRequest$UrlEndpoint' when you
+%% create a service. The DNS names resolve when the DNS time-to-live (TTL)
+%% expires, or every 60 seconds for TTLs less than 60 seconds. This periodic
+%% DNS resolution ensures that the route configuration remains up-to-date.
 %%
 %% For private URLS, a target group is created on the Elastic Load Balancing
 %% and the target group health check is run. The `HealthCheckProtocol',
-%% `HealthCheckPort', and `HealthCheckPath' are the same protocol, port, and
-%% path specified in the URL or health URL, if used. All other settings use
-%% the default values, as described in Health checks for your target groups.
-%% The health check is considered successful if at least one target within
-%% the target group transitions to a healthy state.
+%% `HealthCheckPort', and `HealthCheckPath' are the same protocol,
+%% port, and path specified in the URL or health URL, if used. All other
+%% settings use the default values, as described in Health checks for your
+%% target groups. The health check is considered successful if at least one
+%% target within the target group transitions to a healthy state.
 %%
 %% Services can have HTTP or HTTPS URL endpoints. For HTTPS URLs,
 %% publicly-signed certificates are supported. Private Certificate
-%% Authorities (CAs) are permitted only if the CA's domain is also publicly
-%% resolvable.
+%% Authorities (CAs) are permitted only if the CA's domain is also
+%% publicly resolvable.
 create_route(Client, ApplicationIdentifier, EnvironmentIdentifier, Input) ->
     create_route(Client, ApplicationIdentifier, EnvironmentIdentifier, Input, []).
 create_route(Client, ApplicationIdentifier, EnvironmentIdentifier, Input0, Options0) ->
@@ -655,8 +655,8 @@ list_services(Client, ApplicationIdentifier, EnvironmentIdentifier, QueryMap, He
 
 %% @doc Lists the tags of a resource.
 %%
-%% The caller account must be the same as the resource’s `OwnerAccountId'.
-%% Listing tags in other accounts is not supported.
+%% The caller account must be the same as the resource’s
+%% `OwnerAccountId'. Listing tags in other accounts is not supported.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -712,7 +712,8 @@ put_resource_policy(Client, Input0, Options0) ->
 %%
 %% Tags are metadata which can be used to manage a resource. To tag a
 %% resource, the caller account must be the same as the resource’s
-%% `OwnerAccountId'. Tagging resources in other accounts is not supported.
+%% `OwnerAccountId'. Tagging resources in other accounts is not
+%% supported.
 %%
 %% Amazon Web Services Migration Hub Refactor Spaces does not propagate tags
 %% to orchestrated resources, such as an environment’s transit gateway.
@@ -742,7 +743,8 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %%
 %% Tags are metadata which can be used to manage a resource. To untag a
 %% resource, the caller account must be the same as the resource’s
-%% `OwnerAccountId'. Untagging resources across accounts is not supported.
+%% `OwnerAccountId'. Untagging resources across accounts is not
+%% supported.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->

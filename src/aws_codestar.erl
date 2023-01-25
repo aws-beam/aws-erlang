@@ -16,14 +16,14 @@
 %%
 %% </li> <li> `DescribeProject', which lists the attributes of a project.
 %%
-%% </li> <li> `ListProjects', which lists all projects associated with your
-%% AWS account.
+%% </li> <li> `ListProjects', which lists all projects associated with
+%% your AWS account.
 %%
-%% </li> <li> `ListResources', which lists the resources associated with a
-%% project.
+%% </li> <li> `ListResources', which lists the resources associated with
+%% a project.
 %%
-%% </li> <li> `ListTagsForProject', which lists the tags associated with a
-%% project.
+%% </li> <li> `ListTagsForProject', which lists the tags associated with
+%% a project.
 %%
 %% </li> <li> `TagProject', which adds tags to a project.
 %%
@@ -33,27 +33,28 @@
 %%
 %% </li> </ul> Teams and team members, by calling the following:
 %%
-%% <ul> <li> `AssociateTeamMember', which adds an IAM user to the team for a
-%% project.
+%% <ul> <li> `AssociateTeamMember', which adds an IAM user to the team
+%% for a project.
 %%
-%% </li> <li> `DisassociateTeamMember', which removes an IAM user from the
-%% team for a project.
+%% </li> <li> `DisassociateTeamMember', which removes an IAM user from
+%% the team for a project.
 %%
-%% </li> <li> `ListTeamMembers', which lists all the IAM users in the team
-%% for a project, including their roles and attributes.
+%% </li> <li> `ListTeamMembers', which lists all the IAM users in the
+%% team for a project, including their roles and attributes.
 %%
-%% </li> <li> `UpdateTeamMember', which updates a team member's attributes in
-%% a project.
+%% </li> <li> `UpdateTeamMember', which updates a team member's
+%% attributes in a project.
 %%
 %% </li> </ul> Users, by calling the following:
 %%
-%% <ul> <li> `CreateUserProfile', which creates a user profile that contains
-%% data associated with the user across all projects.
+%% <ul> <li> `CreateUserProfile', which creates a user profile that
+%% contains data associated with the user across all projects.
 %%
-%% </li> <li> `DeleteUserProfile', which deletes all user profile information
-%% across all projects.
+%% </li> <li> `DeleteUserProfile', which deletes all user profile
+%% information across all projects.
 %%
-%% </li> <li> `DescribeUserProfile', which describes the profile of a user.
+%% </li> <li> `DescribeUserProfile', which describes the profile of a
+%% user.
 %%
 %% </li> <li> `ListUserProfiles', which lists all user profiles.
 %%
@@ -131,8 +132,8 @@ create_project(Client, Input, Options)
 %% CodeStar.
 %%
 %% The user profile is not project-specific. Information in the user profile
-%% is displayed wherever the user's information appears to other users in AWS
-%% CodeStar.
+%% is displayed wherever the user's information appears to other users in
+%% AWS CodeStar.
 create_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_profile(Client, Input, []).
@@ -185,8 +186,8 @@ describe_user_profile(Client, Input, Options)
 %%
 %% Removing a user from a project also removes the IAM policies from that
 %% user that allowed access to the project and its resources. Disassociating
-%% a team member does not remove that user's profile from AWS CodeStar. It
-%% does not remove the user from IAM.
+%% a team member does not remove that user's profile from AWS CodeStar.
+%% It does not remove the user from IAM.
 disassociate_team_member(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_team_member(Client, Input, []).
@@ -261,8 +262,8 @@ update_project(Client, Input, Options)
 
 %% @doc Updates a team member's attributes in an AWS CodeStar project.
 %%
-%% For example, you can change a team member's role in the project, or change
-%% whether they have remote access to project resources.
+%% For example, you can change a team member's role in the project, or
+%% change whether they have remote access to project resources.
 update_team_member(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_team_member(Client, Input, []).
@@ -273,8 +274,8 @@ update_team_member(Client, Input, Options)
 %% @doc Updates a user's profile in AWS CodeStar.
 %%
 %% The user profile is not project-specific. Information in the user profile
-%% is displayed wherever the user's information appears to other users in AWS
-%% CodeStar.
+%% is displayed wherever the user's information appears to other users in
+%% AWS CodeStar.
 update_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_user_profile(Client, Input, []).

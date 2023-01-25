@@ -691,10 +691,10 @@ add_thing_to_thing_group(Client, Input0, Options0) ->
 %%
 %% The following criteria must be met:
 %%
-%% <ul> <li> The job must have been created with the `targetSelection' field
-%% set to "CONTINUOUS".
+%% <ul> <li> The job must have been created with the `targetSelection'
+%% field set to &quot;CONTINUOUS&quot;.
 %%
-%% </li> <li> The job status must currently be "IN_PROGRESS".
+%% </li> <li> The job status must currently be &quot;IN_PROGRESS&quot;.
 %%
 %% </li> <li> The total number of targets associated with a job must not
 %% exceed 100.
@@ -754,7 +754,8 @@ attach_policy(Client, PolicyName, Input0, Options0) ->
 %% or other credential).
 %%
 %% Note: This action is deprecated and works as expected for backward
-%% compatibility, but we won't add enhancements. Use `AttachPolicy' instead.
+%% compatibility, but we won't add enhancements. Use `AttachPolicy'
+%% instead.
 %%
 %% Requires permission to access the AttachPrincipalPolicy action.
 attach_principal_policy(Client, PolicyName, Input) ->
@@ -871,7 +872,7 @@ cancel_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
 %% @doc Cancels an audit that is in progress.
 %%
 %% The audit can be either scheduled or on demand. If the audit isn't in
-%% progress, an "InvalidRequestException" occurs.
+%% progress, an &quot;InvalidRequestException&quot; occurs.
 %%
 %% Requires permission to access the CancelAuditTask action.
 cancel_audit_task(Client, TaskId, Input) ->
@@ -1037,8 +1038,8 @@ clear_default_authorizer(Client, Input0, Options0) ->
 %%
 %% When you create a rule requiring a destination, IoT sends a confirmation
 %% message to the endpoint or base address you specify. The message includes
-%% a token which you pass back when calling `ConfirmTopicRuleDestination' to
-%% confirm that you own or have access to the endpoint.
+%% a token which you pass back when calling `ConfirmTopicRuleDestination'
+%% to confirm that you own or have access to the endpoint.
 %%
 %% Requires permission to access the ConfirmTopicRuleDestination action.
 confirm_topic_rule_destination(Client, ConfirmationToken)
@@ -1178,14 +1179,15 @@ create_billing_group(Client, BillingGroupName, Input0, Options0) ->
 %% On Windows PowerShell, the command to create certificates for all CSRs in
 %% my-csr-directory is:
 %%
-%% > ls -Name my-csr-directory | %{aws iot create-certificate-from-csr
+%% &gt; ls -Name my-csr-directory | %{aws iot create-certificate-from-csr
 %% --certificate-signing-request file://my-csr-directory/$_}
 %%
 %% On a Windows command prompt, the command to create certificates for all
 %% CSRs in my-csr-directory is:
 %%
-%% > forfiles /p my-csr-directory /c "cmd /c aws iot
-%% create-certificate-from-csr --certificate-signing-request file://@path"
+%% &gt; forfiles /p my-csr-directory /c &quot;cmd /c aws iot
+%% create-certificate-from-csr --certificate-signing-request
+%% file://@path&quot;
 create_certificate_from_csr(Client, Input) ->
     create_certificate_from_csr(Client, Input, []).
 create_certificate_from_csr(Client, Input0, Options0) ->
@@ -1393,8 +1395,8 @@ create_job_template(Client, JobTemplateId, Input0, Options0) ->
 %% @doc Creates a 2048-bit RSA key pair and issues an X.509 certificate using
 %% the issued public key.
 %%
-%% You can also call `CreateKeysAndCertificate' over MQTT from a device, for
-%% more information, see Provisioning MQTT API.
+%% You can also call `CreateKeysAndCertificate' over MQTT from a device,
+%% for more information, see Provisioning MQTT API.
 %%
 %% Note This is the only time IoT issues the private key for this
 %% certificate, so it is important to keep it in a secure location.
@@ -1511,12 +1513,13 @@ create_policy(Client, PolicyName, Input0, Options0) ->
 %%
 %% To update a policy, create a new policy version. A managed policy can have
 %% up to five versions. If the policy has five versions, you must use
-%% `DeletePolicyVersion' to delete an existing version before you create a
-%% new one.
+%% `DeletePolicyVersion' to delete an existing version before you create
+%% a new one.
 %%
-%% Optionally, you can set the new version as the policy's default version.
-%% The default version is the operative version (that is, the version that is
-%% in effect for the certificates to which the policy is attached).
+%% Optionally, you can set the new version as the policy's default
+%% version. The default version is the operative version (that is, the
+%% version that is in effect for the certificates to which the policy is
+%% attached).
 %%
 %% Requires permission to access the CreatePolicyVersion action.
 create_policy_version(Client, PolicyName, Input) ->
@@ -1728,8 +1731,8 @@ create_stream(Client, StreamId, Input0, Options0) ->
 %%
 %% If this call is made multiple times using the same thing name and
 %% configuration, the call will succeed. If this call is made with the same
-%% thing name but different configuration a `ResourceAlreadyExistsException'
-%% is thrown.
+%% thing name but different configuration a
+%% `ResourceAlreadyExistsException' is thrown.
 %%
 %% This is a control plane operation. See Authorization for information about
 %% authorizing control plane actions.
@@ -2004,7 +2007,8 @@ delete_ca_certificate(Client, CertificateId, Input0, Options0) ->
 %% A certificate cannot be deleted if it has a policy or IoT thing attached
 %% to it or if its status is set to ACTIVE. To delete a certificate, first
 %% use the `DetachPolicy' action to detach all policies. Next, use the
-%% `UpdateCertificate' action to set the certificate to the INACTIVE status.
+%% `UpdateCertificate' action to set the certificate to the INACTIVE
+%% status.
 %%
 %% Requires permission to access the DeleteCertificate action.
 delete_certificate(Client, CertificateId, Input) ->
@@ -2037,7 +2041,8 @@ delete_certificate(Client, CertificateId, Input0, Options0) ->
 %% Before you can delete a custom metric, you must first remove the custom
 %% metric from all security profiles it's a part of. The security profile
 %% associated with the custom metric can be found using the
-%% ListSecurityProfiles API with `metricName' set to your custom metric name.
+%% ListSecurityProfiles API with `metricName' set to your custom metric
+%% name.
 delete_custom_metric(Client, MetricName, Input) ->
     delete_custom_metric(Client, MetricName, Input, []).
 delete_custom_metric(Client, MetricName, Input0, Options0) ->
@@ -2170,12 +2175,13 @@ delete_fleet_metric(Client, MetricName, Input0, Options0) ->
 %%
 %% Deleting a job may take time, depending on the number of job executions
 %% created for the job and various other factors. While the job is being
-%% deleted, the status of the job will be shown as "DELETION_IN_PROGRESS".
-%% Attempting to delete or cancel a job whose status is already
-%% "DELETION_IN_PROGRESS" will result in an error.
+%% deleted, the status of the job will be shown as
+%% &quot;DELETION_IN_PROGRESS&quot;. Attempting to delete or cancel a job
+%% whose status is already &quot;DELETION_IN_PROGRESS&quot; will result in an
+%% error.
 %%
-%% Only 10 jobs may have status "DELETION_IN_PROGRESS" at the same time, or a
-%% LimitExceededException will occur.
+%% Only 10 jobs may have status &quot;DELETION_IN_PROGRESS&quot; at the same
+%% time, or a LimitExceededException will occur.
 %%
 %% Requires permission to access the DeleteJob action.
 delete_job(Client, JobId, Input) ->
@@ -2348,8 +2354,8 @@ delete_policy(Client, PolicyName, Input0, Options0) ->
 %% @doc Deletes the specified version of the specified policy.
 %%
 %% You cannot delete the default version of a policy using this action. To
-%% delete the default version of a policy, use `DeletePolicy'. To find out
-%% which version of a policy is marked as the default version, use
+%% delete the default version of a policy, use `DeletePolicy'. To find
+%% out which version of a policy is marked as the default version, use
 %% ListPolicyVersions.
 %%
 %% Requires permission to access the DeletePolicyVersion action.
@@ -2804,7 +2810,8 @@ describe_audit_finding(Client, FindingId, QueryMap, HeadersMap, Options0)
 %% mitigation actions to a set of audit findings.
 %%
 %% Properties include the actions being applied, the audit checks to which
-%% they're being applied, the task status, and aggregated task statistics.
+%% they're being applied, the task status, and aggregated task
+%% statistics.
 describe_audit_mitigation_actions_task(Client, TaskId)
   when is_map(Client) ->
     describe_audit_mitigation_actions_task(Client, TaskId, #{}, #{}).
@@ -3619,7 +3626,8 @@ detach_policy(Client, PolicyName, Input0, Options0) ->
 %% @doc Removes the specified policy from the specified certificate.
 %%
 %% Note: This action is deprecated and works as expected for backward
-%% compatibility, but we won't add enhancements. Use `DetachPolicy' instead.
+%% compatibility, but we won't add enhancements. Use `DetachPolicy'
+%% instead.
 %%
 %% Requires permission to access the DetachPrincipalPolicy action.
 detach_principal_policy(Client, PolicyName, Input) ->
@@ -3920,8 +3928,8 @@ get_job_document(Client, JobId, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets the logging options.
 %%
-%% NOTE: use of this command is not recommended. Use `GetV2LoggingOptions'
-%% instead.
+%% NOTE: use of this command is not recommended. Use
+%% `GetV2LoggingOptions' instead.
 %%
 %% Requires permission to access the GetLoggingOptions action.
 get_logging_options(Client)
@@ -3975,14 +3983,15 @@ get_ota_update(Client, OtaUpdateId, QueryMap, HeadersMap, Options0)
 %% groupings.
 %%
 %% The default percentile groupings are: 1,5,25,50,75,95,99, although you can
-%% specify your own when you call `GetPercentiles'. This function returns a
-%% value for each percentile group specified (or the default percentile
-%% groupings). The percentile group "1" contains the aggregated field value
-%% that occurs in approximately one percent of the values that match the
-%% query. The percentile group "5" contains the aggregated field value that
-%% occurs in approximately five percent of the values that match the query,
-%% and so on. The result is an approximation, the more values that match the
-%% query, the more accurate the percentile values.
+%% specify your own when you call `GetPercentiles'. This function returns
+%% a value for each percentile group specified (or the default percentile
+%% groupings). The percentile group &quot;1&quot; contains the aggregated
+%% field value that occurs in approximately one percent of the values that
+%% match the query. The percentile group &quot;5&quot; contains the
+%% aggregated field value that occurs in approximately five percent of the
+%% values that match the query, and so on. The result is an approximation,
+%% the more values that match the query, the more accurate the percentile
+%% values.
 %%
 %% Requires permission to access the GetPercentiles action.
 get_percentiles(Client, Input) ->
@@ -4086,8 +4095,8 @@ get_registration_code(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns the count, average, sum, minimum, maximum, sum of squares,
 %% variance, and standard deviation for the specified aggregated field.
 %%
-%% If the aggregation field is of type `String', only the count statistic is
-%% returned.
+%% If the aggregation field is of type `String', only the count statistic
+%% is returned.
 %%
 %% Requires permission to access the GetStatistics action.
 get_statistics(Client, Input) ->
@@ -5119,8 +5128,8 @@ list_policies(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the principals associated with the specified policy.
 %%
 %% Note: This action is deprecated and works as expected for backward
-%% compatibility, but we won't add enhancements. Use `ListTargetsForPolicy'
-%% instead.
+%% compatibility, but we won't add enhancements. Use
+%% `ListTargetsForPolicy' instead.
 %%
 %% Requires permission to access the ListPolicyPrincipals action.
 list_policy_principals(Client, PolicyName)
@@ -5187,8 +5196,8 @@ list_policy_versions(Client, PolicyName, QueryMap, HeadersMap, Options0)
 %% format.
 %%
 %% Note: This action is deprecated and works as expected for backward
-%% compatibility, but we won't add enhancements. Use `ListAttachedPolicies'
-%% instead.
+%% compatibility, but we won't add enhancements. Use
+%% `ListAttachedPolicies' instead.
 %%
 %% Requires permission to access the ListPrincipalPolicies action.
 list_principal_policies(Client, Principal)
@@ -5342,11 +5351,12 @@ list_provisioning_templates(Client, QueryMap, HeadersMap, Options0)
 %%
 %% </li> <li> ISSUER_CERTIFICATE
 %%
-%% </li> </ul> This API is similar to DescribeAuditFinding's RelatedResources
-%% but provides pagination and is not limited to 10 resources. When calling
-%% DescribeAuditFinding for the intermediate CA revoked for active device
-%% certificates check, RelatedResources will not be populated. You must use
-%% this API, ListRelatedResourcesForAuditFinding, to list the certificates.
+%% </li> </ul> This API is similar to DescribeAuditFinding's
+%% RelatedResources but provides pagination and is not limited to 10
+%% resources. When calling DescribeAuditFinding for the intermediate CA
+%% revoked for active device certificates check, RelatedResources will not be
+%% populated. You must use this API, ListRelatedResourcesForAuditFinding, to
+%% list the certificates.
 list_related_resources_for_audit_finding(Client, FindingId)
   when is_map(Client) ->
     list_related_resources_for_audit_finding(Client, FindingId, #{}, #{}).
@@ -5442,7 +5452,8 @@ list_scheduled_audits(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Requires permission to access the ListSecurityProfiles action.
 %%
-%% `dimensionName' and `metricName' cannot be used in the same request.
+%% `dimensionName' and `metricName' cannot be used in the same
+%% request.
 list_security_profiles(Client)
   when is_map(Client) ->
     list_security_profiles(Client, #{}, #{}).
@@ -5821,10 +5832,10 @@ list_thing_types(Client, QueryMap, HeadersMap, Options0)
 %%
 %% Requires permission to access the ListThings action.
 %%
-%% You will not be charged for calling this API if an `Access denied' error
-%% is returned. You will also not be charged if no attributes or pagination
-%% token was provided in request and no pagination token and no results were
-%% returned.
+%% You will not be charged for calling this API if an `Access denied'
+%% error is returned. You will also not be charged if no attributes or
+%% pagination token was provided in request and no pagination token and no
+%% results were returned.
 list_things(Client)
   when is_map(Client) ->
     list_things(Client, #{}, #{}).
@@ -6205,8 +6216,8 @@ register_thing(Client, Input0, Options0) ->
 %% enumerate your certificates.
 %%
 %% This operation can only be called by the transfer destination. After it is
-%% called, the certificate will be returned to the source's account in the
-%% INACTIVE state.
+%% called, the certificate will be returned to the source's account in
+%% the INACTIVE state.
 %%
 %% Requires permission to access the RejectCertificateTransfer action.
 reject_certificate_transfer(Client, CertificateId, Input) ->
@@ -6262,8 +6273,8 @@ remove_thing_from_billing_group(Client, Input0, Options0) ->
 %% @doc Remove the specified thing from the specified group.
 %%
 %% You must specify either a `thingGroupArn' or a `thingGroupName' to
-%% identify the thing group and either a `thingArn' or a `thingName' to
-%% identify the thing to remove from the thing group.
+%% identify the thing group and either a `thingArn' or a `thingName'
+%% to identify the thing to remove from the thing group.
 %%
 %% Requires permission to access the RemoveThingFromThingGroup action.
 remove_thing_from_thing_group(Client, Input) ->
@@ -6370,8 +6381,8 @@ set_default_authorizer(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Sets the specified version of the specified policy as the policy's
-%% default (operative) version.
+%% @doc Sets the specified version of the specified policy as the
+%% policy's default (operative) version.
 %%
 %% This action affects all certificates to which the policy is attached. To
 %% list the principals the policy is attached to, use the
@@ -6402,8 +6413,8 @@ set_default_policy_version(Client, PolicyName, PolicyVersionId, Input0, Options0
 
 %% @doc Sets the logging options.
 %%
-%% NOTE: use of this command is not recommended. Use `SetV2LoggingOptions'
-%% instead.
+%% NOTE: use of this command is not recommended. Use
+%% `SetV2LoggingOptions' instead.
 %%
 %% Requires permission to access the SetLoggingOptions action.
 set_logging_options(Client, Input) ->
@@ -6697,8 +6708,8 @@ test_invoke_authorizer(Client, AuthorizerName, Input0, Options0) ->
 %%
 %% You can cancel the transfer until it is acknowledged by the recipient.
 %%
-%% No notification is sent to the transfer destination's account. It is up to
-%% the caller to notify the transfer target.
+%% No notification is sent to the transfer destination's account. It is
+%% up to the caller to notify the transfer target.
 %%
 %% The certificate being transferred must not be in the ACTIVE state. You can
 %% use the `UpdateCertificate' action to deactivate it.

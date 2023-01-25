@@ -29,16 +29,16 @@
 %%
 %% You can work with connections by calling:
 %%
-%% <ul> <li> `CreateConnection', which creates a uniquely named connection
-%% that can be referenced by services such as CodePipeline.
+%% <ul> <li> `CreateConnection', which creates a uniquely named
+%% connection that can be referenced by services such as CodePipeline.
 %%
 %% </li> <li> `DeleteConnection', which deletes the specified connection.
 %%
 %% </li> <li> `GetConnection', which returns information about the
 %% connection, including the connection status.
 %%
-%% </li> <li> `ListConnections', which lists the connections associated with
-%% your account.
+%% </li> <li> `ListConnections', which lists the connections associated
+%% with your account.
 %%
 %% </li> </ul> You can work with hosts by calling:
 %%
@@ -47,8 +47,8 @@
 %%
 %% </li> <li> `DeleteHost', which deletes the specified host.
 %%
-%% </li> <li> `GetHost', which returns information about the host, including
-%% the setup status.
+%% </li> <li> `GetHost', which returns information about the host,
+%% including the setup status.
 %%
 %% </li> <li> `ListHosts', which lists the hosts associated with your
 %% account.
@@ -56,11 +56,11 @@
 %% </li> </ul> You can work with tags in AWS CodeStar Connections by calling
 %% the following:
 %%
-%% <ul> <li> `ListTagsForResource', which gets information about AWS tags for
-%% a specified Amazon Resource Name (ARN) in AWS CodeStar Connections.
+%% <ul> <li> `ListTagsForResource', which gets information about AWS tags
+%% for a specified Amazon Resource Name (ARN) in AWS CodeStar Connections.
 %%
-%% </li> <li> `TagResource', which adds or updates tags for a resource in AWS
-%% CodeStar Connections.
+%% </li> <li> `TagResource', which adds or updates tags for a resource in
+%% AWS CodeStar Connections.
 %%
 %% </li> <li> `UntagResource', which removes tags for a resource in AWS
 %% CodeStar Connections.
@@ -119,8 +119,8 @@ create_connection(Client, Input, Options)
 %% provider type, such as GitHub Enterprise Server. You create one host for
 %% all connections to that provider.
 %%
-%% A host created through the CLI or the SDK is in `PENDING` status by
-%% default. You can make its status `AVAILABLE` by setting up the host in the
+%% A host created through the CLI or the SDK is in `PENDING' status by
+%% default. You can make its status `AVAILABLE' by setting up the host in the
 %% console.
 create_host(Client, Input)
   when is_map(Client), is_map(Input) ->

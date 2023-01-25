@@ -261,7 +261,8 @@ delete_campaign(Client, Input, Options)
 
 %% @doc Deletes a decoder manifest.
 %%
-%% You can't delete a decoder manifest if it has vehicles associated with it.
+%% You can't delete a decoder manifest if it has vehicles associated with
+%% it.
 %%
 %% If the decoder manifest is successfully deleted, Amazon Web Services IoT
 %% FleetWise sends back an HTTP 200 response with an empty body.
@@ -434,8 +435,8 @@ import_signal_catalog(Client, Input, Options)
 
 %% @doc Lists information about created campaigns.
 %%
-%% This API operation uses pagination. Specify the `nextToken' parameter in
-%% the request to return more results.
+%% This API operation uses pagination. Specify the `nextToken' parameter
+%% in the request to return more results.
 list_campaigns(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_campaigns(Client, Input, []).
@@ -445,8 +446,8 @@ list_campaigns(Client, Input, Options)
 
 %% @doc Lists the network interfaces specified in a decoder manifest.
 %%
-%% This API operation uses pagination. Specify the `nextToken' parameter in
-%% the request to return more results.
+%% This API operation uses pagination. Specify the `nextToken' parameter
+%% in the request to return more results.
 list_decoder_manifest_network_interfaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_decoder_manifest_network_interfaces(Client, Input, []).
@@ -457,8 +458,8 @@ list_decoder_manifest_network_interfaces(Client, Input, Options)
 %% @doc A list of information about signal decoders specified in a decoder
 %% manifest.
 %%
-%% This API operation uses pagination. Specify the `nextToken' parameter in
-%% the request to return more results.
+%% This API operation uses pagination. Specify the `nextToken' parameter
+%% in the request to return more results.
 list_decoder_manifest_signals(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_decoder_manifest_signals(Client, Input, []).
@@ -468,8 +469,8 @@ list_decoder_manifest_signals(Client, Input, Options)
 
 %% @doc Lists decoder manifests.
 %%
-%% This API operation uses pagination. Specify the `nextToken' parameter in
-%% the request to return more results.
+%% This API operation uses pagination. Specify the `nextToken' parameter
+%% in the request to return more results.
 list_decoder_manifests(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_decoder_manifests(Client, Input, []).
@@ -480,8 +481,8 @@ list_decoder_manifests(Client, Input, Options)
 %% @doc Retrieves information for each created fleet in an Amazon Web
 %% Services account.
 %%
-%% This API operation uses pagination. Specify the `nextToken' parameter in
-%% the request to return more results.
+%% This API operation uses pagination. Specify the `nextToken' parameter
+%% in the request to return more results.
 list_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fleets(Client, Input, []).
@@ -492,8 +493,8 @@ list_fleets(Client, Input, Options)
 %% @doc Retrieves a list of IDs for all fleets that the vehicle is associated
 %% with.
 %%
-%% This API operation uses pagination. Specify the `nextToken' parameter in
-%% the request to return more results.
+%% This API operation uses pagination. Specify the `nextToken' parameter
+%% in the request to return more results.
 list_fleets_for_vehicle(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fleets_for_vehicle(Client, Input, []).
@@ -504,8 +505,8 @@ list_fleets_for_vehicle(Client, Input, Options)
 %% @doc Lists information about nodes specified in a vehicle model (model
 %% manifest).
 %%
-%% This API operation uses pagination. Specify the `nextToken' parameter in
-%% the request to return more results.
+%% This API operation uses pagination. Specify the `nextToken' parameter
+%% in the request to return more results.
 list_model_manifest_nodes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_manifest_nodes(Client, Input, []).
@@ -515,8 +516,8 @@ list_model_manifest_nodes(Client, Input, Options)
 
 %% @doc Retrieves a list of vehicle models (model manifests).
 %%
-%% This API operation uses pagination. Specify the `nextToken' parameter in
-%% the request to return more results.
+%% This API operation uses pagination. Specify the `nextToken' parameter
+%% in the request to return more results.
 list_model_manifests(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_model_manifests(Client, Input, []).
@@ -527,8 +528,8 @@ list_model_manifests(Client, Input, Options)
 %% @doc Lists of information about the signals (nodes) specified in a signal
 %% catalog.
 %%
-%% This API operation uses pagination. Specify the `nextToken' parameter in
-%% the request to return more results.
+%% This API operation uses pagination. Specify the `nextToken' parameter
+%% in the request to return more results.
 list_signal_catalog_nodes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_signal_catalog_nodes(Client, Input, []).
@@ -542,8 +543,8 @@ list_signal_catalog_nodes(Client, Input, Options)
 %% You can use to list information about each signal (node) specified in a
 %% signal catalog.
 %%
-%% This API operation uses pagination. Specify the `nextToken' parameter in
-%% the request to return more results.
+%% This API operation uses pagination. Specify the `nextToken' parameter
+%% in the request to return more results.
 list_signal_catalogs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_signal_catalogs(Client, Input, []).
@@ -561,8 +562,8 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc Retrieves a list of summaries of created vehicles.
 %%
-%% This API operation uses pagination. Specify the `nextToken' parameter in
-%% the request to return more results.
+%% This API operation uses pagination. Specify the `nextToken' parameter
+%% in the request to return more results.
 list_vehicles(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_vehicles(Client, Input, []).
@@ -573,8 +574,8 @@ list_vehicles(Client, Input, Options)
 %% @doc Retrieves a list of summaries of all vehicles associated with a
 %% fleet.
 %%
-%% This API operation uses pagination. Specify the `nextToken' parameter in
-%% the request to return more results.
+%% This API operation uses pagination. Specify the `nextToken' parameter
+%% in the request to return more results.
 list_vehicles_in_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_vehicles_in_fleet(Client, Input, []).
@@ -597,11 +598,11 @@ put_logging_options(Client, Input, Options)
 %% For more information, including step-by-step procedures, see Setting up
 %% Amazon Web Services IoT FleetWise.
 %%
-%% An Amazon Web Services account is not the same thing as a "user account".
-%% An Amazon Web Services user is an identity that you create using Identity
-%% and Access Management (IAM) and takes the form of either an IAM user or an
-%% IAM role, both with credentials. A single Amazon Web Services account can,
-%% and typically does, contain many users and roles.
+%% An Amazon Web Services account is not the same thing as a &quot;user
+%% account&quot;. An Amazon Web Services user is an identity that you create
+%% using Identity and Access Management (IAM) and takes the form of either an
+%% IAM user or an IAM role, both with credentials. A single Amazon Web
+%% Services account can, and typically does, contain many users and roles.
 register_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_account(Client, Input, []).
@@ -637,8 +638,8 @@ update_campaign(Client, Input, Options)
 
 %% @doc Updates a decoder manifest.
 %%
-%% A decoder manifest can only be updated when the status is `DRAFT'. Only
-%% `ACTIVE' decoder manifests can be associated with vehicles.
+%% A decoder manifest can only be updated when the status is `DRAFT'.
+%% Only `ACTIVE' decoder manifests can be associated with vehicles.
 update_decoder_manifest(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_decoder_manifest(Client, Input, []).

@@ -76,8 +76,8 @@ delete_lexicon(Client, Name, Input0, Options0) ->
 %% Each voice speaks a specified language, is either male or female, and is
 %% identified by an ID, which is the ASCII version of the voice name.
 %%
-%% When synthesizing speech ( `SynthesizeSpeech' ), you provide the voice ID
-%% for the voice you want from the list of voices returned by
+%% When synthesizing speech ( `SynthesizeSpeech' ), you provide the voice
+%% ID for the voice you want from the list of voices returned by
 %% `DescribeVoices'.
 %%
 %% For example, you want your news reader application to read news in a
@@ -86,11 +86,11 @@ delete_lexicon(Client, Name, Input0, Options0) ->
 %% available voices to select from.
 %%
 %% You can optionally specify a language code to filter the available voices.
-%% For example, if you specify `en-US', the operation returns a list of all
-%% available US English voices.
+%% For example, if you specify `en-US', the operation returns a list of
+%% all available US English voices.
 %%
-%% This operation requires permissions to perform the `polly:DescribeVoices'
-%% action.
+%% This operation requires permissions to perform the
+%% `polly:DescribeVoices' action.
 describe_voices(Client)
   when is_map(Client) ->
     describe_voices(Client, #{}, #{}).
@@ -272,11 +272,11 @@ put_lexicon(Client, Name, Input0, Options0) ->
 %% This operation requires all the standard information needed for speech
 %% synthesis, plus the name of an Amazon S3 bucket for the service to store
 %% the output of the synthesis task and two optional parameters
-%% (`OutputS3KeyPrefix' and `SnsTopicArn'). Once the synthesis task is
-%% created, this operation will return a `SpeechSynthesisTask' object, which
-%% will include an identifier of this task as well as the current status. The
-%% `SpeechSynthesisTask' object is available for 72 hours after starting the
-%% asynchronous synthesis task.
+%% (`OutputS3KeyPrefix' and `SnsTopicArn'). Once the synthesis task
+%% is created, this operation will return a `SpeechSynthesisTask' object,
+%% which will include an identifier of this task as well as the current
+%% status. The `SpeechSynthesisTask' object is available for 72 hours
+%% after starting the asynchronous synthesis task.
 start_speech_synthesis_task(Client, Input) ->
     start_speech_synthesis_task(Client, Input, []).
 start_speech_synthesis_task(Client, Input0, Options0) ->

@@ -730,8 +730,8 @@ update_site(Client, SiteId, Input0, Options0) ->
 
 %% @doc Updates the address of the specified site.
 %%
-%% You can't update a site address if there is an order in progress. You must
-%% wait for the order to complete or cancel the order.
+%% You can't update a site address if there is an order in progress. You
+%% must wait for the order to complete or cancel the order.
 %%
 %% You can update the operating address before you place an order at the
 %% site, or after all Outposts that belong to the site have been deactivated.
@@ -762,8 +762,8 @@ update_site_address(Client, SiteId, Input0, Options0) ->
 %% For more information about hardware requirements for racks, see Network
 %% readiness checklist in the Amazon Web Services Outposts User Guide.
 %%
-%% To update a rack at a site with an order of `IN_PROGRESS', you must wait
-%% for the order to complete or cancel the order.
+%% To update a rack at a site with an order of `IN_PROGRESS', you must
+%% wait for the order to complete or cancel the order.
 update_site_rack_physical_properties(Client, SiteId, Input) ->
     update_site_rack_physical_properties(Client, SiteId, Input, []).
 update_site_rack_physical_properties(Client, SiteId, Input0, Options0) ->

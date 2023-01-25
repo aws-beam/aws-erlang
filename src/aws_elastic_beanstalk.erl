@@ -132,8 +132,8 @@ abort_environment_update(Client, Input, Options)
 
 %% @doc Applies a scheduled managed action immediately.
 %%
-%% A managed action can be applied only if its status is `Scheduled'. Get the
-%% status and action ID of a managed action with
+%% A managed action can be applied only if its status is `Scheduled'. Get
+%% the status and action ID of a managed action with
 %% `DescribeEnvironmentManagedActions'.
 apply_environment_managed_action(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -201,13 +201,13 @@ create_application(Client, Input, Options)
 %%
 %% Specify a source bundle in S3 with `SourceBundle'
 %%
-%% Omit both `SourceBuildInformation' and `SourceBundle' to use the default
-%% sample application.
+%% Omit both `SourceBuildInformation' and `SourceBundle' to use the
+%% default sample application.
 %%
 %% After you create an application version with a specified Amazon S3 bucket
-%% and key location, you can't change that Amazon S3 location. If you change
-%% the Amazon S3 location, you receive an exception when you attempt to
-%% launch an environment from the application version.
+%% and key location, you can't change that Amazon S3 location. If you
+%% change the Amazon S3 location, you receive an exception when you attempt
+%% to launch an environment from the application version.
 create_application_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_application_version(Client, Input, []).
@@ -222,8 +222,8 @@ create_application_version(Client, Input, Options)
 %% You can then use the configuration template to deploy different versions
 %% of the application with the same configuration settings.
 %%
-%% Templates aren't associated with any environment. The `EnvironmentName'
-%% response element is always `null'.
+%% Templates aren't associated with any environment. The
+%% `EnvironmentName' response element is always `null'.
 %%
 %% Related Topics
 %%
@@ -263,8 +263,8 @@ create_platform_version(Client, Input, Options)
 %%
 %% The Elastic Beanstalk console and EB CLI call this API the first time you
 %% create an environment in a region. If the storage location already exists,
-%% `CreateStorageLocation' still returns the bucket name but does not create
-%% a new bucket.
+%% `CreateStorageLocation' still returns the bucket name but does not
+%% create a new bucket.
 create_storage_location(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_storage_location(Client, Input, []).
@@ -314,9 +314,9 @@ delete_configuration_template(Client, Input, Options)
 %%
 %% Updating a running environment with any configuration changes creates a
 %% draft configuration set. You can get the draft configuration using
-%% `DescribeConfigurationSettings' while the update is in progress or if the
-%% update fails. The `DeploymentStatus' for the draft configuration indicates
-%% whether the deployment is in process or has failed. The draft
+%% `DescribeConfigurationSettings' while the update is in progress or if
+%% the update fails. The `DeploymentStatus' for the draft configuration
+%% indicates whether the deployment is in process or has failed. The draft
 %% configuration remains in existence until it is deleted with this action.
 delete_environment_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -465,8 +465,8 @@ describe_instances_health(Client, Input, Options)
 
 %% @doc Describes a platform version.
 %%
-%% Provides full details. Compare to `ListPlatformVersions', which provides
-%% summary information about a list of platform versions.
+%% Provides full details. Compare to `ListPlatformVersions', which
+%% provides summary information about a list of platform versions.
 %%
 %% For definitions of platform version and other platform-related terms, see
 %% AWS Elastic Beanstalk Platforms Glossary.
@@ -479,10 +479,10 @@ describe_platform_version(Client, Input, Options)
 
 %% @doc Disassociate the operations role from an environment.
 %%
-%% After this call is made, Elastic Beanstalk uses the caller's permissions
-%% for permissions to downstream services during subsequent calls acting on
-%% this environment. For more information, see Operations roles in the AWS
-%% Elastic Beanstalk Developer Guide.
+%% After this call is made, Elastic Beanstalk uses the caller's
+%% permissions for permissions to downstream services during subsequent calls
+%% acting on this environment. For more information, see Operations roles in
+%% the AWS Elastic Beanstalk Developer Guide.
 disassociate_environment_operations_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_environment_operations_role(Client, Input, []).
@@ -559,9 +559,9 @@ rebuild_environment(Client, Input, Options)
 %% application server log files of every Amazon EC2 instance in your
 %% environment.
 %%
-%% Setting the `InfoType' to `bundle' compresses the application server log
-%% files for every Amazon EC2 instance into a `.zip' file. Legacy and .NET
-%% containers do not support bundle logs.
+%% Setting the `InfoType' to `bundle' compresses the application
+%% server log files for every Amazon EC2 instance into a `.zip' file.
+%% Legacy and .NET containers do not support bundle logs.
 %%
 %% Use `RetrieveEnvironmentInfo' to obtain the set of logs.
 %%
@@ -586,8 +586,8 @@ restart_app_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestartAppServer">>, Input, Options).
 
-%% @doc Retrieves the compiled information from a `RequestEnvironmentInfo'
-%% request.
+%% @doc Retrieves the compiled information from a
+%% `RequestEnvironmentInfo' request.
 %%
 %% Related Topics
 %%
@@ -651,8 +651,9 @@ update_application_version(Client, Input, Options)
 %% @doc Updates the specified configuration template to have the specified
 %% properties or configuration option values.
 %%
-%% If a property (for example, `ApplicationName') is not provided, its value
-%% remains unchanged. To clear such properties, specify an empty string.
+%% If a property (for example, `ApplicationName') is not provided, its
+%% value remains unchanged. To clear such properties, specify an empty
+%% string.
 %%
 %% Related Topics
 %%
@@ -676,8 +677,8 @@ update_configuration_template(Client, Input, Options)
 %%
 %% When updating the configuration settings to a new template or individual
 %% settings, a draft configuration is created and
-%% `DescribeConfigurationSettings' for this environment returns two setting
-%% descriptions with different `DeploymentStatus' values.
+%% `DescribeConfigurationSettings' for this environment returns two
+%% setting descriptions with different `DeploymentStatus' values.
 update_environment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_environment(Client, Input, []).
@@ -698,12 +699,12 @@ update_environment(Client, Input, Options)
 %% instead of the API operation name:
 %%
 %% <dl> <dt>elasticbeanstalk:AddTags</dt> <dd> Controls permission to call
-%% `UpdateTagsForResource' and pass a list of tags to add in the `TagsToAdd'
-%% parameter.
+%% `UpdateTagsForResource' and pass a list of tags to add in the
+%% `TagsToAdd' parameter.
 %%
 %% </dd> <dt>elasticbeanstalk:RemoveTags</dt> <dd> Controls permission to
-%% call `UpdateTagsForResource' and pass a list of tag keys to remove in the
-%% `TagsToRemove' parameter.
+%% call `UpdateTagsForResource' and pass a list of tag keys to remove in
+%% the `TagsToRemove' parameter.
 %%
 %% </dd> </dl> For details about creating a custom user policy, see Creating
 %% a Custom User Policy.

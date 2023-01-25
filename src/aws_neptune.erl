@@ -10,11 +10,11 @@
 %% The core of Amazon Neptune is a purpose-built, high-performance graph
 %% database engine optimized for storing billions of relationships and
 %% querying the graph with milliseconds latency. Amazon Neptune supports
-%% popular graph models Property Graph and W3C's RDF, and their respective
-%% query languages Apache TinkerPop Gremlin and SPARQL, allowing you to
-%% easily build queries that efficiently navigate highly connected datasets.
-%% Neptune powers graph use cases such as recommendation engines, fraud
-%% detection, knowledge graphs, drug discovery, and network security.
+%% popular graph models Property Graph and W3C's RDF, and their
+%% respective query languages Apache TinkerPop Gremlin and SPARQL, allowing
+%% you to easily build queries that efficiently navigate highly connected
+%% datasets. Neptune powers graph use cases such as recommendation engines,
+%% fraud detection, knowledge graphs, drug discovery, and network security.
 %%
 %% This interface reference for Amazon Neptune contains documentation for a
 %% programming or command line interface you can use to manage Amazon
@@ -222,8 +222,8 @@ copy_db_cluster_parameter_group(Client, Input, Options)
 %% @doc Copies a snapshot of a DB cluster.
 %%
 %% To copy a DB cluster snapshot from a shared manual DB cluster snapshot,
-%% `SourceDBClusterSnapshotIdentifier' must be the Amazon Resource Name (ARN)
-%% of the shared DB cluster snapshot.
+%% `SourceDBClusterSnapshotIdentifier' must be the Amazon Resource Name
+%% (ARN) of the shared DB cluster snapshot.
 copy_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_cluster_snapshot(Client, Input, []).
@@ -241,13 +241,13 @@ copy_db_parameter_group(Client, Input, Options)
 
 %% @doc Creates a new Amazon Neptune DB cluster.
 %%
-%% You can use the `ReplicationSourceIdentifier' parameter to create the DB
-%% cluster as a Read Replica of another DB cluster or Amazon Neptune DB
+%% You can use the `ReplicationSourceIdentifier' parameter to create the
+%% DB cluster as a Read Replica of another DB cluster or Amazon Neptune DB
 %% instance.
 %%
-%% Note that when you create a new cluster using `CreateDBCluster' directly,
-%% deletion protection is disabled by default (when you create a new
-%% production cluster in the console, deletion protection is enabled by
+%% Note that when you create a new cluster using `CreateDBCluster'
+%% directly, deletion protection is disabled by default (when you create a
+%% new production cluster in the console, deletion protection is enabled by
 %% default). You can only delete a DB cluster if its `DeletionProtection'
 %% field is set to `false'.
 create_db_cluster(Client, Input)
@@ -274,11 +274,11 @@ create_db_cluster_endpoint(Client, Input, Options)
 %% A DB cluster parameter group is initially created with the default
 %% parameters for the database engine used by instances in the DB cluster. To
 %% provide custom values for any of the parameters, you must modify the group
-%% after creating it using `ModifyDBClusterParameterGroup'. Once you've
-%% created a DB cluster parameter group, you need to associate it with your
-%% DB cluster using `ModifyDBCluster'. When you associate a new DB cluster
-%% parameter group with a running DB cluster, you need to reboot the DB
-%% instances in the DB cluster without failover for the new DB cluster
+%% after creating it using `ModifyDBClusterParameterGroup'. Once
+%% you've created a DB cluster parameter group, you need to associate it
+%% with your DB cluster using `ModifyDBCluster'. When you associate a new
+%% DB cluster parameter group with a running DB cluster, you need to reboot
+%% the DB instances in the DB cluster without failover for the new DB cluster
 %% parameter group and associated settings to take effect.
 %%
 %% After you create a DB cluster parameter group, you should wait at least 5
@@ -288,10 +288,10 @@ create_db_cluster_endpoint(Client, Input, Options)
 %% is used as the default for a new DB cluster. This is especially important
 %% for parameters that are critical when creating the default database for a
 %% DB cluster, such as the character set for the default database defined by
-%% the `character_set_database' parameter. You can use the Parameter Groups
-%% option of the Amazon Neptune console or the `DescribeDBClusterParameters'
-%% command to verify that your DB cluster parameter group has been created or
-%% modified.
+%% the `character_set_database' parameter. You can use the Parameter
+%% Groups option of the Amazon Neptune console or the
+%% `DescribeDBClusterParameters' command to verify that your DB cluster
+%% parameter group has been created or modified.
 create_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_parameter_group(Client, Input, []).
@@ -320,11 +320,11 @@ create_db_instance(Client, Input, Options)
 %% A DB parameter group is initially created with the default parameters for
 %% the database engine used by the DB instance. To provide custom values for
 %% any of the parameters, you must modify the group after creating it using
-%% ModifyDBParameterGroup. Once you've created a DB parameter group, you need
-%% to associate it with your DB instance using ModifyDBInstance. When you
-%% associate a new DB parameter group with a running DB instance, you need to
-%% reboot the DB instance without failover for the new DB parameter group and
-%% associated settings to take effect.
+%% ModifyDBParameterGroup. Once you've created a DB parameter group, you
+%% need to associate it with your DB instance using ModifyDBInstance. When
+%% you associate a new DB parameter group with a running DB instance, you
+%% need to reboot the DB instance without failover for the new DB parameter
+%% group and associated settings to take effect.
 %%
 %% After you create a DB parameter group, you should wait at least 5 minutes
 %% before creating your first DB instance that uses that DB parameter group
@@ -410,8 +410,8 @@ create_global_cluster(Client, Input, Options)
 %% specified DB cluster are not deleted.
 %%
 %% Note that the DB Cluster cannot be deleted if deletion protection is
-%% enabled. To delete it, you must first set its `DeletionProtection' field
-%% to `False'.
+%% enabled. To delete it, you must first set its `DeletionProtection'
+%% field to `False'.
 delete_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster(Client, Input, []).
@@ -430,8 +430,8 @@ delete_db_cluster_endpoint(Client, Input, Options)
 
 %% @doc Deletes a specified DB cluster parameter group.
 %%
-%% The DB cluster parameter group to be deleted can't be associated with any
-%% DB clusters.
+%% The DB cluster parameter group to be deleted can't be associated with
+%% any DB clusters.
 delete_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_parameter_group(Client, Input, []).
@@ -443,7 +443,8 @@ delete_db_cluster_parameter_group(Client, Input, Options)
 %%
 %% If the snapshot is being copied, the copy operation is terminated.
 %%
-%% The DB cluster snapshot must be in the `available' state to be deleted.
+%% The DB cluster snapshot must be in the `available' state to be
+%% deleted.
 delete_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_snapshot(Client, Input, []).
@@ -455,17 +456,18 @@ delete_db_cluster_snapshot(Client, Input, Options)
 %% instance.
 %%
 %% When you delete a DB instance, all automated backups for that instance are
-%% deleted and can't be recovered. Manual DB snapshots of the DB instance to
-%% be deleted by `DeleteDBInstance' are not deleted.
+%% deleted and can't be recovered. Manual DB snapshots of the DB instance
+%% to be deleted by `DeleteDBInstance' are not deleted.
 %%
 %% If you request a final DB snapshot the status of the Amazon Neptune DB
-%% instance is `deleting' until the DB snapshot is created. The API action
-%% `DescribeDBInstance' is used to monitor the status of this operation. The
-%% action can't be canceled or reverted once submitted.
+%% instance is `deleting' until the DB snapshot is created. The API
+%% action `DescribeDBInstance' is used to monitor the status of this
+%% operation. The action can't be canceled or reverted once submitted.
 %%
 %% Note that when a DB instance is in a failure state and has a status of
-%% `failed', `incompatible-restore', or `incompatible-network', you can only
-%% delete it when the `SkipFinalSnapshot' parameter is set to `true'.
+%% `failed', `incompatible-restore', or `incompatible-network',
+%% you can only delete it when the `SkipFinalSnapshot' parameter is set
+%% to `true'.
 %%
 %% You can't delete a DB instance if it is the only instance in the DB
 %% cluster, or if it has deletion protection enabled.
@@ -530,8 +532,9 @@ describe_db_cluster_endpoints(Client, Input, Options)
 
 %% @doc Returns a list of `DBClusterParameterGroup' descriptions.
 %%
-%% If a `DBClusterParameterGroupName' parameter is specified, the list will
-%% contain only the description of the specified DB cluster parameter group.
+%% If a `DBClusterParameterGroupName' parameter is specified, the list
+%% will contain only the description of the specified DB cluster parameter
+%% group.
 describe_db_cluster_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_parameter_groups(Client, Input, []).
@@ -552,11 +555,12 @@ describe_db_cluster_parameters(Client, Input, Options)
 %% a manual DB cluster snapshot.
 %%
 %% When sharing snapshots with other Amazon accounts,
-%% `DescribeDBClusterSnapshotAttributes' returns the `restore' attribute and
-%% a list of IDs for the Amazon accounts that are authorized to copy or
-%% restore the manual DB cluster snapshot. If `all' is included in the list
-%% of values for the `restore' attribute, then the manual DB cluster snapshot
-%% is public and can be copied or restored by all Amazon accounts.
+%% `DescribeDBClusterSnapshotAttributes' returns the `restore'
+%% attribute and a list of IDs for the Amazon accounts that are authorized to
+%% copy or restore the manual DB cluster snapshot. If `all' is included
+%% in the list of values for the `restore' attribute, then the manual DB
+%% cluster snapshot is public and can be copied or restored by all Amazon
+%% accounts.
 %%
 %% To add or remove access for an Amazon account to copy or restore a manual
 %% DB cluster snapshot, or to make the manual DB cluster snapshot public or
@@ -612,8 +616,8 @@ describe_db_instances(Client, Input, Options)
 
 %% @doc Returns a list of `DBParameterGroup' descriptions.
 %%
-%% If a `DBParameterGroupName' is specified, the list will contain only the
-%% description of the specified DB parameter group.
+%% If a `DBParameterGroupName' is specified, the list will contain only
+%% the description of the specified DB parameter group.
 describe_db_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_parameter_groups(Client, Input, []).
@@ -806,8 +810,8 @@ modify_db_cluster_endpoint(Client, Input, Options)
 %% @doc Modifies the parameters of a DB cluster parameter group.
 %%
 %% To modify more than one parameter, submit a list of the following:
-%% `ParameterName', `ParameterValue', and `ApplyMethod'. A maximum of 20
-%% parameters can be modified in a single request.
+%% `ParameterName', `ParameterValue', and `ApplyMethod'. A
+%% maximum of 20 parameters can be modified in a single request.
 %%
 %% Changes to dynamic parameters are applied immediately. Changes to static
 %% parameters require a reboot without failover to the DB cluster associated
@@ -821,9 +825,9 @@ modify_db_cluster_endpoint(Client, Input, Options)
 %% parameters that are critical when creating the default database for a DB
 %% cluster, such as the character set for the default database defined by the
 %% `character_set_database' parameter. You can use the Parameter Groups
-%% option of the Amazon Neptune console or the `DescribeDBClusterParameters'
-%% command to verify that your DB cluster parameter group has been created or
-%% modified.
+%% option of the Amazon Neptune console or the
+%% `DescribeDBClusterParameters' command to verify that your DB cluster
+%% parameter group has been created or modified.
 modify_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_parameter_group(Client, Input, []).
@@ -835,16 +839,16 @@ modify_db_cluster_parameter_group(Client, Input, Options)
 %% from, a manual DB cluster snapshot.
 %%
 %% To share a manual DB cluster snapshot with other Amazon accounts, specify
-%% `restore' as the `AttributeName' and use the `ValuesToAdd' parameter to
-%% add a list of IDs of the Amazon accounts that are authorized to restore
-%% the manual DB cluster snapshot. Use the value `all' to make the manual DB
-%% cluster snapshot public, which means that it can be copied or restored by
-%% all Amazon accounts. Do not add the `all' value for any manual DB cluster
-%% snapshots that contain private information that you don't want available
-%% to all Amazon accounts. If a manual DB cluster snapshot is encrypted, it
-%% can be shared, but only by specifying a list of authorized Amazon account
-%% IDs for the `ValuesToAdd' parameter. You can't use `all' as a value for
-%% that parameter in this case.
+%% `restore' as the `AttributeName' and use the `ValuesToAdd'
+%% parameter to add a list of IDs of the Amazon accounts that are authorized
+%% to restore the manual DB cluster snapshot. Use the value `all' to make
+%% the manual DB cluster snapshot public, which means that it can be copied
+%% or restored by all Amazon accounts. Do not add the `all' value for any
+%% manual DB cluster snapshots that contain private information that you
+%% don't want available to all Amazon accounts. If a manual DB cluster
+%% snapshot is encrypted, it can be shared, but only by specifying a list of
+%% authorized Amazon account IDs for the `ValuesToAdd' parameter. You
+%% can't use `all' as a value for that parameter in this case.
 %%
 %% To view which Amazon accounts have access to copy or restore a manual DB
 %% cluster snapshot, or whether a manual DB cluster snapshot public or
@@ -861,7 +865,8 @@ modify_db_cluster_snapshot_attribute(Client, Input, Options)
 %% You can change one or more database configuration parameters by specifying
 %% these parameters and the new values in the request. To learn what
 %% modifications you can make to your DB instance, call
-%% `DescribeValidDBInstanceModifications' before you call `ModifyDBInstance'.
+%% `DescribeValidDBInstanceModifications' before you call
+%% `ModifyDBInstance'.
 modify_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_instance(Client, Input, []).
@@ -872,8 +877,8 @@ modify_db_instance(Client, Input, Options)
 %% @doc Modifies the parameters of a DB parameter group.
 %%
 %% To modify more than one parameter, submit a list of the following:
-%% `ParameterName', `ParameterValue', and `ApplyMethod'. A maximum of 20
-%% parameters can be modified in a single request.
+%% `ParameterName', `ParameterValue', and `ApplyMethod'. A
+%% maximum of 20 parameters can be modified in a single request.
 %%
 %% Changes to dynamic parameters are applied immediately. Changes to static
 %% parameters require a reboot without failover to the DB instance associated
@@ -1007,9 +1012,9 @@ remove_tags_from_resource(Client, Input, Options)
 %%
 %% When resetting the entire group, dynamic parameters are updated
 %% immediately and static parameters are set to `pending-reboot' to take
-%% effect on the next DB instance restart or `RebootDBInstance' request. You
-%% must call `RebootDBInstance' for every DB instance in your DB cluster that
-%% you want the updated static parameter to apply to.
+%% effect on the next DB instance restart or `RebootDBInstance' request.
+%% You must call `RebootDBInstance' for every DB instance in your DB
+%% cluster that you want the updated static parameter to apply to.
 reset_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_db_cluster_parameter_group(Client, Input, []).
@@ -1021,11 +1026,12 @@ reset_db_cluster_parameter_group(Client, Input, Options)
 %% default value.
 %%
 %% To reset specific parameters, provide a list of the following:
-%% `ParameterName' and `ApplyMethod'. To reset the entire DB parameter group,
-%% specify the `DBParameterGroup' name and `ResetAllParameters' parameters.
-%% When resetting the entire group, dynamic parameters are updated
-%% immediately and static parameters are set to `pending-reboot' to take
-%% effect on the next DB instance restart or `RebootDBInstance' request.
+%% `ParameterName' and `ApplyMethod'. To reset the entire DB
+%% parameter group, specify the `DBParameterGroup' name and
+%% `ResetAllParameters' parameters. When resetting the entire group,
+%% dynamic parameters are updated immediately and static parameters are set
+%% to `pending-reboot' to take effect on the next DB instance restart or
+%% `RebootDBInstance' request.
 reset_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_db_parameter_group(Client, Input, []).
@@ -1052,18 +1058,18 @@ restore_db_cluster_from_snapshot(Client, Input, Options)
 
 %% @doc Restores a DB cluster to an arbitrary point in time.
 %%
-%% Users can restore to any point in time before `LatestRestorableTime' for
-%% up to `BackupRetentionPeriod' days. The target DB cluster is created from
-%% the source DB cluster with the same configuration as the original DB
-%% cluster, except that the new DB cluster is created with the default DB
-%% security group.
+%% Users can restore to any point in time before `LatestRestorableTime'
+%% for up to `BackupRetentionPeriod' days. The target DB cluster is
+%% created from the source DB cluster with the same configuration as the
+%% original DB cluster, except that the new DB cluster is created with the
+%% default DB security group.
 %%
 %% This action only restores the DB cluster, not the DB instances for that DB
 %% cluster. You must invoke the `CreateDBInstance' action to create DB
 %% instances for the restored DB cluster, specifying the identifier of the
-%% restored DB cluster in `DBClusterIdentifier'. You can create DB instances
-%% only after the `RestoreDBClusterToPointInTime' action has completed and
-%% the DB cluster is available.
+%% restored DB cluster in `DBClusterIdentifier'. You can create DB
+%% instances only after the `RestoreDBClusterToPointInTime' action has
+%% completed and the DB cluster is available.
 restore_db_cluster_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_to_point_in_time(Client, Input, []).

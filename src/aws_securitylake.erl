@@ -4,14 +4,14 @@
 %% @doc Amazon Security Lake is in preview release.
 %%
 %% Your use of the Security Lake preview is subject to Section 2 of the
-%% Amazon Web Services Service Terms("Betas and Previews").
+%% Amazon Web Services Service Terms(&quot;Betas and Previews&quot;).
 %%
 %% Amazon Security Lake is a fully managed security data lake service. You
 %% can use Security Lake to automatically centralize security data from
-%% cloud, on-premises, and custom sources into a data lake that's stored in
-%% your Amazon Web Servicesaccount. Amazon Web Services Organizations is an
-%% account management service that lets you consolidate multiple Amazon Web
-%% Services accounts into an organization that you create and centrally
+%% cloud, on-premises, and custom sources into a data lake that's stored
+%% in your Amazon Web Servicesaccount. Amazon Web Services Organizations is
+%% an account management service that lets you consolidate multiple Amazon
+%% Web Services accounts into an organization that you create and centrally
 %% manage. With Organizations, you can create member accounts and invite
 %% existing accounts to join your organization. Security Lake helps you
 %% analyze security data for a more complete understanding of your security
@@ -130,17 +130,17 @@
 %% is a mandatory input to this API. However, you can supply any combination
 %% of the three dimensions to this API.
 %%
-%% By default, a dimension refers to the entire set. When you don't provide a
-%% dimension, Security Lake assumes that the missing dimension refers to the
-%% entire set. This is overridden when you supply any one of the inputs. For
-%% instance, when you do not specify members, the API enables all Security
-%% Lake member accounts for all sources. Similarly, when you do not specify
-%% Regions, Security Lake is enabled for all the Regions where Security Lake
-%% is available as a service.
+%% By default, a dimension refers to the entire set. When you don't
+%% provide a dimension, Security Lake assumes that the missing dimension
+%% refers to the entire set. This is overridden when you supply any one of
+%% the inputs. For instance, when you do not specify members, the API enables
+%% all Security Lake member accounts for all sources. Similarly, when you do
+%% not specify Regions, Security Lake is enabled for all the Regions where
+%% Security Lake is available as a service.
 %%
 %% You can use this API only to enable natively supported Amazon Web Services
-%% as a source. Use `CreateCustomLogSource' to enable data collection from a
-%% custom source.
+%% as a source. Use `CreateCustomLogSource' to enable data collection
+%% from a custom source.
 create_aws_log_source(Client, Input) ->
     create_aws_log_source(Client, Input, []).
 create_aws_log_source(Client, Input0, Options0) ->
@@ -199,13 +199,13 @@ create_custom_log_source(Client, Input0, Options0) ->
 %%
 %% You can enable Security Lake in Amazon Web Services Regions with
 %% customized settings before enabling log collection in Regions. You can
-%% either use the `enableAll' parameter to specify all Regions or specify the
-%% Regions where you want to enable Security Lake. To specify particular
+%% either use the `enableAll' parameter to specify all Regions or specify
+%% the Regions where you want to enable Security Lake. To specify particular
 %% Regions, use the `Regions' parameter and then configure these Regions
-%% using the `configurations' parameter. If you have already enabled Security
-%% Lake in a Region when you call this command, the command will update the
-%% Region if you provide new configuration parameters. If you have not
-%% already enabled Security Lake in the Region when you call this API, it
+%% using the `configurations' parameter. If you have already enabled
+%% Security Lake in a Region when you call this command, the command will
+%% update the Region if you provide new configuration parameters. If you have
+%% not already enabled Security Lake in the Region when you call this API, it
 %% will set up the data lake in the Region with the specified configurations.
 %%
 %% When you enable Security Lake, it starts ingesting security data after the
@@ -387,10 +387,10 @@ create_subscription_notification_configuration(Client, SubscriptionId, Input0, O
 %% Similarly, when you do not specify Regions, Security Lake is disabled for
 %% all the Regions where Security Lake is available as a service.
 %%
-%% When you don't provide a dimension, Security Lake assumes that the missing
-%% dimension refers to the entire set. For example, if you don't provide
-%% specific accounts, the API applies to the entire set of accounts in your
-%% organization.
+%% When you don't provide a dimension, Security Lake assumes that the
+%% missing dimension refers to the entire set. For example, if you don't
+%% provide specific accounts, the API applies to the entire set of accounts
+%% in your organization.
 delete_aws_log_source(Client, Input) ->
     delete_aws_log_source(Client, Input, []).
 delete_aws_log_source(Client, Input0, Options0) ->
@@ -447,8 +447,8 @@ delete_custom_log_source(Client, Input0, Options0) ->
 %% data stored, and stops making data accessible to subscribers. Security
 %% Lake also deletes all the existing settings and resources that it stores
 %% or maintains for your Amazon Web Services account in the current Region,
-%% including security log and event data. The `DeleteDatalake' operation does
-%% not delete the Amazon S3 bucket, which is owned by your Amazon Web
+%% including security log and event data. The `DeleteDatalake' operation
+%% does not delete the Amazon S3 bucket, which is owned by your Amazon Web
 %% Services account. For more information, see the Amazon Security Lake User
 %% Guide.
 delete_datalake(Client, Input) ->
@@ -484,8 +484,8 @@ delete_datalake(Client, Input0, Options0) ->
 %% data stored, and stops making data accessible to subscribers. Security
 %% Lake also deletes all the existing settings and resources that it stores
 %% or maintains for your Amazon Web Services account in the current Region,
-%% including security log and event data. The `DeleteDatalake' operation does
-%% not delete the Amazon S3 bucket, which is owned by your Amazon Web
+%% including security log and event data. The `DeleteDatalake' operation
+%% does not delete the Amazon S3 bucket, which is owned by your Amazon Web
 %% Services account. For more information, see the Amazon Security Lake User
 %% Guide.
 delete_datalake_auto_enable(Client, Input) ->
@@ -617,8 +617,8 @@ delete_subscription_notification_configuration(Client, SubscriptionId, Input0, O
 %% @doc Retrieves the Amazon Security Lake configuration object for the
 %% specified Amazon Web Services account ID.
 %%
-%% You can use the `GetDatalake' API to know whether Security Lake is enabled
-%% for the current Region. This API does not take input parameters.
+%% You can use the `GetDatalake' API to know whether Security Lake is
+%% enabled for the current Region. This API does not take input parameters.
 get_datalake(Client)
   when is_map(Client) ->
     get_datalake(Client, #{}, #{}).

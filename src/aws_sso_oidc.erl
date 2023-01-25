@@ -8,10 +8,10 @@
 %% The service also enables the client to fetch the user’s access token upon
 %% successful authentication and authorization with IAM Identity Center.
 %%
-%% Although AWS Single Sign-On was renamed, the `sso' and `identitystore' API
-%% namespaces will continue to retain their original name for backward
-%% compatibility purposes. For more information, see IAM Identity Center
-%% rename.
+%% Although AWS Single Sign-On was renamed, the `sso' and
+%% `identitystore' API namespaces will continue to retain their original
+%% name for backward compatibility purposes. For more information, see IAM
+%% Identity Center rename.
 %%
 %% Considerations for Using This Guide
 %%

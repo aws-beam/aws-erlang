@@ -81,8 +81,8 @@ delete_backup(Client, Input, Options)
 %% @doc Deletes the specified AWS CloudHSM cluster.
 %%
 %% Before you can delete a cluster, you must delete all HSMs in the cluster.
-%% To see if the cluster contains any HSMs, use `DescribeClusters'. To delete
-%% an HSM, use `DeleteHsm'.
+%% To see if the cluster contains any HSMs, use `DescribeClusters'. To
+%% delete an HSM, use `DeleteHsm'.
 delete_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_cluster(Client, Input, []).
@@ -93,8 +93,8 @@ delete_cluster(Client, Input, Options)
 %% @doc Deletes the specified HSM.
 %%
 %% To specify an HSM, you can use its identifier (ID), the IP address of the
-%% HSM's elastic network interface (ENI), or the ID of the HSM's ENI. You
-%% need to specify only one of these values. To find these values, use
+%% HSM's elastic network interface (ENI), or the ID of the HSM's ENI.
+%% You need to specify only one of these values. To find these values, use
 %% `DescribeClusters'.
 delete_hsm(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -107,10 +107,10 @@ delete_hsm(Client, Input, Options)
 %%
 %% This is a paginated operation, which means that each response might
 %% contain only a subset of all the backups. When the response contains only
-%% a subset of backups, it includes a `NextToken' value. Use this value in a
-%% subsequent `DescribeBackups' request to get more backups. When you receive
-%% a response with no `NextToken' (or an empty or null value), that means
-%% there are no more backups to get.
+%% a subset of backups, it includes a `NextToken' value. Use this value
+%% in a subsequent `DescribeBackups' request to get more backups. When
+%% you receive a response with no `NextToken' (or an empty or null
+%% value), that means there are no more backups to get.
 describe_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_backups(Client, Input, []).
@@ -122,10 +122,10 @@ describe_backups(Client, Input, Options)
 %%
 %% This is a paginated operation, which means that each response might
 %% contain only a subset of all the clusters. When the response contains only
-%% a subset of clusters, it includes a `NextToken' value. Use this value in a
-%% subsequent `DescribeClusters' request to get more clusters. When you
-%% receive a response with no `NextToken' (or an empty or null value), that
-%% means there are no more clusters to get.
+%% a subset of clusters, it includes a `NextToken' value. Use this value
+%% in a subsequent `DescribeClusters' request to get more clusters. When
+%% you receive a response with no `NextToken' (or an empty or null
+%% value), that means there are no more clusters to get.
 describe_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_clusters(Client, Input, []).
@@ -137,9 +137,9 @@ describe_clusters(Client, Input, Options)
 %% issued by your issuing certificate authority (CA) and the CA's root
 %% certificate.
 %%
-%% Before you can claim a cluster, you must sign the cluster's certificate
-%% signing request (CSR) with your issuing CA. To get the cluster's CSR, use
-%% `DescribeClusters'.
+%% Before you can claim a cluster, you must sign the cluster's
+%% certificate signing request (CSR) with your issuing CA. To get the
+%% cluster's CSR, use `DescribeClusters'.
 initialize_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     initialize_cluster(Client, Input, []).
@@ -153,8 +153,8 @@ initialize_cluster(Client, Input, Options)
 %% contain only a subset of all the tags. When the response contains only a
 %% subset of tags, it includes a `NextToken' value. Use this value in a
 %% subsequent `ListTags' request to get more tags. When you receive a
-%% response with no `NextToken' (or an empty or null value), that means there
-%% are no more tags to get.
+%% response with no `NextToken' (or an empty or null value), that means
+%% there are no more tags to get.
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).

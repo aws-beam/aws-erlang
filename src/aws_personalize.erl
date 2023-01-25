@@ -175,35 +175,37 @@ create_batch_segment_job(Client, Input, Options)
 %%
 %% Minimum Provisioned TPS and Auto-Scaling
 %%
-%% A transaction is a single `GetRecommendations' or `GetPersonalizedRanking'
-%% call. Transactions per second (TPS) is the throughput and unit of billing
-%% for Amazon Personalize. The minimum provisioned TPS (`minProvisionedTPS')
-%% specifies the baseline throughput provisioned by Amazon Personalize, and
-%% thus, the minimum billing charge.
+%% A transaction is a single `GetRecommendations' or
+%% `GetPersonalizedRanking' call. Transactions per second (TPS) is the
+%% throughput and unit of billing for Amazon Personalize. The minimum
+%% provisioned TPS (`minProvisionedTPS') specifies the baseline
+%% throughput provisioned by Amazon Personalize, and thus, the minimum
+%% billing charge.
 %%
 %% If your TPS increases beyond `minProvisionedTPS', Amazon Personalize
 %% auto-scales the provisioned capacity up and down, but never below
-%% `minProvisionedTPS'. There's a short time delay while the capacity is
-%% increased that might cause loss of transactions.
+%% `minProvisionedTPS'. There's a short time delay while the capacity
+%% is increased that might cause loss of transactions.
 %%
 %% The actual TPS used is calculated as the average requests/second within a
 %% 5-minute window. You pay for maximum of either the minimum provisioned TPS
-%% or the actual TPS. We recommend starting with a low `minProvisionedTPS',
-%% track your usage using Amazon CloudWatch metrics, and then increase the
-%% `minProvisionedTPS' as necessary.
+%% or the actual TPS. We recommend starting with a low
+%% `minProvisionedTPS', track your usage using Amazon CloudWatch metrics,
+%% and then increase the `minProvisionedTPS' as necessary.
 %%
 %% Status
 %%
 %% A campaign can be in one of the following states:
 %%
-%% <ul> <li> CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE FAILED
+%% <ul> <li> CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
+%% FAILED
 %%
-%% </li> <li> DELETE PENDING > DELETE IN_PROGRESS
+%% </li> <li> DELETE PENDING &gt; DELETE IN_PROGRESS
 %%
 %% </li> </ul> To get the campaign status, call DescribeCampaign.
 %%
-%% Wait until the `status' of the campaign is `ACTIVE' before asking the
-%% campaign for recommendations.
+%% Wait until the `status' of the campaign is `ACTIVE' before asking
+%% the campaign for recommendations.
 %%
 %% == Related APIs ==
 %%
@@ -241,9 +243,10 @@ create_campaign(Client, Input, Options)
 %%
 %% A dataset can be in one of the following states:
 %%
-%% <ul> <li> CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE FAILED
+%% <ul> <li> CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
+%% FAILED
 %%
-%% </li> <li> DELETE PENDING > DELETE IN_PROGRESS
+%% </li> <li> DELETE PENDING &gt; DELETE IN_PROGRESS
 %%
 %% </li> </ul> To get the status of the dataset, call DescribeDataset.
 %%
@@ -277,7 +280,8 @@ create_dataset(Client, Input, Options)
 %%
 %% A dataset export job can be in one of the following states:
 %%
-%% <ul> <li> CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE FAILED
+%% <ul> <li> CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
+%% FAILED
 %%
 %% </li> </ul> To get the status of the export job, call
 %% DescribeDatasetExportJob, and specify the Amazon Resource Name (ARN) of
@@ -312,16 +316,18 @@ create_dataset_export_job(Client, Input, Options)
 %%
 %% A dataset group can be in one of the following states:
 %%
-%% <ul> <li> CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE FAILED
+%% <ul> <li> CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
+%% FAILED
 %%
 %% </li> <li> DELETE PENDING
 %%
 %% </li> </ul> To get the status of the dataset group, call
 %% DescribeDatasetGroup. If the status shows as CREATE FAILED, the response
-%% includes a `failureReason' key, which describes why the creation failed.
+%% includes a `failureReason' key, which describes why the creation
+%% failed.
 %%
-%% You must wait until the `status' of the dataset group is `ACTIVE' before
-%% adding a dataset to the group.
+%% You must wait until the `status' of the dataset group is `ACTIVE'
+%% before adding a dataset to the group.
 %%
 %% You can specify an Key Management Service (KMS) key to encrypt the
 %% datasets in the group. If you specify a KMS key, you must also include an
@@ -370,7 +376,8 @@ create_dataset_group(Client, Input, Options)
 %%
 %% A dataset import job can be in one of the following states:
 %%
-%% <ul> <li> CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE FAILED
+%% <ul> <li> CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
+%% FAILED
 %%
 %% </li> </ul> To get the status of the import job, call
 %% DescribeDatasetImportJob, providing the Amazon Resource Name (ARN) of the
@@ -399,8 +406,8 @@ create_dataset_import_job(Client, Input, Options)
 %% specified dataset group using the PutEvents API.
 %%
 %% Only one event tracker can be associated with a dataset group. You will
-%% get an error if you call `CreateEventTracker' using the same dataset group
-%% as an existing event tracker.
+%% get an error if you call `CreateEventTracker' using the same dataset
+%% group as an existing event tracker.
 %%
 %% When you create an event tracker, the response includes a tracking ID,
 %% which you pass as a parameter when you use the PutEvents operation. Amazon
@@ -409,9 +416,10 @@ create_dataset_import_job(Client, Input, Options)
 %%
 %% The event tracker can be in one of the following states:
 %%
-%% <ul> <li> CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE FAILED
+%% <ul> <li> CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
+%% FAILED
 %%
-%% </li> <li> DELETE PENDING > DELETE IN_PROGRESS
+%% </li> <li> DELETE PENDING &gt; DELETE IN_PROGRESS
 %%
 %% </li> </ul> To get the status of the event tracker, call
 %% DescribeEventTracker.
@@ -467,21 +475,21 @@ create_metric_attribution(Client, Input, Options)
 %%
 %% Minimum recommendation requests per second
 %%
-%% When you create a recommender, you can configure the recommender's minimum
-%% recommendation requests per second. The minimum recommendation requests
-%% per second (`minRecommendationRequestsPerSecond') specifies the baseline
-%% recommendation request throughput provisioned by Amazon Personalize. The
-%% default minRecommendationRequestsPerSecond is `1'. A recommendation
-%% request is a single `GetRecommendations' operation. Request throughput is
-%% measured in requests per second and Amazon Personalize uses your requests
-%% per second to derive your requests per hour and the price of your
-%% recommender usage.
+%% When you create a recommender, you can configure the recommender's
+%% minimum recommendation requests per second. The minimum recommendation
+%% requests per second (`minRecommendationRequestsPerSecond') specifies
+%% the baseline recommendation request throughput provisioned by Amazon
+%% Personalize. The default minRecommendationRequestsPerSecond is `1'. A
+%% recommendation request is a single `GetRecommendations' operation.
+%% Request throughput is measured in requests per second and Amazon
+%% Personalize uses your requests per second to derive your requests per hour
+%% and the price of your recommender usage.
 %%
 %% If your requests per second increases beyond
-%% `minRecommendationRequestsPerSecond', Amazon Personalize auto-scales the
-%% provisioned capacity up and down, but never below
-%% `minRecommendationRequestsPerSecond'. There's a short time delay while the
-%% capacity is increased that might cause loss of requests.
+%% `minRecommendationRequestsPerSecond', Amazon Personalize auto-scales
+%% the provisioned capacity up and down, but never below
+%% `minRecommendationRequestsPerSecond'. There's a short time delay
+%% while the capacity is increased that might cause loss of requests.
 %%
 %% Your bill is the greater of either the minimum requests per hour (based on
 %% minRecommendationRequestsPerSecond) or the actual number of requests. The
@@ -495,17 +503,18 @@ create_metric_attribution(Client, Input, Options)
 %%
 %% A recommender can be in one of the following states:
 %%
-%% <ul> <li> CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE FAILED
+%% <ul> <li> CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
+%% FAILED
 %%
-%% </li> <li> STOP PENDING > STOP IN_PROGRESS > INACTIVE > START PENDING >
-%% START IN_PROGRESS > ACTIVE
+%% </li> <li> STOP PENDING &gt; STOP IN_PROGRESS &gt; INACTIVE &gt; START
+%% PENDING &gt; START IN_PROGRESS &gt; ACTIVE
 %%
-%% </li> <li> DELETE PENDING > DELETE IN_PROGRESS
+%% </li> <li> DELETE PENDING &gt; DELETE IN_PROGRESS
 %%
 %% </li> </ul> To get the recommender status, call DescribeRecommender.
 %%
-%% Wait until the `status' of the recommender is `ACTIVE' before asking the
-%% recommender for recommendations.
+%% Wait until the `status' of the recommender is `ACTIVE' before
+%% asking the recommender for recommendations.
 %%
 %% == Related APIs ==
 %%
@@ -572,19 +581,21 @@ create_schema(Client, Input, Options)
 %% Amazon Personalize will analyze your data and select the optimum
 %% USER_PERSONALIZATION recipe for you.
 %%
-%% Amazon Personalize doesn't support configuring the `hpoObjective' for
-%% solution hyperparameter optimization at this time.
+%% Amazon Personalize doesn't support configuring the `hpoObjective'
+%% for solution hyperparameter optimization at this time.
 %%
 %% Status
 %%
 %% A solution can be in one of the following states:
 %%
-%% <ul> <li> CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE FAILED
+%% <ul> <li> CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
+%% FAILED
 %%
-%% </li> <li> DELETE PENDING > DELETE IN_PROGRESS
+%% </li> <li> DELETE PENDING &gt; DELETE IN_PROGRESS
 %%
 %% </li> </ul> To get the status of the solution, call DescribeSolution. Wait
-%% until the status shows as ACTIVE before calling `CreateSolutionVersion'.
+%% until the status shows as ACTIVE before calling
+%% `CreateSolutionVersion'.
 %%
 %% == Related APIs ==
 %%
@@ -611,8 +622,8 @@ create_solution(Client, Input, Options)
 %% @doc Trains or retrains an active solution in a Custom dataset group.
 %%
 %% A solution is created using the CreateSolution operation and must be in
-%% the ACTIVE state before calling `CreateSolutionVersion'. A new version of
-%% the solution is created every time you call this operation.
+%% the ACTIVE state before calling `CreateSolutionVersion'. A new version
+%% of the solution is created every time you call this operation.
 %%
 %% Status
 %%
@@ -675,8 +686,8 @@ delete_campaign(Client, Input, Options)
 %% @doc Deletes a dataset.
 %%
 %% You can't delete a dataset if an associated `DatasetImportJob' or
-%% `SolutionVersion' is in the CREATE PENDING or IN PROGRESS state. For more
-%% information on datasets, see CreateDataset.
+%% `SolutionVersion' is in the CREATE PENDING or IN PROGRESS state. For
+%% more information on datasets, see CreateDataset.
 delete_dataset(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_dataset(Client, Input, []).
@@ -751,14 +762,15 @@ delete_schema(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSchema">>, Input, Options).
 
-%% @doc Deletes all versions of a solution and the `Solution' object itself.
+%% @doc Deletes all versions of a solution and the `Solution' object
+%% itself.
 %%
 %% Before deleting a solution, you must delete all campaigns based on the
 %% solution. To determine what campaigns are using the solution, call
 %% ListCampaigns and supply the Amazon Resource Name (ARN) of the solution.
-%% You can't delete a solution if an associated `SolutionVersion' is in the
-%% CREATE PENDING or IN PROGRESS state. For more information on solutions,
-%% see CreateSolution.
+%% You can't delete a solution if an associated `SolutionVersion' is
+%% in the CREATE PENDING or IN PROGRESS state. For more information on
+%% solutions, see CreateSolution.
 delete_solution(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_solution(Client, Input, []).
@@ -798,12 +810,13 @@ describe_batch_segment_job(Client, Input, Options)
 %%
 %% A campaign can be in one of the following states:
 %%
-%% <ul> <li> CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE FAILED
+%% <ul> <li> CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
+%% FAILED
 %%
-%% </li> <li> DELETE PENDING > DELETE IN_PROGRESS
+%% </li> <li> DELETE PENDING &gt; DELETE IN_PROGRESS
 %%
-%% </li> </ul> When the `status' is `CREATE FAILED', the response includes
-%% the `failureReason' key, which describes why.
+%% </li> </ul> When the `status' is `CREATE FAILED', the response
+%% includes the `failureReason' key, which describes why.
 %%
 %% For more information on campaigns, see CreateCampaign.
 describe_campaign(Client, Input)
@@ -853,8 +866,8 @@ describe_dataset_import_job(Client, Input, Options)
 
 %% @doc Describes an event tracker.
 %%
-%% The response includes the `trackingId' and `status' of the event tracker.
-%% For more information on event trackers, see CreateEventTracker.
+%% The response includes the `trackingId' and `status' of the event
+%% tracker. For more information on event trackers, see CreateEventTracker.
 describe_event_tracker(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_tracker(Client, Input, []).
@@ -899,9 +912,9 @@ describe_metric_attribution(Client, Input, Options)
 %%
 %% </li> </ul> Amazon Personalize provides a set of predefined recipes. You
 %% specify a recipe when you create a solution with the CreateSolution API.
-%% `CreateSolution' trains a model by using the algorithm in the specified
-%% recipe and a training dataset. The solution, when deployed as a campaign,
-%% can provide recommendations using the GetRecommendations API.
+%% `CreateSolution' trains a model by using the algorithm in the
+%% specified recipe and a training dataset. The solution, when deployed as a
+%% campaign, can provide recommendations using the GetRecommendations API.
 describe_recipe(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_recipe(Client, Input, []).
@@ -913,18 +926,19 @@ describe_recipe(Client, Input, Options)
 %%
 %% A recommender can be in one of the following states:
 %%
-%% <ul> <li> CREATE PENDING > CREATE IN_PROGRESS > ACTIVE -or- CREATE FAILED
+%% <ul> <li> CREATE PENDING &gt; CREATE IN_PROGRESS &gt; ACTIVE -or- CREATE
+%% FAILED
 %%
-%% </li> <li> STOP PENDING > STOP IN_PROGRESS > INACTIVE > START PENDING >
-%% START IN_PROGRESS > ACTIVE
+%% </li> <li> STOP PENDING &gt; STOP IN_PROGRESS &gt; INACTIVE &gt; START
+%% PENDING &gt; START IN_PROGRESS &gt; ACTIVE
 %%
-%% </li> <li> DELETE PENDING > DELETE IN_PROGRESS
+%% </li> <li> DELETE PENDING &gt; DELETE IN_PROGRESS
 %%
-%% </li> </ul> When the `status' is `CREATE FAILED', the response includes
-%% the `failureReason' key, which describes why.
+%% </li> </ul> When the `status' is `CREATE FAILED', the response
+%% includes the `failureReason' key, which describes why.
 %%
-%% The `modelMetrics' key is null when the recommender is being created or
-%% deleted.
+%% The `modelMetrics' key is null when the recommender is being created
+%% or deleted.
 %%
 %% For more information on recommenders, see CreateRecommender.
 describe_recommender(Client, Input)
@@ -1187,11 +1201,11 @@ stop_recommender(Client, Input, Options)
 %% Depending on the current state of the solution version, the solution
 %% version state changes as follows:
 %%
-%% <ul> <li> CREATE_PENDING > CREATE_STOPPED
+%% <ul> <li> CREATE_PENDING &gt; CREATE_STOPPED
 %%
 %% or
 %%
-%% </li> <li> CREATE_IN_PROGRESS > CREATE_STOPPING > CREATE_STOPPED
+%% </li> <li> CREATE_IN_PROGRESS &gt; CREATE_STOPPING &gt; CREATE_STOPPED
 %%
 %% </li> </ul> You are billed for all of the training completed up until you
 %% stop the solution version creation. You cannot resume creating a solution

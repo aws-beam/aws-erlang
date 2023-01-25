@@ -38,18 +38,19 @@
 %%
 %% A tag is a metadata label that you assign to an AWS resource. A tag
 %% comprises a key and a value, both set by you. For example, you might set a
-%% tag as `topic:nature' to label a particular video category. See Tagging
-%% AWS Resources for more information, including restrictions that apply to
-%% tags and "Tag naming limits and requirements"; Amazon IVS Chat has no
-%% service-specific constraints beyond what is documented there.
+%% tag as `topic:nature' to label a particular video category. See
+%% Tagging AWS Resources for more information, including restrictions that
+%% apply to tags and &quot;Tag naming limits and requirements&quot;; Amazon
+%% IVS Chat has no service-specific constraints beyond what is documented
+%% there.
 %%
 %% Tags can help you identify and organize your AWS resources. For example,
 %% you can use the same tag for different resources to indicate that they are
 %% related. You can also use tags to manage access (see Access Tags).
 %%
-%% The Amazon IVS Chat API has these tag-related endpoints: `TagResource',
-%% `UntagResource', and `ListTagsForResource'. The following resource
-%% supports tagging: Room.
+%% The Amazon IVS Chat API has these tag-related endpoints:
+%% `TagResource', `UntagResource', and `ListTagsForResource'. The
+%% following resource supports tagging: Room.
 %%
 %% At most 50 tags can be applied to a resource.
 %%
@@ -66,9 +67,9 @@
 %% need to have permissions for Amazon IVS Chat API requests.
 %%
 %% </li> </ul> Users (viewers) connect to a room using secure access tokens
-%% that you create using the `CreateChatToken' endpoint through the AWS SDK.
-%% You call CreateChatToken for every user’s chat session, passing identity
-%% and authorization information about the user.
+%% that you create using the `CreateChatToken' endpoint through the AWS
+%% SDK. You call CreateChatToken for every user’s chat session, passing
+%% identity and authorization information about the user.
 %%
 %% Signing API Requests
 %%
@@ -104,64 +105,64 @@
 %% <ul> <li> `DeleteMessage' — Sends an event to a specific room which
 %% directs clients to delete a specific message; that is, unrender it from
 %% view and delete it from the client’s chat history. This event’s
-%% `EventName' is `aws:DELETE_MESSAGE'. This replicates the DeleteMessage
-%% WebSocket operation in the Amazon IVS Chat Messaging API.
+%% `EventName' is `aws:DELETE_MESSAGE'. This replicates the
+%% DeleteMessage WebSocket operation in the Amazon IVS Chat Messaging API.
 %%
 %% </li> <li> `DisconnectUser' — Disconnects all connections using a
 %% specified user ID from a room. This replicates the DisconnectUser
 %% WebSocket operation in the Amazon IVS Chat Messaging API.
 %%
-%% </li> <li> `SendEvent' — Sends an event to a room. Use this within your
-%% application’s business logic to send events to clients of a room; e.g., to
-%% notify clients to change the way the chat UI is rendered.
+%% </li> <li> `SendEvent' — Sends an event to a room. Use this within
+%% your application’s business logic to send events to clients of a room;
+%% e.g., to notify clients to change the way the chat UI is rendered.
 %%
 %% </li> </ul> Chat Token Endpoint
 %%
-%% <ul> <li> `CreateChatToken' — Creates an encrypted token that is used by a
-%% chat participant to establish an individual WebSocket chat connection to a
-%% room. When the token is used to connect to chat, the connection is valid
-%% for the session duration specified in the request. The token becomes
+%% <ul> <li> `CreateChatToken' — Creates an encrypted token that is used
+%% by a chat participant to establish an individual WebSocket chat connection
+%% to a room. When the token is used to connect to chat, the connection is
+%% valid for the session duration specified in the request. The token becomes
 %% invalid at the token-expiration timestamp included in the response.
 %%
 %% </li> </ul> Room Endpoints
 %%
-%% <ul> <li> `CreateRoom' — Creates a room that allows clients to connect and
-%% pass messages.
+%% <ul> <li> `CreateRoom' — Creates a room that allows clients to connect
+%% and pass messages.
 %%
 %% </li> <li> `DeleteRoom' — Deletes the specified room.
 %%
 %% </li> <li> `GetRoom' — Gets the specified room.
 %%
-%% </li> <li> `ListRooms' — Gets summary information about all your rooms in
-%% the AWS region where the API request is processed.
+%% </li> <li> `ListRooms' — Gets summary information about all your rooms
+%% in the AWS region where the API request is processed.
 %%
 %% </li> <li> `UpdateRoom' — Updates a room’s configuration.
 %%
 %% </li> </ul> Logging Configuration Endpoints
 %%
-%% <ul> <li> `CreateLoggingConfiguration' — Creates a logging configuration
-%% that allows clients to store and record sent messages.
+%% <ul> <li> `CreateLoggingConfiguration' — Creates a logging
+%% configuration that allows clients to store and record sent messages.
 %%
-%% </li> <li> `DeleteLoggingConfiguration' — Deletes the specified logging
-%% configuration.
+%% </li> <li> `DeleteLoggingConfiguration' — Deletes the specified
+%% logging configuration.
 %%
 %% </li> <li> `GetLoggingConfiguration' — Gets the specified logging
 %% configuration.
 %%
-%% </li> <li> `ListLoggingConfigurations' — Gets summary information about
-%% all your logging configurations in the AWS region where the API request is
-%% processed.
+%% </li> <li> `ListLoggingConfigurations' — Gets summary information
+%% about all your logging configurations in the AWS region where the API
+%% request is processed.
 %%
 %% </li> <li> `UpdateLoggingConfiguration' — Updates a specified logging
 %% configuration.
 %%
 %% </li> </ul> Tags Endpoints
 %%
-%% <ul> <li> `ListTagsForResource' — Gets information about AWS tags for the
-%% specified ARN.
-%%
-%% </li> <li> `TagResource' — Adds or updates tags for the AWS resource with
+%% <ul> <li> `ListTagsForResource' — Gets information about AWS tags for
 %% the specified ARN.
+%%
+%% </li> <li> `TagResource' — Adds or updates tags for the AWS resource
+%% with the specified ARN.
 %%
 %% </li> <li> `UntagResource' — Removes tags from the resource with the
 %% specified ARN.
@@ -327,8 +328,9 @@ delete_logging_configuration(Client, Input0, Options0) ->
 %% specific message; that is, unrender it from view and delete it from the
 %% client’s chat history.
 %%
-%% This event’s `EventName' is `aws:DELETE_MESSAGE'. This replicates the
-%% DeleteMessage WebSocket operation in the Amazon IVS Chat Messaging API.
+%% This event’s `EventName' is `aws:DELETE_MESSAGE'. This replicates
+%% the DeleteMessage WebSocket operation in the Amazon IVS Chat Messaging
+%% API.
 delete_message(Client, Input) ->
     delete_message(Client, Input, []).
 delete_message(Client, Input0, Options0) ->

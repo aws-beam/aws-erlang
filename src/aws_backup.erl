@@ -499,8 +499,8 @@ delete_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
 %%
 %% If the Vault Lock configuration is immutable, then you cannot delete Vault
 %% Lock using API operations, and you will receive an
-%% `InvalidRequestException' if you attempt to do so. For more information,
-%% see Vault Lock in the Backup Developer Guide.
+%% `InvalidRequestException' if you attempt to do so. For more
+%% information, see Vault Lock in the Backup Developer Guide.
 delete_backup_vault_lock_configuration(Client, BackupVaultName, Input) ->
     delete_backup_vault_lock_configuration(Client, BackupVaultName, Input, []).
 delete_backup_vault_lock_configuration(Client, BackupVaultName, Input0, Options0) ->
@@ -579,13 +579,13 @@ delete_framework(Client, FrameworkName, Input0, Options0) ->
 %% service sends back an HTTP 200 response with an empty HTTP body, but the
 %% recovery point is not deleted. Instead, it enters an `EXPIRED' state.
 %%
-%% `EXPIRED' recovery points can be deleted with this API once the IAM role
-%% has the `iam:CreateServiceLinkedRole' action. To learn more about adding
-%% this role, see Troubleshooting manual deletions.
+%% `EXPIRED' recovery points can be deleted with this API once the IAM
+%% role has the `iam:CreateServiceLinkedRole' action. To learn more about
+%% adding this role, see Troubleshooting manual deletions.
 %%
 %% If the user or role is deleted or the permission within the role is
-%% removed, the deletion will not be successful and will enter an `EXPIRED'
-%% state.
+%% removed, the deletion will not be successful and will enter an
+%% `EXPIRED' state.
 delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input) ->
     delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input, []).
 delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, Options0) ->
@@ -802,9 +802,9 @@ describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, QueryMap, Hea
 %% @doc Returns the current service opt-in settings for the Region.
 %%
 %% If service opt-in is enabled for a service, Backup tries to protect that
-%% service's resources in this Region, when the resource is included in an
-%% on-demand backup or scheduled backup plan. Otherwise, Backup does not try
-%% to protect that service's resources in this Region.
+%% service's resources in this Region, when the resource is included in
+%% an on-demand backup or scheduled backup plan. Otherwise, Backup does not
+%% try to protect that service's resources in this Region.
 describe_region_settings(Client)
   when is_map(Client) ->
     describe_region_settings(Client, #{}, #{}).
@@ -978,7 +978,8 @@ export_backup_plan_template(Client, BackupPlanId, QueryMap, HeadersMap, Options0
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns `BackupPlan' details for the specified `BackupPlanId'.
+%% @doc Returns `BackupPlan' details for the specified
+%% `BackupPlanId'.
 %%
 %% The details are the body of a backup plan in JSON format, in addition to
 %% plan metadata.
@@ -1031,7 +1032,8 @@ get_backup_plan_from_json(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns the template specified by its `templateId' as a backup plan.
+%% @doc Returns the template specified by its `templateId' as a backup
+%% plan.
 get_backup_plan_from_template(Client, BackupPlanTemplateId)
   when is_map(Client) ->
     get_backup_plan_from_template(Client, BackupPlanTemplateId, #{}, #{}).
@@ -1713,8 +1715,9 @@ list_restore_jobs(Client, QueryMap, HeadersMap, Options0)
 %% point, backup plan, or backup vault.
 %%
 %% `ListTags' only works for resource types that support full Backup
-%% management of their backups. Those resource types are listed in the "Full
-%% Backup management" section of the Feature availability by resource table.
+%% management of their backups. Those resource types are listed in the
+%% &quot;Full Backup management&quot; section of the Feature availability by
+%% resource table.
 list_tags(Client, ResourceArn)
   when is_map(Client) ->
     list_tags(Client, ResourceArn, #{}, #{}).
@@ -1996,8 +1999,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing backup plan identified by its `backupPlanId' with
-%% the input document in JSON format.
+%% @doc Updates an existing backup plan identified by its `backupPlanId'
+%% with the input document in JSON format.
 %%
 %% The new version is uniquely identified by a `VersionId'.
 update_backup_plan(Client, BackupPlanId, Input) ->
@@ -2022,8 +2025,8 @@ update_backup_plan(Client, BackupPlanId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing framework identified by its `FrameworkName' with
-%% the input document in JSON format.
+%% @doc Updates an existing framework identified by its `FrameworkName'
+%% with the input document in JSON format.
 update_framework(Client, FrameworkName, Input) ->
     update_framework(Client, FrameworkName, Input, []).
 update_framework(Client, FrameworkName, Input0, Options0) ->
@@ -2087,8 +2090,9 @@ update_global_settings(Client, Input0, Options0) ->
 %% transitioned to cold.
 %%
 %% Resource types that are able to be transitioned to cold storage are listed
-%% in the "Lifecycle to cold storage" section of the Feature availability by
-%% resource table. Backup ignores this expression for other resource types.
+%% in the &quot;Lifecycle to cold storage&quot; section of the Feature
+%% availability by resource table. Backup ignores this expression for other
+%% resource types.
 %%
 %% This operation does not support continuous backups.
 update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input) ->
@@ -2116,9 +2120,9 @@ update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input
 %% @doc Updates the current service opt-in settings for the Region.
 %%
 %% If service-opt-in is enabled for a service, Backup tries to protect that
-%% service's resources in this Region, when the resource is included in an
-%% on-demand backup or scheduled backup plan. Otherwise, Backup does not try
-%% to protect that service's resources in this Region. Use the
+%% service's resources in this Region, when the resource is included in
+%% an on-demand backup or scheduled backup plan. Otherwise, Backup does not
+%% try to protect that service's resources in this Region. Use the
 %% `DescribeRegionSettings' API to determine the resource types that are
 %% supported.
 update_region_settings(Client, Input) ->
@@ -2143,8 +2147,8 @@ update_region_settings(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing report plan identified by its `ReportPlanName'
-%% with the input document in JSON format.
+%% @doc Updates an existing report plan identified by its
+%% `ReportPlanName' with the input document in JSON format.
 update_report_plan(Client, ReportPlanName, Input) ->
     update_report_plan(Client, ReportPlanName, Input, []).
 update_report_plan(Client, ReportPlanName, Input0, Options0) ->

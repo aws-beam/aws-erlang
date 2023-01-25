@@ -105,8 +105,8 @@ create_progress_update_stream(Client, Input, Options)
 %%
 %% This API has the following traits:
 %%
-%% <ul> <li> The only parameter needed for `DeleteProgressUpdateStream' is
-%% the stream name (same as a `CreateProgressUpdateStream' call).
+%% <ul> <li> The only parameter needed for `DeleteProgressUpdateStream'
+%% is the stream name (same as a `CreateProgressUpdateStream' call).
 %%
 %% </li> <li> The call will return, and a background process will
 %% asynchronously delete the stream and all of its resources (tasks,
@@ -116,14 +116,14 @@ create_progress_update_stream(Client, Input, Options)
 %% on a `ListProgressUpdateStreams' call.
 %%
 %% </li> <li> `CreateProgressUpdateStream', `ImportMigrationTask',
-%% `NotifyMigrationTaskState', and all Associate[*] APIs related to the tasks
-%% belonging to the stream will throw "InvalidInputException" if the stream
-%% of the same name is in the process of being deleted.
+%% `NotifyMigrationTaskState', and all Associate[*] APIs related to the
+%% tasks belonging to the stream will throw &quot;InvalidInputException&quot;
+%% if the stream of the same name is in the process of being deleted.
 %%
 %% </li> <li> Once the stream and all of its resources are deleted,
-%% `CreateProgressUpdateStream' for a stream of the same name will succeed,
-%% and that stream will be an entirely new logical resource (without any
-%% resources associated with the old stream).
+%% `CreateProgressUpdateStream' for a stream of the same name will
+%% succeed, and that stream will be an entirely new logical resource (without
+%% any resources associated with the old stream).
 %%
 %% </li> </ul>
 delete_progress_update_stream(Client, Input)
@@ -186,8 +186,8 @@ disassociate_discovered_resource(Client, Input, Options)
 %% @doc Registers a new migration task which represents a server, database,
 %% etc., being migrated to AWS by a migration tool.
 %%
-%% This API is a prerequisite to calling the `NotifyMigrationTaskState' API
-%% as the migration tool must first register the migration task with
+%% This API is a prerequisite to calling the `NotifyMigrationTaskState'
+%% API as the migration tool must first register the migration task with
 %% Migration Hub.
 import_migration_task(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -228,7 +228,8 @@ list_created_artifacts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCreatedArtifacts">>, Input, Options).
 
-%% @doc Lists discovered resources associated with the given `MigrationTask'.
+%% @doc Lists discovered resources associated with the given
+%% `MigrationTask'.
 list_discovered_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_discovered_resources(Client, Input, []).
@@ -267,9 +268,9 @@ list_progress_update_streams(Client, Input, Options)
 
 %% @doc Sets the migration state of an application.
 %%
-%% For a given application identified by the value passed to `ApplicationId',
-%% its status is set or updated by passing one of three values to `Status':
-%% `NOT_STARTED | IN_PROGRESS | COMPLETED'.
+%% For a given application identified by the value passed to
+%% `ApplicationId', its status is set or updated by passing one of three
+%% values to `Status': `NOT_STARTED | IN_PROGRESS | COMPLETED'.
 notify_application_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     notify_application_state(Client, Input, []).
@@ -282,8 +283,8 @@ notify_application_state(Client, Input, Options)
 %%
 %% This API has the following traits:
 %%
-%% <ul> <li> Migration tools will call the `NotifyMigrationTaskState' API to
-%% share the latest progress and status.
+%% <ul> <li> Migration tools will call the `NotifyMigrationTaskState' API
+%% to share the latest progress and status.
 %%
 %% </li> <li> `MigrationTaskName' is used for addressing updates to the
 %% correct target.
@@ -312,7 +313,8 @@ notify_migration_task_state(Client, Input, Options)
 %% overriding the MAC address.
 %%
 %% Note the instructions regarding the special use case of the
-%% `ResourceAttributeList' parameter when specifying any "VM" related value.
+%% `ResourceAttributeList' parameter when specifying any &quot;VM&quot;
+%% related value.
 %%
 %% Because this is an asynchronous call, it will always return 200, whether
 %% an association occurs or not. To confirm if an association was found based

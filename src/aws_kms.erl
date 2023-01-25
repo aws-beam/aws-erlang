@@ -203,8 +203,8 @@
 
 %% @doc Cancels the deletion of a KMS key.
 %%
-%% When this operation succeeds, the key state of the KMS key is `Disabled'.
-%% To enable the KMS key, use `EnableKey'.
+%% When this operation succeeds, the key state of the KMS key is
+%% `Disabled'. To enable the KMS key, use `EnableKey'.
 %%
 %% For more information about scheduling and canceling deletion of a KMS key,
 %% see Deleting KMS keys in the Key Management Service Developer Guide.
@@ -228,10 +228,10 @@ cancel_key_deletion(Client, Input, Options)
 
 %% @doc Connects or reconnects a custom key store to its backing key store.
 %%
-%% For an CloudHSM key store, `ConnectCustomKeyStore' connects the key store
-%% to its associated CloudHSM cluster. For an external key store,
-%% `ConnectCustomKeyStore' connects the key store to the external key store
-%% proxy that communicates with your external key manager.
+%% For an CloudHSM key store, `ConnectCustomKeyStore' connects the key
+%% store to its associated CloudHSM cluster. For an external key store,
+%% `ConnectCustomKeyStore' connects the key store to the external key
+%% store proxy that communicates with your external key manager.
 %%
 %% The custom key store must be connected before you can create KMS keys in
 %% the key store or use the KMS keys it contains. You can disconnect and
@@ -249,10 +249,10 @@ cancel_key_deletion(Client, Input, Options)
 %% combines the convenience and extensive integration of KMS with the
 %% isolation and control of a key store that you own and manage.
 %%
-%% The `ConnectCustomKeyStore' operation might fail for various reasons. To
-%% find the reason, use the `DescribeCustomKeyStores' operation and see the
-%% `ConnectionErrorCode' in the response. For help interpreting the
-%% `ConnectionErrorCode', see `CustomKeyStoresListEntry'.
+%% The `ConnectCustomKeyStore' operation might fail for various reasons.
+%% To find the reason, use the `DescribeCustomKeyStores' operation and
+%% see the `ConnectionErrorCode' in the response. For help interpreting
+%% the `ConnectionErrorCode', see `CustomKeyStoresListEntry'.
 %%
 %% To fix the failure, use the `DisconnectCustomKeyStore' operation to
 %% disconnect the custom key store, correct the error, use the
@@ -269,9 +269,9 @@ cancel_key_deletion(Client, Input, Options)
 %% To connect an CloudHSM key store, its associated CloudHSM cluster must
 %% have at least one active HSM. To get the number of active HSMs in a
 %% cluster, use the DescribeClusters operation. To add HSMs to the cluster,
-%% use the CreateHsm operation. Also, the `kmsuser' crypto user (CU) must not
-%% be logged into the cluster. This prevents KMS from using this account to
-%% log in.
+%% use the CreateHsm operation. Also, the `kmsuser' crypto user (CU) must
+%% not be logged into the cluster. This prevents KMS from using this account
+%% to log in.
 %%
 %% If you are having trouble connecting or disconnecting a CloudHSM key
 %% store, see Troubleshooting an CloudHSM key store in the Key Management
@@ -331,10 +331,11 @@ connect_custom_key_store(Client, Input, Options)
 %% Developer Guide.
 %%
 %% You can use an alias to identify a KMS key in the KMS console, in the
-%% `DescribeKey' operation and in cryptographic operations, such as `Encrypt'
-%% and `GenerateDataKey'. You can also change the KMS key that's associated
-%% with the alias (`UpdateAlias') or delete the alias (`DeleteAlias') at any
-%% time. These operations don't affect the underlying KMS key.
+%% `DescribeKey' operation and in cryptographic operations, such as
+%% `Encrypt' and `GenerateDataKey'. You can also change the KMS key
+%% that's associated with the alias (`UpdateAlias') or delete the
+%% alias (`DeleteAlias') at any time. These operations don't affect
+%% the underlying KMS key.
 %%
 %% You can associate the alias with any customer managed key in the same
 %% Amazon Web Services Region. Each alias is associated with only one KMS key
@@ -404,20 +405,22 @@ create_alias(Client, Input, Options)
 %% To create a custom key store, use the following parameters.
 %%
 %% <ul> <li> To create an CloudHSM key store, specify the
-%% `CustomKeyStoreName', `CloudHsmClusterId', `KeyStorePassword', and
-%% `TrustAnchorCertificate'. The `CustomKeyStoreType' parameter is optional
-%% for CloudHSM key stores. If you include it, set it to the default value,
-%% `AWS_CLOUDHSM'. For help with failures, see Troubleshooting an CloudHSM
-%% key store in the Key Management Service Developer Guide.
+%% `CustomKeyStoreName', `CloudHsmClusterId', `KeyStorePassword',
+%% and `TrustAnchorCertificate'. The `CustomKeyStoreType' parameter
+%% is optional for CloudHSM key stores. If you include it, set it to the
+%% default value, `AWS_CLOUDHSM'. For help with failures, see
+%% Troubleshooting an CloudHSM key store in the Key Management Service
+%% Developer Guide.
 %%
 %% </li> <li> To create an external key store, specify the
-%% `CustomKeyStoreName' and a `CustomKeyStoreType' of `EXTERNAL_KEY_STORE'.
-%% Also, specify values for `XksProxyConnectivity',
-%% `XksProxyAuthenticationCredential', `XksProxyUriEndpoint', and
-%% `XksProxyUriPath'. If your `XksProxyConnectivity' value is
-%% `VPC_ENDPOINT_SERVICE', specify the `XksProxyVpcEndpointServiceName'
-%% parameter. For help with failures, see Troubleshooting an external key
-%% store in the Key Management Service Developer Guide.
+%% `CustomKeyStoreName' and a `CustomKeyStoreType' of
+%% `EXTERNAL_KEY_STORE'. Also, specify values for
+%% `XksProxyConnectivity', `XksProxyAuthenticationCredential',
+%% `XksProxyUriEndpoint', and `XksProxyUriPath'. If your
+%% `XksProxyConnectivity' value is `VPC_ENDPOINT_SERVICE', specify
+%% the `XksProxyVpcEndpointServiceName' parameter. For help with
+%% failures, see Troubleshooting an external key store in the Key Management
+%% Service Developer Guide.
 %%
 %% </li> </ul> For external key stores:
 %%
@@ -433,9 +436,9 @@ create_alias(Client, Input, Options)
 %%
 %% When the operation completes successfully, it returns the ID of the new
 %% custom key store. Before you can use your new custom key store, you need
-%% to use the `ConnectCustomKeyStore' operation to connect a new CloudHSM key
-%% store to its CloudHSM cluster, or to connect a new external key store to
-%% the external key store proxy for your external key manager. Even if you
+%% to use the `ConnectCustomKeyStore' operation to connect a new CloudHSM
+%% key store to its CloudHSM cluster, or to connect a new external key store
+%% to the external key store proxy for your external key manager. Even if you
 %% are not going to use your custom key store immediately, you might want to
 %% connect it to verify that all settings are correct and then disconnect it
 %% until you are ready to use it.
@@ -483,7 +486,8 @@ create_custom_key_store(Client, Input, Options)
 %% of working with grants in several programming languages, see Programming
 %% grants.
 %%
-%% The `CreateGrant' operation returns a `GrantToken' and a `GrantId'.
+%% The `CreateGrant' operation returns a `GrantToken' and a
+%% `GrantId'.
 %%
 %% <ul> <li> When you create, retire, or revoke a grant, there might be a
 %% brief delay, usually less than five minutes, until the grant is available
@@ -492,13 +496,14 @@ create_custom_key_store(Client, Input, Options)
 %% permissions in the grant without identifying the grant.
 %%
 %% However, to use the permissions in the grant immediately, use the
-%% `GrantToken' that `CreateGrant' returns. For details, see Using a grant
-%% token in the Key Management Service Developer Guide .
+%% `GrantToken' that `CreateGrant' returns. For details, see Using a
+%% grant token in the Key Management Service Developer Guide .
 %%
-%% </li> <li> The `CreateGrant' operation also returns a `GrantId'. You can
-%% use the `GrantId' and a key identifier to identify the grant in the
-%% `RetireGrant' and `RevokeGrant' operations. To find the grant ID, use the
-%% `ListGrants' or `ListRetirableGrants' operations.
+%% </li> <li> The `CreateGrant' operation also returns a `GrantId'.
+%% You can use the `GrantId' and a key identifier to identify the grant
+%% in the `RetireGrant' and `RevokeGrant' operations. To find the
+%% grant ID, use the `ListGrants' or `ListRetirableGrants'
+%% operations.
 %%
 %% </li> </ul> The KMS key that you use for this operation must be in a
 %% compatible key state. For details, see Key states of KMS keys in the Key
@@ -551,15 +556,16 @@ create_grant(Client, Input, Options)
 %%
 %% To create different types of KMS keys, use the following guidance:
 %%
-%% <dl> <dt>Symmetric encryption KMS key</dt> <dd> By default, `CreateKey'
-%% creates a symmetric encryption KMS key with key material that KMS
-%% generates. This is the basic and most widely used type of KMS key, and
-%% provides the best performance.
+%% <dl> <dt>Symmetric encryption KMS key</dt> <dd> By default,
+%% `CreateKey' creates a symmetric encryption KMS key with key material
+%% that KMS generates. This is the basic and most widely used type of KMS
+%% key, and provides the best performance.
 %%
-%% To create a symmetric encryption KMS key, you don't need to specify any
-%% parameters. The default value for `KeySpec', `SYMMETRIC_DEFAULT', the
-%% default value for `KeyUsage', `ENCRYPT_DECRYPT', and the default value for
-%% `Origin', `AWS_KMS', create a symmetric encryption KMS key with KMS key
+%% To create a symmetric encryption KMS key, you don't need to specify
+%% any parameters. The default value for `KeySpec',
+%% `SYMMETRIC_DEFAULT', the default value for `KeyUsage',
+%% `ENCRYPT_DECRYPT', and the default value for `Origin',
+%% `AWS_KMS', create a symmetric encryption KMS key with KMS key
 %% material.
 %%
 %% If you need a key for basic encryption and decryption or you are creating
@@ -571,10 +577,10 @@ create_grant(Client, Input, Options)
 %% see `GenerateDataKey' and `GenerateDataKeyPair'.
 %%
 %% </dd> <dt>Asymmetric KMS keys</dt> <dd> To create an asymmetric KMS key,
-%% use the `KeySpec' parameter to specify the type of key material in the KMS
-%% key. Then, use the `KeyUsage' parameter to determine whether the KMS key
-%% will be used to encrypt and decrypt or sign and verify. You can't change
-%% these properties after the KMS key is created.
+%% use the `KeySpec' parameter to specify the type of key material in the
+%% KMS key. Then, use the `KeyUsage' parameter to determine whether the
+%% KMS key will be used to encrypt and decrypt or sign and verify. You
+%% can't change these properties after the KMS key is created.
 %%
 %% Asymmetric KMS keys contain an RSA key pair, Elliptic Curve (ECC) key
 %% pair, or an SM2 key pair (China Regions only). The private key in an
@@ -587,28 +593,28 @@ create_grant(Client, Input, Options)
 %% Management Service Developer Guide.
 %%
 %% </dd> <dt>HMAC KMS key</dt> <dd> To create an HMAC KMS key, set the
-%% `KeySpec' parameter to a key spec value for HMAC KMS keys. Then set the
-%% `KeyUsage' parameter to `GENERATE_VERIFY_MAC'. You must set the key usage
-%% even though `GENERATE_VERIFY_MAC' is the only valid key usage value for
-%% HMAC KMS keys. You can't change these properties after the KMS key is
-%% created.
+%% `KeySpec' parameter to a key spec value for HMAC KMS keys. Then set
+%% the `KeyUsage' parameter to `GENERATE_VERIFY_MAC'. You must set
+%% the key usage even though `GENERATE_VERIFY_MAC' is the only valid key
+%% usage value for HMAC KMS keys. You can't change these properties after
+%% the KMS key is created.
 %%
 %% HMAC KMS keys are symmetric keys that never leave KMS unencrypted. You can
-%% use HMAC keys to generate (`GenerateMac') and verify (`VerifyMac') HMAC
-%% codes for messages up to 4096 bytes.
+%% use HMAC keys to generate (`GenerateMac') and verify (`VerifyMac')
+%% HMAC codes for messages up to 4096 bytes.
 %%
 %% HMAC KMS keys are not supported in all Amazon Web Services Regions. If you
 %% try to create an HMAC KMS key in an Amazon Web Services Region in which
 %% HMAC keys are not supported, the `CreateKey' operation returns an
-%% `UnsupportedOperationException'. For a list of Regions in which HMAC KMS
-%% keys are supported, see HMAC keys in KMS in the Key Management Service
+%% `UnsupportedOperationException'. For a list of Regions in which HMAC
+%% KMS keys are supported, see HMAC keys in KMS in the Key Management Service
 %% Developer Guide.
 %%
 %% </dd> <dt>Multi-Region primary keys</dt> <dt>Imported key material</dt>
 %% <dd> To create a multi-Region primary key in the local Amazon Web Services
-%% Region, use the `MultiRegion' parameter with a value of `True'. To create
-%% a multi-Region replica key, that is, a KMS key with the same key ID and
-%% key material as a primary key, but in a different Amazon Web Services
+%% Region, use the `MultiRegion' parameter with a value of `True'. To
+%% create a multi-Region replica key, that is, a KMS key with the same key ID
+%% and key material as a primary key, but in a different Amazon Web Services
 %% Region, use the `ReplicateKey' operation. To change a replica key to a
 %% primary key, and its primary key to a replica key, use the
 %% `UpdatePrimaryRegion' operation.
@@ -616,8 +622,8 @@ create_grant(Client, Input, Options)
 %% You can create multi-Region KMS keys for all supported KMS key types:
 %% symmetric encryption KMS keys, HMAC KMS keys, asymmetric encryption KMS
 %% keys, and asymmetric signing KMS keys. You can also create multi-Region
-%% keys with imported key material. However, you can't create multi-Region
-%% keys in a custom key store.
+%% keys with imported key material. However, you can't create
+%% multi-Region keys in a custom key store.
 %%
 %% This operation supports multi-Region keys, an KMS feature that lets you
 %% create multiple interoperable KMS keys in different Amazon Web Services
@@ -630,24 +636,24 @@ create_grant(Client, Input, Options)
 %%
 %% </dd> <dd> To import your own key material into a KMS key, begin by
 %% creating a symmetric encryption KMS key with no key material. To do this,
-%% use the `Origin' parameter of `CreateKey' with a value of `EXTERNAL'.
-%% Next, use `GetParametersForImport' operation to get a public key and
-%% import token, and use the public key to encrypt your key material. Then,
-%% use `ImportKeyMaterial' with your import token to import the key material.
-%% For step-by-step instructions, see Importing Key Material in the Key
-%% Management Service Developer Guide .
+%% use the `Origin' parameter of `CreateKey' with a value of
+%% `EXTERNAL'. Next, use `GetParametersForImport' operation to get a
+%% public key and import token, and use the public key to encrypt your key
+%% material. Then, use `ImportKeyMaterial' with your import token to
+%% import the key material. For step-by-step instructions, see Importing Key
+%% Material in the Key Management Service Developer Guide .
 %%
 %% This feature supports only symmetric encryption KMS keys, including
 %% multi-Region symmetric encryption KMS keys. You cannot import key material
 %% into any other type of KMS key.
 %%
 %% To create a multi-Region primary key with imported key material, use the
-%% `Origin' parameter of `CreateKey' with a value of `EXTERNAL' and the
-%% `MultiRegion' parameter with a value of `True'. To create replicas of the
-%% multi-Region primary key, use the `ReplicateKey' operation. For
-%% instructions, see Importing key material into multi-Region keys. For more
-%% information about multi-Region keys, see Multi-Region keys in KMS in the
-%% Key Management Service Developer Guide.
+%% `Origin' parameter of `CreateKey' with a value of `EXTERNAL'
+%% and the `MultiRegion' parameter with a value of `True'. To create
+%% replicas of the multi-Region primary key, use the `ReplicateKey'
+%% operation. For instructions, see Importing key material into multi-Region
+%% keys. For more information about multi-Region keys, see Multi-Region keys
+%% in KMS in the Key Management Service Developer Guide.
 %%
 %% </dd> <dt>Custom key store</dt> <dd> A custom key store lets you protect
 %% your Amazon Web Services resources using keys in a backing key store that
@@ -666,24 +672,25 @@ create_grant(Client, Input, Options)
 %% in an external key store. For details, see your external key manager
 %% documentation.
 %%
-%% Before you create a KMS key in a custom key store, the `ConnectionState'
-%% of the key store must be `CONNECTED'. To connect the custom key store, use
-%% the `ConnectCustomKeyStore' operation. To find the `ConnectionState', use
-%% the `DescribeCustomKeyStores' operation.
+%% Before you create a KMS key in a custom key store, the
+%% `ConnectionState' of the key store must be `CONNECTED'. To connect
+%% the custom key store, use the `ConnectCustomKeyStore' operation. To
+%% find the `ConnectionState', use the `DescribeCustomKeyStores'
+%% operation.
 %%
-%% To create a KMS key in a custom key store, use the `CustomKeyStoreId'. Use
-%% the default `KeySpec' value, `SYMMETRIC_DEFAULT', and the default
-%% `KeyUsage' value, `ENCRYPT_DECRYPT' to create a symmetric encryption key.
-%% No other key type is supported in a custom key store.
+%% To create a KMS key in a custom key store, use the `CustomKeyStoreId'.
+%% Use the default `KeySpec' value, `SYMMETRIC_DEFAULT', and the
+%% default `KeyUsage' value, `ENCRYPT_DECRYPT' to create a symmetric
+%% encryption key. No other key type is supported in a custom key store.
 %%
-%% To create a KMS key in an CloudHSM key store, use the `Origin' parameter
-%% with a value of `AWS_CLOUDHSM'. The CloudHSM cluster that is associated
-%% with the custom key store must have at least two active HSMs in different
-%% Availability Zones in the Amazon Web Services Region.
+%% To create a KMS key in an CloudHSM key store, use the `Origin'
+%% parameter with a value of `AWS_CLOUDHSM'. The CloudHSM cluster that is
+%% associated with the custom key store must have at least two active HSMs in
+%% different Availability Zones in the Amazon Web Services Region.
 %%
-%% To create a KMS key in an external key store, use the `Origin' parameter
-%% with a value of `EXTERNAL_KEY_STORE' and an `XksKeyId' parameter that
-%% identifies an existing external key.
+%% To create a KMS key in an external key store, use the `Origin'
+%% parameter with a value of `EXTERNAL_KEY_STORE' and an `XksKeyId'
+%% parameter that identifies an existing external key.
 %%
 %% Some external key managers provide a simpler method for creating a KMS key
 %% in an external key store. For details, see your external key manager
@@ -743,15 +750,16 @@ create_key(Client, Input, Options)
 %% incompatible with KMS.
 %%
 %% If the ciphertext was encrypted under a symmetric encryption KMS key, the
-%% `KeyId' parameter is optional. KMS can get this information from metadata
-%% that it adds to the symmetric ciphertext blob. This feature adds
+%% `KeyId' parameter is optional. KMS can get this information from
+%% metadata that it adds to the symmetric ciphertext blob. This feature adds
 %% durability to your implementation by ensuring that authorized users can
-%% decrypt ciphertext decades after it was encrypted, even if they've lost
-%% track of the key ID. However, specifying the KMS key is always recommended
-%% as a best practice. When you use the `KeyId' parameter to specify a KMS
-%% key, KMS only uses the KMS key you specify. If the ciphertext was
-%% encrypted under a different KMS key, the `Decrypt' operation fails. This
-%% practice ensures that you use the KMS key that you intend.
+%% decrypt ciphertext decades after it was encrypted, even if they've
+%% lost track of the key ID. However, specifying the KMS key is always
+%% recommended as a best practice. When you use the `KeyId' parameter to
+%% specify a KMS key, KMS only uses the KMS key you specify. If the
+%% ciphertext was encrypted under a different KMS key, the `Decrypt'
+%% operation fails. This practice ensures that you use the KMS key that you
+%% intend.
 %%
 %% Whenever possible, use key policies to give users permission to call the
 %% `Decrypt' operation on a particular KMS key, instead of using IAM
@@ -759,9 +767,9 @@ create_key(Client, Input, Options)
 %% user `Decrypt' permission on all KMS keys. This user could decrypt
 %% ciphertext that was encrypted by KMS keys in other accounts if the key
 %% policy for the cross-account KMS key permits it. If you must use an IAM
-%% policy for `Decrypt' permissions, limit the user to particular KMS keys or
-%% particular trusted accounts. For details, see Best practices for IAM
-%% policies in the Key Management Service Developer Guide.
+%% policy for `Decrypt' permissions, limit the user to particular KMS
+%% keys or particular trusted accounts. For details, see Best practices for
+%% IAM policies in the Key Management Service Developer Guide.
 %%
 %% Applications in Amazon Web Services Nitro Enclaves can call this operation
 %% by using the Amazon Web Services Nitro Enclaves Development Kit. For
@@ -804,13 +812,13 @@ decrypt(Client, Input, Options)
 %%
 %% Because an alias is not a property of a KMS key, you can delete and change
 %% the aliases of a KMS key without affecting the KMS key. Also, aliases do
-%% not appear in the response from the `DescribeKey' operation. To get the
-%% aliases of all KMS keys, use the `ListAliases' operation.
+%% not appear in the response from the `DescribeKey' operation. To get
+%% the aliases of all KMS keys, use the `ListAliases' operation.
 %%
 %% Each KMS key can have multiple aliases. To change the alias of a KMS key,
-%% use `DeleteAlias' to delete the current alias and `CreateAlias' to create
-%% a new alias. To associate an existing alias with a different KMS key, call
-%% `UpdateAlias'.
+%% use `DeleteAlias' to delete the current alias and `CreateAlias' to
+%% create a new alias. To associate an existing alias with a different KMS
+%% key, call `UpdateAlias'.
 %%
 %% Cross-account use: No. You cannot perform this operation on an alias in a
 %% different Amazon Web Services account.
@@ -855,8 +863,8 @@ delete_alias(Client, Input, Options)
 %% The custom key store that you delete cannot contain any KMS keys. Before
 %% deleting the key store, verify that you will never need to use any of the
 %% KMS keys in the key store for any cryptographic operations. Then, use
-%% `ScheduleKeyDeletion' to delete the KMS keys from the key store. After the
-%% required waiting period expires and all KMS keys are deleted from the
+%% `ScheduleKeyDeletion' to delete the KMS keys from the key store. After
+%% the required waiting period expires and all KMS keys are deleted from the
 %% custom key store, use `DisconnectCustomKeyStore' to disconnect the key
 %% store from KMS. Then, you can delete the custom key store.
 %%
@@ -869,8 +877,8 @@ delete_alias(Client, Input, Options)
 %% tools.
 %%
 %% Instead of deleting the custom key store, consider using the
-%% `DisconnectCustomKeyStore' operation to disconnect the custom key store
-%% from its backing key store. While the key store is disconnected, you
+%% `DisconnectCustomKeyStore' operation to disconnect the custom key
+%% store from its backing key store. While the key store is disconnected, you
 %% cannot create or use the KMS keys in the key store. But, you do not need
 %% to delete KMS keys and you can reconnect a disconnected custom key store
 %% at any time.
@@ -909,11 +917,11 @@ delete_custom_key_store(Client, Input, Options)
 %% Key Management Service Developer Guide.
 %%
 %% When the specified KMS key is in the `PendingDeletion' state, this
-%% operation does not change the KMS key's state. Otherwise, it changes the
-%% KMS key's state to `PendingImport'.
+%% operation does not change the KMS key's state. Otherwise, it changes
+%% the KMS key's state to `PendingImport'.
 %%
-%% After you delete key material, you can use `ImportKeyMaterial' to reimport
-%% the same key material into the KMS key.
+%% After you delete key material, you can use `ImportKeyMaterial' to
+%% reimport the same key material into the KMS key.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For details, see Key states of KMS keys in the Key Management
@@ -950,22 +958,23 @@ delete_imported_key_material(Client, Input, Options)
 %% `CustomKeyStoreId' parameter (but not both).
 %%
 %% To determine whether the custom key store is connected to its CloudHSM
-%% cluster or external key store proxy, use the `ConnectionState' element in
-%% the response. If an attempt to connect the custom key store failed, the
-%% `ConnectionState' value is `FAILED' and the `ConnectionErrorCode' element
-%% in the response indicates the cause of the failure. For help interpreting
-%% the `ConnectionErrorCode', see `CustomKeyStoresListEntry'.
+%% cluster or external key store proxy, use the `ConnectionState' element
+%% in the response. If an attempt to connect the custom key store failed, the
+%% `ConnectionState' value is `FAILED' and the
+%% `ConnectionErrorCode' element in the response indicates the cause of
+%% the failure. For help interpreting the `ConnectionErrorCode', see
+%% `CustomKeyStoresListEntry'.
 %%
-%% Custom key stores have a `DISCONNECTED' connection state if the key store
-%% has never been connected or you used the `DisconnectCustomKeyStore'
-%% operation to disconnect it. Otherwise, the connection state is CONNECTED.
-%% If your custom key store connection state is `CONNECTED' but you are
-%% having trouble using it, verify that the backing store is active and
-%% available. For an CloudHSM key store, verify that the associated CloudHSM
-%% cluster is active and contains the minimum number of HSMs required for the
-%% operation, if any. For an external key store, verify that the external key
-%% store proxy and its associated external key manager are reachable and
-%% enabled.
+%% Custom key stores have a `DISCONNECTED' connection state if the key
+%% store has never been connected or you used the
+%% `DisconnectCustomKeyStore' operation to disconnect it. Otherwise, the
+%% connection state is CONNECTED. If your custom key store connection state
+%% is `CONNECTED' but you are having trouble using it, verify that the
+%% backing store is active and available. For an CloudHSM key store, verify
+%% that the associated CloudHSM cluster is active and contains the minimum
+%% number of HSMs required for the operation, if any. For an external key
+%% store, verify that the external key store proxy and its associated
+%% external key manager are reachable and enabled.
 %%
 %% For help repairing your CloudHSM key store, see the Troubleshooting
 %% CloudHSM key stores. For help repairing your external key store, see the
@@ -1005,9 +1014,9 @@ describe_custom_key_stores(Client, Input, Options)
 %% This detailed information includes the key ARN, creation date (and
 %% deletion date, if applicable), the key state, and the origin and
 %% expiration date (if any) of the key material. It includes fields, like
-%% `KeySpec', that help you distinguish different types of KMS keys. It also
-%% displays the key usage (encryption, signing, or generating and verifying
-%% MACs) and the algorithms that the KMS key supports.
+%% `KeySpec', that help you distinguish different types of KMS keys. It
+%% also displays the key usage (encryption, signing, or generating and
+%% verifying MACs) and the algorithms that the KMS key supports.
 %%
 %% For multi-Region keys, `DescribeKey' displays the primary key and all
 %% related replica keys. For KMS keys in CloudHSM key stores, it includes
@@ -1021,10 +1030,10 @@ describe_custom_key_stores(Client, Input, Options)
 %% use `ListAliases'.
 %%
 %% </li> <li> Whether automatic key rotation is enabled on the KMS key. To
-%% get this information, use `GetKeyRotationStatus'. Also, some key states
-%% prevent a KMS key from being automatically rotated. For details, see How
-%% Automatic Key Rotation Works in the Key Management Service Developer
-%% Guide.
+%% get this information, use `GetKeyRotationStatus'. Also, some key
+%% states prevent a KMS key from being automatically rotated. For details,
+%% see How Automatic Key Rotation Works in the Key Management Service
+%% Developer Guide.
 %%
 %% </li> <li> Tags on the KMS key. To get this information, use
 %% `ListResourceTags'.
@@ -1033,9 +1042,9 @@ describe_custom_key_stores(Client, Input, Options)
 %% information, use `GetKeyPolicy' and `ListGrants'.
 %%
 %% </li> </ul> In general, `DescribeKey' is a non-mutating operation. It
-%% returns data about KMS keys, but doesn't change them. However, Amazon Web
-%% Services services use `DescribeKey' to create Amazon Web Services managed
-%% keys from a predefined Amazon Web Services alias with no key ID.
+%% returns data about KMS keys, but doesn't change them. However, Amazon
+%% Web Services services use `DescribeKey' to create Amazon Web Services
+%% managed keys from a predefined Amazon Web Services alias with no key ID.
 %%
 %% Cross-account use: Yes. To perform this operation with a KMS key in a
 %% different Amazon Web Services account, specify the key ARN or alias ARN in
@@ -1101,11 +1110,11 @@ disable_key(Client, Input, Options)
 %% store. To enable or disable automatic rotation of a set of related
 %% multi-Region keys, set the property on the primary key.
 %%
-%% You can enable (`EnableKeyRotation') and disable automatic rotation of the
-%% key material in customer managed KMS keys. Key material rotation of Amazon
-%% Web Services managed KMS keys is not configurable. KMS always rotates the
-%% key material for every year. Rotation of Amazon Web Services owned KMS
-%% keys varies.
+%% You can enable (`EnableKeyRotation') and disable automatic rotation of
+%% the key material in customer managed KMS keys. Key material rotation of
+%% Amazon Web Services managed KMS keys is not configurable. KMS always
+%% rotates the key material for every year. Rotation of Amazon Web Services
+%% owned KMS keys varies.
 %%
 %% In May 2022, KMS changed the rotation schedule for Amazon Web Services
 %% managed keys from every three years to every year. For details, see
@@ -1153,10 +1162,10 @@ disable_key_rotation(Client, Input, Options)
 %% operations will fail. This action can prevent users from storing and
 %% accessing sensitive data.
 %%
-%% When you disconnect a custom key store, its `ConnectionState' changes to
-%% `Disconnected'. To find the connection state of a custom key store, use
-%% the `DescribeCustomKeyStores' operation. To reconnect a custom key store,
-%% use the `ConnectCustomKeyStore' operation.
+%% When you disconnect a custom key store, its `ConnectionState' changes
+%% to `Disconnected'. To find the connection state of a custom key store,
+%% use the `DescribeCustomKeyStores' operation. To reconnect a custom key
+%% store, use the `ConnectCustomKeyStore' operation.
 %%
 %% If the operation succeeds, it returns a JSON object with no properties.
 %%
@@ -1267,17 +1276,18 @@ enable_key_rotation(Client, Input, Options)
 %%
 %% You can use this operation to encrypt small amounts of arbitrary data,
 %% such as a personal identifier or database password, or other sensitive
-%% information. You don't need to use the `Encrypt' operation to encrypt a
-%% data key. The `GenerateDataKey' and `GenerateDataKeyPair' operations
-%% return a plaintext data key and an encrypted copy of that data key.
+%% information. You don't need to use the `Encrypt' operation to
+%% encrypt a data key. The `GenerateDataKey' and
+%% `GenerateDataKeyPair' operations return a plaintext data key and an
+%% encrypted copy of that data key.
 %%
 %% If you use a symmetric encryption KMS key, you can use an encryption
 %% context to add additional security to your encryption operation. If you
-%% specify an `EncryptionContext' when encrypting data, you must specify the
-%% same encryption context (a case-sensitive exact match) when decrypting the
-%% data. Otherwise, the request to decrypt fails with an
-%% `InvalidCiphertextException'. For more information, see Encryption Context
-%% in the Key Management Service Developer Guide.
+%% specify an `EncryptionContext' when encrypting data, you must specify
+%% the same encryption context (a case-sensitive exact match) when decrypting
+%% the data. Otherwise, the request to decrypt fails with an
+%% `InvalidCiphertextException'. For more information, see Encryption
+%% Context in the Key Management Service Developer Guide.
 %%
 %% If you specify an asymmetric KMS key, you must also specify the encryption
 %% algorithm. The algorithm must be compatible with the KMS key spec.
@@ -1357,17 +1367,17 @@ encrypt(Client, Input, Options)
 %%
 %% To generate a data key, specify the symmetric encryption KMS key that will
 %% be used to encrypt the data key. You cannot use an asymmetric KMS key to
-%% encrypt data keys. To get the type of your KMS key, use the `DescribeKey'
-%% operation.
+%% encrypt data keys. To get the type of your KMS key, use the
+%% `DescribeKey' operation.
 %%
-%% You must also specify the length of the data key. Use either the `KeySpec'
-%% or `NumberOfBytes' parameters (but not both). For 128-bit and 256-bit data
-%% keys, use the `KeySpec' parameter.
+%% You must also specify the length of the data key. Use either the
+%% `KeySpec' or `NumberOfBytes' parameters (but not both). For
+%% 128-bit and 256-bit data keys, use the `KeySpec' parameter.
 %%
 %% To generate an SM4 data key (China Regions only), specify a `KeySpec'
-%% value of `AES_128' or `NumberOfBytes' value of `128'. The symmetric
-%% encryption key used in China Regions to encrypt your data key is an SM4
-%% encryption key.
+%% value of `AES_128' or `NumberOfBytes' value of `128'. The
+%% symmetric encryption key used in China Regions to encrypt your data key is
+%% an SM4 encryption key.
 %%
 %% To get only an encrypted copy of the data key, use
 %% `GenerateDataKeyWithoutPlaintext'. To generate an asymmetric data key
@@ -1376,11 +1386,11 @@ encrypt(Client, Input, Options)
 %% cryptographically secure random byte string, use `GenerateRandom'.
 %%
 %% You can use an optional encryption context to add additional security to
-%% the encryption operation. If you specify an `EncryptionContext', you must
-%% specify the same encryption context (a case-sensitive exact match) when
-%% decrypting the encrypted data key. Otherwise, the request to decrypt fails
-%% with an `InvalidCiphertextException'. For more information, see Encryption
-%% Context in the Key Management Service Developer Guide.
+%% the encryption operation. If you specify an `EncryptionContext', you
+%% must specify the same encryption context (a case-sensitive exact match)
+%% when decrypting the encrypted data key. Otherwise, the request to decrypt
+%% fails with an `InvalidCiphertextException'. For more information, see
+%% Encryption Context in the Key Management Service Developer Guide.
 %%
 %% Applications in Amazon Web Services Nitro Enclaves can call this operation
 %% by using the Amazon Web Services Nitro Enclaves Development Kit. For
@@ -1407,13 +1417,13 @@ encrypt(Client, Input, Options)
 %% response) to encrypt your data outside of KMS. Then erase the plaintext
 %% data key from memory.
 %%
-%% </li> <li> Store the encrypted data key (in the `CiphertextBlob' field of
-%% the response) with the encrypted data.
+%% </li> <li> Store the encrypted data key (in the `CiphertextBlob' field
+%% of the response) with the encrypted data.
 %%
 %% </li> </ol> To decrypt data outside of KMS:
 %%
-%% <ol> <li> Use the `Decrypt' operation to decrypt the encrypted data key.
-%% The operation returns a plaintext copy of the data key.
+%% <ol> <li> Use the `Decrypt' operation to decrypt the encrypted data
+%% key. The operation returns a plaintext copy of the data key.
 %%
 %% </li> <li> Use the plaintext data key to decrypt data outside of KMS, then
 %% erase the plaintext data key from memory.
@@ -1453,46 +1463,46 @@ generate_data_key(Client, Input, Options)
 %% The bytes in the keys are random; they not related to the caller or to the
 %% KMS key that is used to encrypt the private key.
 %%
-%% You can use the public key that `GenerateDataKeyPair' returns to encrypt
-%% data or verify a signature outside of KMS. Then, store the encrypted
-%% private key with the data. When you are ready to decrypt data or sign a
-%% message, you can use the `Decrypt' operation to decrypt the encrypted
-%% private key.
+%% You can use the public key that `GenerateDataKeyPair' returns to
+%% encrypt data or verify a signature outside of KMS. Then, store the
+%% encrypted private key with the data. When you are ready to decrypt data or
+%% sign a message, you can use the `Decrypt' operation to decrypt the
+%% encrypted private key.
 %%
 %% To generate a data key pair, you must specify a symmetric encryption KMS
 %% key to encrypt the private key in a data key pair. You cannot use an
 %% asymmetric KMS key or a KMS key in a custom key store. To get the type and
 %% origin of your KMS key, use the `DescribeKey' operation.
 %%
-%% Use the `KeyPairSpec' parameter to choose an RSA or Elliptic Curve (ECC)
-%% data key pair. In China Regions, you can also choose an SM2 data key pair.
-%% KMS recommends that you use ECC key pairs for signing, and use RSA and SM2
-%% key pairs for either encryption or signing, but not both. However, KMS
-%% cannot enforce any restrictions on the use of data key pairs outside of
-%% KMS.
+%% Use the `KeyPairSpec' parameter to choose an RSA or Elliptic Curve
+%% (ECC) data key pair. In China Regions, you can also choose an SM2 data key
+%% pair. KMS recommends that you use ECC key pairs for signing, and use RSA
+%% and SM2 key pairs for either encryption or signing, but not both. However,
+%% KMS cannot enforce any restrictions on the use of data key pairs outside
+%% of KMS.
 %%
 %% If you are using the data key pair to encrypt data, or for any operation
 %% where you don't immediately need a private key, consider using the
 %% `GenerateDataKeyPairWithoutPlaintext' operation.
-%% `GenerateDataKeyPairWithoutPlaintext' returns a plaintext public key and
-%% an encrypted private key, but omits the plaintext private key that you
+%% `GenerateDataKeyPairWithoutPlaintext' returns a plaintext public key
+%% and an encrypted private key, but omits the plaintext private key that you
 %% need only to decrypt ciphertext or sign a message. Later, when you need to
-%% decrypt the data or sign a message, use the `Decrypt' operation to decrypt
-%% the encrypted private key in the data key pair.
+%% decrypt the data or sign a message, use the `Decrypt' operation to
+%% decrypt the encrypted private key in the data key pair.
 %%
-%% `GenerateDataKeyPair' returns a unique data key pair for each request. The
-%% bytes in the keys are random; they are not related to the caller or the
-%% KMS key that is used to encrypt the private key. The public key is a
+%% `GenerateDataKeyPair' returns a unique data key pair for each request.
+%% The bytes in the keys are random; they are not related to the caller or
+%% the KMS key that is used to encrypt the private key. The public key is a
 %% DER-encoded X.509 SubjectPublicKeyInfo, as specified in RFC 5280. The
 %% private key is a DER-encoded PKCS8 PrivateKeyInfo, as specified in RFC
 %% 5958.
 %%
 %% You can use an optional encryption context to add additional security to
-%% the encryption operation. If you specify an `EncryptionContext', you must
-%% specify the same encryption context (a case-sensitive exact match) when
-%% decrypting the encrypted data key. Otherwise, the request to decrypt fails
-%% with an `InvalidCiphertextException'. For more information, see Encryption
-%% Context in the Key Management Service Developer Guide.
+%% the encryption operation. If you specify an `EncryptionContext', you
+%% must specify the same encryption context (a case-sensitive exact match)
+%% when decrypting the encrypted data key. Otherwise, the request to decrypt
+%% fails with an `InvalidCiphertextException'. For more information, see
+%% Encryption Context in the Key Management Service Developer Guide.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For details, see Key states of KMS keys in the Key Management
@@ -1528,39 +1538,40 @@ generate_data_key_pair(Client, Input, Options)
 %%
 %% This operation returns a plaintext public key and a copy of the private
 %% key that is encrypted under the symmetric encryption KMS key you specify.
-%% Unlike `GenerateDataKeyPair', this operation does not return a plaintext
-%% private key. The bytes in the keys are random; they are not related to the
-%% caller or to the KMS key that is used to encrypt the private key.
+%% Unlike `GenerateDataKeyPair', this operation does not return a
+%% plaintext private key. The bytes in the keys are random; they are not
+%% related to the caller or to the KMS key that is used to encrypt the
+%% private key.
 %%
 %% You can use the public key that `GenerateDataKeyPairWithoutPlaintext'
 %% returns to encrypt data or verify a signature outside of KMS. Then, store
 %% the encrypted private key with the data. When you are ready to decrypt
-%% data or sign a message, you can use the `Decrypt' operation to decrypt the
-%% encrypted private key.
+%% data or sign a message, you can use the `Decrypt' operation to decrypt
+%% the encrypted private key.
 %%
 %% To generate a data key pair, you must specify a symmetric encryption KMS
 %% key to encrypt the private key in a data key pair. You cannot use an
 %% asymmetric KMS key or a KMS key in a custom key store. To get the type and
 %% origin of your KMS key, use the `DescribeKey' operation.
 %%
-%% Use the `KeyPairSpec' parameter to choose an RSA or Elliptic Curve (ECC)
-%% data key pair. In China Regions, you can also choose an SM2 data key pair.
-%% KMS recommends that you use ECC key pairs for signing, and use RSA and SM2
-%% key pairs for either encryption or signing, but not both. However, KMS
-%% cannot enforce any restrictions on the use of data key pairs outside of
-%% KMS.
+%% Use the `KeyPairSpec' parameter to choose an RSA or Elliptic Curve
+%% (ECC) data key pair. In China Regions, you can also choose an SM2 data key
+%% pair. KMS recommends that you use ECC key pairs for signing, and use RSA
+%% and SM2 key pairs for either encryption or signing, but not both. However,
+%% KMS cannot enforce any restrictions on the use of data key pairs outside
+%% of KMS.
 %%
-%% `GenerateDataKeyPairWithoutPlaintext' returns a unique data key pair for
-%% each request. The bytes in the key are not related to the caller or KMS
-%% key that is used to encrypt the private key. The public key is a
+%% `GenerateDataKeyPairWithoutPlaintext' returns a unique data key pair
+%% for each request. The bytes in the key are not related to the caller or
+%% KMS key that is used to encrypt the private key. The public key is a
 %% DER-encoded X.509 SubjectPublicKeyInfo, as specified in RFC 5280.
 %%
 %% You can use an optional encryption context to add additional security to
-%% the encryption operation. If you specify an `EncryptionContext', you must
-%% specify the same encryption context (a case-sensitive exact match) when
-%% decrypting the encrypted data key. Otherwise, the request to decrypt fails
-%% with an `InvalidCiphertextException'. For more information, see Encryption
-%% Context in the Key Management Service Developer Guide.
+%% the encryption operation. If you specify an `EncryptionContext', you
+%% must specify the same encryption context (a case-sensitive exact match)
+%% when decrypting the encrypted data key. Otherwise, the request to decrypt
+%% fails with an `InvalidCiphertextException'. For more information, see
+%% Encryption Context in the Key Management Service Developer Guide.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For details, see Key states of KMS keys in the Key Management
@@ -1598,48 +1609,49 @@ generate_data_key_pair_without_plaintext(Client, Input, Options)
 %% encryption KMS key that you specify. The bytes in the key are random; they
 %% are not related to the caller or to the KMS key.
 %%
-%% `GenerateDataKeyWithoutPlaintext' is identical to the `GenerateDataKey'
-%% operation except that it does not return a plaintext copy of the data key.
+%% `GenerateDataKeyWithoutPlaintext' is identical to the
+%% `GenerateDataKey' operation except that it does not return a plaintext
+%% copy of the data key.
 %%
 %% This operation is useful for systems that need to encrypt data at some
 %% point, but not immediately. When you need to encrypt the data, you call
 %% the `Decrypt' operation on the encrypted copy of the key.
 %%
-%% It's also useful in distributed systems with different levels of trust.
-%% For example, you might store encrypted data in containers. One component
-%% of your system creates new containers and stores an encrypted data key
-%% with each container. Then, a different component puts the data into the
-%% containers. That component first decrypts the data key, uses the plaintext
-%% data key to encrypt data, puts the encrypted data into the container, and
-%% then destroys the plaintext data key. In this system, the component that
-%% creates the containers never sees the plaintext data key.
+%% It's also useful in distributed systems with different levels of
+%% trust. For example, you might store encrypted data in containers. One
+%% component of your system creates new containers and stores an encrypted
+%% data key with each container. Then, a different component puts the data
+%% into the containers. That component first decrypts the data key, uses the
+%% plaintext data key to encrypt data, puts the encrypted data into the
+%% container, and then destroys the plaintext data key. In this system, the
+%% component that creates the containers never sees the plaintext data key.
 %%
-%% To request an asymmetric data key pair, use the `GenerateDataKeyPair' or
-%% `GenerateDataKeyPairWithoutPlaintext' operations.
+%% To request an asymmetric data key pair, use the `GenerateDataKeyPair'
+%% or `GenerateDataKeyPairWithoutPlaintext' operations.
 %%
 %% To generate a data key, you must specify the symmetric encryption KMS key
 %% that is used to encrypt the data key. You cannot use an asymmetric KMS key
 %% or a key in a custom key store to generate a data key. To get the type of
 %% your KMS key, use the `DescribeKey' operation.
 %%
-%% You must also specify the length of the data key. Use either the `KeySpec'
-%% or `NumberOfBytes' parameters (but not both). For 128-bit and 256-bit data
-%% keys, use the `KeySpec' parameter.
+%% You must also specify the length of the data key. Use either the
+%% `KeySpec' or `NumberOfBytes' parameters (but not both). For
+%% 128-bit and 256-bit data keys, use the `KeySpec' parameter.
 %%
 %% To generate an SM4 data key (China Regions only), specify a `KeySpec'
-%% value of `AES_128' or `NumberOfBytes' value of `128'. The symmetric
-%% encryption key used in China Regions to encrypt your data key is an SM4
-%% encryption key.
+%% value of `AES_128' or `NumberOfBytes' value of `128'. The
+%% symmetric encryption key used in China Regions to encrypt your data key is
+%% an SM4 encryption key.
 %%
 %% If the operation succeeds, you will find the encrypted copy of the data
 %% key in the `CiphertextBlob' field.
 %%
 %% You can use an optional encryption context to add additional security to
-%% the encryption operation. If you specify an `EncryptionContext', you must
-%% specify the same encryption context (a case-sensitive exact match) when
-%% decrypting the encrypted data key. Otherwise, the request to decrypt fails
-%% with an `InvalidCiphertextException'. For more information, see Encryption
-%% Context in the Key Management Service Developer Guide.
+%% the encryption operation. If you specify an `EncryptionContext', you
+%% must specify the same encryption context (a case-sensitive exact match)
+%% when decrypting the encrypted data key. Otherwise, the request to decrypt
+%% fails with an `InvalidCiphertextException'. For more information, see
+%% Encryption Context in the Key Management Service Developer Guide.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For details, see Key states of KMS keys in the Key Management
@@ -1677,14 +1689,14 @@ generate_data_key_without_plaintext(Client, Input, Options)
 %% HMAC KMS keys and the HMAC algorithms that KMS uses conform to industry
 %% standards defined in RFC 2104.
 %%
-%% You can use value that GenerateMac returns in the `VerifyMac' operation to
-%% demonstrate that the original message has not changed. Also, because a
-%% secret key is used to create the hash, you can verify that the party that
-%% generated the hash has the required secret key. You can also use the raw
-%% result to implement HMAC-based algorithms such as key derivation
-%% functions. This operation is part of KMS support for HMAC KMS keys. For
-%% details, see HMAC keys in KMS in the Key Management Service Developer
-%% Guide .
+%% You can use value that GenerateMac returns in the `VerifyMac'
+%% operation to demonstrate that the original message has not changed. Also,
+%% because a secret key is used to create the hash, you can verify that the
+%% party that generated the hash has the required secret key. You can also
+%% use the raw result to implement HMAC-based algorithms such as key
+%% derivation functions. This operation is part of KMS support for HMAC KMS
+%% keys. For details, see HMAC keys in KMS in the Key Management Service
+%% Developer Guide .
 %%
 %% Best practices recommend that you limit the time during which any signing
 %% mechanism, including an HMAC, is effective. This deters an attack where
@@ -1713,8 +1725,8 @@ generate_mac(Client, Input, Options)
 
 %% @doc Returns a random byte string that is cryptographically secure.
 %%
-%% You must use the `NumberOfBytes' parameter to specify the length of the
-%% random byte string. There is no default value for string length.
+%% You must use the `NumberOfBytes' parameter to specify the length of
+%% the random byte string. There is no default value for string length.
 %%
 %% By default, the random byte string is generated in KMS. To generate the
 %% byte string in the CloudHSM cluster associated with an CloudHSM key store,
@@ -1769,8 +1781,8 @@ get_key_policy(Client, Input, Options)
 %% multi-Region keys, set the property on the primary key..
 %%
 %% You can enable (`EnableKeyRotation') and disable automatic rotation
-%% (`DisableKeyRotation') of the key material in customer managed KMS keys.
-%% Key material rotation of Amazon Web Services managed KMS keys is not
+%% (`DisableKeyRotation') of the key material in customer managed KMS
+%% keys. Key material rotation of Amazon Web Services managed KMS keys is not
 %% configurable. KMS always rotates the key material in Amazon Web Services
 %% managed KMS keys every year. The key rotation status for Amazon Web
 %% Services managed KMS keys is always `true'.
@@ -1786,14 +1798,14 @@ get_key_policy(Client, Input, Options)
 %% <ul> <li> Disabled: The key rotation status does not change when you
 %% disable a KMS key. However, while the KMS key is disabled, KMS does not
 %% rotate the key material. When you re-enable the KMS key, rotation resumes.
-%% If the key material in the re-enabled KMS key hasn't been rotated in one
-%% year, KMS rotates it immediately, and every year thereafter. If it's been
-%% less than a year since the key material in the re-enabled KMS key was
-%% rotated, the KMS key resumes its prior rotation schedule.
+%% If the key material in the re-enabled KMS key hasn't been rotated in
+%% one year, KMS rotates it immediately, and every year thereafter. If
+%% it's been less than a year since the key material in the re-enabled
+%% KMS key was rotated, the KMS key resumes its prior rotation schedule.
 %%
 %% </li> <li> Pending deletion: While a KMS key is pending deletion, its key
-%% rotation status is `false' and KMS does not rotate the key material. If
-%% you cancel the deletion, the original key rotation status returns to
+%% rotation status is `false' and KMS does not rotate the key material.
+%% If you cancel the deletion, the original key rotation status returns to
 %% `true'.
 %%
 %% </li> </ul> Cross-account use: Yes. To perform this operation on a KMS key
@@ -1827,17 +1839,17 @@ get_key_rotation_status(Client, Input, Options)
 %% with a subsequent `ImportKeyMaterial' request.
 %%
 %% You must specify the key ID of the symmetric encryption KMS key into which
-%% you will import key material. The KMS key `Origin' must be `EXTERNAL'. You
-%% must also specify the wrapping algorithm and type of wrapping key (public
-%% key) that you will use to encrypt the key material. You cannot perform
-%% this operation on an asymmetric KMS key, an HMAC KMS key, or on any KMS
-%% key in a different Amazon Web Services account.
+%% you will import key material. The KMS key `Origin' must be
+%% `EXTERNAL'. You must also specify the wrapping algorithm and type of
+%% wrapping key (public key) that you will use to encrypt the key material.
+%% You cannot perform this operation on an asymmetric KMS key, an HMAC KMS
+%% key, or on any KMS key in a different Amazon Web Services account.
 %%
 %% To import key material, you must use the public key and import token from
 %% the same response. These items are valid for 24 hours. The expiration date
-%% and time appear in the `GetParametersForImport' response. You cannot use
-%% an expired token in an `ImportKeyMaterial' request. If your key and token
-%% expire, send another `GetParametersForImport' request.
+%% and time appear in the `GetParametersForImport' response. You cannot
+%% use an expired token in an `ImportKeyMaterial' request. If your key
+%% and token expire, send another `GetParametersForImport' request.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For details, see Key states of KMS keys in the Key Management
@@ -1865,19 +1877,19 @@ get_parameters_for_import(Client, Input, Options)
 %% @doc Returns the public key of an asymmetric KMS key.
 %%
 %% Unlike the private key of a asymmetric KMS key, which never leaves KMS
-%% unencrypted, callers with `kms:GetPublicKey' permission can download the
-%% public key of an asymmetric KMS key. You can share the public key to allow
-%% others to encrypt messages and verify signatures outside of KMS. For
+%% unencrypted, callers with `kms:GetPublicKey' permission can download
+%% the public key of an asymmetric KMS key. You can share the public key to
+%% allow others to encrypt messages and verify signatures outside of KMS. For
 %% information about asymmetric KMS keys, see Asymmetric KMS keys in the Key
 %% Management Service Developer Guide.
 %%
 %% You do not need to download the public key. Instead, you can use the
-%% public key within KMS by calling the `Encrypt', `ReEncrypt', or `Verify'
-%% operations with the identifier of an asymmetric KMS key. When you use the
-%% public key within KMS, you benefit from the authentication, authorization,
-%% and logging that are part of every KMS operation. You also reduce of risk
-%% of encrypting data that cannot be decrypted. These features are not
-%% effective outside of KMS.
+%% public key within KMS by calling the `Encrypt', `ReEncrypt', or
+%% `Verify' operations with the identifier of an asymmetric KMS key. When
+%% you use the public key within KMS, you benefit from the authentication,
+%% authorization, and logging that are part of every KMS operation. You also
+%% reduce of risk of encrypting data that cannot be decrypted. These features
+%% are not effective outside of KMS.
 %%
 %% To help you use the public key safely outside of KMS, `GetPublicKey'
 %% returns important information about the public key in the response,
@@ -1935,9 +1947,9 @@ get_public_key(Client, Input, Options)
 %% importing key material, see Importing Key Material in the Key Management
 %% Service Developer Guide.
 %%
-%% Before using this operation, call `GetParametersForImport'. Its response
-%% includes a public key and an import token. Use the public key to encrypt
-%% the key material. Then, submit the import token from the same
+%% Before using this operation, call `GetParametersForImport'. Its
+%% response includes a public key and an import token. Use the public key to
+%% encrypt the key material. Then, submit the import token from the same
 %% `GetParametersForImport' response.
 %%
 %% When calling this operation, you must specify the following values:
@@ -1946,33 +1958,33 @@ get_public_key(Client, Input, Options)
 %% `Origin' must be `EXTERNAL'.
 %%
 %% To create a KMS key with no key material, call `CreateKey' and set the
-%% value of its `Origin' parameter to `EXTERNAL'. To get the `Origin' of a
-%% KMS key, call `DescribeKey'.)
+%% value of its `Origin' parameter to `EXTERNAL'. To get the
+%% `Origin' of a KMS key, call `DescribeKey'.)
 %%
 %% </li> <li> The encrypted key material. To get the public key to encrypt
 %% the key material, call `GetParametersForImport'.
 %%
-%% </li> <li> The import token that `GetParametersForImport' returned. You
-%% must use a public key and token from the same `GetParametersForImport'
-%% response.
+%% </li> <li> The import token that `GetParametersForImport' returned.
+%% You must use a public key and token from the same
+%% `GetParametersForImport' response.
 %%
-%% </li> <li> Whether the key material expires (`ExpirationModel') and, if
-%% so, when (`ValidTo'). If you set an expiration date, on the specified
-%% date, KMS deletes the key material from the KMS key, making the KMS key
-%% unusable. To use the KMS key in cryptographic operations again, you must
-%% reimport the same key material. The only way to change the expiration
-%% model or expiration date is by reimporting the same key material and
-%% specifying a new expiration date.
+%% </li> <li> Whether the key material expires (`ExpirationModel') and,
+%% if so, when (`ValidTo'). If you set an expiration date, on the
+%% specified date, KMS deletes the key material from the KMS key, making the
+%% KMS key unusable. To use the KMS key in cryptographic operations again,
+%% you must reimport the same key material. The only way to change the
+%% expiration model or expiration date is by reimporting the same key
+%% material and specifying a new expiration date.
 %%
 %% </li> </ul> When this operation is successful, the key state of the KMS
-%% key changes from `PendingImport' to `Enabled', and you can use the KMS
-%% key.
+%% key changes from `PendingImport' to `Enabled', and you can use the
+%% KMS key.
 %%
 %% If this operation fails, use the exception to help determine the problem.
 %% If the error is related to the key material, the import token, or wrapping
-%% key, use `GetParametersForImport' to get a new public key and import token
-%% for the KMS key and repeat the import procedure. For help, see How To
-%% Import Key Material in the Key Management Service Developer Guide.
+%% key, use `GetParametersForImport' to get a new public key and import
+%% token for the KMS key and repeat the import procedure. For help, see How
+%% To Import Key Material in the Key Management Service Developer Guide.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For details, see Key states of KMS keys in the Key Management
@@ -1997,26 +2009,27 @@ import_key_material(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportKeyMaterial">>, Input, Options).
 
-%% @doc Gets a list of aliases in the caller's Amazon Web Services account
-%% and region.
+%% @doc Gets a list of aliases in the caller's Amazon Web Services
+%% account and region.
 %%
 %% For more information about aliases, see `CreateAlias'.
 %%
-%% By default, the `ListAliases' operation returns all aliases in the account
-%% and region. To get only the aliases associated with a particular KMS key,
-%% use the `KeyId' parameter.
+%% By default, the `ListAliases' operation returns all aliases in the
+%% account and region. To get only the aliases associated with a particular
+%% KMS key, use the `KeyId' parameter.
 %%
 %% The `ListAliases' response can include aliases that you created and
 %% associated with your customer managed keys, and aliases that Amazon Web
 %% Services created and associated with Amazon Web Services managed keys in
 %% your account. You can recognize Amazon Web Services aliases because their
-%% names have the format `aws/<service-name>', such as `aws/dynamodb'.
+%% names have the format `aws/&lt;service-name&gt;', such as
+%% `aws/dynamodb'.
 %%
-%% The response might also include aliases that have no `TargetKeyId' field.
-%% These are predefined aliases that Amazon Web Services has created but has
-%% not yet associated with a KMS key. Aliases that Amazon Web Services
-%% creates in your account, including predefined aliases, do not count
-%% against your KMS aliases quota.
+%% The response might also include aliases that have no `TargetKeyId'
+%% field. These are predefined aliases that Amazon Web Services has created
+%% but has not yet associated with a KMS key. Aliases that Amazon Web
+%% Services creates in your account, including predefined aliases, do not
+%% count against your KMS aliases quota.
 %%
 %% Cross-account use: No. `ListAliases' does not return aliases in other
 %% Amazon Web Services accounts.
@@ -2052,11 +2065,11 @@ list_aliases(Client, Input, Options)
 %% of working with grants in several programming languages, see Programming
 %% grants.
 %%
-%% The `GranteePrincipal' field in the `ListGrants' response usually contains
-%% the user or role designated as the grantee principal in the grant.
-%% However, when the grantee principal in the grant is an Amazon Web Services
-%% service, the `GranteePrincipal' field contains the service principal,
-%% which might represent several different grantee principals.
+%% The `GranteePrincipal' field in the `ListGrants' response usually
+%% contains the user or role designated as the grantee principal in the
+%% grant. However, when the grantee principal in the grant is an Amazon Web
+%% Services service, the `GranteePrincipal' field contains the service
+%% principal, which might represent several different grantee principals.
 %%
 %% Cross-account use: Yes. To perform this operation on a KMS key in a
 %% different Amazon Web Services account, specify the key ARN in the value of
@@ -2178,9 +2191,9 @@ list_resource_tags(Client, Input, Options)
 %%
 %% Cross-account use: You must specify a principal in your Amazon Web
 %% Services account. However, this operation can return grants in any Amazon
-%% Web Services account. You do not need `kms:ListRetirableGrants' permission
-%% (or any other additional permission) in any Amazon Web Services account
-%% other than your own.
+%% Web Services account. You do not need `kms:ListRetirableGrants'
+%% permission (or any other additional permission) in any Amazon Web Services
+%% account other than your own.
 %%
 %% Required permissions: kms:ListRetirableGrants (IAM policy) in your Amazon
 %% Web Services account.
@@ -2235,14 +2248,15 @@ put_key_policy(Client, Input, Options)
 %%
 %% The `ReEncrypt' operation can decrypt ciphertext that was encrypted by
 %% using a KMS key in an KMS operation, such as `Encrypt' or
-%% `GenerateDataKey'. It can also decrypt ciphertext that was encrypted by
-%% using the public key of an asymmetric KMS key outside of KMS. However, it
-%% cannot decrypt ciphertext produced by other libraries, such as the Amazon
-%% Web Services Encryption SDK or Amazon S3 client-side encryption. These
-%% libraries return a ciphertext format that is incompatible with KMS.
+%% `GenerateDataKey'. It can also decrypt ciphertext that was encrypted
+%% by using the public key of an asymmetric KMS key outside of KMS. However,
+%% it cannot decrypt ciphertext produced by other libraries, such as the
+%% Amazon Web Services Encryption SDK or Amazon S3 client-side encryption.
+%% These libraries return a ciphertext format that is incompatible with KMS.
 %%
-%% When you use the `ReEncrypt' operation, you need to provide information
-%% for the decrypt operation and the subsequent encrypt operation.
+%% When you use the `ReEncrypt' operation, you need to provide
+%% information for the decrypt operation and the subsequent encrypt
+%% operation.
 %%
 %% <ul> <li> If your ciphertext was encrypted under an asymmetric KMS key,
 %% you must use the `SourceKeyId' parameter to identify the KMS key that
@@ -2254,12 +2268,12 @@ put_key_policy(Client, Input, Options)
 %% information from metadata that it adds to the symmetric ciphertext blob.
 %% This feature adds durability to your implementation by ensuring that
 %% authorized users can decrypt ciphertext decades after it was encrypted,
-%% even if they've lost track of the key ID. However, specifying the source
-%% KMS key is always recommended as a best practice. When you use the
-%% `SourceKeyId' parameter to specify a KMS key, KMS uses only the KMS key
-%% you specify. If the ciphertext was encrypted under a different KMS key,
-%% the `ReEncrypt' operation fails. This practice ensures that you use the
-%% KMS key that you intend.
+%% even if they've lost track of the key ID. However, specifying the
+%% source KMS key is always recommended as a best practice. When you use the
+%% `SourceKeyId' parameter to specify a KMS key, KMS uses only the KMS
+%% key you specify. If the ciphertext was encrypted under a different KMS
+%% key, the `ReEncrypt' operation fails. This practice ensures that you
+%% use the KMS key that you intend.
 %%
 %% </li> <li> To reencrypt the data, you must use the `DestinationKeyId'
 %% parameter to specify the KMS key that re-encrypts the data after it is
@@ -2296,11 +2310,11 @@ put_key_policy(Client, Input, Options)
 %% policy)
 %%
 %% </li> </ul> To permit reencryption from or to a KMS key, include the
-%% `"kms:ReEncrypt*"' permission in your key policy. This permission is
-%% automatically included in the key policy when you use the console to
-%% create a KMS key. But you must include it manually when you create a KMS
-%% key programmatically or when you use the `PutKeyPolicy' operation to set a
-%% key policy.
+%% `&quot;kms:ReEncrypt*&quot;' permission in your key policy. This
+%% permission is automatically included in the key policy when you use the
+%% console to create a KMS key. But you must include it manually when you
+%% create a KMS key programmatically or when you use the `PutKeyPolicy'
+%% operation to set a key policy.
 %%
 %% Related operations:
 %%
@@ -2349,25 +2363,26 @@ re_encrypt(Client, Input, Options)
 %%
 %% When this operation completes, the new replica key has a transient key
 %% state of `Creating'. This key state changes to `Enabled' (or
-%% `PendingImport') after a few seconds when the process of creating the new
-%% replica key is complete. While the key state is `Creating', you can manage
-%% key, but you cannot yet use it in cryptographic operations. If you are
-%% creating and using the replica key programmatically, retry on
-%% `KMSInvalidStateException' or call `DescribeKey' to check its `KeyState'
-%% value before using it. For details about the `Creating' key state, see Key
-%% states of KMS keys in the Key Management Service Developer Guide.
+%% `PendingImport') after a few seconds when the process of creating the
+%% new replica key is complete. While the key state is `Creating', you
+%% can manage key, but you cannot yet use it in cryptographic operations. If
+%% you are creating and using the replica key programmatically, retry on
+%% `KMSInvalidStateException' or call `DescribeKey' to check its
+%% `KeyState' value before using it. For details about the `Creating'
+%% key state, see Key states of KMS keys in the Key Management Service
+%% Developer Guide.
 %%
 %% You cannot create more than one replica of a primary key in any Region. If
 %% the Region already includes a replica of the key you're trying to
-%% replicate, `ReplicateKey' returns an `AlreadyExistsException' error. If
-%% the key state of the existing replica is `PendingDeletion', you can cancel
-%% the scheduled key deletion (`CancelKeyDeletion') or wait for the key to be
-%% deleted. The new replica key you create will have the same shared
-%% properties as the original replica key.
+%% replicate, `ReplicateKey' returns an `AlreadyExistsException'
+%% error. If the key state of the existing replica is `PendingDeletion',
+%% you can cancel the scheduled key deletion (`CancelKeyDeletion') or
+%% wait for the key to be deleted. The new replica key you create will have
+%% the same shared properties as the original replica key.
 %%
-%% The CloudTrail log of a `ReplicateKey' operation records a `ReplicateKey'
-%% operation in the primary key's Region and a `CreateKey' operation in the
-%% replica key's Region.
+%% The CloudTrail log of a `ReplicateKey' operation records a
+%% `ReplicateKey' operation in the primary key's Region and a
+%% `CreateKey' operation in the replica key's Region.
 %%
 %% If you replicate a multi-Region primary key with imported key material,
 %% the replica key is created with no key material. You must import the same
@@ -2375,25 +2390,26 @@ re_encrypt(Client, Input, Options)
 %% Importing key material into multi-Region keys in the Key Management
 %% Service Developer Guide.
 %%
-%% To convert a replica key to a primary key, use the `UpdatePrimaryRegion'
-%% operation.
+%% To convert a replica key to a primary key, use the
+%% `UpdatePrimaryRegion' operation.
 %%
-%% `ReplicateKey' uses different default values for the `KeyPolicy' and
-%% `Tags' parameters than those used in the KMS console. For details, see the
-%% parameter descriptions.
+%% `ReplicateKey' uses different default values for the `KeyPolicy'
+%% and `Tags' parameters than those used in the KMS console. For details,
+%% see the parameter descriptions.
 %%
 %% Cross-account use: No. You cannot use this operation to create a replica
 %% key in a different Amazon Web Services account.
 %%
 %% Required permissions:
 %%
-%% <ul> <li> `kms:ReplicateKey' on the primary key (in the primary key's
-%% Region). Include this permission in the primary key's key policy.
+%% <ul> <li> `kms:ReplicateKey' on the primary key (in the primary
+%% key's Region). Include this permission in the primary key's key
+%% policy.
 %%
 %% </li> <li> `kms:CreateKey' in an IAM policy in the replica Region.
 %%
-%% </li> <li> To use the `Tags' parameter, `kms:TagResource' in an IAM policy
-%% in the replica Region.
+%% </li> <li> To use the `Tags' parameter, `kms:TagResource' in an
+%% IAM policy in the replica Region.
 %%
 %% </li> </ul> Related operations
 %%
@@ -2417,9 +2433,9 @@ replicate_key(Client, Input, Options)
 %% operation returns both values.
 %%
 %% This operation can be called by the retiring principal for a grant, by the
-%% grantee principal if the grant allows the `RetireGrant' operation, and by
-%% the Amazon Web Services account in which the grant is created. It can also
-%% be called by principals to whom permission for retiring a grant is
+%% grantee principal if the grant allows the `RetireGrant' operation, and
+%% by the Amazon Web Services account in which the grant is created. It can
+%% also be called by principals to whom permission for retiring a grant is
 %% delegated. For details, see Retiring and revoking grants in the Key
 %% Management Service Developer Guide.
 %%
@@ -2497,12 +2513,13 @@ revoke_grant(Client, Input, Options)
 %%
 %% By default, KMS applies a waiting period of 30 days, but you can specify a
 %% waiting period of 7-30 days. When this operation is successful, the key
-%% state of the KMS key changes to `PendingDeletion' and the key can't be
-%% used in any cryptographic operations. It remains in this state for the
-%% duration of the waiting period. Before the waiting period ends, you can
-%% use `CancelKeyDeletion' to cancel the deletion of the KMS key. After the
-%% waiting period ends, KMS deletes the KMS key, its key material, and all
-%% KMS data associated with it, including all aliases that refer to it.
+%% state of the KMS key changes to `PendingDeletion' and the key
+%% can't be used in any cryptographic operations. It remains in this
+%% state for the duration of the waiting period. Before the waiting period
+%% ends, you can use `CancelKeyDeletion' to cancel the deletion of the
+%% KMS key. After the waiting period ends, KMS deletes the KMS key, its key
+%% material, and all KMS data associated with it, including all aliases that
+%% refer to it.
 %%
 %% Deleting a KMS key is a destructive and potentially dangerous operation.
 %% When a KMS key is deleted, all data that was encrypted under the KMS key
@@ -2560,8 +2577,8 @@ schedule_key_deletion(Client, Input, Options)
 %% @doc Creates a digital signature for a message or message digest by using
 %% the private key in an asymmetric signing KMS key.
 %%
-%% To verify the signature, use the `Verify' operation, or use the public key
-%% in the same asymmetric KMS key outside of KMS. For information about
+%% To verify the signature, use the `Verify' operation, or use the public
+%% key in the same asymmetric KMS key outside of KMS. For information about
 %% asymmetric KMS keys, see Asymmetric KMS keys in the Key Management Service
 %% Developer Guide.
 %%
@@ -2574,16 +2591,17 @@ schedule_key_deletion(Client, Input, Options)
 %%
 %% To use the `Sign' operation, provide the following information:
 %%
-%% <ul> <li> Use the `KeyId' parameter to identify an asymmetric KMS key with
-%% a `KeyUsage' value of `SIGN_VERIFY'. To get the `KeyUsage' value of a KMS
-%% key, use the `DescribeKey' operation. The caller must have `kms:Sign'
-%% permission on the KMS key.
+%% <ul> <li> Use the `KeyId' parameter to identify an asymmetric KMS key
+%% with a `KeyUsage' value of `SIGN_VERIFY'. To get the
+%% `KeyUsage' value of a KMS key, use the `DescribeKey' operation.
+%% The caller must have `kms:Sign' permission on the KMS key.
 %%
-%% </li> <li> Use the `Message' parameter to specify the message or message
-%% digest to sign. You can submit messages of up to 4096 bytes. To sign a
-%% larger message, generate a hash digest of the message, and then provide
-%% the hash digest in the `Message' parameter. To indicate whether the
-%% message is a full message or a digest, use the `MessageType' parameter.
+%% </li> <li> Use the `Message' parameter to specify the message or
+%% message digest to sign. You can submit messages of up to 4096 bytes. To
+%% sign a larger message, generate a hash digest of the message, and then
+%% provide the hash digest in the `Message' parameter. To indicate
+%% whether the message is a full message or a digest, use the
+%% `MessageType' parameter.
 %%
 %% </li> <li> Choose a signing algorithm that is compatible with the KMS key.
 %%
@@ -2597,9 +2615,10 @@ schedule_key_deletion(Client, Input, Options)
 %% a timestamp in the signed message to help you detect when its time to
 %% refresh the signature.
 %%
-%% To verify the signature that this operation generates, use the `Verify'
-%% operation. Or use the `GetPublicKey' operation to download the public key
-%% and then use the public key to verify the signature outside of KMS.
+%% To verify the signature that this operation generates, use the
+%% `Verify' operation. Or use the `GetPublicKey' operation to
+%% download the public key and then use the public key to verify the
+%% signature outside of KMS.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For details, see Key states of KMS keys in the Key Management
@@ -2677,10 +2696,10 @@ tag_resource(Client, Input, Options)
 %% key. For details, see ABAC for KMS in the Key Management Service Developer
 %% Guide.
 %%
-%% When it succeeds, the `UntagResource' operation doesn't return any output.
-%% Also, if the specified tag key isn't found on the KMS key, it doesn't
-%% throw an exception or return a response. To confirm that the operation
-%% worked, use the `ListResourceTags' operation.
+%% When it succeeds, the `UntagResource' operation doesn't return any
+%% output. Also, if the specified tag key isn't found on the KMS key, it
+%% doesn't throw an exception or return a response. To confirm that the
+%% operation worked, use the `ListResourceTags' operation.
 %%
 %% For information about using tags in KMS, see Tagging keys. For general
 %% information about tags, including the format and syntax, see Tagging
@@ -2727,18 +2746,18 @@ untag_resource(Client, Input, Options)
 %% The current and new KMS key must be the same type (both symmetric or both
 %% asymmetric or both HMAC), and they must have the same key usage. This
 %% restriction prevents errors in code that uses aliases. If you must assign
-%% an alias to a different type of KMS key, use `DeleteAlias' to delete the
-%% old alias and `CreateAlias' to create a new alias.
+%% an alias to a different type of KMS key, use `DeleteAlias' to delete
+%% the old alias and `CreateAlias' to create a new alias.
 %%
-%% You cannot use `UpdateAlias' to change an alias name. To change an alias
-%% name, use `DeleteAlias' to delete the old alias and `CreateAlias' to
-%% create a new alias.
+%% You cannot use `UpdateAlias' to change an alias name. To change an
+%% alias name, use `DeleteAlias' to delete the old alias and
+%% `CreateAlias' to create a new alias.
 %%
 %% Because an alias is not a property of a KMS key, you can create, update,
 %% and delete the aliases of a KMS key without affecting the KMS key. Also,
-%% aliases do not appear in the response from the `DescribeKey' operation. To
-%% get the aliases of all KMS keys in the account, use the `ListAliases'
-%% operation.
+%% aliases do not appear in the response from the `DescribeKey'
+%% operation. To get the aliases of all KMS keys in the account, use the
+%% `ListAliases' operation.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For details, see Key states of KMS keys in the Key Management
@@ -2779,8 +2798,8 @@ update_alias(Client, Input, Options)
 %% You can use this operation to change the properties of an CloudHSM key
 %% store or an external key store.
 %%
-%% Use the required `CustomKeyStoreId' parameter to identify the custom key
-%% store. Use the remaining optional parameters to change its properties.
+%% Use the required `CustomKeyStoreId' parameter to identify the custom
+%% key store. Use the remaining optional parameters to change its properties.
 %% This operation does not return any property values. To verify the updated
 %% property values, use the `DescribeCustomKeyStores' operation.
 %%
@@ -2811,37 +2830,39 @@ update_alias(Client, Input, Options)
 %%
 %% For an CloudHSM key store, you can use this operation to change the custom
 %% key store friendly name (`NewCustomKeyStoreName'), to tell KMS about a
-%% change to the `kmsuser' crypto user password (`KeyStorePassword'), or to
-%% associate the custom key store with a different, but related, CloudHSM
-%% cluster (`CloudHsmClusterId'). To update any property of an CloudHSM key
-%% store, the `ConnectionState' of the CloudHSM key store must be
-%% `DISCONNECTED'.
+%% change to the `kmsuser' crypto user password (`KeyStorePassword'),
+%% or to associate the custom key store with a different, but related,
+%% CloudHSM cluster (`CloudHsmClusterId'). To update any property of an
+%% CloudHSM key store, the `ConnectionState' of the CloudHSM key store
+%% must be `DISCONNECTED'.
 %%
 %% For an external key store, you can use this operation to change the custom
-%% key store friendly name (`NewCustomKeyStoreName'), or to tell KMS about a
-%% change to the external key store proxy authentication credentials
+%% key store friendly name (`NewCustomKeyStoreName'), or to tell KMS
+%% about a change to the external key store proxy authentication credentials
 %% (`XksProxyAuthenticationCredential'), connection method
-%% (`XksProxyConnectivity'), external proxy endpoint (`XksProxyUriEndpoint')
-%% and path (`XksProxyUriPath'). For external key stores with an
-%% `XksProxyConnectivity' of `VPC_ENDPOINT_SERVICE', you can also update the
-%% Amazon VPC endpoint service name (`XksProxyVpcEndpointServiceName'). To
-%% update most properties of an external key store, the `ConnectionState' of
-%% the external key store must be `DISCONNECTED'. However, you can update the
+%% (`XksProxyConnectivity'), external proxy endpoint
+%% (`XksProxyUriEndpoint') and path (`XksProxyUriPath'). For external
+%% key stores with an `XksProxyConnectivity' of
+%% `VPC_ENDPOINT_SERVICE', you can also update the Amazon VPC endpoint
+%% service name (`XksProxyVpcEndpointServiceName'). To update most
+%% properties of an external key store, the `ConnectionState' of the
+%% external key store must be `DISCONNECTED'. However, you can update the
 %% `CustomKeyStoreName', `XksProxyAuthenticationCredential', and
-%% `XksProxyUriPath' of an external key store when it is in the CONNECTED or
-%% DISCONNECTED state.
+%% `XksProxyUriPath' of an external key store when it is in the CONNECTED
+%% or DISCONNECTED state.
 %%
 %% If your update requires a `DISCONNECTED' state, before using
-%% `UpdateCustomKeyStore', use the `DisconnectCustomKeyStore' operation to
-%% disconnect the custom key store. After the `UpdateCustomKeyStore'
-%% operation completes, use the `ConnectCustomKeyStore' to reconnect the
-%% custom key store. To find the `ConnectionState' of the custom key store,
-%% use the `DescribeCustomKeyStores' operation.
+%% `UpdateCustomKeyStore', use the `DisconnectCustomKeyStore'
+%% operation to disconnect the custom key store. After the
+%% `UpdateCustomKeyStore' operation completes, use the
+%% `ConnectCustomKeyStore' to reconnect the custom key store. To find the
+%% `ConnectionState' of the custom key store, use the
+%% `DescribeCustomKeyStores' operation.
 %%
 %% Before updating the custom key store, verify that the new values allow KMS
 %% to connect the custom key store to its backing key store. For example,
-%% before you change the `XksProxyUriPath' value, verify that the external
-%% key store proxy is reachable at the new path.
+%% before you change the `XksProxyUriPath' value, verify that the
+%% external key store proxy is reachable at the new path.
 %%
 %% If the operation succeeds, it returns a JSON object with no properties.
 %%
@@ -2901,11 +2922,12 @@ update_key_description(Client, Input, Options)
 %%
 %% This operation changes the replica key in the specified Region to a
 %% primary key and changes the former primary key to a replica key. For
-%% example, suppose you have a primary key in `us-east-1' and a replica key
-%% in `eu-west-2'. If you run `UpdatePrimaryRegion' with a `PrimaryRegion'
-%% value of `eu-west-2', the primary key is now the key in `eu-west-2', and
-%% the key in `us-east-1' becomes a replica key. For details, see Updating
-%% the primary Region in the Key Management Service Developer Guide.
+%% example, suppose you have a primary key in `us-east-1' and a replica
+%% key in `eu-west-2'. If you run `UpdatePrimaryRegion' with a
+%% `PrimaryRegion' value of `eu-west-2', the primary key is now the
+%% key in `eu-west-2', and the key in `us-east-1' becomes a replica
+%% key. For details, see Updating the primary Region in the Key Management
+%% Service Developer Guide.
 %%
 %% This operation supports multi-Region keys, an KMS feature that lets you
 %% create multiple interoperable KMS keys in different Amazon Web Services
@@ -2919,8 +2941,8 @@ update_key_description(Client, Input, Options)
 %% The primary key of a multi-Region key is the source for properties that
 %% are always shared by primary and replica keys, including the key material,
 %% key ID, key spec, key usage, key material origin, and automatic key
-%% rotation. It's the only key that can be replicated. You cannot delete the
-%% primary key until all replica keys are deleted.
+%% rotation. It's the only key that can be replicated. You cannot delete
+%% the primary key until all replica keys are deleted.
 %%
 %% The key ID and primary Region that you specify uniquely identify the
 %% replica key that will become the primary key. The primary Region must
@@ -2941,8 +2963,8 @@ update_key_description(Client, Input, Options)
 %% complete. While the key state is `Updating', you can use the keys in
 %% cryptographic operations, but you cannot replicate the new primary key or
 %% perform certain management operations, such as enabling or disabling these
-%% keys. For details about the `Updating' key state, see Key states of KMS
-%% keys in the Key Management Service Developer Guide.
+%% keys. For details about the `Updating' key state, see Key states of
+%% KMS keys in the Key Management Service Developer Guide.
 %%
 %% This operation does not return any output. To verify that primary key is
 %% changed, use the `DescribeKey' operation.
@@ -2953,11 +2975,12 @@ update_key_description(Client, Input, Options)
 %% Required permissions:
 %%
 %% <ul> <li> `kms:UpdatePrimaryRegion' on the current primary key (in the
-%% primary key's Region). Include this permission primary key's key policy.
-%%
-%% </li> <li> `kms:UpdatePrimaryRegion' on the current replica key (in the
-%% replica key's Region). Include this permission in the replica key's key
+%% primary key's Region). Include this permission primary key's key
 %% policy.
+%%
+%% </li> <li> `kms:UpdatePrimaryRegion' on the current replica key (in
+%% the replica key's Region). Include this permission in the replica
+%% key's key policy.
 %%
 %% </li> </ul> Related operations
 %%
@@ -2977,10 +3000,10 @@ update_primary_region(Client, Input, Options)
 %% operation.
 %%
 %% Verification confirms that an authorized user signed the message with the
-%% specified KMS key and signing algorithm, and the message hasn't changed
-%% since it was signed. If the signature is verified, the value of the
-%% `SignatureValid' field in the response is `True'. If the signature
-%% verification fails, the `Verify' operation fails with an
+%% specified KMS key and signing algorithm, and the message hasn't
+%% changed since it was signed. If the signature is verified, the value of
+%% the `SignatureValid' field in the response is `True'. If the
+%% signature verification fails, the `Verify' operation fails with an
 %% `KMSInvalidSignatureException' exception.
 %%
 %% A digital signature is generated by using the private key in an asymmetric
@@ -2988,18 +3011,19 @@ update_primary_region(Client, Input, Options)
 %% asymmetric KMS key. For information about asymmetric KMS keys, see
 %% Asymmetric KMS keys in the Key Management Service Developer Guide.
 %%
-%% To verify a digital signature, you can use the `Verify' operation. Specify
-%% the same asymmetric KMS key, message, and signing algorithm that were used
-%% to produce the signature.
+%% To verify a digital signature, you can use the `Verify' operation.
+%% Specify the same asymmetric KMS key, message, and signing algorithm that
+%% were used to produce the signature.
 %%
 %% You can also verify the digital signature by using the public key of the
-%% KMS key outside of KMS. Use the `GetPublicKey' operation to download the
-%% public key in the asymmetric KMS key and then use the public key to verify
-%% the signature outside of KMS. The advantage of using the `Verify'
-%% operation is that it is performed within KMS. As a result, it's easy to
-%% call, the operation is performed within the FIPS boundary, it is logged in
-%% CloudTrail, and you can use key policy and IAM policy to determine who is
-%% authorized to use the KMS key to verify signatures.
+%% KMS key outside of KMS. Use the `GetPublicKey' operation to download
+%% the public key in the asymmetric KMS key and then use the public key to
+%% verify the signature outside of KMS. The advantage of using the
+%% `Verify' operation is that it is performed within KMS. As a result,
+%% it's easy to call, the operation is performed within the FIPS
+%% boundary, it is logged in CloudTrail, and you can use key policy and IAM
+%% policy to determine who is authorized to use the KMS key to verify
+%% signatures.
 %%
 %% To verify a signature outside of KMS with an SM2 public key (China Regions
 %% only), you must specify the distinguishing ID. By default, KMS uses
@@ -3027,11 +3051,11 @@ verify(Client, Input, Options)
 %% @doc Verifies the hash-based message authentication code (HMAC) for a
 %% specified message, HMAC KMS key, and MAC algorithm.
 %%
-%% To verify the HMAC, `VerifyMac' computes an HMAC using the message, HMAC
-%% KMS key, and MAC algorithm that you specify, and compares the computed
-%% HMAC to the HMAC that you specify. If the HMACs are identical, the
-%% verification succeeds; otherwise, it fails. Verification indicates that
-%% the message hasn't changed since the HMAC was calculated, and the
+%% To verify the HMAC, `VerifyMac' computes an HMAC using the message,
+%% HMAC KMS key, and MAC algorithm that you specify, and compares the
+%% computed HMAC to the HMAC that you specify. If the HMACs are identical,
+%% the verification succeeds; otherwise, it fails. Verification indicates
+%% that the message hasn't changed since the HMAC was calculated, and the
 %% specified key was used to generate and verify the HMAC.
 %%
 %% HMAC KMS keys and the HMAC algorithms that KMS uses conform to industry

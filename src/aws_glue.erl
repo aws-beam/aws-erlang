@@ -445,13 +445,14 @@ batch_delete_partition(Client, Input, Options)
 %%
 %% After completing this operation, you no longer have access to the table
 %% versions and partitions that belong to the deleted table. Glue deletes
-%% these "orphaned" resources asynchronously in a timely manner, at the
-%% discretion of the service.
+%% these &quot;orphaned&quot; resources asynchronously in a timely manner, at
+%% the discretion of the service.
 %%
 %% To ensure the immediate deletion of all related resources, before calling
-%% `BatchDeleteTable', use `DeleteTableVersion' or `BatchDeleteTableVersion',
-%% and `DeletePartition' or `BatchDeletePartition', to delete any resources
-%% that belong to the table.
+%% `BatchDeleteTable', use `DeleteTableVersion' or
+%% `BatchDeleteTableVersion', and `DeletePartition' or
+%% `BatchDeletePartition', to delete any resources that belong to the
+%% table.
 batch_delete_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_delete_table(Client, Input, []).
@@ -478,10 +479,10 @@ batch_get_blueprints(Client, Input, Options)
 %% @doc Returns a list of resource metadata for a given list of crawler
 %% names.
 %%
-%% After calling the `ListCrawlers' operation, you can call this operation to
-%% access the data to which you have been granted permissions. This operation
-%% supports all IAM permissions, including permission conditions that uses
-%% tags.
+%% After calling the `ListCrawlers' operation, you can call this
+%% operation to access the data to which you have been granted permissions.
+%% This operation supports all IAM permissions, including permission
+%% conditions that uses tags.
 batch_get_crawlers(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_crawlers(Client, Input, []).
@@ -545,10 +546,10 @@ batch_get_partition(Client, Input, Options)
 %% @doc Returns a list of resource metadata for a given list of trigger
 %% names.
 %%
-%% After calling the `ListTriggers' operation, you can call this operation to
-%% access the data to which you have been granted permissions. This operation
-%% supports all IAM permissions, including permission conditions that uses
-%% tags.
+%% After calling the `ListTriggers' operation, you can call this
+%% operation to access the data to which you have been granted permissions.
+%% This operation supports all IAM permissions, including permission
+%% conditions that uses tags.
 batch_get_triggers(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_triggers(Client, Input, []).
@@ -559,10 +560,10 @@ batch_get_triggers(Client, Input, Options)
 %% @doc Returns a list of resource metadata for a given list of workflow
 %% names.
 %%
-%% After calling the `ListWorkflows' operation, you can call this operation
-%% to access the data to which you have been granted permissions. This
-%% operation supports all IAM permissions, including permission conditions
-%% that uses tags.
+%% After calling the `ListWorkflows' operation, you can call this
+%% operation to access the data to which you have been granted permissions.
+%% This operation supports all IAM permissions, including permission
+%% conditions that uses tags.
 batch_get_workflows(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_workflows(Client, Input, []).
@@ -608,9 +609,9 @@ cancel_data_quality_ruleset_evaluation_run(Client, Input, Options)
 %%
 %% Machine learning task runs are asynchronous tasks that Glue runs on your
 %% behalf as part of various machine learning workflows. You can cancel a
-%% machine learning task run at any time by calling `CancelMLTaskRun' with a
-%% task run's parent transform's `TransformID' and the task run's
-%% `TaskRunId'.
+%% machine learning task run at any time by calling `CancelMLTaskRun'
+%% with a task run's parent transform's `TransformID' and the
+%% task run's `TaskRunId'.
 cancel_ml_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_ml_task_run(Client, Input, []).
@@ -629,8 +630,8 @@ cancel_statement(Client, Input, Options)
 %% @doc Validates the supplied schema.
 %%
 %% This call has no side effects, it simply validates using the supplied
-%% schema using `DataFormat' as the format. Since it does not take a schema
-%% set name, no compatibility checks are performed.
+%% schema using `DataFormat' as the format. Since it does not take a
+%% schema set name, no compatibility checks are performed.
 check_schema_version_validity(Client, Input)
   when is_map(Client), is_map(Input) ->
     check_schema_version_validity(Client, Input, []).
@@ -648,8 +649,9 @@ create_blueprint(Client, Input, Options)
 
 %% @doc Creates a classifier in the user's account.
 %%
-%% This can be a `GrokClassifier', an `XMLClassifier', a `JsonClassifier', or
-%% a `CsvClassifier', depending on which field of the request is present.
+%% This can be a `GrokClassifier', an `XMLClassifier', a
+%% `JsonClassifier', or a `CsvClassifier', depending on which field
+%% of the request is present.
 create_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_classifier(Client, Input, []).
@@ -668,8 +670,8 @@ create_connection(Client, Input, Options)
 %% @doc Creates a new crawler with specified targets, role, configuration,
 %% and optional schedule.
 %%
-%% At least one crawl target must be specified, in the `s3Targets' field, the
-%% `jdbcTargets' field, or the `DynamoDBTargets' field.
+%% At least one crawl target must be specified, in the `s3Targets' field,
+%% the `jdbcTargets' field, or the `DynamoDBTargets' field.
 create_crawler(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_crawler(Client, Input, []).
@@ -732,15 +734,15 @@ create_job(Client, Input, Options)
 %% train it.
 %%
 %% Call this operation as the first step in the process of using a machine
-%% learning transform (such as the `FindMatches' transform) for deduplicating
-%% data. You can provide an optional `Description', in addition to the
-%% parameters that you want to use for your algorithm.
+%% learning transform (such as the `FindMatches' transform) for
+%% deduplicating data. You can provide an optional `Description', in
+%% addition to the parameters that you want to use for your algorithm.
 %%
 %% You must also specify certain parameters for the tasks that Glue runs on
 %% your behalf as part of learning from your data and creating a high-quality
 %% machine learning transform. These parameters include `Role', and
-%% optionally, `AllocatedCapacity', `Timeout', and `MaxRetries'. For more
-%% information, see Jobs.
+%% optionally, `AllocatedCapacity', `Timeout', and `MaxRetries'.
+%% For more information, see Jobs.
 create_ml_transform(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_ml_transform(Client, Input, []).
@@ -779,15 +781,15 @@ create_registry(Client, Input, Options)
 %% registering the version.
 %%
 %% When the schema set is created, a version checkpoint will be set to the
-%% first version. Compatibility mode "DISABLED" restricts any additional
-%% schema versions from being added after the first schema version. For all
-%% other compatibility modes, validation of compatibility settings will be
-%% applied only from the second version onwards when the
+%% first version. Compatibility mode &quot;DISABLED&quot; restricts any
+%% additional schema versions from being added after the first schema
+%% version. For all other compatibility modes, validation of compatibility
+%% settings will be applied only from the second version onwards when the
 %% `RegisterSchemaVersion' API is used.
 %%
-%% When this API is called without a `RegistryId', this will create an entry
-%% for a "default-registry" in the registry database tables, if it is not
-%% already present.
+%% When this API is called without a `RegistryId', this will create an
+%% entry for a &quot;default-registry&quot; in the registry database tables,
+%% if it is not already present.
 create_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_schema(Client, Input, []).
@@ -932,13 +934,14 @@ delete_data_quality_ruleset(Client, Input, Options)
 %% After completing this operation, you no longer have access to the tables
 %% (and all table versions and partitions that might belong to the tables)
 %% and the user-defined functions in the deleted database. Glue deletes these
-%% "orphaned" resources asynchronously in a timely manner, at the discretion
-%% of the service.
+%% &quot;orphaned&quot; resources asynchronously in a timely manner, at the
+%% discretion of the service.
 %%
 %% To ensure the immediate deletion of all related resources, before calling
-%% `DeleteDatabase', use `DeleteTableVersion' or `BatchDeleteTableVersion',
-%% `DeletePartition' or `BatchDeletePartition', `DeleteUserDefinedFunction',
-%% and `DeleteTable' or `BatchDeleteTable', to delete any resources that
+%% `DeleteDatabase', use `DeleteTableVersion' or
+%% `BatchDeleteTableVersion', `DeletePartition' or
+%% `BatchDeletePartition', `DeleteUserDefinedFunction', and
+%% `DeleteTable' or `BatchDeleteTable', to delete any resources that
 %% belong to the database.
 delete_database(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -971,8 +974,8 @@ delete_job(Client, Input, Options)
 %% machine learning to learn the details of the transformation to be
 %% performed by learning from examples provided by humans. These
 %% transformations are then saved by Glue. If you no longer need a transform,
-%% you can delete it by calling `DeleteMLTransforms'. However, any Glue jobs
-%% that still reference the deleted transform will no longer succeed.
+%% you can delete it by calling `DeleteMLTransforms'. However, any Glue
+%% jobs that still reference the deleted transform will no longer succeed.
 delete_ml_transform(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_ml_transform(Client, Input, []).
@@ -998,10 +1001,11 @@ delete_partition_index(Client, Input, Options)
 
 %% @doc Delete the entire registry including schema and all of its versions.
 %%
-%% To get the status of the delete operation, you can call the `GetRegistry'
-%% API after the asynchronous call. Deleting a registry will deactivate all
-%% online operations for the registry such as the `UpdateRegistry',
-%% `CreateSchema', `UpdateSchema', and `RegisterSchemaVersion' APIs.
+%% To get the status of the delete operation, you can call the
+%% `GetRegistry' API after the asynchronous call. Deleting a registry
+%% will deactivate all online operations for the registry such as the
+%% `UpdateRegistry', `CreateSchema', `UpdateSchema', and
+%% `RegisterSchemaVersion' APIs.
 delete_registry(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_registry(Client, Input, []).
@@ -1020,10 +1024,10 @@ delete_resource_policy(Client, Input, Options)
 %% @doc Deletes the entire schema set, including the schema set and all of
 %% its versions.
 %%
-%% To get the status of the delete operation, you can call `GetSchema' API
-%% after the asynchronous call. Deleting a registry will deactivate all
-%% online operations for the schema, such as the `GetSchemaByDefinition', and
-%% `RegisterSchemaVersion' APIs.
+%% To get the status of the delete operation, you can call `GetSchema'
+%% API after the asynchronous call. Deleting a registry will deactivate all
+%% online operations for the schema, such as the `GetSchemaByDefinition',
+%% and `RegisterSchemaVersion' APIs.
 delete_schema(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_schema(Client, Input, []).
@@ -1035,19 +1039,19 @@ delete_schema(Client, Input, Options)
 %%
 %% A version number or range may be supplied. If the compatibility mode
 %% forbids deleting of a version that is necessary, such as BACKWARDS_FULL,
-%% an error is returned. Calling the `GetSchemaVersions' API after this call
-%% will list the status of the deleted versions.
+%% an error is returned. Calling the `GetSchemaVersions' API after this
+%% call will list the status of the deleted versions.
 %%
 %% When the range of version numbers contain check pointed version, the API
 %% will return a 409 conflict and will not proceed with the deletion. You
-%% have to remove the checkpoint first using the `DeleteSchemaCheckpoint' API
-%% before using this API.
+%% have to remove the checkpoint first using the `DeleteSchemaCheckpoint'
+%% API before using this API.
 %%
-%% You cannot use the `DeleteSchemaVersions' API to delete the first schema
-%% version in the schema set. The first schema version can only be deleted by
-%% the `DeleteSchema' API. This operation will also delete the attached
-%% `SchemaVersionMetadata' under the schema versions. Hard deletes will be
-%% enforced on the database.
+%% You cannot use the `DeleteSchemaVersions' API to delete the first
+%% schema version in the schema set. The first schema version can only be
+%% deleted by the `DeleteSchema' API. This operation will also delete the
+%% attached `SchemaVersionMetadata' under the schema versions. Hard
+%% deletes will be enforced on the database.
 %%
 %% If the compatibility mode forbids deleting of a version that is necessary,
 %% such as BACKWARDS_FULL, an error is returned.
@@ -1078,13 +1082,14 @@ delete_session(Client, Input, Options)
 %%
 %% After completing this operation, you no longer have access to the table
 %% versions and partitions that belong to the deleted table. Glue deletes
-%% these "orphaned" resources asynchronously in a timely manner, at the
-%% discretion of the service.
+%% these &quot;orphaned&quot; resources asynchronously in a timely manner, at
+%% the discretion of the service.
 %%
 %% To ensure the immediate deletion of all related resources, before calling
-%% `DeleteTable', use `DeleteTableVersion' or `BatchDeleteTableVersion', and
-%% `DeletePartition' or `BatchDeletePartition', to delete any resources that
-%% belong to the table.
+%% `DeleteTable', use `DeleteTableVersion' or
+%% `BatchDeleteTableVersion', and `DeletePartition' or
+%% `BatchDeletePartition', to delete any resources that belong to the
+%% table.
 delete_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_table(Client, Input, []).
@@ -1399,8 +1404,8 @@ get_mapping(Client, Input, Options)
 %%
 %% Machine learning task runs are asynchronous tasks that Glue runs on your
 %% behalf as part of various machine learning workflows. You can check the
-%% stats of any task run by calling `GetMLTaskRun' with the `TaskRunID' and
-%% its parent transform's `TransformID'.
+%% stats of any task run by calling `GetMLTaskRun' with the
+%% `TaskRunID' and its parent transform's `TransformID'.
 get_ml_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ml_task_run(Client, Input, []).
@@ -1413,8 +1418,8 @@ get_ml_task_run(Client, Input, Options)
 %% Machine learning task runs are asynchronous tasks that Glue runs on your
 %% behalf as part of various machine learning workflows. You can get a
 %% sortable, filterable list of machine learning task runs by calling
-%% `GetMLTaskRuns' with their parent transform's `TransformID' and other
-%% optional parameters as documented in this section.
+%% `GetMLTaskRuns' with their parent transform's `TransformID'
+%% and other optional parameters as documented in this section.
 %%
 %% This operation returns a list of historic runs and must be paginated.
 get_ml_task_runs(Client, Input)
@@ -1500,8 +1505,8 @@ get_registry(Client, Input, Options)
 %% Also retrieves the Data Catalog resource policy.
 %%
 %% If you enabled metadata encryption in Data Catalog settings, and you do
-%% not have permission on the KMS key, the operation can't return the Data
-%% Catalog resource policy.
+%% not have permission on the KMS key, the operation can't return the
+%% Data Catalog resource policy.
 get_resource_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_policies(Client, Input, []).
@@ -1528,10 +1533,10 @@ get_schema(Client, Input, Options)
 %% @doc Retrieves a schema by the `SchemaDefinition'.
 %%
 %% The schema definition is sent to the Schema Registry, canonicalized, and
-%% hashed. If the hash is matched within the scope of the `SchemaName' or ARN
-%% (or the default registry, if none is supplied), that schema’s metadata is
-%% returned. Otherwise, a 404 or NotFound error is returned. Schema versions
-%% in `Deleted' statuses will not be included in the results.
+%% hashed. If the hash is matched within the scope of the `SchemaName' or
+%% ARN (or the default registry, if none is supplied), that schema’s metadata
+%% is returned. Otherwise, a 404 or NotFound error is returned. Schema
+%% versions in `Deleted' statuses will not be included in the results.
 get_schema_by_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_schema_by_definition(Client, Input, []).
@@ -1594,8 +1599,8 @@ get_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetStatement">>, Input, Options).
 
-%% @doc Retrieves the `Table' definition in a Data Catalog for a specified
-%% table.
+%% @doc Retrieves the `Table' definition in a Data Catalog for a
+%% specified table.
 get_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_table(Client, Input, []).
@@ -1827,8 +1832,8 @@ list_data_quality_rulesets(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDataQualityRulesets">>, Input, Options).
 
-%% @doc Retrieves the names of all `DevEndpoint' resources in this Amazon Web
-%% Services account, or the resources with the specified tag.
+%% @doc Retrieves the names of all `DevEndpoint' resources in this Amazon
+%% Web Services account, or the resources with the specified tag.
 %%
 %% This operation allows you to see which resources are available in your
 %% account, and their names.
@@ -1879,8 +1884,9 @@ list_ml_transforms(Client, Input, Options)
 %% @doc Returns a list of registries that you have created, with minimal
 %% registry information.
 %%
-%% Registries in the `Deleting' status will not be included in the results.
-%% Empty results will be returned if there are no registries available.
+%% Registries in the `Deleting' status will not be included in the
+%% results. Empty results will be returned if there are no registries
+%% available.
 list_registries(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_registries(Client, Input, []).
@@ -1905,8 +1911,8 @@ list_schema_versions(Client, Input, Options)
 %% Schemas in Deleting status will not be included in the results. Empty
 %% results will be returned if there are no schemas available.
 %%
-%% When the `RegistryId' is not provided, all the schemas across registries
-%% will be part of the API response.
+%% When the `RegistryId' is not provided, all the schemas across
+%% registries will be part of the API response.
 list_schemas(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_schemas(Client, Input, []).
@@ -2015,8 +2021,8 @@ query_schema_version_metadata(Client, Input, Options)
 %% If this is the first schema definition to be registered in the Schema
 %% Registry, this API will store the schema version and return immediately.
 %% Otherwise, this call has the potential to run longer than other operations
-%% due to compatibility modes. You can call the `GetSchemaVersion' API with
-%% the `SchemaVersionId' to check compatibility modes.
+%% due to compatibility modes. You can call the `GetSchemaVersion' API
+%% with the `SchemaVersionId' to check compatibility modes.
 %%
 %% If the same schema definition is already stored in Schema Registry as a
 %% version, the schema ID of the existing schema is returned to the caller.
@@ -2112,9 +2118,9 @@ start_crawler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartCrawler">>, Input, Options).
 
-%% @doc Changes the schedule state of the specified crawler to `SCHEDULED',
-%% unless the crawler is already running or the schedule state is already
-%% `SCHEDULED'.
+%% @doc Changes the schedule state of the specified crawler to
+%% `SCHEDULED', unless the crawler is already running or the schedule
+%% state is already `SCHEDULED'.
 start_crawler_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_crawler_schedule(Client, Input, []).
@@ -2153,13 +2159,13 @@ start_data_quality_ruleset_evaluation_run(Client, Input, Options)
 %%
 %% This task is the only label-related API call that is not part of the
 %% typical active learning workflow. You typically use
-%% `StartExportLabelsTaskRun' when you want to work with all of your existing
-%% labels at the same time, such as when you want to remove or change labels
-%% that were previously submitted as truth. This API operation accepts the
-%% `TransformId' whose labels you want to export and an Amazon Simple Storage
-%% Service (Amazon S3) path to export the labels to. The operation returns a
-%% `TaskRunId'. You can check on the status of your task run by calling the
-%% `GetMLTaskRun' API.
+%% `StartExportLabelsTaskRun' when you want to work with all of your
+%% existing labels at the same time, such as when you want to remove or
+%% change labels that were previously submitted as truth. This API operation
+%% accepts the `TransformId' whose labels you want to export and an
+%% Amazon Simple Storage Service (Amazon S3) path to export the labels to.
+%% The operation returns a `TaskRunId'. You can check on the status of
+%% your task run by calling the `GetMLTaskRun' API.
 start_export_labels_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_export_labels_task_run(Client, Input, []).
@@ -2171,31 +2177,32 @@ start_export_labels_task_run(Client, Input, Options)
 %% used to teach the machine learning transform and improve its quality.
 %%
 %% This API operation is generally used as part of the active learning
-%% workflow that starts with the `StartMLLabelingSetGenerationTaskRun' call
-%% and that ultimately results in improving the quality of your machine
+%% workflow that starts with the `StartMLLabelingSetGenerationTaskRun'
+%% call and that ultimately results in improving the quality of your machine
 %% learning transform.
 %%
 %% After the `StartMLLabelingSetGenerationTaskRun' finishes, Glue machine
 %% learning will have generated a series of questions for humans to answer.
-%% (Answering these questions is often called 'labeling' in the machine
-%% learning workflows). In the case of the `FindMatches' transform, these
-%% questions are of the form, “What is the correct way to group these rows
-%% together into groups composed entirely of matching records?” After the
-%% labeling process is finished, users upload their answers/labels with a
-%% call to `StartImportLabelsTaskRun'. After `StartImportLabelsTaskRun'
-%% finishes, all future runs of the machine learning transform use the new
-%% and improved labels and perform a higher-quality transformation.
+%% (Answering these questions is often called 'labeling' in the
+%% machine learning workflows). In the case of the `FindMatches'
+%% transform, these questions are of the form, “What is the correct way to
+%% group these rows together into groups composed entirely of matching
+%% records?” After the labeling process is finished, users upload their
+%% answers/labels with a call to `StartImportLabelsTaskRun'. After
+%% `StartImportLabelsTaskRun' finishes, all future runs of the machine
+%% learning transform use the new and improved labels and perform a
+%% higher-quality transformation.
 %%
-%% By default, `StartMLLabelingSetGenerationTaskRun' continually learns from
-%% and combines all labels that you upload unless you set `Replace' to true.
-%% If you set `Replace' to true, `StartImportLabelsTaskRun' deletes and
-%% forgets all previously uploaded labels and learns only from the exact set
-%% that you upload. Replacing labels can be helpful if you realize that you
-%% previously uploaded incorrect labels, and you believe that they are having
-%% a negative effect on your transform quality.
+%% By default, `StartMLLabelingSetGenerationTaskRun' continually learns
+%% from and combines all labels that you upload unless you set `Replace'
+%% to true. If you set `Replace' to true, `StartImportLabelsTaskRun'
+%% deletes and forgets all previously uploaded labels and learns only from
+%% the exact set that you upload. Replacing labels can be helpful if you
+%% realize that you previously uploaded incorrect labels, and you believe
+%% that they are having a negative effect on your transform quality.
 %%
-%% You can check on the status of your task run by calling the `GetMLTaskRun'
-%% operation.
+%% You can check on the status of your task run by calling the
+%% `GetMLTaskRun' operation.
 start_import_labels_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_import_labels_task_run(Client, Input, []).
@@ -2217,8 +2224,8 @@ start_job_run(Client, Input, Options)
 %% uses some of those examples to learn from them. The rest of the labels are
 %% used as a test to estimate quality.
 %%
-%% Returns a unique identifier for the run. You can call `GetMLTaskRun' to
-%% get more information about the stats of the `EvaluationTaskRun'.
+%% Returns a unique identifier for the run. You can call `GetMLTaskRun'
+%% to get more information about the stats of the `EvaluationTaskRun'.
 start_ml_evaluation_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_ml_evaluation_task_run(Client, Input, []).
@@ -2227,20 +2234,22 @@ start_ml_evaluation_task_run(Client, Input, Options)
     request(Client, <<"StartMLEvaluationTaskRun">>, Input, Options).
 
 %% @doc Starts the active learning workflow for your machine learning
-%% transform to improve the transform's quality by generating label sets and
-%% adding labels.
+%% transform to improve the transform's quality by generating label sets
+%% and adding labels.
 %%
-%% When the `StartMLLabelingSetGenerationTaskRun' finishes, Glue will have
-%% generated a "labeling set" or a set of questions for humans to answer.
+%% When the `StartMLLabelingSetGenerationTaskRun' finishes, Glue will
+%% have generated a &quot;labeling set&quot; or a set of questions for humans
+%% to answer.
 %%
 %% In the case of the `FindMatches' transform, these questions are of the
 %% form, “What is the correct way to group these rows together into groups
 %% composed entirely of matching records?”
 %%
 %% After the labeling process is finished, you can upload your labels with a
-%% call to `StartImportLabelsTaskRun'. After `StartImportLabelsTaskRun'
-%% finishes, all future runs of the machine learning transform will use the
-%% new and improved labels and perform a higher-quality transformation.
+%% call to `StartImportLabelsTaskRun'. After
+%% `StartImportLabelsTaskRun' finishes, all future runs of the machine
+%% learning transform will use the new and improved labels and perform a
+%% higher-quality transformation.
 start_ml_labeling_set_generation_task_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_ml_labeling_set_generation_task_run(Client, Input, []).
@@ -2275,8 +2284,9 @@ stop_crawler(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopCrawler">>, Input, Options).
 
-%% @doc Sets the schedule state of the specified crawler to `NOT_SCHEDULED',
-%% but does not stop the crawler if it is already running.
+%% @doc Sets the schedule state of the specified crawler to
+%% `NOT_SCHEDULED', but does not stop the crawler if it is already
+%% running.
 stop_crawler_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_crawler_schedule(Client, Input, []).
@@ -2337,8 +2347,8 @@ update_blueprint(Client, Input, Options)
     request(Client, <<"UpdateBlueprint">>, Input, Options).
 
 %% @doc Modifies an existing classifier (a `GrokClassifier', an
-%% `XMLClassifier', a `JsonClassifier', or a `CsvClassifier', depending on
-%% which field is present).
+%% `XMLClassifier', a `JsonClassifier', or a `CsvClassifier',
+%% depending on which field is present).
 update_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_classifier(Client, Input, []).
@@ -2448,10 +2458,10 @@ update_job_from_source_control(Client, Input, Options)
 %% Call this operation to tune the algorithm parameters to achieve better
 %% results.
 %%
-%% After calling this operation, you can call the `StartMLEvaluationTaskRun'
-%% operation to assess how well your new parameters achieved your goals (such
-%% as improving the quality of your machine learning transform, or making it
-%% more cost-effective).
+%% After calling this operation, you can call the
+%% `StartMLEvaluationTaskRun' operation to assess how well your new
+%% parameters achieved your goals (such as improving the quality of your
+%% machine learning transform, or making it more cost-effective).
 update_ml_transform(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_ml_transform(Client, Input, []).
@@ -2484,13 +2494,13 @@ update_registry(Client, Input, Options)
 %%
 %% For updating the compatibility setting, the call will not validate
 %% compatibility for the entire set of schema versions with the new
-%% compatibility setting. If the value for `Compatibility' is provided, the
-%% `VersionNumber' (a checkpoint) is also required. The API will validate the
-%% checkpoint version number for consistency.
+%% compatibility setting. If the value for `Compatibility' is provided,
+%% the `VersionNumber' (a checkpoint) is also required. The API will
+%% validate the checkpoint version number for consistency.
 %%
 %% If the value for the `VersionNumber' (checkpoint) is provided,
-%% `Compatibility' is optional and this can be used to set/reset a checkpoint
-%% for the schema.
+%% `Compatibility' is optional and this can be used to set/reset a
+%% checkpoint for the schema.
 %%
 %% This update will happen only if the schema is in the AVAILABLE state.
 update_schema(Client, Input)

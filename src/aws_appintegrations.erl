@@ -111,9 +111,9 @@ create_event_integration(Client, Input0, Options0) ->
 
 %% @doc Deletes the DataIntegration.
 %%
-%% Only DataIntegrations that don't have any DataIntegrationAssociations can
-%% be deleted. Deleting a DataIntegration also deletes the underlying Amazon
-%% AppFlow flow and service linked role.
+%% Only DataIntegrations that don't have any DataIntegrationAssociations
+%% can be deleted. Deleting a DataIntegration also deletes the underlying
+%% Amazon AppFlow flow and service linked role.
 %%
 %% You cannot create a DataIntegration association for a DataIntegration that
 %% has been previously associated. Use a different DataIntegration, or

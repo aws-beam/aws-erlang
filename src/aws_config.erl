@@ -268,8 +268,8 @@ delete_aggregation_authorization(Client, Input, Options)
 %%
 %% Config sets the state of a rule to `DELETING' until the deletion is
 %% complete. You cannot update a rule while it is in this state. If you make
-%% a `PutConfigRule' or `DeleteConfigRule' request for the rule, you will
-%% receive a `ResourceInUseException'.
+%% a `PutConfigRule' or `DeleteConfigRule' request for the rule, you
+%% will receive a `ResourceInUseException'.
 %%
 %% You can check the state of a rule by using the `DescribeConfigRules'
 %% request.
@@ -297,9 +297,9 @@ delete_configuration_aggregator(Client, Input, Options)
 %%
 %% This action does not delete the configuration information that was
 %% previously recorded. You will be able to access the previously recorded
-%% information by using the `GetResourceConfigHistory' action, but you will
-%% not be able to access this information in the Config console until you
-%% create a new configuration recorder.
+%% information by using the `GetResourceConfigHistory' action, but you
+%% will not be able to access this information in the Config console until
+%% you create a new configuration recorder.
 delete_configuration_recorder(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_configuration_recorder(Client, Input, []).
@@ -324,7 +324,8 @@ delete_conformance_pack(Client, Input, Options)
 %% @doc Deletes the delivery channel.
 %%
 %% Before you can delete the delivery channel, you must stop the
-%% configuration recorder by using the `StopConfigurationRecorder' action.
+%% configuration recorder by using the `StopConfigurationRecorder'
+%% action.
 delete_delivery_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_delivery_channel(Client, Input, []).
@@ -335,8 +336,8 @@ delete_delivery_channel(Client, Input, Options)
 %% @doc Deletes the evaluation results for the specified Config rule.
 %%
 %% You can specify one Config rule per request. After you delete the
-%% evaluation results, you can call the `StartConfigRulesEvaluation' API to
-%% start evaluating your Amazon Web Services resources against the rule.
+%% evaluation results, you can call the `StartConfigRulesEvaluation' API
+%% to start evaluating your Amazon Web Services resources against the rule.
 delete_evaluation_results(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_evaluation_results(Client, Input, []).
@@ -349,8 +350,8 @@ delete_evaluation_results(Client, Input, Options)
 %%
 %% Only a management account and a delegated administrator account can delete
 %% an organization Config rule. When calling this API with a delegated
-%% administrator, you must ensure Organizations `ListDelegatedAdministrator'
-%% permissions are added.
+%% administrator, you must ensure Organizations
+%% `ListDelegatedAdministrator' permissions are added.
 %%
 %% Config sets the state of a rule to DELETE_IN_PROGRESS until the deletion
 %% is complete. You cannot update a rule while it is in this state.
@@ -367,8 +368,8 @@ delete_organization_config_rule(Client, Input, Options)
 %%
 %% Only a management account or a delegated administrator account can delete
 %% an organization conformance pack. When calling this API with a delegated
-%% administrator, you must ensure Organizations `ListDelegatedAdministrator'
-%% permissions are added.
+%% administrator, you must ensure Organizations
+%% `ListDelegatedAdministrator' permissions are added.
 %%
 %% Config sets the state of a conformance pack to DELETE_IN_PROGRESS until
 %% the deletion is complete. You cannot update a conformance pack while it is
@@ -514,18 +515,19 @@ describe_aggregation_authorizations(Client, Input, Options)
 %% conditions:
 %%
 %% <ul> <li> Config has never invoked an evaluation for the rule. To check
-%% whether it has, use the `DescribeConfigRuleEvaluationStatus' action to get
-%% the `LastSuccessfulInvocationTime' and `LastFailedInvocationTime'.
+%% whether it has, use the `DescribeConfigRuleEvaluationStatus' action to
+%% get the `LastSuccessfulInvocationTime' and
+%% `LastFailedInvocationTime'.
 %%
 %% </li> <li> The rule's Lambda function is failing to send evaluation
 %% results to Config. Verify that the role you assigned to your configuration
-%% recorder includes the `config:PutEvaluations' permission. If the rule is a
-%% custom rule, verify that the Lambda execution role includes the
+%% recorder includes the `config:PutEvaluations' permission. If the rule
+%% is a custom rule, verify that the Lambda execution role includes the
 %% `config:PutEvaluations' permission.
 %%
-%% </li> <li> The rule's Lambda function has returned `NOT_APPLICABLE' for
-%% all evaluation results. This can occur if the resources were deleted or
-%% removed from the rule's scope.
+%% </li> <li> The rule's Lambda function has returned
+%% `NOT_APPLICABLE' for all evaluation results. This can occur if the
+%% resources were deleted or removed from the rule's scope.
 %%
 %% </li> </ul>
 describe_compliance_by_config_rule(Client, Input)
@@ -550,18 +552,19 @@ describe_compliance_by_config_rule(Client, Input, Options)
 %% conditions about the rules that evaluate the resource:
 %%
 %% <ul> <li> Config has never invoked an evaluation for the rule. To check
-%% whether it has, use the `DescribeConfigRuleEvaluationStatus' action to get
-%% the `LastSuccessfulInvocationTime' and `LastFailedInvocationTime'.
+%% whether it has, use the `DescribeConfigRuleEvaluationStatus' action to
+%% get the `LastSuccessfulInvocationTime' and
+%% `LastFailedInvocationTime'.
 %%
 %% </li> <li> The rule's Lambda function is failing to send evaluation
 %% results to Config. Verify that the role that you assigned to your
-%% configuration recorder includes the `config:PutEvaluations' permission. If
-%% the rule is a custom rule, verify that the Lambda execution role includes
-%% the `config:PutEvaluations' permission.
+%% configuration recorder includes the `config:PutEvaluations'
+%% permission. If the rule is a custom rule, verify that the Lambda execution
+%% role includes the `config:PutEvaluations' permission.
 %%
-%% </li> <li> The rule's Lambda function has returned `NOT_APPLICABLE' for
-%% all evaluation results. This can occur if the resources were deleted or
-%% removed from the rule's scope.
+%% </li> <li> The rule's Lambda function has returned
+%% `NOT_APPLICABLE' for all evaluation results. This can occur if the
+%% resources were deleted or removed from the rule's scope.
 %%
 %% </li> </ul>
 describe_compliance_by_resource(Client, Input)
@@ -734,8 +737,9 @@ describe_organization_config_rule_statuses(Client, Input, Options)
 %% organizational rule or conformance pack in the organization administrator
 %% account from the delegated administrator account or see the organizational
 %% rule or conformance pack in the delegated administrator account from
-%% organization administrator account. The `DescribeOrganizationConfigRules'
-%% and `DescribeOrganizationConformancePacks' APIs can only see and interact
+%% organization administrator account. The
+%% `DescribeOrganizationConfigRules' and
+%% `DescribeOrganizationConformancePacks' APIs can only see and interact
 %% with the organization-related resource that were deployed from within the
 %% account calling those APIs.
 describe_organization_config_rules(Client, Input)
@@ -781,8 +785,9 @@ describe_organization_conformance_pack_statuses(Client, Input, Options)
 %% organizational rule or conformance pack in the organization administrator
 %% account from the delegated administrator account or see the organizational
 %% rule or conformance pack in the delegated administrator account from
-%% organization administrator account. The `DescribeOrganizationConfigRules'
-%% and `DescribeOrganizationConformancePacks' APIs can only see and interact
+%% organization administrator account. The
+%% `DescribeOrganizationConfigRules' and
+%% `DescribeOrganizationConformancePacks' APIs can only see and interact
 %% with the organization-related resource that were deployed from within the
 %% account calling those APIs.
 describe_organization_conformance_packs(Client, Input)
@@ -1011,8 +1016,8 @@ get_custom_rule_policy(Client, Input, Options)
 %% Region for your account: 25 EC2 instances, 20 IAM users, and 15 S3
 %% buckets.
 %%
-%% </li> <li> You make a call to the `GetDiscoveredResourceCounts' action and
-%% specify that you want all resource types.
+%% </li> <li> You make a call to the `GetDiscoveredResourceCounts' action
+%% and specify that you want all resource types.
 %%
 %% </li> <li> Config returns the following:
 %%
@@ -1024,12 +1029,12 @@ get_custom_rule_policy(Client, Input, Options)
 %%
 %% </li> </ul> </li> </ol> The response is paginated. By default, Config
 %% lists 100 `ResourceCount' objects on each page. You can customize this
-%% number with the `limit' parameter. The response includes a `nextToken'
-%% string. To get the next page of results, run the request again and specify
-%% the string for the `nextToken' parameter.
+%% number with the `limit' parameter. The response includes a
+%% `nextToken' string. To get the next page of results, run the request
+%% again and specify the string for the `nextToken' parameter.
 %%
-%% If you make a call to the `GetDiscoveredResourceCounts' action, you might
-%% not immediately receive resource counts in the following situations:
+%% If you make a call to the `GetDiscoveredResourceCounts' action, you
+%% might not immediately receive resource counts in the following situations:
 %%
 %% You are a new Config customer.
 %%
@@ -1072,23 +1077,25 @@ get_organization_custom_rule_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOrganizationCustomRulePolicy">>, Input, Options).
 
-%% @doc Returns a list of `ConfigurationItems' for the specified resource.
+%% @doc Returns a list of `ConfigurationItems' for the specified
+%% resource.
 %%
 %% The list contains details about each state of the resource during the
 %% specified time interval. If you specified a retention period to retain
-%% your `ConfigurationItems' between a minimum of 30 days and a maximum of 7
-%% years (2557 days), Config returns the `ConfigurationItems' for the
-%% specified retention period.
+%% your `ConfigurationItems' between a minimum of 30 days and a maximum
+%% of 7 years (2557 days), Config returns the `ConfigurationItems' for
+%% the specified retention period.
 %%
 %% The response is paginated. By default, Config returns a limit of 10
 %% configuration items per page. You can customize this number with the
-%% `limit' parameter. The response includes a `nextToken' string. To get the
-%% next page of results, run the request again and specify the string for the
-%% `nextToken' parameter.
+%% `limit' parameter. The response includes a `nextToken' string. To
+%% get the next page of results, run the request again and specify the string
+%% for the `nextToken' parameter.
 %%
 %% Each call to the API is limited to span a duration of seven days. It is
 %% likely that the number of records returned is smaller than the specified
-%% `limit'. In such cases, you can make another call, using the `nextToken'.
+%% `limit'. In such cases, you can make another call, using the
+%% `nextToken'.
 get_resource_config_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_config_history(Client, Input, []).
@@ -1128,9 +1135,9 @@ get_stored_query(Client, Input, Options)
 %% a resource name, or source account ID, or source region.
 %%
 %% For example, if the input consists of accountID 12345678910 and the region
-%% is us-east-1 for resource type `AWS::EC2::Instance' then the API returns
-%% all the EC2 instance identifiers of accountID 12345678910 and region
-%% us-east-1.
+%% is us-east-1 for resource type `AWS::EC2::Instance' then the API
+%% returns all the EC2 instance identifiers of accountID 12345678910 and
+%% region us-east-1.
 list_aggregate_discovered_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_aggregate_discovered_resources(Client, Input, []).
@@ -1169,10 +1176,10 @@ list_conformance_pack_compliance_scores(Client, Input, Options)
 %% the same request.
 %%
 %% The response is paginated. By default, Config lists 100 resource
-%% identifiers on each page. You can customize this number with the `limit'
-%% parameter. The response includes a `nextToken' string. To get the next
-%% page of results, run the request again and specify the string for the
-%% `nextToken' parameter.
+%% identifiers on each page. You can customize this number with the
+%% `limit' parameter. The response includes a `nextToken' string. To
+%% get the next page of results, run the request again and specify the string
+%% for the `nextToken' parameter.
 list_discovered_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_discovered_resources(Client, Input, []).
@@ -1223,8 +1230,8 @@ put_aggregation_authorization(Client, Input, Options)
 %% Service Limits in the Config Developer Guide.
 %%
 %% There are two types of rules: Config Custom Rules and Config Managed
-%% Rules. You can use `PutConfigRule' to create both Config custom rules and
-%% Config managed rules.
+%% Rules. You can use `PutConfigRule' to create both Config custom rules
+%% and Config managed rules.
 %%
 %% Custom rules are rules that you can create using either Guard or Lambda
 %% functions. Guard (Guard GitHub Repository) is a policy-as-code language
@@ -1232,10 +1239,11 @@ put_aggregation_authorization(Client, Input, Options)
 %% Policy rules. Lambda uses custom code that you upload to evaluate a custom
 %% rule. If you are adding a new Custom Lambda rule, you first need to create
 %% an Lambda function that the rule invokes to evaluate your resources. When
-%% you use `PutConfigRule' to add a Custom Lambda rule to Config, you must
-%% specify the Amazon Resource Name (ARN) that Lambda assigns to the
-%% function. You specify the ARN in the `SourceIdentifier' key. This key is
-%% part of the `Source' object, which is part of the `ConfigRule' object.
+%% you use `PutConfigRule' to add a Custom Lambda rule to Config, you
+%% must specify the Amazon Resource Name (ARN) that Lambda assigns to the
+%% function. You specify the ARN in the `SourceIdentifier' key. This key
+%% is part of the `Source' object, which is part of the `ConfigRule'
+%% object.
 %%
 %% Managed rules are predefined, customizable rules created by Config. For a
 %% list of managed rules, see List of Config Managed Rules. If you are adding
@@ -1247,8 +1255,8 @@ put_aggregation_authorization(Client, Input, Options)
 %% `ConfigRuleId'. These values are generated by Config for new rules.
 %%
 %% If you are updating a rule that you added previously, you can specify the
-%% rule by `ConfigRuleName', `ConfigRuleId', or `ConfigRuleArn' in the
-%% `ConfigRule' data type that you use in this request.
+%% rule by `ConfigRuleName', `ConfigRuleId', or `ConfigRuleArn'
+%% in the `ConfigRule' data type that you use in this request.
 %%
 %% For more information about developing and using Config rules, see
 %% Evaluating Amazon Web Services resource Configurations with Config in the
@@ -1265,10 +1273,10 @@ put_config_rule(Client, Input, Options)
 %%
 %% The source account can be individual account(s) or an organization.
 %%
-%% `accountIds' that are passed will be replaced with existing accounts. If
-%% you want to add additional accounts into the aggregator, call
-%% `DescribeConfigurationAggregators' to get the previous accounts and then
-%% append new ones.
+%% `accountIds' that are passed will be replaced with existing accounts.
+%% If you want to add additional accounts into the aggregator, call
+%% `DescribeConfigurationAggregators' to get the previous accounts and
+%% then append new ones.
 %%
 %% Config should be enabled in source accounts and regions you want to
 %% aggregate.
@@ -1276,11 +1284,11 @@ put_config_rule(Client, Input, Options)
 %% If your source type is an organization, you must be signed in to the
 %% management account or a registered delegated administrator and all the
 %% features must be enabled in your organization. If the caller is a
-%% management account, Config calls `EnableAwsServiceAccess' API to enable
-%% integration between Config and Organizations. If the caller is a
+%% management account, Config calls `EnableAwsServiceAccess' API to
+%% enable integration between Config and Organizations. If the caller is a
 %% registered delegated administrator, Config calls
-%% `ListDelegatedAdministrators' API to verify whether the caller is a valid
-%% delegated administrator.
+%% `ListDelegatedAdministrators' API to verify whether the caller is a
+%% valid delegated administrator.
 %%
 %% To register a delegated administrator, see Register a Delegated
 %% Administrator in the Config developer guide.
@@ -1317,9 +1325,9 @@ put_configuration_recorder(Client, Input, Options)
 %% information on how many conformance packs you can have per account, see
 %% Service Limits in the Config Developer Guide.
 %%
-%% This API creates a service-linked role `AWSServiceRoleForConfigConforms'
-%% in your account. The service-linked role is created only when the role
-%% does not exist in your account.
+%% This API creates a service-linked role
+%% `AWSServiceRoleForConfigConforms' in your account. The service-linked
+%% role is created only when the role does not exist in your account.
 %%
 %% You must specify only one of the follow parameters: `TemplateS3Uri',
 %% `TemplateBody' or `TemplateSSMDocumentDetails'.
@@ -1382,16 +1390,16 @@ put_external_evaluation(Client, Input, Options)
 %%
 %% Only a management account and a delegated administrator can create or
 %% update an organization Config rule. When calling this API with a delegated
-%% administrator, you must ensure Organizations `ListDelegatedAdministrator'
-%% permissions are added. An organization can have up to 3 delegated
-%% administrators.
+%% administrator, you must ensure Organizations
+%% `ListDelegatedAdministrator' permissions are added. An organization
+%% can have up to 3 delegated administrators.
 %%
 %% This API enables organization service access through the
 %% `EnableAWSServiceAccess' action and creates a service-linked role
-%% `AWSServiceRoleForConfigMultiAccountSetup' in the management or delegated
-%% administrator account of your organization. The service-linked role is
-%% created only when the role does not exist in the caller account. Config
-%% verifies the existence of role with `GetRole' action.
+%% `AWSServiceRoleForConfigMultiAccountSetup' in the management or
+%% delegated administrator account of your organization. The service-linked
+%% role is created only when the role does not exist in the caller account.
+%% Config verifies the existence of role with `GetRole' action.
 %%
 %% To use this API with delegated administrator, register a delegated
 %% administrator by calling Amazon Web Services Organization
@@ -1410,9 +1418,9 @@ put_external_evaluation(Client, Input, Options)
 %% an Lambda function in the management account or a delegated administrator
 %% that the rule invokes to evaluate your resources. You also need to create
 %% an IAM role in the managed account that can be assumed by the Lambda
-%% function. When you use `PutOrganizationConfigRule' to add a Custom Lambda
-%% rule to Config, you must specify the Amazon Resource Name (ARN) that
-%% Lambda assigns to the function.
+%% function. When you use `PutOrganizationConfigRule' to add a Custom
+%% Lambda rule to Config, you must specify the Amazon Resource Name (ARN)
+%% that Lambda assigns to the function.
 %%
 %% Managed rules are predefined, customizable rules created by Config. For a
 %% list of managed rules, see List of Config Managed Rules. If you are adding
@@ -1422,9 +1430,10 @@ put_external_evaluation(Client, Input, Options)
 %% Prerequisite: Ensure you call `EnableAllFeatures' API to enable all
 %% features in an organization.
 %%
-%% Make sure to specify one of either `OrganizationCustomPolicyRuleMetadata'
-%% for Custom Policy rules, `OrganizationCustomRuleMetadata' for Custom
-%% Lambda rules, or `OrganizationManagedRuleMetadata' for managed rules.
+%% Make sure to specify one of either
+%% `OrganizationCustomPolicyRuleMetadata' for Custom Policy rules,
+%% `OrganizationCustomRuleMetadata' for Custom Lambda rules, or
+%% `OrganizationManagedRuleMetadata' for managed rules.
 put_organization_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_organization_config_rule(Client, Input, []).
@@ -1447,11 +1456,12 @@ put_organization_config_rule(Client, Input, Options)
 %% This API enables organization service access for
 %% `config-multiaccountsetup.amazonaws.com' through the
 %% `EnableAWSServiceAccess' action and creates a service-linked role
-%% `AWSServiceRoleForConfigMultiAccountSetup' in the management or delegated
-%% administrator account of your organization. The service-linked role is
-%% created only when the role does not exist in the caller account. To use
-%% this API with delegated administrator, register a delegated administrator
-%% by calling Amazon Web Services Organization `register-delegate-admin' for
+%% `AWSServiceRoleForConfigMultiAccountSetup' in the management or
+%% delegated administrator account of your organization. The service-linked
+%% role is created only when the role does not exist in the caller account.
+%% To use this API with delegated administrator, register a delegated
+%% administrator by calling Amazon Web Services Organization
+%% `register-delegate-admin' for
 %% `config-multiaccountsetup.amazonaws.com'.
 %%
 %% Prerequisite: Ensure you call `EnableAllFeatures' API to enable all
@@ -1459,7 +1469,8 @@ put_organization_config_rule(Client, Input, Options)
 %%
 %% You must specify either the `TemplateS3Uri' or the `TemplateBody'
 %% parameter, but not both. If you provide both Config uses the
-%% `TemplateS3Uri' parameter and ignores the `TemplateBody' parameter.
+%% `TemplateS3Uri' parameter and ignores the `TemplateBody'
+%% parameter.
 %%
 %% Config sets the state of a conformance pack to CREATE_IN_PROGRESS and
 %% UPDATE_IN_PROGRESS until the conformance pack is created or updated. You
@@ -1474,8 +1485,8 @@ put_organization_conformance_pack(Client, Input, Options)
 %% @doc Adds or updates the remediation configuration with a specific Config
 %% rule with the selected target or action.
 %%
-%% The API creates the `RemediationConfiguration' object for the Config rule.
-%% The Config rule must already exist for you to add a remediation
+%% The API creates the `RemediationConfiguration' object for the Config
+%% rule. The Config rule must already exist for you to add a remediation
 %% configuration. The target (SSM document) must exist and have permissions
 %% to use the target.
 %%
@@ -1493,8 +1504,9 @@ put_organization_conformance_pack(Client, Input, Options)
 %% long as it maps to a valid parameter.
 %%
 %% However, for automatic remediation configuration, the only valid
-%% `assumeRole' field value is `AutomationAssumeRole' and you need to provide
-%% a value for `AutomationAssumeRole' to remediate your resources.
+%% `assumeRole' field value is `AutomationAssumeRole' and you need to
+%% provide a value for `AutomationAssumeRole' to remediate your
+%% resources.
 put_remediation_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_remediation_configurations(Client, Input, []).
@@ -1549,9 +1561,9 @@ put_resource_config(Client, Input, Options)
 %% retention period (number of days) that Config stores your historical
 %% information.
 %%
-%% The API creates the `RetentionConfiguration' object and names the object
-%% as default. When you have a `RetentionConfiguration' object named default,
-%% calling the API modifies the default object.
+%% The API creates the `RetentionConfiguration' object and names the
+%% object as default. When you have a `RetentionConfiguration' object
+%% named default, calling the API modifies the default object.
 %%
 %% Currently, Config supports only one retention configuration per region in
 %% your account.
@@ -1564,10 +1576,10 @@ put_retention_configuration(Client, Input, Options)
 
 %% @doc Saves a new query or updates an existing saved query.
 %%
-%% The `QueryName' must be unique for a single Amazon Web Services account
-%% and a single Amazon Web Services Region. You can create upto 300 queries
-%% in a single Amazon Web Services account and a single Amazon Web Services
-%% Region.
+%% The `QueryName' must be unique for a single Amazon Web Services
+%% account and a single Amazon Web Services Region. You can create upto 300
+%% queries in a single Amazon Web Services account and a single Amazon Web
+%% Services Region.
 put_stored_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_stored_query(Client, Input, []).
@@ -1583,16 +1595,16 @@ put_stored_query(Client, Input, Options)
 %% For more information about query components, see the Query Components
 %% section in the Config Developer Guide.
 %%
-%% If you run an aggregation query (i.e., using `GROUP BY' or using aggregate
-%% functions such as `COUNT'; e.g., `SELECT resourceId, COUNT(*) WHERE
-%% resourceType = 'AWS::IAM::Role' GROUP BY resourceId') and do not specify
-%% the `MaxResults' or the `Limit' query parameters, the default page size is
-%% set to 500.
+%% If you run an aggregation query (i.e., using `GROUP BY' or using
+%% aggregate functions such as `COUNT'; e.g., `SELECT resourceId,
+%% COUNT(*) WHERE resourceType = 'AWS::IAM::Role' GROUP BY
+%% resourceId') and do not specify the `MaxResults' or the
+%% `Limit' query parameters, the default page size is set to 500.
 %%
 %% If you run a non-aggregation query (i.e., not using `GROUP BY' or
 %% aggregate function; e.g., `SELECT * WHERE resourceType =
-%% 'AWS::IAM::Role'') and do not specify the `MaxResults' or the `Limit'
-%% query parameters, the default page size is set to 25.
+%% 'AWS::IAM::Role'') and do not specify the `MaxResults' or
+%% the `Limit' query parameters, the default page size is set to 25.
 select_aggregate_resource_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     select_aggregate_resource_config(Client, Input, []).
@@ -1600,9 +1612,9 @@ select_aggregate_resource_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SelectAggregateResourceConfig">>, Input, Options).
 
-%% @doc Accepts a structured query language (SQL) `SELECT' command, performs
-%% the corresponding search, and returns resource configurations matching the
-%% properties.
+%% @doc Accepts a structured query language (SQL) `SELECT' command,
+%% performs the corresponding search, and returns resource configurations
+%% matching the properties.
 %%
 %% For more information about query components, see the Query Components
 %% section in the Config Developer Guide.
@@ -1623,14 +1635,14 @@ select_resource_config(Client, Input, Options)
 %%
 %% You can specify up to 25 Config rules per request.
 %%
-%% An existing `StartConfigRulesEvaluation' call for the specified rules must
-%% complete before you can call the API again. If you chose to have Config
-%% stream to an Amazon SNS topic, you will receive a
+%% An existing `StartConfigRulesEvaluation' call for the specified rules
+%% must complete before you can call the API again. If you chose to have
+%% Config stream to an Amazon SNS topic, you will receive a
 %% `ConfigRuleEvaluationStarted' notification when the evaluation starts.
 %%
-%% You don't need to call the `StartConfigRulesEvaluation' API to run an
-%% evaluation for a new rule. When you create a rule, Config evaluates your
-%% resources against the rule automatically.
+%% You don't need to call the `StartConfigRulesEvaluation' API to run
+%% an evaluation for a new rule. When you create a rule, Config evaluates
+%% your resources against the rule automatically.
 %%
 %% The `StartConfigRulesEvaluation' API is useful if you want to run
 %% on-demand evaluations, such as the following example:
@@ -1694,8 +1706,8 @@ start_remediation_execution(Client, Input, Options)
 %% all of the Config rules in your account that match with the specified
 %% proactive mode and resource type.
 %%
-%% Ensure you have the `cloudformation:DescribeType' role setup to validate
-%% the resource type schema.
+%% Ensure you have the `cloudformation:DescribeType' role setup to
+%% validate the resource type schema.
 start_resource_evaluation(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_resource_evaluation(Client, Input, []).

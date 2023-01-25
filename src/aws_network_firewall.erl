@@ -12,11 +12,12 @@
 %% Amazon Web Services APIs.
 %%
 %% To access Network Firewall using the REST API endpoint:
-%% `https://network-firewall.<region>.amazonaws.com '
+%% `https://network-firewall.&lt;region&gt;.amazonaws.com '
 %%
 %% </li> <li> Alternatively, you can use one of the Amazon Web Services SDKs
-%% to access an API that's tailored to the programming language or platform
-%% that you're using. For more information, see Amazon Web Services SDKs.
+%% to access an API that's tailored to the programming language or
+%% platform that you're using. For more information, see Amazon Web
+%% Services SDKs.
 %%
 %% </li> <li> For descriptions of Network Firewall features, including and
 %% step-by-step instructions on how to use them through the Network Firewall
@@ -69,8 +70,8 @@
 %%
 %% </li> <li> In Network Firewall, create a firewall and specify your new
 %% firewall policy and VPC subnets. Network Firewall creates a firewall
-%% endpoint in each subnet that you specify, with the behavior that's defined
-%% in the firewall policy.
+%% endpoint in each subnet that you specify, with the behavior that's
+%% defined in the firewall policy.
 %%
 %% </li> <li> In Amazon VPC, use ingress routing enhancements to route
 %% traffic through the new firewall endpoints.
@@ -166,10 +167,10 @@ associate_firewall_policy(Client, Input, Options)
 %% spans.
 %%
 %% This request creates an Network Firewall firewall endpoint in each of the
-%% subnets. To enable the firewall's protections, you must also modify the
-%% VPC's route tables for each subnet's Availability Zone, to redirect the
-%% traffic that's coming into and going out of the zone through the firewall
-%% endpoint.
+%% subnets. To enable the firewall's protections, you must also modify
+%% the VPC's route tables for each subnet's Availability Zone, to
+%% redirect the traffic that's coming into and going out of the zone
+%% through the firewall endpoint.
 associate_subnets(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_subnets(Client, Input, []).
@@ -193,9 +194,9 @@ associate_subnets(Client, Input, Options)
 %% to the settings themselves, for example `UpdateLoggingConfiguration',
 %% `AssociateSubnets', and `UpdateFirewallDeleteProtection'.
 %%
-%% To manage a firewall's tags, use the standard Amazon Web Services resource
-%% tagging operations, `ListTagsForResource', `TagResource', and
-%% `UntagResource'.
+%% To manage a firewall's tags, use the standard Amazon Web Services
+%% resource tagging operations, `ListTagsForResource', `TagResource',
+%% and `UntagResource'.
 %%
 %% To retrieve information about firewalls, use `ListFirewalls' and
 %% `DescribeFirewall'.
@@ -234,16 +235,16 @@ create_rule_group(Client, Input, Options)
 
 %% @doc Deletes the specified `Firewall' and its `FirewallStatus'.
 %%
-%% This operation requires the firewall's `DeleteProtection' flag to be
-%% `FALSE'. You can't revert this operation.
+%% This operation requires the firewall's `DeleteProtection' flag to
+%% be `FALSE'. You can't revert this operation.
 %%
 %% You can check whether a firewall is in use by reviewing the route tables
 %% for the Availability Zones where you have firewall subnet mappings.
-%% Retrieve the subnet mappings by calling `DescribeFirewall'. You define and
-%% update the route tables through Amazon VPC. As needed, update the route
-%% tables for the zones to remove the firewall endpoints. When the route
-%% tables no longer use the firewall endpoints, you can remove the firewall
-%% safely.
+%% Retrieve the subnet mappings by calling `DescribeFirewall'. You define
+%% and update the route tables through Amazon VPC. As needed, update the
+%% route tables for the zones to remove the firewall endpoints. When the
+%% route tables no longer use the firewall endpoints, you can remove the
+%% firewall safely.
 %%
 %% To delete a firewall, remove the delete protection if you need to using
 %% `UpdateFirewallDeleteProtection', then delete the firewall by calling
@@ -263,8 +264,8 @@ delete_firewall_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFirewallPolicy">>, Input, Options).
 
-%% @doc Deletes a resource policy that you created in a `PutResourcePolicy'
-%% request.
+%% @doc Deletes a resource policy that you created in a
+%% `PutResourcePolicy' request.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
@@ -304,8 +305,8 @@ describe_logging_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLoggingConfiguration">>, Input, Options).
 
-%% @doc Retrieves a resource policy that you created in a `PutResourcePolicy'
-%% request.
+%% @doc Retrieves a resource policy that you created in a
+%% `PutResourcePolicy' request.
 describe_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_resource_policy(Client, Input, []).
@@ -386,9 +387,9 @@ list_rule_groups(Client, Input, Options)
 %%
 %% Tags are key:value pairs that you can use to categorize and manage your
 %% resources, for purposes like billing. For example, you might set the tag
-%% key to "customer" and the value to the customer name or ID. You can
-%% specify one or more tags to add to each Amazon Web Services resource, up
-%% to 50 tags for a resource.
+%% key to &quot;customer&quot; and the value to the customer name or ID. You
+%% can specify one or more tags to add to each Amazon Web Services resource,
+%% up to 50 tags for a resource.
 %%
 %% You can tag the Amazon Web Services resources that you manage through
 %% Network Firewall: firewalls, firewall policies, and rule groups.
@@ -435,9 +436,9 @@ put_resource_policy(Client, Input, Options)
 %%
 %% Tags are key:value pairs that you can use to categorize and manage your
 %% resources, for purposes like billing. For example, you might set the tag
-%% key to "customer" and the value to the customer name or ID. You can
-%% specify one or more tags to add to each Amazon Web Services resource, up
-%% to 50 tags for a resource.
+%% key to &quot;customer&quot; and the value to the customer name or ID. You
+%% can specify one or more tags to add to each Amazon Web Services resource,
+%% up to 50 tags for a resource.
 %%
 %% You can tag the Amazon Web Services resources that you manage through
 %% Network Firewall: firewalls, firewall policies, and rule groups.
@@ -452,9 +453,9 @@ tag_resource(Client, Input, Options)
 %%
 %% Tags are key:value pairs that you can use to categorize and manage your
 %% resources, for purposes like billing. For example, you might set the tag
-%% key to "customer" and the value to the customer name or ID. You can
-%% specify one or more tags to add to each Amazon Web Services resource, up
-%% to 50 tags for a resource.
+%% key to &quot;customer&quot; and the value to the customer name or ID. You
+%% can specify one or more tags to add to each Amazon Web Services resource,
+%% up to 50 tags for a resource.
 %%
 %% You can manage tags for the Amazon Web Services resources that you manage
 %% through Network Firewall: firewalls, firewall policies, and rule groups.
@@ -465,12 +466,12 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc Modifies the flag, `DeleteProtection', which indicates whether it is
-%% possible to delete the firewall.
+%% @doc Modifies the flag, `DeleteProtection', which indicates whether it
+%% is possible to delete the firewall.
 %%
-%% If the flag is set to `TRUE', the firewall is protected against deletion.
-%% This setting helps protect against accidentally deleting a firewall that's
-%% in use.
+%% If the flag is set to `TRUE', the firewall is protected against
+%% deletion. This setting helps protect against accidentally deleting a
+%% firewall that's in use.
 update_firewall_delete_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_delete_protection(Client, Input, []).
@@ -480,8 +481,8 @@ update_firewall_delete_protection(Client, Input, Options)
 
 %% @doc Modifies the description for the specified firewall.
 %%
-%% Use the description to help you identify the firewall when you're working
-%% with it.
+%% Use the description to help you identify the firewall when you're
+%% working with it.
 update_firewall_description(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_description(Client, Input, []).
@@ -506,12 +507,12 @@ update_firewall_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFirewallPolicy">>, Input, Options).
 
-%% @doc Modifies the flag, `ChangeProtection', which indicates whether it is
-%% possible to change the firewall.
+%% @doc Modifies the flag, `ChangeProtection', which indicates whether it
+%% is possible to change the firewall.
 %%
-%% If the flag is set to `TRUE', the firewall is protected from changes. This
-%% setting helps protect against accidentally changing a firewall that's in
-%% use.
+%% If the flag is set to `TRUE', the firewall is protected from changes.
+%% This setting helps protect against accidentally changing a firewall
+%% that's in use.
 update_firewall_policy_change_protection(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_firewall_policy_change_protection(Client, Input, []).
@@ -521,11 +522,11 @@ update_firewall_policy_change_protection(Client, Input, Options)
 
 %% @doc Sets the logging configuration for the specified firewall.
 %%
-%% To change the logging configuration, retrieve the `LoggingConfiguration'
-%% by calling `DescribeLoggingConfiguration', then change it and provide the
-%% modified object to this update call. You must change the logging
-%% configuration one `LogDestinationConfig' at a time inside the retrieved
-%% `LoggingConfiguration' object.
+%% To change the logging configuration, retrieve the
+%% `LoggingConfiguration' by calling `DescribeLoggingConfiguration',
+%% then change it and provide the modified object to this update call. You
+%% must change the logging configuration one `LogDestinationConfig' at a
+%% time inside the retrieved `LoggingConfiguration' object.
 %%
 %% You can perform only one of the following actions in any call to
 %% `UpdateLoggingConfiguration':
@@ -539,10 +540,10 @@ update_firewall_policy_change_protection(Client, Input, Options)
 %% </li> <li> Change the `LogDestination' setting in a single
 %% `LogDestinationConfig' array element.
 %%
-%% </li> </ul> You can't change the `LogDestinationType' or `LogType' in a
-%% `LogDestinationConfig'. To change these settings, delete the existing
-%% `LogDestinationConfig' object and create a new one, using two separate
-%% calls to this update operation.
+%% </li> </ul> You can't change the `LogDestinationType' or
+%% `LogType' in a `LogDestinationConfig'. To change these settings,
+%% delete the existing `LogDestinationConfig' object and create a new
+%% one, using two separate calls to this update operation.
 update_logging_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_logging_configuration(Client, Input, []).
@@ -557,8 +558,8 @@ update_logging_configuration(Client, Input, Options)
 %% rule group.
 %%
 %% To update a rule group, first call `DescribeRuleGroup' to retrieve the
-%% current `RuleGroup' object, update the object as needed, and then provide
-%% the updated object to this call.
+%% current `RuleGroup' object, update the object as needed, and then
+%% provide the updated object to this call.
 update_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rule_group(Client, Input, []).

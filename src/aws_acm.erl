@@ -50,9 +50,9 @@
 %% @doc Adds one or more tags to an ACM certificate.
 %%
 %% Tags are labels that you can use to identify and organize your Amazon Web
-%% Services resources. Each tag consists of a `key' and an optional `value'.
-%% You specify the certificate on input by its Amazon Resource Name (ARN).
-%% You specify the tag by using a key-value pair.
+%% Services resources. Each tag consists of a `key' and an optional
+%% `value'. You specify the certificate on input by its Amazon Resource
+%% Name (ARN). You specify the tag by using a key-value pair.
 %%
 %% You can apply a tag to just one certificate if you want to identify a
 %% specific characteristic of that certificate, or you can apply the same tag
@@ -64,9 +64,9 @@
 %% used by the same website. For more information, see Tagging ACM
 %% certificates.
 %%
-%% To remove one or more tags, use the `RemoveTagsFromCertificate' action. To
-%% view all of the tags that have been applied to the certificate, use the
-%% `ListTagsForCertificate' action.
+%% To remove one or more tags, use the `RemoveTagsFromCertificate'
+%% action. To view all of the tags that have been applied to the certificate,
+%% use the `ListTagsForCertificate' action.
 add_tags_to_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags_to_certificate(Client, Input, []).
@@ -78,8 +78,9 @@ add_tags_to_certificate(Client, Input, Options)
 %%
 %% If this action succeeds, the certificate no longer appears in the list
 %% that can be displayed by calling the `ListCertificates' action or be
-%% retrieved by calling the `GetCertificate' action. The certificate will not
-%% be available for use by Amazon Web Services services integrated with ACM.
+%% retrieved by calling the `GetCertificate' action. The certificate will
+%% not be available for use by Amazon Web Services services integrated with
+%% ACM.
 %%
 %% You cannot delete an ACM certificate that is being used by another Amazon
 %% Web Services service. To delete a certificate that is in use, the
@@ -187,10 +188,10 @@ get_certificate(Client, Input, Options)
 %%
 %% </li> <li> When you import a certificate by using the CLI, you must
 %% specify the certificate, the certificate chain, and the private key by
-%% their file names preceded by `fileb://'. For example, you can specify a
-%% certificate saved in the `C:\temp' folder as
-%% `fileb://C:\temp\certificate_to_import.pem'. If you are making an HTTP or
-%% HTTPS Query request, include these arguments as BLOBs.
+%% their file names preceded by `fileb://'. For example, you can specify
+%% a certificate saved in the `C:\temp' folder as
+%% `fileb://C:\temp\certificate_to_import.pem'. If you are making an HTTP
+%% or HTTPS Query request, include these arguments as BLOBs.
 %%
 %% </li> <li> When you import a certificate by using an SDK, you must specify
 %% the certificate, the certificate chain, and the private key files in the
@@ -239,9 +240,9 @@ list_tags_for_certificate(Client, Input, Options)
 %%
 %% The supported configuration option is `DaysBeforeExpiry'. This option
 %% specifies the number of days prior to certificate expiration when ACM
-%% starts generating `EventBridge' events. ACM sends one event per day per
-%% certificate until the certificate expires. By default, accounts receive
-%% events starting 45 days before certificate expiration.
+%% starts generating `EventBridge' events. ACM sends one event per day
+%% per certificate until the certificate expires. By default, accounts
+%% receive events starting 45 days before certificate expiration.
 put_account_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_account_configuration(Client, Input, []).
@@ -256,9 +257,9 @@ put_account_configuration(Client, Input, Options)
 %% regardless of value. If you specify a value, the tag is removed only if it
 %% is associated with the specified value.
 %%
-%% To add tags to a certificate, use the `AddTagsToCertificate' action. To
-%% view all of the tags that have been applied to a specific ACM certificate,
-%% use the `ListTagsForCertificate' action.
+%% To add tags to a certificate, use the `AddTagsToCertificate' action.
+%% To view all of the tags that have been applied to a specific ACM
+%% certificate, use the `ListTagsForCertificate' action.
 remove_tags_from_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags_from_certificate(Client, Input, []).
@@ -284,8 +285,8 @@ renew_certificate(Client, Input, Options)
 %% services.
 %%
 %% To request an ACM certificate, you must specify a fully qualified domain
-%% name (FQDN) in the `DomainName' parameter. You can also specify additional
-%% FQDNs in the `SubjectAlternativeNames' parameter.
+%% name (FQDN) in the `DomainName' parameter. You can also specify
+%% additional FQDNs in the `SubjectAlternativeNames' parameter.
 %%
 %% If you are requesting a private certificate, domain validation is not
 %% required. If you are requesting a public certificate, each domain name
@@ -298,9 +299,9 @@ renew_certificate(Client, Input, Options)
 %% validation process. ACM first checks for a Subject Alternative Name, and,
 %% if it finds one, ignores the common name (CN).
 %%
-%% After successful completion of the `RequestCertificate' action, there is a
-%% delay of several seconds before you can retrieve information about the new
-%% certificate.
+%% After successful completion of the `RequestCertificate' action, there
+%% is a delay of several seconds before you can retrieve information about
+%% the new certificate.
 request_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     request_certificate(Client, Input, []).

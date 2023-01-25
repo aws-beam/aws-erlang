@@ -9,10 +9,10 @@
 %% The Snow Family commands described here provide access to the same
 %% functionality that is available in the Amazon Web Services Snow Family
 %% Management Console, which enables you to create and manage jobs for a Snow
-%% Family device. To transfer data locally with a Snow Family device, you'll
-%% need to use the Snowball Edge client or the Amazon S3 API Interface for
-%% Snowball or OpsHub for Snow Family. For more information, see the User
-%% Guide.
+%% Family device. To transfer data locally with a Snow Family device,
+%% you'll need to use the Snowball Edge client or the Amazon S3 API
+%% Interface for Snowball or OpsHub for Snow Family. For more information,
+%% see the User Guide.
 -module(aws_snowball).
 
 -export([cancel_cluster/2,
@@ -74,9 +74,9 @@
 
 %% @doc Cancels a cluster job.
 %%
-%% You can only cancel a cluster job while it's in the `AwaitingQuorum'
-%% status. You'll have at least an hour after creating a cluster job to
-%% cancel it.
+%% You can only cancel a cluster job while it's in the
+%% `AwaitingQuorum' status. You'll have at least an hour after
+%% creating a cluster job to cancel it.
 cancel_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_cluster(Client, Input, []).
@@ -87,8 +87,9 @@ cancel_cluster(Client, Input, Options)
 %% @doc Cancels the specified job.
 %%
 %% You can only cancel a job before its `JobState' value changes to
-%% `PreparingAppliance'. Requesting the `ListJobs' or `DescribeJob' action
-%% returns a job's `JobState' as part of the response element data returned.
+%% `PreparingAppliance'. Requesting the `ListJobs' or
+%% `DescribeJob' action returns a job's `JobState' as part of the
+%% response element data returned.
 cancel_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_job(Client, Input, []).
@@ -125,9 +126,10 @@ create_cluster(Client, Input, Options)
 %% on-premises data center.
 %%
 %% Your Amazon Web Services account must have the right trust policies and
-%% permissions in place to create a job for a Snow device. If you're creating
-%% a job for a node in a cluster, you only need to provide the `clusterId'
-%% value; the other job attributes are inherited from the cluster.
+%% permissions in place to create a job for a Snow device. If you're
+%% creating a job for a node in a cluster, you only need to provide the
+%% `clusterId' value; the other job attributes are inherited from the
+%% cluster.
 %%
 %% Only the Snowball; Edge device type is supported when ordering clustered
 %% jobs.
@@ -248,8 +250,8 @@ create_return_shipping_label(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateReturnShippingLabel">>, Input, Options).
 
-%% @doc Takes an `AddressId' and returns specific details about that address
-%% in the form of an `Address' object.
+%% @doc Takes an `AddressId' and returns specific details about that
+%% address in the form of an `Address' object.
 describe_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_address(Client, Input, []).
@@ -304,16 +306,16 @@ describe_return_shipping_label(Client, Input, Options)
 %%
 %% The manifest is an encrypted file that you can download after your job
 %% enters the `WithCustomer' status. This is the only valid status for
-%% calling this API as the manifest and `UnlockCode' code value are used for
-%% securing your device and should only be used when you have the device. The
-%% manifest is decrypted by using the `UnlockCode' code value, when you pass
-%% both values to the Snow device through the Snowball client when the client
-%% is started for the first time.
+%% calling this API as the manifest and `UnlockCode' code value are used
+%% for securing your device and should only be used when you have the device.
+%% The manifest is decrypted by using the `UnlockCode' code value, when
+%% you pass both values to the Snow device through the Snowball client when
+%% the client is started for the first time.
 %%
 %% As a best practice, we recommend that you don't save a copy of an
-%% `UnlockCode' value in the same location as the manifest file for that job.
-%% Saving these separately helps prevent unauthorized parties from gaining
-%% access to the Snow device associated with that job.
+%% `UnlockCode' value in the same location as the manifest file for that
+%% job. Saving these separately helps prevent unauthorized parties from
+%% gaining access to the Snow device associated with that job.
 %%
 %% The credentials of a given job, including its manifest file and unlock
 %% code, expire 360 days after the job is created.
@@ -326,16 +328,16 @@ get_job_manifest(Client, Input, Options)
 
 %% @doc Returns the `UnlockCode' code value for the specified job.
 %%
-%% A particular `UnlockCode' value can be accessed for up to 360 days after
-%% the associated job has been created.
+%% A particular `UnlockCode' value can be accessed for up to 360 days
+%% after the associated job has been created.
 %%
 %% The `UnlockCode' value is a 29-character code with 25 alphanumeric
 %% characters and 4 hyphens. This code is used to decrypt the manifest file
 %% when it is passed along with the manifest to the Snow device through the
 %% Snowball client when the client is started for the first time. The only
-%% valid status for calling this API is `WithCustomer' as the manifest and
-%% `Unlock' code values are used for securing your device and should only be
-%% used when you have the device.
+%% valid status for calling this API is `WithCustomer' as the manifest
+%% and `Unlock' code values are used for securing your device and should
+%% only be used when you have the device.
 %%
 %% As a best practice, we recommend that you don't save a copy of the
 %% `UnlockCode' in the same location as the manifest file for that job.
@@ -370,7 +372,8 @@ get_software_updates(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSoftwareUpdates">>, Input, Options).
 
-%% @doc Returns an array of `JobListEntry' objects of the specified length.
+%% @doc Returns an array of `JobListEntry' objects of the specified
+%% length.
 %%
 %% Each `JobListEntry' object is for a job in the specified cluster and
 %% contains a job's state, a job's ID, and other information.
@@ -384,8 +387,8 @@ list_cluster_jobs(Client, Input, Options)
 %% @doc Returns an array of `ClusterListEntry' objects of the specified
 %% length.
 %%
-%% Each `ClusterListEntry' object contains a cluster's state, a cluster's ID,
-%% and other important status information.
+%% Each `ClusterListEntry' object contains a cluster's state, a
+%% cluster's ID, and other important status information.
 list_clusters(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_clusters(Client, Input, []).
@@ -407,12 +410,14 @@ list_compatible_images(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCompatibleImages">>, Input, Options).
 
-%% @doc Returns an array of `JobListEntry' objects of the specified length.
+%% @doc Returns an array of `JobListEntry' objects of the specified
+%% length.
 %%
-%% Each `JobListEntry' object contains a job's state, a job's ID, and a value
-%% that indicates whether the job is a job part, in the case of export jobs.
-%% Calling this API action in one of the US regions will return jobs from the
-%% list of all jobs associated with this account in all US regions.
+%% Each `JobListEntry' object contains a job's state, a job's ID,
+%% and a value that indicates whether the job is a job part, in the case of
+%% export jobs. Calling this API action in one of the US regions will return
+%% jobs from the list of all jobs associated with this account in all US
+%% regions.
 list_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_jobs(Client, Input, []).
@@ -428,8 +433,9 @@ list_long_term_pricing(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLongTermPricing">>, Input, Options).
 
-%% @doc While a cluster's `ClusterState' value is in the `AwaitingQuorum'
-%% state, you can update some of the information associated with a cluster.
+%% @doc While a cluster's `ClusterState' value is in the
+%% `AwaitingQuorum' state, you can update some of the information
+%% associated with a cluster.
 %%
 %% Once the cluster changes to a different job state, usually 60 minutes
 %% after the cluster being created, this action is no longer available.
@@ -440,8 +446,8 @@ update_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCluster">>, Input, Options).
 
-%% @doc While a job's `JobState' value is `New', you can update some of the
-%% information associated with a job.
+%% @doc While a job's `JobState' value is `New', you can update
+%% some of the information associated with a job.
 %%
 %% Once the job changes to a different job state, usually within 60 minutes
 %% of the job being created, this action is no longer available.

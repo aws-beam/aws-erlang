@@ -151,13 +151,13 @@
 %% queries, which you provide as an array of query ID strings.
 %%
 %% Requires you to have access to the workgroup in which the queries were
-%% saved. Use `ListNamedQueriesInput' to get the list of named query IDs in
-%% the specified workgroup. If information could not be retrieved for a
+%% saved. Use `ListNamedQueriesInput' to get the list of named query IDs
+%% in the specified workgroup. If information could not be retrieved for a
 %% submitted query ID, information about the query ID submitted is listed
 %% under `UnprocessedNamedQueryId'. Named queries differ from executed
 %% queries. Use `BatchGetQueryExecutionInput' to get details about each
-%% unique query execution, and `ListQueryExecutionsInput' to get a list of
-%% query execution IDs.
+%% unique query execution, and `ListQueryExecutionsInput' to get a list
+%% of query execution IDs.
 batch_get_named_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_named_query(Client, Input, []).
@@ -186,9 +186,9 @@ batch_get_prepared_statement(Client, Input, Options)
 %%
 %% Requires you to have access to the workgroup in which the queries ran. To
 %% get a list of query execution IDs, use
-%% `ListQueryExecutionsInput$WorkGroup'. Query executions differ from named
-%% (saved) queries. Use `BatchGetNamedQueryInput' to get details about named
-%% queries.
+%% `ListQueryExecutionsInput$WorkGroup'. Query executions differ from
+%% named (saved) queries. Use `BatchGetNamedQueryInput' to get details
+%% about named queries.
 batch_get_query_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     batch_get_query_execution(Client, Input, []).
@@ -221,8 +221,8 @@ create_named_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNamedQuery">>, Input, Options).
 
-%% @doc Creates an empty `ipynb' file in the specified Apache Spark enabled
-%% workgroup.
+%% @doc Creates an empty `ipynb' file in the specified Apache Spark
+%% enabled workgroup.
 %%
 %% Throws an error if a file in the workgroup with the same name already
 %% exists.
@@ -244,8 +244,8 @@ create_prepared_statement(Client, Input, Options)
 %% @doc Gets an authentication token and the URL at which the notebook can be
 %% accessed.
 %%
-%% During programmatic access, `CreatePresignedNotebookUrl' must be called
-%% every 10 minutes to refresh the authentication token.
+%% During programmatic access, `CreatePresignedNotebookUrl' must be
+%% called every 10 minutes to refresh the authentication token.
 create_presigned_notebook_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_presigned_notebook_url(Client, Input, []).
@@ -256,9 +256,9 @@ create_presigned_notebook_url(Client, Input, Options)
 %% @doc Creates a workgroup with the specified name.
 %%
 %% Only one of `Configurations' or `Configuration' can be specified;
-%% `Configurations' for a workgroup with multi engine support (for example,
-%% an Apache Spark enabled workgroup) or `Configuration' for an Athena SQL
-%% workgroup.
+%% `Configurations' for a workgroup with multi engine support (for
+%% example, an Apache Spark enabled workgroup) or `Configuration' for an
+%% Athena SQL workgroup.
 create_work_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_work_group(Client, Input, []).
@@ -404,7 +404,8 @@ get_query_execution(Client, Input, Options)
     request(Client, <<"GetQueryExecution">>, Input, Options).
 
 %% @doc Streams the results of a single query execution specified by
-%% `QueryExecutionId' from the Athena query results location in Amazon S3.
+%% `QueryExecutionId' from the Athena query results location in Amazon
+%% S3.
 %%
 %% For more information, see Query Results in the Amazon Athena User Guide.
 %% This request does not execute the query but returns results. Use
@@ -414,11 +415,11 @@ get_query_execution(Client, Input, Options)
 %% call `GetQueryResults' also must have permissions to the Amazon S3
 %% `GetObject' action for the Athena query results location.
 %%
-%% IAM principals with permission to the Amazon S3 `GetObject' action for the
-%% query results location are able to retrieve query results from Amazon S3
-%% even if permission to the `GetQueryResults' action is denied. To restrict
-%% user or role access, ensure that Amazon S3 permissions to the Athena query
-%% location are denied.
+%% IAM principals with permission to the Amazon S3 `GetObject' action for
+%% the query results location are able to retrieve query results from Amazon
+%% S3 even if permission to the `GetQueryResults' action is denied. To
+%% restrict user or role access, ensure that Amazon S3 permissions to the
+%% Athena query location are denied.
 get_query_results(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_query_results(Client, Input, []).
@@ -477,8 +478,9 @@ get_work_group(Client, Input, Options)
 
 %% @doc Imports a single `ipynb' file to a Spark enabled workgroup.
 %%
-%% The maximum file size that can be imported is 10 megabytes. If an `ipynb'
-%% file with the same name already exists in the workgroup, throws an error.
+%% The maximum file size that can be imported is 10 megabytes. If an
+%% `ipynb' file with the same name already exists in the workgroup,
+%% throws an error.
 import_notebook(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_notebook(Client, Input, []).
@@ -568,8 +570,8 @@ list_notebook_metadata(Client, Input, Options)
     request(Client, <<"ListNotebookMetadata">>, Input, Options).
 
 %% @doc Lists, in descending order, the sessions that have been created in a
-%% notebook that are in an active state like `CREATING', `CREATED', `IDLE' or
-%% `BUSY'.
+%% notebook that are in an active state like `CREATING', `CREATED',
+%% `IDLE' or `BUSY'.
 %%
 %% Newer sessions are listed first; older sessions are listed later.
 list_notebook_sessions(Client, Input)
@@ -677,9 +679,9 @@ start_session(Client, Input, Options)
 
 %% @doc Requests the cancellation of a calculation.
 %%
-%% A `StopCalculationExecution' call on a calculation that is already in a
-%% terminal state (for example, `STOPPED', `FAILED', or `COMPLETED') succeeds
-%% but has no effect.
+%% A `StopCalculationExecution' call on a calculation that is already in
+%% a terminal state (for example, `STOPPED', `FAILED', or
+%% `COMPLETED') succeeds but has no effect.
 %%
 %% Cancelling a calculation is done on a best effort basis. If a calculation
 %% cannot be cancelled, you can be charged for its completion. If you are
@@ -729,10 +731,10 @@ tag_resource(Client, Input, Options)
 %% @doc Terminates an active session.
 %%
 %% A `TerminateSession' call on a session that is already inactive (for
-%% example, in a `FAILED', `TERMINATED' or `TERMINATING' state) succeeds but
-%% has no effect. Calculations running in the session when `TerminateSession'
-%% is called are forcefully stopped, but may display as `FAILED' instead of
-%% `STOPPED'.
+%% example, in a `FAILED', `TERMINATED' or `TERMINATING' state)
+%% succeeds but has no effect. Calculations running in the session when
+%% `TerminateSession' is called are forcefully stopped, but may display
+%% as `FAILED' instead of `STOPPED'.
 terminate_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     terminate_session(Client, Input, []).
@@ -793,10 +795,10 @@ update_prepared_statement(Client, Input, Options)
 %% @doc Updates the workgroup with the specified name.
 %%
 %% The workgroup's name cannot be changed. Only one of
-%% `ConfigurationsUpdates' or `ConfigurationUpdates' can be specified;
-%% `ConfigurationsUpdates' for a workgroup with multi engine support (for
-%% example, an Apache Spark enabled workgroup) or `ConfigurationUpdates' for
-%% an Athena SQL workgroup.
+%% `ConfigurationsUpdates' or `ConfigurationUpdates' can be
+%% specified; `ConfigurationsUpdates' for a workgroup with multi engine
+%% support (for example, an Apache Spark enabled workgroup) or
+%% `ConfigurationUpdates' for an Athena SQL workgroup.
 update_work_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_work_group(Client, Input, []).

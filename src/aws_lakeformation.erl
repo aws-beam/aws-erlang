@@ -140,8 +140,8 @@ add_l_f_tags_to_resource(Client, Input0, Options0) ->
 %% temporary access from Lake Formation which is authorized via the virtual
 %% API `GetDataAccess'. Therefore, all SAML roles that can be assumed via
 %% `AssumeDecoratedRoleWithSAML' must at a minimum include
-%% `lakeformation:GetDataAccess' in their role policies. A typical IAM policy
-%% attached to such a role would look as follows:
+%% `lakeformation:GetDataAccess' in their role policies. A typical IAM
+%% policy attached to such a role would look as follows:
 assume_decorated_role_with_saml(Client, Input) ->
     assume_decorated_role_with_saml(Client, Input, []).
 assume_decorated_role_with_saml(Client, Input0, Options0) ->
@@ -334,10 +334,10 @@ delete_data_cells_filter(Client, Input0, Options0) ->
 %% @doc Deletes the specified LF-tag given a key name.
 %%
 %% If the input parameter tag key was not found, then the operation will
-%% throw an exception. When you delete an LF-tag, the `LFTagPolicy' attached
-%% to the LF-tag becomes invalid. If the deleted LF-tag was still assigned to
-%% any resource, the tag policy attach to the deleted LF-tag will no longer
-%% be applied to the resource.
+%% throw an exception. When you delete an LF-tag, the `LFTagPolicy'
+%% attached to the LF-tag becomes invalid. If the deleted LF-tag was still
+%% assigned to any resource, the tag policy attach to the deleted LF-tag will
+%% no longer be applied to the resource.
 delete_l_f_tag(Client, Input) ->
     delete_l_f_tag(Client, Input, []).
 delete_l_f_tag(Client, Input0, Options0) ->
@@ -368,8 +368,8 @@ delete_l_f_tag(Client, Input0, Options0) ->
 %% transaction cancels.
 %%
 %% The Glue ETL library function `write_dynamic_frame.from_catalog()'
-%% includes an option to automatically call `DeleteObjectsOnCancel' before
-%% writes. For more information, see Rolling Back Amazon S3 Writes.
+%% includes an option to automatically call `DeleteObjectsOnCancel'
+%% before writes. For more information, see Rolling Back Amazon S3 Writes.
 delete_objects_on_cancel(Client, Input) ->
     delete_objects_on_cancel(Client, Input, []).
 delete_objects_on_cancel(Client, Input0, Options0) ->
@@ -519,8 +519,8 @@ get_data_lake_settings(Client, Input0, Options0) ->
 %% @doc Returns the Lake Formation permissions for a specified table or
 %% database resource located at a path in Amazon S3.
 %%
-%% `GetEffectivePermissionsForPath' will not return databases and tables if
-%% the catalog is encrypted.
+%% `GetEffectivePermissionsForPath' will not return databases and tables
+%% if the catalog is encrypted.
 get_effective_permissions_for_path(Client, Input) ->
     get_effective_permissions_for_path(Client, Input, []).
 get_effective_permissions_for_path(Client, Input0, Options0) ->
@@ -568,9 +568,9 @@ get_l_f_tag(Client, Input0, Options0) ->
 
 %% @doc Returns the state of a query previously submitted.
 %%
-%% Clients are expected to poll `GetQueryState' to monitor the current state
-%% of the planning before retrieving the work units. A query state is only
-%% visible to the principal that made the initial call to
+%% Clients are expected to poll `GetQueryState' to monitor the current
+%% state of the planning before retrieving the work units. A query state is
+%% only visible to the principal that made the initial call to
 %% `StartQueryPlanning'.
 get_query_state(Client, Input) ->
     get_query_state(Client, Input, []).
@@ -666,8 +666,9 @@ get_table_objects(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This API is identical to `GetTemporaryTableCredentials' except that
-%% this is used when the target Data Catalog resource is of type Partition.
+%% @doc This API is identical to `GetTemporaryTableCredentials' except
+%% that this is used when the target Data Catalog resource is of type
+%% Partition.
 %%
 %% Lake Formation restricts the permission of the vended credentials with the
 %% same scope down policy which restricts access to a single Amazon S3
@@ -1000,8 +1001,8 @@ put_data_lake_settings(Client, Input0, Options0) ->
 %%
 %% `ResourceArn = arn:aws:s3:::my-bucket UseServiceLinkedRole = true'
 %%
-%% If `UseServiceLinkedRole' is not set to true, you must provide or set the
-%% `RoleArn':
+%% If `UseServiceLinkedRole' is not set to true, you must provide or set
+%% the `RoleArn':
 %%
 %% `arn:aws:iam::12345:role/my-data-access-role'
 register_resource(Client, Input) ->
@@ -1029,8 +1030,8 @@ register_resource(Client, Input0, Options0) ->
 %% @doc Removes an LF-tag from the resource.
 %%
 %% Only database, table, or tableWithColumns resource are allowed. To tag
-%% columns, use the column inclusion list in `tableWithColumns' to specify
-%% column input.
+%% columns, use the column inclusion list in `tableWithColumns' to
+%% specify column input.
 remove_l_f_tags_from_resource(Client, Input) ->
     remove_l_f_tags_from_resource(Client, Input, []).
 remove_l_f_tags_from_resource(Client, Input0, Options0) ->
@@ -1083,8 +1084,8 @@ revoke_permissions(Client, Input0, Options0) ->
 %% This operation is used by admins who want to grant user permissions on
 %% certain `TagConditions'. Before making a grant, the admin can use
 %% `SearchDatabasesByTags' to find all resources where the given
-%% `TagConditions' are valid to verify whether the returned resources can be
-%% shared.
+%% `TagConditions' are valid to verify whether the returned resources can
+%% be shared.
 search_databases_by_l_f_tags(Client, Input) ->
     search_databases_by_l_f_tags(Client, Input, []).
 search_databases_by_l_f_tags(Client, Input0, Options0) ->
@@ -1107,12 +1108,14 @@ search_databases_by_l_f_tags(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation allows a search on `TABLE' resources by `LFTag's.
+%% @doc This operation allows a search on `TABLE' resources by
+%% `LFTag's.
 %%
 %% This will be used by admins who want to grant user permissions on certain
-%% LF-tags. Before making a grant, the admin can use `SearchTablesByLFTags'
-%% to find all resources where the given `LFTag's are valid to verify whether
-%% the returned resources can be shared.
+%% LF-tags. Before making a grant, the admin can use
+%% `SearchTablesByLFTags' to find all resources where the given
+%% `LFTag's are valid to verify whether the returned resources can be
+%% shared.
 search_tables_by_l_f_tags(Client, Input) ->
     search_tables_by_l_f_tags(Client, Input, []).
 search_tables_by_l_f_tags(Client, Input0, Options0) ->
@@ -1138,8 +1141,8 @@ search_tables_by_l_f_tags(Client, Input0, Options0) ->
 %% @doc Submits a request to process a query statement.
 %%
 %% This operation generates work units that can be retrieved with the
-%% `GetWorkUnits' operation as soon as the query state is WORKUNITS_AVAILABLE
-%% or FINISHED.
+%% `GetWorkUnits' operation as soon as the query state is
+%% WORKUNITS_AVAILABLE or FINISHED.
 start_query_planning(Client, Input) ->
     start_query_planning(Client, Input, []).
 start_query_planning(Client, Input0, Options0) ->
@@ -1194,8 +1197,8 @@ start_transaction(Client, Input0, Options0) ->
 %% EntityNotFoundException. The values in the delete key values will be
 %% deleted from list of possible values. If any value in the delete key
 %% values is attached to a resource, then API errors out with a 400 Exception
-%% - "Update not allowed". Untag the attribute before deleting the LF-tag
-%% key's value.
+%% - &quot;Update not allowed&quot;. Untag the attribute before deleting the
+%% LF-tag key's value.
 update_l_f_tag(Client, Input) ->
     update_l_f_tag(Client, Input, []).
 update_l_f_tag(Client, Input0, Options0) ->

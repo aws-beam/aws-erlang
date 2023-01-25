@@ -320,8 +320,8 @@
 %% baselines. Tags enable you to categorize your resources in different ways,
 %% for example, by purpose, owner, or environment. Each tag consists of a key
 %% and an optional value, both of which you define. For example, you could
-%% define a set of tags for your account's managed nodes that helps you track
-%% each node's owner and stack level. For example:
+%% define a set of tags for your account's managed nodes that helps you
+%% track each node's owner and stack level. For example:
 %%
 %% <ul> <li> `Key=Owner,Value=DbAdmin'
 %%
@@ -341,8 +341,8 @@
 %% We recommend that you devise a set of tag keys that meets your needs for
 %% each resource type. Using a consistent set of tag keys makes it easier for
 %% you to manage your resources. You can search and filter the resources
-%% based on the tags you add. Tags don't have any semantic meaning to and are
-%% interpreted strictly as a string of characters.
+%% based on the tags you add. Tags don't have any semantic meaning to and
+%% are interpreted strictly as a string of characters.
 %%
 %% For more information about using tags with Amazon Elastic Compute Cloud
 %% (Amazon EC2) instances, see Tagging your Amazon EC2 resources in the
@@ -423,8 +423,9 @@ create_activation(Client, Input, Options)
 %% association also specifies actions to take when applying the
 %% configuration. For example, an association for anti-virus software might
 %% run once a day. If the software isn't installed, then State Manager
-%% installs it. If the software is installed, but the service isn't running,
-%% then the association might instruct State Manager to start the service.
+%% installs it. If the software is installed, but the service isn't
+%% running, then the association might instruct State Manager to start the
+%% service.
 create_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_association(Client, Input, []).
@@ -465,12 +466,13 @@ create_document(Client, Input, Options)
 
 %% @doc Creates a new maintenance window.
 %%
-%% The value you specify for `Duration' determines the specific end time for
-%% the maintenance window based on the time it begins. No maintenance window
-%% tasks are permitted to start after the resulting endtime minus the number
-%% of hours you specify for `Cutoff'. For example, if the maintenance window
-%% starts at 3 PM, the duration is three hours, and the value you specify for
-%% `Cutoff' is one hour, no maintenance window tasks can start after 5 PM.
+%% The value you specify for `Duration' determines the specific end time
+%% for the maintenance window based on the time it begins. No maintenance
+%% window tasks are permitted to start after the resulting endtime minus the
+%% number of hours you specify for `Cutoff'. For example, if the
+%% maintenance window starts at 3 PM, the duration is three hours, and the
+%% value you specify for `Cutoff' is one hour, no maintenance window
+%% tasks can start after 5 PM.
 create_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_maintenance_window(Client, Input, []).
@@ -523,11 +525,11 @@ create_patch_baseline(Client, Input, Options)
 %% Amazon Web Services Systems Manager offers two types of resource data
 %% sync: `SyncToDestination' and `SyncFromSource'.
 %%
-%% You can configure Systems Manager Inventory to use the `SyncToDestination'
-%% type to synchronize Inventory data from multiple Amazon Web Services
-%% Regions to a single Amazon Simple Storage Service (Amazon S3) bucket. For
-%% more information, see Configuring resource data sync for Inventory in the
-%% Amazon Web Services Systems Manager User Guide.
+%% You can configure Systems Manager Inventory to use the
+%% `SyncToDestination' type to synchronize Inventory data from multiple
+%% Amazon Web Services Regions to a single Amazon Simple Storage Service
+%% (Amazon S3) bucket. For more information, see Configuring resource data
+%% sync for Inventory in the Amazon Web Services Systems Manager User Guide.
 %%
 %% You can configure Systems Manager Explorer to use the `SyncFromSource'
 %% type to synchronize operational work items (OpsItems) and operational data
@@ -543,10 +545,10 @@ create_patch_baseline(Client, Input, Options)
 %% continuously syncs data. To check the status of a sync, use the
 %% `ListResourceDataSync'.
 %%
-%% By default, data isn't encrypted in Amazon S3. We strongly recommend that
-%% you enable encryption in Amazon S3 to ensure secure data storage. We also
-%% recommend that you secure access to the Amazon S3 bucket by creating a
-%% restrictive bucket policy.
+%% By default, data isn't encrypted in Amazon S3. We strongly recommend
+%% that you enable encryption in Amazon S3 to ensure secure data storage. We
+%% also recommend that you secure access to the Amazon S3 bucket by creating
+%% a restrictive bucket policy.
 create_resource_data_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_resource_data_sync(Client, Input, []).
@@ -556,10 +558,10 @@ create_resource_data_sync(Client, Input, Options)
 
 %% @doc Deletes an activation.
 %%
-%% You aren't required to delete an activation. If you delete an activation,
-%% you can no longer use it to register additional managed nodes. Deleting an
-%% activation doesn't de-register managed nodes. You must manually
-%% de-register managed nodes.
+%% You aren't required to delete an activation. If you delete an
+%% activation, you can no longer use it to register additional managed nodes.
+%% Deleting an activation doesn't de-register managed nodes. You must
+%% manually de-register managed nodes.
 delete_activation(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_activation(Client, Input, []).
@@ -570,12 +572,12 @@ delete_activation(Client, Input, Options)
 %% @doc Disassociates the specified Amazon Web Services Systems Manager
 %% document (SSM document) from the specified managed node.
 %%
-%% If you created the association by using the `Targets' parameter, then you
-%% must delete the association by using the association ID.
+%% If you created the association by using the `Targets' parameter, then
+%% you must delete the association by using the association ID.
 %%
-%% When you disassociate a document from a managed node, it doesn't change
-%% the configuration of the node. To change the configuration state of a
-%% managed node after you disassociate a document, you must create a new
+%% When you disassociate a document from a managed node, it doesn't
+%% change the configuration of the node. To change the configuration state of
+%% a managed node after you disassociate a document, you must create a new
 %% document with the desired configuration and associate it with the node.
 delete_association(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -588,8 +590,8 @@ delete_association(Client, Input, Options)
 %% document) and all managed node associations to the document.
 %%
 %% Before you delete the document, we recommend that you use
-%% `DeleteAssociation' to disassociate all managed nodes that are associated
-%% with the document.
+%% `DeleteAssociation' to disassociate all managed nodes that are
+%% associated with the document.
 delete_document(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_document(Client, Input, []).
@@ -671,10 +673,10 @@ delete_resource_data_sync(Client, Input, Options)
 %%
 %% A resource policy helps you to define the IAM entity (for example, an
 %% Amazon Web Services account) that can manage your Systems Manager
-%% resources. Currently, `OpsItemGroup' is the only resource that supports
-%% Systems Manager resource policies. The resource policy for `OpsItemGroup'
-%% enables Amazon Web Services accounts to view and interact with OpsCenter
-%% operational work items (OpsItems).
+%% resources. Currently, `OpsItemGroup' is the only resource that
+%% supports Systems Manager resource policies. The resource policy for
+%% `OpsItemGroup' enables Amazon Web Services accounts to view and
+%% interact with OpsCenter operational work items (OpsItems).
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource_policy(Client, Input, []).
@@ -685,8 +687,8 @@ delete_resource_policy(Client, Input, Options)
 %% @doc Removes the server or virtual machine from the list of registered
 %% servers.
 %%
-%% You can reregister the node again at any time. If you don't plan to use
-%% Run Command on the server, we suggest uninstalling SSM Agent first.
+%% You can reregister the node again at any time. If you don't plan to
+%% use Run Command on the server, we suggest uninstalling SSM Agent first.
 deregister_managed_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_managed_instance(Client, Input, []).
@@ -731,8 +733,8 @@ describe_activations(Client, Input, Options)
 
 %% @doc Describes the association for the specified target or managed node.
 %%
-%% If you created the association by using the `Targets' parameter, then you
-%% must retrieve the association by using the association ID.
+%% If you created the association by using the `Targets' parameter, then
+%% you must retrieve the association by using the association ID.
 describe_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_association(Client, Input, []).
@@ -837,9 +839,9 @@ describe_instance_associations_status(Client, Input, Options)
 %% the managed node, node status, and so on.
 %%
 %% If you specify one or more managed node IDs, it returns information for
-%% those managed nodes. If you don't specify node IDs, it returns information
-%% for all your managed nodes. If you specify a node ID that isn't valid or a
-%% node that you don't own, you receive an error.
+%% those managed nodes. If you don't specify node IDs, it returns
+%% information for all your managed nodes. If you specify a node ID that
+%% isn't valid or a node that you don't own, you receive an error.
 %%
 %% The `IamRole' field for this API operation is the Identity and Access
 %% Management (IAM) role assigned to on-premises managed nodes. This call
@@ -934,11 +936,11 @@ describe_maintenance_window_targets(Client, Input, Options)
 
 %% @doc Lists the tasks in a maintenance window.
 %%
-%% For maintenance window tasks without a specified target, you can't supply
-%% values for `--max-errors' and `--max-concurrency'. Instead, the system
-%% inserts a placeholder value of `1', which may be reported in the response
-%% to this command. These values don't affect the running of your task and
-%% can be ignored.
+%% For maintenance window tasks without a specified target, you can't
+%% supply values for `--max-errors' and `--max-concurrency'. Instead,
+%% the system inserts a placeholder value of `1', which may be reported
+%% in the response to this command. These values don't affect the running
+%% of your task and can be ignored.
 describe_maintenance_window_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_maintenance_window_tasks(Client, Input, []).
@@ -984,12 +986,12 @@ describe_ops_items(Client, Input, Options)
 %% @doc Get information about a parameter.
 %%
 %% Request results are returned on a best-effort basis. If you specify
-%% `MaxResults' in the request, the response includes information up to the
-%% limit specified. The number of items returned, however, can be between
+%% `MaxResults' in the request, the response includes information up to
+%% the limit specified. The number of items returned, however, can be between
 %% zero and the value of `MaxResults'. If the service reaches an internal
 %% limit while processing the results, it stops the operation and returns the
-%% matching values up to that point and a `NextToken'. You can specify the
-%% `NextToken' in a subsequent call to get the next set of results.
+%% matching values up to that point and a `NextToken'. You can specify
+%% the `NextToken' in a subsequent call to get the next set of results.
 %%
 %% If you change the KMS key alias for the KMS key used to encrypt a
 %% parameter, then you must also update the key alias the parameter uses to
@@ -1033,8 +1035,9 @@ describe_patch_groups(Client, Input, Options)
 %% available patches.
 %%
 %% You can use the reported properties in the filters you specify in requests
-%% for operations such as `CreatePatchBaseline', `UpdatePatchBaseline',
-%% `DescribeAvailablePatches', and `DescribePatchBaselines'.
+%% for operations such as `CreatePatchBaseline',
+%% `UpdatePatchBaseline', `DescribeAvailablePatches', and
+%% `DescribePatchBaselines'.
 %%
 %% The following section lists the properties that can be used in filters for
 %% each major operating system type:
@@ -1045,26 +1048,29 @@ describe_patch_groups(Client, Input, Options)
 %% </dd> <dt>AMAZON_LINUX_2</dt> <dd> Valid properties: `PRODUCT' |
 %% `CLASSIFICATION' | `SEVERITY'
 %%
-%% </dd> <dt>CENTOS</dt> <dd> Valid properties: `PRODUCT' | `CLASSIFICATION'
-%% | `SEVERITY'
+%% </dd> <dt>CENTOS</dt> <dd> Valid properties: `PRODUCT' |
+%% `CLASSIFICATION' | `SEVERITY'
 %%
-%% </dd> <dt>DEBIAN</dt> <dd> Valid properties: `PRODUCT' | `PRIORITY'
+%% </dd> <dt>DEBIAN</dt> <dd> Valid properties: `PRODUCT' |
+%% `PRIORITY'
 %%
-%% </dd> <dt>MACOS</dt> <dd> Valid properties: `PRODUCT' | `CLASSIFICATION'
+%% </dd> <dt>MACOS</dt> <dd> Valid properties: `PRODUCT' |
+%% `CLASSIFICATION'
 %%
 %% </dd> <dt>ORACLE_LINUX</dt> <dd> Valid properties: `PRODUCT' |
 %% `CLASSIFICATION' | `SEVERITY'
 %%
-%% </dd> <dt>REDHAT_ENTERPRISE_LINUX</dt> <dd> Valid properties: `PRODUCT' |
+%% </dd> <dt>REDHAT_ENTERPRISE_LINUX</dt> <dd> Valid properties:
+%% `PRODUCT' | `CLASSIFICATION' | `SEVERITY'
+%%
+%% </dd> <dt>SUSE</dt> <dd> Valid properties: `PRODUCT' |
 %% `CLASSIFICATION' | `SEVERITY'
 %%
-%% </dd> <dt>SUSE</dt> <dd> Valid properties: `PRODUCT' | `CLASSIFICATION' |
-%% `SEVERITY'
+%% </dd> <dt>UBUNTU</dt> <dd> Valid properties: `PRODUCT' |
+%% `PRIORITY'
 %%
-%% </dd> <dt>UBUNTU</dt> <dd> Valid properties: `PRODUCT' | `PRIORITY'
-%%
-%% </dd> <dt>WINDOWS</dt> <dd> Valid properties: `PRODUCT' | `PRODUCT_FAMILY'
-%% | `CLASSIFICATION' | `MSRC_SEVERITY'
+%% </dd> <dt>WINDOWS</dt> <dd> Valid properties: `PRODUCT' |
+%% `PRODUCT_FAMILY' | `CLASSIFICATION' | `MSRC_SEVERITY'
 %%
 %% </dd> </dl>
 describe_patch_properties(Client, Input)
@@ -1109,12 +1115,12 @@ get_automation_execution(Client, Input, Options)
 %% If you specify a time, `GetCalendarState' returns the state of the
 %% calendar at that specific time, and returns the next time that the change
 %% calendar state will transition. If you don't specify a time,
-%% `GetCalendarState' uses the current time. Change Calendar entries have two
-%% possible states: `OPEN' or `CLOSED'.
+%% `GetCalendarState' uses the current time. Change Calendar entries have
+%% two possible states: `OPEN' or `CLOSED'.
 %%
 %% If you specify more than one calendar in a request, the command returns
-%% the status of `OPEN' only if all calendars in the request are open. If one
-%% or more calendars in the request are closed, the status returned is
+%% the status of `OPEN' only if all calendars in the request are open. If
+%% one or more calendars in the request are closed, the status returned is
 %% `CLOSED'.
 %%
 %% For more information about Change Calendar, a capability of Amazon Web
@@ -1130,10 +1136,10 @@ get_calendar_state(Client, Input, Options)
 %% @doc Returns detailed information about command execution for an
 %% invocation or plugin.
 %%
-%% `GetCommandInvocation' only gives the execution status of a plugin in a
-%% document. To get the command execution status on a specific managed node,
-%% use `ListCommandInvocations'. To get the command execution status across
-%% managed nodes, use `ListCommands'.
+%% `GetCommandInvocation' only gives the execution status of a plugin in
+%% a document. To get the command execution status on a specific managed
+%% node, use `ListCommandInvocations'. To get the command execution
+%% status across managed nodes, use `ListCommands'.
 get_command_invocation(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_command_invocation(Client, Input, []).
@@ -1157,8 +1163,8 @@ get_connection_status(Client, Input, Options)
 %% patch baselines. For example, you can create a default patch baseline for
 %% each operating system.
 %%
-%% If you don't specify an operating system value, the default patch baseline
-%% for Windows is returned.
+%% If you don't specify an operating system value, the default patch
+%% baseline for Windows is returned.
 get_default_patch_baseline(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_default_patch_baseline(Client, Input, []).
@@ -1169,8 +1175,8 @@ get_default_patch_baseline(Client, Input, Options)
 %% @doc Retrieves the current snapshot for the patch baseline the managed
 %% node uses.
 %%
-%% This API is primarily used by the `AWS-RunPatchBaseline' Systems Manager
-%% document (SSM document).
+%% This API is primarily used by the `AWS-RunPatchBaseline' Systems
+%% Manager document (SSM document).
 %%
 %% If you run the command locally, such as with the Command Line Interface
 %% (CLI), the system attempts to use your local Amazon Web Services
@@ -1198,7 +1204,8 @@ get_document(Client, Input, Options)
 
 %% @doc Query inventory information.
 %%
-%% This includes managed node status, such as `Stopped' or `Terminated'.
+%% This includes managed node status, such as `Stopped' or
+%% `Terminated'.
 get_inventory(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_inventory(Client, Input, []).
@@ -1251,11 +1258,11 @@ get_maintenance_window_execution_task_invocation(Client, Input, Options)
 
 %% @doc Retrieves the details of a maintenance window task.
 %%
-%% For maintenance window tasks without a specified target, you can't supply
-%% values for `--max-errors' and `--max-concurrency'. Instead, the system
-%% inserts a placeholder value of `1', which may be reported in the response
-%% to this command. These values don't affect the running of your task and
-%% can be ignored.
+%% For maintenance window tasks without a specified target, you can't
+%% supply values for `--max-errors' and `--max-concurrency'. Instead,
+%% the system inserts a placeholder value of `1', which may be reported
+%% in the response to this command. These values don't affect the running
+%% of your task and can be ignored.
 %%
 %% To retrieve a list of tasks in a maintenance window, instead use the
 %% `DescribeMaintenanceWindowTasks' command.
@@ -1348,12 +1355,12 @@ get_parameters(Client, Input, Options)
 %% hierarchy.
 %%
 %% Request results are returned on a best-effort basis. If you specify
-%% `MaxResults' in the request, the response includes information up to the
-%% limit specified. The number of items returned, however, can be between
+%% `MaxResults' in the request, the response includes information up to
+%% the limit specified. The number of items returned, however, can be between
 %% zero and the value of `MaxResults'. If the service reaches an internal
 %% limit while processing the results, it stops the operation and returns the
-%% matching values up to that point and a `NextToken'. You can specify the
-%% `NextToken' in a subsequent call to get the next set of results.
+%% matching values up to that point and a `NextToken'. You can specify
+%% the `NextToken' in a subsequent call to get the next set of results.
 get_parameters_by_path(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_parameters_by_path(Client, Input, []).
@@ -1393,16 +1400,18 @@ get_resource_policies(Client, Input, Options)
 %% feature of a service. For example, if an Amazon Web Services service
 %% charges money to the account based on feature or service usage, then the
 %% Amazon Web Services service team might create a default setting of
-%% `false'. This means the user can't use this feature unless they change the
-%% setting to `true' and intentionally opt in for a paid feature.
+%% `false'. This means the user can't use this feature unless they
+%% change the setting to `true' and intentionally opt in for a paid
+%% feature.
 %%
-%% Services map a `SettingId' object to a setting value. Amazon Web Services
-%% services teams define the default value for a `SettingId'. You can't
-%% create a new `SettingId', but you can overwrite the default value if you
-%% have the `ssm:UpdateServiceSetting' permission for the setting. Use the
-%% `UpdateServiceSetting' API operation to change the default setting. Or use
-%% the `ResetServiceSetting' to change the value back to the original value
-%% defined by the Amazon Web Services service team.
+%% Services map a `SettingId' object to a setting value. Amazon Web
+%% Services services teams define the default value for a `SettingId'.
+%% You can't create a new `SettingId', but you can overwrite the
+%% default value if you have the `ssm:UpdateServiceSetting' permission
+%% for the setting. Use the `UpdateServiceSetting' API operation to
+%% change the default setting. Or use the `ResetServiceSetting' to change
+%% the value back to the original value defined by the Amazon Web Services
+%% service team.
 %%
 %% Query the current service setting for the Amazon Web Services account.
 get_service_setting(Client, Input)
@@ -1424,15 +1433,15 @@ get_service_setting(Client, Input, Options)
 %%
 %% <ul> <li> A version of a parameter can have a maximum of 10 labels.
 %%
-%% </li> <li> You can't attach the same label to different versions of the
-%% same parameter. For example, if version 1 has the label Production, then
-%% you can't attach Production to version 2.
+%% </li> <li> You can't attach the same label to different versions of
+%% the same parameter. For example, if version 1 has the label Production,
+%% then you can't attach Production to version 2.
 %%
 %% </li> <li> You can move a label from one version of a parameter to
 %% another.
 %%
-%% </li> <li> You can't create a label when you create a new parameter. You
-%% must attach a label to a specific version of a parameter.
+%% </li> <li> You can't create a label when you create a new parameter.
+%% You must attach a label to a specific version of a parameter.
 %%
 %% </li> <li> If you no longer want to use a parameter label, then you can
 %% either delete it or move it to a different version of a parameter.
@@ -1442,10 +1451,10 @@ get_service_setting(Client, Input, Options)
 %% </li> <li> Labels can contain letters (case sensitive), numbers, periods
 %% (.), hyphens (-), or underscores (_).
 %%
-%% </li> <li> Labels can't begin with a number, "`aws'" or "`ssm'" (not case
-%% sensitive). If a label fails to meet these requirements, then the label
-%% isn't associated with a parameter and the system displays it in the list
-%% of InvalidLabels.
+%% </li> <li> Labels can't begin with a number, &quot;`aws'&quot; or
+%% &quot;`ssm'&quot; (not case sensitive). If a label fails to meet these
+%% requirements, then the label isn't associated with a parameter and the
+%% system displays it in the list of InvalidLabels.
 %%
 %% </li> </ul>
 label_parameter_version(Client, Input)
@@ -1482,8 +1491,8 @@ list_associations(Client, Input, Options)
 %% A command can apply to one or more managed nodes. A command invocation
 %% applies to one managed node. For example, if a user runs `SendCommand'
 %% against three managed nodes, then a command invocation is created for each
-%% requested managed node ID. `ListCommandInvocations' provide status about
-%% command execution.
+%% requested managed node ID. `ListCommandInvocations' provide status
+%% about command execution.
 list_command_invocations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_command_invocations(Client, Input, []).
@@ -1610,12 +1619,13 @@ list_resource_compliance_summaries(Client, Input, Options)
 %% last sync status, and the last time a sync successfully completed.
 %%
 %% The number of sync configurations might be too large to return using a
-%% single call to `ListResourceDataSync'. You can limit the number of sync
-%% configurations returned by using the `MaxResults' parameter. To determine
-%% whether there are more sync configurations to list, check the value of
-%% `NextToken' in the output. If there are more sync configurations to list,
-%% you can request them by specifying the `NextToken' returned in the call to
-%% the parameter of a subsequent call.
+%% single call to `ListResourceDataSync'. You can limit the number of
+%% sync configurations returned by using the `MaxResults' parameter. To
+%% determine whether there are more sync configurations to list, check the
+%% value of `NextToken' in the output. If there are more sync
+%% configurations to list, you can request them by specifying the
+%% `NextToken' returned in the call to the parameter of a subsequent
+%% call.
 list_resource_data_sync(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_resource_data_sync(Client, Input, []).
@@ -1660,7 +1670,8 @@ modify_document_permission(Client, Input, Options)
 %% <ul> <li> ExecutionId: The execution ID when the patch, association, or
 %% custom compliance item was applied.
 %%
-%% </li> <li> ExecutionType: Specify patch, association, or Custom:`string'.
+%% </li> <li> ExecutionType: Specify patch, association, or
+%% Custom:`string'.
 %%
 %% </li> <li> ExecutionTime. The time the patch, association, or custom
 %% compliance item was applied to the managed node.
@@ -1727,10 +1738,10 @@ put_parameter(Client, Input, Options)
 %%
 %% A resource policy helps you to define the IAM entity (for example, an
 %% Amazon Web Services account) that can manage your Systems Manager
-%% resources. Currently, `OpsItemGroup' is the only resource that supports
-%% Systems Manager resource policies. The resource policy for `OpsItemGroup'
-%% enables Amazon Web Services accounts to view and interact with OpsCenter
-%% operational work items (OpsItems).
+%% resources. Currently, `OpsItemGroup' is the only resource that
+%% supports Systems Manager resource policies. The resource policy for
+%% `OpsItemGroup' enables Amazon Web Services accounts to view and
+%% interact with OpsCenter operational work items (OpsItems).
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
@@ -1791,15 +1802,17 @@ remove_tags_from_resource(Client, Input, Options)
 %% feature of a service. For example, if an Amazon Web Services service
 %% charges money to the account based on feature or service usage, then the
 %% Amazon Web Services service team might create a default setting of
-%% "false". This means the user can't use this feature unless they change the
-%% setting to "true" and intentionally opt in for a paid feature.
+%% &quot;false&quot;. This means the user can't use this feature unless
+%% they change the setting to &quot;true&quot; and intentionally opt in for a
+%% paid feature.
 %%
-%% Services map a `SettingId' object to a setting value. Amazon Web Services
-%% services teams define the default value for a `SettingId'. You can't
-%% create a new `SettingId', but you can overwrite the default value if you
-%% have the `ssm:UpdateServiceSetting' permission for the setting. Use the
-%% `GetServiceSetting' API operation to view the current value. Use the
-%% `UpdateServiceSetting' API operation to change the default setting.
+%% Services map a `SettingId' object to a setting value. Amazon Web
+%% Services services teams define the default value for a `SettingId'.
+%% You can't create a new `SettingId', but you can overwrite the
+%% default value if you have the `ssm:UpdateServiceSetting' permission
+%% for the setting. Use the `GetServiceSetting' API operation to view the
+%% current value. Use the `UpdateServiceSetting' API operation to change
+%% the default setting.
 %%
 %% Reset the service setting for the account to the default value as
 %% provisioned by the Amazon Web Services service team.
@@ -1817,8 +1830,8 @@ reset_service_setting(Client, Input, Options)
 %% sessions.
 %%
 %% This command is primarily for use by client machines to automatically
-%% reconnect during intermittent network issues. It isn't intended for any
-%% other use.
+%% reconnect during intermittent network issues. It isn't intended for
+%% any other use.
 resume_session(Client, Input)
   when is_map(Client), is_map(Input) ->
     resume_session(Client, Input, []).
@@ -1878,11 +1891,11 @@ start_change_request_execution(Client, Input, Options)
 %% Returns a URL and token that can be used to open a WebSocket connection
 %% for sending input and receiving outputs.
 %%
-%% Amazon Web Services CLI usage: `start-session' is an interactive command
-%% that requires the Session Manager plugin to be installed on the client
-%% machine making the call. For information, see Install the Session Manager
-%% plugin for the Amazon Web Services CLI in the Amazon Web Services Systems
-%% Manager User Guide.
+%% Amazon Web Services CLI usage: `start-session' is an interactive
+%% command that requires the Session Manager plugin to be installed on the
+%% client machine making the call. For information, see Install the Session
+%% Manager plugin for the Amazon Web Services CLI in the Amazon Web Services
+%% Systems Manager User Guide.
 %%
 %% Amazon Web Services Tools for PowerShell usage: Start-SSMSession isn't
 %% currently supported by Amazon Web Services Tools for PowerShell on Windows
@@ -1925,26 +1938,27 @@ unlabel_parameter_version(Client, Input, Options)
 %%
 %% You can update the association name and version, the document version,
 %% schedule, parameters, and Amazon Simple Storage Service (Amazon S3)
-%% output. When you call `UpdateAssociation', the system removes all optional
-%% parameters from the request and overwrites the association with null
-%% values for those parameters. This is by design. You must specify all
+%% output. When you call `UpdateAssociation', the system removes all
+%% optional parameters from the request and overwrites the association with
+%% null values for those parameters. This is by design. You must specify all
 %% optional parameters in the call, even if you are not changing the
-%% parameters. This includes the `Name' parameter. Before calling this API
-%% action, we recommend that you call the `DescribeAssociation' API operation
-%% and make a note of all optional parameters required for your
+%% parameters. This includes the `Name' parameter. Before calling this
+%% API action, we recommend that you call the `DescribeAssociation' API
+%% operation and make a note of all optional parameters required for your
 %% `UpdateAssociation' call.
 %%
 %% In order to call this API operation, your Identity and Access Management
 %% (IAM) user account, group, or role must be configured with permission to
-%% call the `DescribeAssociation' API operation. If you don't have permission
-%% to call `DescribeAssociation', then you receive the following error: `An
-%% error occurred (AccessDeniedException) when calling the UpdateAssociation
-%% operation: User: <user_arn> isn't authorized to perform:
-%% ssm:DescribeAssociation on resource: <resource_arn>'
+%% call the `DescribeAssociation' API operation. If you don't have
+%% permission to call `DescribeAssociation', then you receive the
+%% following error: `An error occurred (AccessDeniedException) when calling
+%% the UpdateAssociation operation: User: &lt;user_arn&gt; isn't
+%% authorized to perform: ssm:DescribeAssociation on resource:
+%% &lt;resource_arn&gt;'
 %%
 %% When you update an association, the association immediately runs against
-%% the specified targets. You can add the `ApplyOnlyAtCronInterval' parameter
-%% to run the association during the next schedule run.
+%% the specified targets. You can add the `ApplyOnlyAtCronInterval'
+%% parameter to run the association during the next schedule run.
 update_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_association(Client, Input, []).
@@ -1999,12 +2013,13 @@ update_document_metadata(Client, Input, Options)
 %%
 %% Only specified parameters are modified.
 %%
-%% The value you specify for `Duration' determines the specific end time for
-%% the maintenance window based on the time it begins. No maintenance window
-%% tasks are permitted to start after the resulting endtime minus the number
-%% of hours you specify for `Cutoff'. For example, if the maintenance window
-%% starts at 3 PM, the duration is three hours, and the value you specify for
-%% `Cutoff' is one hour, no maintenance window tasks can start after 5 PM.
+%% The value you specify for `Duration' determines the specific end time
+%% for the maintenance window based on the time it begins. No maintenance
+%% window tasks are permitted to start after the resulting endtime minus the
+%% number of hours you specify for `Cutoff'. For example, if the
+%% maintenance window starts at 3 PM, the duration is three hours, and the
+%% value you specify for `Cutoff' is one hour, no maintenance window
+%% tasks can start after 5 PM.
 update_maintenance_window(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_maintenance_window(Client, Input, []).
@@ -2041,10 +2056,11 @@ update_maintenance_window_target(Client, Input, Options)
 
 %% @doc Modifies a task assigned to a maintenance window.
 %%
-%% You can't change the task type, but you can change the following values:
+%% You can't change the task type, but you can change the following
+%% values:
 %%
-%% <ul> <li> `TaskARN'. For example, you can change a `RUN_COMMAND' task from
-%% `AWS-RunPowerShellScript' to `AWS-RunShellScript'.
+%% <ul> <li> `TaskARN'. For example, you can change a `RUN_COMMAND'
+%% task from `AWS-RunPowerShellScript' to `AWS-RunShellScript'.
 %%
 %% </li> <li> `ServiceRoleArn'
 %%
@@ -2059,23 +2075,24 @@ update_maintenance_window_target(Client, Input, Options)
 %% </li> </ul> One or more targets must be specified for maintenance window
 %% Run Command-type tasks. Depending on the task, targets are optional for
 %% other maintenance window task types (Automation, Lambda, and Step
-%% Functions). For more information about running tasks that don't specify
-%% targets, see Registering maintenance window tasks without targets in the
-%% Amazon Web Services Systems Manager User Guide.
+%% Functions). For more information about running tasks that don't
+%% specify targets, see Registering maintenance window tasks without targets
+%% in the Amazon Web Services Systems Manager User Guide.
 %%
 %% If the value for a parameter in `UpdateMaintenanceWindowTask' is null,
-%% then the corresponding field isn't modified. If you set `Replace' to true,
-%% then all fields required by the `RegisterTaskWithMaintenanceWindow'
-%% operation are required for this request. Optional fields that aren't
-%% specified are set to null.
+%% then the corresponding field isn't modified. If you set `Replace'
+%% to true, then all fields required by the
+%% `RegisterTaskWithMaintenanceWindow' operation are required for this
+%% request. Optional fields that aren't specified are set to null.
 %%
 %% When you update a maintenance window task that has options specified in
 %% `TaskInvocationParameters', you must provide again all the
-%% `TaskInvocationParameters' values that you want to retain. The values you
-%% don't specify again are removed. For example, suppose that when you
-%% registered a Run Command task, you specified `TaskInvocationParameters'
-%% values for `Comment', `NotificationConfig', and `OutputS3BucketName'. If
-%% you update the maintenance window task and specify only a different
+%% `TaskInvocationParameters' values that you want to retain. The values
+%% you don't specify again are removed. For example, suppose that when
+%% you registered a Run Command task, you specified
+%% `TaskInvocationParameters' values for `Comment',
+%% `NotificationConfig', and `OutputS3BucketName'. If you update the
+%% maintenance window task and specify only a different
 %% `OutputS3BucketName' value, the values for `Comment' and
 %% `NotificationConfig' are removed.
 update_maintenance_window_task(Client, Input)
@@ -2139,12 +2156,13 @@ update_patch_baseline(Client, Input, Options)
 
 %% @doc Update a resource data sync.
 %%
-%% After you create a resource data sync for a Region, you can't change the
-%% account options for that sync. For example, if you create a sync in the
-%% us-east-2 (Ohio) Region and you choose the `Include only the current
-%% account' option, you can't edit that sync later and choose the `Include
-%% all accounts from my Organizations configuration' option. Instead, you
-%% must delete the first resource data sync, and create a new one.
+%% After you create a resource data sync for a Region, you can't change
+%% the account options for that sync. For example, if you create a sync in
+%% the us-east-2 (Ohio) Region and you choose the `Include only the current
+%% account' option, you can't edit that sync later and choose the
+%% `Include all accounts from my Organizations configuration' option.
+%% Instead, you must delete the first resource data sync, and create a new
+%% one.
 %%
 %% This API operation only supports a resource data sync that was created
 %% with a SyncFromSource `SyncType'.
@@ -2162,16 +2180,18 @@ update_resource_data_sync(Client, Input, Options)
 %% feature of a service. For example, if an Amazon Web Services service
 %% charges money to the account based on feature or service usage, then the
 %% Amazon Web Services service team might create a default setting of
-%% "false". This means the user can't use this feature unless they change the
-%% setting to "true" and intentionally opt in for a paid feature.
+%% &quot;false&quot;. This means the user can't use this feature unless
+%% they change the setting to &quot;true&quot; and intentionally opt in for a
+%% paid feature.
 %%
-%% Services map a `SettingId' object to a setting value. Amazon Web Services
-%% services teams define the default value for a `SettingId'. You can't
-%% create a new `SettingId', but you can overwrite the default value if you
-%% have the `ssm:UpdateServiceSetting' permission for the setting. Use the
-%% `GetServiceSetting' API operation to view the current value. Or, use the
-%% `ResetServiceSetting' to change the value back to the original value
-%% defined by the Amazon Web Services service team.
+%% Services map a `SettingId' object to a setting value. Amazon Web
+%% Services services teams define the default value for a `SettingId'.
+%% You can't create a new `SettingId', but you can overwrite the
+%% default value if you have the `ssm:UpdateServiceSetting' permission
+%% for the setting. Use the `GetServiceSetting' API operation to view the
+%% current value. Or, use the `ResetServiceSetting' to change the value
+%% back to the original value defined by the Amazon Web Services service
+%% team.
 %%
 %% Update the service setting for the account.
 update_service_setting(Client, Input)

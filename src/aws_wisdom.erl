@@ -170,18 +170,21 @@ create_content(Client, KnowledgeBaseId, Input0, Options0) ->
 %%
 %% When using this API, you cannot reuse Amazon AppIntegrations
 %% DataIntegrations with external knowledge bases such as Salesforce and
-%% ServiceNow. If you do, you'll get an `InvalidRequestException' error.
+%% ServiceNow. If you do, you'll get an `InvalidRequestException'
+%% error.
 %%
-%% <p>For example, you're programmatically managing your external knowledge
-%% base, and you want to add or remove one of the fields that is being
-%% ingested from Salesforce. Do the following:</p> <ol> <li> <p>Call <a
-%% href="https://docs.aws.amazon.com/wisdom/latest/APIReference/API_DeleteKnowledgeBase.html">DeleteKnowledgeBase</a>.</p>
-%% </li> <li> <p>Call <a
-%% href="https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_DeleteDataIntegration.html">DeleteDataIntegration</a>.</p>
-%% </li> <li> <p>Call <a
-%% href="https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html">CreateDataIntegration</a>
-%% to recreate the DataIntegration or a create different one.</p> </li> <li>
-%% <p>Call CreateKnowledgeBase.</p> </li> </ol> </note>
+%% &lt;p&gt;For example, you're programmatically managing your external
+%% knowledge base, and you want to add or remove one of the fields that is
+%% being ingested from Salesforce. Do the following:&lt;/p&gt; &lt;ol&gt;
+%% &lt;li&gt; &lt;p&gt;Call &lt;a
+%% href=&quot;https://docs.aws.amazon.com/wisdom/latest/APIReference/API_DeleteKnowledgeBase.html&quot;&gt;DeleteKnowledgeBase&lt;/a&gt;.&lt;/p&gt;
+%% &lt;/li&gt; &lt;li&gt; &lt;p&gt;Call &lt;a
+%% href=&quot;https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_DeleteDataIntegration.html&quot;&gt;DeleteDataIntegration&lt;/a&gt;.&lt;/p&gt;
+%% &lt;/li&gt; &lt;li&gt; &lt;p&gt;Call &lt;a
+%% href=&quot;https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html&quot;&gt;CreateDataIntegration&lt;/a&gt;
+%% to recreate the DataIntegration or a create different one.&lt;/p&gt;
+%% &lt;/li&gt; &lt;li&gt; &lt;p&gt;Call CreateKnowledgeBase.&lt;/p&gt;
+%% &lt;/li&gt; &lt;/ol&gt; &lt;/note&gt;
 create_knowledge_base(Client, Input) ->
     create_knowledge_base(Client, Input, []).
 create_knowledge_base(Client, Input0, Options0) ->
@@ -304,9 +307,9 @@ delete_content(Client, ContentId, KnowledgeBaseId, Input0, Options0) ->
 %%
 %% When you use this API to delete an external knowledge base such as
 %% Salesforce or ServiceNow, you must also delete the Amazon AppIntegrations
-%% DataIntegration. This is because you can't reuse the DataIntegration after
-%% it's been associated with an external knowledge base. However, you can
-%% delete and recreate it. See DeleteDataIntegration and
+%% DataIntegration. This is because you can't reuse the DataIntegration
+%% after it's been associated with an external knowledge base. However,
+%% you can delete and recreate it. See DeleteDataIntegration and
 %% CreateDataIntegration in the Amazon AppIntegrations API Reference.
 delete_knowledge_base(Client, KnowledgeBaseId, Input) ->
     delete_knowledge_base(Client, KnowledgeBaseId, Input, []).
@@ -450,9 +453,9 @@ get_knowledge_base(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
 %%
 %% To avoid retrieving the same recommendations in subsequent calls, use
 %% NotifyRecommendationsReceived. This API supports long-polling behavior
-%% with the `waitTimeSeconds' parameter. Short poll is the default behavior
-%% and only returns recommendations already available. To perform a manual
-%% query against an assistant, use QueryAssistant.
+%% with the `waitTimeSeconds' parameter. Short poll is the default
+%% behavior and only returns recommendations already available. To perform a
+%% manual query against an assistant, use QueryAssistant.
 get_recommendations(Client, AssistantId, SessionId)
   when is_map(Client) ->
     get_recommendations(Client, AssistantId, SessionId, #{}, #{}).
@@ -638,12 +641,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Removes the specified recommendations from the specified assistant's
-%% queue of newly available recommendations.
+%% @doc Removes the specified recommendations from the specified
+%% assistant's queue of newly available recommendations.
 %%
 %% You can use this API in conjunction with GetRecommendations and a
-%% `waitTimeSeconds' input for long-polling behavior and avoiding duplicate
-%% recommendations.
+%% `waitTimeSeconds' input for long-polling behavior and avoiding
+%% duplicate recommendations.
 notify_recommendations_received(Client, AssistantId, SessionId, Input) ->
     notify_recommendations_received(Client, AssistantId, SessionId, Input, []).
 notify_recommendations_received(Client, AssistantId, SessionId, Input0, Options0) ->
@@ -868,9 +871,9 @@ update_content(Client, ContentId, KnowledgeBaseId, Input0, Options0) ->
 %% @doc Updates the template URI of a knowledge base.
 %%
 %% This is only supported for knowledge bases of type EXTERNAL. Include a
-%% single variable in `${variable}' format; this interpolated by Wisdom using
-%% ingested content. For example, if you ingest a Salesforce article, it has
-%% an `Id' value, and you can set the template URI to
+%% single variable in `${variable}' format; this interpolated by Wisdom
+%% using ingested content. For example, if you ingest a Salesforce article,
+%% it has an `Id' value, and you can set the template URI to
 %% `https://myInstanceName.lightning.force.com/lightning/r/Knowledge__kav/*${Id}*/view'.
 update_knowledge_base_template_uri(Client, KnowledgeBaseId, Input) ->
     update_knowledge_base_template_uri(Client, KnowledgeBaseId, Input, []).

@@ -658,8 +658,8 @@ add_association(Client, Input, Options)
 %% Profile launched before you called this API. To make sure that the tags
 %% associated with a Domain or User Profile are also added to all Apps that
 %% the Domain or User Profile launches, add the tags when you first create
-%% the Domain or User Profile by specifying them in the `Tags' parameter of
-%% `CreateDomain' or `CreateUserProfile'.
+%% the Domain or User Profile by specifying them in the `Tags' parameter
+%% of `CreateDomain' or `CreateUserProfile'.
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -670,7 +670,8 @@ add_tags(Client, Input, Options)
 %% @doc Associates a trial component with a trial.
 %%
 %% A trial component can be associated with multiple trials. To disassociate
-%% a trial component from a trial, call the `DisassociateTrialComponent' API.
+%% a trial component from a trial, call the `DisassociateTrialComponent'
+%% API.
 associate_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_trial_component(Client, Input, []).
@@ -798,9 +799,9 @@ create_code_repository(Client, Input, Options)
 %% </li> <li> The Amazon Resource Name (ARN) of the IAM role that Amazon
 %% SageMaker assumes to perform the model compilation job.
 %%
-%% </li> </ul> You can also provide a `Tag' to track the model compilation
-%% job's resource use and costs. The response body contains the
-%% `CompilationJobArn' for the compiled job.
+%% </li> </ul> You can also provide a `Tag' to track the model
+%% compilation job's resource use and costs. The response body contains
+%% the `CompilationJobArn' for the compiled job.
 %%
 %% To stop a model compilation job, use `StopCompilationJob'. To get
 %% information about a particular model compilation job, use
@@ -869,17 +870,17 @@ create_device_fleet(Client, Input, Options)
 %%
 %% All SageMaker Studio traffic between the domain and the EFS volume is
 %% through the specified VPC and subnets. For other Studio traffic, you can
-%% specify the `AppNetworkAccessType' parameter. `AppNetworkAccessType'
-%% corresponds to the network access type that you choose when you onboard to
-%% Studio. The following options are available:
+%% specify the `AppNetworkAccessType' parameter.
+%% `AppNetworkAccessType' corresponds to the network access type that you
+%% choose when you onboard to Studio. The following options are available:
 %%
 %% <ul> <li> `PublicInternetOnly' - Non-EFS traffic goes through a VPC
 %% managed by Amazon SageMaker, which allows internet access. This is the
 %% default value.
 %%
-%% </li> <li> `VpcOnly' - All Studio traffic is through the specified VPC and
-%% subnets. Internet access is disabled by default. To allow internet access,
-%% you must specify a NAT gateway.
+%% </li> <li> `VpcOnly' - All Studio traffic is through the specified VPC
+%% and subnets. Internet access is disabled by default. To allow internet
+%% access, you must specify a NAT gateway.
 %%
 %% When internet access is disabled, you won't be able to run a Studio
 %% notebook or to train or host models unless your VPC has an interface
@@ -940,10 +941,10 @@ create_edge_packaging_job(Client, Input, Options)
 %% For an example that calls this method when deploying a model to SageMaker
 %% hosting services, see the Create Endpoint example notebook.
 %%
-%% You must not delete an `EndpointConfig' that is in use by an endpoint that
-%% is live or while the `UpdateEndpoint' or `CreateEndpoint' operations are
-%% being performed on the endpoint. To update an endpoint, you must create a
-%% new `EndpointConfig'.
+%% You must not delete an `EndpointConfig' that is in use by an endpoint
+%% that is live or while the `UpdateEndpoint' or `CreateEndpoint'
+%% operations are being performed on the endpoint. To update an endpoint, you
+%% must create a new `EndpointConfig'.
 %%
 %% The endpoint name must be unique within an Amazon Web Services Region in
 %% your Amazon Web Services account.
@@ -951,8 +952,8 @@ create_edge_packaging_job(Client, Input, Options)
 %% When it receives the request, SageMaker creates the endpoint, launches the
 %% resources (ML compute instances), and deploys the model(s) on them.
 %%
-%% When you call `CreateEndpoint', a load call is made to DynamoDB to verify
-%% that your endpoint configuration exists. When you read data from a
+%% When you call `CreateEndpoint', a load call is made to DynamoDB to
+%% verify that your endpoint configuration exists. When you read data from a
 %% DynamoDB table supporting `Eventually Consistent Reads' , the response
 %% might not reflect the results of a recently completed write operation. The
 %% response might include some stale data. If the dependent entities are not
@@ -960,13 +961,14 @@ create_edge_packaging_job(Client, Input, Options)
 %% request after a short time, the response should return the latest data. So
 %% retry logic is recommended to handle these possible issues. We also
 %% recommend that customers call `DescribeEndpointConfig' before calling
-%% `CreateEndpoint' to minimize the potential impact of a DynamoDB eventually
-%% consistent read.
+%% `CreateEndpoint' to minimize the potential impact of a DynamoDB
+%% eventually consistent read.
 %%
 %% When SageMaker receives the request, it sets the endpoint status to
 %% `Creating'. After it creates the endpoint, it sets the status to
-%% `InService'. SageMaker can then process incoming requests for inferences.
-%% To check the status of an endpoint, use the `DescribeEndpoint' API.
+%% `InService'. SageMaker can then process incoming requests for
+%% inferences. To check the status of an endpoint, use the
+%% `DescribeEndpoint' API.
 %%
 %% If any of the models hosted at this endpoint get model data from an Amazon
 %% S3 location, SageMaker uses Amazon Web Services Security Token Service to
@@ -981,8 +983,8 @@ create_edge_packaging_job(Client, Input, Options)
 %% To add the IAM role policies for using this API operation, go to the IAM
 %% console, and choose Roles in the left navigation pane. Search the IAM role
 %% that you want to grant access to use the `CreateEndpoint' and
-%% `CreateEndpointConfig' API operations, add the following policies to the
-%% role.
+%% `CreateEndpointConfig' API operations, add the following policies to
+%% the role.
 %%
 %% Option 1: For a full SageMaker access, search and attach the
 %% `AmazonSageMakerFullAccess' policy.
@@ -990,13 +992,14 @@ create_edge_packaging_job(Client, Input, Options)
 %% Option 2: For granting a limited access to an IAM role, paste the
 %% following Action elements manually into the JSON file of the IAM role:
 %%
-%% `"Action": ["sagemaker:CreateEndpoint", "sagemaker:CreateEndpointConfig"]'
+%% `&quot;Action&quot;: [&quot;sagemaker:CreateEndpoint&quot;,
+%% &quot;sagemaker:CreateEndpointConfig&quot;]'
 %%
-%% `"Resource": ['
+%% `&quot;Resource&quot;: ['
 %%
-%% `"arn:aws:sagemaker:region:account-id:endpoint/endpointName"'
+%% `&quot;arn:aws:sagemaker:region:account-id:endpoint/endpointName&quot;'
 %%
-%% `"arn:aws:sagemaker:region:account-id:endpoint-config/endpointConfigName"'
+%% `&quot;arn:aws:sagemaker:region:account-id:endpoint-config/endpointConfigName&quot;'
 %%
 %% `]'
 %%
@@ -1013,25 +1016,25 @@ create_endpoint(Client, Input, Options)
 %% uses to deploy models.
 %%
 %% In the configuration, you identify one or more models, created using the
-%% `CreateModel' API, to deploy and the resources that you want SageMaker to
-%% provision. Then you call the `CreateEndpoint' API.
+%% `CreateModel' API, to deploy and the resources that you want SageMaker
+%% to provision. Then you call the `CreateEndpoint' API.
 %%
 %% Use this API if you want to use SageMaker hosting services to deploy
 %% models into production.
 %%
-%% In the request, you define a `ProductionVariant', for each model that you
-%% want to deploy. Each `ProductionVariant' parameter also describes the
-%% resources that you want SageMaker to provision. This includes the number
-%% and type of ML compute instances to deploy.
+%% In the request, you define a `ProductionVariant', for each model that
+%% you want to deploy. Each `ProductionVariant' parameter also describes
+%% the resources that you want SageMaker to provision. This includes the
+%% number and type of ML compute instances to deploy.
 %%
-%% If you are hosting multiple models, you also assign a `VariantWeight' to
-%% specify how much traffic you want to allocate to each model. For example,
-%% suppose that you want to host two models, A and B, and you assign traffic
-%% weight 2 for model A and 1 for model B. SageMaker distributes two-thirds
-%% of the traffic to Model A, and one-third to model B.
+%% If you are hosting multiple models, you also assign a `VariantWeight'
+%% to specify how much traffic you want to allocate to each model. For
+%% example, suppose that you want to host two models, A and B, and you assign
+%% traffic weight 2 for model A and 1 for model B. SageMaker distributes
+%% two-thirds of the traffic to Model A, and one-third to model B.
 %%
-%% When you call `CreateEndpoint', a load call is made to DynamoDB to verify
-%% that your endpoint configuration exists. When you read data from a
+%% When you call `CreateEndpoint', a load call is made to DynamoDB to
+%% verify that your endpoint configuration exists. When you read data from a
 %% DynamoDB table supporting `Eventually Consistent Reads' , the response
 %% might not reflect the results of a recently completed write operation. The
 %% response might include some stale data. If the dependent entities are not
@@ -1039,8 +1042,8 @@ create_endpoint(Client, Input, Options)
 %% request after a short time, the response should return the latest data. So
 %% retry logic is recommended to handle these possible issues. We also
 %% recommend that customers call `DescribeEndpointConfig' before calling
-%% `CreateEndpoint' to minimize the potential impact of a DynamoDB eventually
-%% consistent read.
+%% `CreateEndpoint' to minimize the potential impact of a DynamoDB
+%% eventually consistent read.
 create_endpoint_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint_config(Client, Input, []).
@@ -1070,14 +1073,15 @@ create_endpoint_config(Client, Input, Options)
 %% You can add tags to experiments, trials, trial components and then use the
 %% `Search' API to search for the tags.
 %%
-%% To add a description to an experiment, specify the optional `Description'
-%% parameter. To add a description later, or to change the description, call
-%% the `UpdateExperiment' API.
+%% To add a description to an experiment, specify the optional
+%% `Description' parameter. To add a description later, or to change the
+%% description, call the `UpdateExperiment' API.
 %%
-%% To get a list of all your experiments, call the `ListExperiments' API. To
-%% view an experiment's properties, call the `DescribeExperiment' API. To get
-%% a list of all the trials associated with an experiment, call the
-%% `ListTrials' API. To create a trial call the `CreateTrial' API.
+%% To get a list of all your experiments, call the `ListExperiments' API.
+%% To view an experiment's properties, call the `DescribeExperiment'
+%% API. To get a list of all the trials associated with an experiment, call
+%% the `ListTrials' API. To create a trial call the `CreateTrial'
+%% API.
 create_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_experiment(Client, Input, []).
@@ -1087,15 +1091,15 @@ create_experiment(Client, Input, Options)
 
 %% @doc Create a new `FeatureGroup'.
 %%
-%% A `FeatureGroup' is a group of `Features' defined in the `FeatureStore' to
-%% describe a `Record'.
+%% A `FeatureGroup' is a group of `Features' defined in the
+%% `FeatureStore' to describe a `Record'.
 %%
 %% The `FeatureGroup' defines the schema and features contained in the
 %% FeatureGroup. A `FeatureGroup' definition is composed of a list of
-%% `Features', a `RecordIdentifierFeatureName', an `EventTimeFeatureName' and
-%% configurations for its `OnlineStore' and `OfflineStore'. Check Amazon Web
-%% Services service quotas to see the `FeatureGroup's quota for your Amazon
-%% Web Services account.
+%% `Features', a `RecordIdentifierFeatureName', an
+%% `EventTimeFeatureName' and configurations for its `OnlineStore'
+%% and `OfflineStore'. Check Amazon Web Services service quotas to see
+%% the `FeatureGroup's quota for your Amazon Web Services account.
 %%
 %% You must include at least one of `OnlineStoreConfig' and
 %% `OfflineStoreConfig' to create a `FeatureGroup'.
@@ -1170,7 +1174,8 @@ create_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateImage">>, Input, Options).
 
-%% @doc Creates a version of the SageMaker image specified by `ImageName'.
+%% @doc Creates a version of the SageMaker image specified by
+%% `ImageName'.
 %%
 %% The version represents the Amazon Elastic Container Registry (ECR)
 %% container image specified by `BaseImage'.
@@ -1246,13 +1251,13 @@ create_inference_recommendations_job(Client, Input, Options)
 %%
 %% You can use this operation to create a static labeling job or a streaming
 %% labeling job. A static labeling job stops if all data objects in the input
-%% manifest file identified in `ManifestS3Uri' have been labeled. A streaming
-%% labeling job runs perpetually until it is manually stopped, or remains
-%% idle for 10 days. You can send new data objects to an active
-%% (`InProgress') streaming labeling job in real time. To learn how to create
-%% a static labeling job, see Create a Labeling Job (API) in the Amazon
-%% SageMaker Developer Guide. To learn how to create a streaming labeling
-%% job, see Create a Streaming Labeling Job.
+%% manifest file identified in `ManifestS3Uri' have been labeled. A
+%% streaming labeling job runs perpetually until it is manually stopped, or
+%% remains idle for 10 days. You can send new data objects to an active
+%% (`InProgress') streaming labeling job in real time. To learn how to
+%% create a static labeling job, see Create a Labeling Job (API) in the
+%% Amazon SageMaker Developer Guide. To learn how to create a streaming
+%% labeling job, see Create a Streaming Labeling Job.
 create_labeling_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_labeling_job(Client, Input, []).
@@ -1273,16 +1278,16 @@ create_labeling_job(Client, Input, Options)
 %%
 %% To host your model, you create an endpoint configuration with the
 %% `CreateEndpointConfig' API, and then create an endpoint with the
-%% `CreateEndpoint' API. SageMaker then deploys all of the containers that
-%% you defined for the model in the hosting environment.
+%% `CreateEndpoint' API. SageMaker then deploys all of the containers
+%% that you defined for the model in the hosting environment.
 %%
 %% For an example that calls this method when deploying a model to SageMaker
 %% hosting services, see Create a Model (Amazon Web Services SDK for Python
 %% (Boto 3)).
 %%
 %% To run a batch transform using your model, you start a job with the
-%% `CreateTransformJob' API. SageMaker uses your model and your dataset to
-%% get inferences which are then saved to a specified S3 location.
+%% `CreateTransformJob' API. SageMaker uses your model and your dataset
+%% to get inferences which are then saved to a specified S3 location.
 %%
 %% In the request, you also provide an IAM role that SageMaker can assume to
 %% access model artifacts and docker image for deployment on ML compute
@@ -1343,7 +1348,8 @@ create_model_explainability_job_definition(Client, Input, Options)
 %% your inference code and the Amazon S3 location of your model artifacts,
 %% provide values for `InferenceSpecification'. To create a model from an
 %% algorithm resource that you created or subscribed to in Amazon Web
-%% Services Marketplace, provide a value for `SourceAlgorithmSpecification'.
+%% Services Marketplace, provide a value for
+%% `SourceAlgorithmSpecification'.
 %%
 %% There are two types of model packages:
 %%
@@ -1411,9 +1417,9 @@ create_monitoring_schedule(Client, Input, Options)
 %% the network interface that it creates in your VPC.
 %%
 %% </li> <li> Launches an EC2 instance of the type specified in the request
-%% in the SageMaker VPC. If you specified `SubnetId' of your VPC, SageMaker
-%% specifies both network interfaces when launching this instance. This
-%% enables inbound traffic from your own VPC to the notebook instance,
+%% in the SageMaker VPC. If you specified `SubnetId' of your VPC,
+%% SageMaker specifies both network interfaces when launching this instance.
+%% This enables inbound traffic from your own VPC to the notebook instance,
 %% assuming that the security groups allow it.
 %%
 %% </li> </ol> After creating the notebook instance, SageMaker returns its
@@ -1442,8 +1448,8 @@ create_notebook_instance(Client, Input, Options)
 %%
 %% Each lifecycle configuration script has a limit of 16384 characters.
 %%
-%% The value of the `$PATH' environment variable that is available to both
-%% scripts is `/sbin:bin:/usr/sbin:/usr/bin'.
+%% The value of the `$PATH' environment variable that is available to
+%% both scripts is `/sbin:bin:/usr/sbin:/usr/bin'.
 %%
 %% View CloudWatch Logs for notebook instance lifecycle configurations in log
 %% group `/aws/sagemaker/NotebookInstances' in log stream
@@ -1515,15 +1521,16 @@ create_presigned_domain_url(Client, Input, Options)
 %% WebSocket frame that attempts to connect to the notebook instance.
 %%
 %% You can restrict access to this API and to the URL that it returns to a
-%% list of IP addresses that you specify. Use the `NotIpAddress' condition
-%% operator and the `aws:SourceIP' condition context key to specify the list
-%% of IP addresses that you want to have access to the notebook instance. For
-%% more information, see Limit Access to a Notebook Instance by IP Address.
+%% list of IP addresses that you specify. Use the `NotIpAddress'
+%% condition operator and the `aws:SourceIP' condition context key to
+%% specify the list of IP addresses that you want to have access to the
+%% notebook instance. For more information, see Limit Access to a Notebook
+%% Instance by IP Address.
 %%
-%% The URL that you get from a call to `CreatePresignedNotebookInstanceUrl'
-%% is valid only for 5 minutes. If you try to use the URL after the 5-minute
-%% limit expires, you are directed to the Amazon Web Services console sign-in
-%% page.
+%% The URL that you get from a call to
+%% `CreatePresignedNotebookInstanceUrl' is valid only for 5 minutes. If
+%% you try to use the URL after the 5-minute limit expires, you are directed
+%% to the Amazon Web Services console sign-in page.
 create_presigned_notebook_instance_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_presigned_notebook_instance_url(Client, Input, []).
@@ -1577,11 +1584,11 @@ create_studio_lifecycle_config(Client, Input, Options)
 %%
 %% In the request body, you provide the following:
 %%
-%% <ul> <li> `AlgorithmSpecification' - Identifies the training algorithm to
-%% use.
+%% <ul> <li> `AlgorithmSpecification' - Identifies the training algorithm
+%% to use.
 %%
-%% </li> <li> `HyperParameters' - Specify these algorithm-specific parameters
-%% to enable the estimation of model parameters during training.
+%% </li> <li> `HyperParameters' - Specify these algorithm-specific
+%% parameters to enable the estimation of model parameters during training.
 %% Hyperparameters can be tuned to optimize this learning process. For a list
 %% of hyperparameters for each training algorithm provided by SageMaker, see
 %% Algorithms.
@@ -1594,8 +1601,8 @@ create_studio_lifecycle_config(Client, Input, Options)
 %% </li> <li> `InputDataConfig' - Describes the input required by the
 %% training job and the Amazon S3, EFS, or FSx location where it is stored.
 %%
-%% </li> <li> `OutputDataConfig' - Identifies the Amazon S3 bucket where you
-%% want SageMaker to save the results of model training.
+%% </li> <li> `OutputDataConfig' - Identifies the Amazon S3 bucket where
+%% you want SageMaker to save the results of model training.
 %%
 %% </li> <li> `ResourceConfig' - Identifies the resources, ML compute
 %% instances, and ML storage volumes to deploy for model training. In
@@ -1612,14 +1619,14 @@ create_studio_lifecycle_config(Client, Input, Options)
 %%
 %% </li> <li> `StoppingCondition' - To help cap training costs, use
 %% `MaxRuntimeInSeconds' to set a time limit for training. Use
-%% `MaxWaitTimeInSeconds' to specify how long a managed spot training job has
-%% to complete.
+%% `MaxWaitTimeInSeconds' to specify how long a managed spot training job
+%% has to complete.
 %%
-%% </li> <li> `Environment' - The environment variables to set in the Docker
-%% container.
+%% </li> <li> `Environment' - The environment variables to set in the
+%% Docker container.
 %%
-%% </li> <li> `RetryStrategy' - The number of times to retry the job when the
-%% job fails due to an `InternalServerError'.
+%% </li> <li> `RetryStrategy' - The number of times to retry the job when
+%% the job fails due to an `InternalServerError'.
 %%
 %% </li> </ul> For more information about SageMaker, see How It Works.
 create_training_job(Client, Input)
@@ -1639,23 +1646,23 @@ create_training_job(Client, Input, Options)
 %%
 %% In the request body, you provide the following:
 %%
-%% <ul> <li> `TransformJobName' - Identifies the transform job. The name must
-%% be unique within an Amazon Web Services Region in an Amazon Web Services
-%% account.
+%% <ul> <li> `TransformJobName' - Identifies the transform job. The name
+%% must be unique within an Amazon Web Services Region in an Amazon Web
+%% Services account.
 %%
-%% </li> <li> `ModelName' - Identifies the model to use. `ModelName' must be
-%% the name of an existing Amazon SageMaker model in the same Amazon Web
-%% Services Region and Amazon Web Services account. For information on
+%% </li> <li> `ModelName' - Identifies the model to use. `ModelName'
+%% must be the name of an existing Amazon SageMaker model in the same Amazon
+%% Web Services Region and Amazon Web Services account. For information on
 %% creating a model, see CreateModel.
 %%
-%% </li> <li> `TransformInput' - Describes the dataset to be transformed and
-%% the Amazon S3 location where it is stored.
+%% </li> <li> `TransformInput' - Describes the dataset to be transformed
+%% and the Amazon S3 location where it is stored.
 %%
-%% </li> <li> `TransformOutput' - Identifies the Amazon S3 location where you
-%% want Amazon SageMaker to save the results from the transform job.
+%% </li> <li> `TransformOutput' - Identifies the Amazon S3 location where
+%% you want Amazon SageMaker to save the results from the transform job.
 %%
-%% </li> <li> `TransformResources' - Identifies the ML compute instances for
-%% the transform job.
+%% </li> <li> `TransformResources' - Identifies the ML compute instances
+%% for the transform job.
 %%
 %% </li> </ul> For more information about how batch transformation works, see
 %% Batch Transform.
@@ -1676,12 +1683,12 @@ create_transform_job(Client, Input, Options)
 %% logged, and indexed. When you use the Amazon Web Services SDK for Python
 %% (Boto), you must use the logging APIs provided by the SDK.
 %%
-%% You can add tags to a trial and then use the `Search' API to search for
-%% the tags.
+%% You can add tags to a trial and then use the `Search' API to search
+%% for the tags.
 %%
 %% To get a list of all your trials, call the `ListTrials' API. To view a
-%% trial's properties, call the `DescribeTrial' API. To create a trial
-%% component, call the `CreateTrialComponent' API.
+%% trial's properties, call the `DescribeTrial' API. To create a
+%% trial component, call the `CreateTrialComponent' API.
 create_trial(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trial(Client, Input, []).
@@ -1715,13 +1722,13 @@ create_trial_component(Client, Input, Options)
 %% @doc Creates a user profile.
 %%
 %% A user profile represents a single user within a domain, and is the main
-%% way to reference a "person" for the purposes of sharing, reporting, and
-%% other user-oriented features. This entity is created when a user onboards
-%% to Amazon SageMaker Studio. If an administrator invites a person by email
-%% or imports them from IAM Identity Center, a user profile is automatically
-%% created. A user profile is the primary holder of settings for an
-%% individual user and has a reference to the user's private Amazon Elastic
-%% File System (EFS) home directory.
+%% way to reference a &quot;person&quot; for the purposes of sharing,
+%% reporting, and other user-oriented features. This entity is created when a
+%% user onboards to Amazon SageMaker Studio. If an administrator invites a
+%% person by email or imports them from IAM Identity Center, a user profile
+%% is automatically created. A user profile is the primary holder of settings
+%% for an individual user and has a reference to the user's private
+%% Amazon Elastic File System (EFS) home directory.
 create_user_profile(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user_profile(Client, Input, []).
@@ -1747,10 +1754,10 @@ create_user_profile(Client, Input, Options)
 %% information, see Create a Private Workforce (Amazon Cognito).
 %%
 %% To create a private workforce using your own OIDC Identity Provider (IdP),
-%% specify your IdP configuration in `OidcConfig'. Your OIDC IdP must support
-%% groups because groups are used by Ground Truth and Amazon A2I to create
-%% work teams. For more information, see Create a Private Workforce (OIDC
-%% IdP).
+%% specify your IdP configuration in `OidcConfig'. Your OIDC IdP must
+%% support groups because groups are used by Ground Truth and Amazon A2I to
+%% create work teams. For more information, see Create a Private Workforce
+%% (OIDC IdP).
 create_workforce(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_workforce(Client, Input, []).
@@ -1906,15 +1913,16 @@ delete_endpoint(Client, Input, Options)
 
 %% @doc Deletes an endpoint configuration.
 %%
-%% The `DeleteEndpointConfig' API deletes only the specified configuration.
-%% It does not delete endpoints created using the configuration.
+%% The `DeleteEndpointConfig' API deletes only the specified
+%% configuration. It does not delete endpoints created using the
+%% configuration.
 %%
-%% You must not delete an `EndpointConfig' in use by an endpoint that is live
-%% or while the `UpdateEndpoint' or `CreateEndpoint' operations are being
-%% performed on the endpoint. If you delete the `EndpointConfig' of an
-%% endpoint that is active or being created or updated you may lose
-%% visibility into the instance type the endpoint is using. The endpoint must
-%% be deleted in order to stop incurring charges.
+%% You must not delete an `EndpointConfig' in use by an endpoint that is
+%% live or while the `UpdateEndpoint' or `CreateEndpoint' operations
+%% are being performed on the endpoint. If you delete the
+%% `EndpointConfig' of an endpoint that is active or being created or
+%% updated you may lose visibility into the instance type the endpoint is
+%% using. The endpoint must be deleted in order to stop incurring charges.
 delete_endpoint_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_endpoint_config(Client, Input, []).
@@ -1940,9 +1948,9 @@ delete_experiment(Client, Input, Options)
 %% Data cannot be accessed from the `OnlineStore' immediately after
 %% `DeleteFeatureGroup' is called.
 %%
-%% Data written into the `OfflineStore' will not be deleted. The Amazon Web
-%% Services Glue database and tables that are automatically created for your
-%% `OfflineStore' are not deleted.
+%% Data written into the `OfflineStore' will not be deleted. The Amazon
+%% Web Services Glue database and tables that are automatically created for
+%% your `OfflineStore' are not deleted.
 delete_feature_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_feature_group(Client, Input, []).
@@ -2021,8 +2029,8 @@ delete_inference_experiment(Client, Input, Options)
 %% @doc Deletes a model.
 %%
 %% The `DeleteModel' API deletes only the model entry that was created in
-%% SageMaker when you called the `CreateModel' API. It does not delete model
-%% artifacts, inference code, or the IAM role that you specified when
+%% SageMaker when you called the `CreateModel' API. It does not delete
+%% model artifacts, inference code, or the IAM role that you specified when
 %% creating the model.
 delete_model(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -2685,10 +2693,11 @@ describe_subscribed_workteam(Client, Input, Options)
 %% @doc Returns information about a training job.
 %%
 %% Some of the attributes below only appear if the training job successfully
-%% starts. If the training job fails, `TrainingJobStatus' is `Failed' and,
-%% depending on the `FailureReason', attributes like `TrainingStartTime',
-%% `TrainingTimeInSeconds', `TrainingEndTime', and `BillableTimeInSeconds'
-%% may not be present in the response.
+%% starts. If the training job fails, `TrainingJobStatus' is `Failed'
+%% and, depending on the `FailureReason', attributes like
+%% `TrainingStartTime', `TrainingTimeInSeconds',
+%% `TrainingEndTime', and `BillableTimeInSeconds' may not be present
+%% in the response.
 describe_training_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_training_job(Client, Input, []).
@@ -2748,7 +2757,8 @@ describe_workforce(Client, Input, Options)
 %% @doc Gets information about a specific work team.
 %%
 %% You can see information such as the create date, the last updated date,
-%% membership information, and the work team's Amazon Resource Name (ARN).
+%% membership information, and the work team's Amazon Resource Name
+%% (ARN).
 describe_workteam(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_workteam(Client, Input, []).
@@ -2768,14 +2778,14 @@ disable_sagemaker_servicecatalog_portfolio(Client, Input, Options)
 
 %% @doc Disassociates a trial component from a trial.
 %%
-%% This doesn't effect other trials the component is associated with. Before
-%% you can delete a component, you must disassociate the component from all
-%% trials it is associated with. To associate a trial component with a trial,
-%% call the `AssociateTrialComponent' API.
+%% This doesn't effect other trials the component is associated with.
+%% Before you can delete a component, you must disassociate the component
+%% from all trials it is associated with. To associate a trial component with
+%% a trial, call the `AssociateTrialComponent' API.
 %%
 %% To get a list of the trials a component is associated with, use the
-%% `Search' API. Specify `ExperimentTrialComponent' for the `Resource'
-%% parameter. The list appears in the response under
+%% `Search' API. Specify `ExperimentTrialComponent' for the
+%% `Resource' parameter. The list appears in the response under
 %% `Results.TrialComponent.Parents'.
 disassociate_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -2836,8 +2846,8 @@ get_sagemaker_servicecatalog_portfolio_status(Client, Input, Options)
 %% SageMaker console.
 %%
 %% It returns suggestions of possible matches for the property name to use in
-%% `Search' queries. Provides suggestions for `HyperParameters', `Tags', and
-%% `Metrics'.
+%% `Search' queries. Provides suggestions for `HyperParameters',
+%% `Tags', and `Metrics'.
 get_search_suggestions(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_search_suggestions(Client, Input, []).
@@ -3081,8 +3091,8 @@ list_human_task_uis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHumanTaskUis">>, Input, Options).
 
-%% @doc Gets a list of `HyperParameterTuningJobSummary' objects that describe
-%% the hyperparameter tuning jobs launched in your account.
+%% @doc Gets a list of `HyperParameterTuningJobSummary' objects that
+%% describe the hyperparameter tuning jobs launched in your account.
 list_hyper_parameter_tuning_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hyper_parameter_tuning_jobs(Client, Input, []).
@@ -3290,8 +3300,8 @@ list_notebook_instance_lifecycle_configs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListNotebookInstanceLifecycleConfigs">>, Input, Options).
 
-%% @doc Returns a list of the SageMaker notebook instances in the requester's
-%% account in an Amazon Web Services Region.
+%% @doc Returns a list of the SageMaker notebook instances in the
+%% requester's account in an Amazon Web Services Region.
 list_notebook_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_notebook_instances(Client, Input, []).
@@ -3397,8 +3407,8 @@ list_tags(Client, Input, Options)
 %%
 %% When `StatusEquals' and `MaxResults' are set at the same time, the
 %% `MaxResults' number of training jobs are first retrieved ignoring the
-%% `StatusEquals' parameter and then they are filtered by the `StatusEquals'
-%% parameter, which is returned as a response.
+%% `StatusEquals' parameter and then they are filtered by the
+%% `StatusEquals' parameter, which is returned as a response.
 %%
 %% For example, if `ListTrainingJobs' is invoked with the following
 %% parameters:
@@ -3406,9 +3416,9 @@ list_tags(Client, Input, Options)
 %% `{ ... MaxResults: 100, StatusEquals: InProgress ... }'
 %%
 %% First, 100 trainings jobs with any status, including those other than
-%% `InProgress', are selected (sorted according to the creation time, from
-%% the most current to the oldest). Next, those with a status of `InProgress'
-%% are returned.
+%% `InProgress', are selected (sorted according to the creation time,
+%% from the most current to the oldest). Next, those with a status of
+%% `InProgress' are returned.
 %%
 %% You can quickly test the API using the following Amazon Web Services CLI
 %% code.
@@ -3555,9 +3565,9 @@ retry_pipeline_execution(Client, Input, Options)
 
 %% @doc Finds Amazon SageMaker resources that match a search query.
 %%
-%% Matching resources are returned as a list of `SearchRecord' objects in the
-%% response. You can sort the search results by any resource property in a
-%% ascending or descending order.
+%% Matching resources are returned as a list of `SearchRecord' objects in
+%% the response. You can sort the search results by any resource property in
+%% a ascending or descending order.
 %%
 %% You can query against the following value types: numeric, text, Boolean,
 %% and timestamp.
@@ -3625,8 +3635,8 @@ start_monitoring_schedule(Client, Input, Options)
 %% libraries and attaches your ML storage volume.
 %%
 %% After configuring the notebook instance, SageMaker sets the notebook
-%% instance status to `InService'. A notebook instance's status must be
-%% `InService' before you can connect to your Jupyter notebook.
+%% instance status to `InService'. A notebook instance's status must
+%% be `InService' before you can connect to your Jupyter notebook.
 start_notebook_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_notebook_instance(Client, Input, []).
@@ -3653,12 +3663,12 @@ stop_auto_ml_job(Client, Input, Options)
 %% @doc Stops a model compilation job.
 %%
 %% To stop a job, Amazon SageMaker sends the algorithm the SIGTERM signal.
-%% This gracefully shuts the job down. If the job hasn't stopped, it sends
-%% the SIGKILL signal.
+%% This gracefully shuts the job down. If the job hasn't stopped, it
+%% sends the SIGKILL signal.
 %%
-%% When it receives a `StopCompilationJob' request, Amazon SageMaker changes
-%% the `CompilationJobSummary$CompilationJobStatus' of the job to `Stopping'.
-%% After Amazon SageMaker stops the job, it sets the
+%% When it receives a `StopCompilationJob' request, Amazon SageMaker
+%% changes the `CompilationJobSummary$CompilationJobStatus' of the job to
+%% `Stopping'. After Amazon SageMaker stops the job, it sets the
 %% `CompilationJobSummary$CompilationJobStatus' to `Stopped'.
 stop_compilation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -3742,9 +3752,9 @@ stop_monitoring_schedule(Client, Input, Options)
 %%
 %% To access data on the ML storage volume for a notebook instance that has
 %% been terminated, call the `StartNotebookInstance' API.
-%% `StartNotebookInstance' launches another ML compute instance, configures
-%% it, and attaches the preserved ML storage volume so you can continue your
-%% work.
+%% `StartNotebookInstance' launches another ML compute instance,
+%% configures it, and attaches the preserved ML storage volume so you can
+%% continue your work.
 stop_notebook_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_notebook_instance(Client, Input, []).
@@ -3756,11 +3766,11 @@ stop_notebook_instance(Client, Input, Options)
 %%
 %% Callback Step
 %%
-%% A pipeline execution won't stop while a callback step is running. When you
-%% call `StopPipelineExecution' on a pipeline execution with a running
-%% callback step, SageMaker Pipelines sends an additional Amazon SQS message
-%% to the specified SQS queue. The body of the SQS message contains a
-%% "Status" field which is set to "Stopping".
+%% A pipeline execution won't stop while a callback step is running. When
+%% you call `StopPipelineExecution' on a pipeline execution with a
+%% running callback step, SageMaker Pipelines sends an additional Amazon SQS
+%% message to the specified SQS queue. The body of the SQS message contains a
+%% &quot;Status&quot; field which is set to &quot;Stopping&quot;.
 %%
 %% You should add logic to your Amazon SQS message consumer to take any
 %% needed action (for example, resource cleanup) upon receipt of the message
@@ -3773,12 +3783,12 @@ stop_notebook_instance(Client, Input, Options)
 %% Lambda Step
 %%
 %% A pipeline execution can't be stopped while a lambda step is running
-%% because the Lambda function invoked by the lambda step can't be stopped.
-%% If you attempt to stop the execution while the Lambda function is running,
-%% the pipeline waits for the Lambda function to finish or until the timeout
-%% is hit, whichever occurs first, and then stops. If the Lambda function
-%% finishes, the pipeline execution status is `Stopped'. If the timeout is
-%% hit the pipeline execution status is `Failed'.
+%% because the Lambda function invoked by the lambda step can't be
+%% stopped. If you attempt to stop the execution while the Lambda function is
+%% running, the pipeline waits for the Lambda function to finish or until the
+%% timeout is hit, whichever occurs first, and then stops. If the Lambda
+%% function finishes, the pipeline execution status is `Stopped'. If the
+%% timeout is hit the pipeline execution status is `Failed'.
 stop_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_pipeline_execution(Client, Input, []).
@@ -3796,14 +3806,14 @@ stop_processing_job(Client, Input, Options)
 
 %% @doc Stops a training job.
 %%
-%% To stop a job, SageMaker sends the algorithm the `SIGTERM' signal, which
-%% delays job termination for 120 seconds. Algorithms might use this
+%% To stop a job, SageMaker sends the algorithm the `SIGTERM' signal,
+%% which delays job termination for 120 seconds. Algorithms might use this
 %% 120-second window to save the model artifacts, so the results of the
 %% training is not lost.
 %%
-%% When it receives a `StopTrainingJob' request, SageMaker changes the status
-%% of the job to `Stopping'. After SageMaker stops the job, it sets the
-%% status to `Stopped'.
+%% When it receives a `StopTrainingJob' request, SageMaker changes the
+%% status of the job to `Stopping'. After SageMaker stops the job, it
+%% sets the status to `Stopped'.
 stop_training_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_training_job(Client, Input, []).
@@ -3813,11 +3823,11 @@ stop_training_job(Client, Input, Options)
 
 %% @doc Stops a batch transform job.
 %%
-%% When Amazon SageMaker receives a `StopTransformJob' request, the status of
-%% the job changes to `Stopping'. After Amazon SageMaker stops the job, the
-%% status is set to `Stopped'. When you stop a batch transform job before it
-%% is completed, Amazon SageMaker doesn't store the job's output in Amazon
-%% S3.
+%% When Amazon SageMaker receives a `StopTransformJob' request, the
+%% status of the job changes to `Stopping'. After Amazon SageMaker stops
+%% the job, the status is set to `Stopped'. When you stop a batch
+%% transform job before it is completed, Amazon SageMaker doesn't store
+%% the job's output in Amazon S3.
 stop_transform_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_transform_job(Client, Input, []).
@@ -3889,25 +3899,25 @@ update_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDomain">>, Input, Options).
 
-%% @doc Deploys the new `EndpointConfig' specified in the request, switches
-%% to using newly created endpoint, and then deletes resources provisioned
-%% for the endpoint using the previous `EndpointConfig' (there is no
-%% availability loss).
+%% @doc Deploys the new `EndpointConfig' specified in the request,
+%% switches to using newly created endpoint, and then deletes resources
+%% provisioned for the endpoint using the previous `EndpointConfig'
+%% (there is no availability loss).
 %%
 %% When SageMaker receives the request, it sets the endpoint status to
 %% `Updating'. After updating the endpoint, it sets the status to
 %% `InService'. To check the status of an endpoint, use the
 %% `DescribeEndpoint' API.
 %%
-%% You must not delete an `EndpointConfig' in use by an endpoint that is live
-%% or while the `UpdateEndpoint' or `CreateEndpoint' operations are being
-%% performed on the endpoint. To update an endpoint, you must create a new
-%% `EndpointConfig'.
+%% You must not delete an `EndpointConfig' in use by an endpoint that is
+%% live or while the `UpdateEndpoint' or `CreateEndpoint' operations
+%% are being performed on the endpoint. To update an endpoint, you must
+%% create a new `EndpointConfig'.
 %%
-%% If you delete the `EndpointConfig' of an endpoint that is active or being
-%% created or updated you may lose visibility into the instance type the
-%% endpoint is using. The endpoint must be deleted in order to stop incurring
-%% charges.
+%% If you delete the `EndpointConfig' of an endpoint that is active or
+%% being created or updated you may lose visibility into the instance type
+%% the endpoint is using. The endpoint must be deleted in order to stop
+%% incurring charges.
 update_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_endpoint(Client, Input, []).
@@ -3966,7 +3976,8 @@ update_hub(Client, Input, Options)
 
 %% @doc Updates the properties of a SageMaker image.
 %%
-%% To change the image's tags, use the `AddTags' and `DeleteTags' APIs.
+%% To change the image's tags, use the `AddTags' and `DeleteTags'
+%% APIs.
 update_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_image(Client, Input, []).
@@ -3985,8 +3996,8 @@ update_image_version(Client, Input, Options)
 %% @doc Updates an inference experiment that you created.
 %%
 %% The status of the inference experiment has to be either `Created',
-%% `Running'. For more information on the status of an inference experiment,
-%% see `DescribeInferenceExperimentResponse$Status'.
+%% `Running'. For more information on the status of an inference
+%% experiment, see `DescribeInferenceExperimentResponse$Status'.
 update_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_inference_experiment(Client, Input, []).
@@ -4071,9 +4082,9 @@ update_pipeline_execution(Client, Input, Options)
 %% approved model.
 %%
 %% You must not update a project that is in use. If you update the
-%% `ServiceCatalogProvisioningUpdateDetails' of a project that is active or
-%% being created, or updated, you may lose resources already created by the
-%% project.
+%% `ServiceCatalogProvisioningUpdateDetails' of a project that is active
+%% or being created, or updated, you may lose resources already created by
+%% the project.
 update_project(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_project(Client, Input, []).
@@ -4132,19 +4143,19 @@ update_user_profile(Client, Input, Options)
 %%
 %% Use `SourceIpConfig' to restrict worker access to tasks to a specific
 %% range of IP addresses. You specify allowed IP addresses by creating a list
-%% of up to ten CIDRs. By default, a workforce isn't restricted to specific
-%% IP addresses. If you specify a range of IP addresses, workers who attempt
-%% to access tasks using any IP address outside the specified range are
-%% denied and get a `Not Found' error message on the worker portal.
+%% of up to ten CIDRs. By default, a workforce isn't restricted to
+%% specific IP addresses. If you specify a range of IP addresses, workers who
+%% attempt to access tasks using any IP address outside the specified range
+%% are denied and get a `Not Found' error message on the worker portal.
 %%
 %% To restrict access to all the workers in public internet, add the
-%% `SourceIpConfig' CIDR value as "0.0.0.0/0".
+%% `SourceIpConfig' CIDR value as &quot;0.0.0.0/0&quot;.
 %%
 %% Amazon SageMaker does not support Source Ip restriction for worker portals
 %% in VPC.
 %%
-%% Use `OidcConfig' to update the configuration of a workforce created using
-%% your own OIDC IdP.
+%% Use `OidcConfig' to update the configuration of a workforce created
+%% using your own OIDC IdP.
 %%
 %% You can only update your OIDC IdP configuration when there are no work
 %% teams associated with your workforce. You can delete work teams using the

@@ -292,8 +292,8 @@ create_bot(Client, Input0, Options0) ->
 %% Use an alias to enable you to change the version of a bot without updating
 %% applications that use the bot.
 %%
-%% For example, you can create an alias called "PROD" that your applications
-%% use to call the Amazon Lex bot.
+%% For example, you can create an alias called &quot;PROD&quot; that your
+%% applications use to call the Amazon Lex bot.
 create_bot_alias(Client, BotId, Input) ->
     create_bot_alias(Client, BotId, Input, []).
 create_bot_alias(Client, BotId, Input0, Options0) ->
@@ -346,9 +346,9 @@ create_bot_locale(Client, BotId, BotVersion, Input0, Options0) ->
 
 %% @doc Creates a new version of the bot based on the `DRAFT' version.
 %%
-%% If the `DRAFT' version of this resource hasn't changed since you created
-%% the last version, Amazon Lex doesn't create a new version, it returns the
-%% last created version.
+%% If the `DRAFT' version of this resource hasn't changed since you
+%% created the last version, Amazon Lex doesn't create a new version, it
+%% returns the last created version.
 %%
 %% When you create the first version of a bot, Amazon Lex sets the version to
 %% 1. Subsequent versions increment by 1.
@@ -417,8 +417,9 @@ create_export(Client, Input0, Options0) ->
 %% When you create an intent, you must provide a name. You can optionally
 %% provide the following:
 %%
-%% <ul> <li> Sample utterances. For example, "I want to order a pizza" and
-%% "Can I order a pizza." You can't provide utterances for built-in intents.
+%% <ul> <li> Sample utterances. For example, &quot;I want to order a
+%% pizza&quot; and &quot;Can I order a pizza.&quot; You can't provide
+%% utterances for built-in intents.
 %%
 %% </li> <li> Information to be gathered. You specify slots for the
 %% information that you bot requests from the user. You can specify standard
@@ -431,13 +432,13 @@ create_export(Client, Input0, Options0) ->
 %% when all of the intent information is available.
 %%
 %% </li> <li> A confirmation prompt to send to the user to confirm an intent.
-%% For example, "Shall I order your pizza?"
+%% For example, &quot;Shall I order your pizza?&quot;
 %%
 %% </li> <li> A conclusion statement to send to the user after the intent is
-%% fulfilled. For example, "I ordered your pizza."
+%% fulfilled. For example, &quot;I ordered your pizza.&quot;
 %%
 %% </li> <li> A follow-up prompt that asks the user for additional activity.
-%% For example, "Do you want a drink with your pizza?"
+%% For example, &quot;Do you want a drink with your pizza?&quot;
 %%
 %% </li> </ul>
 create_intent(Client, BotId, BotVersion, LocaleId, Input) ->
@@ -602,8 +603,8 @@ create_upload_url(Client, Input0, Options0) ->
 %% defined for the bot.
 %%
 %% If a bot has an alias, the `DeleteBot' operation returns a
-%% `ResourceInUseException' exception. If you want to delete the bot and the
-%% alias, set the `skipResourceInUseCheck' parameter to `true'.
+%% `ResourceInUseException' exception. If you want to delete the bot and
+%% the alias, set the `skipResourceInUseCheck' parameter to `true'.
 delete_bot(Client, BotId, Input) ->
     delete_bot(Client, BotId, Input, []).
 delete_bot(Client, BotId, Input0, Options0) ->
@@ -830,8 +831,8 @@ delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
 %% @doc Deletes a policy statement from a resource policy.
 %%
 %% If you delete the last statement from a policy, the policy is deleted. If
-%% you specify a statement ID that doesn't exist in the policy, or if the bot
-%% or bot alias doesn't have a policy attached, Amazon Lex returns an
+%% you specify a statement ID that doesn't exist in the policy, or if the
+%% bot or bot alias doesn't have a policy attached, Amazon Lex returns an
 %% exception.
 delete_resource_policy_statement(Client, ResourceArn, StatementId, Input) ->
     delete_resource_policy_statement(Client, ResourceArn, StatementId, Input, []).
@@ -914,8 +915,8 @@ delete_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, Input0, Option
 %% operation, and then stored indefinitely for use in improving the ability
 %% of your bot to respond to user input..
 %%
-%% Use the `DeleteUtterances' operation to manually delete utterances for a
-%% specific session. When you use the `DeleteUtterances' operation,
+%% Use the `DeleteUtterances' operation to manually delete utterances for
+%% a specific session. When you use the `DeleteUtterances' operation,
 %% utterances stored for improving your bot's ability to respond to user
 %% input are deleted immediately. Utterances stored for use with the
 %% `ListAggregatedUtterances' operation are deleted after 15 days.
@@ -1227,8 +1228,8 @@ describe_slot_type(Client, BotId, BotVersion, LocaleId, SlotTypeId, QueryMap, He
 %% @doc Provides a list of utterances that users have sent to the bot.
 %%
 %% Utterances are aggregated by the text of the utterance. For example, all
-%% instances where customers used the phrase "I want to order pizza" are
-%% aggregated into the same line in the response.
+%% instances where customers used the phrase &quot;I want to order
+%% pizza&quot; are aggregated into the same line in the response.
 %%
 %% You can see both detected utterances and missed utterances. A detected
 %% utterance is where the bot properly recognized the utterance and activated
@@ -1343,11 +1344,11 @@ list_bot_recommendations(Client, BotId, BotVersion, LocaleId, Input0, Options0) 
 %%
 %% The `ListBotVersions' operation returns a summary of each version of a
 %% bot. For example, if a bot has three numbered versions, the
-%% `ListBotVersions' operation returns for summaries, one for each numbered
-%% version and one for the `DRAFT' version.
+%% `ListBotVersions' operation returns for summaries, one for each
+%% numbered version and one for the `DRAFT' version.
 %%
-%% The `ListBotVersions' operation always returns at least one version, the
-%% `DRAFT' version.
+%% The `ListBotVersions' operation always returns at least one version,
+%% the `DRAFT' version.
 list_bot_versions(Client, BotId, Input) ->
     list_bot_versions(Client, BotId, Input, []).
 list_bot_versions(Client, BotId, Input0, Options0) ->
@@ -1397,8 +1398,8 @@ list_bots(Client, Input0, Options0) ->
 %% use in your bot.
 %%
 %% To use a built-in intent as a the base for your own intent, include the
-%% built-in intent signature in the `parentIntentSignature' parameter when
-%% you call the `CreateIntent' operation. For more information, see
+%% built-in intent signature in the `parentIntentSignature' parameter
+%% when you call the `CreateIntent' operation. For more information, see
 %% CreateIntent.
 list_built_in_intents(Client, LocaleId, Input) ->
     list_built_in_intents(Client, LocaleId, Input, []).
@@ -1878,8 +1879,8 @@ update_bot_recommendation(Client, BotId, BotRecommendationId, BotVersion, Locale
 
 %% @doc Updates the password used to protect an export zip archive.
 %%
-%% The password is not required. If you don't supply a password, Amazon Lex
-%% generates a zip file that is not protected by a password. This is the
+%% The password is not required. If you don't supply a password, Amazon
+%% Lex generates a zip file that is not protected by a password. This is the
 %% archive that is available at the pre-signed S3 URL provided by the
 %% DescribeExport operation.
 update_export(Client, ExportId, Input) ->

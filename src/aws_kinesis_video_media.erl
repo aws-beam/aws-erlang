@@ -25,9 +25,9 @@
 %%
 %% When you put media data (fragments) on a stream, Kinesis Video Streams
 %% stores each incoming fragment and related metadata in what is called a
-%% "chunk." For more information, see PutMedia. The `GetMedia' API returns a
-%% stream of these chunks starting from the chunk that you specify in the
-%% request.
+%% &quot;chunk.&quot; For more information, see PutMedia. The `GetMedia'
+%% API returns a stream of these chunks starting from the chunk that you
+%% specify in the request.
 %%
 %% The following limits apply when using the `GetMedia' API:
 %%
@@ -45,8 +45,8 @@
 %% `x-amz-ErrorType' HTTP header – contains a more specific error type in
 %% addition to what the HTTP status code provides.
 %%
-%% `x-amz-RequestId' HTTP header – if you want to report an issue to AWS, the
-%% support team can better diagnose the problem if given the Request Id.
+%% `x-amz-RequestId' HTTP header – if you want to report an issue to AWS,
+%% the support team can better diagnose the problem if given the Request Id.
 %%
 %% Both the HTTP status code and the ErrorType header can be utilized to make
 %% programmatic decisions about whether errors are retry-able and under what

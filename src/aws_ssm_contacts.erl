@@ -88,8 +88,8 @@ accept_page(Client, Input, Options)
 
 %% @doc Activates a contact's contact channel.
 %%
-%% Incident Manager can't engage a contact until the contact channel has been
-%% activated.
+%% Incident Manager can't engage a contact until the contact channel has
+%% been activated.
 activate_contact_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     activate_contact_channel(Client, Input, []).
@@ -143,8 +143,8 @@ delete_contact(Client, Input, Options)
 %% the channel from a contact.
 %%
 %% Deleting the contact channel removes it from the contact's engagement
-%% plan. If you delete the only contact channel for a contact, you won't be
-%% able to engage that contact during an incident.
+%% plan. If you delete the only contact channel for a contact, you won't
+%% be able to engage that contact during an incident.
 delete_contact_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_contact_channel(Client, Input, []).
@@ -270,8 +270,8 @@ put_contact_policy(Client, Input, Options)
 %% @doc Sends an activation code to a contact channel.
 %%
 %% The contact can use this code to activate the contact channel in the
-%% console or with the `ActivateChannel' operation. Incident Manager can't
-%% engage a contact channel until it has been activated.
+%% console or with the `ActivateChannel' operation. Incident Manager
+%% can't engage a contact channel until it has been activated.
 send_activation_code(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_activation_code(Client, Input, []).

@@ -110,13 +110,14 @@ associate_resource(Client, GroupIdentifier, Input0, Options0) ->
 %% screenshots of the UI, logs, and metrics. You can set up a canary to run
 %% continuously or just once.
 %%
-%% Do not use `CreateCanary' to modify an existing canary. Use UpdateCanary
-%% instead.
+%% Do not use `CreateCanary' to modify an existing canary. Use
+%% UpdateCanary instead.
 %%
 %% To create canaries, you must have the `CloudWatchSyntheticsFullAccess'
 %% policy. If you are creating a new IAM role for the canary, you also need
-%% the `iam:CreateRole', `iam:CreatePolicy' and `iam:AttachRolePolicy'
-%% permissions. For more information, see Necessary Roles and Permissions.
+%% the `iam:CreateRole', `iam:CreatePolicy' and
+%% `iam:AttachRolePolicy' permissions. For more information, see
+%% Necessary Roles and Permissions.
 %%
 %% Do not include secrets or proprietary information in your canary names.
 %% The canary name makes up part of the Amazon Resource Name (ARN) for the
@@ -190,8 +191,8 @@ create_group(Client, Input0, Options0) ->
 
 %% @doc Permanently deletes the specified canary.
 %%
-%% If you specify `DeleteLambda' to `true', CloudWatch Synthetics also
-%% deletes the Lambda functions and layers that are used by the canary.
+%% If you specify `DeleteLambda' to `true', CloudWatch Synthetics
+%% also deletes the Lambda functions and layers that are used by the canary.
 %%
 %% Other resources used and created by the canary are not automatically
 %% deleted. After you delete a canary that you do not intend to use again,
@@ -200,8 +201,8 @@ create_group(Client, Input0, Options0) ->
 %% <ul> <li> The CloudWatch alarms created for this canary. These alarms have
 %% a name of `Synthetics-SharpDrop-Alarm-MyCanaryName '.
 %%
-%% </li> <li> Amazon S3 objects and buckets, such as the canary's artifact
-%% location.
+%% </li> <li> Amazon S3 objects and buckets, such as the canary's
+%% artifact location.
 %%
 %% </li> <li> IAM roles created for the canary. If they were created in the
 %% console, these roles have the name `
@@ -210,10 +211,10 @@ create_group(Client, Input0, Options0) ->
 %% </li> <li> CloudWatch Logs log groups created for the canary. These logs
 %% groups have the name `/aws/lambda/cwsyn-MyCanaryName '.
 %%
-%% </li> </ul> Before you delete a canary, you might want to use `GetCanary'
-%% to display the information about this canary. Make note of the information
-%% returned by this operation so that you can delete these resources after
-%% you delete the canary.
+%% </li> </ul> Before you delete a canary, you might want to use
+%% `GetCanary' to display the information about this canary. Make note of
+%% the information returned by this operation so that you can delete these
+%% resources after you delete the canary.
 delete_canary(Client, Name, Input) ->
     delete_canary(Client, Name, Input, []).
 delete_canary(Client, Name, Input0, Options0) ->
@@ -239,8 +240,8 @@ delete_canary(Client, Name, Input0, Options0) ->
 
 %% @doc Deletes a group.
 %%
-%% The group doesn't need to be empty to be deleted. If there are canaries in
-%% the group, they are not deleted when you delete the group.
+%% The group doesn't need to be empty to be deleted. If there are
+%% canaries in the group, they are not deleted when you delete the group.
 %%
 %% Groups are a global resource that appear in all Regions, but the request
 %% to delete a group must be made from its home Region. You can find the home
@@ -271,15 +272,15 @@ delete_group(Client, GroupIdentifier, Input0, Options0) ->
 %% with full details about each canary.
 %%
 %% This operation supports resource-level authorization using an IAM policy
-%% and the `Names' parameter. If you specify the `Names' parameter, the
-%% operation is successful only if you have authorization to view all the
+%% and the `Names' parameter. If you specify the `Names' parameter,
+%% the operation is successful only if you have authorization to view all the
 %% canaries that you specify in your request. If you do not have permission
 %% to view any of the canaries, the request fails with a 403 response.
 %%
-%% You are required to use the `Names' parameter if you are logged on to a
-%% user or role that has an IAM policy that restricts which canaries that you
-%% are allowed to view. For more information, see Limiting a user to viewing
-%% specific canaries.
+%% You are required to use the `Names' parameter if you are logged on to
+%% a user or role that has an IAM policy that restricts which canaries that
+%% you are allowed to view. For more information, see Limiting a user to
+%% viewing specific canaries.
 describe_canaries(Client, Input) ->
     describe_canaries(Client, Input, []).
 describe_canaries(Client, Input0, Options0) ->
@@ -306,15 +307,15 @@ describe_canaries(Client, Input0, Options0) ->
 %% each canary that you have created.
 %%
 %% This operation supports resource-level authorization using an IAM policy
-%% and the `Names' parameter. If you specify the `Names' parameter, the
-%% operation is successful only if you have authorization to view all the
+%% and the `Names' parameter. If you specify the `Names' parameter,
+%% the operation is successful only if you have authorization to view all the
 %% canaries that you specify in your request. If you do not have permission
 %% to view any of the canaries, the request fails with a 403 response.
 %%
-%% You are required to use the `Names' parameter if you are logged on to a
-%% user or role that has an IAM policy that restricts which canaries that you
-%% are allowed to view. For more information, see Limiting a user to viewing
-%% specific canaries.
+%% You are required to use the `Names' parameter if you are logged on to
+%% a user or role that has an IAM policy that restricts which canaries that
+%% you are allowed to view. For more information, see Limiting a user to
+%% viewing specific canaries.
 describe_canaries_last_run(Client, Input) ->
     describe_canaries_last_run(Client, Input, []).
 describe_canaries_last_run(Client, Input0, Options0) ->
@@ -564,7 +565,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Use this operation to run a canary that has already been created.
 %%
 %% The frequency of the canary runs is determined by the value of the
-%% canary's `Schedule'. To see a canary's schedule, use GetCanary.
+%% canary's `Schedule'. To see a canary's schedule, use
+%% GetCanary.
 start_canary(Client, Name, Input) ->
     start_canary(Client, Name, Input, []).
 start_canary(Client, Name, Input0, Options0) ->
@@ -682,8 +684,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates the configuration of a canary that has already been created.
 %%
-%% You can't use this operation to update the tags of an existing canary. To
-%% change the tags of an existing canary, use TagResource.
+%% You can't use this operation to update the tags of an existing canary.
+%% To change the tags of an existing canary, use TagResource.
 update_canary(Client, Name, Input) ->
     update_canary(Client, Name, Input, []).
 update_canary(Client, Name, Input0, Options0) ->

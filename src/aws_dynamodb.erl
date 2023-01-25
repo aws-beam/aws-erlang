@@ -141,9 +141,9 @@
 %% @doc This operation allows you to perform batch reads or writes on data
 %% stored in DynamoDB, using PartiQL.
 %%
-%% Each read statement in a `BatchExecuteStatement' must specify an equality
-%% condition on all key attributes. This enforces that each `SELECT'
-%% statement in a batch returns at most a single item.
+%% Each read statement in a `BatchExecuteStatement' must specify an
+%% equality condition on all key attributes. This enforces that each
+%% `SELECT' statement in a batch returns at most a single item.
 %%
 %% The entire batch must consist of either read statements or write
 %% statements, you cannot mix both in one batch.
@@ -159,32 +159,32 @@ batch_execute_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchExecuteStatement">>, Input, Options).
 
-%% @doc The `BatchGetItem' operation returns the attributes of one or more
-%% items from one or more tables.
+%% @doc The `BatchGetItem' operation returns the attributes of one or
+%% more items from one or more tables.
 %%
 %% You identify requested items by primary key.
 %%
 %% A single operation can retrieve up to 16 MB of data, which can contain as
-%% many as 100 items. `BatchGetItem' returns a partial result if the response
-%% size limit is exceeded, the table's provisioned throughput is exceeded, or
-%% an internal processing failure occurs. If a partial result is returned,
-%% the operation returns a value for `UnprocessedKeys'. You can use this
-%% value to retry the operation starting with the next item to get.
+%% many as 100 items. `BatchGetItem' returns a partial result if the
+%% response size limit is exceeded, the table's provisioned throughput is
+%% exceeded, or an internal processing failure occurs. If a partial result is
+%% returned, the operation returns a value for `UnprocessedKeys'. You can
+%% use this value to retry the operation starting with the next item to get.
 %%
 %% If you request more than 100 items, `BatchGetItem' returns a
-%% `ValidationException' with the message "Too many items requested for the
-%% BatchGetItem call."
+%% `ValidationException' with the message &quot;Too many items requested
+%% for the BatchGetItem call.&quot;
 %%
 %% For example, if you ask to retrieve 100 items, but each individual item is
 %% 300 KB in size, the system returns 52 items (so as not to exceed the 16 MB
-%% limit). It also returns an appropriate `UnprocessedKeys' value so you can
-%% get the next page of results. If desired, your application can include its
-%% own logic to assemble the pages of results into one dataset.
+%% limit). It also returns an appropriate `UnprocessedKeys' value so you
+%% can get the next page of results. If desired, your application can include
+%% its own logic to assemble the pages of results into one dataset.
 %%
 %% If none of the items can be processed due to insufficient provisioned
 %% throughput on all of the tables in the request, then `BatchGetItem'
-%% returns a `ProvisionedThroughputExceededException'. If at least one of the
-%% items is successfully processed, then `BatchGetItem' completes
+%% returns a `ProvisionedThroughputExceededException'. If at least one of
+%% the items is successfully processed, then `BatchGetItem' completes
 %% successfully, while returning the keys of the unread items in
 %% `UnprocessedKeys'.
 %%
@@ -199,12 +199,12 @@ batch_execute_statement(Client, Input, Options)
 %% For more information, see Batch Operations and Error Handling in the
 %% Amazon DynamoDB Developer Guide.
 %%
-%% By default, `BatchGetItem' performs eventually consistent reads on every
-%% table in the request. If you want strongly consistent reads instead, you
-%% can set `ConsistentRead' to `true' for any or all tables.
+%% By default, `BatchGetItem' performs eventually consistent reads on
+%% every table in the request. If you want strongly consistent reads instead,
+%% you can set `ConsistentRead' to `true' for any or all tables.
 %%
-%% In order to minimize response latency, `BatchGetItem' retrieves items in
-%% parallel.
+%% In order to minimize response latency, `BatchGetItem' retrieves items
+%% in parallel.
 %%
 %% When designing your application, keep in mind that DynamoDB does not
 %% return items in any particular order. To help parse the response by item,
@@ -222,30 +222,32 @@ batch_get_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetItem">>, Input, Options).
 
-%% @doc The `BatchWriteItem' operation puts or deletes multiple items in one
-%% or more tables.
+%% @doc The `BatchWriteItem' operation puts or deletes multiple items in
+%% one or more tables.
 %%
-%% A single call to `BatchWriteItem' can transmit up to 16MB of data over the
-%% network, consisting of up to 25 item put or delete operations. While
-%% individual items can be up to 400 KB once stored, it's important to note
-%% that an item's representation might be greater than 400KB while being sent
-%% in DynamoDB's JSON format for the API call. For more details on this
-%% distinction, see Naming Rules and Data Types.
+%% A single call to `BatchWriteItem' can transmit up to 16MB of data over
+%% the network, consisting of up to 25 item put or delete operations. While
+%% individual items can be up to 400 KB once stored, it's important to
+%% note that an item's representation might be greater than 400KB while
+%% being sent in DynamoDB's JSON format for the API call. For more
+%% details on this distinction, see Naming Rules and Data Types.
 %%
-%% `BatchWriteItem' cannot update items. If you perform a `BatchWriteItem'
-%% operation on an existing item, that item's values will be overwritten by
-%% the operation and it will appear like it was updated. To update items, we
-%% recommend you use the `UpdateItem' action.
+%% `BatchWriteItem' cannot update items. If you perform a
+%% `BatchWriteItem' operation on an existing item, that item's values
+%% will be overwritten by the operation and it will appear like it was
+%% updated. To update items, we recommend you use the `UpdateItem'
+%% action.
 %%
 %% The individual `PutItem' and `DeleteItem' operations specified in
-%% `BatchWriteItem' are atomic; however `BatchWriteItem' as a whole is not.
-%% If any requested operations fail because the table's provisioned
-%% throughput is exceeded or an internal processing failure occurs, the
-%% failed operations are returned in the `UnprocessedItems' response
-%% parameter. You can investigate and optionally resend the requests.
-%% Typically, you would call `BatchWriteItem' in a loop. Each iteration would
-%% check for unprocessed items and submit a new `BatchWriteItem' request with
-%% those unprocessed items until all items have been processed.
+%% `BatchWriteItem' are atomic; however `BatchWriteItem' as a whole
+%% is not. If any requested operations fail because the table's
+%% provisioned throughput is exceeded or an internal processing failure
+%% occurs, the failed operations are returned in the `UnprocessedItems'
+%% response parameter. You can investigate and optionally resend the
+%% requests. Typically, you would call `BatchWriteItem' in a loop. Each
+%% iteration would check for unprocessed items and submit a new
+%% `BatchWriteItem' request with those unprocessed items until all items
+%% have been processed.
 %%
 %% If none of the items can be processed due to insufficient provisioned
 %% throughput on all of the tables in the request, then `BatchWriteItem'
@@ -262,21 +264,22 @@ batch_get_item(Client, Input, Options)
 %% For more information, see Batch Operations and Error Handling in the
 %% Amazon DynamoDB Developer Guide.
 %%
-%% With `BatchWriteItem', you can efficiently write or delete large amounts
-%% of data, such as from Amazon EMR, or copy data from another database into
-%% DynamoDB. In order to improve performance with these large-scale
-%% operations, `BatchWriteItem' does not behave in the same way as individual
-%% `PutItem' and `DeleteItem' calls would. For example, you cannot specify
-%% conditions on individual put and delete requests, and `BatchWriteItem'
-%% does not return deleted items in the response.
+%% With `BatchWriteItem', you can efficiently write or delete large
+%% amounts of data, such as from Amazon EMR, or copy data from another
+%% database into DynamoDB. In order to improve performance with these
+%% large-scale operations, `BatchWriteItem' does not behave in the same
+%% way as individual `PutItem' and `DeleteItem' calls would. For
+%% example, you cannot specify conditions on individual put and delete
+%% requests, and `BatchWriteItem' does not return deleted items in the
+%% response.
 %%
 %% If you use a programming language that supports concurrency, you can use
 %% threads to write items in parallel. Your application must include the
-%% necessary logic to manage the threads. With languages that don't support
-%% threading, you must update or delete the specified items one at a time. In
-%% both situations, `BatchWriteItem' performs the specified put and delete
-%% operations in parallel, giving you the power of the thread pool approach
-%% without having to introduce complexity into your application.
+%% necessary logic to manage the threads. With languages that don't
+%% support threading, you must update or delete the specified items one at a
+%% time. In both situations, `BatchWriteItem' performs the specified put
+%% and delete operations in parallel, giving you the power of the thread pool
+%% approach without having to introduce complexity into your application.
 %%
 %% Parallel processing reduces latency, but each specified put and delete
 %% request consumes the same number of write capacity units whether it is
@@ -293,8 +296,8 @@ batch_get_item(Client, Input, Options)
 %% not match those in the corresponding table's primary key schema.
 %%
 %% </li> <li> You try to perform multiple operations on the same item in the
-%% same `BatchWriteItem' request. For example, you cannot put and delete the
-%% same item in the same `BatchWriteItem' request.
+%% same `BatchWriteItem' request. For example, you cannot put and delete
+%% the same item in the same `BatchWriteItem' request.
 %%
 %% </li> <li> Your request contains at least two items with identical hash
 %% and range keys (which essentially is two put operations).
@@ -413,17 +416,17 @@ create_global_table(Client, Input, Options)
 %% Region. That is, you can have two tables with same name if you create the
 %% tables in different Regions.
 %%
-%% `CreateTable' is an asynchronous operation. Upon receiving a `CreateTable'
-%% request, DynamoDB immediately returns a response with a `TableStatus' of
-%% `CREATING'. After the table is created, DynamoDB sets the `TableStatus' to
-%% `ACTIVE'. You can perform read and write operations only on an `ACTIVE'
-%% table.
+%% `CreateTable' is an asynchronous operation. Upon receiving a
+%% `CreateTable' request, DynamoDB immediately returns a response with a
+%% `TableStatus' of `CREATING'. After the table is created, DynamoDB
+%% sets the `TableStatus' to `ACTIVE'. You can perform read and write
+%% operations only on an `ACTIVE' table.
 %%
 %% You can optionally define secondary indexes on the new table, as part of
-%% the `CreateTable' operation. If you want to create multiple tables with
-%% secondary indexes on them, you must create the tables sequentially. Only
-%% one table with secondary indexes can be in the `CREATING' state at any
-%% given time.
+%% the `CreateTable' operation. If you want to create multiple tables
+%% with secondary indexes on them, you must create the tables sequentially.
+%% Only one table with secondary indexes can be in the `CREATING' state
+%% at any given time.
 %%
 %% You can use the `DescribeTable' action to check the table status.
 create_table(Client, Input)
@@ -448,8 +451,9 @@ delete_backup(Client, Input, Options)
 %% You can perform a conditional delete operation that deletes the item if it
 %% exists, or if it has an expected attribute value.
 %%
-%% In addition to deleting an item, you can also return the item's attribute
-%% values in the same operation, using the `ReturnValues' parameter.
+%% In addition to deleting an item, you can also return the item's
+%% attribute values in the same operation, using the `ReturnValues'
+%% parameter.
 %%
 %% Unless you specify conditions, the `DeleteItem' is an idempotent
 %% operation; running it multiple times on the same item or attribute does
@@ -467,17 +471,17 @@ delete_item(Client, Input, Options)
 
 %% @doc The `DeleteTable' operation deletes a table and all of its items.
 %%
-%% After a `DeleteTable' request, the specified table is in the `DELETING'
-%% state until DynamoDB completes the deletion. If the table is in the
-%% `ACTIVE' state, you can delete it. If a table is in `CREATING' or
-%% `UPDATING' states, then DynamoDB returns a `ResourceInUseException'. If
-%% the specified table does not exist, DynamoDB returns a
-%% `ResourceNotFoundException'. If table is already in the `DELETING' state,
-%% no error is returned.
+%% After a `DeleteTable' request, the specified table is in the
+%% `DELETING' state until DynamoDB completes the deletion. If the table
+%% is in the `ACTIVE' state, you can delete it. If a table is in
+%% `CREATING' or `UPDATING' states, then DynamoDB returns a
+%% `ResourceInUseException'. If the specified table does not exist,
+%% DynamoDB returns a `ResourceNotFoundException'. If table is already in
+%% the `DELETING' state, no error is returned.
 %%
 %% DynamoDB might continue to accept data read and write operations, such as
-%% `GetItem' and `PutItem', on a table in the `DELETING' state until the
-%% table deletion is complete.
+%% `GetItem' and `PutItem', on a table in the `DELETING' state
+%% until the table deletion is complete.
 %%
 %% When you delete a table, any indexes on that table are also deleted.
 %%
@@ -495,7 +499,8 @@ delete_table(Client, Input, Options)
 
 %% @doc Describes an existing backup of a table.
 %%
-%% You can call `DescribeBackup' at a maximum rate of 10 times per second.
+%% You can call `DescribeBackup' at a maximum rate of 10 times per
+%% second.
 describe_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_backup(Client, Input, []).
@@ -506,19 +511,20 @@ describe_backup(Client, Input, Options)
 %% @doc Checks the status of continuous backups and point in time recovery on
 %% the specified table.
 %%
-%% Continuous backups are `ENABLED' on all tables at table creation. If point
-%% in time recovery is enabled, `PointInTimeRecoveryStatus' will be set to
-%% ENABLED.
+%% Continuous backups are `ENABLED' on all tables at table creation. If
+%% point in time recovery is enabled, `PointInTimeRecoveryStatus' will be
+%% set to ENABLED.
 %%
 %% After continuous backups and point in time recovery are enabled, you can
 %% restore to any point in time within `EarliestRestorableDateTime' and
 %% `LatestRestorableDateTime'.
 %%
-%% `LatestRestorableDateTime' is typically 5 minutes before the current time.
-%% You can restore your table to any point in time during the last 35 days.
+%% `LatestRestorableDateTime' is typically 5 minutes before the current
+%% time. You can restore your table to any point in time during the last 35
+%% days.
 %%
-%% You can call `DescribeContinuousBackups' at a maximum rate of 10 times per
-%% second.
+%% You can call `DescribeContinuousBackups' at a maximum rate of 10 times
+%% per second.
 describe_continuous_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_continuous_backups(Client, Input, []).
@@ -602,9 +608,9 @@ describe_kinesis_streaming_destination(Client, Input, Options)
 %%
 %% Although you can increase these quotas by filing a case at Amazon Web
 %% Services Support Center, obtaining the increase is not instantaneous. The
-%% `DescribeLimits' action lets you write code to compare the capacity you
-%% are currently using to those quotas imposed by your account so that you
-%% have enough time to apply for an increase before you hit a quota.
+%% `DescribeLimits' action lets you write code to compare the capacity
+%% you are currently using to those quotas imposed by your account so that
+%% you have enough time to apply for an increase before you hit a quota.
 %%
 %% For example, you could use one of the Amazon Web Services SDKs to do the
 %% following:
@@ -616,9 +622,11 @@ describe_kinesis_streaming_destination(Client, Input, Options)
 %% provisioned for all your tables in that Region, and one to hold the
 %% aggregate write capacity units. Zero them both.
 %%
-%% </li> <li> Call `ListTables' to obtain a list of all your DynamoDB tables.
+%% </li> <li> Call `ListTables' to obtain a list of all your DynamoDB
+%% tables.
 %%
-%% </li> <li> For each table name listed by `ListTables', do the following:
+%% </li> <li> For each table name listed by `ListTables', do the
+%% following:
 %%
 %% <ul> <li> Call `DescribeTable' with the table name.
 %%
@@ -661,11 +669,12 @@ describe_limits(Client, Input, Options)
 %% the table, when it was created, the primary key schema, and any indexes on
 %% the table.
 %%
-%% If you issue a `DescribeTable' request immediately after a `CreateTable'
-%% request, DynamoDB might return a `ResourceNotFoundException'. This is
-%% because `DescribeTable' uses an eventually consistent query, and the
-%% metadata for your table might not be available at that moment. Wait for a
-%% few seconds, and then try the `DescribeTable' request again.
+%% If you issue a `DescribeTable' request immediately after a
+%% `CreateTable' request, DynamoDB might return a
+%% `ResourceNotFoundException'. This is because `DescribeTable' uses
+%% an eventually consistent query, and the metadata for your table might not
+%% be available at that moment. Wait for a few seconds, and then try the
+%% `DescribeTable' request again.
 describe_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table(Client, Input, []).
@@ -719,17 +728,18 @@ enable_kinesis_streaming_destination(Client, Input, Options)
 %% @doc This operation allows you to perform reads and singleton writes on
 %% data stored in DynamoDB, using PartiQL.
 %%
-%% For PartiQL reads (`SELECT' statement), if the total number of processed
-%% items exceeds the maximum dataset size limit of 1 MB, the read stops and
-%% results are returned to the user as a `LastEvaluatedKey' value to continue
-%% the read in a subsequent operation. If the filter criteria in `WHERE'
-%% clause does not match any data, the read will return an empty result set.
+%% For PartiQL reads (`SELECT' statement), if the total number of
+%% processed items exceeds the maximum dataset size limit of 1 MB, the read
+%% stops and results are returned to the user as a `LastEvaluatedKey'
+%% value to continue the read in a subsequent operation. If the filter
+%% criteria in `WHERE' clause does not match any data, the read will
+%% return an empty result set.
 %%
-%% A single `SELECT' statement response can return up to the maximum number
-%% of items (if using the Limit parameter) or a maximum of 1 MB of data (and
-%% then apply any filtering to the results using `WHERE' clause). If
-%% `LastEvaluatedKey' is present in the response, you need to paginate the
-%% result set.
+%% A single `SELECT' statement response can return up to the maximum
+%% number of items (if using the Limit parameter) or a maximum of 1 MB of
+%% data (and then apply any filtering to the results using `WHERE'
+%% clause). If `LastEvaluatedKey' is present in the response, you need to
+%% paginate the result set.
 execute_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_statement(Client, Input, []).
@@ -763,16 +773,17 @@ export_table_to_point_in_time(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExportTableToPointInTime">>, Input, Options).
 
-%% @doc The `GetItem' operation returns a set of attributes for the item with
-%% the given primary key.
+%% @doc The `GetItem' operation returns a set of attributes for the item
+%% with the given primary key.
 %%
-%% If there is no matching item, `GetItem' does not return any data and there
-%% will be no `Item' element in the response.
+%% If there is no matching item, `GetItem' does not return any data and
+%% there will be no `Item' element in the response.
 %%
 %% `GetItem' provides an eventually consistent read by default. If your
-%% application requires a strongly consistent read, set `ConsistentRead' to
-%% `true'. Although a strongly consistent read might take more time than an
-%% eventually consistent read, it always returns the last updated value.
+%% application requires a strongly consistent read, set `ConsistentRead'
+%% to `true'. Although a strongly consistent read might take more time
+%% than an eventually consistent read, it always returns the last updated
+%% value.
 get_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_item(Client, Input, []).
@@ -790,10 +801,10 @@ import_table(Client, Input, Options)
 
 %% @doc List backups associated with an Amazon Web Services account.
 %%
-%% To list backups for a given table, specify `TableName'. `ListBackups'
-%% returns a paginated list of results with at most 1 MB worth of items in a
-%% page. You can also specify a maximum number of entries to be returned in a
-%% page.
+%% To list backups for a given table, specify `TableName'.
+%% `ListBackups' returns a paginated list of results with at most 1 MB
+%% worth of items in a page. You can also specify a maximum number of entries
+%% to be returned in a page.
 %%
 %% In the request, start time is inclusive, but end time is exclusive. Note
 %% that these boundaries are for the time at which the original backup was
@@ -872,9 +883,10 @@ list_tags_of_resource(Client, Input, Options)
 %% If an item that has the same primary key as the new item already exists in
 %% the specified table, the new item completely replaces the existing item.
 %% You can perform a conditional put operation (add a new item if one with
-%% the specified primary key doesn't exist), or replace an existing item if
-%% it has certain attribute values. You can return the item's attribute
-%% values in the same operation, using the `ReturnValues' parameter.
+%% the specified primary key doesn't exist), or replace an existing item
+%% if it has certain attribute values. You can return the item's
+%% attribute values in the same operation, using the `ReturnValues'
+%% parameter.
 %%
 %% When you add an item, the primary key attributes are the only required
 %% attributes.
@@ -888,13 +900,13 @@ list_tags_of_resource(Client, Input, Options)
 %% `ValidationException' exception.
 %%
 %% To prevent a new item from replacing an existing item, use a conditional
-%% expression that contains the `attribute_not_exists' function with the name
-%% of the attribute being used as the partition key for the table. Since
+%% expression that contains the `attribute_not_exists' function with the
+%% name of the attribute being used as the partition key for the table. Since
 %% every record must contain that attribute, the `attribute_not_exists'
 %% function will only succeed if no matching item exists.
 %%
-%% For more information about `PutItem', see Working with Items in the Amazon
-%% DynamoDB Developer Guide.
+%% For more information about `PutItem', see Working with Items in the
+%% Amazon DynamoDB Developer Guide.
 put_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_item(Client, Input, []).
@@ -905,23 +917,24 @@ put_item(Client, Input, Options)
 %% @doc You must provide the name of the partition key attribute and a single
 %% value for that attribute.
 %%
-%% `Query' returns all items with that partition key value. Optionally, you
-%% can provide a sort key attribute and use a comparison operator to refine
-%% the search results.
+%% `Query' returns all items with that partition key value. Optionally,
+%% you can provide a sort key attribute and use a comparison operator to
+%% refine the search results.
 %%
-%% Use the `KeyConditionExpression' parameter to provide a specific value for
-%% the partition key. The `Query' operation will return all of the items from
-%% the table or index with that partition key value. You can optionally
-%% narrow the scope of the `Query' operation by specifying a sort key value
-%% and a comparison operator in `KeyConditionExpression'. To further refine
-%% the `Query' results, you can optionally provide a `FilterExpression'. A
-%% `FilterExpression' determines which items within the results should be
-%% returned to you. All of the other results are discarded.
+%% Use the `KeyConditionExpression' parameter to provide a specific value
+%% for the partition key. The `Query' operation will return all of the
+%% items from the table or index with that partition key value. You can
+%% optionally narrow the scope of the `Query' operation by specifying a
+%% sort key value and a comparison operator in `KeyConditionExpression'.
+%% To further refine the `Query' results, you can optionally provide a
+%% `FilterExpression'. A `FilterExpression' determines which items
+%% within the results should be returned to you. All of the other results are
+%% discarded.
 %%
-%% A `Query' operation always returns a result set. If no matching items are
-%% found, the result set will be empty. Queries that do not return results
-%% consume the minimum number of read capacity units for that type of read
-%% operation.
+%% A `Query' operation always returns a result set. If no matching items
+%% are found, the result set will be empty. Queries that do not return
+%% results consume the minimum number of read capacity units for that type of
+%% read operation.
 %%
 %% DynamoDB calculates the number of read capacity units consumed based on
 %% item size, not on the amount of data that is returned to an application.
@@ -930,23 +943,23 @@ put_item(Client, Input, Options)
 %% projection expression). The number will also be the same whether or not
 %% you use a `FilterExpression'.
 %%
-%% `Query' results are always sorted by the sort key value. If the data type
-%% of the sort key is Number, the results are returned in numeric order;
+%% `Query' results are always sorted by the sort key value. If the data
+%% type of the sort key is Number, the results are returned in numeric order;
 %% otherwise, the results are returned in order of UTF-8 bytes. By default,
 %% the sort order is ascending. To reverse the order, set the
 %% `ScanIndexForward' parameter to false.
 %%
-%% A single `Query' operation will read up to the maximum number of items set
-%% (if using the `Limit' parameter) or a maximum of 1 MB of data and then
-%% apply any filtering to the results using `FilterExpression'. If
-%% `LastEvaluatedKey' is present in the response, you will need to paginate
-%% the result set. For more information, see Paginating the Results in the
-%% Amazon DynamoDB Developer Guide.
+%% A single `Query' operation will read up to the maximum number of items
+%% set (if using the `Limit' parameter) or a maximum of 1 MB of data and
+%% then apply any filtering to the results using `FilterExpression'. If
+%% `LastEvaluatedKey' is present in the response, you will need to
+%% paginate the result set. For more information, see Paginating the Results
+%% in the Amazon DynamoDB Developer Guide.
 %%
-%% `FilterExpression' is applied after a `Query' finishes, but before the
-%% results are returned. A `FilterExpression' cannot contain partition key or
-%% sort key attributes. You need to specify those attributes in the
-%% `KeyConditionExpression'.
+%% `FilterExpression' is applied after a `Query' finishes, but before
+%% the results are returned. A `FilterExpression' cannot contain
+%% partition key or sort key attributes. You need to specify those attributes
+%% in the `KeyConditionExpression'.
 %%
 %% A `Query' operation can return an empty result set and a
 %% `LastEvaluatedKey' if all the items read for the page of results are
@@ -954,9 +967,10 @@ put_item(Client, Input, Options)
 %%
 %% You can query a table, a local secondary index, or a global secondary
 %% index. For a query on a table or on a local secondary index, you can set
-%% the `ConsistentRead' parameter to `true' and obtain a strongly consistent
-%% result. Global secondary indexes support eventually consistent reads only,
-%% so do not specify `ConsistentRead' when querying a global secondary index.
+%% the `ConsistentRead' parameter to `true' and obtain a strongly
+%% consistent result. Global secondary indexes support eventually consistent
+%% reads only, so do not specify `ConsistentRead' when querying a global
+%% secondary index.
 query(Client, Input)
   when is_map(Client), is_map(Input) ->
     query(Client, Input, []).
@@ -969,8 +983,8 @@ query(Client, Input, Options)
 %% Any number of users can execute up to 4 concurrent restores (any type of
 %% restore) in a given account.
 %%
-%% You can call `RestoreTableFromBackup' at a maximum rate of 10 times per
-%% second.
+%% You can call `RestoreTableFromBackup' at a maximum rate of 10 times
+%% per second.
 %%
 %% You must manually set up the following on the restored table:
 %%
@@ -1043,36 +1057,36 @@ restore_table_to_point_in_time(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreTableToPointInTime">>, Input, Options).
 
-%% @doc The `Scan' operation returns one or more items and item attributes by
-%% accessing every item in a table or a secondary index.
+%% @doc The `Scan' operation returns one or more items and item
+%% attributes by accessing every item in a table or a secondary index.
 %%
-%% To have DynamoDB return fewer items, you can provide a `FilterExpression'
-%% operation.
+%% To have DynamoDB return fewer items, you can provide a
+%% `FilterExpression' operation.
 %%
 %% If the total number of scanned items exceeds the maximum dataset size
 %% limit of 1 MB, the scan stops and results are returned to the user as a
-%% `LastEvaluatedKey' value to continue the scan in a subsequent operation.
-%% The results also include the number of items exceeding the limit. A scan
-%% can result in no table data meeting the filter criteria.
+%% `LastEvaluatedKey' value to continue the scan in a subsequent
+%% operation. The results also include the number of items exceeding the
+%% limit. A scan can result in no table data meeting the filter criteria.
 %%
-%% A single `Scan' operation reads up to the maximum number of items set (if
-%% using the `Limit' parameter) or a maximum of 1 MB of data and then apply
-%% any filtering to the results using `FilterExpression'. If
-%% `LastEvaluatedKey' is present in the response, you need to paginate the
-%% result set. For more information, see Paginating the Results in the Amazon
-%% DynamoDB Developer Guide.
+%% A single `Scan' operation reads up to the maximum number of items set
+%% (if using the `Limit' parameter) or a maximum of 1 MB of data and then
+%% apply any filtering to the results using `FilterExpression'. If
+%% `LastEvaluatedKey' is present in the response, you need to paginate
+%% the result set. For more information, see Paginating the Results in the
+%% Amazon DynamoDB Developer Guide.
 %%
-%% `Scan' operations proceed sequentially; however, for faster performance on
-%% a large table or secondary index, applications can request a parallel
-%% `Scan' operation by providing the `Segment' and `TotalSegments'
-%% parameters. For more information, see Parallel Scan in the Amazon DynamoDB
-%% Developer Guide.
+%% `Scan' operations proceed sequentially; however, for faster
+%% performance on a large table or secondary index, applications can request
+%% a parallel `Scan' operation by providing the `Segment' and
+%% `TotalSegments' parameters. For more information, see Parallel Scan in
+%% the Amazon DynamoDB Developer Guide.
 %%
 %% `Scan' uses eventually consistent reads when accessing the data in a
 %% table; therefore, the result set might not include the changes to data in
 %% the table immediately before the operation began. If you need a consistent
-%% copy of the data, as of the time that the `Scan' begins, you can set the
-%% `ConsistentRead' parameter to `true'.
+%% copy of the data, as of the time that the `Scan' begins, you can set
+%% the `ConsistentRead' parameter to `true'.
 scan(Client, Input)
   when is_map(Client), is_map(Input) ->
     scan(Client, Input, []).
@@ -1099,9 +1113,9 @@ tag_resource(Client, Input, Options)
 %% retrieves multiple items from one or more tables (but not from indexes) in
 %% a single account and Region.
 %%
-%% A `TransactGetItems' call can contain up to 100 `TransactGetItem' objects,
-%% each of which contains a `Get' structure that specifies an item to
-%% retrieve from a table in the account and Region. A call to
+%% A `TransactGetItems' call can contain up to 100 `TransactGetItem'
+%% objects, each of which contains a `Get' structure that specifies an
+%% item to retrieve from a table in the account and Region. A call to
 %% `TransactGetItems' cannot retrieve items from tables in more than one
 %% Amazon Web Services account or Region. The aggregate size of the items in
 %% the transaction cannot exceed 4 MB.
@@ -1128,48 +1142,49 @@ transact_get_items(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TransactGetItems">>, Input, Options).
 
-%% @doc `TransactWriteItems' is a synchronous write operation that groups up
-%% to 100 action requests.
+%% @doc `TransactWriteItems' is a synchronous write operation that groups
+%% up to 100 action requests.
 %%
 %% These actions can target items in different tables, but not in different
 %% Amazon Web Services accounts or Regions, and no two actions can target the
-%% same item. For example, you cannot both `ConditionCheck' and `Update' the
-%% same item. The aggregate size of the items in the transaction cannot
-%% exceed 4 MB.
+%% same item. For example, you cannot both `ConditionCheck' and
+%% `Update' the same item. The aggregate size of the items in the
+%% transaction cannot exceed 4 MB.
 %%
 %% The actions are completed atomically so that either all of them succeed,
 %% or all of them fail. They are defined by the following objects:
 %%
-%% <ul> <li> `Put'  —   Initiates a `PutItem' operation to write a new item.
-%% This structure specifies the primary key of the item to be written, the
-%% name of the table to write it in, an optional condition expression that
-%% must be satisfied for the write to succeed, a list of the item's
-%% attributes, and a field indicating whether to retrieve the item's
-%% attributes if the condition is not met.
+%% <ul> <li> `Put'  —   Initiates a `PutItem' operation to write a
+%% new item. This structure specifies the primary key of the item to be
+%% written, the name of the table to write it in, an optional condition
+%% expression that must be satisfied for the write to succeed, a list of the
+%% item's attributes, and a field indicating whether to retrieve the
+%% item's attributes if the condition is not met.
 %%
-%% </li> <li> `Update'  —   Initiates an `UpdateItem' operation to update an
-%% existing item. This structure specifies the primary key of the item to be
-%% updated, the name of the table where it resides, an optional condition
-%% expression that must be satisfied for the update to succeed, an expression
-%% that defines one or more attributes to be updated, and a field indicating
-%% whether to retrieve the item's attributes if the condition is not met.
+%% </li> <li> `Update'  —   Initiates an `UpdateItem' operation to
+%% update an existing item. This structure specifies the primary key of the
+%% item to be updated, the name of the table where it resides, an optional
+%% condition expression that must be satisfied for the update to succeed, an
+%% expression that defines one or more attributes to be updated, and a field
+%% indicating whether to retrieve the item's attributes if the condition
+%% is not met.
 %%
-%% </li> <li> `Delete'  —   Initiates a `DeleteItem' operation to delete an
-%% existing item. This structure specifies the primary key of the item to be
-%% deleted, the name of the table where it resides, an optional condition
-%% expression that must be satisfied for the deletion to succeed, and a field
-%% indicating whether to retrieve the item's attributes if the condition is
-%% not met.
+%% </li> <li> `Delete'  —   Initiates a `DeleteItem' operation to
+%% delete an existing item. This structure specifies the primary key of the
+%% item to be deleted, the name of the table where it resides, an optional
+%% condition expression that must be satisfied for the deletion to succeed,
+%% and a field indicating whether to retrieve the item's attributes if
+%% the condition is not met.
 %%
-%% </li> <li> `ConditionCheck'  —   Applies a condition to an item that is
-%% not being modified by the transaction. This structure specifies the
+%% </li> <li> `ConditionCheck'  —   Applies a condition to an item that
+%% is not being modified by the transaction. This structure specifies the
 %% primary key of the item to be checked, the name of the table where it
 %% resides, a condition expression that must be satisfied for the transaction
 %% to succeed, and a field indicating whether to retrieve the item's
 %% attributes if the condition is not met.
 %%
-%% </li> </ul> DynamoDB rejects the entire `TransactWriteItems' request if
-%% any of the following is true:
+%% </li> </ul> DynamoDB rejects the entire `TransactWriteItems' request
+%% if any of the following is true:
 %%
 %% <ul> <li> A condition in one of the condition expressions is not met.
 %%
@@ -1209,20 +1224,21 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc `UpdateContinuousBackups' enables or disables point in time recovery
-%% for the specified table.
+%% @doc `UpdateContinuousBackups' enables or disables point in time
+%% recovery for the specified table.
 %%
 %% A successful `UpdateContinuousBackups' call returns the current
-%% `ContinuousBackupsDescription'. Continuous backups are `ENABLED' on all
-%% tables at table creation. If point in time recovery is enabled,
+%% `ContinuousBackupsDescription'. Continuous backups are `ENABLED'
+%% on all tables at table creation. If point in time recovery is enabled,
 %% `PointInTimeRecoveryStatus' will be set to ENABLED.
 %%
 %% Once continuous backups and point in time recovery are enabled, you can
 %% restore to any point in time within `EarliestRestorableDateTime' and
 %% `LatestRestorableDateTime'.
 %%
-%% `LatestRestorableDateTime' is typically 5 minutes before the current time.
-%% You can restore your table to any point in time during the last 35 days.
+%% `LatestRestorableDateTime' is typically 5 minutes before the current
+%% time. You can restore your table to any point in time during the last 35
+%% days.
 update_continuous_backups(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_continuous_backups(Client, Input, []).
@@ -1285,16 +1301,16 @@ update_global_table_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGlobalTableSettings">>, Input, Options).
 
-%% @doc Edits an existing item's attributes, or adds a new item to the table
-%% if it does not already exist.
+%% @doc Edits an existing item's attributes, or adds a new item to the
+%% table if it does not already exist.
 %%
 %% You can put, delete, or add attribute values. You can also perform a
 %% conditional update on an existing item (insert a new attribute name-value
-%% pair if it doesn't exist, or replace an existing name-value pair if it has
-%% certain expected attribute values).
+%% pair if it doesn't exist, or replace an existing name-value pair if it
+%% has certain expected attribute values).
 %%
-%% You can also return the item's attribute values in the same `UpdateItem'
-%% operation using the `ReturnValues' parameter.
+%% You can also return the item's attribute values in the same
+%% `UpdateItem' operation using the `ReturnValues' parameter.
 update_item(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_item(Client, Input, []).
@@ -1316,10 +1332,10 @@ update_item(Client, Input, Options)
 %% operations.
 %%
 %% </li> </ul> `UpdateTable' is an asynchronous operation; while it is
-%% executing, the table status changes from `ACTIVE' to `UPDATING'. While it
-%% is `UPDATING', you cannot issue another `UpdateTable' request. When the
-%% table returns to the `ACTIVE' state, the `UpdateTable' operation is
-%% complete.
+%% executing, the table status changes from `ACTIVE' to `UPDATING'.
+%% While it is `UPDATING', you cannot issue another `UpdateTable'
+%% request. When the table returns to the `ACTIVE' state, the
+%% `UpdateTable' operation is complete.
 update_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_table(Client, Input, []).
@@ -1337,13 +1353,13 @@ update_table_replica_auto_scaling(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTableReplicaAutoScaling">>, Input, Options).
 
-%% @doc The `UpdateTimeToLive' method enables or disables Time to Live (TTL)
-%% for the specified table.
+%% @doc The `UpdateTimeToLive' method enables or disables Time to Live
+%% (TTL) for the specified table.
 %%
 %% A successful `UpdateTimeToLive' call returns the current
-%% `TimeToLiveSpecification'. It can take up to one hour for the change to
-%% fully process. Any additional `UpdateTimeToLive' calls for the same table
-%% during this one hour duration result in a `ValidationException'.
+%% `TimeToLiveSpecification'. It can take up to one hour for the change
+%% to fully process. Any additional `UpdateTimeToLive' calls for the same
+%% table during this one hour duration result in a `ValidationException'.
 %%
 %% TTL compares the current time in epoch time format to the time stored in
 %% the TTL attribute of an item. If the epoch time value stored in the

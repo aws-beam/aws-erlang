@@ -8,13 +8,14 @@
 %%
 %% To call these APIs, you'll need to know:
 %%
-%% <ul> <li> the `ControlARN' for the control--that is, the guardrail--you
-%% are targeting,
+%% <ul> <li> the `ControlARN' for the control--that is, the
+%% guardrail--you are targeting,
 %%
 %% </li> <li> and the ARN associated with the target organizational unit
 %% (OU).
 %%
-%% </li> </ul> To get the `ControlARN' for your AWS Control Tower guardrail:
+%% </li> </ul> To get the `ControlARN' for your AWS Control Tower
+%% guardrail:
 %%
 %% The `ControlARN' contains the control name which is specified in each
 %% guardrail. For a list of control names for Strongly recommended and

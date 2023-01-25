@@ -31,22 +31,23 @@
 %% </li> <li> `GetPipelineExecution', which returns information about a
 %% specific execution of a pipeline.
 %%
-%% </li> <li> `GetPipelineState', which returns information about the current
-%% state of the stages and actions of a pipeline.
+%% </li> <li> `GetPipelineState', which returns information about the
+%% current state of the stages and actions of a pipeline.
 %%
-%% </li> <li> `ListActionExecutions', which returns action-level details for
-%% past executions. The details include full stage and action-level details,
-%% including individual action duration, status, any errors that occurred
-%% during the execution, and input and output artifact location details.
+%% </li> <li> `ListActionExecutions', which returns action-level details
+%% for past executions. The details include full stage and action-level
+%% details, including individual action duration, status, any errors that
+%% occurred during the execution, and input and output artifact location
+%% details.
 %%
-%% </li> <li> `ListPipelines', which gets a summary of all of the pipelines
-%% associated with your account.
+%% </li> <li> `ListPipelines', which gets a summary of all of the
+%% pipelines associated with your account.
 %%
 %% </li> <li> `ListPipelineExecutions', which gets a summary of the most
 %% recent executions for a pipeline.
 %%
-%% </li> <li> `StartPipelineExecution', which runs the most recent revision
-%% of an artifact through the pipeline.
+%% </li> <li> `StartPipelineExecution', which runs the most recent
+%% revision of an artifact through the pipeline.
 %%
 %% </li> <li> `StopPipelineExecution', which stops the specified pipeline
 %% execution from continuing through the pipeline.
@@ -95,8 +96,8 @@
 %% <ul> <li> `DisableStageTransition', which prevents artifacts from
 %% transitioning to the next stage in a pipeline.
 %%
-%% </li> <li> `EnableStageTransition', which enables transition of artifacts
-%% between stages in a pipeline.
+%% </li> <li> `EnableStageTransition', which enables transition of
+%% artifacts between stages in a pipeline.
 %%
 %% </li> </ul> Using the API to integrate with AWS CodePipeline
 %%
@@ -115,12 +116,14 @@
 %%
 %% </li> <li> `GetJobDetails', which returns the details of a job.
 %%
-%% </li> <li> `PollForJobs', which determines whether there are any jobs to
-%% act on.
+%% </li> <li> `PollForJobs', which determines whether there are any jobs
+%% to act on.
 %%
-%% </li> <li> `PutJobFailureResult', which provides details of a job failure.
+%% </li> <li> `PutJobFailureResult', which provides details of a job
+%% failure.
 %%
-%% </li> <li> `PutJobSuccessResult', which provides details of a job success.
+%% </li> <li> `PutJobSuccessResult', which provides details of a job
+%% success.
 %%
 %% </li> </ul> Third party jobs, which are instances of an action created by
 %% a partner action and integrated into AWS CodePipeline. Partner actions are
@@ -128,20 +131,20 @@
 %%
 %% You can work with third party jobs by calling:
 %%
-%% <ul> <li> `AcknowledgeThirdPartyJob', which confirms whether a job worker
-%% has received the specified job.
+%% <ul> <li> `AcknowledgeThirdPartyJob', which confirms whether a job
+%% worker has received the specified job.
 %%
-%% </li> <li> `GetThirdPartyJobDetails', which requests the details of a job
-%% for a partner action.
+%% </li> <li> `GetThirdPartyJobDetails', which requests the details of a
+%% job for a partner action.
 %%
-%% </li> <li> `PollForThirdPartyJobs', which determines whether there are any
-%% jobs to act on.
+%% </li> <li> `PollForThirdPartyJobs', which determines whether there are
+%% any jobs to act on.
 %%
-%% </li> <li> `PutThirdPartyJobFailureResult', which provides details of a
-%% job failure.
+%% </li> <li> `PutThirdPartyJobFailureResult', which provides details of
+%% a job failure.
 %%
-%% </li> <li> `PutThirdPartyJobSuccessResult', which provides details of a
-%% job success.
+%% </li> <li> `PutThirdPartyJobSuccessResult', which provides details of
+%% a job success.
 %%
 %% </li> </ul>
 -module(aws_codepipeline).
@@ -266,8 +269,9 @@ create_custom_action_type(Client, Input, Options)
 %% @doc Creates a pipeline.
 %%
 %% In the pipeline structure, you must include either `artifactStore' or
-%% `artifactStores' in your pipeline, but you cannot use both. If you create
-%% a cross-region action in your pipeline, you must use `artifactStores'.
+%% `artifactStores' in your pipeline, but you cannot use both. If you
+%% create a cross-region action in your pipeline, you must use
+%% `artifactStores'.
 create_pipeline(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_pipeline(Client, Input, []).
@@ -277,8 +281,8 @@ create_pipeline(Client, Input, Options)
 
 %% @doc Marks a custom action as deleted.
 %%
-%% `PollForJobs' for the custom action fails after the action is marked for
-%% deletion. Used for custom actions only.
+%% `PollForJobs' for the custom action fails after the action is marked
+%% for deletion. Used for custom actions only.
 %%
 %% To re-create a custom action after it has been deleted you must use a
 %% string in the version field that has never been used before. This string
@@ -396,8 +400,9 @@ get_pipeline_execution(Client, Input, Options)
 %% @doc Returns information about the state of a pipeline, including the
 %% stages and actions.
 %%
-%% Values returned in the `revisionId' and `revisionUrl' fields indicate the
-%% source revision information, such as the commit ID, for the current state.
+%% Values returned in the `revisionId' and `revisionUrl' fields
+%% indicate the source revision information, such as the commit ID, for the
+%% current state.
 get_pipeline_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_pipeline_state(Client, Input, []).
@@ -476,9 +481,10 @@ list_webhooks(Client, Input, Options)
 
 %% @doc Returns information about any jobs for AWS CodePipeline to act on.
 %%
-%% `PollForJobs' is valid only for action types with "Custom" in the owner
-%% field. If the action type contains "AWS" or "ThirdParty" in the owner
-%% field, the `PollForJobs' action returns an error.
+%% `PollForJobs' is valid only for action types with &quot;Custom&quot;
+%% in the owner field. If the action type contains &quot;AWS&quot; or
+%% &quot;ThirdParty&quot; in the owner field, the `PollForJobs' action
+%% returns an error.
 %%
 %% When this API is called, AWS CodePipeline returns temporary credentials
 %% for the S3 bucket used to store artifacts for the pipeline, if the action
@@ -627,7 +633,8 @@ start_pipeline_execution(Client, Input, Options)
 %% actions without starting subsequent actions, or by abandoning in-progress
 %% actions. While completing or abandoning in-progress actions, the pipeline
 %% execution is in a `Stopping' state. After all in-progress actions are
-%% completed or abandoned, the pipeline execution is in a `Stopped' state.
+%% completed or abandoned, the pipeline execution is in a `Stopped'
+%% state.
 stop_pipeline_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_pipeline_execution(Client, Input, []).

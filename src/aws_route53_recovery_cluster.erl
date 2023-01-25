@@ -18,9 +18,9 @@
 %% work with API cluster operations to get or update routing control states
 %% in Route 53 ARC. In addition, you must specify the US West (Oregon) Region
 %% for Route 53 ARC API calls. For example, use the parameter `--region
-%% us-west-2' with AWS CLI commands. For more information, see Get and update
-%% routing control states using the API in the Amazon Route 53 Application
-%% Recovery Controller Developer Guide.
+%% us-west-2' with AWS CLI commands. For more information, see Get and
+%% update routing control states using the API in the Amazon Route 53
+%% Application Recovery Controller Developer Guide.
 %%
 %% This API guide includes information about the API operations for how to
 %% get and update routing control states in Route 53 ARC. To work with
@@ -152,12 +152,12 @@ list_routing_controls(Client, Input, Options)
 %% are safeguards for routing control state updates that help prevent
 %% unexpected outcomes, like fail open traffic routing. However, there are
 %% scenarios when you might want to bypass the routing control safeguards
-%% that are enforced with safety rules that you've configured. For example,
-%% you might want to fail over quickly for disaster recovery, and one or more
-%% safety rules might be unexpectedly preventing you from updating a routing
-%% control state to reroute traffic. In a "break glass" scenario like this,
-%% you can override one or more safety rules to change a routing control
-%% state and fail over your application.
+%% that are enforced with safety rules that you've configured. For
+%% example, you might want to fail over quickly for disaster recovery, and
+%% one or more safety rules might be unexpectedly preventing you from
+%% updating a routing control state to reroute traffic. In a &quot;break
+%% glass&quot; scenario like this, you can override one or more safety rules
+%% to change a routing control state and fail over your application.
 %%
 %% The `SafetyRulesToOverride' property enables you override one or more
 %% safety rules and update routing control states. For more information, see
@@ -192,12 +192,12 @@ update_routing_control_state(Client, Input, Options)
 %% are safeguards for routing control state updates that help prevent
 %% unexpected outcomes, like fail open traffic routing. However, there are
 %% scenarios when you might want to bypass the routing control safeguards
-%% that are enforced with safety rules that you've configured. For example,
-%% you might want to fail over quickly for disaster recovery, and one or more
-%% safety rules might be unexpectedly preventing you from updating a routing
-%% control state to reroute traffic. In a "break glass" scenario like this,
-%% you can override one or more safety rules to change a routing control
-%% state and fail over your application.
+%% that are enforced with safety rules that you've configured. For
+%% example, you might want to fail over quickly for disaster recovery, and
+%% one or more safety rules might be unexpectedly preventing you from
+%% updating a routing control state to reroute traffic. In a &quot;break
+%% glass&quot; scenario like this, you can override one or more safety rules
+%% to change a routing control state and fail over your application.
 %%
 %% The `SafetyRulesToOverride' property enables you override one or more
 %% safety rules and update routing control states. For more information, see

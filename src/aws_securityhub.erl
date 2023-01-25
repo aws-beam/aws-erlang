@@ -19,31 +19,32 @@
 %% execute the same command for each Region to apply the change to.
 %%
 %% For example, if your Region is set to `us-west-2', when you use
-%% `CreateMembers' to add a member account to Security Hub, the association
-%% of the member account with the administrator account is created only in
-%% the `us-west-2' Region. Security Hub must be enabled for the member
-%% account in the same Region that the invitation was sent from.
+%% `CreateMembers' to add a member account to Security Hub, the
+%% association of the member account with the administrator account is
+%% created only in the `us-west-2' Region. Security Hub must be enabled
+%% for the member account in the same Region that the invitation was sent
+%% from.
 %%
 %% The following throttling limits apply to using Security Hub API
 %% operations.
 %%
-%% <ul> <li> `BatchEnableStandards' - `RateLimit' of 1 request per second,
-%% `BurstLimit' of 1 request per second.
+%% <ul> <li> `BatchEnableStandards' - `RateLimit' of 1 request per
+%% second, `BurstLimit' of 1 request per second.
 %%
 %% </li> <li> `GetFindings' - `RateLimit' of 3 requests per second.
 %% `BurstLimit' of 6 requests per second.
 %%
-%% </li> <li> `BatchImportFindings' - `RateLimit' of 10 requests per second.
-%% `BurstLimit' of 30 requests per second.
+%% </li> <li> `BatchImportFindings' - `RateLimit' of 10 requests per
+%% second. `BurstLimit' of 30 requests per second.
 %%
-%% </li> <li> `BatchUpdateFindings' - `RateLimit' of 10 requests per second.
-%% `BurstLimit' of 30 requests per second.
+%% </li> <li> `BatchUpdateFindings' - `RateLimit' of 10 requests per
+%% second. `BurstLimit' of 30 requests per second.
 %%
-%% </li> <li> `UpdateStandardsControl' - `RateLimit' of 1 request per second,
-%% `BurstLimit' of 5 requests per second.
+%% </li> <li> `UpdateStandardsControl' - `RateLimit' of 1 request per
+%% second, `BurstLimit' of 5 requests per second.
 %%
-%% </li> <li> All other operations - `RateLimit' of 10 requests per second.
-%% `BurstLimit' of 30 requests per second.
+%% </li> <li> All other operations - `RateLimit' of 10 requests per
+%% second. `BurstLimit' of 30 requests per second.
 %%
 %% </li> </ul>
 -module(aws_securityhub).
@@ -219,11 +220,12 @@ accept_administrator_invitation(Client, Input0, Options0) ->
 %% Instead, use `AcceptAdministratorInvitation'.
 %%
 %% The Security Hub console continues to use `AcceptInvitation'. It will
-%% eventually change to use `AcceptAdministratorInvitation'. Any IAM policies
-%% that specifically control access to this function must continue to use
-%% `AcceptInvitation'. You should also add `AcceptAdministratorInvitation' to
-%% your policies to ensure that the correct permissions are in place after
-%% the console begins to use `AcceptAdministratorInvitation'.
+%% eventually change to use `AcceptAdministratorInvitation'. Any IAM
+%% policies that specifically control access to this function must continue
+%% to use `AcceptInvitation'. You should also add
+%% `AcceptAdministratorInvitation' to your policies to ensure that the
+%% correct permissions are in place after the console begins to use
+%% `AcceptAdministratorInvitation'.
 %%
 %% Accepts the invitation to be a member account and be monitored by the
 %% Security Hub administrator account that the invitation was sent from.
@@ -285,7 +287,8 @@ batch_disable_standards(Client, Input0, Options0) ->
 
 %% @doc Enables the standards specified by the provided `StandardsArn'.
 %%
-%% To obtain the ARN for a standard, use the `DescribeStandards' operation.
+%% To obtain the ARN for a standard, use the `DescribeStandards'
+%% operation.
 %%
 %% For more information, see the Security Standards section of the Security
 %% Hub User Guide.
@@ -321,22 +324,22 @@ batch_enable_standards(Client, Input0, Options0) ->
 %%
 %% <ul> <li> The Amazon Web Services account that is associated with a
 %% finding if you are using the default product ARN or are a partner sending
-%% findings from within a customer's Amazon Web Services account. In these
-%% cases, the identifier of the account that you are calling
-%% `BatchImportFindings' from needs to be the same as the `AwsAccountId'
-%% attribute for the finding.
+%% findings from within a customer's Amazon Web Services account. In
+%% these cases, the identifier of the account that you are calling
+%% `BatchImportFindings' from needs to be the same as the
+%% `AwsAccountId' attribute for the finding.
 %%
 %% </li> <li> An Amazon Web Services account that Security Hub has
 %% allow-listed for an official partner integration. In this case, you can
-%% call `BatchImportFindings' from the allow-listed account and send findings
-%% from different customer accounts in the same batch.
+%% call `BatchImportFindings' from the allow-listed account and send
+%% findings from different customer accounts in the same batch.
 %%
 %% </li> </ul> The maximum allowed size for a finding is 240 Kb. An error is
 %% returned for any finding larger than 240 Kb.
 %%
-%% After a finding is created, `BatchImportFindings' cannot be used to update
-%% the following finding fields and objects, which Security Hub customers use
-%% to manage their investigation workflow.
+%% After a finding is created, `BatchImportFindings' cannot be used to
+%% update the following finding fields and objects, which Security Hub
+%% customers use to manage their investigation workflow.
 %%
 %% <ul> <li> `Note'
 %%
@@ -346,8 +349,8 @@ batch_enable_standards(Client, Input0, Options0) ->
 %%
 %% </li> <li> `Workflow'
 %%
-%% </li> </ul> Finding providers also should not use `BatchImportFindings' to
-%% update the following attributes.
+%% </li> </ul> Finding providers also should not use
+%% `BatchImportFindings' to update the following attributes.
 %%
 %% <ul> <li> `Confidence'
 %%
@@ -390,11 +393,11 @@ batch_import_findings(Client, Input0, Options0) ->
 %% accounts can update findings for their account and their member accounts.
 %% Member accounts can update findings for their account.
 %%
-%% Updates from `BatchUpdateFindings' do not affect the value of `UpdatedAt'
-%% for a finding.
+%% Updates from `BatchUpdateFindings' do not affect the value of
+%% `UpdatedAt' for a finding.
 %%
-%% Administrator and member accounts can use `BatchUpdateFindings' to update
-%% the following finding fields and objects.
+%% Administrator and member accounts can use `BatchUpdateFindings' to
+%% update the following finding fields and objects.
 %%
 %% <ul> <li> `Confidence'
 %%
@@ -499,7 +502,8 @@ create_finding_aggregator(Client, Input0, Options0) ->
 %% An insight is a consolidation of findings that relate to a security issue
 %% that requires attention or remediation.
 %%
-%% To group the related findings in the insight, use the `GroupByAttribute'.
+%% To group the related findings in the insight, use the
+%% `GroupByAttribute'.
 create_insight(Client, Input) ->
     create_insight(Client, Input, []).
 create_insight(Client, Input0, Options0) ->
@@ -529,11 +533,11 @@ create_insight(Client, Input0, Options0) ->
 %% If you are integrated with Organizations, then the administrator account
 %% is designated by the organization management account.
 %%
-%% `CreateMembers' is always used to add accounts that are not organization
-%% members.
+%% `CreateMembers' is always used to add accounts that are not
+%% organization members.
 %%
-%% For accounts that are managed using Organizations, `CreateMembers' is only
-%% used in the following cases:
+%% For accounts that are managed using Organizations, `CreateMembers' is
+%% only used in the following cases:
 %%
 %% <ul> <li> Security Hub is not configured to automatically add new
 %% organization accounts.
@@ -541,14 +545,14 @@ create_insight(Client, Input0, Options0) ->
 %% </li> <li> The account was disassociated or deleted in Security Hub.
 %%
 %% </li> </ul> This action can only be used by an account that has Security
-%% Hub enabled. To enable Security Hub, you can use the `EnableSecurityHub'
-%% operation.
+%% Hub enabled. To enable Security Hub, you can use the
+%% `EnableSecurityHub' operation.
 %%
 %% For accounts that are not organization members, you create the account
 %% association and then send an invitation to the member account. To send the
-%% invitation, you use the `InviteMembers' operation. If the account owner
-%% accepts the invitation, the account becomes a member account in Security
-%% Hub.
+%% invitation, you use the `InviteMembers' operation. If the account
+%% owner accepts the invitation, the account becomes a member account in
+%% Security Hub.
 %%
 %% Accounts that are managed using Organizations do not receive an
 %% invitation. They automatically become a member account in Security Hub.
@@ -1045,12 +1049,13 @@ disassociate_from_administrator_account(Client, Input0, Options0) ->
 %%
 %% Instead, use `DisassociateFromAdministratorAccount'.
 %%
-%% The Security Hub console continues to use `DisassociateFromMasterAccount'.
-%% It will eventually change to use `DisassociateFromAdministratorAccount'.
-%% Any IAM policies that specifically control access to this function must
-%% continue to use `DisassociateFromMasterAccount'. You should also add
-%% `DisassociateFromAdministratorAccount' to your policies to ensure that the
-%% correct permissions are in place after the console begins to use
+%% The Security Hub console continues to use
+%% `DisassociateFromMasterAccount'. It will eventually change to use
+%% `DisassociateFromAdministratorAccount'. Any IAM policies that
+%% specifically control access to this function must continue to use
+%% `DisassociateFromMasterAccount'. You should also add
+%% `DisassociateFromAdministratorAccount' to your policies to ensure that
+%% the correct permissions are in place after the console begins to use
 %% `DisassociateFromAdministratorAccount'.
 %%
 %% Disassociates the current Security Hub member account from the associated
@@ -1169,8 +1174,8 @@ enable_organization_admin_account(Client, Input0, Options0) ->
 %% necessary to gather findings from other services that are integrated with
 %% Security Hub.
 %%
-%% When you use the `EnableSecurityHub' operation to enable Security Hub, you
-%% also automatically enable the following standards.
+%% When you use the `EnableSecurityHub' operation to enable Security Hub,
+%% you also automatically enable the following standards.
 %%
 %% <ul> <li> CIS Amazon Web Services Foundations
 %%
@@ -1284,9 +1289,9 @@ get_finding_aggregator(Client, FindingAggregatorArn, QueryMap, HeadersMap, Optio
 
 %% @doc Returns a list of findings that match the specified criteria.
 %%
-%% If finding aggregation is enabled, then when you call `GetFindings' from
-%% the aggregation Region, the results include all of the matching findings
-%% from both the aggregation Region and the linked Regions.
+%% If finding aggregation is enabled, then when you call `GetFindings'
+%% from the aggregation Region, the results include all of the matching
+%% findings from both the aggregation Region and the linked Regions.
 get_findings(Client, Input) ->
     get_findings(Client, Input, []).
 get_findings(Client, Input0, Options0) ->
@@ -1386,11 +1391,11 @@ get_invitations_count(Client, QueryMap, HeadersMap, Options0)
 %% Instead, use `GetAdministratorAccount'.
 %%
 %% The Security Hub console continues to use `GetMasterAccount'. It will
-%% eventually change to use `GetAdministratorAccount'. Any IAM policies that
-%% specifically control access to this function must continue to use
-%% `GetMasterAccount'. You should also add `GetAdministratorAccount' to your
-%% policies to ensure that the correct permissions are in place after the
-%% console begins to use `GetAdministratorAccount'.
+%% eventually change to use `GetAdministratorAccount'. Any IAM policies
+%% that specifically control access to this function must continue to use
+%% `GetMasterAccount'. You should also add `GetAdministratorAccount'
+%% to your policies to ensure that the correct permissions are in place after
+%% the console begins to use `GetAdministratorAccount'.
 %%
 %% Provides the details for the Security Hub administrator account for the
 %% current member account.
@@ -1738,8 +1743,8 @@ update_action_target(Client, ActionTargetArn, Input0, Options0) ->
 %% @doc Updates the finding aggregation configuration.
 %%
 %% Used to update the Region linking mode and the list of included or
-%% excluded Regions. You cannot use `UpdateFindingAggregator' to change the
-%% aggregation Region.
+%% excluded Regions. You cannot use `UpdateFindingAggregator' to change
+%% the aggregation Region.
 %%
 %% You must run `UpdateFindingAggregator' from the current aggregation
 %% Region.
@@ -1769,9 +1774,9 @@ update_finding_aggregator(Client, Input0, Options0) ->
 %%
 %% Instead of `UpdateFindings', use `BatchUpdateFindings'.
 %%
-%% Updates the `Note' and `RecordState' of the Security Hub-aggregated
-%% findings that the filter attributes specify. Any member account that can
-%% view the finding also sees the update to the finding.
+%% Updates the `Note' and `RecordState' of the Security
+%% Hub-aggregated findings that the filter attributes specify. Any member
+%% account that can view the finding also sees the update to the finding.
 update_findings(Client, Input) ->
     update_findings(Client, Input, []).
 update_findings(Client, Input0, Options0) ->

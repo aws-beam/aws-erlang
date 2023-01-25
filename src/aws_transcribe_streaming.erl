@@ -13,8 +13,8 @@
 %% their patient instead of taking notes. Refer to for details.
 %%
 %% </li> <li> Call Analytics transcriptions are designed for use with call
-%% center audio on two different channels; if you're looking for insight into
-%% customer service calls, use this option. Refer to for details.
+%% center audio on two different channels; if you're looking for insight
+%% into customer service calls, use this option. Refer to for details.
 %%
 %% </li> </ul>
 -module(aws_transcribe_streaming).

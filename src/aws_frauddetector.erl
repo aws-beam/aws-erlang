@@ -421,8 +421,8 @@ delete_outcome(Client, Input, Options)
 
 %% @doc Deletes the rule.
 %%
-%% You cannot delete a rule if it is used by an `ACTIVE' or `INACTIVE'
-%% detector version.
+%% You cannot delete a rule if it is used by an `ACTIVE' or
+%% `INACTIVE' detector version.
 %%
 %% When you delete a rule, Amazon Fraud Detector permanently deletes that
 %% rule and the data is no longer stored in Amazon Fraud Detector.
@@ -435,8 +435,8 @@ delete_rule(Client, Input, Options)
 
 %% @doc Deletes a variable.
 %%
-%% You can't delete variables that are included in an event type in Amazon
-%% Fraud Detector.
+%% You can't delete variables that are included in an event type in
+%% Amazon Fraud Detector.
 %%
 %% Amazon Fraud Detector automatically deletes model output variables and
 %% SageMaker model output variables when you delete the model. You can't
@@ -472,11 +472,12 @@ describe_model_versions(Client, Input, Options)
 
 %% @doc Gets all batch import jobs or a specific job of the specified ID.
 %%
-%% This is a paginated API. If you provide a null `maxResults', this action
-%% retrieves a maximum of 50 records per page. If you provide a `maxResults',
-%% the value must be between 1 and 50. To get the next page results, provide
-%% the pagination token from the `GetBatchImportJobsResponse' as part of your
-%% request. A null pagination token fetches the records from the beginning.
+%% This is a paginated API. If you provide a null `maxResults', this
+%% action retrieves a maximum of 50 records per page. If you provide a
+%% `maxResults', the value must be between 1 and 50. To get the next page
+%% results, provide the pagination token from the
+%% `GetBatchImportJobsResponse' as part of your request. A null
+%% pagination token fetches the records from the beginning.
 get_batch_import_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_batch_import_jobs(Client, Input, []).
@@ -519,11 +520,12 @@ get_detector_version(Client, Input, Options)
 %% @doc Gets all detectors or a single detector if a `detectorId' is
 %% specified.
 %%
-%% This is a paginated API. If you provide a null `maxResults', this action
-%% retrieves a maximum of 10 records per page. If you provide a `maxResults',
-%% the value must be between 5 and 10. To get the next page results, provide
-%% the pagination token from the `GetDetectorsResponse' as part of your
-%% request. A null pagination token fetches the records from the beginning.
+%% This is a paginated API. If you provide a null `maxResults', this
+%% action retrieves a maximum of 10 records per page. If you provide a
+%% `maxResults', the value must be between 5 and 10. To get the next page
+%% results, provide the pagination token from the `GetDetectorsResponse'
+%% as part of your request. A null pagination token fetches the records from
+%% the beginning.
 get_detectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_detectors(Client, Input, []).
@@ -534,11 +536,12 @@ get_detectors(Client, Input, Options)
 %% @doc Gets all entity types or a specific entity type if a name is
 %% specified.
 %%
-%% This is a paginated API. If you provide a null `maxResults', this action
-%% retrieves a maximum of 10 records per page. If you provide a `maxResults',
-%% the value must be between 5 and 10. To get the next page results, provide
-%% the pagination token from the `GetEntityTypesResponse' as part of your
-%% request. A null pagination token fetches the records from the beginning.
+%% This is a paginated API. If you provide a null `maxResults', this
+%% action retrieves a maximum of 10 records per page. If you provide a
+%% `maxResults', the value must be between 5 and 10. To get the next page
+%% results, provide the pagination token from the
+%% `GetEntityTypesResponse' as part of your request. A null pagination
+%% token fetches the records from the beginning.
 get_entity_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_entity_types(Client, Input, []).
@@ -579,11 +582,12 @@ get_event_prediction_metadata(Client, Input, Options)
 
 %% @doc Gets all event types or a specific event type if name is provided.
 %%
-%% This is a paginated API. If you provide a null `maxResults', this action
-%% retrieves a maximum of 10 records per page. If you provide a `maxResults',
-%% the value must be between 5 and 10. To get the next page results, provide
-%% the pagination token from the `GetEventTypesResponse' as part of your
-%% request. A null pagination token fetches the records from the beginning.
+%% This is a paginated API. If you provide a null `maxResults', this
+%% action retrieves a maximum of 10 records per page. If you provide a
+%% `maxResults', the value must be between 5 and 10. To get the next page
+%% results, provide the pagination token from the `GetEventTypesResponse'
+%% as part of your request. A null pagination token fetches the records from
+%% the beginning.
 get_event_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_event_types(Client, Input, []).
@@ -594,11 +598,12 @@ get_event_types(Client, Input, Options)
 %% @doc Gets the details for one or more Amazon SageMaker models that have
 %% been imported into the service.
 %%
-%% This is a paginated API. If you provide a null `maxResults', this actions
-%% retrieves a maximum of 10 records per page. If you provide a `maxResults',
-%% the value must be between 5 and 10. To get the next page results, provide
-%% the pagination token from the `GetExternalModelsResult' as part of your
-%% request. A null pagination token fetches the records from the beginning.
+%% This is a paginated API. If you provide a null `maxResults', this
+%% actions retrieves a maximum of 10 records per page. If you provide a
+%% `maxResults', the value must be between 5 and 10. To get the next page
+%% results, provide the pagination token from the
+%% `GetExternalModelsResult' as part of your request. A null pagination
+%% token fetches the records from the beginning.
 get_external_models(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_external_models(Client, Input, []).
@@ -617,11 +622,12 @@ get_kms_encryption_key(Client, Input, Options)
 
 %% @doc Gets all labels or a specific label if name is provided.
 %%
-%% This is a paginated API. If you provide a null `maxResults', this action
-%% retrieves a maximum of 50 records per page. If you provide a `maxResults',
-%% the value must be between 10 and 50. To get the next page results, provide
-%% the pagination token from the `GetGetLabelsResponse' as part of your
-%% request. A null pagination token fetches the records from the beginning.
+%% This is a paginated API. If you provide a null `maxResults', this
+%% action retrieves a maximum of 50 records per page. If you provide a
+%% `maxResults', the value must be between 10 and 50. To get the next
+%% page results, provide the pagination token from the
+%% `GetGetLabelsResponse' as part of your request. A null pagination
+%% token fetches the records from the beginning.
 get_labels(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_labels(Client, Input, []).
@@ -645,11 +651,11 @@ get_model_version(Client, Input, Options)
 %% provided. Gets a specific model if (model type, model id) tuple is
 %% specified.
 %%
-%% This is a paginated API. If you provide a null `maxResults', this action
-%% retrieves a maximum of 10 records per page. If you provide a `maxResults',
-%% the value must be between 1 and 10. To get the next page results, provide
-%% the pagination token from the response as part of your request. A null
-%% pagination token fetches the records from the beginning.
+%% This is a paginated API. If you provide a null `maxResults', this
+%% action retrieves a maximum of 10 records per page. If you provide a
+%% `maxResults', the value must be between 1 and 10. To get the next page
+%% results, provide the pagination token from the response as part of your
+%% request. A null pagination token fetches the records from the beginning.
 get_models(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_models(Client, Input, []).
@@ -659,12 +665,12 @@ get_models(Client, Input, Options)
 
 %% @doc Gets one or more outcomes.
 %%
-%% This is a paginated API. If you provide a null `maxResults', this actions
-%% retrieves a maximum of 100 records per page. If you provide a
-%% `maxResults', the value must be between 50 and 100. To get the next page
-%% results, provide the pagination token from the `GetOutcomesResult' as part
-%% of your request. A null pagination token fetches the records from the
-%% beginning.
+%% This is a paginated API. If you provide a null `maxResults', this
+%% actions retrieves a maximum of 100 records per page. If you provide a
+%% `maxResults', the value must be between 50 and 100. To get the next
+%% page results, provide the pagination token from the
+%% `GetOutcomesResult' as part of your request. A null pagination token
+%% fetches the records from the beginning.
 get_outcomes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_outcomes(Client, Input, []).
@@ -675,9 +681,9 @@ get_outcomes(Client, Input, Options)
 %% @doc Get all rules for a detector (paginated) if `ruleId' and
 %% `ruleVersion' are not specified.
 %%
-%% Gets all rules for the detector and the `ruleId' if present (paginated).
-%% Gets a specific rule if both the `ruleId' and the `ruleVersion' are
-%% specified.
+%% Gets all rules for the detector and the `ruleId' if present
+%% (paginated). Gets a specific rule if both the `ruleId' and the
+%% `ruleVersion' are specified.
 %%
 %% This is a paginated API. Providing null maxResults results in retrieving
 %% maximum of 100 records per page. If you provide maxResults the value must
@@ -713,13 +719,15 @@ get_variables(Client, Input, Options)
 %% the most recent prediction is returned.
 %%
 %% For example, the following filter lists all past predictions for `xyz'
-%% event type - `{ "eventType":{ "value": "xyz" }” } '
+%% event type - `{ &quot;eventType&quot;:{ &quot;value&quot;: &quot;xyz&quot;
+%% }” } '
 %%
-%% This is a paginated API. If you provide a null `maxResults', this action
-%% will retrieve a maximum of 10 records per page. If you provide a
-%% `maxResults', the value must be between 50 and 100. To get the next page
-%% results, provide the `nextToken' from the response as part of your
-%% request. A null `nextToken' fetches the records from the beginning.
+%% This is a paginated API. If you provide a null `maxResults', this
+%% action will retrieve a maximum of 10 records per page. If you provide a
+%% `maxResults', the value must be between 50 and 100. To get the next
+%% page results, provide the `nextToken' from the response as part of
+%% your request. A null `nextToken' fetches the records from the
+%% beginning.
 list_event_predictions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_event_predictions(Client, Input, []).
@@ -819,8 +827,8 @@ put_outcome(Client, Input, Options)
 %% @doc Stores events in Amazon Fraud Detector without generating fraud
 %% predictions for those events.
 %%
-%% For example, you can use `SendEvent' to upload a historical dataset, which
-%% you can then later use to train a model.
+%% For example, you can use `SendEvent' to upload a historical dataset,
+%% which you can then later use to train a model.
 send_event(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_event(Client, Input, []).
@@ -858,8 +866,8 @@ update_detector_version(Client, Input, Options)
 
 %% @doc Updates the detector version's description.
 %%
-%% You can update the metadata for any detector version (`DRAFT, ACTIVE,' or
-%% `INACTIVE').
+%% You can update the metadata for any detector version (`DRAFT, ACTIVE,'
+%% or `INACTIVE').
 update_detector_version_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_detector_version_metadata(Client, Input, []).
@@ -870,8 +878,8 @@ update_detector_version_metadata(Client, Input, Options)
 %% @doc Updates the detector version’s status.
 %%
 %% You can perform the following promotions or demotions using
-%% `UpdateDetectorVersionStatus': `DRAFT' to `ACTIVE', `ACTIVE' to
-%% `INACTIVE', and `INACTIVE' to `ACTIVE'.
+%% `UpdateDetectorVersionStatus': `DRAFT' to `ACTIVE',
+%% `ACTIVE' to `INACTIVE', and `INACTIVE' to `ACTIVE'.
 update_detector_version_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_detector_version_status(Client, Input, []).

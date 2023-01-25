@@ -13,8 +13,8 @@
 %% details.
 %%
 %% </li> <li> Call Analytics transcriptions are designed for use with call
-%% center audio on two different channels; if you're looking for insight into
-%% customer service calls, use this option. Refer to for details.
+%% center audio on two different channels; if you're looking for insight
+%% into customer service calls, use this option. Refer to for details.
 %%
 %% </li> </ul>
 -module(aws_transcribe).
@@ -240,7 +240,8 @@ delete_call_analytics_job(Client, Input, Options)
 %% @doc Deletes a custom language model.
 %%
 %% To use this operation, specify the name of the language model you want to
-%% delete using `ModelName'. custom language model names are case sensitive.
+%% delete using `ModelName'. custom language model names are case
+%% sensitive.
 delete_language_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_language_model(Client, Input, []).
@@ -297,8 +298,8 @@ delete_vocabulary(Client, Input, Options)
 %% @doc Deletes a custom vocabulary filter.
 %%
 %% To use this operation, specify the name of the custom vocabulary filter
-%% you want to delete using `VocabularyFilterName'. Custom vocabulary filter
-%% names are case sensitive.
+%% you want to delete using `VocabularyFilterName'. Custom vocabulary
+%% filter names are case sensitive.
 delete_vocabulary_filter(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_vocabulary_filter(Client, Input, []).
@@ -313,9 +314,9 @@ delete_vocabulary_filter(Client, Input, Options)
 %% has updated the base model, you can create a new custom language model
 %% using the updated base model.
 %%
-%% If you tried to create a new custom language model and the request wasn't
-%% successful, you can use `DescribeLanguageModel' to help identify the
-%% reason for this failure.
+%% If you tried to create a new custom language model and the request
+%% wasn't successful, you can use `DescribeLanguageModel' to help
+%% identify the reason for this failure.
 describe_language_model(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_language_model(Client, Input, []).
@@ -335,18 +336,19 @@ get_call_analytics_category(Client, Input, Options)
 
 %% @doc Provides information about the specified Call Analytics job.
 %%
-%% To view the job's status, refer to `CallAnalyticsJobStatus'. If the status
-%% is `COMPLETED', the job is finished. You can find your completed
-%% transcript at the URI specified in `TranscriptFileUri'. If the status is
-%% `FAILED', `FailureReason' provides details on why your transcription job
-%% failed.
+%% To view the job's status, refer to `CallAnalyticsJobStatus'. If
+%% the status is `COMPLETED', the job is finished. You can find your
+%% completed transcript at the URI specified in `TranscriptFileUri'. If
+%% the status is `FAILED', `FailureReason' provides details on why
+%% your transcription job failed.
 %%
 %% If you enabled personally identifiable information (PII) redaction, the
 %% redacted transcript appears at the location specified in
 %% `RedactedTranscriptFileUri'.
 %%
 %% If you chose to redact the audio in your media file, you can find your
-%% redacted media file at the location specified in `RedactedMediaFileUri'.
+%% redacted media file at the location specified in
+%% `RedactedMediaFileUri'.
 %%
 %% To get a list of your Call Analytics jobs, use the operation.
 get_call_analytics_job(Client, Input)
@@ -359,10 +361,10 @@ get_call_analytics_job(Client, Input, Options)
 %% @doc Provides information about the specified medical transcription job.
 %%
 %% To view the status of the specified medical transcription job, check the
-%% `TranscriptionJobStatus' field. If the status is `COMPLETED', the job is
-%% finished. You can find the results at the location specified in
-%% `TranscriptFileUri'. If the status is `FAILED', `FailureReason' provides
-%% details on why your transcription job failed.
+%% `TranscriptionJobStatus' field. If the status is `COMPLETED', the
+%% job is finished. You can find the results at the location specified in
+%% `TranscriptFileUri'. If the status is `FAILED',
+%% `FailureReason' provides details on why your transcription job failed.
 %%
 %% To get a list of your medical transcription jobs, use the operation.
 get_medical_transcription_job(Client, Input)
@@ -375,9 +377,9 @@ get_medical_transcription_job(Client, Input, Options)
 %% @doc Provides information about the specified custom medical vocabulary.
 %%
 %% To view the status of the specified custom medical vocabulary, check the
-%% `VocabularyState' field. If the status is `READY', your custom vocabulary
-%% is available to use. If the status is `FAILED', `FailureReason' provides
-%% details on why your vocabulary failed.
+%% `VocabularyState' field. If the status is `READY', your custom
+%% vocabulary is available to use. If the status is `FAILED',
+%% `FailureReason' provides details on why your vocabulary failed.
 %%
 %% To get a list of your custom medical vocabularies, use the operation.
 get_medical_vocabulary(Client, Input)
@@ -390,10 +392,10 @@ get_medical_vocabulary(Client, Input, Options)
 %% @doc Provides information about the specified transcription job.
 %%
 %% To view the status of the specified transcription job, check the
-%% `TranscriptionJobStatus' field. If the status is `COMPLETED', the job is
-%% finished. You can find the results at the location specified in
-%% `TranscriptFileUri'. If the status is `FAILED', `FailureReason' provides
-%% details on why your transcription job failed.
+%% `TranscriptionJobStatus' field. If the status is `COMPLETED', the
+%% job is finished. You can find the results at the location specified in
+%% `TranscriptFileUri'. If the status is `FAILED',
+%% `FailureReason' provides details on why your transcription job failed.
 %%
 %% If you enabled content redaction, the redacted transcript can be found at
 %% the location specified in `RedactedTranscriptFileUri'.
@@ -409,9 +411,9 @@ get_transcription_job(Client, Input, Options)
 %% @doc Provides information about the specified custom vocabulary.
 %%
 %% To view the status of the specified custom vocabulary, check the
-%% `VocabularyState' field. If the status is `READY', your custom vocabulary
-%% is available to use. If the status is `FAILED', `FailureReason' provides
-%% details on why your custom vocabulary failed.
+%% `VocabularyState' field. If the status is `READY', your custom
+%% vocabulary is available to use. If the status is `FAILED',
+%% `FailureReason' provides details on why your custom vocabulary failed.
 %%
 %% To get a list of your custom vocabularies, use the operation.
 get_vocabulary(Client, Input)
@@ -575,28 +577,30 @@ list_vocabulary_filters(Client, Input, Options)
 %% media file into an Amazon S3 bucket; you can then specify the Amazon S3
 %% location of the file using the `Media' parameter.
 %%
-%% You must include the following parameters in your `StartCallAnalyticsJob'
-%% request:
+%% You must include the following parameters in your
+%% `StartCallAnalyticsJob' request:
 %%
-%% <ul> <li> `region': The Amazon Web Services Region where you are making
-%% your request. For a list of Amazon Web Services Regions supported with
-%% Amazon Transcribe, refer to Amazon Transcribe endpoints and quotas.
+%% <ul> <li> `region': The Amazon Web Services Region where you are
+%% making your request. For a list of Amazon Web Services Regions supported
+%% with Amazon Transcribe, refer to Amazon Transcribe endpoints and quotas.
 %%
-%% </li> <li> `CallAnalyticsJobName': A custom name that you create for your
-%% transcription job that's unique within your Amazon Web Services account.
+%% </li> <li> `CallAnalyticsJobName': A custom name that you create for
+%% your transcription job that's unique within your Amazon Web Services
+%% account.
 %%
-%% </li> <li> `DataAccessRoleArn': The Amazon Resource Name (ARN) of an IAM
-%% role that has permissions to access the Amazon S3 bucket that contains
+%% </li> <li> `DataAccessRoleArn': The Amazon Resource Name (ARN) of an
+%% IAM role that has permissions to access the Amazon S3 bucket that contains
 %% your input files.
 %%
-%% </li> <li> `Media' (`MediaFileUri' or `RedactedMediaFileUri'): The Amazon
-%% S3 location of your media file.
+%% </li> <li> `Media' (`MediaFileUri' or `RedactedMediaFileUri'):
+%% The Amazon S3 location of your media file.
 %%
 %% </li> </ul> With Call Analytics, you can redact the audio contained in
 %% your media file by including `RedactedMediaFileUri', instead of
-%% `MediaFileUri', to specify the location of your input audio. If you choose
-%% to redact your audio, you can find your redacted media at the location
-%% specified in the `RedactedMediaFileUri' field of your response.
+%% `MediaFileUri', to specify the location of your input audio. If you
+%% choose to redact your audio, you can find your redacted media at the
+%% location specified in the `RedactedMediaFileUri' field of your
+%% response.
 start_call_analytics_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_call_analytics_job(Client, Input, []).
@@ -614,29 +618,29 @@ start_call_analytics_job(Client, Input, Options)
 %% (PHI). To learn more about these features, refer to How Amazon Transcribe
 %% Medical works.
 %%
-%% To make a `StartMedicalTranscriptionJob' request, you must first upload
-%% your media file into an Amazon S3 bucket; you can then specify the S3
-%% location of the file using the `Media' parameter.
+%% To make a `StartMedicalTranscriptionJob' request, you must first
+%% upload your media file into an Amazon S3 bucket; you can then specify the
+%% S3 location of the file using the `Media' parameter.
 %%
 %% You must include the following parameters in your
 %% `StartMedicalTranscriptionJob' request:
 %%
-%% <ul> <li> `region': The Amazon Web Services Region where you are making
-%% your request. For a list of Amazon Web Services Regions supported with
-%% Amazon Transcribe, refer to Amazon Transcribe endpoints and quotas.
+%% <ul> <li> `region': The Amazon Web Services Region where you are
+%% making your request. For a list of Amazon Web Services Regions supported
+%% with Amazon Transcribe, refer to Amazon Transcribe endpoints and quotas.
 %%
 %% </li> <li> `MedicalTranscriptionJobName': A custom name you create for
 %% your transcription job that is unique within your Amazon Web Services
 %% account.
 %%
-%% </li> <li> `Media' (`MediaFileUri'): The Amazon S3 location of your media
-%% file.
+%% </li> <li> `Media' (`MediaFileUri'): The Amazon S3 location of
+%% your media file.
 %%
 %% </li> <li> `LanguageCode': This must be `en-US'.
 %%
-%% </li> <li> `OutputBucketName': The Amazon S3 bucket where you want your
-%% transcript stored. If you want your output stored in a sub-folder of this
-%% bucket, you must also include `OutputKey'.
+%% </li> <li> `OutputBucketName': The Amazon S3 bucket where you want
+%% your transcript stored. If you want your output stored in a sub-folder of
+%% this bucket, you must also include `OutputKey'.
 %%
 %% </li> <li> `Specialty': This must be `PRIMARYCARE'.
 %%
@@ -658,25 +662,25 @@ start_medical_transcription_job(Client, Input, Options)
 %% media file into an Amazon S3 bucket; you can then specify the Amazon S3
 %% location of the file using the `Media' parameter.
 %%
-%% You must include the following parameters in your `StartTranscriptionJob'
-%% request:
+%% You must include the following parameters in your
+%% `StartTranscriptionJob' request:
 %%
-%% <ul> <li> `region': The Amazon Web Services Region where you are making
-%% your request. For a list of Amazon Web Services Regions supported with
-%% Amazon Transcribe, refer to Amazon Transcribe endpoints and quotas.
+%% <ul> <li> `region': The Amazon Web Services Region where you are
+%% making your request. For a list of Amazon Web Services Regions supported
+%% with Amazon Transcribe, refer to Amazon Transcribe endpoints and quotas.
 %%
 %% </li> <li> `TranscriptionJobName': A custom name you create for your
 %% transcription job that is unique within your Amazon Web Services account.
 %%
-%% </li> <li> `Media' (`MediaFileUri'): The Amazon S3 location of your media
-%% file.
+%% </li> <li> `Media' (`MediaFileUri'): The Amazon S3 location of
+%% your media file.
 %%
 %% </li> <li> One of `LanguageCode', `IdentifyLanguage', or
-%% `IdentifyMultipleLanguages': If you know the language of your media file,
-%% specify it using the `LanguageCode' parameter; you can find all valid
-%% language codes in the Supported languages table. If you don't know the
-%% languages spoken in your media, use either `IdentifyLanguage' or
-%% `IdentifyMultipleLanguages' and let Amazon Transcribe identify the
+%% `IdentifyMultipleLanguages': If you know the language of your media
+%% file, specify it using the `LanguageCode' parameter; you can find all
+%% valid language codes in the Supported languages table. If you don't
+%% know the languages spoken in your media, use either `IdentifyLanguage'
+%% or `IdentifyMultipleLanguages' and let Amazon Transcribe identify the
 %% languages for you.
 %%
 %% </li> </ul>

@@ -100,9 +100,9 @@
 %% Guide.
 %%
 %% `AddPermission' generates a policy for you. You can use `
-%% `SetQueueAttributes' ' to upload your policy. For more information, see
-%% Using Custom Policies with the Amazon SQS Access Policy Language in the
-%% Amazon SQS Developer Guide.
+%% `SetQueueAttributes' ' to upload your policy. For more
+%% information, see Using Custom Policies with the Amazon SQS Access Policy
+%% Language in the Amazon SQS Developer Guide.
 %%
 %% An Amazon SQS policy can have a maximum of 7 actions.
 %%
@@ -111,12 +111,12 @@
 %% `SetQueueAttributes' actions in your IAM policy.
 %%
 %% Some actions take lists of parameters. These lists are specified using the
-%% `param.n' notation. Values of `n' are integers starting from 1. For
-%% example, a parameter list with two elements looks like this:
+%% `param.n' notation. Values of `n' are integers starting from 1.
+%% For example, a parameter list with two elements looks like this:
 %%
-%% `&AttributeName.1=first'
+%% `&amp;AttributeName.1=first'
 %%
-%% `&AttributeName.2=second'
+%% `&amp;AttributeName.2=second'
 %%
 %% Cross-account permissions don't apply to this action. For more
 %% information, see Grant cross-account permissions to a role and a user name
@@ -136,10 +136,11 @@ add_permission(Client, Input, Options)
 %% Timeout in the Amazon SQS Developer Guide.
 %%
 %% For example, you have a message with a visibility timeout of 5 minutes.
-%% After 3 minutes, you call `ChangeMessageVisibility' with a timeout of 10
-%% minutes. You can continue to call `ChangeMessageVisibility' to extend the
-%% visibility timeout to the maximum allowed time. If you try to extend the
-%% visibility timeout beyond the maximum, your request is rejected.
+%% After 3 minutes, you call `ChangeMessageVisibility' with a timeout of
+%% 10 minutes. You can continue to call `ChangeMessageVisibility' to
+%% extend the visibility timeout to the maximum allowed time. If you try to
+%% extend the visibility timeout beyond the maximum, your request is
+%% rejected.
 %%
 %% An Amazon SQS message has three basic states:
 %%
@@ -163,27 +164,28 @@ add_permission(Client, Input, Options)
 %% For most standard queues (depending on queue traffic and message backlog),
 %% there can be a maximum of approximately 120,000 inflight messages
 %% (received from a queue by a consumer, but not yet deleted from the queue).
-%% If you reach this limit, Amazon SQS returns the `OverLimit' error message.
-%% To avoid reaching the limit, you should delete messages from the queue
-%% after they're processed. You can also increase the number of queues you
-%% use to process your messages. To request a limit increase, file a support
-%% request.
+%% If you reach this limit, Amazon SQS returns the `OverLimit' error
+%% message. To avoid reaching the limit, you should delete messages from the
+%% queue after they're processed. You can also increase the number of
+%% queues you use to process your messages. To request a limit increase, file
+%% a support request.
 %%
 %% For FIFO queues, there can be a maximum of 20,000 inflight messages
 %% (received from a queue by a consumer, but not yet deleted from the queue).
 %% If you reach this limit, Amazon SQS returns no error messages.
 %%
-%% If you attempt to set the `VisibilityTimeout' to a value greater than the
-%% maximum time left, Amazon SQS returns an error. Amazon SQS doesn't
+%% If you attempt to set the `VisibilityTimeout' to a value greater than
+%% the maximum time left, Amazon SQS returns an error. Amazon SQS doesn't
 %% automatically recalculate and increase the timeout to the maximum
 %% remaining time.
 %%
 %% Unlike with a queue, when you change the visibility timeout for a specific
-%% message the timeout value is applied immediately but isn't saved in memory
-%% for that message. If you don't delete a message after it is received, the
-%% visibility timeout for the message reverts to the original timeout value
-%% (not to the value you set using the `ChangeMessageVisibility' action) the
-%% next time the message is received.
+%% message the timeout value is applied immediately but isn't saved in
+%% memory for that message. If you don't delete a message after it is
+%% received, the visibility timeout for the message reverts to the original
+%% timeout value (not to the value you set using the
+%% `ChangeMessageVisibility' action) the next time the message is
+%% received.
 change_message_visibility(Client, Input)
   when is_map(Client), is_map(Input) ->
     change_message_visibility(Client, Input, []).
@@ -193,22 +195,22 @@ change_message_visibility(Client, Input, Options)
 
 %% @doc Changes the visibility timeout of multiple messages.
 %%
-%% This is a batch version of ` `ChangeMessageVisibility'.' The result of the
-%% action on each message is reported individually in the response. You can
-%% send up to 10 ` `ChangeMessageVisibility' ' requests with each
-%% `ChangeMessageVisibilityBatch' action.
+%% This is a batch version of ` `ChangeMessageVisibility'.' The
+%% result of the action on each message is reported individually in the
+%% response. You can send up to 10 ` `ChangeMessageVisibility' '
+%% requests with each `ChangeMessageVisibilityBatch' action.
 %%
 %% Because the batch request can result in a combination of successful and
 %% unsuccessful actions, you should check for batch errors even when the call
 %% returns an HTTP status code of `200'.
 %%
 %% Some actions take lists of parameters. These lists are specified using the
-%% `param.n' notation. Values of `n' are integers starting from 1. For
-%% example, a parameter list with two elements looks like this:
+%% `param.n' notation. Values of `n' are integers starting from 1.
+%% For example, a parameter list with two elements looks like this:
 %%
-%% `&AttributeName.1=first'
+%% `&amp;AttributeName.1=first'
 %%
-%% `&AttributeName.2=second'
+%% `&amp;AttributeName.2=second'
 change_message_visibility_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     change_message_visibility_batch(Client, Input, []).
@@ -221,14 +223,15 @@ change_message_visibility_batch(Client, Input, Options)
 %% You can pass one or more attributes in the request. Keep the following in
 %% mind:
 %%
-%% <ul> <li> If you don't specify the `FifoQueue' attribute, Amazon SQS
-%% creates a standard queue.
+%% <ul> <li> If you don't specify the `FifoQueue' attribute, Amazon
+%% SQS creates a standard queue.
 %%
-%% You can't change the queue type after you create it and you can't convert
-%% an existing standard queue into a FIFO queue. You must either create a new
-%% FIFO queue for your application or delete your existing standard queue and
-%% recreate it as a FIFO queue. For more information, see Moving From a
-%% Standard Queue to a FIFO Queue in the Amazon SQS Developer Guide.
+%% You can't change the queue type after you create it and you can't
+%% convert an existing standard queue into a FIFO queue. You must either
+%% create a new FIFO queue for your application or delete your existing
+%% standard queue and recreate it as a FIFO queue. For more information, see
+%% Moving From a Standard Queue to a FIFO Queue in the Amazon SQS Developer
+%% Guide.
 %%
 %% </li> <li> If you don't provide a value for an attribute, the queue is
 %% created with the default value for the attribute.
@@ -243,24 +246,25 @@ change_message_visibility_batch(Client, Input, Options)
 %% After you create a queue, you must wait at least one second after the
 %% queue is created to be able to use the queue.
 %%
-%% To get the queue URL, use the ` `GetQueueUrl' ' action. ` `GetQueueUrl' '
-%% requires only the `QueueName' parameter. be aware of existing queue names:
+%% To get the queue URL, use the ` `GetQueueUrl' ' action. `
+%% `GetQueueUrl' ' requires only the `QueueName' parameter. be
+%% aware of existing queue names:
 %%
 %% <ul> <li> If you provide the name of an existing queue along with the
-%% exact names and values of all the queue's attributes, `CreateQueue'
-%% returns the queue URL for the existing queue.
+%% exact names and values of all the queue's attributes,
+%% `CreateQueue' returns the queue URL for the existing queue.
 %%
-%% </li> <li> If the queue name, attribute names, or attribute values don't
-%% match an existing queue, `CreateQueue' returns an error.
+%% </li> <li> If the queue name, attribute names, or attribute values
+%% don't match an existing queue, `CreateQueue' returns an error.
 %%
 %% </li> </ul> Some actions take lists of parameters. These lists are
 %% specified using the `param.n' notation. Values of `n' are integers
 %% starting from 1. For example, a parameter list with two elements looks
 %% like this:
 %%
-%% `&AttributeName.1=first'
+%% `&amp;AttributeName.1=first'
 %%
-%% `&AttributeName.2=second'
+%% `&amp;AttributeName.2=second'
 %%
 %% Cross-account permissions don't apply to this action. For more
 %% information, see Grant cross-account permissions to a role and a user name
@@ -274,19 +278,19 @@ create_queue(Client, Input, Options)
 
 %% @doc Deletes the specified message from the specified queue.
 %%
-%% To select the message to delete, use the `ReceiptHandle' of the message
-%% (not the `MessageId' which you receive when you send the message). Amazon
-%% SQS can delete a message from a queue even if a visibility timeout setting
-%% causes the message to be locked by another consumer. Amazon SQS
-%% automatically deletes messages left in a queue longer than the retention
-%% period configured for the queue.
+%% To select the message to delete, use the `ReceiptHandle' of the
+%% message (not the `MessageId' which you receive when you send the
+%% message). Amazon SQS can delete a message from a queue even if a
+%% visibility timeout setting causes the message to be locked by another
+%% consumer. Amazon SQS automatically deletes messages left in a queue longer
+%% than the retention period configured for the queue.
 %%
-%% The `ReceiptHandle' is associated with a specific instance of receiving a
-%% message. If you receive a message more than once, the `ReceiptHandle' is
-%% different each time you receive a message. When you use the
-%% `DeleteMessage' action, you must provide the most recently received
-%% `ReceiptHandle' for the message (otherwise, the request succeeds, but the
-%% message might not be deleted).
+%% The `ReceiptHandle' is associated with a specific instance of
+%% receiving a message. If you receive a message more than once, the
+%% `ReceiptHandle' is different each time you receive a message. When you
+%% use the `DeleteMessage' action, you must provide the most recently
+%% received `ReceiptHandle' for the message (otherwise, the request
+%% succeeds, but the message might not be deleted).
 %%
 %% For standard queues, it is possible to receive a message even after you
 %% delete it. This might happen on rare occasions if one of the servers which
@@ -304,20 +308,20 @@ delete_message(Client, Input, Options)
 
 %% @doc Deletes up to ten messages from the specified queue.
 %%
-%% This is a batch version of ` `DeleteMessage'.' The result of the action on
-%% each message is reported individually in the response.
+%% This is a batch version of ` `DeleteMessage'.' The result of the
+%% action on each message is reported individually in the response.
 %%
 %% Because the batch request can result in a combination of successful and
 %% unsuccessful actions, you should check for batch errors even when the call
 %% returns an HTTP status code of `200'.
 %%
 %% Some actions take lists of parameters. These lists are specified using the
-%% `param.n' notation. Values of `n' are integers starting from 1. For
-%% example, a parameter list with two elements looks like this:
+%% `param.n' notation. Values of `n' are integers starting from 1.
+%% For example, a parameter list with two elements looks like this:
 %%
-%% `&AttributeName.1=first'
+%% `&amp;AttributeName.1=first'
 %%
-%% `&AttributeName.2=second'
+%% `&amp;AttributeName.2=second'
 delete_message_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_message_batch(Client, Input, []).
@@ -333,8 +337,8 @@ delete_message_batch(Client, Input, Options)
 %%
 %% When you delete a queue, the deletion process takes up to 60 seconds.
 %% Requests you send involving that queue during the 60 seconds might
-%% succeed. For example, a ` `SendMessage' ' request might succeed, but after
-%% 60 seconds the queue and the message you sent no longer exist.
+%% succeed. For example, a ` `SendMessage' ' request might succeed,
+%% but after 60 seconds the queue and the message you sent no longer exist.
 %%
 %% When you delete a queue, you must wait at least 60 seconds before creating
 %% a queue with the same name.
@@ -351,8 +355,8 @@ delete_queue(Client, Input, Options)
 
 %% @doc Gets attributes for the specified queue.
 %%
-%% To determine whether a queue is FIFO, you can check whether `QueueName'
-%% ends with the `.fifo' suffix.
+%% To determine whether a queue is FIFO, you can check whether
+%% `QueueName' ends with the `.fifo' suffix.
 get_queue_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_queue_attributes(Client, Input, []).
@@ -364,10 +368,10 @@ get_queue_attributes(Client, Input, Options)
 %%
 %% To access a queue that belongs to another AWS account, use the
 %% `QueueOwnerAWSAccountId' parameter to specify the account ID of the
-%% queue's owner. The queue's owner must grant you permission to access the
-%% queue. For more information about shared queue access, see `
-%% `AddPermission' ' or see Allow Developers to Write Messages to a Shared
-%% Queue in the Amazon SQS Developer Guide.
+%% queue's owner. The queue's owner must grant you permission to
+%% access the queue. For more information about shared queue access, see `
+%% `AddPermission' ' or see Allow Developers to Write Messages to a
+%% Shared Queue in the Amazon SQS Developer Guide.
 get_queue_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_queue_url(Client, Input, []).
@@ -380,11 +384,12 @@ get_queue_url(Client, Input, Options)
 %%
 %% The `ListDeadLetterSourceQueues' methods supports pagination. Set
 %% parameter `MaxResults' in the request to specify the maximum number of
-%% results to be returned in the response. If you do not set `MaxResults',
-%% the response includes a maximum of 1,000 results. If you set `MaxResults'
-%% and there are additional results to display, the response includes a value
-%% for `NextToken'. Use `NextToken' as a parameter in your next request to
-%% `ListDeadLetterSourceQueues' to receive the next page of results.
+%% results to be returned in the response. If you do not set
+%% `MaxResults', the response includes a maximum of 1,000 results. If you
+%% set `MaxResults' and there are additional results to display, the
+%% response includes a value for `NextToken'. Use `NextToken' as a
+%% parameter in your next request to `ListDeadLetterSourceQueues' to
+%% receive the next page of results.
 %%
 %% For more information about using dead-letter queues, see Using Amazon SQS
 %% Dead-Letter Queues in the Amazon SQS Developer Guide.
@@ -414,16 +419,16 @@ list_queue_tags(Client, Input, Options)
 %% @doc Returns a list of your queues in the current region.
 %%
 %% The response includes a maximum of 1,000 results. If you specify a value
-%% for the optional `QueueNamePrefix' parameter, only queues with a name that
-%% begins with the specified value are returned.
+%% for the optional `QueueNamePrefix' parameter, only queues with a name
+%% that begins with the specified value are returned.
 %%
-%% The `listQueues' methods supports pagination. Set parameter `MaxResults'
-%% in the request to specify the maximum number of results to be returned in
-%% the response. If you do not set `MaxResults', the response includes a
-%% maximum of 1,000 results. If you set `MaxResults' and there are additional
-%% results to display, the response includes a value for `NextToken'. Use
-%% `NextToken' as a parameter in your next request to `listQueues' to receive
-%% the next page of results.
+%% The `listQueues' methods supports pagination. Set parameter
+%% `MaxResults' in the request to specify the maximum number of results
+%% to be returned in the response. If you do not set `MaxResults', the
+%% response includes a maximum of 1,000 results. If you set `MaxResults'
+%% and there are additional results to display, the response includes a value
+%% for `NextToken'. Use `NextToken' as a parameter in your next
+%% request to `listQueues' to receive the next page of results.
 %%
 %% Cross-account permissions don't apply to this action. For more
 %% information, see Grant cross-account permissions to a role and a user name
@@ -438,17 +443,17 @@ list_queues(Client, Input, Options)
 %% @doc Deletes the messages in a queue specified by the `QueueURL'
 %% parameter.
 %%
-%% When you use the `PurgeQueue' action, you can't retrieve any messages
-%% deleted from a queue.
+%% When you use the `PurgeQueue' action, you can't retrieve any
+%% messages deleted from a queue.
 %%
 %% The message deletion process takes up to 60 seconds. We recommend waiting
 %% for 60 seconds regardless of your queue's size.
 %%
-%% Messages sent to the queue before you call `PurgeQueue' might be received
-%% but are deleted within the next minute.
+%% Messages sent to the queue before you call `PurgeQueue' might be
+%% received but are deleted within the next minute.
 %%
-%% Messages sent to the queue after you call `PurgeQueue' might be deleted
-%% while the queue is being purged.
+%% Messages sent to the queue after you call `PurgeQueue' might be
+%% deleted while the queue is being purged.
 purge_queue(Client, Input)
   when is_map(Client), is_map(Input) ->
     purge_queue(Client, Input, []).
@@ -458,8 +463,8 @@ purge_queue(Client, Input, Options)
 
 %% @doc Retrieves one or more messages (up to 10), from the specified queue.
 %%
-%% Using the `WaitTimeSeconds' parameter enables long-poll support. For more
-%% information, see Amazon SQS Long Polling in the Amazon SQS Developer
+%% Using the `WaitTimeSeconds' parameter enables long-poll support. For
+%% more information, see Amazon SQS Long Polling in the Amazon SQS Developer
 %% Guide.
 %%
 %% Short poll is the default behavior where a weighted random set of machines
@@ -468,7 +473,8 @@ purge_queue(Client, Input, Options)
 %% small (fewer than 1,000), you most likely get fewer messages than you
 %% requested per `ReceiveMessage' call. If the number of messages in the
 %% queue is extremely small, you might not receive any messages in a
-%% particular `ReceiveMessage' response. If this happens, repeat the request.
+%% particular `ReceiveMessage' response. If this happens, repeat the
+%% request.
 %%
 %% For each message returned, the response includes the following:
 %%
@@ -477,8 +483,8 @@ purge_queue(Client, Input, Options)
 %% </li> <li> An MD5 digest of the message body. For information about MD5,
 %% see RFC1321.
 %%
-%% </li> <li> The `MessageId' you received when you sent the message to the
-%% queue.
+%% </li> <li> The `MessageId' you received when you sent the message to
+%% the queue.
 %%
 %% </li> <li> The receipt handle.
 %%
@@ -496,8 +502,8 @@ purge_queue(Client, Input, Options)
 %% timeout for the queue is used for the returned messages. For more
 %% information, see Visibility Timeout in the Amazon SQS Developer Guide.
 %%
-%% A message that isn't deleted or a message whose visibility isn't extended
-%% before the visibility timeout expires counts as a failed receive.
+%% A message that isn't deleted or a message whose visibility isn't
+%% extended before the visibility timeout expires counts as a failed receive.
 %% Depending on the configuration of the queue, the message might be sent to
 %% the dead-letter queue.
 %%
@@ -535,8 +541,8 @@ remove_permission(Client, Input, Options)
 %% A message can include only XML, JSON, and unformatted text. The following
 %% Unicode characters are allowed:
 %%
-%% `#x9' | `#xA' | `#xD' | `#x20' to `#xD7FF' | `#xE000' to `#xFFFD' |
-%% `#x10000' to `#x10FFFF'
+%% `#x9' | `#xA' | `#xD' | `#x20' to `#xD7FF' |
+%% `#xE000' to `#xFFFD' | `#x10000' to `#x10FFFF'
 %%
 %% Any characters not included in this list will be rejected. For more
 %% information, see the W3C specification for characters.
@@ -549,8 +555,9 @@ send_message(Client, Input, Options)
 
 %% @doc Delivers up to ten messages to the specified queue.
 %%
-%% This is a batch version of ` `SendMessage'.' For a FIFO queue, multiple
-%% messages within a single batch are enqueued in the order they are sent.
+%% This is a batch version of ` `SendMessage'.' For a FIFO queue,
+%% multiple messages within a single batch are enqueued in the order they are
+%% sent.
 %%
 %% The result of sending each message is reported individually in the
 %% response. Because the batch request can result in a combination of
@@ -564,22 +571,22 @@ send_message(Client, Input, Options)
 %% A message can include only XML, JSON, and unformatted text. The following
 %% Unicode characters are allowed:
 %%
-%% `#x9' | `#xA' | `#xD' | `#x20' to `#xD7FF' | `#xE000' to `#xFFFD' |
-%% `#x10000' to `#x10FFFF'
+%% `#x9' | `#xA' | `#xD' | `#x20' to `#xD7FF' |
+%% `#xE000' to `#xFFFD' | `#x10000' to `#x10FFFF'
 %%
 %% Any characters not included in this list will be rejected. For more
 %% information, see the W3C specification for characters.
 %%
-%% If you don't specify the `DelaySeconds' parameter for an entry, Amazon SQS
-%% uses the default value for the queue.
+%% If you don't specify the `DelaySeconds' parameter for an entry,
+%% Amazon SQS uses the default value for the queue.
 %%
 %% Some actions take lists of parameters. These lists are specified using the
-%% `param.n' notation. Values of `n' are integers starting from 1. For
-%% example, a parameter list with two elements looks like this:
+%% `param.n' notation. Values of `n' are integers starting from 1.
+%% For example, a parameter list with two elements looks like this:
 %%
-%% `&AttributeName.1=first'
+%% `&amp;AttributeName.1=first'
 %%
-%% `&AttributeName.2=second'
+%% `&amp;AttributeName.2=second'
 send_message_batch(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_message_batch(Client, Input, []).
@@ -589,10 +596,10 @@ send_message_batch(Client, Input, Options)
 
 %% @doc Sets the value of one or more queue attributes.
 %%
-%% When you change a queue's attributes, the change can take up to 60 seconds
-%% for most of the attributes to propagate throughout the Amazon SQS system.
-%% Changes made to the `MessageRetentionPeriod' attribute can take up to 15
-%% minutes.
+%% When you change a queue's attributes, the change can take up to 60
+%% seconds for most of the attributes to propagate throughout the Amazon SQS
+%% system. Changes made to the `MessageRetentionPeriod' attribute can
+%% take up to 15 minutes.
 %%
 %% In the future, new attributes might be added. If you write code that calls
 %% this action, we recommend that you structure your code so that it can

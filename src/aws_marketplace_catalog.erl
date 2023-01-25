@@ -41,9 +41,9 @@
 
 %% @doc Used to cancel an open change request.
 %%
-%% Must be sent before the status of the request changes to `APPLYING', the
-%% final stage of completing your change request. You can describe a change
-%% during the 60-day request history retention period for API calls.
+%% Must be sent before the status of the request changes to `APPLYING',
+%% the final stage of completing your change request. You can describe a
+%% change during the 60-day request history retention period for API calls.
 cancel_change_set(Client, Input) ->
     cancel_change_set(Client, Input, []).
 cancel_change_set(Client, Input0, Options0) ->
@@ -128,8 +128,8 @@ describe_entity(Client, Catalog, EntityId, QueryMap, HeadersMap, Options0)
 %% make the call.
 %%
 %% You can filter this list by providing any combination of `entityId',
-%% `ChangeSetName', and status. If you provide more than one filter, the API
-%% operation applies a logical AND between the filters.
+%% `ChangeSetName', and status. If you provide more than one filter, the
+%% API operation applies a logical AND between the filters.
 %%
 %% You can describe a change during the 60-day request history retention
 %% period for API calls.
@@ -204,17 +204,18 @@ list_tags_for_resource(Client, Input0, Options0) ->
 
 %% @doc Allows you to request changes for your entities.
 %%
-%% Within a single `ChangeSet', you can't start the same change type against
-%% the same entity multiple times. Additionally, when a `ChangeSet' is
-%% running, all the entities targeted by the different changes are locked
-%% until the change set has completed (either succeeded, cancelled, or
-%% failed). If you try to start a change set containing a change against an
-%% entity that is already locked, you will receive a `ResourceInUseException'
-%% error.
+%% Within a single `ChangeSet', you can't start the same change type
+%% against the same entity multiple times. Additionally, when a
+%% `ChangeSet' is running, all the entities targeted by the different
+%% changes are locked until the change set has completed (either succeeded,
+%% cancelled, or failed). If you try to start a change set containing a
+%% change against an entity that is already locked, you will receive a
+%% `ResourceInUseException' error.
 %%
-%% For example, you can't start the `ChangeSet' described in the example
-%% later in this topic because it contains two changes to run the same change
-%% type (`AddRevisions') against the same entity (`entity-id@1').
+%% For example, you can't start the `ChangeSet' described in the
+%% example later in this topic because it contains two changes to run the
+%% same change type (`AddRevisions') against the same entity
+%% (`entity-id@1').
 %%
 %% For more information about working with change sets, see Working with
 %% change sets.

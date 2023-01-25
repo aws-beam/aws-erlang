@@ -394,8 +394,8 @@ list_flows(Client, QueryMap, HeadersMap, Options0)
 %% in the current AWS Region.
 %%
 %% If you have an active reservation (which means you've purchased an
-%% offering that has already started and hasn't expired yet), your account
-%% isn't eligible for other offerings.
+%% offering that has already started and hasn't expired yet), your
+%% account isn't eligible for other offerings.
 list_offerings(Client)
   when is_map(Client) ->
     list_offerings(Client, #{}, #{}).

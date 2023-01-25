@@ -106,10 +106,10 @@
 
 %% @doc Creates a budget and, if included, notifications and subscribers.
 %%
-%% Only one of `BudgetLimit' or `PlannedBudgetLimits' can be present in the
-%% syntax at one time. Use the syntax that matches your case. The Request
-%% Syntax section shows the `BudgetLimit' syntax. For `PlannedBudgetLimits',
-%% see the Examples section.
+%% Only one of `BudgetLimit' or `PlannedBudgetLimits' can be present
+%% in the syntax at one time. Use the syntax that matches your case. The
+%% Request Syntax section shows the `BudgetLimit' syntax. For
+%% `PlannedBudgetLimits', see the Examples section.
 create_budget(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_budget(Client, Input, []).
@@ -241,8 +241,8 @@ describe_budget_notifications_for_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBudgetNotificationsForAccount">>, Input, Options).
 
-%% @doc Describes the history for `DAILY', `MONTHLY', and `QUARTERLY'
-%% budgets.
+%% @doc Describes the history for `DAILY', `MONTHLY', and
+%% `QUARTERLY' budgets.
 %%
 %% Budget history isn't available for `ANNUAL' budgets.
 describe_budget_performance_history(Client, Input)
@@ -289,15 +289,15 @@ execute_budget_action(Client, Input, Options)
 
 %% @doc Updates a budget.
 %%
-%% You can change every part of a budget except for the `budgetName' and the
-%% `calculatedSpend'. When you modify a budget, the `calculatedSpend' drops
-%% to zero until Amazon Web Services has new usage data to use for
-%% forecasting.
+%% You can change every part of a budget except for the `budgetName' and
+%% the `calculatedSpend'. When you modify a budget, the
+%% `calculatedSpend' drops to zero until Amazon Web Services has new
+%% usage data to use for forecasting.
 %%
-%% Only one of `BudgetLimit' or `PlannedBudgetLimits' can be present in the
-%% syntax at one time. Use the syntax that matches your case. The Request
-%% Syntax section shows the `BudgetLimit' syntax. For `PlannedBudgetLimits',
-%% see the Examples section.
+%% Only one of `BudgetLimit' or `PlannedBudgetLimits' can be present
+%% in the syntax at one time. Use the syntax that matches your case. The
+%% Request Syntax section shows the `BudgetLimit' syntax. For
+%% `PlannedBudgetLimits', see the Examples section.
 update_budget(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_budget(Client, Input, []).

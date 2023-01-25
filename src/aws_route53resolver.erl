@@ -174,8 +174,8 @@
 %% API
 %%====================================================================
 
-%% @doc Associates a `FirewallRuleGroup' with a VPC, to provide DNS filtering
-%% for the VPC.
+%% @doc Associates a `FirewallRuleGroup' with a VPC, to provide DNS
+%% filtering for the VPC.
 associate_firewall_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_firewall_rule_group(Client, Input, []).
@@ -255,7 +255,8 @@ create_firewall_rule(Client, Input, Options)
 %% @doc Creates an empty DNS Firewall rule group for filtering DNS network
 %% traffic in a VPC.
 %%
-%% You can add rules to the new rule group by calling `CreateFirewallRule'.
+%% You can add rules to the new rule group by calling
+%% `CreateFirewallRule'.
 create_firewall_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_firewall_rule_group(Client, Input, []).
@@ -516,8 +517,8 @@ get_resolver_dnssec_config(Client, Input, Options)
     request(Client, <<"GetResolverDnssecConfig">>, Input, Options).
 
 %% @doc Gets information about a specified Resolver endpoint, such as whether
-%% it's an inbound or an outbound Resolver endpoint, and the current status
-%% of the endpoint.
+%% it's an inbound or an outbound Resolver endpoint, and the current
+%% status of the endpoint.
 get_resolver_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resolver_endpoint(Client, Input, []).
@@ -601,7 +602,8 @@ get_resolver_rule_policy(Client, Input, Options)
 %% <ul> <li> It can optionally start with `*' (asterisk).
 %%
 %% </li> <li> With the exception of the optional starting asterisk, it must
-%% only contain the following characters: `A-Z', `a-z', `0-9', `-' (hyphen).
+%% only contain the following characters: `A-Z', `a-z', `0-9',
+%% `-' (hyphen).
 %%
 %% </li> <li> It must be from 1-255 characters in length.
 %%
@@ -890,8 +892,8 @@ update_resolver_endpoint(Client, Input, Options)
 
 %% @doc Updates settings for a specified Resolver rule.
 %%
-%% `ResolverRuleId' is required, and all other parameters are optional. If
-%% you don't specify a parameter, it retains its current value.
+%% `ResolverRuleId' is required, and all other parameters are optional.
+%% If you don't specify a parameter, it retains its current value.
 update_resolver_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resolver_rule(Client, Input, []).

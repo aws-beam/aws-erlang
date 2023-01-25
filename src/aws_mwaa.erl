@@ -10,8 +10,8 @@
 %%
 %% Endpoints
 %%
-%% <ul> <li> `api.airflow.{region}.amazonaws.com' - This endpoint is used for
-%% environment management.
+%% <ul> <li> `api.airflow.{region}.amazonaws.com' - This endpoint is used
+%% for environment management.
 %%
 %% <ul> <li> CreateEnvironment
 %%
@@ -234,7 +234,7 @@ list_environments(Client, QueryMap, HeadersMap, Options0)
 %% @doc Lists the key-value tag pairs associated to the Amazon Managed
 %% Workflows for Apache Airflow (MWAA) environment.
 %%
-%% For example, `"Environment": "Staging"'.
+%% For example, `&quot;Environment&quot;: &quot;Staging&quot;'.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceArn, #{}, #{}).
@@ -309,7 +309,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Removes key-value tag pairs associated to your Amazon Managed
 %% Workflows for Apache Airflow (MWAA) environment.
 %%
-%% For example, `"Environment": "Staging"'.
+%% For example, `&quot;Environment&quot;: &quot;Staging&quot;'.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->

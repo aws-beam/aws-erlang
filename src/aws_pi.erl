@@ -54,8 +54,8 @@
 %% API
 %%====================================================================
 
-%% @doc For a specific time period, retrieve the top `N' dimension keys for a
-%% metric.
+%% @doc For a specific time period, retrieve the top `N' dimension keys
+%% for a metric.
 %%
 %% Each response element returns a maximum of 500 bytes. For larger elements,
 %% such as SQL statements, only the first 500 bytes are returned.
@@ -69,11 +69,11 @@ describe_dimension_keys(Client, Input, Options)
 %% @doc Get the attributes of the specified dimension group for a DB instance
 %% or data source.
 %%
-%% For example, if you specify a SQL ID, `GetDimensionKeyDetails' retrieves
-%% the full text of the dimension `db.sql.statement' associated with this ID.
-%% This operation is useful because `GetResourceMetrics' and
-%% `DescribeDimensionKeys' don't support retrieval of large SQL statement
-%% text.
+%% For example, if you specify a SQL ID, `GetDimensionKeyDetails'
+%% retrieves the full text of the dimension `db.sql.statement' associated
+%% with this ID. This operation is useful because `GetResourceMetrics'
+%% and `DescribeDimensionKeys' don't support retrieval of large SQL
+%% statement text.
 get_dimension_key_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_dimension_key_details(Client, Input, []).

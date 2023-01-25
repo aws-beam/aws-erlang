@@ -114,12 +114,13 @@
 
 %% @doc This operation assigns feature variation to user sessions.
 %%
-%% For each user session, you pass in an `entityID' that represents the user.
-%% Evidently then checks the evaluation rules and assigns the variation.
+%% For each user session, you pass in an `entityID' that represents the
+%% user. Evidently then checks the evaluation rules and assigns the
+%% variation.
 %%
-%% The first rules that are evaluated are the override rules. If the user's
-%% `entityID' matches an override rule, the user is served the variation
-%% specified by that rule.
+%% The first rules that are evaluated are the override rules. If the
+%% user's `entityID' matches an override rule, the user is served the
+%% variation specified by that rule.
 %%
 %% Next, if there is a launch of the feature, the user might be assigned to a
 %% variation in the launch. The chance of this depends on the percentage of
@@ -172,8 +173,8 @@ batch_evaluate_feature(Client, Project, Input0, Options0) ->
 %% only certain audience types in the experiment, such as using only user
 %% sessions from a certain location or who use a certain internet browser.
 %%
-%% Don't use this operation to update an existing experiment. Instead, use
-%% UpdateExperiment.
+%% Don't use this operation to update an existing experiment. Instead,
+%% use UpdateExperiment.
 create_experiment(Client, Project, Input) ->
     create_experiment(Client, Project, Input, []).
 create_experiment(Client, Project, Input0, Options0) ->
@@ -301,13 +302,14 @@ create_project(Client, Input0, Options0) ->
 %% launch allows you to define different traffic splits for the different
 %% audience segments.
 %%
-%% <p>For more information about segment pattern syntax, see <a
-%% href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html#CloudWatch-Evidently-segments-syntax.html">
-%% Segment rule pattern syntax</a>.</p> <p>The pattern that you define for a
-%% segment is matched against the value of <code>evaluationContext</code>,
-%% which is passed into Evidently in the <a
-%% href="https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_EvaluateFeature.html">EvaluateFeature</a>
-%% operation, when Evidently assigns a feature variation to a user.</p>
+%% &lt;p&gt;For more information about segment pattern syntax, see &lt;a
+%% href=&quot;https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html#CloudWatch-Evidently-segments-syntax.html&quot;&gt;
+%% Segment rule pattern syntax&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;The pattern that
+%% you define for a segment is matched against the value of
+%% &lt;code&gt;evaluationContext&lt;/code&gt;, which is passed into Evidently
+%% in the &lt;a
+%% href=&quot;https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_EvaluateFeature.html&quot;&gt;EvaluateFeature&lt;/a&gt;
+%% operation, when Evidently assigns a feature variation to a user.&lt;/p&gt;
 create_segment(Client, Input) ->
     create_segment(Client, Input, []).
 create_segment(Client, Input0, Options0) ->
@@ -435,8 +437,8 @@ delete_project(Client, Project, Input0, Options0) ->
 
 %% @doc Deletes a segment.
 %%
-%% You can't delete a segment that is being used in a launch or experiment,
-%% even if that launch or experiment is not currently running.
+%% You can't delete a segment that is being used in a launch or
+%% experiment, even if that launch or experiment is not currently running.
 delete_segment(Client, Segment, Input) ->
     delete_segment(Client, Segment, Input, []).
 delete_segment(Client, Segment, Input0, Options0) ->
@@ -461,36 +463,37 @@ delete_segment(Client, Segment, Input0, Options0) ->
 
 %% @doc This operation assigns a feature variation to one given user session.
 %%
-%% You pass in an `entityID' that represents the user. Evidently then checks
-%% the evaluation rules and assigns the variation.
+%% You pass in an `entityID' that represents the user. Evidently then
+%% checks the evaluation rules and assigns the variation.
 %%
-%% The first rules that are evaluated are the override rules. If the user's
-%% `entityID' matches an override rule, the user is served the variation
-%% specified by that rule.
+%% The first rules that are evaluated are the override rules. If the
+%% user's `entityID' matches an override rule, the user is served the
+%% variation specified by that rule.
 %%
-%% <p>If there is a current launch with this feature that uses segment
-%% overrides, and if the user session's <code>evaluationContext</code>
-%% matches a segment rule defined in a segment override, the configuration in
-%% the segment overrides is used. For more information about segments, see <a
-%% href="https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_CreateSegment.html">CreateSegment</a>
-%% and <a
-%% href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html">Use
-%% segments to focus your audience</a>.</p> <p>If there is a launch with no
-%% segment overrides, the user might be assigned to a variation in the
-%% launch. The chance of this depends on the percentage of users that are
-%% allocated to that launch. If the user is enrolled in the launch, the
-%% variation they are served depends on the allocation of the various feature
-%% variations used for the launch.</p> <p>If the user is not assigned to a
-%% launch, and there is an ongoing experiment for this feature, the user
-%% might be assigned to a variation in the experiment. The chance of this
-%% depends on the percentage of users that are allocated to that
-%% experiment.</p> <p>If the experiment uses a segment, then only user
-%% sessions with <code>evaluationContext</code> values that match the segment
-%% rule are used in the experiment.</p> <p>If the user is enrolled in the
-%% experiment, the variation they are served depends on the allocation of the
-%% various feature variations used for the experiment. </p> <p>If the user is
-%% not assigned to a launch or experiment, they are served the default
-%% variation.</p>
+%% &lt;p&gt;If there is a current launch with this feature that uses segment
+%% overrides, and if the user session's
+%% &lt;code&gt;evaluationContext&lt;/code&gt; matches a segment rule defined
+%% in a segment override, the configuration in the segment overrides is used.
+%% For more information about segments, see &lt;a
+%% href=&quot;https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_CreateSegment.html&quot;&gt;CreateSegment&lt;/a&gt;
+%% and &lt;a
+%% href=&quot;https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html&quot;&gt;Use
+%% segments to focus your audience&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;If there is
+%% a launch with no segment overrides, the user might be assigned to a
+%% variation in the launch. The chance of this depends on the percentage of
+%% users that are allocated to that launch. If the user is enrolled in the
+%% launch, the variation they are served depends on the allocation of the
+%% various feature variations used for the launch.&lt;/p&gt; &lt;p&gt;If the
+%% user is not assigned to a launch, and there is an ongoing experiment for
+%% this feature, the user might be assigned to a variation in the experiment.
+%% The chance of this depends on the percentage of users that are allocated
+%% to that experiment.&lt;/p&gt; &lt;p&gt;If the experiment uses a segment,
+%% then only user sessions with &lt;code&gt;evaluationContext&lt;/code&gt;
+%% values that match the segment rule are used in the experiment.&lt;/p&gt;
+%% &lt;p&gt;If the user is enrolled in the experiment, the variation they are
+%% served depends on the allocation of the various feature variations used
+%% for the experiment. &lt;/p&gt; &lt;p&gt;If the user is not assigned to a
+%% launch or experiment, they are served the default variation.&lt;/p&gt;
 evaluate_feature(Client, Feature, Project, Input) ->
     evaluate_feature(Client, Feature, Project, Input, []).
 evaluate_feature(Client, Feature, Project, Input0, Options0) ->
@@ -1101,8 +1104,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates an Evidently experiment.
 %%
-%% Don't use this operation to update an experiment's tag. Instead, use
-%% TagResource.
+%% Don't use this operation to update an experiment's tag. Instead,
+%% use TagResource.
 update_experiment(Client, Experiment, Project, Input) ->
     update_experiment(Client, Experiment, Project, Input, []).
 update_experiment(Client, Experiment, Project, Input0, Options0) ->
@@ -1127,8 +1130,8 @@ update_experiment(Client, Experiment, Project, Input0, Options0) ->
 
 %% @doc Updates an existing feature.
 %%
-%% You can't use this operation to update the tags of an existing feature.
-%% Instead, use TagResource.
+%% You can't use this operation to update the tags of an existing
+%% feature. Instead, use TagResource.
 update_feature(Client, Feature, Project, Input) ->
     update_feature(Client, Feature, Project, Input, []).
 update_feature(Client, Feature, Project, Input0, Options0) ->
@@ -1181,8 +1184,8 @@ update_launch(Client, Launch, Project, Input0, Options0) ->
 %%
 %% To create a new project, use CreateProject.
 %%
-%% Don't use this operation to update the data storage options of a project.
-%% Instead, use UpdateProjectDataDelivery.
+%% Don't use this operation to update the data storage options of a
+%% project. Instead, use UpdateProjectDataDelivery.
 %%
 %% Don't use this operation to update the tags of a project. Instead, use
 %% TagResource.
@@ -1215,8 +1218,8 @@ update_project(Client, Project, Input0, Options0) ->
 %% after using them to produce metrics and other experiment results that you
 %% can view.
 %%
-%% You can't specify both `cloudWatchLogs' and `s3Destination' in the same
-%% operation.
+%% You can't specify both `cloudWatchLogs' and `s3Destination' in
+%% the same operation.
 update_project_data_delivery(Client, Project, Input) ->
     update_project_data_delivery(Client, Project, Input, []).
 update_project_data_delivery(Client, Project, Input0, Options0) ->

@@ -245,7 +245,8 @@ create_streaming_session(Client, StudioId, Input0, Options0) ->
 %% @doc Creates a streaming session stream for a streaming session.
 %%
 %% After invoking this API, invoke GetStreamingSessionStream with the
-%% returned streamId to poll the resource until it is in the `READY' state.
+%% returned streamId to poll the resource until it is in the `READY'
+%% state.
 create_streaming_session_stream(Client, SessionId, StudioId, Input) ->
     create_streaming_session_stream(Client, SessionId, StudioId, Input, []).
 create_streaming_session_stream(Client, SessionId, StudioId, Input0, Options0) ->
@@ -276,8 +277,8 @@ create_streaming_session_stream(Client, SessionId, StudioId, Input0, Options0) -
 %% the user role. These roles are assumed by your users when they log in to
 %% the Nimble Studio portal.
 %%
-%% The user role must have the `AmazonNimbleStudio-StudioUser' managed policy
-%% attached for the portal to function properly.
+%% The user role must have the `AmazonNimbleStudio-StudioUser' managed
+%% policy attached for the portal to function properly.
 %%
 %% The admin role must have the `AmazonNimbleStudio-StudioAdmin' managed
 %% policy attached for the portal to function properly.
@@ -288,8 +289,8 @@ create_streaming_session_stream(Client, SessionId, StudioId, Input0, Options0) -
 %% In Nimble Studio, resource names, descriptions, initialization scripts,
 %% and other data you provide are always encrypted at rest using an KMS key.
 %% By default, this key is owned by Amazon Web Services and managed on your
-%% behalf. You may provide your own KMS key when calling `CreateStudio' to
-%% encrypt this data using a key you own and manage.
+%% behalf. You may provide your own KMS key when calling `CreateStudio'
+%% to encrypt this data using a key you own and manage.
 %%
 %% When providing an KMS key during studio creation, Nimble Studio creates
 %% KMS grants in your account to provide your studio user and admin roles
@@ -737,8 +738,9 @@ get_streaming_session_backup(Client, BackupId, StudioId, QueryMap, HeadersMap, O
 %% Invoke this operation to poll the resource after invoking
 %% `CreateStreamingSessionStream'.
 %%
-%% After the `StreamingSessionStream' changes to the `READY' state, the url
-%% property will contain a stream to be used with the DCV streaming client.
+%% After the `StreamingSessionStream' changes to the `READY' state,
+%% the url property will contain a stream to be used with the DCV streaming
+%% client.
 get_streaming_session_stream(Client, SessionId, StreamId, StudioId)
   when is_map(Client) ->
     get_streaming_session_stream(Client, SessionId, StreamId, StudioId, #{}, #{}).
@@ -1200,7 +1202,8 @@ put_studio_members(Client, StudioId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Transitions sessions from the `STOPPED' state into the `READY' state.
+%% @doc Transitions sessions from the `STOPPED' state into the
+%% `READY' state.
 %%
 %% The `START_IN_PROGRESS' state is the intermediate state between the
 %% `STOPPED' and `READY' states.
@@ -1235,7 +1238,8 @@ start_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->
 %%
 %% If the studio does not have a valid IAM Identity Center configuration
 %% currently associated with it, then a new IAM Identity Center application
-%% is created for the studio and the studio is changed to the `READY' state.
+%% is created for the studio and the studio is changed to the `READY'
+%% state.
 %%
 %% After the IAM Identity Center application is repaired, you must use the
 %% Amazon Nimble Studio console to add administrators and users to your
@@ -1264,10 +1268,11 @@ start_studio_s_s_o_configuration_repair(Client, StudioId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Transitions sessions from the `READY' state into the `STOPPED' state.
+%% @doc Transitions sessions from the `READY' state into the
+%% `STOPPED' state.
 %%
-%% The `STOP_IN_PROGRESS' state is the intermediate state between the `READY'
-%% and `STOPPED' states.
+%% The `STOP_IN_PROGRESS' state is the intermediate state between the
+%% `READY' and `STOPPED' states.
 stop_streaming_session(Client, SessionId, StudioId, Input) ->
     stop_streaming_session(Client, SessionId, StudioId, Input, []).
 stop_streaming_session(Client, SessionId, StudioId, Input0, Options0) ->

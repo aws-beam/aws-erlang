@@ -226,12 +226,12 @@ complete_migration(Client, Input, Options)
 %%
 %% This operation is valid for Redis only.
 %%
-%% Users or groups that have permissions to use the `CopySnapshot' operation
-%% can create their own Amazon S3 buckets and copy snapshots to it. To
-%% control access to your snapshots, use an IAM policy to control who has the
-%% ability to use the `CopySnapshot' operation. For more information about
-%% using IAM to control the use of ElastiCache operations, see Exporting
-%% Snapshots and Authentication & Access Control.
+%% Users or groups that have permissions to use the `CopySnapshot'
+%% operation can create their own Amazon S3 buckets and copy snapshots to it.
+%% To control access to your snapshots, use an IAM policy to control who has
+%% the ability to use the `CopySnapshot' operation. For more information
+%% about using IAM to control the use of ElastiCache operations, see
+%% Exporting Snapshots and Authentication &amp; Access Control.
 %%
 %% You could receive the following error messages.
 %%
@@ -480,10 +480,10 @@ decrease_replica_count(Client, Input, Options)
 
 %% @doc Deletes a previously provisioned cluster.
 %%
-%% `DeleteCacheCluster' deletes all associated cache nodes, node endpoints
-%% and the cluster itself. When you receive a successful response from this
-%% operation, Amazon ElastiCache immediately begins deleting the cluster; you
-%% cannot cancel or revert this operation.
+%% `DeleteCacheCluster' deletes all associated cache nodes, node
+%% endpoints and the cluster itself. When you receive a successful response
+%% from this operation, Amazon ElastiCache immediately begins deleting the
+%% cluster; you cannot cancel or revert this operation.
 %%
 %% This operation is not valid for:
 %%
@@ -545,19 +545,19 @@ delete_cache_subnet_group(Client, Input, Options)
 
 %% @doc Deleting a Global datastore is a two-step process:
 %%
-%% <ul> <li> First, you must `DisassociateGlobalReplicationGroup' to remove
-%% the secondary clusters in the Global datastore.
+%% <ul> <li> First, you must `DisassociateGlobalReplicationGroup' to
+%% remove the secondary clusters in the Global datastore.
 %%
 %% </li> <li> Once the Global datastore contains only the primary cluster,
-%% you can use the `DeleteGlobalReplicationGroup' API to delete the Global
-%% datastore while retainining the primary cluster using
+%% you can use the `DeleteGlobalReplicationGroup' API to delete the
+%% Global datastore while retainining the primary cluster using
 %% `RetainPrimaryReplicationGroup=true'.
 %%
 %% </li> </ul> Since the Global Datastore has only a primary cluster, you can
 %% delete the Global Datastore while retaining the primary by setting
-%% `RetainPrimaryReplicationGroup=true'. The primary cluster is never deleted
-%% when deleting a Global Datastore. It can only be deleted when it no longer
-%% is associated with any Global Datastore.
+%% `RetainPrimaryReplicationGroup=true'. The primary cluster is never
+%% deleted when deleting a Global Datastore. It can only be deleted when it
+%% no longer is associated with any Global Datastore.
 %%
 %% When you receive a successful response from this operation, Amazon
 %% ElastiCache immediately begins deleting the selected resources; you cannot
@@ -868,8 +868,8 @@ increase_replica_count(Client, Input, Options)
 %%
 %% When you use the `ModifyCacheCluster' or `ModifyReplicationGroup'
 %% operations to scale your cluster or replication group, the value of the
-%% `CacheNodeType' parameter must be one of the node types returned by this
-%% operation.
+%% `CacheNodeType' parameter must be one of the node types returned by
+%% this operation.
 list_allowed_node_type_modifications(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_allowed_node_type_modifications(Client, Input, []).
@@ -948,9 +948,9 @@ modify_replication_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyReplicationGroup">>, Input, Options).
 
-%% @doc Modifies a replication group's shards (node groups) by allowing you
-%% to add shards, remove shards, or rebalance the keyspaces among existing
-%% shards.
+%% @doc Modifies a replication group's shards (node groups) by allowing
+%% you to add shards, remove shards, or rebalance the keyspaces among
+%% existing shards.
 modify_replication_group_shard_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_replication_group_shard_configuration(Client, Input, []).
@@ -1099,18 +1099,19 @@ start_migration(Client, Input, Options)
 %% listed here in order of occurrance:
 %%
 %% <ol> <li> Replication group message: `Test Failover API called for node
-%% group <node-group-id>'
+%% group &lt;node-group-id&gt;'
 %%
 %% </li> <li> Cache cluster message: `Failover from primary node
-%% <primary-node-id> to replica node <node-id> completed'
+%% &lt;primary-node-id&gt; to replica node &lt;node-id&gt; completed'
 %%
 %% </li> <li> Replication group message: `Failover from primary node
-%% <primary-node-id> to replica node <node-id> completed'
+%% &lt;primary-node-id&gt; to replica node &lt;node-id&gt; completed'
 %%
-%% </li> <li> Cache cluster message: `Recovering cache nodes <node-id>'
+%% </li> <li> Cache cluster message: `Recovering cache nodes
+%% &lt;node-id&gt;'
 %%
 %% </li> <li> Cache cluster message: `Finished recovery for cache nodes
-%% <node-id>'
+%% &lt;node-id&gt;'
 %%
 %% </li> </ol> For more information see:
 %%

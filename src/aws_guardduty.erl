@@ -233,8 +233,8 @@ accept_invitation(Client, DetectorId, Input0, Options0) ->
 %% @doc Archives GuardDuty findings that are specified by the list of finding
 %% IDs.
 %%
-%% Only the administrator account can archive findings. Member accounts don't
-%% have permission to archive findings from their accounts.
+%% Only the administrator account can archive findings. Member accounts
+%% don't have permission to archive findings from their accounts.
 archive_findings(Client, DetectorId, Input) ->
     archive_findings(Client, DetectorId, Input, []).
 archive_findings(Client, DetectorId, Input0, Options0) ->
@@ -313,8 +313,9 @@ create_filter(Client, DetectorId, Input0, Options0) ->
 %%
 %% An IPSet is a list of IP addresses that are trusted for secure
 %% communication with Amazon Web Services infrastructure and applications.
-%% GuardDuty doesn't generate findings for IP addresses that are included in
-%% IPSets. Only users from the administrator account can use this operation.
+%% GuardDuty doesn't generate findings for IP addresses that are included
+%% in IPSets. Only users from the administrator account can use this
+%% operation.
 create_ip_set(Client, DetectorId, Input) ->
     create_ip_set(Client, DetectorId, Input, []).
 create_ip_set(Client, DetectorId, Input0, Options0) ->
@@ -343,10 +344,10 @@ create_ip_set(Client, DetectorId, Input0, Options0) ->
 %% This step is a prerequisite for managing the associated member accounts
 %% either by invitation or through an organization.
 %%
-%% When using `Create Members' as an organizations delegated administrator
-%% this action will enable GuardDuty in the added member accounts, with the
-%% exception of the organization delegated administrator account, which must
-%% enable GuardDuty prior to being added as a member.
+%% When using `Create Members' as an organizations delegated
+%% administrator this action will enable GuardDuty in the added member
+%% accounts, with the exception of the organization delegated administrator
+%% account, which must enable GuardDuty prior to being added as a member.
 %%
 %% If you are adding accounts by invitation use this action after GuardDuty
 %% has been enabled in potential member accounts and before using `Invite
@@ -402,8 +403,8 @@ create_publishing_destination(Client, DetectorId, Input0, Options0) ->
 %% @doc Generates example findings of types specified by the list of finding
 %% types.
 %%
-%% If 'NULL' is specified for `findingTypes', the API generates example
-%% findings of all supported finding types.
+%% If 'NULL' is specified for `findingTypes', the API generates
+%% example findings of all supported finding types.
 create_sample_findings(Client, DetectorId, Input) ->
     create_sample_findings(Client, DetectorId, Input, []).
 create_sample_findings(Client, DetectorId, Input0, Options0) ->
@@ -597,7 +598,8 @@ delete_members(Client, DetectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the publishing definition with the specified `destinationId'.
+%% @doc Deletes the publishing definition with the specified
+%% `destinationId'.
 delete_publishing_destination(Client, DestinationId, DetectorId, Input) ->
     delete_publishing_destination(Client, DestinationId, DetectorId, Input, []).
 delete_publishing_destination(Client, DestinationId, DetectorId, Input0, Options0) ->
@@ -1178,7 +1180,8 @@ get_usage_statistics(Client, DetectorId, Input0, Options0) ->
 %% @doc Invites other Amazon Web Services accounts (created as members of the
 %% current Amazon Web Services account by CreateMembers) to enable GuardDuty,
 %% and allow the current Amazon Web Services account to view and manage these
-%% accounts' findings on their behalf as the GuardDuty administrator account.
+%% accounts' findings on their behalf as the GuardDuty administrator
+%% account.
 invite_members(Client, DetectorId, Input) ->
     invite_members(Client, DetectorId, Input, []).
 invite_members(Client, DetectorId, Input0, Options0) ->
@@ -1516,8 +1519,8 @@ start_monitoring_members(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Stops GuardDuty monitoring for the specified member accounts.
 %%
-%% Use the `StartMonitoringMembers' operation to restart monitoring for those
-%% accounts.
+%% Use the `StartMonitoringMembers' operation to restart monitoring for
+%% those accounts.
 stop_monitoring_members(Client, DetectorId, Input) ->
     stop_monitoring_members(Client, DetectorId, Input, []).
 stop_monitoring_members(Client, DetectorId, Input0, Options0) ->

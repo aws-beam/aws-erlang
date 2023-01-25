@@ -171,8 +171,8 @@ batch_associate_client_device_with_core_device(Client, CoreDeviceThingName, Inpu
 %% @doc Disassociates a list of client devices from a core device.
 %%
 %% After you disassociate a client device from a core device, the client
-%% device won't be able to use cloud discovery to retrieve the core device's
-%% connectivity information and certificates.
+%% device won't be able to use cloud discovery to retrieve the core
+%% device's connectivity information and certificates.
 batch_disassociate_client_device_from_core_device(Client, CoreDeviceThingName, Input) ->
     batch_disassociate_client_device_from_core_device(Client, CoreDeviceThingName, Input, []).
 batch_disassociate_client_device_from_core_device(Client, CoreDeviceThingName, Input0, Options0) ->
@@ -234,19 +234,19 @@ cancel_deployment(Client, DeploymentId, Input0, Options0) ->
 %% <ul> <li> Create components from recipes
 %%
 %% Create a component from a recipe, which is a file that defines the
-%% component's metadata, parameters, dependencies, lifecycle, artifacts, and
-%% platform capability. For more information, see IoT Greengrass component
-%% recipe reference in the IoT Greengrass V2 Developer Guide.
+%% component's metadata, parameters, dependencies, lifecycle, artifacts,
+%% and platform capability. For more information, see IoT Greengrass
+%% component recipe reference in the IoT Greengrass V2 Developer Guide.
 %%
-%% To create a component from a recipe, specify `inlineRecipe' when you call
-%% this operation.
+%% To create a component from a recipe, specify `inlineRecipe' when you
+%% call this operation.
 %%
 %% </li> <li> Create components from Lambda functions
 %%
 %% Create a component from an Lambda function that runs on IoT Greengrass.
-%% This creates a recipe and artifacts from the Lambda function's deployment
-%% package. You can use this operation to migrate Lambda functions from IoT
-%% Greengrass V1 to IoT Greengrass V2.
+%% This creates a recipe and artifacts from the Lambda function's
+%% deployment package. You can use this operation to migrate Lambda functions
+%% from IoT Greengrass V1 to IoT Greengrass V2.
 %%
 %% This function only accepts Lambda functions that use the following
 %% runtimes:
@@ -340,10 +340,11 @@ create_deployment(Client, Input0, Options0) ->
 
 %% @doc Deletes a version of a component from IoT Greengrass.
 %%
-%% This operation deletes the component's recipe and artifacts. As a result,
-%% deployments that refer to this component version will fail. If you have
-%% deployments that use this component version, you can remove the component
-%% from the deployment or update the deployment to use a valid version.
+%% This operation deletes the component's recipe and artifacts. As a
+%% result, deployments that refer to this component version will fail. If you
+%% have deployments that use this component version, you can remove the
+%% component from the deployment or update the deployment to use a valid
+%% version.
 delete_component(Client, Arn, Input) ->
     delete_component(Client, Arn, Input, []).
 delete_component(Client, Arn, Input0, Options0) ->
@@ -369,8 +370,8 @@ delete_component(Client, Arn, Input0, Options0) ->
 %% @doc Deletes a Greengrass core device, which is an IoT thing.
 %%
 %% This operation removes the core device from the list of core devices. This
-%% operation doesn't delete the IoT thing. For more information about how to
-%% delete the IoT thing, see DeleteThing in the IoT API Reference.
+%% operation doesn't delete the IoT thing. For more information about how
+%% to delete the IoT thing, see DeleteThing in the IoT API Reference.
 delete_core_device(Client, CoreDeviceThingName, Input) ->
     delete_core_device(Client, CoreDeviceThingName, Input, []).
 delete_core_device(Client, CoreDeviceThingName, Input0, Options0) ->
@@ -399,8 +400,8 @@ delete_core_device(Client, CoreDeviceThingName, Input0, Options0) ->
 %% information, see CancelDeployment.
 %%
 %% Deleting a deployment doesn't affect core devices that run that
-%% deployment, because core devices store the deployment's configuration on
-%% the device. Additionally, core devices can roll back to a previous
+%% deployment, because core devices store the deployment's configuration
+%% on the device. Additionally, core devices can roll back to a previous
 %% deployment that has been deleted.
 delete_deployment(Client, DeploymentId, Input) ->
     delete_deployment(Client, DeploymentId, Input, []).
@@ -450,8 +451,8 @@ describe_component(Client, Arn, QueryMap, HeadersMap, Options0)
 %% @doc Disassociates the Greengrass service role from IoT Greengrass for
 %% your Amazon Web Services account in this Amazon Web Services Region.
 %%
-%% Without a service role, IoT Greengrass can't verify the identity of client
-%% devices or manage core device connectivity information. For more
+%% Without a service role, IoT Greengrass can't verify the identity of
+%% client devices or manage core device connectivity information. For more
 %% information, see Greengrass service role in the IoT Greengrass Version 2
 %% Developer Guide.
 disassociate_service_role_from_account(Client, Input) ->
@@ -945,14 +946,14 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% This operation identifies components that meet all dependency requirements
 %% for a deployment. If the requirements conflict, then this operation
 %% returns an error and the deployment fails. For example, this occurs if
-%% component `A' requires version `>2.0.0' and component `B' requires version
-%% `<2.0.0' of a component dependency.
+%% component `A' requires version `&gt;2.0.0' and component `B'
+%% requires version `&lt;2.0.0' of a component dependency.
 %%
 %% When you specify the component candidates to resolve, IoT Greengrass
-%% compares each component's digest from the core device with the component's
-%% digest in the Amazon Web Services Cloud. If the digests don't match, then
-%% IoT Greengrass specifies to use the version from the Amazon Web Services
-%% Cloud.
+%% compares each component's digest from the core device with the
+%% component's digest in the Amazon Web Services Cloud. If the digests
+%% don't match, then IoT Greengrass specifies to use the version from the
+%% Amazon Web Services Cloud.
 %%
 %% To use this operation, you must use the data plane API endpoint and
 %% authenticate with an IoT device certificate. For more information, see IoT
@@ -981,8 +982,8 @@ resolve_component_candidates(Client, Input0, Options0) ->
 
 %% @doc Adds tags to an IoT Greengrass resource.
 %%
-%% If a tag already exists for the resource, this operation updates the tag's
-%% value.
+%% If a tag already exists for the resource, this operation updates the
+%% tag's value.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->

@@ -270,8 +270,8 @@
 %% API
 %%====================================================================
 
-%% @doc Registers a player's acceptance or rejection of a proposed FlexMatch
-%% match.
+%% @doc Registers a player's acceptance or rejection of a proposed
+%% FlexMatch match.
 %%
 %% A matchmaking configuration may require player acceptance; if so, then
 %% matches built with that configuration cannot be completed unless all
@@ -285,17 +285,17 @@
 %%
 %% To register acceptance, specify the ticket ID, a response, and one or more
 %% players. Once all players have registered acceptance, the matchmaking
-%% tickets advance to status `PLACING', where a new game session is created
-%% for the match.
+%% tickets advance to status `PLACING', where a new game session is
+%% created for the match.
 %%
 %% If any player rejects the match, or if acceptances are not received before
 %% a specified timeout, the proposed match is dropped. The matchmaking
 %% tickets are then handled in one of two ways: For tickets where one or more
 %% players rejected the match or failed to respond, the ticket status is set
-%% to `CANCELLED', and processing is terminated. For tickets where players
-%% have accepted or not yet responded, the ticket status is returned to
-%% `SEARCHING' to find a new match. A new matchmaking request for these
-%% players can be submitted as needed.
+%% to `CANCELLED', and processing is terminated. For tickets where
+%% players have accepted or not yet responded, the ticket status is returned
+%% to `SEARCHING' to find a new match. A new matchmaking request for
+%% these players can be submitted as needed.
 %%
 %% Learn more
 %%
@@ -326,13 +326,13 @@ accept_match(Client, Input, Options)
 %% information.
 %%
 %% When a game server is successfully claimed, connection information is
-%% returned. A claimed game server's utilization status remains `AVAILABLE'
-%% while the claim status is set to `CLAIMED' for up to 60 seconds. This time
-%% period gives the game server time to update its status to `UTILIZED' after
-%% players join. If the game server's status is not updated within 60
-%% seconds, the game server reverts to unclaimed status and is available to
-%% be claimed by another request. The claim time period is a fixed value and
-%% is not configurable.
+%% returned. A claimed game server's utilization status remains
+%% `AVAILABLE' while the claim status is set to `CLAIMED' for up to
+%% 60 seconds. This time period gives the game server time to update its
+%% status to `UTILIZED' after players join. If the game server's
+%% status is not updated within 60 seconds, the game server reverts to
+%% unclaimed status and is available to be claimed by another request. The
+%% claim time period is a fixed value and is not configurable.
 %%
 %% If you try to claim a specific game server, this request will fail in the
 %% following cases:
@@ -342,9 +342,9 @@ accept_match(Client, Input, Options)
 %% </li> <li> If the game server claim status is `CLAIMED'.
 %%
 %% </li> </ul> When claiming a specific game server, this request will
-%% succeed even if the game server is running on an instance in `DRAINING'
-%% status. To avoid this, first check the instance status by calling
-%% DescribeGameServerInstances .
+%% succeed even if the game server is running on an instance in
+%% `DRAINING' status. To avoid this, first check the instance status by
+%% calling DescribeGameServerInstances .
 %%
 %% Learn more
 %%
@@ -410,12 +410,12 @@ create_alias(Client, Input, Options)
 %% location with temporary access credentials. Use the credentials to
 %% manually upload your build files to the specified Amazon S3 location. For
 %% more information, see Uploading Objects in the Amazon S3 Developer Guide.
-%% After you upload build files to the GameLift Amazon S3 location, you can't
-%% update them.
+%% After you upload build files to the GameLift Amazon S3 location, you
+%% can't update them.
 %%
 %% </li> </ul> If successful, this operation creates a new build resource
-%% with a unique build ID and places it in `INITIALIZED' status. A build must
-%% be in `READY' status before you can create fleets with it.
+%% with a unique build ID and places it in `INITIALIZED' status. A build
+%% must be in `READY' status before you can create fleets with it.
 %%
 %% Learn more
 %%
@@ -444,10 +444,10 @@ create_build(Client, Input, Options)
 %% Regions support multiple locations: us-east-1 (N. Virginia), us-west-2
 %% (Oregon), eu-central-1 (Frankfurt), eu-west-1 (Ireland), ap-southeast-2
 %% (Sydney), ap-northeast-1 (Tokyo), and ap-northeast-2 (Seoul). Fleets that
-%% are created in other GameLift Regions can deploy instances in the fleet's
-%% home Region only. All fleet instances use the same configuration
-%% regardless of location; however, you can adjust capacity settings and turn
-%% auto-scaling on/off for each location.
+%% are created in other GameLift Regions can deploy instances in the
+%% fleet's home Region only. All fleet instances use the same
+%% configuration regardless of location; however, you can adjust capacity
+%% settings and turn auto-scaling on/off for each location.
 %%
 %% To create a fleet, choose the hardware for your instances, specify a game
 %% server build or Realtime script to deploy, and provide a runtime
@@ -482,8 +482,8 @@ create_fleet(Client, Input, Options)
 %% @doc Adds remote locations to a fleet and begins populating the new
 %% locations with EC2 instances.
 %%
-%% The new instances conform to the fleet's instance type, auto-scaling, and
-%% other configuration settings.
+%% The new instances conform to the fleet's instance type, auto-scaling,
+%% and other configuration settings.
 %%
 %% This operation cannot be used with fleets that don't support remote
 %% locations. Fleets can have multiple locations only if they reside in
@@ -494,8 +494,8 @@ create_fleet(Client, Input, Options)
 %% of one or more locations.
 %%
 %% If successful, this operation returns the list of added locations with
-%% their status set to `NEW'. GameLift initiates the process of starting an
-%% instance in each added location. You can track the status of each new
+%% their status set to `NEW'. GameLift initiates the process of starting
+%% an instance in each added location. You can track the status of each new
 %% location by monitoring location creation events using DescribeFleetEvents.
 %%
 %% Learn more
@@ -536,9 +536,9 @@ create_fleet_locations(Client, Input, Options)
 %% </li> </ul> To create a new game server group, specify a unique group
 %% name, IAM role and Amazon Elastic Compute Cloud launch template, and
 %% provide a list of instance types that can be used in the group. You must
-%% also set initial maximum and minimum limits on the group's instance count.
-%% You can optionally set an Auto Scaling policy with target tracking based
-%% on a GameLift FleetIQ metric.
+%% also set initial maximum and minimum limits on the group's instance
+%% count. You can optionally set an Auto Scaling policy with target tracking
+%% based on a GameLift FleetIQ metric.
 %%
 %% Once the game server group and corresponding Auto Scaling group are
 %% created, you have full access to change the Auto Scaling group's
@@ -583,12 +583,13 @@ create_game_server_group(Client, Input, Options)
 %% game session configuration.
 %%
 %% </li> </ul> If successful, a workflow is initiated to start a new game
-%% session. A `GameSession' object is returned containing the game session
-%% configuration and status. When the status is `ACTIVE', game session
-%% connection information is provided and player sessions can be created for
-%% the game session. By default, newly created game sessions are open to new
-%% players. You can restrict new player access by using UpdateGameSession to
-%% change the game session's player session creation policy.
+%% session. A `GameSession' object is returned containing the game
+%% session configuration and status. When the status is `ACTIVE', game
+%% session connection information is provided and player sessions can be
+%% created for the game session. By default, newly created game sessions are
+%% open to new players. You can restrict new player access by using
+%% UpdateGameSession to change the game session's player session creation
+%% policy.
 %%
 %% Game session logs are retained for all active game sessions for 14 days.
 %% To access the logs, call GetGameSessionLogUrl to download the log files.
@@ -619,15 +620,15 @@ create_game_session(Client, Input, Options)
 %% place new game sessions. These destinations can span multiple fleet types
 %% (Spot and On-Demand), instance types, and Amazon Web Services Regions. If
 %% the queue includes multi-location fleets, the queue is able to place game
-%% sessions in all of a fleet's remote locations. You can opt to filter out
-%% individual locations if needed.
+%% sessions in all of a fleet's remote locations. You can opt to filter
+%% out individual locations if needed.
 %%
 %% The queue configuration also determines how FleetIQ selects the best
 %% available placement for a new game session. Before searching for an
-%% available game server, FleetIQ first prioritizes the queue's destinations
-%% and locations, with the best placement locations on top. You can set up
-%% the queue to use the FleetIQ default prioritization or provide an
-%% alternate set of priorities.
+%% available game server, FleetIQ first prioritizes the queue's
+%% destinations and locations, with the best placement locations on top. You
+%% can set up the queue to use the FleetIQ default prioritization or provide
+%% an alternate set of priorities.
 %%
 %% To create a new queue, provide a name, timeout value, and a list of
 %% destinations. Optionally, specify a sort configuration and/or a filter,
@@ -670,11 +671,12 @@ create_location(Client, Input, Options)
 %%
 %% Whether your are using FlexMatch with GameLift hosting or as a standalone
 %% matchmaking service, the matchmaking configuration sets out rules for
-%% matching players and forming teams. If you're also using GameLift hosting,
-%% it defines how to start game sessions for each match. Your matchmaking
-%% system can use multiple configurations to handle different game scenarios.
-%% All matchmaking requests identify the matchmaking configuration to use and
-%% provide player attributes consistent with that configuration.
+%% matching players and forming teams. If you're also using GameLift
+%% hosting, it defines how to start game sessions for each match. Your
+%% matchmaking system can use multiple configurations to handle different
+%% game scenarios. All matchmaking requests identify the matchmaking
+%% configuration to use and provide player attributes consistent with that
+%% configuration.
 %%
 %% To create a matchmaking configuration, you must provide the following:
 %% configuration name and FlexMatch mode (with or without GameLift hosting);
@@ -805,14 +807,14 @@ create_player_sessions(Client, Input, Options)
 %%
 %% </li> <li> An Amazon Simple Storage Service (Amazon S3) bucket under your
 %% Amazon Web Services account. Use the StorageLocation parameter for this
-%% option. You'll need to have an Identity Access Management (IAM) role that
-%% allows the Amazon GameLift service to access your S3 bucket.
+%% option. You'll need to have an Identity Access Management (IAM) role
+%% that allows the Amazon GameLift service to access your S3 bucket.
 %%
 %% </li> </ul> If the call is successful, a new script record is created with
 %% a unique script ID. If the script file is provided as a local file, the
 %% file is uploaded to an Amazon GameLift-owned S3 bucket and the script
-%% record's storage location reflects this location. If the script file is
-%% provided as an S3 bucket, Amazon GameLift accesses the file at this
+%% record's storage location reflects this location. If the script file
+%% is provided as an S3 bucket, Amazon GameLift accesses the file at this
 %% storage location as needed for deployment.
 %%
 %% Learn more
@@ -900,8 +902,8 @@ create_vpc_peering_authorization(Client, Input, Options)
 %% with the VPC that you want to peer with; and (3) The ID of the VPC you
 %% want to peer with. This operation is asynchronous. If successful, a
 %% connection request is created. You can use continuous polling to track the
-%% request's status using DescribeVpcPeeringConnections , or by monitoring
-%% fleet events for success or failure using DescribeFleetEvents .
+%% request's status using DescribeVpcPeeringConnections , or by
+%% monitoring fleet events for success or failure using DescribeFleetEvents .
 %%
 %% Related actions
 %%
@@ -983,10 +985,10 @@ delete_fleet(Client, Input, Options)
 %% To delete fleet locations, identify the fleet ID and provide a list of the
 %% locations to be deleted.
 %%
-%% If successful, GameLift sets the location status to `DELETING', and begins
-%% to shut down existing server processes and terminate instances in each
-%% location being deleted. When completed, the location status changes to
-%% `TERMINATED'.
+%% If successful, GameLift sets the location status to `DELETING', and
+%% begins to shut down existing server processes and terminate instances in
+%% each location being deleted. When completed, the location status changes
+%% to `TERMINATED'.
 %%
 %% Learn more
 %%
@@ -1014,15 +1016,16 @@ delete_fleet_locations(Client, Input, Options)
 %%
 %% </li> </ul> To delete a game server group, identify the game server group
 %% to delete and specify the type of delete operation to initiate. Game
-%% server groups can only be deleted if they are in `ACTIVE' or `ERROR'
-%% status.
+%% server groups can only be deleted if they are in `ACTIVE' or
+%% `ERROR' status.
 %%
 %% If the delete request is successful, a series of operations are kicked
-%% off. The game server group status is changed to `DELETE_SCHEDULED', which
-%% prevents new game servers from being registered and stops automatic
+%% off. The game server group status is changed to `DELETE_SCHEDULED',
+%% which prevents new game servers from being registered and stops automatic
 %% scaling activity. Once all game servers in the game server group are
 %% deregistered, GameLift FleetIQ can begin deleting resources. If any of the
-%% delete operations fail, the game server group is placed in `ERROR' status.
+%% delete operations fail, the game server group is placed in `ERROR'
+%% status.
 %%
 %% GameLift FleetIQ emits delete events to Amazon CloudWatch.
 %%
@@ -1197,8 +1200,8 @@ deregister_game_server(Client, Input, Options)
 
 %% @doc Retrieves properties for an alias.
 %%
-%% This operation returns all alias metadata and settings. To get an alias's
-%% target fleet ID only, use `ResolveAlias'.
+%% This operation returns all alias metadata and settings. To get an
+%% alias's target fleet ID only, use `ResolveAlias'.
 %%
 %% To get alias properties, specify the alias ID. If successful, the
 %% requested alias record is returned.
@@ -1247,34 +1250,34 @@ describe_compute(Client, Input, Options)
 %% Instance limits control the number of instances, per instance type, per
 %% location, that your Amazon Web Services account can use. Learn more at
 %% Amazon EC2 Instance Types. The information returned includes the maximum
-%% number of instances allowed and your account's current usage across all
-%% fleets. This information can affect your ability to scale your GameLift
-%% fleets. You can request a limit increase for your account by using the
-%% Service limits page in the GameLift console.
+%% number of instances allowed and your account's current usage across
+%% all fleets. This information can affect your ability to scale your
+%% GameLift fleets. You can request a limit increase for your account by
+%% using the Service limits page in the GameLift console.
 %%
 %% Instance limits differ based on whether the instances are deployed in a
-%% fleet's home Region or in a remote location. For remote locations, limits
-%% also differ based on the combination of home Region and remote location.
-%% All requests must specify an Amazon Web Services Region (either explicitly
-%% or as your default settings). To get the limit for a remote location, you
-%% must also specify the location. For example, the following requests all
-%% return different results:
+%% fleet's home Region or in a remote location. For remote locations,
+%% limits also differ based on the combination of home Region and remote
+%% location. All requests must specify an Amazon Web Services Region (either
+%% explicitly or as your default settings). To get the limit for a remote
+%% location, you must also specify the location. For example, the following
+%% requests all return different results:
 %%
-%% <ul> <li> Request specifies the Region `ap-northeast-1' with no location.
-%% The result is limits and usage data on all instance types that are
-%% deployed in `us-east-2', by all of the fleets that reside in
+%% <ul> <li> Request specifies the Region `ap-northeast-1' with no
+%% location. The result is limits and usage data on all instance types that
+%% are deployed in `us-east-2', by all of the fleets that reside in
 %% `ap-northeast-1'.
 %%
 %% </li> <li> Request specifies the Region `us-east-1' with location
-%% `ca-central-1'. The result is limits and usage data on all instance types
-%% that are deployed in `ca-central-1', by all of the fleets that reside in
-%% `us-east-2'. These limits do not affect fleets in any other Regions that
-%% deploy instances to `ca-central-1'.
+%% `ca-central-1'. The result is limits and usage data on all instance
+%% types that are deployed in `ca-central-1', by all of the fleets that
+%% reside in `us-east-2'. These limits do not affect fleets in any other
+%% Regions that deploy instances to `ca-central-1'.
 %%
 %% </li> <li> Request specifies the Region `eu-west-1' with location
-%% `ca-central-1'. The result is limits and usage data on all instance types
-%% that are deployed in `ca-central-1', by all of the fleets that reside in
-%% `eu-west-1'.
+%% `ca-central-1'. The result is limits and usage data on all instance
+%% types that are deployed in `ca-central-1', by all of the fleets that
+%% reside in `eu-west-1'.
 %%
 %% </li> </ul> This operation can be used in the following ways:
 %%
@@ -1289,8 +1292,8 @@ describe_compute(Client, Input, Options)
 %% remote location. Optionally, specify a single instance type to retrieve
 %% information for.
 %%
-%% </li> </ul> If successful, an `EC2InstanceLimits' object is returned with
-%% limits and usage data for each requested instance type.
+%% </li> </ul> If successful, an `EC2InstanceLimits' object is returned
+%% with limits and usage data for each requested instance type.
 %%
 %% Learn more
 %%
@@ -1337,8 +1340,8 @@ describe_fleet_attributes(Client, Input, Options)
 %%
 %% The data returned includes the current fleet capacity (number of EC2
 %% instances), and settings that can control how capacity scaling. For fleets
-%% with remote locations, this operation retrieves data for the fleet's home
-%% Region only.
+%% with remote locations, this operation retrieves data for the fleet's
+%% home Region only.
 %%
 %% This operation can be used in the following ways:
 %%
@@ -1352,9 +1355,10 @@ describe_fleet_attributes(Client, Input, Options)
 %% to retrieve results as a set of sequential pages.
 %%
 %% If successful, a `FleetCapacity' object is returned for each requested
-%% fleet ID. Each FleetCapacity object includes a `Location' property, which
-%% is set to the fleet's home Region. When a list of fleet IDs is provided,
-%% attribute objects are returned only for fleets that currently exist.
+%% fleet ID. Each FleetCapacity object includes a `Location' property,
+%% which is set to the fleet's home Region. When a list of fleet IDs is
+%% provided, attribute objects are returned only for fleets that currently
+%% exist.
 %%
 %% Some API operations may limit the number of fleet IDs that are allowed in
 %% one request. If a request exceeds this limit, the request fails and the
@@ -1430,9 +1434,9 @@ describe_fleet_location_attributes(Client, Input, Options)
 %%
 %% The data returned includes the current capacity (number of EC2 instances)
 %% and some scaling settings for the requested fleet location. Use this
-%% operation to retrieve capacity information for a fleet's remote location
-%% or home Region (you can also retrieve home Region capacity by calling
-%% `DescribeFleetCapacity').
+%% operation to retrieve capacity information for a fleet's remote
+%% location or home Region (you can also retrieve home Region capacity by
+%% calling `DescribeFleetCapacity').
 %%
 %% To retrieve capacity data, identify a fleet and location.
 %%
@@ -1456,12 +1460,13 @@ describe_fleet_location_capacity(Client, Input, Options)
 %% Utilization data provides a snapshot of current game hosting activity at
 %% the requested location. Use this operation to retrieve utilization
 %% information for a fleet's remote location or home Region (you can also
-%% retrieve home Region utilization by calling `DescribeFleetUtilization').
+%% retrieve home Region utilization by calling
+%% `DescribeFleetUtilization').
 %%
 %% To retrieve utilization data, identify a fleet and location.
 %%
-%% If successful, a `FleetUtilization' object is returned for the requested
-%% fleet location.
+%% If successful, a `FleetUtilization' object is returned for the
+%% requested fleet location.
 %%
 %% Learn more
 %%
@@ -1491,9 +1496,9 @@ describe_fleet_location_utilization(Client, Input, Options)
 %% location, specify the fleet ID and a location. Port setting updates can
 %% take time to propagate across all locations.
 %%
-%% </li> </ul> If successful, a set of `IpPermission' objects is returned for
-%% the requested fleet ID. When a location is specified, a pending status is
-%% included. If the requested fleet has been deleted, the result set is
+%% </li> </ul> If successful, a set of `IpPermission' objects is returned
+%% for the requested fleet ID. When a location is specified, a pending status
+%% is included. If the requested fleet has been deleted, the result set is
 %% empty.
 %%
 %% Learn more
@@ -1508,9 +1513,9 @@ describe_fleet_port_settings(Client, Input, Options)
 
 %% @doc Retrieves utilization statistics for one or more fleets.
 %%
-%% Utilization data provides a snapshot of how the fleet's hosting resources
-%% are currently being used. For fleets with remote locations, this operation
-%% retrieves data for the fleet's home Region only. See
+%% Utilization data provides a snapshot of how the fleet's hosting
+%% resources are currently being used. For fleets with remote locations, this
+%% operation retrieves data for the fleet's home Region only. See
 %% DescribeFleetLocationUtilization to get utilization statistics for a
 %% fleet's remote locations.
 %%
@@ -1527,8 +1532,8 @@ describe_fleet_port_settings(Client, Input, Options)
 %%
 %% If successful, a FleetUtilization object is returned for each requested
 %% fleet ID, unless the fleet identifier is not found. Each fleet utilization
-%% object includes a `Location' property, which is set to the fleet's home
-%% Region.
+%% object includes a `Location' property, which is set to the fleet's
+%% home Region.
 %%
 %% Some API operations may limit the number of fleet IDs allowed in one
 %% request. If a request exceeds this limit, the request fails and the error
@@ -1700,13 +1705,13 @@ describe_game_session_queues(Client, Input, Options)
 %%
 %% <ul> <li> To retrieve all game sessions that are currently running on all
 %% locations in a fleet, provide a fleet or alias ID, with an optional status
-%% filter. This approach returns all game sessions in the fleet's home Region
-%% and all remote locations.
+%% filter. This approach returns all game sessions in the fleet's home
+%% Region and all remote locations.
 %%
 %% </li> <li> To retrieve all game sessions that are currently running on a
 %% specific fleet location, provide a fleet or alias ID and a location name,
-%% with optional status filter. The location can be the fleet's home Region
-%% or any remote location.
+%% with optional status filter. The location can be the fleet's home
+%% Region or any remote location.
 %%
 %% </li> <li> To retrieve a specific game session, provide the game session
 %% ID. This approach looks for the game session ID in all fleets that reside
@@ -1715,15 +1720,15 @@ describe_game_session_queues(Client, Input, Options)
 %% </li> </ul> Use the pagination parameters to retrieve results as a set of
 %% sequential pages.
 %%
-%% If successful, a `GameSession' object is returned for each game session
-%% that matches the request.
+%% If successful, a `GameSession' object is returned for each game
+%% session that matches the request.
 %%
 %% This operation is not designed to be continually called to track game
 %% session status. This practice can cause you to exceed your API limit,
 %% which results in errors. Instead, you must configure an Amazon Simple
 %% Notification Service (SNS) topic to receive notifications from FlexMatch
-%% or queues. Continuously polling with `DescribeGameSessions' should only be
-%% used for games in development with low game session usage.
+%% or queues. Continuously polling with `DescribeGameSessions' should
+%% only be used for games in development with low game session usage.
 %%
 %% Available in Amazon GameLift Local.
 %%
@@ -1739,8 +1744,8 @@ describe_game_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGameSessions">>, Input, Options).
 
-%% @doc Retrieves information about a fleet's instances, including instance
-%% IDs, connection data, and status.
+%% @doc Retrieves information about a fleet's instances, including
+%% instance IDs, connection data, and status.
 %%
 %% This operation can be used in the following ways:
 %%
@@ -1862,8 +1867,8 @@ describe_matchmaking_rule_sets(Client, Input, Options)
 %% session status. Use the pagination parameters to retrieve results as a set
 %% of sequential pages.
 %%
-%% If successful, a `PlayerSession' object is returned for each session that
-%% matches the request.
+%% If successful, a `PlayerSession' object is returned for each session
+%% that matches the request.
 %%
 %% Related actions
 %%
@@ -1901,11 +1906,11 @@ describe_runtime_configuration(Client, Input, Options)
 
 %% @doc Retrieves all scaling policies applied to a fleet.
 %%
-%% To get a fleet's scaling policies, specify the fleet ID. You can filter
-%% this request by policy status, such as to retrieve only active scaling
-%% policies. Use the pagination parameters to retrieve results as a set of
-%% sequential pages. If successful, set of `ScalingPolicy' objects is
-%% returned for the fleet.
+%% To get a fleet's scaling policies, specify the fleet ID. You can
+%% filter this request by policy status, such as to retrieve only active
+%% scaling policies. Use the pagination parameters to retrieve results as a
+%% set of sequential pages. If successful, set of `ScalingPolicy' objects
+%% is returned for the fleet.
 %%
 %% A fleet may have all of its scaling policies suspended. This operation
 %% does not affect the status of the scaling policies, which remains ACTIVE.
@@ -1983,10 +1988,10 @@ describe_vpc_peering_connections(Client, Input, Options)
 %% a user name and password as strings for use with a Windows Remote Desktop
 %% client. For a Linux instance, GameLift returns a user name and RSA private
 %% key, also as strings, for use with an SSH client. The private key must be
-%% saved in the proper format to a `.pem' file before using. If you're making
-%% this request using the CLI, saving the secret can be handled as part of
-%% the `GetInstanceAccess' request, as shown in one of the examples for this
-%% operation.
+%% saved in the proper format to a `.pem' file before using. If
+%% you're making this request using the CLI, saving the secret can be
+%% handled as part of the `GetInstanceAccess' request, as shown in one of
+%% the examples for this operation.
 %%
 %% To request access to a specific instance, specify the IDs of both the
 %% instance and the fleet it belongs to.
@@ -2044,14 +2049,14 @@ get_game_session_log_url(Client, Input, Options)
 %% a user name and password as strings for use with a Windows Remote Desktop
 %% client. For a Linux instance, GameLift returns a user name and RSA private
 %% key, also as strings, for use with an SSH client. The private key must be
-%% saved in the proper format to a `.pem' file before using. If you're making
-%% this request using the CLI, saving the secret can be handled as part of
-%% the `GetInstanceAccess' request, as shown in one of the examples for this
-%% operation.
+%% saved in the proper format to a `.pem' file before using. If
+%% you're making this request using the CLI, saving the secret can be
+%% handled as part of the `GetInstanceAccess' request, as shown in one of
+%% the examples for this operation.
 %%
 %% To request access to a specific instance, specify the IDs of both the
-%% instance and the fleet it belongs to. You can retrieve a fleet's instance
-%% IDs by calling DescribeInstances.
+%% instance and the fleet it belongs to. You can retrieve a fleet's
+%% instance IDs by calling DescribeInstances.
 %%
 %% Learn more
 %%
@@ -2090,8 +2095,8 @@ list_aliases(Client, Input, Options)
 %% Web Services account in use.
 %%
 %% You can limit results to builds that are in a specific status by using the
-%% `Status' parameter. Use the pagination parameters to retrieve results in a
-%% set of sequential pages.
+%% `Status' parameter. Use the pagination parameters to retrieve results
+%% in a set of sequential pages.
 %%
 %% Build resources are not listed in any particular order.
 %%
@@ -2131,8 +2136,8 @@ list_compute(Client, Input, Options)
 %%
 %% This operation can be used in the following ways:
 %%
-%% <ul> <li> To get a list of all fleets in a Region, don't provide a build
-%% or script identifier.
+%% <ul> <li> To get a list of all fleets in a Region, don't provide a
+%% build or script identifier.
 %%
 %% </li> <li> To get a list of all fleets where a specific custom game build
 %% is deployed, provide the build ID.
@@ -2272,12 +2277,12 @@ list_tags_for_resource(Client, Input, Options)
 %% Target-based policy
 %%
 %% A target-based policy tracks a single metric:
-%% PercentAvailableGameSessions. This metric tells us how much of a fleet's
-%% hosting capacity is ready to host game sessions but is not currently in
-%% use. This is the fleet's buffer; it measures the additional player demand
-%% that the fleet could handle at current capacity. With a target-based
-%% policy, you set your ideal buffer size and leave it to Amazon GameLift to
-%% take whatever action is needed to maintain that target.
+%% PercentAvailableGameSessions. This metric tells us how much of a
+%% fleet's hosting capacity is ready to host game sessions but is not
+%% currently in use. This is the fleet's buffer; it measures the
+%% additional player demand that the fleet could handle at current capacity.
+%% With a target-based policy, you set your ideal buffer size and leave it to
+%% Amazon GameLift to take whatever action is needed to maintain that target.
 %%
 %% For example, you might choose to maintain a 10% buffer for a fleet that
 %% has the capacity to host 100 simultaneous game sessions. This policy tells
@@ -2287,13 +2292,14 @@ list_tags_for_resource(Client, Input, Options)
 %% buffer.
 %%
 %% To create or update a target-based policy, specify a fleet ID and name,
-%% and set the policy type to "TargetBased". Specify the metric to track
-%% (PercentAvailableGameSessions) and reference a `TargetConfiguration'
-%% object with your desired buffer value. Exclude all other parameters. On a
-%% successful request, the policy name is returned. The scaling policy is
-%% automatically in force as soon as it's successfully created. If the
-%% fleet's auto-scaling actions are temporarily suspended, the new policy
-%% will be in force once the fleet actions are restarted.
+%% and set the policy type to &quot;TargetBased&quot;. Specify the metric to
+%% track (PercentAvailableGameSessions) and reference a
+%% `TargetConfiguration' object with your desired buffer value. Exclude
+%% all other parameters. On a successful request, the policy name is
+%% returned. The scaling policy is automatically in force as soon as it's
+%% successfully created. If the fleet's auto-scaling actions are
+%% temporarily suspended, the new policy will be in force once the fleet
+%% actions are restarted.
 %%
 %% Rule-based policy
 %%
@@ -2303,28 +2309,29 @@ list_tags_for_resource(Client, Input, Options)
 %% Each policy specifies whether to scale up or scale down (and by how much),
 %% so you need one policy for each type of action.
 %%
-%% For example, a policy may make the following statement: "If the percentage
-%% of idle instances is greater than 20% for more than 15 minutes, then
-%% reduce the fleet capacity by 10%."
+%% For example, a policy may make the following statement: &quot;If the
+%% percentage of idle instances is greater than 20% for more than 15 minutes,
+%% then reduce the fleet capacity by 10%.&quot;
 %%
 %% A policy's rule statement has the following structure:
 %%
 %% If `[MetricName]' is `[ComparisonOperator]' `[Threshold]' for
-%% `[EvaluationPeriods]' minutes, then `[ScalingAdjustmentType]' to/by
-%% `[ScalingAdjustment]'.
+%% `[EvaluationPeriods]' minutes, then `[ScalingAdjustmentType]'
+%% to/by `[ScalingAdjustment]'.
 %%
 %% To implement the example, the rule statement would look like this:
 %%
-%% If `[PercentIdleInstances]' is `[GreaterThanThreshold]' `[20]' for `[15]'
-%% minutes, then `[PercentChangeInCapacity]' to/by `[10]'.
+%% If `[PercentIdleInstances]' is `[GreaterThanThreshold]' `[20]'
+%% for `[15]' minutes, then `[PercentChangeInCapacity]' to/by
+%% `[10]'.
 %%
 %% To create or update a scaling policy, specify a unique combination of name
-%% and fleet ID, and set the policy type to "RuleBased". Specify the
-%% parameter values for a policy rule statement. On a successful request, the
-%% policy name is returned. Scaling policies are automatically in force as
-%% soon as they're successfully created. If the fleet's auto-scaling actions
-%% are temporarily suspended, the new policy will be in force once the fleet
-%% actions are restarted.
+%% and fleet ID, and set the policy type to &quot;RuleBased&quot;. Specify
+%% the parameter values for a policy rule statement. On a successful request,
+%% the policy name is returned. Scaling policies are automatically in force
+%% as soon as they're successfully created. If the fleet's
+%% auto-scaling actions are temporarily suspended, the new policy will be in
+%% force once the fleet actions are restarted.
 put_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_scaling_policy(Client, Input, []).
@@ -2368,9 +2375,9 @@ register_compute(Client, Input, Options)
 %% game server. You can also include connection and game server data.
 %%
 %% Once a game server is successfully registered, it is put in status
-%% `AVAILABLE'. A request to register a game server may fail if the instance
-%% it is running on is in the process of shutting down as part of instance
-%% balancing or scale-down activity.
+%% `AVAILABLE'. A request to register a game server may fail if the
+%% instance it is running on is in the process of shutting down as part of
+%% instance balancing or scale-down activity.
 %%
 %% Learn more
 %%
@@ -2388,8 +2395,9 @@ register_game_server(Client, Input, Options)
 %% This is done as part of the build creation process; see GameSession.
 %%
 %% To request new credentials, specify the build ID as returned with an
-%% initial `CreateBuild' request. If successful, a new set of credentials are
-%% returned, along with the S3 storage location associated with the build ID.
+%% initial `CreateBuild' request. If successful, a new set of credentials
+%% are returned, along with the S3 storage location associated with the build
+%% ID.
 %%
 %% Learn more
 %%
@@ -2449,8 +2457,8 @@ resume_game_server_group(Client, Input, Options)
 %% which results in errors. Instead, you must configure configure an Amazon
 %% Simple Notification Service (SNS) topic to receive notifications from
 %% FlexMatch or queues. Continuously polling game session status with
-%% `DescribeGameSessions' should only be used for games in development with
-%% low game session usage.
+%% `DescribeGameSessions' should only be used for games in development
+%% with low game session usage.
 %%
 %% When searching for game sessions, you specify exactly where you want to
 %% search and provide a search filter expression, a sort expression, or both.
@@ -2461,8 +2469,8 @@ resume_game_server_group(Client, Input, Options)
 %%
 %% <ul> <li> To search all game sessions that are currently running on all
 %% locations in a fleet, provide a fleet or alias ID. This approach returns
-%% game sessions in the fleet's home Region and all remote locations that fit
-%% the search criteria.
+%% game sessions in the fleet's home Region and all remote locations that
+%% fit the search criteria.
 %%
 %% </li> <li> To search all game sessions that are currently running on a
 %% specific fleet location, provide a fleet or alias ID and a location name.
@@ -2472,10 +2480,10 @@ resume_game_server_group(Client, Input, Options)
 %% </li> </ul> Use the pagination parameters to retrieve results as a set of
 %% sequential pages.
 %%
-%% If successful, a `GameSession' object is returned for each game session
-%% that matches the request. Search finds game sessions that are in `ACTIVE'
-%% status only. To retrieve information on game sessions in other statuses,
-%% use DescribeGameSessions .
+%% If successful, a `GameSession' object is returned for each game
+%% session that matches the request. Search finds game sessions that are in
+%% `ACTIVE' status only. To retrieve information on game sessions in
+%% other statuses, use DescribeGameSessions .
 %%
 %% You can search or sort by the following game session attributes:
 %%
@@ -2486,11 +2494,12 @@ resume_game_server_group(Client, Input, Options)
 %% session names do not need to be unique to a game session.
 %%
 %% </li> <li> gameSessionProperties -- Custom data defined in a game
-%% session's `GameProperty' parameter. `GameProperty' values are stored as
-%% key:value pairs; the filter expression must indicate the key and a string
-%% to search the data values for. For example, to search for game sessions
-%% with custom data containing the key:value pair "gameMode:brawl", specify
-%% the following: `gameSessionProperties.gameMode = "brawl"'. All custom data
+%% session's `GameProperty' parameter. `GameProperty' values are
+%% stored as key:value pairs; the filter expression must indicate the key and
+%% a string to search the data values for. For example, to search for game
+%% sessions with custom data containing the key:value pair
+%% &quot;gameMode:brawl&quot;, specify the following:
+%% `gameSessionProperties.gameMode = &quot;brawl&quot;'. All custom data
 %% values are searched as strings.
 %%
 %% </li> <li> maximumSessions -- Maximum number of player sessions allowed
@@ -2510,10 +2519,10 @@ resume_game_server_group(Client, Input, Options)
 %% join.
 %%
 %% </li> </ul> Returned values for `playerSessionCount' and
-%% `hasAvailablePlayerSessions' change quickly as players join sessions and
-%% others drop out. Results should be considered a snapshot in time. Be sure
-%% to refresh search results often, and handle sessions that fill up before a
-%% player can join.
+%% `hasAvailablePlayerSessions' change quickly as players join sessions
+%% and others drop out. Results should be considered a snapshot in time. Be
+%% sure to refresh search results often, and handle sessions that fill up
+%% before a player can join.
 %%
 %% All APIs by task
 search_game_sessions(Client, Input)
@@ -2535,9 +2544,9 @@ search_game_sessions(Client, Input, Options)
 %% <ul> <li> To restart actions on instances in the fleet's home Region,
 %% provide a fleet ID and the type of actions to resume.
 %%
-%% </li> <li> To restart actions on instances in one of the fleet's remote
-%% locations, provide a fleet ID, a location name, and the type of actions to
-%% resume.
+%% </li> <li> To restart actions on instances in one of the fleet's
+%% remote locations, provide a fleet ID, a location name, and the type of
+%% actions to resume.
 %%
 %% </li> </ul> If successful, GameLift once again initiates scaling events as
 %% triggered by the fleet's scaling policies. If actions on the fleet
@@ -2556,8 +2565,8 @@ start_fleet_actions(Client, Input, Options)
 %% @doc Places a request for a new game session in a queue.
 %%
 %% When processing a placement request, Amazon GameLift searches for
-%% available resources on the queue's destinations, scanning each until it
-%% finds resources or the placement request times out.
+%% available resources on the queue's destinations, scanning each until
+%% it finds resources or the placement request times out.
 %%
 %% A game session placement request can also request player sessions. When a
 %% new game session is successfully created, Amazon GameLift creates a player
@@ -2594,10 +2603,10 @@ start_fleet_actions(Client, Input, Options)
 %% </li> </ul> If successful, a new game session placement is created.
 %%
 %% To track the status of a placement request, call
-%% DescribeGameSessionPlacement and check the request's status. If the status
-%% is `FULFILLED', a new game session has been created and a game session ARN
-%% and Region are referenced. If the placement request times out, you can
-%% resubmit the request or retry it with a different queue.
+%% DescribeGameSessionPlacement and check the request's status. If the
+%% status is `FULFILLED', a new game session has been created and a game
+%% session ARN and Region are referenced. If the placement request times out,
+%% you can resubmit the request or retry it with a different queue.
 start_game_session_placement(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_game_session_placement(Client, Input, []).
@@ -2617,13 +2626,13 @@ start_game_session_placement(Client, Input, Options)
 %%
 %% When using FlexMatch with GameLift managed hosting, you can request a
 %% backfill match from a client service by calling this operation with a
-%% `GameSessions' ID. You also have the option of making backfill requests
-%% directly from your game server. In response to a request, FlexMatch
-%% creates player sessions for the new players, updates the `GameSession'
-%% resource, and sends updated matchmaking data to the game server. You can
-%% request a backfill match at any point after a game session is started.
-%% Each game session can have only one active backfill request at a time; a
-%% subsequent request automatically replaces the earlier request.
+%% `GameSessions' ID. You also have the option of making backfill
+%% requests directly from your game server. In response to a request,
+%% FlexMatch creates player sessions for the new players, updates the
+%% `GameSession' resource, and sends updated matchmaking data to the game
+%% server. You can request a backfill match at any point after a game session
+%% is started. Each game session can have only one active backfill request at
+%% a time; a subsequent request automatically replaces the earlier request.
 %%
 %% When using FlexMatch as a standalone component, request a backfill match
 %% by calling this operation without a game session identifier. As with newly
@@ -2632,10 +2641,10 @@ start_game_session_placement(Client, Input, Options)
 %%
 %% To request a backfill match, specify a unique ticket ID, the original
 %% matchmaking configuration, and matchmaking data for all current players in
-%% the game session being backfilled. Optionally, specify the `GameSession'
-%% ARN. If successful, a match backfill ticket is created and returned with
-%% status set to QUEUED. Track the status of backfill tickets using the same
-%% method for tracking tickets for new matches.
+%% the game session being backfilled. Optionally, specify the
+%% `GameSession' ARN. If successful, a match backfill ticket is created
+%% and returned with status set to QUEUED. Track the status of backfill
+%% tickets using the same method for tracking tickets for new matches.
 %%
 %% Only game sessions created by FlexMatch are supported for match backfill.
 %%
@@ -2667,8 +2676,8 @@ start_match_backfill(Client, Input, Options)
 %% To start matchmaking, provide a unique ticket ID, specify a matchmaking
 %% configuration, and include the players to be matched. You must also
 %% include any player attributes that are required by the matchmaking
-%% configuration's rule set. If successful, a matchmaking ticket is returned
-%% with status set to `QUEUED'.
+%% configuration's rule set. If successful, a matchmaking ticket is
+%% returned with status set to `QUEUED'.
 %%
 %% Track matchmaking events to respond as needed and acquire game session
 %% connection information for successfully completed matches. Ticket status
@@ -2702,8 +2711,8 @@ start_matchmaking(Client, Input, Options)
 %%
 %% This operation can be used in the following ways:
 %%
-%% <ul> <li> To stop actions on instances in the fleet's home Region, provide
-%% a fleet ID and the type of actions to suspend.
+%% <ul> <li> To stop actions on instances in the fleet's home Region,
+%% provide a fleet ID and the type of actions to suspend.
 %%
 %% </li> <li> To stop actions on instances in one of the fleet's remote
 %% locations, provide a fleet ID, a location name, and the type of actions to
@@ -2743,8 +2752,8 @@ stop_game_session_placement(Client, Input, Options)
 %% This call is also used to turn off automatic backfill for an individual
 %% game session. This is for game sessions that are created with a
 %% matchmaking configuration that has automatic backfill enabled. The ticket
-%% ID is included in the `MatchmakerData' of an updated game session object,
-%% which is provided to the game server.
+%% ID is included in the `MatchmakerData' of an updated game session
+%% object, which is provided to the game server.
 %%
 %% If the operation is successful, the service sends back an empty JSON
 %% struct with the HTTP 200 response (not an empty HTTP body).
@@ -2940,35 +2949,36 @@ update_fleet_attributes(Client, Input, Options)
 %% properties:
 %%
 %% <ul> <li> Minimum/maximum size: Set hard limits on fleet capacity.
-%% GameLift cannot set the fleet's capacity to a value outside of this range,
-%% whether the capacity is changed manually or through automatic scaling.
+%% GameLift cannot set the fleet's capacity to a value outside of this
+%% range, whether the capacity is changed manually or through automatic
+%% scaling.
 %%
 %% </li> <li> Desired capacity: Manually set the number of Amazon EC2
-%% instances to be maintained in a fleet location. Before changing a fleet's
-%% desired capacity, you may want to call DescribeEC2InstanceLimits to get
-%% the maximum capacity of the fleet's Amazon EC2 instance type.
-%% Alternatively, consider using automatic scaling to adjust capacity based
-%% on player demand.
+%% instances to be maintained in a fleet location. Before changing a
+%% fleet's desired capacity, you may want to call
+%% DescribeEC2InstanceLimits to get the maximum capacity of the fleet's
+%% Amazon EC2 instance type. Alternatively, consider using automatic scaling
+%% to adjust capacity based on player demand.
 %%
 %% </li> </ul> This operation can be used in the following ways:
 %%
-%% <ul> <li> To update capacity for a fleet's home Region, or if the fleet
-%% has no remote locations, omit the `Location' parameter. The fleet must be
-%% in `ACTIVE' status.
+%% <ul> <li> To update capacity for a fleet's home Region, or if the
+%% fleet has no remote locations, omit the `Location' parameter. The
+%% fleet must be in `ACTIVE' status.
 %%
-%% </li> <li> To update capacity for a fleet's remote location, include the
-%% `Location' parameter set to the location to be updated. The location must
-%% be in `ACTIVE' status.
+%% </li> <li> To update capacity for a fleet's remote location, include
+%% the `Location' parameter set to the location to be updated. The
+%% location must be in `ACTIVE' status.
 %%
 %% </li> </ul> If successful, capacity settings are updated immediately. In
 %% response a change in desired capacity, GameLift initiates steps to start
 %% new instances or terminate existing instances in the requested fleet
 %% location. This continues until the location's active instance count
-%% matches the new desired instance count. You can track a fleet's current
-%% capacity by calling DescribeFleetCapacity or
+%% matches the new desired instance count. You can track a fleet's
+%% current capacity by calling DescribeFleetCapacity or
 %% DescribeFleetLocationCapacity. If the requested desired instance count is
-%% higher than the instance type's limit, the `LimitExceeded' exception
-%% occurs.
+%% higher than the instance type's limit, the `LimitExceeded'
+%% exception occurs.
 %%
 %% Learn more
 %%
@@ -2985,9 +2995,9 @@ update_fleet_capacity(Client, Input, Options)
 %%
 %% To update settings, specify the fleet ID to be updated and specify the
 %% changes to be made. List the permissions you want to add in
-%% `InboundPermissionAuthorizations', and permissions you want to remove in
-%% `InboundPermissionRevocations'. Permissions to be removed must match
-%% existing fleet permissions.
+%% `InboundPermissionAuthorizations', and permissions you want to remove
+%% in `InboundPermissionRevocations'. Permissions to be removed must
+%% match existing fleet permissions.
 %%
 %% If successful, the fleet ID for the updated fleet is returned. For fleets
 %% with remote locations, port setting updates can take time to propagate
@@ -3020,11 +3030,11 @@ update_fleet_port_settings(Client, Input, Options)
 %% hosting games and when they are available to be claimed.
 %%
 %% </li> <li> To report health status, identify the game server and game
-%% server group and set health check to `HEALTHY'. If a game server does not
-%% report health status for a certain length of time, the game server is no
-%% longer considered healthy. As a result, it will be eventually deregistered
-%% from the game server group to avoid affecting utilization metrics. The
-%% best practice is to report health every 60 seconds.
+%% server group and set health check to `HEALTHY'. If a game server does
+%% not report health status for a certain length of time, the game server is
+%% no longer considered healthy. As a result, it will be eventually
+%% deregistered from the game server group to avoid affecting utilization
+%% metrics. The best practice is to report health every 60 seconds.
 %%
 %% </li> <li> To change game server metadata, provide updated game server
 %% data.
@@ -3053,8 +3063,8 @@ update_game_server(Client, Input, Options)
 %% To update the game server group, specify the game server group ID and
 %% provide the updated values. Before applying the updates, the new values
 %% are validated to ensure that GameLift FleetIQ can continue to perform
-%% instance balancing activity. If successful, a `GameServerGroup' object is
-%% returned.
+%% instance balancing activity. If successful, a `GameServerGroup' object
+%% is returned.
 %%
 %% Learn more
 %%
@@ -3118,8 +3128,8 @@ update_matchmaking_configuration(Client, Input, Options)
 %% which tells GameLift how to launch server processes on all instances in
 %% the fleet.
 %%
-%% You can update a fleet's runtime configuration at any time after the fleet
-%% is created; it does not need to be in `ACTIVE' status.
+%% You can update a fleet's runtime configuration at any time after the
+%% fleet is created; it does not need to be in `ACTIVE' status.
 %%
 %% To update runtime configuration, specify the fleet ID and provide a
 %% `RuntimeConfiguration' with an updated set of server process
@@ -3129,8 +3139,8 @@ update_matchmaking_configuration(Client, Input, Options)
 %% Each instance in the fleet regularly checks for and retrieves updated
 %% runtime configurations. Instances immediately begin complying with the new
 %% configuration by launching new server processes or not replacing existing
-%% processes when they shut down. Updating a fleet's runtime configuration
-%% never affects existing server processes.
+%% processes when they shut down. Updating a fleet's runtime
+%% configuration never affects existing server processes.
 %%
 %% Learn more
 %%

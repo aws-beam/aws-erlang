@@ -33,13 +33,13 @@
 %% @doc Creates a rescore execution plan.
 %%
 %% A rescore execution plan is an Amazon Kendra Intelligent Ranking resource
-%% used for provisioning the `Rescore' API. You set the number of capacity
-%% units that you require for Amazon Kendra Intelligent Ranking to rescore or
-%% re-rank a search service's results.
+%% used for provisioning the `Rescore' API. You set the number of
+%% capacity units that you require for Amazon Kendra Intelligent Ranking to
+%% rescore or re-rank a search service's results.
 %%
-%% For an example of using the `CreateRescoreExecutionPlan' API, including
-%% using the Python and Java SDKs, see Semantically ranking a search
-%% service's results.
+%% For an example of using the `CreateRescoreExecutionPlan' API,
+%% including using the Python and Java SDKs, see Semantically ranking a
+%% search service's results.
 create_rescore_execution_plan(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rescore_execution_plan(Client, Input, []).
@@ -106,8 +106,8 @@ rescore(Client, Input, Options)
 %% @doc Adds a specified tag to a specified rescore execution plan.
 %%
 %% A rescore execution plan is an Amazon Kendra Intelligent Ranking resource
-%% used for provisioning the `Rescore' API. If the tag already exists, the
-%% existing value is replaced with the new value.
+%% used for provisioning the `Rescore' API. If the tag already exists,
+%% the existing value is replaced with the new value.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).

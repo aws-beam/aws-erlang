@@ -55,9 +55,9 @@ cancel_query(Client, Input, Options)
 %% configured schedule.
 %%
 %% Timestream assumes the execution role provided as part of the
-%% `ScheduledQueryExecutionRoleArn' parameter to run the query. You can use
-%% the `NotificationConfiguration' parameter to configure notification for
-%% your scheduled query operations.
+%% `ScheduledQueryExecutionRoleArn' parameter to run the query. You can
+%% use the `NotificationConfiguration' parameter to configure
+%% notification for your scheduled query operations.
 create_scheduled_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_scheduled_query(Client, Input, []).
@@ -117,8 +117,8 @@ execute_scheduled_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExecuteScheduledQuery">>, Input, Options).
 
-%% @doc Gets a list of all scheduled queries in the caller's Amazon account
-%% and Region.
+%% @doc Gets a list of all scheduled queries in the caller's Amazon
+%% account and Region.
 %%
 %% `ListScheduledQueries' is eventually consistent.
 list_scheduled_queries(Client, Input)
@@ -148,8 +148,8 @@ prepare_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PrepareQuery">>, Input, Options).
 
-%% @doc `Query' is a synchronous operation that enables you to run a query
-%% against your Amazon Timestream data.
+%% @doc `Query' is a synchronous operation that enables you to run a
+%% query against your Amazon Timestream data.
 %%
 %% `Query' will time out after 60 seconds. You must update the default
 %% timeout in the SDK to support a timeout of 60 seconds. See the code sample
@@ -160,8 +160,8 @@ prepare_query(Client, Input, Options)
 %% <ul> <li> If you submit a `Query' request with the same client token
 %% outside of the 5-minute idempotency window.
 %%
-%% </li> <li> If you submit a `Query' request with the same client token, but
-%% change other parameters, within the 5-minute idempotency window.
+%% </li> <li> If you submit a `Query' request with the same client token,
+%% but change other parameters, within the 5-minute idempotency window.
 %%
 %% </li> <li> If the size of the row (including the query metadata) exceeds 1
 %% MB, then the query will fail with the following error message:

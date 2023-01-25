@@ -40,15 +40,15 @@
 %%
 %% These temporary credentials consist of an access key ID, a secret access
 %% key, and a security token. Typically, you use `AssumeRole' within your
-%% account or for cross-account access. For a comparison of `AssumeRole' with
-%% other API operations that produce temporary credentials, see Requesting
-%% Temporary Security Credentials and Comparing the Amazon Web Services STS
-%% API operations in the IAM User Guide.
+%% account or for cross-account access. For a comparison of `AssumeRole'
+%% with other API operations that produce temporary credentials, see
+%% Requesting Temporary Security Credentials and Comparing the Amazon Web
+%% Services STS API operations in the IAM User Guide.
 %%
 %% Permissions
 %%
-%% The temporary security credentials created by `AssumeRole' can be used to
-%% make API calls to any Amazon Web Services service with the following
+%% The temporary security credentials created by `AssumeRole' can be used
+%% to make API calls to any Amazon Web Services service with the following
 %% exception: You cannot call the Amazon Web Services STS
 %% `GetFederationToken' or `GetSessionToken' API operations.
 %%
@@ -58,12 +58,12 @@
 %% Resource Names (ARNs) to use as managed session policies. The plaintext
 %% that you use for both inline and managed session policies can't exceed
 %% 2,048 characters. Passing policies to this operation returns new temporary
-%% credentials. The resulting session's permissions are the intersection of
-%% the role's identity-based policy and the session policies. You can use the
-%% role's temporary credentials in subsequent Amazon Web Services API calls
-%% to access resources in the account that owns the role. You cannot use
-%% session policies to grant more permissions than those allowed by the
-%% identity-based policy of the role that is being assumed. For more
+%% credentials. The resulting session's permissions are the intersection
+%% of the role's identity-based policy and the session policies. You can
+%% use the role's temporary credentials in subsequent Amazon Web Services
+%% API calls to access resources in the account that owns the role. You
+%% cannot use session policies to grant more permissions than those allowed
+%% by the identity-based policy of the role that is being assumed. For more
 %% information, see Session Policies in the IAM User Guide.
 %%
 %% When you create a role, you create two policies: A role trust policy that
@@ -73,8 +73,8 @@
 %%
 %% To assume a role from a different account, your Amazon Web Services
 %% account must be trusted by the role. The trust relationship is defined in
-%% the role's trust policy when the role is created. That trust policy states
-%% which accounts are allowed to delegate that access to users in the
+%% the role's trust policy when the role is created. That trust policy
+%% states which accounts are allowed to delegate that access to users in the
 %% account.
 %%
 %% A user who wants to access a role in a different account must also have
@@ -86,7 +86,8 @@
 %% the following:
 %%
 %% <ul> <li> Attach a policy to the user that allows the user to call
-%% `AssumeRole' (as long as the role's trust policy trusts the account).
+%% `AssumeRole' (as long as the role's trust policy trusts the
+%% account).
 %%
 %% </li> <li> Add the user as a principal directly in the role's trust
 %% policy.
@@ -115,23 +116,25 @@
 %% Using MFA with AssumeRole
 %%
 %% (Optional) You can include multi-factor authentication (MFA) information
-%% when you call `AssumeRole'. This is useful for cross-account scenarios to
-%% ensure that the user that assumes the role has been authenticated with an
-%% Amazon Web Services MFA device. In that scenario, the trust policy of the
-%% role being assumed includes a condition that tests for MFA authentication.
-%% If the caller does not include valid MFA information, the request to
-%% assume the role is denied. The condition in a trust policy that tests for
-%% MFA authentication might look like the following example.
+%% when you call `AssumeRole'. This is useful for cross-account scenarios
+%% to ensure that the user that assumes the role has been authenticated with
+%% an Amazon Web Services MFA device. In that scenario, the trust policy of
+%% the role being assumed includes a condition that tests for MFA
+%% authentication. If the caller does not include valid MFA information, the
+%% request to assume the role is denied. The condition in a trust policy that
+%% tests for MFA authentication might look like the following example.
 %%
-%% `"Condition": {"Bool": {"aws:MultiFactorAuthPresent": true}}'
+%% `&quot;Condition&quot;: {&quot;Bool&quot;:
+%% {&quot;aws:MultiFactorAuthPresent&quot;: true}}'
 %%
 %% For more information, see Configuring MFA-Protected API Access in the IAM
 %% User Guide guide.
 %%
-%% To use MFA with `AssumeRole', you pass values for the `SerialNumber' and
-%% `TokenCode' parameters. The `SerialNumber' value identifies the user's
-%% hardware or virtual MFA device. The `TokenCode' is the time-based one-time
-%% password (TOTP) that the MFA device produces.
+%% To use MFA with `AssumeRole', you pass values for the
+%% `SerialNumber' and `TokenCode' parameters. The `SerialNumber'
+%% value identifies the user's hardware or virtual MFA device. The
+%% `TokenCode' is the time-based one-time password (TOTP) that the MFA
+%% device produces.
 assume_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     assume_role(Client, Input, []).
@@ -145,9 +148,10 @@ assume_role(Client, Input, Options)
 %% This operation provides a mechanism for tying an enterprise identity store
 %% or directory to role-based Amazon Web Services access without
 %% user-specific credentials or configuration. For a comparison of
-%% `AssumeRoleWithSAML' with the other API operations that produce temporary
-%% credentials, see Requesting Temporary Security Credentials and Comparing
-%% the Amazon Web Services STS API operations in the IAM User Guide.
+%% `AssumeRoleWithSAML' with the other API operations that produce
+%% temporary credentials, see Requesting Temporary Security Credentials and
+%% Comparing the Amazon Web Services STS API operations in the IAM User
+%% Guide.
 %%
 %% The temporary security credentials returned by this operation consist of
 %% an access key ID, a secret access key, and a security token. Applications
@@ -157,33 +161,34 @@ assume_role(Client, Input, Options)
 %% Session Duration
 %%
 %% By default, the temporary security credentials created by
-%% `AssumeRoleWithSAML' last for one hour. However, you can use the optional
-%% `DurationSeconds' parameter to specify the duration of your session. Your
-%% role session lasts for the duration that you specify, or until the time
-%% specified in the SAML authentication response's `SessionNotOnOrAfter'
-%% value, whichever is shorter. You can provide a `DurationSeconds' value
-%% from 900 seconds (15 minutes) up to the maximum session duration setting
-%% for the role. This setting can have a value from 1 hour to 12 hours. To
-%% learn how to view the maximum value for your role, see View the Maximum
-%% Session Duration Setting for a Role in the IAM User Guide. The maximum
-%% session duration limit applies when you use the `AssumeRole*' API
-%% operations or the `assume-role*' CLI commands. However the limit does not
-%% apply when you use those operations to create a console URL. For more
-%% information, see Using IAM Roles in the IAM User Guide.
+%% `AssumeRoleWithSAML' last for one hour. However, you can use the
+%% optional `DurationSeconds' parameter to specify the duration of your
+%% session. Your role session lasts for the duration that you specify, or
+%% until the time specified in the SAML authentication response's
+%% `SessionNotOnOrAfter' value, whichever is shorter. You can provide a
+%% `DurationSeconds' value from 900 seconds (15 minutes) up to the
+%% maximum session duration setting for the role. This setting can have a
+%% value from 1 hour to 12 hours. To learn how to view the maximum value for
+%% your role, see View the Maximum Session Duration Setting for a Role in the
+%% IAM User Guide. The maximum session duration limit applies when you use
+%% the `AssumeRole*' API operations or the `assume-role*' CLI
+%% commands. However the limit does not apply when you use those operations
+%% to create a console URL. For more information, see Using IAM Roles in the
+%% IAM User Guide.
 %%
 %% Role chaining limits your CLI or Amazon Web Services API role session to a
-%% maximum of one hour. When you use the `AssumeRole' API operation to assume
-%% a role, you can specify the duration of your role session with the
-%% `DurationSeconds' parameter. You can specify a parameter value of up to
-%% 43200 seconds (12 hours), depending on the maximum session duration
+%% maximum of one hour. When you use the `AssumeRole' API operation to
+%% assume a role, you can specify the duration of your role session with the
+%% `DurationSeconds' parameter. You can specify a parameter value of up
+%% to 43200 seconds (12 hours), depending on the maximum session duration
 %% setting for your role. However, if you assume a role using role chaining
-%% and provide a `DurationSeconds' parameter value greater than one hour, the
-%% operation fails.
+%% and provide a `DurationSeconds' parameter value greater than one hour,
+%% the operation fails.
 %%
 %% Permissions
 %%
-%% The temporary security credentials created by `AssumeRoleWithSAML' can be
-%% used to make API calls to any Amazon Web Services service with the
+%% The temporary security credentials created by `AssumeRoleWithSAML' can
+%% be used to make API calls to any Amazon Web Services service with the
 %% following exception: you cannot call the STS `GetFederationToken' or
 %% `GetSessionToken' API operations.
 %%
@@ -193,12 +198,12 @@ assume_role(Client, Input, Options)
 %% Resource Names (ARNs) to use as managed session policies. The plaintext
 %% that you use for both inline and managed session policies can't exceed
 %% 2,048 characters. Passing policies to this operation returns new temporary
-%% credentials. The resulting session's permissions are the intersection of
-%% the role's identity-based policy and the session policies. You can use the
-%% role's temporary credentials in subsequent Amazon Web Services API calls
-%% to access resources in the account that owns the role. You cannot use
-%% session policies to grant more permissions than those allowed by the
-%% identity-based policy of the role that is being assumed. For more
+%% credentials. The resulting session's permissions are the intersection
+%% of the role's identity-based policy and the session policies. You can
+%% use the role's temporary credentials in subsequent Amazon Web Services
+%% API calls to access resources in the account that owns the role. You
+%% cannot use session policies to grant more permissions than those allowed
+%% by the identity-based policy of the role that is being assumed. For more
 %% information, see Session Policies in the IAM User Guide.
 %%
 %% Calling `AssumeRoleWithSAML' does not require the use of Amazon Web
@@ -208,9 +213,9 @@ assume_role(Client, Input, Options)
 %%
 %% Calling `AssumeRoleWithSAML' can result in an entry in your CloudTrail
 %% logs. The entry includes the value in the `NameID' element of the SAML
-%% assertion. We recommend that you use a `NameIDType' that is not associated
-%% with any personally identifiable information (PII). For example, you could
-%% instead use the persistent identifier
+%% assertion. We recommend that you use a `NameIDType' that is not
+%% associated with any personally identifiable information (PII). For
+%% example, you could instead use the persistent identifier
 %% (`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent').
 %%
 %% Tags
@@ -233,8 +238,8 @@ assume_role(Client, Input, Options)
 %% for your request are to the upper size limit.
 %%
 %% You can pass a session tag with the same key as a tag that is attached to
-%% the role. When you do, session tags override the role's tags with the same
-%% key.
+%% the role. When you do, session tags override the role's tags with the
+%% same key.
 %%
 %% An administrator must grant you the permissions necessary to pass session
 %% tags. The administrator can also create granular permissions to allow you
@@ -247,12 +252,12 @@ assume_role(Client, Input, Options)
 %%
 %% SAML Configuration
 %%
-%% Before your application can call `AssumeRoleWithSAML', you must configure
-%% your SAML identity provider (IdP) to issue the claims required by Amazon
-%% Web Services. Additionally, you must use Identity and Access Management
-%% (IAM) to create a SAML provider entity in your Amazon Web Services account
-%% that represents your identity provider. You must also create an IAM role
-%% that specifies this SAML provider in its trust policy.
+%% Before your application can call `AssumeRoleWithSAML', you must
+%% configure your SAML identity provider (IdP) to issue the claims required
+%% by Amazon Web Services. Additionally, you must use Identity and Access
+%% Management (IAM) to create a SAML provider entity in your Amazon Web
+%% Services account that represents your identity provider. You must also
+%% create an IAM role that specifies this SAML provider in its trust policy.
 %%
 %% For more information, see the following resources:
 %%
@@ -290,17 +295,18 @@ assume_role_with_saml(Client, Input, Options)
 %% Web Services SDK for Android Developer Guide and Amazon Cognito Overview
 %% in the Amazon Web Services SDK for iOS Developer Guide.
 %%
-%% Calling `AssumeRoleWithWebIdentity' does not require the use of Amazon Web
-%% Services security credentials. Therefore, you can distribute an
+%% Calling `AssumeRoleWithWebIdentity' does not require the use of Amazon
+%% Web Services security credentials. Therefore, you can distribute an
 %% application (for example, on mobile devices) that requests temporary
 %% security credentials without including long-term Amazon Web Services
-%% credentials in the application. You also don't need to deploy server-based
-%% proxy services that use long-term Amazon Web Services credentials.
-%% Instead, the identity of the caller is validated by using a token from the
-%% web identity provider. For a comparison of `AssumeRoleWithWebIdentity'
-%% with the other API operations that produce temporary credentials, see
-%% Requesting Temporary Security Credentials and Comparing the Amazon Web
-%% Services STS API operations in the IAM User Guide.
+%% credentials in the application. You also don't need to deploy
+%% server-based proxy services that use long-term Amazon Web Services
+%% credentials. Instead, the identity of the caller is validated by using a
+%% token from the web identity provider. For a comparison of
+%% `AssumeRoleWithWebIdentity' with the other API operations that produce
+%% temporary credentials, see Requesting Temporary Security Credentials and
+%% Comparing the Amazon Web Services STS API operations in the IAM User
+%% Guide.
 %%
 %% The temporary security credentials returned by this API consist of an
 %% access key ID, a secret access key, and a security token. Applications can
@@ -310,24 +316,24 @@ assume_role_with_saml(Client, Input, Options)
 %% Session Duration
 %%
 %% By default, the temporary security credentials created by
-%% `AssumeRoleWithWebIdentity' last for one hour. However, you can use the
-%% optional `DurationSeconds' parameter to specify the duration of your
-%% session. You can provide a value from 900 seconds (15 minutes) up to the
-%% maximum session duration setting for the role. This setting can have a
+%% `AssumeRoleWithWebIdentity' last for one hour. However, you can use
+%% the optional `DurationSeconds' parameter to specify the duration of
+%% your session. You can provide a value from 900 seconds (15 minutes) up to
+%% the maximum session duration setting for the role. This setting can have a
 %% value from 1 hour to 12 hours. To learn how to view the maximum value for
 %% your role, see View the Maximum Session Duration Setting for a Role in the
 %% IAM User Guide. The maximum session duration limit applies when you use
-%% the `AssumeRole*' API operations or the `assume-role*' CLI commands.
-%% However the limit does not apply when you use those operations to create a
-%% console URL. For more information, see Using IAM Roles in the IAM User
-%% Guide.
+%% the `AssumeRole*' API operations or the `assume-role*' CLI
+%% commands. However the limit does not apply when you use those operations
+%% to create a console URL. For more information, see Using IAM Roles in the
+%% IAM User Guide.
 %%
 %% Permissions
 %%
-%% The temporary security credentials created by `AssumeRoleWithWebIdentity'
-%% can be used to make API calls to any Amazon Web Services service with the
-%% following exception: you cannot call the STS `GetFederationToken' or
-%% `GetSessionToken' API operations.
+%% The temporary security credentials created by
+%% `AssumeRoleWithWebIdentity' can be used to make API calls to any
+%% Amazon Web Services service with the following exception: you cannot call
+%% the STS `GetFederationToken' or `GetSessionToken' API operations.
 %%
 %% (Optional) You can pass inline or managed session policies to this
 %% operation. You can pass a single JSON policy document to use as an inline
@@ -335,12 +341,12 @@ assume_role_with_saml(Client, Input, Options)
 %% Resource Names (ARNs) to use as managed session policies. The plaintext
 %% that you use for both inline and managed session policies can't exceed
 %% 2,048 characters. Passing policies to this operation returns new temporary
-%% credentials. The resulting session's permissions are the intersection of
-%% the role's identity-based policy and the session policies. You can use the
-%% role's temporary credentials in subsequent Amazon Web Services API calls
-%% to access resources in the account that owns the role. You cannot use
-%% session policies to grant more permissions than those allowed by the
-%% identity-based policy of the role that is being assumed. For more
+%% credentials. The resulting session's permissions are the intersection
+%% of the role's identity-based policy and the session policies. You can
+%% use the role's temporary credentials in subsequent Amazon Web Services
+%% API calls to access resources in the account that owns the role. You
+%% cannot use session policies to grant more permissions than those allowed
+%% by the identity-based policy of the role that is being assumed. For more
 %% information, see Session Policies in the IAM User Guide.
 %%
 %% Tags
@@ -425,10 +431,10 @@ assume_role_with_web_identity(Client, Input, Options)
 %% Services request.
 %%
 %% For example, if a user is not authorized to perform an operation that he
-%% or she has requested, the request returns a `Client.UnauthorizedOperation'
-%% response (an HTTP 403 response). Some Amazon Web Services operations
-%% additionally return an encoded message that can provide details about this
-%% authorization failure.
+%% or she has requested, the request returns a
+%% `Client.UnauthorizedOperation' response (an HTTP 403 response). Some
+%% Amazon Web Services operations additionally return an encoded message that
+%% can provide details about this authorization failure.
 %%
 %% Only certain Amazon Web Services operations return an encoded
 %% authorization message. The documentation for an individual operation
@@ -439,7 +445,8 @@ assume_role_with_web_identity(Client, Input, Options)
 %% contain privileged information that the user who requested the operation
 %% should not see. To decode an authorization status message, a user must be
 %% granted permissions through an IAM policy to request the
-%% `DecodeAuthorizationMessage' (`sts:DecodeAuthorizationMessage') action.
+%% `DecodeAuthorizationMessage' (`sts:DecodeAuthorizationMessage')
+%% action.
 %%
 %% The decoded message includes the following type of information:
 %%
@@ -468,19 +475,20 @@ decode_authorization_message(Client, Input, Options)
 %%
 %% Access keys consist of two parts: an access key ID (for example,
 %% `AKIAIOSFODNN7EXAMPLE') and a secret access key (for example,
-%% `wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY'). For more information about
-%% access keys, see Managing Access Keys for IAM Users in the IAM User Guide.
+%% `wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY'). For more information
+%% about access keys, see Managing Access Keys for IAM Users in the IAM User
+%% Guide.
 %%
 %% When you pass an access key ID to this operation, it returns the ID of the
 %% Amazon Web Services account to which the keys belong. Access key IDs
 %% beginning with `AKIA' are long-term credentials for an IAM user or the
 %% Amazon Web Services account root user. Access key IDs beginning with
-%% `ASIA' are temporary credentials that are created using STS operations. If
-%% the account in the response belongs to you, you can sign in as the root
-%% user and review your root user access keys. Then, you can pull a
-%% credentials report to learn which IAM user owns the keys. To learn who
-%% requested the temporary credentials for an `ASIA' access key, view the STS
-%% events in your CloudTrail logs in the IAM User Guide.
+%% `ASIA' are temporary credentials that are created using STS
+%% operations. If the account in the response belongs to you, you can sign in
+%% as the root user and review your root user access keys. Then, you can pull
+%% a credentials report to learn which IAM user owns the keys. To learn who
+%% requested the temporary credentials for an `ASIA' access key, view the
+%% STS events in your CloudTrail logs in the IAM User Guide.
 %%
 %% This operation does not indicate the state of the access key. The key
 %% might be active, inactive, or deleted. Active keys might not have
@@ -498,11 +506,11 @@ get_access_key_info(Client, Input, Options)
 %%
 %% No permissions are required to perform this operation. If an administrator
 %% adds a policy to your IAM user or role that explicitly denies access to
-%% the `sts:GetCallerIdentity' action, you can still perform this operation.
-%% Permissions are not required because the same information is returned when
-%% an IAM user or role is denied access. To view an example response, see I
-%% Am Not Authorized to Perform: iam:DeleteVirtualMFADevice in the IAM User
-%% Guide.
+%% the `sts:GetCallerIdentity' action, you can still perform this
+%% operation. Permissions are not required because the same information is
+%% returned when an IAM user or role is denied access. To view an example
+%% response, see I Am Not Authorized to Perform: iam:DeleteVirtualMFADevice
+%% in the IAM User Guide.
 get_caller_identity(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_caller_identity(Client, Input, []).
@@ -520,19 +528,20 @@ get_caller_identity(Client, Input, Options)
 %% long-term security credentials of an IAM user. As a result, this call is
 %% appropriate in contexts where those credentials can be safely stored,
 %% usually in a server-based application. For a comparison of
-%% `GetFederationToken' with the other API operations that produce temporary
-%% credentials, see Requesting Temporary Security Credentials and Comparing
-%% the Amazon Web Services STS API operations in the IAM User Guide.
+%% `GetFederationToken' with the other API operations that produce
+%% temporary credentials, see Requesting Temporary Security Credentials and
+%% Comparing the Amazon Web Services STS API operations in the IAM User
+%% Guide.
 %%
 %% You can create a mobile-based or browser-based app that can authenticate
 %% users using a web identity provider like Login with Amazon, Facebook,
 %% Google, or an OpenID Connect-compatible identity provider. In this case,
-%% we recommend that you use Amazon Cognito or `AssumeRoleWithWebIdentity'.
-%% For more information, see Federation Through a Web-based Identity Provider
-%% in the IAM User Guide.
+%% we recommend that you use Amazon Cognito or
+%% `AssumeRoleWithWebIdentity'. For more information, see Federation
+%% Through a Web-based Identity Provider in the IAM User Guide.
 %%
-%% You can also call `GetFederationToken' using the security credentials of
-%% an Amazon Web Services account root user, but we do not recommend it.
+%% You can also call `GetFederationToken' using the security credentials
+%% of an Amazon Web Services account root user, but we do not recommend it.
 %% Instead, we recommend that you create an IAM user for the purpose of the
 %% proxy application. Then attach a policy to the IAM user that limits
 %% federated users to only the actions and resources that they need to
@@ -549,13 +558,14 @@ get_caller_identity(Client, Input, Options)
 %%
 %% Permissions
 %%
-%% You can use the temporary credentials created by `GetFederationToken' in
-%% any Amazon Web Services service except the following:
+%% You can use the temporary credentials created by `GetFederationToken'
+%% in any Amazon Web Services service except the following:
 %%
 %% <ul> <li> You cannot call any IAM operations using the CLI or the Amazon
 %% Web Services API.
 %%
-%% </li> <li> You cannot call any STS operations except `GetCallerIdentity'.
+%% </li> <li> You cannot call any STS operations except
+%% `GetCallerIdentity'.
 %%
 %% </li> </ul> You must pass an inline or managed session policy to this
 %% operation. You can pass a single JSON policy document to use as an inline
@@ -577,9 +587,9 @@ get_caller_identity(Client, Input, Options)
 %%
 %% You can use the credentials to access a resource that has a resource-based
 %% policy. If that policy specifically references the federated user session
-%% in the `Principal' element of the policy, the session has the permissions
-%% allowed by the policy. These permissions are granted in addition to the
-%% permissions granted by the session policies.
+%% in the `Principal' element of the policy, the session has the
+%% permissions allowed by the policy. These permissions are granted in
+%% addition to the permissions granted by the session policies.
 %%
 %% Tags
 %%
@@ -590,9 +600,9 @@ get_caller_identity(Client, Input, Options)
 %% You can create a mobile-based or browser-based app that can authenticate
 %% users using a web identity provider like Login with Amazon, Facebook,
 %% Google, or an OpenID Connect-compatible identity provider. In this case,
-%% we recommend that you use Amazon Cognito or `AssumeRoleWithWebIdentity'.
-%% For more information, see Federation Through a Web-based Identity Provider
-%% in the IAM User Guide.
+%% we recommend that you use Amazon Cognito or
+%% `AssumeRoleWithWebIdentity'. For more information, see Federation
+%% Through a Web-based Identity Provider in the IAM User Guide.
 %%
 %% An administrator must grant you the permissions necessary to pass session
 %% tags. The administrator can also create granular permissions to allow you
@@ -600,12 +610,12 @@ get_caller_identity(Client, Input, Options)
 %% Using Tags for Attribute-Based Access Control in the IAM User Guide.
 %%
 %% Tag key–value pairs are not case sensitive, but case is preserved. This
-%% means that you cannot have separate `Department' and `department' tag
-%% keys. Assume that the user that you are federating has the
-%% `Department'=`Marketing' tag and you pass the `department'=`engineering'
-%% session tag. `Department' and `department' are not saved as separate tags,
-%% and the session tag passed in the request takes precedence over the user
-%% tag.
+%% means that you cannot have separate `Department' and `department'
+%% tag keys. Assume that the user that you are federating has the
+%% `Department'=`Marketing' tag and you pass the
+%% `department'=`engineering' session tag. `Department' and
+%% `department' are not saved as separate tags, and the session tag
+%% passed in the request takes precedence over the user tag.
 get_federation_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_federation_token(Client, Input, []).
@@ -617,23 +627,24 @@ get_federation_token(Client, Input, Options)
 %% account or IAM user.
 %%
 %% The credentials consist of an access key ID, a secret access key, and a
-%% security token. Typically, you use `GetSessionToken' if you want to use
-%% MFA to protect programmatic calls to specific Amazon Web Services API
-%% operations like Amazon EC2 `StopInstances'. MFA-enabled IAM users would
-%% need to call `GetSessionToken' and submit an MFA code that is associated
-%% with their MFA device. Using the temporary security credentials that are
-%% returned from the call, IAM users can then make programmatic calls to API
-%% operations that require MFA authentication. If you do not supply a correct
-%% MFA code, then the API returns an access denied error. For a comparison of
-%% `GetSessionToken' with the other API operations that produce temporary
-%% credentials, see Requesting Temporary Security Credentials and Comparing
-%% the Amazon Web Services STS API operations in the IAM User Guide.
+%% security token. Typically, you use `GetSessionToken' if you want to
+%% use MFA to protect programmatic calls to specific Amazon Web Services API
+%% operations like Amazon EC2 `StopInstances'. MFA-enabled IAM users
+%% would need to call `GetSessionToken' and submit an MFA code that is
+%% associated with their MFA device. Using the temporary security credentials
+%% that are returned from the call, IAM users can then make programmatic
+%% calls to API operations that require MFA authentication. If you do not
+%% supply a correct MFA code, then the API returns an access denied error.
+%% For a comparison of `GetSessionToken' with the other API operations
+%% that produce temporary credentials, see Requesting Temporary Security
+%% Credentials and Comparing the Amazon Web Services STS API operations in
+%% the IAM User Guide.
 %%
 %% No permissions are required for users to perform this operation. The
-%% purpose of the `sts:GetSessionToken' operation is to authenticate the user
-%% using MFA. You cannot use policies to control authentication operations.
-%% For more information, see Permissions for GetSessionToken in the IAM User
-%% Guide.
+%% purpose of the `sts:GetSessionToken' operation is to authenticate the
+%% user using MFA. You cannot use policies to control authentication
+%% operations. For more information, see Permissions for GetSessionToken in
+%% the IAM User Guide.
 %%
 %% Session Duration
 %%
@@ -666,10 +677,10 @@ get_federation_token(Client, Input, Options)
 %%
 %% The credentials that are returned by `GetSessionToken' are based on
 %% permissions associated with the user whose credentials were used to call
-%% the operation. If `GetSessionToken' is called using Amazon Web Services
-%% account root user credentials, the temporary credentials have root user
-%% permissions. Similarly, if `GetSessionToken' is called using the
-%% credentials of an IAM user, the temporary credentials have the same
+%% the operation. If `GetSessionToken' is called using Amazon Web
+%% Services account root user credentials, the temporary credentials have
+%% root user permissions. Similarly, if `GetSessionToken' is called using
+%% the credentials of an IAM user, the temporary credentials have the same
 %% permissions as the IAM user.
 %%
 %% For more information about using `GetSessionToken' to create temporary

@@ -283,13 +283,14 @@ add_layer_version_permission(Client, LayerName, VersionNumber, Input0, Options0)
 %%
 %% To grant permission to another account, specify the account ID as the
 %% `Principal'. To grant permission to an organization defined in
-%% Organizations, specify the organization ID as the `PrincipalOrgID'. For
-%% Amazon Web Services, the principal is a domain-style identifier that the
-%% service defines, such as `s3.amazonaws.com' or `sns.amazonaws.com'. For
-%% Amazon Web Services, you can also specify the ARN of the associated
-%% resource as the `SourceArn'. If you grant permission to a service
-%% principal without specifying the source, other accounts could potentially
-%% configure resources in their account to invoke your Lambda function.
+%% Organizations, specify the organization ID as the `PrincipalOrgID'.
+%% For Amazon Web Services, the principal is a domain-style identifier that
+%% the service defines, such as `s3.amazonaws.com' or
+%% `sns.amazonaws.com'. For Amazon Web Services, you can also specify the
+%% ARN of the associated resource as the `SourceArn'. If you grant
+%% permission to a service principal without specifying the source, other
+%% accounts could potentially configure resources in their account to invoke
+%% your Lambda function.
 %%
 %% This operation adds a statement to a resource-based permissions policy for
 %% the function. For more information about function policies, see Using
@@ -323,8 +324,8 @@ add_permission(Client, FunctionName, Input0, Options0) ->
 %% update to invoke a different version.
 %%
 %% You can also map an alias to split invocation requests between two
-%% versions. Use the `RoutingConfig' parameter to specify a second version
-%% and the percentage of invocation requests that it receives.
+%% versions. Use the `RoutingConfig' parameter to specify a second
+%% version and the percentage of invocation requests that it receives.
 create_alias(Client, FunctionName, Input) ->
     create_alias(Client, FunctionName, Input, []).
 create_alias(Client, FunctionName, Input0, Options0) ->
@@ -396,22 +397,22 @@ create_code_signing_config(Client, Input0, Options0) ->
 %% </li> </ul> The following error handling options are available only for
 %% stream sources (DynamoDB and Kinesis):
 %%
-%% <ul> <li> `BisectBatchOnFunctionError' – If the function returns an error,
-%% split the batch in two and retry.
+%% <ul> <li> `BisectBatchOnFunctionError' – If the function returns an
+%% error, split the batch in two and retry.
 %%
-%% </li> <li> `DestinationConfig' – Send discarded records to an Amazon SQS
-%% queue or Amazon SNS topic.
+%% </li> <li> `DestinationConfig' – Send discarded records to an Amazon
+%% SQS queue or Amazon SNS topic.
 %%
-%% </li> <li> `MaximumRecordAgeInSeconds' – Discard records older than the
-%% specified age. The default value is infinite (-1). When set to infinite
-%% (-1), failed records are retried until the record expires
+%% </li> <li> `MaximumRecordAgeInSeconds' – Discard records older than
+%% the specified age. The default value is infinite (-1). When set to
+%% infinite (-1), failed records are retried until the record expires
 %%
-%% </li> <li> `MaximumRetryAttempts' – Discard records after the specified
-%% number of retries. The default value is infinite (-1). When set to
-%% infinite (-1), failed records are retried until the record expires.
+%% </li> <li> `MaximumRetryAttempts' – Discard records after the
+%% specified number of retries. The default value is infinite (-1). When set
+%% to infinite (-1), failed records are retried until the record expires.
 %%
-%% </li> <li> `ParallelizationFactor' – Process multiple batches from each
-%% shard concurrently.
+%% </li> <li> `ParallelizationFactor' – Process multiple batches from
+%% each shard concurrently.
 %%
 %% </li> </ul> For information about which configuration parameters apply to
 %% each event source, see the following topics.
@@ -460,46 +461,46 @@ create_event_source_mapping(Client, Input0, Options0) ->
 %% log streaming and X-Ray for request tracing.
 %%
 %% If the deployment package is a container image, then you set the package
-%% type to `Image'. For a container image, the code property must include the
-%% URI of a container image in the Amazon ECR registry. You do not need to
-%% specify the handler and runtime properties.
+%% type to `Image'. For a container image, the code property must include
+%% the URI of a container image in the Amazon ECR registry. You do not need
+%% to specify the handler and runtime properties.
 %%
 %% If the deployment package is a .zip file archive, then you set the package
-%% type to `Zip'. For a .zip file archive, the code property specifies the
-%% location of the .zip file. You must also specify the handler and runtime
-%% properties. The code in the deployment package must be compatible with the
-%% target instruction set architecture of the function (`x86-64' or `arm64').
-%% If you do not specify the architecture, then the default value is
-%% `x86-64'.
+%% type to `Zip'. For a .zip file archive, the code property specifies
+%% the location of the .zip file. You must also specify the handler and
+%% runtime properties. The code in the deployment package must be compatible
+%% with the target instruction set architecture of the function (`x86-64'
+%% or `arm64'). If you do not specify the architecture, then the default
+%% value is `x86-64'.
 %%
 %% When you create a function, Lambda provisions an instance of the function
 %% and its supporting resources. If your function connects to a VPC, this
 %% process can take a minute or so. During this time, you can't invoke or
-%% modify the function. The `State', `StateReason', and `StateReasonCode'
-%% fields in the response from `GetFunctionConfiguration' indicate when the
-%% function is ready to invoke. For more information, see Lambda function
-%% states.
+%% modify the function. The `State', `StateReason', and
+%% `StateReasonCode' fields in the response from
+%% `GetFunctionConfiguration' indicate when the function is ready to
+%% invoke. For more information, see Lambda function states.
 %%
 %% A function has an unpublished version, and can have published versions and
-%% aliases. The unpublished version changes when you update your function's
-%% code and configuration. A published version is a snapshot of your function
-%% code and configuration that can't be changed. An alias is a named resource
-%% that maps to a version, and can be changed to map to a different version.
-%% Use the `Publish' parameter to create version `1' of your function from
-%% its initial configuration.
+%% aliases. The unpublished version changes when you update your
+%% function's code and configuration. A published version is a snapshot
+%% of your function code and configuration that can't be changed. An
+%% alias is a named resource that maps to a version, and can be changed to
+%% map to a different version. Use the `Publish' parameter to create
+%% version `1' of your function from its initial configuration.
 %%
 %% The other parameters let you configure version-specific and function-level
 %% settings. You can modify version-specific settings later with
-%% `UpdateFunctionConfiguration'. Function-level settings apply to both the
-%% unpublished and published versions of the function, and include tags
+%% `UpdateFunctionConfiguration'. Function-level settings apply to both
+%% the unpublished and published versions of the function, and include tags
 %% (`TagResource') and per-function concurrency limits
 %% (`PutFunctionConcurrency').
 %%
 %% You can use code signing if your deployment package is a .zip file
 %% archive. To enable code signing for this function, specify the ARN of a
 %% code-signing configuration. When a user attempts to deploy a code package
-%% with `UpdateFunctionCode', Lambda checks that the code package has a valid
-%% signature from a trusted publisher. The code-signing configuration
+%% with `UpdateFunctionCode', Lambda checks that the code package has a
+%% valid signature from a trusted publisher. The code-signing configuration
 %% includes set of signing profiles, which define the trusted publishers for
 %% this function.
 %%
@@ -508,10 +509,11 @@ create_event_source_mapping(Client, Input0, Options0) ->
 %% resource-based Identity and Access Management (IAM) policy. You can grant
 %% permissions at the function level, on a version, or on an alias.
 %%
-%% To invoke your function directly, use `Invoke'. To invoke your function in
-%% response to events in other Amazon Web Services, create an event source
-%% mapping (`CreateEventSourceMapping'), or configure a function trigger in
-%% the other service. For more information, see Invoking Lambda functions.
+%% To invoke your function directly, use `Invoke'. To invoke your
+%% function in response to events in other Amazon Web Services, create an
+%% event source mapping (`CreateEventSourceMapping'), or configure a
+%% function trigger in the other service. For more information, see Invoking
+%% Lambda functions.
 create_function(Client, Input) ->
     create_function(Client, Input, []).
 create_function(Client, Input0, Options0) ->
@@ -616,8 +618,8 @@ delete_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
 %% You can get the identifier of a mapping from the output of
 %% `ListEventSourceMappings'.
 %%
-%% When you delete an event source mapping, it enters a `Deleting' state and
-%% might not be completely deleted for several seconds.
+%% When you delete an event source mapping, it enters a `Deleting' state
+%% and might not be completely deleted for several seconds.
 delete_event_source_mapping(Client, UUID, Input) ->
     delete_event_source_mapping(Client, UUID, Input, []).
 delete_event_source_mapping(Client, UUID, Input0, Options0) ->
@@ -824,8 +826,8 @@ delete_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves details about your account's limits and usage in an Amazon
-%% Web Services Region.
+%% @doc Retrieves details about your account's limits and usage in an
+%% Amazon Web Services Region.
 get_account_settings(Client)
   when is_map(Client) ->
     get_account_settings(Client, #{}, #{}).
@@ -977,7 +979,8 @@ get_function_code_signing_config(Client, FunctionName, QueryMap, HeadersMap, Opt
 %% @doc Returns details about the reserved concurrency configuration for a
 %% function.
 %%
-%% To set a concurrency limit for a function, use `PutFunctionConcurrency'.
+%% To set a concurrency limit for a function, use
+%% `PutFunctionConcurrency'.
 get_function_concurrency(Client, FunctionName)
   when is_map(Client) ->
     get_function_concurrency(Client, FunctionName, #{}, #{}).
@@ -1006,8 +1009,8 @@ get_function_concurrency(Client, FunctionName, QueryMap, HeadersMap, Options0)
 %% The output includes only options that can vary between versions of a
 %% function. To modify these settings, use `UpdateFunctionConfiguration'.
 %%
-%% To get all of a function's details, including function-level settings, use
-%% `GetFunction'.
+%% To get all of a function's details, including function-level settings,
+%% use `GetFunction'.
 get_function_configuration(Client, FunctionName)
   when is_map(Client) ->
     get_function_configuration(Client, FunctionName, #{}, #{}).
@@ -1197,8 +1200,8 @@ get_policy(Client, FunctionName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the provisioned concurrency configuration for a function's
-%% alias or version.
+%% @doc Retrieves the provisioned concurrency configuration for a
+%% function's alias or version.
 get_provisioned_concurrency_config(Client, FunctionName, Qualifier)
   when is_map(Client) ->
     get_provisioned_concurrency_config(Client, FunctionName, Qualifier, #{}, #{}).
@@ -1261,8 +1264,8 @@ get_runtime_management_config(Client, FunctionName, QueryMap, HeadersMap, Option
 %% @doc Invokes a Lambda function.
 %%
 %% You can invoke a function synchronously (and wait for the response), or
-%% asynchronously. To invoke a function asynchronously, set `InvocationType'
-%% to `Event'.
+%% asynchronously. To invoke a function asynchronously, set
+%% `InvocationType' to `Event'.
 %%
 %% For synchronous invocation, details about the function response, including
 %% errors, are included in the response body and headers. For either
@@ -1282,10 +1285,10 @@ get_runtime_management_config(Client, FunctionName, QueryMap, HeadersMap, Option
 %% retain events that were not processed, configure your function with a
 %% dead-letter queue.
 %%
-%% The status code in the API response doesn't reflect function errors. Error
-%% codes are reserved for errors that prevent your function from executing,
-%% such as permissions errors, quota errors, or issues with your function's
-%% code and configuration. For example, Lambda returns
+%% The status code in the API response doesn't reflect function errors.
+%% Error codes are reserved for errors that prevent your function from
+%% executing, such as permissions errors, quota errors, or issues with your
+%% function's code and configuration. For example, Lambda returns
 %% `TooManyRequestsException' if running the function would cause you to
 %% exceed a concurrency limit at either the account level
 %% (`ConcurrentInvocationLimitExceeded') or function level
@@ -1527,8 +1530,8 @@ list_function_url_configs(Client, FunctionName, QueryMap, HeadersMap, Options0)
 %%
 %% Lambda returns up to 50 functions per call.
 %%
-%% Set `FunctionVersion' to `ALL' to include all published versions of each
-%% function in addition to the unpublished version.
+%% Set `FunctionVersion' to `ALL' to include all published versions
+%% of each function in addition to the unpublished version.
 %%
 %% The `ListFunctions' operation returns a subset of the
 %% `FunctionConfiguration' fields. To get the additional fields (State,
@@ -1634,9 +1637,9 @@ list_layer_versions(Client, LayerName, QueryMap, HeadersMap, Options0)
 %% each.
 %%
 %% Specify a runtime identifier to list only layers that indicate that
-%% they're compatible with that runtime. Specify a compatible architecture to
-%% include only layers that are compatible with that instruction set
-%% architecture.
+%% they're compatible with that runtime. Specify a compatible
+%% architecture to include only layers that are compatible with that
+%% instruction set architecture.
 list_layers(Client)
   when is_map(Client) ->
     list_layers(Client, #{}, #{}).
@@ -1753,8 +1756,8 @@ list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap, Options0)
 
 %% @doc Creates an Lambda layer from a ZIP archive.
 %%
-%% Each time you call `PublishLayerVersion' with the same layer name, a new
-%% version is created.
+%% Each time you call `PublishLayerVersion' with the same layer name, a
+%% new version is created.
 %%
 %% Add layers to your function with `CreateFunction' or
 %% `UpdateFunctionConfiguration'.
@@ -1786,10 +1789,10 @@ publish_layer_version(Client, LayerName, Input0, Options0) ->
 %% Use versions to create a snapshot of your function code and configuration
 %% that doesn't change.
 %%
-%% Lambda doesn't publish a version if the function's configuration and code
-%% haven't changed since the last version. Use `UpdateFunctionCode' or
-%% `UpdateFunctionConfiguration' to update the function before publishing a
-%% version.
+%% Lambda doesn't publish a version if the function's configuration
+%% and code haven't changed since the last version. Use
+%% `UpdateFunctionCode' or `UpdateFunctionConfiguration' to update
+%% the function before publishing a version.
 %%
 %% Clients can invoke versions directly or with an alias. To create an alias,
 %% use `CreateAlias'.
@@ -1850,8 +1853,8 @@ put_function_code_signing_config(Client, FunctionName, Input0, Options0) ->
 %% events simultaneously, and prevents it from scaling beyond that level. Use
 %% `GetFunction' to see the current setting for a function.
 %%
-%% Use `GetAccountSettings' to see your Regional concurrency limit. You can
-%% reserve concurrency for as many functions as you like, as long as you
+%% Use `GetAccountSettings' to see your Regional concurrency limit. You
+%% can reserve concurrency for as many functions as you like, as long as you
 %% leave at least 100 simultaneous executions unreserved for functions that
 %% aren't configured with a per-function limit. For more information, see
 %% Lambda function scaling.
@@ -1920,8 +1923,8 @@ put_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds a provisioned concurrency configuration to a function's alias or
-%% version.
+%% @doc Adds a provisioned concurrency configuration to a function's
+%% alias or version.
 put_provisioned_concurrency_config(Client, FunctionName, Input) ->
     put_provisioned_concurrency_config(Client, FunctionName, Input, []).
 put_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
@@ -1945,7 +1948,8 @@ put_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Sets the runtime management configuration for a function's version.
+%% @doc Sets the runtime management configuration for a function's
+%% version.
 %%
 %% For more information, see Runtime updates.
 put_runtime_management_config(Client, FunctionName, Input) ->
@@ -2145,22 +2149,22 @@ update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
 %% </li> </ul> The following error handling options are available only for
 %% stream sources (DynamoDB and Kinesis):
 %%
-%% <ul> <li> `BisectBatchOnFunctionError' – If the function returns an error,
-%% split the batch in two and retry.
+%% <ul> <li> `BisectBatchOnFunctionError' – If the function returns an
+%% error, split the batch in two and retry.
 %%
-%% </li> <li> `DestinationConfig' – Send discarded records to an Amazon SQS
-%% queue or Amazon SNS topic.
+%% </li> <li> `DestinationConfig' – Send discarded records to an Amazon
+%% SQS queue or Amazon SNS topic.
 %%
-%% </li> <li> `MaximumRecordAgeInSeconds' – Discard records older than the
-%% specified age. The default value is infinite (-1). When set to infinite
-%% (-1), failed records are retried until the record expires
+%% </li> <li> `MaximumRecordAgeInSeconds' – Discard records older than
+%% the specified age. The default value is infinite (-1). When set to
+%% infinite (-1), failed records are retried until the record expires
 %%
-%% </li> <li> `MaximumRetryAttempts' – Discard records after the specified
-%% number of retries. The default value is infinite (-1). When set to
-%% infinite (-1), failed records are retried until the record expires.
+%% </li> <li> `MaximumRetryAttempts' – Discard records after the
+%% specified number of retries. The default value is infinite (-1). When set
+%% to infinite (-1), failed records are retried until the record expires.
 %%
-%% </li> <li> `ParallelizationFactor' – Process multiple batches from each
-%% shard concurrently.
+%% </li> <li> `ParallelizationFactor' – Process multiple batches from
+%% each shard concurrently.
 %%
 %% </li> </ul> For information about which configuration parameters apply to
 %% each event source, see the following topics.
@@ -2206,9 +2210,9 @@ update_event_source_mapping(Client, UUID, Input0, Options0) ->
 %% signed by a trusted publisher. For more information, see Configuring code
 %% signing for Lambda.
 %%
-%% If the function's package type is `Image', then you must specify the code
-%% package in `ImageUri' as the URI of a container image in the Amazon ECR
-%% registry.
+%% If the function's package type is `Image', then you must specify
+%% the code package in `ImageUri' as the URI of a container image in the
+%% Amazon ECR registry.
 %%
 %% If the function's package type is `Zip', then you must specify the
 %% deployment package as a .zip file archive. Enter the Amazon S3 bucket and
@@ -2216,10 +2220,12 @@ update_event_source_mapping(Client, UUID, Input0, Options0) ->
 %% inline using the `ZipFile' field.
 %%
 %% The code in the deployment package must be compatible with the target
-%% instruction set architecture of the function (`x86-64' or `arm64').
+%% instruction set architecture of the function (`x86-64' or
+%% `arm64').
 %%
-%% The function's code is locked when you publish a version. You can't modify
-%% the code of a published version, only the unpublished version.
+%% The function's code is locked when you publish a version. You
+%% can't modify the code of a published version, only the unpublished
+%% version.
 %%
 %% For a function defined as a container image, Lambda resolves the image tag
 %% to an image digest. In Amazon ECR, if you update the image tag to a new
@@ -2252,17 +2258,17 @@ update_function_code(Client, FunctionName, Input0, Options0) ->
 %% and its supporting resources. If your function connects to a VPC, this
 %% process can take a minute. During this time, you can't modify the
 %% function, but you can still invoke it. The `LastUpdateStatus',
-%% `LastUpdateStatusReason', and `LastUpdateStatusReasonCode' fields in the
-%% response from `GetFunctionConfiguration' indicate when the update is
-%% complete and the function is processing events with the new configuration.
-%% For more information, see Lambda function states.
+%% `LastUpdateStatusReason', and `LastUpdateStatusReasonCode' fields
+%% in the response from `GetFunctionConfiguration' indicate when the
+%% update is complete and the function is processing events with the new
+%% configuration. For more information, see Lambda function states.
 %%
 %% These settings can vary between versions of a function and are locked when
-%% you publish a version. You can't modify the configuration of a published
-%% version, only the unpublished version.
+%% you publish a version. You can't modify the configuration of a
+%% published version, only the unpublished version.
 %%
-%% To configure function concurrency, use `PutFunctionConcurrency'. To grant
-%% invoke permissions to an Amazon Web Services account or Amazon Web
+%% To configure function concurrency, use `PutFunctionConcurrency'. To
+%% grant invoke permissions to an Amazon Web Services account or Amazon Web
 %% Service, use `AddPermission'.
 update_function_configuration(Client, FunctionName, Input) ->
     update_function_configuration(Client, FunctionName, Input, []).

@@ -14,19 +14,21 @@
 %% environment, launches an Amazon EC2 instance, and then connects from the
 %% instance to the environment.
 %%
-%% </li> <li> `CreateEnvironmentMembership': Adds an environment member to an
-%% environment.
+%% </li> <li> `CreateEnvironmentMembership': Adds an environment member
+%% to an environment.
 %%
-%% </li> <li> `DeleteEnvironment': Deletes an environment. If an Amazon EC2
-%% instance is connected to the environment, also terminates the instance.
+%% </li> <li> `DeleteEnvironment': Deletes an environment. If an Amazon
+%% EC2 instance is connected to the environment, also terminates the
+%% instance.
 %%
-%% </li> <li> `DeleteEnvironmentMembership': Deletes an environment member
-%% from an environment.
+%% </li> <li> `DeleteEnvironmentMembership': Deletes an environment
+%% member from an environment.
 %%
 %% </li> <li> `DescribeEnvironmentMemberships': Gets information about
 %% environment members for an environment.
 %%
-%% </li> <li> `DescribeEnvironments': Gets information about environments.
+%% </li> <li> `DescribeEnvironments': Gets information about
+%% environments.
 %%
 %% </li> <li> `DescribeEnvironmentStatus': Gets status information for an
 %% environment.

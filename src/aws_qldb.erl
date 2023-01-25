@@ -117,8 +117,8 @@ create_ledger(Client, Input0, Options0) ->
 %% This action is irreversible.
 %%
 %% If deletion protection is enabled, you must first disable it before you
-%% can delete the ledger. You can disable it by calling the `UpdateLedger'
-%% operation to set the flag to `false'.
+%% can delete the ledger. You can disable it by calling the
+%% `UpdateLedger' operation to set the flag to `false'.
 delete_ledger(Client, Name, Input) ->
     delete_ledger(Client, Name, Input, []).
 delete_ledger(Client, Name, Input0, Options0) ->
@@ -180,8 +180,8 @@ describe_journal_kinesis_stream(Client, LedgerName, StreamId, QueryMap, HeadersM
 %% This action does not return any expired export jobs. For more information,
 %% see Export job expiration in the Amazon QLDB Developer Guide.
 %%
-%% If the export job with the given `ExportId' doesn't exist, then throws
-%% `ResourceNotFoundException'.
+%% If the export job with the given `ExportId' doesn't exist, then
+%% throws `ResourceNotFoundException'.
 %%
 %% If the ledger with the given `Name' doesn't exist, then throws
 %% `ResourceNotFoundException'.
@@ -246,8 +246,8 @@ describe_ledger(Client, Name, QueryMap, HeadersMap, Options0)
 %% If the ledger with the given `Name' doesn't exist, then throws
 %% `ResourceNotFoundException'.
 %%
-%% If the ledger with the given `Name' is in `CREATING' status, then throws
-%% `ResourcePreconditionNotMetException'.
+%% If the ledger with the given `Name' is in `CREATING' status, then
+%% throws `ResourcePreconditionNotMetException'.
 %%
 %% You can initiate up to two concurrent journal export requests for each
 %% ledger. Beyond this limit, journal export requests throw
@@ -282,8 +282,8 @@ export_journal_to_s3(Client, Name, Input0, Options0) ->
 %% For information about the data contents in a block, see Journal contents
 %% in the Amazon QLDB Developer Guide.
 %%
-%% If the specified ledger doesn't exist or is in `DELETING' status, then
-%% throws `ResourceNotFoundException'.
+%% If the specified ledger doesn't exist or is in `DELETING' status,
+%% then throws `ResourceNotFoundException'.
 %%
 %% If the specified ledger is in `CREATING' status, then throws
 %% `ResourcePreconditionNotMetException'.
@@ -375,8 +375,8 @@ get_revision(Client, Name, Input0, Options0) ->
 %% information, see Expiration for terminal streams in the Amazon QLDB
 %% Developer Guide.
 %%
-%% This action returns a maximum of `MaxResults' items. It is paginated so
-%% that you can retrieve all the items by calling
+%% This action returns a maximum of `MaxResults' items. It is paginated
+%% so that you can retrieve all the items by calling
 %% `ListJournalKinesisStreamsForLedger' multiple times.
 list_journal_kinesis_streams_for_ledger(Client, LedgerName)
   when is_map(Client) ->
@@ -409,9 +409,9 @@ list_journal_kinesis_streams_for_ledger(Client, LedgerName, QueryMap, HeadersMap
 %% that are associated with the current Amazon Web Services account and
 %% Region.
 %%
-%% This action returns a maximum of `MaxResults' items, and is paginated so
-%% that you can retrieve all the items by calling `ListJournalS3Exports'
-%% multiple times.
+%% This action returns a maximum of `MaxResults' items, and is paginated
+%% so that you can retrieve all the items by calling
+%% `ListJournalS3Exports' multiple times.
 %%
 %% This action does not return any expired export jobs. For more information,
 %% see Export job expiration in the Amazon QLDB Developer Guide.
@@ -445,8 +445,8 @@ list_journal_s3_exports(Client, QueryMap, HeadersMap, Options0)
 %% @doc Returns an array of journal export job descriptions for a specified
 %% ledger.
 %%
-%% This action returns a maximum of `MaxResults' items, and is paginated so
-%% that you can retrieve all the items by calling
+%% This action returns a maximum of `MaxResults' items, and is paginated
+%% so that you can retrieve all the items by calling
 %% `ListJournalS3ExportsForLedger' multiple times.
 %%
 %% This action does not return any expired export jobs. For more information,
@@ -536,8 +536,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Creates a journal stream for a given Amazon QLDB ledger.
 %%
 %% The stream captures every document revision that is committed to the
-%% ledger's journal and delivers the data to a specified Amazon Kinesis Data
-%% Streams resource.
+%% ledger's journal and delivers the data to a specified Amazon Kinesis
+%% Data Streams resource.
 stream_journal_to_kinesis(Client, LedgerName, Input) ->
     stream_journal_to_kinesis(Client, LedgerName, Input, []).
 stream_journal_to_kinesis(Client, LedgerName, Input0, Options0) ->

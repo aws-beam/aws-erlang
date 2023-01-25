@@ -127,9 +127,9 @@ batch_check_layer_availability(Client, Input, Options)
 %%
 %% Images are specified with either an `imageTag' or `imageDigest'.
 %%
-%% You can remove a tag from an image by specifying the image's tag in your
-%% request. When you remove the last tag from an image, the image is deleted
-%% from your repository.
+%% You can remove a tag from an image by specifying the image's tag in
+%% your request. When you remove the last tag from an image, the image is
+%% deleted from your repository.
 %%
 %% You can completely delete an image (and all of its tags) by specifying the
 %% image's digest in your request.
@@ -164,8 +164,8 @@ batch_get_repository_scanning_configuration(Client, Input, Options)
 %% @doc Informs Amazon ECR that the image layer upload has completed for a
 %% specified registry, repository name, and upload ID.
 %%
-%% You can optionally provide a `sha256' digest of the image layer for data
-%% validation purposes.
+%% You can optionally provide a `sha256' digest of the image layer for
+%% data validation purposes.
 %%
 %% When an image is pushed, the CompleteLayerUpload API is called once per
 %% each new image layer to verify that the upload has completed.
@@ -310,11 +310,11 @@ describe_repositories(Client, Input, Options)
 %% can be used to access any Amazon ECR registry that your IAM principal has
 %% access to. The authorization token is valid for 12 hours.
 %%
-%% The `authorizationToken' returned is a base64 encoded string that can be
-%% decoded and used in a `docker login' command to authenticate to a
-%% registry. The CLI offers an `get-login-password' command that simplifies
-%% the login process. For more information, see Registry authentication in
-%% the Amazon Elastic Container Registry User Guide.
+%% The `authorizationToken' returned is a base64 encoded string that can
+%% be decoded and used in a `docker login' command to authenticate to a
+%% registry. The CLI offers an `get-login-password' command that
+%% simplifies the login process. For more information, see Registry
+%% authentication in the Amazon Elastic Container Registry User Guide.
 get_authorization_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_authorization_token(Client, Input, []).
@@ -401,11 +401,12 @@ initiate_layer_upload(Client, Input, Options)
 %% @doc Lists all the image IDs for the specified repository.
 %%
 %% You can filter images based on whether or not they are tagged by using the
-%% `tagStatus' filter and specifying either `TAGGED', `UNTAGGED' or `ANY'.
-%% For example, you can filter your results to return only `UNTAGGED' images
-%% and then pipe that result to a `BatchDeleteImage' operation to delete
-%% them. Or, you can filter your results to return only `TAGGED' images to
-%% list all of the tags in your repository.
+%% `tagStatus' filter and specifying either `TAGGED', `UNTAGGED'
+%% or `ANY'. For example, you can filter your results to return only
+%% `UNTAGGED' images and then pipe that result to a
+%% `BatchDeleteImage' operation to delete them. Or, you can filter your
+%% results to return only `TAGGED' images to list all of the tags in your
+%% repository.
 list_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_images(Client, Input, []).
@@ -438,8 +439,9 @@ put_image(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutImage">>, Input, Options).
 
-%% @doc The `PutImageScanningConfiguration' API is being deprecated, in favor
-%% of specifying the image scanning configuration at the registry level.
+%% @doc The `PutImageScanningConfiguration' API is being deprecated, in
+%% favor of specifying the image scanning configuration at the registry
+%% level.
 %%
 %% For more information, see `PutRegistryScanningConfiguration'.
 %%

@@ -78,8 +78,8 @@
 %% @doc Creates an Amazon Chime SDK messaging `AppInstance' under an AWS
 %% account.
 %%
-%% Only SDK messaging customers use this API. `CreateAppInstance' supports
-%% idempotency behavior as described in the AWS API Standard.
+%% Only SDK messaging customers use this API. `CreateAppInstance'
+%% supports idempotency behavior as described in the AWS API Standard.
 %%
 %% identity
 create_app_instance(Client, Input) ->
@@ -139,8 +139,8 @@ create_app_instance_admin(Client, AppInstanceArn, Input0, Options0) ->
 
 %% @doc Creates a user under an Amazon Chime `AppInstance'.
 %%
-%% The request consists of a unique `appInstanceUserId' and `Name' for that
-%% user.
+%% The request consists of a unique `appInstanceUserId' and `Name'
+%% for that user.
 create_app_instance_user(Client, Input) ->
     create_app_instance_user(Client, Input, []).
 create_app_instance_user(Client, Input0, Options0) ->
@@ -429,7 +429,8 @@ list_app_instance_user_endpoints(Client, AppInstanceUserArn, QueryMap, HeadersMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List all `AppInstanceUsers' created under a single `AppInstance'.
+%% @doc List all `AppInstanceUsers' created under a single
+%% `AppInstance'.
 list_app_instance_users(Client, AppInstanceArn)
   when is_map(Client) ->
     list_app_instance_users(Client, AppInstanceArn, #{}, #{}).
@@ -514,8 +515,8 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Sets the amount of time in days that a given `AppInstance' retains
-%% data.
+%% @doc Sets the amount of time in days that a given `AppInstance'
+%% retains data.
 put_app_instance_retention_settings(Client, AppInstanceArn, Input) ->
     put_app_instance_retention_settings(Client, AppInstanceArn, Input, []).
 put_app_instance_retention_settings(Client, AppInstanceArn, Input0, Options0) ->

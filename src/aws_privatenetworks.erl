@@ -417,8 +417,8 @@ get_order(Client, OrderArn, QueryMap, HeadersMap, Options0)
 %% filters to match the Amazon Resource Name (ARN) of an order, the status of
 %% device identifiers, or the ARN of the traffic group.
 %%
-%% <p>If you specify multiple filters, filters are joined with an OR, and the
-%% request returns results that match all of the specified filters.
+%% &lt;p&gt;If you specify multiple filters, filters are joined with an OR,
+%% and the request returns results that match all of the specified filters.
 list_device_identifiers(Client, Input) ->
     list_device_identifiers(Client, Input, []).
 list_device_identifiers(Client, Input0, Options0) ->

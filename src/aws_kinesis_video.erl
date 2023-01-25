@@ -127,8 +127,9 @@ create_stream(Client, Input0, Options0) ->
 
 %% @doc Deletes a specified signaling channel.
 %%
-%% `DeleteSignalingChannel' is an asynchronous operation. If you don't
-%% specify the channel's current version, the most recent version is deleted.
+%% `DeleteSignalingChannel' is an asynchronous operation. If you
+%% don't specify the channel's current version, the most recent
+%% version is deleted.
 delete_signaling_channel(Client, Input) ->
     delete_signaling_channel(Client, Input, []).
 delete_signaling_channel(Client, Input0, Options0) ->
@@ -241,8 +242,8 @@ describe_image_generation_configuration(Client, Input0, Options0) ->
 %%
 %% Either streamName or streamARN should be provided in the input.
 %%
-%% Returns the most current information about the stream. The `streamName' or
-%% `streamARN' should be provided in the input.
+%% Returns the most current information about the stream. The
+%% `streamName' or `streamARN' should be provided in the input.
 describe_mapped_resource_configuration(Client, Input) ->
     describe_mapped_resource_configuration(Client, Input, []).
 describe_mapped_resource_configuration(Client, Input0, Options0) ->
@@ -369,13 +370,14 @@ describe_stream(Client, Input0, Options0) ->
 %% writing.
 %%
 %% Use this endpoint in your application to read from the specified stream
-%% (using the `GetMedia' or `GetMediaForFragmentList' operations) or write to
-%% it (using the `PutMedia' operation).
+%% (using the `GetMedia' or `GetMediaForFragmentList' operations) or
+%% write to it (using the `PutMedia' operation).
 %%
 %% The returned endpoint does not have the API name appended. The client
 %% needs to add the API name to the returned endpoint.
 %%
-%% In the request, specify the stream either by `StreamName' or `StreamARN'.
+%% In the request, specify the stream either by `StreamName' or
+%% `StreamARN'.
 get_data_endpoint(Client, Input) ->
     get_data_endpoint(Client, Input, []).
 get_data_endpoint(Client, Input0, Options0) ->
@@ -402,18 +404,19 @@ get_data_endpoint(Client, Input0, Options0) ->
 %% receive messages.
 %%
 %% This API uses the `SingleMasterChannelEndpointConfiguration' input
-%% parameter, which consists of the `Protocols' and `Role' properties.
+%% parameter, which consists of the `Protocols' and `Role'
+%% properties.
 %%
-%% `Protocols' is used to determine the communication mechanism. For example,
-%% if you specify `WSS' as the protocol, this API produces a secure websocket
-%% endpoint. If you specify `HTTPS' as the protocol, this API generates an
-%% HTTPS endpoint.
+%% `Protocols' is used to determine the communication mechanism. For
+%% example, if you specify `WSS' as the protocol, this API produces a
+%% secure websocket endpoint. If you specify `HTTPS' as the protocol,
+%% this API generates an HTTPS endpoint.
 %%
-%% `Role' determines the messaging permissions. A `MASTER' role results in
-%% this API generating an endpoint that a client can use to communicate with
-%% any of the viewers on the channel. A `VIEWER' role results in this API
-%% generating an endpoint that a client can use to communicate only with a
-%% `MASTER'.
+%% `Role' determines the messaging permissions. A `MASTER' role
+%% results in this API generating an endpoint that a client can use to
+%% communicate with any of the viewers on the channel. A `VIEWER' role
+%% results in this API generating an endpoint that a client can use to
+%% communicate only with a `MASTER'.
 get_signaling_channel_endpoint(Client, Input) ->
     get_signaling_channel_endpoint(Client, Input, []).
 get_signaling_channel_endpoint(Client, Input0, Options0) ->
@@ -545,17 +548,18 @@ list_tags_for_stream(Client, Input0, Options0) ->
 %% The Kinesis Video Stream will sync the stream’s edge configuration with
 %% the Edge Agent IoT Greengrass component that runs on an IoT Hub Device,
 %% setup at your premise. The time to sync can vary and depends on the
-%% connectivity of the Hub Device. The `SyncStatus' will be updated as the
-%% edge configuration is acknowledged, and synced with the Edge Agent.
+%% connectivity of the Hub Device. The `SyncStatus' will be updated as
+%% the edge configuration is acknowledged, and synced with the Edge Agent.
 %%
 %% If this API is invoked for the first time, a new edge configuration will
-%% be created for the stream, and the sync status will be set to `SYNCING'.
-%% You will have to wait for the sync status to reach a terminal state such
-%% as: `IN_SYNC', or `SYNC_FAILED', before using this API again. If you
-%% invoke this API during the syncing process, a `ResourceInUseException'
-%% will be thrown. The connectivity of the stream’s edge configuration and
-%% the Edge Agent will be retried for 15 minutes. After 15 minutes, the
-%% status will transition into the `SYNC_FAILED' state.
+%% be created for the stream, and the sync status will be set to
+%% `SYNCING'. You will have to wait for the sync status to reach a
+%% terminal state such as: `IN_SYNC', or `SYNC_FAILED', before using
+%% this API again. If you invoke this API during the syncing process, a
+%% `ResourceInUseException' will be thrown. The connectivity of the
+%% stream’s edge configuration and the Edge Agent will be retried for 15
+%% minutes. After 15 minutes, the status will transition into the
+%% `SYNC_FAILED' state.
 start_edge_configuration_update(Client, Input) ->
     start_edge_configuration_update(Client, Input, []).
 start_edge_configuration_update(Client, Input0, Options0) ->
@@ -645,8 +649,8 @@ tag_stream(Client, Input0, Options0) ->
 
 %% @doc Removes one or more tags from a signaling channel.
 %%
-%% In the request, specify only a tag key or keys; don't specify the value.
-%% If you specify a tag key that does not exist, it's ignored.
+%% In the request, specify only a tag key or keys; don't specify the
+%% value. If you specify a tag key that does not exist, it's ignored.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 untag_resource(Client, Input0, Options0) ->
@@ -671,8 +675,8 @@ untag_resource(Client, Input0, Options0) ->
 
 %% @doc Removes one or more tags from a stream.
 %%
-%% In the request, specify only a tag key or keys; don't specify the value.
-%% If you specify a tag key that does not exist, it's ignored.
+%% In the request, specify only a tag key or keys; don't specify the
+%% value. If you specify a tag key that does not exist, it's ignored.
 %%
 %% In the request, you must provide the `StreamName' or `StreamARN'.
 untag_stream(Client, Input) ->
@@ -702,7 +706,8 @@ untag_stream(Client, Input0, Options0) ->
 %%
 %% To indicate whether you want to increase or decrease the data retention
 %% period, specify the `Operation' parameter in the request body. In the
-%% request, you must specify either the `StreamName' or the `StreamARN'.
+%% request, you must specify either the `StreamName' or the
+%% `StreamARN'.
 %%
 %% The retention period that you specify replaces the current value.
 %%
@@ -746,7 +751,8 @@ update_data_retention(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the `StreamInfo' and `ImageProcessingConfiguration' fields.
+%% @doc Updates the `StreamInfo' and `ImageProcessingConfiguration'
+%% fields.
 update_image_generation_configuration(Client, Input) ->
     update_image_generation_configuration(Client, Input, []).
 update_image_generation_configuration(Client, Input0, Options0) ->
@@ -773,11 +779,11 @@ update_image_generation_configuration(Client, Input0, Options0) ->
 %%
 %% There are two signaling modes that can specified :
 %%
-%% <ul> <li> If the `StorageStatus' is disabled, no data will be stored, and
-%% the `StreamARN' parameter will not be needed.
+%% <ul> <li> If the `StorageStatus' is disabled, no data will be stored,
+%% and the `StreamARN' parameter will not be needed.
 %%
-%% </li> <li> If the `StorageStatus' is enabled, the data will be stored in
-%% the `StreamARN' provided.
+%% </li> <li> If the `StorageStatus' is enabled, the data will be stored
+%% in the `StreamARN' provided.
 %%
 %% </li> </ul>
 update_media_storage_configuration(Client, Input) ->
@@ -829,10 +835,10 @@ update_notification_configuration(Client, Input0, Options0) ->
 %%
 %% This is an asynchronous operation and takes time to complete.
 %%
-%% If the `MessageTtlSeconds' value is updated (either increased or reduced),
-%% it only applies to new messages sent via this channel after it's been
-%% updated. Existing messages are still expired as per the previous
-%% `MessageTtlSeconds' value.
+%% If the `MessageTtlSeconds' value is updated (either increased or
+%% reduced), it only applies to new messages sent via this channel after
+%% it's been updated. Existing messages are still expired as per the
+%% previous `MessageTtlSeconds' value.
 update_signaling_channel(Client, Input) ->
     update_signaling_channel(Client, Input, []).
 update_signaling_channel(Client, Input0, Options0) ->
@@ -866,7 +872,8 @@ update_signaling_channel(Client, Input0, Options0) ->
 %% Streams assigns a new version number. To get the latest stream version,
 %% use the `DescribeStream' API.
 %%
-%% `UpdateStream' is an asynchronous operation, and takes time to complete.
+%% `UpdateStream' is an asynchronous operation, and takes time to
+%% complete.
 update_stream(Client, Input) ->
     update_stream(Client, Input, []).
 update_stream(Client, Input0, Options0) ->

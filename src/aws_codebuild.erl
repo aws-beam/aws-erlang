@@ -190,8 +190,8 @@ create_report_group(Client, Input, Options)
 %% CodePipeline. Because billing is on a per-build basis, you are billed for
 %% both builds. Therefore, if you are using CodePipeline, we recommend that
 %% you disable webhooks in CodeBuild. In the CodeBuild console, clear the
-%% Webhook box. For more information, see step 5 in Change a Build Project's
-%% Settings.
+%% Webhook box. For more information, see step 5 in Change a Build
+%% Project's Settings.
 create_webhook(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_webhook(Client, Input, []).
@@ -420,8 +420,8 @@ list_source_credentials(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSourceCredentials">>, Input, Options).
 
-%% @doc Stores a resource policy for the ARN of a `Project' or `ReportGroup'
-%% object.
+%% @doc Stores a resource policy for the ARN of a `Project' or
+%% `ReportGroup' object.
 put_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_resource_policy(Client, Input, []).
@@ -495,9 +495,9 @@ update_project(Client, Input, Options)
 %%
 %% The following should be kept in mind when making your projects public:
 %%
-%% All of a project's build results, logs, and artifacts, including builds
-%% that were run when the project was private, are available to the general
-%% public.
+%% All of a project's build results, logs, and artifacts, including
+%% builds that were run when the project was private, are available to the
+%% general public.
 %%
 %% All build logs and artifacts are available to the public. Environment
 %% variables, source code, and other sensitive information may have been

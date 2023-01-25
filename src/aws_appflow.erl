@@ -25,15 +25,15 @@
 %% </li> <li> Common errors: Client and server errors that all operations can
 %% return.
 %%
-%% </li> </ul> If you're new to Amazon AppFlow, we recommend that you review
-%% the Amazon AppFlow User Guide.
+%% </li> </ul> If you're new to Amazon AppFlow, we recommend that you
+%% review the Amazon AppFlow User Guide.
 %%
 %% Amazon AppFlow API users can use vendor-specific mechanisms for OAuth, and
 %% include applicable OAuth attributes (such as `auth-code' and
-%% `redirecturi') with the connector-specific `ConnectorProfileProperties'
-%% when creating a new connector profile using Amazon AppFlow API operations.
-%% For example, Salesforce users can refer to the Authorize Apps with OAuth
-%% documentation.
+%% `redirecturi') with the connector-specific
+%% `ConnectorProfileProperties' when creating a new connector profile
+%% using Amazon AppFlow API operations. For example, Salesforce users can
+%% refer to the Authorize Apps with OAuth documentation.
 -module(aws_appflow).
 
 -export([create_connector_profile/2,
@@ -249,8 +249,8 @@ describe_connector_entity(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of `connector-profile' details matching the provided
-%% `connector-profile' names and `connector-types'.
+%% @doc Returns a list of `connector-profile' details matching the
+%% provided `connector-profile' names and `connector-types'.
 %%
 %% Both input lists are optional, and you can use them to filter the result.
 %%
@@ -284,9 +284,9 @@ describe_connector_profiles(Client, Input0, Options0) ->
 %%
 %% If you don't specify a connector type, this operation describes all
 %% connectors vended by Amazon AppFlow. If there are more connectors than can
-%% be returned in one page, the response contains a `nextToken' object, which
-%% can be be passed in to the next call to the `DescribeConnectors' API
-%% operation to retrieve the next page.
+%% be returned in one page, the response contains a `nextToken' object,
+%% which can be be passed in to the next call to the `DescribeConnectors'
+%% API operation to retrieve the next page.
 describe_connectors(Client, Input) ->
     describe_connectors(Client, Input, []).
 describe_connectors(Client, Input0, Options0) ->
@@ -633,8 +633,8 @@ update_connector_profile(Client, Input0, Options0) ->
 %%
 %% This operation updates the connector with one of the following:
 %%
-%% <ul> <li> The latest version of the AWS Lambda function that's assigned to
-%% the connector
+%% <ul> <li> The latest version of the AWS Lambda function that's
+%% assigned to the connector
 %%
 %% </li> <li> A new AWS Lambda function that you specify
 %%

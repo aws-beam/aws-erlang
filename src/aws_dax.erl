@@ -91,8 +91,8 @@ create_subnet_group(Client, Input, Options)
 
 %% @doc Removes one or more nodes from a DAX cluster.
 %%
-%% You cannot use `DecreaseReplicationFactor' to remove the last node in a
-%% DAX cluster. If you need to do this, use `DeleteCluster' instead.
+%% You cannot use `DecreaseReplicationFactor' to remove the last node in
+%% a DAX cluster. If you need to do this, use `DeleteCluster' instead.
 decrease_replication_factor(Client, Input)
   when is_map(Client), is_map(Input) ->
     decrease_replication_factor(Client, Input, []).

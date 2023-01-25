@@ -2155,8 +2155,8 @@ get_segment_version(Client, ApplicationId, SegmentId, Version, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the configuration, dimension, and other
-%% settings for all the versions of a specific segment that's associated with
-%% an application.
+%% settings for all the versions of a specific segment that's associated
+%% with an application.
 get_segment_versions(Client, ApplicationId, SegmentId)
   when is_map(Client) ->
     get_segment_versions(Client, ApplicationId, SegmentId, #{}, #{}).

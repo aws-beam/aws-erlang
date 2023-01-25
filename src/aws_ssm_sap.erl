@@ -27,6 +27,8 @@
          list_components/3,
          list_databases/2,
          list_databases/3,
+         list_operations/2,
+         list_operations/3,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -286,6 +288,29 @@ list_databases(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists the operations performed by AWS Systems Manager for SAP.
+list_operations(Client, Input) ->
+    list_operations(Client, Input, []).
+list_operations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-operations"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists all tags on an SAP HANA application and/or database registered
 %% with AWS Systems Manager for SAP.
 list_tags_for_resource(Client, ResourceArn)
@@ -414,7 +439,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
+%% @doc Updates the settings of an application registered with AWS Systems
+%% Manager for SAP.
 update_application_settings(Client, Input) ->
     update_application_settings(Client, Input, []).
 update_application_settings(Client, Input0, Options0) ->

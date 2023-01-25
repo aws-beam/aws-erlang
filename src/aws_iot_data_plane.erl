@@ -172,8 +172,8 @@ list_named_shadows_for_thing(Client, ThingName, QueryMap, HeadersMap, Options0)
 %% account.
 %%
 %% This action returns only the topic names of the retained messages. It
-%% doesn't return any message payloads. Although this action doesn't return a
-%% message payload, it can still incur messaging costs.
+%% doesn't return any message payloads. Although this action doesn't
+%% return a message payload, it can still incur messaging costs.
 %%
 %% To get the message payload of a retained message, call GetRetainedMessage
 %% with the topic name of the retained message.

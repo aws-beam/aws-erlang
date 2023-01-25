@@ -324,10 +324,10 @@ associate_alias(Client, TargetDistributionId, Input0, Options0) ->
 %% primary distribution) that you can use in a continuous deployment
 %% workflow.
 %%
-%% After you create a staging distribution, you can use `UpdateDistribution'
-%% to modify the staging distribution's configuration. Then you can use
-%% `CreateContinuousDeploymentPolicy' to incrementally move traffic to the
-%% staging distribution.
+%% After you create a staging distribution, you can use
+%% `UpdateDistribution' to modify the staging distribution's
+%% configuration. Then you can use `CreateContinuousDeploymentPolicy' to
+%% incrementally move traffic to the staging distribution.
 copy_distribution(Client, PrimaryDistributionId, Input) ->
     copy_distribution(Client, PrimaryDistributionId, Input, []).
 copy_distribution(Client, PrimaryDistributionId, Input0, Options0) ->
@@ -386,9 +386,9 @@ copy_distribution(Client, PrimaryDistributionId, Input0, Options0) ->
 %%
 %% </li> </ul> The headers, cookies, and query strings that are included in
 %% the cache key are automatically included in requests that CloudFront sends
-%% to the origin. CloudFront sends a request when it can't find an object in
-%% its cache that matches the request's cache key. If you want to send values
-%% to the origin but not include them in the cache key, use
+%% to the origin. CloudFront sends a request when it can't find an object
+%% in its cache that matches the request's cache key. If you want to send
+%% values to the origin but not include them in the cache key, use
 %% `OriginRequestPolicy'.
 %%
 %% For more information about cache policies, see Controlling the cache key
@@ -434,11 +434,11 @@ create_cache_policy(Client, Input0, Options0) ->
 
 %% @doc Creates a new origin access identity.
 %%
-%% If you're using Amazon S3 for your origin, you can use an origin access
-%% identity to require users to access your content using a CloudFront URL
-%% instead of the Amazon S3 URL. For more information about how to use origin
-%% access identities, see Serving Private Content through CloudFront in the
-%% Amazon CloudFront Developer Guide.
+%% If you're using Amazon S3 for your origin, you can use an origin
+%% access identity to require users to access your content using a CloudFront
+%% URL instead of the Amazon S3 URL. For more information about how to use
+%% origin access identities, see Serving Private Content through CloudFront
+%% in the Amazon CloudFront Developer Guide.
 create_cloud_front_origin_access_identity(Client, Input) ->
     create_cloud_front_origin_access_identity(Client, Input, []).
 create_cloud_front_origin_access_identity(Client, Input0, Options0) ->
@@ -482,14 +482,14 @@ create_cloud_front_origin_access_identity(Client, Input0, Options0) ->
 %% custom domain name to two different CloudFront distributions.
 %%
 %% To use a continuous deployment policy, first use `CopyDistribution' to
-%% create a staging distribution, then use `UpdateDistribution' to modify the
-%% staging distribution's configuration.
+%% create a staging distribution, then use `UpdateDistribution' to modify
+%% the staging distribution's configuration.
 %%
 %% After you create and update a staging distribution, you can use a
 %% continuous deployment policy to incrementally move traffic to the staging
 %% distribution. This workflow enables you to test changes to a
-%% distribution's configuration before moving all of your domain's production
-%% traffic to the new configuration.
+%% distribution's configuration before moving all of your domain's
+%% production traffic to the new configuration.
 create_continuous_deployment_policy(Client, Input) ->
     create_continuous_deployment_policy(Client, Input, []).
 create_continuous_deployment_policy(Client, Input0, Options0) ->
@@ -695,14 +695,14 @@ create_field_level_encryption_profile(Client, Input0, Options0) ->
 %% information about the function. The response contains an Amazon Resource
 %% Name (ARN) that uniquely identifies the function.
 %%
-%% When you create a function, it's in the `DEVELOPMENT' stage. In this
-%% stage, you can test the function with `TestFunction', and update it with
-%% `UpdateFunction'.
+%% When you create a function, it's in the `DEVELOPMENT' stage. In
+%% this stage, you can test the function with `TestFunction', and update
+%% it with `UpdateFunction'.
 %%
-%% When you're ready to use your function with a CloudFront distribution, use
-%% `PublishFunction' to copy the function from the `DEVELOPMENT' stage to
-%% `LIVE'. When it's live, you can attach the function to a distribution's
-%% cache behavior, using the function's ARN.
+%% When you're ready to use your function with a CloudFront distribution,
+%% use `PublishFunction' to copy the function from the `DEVELOPMENT'
+%% stage to `LIVE'. When it's live, you can attach the function to a
+%% distribution's cache behavior, using the function's ARN.
 create_function(Client, Input) ->
     create_function(Client, Input, []).
 create_function(Client, Input0, Options0) ->
@@ -916,25 +916,27 @@ create_origin_access_control(Client, Input0, Options0) ->
 %% @doc Creates an origin request policy.
 %%
 %% After you create an origin request policy, you can attach it to one or
-%% more cache behaviors. When it's attached to a cache behavior, the origin
-%% request policy determines the values that CloudFront includes in requests
-%% that it sends to the origin. Each request that CloudFront sends to the
-%% origin includes the following:
+%% more cache behaviors. When it's attached to a cache behavior, the
+%% origin request policy determines the values that CloudFront includes in
+%% requests that it sends to the origin. Each request that CloudFront sends
+%% to the origin includes the following:
 %%
 %% <ul> <li> The request body and the URL path (without the domain name) from
 %% the viewer request.
 %%
 %% </li> <li> The headers that CloudFront automatically includes in every
-%% origin request, including `Host', `User-Agent', and `X-Amz-Cf-Id'.
+%% origin request, including `Host', `User-Agent', and
+%% `X-Amz-Cf-Id'.
 %%
 %% </li> <li> All HTTP headers, cookies, and URL query strings that are
 %% specified in the cache policy or the origin request policy. These can
 %% include items from the viewer request and, in the case of headers,
 %% additional ones that are added by CloudFront.
 %%
-%% </li> </ul> CloudFront sends a request when it can't find a valid object
-%% in its cache that matches the request. If you want to send values to the
-%% origin and also include them in the cache key, use `CachePolicy'.
+%% </li> </ul> CloudFront sends a request when it can't find a valid
+%% object in its cache that matches the request. If you want to send values
+%% to the origin and also include them in the cache key, use
+%% `CachePolicy'.
 %%
 %% For more information about origin request policies, see Controlling origin
 %% requests in the Amazon CloudFront Developer Guide.
@@ -1055,11 +1057,11 @@ create_realtime_log_config(Client, Input0, Options0) ->
 %% about the policy and a set of configurations that specify the headers.
 %%
 %% After you create a response headers policy, you can use its ID to attach
-%% it to one or more cache behaviors in a CloudFront distribution. When it's
-%% attached to a cache behavior, the response headers policy affects the HTTP
-%% headers that CloudFront includes in HTTP responses to requests that match
-%% the cache behavior. CloudFront adds or removes response headers according
-%% to the configuration of the response headers policy.
+%% it to one or more cache behaviors in a CloudFront distribution. When
+%% it's attached to a cache behavior, the response headers policy affects
+%% the HTTP headers that CloudFront includes in HTTP responses to requests
+%% that match the cache behavior. CloudFront adds or removes response headers
+%% according to the configuration of the response headers policy.
 %%
 %% For more information, see Adding or removing HTTP headers in CloudFront
 %% responses in the Amazon CloudFront Developer Guide.
@@ -1359,8 +1361,8 @@ delete_field_level_encryption_profile(Client, Id, Input0, Options0) ->
 %% all cache behaviors, then delete the function.
 %%
 %% To delete a function, you must provide the function's name and version
-%% (`ETag' value). To get these values, you can use `ListFunctions' and
-%% `DescribeFunction'.
+%% (`ETag' value). To get these values, you can use `ListFunctions'
+%% and `DescribeFunction'.
 delete_function(Client, Name, Input) ->
     delete_function(Client, Name, Input, []).
 delete_function(Client, Name, Input0, Options0) ->
@@ -1444,9 +1446,9 @@ delete_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
 
 %% @doc Deletes a CloudFront origin access control.
 %%
-%% You cannot delete an origin access control if it's in use. First, update
-%% all distributions to remove the origin access control from all origins,
-%% then delete the origin access control.
+%% You cannot delete an origin access control if it's in use. First,
+%% update all distributions to remove the origin access control from all
+%% origins, then delete the origin access control.
 delete_origin_access_control(Client, Id, Input) ->
     delete_origin_access_control(Client, Id, Input, []).
 delete_origin_access_control(Client, Id, Input0, Options0) ->
@@ -1473,9 +1475,10 @@ delete_origin_access_control(Client, Id, Input0, Options0) ->
 
 %% @doc Deletes an origin request policy.
 %%
-%% You cannot delete an origin request policy if it's attached to any cache
-%% behaviors. First update your distributions to remove the origin request
-%% policy from all cache behaviors, then delete the origin request policy.
+%% You cannot delete an origin request policy if it's attached to any
+%% cache behaviors. First update your distributions to remove the origin
+%% request policy from all cache behaviors, then delete the origin request
+%% policy.
 %%
 %% To delete an origin request policy, you must provide the policy's
 %% identifier and version. To get the identifier, you can use
@@ -1537,9 +1540,9 @@ delete_public_key(Client, Id, Input0, Options0) ->
 %% configuration.
 %%
 %% To delete a real-time log configuration, you can provide the
-%% configuration's name or its Amazon Resource Name (ARN). You must provide
-%% at least one. If you provide both, CloudFront uses the name to identify
-%% the real-time log configuration to delete.
+%% configuration's name or its Amazon Resource Name (ARN). You must
+%% provide at least one. If you provide both, CloudFront uses the name to
+%% identify the real-time log configuration to delete.
 delete_realtime_log_config(Client, Input) ->
     delete_realtime_log_config(Client, Input, []).
 delete_realtime_log_config(Client, Input0, Options0) ->
@@ -1564,9 +1567,10 @@ delete_realtime_log_config(Client, Input0, Options0) ->
 
 %% @doc Deletes a response headers policy.
 %%
-%% You cannot delete a response headers policy if it's attached to a cache
-%% behavior. First update your distributions to remove the response headers
-%% policy from all cache behaviors, then delete the response headers policy.
+%% You cannot delete a response headers policy if it's attached to a
+%% cache behavior. First update your distributions to remove the response
+%% headers policy from all cache behaviors, then delete the response headers
+%% policy.
 %%
 %% To delete a response headers policy, you must provide the policy's
 %% identifier and version. To get these values, you can use
@@ -1604,31 +1608,32 @@ delete_response_headers_policy(Client, Id, Input0, Options0) ->
 %%
 %% <ol> <li> Disable the RTMP distribution.
 %%
-%% </li> <li> Submit a `GET Streaming Distribution Config' request to get the
-%% current configuration and the `Etag' header for the distribution.
+%% </li> <li> Submit a `GET Streaming Distribution Config' request to get
+%% the current configuration and the `Etag' header for the distribution.
 %%
 %% </li> <li> Update the XML document that was returned in the response to
-%% your `GET Streaming Distribution Config' request to change the value of
-%% `Enabled' to `false'.
+%% your `GET Streaming Distribution Config' request to change the value
+%% of `Enabled' to `false'.
 %%
-%% </li> <li> Submit a `PUT Streaming Distribution Config' request to update
-%% the configuration for your distribution. In the request body, include the
-%% XML document that you updated in Step 3. Then set the value of the HTTP
-%% `If-Match' header to the value of the `ETag' header that CloudFront
-%% returned when you submitted the `GET Streaming Distribution Config'
-%% request in Step 2.
-%%
-%% </li> <li> Review the response to the `PUT Streaming Distribution Config'
-%% request to confirm that the distribution was successfully disabled.
-%%
-%% </li> <li> Submit a `GET Streaming Distribution Config' request to confirm
-%% that your changes have propagated. When propagation is complete, the value
-%% of `Status' is `Deployed'.
-%%
-%% </li> <li> Submit a `DELETE Streaming Distribution' request. Set the value
-%% of the HTTP `If-Match' header to the value of the `ETag' header that
+%% </li> <li> Submit a `PUT Streaming Distribution Config' request to
+%% update the configuration for your distribution. In the request body,
+%% include the XML document that you updated in Step 3. Then set the value of
+%% the HTTP `If-Match' header to the value of the `ETag' header that
 %% CloudFront returned when you submitted the `GET Streaming Distribution
 %% Config' request in Step 2.
+%%
+%% </li> <li> Review the response to the `PUT Streaming Distribution
+%% Config' request to confirm that the distribution was successfully
+%% disabled.
+%%
+%% </li> <li> Submit a `GET Streaming Distribution Config' request to
+%% confirm that your changes have propagated. When propagation is complete,
+%% the value of `Status' is `Deployed'.
+%%
+%% </li> <li> Submit a `DELETE Streaming Distribution' request. Set the
+%% value of the HTTP `If-Match' header to the value of the `ETag'
+%% header that CloudFront returned when you submitted the `GET Streaming
+%% Distribution Config' request in Step 2.
 %%
 %% </li> <li> Review the response to your `DELETE Streaming Distribution'
 %% request to confirm that the distribution was successfully deleted.
@@ -1666,8 +1671,8 @@ delete_streaming_distribution(Client, Id, Input0, Options0) ->
 %% To get a function's code, use `GetFunction'.
 %%
 %% To get configuration information and metadata about a function, you must
-%% provide the function's name and stage. To get these values, you can use
-%% `ListFunctions'.
+%% provide the function's name and stage. To get these values, you can
+%% use `ListFunctions'.
 describe_function(Client, Name)
   when is_map(Client) ->
     describe_function(Client, Name, #{}, #{}).
@@ -1718,9 +1723,10 @@ describe_function(Client, Name, QueryMap, HeadersMap, Options0)
 %%
 %% </li> </ul> To get a cache policy, you must provide the policy's
 %% identifier. If the cache policy is attached to a distribution's cache
-%% behavior, you can get the policy's identifier using `ListDistributions' or
-%% `GetDistribution'. If the cache policy is not attached to a cache
-%% behavior, you can get the identifier using `ListCachePolicies'.
+%% behavior, you can get the policy's identifier using
+%% `ListDistributions' or `GetDistribution'. If the cache policy is
+%% not attached to a cache behavior, you can get the identifier using
+%% `ListCachePolicies'.
 get_cache_policy(Client, Id)
   when is_map(Client) ->
     get_cache_policy(Client, Id, #{}, #{}).
@@ -1763,9 +1769,10 @@ get_cache_policy(Client, Id, QueryMap, HeadersMap, Options0)
 %%
 %% To get a cache policy configuration, you must provide the policy's
 %% identifier. If the cache policy is attached to a distribution's cache
-%% behavior, you can get the policy's identifier using `ListDistributions' or
-%% `GetDistribution'. If the cache policy is not attached to a cache
-%% behavior, you can get the identifier using `ListCachePolicies'.
+%% behavior, you can get the policy's identifier using
+%% `ListDistributions' or `GetDistribution'. If the cache policy is
+%% not attached to a cache behavior, you can get the identifier using
+%% `ListCachePolicies'.
 get_cache_policy_config(Client, Id)
   when is_map(Client) ->
     get_cache_policy_config(Client, Id, #{}, #{}).
@@ -1882,8 +1889,9 @@ get_cloud_front_origin_access_identity_config(Client, Id, QueryMap, HeadersMap, 
         Result
     end.
 
-%% @doc Gets a continuous deployment policy, including metadata (the policy's
-%% identifier and the date and time when the policy was last modified).
+%% @doc Gets a continuous deployment policy, including metadata (the
+%% policy's identifier and the date and time when the policy was last
+%% modified).
 get_continuous_deployment_policy(Client, Id)
   when is_map(Client) ->
     get_continuous_deployment_policy(Client, Id, #{}, #{}).
@@ -2200,8 +2208,8 @@ get_field_level_encryption_profile_config(Client, Id, QueryMap, HeadersMap, Opti
 %% To get configuration information and metadata about a function, use
 %% `DescribeFunction'.
 %%
-%% To get a function's code, you must provide the function's name and stage.
-%% To get these values, you can use `ListFunctions'.
+%% To get a function's code, you must provide the function's name and
+%% stage. To get these values, you can use `ListFunctions'.
 get_function(Client, Name)
   when is_map(Client) ->
     get_function(Client, Name, #{}, #{}).
@@ -2271,11 +2279,11 @@ get_invalidation(Client, DistributionId, Id, QueryMap, HeadersMap, Options0)
 %% @doc Gets a key group, including the date and time when the key group was
 %% last modified.
 %%
-%% To get a key group, you must provide the key group's identifier. If the
-%% key group is referenced in a distribution's cache behavior, you can get
-%% the key group's identifier using `ListDistributions' or `GetDistribution'.
-%% If the key group is not referenced in a cache behavior, you can get the
-%% identifier using `ListKeyGroups'.
+%% To get a key group, you must provide the key group's identifier. If
+%% the key group is referenced in a distribution's cache behavior, you
+%% can get the key group's identifier using `ListDistributions' or
+%% `GetDistribution'. If the key group is not referenced in a cache
+%% behavior, you can get the identifier using `ListKeyGroups'.
 get_key_group(Client, Id)
   when is_map(Client) ->
     get_key_group(Client, Id, #{}, #{}).
@@ -2318,9 +2326,10 @@ get_key_group(Client, Id, QueryMap, HeadersMap, Options0)
 %%
 %% To get a key group configuration, you must provide the key group's
 %% identifier. If the key group is referenced in a distribution's cache
-%% behavior, you can get the key group's identifier using `ListDistributions'
-%% or `GetDistribution'. If the key group is not referenced in a cache
-%% behavior, you can get the identifier using `ListKeyGroups'.
+%% behavior, you can get the key group's identifier using
+%% `ListDistributions' or `GetDistribution'. If the key group is not
+%% referenced in a cache behavior, you can get the identifier using
+%% `ListKeyGroups'.
 get_key_group_config(Client, Id)
   when is_map(Client) ->
     get_key_group_config(Client, Id, #{}, #{}).
@@ -2468,12 +2477,12 @@ get_origin_access_control_config(Client, Id, QueryMap, HeadersMap, Options0)
 %%
 %% </li> <li> The date and time when the policy was last modified.
 %%
-%% </li> </ul> To get an origin request policy, you must provide the policy's
-%% identifier. If the origin request policy is attached to a distribution's
-%% cache behavior, you can get the policy's identifier using
-%% `ListDistributions' or `GetDistribution'. If the origin request policy is
-%% not attached to a cache behavior, you can get the identifier using
-%% `ListOriginRequestPolicies'.
+%% </li> </ul> To get an origin request policy, you must provide the
+%% policy's identifier. If the origin request policy is attached to a
+%% distribution's cache behavior, you can get the policy's identifier
+%% using `ListDistributions' or `GetDistribution'. If the origin
+%% request policy is not attached to a cache behavior, you can get the
+%% identifier using `ListOriginRequestPolicies'.
 get_origin_request_policy(Client, Id)
   when is_map(Client) ->
     get_origin_request_policy(Client, Id, #{}, #{}).
@@ -2516,10 +2525,10 @@ get_origin_request_policy(Client, Id, QueryMap, HeadersMap, Options0)
 %%
 %% To get an origin request policy configuration, you must provide the
 %% policy's identifier. If the origin request policy is attached to a
-%% distribution's cache behavior, you can get the policy's identifier using
-%% `ListDistributions' or `GetDistribution'. If the origin request policy is
-%% not attached to a cache behavior, you can get the identifier using
-%% `ListOriginRequestPolicies'.
+%% distribution's cache behavior, you can get the policy's identifier
+%% using `ListDistributions' or `GetDistribution'. If the origin
+%% request policy is not attached to a cache behavior, you can get the
+%% identifier using `ListOriginRequestPolicies'.
 get_origin_request_policy_config(Client, Id)
   when is_map(Client) ->
     get_origin_request_policy_config(Client, Id, #{}, #{}).
@@ -2638,10 +2647,10 @@ get_public_key_config(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Gets a real-time log configuration.
 %%
-%% To get a real-time log configuration, you can provide the configuration's
-%% name or its Amazon Resource Name (ARN). You must provide at least one. If
-%% you provide both, CloudFront uses the name to identify the real-time log
-%% configuration to get.
+%% To get a real-time log configuration, you can provide the
+%% configuration's name or its Amazon Resource Name (ARN). You must
+%% provide at least one. If you provide both, CloudFront uses the name to
+%% identify the real-time log configuration to get.
 get_realtime_log_config(Client, Input) ->
     get_realtime_log_config(Client, Input, []).
 get_realtime_log_config(Client, Input0, Options0) ->
@@ -2668,11 +2677,11 @@ get_realtime_log_config(Client, Input0, Options0) ->
 %% identifier and the date and time when the policy was last modified).
 %%
 %% To get a response headers policy, you must provide the policy's
-%% identifier. If the response headers policy is attached to a distribution's
-%% cache behavior, you can get the policy's identifier using
-%% `ListDistributions' or `GetDistribution'. If the response headers policy
-%% is not attached to a cache behavior, you can get the identifier using
-%% `ListResponseHeadersPolicies'.
+%% identifier. If the response headers policy is attached to a
+%% distribution's cache behavior, you can get the policy's identifier
+%% using `ListDistributions' or `GetDistribution'. If the response
+%% headers policy is not attached to a cache behavior, you can get the
+%% identifier using `ListResponseHeadersPolicies'.
 get_response_headers_policy(Client, Id)
   when is_map(Client) ->
     get_response_headers_policy(Client, Id, #{}, #{}).
@@ -2715,10 +2724,10 @@ get_response_headers_policy(Client, Id, QueryMap, HeadersMap, Options0)
 %%
 %% To get a response headers policy configuration, you must provide the
 %% policy's identifier. If the response headers policy is attached to a
-%% distribution's cache behavior, you can get the policy's identifier using
-%% `ListDistributions' or `GetDistribution'. If the response headers policy
-%% is not attached to a cache behavior, you can get the identifier using
-%% `ListResponseHeadersPolicies'.
+%% distribution's cache behavior, you can get the policy's identifier
+%% using `ListDistributions' or `GetDistribution'. If the response
+%% headers policy is not attached to a cache behavior, you can get the
+%% identifier using `ListResponseHeadersPolicies'.
 get_response_headers_policy_config(Client, Id)
   when is_map(Client) ->
     get_response_headers_policy_config(Client, Id, #{}, #{}).
@@ -2846,8 +2855,8 @@ get_streaming_distribution_config(Client, Id, QueryMap, HeadersMap, Options0)
 %% response. If the total number of items in the list exceeds the maximum
 %% that you specify, or the default maximum, the response is paginated. To
 %% get the next page of items, send a subsequent request that specifies the
-%% `NextMarker' value from the current response as the `Marker' value in the
-%% subsequent request.
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 list_cache_policies(Client)
   when is_map(Client) ->
     list_cache_policies(Client, #{}, #{}).
@@ -2911,16 +2920,18 @@ list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap, Options0
 %%
 %% In the returned list, the distribution and account IDs are partially
 %% hidden, which allows you to identify the distributions and accounts that
-%% you own, but helps to protect the information of ones that you don't own.
+%% you own, but helps to protect the information of ones that you don't
+%% own.
 %%
 %% Use this operation to find aliases that are in use in CloudFront that
 %% conflict or overlap with the provided alias. For example, if you provide
 %% `www.example.com' as input, the returned list can include
 %% `www.example.com' and the overlapping wildcard alternate domain name
-%% (`*.example.com'), if they exist. If you provide `*.example.com' as input,
-%% the returned list can include `*.example.com' and any alternate domain
-%% names covered by that wildcard (for example, `www.example.com',
-%% `test.example.com', `dev.example.com', and so on), if they exist.
+%% (`*.example.com'), if they exist. If you provide `*.example.com'
+%% as input, the returned list can include `*.example.com' and any
+%% alternate domain names covered by that wildcard (for example,
+%% `www.example.com', `test.example.com', `dev.example.com', and
+%% so on), if they exist.
 %%
 %% To list conflicting aliases, you provide the alias to search and the ID of
 %% a distribution in your account that has an attached SSL/TLS certificate
@@ -2932,8 +2943,8 @@ list_cloud_front_origin_access_identities(Client, QueryMap, HeadersMap, Options0
 %% response. If the total number of items in the list exceeds the maximum
 %% that you specify, or the default maximum, the response is paginated. To
 %% get the next page of items, send a subsequent request that specifies the
-%% `NextMarker' value from the current response as the `Marker' value in the
-%% subsequent request.
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 list_conflicting_aliases(Client, Alias, DistributionId)
   when is_map(Client) ->
     list_conflicting_aliases(Client, Alias, DistributionId, #{}, #{}).
@@ -2970,8 +2981,8 @@ list_conflicting_aliases(Client, Alias, DistributionId, QueryMap, HeadersMap, Op
 %% response. If the total number of items in the list exceeds the maximum
 %% that you specify, or the default maximum, the response is paginated. To
 %% get the next page of items, send a subsequent request that specifies the
-%% `NextMarker' value from the current response as the `Marker' value in the
-%% subsequent request.
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 list_continuous_deployment_policies(Client)
   when is_map(Client) ->
     list_continuous_deployment_policies(Client, #{}, #{}).
@@ -3034,8 +3045,8 @@ list_distributions(Client, QueryMap, HeadersMap, Options0)
 %% response. If the total number of items in the list exceeds the maximum
 %% that you specify, or the default maximum, the response is paginated. To
 %% get the next page of items, send a subsequent request that specifies the
-%% `NextMarker' value from the current response as the `Marker' value in the
-%% subsequent request.
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 list_distributions_by_cache_policy_id(Client, CachePolicyId)
   when is_map(Client) ->
     list_distributions_by_cache_policy_id(Client, CachePolicyId, #{}, #{}).
@@ -3070,8 +3081,8 @@ list_distributions_by_cache_policy_id(Client, CachePolicyId, QueryMap, HeadersMa
 %% response. If the total number of items in the list exceeds the maximum
 %% that you specify, or the default maximum, the response is paginated. To
 %% get the next page of items, send a subsequent request that specifies the
-%% `NextMarker' value from the current response as the `Marker' value in the
-%% subsequent request.
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 list_distributions_by_key_group(Client, KeyGroupId)
   when is_map(Client) ->
     list_distributions_by_key_group(Client, KeyGroupId, #{}, #{}).
@@ -3106,8 +3117,8 @@ list_distributions_by_key_group(Client, KeyGroupId, QueryMap, HeadersMap, Option
 %% response. If the total number of items in the list exceeds the maximum
 %% that you specify, or the default maximum, the response is paginated. To
 %% get the next page of items, send a subsequent request that specifies the
-%% `NextMarker' value from the current response as the `Marker' value in the
-%% subsequent request.
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId)
   when is_map(Client) ->
     list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, #{}, #{}).
@@ -3147,8 +3158,8 @@ list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Qu
 %% response. If the total number of items in the list exceeds the maximum
 %% that you specify, or the default maximum, the response is paginated. To
 %% get the next page of items, send a subsequent request that specifies the
-%% `NextMarker' value from the current response as the `Marker' value in the
-%% subsequent request.
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 list_distributions_by_realtime_log_config(Client, Input) ->
     list_distributions_by_realtime_log_config(Client, Input, []).
 list_distributions_by_realtime_log_config(Client, Input0, Options0) ->
@@ -3178,8 +3189,8 @@ list_distributions_by_realtime_log_config(Client, Input0, Options0) ->
 %% response. If the total number of items in the list exceeds the maximum
 %% that you specify, or the default maximum, the response is paginated. To
 %% get the next page of items, send a subsequent request that specifies the
-%% `NextMarker' value from the current response as the `Marker' value in the
-%% subsequent request.
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId)
   when is_map(Client) ->
     list_distributions_by_response_headers_policy_id(Client, ResponseHeadersPolicyId, #{}, #{}).
@@ -3304,8 +3315,8 @@ list_field_level_encryption_profiles(Client, QueryMap, HeadersMap, Options0)
 %% response. If the total number of items in the list exceeds the maximum
 %% that you specify, or the default maximum, the response is paginated. To
 %% get the next page of items, send a subsequent request that specifies the
-%% `NextMarker' value from the current response as the `Marker' value in the
-%% subsequent request.
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 list_functions(Client)
   when is_map(Client) ->
     list_functions(Client, #{}, #{}).
@@ -3368,8 +3379,8 @@ list_invalidations(Client, DistributionId, QueryMap, HeadersMap, Options0)
 %% response. If the total number of items in the list exceeds the maximum
 %% that you specify, or the default maximum, the response is paginated. To
 %% get the next page of items, send a subsequent request that specifies the
-%% `NextMarker' value from the current response as the `Marker' value in the
-%% subsequent request.
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 list_key_groups(Client)
   when is_map(Client) ->
     list_key_groups(Client, #{}, #{}).
@@ -3404,8 +3415,8 @@ list_key_groups(Client, QueryMap, HeadersMap, Options0)
 %% response. If the total number of items in the list exceeds the maximum
 %% that you specify, or the default maximum, the response is paginated. To
 %% get the next page of items, send another request that specifies the
-%% `NextMarker' value from the current response as the `Marker' value in the
-%% next request.
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the next request.
 list_origin_access_controls(Client)
   when is_map(Client) ->
     list_origin_access_controls(Client, #{}, #{}).
@@ -3443,8 +3454,8 @@ list_origin_access_controls(Client, QueryMap, HeadersMap, Options0)
 %% response. If the total number of items in the list exceeds the maximum
 %% that you specify, or the default maximum, the response is paginated. To
 %% get the next page of items, send a subsequent request that specifies the
-%% `NextMarker' value from the current response as the `Marker' value in the
-%% subsequent request.
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 list_origin_request_policies(Client)
   when is_map(Client) ->
     list_origin_request_policies(Client, #{}, #{}).
@@ -3508,8 +3519,8 @@ list_public_keys(Client, QueryMap, HeadersMap, Options0)
 %% response. If the total number of items in the list exceeds the maximum
 %% that you specify, or the default maximum, the response is paginated. To
 %% get the next page of items, send a subsequent request that specifies the
-%% `NextMarker' value from the current response as the `Marker' value in the
-%% subsequent request.
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 list_realtime_log_configs(Client)
   when is_map(Client) ->
     list_realtime_log_configs(Client, #{}, #{}).
@@ -3547,8 +3558,8 @@ list_realtime_log_configs(Client, QueryMap, HeadersMap, Options0)
 %% response. If the total number of items in the list exceeds the maximum
 %% that you specify, or the default maximum, the response is paginated. To
 %% get the next page of items, send a subsequent request that specifies the
-%% `NextMarker' value from the current response as the `Marker' value in the
-%% subsequent request.
+%% `NextMarker' value from the current response as the `Marker' value
+%% in the subsequent request.
 list_response_headers_policies(Client)
   when is_map(Client) ->
     list_response_headers_policies(Client, #{}, #{}).
@@ -3639,12 +3650,12 @@ list_tags_for_resource(Client, Resource, QueryMap, HeadersMap, Options0)
 %% function to use the newly published copy in the `LIVE' stage.
 %%
 %% When a function is published to the `LIVE' stage, you can attach the
-%% function to a distribution's cache behavior, using the function's Amazon
-%% Resource Name (ARN).
+%% function to a distribution's cache behavior, using the function's
+%% Amazon Resource Name (ARN).
 %%
-%% To publish a function, you must provide the function's name and version
-%% (`ETag' value). To get these values, you can use `ListFunctions' and
-%% `DescribeFunction'.
+%% To publish a function, you must provide the function's name and
+%% version (`ETag' value). To get these values, you can use
+%% `ListFunctions' and `DescribeFunction'.
 publish_function(Client, Name, Input) ->
     publish_function(Client, Name, Input, []).
 publish_function(Client, Name, Input0, Options0) ->
@@ -3703,9 +3714,10 @@ tag_resource(Client, Input0, Options0) ->
 %% error messages, if any exist. For more information about testing
 %% functions, see Testing functions in the Amazon CloudFront Developer Guide.
 %%
-%% To test a function, you provide the function's name and version (`ETag'
-%% value) along with the event object. To get the function's name and
-%% version, you can use `ListFunctions' and `DescribeFunction'.
+%% To test a function, you provide the function's name and version
+%% (`ETag' value) along with the event object. To get the function's
+%% name and version, you can use `ListFunctions' and
+%% `DescribeFunction'.
 test_function(Client, Name, Input) ->
     test_function(Client, Name, Input, []).
 test_function(Client, Name, Input0, Options0) ->
@@ -3765,9 +3777,9 @@ untag_resource(Client, Input0, Options0) ->
 %% </li> <li> Locally modify the fields in the cache policy configuration
 %% that you want to update.
 %%
-%% </li> <li> Call `UpdateCachePolicy' by providing the entire cache policy
-%% configuration, including the fields that you modified and those that you
-%% didn't.
+%% </li> <li> Call `UpdateCachePolicy' by providing the entire cache
+%% policy configuration, including the fields that you modified and those
+%% that you didn't.
 %%
 %% </li> </ol>
 update_cache_policy(Client, Id, Input) ->
@@ -3869,9 +3881,9 @@ update_cloud_front_origin_access_identity(Client, Id, Input0, Options0) ->
 %% </li> <li> Locally modify the fields in the continuous deployment policy
 %% configuration that you want to update.
 %%
-%% </li> <li> Use `UpdateContinuousDeploymentPolicy', providing the entire
-%% continuous deployment policy configuration, including the fields that you
-%% modified and those that you didn't.
+%% </li> <li> Use `UpdateContinuousDeploymentPolicy', providing the
+%% entire continuous deployment policy configuration, including the fields
+%% that you modified and those that you didn't.
 %%
 %% </li> </ol>
 update_continuous_deployment_policy(Client, Id, Input) ->
@@ -3922,21 +3934,21 @@ update_continuous_deployment_policy(Client, Id, Input0, Options0) ->
 %%
 %% To update a web distribution using the CloudFront API
 %%
-%% <ol> <li> Use `GetDistributionConfig' to get the current configuration,
-%% including the version identifier (`ETag').
+%% <ol> <li> Use `GetDistributionConfig' to get the current
+%% configuration, including the version identifier (`ETag').
 %%
 %% </li> <li> Update the distribution configuration that was returned in the
 %% response. Note the following important requirements and restrictions:
 %%
-%% <ul> <li> You must rename the `ETag' field to `IfMatch', leaving the value
-%% unchanged. (Set the value of `IfMatch' to the value of `ETag', then remove
-%% the `ETag' field.)
+%% <ul> <li> You must rename the `ETag' field to `IfMatch', leaving
+%% the value unchanged. (Set the value of `IfMatch' to the value of
+%% `ETag', then remove the `ETag' field.)
 %%
 %% </li> <li> You can't change the value of `CallerReference'.
 %%
-%% </li> </ul> </li> <li> Submit an `UpdateDistribution' request, providing
-%% the distribution configuration. The new configuration replaces the
-%% existing configuration. The values that you specify in an
+%% </li> </ul> </li> <li> Submit an `UpdateDistribution' request,
+%% providing the distribution configuration. The new configuration replaces
+%% the existing configuration. The values that you specify in an
 %% `UpdateDistribution' request are not merged into your existing
 %% configuration. Make sure to include all fields: the ones that you modified
 %% and also the ones that you didn't.
@@ -3982,22 +3994,22 @@ update_distribution(Client, Id, Input0, Options0) ->
         Result
     end.
 
-%% @doc Copies the staging distribution's configuration to its corresponding
-%% primary distribution.
+%% @doc Copies the staging distribution's configuration to its
+%% corresponding primary distribution.
 %%
-%% The primary distribution retains its `Aliases' (also known as alternate
-%% domain names or CNAMEs) and `ContinuousDeploymentPolicyId' value, but
-%% otherwise its configuration is overwritten to match the staging
+%% The primary distribution retains its `Aliases' (also known as
+%% alternate domain names or CNAMEs) and `ContinuousDeploymentPolicyId'
+%% value, but otherwise its configuration is overwritten to match the staging
 %% distribution.
 %%
 %% You can use this operation in a continuous deployment workflow after you
 %% have tested configuration changes on the staging distribution. After using
 %% a continuous deployment policy to move a portion of your domain name's
 %% traffic to the staging distribution and verifying that it works as
-%% intended, you can use this operation to copy the staging distribution's
-%% configuration to the primary distribution. This action will disable the
-%% continuous deployment policy and move your domain's traffic back to the
-%% primary distribution.
+%% intended, you can use this operation to copy the staging
+%% distribution's configuration to the primary distribution. This action
+%% will disable the continuous deployment policy and move your domain's
+%% traffic back to the primary distribution.
 update_distribution_with_staging_config(Client, Id, Input) ->
     update_distribution_with_staging_config(Client, Id, Input, []).
 update_distribution_with_staging_config(Client, Id, Input0, Options0) ->
@@ -4126,9 +4138,9 @@ update_field_level_encryption_profile(Client, Id, Input0, Options0) ->
 %% You can update a function's code or the comment that describes the
 %% function. You cannot update a function's name.
 %%
-%% To update a function, you provide the function's name and version (`ETag'
-%% value) along with the updated function code. To get the name and version,
-%% you can use `ListFunctions' and `DescribeFunction'.
+%% To update a function, you provide the function's name and version
+%% (`ETag' value) along with the updated function code. To get the name
+%% and version, you can use `ListFunctions' and `DescribeFunction'.
 update_function(Client, Name, Input) ->
     update_function(Client, Name, Input, []).
 update_function(Client, Name, Input0, Options0) ->
@@ -4279,9 +4291,9 @@ update_origin_access_control(Client, Id, Input0, Options0) ->
 %% </li> <li> Locally modify the fields in the origin request policy
 %% configuration that you want to update.
 %%
-%% </li> <li> Call `UpdateOriginRequestPolicy' by providing the entire origin
-%% request policy configuration, including the fields that you modified and
-%% those that you didn't.
+%% </li> <li> Call `UpdateOriginRequestPolicy' by providing the entire
+%% origin request policy configuration, including the fields that you
+%% modified and those that you didn't.
 %%
 %% </li> </ol>
 update_origin_request_policy(Client, Id, Input) ->
@@ -4383,8 +4395,8 @@ update_public_key(Client, Id, Input0, Options0) ->
 %% entire real-time log configuration, including the parameters that you
 %% modified and those that you didn't.
 %%
-%% </li> </ol> You cannot update a real-time log configuration's `Name' or
-%% `ARN'.
+%% </li> </ol> You cannot update a real-time log configuration's
+%% `Name' or `ARN'.
 update_realtime_log_config(Client, Input) ->
     update_realtime_log_config(Client, Input, []).
 update_realtime_log_config(Client, Input0, Options0) ->
@@ -4413,8 +4425,8 @@ update_realtime_log_config(Client, Input0, Options0) ->
 %% You cannot update some policy fields independent of others. To update a
 %% response headers policy configuration:
 %%
-%% <ol> <li> Use `GetResponseHeadersPolicyConfig' to get the current policy's
-%% configuration.
+%% <ol> <li> Use `GetResponseHeadersPolicyConfig' to get the current
+%% policy's configuration.
 %%
 %% </li> <li> Modify the fields in the response headers policy configuration
 %% that you want to update.

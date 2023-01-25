@@ -283,9 +283,10 @@
 %% has a low similarity confidence score when compared to the face in the
 %% source image. To reduce the probability of false negatives, we recommend
 %% that you compare the target image against multiple source images. If you
-%% plan to use `CompareFaces' to make a decision that impacts an individual's
-%% rights, privacy, or access to services, we recommend that you pass the
-%% result to a human for review and further validation before taking action.
+%% plan to use `CompareFaces' to make a decision that impacts an
+%% individual's rights, privacy, or access to services, we recommend that
+%% you pass the result to a human for review and further validation before
+%% taking action.
 %%
 %% You pass the input and target images either as base64-encoded image bytes
 %% or as references to images in an Amazon S3 bucket. If you use the AWS CLI
@@ -304,24 +305,25 @@
 %% 80% are returned in the response. You can change this value by specifying
 %% the `SimilarityThreshold' parameter.
 %%
-%% `CompareFaces' also returns an array of faces that don't match the source
-%% image. For each face, it returns a bounding box, confidence value,
+%% `CompareFaces' also returns an array of faces that don't match the
+%% source image. For each face, it returns a bounding box, confidence value,
 %% landmarks, pose details, and quality. The response also returns
 %% information about the face in the source image, including the bounding box
 %% of the face and confidence value.
 %%
 %% The `QualityFilter' input parameter allows you to filter out detected
 %% faces that don’t meet a required quality bar. The quality bar is based on
-%% a variety of common use cases. Use `QualityFilter' to set the quality bar
-%% by specifying `LOW', `MEDIUM', or `HIGH'. If you do not want to filter
-%% detected faces, specify `NONE'. The default value is `NONE'.
+%% a variety of common use cases. Use `QualityFilter' to set the quality
+%% bar by specifying `LOW', `MEDIUM', or `HIGH'. If you do not
+%% want to filter detected faces, specify `NONE'. The default value is
+%% `NONE'.
 %%
 %% If the image doesn't contain Exif metadata, `CompareFaces' returns
 %% orientation information for the source and target images. Use these values
 %% to display the images with the correct image orientation.
 %%
-%% If no faces are detected in the source or target images, `CompareFaces'
-%% returns an `InvalidParameterException' error.
+%% If no faces are detected in the source or target images,
+%% `CompareFaces' returns an `InvalidParameterException' error.
 %%
 %% This is a stateless API operation. That is, data returned by this
 %% operation doesn't persist.
@@ -347,9 +349,9 @@ compare_faces(Client, Input, Options)
 %%
 %% To copy a model version to a different AWS account, you need to create a
 %% resource-based policy known as a project policy. You attach the project
-%% policy to the source project by calling `PutProjectPolicy'. The project
-%% policy gives permission to copy the model version from a trusting AWS
-%% account to a trusted account.
+%% policy to the source project by calling `PutProjectPolicy'. The
+%% project policy gives permission to copy the model version from a trusting
+%% AWS account to a trusted account.
 %%
 %% For more information creating and attaching a project policy, see
 %% Attaching a project policy (SDK) in the Amazon Rekognition Custom Labels
@@ -362,9 +364,10 @@ compare_faces(Client, Input, Options)
 %% version must already exist.
 %%
 %% Copying a model version takes a while to complete. To get the current
-%% status, call `DescribeProjectVersions' and check the value of `Status' in
-%% the `ProjectVersionDescription' object. The copy operation has finished
-%% when the value of `Status' is `COPYING_COMPLETED'.
+%% status, call `DescribeProjectVersions' and check the value of
+%% `Status' in the `ProjectVersionDescription' object. The copy
+%% operation has finished when the value of `Status' is
+%% `COPYING_COMPLETED'.
 copy_project_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_project_version(Client, Input, []).
@@ -387,9 +390,9 @@ copy_project_version(Client, Input, Options)
 %% Collection names are case-sensitive.
 %%
 %% This operation requires permissions to perform the
-%% `rekognition:CreateCollection' action. If you want to tag your collection,
-%% you also require permission to perform the `rekognition:TagResource'
-%% operation.
+%% `rekognition:CreateCollection' action. If you want to tag your
+%% collection, you also require permission to perform the
+%% `rekognition:TagResource' operation.
 create_collection(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_collection(Client, Input, []).
@@ -402,17 +405,18 @@ create_collection(Client, Input, Options)
 %% You can create a dataset by using an Amazon Sagemaker format manifest file
 %% or by copying an existing Amazon Rekognition Custom Labels dataset.
 %%
-%% To create a training dataset for a project, specify `train' for the value
-%% of `DatasetType'. To create the test dataset for a project, specify `test'
-%% for the value of `DatasetType'.
+%% To create a training dataset for a project, specify `train' for the
+%% value of `DatasetType'. To create the test dataset for a project,
+%% specify `test' for the value of `DatasetType'.
 %%
-%% The response from `CreateDataset' is the Amazon Resource Name (ARN) for
-%% the dataset. Creating a dataset takes a while to complete. Use
+%% The response from `CreateDataset' is the Amazon Resource Name (ARN)
+%% for the dataset. Creating a dataset takes a while to complete. Use
 %% `DescribeDataset' to check the current status. The dataset created
 %% successfully if the value of `Status' is `CREATE_COMPLETE'.
 %%
-%% To check if any non-terminal errors occurred, call `ListDatasetEntries'
-%% and check for the presence of `errors' lists in the JSON Lines.
+%% To check if any non-terminal errors occurred, call
+%% `ListDatasetEntries' and check for the presence of `errors' lists
+%% in the JSON Lines.
 %%
 %% Dataset creation fails if a terminal error occurs (`Status' =
 %% `CREATE_FAILED'). Currently, you can't access the terminal error
@@ -449,16 +453,16 @@ create_project(Client, Input, Options)
 %% @doc Creates a new version of a model and begins training.
 %%
 %% Models are managed as part of an Amazon Rekognition Custom Labels project.
-%% The response from `CreateProjectVersion' is an Amazon Resource Name (ARN)
-%% for the version of the model.
+%% The response from `CreateProjectVersion' is an Amazon Resource Name
+%% (ARN) for the version of the model.
 %%
 %% Training uses the training and test datasets associated with the project.
 %% For more information, see Creating training and test dataset in the Amazon
 %% Rekognition Custom Labels Developer Guide.
 %%
-%% You can train a model in a project that doesn't have associated datasets
-%% by specifying manifest files in the `TrainingData' and `TestingData'
-%% fields.
+%% You can train a model in a project that doesn't have associated
+%% datasets by specifying manifest files in the `TrainingData' and
+%% `TestingData' fields.
 %%
 %% If you open the console after training a model with manifest files, Amazon
 %% Rekognition Custom Labels creates the datasets for you using the most
@@ -470,16 +474,17 @@ create_project(Client, Input, Options)
 %% datasets for the project.
 %%
 %% Training takes a while to complete. You can get the current status by
-%% calling `DescribeProjectVersions'. Training completed successfully if the
-%% value of the `Status' field is `TRAINING_COMPLETED'.
+%% calling `DescribeProjectVersions'. Training completed successfully if
+%% the value of the `Status' field is `TRAINING_COMPLETED'.
 %%
 %% If training fails, see Debugging a failed model training in the Amazon
 %% Rekognition Custom Labels developer guide.
 %%
-%% Once training has successfully completed, call `DescribeProjectVersions'
-%% to get the training results and evaluate the model. For more information,
-%% see Improving a trained Amazon Rekognition Custom Labels model in the
-%% Amazon Rekognition Custom Labels developers guide.
+%% Once training has successfully completed, call
+%% `DescribeProjectVersions' to get the training results and evaluate the
+%% model. For more information, see Improving a trained Amazon Rekognition
+%% Custom Labels model in the Amazon Rekognition Custom Labels developers
+%% guide.
 %%
 %% After evaluating the model, you start the model by calling
 %% `StartProjectVersion'.
@@ -502,31 +507,31 @@ create_project_version(Client, Input, Options)
 %%
 %% <ul> <li> If you are creating a stream processor for detecting faces, you
 %% provide as input a Kinesis video stream (`Input') and a Kinesis data
-%% stream (`Output') stream. You also specify the face recognition criteria
-%% in `Settings'. For example, the collection containing faces that you want
-%% to recognize. After you have finished analyzing a streaming video, use
-%% `StopStreamProcessor' to stop processing.
+%% stream (`Output') stream. You also specify the face recognition
+%% criteria in `Settings'. For example, the collection containing faces
+%% that you want to recognize. After you have finished analyzing a streaming
+%% video, use `StopStreamProcessor' to stop processing.
 %%
 %% </li> <li> If you are creating a stream processor to detect labels, you
 %% provide as input a Kinesis video stream (`Input'), Amazon S3 bucket
 %% information (`Output'), and an Amazon SNS topic ARN
-%% (`NotificationChannel'). You can also provide a KMS key ID to encrypt the
-%% data sent to your Amazon S3 bucket. You specify what you want to detect in
-%% `ConnectedHomeSettings', such as people, packages and people, or pets,
-%% people, and packages. You can also specify where in the frame you want
-%% Amazon Rekognition to monitor with `RegionsOfInterest'. When you run the
-%% `StartStreamProcessor' operation on a label detection stream processor,
-%% you input start and stop information to determine the length of the
-%% processing time.
+%% (`NotificationChannel'). You can also provide a KMS key ID to encrypt
+%% the data sent to your Amazon S3 bucket. You specify what you want to
+%% detect in `ConnectedHomeSettings', such as people, packages and
+%% people, or pets, people, and packages. You can also specify where in the
+%% frame you want Amazon Rekognition to monitor with `RegionsOfInterest'.
+%% When you run the `StartStreamProcessor' operation on a label detection
+%% stream processor, you input start and stop information to determine the
+%% length of the processing time.
 %%
-%% </li> </ul> Use `Name' to assign an identifier for the stream processor.
-%% You use `Name' to manage the stream processor. For example, you can start
-%% processing the source video by calling `StartStreamProcessor' with the
-%% `Name' field.
+%% </li> </ul> Use `Name' to assign an identifier for the stream
+%% processor. You use `Name' to manage the stream processor. For example,
+%% you can start processing the source video by calling
+%% `StartStreamProcessor' with the `Name' field.
 %%
 %% This operation requires permissions to perform the
-%% `rekognition:CreateStreamProcessor' action. If you want to tag your stream
-%% processor, you also require permission to perform the
+%% `rekognition:CreateStreamProcessor' action. If you want to tag your
+%% stream processor, you also require permission to perform the
 %% `rekognition:TagResource' operation.
 create_stream_processor(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -551,10 +556,10 @@ delete_collection(Client, Input, Options)
 
 %% @doc Deletes an existing Amazon Rekognition Custom Labels dataset.
 %%
-%% Deleting a dataset might take while. Use `DescribeDataset' to check the
-%% current status. The dataset is still deleting if the value of `Status' is
-%% `DELETE_IN_PROGRESS'. If you try to access the dataset after it is
-%% deleted, you get a `ResourceNotFoundException' exception.
+%% Deleting a dataset might take while. Use `DescribeDataset' to check
+%% the current status. The dataset is still deleting if the value of
+%% `Status' is `DELETE_IN_PROGRESS'. If you try to access the dataset
+%% after it is deleted, you get a `ResourceNotFoundException' exception.
 %%
 %% You can't delete a dataset while it is creating (`Status' =
 %% `CREATE_IN_PROGRESS') or if the dataset is updating (`Status' =
@@ -588,10 +593,11 @@ delete_faces(Client, Input, Options)
 %% To delete a project you must first delete all models associated with the
 %% project. To delete a model, see `DeleteProjectVersion'.
 %%
-%% `DeleteProject' is an asynchronous operation. To check if the project is
-%% deleted, call `DescribeProjects'. The project is deleted when the project
-%% no longer appears in the response. Be aware that deleting a given project
-%% will also delete any `ProjectPolicies' associated with that project.
+%% `DeleteProject' is an asynchronous operation. To check if the project
+%% is deleted, call `DescribeProjects'. The project is deleted when the
+%% project no longer appears in the response. Be aware that deleting a given
+%% project will also delete any `ProjectPolicies' associated with that
+%% project.
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DeleteProject' action.
@@ -616,10 +622,11 @@ delete_project_policy(Client, Input, Options)
 
 %% @doc Deletes an Amazon Rekognition Custom Labels model.
 %%
-%% You can't delete a model if it is running or if it is training. To check
-%% the status of a model, use the `Status' field returned from
+%% You can't delete a model if it is running or if it is training. To
+%% check the status of a model, use the `Status' field returned from
 %% `DescribeProjectVersions'. To stop a running model call
-%% `StopProjectVersion'. If the model is training, wait until it finishes.
+%% `StopProjectVersion'. If the model is training, wait until it
+%% finishes.
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DeleteProjectVersion' action.
@@ -632,9 +639,10 @@ delete_project_version(Client, Input, Options)
 
 %% @doc Deletes the stream processor identified by `Name'.
 %%
-%% You assign the value for `Name' when you create the stream processor with
-%% `CreateStreamProcessor'. You might not be able to use the same name for a
-%% stream processor for a few seconds after calling `DeleteStreamProcessor'.
+%% You assign the value for `Name' when you create the stream processor
+%% with `CreateStreamProcessor'. You might not be able to use the same
+%% name for a stream processor for a few seconds after calling
+%% `DeleteStreamProcessor'.
 delete_stream_processor(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_stream_processor(Client, Input, []).
@@ -644,9 +652,9 @@ delete_stream_processor(Client, Input, Options)
 
 %% @doc Describes the specified collection.
 %%
-%% You can use `DescribeCollection' to get information, such as the number of
-%% faces indexed into a collection and the version of the model used by the
-%% collection for face detection.
+%% You can use `DescribeCollection' to get information, such as the
+%% number of faces indexed into a collection and the version of the model
+%% used by the collection for face detection.
 %%
 %% For more information, see Describing a Collection in the Amazon
 %% Rekognition Developer Guide.
@@ -674,9 +682,9 @@ describe_dataset(Client, Input, Options)
 %% @doc Lists and describes the versions of a model in an Amazon Rekognition
 %% Custom Labels project.
 %%
-%% You can specify up to 10 model versions in `ProjectVersionArns'. If you
-%% don't specify a value, descriptions for all model versions in the project
-%% are returned.
+%% You can specify up to 10 model versions in `ProjectVersionArns'. If
+%% you don't specify a value, descriptions for all model versions in the
+%% project are returned.
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DescribeProjectVersions' action.
@@ -724,27 +732,29 @@ describe_stream_processor(Client, Input, Options)
 %% must be either a PNG or JPEG formatted file.
 %%
 %% For each object that the model version detects on an image, the API
-%% returns a (`CustomLabel') object in an array (`CustomLabels'). Each
-%% `CustomLabel' object provides the label name (`Name'), the level of
-%% confidence that the image contains the object (`Confidence'), and object
-%% location information, if it exists, for the label on the image
+%% returns a (`CustomLabel') object in an array (`CustomLabels').
+%% Each `CustomLabel' object provides the label name (`Name'), the
+%% level of confidence that the image contains the object (`Confidence'),
+%% and object location information, if it exists, for the label on the image
 %% (`Geometry').
 %%
-%% To filter labels that are returned, specify a value for `MinConfidence'.
-%% `DetectCustomLabelsLabels' only returns labels with a confidence that's
-%% higher than the specified value. The value of `MinConfidence' maps to the
-%% assumed threshold values created during training. For more information,
-%% see Assumed threshold in the Amazon Rekognition Custom Labels Developer
-%% Guide. Amazon Rekognition Custom Labels metrics expresses an assumed
-%% threshold as a floating point value between 0-1. The range of
-%% `MinConfidence' normalizes the threshold value to a percentage value
-%% (0-100). Confidence responses from `DetectCustomLabels' are also returned
-%% as a percentage. You can use `MinConfidence' to change the precision and
-%% recall or your model. For more information, see Analyzing an image in the
-%% Amazon Rekognition Custom Labels Developer Guide.
+%% To filter labels that are returned, specify a value for
+%% `MinConfidence'. `DetectCustomLabelsLabels' only returns labels
+%% with a confidence that's higher than the specified value. The value of
+%% `MinConfidence' maps to the assumed threshold values created during
+%% training. For more information, see Assumed threshold in the Amazon
+%% Rekognition Custom Labels Developer Guide. Amazon Rekognition Custom
+%% Labels metrics expresses an assumed threshold as a floating point value
+%% between 0-1. The range of `MinConfidence' normalizes the threshold
+%% value to a percentage value (0-100). Confidence responses from
+%% `DetectCustomLabels' are also returned as a percentage. You can use
+%% `MinConfidence' to change the precision and recall or your model. For
+%% more information, see Analyzing an image in the Amazon Rekognition Custom
+%% Labels Developer Guide.
 %%
-%% If you don't specify a value for `MinConfidence', `DetectCustomLabels'
-%% returns labels based on the assumed threshold of each label.
+%% If you don't specify a value for `MinConfidence',
+%% `DetectCustomLabels' returns labels based on the assumed threshold of
+%% each label.
 %%
 %% This is a stateless API operation. That is, the operation does not persist
 %% any data.
@@ -763,8 +773,8 @@ detect_custom_labels(Client, Input, Options)
 
 %% @doc Detects faces within an image that is provided as input.
 %%
-%% `DetectFaces' detects the 100 largest faces in the image. For each face
-%% detected, the operation returns face details. These details include a
+%% `DetectFaces' detects the 100 largest faces in the image. For each
+%% face detected, the operation returns face details. These details include a
 %% bounding box of the face, a confidence value (that the bounding box
 %% contains a face), and a fixed set of attributes such as facial landmarks
 %% (for example, coordinates of eye and mouth), presence of beard,
@@ -808,23 +818,24 @@ detect_faces(Client, Input, Options)
 %%
 %% Optional Parameters
 %%
-%% You can specify one or both of the `GENERAL_LABELS' and `IMAGE_PROPERTIES'
-%% feature types when calling the DetectLabels API. Including
-%% `GENERAL_LABELS' will ensure the response includes the labels detected in
-%% the input image, while including `IMAGE_PROPERTIES 'will ensure the
-%% response includes information about the image quality and color.
+%% You can specify one or both of the `GENERAL_LABELS' and
+%% `IMAGE_PROPERTIES' feature types when calling the DetectLabels API.
+%% Including `GENERAL_LABELS' will ensure the response includes the
+%% labels detected in the input image, while including `IMAGE_PROPERTIES
+%% 'will ensure the response includes information about the image quality
+%% and color.
 %%
-%% When using `GENERAL_LABELS' and/or `IMAGE_PROPERTIES' you can provide
-%% filtering criteria to the Settings parameter. You can filter with sets of
-%% individual labels or with label categories. You can specify inclusive
-%% filters, exclusive filters, or a combination of inclusive and exclusive
-%% filters. For more information on filtering see Detecting Labels in an
-%% Image.
+%% When using `GENERAL_LABELS' and/or `IMAGE_PROPERTIES' you can
+%% provide filtering criteria to the Settings parameter. You can filter with
+%% sets of individual labels or with label categories. You can specify
+%% inclusive filters, exclusive filters, or a combination of inclusive and
+%% exclusive filters. For more information on filtering see Detecting Labels
+%% in an Image.
 %%
-%% You can specify `MinConfidence' to control the confidence threshold for
-%% the labels returned. The default is 55%. You can also add the `MaxLabels'
-%% parameter to limit the number of labels returned. The default and upper
-%% limit is 1000 labels.
+%% You can specify `MinConfidence' to control the confidence threshold
+%% for the labels returned. The default is 55%. You can also add the
+%% `MaxLabels' parameter to limit the number of labels returned. The
+%% default and upper limit is 1000 labels.
 %%
 %% Response Elements
 %%
@@ -896,8 +907,8 @@ detect_faces(Client, Input, Options)
 %% In this example, the detection algorithm more precisely identifies the
 %% flower as a tulip.
 %%
-%% If the object detected is a person, the operation doesn't provide the same
-%% facial details that the `DetectFaces' operation provides.
+%% If the object detected is a person, the operation doesn't provide the
+%% same facial details that the `DetectFaces' operation provides.
 %%
 %% This is a stateless API operation. That is, the operation does not persist
 %% any data.
@@ -917,8 +928,8 @@ detect_labels(Client, Input, Options)
 %% requirements. For example, you might want to filter images that contain
 %% nudity, but not images containing suggestive content.
 %%
-%% To filter images, use the labels returned by `DetectModerationLabels' to
-%% determine which types of content are appropriate.
+%% To filter images, use the labels returned by `DetectModerationLabels'
+%% to determine which types of content are appropriate.
 %%
 %% For information about moderation labels, see Detecting Unsafe Content in
 %% the Amazon Rekognition Developer Guide.
@@ -949,16 +960,16 @@ detect_moderation_labels(Client, Input, Options)
 %% reference to an image in an Amazon S3 bucket. The image must be either a
 %% PNG or JPG formatted file.
 %%
-%% `DetectProtectiveEquipment' detects PPE worn by up to 15 persons detected
-%% in an image.
+%% `DetectProtectiveEquipment' detects PPE worn by up to 15 persons
+%% detected in an image.
 %%
 %% For each person detected in the image the API returns an array of body
 %% parts (face, head, left-hand, right-hand). For each body part, an array of
 %% detected items of PPE is returned, including an indicator of whether or
 %% not the PPE covers the body part. The API returns the confidence it has in
 %% each detection (person, PPE, body part and body part coverage). It also
-%% returns a bounding box (`BoundingBox') for each detected person and each
-%% detected item of PPE.
+%% returns a bounding box (`BoundingBox') for each detected person and
+%% each detected item of PPE.
 %%
 %% You can optionally request a summary of detected PPE items with the
 %% `SummarizationAttributes' input parameter. The summary provides the
@@ -994,22 +1005,23 @@ detect_protective_equipment(Client, Input, Options)
 %% Amazon S3 bucket. For the AWS CLI, passing image bytes is not supported.
 %% The image must be either a .png or .jpeg formatted file.
 %%
-%% The `DetectText' operation returns text in an array of `TextDetection'
-%% elements, `TextDetections'. Each `TextDetection' element provides
-%% information about a single word or line of text that was detected in the
-%% image.
+%% The `DetectText' operation returns text in an array of
+%% `TextDetection' elements, `TextDetections'. Each
+%% `TextDetection' element provides information about a single word or
+%% line of text that was detected in the image.
 %%
 %% A word is one or more script characters that are not separated by spaces.
 %% `DetectText' can detect up to 100 words in an image.
 %%
 %% A line is a string of equally spaced words. A line isn't necessarily a
-%% complete sentence. For example, a driver's license number is detected as a
-%% line. A line ends when there is no aligned text after it. Also, a line
-%% ends when there is a large gap between words, relative to the length of
-%% the words. This means, depending on the gap between words, Amazon
+%% complete sentence. For example, a driver's license number is detected
+%% as a line. A line ends when there is no aligned text after it. Also, a
+%% line ends when there is a large gap between words, relative to the length
+%% of the words. This means, depending on the gap between words, Amazon
 %% Rekognition may detect multiple lines in text aligned in the same
-%% direction. Periods don't represent the end of a line. If a sentence spans
-%% multiple lines, the `DetectText' operation returns multiple lines.
+%% direction. Periods don't represent the end of a line. If a sentence
+%% spans multiple lines, the `DetectText' operation returns multiple
+%% lines.
 %%
 %% To determine whether a `TextDetection' element is a line of text or a
 %% word, use the `TextDetection' object `Type' field.
@@ -1029,19 +1041,20 @@ detect_text(Client, Input, Options)
 %% @doc Distributes the entries (images) in a training dataset across the
 %% training dataset and the test dataset for a project.
 %%
-%% `DistributeDatasetEntries' moves 20% of the training dataset images to the
-%% test dataset. An entry is a JSON Line that describes an image.
+%% `DistributeDatasetEntries' moves 20% of the training dataset images to
+%% the test dataset. An entry is a JSON Line that describes an image.
 %%
-%% You supply the Amazon Resource Names (ARN) of a project's training dataset
-%% and test dataset. The training dataset must contain the images that you
-%% want to split. The test dataset must be empty. The datasets must belong to
-%% the same project. To create training and test datasets for a project, call
-%% `CreateDataset'.
+%% You supply the Amazon Resource Names (ARN) of a project's training
+%% dataset and test dataset. The training dataset must contain the images
+%% that you want to split. The test dataset must be empty. The datasets must
+%% belong to the same project. To create training and test datasets for a
+%% project, call `CreateDataset'.
 %%
 %% Distributing a dataset takes a while to complete. To check the status call
-%% `DescribeDataset'. The operation is complete when the `Status' field for
-%% the training dataset and the test dataset is `UPDATE_COMPLETE'. If the
-%% dataset split fails, the value of `Status' is `UPDATE_FAILED'.
+%% `DescribeDataset'. The operation is complete when the `Status'
+%% field for the training dataset and the test dataset is
+%% `UPDATE_COMPLETE'. If the dataset split fails, the value of
+%% `Status' is `UPDATE_FAILED'.
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DistributeDatasetEntries' action.
@@ -1082,45 +1095,46 @@ get_celebrity_info(Client, Input, Options)
 %% Service topic registered in the initial call to
 %% `StartCelebrityRecognition'. To get the results of the celebrity
 %% recognition analysis, first check that the status value published to the
-%% Amazon SNS topic is `SUCCEEDED'. If so, call `GetCelebrityDetection' and
-%% pass the job identifier (`JobId') from the initial call to
-%% `StartCelebrityDetection'.
+%% Amazon SNS topic is `SUCCEEDED'. If so, call
+%% `GetCelebrityDetection' and pass the job identifier (`JobId') from
+%% the initial call to `StartCelebrityDetection'.
 %%
 %% For more information, see Working With Stored Videos in the Amazon
 %% Rekognition Developer Guide.
 %%
 %% `GetCelebrityRecognition' returns detected celebrities and the time(s)
-%% they are detected in an array (`Celebrities') of `CelebrityRecognition'
-%% objects. Each `CelebrityRecognition' contains information about the
-%% celebrity in a `CelebrityDetail' object and the time, `Timestamp', the
-%% celebrity was detected. This `CelebrityDetail' object stores information
-%% about the detected celebrity's face attributes, a face bounding box, known
-%% gender, the celebrity's name, and a confidence estimate.
+%% they are detected in an array (`Celebrities') of
+%% `CelebrityRecognition' objects. Each `CelebrityRecognition'
+%% contains information about the celebrity in a `CelebrityDetail' object
+%% and the time, `Timestamp', the celebrity was detected. This
+%% `CelebrityDetail' object stores information about the detected
+%% celebrity's face attributes, a face bounding box, known gender, the
+%% celebrity's name, and a confidence estimate.
 %%
 %% `GetCelebrityRecognition' only returns the default facial attributes
-%% (`BoundingBox', `Confidence', `Landmarks', `Pose', and `Quality'). The
-%% `BoundingBox' field only applies to the detected face instance. The other
-%% facial attributes listed in the `Face' object of the following response
-%% syntax are not returned. For more information, see FaceDetail in the
-%% Amazon Rekognition Developer Guide.
+%% (`BoundingBox', `Confidence', `Landmarks', `Pose', and
+%% `Quality'). The `BoundingBox' field only applies to the detected
+%% face instance. The other facial attributes listed in the `Face' object
+%% of the following response syntax are not returned. For more information,
+%% see FaceDetail in the Amazon Rekognition Developer Guide.
 %%
-%% By default, the `Celebrities' array is sorted by time (milliseconds from
-%% the start of the video). You can also sort the array by celebrity by
+%% By default, the `Celebrities' array is sorted by time (milliseconds
+%% from the start of the video). You can also sort the array by celebrity by
 %% specifying the value `ID' in the `SortBy' input parameter.
 %%
 %% The `CelebrityDetail' object includes the celebrity identifer and
-%% additional information urls. If you don't store the additional information
-%% urls, you can get them later by calling `GetCelebrityInfo' with the
-%% celebrity identifer.
+%% additional information urls. If you don't store the additional
+%% information urls, you can get them later by calling `GetCelebrityInfo'
+%% with the celebrity identifer.
 %%
 %% No information is returned for faces not recognized as celebrities.
 %%
 %% Use MaxResults parameter to limit the number of labels returned. If there
-%% are more results than specified in `MaxResults', the value of `NextToken'
-%% in the operation response contains a pagination token for getting the next
-%% set of results. To get the next page of results, call
-%% `GetCelebrityDetection' and populate the `NextToken' request parameter
-%% with the token value returned from the previous call to
+%% are more results than specified in `MaxResults', the value of
+%% `NextToken' in the operation response contains a pagination token for
+%% getting the next set of results. To get the next page of results, call
+%% `GetCelebrityDetection' and populate the `NextToken' request
+%% parameter with the token value returned from the previous call to
 %% `GetCelebrityRecognition'.
 get_celebrity_recognition(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1138,33 +1152,37 @@ get_celebrity_recognition(Client, Input, Options)
 %%
 %% Amazon Rekognition Video inappropriate or offensive content detection in a
 %% stored video is an asynchronous operation. You start analysis by calling
-%% `StartContentModeration' which returns a job identifier (`JobId'). When
-%% analysis finishes, Amazon Rekognition Video publishes a completion status
-%% to the Amazon Simple Notification Service topic registered in the initial
-%% call to `StartContentModeration'. To get the results of the content
-%% analysis, first check that the status value published to the Amazon SNS
-%% topic is `SUCCEEDED'. If so, call `GetContentModeration' and pass the job
-%% identifier (`JobId') from the initial call to `StartContentModeration'.
+%% `StartContentModeration' which returns a job identifier (`JobId').
+%% When analysis finishes, Amazon Rekognition Video publishes a completion
+%% status to the Amazon Simple Notification Service topic registered in the
+%% initial call to `StartContentModeration'. To get the results of the
+%% content analysis, first check that the status value published to the
+%% Amazon SNS topic is `SUCCEEDED'. If so, call
+%% `GetContentModeration' and pass the job identifier (`JobId') from
+%% the initial call to `StartContentModeration'.
 %%
 %% For more information, see Working with Stored Videos in the Amazon
 %% Rekognition Devlopers Guide.
 %%
 %% `GetContentModeration' returns detected inappropriate, unwanted, or
 %% offensive content moderation labels, and the time they are detected, in an
-%% array, `ModerationLabels', of `ContentModerationDetection' objects.
+%% array, `ModerationLabels', of `ContentModerationDetection'
+%% objects.
 %%
 %% By default, the moderated labels are returned sorted by time, in
 %% milliseconds from the start of the video. You can also sort them by
-%% moderated label by specifying `NAME' for the `SortBy' input parameter.
+%% moderated label by specifying `NAME' for the `SortBy' input
+%% parameter.
 %%
 %% Since video analysis can return a large number of results, use the
-%% `MaxResults' parameter to limit the number of labels returned in a single
-%% call to `GetContentModeration'. If there are more results than specified
-%% in `MaxResults', the value of `NextToken' in the operation response
-%% contains a pagination token for getting the next set of results. To get
-%% the next page of results, call `GetContentModeration' and populate the
-%% `NextToken' request parameter with the value of `NextToken' returned from
-%% the previous call to `GetContentModeration'.
+%% `MaxResults' parameter to limit the number of labels returned in a
+%% single call to `GetContentModeration'. If there are more results than
+%% specified in `MaxResults', the value of `NextToken' in the
+%% operation response contains a pagination token for getting the next set of
+%% results. To get the next page of results, call `GetContentModeration'
+%% and populate the `NextToken' request parameter with the value of
+%% `NextToken' returned from the previous call to
+%% `GetContentModeration'.
 %%
 %% For more information, see moderating content in the Amazon Rekognition
 %% Developer Guide.
@@ -1179,24 +1197,26 @@ get_content_moderation(Client, Input, Options)
 %% started by `StartFaceDetection'.
 %%
 %% Face detection with Amazon Rekognition Video is an asynchronous operation.
-%% You start face detection by calling `StartFaceDetection' which returns a
-%% job identifier (`JobId'). When the face detection operation finishes,
-%% Amazon Rekognition Video publishes a completion status to the Amazon
-%% Simple Notification Service topic registered in the initial call to
-%% `StartFaceDetection'. To get the results of the face detection operation,
-%% first check that the status value published to the Amazon SNS topic is
-%% `SUCCEEDED'. If so, call `GetFaceDetection' and pass the job identifier
-%% (`JobId') from the initial call to `StartFaceDetection'.
+%% You start face detection by calling `StartFaceDetection' which returns
+%% a job identifier (`JobId'). When the face detection operation
+%% finishes, Amazon Rekognition Video publishes a completion status to the
+%% Amazon Simple Notification Service topic registered in the initial call to
+%% `StartFaceDetection'. To get the results of the face detection
+%% operation, first check that the status value published to the Amazon SNS
+%% topic is `SUCCEEDED'. If so, call `GetFaceDetection' and pass the
+%% job identifier (`JobId') from the initial call to
+%% `StartFaceDetection'.
 %%
-%% `GetFaceDetection' returns an array of detected faces (`Faces') sorted by
-%% the time the faces were detected.
+%% `GetFaceDetection' returns an array of detected faces (`Faces')
+%% sorted by the time the faces were detected.
 %%
 %% Use MaxResults parameter to limit the number of labels returned. If there
-%% are more results than specified in `MaxResults', the value of `NextToken'
-%% in the operation response contains a pagination token for getting the next
-%% set of results. To get the next page of results, call `GetFaceDetection'
-%% and populate the `NextToken' request parameter with the token value
-%% returned from the previous call to `GetFaceDetection'.
+%% are more results than specified in `MaxResults', the value of
+%% `NextToken' in the operation response contains a pagination token for
+%% getting the next set of results. To get the next page of results, call
+%% `GetFaceDetection' and populate the `NextToken' request parameter
+%% with the token value returned from the previous call to
+%% `GetFaceDetection'.
 get_face_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_face_detection(Client, Input, []).
@@ -1212,28 +1232,29 @@ get_face_detection(Client, Input, Options)
 %% in the video.
 %%
 %% Face search in a video is an asynchronous operation. You start face search
-%% by calling to `StartFaceSearch' which returns a job identifier (`JobId').
-%% When the search operation finishes, Amazon Rekognition Video publishes a
-%% completion status to the Amazon Simple Notification Service topic
-%% registered in the initial call to `StartFaceSearch'. To get the search
-%% results, first check that the status value published to the Amazon SNS
-%% topic is `SUCCEEDED'. If so, call `GetFaceSearch' and pass the job
-%% identifier (`JobId') from the initial call to `StartFaceSearch'.
+%% by calling to `StartFaceSearch' which returns a job identifier
+%% (`JobId'). When the search operation finishes, Amazon Rekognition
+%% Video publishes a completion status to the Amazon Simple Notification
+%% Service topic registered in the initial call to `StartFaceSearch'. To
+%% get the search results, first check that the status value published to the
+%% Amazon SNS topic is `SUCCEEDED'. If so, call `GetFaceSearch' and
+%% pass the job identifier (`JobId') from the initial call to
+%% `StartFaceSearch'.
 %%
 %% For more information, see Searching Faces in a Collection in the Amazon
 %% Rekognition Developer Guide.
 %%
-%% The search results are retured in an array, `Persons', of `PersonMatch'
-%% objects. Each`PersonMatch' element contains details about the matching
-%% faces in the input collection, person information (facial attributes,
-%% bounding boxes, and person identifer) for the matched person, and the time
-%% the person was matched in the video.
+%% The search results are retured in an array, `Persons', of
+%% `PersonMatch' objects. Each`PersonMatch' element contains details
+%% about the matching faces in the input collection, person information
+%% (facial attributes, bounding boxes, and person identifer) for the matched
+%% person, and the time the person was matched in the video.
 %%
-%% `GetFaceSearch' only returns the default facial attributes (`BoundingBox',
-%% `Confidence', `Landmarks', `Pose', and `Quality'). The other facial
-%% attributes listed in the `Face' object of the following response syntax
-%% are not returned. For more information, see FaceDetail in the Amazon
-%% Rekognition Developer Guide.
+%% `GetFaceSearch' only returns the default facial attributes
+%% (`BoundingBox', `Confidence', `Landmarks', `Pose', and
+%% `Quality'). The other facial attributes listed in the `Face'
+%% object of the following response syntax are not returned. For more
+%% information, see FaceDetail in the Amazon Rekognition Developer Guide.
 %%
 %% By default, the `Persons' array is sorted by the time, in milliseconds
 %% from the start of the video, persons are matched. You can also sort by
@@ -1249,25 +1270,25 @@ get_face_search(Client, Input, Options)
 %% analysis started by `StartLabelDetection'.
 %%
 %% The label detection operation is started by a call to
-%% `StartLabelDetection' which returns a job identifier (`JobId'). When the
-%% label detection operation finishes, Amazon Rekognition publishes a
-%% completion status to the Amazon Simple Notification Service topic
+%% `StartLabelDetection' which returns a job identifier (`JobId').
+%% When the label detection operation finishes, Amazon Rekognition publishes
+%% a completion status to the Amazon Simple Notification Service topic
 %% registered in the initial call to `StartlabelDetection'.
 %%
 %% To get the results of the label detection operation, first check that the
-%% status value published to the Amazon SNS topic is `SUCCEEDED'. If so, call
-%% `GetLabelDetection' and pass the job identifier (`JobId') from the initial
-%% call to `StartLabelDetection'.
+%% status value published to the Amazon SNS topic is `SUCCEEDED'. If so,
+%% call `GetLabelDetection' and pass the job identifier (`JobId')
+%% from the initial call to `StartLabelDetection'.
 %%
-%% `GetLabelDetection' returns an array of detected labels (`Labels') sorted
-%% by the time the labels were detected. You can also sort by the label name
-%% by specifying `NAME' for the `SortBy' input parameter. If there is no
-%% `NAME' specified, the default sort is by timestamp.
+%% `GetLabelDetection' returns an array of detected labels (`Labels')
+%% sorted by the time the labels were detected. You can also sort by the
+%% label name by specifying `NAME' for the `SortBy' input parameter.
+%% If there is no `NAME' specified, the default sort is by timestamp.
 %%
-%% You can select how results are aggregated by using the `AggregateBy' input
-%% parameter. The default aggregation method is `TIMESTAMPS'. You can also
-%% aggregate by `SEGMENTS', which aggregates all instances of labels detected
-%% in a given segment.
+%% You can select how results are aggregated by using the `AggregateBy'
+%% input parameter. The default aggregation method is `TIMESTAMPS'. You
+%% can also aggregate by `SEGMENTS', which aggregates all instances of
+%% labels detected in a given segment.
 %%
 %% The returned Labels array may include the following attributes:
 %%
@@ -1297,10 +1318,10 @@ get_face_search(Client, Input, Options)
 %%
 %% </li> <li> Timestamp - Time, in milliseconds from the start of the video,
 %% that the label was detected. For aggregation by `SEGMENTS', the
-%% `StartTimestampMillis', `EndTimestampMillis', and `DurationMillis'
-%% structures are what define a segment. Although the “Timestamp” structure
-%% is still returned with each label, its value is set to be the same as
-%% `StartTimestampMillis'.
+%% `StartTimestampMillis', `EndTimestampMillis', and
+%% `DurationMillis' structures are what define a segment. Although the
+%% “Timestamp” structure is still returned with each label, its value is set
+%% to be the same as `StartTimestampMillis'.
 %%
 %% </li> </ul> Timestamp and Bounding box information are returned for
 %% detected Instances, only if aggregation is done by `TIMESTAMPS'. If
@@ -1309,15 +1330,16 @@ get_face_search(Client, Input, Options)
 %%
 %% The version of the label model used for the detection is also returned.
 %%
-%% Note `DominantColors' isn't returned for `Instances', although it is shown
-%% as part of the response in the sample seen below.
+%% Note `DominantColors' isn't returned for `Instances', although
+%% it is shown as part of the response in the sample seen below.
 %%
 %% Use `MaxResults' parameter to limit the number of labels returned. If
 %% there are more results than specified in `MaxResults', the value of
 %% `NextToken' in the operation response contains a pagination token for
 %% getting the next set of results. To get the next page of results, call
-%% `GetlabelDetection' and populate the `NextToken' request parameter with
-%% the token value returned from the previous call to `GetLabelDetection'.
+%% `GetlabelDetection' and populate the `NextToken' request parameter
+%% with the token value returned from the previous call to
+%% `GetLabelDetection'.
 get_label_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_label_detection(Client, Input, []).
@@ -1329,37 +1351,38 @@ get_label_detection(Client, Input, Options)
 %% started by `StartPersonTracking'.
 %%
 %% The person path tracking operation is started by a call to
-%% `StartPersonTracking' which returns a job identifier (`JobId'). When the
-%% operation finishes, Amazon Rekognition Video publishes a completion status
-%% to the Amazon Simple Notification Service topic registered in the initial
-%% call to `StartPersonTracking'.
+%% `StartPersonTracking' which returns a job identifier (`JobId').
+%% When the operation finishes, Amazon Rekognition Video publishes a
+%% completion status to the Amazon Simple Notification Service topic
+%% registered in the initial call to `StartPersonTracking'.
 %%
 %% To get the results of the person path tracking operation, first check that
-%% the status value published to the Amazon SNS topic is `SUCCEEDED'. If so,
-%% call `GetPersonTracking' and pass the job identifier (`JobId') from the
-%% initial call to `StartPersonTracking'.
+%% the status value published to the Amazon SNS topic is `SUCCEEDED'. If
+%% so, call `GetPersonTracking' and pass the job identifier (`JobId')
+%% from the initial call to `StartPersonTracking'.
 %%
-%% `GetPersonTracking' returns an array, `Persons', of tracked persons and
-%% the time(s) their paths were tracked in the video.
+%% `GetPersonTracking' returns an array, `Persons', of tracked
+%% persons and the time(s) their paths were tracked in the video.
 %%
 %% `GetPersonTracking' only returns the default facial attributes
-%% (`BoundingBox', `Confidence', `Landmarks', `Pose', and `Quality'). The
-%% other facial attributes listed in the `Face' object of the following
-%% response syntax are not returned.
+%% (`BoundingBox', `Confidence', `Landmarks', `Pose', and
+%% `Quality'). The other facial attributes listed in the `Face'
+%% object of the following response syntax are not returned.
 %%
 %% For more information, see FaceDetail in the Amazon Rekognition Developer
 %% Guide.
 %%
-%% By default, the array is sorted by the time(s) a person's path is tracked
-%% in the video. You can sort by tracked persons by specifying `INDEX' for
-%% the `SortBy' input parameter.
+%% By default, the array is sorted by the time(s) a person's path is
+%% tracked in the video. You can sort by tracked persons by specifying
+%% `INDEX' for the `SortBy' input parameter.
 %%
-%% Use the `MaxResults' parameter to limit the number of items returned. If
-%% there are more results than specified in `MaxResults', the value of
+%% Use the `MaxResults' parameter to limit the number of items returned.
+%% If there are more results than specified in `MaxResults', the value of
 %% `NextToken' in the operation response contains a pagination token for
 %% getting the next set of results. To get the next page of results, call
-%% `GetPersonTracking' and populate the `NextToken' request parameter with
-%% the token value returned from the previous call to `GetPersonTracking'.
+%% `GetPersonTracking' and populate the `NextToken' request parameter
+%% with the token value returned from the previous call to
+%% `GetPersonTracking'.
 get_person_tracking(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_person_tracking(Client, Input, []).
@@ -1371,32 +1394,34 @@ get_person_tracking(Client, Input, Options)
 %% analysis started by `StartSegmentDetection'.
 %%
 %% Segment detection with Amazon Rekognition Video is an asynchronous
-%% operation. You start segment detection by calling `StartSegmentDetection'
-%% which returns a job identifier (`JobId'). When the segment detection
-%% operation finishes, Amazon Rekognition publishes a completion status to
-%% the Amazon Simple Notification Service topic registered in the initial
-%% call to `StartSegmentDetection'. To get the results of the segment
-%% detection operation, first check that the status value published to the
-%% Amazon SNS topic is `SUCCEEDED'. if so, call `GetSegmentDetection' and
-%% pass the job identifier (`JobId') from the initial call of
-%% `StartSegmentDetection'.
+%% operation. You start segment detection by calling
+%% `StartSegmentDetection' which returns a job identifier (`JobId').
+%% When the segment detection operation finishes, Amazon Rekognition
+%% publishes a completion status to the Amazon Simple Notification Service
+%% topic registered in the initial call to `StartSegmentDetection'. To
+%% get the results of the segment detection operation, first check that the
+%% status value published to the Amazon SNS topic is `SUCCEEDED'. if so,
+%% call `GetSegmentDetection' and pass the job identifier (`JobId')
+%% from the initial call of `StartSegmentDetection'.
 %%
-%% `GetSegmentDetection' returns detected segments in an array (`Segments')
-%% of `SegmentDetection' objects. `Segments' is sorted by the segment types
-%% specified in the `SegmentTypes' input parameter of
-%% `StartSegmentDetection'. Each element of the array includes the detected
-%% segment, the precentage confidence in the acuracy of the detected segment,
-%% the type of the segment, and the frame in which the segment was detected.
+%% `GetSegmentDetection' returns detected segments in an array
+%% (`Segments') of `SegmentDetection' objects. `Segments' is
+%% sorted by the segment types specified in the `SegmentTypes' input
+%% parameter of `StartSegmentDetection'. Each element of the array
+%% includes the detected segment, the precentage confidence in the acuracy of
+%% the detected segment, the type of the segment, and the frame in which the
+%% segment was detected.
 %%
 %% Use `SelectedSegmentTypes' to find out the type of segment detection
 %% requested in the call to `StartSegmentDetection'.
 %%
-%% Use the `MaxResults' parameter to limit the number of segment detections
-%% returned. If there are more results than specified in `MaxResults', the
-%% value of `NextToken' in the operation response contains a pagination token
-%% for getting the next set of results. To get the next page of results, call
-%% `GetSegmentDetection' and populate the `NextToken' request parameter with
-%% the token value returned from the previous call to `GetSegmentDetection'.
+%% Use the `MaxResults' parameter to limit the number of segment
+%% detections returned. If there are more results than specified in
+%% `MaxResults', the value of `NextToken' in the operation response
+%% contains a pagination token for getting the next set of results. To get
+%% the next page of results, call `GetSegmentDetection' and populate the
+%% `NextToken' request parameter with the token value returned from the
+%% previous call to `GetSegmentDetection'.
 %%
 %% For more information, see Detecting video segments in stored video in the
 %% Amazon Rekognition Developer Guide.
@@ -1411,18 +1436,19 @@ get_segment_detection(Client, Input, Options)
 %% analysis started by `StartTextDetection'.
 %%
 %% Text detection with Amazon Rekognition Video is an asynchronous operation.
-%% You start text detection by calling `StartTextDetection' which returns a
-%% job identifier (`JobId') When the text detection operation finishes,
+%% You start text detection by calling `StartTextDetection' which returns
+%% a job identifier (`JobId') When the text detection operation finishes,
 %% Amazon Rekognition publishes a completion status to the Amazon Simple
 %% Notification Service topic registered in the initial call to
-%% `StartTextDetection'. To get the results of the text detection operation,
-%% first check that the status value published to the Amazon SNS topic is
-%% `SUCCEEDED'. if so, call `GetTextDetection' and pass the job identifier
-%% (`JobId') from the initial call of `StartLabelDetection'.
+%% `StartTextDetection'. To get the results of the text detection
+%% operation, first check that the status value published to the Amazon SNS
+%% topic is `SUCCEEDED'. if so, call `GetTextDetection' and pass the
+%% job identifier (`JobId') from the initial call of
+%% `StartLabelDetection'.
 %%
-%% `GetTextDetection' returns an array of detected text (`TextDetections')
-%% sorted by the time the text was detected, up to 50 words per frame of
-%% video.
+%% `GetTextDetection' returns an array of detected text
+%% (`TextDetections') sorted by the time the text was detected, up to 50
+%% words per frame of video.
 %%
 %% Each element of the array includes the detected text, the precentage
 %% confidence in the acuracy of the detected text, the time the text was
@@ -1433,8 +1459,9 @@ get_segment_detection(Client, Input, Options)
 %% If there are more results than specified in `MaxResults', the value of
 %% `NextToken' in the operation response contains a pagination token for
 %% getting the next set of results. To get the next page of results, call
-%% `GetTextDetection' and populate the `NextToken' request parameter with the
-%% token value returned from the previous call to `GetTextDetection'.
+%% `GetTextDetection' and populate the `NextToken' request parameter
+%% with the token value returned from the previous call to
+%% `GetTextDetection'.
 get_text_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_text_detection(Client, Input, []).
@@ -1457,51 +1484,53 @@ get_text_detection(Client, Input, Options)
 %%
 %% To get the number of faces in a collection, call `DescribeCollection'.
 %%
-%% If you're using version 1.0 of the face detection model, `IndexFaces'
-%% indexes the 15 largest faces in the input image. Later versions of the
-%% face detection model index the 100 largest faces in the input image.
+%% If you're using version 1.0 of the face detection model,
+%% `IndexFaces' indexes the 15 largest faces in the input image. Later
+%% versions of the face detection model index the 100 largest faces in the
+%% input image.
 %%
-%% If you're using version 4 or later of the face model, image orientation
-%% information is not returned in the `OrientationCorrection' field.
+%% If you're using version 4 or later of the face model, image
+%% orientation information is not returned in the `OrientationCorrection'
+%% field.
 %%
 %% To determine which version of the model you're using, call
-%% `DescribeCollection' and supply the collection ID. You can also get the
-%% model version from the value of `FaceModelVersion' in the response from
-%% `IndexFaces'
+%% `DescribeCollection' and supply the collection ID. You can also get
+%% the model version from the value of `FaceModelVersion' in the response
+%% from `IndexFaces'
 %%
 %% For more information, see Model Versioning in the Amazon Rekognition
 %% Developer Guide.
 %%
 %% If you provide the optional `ExternalImageId' for the input image you
 %% provided, Amazon Rekognition associates this ID with all faces that it
-%% detects. When you call the `ListFaces' operation, the response returns the
-%% external ID. You can use this external image ID to create a client-side
-%% index to associate the faces with each image. You can then use the index
-%% to find all faces in an image.
+%% detects. When you call the `ListFaces' operation, the response returns
+%% the external ID. You can use this external image ID to create a
+%% client-side index to associate the faces with each image. You can then use
+%% the index to find all faces in an image.
 %%
-%% You can specify the maximum number of faces to index with the `MaxFaces'
-%% input parameter. This is useful when you want to index the largest faces
-%% in an image and don't want to index smaller faces, such as those belonging
-%% to people standing in the background.
+%% You can specify the maximum number of faces to index with the
+%% `MaxFaces' input parameter. This is useful when you want to index the
+%% largest faces in an image and don't want to index smaller faces, such
+%% as those belonging to people standing in the background.
 %%
 %% The `QualityFilter' input parameter allows you to filter out detected
 %% faces that don’t meet a required quality bar. The quality bar is based on
 %% a variety of common use cases. By default, `IndexFaces' chooses the
-%% quality bar that's used to filter faces. You can also explicitly choose
-%% the quality bar. Use `QualityFilter', to set the quality bar by specifying
-%% `LOW', `MEDIUM', or `HIGH'. If you do not want to filter detected faces,
-%% specify `NONE'.
+%% quality bar that's used to filter faces. You can also explicitly
+%% choose the quality bar. Use `QualityFilter', to set the quality bar by
+%% specifying `LOW', `MEDIUM', or `HIGH'. If you do not want to
+%% filter detected faces, specify `NONE'.
 %%
 %% To use quality filtering, you need a collection associated with version 3
 %% of the face model or higher. To get the version of the face model
 %% associated with a collection, call `DescribeCollection'.
 %%
 %% Information about faces detected in an image, but not indexed, is returned
-%% in an array of `UnindexedFace' objects, `UnindexedFaces'. Faces aren't
-%% indexed for reasons such as:
+%% in an array of `UnindexedFace' objects, `UnindexedFaces'. Faces
+%% aren't indexed for reasons such as:
 %%
-%% <ul> <li> The number of faces detected exceeds the value of the `MaxFaces'
-%% request parameter.
+%% <ul> <li> The number of faces detected exceeds the value of the
+%% `MaxFaces' request parameter.
 %%
 %% </li> <li> The face is too small compared to the image dimensions.
 %%
@@ -1514,8 +1543,8 @@ get_text_detection(Client, Input, Options)
 %% </li> <li> The face doesn’t have enough detail to be suitable for face
 %% search.
 %%
-%% </li> </ul> In response, the `IndexFaces' operation returns an array of
-%% metadata for all detected faces, `FaceRecords'. This includes:
+%% </li> </ul> In response, the `IndexFaces' operation returns an array
+%% of metadata for all detected faces, `FaceRecords'. This includes:
 %%
 %% <ul> <li> The bounding box, `BoundingBox', of the detected face.
 %%
@@ -1525,21 +1554,21 @@ get_text_detection(Client, Input, Options)
 %% </li> <li> A face ID, `FaceId', assigned by the service for each face
 %% that's detected and stored.
 %%
-%% </li> <li> An image ID, `ImageId', assigned by the service for the input
-%% image.
+%% </li> <li> An image ID, `ImageId', assigned by the service for the
+%% input image.
 %%
 %% </li> </ul> If you request all facial attributes (by using the
 %% `detectionAttributes' parameter), Amazon Rekognition returns detailed
 %% facial attributes, such as facial landmarks (for example, location of eye
 %% and mouth) and other facial attributes. If you provide the same image,
 %% specify the same collection, and use the same external ID in the
-%% `IndexFaces' operation, Amazon Rekognition doesn't save duplicate face
-%% metadata.
+%% `IndexFaces' operation, Amazon Rekognition doesn't save duplicate
+%% face metadata.
 %%
 %% The input image is passed either as base64-encoded image bytes, or as a
 %% reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
-%% call Amazon Rekognition operations, passing image bytes isn't supported.
-%% The image must be formatted as a PNG or JPEG file.
+%% call Amazon Rekognition operations, passing image bytes isn't
+%% supported. The image must be formatted as a PNG or JPEG file.
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:IndexFaces' action.
@@ -1552,9 +1581,9 @@ index_faces(Client, Input, Options)
 
 %% @doc Returns list of collection IDs in your account.
 %%
-%% If the result is truncated, the response also provides a `NextToken' that
-%% you can use in the subsequent request to fetch the next set of collection
-%% IDs.
+%% If the result is truncated, the response also provides a `NextToken'
+%% that you can use in the subsequent request to fetch the next set of
+%% collection IDs.
 %%
 %% For an example, see Listing collections in the Amazon Rekognition
 %% Developer Guide.
@@ -1575,10 +1604,10 @@ list_collections(Client, Input, Options)
 %% bounding boxes. For more information, see Creating a manifest file.
 %%
 %% JSON Lines in the response include information about non-terminal errors
-%% found in the dataset. Non terminal errors are reported in `errors' lists
-%% within each JSON Line. The same information is reported in the training
-%% and testing validation result manifests that Amazon Rekognition Custom
-%% Labels creates during model training.
+%% found in the dataset. Non terminal errors are reported in `errors'
+%% lists within each JSON Line. The same information is reported in the
+%% training and testing validation result manifests that Amazon Rekognition
+%% Custom Labels creates during model training.
 %%
 %% You can filter the response in variety of ways, such as choosing which
 %% labels to return and returning JSON Lines created after a specific date.
@@ -1614,8 +1643,8 @@ list_dataset_labels(Client, Input, Options)
 %% an example, see Listing Faces in a Collection in the Amazon Rekognition
 %% Developer Guide.
 %%
-%% This operation requires permissions to perform the `rekognition:ListFaces'
-%% action.
+%% This operation requires permissions to perform the
+%% `rekognition:ListFaces' action.
 list_faces(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_faces(Client, Input, []).
@@ -1672,8 +1701,8 @@ list_tags_for_resource(Client, Input, Options)
 %% also update an existing project policy by specifying the policy revision
 %% ID of the existing policy.
 %%
-%% To remove a project policy from a project, call `DeleteProjectPolicy'. To
-%% get a list of project policies attached to a project, call
+%% To remove a project policy from a project, call `DeleteProjectPolicy'.
+%% To get a list of project policies attached to a project, call
 %% `ListProjectPolicies'.
 %%
 %% You copy a model version by calling `CopyProjectVersion'.
@@ -1689,24 +1718,25 @@ put_project_policy(Client, Input, Options)
 %% For more information, see Recognizing celebrities in the Amazon
 %% Rekognition Developer Guide.
 %%
-%% `RecognizeCelebrities' returns the 64 largest faces in the image. It lists
-%% the recognized celebrities in the `CelebrityFaces' array and any
+%% `RecognizeCelebrities' returns the 64 largest faces in the image. It
+%% lists the recognized celebrities in the `CelebrityFaces' array and any
 %% unrecognized faces in the `UnrecognizedFaces' array.
-%% `RecognizeCelebrities' doesn't return celebrities whose faces aren't among
-%% the largest 64 faces in the image.
+%% `RecognizeCelebrities' doesn't return celebrities whose faces
+%% aren't among the largest 64 faces in the image.
 %%
 %% For each celebrity recognized, `RecognizeCelebrities' returns a
-%% `Celebrity' object. The `Celebrity' object contains the celebrity name,
-%% ID, URL links to additional information, match confidence, and a
-%% `ComparedFace' object that you can use to locate the celebrity's face on
-%% the image.
+%% `Celebrity' object. The `Celebrity' object contains the celebrity
+%% name, ID, URL links to additional information, match confidence, and a
+%% `ComparedFace' object that you can use to locate the celebrity's
+%% face on the image.
 %%
 %% Amazon Rekognition doesn't retain information about which images a
 %% celebrity has been recognized in. Your application must store this
-%% information and use the `Celebrity' ID property as a unique identifier for
-%% the celebrity. If you don't store the celebrity name or additional
-%% information URLs returned by `RecognizeCelebrities', you will need the ID
-%% to identify the celebrity in a call to the `GetCelebrityInfo' operation.
+%% information and use the `Celebrity' ID property as a unique identifier
+%% for the celebrity. If you don't store the celebrity name or additional
+%% information URLs returned by `RecognizeCelebrities', you will need the
+%% ID to identify the celebrity in a call to the `GetCelebrityInfo'
+%% operation.
 %%
 %% You pass the input image either as base64-encoded image bytes or as a
 %% reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
@@ -1729,8 +1759,8 @@ recognize_celebrities(Client, Input, Options)
 %% collection the face belongs to.
 %%
 %% You get a face ID when you add a face to the collection using the
-%% `IndexFaces' operation. The operation compares the features of the input
-%% face with faces in the specified collection.
+%% `IndexFaces' operation. The operation compares the features of the
+%% input face with faces in the specified collection.
 %%
 %% You can also search faces without indexing faces by using the
 %% `SearchFacesByImage' operation.
@@ -1738,9 +1768,9 @@ recognize_celebrities(Client, Input, Options)
 %% The operation response returns an array of faces that match, ordered by
 %% similarity score with the highest similarity first. More specifically, it
 %% is an array of metadata for each face match that is found. Along with the
-%% metadata, the response also includes a `confidence' value for each face
-%% match, indicating the confidence that the specific face matches the input
-%% face.
+%% metadata, the response also includes a `confidence' value for each
+%% face match, indicating the confidence that the specific face matches the
+%% input face.
 %%
 %% For an example, see Searching for a face using its face ID in the Amazon
 %% Rekognition Developer Guide.
@@ -1761,12 +1791,12 @@ search_faces(Client, Input, Options)
 %% specified collection.
 %%
 %% To search for all faces in an input image, you might first call the
-%% `IndexFaces' operation, and then use the face IDs returned in subsequent
-%% calls to the `SearchFaces' operation.
+%% `IndexFaces' operation, and then use the face IDs returned in
+%% subsequent calls to the `SearchFaces' operation.
 %%
-%% You can also call the `DetectFaces' operation and use the bounding boxes
-%% in the response to make face crops, which then you can pass in to the
-%% `SearchFacesByImage' operation.
+%% You can also call the `DetectFaces' operation and use the bounding
+%% boxes in the response to make face crops, which then you can pass in to
+%% the `SearchFacesByImage' operation.
 %%
 %% You pass the input image either as base64-encoded image bytes or as a
 %% reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
@@ -1776,22 +1806,23 @@ search_faces(Client, Input, Options)
 %% The response returns an array of faces that match, ordered by similarity
 %% score with the highest similarity first. More specifically, it is an array
 %% of metadata for each face match found. Along with the metadata, the
-%% response also includes a `similarity' indicating how similar the face is
-%% to the input face. In the response, the operation also returns the
+%% response also includes a `similarity' indicating how similar the face
+%% is to the input face. In the response, the operation also returns the
 %% bounding box (and a confidence level that the bounding box contains a
 %% face) of the face that Amazon Rekognition used for the input image.
 %%
-%% If no faces are detected in the input image, `SearchFacesByImage' returns
-%% an `InvalidParameterException' error.
+%% If no faces are detected in the input image, `SearchFacesByImage'
+%% returns an `InvalidParameterException' error.
 %%
 %% For an example, Searching for a Face Using an Image in the Amazon
 %% Rekognition Developer Guide.
 %%
 %% The `QualityFilter' input parameter allows you to filter out detected
 %% faces that don’t meet a required quality bar. The quality bar is based on
-%% a variety of common use cases. Use `QualityFilter' to set the quality bar
-%% for filtering by specifying `LOW', `MEDIUM', or `HIGH'. If you do not want
-%% to filter detected faces, specify `NONE'. The default value is `NONE'.
+%% a variety of common use cases. Use `QualityFilter' to set the quality
+%% bar for filtering by specifying `LOW', `MEDIUM', or `HIGH'. If
+%% you do not want to filter detected faces, specify `NONE'. The default
+%% value is `NONE'.
 %%
 %% To use quality filtering, you need a collection associated with version 3
 %% of the face model or higher. To get the version of the face model
@@ -1814,11 +1845,11 @@ search_faces_by_image(Client, Input, Options)
 %% identifier (`JobId') which you use to get the results of the analysis.
 %% When celebrity recognition analysis is finished, Amazon Rekognition Video
 %% publishes a completion status to the Amazon Simple Notification Service
-%% topic that you specify in `NotificationChannel'. To get the results of the
-%% celebrity recognition analysis, first check that the status value
+%% topic that you specify in `NotificationChannel'. To get the results of
+%% the celebrity recognition analysis, first check that the status value
 %% published to the Amazon SNS topic is `SUCCEEDED'. If so, call
-%% `GetCelebrityRecognition' and pass the job identifier (`JobId') from the
-%% initial call to `StartCelebrityRecognition'.
+%% `GetCelebrityRecognition' and pass the job identifier (`JobId')
+%% from the initial call to `StartCelebrityRecognition'.
 %%
 %% For more information, see Recognizing celebrities in the Amazon
 %% Rekognition Developer Guide.
@@ -1836,17 +1867,17 @@ start_celebrity_recognition(Client, Input, Options)
 %% and video moderation APIs.
 %%
 %% Amazon Rekognition Video can moderate content in a video stored in an
-%% Amazon S3 bucket. Use `Video' to specify the bucket name and the filename
-%% of the video. `StartContentModeration' returns a job identifier (`JobId')
-%% which you use to get the results of the analysis. When content analysis is
-%% finished, Amazon Rekognition Video publishes a completion status to the
-%% Amazon Simple Notification Service topic that you specify in
-%% `NotificationChannel'.
+%% Amazon S3 bucket. Use `Video' to specify the bucket name and the
+%% filename of the video. `StartContentModeration' returns a job
+%% identifier (`JobId') which you use to get the results of the analysis.
+%% When content analysis is finished, Amazon Rekognition Video publishes a
+%% completion status to the Amazon Simple Notification Service topic that you
+%% specify in `NotificationChannel'.
 %%
 %% To get the results of the content analysis, first check that the status
 %% value published to the Amazon SNS topic is `SUCCEEDED'. If so, call
-%% `GetContentModeration' and pass the job identifier (`JobId') from the
-%% initial call to `StartContentModeration'.
+%% `GetContentModeration' and pass the job identifier (`JobId') from
+%% the initial call to `StartContentModeration'.
 %%
 %% For more information, see Moderating content in the Amazon Rekognition
 %% Developer Guide.
@@ -1860,15 +1891,16 @@ start_content_moderation(Client, Input, Options)
 %% @doc Starts asynchronous detection of faces in a stored video.
 %%
 %% Amazon Rekognition Video can detect faces in a video stored in an Amazon
-%% S3 bucket. Use `Video' to specify the bucket name and the filename of the
-%% video. `StartFaceDetection' returns a job identifier (`JobId') that you
-%% use to get the results of the operation. When face detection is finished,
-%% Amazon Rekognition Video publishes a completion status to the Amazon
-%% Simple Notification Service topic that you specify in
-%% `NotificationChannel'. To get the results of the face detection operation,
-%% first check that the status value published to the Amazon SNS topic is
-%% `SUCCEEDED'. If so, call `GetFaceDetection' and pass the job identifier
-%% (`JobId') from the initial call to `StartFaceDetection'.
+%% S3 bucket. Use `Video' to specify the bucket name and the filename of
+%% the video. `StartFaceDetection' returns a job identifier (`JobId')
+%% that you use to get the results of the operation. When face detection is
+%% finished, Amazon Rekognition Video publishes a completion status to the
+%% Amazon Simple Notification Service topic that you specify in
+%% `NotificationChannel'. To get the results of the face detection
+%% operation, first check that the status value published to the Amazon SNS
+%% topic is `SUCCEEDED'. If so, call `GetFaceDetection' and pass the
+%% job identifier (`JobId') from the initial call to
+%% `StartFaceDetection'.
 %%
 %% For more information, see Detecting faces in a stored video in the Amazon
 %% Rekognition Developer Guide.
@@ -1882,16 +1914,17 @@ start_face_detection(Client, Input, Options)
 %% @doc Starts the asynchronous search for faces in a collection that match
 %% the faces of persons detected in a stored video.
 %%
-%% The video must be stored in an Amazon S3 bucket. Use `Video' to specify
-%% the bucket name and the filename of the video. `StartFaceSearch' returns a
-%% job identifier (`JobId') which you use to get the search results once the
-%% search has completed. When searching is finished, Amazon Rekognition Video
-%% publishes a completion status to the Amazon Simple Notification Service
-%% topic that you specify in `NotificationChannel'. To get the search
-%% results, first check that the status value published to the Amazon SNS
-%% topic is `SUCCEEDED'. If so, call `GetFaceSearch' and pass the job
-%% identifier (`JobId') from the initial call to `StartFaceSearch'. For more
-%% information, see Searching stored videos for faces.
+%% The video must be stored in an Amazon S3 bucket. Use `Video' to
+%% specify the bucket name and the filename of the video.
+%% `StartFaceSearch' returns a job identifier (`JobId') which you use
+%% to get the search results once the search has completed. When searching is
+%% finished, Amazon Rekognition Video publishes a completion status to the
+%% Amazon Simple Notification Service topic that you specify in
+%% `NotificationChannel'. To get the search results, first check that the
+%% status value published to the Amazon SNS topic is `SUCCEEDED'. If so,
+%% call `GetFaceSearch' and pass the job identifier (`JobId') from
+%% the initial call to `StartFaceSearch'. For more information, see
+%% Searching stored videos for faces.
 start_face_search(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_face_search(Client, Input, []).
@@ -1907,29 +1940,30 @@ start_face_search(Client, Input, Options)
 %% like landscape, evening, and nature; and activities like a person getting
 %% out of a car or a person skiing.
 %%
-%% The video must be stored in an Amazon S3 bucket. Use `Video' to specify
-%% the bucket name and the filename of the video. `StartLabelDetection'
-%% returns a job identifier (`JobId') which you use to get the results of the
-%% operation. When label detection is finished, Amazon Rekognition Video
-%% publishes a completion status to the Amazon Simple Notification Service
-%% topic that you specify in `NotificationChannel'.
+%% The video must be stored in an Amazon S3 bucket. Use `Video' to
+%% specify the bucket name and the filename of the video.
+%% `StartLabelDetection' returns a job identifier (`JobId') which you
+%% use to get the results of the operation. When label detection is finished,
+%% Amazon Rekognition Video publishes a completion status to the Amazon
+%% Simple Notification Service topic that you specify in
+%% `NotificationChannel'.
 %%
 %% To get the results of the label detection operation, first check that the
-%% status value published to the Amazon SNS topic is `SUCCEEDED'. If so, call
-%% `GetLabelDetection' and pass the job identifier (`JobId') from the initial
-%% call to `StartLabelDetection'.
+%% status value published to the Amazon SNS topic is `SUCCEEDED'. If so,
+%% call `GetLabelDetection' and pass the job identifier (`JobId')
+%% from the initial call to `StartLabelDetection'.
 %%
 %% Optional Parameters
 %%
-%% `StartLabelDetection' has the `GENERAL_LABELS' Feature applied by default.
-%% This feature allows you to provide filtering criteria to the `Settings'
-%% parameter. You can filter with sets of individual labels or with label
-%% categories. You can specify inclusive filters, exclusive filters, or a
-%% combination of inclusive and exclusive filters. For more information on
-%% filtering, see Detecting labels in a video.
+%% `StartLabelDetection' has the `GENERAL_LABELS' Feature applied by
+%% default. This feature allows you to provide filtering criteria to the
+%% `Settings' parameter. You can filter with sets of individual labels or
+%% with label categories. You can specify inclusive filters, exclusive
+%% filters, or a combination of inclusive and exclusive filters. For more
+%% information on filtering, see Detecting labels in a video.
 %%
-%% You can specify `MinConfidence' to control the confidence threshold for
-%% the labels returned. The default is 50.
+%% You can specify `MinConfidence' to control the confidence threshold
+%% for the labels returned. The default is 50.
 start_label_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_label_detection(Client, Input, []).
@@ -1943,15 +1977,15 @@ start_label_detection(Client, Input, Options)
 %% Amazon Rekognition Video can track the path of people in a video stored in
 %% an Amazon S3 bucket. Use `Video' to specify the bucket name and the
 %% filename of the video. `StartPersonTracking' returns a job identifier
-%% (`JobId') which you use to get the results of the operation. When label
-%% detection is finished, Amazon Rekognition publishes a completion status to
-%% the Amazon Simple Notification Service topic that you specify in
+%% (`JobId') which you use to get the results of the operation. When
+%% label detection is finished, Amazon Rekognition publishes a completion
+%% status to the Amazon Simple Notification Service topic that you specify in
 %% `NotificationChannel'.
 %%
 %% To get the results of the person detection operation, first check that the
-%% status value published to the Amazon SNS topic is `SUCCEEDED'. If so, call
-%% `GetPersonTracking' and pass the job identifier (`JobId') from the initial
-%% call to `StartPersonTracking'.
+%% status value published to the Amazon SNS topic is `SUCCEEDED'. If so,
+%% call `GetPersonTracking' and pass the job identifier (`JobId')
+%% from the initial call to `StartPersonTracking'.
 start_person_tracking(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_person_tracking(Client, Input, []).
@@ -1985,23 +2019,24 @@ start_project_version(Client, Input, Options)
 %% @doc Starts asynchronous detection of segment detection in a stored video.
 %%
 %% Amazon Rekognition Video can detect segments in a video stored in an
-%% Amazon S3 bucket. Use `Video' to specify the bucket name and the filename
-%% of the video. `StartSegmentDetection' returns a job identifier (`JobId')
-%% which you use to get the results of the operation. When segment detection
-%% is finished, Amazon Rekognition Video publishes a completion status to the
-%% Amazon Simple Notification Service topic that you specify in
-%% `NotificationChannel'.
+%% Amazon S3 bucket. Use `Video' to specify the bucket name and the
+%% filename of the video. `StartSegmentDetection' returns a job
+%% identifier (`JobId') which you use to get the results of the
+%% operation. When segment detection is finished, Amazon Rekognition Video
+%% publishes a completion status to the Amazon Simple Notification Service
+%% topic that you specify in `NotificationChannel'.
 %%
-%% You can use the `Filters' (`StartSegmentDetectionFilters') input parameter
-%% to specify the minimum detection confidence returned in the response.
-%% Within `Filters', use `ShotFilter' (`StartShotDetectionFilter') to filter
-%% detected shots. Use `TechnicalCueFilter'
-%% (`StartTechnicalCueDetectionFilter') to filter technical cues.
+%% You can use the `Filters' (`StartSegmentDetectionFilters') input
+%% parameter to specify the minimum detection confidence returned in the
+%% response. Within `Filters', use `ShotFilter'
+%% (`StartShotDetectionFilter') to filter detected shots. Use
+%% `TechnicalCueFilter' (`StartTechnicalCueDetectionFilter') to
+%% filter technical cues.
 %%
 %% To get the results of the segment detection operation, first check that
-%% the status value published to the Amazon SNS topic is `SUCCEEDED'. if so,
-%% call `GetSegmentDetection' and pass the job identifier (`JobId') from the
-%% initial call to `StartSegmentDetection'.
+%% the status value published to the Amazon SNS topic is `SUCCEEDED'. if
+%% so, call `GetSegmentDetection' and pass the job identifier
+%% (`JobId') from the initial call to `StartSegmentDetection'.
 %%
 %% For more information, see Detecting video segments in stored video in the
 %% Amazon Rekognition Developer Guide.
@@ -2014,13 +2049,14 @@ start_segment_detection(Client, Input, Options)
 
 %% @doc Starts processing a stream processor.
 %%
-%% You create a stream processor by calling `CreateStreamProcessor'. To tell
-%% `StartStreamProcessor' which stream processor to start, use the value of
-%% the `Name' field specified in the call to `CreateStreamProcessor'.
+%% You create a stream processor by calling `CreateStreamProcessor'. To
+%% tell `StartStreamProcessor' which stream processor to start, use the
+%% value of the `Name' field specified in the call to
+%% `CreateStreamProcessor'.
 %%
 %% If you are using a label detection stream processor to detect labels, you
-%% need to provide a `Start selector' and a `Stop selector' to determine the
-%% length of the stream processing time.
+%% need to provide a `Start selector' and a `Stop selector' to
+%% determine the length of the stream processing time.
 start_stream_processor(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_stream_processor(Client, Input, []).
@@ -2032,16 +2068,16 @@ start_stream_processor(Client, Input, Options)
 %%
 %% Amazon Rekognition Video can detect text in a video stored in an Amazon S3
 %% bucket. Use `Video' to specify the bucket name and the filename of the
-%% video. `StartTextDetection' returns a job identifier (`JobId') which you
-%% use to get the results of the operation. When text detection is finished,
-%% Amazon Rekognition Video publishes a completion status to the Amazon
-%% Simple Notification Service topic that you specify in
+%% video. `StartTextDetection' returns a job identifier (`JobId')
+%% which you use to get the results of the operation. When text detection is
+%% finished, Amazon Rekognition Video publishes a completion status to the
+%% Amazon Simple Notification Service topic that you specify in
 %% `NotificationChannel'.
 %%
 %% To get the results of the text detection operation, first check that the
-%% status value published to the Amazon SNS topic is `SUCCEEDED'. if so, call
-%% `GetTextDetection' and pass the job identifier (`JobId') from the initial
-%% call to `StartTextDetection'.
+%% status value published to the Amazon SNS topic is `SUCCEEDED'. if so,
+%% call `GetTextDetection' and pass the job identifier (`JobId') from
+%% the initial call to `StartTextDetection'.
 start_text_detection(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_text_detection(Client, Input, []).
@@ -2103,22 +2139,22 @@ untag_resource(Client, Input, Options)
 %% files and Object localization in manifest files in the Amazon Rekognition
 %% Custom Labels Developer Guide.
 %%
-%% If the `source-ref' field in the JSON line references an existing image,
-%% the existing image in the dataset is updated. If `source-ref' field
-%% doesn't reference an existing image, the image is added as a new image to
-%% the dataset.
+%% If the `source-ref' field in the JSON line references an existing
+%% image, the existing image in the dataset is updated. If `source-ref'
+%% field doesn't reference an existing image, the image is added as a new
+%% image to the dataset.
 %%
 %% You specify the changes that you want to make in the `Changes' input
 %% parameter. There isn't a limit to the number JSON Lines that you can
 %% change, but the size of `Changes' must be less than 5MB.
 %%
-%% `UpdateDatasetEntries' returns immediatly, but the dataset update might
-%% take a while to complete. Use `DescribeDataset' to check the current
-%% status. The dataset updated successfully if the value of `Status' is
-%% `UPDATE_COMPLETE'.
+%% `UpdateDatasetEntries' returns immediatly, but the dataset update
+%% might take a while to complete. Use `DescribeDataset' to check the
+%% current status. The dataset updated successfully if the value of
+%% `Status' is `UPDATE_COMPLETE'.
 %%
-%% To check if any non-terminal errors occured, call `ListDatasetEntries' and
-%% check for the presence of `errors' lists in the JSON Lines.
+%% To check if any non-terminal errors occured, call `ListDatasetEntries'
+%% and check for the presence of `errors' lists in the JSON Lines.
 %%
 %% Dataset update fails if a terminal error occurs (`Status' =
 %% `UPDATE_FAILED'). Currently, you can't access the terminal error

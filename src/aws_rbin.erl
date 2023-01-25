@@ -272,10 +272,10 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% @doc Updates an existing Recycle Bin retention rule.
 %%
 %% You can update a retention rule's description, resource tags, and
-%% retention period at any time after creation. You can't update a retention
-%% rule's resource type after creation. For more information, see Update
-%% Recycle Bin retention rules in the Amazon Elastic Compute Cloud User
-%% Guide.
+%% retention period at any time after creation. You can't update a
+%% retention rule's resource type after creation. For more information,
+%% see Update Recycle Bin retention rules in the Amazon Elastic Compute Cloud
+%% User Guide.
 update_rule(Client, Identifier, Input) ->
     update_rule(Client, Identifier, Input, []).
 update_rule(Client, Identifier, Input0, Options0) ->

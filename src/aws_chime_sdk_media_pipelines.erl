@@ -291,7 +291,8 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 
 %% @doc The ARN of the media pipeline that you want to tag.
 %%
-%% Consists of he pipeline's endpoint region, resource ID, and pipeline ID.
+%% Consists of he pipeline's endpoint region, resource ID, and pipeline
+%% ID.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->

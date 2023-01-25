@@ -111,9 +111,9 @@
 
 %% @doc Stops an DataSync task execution that's in progress.
 %%
-%% The transfer of some files are abruptly interrupted. File contents that're
-%% transferred to the destination might be incomplete or inconsistent with
-%% the source files.
+%% The transfer of some files are abruptly interrupted. File contents
+%% that're transferred to the destination might be incomplete or
+%% inconsistent with the source files.
 %%
 %% However, if you start a new task execution using the same task and allow
 %% it to finish, file content on the destination will be complete and
@@ -274,8 +274,8 @@ create_task(Client, Input, Options)
 %%
 %% To specify which agent to delete, use the Amazon Resource Name (ARN) of
 %% the agent in your request. The operation disassociates the agent from your
-%% Amazon Web Services account. However, it doesn't delete the agent virtual
-%% machine (VM) from your on-premises environment.
+%% Amazon Web Services account. However, it doesn't delete the agent
+%% virtual machine (VM) from your on-premises environment.
 delete_agent(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_agent(Client, Input, []).
@@ -582,8 +582,8 @@ update_task(Client, Input, Options)
 %% or queued. For more information, see Adjusting Bandwidth Throttling for a
 %% Task Execution.
 %%
-%% The only `Option' that can be modified by `UpdateTaskExecution' is `
-%% BytesPerSecond '.
+%% The only `Option' that can be modified by `UpdateTaskExecution' is
+%% ` BytesPerSecond '.
 update_task_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_task_execution(Client, Input, []).

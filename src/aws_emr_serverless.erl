@@ -16,8 +16,9 @@
 %% For example, `aws emr-serverless start-job-run'.
 %%
 %% </li> <li> It is the prefix before IAM policy actions for Amazon EMR
-%% Serverless. For example, `"Action": ["emr-serverless:StartJobRun"]'. For
-%% more information, see Policy actions for Amazon EMR Serverless.
+%% Serverless. For example, `&quot;Action&quot;:
+%% [&quot;emr-serverless:StartJobRun&quot;]'. For more information, see
+%% Policy actions for Amazon EMR Serverless.
 %%
 %% </li> <li> It is the prefix used in Amazon EMR Serverless service
 %% endpoints. For example, `emr-serverless.us-east-2.amazonaws.com'.
@@ -372,8 +373,8 @@ stop_application(Client, ApplicationId, Input0, Options0) ->
 %% a key and an optional value, both of which you define. Tags enable you to
 %% categorize your AWS resources by attributes such as purpose, owner, or
 %% environment. When you have many resources of the same type, you can
-%% quickly identify a specific resource based on the tags you've assigned to
-%% it.
+%% quickly identify a specific resource based on the tags you've assigned
+%% to it.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->

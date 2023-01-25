@@ -31,14 +31,14 @@
 %% Amazon Web Services Secrets Manager supports Amazon Web Services
 %% CloudTrail, a service that records Amazon Web Services API calls for your
 %% Amazon Web Services account and delivers log files to an Amazon S3 bucket.
-%% By using information that's collected by Amazon Web Services CloudTrail,
-%% you can determine the requests successfully made to Secrets Manager, who
-%% made the request, when it was made, and so on. For more about Amazon Web
-%% Services Secrets Manager and support for Amazon Web Services CloudTrail,
-%% see Logging Amazon Web Services Secrets Manager Events with Amazon Web
-%% Services CloudTrail in the Amazon Web Services Secrets Manager User Guide.
-%% To learn more about CloudTrail, including enabling it and find your log
-%% files, see the Amazon Web Services CloudTrail User Guide.
+%% By using information that's collected by Amazon Web Services
+%% CloudTrail, you can determine the requests successfully made to Secrets
+%% Manager, who made the request, when it was made, and so on. For more about
+%% Amazon Web Services Secrets Manager and support for Amazon Web Services
+%% CloudTrail, see Logging Amazon Web Services Secrets Manager Events with
+%% Amazon Web Services CloudTrail in the Amazon Web Services Secrets Manager
+%% User Guide. To learn more about CloudTrail, including enabling it and find
+%% your log files, see the Amazon Web Services CloudTrail User Guide.
 -module(aws_secrets_manager).
 
 -export([cancel_rotate_secret/2,
@@ -101,8 +101,8 @@
 %% determine whether to roll back to the previous version of the secret by
 %% moving the staging label `AWSCURRENT' to the version that has
 %% `AWSPENDING'. To determine which version has a specific staging label,
-%% call `ListSecretVersionIds'. Then use `UpdateSecretVersionStage' to change
-%% staging labels. For more information, see How rotation works.
+%% call `ListSecretVersionIds'. Then use `UpdateSecretVersionStage'
+%% to change staging labels. For more information, see How rotation works.
 %%
 %% To turn on automatic rotation again, call `RotateSecret'.
 %%
@@ -139,40 +139,41 @@ cancel_rotate_secret(Client, Input, Options)
 %% secret.
 %%
 %% To create a secret, you can provide the secret value to be encrypted in
-%% either the `SecretString' parameter or the `SecretBinary' parameter, but
-%% not both. If you include `SecretString' or `SecretBinary' then Secrets
-%% Manager creates an initial secret version and automatically attaches the
-%% staging label `AWSCURRENT' to it.
+%% either the `SecretString' parameter or the `SecretBinary'
+%% parameter, but not both. If you include `SecretString' or
+%% `SecretBinary' then Secrets Manager creates an initial secret version
+%% and automatically attaches the staging label `AWSCURRENT' to it.
 %%
 %% For database credentials you want to rotate, for Secrets Manager to be
 %% able to rotate the secret, you must make sure the JSON you store in the
 %% `SecretString' matches the JSON structure of a database secret.
 %%
 %% If you don't specify an KMS encryption key, Secrets Manager uses the
-%% Amazon Web Services managed key `aws/secretsmanager'. If this key doesn't
-%% already exist in your account, then Secrets Manager creates it for you
-%% automatically. All users and roles in the Amazon Web Services account
-%% automatically have access to use `aws/secretsmanager'. Creating
-%% `aws/secretsmanager' can result in a one-time significant delay in
-%% returning the result.
+%% Amazon Web Services managed key `aws/secretsmanager'. If this key
+%% doesn't already exist in your account, then Secrets Manager creates it
+%% for you automatically. All users and roles in the Amazon Web Services
+%% account automatically have access to use `aws/secretsmanager'.
+%% Creating `aws/secretsmanager' can result in a one-time significant
+%% delay in returning the result.
 %%
 %% If the secret is in a different Amazon Web Services account from the
-%% credentials calling the API, then you can't use `aws/secretsmanager' to
-%% encrypt the secret, and you must create and use a customer managed KMS
-%% key.
+%% credentials calling the API, then you can't use
+%% `aws/secretsmanager' to encrypt the secret, and you must create and
+%% use a customer managed KMS key.
 %%
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters except
-%% `SecretBinary' or `SecretString' because it might be logged. For more
-%% information, see Logging Secrets Manager events with CloudTrail.
+%% `SecretBinary' or `SecretString' because it might be logged. For
+%% more information, see Logging Secrets Manager events with CloudTrail.
 %%
-%% Required permissions: `secretsmanager:CreateSecret'. If you include tags
-%% in the secret, you also need `secretsmanager:TagResource'. For more
-%% information, see IAM policy actions for Secrets Manager and Authentication
-%% and access control in Secrets Manager.
+%% Required permissions: `secretsmanager:CreateSecret'. If you include
+%% tags in the secret, you also need `secretsmanager:TagResource'. For
+%% more information, see IAM policy actions for Secrets Manager and
+%% Authentication and access control in Secrets Manager.
 %%
-%% To encrypt the secret with a KMS key other than `aws/secretsmanager', you
-%% need `kms:GenerateDataKey' and `kms:Decrypt' permission to the key.
+%% To encrypt the secret with a KMS key other than `aws/secretsmanager',
+%% you need `kms:GenerateDataKey' and `kms:Decrypt' permission to the
+%% key.
 create_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_secret(Client, Input, []).
@@ -203,18 +204,18 @@ delete_resource_policy(Client, Input, Options)
 %%
 %% You can specify a recovery window during which you can restore the secret.
 %% The minimum recovery window is 7 days. The default recovery window is 30
-%% days. Secrets Manager attaches a `DeletionDate' stamp to the secret that
-%% specifies the end of the recovery window. At the end of the recovery
+%% days. Secrets Manager attaches a `DeletionDate' stamp to the secret
+%% that specifies the end of the recovery window. At the end of the recovery
 %% window, Secrets Manager deletes the secret permanently.
 %%
-%% You can't delete a primary secret that is replicated to other Regions. You
-%% must first delete the replicas using `RemoveRegionsFromReplication', and
-%% then delete the primary secret. When you delete a replica, it is deleted
-%% immediately.
+%% You can't delete a primary secret that is replicated to other Regions.
+%% You must first delete the replicas using
+%% `RemoveRegionsFromReplication', and then delete the primary secret.
+%% When you delete a replica, it is deleted immediately.
 %%
-%% You can't directly delete a version of a secret. Instead, you remove all
-%% staging labels from the version using `UpdateSecretVersionStage'. This
-%% marks the version as deprecated, and then Secrets Manager can
+%% You can't directly delete a version of a secret. Instead, you remove
+%% all staging labels from the version using `UpdateSecretVersionStage'.
+%% This marks the version as deprecated, and then Secrets Manager can
 %% automatically delete the version in the background.
 %%
 %% To determine whether an application still uses a secret, you can create an
@@ -227,21 +228,21 @@ delete_resource_policy(Client, Input, Options)
 %% guarantee of a specific time after the recovery window for the permanent
 %% delete to occur.
 %%
-%% At any time before recovery window ends, you can use `RestoreSecret' to
-%% remove the `DeletionDate' and cancel the deletion of the secret.
+%% At any time before recovery window ends, you can use `RestoreSecret'
+%% to remove the `DeletionDate' and cancel the deletion of the secret.
 %%
 %% When a secret is scheduled for deletion, you cannot retrieve the secret
-%% value. You must first cancel the deletion with `RestoreSecret' and then
-%% you can retrieve the secret.
+%% value. You must first cancel the deletion with `RestoreSecret' and
+%% then you can retrieve the secret.
 %%
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
 %% it might be logged. For more information, see Logging Secrets Manager
 %% events with CloudTrail.
 %%
-%% Required permissions: `secretsmanager:DeleteSecret'. For more information,
-%% see IAM policy actions for Secrets Manager and Authentication and access
-%% control in Secrets Manager.
+%% Required permissions: `secretsmanager:DeleteSecret'. For more
+%% information, see IAM policy actions for Secrets Manager and Authentication
+%% and access control in Secrets Manager.
 delete_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_secret(Client, Input, []).
@@ -312,8 +313,8 @@ get_resource_policy(Client, Input, Options)
     request(Client, <<"GetResourcePolicy">>, Input, Options).
 
 %% @doc Retrieves the contents of the encrypted fields `SecretString' or
-%% `SecretBinary' from the specified version of a secret, whichever contains
-%% content.
+%% `SecretBinary' from the specified version of a secret, whichever
+%% contains content.
 %%
 %% We recommend that you cache your secret values by using client-side
 %% caching. Caching secrets improves speed and reduces your costs. For more
@@ -328,11 +329,12 @@ get_resource_policy(Client, Input, Options)
 %% it might be logged. For more information, see Logging Secrets Manager
 %% events with CloudTrail.
 %%
-%% Required permissions: `secretsmanager:GetSecretValue'. If the secret is
-%% encrypted using a customer-managed key instead of the Amazon Web Services
-%% managed key `aws/secretsmanager', then you also need `kms:Decrypt'
-%% permissions for that key. For more information, see IAM policy actions for
-%% Secrets Manager and Authentication and access control in Secrets Manager.
+%% Required permissions: `secretsmanager:GetSecretValue'. If the secret
+%% is encrypted using a customer-managed key instead of the Amazon Web
+%% Services managed key `aws/secretsmanager', then you also need
+%% `kms:Decrypt' permissions for that key. For more information, see IAM
+%% policy actions for Secrets Manager and Authentication and access control
+%% in Secrets Manager.
 get_secret_value(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_secret_value(Client, Input, []).
@@ -373,8 +375,8 @@ list_secret_version_ids(Client, Input, Options)
 %%
 %% To list the versions of a secret, use `ListSecretVersionIds'.
 %%
-%% To get the secret value from `SecretString' or `SecretBinary', call
-%% `GetSecretValue'.
+%% To get the secret value from `SecretString' or `SecretBinary',
+%% call `GetSecretValue'.
 %%
 %% For information about finding secrets in the console, see Find secrets in
 %% Secrets Manager.
@@ -384,9 +386,9 @@ list_secret_version_ids(Client, Input, Options)
 %% it might be logged. For more information, see Logging Secrets Manager
 %% events with CloudTrail.
 %%
-%% Required permissions: `secretsmanager:ListSecrets'. For more information,
-%% see IAM policy actions for Secrets Manager and Authentication and access
-%% control in Secrets Manager.
+%% Required permissions: `secretsmanager:ListSecrets'. For more
+%% information, see IAM policy actions for Secrets Manager and Authentication
+%% and access control in Secrets Manager.
 list_secrets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_secrets(Client, Input, []).
@@ -420,37 +422,38 @@ put_resource_policy(Client, Input, Options)
 %% @doc Creates a new version with a new encrypted secret value and attaches
 %% it to the secret.
 %%
-%% The version can contain a new `SecretString' value or a new `SecretBinary'
-%% value.
+%% The version can contain a new `SecretString' value or a new
+%% `SecretBinary' value.
 %%
 %% We recommend you avoid calling `PutSecretValue' at a sustained rate of
 %% more than once every 10 minutes. When you update the secret value, Secrets
 %% Manager creates a new version of the secret. Secrets Manager removes
 %% outdated versions when there are more than 100, but it does not remove
-%% versions created less than 24 hours ago. If you call `PutSecretValue' more
-%% than once every 10 minutes, you create more versions than Secrets Manager
-%% removes, and you will reach the quota for secret versions.
+%% versions created less than 24 hours ago. If you call `PutSecretValue'
+%% more than once every 10 minutes, you create more versions than Secrets
+%% Manager removes, and you will reach the quota for secret versions.
 %%
 %% You can specify the staging labels to attach to the new version in
-%% `VersionStages'. If you don't include `VersionStages', then Secrets
-%% Manager automatically moves the staging label `AWSCURRENT' to this
-%% version. If this operation creates the first version for the secret, then
-%% Secrets Manager automatically attaches the staging label `AWSCURRENT' to
-%% it. If this operation moves the staging label `AWSCURRENT' from another
-%% version to this version, then Secrets Manager also automatically moves the
-%% staging label `AWSPREVIOUS' to the version that `AWSCURRENT' was removed
-%% from.
+%% `VersionStages'. If you don't include `VersionStages', then
+%% Secrets Manager automatically moves the staging label `AWSCURRENT' to
+%% this version. If this operation creates the first version for the secret,
+%% then Secrets Manager automatically attaches the staging label
+%% `AWSCURRENT' to it. If this operation moves the staging label
+%% `AWSCURRENT' from another version to this version, then Secrets
+%% Manager also automatically moves the staging label `AWSPREVIOUS' to
+%% the version that `AWSCURRENT' was removed from.
 %%
 %% This operation is idempotent. If you call this operation with a
-%% `ClientRequestToken' that matches an existing version's VersionId, and you
-%% specify the same secret data, the operation succeeds but does nothing.
-%% However, if the secret data is different, then the operation fails because
-%% you can't modify an existing version; you can only create new ones.
+%% `ClientRequestToken' that matches an existing version's VersionId,
+%% and you specify the same secret data, the operation succeeds but does
+%% nothing. However, if the secret data is different, then the operation
+%% fails because you can't modify an existing version; you can only
+%% create new ones.
 %%
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters except
-%% `SecretBinary' or `SecretString' because it might be logged. For more
-%% information, see Logging Secrets Manager events with CloudTrail.
+%% `SecretBinary' or `SecretString' because it might be logged. For
+%% more information, see Logging Secrets Manager events with CloudTrail.
 %%
 %% Required permissions: `secretsmanager:PutSecretValue'. For more
 %% information, see IAM policy actions for Secrets Manager and Authentication
@@ -470,8 +473,8 @@ put_secret_value(Client, Input, Options)
 %% it might be logged. For more information, see Logging Secrets Manager
 %% events with CloudTrail.
 %%
-%% Required permissions: `secretsmanager:RemoveRegionsFromReplication'. For
-%% more information, see IAM policy actions for Secrets Manager and
+%% Required permissions: `secretsmanager:RemoveRegionsFromReplication'.
+%% For more information, see IAM policy actions for Secrets Manager and
 %% Authentication and access control in Secrets Manager.
 remove_regions_from_replication(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -489,9 +492,9 @@ remove_regions_from_replication(Client, Input, Options)
 %% it might be logged. For more information, see Logging Secrets Manager
 %% events with CloudTrail.
 %%
-%% Required permissions: `secretsmanager:ReplicateSecretToRegions'. For more
-%% information, see IAM policy actions for Secrets Manager and Authentication
-%% and access control in Secrets Manager.
+%% Required permissions: `secretsmanager:ReplicateSecretToRegions'. For
+%% more information, see IAM policy actions for Secrets Manager and
+%% Authentication and access control in Secrets Manager.
 replicate_secret_to_regions(Client, Input)
   when is_map(Client), is_map(Input) ->
     replicate_secret_to_regions(Client, Input, []).
@@ -529,25 +532,25 @@ restore_secret(Client, Input, Options)
 %% rotation with the values already stored in the secret.
 %%
 %% When rotation is successful, the `AWSPENDING' staging label might be
-%% attached to the same version as the `AWSCURRENT' version, or it might not
-%% be attached to any version. If the `AWSPENDING' staging label is present
-%% but not attached to the same version as `AWSCURRENT', then any later
-%% invocation of `RotateSecret' assumes that a previous rotation request is
-%% still in progress and returns an error. When rotation is unsuccessful, the
-%% `AWSPENDING' staging label might be attached to an empty secret version.
-%% For more information, see Troubleshoot rotation in the Secrets Manager
-%% User Guide.
+%% attached to the same version as the `AWSCURRENT' version, or it might
+%% not be attached to any version. If the `AWSPENDING' staging label is
+%% present but not attached to the same version as `AWSCURRENT', then any
+%% later invocation of `RotateSecret' assumes that a previous rotation
+%% request is still in progress and returns an error. When rotation is
+%% unsuccessful, the `AWSPENDING' staging label might be attached to an
+%% empty secret version. For more information, see Troubleshoot rotation in
+%% the Secrets Manager User Guide.
 %%
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
 %% it might be logged. For more information, see Logging Secrets Manager
 %% events with CloudTrail.
 %%
-%% Required permissions: `secretsmanager:RotateSecret'. For more information,
-%% see IAM policy actions for Secrets Manager and Authentication and access
-%% control in Secrets Manager. You also need `lambda:InvokeFunction'
-%% permissions on the rotation function. For more information, see
-%% Permissions for rotation.
+%% Required permissions: `secretsmanager:RotateSecret'. For more
+%% information, see IAM policy actions for Secrets Manager and Authentication
+%% and access control in Secrets Manager. You also need
+%% `lambda:InvokeFunction' permissions on the rotation function. For more
+%% information, see Permissions for rotation.
 rotate_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     rotate_secret(Client, Input, []).
@@ -566,9 +569,9 @@ rotate_secret(Client, Input, Options)
 %% it might be logged. For more information, see Logging Secrets Manager
 %% events with CloudTrail.
 %%
-%% Required permissions: `secretsmanager:StopReplicationToReplica'. For more
-%% information, see IAM policy actions for Secrets Manager and Authentication
-%% and access control in Secrets Manager.
+%% Required permissions: `secretsmanager:StopReplicationToReplica'. For
+%% more information, see IAM policy actions for Secrets Manager and
+%% Authentication and access control in Secrets Manager.
 stop_replication_to_replica(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_replication_to_replica(Client, Input, []).
@@ -594,8 +597,8 @@ stop_replication_to_replica(Client, Input, Options)
 %%
 %% </li> <li> Do not use the `aws:' prefix in your tag names or values
 %% because Amazon Web Services reserves it for Amazon Web Services use. You
-%% can't edit or delete tag names or values with this prefix. Tags with this
-%% prefix do not count against your tags per secret limit.
+%% can't edit or delete tag names or values with this prefix. Tags with
+%% this prefix do not count against your tags per secret limit.
 %%
 %% </li> <li> If you use your tagging schema across multiple services and
 %% resources, other services might have restrictions on allowed characters.
@@ -612,9 +615,9 @@ stop_replication_to_replica(Client, Input, Options)
 %% it might be logged. For more information, see Logging Secrets Manager
 %% events with CloudTrail.
 %%
-%% Required permissions: `secretsmanager:TagResource'. For more information,
-%% see IAM policy actions for Secrets Manager and Authentication and access
-%% control in Secrets Manager.
+%% Required permissions: `secretsmanager:TagResource'. For more
+%% information, see IAM policy actions for Secrets Manager and Authentication
+%% and access control in Secrets Manager.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -659,36 +662,37 @@ untag_resource(Client, Input, Options)
 %% recreate the secret in that service. See Secrets Manager secrets managed
 %% by other Amazon Web Services services.
 %%
-%% We recommend you avoid calling `UpdateSecret' at a sustained rate of more
-%% than once every 10 minutes. When you call `UpdateSecret' to update the
-%% secret value, Secrets Manager creates a new version of the secret. Secrets
-%% Manager removes outdated versions when there are more than 100, but it
-%% does not remove versions created less than 24 hours ago. If you update the
-%% secret value more than once every 10 minutes, you create more versions
-%% than Secrets Manager removes, and you will reach the quota for secret
-%% versions.
+%% We recommend you avoid calling `UpdateSecret' at a sustained rate of
+%% more than once every 10 minutes. When you call `UpdateSecret' to
+%% update the secret value, Secrets Manager creates a new version of the
+%% secret. Secrets Manager removes outdated versions when there are more than
+%% 100, but it does not remove versions created less than 24 hours ago. If
+%% you update the secret value more than once every 10 minutes, you create
+%% more versions than Secrets Manager removes, and you will reach the quota
+%% for secret versions.
 %%
-%% If you include `SecretString' or `SecretBinary' to create a new secret
-%% version, Secrets Manager automatically moves the staging label
-%% `AWSCURRENT' to the new version. Then it attaches the label `AWSPREVIOUS'
-%% to the version that `AWSCURRENT' was removed from.
+%% If you include `SecretString' or `SecretBinary' to create a new
+%% secret version, Secrets Manager automatically moves the staging label
+%% `AWSCURRENT' to the new version. Then it attaches the label
+%% `AWSPREVIOUS' to the version that `AWSCURRENT' was removed from.
 %%
 %% If you call this operation with a `ClientRequestToken' that matches an
-%% existing version's `VersionId', the operation results in an error. You
-%% can't modify an existing version, you can only create a new version. To
-%% remove a version, remove all staging labels from it. See
+%% existing version's `VersionId', the operation results in an error.
+%% You can't modify an existing version, you can only create a new
+%% version. To remove a version, remove all staging labels from it. See
 %% `UpdateSecretVersionStage'.
 %%
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters except
-%% `SecretBinary' or `SecretString' because it might be logged. For more
-%% information, see Logging Secrets Manager events with CloudTrail.
+%% `SecretBinary' or `SecretString' because it might be logged. For
+%% more information, see Logging Secrets Manager events with CloudTrail.
 %%
-%% Required permissions: `secretsmanager:UpdateSecret'. For more information,
-%% see IAM policy actions for Secrets Manager and Authentication and access
-%% control in Secrets Manager. If you use a customer managed key, you must
-%% also have `kms:GenerateDataKey' and `kms:Decrypt' permissions on the key.
-%% For more information, see Secret encryption and decryption.
+%% Required permissions: `secretsmanager:UpdateSecret'. For more
+%% information, see IAM policy actions for Secrets Manager and Authentication
+%% and access control in Secrets Manager. If you use a customer managed key,
+%% you must also have `kms:GenerateDataKey' and `kms:Decrypt'
+%% permissions on the key. For more information, see Secret encryption and
+%% decryption.
 update_secret(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_secret(Client, Input, []).
@@ -705,27 +709,28 @@ update_secret(Client, Input, Options)
 %% the other version first and then attaches it to this one. For more
 %% information about versions and staging labels, see Concepts: Version.
 %%
-%% The staging labels that you specify in the `VersionStage' parameter are
-%% added to the existing list of staging labels for the version.
+%% The staging labels that you specify in the `VersionStage' parameter
+%% are added to the existing list of staging labels for the version.
 %%
-%% You can move the `AWSCURRENT' staging label to this version by including
-%% it in this call.
+%% You can move the `AWSCURRENT' staging label to this version by
+%% including it in this call.
 %%
-%% Whenever you move `AWSCURRENT', Secrets Manager automatically moves the
-%% label `AWSPREVIOUS' to the version that `AWSCURRENT' was removed from.
+%% Whenever you move `AWSCURRENT', Secrets Manager automatically moves
+%% the label `AWSPREVIOUS' to the version that `AWSCURRENT' was
+%% removed from.
 %%
 %% If this action results in the last label being removed from a version,
-%% then the version is considered to be 'deprecated' and can be deleted by
-%% Secrets Manager.
+%% then the version is considered to be 'deprecated' and can be
+%% deleted by Secrets Manager.
 %%
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
 %% it might be logged. For more information, see Logging Secrets Manager
 %% events with CloudTrail.
 %%
-%% Required permissions: `secretsmanager:UpdateSecretVersionStage'. For more
-%% information, see IAM policy actions for Secrets Manager and Authentication
-%% and access control in Secrets Manager.
+%% Required permissions: `secretsmanager:UpdateSecretVersionStage'. For
+%% more information, see IAM policy actions for Secrets Manager and
+%% Authentication and access control in Secrets Manager.
 update_secret_version_stage(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_secret_version_stage(Client, Input, []).
@@ -753,9 +758,9 @@ update_secret_version_stage(Client, Input, Options)
 %% because it might be logged. For more information, see Logging Secrets
 %% Manager events with CloudTrail.
 %%
-%% Required permissions: `secretsmanager:ValidateResourcePolicy'. For more
-%% information, see IAM policy actions for Secrets Manager and Authentication
-%% and access control in Secrets Manager.
+%% Required permissions: `secretsmanager:ValidateResourcePolicy'. For
+%% more information, see IAM policy actions for Secrets Manager and
+%% Authentication and access control in Secrets Manager.
 validate_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     validate_resource_policy(Client, Input, []).

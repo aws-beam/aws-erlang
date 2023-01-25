@@ -224,8 +224,8 @@ untag_resource(Client, Input, Options)
 %% @doc Modifies the KMS key for an existing database.
 %%
 %% While updating the database, you must specify the database name and the
-%% identifier of the new KMS key to be used (`KmsKeyId'). If there are any
-%% concurrent `UpdateDatabase' requests, first writer wins.
+%% identifier of the new KMS key to be used (`KmsKeyId'). If there are
+%% any concurrent `UpdateDatabase' requests, first writer wins.
 %%
 %% See code sample for details.
 update_database(Client, Input)
@@ -272,29 +272,30 @@ update_table(Client, Input, Options)
 %%
 %% Upserts
 %%
-%% You can use the `Version' parameter in a `WriteRecords' request to update
-%% data points. Timestream tracks a version number with each record.
+%% You can use the `Version' parameter in a `WriteRecords' request to
+%% update data points. Timestream tracks a version number with each record.
 %% `Version' defaults to `1' when not specified for the record in the
 %% request. Timestream will update an existing record’s measure value along
-%% with its `Version' upon receiving a write request with a higher `Version'
-%% number for that record. Upon receiving an update request where the measure
-%% value is the same as that of the existing record, Timestream still updates
-%% `Version', if it is greater than the existing value of `Version'. You can
-%% update a data point as many times as desired, as long as the value of
-%% `Version' continuously increases.
+%% with its `Version' upon receiving a write request with a higher
+%% `Version' number for that record. Upon receiving an update request
+%% where the measure value is the same as that of the existing record,
+%% Timestream still updates `Version', if it is greater than the existing
+%% value of `Version'. You can update a data point as many times as
+%% desired, as long as the value of `Version' continuously increases.
 %%
-%% For example, suppose you write a new record without indicating `Version'
-%% in the request. Timestream will store this record, and set `Version' to
-%% `1'. Now, suppose you try to update this record with a `WriteRecords'
-%% request of the same record with a different measure value but, like
-%% before, do not provide `Version'. In this case, Timestream will reject
-%% this update with a `RejectedRecordsException' since the updated record’s
-%% version is not greater than the existing value of Version. However, if you
-%% were to resend the update request with `Version' set to `2', Timestream
-%% would then succeed in updating the record’s value, and the `Version' would
-%% be set to `2'. Next, suppose you sent a `WriteRecords' request with this
-%% same record and an identical measure value, but with `Version' set to `3'.
-%% In this case, Timestream would only update `Version' to `3'. Any further
+%% For example, suppose you write a new record without indicating
+%% `Version' in the request. Timestream will store this record, and set
+%% `Version' to `1'. Now, suppose you try to update this record with
+%% a `WriteRecords' request of the same record with a different measure
+%% value but, like before, do not provide `Version'. In this case,
+%% Timestream will reject this update with a `RejectedRecordsException'
+%% since the updated record’s version is not greater than the existing value
+%% of Version. However, if you were to resend the update request with
+%% `Version' set to `2', Timestream would then succeed in updating
+%% the record’s value, and the `Version' would be set to `2'. Next,
+%% suppose you sent a `WriteRecords' request with this same record and an
+%% identical measure value, but with `Version' set to `3'. In this
+%% case, Timestream would only update `Version' to `3'. Any further
 %% updates would need to send a version number greater than `3', or the
 %% update requests would receive a `RejectedRecordsException'.
 write_records(Client, Input)

@@ -318,11 +318,11 @@ get_insight(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc X-Ray reevaluates insights periodically until they're resolved, and
-%% records each intermediate state as an event.
+%% @doc X-Ray reevaluates insights periodically until they're resolved,
+%% and records each intermediate state as an event.
 %%
-%% You can review an insight's events in the Impact Timeline on the Inspect
-%% page in the X-Ray console.
+%% You can review an insight's events in the Impact Timeline on the
+%% Inspect page in the X-Ray console.
 get_insight_events(Client, Input) ->
     get_insight_events(Client, Input, []).
 get_insight_events(Client, Input0, Options0) ->
@@ -553,12 +553,12 @@ get_trace_graph(Client, Input0, Options0) ->
 %% following filter expression targets traces that pass through
 %% `api.example.com':
 %%
-%% `service("api.example.com")'
+%% `service(&quot;api.example.com&quot;)'
 %%
 %% This filter expression finds traces that have an annotation named
 %% `account' with the value `12345':
 %%
-%% `annotation.account = "12345"'
+%% `annotation.account = &quot;12345&quot;'
 %%
 %% For a full list of indexed fields and keywords that you can use in filter
 %% expressions, see Using Filter Expressions in the Amazon Web Services X-Ray
@@ -725,11 +725,11 @@ put_telemetry_records(Client, Input0, Options0) ->
 %% </li> <li> `id' - A 64-bit identifier for the segment, unique among
 %% segments in the same trace, in 16 hexadecimal digits.
 %%
-%% </li> <li> `trace_id' - A unique identifier that connects all segments and
-%% subsegments originating from a single client request.
+%% </li> <li> `trace_id' - A unique identifier that connects all segments
+%% and subsegments originating from a single client request.
 %%
-%% </li> <li> `start_time' - Time the segment or subsegment was created, in
-%% floating point seconds in epoch time, accurate to milliseconds. For
+%% </li> <li> `start_time' - Time the segment or subsegment was created,
+%% in floating point seconds in epoch time, accurate to milliseconds. For
 %% example, `1480615200.010' or `1.480615200010E9'.
 %%
 %% </li> <li> `end_time' - Time the segment or subsegment was closed. For
@@ -737,14 +737,14 @@ put_telemetry_records(Client, Input0, Options0) ->
 %% `end_time' or `in_progress'.
 %%
 %% </li> <li> `in_progress' - Set to `true' instead of specifying an
-%% `end_time' to record that a segment has been started, but is not complete.
-%% Send an in-progress segment when your application receives a request that
-%% will take a long time to serve, to trace that the request was received.
-%% When the response is sent, send the complete segment to overwrite the
-%% in-progress segment.
+%% `end_time' to record that a segment has been started, but is not
+%% complete. Send an in-progress segment when your application receives a
+%% request that will take a long time to serve, to trace that the request was
+%% received. When the response is sent, send the complete segment to
+%% overwrite the in-progress segment.
 %%
-%% </li> </ul> A `trace_id' consists of three numbers separated by hyphens.
-%% For example, 1-58406520-a006649127e371903a2de979. This includes:
+%% </li> </ul> A `trace_id' consists of three numbers separated by
+%% hyphens. For example, 1-58406520-a006649127e371903a2de979. This includes:
 %%
 %% == Trace ID Format ==
 %%

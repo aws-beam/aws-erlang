@@ -18,11 +18,11 @@
 %% of errors exceeds a threshold that you specify. CloudWatch Logs uses your
 %% log data for monitoring so no code changes are required. For example, you
 %% can monitor application logs for specific literal terms (such as
-%% "NullReferenceException"). You can also count the number of occurrences of
-%% a literal term at a particular position in log data (such as "404" status
-%% codes in an Apache access log). When the term you are searching for is
-%% found, CloudWatch Logs reports the data to a CloudWatch metric that you
-%% specify.
+%% &quot;NullReferenceException&quot;). You can also count the number of
+%% occurrences of a literal term at a particular position in log data (such
+%% as &quot;404&quot; status codes in an Apache access log). When the term
+%% you are searching for is found, CloudWatch Logs reports the data to a
+%% CloudWatch metric that you specify.
 %%
 %% </li> <li> Monitor CloudTrail logged events: You can create alarms in
 %% CloudWatch and receive notifications of particular API activity as
@@ -180,9 +180,9 @@ cancel_export_task(Client, Input, Options)
 %% @doc Creates an export task so that you can efficiently export data from a
 %% log group to an Amazon S3 bucket.
 %%
-%% When you perform a `CreateExportTask' operation, you must use credentials
-%% that have permission to write to the S3 bucket that you specify as the
-%% destination.
+%% When you perform a `CreateExportTask' operation, you must use
+%% credentials that have permission to write to the S3 bucket that you
+%% specify as the destination.
 %%
 %% Exporting log data to S3 buckets that are encrypted by KMS is supported.
 %% Exporting log data to Amazon S3 buckets that have S3 Object Lock enabled
@@ -194,8 +194,8 @@ cancel_export_task(Client, Input, Options)
 %% this operation initiates an export task and responds with the ID of the
 %% task. After the task has started, you can use DescribeExportTasks to get
 %% the status of the export task. Each account can only have one active
-%% (`RUNNING' or `PENDING') export task at a time. To cancel an export task,
-%% use CancelExportTask.
+%% (`RUNNING' or `PENDING') export task at a time. To cancel an
+%% export task, use CancelExportTask.
 %%
 %% You can export logs from multiple log groups or multiple time ranges to
 %% the same S3 bucket. To separate log data for each export task, specify a
@@ -223,8 +223,8 @@ create_export_task(Client, Input, Options)
 %% </li> <li> Log group names can be between 1 and 512 characters long.
 %%
 %% </li> <li> Log group names consist of the following characters: a-z, A-Z,
-%% 0-9, '_' (underscore), '-' (hyphen), '/' (forward slash), '.' (period),
-%% and '#' (number sign)
+%% 0-9, '_' (underscore), '-' (hyphen), '/' (forward
+%% slash), '.' (period), and '#' (number sign)
 %%
 %% </li> </ul> When you create a log group, by default the log events in the
 %% log group do not expire. To set a retention policy so that events expire
@@ -265,7 +265,8 @@ create_log_group(Client, Input, Options)
 %%
 %% </li> <li> Log stream names can be between 1 and 512 characters long.
 %%
-%% </li> <li> Don't use ':' (colon) or '*' (asterisk) characters.
+%% </li> <li> Don't use ':' (colon) or '*' (asterisk)
+%% characters.
 %%
 %% </li> </ul>
 create_log_stream(Client, Input)
@@ -329,10 +330,11 @@ delete_metric_filter(Client, Input, Options)
 %% A query definition contains details about a saved CloudWatch Logs Insights
 %% query.
 %%
-%% Each `DeleteQueryDefinition' operation can delete one query definition.
+%% Each `DeleteQueryDefinition' operation can delete one query
+%% definition.
 %%
-%% You must have the `logs:DeleteQueryDefinition' permission to be able to
-%% perform this operation.
+%% You must have the `logs:DeleteQueryDefinition' permission to be able
+%% to perform this operation.
 delete_query_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_query_definition(Client, Input, []).
@@ -397,11 +399,11 @@ describe_export_tasks(Client, Input, Options)
 %% results are ASCII-sorted by log group name.
 %%
 %% CloudWatch Logs doesn’t support IAM policies that control access to the
-%% `DescribeLogGroups' action by using the `aws:ResourceTag/key-name '
-%% condition key. Other CloudWatch Logs actions do support the use of the
-%% `aws:ResourceTag/key-name ' condition key to control access. For more
-%% information about using tags to control access, see Controlling access to
-%% Amazon Web Services resources using tags.
+%% `DescribeLogGroups' action by using the `aws:ResourceTag/key-name
+%% ' condition key. Other CloudWatch Logs actions do support the use of
+%% the `aws:ResourceTag/key-name ' condition key to control access. For
+%% more information about using tags to control access, see Controlling
+%% access to Amazon Web Services resources using tags.
 %%
 %% If you are using CloudWatch cross-account observability, you can use this
 %% operation in a monitoring account and view data from the linked source
@@ -420,8 +422,8 @@ describe_log_groups(Client, Input, Options)
 %% also control how the results are ordered.
 %%
 %% You can specify the log group to search by using either
-%% `logGroupIdentifier' or `logGroupName'. You must include one of these two
-%% parameters, but you can't include both.
+%% `logGroupIdentifier' or `logGroupName'. You must include one of
+%% these two parameters, but you can't include both.
 %%
 %% This operation has a limit of five transactions per second, after which
 %% transactions are throttled.
@@ -464,9 +466,9 @@ describe_queries(Client, Input, Options)
 %% @doc This operation returns a paginated list of your saved CloudWatch Logs
 %% Insights query definitions.
 %%
-%% You can use the `queryDefinitionNamePrefix' parameter to limit the results
-%% to only the query definitions that have names that start with a certain
-%% string.
+%% You can use the `queryDefinitionNamePrefix' parameter to limit the
+%% results to only the query definitions that have names that start with a
+%% certain string.
 describe_query_definitions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_query_definitions(Client, Input, []).
@@ -517,8 +519,8 @@ disassociate_kms_key(Client, Input, Options)
 %% operation.
 %%
 %% You can specify the log group to search by using either
-%% `logGroupIdentifier' or `logGroupName'. You must include one of these two
-%% parameters, but you can't include both.
+%% `logGroupIdentifier' or `logGroupName'. You must include one of
+%% these two parameters, but you can't include both.
 %%
 %% By default, this operation returns as many log events as can fit in 1 MB
 %% (up to 10,000 log events) or all the events found within the specified
@@ -566,8 +568,8 @@ get_data_protection_policy(Client, Input, Options)
 %% observability.
 %%
 %% You can specify the log group to search by using either
-%% `logGroupIdentifier' or `logGroupName'. You must include one of these two
-%% parameters, but you can't include both.
+%% `logGroupIdentifier' or `logGroupName'. You must include one of
+%% these two parameters, but you can't include both.
 get_log_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_log_events(Client, Input, []).
@@ -582,12 +584,12 @@ get_log_events(Client, Input, Options)
 %% is limited to a time period that you specify.
 %%
 %% You can specify the log group to search by using either
-%% `logGroupIdentifier' or `logGroupName'. You must specify one of these
-%% parameters, but you can't specify both.
+%% `logGroupIdentifier' or `logGroupName'. You must specify one of
+%% these parameters, but you can't specify both.
 %%
 %% In the results, fields that start with `@' are fields generated by
-%% CloudWatch Logs. For example, `@timestamp' is the timestamp of each log
-%% event. For more information about the fields that are generated by
+%% CloudWatch Logs. For example, `@timestamp' is the timestamp of each
+%% log event. For more information about the fields that are generated by
 %% CloudWatch logs, see Supported Logs and Discovered Fields.
 %%
 %% The response results are sorted by the frequency percentage, starting with
@@ -607,8 +609,8 @@ get_log_group_fields(Client, Input, Options)
 %% @doc Retrieves all of the fields and values of a single log event.
 %%
 %% All fields are retrieved, even if the original query that produced the
-%% `logRecordPointer' retrieved only a subset of fields. Fields are returned
-%% as field name/field value pairs.
+%% `logRecordPointer' retrieved only a subset of fields. Fields are
+%% returned as field name/field value pairs.
 %%
 %% The full unparsed log event is returned within `@message'.
 get_log_record(Client, Input)
@@ -620,17 +622,18 @@ get_log_record(Client, Input, Options)
 
 %% @doc Returns the results from the specified query.
 %%
-%% Only the fields requested in the query are returned, along with a `@ptr'
-%% field, which is the identifier for the log record. You can use the value
-%% of `@ptr' in a GetLogRecord operation to get the full log record.
+%% Only the fields requested in the query are returned, along with a
+%% `@ptr' field, which is the identifier for the log record. You can use
+%% the value of `@ptr' in a GetLogRecord operation to get the full log
+%% record.
 %%
 %% `GetQueryResults' does not start running a query. To run a query, use
 %% StartQuery.
 %%
-%% If the value of the `Status' field in the output is `Running', this
-%% operation returns only partial results. If you see a value of `Scheduled'
-%% or `Running' for the status, you can retry the operation later to see the
-%% final results.
+%% If the value of the `Status' field in the output is `Running',
+%% this operation returns only partial results. If you see a value of
+%% `Scheduled' or `Running' for the status, you can retry the
+%% operation later to see the final results.
 %%
 %% If you are using CloudWatch cross-account observability, you can use this
 %% operation in a monitoring account to start queries in linked source
@@ -667,20 +670,20 @@ list_tags_log_group(Client, Input, Options)
 
 %% @doc Creates a data protection policy for the specified log group.
 %%
-%% A data protection policy can help safeguard sensitive data that's ingested
-%% by the log group by auditing and masking the sensitive log data.
+%% A data protection policy can help safeguard sensitive data that's
+%% ingested by the log group by auditing and masking the sensitive log data.
 %%
 %% Sensitive data is detected and masked when it is ingested into the log
 %% group. When you set a data protection policy, log events ingested into the
 %% log group before that time are not masked.
 %%
 %% By default, when a user views a log event that includes masked data, the
-%% sensitive data is replaced by asterisks. A user who has the `logs:Unmask'
-%% permission can use a GetLogEvents or FilterLogEvents operation with the
-%% `unmask' parameter set to `true' to view the unmasked log events. Users
-%% with the `logs:Unmask' can also view unmasked data in the CloudWatch Logs
-%% console by running a CloudWatch Logs Insights query with the `unmask'
-%% query command.
+%% sensitive data is replaced by asterisks. A user who has the
+%% `logs:Unmask' permission can use a GetLogEvents or FilterLogEvents
+%% operation with the `unmask' parameter set to `true' to view the
+%% unmasked log events. Users with the `logs:Unmask' can also view
+%% unmasked data in the CloudWatch Logs console by running a CloudWatch Logs
+%% Insights query with the `unmask' query command.
 %%
 %% For more information, including a list of types of data that can be
 %% audited and masked, see Protect sensitive log data with masking.
@@ -704,7 +707,8 @@ put_data_protection_policy(Client, Input, Options)
 %% default, `PutDestination' does not set any access policy with the
 %% destination, which means a cross-account user cannot call
 %% PutSubscriptionFilter against this destination. To enable this, the
-%% destination owner must call PutDestinationPolicy after `PutDestination'.
+%% destination owner must call PutDestinationPolicy after
+%% `PutDestination'.
 %%
 %% To perform a `PutDestination' operation, you must also have the
 %% `iam:PassRole' permission.
@@ -731,9 +735,9 @@ put_destination_policy(Client, Input, Options)
 %%
 %% The sequence token is now ignored in `PutLogEvents' actions.
 %% `PutLogEvents' actions are always accepted and never return
-%% `InvalidSequenceTokenException' or `DataAlreadyAcceptedException' even if
-%% the sequence token is not valid. You can use parallel `PutLogEvents'
-%% actions on the same log stream.
+%% `InvalidSequenceTokenException' or `DataAlreadyAcceptedException'
+%% even if the sequence token is not valid. You can use parallel
+%% `PutLogEvents' actions on the same log stream.
 %%
 %% The batch of events must satisfy the following constraints:
 %%
@@ -750,9 +754,9 @@ put_destination_policy(Client, Input, Options)
 %%
 %% </li> <li> The log events in the batch must be in chronological order by
 %% their timestamp. The timestamp is the time that the event occurred,
-%% expressed as the number of milliseconds after `Jan 1, 1970 00:00:00 UTC'.
-%% (In Amazon Web Services Tools for PowerShell and the Amazon Web Services
-%% SDK for .NET, the timestamp is specified in .NET format:
+%% expressed as the number of milliseconds after `Jan 1, 1970 00:00:00
+%% UTC'. (In Amazon Web Services Tools for PowerShell and the Amazon Web
+%% Services SDK for .NET, the timestamp is specified in .NET format:
 %% `yyyy-mm-ddThh:mm:ss'. For example, `2017-09-15T13:45:30'.)
 %%
 %% </li> <li> A batch of log events in a single request cannot span more than
@@ -766,8 +770,8 @@ put_destination_policy(Client, Input, Options)
 %% per-second throttling quota by using the Service Quotas service.
 %%
 %% </li> </ul> If a call to `PutLogEvents' returns
-%% "UnrecognizedClientException" the most likely cause is a non-valid Amazon
-%% Web Services access key ID or secret key.
+%% &quot;UnrecognizedClientException&quot; the most likely cause is a
+%% non-valid Amazon Web Services access key ID or secret key.
 put_log_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_log_events(Client, Input, []).
@@ -789,9 +793,9 @@ put_log_events(Client, Input, Options)
 %%
 %% Metrics extracted from log events are charged as custom metrics. To
 %% prevent unexpected high charges, do not specify high-cardinality fields
-%% such as `IPAddress' or `requestID' as dimensions. Each different value
-%% found for a dimension is treated as a separate metric and accrues charges
-%% as a separate custom metric.
+%% such as `IPAddress' or `requestID' as dimensions. Each different
+%% value found for a dimension is treated as a separate metric and accrues
+%% charges as a separate custom metric.
 %%
 %% CloudWatch Logs disables a metric filter if it generates 1,000 different
 %% name/value pairs for your specified dimensions within a certain amount of
@@ -813,12 +817,13 @@ put_metric_filter(Client, Input, Options)
 %% Insights.
 %%
 %% To update a query definition, specify its `queryDefinitionId' in your
-%% request. The values of `name', `queryString', and `logGroupNames' are
-%% changed to the values that you specify in your update operation. No
-%% current values are retained from the current query definition. For
-%% example, imagine updating a current query definition that includes log
-%% groups. If you don't specify the `logGroupNames' parameter in your update
-%% operation, the query definition changes to contain no log groups.
+%% request. The values of `name', `queryString', and
+%% `logGroupNames' are changed to the values that you specify in your
+%% update operation. No current values are retained from the current query
+%% definition. For example, imagine updating a current query definition that
+%% includes log groups. If you don't specify the `logGroupNames'
+%% parameter in your update operation, the query definition changes to
+%% contain no log groups.
 %%
 %% You must have the `logs:PutQueryDefinition' permission to be able to
 %% perform this operation.
@@ -915,8 +920,8 @@ put_subscription_filter(Client, Input, Options)
 %% If you are using CloudWatch cross-account observability, you can use this
 %% operation in a monitoring account to start a query in a linked source
 %% account. For more information, see CloudWatch cross-account observability.
-%% For a cross-account `StartQuery' operation, the query definition must be
-%% defined in the monitoring account.
+%% For a cross-account `StartQuery' operation, the query definition must
+%% be defined in the monitoring account.
 %%
 %% You can have up to 20 concurrent CloudWatch Logs insights queries,
 %% including queries that have been added to dashboards.
@@ -951,10 +956,10 @@ stop_query(Client, Input, Options)
 %% Logs in the Amazon CloudWatch Logs User Guide.
 %%
 %% CloudWatch Logs doesn’t support IAM policies that prevent users from
-%% assigning specified tags to log groups using the `aws:Resource/key-name '
-%% or `aws:TagKeys' condition keys. For more information about using tags to
-%% control access, see Controlling access to Amazon Web Services resources
-%% using tags.
+%% assigning specified tags to log groups using the `aws:Resource/key-name
+%% ' or `aws:TagKeys' condition keys. For more information about
+%% using tags to control access, see Controlling access to Amazon Web
+%% Services resources using tags.
 tag_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_log_group(Client, Input, []).
@@ -1011,8 +1016,8 @@ test_metric_filter(Client, Input, Options)
 %% use TagResource.
 %%
 %% CloudWatch Logs doesn’t support IAM policies that prevent users from
-%% assigning specified tags to log groups using the `aws:Resource/key-name '
-%% or `aws:TagKeys' condition keys.
+%% assigning specified tags to log groups using the `aws:Resource/key-name
+%% ' or `aws:TagKeys' condition keys.
 untag_log_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_log_group(Client, Input, []).

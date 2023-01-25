@@ -166,8 +166,8 @@ add_instance_groups(Client, Input, Options)
 %% You can only add steps to a cluster that is in one of the following
 %% states: STARTING, BOOTSTRAPPING, RUNNING, or WAITING.
 %%
-%% The string values passed into `HadoopJarStep' object cannot exceed a total
-%% of 10240 characters.
+%% The string values passed into `HadoopJarStep' object cannot exceed a
+%% total of 10240 characters.
 add_job_flow_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_job_flow_steps(Client, Input, []).
@@ -195,8 +195,8 @@ add_tags(Client, Input, Options)
 %% CancelSteps is idempotent but asynchronous; it does not guarantee that a
 %% step will be canceled, even if the request is successfully submitted. When
 %% you use Amazon EMR versions 5.28.0 and later, you can cancel steps that
-%% are in a `PENDING' or `RUNNING' state. In earlier versions of Amazon EMR,
-%% you can only cancel steps that are in a `PENDING' state.
+%% are in a `PENDING' or `RUNNING' state. In earlier versions of
+%% Amazon EMR, you can only cancel steps that are in a `PENDING' state.
 cancel_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_steps(Client, Input, []).
@@ -222,11 +222,11 @@ create_studio(Client, Input, Options)
     request(Client, <<"CreateStudio">>, Input, Options).
 
 %% @doc Maps a user or group to the Amazon EMR Studio specified by
-%% `StudioId', and applies a session policy to refine Studio permissions for
-%% that user or group.
+%% `StudioId', and applies a session policy to refine Studio permissions
+%% for that user or group.
 %%
-%% Use `CreateStudioSessionMapping' to assign users to a Studio when you use
-%% IAM Identity Center authentication. For instructions on how to assign
+%% Use `CreateStudioSessionMapping' to assign users to a Studio when you
+%% use IAM Identity Center authentication. For instructions on how to assign
 %% users to a Studio when you use IAM authentication, see Assign a user or
 %% group to your EMR Studio.
 create_studio_session_mapping(Client, Input)
@@ -271,8 +271,9 @@ describe_cluster(Client, Input, Options)
 
 %% @doc This API is no longer supported and will eventually be removed.
 %%
-%% We recommend you use `ListClusters', `DescribeCluster', `ListSteps',
-%% `ListInstanceGroups' and `ListBootstrapActions' instead.
+%% We recommend you use `ListClusters', `DescribeCluster',
+%% `ListSteps', `ListInstanceGroups' and `ListBootstrapActions'
+%% instead.
 %%
 %% DescribeJobFlows returns a list of job flows that match all of the
 %% supplied parameters. The parameters can include a list of job flow IDs,
@@ -287,7 +288,8 @@ describe_cluster(Client, Input, Options)
 %% <ul> <li> Job flows created and completed in the last two weeks
 %%
 %% </li> <li> Job flows created within the last two months that are in one of
-%% the following states: `RUNNING', `WAITING', `SHUTTING_DOWN', `STARTING'
+%% the following states: `RUNNING', `WAITING', `SHUTTING_DOWN',
+%% `STARTING'
 %%
 %% </li> </ul> Amazon EMR can return a maximum of 512 job flow descriptions.
 describe_job_flows(Client, Input)
@@ -489,10 +491,10 @@ list_security_configurations(Client, Input, Options)
 %% @doc Provides a list of steps for the cluster in reverse order unless you
 %% specify `stepIds' with the request or filter by `StepStates'.
 %%
-%% You can specify a maximum of 10 `stepIDs'. The CLI automatically paginates
-%% results to return a list greater than 50 steps. To return more than 50
-%% steps using the CLI, specify a `Marker', which is a pagination token that
-%% indicates the next set of steps to retrieve.
+%% You can specify a maximum of 10 `stepIDs'. The CLI automatically
+%% paginates results to return a list greater than 50 steps. To return more
+%% than 50 steps using the CLI, specify a `Marker', which is a pagination
+%% token that indicates the next set of steps to retrieve.
 list_steps(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_steps(Client, Input, []).
@@ -659,14 +661,14 @@ remove_tags(Client, Input, Options)
 %% The cluster runs the steps specified. After the steps complete, the
 %% cluster stops and the HDFS partition is lost. To prevent loss of data,
 %% configure the last step of the job flow to store results in Amazon S3. If
-%% the `JobFlowInstancesConfig' `KeepJobFlowAliveWhenNoSteps' parameter is
-%% set to `TRUE', the cluster transitions to the WAITING state rather than
-%% shutting down after the steps have completed.
+%% the `JobFlowInstancesConfig' `KeepJobFlowAliveWhenNoSteps'
+%% parameter is set to `TRUE', the cluster transitions to the WAITING
+%% state rather than shutting down after the steps have completed.
 %%
 %% For additional protection, you can set the `JobFlowInstancesConfig'
-%% `TerminationProtected' parameter to `TRUE' to lock the cluster and prevent
-%% it from being terminated by API call, user intervention, or in the event
-%% of a job flow error.
+%% `TerminationProtected' parameter to `TRUE' to lock the cluster and
+%% prevent it from being terminated by API call, user intervention, or in the
+%% event of a job flow error.
 %%
 %% A maximum of 256 steps are allowed in each job flow.
 %%
@@ -695,18 +697,19 @@ run_job_flow(Client, Input, Options)
 %% call, or in the event of a job-flow error.
 %%
 %% The cluster still terminates upon successful completion of the job flow.
-%% Calling `SetTerminationProtection' on a cluster is similar to calling the
-%% Amazon EC2 `DisableAPITermination' API on all EC2 instances in a cluster.
+%% Calling `SetTerminationProtection' on a cluster is similar to calling
+%% the Amazon EC2 `DisableAPITermination' API on all EC2 instances in a
+%% cluster.
 %%
-%% `SetTerminationProtection' is used to prevent accidental termination of a
-%% cluster and to ensure that in the event of an error, the instances persist
-%% so that you can recover any data stored in their ephemeral instance
-%% storage.
+%% `SetTerminationProtection' is used to prevent accidental termination
+%% of a cluster and to ensure that in the event of an error, the instances
+%% persist so that you can recover any data stored in their ephemeral
+%% instance storage.
 %%
 %% To terminate a cluster that has been locked by setting
-%% `SetTerminationProtection' to `true', you must first unlock the job flow
-%% by a subsequent call to `SetTerminationProtection' in which you set the
-%% value to `false'.
+%% `SetTerminationProtection' to `true', you must first unlock the
+%% job flow by a subsequent call to `SetTerminationProtection' in which
+%% you set the value to `false'.
 %%
 %% For more information, seeManaging Cluster Termination in the Amazon EMR
 %% Management Guide.
@@ -724,11 +727,11 @@ set_termination_protection(Client, Input, Options)
 %% EMR.
 %%
 %% Sets the `Cluster$VisibleToAllUsers' value for an EMR cluster. When
-%% `true', IAM principals in the Amazon Web Services account can perform EMR
-%% cluster actions that their IAM policies allow. When `false', only the IAM
-%% principal that created the cluster and the Amazon Web Services account
-%% root user can perform EMR actions on the cluster, regardless of IAM
-%% permissions policies attached to other IAM principals.
+%% `true', IAM principals in the Amazon Web Services account can perform
+%% EMR cluster actions that their IAM policies allow. When `false', only
+%% the IAM principal that created the cluster and the Amazon Web Services
+%% account root user can perform EMR actions on the cluster, regardless of
+%% IAM permissions policies attached to other IAM principals.
 %%
 %% This action works on running clusters. When you create a cluster, use the
 %% `RunJobFlowInput$VisibleToAllUsers' parameter.
@@ -766,8 +769,8 @@ stop_notebook_execution(Client, Input, Options)
 %% specified when the cluster was created.
 %%
 %% The maximum number of clusters allowed is 10. The call to
-%% `TerminateJobFlows' is asynchronous. Depending on the configuration of the
-%% cluster, it may take up to 1-5 minutes for the cluster to completely
+%% `TerminateJobFlows' is asynchronous. Depending on the configuration of
+%% the cluster, it may take up to 1-5 minutes for the cluster to completely
 %% terminate and release allocated resources, such as Amazon EC2 instances.
 terminate_job_flows(Client, Input)
   when is_map(Client), is_map(Input) ->

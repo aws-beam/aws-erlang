@@ -127,8 +127,8 @@ disassociate_gateway_from_server(Client, Input, Options)
 %% @doc Retrieves the bandwidth rate limit schedule for a specified gateway.
 %%
 %% By default, gateways do not have bandwidth rate limit schedules, which
-%% means no bandwidth rate limiting is in effect. Use this to get a gateway's
-%% bandwidth rate limit schedule.
+%% means no bandwidth rate limiting is in effect. Use this to get a
+%% gateway's bandwidth rate limit schedule.
 get_bandwidth_rate_limit_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_bandwidth_rate_limit_schedule(Client, Input, []).

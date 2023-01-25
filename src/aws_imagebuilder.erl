@@ -3,8 +3,8 @@
 
 %% @doc EC2 Image Builder is a fully managed Amazon Web Services service that
 %% makes it easier to automate the creation, management, and deployment of
-%% customized, secure, and up-to-date "golden" server images that are
-%% pre-installed and pre-configured with software and settings to meet
+%% customized, secure, and up-to-date &quot;golden&quot; server images that
+%% are pre-installed and pre-configured with software and settings to meet
 %% specific IT standards.
 -module(aws_imagebuilder).
 
@@ -881,8 +881,9 @@ import_vm_image(Client, Input0, Options0) ->
 %% @doc Returns the list of component build versions for the specified
 %% semantic version.
 %%
-%% The semantic version has four nodes: <major>.<minor>.<patch>/<build>. You
-%% can assign values for the first three, and can filter on all of them.
+%% The semantic version has four nodes:
+%% &lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;/&lt;build&gt;. You can assign
+%% values for the first three, and can filter on all of them.
 %%
 %% Filtering: With semantic versioning, you have the flexibility to use
 %% wildcards (x) to specify the most recent versions or nodes when selecting
@@ -917,8 +918,9 @@ list_component_build_versions(Client, Input0, Options0) ->
 %% Newly created components can take up to two minutes to appear in the
 %% ListComponents API Results.
 %%
-%% The semantic version has four nodes: <major>.<minor>.<patch>/<build>. You
-%% can assign values for the first three, and can filter on all of them.
+%% The semantic version has four nodes:
+%% &lt;major&gt;.&lt;minor&gt;.&lt;patch&gt;/&lt;build&gt;. You can assign
+%% values for the first three, and can filter on all of them.
 %%
 %% Filtering: With semantic versioning, you have the flexibility to use
 %% wildcards (x) to specify the most recent versions or nodes when selecting
@@ -1245,9 +1247,9 @@ put_container_recipe_policy(Client, Input0, Options0) ->
 %% @doc Applies a policy to an image.
 %%
 %% We recommend that you call the RAM API CreateResourceShare to share
-%% resources. If you call the Image Builder API `PutImagePolicy', you must
-%% also call the RAM API PromoteResourceShareCreatedFromPolicy in order for
-%% the resource to be visible to all principals with whom the resource is
+%% resources. If you call the Image Builder API `PutImagePolicy', you
+%% must also call the RAM API PromoteResourceShareCreatedFromPolicy in order
+%% for the resource to be visible to all principals with whom the resource is
 %% shared.
 put_image_policy(Client, Input) ->
     put_image_policy(Client, Input, []).
@@ -1274,10 +1276,10 @@ put_image_policy(Client, Input0, Options0) ->
 %% @doc Applies a policy to an image recipe.
 %%
 %% We recommend that you call the RAM API CreateResourceShare to share
-%% resources. If you call the Image Builder API `PutImageRecipePolicy', you
-%% must also call the RAM API PromoteResourceShareCreatedFromPolicy in order
-%% for the resource to be visible to all principals with whom the resource is
-%% shared.
+%% resources. If you call the Image Builder API `PutImageRecipePolicy',
+%% you must also call the RAM API PromoteResourceShareCreatedFromPolicy in
+%% order for the resource to be visible to all principals with whom the
+%% resource is shared.
 put_image_recipe_policy(Client, Input) ->
     put_image_recipe_policy(Client, Input, []).
 put_image_recipe_policy(Client, Input0, Options0) ->

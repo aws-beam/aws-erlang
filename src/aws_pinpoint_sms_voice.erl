@@ -178,7 +178,8 @@ list_configuration_sets(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Create a new voice message and send it to a recipient's phone number.
+%% @doc Create a new voice message and send it to a recipient's phone
+%% number.
 send_voice_message(Client, Input) ->
     send_voice_message(Client, Input, []).
 send_voice_message(Client, Input0, Options0) ->

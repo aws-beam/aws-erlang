@@ -60,8 +60,8 @@
 %% idempotency using a client token. A client token is a unique,
 %% case-sensitive string of up to 64 ASCII characters. To make an idempotent
 %% API request using one of these actions, specify a client token in the
-%% request. We recommend that you don't reuse the same client token for other
-%% API requests. If you don’t provide a client token for these APIs, a
+%% request. We recommend that you don't reuse the same client token for
+%% other API requests. If you don’t provide a client token for these APIs, a
 %% default client token is automatically provided by SDKs.
 %%
 %% Given a request action that has succeeded:
@@ -93,9 +93,9 @@
 %% Given a request action that has succeeded:
 %%
 %% If you retry the request with an API from this group, and the original
-%% resource hasn't been modified, the retry succeeds without performing any
-%% further actions other than returning the original resource detail data in
-%% the response.
+%% resource hasn't been modified, the retry succeeds without performing
+%% any further actions other than returning the original resource detail data
+%% in the response.
 %%
 %% If the original resource has been modified, the retry throws a
 %% `ConflictException'.
@@ -141,9 +141,9 @@
 %% Given a request action that has succeeded:
 %%
 %% If you retry the request with an API from this group, if the original
-%% request delete operation status is `DELETE_IN_PROGRESS', the retry returns
-%% the resource detail data in the response without performing any further
-%% actions.
+%% request delete operation status is `DELETE_IN_PROGRESS', the retry
+%% returns the resource detail data in the response without performing any
+%% further actions.
 %%
 %% If the original request delete operation is complete, a retry returns an
 %% empty response.
@@ -355,9 +355,9 @@ cancel_component_deployment(Client, Input, Options)
 %% </li> <li> If the cancellation attempt fails, the resulting deployment
 %% state is `FAILED'.
 %%
-%% </li> <li> If the current `UpdateEnvironment' action succeeds before the
-%% cancellation attempt starts, the resulting deployment state is `SUCCEEDED'
-%% and the cancellation attempt has no effect.
+%% </li> <li> If the current `UpdateEnvironment' action succeeds before
+%% the cancellation attempt starts, the resulting deployment state is
+%% `SUCCEEDED' and the cancellation attempt has no effect.
 %%
 %% </li> </ul>
 cancel_environment_deployment(Client, Input)
@@ -368,7 +368,8 @@ cancel_environment_deployment(Client, Input, Options)
     request(Client, <<"CancelEnvironmentDeployment">>, Input, Options).
 
 %% @doc Attempts to cancel a service instance deployment on an
-%% `UpdateServiceInstance' action, if the deployment is `IN_PROGRESS'.
+%% `UpdateServiceInstance' action, if the deployment is
+%% `IN_PROGRESS'.
 %%
 %% For more information, see Update a service instance in the Proton User
 %% guide.
@@ -381,8 +382,8 @@ cancel_environment_deployment(Client, Input, Options)
 %% </li> <li> If the cancellation attempt fails, the resulting deployment
 %% state is `FAILED'.
 %%
-%% </li> <li> If the current `UpdateServiceInstance' action succeeds before
-%% the cancellation attempt starts, the resulting deployment state is
+%% </li> <li> If the current `UpdateServiceInstance' action succeeds
+%% before the cancellation attempt starts, the resulting deployment state is
 %% `SUCCEEDED' and the cancellation attempt has no effect.
 %%
 %% </li> </ul>
@@ -394,7 +395,8 @@ cancel_service_instance_deployment(Client, Input, Options)
     request(Client, <<"CancelServiceInstanceDeployment">>, Input, Options).
 
 %% @doc Attempts to cancel a service pipeline deployment on an
-%% `UpdateServicePipeline' action, if the deployment is `IN_PROGRESS'.
+%% `UpdateServicePipeline' action, if the deployment is
+%% `IN_PROGRESS'.
 %%
 %% For more information, see Update a service pipeline in the Proton User
 %% guide.
@@ -407,8 +409,8 @@ cancel_service_instance_deployment(Client, Input, Options)
 %% </li> <li> If the cancellation attempt fails, the resulting deployment
 %% state is `FAILED'.
 %%
-%% </li> <li> If the current `UpdateServicePipeline' action succeeds before
-%% the cancellation attempt starts, the resulting deployment state is
+%% </li> <li> If the current `UpdateServicePipeline' action succeeds
+%% before the cancellation attempt starts, the resulting deployment state is
 %% `SUCCEEDED' and the cancellation attempt has no effect.
 %%
 %% </li> </ul>
@@ -481,11 +483,11 @@ create_environment_account_connection(Client, Input, Options)
 %%
 %% </li> <li> Register and publish a customer managed environment template
 %% that connects Proton to your existing provisioned infrastructure that you
-%% manage. Proton doesn't manage your existing provisioned infrastructure. To
-%% create an environment template for customer provisioned and managed
-%% infrastructure, include the `provisioning' parameter and set the value to
-%% `CUSTOMER_MANAGED'. For more information, see Register and publish an
-%% environment template in the Proton User Guide.
+%% manage. Proton doesn't manage your existing provisioned
+%% infrastructure. To create an environment template for customer provisioned
+%% and managed infrastructure, include the `provisioning' parameter and
+%% set the value to `CUSTOMER_MANAGED'. For more information, see
+%% Register and publish an environment template in the Proton User Guide.
 %%
 %% </li> </ul>
 create_environment_template(Client, Input)
@@ -629,13 +631,13 @@ delete_environment_template(Client, Input, Options)
     request(Client, <<"DeleteEnvironmentTemplate">>, Input, Options).
 
 %% @doc If no other minor versions of an environment template exist, delete a
-%% major version of the environment template if it's not the `Recommended'
-%% version.
+%% major version of the environment template if it's not the
+%% `Recommended' version.
 %%
-%% Delete the `Recommended' version of the environment template if no other
-%% major versions or minor versions of the environment template exist. A
-%% major version of an environment template is a version that's not backward
-%% compatible.
+%% Delete the `Recommended' version of the environment template if no
+%% other major versions or minor versions of the environment template exist.
+%% A major version of an environment template is a version that's not
+%% backward compatible.
 %%
 %% Delete a minor version of an environment template if it isn't the
 %% `Recommended' version. Delete a `Recommended' minor version of the
@@ -681,17 +683,19 @@ delete_service_template(Client, Input, Options)
     request(Client, <<"DeleteServiceTemplate">>, Input, Options).
 
 %% @doc If no other minor versions of a service template exist, delete a
-%% major version of the service template if it's not the `Recommended'
-%% version.
+%% major version of the service template if it's not the
+%% `Recommended' version.
 %%
-%% Delete the `Recommended' version of the service template if no other major
-%% versions or minor versions of the service template exist. A major version
-%% of a service template is a version that isn't backwards compatible.
+%% Delete the `Recommended' version of the service template if no other
+%% major versions or minor versions of the service template exist. A major
+%% version of a service template is a version that isn't backwards
+%% compatible.
 %%
-%% Delete a minor version of a service template if it's not the `Recommended'
-%% version. Delete a `Recommended' minor version of the service template if
-%% no other minor versions of the service template exist. A minor version of
-%% a service template is a version that's backwards compatible.
+%% Delete a minor version of a service template if it's not the
+%% `Recommended' version. Delete a `Recommended' minor version of the
+%% service template if no other minor versions of the service template exist.
+%% A minor version of a service template is a version that's backwards
+%% compatible.
 delete_service_template_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service_template_version(Client, Input, []).
@@ -775,11 +779,11 @@ get_repository(Client, Input, Options)
 %%
 %% For more information about template sync, see .
 %%
-%% A repository sync status isn't tied to the Proton Repository resource (or
-%% any other Proton resource). Therefore, tags on an Proton Repository
-%% resource have no effect on this action. Specifically, you can't use these
-%% tags to control access to this action using Attribute-based access control
-%% (ABAC).
+%% A repository sync status isn't tied to the Proton Repository resource
+%% (or any other Proton resource). Therefore, tags on an Proton Repository
+%% resource have no effect on this action. Specifically, you can't use
+%% these tags to control access to this action using Attribute-based access
+%% control (ABAC).
 %%
 %% For more information about ABAC, see ABAC in the Proton User Guide.
 get_repository_sync_status(Client, Input)
@@ -1040,8 +1044,8 @@ notify_resource_deployment_status_change(Client, Input, Options)
 %% After you reject an environment account connection request, you can't
 %% accept or use the rejected environment account connection.
 %%
-%% You can’t reject an environment account connection that's connected to an
-%% environment.
+%% You can’t reject an environment account connection that's connected to
+%% an environment.
 %%
 %% For more information, see Environment account connections in the Proton
 %% User guide.
@@ -1090,11 +1094,12 @@ update_account_settings(Client, Input, Options)
 
 %% @doc Update a component.
 %%
-%% There are a few modes for updating a component. The `deploymentType' field
-%% defines the mode.
+%% There are a few modes for updating a component. The `deploymentType'
+%% field defines the mode.
 %%
 %% You can't update a component while its deployment status, or the
-%% deployment status of a service instance attached to it, is `IN_PROGRESS'.
+%% deployment status of a service instance attached to it, is
+%% `IN_PROGRESS'.
 %%
 %% For more information about components, see Proton components in the Proton
 %% User Guide.
@@ -1109,8 +1114,8 @@ update_component(Client, Input, Options)
 %%
 %% If the environment is associated with an environment account connection,
 %% don't update or include the `protonServiceRoleArn' and
-%% `provisioningRepository' parameter to update or connect to an environment
-%% account connection.
+%% `provisioningRepository' parameter to update or connect to an
+%% environment account connection.
 %%
 %% You can only update to a new environment account connection if that
 %% connection was created in the same environment account that the current
@@ -1118,10 +1123,10 @@ update_component(Client, Input, Options)
 %% also be associated with the current environment.
 %%
 %% If the environment isn't associated with an environment account
-%% connection, don't update or include the `environmentAccountConnectionId'
-%% parameter. You can't update or connect the environment to an environment
-%% account connection if it isn't already associated with an environment
-%% connection.
+%% connection, don't update or include the
+%% `environmentAccountConnectionId' parameter. You can't update or
+%% connect the environment to an environment account connection if it
+%% isn't already associated with an environment connection.
 %%
 %% You can update either the `environmentAccountConnectionId' or
 %% `protonServiceRoleArn' parameter and value. You can’t update both.
@@ -1130,8 +1135,9 @@ update_component(Client, Input, Options)
 %% provisioning, omit the `provisioningRepository' parameter.
 %%
 %% If the environment was configured for self-managed provisioning, specify
-%% the `provisioningRepository' parameter and omit the `protonServiceRoleArn'
-%% and `environmentAccountConnectionId' parameters.
+%% the `provisioningRepository' parameter and omit the
+%% `protonServiceRoleArn' and `environmentAccountConnectionId'
+%% parameters.
 %%
 %% For more information, see Environments and Provisioning methods in the
 %% Proton User Guide.
@@ -1161,8 +1167,8 @@ update_component(Client, Input, Options)
 %%
 %% In this mode, the environment is deployed and updated with the published,
 %% recommended (latest) major and minor version of the current template, by
-%% default. You can also specify a different major version that's higher than
-%% the major version in use and a minor version.
+%% default. You can also specify a different major version that's higher
+%% than the major version in use and a minor version.
 %%
 %% </dd> </dl>
 update_environment(Client, Input)
@@ -1203,15 +1209,15 @@ update_environment_template_version(Client, Input, Options)
 %% @doc Edit a service description or use a spec to add and delete service
 %% instances.
 %%
-%% Existing service instances and the service pipeline can't be edited using
-%% this API. They can only be deleted.
+%% Existing service instances and the service pipeline can't be edited
+%% using this API. They can only be deleted.
 %%
 %% Use the `description' parameter to modify the description.
 %%
 %% Edit the `spec' parameter to add or delete instances.
 %%
-%% You can't delete a service instance (remove it from the spec) if it has an
-%% attached component.
+%% You can't delete a service instance (remove it from the spec) if it
+%% has an attached component.
 %%
 %% For more information about components, see Proton components in the Proton
 %% User Guide.
@@ -1227,8 +1233,8 @@ update_service(Client, Input, Options)
 %% There are a few modes for updating a service instance. The
 %% `deploymentType' field defines the mode.
 %%
-%% You can't update a service instance while its deployment status, or the
-%% deployment status of a component attached to it, is `IN_PROGRESS'.
+%% You can't update a service instance while its deployment status, or
+%% the deployment status of a component attached to it, is `IN_PROGRESS'.
 %%
 %% For more information about components, see Proton components in the Proton
 %% User Guide.
@@ -1241,8 +1247,8 @@ update_service_instance(Client, Input, Options)
 
 %% @doc Update the service pipeline.
 %%
-%% There are four modes for updating a service pipeline. The `deploymentType'
-%% field defines the mode.
+%% There are four modes for updating a service pipeline. The
+%% `deploymentType' field defines the mode.
 %%
 %% <dl> <dt> </dt><dd> `NONE'
 %%

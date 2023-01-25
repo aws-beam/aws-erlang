@@ -168,9 +168,9 @@ list_text_translation_jobs(Client, Input, Options)
 %%
 %% Use batch translation jobs to translate large volumes of text across
 %% multiple documents at once. For batch translation, you can input documents
-%% with different source languages (specify `auto' as the source language).
-%% You can specify one or more target languages. Batch translation translates
-%% each input document into each of the target languages. For more
+%% with different source languages (specify `auto' as the source
+%% language). You can specify one or more target languages. Batch translation
+%% translates each input document into each of the target languages. For more
 %% information, see Asynchronous batch processing.
 %%
 %% Batch translation jobs can be described with the
@@ -187,14 +187,14 @@ start_text_translation_job(Client, Input, Options)
 %% @doc Stops an asynchronous batch translation job that is in progress.
 %%
 %% If the job's state is `IN_PROGRESS', the job will be marked for
-%% termination and put into the `STOP_REQUESTED' state. If the job completes
-%% before it can be stopped, it is put into the `COMPLETED' state. Otherwise,
-%% the job is put into the `STOPPED' state.
+%% termination and put into the `STOP_REQUESTED' state. If the job
+%% completes before it can be stopped, it is put into the `COMPLETED'
+%% state. Otherwise, the job is put into the `STOPPED' state.
 %%
 %% Asynchronous batch translation jobs are started with the
 %% `StartTextTranslationJob' operation. You can use the
-%% `DescribeTextTranslationJob' or `ListTextTranslationJobs' operations to
-%% get a batch translation job's `JobId'.
+%% `DescribeTextTranslationJob' or `ListTextTranslationJobs'
+%% operations to get a batch translation job's `JobId'.
 stop_text_translation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_text_translation_job(Client, Input, []).

@@ -19,8 +19,8 @@
 %% without modification. Amazon RDS automatically backs up your database and
 %% maintains the database software that powers your DB instance. Amazon RDS
 %% is flexible: you can scale your DB instance's compute resources and
-%% storage capacity to meet your application's demand. As with all Amazon Web
-%% Services, there are no up-front investments, and you pay only for the
+%% storage capacity to meet your application's demand. As with all Amazon
+%% Web Services, there are no up-front investments, and you pay only for the
 %% resources you use.
 %%
 %% This interface reference for Amazon RDS contains documentation for a
@@ -408,19 +408,19 @@ apply_pending_maintenance_action(Client, Input, Options)
 %% CIDR range, EC2SecurityGroupId for VPC, or (EC2SecurityGroupOwnerId and
 %% either EC2SecurityGroupName or EC2SecurityGroupId for non-VPC).
 %%
-%% You can't authorize ingress from an EC2 security group in one Amazon Web
-%% Services Region to an Amazon RDS DB instance in another. You can't
+%% You can't authorize ingress from an EC2 security group in one Amazon
+%% Web Services Region to an Amazon RDS DB instance in another. You can't
 %% authorize ingress from a VPC security group in one VPC to an Amazon RDS DB
 %% instance in another.
 %%
 %% For an overview of CIDR ranges, go to the Wikipedia Tutorial.
 %%
-%% EC2-Classic was retired on August 15, 2022. If you haven't migrated from
-%% EC2-Classic to a VPC, we recommend that you migrate as soon as possible.
-%% For more information, see Migrate from EC2-Classic to a VPC in the Amazon
-%% EC2 User Guide, the blog EC2-Classic Networking is Retiring – Here’s How
-%% to Prepare, and Moving a DB instance not in a VPC into a VPC in the Amazon
-%% RDS User Guide.
+%% EC2-Classic was retired on August 15, 2022. If you haven't migrated
+%% from EC2-Classic to a VPC, we recommend that you migrate as soon as
+%% possible. For more information, see Migrate from EC2-Classic to a VPC in
+%% the Amazon EC2 User Guide, the blog EC2-Classic Networking is Retiring –
+%% Here’s How to Prepare, and Moving a DB instance not in a VPC into a VPC in
+%% the Amazon RDS User Guide.
 authorize_db_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     authorize_db_security_group_ingress(Client, Input, []).
@@ -464,14 +464,14 @@ copy_db_cluster_parameter_group(Client, Input, Options)
 %% @doc Copies a snapshot of a DB cluster.
 %%
 %% To copy a DB cluster snapshot from a shared manual DB cluster snapshot,
-%% `SourceDBClusterSnapshotIdentifier' must be the Amazon Resource Name (ARN)
-%% of the shared DB cluster snapshot.
+%% `SourceDBClusterSnapshotIdentifier' must be the Amazon Resource Name
+%% (ARN) of the shared DB cluster snapshot.
 %%
 %% You can copy an encrypted DB cluster snapshot from another Amazon Web
 %% Services Region. In that case, the Amazon Web Services Region where you
-%% call the `CopyDBClusterSnapshot' operation is the destination Amazon Web
-%% Services Region for the encrypted DB cluster snapshot to be copied to. To
-%% copy an encrypted DB cluster snapshot from another Amazon Web Services
+%% call the `CopyDBClusterSnapshot' operation is the destination Amazon
+%% Web Services Region for the encrypted DB cluster snapshot to be copied to.
+%% To copy an encrypted DB cluster snapshot from another Amazon Web Services
 %% Region, you must provide the following values:
 %%
 %% <ul> <li> `KmsKeyId' - The Amazon Web Services Key Management System
@@ -479,20 +479,20 @@ copy_db_cluster_parameter_group(Client, Input, Options)
 %% copy of the DB cluster snapshot in the destination Amazon Web Services
 %% Region.
 %%
-%% </li> <li> `TargetDBClusterSnapshotIdentifier' - The identifier for the
-%% new copy of the DB cluster snapshot in the destination Amazon Web Services
-%% Region.
+%% </li> <li> `TargetDBClusterSnapshotIdentifier' - The identifier for
+%% the new copy of the DB cluster snapshot in the destination Amazon Web
+%% Services Region.
 %%
-%% </li> <li> `SourceDBClusterSnapshotIdentifier' - The DB cluster snapshot
-%% identifier for the encrypted DB cluster snapshot to be copied. This
-%% identifier must be in the ARN format for the source Amazon Web Services
-%% Region and is the same value as the `SourceDBClusterSnapshotIdentifier' in
-%% the presigned URL.
+%% </li> <li> `SourceDBClusterSnapshotIdentifier' - The DB cluster
+%% snapshot identifier for the encrypted DB cluster snapshot to be copied.
+%% This identifier must be in the ARN format for the source Amazon Web
+%% Services Region and is the same value as the
+%% `SourceDBClusterSnapshotIdentifier' in the presigned URL.
 %%
 %% </li> </ul> To cancel the copy operation once it is in progress, delete
 %% the target DB cluster snapshot identified by
-%% `TargetDBClusterSnapshotIdentifier' while that DB cluster snapshot is in
-%% "copying" status.
+%% `TargetDBClusterSnapshotIdentifier' while that DB cluster snapshot is
+%% in &quot;copying&quot; status.
 %%
 %% For more information on copying encrypted Amazon Aurora DB cluster
 %% snapshots from one Amazon Web Services Region to another, see Copying a
@@ -524,8 +524,8 @@ copy_db_parameter_group(Client, Input, Options)
 %%
 %% You can copy a snapshot from one Amazon Web Services Region to another. In
 %% that case, the Amazon Web Services Region where you call the
-%% `CopyDBSnapshot' operation is the destination Amazon Web Services Region
-%% for the DB snapshot copy.
+%% `CopyDBSnapshot' operation is the destination Amazon Web Services
+%% Region for the DB snapshot copy.
 %%
 %% This command doesn't apply to RDS Custom.
 %%
@@ -618,9 +618,9 @@ create_db_cluster_endpoint(Client, Input, Options)
 %% A DB cluster parameter group is initially created with the default
 %% parameters for the database engine used by instances in the DB cluster. To
 %% provide custom values for any of the parameters, you must modify the group
-%% after creating it using `ModifyDBClusterParameterGroup'. Once you've
-%% created a DB cluster parameter group, you need to associate it with your
-%% DB cluster using `ModifyDBCluster'.
+%% after creating it using `ModifyDBClusterParameterGroup'. Once
+%% you've created a DB cluster parameter group, you need to associate it
+%% with your DB cluster using `ModifyDBCluster'.
 %%
 %% When you associate a new DB cluster parameter group with a running Aurora
 %% DB cluster, reboot the DB instances in the DB cluster without failover for
@@ -693,8 +693,9 @@ create_db_instance(Client, Input, Options)
 %% Oracle, PostgreSQL, or SQL Server. For more information, see Working with
 %% Read Replicas in the Amazon RDS User Guide.
 %%
-%% Amazon Aurora doesn't support this operation. Call the `CreateDBInstance'
-%% operation to create a DB instance for an Aurora DB cluster.
+%% Amazon Aurora doesn't support this operation. Call the
+%% `CreateDBInstance' operation to create a DB instance for an Aurora DB
+%% cluster.
 %%
 %% All read replica DB instances are created with backups disabled. All other
 %% DB instance attributes (including DB security groups and DB parameter
@@ -713,11 +714,11 @@ create_db_instance_read_replica(Client, Input, Options)
 %% A DB parameter group is initially created with the default parameters for
 %% the database engine used by the DB instance. To provide custom values for
 %% any of the parameters, you must modify the group after creating it using
-%% `ModifyDBParameterGroup'. Once you've created a DB parameter group, you
-%% need to associate it with your DB instance using `ModifyDBInstance'. When
-%% you associate a new DB parameter group with a running DB instance, you
-%% need to reboot the DB instance without failover for the new DB parameter
-%% group and associated settings to take effect.
+%% `ModifyDBParameterGroup'. Once you've created a DB parameter
+%% group, you need to associate it with your DB instance using
+%% `ModifyDBInstance'. When you associate a new DB parameter group with a
+%% running DB instance, you need to reboot the DB instance without failover
+%% for the new DB parameter group and associated settings to take effect.
 %%
 %% This command doesn't apply to RDS Custom.
 %%
@@ -766,12 +767,12 @@ create_db_proxy_endpoint(Client, Input, Options)
 %% A DB security group controls access to EC2-Classic DB instances that are
 %% not in a VPC.
 %%
-%% EC2-Classic was retired on August 15, 2022. If you haven't migrated from
-%% EC2-Classic to a VPC, we recommend that you migrate as soon as possible.
-%% For more information, see Migrate from EC2-Classic to a VPC in the Amazon
-%% EC2 User Guide, the blog EC2-Classic Networking is Retiring – Here’s How
-%% to Prepare, and Moving a DB instance not in a VPC into a VPC in the Amazon
-%% RDS User Guide.
+%% EC2-Classic was retired on August 15, 2022. If you haven't migrated
+%% from EC2-Classic to a VPC, we recommend that you migrate as soon as
+%% possible. For more information, see Migrate from EC2-Classic to a VPC in
+%% the Amazon EC2 User Guide, the blog EC2-Classic Networking is Retiring –
+%% Here’s How to Prepare, and Moving a DB instance not in a VPC into a VPC in
+%% the Amazon RDS User Guide.
 create_db_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_security_group(Client, Input, []).
@@ -809,20 +810,21 @@ create_db_subnet_group(Client, Input, Options)
 %% topic. The ARN is displayed in the SNS console.
 %%
 %% You can specify the type of source (`SourceType') that you want to be
-%% notified of and provide a list of RDS sources (`SourceIds') that triggers
-%% the events. You can also provide a list of event categories
+%% notified of and provide a list of RDS sources (`SourceIds') that
+%% triggers the events. You can also provide a list of event categories
 %% (`EventCategories') for events that you want to be notified of. For
-%% example, you can specify `SourceType' = `db-instance', `SourceIds' =
-%% `mydbinstance1', `mydbinstance2' and `EventCategories' = `Availability',
-%% `Backup'.
+%% example, you can specify `SourceType' = `db-instance',
+%% `SourceIds' = `mydbinstance1', `mydbinstance2' and
+%% `EventCategories' = `Availability', `Backup'.
 %%
-%% If you specify both the `SourceType' and `SourceIds', such as `SourceType'
-%% = `db-instance' and `SourceIds' = `myDBInstance1', you are notified of all
-%% the `db-instance' events for the specified source. If you specify a
-%% `SourceType' but do not specify `SourceIds', you receive notice of the
-%% events for that source type for all your RDS sources. If you don't specify
-%% either the SourceType or the `SourceIds', you are notified of events
-%% generated from all RDS sources belonging to your customer account.
+%% If you specify both the `SourceType' and `SourceIds', such as
+%% `SourceType' = `db-instance' and `SourceIds' =
+%% `myDBInstance1', you are notified of all the `db-instance' events
+%% for the specified source. If you specify a `SourceType' but do not
+%% specify `SourceIds', you receive notice of the events for that source
+%% type for all your RDS sources. If you don't specify either the
+%% SourceType or the `SourceIds', you are notified of events generated
+%% from all RDS sources belonging to your customer account.
 %%
 %% For more information about subscribing to an event for RDS DB engines, see
 %% Subscribing to Amazon RDS event notification in the Amazon RDS User Guide.
@@ -897,11 +899,11 @@ delete_blue_green_deployment(Client, Input, Options)
 %% </li> </ul> Typically, deletion takes a few minutes.
 %%
 %% The MediaImport service that imports files from Amazon S3 to create CEVs
-%% isn't integrated with Amazon Web Services CloudTrail. If you turn on data
-%% logging for Amazon RDS in CloudTrail, calls to the
-%% `DeleteCustomDbEngineVersion' event aren't logged. However, you might see
-%% calls from the API gateway that accesses your Amazon S3 bucket. These
-%% calls originate from the MediaImport service for the
+%% isn't integrated with Amazon Web Services CloudTrail. If you turn on
+%% data logging for Amazon RDS in CloudTrail, calls to the
+%% `DeleteCustomDbEngineVersion' event aren't logged. However, you
+%% might see calls from the API gateway that accesses your Amazon S3 bucket.
+%% These calls originate from the MediaImport service for the
 %% `DeleteCustomDbEngineVersion' event.
 %%
 %% For more information, see Deleting a CEV in the Amazon RDS User Guide.
@@ -944,8 +946,8 @@ delete_db_cluster_endpoint(Client, Input, Options)
 
 %% @doc Deletes a specified DB cluster parameter group.
 %%
-%% The DB cluster parameter group to be deleted can't be associated with any
-%% DB clusters.
+%% The DB cluster parameter group to be deleted can't be associated with
+%% any DB clusters.
 %%
 %% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
@@ -963,7 +965,8 @@ delete_db_cluster_parameter_group(Client, Input, Options)
 %%
 %% If the snapshot is being copied, the copy operation is terminated.
 %%
-%% The DB cluster snapshot must be in the `available' state to be deleted.
+%% The DB cluster snapshot must be in the `available' state to be
+%% deleted.
 %%
 %% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
@@ -981,21 +984,22 @@ delete_db_cluster_snapshot(Client, Input, Options)
 %% instance.
 %%
 %% When you delete a DB instance, all automated backups for that instance are
-%% deleted and can't be recovered. Manual DB snapshots of the DB instance to
-%% be deleted by `DeleteDBInstance' are not deleted.
+%% deleted and can't be recovered. Manual DB snapshots of the DB instance
+%% to be deleted by `DeleteDBInstance' are not deleted.
 %%
 %% If you request a final DB snapshot the status of the Amazon RDS DB
-%% instance is `deleting' until the DB snapshot is created. The API action
-%% `DescribeDBInstance' is used to monitor the status of this operation. The
-%% action can't be canceled or reverted once submitted.
+%% instance is `deleting' until the DB snapshot is created. The API
+%% action `DescribeDBInstance' is used to monitor the status of this
+%% operation. The action can't be canceled or reverted once submitted.
 %%
 %% When a DB instance is in a failure state and has a status of `failed',
-%% `incompatible-restore', or `incompatible-network', you can only delete it
-%% when you skip creation of the final snapshot with the `SkipFinalSnapshot'
-%% parameter.
+%% `incompatible-restore', or `incompatible-network', you can only
+%% delete it when you skip creation of the final snapshot with the
+%% `SkipFinalSnapshot' parameter.
 %%
 %% If the specified DB instance is part of an Amazon Aurora DB cluster, you
-%% can't delete the DB instance if both of the following conditions are true:
+%% can't delete the DB instance if both of the following conditions are
+%% true:
 %%
 %% <ul> <li> The DB cluster is a read replica of another Amazon Aurora DB
 %% cluster.
@@ -1003,10 +1007,10 @@ delete_db_cluster_snapshot(Client, Input, Options)
 %% </li> <li> The DB instance is the only instance in the DB cluster.
 %%
 %% </li> </ul> To delete a DB instance in this case, first call the
-%% `PromoteReadReplicaDBCluster' API action to promote the DB cluster so it's
-%% no longer a read replica. After the promotion completes, then call the
-%% `DeleteDBInstance' API action to delete the final instance in the DB
-%% cluster.
+%% `PromoteReadReplicaDBCluster' API action to promote the DB cluster so
+%% it's no longer a read replica. After the promotion completes, then
+%% call the `DeleteDBInstance' API action to delete the final instance in
+%% the DB cluster.
 delete_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_instance(Client, Input, []).
@@ -1061,12 +1065,12 @@ delete_db_proxy_endpoint(Client, Input, Options)
 %% The specified DB security group must not be associated with any DB
 %% instances.
 %%
-%% EC2-Classic was retired on August 15, 2022. If you haven't migrated from
-%% EC2-Classic to a VPC, we recommend that you migrate as soon as possible.
-%% For more information, see Migrate from EC2-Classic to a VPC in the Amazon
-%% EC2 User Guide, the blog EC2-Classic Networking is Retiring – Here’s How
-%% to Prepare, and Moving a DB instance not in a VPC into a VPC in the Amazon
-%% RDS User Guide.
+%% EC2-Classic was retired on August 15, 2022. If you haven't migrated
+%% from EC2-Classic to a VPC, we recommend that you migrate as soon as
+%% possible. For more information, see Migrate from EC2-Classic to a VPC in
+%% the Amazon EC2 User Guide, the blog EC2-Classic Networking is Retiring –
+%% Here’s How to Prepare, and Moving a DB instance not in a VPC into a VPC in
+%% the Amazon RDS User Guide.
 delete_db_security_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_security_group(Client, Input, []).
@@ -1201,8 +1205,9 @@ describe_db_cluster_endpoints(Client, Input, Options)
 
 %% @doc Returns a list of `DBClusterParameterGroup' descriptions.
 %%
-%% If a `DBClusterParameterGroupName' parameter is specified, the list will
-%% contain only the description of the specified DB cluster parameter group.
+%% If a `DBClusterParameterGroupName' parameter is specified, the list
+%% will contain only the description of the specified DB cluster parameter
+%% group.
 %%
 %% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
@@ -1235,17 +1240,17 @@ describe_db_cluster_parameters(Client, Input, Options)
 %% a manual DB cluster snapshot.
 %%
 %% When sharing snapshots with other Amazon Web Services accounts,
-%% `DescribeDBClusterSnapshotAttributes' returns the `restore' attribute and
-%% a list of IDs for the Amazon Web Services accounts that are authorized to
-%% copy or restore the manual DB cluster snapshot. If `all' is included in
-%% the list of values for the `restore' attribute, then the manual DB cluster
-%% snapshot is public and can be copied or restored by all Amazon Web
-%% Services accounts.
+%% `DescribeDBClusterSnapshotAttributes' returns the `restore'
+%% attribute and a list of IDs for the Amazon Web Services accounts that are
+%% authorized to copy or restore the manual DB cluster snapshot. If `all'
+%% is included in the list of values for the `restore' attribute, then
+%% the manual DB cluster snapshot is public and can be copied or restored by
+%% all Amazon Web Services accounts.
 %%
 %% To add or remove access for an Amazon Web Services account to copy or
 %% restore a manual DB cluster snapshot, or to make the manual DB cluster
-%% snapshot public or private, use the `ModifyDBClusterSnapshotAttribute' API
-%% action.
+%% snapshot public or private, use the `ModifyDBClusterSnapshotAttribute'
+%% API action.
 describe_db_cluster_snapshot_attributes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_snapshot_attributes(Client, Input, []).
@@ -1302,7 +1307,8 @@ describe_db_engine_versions(Client, Input, Options)
 %% For example, use this operation to find details about automated backups
 %% for previously deleted instances. Current instances with retention periods
 %% greater than zero (0) are returned for both the
-%% `DescribeDBInstanceAutomatedBackups' and `DescribeDBInstances' operations.
+%% `DescribeDBInstanceAutomatedBackups' and `DescribeDBInstances'
+%% operations.
 %%
 %% All parameters are optional.
 describe_db_instance_automated_backups(Client, Input)
@@ -1337,8 +1343,8 @@ describe_db_log_files(Client, Input, Options)
 
 %% @doc Returns a list of `DBParameterGroup' descriptions.
 %%
-%% If a `DBParameterGroupName' is specified, the list will contain only the
-%% description of the specified DB parameter group.
+%% If a `DBParameterGroupName' is specified, the list will contain only
+%% the description of the specified DB parameter group.
 describe_db_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_parameter_groups(Client, Input, []).
@@ -1392,15 +1398,15 @@ describe_db_proxy_targets(Client, Input, Options)
 
 %% @doc Returns a list of `DBSecurityGroup' descriptions.
 %%
-%% If a `DBSecurityGroupName' is specified, the list will contain only the
-%% descriptions of the specified DB security group.
+%% If a `DBSecurityGroupName' is specified, the list will contain only
+%% the descriptions of the specified DB security group.
 %%
-%% EC2-Classic was retired on August 15, 2022. If you haven't migrated from
-%% EC2-Classic to a VPC, we recommend that you migrate as soon as possible.
-%% For more information, see Migrate from EC2-Classic to a VPC in the Amazon
-%% EC2 User Guide, the blog EC2-Classic Networking is Retiring – Here’s How
-%% to Prepare, and Moving a DB instance not in a VPC into a VPC in the Amazon
-%% RDS User Guide.
+%% EC2-Classic was retired on August 15, 2022. If you haven't migrated
+%% from EC2-Classic to a VPC, we recommend that you migrate as soon as
+%% possible. For more information, see Migrate from EC2-Classic to a VPC in
+%% the Amazon EC2 User Guide, the blog EC2-Classic Networking is Retiring –
+%% Here’s How to Prepare, and Moving a DB instance not in a VPC into a VPC in
+%% the Amazon RDS User Guide.
 describe_db_security_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_security_groups(Client, Input, []).
@@ -1412,11 +1418,12 @@ describe_db_security_groups(Client, Input, Options)
 %% DB snapshot.
 %%
 %% When sharing snapshots with other Amazon Web Services accounts,
-%% `DescribeDBSnapshotAttributes' returns the `restore' attribute and a list
-%% of IDs for the Amazon Web Services accounts that are authorized to copy or
-%% restore the manual DB snapshot. If `all' is included in the list of values
-%% for the `restore' attribute, then the manual DB snapshot is public and can
-%% be copied or restored by all Amazon Web Services accounts.
+%% `DescribeDBSnapshotAttributes' returns the `restore' attribute and
+%% a list of IDs for the Amazon Web Services accounts that are authorized to
+%% copy or restore the manual DB snapshot. If `all' is included in the
+%% list of values for the `restore' attribute, then the manual DB
+%% snapshot is public and can be copied or restored by all Amazon Web
+%% Services accounts.
 %%
 %% To add or remove access for an Amazon Web Services account to copy or
 %% restore a manual DB snapshot, or to make the manual DB snapshot public or
@@ -1475,9 +1482,9 @@ describe_engine_default_parameters(Client, Input, Options)
 %% @doc Displays a list of categories for all event source types, or, if
 %% specified, for a specified source type.
 %%
-%% You can also see this list in the "Amazon RDS event categories and event
-%% messages" section of the Amazon RDS User Guide or the Amazon Aurora User
-%% Guide .
+%% You can also see this list in the &quot;Amazon RDS event categories and
+%% event messages&quot; section of the Amazon RDS User Guide or the Amazon
+%% Aurora User Guide .
 describe_event_categories(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_categories(Client, Input, []).
@@ -1488,8 +1495,8 @@ describe_event_categories(Client, Input, Options)
 %% @doc Lists all the subscription descriptions for a customer account.
 %%
 %% The description for a subscription includes `SubscriptionName',
-%% `SNSTopicARN', `CustomerID', `SourceType', `SourceID', `CreationTime', and
-%% `Status'.
+%% `SNSTopicARN', `CustomerID', `SourceType', `SourceID',
+%% `CreationTime', and `Status'.
 %%
 %% If you specify a `SubscriptionName', lists the description for that
 %% subscription.
@@ -1684,10 +1691,10 @@ failover_db_cluster(Client, Input, Options)
 %% see Managed planned failover for Amazon Aurora global databases in the
 %% Amazon Aurora User Guide.
 %%
-%% This action applies to `GlobalCluster' (Aurora global databases) only. Use
-%% this action only on healthy Aurora global databases with running Aurora DB
-%% clusters and no Region-wide outages, to test disaster recovery scenarios
-%% or to reconfigure your Aurora global database topology.
+%% This action applies to `GlobalCluster' (Aurora global databases) only.
+%% Use this action only on healthy Aurora global databases with running
+%% Aurora DB clusters and no Region-wide outages, to test disaster recovery
+%% scenarios or to reconfigure your Aurora global database topology.
 failover_global_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     failover_global_cluster(Client, Input, []).
@@ -1794,11 +1801,11 @@ modify_current_db_cluster_capacity(Client, Input, Options)
 %% You can find CEVs to modify by calling `DescribeDBEngineVersions'.
 %%
 %% The MediaImport service that imports files from Amazon S3 to create CEVs
-%% isn't integrated with Amazon Web Services CloudTrail. If you turn on data
-%% logging for Amazon RDS in CloudTrail, calls to the
-%% `ModifyCustomDbEngineVersion' event aren't logged. However, you might see
-%% calls from the API gateway that accesses your Amazon S3 bucket. These
-%% calls originate from the MediaImport service for the
+%% isn't integrated with Amazon Web Services CloudTrail. If you turn on
+%% data logging for Amazon RDS in CloudTrail, calls to the
+%% `ModifyCustomDbEngineVersion' event aren't logged. However, you
+%% might see calls from the API gateway that accesses your Amazon S3 bucket.
+%% These calls originate from the MediaImport service for the
 %% `ModifyCustomDbEngineVersion' event.
 %%
 %% For more information, see Modifying CEV status in the Amazon RDS User
@@ -1842,8 +1849,8 @@ modify_db_cluster_endpoint(Client, Input, Options)
 %% @doc Modifies the parameters of a DB cluster parameter group.
 %%
 %% To modify more than one parameter, submit a list of the following:
-%% `ParameterName', `ParameterValue', and `ApplyMethod'. A maximum of 20
-%% parameters can be modified in a single request.
+%% `ParameterName', `ParameterValue', and `ApplyMethod'. A
+%% maximum of 20 parameters can be modified in a single request.
 %%
 %% After you create a DB cluster parameter group, you should wait at least 5
 %% minutes before creating your first DB cluster that uses that DB cluster
@@ -1880,20 +1887,20 @@ modify_db_cluster_parameter_group(Client, Input, Options)
 %%
 %% To share a manual DB cluster snapshot with other Amazon Web Services
 %% accounts, specify `restore' as the `AttributeName' and use the
-%% `ValuesToAdd' parameter to add a list of IDs of the Amazon Web Services
-%% accounts that are authorized to restore the manual DB cluster snapshot.
-%% Use the value `all' to make the manual DB cluster snapshot public, which
-%% means that it can be copied or restored by all Amazon Web Services
-%% accounts.
-%%
-%% Don't add the `all' value for any manual DB cluster snapshots that contain
-%% private information that you don't want available to all Amazon Web
+%% `ValuesToAdd' parameter to add a list of IDs of the Amazon Web
+%% Services accounts that are authorized to restore the manual DB cluster
+%% snapshot. Use the value `all' to make the manual DB cluster snapshot
+%% public, which means that it can be copied or restored by all Amazon Web
 %% Services accounts.
+%%
+%% Don't add the `all' value for any manual DB cluster snapshots that
+%% contain private information that you don't want available to all
+%% Amazon Web Services accounts.
 %%
 %% If a manual DB cluster snapshot is encrypted, it can be shared, but only
 %% by specifying a list of authorized Amazon Web Services account IDs for the
-%% `ValuesToAdd' parameter. You can't use `all' as a value for that parameter
-%% in this case.
+%% `ValuesToAdd' parameter. You can't use `all' as a value for
+%% that parameter in this case.
 %%
 %% To view which Amazon Web Services accounts have access to copy or restore
 %% a manual DB cluster snapshot, or whether a manual DB cluster snapshot is
@@ -1912,7 +1919,8 @@ modify_db_cluster_snapshot_attribute(Client, Input, Options)
 %% You can change one or more database configuration parameters by specifying
 %% these parameters and the new values in the request. To learn what
 %% modifications you can make to your DB instance, call
-%% `DescribeValidDBInstanceModifications' before you call `ModifyDBInstance'.
+%% `DescribeValidDBInstanceModifications' before you call
+%% `ModifyDBInstance'.
 modify_db_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_instance(Client, Input, []).
@@ -1923,8 +1931,8 @@ modify_db_instance(Client, Input, Options)
 %% @doc Modifies the parameters of a DB parameter group.
 %%
 %% To modify more than one parameter, submit a list of the following:
-%% `ParameterName', `ParameterValue', and `ApplyMethod'. A maximum of 20
-%% parameters can be modified in a single request.
+%% `ParameterName', `ParameterValue', and `ApplyMethod'. A
+%% maximum of 20 parameters can be modified in a single request.
 %%
 %% After you modify a DB parameter group, you should wait at least 5 minutes
 %% before creating your first DB instance that uses that DB parameter group
@@ -1984,20 +1992,20 @@ modify_db_snapshot(Client, Input, Options)
 %% from, a manual DB snapshot.
 %%
 %% To share a manual DB snapshot with other Amazon Web Services accounts,
-%% specify `restore' as the `AttributeName' and use the `ValuesToAdd'
-%% parameter to add a list of IDs of the Amazon Web Services accounts that
-%% are authorized to restore the manual DB snapshot. Uses the value `all' to
-%% make the manual DB snapshot public, which means it can be copied or
-%% restored by all Amazon Web Services accounts.
+%% specify `restore' as the `AttributeName' and use the
+%% `ValuesToAdd' parameter to add a list of IDs of the Amazon Web
+%% Services accounts that are authorized to restore the manual DB snapshot.
+%% Uses the value `all' to make the manual DB snapshot public, which
+%% means it can be copied or restored by all Amazon Web Services accounts.
 %%
-%% Don't add the `all' value for any manual DB snapshots that contain private
-%% information that you don't want available to all Amazon Web Services
-%% accounts.
+%% Don't add the `all' value for any manual DB snapshots that contain
+%% private information that you don't want available to all Amazon Web
+%% Services accounts.
 %%
 %% If the manual DB snapshot is encrypted, it can be shared, but only by
 %% specifying a list of authorized Amazon Web Services account IDs for the
-%% `ValuesToAdd' parameter. You can't use `all' as a value for that parameter
-%% in this case.
+%% `ValuesToAdd' parameter. You can't use `all' as a value for
+%% that parameter in this case.
 %%
 %% To view which Amazon Web Services accounts have access to copy or restore
 %% a manual DB snapshot, or whether a manual DB snapshot public or private,
@@ -2023,8 +2031,8 @@ modify_db_subnet_group(Client, Input, Options)
 
 %% @doc Modifies an existing RDS event notification subscription.
 %%
-%% You can't modify the source identifiers using this call. To change source
-%% identifiers for a subscription, use the
+%% You can't modify the source identifiers using this call. To change
+%% source identifiers for a subscription, use the
 %% `AddSourceIdentifierToSubscription' and
 %% `RemoveSourceIdentifierFromSubscription' calls.
 %%
@@ -2067,10 +2075,10 @@ modify_option_group(Client, Input, Options)
 %% since the previous backup. If you plan to promote a read replica to a
 %% standalone instance, we recommend that you enable backups and complete at
 %% least one backup prior to promotion. In addition, a read replica cannot be
-%% promoted to a standalone instance when it is in the `backing-up' status.
-%% If you have enabled backups on your read replica, configure the automated
-%% backup window so that daily backups do not interfere with read replica
-%% promotion.
+%% promoted to a standalone instance when it is in the `backing-up'
+%% status. If you have enabled backups on your read replica, configure the
+%% automated backup window so that daily backups do not interfere with read
+%% replica promotion.
 %%
 %% This command doesn't apply to Aurora MySQL, Aurora PostgreSQL, or RDS
 %% Custom.
@@ -2222,9 +2230,9 @@ remove_tags_from_resource(Client, Input, Options)
 %%
 %% When resetting the entire group, dynamic parameters are updated
 %% immediately and static parameters are set to `pending-reboot' to take
-%% effect on the next DB instance restart or `RebootDBInstance' request. You
-%% must call `RebootDBInstance' for every DB instance in your DB cluster that
-%% you want the updated static parameter to apply to.
+%% effect on the next DB instance restart or `RebootDBInstance' request.
+%% You must call `RebootDBInstance' for every DB instance in your DB
+%% cluster that you want the updated static parameter to apply to.
 %%
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
 %% Aurora? in the Amazon Aurora User Guide.
@@ -2242,11 +2250,12 @@ reset_db_cluster_parameter_group(Client, Input, Options)
 %% default value.
 %%
 %% To reset specific parameters, provide a list of the following:
-%% `ParameterName' and `ApplyMethod'. To reset the entire DB parameter group,
-%% specify the `DBParameterGroup' name and `ResetAllParameters' parameters.
-%% When resetting the entire group, dynamic parameters are updated
-%% immediately and static parameters are set to `pending-reboot' to take
-%% effect on the next DB instance restart or `RebootDBInstance' request.
+%% `ParameterName' and `ApplyMethod'. To reset the entire DB
+%% parameter group, specify the `DBParameterGroup' name and
+%% `ResetAllParameters' parameters. When resetting the entire group,
+%% dynamic parameters are updated immediately and static parameters are set
+%% to `pending-reboot' to take effect on the next DB instance restart or
+%% `RebootDBInstance' request.
 reset_db_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_db_parameter_group(Client, Input, []).
@@ -2265,9 +2274,9 @@ reset_db_parameter_group(Client, Input, Options)
 %% This action only restores the DB cluster, not the DB instances for that DB
 %% cluster. You must invoke the `CreateDBInstance' action to create DB
 %% instances for the restored DB cluster, specifying the identifier of the
-%% restored DB cluster in `DBClusterIdentifier'. You can create DB instances
-%% only after the `RestoreDBClusterFromS3' action has completed and the DB
-%% cluster is available.
+%% restored DB cluster in `DBClusterIdentifier'. You can create DB
+%% instances only after the `RestoreDBClusterFromS3' action has completed
+%% and the DB cluster is available.
 %%
 %% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
@@ -2284,15 +2293,15 @@ restore_db_cluster_from_s3(Client, Input, Options)
 %% @doc Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
 %%
 %% The target DB cluster is created from the source snapshot with a default
-%% configuration. If you don't specify a security group, the new DB cluster
-%% is associated with the default security group.
+%% configuration. If you don't specify a security group, the new DB
+%% cluster is associated with the default security group.
 %%
 %% This action only restores the DB cluster, not the DB instances for that DB
 %% cluster. You must invoke the `CreateDBInstance' action to create DB
 %% instances for the restored DB cluster, specifying the identifier of the
-%% restored DB cluster in `DBClusterIdentifier'. You can create DB instances
-%% only after the `RestoreDBClusterFromSnapshot' action has completed and the
-%% DB cluster is available.
+%% restored DB cluster in `DBClusterIdentifier'. You can create DB
+%% instances only after the `RestoreDBClusterFromSnapshot' action has
+%% completed and the DB cluster is available.
 %%
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
 %% Aurora? in the Amazon Aurora User Guide.
@@ -2308,11 +2317,11 @@ restore_db_cluster_from_snapshot(Client, Input, Options)
 
 %% @doc Restores a DB cluster to an arbitrary point in time.
 %%
-%% Users can restore to any point in time before `LatestRestorableTime' for
-%% up to `BackupRetentionPeriod' days. The target DB cluster is created from
-%% the source DB cluster with the same configuration as the original DB
-%% cluster, except that the new DB cluster is created with the default DB
-%% security group.
+%% Users can restore to any point in time before `LatestRestorableTime'
+%% for up to `BackupRetentionPeriod' days. The target DB cluster is
+%% created from the source DB cluster with the same configuration as the
+%% original DB cluster, except that the new DB cluster is created with the
+%% default DB security group.
 %%
 %% For Aurora, this action only restores the DB cluster, not the DB instances
 %% for that DB cluster. You must invoke the `CreateDBInstance' action to
@@ -2345,10 +2354,10 @@ restore_db_cluster_to_point_in_time(Client, Input, Options)
 %%
 %% If you want to replace your original DB instance with the new, restored DB
 %% instance, then rename your original DB instance before you call the
-%% RestoreDBInstanceFromDBSnapshot action. RDS doesn't allow two DB instances
-%% with the same name. After you have renamed your original DB instance with
-%% a different identifier, then you can pass the original name of the DB
-%% instance as the DBInstanceIdentifier in the call to the
+%% RestoreDBInstanceFromDBSnapshot action. RDS doesn't allow two DB
+%% instances with the same name. After you have renamed your original DB
+%% instance with a different identifier, then you can pass the original name
+%% of the DB instance as the DBInstanceIdentifier in the call to the
 %% RestoreDBInstanceFromDBSnapshot action. The result is that you replace the
 %% original DB instance with the DB instance created from the snapshot.
 %%
@@ -2411,12 +2420,12 @@ restore_db_instance_to_point_in_time(Client, Input, Options)
 %% VPC, or (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or
 %% EC2SecurityGroupId).
 %%
-%% EC2-Classic was retired on August 15, 2022. If you haven't migrated from
-%% EC2-Classic to a VPC, we recommend that you migrate as soon as possible.
-%% For more information, see Migrate from EC2-Classic to a VPC in the Amazon
-%% EC2 User Guide, the blog EC2-Classic Networking is Retiring – Here’s How
-%% to Prepare, and Moving a DB instance not in a VPC into a VPC in the Amazon
-%% RDS User Guide.
+%% EC2-Classic was retired on August 15, 2022. If you haven't migrated
+%% from EC2-Classic to a VPC, we recommend that you migrate as soon as
+%% possible. For more information, see Migrate from EC2-Classic to a VPC in
+%% the Amazon EC2 User Guide, the blog EC2-Classic Networking is Retiring –
+%% Here’s How to Prepare, and Moving a DB instance not in a VPC into a VPC in
+%% the Amazon RDS User Guide.
 revoke_db_security_group_ingress(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_db_security_group_ingress(Client, Input, []).

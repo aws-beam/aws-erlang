@@ -108,8 +108,8 @@
 %%
 %% You can delete up to 100 alarms in one operation. However, this total can
 %% include no more than one composite alarm. For example, you could delete 99
-%% metric alarms and one composite alarms with one operation, but you can't
-%% delete two composite alarms with one operation.
+%% metric alarms and one composite alarms with one operation, but you
+%% can't delete two composite alarms with one operation.
 %%
 %% In the event of an error, no alarms are deleted.
 %%
@@ -184,9 +184,10 @@ delete_metric_stream(Client, Input, Options)
 %% CloudWatch retains the history of an alarm even if you delete the alarm.
 %%
 %% To use this operation and return information about a composite alarm, you
-%% must be signed on with the `cloudwatch:DescribeAlarmHistory' permission
-%% that is scoped to `*'. You can't return information about composite alarms
-%% if your `cloudwatch:DescribeAlarmHistory' permission has a narrower scope.
+%% must be signed on with the `cloudwatch:DescribeAlarmHistory'
+%% permission that is scoped to `*'. You can't return information
+%% about composite alarms if your `cloudwatch:DescribeAlarmHistory'
+%% permission has a narrower scope.
 describe_alarm_history(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_alarm_history(Client, Input, []).
@@ -200,9 +201,10 @@ describe_alarm_history(Client, Input, Options)
 %% alarm state, or a prefix for any action.
 %%
 %% To use this operation and return information about composite alarms, you
-%% must be signed on with the `cloudwatch:DescribeAlarms' permission that is
-%% scoped to `*'. You can't return information about composite alarms if your
-%% `cloudwatch:DescribeAlarms' permission has a narrower scope.
+%% must be signed on with the `cloudwatch:DescribeAlarms' permission that
+%% is scoped to `*'. You can't return information about composite
+%% alarms if your `cloudwatch:DescribeAlarms' permission has a narrower
+%% scope.
 describe_alarms(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_alarms(Client, Input, []).
@@ -294,9 +296,9 @@ enable_insight_rules(Client, Input, Options)
 
 %% @doc Displays the details of the dashboard that you specify.
 %%
-%% To copy an existing dashboard, use `GetDashboard', and then use the data
-%% returned within `DashboardBody' as the template for the new dashboard when
-%% you call `PutDashboard' to create the copy.
+%% To copy an existing dashboard, use `GetDashboard', and then use the
+%% data returned within `DashboardBody' as the template for the new
+%% dashboard when you call `PutDashboard' to create the copy.
 get_dashboard(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_dashboard(Client, Input, []).
@@ -313,31 +315,33 @@ get_dashboard(Client, Input, Options)
 %% You can also optionally return one or more statistics about each data
 %% point in the time series. These statistics can include the following:
 %%
-%% <ul> <li> `UniqueContributors' -- the number of unique contributors for
-%% each data point.
+%% <ul> <li> `UniqueContributors' -- the number of unique contributors
+%% for each data point.
 %%
-%% </li> <li> `MaxContributorValue' -- the value of the top contributor for
-%% each data point. The identity of the contributor might change for each
+%% </li> <li> `MaxContributorValue' -- the value of the top contributor
+%% for each data point. The identity of the contributor might change for each
 %% data point in the graph.
 %%
 %% If this rule aggregates by COUNT, the top contributor for each data point
 %% is the contributor with the most occurrences in that period. If the rule
 %% aggregates by SUM, the top contributor is the contributor with the highest
-%% sum in the log field specified by the rule's `Value', during that period.
+%% sum in the log field specified by the rule's `Value', during that
+%% period.
 %%
-%% </li> <li> `SampleCount' -- the number of data points matched by the rule.
+%% </li> <li> `SampleCount' -- the number of data points matched by the
+%% rule.
 %%
-%% </li> <li> `Sum' -- the sum of the values from all contributors during the
-%% time period represented by that data point.
-%%
-%% </li> <li> `Minimum' -- the minimum value from a single observation during
+%% </li> <li> `Sum' -- the sum of the values from all contributors during
 %% the time period represented by that data point.
 %%
-%% </li> <li> `Maximum' -- the maximum value from a single observation during
-%% the time period represented by that data point.
+%% </li> <li> `Minimum' -- the minimum value from a single observation
+%% during the time period represented by that data point.
 %%
-%% </li> <li> `Average' -- the average value from all contributors during the
-%% time period represented by that data point.
+%% </li> <li> `Maximum' -- the maximum value from a single observation
+%% during the time period represented by that data point.
+%%
+%% </li> <li> `Average' -- the average value from all contributors during
+%% the time period represented by that data point.
 %%
 %% </li> </ul>
 get_insight_rule_report(Client, Input)
@@ -353,9 +357,9 @@ get_insight_rule_report(Client, Input, Options)
 %% The operation can also include a CloudWatch Metrics Insights query, and
 %% one or more metric math functions.
 %%
-%% A `GetMetricData' operation that does not include a query can retrieve as
-%% many as 500 different metrics in a single request, with a total of as many
-%% as 100,800 data points. You can also optionally perform metric math
+%% A `GetMetricData' operation that does not include a query can retrieve
+%% as many as 500 different metrics in a single request, with a total of as
+%% many as 100,800 data points. You can also optionally perform metric math
 %% expressions on the values of the returned statistics, to create new time
 %% series that represent new insights into your data. For example, using
 %% Lambda metrics, you could divide the Errors metric by the Invocations
@@ -363,15 +367,16 @@ get_insight_rule_report(Client, Input, Options)
 %% math expressions, see Metric Math Syntax and Functions in the Amazon
 %% CloudWatch User Guide.
 %%
-%% If you include a Metrics Insights query, each `GetMetricData' operation
-%% can include only one query. But the same `GetMetricData' operation can
-%% also retrieve other metrics. Metrics Insights queries can query only the
-%% most recent three hours of metric data. For more information about Metrics
-%% Insights, see Query your metrics with CloudWatch Metrics Insights.
+%% If you include a Metrics Insights query, each `GetMetricData'
+%% operation can include only one query. But the same `GetMetricData'
+%% operation can also retrieve other metrics. Metrics Insights queries can
+%% query only the most recent three hours of metric data. For more
+%% information about Metrics Insights, see Query your metrics with CloudWatch
+%% Metrics Insights.
 %%
-%% Calls to the `GetMetricData' API have a different pricing structure than
-%% calls to `GetMetricStatistics'. For more information about pricing, see
-%% Amazon CloudWatch Pricing.
+%% Calls to the `GetMetricData' API have a different pricing structure
+%% than calls to `GetMetricStatistics'. For more information about
+%% pricing, see Amazon CloudWatch Pricing.
 %%
 %% Amazon CloudWatch retains metric data as follows:
 %%
@@ -397,23 +402,24 @@ get_insight_rule_report(Client, Input, Options)
 %% 63 days, the data is further aggregated and is available with a resolution
 %% of 1 hour.
 %%
-%% If you omit `Unit' in your request, all data that was collected with any
-%% unit is returned, along with the corresponding units that were specified
-%% when the data was reported to CloudWatch. If you specify a unit, the
-%% operation returns only data that was collected with that unit specified.
-%% If you specify a unit that does not match the data collected, the results
-%% of the operation are null. CloudWatch does not perform unit conversions.
+%% If you omit `Unit' in your request, all data that was collected with
+%% any unit is returned, along with the corresponding units that were
+%% specified when the data was reported to CloudWatch. If you specify a unit,
+%% the operation returns only data that was collected with that unit
+%% specified. If you specify a unit that does not match the data collected,
+%% the results of the operation are null. CloudWatch does not perform unit
+%% conversions.
 %%
 %% Using Metrics Insights queries with metric math
 %%
-%% You can't mix a Metric Insights query and metric math syntax in the same
-%% expression, but you can reference results from a Metrics Insights query
-%% within other Metric math expressions. A Metrics Insights query without a
-%% GROUP BY clause returns a single time-series (TS), and can be used as
-%% input for a metric math expression that expects a single time series. A
-%% Metrics Insights query with a GROUP BY clause returns an array of
-%% time-series (TS[]), and can be used as input for a metric math expression
-%% that expects an array of time series.
+%% You can't mix a Metric Insights query and metric math syntax in the
+%% same expression, but you can reference results from a Metrics Insights
+%% query within other Metric math expressions. A Metrics Insights query
+%% without a GROUP BY clause returns a single time-series (TS), and can be
+%% used as input for a metric math expression that expects a single time
+%% series. A Metrics Insights query with a GROUP BY clause returns an array
+%% of time-series (TS[]), and can be used as input for a metric math
+%% expression that expects an array of time series.
 get_metric_data(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_metric_data(Client, Input, []).
@@ -525,10 +531,10 @@ get_metric_widget_image(Client, Input, Options)
 %% starting with the prefix are listed. Otherwise, all dashboards in your
 %% account are listed.
 %%
-%% `ListDashboards' returns up to 1000 results on one page. If there are more
-%% than 1000 dashboards, you can call `ListDashboards' again and include the
-%% value you received for `NextToken' in the first call, to receive the next
-%% 1000 results.
+%% `ListDashboards' returns up to 1000 results on one page. If there are
+%% more than 1000 dashboards, you can call `ListDashboards' again and
+%% include the value you received for `NextToken' in the first call, to
+%% receive the next 1000 results.
 list_dashboards(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_dashboards(Client, Input, []).
@@ -570,9 +576,9 @@ list_metric_streams(Client, Input, Options)
 %% accounts. For more information, see CloudWatch cross-account
 %% observability.
 %%
-%% `ListMetrics' doesn't return information about metrics if those metrics
-%% haven't reported data in the past two weeks. To retrieve those metrics,
-%% use GetMetricData or GetMetricStatistics.
+%% `ListMetrics' doesn't return information about metrics if those
+%% metrics haven't reported data in the past two weeks. To retrieve those
+%% metrics, use GetMetricData or GetMetricStatistics.
 list_metrics(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_metrics(Client, Input, []).
@@ -610,8 +616,8 @@ put_anomaly_detector(Client, Input, Options)
 %% have created. The composite alarm goes into ALARM state only if all
 %% conditions of the rule are met.
 %%
-%% The alarms specified in a composite alarm's rule expression can include
-%% metric alarms and other composite alarms. The rule expression of a
+%% The alarms specified in a composite alarm's rule expression can
+%% include metric alarms and other composite alarms. The rule expression of a
 %% composite alarm can include as many as 100 underlying alarms. Any single
 %% alarm can be included in the rule expressions of as many as 150 composite
 %% alarms.
@@ -640,8 +646,8 @@ put_anomaly_detector(Client, Input, Options)
 %% detects a cycle in the evaluation path.
 %%
 %% When this operation creates an alarm, the alarm state is immediately set
-%% to `INSUFFICIENT_DATA'. The alarm is then evaluated and its state is set
-%% appropriately. Any actions associated with the new state are then
+%% to `INSUFFICIENT_DATA'. The alarm is then evaluated and its state is
+%% set appropriately. Any actions associated with the new state are then
 %% executed. For a composite alarm, this initial time after creation is the
 %% only time that the alarm can be in `INSUFFICIENT_DATA' state.
 %%
@@ -649,9 +655,9 @@ put_anomaly_detector(Client, Input, Options)
 %% update completely overwrites the previous configuration of the alarm.
 %%
 %% To use this operation, you must be signed on with the
-%% `cloudwatch:PutCompositeAlarm' permission that is scoped to `*'. You can't
-%% create a composite alarms if your `cloudwatch:PutCompositeAlarm'
-%% permission has a narrower scope.
+%% `cloudwatch:PutCompositeAlarm' permission that is scoped to `*'.
+%% You can't create a composite alarms if your
+%% `cloudwatch:PutCompositeAlarm' permission has a narrower scope.
 %%
 %% If you are an IAM user, you must have `iam:CreateServiceLinkedRole' to
 %% create a composite alarm that has Systems Manager OpsItem actions.
@@ -674,16 +680,16 @@ put_composite_alarm(Client, Input, Options)
 %% existing dashboard. To copy an existing dashboard using the console, you
 %% can load the dashboard and then use the View/edit source command in the
 %% Actions menu to display the JSON block for that dashboard. Another way to
-%% copy a dashboard is to use `GetDashboard', and then use the data returned
-%% within `DashboardBody' as the template for the new dashboard when you call
-%% `PutDashboard'.
+%% copy a dashboard is to use `GetDashboard', and then use the data
+%% returned within `DashboardBody' as the template for the new dashboard
+%% when you call `PutDashboard'.
 %%
-%% When you create a dashboard with `PutDashboard', a good practice is to add
-%% a text widget at the top of the dashboard with a message that the
+%% When you create a dashboard with `PutDashboard', a good practice is to
+%% add a text widget at the top of the dashboard with a message that the
 %% dashboard was created by script and should not be changed in the console.
 %% This message could also point console users to the location of the
-%% `DashboardBody' script or the CloudFormation template used to create the
-%% dashboard.
+%% `DashboardBody' script or the CloudFormation template used to create
+%% the dashboard.
 put_dashboard(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_dashboard(Client, Input, []).
@@ -713,10 +719,10 @@ put_insight_rule(Client, Input, Options)
 %%
 %% When you enable a managed rule, you create a Contributor Insights rule
 %% that collects data from Amazon Web Services services. You cannot edit
-%% these rules with `PutInsightRule'. The rules can be enabled, disabled, and
-%% deleted using `EnableInsightRules', `DisableInsightRules', and
-%% `DeleteInsightRules'. If a previously created managed rule is currently
-%% disabled, a subsequent call to this API will re-enable it. Use
+%% these rules with `PutInsightRule'. The rules can be enabled, disabled,
+%% and deleted using `EnableInsightRules', `DisableInsightRules', and
+%% `DeleteInsightRules'. If a previously created managed rule is
+%% currently disabled, a subsequent call to this API will re-enable it. Use
 %% `ListManagedInsightRules' to describe all available rules.
 put_managed_insight_rules(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -735,8 +741,8 @@ put_managed_insight_rules(Client, Input, Options)
 %% Alarms based on anomaly detection models cannot have Auto Scaling actions.
 %%
 %% When this operation creates an alarm, the alarm state is immediately set
-%% to `INSUFFICIENT_DATA'. The alarm is then evaluated and its state is set
-%% appropriately. Any actions associated with the new state are then
+%% to `INSUFFICIENT_DATA'. The alarm is then evaluated and its state is
+%% set appropriately. Any actions associated with the new state are then
 %% executed.
 %%
 %% When you update an existing alarm, its state is left unchanged, but the
@@ -754,9 +760,9 @@ put_managed_insight_rules(Client, Input, Options)
 %% </li> </ul> The first time you create an alarm in the Amazon Web Services
 %% Management Console, the CLI, or by using the PutMetricAlarm API,
 %% CloudWatch creates the necessary service-linked role for you. The
-%% service-linked roles are called `AWSServiceRoleForCloudWatchEvents' and
-%% `AWSServiceRoleForCloudWatchAlarms_ActionSSM'. For more information, see
-%% Amazon Web Services service-linked role.
+%% service-linked roles are called `AWSServiceRoleForCloudWatchEvents'
+%% and `AWSServiceRoleForCloudWatchAlarms_ActionSSM'. For more
+%% information, see Amazon Web Services service-linked role.
 %%
 %% Cross-account alarms
 %%
@@ -795,10 +801,11 @@ put_metric_alarm(Client, Input, Options)
 %%
 %% You can publish either individual data points in the `Value' field, or
 %% arrays of values and the number of times each value occurred during the
-%% period by using the `Values' and `Counts' fields in the `MetricDatum'
-%% structure. Using the `Values' and `Counts' method enables you to publish
-%% up to 150 values per metric with one `PutMetricData' request, and supports
-%% retrieving percentile statistics on this data.
+%% period by using the `Values' and `Counts' fields in the
+%% `MetricDatum' structure. Using the `Values' and `Counts'
+%% method enables you to publish up to 150 values per metric with one
+%% `PutMetricData' request, and supports retrieving percentile statistics
+%% on this data.
 %%
 %% Each `PutMetricData' request is limited to 1 MB in size for HTTP POST
 %% requests. You can send a payload compressed by gzip. Each request is also
@@ -829,11 +836,11 @@ put_metric_alarm(Client, Input, Options)
 %% percentile statistics for this data if one of the following conditions is
 %% true:
 %%
-%% <ul> <li> The `SampleCount' value of the statistic set is 1 and `Min',
-%% `Max', and `Sum' are all equal.
+%% <ul> <li> The `SampleCount' value of the statistic set is 1 and
+%% `Min', `Max', and `Sum' are all equal.
 %%
-%% </li> <li> The `Min' and `Max' are equal, and `Sum' is equal to `Min'
-%% multiplied by `SampleCount'.
+%% </li> <li> The `Min' and `Max' are equal, and `Sum' is equal
+%% to `Min' multiplied by `SampleCount'.
 %%
 %% </li> </ul>
 put_metric_data(Client, Input)
@@ -852,8 +859,9 @@ put_metric_data(Client, Input, Options)
 %% For more information, see Using Metric Streams.
 %%
 %% To create a metric stream, you must be signed in to an account that has
-%% the `iam:PassRole' permission and either the `CloudWatchFullAccess' policy
-%% or the `cloudwatch:PutMetricStream' permission.
+%% the `iam:PassRole' permission and either the
+%% `CloudWatchFullAccess' policy or the `cloudwatch:PutMetricStream'
+%% permission.
 %%
 %% When you create or update a metric stream, you choose one of the
 %% following:
@@ -866,16 +874,16 @@ put_metric_data(Client, Input, Options)
 %% </li> <li> Stream metrics from only the metric namespaces that you list in
 %% `IncludeFilters'.
 %%
-%% </li> </ul> By default, a metric stream always sends the `MAX', `MIN',
-%% `SUM', and `SAMPLECOUNT' statistics for each metric that is streamed. You
-%% can use the `StatisticsConfigurations' parameter to have the metric stream
-%% send additional statistics in the stream. Streaming additional statistics
-%% incurs additional costs. For more information, see Amazon CloudWatch
-%% Pricing.
+%% </li> </ul> By default, a metric stream always sends the `MAX',
+%% `MIN', `SUM', and `SAMPLECOUNT' statistics for each metric
+%% that is streamed. You can use the `StatisticsConfigurations' parameter
+%% to have the metric stream send additional statistics in the stream.
+%% Streaming additional statistics incurs additional costs. For more
+%% information, see Amazon CloudWatch Pricing.
 %%
-%% When you use `PutMetricStream' to create a new metric stream, the stream
-%% is created in the `running' state. If you use it to update an existing
-%% stream, the state of the stream is not changed.
+%% When you use `PutMetricStream' to create a new metric stream, the
+%% stream is created in the `running' state. If you use it to update an
+%% existing stream, the state of the stream is not changed.
 %%
 %% If you are using CloudWatch cross-account observability and you create a
 %% metric stream in a monitoring account, you can choose whether to include
@@ -893,22 +901,22 @@ put_metric_stream(Client, Input, Options)
 %% When the updated state differs from the previous value, the action
 %% configured for the appropriate state is invoked. For example, if your
 %% alarm is configured to send an Amazon SNS message when an alarm is
-%% triggered, temporarily changing the alarm state to `ALARM' sends an SNS
-%% message.
+%% triggered, temporarily changing the alarm state to `ALARM' sends an
+%% SNS message.
 %%
 %% Metric alarms returns to their actual state quickly, often within seconds.
 %% Because the metric alarm state change happens quickly, it is typically
-%% only visible in the alarm's History tab in the Amazon CloudWatch console
-%% or through DescribeAlarmHistory.
+%% only visible in the alarm's History tab in the Amazon CloudWatch
+%% console or through DescribeAlarmHistory.
 %%
-%% If you use `SetAlarmState' on a composite alarm, the composite alarm is
-%% not guaranteed to return to its actual state. It returns to its actual
+%% If you use `SetAlarmState' on a composite alarm, the composite alarm
+%% is not guaranteed to return to its actual state. It returns to its actual
 %% state only once any of its children alarms change state. It is also
 %% reevaluated if you update its configuration.
 %%
 %% If an alarm triggers EC2 Auto Scaling policies or application Auto Scaling
-%% policies, you must include information in the `StateReasonData' parameter
-%% to enable the policy to take the correct action.
+%% policies, you must include information in the `StateReasonData'
+%% parameter to enable the policy to take the correct action.
 set_alarm_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_alarm_state(Client, Input, []).
@@ -947,10 +955,10 @@ stop_metric_streams(Client, Input, Options)
 %% Tags don't have any semantic meaning to Amazon Web Services and are
 %% interpreted strictly as strings of characters.
 %%
-%% You can use the `TagResource' action with an alarm that already has tags.
-%% If you specify a new tag key for the alarm, this tag is appended to the
-%% list of tags associated with the alarm. If you specify a tag key that is
-%% already associated with the alarm, the new tag value that you specify
+%% You can use the `TagResource' action with an alarm that already has
+%% tags. If you specify a new tag key for the alarm, this tag is appended to
+%% the list of tags associated with the alarm. If you specify a tag key that
+%% is already associated with the alarm, the new tag value that you specify
 %% replaces the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a CloudWatch resource.

@@ -48,12 +48,12 @@ describe_report_creation(Client, Input, Options)
 %% account and from the us-east-1 Region.
 %%
 %% This operation supports pagination, where the response can be sent in
-%% multiple pages. You should check the `PaginationToken' response parameter
-%% to determine if there are additional results available to return. Repeat
-%% the query, passing the `PaginationToken' response parameter value as an
-%% input to the next request until you recieve a `null' value. A null value
-%% for `PaginationToken' indicates that there are no more results waiting to
-%% be returned.
+%% multiple pages. You should check the `PaginationToken' response
+%% parameter to determine if there are additional results available to
+%% return. Repeat the query, passing the `PaginationToken' response
+%% parameter value as an input to the next request until you recieve a
+%% `null' value. A null value for `PaginationToken' indicates that
+%% there are no more results waiting to be returned.
 get_compliance_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_compliance_summary(Client, Input, []).
@@ -71,17 +71,17 @@ get_compliance_summary(Client, Input, Options)
 %% returned. The response includes all tags that are associated with the
 %% requested resources.
 %%
-%% </li> <li> Information about compliance with the account's effective tag
-%% policy. For more information on tag policies, see Tag Policies in the
+%% </li> <li> Information about compliance with the account's effective
+%% tag policy. For more information on tag policies, see Tag Policies in the
 %% Organizations User Guide.
 %%
 %% </li> </ul> This operation supports pagination, where the response can be
-%% sent in multiple pages. You should check the `PaginationToken' response
-%% parameter to determine if there are additional results available to
-%% return. Repeat the query, passing the `PaginationToken' response parameter
-%% value as an input to the next request until you recieve a `null' value. A
-%% null value for `PaginationToken' indicates that there are no more results
-%% waiting to be returned.
+%% sent in multiple pages. You should check the `PaginationToken'
+%% response parameter to determine if there are additional results available
+%% to return. Repeat the query, passing the `PaginationToken' response
+%% parameter value as an input to the next request until you recieve a
+%% `null' value. A null value for `PaginationToken' indicates that
+%% there are no more results waiting to be returned.
 get_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resources(Client, Input, []).
@@ -93,12 +93,12 @@ get_resources(Client, Input, Options)
 %% Services Region for the calling account.
 %%
 %% This operation supports pagination, where the response can be sent in
-%% multiple pages. You should check the `PaginationToken' response parameter
-%% to determine if there are additional results available to return. Repeat
-%% the query, passing the `PaginationToken' response parameter value as an
-%% input to the next request until you recieve a `null' value. A null value
-%% for `PaginationToken' indicates that there are no more results waiting to
-%% be returned.
+%% multiple pages. You should check the `PaginationToken' response
+%% parameter to determine if there are additional results available to
+%% return. Repeat the query, passing the `PaginationToken' response
+%% parameter value as an input to the next request until you recieve a
+%% `null' value. A null value for `PaginationToken' indicates that
+%% there are no more results waiting to be returned.
 get_tag_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_tag_keys(Client, Input, []).
@@ -110,12 +110,12 @@ get_tag_keys(Client, Input, Options)
 %% specified Amazon Web Services Region for the calling account.
 %%
 %% This operation supports pagination, where the response can be sent in
-%% multiple pages. You should check the `PaginationToken' response parameter
-%% to determine if there are additional results available to return. Repeat
-%% the query, passing the `PaginationToken' response parameter value as an
-%% input to the next request until you recieve a `null' value. A null value
-%% for `PaginationToken' indicates that there are no more results waiting to
-%% be returned.
+%% multiple pages. You should check the `PaginationToken' response
+%% parameter to determine if there are additional results available to
+%% return. Repeat the query, passing the `PaginationToken' response
+%% parameter value as an input to the next request until you recieve a
+%% `null' value. A null value for `PaginationToken' indicates that
+%% there are no more results waiting to be returned.
 get_tag_values(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_tag_values(Client, Input, []).
@@ -150,9 +150,9 @@ start_report_creation(Client, Input, Options)
 %% <ul> <li> Not all resources can have tags. For a list of services with
 %% resources that support tagging using this operation, see Services that
 %% support the Resource Groups Tagging API. If the resource doesn't yet
-%% support this operation, the resource's service might support tagging using
-%% its own API operations. For more information, refer to the documentation
-%% for that service.
+%% support this operation, the resource's service might support tagging
+%% using its own API operations. For more information, refer to the
+%% documentation for that service.
 %%
 %% </li> <li> Each resource can have up to 50 tags. For other limits, see Tag
 %% Naming and Usage Conventions in the Amazon Web Services General Reference.
@@ -208,8 +208,8 @@ tag_resources(Client, Input, Options)
 %% In addition to the `tag:UntagResources' permission required by this
 %% operation, you must also have the remove tags permission defined by the
 %% service that created the resource. For example, to remove the tags from an
-%% Amazon EC2 instance using the `UntagResources' operation, you must have
-%% both of the following permissions:
+%% Amazon EC2 instance using the `UntagResources' operation, you must
+%% have both of the following permissions:
 %%
 %% <ul> <li> `tag:UntagResource'
 %%

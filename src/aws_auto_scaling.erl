@@ -323,9 +323,9 @@ complete_lifecycle_action(Client, Input, Options)
 %% Creates an Auto Scaling group with the specified name and attributes.
 %%
 %% If you exceed your maximum limit of Auto Scaling groups, the call fails.
-%% To query this limit, call the `DescribeAccountLimits' API. For information
-%% about updating this limit, see Quotas for Amazon EC2 Auto Scaling in the
-%% Amazon EC2 Auto Scaling User Guide.
+%% To query this limit, call the `DescribeAccountLimits' API. For
+%% information about updating this limit, see Quotas for Amazon EC2 Auto
+%% Scaling in the Amazon EC2 Auto Scaling User Guide.
 %%
 %% For introductory exercises for creating an Auto Scaling group, see Getting
 %% started with Amazon EC2 Auto Scaling and Tutorial: Set up a scaled and
@@ -348,9 +348,9 @@ create_auto_scaling_group(Client, Input, Options)
 %% @doc Creates a launch configuration.
 %%
 %% If you exceed your maximum limit of launch configurations, the call fails.
-%% To query this limit, call the `DescribeAccountLimits' API. For information
-%% about updating this limit, see Quotas for Amazon EC2 Auto Scaling in the
-%% Amazon EC2 Auto Scaling User Guide.
+%% To query this limit, call the `DescribeAccountLimits' API. For
+%% information about updating this limit, see Quotas for Amazon EC2 Auto
+%% Scaling in the Amazon EC2 Auto Scaling User Guide.
 %%
 %% For more information, see Launch configurations in the Amazon EC2 Auto
 %% Scaling User Guide.
@@ -427,7 +427,8 @@ delete_launch_configuration(Client, Input, Options)
 %% @doc Deletes the specified lifecycle hook.
 %%
 %% If there are any outstanding lifecycle actions, they are completed first
-%% (`ABANDON' for launching instances, `CONTINUE' for terminating instances).
+%% (`ABANDON' for launching instances, `CONTINUE' for terminating
+%% instances).
 delete_lifecycle_hook(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_lifecycle_hook(Client, Input, []).
@@ -571,8 +572,8 @@ describe_auto_scaling_notification_types(Client, Input, Options)
 %%
 %% The following are the possible statuses:
 %%
-%% <ul> <li> `Pending' - The request was created, but the operation has not
-%% started.
+%% <ul> <li> `Pending' - The request was created, but the operation has
+%% not started.
 %%
 %% </li> <li> `InProgress' - The operation is in progress.
 %%
@@ -632,23 +633,23 @@ describe_lifecycle_hooks(Client, Input, Options)
 %% @doc Gets information about the Elastic Load Balancing target groups for
 %% the specified Auto Scaling group.
 %%
-%% To determine the attachment status of the target group, use the `State'
-%% element in the response. When you attach a target group to an Auto Scaling
-%% group, the initial `State' value is `Adding'. The state transitions to
-%% `Added' after all Auto Scaling instances are registered with the target
-%% group. If Elastic Load Balancing health checks are enabled for the Auto
-%% Scaling group, the state transitions to `InService' after at least one
-%% Auto Scaling instance passes the health check. When the target group is in
-%% the `InService' state, Amazon EC2 Auto Scaling can terminate and replace
-%% any instances that are reported as unhealthy. If no registered instances
-%% pass the health checks, the target group doesn't enter the `InService'
-%% state.
+%% To determine the attachment status of the target group, use the
+%% `State' element in the response. When you attach a target group to an
+%% Auto Scaling group, the initial `State' value is `Adding'. The
+%% state transitions to `Added' after all Auto Scaling instances are
+%% registered with the target group. If Elastic Load Balancing health checks
+%% are enabled for the Auto Scaling group, the state transitions to
+%% `InService' after at least one Auto Scaling instance passes the health
+%% check. When the target group is in the `InService' state, Amazon EC2
+%% Auto Scaling can terminate and replace any instances that are reported as
+%% unhealthy. If no registered instances pass the health checks, the target
+%% group doesn't enter the `InService' state.
 %%
 %% Target groups also have an `InService' state if you attach them in the
 %% `CreateAutoScalingGroup' API call. If your target group state is
-%% `InService', but it is not working properly, check the scaling activities
-%% by calling `DescribeScalingActivities' and take any corrective actions
-%% necessary.
+%% `InService', but it is not working properly, check the scaling
+%% activities by calling `DescribeScalingActivities' and take any
+%% corrective actions necessary.
 %%
 %% For help with failed health checks, see Troubleshooting Amazon EC2 Auto
 %% Scaling: Health checks in the Amazon EC2 Auto Scaling User Guide. For more
@@ -673,23 +674,23 @@ describe_load_balancer_target_groups(Client, Input, Options)
 %% Application Load Balancers, Network Load Balancers, or Gateway Load
 %% Balancer, use the `DescribeLoadBalancerTargetGroups' API instead.
 %%
-%% To determine the attachment status of the load balancer, use the `State'
-%% element in the response. When you attach a load balancer to an Auto
-%% Scaling group, the initial `State' value is `Adding'. The state
-%% transitions to `Added' after all Auto Scaling instances are registered
-%% with the load balancer. If Elastic Load Balancing health checks are
-%% enabled for the Auto Scaling group, the state transitions to `InService'
-%% after at least one Auto Scaling instance passes the health check. When the
-%% load balancer is in the `InService' state, Amazon EC2 Auto Scaling can
-%% terminate and replace any instances that are reported as unhealthy. If no
-%% registered instances pass the health checks, the load balancer doesn't
-%% enter the `InService' state.
+%% To determine the attachment status of the load balancer, use the
+%% `State' element in the response. When you attach a load balancer to an
+%% Auto Scaling group, the initial `State' value is `Adding'. The
+%% state transitions to `Added' after all Auto Scaling instances are
+%% registered with the load balancer. If Elastic Load Balancing health checks
+%% are enabled for the Auto Scaling group, the state transitions to
+%% `InService' after at least one Auto Scaling instance passes the health
+%% check. When the load balancer is in the `InService' state, Amazon EC2
+%% Auto Scaling can terminate and replace any instances that are reported as
+%% unhealthy. If no registered instances pass the health checks, the load
+%% balancer doesn't enter the `InService' state.
 %%
-%% Load balancers also have an `InService' state if you attach them in the
-%% `CreateAutoScalingGroup' API call. If your load balancer state is
-%% `InService', but it is not working properly, check the scaling activities
-%% by calling `DescribeScalingActivities' and take any corrective actions
-%% necessary.
+%% Load balancers also have an `InService' state if you attach them in
+%% the `CreateAutoScalingGroup' API call. If your load balancer state is
+%% `InService', but it is not working properly, check the scaling
+%% activities by calling `DescribeScalingActivities' and take any
+%% corrective actions necessary.
 %%
 %% For help with failed health checks, see Troubleshooting Amazon EC2 Auto
 %% Scaling: Health checks in the Amazon EC2 Auto Scaling User Guide. For more
@@ -737,12 +738,13 @@ describe_policies(Client, Input, Options)
 %% scaling activities. For more information, see Verifying a scaling activity
 %% for an Auto Scaling group in the Amazon EC2 Auto Scaling User Guide.
 %%
-%% If the scaling event succeeds, the value of the `StatusCode' element in
-%% the response is `Successful'. If an attempt to launch instances failed,
-%% the `StatusCode' value is `Failed' or `Cancelled' and the `StatusMessage'
-%% element in the response indicates the cause of the failure. For help
-%% interpreting the `StatusMessage', see Troubleshooting Amazon EC2 Auto
-%% Scaling in the Amazon EC2 Auto Scaling User Guide.
+%% If the scaling event succeeds, the value of the `StatusCode' element
+%% in the response is `Successful'. If an attempt to launch instances
+%% failed, the `StatusCode' value is `Failed' or `Cancelled' and
+%% the `StatusMessage' element in the response indicates the cause of the
+%% failure. For help interpreting the `StatusMessage', see
+%% Troubleshooting Amazon EC2 Auto Scaling in the Amazon EC2 Auto Scaling
+%% User Guide.
 describe_scaling_activities(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scaling_activities(Client, Input, []).
@@ -759,8 +761,8 @@ describe_scaling_process_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeScalingProcessTypes">>, Input, Options).
 
-%% @doc Gets information about the scheduled actions that haven't run or that
-%% have not reached their end time.
+%% @doc Gets information about the scheduled actions that haven't run or
+%% that have not reached their end time.
 %%
 %% To describe the scaling activities for scheduled actions that have already
 %% run, call the `DescribeScalingActivities' API.
@@ -779,8 +781,8 @@ describe_scheduled_actions(Client, Input, Options)
 %% for it to be included in the results.
 %%
 %% You can also specify multiple filters. The result includes information for
-%% a particular tag only if it matches all the filters. If there's no match,
-%% no special message is returned.
+%% a particular tag only if it matches all the filters. If there's no
+%% match, no special message is returned.
 %%
 %% For more information, see Tag Auto Scaling groups and instances in the
 %% Amazon EC2 Auto Scaling User Guide.
@@ -857,7 +859,8 @@ detach_instances(Client, Input, Options)
 %% When you detach a target group, it enters the `Removing' state while
 %% deregistering the instances in the group. When all instances are
 %% deregistered, then you can no longer describe the target group using the
-%% `DescribeLoadBalancerTargetGroups' API call. The instances remain running.
+%% `DescribeLoadBalancerTargetGroups' API call. The instances remain
+%% running.
 %%
 %% You can use this operation to detach target groups that were attached by
 %% using `AttachLoadBalancerTargetGroups', but not for target groups that
@@ -1030,8 +1033,9 @@ get_predictive_scaling_forecast(Client, Input, Options)
 %% 50 per Auto Scaling group, the call fails.
 %%
 %% You can view the lifecycle hooks for an Auto Scaling group using the
-%% `DescribeLifecycleHooks' API call. If you are no longer using a lifecycle
-%% hook, you can delete it by calling the `DeleteLifecycleHook' API.
+%% `DescribeLifecycleHooks' API call. If you are no longer using a
+%% lifecycle hook, you can delete it by calling the `DeleteLifecycleHook'
+%% API.
 put_lifecycle_hook(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_lifecycle_hook(Client, Input, []).
@@ -1074,8 +1078,8 @@ put_notification_configuration(Client, Input, Options)
 %% Guide.
 %%
 %% You can view the scaling policies for an Auto Scaling group using the
-%% `DescribePolicies' API call. If you are no longer using a scaling policy,
-%% you can delete it by calling the `DeletePolicy' API.
+%% `DescribePolicies' API call. If you are no longer using a scaling
+%% policy, you can delete it by calling the `DeletePolicy' API.
 put_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_scaling_policy(Client, Input, []).
@@ -1091,8 +1095,8 @@ put_scaling_policy(Client, Input, Options)
 %%
 %% You can view the scheduled actions for an Auto Scaling group using the
 %% `DescribeScheduledActions' API call. If you are no longer using a
-%% scheduled action, you can delete it by calling the `DeleteScheduledAction'
-%% API.
+%% scheduled action, you can delete it by calling the
+%% `DeleteScheduledAction' API.
 %%
 %% If you try to schedule your action in the past, Amazon EC2 Auto Scaling
 %% returns an error message.
@@ -1116,9 +1120,9 @@ put_scheduled_update_group_action(Client, Input, Options)
 %% group that has a mixed instances policy or a launch template or launch
 %% configuration that requests Spot Instances.
 %%
-%% You can view the instances in the warm pool using the `DescribeWarmPool'
-%% API call. If you are no longer using a warm pool, you can delete it by
-%% calling the `DeleteWarmPool' API.
+%% You can view the instances in the warm pool using the
+%% `DescribeWarmPool' API call. If you are no longer using a warm pool,
+%% you can delete it by calling the `DeleteWarmPool' API.
 put_warm_pool(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_warm_pool(Client, Input, []).
@@ -1180,9 +1184,10 @@ resume_processes(Client, Input, Options)
 
 %% @doc Sets the size of the specified Auto Scaling group.
 %%
-%% If a scale-in activity occurs as a result of a new `DesiredCapacity' value
-%% that is lower than the current size of the group, the Auto Scaling group
-%% uses its termination policy to determine which instances to terminate.
+%% If a scale-in activity occurs as a result of a new `DesiredCapacity'
+%% value that is lower than the current size of the group, the Auto Scaling
+%% group uses its termination policy to determine which instances to
+%% terminate.
 %%
 %% For more information, see Manual scaling in the Amazon EC2 Auto Scaling
 %% User Guide.
@@ -1238,8 +1243,8 @@ set_instance_protection(Client, Input, Options)
 %% If the call succeeds, it creates a new instance refresh request with a
 %% unique ID that you can use to track its progress. To query its status,
 %% call the `DescribeInstanceRefreshes' API. To describe the instance
-%% refreshes that have already run, call the `DescribeInstanceRefreshes' API.
-%% To cancel an instance refresh operation in progress, use the
+%% refreshes that have already run, call the `DescribeInstanceRefreshes'
+%% API. To cancel an instance refresh operation in progress, use the
 %% `CancelInstanceRefresh' API.
 start_instance_refresh(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1251,13 +1256,13 @@ start_instance_refresh(Client, Input, Options)
 %% @doc Suspends the specified auto scaling processes, or all processes, for
 %% the specified Auto Scaling group.
 %%
-%% If you suspend either the `Launch' or `Terminate' process types, it can
-%% prevent other process types from functioning properly. For more
+%% If you suspend either the `Launch' or `Terminate' process types,
+%% it can prevent other process types from functioning properly. For more
 %% information, see Suspending and resuming scaling processes in the Amazon
 %% EC2 Auto Scaling User Guide.
 %%
-%% To resume processes that have been suspended, call the `ResumeProcesses'
-%% API.
+%% To resume processes that have been suspended, call the
+%% `ResumeProcesses' API.
 suspend_processes(Client, Input)
   when is_map(Client), is_map(Input) ->
     suspend_processes(Client, Input, []).
@@ -1272,8 +1277,8 @@ suspend_processes(Client, Input, Options)
 %%
 %% This call simply makes a termination request. The instance is not
 %% terminated immediately. When an instance is terminated, the instance
-%% status changes to `terminated'. You can't connect to or start an instance
-%% after you've terminated it.
+%% status changes to `terminated'. You can't connect to or start an
+%% instance after you've terminated it.
 %%
 %% If you do not specify the option to decrement the desired capacity, Amazon
 %% EC2 Auto Scaling launches instances to replace the ones that are
@@ -1299,9 +1304,9 @@ terminate_instance_in_auto_scaling_group(Client, Input, Options)
 %% Updates the configuration for the specified Auto Scaling group.
 %%
 %% To update an Auto Scaling group, specify the name of the group and the
-%% property that you want to change. Any properties that you don't specify
-%% are not changed by this update request. The new settings take effect on
-%% any scaling activities after this call returns.
+%% property that you want to change. Any properties that you don't
+%% specify are not changed by this update request. The new settings take
+%% effect on any scaling activities after this call returns.
 %%
 %% If you associate a new launch configuration or template with an Auto
 %% Scaling group, all new instances will get the updated configuration.
@@ -1320,24 +1325,25 @@ terminate_instance_in_auto_scaling_group(Client, Input, Options)
 %% `MinSize':
 %%
 %% <ul> <li> If a scale-in activity occurs as a result of a new
-%% `DesiredCapacity' value that is lower than the current size of the group,
-%% the Auto Scaling group uses its termination policy to determine which
-%% instances to terminate.
+%% `DesiredCapacity' value that is lower than the current size of the
+%% group, the Auto Scaling group uses its termination policy to determine
+%% which instances to terminate.
 %%
-%% </li> <li> If you specify a new value for `MinSize' without specifying a
-%% value for `DesiredCapacity', and the new `MinSize' is larger than the
-%% current size of the group, this sets the group's `DesiredCapacity' to the
-%% new `MinSize' value.
+%% </li> <li> If you specify a new value for `MinSize' without specifying
+%% a value for `DesiredCapacity', and the new `MinSize' is larger
+%% than the current size of the group, this sets the group's
+%% `DesiredCapacity' to the new `MinSize' value.
 %%
-%% </li> <li> If you specify a new value for `MaxSize' without specifying a
-%% value for `DesiredCapacity', and the new `MaxSize' is smaller than the
-%% current size of the group, this sets the group's `DesiredCapacity' to the
-%% new `MaxSize' value.
+%% </li> <li> If you specify a new value for `MaxSize' without specifying
+%% a value for `DesiredCapacity', and the new `MaxSize' is smaller
+%% than the current size of the group, this sets the group's
+%% `DesiredCapacity' to the new `MaxSize' value.
 %%
 %% </li> </ul> To see which properties have been set, call the
-%% `DescribeAutoScalingGroups' API. To view the scaling policies for an Auto
-%% Scaling group, call the `DescribePolicies' API. If the group has scaling
-%% policies, you can update them by calling the `PutScalingPolicy' API.
+%% `DescribeAutoScalingGroups' API. To view the scaling policies for an
+%% Auto Scaling group, call the `DescribePolicies' API. If the group has
+%% scaling policies, you can update them by calling the
+%% `PutScalingPolicy' API.
 update_auto_scaling_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_auto_scaling_group(Client, Input, []).

@@ -62,9 +62,10 @@ batch_get_record(Client, Input0, Options0) ->
 
 %% @doc Deletes a `Record' from a `FeatureGroup'.
 %%
-%% When the `DeleteRecord' API is called a new record will be added to the
-%% `OfflineStore' and the `Record' will be removed from the `OnlineStore'.
-%% This record will have a value of `True' in the `is_deleted' column.
+%% When the `DeleteRecord' API is called a new record will be added to
+%% the `OfflineStore' and the `Record' will be removed from the
+%% `OnlineStore'. This record will have a value of `True' in the
+%% `is_deleted' column.
 delete_record(Client, FeatureGroupName, Input) ->
     delete_record(Client, FeatureGroupName, Input, []).
 delete_record(Client, FeatureGroupName, Input0, Options0) ->
@@ -92,9 +93,9 @@ delete_record(Client, FeatureGroupName, Input0, Options0) ->
 
 %% @doc Use for `OnlineStore' serving from a `FeatureStore'.
 %%
-%% Only the latest records stored in the `OnlineStore' can be retrieved. If
-%% no Record with `RecordIdentifierValue' is found, then an empty result is
-%% returned.
+%% Only the latest records stored in the `OnlineStore' can be retrieved.
+%% If no Record with `RecordIdentifierValue' is found, then an empty
+%% result is returned.
 get_record(Client, FeatureGroupName, RecordIdentifierValueAsString)
   when is_map(Client) ->
     get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, #{}, #{}).
@@ -124,10 +125,11 @@ get_record(Client, FeatureGroupName, RecordIdentifierValueAsString, QueryMap, He
 
 %% @doc Used for data ingestion into the `FeatureStore'.
 %%
-%% The `PutRecord' API writes to both the `OnlineStore' and `OfflineStore'.
-%% If the record is the latest record for the `recordIdentifier', the record
-%% is written to both the `OnlineStore' and `OfflineStore'. If the record is
-%% a historic record, it is written only to the `OfflineStore'.
+%% The `PutRecord' API writes to both the `OnlineStore' and
+%% `OfflineStore'. If the record is the latest record for the
+%% `recordIdentifier', the record is written to both the
+%% `OnlineStore' and `OfflineStore'. If the record is a historic
+%% record, it is written only to the `OfflineStore'.
 put_record(Client, FeatureGroupName, Input) ->
     put_record(Client, FeatureGroupName, Input, []).
 put_record(Client, FeatureGroupName, Input0, Options0) ->

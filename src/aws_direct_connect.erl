@@ -213,8 +213,8 @@ allocate_private_virtual_interface(Client, Input, Options)
 %%
 %% Virtual interfaces created using this function must be confirmed by the
 %% owner using `ConfirmPublicVirtualInterface'. Until this step has been
-%% completed, the virtual interface is in the `confirming' state and is not
-%% available to handle traffic.
+%% completed, the virtual interface is in the `confirming' state and is
+%% not available to handle traffic.
 %%
 %% When creating an IPv6 public virtual interface, omit the Amazon address
 %% and customer address. IPv6 addresses are automatically assigned from the
@@ -237,8 +237,8 @@ allocate_public_virtual_interface(Client, Input, Options)
 %%
 %% After you create a transit virtual interface, it must be confirmed by the
 %% owner using `ConfirmTransitVirtualInterface'. Until this step has been
-%% completed, the transit virtual interface is in the `requested' state and
-%% is not available to handle traffic.
+%% completed, the transit virtual interface is in the `requested' state
+%% and is not available to handle traffic.
 allocate_transit_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     allocate_transit_virtual_interface(Client, Input, []).
@@ -253,8 +253,8 @@ allocate_transit_virtual_interface(Client, Input, Options)
 %% (connectivity to Amazon Web Services is interrupted). The connection must
 %% be hosted on the same Direct Connect endpoint as the LAG, and its
 %% bandwidth must match the bandwidth for the LAG. You can re-associate a
-%% connection that's currently associated with a different LAG; however, if
-%% removing the connection would cause the original LAG to fall below its
+%% connection that's currently associated with a different LAG; however,
+%% if removing the connection would cause the original LAG to fall below its
 %% setting for minimum number of operational connections, the request fails.
 %%
 %% Any virtual interfaces that are directly associated with the connection
@@ -278,8 +278,8 @@ associate_connection_with_lag(Client, Input, Options)
 %%
 %% If the target interconnect or LAG has an existing hosted connection with a
 %% conflicting VLAN number or IP address, the operation fails. This action
-%% temporarily interrupts the hosted connection's connectivity to Amazon Web
-%% Services as it is being migrated.
+%% temporarily interrupts the hosted connection's connectivity to Amazon
+%% Web Services as it is being migrated.
 %%
 %% Intended for use by Direct Connect Partners only.
 associate_hosted_connection(Client, Input)
@@ -293,8 +293,8 @@ associate_hosted_connection(Client, Input, Options)
 %% Connectivity Association Key (CAK) pair with an Direct Connect dedicated
 %% connection.
 %%
-%% You must supply either the `secretARN,' or the CKN/CAK (`ckn' and `cak')
-%% pair in the request.
+%% You must supply either the `secretARN,' or the CKN/CAK (`ckn' and
+%% `cak') pair in the request.
 %%
 %% For information about MAC Security (MACsec) key considerations, see MACsec
 %% pre-shared CKN/CAK key considerations in the Direct Connect User Guide.
@@ -331,9 +331,9 @@ associate_virtual_interface(Client, Input, Options)
 %% @doc Confirms the creation of the specified hosted connection on an
 %% interconnect.
 %%
-%% Upon creation, the hosted connection is initially in the `Ordering' state,
-%% and remains in this state until the owner confirms creation of the hosted
-%% connection.
+%% Upon creation, the hosted connection is initially in the `Ordering'
+%% state, and remains in this state until the owner confirms creation of the
+%% hosted connection.
 confirm_connection(Client, Input)
   when is_map(Client), is_map(Input) ->
     confirm_connection(Client, Input, []).
@@ -473,16 +473,16 @@ create_direct_connect_gateway_association_proposal(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDirectConnectGatewayAssociationProposal">>, Input, Options).
 
-%% @doc Creates an interconnect between an Direct Connect Partner's network
-%% and a specific Direct Connect location.
+%% @doc Creates an interconnect between an Direct Connect Partner's
+%% network and a specific Direct Connect location.
 %%
 %% An interconnect is a connection that is capable of hosting other
 %% connections. The Direct Connect Partner can use an interconnect to provide
 %% Direct Connect hosted connections to customers through their own network
-%% services. Like a standard connection, an interconnect links the partner's
-%% network to an Direct Connect location over a standard Ethernet fiber-optic
-%% cable. One end is connected to the partner's router, the other to an
-%% Direct Connect router.
+%% services. Like a standard connection, an interconnect links the
+%% partner's network to an Direct Connect location over a standard
+%% Ethernet fiber-optic cable. One end is connected to the partner's
+%% router, the other to an Direct Connect router.
 %%
 %% You can automatically add the new interconnect to a link aggregation group
 %% (LAG) by specifying a LAG ID in the request. This ensures that the new
@@ -570,8 +570,9 @@ create_private_virtual_interface(Client, Input, Options)
 %% Amazon Web Services such as Amazon S3.
 %%
 %% When creating an IPv6 public virtual interface (`addressFamily' is
-%% `ipv6'), leave the `customer' and `amazon' address fields blank to use
-%% auto-assigned IPv6 space. Custom IPv6 addresses are not supported.
+%% `ipv6'), leave the `customer' and `amazon' address fields
+%% blank to use auto-assigned IPv6 space. Custom IPv6 addresses are not
+%% supported.
 create_public_virtual_interface(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_public_virtual_interface(Client, Input, []).
@@ -647,8 +648,8 @@ delete_direct_connect_gateway(Client, Input, Options)
 %%
 %% We recommend that you specify the `associationID' to delete the
 %% association. Alternatively, if you own virtual gateway and a Direct
-%% Connect gateway association, you can specify the `virtualGatewayId' and
-%% `directConnectGatewayId' to delete an association.
+%% Connect gateway association, you can specify the `virtualGatewayId'
+%% and `directConnectGatewayId' to delete an association.
 delete_direct_connect_gateway_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_direct_connect_gateway_association(Client, Input, []).

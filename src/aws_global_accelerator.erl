@@ -28,7 +28,8 @@
 %% </li> </ul> Global Accelerator is a global service that supports endpoints
 %% in multiple Amazon Web Services Regions but you must specify the US West
 %% (Oregon) Region to create, update, or otherwise work with accelerators.
-%% That is, for example, specify `--region us-west-2' on AWS CLI commands.
+%% That is, for example, specify `--region us-west-2' on AWS CLI
+%% commands.
 %%
 %% By default, Global Accelerator provides you with static IP addresses that
 %% you associate with your accelerator. The static IP addresses are anycast
@@ -205,12 +206,12 @@ add_custom_routing_endpoints(Client, Input, Options)
 %%
 %% There are two advantages to using `AddEndpoints' to add endpoints:
 %%
-%% <ul> <li> It's faster, because Global Accelerator only has to resolve the
-%% new endpoints that you're adding.
+%% <ul> <li> It's faster, because Global Accelerator only has to resolve
+%% the new endpoints that you're adding.
 %%
-%% </li> <li> It's more convenient, because you don't need to specify all of
-%% the current endpoints that are already in the endpoint group in addition
-%% to the new endpoints that you want to add.
+%% </li> <li> It's more convenient, because you don't need to specify
+%% all of the current endpoints that are already in the endpoint group in
+%% addition to the new endpoints that you want to add.
 %%
 %% </li> </ul>
 add_endpoints(Client, Input)
@@ -578,16 +579,16 @@ list_custom_routing_listeners(Client, Input, Options)
 %% public cloud (VPC) subnet endpoint for a custom routing accelerator.
 %%
 %% For each subnet endpoint that you add, Global Accelerator creates a new
-%% static port mapping for the accelerator. The port mappings don't change
-%% after Global Accelerator generates them, so you can retrieve and cache the
-%% full mapping on your servers.
+%% static port mapping for the accelerator. The port mappings don't
+%% change after Global Accelerator generates them, so you can retrieve and
+%% cache the full mapping on your servers.
 %%
 %% If you remove a subnet from your accelerator, Global Accelerator removes
 %% (reclaims) the port mappings. If you add a subnet to your accelerator,
 %% Global Accelerator creates new port mappings (the existing ones don't
 %% change). If you add or remove EC2 instances in your subnet, the port
-%% mappings don't change, because the mappings are created when you add the
-%% subnet to Global Accelerator.
+%% mappings don't change, because the mappings are created when you add
+%% the subnet to Global Accelerator.
 %%
 %% The mappings also include a flag for each destination denoting which
 %% destination IP addresses and ports are allowed or denied traffic.
@@ -665,19 +666,20 @@ remove_custom_routing_endpoints(Client, Input, Options)
 
 %% @doc Remove endpoints from an endpoint group.
 %%
-%% The `RemoveEndpoints' API operation is the recommended option for removing
-%% endpoints. The alternative is to remove endpoints by updating an endpoint
-%% group by using the UpdateEndpointGroup API operation. There are two
-%% advantages to using `AddEndpoints' to remove endpoints instead:
+%% The `RemoveEndpoints' API operation is the recommended option for
+%% removing endpoints. The alternative is to remove endpoints by updating an
+%% endpoint group by using the UpdateEndpointGroup API operation. There are
+%% two advantages to using `AddEndpoints' to remove endpoints instead:
 %%
 %% <ul> <li> It's more convenient, because you only need to specify the
 %% endpoints that you want to remove. With the `UpdateEndpointGroup' API
 %% operation, you must specify all of the endpoints in the endpoint group
 %% except the ones that you want to remove from the group.
 %%
-%% </li> <li> It's faster, because Global Accelerator doesn't need to resolve
-%% any endpoints. With the `UpdateEndpointGroup' API operation, Global
-%% Accelerator must resolve all of the endpoints that remain in the group.
+%% </li> <li> It's faster, because Global Accelerator doesn't need to
+%% resolve any endpoints. With the `UpdateEndpointGroup' API operation,
+%% Global Accelerator must resolve all of the endpoints that remain in the
+%% group.
 %%
 %% </li> </ul>
 remove_endpoints(Client, Input)

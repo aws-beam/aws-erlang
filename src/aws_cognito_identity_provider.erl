@@ -255,8 +255,8 @@ admin_confirm_sign_up(Client, Input, Options)
 
 %% @doc Creates a new user in the specified user pool.
 %%
-%% If `MessageAction' isn't set, the default is to send a welcome message via
-%% email or phone (SMS).
+%% If `MessageAction' isn't set, the default is to send a welcome
+%% message via email or phone (SMS).
 %%
 %% This action might generate an SMS text message. Starting June 1, 2021, US
 %% telecom carriers require you to register an origination phone number
@@ -278,8 +278,9 @@ admin_confirm_sign_up(Client, Input, Options)
 %% create or update a user pool. This template includes your custom sign-up
 %% instructions and placeholders for user name and temporary password.
 %%
-%% Alternatively, you can call `AdminCreateUser' with `SUPPRESS' for the
-%% `MessageAction' parameter, and Amazon Cognito won't send any email.
+%% Alternatively, you can call `AdminCreateUser' with `SUPPRESS' for
+%% the `MessageAction' parameter, and Amazon Cognito won't send any
+%% email.
 %%
 %% In either case, the user will be in the `FORCE_CHANGE_PASSWORD' state
 %% until they sign in and change their password.
@@ -320,37 +321,38 @@ admin_delete_user_attributes(Client, Input, Options)
 %% or social) identity provider (IdP).
 %%
 %% If the user that you want to deactivate is a Amazon Cognito user pools
-%% native username + password user, they can't use their password to sign in.
-%% If the user to deactivate is a linked external IdP user, any link between
-%% that user and an existing user is removed. When the external user signs in
-%% again, and the user is no longer attached to the previously linked
-%% `DestinationUser', the user must create a new user account. See
+%% native username + password user, they can't use their password to sign
+%% in. If the user to deactivate is a linked external IdP user, any link
+%% between that user and an existing user is removed. When the external user
+%% signs in again, and the user is no longer attached to the previously
+%% linked `DestinationUser', the user must create a new user account. See
 %% AdminLinkProviderForUser.
 %%
 %% This action is enabled only for admin access and requires developer
 %% credentials.
 %%
-%% The `ProviderName' must match the value specified when creating an IdP for
-%% the pool.
+%% The `ProviderName' must match the value specified when creating an IdP
+%% for the pool.
 %%
-%% To deactivate a native username + password user, the `ProviderName' value
-%% must be `Cognito' and the `ProviderAttributeName' must be
-%% `Cognito_Subject'. The `ProviderAttributeValue' must be the name that is
-%% used in the user pool for the user.
+%% To deactivate a native username + password user, the `ProviderName'
+%% value must be `Cognito' and the `ProviderAttributeName' must be
+%% `Cognito_Subject'. The `ProviderAttributeValue' must be the name
+%% that is used in the user pool for the user.
 %%
-%% The `ProviderAttributeName' must always be `Cognito_Subject' for social
-%% IdPs. The `ProviderAttributeValue' must always be the exact subject that
-%% was used when the user was originally linked as a source user.
+%% The `ProviderAttributeName' must always be `Cognito_Subject' for
+%% social IdPs. The `ProviderAttributeValue' must always be the exact
+%% subject that was used when the user was originally linked as a source
+%% user.
 %%
 %% For de-linking a SAML identity, there are two scenarios. If the linked
-%% identity has not yet been used to sign in, the `ProviderAttributeName' and
-%% `ProviderAttributeValue' must be the same values that were used for the
-%% `SourceUser' when the identities were originally linked using `
-%% AdminLinkProviderForUser' call. (If the linking was done with
-%% `ProviderAttributeName' set to `Cognito_Subject', the same applies here).
-%% However, if the user has already signed in, the `ProviderAttributeName'
-%% must be `Cognito_Subject' and `ProviderAttributeValue' must be the subject
-%% of the SAML assertion.
+%% identity has not yet been used to sign in, the `ProviderAttributeName'
+%% and `ProviderAttributeValue' must be the same values that were used
+%% for the `SourceUser' when the identities were originally linked using
+%% ` AdminLinkProviderForUser' call. (If the linking was done with
+%% `ProviderAttributeName' set to `Cognito_Subject', the same applies
+%% here). However, if the user has already signed in, the
+%% `ProviderAttributeName' must be `Cognito_Subject' and
+%% `ProviderAttributeValue' must be the subject of the SAML assertion.
 admin_disable_provider_for_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_disable_provider_for_user(Client, Input, []).
@@ -360,8 +362,8 @@ admin_disable_provider_for_user(Client, Input, Options)
 
 %% @doc Deactivates a user and revokes all access tokens for the user.
 %%
-%% A deactivated user can't sign in, but still appears in the responses to
-%% `GetUser' and `ListUsers' API requests.
+%% A deactivated user can't sign in, but still appears in the responses
+%% to `GetUser' and `ListUsers' API requests.
 %%
 %% You must make this API request with Amazon Web Services credentials that
 %% have `cognito-idp:AdminDisableUser' permissions.
@@ -443,9 +445,9 @@ admin_initiate_auth(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminInitiateAuth">>, Input, Options).
 
-%% @doc Links an existing user account in a user pool (`DestinationUser') to
-%% an identity from an external IdP (`SourceUser') based on a specified
-%% attribute name and value from the external IdP.
+%% @doc Links an existing user account in a user pool (`DestinationUser')
+%% to an identity from an external IdP (`SourceUser') based on a
+%% specified attribute name and value from the external IdP.
 %%
 %% This allows you to create a link from the existing user account to an
 %% external federated user identity that has not yet been used to sign in.
@@ -576,8 +578,8 @@ admin_respond_to_auth_challenge(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminRespondToAuthChallenge">>, Input, Options).
 
-%% @doc The user's multi-factor authentication (MFA) preference, including
-%% which MFA options are activated, and if any are preferred.
+%% @doc The user's multi-factor authentication (MFA) preference,
+%% including which MFA options are activated, and if any are preferred.
 %%
 %% Only one factor can be set as preferred. The preferred MFA factor will be
 %% used to authenticate a user if multiple factors are activated. If multiple
@@ -596,11 +598,11 @@ admin_set_user_mfa_preference(Client, Input, Options)
 %% Works on any user.
 %%
 %% The password can be temporary or permanent. If it is temporary, the user
-%% status enters the `FORCE_CHANGE_PASSWORD' state. When the user next tries
-%% to sign in, the InitiateAuth/AdminInitiateAuth response will contain the
-%% `NEW_PASSWORD_REQUIRED' challenge. If the user doesn't sign in before it
-%% expires, the user won't be able to sign in, and an administrator must
-%% reset their password.
+%% status enters the `FORCE_CHANGE_PASSWORD' state. When the user next
+%% tries to sign in, the InitiateAuth/AdminInitiateAuth response will contain
+%% the `NEW_PASSWORD_REQUIRED' challenge. If the user doesn't sign in
+%% before it expires, the user won't be able to sign in, and an
+%% administrator must reset their password.
 %%
 %% Once the user has set a new password, or the password is permanent, the
 %% user status is set to `Confirmed'.
@@ -613,9 +615,9 @@ admin_set_user_password(Client, Input, Options)
 
 %% @doc This action is no longer supported.
 %%
-%% You can use it to configure only SMS MFA. You can't use it to configure
-%% time-based one-time password (TOTP) software token MFA. To configure
-%% either type of MFA, use AdminSetUserMFAPreference instead.
+%% You can use it to configure only SMS MFA. You can't use it to
+%% configure time-based one-time password (TOTP) software token MFA. To
+%% configure either type of MFA, use AdminSetUserMFAPreference instead.
 admin_set_user_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     admin_set_user_settings(Client, Input, []).
@@ -682,12 +684,13 @@ admin_update_user_attributes(Client, Input, Options)
 
 %% @doc Signs out a user from all devices.
 %%
-%% You must sign `AdminUserGlobalSignOut' requests with Amazon Web Services
-%% credentials. It also invalidates all refresh tokens that Amazon Cognito
-%% has issued to a user. The user's current access and ID tokens remain valid
-%% until they expire. By default, access and ID tokens expire one hour after
-%% they're issued. A user can still use a hosted UI cookie to retrieve new
-%% tokens for the duration of the cookie validity period of 1 hour.
+%% You must sign `AdminUserGlobalSignOut' requests with Amazon Web
+%% Services credentials. It also invalidates all refresh tokens that Amazon
+%% Cognito has issued to a user. The user's current access and ID tokens
+%% remain valid until they expire. By default, access and ID tokens expire
+%% one hour after they're issued. A user can still use a hosted UI cookie
+%% to retrieve new tokens for the duration of the cookie validity period of 1
+%% hour.
 %%
 %% Calling this action requires developer credentials.
 admin_user_global_sign_out(Client, Input)
@@ -702,20 +705,21 @@ admin_user_global_sign_out(Client, Input, Options)
 %% Cognito generates and returns in the API response.
 %%
 %% You can authorize an `AssociateSoftwareToken' request with either the
-%% user's access token, or a session string from a challenge response that
-%% you received from Amazon Cognito.
+%% user's access token, or a session string from a challenge response
+%% that you received from Amazon Cognito.
 %%
 %% Amazon Cognito disassociates an existing software token when you verify
-%% the new token in a VerifySoftwareToken API request. If you don't verify
-%% the software token and your user pool doesn't require MFA, the user can
-%% then authenticate with user name and password credentials alone. If your
-%% user pool requires TOTP MFA, Amazon Cognito generates an `MFA_SETUP' or
-%% `SOFTWARE_TOKEN_SETUP' challenge each time your user signs. Complete setup
-%% with `AssociateSoftwareToken' and `VerifySoftwareToken'.
+%% the new token in a VerifySoftwareToken API request. If you don't
+%% verify the software token and your user pool doesn't require MFA, the
+%% user can then authenticate with user name and password credentials alone.
+%% If your user pool requires TOTP MFA, Amazon Cognito generates an
+%% `MFA_SETUP' or `SOFTWARE_TOKEN_SETUP' challenge each time your
+%% user signs. Complete setup with `AssociateSoftwareToken' and
+%% `VerifySoftwareToken'.
 %%
 %% After you set up software token MFA for your user, Amazon Cognito
-%% generates a `SOFTWARE_TOKEN_MFA' challenge when they authenticate. Respond
-%% to this challenge with your user's TOTP.
+%% generates a `SOFTWARE_TOKEN_MFA' challenge when they authenticate.
+%% Respond to this challenge with your user's TOTP.
 associate_software_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_software_token(Client, Input, []).
@@ -972,13 +976,13 @@ forget_device(Client, Input, Options)
 %% @doc Calling this API causes a message to be sent to the end user with a
 %% confirmation code that is required to change the user's password.
 %%
-%% For the `Username' parameter, you can use the username or user alias. The
-%% method used to send the confirmation code is sent according to the
+%% For the `Username' parameter, you can use the username or user alias.
+%% The method used to send the confirmation code is sent according to the
 %% specified AccountRecoverySetting. For more information, see Recovering
 %% User Accounts in the Amazon Cognito Developer Guide. If neither a verified
-%% phone number nor a verified email exists, an `InvalidParameterException'
-%% is thrown. To use the confirmation code for resetting the password, call
-%% ConfirmForgotPassword.
+%% phone number nor a verified email exists, an
+%% `InvalidParameterException' is thrown. To use the confirmation code
+%% for resetting the password, call ConfirmForgotPassword.
 %%
 %% This action might generate an SMS text message. Starting June 1, 2021, US
 %% telecom carriers require you to register an origination phone number
@@ -1043,8 +1047,9 @@ get_identity_provider_by_identifier(Client, Input, Options)
 %% The issued certificate is valid for 10 years from the date of issue.
 %%
 %% Amazon Cognito issues and assigns a new signing certificate annually. This
-%% process returns a new value in the response to `GetSigningCertificate',
-%% but doesn't invalidate the original certificate.
+%% process returns a new value in the response to
+%% `GetSigningCertificate', but doesn't invalidate the original
+%% certificate.
 get_signing_certificate(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_signing_certificate(Client, Input, []).
@@ -1057,8 +1062,9 @@ get_signing_certificate(Client, Input, Options)
 %% client.
 %%
 %% If nothing is set for the particular client, but there is an existing pool
-%% level customization (the app `clientId' is `ALL'), then that information
-%% is returned. If nothing is present, then an empty shape is returned.
+%% level customization (the app `clientId' is `ALL'), then that
+%% information is returned. If nothing is present, then an empty shape is
+%% returned.
 get_ui_customization(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_ui_customization(Client, Input, []).
@@ -1124,8 +1130,8 @@ global_sign_out(Client, Input, Options)
 
 %% @doc Initiates sign-in for a user in the Amazon Cognito user directory.
 %%
-%% You can't sign in a user with a federated IdP with `InitiateAuth'. For
-%% more information, see Adding user pool sign-in through a third party.
+%% You can't sign in a user with a federated IdP with `InitiateAuth'.
+%% For more information, see Adding user pool sign-in through a third party.
 %%
 %% This action might generate an SMS text message. Starting June 1, 2021, US
 %% telecom carriers require you to register an origination phone number
@@ -1292,8 +1298,8 @@ respond_to_auth_challenge(Client, Input, Options)
 %% @doc Revokes all of the access tokens generated by, and at the same time
 %% as, the specified refresh token.
 %%
-%% After a token is revoked, you can't use the revoked token to access Amazon
-%% Cognito user APIs, or to authorize access to your resource server.
+%% After a token is revoked, you can't use the revoked token to access
+%% Amazon Cognito user APIs, or to authorize access to your resource server.
 revoke_token(Client, Input)
   when is_map(Client), is_map(Input) ->
     revoke_token(Client, Input, []).
@@ -1303,8 +1309,8 @@ revoke_token(Client, Input, Options)
 
 %% @doc Configures actions on detected risks.
 %%
-%% To delete the risk configuration for `UserPoolId' or `ClientId', pass null
-%% values for all four configuration types.
+%% To delete the risk configuration for `UserPoolId' or `ClientId',
+%% pass null values for all four configuration types.
 %%
 %% To activate Amazon Cognito advanced security features, update the user
 %% pool to include the `UserPoolAddOns' key`AdvancedSecurityMode'.
@@ -1319,15 +1325,15 @@ set_risk_configuration(Client, Input, Options)
 %% pool's built-in app UI.
 %%
 %% You can specify app UI customization settings for a single client (with a
-%% specific `clientId') or for all clients (by setting the `clientId' to
-%% `ALL'). If you specify `ALL', the default configuration is used for every
-%% client that has no previously set UI customization. If you specify UI
-%% customization settings for a particular client, it will no longer return
-%% to the `ALL' configuration.
+%% specific `clientId') or for all clients (by setting the `clientId'
+%% to `ALL'). If you specify `ALL', the default configuration is used
+%% for every client that has no previously set UI customization. If you
+%% specify UI customization settings for a particular client, it will no
+%% longer return to the `ALL' configuration.
 %%
 %% To use this API, your user pool must have a domain associated with it.
-%% Otherwise, there is no place to host the app's pages, and the service will
-%% throw an error.
+%% Otherwise, there is no place to host the app's pages, and the service
+%% will throw an error.
 set_ui_customization(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_ui_customization(Client, Input, []).
@@ -1335,8 +1341,9 @@ set_ui_customization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetUICustomization">>, Input, Options).
 
-%% @doc Set the user's multi-factor authentication (MFA) method preference,
-%% including which MFA factors are activated and if any are preferred.
+%% @doc Set the user's multi-factor authentication (MFA) method
+%% preference, including which MFA factors are activated and if any are
+%% preferred.
 %%
 %% Only one factor can be set as preferred. The preferred MFA factor will be
 %% used to authenticate a user if multiple factors are activated. If multiple
@@ -1380,9 +1387,9 @@ set_user_pool_mfa_config(Client, Input, Options)
 
 %% @doc This action is no longer supported.
 %%
-%% You can use it to configure only SMS MFA. You can't use it to configure
-%% time-based one-time password (TOTP) software token MFA. To configure
-%% either type of MFA, use SetUserMFAPreference instead.
+%% You can use it to configure only SMS MFA. You can't use it to
+%% configure time-based one-time password (TOTP) software token MFA. To
+%% configure either type of MFA, use SetUserMFAPreference instead.
 set_user_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_user_settings(Client, Input, []).
@@ -1440,8 +1447,8 @@ stop_user_import_job(Client, Input, Options)
 %% general category for more specific values. For example, if you have two
 %% versions of a user pool, one for testing and another for production, you
 %% might assign an `Environment' tag key to both user pools. The value of
-%% this key might be `Test' for one user pool, and `Production' for the
-%% other.
+%% this key might be `Test' for one user pool, and `Production' for
+%% the other.
 %%
 %% Tags are useful for cost tracking and access control. You can activate
 %% your tags so that they appear on the Billing and Cost Management console,
@@ -1510,8 +1517,8 @@ update_identity_provider(Client, Input, Options)
 %%
 %% All other fields are read-only.
 %%
-%% If you don't provide a value for an attribute, it is set to the default
-%% value.
+%% If you don't provide a value for an attribute, it is set to the
+%% default value.
 update_resource_server(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resource_server(Client, Input, []).
@@ -1546,8 +1553,8 @@ update_user_attributes(Client, Input, Options)
 %% @doc Updates the specified user pool with the specified attributes.
 %%
 %% You can get a list of the current user pool settings using
-%% DescribeUserPool. If you don't provide a value for an attribute, it will
-%% be set to the default value.
+%% DescribeUserPool. If you don't provide a value for an attribute, it
+%% will be set to the default value.
 %%
 %% This action might generate an SMS text message. Starting June 1, 2021, US
 %% telecom carriers require you to register an origination phone number
@@ -1593,8 +1600,8 @@ update_user_pool_client(Client, Input, Options)
 %% domain for your user pool.
 %%
 %% You can use this operation to provide the Amazon Resource Name (ARN) of a
-%% new certificate to Amazon Cognito. You can't use it to change the domain
-%% for a user pool.
+%% new certificate to Amazon Cognito. You can't use it to change the
+%% domain for a user pool.
 %%
 %% A custom domain is used to host the Amazon Cognito hosted UI, which
 %% provides sign-up and sign-in pages for your application. When you set up a
@@ -1628,7 +1635,7 @@ update_user_pool_domain(Client, Input, Options)
 
 %% @doc Use this API to register a user's entered time-based one-time
 %% password (TOTP) code and mark the user's software token MFA status as
-%% "verified" if successful.
+%% &quot;verified&quot; if successful.
 %%
 %% The request takes an access token or a session string, but not both.
 verify_software_token(Client, Input)

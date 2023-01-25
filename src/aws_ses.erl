@@ -435,7 +435,8 @@ delete_template(Client, Input, Options)
 
 %% @doc Deprecated.
 %%
-%% Use the `DeleteIdentity' operation to delete email addresses and domains.
+%% Use the `DeleteIdentity' operation to delete email addresses and
+%% domains.
 delete_verified_email_address(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_verified_email_address(Client, Input, []).
@@ -604,22 +605,23 @@ get_identity_policies(Client, Input, Options)
 %% the verification status and (for domain identities) the verification token
 %% for each identity.
 %%
-%% The verification status of an email address is "Pending" until the email
-%% address owner clicks the link within the verification email that Amazon
-%% SES sent to that address. If the email address owner clicks the link
-%% within 24 hours, the verification status of the email address changes to
-%% "Success". If the link is not clicked within 24 hours, the verification
-%% status changes to "Failed." In that case, if you still want to verify the
-%% email address, you must restart the verification process from the
-%% beginning.
+%% The verification status of an email address is &quot;Pending&quot; until
+%% the email address owner clicks the link within the verification email that
+%% Amazon SES sent to that address. If the email address owner clicks the
+%% link within 24 hours, the verification status of the email address changes
+%% to &quot;Success&quot;. If the link is not clicked within 24 hours, the
+%% verification status changes to &quot;Failed.&quot; In that case, if you
+%% still want to verify the email address, you must restart the verification
+%% process from the beginning.
 %%
-%% For domain identities, the domain's verification status is "Pending" as
-%% Amazon SES searches for the required TXT record in the DNS settings of the
-%% domain. When Amazon SES detects the record, the domain's verification
-%% status changes to "Success". If Amazon SES is unable to detect the record
-%% within 72 hours, the domain's verification status changes to "Failed." In
-%% that case, if you still want to verify the domain, you must restart the
-%% verification process from the beginning.
+%% For domain identities, the domain's verification status is
+%% &quot;Pending&quot; as Amazon SES searches for the required TXT record in
+%% the DNS settings of the domain. When Amazon SES detects the record, the
+%% domain's verification status changes to &quot;Success&quot;. If Amazon
+%% SES is unable to detect the record within 72 hours, the domain's
+%% verification status changes to &quot;Failed.&quot; In that case, if you
+%% still want to verify the domain, you must restart the verification process
+%% from the beginning.
 %%
 %% This operation is throttled at one request per second and can only get
 %% verification attributes for up to 100 identities at a time.
@@ -675,8 +677,9 @@ get_template(Client, Input, Options)
 %% operation will return up to 1,000 configuration sets each time it is run.
 %% If your Amazon SES account has more than 1,000 configuration sets, this
 %% operation will also return a NextToken element. You can then execute the
-%% `ListConfigurationSets' operation again, passing the `NextToken' parameter
-%% and the value of the NextToken element to retrieve additional results.
+%% `ListConfigurationSets' operation again, passing the `NextToken'
+%% parameter and the value of the NextToken element to retrieve additional
+%% results.
 list_configuration_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_configuration_sets(Client, Input, []).
@@ -776,8 +779,8 @@ list_templates(Client, Input, Options)
 
 %% @doc Deprecated.
 %%
-%% Use the `ListIdentities' operation to list the email addresses and domains
-%% associated with your account.
+%% Use the `ListIdentities' operation to list the email addresses and
+%% domains associated with your account.
 list_verified_email_addresses(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_verified_email_addresses(Client, Input, []).
@@ -851,8 +854,8 @@ send_bounce(Client, Input, Options)
 %%
 %% The message body is created using an email template.
 %%
-%% In order to send email using the `SendBulkTemplatedEmail' operation, your
-%% call to the API must meet the following requirements:
+%% In order to send email using the `SendBulkTemplatedEmail' operation,
+%% your call to the API must meet the following requirements:
 %%
 %% <ul> <li> The call must refer to an existing email template. You can
 %% create email templates using the `CreateTemplate' operation.
@@ -878,8 +881,8 @@ send_bounce(Client, Input, Options)
 %% </li> <li> The message may not include more than 50 recipients, across the
 %% To:, CC: and BCC: fields. If you need to send an email message to a larger
 %% audience, you can divide your recipient list into groups of 50 or fewer,
-%% and then call the `SendBulkTemplatedEmail' operation several times to send
-%% the message to each group.
+%% and then call the `SendBulkTemplatedEmail' operation several times to
+%% send the message to each group.
 %%
 %% </li> <li> The number of destinations you can contact in a single call to
 %% the API may be limited by your account's maximum sending rate.
@@ -913,13 +916,13 @@ send_custom_verification_email(Client, Input, Options)
 
 %% @doc Composes an email message and immediately queues it for sending.
 %%
-%% In order to send email using the `SendEmail' operation, your message must
-%% meet the following requirements:
+%% In order to send email using the `SendEmail' operation, your message
+%% must meet the following requirements:
 %%
 %% <ul> <li> The message must be sent from a verified email address or
 %% domain. If you attempt to send email using a non-verified address or
-%% domain, the operation will result in an "Email address not verified"
-%% error.
+%% domain, the operation will result in an &quot;Email address not
+%% verified&quot; error.
 %%
 %% </li> <li> If your account is still in the Amazon SES sandbox, you may
 %% only send to verified addresses or domains, or to email addresses
@@ -939,8 +942,8 @@ send_custom_verification_email(Client, Input, Options)
 %% </li> <li> The message may not include more than 50 recipients, across the
 %% To:, CC: and BCC: fields. If you need to send an email message to a larger
 %% audience, you can divide your recipient list into groups of 50 or fewer,
-%% and then call the `SendEmail' operation several times to send the message
-%% to each group.
+%% and then call the `SendEmail' operation several times to send the
+%% message to each group.
 %%
 %% </li> </ul> For every message that you send, the total number of
 %% recipients (including each recipient in the To:, CC: and BCC: fields) is
@@ -957,18 +960,18 @@ send_email(Client, Input, Options)
 
 %% @doc Composes an email message and immediately queues it for sending.
 %%
-%% This operation is more flexible than the `SendEmail' API operation. When
-%% you use the `SendRawEmail' operation, you can specify the headers of the
-%% message as well as its content. This flexibility is useful, for example,
-%% when you want to send a multipart MIME email (such a message that contains
-%% both a text and an HTML version). You can also use this operation to send
-%% messages that include attachments.
+%% This operation is more flexible than the `SendEmail' API operation.
+%% When you use the `SendRawEmail' operation, you can specify the headers
+%% of the message as well as its content. This flexibility is useful, for
+%% example, when you want to send a multipart MIME email (such a message that
+%% contains both a text and an HTML version). You can also use this operation
+%% to send messages that include attachments.
 %%
 %% The `SendRawEmail' operation has the following requirements:
 %%
 %% <ul> <li> You can only send email from verified email addresses or
-%% domains. If you try to send email from an address that isn't verified, the
-%% operation results in an "Email address not verified" error.
+%% domains. If you try to send email from an address that isn't verified,
+%% the operation results in an &quot;Email address not verified&quot; error.
 %%
 %% </li> <li> If your account is still in the Amazon SES sandbox, you can
 %% only send email to other verified addresses in your account, or to
@@ -980,10 +983,10 @@ send_email(Client, Input, Options)
 %% recipient address includes any address on the To:, CC:, or BCC: lines.
 %%
 %% </li> <li> If you send a single message to more than one recipient
-%% address, and one of the recipient addresses isn't in a valid format (that
-%% is, it's not in the format UserName@[SubDomain.]Domain.TopLevelDomain),
-%% Amazon SES rejects the entire message, even if the other addresses are
-%% valid.
+%% address, and one of the recipient addresses isn't in a valid format
+%% (that is, it's not in the format
+%% UserName@[SubDomain.]Domain.TopLevelDomain), Amazon SES rejects the entire
+%% message, even if the other addresses are valid.
 %%
 %% </li> <li> Each message can include up to 50 recipient addresses across
 %% the To:, CC:, or BCC: lines. If you need to send a single message to more
@@ -994,25 +997,26 @@ send_email(Client, Input, Options)
 %% </li> <li> Amazon SES allows you to specify 8-bit
 %% Content-Transfer-Encoding for MIME message parts. However, if Amazon SES
 %% has to modify the contents of your message (for example, if you use open
-%% and click tracking), 8-bit content isn't preserved. For this reason, we
-%% highly recommend that you encode all content that isn't 7-bit ASCII. For
-%% more information, see MIME Encoding in the Amazon SES Developer Guide.
+%% and click tracking), 8-bit content isn't preserved. For this reason,
+%% we highly recommend that you encode all content that isn't 7-bit
+%% ASCII. For more information, see MIME Encoding in the Amazon SES Developer
+%% Guide.
 %%
 %% </li> </ul> Additionally, keep the following considerations in mind when
 %% using the `SendRawEmail' operation:
 %%
 %% <ul> <li> Although you can customize the message headers when using the
 %% `SendRawEmail' operation, Amazon SES will automatically apply its own
-%% `Message-ID' and `Date' headers; if you passed these headers when creating
-%% the message, they will be overwritten by the values that Amazon SES
-%% provides.
+%% `Message-ID' and `Date' headers; if you passed these headers when
+%% creating the message, they will be overwritten by the values that Amazon
+%% SES provides.
 %%
 %% </li> <li> If you are using sending authorization to send on behalf of
 %% another user, `SendRawEmail' enables you to specify the cross-account
-%% identity for the email's Source, From, and Return-Path parameters in one
-%% of two ways: you can pass optional parameters `SourceArn', `FromArn',
-%% and/or `ReturnPathArn' to the API, or you can include the following
-%% X-headers in the header of your raw email:
+%% identity for the email's Source, From, and Return-Path parameters in
+%% one of two ways: you can pass optional parameters `SourceArn',
+%% `FromArn', and/or `ReturnPathArn' to the API, or you can include
+%% the following X-headers in the header of your raw email:
 %%
 %% <ul> <li> `X-SES-SOURCE-ARN'
 %%
@@ -1020,11 +1024,12 @@ send_email(Client, Input, Options)
 %%
 %% </li> <li> `X-SES-RETURN-PATH-ARN'
 %%
-%% </li> </ul> Don't include these X-headers in the DKIM signature. Amazon
-%% SES removes these before it sends the email.
+%% </li> </ul> Don't include these X-headers in the DKIM signature.
+%% Amazon SES removes these before it sends the email.
 %%
-%% If you only specify the `SourceIdentityArn' parameter, Amazon SES sets the
-%% From and Return-Path addresses to the same identity that you specified.
+%% If you only specify the `SourceIdentityArn' parameter, Amazon SES sets
+%% the From and Return-Path addresses to the same identity that you
+%% specified.
 %%
 %% For more information about sending authorization, see the Using Sending
 %% Authorization with Amazon SES in the Amazon SES Developer Guide.
@@ -1047,8 +1052,8 @@ send_raw_email(Client, Input, Options)
 %% @doc Composes an email message using an email template and immediately
 %% queues it for sending.
 %%
-%% In order to send email using the `SendTemplatedEmail' operation, your call
-%% to the API must meet the following requirements:
+%% In order to send email using the `SendTemplatedEmail' operation, your
+%% call to the API must meet the following requirements:
 %%
 %% <ul> <li> The call must refer to an existing email template. You can
 %% create email templates using the `CreateTemplate' operation.
@@ -1064,24 +1069,25 @@ send_raw_email(Client, Input, Options)
 %%
 %% </li> <li> The maximum message size is 10 MB.
 %%
-%% </li> <li> Calls to the `SendTemplatedEmail' operation may only include
-%% one `Destination' parameter. A destination is a set of recipients who will
-%% receive the same version of the email. The `Destination' parameter can
-%% include up to 50 recipients, across the To:, CC: and BCC: fields.
+%% </li> <li> Calls to the `SendTemplatedEmail' operation may only
+%% include one `Destination' parameter. A destination is a set of
+%% recipients who will receive the same version of the email. The
+%% `Destination' parameter can include up to 50 recipients, across the
+%% To:, CC: and BCC: fields.
 %%
-%% </li> <li> The `Destination' parameter must include at least one recipient
-%% email address. The recipient address can be a To: address, a CC: address,
-%% or a BCC: address. If a recipient email address is invalid (that is, it is
-%% not in the format UserName@[SubDomain.]Domain.TopLevelDomain), the entire
-%% message will be rejected, even if the message contains other recipients
-%% that are valid.
+%% </li> <li> The `Destination' parameter must include at least one
+%% recipient email address. The recipient address can be a To: address, a CC:
+%% address, or a BCC: address. If a recipient email address is invalid (that
+%% is, it is not in the format UserName@[SubDomain.]Domain.TopLevelDomain),
+%% the entire message will be rejected, even if the message contains other
+%% recipients that are valid.
 %%
-%% </li> </ul> If your call to the `SendTemplatedEmail' operation includes
-%% all of the required parameters, Amazon SES accepts it and returns a
-%% Message ID. However, if Amazon SES can't render the email because the
-%% template contains errors, it doesn't send the email. Additionally, because
-%% it already accepted the message, Amazon SES doesn't return a message
-%% stating that it was unable to send the email.
+%% </li> </ul> If your call to the `SendTemplatedEmail' operation
+%% includes all of the required parameters, Amazon SES accepts it and returns
+%% a Message ID. However, if Amazon SES can't render the email because
+%% the template contains errors, it doesn't send the email. Additionally,
+%% because it already accepted the message, Amazon SES doesn't return a
+%% message stating that it was unable to send the email.
 %%
 %% For these reasons, we highly recommend that you set up Amazon SES to send
 %% you notifications when Rendering Failure events occur. For more
@@ -1117,9 +1123,9 @@ set_active_receipt_rule_set(Client, Input, Options)
 %% signing is enabled for an email address, then Amazon SES uses DKIM to sign
 %% all email it sends from that address.
 %%
-%% For email addresses (for example, `user@example.com'), you can only enable
-%% DKIM signing if the corresponding domain (in this case, `example.com') has
-%% been set up to use Easy DKIM.
+%% For email addresses (for example, `user@example.com'), you can only
+%% enable DKIM signing if the corresponding domain (in this case,
+%% `example.com') has been set up to use Easy DKIM.
 %%
 %% You can enable DKIM signing for an identity at any time after you start
 %% the verification process for the identity, even if the verification
@@ -1175,9 +1181,10 @@ set_identity_headers_in_notifications_enabled(Client, Input, Options)
 %% identity (an email address or a domain).
 %%
 %% To send emails using the specified MAIL FROM domain, you must add an MX
-%% record to your MAIL FROM domain's DNS settings. If you want your emails to
-%% pass Sender Policy Framework (SPF) checks, you must also add or update an
-%% SPF record. For more information, see the Amazon SES Developer Guide.
+%% record to your MAIL FROM domain's DNS settings. If you want your
+%% emails to pass Sender Policy Framework (SPF) checks, you must also add or
+%% update an SPF record. For more information, see the Amazon SES Developer
+%% Guide.
 %%
 %% You can execute this operation no more than once per second.
 set_identity_mail_from_domain(Client, Input)
@@ -1358,14 +1365,14 @@ update_template(Client, Input, Options)
 %%
 %% When you execute the `VerifyDomainDkim' operation, the domain that you
 %% specify is added to the list of identities that are associated with your
-%% account. This is true even if you haven't already associated the domain
-%% with your account by using the `VerifyDomainIdentity' operation. However,
-%% you can't send email from the domain until you either successfully verify
-%% it or you successfully set up DKIM for it.
+%% account. This is true even if you haven't already associated the
+%% domain with your account by using the `VerifyDomainIdentity'
+%% operation. However, you can't send email from the domain until you
+%% either successfully verify it or you successfully set up DKIM for it.
 %%
 %% You use the tokens that are generated by this operation to create CNAME
-%% records. When Amazon SES detects that you've added these records to the
-%% DNS configuration for a domain, you can start sending email from that
+%% records. When Amazon SES detects that you've added these records to
+%% the DNS configuration for a domain, you can start sending email from that
 %% domain. You can start sending email even if you haven't added the TXT
 %% record provided by the VerifyDomainIdentity operation to the DNS
 %% configuration for your domain. All email that you send from the domain is
@@ -1382,8 +1389,8 @@ update_template(Client, Input, Options)
 %%
 %% </li> </ul> In the preceding example, replace token with one of the tokens
 %% that are generated when you execute this operation. Replace example.com
-%% with your domain. Repeat this process for each token that's generated by
-%% this operation.
+%% with your domain. Repeat this process for each token that's generated
+%% by this operation.
 %%
 %% You can execute this operation no more than once per second.
 verify_domain_dkim(Client, Input)

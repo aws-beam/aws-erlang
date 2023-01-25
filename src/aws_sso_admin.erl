@@ -9,10 +9,10 @@
 %% authentication and authorization in AWS, for organizations of any size and
 %% type.
 %%
-%% Although AWS Single Sign-On was renamed, the `sso' and `identitystore' API
-%% namespaces will continue to retain their original name for backward
-%% compatibility purposes. For more information, see IAM Identity Center
-%% rename.
+%% Although AWS Single Sign-On was renamed, the `sso' and
+%% `identitystore' API namespaces will continue to retain their original
+%% name for backward compatibility purposes. For more information, see IAM
+%% Identity Center rename.
 %%
 %% This reference guide provides information on single sign-on operations
 %% which could be used for access management of AWS accounts. For information
@@ -125,9 +125,9 @@ attach_customer_managed_policy_reference_to_permission_set(Client, Input, Option
 %% @doc Attaches an AWS managed policy ARN to a permission set.
 %%
 %% If the permission set is already referenced by one or more account
-%% assignments, you will need to call ` `ProvisionPermissionSet' ' after this
-%% operation. Calling `ProvisionPermissionSet' applies the corresponding IAM
-%% policy updates to all assigned accounts.
+%% assignments, you will need to call ` `ProvisionPermissionSet' '
+%% after this operation. Calling `ProvisionPermissionSet' applies the
+%% corresponding IAM policy updates to all assigned accounts.
 attach_managed_policy_to_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_managed_policy_to_permission_set(Client, Input, []).
@@ -232,7 +232,8 @@ delete_permission_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePermissionSet">>, Input, Options).
 
-%% @doc Deletes the permissions boundary from a specified `PermissionSet'.
+%% @doc Deletes the permissions boundary from a specified
+%% `PermissionSet'.
 delete_permissions_boundary_from_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_permissions_boundary_from_permission_set(Client, Input, []).
@@ -430,9 +431,9 @@ provision_permission_set(Client, Input, Options)
 %% @doc Attaches an inline policy to a permission set.
 %%
 %% If the permission set is already referenced by one or more account
-%% assignments, you will need to call ` `ProvisionPermissionSet' ' after this
-%% action to apply the corresponding IAM policy updates to all assigned
-%% accounts.
+%% assignments, you will need to call ` `ProvisionPermissionSet' '
+%% after this action to apply the corresponding IAM policy updates to all
+%% assigned accounts.
 put_inline_policy_to_permission_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_inline_policy_to_permission_set(Client, Input, []).

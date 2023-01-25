@@ -30,15 +30,16 @@
 %% remove a session, the entire history of the session is removed so that you
 %% can start again.
 %%
-%% You don't need to delete a session. Sessions have a time limit and will
-%% expire. Set the session time limit when you create the bot. The default is
-%% 5 minutes, but you can specify anything between 1 minute and 24 hours.
+%% You don't need to delete a session. Sessions have a time limit and
+%% will expire. Set the session time limit when you create the bot. The
+%% default is 5 minutes, but you can specify anything between 1 minute and 24
+%% hours.
 %%
 %% If you specify a bot or alias ID that doesn't exist, you receive a
 %% `BadRequestException.'
 %%
-%% If the locale doesn't exist in the bot, or if the locale hasn't been
-%% enables for the alias, you receive a `BadRequestException'.
+%% If the locale doesn't exist in the bot, or if the locale hasn't
+%% been enables for the alias, you receive a `BadRequestException'.
 delete_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
     delete_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input, []).
 delete_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
@@ -67,8 +68,8 @@ delete_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0)
 %% for a user that has left a long-running session in use.
 %%
 %% If the bot, alias, or session identifier doesn't exist, Amazon Lex V2
-%% returns a `BadRequestException'. If the locale doesn't exist or is not
-%% enabled for the alias, you receive a `BadRequestException'.
+%% returns a `BadRequestException'. If the locale doesn't exist or is
+%% not enabled for the alias, you receive a `BadRequestException'.
 get_session(Client, BotAliasId, BotId, LocaleId, SessionId)
   when is_map(Client) ->
     get_session(Client, BotAliasId, BotId, LocaleId, SessionId, #{}, #{}).
@@ -160,10 +161,10 @@ put_session(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0) ->
 %% function throws an exception or if the Lambda function returns a failed
 %% intent state without a message.
 %%
-%% </li> <li> Timeout message - If you don't configure a timeout message and
-%% a timeout, and the Lambda function doesn't return within 30 seconds, the
-%% timeout message is returned. If you configure a timeout, the timeout
-%% message is returned when the period times out.
+%% </li> <li> Timeout message - If you don't configure a timeout message
+%% and a timeout, and the Lambda function doesn't return within 30
+%% seconds, the timeout message is returned. If you configure a timeout, the
+%% timeout message is returned when the period times out.
 %%
 %% </li> </ul> For more information, see Completion message.
 recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
@@ -231,10 +232,10 @@ recognize_text(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Options0)
 %% function throws an exception or if the Lambda function returns a failed
 %% intent state without a message.
 %%
-%% </li> <li> Timeout message - If you don't configure a timeout message and
-%% a timeout, and the Lambda function doesn't return within 30 seconds, the
-%% timeout message is returned. If you configure a timeout, the timeout
-%% message is returned when the period times out.
+%% </li> <li> Timeout message - If you don't configure a timeout message
+%% and a timeout, and the Lambda function doesn't return within 30
+%% seconds, the timeout message is returned. If you configure a timeout, the
+%% timeout message is returned when the period times out.
 %%
 %% </li> </ul> For more information, see Completion message.
 recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input) ->
@@ -309,10 +310,10 @@ recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Opti
 %% function throws an exception or if the Lambda function returns a failed
 %% intent state without a message.
 %%
-%% </li> <li> Timeout message - If you don't configure a timeout message and
-%% a timeout, and the Lambda function doesn't return within 30 seconds, the
-%% timeout message is returned. If you configure a timeout, the timeout
-%% message is returned when the period times out.
+%% </li> <li> Timeout message - If you don't configure a timeout message
+%% and a timeout, and the Lambda function doesn't return within 30
+%% seconds, the timeout message is returned. If you configure a timeout, the
+%% timeout message is returned when the period times out.
 %%
 %% </li> </ul> For more information, see Completion message.
 %%
@@ -323,7 +324,8 @@ recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Opti
 %%
 %% For more information, see Update message
 %%
-%% The `StartConversation' operation is supported only in the following SDKs:
+%% The `StartConversation' operation is supported only in the following
+%% SDKs:
 %%
 %% <ul> <li> AWS SDK for C++
 %%

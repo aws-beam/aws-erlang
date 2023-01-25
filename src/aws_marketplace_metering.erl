@@ -20,8 +20,8 @@
 %% running on EKS or ECS.
 %%
 %% </li> <li> BatchMeterUsage - Submits the metering record for a set of
-%% customers. `BatchMeterUsage' is called from a software-as-a-service (SaaS)
-%% application.
+%% customers. `BatchMeterUsage' is called from a software-as-a-service
+%% (SaaS) application.
 %%
 %% </li> </ul> Accepting New Customers
 %%
@@ -36,17 +36,18 @@
 %%
 %% <ul> <li> Paid container software products sold through AWS Marketplace
 %% must integrate with the AWS Marketplace Metering Service and call the
-%% `RegisterUsage' operation for software entitlement and metering. Free and
-%% BYOL products for Amazon ECS or Amazon EKS aren't required to call
-%% `RegisterUsage', but you can do so if you want to receive usage data in
-%% your seller reports. For more information on using the `RegisterUsage'
-%% operation, see Container-Based Products.
+%% `RegisterUsage' operation for software entitlement and metering. Free
+%% and BYOL products for Amazon ECS or Amazon EKS aren't required to call
+%% `RegisterUsage', but you can do so if you want to receive usage data
+%% in your seller reports. For more information on using the
+%% `RegisterUsage' operation, see Container-Based Products.
 %%
-%% </li> </ul> `BatchMeterUsage' API calls are captured by AWS CloudTrail.
-%% You can use Cloudtrail to verify that the SaaS metering records that you
-%% sent are accurate by searching for records with the `eventName' of
-%% `BatchMeterUsage'. You can also use CloudTrail to audit records over time.
-%% For more information, see the AWS CloudTrail User Guide.
+%% </li> </ul> `BatchMeterUsage' API calls are captured by AWS
+%% CloudTrail. You can use Cloudtrail to verify that the SaaS metering
+%% records that you sent are accurate by searching for records with the
+%% `eventName' of `BatchMeterUsage'. You can also use CloudTrail to
+%% audit records over time. For more information, see the AWS CloudTrail User
+%% Guide.
 -module(aws_marketplace_metering).
 
 -export([batch_meter_usage/2,
@@ -84,8 +85,8 @@
 %% provide customers with usage data split into buckets by tags that you
 %% define (or allow the customer to define).
 %%
-%% `BatchMeterUsage' returns a list of `UsageRecordResult' objects, showing
-%% the result for each `UsageRecord', as well as a list of
+%% `BatchMeterUsage' returns a list of `UsageRecordResult' objects,
+%% showing the result for each `UsageRecord', as well as a list of
 %% `UnprocessedRecords', indicating errors in the service side that you
 %% should retry.
 %%
@@ -105,12 +106,12 @@ batch_meter_usage(Client, Input, Options)
 %% For identical requests, the API is idempotent. It simply returns the
 %% metering record ID.
 %%
-%% `MeterUsage' is authenticated on the buyer's AWS account using credentials
-%% from the EC2 instance, ECS task, or EKS pod.
+%% `MeterUsage' is authenticated on the buyer's AWS account using
+%% credentials from the EC2 instance, ECS task, or EKS pod.
 %%
-%% `MeterUsage' can optionally include multiple usage allocations, to provide
-%% customers with usage data split into buckets by tags that you define (or
-%% allow the customer to define).
+%% `MeterUsage' can optionally include multiple usage allocations, to
+%% provide customers with usage data split into buckets by tags that you
+%% define (or allow the customer to define).
 %%
 %% Usage records are expected to be submitted as quickly as possible after
 %% the event that is being recorded, and are not accepted more than 6 hours
@@ -135,16 +136,17 @@ meter_usage(Client, Input, Options)
 %% <ul> <li> Entitlement: `RegisterUsage' allows you to verify that the
 %% customer running your paid software is subscribed to your product on AWS
 %% Marketplace, enabling you to guard against unauthorized use. Your
-%% container image that integrates with `RegisterUsage' is only required to
-%% guard against unauthorized use at container startup, as such a
-%% `CustomerNotSubscribedException' or `PlatformNotSupportedException' will
-%% only be thrown on the initial call to `RegisterUsage'. Subsequent calls
-%% from the same Amazon ECS task instance (e.g. task-id) or Amazon EKS pod
-%% will not throw a `CustomerNotSubscribedException', even if the customer
-%% unsubscribes while the Amazon ECS task or Amazon EKS pod is still running.
+%% container image that integrates with `RegisterUsage' is only required
+%% to guard against unauthorized use at container startup, as such a
+%% `CustomerNotSubscribedException' or
+%% `PlatformNotSupportedException' will only be thrown on the initial
+%% call to `RegisterUsage'. Subsequent calls from the same Amazon ECS
+%% task instance (e.g. task-id) or Amazon EKS pod will not throw a
+%% `CustomerNotSubscribedException', even if the customer unsubscribes
+%% while the Amazon ECS task or Amazon EKS pod is still running.
 %%
-%% </li> <li> Metering: `RegisterUsage' meters software use per ECS task, per
-%% hour, or per pod for Amazon EKS with usage prorated to the second. A
+%% </li> <li> Metering: `RegisterUsage' meters software use per ECS task,
+%% per hour, or per pod for Amazon EKS with usage prorated to the second. A
 %% minimum of 1 minute of usage applies to tasks that are short lived. For
 %% example, if a customer has a 10 node Amazon ECS or Amazon EKS cluster and
 %% a service configured as a Daemon Set, then Amazon ECS or Amazon EKS will
@@ -171,8 +173,8 @@ register_usage(Client, Input, Options)
 %%
 %% When a buyer visits your website during the registration process, the
 %% buyer submits a registration token through their browser. The registration
-%% token is resolved through this API to obtain a `CustomerIdentifier' along
-%% with the `CustomerAWSAccountId' and `ProductCode'.
+%% token is resolved through this API to obtain a `CustomerIdentifier'
+%% along with the `CustomerAWSAccountId' and `ProductCode'.
 %%
 %% The API needs to called from the seller account id used to publish the
 %% SaaS application to successfully resolve the token.

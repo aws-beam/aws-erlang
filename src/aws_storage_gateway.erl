@@ -5,8 +5,8 @@
 %%
 %% Storage Gateway is the service that connects an on-premises software
 %% appliance with cloud-based storage to provide seamless and secure
-%% integration between an organization's on-premises IT environment and the
-%% Amazon Web Services storage infrastructure.
+%% integration between an organization's on-premises IT environment and
+%% the Amazon Web Services storage infrastructure.
 %%
 %% The service enables you to securely upload data to the Amazon Web Services
 %% Cloud for cost effective backup and rapid disaster recovery.
@@ -36,9 +36,9 @@
 %% these resource IDs with the Amazon EC2 API, EC2 expects resource IDs in
 %% lowercase. You must change your resource ID to lowercase to use it with
 %% the EC2 API. For example, in Storage Gateway the ID for a volume might be
-%% `vol-AA22BB012345DAF670'. When you use this ID with the EC2 API, you must
-%% change it to `vol-aa22bb012345daf670'. Otherwise, the EC2 API might not
-%% behave as expected.
+%% `vol-AA22BB012345DAF670'. When you use this ID with the EC2 API, you
+%% must change it to `vol-aa22bb012345daf670'. Otherwise, the EC2 API
+%% might not behave as expected.
 %%
 %% IDs for Storage Gateway volumes and Amazon EBS snapshots created from
 %% gateway volumes are changing to a longer format. Starting in December
@@ -420,9 +420,10 @@ cancel_retrieval(Client, Input, Options)
 %% can use to connect to the volume target.
 %%
 %% Optionally, you can provide the ARN for an existing volume as the
-%% `SourceVolumeARN' for this cached volume, which creates an exact copy of
-%% the existing volume’s latest recovery point. The `VolumeSizeInBytes' value
-%% must be equal to or larger than the size of the copied volume, in bytes.
+%% `SourceVolumeARN' for this cached volume, which creates an exact copy
+%% of the existing volume’s latest recovery point. The
+%% `VolumeSizeInBytes' value must be equal to or larger than the size of
+%% the copied volume, in bytes.
 create_cached_iscsi_volume(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_cached_iscsi_volume(Client, Input, []).
@@ -490,8 +491,8 @@ create_smb_file_share(Client, Input, Options)
 %% to take an ad hoc snapshot. For more information, see Editing a snapshot
 %% schedule.
 %%
-%% In the `CreateSnapshot' request, you identify the volume by providing its
-%% Amazon Resource Name (ARN). You must also provide description for the
+%% In the `CreateSnapshot' request, you identify the volume by providing
+%% its Amazon Resource Name (ARN). You must also provide description for the
 %% snapshot. When Storage Gateway takes the snapshot of specified volume, the
 %% snapshot and description appears in the Storage Gateway console. In
 %% response, Storage Gateway returns you a snapshot ID. You can use this
@@ -521,13 +522,13 @@ create_snapshot(Client, Input, Options)
 %% volume recovery point for cached volume gateway, use
 %% `ListVolumeRecoveryPoints'.
 %%
-%% In the `CreateSnapshotFromVolumeRecoveryPoint' request, you identify the
-%% volume by providing its Amazon Resource Name (ARN). You must also provide
-%% a description for the snapshot. When the gateway takes a snapshot of the
-%% specified volume, the snapshot and its description appear in the Storage
-%% Gateway console. In response, the gateway returns you a snapshot ID. You
-%% can use this snapshot ID to check the snapshot progress or later use it
-%% when you want to create a volume from a snapshot.
+%% In the `CreateSnapshotFromVolumeRecoveryPoint' request, you identify
+%% the volume by providing its Amazon Resource Name (ARN). You must also
+%% provide a description for the snapshot. When the gateway takes a snapshot
+%% of the specified volume, the snapshot and its description appear in the
+%% Storage Gateway console. In response, the gateway returns you a snapshot
+%% ID. You can use this snapshot ID to check the snapshot progress or later
+%% use it when you want to create a volume from a snapshot.
 %%
 %% To list or delete a snapshot, you must use the Amazon EC2 API. For more
 %% information, see DescribeSnapshots or DeleteSnapshot in the Amazon Elastic
@@ -682,9 +683,9 @@ delete_gateway(Client, Input, Options)
 %% You can take snapshots of your gateway volumes on a scheduled or ad hoc
 %% basis. This API action enables you to delete a snapshot schedule for a
 %% volume. For more information, see Backing up your volumes. In the
-%% `DeleteSnapshotSchedule' request, you identify the volume by providing its
-%% Amazon Resource Name (ARN). This operation is only supported for cached
-%% volume gateway types.
+%% `DeleteSnapshotSchedule' request, you identify the volume by providing
+%% its Amazon Resource Name (ARN). This operation is only supported for
+%% cached volume gateway types.
 %%
 %% To list or delete a snapshot, you must use the Amazon EC2 API. For more
 %% information, go to DescribeSnapshots in the Amazon Elastic Compute Cloud
@@ -729,7 +730,8 @@ delete_tape_pool(Client, Input, Options)
     request(Client, <<"DeleteTapePool">>, Input, Options).
 
 %% @doc Deletes the specified storage volume that you previously created
-%% using the `CreateCachediSCSIVolume' or `CreateStorediSCSIVolume' API.
+%% using the `CreateCachediSCSIVolume' or `CreateStorediSCSIVolume'
+%% API.
 %%
 %% This operation is only supported in the cached volume and stored volume
 %% types. For stored volume gateways, the local disk that was configured as
@@ -755,8 +757,8 @@ delete_volume(Client, Input, Options)
 %% @doc Returns information about the most recent high availability
 %% monitoring test that was performed on the host in a cluster.
 %%
-%% If a test isn't performed, the status and start time in the response would
-%% be null.
+%% If a test isn't performed, the status and start time in the response
+%% would be null.
 describe_availability_monitor_test(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_availability_monitor_test(Client, Input, []).
@@ -791,8 +793,8 @@ describe_bandwidth_rate_limit(Client, Input, Options)
 %% only for volume, tape and S3 file gateways. FSx file gateways do not
 %% support bandwidth rate limits.
 %%
-%% This operation returns information about a gateway's bandwidth rate limit
-%% schedule. A bandwidth rate limit schedule consists of one or more
+%% This operation returns information about a gateway's bandwidth rate
+%% limit schedule. A bandwidth rate limit schedule consists of one or more
 %% bandwidth rate limit intervals. A bandwidth rate limit interval defines a
 %% period of time on one or more days of the week, during which bandwidth
 %% rate limits are specified for uploading, downloading, or both.
@@ -876,8 +878,8 @@ describe_gateway_information(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGatewayInformation">>, Input, Options).
 
-%% @doc Returns your gateway's weekly maintenance start time including the
-%% day and time of the week.
+%% @doc Returns your gateway's weekly maintenance start time including
+%% the day and time of the week.
 %%
 %% Note that values are in terms of the gateway's time zone.
 describe_maintenance_start_time(Client, Input)
@@ -1173,14 +1175,14 @@ list_tags_for_resource(Client, Input, Options)
 %% @doc Lists custom tape pools.
 %%
 %% You specify custom tape pools to list by specifying one or more custom
-%% tape pool Amazon Resource Names (ARNs). If you don't specify a custom tape
-%% pool ARN, the operation lists all custom tape pools.
+%% tape pool Amazon Resource Names (ARNs). If you don't specify a custom
+%% tape pool ARN, the operation lists all custom tape pools.
 %%
-%% This operation supports pagination. You can optionally specify the `Limit'
-%% parameter in the body to limit the number of tape pools in the response.
-%% If the number of tape pools returned in the response is truncated, the
-%% response includes a `Marker' element that you can use in your subsequent
-%% request to retrieve the next set of tape pools.
+%% This operation supports pagination. You can optionally specify the
+%% `Limit' parameter in the body to limit the number of tape pools in the
+%% response. If the number of tape pools returned in the response is
+%% truncated, the response includes a `Marker' element that you can use
+%% in your subsequent request to retrieve the next set of tape pools.
 list_tape_pools(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tape_pools(Client, Input, []).
@@ -1199,9 +1201,9 @@ list_tape_pools(Client, Input, Options)
 %% maximum of up to 100 tapes. You can optionally specify the `Limit'
 %% parameter in the body to limit the number of tapes in the response. If the
 %% number of tapes returned in the response is truncated, the response
-%% includes a `Marker' element that you can use in your subsequent request to
-%% retrieve the next set of tapes. This operation is only supported in the
-%% tape gateway type.
+%% includes a `Marker' element that you can use in your subsequent
+%% request to retrieve the next set of tapes. This operation is only
+%% supported in the tape gateway type.
 list_tapes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tapes(Client, Input, []).
@@ -1241,15 +1243,16 @@ list_volume_recovery_points(Client, Input, Options)
 %%
 %% Results are sorted by volume ARN. The response includes only the volume
 %% ARNs. If you want additional volume information, use the
-%% `DescribeStorediSCSIVolumes' or the `DescribeCachediSCSIVolumes' API.
+%% `DescribeStorediSCSIVolumes' or the `DescribeCachediSCSIVolumes'
+%% API.
 %%
 %% The operation supports pagination. By default, the operation returns a
-%% maximum of up to 100 volumes. You can optionally specify the `Limit' field
-%% in the body to limit the number of volumes in the response. If the number
-%% of volumes returned in the response is truncated, the response includes a
-%% Marker field. You can use this Marker value in your subsequent request to
-%% retrieve the next set of volumes. This operation is only supported in the
-%% cached volume and stored volume gateway types.
+%% maximum of up to 100 volumes. You can optionally specify the `Limit'
+%% field in the body to limit the number of volumes in the response. If the
+%% number of volumes returned in the response is truncated, the response
+%% includes a Marker field. You can use this Marker value in your subsequent
+%% request to retrieve the next set of volumes. This operation is only
+%% supported in the cached volume and stored volume gateway types.
 list_volumes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_volumes(Client, Input, []).
@@ -1284,24 +1287,24 @@ notify_when_uploaded(Client, Input, Options)
 %% share.
 %%
 %% This operation finds objects in the Amazon S3 bucket that were added,
-%% removed, or replaced since the gateway last listed the bucket's contents
-%% and cached the results. This operation does not import files into the S3
-%% File Gateway cache storage. It only updates the cached inventory to
+%% removed, or replaced since the gateway last listed the bucket's
+%% contents and cached the results. This operation does not import files into
+%% the S3 File Gateway cache storage. It only updates the cached inventory to
 %% reflect changes in the inventory of the objects in the S3 bucket. This
 %% operation is only supported in the S3 File Gateway types.
 %%
 %% You can subscribe to be notified through an Amazon CloudWatch event when
-%% your `RefreshCache' operation completes. For more information, see Getting
-%% notified about file operations in the Storage Gateway User Guide. This
-%% operation is Only supported for S3 File Gateways.
+%% your `RefreshCache' operation completes. For more information, see
+%% Getting notified about file operations in the Storage Gateway User Guide.
+%% This operation is Only supported for S3 File Gateways.
 %%
 %% When this API is called, it only initiates the refresh operation. When the
-%% API call completes and returns a success code, it doesn't necessarily mean
-%% that the file refresh has completed. You should use the refresh-complete
-%% notification to determine that the operation has completed before you
-%% check for new files on the gateway file share. You can subscribe to be
-%% notified through a CloudWatch event when your `RefreshCache' operation
-%% completes.
+%% API call completes and returns a success code, it doesn't necessarily
+%% mean that the file refresh has completed. You should use the
+%% refresh-complete notification to determine that the operation has
+%% completed before you check for new files on the gateway file share. You
+%% can subscribe to be notified through a CloudWatch event when your
+%% `RefreshCache' operation completes.
 %%
 %% Throttle limit: This API is asynchronous, so the gateway will accept no
 %% more than two refreshes at any time. We recommend using the
@@ -1315,8 +1318,9 @@ notify_when_uploaded(Client, Input, Options)
 %% 60 seconds of a previous RefreshCache request.
 %%
 %% If you invoke the RefreshCache API when two requests are already being
-%% processed, any new request will cause an `InvalidGatewayRequestException'
-%% error because too many requests were sent to the server.
+%% processed, any new request will cause an
+%% `InvalidGatewayRequestException' error because too many requests were
+%% sent to the server.
 %%
 %% The S3 bucket name does not need to be included when entering the list of
 %% folders in the FolderList parameter.
@@ -1414,8 +1418,8 @@ set_local_console_password(Client, Input, Options)
 %% @doc Sets the password for the guest user `smbguest'.
 %%
 %% The `smbguest' user is the user when the authentication method for the
-%% file share is set to `GuestAccess'. This operation only supported for S3
-%% File Gateways
+%% file share is set to `GuestAccess'. This operation only supported for
+%% S3 File Gateways
 set_smb_guest_password(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_smb_guest_password(Client, Input, []).
@@ -1435,18 +1439,19 @@ set_smb_guest_password(Client, Input, Options)
 %% down the gateway component in the VM to avoid unpredictable conditions.
 %%
 %% After the gateway is shutdown, you cannot call any other API except
-%% `StartGateway', `DescribeGatewayInformation', and `ListGateways'. For more
-%% information, see `ActivateGateway'. Your applications cannot read from or
-%% write to the gateway's storage volumes, and there are no snapshots taken.
+%% `StartGateway', `DescribeGatewayInformation', and
+%% `ListGateways'. For more information, see `ActivateGateway'. Your
+%% applications cannot read from or write to the gateway's storage
+%% volumes, and there are no snapshots taken.
 %%
-%% When you make a shutdown request, you will get a `200 OK' success response
-%% immediately. However, it might take some time for the gateway to shut
-%% down. You can call the `DescribeGatewayInformation' API to check the
-%% status. For more information, see `ActivateGateway'.
+%% When you make a shutdown request, you will get a `200 OK' success
+%% response immediately. However, it might take some time for the gateway to
+%% shut down. You can call the `DescribeGatewayInformation' API to check
+%% the status. For more information, see `ActivateGateway'.
 %%
 %% If do not intend to use the gateway again, you must delete the gateway
-%% (using `DeleteGateway') to no longer pay software charges associated with
-%% the gateway.
+%% (using `DeleteGateway') to no longer pay software charges associated
+%% with the gateway.
 shutdown_gateway(Client, Input)
   when is_map(Client), is_map(Input) ->
     shutdown_gateway(Client, Input, []).
@@ -1475,13 +1480,13 @@ start_availability_monitor_test(Client, Input, Options)
 %% `ShutdownGateway').
 %%
 %% After the gateway starts, you can then make other API calls, your
-%% applications can read from or write to the gateway's storage volumes and
-%% you will be able to take snapshot backups.
+%% applications can read from or write to the gateway's storage volumes
+%% and you will be able to take snapshot backups.
 %%
 %% When you make a request, you will get a 200 OK success response
 %% immediately. However, it might take some time for the gateway to be ready.
-%% You should call `DescribeGatewayInformation' and check the status before
-%% making any additional API calls. For more information, see
+%% You should call `DescribeGatewayInformation' and check the status
+%% before making any additional API calls. For more information, see
 %% `ActivateGateway'.
 %%
 %% To specify which gateway to start, use the Amazon Resource Name (ARN) of
@@ -1511,14 +1516,15 @@ update_automatic_tape_creation_policy(Client, Input, Options)
 %% @doc Updates the bandwidth rate limits of a gateway.
 %%
 %% You can update both the upload and download bandwidth rate limit or
-%% specify only one of the two. If you don't set a bandwidth rate limit, the
-%% existing rate limit remains. This operation is supported only for the
+%% specify only one of the two. If you don't set a bandwidth rate limit,
+%% the existing rate limit remains. This operation is supported only for the
 %% stored volume, cached volume, and tape gateway types. To update bandwidth
-%% rate limits for S3 file gateways, use `UpdateBandwidthRateLimitSchedule'.
+%% rate limits for S3 file gateways, use
+%% `UpdateBandwidthRateLimitSchedule'.
 %%
-%% By default, a gateway's bandwidth rate limits are not set. If you don't
-%% set any limit, the gateway does not have any limitations on its bandwidth
-%% usage and could potentially use the maximum available bandwidth.
+%% By default, a gateway's bandwidth rate limits are not set. If you
+%% don't set any limit, the gateway does not have any limitations on its
+%% bandwidth usage and could potentially use the maximum available bandwidth.
 %%
 %% To specify which gateway to update, use the Amazon Resource Name (ARN) of
 %% the gateway in your request.
@@ -1569,15 +1575,15 @@ update_file_system_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFileSystemAssociation">>, Input, Options).
 
-%% @doc Updates a gateway's metadata, which includes the gateway's name and
-%% time zone.
+%% @doc Updates a gateway's metadata, which includes the gateway's
+%% name and time zone.
 %%
 %% To specify which gateway to update, use the Amazon Resource Name (ARN) of
 %% the gateway in your request.
 %%
-%% For gateways activated after September 2, 2015, the gateway's ARN contains
-%% the gateway ID rather than the gateway name. However, changing the name of
-%% the gateway has no effect on the gateway's ARN.
+%% For gateways activated after September 2, 2015, the gateway's ARN
+%% contains the gateway ID rather than the gateway name. However, changing
+%% the name of the gateway has no effect on the gateway's ARN.
 update_gateway_information(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_gateway_information(Client, Input, []).
@@ -1591,8 +1597,8 @@ update_gateway_information(Client, Input, Options)
 %%
 %% When you make this request, you get a `200 OK' success response
 %% immediately. However, it might take some time for the update to complete.
-%% You can call `DescribeGatewayInformation' to verify the gateway is in the
-%% `STATE_RUNNING' state.
+%% You can call `DescribeGatewayInformation' to verify the gateway is in
+%% the `STATE_RUNNING' state.
 %%
 %% A software update forces a system restart of your gateway. You can
 %% minimize the chance of any disruption to your applications by increasing

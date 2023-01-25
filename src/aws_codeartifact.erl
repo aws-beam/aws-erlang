@@ -20,15 +20,16 @@
 %% versions, each of which maps to a set of assets, or files. Repositories
 %% are polyglot, so a single repository can contain packages of any supported
 %% type. Each repository exposes endpoints for fetching and publishing
-%% packages using tools like the `npm' CLI, the Maven CLI ( `mvn' ), Python
-%% CLIs ( `pip' and `twine'), and NuGet CLIs (`nuget' and `dotnet').
+%% packages using tools like the `npm' CLI, the Maven CLI ( `mvn' ),
+%% Python CLIs ( `pip' and `twine'), and NuGet CLIs (`nuget' and
+%% `dotnet').
 %%
 %% </li> <li> Domain: Repositories are aggregated into a higher-level entity
 %% known as a domain. All package assets and metadata are stored in the
 %% domain, but are consumed through repositories. A given package asset, such
 %% as a Maven JAR file, is stored once per domain, no matter how many
-%% repositories it's present in. All of the assets and metadata in a domain
-%% are encrypted with the same customer master key (CMK) stored in Key
+%% repositories it's present in. All of the assets and metadata in a
+%% domain are encrypted with the same customer master key (CMK) stored in Key
 %% Management Service (KMS).
 %%
 %% Each repository is a member of a single domain and can't be moved to a
@@ -51,10 +52,11 @@
 %% <ul> <li> A name (for example, `webpack' is the name of a popular npm
 %% package)
 %%
-%% </li> <li> An optional namespace (for example, `@types' in `@types/node')
+%% </li> <li> An optional namespace (for example, `@types' in
+%% `@types/node')
 %%
-%% </li> <li> A set of versions (for example, `1.0.0', `1.0.1', `1.0.2',
-%% etc.)
+%% </li> <li> A set of versions (for example, `1.0.0', `1.0.1',
+%% `1.0.2', etc.)
 %%
 %% </li> <li> Package-level metadata (for example, npm tags)
 %%
@@ -72,8 +74,8 @@
 %% creating an upstream relationship between two repositories.
 %%
 %% </li> <li> Asset: An individual file stored in CodeArtifact associated
-%% with a package version, such as an npm `.tgz' file or Maven POM and JAR
-%% files.
+%% with a package version, such as an npm `.tgz' file or Maven POM and
+%% JAR files.
 %%
 %% </li> </ul> CodeArtifact supports these operations:
 %%
@@ -88,15 +90,15 @@
 %% </li> <li> `CreateRepository': Creates a CodeArtifact repository in a
 %% domain.
 %%
-%% </li> <li> `DeleteDomain': Deletes a domain. You cannot delete a domain
-%% that contains repositories.
+%% </li> <li> `DeleteDomain': Deletes a domain. You cannot delete a
+%% domain that contains repositories.
 %%
-%% </li> <li> `DeleteDomainPermissionsPolicy': Deletes the resource policy
-%% that is set on a domain.
+%% </li> <li> `DeleteDomainPermissionsPolicy': Deletes the resource
+%% policy that is set on a domain.
 %%
-%% </li> <li> `DeletePackageVersions': Deletes versions of a package. After a
-%% package has been deleted, it can be republished, but its assets and
-%% metadata cannot be restored because they have been permanently removed
+%% </li> <li> `DeletePackageVersions': Deletes versions of a package.
+%% After a package has been deleted, it can be republished, but its assets
+%% and metadata cannot be restored because they have been permanently removed
 %% from storage.
 %%
 %% </li> <li> `DeleteRepository': Deletes a repository.
@@ -104,42 +106,44 @@
 %% </li> <li> `DeleteRepositoryPermissionsPolicy': Deletes the resource
 %% policy that is set on a repository.
 %%
-%% </li> <li> `DescribeDomain': Returns a `DomainDescription' object that
-%% contains information about the requested domain.
+%% </li> <li> `DescribeDomain': Returns a `DomainDescription' object
+%% that contains information about the requested domain.
 %%
 %% </li> <li> `DescribePackage': Returns a PackageDescription object that
 %% contains details about a package.
 %%
-%% </li> <li> `DescribePackageVersion': Returns a PackageVersionDescription
-%% object that contains details about a package version.
+%% </li> <li> `DescribePackageVersion': Returns a
+%% PackageVersionDescription object that contains details about a package
+%% version.
 %%
-%% </li> <li> `DescribeRepository': Returns a `RepositoryDescription' object
-%% that contains detailed information about the requested repository.
+%% </li> <li> `DescribeRepository': Returns a `RepositoryDescription'
+%% object that contains detailed information about the requested repository.
 %%
 %% </li> <li> `DisposePackageVersions': Disposes versions of a package. A
-%% package version with the status `Disposed' cannot be restored because they
-%% have been permanently removed from storage.
+%% package version with the status `Disposed' cannot be restored because
+%% they have been permanently removed from storage.
 %%
-%% </li> <li> `DisassociateExternalConnection': Removes an existing external
-%% connection from a repository.
+%% </li> <li> `DisassociateExternalConnection': Removes an existing
+%% external connection from a repository.
 %%
-%% </li> <li> `GetAuthorizationToken': Generates a temporary authorization
-%% token for accessing repositories in the domain. The token expires the
-%% authorization period has passed. The default authorization period is 12
-%% hours and can be customized to any length with a maximum of 12 hours.
+%% </li> <li> `GetAuthorizationToken': Generates a temporary
+%% authorization token for accessing repositories in the domain. The token
+%% expires the authorization period has passed. The default authorization
+%% period is 12 hours and can be customized to any length with a maximum of
+%% 12 hours.
 %%
-%% </li> <li> `GetDomainPermissionsPolicy': Returns the policy of a resource
-%% that is attached to the specified domain.
+%% </li> <li> `GetDomainPermissionsPolicy': Returns the policy of a
+%% resource that is attached to the specified domain.
 %%
-%% </li> <li> `GetPackageVersionAsset': Returns the contents of an asset that
-%% is in a package version.
+%% </li> <li> `GetPackageVersionAsset': Returns the contents of an asset
+%% that is in a package version.
 %%
-%% </li> <li> `GetPackageVersionReadme': Gets the readme file or descriptive
-%% text for a package version.
+%% </li> <li> `GetPackageVersionReadme': Gets the readme file or
+%% descriptive text for a package version.
 %%
-%% </li> <li> `GetRepositoryEndpoint': Returns the endpoint of a repository
-%% for a specific package format. A repository has one endpoint for each
-%% package format:
+%% </li> <li> `GetRepositoryEndpoint': Returns the endpoint of a
+%% repository for a specific package format. A repository has one endpoint
+%% for each package format:
 %%
 %% <ul> <li> `maven'
 %%
@@ -152,35 +156,36 @@
 %% </li> </ul> </li> <li> `GetRepositoryPermissionsPolicy': Returns the
 %% resource policy that is set on a repository.
 %%
-%% </li> <li> `ListDomains': Returns a list of `DomainSummary' objects. Each
-%% returned `DomainSummary' object contains information about a domain.
+%% </li> <li> `ListDomains': Returns a list of `DomainSummary'
+%% objects. Each returned `DomainSummary' object contains information
+%% about a domain.
 %%
 %% </li> <li> `ListPackages': Lists the packages in a repository.
 %%
 %% </li> <li> `ListPackageVersionAssets': Lists the assets for a given
 %% package version.
 %%
-%% </li> <li> `ListPackageVersionDependencies': Returns a list of the direct
-%% dependencies for a package version.
+%% </li> <li> `ListPackageVersionDependencies': Returns a list of the
+%% direct dependencies for a package version.
 %%
-%% </li> <li> `ListPackageVersions': Returns a list of package versions for a
-%% specified package in a repository.
+%% </li> <li> `ListPackageVersions': Returns a list of package versions
+%% for a specified package in a repository.
 %%
-%% </li> <li> `ListRepositories': Returns a list of repositories owned by the
-%% Amazon Web Services account that called this method.
+%% </li> <li> `ListRepositories': Returns a list of repositories owned by
+%% the Amazon Web Services account that called this method.
 %%
-%% </li> <li> `ListRepositoriesInDomain': Returns a list of the repositories
-%% in a domain.
+%% </li> <li> `ListRepositoriesInDomain': Returns a list of the
+%% repositories in a domain.
 %%
-%% </li> <li> `PutDomainPermissionsPolicy': Attaches a resource policy to a
-%% domain.
+%% </li> <li> `PutDomainPermissionsPolicy': Attaches a resource policy to
+%% a domain.
 %%
 %% </li> <li> `PutPackageOriginConfiguration': Sets the package origin
 %% configuration for a package, which determine how new versions of the
 %% package can be added to a specific repository.
 %%
-%% </li> <li> `PutRepositoryPermissionsPolicy': Sets the resource policy on a
-%% repository that specifies permissions to access it.
+%% </li> <li> `PutRepositoryPermissionsPolicy': Sets the resource policy
+%% on a repository that specifies permissions to access it.
 %%
 %% </li> <li> `UpdatePackageVersionsStatus': Updates the status of one or
 %% more versions of a package.
@@ -313,8 +318,8 @@ associate_external_connection(Client, Input0, Options0) ->
 %% @doc Copies package versions from one repository to another repository in
 %% the same domain.
 %%
-%% You must specify `versions' or `versionRevisions'. You cannot specify
-%% both.
+%% You must specify `versions' or `versionRevisions'. You cannot
+%% specify both.
 copy_package_versions(Client, Input) ->
     copy_package_versions(Client, Input, []).
 copy_package_versions(Client, Input0, Options0) ->
@@ -462,10 +467,10 @@ delete_domain_permissions_policy(Client, Input0, Options0) ->
 %%
 %% A deleted package version cannot be restored in your repository. If you
 %% want to remove a package version from your repository and be able to
-%% restore it later, set its status to `Archived'. Archived packages cannot
-%% be downloaded from a repository and don't show up with list package APIs
-%% (for example, ListPackageVersions), but you can restore them using
-%% UpdatePackageVersionsStatus.
+%% restore it later, set its status to `Archived'. Archived packages
+%% cannot be downloaded from a repository and don't show up with list
+%% package APIs (for example, ListPackageVersions), but you can restore them
+%% using UpdatePackageVersionsStatus.
 delete_package_versions(Client, Input) ->
     delete_package_versions(Client, Input, []).
 delete_package_versions(Client, Input0, Options0) ->
@@ -526,9 +531,10 @@ delete_repository(Client, Input0, Options0) ->
 %% the deleted policy are removed. The effect of deleting a resource policy
 %% might not be immediate.
 %%
-%% Use `DeleteRepositoryPermissionsPolicy' with caution. After a policy is
-%% deleted, Amazon Web Services users, roles, and accounts lose permissions
-%% to perform the repository actions granted by the deleted policy.
+%% Use `DeleteRepositoryPermissionsPolicy' with caution. After a policy
+%% is deleted, Amazon Web Services users, roles, and accounts lose
+%% permissions to perform the repository actions granted by the deleted
+%% policy.
 delete_repository_permissions_policy(Client, Input) ->
     delete_repository_permissions_policy(Client, Input, []).
 delete_repository_permissions_policy(Client, Input0, Options0) ->
@@ -708,8 +714,8 @@ disassociate_external_connection(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the assets in package versions and sets the package versions'
-%% status to `Disposed'.
+%% @doc Deletes the assets in package versions and sets the package
+%% versions' status to `Disposed'.
 %%
 %% A disposed package version cannot be restored in your repository because
 %% its assets are deleted.
@@ -755,18 +761,20 @@ dispose_package_versions(Client, Input0, Options0) ->
 %% authorization tokens, see CodeArtifact authentication and tokens.
 %%
 %% CodeArtifact authorization tokens are valid for a period of 12 hours when
-%% created with the `login' command. You can call `login' periodically to
-%% refresh the token. When you create an authorization token with the
-%% `GetAuthorizationToken' API, you can set a custom authorization period, up
-%% to a maximum of 12 hours, with the `durationSeconds' parameter.
+%% created with the `login' command. You can call `login'
+%% periodically to refresh the token. When you create an authorization token
+%% with the `GetAuthorizationToken' API, you can set a custom
+%% authorization period, up to a maximum of 12 hours, with the
+%% `durationSeconds' parameter.
 %%
-%% The authorization period begins after `login' or `GetAuthorizationToken'
-%% is called. If `login' or `GetAuthorizationToken' is called while assuming
-%% a role, the token lifetime is independent of the maximum session duration
-%% of the role. For example, if you call `sts assume-role' and specify a
-%% session duration of 15 minutes, then generate a CodeArtifact authorization
-%% token, the token will be valid for the full authorization period even
-%% though this is longer than the 15-minute session duration.
+%% The authorization period begins after `login' or
+%% `GetAuthorizationToken' is called. If `login' or
+%% `GetAuthorizationToken' is called while assuming a role, the token
+%% lifetime is independent of the maximum session duration of the role. For
+%% example, if you call `sts assume-role' and specify a session duration
+%% of 15 minutes, then generate a CodeArtifact authorization token, the token
+%% will be valid for the full authorization period even though this is longer
+%% than the 15-minute session duration.
 %%
 %% See Using IAM Roles for more information on controlling session duration.
 get_authorization_token(Client, Input) ->
@@ -828,9 +836,9 @@ get_domain_permissions_policy(Client, Domain, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns an asset (or file) that is in a package.
 %%
-%% For example, for a Maven package version, use `GetPackageVersionAsset' to
-%% download a `JAR' file, a `POM' file, or any other assets in the package
-%% version.
+%% For example, for a Maven package version, use `GetPackageVersionAsset'
+%% to download a `JAR' file, a `POM' file, or any other assets in the
+%% package version.
 get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion, Repository)
   when is_map(Client) ->
     get_package_version_asset(Client, Asset, Domain, Format, Package, PackageVersion, Repository, #{}, #{}).
@@ -993,7 +1001,8 @@ get_repository_permissions_policy(Client, Domain, Repository, QueryMap, HeadersM
 %% @doc Returns a list of DomainSummary objects for all domains owned by the
 %% Amazon Web Services account that makes this call.
 %%
-%% Each returned `DomainSummary' object contains information about a domain.
+%% Each returned `DomainSummary' object contains information about a
+%% domain.
 list_domains(Client, Input) ->
     list_domains(Client, Input, []).
 list_domains(Client, Input0, Options0) ->
@@ -1053,9 +1062,10 @@ list_package_version_assets(Client, Input0, Options0) ->
 %%
 %% The dependencies are returned as PackageDependency objects. CodeArtifact
 %% extracts the dependencies for a package version from the metadata file for
-%% the package format (for example, the `package.json' file for npm packages
-%% and the `pom.xml' file for Maven). Any package version dependencies that
-%% are not listed in the configuration file are not returned.
+%% the package format (for example, the `package.json' file for npm
+%% packages and the `pom.xml' file for Maven). Any package version
+%% dependencies that are not listed in the configuration file are not
+%% returned.
 list_package_version_dependencies(Client, Input) ->
     list_package_version_dependencies(Client, Input, []).
 list_package_version_dependencies(Client, Input0, Options0) ->
@@ -1157,8 +1167,8 @@ list_packages(Client, Input0, Options0) ->
 
 %% @doc Returns a list of RepositorySummary objects.
 %%
-%% Each `RepositorySummary' contains information about a repository in the
-%% specified Amazon Web Services account and that matches the input
+%% Each `RepositorySummary' contains information about a repository in
+%% the specified Amazon Web Services account and that matches the input
 %% parameters.
 list_repositories(Client, Input) ->
     list_repositories(Client, Input, []).
@@ -1187,8 +1197,8 @@ list_repositories(Client, Input0, Options0) ->
 
 %% @doc Returns a list of RepositorySummary objects.
 %%
-%% Each `RepositorySummary' contains information about a repository in the
-%% specified domain and that matches the input parameters.
+%% Each `RepositorySummary' contains information about a repository in
+%% the specified domain and that matches the input parameters.
 list_repositories_in_domain(Client, Input) ->
     list_repositories_in_domain(Client, Input, []).
 list_repositories_in_domain(Client, Input0, Options0) ->
@@ -1280,14 +1290,14 @@ put_domain_permissions_policy(Client, Input0, Options0) ->
 %% package origin controls and configuration, see Editing package origin
 %% controls in the CodeArtifact User Guide.
 %%
-%% `PutPackageOriginConfiguration' can be called on a package that doesn't
-%% yet exist in the repository. When called on a package that does not exist,
-%% a package is created in the repository with no versions and the requested
-%% restrictions are set on the package. This can be used to preemptively
-%% block ingesting or retaining any versions from external connections or
-%% upstream repositories, or to block publishing any versions of the package
-%% into the repository before connecting any package managers or publishers
-%% to the repository.
+%% `PutPackageOriginConfiguration' can be called on a package that
+%% doesn't yet exist in the repository. When called on a package that
+%% does not exist, a package is created in the repository with no versions
+%% and the requested restrictions are set on the package. This can be used to
+%% preemptively block ingesting or retaining any versions from external
+%% connections or upstream repositories, or to block publishing any versions
+%% of the package into the repository before connecting any package managers
+%% or publishers to the repository.
 put_package_origin_configuration(Client, Input) ->
     put_package_origin_configuration(Client, Input, []).
 put_package_origin_configuration(Client, Input0, Options0) ->
@@ -1319,10 +1329,10 @@ put_package_origin_configuration(Client, Input0, Options0) ->
 %% @doc Sets the resource policy on a repository that specifies permissions
 %% to access it.
 %%
-%% When you call `PutRepositoryPermissionsPolicy', the resource policy on the
-%% repository is ignored when evaluting permissions. This ensures that the
-%% owner of a repository cannot lock themselves out of the repository, which
-%% would prevent them from being able to update the resource policy.
+%% When you call `PutRepositoryPermissionsPolicy', the resource policy on
+%% the repository is ignored when evaluting permissions. This ensures that
+%% the owner of a repository cannot lock themselves out of the repository,
+%% which would prevent them from being able to update the resource policy.
 put_repository_permissions_policy(Client, Input) ->
     put_repository_permissions_policy(Client, Input, []).
 put_repository_permissions_policy(Client, Input0, Options0) ->
@@ -1398,9 +1408,10 @@ untag_resource(Client, Input0, Options0) ->
 
 %% @doc Updates the status of one or more versions of a package.
 %%
-%% Using `UpdatePackageVersionsStatus', you can update the status of package
-%% versions to `Archived', `Published', or `Unlisted'. To set the status of a
-%% package version to `Disposed', use DisposePackageVersions.
+%% Using `UpdatePackageVersionsStatus', you can update the status of
+%% package versions to `Archived', `Published', or `Unlisted'. To
+%% set the status of a package version to `Disposed', use
+%% DisposePackageVersions.
 update_package_versions_status(Client, Input) ->
     update_package_versions_status(Client, Input, []).
 update_package_versions_status(Client, Input0, Options0) ->

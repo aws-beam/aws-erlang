@@ -83,14 +83,14 @@
 %% @doc Sets the specified view as the default for the Amazon Web Services
 %% Region in which you call this operation.
 %%
-%% When a user performs a `Search' that doesn't explicitly specify which view
-%% to use, then Amazon Web Services Resource Explorer automatically chooses
-%% this default view for searches performed in this Amazon Web Services
-%% Region.
+%% When a user performs a `Search' that doesn't explicitly specify
+%% which view to use, then Amazon Web Services Resource Explorer
+%% automatically chooses this default view for searches performed in this
+%% Amazon Web Services Region.
 %%
-%% If an Amazon Web Services Region doesn't have a default view configured,
-%% then users must explicitly specify a view with every `Search' operation
-%% performed in that Region.
+%% If an Amazon Web Services Region doesn't have a default view
+%% configured, then users must explicitly specify a view with every
+%% `Search' operation performed in that Region.
 associate_default_view(Client, Input) ->
     associate_default_view(Client, Input, []).
 associate_default_view(Client, Input0, Options0) ->
@@ -141,8 +141,8 @@ batch_get_view(Client, Input0, Options0) ->
 %%
 %% Resource Explorer begins discovering the resources in this Region and
 %% stores the details about the resources in the index so that they can be
-%% queried by using the `Search' operation. You can create only one index in
-%% a Region.
+%% queried by using the `Search' operation. You can create only one index
+%% in a Region.
 %%
 %% This operation creates only a local index. To promote the local index in
 %% one Amazon Web Services Region into the aggregator index for the Amazon
@@ -155,24 +155,26 @@ batch_get_view(Client, Input0, Options0) ->
 %% resources in an Amazon Web Services Region in the Amazon Web Services
 %% Resource Explorer User Guide.
 %%
-%% If this is the first Amazon Web Services Region in which you've created an
-%% index for Resource Explorer, then this operation also creates a
+%% If this is the first Amazon Web Services Region in which you've
+%% created an index for Resource Explorer, then this operation also creates a
 %% service-linked role in your Amazon Web Services account that allows
 %% Resource Explorer to enumerate your resources to populate the index.
 %%
 %% <ul> <li> Action: `resource-explorer-2:CreateIndex'
 %%
 %% Resource: The ARN of the index (as it will exist after the operation
-%% completes) in the Amazon Web Services Region and account in which you're
-%% trying to create the index. Use the wildcard character (`*') at the end of
-%% the string to match the eventual UUID. For example, the following
-%% `Resource' element restricts the role or user to creating an index in only
-%% the `us-east-2' Region of the specified account.
+%% completes) in the Amazon Web Services Region and account in which
+%% you're trying to create the index. Use the wildcard character
+%% (`*') at the end of the string to match the eventual UUID. For
+%% example, the following `Resource' element restricts the role or user
+%% to creating an index in only the `us-east-2' Region of the specified
+%% account.
 %%
-%% `"Resource": "arn:aws:resource-explorer-2:us-west-2:<account-id>:index/*"'
+%% `&quot;Resource&quot;:
+%% &quot;arn:aws:resource-explorer-2:us-west-2:&lt;account-id&gt;:index/*&quot;'
 %%
-%% Alternatively, you can use `"Resource": "*"' to allow the role or user to
-%% create an index in any Region.
+%% Alternatively, you can use `&quot;Resource&quot;: &quot;*&quot;' to
+%% allow the role or user to create an index in any Region.
 %%
 %% </li> <li> Action: `iam:CreateServiceLinkedRole'
 %%
@@ -207,16 +209,18 @@ create_index(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a view that users can query by using the `Search' operation.
+%% @doc Creates a view that users can query by using the `Search'
+%% operation.
 %%
 %% Results from queries that you make using this view include only resources
-%% that match the view's `Filters'. For more information about Amazon Web
-%% Services Resource Explorer views, see Managing views in the Amazon Web
+%% that match the view's `Filters'. For more information about Amazon
+%% Web Services Resource Explorer views, see Managing views in the Amazon Web
 %% Services Resource Explorer User Guide.
 %%
-%% Only the principals with an IAM identity-based policy that grants `Allow'
-%% to the `Search' action on a `Resource' with the Amazon resource name (ARN)
-%% of this view can `Search' using views you create with this operation.
+%% Only the principals with an IAM identity-based policy that grants
+%% `Allow' to the `Search' action on a `Resource' with the Amazon
+%% resource name (ARN) of this view can `Search' using views you create
+%% with this operation.
 create_view(Client, Input) ->
     create_view(Client, Input, []).
 create_view(Client, Input0, Options0) ->
@@ -306,13 +310,13 @@ delete_view(Client, Input0, Options0) ->
 %% @doc After you call this operation, the affected Amazon Web Services
 %% Region no longer has a default view.
 %%
-%% All `Search' operations in that Region must explicitly specify a view or
-%% the operation fails. You can configure a new default by calling the
+%% All `Search' operations in that Region must explicitly specify a view
+%% or the operation fails. You can configure a new default by calling the
 %% `AssociateDefaultView' operation.
 %%
-%% If an Amazon Web Services Region doesn't have a default view configured,
-%% then users must explicitly specify a view with every `Search' operation
-%% performed in that Region.
+%% If an Amazon Web Services Region doesn't have a default view
+%% configured, then users must explicitly specify a view with every
+%% `Search' operation performed in that Region.
 disassociate_default_view(Client, Input) ->
     disassociate_default_view(Client, Input, []).
 disassociate_default_view(Client, Input0, Options0) ->
@@ -485,11 +489,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Lists the Amazon resource names (ARNs) of the views available in the
 %% Amazon Web Services Region in which you call this operation.
 %%
-%% Always check the `NextToken' response parameter for a `null' value when
-%% calling a paginated operation. These operations can occasionally return an
-%% empty set of results even when there are more results available. The
-%% `NextToken' response parameter value is `null' only when there are no more
-%% results to display.
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a paginated operation. These operations can occasionally
+%% return an empty set of results even when there are more results available.
+%% The `NextToken' response parameter value is `null' only when there
+%% are no more results to display.
 list_views(Client, Input) ->
     list_views(Client, Input, []).
 list_views(Client, Input0, Options0) ->
@@ -521,8 +525,8 @@ list_views(Client, Input0, Options0) ->
 %% view, then Amazon Web Services Resource Explorer uses the default view for
 %% the Amazon Web Services Region in which you call this operation. The
 %% results are the logical intersection of the results that match both the
-%% `QueryString' parameter supplied to this operation and the `SearchFilter'
-%% parameter attached to the view.
+%% `QueryString' parameter supplied to this operation and the
+%% `SearchFilter' parameter attached to the view.
 %%
 %% For the complete syntax supported by the `QueryString' parameter, see
 %% Search query syntax reference for Resource Explorer.
@@ -615,18 +619,18 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% created a Resource Explorer index. Resource information from all other
 %% Regions is replicated to this Region's index.
 %%
-%% When you change the index type to `AGGREGATOR', Resource Explorer turns on
-%% replication of all discovered resource information from the other Amazon
-%% Web Services Regions in your account to this index. You can then, from
-%% this Region only, perform resource search queries that span all Amazon Web
-%% Services Regions in the Amazon Web Services account. Turning on
+%% When you change the index type to `AGGREGATOR', Resource Explorer
+%% turns on replication of all discovered resource information from the other
+%% Amazon Web Services Regions in your account to this index. You can then,
+%% from this Region only, perform resource search queries that span all
+%% Amazon Web Services Regions in the Amazon Web Services account. Turning on
 %% replication from all other Regions is performed by asynchronous background
 %% tasks. You can check the status of the asynchronous tasks by using the
-%% `GetIndex' operation. When the asynchronous tasks complete, the `Status'
-%% response of that operation changes from `UPDATING' to `ACTIVE'. After
-%% that, you can start to see results from other Amazon Web Services Regions
-%% in query results. However, it can take several hours for replication from
-%% all other Regions to complete.
+%% `GetIndex' operation. When the asynchronous tasks complete, the
+%% `Status' response of that operation changes from `UPDATING' to
+%% `ACTIVE'. After that, you can start to see results from other Amazon
+%% Web Services Regions in query results. However, it can take several hours
+%% for replication from all other Regions to complete.
 %%
 %% You can have only one aggregator index per Amazon Web Services account.
 %% Before you can promote a different index to be the aggregator index for
@@ -640,8 +644,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% another Region exists, then information in this local index is replicated
 %% to the aggregator index.
 %%
-%% When you change the index type to `LOCAL', Resource Explorer turns off the
-%% replication of resource information from all other Amazon Web Services
+%% When you change the index type to `LOCAL', Resource Explorer turns off
+%% the replication of resource information from all other Amazon Web Services
 %% Regions in the Amazon Web Services account to this Region. The aggregator
 %% index remains in the `UPDATING' state until all replication with other
 %% Regions successfully stops. You can check the status of the asynchronous

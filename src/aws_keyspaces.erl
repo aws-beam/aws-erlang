@@ -62,13 +62,15 @@
 %% API
 %%====================================================================
 
-%% @doc The `CreateKeyspace' operation adds a new keyspace to your account.
+%% @doc The `CreateKeyspace' operation adds a new keyspace to your
+%% account.
 %%
 %% In an Amazon Web Services account, keyspace names must be unique within
 %% each Region.
 %%
 %% `CreateKeyspace' is an asynchronous operation. You can monitor the
-%% creation status of the new keyspace by using the `GetKeyspace' operation.
+%% creation status of the new keyspace by using the `GetKeyspace'
+%% operation.
 %%
 %% For more information, see Creating keyspaces in the Amazon Keyspaces
 %% Developer Guide.
@@ -84,11 +86,11 @@ create_keyspace(Client, Input, Options)
 %%
 %% Within a keyspace, table names must be unique.
 %%
-%% `CreateTable' is an asynchronous operation. When the request is received,
-%% the status of the table is set to `CREATING'. You can monitor the creation
-%% status of the new table by using the `GetTable' operation, which returns
-%% the current `status' of the table. You can start using a table when the
-%% status is `ACTIVE'.
+%% `CreateTable' is an asynchronous operation. When the request is
+%% received, the status of the table is set to `CREATING'. You can
+%% monitor the creation status of the new table by using the `GetTable'
+%% operation, which returns the current `status' of the table. You can
+%% start using a table when the status is `ACTIVE'.
 %%
 %% For more information, see Creating tables in the Amazon Keyspaces
 %% Developer Guide.
@@ -110,13 +112,14 @@ delete_keyspace(Client, Input, Options)
 
 %% @doc The `DeleteTable' operation deletes a table and all of its data.
 %%
-%% After a `DeleteTable' request is received, the specified table is in the
-%% `DELETING' state until Amazon Keyspaces completes the deletion. If the
-%% table is in the `ACTIVE' state, you can delete it. If a table is either in
-%% the `CREATING' or `UPDATING' states, then Amazon Keyspaces returns a
-%% `ResourceInUseException'. If the specified table does not exist, Amazon
-%% Keyspaces returns a `ResourceNotFoundException'. If the table is already
-%% in the `DELETING' state, no error is returned.
+%% After a `DeleteTable' request is received, the specified table is in
+%% the `DELETING' state until Amazon Keyspaces completes the deletion. If
+%% the table is in the `ACTIVE' state, you can delete it. If a table is
+%% either in the `CREATING' or `UPDATING' states, then Amazon
+%% Keyspaces returns a `ResourceInUseException'. If the specified table
+%% does not exist, Amazon Keyspaces returns a
+%% `ResourceNotFoundException'. If the table is already in the
+%% `DELETING' state, no error is returned.
 delete_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_table(Client, Input, []).
@@ -133,11 +136,13 @@ get_keyspace(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetKeyspace">>, Input, Options).
 
-%% @doc Returns information about the table, including the table's name and
-%% current status, the keyspace name, configuration settings, and metadata.
+%% @doc Returns information about the table, including the table's name
+%% and current status, the keyspace name, configuration settings, and
+%% metadata.
 %%
-%% To read table metadata using `GetTable', `Select' action permissions for
-%% the table and system tables are required to complete the operation.
+%% To read table metadata using `GetTable', `Select' action
+%% permissions for the table and system tables are required to complete the
+%% operation.
 get_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_table(Client, Input, []).
@@ -185,12 +190,12 @@ list_tags_for_resource(Client, Input, Options)
 %% (TTL) settings are also restored to the state based on the selected
 %% timestamp.
 %%
-%% In addition to the table's schema, data, and TTL settings, `RestoreTable'
-%% restores the capacity mode, encryption, and point-in-time recovery
-%% settings from the source table. Unlike the table's schema data and TTL
-%% settings, which are restored based on the selected timestamp, these
-%% settings are always restored based on the table's settings as of the
-%% current time or when the table was deleted.
+%% In addition to the table's schema, data, and TTL settings,
+%% `RestoreTable' restores the capacity mode, encryption, and
+%% point-in-time recovery settings from the source table. Unlike the
+%% table's schema data and TTL settings, which are restored based on the
+%% selected timestamp, these settings are always restored based on the
+%% table's settings as of the current time or when the table was deleted.
 %%
 %% You can also overwrite these settings during restore:
 %%
@@ -246,9 +251,9 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc Adds new columns to the table or updates one of the table's settings,
-%% for example capacity mode, encryption, point-in-time recovery, or ttl
-%% settings.
+%% @doc Adds new columns to the table or updates one of the table's
+%% settings, for example capacity mode, encryption, point-in-time recovery,
+%% or ttl settings.
 %%
 %% Note that you can only update one specific table setting per update
 %% operation.

@@ -10,47 +10,50 @@
 %%
 %% Notification rules, by calling the following:
 %%
-%% <ul> <li> `CreateNotificationRule', which creates a notification rule for
-%% a resource in your account.
+%% <ul> <li> `CreateNotificationRule', which creates a notification rule
+%% for a resource in your account.
 %%
-%% </li> <li> `DeleteNotificationRule', which deletes a notification rule.
+%% </li> <li> `DeleteNotificationRule', which deletes a notification
+%% rule.
 %%
-%% </li> <li> `DescribeNotificationRule', which provides information about a
-%% notification rule.
+%% </li> <li> `DescribeNotificationRule', which provides information
+%% about a notification rule.
 %%
 %% </li> <li> `ListNotificationRules', which lists the notification rules
 %% associated with your account.
 %%
-%% </li> <li> `UpdateNotificationRule', which changes the name, events, or
-%% targets associated with a notification rule.
+%% </li> <li> `UpdateNotificationRule', which changes the name, events,
+%% or targets associated with a notification rule.
 %%
-%% </li> <li> `Subscribe', which subscribes a target to a notification rule.
+%% </li> <li> `Subscribe', which subscribes a target to a notification
+%% rule.
 %%
-%% </li> <li> `Unsubscribe', which removes a target from a notification rule.
+%% </li> <li> `Unsubscribe', which removes a target from a notification
+%% rule.
 %%
 %% </li> </ul> Targets, by calling the following:
 %%
-%% <ul> <li> `DeleteTarget', which removes a notification rule target from a
-%% notification rule.
+%% <ul> <li> `DeleteTarget', which removes a notification rule target
+%% from a notification rule.
 %%
 %% </li> <li> `ListTargets', which lists the targets associated with a
 %% notification rule.
 %%
 %% </li> </ul> Events, by calling the following:
 %%
-%% <ul> <li> `ListEventTypes', which lists the event types you can include in
-%% a notification rule.
+%% <ul> <li> `ListEventTypes', which lists the event types you can
+%% include in a notification rule.
 %%
 %% </li> </ul> Tags, by calling the following:
 %%
-%% <ul> <li> `ListTagsForResource', which lists the tags already associated
-%% with a notification rule in your account.
+%% <ul> <li> `ListTagsForResource', which lists the tags already
+%% associated with a notification rule in your account.
 %%
 %% </li> <li> `TagResource', which associates a tag you provide with a
 %% notification rule in your account.
 %%
-%% </li> <li> `UntagResource', which removes a tag from a notification rule
-%% in your account.
+%% </li> <li> `UntagResource', which removes a tag from a notification
+%% rule in your account.
 %%
 %% </li> </ul> For information about how to use AWS CodeStar Notifications,
 %% see the Amazon Web Services Developer Tools Console User Guide.
@@ -383,8 +386,8 @@ untag_resource(Client, Arn, Input0, Options0) ->
 %% You can change the events that trigger the notification rule, the status
 %% of the rule, and the targets that receive the notifications.
 %%
-%% To add or remove tags for a notification rule, you must use `TagResource'
-%% and `UntagResource'.
+%% To add or remove tags for a notification rule, you must use
+%% `TagResource' and `UntagResource'.
 update_notification_rule(Client, Input) ->
     update_notification_rule(Client, Input, []).
 update_notification_rule(Client, Input0, Options0) ->

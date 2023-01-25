@@ -72,10 +72,11 @@
 %%
 %% </li> </ul> Chef Versions
 %%
-%% When you call `CreateStack', `CloneStack', or `UpdateStack' we recommend
-%% you use the `ConfigurationManager' parameter to specify the Chef version.
-%% The recommended and default value for Linux stacks is currently 12.
-%% Windows stacks use Chef 12.2. For more information, see Chef Versions.
+%% When you call `CreateStack', `CloneStack', or `UpdateStack' we
+%% recommend you use the `ConfigurationManager' parameter to specify the
+%% Chef version. The recommended and default value for Linux stacks is
+%% currently 12. Windows stacks use Chef 12.2. For more information, see Chef
+%% Versions.
 %%
 %% You can specify Chef 12, 11.10, or 11.4 for your Linux stack. We recommend
 %% migrating your existing Linux stacks to Chef 12 as soon as possible.
@@ -263,8 +264,8 @@ assign_instance(Client, Input, Options)
 %%
 %% The volume must first be registered with the stack by calling
 %% `RegisterVolume'. After you register the volume, you must call
-%% `UpdateVolume' to specify a mount point before calling `AssignVolume'. For
-%% more information, see Resource Management.
+%% `UpdateVolume' to specify a mount point before calling
+%% `AssignVolume'. For more information, see Resource Management.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Manage
 %% permissions level for the stack, or an attached policy that explicitly
@@ -277,8 +278,8 @@ assign_volume(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssignVolume">>, Input, Options).
 
-%% @doc Associates one of the stack's registered Elastic IP addresses with a
-%% specified instance.
+%% @doc Associates one of the stack's registered Elastic IP addresses
+%% with a specified instance.
 %%
 %% The address must first be registered with the stack by calling
 %% `RegisterElasticIp'. For more information, see Resource Management.
@@ -579,8 +580,8 @@ deregister_volume(Client, Input, Options)
 %% @doc Describes the available AWS OpsWorks Stacks agent versions.
 %%
 %% You must specify a stack ID or a configuration manager.
-%% `DescribeAgentVersions' returns a list of available agent versions for the
-%% specified stack or configuration manager.
+%% `DescribeAgentVersions' returns a list of available agent versions for
+%% the specified stack or configuration manager.
 describe_agent_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_agent_versions(Client, Input, []).
@@ -823,7 +824,8 @@ describe_stack_provisioning_parameters(Client, Input, Options)
     request(Client, <<"DescribeStackProvisioningParameters">>, Input, Options).
 
 %% @doc Describes the number of layers and apps in a specified stack, and the
-%% number of instances in each state, such as `running_setup' or `online'.
+%% number of instances in each state, such as `running_setup' or
+%% `online'.
 %%
 %% Required Permissions: To use this action, an IAM user must have a Show,
 %% Deploy, or Manage permissions level for the stack, or an attached policy
@@ -1009,10 +1011,10 @@ register_elastic_ip(Client, Input, Options)
 %% We do not recommend using this action to register instances. The complete
 %% registration operation includes two tasks: installing the AWS OpsWorks
 %% Stacks agent on the instance, and registering the instance with the stack.
-%% `RegisterInstance' handles only the second step. You should instead use
-%% the AWS CLI `register' command, which performs the entire registration
-%% operation. For more information, see Registering an Instance with an AWS
-%% OpsWorks Stacks Stack.
+%% `RegisterInstance' handles only the second step. You should instead
+%% use the AWS CLI `register' command, which performs the entire
+%% registration operation. For more information, see Registering an Instance
+%% with an AWS OpsWorks Stacks Stack.
 %%
 %% Registered instances have the same requirements as instances that are
 %% created by using the `CreateInstance' API. For example, registered

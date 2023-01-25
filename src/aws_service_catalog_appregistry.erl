@@ -231,8 +231,8 @@ delete_attribute_group(Client, AttributeGroup, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates an attribute group from an application to remove the
-%% extra attributes contained in the attribute group from the application's
-%% metadata.
+%% extra attributes contained in the attribute group from the
+%% application's metadata.
 %%
 %% This operation reverts `AssociateAttributeGroup'.
 disassociate_attribute_group(Client, Application, AttributeGroup, Input) ->
@@ -288,8 +288,9 @@ disassociate_resource(Client, Application, Resource, ResourceType, Input0, Optio
 %% The application can be specified either by its unique ID or by its name
 %% (which is unique within one account in one region at a given point in
 %% time). Specify by ID in automated workflows if you want to make sure that
-%% the exact same application is returned or a `ResourceNotFoundException' is
-%% thrown, avoiding the ABA addressing problem.
+%% the exact same application is returned or a
+%% `ResourceNotFoundException' is thrown, avoiding the ABA addressing
+%% problem.
 get_application(Client, Application)
   when is_map(Client) ->
     get_application(Client, Application, #{}, #{}).
@@ -591,8 +592,8 @@ put_configuration(Client, Input0, Options0) ->
 %% @doc Syncs the resource with current AppRegistry records.
 %%
 %% Specifically, the resource’s AppRegistry system tags sync with its
-%% associated application. We remove the resource's AppRegistry system tags
-%% if it does not associate with the application. The caller must have
+%% associated application. We remove the resource's AppRegistry system
+%% tags if it does not associate with the application. The caller must have
 %% permissions to read and update the resource.
 sync_resource(Client, Resource, ResourceType, Input) ->
     sync_resource(Client, Resource, ResourceType, Input, []).

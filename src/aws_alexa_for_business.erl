@@ -399,8 +399,8 @@ delete_device(Client, Input, Options)
     request(Client, <<"DeleteDevice">>, Input, Options).
 
 %% @doc When this action is called for a specified shared device, it allows
-%% authorized users to delete the device's entire previous history of voice
-%% input data and associated response data.
+%% authorized users to delete the device's entire previous history of
+%% voice input data and associated response data.
 %%
 %% This action can be called once every 24 hours for a specific shared
 %% device.
@@ -917,8 +917,8 @@ send_invitation(Client, Input, Options)
 %% <ul> <li> Bluetooth - This unpairs all bluetooth devices paired with your
 %% echo device.
 %%
-%% </li> <li> Volume - This resets the echo device's volume to the default
-%% value.
+%% </li> <li> Volume - This resets the echo device's volume to the
+%% default value.
 %%
 %% </li> <li> Notifications - This clears all notifications from your echo
 %% device.

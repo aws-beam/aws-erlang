@@ -49,7 +49,8 @@ cancel_resource_request(Client, Input, Options)
 %%
 %% After you have initiated a resource creation request, you can monitor the
 %% progress of your request by calling GetResourceRequestStatus using the
-%% `RequestToken' of the `ProgressEvent' type returned by `CreateResource'.
+%% `RequestToken' of the `ProgressEvent' type returned by
+%% `CreateResource'.
 create_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_resource(Client, Input, []).
@@ -64,7 +65,8 @@ create_resource(Client, Input, Options)
 %%
 %% After you have initiated a resource deletion request, you can monitor the
 %% progress of your request by calling GetResourceRequestStatus using the
-%% `RequestToken' of the `ProgressEvent' returned by `DeleteResource'.
+%% `RequestToken' of the `ProgressEvent' returned by
+%% `DeleteResource'.
 delete_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_resource(Client, Input, []).
@@ -139,7 +141,8 @@ list_resources(Client, Input, Options)
 %%
 %% After you have initiated a resource update request, you can monitor the
 %% progress of your request by calling GetResourceRequestStatus using the
-%% `RequestToken' of the `ProgressEvent' returned by `UpdateResource'.
+%% `RequestToken' of the `ProgressEvent' returned by
+%% `UpdateResource'.
 %%
 %% For more information about the properties of a specific resource, refer to
 %% the related topic for the resource in the Resource and property types

@@ -115,8 +115,9 @@ add_application_input(Client, Input, Options)
 %% Documentation.
 %%
 %% Adds an InputProcessingConfiguration to an application. An input processor
-%% preprocesses records on the input stream before the application's SQL code
-%% executes. Currently, the only input processor available is AWS Lambda.
+%% preprocesses records on the input stream before the application's SQL
+%% code executes. Currently, the only input processor available is AWS
+%% Lambda.
 add_application_input_processing_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_application_input_processing_configuration(Client, Input, []).
@@ -341,8 +342,8 @@ delete_application_reference_data_source(Client, Input, Options)
 %%
 %% This operation requires permissions to perform the
 %% `kinesisanalytics:DescribeApplication' action. You can use
-%% `DescribeApplication' to get the current application versionId, which you
-%% need to call other operations such as `Update'.
+%% `DescribeApplication' to get the current application versionId, which
+%% you need to call other operations such as `Update'.
 describe_application(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_application(Client, Input, []).
@@ -388,8 +389,9 @@ discover_input_schema(Client, Input, Options)
 %% For each application, the response includes the application name, Amazon
 %% Resource Name (ARN), and status. If the response returns the
 %% `HasMoreApplications' value as true, you can send another request by
-%% adding the `ExclusiveStartApplicationName' in the request body, and set
-%% the value of this to the last application name from the previous response.
+%% adding the `ExclusiveStartApplicationName' in the request body, and
+%% set the value of this to the last application name from the previous
+%% response.
 %%
 %% If you want detailed information about a specific application, use
 %% DescribeApplication.
@@ -427,9 +429,9 @@ list_tags_for_resource(Client, Input, Options)
 %% After the application starts, it begins consuming the input data,
 %% processes it, and writes the output to the configured destination.
 %%
-%% The application status must be `READY' for you to start an application.
-%% You can get the application status in the console or using the
-%% DescribeApplication operation.
+%% The application status must be `READY' for you to start an
+%% application. You can get the application status in the console or using
+%% the DescribeApplication operation.
 %%
 %% After you start the application, you can stop the application from
 %% processing the input by calling the StopApplication operation.

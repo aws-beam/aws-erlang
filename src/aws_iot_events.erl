@@ -228,8 +228,8 @@ delete_input(Client, InputName, Input0, Options0) ->
 
 %% @doc Retrieves information about an alarm model.
 %%
-%% If you don't specify a value for the `alarmModelVersion' parameter, the
-%% latest version is returned.
+%% If you don't specify a value for the `alarmModelVersion'
+%% parameter, the latest version is returned.
 describe_alarm_model(Client, AlarmModelName)
   when is_map(Client) ->
     describe_alarm_model(Client, AlarmModelName, #{}, #{}).
@@ -258,8 +258,8 @@ describe_alarm_model(Client, AlarmModelName, QueryMap, HeadersMap, Options0)
 
 %% @doc Describes a detector model.
 %%
-%% If the `version' parameter is not specified, information about the latest
-%% version is returned.
+%% If the `version' parameter is not specified, information about the
+%% latest version is returned.
 describe_detector_model(Client, DetectorModelName)
   when is_map(Client) ->
     describe_detector_model(Client, DetectorModelName, #{}, #{}).
@@ -590,11 +590,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Sets or updates the AWS IoT Events logging options.
 %%
-%% If you update the value of any `loggingOptions' field, it takes up to one
-%% minute for the change to take effect. If you change the policy attached to
-%% the role you specified in the `roleArn' field (for example, to correct an
-%% invalid policy), it takes up to five minutes for that change to take
-%% effect.
+%% If you update the value of any `loggingOptions' field, it takes up to
+%% one minute for the change to take effect. If you change the policy
+%% attached to the role you specified in the `roleArn' field (for
+%% example, to correct an invalid policy), it takes up to five minutes for
+%% that change to take effect.
 put_logging_options(Client, Input) ->
     put_logging_options(Client, Input, []).
 put_logging_options(Client, Input0, Options0) ->

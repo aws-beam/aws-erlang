@@ -17,11 +17,12 @@
 %%
 %% Endpoint to call When using the CLI or the Amazon Web Services SDK
 %%
-%% For the current release of Organizations, specify the `us-east-1' region
-%% for all Amazon Web Services API and CLI calls made from the commercial
-%% Amazon Web Services Regions outside of China. If calling from one of the
-%% Amazon Web Services Regions in China, then specify `cn-northwest-1'. You
-%% can do this in the CLI by using these parameters and commands:
+%% For the current release of Organizations, specify the `us-east-1'
+%% region for all Amazon Web Services API and CLI calls made from the
+%% commercial Amazon Web Services Regions outside of China. If calling from
+%% one of the Amazon Web Services Regions in China, then specify
+%% `cn-northwest-1'. You can do this in the CLI by using these parameters
+%% and commands:
 %%
 %% <ul> <li> Use the following parameter with each command to specify both
 %% the endpoint and its region:
@@ -37,8 +38,8 @@
 %% </li> <li> Use the default endpoint, but configure your default region
 %% with this command:
 %%
-%% `aws configure set default.region us-east-1' (from commercial Amazon Web
-%% Services Regions outside of China)
+%% `aws configure set default.region us-east-1' (from commercial Amazon
+%% Web Services Regions outside of China)
 %%
 %% or
 %%
@@ -48,8 +49,8 @@
 %% </li> <li> Use the following parameter with each command to specify the
 %% endpoint:
 %%
-%% `--region us-east-1' (from commercial Amazon Web Services Regions outside
-%% of China)
+%% `--region us-east-1' (from commercial Amazon Web Services Regions
+%% outside of China)
 %%
 %% or
 %%
@@ -195,12 +196,12 @@
 %% only a principal from the member account.
 %%
 %% The user who calls the API for an invitation to join must have the
-%% `organizations:AcceptHandshake' permission. If you enabled all features in
-%% the organization, the user must also have the
-%% `iam:CreateServiceLinkedRole' permission so that Organizations can create
-%% the required service-linked role named `AWSServiceRoleForOrganizations'.
-%% For more information, see Organizations and Service-Linked Roles in the
-%% Organizations User Guide.
+%% `organizations:AcceptHandshake' permission. If you enabled all
+%% features in the organization, the user must also have the
+%% `iam:CreateServiceLinkedRole' permission so that Organizations can
+%% create the required service-linked role named
+%% `AWSServiceRoleForOrganizations'. For more information, see
+%% Organizations and Service-Linked Roles in the Organizations User Guide.
 %%
 %% </li> <li> Enable all features final confirmation handshake: only a
 %% principal from the management account.
@@ -249,8 +250,8 @@ attach_policy(Client, Input, Options)
 %%
 %% This operation can be called only from the account that originated the
 %% handshake. The recipient of the handshake can't cancel it, but can use
-%% `DeclineHandshake' instead. After a handshake is canceled, the recipient
-%% can no longer respond to that handshake.
+%% `DeclineHandshake' instead. After a handshake is canceled, the
+%% recipient can no longer respond to that handshake.
 %%
 %% After you cancel a handshake, it continues to appear in the results of
 %% relevant APIs for only 30 days. After that, it's deleted.
@@ -265,13 +266,13 @@ cancel_handshake(Client, Input, Options)
 %%
 %% You can't close the management account with this API. This is an
 %% asynchronous request that Amazon Web Services performs in the background.
-%% Because `CloseAccount' operates asynchronously, it can return a successful
-%% completion message even though account closure might still be in progress.
-%% You need to wait a few minutes before the account is fully closed. To
-%% check the status of the request, do one of the following:
+%% Because `CloseAccount' operates asynchronously, it can return a
+%% successful completion message even though account closure might still be
+%% in progress. You need to wait a few minutes before the account is fully
+%% closed. To check the status of the request, do one of the following:
 %%
-%% <ul> <li> Use the `AccountId' that you sent in the `CloseAccount' request
-%% to provide as a parameter to the `DescribeAccount' operation.
+%% <ul> <li> Use the `AccountId' that you sent in the `CloseAccount'
+%% request to provide as a parameter to the `DescribeAccount' operation.
 %%
 %% While the close account request is in progress, Account status will
 %% indicate PENDING_CLOSURE. When the close account request completes, the
@@ -291,10 +292,10 @@ cancel_handshake(Client, Input, Options)
 %% the 90-day grace period while the account is in SUSPENDED status.
 %%
 %% If the Amazon Web Services account you attempt to close is linked to an
-%% Amazon Web Services GovCloud (US) account, the `CloseAccount' request will
-%% close both accounts. To learn important pre-closure details, see Closing
-%% an Amazon Web Services GovCloud (US) account in the Amazon Web Services
-%% GovCloud User Guide.
+%% Amazon Web Services GovCloud (US) account, the `CloseAccount' request
+%% will close both accounts. To learn important pre-closure details, see
+%% Closing an Amazon Web Services GovCloud (US) account in the Amazon Web
+%% Services GovCloud User Guide.
 %%
 %% For more information about closing accounts, see Closing an Amazon Web
 %% Services account in the Organizations User Guide.
@@ -309,24 +310,24 @@ close_account(Client, Input, Options)
 %% of the organization whose credentials made the request.
 %%
 %% This is an asynchronous request that Amazon Web Services performs in the
-%% background. Because `CreateAccount' operates asynchronously, it can return
-%% a successful completion message even though account initialization might
-%% still be in progress. You might need to wait a few minutes before you can
-%% successfully access the account. To check the status of the request, do
-%% one of the following:
+%% background. Because `CreateAccount' operates asynchronously, it can
+%% return a successful completion message even though account initialization
+%% might still be in progress. You might need to wait a few minutes before
+%% you can successfully access the account. To check the status of the
+%% request, do one of the following:
 %%
-%% <ul> <li> Use the `Id' value of the `CreateAccountStatus' response element
-%% from this operation to provide as a parameter to the
+%% <ul> <li> Use the `Id' value of the `CreateAccountStatus' response
+%% element from this operation to provide as a parameter to the
 %% `DescribeCreateAccountStatus' operation.
 %%
-%% </li> <li> Check the CloudTrail log for the `CreateAccountResult' event.
-%% For information on using CloudTrail with Organizations, see Logging and
-%% monitoring in Organizations in the Organizations User Guide.
+%% </li> <li> Check the CloudTrail log for the `CreateAccountResult'
+%% event. For information on using CloudTrail with Organizations, see Logging
+%% and monitoring in Organizations in the Organizations User Guide.
 %%
 %% </li> </ul> The user who calls the API to create an account must have the
-%% `organizations:CreateAccount' permission. If you enabled all features in
-%% the organization, Organizations creates the required service-linked role
-%% named `AWSServiceRoleForOrganizations'. For more information, see
+%% `organizations:CreateAccount' permission. If you enabled all features
+%% in the organization, Organizations creates the required service-linked
+%% role named `AWSServiceRoleForOrganizations'. For more information, see
 %% Organizations and Service-Linked Roles in the Organizations User Guide.
 %%
 %% If the request includes tags, then the requester must have the
@@ -382,8 +383,8 @@ create_account(Client, Input, Options)
 
 %% @doc This action is available if all of the following are true:
 %%
-%% <ul> <li> You're authorized to create accounts in the Amazon Web Services
-%% GovCloud (US) Region.
+%% <ul> <li> You're authorized to create accounts in the Amazon Web
+%% Services GovCloud (US) Region.
 %%
 %% For more information on the Amazon Web Services GovCloud (US) Region, see
 %% the Amazon Web Services GovCloud User Guide.
@@ -395,7 +396,8 @@ create_account(Client, Input, Options)
 %% </li> <li> You call this action from the management account of your
 %% organization in the commercial Region.
 %%
-%% </li> <li> You have the `organizations:CreateGovCloudAccount' permission.
+%% </li> <li> You have the `organizations:CreateGovCloudAccount'
+%% permission.
 %%
 %% </li> </ul> Organizations automatically creates the required
 %% service-linked role named `AWSServiceRoleForOrganizations'. For more
@@ -428,28 +430,31 @@ create_account(Client, Input, Options)
 %% GovCloud (US) to join an organization, see Organizations in the Amazon Web
 %% Services GovCloud User Guide.
 %%
-%% Calling `CreateGovCloudAccount' is an asynchronous request that Amazon Web
-%% Services performs in the background. Because `CreateGovCloudAccount'
-%% operates asynchronously, it can return a successful completion message
-%% even though account initialization might still be in progress. You might
-%% need to wait a few minutes before you can successfully access the account.
-%% To check the status of the request, do one of the following:
+%% Calling `CreateGovCloudAccount' is an asynchronous request that Amazon
+%% Web Services performs in the background. Because
+%% `CreateGovCloudAccount' operates asynchronously, it can return a
+%% successful completion message even though account initialization might
+%% still be in progress. You might need to wait a few minutes before you can
+%% successfully access the account. To check the status of the request, do
+%% one of the following:
 %%
-%% <ul> <li> Use the `OperationId' response element from this operation to
-%% provide as a parameter to the `DescribeCreateAccountStatus' operation.
+%% <ul> <li> Use the `OperationId' response element from this operation
+%% to provide as a parameter to the `DescribeCreateAccountStatus'
+%% operation.
 %%
-%% </li> <li> Check the CloudTrail log for the `CreateAccountResult' event.
-%% For information on using CloudTrail with Organizations, see Monitoring the
-%% Activity in Your Organization in the Organizations User Guide.
+%% </li> <li> Check the CloudTrail log for the `CreateAccountResult'
+%% event. For information on using CloudTrail with Organizations, see
+%% Monitoring the Activity in Your Organization in the Organizations User
+%% Guide.
 %%
 %% </li> </ul>
 %%
-%% When you call the `CreateGovCloudAccount' action, you create two accounts:
-%% a standalone account in the Amazon Web Services GovCloud (US) Region and
-%% an associated account in the commercial Region for billing and support
-%% purposes. The account in the commercial Region is automatically a member
-%% of the organization whose credentials made the request. Both accounts are
-%% associated with the same email address.
+%% When you call the `CreateGovCloudAccount' action, you create two
+%% accounts: a standalone account in the Amazon Web Services GovCloud (US)
+%% Region and an associated account in the commercial Region for billing and
+%% support purposes. The account in the commercial Region is automatically a
+%% member of the organization whose credentials made the request. Both
+%% accounts are associated with the same email address.
 %%
 %% A role is created in the new account in the commercial Region that allows
 %% the management account in the organization in the commercial Region to
@@ -480,12 +485,12 @@ create_account(Client, Input, Options)
 %% your organization is still initializing, wait one hour and then try again.
 %% If the error persists, contact Amazon Web Services Support.
 %%
-%% Using `CreateGovCloudAccount' to create multiple temporary accounts isn't
-%% recommended. You can only close an account from the Amazon Web Services
-%% Billing and Cost Management console, and you must be signed in as the root
-%% user. For information on the requirements and process for closing an
-%% account, see Closing an Amazon Web Services account in the Organizations
-%% User Guide.
+%% Using `CreateGovCloudAccount' to create multiple temporary accounts
+%% isn't recommended. You can only close an account from the Amazon Web
+%% Services Billing and Cost Management console, and you must be signed in as
+%% the root user. For information on the requirements and process for closing
+%% an account, see Closing an Amazon Web Services account in the
+%% Organizations User Guide.
 %%
 %% When you create a member account with this operation, you can choose
 %% whether to create the account with the IAM User and Role Access to Billing
@@ -507,16 +512,16 @@ create_gov_cloud_account(Client, Input, Options)
 %% automatically becomes the management account of the new organization.
 %%
 %% This operation must be called using credentials from the account that is
-%% to become the new organization's management account. The principal must
-%% also have the relevant IAM permissions.
+%% to become the new organization's management account. The principal
+%% must also have the relevant IAM permissions.
 %%
-%% By default (or if you set the `FeatureSet' parameter to `ALL'), the new
-%% organization is created with all features enabled and service control
-%% policies automatically enabled in the root. If you instead choose to
-%% create the organization supporting only the consolidated billing features
-%% by setting the `FeatureSet' parameter to `CONSOLIDATED_BILLING"', no
-%% policy types are enabled by default, and you can't use organization
-%% policies
+%% By default (or if you set the `FeatureSet' parameter to `ALL'),
+%% the new organization is created with all features enabled and service
+%% control policies automatically enabled in the root. If you instead choose
+%% to create the organization supporting only the consolidated billing
+%% features by setting the `FeatureSet' parameter to
+%% `CONSOLIDATED_BILLING&quot;', no policy types are enabled by default,
+%% and you can't use organization policies
 create_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_organization(Client, Input, []).
@@ -567,8 +572,8 @@ create_policy(Client, Input, Options)
 
 %% @doc Declines a handshake request.
 %%
-%% This sets the handshake state to `DECLINED' and effectively deactivates
-%% the request.
+%% This sets the handshake state to `DECLINED' and effectively
+%% deactivates the request.
 %%
 %% This operation can be called only from the account that received the
 %% handshake. The originator of the handshake can use `CancelHandshake'
@@ -711,9 +716,9 @@ describe_effective_policy(Client, Input, Options)
 %% The handshake ID comes from the response to the original
 %% `InviteAccountToOrganization' operation that generated the handshake.
 %%
-%% You can access handshakes that are `ACCEPTED', `DECLINED', or `CANCELED'
-%% for only 30 days after they change to that state. They're then deleted and
-%% no longer accessible.
+%% You can access handshakes that are `ACCEPTED', `DECLINED', or
+%% `CANCELED' for only 30 days after they change to that state.
+%% They're then deleted and no longer accessible.
 %%
 %% This operation can be called from any account in the organization.
 describe_handshake(Client, Input)
@@ -723,8 +728,8 @@ describe_handshake(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHandshake">>, Input, Options).
 
-%% @doc Retrieves information about the organization that the user's account
-%% belongs to.
+%% @doc Retrieves information about the organization that the user's
+%% account belongs to.
 %%
 %% This operation can be called from any account in the organization.
 %%
@@ -782,14 +787,15 @@ describe_resource_policy(Client, Input, Options)
 %% roles in affected accounts are immediate.
 %%
 %% Every root, OU, and account must have at least one SCP attached. If you
-%% want to replace the default `FullAWSAccess' policy with an SCP that limits
-%% the permissions that can be delegated, you must attach the replacement SCP
-%% before you can remove the default SCP. This is the authorization strategy
-%% of an "allow list". If you instead attach a second SCP and leave the
-%% `FullAWSAccess' SCP still attached, and specify `"Effect": "Deny"' in the
-%% second SCP to override the `"Effect": "Allow"' in the `FullAWSAccess'
-%% policy (or any other attached SCP), you're using the authorization
-%% strategy of a "deny list".
+%% want to replace the default `FullAWSAccess' policy with an SCP that
+%% limits the permissions that can be delegated, you must attach the
+%% replacement SCP before you can remove the default SCP. This is the
+%% authorization strategy of an &quot;allow list&quot;. If you instead attach
+%% a second SCP and leave the `FullAWSAccess' SCP still attached, and
+%% specify `&quot;Effect&quot;: &quot;Deny&quot;' in the second SCP to
+%% override the `&quot;Effect&quot;: &quot;Allow&quot;' in the
+%% `FullAWSAccess' policy (or any other attached SCP), you're using
+%% the authorization strategy of a &quot;deny list&quot;.
 %%
 %% This operation can be called only from the organization's management
 %% account.
@@ -826,10 +832,10 @@ detach_policy(Client, Input, Options)
 %% actions to occur:
 %%
 %% The service can no longer create a service-linked role in the accounts in
-%% your organization. This means that the service can't perform operations on
-%% your behalf on any new accounts in your organization. The service can
-%% still perform operations in older accounts until the service completes its
-%% clean-up from Organizations.
+%% your organization. This means that the service can't perform
+%% operations on your behalf on any new accounts in your organization. The
+%% service can still perform operations in older accounts until the service
+%% completes its clean-up from Organizations.
 %%
 %% The service can no longer perform tasks in the member accounts in the
 %% organization, unless those operations are explicitly permitted by the IAM
@@ -842,15 +848,16 @@ detach_policy(Client, Input, Options)
 %% organization but leave any historical data and configuration in place to
 %% support a possible re-enabling of the integration.
 %%
-%% Using the other service's console or commands to disable the integration
-%% ensures that the other service is aware that it can clean up any resources
-%% that are required only for the integration. How the service cleans up its
-%% resources in the organization's accounts depends on that service. For more
-%% information, see the documentation for the other Amazon Web Services
-%% service.
+%% Using the other service's console or commands to disable the
+%% integration ensures that the other service is aware that it can clean up
+%% any resources that are required only for the integration. How the service
+%% cleans up its resources in the organization's accounts depends on that
+%% service. For more information, see the documentation for the other Amazon
+%% Web Services service.
 %%
-%% After you perform the `DisableAWSServiceAccess' operation, the specified
-%% service can no longer perform operations in your organization's accounts
+%% After you perform the `DisableAWSServiceAccess' operation, the
+%% specified service can no longer perform operations in your
+%% organization's accounts
 %%
 %% For more information about integrating other services with Organizations,
 %% including the list of services that work with Organizations, see
@@ -878,8 +885,8 @@ disable_aws_service_access(Client, Input, Options)
 %% background. If you disable a policy type for a root, it still appears
 %% enabled for the organization if all features are enabled for the
 %% organization. Amazon Web Services recommends that you first use
-%% `ListRoots' to see the status of policy types for a specified root, and
-%% then use this operation.
+%% `ListRoots' to see the status of policy types for a specified root,
+%% and then use this operation.
 %%
 %% This operation can be called only from the organization's management
 %% account.
@@ -897,10 +904,10 @@ disable_policy_type(Client, Input, Options)
 %%
 %% This enables the use of organization policies that can restrict the
 %% services and actions that can be called in each account. Until you enable
-%% all features, you have access only to consolidated billing, and you can't
-%% use any of the advanced account administration features that Organizations
-%% supports. For more information, see Enabling All Features in Your
-%% Organization in the Organizations User Guide.
+%% all features, you have access only to consolidated billing, and you
+%% can't use any of the advanced account administration features that
+%% Organizations supports. For more information, see Enabling All Features in
+%% Your Organization in the Organizations User Guide.
 %%
 %% This operation is required only for organizations that were created
 %% explicitly with only the consolidated billing features enabled. Calling
@@ -915,8 +922,9 @@ disable_policy_type(Client, Input, Options)
 %% `ListRoots'.
 %%
 %% After all invited member accounts accept the handshake, you finalize the
-%% feature set change by accepting the handshake that contains `"Action":
-%% "ENABLE_ALL_FEATURES"'. This completes the change.
+%% feature set change by accepting the handshake that contains
+%% `&quot;Action&quot;: &quot;ENABLE_ALL_FEATURES&quot;'. This completes
+%% the change.
 %%
 %% After you enable all features in your organization, the management account
 %% in the organization can apply policies on all member accounts. These
@@ -947,8 +955,8 @@ enable_all_features(Client, Input, Options)
 %% that are provided by the specified service. Doing so ensures that the
 %% service is aware that it can create the resources that are required for
 %% the integration. How the service creates those resources in the
-%% organization's accounts depends on that service. For more information, see
-%% the documentation for the other Amazon Web Services service.
+%% organization's accounts depends on that service. For more information,
+%% see the documentation for the other Amazon Web Services service.
 %%
 %% For more information about enabling services to integrate with
 %% Organizations, see Integrating Organizations with Other Amazon Web
@@ -970,9 +978,9 @@ enable_aws_service_access(Client, Input, Options)
 %% You can undo this by using the `DisablePolicyType' operation.
 %%
 %% This is an asynchronous request that Amazon Web Services performs in the
-%% background. Amazon Web Services recommends that you first use `ListRoots'
-%% to see the status of policy types for a specified root, and then use this
-%% operation.
+%% background. Amazon Web Services recommends that you first use
+%% `ListRoots' to see the status of policy types for a specified root,
+%% and then use this operation.
 %%
 %% This operation can be called only from the organization's management
 %% account.
@@ -991,16 +999,16 @@ enable_policy_type(Client, Input, Options)
 %% member account.
 %%
 %% Organizations sends email on your behalf to the email address that is
-%% associated with the other account's owner. The invitation is implemented
-%% as a `Handshake' whose details are in the response.
+%% associated with the other account's owner. The invitation is
+%% implemented as a `Handshake' whose details are in the response.
 %%
 %% You can invite Amazon Web Services accounts only from the same seller as
 %% the management account. For example, if your organization's management
 %% account was created by Amazon Internet Services Pvt. Ltd (AISPL), an
 %% Amazon Web Services seller in India, you can invite only other AISPL
-%% accounts to your organization. You can't combine accounts from AISPL and
-%% Amazon Web Services or from any other Amazon Web Services seller. For more
-%% information, see Consolidated Billing in India.
+%% accounts to your organization. You can't combine accounts from AISPL
+%% and Amazon Web Services or from any other Amazon Web Services seller. For
+%% more information, see Consolidated Billing in India.
 %%
 %% If you receive an exception that indicates that you exceeded your account
 %% limits for the organization or that the operation failed because your
@@ -1084,11 +1092,11 @@ leave_organization(Client, Input, Options)
 %% To request only the accounts in a specified root or organizational unit
 %% (OU), use the `ListAccountsForParent' operation instead.
 %%
-%% Always check the `NextToken' response parameter for a `null' value when
-%% calling a `List*' operation. These operations can occasionally return an
-%% empty set of results even when there are more results available. The
-%% `NextToken' response parameter value is `null' only when there are no more
-%% results to display.
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a `List*' operation. These operations can occasionally
+%% return an empty set of results even when there are more results available.
+%% The `NextToken' response parameter value is `null' only when there
+%% are no more results to display.
 %%
 %% This operation can be called only from the organization's management
 %% account or by a member account that is a delegated administrator for an
@@ -1103,16 +1111,16 @@ list_accounts(Client, Input, Options)
 %% @doc Lists the accounts in an organization that are contained by the
 %% specified target root or organizational unit (OU).
 %%
-%% If you specify the root, you get a list of all the accounts that aren't in
-%% any OU. If you specify an OU, you get a list of all the accounts in only
-%% that OU and not in any child OUs. To get a list of all accounts in the
-%% organization, use the `ListAccounts' operation.
+%% If you specify the root, you get a list of all the accounts that
+%% aren't in any OU. If you specify an OU, you get a list of all the
+%% accounts in only that OU and not in any child OUs. To get a list of all
+%% accounts in the organization, use the `ListAccounts' operation.
 %%
-%% Always check the `NextToken' response parameter for a `null' value when
-%% calling a `List*' operation. These operations can occasionally return an
-%% empty set of results even when there are more results available. The
-%% `NextToken' response parameter value is `null' only when there are no more
-%% results to display.
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a `List*' operation. These operations can occasionally
+%% return an empty set of results even when there are more results available.
+%% The `NextToken' response parameter value is `null' only when there
+%% are no more results to display.
 %%
 %% This operation can be called only from the organization's management
 %% account or by a member account that is a delegated administrator for an
@@ -1149,14 +1157,14 @@ list_aws_service_access_for_organization(Client, Input, Options)
 %% @doc Lists all of the organizational units (OUs) or accounts that are
 %% contained in the specified parent OU or root.
 %%
-%% This operation, along with `ListParents' enables you to traverse the tree
-%% structure that makes up this root.
+%% This operation, along with `ListParents' enables you to traverse the
+%% tree structure that makes up this root.
 %%
-%% Always check the `NextToken' response parameter for a `null' value when
-%% calling a `List*' operation. These operations can occasionally return an
-%% empty set of results even when there are more results available. The
-%% `NextToken' response parameter value is `null' only when there are no more
-%% results to display.
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a `List*' operation. These operations can occasionally
+%% return an empty set of results even when there are more results available.
+%% The `NextToken' response parameter value is `null' only when there
+%% are no more results to display.
 %%
 %% This operation can be called only from the organization's management
 %% account or by a member account that is a delegated administrator for an
@@ -1171,11 +1179,11 @@ list_children(Client, Input, Options)
 %% @doc Lists the account creation requests that match the specified status
 %% that is currently being tracked for the organization.
 %%
-%% Always check the `NextToken' response parameter for a `null' value when
-%% calling a `List*' operation. These operations can occasionally return an
-%% empty set of results even when there are more results available. The
-%% `NextToken' response parameter value is `null' only when there are no more
-%% results to display.
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a `List*' operation. These operations can occasionally
+%% return an empty set of results even when there are more results available.
+%% The `NextToken' response parameter value is `null' only when there
+%% are no more results to display.
 %%
 %% This operation can be called only from the organization's management
 %% account or by a member account that is a delegated administrator for an
@@ -1216,15 +1224,16 @@ list_delegated_services_for_account(Client, Input, Options)
 %% @doc Lists the current handshakes that are associated with the account of
 %% the requesting user.
 %%
-%% Handshakes that are `ACCEPTED', `DECLINED', `CANCELED', or `EXPIRED'
-%% appear in the results of this API for only 30 days after changing to that
-%% state. After that, they're deleted and no longer accessible.
+%% Handshakes that are `ACCEPTED', `DECLINED', `CANCELED', or
+%% `EXPIRED' appear in the results of this API for only 30 days after
+%% changing to that state. After that, they're deleted and no longer
+%% accessible.
 %%
-%% Always check the `NextToken' response parameter for a `null' value when
-%% calling a `List*' operation. These operations can occasionally return an
-%% empty set of results even when there are more results available. The
-%% `NextToken' response parameter value is `null' only when there are no more
-%% results to display.
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a `List*' operation. These operations can occasionally
+%% return an empty set of results even when there are more results available.
+%% The `NextToken' response parameter value is `null' only when there
+%% are no more results to display.
 %%
 %% This operation can be called from any account in the organization.
 list_handshakes_for_account(Client, Input)
@@ -1237,18 +1246,20 @@ list_handshakes_for_account(Client, Input, Options)
 %% @doc Lists the handshakes that are associated with the organization that
 %% the requesting user is part of.
 %%
-%% The `ListHandshakesForOrganization' operation returns a list of handshake
-%% structures. Each structure contains details and status about a handshake.
+%% The `ListHandshakesForOrganization' operation returns a list of
+%% handshake structures. Each structure contains details and status about a
+%% handshake.
 %%
-%% Handshakes that are `ACCEPTED', `DECLINED', `CANCELED', or `EXPIRED'
-%% appear in the results of this API for only 30 days after changing to that
-%% state. After that, they're deleted and no longer accessible.
+%% Handshakes that are `ACCEPTED', `DECLINED', `CANCELED', or
+%% `EXPIRED' appear in the results of this API for only 30 days after
+%% changing to that state. After that, they're deleted and no longer
+%% accessible.
 %%
-%% Always check the `NextToken' response parameter for a `null' value when
-%% calling a `List*' operation. These operations can occasionally return an
-%% empty set of results even when there are more results available. The
-%% `NextToken' response parameter value is `null' only when there are no more
-%% results to display.
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a `List*' operation. These operations can occasionally
+%% return an empty set of results even when there are more results available.
+%% The `NextToken' response parameter value is `null' only when there
+%% are no more results to display.
 %%
 %% This operation can be called only from the organization's management
 %% account or by a member account that is a delegated administrator for an
@@ -1263,11 +1274,11 @@ list_handshakes_for_organization(Client, Input, Options)
 %% @doc Lists the organizational units (OUs) in a parent organizational unit
 %% or root.
 %%
-%% Always check the `NextToken' response parameter for a `null' value when
-%% calling a `List*' operation. These operations can occasionally return an
-%% empty set of results even when there are more results available. The
-%% `NextToken' response parameter value is `null' only when there are no more
-%% results to display.
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a `List*' operation. These operations can occasionally
+%% return an empty set of results even when there are more results available.
+%% The `NextToken' response parameter value is `null' only when there
+%% are no more results to display.
 %%
 %% This operation can be called only from the organization's management
 %% account or by a member account that is a delegated administrator for an
@@ -1282,14 +1293,14 @@ list_organizational_units_for_parent(Client, Input, Options)
 %% @doc Lists the root or organizational units (OUs) that serve as the
 %% immediate parent of the specified child OU or account.
 %%
-%% This operation, along with `ListChildren' enables you to traverse the tree
-%% structure that makes up this root.
+%% This operation, along with `ListChildren' enables you to traverse the
+%% tree structure that makes up this root.
 %%
-%% Always check the `NextToken' response parameter for a `null' value when
-%% calling a `List*' operation. These operations can occasionally return an
-%% empty set of results even when there are more results available. The
-%% `NextToken' response parameter value is `null' only when there are no more
-%% results to display.
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a `List*' operation. These operations can occasionally
+%% return an empty set of results even when there are more results available.
+%% The `NextToken' response parameter value is `null' only when there
+%% are no more results to display.
 %%
 %% This operation can be called only from the organization's management
 %% account or by a member account that is a delegated administrator for an
@@ -1306,11 +1317,11 @@ list_parents(Client, Input, Options)
 %% @doc Retrieves the list of all policies in an organization of a specified
 %% type.
 %%
-%% Always check the `NextToken' response parameter for a `null' value when
-%% calling a `List*' operation. These operations can occasionally return an
-%% empty set of results even when there are more results available. The
-%% `NextToken' response parameter value is `null' only when there are no more
-%% results to display.
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a `List*' operation. These operations can occasionally
+%% return an empty set of results even when there are more results available.
+%% The `NextToken' response parameter value is `null' only when there
+%% are no more results to display.
 %%
 %% This operation can be called only from the organization's management
 %% account or by a member account that is a delegated administrator for an
@@ -1328,11 +1339,11 @@ list_policies(Client, Input, Options)
 %% You must specify the policy type that you want included in the returned
 %% list.
 %%
-%% Always check the `NextToken' response parameter for a `null' value when
-%% calling a `List*' operation. These operations can occasionally return an
-%% empty set of results even when there are more results available. The
-%% `NextToken' response parameter value is `null' only when there are no more
-%% results to display.
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a `List*' operation. These operations can occasionally
+%% return an empty set of results even when there are more results available.
+%% The `NextToken' response parameter value is `null' only when there
+%% are no more results to display.
 %%
 %% This operation can be called only from the organization's management
 %% account or by a member account that is a delegated administrator for an
@@ -1346,11 +1357,11 @@ list_policies_for_target(Client, Input, Options)
 
 %% @doc Lists the roots that are defined in the current organization.
 %%
-%% Always check the `NextToken' response parameter for a `null' value when
-%% calling a `List*' operation. These operations can occasionally return an
-%% empty set of results even when there are more results available. The
-%% `NextToken' response parameter value is `null' only when there are no more
-%% results to display.
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a `List*' operation. These operations can occasionally
+%% return an empty set of results even when there are more results available.
+%% The `NextToken' response parameter value is `null' only when there
+%% are no more results to display.
 %%
 %% This operation can be called only from the organization's management
 %% account or by a member account that is a delegated administrator for an
@@ -1394,11 +1405,11 @@ list_tags_for_resource(Client, Input, Options)
 %% @doc Lists all the roots, organizational units (OUs), and accounts that
 %% the specified policy is attached to.
 %%
-%% Always check the `NextToken' response parameter for a `null' value when
-%% calling a `List*' operation. These operations can occasionally return an
-%% empty set of results even when there are more results available. The
-%% `NextToken' response parameter value is `null' only when there are no more
-%% results to display.
+%% Always check the `NextToken' response parameter for a `null' value
+%% when calling a `List*' operation. These operations can occasionally
+%% return an empty set of results even when there are more results available.
+%% The `NextToken' response parameter value is `null' only when there
+%% are no more results to display.
 %%
 %% This operation can be called only from the organization's management
 %% account or by a member account that is a delegated administrator for an
@@ -1457,15 +1468,15 @@ register_delegated_administrator(Client, Input, Options)
 
 %% @doc Removes the specified account from the organization.
 %%
-%% The removed account becomes a standalone account that isn't a member of
-%% any organization. It's no longer subject to any policies and is
+%% The removed account becomes a standalone account that isn't a member
+%% of any organization. It's no longer subject to any policies and is
 %% responsible for its own bill payments. The organization's management
 %% account is no longer charged for any expenses accrued by the member
 %% account after it's removed from the organization.
 %%
 %% This operation can be called only from the organization's management
-%% account. Member accounts can remove themselves with `LeaveOrganization'
-%% instead.
+%% account. Member accounts can remove themselves with
+%% `LeaveOrganization' instead.
 %%
 %% You can remove an account from your organization only if the account is
 %% configured with the information required to operate as a standalone
@@ -1476,10 +1487,11 @@ register_delegated_administrator(Client, Input, Options)
 %% verify the required contact information, and provide a current payment
 %% method. Amazon Web Services uses the payment method to charge for any
 %% billable (not free tier) Amazon Web Services activity that occurs while
-%% the account isn't attached to an organization. To remove an account that
-%% doesn't yet have this information, you must sign in as the member account
-%% and follow the steps at To leave an organization when all required account
-%% information has not yet been provided in the Organizations User Guide.
+%% the account isn't attached to an organization. To remove an account
+%% that doesn't yet have this information, you must sign in as the member
+%% account and follow the steps at To leave an organization when all required
+%% account information has not yet been provided in the Organizations User
+%% Guide.
 %%
 %% The account that you want to leave must not be a delegated administrator
 %% account for any Amazon Web Services service enabled for your organization.
@@ -1542,8 +1554,8 @@ untag_resource(Client, Input, Options)
 
 %% @doc Renames the specified organizational unit (OU).
 %%
-%% The ID and ARN don't change. The child OUs and accounts remain in place,
-%% and any attached policies of the OU remain attached.
+%% The ID and ARN don't change. The child OUs and accounts remain in
+%% place, and any attached policies of the OU remain attached.
 %%
 %% This operation can be called only from the organization's management
 %% account.
@@ -1556,8 +1568,8 @@ update_organizational_unit(Client, Input, Options)
 
 %% @doc Updates an existing policy with a new name, description, or content.
 %%
-%% If you don't supply any parameter, that value remains unchanged. You can't
-%% change a policy's type.
+%% If you don't supply any parameter, that value remains unchanged. You
+%% can't change a policy's type.
 %%
 %% This operation can be called only from the organization's management
 %% account.

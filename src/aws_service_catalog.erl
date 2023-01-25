@@ -212,8 +212,8 @@ associate_budget_with_resource(Client, Input, Options)
 %% If you share the portfolio with principal name sharing enabled, the
 %% `PrincipalARN' association is included in the share.
 %%
-%% The `PortfolioID', `PrincipalARN', and `PrincipalType' parameters are
-%% required.
+%% The `PortfolioID', `PrincipalARN', and `PrincipalType'
+%% parameters are required.
 %%
 %% You can associate a maximum of 10 Principals with a portfolio using
 %% `PrincipalType' as `IAM_PATTERN'
@@ -226,9 +226,9 @@ associate_budget_with_resource(Client, Input, Options)
 %% principal name association for the portfolio. Although this user may not
 %% know which principal names are associated through Service Catalog, they
 %% may be able to guess the user. If this potential escalation path is a
-%% concern, then Service Catalog recommends using `PrincipalType' as `IAM'.
-%% With this configuration, the `PrincipalARN' must already exist in the
-%% recipient account before it can be associated.
+%% concern, then Service Catalog recommends using `PrincipalType' as
+%% `IAM'. With this configuration, the `PrincipalARN' must already
+%% exist in the recipient account before it can be associated.
 associate_principal_with_portfolio(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_principal_with_portfolio(Client, Input, []).
@@ -328,8 +328,8 @@ create_portfolio(Client, Input, Options)
 %% Note that if a delegated admin is de-registered, they can no longer create
 %% portfolio shares.
 %%
-%% `AWSOrganizationsAccess' must be enabled in order to create a portfolio
-%% share to an organization node.
+%% `AWSOrganizationsAccess' must be enabled in order to create a
+%% portfolio share to an organization node.
 %%
 %% You can't share a shared resource, including portfolios that contain a
 %% shared product.
@@ -347,9 +347,9 @@ create_portfolio(Client, Input, Options)
 %% principal name association for the portfolio. Although this user may not
 %% know which principal names are associated through Service Catalog, they
 %% may be able to guess the user. If this potential escalation path is a
-%% concern, then Service Catalog recommends using `PrincipalType' as `IAM'.
-%% With this configuration, the `PrincipalARN' must already exist in the
-%% recipient account before it can be associated.
+%% concern, then Service Catalog recommends using `PrincipalType' as
+%% `IAM'. With this configuration, the `PrincipalARN' must already
+%% exist in the recipient account before it can be associated.
 create_portfolio_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_portfolio_share(Client, Input, []).
@@ -362,9 +362,9 @@ create_portfolio_share(Client, Input, Options)
 %% A delegated admin is authorized to invoke this command.
 %%
 %% The user or role that performs this operation must have the
-%% `cloudformation:GetTemplate' IAM policy permission. This policy permission
-%% is required when using the `ImportFromPhysicalId' template source in the
-%% information data section.
+%% `cloudformation:GetTemplate' IAM policy permission. This policy
+%% permission is required when using the `ImportFromPhysicalId' template
+%% source in the information data section.
 create_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_product(Client, Input, []).
@@ -399,9 +399,9 @@ create_provisioned_product_plan(Client, Input, Options)
 %% with you.
 %%
 %% The user or role that performs this operation must have the
-%% `cloudformation:GetTemplate' IAM policy permission. This policy permission
-%% is required when using the `ImportFromPhysicalId' template source in the
-%% information data section.
+%% `cloudformation:GetTemplate' IAM policy permission. This policy
+%% permission is required when using the `ImportFromPhysicalId' template
+%% source in the information data section.
 create_provisioning_artifact(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_provisioning_artifact(Client, Input, []).
@@ -625,10 +625,10 @@ describe_provisioning_artifact(Client, Input, Options)
 %% If the output contains a TagOption key with an empty list of values, there
 %% is a TagOption conflict for that key. The end user cannot take action to
 %% fix the conflict, and launch is not blocked. In subsequent calls to
-%% `ProvisionProduct', do not include conflicted TagOption keys as tags, or
-%% this causes the error "Parameter validation failed: Missing required
-%% parameter in Tags[N]:Value". Tag the provisioned product with the value
-%% `sc-tagoption-conflict-portfolioId-productId'.
+%% `ProvisionProduct', do not include conflicted TagOption keys as tags,
+%% or this causes the error &quot;Parameter validation failed: Missing
+%% required parameter in Tags[N]:Value&quot;. Tag the provisioned product
+%% with the value `sc-tagoption-conflict-portfolioId-productId'.
 describe_provisioning_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_provisioning_parameters(Client, Input, []).
@@ -646,8 +646,8 @@ describe_provisioning_parameters(Client, Input, Options)
 %% `UpdateProvisionedProductProperties', the new owner will be able to
 %% describe all past records for that product. The previous owner will no
 %% longer be able to describe the records, but will be able to use
-%% `ListRecordHistory' to see the product's history from when he was the
-%% owner.
+%% `ListRecordHistory' to see the product's history from when he was
+%% the owner.
 describe_record(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_record(Client, Input, []).
@@ -719,10 +719,10 @@ disassociate_budget_from_resource(Client, Input, Options)
 %% portfolio.
 %%
 %% The `PrincipalType' and `PrincipalARN' must match the
-%% `AssociatePrincipalWithPortfolio' call request details. For example, to
-%% disassociate an association created with a `PrincipalARN' of
-%% `PrincipalType' IAM you must use the `PrincipalType' IAM when calling
-%% `DisassociatePrincipalFromPortfolio'.
+%% `AssociatePrincipalWithPortfolio' call request details. For example,
+%% to disassociate an association created with a `PrincipalARN' of
+%% `PrincipalType' IAM you must use the `PrincipalType' IAM when
+%% calling `DisassociatePrincipalFromPortfolio'.
 %%
 %% For portfolios that have been shared with principal name sharing enabled:
 %% after disassociating a principal, share recipient accounts will no longer
@@ -769,8 +769,8 @@ disassociate_tag_option_from_resource(Client, Input, Options)
 %% API can only be called by the management account in the organization.
 %%
 %% When you call this API, Service Catalog calls
-%% `organizations:EnableAWSServiceAccess' on your behalf so that your shares
-%% stay in sync with any changes in your Organizations structure.
+%% `organizations:EnableAWSServiceAccess' on your behalf so that your
+%% shares stay in sync with any changes in your Organizations structure.
 %%
 %% Note that a delegated administrator is not authorized to invoke
 %% `EnableAWSOrganizationsAccess'.
@@ -820,8 +820,8 @@ get_aws_organizations_access_status(Client, Input, Options)
     request(Client, <<"GetAWSOrganizationsAccessStatus">>, Input, Options).
 
 %% @doc This API takes either a `ProvisonedProductId' or a
-%% `ProvisionedProductName', along with a list of one or more output keys,
-%% and responds with the key/value pairs of those outputs.
+%% `ProvisionedProductName', along with a list of one or more output
+%% keys, and responds with the key/value pairs of those outputs.
 get_provisioned_product_outputs(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_provisioned_product_outputs(Client, Input, []).
@@ -841,14 +841,15 @@ get_provisioned_product_outputs(Client, Input, Options)
 %%
 %% The CloudFormation stack must have one of the following statuses to be
 %% imported: `CREATE_COMPLETE', `UPDATE_COMPLETE',
-%% `UPDATE_ROLLBACK_COMPLETE', `IMPORT_COMPLETE', `IMPORT_ROLLBACK_COMPLETE'.
+%% `UPDATE_ROLLBACK_COMPLETE', `IMPORT_COMPLETE',
+%% `IMPORT_ROLLBACK_COMPLETE'.
 %%
 %% Import of the resource requires that the CloudFormation stack template
 %% matches the associated Service Catalog product provisioning artifact.
 %%
 %% The user or role that performs this operation must have the
-%% `cloudformation:GetTemplate' and `cloudformation:DescribeStacks' IAM
-%% policy permissions.
+%% `cloudformation:GetTemplate' and `cloudformation:DescribeStacks'
+%% IAM policy permissions.
 import_as_provisioned_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_as_provisioned_product(Client, Input, []).
@@ -859,8 +860,8 @@ import_as_provisioned_product(Client, Input, Options)
 %% @doc Lists all imported portfolios for which account-to-account shares
 %% were accepted by this account.
 %%
-%% By specifying the `PortfolioShareType', you can list portfolios for which
-%% organizational shares were accepted by this account.
+%% By specifying the `PortfolioShareType', you can list portfolios for
+%% which organizational shares were accepted by this account.
 list_accepted_portfolio_shares(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_accepted_portfolio_shares(Client, Input, []).
@@ -1037,8 +1038,8 @@ list_tag_options(Client, Input, Options)
 %%
 %% If the request contains a tag key with an empty list of values, there is a
 %% tag conflict for that key. Do not include conflicted keys as tags, or this
-%% causes the error "Parameter validation failed: Missing required parameter
-%% in Tags[N]:Value".
+%% causes the error &quot;Parameter validation failed: Missing required
+%% parameter in Tags[N]:Value&quot;.
 provision_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     provision_product(Client, Input, []).
@@ -1089,7 +1090,8 @@ search_products_as_admin(Client, Input, Options)
 %%
 %% Here is a CLI example: ` '
 %%
-%% `aws servicecatalog search-provisioned-products --sort-by createdTime '
+%% `aws servicecatalog search-provisioned-products --sort-by createdTime
+%% '
 search_provisioned_products(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_provisioned_products(Client, Input, []).
@@ -1138,8 +1140,8 @@ update_portfolio(Client, Input, Options)
 %% entities. In this case, you must wait for the portfolio share to be
 %% COMPLETED.
 %%
-%% You must provide the `accountId' or organization node in the input, but
-%% not both.
+%% You must provide the `accountId' or organization node in the input,
+%% but not both.
 %%
 %% If the portfolio is shared to both an external account and an organization
 %% node, and both shares need to be updated, you must invoke
@@ -1156,9 +1158,9 @@ update_portfolio(Client, Input, Options)
 %% principal name association for the portfolio. Although this user may not
 %% know which principal names are associated through Service Catalog, they
 %% may be able to guess the user. If this potential escalation path is a
-%% concern, then Service Catalog recommends using `PrincipalType' as `IAM'.
-%% With this configuration, the `PrincipalARN' must already exist in the
-%% recipient account before it can be associated.
+%% concern, then Service Catalog recommends using `PrincipalType' as
+%% `IAM'. With this configuration, the `PrincipalARN' must already
+%% exist in the recipient account before it can be associated.
 update_portfolio_share(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_portfolio_share(Client, Input, []).

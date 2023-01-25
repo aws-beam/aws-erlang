@@ -16,14 +16,14 @@
 %% are unique to the email channel and supplement the options provided by the
 %% Amazon Pinpoint API.
 %%
-%% If you're new to Amazon Pinpoint, you might find it helpful to also review
-%% the Amazon Pinpoint Developer Guide. The Amazon Pinpoint Developer Guide
-%% provides tutorials, code samples, and procedures that demonstrate how to
-%% use Amazon Pinpoint features programmatically and how to integrate Amazon
-%% Pinpoint functionality into mobile apps and other types of applications.
-%% The guide also provides information about key topics such as Amazon
-%% Pinpoint integration with other AWS services and the limits that apply to
-%% using the service.
+%% If you're new to Amazon Pinpoint, you might find it helpful to also
+%% review the Amazon Pinpoint Developer Guide. The Amazon Pinpoint Developer
+%% Guide provides tutorials, code samples, and procedures that demonstrate
+%% how to use Amazon Pinpoint features programmatically and how to integrate
+%% Amazon Pinpoint functionality into mobile apps and other types of
+%% applications. The guide also provides information about key topics such as
+%% Amazon Pinpoint integration with other AWS services and the limits that
+%% apply to using the service.
 %%
 %% The Amazon Pinpoint Email API is available in several AWS Regions and it
 %% provides an endpoint for each of these Regions. For a list of all the
@@ -247,8 +247,8 @@ create_dedicated_ip_pool(Client, Input0, Options0) ->
 %% that contains the content that you plan to send to your customers. Amazon
 %% Pinpoint then sends that message to special email addresses spread across
 %% several major email providers. After about 24 hours, the test is complete,
-%% and you can use the `GetDeliverabilityTestReport' operation to view the
-%% results of the test.
+%% and you can use the `GetDeliverabilityTestReport' operation to view
+%% the results of the test.
 create_deliverability_test_report(Client, Input) ->
     create_deliverability_test_report(Client, Input, []).
 create_deliverability_test_report(Client, Input0, Options0) ->
@@ -276,8 +276,8 @@ create_deliverability_test_report(Client, Input0, Options0) ->
 %% In Amazon Pinpoint, an identity is an email address or domain that you use
 %% when you send email. Before you can use an identity to send email with
 %% Amazon Pinpoint, you first have to verify it. By verifying an address, you
-%% demonstrate that you're the owner of the address, and that you've given
-%% Amazon Pinpoint permission to send email from the address.
+%% demonstrate that you're the owner of the address, and that you've
+%% given Amazon Pinpoint permission to send email from the address.
 %%
 %% When you verify an email address, Amazon Pinpoint sends an email to the
 %% address. Your email address is verified as soon as you follow the link in
@@ -472,8 +472,8 @@ get_blacklist_reports(Client, BlacklistItemNames, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get information about an existing configuration set, including the
-%% dedicated IP pool that it's associated with, whether or not it's enabled
-%% for sending email, and more.
+%% dedicated IP pool that it's associated with, whether or not it's
+%% enabled for sending email, and more.
 %%
 %% In Amazon Pinpoint, configuration sets are groups of rules that you can
 %% apply to the emails you send. You apply a configuration set to an email by
@@ -534,8 +534,8 @@ get_configuration_set_event_destinations(Client, ConfigurationSetName, QueryMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Get information about a dedicated IP address, including the name of
-%% the dedicated IP pool that it's associated with, as well information about
-%% the automatic warm-up process for the address.
+%% the dedicated IP pool that it's associated with, as well information
+%% about the automatic warm-up process for the address.
 get_dedicated_ip(Client, Ip)
   when is_map(Client) ->
     get_dedicated_ip(Client, Ip, #{}, #{}).
@@ -702,8 +702,8 @@ get_domain_statistics_report(Client, Domain, EndDate, StartDate, QueryMap, Heade
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides information about a specific identity associated with your
-%% Amazon Pinpoint account, including the identity's verification status, its
-%% DKIM authentication status, and its custom Mail-From settings.
+%% Amazon Pinpoint account, including the identity's verification status,
+%% its DKIM authentication status, and its custom Mail-From settings.
 get_email_identity(Client, EmailIdentity)
   when is_map(Client) ->
     get_email_identity(Client, EmailIdentity, #{}, #{}).
@@ -826,7 +826,8 @@ list_deliverability_test_reports(Client, QueryMap, HeadersMap, Options0)
 %% specific domain to send email during a specified time range.
 %%
 %% This data is available for a domain only if you enabled the Deliverability
-%% dashboard (`PutDeliverabilityDashboardOption' operation) for the domain.
+%% dashboard (`PutDeliverabilityDashboardOption' operation) for the
+%% domain.
 list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDate)
   when is_map(Client) ->
     list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDate, #{}, #{}).
@@ -1187,11 +1188,11 @@ put_email_identity_dkim_attributes(Client, EmailIdentity, Input0, Options0) ->
 %% header of the original email.
 %%
 %% When you disable feedback forwarding, Amazon Pinpoint sends notifications
-%% through other mechanisms, such as by notifying an Amazon SNS topic. You're
-%% required to have a method of tracking bounces and complaints. If you
-%% haven't set up another mechanism for receiving bounce or complaint
-%% notifications, Amazon Pinpoint sends an email notification when these
-%% events occur (even if this setting is disabled).
+%% through other mechanisms, such as by notifying an Amazon SNS topic.
+%% You're required to have a method of tracking bounces and complaints.
+%% If you haven't set up another mechanism for receiving bounce or
+%% complaint notifications, Amazon Pinpoint sends an email notification when
+%% these events occur (even if this setting is disabled).
 put_email_identity_feedback_attributes(Client, EmailIdentity, Input) ->
     put_email_identity_feedback_attributes(Client, EmailIdentity, Input, []).
 put_email_identity_feedback_attributes(Client, EmailIdentity, Input0, Options0) ->

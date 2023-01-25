@@ -196,8 +196,9 @@ disassociate_admin_account(Client, Input, Options)
 %% @doc Disassociates a Firewall Manager policy administrator from a
 %% third-party firewall tenant.
 %%
-%% When you call `DisassociateThirdPartyFirewall', the third-party firewall
-%% vendor deletes all of the firewalls that are associated with the account.
+%% When you call `DisassociateThirdPartyFirewall', the third-party
+%% firewall vendor deletes all of the firewalls that are associated with the
+%% account.
 disassociate_third_party_firewall(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_third_party_firewall(Client, Input, []).
@@ -239,9 +240,9 @@ get_apps_list(Client, Input, Options)
 %% </li> <li> Resources are considered noncompliant for Network Firewall
 %% policies if a firewall is missing in the VPC, if the firewall endpoint
 %% isn't set up in an expected Availability Zone and subnet, if a subnet
-%% created by the Firewall Manager doesn't have the expected route table, and
-%% for modifications to a firewall policy that violate the Firewall Manager
-%% policy's rules.
+%% created by the Firewall Manager doesn't have the expected route table,
+%% and for modifications to a firewall policy that violate the Firewall
+%% Manager policy's rules.
 %%
 %% </li> <li> Resources are considered noncompliant for DNS Firewall policies
 %% if a DNS Firewall rule group is missing from the rule group associations
@@ -328,8 +329,8 @@ list_apps_lists(Client, Input, Options)
 
 %% @doc Returns an array of `PolicyComplianceStatus' objects.
 %%
-%% Use `PolicyComplianceStatus' to get a summary of which member accounts are
-%% protected by the specified policy.
+%% Use `PolicyComplianceStatus' to get a summary of which member accounts
+%% are protected by the specified policy.
 list_compliance_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_compliance_status(Client, Input, []).
@@ -337,8 +338,8 @@ list_compliance_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListComplianceStatus">>, Input, Options).
 
-%% @doc Returns an array of resources in the organization's accounts that are
-%% available to be associated with a resource set.
+%% @doc Returns an array of resources in the organization's accounts that
+%% are available to be associated with a resource set.
 list_discovered_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_discovered_resources(Client, Input, []).
@@ -346,11 +347,11 @@ list_discovered_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDiscoveredResources">>, Input, Options).
 
-%% @doc Returns a `MemberAccounts' object that lists the member accounts in
-%% the administrator's Amazon Web Services organization.
+%% @doc Returns a `MemberAccounts' object that lists the member accounts
+%% in the administrator's Amazon Web Services organization.
 %%
-%% The `ListMemberAccounts' must be submitted by the account that is set as
-%% the Firewall Manager administrator.
+%% The `ListMemberAccounts' must be submitted by the account that is set
+%% as the Firewall Manager administrator.
 list_member_accounts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_member_accounts(Client, Input, []).
@@ -421,9 +422,9 @@ put_apps_list(Client, Input, Options)
 %% topic that Firewall Manager uses to record SNS logs.
 %%
 %% To perform this action outside of the console, you must configure the SNS
-%% topic to allow the Firewall Manager role `AWSServiceRoleForFMS' to publish
-%% SNS logs. For more information, see Firewall Manager required permissions
-%% for API actions in the Firewall Manager Developer Guide.
+%% topic to allow the Firewall Manager role `AWSServiceRoleForFMS' to
+%% publish SNS logs. For more information, see Firewall Manager required
+%% permissions for API actions in the Firewall Manager Developer Guide.
 put_notification_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_notification_channel(Client, Input, []).

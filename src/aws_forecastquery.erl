@@ -19,9 +19,9 @@
 %% criteria.
 %%
 %% The criteria is a key-value pair. The key is either `item_id' (or the
-%% equivalent non-timestamp, non-target field) from the `TARGET_TIME_SERIES'
-%% dataset, or one of the forecast dimensions specified as part of the
-%% `FeaturizationConfig' object.
+%% equivalent non-timestamp, non-target field) from the
+%% `TARGET_TIME_SERIES' dataset, or one of the forecast dimensions
+%% specified as part of the `FeaturizationConfig' object.
 %%
 %% By default, `QueryForecast' returns the complete date range for the
 %% filtered forecast. You can request a specific date range.

@@ -133,7 +133,8 @@ deregister_scalable_target(Client, Input, Options)
 %% @doc Gets information about the scalable targets in the specified
 %% namespace.
 %%
-%% You can filter the results using `ResourceIds' and `ScalableDimension'.
+%% You can filter the results using `ResourceIds' and
+%% `ScalableDimension'.
 describe_scalable_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_scalable_targets(Client, Input, []).
@@ -144,7 +145,8 @@ describe_scalable_targets(Client, Input, Options)
 %% @doc Provides descriptive information about the scaling activities in the
 %% specified namespace from the previous six weeks.
 %%
-%% You can filter the results using `ResourceId' and `ScalableDimension'.
+%% You can filter the results using `ResourceId' and
+%% `ScalableDimension'.
 %%
 %% For information about viewing scaling activities using the Amazon Web
 %% Services CLI, see Scaling activities for Application Auto Scaling.
@@ -158,8 +160,8 @@ describe_scaling_activities(Client, Input, Options)
 %% @doc Describes the Application Auto Scaling scaling policies for the
 %% specified service namespace.
 %%
-%% You can filter the results using `ResourceId', `ScalableDimension', and
-%% `PolicyNames'.
+%% You can filter the results using `ResourceId',
+%% `ScalableDimension', and `PolicyNames'.
 %%
 %% For more information, see Target tracking scaling policies and Step
 %% scaling policies in the Application Auto Scaling User Guide.
@@ -173,8 +175,8 @@ describe_scaling_policies(Client, Input, Options)
 %% @doc Describes the Application Auto Scaling scheduled actions for the
 %% specified service namespace.
 %%
-%% You can filter the results using the `ResourceId', `ScalableDimension',
-%% and `ScheduledActionNames' parameters.
+%% You can filter the results using the `ResourceId',
+%% `ScalableDimension', and `ScheduledActionNames' parameters.
 %%
 %% For more information, see Scheduled scaling and Managing scheduled scaling
 %% in the Application Auto Scaling User Guide.
@@ -263,9 +265,9 @@ put_scheduled_action(Client, Input, Options)
 %%
 %% When you register a new scalable target, you must specify values for the
 %% minimum and maximum capacity. If the specified resource is not active in
-%% the target service, this operation does not change the resource's current
-%% capacity. Otherwise, it changes the resource's current capacity to a value
-%% that is inside of this range.
+%% the target service, this operation does not change the resource's
+%% current capacity. Otherwise, it changes the resource's current
+%% capacity to a value that is inside of this range.
 %%
 %% If you choose to add a scaling policy, current capacity is adjustable
 %% within the specified range when scaling starts. Application Auto Scaling

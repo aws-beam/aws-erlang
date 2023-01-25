@@ -87,20 +87,21 @@
 %%
 %% An activity is a task that you write in any programming language and host
 %% on any machine that has access to Step Functions. Activities must poll
-%% Step Functions using the `GetActivityTask' API action and respond using
-%% `SendTask*' API actions. This function lets Step Functions know the
-%% existence of your activity and returns an identifier for use in a state
-%% machine and when polling from the activity.
+%% Step Functions using the `GetActivityTask' API action and respond
+%% using `SendTask*' API actions. This function lets Step Functions know
+%% the existence of your activity and returns an identifier for use in a
+%% state machine and when polling from the activity.
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
 %%
-%% `CreateActivity' is an idempotent API. Subsequent requests won’t create a
-%% duplicate resource if it was already created. `CreateActivity''s
-%% idempotency check is based on the activity `name'. If a following request
-%% has different `tags' values, Step Functions will ignore these differences
-%% and treat it as an idempotent request of the previous. In this case,
-%% `tags' will not be updated, even if they are different.
+%% `CreateActivity' is an idempotent API. Subsequent requests won’t
+%% create a duplicate resource if it was already created.
+%% `CreateActivity''s idempotency check is based on the activity
+%% `name'. If a following request has different `tags' values, Step
+%% Functions will ignore these differences and treat it as an idempotent
+%% request of the previous. In this case, `tags' will not be updated,
+%% even if they are different.
 create_activity(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_activity(Client, Input, []).
@@ -111,22 +112,24 @@ create_activity(Client, Input, Options)
 %% @doc Creates a state machine.
 %%
 %% A state machine consists of a collection of states that can do work
-%% (`Task' states), determine to which states to transition next (`Choice'
-%% states), stop an execution with an error (`Fail' states), and so on. State
-%% machines are specified using a JSON-based, structured language. For more
-%% information, see Amazon States Language in the Step Functions User Guide.
+%% (`Task' states), determine to which states to transition next
+%% (`Choice' states), stop an execution with an error (`Fail'
+%% states), and so on. State machines are specified using a JSON-based,
+%% structured language. For more information, see Amazon States Language in
+%% the Step Functions User Guide.
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
 %%
 %% `CreateStateMachine' is an idempotent API. Subsequent requests won’t
 %% create a duplicate resource if it was already created.
-%% `CreateStateMachine''s idempotency check is based on the state machine
-%% `name', `definition', `type', `LoggingConfiguration' and
-%% `TracingConfiguration'. If a following request has a different `roleArn'
-%% or `tags', Step Functions will ignore these differences and treat it as an
-%% idempotent request of the previous. In this case, `roleArn' and `tags'
-%% will not be updated, even if they are different.
+%% `CreateStateMachine''s idempotency check is based on the state
+%% machine `name', `definition', `type',
+%% `LoggingConfiguration' and `TracingConfiguration'. If a following
+%% request has a different `roleArn' or `tags', Step Functions will
+%% ignore these differences and treat it as an idempotent request of the
+%% previous. In this case, `roleArn' and `tags' will not be updated,
+%% even if they are different.
 create_state_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_state_machine(Client, Input, []).
@@ -144,8 +147,8 @@ delete_activity(Client, Input, Options)
 
 %% @doc Deletes a state machine.
 %%
-%% This is an asynchronous operation: It sets the state machine's status to
-%% `DELETING' and begins the deletion process.
+%% This is an asynchronous operation: It sets the state machine's status
+%% to `DELETING' and begins the deletion process.
 %%
 %% If the given state machine Amazon Resource Name (ARN) is a qualified state
 %% machine ARN, it will fail with ValidationException.
@@ -156,8 +159,8 @@ delete_activity(Client, Input, Options)
 %% refers to a Distributed Map state with a label `mapStateLabel' in the
 %% state machine named `stateMachineName'.
 %%
-%% For `EXPRESS' state machines, the deletion will happen eventually (usually
-%% less than a minute). Running executions may emit logs after
+%% For `EXPRESS' state machines, the deletion will happen eventually
+%% (usually less than a minute). Running executions may emit logs after
 %% `DeleteStateMachine' API is called.
 delete_state_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -196,8 +199,8 @@ describe_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExecution">>, Input, Options).
 
-%% @doc Provides information about a Map Run's configuration, progress, and
-%% results.
+%% @doc Provides information about a Map Run's configuration, progress,
+%% and results.
 %%
 %% For more information, see Examining Map Run in the Step Functions
 %% Developer Guide.
@@ -208,8 +211,8 @@ describe_map_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeMapRun">>, Input, Options).
 
-%% @doc Provides information about a state machine's definition, its IAM role
-%% Amazon Resource Name (ARN), and configuration.
+%% @doc Provides information about a state machine's definition, its IAM
+%% role Amazon Resource Name (ARN), and configuration.
 %%
 %% If the state machine ARN is a qualified state machine ARN, the response
 %% returned includes the `Map' state's label.
@@ -262,9 +265,9 @@ describe_state_machine_for_execution(Client, Input, Options)
 %% (5 seconds higher than the maximum time the service may hold the poll
 %% request).
 %%
-%% Polling with `GetActivityTask' can cause latency in some implementations.
-%% See Avoid Latency When Polling for Activity Tasks in the Step Functions
-%% Developer Guide.
+%% Polling with `GetActivityTask' can cause latency in some
+%% implementations. See Avoid Latency When Polling for Activity Tasks in the
+%% Step Functions Developer Guide.
 get_activity_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_activity_task(Client, Input, []).
@@ -274,15 +277,16 @@ get_activity_task(Client, Input, Options)
 
 %% @doc Returns the history of the specified execution as a list of events.
 %%
-%% By default, the results are returned in ascending order of the `timeStamp'
-%% of the events. Use the `reverseOrder' parameter to get the latest events
-%% first.
+%% By default, the results are returned in ascending order of the
+%% `timeStamp' of the events. Use the `reverseOrder' parameter to get
+%% the latest events first.
 %%
-%% If `nextToken' is returned, there are more results available. The value of
-%% `nextToken' is a unique pagination token for each page. Make the call
-%% again using the returned token to retrieve the next page. Keep all other
-%% arguments unchanged. Each pagination token expires after 24 hours. Using
-%% an expired pagination token will return an HTTP 400 InvalidToken error.
+%% If `nextToken' is returned, there are more results available. The
+%% value of `nextToken' is a unique pagination token for each page. Make
+%% the call again using the returned token to retrieve the next page. Keep
+%% all other arguments unchanged. Each pagination token expires after 24
+%% hours. Using an expired pagination token will return an HTTP 400
+%% InvalidToken error.
 %%
 %% This API action is not supported by `EXPRESS' state machines.
 get_execution_history(Client, Input)
@@ -294,11 +298,12 @@ get_execution_history(Client, Input, Options)
 
 %% @doc Lists the existing activities.
 %%
-%% If `nextToken' is returned, there are more results available. The value of
-%% `nextToken' is a unique pagination token for each page. Make the call
-%% again using the returned token to retrieve the next page. Keep all other
-%% arguments unchanged. Each pagination token expires after 24 hours. Using
-%% an expired pagination token will return an HTTP 400 InvalidToken error.
+%% If `nextToken' is returned, there are more results available. The
+%% value of `nextToken' is a unique pagination token for each page. Make
+%% the call again using the returned token to retrieve the next page. Keep
+%% all other arguments unchanged. Each pagination token expires after 24
+%% hours. Using an expired pagination token will return an HTTP 400
+%% InvalidToken error.
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
@@ -317,11 +322,12 @@ list_activities(Client, Input, Options)
 %%
 %% Results are sorted by time, with the most recent execution first.
 %%
-%% If `nextToken' is returned, there are more results available. The value of
-%% `nextToken' is a unique pagination token for each page. Make the call
-%% again using the returned token to retrieve the next page. Keep all other
-%% arguments unchanged. Each pagination token expires after 24 hours. Using
-%% an expired pagination token will return an HTTP 400 InvalidToken error.
+%% If `nextToken' is returned, there are more results available. The
+%% value of `nextToken' is a unique pagination token for each page. Make
+%% the call again using the returned token to retrieve the next page. Keep
+%% all other arguments unchanged. Each pagination token expires after 24
+%% hours. Using an expired pagination token will return an HTTP 400
+%% InvalidToken error.
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
@@ -337,8 +343,8 @@ list_executions(Client, Input, Options)
 %% @doc Lists all Map Runs that were started by a given state machine
 %% execution.
 %%
-%% Use this API action to obtain Map Run ARNs, and then call `DescribeMapRun'
-%% to obtain more information, if needed.
+%% Use this API action to obtain Map Run ARNs, and then call
+%% `DescribeMapRun' to obtain more information, if needed.
 list_map_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_map_runs(Client, Input, []).
@@ -348,11 +354,12 @@ list_map_runs(Client, Input, Options)
 
 %% @doc Lists the existing state machines.
 %%
-%% If `nextToken' is returned, there are more results available. The value of
-%% `nextToken' is a unique pagination token for each page. Make the call
-%% again using the returned token to retrieve the next page. Keep all other
-%% arguments unchanged. Each pagination token expires after 24 hours. Using
-%% an expired pagination token will return an HTTP 400 InvalidToken error.
+%% If `nextToken' is returned, there are more results available. The
+%% value of `nextToken' is a unique pagination token for each page. Make
+%% the call again using the returned token to retrieve the next page. Keep
+%% all other arguments unchanged. Each pagination token expires after 24
+%% hours. Using an expired pagination token will return an HTTP 400
+%% InvalidToken error.
 %%
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
@@ -387,17 +394,18 @@ send_task_failure(Client, Input, Options)
 %% to report to Step Functions that the task represented by the specified
 %% `taskToken' is still making progress.
 %%
-%% This action resets the `Heartbeat' clock. The `Heartbeat' threshold is
-%% specified in the state machine's Amazon States Language definition
-%% (`HeartbeatSeconds'). This action does not in itself create an event in
-%% the execution history. However, if the task times out, the execution
-%% history contains an `ActivityTimedOut' entry for activities, or a
-%% `TaskTimedOut' entry for for tasks using the job run or callback pattern.
+%% This action resets the `Heartbeat' clock. The `Heartbeat'
+%% threshold is specified in the state machine's Amazon States Language
+%% definition (`HeartbeatSeconds'). This action does not in itself create
+%% an event in the execution history. However, if the task times out, the
+%% execution history contains an `ActivityTimedOut' entry for activities,
+%% or a `TaskTimedOut' entry for for tasks using the job run or callback
+%% pattern.
 %%
-%% The `Timeout' of a task, defined in the state machine's Amazon States
-%% Language definition, is its maximum allowed duration, regardless of the
-%% number of `SendTaskHeartbeat' requests received. Use `HeartbeatSeconds' to
-%% configure the timeout interval for heartbeats.
+%% The `Timeout' of a task, defined in the state machine's Amazon
+%% States Language definition, is its maximum allowed duration, regardless of
+%% the number of `SendTaskHeartbeat' requests received. Use
+%% `HeartbeatSeconds' to configure the timeout interval for heartbeats.
 send_task_heartbeat(Client, Input)
   when is_map(Client), is_map(Input) ->
     send_task_heartbeat(Client, Input, []).
@@ -426,12 +434,12 @@ send_task_success(Client, Input, Options)
 %% refers to a Distributed Map state with a label `mapStateLabel' in the
 %% state machine named `stateMachineName'.
 %%
-%% `StartExecution' is idempotent for `STANDARD' workflows. For a `STANDARD'
-%% workflow, if `StartExecution' is called with the same name and input as a
-%% running execution, the call will succeed and return the same response as
-%% the original request. If the execution is closed or if the input is
-%% different, it will return a `400 ExecutionAlreadyExists' error. Names can
-%% be reused after 90 days.
+%% `StartExecution' is idempotent for `STANDARD' workflows. For a
+%% `STANDARD' workflow, if `StartExecution' is called with the same
+%% name and input as a running execution, the call will succeed and return
+%% the same response as the original request. If the execution is closed or
+%% if the input is different, it will return a `400
+%% ExecutionAlreadyExists' error. Names can be reused after 90 days.
 %%
 %% `StartExecution' is not idempotent for `EXPRESS' workflows.
 start_execution(Client, Input)
@@ -492,8 +500,8 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
-%% @doc Updates an in-progress Map Run's configuration to include changes to
-%% the settings that control maximum concurrency and Map Run failure.
+%% @doc Updates an in-progress Map Run's configuration to include changes
+%% to the settings that control maximum concurrency and Map Run failure.
 update_map_run(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_map_run(Client, Input, []).
@@ -505,8 +513,8 @@ update_map_run(Client, Input, Options)
 %% `roleArn', or `loggingConfiguration'.
 %%
 %% Running executions will continue to use the previous `definition' and
-%% `roleArn'. You must include at least one of `definition' or `roleArn' or
-%% you will receive a `MissingRequiredParameter' error.
+%% `roleArn'. You must include at least one of `definition' or
+%% `roleArn' or you will receive a `MissingRequiredParameter' error.
 %%
 %% If the given state machine Amazon Resource Name (ARN) is a qualified state
 %% machine ARN, it will fail with ValidationException.
@@ -518,9 +526,9 @@ update_map_run(Client, Input, Options)
 %% state machine named `stateMachineName'.
 %%
 %% All `StartExecution' calls within a few seconds will use the updated
-%% `definition' and `roleArn'. Executions started immediately after calling
-%% `UpdateStateMachine' may use the previous state machine `definition' and
-%% `roleArn'.
+%% `definition' and `roleArn'. Executions started immediately after
+%% calling `UpdateStateMachine' may use the previous state machine
+%% `definition' and `roleArn'.
 update_state_machine(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_state_machine(Client, Input, []).

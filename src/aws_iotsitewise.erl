@@ -386,9 +386,9 @@ batch_get_asset_property_value_history(Client, Input0, Options0) ->
 %%
 %% <ul> <li> The `assetId' and `propertyId' of an asset property.
 %%
-%% </li> <li> A `propertyAlias', which is a data stream alias (for example,
-%% `/company/windfarm/3/turbine/7/temperature'). To define an asset
-%% property's alias, see UpdateAssetProperty.
+%% </li> <li> A `propertyAlias', which is a data stream alias (for
+%% example, `/company/windfarm/3/turbine/7/temperature'). To define an
+%% asset property's alias, see UpdateAssetProperty.
 %%
 %% </li> </ul> With respect to Unix epoch time, IoT SiteWise accepts only
 %% TQVs that have a timestamp of no more than 7 days in the past and no more
@@ -398,11 +398,11 @@ batch_get_asset_property_value_history(Client, Input0, Options0) ->
 %%
 %% For each asset property, IoT SiteWise overwrites TQVs with duplicate
 %% timestamps unless the newer TQV has a different quality. For example, if
-%% you store a TQV `{T1, GOOD, V1}', then storing `{T1, GOOD, V2}' replaces
-%% the existing TQV.
+%% you store a TQV `{T1, GOOD, V1}', then storing `{T1, GOOD, V2}'
+%% replaces the existing TQV.
 %%
-%% IoT SiteWise authorizes access to each `BatchPutAssetPropertyValue' entry
-%% individually. For more information, see BatchPutAssetPropertyValue
+%% IoT SiteWise authorizes access to each `BatchPutAssetPropertyValue'
+%% entry individually. For more information, see BatchPutAssetPropertyValue
 %% authorization in the IoT SiteWise User Guide.
 batch_put_asset_property_value(Client, Input) ->
     batch_put_asset_property_value(Client, Input, []).
@@ -618,8 +618,8 @@ create_portal(Client, Input0, Options0) ->
 
 %% @doc Creates a project in the specified portal.
 %%
-%% Make sure that the project name and description don't contain confidential
-%% information.
+%% Make sure that the project name and description don't contain
+%% confidential information.
 create_project(Client, Input) ->
     create_project(Client, Input, []).
 create_project(Client, Input0, Options0) ->
@@ -672,11 +672,11 @@ delete_access_policy(Client, AccessPolicyId, Input0, Options0) ->
 
 %% @doc Deletes an asset.
 %%
-%% This action can't be undone. For more information, see Deleting assets and
-%% models in the IoT SiteWise User Guide.
+%% This action can't be undone. For more information, see Deleting assets
+%% and models in the IoT SiteWise User Guide.
 %%
-%% You can't delete an asset that's associated to another asset. For more
-%% information, see DisassociateAssets.
+%% You can't delete an asset that's associated to another asset. For
+%% more information, see DisassociateAssets.
 delete_asset(Client, AssetId, Input) ->
     delete_asset(Client, AssetId, Input, []).
 delete_asset(Client, AssetId, Input0, Options0) ->
@@ -702,9 +702,9 @@ delete_asset(Client, AssetId, Input0, Options0) ->
 
 %% @doc Deletes an asset model.
 %%
-%% This action can't be undone. You must delete all assets created from an
-%% asset model before you can delete the model. Also, you can't delete an
-%% asset model if a parent asset model exists that contains a property
+%% This action can't be undone. You must delete all assets created from
+%% an asset model before you can delete the model. Also, you can't delete
+%% an asset model if a parent asset model exists that contains a property
 %% formula expression that depends on the asset model that you want to
 %% delete. For more information, see Deleting assets and models in the IoT
 %% SiteWise User Guide.
@@ -831,8 +831,8 @@ delete_project(Client, ProjectId, Input0, Options0) ->
 
 %% @doc Deletes a time series (data stream).
 %%
-%% If you delete a time series that's associated with an asset property, the
-%% asset property still exists, but the time series will no longer be
+%% If you delete a time series that's associated with an asset property,
+%% the asset property still exists, but the time series will no longer be
 %% associated with this asset property.
 %%
 %% To identify a time series, do one of the following:
@@ -845,8 +845,8 @@ delete_project(Client, ProjectId, Input0, Options0) ->
 %%
 %% <ul> <li> The `alias' of the time series.
 %%
-%% </li> <li> The `assetId' and `propertyId' that identifies the asset
-%% property.
+%% </li> <li> The `assetId' and `propertyId' that identifies the
+%% asset property.
 %%
 %% </li> </ul> </li> </ul>
 delete_time_series(Client, Input) ->
@@ -874,8 +874,8 @@ delete_time_series(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes an access policy, which specifies an identity's access to
-%% an IoT SiteWise Monitor portal or project.
+%% @doc Describes an access policy, which specifies an identity's access
+%% to an IoT SiteWise Monitor portal or project.
 describe_access_policy(Client, AccessPolicyId)
   when is_map(Client) ->
     describe_access_policy(Client, AccessPolicyId, #{}, #{}).
@@ -956,11 +956,11 @@ describe_asset_model(Client, AssetModelId, QueryMap, HeadersMap, Options0)
 %%
 %% When you call this operation for an attribute property, this response
 %% includes the default attribute value that you define in the asset model.
-%% If you update the default value in the model, this operation's response
-%% includes the new default value.
+%% If you update the default value in the model, this operation's
+%% response includes the new default value.
 %%
-%% This operation doesn't return the value of the asset property. To get the
-%% value of an asset property, use GetAssetPropertyValue.
+%% This operation doesn't return the value of the asset property. To get
+%% the value of an asset property, use GetAssetPropertyValue.
 describe_asset_property(Client, AssetId, PropertyId)
   when is_map(Client) ->
     describe_asset_property(Client, AssetId, PropertyId, #{}, #{}).
@@ -1215,8 +1215,8 @@ describe_storage_configuration(Client, QueryMap, HeadersMap, Options0)
 %%
 %% <ul> <li> The `alias' of the time series.
 %%
-%% </li> <li> The `assetId' and `propertyId' that identifies the asset
-%% property.
+%% </li> <li> The `assetId' and `propertyId' that identifies the
+%% asset property.
 %%
 %% </li> </ul> </li> </ul>
 describe_time_series(Client)
@@ -1306,9 +1306,9 @@ disassociate_time_series_from_asset_property(Client, Input0, Options0) ->
 %%
 %% <ul> <li> The `assetId' and `propertyId' of an asset property.
 %%
-%% </li> <li> A `propertyAlias', which is a data stream alias (for example,
-%% `/company/windfarm/3/turbine/7/temperature'). To define an asset
-%% property's alias, see UpdateAssetProperty.
+%% </li> <li> A `propertyAlias', which is a data stream alias (for
+%% example, `/company/windfarm/3/turbine/7/temperature'). To define an
+%% asset property's alias, see UpdateAssetProperty.
 %%
 %% </li> </ul>
 get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, StartDate)
@@ -1356,9 +1356,9 @@ get_asset_property_aggregates(Client, AggregateTypes, EndDate, Resolution, Start
 %%
 %% <ul> <li> The `assetId' and `propertyId' of an asset property.
 %%
-%% </li> <li> A `propertyAlias', which is a data stream alias (for example,
-%% `/company/windfarm/3/turbine/7/temperature'). To define an asset
-%% property's alias, see UpdateAssetProperty.
+%% </li> <li> A `propertyAlias', which is a data stream alias (for
+%% example, `/company/windfarm/3/turbine/7/temperature'). To define an
+%% asset property's alias, see UpdateAssetProperty.
 %%
 %% </li> </ul>
 get_asset_property_value(Client)
@@ -1398,9 +1398,9 @@ get_asset_property_value(Client, QueryMap, HeadersMap, Options0)
 %%
 %% <ul> <li> The `assetId' and `propertyId' of an asset property.
 %%
-%% </li> <li> A `propertyAlias', which is a data stream alias (for example,
-%% `/company/windfarm/3/turbine/7/temperature'). To define an asset
-%% property's alias, see UpdateAssetProperty.
+%% </li> <li> A `propertyAlias', which is a data stream alias (for
+%% example, `/company/windfarm/3/turbine/7/temperature'). To define an
+%% asset property's alias, see UpdateAssetProperty.
 %%
 %% </li> </ul>
 get_asset_property_value_history(Client)
@@ -1451,9 +1451,9 @@ get_asset_property_value_history(Client, QueryMap, HeadersMap, Options0)
 %%
 %% <ul> <li> The `assetId' and `propertyId' of an asset property.
 %%
-%% </li> <li> A `propertyAlias', which is a data stream alias (for example,
-%% `/company/windfarm/3/turbine/7/temperature'). To define an asset
-%% property's alias, see UpdateAssetProperty.
+%% </li> <li> A `propertyAlias', which is a data stream alias (for
+%% example, `/company/windfarm/3/turbine/7/temperature'). To define an
+%% asset property's alias, see UpdateAssetProperty.
 %%
 %% </li> </ul>
 get_interpolated_asset_property_values(Client, EndTimeInSeconds, IntervalInSeconds, Quality, StartTimeInSeconds, Type)
@@ -1662,10 +1662,10 @@ list_asset_relationships(Client, AssetId, TraversalType, QueryMap, HeadersMap, O
 %%
 %% </li> <li> List top-level assets.
 %%
-%% </li> </ul> You can't use this operation to list all assets. To retrieve
-%% summaries for all of your assets, use ListAssetModels to get all of your
-%% asset model IDs. Then, use ListAssets to get all assets for each asset
-%% model.
+%% </li> </ul> You can't use this operation to list all assets. To
+%% retrieve summaries for all of your assets, use ListAssetModels to get all
+%% of your asset model IDs. Then, use ListAssets to get all assets for each
+%% asset model.
 list_assets(Client)
   when is_map(Client) ->
     list_assets(Client, #{}, #{}).
@@ -2043,8 +2043,8 @@ put_storage_configuration(Client, Input0, Options0) ->
 
 %% @doc Adds tags to an IoT SiteWise resource.
 %%
-%% If a tag already exists for the resource, this operation updates the tag's
-%% value.
+%% If a tag already exists for the resource, this operation updates the
+%% tag's value.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->
@@ -2093,8 +2093,8 @@ untag_resource(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing access policy that specifies an identity's access
-%% to an IoT SiteWise Monitor portal or project resource.
+%% @doc Updates an existing access policy that specifies an identity's
+%% access to an IoT SiteWise Monitor portal or project resource.
 update_access_policy(Client, AccessPolicyId, Input) ->
     update_access_policy(Client, AccessPolicyId, Input, []).
 update_access_policy(Client, AccessPolicyId, Input0, Options0) ->
@@ -2184,10 +2184,11 @@ update_asset_model(Client, AssetModelId, Input0, Options0) ->
 
 %% @doc Updates an asset property's alias and notification state.
 %%
-%% This operation overwrites the property's existing alias and notification
-%% state. To keep your existing property's alias or notification state, you
-%% must include the existing values in the UpdateAssetProperty request. For
-%% more information, see DescribeAssetProperty.
+%% This operation overwrites the property's existing alias and
+%% notification state. To keep your existing property's alias or
+%% notification state, you must include the existing values in the
+%% UpdateAssetProperty request. For more information, see
+%% DescribeAssetProperty.
 update_asset_property(Client, AssetId, PropertyId, Input) ->
     update_asset_property(Client, AssetId, PropertyId, Input, []).
 update_asset_property(Client, AssetId, PropertyId, Input0, Options0) ->

@@ -42,8 +42,8 @@
 %% events that are public or account-specific.
 %%
 %% Use pagination to view all events from the response. For example, if you
-%% call the `DescribeEventsForOrganization' operation to get all events in
-%% your organization, you might receive several page results. Specify the
+%% call the `DescribeEventsForOrganization' operation to get all events
+%% in your organization, you might receive several page results. Specify the
 %% `nextToken' in the next request to return more results.
 -module(aws_health).
 
@@ -91,8 +91,8 @@
 %% EnableHealthServiceAccessForOrganization operation from your
 %% organization's management account.
 %%
-%% This API operation uses pagination. Specify the `nextToken' parameter in
-%% the next request to return more results.
+%% This API operation uses pagination. Specify the `nextToken' parameter
+%% in the next request to return more results.
 describe_affected_accounts_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_affected_accounts_for_organization(Client, Input, []).
@@ -111,8 +111,8 @@ describe_affected_accounts_for_organization(Client, Input, Options)
 %%
 %% At least one event ARN is required.
 %%
-%% This API operation uses pagination. Specify the `nextToken' parameter in
-%% the next request to return more results.
+%% This API operation uses pagination. Specify the `nextToken' parameter
+%% in the next request to return more results.
 %%
 %% This operation supports resource-level permissions. You can use this
 %% operation to allow or deny access to specific Health events. For more
@@ -140,13 +140,13 @@ describe_affected_entities(Client, Input, Options)
 %% EnableHealthServiceAccessForOrganization operation from your
 %% organization's management account.
 %%
-%% This API operation uses pagination. Specify the `nextToken' parameter in
-%% the next request to return more results.
+%% This API operation uses pagination. Specify the `nextToken' parameter
+%% in the next request to return more results.
 %%
-%% This operation doesn't support resource-level permissions. You can't use
-%% this operation to allow or deny access to specific Health events. For more
-%% information, see Resource- and action-based conditions in the Health User
-%% Guide.
+%% This operation doesn't support resource-level permissions. You
+%% can't use this operation to allow or deny access to specific Health
+%% events. For more information, see Resource- and action-based conditions in
+%% the Health User Guide.
 describe_affected_entities_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_affected_entities_for_organization(Client, Input, []).
@@ -169,8 +169,8 @@ describe_entity_aggregates(Client, Input, Options)
 %% If no filter is specified, the counts of all events in each category are
 %% returned.
 %%
-%% This API operation uses pagination. Specify the `nextToken' parameter in
-%% the next request to return more results.
+%% This API operation uses pagination. Specify the `nextToken' parameter
+%% in the next request to return more results.
 describe_event_aggregates(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_aggregates(Client, Input, []).
@@ -186,8 +186,8 @@ describe_event_aggregates(Client, Input, Options)
 %% of the event. Affected entities are not included. To retrieve the
 %% entities, use the DescribeAffectedEntities operation.
 %%
-%% If a specified event can't be retrieved, an error message is returned for
-%% that event.
+%% If a specified event can't be retrieved, an error message is returned
+%% for that event.
 %%
 %% This operation supports resource-level permissions. You can use this
 %% operation to allow or deny access to specific Health events. For more
@@ -205,23 +205,23 @@ describe_event_details(Client, Input, Options)
 %%
 %% This information includes standard event data (such as the Amazon Web
 %% Services Region and service), an event description, and (depending on the
-%% event) possible metadata. This operation doesn't return affected entities,
-%% such as the resources related to the event. To return affected entities,
-%% use the DescribeAffectedEntitiesForOrganization operation.
+%% event) possible metadata. This operation doesn't return affected
+%% entities, such as the resources related to the event. To return affected
+%% entities, use the DescribeAffectedEntitiesForOrganization operation.
 %%
 %% Before you can call this operation, you must first enable Health to work
 %% with Organizations. To do this, call the
 %% EnableHealthServiceAccessForOrganization operation from your
 %% organization's management account.
 %%
-%% When you call the `DescribeEventDetailsForOrganization' operation, specify
-%% the `organizationEventDetailFilters' object in the request. Depending on
-%% the Health event type, note the following differences:
+%% When you call the `DescribeEventDetailsForOrganization' operation,
+%% specify the `organizationEventDetailFilters' object in the request.
+%% Depending on the Health event type, note the following differences:
 %%
 %% <ul> <li> To return event details for a public event, you must specify a
-%% null value for the `awsAccountId' parameter. If you specify an account ID
-%% for a public event, Health returns an error message because public events
-%% aren't specific to an account.
+%% null value for the `awsAccountId' parameter. If you specify an account
+%% ID for a public event, Health returns an error message because public
+%% events aren't specific to an account.
 %%
 %% </li> <li> To return event details for an event that is specific to an
 %% account in your organization, you must specify the `awsAccountId'
@@ -231,10 +231,10 @@ describe_event_details(Client, Input, Options)
 %%
 %% </li> </ul> For more information, see Event.
 %%
-%% This operation doesn't support resource-level permissions. You can't use
-%% this operation to allow or deny access to specific Health events. For more
-%% information, see Resource- and action-based conditions in the Health User
-%% Guide.
+%% This operation doesn't support resource-level permissions. You
+%% can't use this operation to allow or deny access to specific Health
+%% events. For more information, see Resource- and action-based conditions in
+%% the Health User Guide.
 describe_event_details_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_details_for_organization(Client, Input, []).
@@ -251,8 +251,8 @@ describe_event_details_for_organization(Client, Input, Options)
 %% If you don't specify a filter criteria, the API operation returns all
 %% event types, in no particular order.
 %%
-%% This API operation uses pagination. Specify the `nextToken' parameter in
-%% the next request to return more results.
+%% This API operation uses pagination. Specify the `nextToken' parameter
+%% in the next request to return more results.
 describe_event_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_types(Client, Input, []).
@@ -271,16 +271,17 @@ describe_event_types(Client, Input, Options)
 %% If no filter criteria are specified, all events are returned. Results are
 %% sorted by `lastModifiedTime', starting with the most recent event.
 %%
-%% When you call the `DescribeEvents' operation and specify an entity for the
-%% `entityValues' parameter, Health might return public events that aren't
-%% specific to that resource. For example, if you call `DescribeEvents' and
-%% specify an ID for an Amazon Elastic Compute Cloud (Amazon EC2) instance,
-%% Health might return events that aren't specific to that resource or
-%% service. To get events that are specific to a service, use the `services'
-%% parameter in the `filter' object. For more information, see Event.
+%% When you call the `DescribeEvents' operation and specify an entity for
+%% the `entityValues' parameter, Health might return public events that
+%% aren't specific to that resource. For example, if you call
+%% `DescribeEvents' and specify an ID for an Amazon Elastic Compute Cloud
+%% (Amazon EC2) instance, Health might return events that aren't specific
+%% to that resource or service. To get events that are specific to a service,
+%% use the `services' parameter in the `filter' object. For more
+%% information, see Event.
 %%
-%% This API operation uses pagination. Specify the `nextToken' parameter in
-%% the next request to return more results.
+%% This API operation uses pagination. Specify the `nextToken' parameter
+%% in the next request to return more results.
 describe_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events(Client, Input, []).
@@ -291,8 +292,8 @@ describe_events(Client, Input, Options)
 %% @doc Returns information about events across your organization in
 %% Organizations.
 %%
-%% You can use the`filters' parameter to specify the events that you want to
-%% return. Events are returned in a summary form and don't include the
+%% You can use the`filters' parameter to specify the events that you want
+%% to return. Events are returned in a summary form and don't include the
 %% affected accounts, detailed description, any additional metadata that
 %% depends on the event type, or any affected resources. To retrieve that
 %% information, use the following operations:
@@ -305,8 +306,8 @@ describe_events(Client, Input, Options)
 %%
 %% </li> </ul> If you don't specify a `filter', the
 %% `DescribeEventsForOrganizations' returns all events across your
-%% organization. Results are sorted by `lastModifiedTime', starting with the
-%% most recent event.
+%% organization. Results are sorted by `lastModifiedTime', starting with
+%% the most recent event.
 %%
 %% For more information about the different types of Health events, see
 %% Event.
@@ -316,8 +317,8 @@ describe_events(Client, Input, Options)
 %% EnableHealthServiceAccessForOrganization operation from your
 %% organization's management account.
 %%
-%% This API operation uses pagination. Specify the `nextToken' parameter in
-%% the next request to return more results.
+%% This API operation uses pagination. Specify the `nextToken' parameter
+%% in the next request to return more results.
 describe_events_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_events_for_organization(Client, Input, []).
@@ -329,8 +330,8 @@ describe_events_for_organization(Client, Input, Options)
 %% Health to work with your organization.
 %%
 %% To call this operation, you must sign in as an IAM user, assume an IAM
-%% role, or sign in as the root user (not recommended) in the organization's
-%% management account.
+%% role, or sign in as the root user (not recommended) in the
+%% organization's management account.
 describe_health_service_status_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_health_service_status_for_organization(Client, Input, []).
@@ -345,10 +346,11 @@ describe_health_service_status_for_organization(Client, Input, Options)
 %% (not recommended) in the organization's management account. For more
 %% information, see Aggregating Health events in the Health User Guide.
 %%
-%% This operation doesn't remove the service-linked role from the management
-%% account in your organization. You must use the IAM console, API, or
-%% Command Line Interface (CLI) to remove the service-linked role. For more
-%% information, see Deleting a Service-Linked Role in the IAM User Guide.
+%% This operation doesn't remove the service-linked role from the
+%% management account in your organization. You must use the IAM console,
+%% API, or Command Line Interface (CLI) to remove the service-linked role.
+%% For more information, see Deleting a Service-Linked Role in the IAM User
+%% Guide.
 %%
 %% You can also disable the organizational feature by using the Organizations
 %% DisableAWSServiceAccess API operation. After you call this operation,
@@ -380,9 +382,9 @@ disable_health_service_access_for_organization(Client, Input, Options)
 %% Business, Enterprise On-Ramp, or Enterprise Support plan, you receive a
 %% `SubscriptionRequiredException' error.
 %%
-%% You must have permission to call this operation from the organization's
-%% management account. For example IAM policies, see Health identity-based
-%% policy examples.
+%% You must have permission to call this operation from the
+%% organization's management account. For example IAM policies, see
+%% Health identity-based policy examples.
 %%
 %% If you don't have the required support plan, you can instead use the
 %% Health console to enable the organizational view feature. For more

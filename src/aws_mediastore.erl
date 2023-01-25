@@ -127,9 +127,10 @@ delete_metric_policy(Client, Input, Options)
 %% This request is commonly used to retrieve the endpoint of a container. An
 %% endpoint is a value assigned by the service when a new container is
 %% created. A container's endpoint does not change after it has been
-%% assigned. The `DescribeContainer' request returns a single `Container'
-%% object based on `ContainerName'. To return all `Container' objects that
-%% are associated with a specified AWS account, use `ListContainers'.
+%% assigned. The `DescribeContainer' request returns a single
+%% `Container' object based on `ContainerName'. To return all
+%% `Container' objects that are associated with a specified AWS account,
+%% use `ListContainers'.
 describe_container(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_container(Client, Input, []).
@@ -184,11 +185,12 @@ get_metric_policy(Client, Input, Options)
 %% include the `MaxResults' parameter to receive a limited number of
 %% containers in each response. In this case, the response includes a token.
 %% To get the next set of containers, send the command again, this time with
-%% the `NextToken' parameter (with the returned token as its value). The next
-%% set of responses appears, with a token if there are still more containers
-%% to receive.
+%% the `NextToken' parameter (with the returned token as its value). The
+%% next set of responses appears, with a token if there are still more
+%% containers to receive.
 %%
-%% See also `DescribeContainer', which gets the properties of one container.
+%% See also `DescribeContainer', which gets the properties of one
+%% container.
 list_containers(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_containers(Client, Input, []).
@@ -296,11 +298,11 @@ stop_access_logging(Client, Input, Options)
 %% @doc Adds tags to the specified AWS Elemental MediaStore container.
 %%
 %% Tags are key:value pairs that you can associate with AWS resources. For
-%% example, the tag key might be "customer" and the tag value might be
-%% "companyA." You can specify one or more tags to add to each container. You
-%% can add up to 50 tags to each container. For more information about
-%% tagging, including naming and usage conventions, see Tagging Resources in
-%% MediaStore.
+%% example, the tag key might be &quot;customer&quot; and the tag value might
+%% be &quot;companyA.&quot; You can specify one or more tags to add to each
+%% container. You can add up to 50 tags to each container. For more
+%% information about tagging, including naming and usage conventions, see
+%% Tagging Resources in MediaStore.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).

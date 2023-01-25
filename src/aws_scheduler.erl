@@ -121,10 +121,11 @@ delete_schedule(Client, Name, Input0, Options0) ->
 %%
 %% Deleting a schedule group results in EventBridge Scheduler deleting all
 %% schedules associated with the group. When you delete a group, it remains
-%% in a `DELETING' state until all of its associated schedules are deleted.
-%% Schedules associated with the group that are set to run while the schedule
-%% group is in the process of being deleted might continue to invoke their
-%% targets until the schedule group and its associated schedules are deleted.
+%% in a `DELETING' state until all of its associated schedules are
+%% deleted. Schedules associated with the group that are set to run while the
+%% schedule group is in the process of being deleted might continue to invoke
+%% their targets until the schedule group and its associated schedules are
+%% deleted.
 %%
 %% This operation is eventually consistent.
 delete_schedule_group(Client, Name, Input) ->
@@ -343,8 +344,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% system-default value after the update.
 %%
 %% Before calling this operation, we recommend that you call the
-%% `GetSchedule' API operation and make a note of all optional parameters for
-%% your `UpdateSchedule' call.
+%% `GetSchedule' API operation and make a note of all optional parameters
+%% for your `UpdateSchedule' call.
 update_schedule(Client, Name, Input) ->
     update_schedule(Client, Name, Input, []).
 update_schedule(Client, Name, Input0, Options0) ->

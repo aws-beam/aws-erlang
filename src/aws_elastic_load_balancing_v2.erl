@@ -237,8 +237,8 @@ delete_listener(Client, Input, Options)
 %%
 %% Deleting a load balancer also deletes its listeners.
 %%
-%% You can't delete a load balancer if deletion protection is enabled. If the
-%% load balancer does not exist or has already been deleted, the call
+%% You can't delete a load balancer if deletion protection is enabled. If
+%% the load balancer does not exist or has already been deleted, the call
 %% succeeds.
 %%
 %% Deleting a load balancer does not affect its registered targets. For
@@ -502,8 +502,8 @@ modify_target_group_attributes(Client, Input, Options)
 
 %% @doc Registers the specified targets with the specified target group.
 %%
-%% If the target is an EC2 instance, it must be in the `running' state when
-%% you register it.
+%% If the target is an EC2 instance, it must be in the `running' state
+%% when you register it.
 %%
 %% By default, the load balancer routes requests to registered targets using
 %% the protocol and port for the target group. Alternatively, you can
@@ -571,8 +571,8 @@ set_rule_priorities(Client, Input, Options)
 %% The specified security groups override the previously associated security
 %% groups.
 %%
-%% You can't specify a security group for a Network Load Balancer or Gateway
-%% Load Balancer.
+%% You can't specify a security group for a Network Load Balancer or
+%% Gateway Load Balancer.
 set_security_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_security_groups(Client, Input, []).

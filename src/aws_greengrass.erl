@@ -359,8 +359,8 @@ create_connector_definition_version(Client, ConnectorDefinitionId, Input0, Optio
 %% @doc Creates a core definition.
 %%
 %% You may provide the initial version of the core definition now or use
-%% ''CreateCoreDefinitionVersion'' at a later time. Greengrass groups must
-%% each contain exactly one Greengrass core.
+%% ''CreateCoreDefinitionVersion'' at a later time.
+%% Greengrass groups must each contain exactly one Greengrass core.
 create_core_definition(Client, Input) ->
     create_core_definition(Client, Input, []).
 create_core_definition(Client, Input0, Options0) ->
@@ -414,8 +414,9 @@ create_core_definition_version(Client, CoreDefinitionId, Input0, Options0) ->
 
 %% @doc Creates a deployment.
 %%
-%% ''CreateDeployment'' requests are idempotent with respect to the
-%% ''X-Amzn-Client-Token'' token and the request parameters.
+%% ''CreateDeployment'' requests are idempotent with respect
+%% to the ''X-Amzn-Client-Token'' token and the request
+%% parameters.
 create_deployment(Client, GroupId, Input) ->
     create_deployment(Client, GroupId, Input, []).
 create_deployment(Client, GroupId, Input0, Options0) ->
@@ -553,8 +554,8 @@ create_function_definition_version(Client, FunctionDefinitionId, Input0, Options
 %% @doc Creates a group.
 %%
 %% You may provide the initial version of the group or use
-%% ''CreateGroupVersion'' at a later time. Tip: You can use the
-%% ''gg_group_setup'' package
+%% ''CreateGroupVersion'' at a later time. Tip: You can use
+%% the ''gg_group_setup'' package
 %% (https://github.com/awslabs/aws-greengrass-group-setup) as a library or
 %% command-line application to create and deploy Greengrass groups.
 create_group(Client, Input) ->
@@ -691,7 +692,8 @@ create_logger_definition_version(Client, LoggerDefinitionId, Input0, Options0) -
 %% be used in a group.
 %%
 %% You can create an initial version of the definition by providing a list of
-%% resources now, or use ''CreateResourceDefinitionVersion'' later.
+%% resources now, or use ''CreateResourceDefinitionVersion''
+%% later.
 create_resource_definition(Client, Input) ->
     create_resource_definition(Client, Input, []).
 create_resource_definition(Client, Input0, Options0) ->
@@ -775,7 +777,8 @@ create_software_update_job(Client, Input0, Options0) ->
 %% @doc Creates a subscription definition.
 %%
 %% You may provide the initial version of the subscription definition now or
-%% use ''CreateSubscriptionDefinitionVersion'' at a later time.
+%% use ''CreateSubscriptionDefinitionVersion'' at a later
+%% time.
 create_subscription_definition(Client, Input) ->
     create_subscription_definition(Client, Input, []).
 create_subscription_definition(Client, Input0, Options0) ->
@@ -2255,9 +2258,9 @@ reset_deployments(Client, GroupId, Input0, Options0) ->
 %% This action starts the bulk deployment of a specified set of group
 %% versions. Each group version deployment will be triggered with an adaptive
 %% rate that has a fixed upper limit. We recommend that you include an
-%% ''X-Amzn-Client-Token'' token in every ''StartBulkDeployment'' request.
-%% These requests are idempotent with respect to the token and the request
-%% parameters.
+%% ''X-Amzn-Client-Token'' token in every
+%% ''StartBulkDeployment'' request. These requests are
+%% idempotent with respect to the token and the request parameters.
 start_bulk_deployment(Client, Input) ->
     start_bulk_deployment(Client, Input, []).
 start_bulk_deployment(Client, Input0, Options0) ->
@@ -2284,10 +2287,11 @@ start_bulk_deployment(Client, Input0, Options0) ->
 
 %% @doc Stops the execution of a bulk deployment.
 %%
-%% This action returns a status of ''Stopping'' until the deployment is
-%% stopped. You cannot start a new bulk deployment while a previous
-%% deployment is in the ''Stopping'' state. This action doesn't rollback
-%% completed deployments or cancel pending deployments.
+%% This action returns a status of ''Stopping'' until the
+%% deployment is stopped. You cannot start a new bulk deployment while a
+%% previous deployment is in the ''Stopping'' state. This
+%% action doesn't rollback completed deployments or cancel pending
+%% deployments.
 stop_bulk_deployment(Client, BulkDeploymentId, Input) ->
     stop_bulk_deployment(Client, BulkDeploymentId, Input, []).
 stop_bulk_deployment(Client, BulkDeploymentId, Input0, Options0) ->
@@ -2312,9 +2316,11 @@ stop_bulk_deployment(Client, BulkDeploymentId, Input0, Options0) ->
 
 %% @doc Adds tags to a Greengrass resource.
 %%
-%% Valid resources are 'Group', 'ConnectorDefinition', 'CoreDefinition',
-%% 'DeviceDefinition', 'FunctionDefinition', 'LoggerDefinition',
-%% 'SubscriptionDefinition', 'ResourceDefinition', and 'BulkDeployment'.
+%% Valid resources are 'Group', 'ConnectorDefinition',
+%% 'CoreDefinition', 'DeviceDefinition',
+%% 'FunctionDefinition', 'LoggerDefinition',
+%% 'SubscriptionDefinition', 'ResourceDefinition', and
+%% 'BulkDeployment'.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->

@@ -220,8 +220,9 @@ create_dataset(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates the content of a dataset by applying a `queryAction' (a SQL
-%% query) or a `containerAction' (executing a containerized application).
+%% @doc Creates the content of a dataset by applying a `queryAction' (a
+%% SQL query) or a `containerAction' (executing a containerized
+%% application).
 create_dataset_content(Client, DatasetName, Input) ->
     create_dataset_content(Client, DatasetName, Input, []).
 create_dataset_content(Client, DatasetName, Input0, Options0) ->
@@ -271,8 +272,8 @@ create_datastore(Client, Input0, Options0) ->
 %%
 %% A pipeline consumes messages from a channel and allows you to process the
 %% messages before storing them in a data store. You must specify both a
-%% `channel' and a `datastore' activity and, optionally, as many as 23
-%% additional activities in the `pipelineActivities' array.
+%% `channel' and a `datastore' activity and, optionally, as many as
+%% 23 additional activities in the `pipelineActivities' array.
 create_pipeline(Client, Input) ->
     create_pipeline(Client, Input, []).
 create_pipeline(Client, Input0, Options0) ->
@@ -735,11 +736,11 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Sets or updates the IoT Analytics logging options.
 %%
-%% If you update the value of any `loggingOptions' field, it takes up to one
-%% minute for the change to take effect. Also, if you change the policy
-%% attached to the role you specified in the `roleArn' field (for example, to
-%% correct an invalid policy), it takes up to five minutes for that change to
-%% take effect.
+%% If you update the value of any `loggingOptions' field, it takes up to
+%% one minute for the change to take effect. Also, if you change the policy
+%% attached to the role you specified in the `roleArn' field (for
+%% example, to correct an invalid policy), it takes up to five minutes for
+%% that change to take effect.
 put_logging_options(Client, Input) ->
     put_logging_options(Client, Input, []).
 put_logging_options(Client, Input0, Options0) ->

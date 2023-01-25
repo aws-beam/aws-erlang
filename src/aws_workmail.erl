@@ -452,8 +452,8 @@ delete_retention_policy(Client, Input, Options)
 
 %% @doc Deletes a user from WorkMail and all subsequent systems.
 %%
-%% Before you can delete a user, the user state must be `DISABLED'. Use the
-%% `DescribeUser' action to confirm the user state.
+%% Before you can delete a user, the user state must be `DISABLED'. Use
+%% the `DescribeUser' action to confirm the user state.
 %%
 %% Deleting a user is permanent and cannot be undone. WorkMail archives user
 %% mailboxes for 30 days before they are permanently removed.
@@ -563,9 +563,9 @@ disassociate_member_from_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateMemberFromGroup">>, Input, Options).
 
-%% @doc Gets the effects of an organization's access control rules as they
-%% apply to a specified IPv4 address, access protocol action, and user ID or
-%% impersonation role ID.
+%% @doc Gets the effects of an organization's access control rules as
+%% they apply to a specified IPv4 address, access protocol action, and user
+%% ID or impersonation role ID.
 %%
 %% You must provide either the user ID or impersonation role ID.
 %% Impersonation role ID can only be used with Action EWS.
@@ -612,8 +612,8 @@ get_mail_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMailDomain">>, Input, Options).
 
-%% @doc Requests a user's mailbox details for a specified organization and
-%% user.
+%% @doc Requests a user's mailbox details for a specified organization
+%% and user.
 get_mailbox_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_mailbox_details(Client, Input, []).
@@ -660,8 +660,8 @@ list_aliases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAliases">>, Input, Options).
 
-%% @doc List all the `AvailabilityConfiguration''s for the given WorkMail
-%% organization.
+%% @doc List all the `AvailabilityConfiguration''s for the given
+%% WorkMail organization.
 list_availability_configurations(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_availability_configurations(Client, Input, []).
@@ -861,8 +861,8 @@ register_mail_domain(Client, Input, Options)
 %% accumulation of costs. For more information, see Pricing. The equivalent
 %% console functionality for this operation is Enable.
 %%
-%% Users can either be created by calling the `CreateUser' API operation or
-%% they can be synchronized from your directory. For more information, see
+%% Users can either be created by calling the `CreateUser' API operation
+%% or they can be synchronized from your directory. For more information, see
 %% `DeregisterFromWorkMail'.
 register_to_work_mail(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -910,10 +910,10 @@ tag_resource(Client, Input, Options)
 %% access. An anonymous invocation is one done without providing either a
 %% `SourceArn' or `SourceAccount' header.
 %%
-%% The request must contain either one provider definition (`EwsProvider' or
-%% `LambdaProvider') or the `DomainName' parameter. If the `DomainName'
-%% parameter is provided, the configuration stored under the `DomainName'
-%% will be tested.
+%% The request must contain either one provider definition (`EwsProvider'
+%% or `LambdaProvider') or the `DomainName' parameter. If the
+%% `DomainName' parameter is provided, the configuration stored under the
+%% `DomainName' will be tested.
 test_availability_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     test_availability_configuration(Client, Input, []).
@@ -959,8 +959,8 @@ update_impersonation_role(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateImpersonationRole">>, Input, Options).
 
-%% @doc Updates a user's current mailbox quota for a specified organization
-%% and user.
+%% @doc Updates a user's current mailbox quota for a specified
+%% organization and user.
 update_mailbox_quota(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_mailbox_quota(Client, Input, []).

@@ -374,8 +374,9 @@ stop_clock(Client, Input0, Options0) ->
 
 %% @doc Stops the given simulation.
 %%
-%% You can't restart a simulation after you stop it. If you need to restart a
-%% simulation, you must stop it, delete it, and start a new instance of it.
+%% You can't restart a simulation after you stop it. If you need to
+%% restart a simulation, you must stop it, delete it, and start a new
+%% instance of it.
 stop_simulation(Client, Input) ->
     stop_simulation(Client, Input, []).
 stop_simulation(Client, Input0, Options0) ->

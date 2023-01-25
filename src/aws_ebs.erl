@@ -244,7 +244,8 @@ put_snapshot_block(Client, BlockIndex, SnapshotId, Input0, Options0) ->
 
 %% @doc Creates a new Amazon EBS snapshot.
 %%
-%% The new snapshot enters the `pending' state after the request completes.
+%% The new snapshot enters the `pending' state after the request
+%% completes.
 %%
 %% After creating the snapshot, use PutSnapshotBlock to write blocks of data
 %% to the snapshot.

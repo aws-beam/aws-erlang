@@ -427,8 +427,8 @@ get_revision(Client, DataSetId, RevisionId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation lists a data set's revisions sorted by CreatedAt in
-%% descending order.
+%% @doc This operation lists a data set's revisions sorted by CreatedAt
+%% in descending order.
 list_data_set_revisions(Client, DataSetId)
   when is_map(Client) ->
     list_data_set_revisions(Client, DataSetId, #{}, #{}).

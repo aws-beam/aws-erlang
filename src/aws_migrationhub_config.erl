@@ -17,8 +17,8 @@
 %% </li> <li> If you call a write API outside the home region, an
 %% `InvalidInputException' is returned.
 %%
-%% </li> <li> You can call `GetHomeRegion' action to obtain the account's
-%% Migration Hub home region.
+%% </li> <li> You can call `GetHomeRegion' action to obtain the
+%% account's Migration Hub home region.
 %%
 %% </li> </ul> For specific API usage, see the sections that follow in this
 %% AWS Migration Hub Home Region API reference.
@@ -45,8 +45,8 @@ create_home_region_control(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateHomeRegionControl">>, Input, Options).
 
-%% @doc This API permits filtering on the `ControlId' and `HomeRegion'
-%% fields.
+%% @doc This API permits filtering on the `ControlId' and
+%% `HomeRegion' fields.
 describe_home_region_controls(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_home_region_controls(Client, Input, []).

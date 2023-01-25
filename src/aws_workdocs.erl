@@ -378,8 +378,8 @@ create_notification_subscription(Client, OrganizationId, Input0, Options0) ->
 
 %% @doc Creates a user in a Simple AD or Microsoft AD directory.
 %%
-%% The status of a newly created user is "ACTIVE". New users can access
-%% Amazon WorkDocs.
+%% The status of a newly created user is &quot;ACTIVE&quot;. New users can
+%% access Amazon WorkDocs.
 create_user(Client, Input) ->
     create_user(Client, Input, []).
 create_user(Client, Input0, Options0) ->
@@ -404,8 +404,8 @@ create_user(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deactivates the specified user, which revokes the user's access to
-%% Amazon WorkDocs.
+%% @doc Deactivates the specified user, which revokes the user's access
+%% to Amazon WorkDocs.
 deactivate_user(Client, UserId, Input) ->
     deactivate_user(Client, UserId, Input, []).
 deactivate_user(Client, UserId, Input0, Options0) ->
@@ -909,12 +909,12 @@ describe_resource_permissions(Client, ResourceId, QueryMap, HeadersMap, Options0
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Describes the current user's special folders; the `RootFolder' and
-%% the `RecycleBin'.
+%% @doc Describes the current user's special folders; the
+%% `RootFolder' and the `RecycleBin'.
 %%
-%% `RootFolder' is the root of user's files and folders and `RecycleBin' is
-%% the root of recycled items. This is not a valid action for SigV4
-%% (administrative API) clients.
+%% `RootFolder' is the root of user's files and folders and
+%% `RecycleBin' is the root of recycled items. This is not a valid action
+%% for SigV4 (administrative API) clients.
 %%
 %% This action requires an authentication token. To get an authentication
 %% token, register an application with Amazon WorkDocs. For more information,

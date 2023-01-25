@@ -93,11 +93,11 @@ associate_license(Client, LicenseType, WorkspaceId, Input0, Options0) ->
 %% @doc Creates a workspace.
 %%
 %% In a workspace, you can create Grafana dashboards and visualizations to
-%% analyze your metrics, logs, and traces. You don't have to build, package,
-%% or deploy any hardware to run the Grafana server.
+%% analyze your metrics, logs, and traces. You don't have to build,
+%% package, or deploy any hardware to run the Grafana server.
 %%
-%% Don't use `CreateWorkspace' to modify an existing workspace. Instead, use
-%% UpdateWorkspace.
+%% Don't use `CreateWorkspace' to modify an existing workspace.
+%% Instead, use UpdateWorkspace.
 create_workspace(Client, Input) ->
     create_workspace(Client, Input, []).
 create_workspace(Client, Input0, Options0) ->
@@ -122,8 +122,8 @@ create_workspace(Client, Input0, Options0) ->
 
 %% @doc Creates a Grafana API key for the workspace.
 %%
-%% This key can be used to authenticate requests sent to the workspace's HTTP
-%% API. See
+%% This key can be used to authenticate requests sent to the workspace's
+%% HTTP API. See
 %% [https://docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html]
 %% for available APIs and example requests.
 create_workspace_api_key(Client, WorkspaceId, Input) ->
@@ -287,14 +287,14 @@ disassociate_license(Client, LicenseType, WorkspaceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the users and groups who have the Grafana `Admin' and `Editor'
-%% roles in this workspace.
+%% @doc Lists the users and groups who have the Grafana `Admin' and
+%% `Editor' roles in this workspace.
 %%
-%% If you use this operation without specifying `userId' or `groupId', the
-%% operation returns the roles of all users and groups. If you specify a
-%% `userId' or a `groupId', only the roles for that user or group are
-%% returned. If you do this, you can specify only one `userId' or one
-%% `groupId'.
+%% If you use this operation without specifying `userId' or
+%% `groupId', the operation returns the roles of all users and groups. If
+%% you specify a `userId' or a `groupId', only the roles for that
+%% user or group are returned. If you do this, you can specify only one
+%% `userId' or one `groupId'.
 list_permissions(Client, WorkspaceId)
   when is_map(Client) ->
     list_permissions(Client, WorkspaceId, #{}, #{}).
@@ -383,8 +383,8 @@ list_workspaces(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc The `TagResource' operation associates tags with an Amazon Managed
-%% Grafana resource.
+%% @doc The `TagResource' operation associates tags with an Amazon
+%% Managed Grafana resource.
 %%
 %% Currently, the only resource that can be tagged is workspaces.
 %%
@@ -414,8 +414,8 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc The `UntagResource' operation removes the association of the tag with
-%% the Amazon Managed Grafana resource.
+%% @doc The `UntagResource' operation removes the association of the tag
+%% with the Amazon Managed Grafana resource.
 untag_resource(Client, ResourceArn, Input) ->
     untag_resource(Client, ResourceArn, Input, []).
 untag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -471,8 +471,8 @@ update_permissions(Client, WorkspaceId, Input0, Options0) ->
 %% To modify the user authentication methods that the workspace uses, such as
 %% SAML or IAM Identity Center, use UpdateWorkspaceAuthentication.
 %%
-%% To modify which users in the workspace have the `Admin' and `Editor'
-%% Grafana roles, use UpdatePermissions.
+%% To modify which users in the workspace have the `Admin' and
+%% `Editor' Grafana roles, use UpdatePermissions.
 update_workspace(Client, WorkspaceId, Input) ->
     update_workspace(Client, WorkspaceId, Input, []).
 update_workspace(Client, WorkspaceId, Input0, Options0) ->
@@ -499,8 +499,8 @@ update_workspace(Client, WorkspaceId, Input0, Options0) ->
 %% workspace authenticates users from, using SAML.
 %%
 %% You can also map SAML assertion attributes to workspace user information
-%% and define which groups in the assertion attribute are to have the `Admin'
-%% and `Editor' roles in the workspace.
+%% and define which groups in the assertion attribute are to have the
+%% `Admin' and `Editor' roles in the workspace.
 update_workspace_authentication(Client, WorkspaceId, Input) ->
     update_workspace_authentication(Client, WorkspaceId, Input, []).
 update_workspace_authentication(Client, WorkspaceId, Input0, Options0) ->

@@ -203,9 +203,9 @@ create_connection(Client, Input, Options)
 %% regional-fault tolerant. To do this, you define a primary and secondary
 %% Region with event buses in each Region. You also create a Amazon Route 53
 %% health check that will tell EventBridge to route events to the secondary
-%% Region when an "unhealthy" state is encountered and events will be routed
-%% back to the primary Region when the health check reports a "healthy"
-%% state.
+%% Region when an &quot;unhealthy&quot; state is encountered and events will
+%% be routed back to the primary Region when the health check reports a
+%% &quot;healthy&quot; state.
 create_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint(Client, Input, []).
@@ -364,8 +364,8 @@ delete_partner_event_source(Client, Input, Options)
 %% Managed rules are rules created and managed by another Amazon Web Services
 %% service on your behalf. These rules are created by those other Amazon Web
 %% Services services to support functionality in those services. You can
-%% delete these rules using the `Force' option, but you should do so only if
-%% you are sure the other service is not still using that rule.
+%% delete these rules using the `Force' option, but you should do so only
+%% if you are sure the other service is not still using that rule.
 delete_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_rule(Client, Input, []).
@@ -454,12 +454,13 @@ describe_partner_event_source(Client, Input, Options)
 %% Use `DescribeReplay' to determine the progress of a running replay. A
 %% replay processes events to replay based on the time in the event, and
 %% replays them using 1 minute intervals. If you use `StartReplay' and
-%% specify an `EventStartTime' and an `EventEndTime' that covers a 20 minute
-%% time range, the events are replayed from the first minute of that 20
-%% minute range first. Then the events from the second minute are replayed.
-%% You can use `DescribeReplay' to determine the progress of a replay. The
-%% value returned for `EventLastReplayedTime' indicates the time within the
-%% specified time range associated with the last event replayed.
+%% specify an `EventStartTime' and an `EventEndTime' that covers a 20
+%% minute time range, the events are replayed from the first minute of that
+%% 20 minute range first. Then the events from the second minute are
+%% replayed. You can use `DescribeReplay' to determine the progress of a
+%% replay. The value returned for `EventLastReplayedTime' indicates the
+%% time within the specified time range associated with the last event
+%% replayed.
 describe_replay(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_replay(Client, Input, []).
@@ -480,8 +481,8 @@ describe_rule(Client, Input, Options)
 
 %% @doc Disables the specified rule.
 %%
-%% A disabled rule won't match any events, and won't self-trigger if it has a
-%% schedule expression.
+%% A disabled rule won't match any events, and won't self-trigger if
+%% it has a schedule expression.
 %%
 %% When you disable a rule, incoming events might continue to match to the
 %% disabled rule. Allow a short period of time for changes to take effect.
@@ -654,8 +655,8 @@ put_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutEvents">>, Input, Options).
 
-%% @doc This is used by SaaS partners to write events to a customer's partner
-%% event bus.
+%% @doc This is used by SaaS partners to write events to a customer's
+%% partner event bus.
 %%
 %% Amazon Web Services customers do not use this operation.
 put_partner_events(Client, Input)
@@ -673,20 +674,22 @@ put_partner_events(Client, Input, Options)
 %% by these events arriving to an event bus in your account.
 %%
 %% For another account to send events to your account, that external account
-%% must have an EventBridge rule with your account's event bus as a target.
+%% must have an EventBridge rule with your account's event bus as a
+%% target.
 %%
 %% To enable multiple Amazon Web Services accounts to put events to your
-%% event bus, run `PutPermission' once for each of these accounts. Or, if all
-%% the accounts are members of the same Amazon Web Services organization, you
-%% can run `PutPermission' once specifying `Principal' as "*" and specifying
-%% the Amazon Web Services organization ID in `Condition', to grant
-%% permissions to all accounts in that organization.
+%% event bus, run `PutPermission' once for each of these accounts. Or, if
+%% all the accounts are members of the same Amazon Web Services organization,
+%% you can run `PutPermission' once specifying `Principal' as
+%% &quot;*&quot; and specifying the Amazon Web Services organization ID in
+%% `Condition', to grant permissions to all accounts in that
+%% organization.
 %%
 %% If you grant permissions using an organization, then accounts in that
-%% organization must specify a `RoleArn' with proper permissions when they
-%% use `PutTarget' to add your account's event bus as a target. For more
-%% information, see Sending and Receiving Events Between Amazon Web Services
-%% Accounts in the Amazon EventBridge User Guide.
+%% organization must specify a `RoleArn' with proper permissions when
+%% they use `PutTarget' to add your account's event bus as a target.
+%% For more information, see Sending and Receiving Events Between Amazon Web
+%% Services Accounts in the Amazon EventBridge User Guide.
 %%
 %% The permission policy on the event bus cannot exceed 10 KB in size.
 put_permission(Client, Input)
@@ -702,17 +705,17 @@ put_permission(Client, Input, Options)
 %% disable a rule using DisableRule.
 %%
 %% A single rule watches for events from a single event bus. Events generated
-%% by Amazon Web Services services go to your account's default event bus.
-%% Events generated by SaaS partner services or applications go to the
+%% by Amazon Web Services services go to your account's default event
+%% bus. Events generated by SaaS partner services or applications go to the
 %% matching partner event bus. If you have custom applications or services,
 %% you can specify whether their events go to your default event bus or a
 %% custom event bus that you have created. For more information, see
 %% CreateEventBus.
 %%
 %% If you are updating an existing rule, the rule is replaced with what you
-%% specify in this `PutRule' command. If you omit arguments in `PutRule', the
-%% old values for those arguments are not kept. Instead, they are replaced
-%% with null values.
+%% specify in this `PutRule' command. If you omit arguments in
+%% `PutRule', the old values for those arguments are not kept. Instead,
+%% they are replaced with null values.
 %%
 %% When you create or update a rule, incoming events might not immediately
 %% start matching to new or updated rules. Allow a short period of time for
@@ -732,8 +735,8 @@ put_permission(Client, Input, Options)
 %% `events:PutRule' and `events:TagResource' permissions.
 %%
 %% If you are updating an existing rule, any tags you specify in the
-%% `PutRule' operation are ignored. To update the tags of an existing rule,
-%% use TagResource and UntagResource.
+%% `PutRule' operation are ignored. To update the tags of an existing
+%% rule, use TagResource and UntagResource.
 %%
 %% Most services in Amazon Web Services treat : or / as the same character in
 %% Amazon Resource Names (ARNs). However, EventBridge uses an exact match in
@@ -833,11 +836,11 @@ put_rule(Client, Input, Options)
 %% CreateSnapshot API call', `EC2 RebootInstances API call', `EC2
 %% StopInstances API call', and `EC2 TerminateInstances API call'.
 %%
-%% For some target types, `PutTargets' provides target-specific parameters.
-%% If the target is a Kinesis data stream, you can optionally specify which
-%% shard the event goes to by using the `KinesisParameters' argument. To
-%% invoke a command on multiple EC2 instances with one rule, you can use the
-%% `RunCommandParameters' field.
+%% For some target types, `PutTargets' provides target-specific
+%% parameters. If the target is a Kinesis data stream, you can optionally
+%% specify which shard the event goes to by using the `KinesisParameters'
+%% argument. To invoke a command on multiple EC2 instances with one rule, you
+%% can use the `RunCommandParameters' field.
 %%
 %% To be able to make API calls against the resources that you own, Amazon
 %% EventBridge needs the appropriate permissions. For Lambda and Amazon SNS
@@ -851,22 +854,22 @@ put_rule(Client, Input, Options)
 %% granted you permission (using `PutPermission'), you can send events to
 %% that account. Set that account's event bus as a target of the rules in
 %% your account. To send the matched events to the other account, specify
-%% that account's event bus as the `Arn' value when you run `PutTargets'. If
-%% your account sends events to another account, your account is charged for
-%% each sent event. Each event sent to another account is charged as a custom
-%% event. The account receiving the event is not charged. For more
-%% information, see Amazon EventBridge Pricing.
+%% that account's event bus as the `Arn' value when you run
+%% `PutTargets'. If your account sends events to another account, your
+%% account is charged for each sent event. Each event sent to another account
+%% is charged as a custom event. The account receiving the event is not
+%% charged. For more information, see Amazon EventBridge Pricing.
 %%
-%% `Input', `InputPath', and `InputTransformer' are not available with
-%% `PutTarget' if the target is an event bus of a different Amazon Web
-%% Services account.
+%% `Input', `InputPath', and `InputTransformer' are not available
+%% with `PutTarget' if the target is an event bus of a different Amazon
+%% Web Services account.
 %%
 %% If you are setting the event bus of another account as the target, and
 %% that account granted permission to your account through an organization
-%% instead of directly by the account ID, then you must specify a `RoleArn'
-%% with proper permissions in the `Target' structure. For more information,
-%% see Sending and Receiving Events Between Amazon Web Services Accounts in
-%% the Amazon EventBridge User Guide.
+%% instead of directly by the account ID, then you must specify a
+%% `RoleArn' with proper permissions in the `Target' structure. For
+%% more information, see Sending and Receiving Events Between Amazon Web
+%% Services Accounts in the Amazon EventBridge User Guide.
 %%
 %% For more information about enabling cross-account events, see
 %% PutPermission.
@@ -891,17 +894,17 @@ put_rule(Client, Input, Options)
 %% JSONPaths are extracted from the event and used as values in a template
 %% that you specify as the input to the target.
 %%
-%% </li> </ul> When you specify `InputPath' or `InputTransformer', you must
-%% use JSON dot notation, not bracket notation.
+%% </li> </ul> When you specify `InputPath' or `InputTransformer',
+%% you must use JSON dot notation, not bracket notation.
 %%
 %% When you add targets to a rule and the associated rule triggers soon
 %% after, new or updated targets might not be immediately invoked. Allow a
 %% short period of time for changes to take effect.
 %%
 %% This action can partially fail if too many requests are made at the same
-%% time. If that happens, `FailedEntryCount' is non-zero in the response and
-%% each entry in `FailedEntries' provides the ID of the failed target and the
-%% error code.
+%% time. If that happens, `FailedEntryCount' is non-zero in the response
+%% and each entry in `FailedEntries' provides the ID of the failed target
+%% and the error code.
 put_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_targets(Client, Input, []).
@@ -914,7 +917,8 @@ put_targets(Client, Input, Options)
 %%
 %% Specify the account to revoke by the `StatementId' value that you
 %% associated with the account when you granted it permission with
-%% `PutPermission'. You can find the `StatementId' by using DescribeEventBus.
+%% `PutPermission'. You can find the `StatementId' by using
+%% DescribeEventBus.
 remove_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_permission(Client, Input, []).
@@ -926,18 +930,18 @@ remove_permission(Client, Input, Options)
 %%
 %% When the rule is triggered, those targets are no longer be invoked.
 %%
-%% A successful execution of `RemoveTargets' doesn't guarantee all targets
-%% are removed from the rule, it means that the target(s) listed in the
-%% request are removed.
+%% A successful execution of `RemoveTargets' doesn't guarantee all
+%% targets are removed from the rule, it means that the target(s) listed in
+%% the request are removed.
 %%
 %% When you remove a target, when the associated rule triggers, removed
 %% targets might continue to be invoked. Allow a short period of time for
 %% changes to take effect.
 %%
 %% This action can partially fail if too many requests are made at the same
-%% time. If that happens, `FailedEntryCount' is non-zero in the response and
-%% each entry in `FailedEntries' provides the ID of the failed target and the
-%% error code.
+%% time. If that happens, `FailedEntryCount' is non-zero in the response
+%% and each entry in `FailedEntries' provides the ID of the failed target
+%% and the error code.
 remove_targets(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_targets(Client, Input, []).
@@ -950,12 +954,13 @@ remove_targets(Client, Input, Options)
 %% Events are not necessarily replayed in the exact same order that they were
 %% added to the archive. A replay processes events to replay based on the
 %% time in the event, and replays them using 1 minute intervals. If you
-%% specify an `EventStartTime' and an `EventEndTime' that covers a 20 minute
-%% time range, the events are replayed from the first minute of that 20
-%% minute range first. Then the events from the second minute are replayed.
-%% You can use `DescribeReplay' to determine the progress of a replay. The
-%% value returned for `EventLastReplayedTime' indicates the time within the
-%% specified time range associated with the last event replayed.
+%% specify an `EventStartTime' and an `EventEndTime' that covers a 20
+%% minute time range, the events are replayed from the first minute of that
+%% 20 minute range first. Then the events from the second minute are
+%% replayed. You can use `DescribeReplay' to determine the progress of a
+%% replay. The value returned for `EventLastReplayedTime' indicates the
+%% time within the specified time range associated with the last event
+%% replayed.
 start_replay(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_replay(Client, Input, []).

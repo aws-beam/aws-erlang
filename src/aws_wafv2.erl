@@ -6,10 +6,10 @@
 %% This is the latest version of the WAF API, released in November, 2019.
 %%
 %% The names of the entities that you use to access this API, like endpoints
-%% and namespaces, all have the versioning information added, like "V2" or
-%% "v2", to distinguish from the prior version. We recommend migrating your
-%% resources to this version, because it has a number of significant
-%% improvements.
+%% and namespaces, all have the versioning information added, like
+%% &quot;V2&quot; or &quot;v2&quot;, to distinguish from the prior version.
+%% We recommend migrating your resources to this version, because it has a
+%% number of significant improvements.
 %%
 %% If you used WAF prior to this release, you can't use this WAFV2 API to
 %% access any WAF resources that you created before. You can access your old
@@ -47,8 +47,9 @@
 %% endpoint listed for US East (N. Virginia): us-east-1.
 %%
 %% </li> </ul> Alternatively, you can use one of the Amazon Web Services SDKs
-%% to access an API that's tailored to the programming language or platform
-%% that you're using. For more information, see Amazon Web Services SDKs.
+%% to access an API that's tailored to the programming language or
+%% platform that you're using. For more information, see Amazon Web
+%% Services SDKs.
 %%
 %% We currently provide two versions of the WAF API: this API and the prior
 %% versions, the classic WAF APIs. This new API provides the same
@@ -56,8 +57,8 @@
 %% improvements:
 %%
 %% <ul> <li> You use one API for both global and regional applications. Where
-%% you need to distinguish the scope, you specify a `Scope' parameter and set
-%% it to `CLOUDFRONT' or `REGIONAL'.
+%% you need to distinguish the scope, you specify a `Scope' parameter and
+%% set it to `CLOUDFRONT' or `REGIONAL'.
 %%
 %% </li> <li> You can define a web ACL or rule group with a single call, and
 %% update it with a single call. You define all rule specifications in JSON
@@ -180,10 +181,11 @@
 %% Amazon API Gateway REST API, an AppSync GraphQL API, or an Amazon Cognito
 %% user pool.
 %%
-%% For Amazon CloudFront, don't use this call. Instead, use your CloudFront
-%% distribution configuration. To associate a web ACL, in the CloudFront call
-%% `UpdateDistribution', set the web ACL ID to the Amazon Resource Name (ARN)
-%% of the web ACL. For information, see UpdateDistribution.
+%% For Amazon CloudFront, don't use this call. Instead, use your
+%% CloudFront distribution configuration. To associate a web ACL, in the
+%% CloudFront call `UpdateDistribution', set the web ACL ID to the Amazon
+%% Resource Name (ARN) of the web ACL. For information, see
+%% UpdateDistribution.
 %%
 %% When you make changes to web ACLs or web ACL components, like rules and
 %% rule groups, WAF propagates the changes everywhere that the web ACL and
@@ -251,10 +253,10 @@ create_regex_pattern_set(Client, Input, Options)
 %% @doc Creates a `RuleGroup' per the specifications provided.
 %%
 %% A rule group defines a collection of rules to inspect and control web
-%% requests that you can use in a `WebACL'. When you create a rule group, you
-%% define an immutable capacity limit. If you update a rule group, you must
-%% stay within the capacity. This allows others to reuse the rule group with
-%% confidence in its capacity requirements.
+%% requests that you can use in a `WebACL'. When you create a rule group,
+%% you define an immutable capacity limit. If you update a rule group, you
+%% must stay within the capacity. This allows others to reuse the rule group
+%% with confidence in its capacity requirements.
 create_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_rule_group(Client, Input, []).
@@ -269,11 +271,11 @@ create_rule_group(Client, Input, Options)
 %% requests that match the statement of the rule. In the web ACL, you assign
 %% a default action to take (allow, block) for any request that does not
 %% match any of the rules. The rules in a web ACL can be a combination of the
-%% types `Rule', `RuleGroup', and managed rule group. You can associate a web
-%% ACL with one or more Amazon Web Services resources to protect. The
-%% resources can be an Amazon CloudFront distribution, an Amazon API Gateway
-%% REST API, an Application Load Balancer, an AppSync GraphQL API, or an
-%% Amazon Cognito user pool.
+%% types `Rule', `RuleGroup', and managed rule group. You can
+%% associate a web ACL with one or more Amazon Web Services resources to
+%% protect. The resources can be an Amazon CloudFront distribution, an Amazon
+%% API Gateway REST API, an Application Load Balancer, an AppSync GraphQL
+%% API, or an Amazon Cognito user pool.
 create_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_web_acl(Client, Input, []).
@@ -381,10 +383,10 @@ describe_managed_rule_group(Client, Input, Options)
 %% application can be an Application Load Balancer (ALB), an Amazon API
 %% Gateway REST API, an AppSync GraphQL API, or an Amazon Cognito user pool.
 %%
-%% For Amazon CloudFront, don't use this call. Instead, use your CloudFront
-%% distribution configuration. To disassociate a web ACL, provide an empty
-%% web ACL ID in the CloudFront call `UpdateDistribution'. For information,
-%% see UpdateDistribution.
+%% For Amazon CloudFront, don't use this call. Instead, use your
+%% CloudFront distribution configuration. To disassociate a web ACL, provide
+%% an empty web ACL ID in the CloudFront call `UpdateDistribution'. For
+%% information, see UpdateDistribution.
 disassociate_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_web_acl(Client, Input, []).
@@ -430,7 +432,8 @@ get_logging_configuration(Client, Input, Options)
 %% Vendors, you can use the managed rule set APIs to provide controlled
 %% rollout of your versioned managed rule group offerings for your customers.
 %% The APIs are `ListManagedRuleSets', `GetManagedRuleSet',
-%% `PutManagedRuleSetVersions', and `UpdateManagedRuleSetVersionExpiryDate'.
+%% `PutManagedRuleSetVersions', and
+%% `UpdateManagedRuleSetVersionExpiryDate'.
 get_managed_rule_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_managed_rule_set(Client, Input, []).
@@ -469,9 +472,9 @@ get_permission_policy(Client, Input, Options)
 %% rate-based rule instance is 10,000. If more than 10,000 addresses exceed
 %% the rate limit, those with the highest rates are blocked.
 %%
-%% For a rate-based rule that you've defined inside a rule group, provide the
-%% name of the rule group reference statement in your request, in addition to
-%% the rate-based rule name and the web ACL name.
+%% For a rate-based rule that you've defined inside a rule group, provide
+%% the name of the rule group reference statement in your request, in
+%% addition to the rate-based rule name and the web ACL name.
 %%
 %% WAF monitors web requests and manages keys independently for each unique
 %% combination of web ACL, optional rule group, and rate-based rule. For
@@ -512,12 +515,12 @@ get_rule_group(Client, Input, Options)
 %% You can specify a sample size of up to 500 requests, and you can specify
 %% any time range in the previous three hours.
 %%
-%% `GetSampledRequests' returns a time range, which is usually the time range
-%% that you specified. However, if your resource (such as a CloudFront
+%% `GetSampledRequests' returns a time range, which is usually the time
+%% range that you specified. However, if your resource (such as a CloudFront
 %% distribution) received 5,000 requests before the specified time range
-%% elapsed, `GetSampledRequests' returns an updated time range. This new time
-%% range indicates the actual period during which WAF selected the requests
-%% in the sample.
+%% elapsed, `GetSampledRequests' returns an updated time range. This new
+%% time range indicates the actual period during which WAF selected the
+%% requests in the sample.
 get_sampled_requests(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_sampled_requests(Client, Input, []).
@@ -554,8 +557,8 @@ list_available_managed_rule_group_versions(Client, Input, Options)
 %% to use.
 %%
 %% This list includes all Amazon Web Services Managed Rules rule groups and
-%% all of the Amazon Web Services Marketplace managed rule groups that you're
-%% subscribed to.
+%% all of the Amazon Web Services Marketplace managed rule groups that
+%% you're subscribed to.
 list_available_managed_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_available_managed_rule_groups(Client, Input, []).
@@ -563,8 +566,8 @@ list_available_managed_rule_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAvailableManagedRuleGroups">>, Input, Options).
 
-%% @doc Retrieves an array of `IPSetSummary' objects for the IP sets that you
-%% manage.
+%% @doc Retrieves an array of `IPSetSummary' objects for the IP sets that
+%% you manage.
 list_ip_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_ip_sets(Client, Input, []).
@@ -588,7 +591,8 @@ list_logging_configurations(Client, Input, Options)
 %% Vendors, you can use the managed rule set APIs to provide controlled
 %% rollout of your versioned managed rule group offerings for your customers.
 %% The APIs are `ListManagedRuleSets', `GetManagedRuleSet',
-%% `PutManagedRuleSetVersions', and `UpdateManagedRuleSetVersionExpiryDate'.
+%% `PutManagedRuleSetVersions', and
+%% `UpdateManagedRuleSetVersionExpiryDate'.
 list_managed_rule_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_managed_rule_sets(Client, Input, []).
@@ -610,8 +614,8 @@ list_mobile_sdk_releases(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListMobileSdkReleases">>, Input, Options).
 
-%% @doc Retrieves an array of `RegexPatternSetSummary' objects for the regex
-%% pattern sets that you manage.
+%% @doc Retrieves an array of `RegexPatternSetSummary' objects for the
+%% regex pattern sets that you manage.
 list_regex_pattern_sets(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_regex_pattern_sets(Client, Input, []).
@@ -631,8 +635,8 @@ list_resources_for_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListResourcesForWebACL">>, Input, Options).
 
-%% @doc Retrieves an array of `RuleGroupSummary' objects for the rule groups
-%% that you manage.
+%% @doc Retrieves an array of `RuleGroupSummary' objects for the rule
+%% groups that you manage.
 list_rule_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_rule_groups(Client, Input, []).
@@ -644,13 +648,13 @@ list_rule_groups(Client, Input, Options)
 %%
 %% Tags are key:value pairs that you can use to categorize and manage your
 %% resources, for purposes like billing. For example, you might set the tag
-%% key to "customer" and the value to the customer name or ID. You can
-%% specify one or more tags to add to each Amazon Web Services resource, up
-%% to 50 tags for a resource.
+%% key to &quot;customer&quot; and the value to the customer name or ID. You
+%% can specify one or more tags to add to each Amazon Web Services resource,
+%% up to 50 tags for a resource.
 %%
 %% You can tag the Amazon Web Services resources that you manage through WAF:
-%% web ACLs, rule groups, IP sets, and regex pattern sets. You can't manage
-%% or view tags through the WAF console.
+%% web ACLs, rule groups, IP sets, and regex pattern sets. You can't
+%% manage or view tags through the WAF console.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -658,8 +662,8 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Retrieves an array of `WebACLSummary' objects for the web ACLs that
-%% you manage.
+%% @doc Retrieves an array of `WebACLSummary' objects for the web ACLs
+%% that you manage.
 list_web_acls(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_web_acls(Client, Input, []).
@@ -667,8 +671,8 @@ list_web_acls(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWebACLs">>, Input, Options).
 
-%% @doc Enables the specified `LoggingConfiguration', to start logging from a
-%% web ACL, according to the configuration provided.
+%% @doc Enables the specified `LoggingConfiguration', to start logging
+%% from a web ACL, according to the configuration provided.
 %%
 %% This operation completely replaces any mutable specifications that you
 %% already have for a logging configuration with the ones that you provide to
@@ -691,9 +695,9 @@ list_web_acls(Client, Input, Options)
 %% CloudWatch Logs log group, an Amazon Simple Storage Service (Amazon S3)
 %% bucket, or an Amazon Kinesis Data Firehose.
 %%
-%% The name that you give the destination must start with `aws-waf-logs-'.
-%% Depending on the type of destination, you might need to configure
-%% additional settings or permissions.
+%% The name that you give the destination must start with
+%% `aws-waf-logs-'. Depending on the type of destination, you might need
+%% to configure additional settings or permissions.
 %%
 %% For configuration requirements and pricing information for each
 %% destination type, see Logging web ACL traffic in the WAF Developer Guide.
@@ -728,15 +732,16 @@ put_logging_configuration(Client, Input, Options)
 %% Vendors, you can use the managed rule set APIs to provide controlled
 %% rollout of your versioned managed rule group offerings for your customers.
 %% The APIs are `ListManagedRuleSets', `GetManagedRuleSet',
-%% `PutManagedRuleSetVersions', and `UpdateManagedRuleSetVersionExpiryDate'.
+%% `PutManagedRuleSetVersions', and
+%% `UpdateManagedRuleSetVersionExpiryDate'.
 %%
 %% Customers retrieve their managed rule group list by calling
-%% `ListAvailableManagedRuleGroups'. The name that you provide here for your
-%% managed rule set is the name the customer sees for the corresponding
+%% `ListAvailableManagedRuleGroups'. The name that you provide here for
+%% your managed rule set is the name the customer sees for the corresponding
 %% managed rule group. Customers can retrieve the available versions for a
-%% managed rule group by calling `ListAvailableManagedRuleGroupVersions'. You
-%% provide a rule group specification for each version. For each managed rule
-%% set, you must specify a version that you recommend using.
+%% managed rule group by calling `ListAvailableManagedRuleGroupVersions'.
+%% You provide a rule group specification for each version. For each managed
+%% rule set, you must specify a version that you recommend using.
 %%
 %% To initiate the expiration of a managed rule group version, use
 %% `UpdateManagedRuleSetVersionExpiryDate'.
@@ -755,11 +760,11 @@ put_managed_rule_set_versions(Client, Input, Options)
 %%
 %% This action is subject to the following restrictions:
 %%
-%% <ul> <li> You can attach only one policy with each `PutPermissionPolicy'
-%% request.
+%% <ul> <li> You can attach only one policy with each
+%% `PutPermissionPolicy' request.
 %%
-%% </li> <li> The ARN in the request must be a valid WAF `RuleGroup' ARN and
-%% the rule group must exist in the same Region.
+%% </li> <li> The ARN in the request must be a valid WAF `RuleGroup' ARN
+%% and the rule group must exist in the same Region.
 %%
 %% </li> <li> The user making the request must be the owner of the rule
 %% group.
@@ -776,13 +781,13 @@ put_permission_policy(Client, Input, Options)
 %%
 %% Tags are key:value pairs that you can use to categorize and manage your
 %% resources, for purposes like billing. For example, you might set the tag
-%% key to "customer" and the value to the customer name or ID. You can
-%% specify one or more tags to add to each Amazon Web Services resource, up
-%% to 50 tags for a resource.
+%% key to &quot;customer&quot; and the value to the customer name or ID. You
+%% can specify one or more tags to add to each Amazon Web Services resource,
+%% up to 50 tags for a resource.
 %%
 %% You can tag the Amazon Web Services resources that you manage through WAF:
-%% web ACLs, rule groups, IP sets, and regex pattern sets. You can't manage
-%% or view tags through the WAF console.
+%% web ACLs, rule groups, IP sets, and regex pattern sets. You can't
+%% manage or view tags through the WAF console.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -793,9 +798,10 @@ tag_resource(Client, Input, Options)
 %% @doc Disassociates tags from an Amazon Web Services resource.
 %%
 %% Tags are key:value pairs that you can associate with Amazon Web Services
-%% resources. For example, the tag key might be "customer" and the tag value
-%% might be "companyA." You can specify one or more tags to add to each
-%% container. You can add up to 50 tags to each Amazon Web Services resource.
+%% resources. For example, the tag key might be &quot;customer&quot; and the
+%% tag value might be &quot;companyA.&quot; You can specify one or more tags
+%% to add to each container. You can add up to 50 tags to each Amazon Web
+%% Services resource.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
@@ -848,7 +854,8 @@ update_ip_set(Client, Input, Options)
 %% Vendors, you can use the managed rule set APIs to provide controlled
 %% rollout of your versioned managed rule group offerings for your customers.
 %% The APIs are `ListManagedRuleSets', `GetManagedRuleSet',
-%% `PutManagedRuleSetVersions', and `UpdateManagedRuleSetVersionExpiryDate'.
+%% `PutManagedRuleSetVersions', and
+%% `UpdateManagedRuleSetVersionExpiryDate'.
 update_managed_rule_set_version_expiry_date(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_managed_rule_set_version_expiry_date(Client, Input, []).
@@ -919,10 +926,10 @@ update_regex_pattern_set(Client, Input, Options)
 %% last only a few seconds.
 %%
 %% A rule group defines a collection of rules to inspect and control web
-%% requests that you can use in a `WebACL'. When you create a rule group, you
-%% define an immutable capacity limit. If you update a rule group, you must
-%% stay within the capacity. This allows others to reuse the rule group with
-%% confidence in its capacity requirements.
+%% requests that you can use in a `WebACL'. When you create a rule group,
+%% you define an immutable capacity limit. If you update a rule group, you
+%% must stay within the capacity. This allows others to reuse the rule group
+%% with confidence in its capacity requirements.
 update_rule_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_rule_group(Client, Input, []).
@@ -965,11 +972,11 @@ update_rule_group(Client, Input, Options)
 %% requests that match the statement of the rule. In the web ACL, you assign
 %% a default action to take (allow, block) for any request that does not
 %% match any of the rules. The rules in a web ACL can be a combination of the
-%% types `Rule', `RuleGroup', and managed rule group. You can associate a web
-%% ACL with one or more Amazon Web Services resources to protect. The
-%% resources can be an Amazon CloudFront distribution, an Amazon API Gateway
-%% REST API, an Application Load Balancer, an AppSync GraphQL API, or an
-%% Amazon Cognito user pool.
+%% types `Rule', `RuleGroup', and managed rule group. You can
+%% associate a web ACL with one or more Amazon Web Services resources to
+%% protect. The resources can be an Amazon CloudFront distribution, an Amazon
+%% API Gateway REST API, an Application Load Balancer, an AppSync GraphQL
+%% API, or an Amazon Cognito user pool.
 update_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_web_acl(Client, Input, []).

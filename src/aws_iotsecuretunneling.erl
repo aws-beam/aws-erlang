@@ -95,8 +95,8 @@ open_tunnel(Client, Input, Options)
 %%
 %% Requires permission to access the RotateTunnelAccessToken action.
 %%
-%% Rotating the CAT doesn't extend the tunnel duration. For example, say the
-%% tunnel duration is 12 hours and the tunnel has already been open for 4
+%% Rotating the CAT doesn't extend the tunnel duration. For example, say
+%% the tunnel duration is 12 hours and the tunnel has already been open for 4
 %% hours. When you rotate the access tokens, the new tokens that are
 %% generated can only be used for the remaining 8 hours.
 rotate_tunnel_access_token(Client, Input)

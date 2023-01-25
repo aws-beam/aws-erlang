@@ -7,9 +7,10 @@
 %% you can use to create, update, get, and list Cases domains, fields, field
 %% options, layouts, templates, cases, related items, and tags.
 %%
-%% <p>For more information about Amazon Connect Cases, see <a
-%% href="https://docs.aws.amazon.com/connect/latest/adminguide/cases.html">Amazon
-%% Connect Cases</a> in the <i>Amazon Connect Administrator Guide</i>. </p>
+%% &lt;p&gt;For more information about Amazon Connect Cases, see &lt;a
+%% href=&quot;https://docs.aws.amazon.com/connect/latest/adminguide/cases.html&quot;&gt;Amazon
+%% Connect Cases&lt;/a&gt; in the &lt;i&gt;Amazon Connect Administrator
+%% Guide&lt;/i&gt;. &lt;/p&gt;
 -module(aws_connectcases).
 
 -export([batch_get_field/3,
@@ -776,8 +777,8 @@ update_field(Client, DomainId, FieldId, Input0, Options0) ->
 %% If the action is successful, the service sends back an HTTP 200 response
 %% with an empty HTTP body.
 %%
-%% A `ValidationException' is returned when you add non-existent `fieldIds'
-%% to a layout.
+%% A `ValidationException' is returned when you add non-existent
+%% `fieldIds' to a layout.
 %%
 %% Title and Status fields cannot be part of layouts because they are not
 %% configurable.
@@ -806,10 +807,10 @@ update_layout(Client, DomainId, LayoutId, Input0, Options0) ->
 %% @doc Updates the attributes of an existing template.
 %%
 %% The template attributes that can be modified include `name',
-%% `description', `layoutConfiguration', `requiredFields', and `status'. At
-%% least one of these attributes must not be null. If a null value is
-%% provided for a given attribute, that attribute is ignored and its current
-%% value is preserved.
+%% `description', `layoutConfiguration', `requiredFields', and
+%% `status'. At least one of these attributes must not be null. If a null
+%% value is provided for a given attribute, that attribute is ignored and its
+%% current value is preserved.
 update_template(Client, DomainId, TemplateId, Input) ->
     update_template(Client, DomainId, TemplateId, Input, []).
 update_template(Client, DomainId, TemplateId, Input0, Options0) ->

@@ -630,9 +630,9 @@ create_usage_plan_key(Client, UsagePlanId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a VPC link, under the caller's account in a selected region,
-%% in an asynchronous operation that typically takes 2-4 minutes to complete
-%% and become operational.
+%% @doc Creates a VPC link, under the caller's account in a selected
+%% region, in an asynchronous operation that typically takes 2-4 minutes to
+%% complete and become operational.
 %%
 %% The caller must have permissions to create and update VPC Endpoint
 %% services.
@@ -2427,8 +2427,8 @@ get_vpc_link(Client, VpcLinkId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets the VpcLinks collection under the caller's account in a selected
-%% region.
+%% @doc Gets the VpcLinks collection under the caller's account in a
+%% selected region.
 get_vpc_links(Client)
   when is_map(Client) ->
     get_vpc_links(Client, #{}, #{}).

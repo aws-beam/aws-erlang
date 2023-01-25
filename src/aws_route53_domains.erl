@@ -174,7 +174,8 @@ check_domain_transferability(Client, Input, Options)
 %%
 %% </li> <li> When the registration has been deleted, we'll send you a
 %% confirmation to the registrant contact. The email will come from
-%% `noreply@domainnameverification.net' or `noreply@registrar.amazon.com'.
+%% `noreply@domainnameverification.net' or
+%% `noreply@registrar.amazon.com'.
 %%
 %% </li> </ol>
 delete_domain(Client, Input)
@@ -388,15 +389,15 @@ push_domain(Client, Input, Options)
 %% name servers.
 %%
 %% </li> <li> Enables auto renew, so your domain registration will renew
-%% automatically each year. We'll notify you in advance of the renewal date
-%% so you can choose whether to renew the registration.
+%% automatically each year. We'll notify you in advance of the renewal
+%% date so you can choose whether to renew the registration.
 %%
 %% </li> <li> Optionally enables privacy protection, so WHOIS queries return
 %% contact information either for Amazon Registrar (for .com, .net, and .org
 %% domains) or for our registrar associate, Gandi (for all other TLDs). If
-%% you don't enable privacy protection, WHOIS queries return the information
-%% that you entered for the administrative, registrant, and technical
-%% contacts.
+%% you don't enable privacy protection, WHOIS queries return the
+%% information that you entered for the administrative, registrant, and
+%% technical contacts.
 %%
 %% You must specify the same privacy setting for the administrative,
 %% registrant, and technical contacts.
@@ -440,9 +441,9 @@ reject_domain_transfer_from_another_aws_account(Client, Input, Options)
 %%
 %% We recommend that you renew your domain several weeks before the
 %% expiration date. Some TLD registries delete domains before the expiration
-%% date if you haven't renewed far enough in advance. For more information
-%% about renewing domain registration, see Renewing Registration for a Domain
-%% in the Amazon Route 53 Developer Guide.
+%% date if you haven't renewed far enough in advance. For more
+%% information about renewing domain registration, see Renewing Registration
+%% for a Domain in the Amazon Route 53 Developer Guide.
 renew_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     renew_domain(Client, Input, []).
@@ -489,8 +490,8 @@ retrieve_domain_auth_code(Client, Input, Options)
 %% For more information about transferring domains, see the following topics:
 %%
 %% <ul> <li> For transfer requirements, a detailed procedure, and information
-%% about viewing the status of a domain that you're transferring to Route 53,
-%% see Transferring Registration for a Domain to Amazon Route 53 in the
+%% about viewing the status of a domain that you're transferring to Route
+%% 53, see Transferring Registration for a Domain to Amazon Route 53 in the
 %% Amazon Route 53 Developer Guide.
 %%
 %% </li> <li> For information about how to transfer a domain from one Amazon
@@ -530,8 +531,8 @@ transfer_domain(Client, Input, Options)
 %% Note the following:
 %%
 %% <ul> <li> The Amazon Web Services account that you're transferring the
-%% domain to must accept the transfer. If the other account doesn't accept
-%% the transfer within 3 days, we cancel the transfer. See
+%% domain to must accept the transfer. If the other account doesn't
+%% accept the transfer within 3 days, we cancel the transfer. See
 %% AcceptDomainTransferFromAnotherAwsAccount.
 %%
 %% </li> <li> You can cancel the transfer before the other account accepts
@@ -542,9 +543,9 @@ transfer_domain(Client, Input, Options)
 %%
 %% </li> </ul> When you transfer a domain from one Amazon Web Services
 %% account to another, Route 53 doesn't transfer the hosted zone that is
-%% associated with the domain. DNS resolution isn't affected if the domain
-%% and the hosted zone are owned by separate accounts, so transferring the
-%% hosted zone is optional. For information about transferring the hosted
+%% associated with the domain. DNS resolution isn't affected if the
+%% domain and the hosted zone are owned by separate accounts, so transferring
+%% the hosted zone is optional. For information about transferring the hosted
 %% zone to another Amazon Web Services account, see Migrating a Hosted Zone
 %% to a Different Amazon Web Services Account in the Amazon Route 53
 %% Developer Guide.
@@ -592,8 +593,8 @@ update_domain_contact(Client, Input, Options)
 %% contact type (administrative, registrant, or technical). If the request
 %% succeeds, Amazon Route 53 returns an operation ID that you can use with
 %% GetOperationDetail to track the progress and completion of the action. If
-%% the request doesn't complete successfully, the domain registrant will be
-%% notified by email.
+%% the request doesn't complete successfully, the domain registrant will
+%% be notified by email.
 %%
 %% By disabling the privacy service via API, you consent to the publication
 %% of the contact information provided for this domain via the public WHOIS

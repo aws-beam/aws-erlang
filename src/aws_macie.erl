@@ -46,11 +46,11 @@ associate_member_account(Client, Input, Options)
 %% @doc (Discontinued) Associates specified S3 resources with Amazon Macie
 %% Classic for monitoring and data classification.
 %%
-%% If `memberAccountId' isn't specified, the action associates specified S3
-%% resources with Macie Classic for the current Macie Classic administrator
-%% account. If `memberAccountId' is specified, the action associates
-%% specified S3 resources with Macie Classic for the specified member
-%% account.
+%% If `memberAccountId' isn't specified, the action associates
+%% specified S3 resources with Macie Classic for the current Macie Classic
+%% administrator account. If `memberAccountId' is specified, the action
+%% associates specified S3 resources with Macie Classic for the specified
+%% member account.
 associate_s3_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_s3_resources(Client, Input, []).
@@ -70,10 +70,11 @@ disassociate_member_account(Client, Input, Options)
 %% @doc (Discontinued) Removes specified S3 resources from being monitored by
 %% Amazon Macie Classic.
 %%
-%% If `memberAccountId' isn't specified, the action removes specified S3
-%% resources from Macie Classic for the current Macie Classic administrator
-%% account. If `memberAccountId' is specified, the action removes specified
-%% S3 resources from Macie Classic for the specified member account.
+%% If `memberAccountId' isn't specified, the action removes specified
+%% S3 resources from Macie Classic for the current Macie Classic
+%% administrator account. If `memberAccountId' is specified, the action
+%% removes specified S3 resources from Macie Classic for the specified member
+%% account.
 disassociate_s3_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_s3_resources(Client, Input, []).
@@ -93,10 +94,11 @@ list_member_accounts(Client, Input, Options)
 %% @doc (Discontinued) Lists all the S3 resources associated with Amazon
 %% Macie Classic.
 %%
-%% If `memberAccountId' isn't specified, the action lists the S3 resources
-%% associated with Macie Classic for the current Macie Classic administrator
-%% account. If `memberAccountId' is specified, the action lists the S3
-%% resources associated with Macie Classic for the specified member account.
+%% If `memberAccountId' isn't specified, the action lists the S3
+%% resources associated with Macie Classic for the current Macie Classic
+%% administrator account. If `memberAccountId' is specified, the action
+%% lists the S3 resources associated with Macie Classic for the specified
+%% member account.
 list_s3_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_s3_resources(Client, Input, []).

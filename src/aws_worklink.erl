@@ -7,10 +7,10 @@
 %% In a single step, your users, such as employees, can access internal
 %% websites as efficiently as they access any other public website. They
 %% enter a URL in their web browser, or choose a link to an internal website
-%% in an email. Amazon WorkLink authenticates the user's access and securely
-%% renders authorized internal web content in a secure rendering service in
-%% the AWS cloud. Amazon WorkLink doesn't download or store any internal web
-%% content on mobile devices.
+%% in an email. Amazon WorkLink authenticates the user's access and
+%% securely renders authorized internal web content in a secure rendering
+%% service in the AWS cloud. Amazon WorkLink doesn't download or store
+%% any internal web content on mobile devices.
 -module(aws_worklink).
 
 -export([associate_domain/2,
@@ -428,8 +428,8 @@ disassociate_domain(Client, Input0, Options0) ->
 %% @doc Disassociates a website authorization provider from a specified
 %% fleet.
 %%
-%% After the disassociation, users can't load any associated websites that
-%% require this authorization provider.
+%% After the disassociation, users can't load any associated websites
+%% that require this authorization provider.
 disassociate_website_authorization_provider(Client, Input) ->
     disassociate_website_authorization_provider(Client, Input, []).
 disassociate_website_authorization_provider(Client, Input0, Options0) ->

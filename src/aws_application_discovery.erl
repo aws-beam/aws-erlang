@@ -13,15 +13,16 @@
 %% data about your on-premises servers:
 %%
 %% <ul> <li> Agentless discovery is recommended for environments that use
-%% VMware vCenter Server. This mode doesn't require you to install an agent
-%% on each host. It does not work in non-VMware environments.
+%% VMware vCenter Server. This mode doesn't require you to install an
+%% agent on each host. It does not work in non-VMware environments.
 %%
 %% <ul> <li> Agentless discovery gathers server information regardless of the
 %% operating systems, which minimizes the time required for initial
 %% on-premises infrastructure assessment.
 %%
-%% </li> <li> Agentless discovery doesn't collect information about network
-%% dependencies, only agent-based discovery collects that information.
+%% </li> <li> Agentless discovery doesn't collect information about
+%% network dependencies, only agent-based discovery collects that
+%% information.
 %%
 %% </li> </ul> </li> </ul> <ul> <li> Agent-based discovery collects a richer
 %% set of data than agentless discovery by using the Amazon Web Services
@@ -258,7 +259,8 @@ describe_configurations(Client, Input, Options)
 %% @doc Lists exports as specified by ID.
 %%
 %% All continuous exports associated with your user account can be listed if
-%% you call `DescribeContinuousExports' as is without passing any parameters.
+%% you call `DescribeContinuousExports' as is without passing any
+%% parameters.
 describe_continuous_exports(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_continuous_exports(Client, Input, []).
@@ -394,16 +396,17 @@ start_data_collection_by_agent_ids(Client, Input, Options)
 
 %% @doc Begins the export of discovered data to an S3 bucket.
 %%
-%% If you specify `agentIds' in a filter, the task exports up to 72 hours of
-%% detailed data collected by the identified Application Discovery Agent,
+%% If you specify `agentIds' in a filter, the task exports up to 72 hours
+%% of detailed data collected by the identified Application Discovery Agent,
 %% including network, process, and performance details. A time range for
-%% exported agent data may be set by using `startTime' and `endTime'. Export
-%% of detailed agent data is limited to five concurrently running exports.
+%% exported agent data may be set by using `startTime' and `endTime'.
+%% Export of detailed agent data is limited to five concurrently running
+%% exports.
 %%
-%% If you do not include an `agentIds' filter, summary data is exported that
-%% includes both Amazon Web Services Agentless Discovery Connector data and
-%% summary data from Amazon Web Services Discovery Agents. Export of summary
-%% data is limited to two exports per day.
+%% If you do not include an `agentIds' filter, summary data is exported
+%% that includes both Amazon Web Services Agentless Discovery Connector data
+%% and summary data from Amazon Web Services Discovery Agents. Export of
+%% summary data is limited to two exports per day.
 start_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_export_task(Client, Input, []).

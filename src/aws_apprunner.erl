@@ -8,8 +8,8 @@
 %% source code to a running service in the Amazon Web Services Cloud in
 %% seconds.
 %%
-%% You don't need to learn new technologies, decide which compute service to
-%% use, or understand how to provision and configure Amazon Web Services
+%% You don't need to learn new technologies, decide which compute service
+%% to use, or understand how to provision and configure Amazon Web Services
 %% resources.
 %%
 %% App Runner connects directly to your container registry or source code
@@ -109,14 +109,14 @@
 %% @doc Associate your own domain name with the App Runner subdomain URL of
 %% your App Runner service.
 %%
-%% After you call `AssociateCustomDomain' and receive a successful response,
-%% use the information in the `CustomDomain' record that's returned to add
-%% CNAME records to your Domain Name System (DNS). For each mapped domain
-%% name, add a mapping to the target App Runner subdomain and one or more
-%% certificate validation records. App Runner then performs DNS validation to
-%% verify that you own or control the domain name that you associated. App
-%% Runner tracks domain validity in a certificate stored in AWS Certificate
-%% Manager (ACM).
+%% After you call `AssociateCustomDomain' and receive a successful
+%% response, use the information in the `CustomDomain' record that's
+%% returned to add CNAME records to your Domain Name System (DNS). For each
+%% mapped domain name, add a mapping to the target App Runner subdomain and
+%% one or more certificate validation records. App Runner then performs DNS
+%% validation to verify that you own or control the domain name that you
+%% associated. App Runner tracks domain validity in a certificate stored in
+%% AWS Certificate Manager (ACM).
 associate_custom_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_custom_domain(Client, Input, []).
@@ -132,18 +132,18 @@ associate_custom_domain(Client, Input, Options)
 %%
 %% Create multiple revisions of a configuration by calling this action
 %% multiple times using the same `AutoScalingConfigurationName'. The call
-%% returns incremental `AutoScalingConfigurationRevision' values. When you
-%% create a service and configure an auto scaling configuration resource, the
-%% service uses the latest active revision of the auto scaling configuration
-%% by default. You can optionally configure the service to use a specific
-%% revision.
+%% returns incremental `AutoScalingConfigurationRevision' values. When
+%% you create a service and configure an auto scaling configuration resource,
+%% the service uses the latest active revision of the auto scaling
+%% configuration by default. You can optionally configure the service to use
+%% a specific revision.
 %%
 %% Configure a higher `MinSize' to increase the spread of your App Runner
 %% service over more Availability Zones in the Amazon Web Services Region.
 %% The tradeoff is a higher minimal cost.
 %%
-%% Configure a lower `MaxSize' to control your cost. The tradeoff is lower
-%% responsiveness during peak demand.
+%% Configure a lower `MaxSize' to control your cost. The tradeoff is
+%% lower responsiveness during peak demand.
 create_auto_scaling_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_auto_scaling_configuration(Client, Input, []).
@@ -174,18 +174,18 @@ create_connection(Client, Input, Options)
 %% can share an observability configuration across multiple services.
 %%
 %% Create multiple revisions of a configuration by calling this action
-%% multiple times using the same `ObservabilityConfigurationName'. The call
-%% returns incremental `ObservabilityConfigurationRevision' values. When you
-%% create a service and configure an observability configuration resource,
-%% the service uses the latest active revision of the observability
+%% multiple times using the same `ObservabilityConfigurationName'. The
+%% call returns incremental `ObservabilityConfigurationRevision' values.
+%% When you create a service and configure an observability configuration
+%% resource, the service uses the latest active revision of the observability
 %% configuration by default. You can optionally configure the service to use
 %% a specific revision.
 %%
 %% The observability configuration resource is designed to configure multiple
 %% features (currently one feature, tracing). This action takes optional
 %% parameters that describe the configuration of these features (currently
-%% one parameter, `TraceConfiguration'). If you don't specify a feature
-%% parameter, App Runner doesn't enable the feature.
+%% one parameter, `TraceConfiguration'). If you don't specify a
+%% feature parameter, App Runner doesn't enable the feature.
 create_observability_configuration(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_observability_configuration(Client, Input, []).
@@ -272,8 +272,8 @@ delete_observability_configuration(Client, Input, Options)
 %% returned `OperationId' and the `ListOperations' call to track the
 %% operation's progress.
 %%
-%% Make sure that you don't have any active VPCIngressConnections associated
-%% with the service you want to delete.
+%% Make sure that you don't have any active VPCIngressConnections
+%% associated with the service you want to delete.
 delete_service(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_service(Client, Input, []).
@@ -369,9 +369,9 @@ describe_vpc_ingress_connection(Client, Input, Options)
 %% @doc Disassociate a custom domain name from an App Runner service.
 %%
 %% Certificates tracking domain validity are associated with a custom domain
-%% and are stored in AWS Certificate Manager (ACM). These certificates aren't
-%% deleted as part of this action. App Runner delays certificate deletion for
-%% 30 days after a domain is disassociated from your service.
+%% and are stored in AWS Certificate Manager (ACM). These certificates
+%% aren't deleted as part of this action. App Runner delays certificate
+%% deletion for 30 days after a domain is disassociated from your service.
 disassociate_custom_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_custom_domain(Client, Input, []).
@@ -541,9 +541,9 @@ untag_resource(Client, Input, Options)
 %%
 %% You can update the source configuration and instance configuration of the
 %% service. You can also update the ARN of the auto scaling configuration
-%% resource that's associated with the service. However, you can't change the
-%% name or the encryption configuration of the service. These can be set only
-%% when you create the service.
+%% resource that's associated with the service. However, you can't
+%% change the name or the encryption configuration of the service. These can
+%% be set only when you create the service.
 %%
 %% To update the tags applied to your service, use the separate actions
 %% `TagResource' and `UntagResource'.

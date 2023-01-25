@@ -270,9 +270,9 @@ create_directory_config(Client, Input, Options)
 %% Entitlements control access to specific applications within a stack, based
 %% on user attributes. Entitlements apply to SAML 2.0 federated user
 %% identities. Amazon AppStream 2.0 user pool and streaming URL users are
-%% entitled to all applications in a stack. Entitlements don't apply to the
-%% desktop stream view application, or to applications managed by a dynamic
-%% app provider using the Dynamic Application Framework.
+%% entitled to all applications in a stack. Entitlements don't apply to
+%% the desktop stream view application, or to applications managed by a
+%% dynamic app provider using the Dynamic Application Framework.
 create_entitlement(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_entitlement(Client, Input, []).
@@ -295,8 +295,8 @@ create_fleet(Client, Input, Options)
 %%
 %% An image builder is a virtual machine that is used to create an image.
 %%
-%% The initial state of the builder is `PENDING'. When it is ready, the state
-%% is `RUNNING'.
+%% The initial state of the builder is `PENDING'. When it is ready, the
+%% state is `RUNNING'.
 create_image_builder(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_image_builder(Client, Input, []).
@@ -338,9 +338,9 @@ create_streaming_url(Client, Input, Options)
 %% @doc Creates a new image with the latest Windows operating system updates,
 %% driver updates, and AppStream 2.0 agent software.
 %%
-%% For more information, see the "Update an Image by Using Managed AppStream
-%% 2.0 Image Updates" section in Administer Your AppStream 2.0 Images, in the
-%% Amazon AppStream 2.0 Administration Guide.
+%% For more information, see the &quot;Update an Image by Using Managed
+%% AppStream 2.0 Image Updates&quot; section in Administer Your AppStream 2.0
+%% Images, in the Amazon AppStream 2.0 Administration Guide.
 create_updated_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_updated_image(Client, Input, []).
@@ -754,8 +754,9 @@ stop_image_builder(Client, Input, Options)
 %% Each tag consists of a key and an optional value. If a resource already
 %% has a tag with the same key, this operation updates its value.
 %%
-%% To list the current tags for your resources, use `ListTagsForResource'. To
-%% disassociate tags from your resources, use `UntagResource'.
+%% To list the current tags for your resources, use
+%% `ListTagsForResource'. To disassociate tags from your resources, use
+%% `UntagResource'.
 %%
 %% For more information about tags, see Tagging Your Resources in the Amazon
 %% AppStream 2.0 Administration Guide.
@@ -769,7 +770,8 @@ tag_resource(Client, Input, Options)
 %% @doc Disassociates one or more specified tags from the specified AppStream
 %% 2.0 resource.
 %%
-%% To list the current tags for your resources, use `ListTagsForResource'.
+%% To list the current tags for your resources, use
+%% `ListTagsForResource'.
 %%
 %% For more information about tags, see Tagging Your Resources in the Amazon
 %% AppStream 2.0 Administration Guide.
@@ -812,23 +814,24 @@ update_entitlement(Client, Input, Options)
 %% If the fleet is in the `STOPPED' state, you can update any attribute
 %% except the fleet name.
 %%
-%% If the fleet is in the `RUNNING' state, you can update the following based
-%% on the fleet type:
+%% If the fleet is in the `RUNNING' state, you can update the following
+%% based on the fleet type:
 %%
 %% <ul> <li> Always-On and On-Demand fleet types
 %%
-%% You can update the `DisplayName', `ComputeCapacity', `ImageARN',
-%% `ImageName', `IdleDisconnectTimeoutInSeconds', and
+%% You can update the `DisplayName', `ComputeCapacity',
+%% `ImageARN', `ImageName', `IdleDisconnectTimeoutInSeconds', and
 %% `DisconnectTimeoutInSeconds' attributes.
 %%
 %% </li> <li> Elastic fleet type
 %%
-%% You can update the `DisplayName', `IdleDisconnectTimeoutInSeconds',
-%% `DisconnectTimeoutInSeconds', `MaxConcurrentSessions',
-%% `SessionScriptS3Location' and `UsbDeviceFilterStrings' attributes.
+%% You can update the `DisplayName',
+%% `IdleDisconnectTimeoutInSeconds', `DisconnectTimeoutInSeconds',
+%% `MaxConcurrentSessions', `SessionScriptS3Location' and
+%% `UsbDeviceFilterStrings' attributes.
 %%
-%% </li> </ul> If the fleet is in the `STARTING' or `STOPPED' state, you
-%% can't update it.
+%% </li> </ul> If the fleet is in the `STARTING' or `STOPPED' state,
+%% you can't update it.
 update_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_fleet(Client, Input, []).

@@ -31,8 +31,8 @@
 %% </li> <li> Common errors: Client and server errors that all operations can
 %% return.
 %%
-%% </li> </ul> If you're new to Audit Manager, we recommend that you review
-%% the Audit Manager User Guide.
+%% </li> </ul> If you're new to Audit Manager, we recommend that you
+%% review the Audit Manager User Guide.
 -module(aws_auditmanager).
 
 -export([associate_assessment_report_evidence_folder/3,
@@ -527,19 +527,19 @@ delete_assessment_framework_share(Client, RequestId, Input0, Options0) ->
 %%
 %% </li> </ol> If Audit Manager can’t access the assessment report in your S3
 %% bucket, the report isn’t deleted. In this event, the
-%% `DeleteAssessmentReport' operation doesn’t fail. Instead, it proceeds to
-%% delete the associated metadata only. You must then delete the assessment
-%% report from the S3 bucket yourself.
+%% `DeleteAssessmentReport' operation doesn’t fail. Instead, it proceeds
+%% to delete the associated metadata only. You must then delete the
+%% assessment report from the S3 bucket yourself.
 %%
-%% This scenario happens when Audit Manager receives a `403 (Forbidden)' or
-%% `404 (Not Found)' error from Amazon S3. To avoid this, make sure that your
-%% S3 bucket is available, and that you configured the correct permissions
-%% for Audit Manager to delete resources in your S3 bucket. For an example
-%% permissions policy that you can use, see Assessment report destination
-%% permissions in the Audit Manager User Guide. For information about the
-%% issues that could cause a `403 (Forbidden)' or `404 (Not Found') error
-%% from Amazon S3, see List of Error Codes in the Amazon Simple Storage
-%% Service API Reference.
+%% This scenario happens when Audit Manager receives a `403 (Forbidden)'
+%% or `404 (Not Found)' error from Amazon S3. To avoid this, make sure
+%% that your S3 bucket is available, and that you configured the correct
+%% permissions for Audit Manager to delete resources in your S3 bucket. For
+%% an example permissions policy that you can use, see Assessment report
+%% destination permissions in the Audit Manager User Guide. For information
+%% about the issues that could cause a `403 (Forbidden)' or `404 (Not
+%% Found') error from Amazon S3, see List of Error Codes in the Amazon
+%% Simple Storage Service API Reference.
 delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input) ->
     delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input, []).
 delete_assessment_report(Client, AssessmentId, AssessmentReportId, Input0, Options0) ->
@@ -1152,8 +1152,8 @@ get_settings(Client, Attribute, QueryMap, HeadersMap, Options0)
 %% Control insights are listed only if the control belongs to the control
 %% domain and assessment that was specified. Moreover, the control must have
 %% collected evidence on the `lastUpdated' date of
-%% `controlInsightsByAssessment'. If neither of these conditions are met, no
-%% data is listed for that control.
+%% `controlInsightsByAssessment'. If neither of these conditions are met,
+%% no data is listed for that control.
 list_assessment_control_insights_by_control_domain(Client, AssessmentId, ControlDomainId)
   when is_map(Client) ->
     list_assessment_control_insights_by_control_domain(Client, AssessmentId, ControlDomainId, #{}, #{}).
@@ -1305,8 +1305,8 @@ list_assessments(Client, QueryMap, HeadersMap, Options0)
 %%
 %% A control domain is listed only if at least one of the controls within
 %% that domain collected evidence on the `lastUpdated' date of
-%% `controlDomainInsights'. If this condition isn’t met, no data is listed
-%% for that control domain.
+%% `controlDomainInsights'. If this condition isn’t met, no data is
+%% listed for that control domain.
 list_control_domain_insights(Client)
   when is_map(Client) ->
     list_control_domain_insights(Client, #{}, #{}).
@@ -1339,8 +1339,8 @@ list_control_domain_insights(Client, QueryMap, HeadersMap, Options0)
 %%
 %% A control domain is listed only if at least one of the controls within
 %% that domain collected evidence on the `lastUpdated' date of
-%% `controlDomainInsights'. If this condition isn’t met, no data is listed
-%% for that domain.
+%% `controlDomainInsights'. If this condition isn’t met, no data is
+%% listed for that domain.
 list_control_domain_insights_by_assessment(Client, AssessmentId)
   when is_map(Client) ->
     list_control_domain_insights_by_assessment(Client, AssessmentId, #{}, #{}).
@@ -1374,8 +1374,8 @@ list_control_domain_insights_by_assessment(Client, AssessmentId, QueryMap, Heade
 %%
 %% Control insights are listed only if the control belongs to the control
 %% domain that was specified and the control collected evidence on the
-%% `lastUpdated' date of `controlInsightsMetadata'. If neither of these
-%% conditions are met, no data is listed for that control.
+%% `lastUpdated' date of `controlInsightsMetadata'. If neither of
+%% these conditions are met, no data is listed for that control.
 list_control_insights_by_control_domain(Client, ControlDomainId)
   when is_map(Client) ->
     list_control_insights_by_control_domain(Client, ControlDomainId, #{}, #{}).
@@ -1593,14 +1593,14 @@ register_organization_admin_account(Client, Input0, Options0) ->
 %% their Amazon Web Services account under the Amazon Web Services Region
 %% that was specified in the share request.
 %%
-%% When you invoke the `StartAssessmentFrameworkShare' API, you are about to
-%% share a custom framework with another Amazon Web Services account. You may
-%% not share a custom framework that is derived from a standard framework if
-%% the standard framework is designated as not eligible for sharing by Amazon
-%% Web Services, unless you have obtained permission to do so from the owner
-%% of the standard framework. To learn more about which standard frameworks
-%% are eligible for sharing, see Framework sharing eligibility in the Audit
-%% Manager User Guide.
+%% When you invoke the `StartAssessmentFrameworkShare' API, you are about
+%% to share a custom framework with another Amazon Web Services account. You
+%% may not share a custom framework that is derived from a standard framework
+%% if the standard framework is designated as not eligible for sharing by
+%% Amazon Web Services, unless you have obtained permission to do so from the
+%% owner of the standard framework. To learn more about which standard
+%% frameworks are eligible for sharing, see Framework sharing eligibility in
+%% the Audit Manager User Guide.
 start_assessment_framework_share(Client, FrameworkId, Input) ->
     start_assessment_framework_share(Client, FrameworkId, Input, []).
 start_assessment_framework_share(Client, FrameworkId, Input0, Options0) ->

@@ -114,13 +114,14 @@ associate_drt_log_bucket(Client, Input, Options)
 %% This enables the SRT to inspect your WAF configuration and create or
 %% update WAF rules and web ACLs.
 %%
-%% You can associate only one `RoleArn' with your subscription. If you submit
-%% an `AssociateDRTRole' request for an account that already has an
-%% associated role, the new `RoleArn' will replace the existing `RoleArn'.
+%% You can associate only one `RoleArn' with your subscription. If you
+%% submit an `AssociateDRTRole' request for an account that already has
+%% an associated role, the new `RoleArn' will replace the existing
+%% `RoleArn'.
 %%
 %% Prior to making the `AssociateDRTRole' request, you must attach the
-%% `AWSShieldDRTAccessPolicy' managed policy to the role that you'll specify
-%% in the request. You can access this policy in the IAM console at
+%% `AWSShieldDRTAccessPolicy' managed policy to the role that you'll
+%% specify in the request. You can access this policy in the IAM console at
 %% AWSShieldDRTAccessPolicy. For more information see Adding and removing IAM
 %% identity permissions. The role must also trust the service principal
 %% `drt.shield.amazonaws.com'. For more information, see IAM JSON policy
@@ -131,13 +132,13 @@ associate_drt_log_bucket(Client, Input, Options)
 %% Shield configuration and create and update WAF rules and web ACLs on your
 %% behalf. The SRT takes these actions only if explicitly authorized by you.
 %%
-%% You must have the `iam:PassRole' permission to make an `AssociateDRTRole'
-%% request. For more information, see Granting a user permissions to pass a
-%% role to an Amazon Web Services service.
+%% You must have the `iam:PassRole' permission to make an
+%% `AssociateDRTRole' request. For more information, see Granting a user
+%% permissions to pass a role to an Amazon Web Services service.
 %%
-%% To use the services of the SRT and make an `AssociateDRTRole' request, you
-%% must be subscribed to the Business Support plan or the Enterprise Support
-%% plan.
+%% To use the services of the SRT and make an `AssociateDRTRole' request,
+%% you must be subscribed to the Business Support plan or the Enterprise
+%% Support plan.
 associate_drt_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_drt_role(Client, Input, []).
@@ -177,8 +178,8 @@ associate_health_check(Client, Input, Options)
 %%
 %% The contacts that you provide in the request replace any contacts that
 %% were already defined. If you already have contacts defined and want to use
-%% them, retrieve the list using `DescribeEmergencyContactSettings' and then
-%% provide it to this call.
+%% them, retrieve the list using `DescribeEmergencyContactSettings' and
+%% then provide it to this call.
 associate_proactive_engagement_details(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_proactive_engagement_details(Client, Input, []).
@@ -195,8 +196,8 @@ associate_proactive_engagement_details(Client, Input, Options)
 %% protected Amazon EC2 Elastic IP addresses.
 %%
 %% You can add protection to only a single resource with each
-%% `CreateProtection' request. You can add protection to multiple resources
-%% at once through the Shield Advanced console at
+%% `CreateProtection' request. You can add protection to multiple
+%% resources at once through the Shield Advanced console at
 %% [https://console.aws.amazon.com/wafv2/shieldv2#/]. For more information
 %% see Getting Started with Shield Advanced and Adding Shield Advanced
 %% protection to Amazon Web Services resources.
@@ -279,9 +280,9 @@ describe_attack(Client, Input, Options)
 %%
 %% The operation returns data for the time range of midnight UTC, one year
 %% ago, to midnight UTC, today. For example, if the current time is
-%% `2020-10-26 15:39:32 PDT', equal to `2020-10-26 22:39:32 UTC', then the
-%% time range for the attack data returned is from `2019-10-26 00:00:00 UTC'
-%% to `2020-10-26 00:00:00 UTC'.
+%% `2020-10-26 15:39:32 PDT', equal to `2020-10-26 22:39:32 UTC',
+%% then the time range for the attack data returned is from `2019-10-26
+%% 00:00:00 UTC' to `2020-10-26 00:00:00 UTC'.
 %%
 %% The time range indicates the period covered by the attack statistics data
 %% items.
@@ -369,8 +370,8 @@ disassociate_drt_log_bucket(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateDRTLogBucket">>, Input, Options).
 
-%% @doc Removes the Shield Response Team's (SRT) access to your Amazon Web
-%% Services account.
+%% @doc Removes the Shield Response Team's (SRT) access to your Amazon
+%% Web Services account.
 disassociate_drt_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_drt_role(Client, Input, []).
@@ -437,7 +438,8 @@ enable_proactive_engagement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableProactiveEngagement">>, Input, Options).
 
-%% @doc Returns the `SubscriptionState', either `Active' or `Inactive'.
+%% @doc Returns the `SubscriptionState', either `Active' or
+%% `Inactive'.
 get_subscription_state(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_subscription_state(Client, Input, []).

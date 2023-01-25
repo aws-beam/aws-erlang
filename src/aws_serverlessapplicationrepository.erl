@@ -395,7 +395,8 @@ put_application_policy(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Unshares an application from an AWS Organization.
 %%
-%% This operation can be called only from the organization's master account.
+%% This operation can be called only from the organization's master
+%% account.
 unshare_application(Client, ApplicationId, Input) ->
     unshare_application(Client, ApplicationId, Input, []).
 unshare_application(Client, ApplicationId, Input0, Options0) ->

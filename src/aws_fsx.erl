@@ -122,8 +122,8 @@ associate_file_system_aliases(Client, Input, Options)
 %%
 %% <ul> <li> Any files that FSx has already exported are not reverted.
 %%
-%% </li> <li> FSx continues to export any files that are "in-flight" when the
-%% cancel operation is received.
+%% </li> <li> FSx continues to export any files that are
+%% &quot;in-flight&quot; when the cancel operation is received.
 %%
 %% </li> <li> FSx does not export any files that have not yet been exported.
 %%
@@ -148,19 +148,20 @@ cancel_data_repository_task(Client, Input, Options)
 %% backup and recover availability quickly in the other Region. You can make
 %% cross-Region copies only within your Amazon Web Services partition. A
 %% partition is a grouping of Regions. Amazon Web Services currently has
-%% three partitions: `aws' (Standard Regions), `aws-cn' (China Regions), and
-%% `aws-us-gov' (Amazon Web Services GovCloud [US] Regions).
+%% three partitions: `aws' (Standard Regions), `aws-cn' (China
+%% Regions), and `aws-us-gov' (Amazon Web Services GovCloud [US]
+%% Regions).
 %%
 %% You can also use backup copies to clone your file dataset to another
 %% Region or within the same Region.
 %%
 %% You can use the `SourceRegion' parameter to specify the Amazon Web
 %% Services Region from which the backup will be copied. For example, if you
-%% make the call from the `us-west-1' Region and want to copy a backup from
-%% the `us-east-2' Region, you specify `us-east-2' in the `SourceRegion'
-%% parameter to make a cross-Region copy. If you don't specify a Region, the
-%% backup copy is created in the same Region where the request is sent from
-%% (in-Region copy).
+%% make the call from the `us-west-1' Region and want to copy a backup
+%% from the `us-east-2' Region, you specify `us-east-2' in the
+%% `SourceRegion' parameter to make a cross-Region copy. If you don't
+%% specify a Region, the backup copy is created in the same Region where the
+%% request is sent from (in-Region copy).
 %%
 %% For more information about creating backup copies, see Copying backups in
 %% the Amazon FSx for Windows User Guide, Copying backups in the Amazon FSx
@@ -221,10 +222,10 @@ copy_backup(Client, Input, Options)
 %% request token and the initial call created a backup, the operation returns
 %% a successful result because all the parameters are the same.
 %%
-%% The `CreateBackup' operation returns while the backup's lifecycle state is
-%% still `CREATING'. You can check the backup creation status by calling the
-%% DescribeBackups operation, which returns the backup state along with other
-%% information.
+%% The `CreateBackup' operation returns while the backup's lifecycle
+%% state is still `CREATING'. You can check the backup creation status by
+%% calling the DescribeBackups operation, which returns the backup state
+%% along with other information.
 create_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_backup(Client, Input, []).
@@ -237,7 +238,8 @@ create_backup(Client, Input, Options)
 %% A data repository association is a link between a directory on the file
 %% system and an Amazon S3 bucket or prefix. You can have a maximum of 8 data
 %% repository associations on a file system. Data repository associations are
-%% supported only for file systems with the `Persistent_2' deployment type.
+%% supported only for file systems with the `Persistent_2' deployment
+%% type.
 %%
 %% Each data repository association must have a unique Amazon FSx file system
 %% directory and a unique S3 bucket or prefix associated with it. You can
@@ -246,9 +248,9 @@ create_backup(Client, Input, Options)
 %% repository to your file system, see Linking your file system to an S3
 %% bucket.
 %%
-%% `CreateDataRepositoryAssociation' isn't supported on Amazon File Cache
-%% resources. To create a DRA on Amazon File Cache, use the `CreateFileCache'
-%% operation.
+%% `CreateDataRepositoryAssociation' isn't supported on Amazon File
+%% Cache resources. To create a DRA on Amazon File Cache, use the
+%% `CreateFileCache' operation.
 create_data_repository_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_repository_association(Client, Input, []).
@@ -263,10 +265,11 @@ create_data_repository_association(Client, Input, Options)
 %% data repository task is exporting any data and metadata changes, including
 %% POSIX metadata, to files, directories, and symbolic links (symlinks) from
 %% your FSx file system to a linked data repository. A
-%% `CreateDataRepositoryTask' operation will fail if a data repository is not
-%% linked to the FSx file system. To learn more about data repository tasks,
-%% see Data Repository Tasks. To learn more about linking a data repository
-%% to your file system, see Linking your file system to an S3 bucket.
+%% `CreateDataRepositoryTask' operation will fail if a data repository is
+%% not linked to the FSx file system. To learn more about data repository
+%% tasks, see Data Repository Tasks. To learn more about linking a data
+%% repository to your file system, see Linking your file system to an S3
+%% bucket.
 create_data_repository_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_data_repository_task(Client, Input, []).
@@ -281,8 +284,8 @@ create_data_repository_task(Client, Input, Options)
 %% specified client request token exists and the parameters match,
 %% `CreateFileCache' returns the description of the existing cache. If a
 %% cache with the specified client request token exists and the parameters
-%% don't match, this call returns `IncompatibleParameterError'. If a file
-%% cache with the specified client request token doesn't exist,
+%% don't match, this call returns `IncompatibleParameterError'. If a
+%% file cache with the specified client request token doesn't exist,
 %% `CreateFileCache' does the following:
 %%
 %% <ul> <li> Creates a new, empty Amazon File Cache resourcewith an assigned
@@ -290,10 +293,10 @@ create_data_repository_task(Client, Input, Options)
 %%
 %% </li> <li> Returns the description of the cache in JSON format.
 %%
-%% </li> </ul> The `CreateFileCache' call returns while the cache's lifecycle
-%% state is still `CREATING'. You can check the cache creation status by
-%% calling the DescribeFileCaches operation, which returns the cache state
-%% along with other information.
+%% </li> </ul> The `CreateFileCache' call returns while the cache's
+%% lifecycle state is still `CREATING'. You can check the cache creation
+%% status by calling the DescribeFileCaches operation, which returns the
+%% cache state along with other information.
 create_file_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_file_cache(Client, Input, []).
@@ -318,29 +321,31 @@ create_file_cache(Client, Input, Options)
 %% that Amazon FSx uses to ensure idempotent creation. This means that
 %% calling the operation multiple times with the same client request token
 %% has no effect. By using the idempotent operation, you can retry a
-%% `CreateFileSystem' operation without the risk of creating an extra file
-%% system. This approach can be useful when an initial call fails in a way
-%% that makes it unclear whether a file system was created. Examples are if a
-%% transport level timeout occurred, or your connection was reset. If you use
-%% the same client request token and the initial call created a file system,
-%% the client receives success as long as the parameters are the same.
+%% `CreateFileSystem' operation without the risk of creating an extra
+%% file system. This approach can be useful when an initial call fails in a
+%% way that makes it unclear whether a file system was created. Examples are
+%% if a transport level timeout occurred, or your connection was reset. If
+%% you use the same client request token and the initial call created a file
+%% system, the client receives success as long as the parameters are the
+%% same.
 %%
 %% If a file system with the specified client request token exists and the
 %% parameters match, `CreateFileSystem' returns the description of the
 %% existing file system. If a file system with the specified client request
 %% token exists and the parameters don't match, this call returns
-%% `IncompatibleParameterError'. If a file system with the specified client
-%% request token doesn't exist, `CreateFileSystem' does the following:
+%% `IncompatibleParameterError'. If a file system with the specified
+%% client request token doesn't exist, `CreateFileSystem' does the
+%% following:
 %%
 %% <ul> <li> Creates a new, empty Amazon FSx file system with an assigned ID,
 %% and an initial lifecycle state of `CREATING'.
 %%
 %% </li> <li> Returns the description of the file system in JSON format.
 %%
-%% </li> </ul> The `CreateFileSystem' call returns while the file system's
-%% lifecycle state is still `CREATING'. You can check the file-system
-%% creation status by calling the DescribeFileSystems operation, which
-%% returns the file system state along with other information.
+%% </li> </ul> The `CreateFileSystem' call returns while the file
+%% system's lifecycle state is still `CREATING'. You can check the
+%% file-system creation status by calling the DescribeFileSystems operation,
+%% which returns the file system state along with other information.
 create_file_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_file_system(Client, Input, []).
@@ -356,8 +361,8 @@ create_file_system(Client, Input, Options)
 %% parameters match, this operation returns the description of the file
 %% system. If a file system with the specified client request token exists
 %% but the parameters don't match, this call returns
-%% `IncompatibleParameterError'. If a file system with the specified client
-%% request token doesn't exist, this operation does the following:
+%% `IncompatibleParameterError'. If a file system with the specified
+%% client request token doesn't exist, this operation does the following:
 %%
 %% <ul> <li> Creates a new Amazon FSx file system from backup with an
 %% assigned ID, and an initial lifecycle state of `CREATING'.
@@ -370,18 +375,18 @@ create_file_system(Client, Input, Options)
 %% supply other settings.
 %%
 %% By using the idempotent operation, you can retry a
-%% `CreateFileSystemFromBackup' call without the risk of creating an extra
-%% file system. This approach can be useful when an initial call fails in a
-%% way that makes it unclear whether a file system was created. Examples are
-%% if a transport level timeout occurred, or your connection was reset. If
-%% you use the same client request token and the initial call created a file
-%% system, the client receives a success message as long as the parameters
-%% are the same.
+%% `CreateFileSystemFromBackup' call without the risk of creating an
+%% extra file system. This approach can be useful when an initial call fails
+%% in a way that makes it unclear whether a file system was created. Examples
+%% are if a transport level timeout occurred, or your connection was reset.
+%% If you use the same client request token and the initial call created a
+%% file system, the client receives a success message as long as the
+%% parameters are the same.
 %%
-%% The `CreateFileSystemFromBackup' call returns while the file system's
-%% lifecycle state is still `CREATING'. You can check the file-system
-%% creation status by calling the DescribeFileSystems operation, which
-%% returns the file system state along with other information.
+%% The `CreateFileSystemFromBackup' call returns while the file
+%% system's lifecycle state is still `CREATING'. You can check the
+%% file-system creation status by calling the DescribeFileSystems operation,
+%% which returns the file system state along with other information.
 create_file_system_from_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_file_system_from_backup(Client, Input, []).
@@ -407,16 +412,17 @@ create_file_system_from_backup(Client, Input, Options)
 %% </li> <li> Returns the description of the snapshot.
 %%
 %% </li> </ul> By using the idempotent operation, you can retry a
-%% `CreateSnapshot' operation without the risk of creating an extra snapshot.
-%% This approach can be useful when an initial call fails in a way that makes
-%% it unclear whether a snapshot was created. If you use the same client
-%% request token and the initial call created a snapshot, the operation
-%% returns a successful result because all the parameters are the same.
+%% `CreateSnapshot' operation without the risk of creating an extra
+%% snapshot. This approach can be useful when an initial call fails in a way
+%% that makes it unclear whether a snapshot was created. If you use the same
+%% client request token and the initial call created a snapshot, the
+%% operation returns a successful result because all the parameters are the
+%% same.
 %%
-%% The `CreateSnapshot' operation returns while the snapshot's lifecycle
-%% state is still `CREATING'. You can check the snapshot creation status by
-%% calling the DescribeSnapshots operation, which returns the snapshot state
-%% along with other information.
+%% The `CreateSnapshot' operation returns while the snapshot's
+%% lifecycle state is still `CREATING'. You can check the snapshot
+%% creation status by calling the DescribeSnapshots operation, which returns
+%% the snapshot state along with other information.
 create_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_snapshot(Client, Input, []).
@@ -454,11 +460,11 @@ create_volume_from_backup(Client, Input, Options)
 %%
 %% After deletion, the backup no longer exists, and its data is gone.
 %%
-%% The `DeleteBackup' call returns instantly. The backup won't show up in
-%% later `DescribeBackups' calls.
+%% The `DeleteBackup' call returns instantly. The backup won't show
+%% up in later `DescribeBackups' calls.
 %%
-%% The data in a deleted backup is also deleted and can't be recovered by any
-%% means.
+%% The data in a deleted backup is also deleted and can't be recovered by
+%% any means.
 delete_backup(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_backup(Client, Input, []).
@@ -485,14 +491,15 @@ delete_data_repository_association(Client, Input, Options)
 %%
 %% After deletion, the cache no longer exists, and its data is gone.
 %%
-%% The `DeleteFileCache' operation returns while the cache has the `DELETING'
-%% status. You can check the cache deletion status by calling the
-%% DescribeFileCaches operation, which returns a list of caches in your
+%% The `DeleteFileCache' operation returns while the cache has the
+%% `DELETING' status. You can check the cache deletion status by calling
+%% the DescribeFileCaches operation, which returns a list of caches in your
 %% account. If you pass the cache ID for a deleted cache, the
-%% `DescribeFileCaches' operation returns a `FileCacheNotFound' error.
+%% `DescribeFileCaches' operation returns a `FileCacheNotFound'
+%% error.
 %%
-%% The data in a deleted cache is also deleted and can't be recovered by any
-%% means.
+%% The data in a deleted cache is also deleted and can't be recovered by
+%% any means.
 delete_file_cache(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_file_cache(Client, Input, []).
@@ -510,23 +517,23 @@ delete_file_cache(Client, Input, Options)
 %% provide a `FileSystemId' value to the `DeleFileSystem' operation.
 %%
 %% By default, when you delete an Amazon FSx for Windows File Server file
-%% system, a final backup is created upon deletion. This final backup isn't
-%% subject to the file system's retention policy, and must be manually
-%% deleted.
+%% system, a final backup is created upon deletion. This final backup
+%% isn't subject to the file system's retention policy, and must be
+%% manually deleted.
 %%
 %% The `DeleteFileSystem' operation returns while the file system has the
 %% `DELETING' status. You can check the file system deletion status by
 %% calling the DescribeFileSystems operation, which returns a list of file
 %% systems in your account. If you pass the file system ID for a deleted file
-%% system, the `DescribeFileSystems' operation returns a `FileSystemNotFound'
-%% error.
+%% system, the `DescribeFileSystems' operation returns a
+%% `FileSystemNotFound' error.
 %%
-%% If a data repository task is in a `PENDING' or `EXECUTING' state, deleting
-%% an Amazon FSx for Lustre file system will fail with an HTTP status code
-%% 400 (Bad Request).
+%% If a data repository task is in a `PENDING' or `EXECUTING' state,
+%% deleting an Amazon FSx for Lustre file system will fail with an HTTP
+%% status code 400 (Bad Request).
 %%
-%% The data in a deleted file system is also deleted and can't be recovered
-%% by any means.
+%% The data in a deleted file system is also deleted and can't be
+%% recovered by any means.
 delete_file_system(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_file_system(Client, Input, []).
@@ -541,7 +548,8 @@ delete_file_system(Client, Input, Options)
 %% backup.
 %%
 %% The `DeleteSnapshot' operation returns instantly. The snapshot appears
-%% with the lifecycle status of `DELETING' until the deletion is complete.
+%% with the lifecycle status of `DELETING' until the deletion is
+%% complete.
 delete_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_snapshot(Client, Input, []).
@@ -577,26 +585,27 @@ delete_volume(Client, Input, Options)
 %% account in the Amazon Web Services Region of the endpoint that you're
 %% calling.
 %%
-%% When retrieving all backups, you can optionally specify the `MaxResults'
-%% parameter to limit the number of backups in a response. If more backups
-%% remain, Amazon FSx returns a `NextToken' value in the response. In this
-%% case, send a later request with the `NextToken' request parameter set to
-%% the value of the `NextToken' value from the last response.
+%% When retrieving all backups, you can optionally specify the
+%% `MaxResults' parameter to limit the number of backups in a response.
+%% If more backups remain, Amazon FSx returns a `NextToken' value in the
+%% response. In this case, send a later request with the `NextToken'
+%% request parameter set to the value of the `NextToken' value from the
+%% last response.
 %%
 %% This operation is used in an iterative process to retrieve a list of your
-%% backups. `DescribeBackups' is called first without a `NextToken' value.
-%% Then the operation continues to be called with the `NextToken' parameter
-%% set to the value of the last `NextToken' value until a response has no
-%% `NextToken' value.
+%% backups. `DescribeBackups' is called first without a `NextToken'
+%% value. Then the operation continues to be called with the `NextToken'
+%% parameter set to the value of the last `NextToken' value until a
+%% response has no `NextToken' value.
 %%
 %% When using this operation, keep the following in mind:
 %%
-%% <ul> <li> The operation might return fewer than the `MaxResults' value of
-%% backup descriptions while still including a `NextToken' value.
+%% <ul> <li> The operation might return fewer than the `MaxResults' value
+%% of backup descriptions while still including a `NextToken' value.
 %%
 %% </li> <li> The order of the backups returned in the response of one
-%% `DescribeBackups' call and the order of the backups returned across the
-%% responses of a multi-call iteration is unspecified.
+%% `DescribeBackups' call and the order of the backups returned across
+%% the responses of a multi-call iteration is unspecified.
 %%
 %% </li> </ul>
 describe_backups(Client, Input)
@@ -607,28 +616,31 @@ describe_backups(Client, Input, Options)
     request(Client, <<"DescribeBackups">>, Input, Options).
 
 %% @doc Returns the description of specific Amazon FSx for Lustre or Amazon
-%% File Cache data repository associations, if one or more `AssociationIds'
-%% values are provided in the request, or if filters are used in the request.
+%% File Cache data repository associations, if one or more
+%% `AssociationIds' values are provided in the request, or if filters are
+%% used in the request.
 %%
 %% Data repository associations are supported only for Amazon FSx for Lustre
-%% file systems with the `Persistent_2' deployment type and for Amazon File
-%% Cache resources.
+%% file systems with the `Persistent_2' deployment type and for Amazon
+%% File Cache resources.
 %%
 %% You can use filters to narrow the response to include just data repository
-%% associations for specific file systems (use the `file-system-id' filter
-%% with the ID of the file system) or caches (use the `file-cache-id' filter
-%% with the ID of the cache), or data repository associations for a specific
-%% repository type (use the `data-repository-type' filter with a value of
-%% `S3' or `NFS'). If you don't use filters, the response returns all data
-%% repository associations owned by your Amazon Web Services account in the
-%% Amazon Web Services Region of the endpoint that you're calling.
+%% associations for specific file systems (use the `file-system-id'
+%% filter with the ID of the file system) or caches (use the
+%% `file-cache-id' filter with the ID of the cache), or data repository
+%% associations for a specific repository type (use the
+%% `data-repository-type' filter with a value of `S3' or `NFS').
+%% If you don't use filters, the response returns all data repository
+%% associations owned by your Amazon Web Services account in the Amazon Web
+%% Services Region of the endpoint that you're calling.
 %%
 %% When retrieving all data repository associations, you can paginate the
-%% response by using the optional `MaxResults' parameter to limit the number
-%% of data repository associations returned in a response. If more data
-%% repository associations remain, a `NextToken' value is returned in the
-%% response. In this case, send a later request with the `NextToken' request
-%% parameter set to the value of `NextToken' from the last response.
+%% response by using the optional `MaxResults' parameter to limit the
+%% number of data repository associations returned in a response. If more
+%% data repository associations remain, a `NextToken' value is returned
+%% in the response. In this case, send a later request with the
+%% `NextToken' request parameter set to the value of `NextToken' from
+%% the last response.
 describe_data_repository_associations(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_repository_associations(Client, Input, []).
@@ -647,10 +659,11 @@ describe_data_repository_associations(Client, Input, Options)
 %% you're calling.
 %%
 %% When retrieving all tasks, you can paginate the response by using the
-%% optional `MaxResults' parameter to limit the number of tasks returned in a
-%% response. If more tasks remain, a `NextToken' value is returned in the
-%% response. In this case, send a later request with the `NextToken' request
-%% parameter set to the value of `NextToken' from the last response.
+%% optional `MaxResults' parameter to limit the number of tasks returned
+%% in a response. If more tasks remain, a `NextToken' value is returned
+%% in the response. In this case, send a later request with the
+%% `NextToken' request parameter set to the value of `NextToken' from
+%% the last response.
 describe_data_repository_tasks(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_data_repository_tasks(Client, Input, []).
@@ -666,22 +679,22 @@ describe_data_repository_tasks(Client, Input, Options)
 %% you're calling.
 %%
 %% When retrieving all cache descriptions, you can optionally specify the
-%% `MaxResults' parameter to limit the number of descriptions in a response.
-%% If more cache descriptions remain, the operation returns a `NextToken'
-%% value in the response. In this case, send a later request with the
-%% `NextToken' request parameter set to the value of `NextToken' from the
-%% last response.
+%% `MaxResults' parameter to limit the number of descriptions in a
+%% response. If more cache descriptions remain, the operation returns a
+%% `NextToken' value in the response. In this case, send a later request
+%% with the `NextToken' request parameter set to the value of
+%% `NextToken' from the last response.
 %%
 %% This operation is used in an iterative process to retrieve a list of your
 %% cache descriptions. `DescribeFileCaches' is called first without a
 %% `NextToken'value. Then the operation continues to be called with the
-%% `NextToken' parameter set to the value of the last `NextToken' value until
-%% a response has no `NextToken'.
+%% `NextToken' parameter set to the value of the last `NextToken'
+%% value until a response has no `NextToken'.
 %%
 %% When using this operation, keep the following in mind:
 %%
-%% <ul> <li> The implementation might return fewer than `MaxResults' cache
-%% descriptions while still including a `NextToken' value.
+%% <ul> <li> The implementation might return fewer than `MaxResults'
+%% cache descriptions while still including a `NextToken' value.
 %%
 %% </li> <li> The order of caches returned in the response of one
 %% `DescribeFileCaches' call and the order of caches returned across the
@@ -700,8 +713,8 @@ describe_file_caches(Client, Input, Options)
 %%
 %% A history of all DNS aliases that have been associated with and
 %% disassociated from the file system is available in the list of
-%% `AdministrativeAction' provided in the `DescribeFileSystems' operation
-%% response.
+%% `AdministrativeAction' provided in the `DescribeFileSystems'
+%% operation response.
 describe_file_system_aliases(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_file_system_aliases(Client, Input, []).
@@ -719,15 +732,15 @@ describe_file_system_aliases(Client, Input, Options)
 %% When retrieving all file system descriptions, you can optionally specify
 %% the `MaxResults' parameter to limit the number of descriptions in a
 %% response. If more file system descriptions remain, Amazon FSx returns a
-%% `NextToken' value in the response. In this case, send a later request with
-%% the `NextToken' request parameter set to the value of `NextToken' from the
-%% last response.
+%% `NextToken' value in the response. In this case, send a later request
+%% with the `NextToken' request parameter set to the value of
+%% `NextToken' from the last response.
 %%
 %% This operation is used in an iterative process to retrieve a list of your
-%% file system descriptions. `DescribeFileSystems' is called first without a
-%% `NextToken'value. Then the operation continues to be called with the
-%% `NextToken' parameter set to the value of the last `NextToken' value until
-%% a response has no `NextToken'.
+%% file system descriptions. `DescribeFileSystems' is called first
+%% without a `NextToken'value. Then the operation continues to be called
+%% with the `NextToken' parameter set to the value of the last
+%% `NextToken' value until a response has no `NextToken'.
 %%
 %% When using this operation, keep the following in mind:
 %%
@@ -735,8 +748,8 @@ describe_file_system_aliases(Client, Input, Options)
 %% system descriptions while still including a `NextToken' value.
 %%
 %% </li> <li> The order of file systems returned in the response of one
-%% `DescribeFileSystems' call and the order of file systems returned across
-%% the responses of a multicall iteration is unspecified.
+%% `DescribeFileSystems' call and the order of file systems returned
+%% across the responses of a multicall iteration is unspecified.
 %%
 %% </li> </ul>
 describe_file_systems(Client, Input)
@@ -753,22 +766,23 @@ describe_file_systems(Client, Input, Options)
 %% Services account in the Amazon Web Services Region of the endpoint that
 %% you're calling.
 %%
-%% When retrieving all snapshots, you can optionally specify the `MaxResults'
-%% parameter to limit the number of snapshots in a response. If more backups
-%% remain, Amazon FSx returns a `NextToken' value in the response. In this
-%% case, send a later request with the `NextToken' request parameter set to
-%% the value of `NextToken' from the last response.
+%% When retrieving all snapshots, you can optionally specify the
+%% `MaxResults' parameter to limit the number of snapshots in a response.
+%% If more backups remain, Amazon FSx returns a `NextToken' value in the
+%% response. In this case, send a later request with the `NextToken'
+%% request parameter set to the value of `NextToken' from the last
+%% response.
 %%
 %% Use this operation in an iterative process to retrieve a list of your
-%% snapshots. `DescribeSnapshots' is called first without a `NextToken'
-%% value. Then the operation continues to be called with the `NextToken'
-%% parameter set to the value of the last `NextToken' value until a response
-%% has no `NextToken' value.
+%% snapshots. `DescribeSnapshots' is called first without a
+%% `NextToken' value. Then the operation continues to be called with the
+%% `NextToken' parameter set to the value of the last `NextToken'
+%% value until a response has no `NextToken' value.
 %%
 %% When using this operation, keep the following in mind:
 %%
-%% <ul> <li> The operation might return fewer than the `MaxResults' value of
-%% snapshot descriptions while still including a `NextToken' value.
+%% <ul> <li> The operation might return fewer than the `MaxResults' value
+%% of snapshot descriptions while still including a `NextToken' value.
 %%
 %% </li> <li> The order of snapshots returned in the response of one
 %% `DescribeSnapshots' call and the order of backups returned across the
@@ -823,15 +837,15 @@ disassociate_file_system_aliases(Client, Input, Options)
 %%
 %% When retrieving all tags, you can optionally specify the `MaxResults'
 %% parameter to limit the number of tags in a response. If more tags remain,
-%% Amazon FSx returns a `NextToken' value in the response. In this case, send
-%% a later request with the `NextToken' request parameter set to the value of
-%% `NextToken' from the last response.
+%% Amazon FSx returns a `NextToken' value in the response. In this case,
+%% send a later request with the `NextToken' request parameter set to the
+%% value of `NextToken' from the last response.
 %%
 %% This action is used in an iterative process to retrieve a list of your
-%% tags. `ListTagsForResource' is called first without a `NextToken'value.
-%% Then the action continues to be called with the `NextToken' parameter set
-%% to the value of the last `NextToken' value until a response has no
-%% `NextToken'.
+%% tags. `ListTagsForResource' is called first without a
+%% `NextToken'value. Then the action continues to be called with the
+%% `NextToken' parameter set to the value of the last `NextToken'
+%% value until a response has no `NextToken'.
 %%
 %% When using this action, keep the following in mind:
 %%

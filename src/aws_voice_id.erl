@@ -149,8 +149,8 @@ list_domains(Client, Input, Options)
 %% @doc Lists all the fraudster registration jobs in the domain with the
 %% given `JobStatus'.
 %%
-%% If `JobStatus' is not provided, this lists all fraudster registration jobs
-%% in the given domain.
+%% If `JobStatus' is not provided, this lists all fraudster registration
+%% jobs in the given domain.
 list_fraudster_registration_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_fraudster_registration_jobs(Client, Input, []).
@@ -189,11 +189,11 @@ list_tags_for_resource(Client, Input, Options)
 %% @doc Opts out a speaker from Voice ID.
 %%
 %% A speaker can be opted out regardless of whether or not they already exist
-%% in Voice ID. If they don't yet exist, a new speaker is created in an opted
-%% out state. If they already exist, their existing status is overridden and
-%% they are opted out. Enrollment and evaluation authentication requests are
-%% rejected for opted out speakers, and opted out speakers have no voice
-%% embeddings stored in Voice ID.
+%% in Voice ID. If they don't yet exist, a new speaker is created in an
+%% opted out state. If they already exist, their existing status is
+%% overridden and they are opted out. Enrollment and evaluation
+%% authentication requests are rejected for opted out speakers, and opted out
+%% speakers have no voice embeddings stored in Voice ID.
 opt_out_speaker(Client, Input)
   when is_map(Client), is_map(Input) ->
     opt_out_speaker(Client, Input, []).
@@ -237,8 +237,8 @@ untag_resource(Client, Input, Options)
 %% @doc Updates the specified domain.
 %%
 %% This API has clobber behavior, and clears and replaces all attributes. If
-%% an optional field, such as 'Description' is not provided, it is removed
-%% from the domain.
+%% an optional field, such as 'Description' is not provided, it is
+%% removed from the domain.
 update_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_domain(Client, Input, []).

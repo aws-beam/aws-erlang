@@ -208,21 +208,22 @@ cancel_update_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelUpdateStack">>, Input, Options).
 
-%% @doc For a specified stack that's in the `UPDATE_ROLLBACK_FAILED' state,
-%% continues rolling it back to the `UPDATE_ROLLBACK_COMPLETE' state.
+%% @doc For a specified stack that's in the `UPDATE_ROLLBACK_FAILED'
+%% state, continues rolling it back to the `UPDATE_ROLLBACK_COMPLETE'
+%% state.
 %%
 %% Depending on the cause of the failure, you can manually fix the error and
 %% continue the rollback. By continuing the rollback, you can return your
-%% stack to a working state (the `UPDATE_ROLLBACK_COMPLETE' state), and then
-%% try to update the stack again.
+%% stack to a working state (the `UPDATE_ROLLBACK_COMPLETE' state), and
+%% then try to update the stack again.
 %%
-%% A stack goes into the `UPDATE_ROLLBACK_FAILED' state when CloudFormation
-%% can't roll back all changes after a failed stack update. For example, you
-%% might have a stack that's rolling back to an old database instance that
-%% was deleted outside of CloudFormation. Because CloudFormation doesn't know
-%% the database was deleted, it assumes that the database instance still
-%% exists and attempts to roll back to it, causing the update rollback to
-%% fail.
+%% A stack goes into the `UPDATE_ROLLBACK_FAILED' state when
+%% CloudFormation can't roll back all changes after a failed stack
+%% update. For example, you might have a stack that's rolling back to an
+%% old database instance that was deleted outside of CloudFormation. Because
+%% CloudFormation doesn't know the database was deleted, it assumes that
+%% the database instance still exists and attempts to roll back to it,
+%% causing the update rollback to fail.
 continue_update_rollback(Client, Input)
   when is_map(Client), is_map(Input) ->
     continue_update_rollback(Client, Input, []).
@@ -233,23 +234,24 @@ continue_update_rollback(Client, Input, Options)
 %% @doc Creates a list of changes that will be applied to a stack so that you
 %% can review the changes before executing them.
 %%
-%% You can create a change set for a stack that doesn't exist or an existing
-%% stack. If you create a change set for a stack that doesn't exist, the
-%% change set shows all of the resources that CloudFormation will create. If
-%% you create a change set for an existing stack, CloudFormation compares the
-%% stack's information with the information that you submit in the change set
-%% and lists the differences. Use change sets to understand which resources
-%% CloudFormation will create or change, and how it will change resources in
-%% an existing stack, before you create or update a stack.
+%% You can create a change set for a stack that doesn't exist or an
+%% existing stack. If you create a change set for a stack that doesn't
+%% exist, the change set shows all of the resources that CloudFormation will
+%% create. If you create a change set for an existing stack, CloudFormation
+%% compares the stack's information with the information that you submit
+%% in the change set and lists the differences. Use change sets to understand
+%% which resources CloudFormation will create or change, and how it will
+%% change resources in an existing stack, before you create or update a
+%% stack.
 %%
 %% To create a change set for a stack that doesn't exist, for the
-%% `ChangeSetType' parameter, specify `CREATE'. To create a change set for an
-%% existing stack, specify `UPDATE' for the `ChangeSetType' parameter. To
-%% create a change set for an import operation, specify `IMPORT' for the
-%% `ChangeSetType' parameter. After the `CreateChangeSet' call successfully
-%% completes, CloudFormation starts creating the change set. To check the
-%% status of the change set or to review it, use the `DescribeChangeSet'
-%% action.
+%% `ChangeSetType' parameter, specify `CREATE'. To create a change
+%% set for an existing stack, specify `UPDATE' for the
+%% `ChangeSetType' parameter. To create a change set for an import
+%% operation, specify `IMPORT' for the `ChangeSetType' parameter.
+%% After the `CreateChangeSet' call successfully completes,
+%% CloudFormation starts creating the change set. To check the status of the
+%% change set or to review it, use the `DescribeChangeSet' action.
 %%
 %% When you are satisfied with the changes the change set will make, execute
 %% the change set by using the `ExecuteChangeSet' action. CloudFormation
@@ -319,10 +321,10 @@ deactivate_type(Client, Input, Options)
 %% If the call successfully completes, CloudFormation successfully deleted
 %% the change set.
 %%
-%% If `IncludeNestedStacks' specifies `True' during the creation of the
-%% nested change set, then `DeleteChangeSet' will delete all change sets that
-%% belong to the stacks hierarchy and will also delete all change sets for
-%% nested stacks with the status of `REVIEW_IN_PROGRESS'.
+%% If `IncludeNestedStacks' specifies `True' during the creation of
+%% the nested change set, then `DeleteChangeSet' will delete all change
+%% sets that belong to the stacks hierarchy and will also delete all change
+%% sets for nested stacks with the status of `REVIEW_IN_PROGRESS'.
 delete_change_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_change_set(Client, Input, []).
@@ -333,8 +335,8 @@ delete_change_set(Client, Input, Options)
 %% @doc Deletes a specified stack.
 %%
 %% Once the call completes successfully, stack deletion starts. Deleted
-%% stacks don't show up in the `DescribeStacks' operation if the deletion has
-%% been completed successfully.
+%% stacks don't show up in the `DescribeStacks' operation if the
+%% deletion has been completed successfully.
 delete_stack(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_stack(Client, Input, []).
@@ -388,8 +390,8 @@ deregister_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterType">>, Input, Options).
 
-%% @doc Retrieves your account's CloudFormation limits, such as the maximum
-%% number of stacks that you can create in your account.
+%% @doc Retrieves your account's CloudFormation limits, such as the
+%% maximum number of stacks that you can create in your account.
 %%
 %% For more information about account limits, see CloudFormation Quotas in
 %% the CloudFormation User Guide.
@@ -424,8 +426,8 @@ describe_change_set_hooks(Client, Input, Options)
 %% @doc Returns information about a CloudFormation extension publisher.
 %%
 %% If you don't supply a `PublisherId', and you have registered as an
-%% extension publisher, `DescribePublisher' returns information about your
-%% own publisher account.
+%% extension publisher, `DescribePublisher' returns information about
+%% your own publisher account.
 %%
 %% For more information about registering as a publisher, see:
 %%
@@ -445,19 +447,19 @@ describe_publisher(Client, Input, Options)
 %% @doc Returns information about a stack drift detection operation.
 %%
 %% A stack drift detection operation detects whether a stack's actual
-%% configuration differs, or has drifted, from it's expected configuration,
-%% as defined in the stack template and any values specified as template
-%% parameters. A stack is considered to have drifted if one or more of its
-%% resources have drifted. For more information about stack and resource
-%% drift, see Detecting Unregulated Configuration Changes to Stacks and
-%% Resources.
+%% configuration differs, or has drifted, from it's expected
+%% configuration, as defined in the stack template and any values specified
+%% as template parameters. A stack is considered to have drifted if one or
+%% more of its resources have drifted. For more information about stack and
+%% resource drift, see Detecting Unregulated Configuration Changes to Stacks
+%% and Resources.
 %%
 %% Use `DetectStackDrift' to initiate a stack drift detection operation.
-%% `DetectStackDrift' returns a `StackDriftDetectionId' you can use to
-%% monitor the progress of the operation using
-%% `DescribeStackDriftDetectionStatus'. Once the drift detection operation
-%% has completed, use `DescribeStackResourceDrifts' to return drift
-%% information about the stack and its resources.
+%% `DetectStackDrift' returns a `StackDriftDetectionId' you can use
+%% to monitor the progress of the operation using
+%% `DescribeStackDriftDetectionStatus'. Once the drift detection
+%% operation has completed, use `DescribeStackResourceDrifts' to return
+%% drift information about the stack and its resources.
 describe_stack_drift_detection_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_drift_detection_status(Client, Input, []).
@@ -468,8 +470,8 @@ describe_stack_drift_detection_status(Client, Input, Options)
 %% @doc Returns all stack related events for a specified stack in reverse
 %% chronological order.
 %%
-%% For more information about a stack's event history, go to Stacks in the
-%% CloudFormation User Guide.
+%% For more information about a stack's event history, go to Stacks in
+%% the CloudFormation User Guide.
 %%
 %% You can list events for stacks that have failed to create or have been
 %% deleted by specifying the unique stack identifier (stack ID).
@@ -480,8 +482,8 @@ describe_stack_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStackEvents">>, Input, Options).
 
-%% @doc Returns the stack instance that's associated with the specified stack
-%% set, Amazon Web Services account, and Region.
+%% @doc Returns the stack instance that's associated with the specified
+%% stack set, Amazon Web Services account, and Region.
 %%
 %% For a list of stack instances that are associated with a specific stack
 %% set, use `ListStackInstances'.
@@ -510,16 +512,16 @@ describe_stack_resource(Client, Input, Options)
 %% This includes actual and expected configuration values for resources where
 %% CloudFormation detects configuration drift.
 %%
-%% For a given stack, there will be one `StackResourceDrift' for each stack
-%% resource that has been checked for drift. Resources that haven't yet been
-%% checked for drift aren't included. Resources that don't currently support
-%% drift detection aren't checked, and so not included. For a list of
-%% resources that support drift detection, see Resources that Support Drift
-%% Detection.
+%% For a given stack, there will be one `StackResourceDrift' for each
+%% stack resource that has been checked for drift. Resources that haven't
+%% yet been checked for drift aren't included. Resources that don't
+%% currently support drift detection aren't checked, and so not included.
+%% For a list of resources that support drift detection, see Resources that
+%% Support Drift Detection.
 %%
-%% Use `DetectStackResourceDrift' to detect drift on individual resources, or
-%% `DetectStackDrift' to detect drift on all supported resources for a given
-%% stack.
+%% Use `DetectStackResourceDrift' to detect drift on individual
+%% resources, or `DetectStackDrift' to detect drift on all supported
+%% resources for a given stack.
 describe_stack_resource_drifts(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_resource_drifts(Client, Input, []).
@@ -530,24 +532,25 @@ describe_stack_resource_drifts(Client, Input, Options)
 %% @doc Returns Amazon Web Services resource descriptions for running and
 %% deleted stacks.
 %%
-%% If `StackName' is specified, all the associated resources that are part of
-%% the stack are returned. If `PhysicalResourceId' is specified, the
-%% associated resources of the stack that the resource belongs to are
+%% If `StackName' is specified, all the associated resources that are
+%% part of the stack are returned. If `PhysicalResourceId' is specified,
+%% the associated resources of the stack that the resource belongs to are
 %% returned.
 %%
 %% Only the first 100 resources will be returned. If your stack has more
 %% resources than this, you should use `ListStackResources' instead.
 %%
-%% For deleted stacks, `DescribeStackResources' returns resource information
-%% for up to 90 days after the stack has been deleted.
+%% For deleted stacks, `DescribeStackResources' returns resource
+%% information for up to 90 days after the stack has been deleted.
 %%
-%% You must specify either `StackName' or `PhysicalResourceId', but not both.
-%% In addition, you can specify `LogicalResourceId' to filter the returned
-%% result. For more information about resources, the `LogicalResourceId' and
-%% `PhysicalResourceId', go to the CloudFormation User Guide.
+%% You must specify either `StackName' or `PhysicalResourceId', but
+%% not both. In addition, you can specify `LogicalResourceId' to filter
+%% the returned result. For more information about resources, the
+%% `LogicalResourceId' and `PhysicalResourceId', go to the
+%% CloudFormation User Guide.
 %%
-%% A `ValidationError' is returned if you specify both `StackName' and
-%% `PhysicalResourceId' in the same request.
+%% A `ValidationError' is returned if you specify both `StackName'
+%% and `PhysicalResourceId' in the same request.
 describe_stack_resources(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_resources(Client, Input, []).
@@ -585,9 +588,9 @@ describe_stacks(Client, Input, Options)
 %% @doc Returns detailed information about an extension that has been
 %% registered.
 %%
-%% If you specify a `VersionId', `DescribeType' returns information about
-%% that specific extension version. Otherwise, it returns information about
-%% the default extension version.
+%% If you specify a `VersionId', `DescribeType' returns information
+%% about that specific extension version. Otherwise, it returns information
+%% about the default extension version.
 describe_type(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_type(Client, Input, []).
@@ -595,15 +598,15 @@ describe_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeType">>, Input, Options).
 
-%% @doc Returns information about an extension's registration, including its
-%% current status and type and version identifiers.
+%% @doc Returns information about an extension's registration, including
+%% its current status and type and version identifiers.
 %%
-%% When you initiate a registration request using ` `RegisterType' ', you can
-%% then use ` `DescribeTypeRegistration' ' to monitor the progress of that
-%% registration request.
+%% When you initiate a registration request using ` `RegisterType' ',
+%% you can then use ` `DescribeTypeRegistration' ' to monitor the
+%% progress of that registration request.
 %%
-%% Once the registration request has completed, use ` `DescribeType' ' to
-%% return detailed information about an extension.
+%% Once the registration request has completed, use ` `DescribeType'
+%% ' to return detailed information about an extension.
 describe_type_registration(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_type_registration(Client, Input, []).
@@ -623,23 +626,23 @@ describe_type_registration(Client, Input, Options)
 %% template configurations. For more information, see Detecting Unregulated
 %% Configuration Changes to Stacks and Resources.
 %%
-%% Use `DetectStackDrift' to detect drift on all supported resources for a
-%% given stack, or `DetectStackResourceDrift' to detect drift on individual
-%% resources.
+%% Use `DetectStackDrift' to detect drift on all supported resources for
+%% a given stack, or `DetectStackResourceDrift' to detect drift on
+%% individual resources.
 %%
 %% For a list of stack resources that currently support drift detection, see
 %% Resources that Support Drift Detection.
 %%
-%% `DetectStackDrift' can take up to several minutes, depending on the number
-%% of resources contained within the stack. Use
-%% `DescribeStackDriftDetectionStatus' to monitor the progress of a detect
-%% stack drift operation. Once the drift detection operation has completed,
-%% use `DescribeStackResourceDrifts' to return drift information about the
-%% stack and its resources.
+%% `DetectStackDrift' can take up to several minutes, depending on the
+%% number of resources contained within the stack. Use
+%% `DescribeStackDriftDetectionStatus' to monitor the progress of a
+%% detect stack drift operation. Once the drift detection operation has
+%% completed, use `DescribeStackResourceDrifts' to return drift
+%% information about the stack and its resources.
 %%
-%% When detecting drift on a stack, CloudFormation doesn't detect drift on
-%% any nested stacks belonging to that stack. Perform `DetectStackDrift'
-%% directly on the nested stack itself.
+%% When detecting drift on a stack, CloudFormation doesn't detect drift
+%% on any nested stacks belonging to that stack. Perform
+%% `DetectStackDrift' directly on the nested stack itself.
 detect_stack_drift(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_stack_drift(Client, Input, []).
@@ -647,9 +650,10 @@ detect_stack_drift(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetectStackDrift">>, Input, Options).
 
-%% @doc Returns information about whether a resource's actual configuration
-%% differs, or has drifted, from it's expected configuration, as defined in
-%% the stack template and any values specified as template parameters.
+%% @doc Returns information about whether a resource's actual
+%% configuration differs, or has drifted, from it's expected
+%% configuration, as defined in the stack template and any values specified
+%% as template parameters.
 %%
 %% This information includes actual and expected property values for
 %% resources in which CloudFormation detects drift. Only resource properties
@@ -657,13 +661,13 @@ detect_stack_drift(Client, Input, Options)
 %% information about stack and resource drift, see Detecting Unregulated
 %% Configuration Changes to Stacks and Resources.
 %%
-%% Use `DetectStackResourceDrift' to detect drift on individual resources, or
-%% `DetectStackDrift' to detect drift on all resources in a given stack that
-%% support drift detection.
+%% Use `DetectStackResourceDrift' to detect drift on individual
+%% resources, or `DetectStackDrift' to detect drift on all resources in a
+%% given stack that support drift detection.
 %%
-%% Resources that don't currently support drift detection can't be checked.
-%% For a list of resources that support drift detection, see Resources that
-%% Support Drift Detection.
+%% Resources that don't currently support drift detection can't be
+%% checked. For a list of resources that support drift detection, see
+%% Resources that Support Drift Detection.
 detect_stack_resource_drift(Client, Input)
   when is_map(Client), is_map(Input) ->
     detect_stack_resource_drift(Client, Input, []).
@@ -678,8 +682,8 @@ detect_stack_resource_drift(Client, Input, Options)
 %% stack set. For more information, see How CloudFormation performs drift
 %% detection on a stack set.
 %%
-%% `DetectStackSetDrift' returns the `OperationId' of the stack set drift
-%% detection operation. Use this operation id with `
+%% `DetectStackSetDrift' returns the `OperationId' of the stack set
+%% drift detection operation. Use this operation id with `
 %% `DescribeStackSetOperation' ' to monitor the progress of the drift
 %% detection operation. The drift detection operation may take some time,
 %% depending on the number of stack instances included in the stack set, in
@@ -688,18 +692,18 @@ detect_stack_resource_drift(Client, Input, Options)
 %% Once the operation has completed, use the following actions to return
 %% drift information:
 %%
-%% <ul> <li> Use ` `DescribeStackSet' ' to return detailed information about
-%% the stack set, including detailed information about the last completed
-%% drift operation performed on the stack set. (Information about drift
-%% operations that are in progress isn't included.)
+%% <ul> <li> Use ` `DescribeStackSet' ' to return detailed
+%% information about the stack set, including detailed information about the
+%% last completed drift operation performed on the stack set. (Information
+%% about drift operations that are in progress isn't included.)
 %%
 %% </li> <li> Use ` `ListStackInstances' ' to return a list of stack
 %% instances belonging to the stack set, including the drift status and last
 %% drift time checked of each instance.
 %%
-%% </li> <li> Use ` `DescribeStackInstance' ' to return detailed information
-%% about a specific stack instance, including its drift status and last drift
-%% time checked.
+%% </li> <li> Use ` `DescribeStackInstance' ' to return detailed
+%% information about a specific stack instance, including its drift status
+%% and last drift time checked.
 %%
 %% </li> </ul> For more information about performing a drift detection
 %% operation on a stack set, see Detecting unmanaged changes in stack sets.
@@ -732,15 +736,16 @@ estimate_template_cost(Client, Input, Options)
 %% the specified change set was created.
 %%
 %% After the call successfully completes, CloudFormation starts updating the
-%% stack. Use the `DescribeStacks' action to view the status of the update.
+%% stack. Use the `DescribeStacks' action to view the status of the
+%% update.
 %%
 %% When you execute a change set, CloudFormation deletes all other change
-%% sets associated with the stack because they aren't valid for the updated
-%% stack.
+%% sets associated with the stack because they aren't valid for the
+%% updated stack.
 %%
 %% If a stack policy is associated with the stack, CloudFormation enforces
-%% the policy during the update. You can't specify a temporary stack policy
-%% that overrides the current policy.
+%% the policy during the update. You can't specify a temporary stack
+%% policy that overrides the current policy.
 %%
 %% To create a change set for the entire stack hierarchy,
 %% `IncludeNestedStacks' must have been set to `True'.
@@ -765,8 +770,8 @@ get_stack_policy(Client, Input, Options)
 %%
 %% You can get the template for running or deleted stacks.
 %%
-%% For deleted stacks, `GetTemplate' returns the template for up to 90 days
-%% after the stack has been deleted.
+%% For deleted stacks, `GetTemplate' returns the template for up to 90
+%% days after the stack has been deleted.
 %%
 %% If the template doesn't exist, a `ValidationError' is returned.
 get_template(Client, Input)
@@ -782,13 +787,13 @@ get_template(Client, Input, Options)
 %% information, such as default parameter values and parameter types, before
 %% you create or update a stack or stack set.
 %%
-%% You can use the `GetTemplateSummary' action when you submit a template, or
-%% you can get template information for a stack set, or a running or deleted
-%% stack.
+%% You can use the `GetTemplateSummary' action when you submit a
+%% template, or you can get template information for a stack set, or a
+%% running or deleted stack.
 %%
-%% For deleted stacks, `GetTemplateSummary' returns the template information
-%% for up to 90 days after the stack has been deleted. If the template
-%% doesn't exist, a `ValidationError' is returned.
+%% For deleted stacks, `GetTemplateSummary' returns the template
+%% information for up to 90 days after the stack has been deleted. If the
+%% template doesn't exist, a `ValidationError' is returned.
 get_template_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_template_summary(Client, Input, []).
@@ -803,7 +808,8 @@ get_template_summary(Client, Input, Options)
 %% administrator account and Region, by specifying the stack ID of the stack
 %% you intend to import.
 %%
-%% `ImportStacksToStackSet' is only supported by self-managed permissions.
+%% `ImportStacksToStackSet' is only supported by self-managed
+%% permissions.
 import_stacks_to_stack_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_stacks_to_stack_set(Client, Input, []).
@@ -896,19 +902,20 @@ list_stack_set_operations(Client, Input, Options)
 %% @doc Returns summary information about stack sets that are associated with
 %% the user.
 %%
-%% <ul> <li> [Self-managed permissions] If you set the `CallAs' parameter to
-%% `SELF' while signed in to your Amazon Web Services account,
+%% <ul> <li> [Self-managed permissions] If you set the `CallAs' parameter
+%% to `SELF' while signed in to your Amazon Web Services account,
 %% `ListStackSets' returns all self-managed stack sets in your Amazon Web
 %% Services account.
 %%
-%% </li> <li> [Service-managed permissions] If you set the `CallAs' parameter
-%% to `SELF' while signed in to the organization's management account,
-%% `ListStackSets' returns all stack sets in the management account.
+%% </li> <li> [Service-managed permissions] If you set the `CallAs'
+%% parameter to `SELF' while signed in to the organization's
+%% management account, `ListStackSets' returns all stack sets in the
+%% management account.
 %%
-%% </li> <li> [Service-managed permissions] If you set the `CallAs' parameter
-%% to `DELEGATED_ADMIN' while signed in to your member account,
-%% `ListStackSets' returns all stack sets with service-managed permissions in
-%% the management account.
+%% </li> <li> [Service-managed permissions] If you set the `CallAs'
+%% parameter to `DELEGATED_ADMIN' while signed in to your member account,
+%% `ListStackSets' returns all stack sets with service-managed
+%% permissions in the management account.
 %%
 %% </li> </ul>
 list_stack_sets(Client, Input)
@@ -1020,9 +1027,9 @@ register_publisher(Client, Input, Options)
 %% time. This maximum is per account and per region. Use DeregisterType to
 %% deregister specific extension versions if necessary.
 %%
-%% Once you have initiated a registration request using ` `RegisterType' ',
-%% you can use ` `DescribeTypeRegistration' ' to monitor the progress of the
-%% registration request.
+%% Once you have initiated a registration request using ` `RegisterType'
+%% ', you can use ` `DescribeTypeRegistration' ' to monitor the
+%% progress of the registration request.
 %%
 %% Once you have registered a private extension in your account and region,
 %% use SetTypeConfiguration to specify configuration properties for the
@@ -1035,8 +1042,8 @@ register_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterType">>, Input, Options).
 
-%% @doc When specifying `RollbackStack', you preserve the state of previously
-%% provisioned resources when an operation fails.
+%% @doc When specifying `RollbackStack', you preserve the state of
+%% previously provisioned resources when an operation fails.
 %%
 %% You can check the status of the stack through the `DescribeStacks'
 %% operation.
@@ -1078,8 +1085,8 @@ set_stack_policy(Client, Input, Options)
 %% extension, in the given account and region.
 %%
 %% To view the current configuration data for an extension, refer to the
-%% `ConfigurationSchema' element of DescribeType. For more information, see
-%% Configuring extensions at the account level in the CloudFormation User
+%% `ConfigurationSchema' element of DescribeType. For more information,
+%% see Configuring extensions at the account level in the CloudFormation User
 %% Guide.
 %%
 %% It's strongly recommended that you use dynamic references to restrict
@@ -1107,12 +1114,12 @@ set_type_default_version(Client, Input, Options)
 %% @doc Sends a signal to the specified resource with a success or failure
 %% status.
 %%
-%% You can use the `SignalResource' operation in conjunction with a creation
-%% policy or update policy. CloudFormation doesn't proceed with a stack
-%% creation or update until resources receive the required number of signals
-%% or the timeout period is exceeded. The `SignalResource' operation is
-%% useful in cases where you want to send signals from anywhere other than an
-%% Amazon EC2 instance.
+%% You can use the `SignalResource' operation in conjunction with a
+%% creation policy or update policy. CloudFormation doesn't proceed with
+%% a stack creation or update until resources receive the required number of
+%% signals or the timeout period is exceeded. The `SignalResource'
+%% operation is useful in cases where you want to send signals from anywhere
+%% other than an Amazon EC2 instance.
 signal_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     signal_resource(Client, Input, []).
@@ -1138,21 +1145,22 @@ stop_stack_set_operation(Client, Input, Options)
 %% <ul> <li> For resource types, this includes passing all contracts tests
 %% defined for the type.
 %%
-%% </li> <li> For modules, this includes determining if the module's model
-%% meets all necessary requirements.
+%% </li> <li> For modules, this includes determining if the module's
+%% model meets all necessary requirements.
 %%
 %% </li> </ul> For more information, see Testing your public extension prior
 %% to publishing in the CloudFormation CLI User Guide.
 %%
-%% If you don't specify a version, CloudFormation uses the default version of
-%% the extension in your account and region for testing.
+%% If you don't specify a version, CloudFormation uses the default
+%% version of the extension in your account and region for testing.
 %%
 %% To perform testing, CloudFormation assumes the execution role specified
 %% when the type was registered. For more information, see RegisterType.
 %%
-%% Once you've initiated testing on an extension using `TestType', you can
-%% pass the returned `TypeVersionArn' into DescribeType to monitor the
-%% current test status and test status description for the extension.
+%% Once you've initiated testing on an extension using `TestType',
+%% you can pass the returned `TypeVersionArn' into DescribeType to
+%% monitor the current test status and test status description for the
+%% extension.
 %%
 %% An extension must have a test status of `PASSED' before it can be
 %% published. For more information, see Publishing extensions to make them
@@ -1214,8 +1222,8 @@ update_stack_instances(Client, Input, Options)
 %% Even if the stack set operation created by updating the stack set fails
 %% (completely or partially, below or above a specified failure tolerance),
 %% the stack set is updated with your changes. Subsequent
-%% `CreateStackInstances' calls on the specified stack set use the updated
-%% stack set.
+%% `CreateStackInstances' calls on the specified stack set use the
+%% updated stack set.
 update_stack_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_stack_set(Client, Input, []).
@@ -1241,9 +1249,9 @@ update_termination_protection(Client, Input, Options)
 
 %% @doc Validates a specified template.
 %%
-%% CloudFormation first checks if the template is valid JSON. If it isn't,
-%% CloudFormation checks if the template is valid YAML. If both these checks
-%% fail, CloudFormation returns a template validation error.
+%% CloudFormation first checks if the template is valid JSON. If it
+%% isn't, CloudFormation checks if the template is valid YAML. If both
+%% these checks fail, CloudFormation returns a template validation error.
 validate_template(Client, Input)
   when is_map(Client), is_map(Input) ->
     validate_template(Client, Input, []).

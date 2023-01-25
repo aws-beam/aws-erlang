@@ -90,9 +90,9 @@ batch_check_layer_availability(Client, Input, Options)
 %%
 %% Images are specified with either an `imageTag' or `imageDigest'.
 %%
-%% You can remove a tag from an image by specifying the image's tag in your
-%% request. When you remove the last tag from an image, the image is deleted
-%% from your repository.
+%% You can remove a tag from an image by specifying the image's tag in
+%% your request. When you remove the last tag from an image, the image is
+%% deleted from your repository.
 %%
 %% You can completely delete an image (and all of its tags) by specifying the
 %% digest of the image in your request.
@@ -106,8 +106,8 @@ batch_delete_image(Client, Input, Options)
 %% @doc Informs Amazon ECR that the image layer upload is complete for a
 %% specified public registry, repository name, and upload ID.
 %%
-%% You can optionally provide a `sha256' digest of the image layer for data
-%% validation purposes.
+%% You can optionally provide a `sha256' digest of the image layer for
+%% data validation purposes.
 %%
 %% When an image is pushed, the CompleteLayerUpload API is called once for
 %% each new image layer to verify that the upload is complete.
@@ -136,8 +136,8 @@ create_repository(Client, Input, Options)
 %% @doc Deletes a repository in a public registry.
 %%
 %% If the repository contains images, you must either manually delete all
-%% images in the repository or use the `force' option. This option deletes
-%% all images on your behalf before deleting the repository.
+%% images in the repository or use the `force' option. This option
+%% deletes all images on your behalf before deleting the repository.
 delete_repository(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository(Client, Input, []).
@@ -145,8 +145,8 @@ delete_repository(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRepository">>, Input, Options).
 
-%% @doc Deletes the repository policy that's associated with the specified
-%% repository.
+%% @doc Deletes the repository policy that's associated with the
+%% specified repository.
 delete_repository_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_repository_policy(Client, Input, []).
@@ -162,14 +162,14 @@ describe_image_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeImageTags">>, Input, Options).
 
-%% @doc Returns metadata that's related to the images in a repository in a
-%% public registry.
+%% @doc Returns metadata that's related to the images in a repository in
+%% a public registry.
 %%
 %% Beginning with Docker version 1.9, the Docker client compresses image
 %% layers before pushing them to a V2 Docker registry. The output of the
-%% `docker images' command shows the uncompressed image size. Therefore, it
-%% might return a larger image size than the image sizes that are returned by
-%% `DescribeImages'.
+%% `docker images' command shows the uncompressed image size. Therefore,
+%% it might return a larger image size than the image sizes that are returned
+%% by `DescribeImages'.
 describe_images(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_images(Client, Input, []).
@@ -236,8 +236,8 @@ get_repository_policy(Client, Input, Options)
 %% @doc Notifies Amazon ECR that you intend to upload an image layer.
 %%
 %% When an image is pushed, the InitiateLayerUpload API is called once for
-%% each image layer that hasn't already been uploaded. Whether an image layer
-%% uploads is determined by the BatchCheckLayerAvailability API action.
+%% each image layer that hasn't already been uploaded. Whether an image
+%% layer uploads is determined by the BatchCheckLayerAvailability API action.
 %%
 %% This operation is used by the Amazon ECR proxy and is not generally used
 %% by customers for pulling and pushing images. In most cases, you should use
@@ -306,9 +306,9 @@ set_repository_policy(Client, Input, Options)
 %% @doc Associates the specified tags to a resource with the specified
 %% `resourceArn'.
 %%
-%% If existing tags on a resource aren't specified in the request parameters,
-%% they aren't changed. When a resource is deleted, the tags associated with
-%% that resource are also deleted.
+%% If existing tags on a resource aren't specified in the request
+%% parameters, they aren't changed. When a resource is deleted, the tags
+%% associated with that resource are also deleted.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).

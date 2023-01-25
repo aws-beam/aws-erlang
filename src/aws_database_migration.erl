@@ -191,10 +191,10 @@ cancel_replication_task_assessment_run(Client, Input, Options)
 %%
 %% For a MySQL source or target endpoint, don't explicitly specify the
 %% database using the `DatabaseName' request parameter on the
-%% `CreateEndpoint' API call. Specifying `DatabaseName' when you create a
-%% MySQL endpoint replicates all the task tables to this single database. For
-%% MySQL endpoints, you specify the database only when you specify the schema
-%% in the table-mapping rules of the DMS task.
+%% `CreateEndpoint' API call. Specifying `DatabaseName' when you
+%% create a MySQL endpoint replicates all the task tables to this single
+%% database. For MySQL endpoints, you specify the database only when you
+%% specify the schema in the table-mapping rules of the DMS task.
 create_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint(Client, Input, []).
@@ -204,18 +204,18 @@ create_endpoint(Client, Input, Options)
 
 %% @doc Creates an DMS event notification subscription.
 %%
-%% You can specify the type of source (`SourceType') you want to be notified
-%% of, provide a list of DMS source IDs (`SourceIds') that triggers the
-%% events, and provide a list of event categories (`EventCategories') for
-%% events you want to be notified of. If you specify both the `SourceType'
-%% and `SourceIds', such as `SourceType = replication-instance' and
-%% `SourceIdentifier = my-replinstance', you will be notified of all the
-%% replication instance events for the specified source. If you specify a
-%% `SourceType' but don't specify a `SourceIdentifier', you receive notice of
-%% the events for that source type for all your DMS sources. If you don't
-%% specify either `SourceType' nor `SourceIdentifier', you will be notified
-%% of events generated from all DMS sources belonging to your customer
-%% account.
+%% You can specify the type of source (`SourceType') you want to be
+%% notified of, provide a list of DMS source IDs (`SourceIds') that
+%% triggers the events, and provide a list of event categories
+%% (`EventCategories') for events you want to be notified of. If you
+%% specify both the `SourceType' and `SourceIds', such as `SourceType
+%% = replication-instance' and `SourceIdentifier = my-replinstance',
+%% you will be notified of all the replication instance events for the
+%% specified source. If you specify a `SourceType' but don't specify
+%% a `SourceIdentifier', you receive notice of the events for that source
+%% type for all your DMS sources. If you don't specify either
+%% `SourceType' nor `SourceIdentifier', you will be notified of
+%% events generated from all DMS sources belonging to your customer account.
 %%
 %% For more information about DMS events, see Working with Events and
 %% Notifications in the Database Migration Service User Guide.
@@ -366,9 +366,9 @@ delete_replication_task_assessment_run(Client, Input, Options)
 %% identifier in a particular DMS region. DMS quotas include a list of
 %% resource quotas supported by the account, such as the number of
 %% replication instances allowed. The description for each resource quota,
-%% includes the quota name, current usage toward that quota, and the quota's
-%% maximum value. DMS uses the unique account identifier to name each
-%% artifact used by DMS in the given region.
+%% includes the quota name, current usage toward that quota, and the
+%% quota's maximum value. DMS uses the unique account identifier to name
+%% each artifact used by DMS in the given region.
 %%
 %% This command does not take any parameters.
 describe_account_attributes(Client, Input)
@@ -468,11 +468,11 @@ describe_event_categories(Client, Input, Options)
 %% @doc Lists all the event subscriptions for a customer account.
 %%
 %% The description of a subscription includes `SubscriptionName',
-%% `SNSTopicARN', `CustomerID', `SourceType', `SourceID', `CreationTime', and
-%% `Status'.
+%% `SNSTopicARN', `CustomerID', `SourceType', `SourceID',
+%% `CreationTime', and `Status'.
 %%
-%% If you specify `SubscriptionName', this action lists the description for
-%% that subscription.
+%% If you specify `SubscriptionName', this action lists the description
+%% for that subscription.
 describe_event_subscriptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_event_subscriptions(Client, Input, []).
@@ -606,8 +606,8 @@ describe_replication_task_assessment_results(Client, Input, Options)
 %% runs, migration tasks, replication instances, and assessment run status
 %% values.
 %%
-%% This operation doesn't return information about individual assessments.
-%% For this information, see the
+%% This operation doesn't return information about individual
+%% assessments. For this information, see the
 %% `DescribeReplicationTaskIndividualAssessments' operation.
 describe_replication_task_assessment_runs(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -648,9 +648,9 @@ describe_schemas(Client, Input, Options)
 %% @doc Returns table statistics on the database migration task, including
 %% table name, rows inserted, rows updated, and rows deleted.
 %%
-%% Note that the "last updated" column the DMS console only indicates the
-%% time that DMS last updated the table statistics record for a table. It
-%% does not indicate the time of the last update to the table.
+%% Note that the &quot;last updated&quot; column the DMS console only
+%% indicates the time that DMS last updated the table statistics record for a
+%% table. It does not indicate the time of the last update to the table.
 describe_table_statistics(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table_statistics(Client, Input, []).
@@ -681,10 +681,10 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% For a MySQL source or target endpoint, don't explicitly specify the
 %% database using the `DatabaseName' request parameter on the
-%% `ModifyEndpoint' API call. Specifying `DatabaseName' when you modify a
-%% MySQL endpoint replicates all the task tables to this single database. For
-%% MySQL endpoints, you specify the database only when you specify the schema
-%% in the table-mapping rules of the DMS task.
+%% `ModifyEndpoint' API call. Specifying `DatabaseName' when you
+%% modify a MySQL endpoint replicates all the task tables to this single
+%% database. For MySQL endpoints, you specify the database only when you
+%% specify the schema in the table-mapping rules of the DMS task.
 modify_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_endpoint(Client, Input, []).
@@ -723,8 +723,8 @@ modify_replication_subnet_group(Client, Input, Options)
 
 %% @doc Modifies the specified replication task.
 %%
-%% You can't modify the task endpoints. The task must be stopped before you
-%% can modify it.
+%% You can't modify the task endpoints. The task must be stopped before
+%% you can modify it.
 %%
 %% For more information about DMS tasks, see Working with Migration Tasks in
 %% the Database Migration Service User Guide.
@@ -773,7 +773,8 @@ refresh_schemas(Client, Input, Options)
 %% @doc Reloads the target database table with the source data.
 %%
 %% You can only use this operation with a task in the `RUNNING' state,
-%% otherwise the service will throw an `InvalidResourceStateFault' exception.
+%% otherwise the service will throw an `InvalidResourceStateFault'
+%% exception.
 reload_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     reload_tables(Client, Input, []).
@@ -875,9 +876,10 @@ test_connection(Client, Input, Options)
 %% replication instance versions are 3.4.6 or higher. If any replication
 %% instances are from versions earlier than 3.4.6, the operation raises an
 %% error and tells you to upgrade these instances to version 3.4.6 or higher.
-%% To enable migration regardless of version, set the `Force' option to true.
-%% However, if you don't upgrade instances earlier than version 3.4.6, some
-%% types of events might not be available when you use Amazon EventBridge.
+%% To enable migration regardless of version, set the `Force' option to
+%% true. However, if you don't upgrade instances earlier than version
+%% 3.4.6, some types of events might not be available when you use Amazon
+%% EventBridge.
 %%
 %% To call this operation, make sure that you have certain permissions added
 %% to your user account. For more information, see Migrating event

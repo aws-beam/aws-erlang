@@ -48,7 +48,8 @@
 
 %% @doc Acknowledges one or more alarms.
 %%
-%% The alarms change to the `ACKNOWLEDGED' state after you acknowledge them.
+%% The alarms change to the `ACKNOWLEDGED' state after you acknowledge
+%% them.
 batch_acknowledge_alarm(Client, Input) ->
     batch_acknowledge_alarm(Client, Input, []).
 batch_acknowledge_alarm(Client, Input0, Options0) ->
@@ -151,10 +152,10 @@ batch_enable_alarm(Client, Input0, Options0) ->
 %% @doc Sends a set of messages to the IoT Events system.
 %%
 %% Each message payload is transformed into the input you specify
-%% (`"inputName"') and ingested into any detectors that monitor that input.
-%% If multiple messages are sent, the order in which the messages are
-%% processed isn't guaranteed. To guarantee ordering, you must send messages
-%% one at a time and wait for a successful response.
+%% (`&quot;inputName&quot;') and ingested into any detectors that monitor
+%% that input. If multiple messages are sent, the order in which the messages
+%% are processed isn't guaranteed. To guarantee ordering, you must send
+%% messages one at a time and wait for a successful response.
 batch_put_message(Client, Input) ->
     batch_put_message(Client, Input, []).
 batch_put_message(Client, Input0, Options0) ->
@@ -204,8 +205,8 @@ batch_reset_alarm(Client, Input0, Options0) ->
 
 %% @doc Changes one or more alarms to the snooze mode.
 %%
-%% The alarms change to the `SNOOZE_DISABLED' state after you set them to the
-%% snooze mode.
+%% The alarms change to the `SNOOZE_DISABLED' state after you set them to
+%% the snooze mode.
 batch_snooze_alarm(Client, Input) ->
     batch_snooze_alarm(Client, Input, []).
 batch_snooze_alarm(Client, Input0, Options0) ->

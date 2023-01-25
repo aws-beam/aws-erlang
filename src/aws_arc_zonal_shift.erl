@@ -13,9 +13,9 @@
 %% Zonal shift in Route 53 ARC enables you to move traffic for a load
 %% balancer resource away from an Availability Zone. Starting a zonal shift
 %% helps your application recover immediately, for example, from a
-%% developer's bad code deployment or from an AWS infrastructure failure in a
-%% single Availability Zone, reducing the impact and time lost from an issue
-%% in one zone.
+%% developer's bad code deployment or from an AWS infrastructure failure
+%% in a single Availability Zone, reducing the impact and time lost from an
+%% issue in one zone.
 %%
 %% Supported AWS resources are automatically registered with Route 53 ARC.
 %% Resources that are registered for zonal shifts in Route 53 ARC are managed
@@ -58,8 +58,8 @@
 %%====================================================================
 
 %% @doc Cancel a zonal shift in Amazon Route 53 Application Recovery
-%% Controller that you've started for a resource in your AWS account in an
-%% AWS Region.
+%% Controller that you've started for a resource in your AWS account in
+%% an AWS Region.
 cancel_zonal_shift(Client, ZonalShiftId, Input) ->
     cancel_zonal_shift(Client, ZonalShiftId, Input, []).
 cancel_zonal_shift(Client, ZonalShiftId, Input0, Options0) ->
@@ -178,8 +178,9 @@ list_zonal_shifts(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc You start a zonal shift to temporarily move load balancer traffic
 %% away from an Availability Zone in a AWS Region, to help your application
-%% recover immediately, for example, from a developer's bad code deployment
-%% or from an AWS infrastructure failure in a single Availability Zone.
+%% recover immediately, for example, from a developer's bad code
+%% deployment or from an AWS infrastructure failure in a single Availability
+%% Zone.
 %%
 %% You can start a zonal shift in Route 53 ARC only for managed resources in
 %% your account in an AWS Region. Resources are automatically registered with

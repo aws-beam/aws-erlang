@@ -239,12 +239,13 @@ create_proposal(Client, NetworkId, Input0, Options0) ->
 %%
 %% Deletes an accessor that your Amazon Web Services account owns. An
 %% accessor object is a container that has the information required for token
-%% based access to your Ethereum nodes including, the `BILLING_TOKEN'. After
-%% an accessor is deleted, the status of the accessor changes from
-%% `AVAILABLE' to `PENDING_DELETION'. An accessor in the `PENDING_DELETION'
-%% state can’t be used for new WebSocket requests or HTTP requests. However,
-%% WebSocket connections that were initiated while the accessor was in the
-%% `AVAILABLE' state remain open until they expire (up to 2 hours).
+%% based access to your Ethereum nodes including, the `BILLING_TOKEN'.
+%% After an accessor is deleted, the status of the accessor changes from
+%% `AVAILABLE' to `PENDING_DELETION'. An accessor in the
+%% `PENDING_DELETION' state can’t be used for new WebSocket requests or
+%% HTTP requests. However, WebSocket connections that were initiated while
+%% the accessor was in the `AVAILABLE' state remain open until they
+%% expire (up to 2 hours).
 delete_accessor(Client, AccessorId, Input) ->
     delete_accessor(Client, AccessorId, Input, []).
 delete_accessor(Client, AccessorId, Input0, Options0) ->
@@ -270,13 +271,13 @@ delete_accessor(Client, AccessorId, Input0, Options0) ->
 %% @doc Deletes a member.
 %%
 %% Deleting a member removes the member and all associated resources from the
-%% network. `DeleteMember' can only be called for a specified `MemberId' if
-%% the principal performing the action is associated with the Amazon Web
-%% Services account that owns the member. In all other cases, the
-%% `DeleteMember' action is carried out as the result of an approved proposal
-%% to remove a member. If `MemberId' is the last member in a network
-%% specified by the last Amazon Web Services account, the network is deleted
-%% also.
+%% network. `DeleteMember' can only be called for a specified
+%% `MemberId' if the principal performing the action is associated with
+%% the Amazon Web Services account that owns the member. In all other cases,
+%% the `DeleteMember' action is carried out as the result of an approved
+%% proposal to remove a member. If `MemberId' is the last member in a
+%% network specified by the last Amazon Web Services account, the network is
+%% deleted also.
 %%
 %% Applies only to Hyperledger Fabric.
 delete_member(Client, MemberId, NetworkId, Input) ->
@@ -756,7 +757,8 @@ reject_invitation(Client, InvitationId, Input0, Options0) ->
 %% Each tag consists of a key and optional value.
 %%
 %% When you specify a tag key that already exists, the tag value is
-%% overwritten with the new value. Use `UntagResource' to remove tag keys.
+%% overwritten with the new value. Use `UntagResource' to remove tag
+%% keys.
 %%
 %% A resource can have up to 50 tags. If you try to create more than 50 tags
 %% for a resource, your request fails and returns an error.
@@ -867,8 +869,8 @@ update_node(Client, NetworkId, NodeId, Input0, Options0) ->
 
 %% @doc Casts a vote for a specified `ProposalId' on behalf of a member.
 %%
-%% The member to vote as, specified by `VoterMemberId', must be in the same
-%% Amazon Web Services account as the principal that calls the action.
+%% The member to vote as, specified by `VoterMemberId', must be in the
+%% same Amazon Web Services account as the principal that calls the action.
 %%
 %% Applies only to Hyperledger Fabric.
 vote_on_proposal(Client, NetworkId, ProposalId, Input) ->

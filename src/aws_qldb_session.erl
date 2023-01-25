@@ -8,9 +8,9 @@
 %%
 %% If you are working with an AWS SDK, use the QLDB driver. The driver
 %% provides a high-level abstraction layer above this QLDB Session data plane
-%% and manages `SendCommand' API calls for you. For information and a list of
-%% supported programming languages, see Getting started with the driver in
-%% the Amazon QLDB Developer Guide.
+%% and manages `SendCommand' API calls for you. For information and a
+%% list of supported programming languages, see Getting started with the
+%% driver in the Amazon QLDB Developer Guide.
 %%
 %% If you are working with the AWS Command Line Interface (AWS CLI), use the
 %% QLDB shell. The shell is a command line interface that uses the QLDB
@@ -34,9 +34,9 @@
 %%
 %% If you are working with an AWS SDK, use the QLDB driver. The driver
 %% provides a high-level abstraction layer above this QLDB Session data plane
-%% and manages `SendCommand' API calls for you. For information and a list of
-%% supported programming languages, see Getting started with the driver in
-%% the Amazon QLDB Developer Guide.
+%% and manages `SendCommand' API calls for you. For information and a
+%% list of supported programming languages, see Getting started with the
+%% driver in the Amazon QLDB Developer Guide.
 %%
 %% If you are working with the AWS Command Line Interface (AWS CLI), use the
 %% QLDB shell. The shell is a command line interface that uses the QLDB

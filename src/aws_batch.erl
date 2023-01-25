@@ -81,10 +81,11 @@
 
 %% @doc Cancels a job in an Batch job queue.
 %%
-%% Jobs that are in the `SUBMITTED', `PENDING', or `RUNNABLE' state are
-%% canceled. Jobs that progressed to the `STARTING' or `RUNNING' state aren't
-%% canceled. However, the API operation still succeeds, even if no job is
-%% canceled. These jobs must be terminated with the `TerminateJob' operation.
+%% Jobs that are in the `SUBMITTED', `PENDING', or `RUNNABLE'
+%% state are canceled. Jobs that progressed to the `STARTING' or
+%% `RUNNING' state aren't canceled. However, the API operation still
+%% succeeds, even if no job is canceled. These jobs must be terminated with
+%% the `TerminateJob' operation.
 cancel_job(Client, Input) ->
     cancel_job(Client, Input, []).
 cancel_job(Client, Input0, Options0) ->
@@ -109,9 +110,10 @@ cancel_job(Client, Input0, Options0) ->
 
 %% @doc Creates an Batch compute environment.
 %%
-%% You can create `MANAGED' or `UNMANAGED' compute environments. `MANAGED'
-%% compute environments can use Amazon EC2 or Fargate resources. `UNMANAGED'
-%% compute environments can only use EC2 resources.
+%% You can create `MANAGED' or `UNMANAGED' compute environments.
+%% `MANAGED' compute environments can use Amazon EC2 or Fargate
+%% resources. `UNMANAGED' compute environments can only use EC2
+%% resources.
 %%
 %% In a managed compute environment, Batch manages the capacity and instance
 %% types of the compute resources within the environment. This is based on
@@ -133,8 +135,8 @@ cancel_job(Client, Input0, Options0) ->
 %% Amazon Elastic Container Service Developer Guide. After you created your
 %% unmanaged compute environment, you can use the
 %% `DescribeComputeEnvironments' operation to find the Amazon ECS cluster
-%% that's associated with it. Then, launch your container instances into that
-%% Amazon ECS cluster. For more information, see Launching an Amazon ECS
+%% that's associated with it. Then, launch your container instances into
+%% that Amazon ECS cluster. For more information, see Launching an Amazon ECS
 %% container instance in the Amazon Elastic Container Service Developer
 %% Guide.
 %%
@@ -142,13 +144,14 @@ cancel_job(Client, Input0, Options0) ->
 %% have permissions to call `eks:DescribeCluster'.
 %%
 %% Batch doesn't automatically upgrade the AMIs in a compute environment
-%% after it's created. For example, it also doesn't update the AMIs in your
-%% compute environment when a newer version of the Amazon ECS optimized AMI
-%% is available. You're responsible for the management of the guest operating
-%% system. This includes any updates and security patches. You're also
-%% responsible for any additional application software or utilities that you
-%% install on the compute resources. There are two ways to use a new AMI for
-%% your Batch jobs. The original method is to complete these steps:
+%% after it's created. For example, it also doesn't update the AMIs
+%% in your compute environment when a newer version of the Amazon ECS
+%% optimized AMI is available. You're responsible for the management of
+%% the guest operating system. This includes any updates and security
+%% patches. You're also responsible for any additional application
+%% software or utilities that you install on the compute resources. There are
+%% two ways to use a new AMI for your Batch jobs. The original method is to
+%% complete these steps:
 %%
 %% Create a new compute environment with the new AMI.
 %%
@@ -163,8 +166,8 @@ cancel_job(Client, Input0, Options0) ->
 %% use the enhanced updating of compute environments to update AMIs, follow
 %% these rules:
 %%
-%% Either don't set the service role (`serviceRole') parameter or set it to
-%% the AWSBatchServiceRole service-linked role.
+%% Either don't set the service role (`serviceRole') parameter or set
+%% it to the AWSBatchServiceRole service-linked role.
 %%
 %% Set the allocation strategy (`allocationStrategy') parameter to
 %% `BEST_FIT_PROGRESSIVE' or `SPOT_CAPACITY_OPTIMIZED'.
@@ -173,26 +176,26 @@ cancel_job(Client, Input0, Options0) ->
 %% parameter to `true'.
 %%
 %% Don't specify an AMI ID in `imageId', `imageIdOverride' (in
-%% `ec2Configuration' ), or in the launch template (`launchTemplate'). In
-%% that case, Batch selects the latest Amazon ECS optimized AMI that's
-%% supported by Batch at the time the infrastructure update is initiated.
-%% Alternatively, you can specify the AMI ID in the `imageId' or
-%% `imageIdOverride' parameters, or the launch template identified by the
-%% `LaunchTemplate' properties. Changing any of these properties starts an
-%% infrastructure update. If the AMI ID is specified in the launch template,
-%% it can't be replaced by specifying an AMI ID in either the `imageId' or
-%% `imageIdOverride' parameters. It can only be replaced by specifying a
-%% different launch template, or if the launch template version is set to
-%% `$Default' or `$Latest', by setting either a new default version for the
-%% launch template (if `$Default') or by adding a new version to the launch
-%% template (if `$Latest').
+%% `ec2Configuration' ), or in the launch template
+%% (`launchTemplate'). In that case, Batch selects the latest Amazon ECS
+%% optimized AMI that's supported by Batch at the time the infrastructure
+%% update is initiated. Alternatively, you can specify the AMI ID in the
+%% `imageId' or `imageIdOverride' parameters, or the launch template
+%% identified by the `LaunchTemplate' properties. Changing any of these
+%% properties starts an infrastructure update. If the AMI ID is specified in
+%% the launch template, it can't be replaced by specifying an AMI ID in
+%% either the `imageId' or `imageIdOverride' parameters. It can only
+%% be replaced by specifying a different launch template, or if the launch
+%% template version is set to `$Default' or `$Latest', by setting
+%% either a new default version for the launch template (if `$Default')
+%% or by adding a new version to the launch template (if `$Latest').
 %%
 %% If these rules are followed, any update that starts an infrastructure
-%% update causes the AMI ID to be re-selected. If the `version' setting in
-%% the launch template (`launchTemplate') is set to `$Latest' or `$Default',
-%% the latest or default version of the launch template is evaluated up at
-%% the time of the infrastructure update, even if the `launchTemplate' wasn't
-%% updated.
+%% update causes the AMI ID to be re-selected. If the `version' setting
+%% in the launch template (`launchTemplate') is set to `$Latest' or
+%% `$Default', the latest or default version of the launch template is
+%% evaluated up at the time of the infrastructure update, even if the
+%% `launchTemplate' wasn't updated.
 create_compute_environment(Client, Input) ->
     create_compute_environment(Client, Input, []).
 create_compute_environment(Client, Input0, Options0) ->
@@ -278,8 +281,8 @@ create_scheduling_policy(Client, Input0, Options0) ->
 %% disassociate it from any job queues with the `UpdateJobQueue' API
 %% operation. Compute environments that use Fargate resources must terminate
 %% all active jobs on that compute environment before deleting the compute
-%% environment. If this isn't done, the compute environment enters an invalid
-%% state.
+%% environment. If this isn't done, the compute environment enters an
+%% invalid state.
 delete_compute_environment(Client, Input) ->
     delete_compute_environment(Client, Input, []).
 delete_compute_environment(Client, Input0, Options0) ->
@@ -304,10 +307,10 @@ delete_compute_environment(Client, Input0, Options0) ->
 
 %% @doc Deletes the specified job queue.
 %%
-%% You must first disable submissions for a queue with the `UpdateJobQueue'
-%% operation. All jobs in the queue are eventually terminated when you delete
-%% a job queue. The jobs are terminated at a rate of about 16 jobs each
-%% second.
+%% You must first disable submissions for a queue with the
+%% `UpdateJobQueue' operation. All jobs in the queue are eventually
+%% terminated when you delete a job queue. The jobs are terminated at a rate
+%% of about 16 jobs each second.
 %%
 %% It's not necessary to disassociate compute environments from a queue
 %% before submitting a `DeleteJobQueue' request.
@@ -335,7 +338,8 @@ delete_job_queue(Client, Input0, Options0) ->
 
 %% @doc Deletes the specified scheduling policy.
 %%
-%% You can't delete a scheduling policy that's used in any job queues.
+%% You can't delete a scheduling policy that's used in any job
+%% queues.
 delete_scheduling_policy(Client, Input) ->
     delete_scheduling_policy(Client, Input, []).
 delete_scheduling_policy(Client, Input0, Options0) ->
@@ -386,8 +390,9 @@ deregister_job_definition(Client, Input0, Options0) ->
 %% @doc Describes one or more of your compute environments.
 %%
 %% If you're using an unmanaged compute environment, you can use the
-%% `DescribeComputeEnvironment' operation to determine the `ecsClusterArn'
-%% that you launch your Amazon ECS container instances into.
+%% `DescribeComputeEnvironment' operation to determine the
+%% `ecsClusterArn' that you launch your Amazon ECS container instances
+%% into.
 describe_compute_environments(Client, Input) ->
     describe_compute_environments(Client, Input, []).
 describe_compute_environments(Client, Input0, Options0) ->
@@ -516,9 +521,9 @@ describe_scheduling_policies(Client, Input0, Options0) ->
 %%
 %% </li> <li> An array job ID to return a list of the children for that job
 %%
-%% </li> </ul> You can filter the results by job status with the `jobStatus'
-%% parameter. If you don't specify a status, only `RUNNING' jobs are
-%% returned.
+%% </li> </ul> You can filter the results by job status with the
+%% `jobStatus' parameter. If you don't specify a status, only
+%% `RUNNING' jobs are returned.
 list_jobs(Client, Input) ->
     list_jobs(Client, Input, []).
 list_jobs(Client, Input0, Options0) ->
@@ -618,11 +623,11 @@ register_job_definition(Client, Input0, Options0) ->
 %%
 %% Parameters that are specified during `SubmitJob' override parameters
 %% defined in the job definition. vCPU and memory requirements that are
-%% specified in the `resourceRequirements' objects in the job definition are
-%% the exception. They can't be overridden this way using the `memory' and
-%% `vcpus' parameters. Rather, you must specify updates to job definition
-%% parameters in a `resourceRequirements' object that's included in the
-%% `containerOverrides' parameter.
+%% specified in the `resourceRequirements' objects in the job definition
+%% are the exception. They can't be overridden this way using the
+%% `memory' and `vcpus' parameters. Rather, you must specify updates
+%% to job definition parameters in a `resourceRequirements' object
+%% that's included in the `containerOverrides' parameter.
 %%
 %% Job queues with a scheduling policy are limited to 500 active fair share
 %% identifiers at a time.
@@ -655,12 +660,12 @@ submit_job(Client, Input0, Options0) ->
 %% @doc Associates the specified tags to a resource with the specified
 %% `resourceArn'.
 %%
-%% If existing tags on a resource aren't specified in the request parameters,
-%% they aren't changed. When a resource is deleted, the tags that are
-%% associated with that resource are deleted as well. Batch resources that
-%% support tags are compute environments, jobs, job definitions, job queues,
-%% and scheduling policies. ARNs for child jobs of array and multi-node
-%% parallel (MNP) jobs aren't supported.
+%% If existing tags on a resource aren't specified in the request
+%% parameters, they aren't changed. When a resource is deleted, the tags
+%% that are associated with that resource are deleted as well. Batch
+%% resources that support tags are compute environments, jobs, job
+%% definitions, job queues, and scheduling policies. ARNs for child jobs of
+%% array and multi-node parallel (MNP) jobs aren't supported.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->
@@ -685,9 +690,9 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Terminates a job in a job queue.
 %%
-%% Jobs that are in the `STARTING' or `RUNNING' state are terminated, which
-%% causes them to transition to `FAILED'. Jobs that have not progressed to
-%% the `STARTING' state are cancelled.
+%% Jobs that are in the `STARTING' or `RUNNING' state are terminated,
+%% which causes them to transition to `FAILED'. Jobs that have not
+%% progressed to the `STARTING' state are cancelled.
 terminate_job(Client, Input) ->
     terminate_job(Client, Input, []).
 terminate_job(Client, Input0, Options0) ->
