@@ -392,6 +392,9 @@ restore_from_snapshot(Client, Input, Options)
 
 %% @doc Restores a table from a snapshot to your Amazon Redshift Serverless
 %% instance.
+%%
+%% You can't use this operation to restore tables with interleaved sort
+%% keys.
 restore_table_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_table_from_snapshot(Client, Input, []).
@@ -424,6 +427,11 @@ update_endpoint_access(Client, Input, Options)
     request(Client, <<"UpdateEndpointAccess">>, Input, Options).
 
 %% @doc Updates a namespace with the specified settings.
+%%
+%% Unless required, you can't update multiple parameters in one request.
+%% For example, you must specify both `adminUsername' and
+%% `adminUserPassword' to update either field, but you can't update
+%% both `kmsKeyId' and `logExports' in a single request.
 update_namespace(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_namespace(Client, Input, []).
@@ -450,6 +458,10 @@ update_usage_limit(Client, Input, Options)
     request(Client, <<"UpdateUsageLimit">>, Input, Options).
 
 %% @doc Updates a workgroup with the specified configuration settings.
+%%
+%% You can't update multiple parameters in one request. For example, you
+%% can update `baseCapacity' or `port' in a single request, but you
+%% can't update both in the same request.
 update_workgroup(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_workgroup(Client, Input, []).

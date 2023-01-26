@@ -35,8 +35,7 @@
 %%====================================================================
 
 %% @doc Returns a set of temporary security credentials that you can use to
-%% access Amazon Web Services resources that you might not normally have
-%% access to.
+%% access Amazon Web Services resources.
 %%
 %% These temporary credentials consist of an access key ID, a secret access
 %% key, and a security token. Typically, you use `AssumeRole' within your
@@ -559,20 +558,22 @@ get_caller_identity(Client, Input, Options)
 %% Permissions
 %%
 %% You can use the temporary credentials created by `GetFederationToken'
-%% in any Amazon Web Services service except the following:
+%% in any Amazon Web Services service with the following exceptions:
 %%
 %% <ul> <li> You cannot call any IAM operations using the CLI or the Amazon
-%% Web Services API.
+%% Web Services API. This limitation does not apply to console sessions.
 %%
 %% </li> <li> You cannot call any STS operations except
 %% `GetCallerIdentity'.
 %%
-%% </li> </ul> You must pass an inline or managed session policy to this
-%% operation. You can pass a single JSON policy document to use as an inline
-%% session policy. You can also specify up to 10 managed policy Amazon
-%% Resource Names (ARNs) to use as managed session policies. The plaintext
-%% that you use for both inline and managed session policies can't exceed
-%% 2,048 characters.
+%% </li> </ul> You can use temporary credentials for single sign-on (SSO) to
+%% the console.
+%%
+%% You must pass an inline or managed session policy to this operation. You
+%% can pass a single JSON policy document to use as an inline session policy.
+%% You can also specify up to 10 managed policy Amazon Resource Names (ARNs)
+%% to use as managed session policies. The plaintext that you use for both
+%% inline and managed session policies can't exceed 2,048 characters.
 %%
 %% Though the session policy parameters are optional, if you do not pass a
 %% policy, then the resulting federated user session has no permissions. When
