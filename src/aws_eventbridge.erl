@@ -817,6 +817,8 @@ put_rule(Client, Input, Options)
 %%
 %% </li> <li> Redshift cluster
 %%
+%% </li> <li> Redshift Serverless workgroup
+%%
 %% </li> <li> SageMaker Pipeline
 %%
 %% </li> <li> SNS topic
@@ -846,7 +848,7 @@ put_rule(Client, Input, Options)
 %% EventBridge needs the appropriate permissions. For Lambda and Amazon SNS
 %% resources, EventBridge relies on resource-based policies. For EC2
 %% instances, Kinesis Data Streams, Step Functions state machines and API
-%% Gateway REST APIs, EventBridge relies on IAM roles that you specify in the
+%% Gateway APIs, EventBridge relies on IAM roles that you specify in the
 %% `RoleARN' argument in `PutTargets'. For more information, see
 %% Authentication and Access Control in the Amazon EventBridge User Guide.
 %%
