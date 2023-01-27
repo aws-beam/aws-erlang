@@ -42,6 +42,8 @@ jobs:
       run: rebar3 cover
     - name: Produce Documentation
       run: rebar3 edoc || true
+    - name: Produce Documentation
+      run: rebar3 ex_doc || true
     - name: Publish Documentation
       uses: actions/upload-artifact@v1
       with:
