@@ -14,7 +14,7 @@
  , {env,[]}
  , {modules, []}
  , {pkg_name, "aws_erlang"}
- , {licenses, ["Apache 2.0"]}
+ , {licenses, ["Apache-2.0"]}
  , {build_tools, ["rebar3"]}
  , {links, [{"GitHub", "https://github.com/aws-beam/aws-erlang"}]}
  ]}.
