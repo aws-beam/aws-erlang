@@ -93,9 +93,9 @@ invoke_endpoint(Client, EndpointName, Input0, Options0) ->
 %%
 %% Inference requests sent to this API are enqueued for asynchronous
 %% processing. The processing of the inference request may or may not
-%% complete before the you receive a response from this API. The response
-%% from this API will not contain the result of the inference request but
-%% contain information about where you can locate it.
+%% complete before you receive a response from this API. The response from
+%% this API will not contain the result of the inference request but contain
+%% information about where you can locate it.
 %%
 %% Amazon SageMaker strips all `POST' headers except those supported by
 %% the API. Amazon SageMaker might add additional headers. You should not
@@ -122,6 +122,7 @@ invoke_endpoint_async(Client, EndpointName, Input0, Options0) ->
                        {<<"X-Amzn-SageMaker-Custom-Attributes">>, <<"CustomAttributes">>},
                        {<<"X-Amzn-SageMaker-Inference-Id">>, <<"InferenceId">>},
                        {<<"X-Amzn-SageMaker-InputLocation">>, <<"InputLocation">>},
+                       {<<"X-Amzn-SageMaker-InvocationTimeoutSeconds">>, <<"InvocationTimeoutSeconds">>},
                        {<<"X-Amzn-SageMaker-RequestTTLSeconds">>, <<"RequestTTLSeconds">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),

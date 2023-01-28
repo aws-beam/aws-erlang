@@ -16,7 +16,9 @@
 %% origin server and the ad decision server (ADS).
 -module(aws_mediatailor).
 
--export([configure_logs_for_playback_configuration/2,
+-export([configure_logs_for_channel/2,
+         configure_logs_for_channel/3,
+         configure_logs_for_playback_configuration/2,
          configure_logs_for_playback_configuration/3,
          create_channel/3,
          create_channel/4,
@@ -122,6 +124,29 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Configures Amazon CloudWatch log settings for a channel.
+configure_logs_for_channel(Client, Input) ->
+    configure_logs_for_channel(Client, Input, []).
+configure_logs_for_channel(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/configureLogs/channel"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Amazon CloudWatch log settings for a playback configuration.
 configure_logs_for_playback_configuration(Client, Input) ->
