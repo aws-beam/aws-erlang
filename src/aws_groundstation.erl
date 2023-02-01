@@ -33,6 +33,9 @@
          describe_ephemeris/2,
          describe_ephemeris/4,
          describe_ephemeris/5,
+         get_agent_configuration/2,
+         get_agent_configuration/4,
+         get_agent_configuration/5,
          get_config/3,
          get_config/5,
          get_config/6,
@@ -69,12 +72,16 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         register_agent/2,
+         register_agent/3,
          reserve_contact/2,
          reserve_contact/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_agent_status/3,
+         update_agent_status/4,
          update_config/4,
          update_config/5,
          update_ephemeris/3,
@@ -344,6 +351,29 @@ describe_ephemeris(Client, EphemerisId, QueryMap, HeadersMap)
 describe_ephemeris(Client, EphemerisId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/ephemeris/", aws_util:encode_uri(EphemerisId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the latest configuration information for a registered agent.
+get_agent_configuration(Client, AgentId)
+  when is_map(Client) ->
+    get_agent_configuration(Client, AgentId, #{}, #{}).
+
+get_agent_configuration(Client, AgentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_agent_configuration(Client, AgentId, QueryMap, HeadersMap, []).
+
+get_agent_configuration(Client, AgentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/agent/", aws_util:encode_uri(AgentId), "/configuration"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -687,6 +717,29 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Registers a new agent with AWS Groundstation.
+register_agent(Client, Input) ->
+    register_agent(Client, Input, []).
+register_agent(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/agent"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Reserves a contact using specified parameters.
 reserve_contact(Client, Input) ->
     reserve_contact(Client, Input, []).
@@ -755,6 +808,29 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update the status of the agent.
+update_agent_status(Client, AgentId, Input) ->
+    update_agent_status(Client, AgentId, Input, []).
+update_agent_status(Client, AgentId, Input0, Options0) ->
+    Method = put,
+    Path = ["/agent/", aws_util:encode_uri(AgentId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the `Config' used when scheduling contacts.

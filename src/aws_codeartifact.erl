@@ -207,6 +207,8 @@
          delete_domain/3,
          delete_domain_permissions_policy/2,
          delete_domain_permissions_policy/3,
+         delete_package/2,
+         delete_package/3,
          delete_package_versions/2,
          delete_package_versions/3,
          delete_repository/2,
@@ -463,13 +465,45 @@ delete_domain_permissions_policy(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a package and all associated package versions.
+%%
+%% A deleted package cannot be restored. To delete one or more package
+%% versions, use the DeletePackageVersions API.
+delete_package(Client, Input) ->
+    delete_package(Client, Input, []).
+delete_package(Client, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/package"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"domain">>, <<"domain">>},
+                     {<<"domain-owner">>, <<"domainOwner">>},
+                     {<<"format">>, <<"format">>},
+                     {<<"namespace">>, <<"namespace">>},
+                     {<<"package">>, <<"package">>},
+                     {<<"repository">>, <<"repository">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes one or more versions of a package.
 %%
 %% A deleted package version cannot be restored in your repository. If you
 %% want to remove a package version from your repository and be able to
 %% restore it later, set its status to `Archived'. Archived packages
 %% cannot be downloaded from a repository and don't show up with list
-%% package APIs (for example, ListPackageVersions), but you can restore them
+%% package APIs (for example, ListackageVersions), but you can restore them
 %% using UpdatePackageVersionsStatus.
 delete_package_versions(Client, Input) ->
     delete_package_versions(Client, Input, []).
@@ -1098,6 +1132,9 @@ list_package_version_dependencies(Client, Input0, Options0) ->
 
 %% @doc Returns a list of PackageVersionSummary objects for package versions
 %% in a repository that match the request parameters.
+%%
+%% Package versions of all statuses will be returned by default when calling
+%% `list-package-versions' with no `--status' parameter.
 list_package_versions(Client, Input) ->
     list_package_versions(Client, Input, []).
 list_package_versions(Client, Input0, Options0) ->

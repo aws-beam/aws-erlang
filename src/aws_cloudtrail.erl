@@ -31,12 +31,18 @@
          add_tags/3,
          cancel_query/2,
          cancel_query/3,
+         create_channel/2,
+         create_channel/3,
          create_event_data_store/2,
          create_event_data_store/3,
          create_trail/2,
          create_trail/3,
+         delete_channel/2,
+         delete_channel/3,
          delete_event_data_store/2,
          delete_event_data_store/3,
+         delete_resource_policy/2,
+         delete_resource_policy/3,
          delete_trail/2,
          delete_trail/3,
          deregister_organization_delegated_admin/2,
@@ -57,6 +63,8 @@
          get_insight_selectors/3,
          get_query_results/2,
          get_query_results/3,
+         get_resource_policy/2,
+         get_resource_policy/3,
          get_trail/2,
          get_trail/3,
          get_trail_status/2,
@@ -83,6 +91,8 @@
          put_event_selectors/3,
          put_insight_selectors/2,
          put_insight_selectors/3,
+         put_resource_policy/2,
+         put_resource_policy/3,
          register_organization_delegated_admin/2,
          register_organization_delegated_admin/3,
          remove_tags/2,
@@ -99,6 +109,8 @@
          stop_import/3,
          stop_logging/2,
          stop_logging/3,
+         update_channel/2,
+         update_channel/3,
          update_event_data_store/2,
          update_event_data_store/3,
          update_trail/2,
@@ -110,16 +122,16 @@
 %% API
 %%====================================================================
 
-%% @doc Adds one or more tags to a trail or event data store, up to a limit
-%% of 50.
+%% @doc Adds one or more tags to a trail, event data store, or channel, up to
+%% a limit of 50.
 %%
 %% Overwrites an existing tag's value when a new value is specified for
-%% an existing tag key. Tag key names must be unique for a trail; you cannot
-%% have two keys with the same name but different values. If you specify a
-%% key without a value, the tag will be created with the specified key and a
-%% value of null. You can tag a trail or event data store that applies to all
-%% Amazon Web Services Regions only from the Region in which the trail or
-%% event data store was created (also known as its home region).
+%% an existing tag key. Tag key names must be unique; you cannot have two
+%% keys with the same name but different values. If you specify a key without
+%% a value, the tag will be created with the specified key and a value of
+%% null. You can tag a trail or event data store that applies to all Amazon
+%% Web Services Regions only from the Region in which the trail or event data
+%% store was created (also known as its home region).
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -141,6 +153,18 @@ cancel_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelQuery">>, Input, Options).
 
+%% @doc Creates a channel for CloudTrail to ingest events from a partner or
+%% external source.
+%%
+%% After you create a channel, a CloudTrail Lake event data store can log
+%% events from the partner or source that you specify.
+create_channel(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_channel(Client, Input, []).
+create_channel(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateChannel">>, Input, Options).
+
 %% @doc Creates a new event data store.
 create_event_data_store(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -157,6 +181,14 @@ create_trail(Client, Input)
 create_trail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrail">>, Input, Options).
+
+%% @doc Deletes a channel.
+delete_channel(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_channel(Client, Input, []).
+delete_channel(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteChannel">>, Input, Options).
 
 %% @doc Disables the event data store specified by `EventDataStore',
 %% which accepts an event data store ARN.
@@ -178,6 +210,14 @@ delete_event_data_store(Client, Input)
 delete_event_data_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEventDataStore">>, Input, Options).
+
+%% @doc Deletes the resource-based policy attached to the CloudTrail channel.
+delete_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_resource_policy(Client, Input, []).
+delete_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteResourcePolicy">>, Input, Options).
 
 %% @doc Deletes a trail.
 %%
@@ -223,11 +263,6 @@ describe_trails(Client, Input, Options)
     request(Client, <<"DescribeTrails">>, Input, Options).
 
 %% @doc Returns information about a specific channel.
-%%
-%% Amazon Web Services services create service-linked channels to get
-%% information about CloudTrail events on your behalf. For more information
-%% about service-linked channels, see Viewing service-linked channels for
-%% CloudTrail by using the CLI.
 get_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_channel(Client, Input, []).
@@ -310,6 +345,15 @@ get_query_results(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetQueryResults">>, Input, Options).
 
+%% @doc Retrieves the JSON text of the resource-based policy document
+%% attached to the CloudTrail channel.
+get_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_resource_policy(Client, Input, []).
+get_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetResourcePolicy">>, Input, Options).
+
 %% @doc Returns settings information for a specified trail.
 get_trail(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -333,11 +377,6 @@ get_trail_status(Client, Input, Options)
     request(Client, <<"GetTrailStatus">>, Input, Options).
 
 %% @doc Lists the channels in the current account, and their source names.
-%%
-%% Amazon Web Services services create service-linked channels get
-%% information about CloudTrail events on your behalf. For more information
-%% about service-linked channels, see Viewing service-linked channels for
-%% CloudTrail by using the CLI.
 list_channels(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_channels(Client, Input, []).
@@ -403,8 +442,8 @@ list_queries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListQueries">>, Input, Options).
 
-%% @doc Lists the tags for the trail or event data store in the current
-%% region.
+%% @doc Lists the tags for the trail, event data store, or channel in the
+%% current region.
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
@@ -531,6 +570,19 @@ put_insight_selectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutInsightSelectors">>, Input, Options).
 
+%% @doc Attaches a resource-based permission policy to a CloudTrail channel
+%% that is used for an integration with an event source outside of Amazon Web
+%% Services.
+%%
+%% For more information about resource-based policies, see CloudTrail
+%% resource-based policy examples in the CloudTrail User Guide.
+put_resource_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_resource_policy(Client, Input, []).
+put_resource_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutResourcePolicy">>, Input, Options).
+
 %% @doc Registers an organization’s member account as the CloudTrail
 %% delegated administrator.
 register_organization_delegated_admin(Client, Input)
@@ -540,7 +592,8 @@ register_organization_delegated_admin(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterOrganizationDelegatedAdmin">>, Input, Options).
 
-%% @doc Removes the specified tags from a trail or event data store.
+%% @doc Removes the specified tags from a trail, event data store, or
+%% channel.
 remove_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_tags(Client, Input, []).
@@ -578,6 +631,10 @@ restore_event_data_store(Client, Input, Options)
 %% disabling ACLs for your bucket.
 %%
 %% When you retry an import, the `ImportID' parameter is required.
+%%
+%% If the destination event data store is for an organization, you must use
+%% the management account to import trail events. You cannot use the
+%% delegated administrator account for the organization.
 start_import(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_import(Client, Input, []).
@@ -636,16 +693,30 @@ stop_logging(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopLogging">>, Input, Options).
 
+%% @doc Updates a channel specified by a required channel ARN or UUID.
+update_channel(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_channel(Client, Input, []).
+update_channel(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateChannel">>, Input, Options).
+
 %% @doc Updates an event data store.
 %%
 %% The required `EventDataStore' value is an ARN or the ID portion of the
 %% ARN. Other parameters are optional, but at least one optional parameter
 %% must be specified, or CloudTrail throws an error. `RetentionPeriod' is
 %% in days, and valid values are integers between 90 and 2557. By default,
-%% `TerminationProtection' is enabled. `AdvancedEventSelectors'
-%% includes or excludes management and data events in your event data store;
-%% for more information about `AdvancedEventSelectors', see
+%% `TerminationProtection' is enabled.
+%%
+%% For event data stores for CloudTrail events, `AdvancedEventSelectors'
+%% includes or excludes management and data events in your event data store.
+%% For more information about `AdvancedEventSelectors', see
 %% `PutEventSelectorsRequest$AdvancedEventSelectors'.
+%%
+%% For event data stores for Config configuration items, Audit Manager
+%% evidence, or non-Amazon Web Services events, `AdvancedEventSelectors'
+%% includes events of that type in your event data store.
 update_event_data_store(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_event_data_store(Client, Input, []).
