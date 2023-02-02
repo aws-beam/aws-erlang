@@ -246,10 +246,11 @@ create_dataset_group(Client, Input, Options)
 %% Service (Amazon S3) bucket and the Amazon Resource Name (ARN) of the
 %% dataset that you want to import the data to.
 %%
-%% You must specify a DataSource object that includes an AWS Identity and
-%% Access Management (IAM) role that Amazon Forecast can assume to access the
-%% data, as Amazon Forecast makes a copy of your data and processes it in an
-%% internal AWS system. For more information, see Set up permissions.
+%% You must specify a DataSource object that includes an Identity and Access
+%% Management (IAM) role that Amazon Forecast can assume to access the data,
+%% as Amazon Forecast makes a copy of your data and processes it in an
+%% internal Amazon Web Services system. For more information, see Set up
+%% permissions.
 %%
 %% The training data must be in CSV or Parquet format. The delimiter must be
 %% a comma (,).
@@ -369,7 +370,7 @@ create_explainability(Client, Input, Options)
 %% S3) bucket.
 %%
 %% You must specify a `DataDestination' object that includes an Amazon S3
-%% bucket and an AWS Identity and Access Management (IAM) role that Amazon
+%% bucket and an Identity and Access Management (IAM) role that Amazon
 %% Forecast can assume to access the Amazon S3 bucket. For more information,
 %% see `aws-forecast-iam-roles'.
 %%
@@ -431,9 +432,9 @@ create_forecast(Client, Input, Options)
 %% where the &lt;ExportTimestamp&gt; component is in Java SimpleDateFormat
 %% (yyyy-MM-ddTHH-mm-ssZ).
 %%
-%% You must specify a `DataDestination' object that includes an AWS
-%% Identity and Access Management (IAM) role that Amazon Forecast can assume
-%% to access the Amazon S3 bucket. For more information, see
+%% You must specify a `DataDestination' object that includes an Identity
+%% and Access Management (IAM) role that Amazon Forecast can assume to access
+%% the Amazon S3 bucket. For more information, see
 %% `aws-forecast-iam-roles'.
 %%
 %% For more information, see `howitworks-forecast'.
@@ -542,7 +543,7 @@ create_predictor(Client, Input, Options)
 %% (yyyy-MM-ddTHH-mm-ssZ).
 %%
 %% You must specify a `DataDestination' object that includes an Amazon S3
-%% bucket and an AWS Identity and Access Management (IAM) role that Amazon
+%% bucket and an Identity and Access Management (IAM) role that Amazon
 %% Forecast can assume to access the Amazon S3 bucket. For more information,
 %% see `aws-forecast-iam-roles'.
 %%
@@ -567,11 +568,13 @@ create_predictor_backtest_export_job(Client, Input, Options)
 %% For example, imagine you are a clothing retailer who is considering an end
 %% of season sale to clear space for new styles. After creating a baseline
 %% forecast, you can use a what-if analysis to investigate how different
-%% sales tactics might affect your goals. You could create a scenario where
-%% everything is given a 25% markdown and another where everything is given a
-%% fixed dollar markdown. You can create a scenario where the sale lasts for
-%% 1 week and another where the sale lasts for 1 month. Your what-if analysis
-%% enables you to compare many different scenarios against each other.
+%% sales tactics might affect your goals.
+%%
+%% You could create a scenario where everything is given a 25% markdown, and
+%% another where everything is given a fixed dollar markdown. You could
+%% create a scenario where the sale lasts for one week and another where the
+%% sale lasts for one month. With a what-if analysis, you can compare many
+%% different scenarios against each other.
 %%
 %% Note that a what-if analysis is meant to display what the forecasting
 %% model has learned and how it will behave in the scenarios that you are
@@ -611,9 +614,9 @@ create_what_if_forecast(Client, Input, Options)
 %% The &lt;ExportTimestamp&gt; component is in Java SimpleDateFormat
 %% (yyyy-MM-ddTHH-mm-ssZ).
 %%
-%% You must specify a `DataDestination' object that includes an AWS
-%% Identity and Access Management (IAM) role that Amazon Forecast can assume
-%% to access the Amazon S3 bucket. For more information, see
+%% You must specify a `DataDestination' object that includes an Identity
+%% and Access Management (IAM) role that Amazon Forecast can assume to access
+%% the Amazon S3 bucket. For more information, see
 %% `aws-forecast-iam-roles'.
 %%
 %% For more information, see `howitworks-forecast'.

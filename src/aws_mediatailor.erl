@@ -114,6 +114,8 @@
          update_channel/4,
          update_live_source/4,
          update_live_source/5,
+         update_program/4,
+         update_program/5,
          update_source_location/3,
          update_source_location/4,
          update_vod_source/4,
@@ -1174,6 +1176,29 @@ update_live_source(Client, LiveSourceName, SourceLocationName, Input) ->
 update_live_source(Client, LiveSourceName, SourceLocationName, Input0, Options0) ->
     Method = put,
     Path = ["/sourceLocation/", aws_util:encode_uri(SourceLocationName), "/liveSource/", aws_util:encode_uri(LiveSourceName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a program within a channel.
+update_program(Client, ChannelName, ProgramName, Input) ->
+    update_program(Client, ChannelName, ProgramName, Input, []).
+update_program(Client, ChannelName, ProgramName, Input0, Options0) ->
+    Method = put,
+    Path = ["/channel/", aws_util:encode_uri(ChannelName), "/program/", aws_util:encode_uri(ProgramName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

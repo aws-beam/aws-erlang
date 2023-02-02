@@ -570,10 +570,10 @@ create_login_profile(Client, Input, Options)
 %% Amazon Web Services secures communication with some OIDC identity
 %% providers (IdPs) through our library of trusted certificate authorities
 %% (CAs) instead of using a certificate thumbprint to verify your IdP server
-%% certificate. These OIDC IdPs include Google, and those that use an Amazon
-%% S3 bucket to host a JSON Web Key Set (JWKS) endpoint. In these cases, your
-%% legacy thumbprint remains in your configuration, but is no longer used for
-%% validation.
+%% certificate. These OIDC IdPs include Google, Auth0, and those that use an
+%% Amazon S3 bucket to host a JSON Web Key Set (JWKS) endpoint. In these
+%% cases, your legacy thumbprint remains in your configuration, but is no
+%% longer used for validation.
 %%
 %% The trust for the OIDC provider is derived from the IAM provider that this
 %% operation creates. Therefore, it is best to limit access to the
@@ -921,13 +921,24 @@ delete_policy_version(Client, Input, Options)
 
 %% @doc Deletes the specified role.
 %%
-%% The role must not have any policies attached. For more information about
-%% roles, see Working with roles.
+%% Unlike the Amazon Web Services Management Console, when you delete a role
+%% programmatically, you must delete the items attached to the role manually,
+%% or the deletion fails. For more information, see Deleting an IAM role.
+%% Before attempting to delete a role, remove the following attached items:
 %%
-%% Make sure that you do not have any Amazon EC2 instances running with the
-%% role you are about to delete. Deleting a role or instance profile that is
-%% associated with a running instance will break any applications running on
-%% the instance.
+%% <ul> <li> Inline policies (`DeleteRolePolicy')
+%%
+%% </li> <li> Attached managed policies (`DetachRolePolicy')
+%%
+%% </li> <li> Instance profile (`RemoveRoleFromInstanceProfile')
+%%
+%% </li> <li> Optional – Delete instance profile after detaching from role
+%% for resource clean up (`DeleteInstanceProfile')
+%%
+%% </li> </ul> Make sure that you do not have any Amazon EC2 instances
+%% running with the role you are about to delete. Deleting a role or instance
+%% profile that is associated with a running instance will break any
+%% applications running on the instance.
 delete_role(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_role(Client, Input, []).
@@ -2737,8 +2748,14 @@ set_security_token_service_preferences(Client, Input, Options)
 %% If the output is long, you can use `MaxItems' and `Marker'
 %% parameters to paginate the results.
 %%
-%% For more information about using the policy simulator, see Testing IAM
-%% policies with the IAM policy simulator in the IAM User Guide.
+%% The IAM policy simulator evaluates statements in the identity-based policy
+%% and the inputs that you provide during simulation. The policy simulator
+%% results can differ from your live Amazon Web Services environment. We
+%% recommend that you check your policies against your live Amazon Web
+%% Services environment after testing using the policy simulator to confirm
+%% that you have the desired results. For more information about using the
+%% policy simulator, see Testing IAM policies with the IAM policy simulator
+%% in the IAM User Guide.
 simulate_custom_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     simulate_custom_policy(Client, Input, []).
@@ -2761,7 +2778,7 @@ simulate_custom_policy(Client, Input, Options)
 %% instead.
 %%
 %% You can also optionally include one resource-based policy to be evaluated
-%% with each of the resources included in the simulation.
+%% with each of the resources included in the simulation for IAM users only.
 %%
 %% The simulation does not perform the API operations; it only checks the
 %% authorization to determine if the simulated policies allow or deny the
@@ -2781,8 +2798,14 @@ simulate_custom_policy(Client, Input, Options)
 %% If the output is long, you can use the `MaxItems' and `Marker'
 %% parameters to paginate the results.
 %%
-%% For more information about using the policy simulator, see Testing IAM
-%% policies with the IAM policy simulator in the IAM User Guide.
+%% The IAM policy simulator evaluates statements in the identity-based policy
+%% and the inputs that you provide during simulation. The policy simulator
+%% results can differ from your live Amazon Web Services environment. We
+%% recommend that you check your policies against your live Amazon Web
+%% Services environment after testing using the policy simulator to confirm
+%% that you have the desired results. For more information about using the
+%% policy simulator, see Testing IAM policies with the IAM policy simulator
+%% in the IAM User Guide.
 simulate_principal_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     simulate_principal_policy(Client, Input, []).
@@ -3307,10 +3330,10 @@ update_login_profile(Client, Input, Options)
 %% Amazon Web Services secures communication with some OIDC identity
 %% providers (IdPs) through our library of trusted certificate authorities
 %% (CAs) instead of using a certificate thumbprint to verify your IdP server
-%% certificate. These OIDC IdPs include Google, and those that use an Amazon
-%% S3 bucket to host a JSON Web Key Set (JWKS) endpoint. In these cases, your
-%% legacy thumbprint remains in your configuration, but is no longer used for
-%% validation.
+%% certificate. These OIDC IdPs include Google, Auth0, and those that use an
+%% Amazon S3 bucket to host a JSON Web Key Set (JWKS) endpoint. In these
+%% cases, your legacy thumbprint remains in your configuration, but is no
+%% longer used for validation.
 %%
 %% Trust for the OIDC provider is derived from the provider certificate and
 %% is validated by the thumbprint. Therefore, it is best to limit access to
