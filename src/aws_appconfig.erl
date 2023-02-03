@@ -189,11 +189,25 @@ create_application(Client, Input0, Options0) ->
 %% @doc Creates a configuration profile, which is information that enables
 %% AppConfig to access the configuration source.
 %%
-%% Valid configuration sources include the AppConfig hosted configuration
-%% store, Amazon Web Services Systems Manager (SSM) documents, SSM Parameter
-%% Store parameters, Amazon S3 objects, or any integration source action
-%% supported by CodePipeline. A configuration profile includes the following
-%% information:
+%% Valid configuration sources include the following:
+%%
+%% <ul> <li> Configuration data in YAML, JSON, and other formats stored in
+%% the AppConfig hosted configuration store
+%%
+%% </li> <li> Configuration data stored as objects in an Amazon Simple
+%% Storage Service (Amazon S3) bucket
+%%
+%% </li> <li> Pipelines stored in CodePipeline
+%%
+%% </li> <li> Secrets stored in Secrets Manager
+%%
+%% </li> <li> Standard and secure string parameters stored in Amazon Web
+%% Services Systems Manager Parameter Store
+%%
+%% </li> <li> Configuration data in SSM documents stored in the Systems
+%% Manager document store
+%%
+%% </li> </ul> A configuration profile includes the following information:
 %%
 %% <ul> <li> The URI location of the configuration data.
 %%
@@ -293,8 +307,8 @@ create_environment(Client, ApplicationId, Input0, Options0) ->
 %% different points during the AppConfig workflow of creating or deploying a
 %% configuration.
 %%
-%% You can create your own extensions or use the Amazon Web Services-authored
-%% extensions provided by AppConfig. For most use-cases, to create your own
+%% You can create your own extensions or use the Amazon Web Services authored
+%% extensions provided by AppConfig. For most use cases, to create your own
 %% extension, you must create an Lambda function to perform any computation
 %% and processing defined in the extension. For more information about
 %% extensions, see Working with AppConfig extensions in the AppConfig User
@@ -323,12 +337,12 @@ create_extension(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc When you create an extension or configure an Amazon Web
-%% Services-authored extension, you associate the extension with an AppConfig
+%% @doc When you create an extension or configure an Amazon Web Services
+%% authored extension, you associate the extension with an AppConfig
 %% application, environment, or configuration profile.
 %%
 %% For example, you can choose to run the `AppConfig deployment events to
-%% Amazon SNS' Amazon Web Services-authored extension and receive
+%% Amazon SNS' Amazon Web Services authored extension and receive
 %% notifications on an Amazon SNS topic anytime a configuration deployment is
 %% started for a specific application. Defining which extension to associate
 %% with an AppConfig resource is called an extension association. An
@@ -607,32 +621,15 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the latest deployed configuration.
+%% @doc (Deprecated) Retrieves the latest deployed configuration.
 %%
 %% Note the following important information.
 %%
-%% This API action has been deprecated. Calls to receive configuration data
-%% should use the StartConfigurationSession and GetLatestConfiguration APIs
-%% instead.
+%% This API action is deprecated. Calls to receive configuration data should
+%% use the StartConfigurationSession and GetLatestConfiguration APIs instead.
 %%
 %% `GetConfiguration' is a priced call. For more information, see
 %% Pricing.
-%%
-%% AppConfig uses the value of the `ClientConfigurationVersion' parameter
-%% to identify the configuration version on your clients. If you don’t send
-%% `ClientConfigurationVersion' with each call to `GetConfiguration',
-%% your clients receive the current configuration. You are charged each time
-%% your clients receive a configuration.
-%%
-%% To avoid excess charges, we recommend you use the
-%% StartConfigurationSession and GetLatestConfiguration APIs, which track the
-%% client configuration version on your behalf. If you choose to continue
-%% using `GetConfiguration', we recommend that you include the
-%% `ClientConfigurationVersion' value with every call to
-%% `GetConfiguration'. The value to use for
-%% `ClientConfigurationVersion' comes from the `ConfigurationVersion'
-%% attribute returned by `GetConfiguration' when there is new or updated
-%% data, and should be saved for subsequent calls to `GetConfiguration'.
 get_configuration(Client, Application, Configuration, Environment, ClientId)
   when is_map(Client) ->
     get_configuration(Client, Application, Configuration, Environment, ClientId, #{}, #{}).
@@ -1054,7 +1051,7 @@ list_extension_associations(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all custom and Amazon Web Services-authored AppConfig
+%% @doc Lists all custom and Amazon Web Services authored AppConfig
 %% extensions in the account.
 %%
 %% For more information about extensions, see Working with AppConfig

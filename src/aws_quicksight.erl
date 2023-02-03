@@ -449,6 +449,9 @@ create_account_subscription(Client, AwsAccountId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an analysis in Amazon QuickSight.
+%%
+%% Analyses can be created either from a template or from an
+%% `AnalysisDefinition'.
 create_analysis(Client, AnalysisId, AwsAccountId, Input) ->
     create_analysis(Client, AnalysisId, AwsAccountId, Input, []).
 create_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
@@ -471,7 +474,8 @@ create_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a dashboard from a template.
+%% @doc Creates a dashboard from either a template or directly with a
+%% `DashboardDefinition'.
 %%
 %% To first create a template, see the ` CreateTemplate ' API operation.
 %%
@@ -752,10 +756,11 @@ create_namespace(Client, AwsAccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a template from an existing Amazon QuickSight analysis or
-%% template.
+%% @doc Creates a template either from a `TemplateDefinition' or from an
+%% existing Amazon QuickSight analysis or template.
 %%
-%% You can use the resulting template to create a dashboard.
+%% You can use the resulting template to create additional dashboards,
+%% templates, or analyses.
 %%
 %% A template is an entity in Amazon QuickSight that encapsulates the
 %% metadata required to create an analysis and that you can use to create s
