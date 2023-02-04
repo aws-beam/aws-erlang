@@ -223,6 +223,8 @@
          get_repository/3,
          get_repository_sync_status/2,
          get_repository_sync_status/3,
+         get_resources_summary/2,
+         get_resources_summary/3,
          get_service/2,
          get_service/3,
          get_service_instance/2,
@@ -792,6 +794,31 @@ get_repository_sync_status(Client, Input)
 get_repository_sync_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRepositorySyncStatus">>, Input, Options).
+
+%% @doc Get counts of Proton resources.
+%%
+%% For infrastructure-provisioning resources (environments, services, service
+%% instances, pipelines), the action returns staleness counts. A resource is
+%% stale when it's behind the recommended version of the Proton template
+%% that it uses and it needs an update to become current.
+%%
+%% The action returns staleness counts (counts of resources that are
+%% up-to-date, behind a template major version, or behind a template minor
+%% version), the total number of resources, and the number of resources that
+%% are in a failed state, grouped by resource type. Components, environments,
+%% and service templates are exceptions—see the `components',
+%% `environments', and `serviceTemplates' field descriptions.
+%%
+%% For context, the action also returns the total number of each type of
+%% Proton template in the Amazon Web Services account.
+%%
+%% For more information, see Proton dashboard in the Proton User Guide.
+get_resources_summary(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_resources_summary(Client, Input, []).
+get_resources_summary(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetResourcesSummary">>, Input, Options).
 
 %% @doc Get detailed data for a service.
 get_service(Client, Input)

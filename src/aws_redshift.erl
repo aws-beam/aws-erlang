@@ -1803,6 +1803,9 @@ restore_from_cluster_snapshot(Client, Input, Options)
 %% `NewTableName' parameter value in the call to
 %% `RestoreTableFromClusterSnapshot'. This way, you can replace the
 %% original table with the table created from the snapshot.
+%%
+%% You can't use this operation to restore tables with interleaved sort
+%% keys.
 restore_table_from_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_table_from_cluster_snapshot(Client, Input, []).
