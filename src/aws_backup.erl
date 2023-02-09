@@ -1780,8 +1780,10 @@ put_backup_vault_access_policy(Client, BackupVaultName, Input0, Options0) ->
 %% retention period for future backup and copy jobs that target a backup
 %% vault.
 %%
-%% Backup Vault Lock has yet to receive a third-party assessment for SEC
-%% 17a-4(f) and CFTC.
+%% Backup Vault Lock has been assessed by Cohasset Associates for use in
+%% environments that are subject to SEC 17a-4, CFTC, and FINRA regulations.
+%% For more information about how Backup Vault Lock relates to these
+%% regulations, see the Cohasset Associates Compliance Assessment.
 put_backup_vault_lock_configuration(Client, BackupVaultName, Input) ->
     put_backup_vault_lock_configuration(Client, BackupVaultName, Input, []).
 put_backup_vault_lock_configuration(Client, BackupVaultName, Input0, Options0) ->

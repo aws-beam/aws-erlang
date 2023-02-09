@@ -867,13 +867,13 @@ create_monitoring_subscription(Client, DistributionId, Input0, Options0) ->
 %% a CloudFront distribution so that CloudFront sends authenticated (signed)
 %% requests to the origin.
 %%
-%% For an Amazon S3 origin, this makes it possible to block public access to
-%% the Amazon S3 bucket so that viewers (users) can access the content in the
-%% bucket only through CloudFront.
+%% This makes it possible to block public access to the origin, allowing
+%% viewers (users) to access the origin's content only through
+%% CloudFront.
 %%
 %% For more information about using a CloudFront origin access control, see
-%% Restricting access to an Amazon S3 origin in the Amazon CloudFront
-%% Developer Guide.
+%% Restricting access to an Amazon Web Services origin in the Amazon
+%% CloudFront Developer Guide.
 create_origin_access_control(Client, Input) ->
     create_origin_access_control(Client, Input, []).
 create_origin_access_control(Client, Input0, Options0) ->
