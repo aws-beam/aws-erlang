@@ -273,6 +273,8 @@ classify_response({error, timeout}) ->
   retriable;
 classify_response({error, checkout_timeout}) ->
   retriable;
+classify_response({error, service_unavailable}) ->
+  retriable;
 classify_response({error, _}) ->
   error;
 classify_response({ok, {_, _}}) ->
