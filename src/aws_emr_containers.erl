@@ -8,7 +8,7 @@
 %% With this deployment option, you can focus on running analytics workloads
 %% while Amazon EMR on EKS builds, configures, and manages containers for
 %% open-source applications. For more information about Amazon EMR on EKS
-%% concepts and tasks, see What is Amazon EMR on EKS.
+%% concepts and tasks, see What is shared id=&quot;EMR-EKS&quot;/&gt;.
 %%
 %% Amazon EMR containers is the API name for Amazon EMR on EKS. The
 %% `emr-containers' prefix is used in the following scenarios:
@@ -23,7 +23,7 @@
 %%
 %% </li> <li> It is the prefix used in Amazon EMR on EKS service endpoints.
 %% For example, `emr-containers.us-east-2.amazonaws.com'. For more
-%% information, see Amazon EMR on EKS Service Endpoints.
+%% information, see Amazon EMR on EKSService Endpoints.
 %%
 %% </li> </ul>
 -module(aws_emr_containers).
@@ -138,8 +138,9 @@ create_job_template(Client, Input0, Options0) ->
 
 %% @doc Creates a managed endpoint.
 %%
-%% A managed endpoint is a gateway that connects EMR Studio to Amazon EMR on
-%% EKS so that EMR Studio can communicate with your virtual cluster.
+%% A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon
+%% EMR on EKS so that Amazon EMR Studio can communicate with your virtual
+%% cluster.
 create_managed_endpoint(Client, VirtualClusterId, Input) ->
     create_managed_endpoint(Client, VirtualClusterId, Input, []).
 create_managed_endpoint(Client, VirtualClusterId, Input0, Options0) ->
@@ -222,8 +223,9 @@ delete_job_template(Client, Id, Input0, Options0) ->
 
 %% @doc Deletes a managed endpoint.
 %%
-%% A managed endpoint is a gateway that connects EMR Studio to Amazon EMR on
-%% EKS so that EMR Studio can communicate with your virtual cluster.
+%% A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon
+%% EMR on EKS so that Amazon EMR Studio can communicate with your virtual
+%% cluster.
 delete_managed_endpoint(Client, Id, VirtualClusterId, Input) ->
     delete_managed_endpoint(Client, Id, VirtualClusterId, Input, []).
 delete_managed_endpoint(Client, Id, VirtualClusterId, Input0, Options0) ->
@@ -332,8 +334,9 @@ describe_job_template(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Displays detailed information about a managed endpoint.
 %%
-%% A managed endpoint is a gateway that connects EMR Studio to Amazon EMR on
-%% EKS so that EMR Studio can communicate with your virtual cluster.
+%% A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon
+%% EMR on EKS so that Amazon EMR Studio can communicate with your virtual
+%% cluster.
 describe_managed_endpoint(Client, Id, VirtualClusterId)
   when is_map(Client) ->
     describe_managed_endpoint(Client, Id, VirtualClusterId, #{}, #{}).
@@ -458,8 +461,9 @@ list_job_templates(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists managed endpoints based on a set of parameters.
 %%
-%% A managed endpoint is a gateway that connects EMR Studio to Amazon EMR on
-%% EKS so that EMR Studio can communicate with your virtual cluster.
+%% A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon
+%% EMR on EKS so that Amazon EMR Studio can communicate with your virtual
+%% cluster.
 list_managed_endpoints(Client, VirtualClusterId)
   when is_map(Client) ->
     list_managed_endpoints(Client, VirtualClusterId, #{}, #{}).
@@ -582,16 +586,16 @@ start_job_run(Client, VirtualClusterId, Input0, Options0) ->
 
 %% @doc Assigns tags to resources.
 %%
-%% A tag is a label that you assign to an AWS resource. Each tag consists of
-%% a key and an optional value, both of which you define. Tags enable you to
-%% categorize your AWS resources by attributes such as purpose, owner, or
-%% environment. When you have many resources of the same type, you can
-%% quickly identify a specific resource based on the tags you've assigned
-%% to it. For example, you can define a set of tags for your Amazon EMR on
-%% EKS clusters to help you track each cluster's owner and stack level.
-%% We recommend that you devise a consistent set of tag keys for each
-%% resource type. You can then search and filter the resources based on the
-%% tags that you add.
+%% A tag is a label that you assign to an Amazon Web Services resource. Each
+%% tag consists of a key and an optional value, both of which you define.
+%% Tags enable you to categorize your Amazon Web Services resources by
+%% attributes such as purpose, owner, or environment. When you have many
+%% resources of the same type, you can quickly identify a specific resource
+%% based on the tags you've assigned to it. For example, you can define a
+%% set of tags for your Amazon EMR on EKS clusters to help you track each
+%% cluster's owner and stack level. We recommend that you devise a
+%% consistent set of tag keys for each resource type. You can then search and
+%% filter the resources based on the tags that you add.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->

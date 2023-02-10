@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc The WorkDocs API is designed for the following use cases:
+%% @doc The Amazon WorkDocs API is designed for the following use cases:
 %%
 %% <ul> <li> File Migration: File migration applications are supported for
 %% users who want to migrate their files from an on-premises or off-premises
@@ -13,7 +13,7 @@
 %%
 %% </li> <li> Security: Support security applications are supported for users
 %% who have additional security needs, such as antivirus or data loss
-%% prevention. The API actions, along with AWS CloudTrail, allow these
+%% prevention. The API actions, along with CloudTrail, allow these
 %% applications to detect when changes occur in Amazon WorkDocs. Then, the
 %% application can take the necessary actions and replace the target file. If
 %% the target file violates the policy, the application can also choose to
@@ -21,20 +21,21 @@
 %%
 %% </li> <li> eDiscovery/Analytics: General administrative applications are
 %% supported, such as eDiscovery and analytics. These applications can choose
-%% to mimic or record the actions in an Amazon WorkDocs site, along with AWS
+%% to mimic or record the actions in an Amazon WorkDocs site, along with
 %% CloudTrail, to replicate data for eDiscovery, backup, or analytical
 %% applications.
 %%
 %% </li> </ul> All Amazon WorkDocs API actions are Amazon authenticated and
-%% certificate-signed. They not only require the use of the AWS SDK, but also
-%% allow for the exclusive use of IAM users and roles to help facilitate
-%% access, trust, and permission policies. By creating a role and allowing an
-%% IAM user to access the Amazon WorkDocs site, the IAM user gains full
-%% administrative visibility into the entire Amazon WorkDocs site (or as set
-%% in the IAM policy). This includes, but is not limited to, the ability to
-%% modify file permissions and upload any file to any user. This allows
-%% developers to perform the three use cases above, as well as give users the
-%% ability to grant access on a selective basis using the IAM model.
+%% certificate-signed. They not only require the use of the Amazon Web
+%% Services SDK, but also allow for the exclusive use of IAM users and roles
+%% to help facilitate access, trust, and permission policies. By creating a
+%% role and allowing an IAM user to access the Amazon WorkDocs site, the IAM
+%% user gains full administrative visibility into the entire Amazon WorkDocs
+%% site (or as set in the IAM policy). This includes, but is not limited to,
+%% the ability to modify file permissions and upload any file to any user.
+%% This allows developers to perform the three use cases above, as well as
+%% give users the ability to grant access on a selective basis using the IAM
+%% model.
 %%
 %% The pricing for Amazon WorkDocs APIs varies depending on the API call type
 %% for these actions:
@@ -509,9 +510,7 @@ delete_document(Client, DocumentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a version of an Amazon WorkDocs document.
-%%
-%% Use the `DeletePriorVersions' parameter to delete prior versions.
+%% @doc Deletes a specific version of a document.
 delete_document_version(Client, DocumentId, VersionId, Input) ->
     delete_document_version(Client, DocumentId, VersionId, Input, []).
 delete_document_version(Client, DocumentId, VersionId, Input0, Options0) ->
@@ -639,6 +638,10 @@ delete_notification_subscription(Client, OrganizationId, SubscriptionId, Input0,
 
 %% @doc Deletes the specified user from a Simple AD or Microsoft AD
 %% directory.
+%%
+%% Deleting a user immediately and permanently deletes all content in that
+%% user's folder structure. Site retention policies do NOT apply to this
+%% type of deletion.
 delete_user(Client, UserId, Input) ->
     delete_user(Client, UserId, Input, []).
 delete_user(Client, UserId, Input0, Options0) ->

@@ -302,14 +302,13 @@ create_project(Client, Input0, Options0) ->
 %% launch allows you to define different traffic splits for the different
 %% audience segments.
 %%
-%% &lt;p&gt;For more information about segment pattern syntax, see &lt;a
-%% href=&quot;https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html#CloudWatch-Evidently-segments-syntax.html&quot;&gt;
-%% Segment rule pattern syntax&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;The pattern that
-%% you define for a segment is matched against the value of
-%% &lt;code&gt;evaluationContext&lt;/code&gt;, which is passed into Evidently
-%% in the &lt;a
-%% href=&quot;https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_EvaluateFeature.html&quot;&gt;EvaluateFeature&lt;/a&gt;
-%% operation, when Evidently assigns a feature variation to a user.&lt;/p&gt;
+%% For more information about segment pattern syntax, see Segment rule
+%% pattern syntax.
+%%
+%% The pattern that you define for a segment is matched against the value of
+%% `evaluationContext', which is passed into Evidently in the
+%% EvaluateFeature operation, when Evidently assigns a feature variation to a
+%% user.
 create_segment(Client, Input) ->
     create_segment(Client, Input, []).
 create_segment(Client, Input0, Options0) ->
@@ -470,30 +469,33 @@ delete_segment(Client, Segment, Input0, Options0) ->
 %% user's `entityID' matches an override rule, the user is served the
 %% variation specified by that rule.
 %%
-%% &lt;p&gt;If there is a current launch with this feature that uses segment
-%% overrides, and if the user session's
-%% &lt;code&gt;evaluationContext&lt;/code&gt; matches a segment rule defined
-%% in a segment override, the configuration in the segment overrides is used.
-%% For more information about segments, see &lt;a
-%% href=&quot;https://docs.aws.amazon.com/cloudwatchevidently/latest/APIReference/API_CreateSegment.html&quot;&gt;CreateSegment&lt;/a&gt;
-%% and &lt;a
-%% href=&quot;https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Evidently-segments.html&quot;&gt;Use
-%% segments to focus your audience&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;If there is
-%% a launch with no segment overrides, the user might be assigned to a
-%% variation in the launch. The chance of this depends on the percentage of
-%% users that are allocated to that launch. If the user is enrolled in the
+%% If there is a current launch with this feature that uses segment
+%% overrides, and if the user session's `evaluationContext' matches a
+%% segment rule defined in a segment override, the configuration in the
+%% segment overrides is used. For more information about segments, see
+%% CreateSegment and Use segments to focus your audience.
+%%
+%% If there is a launch with no segment overrides, the user might be assigned
+%% to a variation in the launch. The chance of this depends on the percentage
+%% of users that are allocated to that launch. If the user is enrolled in the
 %% launch, the variation they are served depends on the allocation of the
-%% various feature variations used for the launch.&lt;/p&gt; &lt;p&gt;If the
-%% user is not assigned to a launch, and there is an ongoing experiment for
-%% this feature, the user might be assigned to a variation in the experiment.
-%% The chance of this depends on the percentage of users that are allocated
-%% to that experiment.&lt;/p&gt; &lt;p&gt;If the experiment uses a segment,
-%% then only user sessions with &lt;code&gt;evaluationContext&lt;/code&gt;
-%% values that match the segment rule are used in the experiment.&lt;/p&gt;
-%% &lt;p&gt;If the user is enrolled in the experiment, the variation they are
-%% served depends on the allocation of the various feature variations used
-%% for the experiment. &lt;/p&gt; &lt;p&gt;If the user is not assigned to a
-%% launch or experiment, they are served the default variation.&lt;/p&gt;
+%% various feature variations used for the launch.
+%%
+%% If the user is not assigned to a launch, and there is an ongoing
+%% experiment for this feature, the user might be assigned to a variation in
+%% the experiment. The chance of this depends on the percentage of users that
+%% are allocated to that experiment.
+%%
+%% If the experiment uses a segment, then only user sessions with
+%% `evaluationContext' values that match the segment rule are used in the
+%% experiment.
+%%
+%% If the user is enrolled in the experiment, the variation they are served
+%% depends on the allocation of the various feature variations used for the
+%% experiment.
+%%
+%% If the user is not assigned to a launch or experiment, they are served the
+%% default variation.
 evaluate_feature(Client, Feature, Project, Input) ->
     evaluate_feature(Client, Feature, Project, Input, []).
 evaluate_feature(Client, Feature, Project, Input0, Options0) ->

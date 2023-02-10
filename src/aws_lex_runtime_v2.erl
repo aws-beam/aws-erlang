@@ -1,7 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-
+%% @doc This section contains documentation for the Amazon Lex V2 Runtime V2
+%% API operations.
 -module(aws_lex_runtime_v2).
 
 -export([delete_session/6,
@@ -272,6 +273,7 @@ recognize_utterance(Client, BotAliasId, BotId, LocaleId, SessionId, Input0, Opti
             {<<"x-amz-lex-input-transcript">>, <<"inputTranscript">>},
             {<<"x-amz-lex-interpretations">>, <<"interpretations">>},
             {<<"x-amz-lex-messages">>, <<"messages">>},
+            {<<"x-amz-lex-recognized-bot-member">>, <<"recognizedBotMember">>},
             {<<"x-amz-lex-request-attributes">>, <<"requestAttributes">>},
             {<<"x-amz-lex-session-id">>, <<"sessionId">>},
             {<<"x-amz-lex-session-state">>, <<"sessionState">>}

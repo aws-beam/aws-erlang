@@ -122,8 +122,11 @@ create_application(Client, EnvironmentIdentifier, Input0, Options0) ->
 %% are referred to as the environment owner. The environment owner has
 %% cross-account visibility and control of Refactor Spaces resources that are
 %% added to the environment by other accounts that the environment is shared
-%% with. When creating an environment, Refactor Spaces provisions a transit
-%% gateway in your account.
+%% with.
+%%
+%% When creating an environment with a network fabric type of
+%% `TRANSIT_GATEWAY', Refactor Spaces provisions a transit gateway in
+%% your account.
 create_environment(Client, Input) ->
     create_environment(Client, Input, []).
 create_environment(Client, Input0, Options0) ->

@@ -266,7 +266,7 @@ create_ip_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIpGroup">>, Input, Options).
 
-%% @doc Creates a Standby WorkSpace in a secondary region.
+%% @doc Creates a standby WorkSpace in a secondary Region.
 create_standby_workspaces(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_standby_workspaces(Client, Input, []).
@@ -291,7 +291,7 @@ create_tags(Client, Input, Options)
 %% To determine which WorkSpace images need to be updated with the latest
 %% Amazon WorkSpaces requirements, use DescribeWorkspaceImages.
 %%
-%% Only Windows 10, Windows Sever 2016, and Windows Server 2019 WorkSpace
+%% Only Windows 10, Windows Server 2016, and Windows Server 2019 WorkSpace
 %% images can be programmatically updated at this time.
 %%
 %% Microsoft Windows updates and other application updates are not included
@@ -660,8 +660,8 @@ import_client_branding(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportClientBranding">>, Input, Options).
 
-%% @doc Imports the specified Windows 10 Bring Your Own License (BYOL) or
-%% Windows Server 2016 BYOL image into Amazon WorkSpaces.
+%% @doc Imports the specified Windows 10 Bring Your Own License (BYOL) image
+%% into Amazon WorkSpaces.
 %%
 %% The image must be an already licensed Amazon EC2 image that is in your
 %% Amazon Web Services account, and you must own the image. For more

@@ -383,6 +383,14 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Starts transcription for the specified `meetingId'.
+%%
+%% For more information, refer to Using Amazon Chime SDK live transcription
+%% in the Amazon Chime SDK Developer Guide.
+%%
+%% Amazon Chime SDK live transcription is powered by Amazon Transcribe. Use
+%% of Amazon Transcribe is subject to the AWS Service Terms, including the
+%% terms specific to the AWS Machine Learning and Artificial Intelligence
+%% Services.
 start_meeting_transcription(Client, MeetingId, Input) ->
     start_meeting_transcription(Client, MeetingId, Input, []).
 start_meeting_transcription(Client, MeetingId, Input0, Options0) ->
@@ -406,6 +414,14 @@ start_meeting_transcription(Client, MeetingId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops transcription for the specified `meetingId'.
+%%
+%% For more information, refer to Using Amazon Chime SDK live transcription
+%% in the Amazon Chime SDK Developer Guide.
+%%
+%% Amazon Chime SDK live transcription is powered by Amazon Transcribe. Use
+%% of Amazon Transcribe is subject to the AWS Service Terms, including the
+%% terms specific to the AWS Machine Learning and Artificial Intelligence
+%% Services.
 stop_meeting_transcription(Client, MeetingId, Input) ->
     stop_meeting_transcription(Client, MeetingId, Input, []).
 stop_meeting_transcription(Client, MeetingId, Input0, Options0) ->

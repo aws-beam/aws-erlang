@@ -166,8 +166,8 @@
 %% API
 %%====================================================================
 
-%% @doc Batch create custom vocabulary item for the specified locale in the
-%% specified bot.
+%% @doc Create a batch of custom vocabulary items for a given bot
+%% locale's custom vocabulary.
 batch_create_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input) ->
     batch_create_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input, []).
 batch_create_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
@@ -190,8 +190,8 @@ batch_create_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input0,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Batch delete custom vocabulary item for the specified locale in the
-%% specified bot.
+%% @doc Delete a batch of custom vocabulary items for a given bot
+%% locale's custom vocabulary.
 batch_delete_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input) ->
     batch_delete_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input, []).
 batch_delete_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
@@ -214,8 +214,8 @@ batch_delete_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input0,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Batch update custom vocabulary item for the specified locale in the
-%% specified bot.
+%% @doc Update a batch of custom vocabulary items for a given bot
+%% locale's custom vocabulary.
 batch_update_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input) ->
     batch_update_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input, []).
 batch_update_custom_vocabulary_item(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
@@ -680,7 +680,7 @@ delete_bot_locale(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
 
 %% @doc Deletes a specific version of a bot.
 %%
-%% To delete all version of a bot, use the DeleteBot operation.
+%% To delete all versions of a bot, use the DeleteBot operation.
 delete_bot_version(Client, BotId, BotVersion, Input) ->
     delete_bot_version(Client, BotId, BotVersion, Input, []).
 delete_bot_version(Client, BotId, BotVersion, Input0, Options0) ->
@@ -1446,8 +1446,8 @@ list_built_in_slot_types(Client, LocaleId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List custom vocabulary items for the specified locale in the
-%% specified bot.
+%% @doc Paginated list of custom vocabulary items for a given bot
+%% locale's custom vocabulary.
 list_custom_vocabulary_items(Client, BotId, BotVersion, LocaleId, Input) ->
     list_custom_vocabulary_items(Client, BotId, BotVersion, LocaleId, Input, []).
 list_custom_vocabulary_items(Client, BotId, BotVersion, LocaleId, Input0, Options0) ->
