@@ -561,7 +561,8 @@ associate_lambda_function(Client, InstanceId, Input0, Options0) ->
 %% change.
 %%
 %% Allows the specified Amazon Connect instance to access the specified
-%% Amazon Lex bot.
+%% Amazon Lex V1 bot. This API only supports the association of Amazon Lex V1
+%% bots.
 associate_lex_bot(Client, InstanceId, Input) ->
     associate_lex_bot(Client, InstanceId, Input, []).
 associate_lex_bot(Client, InstanceId, Input0, Options0) ->

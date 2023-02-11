@@ -850,8 +850,7 @@ create_device_fleet(Client, Input, Options)
 %% A domain consists of an associated Amazon Elastic File System (EFS)
 %% volume, a list of authorized users, and a variety of security,
 %% application, policy, and Amazon Virtual Private Cloud (VPC)
-%% configurations. An Amazon Web Services account is limited to one domain
-%% per region. Users within a domain can share notebook files and other
+%% configurations. Users within a domain can share notebook files and other
 %% artifacts with each other.
 %%
 %% EFS storage
@@ -973,12 +972,12 @@ create_edge_packaging_job(Client, Input, Options)
 %% If any of the models hosted at this endpoint get model data from an Amazon
 %% S3 location, SageMaker uses Amazon Web Services Security Token Service to
 %% download model artifacts from the S3 path you provided. Amazon Web
-%% Services STS is activated in your IAM user account by default. If you
-%% previously deactivated Amazon Web Services STS for a region, you need to
-%% reactivate Amazon Web Services STS for that region. For more information,
-%% see Activating and Deactivating Amazon Web Services STS in an Amazon Web
-%% Services Region in the Amazon Web Services Identity and Access Management
-%% User Guide.
+%% Services STS is activated in your Amazon Web Services account by default.
+%% If you previously deactivated Amazon Web Services STS for a region, you
+%% need to reactivate Amazon Web Services STS for that region. For more
+%% information, see Activating and Deactivating Amazon Web Services STS in an
+%% Amazon Web Services Region in the Amazon Web Services Identity and Access
+%% Management User Guide.
 %%
 %% To add the IAM role policies for using this API operation, go to the IAM
 %% console, and choose Roles in the left navigation pane. Search the IAM role
@@ -1119,6 +1118,8 @@ create_flow_definition(Client, Input, Options)
     request(Client, <<"CreateFlowDefinition">>, Input, Options).
 
 %% @doc Create a hub.
+%%
+%% Hub APIs are only callable through SageMaker Studio.
 create_hub(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_hub(Client, Input, []).
@@ -1967,6 +1968,8 @@ delete_flow_definition(Client, Input, Options)
     request(Client, <<"DeleteFlowDefinition">>, Input, Options).
 
 %% @doc Delete a hub.
+%%
+%% Hub APIs are only callable through SageMaker Studio.
 delete_hub(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hub(Client, Input, []).
@@ -1975,6 +1978,8 @@ delete_hub(Client, Input, Options)
     request(Client, <<"DeleteHub">>, Input, Options).
 
 %% @doc Delete the contents of a hub.
+%%
+%% Hub APIs are only callable through SageMaker Studio.
 delete_hub_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_hub_content(Client, Input, []).
@@ -2441,6 +2446,8 @@ describe_flow_definition(Client, Input, Options)
     request(Client, <<"DescribeFlowDefinition">>, Input, Options).
 
 %% @doc Describe a hub.
+%%
+%% Hub APIs are only callable through SageMaker Studio.
 describe_hub(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hub(Client, Input, []).
@@ -2449,6 +2456,8 @@ describe_hub(Client, Input, Options)
     request(Client, <<"DescribeHub">>, Input, Options).
 
 %% @doc Describe the content of a hub.
+%%
+%% Hub APIs are only callable through SageMaker Studio.
 describe_hub_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hub_content(Client, Input, []).
@@ -2856,6 +2865,8 @@ get_search_suggestions(Client, Input, Options)
     request(Client, <<"GetSearchSuggestions">>, Input, Options).
 
 %% @doc Import hub content.
+%%
+%% Hub APIs are only callable through SageMaker Studio.
 import_hub_content(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_hub_content(Client, Input, []).
@@ -3059,6 +3070,8 @@ list_flow_definitions(Client, Input, Options)
     request(Client, <<"ListFlowDefinitions">>, Input, Options).
 
 %% @doc List hub content versions.
+%%
+%% Hub APIs are only callable through SageMaker Studio.
 list_hub_content_versions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hub_content_versions(Client, Input, []).
@@ -3067,6 +3080,8 @@ list_hub_content_versions(Client, Input, Options)
     request(Client, <<"ListHubContentVersions">>, Input, Options).
 
 %% @doc List the contents of a hub.
+%%
+%% Hub APIs are only callable through SageMaker Studio.
 list_hub_contents(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hub_contents(Client, Input, []).
@@ -3075,6 +3090,8 @@ list_hub_contents(Client, Input, Options)
     request(Client, <<"ListHubContents">>, Input, Options).
 
 %% @doc List all existing hubs.
+%%
+%% Hub APIs are only callable through SageMaker Studio.
 list_hubs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hubs(Client, Input, []).
@@ -3652,7 +3669,7 @@ start_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartPipelineExecution">>, Input, Options).
 
-%% @doc A method for forcing the termination of a running job.
+%% @doc A method for forcing a running job to shut down.
 stop_auto_ml_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_auto_ml_job(Client, Input, []).
@@ -3967,6 +3984,8 @@ update_feature_metadata(Client, Input, Options)
     request(Client, <<"UpdateFeatureMetadata">>, Input, Options).
 
 %% @doc Update a hub.
+%%
+%% Hub APIs are only callable through SageMaker Studio.
 update_hub(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_hub(Client, Input, []).

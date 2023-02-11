@@ -125,6 +125,8 @@
          record_lifecycle_action_heartbeat/3,
          resume_processes/2,
          resume_processes/3,
+         rollback_instance_refresh/2,
+         rollback_instance_refresh/3,
          set_desired_capacity/2,
          set_desired_capacity/3,
          set_instance_health/2,
@@ -264,14 +266,18 @@ batch_put_scheduled_update_group_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchPutScheduledUpdateGroupAction">>, Input, Options).
 
-%% @doc Cancels an instance refresh operation in progress.
+%% @doc Cancels an instance refresh or rollback that is in progress.
 %%
-%% Cancellation does not roll back any replacements that have already been
-%% completed, but it prevents new replacements from being started.
+%% If an instance refresh or rollback is not in progress, an
+%% `ActiveInstanceRefreshNotFound' error occurs.
 %%
 %% This operation is part of the instance refresh feature in Amazon EC2 Auto
 %% Scaling, which helps you update instances in your Auto Scaling group after
 %% you make configuration changes.
+%%
+%% When you cancel an instance refresh, this does not roll back any changes
+%% that it made. Use the `RollbackInstanceRefresh' API to roll back
+%% instead.
 cancel_instance_refresh(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_instance_refresh(Client, Input, []).
@@ -564,31 +570,14 @@ describe_auto_scaling_notification_types(Client, Input, Options)
 %% Scaling, which helps you update instances in your Auto Scaling group after
 %% you make configuration changes.
 %%
-%% To help you determine the status of an instance refresh, this operation
-%% returns information about the instance refreshes you previously initiated,
-%% including their status, end time, the percentage of the instance refresh
-%% that is complete, and the number of instances remaining to update before
-%% the instance refresh is complete.
-%%
-%% The following are the possible statuses:
-%%
-%% <ul> <li> `Pending' - The request was created, but the operation has
-%% not started.
-%%
-%% </li> <li> `InProgress' - The operation is in progress.
-%%
-%% </li> <li> `Successful' - The operation completed successfully.
-%%
-%% </li> <li> `Failed' - The operation failed to complete. You can
-%% troubleshoot using the status reason and the scaling activities.
-%%
-%% </li> <li> `Cancelling' - An ongoing operation is being cancelled.
-%% Cancellation does not roll back any replacements that have already been
-%% completed, but it prevents new replacements from being started.
-%%
-%% </li> <li> `Cancelled' - The operation is cancelled.
-%%
-%% </li> </ul>
+%% To help you determine the status of an instance refresh, Amazon EC2 Auto
+%% Scaling returns information about the instance refreshes you previously
+%% initiated, including their status, start time, end time, the percentage of
+%% the instance refresh that is complete, and the number of instances
+%% remaining to update before the instance refresh is complete. If a rollback
+%% is initiated while an instance refresh is in progress, Amazon EC2 Auto
+%% Scaling also returns information about the rollback of the instance
+%% refresh.
 describe_instance_refreshes(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_instance_refreshes(Client, Input, []).
@@ -1182,6 +1171,40 @@ resume_processes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResumeProcesses">>, Input, Options).
 
+%% @doc Cancels an instance refresh that is in progress and rolls back any
+%% changes that it made.
+%%
+%% Amazon EC2 Auto Scaling replaces any instances that were replaced during
+%% the instance refresh. This restores your Auto Scaling group to the
+%% configuration that it was using before the start of the instance refresh.
+%%
+%% This operation is part of the instance refresh feature in Amazon EC2 Auto
+%% Scaling, which helps you update instances in your Auto Scaling group after
+%% you make configuration changes.
+%%
+%% A rollback is not supported in the following situations:
+%%
+%% <ul> <li> There is no desired configuration specified for the instance
+%% refresh.
+%%
+%% </li> <li> The Auto Scaling group has a launch template that uses an
+%% Amazon Web Services Systems Manager parameter instead of an AMI ID for the
+%% `ImageId' property.
+%%
+%% </li> <li> The Auto Scaling group uses the launch template's
+%% `$Latest' or `$Default' version.
+%%
+%% </li> </ul> When you receive a successful response from this operation,
+%% Amazon EC2 Auto Scaling immediately begins replacing instances. You can
+%% check the status of this operation through the
+%% `DescribeInstanceRefreshes' API operation.
+rollback_instance_refresh(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    rollback_instance_refresh(Client, Input, []).
+rollback_instance_refresh(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RollbackInstanceRefresh">>, Input, Options).
+
 %% @doc Sets the size of the specified Auto Scaling group.
 %%
 %% If a scale-in activity occurs as a result of a new `DesiredCapacity'
@@ -1226,12 +1249,12 @@ set_instance_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetInstanceProtection">>, Input, Options).
 
-%% @doc Starts a new instance refresh operation.
+%% @doc Starts an instance refresh.
 %%
-%% An instance refresh performs a rolling replacement of all or some
-%% instances in an Auto Scaling group. Each instance is terminated first and
-%% then replaced, which temporarily reduces the capacity available within
-%% your Auto Scaling group.
+%% During an instance refresh, Amazon EC2 Auto Scaling performs a rolling
+%% update of instances in an Auto Scaling group. Instances are terminated
+%% first and then replaced, which temporarily reduces the capacity available
+%% within your Auto Scaling group.
 %%
 %% This operation is part of the instance refresh feature in Amazon EC2 Auto
 %% Scaling, which helps you update instances in your Auto Scaling group. This
@@ -1240,12 +1263,26 @@ set_instance_protection(Client, Input, Options)
 %% the new AMI or user data script. Then start an instance refresh to
 %% immediately begin the process of updating instances in the group.
 %%
-%% If the call succeeds, it creates a new instance refresh request with a
-%% unique ID that you can use to track its progress. To query its status,
-%% call the `DescribeInstanceRefreshes' API. To describe the instance
-%% refreshes that have already run, call the `DescribeInstanceRefreshes'
-%% API. To cancel an instance refresh operation in progress, use the
-%% `CancelInstanceRefresh' API.
+%% If successful, the request's response contains a unique ID that you
+%% can use to track the progress of the instance refresh. To query its
+%% status, call the `DescribeInstanceRefreshes' API. To describe the
+%% instance refreshes that have already run, call the
+%% `DescribeInstanceRefreshes' API. To cancel an instance refresh that is
+%% in progress, use the `CancelInstanceRefresh' API.
+%%
+%% An instance refresh might fail for several reasons, such as EC2 launch
+%% failures, misconfigured health checks, or not ignoring or allowing the
+%% termination of instances that are in `Standby' state or protected from
+%% scale in. You can monitor for failed EC2 launches using the scaling
+%% activities. To find the scaling activities, call the
+%% `DescribeScalingActivities' API.
+%%
+%% If you enable auto rollback, your Auto Scaling group will be rolled back
+%% automatically when the instance refresh fails. You can enable this feature
+%% before starting an instance refresh by specifying the `AutoRollback'
+%% property in the instance refresh preferences. Otherwise, to roll back an
+%% instance refresh before it finishes, use the `RollbackInstanceRefresh'
+%% API.
 start_instance_refresh(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_instance_refresh(Client, Input, []).
