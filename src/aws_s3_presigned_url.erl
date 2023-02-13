@@ -44,16 +44,10 @@ make_presigned_v4_url(Client0, Method, ExpireSeconds, Bucket, Key) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
-build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}, undefined) ->
-    Endpoint;
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}, _Bucket) ->
     <<Endpoint/binary>>;
-build_host(_EndpointPrefix, #{region := <<"local">>}, undefined) ->
-    "localhost";
 build_host(_EndpointPrefix, #{region := <<"local">>}, _Bucket) ->
     <<"localhost">>;
-build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}, undefined) ->
-    aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>);
 build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}, Bucket) ->
     aws_util:binary_join([Bucket, EndpointPrefix, Region, Endpoint], <<".">>).
 
