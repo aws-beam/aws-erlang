@@ -9,6 +9,15 @@
         , request/2
         ]).
 
+%% Exported for aws_s3_presigned_url
+-export([ credential_scope/3
+        , canonical_headers/1
+        , signing_key/4
+        , signed_headers/1
+        , split_url/1
+        , string_to_sign/3
+        ]).
+
 -include_lib("hackney/include/hackney_lib.hrl").
 
 %%====================================================================
