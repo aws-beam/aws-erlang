@@ -706,6 +706,10 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, De
                      end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
+handle_response({ok, StatusCode, _ResponseHeaders, _Client}, _, _DecodeBody)
+  when StatusCode =:= 503 ->
+  %% Retriable error if retries are enabled
+  {error, service_unavailable};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     try

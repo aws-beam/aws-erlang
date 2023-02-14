@@ -26,6 +26,11 @@
 %% and used the first time it calls `GetLatestConfiguration' for that
 %% session.
 %%
+%% This token should only be used once in your first call to
+%% `GetLatestConfiguration'. You must use the new token in the
+%% `GetLatestConfiguration' response (`NextPollConfigurationToken')
+%% in each subsequent call to `GetLatestConfiguration'.
+%%
 %% When calling `GetLatestConfiguration', your client code sends the most
 %% recent `ConfigurationToken' value it has and receives in response:
 %%
@@ -41,10 +46,16 @@
 %% This may be empty if the client already has the latest version of the
 %% configuration.
 %%
-%% </li> </ul> For more information and to view example CLI commands that
-%% show how to retrieve a configuration using the AppConfig Data
+%% </li> </ul> The `InitialConfigurationToken' and
+%% `NextPollConfigurationToken' should only be used once. To support long
+%% poll use cases, the tokens are valid for up to 24 hours. If a
+%% `GetLatestConfiguration' call uses an expired token, the system
+%% returns `BadRequestException'.
+%%
+%% For more information and to view example CLI commands that show how to
+%% retrieve a configuration using the AppConfig Data
 %% `StartConfigurationSession' and `GetLatestConfiguration' API
-%% actions, see Receiving the configuration in the AppConfig User Guide.
+%% actions, see Retrieving the configuration in the AppConfig User Guide.
 -module(aws_appconfigdata).
 
 -export([get_latest_configuration/2,
@@ -64,7 +75,7 @@
 %% This API may return empty configuration data if the client already has the
 %% latest version. For more information about this API action and to view
 %% example CLI commands that show how to use it with the
-%% `StartConfigurationSession' API action, see Receiving the
+%% `StartConfigurationSession' API action, see Retrieving the
 %% configuration in the AppConfig User Guide.
 %%
 %% Note the following important information.
@@ -106,7 +117,8 @@ get_latest_configuration(Client, ConfigurationToken, QueryMap, HeadersMap, Optio
           [
             {<<"Content-Type">>, <<"ContentType">>},
             {<<"Next-Poll-Configuration-Token">>, <<"NextPollConfigurationToken">>},
-            {<<"Next-Poll-Interval-In-Seconds">>, <<"NextPollIntervalInSeconds">>}
+            {<<"Next-Poll-Interval-In-Seconds">>, <<"NextPollIntervalInSeconds">>},
+            {<<"Version-Label">>, <<"VersionLabel">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
                       case lists:keyfind(Name_, 1, ResponseHeaders) of
@@ -125,7 +137,7 @@ get_latest_configuration(Client, ConfigurationToken, QueryMap, HeadersMap, Optio
 %%
 %% For more information about this API action and to view example CLI
 %% commands that show how to use it with the `GetLatestConfiguration' API
-%% action, see Receiving the configuration in the AppConfig User Guide.
+%% action, see Retrieving the configuration in the AppConfig User Guide.
 start_configuration_session(Client, Input) ->
     start_configuration_session(Client, Input, []).
 start_configuration_session(Client, Input0, Options0) ->
@@ -230,6 +242,10 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, De
                      end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
+handle_response({ok, StatusCode, _ResponseHeaders, _Client}, _, _DecodeBody)
+  when StatusCode =:= 503 ->
+  %% Retriable error if retries are enabled
+  {error, service_unavailable};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     try

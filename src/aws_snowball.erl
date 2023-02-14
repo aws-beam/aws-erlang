@@ -57,6 +57,8 @@
          list_jobs/3,
          list_long_term_pricing/2,
          list_long_term_pricing/3,
+         list_service_versions/2,
+         list_service_versions/3,
          update_cluster/2,
          update_cluster/3,
          update_job/2,
@@ -188,14 +190,6 @@ create_cluster(Client, Input, Options)
 %% <ul> <li> Capacity: T100
 %%
 %% </li> <li> Description: Snowball Edge Storage Optimized with EC2 Compute
-%%
-%% </li> </ul>
-%%
-%% </li> <li> Device type: V3_5C
-%%
-%% <ul> <li> Capacity: T32
-%%
-%% </li> <li> Description: Snowball Edge Compute Optimized without GPU
 %%
 %% </li> </ul>
 %%
@@ -432,6 +426,17 @@ list_long_term_pricing(Client, Input)
 list_long_term_pricing(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLongTermPricing">>, Input, Options).
+
+%% @doc Lists all supported versions for Snow on-device services.
+%%
+%% Returns an array of `ServiceVersion' object containing the supported
+%% versions for a particular service.
+list_service_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_service_versions(Client, Input, []).
+list_service_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListServiceVersions">>, Input, Options).
 
 %% @doc While a cluster's `ClusterState' value is in the
 %% `AwaitingQuorum' state, you can update some of the information

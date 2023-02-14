@@ -6,10 +6,18 @@
 
 -export([delete_alternate_contact/2,
          delete_alternate_contact/3,
+         disable_region/2,
+         disable_region/3,
+         enable_region/2,
+         enable_region/3,
          get_alternate_contact/2,
          get_alternate_contact/3,
          get_contact_information/2,
          get_contact_information/3,
+         get_region_opt_status/2,
+         get_region_opt_status/3,
+         list_regions/2,
+         list_regions/3,
          put_alternate_contact/2,
          put_alternate_contact/3,
          put_contact_information/2,
@@ -37,6 +45,52 @@ delete_alternate_contact(Client, Input) ->
 delete_alternate_contact(Client, Input0, Options0) ->
     Method = post,
     Path = ["/deleteAlternateContact"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disables (opts-out) a particular Region for an account.
+disable_region(Client, Input) ->
+    disable_region(Client, Input, []).
+disable_region(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/disableRegion"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Enables (opts-in) a particular Region for an account.
+enable_region(Client, Input) ->
+    enable_region(Client, Input, []).
+enable_region(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/enableRegion"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -97,6 +151,56 @@ get_contact_information(Client, Input) ->
 get_contact_information(Client, Input0, Options0) ->
     Method = post,
     Path = ["/getContactInformation"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves the opt-in status of a particular Region.
+get_region_opt_status(Client, Input) ->
+    get_region_opt_status(Client, Input, []).
+get_region_opt_status(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/getRegionOptStatus"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all the Regions for a given account and their respective opt-in
+%% statuses.
+%%
+%% Optionally, this list can be filtered by the
+%% `region-opt-status-contains' parameter.
+list_regions(Client, Input) ->
+    list_regions(Client, Input, []).
+list_regions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/listRegions"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -257,6 +361,10 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, De
                      end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
+handle_response({ok, StatusCode, _ResponseHeaders, _Client}, _, _DecodeBody)
+  when StatusCode =:= 503 ->
+  %% Retriable error if retries are enabled
+  {error, service_unavailable};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     {ok, Body} = hackney:body(Client),
     try
