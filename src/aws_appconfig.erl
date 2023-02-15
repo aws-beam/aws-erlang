@@ -388,7 +388,8 @@ create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileI
     HeadersMapping = [
                        {<<"Content-Type">>, <<"ContentType">>},
                        {<<"Description">>, <<"Description">>},
-                       {<<"Latest-Version-Number">>, <<"LatestVersionNumber">>}
+                       {<<"Latest-Version-Number">>, <<"LatestVersionNumber">>},
+                       {<<"VersionLabel">>, <<"VersionLabel">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
@@ -406,6 +407,7 @@ create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileI
             {<<"Configuration-Profile-Id">>, <<"ConfigurationProfileId">>},
             {<<"Content-Type">>, <<"ContentType">>},
             {<<"Description">>, <<"Description">>},
+            {<<"VersionLabel">>, <<"VersionLabel">>},
             {<<"Version-Number">>, <<"VersionNumber">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
@@ -861,6 +863,7 @@ get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, 
             {<<"Configuration-Profile-Id">>, <<"ConfigurationProfileId">>},
             {<<"Content-Type">>, <<"ContentType">>},
             {<<"Description">>, <<"Description">>},
+            {<<"VersionLabel">>, <<"VersionLabel">>},
             {<<"Version-Number">>, <<"VersionNumber">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
@@ -1107,7 +1110,8 @@ list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId
     Query0_ =
       [
         {<<"max_results">>, maps:get(<<"max_results">>, QueryMap, undefined)},
-        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)}
+        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)},
+        {<<"version_label">>, maps:get(<<"version_label">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
