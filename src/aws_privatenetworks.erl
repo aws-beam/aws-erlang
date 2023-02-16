@@ -59,6 +59,8 @@
          ping/1,
          ping/3,
          ping/4,
+         start_network_resource_update/2,
+         start_network_resource_update/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -417,8 +419,8 @@ get_order(Client, OrderArn, QueryMap, HeadersMap, Options0)
 %% filters to match the Amazon Resource Name (ARN) of an order, the status of
 %% device identifiers, or the ARN of the traffic group.
 %%
-%% &lt;p&gt;If you specify multiple filters, filters are joined with an OR,
-%% and the request returns results that match all of the specified filters.
+%% If you specify multiple filters, filters are joined with an OR, and the
+%% request returns results that match all of the specified filters.
 list_device_identifiers(Client, Input) ->
     list_device_identifiers(Client, Input, []).
 list_device_identifiers(Client, Input0, Options0) ->
@@ -598,6 +600,36 @@ ping(Client, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Starts an update of the specified network resource.
+%%
+%% After you submit a request to replace or return a network resource, the
+%% status of the network resource is `CREATING_SHIPPING_LABEL'. The
+%% shipping label is available when the status of the network resource is
+%% `PENDING_RETURN'. After the network resource is successfully returned,
+%% its status is `DELETED'. For more information, see Return a radio
+%% unit.
+start_network_resource_update(Client, Input) ->
+    start_network_resource_update(Client, Input, []).
+start_network_resource_update(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/network-resources/update"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds tags to the specified resource.
 tag_resource(Client, ResourceArn, Input) ->

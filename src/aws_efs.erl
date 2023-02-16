@@ -401,9 +401,9 @@ create_mount_target(Client, Input0, Options0) ->
 %% system uses EFS One Zone storage. In that case, the General Purpose
 %% performance mode is used. The performance mode cannot be changed.
 %%
-%% </li> <li> Throughput mode - The destination file system uses the Bursting
-%% Throughput mode by default. After the file system is created, you can
-%% modify the throughput mode.
+%% </li> <li> Throughput mode - The destination file system's throughput
+%% mode matches that of the source file system. After the file system is
+%% created, you can modify the throughput mode.
 %%
 %% </li> </ul> The following properties are turned off by default:
 %%

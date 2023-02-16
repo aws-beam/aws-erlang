@@ -442,8 +442,8 @@ backtrack_db_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BacktrackDBCluster">>, Input, Options).
 
-%% @doc Cancels an export task in progress that is exporting a snapshot to
-%% Amazon S3.
+%% @doc Cancels an export task in progress that is exporting a snapshot or
+%% cluster to Amazon S3.
 %%
 %% Any data that has already been written to the S3 bucket isn't removed.
 cancel_export_task(Client, Input)
@@ -501,8 +501,8 @@ copy_db_cluster_parameter_group(Client, Input, Options)
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
 %% Aurora? in the Amazon Aurora User Guide.
 %%
-%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
-%% with two readable standby DB instances in the Amazon RDS User Guide.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
+%% deployments in the Amazon RDS User Guide.
 copy_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_db_cluster_snapshot(Client, Input, []).
@@ -585,13 +585,13 @@ create_custom_db_engine_version(Client, Input, Options)
 %%
 %% You can use the `ReplicationSourceIdentifier' parameter to create an
 %% Amazon Aurora DB cluster as a read replica of another DB cluster or Amazon
-%% RDS MySQL or PostgreSQL DB instance.
+%% RDS MySQL or PostgreSQL DB instance. For more information about Amazon
+%% Aurora, see What is Amazon Aurora? in the Amazon Aurora User Guide.
 %%
-%% For more information on Amazon Aurora, see What is Amazon Aurora? in the
-%% Amazon Aurora User Guide.
-%%
-%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
-%% with two readable standby DB instances in the Amazon RDS User Guide.
+%% You can also use the `ReplicationSourceIdentifier' parameter to create
+%% a Multi-AZ DB cluster read replica with an RDS for PostgreSQL DB instance
+%% as the source. For more information about Multi-AZ DB clusters, see
+%% Multi-AZ DB cluster deployments in the Amazon RDS User Guide.
 create_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster(Client, Input, []).
@@ -645,8 +645,8 @@ create_db_cluster_endpoint(Client, Input, Options)
 %% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
 %%
-%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
-%% with two readable standby DB instances in the Amazon RDS User Guide.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
+%% deployments in the Amazon RDS User Guide.
 create_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_parameter_group(Client, Input, []).
@@ -659,8 +659,8 @@ create_db_cluster_parameter_group(Client, Input, Options)
 %% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
 %%
-%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
-%% with two readable standby DB instances in the Amazon RDS User Guide.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
+%% deployments in the Amazon RDS User Guide.
 create_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster_snapshot(Client, Input, []).
@@ -924,8 +924,8 @@ delete_custom_db_engine_version(Client, Input, Options)
 %% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
 %%
-%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
-%% with two readable standby DB instances in the Amazon RDS User Guide.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
+%% deployments in the Amazon RDS User Guide.
 delete_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster(Client, Input, []).
@@ -952,8 +952,8 @@ delete_db_cluster_endpoint(Client, Input, Options)
 %% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
 %%
-%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
-%% with two readable standby DB instances in the Amazon RDS User Guide.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
+%% deployments in the Amazon RDS User Guide.
 delete_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_parameter_group(Client, Input, []).
@@ -971,8 +971,8 @@ delete_db_cluster_parameter_group(Client, Input, Options)
 %% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
 %%
-%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
-%% with two readable standby DB instances in the Amazon RDS User Guide.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
+%% deployments in the Amazon RDS User Guide.
 delete_db_cluster_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_db_cluster_snapshot(Client, Input, []).
@@ -1212,8 +1212,8 @@ describe_db_cluster_endpoints(Client, Input, Options)
 %% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
 %%
-%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
-%% with two readable standby DB instances in the Amazon RDS User Guide.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
+%% deployments in the Amazon RDS User Guide.
 describe_db_cluster_parameter_groups(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_parameter_groups(Client, Input, []).
@@ -1227,8 +1227,8 @@ describe_db_cluster_parameter_groups(Client, Input, Options)
 %% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
 %%
-%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
-%% with two readable standby DB instances in the Amazon RDS User Guide.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
+%% deployments in the Amazon RDS User Guide.
 describe_db_cluster_parameters(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_parameters(Client, Input, []).
@@ -1265,8 +1265,8 @@ describe_db_cluster_snapshot_attributes(Client, Input, Options)
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
 %% Aurora? in the Amazon Aurora User Guide.
 %%
-%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
-%% with two readable standby DB instances in the Amazon RDS User Guide.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
+%% deployments in the Amazon RDS User Guide.
 describe_db_cluster_snapshots(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_db_cluster_snapshots(Client, Input, []).
@@ -1282,8 +1282,8 @@ describe_db_cluster_snapshots(Client, Input, Options)
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
 %% Aurora? in the Amazon Aurora User Guide.
 %%
-%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
-%% with two readable standby DB instances in the Amazon RDS User Guide.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
+%% deployments in the Amazon RDS User Guide.
 %%
 %% This operation can also return information for Amazon Neptune DB instances
 %% and Amazon DocumentDB instances.
@@ -1527,7 +1527,7 @@ describe_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEvents">>, Input, Options).
 
-%% @doc Returns information about a snapshot export to Amazon S3.
+%% @doc Returns information about a snapshot or cluster export to Amazon S3.
 %%
 %% This API operation supports pagination.
 describe_export_tasks(Client, Input)
@@ -1668,8 +1668,8 @@ download_db_log_file_portion(Client, Input, Options)
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
 %% Aurora? in the Amazon Aurora User Guide.
 %%
-%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
-%% with two readable standby DB instances in the Amazon RDS User Guide.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
+%% deployments in the Amazon RDS User Guide.
 failover_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     failover_db_cluster(Client, Input, []).
@@ -1722,7 +1722,7 @@ list_tags_for_resource(Client, Input, Options)
 %% activity stream isn't required. For more information, see Modifying a
 %% database activity stream in the Amazon RDS User Guide.
 %%
-%% This operation is supported for RDS for Oracle only.
+%% This operation is supported for RDS for Oracle and Microsoft SQL Server.
 modify_activity_stream(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_activity_stream(Client, Input, []).
@@ -1826,8 +1826,8 @@ modify_custom_db_engine_version(Client, Input, Options)
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
 %% Aurora? in the Amazon Aurora User Guide.
 %%
-%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
-%% with two readable standby DB instances in the Amazon RDS User Guide.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
+%% deployments in the Amazon RDS User Guide.
 modify_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster(Client, Input, []).
@@ -1873,8 +1873,8 @@ modify_db_cluster_endpoint(Client, Input, Options)
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
 %% Aurora? in the Amazon Aurora User Guide.
 %%
-%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
-%% with two readable standby DB instances in the Amazon RDS User Guide.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
+%% deployments in the Amazon RDS User Guide.
 modify_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_db_cluster_parameter_group(Client, Input, []).
@@ -2118,8 +2118,8 @@ purchase_reserved_db_instances_offering(Client, Input, Options)
 %%
 %% Use this operation only for a non-Aurora Multi-AZ DB cluster.
 %%
-%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
-%% with two readable standby DB instances in the Amazon RDS User Guide.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
+%% deployments in the Amazon RDS User Guide.
 reboot_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     reboot_db_cluster(Client, Input, []).
@@ -2182,8 +2182,8 @@ remove_from_global_cluster(Client, Input, Options)
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
 %% Aurora? in the Amazon Aurora User Guide.
 %%
-%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
-%% with two readable standby DB instances in the Amazon RDS User Guide.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
+%% deployments in the Amazon RDS User Guide.
 remove_role_from_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_role_from_db_cluster(Client, Input, []).
@@ -2237,8 +2237,8 @@ remove_tags_from_resource(Client, Input, Options)
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
 %% Aurora? in the Amazon Aurora User Guide.
 %%
-%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
-%% with two readable standby DB instances in the Amazon RDS User Guide.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
+%% deployments in the Amazon RDS User Guide.
 reset_db_cluster_parameter_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     reset_db_cluster_parameter_group(Client, Input, []).
@@ -2306,8 +2306,8 @@ restore_db_cluster_from_s3(Client, Input, Options)
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
 %% Aurora? in the Amazon Aurora User Guide.
 %%
-%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
-%% with two readable standby DB instances in the Amazon RDS User Guide.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
+%% deployments in the Amazon RDS User Guide.
 restore_db_cluster_from_snapshot(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_from_snapshot(Client, Input, []).
@@ -2333,8 +2333,8 @@ restore_db_cluster_from_snapshot(Client, Input, Options)
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
 %% Aurora? in the Amazon Aurora User Guide.
 %%
-%% For more information on Multi-AZ DB clusters, see Multi-AZ deployments
-%% with two readable standby DB instances in the Amazon RDS User Guide.
+%% For more information on Multi-AZ DB clusters, see Multi-AZ DB cluster
+%% deployments in the Amazon RDS User Guide.
 restore_db_cluster_to_point_in_time(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_db_cluster_to_point_in_time(Client, Input, []).
@@ -2491,11 +2491,20 @@ start_db_instance_automated_backups_replication(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDBInstanceAutomatedBackupsReplication">>, Input, Options).
 
-%% @doc Starts an export of a snapshot to Amazon S3.
+%% @doc Starts an export of DB snapshot or DB cluster data to Amazon S3.
 %%
 %% The provided IAM role must have access to the S3 bucket.
 %%
-%% This command doesn't apply to RDS Custom.
+%% You can't export snapshot data from RDS Custom DB instances.
+%%
+%% You can't export cluster data from Multi-AZ DB clusters.
+%%
+%% For more information on exporting DB snapshot data, see Exporting DB
+%% snapshot data to Amazon S3 in the Amazon RDS User Guide or Exporting DB
+%% cluster snapshot data to Amazon S3 in the Amazon Aurora User Guide.
+%%
+%% For more information on exporting DB cluster data, see Exporting DB
+%% cluster data to Amazon S3 in the Amazon Aurora User Guide.
 start_export_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_export_task(Client, Input, []).

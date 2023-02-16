@@ -36,6 +36,8 @@
          create_batch_prediction_job/3,
          create_detector_version/2,
          create_detector_version/3,
+         create_list/2,
+         create_list/3,
          create_model/2,
          create_model/3,
          create_model_version/2,
@@ -64,6 +66,8 @@
          delete_external_model/3,
          delete_label/2,
          delete_label/3,
+         delete_list/2,
+         delete_list/3,
          delete_model/2,
          delete_model/3,
          delete_model_version/2,
@@ -104,6 +108,10 @@
          get_kms_encryption_key/3,
          get_labels/2,
          get_labels/3,
+         get_list_elements/2,
+         get_list_elements/3,
+         get_lists_metadata/2,
+         get_lists_metadata/3,
          get_model_version/2,
          get_model_version/3,
          get_models/2,
@@ -146,6 +154,8 @@
          update_detector_version_status/3,
          update_event_label/2,
          update_event_label/3,
+         update_list/2,
+         update_list/3,
          update_model/2,
          update_model/3,
          update_model_version/2,
@@ -222,6 +232,18 @@ create_detector_version(Client, Input)
 create_detector_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDetectorVersion">>, Input, Options).
+
+%% @doc Creates a list.
+%%
+%% List is a set of input data for a variable in your event dataset. You use
+%% the input data in a rule that's associated with your detector. For
+%% more information, see Lists.
+create_list(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_list(Client, Input, []).
+create_list(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateList">>, Input, Options).
 
 %% @doc Creates a model using the specified model type.
 create_model(Client, Input)
@@ -376,6 +398,17 @@ delete_label(Client, Input)
 delete_label(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLabel">>, Input, Options).
+
+%% @doc Deletes the list, provided it is not used in a rule.
+%%
+%% When you delete a list, Amazon Fraud Detector permanently deletes that
+%% list and the elements in the list.
+delete_list(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_list(Client, Input, []).
+delete_list(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteList">>, Input, Options).
 
 %% @doc Deletes a model.
 %%
@@ -634,6 +667,23 @@ get_labels(Client, Input)
 get_labels(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLabels">>, Input, Options).
+
+%% @doc Gets all the elements in the specified list.
+get_list_elements(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_list_elements(Client, Input, []).
+get_list_elements(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetListElements">>, Input, Options).
+
+%% @doc Gets the metadata of either all the lists under the account or the
+%% specified list.
+get_lists_metadata(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_lists_metadata(Client, Input, []).
+get_lists_metadata(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetListsMetadata">>, Input, Options).
 
 %% @doc Gets the details of the specified model version.
 get_model_version(Client, Input)
@@ -894,6 +944,14 @@ update_event_label(Client, Input)
 update_event_label(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEventLabel">>, Input, Options).
+
+%% @doc Updates a list.
+update_list(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_list(Client, Input, []).
+update_list(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateList">>, Input, Options).
 
 %% @doc Updates model description.
 update_model(Client, Input)

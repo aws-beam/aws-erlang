@@ -21,20 +21,19 @@
 %% version, see the WAF Developer Guide.
 %%
 %% WAF is a web application firewall that lets you monitor the HTTP and HTTPS
-%% requests that are forwarded to Amazon CloudFront, an Amazon API Gateway
-%% REST API, an Application Load Balancer, an AppSync GraphQL API, or an
+%% requests that are forwarded to an Amazon CloudFront distribution, Amazon
+%% API Gateway REST API, Application Load Balancer, AppSync GraphQL API, or
 %% Amazon Cognito user pool. WAF also lets you control access to your
-%% content. Based on conditions that you specify, such as the IP addresses
-%% that requests originate from or the values of query strings, the Amazon
-%% API Gateway REST API, CloudFront distribution, the Application Load
-%% Balancer, the AppSync GraphQL API, or the Amazon Cognito user pool
-%% responds to requests either with the requested content or with an HTTP 403
-%% status code (Forbidden). You also can configure CloudFront to return a
-%% custom error page when a request is blocked.
+%% content, to protect the Amazon Web Services resource that WAF is
+%% monitoring. Based on conditions that you specify, such as the IP addresses
+%% that requests originate from or the values of query strings, the protected
+%% resource responds to requests with either the requested content, an HTTP
+%% 403 status code (Forbidden), or with a custom response.
 %%
 %% This API guide is for developers who need detailed information about WAF
 %% API actions, data types, and errors. For detailed information about WAF
-%% features and an overview of how to use WAF, see the WAF Developer Guide.
+%% features and guidance for configuring and using WAF, see the WAF Developer
+%% Guide.
 %%
 %% You can make calls using the endpoints listed in WAF endpoints and quotas.
 %%
