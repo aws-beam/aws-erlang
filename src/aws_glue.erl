@@ -1658,7 +1658,11 @@ get_triggers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTriggers">>, Input, Options).
 
-
+%% @doc Retrieves partition metadata from the Data Catalog that contains
+%% unfiltered metadata.
+%%
+%% For IAM authorization, the public IAM action associated with this API is
+%% `glue:GetPartition'.
 get_unfiltered_partition_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_unfiltered_partition_metadata(Client, Input, []).
@@ -1666,7 +1670,11 @@ get_unfiltered_partition_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUnfilteredPartitionMetadata">>, Input, Options).
 
-
+%% @doc Retrieves partition metadata from the Data Catalog that contains
+%% unfiltered metadata.
+%%
+%% For IAM authorization, the public IAM action associated with this API is
+%% `glue:GetPartitions'.
 get_unfiltered_partitions_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_unfiltered_partitions_metadata(Client, Input, []).
@@ -1674,7 +1682,11 @@ get_unfiltered_partitions_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUnfilteredPartitionsMetadata">>, Input, Options).
 
-
+%% @doc Retrieves table metadata from the Data Catalog that contains
+%% unfiltered metadata.
+%%
+%% For IAM authorization, the public IAM action associated with this API is
+%% `glue:GetTable'.
 get_unfiltered_table_metadata(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_unfiltered_table_metadata(Client, Input, []).
