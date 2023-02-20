@@ -68,7 +68,7 @@ put_get(Config) ->
 
 client() ->
     aws_client:make_local_client(
-        <<"AccessKeyID">>, <<"SecretAccessKey">>, <<"8001">>, <<"ddb">>
+        <<"AccessKeyID">>, <<"SecretAccessKey">>, <<"8000">>, list_to_binary(os:getenv(DYNAMODB_HOST, "localhost"))
     ).
 
 create_table(TableConf) ->

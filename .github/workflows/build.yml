@@ -43,6 +43,8 @@ jobs:
       run: rebar3 eunit
     - name: Run Common Tests
       run: rebar3 ct
+      env: 
+        DYNAMODB_HOST: ddb
     - name: Create Cover Reports
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
