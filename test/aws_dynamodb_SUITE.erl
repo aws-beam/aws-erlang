@@ -68,7 +68,7 @@ put_get(Config) ->
 
 client() ->
     aws_client:make_local_client(
-        <<"AccessKeyID">>, <<"SecretAccessKey">>, <<"8001">>, <<"0.0.0.0">>
+        <<"AccessKeyID">>, <<"SecretAccessKey">>, <<"8001">>, <<"ddb">>
     ).
 
 create_table(TableConf) ->

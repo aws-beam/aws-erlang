@@ -19,7 +19,7 @@ jobs:
       ddb:
         image: amazon/dynamodb-local:1.21.0
         ports:
-          - 8001:8001
+          - 8000:8000
     steps:
     - name: Checkout
       uses: actions/checkout@v2
