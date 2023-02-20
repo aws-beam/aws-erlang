@@ -15,6 +15,11 @@ jobs:
     runs-on: ${{ matrix.platform }}
     container:
       image: erlang:${{ matrix.otp-version }}
+    services:
+      ddb:
+        image: amazon/dynamodb-local:1.21.0
+        ports:
+          - 8001:8001
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -36,6 +41,8 @@ jobs:
       run: rebar3 compile
     - name: Run EUnit Tests
       run: rebar3 eunit
+    - name: Run Common Tests
+      run: rebar3 ct
     - name: Create Cover Reports
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
