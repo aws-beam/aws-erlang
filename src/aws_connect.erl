@@ -1929,9 +1929,9 @@ describe_traffic_distribution_group(Client, TrafficDistributionGroupId, QueryMap
 
 %% @doc Describes the specified user account.
 %%
-%% You can find the instance ID in the console (it’s the final part of the
-%% ARN). The console does not display the user IDs. Instead, list the users
-%% and note the IDs provided in the output.
+%% You can find the instance ID in the Amazon Connect console (it’s the final
+%% part of the ARN). The console does not display the user IDs. Instead, list
+%% the users and note the IDs provided in the output.
 describe_user(Client, InstanceId, UserId)
   when is_map(Client) ->
     describe_user(Client, InstanceId, UserId, #{}, #{}).

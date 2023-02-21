@@ -1831,7 +1831,7 @@ update_control(Client, ControlId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates Audit Manager settings for the current user account.
+%% @doc Updates Audit Manager settings for the current account.
 update_settings(Client, Input) ->
     update_settings(Client, Input, []).
 update_settings(Client, Input0, Options0) ->
