@@ -9,6 +9,7 @@
      , erlware_commons
      , hackney
      , jsx
+     , aws_signature
      ]
    }
  , {env,[]}
