@@ -74,7 +74,8 @@ client() ->
 create_table(TableConf) ->
     Client = client(),
     Body = create_table_body(TableConf),
-    aws_dynamodb:create_table(Client, Body).
+    {ok, _Response, {200, _Headers,_Ref}} = aws_dynamodb:create_table(Client, Body),
+    ok.
 
 put_item({TableName, _HashConf, _RangeConf} = TableConf, Item) ->
     Client = client(),
@@ -133,6 +134,7 @@ mk_item({_TableName, {HashName, HashType}, {RangeName, RangeType}}, {HashKey, Ra
 
 int_to_type(<<"S">>, I) -> integer_to_binary(I).
 
-delete_table(_) ->
-    %% fixme,
+delete_table(TableConf) ->
+    {TableName, _HashConf, _RangeConf} = TableConf,
+    {ok, _Response, {200, _Headers,_Ref}} = aws_dynamodb:delete_table(client(), #{<<"TableName">> => TableName}),
     ok.
