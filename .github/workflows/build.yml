@@ -15,6 +15,11 @@ jobs:
     runs-on: ${{ matrix.platform }}
     container:
       image: erlang:${{ matrix.otp-version }}
+    services:
+      ddb:
+        image: amazon/dynamodb-local:1.21.0
+        ports:
+          - 8000:8000
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -36,6 +41,10 @@ jobs:
       run: rebar3 compile
     - name: Run EUnit Tests
       run: rebar3 eunit
+    - name: Run Common Tests
+      run: rebar3 ct
+      env:
+        DYNAMODB_HOST: ddb
     - name: Create Cover Reports
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -45,7 +54,14 @@ jobs:
     - name: Produce Documentation
       run: rebar3 ex_doc || true
     - name: Publish Documentation
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v3
       with:
         name: edoc
         path: doc
+    - name: Upload Common Test result
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v3
+      with:
+        name: Common Test ${{ matrix.otp-version }}
+        path: _build/test/logs/**
+        retention-days: 3
