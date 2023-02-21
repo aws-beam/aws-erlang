@@ -43,7 +43,7 @@ jobs:
       run: rebar3 eunit
     - name: Run Common Tests
       run: rebar3 ct
-      env: 
+      env:
         DYNAMODB_HOST: ddb
     - name: Create Cover Reports
       env:
@@ -54,7 +54,14 @@ jobs:
     - name: Produce Documentation
       run: rebar3 ex_doc || true
     - name: Publish Documentation
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v3
       with:
         name: edoc
         path: doc
+    - name: Upload Common Test result
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v3
+      with:
+        name: Common Test ${{ matrix.otp-version }}
+        path: _build/test/logs/**
+        retention-days: 3
