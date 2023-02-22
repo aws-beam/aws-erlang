@@ -1,0 +1,14 @@
+version: "3.6"
+
+services:
+  ddb:
+    image: amazon/dynamodb-local:1.21.0
+    ports:
+      - 8000:8000
+
+  s3mock:
+    image: adobe/s3mock:2.11.0
+    ports:
+      - 9090:9090
+    environment:
+      retainFilesOnExit: 'false'
