@@ -1175,16 +1175,16 @@ enable_organization_admin_account(Client, Input0, Options0) ->
 %% Security Hub.
 %%
 %% When you use the `EnableSecurityHub' operation to enable Security Hub,
-%% you also automatically enable the following standards.
+%% you also automatically enable the following standards:
 %%
-%% <ul> <li> CIS Amazon Web Services Foundations
+%% <ul> <li> Center for Internet Security (CIS) Amazon Web Services
+%% Foundations Benchmark v1.2.0
 %%
 %% </li> <li> Amazon Web Services Foundational Security Best Practices
 %%
-%% </li> </ul> You do not enable the Payment Card Industry Data Security
-%% Standard (PCI DSS) standard.
+%% </li> </ul> Other standards are not automatically enabled.
 %%
-%% To not enable the automatically enabled standards, set
+%% To opt out of automatically enabled standards, set
 %% `EnableDefaultStandards' to `false'.
 %%
 %% After you enable Security Hub, to enable a standard, use the

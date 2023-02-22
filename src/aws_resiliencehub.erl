@@ -15,6 +15,10 @@
          add_draft_app_version_resource_mappings/3,
          create_app/2,
          create_app/3,
+         create_app_version_app_component/2,
+         create_app_version_app_component/3,
+         create_app_version_resource/2,
+         create_app_version_resource/3,
          create_recommendation_template/2,
          create_recommendation_template/3,
          create_resiliency_policy/2,
@@ -23,6 +27,12 @@
          delete_app/3,
          delete_app_assessment/2,
          delete_app_assessment/3,
+         delete_app_input_source/2,
+         delete_app_input_source/3,
+         delete_app_version_app_component/2,
+         delete_app_version_app_component/3,
+         delete_app_version_resource/2,
+         delete_app_version_resource/3,
          delete_recommendation_template/2,
          delete_recommendation_template/3,
          delete_resiliency_policy/2,
@@ -31,6 +41,12 @@
          describe_app/3,
          describe_app_assessment/2,
          describe_app_assessment/3,
+         describe_app_version/2,
+         describe_app_version/3,
+         describe_app_version_app_component/2,
+         describe_app_version_app_component/3,
+         describe_app_version_resource/2,
+         describe_app_version_resource/3,
          describe_app_version_resources_resolution_status/2,
          describe_app_version_resources_resolution_status/3,
          describe_app_version_template/2,
@@ -50,6 +66,10 @@
          list_app_component_compliances/3,
          list_app_component_recommendations/2,
          list_app_component_recommendations/3,
+         list_app_input_sources/2,
+         list_app_input_sources/3,
+         list_app_version_app_components/2,
+         list_app_version_app_components/3,
          list_app_version_resource_mappings/2,
          list_app_version_resource_mappings/3,
          list_app_version_resources/2,
@@ -93,6 +113,12 @@
          untag_resource/4,
          update_app/2,
          update_app/3,
+         update_app_version/2,
+         update_app_version/3,
+         update_app_version_app_component/2,
+         update_app_version_app_component/3,
+         update_app_version_resource/2,
+         update_app_version_resource/3,
          update_resiliency_policy/2,
          update_resiliency_policy/3]).
 
@@ -103,6 +129,9 @@
 %%====================================================================
 
 %% @doc Adds the resource mapping for the draft application version.
+%%
+%% You can also update an existing resource mapping to a new physical
+%% resource.
 add_draft_app_version_resource_mappings(Client, Input) ->
     add_draft_app_version_resource_mappings(Client, Input, []).
 add_draft_app_version_resource_mappings(Client, Input0, Options0) ->
@@ -125,20 +154,20 @@ add_draft_app_version_resource_mappings(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a Resilience Hub application.
+%% @doc Creates an AWS Resilience Hub application.
 %%
-%% A Resilience Hub application is a collection of Amazon Web Services
+%% An AWS Resilience Hub application is a collection of Amazon Web Services
 %% resources structured to prevent and recover Amazon Web Services
-%% application disruptions. To describe a Resilience Hub application, you
+%% application disruptions. To describe a AWS Resilience Hub application, you
 %% provide an application name, resources from one or more–up to
 %% five–CloudFormation stacks, and an appropriate resiliency policy.
 %%
-%% After you create a Resilience Hub application, you publish it so that you
-%% can run a resiliency assessment on it. You can then use recommendations
-%% from the assessment to improve resiliency by running another assessment,
-%% comparing results, and then iterating the process until you achieve your
-%% goals for recovery time objective (RTO) and recovery point objective
-%% (RPO).
+%% After you create an AWS Resilience Hub application, you publish it so that
+%% you can run a resiliency assessment on it. You can then use
+%% recommendations from the assessment to improve resiliency by running
+%% another assessment, comparing results, and then iterating the process
+%% until you achieve your goals for recovery time objective (RTO) and
+%% recovery point objective (RPO).
 create_app(Client, Input) ->
     create_app(Client, Input, []).
 create_app(Client, Input0, Options0) ->
@@ -161,7 +190,72 @@ create_app(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new recommendation template.
+%% @doc Creates a new Application Component in the AWS Resilience Hub
+%% application.
+%%
+%% This API updates the AWS Resilience Hub application draft version. To use
+%% this Application Component for running assessments, you must publish the
+%% AWS Resilience Hub application using the `PublishAppVersion' API.
+create_app_version_app_component(Client, Input) ->
+    create_app_version_app_component(Client, Input, []).
+create_app_version_app_component(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/create-app-version-app-component"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds a resource to the AWS Resilience Hub applicationand assigns it
+%% to the specified Application Components.
+%%
+%% If you specify a new Application Component, AWS Resilience Hub will
+%% automatically create the Application Component.
+%%
+%% This action has no effect outside AWS Resilience Hub.
+%%
+%% This API updates the AWS Resilience Hub application draft version. To use
+%% this resource for running resiliency assessments, you must publish the AWS
+%% Resilience Hub application using the `PublishAppVersion' API.
+%%
+%% To update application version with new `physicalResourceID', you must
+%% call `ResolveAppVersionResources' API.
+create_app_version_resource(Client, Input) ->
+    create_app_version_resource(Client, Input, []).
+create_app_version_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/create-app-version-resource"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new recommendation template for the AWS Resilience Hub
+%% application.
 create_recommendation_template(Client, Input) ->
     create_recommendation_template(Client, Input, []).
 create_recommendation_template(Client, Input0, Options0) ->
@@ -240,6 +334,93 @@ delete_app_assessment(Client, Input) ->
 delete_app_assessment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delete-app-assessment"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the input source and all of its imported resources from the
+%% AWS Resilience Hub application.
+delete_app_input_source(Client, Input) ->
+    delete_app_input_source(Client, Input, []).
+delete_app_input_source(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/delete-app-input-source"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an Application Component from the AWS Resilience Hub
+%% application.
+%%
+%% This API updates the AWS Resilience Hub application draft version. To use
+%% this Application Component for running assessments, you must publish the
+%% AWS Resilience Hub application using the `PublishAppVersion' API.
+%%
+%% You will not be able to delete an Application Component if it has
+%% resources associated with it.
+delete_app_version_app_component(Client, Input) ->
+    delete_app_version_app_component(Client, Input, []).
+delete_app_version_app_component(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/delete-app-version-app-component"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a resource from the AWS Resilience Hub application.
+%%
+%% You can only delete a manually added resource. To exclude non-manually
+%% added resources, use the `UpdateAppVersionResource' API.
+%%
+%% This action has no effect outside AWS Resilience Hub.
+%%
+%% This API updates the AWS Resilience Hub application draft version. To use
+%% this resource for running resiliency assessments, you must publish the AWS
+%% Resilience Hub application using the `PublishAppVersion' API.
+delete_app_version_resource(Client, Input) ->
+    delete_app_version_resource(Client, Input, []).
+delete_app_version_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/delete-app-version-resource"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -353,6 +534,86 @@ describe_app_assessment(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Describes the AWS Resilience Hub application version.
+describe_app_version(Client, Input) ->
+    describe_app_version(Client, Input, []).
+describe_app_version(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/describe-app-version"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Describes an Application Component in the AWS Resilience Hub
+%% application.
+describe_app_version_app_component(Client, Input) ->
+    describe_app_version_app_component(Client, Input, []).
+describe_app_version_app_component(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/describe-app-version-app-component"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Describes a resource of the AWS Resilience Hub application.
+%%
+%% This API accepts only one of the following parameters to descibe the
+%% resource:
+%%
+%% `resourceName'
+%%
+%% `logicalResourceId'
+%%
+%% `physicalResourceId' (Along with `physicalResourceId', you can
+%% also provide `awsAccountId', and `awsRegion')
+describe_app_version_resource(Client, Input) ->
+    describe_app_version_resource(Client, Input, []).
+describe_app_version_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/describe-app-version-resource"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns the resolution status for the specified resolution identifier
 %% for an application version.
 %%
@@ -380,7 +641,7 @@ describe_app_version_resources_resolution_status(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Describes details about an AWS Resilience Hub
+%% @doc Describes details about an AWS Resilience Hub application.
 describe_app_version_template(Client, Input) ->
     describe_app_version_template(Client, Input, []).
 describe_app_version_template(Client, Input0, Options0) ->
@@ -405,6 +666,12 @@ describe_app_version_template(Client, Input0, Options0) ->
 
 %% @doc Describes the status of importing resources to an application
 %% version.
+%%
+%% If you get a 404 error with
+%% `ResourceImportStatusNotFoundAppMetadataException', you must call
+%% `importResourcesToDraftAppVersion' after creating the application and
+%% before calling `describeDraftAppVersionResourcesImportStatus' to
+%% obtain the status.
 describe_draft_app_version_resources_import_status(Client, Input) ->
     describe_draft_app_version_resources_import_status(Client, Input, []).
 describe_draft_app_version_resources_import_status(Client, Input0, Options0) ->
@@ -455,9 +722,12 @@ describe_resiliency_policy(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Imports resources from sources such as a CloudFormation stack,
-%% resource-groups, or application registry app to a draft application
-%% version.
+%% @doc Imports resources to AWS Resilience Hub application draft version
+%% from different input sources.
+%%
+%% For more information about the input sources supported by AWS Resilience
+%% Hub, see Discover the structure and describe your Resilience Hub
+%% application.
 import_resources_to_draft_app_version(Client, Input) ->
     import_resources_to_draft_app_version(Client, Input, []).
 import_resources_to_draft_app_version(Client, Input0, Options0) ->
@@ -480,7 +750,8 @@ import_resources_to_draft_app_version(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the alarm recommendations for a AWS Resilience Hub application.
+%% @doc Lists the alarm recommendations for an AWS Resilience Hub
+%% application.
 list_alarm_recommendations(Client, Input) ->
     list_alarm_recommendations(Client, Input, []).
 list_alarm_recommendations(Client, Input0, Options0) ->
@@ -540,7 +811,8 @@ list_app_assessments(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the compliances for an AWS Resilience Hub component.
+%% @doc Lists the compliances for an AWS Resilience Hub Application
+%% Component.
 list_app_component_compliances(Client, Input) ->
     list_app_component_compliances(Client, Input, []).
 list_app_component_compliances(Client, Input0, Options0) ->
@@ -563,12 +835,64 @@ list_app_component_compliances(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the recommendations for an AWS Resilience Hub component.
+%% @doc Lists the recommendations for an AWS Resilience Hub Application
+%% Component.
 list_app_component_recommendations(Client, Input) ->
     list_app_component_recommendations(Client, Input, []).
 list_app_component_recommendations(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-app-component-recommendations"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all the input sources of the AWS Resilience Hub application.
+%%
+%% For more information about the input sources supported by AWS Resilience
+%% Hub, see Discover the structure and describe your Resilience Hub
+%% application.
+list_app_input_sources(Client, Input) ->
+    list_app_input_sources(Client, Input, []).
+list_app_input_sources(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-app-input-sources"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all the Application Components in the AWS Resilience Hub
+%% application.
+list_app_version_app_components(Client, Input) ->
+    list_app_version_app_components(Client, Input, []).
+list_app_version_app_components(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-app-version-app-components"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -613,7 +937,7 @@ list_app_version_resource_mappings(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists all the resources in an application version.
+%% @doc Lists all the resources in an AWS Resilience Hub application.
 list_app_version_resources(Client, Input) ->
     list_app_version_resources(Client, Input, []).
 list_app_version_resources(Client, Input0, Options0) ->
@@ -636,7 +960,7 @@ list_app_version_resources(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the different versions for the Resilience Hub applications.
+%% @doc Lists the different versions for the AWS Resilience Hub applications.
 list_app_versions(Client, Input) ->
     list_app_versions(Client, Input, []).
 list_app_versions(Client, Input0, Options0) ->
@@ -659,7 +983,14 @@ list_app_versions(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists your Resilience Hub applications.
+%% @doc Lists your AWS Resilience Hub applications.
+%%
+%% You can filter applications using only one filter at a time or without
+%% using any filter. If you try to filter applications using multiple
+%% filters, you will get the following error:
+%%
+%% `An error occurred (ValidationException) when calling the ListApps
+%% operation: Only one filter is supported for this operation.'
 list_apps(Client)
   when is_map(Client) ->
     list_apps(Client, #{}, #{}).
@@ -689,7 +1020,7 @@ list_apps(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the recommendation templates for the Resilience Hub
+%% @doc Lists the recommendation templates for the AWS Resilience Hub
 %% applications.
 list_recommendation_templates(Client, AssessmentArn)
   when is_map(Client) ->
@@ -723,7 +1054,8 @@ list_recommendation_templates(Client, AssessmentArn, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the resiliency policies for the Resilience Hub applications.
+%% @doc Lists the resiliency policies for the AWS Resilience Hub
+%% applications.
 list_resiliency_policies(Client)
   when is_map(Client) ->
     list_resiliency_policies(Client, #{}, #{}).
@@ -753,7 +1085,7 @@ list_resiliency_policies(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the standard operating procedure (SOP) recommendations for the
-%% Resilience Hub applications.
+%% AWS Resilience Hub applications.
 list_sop_recommendations(Client, Input) ->
     list_sop_recommendations(Client, Input, []).
 list_sop_recommendations(Client, Input0, Options0) ->
@@ -776,7 +1108,7 @@ list_sop_recommendations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the suggested resiliency policies for the Resilience Hub
+%% @doc Lists the suggested resiliency policies for the AWS Resilience Hub
 %% applications.
 list_suggested_resiliency_policies(Client)
   when is_map(Client) ->
@@ -805,7 +1137,7 @@ list_suggested_resiliency_policies(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the tags for your resources in your Resilience Hub
+%% @doc Lists the tags for your resources in your AWS Resilience Hub
 %% applications.
 list_tags_for_resource(Client, ResourceArn)
   when is_map(Client) ->
@@ -829,7 +1161,8 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the test recommendations for the Resilience Hub application.
+%% @doc Lists the test recommendations for the AWS Resilience Hub
+%% application.
 list_test_recommendations(Client, Input) ->
     list_test_recommendations(Client, Input, []).
 list_test_recommendations(Client, Input0, Options0) ->
@@ -856,7 +1189,7 @@ list_test_recommendations(Client, Input0, Options0) ->
 %% Resilience Hub.
 %%
 %% An unsupported resource is a resource that exists in the object that was
-%% used to create an app, but is not supported by Resilience Hub.
+%% used to create an app, but is not supported by AWS Resilience Hub.
 list_unsupported_app_version_resources(Client, Input) ->
     list_unsupported_app_version_resources(Client, Input, []).
 list_unsupported_app_version_resources(Client, Input0, Options0) ->
@@ -879,7 +1212,7 @@ list_unsupported_app_version_resources(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Publishes a new version of a specific Resilience Hub application.
+%% @doc Publishes a new version of a specific AWS Resilience Hub application.
 publish_app_version(Client, Input) ->
     publish_app_version(Client, Input, []).
 publish_app_version(Client, Input0, Options0) ->
@@ -902,8 +1235,8 @@ publish_app_version(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds or updates the app template for a draft version of a Resilience
-%% Hub app.
+%% @doc Adds or updates the app template for an AWS Resilience Hub
+%% application draft version.
 put_draft_app_version_template(Client, Input) ->
     put_draft_app_version_template(Client, Input, []).
 put_draft_app_version_template(Client, Input0, Options0) ->
@@ -1048,6 +1381,93 @@ update_app(Client, Input) ->
 update_app(Client, Input0, Options0) ->
     Method = post,
     Path = ["/update-app"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the AWS Resilience Hub application version.
+%%
+%% This API updates the AWS Resilience Hub application draft version. To use
+%% this information for running resiliency assessments, you must publish the
+%% AWS Resilience Hub application using the `PublishAppVersion' API.
+update_app_version(Client, Input) ->
+    update_app_version(Client, Input, []).
+update_app_version(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/update-app-version"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing Application Component in the AWS Resilience Hub
+%% application.
+%%
+%% This API updates the AWS Resilience Hub application draft version. To use
+%% this Application Component for running assessments, you must publish the
+%% AWS Resilience Hub application using the `PublishAppVersion' API.
+update_app_version_app_component(Client, Input) ->
+    update_app_version_app_component(Client, Input, []).
+update_app_version_app_component(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/update-app-version-app-component"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the resource details in the AWS Resilience Hub application.
+%%
+%% This action has no effect outside AWS Resilience Hub.
+%%
+%% This API updates the AWS Resilience Hub application draft version. To use
+%% this resource for running resiliency assessments, you must publish the AWS
+%% Resilience Hub application using the `PublishAppVersion' API.
+%%
+%% To update application version with new `physicalResourceID', you must
+%% call `ResolveAppVersionResources' API.
+update_app_version_resource(Client, Input) ->
+    update_app_version_resource(Client, Input, []).
+update_app_version_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/update-app-version-resource"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
