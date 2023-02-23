@@ -8,7 +8,7 @@
          end_per_testcase/2]).
 %% Test cases
 -export([bucket_exists/1, create_delete_bucket/1, delete/1, exists/1, list_objects/1,
-         delete_objects/1, read/1, write/1]).
+         delete_objects/1, read/1, write/1, write_special_chars/1, write_ampersand/1]).
 
 %%--------------------------------------------------------------------
 %% Common test callback functions
@@ -18,7 +18,11 @@ suite() ->
 init_per_suite(Config) ->
   application:ensure_all_started(aws),
   Bucket = <<"test-bucket">>,
-  ok = aws_s3_util:create_bucket(client(), Bucket, []),
+  case aws_s3_util:bucket_exists(client(), Bucket, []) of
+    true -> ok;
+    false ->
+      ok = aws_s3_util:create_bucket(client(), Bucket, [])
+  end,
   [{bucket, Bucket} | Config].
 
 end_per_suite(Config) ->
@@ -35,7 +39,8 @@ end_per_testcase(_Case, Config) ->
   ok.
 
 all() ->
-  [write, read, exists, delete, delete_objects, list_objects, create_delete_bucket].
+  [write, write_special_chars, write_ampersand, read, exists, delete,
+   delete_objects, list_objects, create_delete_bucket].
 
 %%--------------------------------------------------------------------
 %% Test cases
@@ -43,6 +48,26 @@ write(Config) ->
   Bucket = ?config(bucket, Config),
   Key = unique_key(),
   ?assertEqual(ok, aws_s3_util:write(client(), Bucket, Key, <<"data">>, [])),
+  ok.
+
+write_special_chars(Config) ->
+  Bucket = ?config(bucket, Config),
+  Key = <<"$@=;/:+,?">>,
+  ?assertEqual(ok, aws_s3_util:write(client(), Bucket, Key, <<"data">>, [])),
+  ok.
+
+write_ampersand(Config) ->
+  Bucket = ?config(bucket, Config),
+  %% Strong recommendation to avoid it in keys as it can be written but delete_objects may fail.
+  %% Avoid using them!
+  KeyEncoded = <<"%26">>,
+  ?assertEqual(ok, aws_s3_util:write(client(), Bucket, KeyEncoded, <<"data">>, [])),
+  ?assertEqual({ok, <<"data">>}, aws_s3_util:read(client(), Bucket, KeyEncoded, [])),
+  ?assertEqual(ok, aws_s3_util:delete(client(), Bucket, KeyEncoded, [])),
+  Key = <<"&">>,
+  ?assertEqual(ok, aws_s3_util:write(client(), Bucket, Key, <<"data">>, [])),
+  ?assertEqual({ok, <<"data">>}, aws_s3_util:read(client(), Bucket, Key, [])),
+  ?assertEqual(ok, aws_s3_util:delete(client(), Bucket, Key, [])),
   ok.
 
 read(Config) ->
