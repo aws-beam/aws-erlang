@@ -32,7 +32,7 @@ sign_request(Client, Method, URL, Headers0, Body) ->
                 undefined -> Headers0;
                 _ -> [{<<"X-Amz-Security-Token">>, Token}|Headers0]
               end,
-    aws_signature:sign_v4(AccessKeyID, SecretAccessKey, Region, Service, calendar:universal_time(), Method, URL, Headers, Body).
+    aws_signature:sign_v4(AccessKeyID, SecretAccessKey, Region, Service, calendar:universal_time(), Method, URL, Headers, Body, [{uri_encode_path, false}]).
 
 %% @doc Include additions only if they don't already exist in the provided list.
 add_headers([], Headers) ->
