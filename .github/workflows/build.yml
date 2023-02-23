@@ -20,6 +20,10 @@ jobs:
         image: amazon/dynamodb-local:1.21.0
         ports:
           - 8000:8000
+      s3mock:
+        image: adobe/s3mock:2.11.0
+        ports:
+          - 9090:9090
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -45,6 +49,7 @@ jobs:
       run: rebar3 ct
       env:
         DYNAMODB_HOST: ddb
+        S3MOCK_HOST: s3mock
     - name: Create Cover Reports
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

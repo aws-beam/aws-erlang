@@ -22,15 +22,7 @@
 
 Here is an example of listing Amazon Kinesis streams. First of all,
 start a shell with `rebar3 shell`, then:
-
-```erlang
-> Client = aws_client:make_client(<<"my-access-key-id">>, <<"my-secret-access-key">>, <<"eu-west-1">>),
-[...]
-> {ok, Result, _Response} = aws_kinesis:list_streams(Client, #{}),
-[...]
-> io:format("~p~n", [Result]).
-#{<<"HasMoreStreams">> => false,<<"StreamNames">> => []}
-```
+### aws_s3
 
 Here is another example, this time using a _temporary_ client, showing
 how to upload a file to _S3_ and how to fetch it back:
@@ -47,12 +39,35 @@ how to upload a file to _S3_ and how to fetch it back:
 > Content = maps:get(<<"Body">>, Response).
 ```
 
+Support for creating [Presigned URLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ShareObjectPreSignedURL.html) is provided
+through the `aws_s3_presigned_url` module.
+
+### aws_kinesis
+
+```erlang
+> Client = aws_client:make_client(<<"my-access-key-id">>, <<"my-secret-access-key">>, <<"eu-west-1">>),
+[...]
+> {ok, Result, _Response} = aws_kinesis:list_streams(Client, #{}),
+[...]
+> io:format("~p~n", [Result]).
+#{<<"HasMoreStreams">> => false,<<"StreamNames">> => []}
+```
+
+### retry options
+
+Each API which takes `Options` allows a `retry_options` key and can allow for automatic retries.
+Simple provide the following:
+
+`[{retry_options, {exponential_with_jitter, {MaxAttempts, BaseSleepTime, CapSleepTime}}} | <other_options>]`
+
+This implementation is based on [AWS: Exponential Backoff And Jitter](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/).
+
 ## Installation
 
 Simply add the library to your `rebar.config`:
 
 ```erlang
-{deps, [{aws, "0.5.0", {pkg, aws_erlang}}]}.
+{deps, [{aws, "1.0.0", {pkg, aws_erlang}}]}.
 ```
 
 ## Obtaining Credentials
@@ -79,7 +94,7 @@ Here is an example on how to obtain credentials:
 The `aws_credentials` application can be installed by adding the following to your `rebar.config`:
 
 ```erlang
-{deps, [{aws_credentials, "0.1.0"}]}.
+{deps, [{aws_credentials, "0.1.10"}]}.
 ```
 
 ## Development
@@ -96,16 +111,8 @@ The rest of the code is manually written and used as support for the generated c
 
 ### Build it locally
 
-Add the [rebar3_docs](https://github.com/jfacorro/rebar3_docs) plugin to your global _rebar3_ config in `~/.config/rebar3/rebar.config`:
-
-```
-{plugins, [rebar3_docs]}.
-```
-
-Then simply:
-
 ```bash
-$ rebar3 docs
+$ rebar3 ex_doc
 ```
 
 The docs will be available in `./doc`.
@@ -114,6 +121,12 @@ The docs will be available in `./doc`.
 
 ```bash
 $ rebar3 eunit
+```
+
+```bash
+$ docker-compose -f test/docker/docker-compose.yml up -d
+$ rebar3 ct
+$ docker-compose -f test/docker/docker-compose.yml down
 ```
 
 ## License
