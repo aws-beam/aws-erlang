@@ -385,10 +385,10 @@ copy_distribution(Client, PrimaryDistributionId, Input0, Options0) ->
 %% that you want objects to stay in the CloudFront cache.
 %%
 %% </li> </ul> The headers, cookies, and query strings that are included in
-%% the cache key are automatically included in requests that CloudFront sends
-%% to the origin. CloudFront sends a request when it can't find an object
-%% in its cache that matches the request's cache key. If you want to send
-%% values to the origin but not include them in the cache key, use
+%% the cache key are also included in requests that CloudFront sends to the
+%% origin. CloudFront sends a request when it can't find an object in its
+%% cache that matches the request's cache key. If you want to send values
+%% to the origin but not include them in the cache key, use
 %% `OriginRequestPolicy'.
 %%
 %% For more information about cache policies, see Controlling the cache key

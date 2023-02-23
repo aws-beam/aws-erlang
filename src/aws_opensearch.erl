@@ -101,6 +101,9 @@
          list_packages_for_domain/2,
          list_packages_for_domain/4,
          list_packages_for_domain/5,
+         list_scheduled_actions/2,
+         list_scheduled_actions/4,
+         list_scheduled_actions/5,
          list_tags/2,
          list_tags/4,
          list_tags/5,
@@ -130,6 +133,8 @@
          update_domain_config/4,
          update_package/2,
          update_package/3,
+         update_scheduled_action/3,
+         update_scheduled_action/4,
          update_vpc_endpoint/2,
          update_vpc_endpoint/3,
          upgrade_domain/2,
@@ -1118,6 +1123,38 @@ list_packages_for_domain(Client, DomainName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves a list of configuration changes that are scheduled for a
+%% domain.
+%%
+%% These changes can be service software updates or blue/green Auto-Tune
+%% enhancements.
+list_scheduled_actions(Client, DomainName)
+  when is_map(Client) ->
+    list_scheduled_actions(Client, DomainName, #{}, #{}).
+
+list_scheduled_actions(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_scheduled_actions(Client, DomainName, QueryMap, HeadersMap, []).
+
+list_scheduled_actions(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/scheduledActions"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns all resource tags for an Amazon OpenSearch Service domain.
 %%
 %% For more information, see Tagging Amazon OpenSearch Service domains.
@@ -1417,6 +1454,32 @@ update_package(Client, Input) ->
 update_package(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/packages/update"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Reschedules a planned domain configuration change for a later time.
+%%
+%% This change can be a scheduled service software update or a blue/green
+%% Auto-Tune enhancement.
+update_scheduled_action(Client, DomainName, Input) ->
+    update_scheduled_action(Client, DomainName, Input, []).
+update_scheduled_action(Client, DomainName, Input0, Options0) ->
+    Method = put,
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/scheduledAction/update"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

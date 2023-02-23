@@ -1648,8 +1648,8 @@ list_tags_for_resource(Client, Input, Options)
 %% document)publicly or privately.
 %%
 %% If you share a document privately, you must specify the Amazon Web
-%% Services user account IDs for those people who can use the document. If
-%% you share a document publicly, you must specify All as the account ID.
+%% Services user IDs for those people who can use the document. If you share
+%% a document publicly, you must specify All as the account ID.
 modify_document_permission(Client, Input)
   when is_map(Client), is_map(Input) ->
     modify_document_permission(Client, Input, []).
@@ -1947,13 +1947,12 @@ unlabel_parameter_version(Client, Input, Options)
 %% operation and make a note of all optional parameters required for your
 %% `UpdateAssociation' call.
 %%
-%% In order to call this API operation, your Identity and Access Management
-%% (IAM) user account, group, or role must be configured with permission to
-%% call the `DescribeAssociation' API operation. If you don't have
-%% permission to call `DescribeAssociation', then you receive the
-%% following error: `An error occurred (AccessDeniedException) when calling
-%% the UpdateAssociation operation: User: &lt;user_arn&gt; isn't
-%% authorized to perform: ssm:DescribeAssociation on resource:
+%% In order to call this API operation, a user, group, or role must be
+%% granted permission to call the `DescribeAssociation' API operation. If
+%% you don't have permission to call `DescribeAssociation', then you
+%% receive the following error: `An error occurred (AccessDeniedException)
+%% when calling the UpdateAssociation operation: User: &lt;user_arn&gt;
+%% isn't authorized to perform: ssm:DescribeAssociation on resource:
 %% &lt;resource_arn&gt;'
 %%
 %% When you update an association, the association immediately runs against
