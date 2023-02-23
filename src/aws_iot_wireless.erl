@@ -1471,7 +1471,7 @@ get_resource_log_level(Client, ResourceIdentifier, ResourceType, QueryMap, Heade
 %% @doc Get the position information for a given wireless device or a
 %% wireless gateway resource.
 %%
-%% The postion information uses the World Geodetic System (WGS84).
+%% The position information uses the World Geodetic System (WGS84).
 get_resource_position(Client, ResourceIdentifier, ResourceType)
   when is_map(Client) ->
     get_resource_position(Client, ResourceIdentifier, ResourceType, #{}, #{}).
@@ -2717,7 +2717,7 @@ update_resource_event_configuration(Client, Identifier, Input0, Options0) ->
 %% @doc Update the position information of a given wireless device or a
 %% wireless gateway resource.
 %%
-%% The postion coordinates are based on the World Geodetic System (WGS84).
+%% The position coordinates are based on the World Geodetic System (WGS84).
 update_resource_position(Client, ResourceIdentifier, Input) ->
     update_resource_position(Client, ResourceIdentifier, Input, []).
 update_resource_position(Client, ResourceIdentifier, Input0, Options0) ->

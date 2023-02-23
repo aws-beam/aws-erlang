@@ -25,6 +25,8 @@
          calculate_route_matrix/4,
          create_geofence_collection/2,
          create_geofence_collection/3,
+         create_key/2,
+         create_key/3,
          create_map/2,
          create_map/3,
          create_place_index/2,
@@ -35,6 +37,8 @@
          create_tracker/3,
          delete_geofence_collection/3,
          delete_geofence_collection/4,
+         delete_key/3,
+         delete_key/4,
          delete_map/3,
          delete_map/4,
          delete_place_index/3,
@@ -46,6 +50,9 @@
          describe_geofence_collection/2,
          describe_geofence_collection/4,
          describe_geofence_collection/5,
+         describe_key/2,
+         describe_key/4,
+         describe_key/5,
          describe_map/2,
          describe_map/4,
          describe_map/5,
@@ -89,6 +96,8 @@
          list_geofence_collections/3,
          list_geofences/3,
          list_geofences/4,
+         list_keys/2,
+         list_keys/3,
          list_maps/2,
          list_maps/3,
          list_place_indexes/2,
@@ -116,6 +125,8 @@
          untag_resource/4,
          update_geofence_collection/3,
          update_geofence_collection/4,
+         update_key/3,
+         update_key/4,
          update_map/3,
          update_map/4,
          update_place_index/3,
@@ -485,13 +496,43 @@ create_geofence_collection(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a map resource in your AWS account, which provides map tiles
-%% of different styles sourced from global location data providers.
+%% @doc Creates an API key resource in your Amazon Web Services account,
+%% which lets you grant `geo:GetMap*' actions for Amazon Location Map
+%% resources to the API key bearer.
+%%
+%% The API keys feature is in preview. We may add, change, or remove features
+%% before announcing general availability. For more information, see Using
+%% API keys.
+create_key(Client, Input) ->
+    create_key(Client, Input, []).
+create_key(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/metadata/v0/keys"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a map resource in your Amazon Web Services account, which
+%% provides map tiles of different styles sourced from global location data
+%% providers.
 %%
 %% If your application is tracking or routing assets you use in your
 %% business, such as delivery vehicles or employees, you must not use Esri as
-%% your geolocation provider. See section 82 of the AWS service terms for
-%% more details.
+%% your geolocation provider. See section 82 of the Amazon Web Services
+%% service terms for more details.
 create_map(Client, Input) ->
     create_map(Client, Input, []).
 create_map(Client, Input0, Options0) ->
@@ -514,7 +555,7 @@ create_map(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a place index resource in your AWS account.
+%% @doc Creates a place index resource in your Amazon Web Services account.
 %%
 %% Use a place index resource to geocode addresses and other text queries by
 %% using the `SearchPlaceIndexForText' operation, and reverse geocode
@@ -524,8 +565,8 @@ create_map(Client, Input0, Options0) ->
 %%
 %% If your application is tracking or routing assets you use in your
 %% business, such as delivery vehicles or employees, you must not use Esri as
-%% your geolocation provider. See section 82 of the AWS service terms for
-%% more details.
+%% your geolocation provider. See section 82 of the Amazon Web Services
+%% service terms for more details.
 create_place_index(Client, Input) ->
     create_place_index(Client, Input, []).
 create_place_index(Client, Input0, Options0) ->
@@ -548,7 +589,8 @@ create_place_index(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a route calculator resource in your AWS account.
+%% @doc Creates a route calculator resource in your Amazon Web Services
+%% account.
 %%
 %% You can send requests to a route calculator resource to estimate travel
 %% time, distance, and get directions. A route calculator sources traffic and
@@ -556,8 +598,8 @@ create_place_index(Client, Input0, Options0) ->
 %%
 %% If your application is tracking or routing assets you use in your
 %% business, such as delivery vehicles or employees, you must not use Esri as
-%% your geolocation provider. See section 82 of the AWS service terms for
-%% more details.
+%% your geolocation provider. See section 82 of the Amazon Web Services
+%% service terms for more details.
 create_route_calculator(Client, Input) ->
     create_route_calculator(Client, Input, []).
 create_route_calculator(Client, Input0, Options0) ->
@@ -580,8 +622,8 @@ create_route_calculator(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a tracker resource in your AWS account, which lets you
-%% retrieve current and historical location of devices.
+%% @doc Creates a tracker resource in your Amazon Web Services account, which
+%% lets you retrieve current and historical location of devices.
 create_tracker(Client, Input) ->
     create_tracker(Client, Input, []).
 create_tracker(Client, Input0, Options0) ->
@@ -604,7 +646,7 @@ create_tracker(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a geofence collection from your AWS account.
+%% @doc Deletes a geofence collection from your Amazon Web Services account.
 %%
 %% This operation deletes the resource permanently. If the geofence
 %% collection is the target of a tracker resource, the devices will no longer
@@ -631,7 +673,32 @@ delete_geofence_collection(Client, CollectionName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a map resource from your AWS account.
+%% @doc Deletes the specified API key.
+%%
+%% The API key must have been deactivated more than 90 days previously.
+delete_key(Client, KeyName, Input) ->
+    delete_key(Client, KeyName, Input, []).
+delete_key(Client, KeyName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/metadata/v0/keys/", aws_util:encode_uri(KeyName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a map resource from your Amazon Web Services account.
 %%
 %% This operation deletes the resource permanently. If the map is being used
 %% in an application, the map may not render.
@@ -657,7 +724,7 @@ delete_map(Client, MapName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a place index resource from your AWS account.
+%% @doc Deletes a place index resource from your Amazon Web Services account.
 %%
 %% This operation deletes the resource permanently.
 delete_place_index(Client, IndexName, Input) ->
@@ -682,7 +749,8 @@ delete_place_index(Client, IndexName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a route calculator resource from your AWS account.
+%% @doc Deletes a route calculator resource from your Amazon Web Services
+%% account.
 %%
 %% This operation deletes the resource permanently.
 delete_route_calculator(Client, CalculatorName, Input) ->
@@ -707,7 +775,7 @@ delete_route_calculator(Client, CalculatorName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a tracker resource from your AWS account.
+%% @doc Deletes a tracker resource from your Amazon Web Services account.
 %%
 %% This operation deletes the resource permanently. If the tracker resource
 %% is in use, you may encounter an error. Make sure that the target resource
@@ -746,6 +814,33 @@ describe_geofence_collection(Client, CollectionName, QueryMap, HeadersMap)
 describe_geofence_collection(Client, CollectionName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the API key resource details.
+%%
+%% The API keys feature is in preview. We may add, change, or remove features
+%% before announcing general availability. For more information, see Using
+%% API keys.
+describe_key(Client, KeyName)
+  when is_map(Client) ->
+    describe_key(Client, KeyName, #{}, #{}).
+
+describe_key(Client, KeyName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_key(Client, KeyName, QueryMap, HeadersMap, []).
+
+describe_key(Client, KeyName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/metadata/v0/keys/", aws_util:encode_uri(KeyName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -970,12 +1065,17 @@ get_map_glyphs(Client, FontStack, FontUnicodeRange, MapName, QueryMap, HeadersMa
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"key">>, maps:get(<<"key">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
+            {<<"Cache-Control">>, <<"CacheControl">>},
             {<<"Content-Type">>, <<"ContentType">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
@@ -1012,12 +1112,17 @@ get_map_sprites(Client, FileName, MapName, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"key">>, maps:get(<<"key">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
+            {<<"Cache-Control">>, <<"CacheControl">>},
             {<<"Content-Type">>, <<"ContentType">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
@@ -1056,12 +1161,17 @@ get_map_style_descriptor(Client, MapName, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"key">>, maps:get(<<"key">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
+            {<<"Cache-Control">>, <<"CacheControl">>},
             {<<"Content-Type">>, <<"ContentType">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
@@ -1103,12 +1213,17 @@ get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"key">>, maps:get(<<"key">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     case request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode) of
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
+            {<<"Cache-Control">>, <<"CacheControl">>},
             {<<"Content-Type">>, <<"ContentType">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
@@ -1130,9 +1245,9 @@ get_map_tile(Client, MapName, X, Y, Z, QueryMap, HeadersMap, Options0)
 %% A PlaceId is valid only if all of the following are the same in the
 %% original search request and the call to `GetPlace'.
 %%
-%% Customer AWS account
+%% Customer Amazon Web Services account
 %%
-%% AWS Region
+%% Amazon Web Services Region
 %%
 %% Data provider specified in the place index resource
 get_place(Client, IndexName, PlaceId)
@@ -1184,7 +1299,7 @@ list_device_positions(Client, TrackerName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists geofence collections in your AWS account.
+%% @doc Lists geofence collections in your Amazon Web Services account.
 list_geofence_collections(Client, Input) ->
     list_geofence_collections(Client, Input, []).
 list_geofence_collections(Client, Input0, Options0) ->
@@ -1230,7 +1345,34 @@ list_geofences(Client, CollectionName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists map resources in your AWS account.
+%% @doc Lists API key resources in your Amazon Web Services account.
+%%
+%% The API keys feature is in preview. We may add, change, or remove features
+%% before announcing general availability. For more information, see Using
+%% API keys.
+list_keys(Client, Input) ->
+    list_keys(Client, Input, []).
+list_keys(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/metadata/v0/list-keys"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists map resources in your Amazon Web Services account.
 list_maps(Client, Input) ->
     list_maps(Client, Input, []).
 list_maps(Client, Input0, Options0) ->
@@ -1253,7 +1395,7 @@ list_maps(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists place index resources in your AWS account.
+%% @doc Lists place index resources in your Amazon Web Services account.
 list_place_indexes(Client, Input) ->
     list_place_indexes(Client, Input, []).
 list_place_indexes(Client, Input0, Options0) ->
@@ -1276,7 +1418,7 @@ list_place_indexes(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists route calculator resources in your AWS account.
+%% @doc Lists route calculator resources in your Amazon Web Services account.
 list_route_calculators(Client, Input) ->
     list_route_calculators(Client, Input, []).
 list_route_calculators(Client, Input0, Options0) ->
@@ -1347,7 +1489,7 @@ list_tracker_consumers(Client, TrackerName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists tracker resources in your AWS account.
+%% @doc Lists tracker resources in your Amazon Web Services account.
 list_trackers(Client, Input) ->
     list_trackers(Client, Input, []).
 list_trackers(Client, Input0, Options0) ->
@@ -1557,6 +1699,33 @@ update_geofence_collection(Client, CollectionName, Input) ->
 update_geofence_collection(Client, CollectionName, Input0, Options0) ->
     Method = patch,
     Path = ["/geofencing/v0/collections/", aws_util:encode_uri(CollectionName), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the specified properties of a given API key resource.
+%%
+%% The API keys feature is in preview. We may add, change, or remove features
+%% before announcing general availability. For more information, see Using
+%% API keys.
+update_key(Client, KeyName, Input) ->
+    update_key(Client, KeyName, Input, []).
+update_key(Client, KeyName, Input0, Options0) ->
+    Method = patch,
+    Path = ["/metadata/v0/keys/", aws_util:encode_uri(KeyName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

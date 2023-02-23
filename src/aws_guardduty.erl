@@ -263,6 +263,10 @@ archive_findings(Client, DetectorId, Input0, Options0) ->
 %% using GuardDuty, you must create a detector in each Region where you
 %% enable the service. You can have only one detector per account per Region.
 %% All data sources are enabled in a new detector by default.
+%%
+%% There might be regional differences because some data sources might not be
+%% available in all the Amazon Web Services Regions where GuardDuty is
+%% presently supported. For more information, see Regions and endpoints.
 create_detector(Client, Input) ->
     create_detector(Client, Input, []).
 create_detector(Client, Input0, Options0) ->
@@ -349,9 +353,9 @@ create_ip_set(Client, DetectorId, Input0, Options0) ->
 %% accounts, with the exception of the organization delegated administrator
 %% account, which must enable GuardDuty prior to being added as a member.
 %%
-%% If you are adding accounts by invitation use this action after GuardDuty
-%% has been enabled in potential member accounts and before using `Invite
-%% Members' .
+%% If you are adding accounts by invitation, use this action after GuardDuty
+%% has bee enabled in potential member accounts and before using
+%% InviteMembers.
 create_members(Client, DetectorId, Input) ->
     create_members(Client, DetectorId, Input, []).
 create_members(Client, DetectorId, Input0, Options0) ->
@@ -400,11 +404,11 @@ create_publishing_destination(Client, DetectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Generates example findings of types specified by the list of finding
+%% @doc Generates sample findings of types specified by the list of finding
 %% types.
 %%
 %% If 'NULL' is specified for `findingTypes', the API generates
-%% example findings of all supported finding types.
+%% sample findings of all supported finding types.
 create_sample_findings(Client, DetectorId, Input) ->
     create_sample_findings(Client, DetectorId, Input, []).
 create_sample_findings(Client, DetectorId, Input0, Options0) ->
@@ -649,6 +653,10 @@ delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options0) 
 %%
 %% Each member account can view the malware scans for their own accounts. An
 %% administrator can view the malware scans for all the member accounts.
+%%
+%% There might be regional differences because some data sources might not be
+%% available in all the Amazon Web Services Regions where GuardDuty is
+%% presently supported. For more information, see Regions and endpoints.
 describe_malware_scans(Client, DetectorId, Input) ->
     describe_malware_scans(Client, DetectorId, Input, []).
 describe_malware_scans(Client, DetectorId, Input0, Options0) ->
@@ -673,6 +681,10 @@ describe_malware_scans(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Returns information about the account selected as the delegated
 %% administrator for GuardDuty.
+%%
+%% There might be regional differences because some data sources might not be
+%% available in all the Amazon Web Services Regions where GuardDuty is
+%% presently supported. For more information, see Regions and endpoints.
 describe_organization_configuration(Client, DetectorId)
   when is_map(Client) ->
     describe_organization_configuration(Client, DetectorId, #{}, #{}).
@@ -864,6 +876,10 @@ get_administrator_account(Client, DetectorId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves an Amazon GuardDuty detector specified by the detectorId.
+%%
+%% There might be regional differences because some data sources might not be
+%% available in all the Amazon Web Services Regions where GuardDuty is
+%% presently supported. For more information, see Regions and endpoints.
 get_detector(Client, DetectorId)
   when is_map(Client) ->
     get_detector(Client, DetectorId, #{}, #{}).
@@ -1005,6 +1021,10 @@ get_ip_set(Client, DetectorId, IpSetId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the details of the malware scan settings.
+%%
+%% There might be regional differences because some data sources might not be
+%% available in all the Amazon Web Services Regions where GuardDuty is
+%% presently supported. For more information, see Regions and endpoints.
 get_malware_scan_settings(Client, DetectorId)
   when is_map(Client) ->
     get_malware_scan_settings(Client, DetectorId, #{}, #{}).
@@ -1053,6 +1073,10 @@ get_master_account(Client, DetectorId, QueryMap, HeadersMap, Options0)
 
 %% @doc Describes which data sources are enabled for the member account's
 %% detector.
+%%
+%% There might be regional differences because some data sources might not be
+%% available in all the Amazon Web Services Regions where GuardDuty is
+%% presently supported. For more information, see Regions and endpoints.
 get_member_detectors(Client, DetectorId, Input) ->
     get_member_detectors(Client, DetectorId, Input, []).
 get_member_detectors(Client, DetectorId, Input0, Options0) ->
@@ -1614,6 +1638,10 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the Amazon GuardDuty detector specified by the detectorId.
+%%
+%% There might be regional differences because some data sources might not be
+%% available in all the Amazon Web Services Regions where GuardDuty is
+%% presently supported. For more information, see Regions and endpoints.
 update_detector(Client, DetectorId, Input) ->
     update_detector(Client, DetectorId, Input, []).
 update_detector(Client, DetectorId, Input0, Options0) ->
@@ -1706,6 +1734,10 @@ update_ip_set(Client, DetectorId, IpSetId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the malware scan settings.
+%%
+%% There might be regional differences because some data sources might not be
+%% available in all the Amazon Web Services Regions where GuardDuty is
+%% presently supported. For more information, see Regions and endpoints.
 update_malware_scan_settings(Client, DetectorId, Input) ->
     update_malware_scan_settings(Client, DetectorId, Input, []).
 update_malware_scan_settings(Client, DetectorId, Input0, Options0) ->
@@ -1729,6 +1761,10 @@ update_malware_scan_settings(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Contains information on member accounts to be updated.
+%%
+%% There might be regional differences because some data sources might not be
+%% available in all the Amazon Web Services Regions where GuardDuty is
+%% presently supported. For more information, see Regions and endpoints.
 update_member_detectors(Client, DetectorId, Input) ->
     update_member_detectors(Client, DetectorId, Input, []).
 update_member_detectors(Client, DetectorId, Input0, Options0) ->
@@ -1752,6 +1788,10 @@ update_member_detectors(Client, DetectorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the delegated administrator account with the values provided.
+%%
+%% There might be regional differences because some data sources might not be
+%% available in all the Amazon Web Services Regions where GuardDuty is
+%% presently supported. For more information, see Regions and endpoints.
 update_organization_configuration(Client, DetectorId, Input) ->
     update_organization_configuration(Client, DetectorId, Input, []).
 update_organization_configuration(Client, DetectorId, Input0, Options0) ->

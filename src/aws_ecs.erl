@@ -42,6 +42,8 @@
          delete_cluster/3,
          delete_service/2,
          delete_service/3,
+         delete_task_definitions/2,
+         delete_task_definitions/3,
          delete_task_set/2,
          delete_task_set/3,
          deregister_container_instance/2,
@@ -166,7 +168,7 @@ create_capacity_provider(Client, Input, Options)
 %% When you call the `CreateCluster' API operation, Amazon ECS attempts
 %% to create the Amazon ECS service-linked role for your account. This is so
 %% that it can manage required resources in other Amazon Web Services
-%% services on your behalf. However, if the IAM user that makes the call
+%% services on your behalf. However, if the user that makes the call
 %% doesn't have permissions to create the service-linked role, it
 %% isn't created. For more information, see Using service-linked roles
 %% for Amazon ECS in the Amazon Elastic Container Service Developer Guide.
@@ -293,8 +295,8 @@ create_task_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTaskSet">>, Input, Options).
 
-%% @doc Disables an account setting for a specified IAM user, IAM role, or
-%% the root user for an account.
+%% @doc Disables an account setting for a specified user, role, or the root
+%% user for an account.
 delete_account_setting(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_account_setting(Client, Input, []).
@@ -382,6 +384,32 @@ delete_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteService">>, Input, Options).
 
+%% @doc Deletes one or more task definitions.
+%%
+%% You must deregister a task definition revision before you delete it. For
+%% more information, see DeregisterTaskDefinition.
+%%
+%% When you delete a task definition revision, it is immediately transitions
+%% from the `INACTIVE' to `DELETE_IN_PROGRESS'. Existing tasks and
+%% services that reference a `DELETE_IN_PROGRESS' task definition
+%% revision continue to run without disruption. Existing services that
+%% reference a `DELETE_IN_PROGRESS' task definition revision can still
+%% scale up or down by modifying the service's desired count.
+%%
+%% You can't use a `DELETE_IN_PROGRESS' task definition revision to
+%% run new tasks or create new services. You also can't update an
+%% existing service to reference a `DELETE_IN_PROGRESS' task definition
+%% revision.
+%%
+%% A task definition revision will stay in `DELETE_IN_PROGRESS' status
+%% until all the associated tasks and services have been terminated.
+delete_task_definitions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_task_definitions(Client, Input, []).
+delete_task_definitions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteTaskDefinitions">>, Input, Options).
+
 %% @doc Deletes a specified task set within a service.
 %%
 %% This is used when a service uses the `EXTERNAL' deployment controller
@@ -426,7 +454,9 @@ deregister_container_instance(Client, Input, Options)
 %% Existing tasks and services that reference an `INACTIVE' task
 %% definition continue to run without disruption. Existing services that
 %% reference an `INACTIVE' task definition can still scale up or down by
-%% modifying the service's desired count.
+%% modifying the service's desired count. If you want to delete a task
+%% definition revision, you must first deregister the task definition
+%% revision.
 %%
 %% You can't use an `INACTIVE' task definition to run new tasks or
 %% create new services, and you can't update an existing service to
@@ -439,6 +469,9 @@ deregister_container_instance(Client, Input, Options)
 %% future. We don't recommend that you rely on `INACTIVE' task
 %% definitions persisting beyond the lifecycle of any associated tasks and
 %% services.
+%%
+%% You must deregister a task definition revision before you delete it. For
+%% more information, see DeleteTaskDefinitions.
 deregister_task_definition(Client, Input)
   when is_map(Client), is_map(Input) ->
     deregister_task_definition(Client, Input, []).
@@ -681,18 +714,18 @@ list_tasks(Client, Input, Options)
 %% Account settings are set on a per-Region basis.
 %%
 %% If you change the account setting for the root user, the default settings
-%% for all of the IAM users and roles that no individual account setting was
+%% for all of the users and roles that no individual account setting was
 %% specified are reset for. For more information, see Account Settings in the
 %% Amazon Elastic Container Service Developer Guide.
 %%
 %% When `serviceLongArnFormat', `taskLongArnFormat', or
 %% `containerInstanceLongArnFormat' are specified, the Amazon Resource
-%% Name (ARN) and resource ID format of the resource type for a specified IAM
-%% user, IAM role, or the root user for an account is affected. The opt-in
-%% and opt-out account setting must be set for each Amazon ECS resource
+%% Name (ARN) and resource ID format of the resource type for a specified
+%% user, role, or the root user for an account is affected. The opt-in and
+%% opt-out account setting must be set for each Amazon ECS resource
 %% separately. The ARN and resource ID format of a resource is defined by the
-%% opt-in status of the IAM user or role that created the resource. You must
-%% turn on this setting to use Amazon ECS features such as resource tagging.
+%% opt-in status of the user or role that created the resource. You must turn
+%% on this setting to use Amazon ECS features such as resource tagging.
 %%
 %% When `awsvpcTrunking' is specified, the elastic network interface
 %% (ENI) limit for any new container instances that support the feature is
@@ -714,8 +747,8 @@ put_account_setting(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAccountSetting">>, Input, Options).
 
-%% @doc Modifies an account setting for all IAM users on an account for whom
-%% no individual account setting has been specified.
+%% @doc Modifies an account setting for all users on an account for whom no
+%% individual account setting has been specified.
 %%
 %% Account settings are set on a per-Region basis.
 put_account_setting_default(Client, Input)
@@ -783,12 +816,12 @@ register_container_instance(Client, Input, Options)
 %% parameters and defaults, see Amazon ECS Task Definitions in the Amazon
 %% Elastic Container Service Developer Guide.
 %%
-%% You can specify an IAM role for your task with the `taskRoleArn'
-%% parameter. When you specify an IAM role for a task, its containers can
-%% then use the latest versions of the CLI or SDKs to make API requests to
-%% the Amazon Web Services services that are specified in the IAM policy
-%% that's associated with the role. For more information, see IAM Roles
-%% for Tasks in the Amazon Elastic Container Service Developer Guide.
+%% You can specify a role for your task with the `taskRoleArn' parameter.
+%% When you specify a role for a task, its containers can then use the latest
+%% versions of the CLI or SDKs to make API requests to the Amazon Web
+%% Services services that are specified in the policy that's associated
+%% with the role. For more information, see IAM Roles for Tasks in the Amazon
+%% Elastic Container Service Developer Guide.
 %%
 %% You can specify a Docker networking mode for the containers in your task
 %% definition with the `networkMode' parameter. The available network
@@ -1153,7 +1186,7 @@ update_container_instances_state(Client, Input, Options)
 %% instances with the largest number of running tasks for this service.
 %%
 %% </li> </ul> You must have a service-linked role when you update any of the
-%% following service properties. If you specified a custom IAM role when you
+%% following service properties. If you specified a custom role when you
 %% created the service, Amazon ECS automatically replaces the roleARN
 %% associated with the service with the ARN of your service-linked role. For
 %% more information, see Service-linked roles in the Amazon Elastic Container
