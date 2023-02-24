@@ -26,7 +26,7 @@
 -type proto() :: binary().
 -type service() :: binary().
 -type endpoint() :: binary().
--type aws_client() :: map().
+-opaque aws_client() :: map().
 
 -export_type([access_key_id/0, secret_access_key/0, region/0,
               token/0, aws_client/0]).
@@ -120,7 +120,7 @@ secret_access_key(#{secret_access_key := SecretAccessKey} = _Client) ->
 -spec token(aws_client()) -> token().
 token(#{token := Token} = _Client) ->
   Token;
-token(_) ->
+token(Client) when is_map(Client) ->
   undefined.
 
 -spec region(aws_client()) -> region().
