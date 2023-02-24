@@ -8,13 +8,25 @@
         , make_local_client/4
         ]).
 
+-export([ access_key_id/1
+        , secret_access_key/1
+        , token/1
+        , region/1
+        , endpoint/1
+        , proto/1
+        , port/1
+        , service/1
+        ]).
+
 -type access_key_id() :: binary().
 -type secret_access_key() :: binary().
 -type region() :: binary().
 -type token() :: binary().
 -type http_port() :: binary().
--type aws_client() :: map().
+-type proto() :: binary().
+-type service() :: binary().
 -type endpoint() :: binary().
+-opaque aws_client() :: map().
 
 -export_type([access_key_id/0, secret_access_key/0, region/0,
               token/0, aws_client/0]).
@@ -96,6 +108,40 @@ make_local_client(AccessKeyID, SecretAccessKey, Port, Endpoint)
        proto => <<"http">>,
        port => Port,
        service => undefined}.
+
+-spec access_key_id(aws_client()) -> access_key_id().
+access_key_id(#{access_key_id := AccessKeyId} = _Client) ->
+  AccessKeyId.
+
+-spec secret_access_key(aws_client()) -> secret_access_key().
+secret_access_key(#{secret_access_key := SecretAccessKey} = _Client) ->
+  SecretAccessKey.
+
+-spec token(aws_client()) -> token().
+token(#{token := Token} = _Client) ->
+  Token;
+token(Client) when is_map(Client) ->
+  undefined.
+
+-spec region(aws_client()) -> region().
+region(#{region := Region} = _Client) ->
+  Region.
+
+-spec endpoint(aws_client()) -> endpoint().
+endpoint(#{endpoint := Endpoint} = _Client) ->
+  Endpoint.
+
+-spec proto(aws_client()) -> proto().
+proto(#{proto := Proto} = _Client) ->
+  Proto.
+
+-spec port(aws_client()) -> port().
+port(#{port := Port} = _Client) ->
+  Port.
+
+-spec service(aws_client()) -> service().
+service(#{service := Service} = _Client) ->
+  Service.
 
 %%====================================================================
 %% Helper functions

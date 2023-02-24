@@ -23,11 +23,11 @@ request(RequestFun, Options) ->
 %% Generate headers with an AWS signature version 4 for the specified
 %% request.
 sign_request(Client, Method, URL, Headers0, Body) ->
-    AccessKeyID = maps:get(access_key_id, Client),
-    SecretAccessKey = maps:get(secret_access_key, Client),
-    Region = maps:get(region, Client),
-    Service = maps:get(service, Client),
-    Token = maps:get(token, Client, undefined),
+    AccessKeyID = aws_client:access_key_id(Client),
+    SecretAccessKey = aws_client:secret_access_key(Client),
+    Region = aws_client:region(Client),
+    Service = aws_client:service(Client),
+    Token = aws_client:token(Client),
     Headers = case Token of
                 undefined -> Headers0;
                 _ -> [{<<"X-Amz-Security-Token">>, Token}|Headers0]
