@@ -8034,11 +8034,11 @@ build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}, Bucket) ->
     aws_util:binary_join([Bucket, EndpointPrefix, Region, Endpoint], <<".">>).
 
 build_url(Host0, Path0, Client, Bucket) ->
-    Proto = maps:get(proto, Client),
+    Proto = aws_client:proto(Client),
     %% Mocks are notoriously bad with host-style requests, just skip it and use path-style for anything local
     %% At some points once the mocks catch up, we should remove this ugly hack...
     Host1 = erlang:iolist_to_binary(Host0),
-    IsLocalHost = maps:get(region, Client) =:= <<"local">>,
+    IsLocalHost = aws_client:region(Client) =:= <<"local">>,
     Path = case Bucket of
               _ when not IsLocalHost andalso Bucket =/= undefined ->
                 erlang:iolist_to_binary(binary:replace(iolist_to_binary(Path0), [Bucket, <<Bucket/binary, "/">>], <<"">>, [global]));
@@ -8051,7 +8051,7 @@ build_url(Host0, Path0, Client, Bucket) ->
              _ ->
               Host1
            end,
-    Port = maps:get(port, Client),
+    Port = aws_client:port(Client),
     aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, Path], <<"">>).
 
 -spec encode_payload(undefined | map()) -> binary().

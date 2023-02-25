@@ -5840,9 +5840,9 @@ build_host(EndpointPrefix, #{endpoint := Endpoint}) ->
     aws_util:binary_join([EndpointPrefix, Endpoint], <<".">>).
 
 build_url(Host, Path0, Client) ->
-    Proto = maps:get(proto, Client),
+    Proto = aws_client:proto(Client),
     Path = erlang:iolist_to_binary(Path0),
-    Port = maps:get(port, Client),
+    Port = aws_client:port(Client),
     aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, Path], <<"">>).
 
 -spec encode_payload(undefined | map()) -> binary().

@@ -1,16 +1,14 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Welcome to the Amazon Connect Cases API Reference.
+%% @doc With Amazon Connect Cases, your agents can track and manage customer
+%% issues that require multiple interactions, follow-up tasks, and teams in
+%% your contact center.
 %%
-%% This guide provides information about the Amazon Connect Cases API, which
-%% you can use to create, update, get, and list Cases domains, fields, field
-%% options, layouts, templates, cases, related items, and tags.
-%%
-%% &lt;p&gt;For more information about Amazon Connect Cases, see &lt;a
-%% href=&quot;https://docs.aws.amazon.com/connect/latest/adminguide/cases.html&quot;&gt;Amazon
-%% Connect Cases&lt;/a&gt; in the &lt;i&gt;Amazon Connect Administrator
-%% Guide&lt;/i&gt;. &lt;/p&gt;
+%% A case represents a customer issue. It records the issue, the steps and
+%% interactions taken to resolve the issue, and the outcome. For more
+%% information, see Amazon Connect Cases in the Amazon Connect Administrator
+%% Guide.
 -module(aws_connectcases).
 
 -export([batch_get_field/3,
@@ -29,6 +27,8 @@
          create_related_item/5,
          create_template/3,
          create_template/4,
+         delete_domain/3,
+         delete_domain/4,
          get_case/4,
          get_case/5,
          get_case_event_configuration/3,
@@ -132,7 +132,14 @@ batch_put_field_options(Client, DomainId, FieldId, Input0, Options0) ->
 %% Case system and custom fields are taken as an array id/value pairs with a
 %% declared data types.
 %%
-%% `customer_id' is a required field when creating a case.
+%% The following fields are required when creating a case:
+%%
+%% &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;customer_id&lt;/code&gt; - You
+%% must provide the full customer profile ARN in this format:
+%% &lt;code&gt;arn:aws:profile:your AWS Region:your AWS account
+%% ID:domains/profiles domain name/profiles/profile ID&lt;/code&gt;
+%% &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;title&lt;/code&gt;
+%% &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/note&gt;
 create_case(Client, DomainId, Input) ->
     create_case(Client, DomainId, Input, []).
 create_case(Client, DomainId, Input0, Options0) ->
@@ -161,7 +168,9 @@ create_case(Client, DomainId, Input0, Options0) ->
 %% Each Amazon Connect instance can be associated with only one Cases domain.
 %%
 %% This will not associate your connect instance to Cases domain. Instead,
-%% use the Amazon Connect CreateIntegrationAssociation API.
+%% use the Amazon Connect CreateIntegrationAssociation API. You need specific
+%% IAM permissions to successfully associate the Cases domain. For more
+%% information, see Onboard to Cases.
 create_domain(Client, Input) ->
     create_domain(Client, Input, []).
 create_domain(Client, Input0, Options0) ->
@@ -287,6 +296,29 @@ create_template(Client, DomainId, Input) ->
 create_template(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/templates"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a domain.
+delete_domain(Client, DomainId, Input) ->
+    delete_domain(Client, DomainId, Input, []).
+delete_domain(Client, DomainId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/domains/", aws_util:encode_uri(DomainId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -625,6 +657,10 @@ put_case_event_configuration(Client, DomainId, Input0, Options0) ->
 %%
 %% Search results are returned as a paginated list of abridged case
 %% documents.
+%%
+%% For `customer_id' you must provide the full customer profile ARN in
+%% this format: ` arn:aws:profile:your AWS Region:your AWS account
+%% ID:domains/profiles domain name/profiles/profile ID'.
 search_cases(Client, DomainId, Input) ->
     search_cases(Client, DomainId, Input, []).
 search_cases(Client, DomainId, Input0, Options0) ->
@@ -939,9 +975,9 @@ build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
     aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
 
 build_url(Host, Path0, Client) ->
-    Proto = maps:get(proto, Client),
+    Proto = aws_client:proto(Client),
     Path = erlang:iolist_to_binary(Path0),
-    Port = maps:get(port, Client),
+    Port = aws_client:port(Client),
     aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, Path], <<"">>).
 
 -spec encode_payload(undefined | map()) -> binary().

@@ -384,6 +384,6 @@ build_host(EndpointPrefix, #{endpoint := Endpoint}) ->
     aws_util:binary_join([EndpointPrefix, Endpoint], <<".">>).
 
 build_url(Host, Client) ->
-    Proto = maps:get(proto, Client),
-    Port = maps:get(port, Client),
+    Proto = aws_client:proto(Client),
+    Port = aws_client:port(Client),
     aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>], <<"">>).

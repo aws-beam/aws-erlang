@@ -569,6 +569,9 @@ describe_portfolio_shares(Client, Input, Options)
     request(Client, <<"DescribePortfolioShares">>, Input, Options).
 
 %% @doc Gets information about the specified product.
+%%
+%% Running this operation with administrator access results in a failure.
+%% `DescribeProductAsAdmin' should be used instead.
 describe_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_product(Client, Input, []).
@@ -833,19 +836,24 @@ get_provisioned_product_outputs(Client, Input, Options)
 %% product that is associated to an Service Catalog product and provisioning
 %% artifact.
 %%
-%% Once imported, all supported Service Catalog governance actions are
-%% supported on the provisioned product.
+%% Once imported, all supported governance actions are supported on the
+%% provisioned product.
 %%
 %% Resource import only supports CloudFormation stack ARNs. CloudFormation
-%% StackSets and non-root nested stacks are not supported.
+%% StackSets, and non-root nested stacks are not supported.
 %%
 %% The CloudFormation stack must have one of the following statuses to be
 %% imported: `CREATE_COMPLETE', `UPDATE_COMPLETE',
-%% `UPDATE_ROLLBACK_COMPLETE', `IMPORT_COMPLETE',
+%% `UPDATE_ROLLBACK_COMPLETE', `IMPORT_COMPLETE', and
 %% `IMPORT_ROLLBACK_COMPLETE'.
 %%
 %% Import of the resource requires that the CloudFormation stack template
 %% matches the associated Service Catalog product provisioning artifact.
+%%
+%% When you import an existing CloudFormation stack into a portfolio,
+%% constraints that are associated with the product aren't applied during
+%% the import process. The constraints are applied after you call
+%% `UpdateProvisionedProduct' for the provisioned product.
 %%
 %% The user or role that performs this operation must have the
 %% `cloudformation:GetTemplate' and `cloudformation:DescribeStacks'
@@ -887,9 +895,14 @@ list_constraints_for_portfolio(Client, Input, Options)
 
 %% @doc Lists the paths to the specified product.
 %%
-%% A path is how the user has access to a specified product, and is necessary
-%% when provisioning a product. A path also determines the constraints put on
-%% the product.
+%% A path describes how the user gets access to a specified product and is
+%% necessary when provisioning a product. A path also determines the
+%% constraints that are put on a product. A path is dependent on a specific
+%% product, porfolio, and principal.
+%%
+%% When provisioning a product that's been added to a portfolio, you must
+%% grant your user, group, or role access to the portfolio. For more
+%% information, see Granting users access in the Service Catalog User Guide.
 list_launch_paths(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_launch_paths(Client, Input, []).
@@ -1032,14 +1045,18 @@ list_tag_options(Client, Input, Options)
 %% @doc Provisions the specified product.
 %%
 %% A provisioned product is a resourced instance of a product. For example,
-%% provisioning a product based on a CloudFormation template launches a
-%% CloudFormation stack and its underlying resources. You can check the
-%% status of this request using `DescribeRecord'.
+%% provisioning a product that's based on an CloudFormation template
+%% launches an CloudFormation stack and its underlying resources. You can
+%% check the status of this request using `DescribeRecord'.
 %%
-%% If the request contains a tag key with an empty list of values, there is a
-%% tag conflict for that key. Do not include conflicted keys as tags, or this
-%% causes the error &quot;Parameter validation failed: Missing required
-%% parameter in Tags[N]:Value&quot;.
+%% If the request contains a tag key with an empty list of values,
+%% there's a tag conflict for that key. Don't include conflicted keys
+%% as tags, or this will cause the error &quot;Parameter validation failed:
+%% Missing required parameter in Tags[N]:Value&quot;.
+%%
+%% When provisioning a product that's been added to a portfolio, you must
+%% grant your user, group, or role access to the portfolio. For more
+%% information, see Granting users access in the Service Catalog User Guide.
 provision_product(Client, Input)
   when is_map(Client), is_map(Input) ->
     provision_product(Client, Input, []).
@@ -1084,14 +1101,6 @@ search_products_as_admin(Client, Input, Options)
 
 %% @doc Gets information about the provisioned products that meet the
 %% specified criteria.
-%%
-%% To ensure a complete list of provisioned products and remove duplicate
-%% products, use `sort-by createdTime'.
-%%
-%% Here is a CLI example: ` '
-%%
-%% `aws servicecatalog search-provisioned-products --sort-by createdTime
-%% '
 search_provisioned_products(Client, Input)
   when is_map(Client), is_map(Input) ->
     search_provisioned_products(Client, Input, []).
@@ -1283,6 +1292,6 @@ build_host(EndpointPrefix, #{region := Region, endpoint := Endpoint}) ->
     aws_util:binary_join([EndpointPrefix, Region, Endpoint], <<".">>).
 
 build_url(Host, Client) ->
-    Proto = maps:get(proto, Client),
-    Port = maps:get(port, Client),
+    Proto = aws_client:proto(Client),
+    Port = aws_client:port(Client),
     aws_util:binary_join([Proto, <<"://">>, Host, <<":">>, Port, <<"/">>], <<"">>).
