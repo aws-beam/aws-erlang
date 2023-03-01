@@ -96,15 +96,11 @@
 %% API
 %%====================================================================
 
-%% @doc The token based access feature is in preview release for Ethereum on
-%% Amazon Managed Blockchain and is subject to change.
+%% @doc Creates a new accessor for use with Managed Blockchain Ethereum
+%% nodes.
 %%
-%% We recommend that you use this feature only with test scenarios, and not
-%% in production environments.
-%%
-%% Creates a new accessor for use with Managed Blockchain Ethereum nodes. An
-%% accessor object is a container that has the information required for token
-%% based access to your Ethereum nodes.
+%% An accessor contains information required for token based access to your
+%% Ethereum nodes.
 create_accessor(Client, Input) ->
     create_accessor(Client, Input, []).
 create_accessor(Client, Input0, Options0) ->
@@ -231,21 +227,16 @@ create_proposal(Client, NetworkId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc The token based access feature is in preview release for Ethereum on
-%% Amazon Managed Blockchain and is subject to change.
+%% @doc Deletes an accessor that your Amazon Web Services account owns.
 %%
-%% We recommend that you use this feature only with test scenarios, and not
-%% in production environments.
-%%
-%% Deletes an accessor that your Amazon Web Services account owns. An
-%% accessor object is a container that has the information required for token
-%% based access to your Ethereum nodes including, the `BILLING_TOKEN'.
-%% After an accessor is deleted, the status of the accessor changes from
-%% `AVAILABLE' to `PENDING_DELETION'. An accessor in the
-%% `PENDING_DELETION' state can’t be used for new WebSocket requests or
-%% HTTP requests. However, WebSocket connections that were initiated while
-%% the accessor was in the `AVAILABLE' state remain open until they
-%% expire (up to 2 hours).
+%% An accessor object is a container that has the information required for
+%% token based access to your Ethereum nodes including, the
+%% `BILLING_TOKEN'. After an accessor is deleted, the status of the
+%% accessor changes from `AVAILABLE' to `PENDING_DELETION'. An
+%% accessor in the `PENDING_DELETION' state can’t be used for new
+%% WebSocket requests or HTTP requests. However, WebSocket connections that
+%% were initiated while the accessor was in the `AVAILABLE' state remain
+%% open until they expire (up to 2 hours).
 delete_accessor(Client, AccessorId, Input) ->
     delete_accessor(Client, AccessorId, Input, []).
 delete_accessor(Client, AccessorId, Input0, Options0) ->
@@ -330,15 +321,10 @@ delete_node(Client, NetworkId, NodeId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc The token based access feature is in preview release for Ethereum on
-%% Amazon Managed Blockchain and is subject to change.
+%% @doc Returns detailed information about an accessor.
 %%
-%% We recommend that you use this feature only with test scenarios, and not
-%% in production environments.
-%%
-%% Returns detailed information about an accessor. An accessor object is a
-%% container that has the information required for token based access to your
-%% Ethereum nodes.
+%% An accessor object is a container that has the information required for
+%% token based access to your Ethereum nodes.
 get_accessor(Client, AccessorId)
   when is_map(Client) ->
     get_accessor(Client, AccessorId, #{}, #{}).
@@ -465,15 +451,10 @@ get_proposal(Client, NetworkId, ProposalId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc The token based access feature is in preview release for Ethereum on
-%% Amazon Managed Blockchain and is subject to change.
+%% @doc Returns a list of the accessors and their properties.
 %%
-%% We recommend that you use this feature only with test scenarios, and not
-%% in production environments.
-%%
-%% Returns a list of the accessors and their properties. Accessor objects are
-%% containers that have the information required for token based access to
-%% your Ethereum nodes.
+%% Accessor objects are containers that have the information required for
+%% token based access to your Ethereum nodes.
 list_accessors(Client)
   when is_map(Client) ->
     list_accessors(Client, #{}, #{}).

@@ -68,6 +68,8 @@
          create_domain/3,
          create_domain_entry/2,
          create_domain_entry/3,
+         create_g_ui_session_access_details/2,
+         create_g_ui_session_access_details/3,
          create_instance_snapshot/2,
          create_instance_snapshot/3,
          create_instances/2,
@@ -182,6 +184,8 @@
          get_container_service_powers/3,
          get_container_services/2,
          get_container_services/3,
+         get_cost_estimate/2,
+         get_cost_estimate/3,
          get_disk/2,
          get_disk/3,
          get_disk_snapshot/2,
@@ -298,10 +302,14 @@
          set_ip_address_type/3,
          set_resource_access_for_bucket/2,
          set_resource_access_for_bucket/3,
+         start_g_ui_session/2,
+         start_g_ui_session/3,
          start_instance/2,
          start_instance/3,
          start_relational_database/2,
          start_relational_database/3,
+         stop_g_ui_session/2,
+         stop_g_ui_session/3,
          stop_instance/2,
          stop_instance/3,
          stop_relational_database/2,
@@ -725,6 +733,21 @@ create_domain_entry(Client, Input)
 create_domain_entry(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDomainEntry">>, Input, Options).
+
+%% @doc Creates two URLs that are used to access a virtual computer’s
+%% graphical user interface (GUI) session.
+%%
+%% The primary URL initiates a web-based NICE DCV session to the virtual
+%% computer's application. The secondary URL initiates a web-based NICE
+%% DCV session to the virtual computer's operating session.
+%%
+%% Use `StartGUISession' to open the session.
+create_g_ui_session_access_details(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_g_ui_session_access_details(Client, Input, []).
+create_g_ui_session_access_details(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateGUISessionAccessDetails">>, Input, Options).
 
 %% @doc Creates a snapshot of a specific virtual private server, or instance.
 %%
@@ -1511,6 +1534,17 @@ get_container_services(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContainerServices">>, Input, Options).
 
+%% @doc Retrieves information about the cost estimate for a specified
+%% resource.
+%%
+%% A cost estimate will not generate for a resource that has been deleted.
+get_cost_estimate(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_cost_estimate(Client, Input, []).
+get_cost_estimate(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCostEstimate">>, Input, Options).
+
 %% @doc Returns information about a specific block storage disk.
 get_disk(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -2146,6 +2180,18 @@ set_resource_access_for_bucket(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetResourceAccessForBucket">>, Input, Options).
 
+%% @doc Initiates a graphical user interface (GUI) session that’s used to
+%% access a virtual computer’s operating system and application.
+%%
+%% The session will be active for 1 hour. Use this action to resume the
+%% session after it expires.
+start_g_ui_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_g_ui_session(Client, Input, []).
+start_g_ui_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartGUISession">>, Input, Options).
+
 %% @doc Starts a specific Amazon Lightsail instance from a stopped state.
 %%
 %% To restart an instance, use the `reboot instance' operation.
@@ -2179,6 +2225,17 @@ start_relational_database(Client, Input)
 start_relational_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartRelationalDatabase">>, Input, Options).
+
+%% @doc Terminates a web-based NICE DCV session that’s used to access a
+%% virtual computer’s operating system or application.
+%%
+%% The session will close and any unsaved data will be lost.
+stop_g_ui_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_g_ui_session(Client, Input, []).
+stop_g_ui_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopGUISession">>, Input, Options).
 
 %% @doc Stops a specific Amazon Lightsail instance that is currently running.
 %%

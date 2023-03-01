@@ -25,20 +25,28 @@
          classify_document/3,
          contains_pii_entities/2,
          contains_pii_entities/3,
+         create_dataset/2,
+         create_dataset/3,
          create_document_classifier/2,
          create_document_classifier/3,
          create_endpoint/2,
          create_endpoint/3,
          create_entity_recognizer/2,
          create_entity_recognizer/3,
+         create_flywheel/2,
+         create_flywheel/3,
          delete_document_classifier/2,
          delete_document_classifier/3,
          delete_endpoint/2,
          delete_endpoint/3,
          delete_entity_recognizer/2,
          delete_entity_recognizer/3,
+         delete_flywheel/2,
+         delete_flywheel/3,
          delete_resource_policy/2,
          delete_resource_policy/3,
+         describe_dataset/2,
+         describe_dataset/3,
          describe_document_classification_job/2,
          describe_document_classification_job/3,
          describe_document_classifier/2,
@@ -53,6 +61,10 @@
          describe_entity_recognizer/3,
          describe_events_detection_job/2,
          describe_events_detection_job/3,
+         describe_flywheel/2,
+         describe_flywheel/3,
+         describe_flywheel_iteration/2,
+         describe_flywheel_iteration/3,
          describe_key_phrases_detection_job/2,
          describe_key_phrases_detection_job/3,
          describe_pii_entities_detection_job/2,
@@ -81,6 +93,8 @@
          detect_targeted_sentiment/3,
          import_model/2,
          import_model/3,
+         list_datasets/2,
+         list_datasets/3,
          list_document_classification_jobs/2,
          list_document_classification_jobs/3,
          list_document_classifier_summaries/2,
@@ -99,6 +113,10 @@
          list_entity_recognizers/3,
          list_events_detection_jobs/2,
          list_events_detection_jobs/3,
+         list_flywheel_iteration_history/2,
+         list_flywheel_iteration_history/3,
+         list_flywheels/2,
+         list_flywheels/3,
          list_key_phrases_detection_jobs/2,
          list_key_phrases_detection_jobs/3,
          list_pii_entities_detection_jobs/2,
@@ -121,6 +139,8 @@
          start_entities_detection_job/3,
          start_events_detection_job/2,
          start_events_detection_job/3,
+         start_flywheel_iteration/2,
+         start_flywheel_iteration/3,
          start_key_phrases_detection_job/2,
          start_key_phrases_detection_job/3,
          start_pii_entities_detection_job/2,
@@ -154,7 +174,9 @@
          untag_resource/2,
          untag_resource/3,
          update_endpoint/2,
-         update_endpoint/3]).
+         update_endpoint/3,
+         update_flywheel/2,
+         update_flywheel/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -258,6 +280,18 @@ contains_pii_entities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ContainsPiiEntities">>, Input, Options).
 
+%% @doc Creates a dataset to upload training or test data for a model
+%% associated with a flywheel.
+%%
+%% For more information about datasets, see Flywheel overview in the Amazon
+%% Comprehend Developer Guide.
+create_dataset(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_dataset(Client, Input, []).
+create_dataset(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateDataset">>, Input, Options).
+
 %% @doc Creates a new document classifier that you can use to categorize
 %% documents.
 %%
@@ -286,13 +320,39 @@ create_endpoint(Client, Input, Options)
 %% @doc Creates an entity recognizer using submitted files.
 %%
 %% After your `CreateEntityRecognizer' request is submitted, you can
-%% check job status using the API.
+%% check job status using the `DescribeEntityRecognizer' API.
 create_entity_recognizer(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_entity_recognizer(Client, Input, []).
 create_entity_recognizer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateEntityRecognizer">>, Input, Options).
+
+%% @doc A flywheel is an AWS resource that orchestrates the ongoing training
+%% of a model for custom classification or custom entity recognition.
+%%
+%% You can create a flywheel to start with an existing trained model, or
+%% Comprehend can create and train a new model.
+%%
+%% When you create the flywheel, Comprehend creates a data lake in your
+%% account. The data lake holds the training data and test data for all
+%% versions of the model.
+%%
+%% To use a flywheel with an existing trained model, you specify the active
+%% model version. Comprehend copies the model's training data and test
+%% data into the flywheel's data lake.
+%%
+%% To use the flywheel with a new model, you need to provide a dataset for
+%% training data (and optional test data) when you create the flywheel.
+%%
+%% For more information about flywheels, see Flywheel overview in the Amazon
+%% Comprehend Developer Guide.
+create_flywheel(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_flywheel(Client, Input, []).
+create_flywheel(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateFlywheel">>, Input, Options).
 
 %% @doc Deletes a previously created document classifier
 %%
@@ -342,6 +402,20 @@ delete_entity_recognizer(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEntityRecognizer">>, Input, Options).
 
+%% @doc Deletes a flywheel.
+%%
+%% When you delete the flywheel, Amazon Comprehend does not delete the data
+%% lake or the model associated with the flywheel.
+%%
+%% For more information about flywheels, see Flywheel overview in the Amazon
+%% Comprehend Developer Guide.
+delete_flywheel(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_flywheel(Client, Input, []).
+delete_flywheel(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteFlywheel">>, Input, Options).
+
 %% @doc Deletes a resource-based policy that is attached to a custom model.
 delete_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -349,6 +423,17 @@ delete_resource_policy(Client, Input)
 delete_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourcePolicy">>, Input, Options).
+
+%% @doc Returns information about the dataset that you specify.
+%%
+%% For more information about datasets, see Flywheel overview in the Amazon
+%% Comprehend Developer Guide.
+describe_dataset(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_dataset(Client, Input, []).
+describe_dataset(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDataset">>, Input, Options).
 
 %% @doc Gets the properties associated with a document classification job.
 %%
@@ -416,6 +501,28 @@ describe_events_detection_job(Client, Input)
 describe_events_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEventsDetectionJob">>, Input, Options).
+
+%% @doc Provides configuration information about the flywheel.
+%%
+%% For more information about flywheels, see Flywheel overview in the Amazon
+%% Comprehend Developer Guide.
+describe_flywheel(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_flywheel(Client, Input, []).
+describe_flywheel(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeFlywheel">>, Input, Options).
+
+%% @doc Retrieve the configuration properties of a flywheel iteration.
+%%
+%% For more information about flywheels, see Flywheel overview in the Amazon
+%% Comprehend Developer Guide.
+describe_flywheel_iteration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_flywheel_iteration(Client, Input, []).
+describe_flywheel_iteration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeFlywheelIteration">>, Input, Options).
 
 %% @doc Gets the properties associated with a key phrases detection job.
 %%
@@ -581,6 +688,17 @@ import_model(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportModel">>, Input, Options).
 
+%% @doc List the datasets that you have configured in this region.
+%%
+%% For more information about datasets, see Flywheel overview in the Amazon
+%% Comprehend Developer Guide.
+list_datasets(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_datasets(Client, Input, []).
+list_datasets(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDatasets">>, Input, Options).
+
 %% @doc Gets a list of the documentation classification jobs that you have
 %% submitted.
 list_document_classification_jobs(Client, Input)
@@ -667,6 +785,25 @@ list_events_detection_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEventsDetectionJobs">>, Input, Options).
 
+%% @doc Information about the history of a flywheel iteration.
+%%
+%% For more information about flywheels, see Flywheel overview in the Amazon
+%% Comprehend Developer Guide.
+list_flywheel_iteration_history(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_flywheel_iteration_history(Client, Input, []).
+list_flywheel_iteration_history(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFlywheelIterationHistory">>, Input, Options).
+
+%% @doc Gets a list of the flywheels that you have created.
+list_flywheels(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_flywheels(Client, Input, []).
+list_flywheels(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFlywheels">>, Input, Options).
+
 %% @doc Get a list of key phrase detection jobs that you have submitted.
 list_key_phrases_detection_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -730,7 +867,8 @@ put_resource_policy(Client, Input, Options)
 
 %% @doc Starts an asynchronous document classification job.
 %%
-%% Use the operation to track the progress of the job.
+%% Use the `DescribeDocumentClassificationJob' operation to track the
+%% progress of the job.
 start_document_classification_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_document_classification_job(Client, Input, []).
@@ -774,6 +912,18 @@ start_events_detection_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartEventsDetectionJob">>, Input, Options).
 
+%% @doc Start the flywheel iteration.This operation uses any new datasets to
+%% train a new model version.
+%%
+%% For more information about flywheels, see Flywheel overview in the Amazon
+%% Comprehend Developer Guide.
+start_flywheel_iteration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_flywheel_iteration(Client, Input, []).
+start_flywheel_iteration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartFlywheelIteration">>, Input, Options).
+
 %% @doc Starts an asynchronous key phrase detection job for a collection of
 %% documents.
 %%
@@ -808,7 +958,8 @@ start_sentiment_detection_job(Client, Input, Options)
 %% @doc Starts an asynchronous targeted sentiment detection job for a
 %% collection of documents.
 %%
-%% Use the operation to track the status of a job.
+%% Use the `DescribeTargetedSentimentDetectionJob' operation to track the
+%% status of a job.
 start_targeted_sentiment_detection_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_targeted_sentiment_detection_job(Client, Input, []).
@@ -1001,6 +1152,14 @@ update_endpoint(Client, Input)
 update_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEndpoint">>, Input, Options).
+
+%% @doc Update the configuration information for an existing flywheel.
+update_flywheel(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_flywheel(Client, Input, []).
+update_flywheel(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateFlywheel">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

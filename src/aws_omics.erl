@@ -1486,7 +1486,10 @@ start_annotation_import_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts a read set activation job.
+%% @doc Activates an archived read set.
+%%
+%% To reduce storage charges, Amazon Omics archives unused read sets after 30
+%% days.
 start_read_set_activation_job(Client, SequenceStoreId, Input) ->
     start_read_set_activation_job(Client, SequenceStoreId, Input, []).
 start_read_set_activation_job(Client, SequenceStoreId, Input0, Options0) ->
@@ -1509,7 +1512,7 @@ start_read_set_activation_job(Client, SequenceStoreId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Starts a read set export job.
+%% @doc Exports a read set to Amazon S3.
 start_read_set_export_job(Client, SequenceStoreId, Input) ->
     start_read_set_export_job(Client, SequenceStoreId, Input, []).
 start_read_set_export_job(Client, SequenceStoreId, Input0, Options0) ->

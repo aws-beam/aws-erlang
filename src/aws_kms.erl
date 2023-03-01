@@ -41,14 +41,14 @@
 %%
 %% Signing Requests
 %%
-%% Requests must be signed by using an access key ID and a secret access key.
-%% We strongly recommend that you do not use your Amazon Web Services account
-%% (root) access key ID and secret access key for everyday work with KMS.
-%% Instead, use the access key ID and secret access key for an IAM user. You
-%% can also use the Amazon Web Services Security Token Service to generate
-%% temporary security credentials that you can use to sign requests.
+%% Requests must be signed using an access key ID and a secret access key. We
+%% strongly recommend that you do not use your Amazon Web Services account
+%% root access key ID and secret access key for everyday work. You can use
+%% the access key ID and secret access key for an IAM user or you can use the
+%% Security Token Service (STS) to generate temporary security credentials
+%% and use those to sign requests.
 %%
-%% All KMS operations require Signature Version 4.
+%% All KMS requests must be signed with Signature Version 4.
 %%
 %% Logging API Requests
 %%
@@ -762,12 +762,12 @@ create_key(Client, Input, Options)
 %% intend.
 %%
 %% Whenever possible, use key policies to give users permission to call the
-%% `Decrypt' operation on a particular KMS key, instead of using IAM
-%% policies. Otherwise, you might create an IAM user policy that gives the
-%% user `Decrypt' permission on all KMS keys. This user could decrypt
-%% ciphertext that was encrypted by KMS keys in other accounts if the key
-%% policy for the cross-account KMS key permits it. If you must use an IAM
-%% policy for `Decrypt' permissions, limit the user to particular KMS
+%% `Decrypt' operation on a particular KMS key, instead of using
+%% &amp;IAM; policies. Otherwise, you might create an &amp;IAM; policy that
+%% gives the user `Decrypt' permission on all KMS keys. This user could
+%% decrypt ciphertext that was encrypted by KMS keys in other accounts if the
+%% key policy for the cross-account KMS key permits it. If you must use an
+%% IAM policy for `Decrypt' permissions, limit the user to particular KMS
 %% keys or particular trusted accounts. For details, see Best practices for
 %% IAM policies in the Key Management Service Developer Guide.
 %%
@@ -780,9 +780,9 @@ create_key(Client, Input, Options)
 %% state. For details, see Key states of KMS keys in the Key Management
 %% Service Developer Guide.
 %%
-%% Cross-account use: Yes. To perform this operation with a KMS key in a
-%% different Amazon Web Services account, specify the key ARN or alias ARN in
-%% the value of the `KeyId' parameter.
+%% Cross-account use: Yes. If you use the `KeyId' parameter to identify a
+%% KMS key in a different Amazon Web Services account, specify the key ARN or
+%% the alias ARN of the KMS key.
 %%
 %% Required permissions: kms:Decrypt (key policy)
 %%
@@ -1374,10 +1374,10 @@ encrypt(Client, Input, Options)
 %% `KeySpec' or `NumberOfBytes' parameters (but not both). For
 %% 128-bit and 256-bit data keys, use the `KeySpec' parameter.
 %%
-%% To generate an SM4 data key (China Regions only), specify a `KeySpec'
-%% value of `AES_128' or `NumberOfBytes' value of `128'. The
-%% symmetric encryption key used in China Regions to encrypt your data key is
-%% an SM4 encryption key.
+%% To generate a 128-bit SM4 data key (China Regions only), specify a
+%% `KeySpec' value of `AES_128' or a `NumberOfBytes' value of
+%% `16'. The symmetric encryption key used in China Regions to encrypt
+%% your data key is an SM4 encryption key.
 %%
 %% To get only an encrypted copy of the data key, use
 %% `GenerateDataKeyWithoutPlaintext'. To generate an asymmetric data key
@@ -3011,9 +3011,11 @@ update_primary_region(Client, Input, Options)
 %% asymmetric KMS key. For information about asymmetric KMS keys, see
 %% Asymmetric KMS keys in the Key Management Service Developer Guide.
 %%
-%% To verify a digital signature, you can use the `Verify' operation.
-%% Specify the same asymmetric KMS key, message, and signing algorithm that
-%% were used to produce the signature.
+%% To use the `Verify' operation, specify the same asymmetric KMS key,
+%% message, and signing algorithm that were used to produce the signature.
+%% The message type does not need to be the same as the one used for signing,
+%% but it must indicate whether the value of the `Message' parameter
+%% should be hashed as part of the verification process.
 %%
 %% You can also verify the digital signature by using the public key of the
 %% KMS key outside of KMS. Use the `GetPublicKey' operation to download
