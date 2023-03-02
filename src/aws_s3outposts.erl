@@ -11,6 +11,9 @@
          list_endpoints/1,
          list_endpoints/3,
          list_endpoints/4,
+         list_outposts_with_s3/1,
+         list_outposts_with_s3/3,
+         list_outposts_with_s3/4,
          list_shared_endpoints/2,
          list_shared_endpoints/4,
          list_shared_endpoints/5]).
@@ -109,6 +112,38 @@ list_endpoints(Client, QueryMap, HeadersMap)
 list_endpoints(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/S3Outposts/ListEndpoints"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the Outposts with S3 on Outposts capacity for your Amazon Web
+%% Services account.
+%%
+%% Includes S3 on Outposts that you have access to as the Outposts owner, or
+%% as a shared user from Resource Access Manager (RAM).
+list_outposts_with_s3(Client)
+  when is_map(Client) ->
+    list_outposts_with_s3(Client, #{}, #{}).
+
+list_outposts_with_s3(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_outposts_with_s3(Client, QueryMap, HeadersMap, []).
+
+list_outposts_with_s3(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/S3Outposts/ListOutpostsWithS3"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}

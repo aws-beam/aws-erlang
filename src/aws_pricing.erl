@@ -38,8 +38,12 @@
          describe_services/3,
          get_attribute_values/2,
          get_attribute_values/3,
+         get_price_list_file_url/2,
+         get_price_list_file_url/3,
          get_products/2,
-         get_products/3]).
+         get_products/3,
+         list_price_lists/2,
+         list_price_lists/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -75,6 +79,22 @@ get_attribute_values(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAttributeValues">>, Input, Options).
 
+%% @doc This feature is in preview release and is subject to change.
+%%
+%% Your use of Amazon Web Services Price List API is subject to the Beta
+%% Service Participation terms of the Amazon Web Services Service Terms
+%% (Section 1.10).
+%%
+%% This returns the URL that you can retrieve your Price List file from. This
+%% URL is based on the `PriceListArn' and `FileFormat' that you
+%% retrieve from the `ListPriceLists' response.
+get_price_list_file_url(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_price_list_file_url(Client, Input, []).
+get_price_list_file_url(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetPriceListFileUrl">>, Input, Options).
+
 %% @doc Returns a list of all products that match the filter criteria.
 get_products(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -82,6 +102,27 @@ get_products(Client, Input)
 get_products(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetProducts">>, Input, Options).
+
+%% @doc This feature is in preview release and is subject to change.
+%%
+%% Your use of Amazon Web Services Price List API is subject to the Beta
+%% Service Participation terms of the Amazon Web Services Service Terms
+%% (Section 1.10).
+%%
+%% This returns a list of Price List references that the requester if
+%% authorized to view, given a `ServiceCode', `CurrencyCode', and an
+%% `EffectiveDate'. Use without a `RegionCode' filter to list Price
+%% List references from all available Amazon Web Services Regions. Use with a
+%% `RegionCode' filter to get the Price List reference that's
+%% specific to a specific Amazon Web Services Region. You can use the
+%% `PriceListArn' from the response to get your preferred Price List
+%% files through the `GetPriceListFileUrl' API.
+list_price_lists(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_price_lists(Client, Input, []).
+list_price_lists(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListPriceLists">>, Input, Options).
 
 %%====================================================================
 %% Internal functions
