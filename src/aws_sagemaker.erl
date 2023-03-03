@@ -1385,7 +1385,7 @@ create_model_quality_job_definition(Client, Input, Options)
     request(Client, <<"CreateModelQualityJobDefinition">>, Input, Options).
 
 %% @doc Creates a schedule that regularly starts Amazon SageMaker Processing
-%% Jobs to monitor the data captured for an Amazon SageMaker Endoint.
+%% Jobs to monitor the data captured for an Amazon SageMaker Endpoint.
 create_monitoring_schedule(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_monitoring_schedule(Client, Input, []).
@@ -2851,8 +2851,8 @@ get_sagemaker_servicecatalog_portfolio_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSagemakerServicecatalogPortfolioStatus">>, Input, Options).
 
-%% @doc An auto-complete API for the search functionality in the Amazon
-%% SageMaker console.
+%% @doc An auto-complete API for the search functionality in the SageMaker
+%% console.
 %%
 %% It returns suggestions of possible matches for the property name to use in
 %% `Search' queries. Provides suggestions for `HyperParameters',
@@ -3580,7 +3580,7 @@ retry_pipeline_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RetryPipelineExecution">>, Input, Options).
 
-%% @doc Finds Amazon SageMaker resources that match a search query.
+%% @doc Finds SageMaker resources that match a search query.
 %%
 %% Matching resources are returned as a list of `SearchRecord' objects in
 %% the response. You can sort the search results by any resource property in
@@ -3588,6 +3588,10 @@ retry_pipeline_execution(Client, Input, Options)
 %%
 %% You can query against the following value types: numeric, text, Boolean,
 %% and timestamp.
+%%
+%% The Search API may provide access to otherwise restricted data. See Amazon
+%% SageMaker API Permissions: Actions, Permissions, and Resources Reference
+%% for more information.
 search(Client, Input)
   when is_map(Client), is_map(Input) ->
     search(Client, Input, []).

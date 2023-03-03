@@ -298,10 +298,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% Parameters objects, that field will be set to its system-default value
 %% after the update.
 %%
-%% &lt;p&gt;For more information about pipes, see &lt;a
-%% href=&quot;https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-pipes.html&quot;&gt;
-%% Amazon EventBridge Pipes&lt;/a&gt; in the Amazon EventBridge User
-%% Guide.&lt;/p&gt;
+%% For more information about pipes, see Amazon EventBridge Pipes in the
+%% Amazon EventBridge User Guide.
 update_pipe(Client, Name, Input) ->
     update_pipe(Client, Name, Input, []).
 update_pipe(Client, Name, Input0, Options0) ->
