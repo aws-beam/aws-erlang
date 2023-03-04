@@ -362,7 +362,13 @@ create_backup(Client, Input, Options)
 %% A global table creates a replication relationship between two or more
 %% DynamoDB tables with the same table name in the provided Regions.
 %%
-%% This operation only applies to Version 2017.11.29 of global tables.
+%% This operation only applies to Version 2017.11.29 (Legacy) of global
+%% tables. We recommend using Version 2019.11.21 (Current) when creating new
+%% global tables, as it provides greater flexibility, higher efficiency and
+%% consumes less write capacity than 2017.11.29 (Legacy). To determine which
+%% version you are using, see Determining the version. To update existing
+%% global tables from version 2017.11.29 (Legacy) to version 2019.11.21
+%% (Current), see Updating global tables.
 %%
 %% If you want to add a new replica table to a global table, each of the
 %% following conditions must be true:
@@ -479,6 +485,9 @@ delete_item(Client, Input, Options)
 %% DynamoDB returns a `ResourceNotFoundException'. If table is already in
 %% the `DELETING' state, no error is returned.
 %%
+%% This operation only applies to Version 2019.11.21 (Current) of global
+%% tables.
+%%
 %% DynamoDB might continue to accept data read and write operations, such as
 %% `GetItem' and `PutItem', on a table in the `DELETING' state
 %% until the table deletion is complete.
@@ -532,7 +541,7 @@ describe_continuous_backups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeContinuousBackups">>, Input, Options).
 
-%% @doc Returns information about contributor insights, for a given table or
+%% @doc Returns information about contributor insights for a given table or
 %% global secondary index.
 describe_contributor_insights(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -542,6 +551,10 @@ describe_contributor_insights(Client, Input, Options)
     request(Client, <<"DescribeContributorInsights">>, Input, Options).
 
 %% @doc Returns the regional endpoint information.
+%%
+%% This action must be included in your VPC endpoint policies, or access to
+%% the DescribeEndpoints API will be denied. For more information on policy
+%% permissions, please see Internetwork traffic privacy.
 describe_endpoints(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_endpoints(Client, Input, []).
@@ -559,9 +572,13 @@ describe_export(Client, Input, Options)
 
 %% @doc Returns information about the specified global table.
 %%
-%% This operation only applies to Version 2017.11.29 of global tables. If you
-%% are using global tables Version 2019.11.21 you can use DescribeTable
-%% instead.
+%% This operation only applies to Version 2017.11.29 (Legacy) of global
+%% tables. We recommend using Version 2019.11.21 (Current) when creating new
+%% global tables, as it provides greater flexibility, higher efficiency and
+%% consumes less write capacity than 2017.11.29 (Legacy). To determine which
+%% version you are using, see Determining the version. To update existing
+%% global tables from version 2017.11.29 (Legacy) to version 2019.11.21
+%% (Current), see Updating global tables.
 describe_global_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_global_table(Client, Input, []).
@@ -571,7 +588,13 @@ describe_global_table(Client, Input, Options)
 
 %% @doc Describes Region-specific settings for a global table.
 %%
-%% This operation only applies to Version 2017.11.29 of global tables.
+%% This operation only applies to Version 2017.11.29 (Legacy) of global
+%% tables. We recommend using Version 2019.11.21 (Current) when creating new
+%% global tables, as it provides greater flexibility, higher efficiency and
+%% consumes less write capacity than 2017.11.29 (Legacy). To determine which
+%% version you are using, see Determining the version. To update existing
+%% global tables from version 2017.11.29 (Legacy) to version 2019.11.21
+%% (Current), see Updating global tables.
 describe_global_table_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_global_table_settings(Client, Input, []).
@@ -669,6 +692,9 @@ describe_limits(Client, Input, Options)
 %% the table, when it was created, the primary key schema, and any indexes on
 %% the table.
 %%
+%% This operation only applies to Version 2019.11.21 (Current) of global
+%% tables.
+%%
 %% If you issue a `DescribeTable' request immediately after a
 %% `CreateTable' request, DynamoDB might return a
 %% `ResourceNotFoundException'. This is because `DescribeTable' uses
@@ -685,7 +711,8 @@ describe_table(Client, Input, Options)
 %% @doc Describes auto scaling settings across replicas of the global table
 %% at once.
 %%
-%% This operation only applies to Version 2019.11.21 of global tables.
+%% This operation only applies to Version 2019.11.21 (Current) of global
+%% tables.
 describe_table_replica_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_table_replica_auto_scaling(Client, Input, []).
@@ -739,7 +766,8 @@ enable_kinesis_streaming_destination(Client, Input, Options)
 %% number of items (if using the Limit parameter) or a maximum of 1 MB of
 %% data (and then apply any filtering to the results using `WHERE'
 %% clause). If `LastEvaluatedKey' is present in the response, you need to
-%% paginate the result set.
+%% paginate the result set. If `NextToken' is present, you need to
+%% paginate the result set and include `NextToken'.
 execute_statement(Client, Input)
   when is_map(Client), is_map(Input) ->
     execute_statement(Client, Input, []).
@@ -837,7 +865,13 @@ list_exports(Client, Input, Options)
 
 %% @doc Lists all global tables that have a replica in the specified Region.
 %%
-%% This operation only applies to Version 2017.11.29 of global tables.
+%% This operation only applies to Version 2017.11.29 (Legacy) of global
+%% tables. We recommend using Version 2019.11.21 (Current) when creating new
+%% global tables, as it provides greater flexibility, higher efficiency and
+%% consumes less write capacity than 2017.11.29 (Legacy). To determine which
+%% version you are using, see Determining the version. To update existing
+%% global tables from version 2017.11.29 (Legacy) to version 2019.11.21
+%% (Current), see Updating global tables.
 list_global_tables(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_global_tables(Client, Input, []).
@@ -1131,8 +1165,8 @@ tag_resource(Client, Input, Options)
 %%
 %% </li> <li> There is a user error, such as an invalid data format.
 %%
-%% </li> <li> The aggregate size of the items in the transaction cannot
-%% exceed 4 MB.
+%% </li> <li> The aggregate size of the items in the transaction exceeded 4
+%% MB.
 %%
 %% </li> </ul>
 transact_get_items(Client, Input)
@@ -1270,6 +1304,18 @@ update_contributor_insights(Client, Input, Options)
 %% have the same key schema, have DynamoDB Streams enabled, and have the same
 %% provisioned and maximum write capacity units.
 %%
+%% This operation only applies to Version 2017.11.29 (Legacy) of global
+%% tables. We recommend using Version 2019.11.21 (Current) when creating new
+%% global tables, as it provides greater flexibility, higher efficiency and
+%% consumes less write capacity than 2017.11.29 (Legacy). To determine which
+%% version you are using, see Determining the version. To update existing
+%% global tables from version 2017.11.29 (Legacy) to version 2019.11.21
+%% (Current), see Updating global tables.
+%%
+%% This operation only applies to Version 2017.11.29 of global tables. If you
+%% are using global tables Version 2019.11.21 you can use DescribeTable
+%% instead.
+%%
 %% Although you can use `UpdateGlobalTable' to add replicas and remove
 %% replicas in a single request, for simplicity we recommend that you issue
 %% separate requests for adding or removing replicas.
@@ -1294,6 +1340,14 @@ update_global_table(Client, Input, Options)
     request(Client, <<"UpdateGlobalTable">>, Input, Options).
 
 %% @doc Updates settings for a global table.
+%%
+%% This operation only applies to Version 2017.11.29 (Legacy) of global
+%% tables. We recommend using Version 2019.11.21 (Current) when creating new
+%% global tables, as it provides greater flexibility, higher efficiency and
+%% consumes less write capacity than 2017.11.29 (Legacy). To determine which
+%% version you are using, see Determining the version. To update existing
+%% global tables from version 2017.11.29 (Legacy) to version 2019.11.21
+%% (Current), see Updating global tables.
 update_global_table_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_global_table_settings(Client, Input, []).
@@ -1321,6 +1375,9 @@ update_item(Client, Input, Options)
 %% @doc Modifies the provisioned throughput settings, global secondary
 %% indexes, or DynamoDB Streams settings for a given table.
 %%
+%% This operation only applies to Version 2019.11.21 (Current) of global
+%% tables.
+%%
 %% You can only perform one of the following operations at once:
 %%
 %% <ul> <li> Modify the provisioned throughput settings of the table.
@@ -1345,7 +1402,8 @@ update_table(Client, Input, Options)
 
 %% @doc Updates auto scaling settings on your global tables at once.
 %%
-%% This operation only applies to Version 2019.11.21 of global tables.
+%% This operation only applies to Version 2019.11.21 (Current) of global
+%% tables.
 update_table_replica_auto_scaling(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_table_replica_auto_scaling(Client, Input, []).

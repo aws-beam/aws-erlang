@@ -112,11 +112,11 @@
 %% request, as categories cannot be applied retroactively.
 %%
 %% When creating a new category, you can use the `InputType' parameter to
-%% label the category as a batch category (`POST_CALL') or a streaming
-%% category (`REAL_TIME'). Batch categories can only be applied to batch
-%% transcriptions and streaming categories can only be applied to streaming
+%% label the category as a `POST_CALL' or a `REAL_TIME' category.
+%% `POST_CALL' categories can only be applied to post-call transcriptions
+%% and `REAL_TIME' categories can only be applied to real-time
 %% transcriptions. If you do not include `InputType', your category is
-%% created as a batch category by default.
+%% created as a `POST_CALL' category by default.
 %%
 %% Call Analytics categories are composed of rules. For each category, you
 %% must create between 1 and 20 rules. Rules can include these parameters: ,
@@ -125,7 +125,8 @@
 %% To update an existing category, see .
 %%
 %% To learn more about Call Analytics categories, see Creating categories for
-%% batch transcriptions and Creating categories for streaming transcriptions.
+%% post-call transcriptions and Creating categories for real-time
+%% transcriptions.
 create_call_analytics_category(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_call_analytics_category(Client, Input, []).
@@ -158,10 +159,11 @@ create_language_model(Client, Input, Options)
 %% @doc Creates a new custom medical vocabulary.
 %%
 %% Before creating a new custom medical vocabulary, you must first upload a
-%% text file that contains your new entries, phrases, and terms into an
-%% Amazon S3 bucket. Note that this differs from , where you can include a
-%% list of terms within your request using the `Phrases' flag;
-%% `CreateMedicalVocabulary' does not support the `Phrases' flag.
+%% text file that contains your vocabulary table into an Amazon S3 bucket.
+%% Note that this differs from , where you can include a list of terms within
+%% your request using the `Phrases' flag; `CreateMedicalVocabulary'
+%% does not support the `Phrases' flag and only accepts vocabularies in
+%% table format.
 %%
 %% Each language has a character set that contains all allowed characters for
 %% that specific language. If you use unsupported characters, your custom
@@ -570,12 +572,14 @@ list_vocabulary_filters(Client, Input, Options)
 %% create them before submitting your job request. Categories cannot be
 %% retroactively applied to a job. To create a new category, use the
 %% operation. To learn more about Call Analytics categories, see Creating
-%% categories for batch transcriptions and Creating categories for streaming
-%% transcriptions.
+%% categories for post-call transcriptions and Creating categories for
+%% real-time transcriptions.
 %%
 %% To make a `StartCallAnalyticsJob' request, you must first upload your
 %% media file into an Amazon S3 bucket; you can then specify the Amazon S3
 %% location of the file using the `Media' parameter.
+%%
+%% Note that job queuing is enabled by default for Call Analytics jobs.
 %%
 %% You must include the following parameters in your
 %% `StartCallAnalyticsJob' request:
