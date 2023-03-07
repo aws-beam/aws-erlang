@@ -438,9 +438,8 @@ create_stream_key(Client, Input0, Options0) ->
 %% If you try to delete a live channel, you will get an error (409
 %% ConflictException). To delete a channel that is live, call
 %% `StopStream', wait for the Amazon EventBridge &quot;Stream End&quot;
-%% event (to verify that the stream's state was changed from Live to
-%% Offline), then call DeleteChannel. (See Using EventBridge with Amazon
-%% IVS.)
+%% event (to verify that the stream's state is no longer Live), then call
+%% DeleteChannel. (See Using EventBridge with Amazon IVS.)
 delete_channel(Client, Input) ->
     delete_channel(Client, Input, []).
 delete_channel(Client, Input0, Options0) ->
