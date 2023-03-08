@@ -20,6 +20,8 @@
          add_tags_to_resource/3,
          apply_pending_maintenance_action/2,
          apply_pending_maintenance_action/3,
+         batch_start_recommendations/2,
+         batch_start_recommendations/3,
          cancel_replication_task_assessment_run/2,
          cancel_replication_task_assessment_run/3,
          create_endpoint/2,
@@ -88,6 +90,10 @@
          describe_orderable_replication_instances/3,
          describe_pending_maintenance_actions/2,
          describe_pending_maintenance_actions/3,
+         describe_recommendation_limitations/2,
+         describe_recommendation_limitations/3,
+         describe_recommendations/2,
+         describe_recommendations/3,
          describe_refresh_schemas_status/2,
          describe_refresh_schemas_status/3,
          describe_replication_instance_task_logs/2,
@@ -134,6 +140,8 @@
          remove_tags_from_resource/3,
          run_fleet_advisor_lsa_analysis/2,
          run_fleet_advisor_lsa_analysis/3,
+         start_recommendations/2,
+         start_recommendations/3,
          start_replication_task/2,
          start_replication_task/3,
          start_replication_task_assessment/2,
@@ -154,7 +162,7 @@
 %%====================================================================
 
 %% @doc Adds metadata tags to an DMS resource, including replication
-%% instance, endpoint, security group, and migration task.
+%% instance, endpoint, subnet group, and migration task.
 %%
 %% These tags can also be used with cost allocation reporting to track cost
 %% associated with DMS resources, or used in a Condition statement in an IAM
@@ -174,6 +182,22 @@ apply_pending_maintenance_action(Client, Input)
 apply_pending_maintenance_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ApplyPendingMaintenanceAction">>, Input, Options).
+
+%% @doc Starts the analysis of up to 20 source databases to recommend target
+%% engines for each source database.
+%%
+%% This is a batch version of StartRecommendations.
+%%
+%% The result of analysis of each source database is reported individually in
+%% the response. Because the batch request can result in a combination of
+%% successful and unsuccessful actions, you should check for batch errors
+%% even when the call returns an HTTP status code of `200'.
+batch_start_recommendations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_start_recommendations(Client, Input, []).
+batch_start_recommendations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchStartRecommendations">>, Input, Options).
 
 %% @doc Cancels a single premigration assessment run.
 %%
@@ -552,6 +576,24 @@ describe_pending_maintenance_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePendingMaintenanceActions">>, Input, Options).
 
+%% @doc Returns a paginated list of limitations for recommendations of target
+%% Amazon Web Services engines.
+describe_recommendation_limitations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_recommendation_limitations(Client, Input, []).
+describe_recommendation_limitations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeRecommendationLimitations">>, Input, Options).
+
+%% @doc Returns a paginated list of target engine recommendations for your
+%% source databases.
+describe_recommendations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_recommendations(Client, Input, []).
+describe_recommendations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeRecommendations">>, Input, Options).
+
 %% @doc Returns the status of the RefreshSchemas operation.
 describe_refresh_schemas_status(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -667,7 +709,7 @@ import_certificate(Client, Input, Options)
     request(Client, <<"ImportCertificate">>, Input, Options).
 
 %% @doc Lists all metadata tags attached to an DMS resource, including
-%% replication instance, endpoint, security group, and migration task.
+%% replication instance, endpoint, subnet group, and migration task.
 %%
 %% For more information, see `Tag' data type description.
 list_tags_for_resource(Client, Input)
@@ -783,7 +825,7 @@ reload_tables(Client, Input, Options)
     request(Client, <<"ReloadTables">>, Input, Options).
 
 %% @doc Removes metadata tags from an DMS resource, including replication
-%% instance, endpoint, security group, and migration task.
+%% instance, endpoint, subnet group, and migration task.
 %%
 %% For more information, see `Tag' data type description.
 remove_tags_from_resource(Client, Input)
@@ -801,6 +843,18 @@ run_fleet_advisor_lsa_analysis(Client, Input)
 run_fleet_advisor_lsa_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RunFleetAdvisorLsaAnalysis">>, Input, Options).
+
+%% @doc Starts the analysis of your source database to provide
+%% recommendations of target engines.
+%%
+%% You can create recommendations for multiple source databases using
+%% BatchStartRecommendations.
+start_recommendations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_recommendations(Client, Input, []).
+start_recommendations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartRecommendations">>, Input, Options).
 
 %% @doc Starts the replication task.
 %%
