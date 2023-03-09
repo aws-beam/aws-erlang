@@ -4172,7 +4172,7 @@ update_user_profile(Client, Input, Options)
 %% are denied and get a `Not Found' error message on the worker portal.
 %%
 %% To restrict access to all the workers in public internet, add the
-%% `SourceIpConfig' CIDR value as &quot;0.0.0.0/0&quot;.
+%% `SourceIpConfig' CIDR value as &quot;10.0.0.0/16&quot;.
 %%
 %% Amazon SageMaker does not support Source Ip restriction for worker portals
 %% in VPC.

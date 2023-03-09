@@ -36,6 +36,8 @@
          describe_transaction/3,
          extend_transaction/2,
          extend_transaction/3,
+         get_data_cells_filter/2,
+         get_data_cells_filter/3,
          get_data_lake_settings/2,
          get_data_lake_settings/3,
          get_effective_permissions_for_path/2,
@@ -88,6 +90,8 @@
          start_query_planning/3,
          start_transaction/2,
          start_transaction/3,
+         update_data_cells_filter/2,
+         update_data_cells_filter/3,
          update_l_f_tag/2,
          update_l_f_tag/3,
          update_resource/2,
@@ -475,6 +479,29 @@ extend_transaction(Client, Input) ->
 extend_transaction(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ExtendTransaction"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a data cells filter.
+get_data_cells_filter(Client, Input) ->
+    get_data_cells_filter(Client, Input, []).
+get_data_cells_filter(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetDataCellsFilter"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1174,6 +1201,29 @@ start_transaction(Client, Input) ->
 start_transaction(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StartTransaction"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a data cell filter.
+update_data_cells_filter(Client, Input) ->
+    update_data_cells_filter(Client, Input, []).
+update_data_cells_filter(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateDataCellsFilter"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

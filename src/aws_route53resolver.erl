@@ -499,7 +499,7 @@ get_firewall_rule_group_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFirewallRuleGroupPolicy">>, Input, Options).
 
-%% @doc Retrieves the behavior configuration of Route 53 Resolver behavior
+%% @doc Retrieves the behavior configuration of Route 53 Resolver behavior
 %% for a single VPC from Amazon Virtual Private Cloud.
 get_resolver_config(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -697,7 +697,7 @@ list_firewall_rules(Client, Input, Options)
 
 %% @doc Retrieves the Resolver configurations that you have defined.
 %%
-%% Route 53 Resolver uses the configurations to manage DNS resolution
+%% Route 53 Resolver uses the configurations to manage DNS resolution
 %% behavior for your VPCs.
 list_resolver_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -863,7 +863,7 @@ update_firewall_rule_group_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFirewallRuleGroupAssociation">>, Input, Options).
 
-%% @doc Updates the behavior configuration of Route 53 Resolver behavior for
+%% @doc Updates the behavior configuration of Route 53 Resolver behavior for
 %% a single VPC from Amazon Virtual Private Cloud.
 update_resolver_config(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -882,7 +882,11 @@ update_resolver_dnssec_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateResolverDnssecConfig">>, Input, Options).
 
-%% @doc Updates the name of an inbound or an outbound Resolver endpoint.
+%% @doc Updates the name, or enpoint type for an inbound or an outbound
+%% Resolver endpoint.
+%%
+%% You can only update between IPV4 and DUALSTACK, IPV6 endpoint type
+%% can't be updated to other type.
 update_resolver_endpoint(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_resolver_endpoint(Client, Input, []).

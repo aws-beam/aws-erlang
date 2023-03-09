@@ -509,6 +509,9 @@ list_calculation_executions(Client, Input, Options)
     request(Client, <<"ListCalculationExecutions">>, Input, Options).
 
 %% @doc Lists the data catalogs in the current Amazon Web Services account.
+%%
+%% In the Athena console, data catalogs are listed as &quot;data
+%% sources&quot; on the Data sources page under the Data source name column.
 list_data_catalogs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_data_catalogs(Client, Input, []).
