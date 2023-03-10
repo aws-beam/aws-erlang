@@ -96,6 +96,9 @@
 %% </li> <li> `DeleteDomainPermissionsPolicy': Deletes the resource
 %% policy that is set on a domain.
 %%
+%% </li> <li> `DeletePackage': Deletes a package and all associated
+%% package versions.
+%%
 %% </li> <li> `DeletePackageVersions': Deletes versions of a package.
 %% After a package has been deleted, it can be republished, but its assets
 %% and metadata cannot be restored because they have been permanently removed
@@ -176,6 +179,9 @@
 %%
 %% </li> <li> `ListRepositoriesInDomain': Returns a list of the
 %% repositories in a domain.
+%%
+%% </li> <li> `PublishPackageVersion': Creates a new package version
+%% containing one or more assets.
 %%
 %% </li> <li> `PutDomainPermissionsPolicy': Attaches a resource policy to
 %% a domain.
@@ -264,6 +270,8 @@
          list_repositories_in_domain/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         publish_package_version/2,
+         publish_package_version/3,
          put_domain_permissions_policy/2,
          put_domain_permissions_policy/3,
          put_package_origin_configuration/2,
@@ -503,7 +511,7 @@ delete_package(Client, Input0, Options0) ->
 %% want to remove a package version from your repository and be able to
 %% restore it later, set its status to `Archived'. Archived packages
 %% cannot be downloaded from a repository and don't show up with list
-%% package APIs (for example, ListackageVersions), but you can restore them
+%% package APIs (for example, ListPackageVersions), but you can restore them
 %% using UpdatePackageVersionsStatus.
 delete_package_versions(Client, Input) ->
     delete_package_versions(Client, Input, []).
@@ -1285,6 +1293,51 @@ list_tags_for_resource(Client, Input0, Options0) ->
 
     QueryMapping = [
                      {<<"resourceArn">>, <<"resourceArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new package version containing one or more assets (or
+%% files).
+%%
+%% The `unfinished' flag can be used to keep the package version in the
+%% `Unfinished' state until all of it’s assets have been uploaded (see
+%% Package version status in the CodeArtifact user guide). To set the package
+%% version’s status to `Published', omit the `unfinished' flag when
+%% uploading the final asset, or set the status using
+%% UpdatePackageVersionStatus. Once a package version’s status is set to
+%% `Published', it cannot change back to `Unfinished'.
+%%
+%% Only generic packages can be published using this API.
+publish_package_version(Client, Input) ->
+    publish_package_version(Client, Input, []).
+publish_package_version(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/package/version/publish"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"x-amz-content-sha256">>, <<"assetSHA256">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"asset">>, <<"assetName">>},
+                     {<<"domain">>, <<"domain">>},
+                     {<<"domain-owner">>, <<"domainOwner">>},
+                     {<<"format">>, <<"format">>},
+                     {<<"namespace">>, <<"namespace">>},
+                     {<<"package">>, <<"package">>},
+                     {<<"version">>, <<"packageVersion">>},
+                     {<<"repository">>, <<"repository">>},
+                     {<<"unfinished">>, <<"unfinished">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).

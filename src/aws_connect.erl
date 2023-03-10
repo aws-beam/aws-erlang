@@ -192,6 +192,8 @@
          get_federation_token/5,
          get_metric_data/3,
          get_metric_data/4,
+         get_metric_data_v2/2,
+         get_metric_data_v2/3,
          get_task_template/3,
          get_task_template/5,
          get_task_template/6,
@@ -2414,6 +2416,42 @@ get_metric_data(Client, InstanceId, Input) ->
 get_metric_data(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/metrics/historical/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets metric data from the specified Amazon Connect instance.
+%%
+%% `GetMetricDataV2' offers more features than GetMetricData, the
+%% previous version of this API. It has new metrics, offers filtering at a
+%% metric level, and offers the ability to filter and group data by channels,
+%% queues, routing profiles, agents, and agent hierarchy levels. It can
+%% retrieve historical data for last the 14 days, in 24-hour intervals.
+%%
+%% For a description of the historical metrics that are supported by
+%% `GetMetricDataV2' and `GetMetricData', see Historical metrics
+%% definitions in the Amazon Connect Administrator's Guide.
+%%
+%% This API is not available in the Amazon Web Services GovCloud (US)
+%% Regions.
+get_metric_data_v2(Client, Input) ->
+    get_metric_data_v2(Client, Input, []).
+get_metric_data_v2(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/metrics/data"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

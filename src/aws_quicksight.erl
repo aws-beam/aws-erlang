@@ -1284,8 +1284,7 @@ delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) -
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the Amazon QuickSight user that is associated with the
-%% identity of the Identity and Access Management (IAM) user or role
-%% that's making the call.
+%% identity of the IAM user or role that's making the call.
 %%
 %% The IAM user isn't deleted as a result of this call.
 delete_user(Client, AwsAccountId, Namespace, UserName, Input) ->

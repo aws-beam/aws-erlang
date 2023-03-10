@@ -2101,8 +2101,11 @@ put_resource_policy(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Registers a transit gateway in your global network.
 %%
-%% The transit gateway can be in any Amazon Web Services Region, but it must
-%% be owned by the same Amazon Web Services account that owns the global
+%% Not all Regions support transit gateways for global networks. For a list
+%% of the supported Regions, see Region Availability in the Amazon Web
+%% Services Transit Gateways for Global Networks User Guide. The transit
+%% gateway can be in any of the supported Amazon Web Services Regions, but it
+%% must be owned by the same Amazon Web Services account that owns the global
 %% network. You cannot register a transit gateway in more than one global
 %% network.
 register_transit_gateway(Client, GlobalNetworkId, Input) ->
