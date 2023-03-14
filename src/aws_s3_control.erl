@@ -29,6 +29,8 @@
          delete_bucket_lifecycle_configuration/4,
          delete_bucket_policy/3,
          delete_bucket_policy/4,
+         delete_bucket_replication/3,
+         delete_bucket_replication/4,
          delete_bucket_tagging/3,
          delete_bucket_tagging/4,
          delete_job_tagging/3,
@@ -77,6 +79,9 @@
          get_bucket_policy/3,
          get_bucket_policy/5,
          get_bucket_policy/6,
+         get_bucket_replication/3,
+         get_bucket_replication/5,
+         get_bucket_replication/6,
          get_bucket_tagging/3,
          get_bucket_tagging/5,
          get_bucket_tagging/6,
@@ -135,6 +140,8 @@
          put_bucket_lifecycle_configuration/4,
          put_bucket_policy/3,
          put_bucket_policy/4,
+         put_bucket_replication/3,
+         put_bucket_replication/4,
          put_bucket_tagging/3,
          put_bucket_tagging/4,
          put_bucket_versioning/3,
@@ -767,6 +774,72 @@ delete_bucket_policy(Client, Bucket, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc This operation deletes an Amazon S3 on Outposts bucket's
+%% replication configuration.
+%%
+%% To delete an S3 bucket's replication configuration, see
+%% DeleteBucketReplication in the Amazon S3 API Reference.
+%%
+%% Deletes the replication configuration from the specified S3 on Outposts
+%% bucket.
+%%
+%% To use this operation, you must have permissions to perform the
+%% `s3-outposts:PutReplicationConfiguration' action. The Outposts bucket
+%% owner has this permission by default and can grant it to others. For more
+%% information about permissions, see Setting up IAM with S3 on Outposts and
+%% Managing access to S3 on Outposts buckets in the Amazon S3 User Guide.
+%%
+%% It can take a while to propagate `PUT' or `DELETE' requests for a
+%% replication configuration to all S3 on Outposts systems. Therefore, the
+%% replication configuration that's returned by a `GET' request soon
+%% after a `PUT' or `DELETE' request might return a more recent
+%% result than what's on the Outpost. If an Outpost is offline, the delay
+%% in updating the replication configuration on that Outpost can be
+%% significant.
+%%
+%% All Amazon S3 on Outposts REST API requests for this action require an
+%% additional parameter of `x-amz-outpost-id' to be passed with the
+%% request. In addition, you must use an S3 on Outposts endpoint hostname
+%% prefix instead of `s3-control'. For an example of the request syntax
+%% for Amazon S3 on Outposts that uses the S3 on Outposts endpoint hostname
+%% prefix and the `x-amz-outpost-id' derived by using the access point
+%% ARN, see the Examples section.
+%%
+%% For information about S3 replication on Outposts configuration, see
+%% Replicating objects for Amazon Web Services Outposts in the Amazon S3 User
+%% Guide.
+%%
+%% The following operations are related to `DeleteBucketReplication':
+%%
+%% <ul> <li> PutBucketReplication
+%%
+%% </li> <li> GetBucketReplication
+%%
+%% </li> </ul>
+delete_bucket_replication(Client, Bucket, Input) ->
+    delete_bucket_replication(Client, Bucket, Input, []).
+delete_bucket_replication(Client, Bucket, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/replication"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This action deletes an Amazon S3 on Outposts bucket's tags.
 %%
 %% To delete an S3 bucket tags, see DeleteBucketTagging in the Amazon S3 API
@@ -821,9 +894,10 @@ delete_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %% @doc Removes the entire tag set from the specified S3 Batch Operations
 %% job.
 %%
-%% To use this operation, you must have permission to perform the
-%% `s3:DeleteJobTagging' action. For more information, see Controlling
-%% access and labeling jobs using tags in the Amazon S3 User Guide.
+%% To use the `DeleteJobTagging' operation, you must have permission to
+%% perform the `s3:DeleteJobTagging' action. For more information, see
+%% Controlling access and labeling jobs using tags in the Amazon S3 User
+%% Guide.
 %%
 %% Related actions include:
 %%
@@ -1546,6 +1620,80 @@ get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc This operation gets an Amazon S3 on Outposts bucket's replication
+%% configuration.
+%%
+%% To get an S3 bucket's replication configuration, see
+%% GetBucketReplication in the Amazon S3 API Reference.
+%%
+%% Returns the replication configuration of an S3 on Outposts bucket. For
+%% more information about S3 on Outposts, see Using Amazon S3 on Outposts in
+%% the Amazon S3 User Guide. For information about S3 replication on Outposts
+%% configuration, see Replicating objects for Amazon Web Services Outposts in
+%% the Amazon S3 User Guide.
+%%
+%% It can take a while to propagate `PUT' or `DELETE' requests for a
+%% replication configuration to all S3 on Outposts systems. Therefore, the
+%% replication configuration that's returned by a `GET' request soon
+%% after a `PUT' or `DELETE' request might return a more recent
+%% result than what's on the Outpost. If an Outpost is offline, the delay
+%% in updating the replication configuration on that Outpost can be
+%% significant.
+%%
+%% This action requires permissions for the
+%% `s3-outposts:GetReplicationConfiguration' action. The Outposts bucket
+%% owner has this permission by default and can grant it to others. For more
+%% information about permissions, see Setting up IAM with S3 on Outposts and
+%% Managing access to S3 on Outposts bucket in the Amazon S3 User Guide.
+%%
+%% All Amazon S3 on Outposts REST API requests for this action require an
+%% additional parameter of `x-amz-outpost-id' to be passed with the
+%% request. In addition, you must use an S3 on Outposts endpoint hostname
+%% prefix instead of `s3-control'. For an example of the request syntax
+%% for Amazon S3 on Outposts that uses the S3 on Outposts endpoint hostname
+%% prefix and the `x-amz-outpost-id' derived by using the access point
+%% ARN, see the Examples section.
+%%
+%% If you include the `Filter' element in a replication configuration,
+%% you must also include the `DeleteMarkerReplication', `Status', and
+%% `Priority' elements. The response also returns those elements.
+%%
+%% For information about S3 on Outposts replication failure reasons, see
+%% Replication failure reasons in the Amazon S3 User Guide.
+%%
+%% The following operations are related to `GetBucketReplication':
+%%
+%% <ul> <li> PutBucketReplication
+%%
+%% </li> <li> DeleteBucketReplication
+%%
+%% </li> </ul>
+get_bucket_replication(Client, Bucket, AccountId)
+  when is_map(Client) ->
+    get_bucket_replication(Client, Bucket, AccountId, #{}, #{}).
+
+get_bucket_replication(Client, Bucket, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_bucket_replication(Client, Bucket, AccountId, QueryMap, HeadersMap, []).
+
+get_bucket_replication(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/replication"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers0 =
+      [
+        {<<"x-amz-account-id">>, AccountId}
+      ],
+    Headers = [H || {_, V} = H <- Headers0, V =/= undefined],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc This action gets an Amazon S3 on Outposts bucket's tags.
 %%
 %% To get an S3 bucket tags, see GetBucketTagging in the Amazon S3 API
@@ -1605,15 +1753,15 @@ get_bucket_tagging(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc This operation returns the versioning state only for S3 on Outposts
-%% buckets.
+%% @doc This operation returns the versioning state for S3 on Outposts
+%% buckets only.
 %%
 %% To return the versioning state for an S3 bucket, see GetBucketVersioning
 %% in the Amazon S3 API Reference.
 %%
-%% Returns the versioning state for an S3 on Outposts bucket. With
-%% versioning, you can save multiple distinct copies of your data and recover
-%% from unintended user actions and application failures.
+%% Returns the versioning state for an S3 on Outposts bucket. With S3
+%% Versioning, you can save multiple distinct copies of your objects and
+%% recover from unintended user actions and application failures.
 %%
 %% If you've never set versioning on your bucket, it has no versioning
 %% state. In that case, the `GetBucketVersioning' request does not return
@@ -1668,9 +1816,10 @@ get_bucket_versioning(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns the tags on an S3 Batch Operations job.
 %%
-%% To use this operation, you must have permission to perform the
-%% `s3:GetJobTagging' action. For more information, see Controlling
-%% access and labeling jobs using tags in the Amazon S3 User Guide.
+%% To use the `GetJobTagging' operation, you must have permission to
+%% perform the `s3:GetJobTagging' action. For more information, see
+%% Controlling access and labeling jobs using tags in the Amazon S3 User
+%% Guide.
 %%
 %% Related actions include:
 %%
@@ -1992,8 +2141,8 @@ get_storage_lens_configuration_tagging(Client, ConfigId, AccountId, QueryMap, He
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of the access points owned by the current account
-%% associated with the specified bucket.
+%% @doc Returns a list of the access points that are owned by the current
+%% account that's associated with the specified bucket.
 %%
 %% You can retrieve up to 1000 access points per call. If the specified
 %% bucket has more than 1,000 access points (or the number specified in
@@ -2512,6 +2661,114 @@ put_bucket_policy(Client, Bucket, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc This action creates an Amazon S3 on Outposts bucket's replication
+%% configuration.
+%%
+%% To create an S3 bucket's replication configuration, see
+%% PutBucketReplication in the Amazon S3 API Reference.
+%%
+%% Creates a replication configuration or replaces an existing one. For
+%% information about S3 replication on Outposts configuration, see
+%% Replicating objects for Amazon Web Services Outposts in the Amazon S3 User
+%% Guide.
+%%
+%% It can take a while to propagate `PUT' or `DELETE' requests for a
+%% replication configuration to all S3 on Outposts systems. Therefore, the
+%% replication configuration that's returned by a `GET' request soon
+%% after a `PUT' or `DELETE' request might return a more recent
+%% result than what's on the Outpost. If an Outpost is offline, the delay
+%% in updating the replication configuration on that Outpost can be
+%% significant.
+%%
+%% Specify the replication configuration in the request body. In the
+%% replication configuration, you provide the following information:
+%%
+%% <ul> <li> The name of the destination bucket or buckets where you want S3
+%% on Outposts to replicate objects
+%%
+%% </li> <li> The Identity and Access Management (IAM) role that S3 on
+%% Outposts can assume to replicate objects on your behalf
+%%
+%% </li> <li> Other relevant information, such as replication rules
+%%
+%% </li> </ul> A replication configuration must include at least one rule and
+%% can contain a maximum of 100. Each rule identifies a subset of objects to
+%% replicate by filtering the objects in the source Outposts bucket. To
+%% choose additional subsets of objects to replicate, add a rule for each
+%% subset.
+%%
+%% To specify a subset of the objects in the source Outposts bucket to apply
+%% a replication rule to, add the `Filter' element as a child of the
+%% `Rule' element. You can filter objects based on an object key prefix,
+%% one or more object tags, or both. When you add the `Filter' element in
+%% the configuration, you must also add the following elements:
+%% `DeleteMarkerReplication', `Status', and `Priority'.
+%%
+%% Using `PutBucketReplication' on Outposts requires that both the source
+%% and destination buckets must have versioning enabled. For information
+%% about enabling versioning on a bucket, see Managing S3 Versioning for your
+%% S3 on Outposts bucket.
+%%
+%% For information about S3 on Outposts replication failure reasons, see
+%% Replication failure reasons in the Amazon S3 User Guide.
+%%
+%% Handling Replication of Encrypted Objects
+%%
+%% Outposts buckets are encrypted at all times. All the objects in the source
+%% Outposts bucket are encrypted and can be replicated. Also, all the
+%% replicas in the destination Outposts bucket are encrypted with the same
+%% encryption key as the objects in the source Outposts bucket.
+%%
+%% Permissions
+%%
+%% To create a `PutBucketReplication' request, you must have
+%% `s3-outposts:PutReplicationConfiguration' permissions for the bucket.
+%% The Outposts bucket owner has this permission by default and can grant it
+%% to others. For more information about permissions, see Setting up IAM with
+%% S3 on Outposts and Managing access to S3 on Outposts buckets.
+%%
+%% To perform this operation, the user or role must also have the
+%% iam:PassRole permission.
+%%
+%% All Amazon S3 on Outposts REST API requests for this action require an
+%% additional parameter of `x-amz-outpost-id' to be passed with the
+%% request. In addition, you must use an S3 on Outposts endpoint hostname
+%% prefix instead of `s3-control'. For an example of the request syntax
+%% for Amazon S3 on Outposts that uses the S3 on Outposts endpoint hostname
+%% prefix and the `x-amz-outpost-id' derived by using the access point
+%% ARN, see the Examples section.
+%%
+%% The following operations are related to `PutBucketReplication':
+%%
+%% <ul> <li> GetBucketReplication
+%%
+%% </li> <li> DeleteBucketReplication
+%%
+%% </li> </ul>
+put_bucket_replication(Client, Bucket, Input) ->
+    put_bucket_replication(Client, Bucket, Input, []).
+put_bucket_replication(Client, Bucket, Input0, Options0) ->
+    Method = put,
+    Path = ["/v20180820/bucket/", aws_util:encode_uri(Bucket), "/replication"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"x-amz-account-id">>, <<"AccountId">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This action puts tags on an Amazon S3 on Outposts bucket.
 %%
 %% To put tags on an S3 bucket, see PutBucketTagging in the Amazon S3 API
@@ -2602,15 +2859,15 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc This operation sets the versioning state only for S3 on Outposts
-%% buckets.
+%% @doc This operation sets the versioning state for S3 on Outposts buckets
+%% only.
 %%
 %% To set the versioning state for an S3 bucket, see PutBucketVersioning in
 %% the Amazon S3 API Reference.
 %%
-%% Sets the versioning state for an S3 on Outposts bucket. With versioning,
-%% you can save multiple distinct copies of your data and recover from
-%% unintended user actions and application failures.
+%% Sets the versioning state for an S3 on Outposts bucket. With S3
+%% Versioning, you can save multiple distinct copies of your objects and
+%% recover from unintended user actions and application failures.
 %%
 %% You can set the versioning state to one of the following:
 %%
@@ -2634,7 +2891,7 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %% If you have an object expiration lifecycle policy in your non-versioned
 %% bucket and you want to maintain the same permanent delete behavior when
 %% you enable versioning, you must add a noncurrent expiration policy. The
-%% noncurrent expiration lifecycle policy will manage the deletes of the
+%% noncurrent expiration lifecycle policy will manage the deletions of the
 %% noncurrent object versions in the version-enabled bucket. For more
 %% information, see Versioning in the Amazon S3 User Guide.
 %%
@@ -2719,8 +2976,8 @@ put_bucket_versioning(Client, Bucket, Input0, Options0) ->
 %%
 %% </li> </ul> </li> </ul>
 %%
-%% To use this action, you must have permission to perform the
-%% `s3:PutJobTagging' action.
+%% To use the `PutJobTagging' operation, you must have permission to
+%% perform the `s3:PutJobTagging' action.
 %%
 %% Related actions include:
 %%

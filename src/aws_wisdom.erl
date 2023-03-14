@@ -5,9 +5,9 @@
 %% solve customer issues as they're actively speaking with customers.
 %%
 %% Agents can search across connected repositories from within their agent
-%% desktop to find answers quickly. Use the Amazon Connect Wisdom APIs to
-%% create an assistant and a knowledge base, for example, or manage content
-%% by uploading custom files.
+%% desktop to find answers quickly. Use Amazon Connect Wisdom to create an
+%% assistant and a knowledge base, for example, or manage content by
+%% uploading custom files.
 -module(aws_wisdom).
 
 -export([create_assistant/2,
@@ -173,18 +173,18 @@ create_content(Client, KnowledgeBaseId, Input0, Options0) ->
 %% ServiceNow. If you do, you'll get an `InvalidRequestException'
 %% error.
 %%
-%% &lt;p&gt;For example, you're programmatically managing your external
-%% knowledge base, and you want to add or remove one of the fields that is
-%% being ingested from Salesforce. Do the following:&lt;/p&gt; &lt;ol&gt;
-%% &lt;li&gt; &lt;p&gt;Call &lt;a
-%% href=&quot;https://docs.aws.amazon.com/wisdom/latest/APIReference/API_DeleteKnowledgeBase.html&quot;&gt;DeleteKnowledgeBase&lt;/a&gt;.&lt;/p&gt;
-%% &lt;/li&gt; &lt;li&gt; &lt;p&gt;Call &lt;a
-%% href=&quot;https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_DeleteDataIntegration.html&quot;&gt;DeleteDataIntegration&lt;/a&gt;.&lt;/p&gt;
-%% &lt;/li&gt; &lt;li&gt; &lt;p&gt;Call &lt;a
-%% href=&quot;https://docs.aws.amazon.com/appintegrations/latest/APIReference/API_CreateDataIntegration.html&quot;&gt;CreateDataIntegration&lt;/a&gt;
-%% to recreate the DataIntegration or a create different one.&lt;/p&gt;
-%% &lt;/li&gt; &lt;li&gt; &lt;p&gt;Call CreateKnowledgeBase.&lt;/p&gt;
-%% &lt;/li&gt; &lt;/ol&gt; &lt;/note&gt;
+%% For example, you're programmatically managing your external knowledge
+%% base, and you want to add or remove one of the fields that is being
+%% ingested from Salesforce. Do the following:
+%%
+%% Call DeleteKnowledgeBase.
+%%
+%% Call DeleteDataIntegration.
+%%
+%% Call CreateDataIntegration to recreate the DataIntegration or a create
+%% different one.
+%%
+%% Call CreateKnowledgeBase.
 create_knowledge_base(Client, Input) ->
     create_knowledge_base(Client, Input, []).
 create_knowledge_base(Client, Input0, Options0) ->
