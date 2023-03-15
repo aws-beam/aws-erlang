@@ -13,8 +13,9 @@
 %% In addition to supporting Cassandra Query Language (CQL) requests via
 %% open-source Cassandra drivers, Amazon Keyspaces supports data definition
 %% language (DDL) operations to manage keyspaces and tables using the Amazon
-%% Web Services SDK and CLI. This API reference describes the supported DDL
-%% operations in detail.
+%% Web Services SDK and CLI, as well as infrastructure as code (IaC) services
+%% and tools such as CloudFormation and Terraform. This API reference
+%% describes the supported DDL operations in detail.
 %%
 %% For the list of all supported CQL APIs, see Supported Cassandra APIs,
 %% operations, and data types in Amazon Keyspaces in the Amazon Keyspaces
@@ -199,26 +200,28 @@ list_tags_for_resource(Client, Input, Options)
 %%
 %% You can also overwrite these settings during restore:
 %%
-%% • Read/write capacity mode
+%% <ul> <li> Read/write capacity mode
 %%
-%% • Provisioned throughput capacity settings
+%% </li> <li> Provisioned throughput capacity settings
 %%
-%% • Point-in-time (PITR) settings
+%% </li> <li> Point-in-time (PITR) settings
 %%
-%% • Tags
+%% </li> <li> Tags
 %%
-%% For more information, see PITR restore settings in the Amazon Keyspaces
-%% Developer Guide.
+%% </li> </ul> For more information, see PITR restore settings in the Amazon
+%% Keyspaces Developer Guide.
 %%
 %% Note that the following settings are not restored, and you must configure
 %% them manually for the new table:
 %%
-%% • Automatic scaling policies (for tables that use provisioned capacity
-%% mode)
+%% <ul> <li> Automatic scaling policies (for tables that use provisioned
+%% capacity mode)
 %%
-%% • Identity and Access Management (IAM) policies
+%% </li> <li> Identity and Access Management (IAM) policies
 %%
-%% • Amazon CloudWatch metrics and alarms
+%% </li> <li> Amazon CloudWatch metrics and alarms
+%%
+%% </li> </ul>
 restore_table(Client, Input)
   when is_map(Client), is_map(Input) ->
     restore_table(Client, Input, []).

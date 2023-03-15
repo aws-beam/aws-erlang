@@ -34,7 +34,10 @@
 %%
 %% </li> <li> Custom resources provided by your own applications or services
 %%
-%% </li> </ul> API Summary
+%% </li> </ul> To learn more about Application Auto Scaling, see the
+%% Application Auto Scaling User Guide.
+%%
+%% API Summary
 %%
 %% The Application Auto Scaling service API includes three key sets of
 %% actions:
@@ -56,9 +59,7 @@
 %% triggered by a scaling policy, scale-in activities that are triggered by a
 %% scaling policy, and scheduled scaling.
 %%
-%% </li> </ul> To learn more about Application Auto Scaling, including
-%% information about granting IAM users required permissions for Application
-%% Auto Scaling actions, see the Application Auto Scaling User Guide.
+%% </li> </ul>
 -module(aws_application_auto_scaling).
 
 -export([delete_scaling_policy/2,

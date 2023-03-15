@@ -561,6 +561,9 @@ create_login_profile(Client, Input, Options)
 %% the application or applications allowed to authenticate using the OIDC
 %% provider
 %%
+%% </li> <li> A list of tags that are attached to the specified IAM OIDC
+%% provider
+%%
 %% </li> <li> A list of thumbprints of one or more server certificates that
 %% the IdP uses
 %%
@@ -1613,7 +1616,7 @@ get_open_id_connect_provider(Client, Input, Options)
 %% Refining permissions using service last accessed data in the IAM User
 %% Guide.
 %%
-%% For each service that principals in an account (root users, IAM users, or
+%% For each service that principals in an account (root user, IAM users, or
 %% IAM roles) could access using SCPs, the operation returns details about
 %% the most recent access attempt. If there was no attempt, the service is
 %% listed without details about the most recent attempt to access the
@@ -2900,7 +2903,7 @@ tag_mfa_device(Client, Input, Options)
 %% search for all resources with the key name Cost Center and the value
 %% 41200.
 %%
-%% </li> <li> Access control - Include tags in IAM user-based and
+%% </li> <li> Access control - Include tags in IAM identity-based and
 %% resource-based policies. You can use tags to restrict access to only an
 %% OIDC provider that has a specified tag attached. For examples of policies
 %% that show how to use tags to control access, see Control access using IAM
@@ -3094,7 +3097,7 @@ tag_server_certificate(Client, Input, Options)
 %% search for all resources with the key name Cost Center and the value
 %% 41200.
 %%
-%% </li> <li> Access control - Include tags in IAM user-based and
+%% </li> <li> Access control - Include tags in IAM identity-based and
 %% resource-based policies. You can use tags to restrict access to only an
 %% IAM requesting user that has a specified tag attached. You can also
 %% restrict access to only those resources that have a certain tag attached.
