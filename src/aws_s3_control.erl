@@ -806,8 +806,7 @@ delete_bucket_policy(Client, Bucket, Input0, Options0) ->
 %% ARN, see the Examples section.
 %%
 %% For information about S3 replication on Outposts configuration, see
-%% Replicating objects for Amazon Web Services Outposts in the Amazon S3 User
-%% Guide.
+%% Replicating objects for S3 on Outposts in the Amazon S3 User Guide.
 %%
 %% The following operations are related to `DeleteBucketReplication':
 %%
@@ -1629,8 +1628,8 @@ get_bucket_policy(Client, Bucket, AccountId, QueryMap, HeadersMap, Options0)
 %% Returns the replication configuration of an S3 on Outposts bucket. For
 %% more information about S3 on Outposts, see Using Amazon S3 on Outposts in
 %% the Amazon S3 User Guide. For information about S3 replication on Outposts
-%% configuration, see Replicating objects for Amazon Web Services Outposts in
-%% the Amazon S3 User Guide.
+%% configuration, see Replicating objects for S3 on Outposts in the Amazon S3
+%% User Guide.
 %%
 %% It can take a while to propagate `PUT' or `DELETE' requests for a
 %% replication configuration to all S3 on Outposts systems. Therefore, the
@@ -2669,8 +2668,7 @@ put_bucket_policy(Client, Bucket, Input0, Options0) ->
 %%
 %% Creates a replication configuration or replaces an existing one. For
 %% information about S3 replication on Outposts configuration, see
-%% Replicating objects for Amazon Web Services Outposts in the Amazon S3 User
-%% Guide.
+%% Replicating objects for S3 on Outposts in the Amazon S3 User Guide.
 %%
 %% It can take a while to propagate `PUT' or `DELETE' requests for a
 %% replication configuration to all S3 on Outposts systems. Therefore, the
@@ -2728,7 +2726,9 @@ put_bucket_policy(Client, Bucket, Input0, Options0) ->
 %% S3 on Outposts and Managing access to S3 on Outposts buckets.
 %%
 %% To perform this operation, the user or role must also have the
-%% iam:PassRole permission.
+%% `iam:CreateRole' and `iam:PassRole' permissions. For more
+%% information, see Granting a user permissions to pass a role to an Amazon
+%% Web Services service.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
 %% additional parameter of `x-amz-outpost-id' to be passed with the
@@ -2888,12 +2888,12 @@ put_bucket_tagging(Client, Bucket, Input0, Options0) ->
 %% lifecycle configuration for your S3 on Outposts bucket in the Amazon S3
 %% User Guide.
 %%
-%% If you have an object expiration lifecycle policy in your non-versioned
-%% bucket and you want to maintain the same permanent delete behavior when
-%% you enable versioning, you must add a noncurrent expiration policy. The
-%% noncurrent expiration lifecycle policy will manage the deletions of the
-%% noncurrent object versions in the version-enabled bucket. For more
-%% information, see Versioning in the Amazon S3 User Guide.
+%% If you have an object expiration lifecycle configuration in your
+%% non-versioned bucket and you want to maintain the same permanent delete
+%% behavior when you enable versioning, you must add a noncurrent expiration
+%% policy. The noncurrent expiration lifecycle configuration will manage the
+%% deletes of the noncurrent object versions in the version-enabled bucket.
+%% For more information, see Versioning in the Amazon S3 User Guide.
 %%
 %% All Amazon S3 on Outposts REST API requests for this action require an
 %% additional parameter of `x-amz-outpost-id' to be passed with the

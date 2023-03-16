@@ -345,6 +345,8 @@ create_subscriber(Client, Input0, Options0) ->
 
 %% @doc Notifies the subscriber when new data is written to the data lake for
 %% the sources that the subscriber consumes in Security Lake.
+%%
+%% You can create only one subscriber notification per subscriber.
 create_subscription_notification_configuration(Client, SubscriptionId, Input) ->
     create_subscription_notification_configuration(Client, SubscriptionId, Input, []).
 create_subscription_notification_configuration(Client, SubscriptionId, Input0, Options0) ->
@@ -473,21 +475,13 @@ delete_datalake(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Automatically deletes Amazon Security Lake to stop collecting
-%% security data.
+%% @doc `DeleteDatalakeAutoEnable' removes automatic enablement of
+%% configuration settings for new member accounts (but keeps settings for the
+%% delegated administrator) from Amazon Security Lake.
 %%
-%% When you delete Amazon Security Lake from your account, Security Lake is
-%% disabled in all Regions. Also, this API automatically takes steps to
-%% remove the account from Security Lake .
-%%
-%% This operation disables security data collection from sources, deletes
-%% data stored, and stops making data accessible to subscribers. Security
-%% Lake also deletes all the existing settings and resources that it stores
-%% or maintains for your Amazon Web Services account in the current Region,
-%% including security log and event data. The `DeleteDatalake' operation
-%% does not delete the Amazon S3 bucket, which is owned by your Amazon Web
-%% Services account. For more information, see the Amazon Security Lake User
-%% Guide.
+%% You must run this API using credentials of the delegated administrator.
+%% When you run this API, new member accounts that are added after the
+%% organization enables Security Lake won't contribute to the data lake.
 delete_datalake_auto_enable(Client, Input) ->
     delete_datalake_auto_enable(Client, Input, []).
 delete_datalake_auto_enable(Client, Input0, Options0) ->
@@ -954,8 +948,9 @@ update_subscriber(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new subscription notification or adds the existing
-%% subscription notification setting for the specified subscription ID.
+%% @doc Updates an existing notification method for the subscription (SQS or
+%% HTTPs endpoint) or switches the notification subscription endpoint for a
+%% subscriber.
 update_subscription_notification_configuration(Client, SubscriptionId, Input) ->
     update_subscription_notification_configuration(Client, SubscriptionId, Input, []).
 update_subscription_notification_configuration(Client, SubscriptionId, Input0, Options0) ->
