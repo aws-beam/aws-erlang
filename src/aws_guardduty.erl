@@ -290,6 +290,9 @@ create_detector(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a filter using the specified finding criteria.
+%%
+%% The maximum number of saved filters per Amazon Web Services account per
+%% Region is 100. For more information, see Quotas for GuardDuty.
 create_filter(Client, DetectorId, Input) ->
     create_filter(Client, DetectorId, Input, []).
 create_filter(Client, DetectorId, Input0, Options0) ->
@@ -703,7 +706,12 @@ describe_organization_configuration(Client, DetectorId, QueryMap, HeadersMap, Op
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
