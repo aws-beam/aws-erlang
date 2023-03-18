@@ -617,13 +617,16 @@ describe_configuration_aggregators(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeConfigurationAggregators">>, Input, Options).
 
-%% @doc Returns the current status of the specified configuration recorder.
+%% @doc Returns the current status of the specified configuration recorder as
+%% well as the status of the last recording event for the recorder.
 %%
 %% If a configuration recorder is not specified, this action returns the
 %% status of all configuration recorders associated with the account.
 %%
 %% Currently, you can specify only one configuration recorder per region in
-%% your account.
+%% your account. For a detailed status of recording events over time, add
+%% your Config events to Amazon CloudWatch metrics and use CloudWatch
+%% metrics.
 describe_configuration_recorder_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configuration_recorder_status(Client, Input, []).
@@ -1110,6 +1113,11 @@ get_resource_config_history(Client, Input, Options)
 %% rules, which resource details were evaluated, the evaluation mode that was
 %% run, and whether the resource details comply with the configuration of the
 %% proactive rules.
+%%
+%% To see additional information about the evaluation result, such as which
+%% rule flagged a resource as NON_COMPLIANT, use the
+%% GetComplianceDetailsByResource API. For more information, see the Examples
+%% section.
 get_resource_evaluation_summary(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_resource_evaluation_summary(Client, Input, []).
@@ -1216,6 +1224,12 @@ list_tags_for_resource(Client, Input, Options)
 
 %% @doc Authorizes the aggregator account and region to collect data from the
 %% source account and region.
+%%
+%% `PutAggregationAuthorization' is an idempotent API. Subsequent
+%% requests won’t create a duplicate resource if one was already created. If
+%% a following request has different `tags' values, Config will ignore
+%% these differences and treat it as an idempotent request of the previous.
+%% In this case, `tags' will not be updated, even if they are different.
 put_aggregation_authorization(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_aggregation_authorization(Client, Input, []).
@@ -1229,29 +1243,32 @@ put_aggregation_authorization(Client, Input, Options)
 %% For information on how many Config rules you can have per account, see
 %% Service Limits in the Config Developer Guide.
 %%
-%% There are two types of rules: Config Custom Rules and Config Managed
-%% Rules. You can use `PutConfigRule' to create both Config custom rules
-%% and Config managed rules.
+%% There are two types of rules: Config Managed Rules and Config Custom
+%% Rules. You can use `PutConfigRule' to create both Config Managed Rules
+%% and Config Custom Rules.
 %%
-%% Custom rules are rules that you can create using either Guard or Lambda
-%% functions. Guard (Guard GitHub Repository) is a policy-as-code language
-%% that allows you to write policies that are enforced by Config Custom
-%% Policy rules. Lambda uses custom code that you upload to evaluate a custom
-%% rule. If you are adding a new Custom Lambda rule, you first need to create
-%% an Lambda function that the rule invokes to evaluate your resources. When
-%% you use `PutConfigRule' to add a Custom Lambda rule to Config, you
-%% must specify the Amazon Resource Name (ARN) that Lambda assigns to the
-%% function. You specify the ARN in the `SourceIdentifier' key. This key
-%% is part of the `Source' object, which is part of the `ConfigRule'
-%% object.
+%% Config Managed Rules are predefined, customizable rules created by Config.
+%% For a list of managed rules, see List of Config Managed Rules. If you are
+%% adding an Config managed rule, you must specify the rule's identifier
+%% for the `SourceIdentifier' key.
 %%
-%% Managed rules are predefined, customizable rules created by Config. For a
-%% list of managed rules, see List of Config Managed Rules. If you are adding
-%% an Config managed rule, you must specify the rule's identifier for the
-%% `SourceIdentifier' key.
+%% Config Custom Rules are rules that you create from scratch. There are two
+%% ways to create Config custom rules: with Lambda functions ( Lambda
+%% Developer Guide) and with Guard (Guard GitHub Repository), a
+%% policy-as-code language. Config custom rules created with Lambda are
+%% called Config Custom Lambda Rules and Config custom rules created with
+%% Guard are called Config Custom Policy Rules.
 %%
-%% For any new rule that you add, specify the `ConfigRuleName' in the
-%% `ConfigRule' object. Do not specify the `ConfigRuleArn' or the
+%% If you are adding a new Config Custom Lambda rule, you first need to
+%% create an Lambda function that the rule invokes to evaluate your
+%% resources. When you use `PutConfigRule' to add a Custom Lambda rule to
+%% Config, you must specify the Amazon Resource Name (ARN) that Lambda
+%% assigns to the function. You specify the ARN in the `SourceIdentifier'
+%% key. This key is part of the `Source' object, which is part of the
+%% `ConfigRule' object.
+%%
+%% For any new Config rule that you add, specify the `ConfigRuleName' in
+%% the `ConfigRule' object. Do not specify the `ConfigRuleArn' or the
 %% `ConfigRuleId'. These values are generated by Config for new rules.
 %%
 %% If you are updating a rule that you added previously, you can specify the
@@ -1259,8 +1276,13 @@ put_aggregation_authorization(Client, Input, Options)
 %% in the `ConfigRule' data type that you use in this request.
 %%
 %% For more information about developing and using Config rules, see
-%% Evaluating Amazon Web Services resource Configurations with Config in the
-%% Config Developer Guide.
+%% Evaluating Resources with Config Rules in the Config Developer Guide.
+%%
+%% `PutConfigRule' is an idempotent API. Subsequent requests won’t create
+%% a duplicate resource if one was already created. If a following request
+%% has different `tags' values, Config will ignore these differences and
+%% treat it as an idempotent request of the previous. In this case,
+%% `tags' will not be updated, even if they are different.
 put_config_rule(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_config_rule(Client, Input, []).
@@ -1292,6 +1314,12 @@ put_config_rule(Client, Input, Options)
 %%
 %% To register a delegated administrator, see Register a Delegated
 %% Administrator in the Config developer guide.
+%%
+%% `PutConfigurationAggregator' is an idempotent API. Subsequent requests
+%% won’t create a duplicate resource if one was already created. If a
+%% following request has different `tags' values, Config will ignore
+%% these differences and treat it as an idempotent request of the previous.
+%% In this case, `tags' will not be updated, even if they are different.
 put_configuration_aggregator(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_configuration_aggregator(Client, Input, []).
@@ -1406,26 +1434,29 @@ put_external_evaluation(Client, Input, Options)
 %% `register-delegated-administrator' for
 %% `config-multiaccountsetup.amazonaws.com'.
 %%
-%% There are two types of rules: Config Custom Rules and Config Managed
+%% There are two types of rules: Config Managed Rules and Config Custom
 %% Rules. You can use `PutOrganizationConfigRule' to create both Config
-%% custom rules and Config managed rules.
+%% Managed Rules and Config Custom Rules.
 %%
-%% Custom rules are rules that you can create using either Guard or Lambda
-%% functions. Guard (Guard GitHub Repository) is a policy-as-code language
-%% that allows you to write policies that are enforced by Config Custom
-%% Policy rules. Lambda uses custom code that you upload to evaluate a custom
-%% rule. If you are adding a new Custom Lambda rule, you first need to create
-%% an Lambda function in the management account or a delegated administrator
-%% that the rule invokes to evaluate your resources. You also need to create
-%% an IAM role in the managed account that can be assumed by the Lambda
-%% function. When you use `PutOrganizationConfigRule' to add a Custom
-%% Lambda rule to Config, you must specify the Amazon Resource Name (ARN)
-%% that Lambda assigns to the function.
+%% Config Managed Rules are predefined, customizable rules created by Config.
+%% For a list of managed rules, see List of Config Managed Rules. If you are
+%% adding an Config managed rule, you must specify the rule's identifier
+%% for the `RuleIdentifier' key.
 %%
-%% Managed rules are predefined, customizable rules created by Config. For a
-%% list of managed rules, see List of Config Managed Rules. If you are adding
-%% an Config managed rule, you must specify the rule's identifier for the
-%% `RuleIdentifier' key.
+%% Config Custom Rules are rules that you create from scratch. There are two
+%% ways to create Config custom rules: with Lambda functions ( Lambda
+%% Developer Guide) and with Guard (Guard GitHub Repository), a
+%% policy-as-code language. Config custom rules created with Lambda are
+%% called Config Custom Lambda Rules and Config custom rules created with
+%% Guard are called Config Custom Policy Rules.
+%%
+%% If you are adding a new Config Custom Lambda rule, you first need to
+%% create an Lambda function in the management account or a delegated
+%% administrator that the rule invokes to evaluate your resources. You also
+%% need to create an IAM role in the managed account that can be assumed by
+%% the Lambda function. When you use `PutOrganizationConfigRule' to add a
+%% Custom Lambda rule to Config, you must specify the Amazon Resource Name
+%% (ARN) that Lambda assigns to the function.
 %%
 %% Prerequisite: Ensure you call `EnableAllFeatures' API to enable all
 %% features in an organization.
@@ -1514,18 +1545,32 @@ put_remediation_configurations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRemediationConfigurations">>, Input, Options).
 
-%% @doc A remediation exception is when a specific resource is no longer
+%% @doc A remediation exception is when a specified resource is no longer
 %% considered for auto-remediation.
 %%
 %% This API adds a new exception or updates an existing exception for a
-%% specific resource with a specific Config rule.
+%% specified resource with a specified Config rule.
 %%
-%% Config generates a remediation exception when a problem occurs executing a
-%% remediation action to a specific resource. Remediation exceptions blocks
+%% Config generates a remediation exception when a problem occurs running a
+%% remediation action for a specified resource. Remediation exceptions blocks
 %% auto-remediation until the exception is cleared.
 %%
-%% To place an exception on an Amazon Web Services resource, ensure
-%% remediation is set as manual remediation.
+%% When placing an exception on an Amazon Web Services resource, it is
+%% recommended that remediation is set as manual remediation until the given
+%% Config rule for the specified resource evaluates the resource as
+%% `NON_COMPLIANT'. Once the resource has been evaluated as
+%% `NON_COMPLIANT', you can add remediation exceptions and change the
+%% remediation type back from Manual to Auto if you want to use
+%% auto-remediation. Otherwise, using auto-remediation before a
+%% `NON_COMPLIANT' evaluation result can delete resources before the
+%% exception is applied.
+%%
+%% Placing an exception can only be performed on resources that are
+%% `NON_COMPLIANT'. If you use this API for `COMPLIANT' resources or
+%% resources that are `NOT_APPLICABLE', a remediation exception will not
+%% be generated. For more information on the conditions that initiate the
+%% possible Config evaluation results, see Concepts | Config Rules in the
+%% Config Developer Guide.
 put_remediation_exceptions(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_remediation_exceptions(Client, Input, []).
@@ -1580,6 +1625,12 @@ put_retention_configuration(Client, Input, Options)
 %% account and a single Amazon Web Services Region. You can create upto 300
 %% queries in a single Amazon Web Services account and a single Amazon Web
 %% Services Region.
+%%
+%% `PutStoredQuery' is an idempotent API. Subsequent requests won’t
+%% create a duplicate resource if one was already created. If a following
+%% request has different `tags' values, Config will ignore these
+%% differences and treat it as an idempotent request of the previous. In this
+%% case, `tags' will not be updated, even if they are different.
 put_stored_query(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_stored_query(Client, Input, []).
@@ -1708,6 +1759,15 @@ start_remediation_execution(Client, Input, Options)
 %%
 %% Ensure you have the `cloudformation:DescribeType' role setup to
 %% validate the resource type schema.
+%%
+%% You can find the Resource type schema in &quot;Amazon Web Services public
+%% extensions&quot; within the CloudFormation registry or with the following
+%% CLI commmand: `aws cloudformation describe-type --type-name
+%% &quot;AWS::S3::Bucket&quot; --type RESOURCE'.
+%%
+%% For more information, see Managing extensions through the CloudFormation
+%% registry and Amazon Web Services resource and property types reference in
+%% the CloudFormation User Guide.
 start_resource_evaluation(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_resource_evaluation(Client, Input, []).
@@ -1728,7 +1788,8 @@ stop_configuration_recorder(Client, Input, Options)
 %% resourceArn.
 %%
 %% If existing tags on a resource are not specified in the request
-%% parameters, they are not changed. When a resource is deleted, the tags
+%% parameters, they are not changed. If existing tags are specified, however,
+%% then their values will be updated. When a resource is deleted, the tags
 %% associated with that resource are deleted as well.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
