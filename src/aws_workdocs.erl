@@ -146,6 +146,8 @@
          remove_resource_permission/5,
          restore_document_versions/3,
          restore_document_versions/4,
+         search_resources/2,
+         search_resources/3,
          update_document/3,
          update_document/4,
          update_document_version/4,
@@ -1335,6 +1337,32 @@ restore_document_versions(Client, DocumentId, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/documentVersions/restore/", aws_util:encode_uri(DocumentId), ""],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"Authentication">>, <<"AuthenticationToken">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches metadata and the content of folders, documents, document
+%% versions, and comments.
+search_resources(Client, Input) ->
+    search_resources(Client, Input, []).
+search_resources(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/api/v1/search"],
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
                {append_sha256_content_hash, false}
