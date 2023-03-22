@@ -37,6 +37,8 @@
          delete_channel_message/5,
          delete_channel_moderator/4,
          delete_channel_moderator/5,
+         delete_messaging_streaming_configurations/3,
+         delete_messaging_streaming_configurations/4,
          describe_channel/3,
          describe_channel/5,
          describe_channel/6,
@@ -72,6 +74,9 @@
          get_messaging_session_endpoint/1,
          get_messaging_session_endpoint/3,
          get_messaging_session_endpoint/4,
+         get_messaging_streaming_configurations/2,
+         get_messaging_streaming_configurations/4,
+         get_messaging_streaming_configurations/5,
          list_channel_bans/3,
          list_channel_bans/5,
          list_channel_bans/6,
@@ -107,6 +112,8 @@
          list_tags_for_resource/5,
          put_channel_membership_preferences/4,
          put_channel_membership_preferences/5,
+         put_messaging_streaming_configurations/3,
+         put_messaging_streaming_configurations/4,
          redact_channel_message/4,
          redact_channel_message/5,
          search_channels/2,
@@ -610,6 +617,32 @@ delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input0, Option
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the streaming configurations for an `AppInstance'.
+%%
+%% For more information, see Streaming messaging data in the Amazon Chime SDK
+%% Developer Guide.
+delete_messaging_streaming_configurations(Client, AppInstanceArn, Input) ->
+    delete_messaging_streaming_configurations(Client, AppInstanceArn, Input, []).
+delete_messaging_streaming_configurations(Client, AppInstanceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/streaming-configurations"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns the full details of a channel in an Amazon Chime
 %% `AppInstance'.
 %%
@@ -1006,6 +1039,32 @@ get_messaging_session_endpoint(Client, QueryMap, HeadersMap)
 get_messaging_session_endpoint(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/endpoints/messaging-session"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the data streaming configuration for an `AppInstance'.
+%%
+%% For more information, see Streaming messaging data in the Amazon Chime SDK
+%% Developer Guide.
+get_messaging_streaming_configurations(Client, AppInstanceArn)
+  when is_map(Client) ->
+    get_messaging_streaming_configurations(Client, AppInstanceArn, #{}, #{}).
+
+get_messaging_streaming_configurations(Client, AppInstanceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_messaging_streaming_configurations(Client, AppInstanceArn, QueryMap, HeadersMap, []).
+
+get_messaging_streaming_configurations(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/streaming-configurations"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1454,6 +1513,32 @@ put_channel_membership_preferences(Client, ChannelArn, MemberArn, Input0, Option
                        {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
                      ],
     {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Sets the data streaming configuration for an `AppInstance'.
+%%
+%% For more information, see Streaming messaging data in the Amazon Chime SDK
+%% Developer Guide.
+put_messaging_streaming_configurations(Client, AppInstanceArn, Input) ->
+    put_messaging_streaming_configurations(Client, AppInstanceArn, Input, []).
+put_messaging_streaming_configurations(Client, AppInstanceArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/streaming-configurations"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
 
     CustomHeaders = [],
     Input2 = Input1,

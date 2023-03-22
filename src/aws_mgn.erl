@@ -65,6 +65,14 @@
          initialize_service/3,
          list_applications/2,
          list_applications/3,
+         list_export_errors/2,
+         list_export_errors/3,
+         list_exports/2,
+         list_exports/3,
+         list_import_errors/2,
+         list_import_errors/3,
+         list_imports/2,
+         list_imports/3,
          list_source_server_actions/2,
          list_source_server_actions/3,
          list_tags_for_resource/2,
@@ -88,6 +96,10 @@
          retry_data_replication/3,
          start_cutover/2,
          start_cutover/3,
+         start_export/2,
+         start_export/3,
+         start_import/2,
+         start_import/3,
          start_replication/2,
          start_replication/3,
          start_test/2,
@@ -859,6 +871,98 @@ list_applications(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc List export errors.
+list_export_errors(Client, Input) ->
+    list_export_errors(Client, Input, []).
+list_export_errors(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListExportErrors"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc List exports.
+list_exports(Client, Input) ->
+    list_exports(Client, Input, []).
+list_exports(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListExports"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc List import errors.
+list_import_errors(Client, Input) ->
+    list_import_errors(Client, Input, []).
+list_import_errors(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListImportErrors"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc List imports.
+list_imports(Client, Input) ->
+    list_imports(Client, Input, []).
+list_imports(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListImports"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc List source server post migration custom actions.
 list_source_server_actions(Client, Input) ->
     list_source_server_actions(Client, Input, []).
@@ -1109,6 +1213,52 @@ start_cutover(Client, Input) ->
 start_cutover(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StartCutover"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Start export.
+start_export(Client, Input) ->
+    start_export(Client, Input, []).
+start_export(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StartExport"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Start import.
+start_import(Client, Input) ->
+    start_import(Client, Input, []).
+start_import(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StartImport"],
     SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
