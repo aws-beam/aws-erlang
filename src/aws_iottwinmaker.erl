@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc IoT TwinMaker is a service that enables you to build operational
+%% @doc IoT TwinMaker is a service with which you can build operational
 %% digital twins of physical systems.
 %%
 %% IoT TwinMaker overlays measurements and analysis from real-world sensors,
