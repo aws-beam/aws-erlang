@@ -1301,14 +1301,15 @@ list_tags_for_resource(Client, Input0, Options0) ->
 %% files).
 %%
 %% The `unfinished' flag can be used to keep the package version in the
-%% `Unfinished' state until all of it’s assets have been uploaded (see
+%% `Unfinished' state until all of its assets have been uploaded (see
 %% Package version status in the CodeArtifact user guide). To set the package
 %% version’s status to `Published', omit the `unfinished' flag when
 %% uploading the final asset, or set the status using
 %% UpdatePackageVersionStatus. Once a package version’s status is set to
 %% `Published', it cannot change back to `Unfinished'.
 %%
-%% Only generic packages can be published using this API.
+%% Only generic packages can be published using this API. For more
+%% information, see Using generic packages in the CodeArtifact User Guide.
 publish_package_version(Client, Input) ->
     publish_package_version(Client, Input, []).
 publish_package_version(Client, Input0, Options0) ->

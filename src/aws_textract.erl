@@ -117,7 +117,7 @@ analyze_expense(Client, Input, Options)
 %%
 %% This information is extracted and returned as
 %% `IdentityDocumentFields', which records both the normalized field and
-%% value of the extracted text.Unlike other Amazon Textract operations,
+%% value of the extracted text. Unlike other Amazon Textract operations,
 %% `AnalyzeID' doesn't return any Geometry data.
 analyze_id(Client, Input)
   when is_map(Client), is_map(Input) ->

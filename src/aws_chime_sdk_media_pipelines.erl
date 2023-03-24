@@ -5,7 +5,7 @@
 %% software developers to create Amazon Chime SDK media pipelines that
 %% capture, concatenate, or stream your Amazon Chime SDK meetings.
 %%
-%% For more information about media pipleines, see Amazon Chime SDK media
+%% For more information about media pipelines, see Amazon Chime SDK media
 %% pipelines.
 -module(aws_chime_sdk_media_pipelines).
 
@@ -13,21 +13,33 @@
          create_media_capture_pipeline/3,
          create_media_concatenation_pipeline/2,
          create_media_concatenation_pipeline/3,
+         create_media_insights_pipeline/2,
+         create_media_insights_pipeline/3,
+         create_media_insights_pipeline_configuration/2,
+         create_media_insights_pipeline_configuration/3,
          create_media_live_connector_pipeline/2,
          create_media_live_connector_pipeline/3,
          delete_media_capture_pipeline/3,
          delete_media_capture_pipeline/4,
+         delete_media_insights_pipeline_configuration/3,
+         delete_media_insights_pipeline_configuration/4,
          delete_media_pipeline/3,
          delete_media_pipeline/4,
          get_media_capture_pipeline/2,
          get_media_capture_pipeline/4,
          get_media_capture_pipeline/5,
+         get_media_insights_pipeline_configuration/2,
+         get_media_insights_pipeline_configuration/4,
+         get_media_insights_pipeline_configuration/5,
          get_media_pipeline/2,
          get_media_pipeline/4,
          get_media_pipeline/5,
          list_media_capture_pipelines/1,
          list_media_capture_pipelines/3,
          list_media_capture_pipelines/4,
+         list_media_insights_pipeline_configurations/1,
+         list_media_insights_pipeline_configurations/3,
+         list_media_insights_pipeline_configurations/4,
          list_media_pipelines/1,
          list_media_pipelines/3,
          list_media_pipelines/4,
@@ -37,7 +49,11 @@
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
-         untag_resource/3]).
+         untag_resource/3,
+         update_media_insights_pipeline_configuration/3,
+         update_media_insights_pipeline_configuration/4,
+         update_media_insights_pipeline_status/3,
+         update_media_insights_pipeline_status/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -91,7 +107,55 @@ create_media_concatenation_pipeline(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a streaming media pipeline in an Amazon Chime SDK meeting.
+%% @doc Creates a media insights pipeline.
+create_media_insights_pipeline(Client, Input) ->
+    create_media_insights_pipeline(Client, Input, []).
+create_media_insights_pipeline(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/media-insights-pipelines"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc A structure that contains the static configurations for a media
+%% insights pipeline.
+create_media_insights_pipeline_configuration(Client, Input) ->
+    create_media_insights_pipeline_configuration(Client, Input, []).
+create_media_insights_pipeline_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/media-insights-pipeline-configurations"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a media live connector pipeline in an Amazon Chime SDK
+%% meeting.
 create_media_live_connector_pipeline(Client, Input) ->
     create_media_live_connector_pipeline(Client, Input, []).
 create_media_live_connector_pipeline(Client, Input0, Options0) ->
@@ -120,6 +184,29 @@ delete_media_capture_pipeline(Client, MediaPipelineId, Input) ->
 delete_media_capture_pipeline(Client, MediaPipelineId, Input0, Options0) ->
     Method = delete,
     Path = ["/sdk-media-capture-pipelines/", aws_util:encode_uri(MediaPipelineId), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified configuration settings.
+delete_media_insights_pipeline_configuration(Client, Identifier, Input) ->
+    delete_media_insights_pipeline_configuration(Client, Identifier, Input, []).
+delete_media_insights_pipeline_configuration(Client, Identifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/media-insights-pipeline-configurations/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -183,6 +270,29 @@ get_media_capture_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets the configuration settings for a media insights pipeline.
+get_media_insights_pipeline_configuration(Client, Identifier)
+  when is_map(Client) ->
+    get_media_insights_pipeline_configuration(Client, Identifier, #{}, #{}).
+
+get_media_insights_pipeline_configuration(Client, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_media_insights_pipeline_configuration(Client, Identifier, QueryMap, HeadersMap, []).
+
+get_media_insights_pipeline_configuration(Client, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/media-insights-pipeline-configurations/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets an existing media pipeline.
 get_media_pipeline(Client, MediaPipelineId)
   when is_map(Client) ->
@@ -218,6 +328,34 @@ list_media_capture_pipelines(Client, QueryMap, HeadersMap)
 list_media_capture_pipelines(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/sdk-media-capture-pipelines"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the available media insights pipeline configurations.
+list_media_insights_pipeline_configurations(Client)
+  when is_map(Client) ->
+    list_media_insights_pipeline_configurations(Client, #{}, #{}).
+
+list_media_insights_pipeline_configurations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_media_insights_pipeline_configurations(Client, QueryMap, HeadersMap, []).
+
+list_media_insights_pipeline_configurations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/media-insights-pipeline-configurations"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -291,7 +429,7 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 
 %% @doc The ARN of the media pipeline that you want to tag.
 %%
-%% Consists of he pipeline's endpoint region, resource ID, and pipeline
+%% Consists of the pipeline's endpoint region, resource ID, and pipeline
 %% ID.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
@@ -322,6 +460,52 @@ untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/tags?operation=untag-resource"],
     SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the media insights pipeline's configuration settings.
+update_media_insights_pipeline_configuration(Client, Identifier, Input) ->
+    update_media_insights_pipeline_configuration(Client, Identifier, Input, []).
+update_media_insights_pipeline_configuration(Client, Identifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/media-insights-pipeline-configurations/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the status of a media insights pipeline.
+update_media_insights_pipeline_status(Client, Identifier, Input) ->
+    update_media_insights_pipeline_status(Client, Identifier, Input, []).
+update_media_insights_pipeline_status(Client, Identifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/media-insights-pipeline-status/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
                {append_sha256_content_hash, false}

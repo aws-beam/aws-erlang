@@ -14,12 +14,16 @@
          create_app_instance/3,
          create_app_instance_admin/3,
          create_app_instance_admin/4,
+         create_app_instance_bot/2,
+         create_app_instance_bot/3,
          create_app_instance_user/2,
          create_app_instance_user/3,
          delete_app_instance/3,
          delete_app_instance/4,
          delete_app_instance_admin/4,
          delete_app_instance_admin/5,
+         delete_app_instance_bot/3,
+         delete_app_instance_bot/4,
          delete_app_instance_user/3,
          delete_app_instance_user/4,
          deregister_app_instance_user_endpoint/4,
@@ -30,6 +34,9 @@
          describe_app_instance_admin/3,
          describe_app_instance_admin/5,
          describe_app_instance_admin/6,
+         describe_app_instance_bot/2,
+         describe_app_instance_bot/4,
+         describe_app_instance_bot/5,
          describe_app_instance_user/2,
          describe_app_instance_user/4,
          describe_app_instance_user/5,
@@ -42,6 +49,9 @@
          list_app_instance_admins/2,
          list_app_instance_admins/4,
          list_app_instance_admins/5,
+         list_app_instance_bots/2,
+         list_app_instance_bots/4,
+         list_app_instance_bots/5,
          list_app_instance_user_endpoints/2,
          list_app_instance_user_endpoints/4,
          list_app_instance_user_endpoints/5,
@@ -56,6 +66,8 @@
          list_tags_for_resource/5,
          put_app_instance_retention_settings/3,
          put_app_instance_retention_settings/4,
+         put_app_instance_user_expiration_settings/3,
+         put_app_instance_user_expiration_settings/4,
          register_app_instance_user_endpoint/3,
          register_app_instance_user_endpoint/4,
          tag_resource/2,
@@ -64,6 +76,8 @@
          untag_resource/3,
          update_app_instance/3,
          update_app_instance/4,
+         update_app_instance_bot/3,
+         update_app_instance_bot/4,
          update_app_instance_user/3,
          update_app_instance_user/4,
          update_app_instance_user_endpoint/4,
@@ -104,22 +118,49 @@ create_app_instance(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Promotes an `AppInstanceUser' to an `AppInstanceAdmin'.
+%% @doc Promotes an `AppInstanceUser' or `AppInstanceBot' to an
+%% `AppInstanceAdmin'.
 %%
-%% The promoted user can perform the following actions.
+%% The promoted entity can perform the following actions.
 %%
 %% <ul> <li> `ChannelModerator' actions across all channels in the
 %% `AppInstance'.
 %%
 %% </li> <li> `DeleteChannelMessage' actions.
 %%
-%% </li> </ul> Only an `AppInstanceUser' can be promoted to an
-%% `AppInstanceAdmin' role.
+%% </li> </ul> Only an `AppInstanceUser' and `AppInstanceBot' can be
+%% promoted to an `AppInstanceAdmin' role.
 create_app_instance_admin(Client, AppInstanceArn, Input) ->
     create_app_instance_admin(Client, AppInstanceArn, Input, []).
 create_app_instance_admin(Client, AppInstanceArn, Input0, Options0) ->
     Method = post,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a bot under an Amazon Chime `AppInstance'.
+%%
+%% The request consists of a unique `Configuration' and `Name' for
+%% that bot.
+create_app_instance_bot(Client, Input) ->
+    create_app_instance_bot(Client, Input, []).
+create_app_instance_bot(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/app-instance-bots"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -186,7 +227,8 @@ delete_app_instance(Client, AppInstanceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Demotes an `AppInstanceAdmin' to an `AppInstanceUser'.
+%% @doc Demotes an `AppInstanceAdmin' to an `AppInstanceUser' or
+%% `AppInstanceBot'.
 %%
 %% This action does not delete the user.
 delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input) ->
@@ -194,6 +236,29 @@ delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input) ->
 delete_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, Input0, Options0) ->
     Method = delete,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), "/admins/", aws_util:encode_uri(AppInstanceAdminArn), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an `AppInstanceBot'.
+delete_app_instance_bot(Client, AppInstanceBotArn, Input) ->
+    delete_app_instance_bot(Client, AppInstanceBotArn, Input, []).
+delete_app_instance_bot(Client, AppInstanceBotArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/app-instance-bots/", aws_util:encode_uri(AppInstanceBotArn), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -303,6 +368,29 @@ describe_app_instance_admin(Client, AppInstanceAdminArn, AppInstanceArn, QueryMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc The `AppInstanceBot's' information.
+describe_app_instance_bot(Client, AppInstanceBotArn)
+  when is_map(Client) ->
+    describe_app_instance_bot(Client, AppInstanceBotArn, #{}, #{}).
+
+describe_app_instance_bot(Client, AppInstanceBotArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_app_instance_bot(Client, AppInstanceBotArn, QueryMap, HeadersMap, []).
+
+describe_app_instance_bot(Client, AppInstanceBotArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/app-instance-bots/", aws_util:encode_uri(AppInstanceBotArn), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns the full details of an `AppInstanceUser'.
 describe_app_instance_user(Client, AppInstanceUserArn)
   when is_map(Client) ->
@@ -393,6 +481,36 @@ list_app_instance_admins(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all `AppInstanceBots' created under a single
+%% `AppInstance'.
+list_app_instance_bots(Client, AppInstanceArn)
+  when is_map(Client) ->
+    list_app_instance_bots(Client, AppInstanceArn, #{}, #{}).
+
+list_app_instance_bots(Client, AppInstanceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_app_instance_bots(Client, AppInstanceArn, QueryMap, HeadersMap, []).
+
+list_app_instance_bots(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/app-instance-bots"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"app-instance-arn">>, AppInstanceArn},
         {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
         {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
@@ -539,6 +657,37 @@ put_app_instance_retention_settings(Client, AppInstanceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Sets the number of days before the `AppInstanceUser' is
+%% automatically deleted.
+%%
+%% A background process deletes expired `AppInstanceUsers' within 6 hours
+%% of expiration. Actual deletion times may vary.
+%%
+%% Expired `AppInstanceUsers' that have not yet been deleted appear as
+%% active, and you can update their expiration settings. The system honors
+%% the new settings.
+put_app_instance_user_expiration_settings(Client, AppInstanceUserArn, Input) ->
+    put_app_instance_user_expiration_settings(Client, AppInstanceUserArn, Input, []).
+put_app_instance_user_expiration_settings(Client, AppInstanceUserArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/app-instance-users/", aws_util:encode_uri(AppInstanceUserArn), "/expiration-settings"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Registers an endpoint under an Amazon Chime `AppInstanceUser'.
 %%
 %% The endpoint receives messages for a user. For push notifications, the
@@ -620,6 +769,29 @@ update_app_instance(Client, AppInstanceArn, Input) ->
 update_app_instance(Client, AppInstanceArn, Input0, Options0) ->
     Method = put,
     Path = ["/app-instances/", aws_util:encode_uri(AppInstanceArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the name and metadata of an `AppInstanceBot'.
+update_app_instance_bot(Client, AppInstanceBotArn, Input) ->
+    update_app_instance_bot(Client, AppInstanceBotArn, Input, []).
+update_app_instance_bot(Client, AppInstanceBotArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/app-instance-bots/", aws_util:encode_uri(AppInstanceBotArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

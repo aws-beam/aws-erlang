@@ -583,6 +583,10 @@ delete_ip_set(Client, DetectorId, IpSetId, Input0, Options0) ->
 
 %% @doc Deletes GuardDuty member accounts (to the current GuardDuty
 %% administrator account) specified by the account IDs.
+%%
+%% With `autoEnableOrganizationMembers' configuration for your
+%% organization set to `ALL', you'll receive an error if you attempt
+%% to disable GuardDuty for a member account in your organization.
 delete_members(Client, DetectorId, Input) ->
     delete_members(Client, DetectorId, Input, []).
 delete_members(Client, DetectorId, Input0, Options0) ->
@@ -765,6 +769,10 @@ disable_organization_admin_account(Client, Input0, Options0) ->
 
 %% @doc Disassociates the current GuardDuty member account from its
 %% administrator account.
+%%
+%% With `autoEnableOrganizationMembers' configuration for your
+%% organization set to `ALL', you'll receive an error if you attempt
+%% to disable GuardDuty in a member account.
 disassociate_from_administrator_account(Client, DetectorId, Input) ->
     disassociate_from_administrator_account(Client, DetectorId, Input, []).
 disassociate_from_administrator_account(Client, DetectorId, Input0, Options0) ->
@@ -813,6 +821,11 @@ disassociate_from_master_account(Client, DetectorId, Input0, Options0) ->
 
 %% @doc Disassociates GuardDuty member accounts (to the current administrator
 %% account) specified by the account IDs.
+%%
+%% With `autoEnableOrganizationMembers' configuration for your
+%% organization set to `ALL', you'll receive an error if you attempt
+%% to disassociate a member account before removing them from your Amazon Web
+%% Services organization.
 disassociate_members(Client, DetectorId, Input) ->
     disassociate_members(Client, DetectorId, Input, []).
 disassociate_members(Client, DetectorId, Input0, Options0) ->
@@ -1526,7 +1539,7 @@ list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
 %% @doc Turns on GuardDuty monitoring of the specified member accounts.
 %%
 %% Use this operation to restart monitoring of accounts that you stopped
-%% monitoring with the `StopMonitoringMembers' operation.
+%% monitoring with the StopMonitoringMembers operation.
 start_monitoring_members(Client, DetectorId, Input) ->
     start_monitoring_members(Client, DetectorId, Input, []).
 start_monitoring_members(Client, DetectorId, Input0, Options0) ->
@@ -1553,6 +1566,10 @@ start_monitoring_members(Client, DetectorId, Input0, Options0) ->
 %%
 %% Use the `StartMonitoringMembers' operation to restart monitoring for
 %% those accounts.
+%%
+%% With `autoEnableOrganizationMembers' configuration for your
+%% organization set to `ALL', you'll receive an error if you attempt
+%% to stop monitoring the member accounts in your organization.
 stop_monitoring_members(Client, DetectorId, Input) ->
     stop_monitoring_members(Client, DetectorId, Input, []).
 stop_monitoring_members(Client, DetectorId, Input0, Options0) ->
@@ -1795,7 +1812,11 @@ update_member_detectors(Client, DetectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the delegated administrator account with the values provided.
+%% @doc Configures the delegated administrator account with the provided
+%% values.
+%%
+%% You must provide the value for either `autoEnableOrganizationMembers'
+%% or `autoEnable'.
 %%
 %% There might be regional differences because some data sources might not be
 %% available in all the Amazon Web Services Regions where GuardDuty is

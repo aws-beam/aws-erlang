@@ -110,6 +110,8 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         put_channel_expiration_settings/3,
+         put_channel_expiration_settings/4,
          put_channel_membership_preferences/4,
          put_channel_membership_preferences/5,
          put_messaging_streaming_configurations/3,
@@ -145,9 +147,9 @@
 %% processors. To stop processing, use the `DisassociateChannelFlow' API.
 %%
 %% Only administrators or channel moderators can associate a channel flow.
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 associate_channel_flow(Client, ChannelArn, Input) ->
     associate_channel_flow(Client, ChannelArn, Input, []).
 associate_channel_flow(Client, ChannelArn, Input0, Options0) ->
@@ -172,7 +174,7 @@ associate_channel_flow(Client, ChannelArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds a specified number of users to a channel.
+%% @doc Adds a specified number of users and bots to a channel.
 batch_create_channel_membership(Client, ChannelArn, Input) ->
     batch_create_channel_membership(Client, ChannelArn, Input, []).
 batch_create_channel_membership(Client, ChannelArn, Input0, Options0) ->
@@ -236,9 +238,9 @@ channel_flow_callback(Client, ChannelArn, Input0, Options0) ->
 %%
 %% Restriction: You can't change a channel's privacy.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 create_channel(Client, Input) ->
     create_channel(Client, Input, []).
 create_channel(Client, Input0, Options0) ->
@@ -273,9 +275,9 @@ create_channel(Client, Input0, Options0) ->
 %% If you ban a user who is already part of a channel, that user is
 %% automatically kicked from the channel.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 create_channel_ban(Client, ChannelArn, Input) ->
     create_channel_ban(Client, ChannelArn, Input, []).
 create_channel_ban(Client, ChannelArn, Input0, Options0) ->
@@ -340,7 +342,7 @@ create_channel_flow(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds a user to a channel.
+%% @doc Adds a member to a channel.
 %%
 %% The `InvitedBy' field in `ChannelMembership' is derived from the
 %% request header. A channel member can:
@@ -364,8 +366,8 @@ create_channel_flow(Client, Input0, Options0) ->
 %% messages.
 %%
 %% </li> </ul> The `x-amz-chime-bearer' request header is mandatory. Use
-%% the `AppInstanceUserArn' of the user that makes the API call as the
-%% value in the header.
+%% the ARN of the `AppInstanceUserArn' or `AppInstanceBot' that makes
+%% the API call as the value in the header.
 create_channel_membership(Client, ChannelArn, Input) ->
     create_channel_membership(Client, ChannelArn, Input, []).
 create_channel_membership(Client, ChannelArn, Input0, Options0) ->
@@ -405,8 +407,8 @@ create_channel_membership(Client, ChannelArn, Input0, Options0) ->
 %% </li> <li> List messages in the channel.
 %%
 %% </li> </ul> The `x-amz-chime-bearer' request header is mandatory. Use
-%% the `AppInstanceUserArn' of the user that makes the API call as the
-%% value in the header.
+%% the ARN of the `AppInstanceUser' or `AppInstanceBot'of the user
+%% that makes the API call as the value in the header.
 create_channel_moderator(Client, ChannelArn, Input) ->
     create_channel_moderator(Client, ChannelArn, Input, []).
 create_channel_moderator(Client, ChannelArn, Input0, Options0) ->
@@ -436,9 +438,9 @@ create_channel_moderator(Client, ChannelArn, Input0, Options0) ->
 %%
 %% This is an irreversible process.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUserArn' or `AppInstanceBot' that makes the API
+%% call as the value in the header.
 delete_channel(Client, ChannelArn, Input) ->
     delete_channel(Client, ChannelArn, Input, []).
 delete_channel(Client, ChannelArn, Input0, Options0) ->
@@ -464,11 +466,11 @@ delete_channel(Client, ChannelArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes a user from a channel's ban list.
+%% @doc Removes a member from a channel's ban list.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 delete_channel_ban(Client, ChannelArn, MemberArn, Input) ->
     delete_channel_ban(Client, ChannelArn, MemberArn, Input, []).
 delete_channel_ban(Client, ChannelArn, MemberArn, Input0, Options0) ->
@@ -560,9 +562,9 @@ delete_channel_membership(Client, ChannelArn, MemberArn, Input0, Options0) ->
 %% immediately. A background process deletes any revisions created by
 %% `UpdateChannelMessage'.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 delete_channel_message(Client, ChannelArn, MessageId, Input) ->
     delete_channel_message(Client, ChannelArn, MessageId, Input, []).
 delete_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
@@ -590,9 +592,9 @@ delete_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 
 %% @doc Deletes a channel moderator.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input) ->
     delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input, []).
 delete_channel_moderator(Client, ChannelArn, ChannelModeratorArn, Input0, Options0) ->
@@ -646,9 +648,9 @@ delete_messaging_streaming_configurations(Client, AppInstanceArn, Input0, Option
 %% @doc Returns the full details of a channel in an Amazon Chime
 %% `AppInstance'.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 describe_channel(Client, ChannelArn, ChimeBearer)
   when is_map(Client) ->
     describe_channel(Client, ChannelArn, ChimeBearer, #{}, #{}).
@@ -677,9 +679,9 @@ describe_channel(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, Options0
 
 %% @doc Returns the full details of a channel ban.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 describe_channel_ban(Client, ChannelArn, MemberArn, ChimeBearer)
   when is_map(Client) ->
     describe_channel_ban(Client, ChannelArn, MemberArn, ChimeBearer, #{}, #{}).
@@ -734,9 +736,9 @@ describe_channel_flow(Client, ChannelFlowArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns the full details of a user's channel membership.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 describe_channel_membership(Client, ChannelArn, MemberArn, ChimeBearer)
   when is_map(Client) ->
     describe_channel_membership(Client, ChannelArn, MemberArn, ChimeBearer, #{}, #{}).
@@ -768,11 +770,11 @@ describe_channel_membership(Client, ChannelArn, MemberArn, ChimeBearer, QueryMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the details of a channel based on the membership of the
-%% specified `AppInstanceUser'.
+%% specified `AppInstanceUser' or `AppInstanceBot'.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, ChimeBearer)
   when is_map(Client) ->
     describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanceUserArn, ChimeBearer, #{}, #{}).
@@ -804,11 +806,11 @@ describe_channel_membership_for_app_instance_user(Client, ChannelArn, AppInstanc
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the full details of a channel moderated by the specified
-%% `AppInstanceUser'.
+%% `AppInstanceUser' or `AppInstanceBot'.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, ChimeBearer)
   when is_map(Client) ->
     describe_channel_moderated_by_app_instance_user(Client, ChannelArn, AppInstanceUserArn, ChimeBearer, #{}, #{}).
@@ -876,9 +878,10 @@ describe_channel_moderator(Client, ChannelArn, ChannelModeratorArn, ChimeBearer,
 %% channel flow processor.
 %%
 %% Only administrators or channel moderators can disassociate a channel flow.
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%%
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 disassociate_channel_flow(Client, ChannelArn, ChannelFlowArn, Input) ->
     disassociate_channel_flow(Client, ChannelArn, ChannelFlowArn, Input, []).
 disassociate_channel_flow(Client, ChannelArn, ChannelFlowArn, Input0, Options0) ->
@@ -903,14 +906,19 @@ disassociate_channel_flow(Client, ChannelArn, ChannelFlowArn, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets the membership preferences of an `AppInstanceUser' for the
-%% specified channel.
+%% @doc Gets the membership preferences of an `AppInstanceUser' or
+%% `AppInstanceBot' for the specified channel.
 %%
-%% The `AppInstanceUser' must be a member of the channel. Only the
-%% `AppInstanceUser' who owns the membership can retrieve preferences.
-%% Users in the `AppInstanceAdmin' and channel moderator roles can't
-%% retrieve preferences for other users. Banned users can't retrieve
-%% membership preferences for the channel from which they are banned.
+%% A user or a bot must be a member of the channel and own the membership to
+%% be able to retrieve membership preferences. Users or bots in the
+%% `AppInstanceAdmin' and channel moderator roles can't retrieve
+%% preferences for other users or bots. Banned users or bots can't
+%% retrieve membership preferences for the channel from which they are
+%% banned.
+%%
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 get_channel_membership_preferences(Client, ChannelArn, MemberArn, ChimeBearer)
   when is_map(Client) ->
     get_channel_membership_preferences(Client, ChannelArn, MemberArn, ChimeBearer, #{}, #{}).
@@ -939,9 +947,9 @@ get_channel_membership_preferences(Client, ChannelArn, MemberArn, ChimeBearer, Q
 
 %% @doc Gets the full details of a channel message.
 %%
-%% The x-amz-chime-bearer request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 get_channel_message(Client, ChannelArn, MessageId, ChimeBearer)
   when is_map(Client) ->
     get_channel_message(Client, ChannelArn, MessageId, ChimeBearer, #{}, #{}).
@@ -994,9 +1002,9 @@ get_channel_message(Client, ChannelArn, MessageId, ChimeBearer, QueryMap, Header
 %%
 %% Only the message sender can invoke this API.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 get_channel_message_status(Client, ChannelArn, MessageId, ChimeBearer)
   when is_map(Client) ->
     get_channel_message_status(Client, ChannelArn, MessageId, ChimeBearer, #{}, #{}).
@@ -1076,11 +1084,11 @@ get_messaging_streaming_configurations(Client, AppInstanceArn, QueryMap, Headers
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all the users banned from a particular channel.
+%% @doc Lists all the users and bots banned from a particular channel.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 list_channel_bans(Client, ChannelArn, ChimeBearer)
   when is_map(Client) ->
     list_channel_bans(Client, ChannelArn, ChimeBearer, #{}, #{}).
@@ -1146,9 +1154,9 @@ list_channel_flows(Client, AppInstanceArn, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists all channel memberships in a channel.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 %%
 %% If you want to list the channels to which a specific app instance user
 %% belongs, see the ListChannelMembershipsForAppInstanceUser API.
@@ -1185,15 +1193,15 @@ list_channel_memberships(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all channels that a particular `AppInstanceUser' is a part
-%% of.
+%% @doc Lists all channels that anr `AppInstanceUser' or
+%% `AppInstanceBot' is a part of.
 %%
 %% Only an `AppInstanceAdmin' can call the API with a user ARN that is
 %% not their own.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 list_channel_memberships_for_app_instance_user(Client, ChimeBearer)
   when is_map(Client) ->
     list_channel_memberships_for_app_instance_user(Client, ChimeBearer, #{}, #{}).
@@ -1235,9 +1243,9 @@ list_channel_memberships_for_app_instance_user(Client, ChimeBearer, QueryMap, He
 %% redacted, not deleted. Deleted messages do not appear in the results. This
 %% action always returns the latest version of an edited message.
 %%
-%% Also, the x-amz-chime-bearer request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% Also, the `x-amz-chime-bearer' request header is mandatory. Use the
+%% ARN of the `AppInstanceUser' or `AppInstanceBot' that makes the
+%% API call as the value in the header.
 list_channel_messages(Client, ChannelArn, ChimeBearer)
   when is_map(Client) ->
     list_channel_messages(Client, ChannelArn, ChimeBearer, #{}, #{}).
@@ -1275,9 +1283,9 @@ list_channel_messages(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, Opt
 
 %% @doc Lists all the moderators for a channel.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 list_channel_moderators(Client, ChannelArn, ChimeBearer)
   when is_map(Client) ->
     list_channel_moderators(Client, ChannelArn, ChimeBearer, #{}, #{}).
@@ -1323,8 +1331,8 @@ list_channel_moderators(Client, ChannelArn, ChimeBearer, QueryMap, HeadersMap, O
 %% to list the private channels in an account.
 %%
 %% </li> </ul> The `x-amz-chime-bearer' request header is mandatory. Use
-%% the `AppInstanceUserArn' of the user that makes the API call as the
-%% value in the header.
+%% the ARN of the `AppInstanceUser' or `AppInstanceBot' that makes
+%% the API call as the value in the header.
 list_channels(Client, AppInstanceArn, ChimeBearer)
   when is_map(Client) ->
     list_channels(Client, AppInstanceArn, ChimeBearer, #{}, #{}).
@@ -1392,9 +1400,9 @@ list_channels_associated_with_channel_flow(Client, ChannelFlowArn, QueryMap, Hea
 
 %% @doc A list of the channels moderated by an `AppInstanceUser'.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 list_channels_moderated_by_app_instance_user(Client, ChimeBearer)
   when is_map(Client) ->
     list_channels_moderated_by_app_instance_user(Client, ChimeBearer, #{}, #{}).
@@ -1490,14 +1498,53 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Sets the membership preferences of an `AppInstanceUser' for the
-%% specified channel.
+%% @doc Sets the number of days before the channel is automatically deleted.
 %%
-%% The `AppInstanceUser' must be a member of the channel. Only the
-%% `AppInstanceUser' who owns the membership can set preferences. Users
-%% in the `AppInstanceAdmin' and channel moderator roles can't set
-%% preferences for other users. Banned users can't set membership
-%% preferences for the channel from which they are banned.
+%% A background process deletes expired channels within 6 hours of
+%% expiration. Actual deletion times may vary.
+%%
+%% Expired channels that have not yet been deleted appear as active, and you
+%% can update their expiration settings. The system honors the new settings.
+%%
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
+put_channel_expiration_settings(Client, ChannelArn, Input) ->
+    put_channel_expiration_settings(Client, ChannelArn, Input, []).
+put_channel_expiration_settings(Client, ChannelArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/channels/", aws_util:encode_uri(ChannelArn), "/expiration-settings"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"x-amz-chime-bearer">>, <<"ChimeBearer">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Sets the membership preferences of an `AppInstanceUser' or
+%% `AppIntanceBot' for the specified channel.
+%%
+%% The user or bot must be a member of the channel. Only the user or bot who
+%% owns the membership can set preferences. Users or bots in the
+%% `AppInstanceAdmin' and channel moderator roles can't set
+%% preferences for other users or users. Banned users or bots can't set
+%% membership preferences for the channel from which they are banned.
+%%
+%% The x-amz-chime-bearer request header is mandatory. Use the ARN of an
+%% `AppInstanceUser' or `AppInstanceBot' that makes the API call as
+%% the value in the header.
 put_channel_membership_preferences(Client, ChannelArn, MemberArn, Input) ->
     put_channel_membership_preferences(Client, ChannelArn, MemberArn, Input, []).
 put_channel_membership_preferences(Client, ChannelArn, MemberArn, Input0, Options0) ->
@@ -1553,9 +1600,9 @@ put_messaging_streaming_configurations(Client, AppInstanceArn, Input0, Options0)
 %% The message exists in the back end, but the action returns null content,
 %% and the state shows as redacted.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 redact_channel_message(Client, ChannelArn, MessageId, Input) ->
     redact_channel_message(Client, ChannelArn, MessageId, Input, []).
 redact_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
@@ -1580,10 +1627,14 @@ redact_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Allows `ChimeBearer' to search channels by channel members.
+%% @doc Allows the `ChimeBearer' to search channels by channel members.
 %%
-%% AppInstanceUsers can search across the channels that they belong to.
-%% AppInstanceAdmins can search across all channels.
+%% Users or bots can search across the channels that they belong to. Users in
+%% the `AppInstanceAdmin' role can search across all channels.
+%%
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 search_channels(Client, Input) ->
     search_channels(Client, Input, []).
 search_channels(Client, Input0, Options0) ->
@@ -1612,9 +1663,9 @@ search_channels(Client, Input0, Options0) ->
 
 %% @doc Sends a message to a particular channel that the member is a part of.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 %%
 %% Also, `STANDARD' messages can contain 4KB of data and the 1KB of
 %% metadata. `CONTROL' messages can contain 30 bytes of data and no
@@ -1695,9 +1746,9 @@ untag_resource(Client, Input0, Options0) ->
 %%
 %% Restriction: You can't change a channel's privacy.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 update_channel(Client, ChannelArn, Input) ->
     update_channel(Client, ChannelArn, Input, []).
 update_channel(Client, ChannelArn, Input0, Options0) ->
@@ -1749,9 +1800,9 @@ update_channel_flow(Client, ChannelFlowArn, Input0, Options0) ->
 
 %% @doc Updates the content of a message.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 update_channel_message(Client, ChannelArn, MessageId, Input) ->
     update_channel_message(Client, ChannelArn, MessageId, Input, []).
 update_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
@@ -1778,9 +1829,9 @@ update_channel_message(Client, ChannelArn, MessageId, Input0, Options0) ->
 
 %% @doc The details of the time when a user last read messages in a channel.
 %%
-%% The `x-amz-chime-bearer' request header is mandatory. Use the
-%% `AppInstanceUserArn' of the user that makes the API call as the value
-%% in the header.
+%% The `x-amz-chime-bearer' request header is mandatory. Use the ARN of
+%% the `AppInstanceUser' or `AppInstanceBot' that makes the API call
+%% as the value in the header.
 update_channel_read_marker(Client, ChannelArn, Input) ->
     update_channel_read_marker(Client, ChannelArn, Input, []).
 update_channel_read_marker(Client, ChannelArn, Input0, Options0) ->

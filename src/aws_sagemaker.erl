@@ -32,6 +32,8 @@
          create_artifact/3,
          create_auto_ml_job/2,
          create_auto_ml_job/3,
+         create_auto_ml_job_v2/2,
+         create_auto_ml_job_v2/3,
          create_code_repository/2,
          create_code_repository/3,
          create_compilation_job/2,
@@ -230,6 +232,8 @@
          describe_artifact/3,
          describe_auto_ml_job/2,
          describe_auto_ml_job/3,
+         describe_auto_ml_job_v2/2,
+         describe_auto_ml_job_v2/3,
          describe_code_repository/2,
          describe_code_repository/3,
          describe_compilation_job/2,
@@ -758,6 +762,23 @@ create_auto_ml_job(Client, Input)
 create_auto_ml_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAutoMLJob">>, Input, Options).
+
+%% @doc Creates an Amazon SageMaker AutoML job that uses non-tabular data
+%% such as images or text for Computer Vision or Natural Language Processing
+%% problems.
+%%
+%% Find the resulting model after you run an AutoML job V2 by calling .
+%%
+%% To create an `AutoMLJob' using tabular data, see .
+%%
+%% This API action is callable through SageMaker Canvas only. Calling it
+%% directly from the CLI or an SDK results in an error.
+create_auto_ml_job_v2(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_auto_ml_job_v2(Client, Input, []).
+create_auto_ml_job_v2(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAutoMLJobV2">>, Input, Options).
 
 %% @doc Creates a Git repository as a resource in your SageMaker account.
 %%
@@ -2316,6 +2337,17 @@ describe_auto_ml_job(Client, Input)
 describe_auto_ml_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutoMLJob">>, Input, Options).
+
+%% @doc Returns information about an Amazon SageMaker AutoML V2 job.
+%%
+%% This API action is callable through SageMaker Canvas only. Calling it
+%% directly from the CLI or an SDK results in an error.
+describe_auto_ml_job_v2(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_auto_ml_job_v2(Client, Input, []).
+describe_auto_ml_job_v2(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAutoMLJobV2">>, Input, Options).
 
 %% @doc Gets details about the specified Git repository.
 describe_code_repository(Client, Input)

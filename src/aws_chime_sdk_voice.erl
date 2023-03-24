@@ -26,6 +26,10 @@
          create_voice_connector/3,
          create_voice_connector_group/2,
          create_voice_connector_group/3,
+         create_voice_profile/2,
+         create_voice_profile/3,
+         create_voice_profile_domain/2,
+         create_voice_profile_domain/3,
          delete_phone_number/3,
          delete_phone_number/4,
          delete_proxy_session/4,
@@ -50,6 +54,10 @@
          delete_voice_connector_termination/4,
          delete_voice_connector_termination_credentials/3,
          delete_voice_connector_termination_credentials/4,
+         delete_voice_profile/3,
+         delete_voice_profile/4,
+         delete_voice_profile_domain/3,
+         delete_voice_profile_domain/4,
          disassociate_phone_numbers_from_voice_connector/3,
          disassociate_phone_numbers_from_voice_connector/4,
          disassociate_phone_numbers_from_voice_connector_group/3,
@@ -81,6 +89,9 @@
          get_sip_rule/2,
          get_sip_rule/4,
          get_sip_rule/5,
+         get_speaker_search_task/3,
+         get_speaker_search_task/5,
+         get_speaker_search_task/6,
          get_voice_connector/2,
          get_voice_connector/4,
          get_voice_connector/5,
@@ -108,6 +119,15 @@
          get_voice_connector_termination_health/2,
          get_voice_connector_termination_health/4,
          get_voice_connector_termination_health/5,
+         get_voice_profile/2,
+         get_voice_profile/4,
+         get_voice_profile/5,
+         get_voice_profile_domain/2,
+         get_voice_profile_domain/4,
+         get_voice_profile_domain/5,
+         get_voice_tone_analysis_task/4,
+         get_voice_tone_analysis_task/6,
+         get_voice_tone_analysis_task/7,
          list_available_voice_connector_regions/1,
          list_available_voice_connector_regions/3,
          list_available_voice_connector_regions/4,
@@ -129,6 +149,9 @@
          list_supported_phone_number_countries/2,
          list_supported_phone_number_countries/4,
          list_supported_phone_number_countries/5,
+         list_tags_for_resource/2,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          list_voice_connector_groups/1,
          list_voice_connector_groups/3,
          list_voice_connector_groups/4,
@@ -138,6 +161,12 @@
          list_voice_connectors/1,
          list_voice_connectors/3,
          list_voice_connectors/4,
+         list_voice_profile_domains/1,
+         list_voice_profile_domains/3,
+         list_voice_profile_domains/4,
+         list_voice_profiles/2,
+         list_voice_profiles/4,
+         list_voice_profiles/5,
          put_sip_media_application_alexa_skill_configuration/3,
          put_sip_media_application_alexa_skill_configuration/4,
          put_sip_media_application_logging_configuration/3,
@@ -161,6 +190,18 @@
          search_available_phone_numbers/1,
          search_available_phone_numbers/3,
          search_available_phone_numbers/4,
+         start_speaker_search_task/3,
+         start_speaker_search_task/4,
+         start_voice_tone_analysis_task/3,
+         start_voice_tone_analysis_task/4,
+         stop_speaker_search_task/4,
+         stop_speaker_search_task/5,
+         stop_voice_tone_analysis_task/4,
+         stop_voice_tone_analysis_task/5,
+         tag_resource/2,
+         tag_resource/3,
+         untag_resource/2,
+         untag_resource/3,
          update_global_settings/2,
          update_global_settings/3,
          update_phone_number/3,
@@ -179,6 +220,10 @@
          update_voice_connector/4,
          update_voice_connector_group/3,
          update_voice_connector_group/4,
+         update_voice_profile/3,
+         update_voice_profile/4,
+         update_voice_profile_domain/3,
+         update_voice_profile_domain/4,
          validate_e911_address/2,
          validate_e911_address/3]).
 
@@ -424,6 +469,52 @@ create_voice_connector_group(Client, Input) ->
 create_voice_connector_group(Client, Input0, Options0) ->
     Method = post,
     Path = ["/voice-connector-groups"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+
+create_voice_profile(Client, Input) ->
+    create_voice_profile(Client, Input, []).
+create_voice_profile(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/voice-profiles"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+
+create_voice_profile_domain(Client, Input) ->
+    create_voice_profile_domain(Client, Input, []).
+create_voice_profile_domain(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/voice-profile-domains"],
     SuccessStatusCode = 201,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -718,6 +809,52 @@ delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0,
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 
+delete_voice_profile(Client, VoiceProfileId, Input) ->
+    delete_voice_profile(Client, VoiceProfileId, Input, []).
+delete_voice_profile(Client, VoiceProfileId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/voice-profiles/", aws_util:encode_uri(VoiceProfileId), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+
+delete_voice_profile_domain(Client, VoiceProfileDomainId, Input) ->
+    delete_voice_profile_domain(Client, VoiceProfileDomainId, Input, []).
+delete_voice_profile_domain(Client, VoiceProfileDomainId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/voice-profile-domains/", aws_util:encode_uri(VoiceProfileDomainId), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+
 disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input) ->
     disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input, []).
 disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
@@ -971,6 +1108,29 @@ get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 
+get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId)
+  when is_map(Client) ->
+    get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, #{}, #{}).
+
+get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, QueryMap, HeadersMap, []).
+
+get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/speaker-search-tasks/", aws_util:encode_uri(SpeakerSearchTaskId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+
 get_voice_connector(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector(Client, VoiceConnectorId, #{}, #{}).
@@ -1178,6 +1338,79 @@ get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, Heade
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 
+get_voice_profile(Client, VoiceProfileId)
+  when is_map(Client) ->
+    get_voice_profile(Client, VoiceProfileId, #{}, #{}).
+
+get_voice_profile(Client, VoiceProfileId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_voice_profile(Client, VoiceProfileId, QueryMap, HeadersMap, []).
+
+get_voice_profile(Client, VoiceProfileId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/voice-profiles/", aws_util:encode_uri(VoiceProfileId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+
+get_voice_profile_domain(Client, VoiceProfileDomainId)
+  when is_map(Client) ->
+    get_voice_profile_domain(Client, VoiceProfileDomainId, #{}, #{}).
+
+get_voice_profile_domain(Client, VoiceProfileDomainId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_voice_profile_domain(Client, VoiceProfileDomainId, QueryMap, HeadersMap, []).
+
+get_voice_profile_domain(Client, VoiceProfileDomainId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/voice-profile-domains/", aws_util:encode_uri(VoiceProfileDomainId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+
+get_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, IsCaller)
+  when is_map(Client) ->
+    get_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, IsCaller, #{}, #{}).
+
+get_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, IsCaller, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, IsCaller, QueryMap, HeadersMap, []).
+
+get_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, IsCaller, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/voice-tone-analysis-tasks/", aws_util:encode_uri(VoiceToneAnalysisTaskId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"isCaller">>, IsCaller}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+
 list_available_voice_connector_regions(Client)
   when is_map(Client) ->
     list_available_voice_connector_regions(Client, #{}, #{}).
@@ -1374,6 +1607,33 @@ list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 
+list_tags_for_resource(Client, ResourceARN)
+  when is_map(Client) ->
+    list_tags_for_resource(Client, ResourceARN, #{}, #{}).
+
+list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, []).
+
+list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/tags"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"arn">>, ResourceARN}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+
 list_voice_connector_groups(Client)
   when is_map(Client) ->
     list_voice_connector_groups(Client, #{}, #{}).
@@ -1447,6 +1707,63 @@ list_voice_connectors(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
         {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+
+list_voice_profile_domains(Client)
+  when is_map(Client) ->
+    list_voice_profile_domains(Client, #{}, #{}).
+
+list_voice_profile_domains(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_voice_profile_domains(Client, QueryMap, HeadersMap, []).
+
+list_voice_profile_domains(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/voice-profile-domains"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+
+list_voice_profiles(Client, VoiceProfileDomainId)
+  when is_map(Client) ->
+    list_voice_profiles(Client, VoiceProfileDomainId, #{}, #{}).
+
+list_voice_profiles(Client, VoiceProfileDomainId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_voice_profiles(Client, VoiceProfileDomainId, QueryMap, HeadersMap, []).
+
+list_voice_profiles(Client, VoiceProfileDomainId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/voice-profiles"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"voice-profile-domain-id">>, VoiceProfileDomainId}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1717,6 +2034,144 @@ search_available_phone_numbers(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 
+start_speaker_search_task(Client, VoiceConnectorId, Input) ->
+    start_speaker_search_task(Client, VoiceConnectorId, Input, []).
+start_speaker_search_task(Client, VoiceConnectorId, Input0, Options0) ->
+    Method = post,
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/speaker-search-tasks"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+
+start_voice_tone_analysis_task(Client, VoiceConnectorId, Input) ->
+    start_voice_tone_analysis_task(Client, VoiceConnectorId, Input, []).
+start_voice_tone_analysis_task(Client, VoiceConnectorId, Input0, Options0) ->
+    Method = post,
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/voice-tone-analysis-tasks"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+
+stop_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, Input) ->
+    stop_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, Input, []).
+stop_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, Input0, Options0) ->
+    Method = post,
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/speaker-search-tasks/", aws_util:encode_uri(SpeakerSearchTaskId), "?operation=stop"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+
+stop_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, Input) ->
+    stop_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, Input, []).
+stop_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, Input0, Options0) ->
+    Method = post,
+    Path = ["/voice-connectors/", aws_util:encode_uri(VoiceConnectorId), "/voice-tone-analysis-tasks/", aws_util:encode_uri(VoiceToneAnalysisTaskId), "?operation=stop"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+
+tag_resource(Client, Input) ->
+    tag_resource(Client, Input, []).
+tag_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/tags?operation=tag-resource"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+
+untag_resource(Client, Input) ->
+    untag_resource(Client, Input, []).
+untag_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/tags?operation=untag-resource"],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+
 update_global_settings(Client, Input) ->
     update_global_settings(Client, Input, []).
 update_global_settings(Client, Input0, Options0) ->
@@ -1907,6 +2362,52 @@ update_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
     Method = put,
     Path = ["/voice-connector-groups/", aws_util:encode_uri(VoiceConnectorGroupId), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+
+update_voice_profile(Client, VoiceProfileId, Input) ->
+    update_voice_profile(Client, VoiceProfileId, Input, []).
+update_voice_profile(Client, VoiceProfileId, Input0, Options0) ->
+    Method = put,
+    Path = ["/voice-profiles/", aws_util:encode_uri(VoiceProfileId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+
+update_voice_profile_domain(Client, VoiceProfileDomainId, Input) ->
+    update_voice_profile_domain(Client, VoiceProfileDomainId, Input, []).
+update_voice_profile_domain(Client, VoiceProfileDomainId, Input0, Options0) ->
+    Method = put,
+    Path = ["/voice-profile-domains/", aws_util:encode_uri(VoiceProfileDomainId), ""],
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
                {append_sha256_content_hash, false}
