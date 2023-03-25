@@ -583,6 +583,12 @@ create_custom_db_engine_version(Client, Input, Options)
 
 %% @doc Creates a new Amazon Aurora DB cluster or Multi-AZ DB cluster.
 %%
+%% If you create an Aurora DB cluster, the request creates an empty cluster.
+%% You must explicitly create the writer instance for your DB cluster using
+%% the CreateDBInstance operation. If you create a Multi-AZ DB cluster, the
+%% request creates a writer and two reader DB instances for you, each in a
+%% different Availability Zone.
+%%
 %% You can use the `ReplicationSourceIdentifier' parameter to create an
 %% Amazon Aurora DB cluster as a read replica of another DB cluster or Amazon
 %% RDS MySQL or PostgreSQL DB instance. For more information about Amazon
