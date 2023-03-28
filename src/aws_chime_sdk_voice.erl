@@ -1,7 +1,12 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-
+%% @doc The Amazon Chime SDK telephony APIs in this section enable developers
+%% to create PSTN calling solutions that use Amazon Chime SDK Voice
+%% Connectors, and Amazon Chime SDK SIP media applications.
+%%
+%% Developers can also order and manage phone numbers, create and manage
+%% Voice Connectors and SIP media applications, and run voice analytics.
 -module(aws_chime_sdk_voice).
 
 -export([associate_phone_numbers_with_voice_connector/3,
@@ -233,7 +238,8 @@
 %% API
 %%====================================================================
 
-
+%% @doc Associates phone numbers with the specified Amazon Chime SDK Voice
+%% Connector.
 associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input) ->
     associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input, []).
 associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
@@ -256,7 +262,8 @@ associate_phone_numbers_with_voice_connector(Client, VoiceConnectorId, Input0, O
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Associates phone numbers with the specified Amazon Chime SDK Voice
+%% Connector group.
 associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
@@ -279,7 +286,13 @@ associate_phone_numbers_with_voice_connector_group(Client, VoiceConnectorGroupId
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Moves phone numbers into the Deletion queue.
+%%
+%% Phone numbers must be disassociated from any users or Amazon Chime SDK
+%% Voice Connectors before they can be deleted.
+%%
+%% Phone numbers remain in the Deletion queue for 7 days before they are
+%% deleted permanently.
 batch_delete_phone_number(Client, Input) ->
     batch_delete_phone_number(Client, Input, []).
 batch_delete_phone_number(Client, Input0, Options0) ->
@@ -302,7 +315,7 @@ batch_delete_phone_number(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Updates one or more phone numbers.
 batch_update_phone_number(Client, Input) ->
     batch_update_phone_number(Client, Input, []).
 batch_update_phone_number(Client, Input0, Options0) ->
@@ -325,7 +338,10 @@ batch_update_phone_number(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Creates an order for phone numbers to be provisioned.
+%%
+%% For numbers outside the U.S., you must use the Amazon Chime SDK SIP media
+%% application dial-in product type.
 create_phone_number_order(Client, Input) ->
     create_phone_number_order(Client, Input, []).
 create_phone_number_order(Client, Input0, Options0) ->
@@ -348,7 +364,8 @@ create_phone_number_order(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Creates a proxy session for the specified Amazon Chime SDK Voice
+%% Connector for the specified participant phone numbers.
 create_proxy_session(Client, VoiceConnectorId, Input) ->
     create_proxy_session(Client, VoiceConnectorId, Input, []).
 create_proxy_session(Client, VoiceConnectorId, Input0, Options0) ->
@@ -371,7 +388,10 @@ create_proxy_session(Client, VoiceConnectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Creates a SIP media application.
+%%
+%% For more information about SIP media applications, see Managing SIP media
+%% applications and rules in the Amazon Chime SDK Administrator Guide.
 create_sip_media_application(Client, Input) ->
     create_sip_media_application(Client, Input, []).
 create_sip_media_application(Client, Input0, Options0) ->
@@ -394,7 +414,9 @@ create_sip_media_application(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Creates an outbound call to a phone number from the phone number
+%% specified in the request, and it invokes the endpoint of the specified
+%% `sipMediaApplicationId'.
 create_sip_media_application_call(Client, SipMediaApplicationId, Input) ->
     create_sip_media_application_call(Client, SipMediaApplicationId, Input, []).
 create_sip_media_application_call(Client, SipMediaApplicationId, Input0, Options0) ->
@@ -417,7 +439,11 @@ create_sip_media_application_call(Client, SipMediaApplicationId, Input0, Options
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Creates a SIP rule, which can be used to run a SIP media application
+%% as a target for a specific trigger type.
+%%
+%% For more information about SIP rules, see Managing SIP media applications
+%% and rules in the Amazon Chime SDK Administrator Guide.
 create_sip_rule(Client, Input) ->
     create_sip_rule(Client, Input, []).
 create_sip_rule(Client, Input0, Options0) ->
@@ -440,7 +466,10 @@ create_sip_rule(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Creates an Amazon Chime SDK Voice Connector.
+%%
+%% For more information about Voice Connectors, see Managing Amazon Chime SDK
+%% Voice Connector groups in the Amazon Chime SDK Administrator Guide.
 create_voice_connector(Client, Input) ->
     create_voice_connector(Client, Input, []).
 create_voice_connector(Client, Input0, Options0) ->
@@ -463,7 +492,15 @@ create_voice_connector(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Creates an Amazon Chime SDK Voice Connector group under the
+%% administrator's AWS account.
+%%
+%% You can associate Amazon Chime SDK Voice Connectors with the Voice
+%% Connector group by including `VoiceConnectorItems' in the request.
+%%
+%% You can include Voice Connectors from different AWS Regions in your group.
+%% This creates a fault tolerant mechanism for fallback in case of
+%% availability events.
 create_voice_connector_group(Client, Input) ->
     create_voice_connector_group(Client, Input, []).
 create_voice_connector_group(Client, Input0, Options0) ->
@@ -486,7 +523,16 @@ create_voice_connector_group(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Creates a voice profile, which consists of an enrolled user and their
+%% latest voice print.
+%%
+%% Before creating any voice profiles, you must provide all notices and
+%% obtain all consents from the speaker as required under applicable privacy
+%% and biometrics laws, and as required under the AWS service terms for the
+%% Amazon Chime SDK.
+%%
+%% For more information about voice profiles and voice analytics, see Using
+%% Amazon Chime SDK Voice Analytics in the Amazon Chime SDK Developer Guide.
 create_voice_profile(Client, Input) ->
     create_voice_profile(Client, Input, []).
 create_voice_profile(Client, Input0, Options0) ->
@@ -509,7 +555,16 @@ create_voice_profile(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Creates a voice profile domain, a collection of voice profiles, their
+%% voice prints, and encrypted enrollment audio.
+%%
+%% Before creating any voice profiles, you must provide all notices and
+%% obtain all consents from the speaker as required under applicable privacy
+%% and biometrics laws, and as required under the AWS service terms for the
+%% Amazon Chime SDK.
+%%
+%% For more information about voice profile domains, see Using Amazon Chime
+%% SDK Voice Analytics in the Amazon Chime SDK Developer Guide.
 create_voice_profile_domain(Client, Input) ->
     create_voice_profile_domain(Client, Input, []).
 create_voice_profile_domain(Client, Input0, Options0) ->
@@ -532,7 +587,13 @@ create_voice_profile_domain(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Moves the specified phone number into the Deletion queue.
+%%
+%% A phone number must be disassociated from any users or Amazon Chime SDK
+%% Voice Connectors before it can be deleted.
+%%
+%% Deleted phone numbers remain in the Deletion queue queue for 7 days before
+%% they are deleted permanently.
 delete_phone_number(Client, PhoneNumberId, Input) ->
     delete_phone_number(Client, PhoneNumberId, Input, []).
 delete_phone_number(Client, PhoneNumberId, Input0, Options0) ->
@@ -555,7 +616,8 @@ delete_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Deletes the specified proxy session from the specified Amazon Chime
+%% SDK Voice Connector.
 delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input) ->
     delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input, []).
 delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0) ->
@@ -578,7 +640,7 @@ delete_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Deletes a SIP media application.
 delete_sip_media_application(Client, SipMediaApplicationId, Input) ->
     delete_sip_media_application(Client, SipMediaApplicationId, Input, []).
 delete_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
@@ -601,7 +663,7 @@ delete_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Deletes a SIP rule.
 delete_sip_rule(Client, SipRuleId, Input) ->
     delete_sip_rule(Client, SipRuleId, Input, []).
 delete_sip_rule(Client, SipRuleId, Input0, Options0) ->
@@ -624,7 +686,10 @@ delete_sip_rule(Client, SipRuleId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Deletes an Amazon Chime SDK Voice Connector.
+%%
+%% Any phone numbers associated with the Amazon Chime SDK Voice Connector
+%% must be disassociated from it before it can be deleted.
 delete_voice_connector(Client, VoiceConnectorId, Input) ->
     delete_voice_connector(Client, VoiceConnectorId, Input, []).
 delete_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
@@ -647,7 +712,8 @@ delete_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Deletes the emergency calling details from the specified Amazon Chime
+%% SDK Voice Connector.
 delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input0, Options0) ->
@@ -670,7 +736,10 @@ delete_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Deletes an Amazon Chime SDK Voice Connector group.
+%%
+%% Any `VoiceConnectorItems' and phone numbers associated with the group
+%% must be removed before it can be deleted.
 delete_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     delete_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 delete_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
@@ -693,7 +762,11 @@ delete_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Deletes the origination settings for the specified Amazon Chime SDK
+%% Voice Connector.
+%%
+%% If emergency calling is configured for the Voice Connector, it must be
+%% deleted prior to deleting the origination settings.
 delete_voice_connector_origination(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_origination(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) ->
@@ -716,7 +789,8 @@ delete_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Deletes the proxy configuration from the specified Amazon Chime SDK
+%% Voice Connector.
 delete_voice_connector_proxy(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_proxy(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
@@ -739,7 +813,7 @@ delete_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Deletes a Voice Connector's streaming configuration.
 delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Options0) ->
@@ -762,7 +836,11 @@ delete_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Deletes the termination settings for the specified Amazon Chime SDK
+%% Voice Connector.
+%%
+%% If emergency calling is configured for the Voice Connector, it must be
+%% deleted prior to deleting the termination settings.
 delete_voice_connector_termination(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_termination(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) ->
@@ -785,7 +863,8 @@ delete_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Deletes the specified SIP credentials used by your equipment to
+%% authenticate during call termination.
 delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input) ->
     delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input, []).
 delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Options0) ->
@@ -808,7 +887,10 @@ delete_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Deletes a voice profile, including its voice print and enrollment
+%% data.
+%%
+%% WARNING: This action is not reversible.
 delete_voice_profile(Client, VoiceProfileId, Input) ->
     delete_voice_profile(Client, VoiceProfileId, Input, []).
 delete_voice_profile(Client, VoiceProfileId, Input0, Options0) ->
@@ -831,7 +913,9 @@ delete_voice_profile(Client, VoiceProfileId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Deletes all voice profiles in the domain.
+%%
+%% WARNING: This action is not reversible.
 delete_voice_profile_domain(Client, VoiceProfileDomainId, Input) ->
     delete_voice_profile_domain(Client, VoiceProfileDomainId, Input, []).
 delete_voice_profile_domain(Client, VoiceProfileDomainId, Input0, Options0) ->
@@ -854,7 +938,8 @@ delete_voice_profile_domain(Client, VoiceProfileDomainId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Disassociates the specified phone numbers from the specified Amazon
+%% Chime SDK Voice Connector.
 disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input) ->
     disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input, []).
 disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
@@ -877,7 +962,8 @@ disassociate_phone_numbers_from_voice_connector(Client, VoiceConnectorId, Input0
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Disassociates the specified phone numbers from the specified Amazon
+%% Chime SDK Voice Connector group.
 disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
@@ -900,7 +986,8 @@ disassociate_phone_numbers_from_voice_connector_group(Client, VoiceConnectorGrou
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Retrieves the global settings for the Amazon Chime SDK Voice
+%% Connectors in an AWS account.
 get_global_settings(Client)
   when is_map(Client) ->
     get_global_settings(Client, #{}, #{}).
@@ -923,7 +1010,8 @@ get_global_settings(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Retrieves details for the specified phone number ID, such as
+%% associations, capabilities, and product type.
 get_phone_number(Client, PhoneNumberId)
   when is_map(Client) ->
     get_phone_number(Client, PhoneNumberId, #{}, #{}).
@@ -946,7 +1034,9 @@ get_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Retrieves details for the specified phone number order, such as the
+%% order creation timestamp, phone numbers in E.164 format, product type, and
+%% order status.
 get_phone_number_order(Client, PhoneNumberOrderId)
   when is_map(Client) ->
     get_phone_number_order(Client, PhoneNumberOrderId, #{}, #{}).
@@ -969,7 +1059,8 @@ get_phone_number_order(Client, PhoneNumberOrderId, QueryMap, HeadersMap, Options
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Retrieves the phone number settings for the administrator's AWS
+%% account, such as the default outbound calling name.
 get_phone_number_settings(Client)
   when is_map(Client) ->
     get_phone_number_settings(Client, #{}, #{}).
@@ -992,7 +1083,8 @@ get_phone_number_settings(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Retrieves the specified proxy session details for the specified
+%% Amazon Chime SDK Voice Connector.
 get_proxy_session(Client, ProxySessionId, VoiceConnectorId)
   when is_map(Client) ->
     get_proxy_session(Client, ProxySessionId, VoiceConnectorId, #{}, #{}).
@@ -1015,7 +1107,8 @@ get_proxy_session(Client, ProxySessionId, VoiceConnectorId, QueryMap, HeadersMap
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Retrieves the information for a SIP media application, including
+%% name, AWS Region, and endpoints.
 get_sip_media_application(Client, SipMediaApplicationId)
   when is_map(Client) ->
     get_sip_media_application(Client, SipMediaApplicationId, #{}, #{}).
@@ -1038,7 +1131,7 @@ get_sip_media_application(Client, SipMediaApplicationId, QueryMap, HeadersMap, O
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Gets the Alexa Skill configuration for the SIP media application.
 get_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationId)
   when is_map(Client) ->
     get_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationId, #{}, #{}).
@@ -1061,7 +1154,8 @@ get_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationI
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Retrieves the logging configuration for the specified SIP media
+%% application.
 get_sip_media_application_logging_configuration(Client, SipMediaApplicationId)
   when is_map(Client) ->
     get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, #{}, #{}).
@@ -1084,7 +1178,8 @@ get_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Q
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Retrieves the details of a SIP rule, such as the rule ID, name,
+%% triggers, and target endpoints.
 get_sip_rule(Client, SipRuleId)
   when is_map(Client) ->
     get_sip_rule(Client, SipRuleId, #{}, #{}).
@@ -1107,7 +1202,7 @@ get_sip_rule(Client, SipRuleId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Retrieves the details of the specified speaker search task.
 get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId)
   when is_map(Client) ->
     get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, #{}, #{}).
@@ -1130,7 +1225,8 @@ get_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, QueryMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Retrieves details for the specified Amazon Chime SDK Voice Connector,
+%% such as timestamps,name, outbound host, and encryption requirements.
 get_voice_connector(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector(Client, VoiceConnectorId, #{}, #{}).
@@ -1153,7 +1249,8 @@ get_voice_connector(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Retrieves the emergency calling configuration details for the
+%% specified Voice Connector.
 get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, #{}, #{}).
@@ -1176,7 +1273,8 @@ get_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Qu
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Retrieves details for the specified Amazon Chime SDK Voice Connector
+%% group, such as timestamps,name, and associated `VoiceConnectorItems'.
 get_voice_connector_group(Client, VoiceConnectorGroupId)
   when is_map(Client) ->
     get_voice_connector_group(Client, VoiceConnectorGroupId, #{}, #{}).
@@ -1199,7 +1297,11 @@ get_voice_connector_group(Client, VoiceConnectorGroupId, QueryMap, HeadersMap, O
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Retrieves the logging configuration settings for the specified Voice
+%% Connector.
+%%
+%% Shows whether SIP message logs are enabled for sending to Amazon
+%% CloudWatch Logs.
 get_voice_connector_logging_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_logging_configuration(Client, VoiceConnectorId, #{}, #{}).
@@ -1222,7 +1324,7 @@ get_voice_connector_logging_configuration(Client, VoiceConnectorId, QueryMap, He
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Retrieves the origination settings for the specified Voice Connector.
 get_voice_connector_origination(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_origination(Client, VoiceConnectorId, #{}, #{}).
@@ -1245,7 +1347,8 @@ get_voice_connector_origination(Client, VoiceConnectorId, QueryMap, HeadersMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Retrieves the proxy configuration details for the specified Amazon
+%% Chime SDK Voice Connector.
 get_voice_connector_proxy(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_proxy(Client, VoiceConnectorId, #{}, #{}).
@@ -1268,7 +1371,11 @@ get_voice_connector_proxy(Client, VoiceConnectorId, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Retrieves the streaming configuration details for the specified
+%% Amazon Chime SDK Voice Connector.
+%%
+%% Shows whether media streaming is enabled for sending to Amazon Kinesis. It
+%% also shows the retention period, in hours, for the Amazon Kinesis data.
 get_voice_connector_streaming_configuration(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_streaming_configuration(Client, VoiceConnectorId, #{}, #{}).
@@ -1291,7 +1398,8 @@ get_voice_connector_streaming_configuration(Client, VoiceConnectorId, QueryMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Retrieves the termination setting details for the specified Voice
+%% Connector.
 get_voice_connector_termination(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_termination(Client, VoiceConnectorId, #{}, #{}).
@@ -1314,7 +1422,9 @@ get_voice_connector_termination(Client, VoiceConnectorId, QueryMap, HeadersMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Retrieves information about the last time a `SIP OPTIONS' ping
+%% was received from your SIP infrastructure for the specified Amazon Chime
+%% SDK Voice Connector.
 get_voice_connector_termination_health(Client, VoiceConnectorId)
   when is_map(Client) ->
     get_voice_connector_termination_health(Client, VoiceConnectorId, #{}, #{}).
@@ -1337,7 +1447,7 @@ get_voice_connector_termination_health(Client, VoiceConnectorId, QueryMap, Heade
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Retrieves the details of the specified voice profile.
 get_voice_profile(Client, VoiceProfileId)
   when is_map(Client) ->
     get_voice_profile(Client, VoiceProfileId, #{}, #{}).
@@ -1360,7 +1470,7 @@ get_voice_profile(Client, VoiceProfileId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Retrieves the details of the specified voice profile domain.
 get_voice_profile_domain(Client, VoiceProfileDomainId)
   when is_map(Client) ->
     get_voice_profile_domain(Client, VoiceProfileDomainId, #{}, #{}).
@@ -1383,7 +1493,7 @@ get_voice_profile_domain(Client, VoiceProfileDomainId, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Retrieves the details of a voice tone analysis task.
 get_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, IsCaller)
   when is_map(Client) ->
     get_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, IsCaller, #{}, #{}).
@@ -1410,7 +1520,8 @@ get_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Lists the available AWS Regions in which you can create an Amazon
+%% Chime SDK Voice Connector.
 list_available_voice_connector_regions(Client)
   when is_map(Client) ->
     list_available_voice_connector_regions(Client, #{}, #{}).
@@ -1433,7 +1544,8 @@ list_available_voice_connector_regions(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Lists the phone numbers for an administrator's Amazon Chime SDK
+%% account.
 list_phone_number_orders(Client)
   when is_map(Client) ->
     list_phone_number_orders(Client, #{}, #{}).
@@ -1461,7 +1573,9 @@ list_phone_number_orders(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Lists the phone numbers for the specified Amazon Chime SDK account,
+%% Amazon Chime SDK user, Amazon Chime SDK Voice Connector, or Amazon Chime
+%% SDK Voice Connector group.
 list_phone_numbers(Client)
   when is_map(Client) ->
     list_phone_numbers(Client, #{}, #{}).
@@ -1493,7 +1607,8 @@ list_phone_numbers(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Lists the proxy sessions for the specified Amazon Chime SDK Voice
+%% Connector.
 list_proxy_sessions(Client, VoiceConnectorId)
   when is_map(Client) ->
     list_proxy_sessions(Client, VoiceConnectorId, #{}, #{}).
@@ -1522,7 +1637,8 @@ list_proxy_sessions(Client, VoiceConnectorId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Lists the SIP media applications under the administrator's AWS
+%% account.
 list_sip_media_applications(Client)
   when is_map(Client) ->
     list_sip_media_applications(Client, #{}, #{}).
@@ -1550,7 +1666,7 @@ list_sip_media_applications(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Lists the SIP rules under the administrator's AWS account.
 list_sip_rules(Client)
   when is_map(Client) ->
     list_sip_rules(Client, #{}, #{}).
@@ -1579,7 +1695,7 @@ list_sip_rules(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Lists the countries that you can order phone numbers from.
 list_supported_phone_number_countries(Client, ProductType)
   when is_map(Client) ->
     list_supported_phone_number_countries(Client, ProductType, #{}, #{}).
@@ -1606,7 +1722,7 @@ list_supported_phone_number_countries(Client, ProductType, QueryMap, HeadersMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Returns a list of the tags in a given resource.
 list_tags_for_resource(Client, ResourceARN)
   when is_map(Client) ->
     list_tags_for_resource(Client, ResourceARN, #{}, #{}).
@@ -1633,7 +1749,8 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Lists the Amazon Chime SDK Voice Connector groups in the
+%% administrator's AWS account.
 list_voice_connector_groups(Client)
   when is_map(Client) ->
     list_voice_connector_groups(Client, #{}, #{}).
@@ -1661,7 +1778,8 @@ list_voice_connector_groups(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Lists the SIP credentials for the specified Amazon Chime SDK Voice
+%% Connector.
 list_voice_connector_termination_credentials(Client, VoiceConnectorId)
   when is_map(Client) ->
     list_voice_connector_termination_credentials(Client, VoiceConnectorId, #{}, #{}).
@@ -1684,7 +1802,8 @@ list_voice_connector_termination_credentials(Client, VoiceConnectorId, QueryMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Lists the Amazon Chime SDK Voice Connectors in the administrators AWS
+%% account.
 list_voice_connectors(Client)
   when is_map(Client) ->
     list_voice_connectors(Client, #{}, #{}).
@@ -1712,7 +1831,8 @@ list_voice_connectors(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Lists the specified voice profile domains in the administrator's
+%% AWS account.
 list_voice_profile_domains(Client)
   when is_map(Client) ->
     list_voice_profile_domains(Client, #{}, #{}).
@@ -1740,7 +1860,7 @@ list_voice_profile_domains(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Lists the voice profiles in a voice profile domain.
 list_voice_profiles(Client, VoiceProfileDomainId)
   when is_map(Client) ->
     list_voice_profiles(Client, VoiceProfileDomainId, #{}, #{}).
@@ -1769,7 +1889,7 @@ list_voice_profiles(Client, VoiceProfileDomainId, QueryMap, HeadersMap, Options0
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Updates the Alexa Skill configuration for the SIP media application.
 put_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationId, Input) ->
     put_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationId, Input, []).
 put_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationId, Input0, Options0) ->
@@ -1792,7 +1912,8 @@ put_sip_media_application_alexa_skill_configuration(Client, SipMediaApplicationI
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Updates the logging configuration for the specified SIP media
+%% application.
 put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input) ->
     put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input, []).
 put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, Input0, Options0) ->
@@ -1815,7 +1936,7 @@ put_sip_media_application_logging_configuration(Client, SipMediaApplicationId, I
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Updates a Voice Connector's emergency calling configuration.
 put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input, []).
 put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, Input0, Options0) ->
@@ -1838,7 +1959,7 @@ put_voice_connector_emergency_calling_configuration(Client, VoiceConnectorId, In
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Updates a Voice Connector's logging configuration.
 put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input, []).
 put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input0, Options0) ->
@@ -1861,7 +1982,7 @@ put_voice_connector_logging_configuration(Client, VoiceConnectorId, Input0, Opti
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Updates a Voice Connector's origination settings.
 put_voice_connector_origination(Client, VoiceConnectorId, Input) ->
     put_voice_connector_origination(Client, VoiceConnectorId, Input, []).
 put_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) ->
@@ -1884,7 +2005,8 @@ put_voice_connector_origination(Client, VoiceConnectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Puts the specified proxy configuration to the specified Amazon Chime
+%% SDK Voice Connector.
 put_voice_connector_proxy(Client, VoiceConnectorId, Input) ->
     put_voice_connector_proxy(Client, VoiceConnectorId, Input, []).
 put_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
@@ -1907,7 +2029,7 @@ put_voice_connector_proxy(Client, VoiceConnectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Updates a Voice Connector's streaming configuration settings.
 put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input) ->
     put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input, []).
 put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Options0) ->
@@ -1930,7 +2052,7 @@ put_voice_connector_streaming_configuration(Client, VoiceConnectorId, Input0, Op
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Updates a Voice Connector's termination settings.
 put_voice_connector_termination(Client, VoiceConnectorId, Input) ->
     put_voice_connector_termination(Client, VoiceConnectorId, Input, []).
 put_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) ->
@@ -1953,7 +2075,7 @@ put_voice_connector_termination(Client, VoiceConnectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Updates a Voice Connector's termination credentials.
 put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input) ->
     put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input, []).
 put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Options0) ->
@@ -1976,7 +2098,7 @@ put_voice_connector_termination_credentials(Client, VoiceConnectorId, Input0, Op
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Restores a deleted phone number.
 restore_phone_number(Client, PhoneNumberId, Input) ->
     restore_phone_number(Client, PhoneNumberId, Input, []).
 restore_phone_number(Client, PhoneNumberId, Input0, Options0) ->
@@ -1999,7 +2121,7 @@ restore_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Searches the provisioned phone numbers in an organization.
 search_available_phone_numbers(Client)
   when is_map(Client) ->
     search_available_phone_numbers(Client, #{}, #{}).
@@ -2033,7 +2155,12 @@ search_available_phone_numbers(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-
+%% @doc Starts a speaker search task.
+%%
+%% Before starting any speaker search tasks, you must provide all notices and
+%% obtain all consents from the speaker as required under applicable privacy
+%% and biometrics laws, and as required under the AWS service terms for the
+%% Amazon Chime SDK.
 start_speaker_search_task(Client, VoiceConnectorId, Input) ->
     start_speaker_search_task(Client, VoiceConnectorId, Input, []).
 start_speaker_search_task(Client, VoiceConnectorId, Input0, Options0) ->
@@ -2056,7 +2183,15 @@ start_speaker_search_task(Client, VoiceConnectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Starts a voice tone analysis task.
+%%
+%% For more information about voice tone analysis, see Using Amazon Chime SDK
+%% voice analytics in the Amazon Chime SDK Developer Guide.
+%%
+%% Before starting any voice tone analysis tasks, you must provide all
+%% notices and obtain all consents from the speaker as required under
+%% applicable privacy and biometrics laws, and as required under the AWS
+%% service terms for the Amazon Chime SDK.
 start_voice_tone_analysis_task(Client, VoiceConnectorId, Input) ->
     start_voice_tone_analysis_task(Client, VoiceConnectorId, Input, []).
 start_voice_tone_analysis_task(Client, VoiceConnectorId, Input0, Options0) ->
@@ -2079,7 +2214,7 @@ start_voice_tone_analysis_task(Client, VoiceConnectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Stops a speaker search task.
 stop_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, Input) ->
     stop_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, Input, []).
 stop_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, Input0, Options0) ->
@@ -2102,7 +2237,7 @@ stop_speaker_search_task(Client, SpeakerSearchTaskId, VoiceConnectorId, Input0, 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Stops a voice tone analysis task.
 stop_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, Input) ->
     stop_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, Input, []).
 stop_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId, Input0, Options0) ->
@@ -2125,7 +2260,7 @@ stop_voice_tone_analysis_task(Client, VoiceConnectorId, VoiceToneAnalysisTaskId,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Adds a tag to the specified resource.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->
@@ -2148,7 +2283,7 @@ tag_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Removes tags from a resource.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 untag_resource(Client, Input0, Options0) ->
@@ -2171,7 +2306,8 @@ untag_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Updates global settings for the Amazon Chime SDK Voice Connectors in
+%% an AWS account.
 update_global_settings(Client, Input) ->
     update_global_settings(Client, Input, []).
 update_global_settings(Client, Input0, Options0) ->
@@ -2194,7 +2330,18 @@ update_global_settings(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Updates phone number details, such as product type or calling name,
+%% for the specified phone number ID.
+%%
+%% You can update one phone number detail at a time. For example, you can
+%% update either the product type or the calling name in one action.
+%%
+%% For numbers outside the U.S., you must use the Amazon Chime SDK SIP Media
+%% Application Dial-In product type.
+%%
+%% Updates to outbound calling names can take 72 hours to complete. Pending
+%% updates to outbound calling names must be complete before you can request
+%% another update.
 update_phone_number(Client, PhoneNumberId, Input) ->
     update_phone_number(Client, PhoneNumberId, Input, []).
 update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
@@ -2217,7 +2364,11 @@ update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Updates the phone number settings for the administrator's AWS
+%% account, such as the default outbound calling name.
+%%
+%% You can update the default outbound calling name once every seven days.
+%% Outbound calling names can take up to 72 hours to update.
 update_phone_number_settings(Client, Input) ->
     update_phone_number_settings(Client, Input, []).
 update_phone_number_settings(Client, Input0, Options0) ->
@@ -2240,7 +2391,8 @@ update_phone_number_settings(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Updates the specified proxy session details, such as voice or SMS
+%% capabilities.
 update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input) ->
     update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input, []).
 update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0) ->
@@ -2263,7 +2415,7 @@ update_proxy_session(Client, ProxySessionId, VoiceConnectorId, Input0, Options0)
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Updates the details of the specified SIP media application.
 update_sip_media_application(Client, SipMediaApplicationId, Input) ->
     update_sip_media_application(Client, SipMediaApplicationId, Input, []).
 update_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
@@ -2286,7 +2438,10 @@ update_sip_media_application(Client, SipMediaApplicationId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Invokes the AWS Lambda function associated with the SIP media
+%% application and transaction ID in an update request.
+%%
+%% The Lambda function can then return a new set of actions.
 update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input) ->
     update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input, []).
 update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, Input0, Options0) ->
@@ -2309,7 +2464,7 @@ update_sip_media_application_call(Client, SipMediaApplicationId, TransactionId, 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Updates the details of the specified SIP rule.
 update_sip_rule(Client, SipRuleId, Input) ->
     update_sip_rule(Client, SipRuleId, Input, []).
 update_sip_rule(Client, SipRuleId, Input0, Options0) ->
@@ -2332,7 +2487,8 @@ update_sip_rule(Client, SipRuleId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Updates the details for the specified Amazon Chime SDK Voice
+%% Connector.
 update_voice_connector(Client, VoiceConnectorId, Input) ->
     update_voice_connector(Client, VoiceConnectorId, Input, []).
 update_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
@@ -2355,7 +2511,8 @@ update_voice_connector(Client, VoiceConnectorId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Updates the settings for the specified Amazon Chime SDK Voice
+%% Connector group.
 update_voice_connector_group(Client, VoiceConnectorGroupId, Input) ->
     update_voice_connector_group(Client, VoiceConnectorGroupId, Input, []).
 update_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
@@ -2378,7 +2535,20 @@ update_voice_connector_group(Client, VoiceConnectorGroupId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Updates the specified voice profile’s voice print and refreshes its
+%% expiration timestamp.
+%%
+%% As a condition of using this feature, you acknowledge that the collection,
+%% use, storage, and retention of your caller’s biometric identifiers and
+%% biometric information (“biometric data”) in the form of a digital
+%% voiceprint requires the caller’s informed consent via a written release.
+%% Such consent is required under various state laws, including biometrics
+%% laws in Illinois, Texas, Washington and other state privacy laws.
+%%
+%% You must provide a written release to each caller through a process that
+%% clearly reflects each caller’s informed consent before using Amazon Chime
+%% SDK Voice Insights service, as required under the terms of your agreement
+%% with AWS governing your use of the service.
 update_voice_profile(Client, VoiceProfileId, Input) ->
     update_voice_profile(Client, VoiceProfileId, Input, []).
 update_voice_profile(Client, VoiceProfileId, Input0, Options0) ->
@@ -2401,7 +2571,7 @@ update_voice_profile(Client, VoiceProfileId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Updates the settings for the specified voice profile domain.
 update_voice_profile_domain(Client, VoiceProfileDomainId, Input) ->
     update_voice_profile_domain(Client, VoiceProfileDomainId, Input, []).
 update_voice_profile_domain(Client, VoiceProfileDomainId, Input0, Options0) ->
@@ -2424,7 +2594,13 @@ update_voice_profile_domain(Client, VoiceProfileDomainId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-
+%% @doc Validates an address to be used for 911 calls made with Amazon Chime
+%% SDK Voice Connectors.
+%%
+%% You can use validated addresses in a Presence Information Data Format
+%% Location Object file that you include in SIP requests. That helps ensure
+%% that addresses are routed to the appropriate Public Safety Answering
+%% Point.
 validate_e911_address(Client, Input) ->
     validate_e911_address(Client, Input, []).
 validate_e911_address(Client, Input0, Options0) ->

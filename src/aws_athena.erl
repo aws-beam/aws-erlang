@@ -245,7 +245,9 @@ create_prepared_statement(Client, Input, Options)
 %% accessed.
 %%
 %% During programmatic access, `CreatePresignedNotebookUrl' must be
-%% called every 10 minutes to refresh the authentication token.
+%% called every 10 minutes to refresh the authentication token. For
+%% information about granting programmatic access, see Grant programmatic
+%% access.
 create_presigned_notebook_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_presigned_notebook_url(Client, Input, []).
@@ -255,10 +257,8 @@ create_presigned_notebook_url(Client, Input, Options)
 
 %% @doc Creates a workgroup with the specified name.
 %%
-%% Only one of `Configurations' or `Configuration' can be specified;
-%% `Configurations' for a workgroup with multi engine support (for
-%% example, an Apache Spark enabled workgroup) or `Configuration' for an
-%% Athena SQL workgroup.
+%% A workgroup can be an Apache Spark enabled workgroup or an Athena SQL
+%% workgroup.
 create_work_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_work_group(Client, Input, []).
@@ -329,8 +329,7 @@ get_calculation_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCalculationExecution">>, Input, Options).
 
-%% @doc Retrieves a pre-signed URL to a copy of the code that was executed
-%% for the calculation.
+%% @doc Retrieves the unencrypted code that was executed for the calculation.
 get_calculation_execution_code(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_calculation_execution_code(Client, Input, []).
@@ -407,9 +406,10 @@ get_query_execution(Client, Input, Options)
 %% `QueryExecutionId' from the Athena query results location in Amazon
 %% S3.
 %%
-%% For more information, see Query Results in the Amazon Athena User Guide.
-%% This request does not execute the query but returns results. Use
-%% `StartQueryExecution' to run a query.
+%% For more information, see Working with query results, recent queries, and
+%% output files in the Amazon Athena User Guide. This request does not
+%% execute the query but returns results. Use `StartQueryExecution' to
+%% run a query.
 %%
 %% To stream query results successfully, the IAM principal with permission to
 %% call `GetQueryResults' also must have permissions to the Amazon S3
@@ -489,7 +489,7 @@ import_notebook(Client, Input, Options)
     request(Client, <<"ImportNotebook">>, Input, Options).
 
 %% @doc Returns the supported DPU sizes for the supported application
-%% runtimes (for example, `Jupyter 1.0').
+%% runtimes (for example, `Athena notebook version 1').
 list_application_d_p_u_sizes(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_application_d_p_u_sizes(Client, Input, []).
@@ -536,8 +536,7 @@ list_engine_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEngineVersions">>, Input, Options).
 
-%% @doc Lists, in descending order, the executors that have been submitted to
-%% a session.
+%% @doc Lists, in descending order, the executors that joined a session.
 %%
 %% Newer executors are listed first; older executors are listed later. The
 %% result can be optionally filtered by state.
@@ -647,8 +646,7 @@ list_work_groups(Client, Input, Options)
 
 %% @doc Submits calculations for execution within a session.
 %%
-%% You can supply the code to run as an inline code block within the request
-%% or as an Amazon S3 URL.
+%% You can supply the code to run as an inline code block within the request.
 start_calculation_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_calculation_execution(Client, Input, []).
@@ -797,11 +795,8 @@ update_prepared_statement(Client, Input, Options)
 
 %% @doc Updates the workgroup with the specified name.
 %%
-%% The workgroup's name cannot be changed. Only one of
-%% `ConfigurationsUpdates' or `ConfigurationUpdates' can be
-%% specified; `ConfigurationsUpdates' for a workgroup with multi engine
-%% support (for example, an Apache Spark enabled workgroup) or
-%% `ConfigurationUpdates' for an Athena SQL workgroup.
+%% The workgroup's name cannot be changed. Only
+%% `ConfigurationUpdates' can be specified.
 update_work_group(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_work_group(Client, Input, []).

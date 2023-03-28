@@ -2,19 +2,24 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Connect Voice ID provides real-time caller authentication and
-%% fraud screening.
-%%
-%% This guide describes the APIs used for this service.
+%% fraud risk detection, which make voice interactions in contact centers
+%% more secure and efficient.
 -module(aws_voice_id).
 
--export([create_domain/2,
+-export([associate_fraudster/2,
+         associate_fraudster/3,
+         create_domain/2,
          create_domain/3,
+         create_watchlist/2,
+         create_watchlist/3,
          delete_domain/2,
          delete_domain/3,
          delete_fraudster/2,
          delete_fraudster/3,
          delete_speaker/2,
          delete_speaker/3,
+         delete_watchlist/2,
+         delete_watchlist/3,
          describe_domain/2,
          describe_domain/3,
          describe_fraudster/2,
@@ -25,18 +30,26 @@
          describe_speaker/3,
          describe_speaker_enrollment_job/2,
          describe_speaker_enrollment_job/3,
+         describe_watchlist/2,
+         describe_watchlist/3,
+         disassociate_fraudster/2,
+         disassociate_fraudster/3,
          evaluate_session/2,
          evaluate_session/3,
          list_domains/2,
          list_domains/3,
          list_fraudster_registration_jobs/2,
          list_fraudster_registration_jobs/3,
+         list_fraudsters/2,
+         list_fraudsters/3,
          list_speaker_enrollment_jobs/2,
          list_speaker_enrollment_jobs/3,
          list_speakers/2,
          list_speakers/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         list_watchlists/2,
+         list_watchlists/3,
          opt_out_speaker/2,
          opt_out_speaker/3,
          start_fraudster_registration_job/2,
@@ -48,7 +61,9 @@
          untag_resource/2,
          untag_resource/3,
          update_domain/2,
-         update_domain/3]).
+         update_domain/3,
+         update_watchlist/2,
+         update_watchlist/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -56,14 +71,34 @@
 %% API
 %%====================================================================
 
+%% @doc Associates the fraudsters with the watchlist specified in the same
+%% domain.
+associate_fraudster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_fraudster(Client, Input, []).
+associate_fraudster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateFraudster">>, Input, Options).
+
 %% @doc Creates a domain that contains all Amazon Connect Voice ID data, such
 %% as speakers, fraudsters, customer audio, and voiceprints.
+%%
+%% Every domain is created with a default watchlist that fraudsters can be a
+%% part of.
 create_domain(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_domain(Client, Input, []).
 create_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDomain">>, Input, Options).
+
+%% @doc Creates a watchlist that fraudsters can be a part of.
+create_watchlist(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_watchlist(Client, Input, []).
+create_watchlist(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateWatchlist">>, Input, Options).
 
 %% @doc Deletes the specified domain from Voice ID.
 delete_domain(Client, Input)
@@ -74,6 +109,9 @@ delete_domain(Client, Input, Options)
     request(Client, <<"DeleteDomain">>, Input, Options).
 
 %% @doc Deletes the specified fraudster from Voice ID.
+%%
+%% This action disassociates the fraudster from any watchlists it is a part
+%% of.
 delete_fraudster(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_fraudster(Client, Input, []).
@@ -88,6 +126,19 @@ delete_speaker(Client, Input)
 delete_speaker(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSpeaker">>, Input, Options).
+
+%% @doc Deletes the specified watchlist from Voice ID.
+%%
+%% This API throws an exception when there are fraudsters in the watchlist
+%% that you are trying to delete. You must delete the fraudsters, and then
+%% delete the watchlist. Every domain has a default watchlist which cannot be
+%% deleted.
+delete_watchlist(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_watchlist(Client, Input, []).
+delete_watchlist(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteWatchlist">>, Input, Options).
 
 %% @doc Describes the specified domain.
 describe_domain(Client, Input)
@@ -129,6 +180,26 @@ describe_speaker_enrollment_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSpeakerEnrollmentJob">>, Input, Options).
 
+%% @doc Describes the specified watchlist.
+describe_watchlist(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_watchlist(Client, Input, []).
+describe_watchlist(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeWatchlist">>, Input, Options).
+
+%% @doc Disassociates the fraudsters from the watchlist specified.
+%%
+%% Voice ID always expects a fraudster to be a part of at least one
+%% watchlist. If you try to disassociate a fraudster from its only watchlist,
+%% a `ValidationException' is thrown.
+disassociate_fraudster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_fraudster(Client, Input, []).
+disassociate_fraudster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateFraudster">>, Input, Options).
+
 %% @doc Evaluates a specified session based on audio data accumulated during
 %% a streaming Amazon Connect Voice ID call.
 evaluate_session(Client, Input)
@@ -158,6 +229,14 @@ list_fraudster_registration_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFraudsterRegistrationJobs">>, Input, Options).
 
+%% @doc Lists all fraudsters in a specified watchlist or domain.
+list_fraudsters(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_fraudsters(Client, Input, []).
+list_fraudsters(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFraudsters">>, Input, Options).
+
 %% @doc Lists all the speaker enrollment jobs in the domain with the
 %% specified `JobStatus'.
 %%
@@ -185,6 +264,14 @@ list_tags_for_resource(Client, Input)
 list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
+
+%% @doc Lists all watchlists in a specified domain.
+list_watchlists(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_watchlists(Client, Input, []).
+list_watchlists(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListWatchlists">>, Input, Options).
 
 %% @doc Opts out a speaker from Voice ID.
 %%
@@ -245,6 +332,16 @@ update_domain(Client, Input)
 update_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDomain">>, Input, Options).
+
+%% @doc Updates the specified watchlist.
+%%
+%% Every domain has a default watchlist which cannot be updated.
+update_watchlist(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_watchlist(Client, Input, []).
+update_watchlist(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateWatchlist">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

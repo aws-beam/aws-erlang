@@ -72,12 +72,16 @@
          delete_service_profile/4,
          delete_wireless_device/3,
          delete_wireless_device/4,
+         delete_wireless_device_import_task/3,
+         delete_wireless_device_import_task/4,
          delete_wireless_gateway/3,
          delete_wireless_gateway/4,
          delete_wireless_gateway_task/3,
          delete_wireless_gateway_task/4,
          delete_wireless_gateway_task_definition/3,
          delete_wireless_gateway_task_definition/4,
+         deregister_wireless_device/3,
+         deregister_wireless_device/4,
          disassociate_aws_account_from_partner_account/3,
          disassociate_aws_account_from_partner_account/4,
          disassociate_multicast_group_from_fuota_task/4,
@@ -145,6 +149,9 @@
          get_wireless_device/3,
          get_wireless_device/5,
          get_wireless_device/6,
+         get_wireless_device_import_task/2,
+         get_wireless_device_import_task/4,
+         get_wireless_device_import_task/5,
          get_wireless_device_statistics/2,
          get_wireless_device_statistics/4,
          get_wireless_device_statistics/5,
@@ -172,6 +179,9 @@
          list_device_profiles/1,
          list_device_profiles/3,
          list_device_profiles/4,
+         list_devices_for_wireless_device_import_task/2,
+         list_devices_for_wireless_device_import_task/4,
+         list_devices_for_wireless_device_import_task/5,
          list_event_configurations/2,
          list_event_configurations/4,
          list_event_configurations/5,
@@ -202,6 +212,9 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_wireless_device_import_tasks/1,
+         list_wireless_device_import_tasks/3,
+         list_wireless_device_import_tasks/4,
          list_wireless_devices/1,
          list_wireless_devices/3,
          list_wireless_devices/4,
@@ -231,6 +244,10 @@
          start_fuota_task/4,
          start_multicast_group_session/3,
          start_multicast_group_session/4,
+         start_single_wireless_device_import_task/2,
+         start_single_wireless_device_import_task/3,
+         start_wireless_device_import_task/2,
+         start_wireless_device_import_task/3,
          tag_resource/2,
          tag_resource/3,
          test_wireless_device/3,
@@ -259,6 +276,8 @@
          update_resource_position/4,
          update_wireless_device/3,
          update_wireless_device/4,
+         update_wireless_device_import_task/3,
+         update_wireless_device_import_task/4,
          update_wireless_gateway/3,
          update_wireless_gateway/4]).
 
@@ -869,6 +888,29 @@ delete_wireless_device(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Delete an import task.
+delete_wireless_device_import_task(Client, Id, Input) ->
+    delete_wireless_device_import_task(Client, Id, Input, []).
+delete_wireless_device_import_task(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/wireless_device_import_task/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a wireless gateway.
 delete_wireless_gateway(Client, Id, Input) ->
     delete_wireless_gateway(Client, Id, Input, []).
@@ -939,6 +981,30 @@ delete_wireless_gateway_task_definition(Client, Id, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deregister a wireless device from AWS IoT Wireless.
+deregister_wireless_device(Client, Identifier, Input) ->
+    deregister_wireless_device(Client, Identifier, Input, []).
+deregister_wireless_device(Client, Identifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/wireless-devices/", aws_util:encode_uri(Identifier), "/deregister"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"WirelessDeviceType">>, <<"WirelessDeviceType">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates your AWS account from a partner account.
@@ -1576,6 +1642,30 @@ get_wireless_device(Client, Identifier, IdentifierType, QueryMap, HeadersMap, Op
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Get information about an import task and count of device onboarding
+%% summary information for the import task.
+get_wireless_device_import_task(Client, Id)
+  when is_map(Client) ->
+    get_wireless_device_import_task(Client, Id, #{}, #{}).
+
+get_wireless_device_import_task(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_wireless_device_import_task(Client, Id, QueryMap, HeadersMap, []).
+
+get_wireless_device_import_task(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/wireless_device_import_task/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets operating information about a wireless device.
 get_wireless_device_statistics(Client, WirelessDeviceId)
   when is_map(Client) ->
@@ -1792,8 +1882,40 @@ list_device_profiles(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"deviceProfileType">>, maps:get(<<"deviceProfileType">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List the Sidewalk devices in an import task and their onboarding
+%% status.
+list_devices_for_wireless_device_import_task(Client, Id)
+  when is_map(Client) ->
+    list_devices_for_wireless_device_import_task(Client, Id, #{}, #{}).
+
+list_devices_for_wireless_device_import_task(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_devices_for_wireless_device_import_task(Client, Id, QueryMap, HeadersMap, []).
+
+list_devices_for_wireless_device_import_task(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/wireless_device_import_task"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"id">>, Id},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2081,6 +2203,34 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"resourceArn">>, ResourceArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List wireless devices that have been added to an import task.
+list_wireless_device_import_tasks(Client)
+  when is_map(Client) ->
+    list_wireless_device_import_tasks(Client, #{}, #{}).
+
+list_wireless_device_import_tasks(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_wireless_device_import_tasks(Client, QueryMap, HeadersMap, []).
+
+list_wireless_device_import_tasks(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/wireless_device_import_tasks"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -2423,6 +2573,53 @@ start_multicast_group_session(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Start import task for a single wireless device.
+start_single_wireless_device_import_task(Client, Input) ->
+    start_single_wireless_device_import_task(Client, Input, []).
+start_single_wireless_device_import_task(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/wireless_single_device_import_task"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Start import task for provisioning Sidewalk devices in bulk using an
+%% S3 CSV file.
+start_wireless_device_import_task(Client, Input) ->
+    start_wireless_device_import_task(Client, Input, []).
+start_wireless_device_import_task(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/wireless_device_import_task"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Adds a tag to a resource.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
@@ -2747,6 +2944,29 @@ update_wireless_device(Client, Id, Input) ->
 update_wireless_device(Client, Id, Input0, Options0) ->
     Method = patch,
     Path = ["/wireless-devices/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 204,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update an import task to add more devices to the task.
+update_wireless_device_import_task(Client, Id, Input) ->
+    update_wireless_device_import_task(Client, Id, Input, []).
+update_wireless_device_import_task(Client, Id, Input0, Options0) ->
+    Method = patch,
+    Path = ["/wireless_device_import_task/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 204,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

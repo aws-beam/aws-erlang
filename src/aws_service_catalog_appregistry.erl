@@ -103,8 +103,8 @@ associate_attribute_group(Client, Application, AttributeGroup, Input0, Options0)
 
 %% @doc Associates a resource with an application.
 %%
-%% Both the resource and the application can be specified either by ID or
-%% name.
+%% The resource can be specified by its ARN or name. The application can be
+%% specified by ARN, ID, or name.
 associate_resource(Client, Application, Resource, ResourceType, Input) ->
     associate_resource(Client, Application, Resource, ResourceType, Input, []).
 associate_resource(Client, Application, Resource, ResourceType, Input0, Options0) ->
@@ -179,8 +179,8 @@ create_attribute_group(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes an application that is specified either by its application ID
-%% or name.
+%% @doc Deletes an application that is specified either by its application
+%% ID, name, or ARN.
 %%
 %% All associated attribute groups and resources must be disassociated from
 %% it before deleting an application.
@@ -207,7 +207,7 @@ delete_application(Client, Application, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an attribute group, specified either by its attribute group
-%% ID or name.
+%% ID, name, or ARN.
 delete_attribute_group(Client, AttributeGroup, Input) ->
     delete_attribute_group(Client, AttributeGroup, Input, []).
 delete_attribute_group(Client, AttributeGroup, Input0, Options0) ->
@@ -285,12 +285,11 @@ disassociate_resource(Client, Application, Resource, ResourceType, Input0, Optio
 
 %% @doc Retrieves metadata information about one of your applications.
 %%
-%% The application can be specified either by its unique ID or by its name
-%% (which is unique within one account in one region at a given point in
-%% time). Specify by ID in automated workflows if you want to make sure that
-%% the exact same application is returned or a
-%% `ResourceNotFoundException' is thrown, avoiding the ABA addressing
-%% problem.
+%% The application can be specified by its ARN, ID, or name (which is unique
+%% within one account in one region at a given point in time). Specify by ARN
+%% or ID in automated workflows if you want to make sure that the exact same
+%% application is returned or a `ResourceNotFoundException' is thrown,
+%% avoiding the ABA addressing problem.
 get_application(Client, Application)
   when is_map(Client) ->
     get_application(Client, Application, #{}, #{}).
@@ -336,10 +335,9 @@ get_associated_resource(Client, Application, Resource, ResourceType, QueryMap, H
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves an attribute group, either by its name or its ID.
+%% @doc Retrieves an attribute group by its ARN, ID, or name.
 %%
-%% The attribute group can be specified either by its unique ID or by its
-%% name.
+%% The attribute group can be specified by its ARN, ID, or name.
 get_attribute_group(Client, AttributeGroup)
   when is_map(Client) ->
     get_attribute_group(Client, AttributeGroup, #{}, #{}).

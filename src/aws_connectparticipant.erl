@@ -1,12 +1,20 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Connect is a cloud-based contact center solution that makes it
-%% easy to set up and manage a customer contact center.
+%% @doc Amazon Connect is an easy-to-use omnichannel cloud contact center
+%% service that enables companies of any size to deliver superior customer
+%% service at a lower cost.
 %%
-%% Amazon Connect enables customer contacts through voice or chat. Use the
-%% Amazon Connect Participant Service to manage chat participants, such as
-%% agents and customers.
+%% Amazon Connect communications capabilities make it easy for companies to
+%% deliver personalized interactions across communication channels, including
+%% chat.
+%%
+%% Use the Amazon Connect Participant Service to manage participants (for
+%% example, agents, customers, and managers listening in), and to send
+%% messages and events within a chat contact. The APIs in the service enable
+%% the following: sending chat messages, attachment sharing, managing a
+%% participant's connection state and message events, and retrieving chat
+%% transcripts.
 -module(aws_connectparticipant).
 
 -export([complete_attachment_upload/2,

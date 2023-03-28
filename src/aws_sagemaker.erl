@@ -752,7 +752,8 @@ create_artifact(Client, Input, Options)
 
 %% @doc Creates an Autopilot job.
 %%
-%% Find the best-performing model after you run an Autopilot job by calling .
+%% Find the best-performing model after you run an Autopilot job by calling `
+%% DescribeAutoMLJob '.
 %%
 %% For information about how to use Autopilot, see Automate Model Development
 %% with Amazon SageMaker Autopilot.
@@ -767,9 +768,11 @@ create_auto_ml_job(Client, Input, Options)
 %% such as images or text for Computer Vision or Natural Language Processing
 %% problems.
 %%
-%% Find the resulting model after you run an AutoML job V2 by calling .
+%% Find the resulting model after you run an AutoML job V2 by calling `
+%% DescribeAutoMLJobV2 '.
 %%
-%% To create an `AutoMLJob' using tabular data, see .
+%% To create an `AutoMLJob' using tabular data, see ` CreateAutoMLJob
+%% '.
 %%
 %% This API action is callable through SageMaker Canvas only. Calling it
 %% directly from the CLI or an SDK results in an error.
