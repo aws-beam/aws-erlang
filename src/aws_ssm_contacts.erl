@@ -24,12 +24,20 @@
          create_contact/3,
          create_contact_channel/2,
          create_contact_channel/3,
+         create_rotation/2,
+         create_rotation/3,
+         create_rotation_override/2,
+         create_rotation_override/3,
          deactivate_contact_channel/2,
          deactivate_contact_channel/3,
          delete_contact/2,
          delete_contact/3,
          delete_contact_channel/2,
          delete_contact_channel/3,
+         delete_rotation/2,
+         delete_rotation/3,
+         delete_rotation_override/2,
+         delete_rotation_override/3,
          describe_engagement/2,
          describe_engagement/3,
          describe_page/2,
@@ -40,6 +48,10 @@
          get_contact_channel/3,
          get_contact_policy/2,
          get_contact_policy/3,
+         get_rotation/2,
+         get_rotation/3,
+         get_rotation_override/2,
+         get_rotation_override/3,
          list_contact_channels/2,
          list_contact_channels/3,
          list_contacts/2,
@@ -48,10 +60,20 @@
          list_engagements/3,
          list_page_receipts/2,
          list_page_receipts/3,
+         list_page_resolutions/2,
+         list_page_resolutions/3,
          list_pages_by_contact/2,
          list_pages_by_contact/3,
          list_pages_by_engagement/2,
          list_pages_by_engagement/3,
+         list_preview_rotation_shifts/2,
+         list_preview_rotation_shifts/3,
+         list_rotation_overrides/2,
+         list_rotation_overrides/3,
+         list_rotation_shifts/2,
+         list_rotation_shifts/3,
+         list_rotations/2,
+         list_rotations/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          put_contact_policy/2,
@@ -69,7 +91,9 @@
          update_contact/2,
          update_contact/3,
          update_contact_channel/2,
-         update_contact_channel/3]).
+         update_contact_channel/3,
+         update_rotation/2,
+         update_rotation/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -116,6 +140,22 @@ create_contact_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateContactChannel">>, Input, Options).
 
+%% @doc Creates a rotation in an on-call schedule.
+create_rotation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_rotation(Client, Input, []).
+create_rotation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateRotation">>, Input, Options).
+
+%% @doc Creates an override for a rotation in an on-call schedule.
+create_rotation_override(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_rotation_override(Client, Input, []).
+create_rotation_override(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateRotationOverride">>, Input, Options).
+
 %% @doc To no longer receive Incident Manager engagements to a contact
 %% channel, you can deactivate the channel.
 deactivate_contact_channel(Client, Input)
@@ -151,6 +191,25 @@ delete_contact_channel(Client, Input)
 delete_contact_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteContactChannel">>, Input, Options).
+
+%% @doc Deletes a rotation from the system.
+%%
+%% If a rotation belongs to more than one on-call schedule, this operation
+%% deletes it from all of them.
+delete_rotation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_rotation(Client, Input, []).
+delete_rotation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteRotation">>, Input, Options).
+
+%% @doc Deletes an existing override for an on-call rotation.
+delete_rotation_override(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_rotation_override(Client, Input, []).
+delete_rotation_override(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteRotationOverride">>, Input, Options).
 
 %% @doc Incident Manager uses engagements to engage contacts and escalation
 %% plans during an incident.
@@ -197,6 +256,22 @@ get_contact_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetContactPolicy">>, Input, Options).
 
+%% @doc Retrieves information about an on-call rotation.
+get_rotation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_rotation(Client, Input, []).
+get_rotation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetRotation">>, Input, Options).
+
+%% @doc Retrieves information about an override to an on-call rotation.
+get_rotation_override(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_rotation_override(Client, Input, []).
+get_rotation_override(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetRotationOverride">>, Input, Options).
+
 %% @doc Lists all contact channels for the specified contact.
 list_contact_channels(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -230,6 +305,20 @@ list_page_receipts(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPageReceipts">>, Input, Options).
 
+%% @doc Returns the resolution path of an engagement.
+%%
+%% For example, the escalation plan engaged in an incident might target an
+%% on-call schedule that includes several contacts in a rotation, but just
+%% one contact on-call when the incident starts. The resolution path
+%% indicates the hierarchy of escalation plan &gt; on-call schedule &gt;
+%% contact.
+list_page_resolutions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_page_resolutions(Client, Input, []).
+list_page_resolutions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListPageResolutions">>, Input, Options).
+
 %% @doc Lists the engagements to a contact's contact channels.
 list_pages_by_contact(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -246,6 +335,43 @@ list_pages_by_engagement(Client, Input)
 list_pages_by_engagement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPagesByEngagement">>, Input, Options).
+
+%% @doc Returns a list of shifts based on rotation configuration parameters.
+%%
+%% The Incident Manager primarily uses this operation to populate the Preview
+%% calendar. It is not typically run by end users.
+list_preview_rotation_shifts(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_preview_rotation_shifts(Client, Input, []).
+list_preview_rotation_shifts(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListPreviewRotationShifts">>, Input, Options).
+
+%% @doc Retrieves a list of overrides currently specified for an on-call
+%% rotation.
+list_rotation_overrides(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_rotation_overrides(Client, Input, []).
+list_rotation_overrides(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListRotationOverrides">>, Input, Options).
+
+%% @doc Returns a list of shifts generated by an existing rotation in the
+%% system.
+list_rotation_shifts(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_rotation_shifts(Client, Input, []).
+list_rotation_shifts(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListRotationShifts">>, Input, Options).
+
+%% @doc Retrieves a list of on-call rotations.
+list_rotations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_rotations(Client, Input, []).
+list_rotations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListRotations">>, Input, Options).
 
 %% @doc Lists the tags of an escalation plan or contact.
 list_tags_for_resource(Client, Input)
@@ -334,6 +460,14 @@ update_contact_channel(Client, Input)
 update_contact_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateContactChannel">>, Input, Options).
+
+%% @doc Updates the information specified for an on-call rotation.
+update_rotation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_rotation(Client, Input, []).
+update_rotation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateRotation">>, Input, Options).
 
 %%====================================================================
 %% Internal functions
