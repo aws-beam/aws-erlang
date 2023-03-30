@@ -376,7 +376,8 @@ update_access_policy(Client, Input, Options)
 %% @doc Update the OpenSearch Serverless settings for the current Amazon Web
 %% Services account.
 %%
-%% For more information, see Autoscaling.
+%% For more information, see Managing capacity limits for Amazon OpenSearch
+%% Serverless.
 update_account_settings(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_account_settings(Client, Input, []).

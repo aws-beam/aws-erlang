@@ -591,13 +591,13 @@ create_custom_db_engine_version(Client, Input, Options)
 %%
 %% You can use the `ReplicationSourceIdentifier' parameter to create an
 %% Amazon Aurora DB cluster as a read replica of another DB cluster or Amazon
-%% RDS MySQL or PostgreSQL DB instance. For more information about Amazon
+%% RDS for MySQL or PostgreSQL DB instance. For more information about Amazon
 %% Aurora, see What is Amazon Aurora? in the Amazon Aurora User Guide.
 %%
 %% You can also use the `ReplicationSourceIdentifier' parameter to create
-%% a Multi-AZ DB cluster read replica with an RDS for PostgreSQL DB instance
-%% as the source. For more information about Multi-AZ DB clusters, see
-%% Multi-AZ DB cluster deployments in the Amazon RDS User Guide.
+%% a Multi-AZ DB cluster read replica with an RDS for MySQL or PostgreSQL DB
+%% instance as the source. For more information about Multi-AZ DB clusters,
+%% see Multi-AZ DB cluster deployments in the Amazon RDS User Guide.
 create_db_cluster(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_cluster(Client, Input, []).
@@ -693,21 +693,23 @@ create_db_instance(Client, Input, Options)
     request(Client, <<"CreateDBInstance">>, Input, Options).
 
 %% @doc Creates a new DB instance that acts as a read replica for an existing
-%% source DB instance.
+%% source DB instance or Multi-AZ DB cluster.
 %%
 %% You can create a read replica for a DB instance running MySQL, MariaDB,
-%% Oracle, PostgreSQL, or SQL Server. For more information, see Working with
-%% Read Replicas in the Amazon RDS User Guide.
+%% Oracle, PostgreSQL, or SQL Server. You can create a read replica for a
+%% Multi-AZ DB cluster running MySQL or PostgreSQL. For more information, see
+%% Working with read replicas and Migrating from a Multi-AZ DB cluster to a
+%% DB instance using a read replica in the Amazon RDS User Guide.
 %%
 %% Amazon Aurora doesn't support this operation. Call the
 %% `CreateDBInstance' operation to create a DB instance for an Aurora DB
 %% cluster.
 %%
 %% All read replica DB instances are created with backups disabled. All other
-%% DB instance attributes (including DB security groups and DB parameter
-%% groups) are inherited from the source DB instance, except as specified.
+%% attributes (including DB security groups and DB parameter groups) are
+%% inherited from the source DB instance or cluster, except as specified.
 %%
-%% Your source DB instance must have backup retention enabled.
+%% Your source DB instance or cluster must have backup retention enabled.
 create_db_instance_read_replica(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_db_instance_read_replica(Client, Input, []).
@@ -926,6 +928,10 @@ delete_custom_db_engine_version(Client, Input, Options)
 %% When you delete a DB cluster, all automated backups for that DB cluster
 %% are deleted and can't be recovered. Manual DB cluster snapshots of the
 %% specified DB cluster are not deleted.
+%%
+%% If you're deleting a Multi-AZ DB cluster with read replicas, all
+%% cluster members are terminated and read replicas are promoted to
+%% standalone instances.
 %%
 %% For more information on Amazon Aurora, see What is Amazon Aurora? in the
 %% Amazon Aurora User Guide.
