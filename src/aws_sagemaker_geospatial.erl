@@ -103,7 +103,8 @@ delete_vector_enrichment_job(Client, Arn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Use this operation to export results of an Earth Observation job and
-%% optionally source images used as input to the EOJ to an S3 location.
+%% optionally source images used as input to the EOJ to an Amazon S3
+%% location.
 export_earth_observation_job(Client, Input) ->
     export_earth_observation_job(Client, Input, []).
 export_earth_observation_job(Client, Input0, Options0) ->
@@ -127,7 +128,7 @@ export_earth_observation_job(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Use this operation to copy results of a Vector Enrichment job to an
-%% S3 location.
+%% Amazon S3 location.
 export_vector_enrichment_job(Client, Input) ->
     export_vector_enrichment_job(Client, Input, []).
 export_vector_enrichment_job(Client, Input0, Options0) ->
@@ -219,6 +220,7 @@ get_tile(Client, X, Y, Z, Arn, ImageAssets, Target, QueryMap, HeadersMap, Option
     Query0_ =
       [
         {<<"Arn">>, Arn},
+        {<<"ExecutionRoleArn">>, maps:get(<<"ExecutionRoleArn">>, QueryMap, undefined)},
         {<<"ImageAssets">>, ImageAssets},
         {<<"ImageMask">>, maps:get(<<"ImageMask">>, QueryMap, undefined)},
         {<<"OutputDataType">>, maps:get(<<"OutputDataType">>, QueryMap, undefined)},

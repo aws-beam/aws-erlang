@@ -170,8 +170,17 @@ attach_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachInstances">>, Input, Options).
 
-%% @doc Attaches one or more target groups to the specified Auto Scaling
-%% group.
+%% @doc This API call has been replaced with a new &quot;traffic
+%% sources&quot; API call (`AttachTrafficSources') that can attach
+%% multiple traffic sources types.
+%%
+%% While we continue to support `AttachLoadBalancerTargetGroups', and you
+%% can use both the original `AttachLoadBalancerTargetGroups' API call
+%% and the new `AttachTrafficSources' API call on the same Auto Scaling
+%% group, we recommend using the new &quot;traffic sources&quot; API call to
+%% simplify how you manage traffic sources.
+%%
+%% Attaches one or more target groups to the specified Auto Scaling group.
 %%
 %% This operation is used with the following load balancer types:
 %%
@@ -202,9 +211,15 @@ attach_load_balancer_target_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachLoadBalancerTargetGroups">>, Input, Options).
 
-%% @doc To attach an Application Load Balancer, Network Load Balancer, or
-%% Gateway Load Balancer, use the `AttachLoadBalancerTargetGroups' API
-%% operation instead.
+%% @doc This API call has been replaced with a new &quot;traffic
+%% sources&quot; API call (`AttachTrafficSources') that can attach
+%% multiple traffic sources types.
+%%
+%% While we continue to support `AttachLoadBalancers', and you can use
+%% both the original `AttachLoadBalancers' API call and the new
+%% `AttachTrafficSources' API call on the same Auto Scaling group, we
+%% recommend using the new &quot;traffic sources&quot; API call to simplify
+%% how you manage traffic sources.
 %%
 %% Attaches one or more Classic Load Balancers to the specified Auto Scaling
 %% group. Amazon EC2 Auto Scaling registers the running instances with these
@@ -227,20 +242,29 @@ attach_load_balancers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachLoadBalancers">>, Input, Options).
 
-%% @doc Reserved for use with Amazon VPC Lattice, which is in preview and
-%% subject to change.
+%% @doc Attaches one or more traffic sources to the specified Auto Scaling
+%% group.
 %%
-%% Do not use this API for production workloads. This API is also subject to
-%% change.
+%% You can use any of the following as traffic sources for an Auto Scaling
+%% group:
 %%
-%% Attaches one or more traffic sources to the specified Auto Scaling group.
+%% <ul> <li> Application Load Balancer
 %%
-%% To describe the traffic sources for an Auto Scaling group, call the
-%% `DescribeTrafficSources' API. To detach a traffic source from the Auto
+%% </li> <li> Classic Load Balancer
+%%
+%% </li> <li> Network Load Balancer
+%%
+%% </li> <li> Gateway Load Balancer
+%%
+%% </li> <li> VPC Lattice
+%%
+%% </li> </ul> This operation is additive and does not detach existing
+%% traffic sources from the Auto Scaling group.
+%%
+%% After the operation completes, use the `DescribeTrafficSources' API to
+%% return details about the state of the attachments between traffic sources
+%% and your Auto Scaling group. To detach a traffic source from the Auto
 %% Scaling group, call the `DetachTrafficSources' API.
-%%
-%% This operation is additive and does not detach existing traffic sources
-%% from the Auto Scaling group.
 attach_traffic_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     attach_traffic_sources(Client, Input, []).
@@ -619,8 +643,18 @@ describe_lifecycle_hooks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLifecycleHooks">>, Input, Options).
 
-%% @doc Gets information about the Elastic Load Balancing target groups for
-%% the specified Auto Scaling group.
+%% @doc This API call has been replaced with a new &quot;traffic
+%% sources&quot; API call (`DescribeTrafficSources') that can describe
+%% multiple traffic sources types.
+%%
+%% While we continue to support `DescribeLoadBalancerTargetGroups', and
+%% you can use both the original `DescribeLoadBalancerTargetGroups' API
+%% call and the new `DescribeTrafficSources' API call on the same Auto
+%% Scaling group, we recommend using the new &quot;traffic sources&quot; API
+%% call to simplify how you manage traffic sources.
+%%
+%% Gets information about the Elastic Load Balancing target groups for the
+%% specified Auto Scaling group.
 %%
 %% To determine the attachment status of the target group, use the
 %% `State' element in the response. When you attach a target group to an
@@ -656,12 +690,22 @@ describe_load_balancer_target_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLoadBalancerTargetGroups">>, Input, Options).
 
-%% @doc Gets information about the load balancers for the specified Auto
-%% Scaling group.
+%% @doc This API call has been replaced with a new &quot;traffic
+%% sources&quot; API call (`DescribeTrafficSources') that can describe
+%% multiple traffic sources types.
+%%
+%% While we continue to support `DescribeLoadBalancers', and you can use
+%% both the original `DescribeLoadBalancers' API call and the new
+%% `DescribeTrafficSources' API call on the same Auto Scaling group, we
+%% recommend using the new &quot;traffic sources&quot; API call to simplify
+%% how you manage traffic sources.
+%%
+%% Gets information about the load balancers for the specified Auto Scaling
+%% group.
 %%
 %% This operation describes only Classic Load Balancers. If you have
 %% Application Load Balancers, Network Load Balancers, or Gateway Load
-%% Balancer, use the `DescribeLoadBalancerTargetGroups' API instead.
+%% Balancers, use the `DescribeLoadBalancerTargetGroups' API instead.
 %%
 %% To determine the attachment status of the load balancer, use the
 %% `State' element in the response. When you attach a load balancer to an
@@ -794,14 +838,14 @@ describe_termination_policy_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTerminationPolicyTypes">>, Input, Options).
 
-%% @doc Reserved for use with Amazon VPC Lattice, which is in preview and
-%% subject to change.
+%% @doc Gets information about the traffic sources for the specified Auto
+%% Scaling group.
 %%
-%% Do not use this API for production workloads. This API is also subject to
-%% change.
+%% You can optionally provide a traffic source type. If you provide a traffic
+%% source type, then the results only include that traffic source type.
 %%
-%% Gets information about the traffic sources for the specified Auto Scaling
-%% group.
+%% If you do not provide a traffic source type, then the results include all
+%% the traffic sources for the specified Auto Scaling group.
 describe_traffic_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_traffic_sources(Client, Input, []).
@@ -842,8 +886,17 @@ detach_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachInstances">>, Input, Options).
 
-%% @doc Detaches one or more target groups from the specified Auto Scaling
-%% group.
+%% @doc This API call has been replaced with a new &quot;traffic
+%% sources&quot; API call (`DetachTrafficSources') that can detach
+%% multiple traffic sources types.
+%%
+%% While we continue to support `DetachLoadBalancerTargetGroups', and you
+%% can use both the original `DetachLoadBalancerTargetGroups' API call
+%% and the new `DetachTrafficSources' API call on the same Auto Scaling
+%% group, we recommend using the new &quot;traffic sources&quot; API call to
+%% simplify how you manage traffic sources.
+%%
+%% Detaches one or more target groups from the specified Auto Scaling group.
 %%
 %% When you detach a target group, it enters the `Removing' state while
 %% deregistering the instances in the group. When all instances are
@@ -861,12 +914,22 @@ detach_load_balancer_target_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachLoadBalancerTargetGroups">>, Input, Options).
 
-%% @doc Detaches one or more Classic Load Balancers from the specified Auto
+%% @doc This API call has been replaced with a new &quot;traffic
+%% sources&quot; API call (`DetachTrafficSources') that can detach
+%% multiple traffic sources types.
+%%
+%% While we continue to support `DetachLoadBalancers', and you can use
+%% both the original `DetachLoadBalancers' API call and the new
+%% `DetachTrafficSources' API call on the same Auto Scaling group, we
+%% recommend using the new &quot;traffic sources&quot; API call to simplify
+%% how you manage traffic sources.
+%%
+%% Detaches one or more Classic Load Balancers from the specified Auto
 %% Scaling group.
 %%
 %% This operation detaches only Classic Load Balancers. If you have
 %% Application Load Balancers, Network Load Balancers, or Gateway Load
-%% Balancer, use the `DetachLoadBalancerTargetGroups' API instead.
+%% Balancers, use the `DetachLoadBalancerTargetGroups' API instead.
 %%
 %% When you detach a load balancer, it enters the `Removing' state while
 %% deregistering the instances in the group. When all instances are
@@ -879,14 +942,13 @@ detach_load_balancers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DetachLoadBalancers">>, Input, Options).
 
-%% @doc Reserved for use with Amazon VPC Lattice, which is in preview and
-%% subject to change.
-%%
-%% Do not use this API for production workloads. This API is also subject to
-%% change.
-%%
-%% Detaches one or more traffic sources from the specified Auto Scaling
+%% @doc Detaches one or more traffic sources from the specified Auto Scaling
 %% group.
+%%
+%% When you detach a taffic, it enters the `Removing' state while
+%% deregistering the instances in the group. When all instances are
+%% deregistered, then you can no longer describe the traffic source using the
+%% `DescribeTrafficSources' API call. The instances continue to run.
 detach_traffic_sources(Client, Input)
   when is_map(Client), is_map(Input) ->
     detach_traffic_sources(Client, Input, []).

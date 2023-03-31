@@ -618,12 +618,12 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Causes the data replication initiation sequence to begin immediately
-%% upon next Handshake for the specified Source Server ID, regardless of when
-%% the previous initiation started.
+%% @doc WARNING: RetryDataReplication is deprecated.
 %%
-%% This command will work only if the Source Server is stalled or is in a
-%% DISCONNECTED or STOPPED state.
+%% Causes the data replication initiation sequence to begin immediately upon
+%% next Handshake for the specified Source Server ID, regardless of when the
+%% previous initiation started. This command will work only if the Source
+%% Server is stalled or is in a DISCONNECTED or STOPPED state.
 retry_data_replication(Client, Input) ->
     retry_data_replication(Client, Input, []).
 retry_data_replication(Client, Input0, Options0) ->

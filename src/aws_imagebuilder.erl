@@ -71,6 +71,12 @@
          get_infrastructure_configuration/2,
          get_infrastructure_configuration/4,
          get_infrastructure_configuration/5,
+         get_workflow_execution/2,
+         get_workflow_execution/4,
+         get_workflow_execution/5,
+         get_workflow_step_execution/2,
+         get_workflow_step_execution/4,
+         get_workflow_step_execution/5,
          import_component/2,
          import_component/3,
          import_vm_image/2,
@@ -93,6 +99,10 @@
          list_image_pipelines/3,
          list_image_recipes/2,
          list_image_recipes/3,
+         list_image_scan_finding_aggregations/2,
+         list_image_scan_finding_aggregations/3,
+         list_image_scan_findings/2,
+         list_image_scan_findings/3,
          list_images/2,
          list_images/3,
          list_infrastructure_configurations/2,
@@ -100,6 +110,10 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_workflow_executions/2,
+         list_workflow_executions/3,
+         list_workflow_step_executions/2,
+         list_workflow_step_executions/3,
          put_component_policy/2,
          put_component_policy/3,
          put_container_recipe_policy/2,
@@ -823,6 +837,62 @@ get_infrastructure_configuration(Client, InfrastructureConfigurationArn, QueryMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Get the runtime information that was logged for a specific runtime
+%% instance of the workflow.
+get_workflow_execution(Client, WorkflowExecutionId)
+  when is_map(Client) ->
+    get_workflow_execution(Client, WorkflowExecutionId, #{}, #{}).
+
+get_workflow_execution(Client, WorkflowExecutionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_workflow_execution(Client, WorkflowExecutionId, QueryMap, HeadersMap, []).
+
+get_workflow_execution(Client, WorkflowExecutionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/GetWorkflowExecution"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"workflowExecutionId">>, WorkflowExecutionId}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get the runtime information that was logged for a specific runtime
+%% instance of the workflow step.
+get_workflow_step_execution(Client, StepExecutionId)
+  when is_map(Client) ->
+    get_workflow_step_execution(Client, StepExecutionId, #{}, #{}).
+
+get_workflow_step_execution(Client, StepExecutionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_workflow_step_execution(Client, StepExecutionId, QueryMap, HeadersMap, []).
+
+get_workflow_step_execution(Client, StepExecutionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/GetWorkflowStepExecution"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"stepExecutionId">>, StepExecutionId}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Imports a component and transforms its data into a component
 %% document.
 import_component(Client, Input) ->
@@ -1111,6 +1181,70 @@ list_image_recipes(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns a list of image scan aggregations for your account.
+%%
+%% You can filter by the type of key that Image Builder uses to group
+%% results. For example, if you want to get a list of findings by severity
+%% level for one of your pipelines, you might specify your pipeline with the
+%% `imagePipelineArn' filter. If you don't specify a filter, Image
+%% Builder returns an aggregation for your account.
+%%
+%% To streamline results, you can use the following filters in your request:
+%%
+%% <ul> <li> `accountId'
+%%
+%% </li> <li> `imageBuildVersionArn'
+%%
+%% </li> <li> `imagePipelineArn'
+%%
+%% </li> <li> `vulnerabilityId'
+%%
+%% </li> </ul>
+list_image_scan_finding_aggregations(Client, Input) ->
+    list_image_scan_finding_aggregations(Client, Input, []).
+list_image_scan_finding_aggregations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListImageScanFindingAggregations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a list of image scan findings for your account.
+list_image_scan_findings(Client, Input) ->
+    list_image_scan_findings(Client, Input, []).
+list_image_scan_findings(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListImageScanFindings"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns the list of images that you have access to.
 %%
 %% Newly created images can take up to two minutes to appear in the
@@ -1182,6 +1316,54 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of workflow runtime instance metadata objects for a
+%% specific image build version.
+list_workflow_executions(Client, Input) ->
+    list_workflow_executions(Client, Input, []).
+list_workflow_executions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListWorkflowExecutions"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Shows runtime data for each step in a runtime instance of the
+%% workflow that you specify in the request.
+list_workflow_step_executions(Client, Input) ->
+    list_workflow_step_executions(Client, Input, []).
+list_workflow_step_executions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListWorkflowStepExecutions"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Applies a policy to a component.
 %%

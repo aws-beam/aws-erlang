@@ -89,6 +89,8 @@
          create_firewall_policy/3,
          create_rule_group/2,
          create_rule_group/3,
+         create_t_l_s_inspection_configuration/2,
+         create_t_l_s_inspection_configuration/3,
          delete_firewall/2,
          delete_firewall/3,
          delete_firewall_policy/2,
@@ -97,6 +99,8 @@
          delete_resource_policy/3,
          delete_rule_group/2,
          delete_rule_group/3,
+         delete_t_l_s_inspection_configuration/2,
+         delete_t_l_s_inspection_configuration/3,
          describe_firewall/2,
          describe_firewall/3,
          describe_firewall_policy/2,
@@ -109,6 +113,8 @@
          describe_rule_group/3,
          describe_rule_group_metadata/2,
          describe_rule_group_metadata/3,
+         describe_t_l_s_inspection_configuration/2,
+         describe_t_l_s_inspection_configuration/3,
          disassociate_subnets/2,
          disassociate_subnets/3,
          list_firewall_policies/2,
@@ -117,6 +123,8 @@
          list_firewalls/3,
          list_rule_groups/2,
          list_rule_groups/3,
+         list_t_l_s_inspection_configurations/2,
+         list_t_l_s_inspection_configurations/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          put_resource_policy/2,
@@ -140,7 +148,9 @@
          update_rule_group/2,
          update_rule_group/3,
          update_subnet_change_protection/2,
-         update_subnet_change_protection/3]).
+         update_subnet_change_protection/3,
+         update_t_l_s_inspection_configuration/2,
+         update_t_l_s_inspection_configuration/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -233,6 +243,36 @@ create_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRuleGroup">>, Input, Options).
 
+%% @doc Creates an Network Firewall TLS inspection configuration.
+%%
+%% A TLS inspection configuration contains the Certificate Manager
+%% certificate references that Network Firewall uses to decrypt and
+%% re-encrypt inbound traffic.
+%%
+%% After you create a TLS inspection configuration, you associate it with a
+%% firewall policy.
+%%
+%% To update the settings for a TLS inspection configuration, use
+%% `UpdateTLSInspectionConfiguration'.
+%%
+%% To manage a TLS inspection configuration's tags, use the standard
+%% Amazon Web Services resource tagging operations,
+%% `ListTagsForResource', `TagResource', and `UntagResource'.
+%%
+%% To retrieve information about TLS inspection configurations, use
+%% `ListTLSInspectionConfigurations' and
+%% `DescribeTLSInspectionConfiguration'.
+%%
+%% For more information about TLS inspection configurations, see Decrypting
+%% SSL/TLS traffic with TLS inspection configurations in the Network Firewall
+%% Developer Guide.
+create_t_l_s_inspection_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_t_l_s_inspection_configuration(Client, Input, []).
+create_t_l_s_inspection_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateTLSInspectionConfiguration">>, Input, Options).
+
 %% @doc Deletes the specified `Firewall' and its `FirewallStatus'.
 %%
 %% This operation requires the firewall's `DeleteProtection' flag to
@@ -280,6 +320,14 @@ delete_rule_group(Client, Input)
 delete_rule_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRuleGroup">>, Input, Options).
+
+%% @doc Deletes the specified `TLSInspectionConfiguration'.
+delete_t_l_s_inspection_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_t_l_s_inspection_configuration(Client, Input, []).
+delete_t_l_s_inspection_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteTLSInspectionConfiguration">>, Input, Options).
 
 %% @doc Returns the data objects for the specified firewall.
 describe_firewall(Client, Input)
@@ -335,6 +383,15 @@ describe_rule_group_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRuleGroupMetadata">>, Input, Options).
 
+%% @doc Returns the data objects for the specified TLS inspection
+%% configuration.
+describe_t_l_s_inspection_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_t_l_s_inspection_configuration(Client, Input, []).
+describe_t_l_s_inspection_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTLSInspectionConfiguration">>, Input, Options).
+
 %% @doc Removes the specified subnet associations from the firewall.
 %%
 %% This removes the firewall endpoints from the subnets and removes any
@@ -382,6 +439,18 @@ list_rule_groups(Client, Input)
 list_rule_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRuleGroups">>, Input, Options).
+
+%% @doc Retrieves the metadata for the TLS inspection configurations that you
+%% have defined.
+%%
+%% Depending on your setting for max results and the number of TLS inspection
+%% configurations, a single call might not return the full list.
+list_t_l_s_inspection_configurations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_t_l_s_inspection_configurations(Client, Input, []).
+list_t_l_s_inspection_configurations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTLSInspectionConfigurations">>, Input, Options).
 
 %% @doc Retrieves the tags associated with the specified resource.
 %%
@@ -574,6 +643,24 @@ update_subnet_change_protection(Client, Input)
 update_subnet_change_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSubnetChangeProtection">>, Input, Options).
+
+%% @doc Updates the TLS inspection configuration settings for the specified
+%% TLS inspection configuration.
+%%
+%% You use a TLS inspection configuration by reference in one or more
+%% firewall policies. When you modify a TLS inspection configuration, you
+%% modify all firewall policies that use the TLS inspection configuration.
+%%
+%% To update a TLS inspection configuration, first call
+%% `DescribeTLSInspectionConfiguration' to retrieve the current
+%% `TLSInspectionConfiguration' object, update the object as needed, and
+%% then provide the updated object to this call.
+update_t_l_s_inspection_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_t_l_s_inspection_configuration(Client, Input, []).
+update_t_l_s_inspection_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateTLSInspectionConfiguration">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

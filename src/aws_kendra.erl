@@ -10,6 +10,8 @@
          associate_personas_to_entities/3,
          batch_delete_document/2,
          batch_delete_document/3,
+         batch_delete_featured_results_set/2,
+         batch_delete_featured_results_set/3,
          batch_get_document_status/2,
          batch_get_document_status/3,
          batch_put_document/2,
@@ -24,6 +26,8 @@
          create_experience/3,
          create_faq/2,
          create_faq/3,
+         create_featured_results_set/2,
+         create_featured_results_set/3,
          create_index/2,
          create_index/3,
          create_query_suggestions_block_list/2,
@@ -54,6 +58,8 @@
          describe_experience/3,
          describe_faq/2,
          describe_faq/3,
+         describe_featured_results_set/2,
+         describe_featured_results_set/3,
          describe_index/2,
          describe_index/3,
          describe_principal_mapping/2,
@@ -86,6 +92,8 @@
          list_experiences/3,
          list_faqs/2,
          list_faqs/3,
+         list_featured_results_sets/2,
+         list_featured_results_sets/3,
          list_groups_older_than_ordering_id/2,
          list_groups_older_than_ordering_id/3,
          list_indices/2,
@@ -116,6 +124,8 @@
          update_data_source/3,
          update_experience/2,
          update_experience/3,
+         update_featured_results_set/2,
+         update_featured_results_set/3,
          update_index/2,
          update_index/3,
          update_query_suggestions_block_list/2,
@@ -171,6 +181,18 @@ batch_delete_document(Client, Input)
 batch_delete_document(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchDeleteDocument">>, Input, Options).
+
+%% @doc Removes one or more sets of featured results.
+%%
+%% Features results are placed above all other results for certain queries.
+%% If there's an exact match of a query, then one or more specific
+%% documents are featured in the search results.
+batch_delete_featured_results_set(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_delete_featured_results_set(Client, Input, []).
+batch_delete_featured_results_set(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchDeleteFeaturedResultsSet">>, Input, Options).
 
 %% @doc Returns the indexing status for one or more documents submitted with
 %% the BatchPutDocument API.
@@ -271,9 +293,6 @@ create_access_control_configuration(Client, Input, Options)
 %% 200 if the data source was successfully created. Otherwise, an exception
 %% is raised.
 %%
-%% Amazon S3 and custom data sources are the only supported data sources in
-%% the Amazon Web Services GovCloud (US-West) region.
-%%
 %% For an example of creating an index and data source using the Python SDK,
 %% see Getting started with Python SDK. For an example of creating an index
 %% and data source using the Java SDK, see Getting started with Java SDK.
@@ -296,8 +315,8 @@ create_experience(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateExperience">>, Input, Options).
 
-%% @doc Creates an new set of frequently asked question (FAQ) questions and
-%% answers.
+%% @doc Creates a set of frequently ask questions (FAQs) using a specified
+%% FAQ file stored in an Amazon S3 bucket.
 %%
 %% Adding FAQs to an index is an asynchronous operation.
 %%
@@ -309,6 +328,23 @@ create_faq(Client, Input)
 create_faq(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFaq">>, Input, Options).
+
+%% @doc Creates a set of featured results to display at the top of the search
+%% results page.
+%%
+%% Featured results are placed above all other results for certain queries.
+%% You map specific queries to specific documents for featuring in the
+%% results. If a query contains an exact match, then one or more specific
+%% documents are featured in the search results.
+%%
+%% You can create up to 50 sets of featured results per index. You can
+%% request to increase this limit by contacting Support.
+create_featured_results_set(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_featured_results_set(Client, Input, []).
+create_featured_results_set(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateFeaturedResultsSet">>, Input, Options).
 
 %% @doc Creates an Amazon Kendra index.
 %%
@@ -512,6 +548,18 @@ describe_faq(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFaq">>, Input, Options).
 
+%% @doc Gets information about a set of featured results.
+%%
+%% Features results are placed above all other results for certain queries.
+%% If there's an exact match of a query, then one or more specific
+%% documents are featured in the search results.
+describe_featured_results_set(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_featured_results_set(Client, Input, []).
+describe_featured_results_set(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeFeaturedResultsSet">>, Input, Options).
+
 %% @doc Gets information about an existing Amazon Kendra index.
 describe_index(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -693,6 +741,18 @@ list_faqs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFaqs">>, Input, Options).
 
+%% @doc Lists all your sets of featured results for a given index.
+%%
+%% Features results are placed above all other results for certain queries.
+%% If there's an exact match of a query, then one or more specific
+%% documents are featured in the search results.
+list_featured_results_sets(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_featured_results_sets(Client, Input, []).
+list_featured_results_sets(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFeaturedResultsSets">>, Input, Options).
+
 %% @doc Provides a list of groups that are mapped to users before a given
 %% ordering or timestamp identifier.
 %%
@@ -762,9 +822,6 @@ list_thesauri(Client, Input, Options)
 %%
 %% If more than five `PUT' actions for a group are currently processing,
 %% a validation exception is thrown.
-%%
-%% `PutPrincipalMapping' is currently not supported in the Amazon Web
-%% Services GovCloud (US-West) region.
 put_principal_mapping(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_principal_mapping(Client, Input, []).
@@ -904,6 +961,19 @@ update_experience(Client, Input)
 update_experience(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateExperience">>, Input, Options).
+
+%% @doc Updates a set of featured results.
+%%
+%% Features results are placed above all other results for certain queries.
+%% You map specific queries to specific documents for featuring in the
+%% results. If a query contains an exact match of a query, then one or more
+%% specific documents are featured in the search results.
+update_featured_results_set(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_featured_results_set(Client, Input, []).
+update_featured_results_set(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateFeaturedResultsSet">>, Input, Options).
 
 %% @doc Updates an existing Amazon Kendra index.
 update_index(Client, Input)

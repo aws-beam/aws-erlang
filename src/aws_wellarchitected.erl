@@ -38,6 +38,9 @@
          get_answer/4,
          get_answer/6,
          get_answer/7,
+         get_consolidated_report/2,
+         get_consolidated_report/4,
+         get_consolidated_report/5,
          get_lens/2,
          get_lens/4,
          get_lens/5,
@@ -153,9 +156,18 @@ associate_lenses(Client, WorkloadId, Input0, Options0) ->
 %% @doc Create a lens share.
 %%
 %% The owner of a lens can share it with other Amazon Web Services accounts,
-%% IAM users, an organization, and organizational units (OUs) in the same
-%% Amazon Web Services Region. Shared access to a lens is not removed until
-%% the lens invitation is deleted.
+%% users, an organization, and organizational units (OUs) in the same Amazon
+%% Web Services Region. Lenses provided by Amazon Web Services (Amazon Web
+%% Services Official Content) cannot be shared.
+%%
+%% Shared access to a lens is not removed until the lens invitation is
+%% deleted.
+%%
+%% If you share a lens with an organization or OU, all accounts in the
+%% organization or OU are granted access to the lens.
+%%
+%% For more information, see Sharing a custom lens in the Well-Architected
+%% Tool User Guide.
 %%
 %% Disclaimer
 %%
@@ -191,10 +203,11 @@ create_lens_share(Client, LensAlias, Input0, Options0) ->
 %%
 %% A lens can have up to 100 versions.
 %%
-%% After a lens has been imported, create a new lens version to publish it.
+%% Use this operation to publish a new lens version after you have imported a
+%% lens. The `LensAlias' is used to identify the lens to be published.
 %% The owner of a lens can share the lens with other Amazon Web Services
-%% accounts and IAM users in the same Amazon Web Services Region. Only the
-%% owner of a lens can delete it.
+%% accounts and users in the same Amazon Web Services Region. Only the owner
+%% of a lens can delete it.
 create_lens_version(Client, LensAlias, Input) ->
     create_lens_version(Client, LensAlias, Input, []).
 create_lens_version(Client, LensAlias, Input0, Options0) ->
@@ -243,12 +256,18 @@ create_milestone(Client, WorkloadId, Input0, Options0) ->
 %% @doc Create a new workload.
 %%
 %% The owner of a workload can share the workload with other Amazon Web
-%% Services accounts, IAM users, an organization, and organizational units
-%% (OUs) in the same Amazon Web Services Region. Only the owner of a workload
-%% can delete it.
+%% Services accounts, users, an organization, and organizational units (OUs)
+%% in the same Amazon Web Services Region. Only the owner of a workload can
+%% delete it.
 %%
 %% For more information, see Defining a Workload in the Well-Architected Tool
 %% User Guide.
+%%
+%% Either `AwsRegions', `NonAwsRegions', or both must be specified
+%% when creating a workload.
+%%
+%% You also must specify `ReviewOwner', even though the parameter is
+%% listed as not being required in the following section.
 create_workload(Client, Input) ->
     create_workload(Client, Input, []).
 create_workload(Client, Input0, Options0) ->
@@ -274,11 +293,13 @@ create_workload(Client, Input0, Options0) ->
 %% @doc Create a workload share.
 %%
 %% The owner of a workload can share it with other Amazon Web Services
-%% accounts and IAM users in the same Amazon Web Services Region. Shared
-%% access to a workload is not removed until the workload invitation is
-%% deleted.
+%% accounts and users in the same Amazon Web Services Region. Shared access
+%% to a workload is not removed until the workload invitation is deleted.
 %%
-%% For more information, see Sharing a Workload in the Well-Architected Tool
+%% If you share a workload with an organization or OU, all accounts in the
+%% organization or OU are granted access to the workload.
+%%
+%% For more information, see Sharing a workload in the Well-Architected Tool
 %% User Guide.
 create_workload_share(Client, WorkloadId, Input) ->
     create_workload_share(Client, WorkloadId, Input, []).
@@ -305,9 +326,8 @@ create_workload_share(Client, WorkloadId, Input0, Options0) ->
 %% @doc Delete an existing lens.
 %%
 %% Only the owner of a lens can delete it. After the lens is deleted, Amazon
-%% Web Services accounts and IAM users that you shared the lens with can
-%% continue to use it, but they will no longer be able to apply it to new
-%% workloads.
+%% Web Services accounts and users that you shared the lens with can continue
+%% to use it, but they will no longer be able to apply it to new workloads.
 %%
 %% Disclaimer
 %%
@@ -343,7 +363,7 @@ delete_lens(Client, LensAlias, Input0, Options0) ->
 
 %% @doc Delete a lens share.
 %%
-%% After the lens share is deleted, Amazon Web Services accounts, IAM users,
+%% After the lens share is deleted, Amazon Web Services accounts, users,
 %% organizations, and organizational units (OUs) that you shared the lens
 %% with can continue to use it, but they will no longer be able to apply it
 %% to new workloads.
@@ -458,9 +478,11 @@ disassociate_lenses(Client, WorkloadId, Input0, Options0) ->
 
 %% @doc Export an existing lens.
 %%
+%% Only the owner of a lens can export it. Lenses provided by Amazon Web
+%% Services (Amazon Web Services Official Content) cannot be exported.
+%%
 %% Lenses are defined in JSON. For more information, see JSON format
-%% specification in the Well-Architected Tool User Guide. Only the owner of a
-%% lens can export it.
+%% specification in the Well-Architected Tool User Guide.
 %%
 %% Disclaimer
 %%
@@ -519,6 +541,39 @@ get_answer(Client, LensAlias, QuestionId, WorkloadId, QueryMap, HeadersMap, Opti
     Query0_ =
       [
         {<<"MilestoneNumber">>, maps:get(<<"MilestoneNumber">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Get a consolidated report of your workloads.
+%%
+%% You can optionally choose to include workloads that have been shared with
+%% you.
+get_consolidated_report(Client, Format)
+  when is_map(Client) ->
+    get_consolidated_report(Client, Format, #{}, #{}).
+
+get_consolidated_report(Client, Format, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_consolidated_report(Client, Format, QueryMap, HeadersMap, []).
+
+get_consolidated_report(Client, Format, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/consolidatedReport"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Format">>, Format},
+        {<<"IncludeSharedResources">>, maps:get(<<"IncludeSharedResources">>, QueryMap, undefined)},
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -679,10 +734,14 @@ get_workload(Client, WorkloadId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Import a new lens.
+%% @doc Import a new custom lens or update an existing custom lens.
 %%
-%% The lens cannot be applied to workloads or shared with other Amazon Web
-%% Services accounts until it's published with `CreateLensVersion'
+%% To update an existing custom lens, specify its ARN as the `LensAlias'.
+%% If no ARN is specified, a new custom lens is created.
+%%
+%% The new or updated lens will have a status of `DRAFT'. The lens cannot
+%% be applied to workloads or shared with other Amazon Web Services accounts
+%% until it's published with `CreateLensVersion'.
 %%
 %% Lenses are defined in JSON. For more information, see JSON format
 %% specification in the Well-Architected Tool User Guide.
@@ -720,7 +779,7 @@ import_lens(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List of answers.
+%% @doc List of answers for a particular workload and lens.
 list_answers(Client, LensAlias, WorkloadId)
   when is_map(Client) ->
     list_answers(Client, LensAlias, WorkloadId, #{}, #{}).
@@ -828,7 +887,7 @@ list_lens_review_improvements(Client, LensAlias, WorkloadId, QueryMap, HeadersMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List lens reviews.
+%% @doc List lens reviews for a particular workload.
 list_lens_reviews(Client, WorkloadId)
   when is_map(Client) ->
     list_lens_reviews(Client, WorkloadId, #{}, #{}).
@@ -1051,9 +1110,7 @@ list_workload_shares(Client, WorkloadId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List workloads.
-%%
-%% Paginated.
+%% @doc Paginated list of workloads.
 list_workloads(Client, Input) ->
     list_workloads(Client, Input, []).
 list_workloads(Client, Input0, Options0) ->
@@ -1180,7 +1237,7 @@ update_global_settings(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update lens review.
+%% @doc Update lens review for a particular workload.
 update_lens_review(Client, LensAlias, WorkloadId, Input) ->
     update_lens_review(Client, LensAlias, WorkloadId, Input, []).
 update_lens_review(Client, LensAlias, WorkloadId, Input0, Options0) ->
@@ -1275,7 +1332,7 @@ update_workload_share(Client, ShareId, WorkloadId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Upgrade lens review.
+%% @doc Upgrade lens review for a particular workload.
 upgrade_lens_review(Client, LensAlias, WorkloadId, Input) ->
     upgrade_lens_review(Client, LensAlias, WorkloadId, Input, []).
 upgrade_lens_review(Client, LensAlias, WorkloadId, Input0, Options0) ->

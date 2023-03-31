@@ -83,6 +83,8 @@
          get_administrator_account/2,
          get_administrator_account/4,
          get_administrator_account/5,
+         get_coverage_statistics/3,
+         get_coverage_statistics/4,
          get_detector/2,
          get_detector/4,
          get_detector/5,
@@ -118,6 +120,8 @@
          get_usage_statistics/4,
          invite_members/3,
          invite_members/4,
+         list_coverage/3,
+         list_coverage/4,
          list_detectors/1,
          list_detectors/3,
          list_detectors/4,
@@ -896,6 +900,34 @@ get_administrator_account(Client, DetectorId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves aggregated statistics for your account.
+%%
+%% If you are a GuardDuty administrator, you can retrieve the statistics for
+%% all the resources associated with the active member accounts in your
+%% organization who have enabled EKS Runtime Monitoring and have the
+%% GuardDuty agent running on their EKS nodes.
+get_coverage_statistics(Client, DetectorId, Input) ->
+    get_coverage_statistics(Client, DetectorId, Input, []).
+get_coverage_statistics(Client, DetectorId, Input0, Options0) ->
+    Method = post,
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/coverage/statistics"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves an Amazon GuardDuty detector specified by the detectorId.
 %%
 %% There might be regional differences because some data sources might not be
@@ -1232,6 +1264,35 @@ invite_members(Client, DetectorId, Input) ->
 invite_members(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/member/invite"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists coverage details for your GuardDuty account.
+%%
+%% If you're a GuardDuty administrator, you can retrieve all resources
+%% associated with the active member accounts in your organization.
+%%
+%% Make sure the accounts have EKS Runtime Monitoring enabled and GuardDuty
+%% agent running on their EKS nodes.
+list_coverage(Client, DetectorId, Input) ->
+    list_coverage(Client, DetectorId, Input, []).
+list_coverage(Client, DetectorId, Input0, Options0) ->
+    Method = post,
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/coverage"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
