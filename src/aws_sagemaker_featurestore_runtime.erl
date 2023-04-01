@@ -60,12 +60,32 @@ batch_get_record(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a `Record' from a `FeatureGroup'.
+%% @doc Deletes a `Record' from a `FeatureGroup' in the
+%% `OnlineStore'.
 %%
-%% When the `DeleteRecord' API is called a new record will be added to
-%% the `OfflineStore' and the `Record' will be removed from the
-%% `OnlineStore'. This record will have a value of `True' in the
-%% `is_deleted' column.
+%% Feature Store supports both `SOFT_DELETE' and `HARD_DELETE'. For
+%% `SOFT_DELETE' (default), feature columns are set to `null' and the
+%% record is no longer retrievable by `GetRecord' or
+%% `BatchGetRecord'. For` HARD_DELETE', the complete `Record' is
+%% removed from the `OnlineStore'. In both cases, Feature Store appends
+%% the deleted record marker to the `OfflineStore' with feature values
+%% set to `null', `is_deleted' value set to `True', and
+%% `EventTime' set to the delete input `EventTime'.
+%%
+%% Note that the `EventTime' specified in `DeleteRecord' should be
+%% set later than the `EventTime' of the existing record in the
+%% `OnlineStore' for that `RecordIdentifer'. If it is not, the
+%% deletion does not occur:
+%%
+%% <ul> <li> For `SOFT_DELETE', the existing (undeleted) record remains
+%% in the `OnlineStore', though the delete record marker is still written
+%% to the `OfflineStore'.
+%%
+%% </li> <li> `HARD_DELETE' returns `EventTime': `400
+%% ValidationException' to indicate that the delete operation failed. No
+%% delete record marker is written to the `OfflineStore'.
+%%
+%% </li> </ul>
 delete_record(Client, FeatureGroupName, Input) ->
     delete_record(Client, FeatureGroupName, Input, []).
 delete_record(Client, FeatureGroupName, Input0, Options0) ->
@@ -84,6 +104,7 @@ delete_record(Client, FeatureGroupName, Input0, Options0) ->
     Input2 = Input1,
 
     QueryMapping = [
+                     {<<"DeletionMode">>, <<"DeletionMode">>},
                      {<<"EventTime">>, <<"EventTime">>},
                      {<<"RecordIdentifierValueAsString">>, <<"RecordIdentifierValueAsString">>},
                      {<<"TargetStores">>, <<"TargetStores">>}

@@ -334,9 +334,16 @@ abort_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% minutes to complete. After Amazon S3 begins processing the request, it
 %% sends an HTTP response header that specifies a 200 OK response. While
 %% processing is in progress, Amazon S3 periodically sends white space
-%% characters to keep the connection from timing out. Because a request could
-%% fail after the initial 200 OK response has been sent, it is important that
-%% you check the response body to determine whether the request succeeded.
+%% characters to keep the connection from timing out. A request could fail
+%% after the initial 200 OK response has been sent. This means that a `200
+%% OK' response can contain either a success or an error. If you call the
+%% S3 API directly, make sure to design your application to parse the
+%% contents of the response and handle it appropriately. If you use Amazon
+%% Web Services SDKs, SDKs handle this condition. The SDKs detect the
+%% embedded error and apply error handling per your configuration settings
+%% (including automatically retrying the request as appropriate). If the
+%% condition persists, the SDKs throws an exception (or, for the SDKs that
+%% don't use exceptions, they return the error).
 %%
 %% Note that if `CompleteMultipartUpload' fails, applications should be
 %% prepared to retry the failed requests. For more information, see Amazon S3
@@ -474,8 +481,14 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% before the copy action starts, you receive a standard Amazon S3 error. If
 %% the error occurs during the copy operation, the error response is embedded
 %% in the `200 OK' response. This means that a `200 OK' response can
-%% contain either a success or an error. Design your application to parse the
-%% contents of the response and handle it appropriately.
+%% contain either a success or an error. If you call the S3 API directly,
+%% make sure to design your application to parse the contents of the response
+%% and handle it appropriately. If you use Amazon Web Services SDKs, SDKs
+%% handle this condition. The SDKs detect the embedded error and apply error
+%% handling per your configuration settings (including automatically retrying
+%% the request as appropriate). If the condition persists, the SDKs throws an
+%% exception (or, for the SDKs that don't use exceptions, they return the
+%% error).
 %%
 %% If the copy is successful, you receive a response with information about
 %% the copied object.
@@ -509,6 +522,9 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %% more information, see Specifying Conditions in a Policy in the Amazon S3
 %% User Guide. For a complete list of Amazon S3-specific condition keys, see
 %% Actions, Resources, and Condition Keys for Amazon S3.
+%%
+%% `x-amz-website-redirect-location' is unique to each object and must be
+%% specified in the request headers to copy the value.
 %%
 %% x-amz-copy-source-if Headers
 %%
@@ -550,14 +566,29 @@ complete_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% Server-side encryption
 %%
-%% When you perform a CopyObject operation, you can optionally use the
-%% appropriate encryption-related headers to encrypt the object using
-%% server-side encryption with Amazon Web Services managed encryption keys
-%% (SSE-S3 or SSE-KMS) or a customer-provided encryption key. With
-%% server-side encryption, Amazon S3 encrypts your data as it writes it to
-%% disks in its data centers and decrypts the data when you access it. For
-%% more information about server-side encryption, see Using Server-Side
-%% Encryption.
+%% Amazon S3 automatically encrypts all new objects that are copied to an S3
+%% bucket. When copying an object, if you don't specify encryption
+%% information in your copy request, the encryption setting of the target
+%% object is set to the default encryption configuration of the destination
+%% bucket. By default, all buckets have a base level of encryption
+%% configuration that uses server-side encryption with Amazon S3 managed keys
+%% (SSE-S3). If the destination bucket has a default encryption configuration
+%% that uses server-side encryption with an Key Management Service (KMS) key
+%% (SSE-KMS), or a customer-provided encryption key (SSE-C), Amazon S3 uses
+%% the corresponding KMS key, or a customer-provided key to encrypt the
+%% target object copy. When you perform a CopyObject operation, if you want
+%% to use a different type of encryption setting for the target object, you
+%% can use other appropriate encryption-related headers to encrypt the target
+%% object with a KMS key, an Amazon S3 managed key, or a customer-provided
+%% key. With server-side encryption, Amazon S3 encrypts your data as it
+%% writes it to disks in its data centers and decrypts the data when you
+%% access it. If the encryption setting in your request is different from the
+%% default encryption configuration of the destination bucket, the encryption
+%% setting in your request takes precedence. If the source object for the
+%% copy is stored in Amazon S3 using SSE-C, you must provide the necessary
+%% encryption information in your request so that Amazon S3 can decrypt the
+%% object for copying. For more information about server-side encryption, see
+%% Using Server-Side Encryption.
 %%
 %% If a target object uses SSE-KMS, you can enable an S3 Bucket Key for the
 %% object. For more information, see Amazon S3 Bucket Keys in the Amazon S3
@@ -926,21 +957,41 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %% to store the parts and stop charging you for storing them only after you
 %% either complete or abort a multipart upload.
 %%
-%% You can optionally request server-side encryption. For server-side
-%% encryption, Amazon S3 encrypts your data as it writes it to disks in its
-%% data centers and decrypts it when you access it. You can provide your own
-%% encryption key, or use Amazon Web Services KMS keys or Amazon S3-managed
-%% encryption keys. If you choose to provide your own encryption key, the
-%% request headers you provide in UploadPart and UploadPartCopy requests must
-%% match the headers you used in the request to initiate the upload by using
-%% `CreateMultipartUpload'.
+%% Server-side encryption is for data encryption at rest. Amazon S3 encrypts
+%% your data as it writes it to disks in its data centers and decrypts it
+%% when you access it. Amazon S3 automatically encrypts all new objects that
+%% are uploaded to an S3 bucket. When doing a multipart upload, if you
+%% don't specify encryption information in your request, the encryption
+%% setting of the uploaded parts is set to the default encryption
+%% configuration of the destination bucket. By default, all buckets have a
+%% base level of encryption configuration that uses server-side encryption
+%% with Amazon S3 managed keys (SSE-S3). If the destination bucket has a
+%% default encryption configuration that uses server-side encryption with an
+%% Key Management Service (KMS) key (SSE-KMS), or a customer-provided
+%% encryption key (SSE-C), Amazon S3 uses the corresponding KMS key, or a
+%% customer-provided key to encrypt the uploaded parts. When you perform a
+%% CreateMultipartUpload operation, if you want to use a different type of
+%% encryption setting for the uploaded parts, you can request that Amazon S3
+%% encrypts the object with a KMS key, an Amazon S3 managed key, or a
+%% customer-provided key. If the encryption setting in your request is
+%% different from the default encryption configuration of the destination
+%% bucket, the encryption setting in your request takes precedence. If you
+%% choose to provide your own encryption key, the request headers you provide
+%% in UploadPart and UploadPartCopy requests must match the headers you used
+%% in the request to initiate the upload by using
+%% `CreateMultipartUpload'. you can request that Amazon S3 save the
+%% uploaded parts encrypted with server-side encryption with an Amazon S3
+%% managed key (SSE-S3), an Key Management Service (KMS) key (SSE-KMS), or a
+%% customer-provided encryption key (SSE-C).
 %%
-%% To perform a multipart upload with encryption using an Amazon Web Services
-%% KMS key, the requester must have permission to the `kms:Decrypt' and
-%% `kms:GenerateDataKey*' actions on the key. These permissions are
-%% required because Amazon S3 must decrypt and read data from the encrypted
-%% file parts before it completes the multipart upload. For more information,
-%% see Multipart upload API and permissions in the Amazon S3 User Guide.
+%% To perform a multipart upload with encryption by using an Amazon Web
+%% Services KMS key, the requester must have permission to the
+%% `kms:Decrypt' and `kms:GenerateDataKey*' actions on the key. These
+%% permissions are required because Amazon S3 must decrypt and read data from
+%% the encrypted file parts before it completes the multipart upload. For
+%% more information, see Multipart upload API and permissions and Protecting
+%% data using server-side encryption with Amazon Web Services KMS in the
+%% Amazon S3 User Guide.
 %%
 %% If your Identity and Access Management (IAM) user or role is in the same
 %% Amazon Web Services account as the KMS key, then you must have these
@@ -967,18 +1018,19 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %% </li> </ul> You can use either a canned ACL or specify access permissions
 %% explicitly. You cannot do both.
 %%
-%% </dd> <dt>Server-Side- Encryption-Specific Request Headers</dt> <dd> You
-%% can optionally tell Amazon S3 to encrypt data at rest using server-side
-%% encryption. Server-side encryption is for data encryption at rest. Amazon
-%% S3 encrypts your data as it writes it to disks in its data centers and
-%% decrypts it when you access it. The option you use depends on whether you
-%% want to use Amazon Web Services managed encryption keys or provide your
-%% own encryption key.
+%% </dd> <dt>Server-Side- Encryption-Specific Request Headers</dt> <dd>
+%% Amazon S3 encrypts data by using server-side encryption with an Amazon S3
+%% managed key (SSE-S3) by default. Server-side encryption is for data
+%% encryption at rest. Amazon S3 encrypts your data as it writes it to disks
+%% in its data centers and decrypts it when you access it. You can request
+%% that Amazon S3 encrypts data at rest by using server-side encryption with
+%% other key options. The option you use depends on whether you want to use
+%% KMS keys (SSE-KMS) or provide your own encryption keys (SSE-C).
 %%
-%% <ul> <li> Use encryption keys managed by Amazon S3 or customer managed key
-%% stored in Amazon Web Services Key Management Service (Amazon Web Services
-%% KMS) – If you want Amazon Web Services to manage the keys used to encrypt
-%% data, specify the following headers in the request.
+%% <ul> <li> Use KMS keys (SSE-KMS) that include the Amazon Web Services
+%% managed key (`aws/s3') and KMS customer managed keys stored in Key
+%% Management Service (KMS) – If you want Amazon Web Services to manage the
+%% keys used to encrypt data, specify the following headers in the request.
 %%
 %% <ul> <li> `x-amz-server-side-encryption'
 %%
@@ -988,17 +1040,18 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% </li> </ul> If you specify `x-amz-server-side-encryption:aws:kms', but
 %% don't provide `x-amz-server-side-encryption-aws-kms-key-id',
-%% Amazon S3 uses the Amazon Web Services managed key in Amazon Web Services
+%% Amazon S3 uses the Amazon Web Services managed key (`aws/s3' key) in
 %% KMS to protect the data.
 %%
-%% All GET and PUT requests for an object protected by Amazon Web Services
-%% KMS fail if you don't make them with SSL or by using SigV4.
+%% All `GET' and `PUT' requests for an object protected by KMS fail
+%% if you don't make them by using Secure Sockets Layer (SSL), Transport
+%% Layer Security (TLS), or Signature Version 4.
 %%
-%% For more information about server-side encryption with KMS key (SSE-KMS),
+%% For more information about server-side encryption with KMS keys (SSE-KMS),
 %% see Protecting Data Using Server-Side Encryption with KMS keys.
 %%
-%% </li> <li> Use customer-provided encryption keys – If you want to manage
-%% your own encryption keys, provide all the following headers in the
+%% </li> <li> Use customer-provided encryption keys (SSE-C) – If you want to
+%% manage your own encryption keys, provide all the following headers in the
 %% request.
 %%
 %% <ul> <li> `x-amz-server-side-encryption-customer-algorithm'
@@ -1007,9 +1060,9 @@ create_bucket(Client, Bucket, Input0, Options0) ->
 %%
 %% </li> <li> `x-amz-server-side-encryption-customer-key-MD5'
 %%
-%% </li> </ul> For more information about server-side encryption with KMS
-%% keys (SSE-KMS), see Protecting Data Using Server-Side Encryption with KMS
-%% keys.
+%% </li> </ul> For more information about server-side encryption with
+%% customer-provided encryption keys (SSE-C), see Protecting data using
+%% server-side encryption with customer-provided encryption keys (SSE-C).
 %%
 %% </li> </ul> </dd> <dt>Access-Control-List (ACL)-Specific Request
 %% Headers</dt> <dd> You also can use the following access control–related
@@ -1303,11 +1356,12 @@ delete_bucket_cors(Client, Bucket, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
-%% @doc This implementation of the DELETE action removes default encryption
-%% from the bucket.
+%% @doc This implementation of the DELETE action resets the default
+%% encryption for the bucket as server-side encryption with Amazon S3 managed
+%% keys (SSE-S3).
 %%
-%% For information about the Amazon S3 default encryption feature, see Amazon
-%% S3 Default Bucket Encryption in the Amazon S3 User Guide.
+%% For information about the bucket default encryption feature, see Amazon S3
+%% Bucket Default Encryption in the Amazon S3 User Guide.
 %%
 %% To use this operation, you must have permissions to perform the
 %% `s3:PutEncryptionConfiguration' action. The bucket owner has this
@@ -1788,10 +1842,10 @@ delete_bucket_website(Client, Bucket, Input0, Options0) ->
 %% If there isn't a null version, Amazon S3 does not remove any objects
 %% but will still respond that the command was successful.
 %%
-%% To remove a specific version, you must be the bucket owner and you must
-%% use the version Id subresource. Using this subresource permanently deletes
-%% the version. If the object deleted is a delete marker, Amazon S3 sets the
-%% response header, `x-amz-delete-marker', to true.
+%% To remove a specific version, you must use the version Id subresource.
+%% Using this subresource permanently deletes the version. If the object
+%% deleted is a delete marker, Amazon S3 sets the response header,
+%% `x-amz-delete-marker', to true.
 %%
 %% If the object you want to delete is in a bucket where the bucket
 %% versioning configuration is MFA Delete enabled, you must include the
@@ -1871,8 +1925,7 @@ delete_object(Client, Bucket, Key, Input0, Options0) ->
 %% parameter in the request. You will need permission for the
 %% `s3:DeleteObjectVersionTagging' action.
 %%
-%% The following operations are related to
-%% `DeleteBucketMetricsConfiguration':
+%% The following operations are related to `DeleteObjectTagging':
 %%
 %% <ul> <li> PutObjectTagging
 %%
@@ -2122,6 +2175,9 @@ get_bucket_accelerate_configuration(Client, Bucket, QueryMap, HeadersMap, Option
 %% granted to the anonymous user, you can return the ACL of the bucket
 %% without using an authorization header.
 %%
+%% To use this API against an access point, provide the alias of the access
+%% point in place of the bucket name.
+%%
 %% If your bucket uses the bucket owner enforced setting for S3 Object
 %% Ownership, requests to read ACLs are still supported and return the
 %% `bucket-owner-full-control' ACL with the owner being the account that
@@ -2221,6 +2277,9 @@ get_bucket_analytics_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Opt
 %% `s3:GetBucketCORS' action. By default, the bucket owner has this
 %% permission and can grant it to others.
 %%
+%% To use this API against an access point, provide the alias of the access
+%% point in place of the bucket name.
+%%
 %% For more information about CORS, see Enabling Cross-Origin Resource
 %% Sharing.
 %%
@@ -2260,12 +2319,10 @@ get_bucket_cors(Client, Bucket, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns the default encryption configuration for an Amazon S3 bucket.
 %%
-%% If the bucket does not have a default encryption configuration,
-%% GetBucketEncryption returns
-%% `ServerSideEncryptionConfigurationNotFoundError'.
-%%
-%% For information about the Amazon S3 default encryption feature, see Amazon
-%% S3 Default Bucket Encryption.
+%% By default, all buckets have a default encryption configuration that uses
+%% server-side encryption with Amazon S3 managed keys (SSE-S3). For
+%% information about the bucket default encryption feature, see Amazon S3
+%% Bucket Default Encryption in the Amazon S3 User Guide.
 %%
 %% To use this operation, you must have permission to perform the
 %% `s3:GetEncryptionConfiguration' action. The bucket owner has this
@@ -2564,6 +2621,10 @@ get_bucket_lifecycle_configuration(Client, Bucket, QueryMap, HeadersMap, Options
 %% To use this API against an access point, provide the alias of the access
 %% point in place of the bucket name.
 %%
+%% For requests made using Amazon Web Services Signature Version 4 (SigV4),
+%% we recommend that you use HeadBucket to return the bucket Region instead
+%% of GetBucketLocation.
+%%
 %% The following operations are related to `GetBucketLocation':
 %%
 %% <ul> <li> GetObject
@@ -2600,8 +2661,6 @@ get_bucket_location(Client, Bucket, QueryMap, HeadersMap, Options0)
 
 %% @doc Returns the logging status of a bucket and the permissions users have
 %% to view and modify that status.
-%%
-%% To use GET, you must be the bucket owner.
 %%
 %% The following operations are related to `GetBucketLogging':
 %%
@@ -2733,6 +2792,9 @@ get_bucket_notification(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% policy to grant permission to other users to read this configuration with
 %% the `s3:GetBucketNotification' permission.
 %%
+%% To use this API against an access point, provide the alias of the access
+%% point in place of the bucket name.
+%%
 %% For more information about setting and reading the notification
 %% configuration on a bucket, see Setting Up Notification of Bucket Events.
 %% For more information about bucket policies, see Using Bucket Policies.
@@ -2827,6 +2889,9 @@ get_bucket_ownership_controls(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% As a security precaution, the root user of the Amazon Web Services account
 %% that owns a bucket can always use this operation, even if the policy
 %% explicitly denies the root user the ability to perform this action.
+%%
+%% To use this API against an access point, provide the alias of the access
+%% point in place of the bucket name.
 %%
 %% For more information about bucket policies, see Using Bucket Policies and
 %% User Policies.
@@ -3169,8 +3234,8 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% Deep Archive storage class, or S3 Intelligent-Tiering Archive or S3
 %% Intelligent-Tiering Deep Archive tiers, before you can retrieve the object
 %% you must first restore a copy using RestoreObject. Otherwise, this action
-%% returns an `InvalidObjectStateError' error. For information about
-%% restoring archived objects, see Restoring Archived Objects.
+%% returns an `InvalidObjectState' error. For information about restoring
+%% archived objects, see Restoring Archived Objects.
 %%
 %% Encryption request headers, like `x-amz-server-side-encryption',
 %% should not be sent for GET requests if your object uses server-side
@@ -3219,7 +3284,9 @@ get_bucket_website(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% If you supply a `versionId', you need the `s3:GetObjectVersion'
 %% permission to access a specific version of an object. If you request a
 %% specific version, you do not need to have the `s3:GetObject'
-%% permission.
+%% permission. If you request the current version without a specific version
+%% ID, only `s3:GetObject' permission is required.
+%% `s3:GetObjectVersion' permission won't be required.
 %%
 %% If the current version of the object is a delete marker, Amazon S3 behaves
 %% as if the object was deleted and includes `x-amz-delete-marker: true'
@@ -3464,12 +3531,10 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% metadata. To use `GetObjectAttributes', you must have READ access to
 %% the object.
 %%
-%% `GetObjectAttributes' combines the functionality of
-%% `GetObjectAcl', `GetObjectLegalHold',
-%% `GetObjectLockConfiguration', `GetObjectRetention',
-%% `GetObjectTagging', `HeadObject', and `ListParts'. All of the
-%% data returned with each of those individual calls can be returned with a
-%% single call to `GetObjectAttributes'.
+%% `GetObjectAttributes' combines the functionality of `HeadObject'
+%% and `ListParts'. All of the data returned with each of those
+%% individual calls can be returned with a single call to
+%% `GetObjectAttributes'.
 %%
 %% If you encrypt an object by using server-side encryption with
 %% customer-provided encryption keys (SSE-C) when you store the object in
@@ -3489,8 +3554,8 @@ get_object_acl(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% should not be sent for GET requests if your object uses server-side
 %% encryption with Amazon Web Services KMS keys stored in Amazon Web Services
 %% Key Management Service (SSE-KMS) or server-side encryption with Amazon S3
-%% managed encryption keys (SSE-S3). If your object does use these types of
-%% keys, you'll get an HTTP `400 Bad Request' error.
+%% managed keys (SSE-S3). If your object does use these types of keys,
+%% you'll get an HTTP `400 Bad Request' error.
 %%
 %% The last modified property in this case is the creation date of the
 %% object.
@@ -3815,8 +3880,7 @@ get_object_tagging(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
 %% @doc Returns torrent files from a bucket.
 %%
 %% BitTorrent can save you bandwidth when you're distributing large
-%% files. For more information about BitTorrent, see Using BitTorrent with
-%% Amazon S3.
+%% files.
 %%
 %% You can get torrent only for objects that are less than 5 GB in size, and
 %% that are not encrypted using server-side encryption with a
@@ -3937,9 +4001,9 @@ get_public_access_block(Client, Bucket, QueryMap, HeadersMap, Options0)
 %% permission to access it.
 %%
 %% If the bucket does not exist or you do not have permission to access it,
-%% the `HEAD' request returns a generic `404 Not Found' or `403
-%% Forbidden' code. A message body is not included, so you cannot
-%% determine the exception beyond these error codes.
+%% the `HEAD' request returns a generic `400 Bad Request', `403
+%% Forbidden' or `404 Not Found' code. A message body is not
+%% included, so you cannot determine the exception beyond these error codes.
 %%
 %% To use this operation, you must have permissions to perform the
 %% `s3:ListBucket' action. The bucket owner has this permission by
@@ -3988,9 +4052,9 @@ head_bucket(Client, Bucket, Input0, Options0) ->
 %% A `HEAD' request has the same options as a `GET' action on an
 %% object. The response is identical to the `GET' response except that
 %% there is no response body. Because of this, if the `HEAD' request
-%% generates an error, it returns a generic `404 Not Found' or `403
-%% Forbidden' code. It is not possible to retrieve the exact exception
-%% beyond these error codes.
+%% generates an error, it returns a generic `400 Bad Request', `403
+%% Forbidden' or `404 Not Found' code. It is not possible to retrieve
+%% the exact exception beyond these error codes.
 %%
 %% If you encrypt an object by using server-side encryption with
 %% customer-provided encryption keys (SSE-C) when you store the object in
@@ -4404,6 +4468,9 @@ list_bucket_metrics_configurations(Client, Bucket, QueryMap, HeadersMap, Options
 %%
 %% To use this operation, you must have the `s3:ListAllMyBuckets'
 %% permission.
+%%
+%% For information about Amazon S3 buckets, see Creating, configuring, and
+%% working with Amazon S3 buckets.
 list_buckets(Client)
   when is_map(Client) ->
     list_buckets(Client, #{}, #{}).
@@ -4980,7 +5047,7 @@ put_bucket_accelerate_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% `&lt;Grantee
 %% xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-%% xsi:type=&quot;AmazonCustomerByEmail&quot;&gt;&lt;EmailAddress&gt;&lt;&gt;Grantees@email.com&lt;&gt;&lt;/EmailAddress&gt;lt;/Grantee&gt;'
+%% xsi:type=&quot;AmazonCustomerByEmail&quot;&gt;&lt;EmailAddress&gt;&lt;&gt;Grantees@email.com&lt;&gt;&lt;/EmailAddress&gt;&amp;&lt;/Grantee&gt;'
 %%
 %% The grantee is resolved to the CanonicalUser and, in a response to a GET
 %% Object acl request, appears as the CanonicalUser.
@@ -5211,17 +5278,17 @@ put_bucket_cors(Client, Bucket, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode, Bucket).
 
 %% @doc This action uses the `encryption' subresource to configure
-%% default encryption and Amazon S3 Bucket Key for an existing bucket.
+%% default encryption and Amazon S3 Bucket Keys for an existing bucket.
 %%
-%% Default encryption for a bucket can use server-side encryption with Amazon
-%% S3-managed keys (SSE-S3) or customer managed keys (SSE-KMS). If you
-%% specify default encryption using SSE-KMS, you can also configure Amazon S3
-%% Bucket Key. When the default encryption is SSE-KMS, if you upload an
-%% object to the bucket and do not specify the KMS key to use for encryption,
-%% Amazon S3 uses the default Amazon Web Services managed KMS key for your
-%% account. For information about default encryption, see Amazon S3 default
-%% bucket encryption in the Amazon S3 User Guide. For more information about
-%% S3 Bucket Keys, see Amazon S3 Bucket Keys in the Amazon S3 User Guide.
+%% By default, all buckets have a default encryption configuration that uses
+%% server-side encryption with Amazon S3 managed keys (SSE-S3). You can
+%% optionally configure default encryption for a bucket by using server-side
+%% encryption with an Amazon Web Services KMS key (SSE-KMS) or a
+%% customer-provided key (SSE-C). If you specify default encryption by using
+%% SSE-KMS, you can also configure Amazon S3 Bucket Keys. For information
+%% about bucket default encryption, see Amazon S3 bucket default encryption
+%% in the Amazon S3 User Guide. For more information about S3 Bucket Keys,
+%% see Amazon S3 Bucket Keys in the Amazon S3 User Guide.
 %%
 %% This action requires Amazon Web Services Signature Version 4. For more
 %% information, see Authenticating Requests (Amazon Web Services Signature
@@ -5376,12 +5443,25 @@ put_bucket_intelligent_tiering_configuration(Client, Bucket, Input0, Options0) -
 %% location. For an example policy, see Granting Permissions for Amazon S3
 %% Inventory and Storage Class Analysis.
 %%
-%% To use this operation, you must have permissions to perform the
+%% Permissions
+%%
+%% To use this operation, you must have permission to perform the
 %% `s3:PutInventoryConfiguration' action. The bucket owner has this
-%% permission by default and can grant this permission to others. For more
-%% information about permissions, see Permissions Related to Bucket
-%% Subresource Operations and Managing Access Permissions to Your Amazon S3
-%% Resources in the Amazon S3 User Guide.
+%% permission by default and can grant this permission to others.
+%%
+%% The `s3:PutInventoryConfiguration' permission allows a user to create
+%% an S3 Inventory report that includes all object metadata fields available
+%% and to specify the destination bucket to store the inventory. A user with
+%% read access to objects in the destination bucket can also access all
+%% object metadata fields that are available in the inventory report.
+%%
+%% To restrict access to an inventory report, see Restricting access to an
+%% Amazon S3 Inventory report in the Amazon S3 User Guide. For more
+%% information about the metadata fields available in S3 Inventory, see
+%% Amazon S3 Inventory lists in the Amazon S3 User Guide. For more
+%% information about permissions, see Permissions related to bucket
+%% subresource operations and Identity and access management in Amazon S3 in
+%% the Amazon S3 User Guide.
 %%
 %% == Special Errors ==
 %%
@@ -6373,12 +6453,15 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
 %% You must have WRITE permissions on a bucket to add an object to it.
 %%
 %% Amazon S3 never adds partial objects; if you receive a success response,
-%% Amazon S3 added the entire object to the bucket.
+%% Amazon S3 added the entire object to the bucket. You cannot use
+%% `PutObject' to only update a single piece of metadata for an existing
+%% object. You must put the entire object with updated metadata if you want
+%% to update some values.
 %%
 %% Amazon S3 is a distributed system. If it receives multiple write requests
 %% for the same object simultaneously, it overwrites all but the last object
-%% written. Amazon S3 does not provide object locking; if you need this, make
-%% sure to build it into your application layer or use versioning instead.
+%% written. To prevent objects from being deleted or overwritten, you can use
+%% Amazon S3 Object Lock.
 %%
 %% To ensure that data is not corrupted traversing the network, use the
 %% `Content-MD5' header. When you use this header, Amazon S3 checks the
@@ -6392,33 +6475,30 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
 %% To successfully change the objects acl of your `PutObject' request,
 %% you must have the `s3:PutObjectAcl' in your IAM permissions.
 %%
+%% To successfully set the tag-set with your `PutObject' request, you
+%% must have the `s3:PutObjectTagging' in your IAM permissions.
+%%
 %% The `Content-MD5' header is required for any request to upload an
 %% object with a retention period configured using Amazon S3 Object Lock. For
 %% more information about Amazon S3 Object Lock, see Amazon S3 Object Lock
 %% Overview in the Amazon S3 User Guide.
 %%
-%% Server-side Encryption
-%%
-%% You can optionally request server-side encryption. With server-side
-%% encryption, Amazon S3 encrypts your data as it writes it to disks in its
-%% data centers and decrypts the data when you access it. You have the option
-%% to provide your own encryption key or use Amazon Web Services managed
-%% encryption keys (SSE-S3 or SSE-KMS). For more information, see Using
+%% You have three mutually exclusive options to protect data using
+%% server-side encryption in Amazon S3, depending on how you choose to manage
+%% the encryption keys. Specifically, the encryption key options are Amazon
+%% S3 managed keys (SSE-S3), Amazon Web Services KMS keys (SSE-KMS), and
+%% customer-provided keys (SSE-C). Amazon S3 encrypts data with server-side
+%% encryption by using Amazon S3 managed keys (SSE-S3) by default. You can
+%% optionally tell Amazon S3 to encrypt data at by rest using server-side
+%% encryption with other key options. For more information, see Using
 %% Server-Side Encryption.
 %%
-%% If you request server-side encryption using Amazon Web Services Key
-%% Management Service (SSE-KMS), you can enable an S3 Bucket Key at the
-%% object-level. For more information, see Amazon S3 Bucket Keys in the
-%% Amazon S3 User Guide.
-%%
-%% Access Control List (ACL)-Specific Request Headers
-%%
-%% You can use headers to grant ACL- based permissions. By default, all
-%% objects are private. Only the owner has full access control. When adding a
-%% new object, you can grant permissions to individual Amazon Web Services
-%% accounts or to predefined groups defined by Amazon S3. These permissions
-%% are then added to the ACL on the object. For more information, see Access
-%% Control List (ACL) Overview and Managing ACLs Using the REST API.
+%% When adding a new object, you can use headers to grant ACL-based
+%% permissions to individual Amazon Web Services accounts or to predefined
+%% groups defined by Amazon S3. These permissions are then added to the ACL
+%% on the object. By default, all objects are private. Only the owner has
+%% full access control. For more information, see Access Control List (ACL)
+%% Overview and Managing ACLs Using the REST API.
 %%
 %% If the bucket that you're uploading objects to uses the bucket owner
 %% enforced setting for S3 Object Ownership, ACLs are disabled and no longer
@@ -6428,16 +6508,13 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
 %% or an equivalent form of this ACL expressed in the XML format. PUT
 %% requests that contain other ACLs (for example, custom grants to certain
 %% Amazon Web Services accounts) fail and return a `400' error with the
-%% error code `AccessControlListNotSupported'.
-%%
-%% For more information, see Controlling ownership of objects and disabling
-%% ACLs in the Amazon S3 User Guide.
+%% error code `AccessControlListNotSupported'. For more information, see
+%% Controlling ownership of objects and disabling ACLs in the Amazon S3 User
+%% Guide.
 %%
 %% If your bucket uses the bucket owner enforced setting for Object
 %% Ownership, all objects written to the bucket by any account will be owned
 %% by the bucket owner.
-%%
-%% Storage Class Options
 %%
 %% By default, Amazon S3 uses the STANDARD Storage Class to store newly
 %% created objects. The STANDARD storage class provides high durability and
@@ -6446,19 +6523,15 @@ put_bucket_website(Client, Bucket, Input0, Options0) ->
 %% Storage Class. For more information, see Storage Classes in the Amazon S3
 %% User Guide.
 %%
-%% Versioning
-%%
 %% If you enable versioning for a bucket, Amazon S3 automatically generates a
 %% unique version ID for the object being stored. Amazon S3 returns this ID
 %% in the response. When you enable versioning for a bucket, if Amazon S3
 %% receives multiple write requests for the same object simultaneously, it
-%% stores all of the objects.
+%% stores all of the objects. For more information about versioning, see
+%% Adding Objects to Versioning Enabled Buckets. For information about
+%% returning the versioning state of a bucket, see GetBucketVersioning.
 %%
-%% For more information about versioning, see Adding Objects to Versioning
-%% Enabled Buckets. For information about returning the versioning state of a
-%% bucket, see GetBucketVersioning.
-%%
-%% == Related Resources ==
+%% For more information about related Amazon S3 APIs, see the following:
 %%
 %% <ul> <li> CopyObject
 %%
@@ -7087,31 +7160,10 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %% Operations and Managing Access Permissions to Your Amazon S3 Resources in
 %% the Amazon S3 User Guide.
 %%
-%% Querying Archives with Select Requests
-%%
-%% You use a select type of request to perform SQL queries on archived
-%% objects. The archived objects that are being queried by the select request
-%% must be formatted as uncompressed comma-separated values (CSV) files. You
-%% can run queries and custom analytics on your archived data without having
-%% to restore your data to a hotter Amazon S3 tier. For an overview about
-%% select requests, see Querying Archived Objects in the Amazon S3 User
-%% Guide.
-%%
-%% When making a select request, do the following:
-%%
-%% <ul> <li> Define an output location for the select query's output.
-%% This must be an Amazon S3 bucket in the same Amazon Web Services Region as
-%% the bucket that contains the archive object that is being queried. The
-%% Amazon Web Services account that initiates the job must have permissions
-%% to write to the S3 bucket. You can specify the storage class and
-%% encryption for the output objects stored in the bucket. For more
-%% information about output, see Querying Archived Objects in the Amazon S3
-%% User Guide.
-%%
 %% For more information about the `S3' structure in the request body, see
 %% the following:
 %%
-%% <ul> <li> PutObject
+%% <ul> <li> <ul> <li> PutObject
 %%
 %% </li> <li> Managing Access with ACLs in the Amazon S3 User Guide
 %%
@@ -7141,11 +7193,8 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %%
 %% `SELECT s.Id, s.FirstName, s.SSN FROM S3Object s'
 %%
-%% </li> </ul> </li> </ul> For more information about using SQL with S3
-%% Glacier Select restore, see SQL Reference for Amazon S3 Select and S3
-%% Glacier Select in the Amazon S3 User Guide.
-%%
-%% When making a select request, you can also do the following:
+%% </li> </ul> </li> </ul> When making a select request, you can also do the
+%% following:
 %%
 %% <ul> <li> To expedite your queries, specify the `Expedited' tier. For
 %% more information about tiers, see &quot;Restoring Archives,&quot; later in
@@ -7163,7 +7212,7 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %% lifecycle policy.
 %%
 %% </li> <li> You can issue more than one select request on the same Amazon
-%% S3 object. Amazon S3 doesn't deduplicate requests, so avoid issuing
+%% S3 object. Amazon S3 doesn't duplicate requests, so avoid issuing
 %% duplicate requests.
 %%
 %% </li> <li> Amazon S3 accepts a select request even if the object has
@@ -7172,52 +7221,55 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %%
 %% </li> </ul> Restoring objects
 %%
-%% Objects that you archive to the S3 Glacier or S3 Glacier Deep Archive
-%% storage class, and S3 Intelligent-Tiering Archive or S3
-%% Intelligent-Tiering Deep Archive tiers are not accessible in real time.
-%% For objects in Archive Access or Deep Archive Access tiers you must first
-%% initiate a restore request, and then wait until the object is moved into
-%% the Frequent Access tier. For objects in S3 Glacier or S3 Glacier Deep
-%% Archive storage classes you must first initiate a restore request, and
-%% then wait until a temporary copy of the object is available. To access an
-%% archived object, you must restore the object for the duration (number of
-%% days) that you specify.
+%% Objects that you archive to the S3 Glacier Flexible Retrieval or S3
+%% Glacier Deep Archive storage class, and S3 Intelligent-Tiering Archive or
+%% S3 Intelligent-Tiering Deep Archive tiers, are not accessible in real
+%% time. For objects in the S3 Glacier Flexible Retrieval or S3 Glacier Deep
+%% Archive storage classes, you must first initiate a restore request, and
+%% then wait until a temporary copy of the object is available. If you want a
+%% permanent copy of the object, create a copy of it in the Amazon S3
+%% Standard storage class in your S3 bucket. To access an archived object,
+%% you must restore the object for the duration (number of days) that you
+%% specify. For objects in the Archive Access or Deep Archive Access tiers of
+%% S3 Intelligent-Tiering, you must first initiate a restore request, and
+%% then wait until the object is moved into the Frequent Access tier.
 %%
 %% To restore a specific object version, you can provide a version ID. If you
 %% don't provide a version ID, Amazon S3 restores the current version.
 %%
-%% When restoring an archived object (or using a select request), you can
-%% specify one of the following data access tier options in the `Tier'
-%% element of the request body:
+%% When restoring an archived object, you can specify one of the following
+%% data access tier options in the `Tier' element of the request body:
 %%
 %% <ul> <li> `Expedited' - Expedited retrievals allow you to quickly
-%% access your data stored in the S3 Glacier storage class or S3
-%% Intelligent-Tiering Archive tier when occasional urgent requests for a
-%% subset of archives are required. For all but the largest archived objects
-%% (250 MB+), data accessed using Expedited retrievals is typically made
-%% available within 1–5 minutes. Provisioned capacity ensures that retrieval
-%% capacity for Expedited retrievals is available when you need it. Expedited
-%% retrievals and provisioned capacity are not available for objects stored
-%% in the S3 Glacier Deep Archive storage class or S3 Intelligent-Tiering
-%% Deep Archive tier.
+%% access your data stored in the S3 Glacier Flexible Retrieval storage class
+%% or S3 Intelligent-Tiering Archive tier when occasional urgent requests for
+%% a subset of archives are required. For all but the largest archived
+%% objects (250 MB+), data accessed using Expedited retrievals is typically
+%% made available within 1–5 minutes. Provisioned capacity ensures that
+%% retrieval capacity for Expedited retrievals is available when you need it.
+%% Expedited retrievals and provisioned capacity are not available for
+%% objects stored in the S3 Glacier Deep Archive storage class or S3
+%% Intelligent-Tiering Deep Archive tier.
 %%
 %% </li> <li> `Standard' - Standard retrievals allow you to access any of
 %% your archived objects within several hours. This is the default option for
 %% retrieval requests that do not specify the retrieval option. Standard
 %% retrievals typically finish within 3–5 hours for objects stored in the S3
-%% Glacier storage class or S3 Intelligent-Tiering Archive tier. They
-%% typically finish within 12 hours for objects stored in the S3 Glacier Deep
-%% Archive storage class or S3 Intelligent-Tiering Deep Archive tier.
-%% Standard retrievals are free for objects stored in S3 Intelligent-Tiering.
+%% Glacier Flexible Retrieval storage class or S3 Intelligent-Tiering Archive
+%% tier. They typically finish within 12 hours for objects stored in the S3
+%% Glacier Deep Archive storage class or S3 Intelligent-Tiering Deep Archive
+%% tier. Standard retrievals are free for objects stored in S3
+%% Intelligent-Tiering.
 %%
-%% </li> <li> `Bulk' - Bulk retrievals are the lowest-cost retrieval
-%% option in S3 Glacier, enabling you to retrieve large amounts, even
-%% petabytes, of data inexpensively. Bulk retrievals typically finish within
-%% 5–12 hours for objects stored in the S3 Glacier storage class or S3
-%% Intelligent-Tiering Archive tier. They typically finish within 48 hours
-%% for objects stored in the S3 Glacier Deep Archive storage class or S3
-%% Intelligent-Tiering Deep Archive tier. Bulk retrievals are free for
-%% objects stored in S3 Intelligent-Tiering.
+%% </li> <li> `Bulk' - Bulk retrievals free for objects stored in the S3
+%% Glacier Flexible Retrieval and S3 Intelligent-Tiering storage classes,
+%% enabling you to retrieve large amounts, even petabytes, of data at no
+%% cost. Bulk retrievals typically finish within 5–12 hours for objects
+%% stored in the S3 Glacier Flexible Retrieval storage class or S3
+%% Intelligent-Tiering Archive tier. Bulk retrievals are also the lowest-cost
+%% retrieval option when restoring objects from S3 Glacier Deep Archive. They
+%% typically finish within 48 hours for objects stored in the S3 Glacier Deep
+%% Archive storage class or S3 Intelligent-Tiering Deep Archive tier.
 %%
 %% </li> </ul> For more information about archive retrieval options and
 %% provisioned capacity for `Expedited' data access, see Restoring
@@ -7289,9 +7341,6 @@ put_public_access_block(Client, Bucket, Input0, Options0) ->
 %%
 %% </li> <li> GetBucketNotificationConfiguration
 %%
-%% </li> <li> SQL Reference for Amazon S3 Select and S3 Glacier Select in the
-%% Amazon S3 User Guide
-%%
 %% </li> </ul>
 restore_object(Client, Bucket, Key, Input) ->
     restore_object(Client, Bucket, Key, Input, []).
@@ -7352,10 +7401,6 @@ restore_object(Client, Bucket, Key, Input0, Options0) ->
 %% For more information about Amazon S3 Select, see Selecting Content from
 %% Objects and SELECT Command in the Amazon S3 User Guide.
 %%
-%% For more information about using SQL with Amazon S3 Select, see SQL
-%% Reference for Amazon S3 Select and S3 Glacier Select in the Amazon S3 User
-%% Guide.
-%%
 %% Permissions
 %%
 %% You must have `s3:GetObject' permission for this operation. Amazon S3
@@ -7389,12 +7434,12 @@ restore_object(Client, Bucket, Key, Input0, Options0) ->
 %% Server-Side Encryption (Using Customer-Provided Encryption Keys) in the
 %% Amazon S3 User Guide.
 %%
-%% For objects that are encrypted with Amazon S3 managed encryption keys
-%% (SSE-S3) and Amazon Web Services KMS keys (SSE-KMS), server-side
-%% encryption is handled transparently, so you don't need to specify
-%% anything. For more information about server-side encryption, including
-%% SSE-S3 and SSE-KMS, see Protecting Data Using Server-Side Encryption in
-%% the Amazon S3 User Guide.
+%% For objects that are encrypted with Amazon S3 managed keys (SSE-S3) and
+%% Amazon Web Services KMS keys (SSE-KMS), server-side encryption is handled
+%% transparently, so you don't need to specify anything. For more
+%% information about server-side encryption, including SSE-S3 and SSE-KMS,
+%% see Protecting Data Using Server-Side Encryption in the Amazon S3 User
+%% Guide.
 %%
 %% </li> </ul> Working with the Response Body
 %%
@@ -7507,27 +7552,34 @@ select_object_content(Client, Bucket, Key, Input0, Options0) ->
 %% For information on the permissions required to use the multipart upload
 %% API, go to Multipart Upload and Permissions in the Amazon S3 User Guide.
 %%
-%% You can optionally request server-side encryption where Amazon S3 encrypts
-%% your data as it writes it to disks in its data centers and decrypts it for
-%% you when you access it. You have the option of providing your own
-%% encryption key, or you can use the Amazon Web Services managed encryption
-%% keys. If you choose to provide your own encryption key, the request
-%% headers you provide in the request must match the headers you used in the
-%% request to initiate the upload by using CreateMultipartUpload. For more
-%% information, go to Using Server-Side Encryption in the Amazon S3 User
-%% Guide.
+%% Server-side encryption is for data encryption at rest. Amazon S3 encrypts
+%% your data as it writes it to disks in its data centers and decrypts it
+%% when you access it. You have three mutually exclusive options to protect
+%% data using server-side encryption in Amazon S3, depending on how you
+%% choose to manage the encryption keys. Specifically, the encryption key
+%% options are Amazon S3 managed keys (SSE-S3), Amazon Web Services KMS keys
+%% (SSE-KMS), and Customer-Provided Keys (SSE-C). Amazon S3 encrypts data
+%% with server-side encryption using Amazon S3 managed keys (SSE-S3) by
+%% default. You can optionally tell Amazon S3 to encrypt data at rest using
+%% server-side encryption with other key options. The option you use depends
+%% on whether you want to use KMS keys (SSE-KMS) or provide your own
+%% encryption key (SSE-C). If you choose to provide your own encryption key,
+%% the request headers you provide in the request must match the headers you
+%% used in the request to initiate the upload by using CreateMultipartUpload.
+%% For more information, go to Using Server-Side Encryption in the Amazon S3
+%% User Guide.
 %%
 %% Server-side encryption is supported by the S3 Multipart Upload actions.
-%% Unless you are using a customer-provided encryption key, you don't
-%% need to specify the encryption parameters in each UploadPart request.
-%% Instead, you only need to specify the server-side encryption parameters in
-%% the initial Initiate Multipart request. For more information, see
-%% CreateMultipartUpload.
+%% Unless you are using a customer-provided encryption key (SSE-C), you
+%% don't need to specify the encryption parameters in each UploadPart
+%% request. Instead, you only need to specify the server-side encryption
+%% parameters in the initial Initiate Multipart request. For more
+%% information, see CreateMultipartUpload.
 %%
 %% If you requested server-side encryption using a customer-provided
-%% encryption key in your initiate multipart upload request, you must provide
-%% identical encryption information in each part upload using the following
-%% headers.
+%% encryption key (SSE-C) in your initiate multipart upload request, you must
+%% provide identical encryption information in each part upload using the
+%% following headers.
 %%
 %% <ul> <li> x-amz-server-side-encryption-customer-algorithm
 %%
