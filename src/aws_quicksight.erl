@@ -39,6 +39,8 @@
          create_ingestion/6,
          create_namespace/3,
          create_namespace/4,
+         create_refresh_schedule/4,
+         create_refresh_schedule/5,
          create_template/4,
          create_template/5,
          create_template_alias/5,
@@ -47,6 +49,12 @@
          create_theme/5,
          create_theme_alias/5,
          create_theme_alias/6,
+         create_topic/3,
+         create_topic/4,
+         create_topic_refresh_schedule/4,
+         create_topic_refresh_schedule/5,
+         create_vpc_connection/3,
+         create_vpc_connection/4,
          delete_account_customization/3,
          delete_account_customization/4,
          delete_account_subscription/3,
@@ -57,6 +65,8 @@
          delete_dashboard/5,
          delete_data_set/4,
          delete_data_set/5,
+         delete_data_set_refresh_properties/4,
+         delete_data_set_refresh_properties/5,
          delete_data_source/4,
          delete_data_source/5,
          delete_folder/4,
@@ -71,6 +81,8 @@
          delete_iam_policy_assignment/6,
          delete_namespace/4,
          delete_namespace/5,
+         delete_refresh_schedule/5,
+         delete_refresh_schedule/6,
          delete_template/4,
          delete_template/5,
          delete_template_alias/5,
@@ -79,10 +91,16 @@
          delete_theme/5,
          delete_theme_alias/5,
          delete_theme_alias/6,
+         delete_topic/4,
+         delete_topic/5,
+         delete_topic_refresh_schedule/5,
+         delete_topic_refresh_schedule/6,
          delete_user/5,
          delete_user/6,
          delete_user_by_principal_id/5,
          delete_user_by_principal_id/6,
+         delete_vpc_connection/4,
+         delete_vpc_connection/5,
          describe_account_customization/2,
          describe_account_customization/4,
          describe_account_customization/5,
@@ -116,6 +134,9 @@
          describe_data_set_permissions/3,
          describe_data_set_permissions/5,
          describe_data_set_permissions/6,
+         describe_data_set_refresh_properties/3,
+         describe_data_set_refresh_properties/5,
+         describe_data_set_refresh_properties/6,
          describe_data_source/3,
          describe_data_source/5,
          describe_data_source/6,
@@ -149,6 +170,9 @@
          describe_namespace/3,
          describe_namespace/5,
          describe_namespace/6,
+         describe_refresh_schedule/4,
+         describe_refresh_schedule/6,
+         describe_refresh_schedule/7,
          describe_template/3,
          describe_template/5,
          describe_template/6,
@@ -170,9 +194,24 @@
          describe_theme_permissions/3,
          describe_theme_permissions/5,
          describe_theme_permissions/6,
+         describe_topic/3,
+         describe_topic/5,
+         describe_topic/6,
+         describe_topic_permissions/3,
+         describe_topic_permissions/5,
+         describe_topic_permissions/6,
+         describe_topic_refresh/4,
+         describe_topic_refresh/6,
+         describe_topic_refresh/7,
+         describe_topic_refresh_schedule/4,
+         describe_topic_refresh_schedule/6,
+         describe_topic_refresh_schedule/7,
          describe_user/4,
          describe_user/6,
          describe_user/7,
+         describe_vpc_connection/3,
+         describe_vpc_connection/5,
+         describe_vpc_connection/6,
          generate_embed_url_for_anonymous_user/3,
          generate_embed_url_for_anonymous_user/4,
          generate_embed_url_for_registered_user/3,
@@ -222,6 +261,9 @@
          list_namespaces/2,
          list_namespaces/4,
          list_namespaces/5,
+         list_refresh_schedules/3,
+         list_refresh_schedules/5,
+         list_refresh_schedules/6,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -243,12 +285,23 @@
          list_themes/2,
          list_themes/4,
          list_themes/5,
+         list_topic_refresh_schedules/3,
+         list_topic_refresh_schedules/5,
+         list_topic_refresh_schedules/6,
+         list_topics/2,
+         list_topics/4,
+         list_topics/5,
          list_user_groups/4,
          list_user_groups/6,
          list_user_groups/7,
          list_users/3,
          list_users/5,
          list_users/6,
+         list_vpc_connections/2,
+         list_vpc_connections/4,
+         list_vpc_connections/5,
+         put_data_set_refresh_properties/4,
+         put_data_set_refresh_properties/5,
          register_user/4,
          register_user/5,
          restore_analysis/4,
@@ -303,6 +356,8 @@
          update_ip_restriction/4,
          update_public_sharing_settings/3,
          update_public_sharing_settings/4,
+         update_refresh_schedule/4,
+         update_refresh_schedule/5,
          update_template/4,
          update_template/5,
          update_template_alias/5,
@@ -315,8 +370,16 @@
          update_theme_alias/6,
          update_theme_permissions/4,
          update_theme_permissions/5,
+         update_topic/4,
+         update_topic/5,
+         update_topic_permissions/4,
+         update_topic_permissions/5,
+         update_topic_refresh_schedule/5,
+         update_topic_refresh_schedule/6,
          update_user/5,
-         update_user/6]).
+         update_user/6,
+         update_vpc_connection/4,
+         update_vpc_connection/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -756,6 +819,31 @@ create_namespace(Client, AwsAccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a refresh schedule for a dataset.
+%%
+%% You can create up to 5 different schedules for a single dataset.
+create_refresh_schedule(Client, AwsAccountId, DataSetId, Input) ->
+    create_refresh_schedule(Client, AwsAccountId, DataSetId, Input, []).
+create_refresh_schedule(Client, AwsAccountId, DataSetId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a template either from a `TemplateDefinition' or from an
 %% existing Amazon QuickSight analysis or template.
 %%
@@ -847,6 +935,75 @@ create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) ->
 create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/themes/", aws_util:encode_uri(ThemeId), "/aliases/", aws_util:encode_uri(AliasName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new Q topic.
+create_topic(Client, AwsAccountId, Input) ->
+    create_topic(Client, AwsAccountId, Input, []).
+create_topic(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a topic refresh schedule.
+create_topic_refresh_schedule(Client, AwsAccountId, TopicId, Input) ->
+    create_topic_refresh_schedule(Client, AwsAccountId, TopicId, Input, []).
+create_topic_refresh_schedule(Client, AwsAccountId, TopicId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/schedules"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new VPC connection.
+create_vpc_connection(Client, AwsAccountId, Input) ->
+    create_vpc_connection(Client, AwsAccountId, Input, []).
+create_vpc_connection(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/vpc-connections"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -994,6 +1151,29 @@ delete_data_set(Client, AwsAccountId, DataSetId, Input) ->
 delete_data_set(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the dataset refresh properties of the dataset.
+delete_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input) ->
+    delete_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input, []).
+delete_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-properties"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1182,6 +1362,29 @@ delete_namespace(Client, AwsAccountId, Namespace, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a refresh schedule from a dataset.
+delete_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, Input) ->
+    delete_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, Input, []).
+delete_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules/", aws_util:encode_uri(ScheduleId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a template.
 delete_template(Client, AwsAccountId, TemplateId, Input) ->
     delete_template(Client, AwsAccountId, TemplateId, Input, []).
@@ -1283,6 +1486,52 @@ delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a topic.
+delete_topic(Client, AwsAccountId, TopicId, Input) ->
+    delete_topic(Client, AwsAccountId, TopicId, Input, []).
+delete_topic(Client, AwsAccountId, TopicId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a topic refresh schedule.
+delete_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input) ->
+    delete_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input, []).
+delete_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/schedules/", aws_util:encode_uri(DatasetId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the Amazon QuickSight user that is associated with the
 %% identity of the IAM user or role that's making the call.
 %%
@@ -1315,6 +1564,29 @@ delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input)
 delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0, Options0) ->
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/user-principals/", aws_util:encode_uri(PrincipalId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a VPC connection.
+delete_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input) ->
+    delete_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input, []).
+delete_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/vpc-connections/", aws_util:encode_uri(VPCConnectionId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1675,6 +1947,29 @@ describe_data_set_permissions(Client, AwsAccountId, DataSetId, QueryMap, Headers
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Describes the refresh properties of a dataset.
+describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId)
+  when is_map(Client) ->
+    describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId, #{}, #{}).
+
+describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
+
+describe_data_set_refresh_properties(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-properties"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Describes a data source.
 describe_data_source(Client, AwsAccountId, DataSourceId)
   when is_map(Client) ->
@@ -1937,6 +2232,29 @@ describe_namespace(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Provides a summary of a refresh schedule.
+describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId)
+  when is_map(Client) ->
+    describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, #{}, #{}).
+
+describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, QueryMap, HeadersMap, []).
+
+describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules/", aws_util:encode_uri(ScheduleId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Describes a template's metadata.
 describe_template(Client, AwsAccountId, TemplateId)
   when is_map(Client) ->
@@ -2117,6 +2435,98 @@ describe_theme_permissions(Client, AwsAccountId, ThemeId, QueryMap, HeadersMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Describes a topic.
+describe_topic(Client, AwsAccountId, TopicId)
+  when is_map(Client) ->
+    describe_topic(Client, AwsAccountId, TopicId, #{}, #{}).
+
+describe_topic(Client, AwsAccountId, TopicId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_topic(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, []).
+
+describe_topic(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the permissions of a topic.
+describe_topic_permissions(Client, AwsAccountId, TopicId)
+  when is_map(Client) ->
+    describe_topic_permissions(Client, AwsAccountId, TopicId, #{}, #{}).
+
+describe_topic_permissions(Client, AwsAccountId, TopicId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_topic_permissions(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, []).
+
+describe_topic_permissions(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/permissions"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the status of a topic refresh.
+describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId)
+  when is_map(Client) ->
+    describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId, #{}, #{}).
+
+describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId, QueryMap, HeadersMap, []).
+
+describe_topic_refresh(Client, AwsAccountId, RefreshId, TopicId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/refresh/", aws_util:encode_uri(RefreshId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Deletes a topic refresh schedule.
+describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId)
+  when is_map(Client) ->
+    describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, #{}, #{}).
+
+describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, QueryMap, HeadersMap, []).
+
+describe_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/schedules/", aws_util:encode_uri(DatasetId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns information about a user, given the user name.
 describe_user(Client, AwsAccountId, Namespace, UserName)
   when is_map(Client) ->
@@ -2129,6 +2539,29 @@ describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap)
 describe_user(Client, AwsAccountId, Namespace, UserName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes a VPC connection.
+describe_vpc_connection(Client, AwsAccountId, VPCConnectionId)
+  when is_map(Client) ->
+    describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, #{}, #{}).
+
+describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, HeadersMap, []).
+
+describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/vpc-connections/", aws_util:encode_uri(VPCConnectionId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2610,7 +3043,7 @@ list_groups(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists IAM policy assignments in the current Amazon QuickSight
+%% @doc Lists the IAM policy assignments in the current Amazon QuickSight
 %% account.
 list_iam_policy_assignments(Client, AwsAccountId, Namespace)
   when is_map(Client) ->
@@ -2622,7 +3055,7 @@ list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMa
 
 list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/iam-policy-assignments"],
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/v2/iam-policy-assignments"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2632,6 +3065,7 @@ list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMa
 
     Query0_ =
       [
+        {<<"assignment-status">>, maps:get(<<"assignment-status">>, QueryMap, undefined)},
         {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
         {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
@@ -2639,9 +3073,9 @@ list_iam_policy_assignments(Client, AwsAccountId, Namespace, QueryMap, HeadersMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists all the IAM policy assignments, including the Amazon Resource
-%% Names (ARNs) for the IAM policies assigned to the specified user and group
-%% or groups that the user belongs to.
+%% @doc Lists all of the IAM policy assignments, including the Amazon
+%% Resource Names (ARNs), for the IAM policies assigned to the specified user
+%% and group, or groups that the user belongs to.
 list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName)
   when is_map(Client) ->
     list_iam_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, #{}, #{}).
@@ -2724,6 +3158,31 @@ list_namespaces(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
         {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the refresh schedules of a dataset.
+%%
+%% Each dataset can have up to 5 schedules.
+list_refresh_schedules(Client, AwsAccountId, DataSetId)
+  when is_map(Client) ->
+    list_refresh_schedules(Client, AwsAccountId, DataSetId, #{}, #{}).
+
+list_refresh_schedules(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_refresh_schedules(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, []).
+
+list_refresh_schedules(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -2921,6 +3380,57 @@ list_themes(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists all of the refresh schedules for a topic.
+list_topic_refresh_schedules(Client, AwsAccountId, TopicId)
+  when is_map(Client) ->
+    list_topic_refresh_schedules(Client, AwsAccountId, TopicId, #{}, #{}).
+
+list_topic_refresh_schedules(Client, AwsAccountId, TopicId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_topic_refresh_schedules(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, []).
+
+list_topic_refresh_schedules(Client, AwsAccountId, TopicId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/schedules"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all of the topics within an account.
+list_topics(Client, AwsAccountId)
+  when is_map(Client) ->
+    list_topics(Client, AwsAccountId, #{}, #{}).
+
+list_topics(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_topics(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+list_topics(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the Amazon QuickSight groups that an Amazon QuickSight user is
 %% a member of.
 list_user_groups(Client, AwsAccountId, Namespace, UserName)
@@ -2978,6 +3488,58 @@ list_users(Client, AwsAccountId, Namespace, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all of the VPC connections in the current set Amazon Web
+%% Services Region of an Amazon Web Services account.
+list_vpc_connections(Client, AwsAccountId)
+  when is_map(Client) ->
+    list_vpc_connections(Client, AwsAccountId, #{}, #{}).
+
+list_vpc_connections(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_vpc_connections(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+list_vpc_connections(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/vpc-connections"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Creates or updates the dataset refresh properties for the dataset.
+put_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input) ->
+    put_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input, []).
+put_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-properties"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates an Amazon QuickSight user whose identity is associated with
 %% the Identity and Access Management (IAM) identity or role specified in the
@@ -3199,7 +3761,7 @@ search_groups(Client, AwsAccountId, Namespace, Input0, Options0) ->
 %% replaces the previous value for that tag.
 %%
 %% You can associate as many as 50 tags with a resource. Amazon QuickSight
-%% supports tagging on data set, data source, dashboard, and template.
+%% supports tagging on data set, data source, dashboard, template, and topic.
 %%
 %% Tagging for Amazon QuickSight works in a similar way to tagging for other
 %% Amazon Web Services services, except for the following:
@@ -3633,9 +4195,8 @@ update_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, In
 
 %% @doc Updates the content and status of IP rules.
 %%
-%% To use this operation, you need to provide the entire map of rules. You
-%% can use the `DescribeIpRestriction' operation to get the current rule
-%% map.
+%% To use this operation, you must provide the entire map of rules. You can
+%% use the `DescribeIpRestriction' operation to get the current rule map.
 update_ip_restriction(Client, AwsAccountId, Input) ->
     update_ip_restriction(Client, AwsAccountId, Input, []).
 update_ip_restriction(Client, AwsAccountId, Input0, Options0) ->
@@ -3674,6 +4235,29 @@ update_public_sharing_settings(Client, AwsAccountId, Input) ->
 update_public_sharing_settings(Client, AwsAccountId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/public-sharing-settings"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a refresh schedule for a dataset.
+update_refresh_schedule(Client, AwsAccountId, DataSetId, Input) ->
+    update_refresh_schedule(Client, AwsAccountId, DataSetId, Input, []).
+update_refresh_schedule(Client, AwsAccountId, DataSetId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -3876,12 +4460,104 @@ update_theme_permissions(Client, AwsAccountId, ThemeId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates a topic.
+update_topic(Client, AwsAccountId, TopicId, Input) ->
+    update_topic(Client, AwsAccountId, TopicId, Input, []).
+update_topic(Client, AwsAccountId, TopicId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the permissions of a topic.
+update_topic_permissions(Client, AwsAccountId, TopicId, Input) ->
+    update_topic_permissions(Client, AwsAccountId, TopicId, Input, []).
+update_topic_permissions(Client, AwsAccountId, TopicId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/permissions"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a topic refresh schedule.
+update_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input) ->
+    update_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input, []).
+update_topic_refresh_schedule(Client, AwsAccountId, DatasetId, TopicId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/topics/", aws_util:encode_uri(TopicId), "/schedules/", aws_util:encode_uri(DatasetId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates an Amazon QuickSight user.
 update_user(Client, AwsAccountId, Namespace, UserName, Input) ->
     update_user(Client, AwsAccountId, Namespace, UserName, Input, []).
 update_user(Client, AwsAccountId, Namespace, UserName, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/namespaces/", aws_util:encode_uri(Namespace), "/users/", aws_util:encode_uri(UserName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a VPC connection.
+update_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input) ->
+    update_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input, []).
+update_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/vpc-connections/", aws_util:encode_uri(VPCConnectionId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

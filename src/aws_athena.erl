@@ -26,6 +26,10 @@
          batch_get_prepared_statement/3,
          batch_get_query_execution/2,
          batch_get_query_execution/3,
+         cancel_capacity_reservation/2,
+         cancel_capacity_reservation/3,
+         create_capacity_reservation/2,
+         create_capacity_reservation/3,
          create_data_catalog/2,
          create_data_catalog/3,
          create_named_query/2,
@@ -56,6 +60,10 @@
          get_calculation_execution_code/3,
          get_calculation_execution_status/2,
          get_calculation_execution_status/3,
+         get_capacity_assignment_configuration/2,
+         get_capacity_assignment_configuration/3,
+         get_capacity_reservation/2,
+         get_capacity_reservation/3,
          get_data_catalog/2,
          get_data_catalog/3,
          get_database/2,
@@ -86,6 +94,8 @@
          list_application_d_p_u_sizes/3,
          list_calculation_executions/2,
          list_calculation_executions/3,
+         list_capacity_reservations/2,
+         list_capacity_reservations/3,
          list_data_catalogs/2,
          list_data_catalogs/3,
          list_databases/2,
@@ -112,6 +122,8 @@
          list_tags_for_resource/3,
          list_work_groups/2,
          list_work_groups/3,
+         put_capacity_assignment_configuration/2,
+         put_capacity_assignment_configuration/3,
          start_calculation_execution/2,
          start_calculation_execution/3,
          start_query_execution/2,
@@ -128,6 +140,8 @@
          terminate_session/3,
          untag_resource/2,
          untag_resource/3,
+         update_capacity_reservation/2,
+         update_capacity_reservation/3,
          update_data_catalog/2,
          update_data_catalog/3,
          update_named_query/2,
@@ -195,6 +209,23 @@ batch_get_query_execution(Client, Input)
 batch_get_query_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetQueryExecution">>, Input, Options).
+
+%% @doc Cancels the capacity reservation with the specified name.
+cancel_capacity_reservation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_capacity_reservation(Client, Input, []).
+cancel_capacity_reservation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelCapacityReservation">>, Input, Options).
+
+%% @doc Creates a capacity reservation with the specified name and number of
+%% requested data processing units.
+create_capacity_reservation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_capacity_reservation(Client, Input, []).
+create_capacity_reservation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateCapacityReservation">>, Input, Options).
 
 %% @doc Creates (registers) a data catalog with the specified name and
 %% properties.
@@ -344,6 +375,24 @@ get_calculation_execution_status(Client, Input)
 get_calculation_execution_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCalculationExecutionStatus">>, Input, Options).
+
+%% @doc Gets the capacity assignment configuration for a capacity
+%% reservation, if one exists.
+get_capacity_assignment_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_capacity_assignment_configuration(Client, Input, []).
+get_capacity_assignment_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCapacityAssignmentConfiguration">>, Input, Options).
+
+%% @doc Returns information about the capacity reservation with the specified
+%% name.
+get_capacity_reservation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_capacity_reservation(Client, Input, []).
+get_capacity_reservation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCapacityReservation">>, Input, Options).
 
 %% @doc Returns the specified data catalog.
 get_data_catalog(Client, Input)
@@ -508,6 +557,14 @@ list_calculation_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCalculationExecutions">>, Input, Options).
 
+%% @doc Lists the capacity reservations for the current account.
+list_capacity_reservations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_capacity_reservations(Client, Input, []).
+list_capacity_reservations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCapacityReservations">>, Input, Options).
+
 %% @doc Lists the data catalogs in the current Amazon Web Services account.
 %%
 %% In the Athena console, data catalogs are listed as &quot;data
@@ -627,8 +684,7 @@ list_table_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTableMetadata">>, Input, Options).
 
-%% @doc Lists the tags associated with an Athena workgroup or data catalog
-%% resource.
+%% @doc Lists the tags associated with an Athena resource.
 list_tags_for_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags_for_resource(Client, Input, []).
@@ -643,6 +699,18 @@ list_work_groups(Client, Input)
 list_work_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkGroups">>, Input, Options).
+
+%% @doc Puts a new capacity assignment configuration for a specified capacity
+%% reservation.
+%%
+%% If a capacity assignment configuration already exists for the capacity
+%% reservation, replaces the existing capacity assignment configuration.
+put_capacity_assignment_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_capacity_assignment_configuration(Client, Input, []).
+put_capacity_assignment_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutCapacityAssignmentConfiguration">>, Input, Options).
 
 %% @doc Submits calculations for execution within a session.
 %%
@@ -710,18 +778,17 @@ stop_query_execution(Client, Input, Options)
 
 %% @doc Adds one or more tags to an Athena resource.
 %%
-%% A tag is a label that you assign to a resource. In Athena, a resource can
-%% be a workgroup or data catalog. Each tag consists of a key and an optional
-%% value, both of which you define. For example, you can use tags to
-%% categorize Athena workgroups or data catalogs by purpose, owner, or
-%% environment. Use a consistent set of tag keys to make it easier to search
-%% and filter workgroups or data catalogs in your account. For best
-%% practices, see Tagging Best Practices. Tag keys can be from 1 to 128 UTF-8
-%% Unicode characters, and tag values can be from 0 to 256 UTF-8 Unicode
-%% characters. Tags can use letters and numbers representable in UTF-8, and
-%% the following characters: + - = . _ : / @. Tag keys and values are
-%% case-sensitive. Tag keys must be unique per resource. If you specify more
-%% than one tag, separate them by commas.
+%% A tag is a label that you assign to a resource. Each tag consists of a key
+%% and an optional value, both of which you define. For example, you can use
+%% tags to categorize Athena workgroups, data catalogs, or capacity
+%% reservations by purpose, owner, or environment. Use a consistent set of
+%% tag keys to make it easier to search and filter the resources in your
+%% account. For best practices, see Tagging Best Practices. Tag keys can be
+%% from 1 to 128 UTF-8 Unicode characters, and tag values can be from 0 to
+%% 256 UTF-8 Unicode characters. Tags can use letters and numbers
+%% representable in UTF-8, and the following characters: + - = . _ : / @. Tag
+%% keys and values are case-sensitive. Tag keys must be unique per resource.
+%% If you specify more than one tag, separate them by commas.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
@@ -743,13 +810,22 @@ terminate_session(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TerminateSession">>, Input, Options).
 
-%% @doc Removes one or more tags from a data catalog or workgroup resource.
+%% @doc Removes one or more tags from an Athena resource.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Updates the number of requested data processing units for the
+%% capacity reservation with the specified name.
+update_capacity_reservation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_capacity_reservation(Client, Input, []).
+update_capacity_reservation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateCapacityReservation">>, Input, Options).
 
 %% @doc Updates the data catalog that has the specified name.
 update_data_catalog(Client, Input)

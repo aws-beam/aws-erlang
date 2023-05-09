@@ -187,6 +187,15 @@ create_cluster(Client, Input, Options)
 %% specified cluster. To update an existing service, see the
 %% `UpdateService' action.
 %%
+%% Starting April 15, 2023, Amazon Web Services will not onboard new
+%% customers to Amazon Elastic Inference (EI), and will help current
+%% customers migrate their workloads to options that offer better price and
+%% performance. After April 15, 2023, new customers will not be able to
+%% launch instances with Amazon EI accelerators in Amazon SageMaker, Amazon
+%% ECS, or Amazon EC2. However, customers who have used Amazon EI at least
+%% once during the past 30-day period are considered current customers and
+%% will be able to continue using the service.
+%%
 %% In addition to maintaining the desired count of tasks in your service, you
 %% can optionally run your service behind one or more load balancers. The
 %% load balancers distribute traffic across the tasks that are associated
@@ -713,10 +722,10 @@ list_tasks(Client, Input, Options)
 %%
 %% Account settings are set on a per-Region basis.
 %%
-%% If you change the account setting for the root user, the default settings
-%% for all of the users and roles that no individual account setting was
-%% specified are reset for. For more information, see Account Settings in the
-%% Amazon Elastic Container Service Developer Guide.
+%% If you change the root user account setting, the default settings are
+%% reset for users and roles that do not have specified individual account
+%% settings. For more information, see Account Settings in the Amazon Elastic
+%% Container Service Developer Guide.
 %%
 %% When `serviceLongArnFormat', `taskLongArnFormat', or
 %% `containerInstanceLongArnFormat' are specified, the Amazon Resource
@@ -729,17 +738,27 @@ list_tasks(Client, Input, Options)
 %%
 %% When `awsvpcTrunking' is specified, the elastic network interface
 %% (ENI) limit for any new container instances that support the feature is
-%% changed. If `awsvpcTrunking' is enabled, any new container instances
+%% changed. If `awsvpcTrunking' is turned on, any new container instances
 %% that support the feature are launched have the increased ENI limits
 %% available to them. For more information, see Elastic Network Interface
 %% Trunking in the Amazon Elastic Container Service Developer Guide.
 %%
 %% When `containerInsights' is specified, the default setting indicating
-%% whether CloudWatch Container Insights is enabled for your clusters is
-%% changed. If `containerInsights' is enabled, any new clusters that are
-%% created will have Container Insights enabled unless you disable it during
-%% cluster creation. For more information, see CloudWatch Container Insights
-%% in the Amazon Elastic Container Service Developer Guide.
+%% whether Amazon Web Services CloudWatch Container Insights is turned on for
+%% your clusters is changed. If `containerInsights' is turned on, any new
+%% clusters that are created will have Container Insights turned on unless
+%% you disable it during cluster creation. For more information, see
+%% CloudWatch Container Insights in the Amazon Elastic Container Service
+%% Developer Guide.
+%%
+%% Amazon ECS is introducing tagging authorization for resource creation.
+%% Users must have permissions for actions that create the resource, such as
+%% `ecsCreateCluster'. If tags are specified when you create a resource,
+%% Amazon Web Services performs additional authorization to verify if users
+%% or roles have permissions to create tags. Therefore, you must grant
+%% explicit permissions to use the `ecs:TagResource' action. For more
+%% information, see Grant permission to tag resources on creation in the
+%% Amazon ECS Developer Guide.
 put_account_setting(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_account_setting(Client, Input, []).
@@ -848,6 +867,15 @@ register_task_definition(Client, Input, Options)
 %% Alternatively, you can use `StartTask' to use your own scheduler or
 %% place tasks manually on specific container instances.
 %%
+%% Starting April 15, 2023, Amazon Web Services will not onboard new
+%% customers to Amazon Elastic Inference (EI), and will help current
+%% customers migrate their workloads to options that offer better price and
+%% performance. After April 15, 2023, new customers will not be able to
+%% launch instances with Amazon EI accelerators in Amazon SageMaker, Amazon
+%% ECS, or Amazon EC2. However, customers who have used Amazon EI at least
+%% once during the past 30-day period are considered current customers and
+%% will be able to continue using the service.
+%%
 %% The Amazon ECS API follows an eventual consistency model. This is because
 %% of the distributed nature of the system supporting the API. This means
 %% that the result of an API command you run that affects your Amazon ECS
@@ -879,6 +907,15 @@ run_task(Client, Input, Options)
 
 %% @doc Starts a new task from the specified task definition on the specified
 %% container instance or instances.
+%%
+%% Starting April 15, 2023, Amazon Web Services will not onboard new
+%% customers to Amazon Elastic Inference (EI), and will help current
+%% customers migrate their workloads to options that offer better price and
+%% performance. After April 15, 2023, new customers will not be able to
+%% launch instances with Amazon EI accelerators in Amazon SageMaker, Amazon
+%% ECS, or Amazon EC2. However, customers who have used Amazon EI at least
+%% once during the past 30-day period are considered current customers and
+%% will be able to continue using the service.
 %%
 %% Alternatively, you can use `RunTask' to place tasks for you. For more
 %% information, see Scheduling Tasks in the Amazon Elastic Container Service
@@ -1223,7 +1260,7 @@ update_service_primary_task_set(Client, Input, Options)
 %% deployments.
 %%
 %% Task-protection, by default, expires after 2 hours at which point Amazon
-%% ECS unsets the `protectionEnabled' property making the task eligible
+%% ECS clears the `protectionEnabled' property making the task eligible
 %% for termination by a subsequent scale-in event.
 %%
 %% You can specify a custom expiration period for task protection from 1

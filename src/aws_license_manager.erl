@@ -152,8 +152,10 @@ checkout_license(Client, Input, Options)
 
 %% @doc Creates a grant for the specified license.
 %%
-%% A grant shares the use of license entitlements with specific Amazon Web
-%% Services accounts.
+%% A grant shares the use of license entitlements with a specific Amazon Web
+%% Services account, an organization, or an organizational unit (OU). For
+%% more information, see Granted licenses in License Manager in the License
+%% Manager User Guide.
 create_grant(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_grant(Client, Input, []).
@@ -162,6 +164,9 @@ create_grant(Client, Input, Options)
     request(Client, <<"CreateGrant">>, Input, Options).
 
 %% @doc Creates a new version of the specified grant.
+%%
+%% For more information, see Granted licenses in License Manager in the
+%% License Manager User Guide.
 create_grant_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_grant_version(Client, Input, []).
@@ -427,7 +432,11 @@ list_licenses(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLicenses">>, Input, Options).
 
-%% @doc Lists grants that are received but not accepted.
+%% @doc Lists grants that are received.
+%%
+%% Received grants are grants created while specifying the recipient as this
+%% Amazon Web Services account, your organization, or an organizational unit
+%% (OU) to which this member account belongs.
 list_received_grants(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_received_grants(Client, Input, []).

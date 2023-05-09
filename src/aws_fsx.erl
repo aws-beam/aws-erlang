@@ -238,8 +238,7 @@ create_backup(Client, Input, Options)
 %% A data repository association is a link between a directory on the file
 %% system and an Amazon S3 bucket or prefix. You can have a maximum of 8 data
 %% repository associations on a file system. Data repository associations are
-%% supported only for file systems with the `Persistent_2' deployment
-%% type.
+%% supported for all file systems except for `Scratch_1' deployment type.
 %%
 %% Each data repository association must have a unique Amazon FSx file system
 %% directory and a unique S3 bucket or prefix associated with it. You can
@@ -479,7 +478,7 @@ delete_backup(Client, Input, Options)
 %% Amazon S3 bucket. When deleting a data repository association, you have
 %% the option of deleting the data in the file system that corresponds to the
 %% data repository association. Data repository associations are supported
-%% only for file systems with the `Persistent_2' deployment type.
+%% for all file systems except for `Scratch_1' deployment type.
 delete_data_repository_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_data_repository_association(Client, Input, []).
@@ -620,9 +619,9 @@ describe_backups(Client, Input, Options)
 %% `AssociationIds' values are provided in the request, or if filters are
 %% used in the request.
 %%
-%% Data repository associations are supported only for Amazon FSx for Lustre
-%% file systems with the `Persistent_2' deployment type and for Amazon
-%% File Cache resources.
+%% Data repository associations are supported on Amazon File Cache resources
+%% and all Amazon FSx for Lustre file systems excluding `Scratch_1'
+%% deployment types.
 %%
 %% You can use filters to narrow the response to include just data repository
 %% associations for specific file systems (use the `file-system-id'
@@ -901,8 +900,8 @@ untag_resource(Client, Input, Options)
 %% @doc Updates the configuration of an existing data repository association
 %% on an Amazon FSx for Lustre file system.
 %%
-%% Data repository associations are supported only for file systems with the
-%% `Persistent_2' deployment type.
+%% Data repository associations are supported for all file systems except for
+%% `Scratch_1' deployment type.
 update_data_repository_association(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_data_repository_association(Client, Input, []).
@@ -925,8 +924,8 @@ update_file_cache(Client, Input, Options)
 %%
 %% You can update multiple properties in a single request.
 %%
-%% For Amazon FSx for Windows File Server file systems, you can update the
-%% following properties:
+%% For FSx for Windows File Server file systems, you can update the following
+%% properties:
 %%
 %% <ul> <li> `AuditLogConfiguration'
 %%
@@ -942,8 +941,8 @@ update_file_cache(Client, Input, Options)
 %%
 %% </li> <li> `WeeklyMaintenanceStartTime'
 %%
-%% </li> </ul> For Amazon FSx for Lustre file systems, you can update the
-%% following properties:
+%% </li> </ul> For FSx for Lustre file systems, you can update the following
+%% properties:
 %%
 %% <ul> <li> `AutoImportPolicy'
 %%
@@ -959,10 +958,12 @@ update_file_cache(Client, Input, Options)
 %%
 %% </li> <li> `WeeklyMaintenanceStartTime'
 %%
-%% </li> </ul> For Amazon FSx for NetApp ONTAP file systems, you can update
-%% the following properties:
+%% </li> </ul> For FSx for ONTAP file systems, you can update the following
+%% properties:
 %%
-%% <ul> <li> `AutomaticBackupRetentionDays'
+%% <ul> <li> `AddRouteTableIds'
+%%
+%% </li> <li> `AutomaticBackupRetentionDays'
 %%
 %% </li> <li> `DailyAutomaticBackupStartTime'
 %%
@@ -970,14 +971,16 @@ update_file_cache(Client, Input, Options)
 %%
 %% </li> <li> `FsxAdminPassword'
 %%
+%% </li> <li> `RemoveRouteTableIds'
+%%
 %% </li> <li> `StorageCapacity'
 %%
 %% </li> <li> `ThroughputCapacity'
 %%
 %% </li> <li> `WeeklyMaintenanceStartTime'
 %%
-%% </li> </ul> For the Amazon FSx for OpenZFS file systems, you can update
-%% the following properties:
+%% </li> </ul> For FSx for OpenZFS file systems, you can update the following
+%% properties:
 %%
 %% <ul> <li> `AutomaticBackupRetentionDays'
 %%
@@ -986,6 +989,10 @@ update_file_cache(Client, Input, Options)
 %% </li> <li> `CopyTagsToVolumes'
 %%
 %% </li> <li> `DailyAutomaticBackupStartTime'
+%%
+%% </li> <li> `DiskIopsConfiguration'
+%%
+%% </li> <li> `StorageCapacity'
 %%
 %% </li> <li> `ThroughputCapacity'
 %%

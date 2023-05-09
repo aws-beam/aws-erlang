@@ -9,8 +9,7 @@
 %% Developer Guide.
 %%
 %% Some API actions require explicit resource permissions. For information,
-%% see the developer guide topic Firewall Manager required permissions for
-%% API actions.
+%% see the developer guide topic Service roles for Firewall Manager.
 -module(aws_fms).
 
 -export([associate_admin_account/2,
@@ -37,6 +36,8 @@
          disassociate_third_party_firewall/3,
          get_admin_account/2,
          get_admin_account/3,
+         get_admin_scope/2,
+         get_admin_scope/3,
          get_apps_list/2,
          get_apps_list/3,
          get_compliance_detail/2,
@@ -55,6 +56,10 @@
          get_third_party_firewall_association_status/3,
          get_violation_details/2,
          get_violation_details/3,
+         list_admin_accounts_for_organization/2,
+         list_admin_accounts_for_organization/3,
+         list_admins_managing_account/2,
+         list_admins_managing_account/3,
          list_apps_lists/2,
          list_apps_lists/3,
          list_compliance_status/2,
@@ -75,6 +80,8 @@
          list_tags_for_resource/3,
          list_third_party_firewall_firewall_policies/2,
          list_third_party_firewall_firewall_policies/3,
+         put_admin_account/2,
+         put_admin_account/3,
          put_apps_list/2,
          put_apps_list/3,
          put_notification_channel/2,
@@ -96,14 +103,17 @@
 %% API
 %%====================================================================
 
-%% @doc Sets the Firewall Manager administrator account.
+%% @doc Sets a Firewall Manager default administrator account.
 %%
-%% The account must be a member of the organization in Organizations whose
-%% resources you want to protect. Firewall Manager sets the permissions that
-%% allow the account to administer your Firewall Manager policies.
+%% The Firewall Manager default administrator account can manage third-party
+%% firewalls and has full administrative scope that allows administration of
+%% all policy types, accounts, organizational units, and Regions. This
+%% account must be a member account of the organization in Organizations
+%% whose resources you want to protect.
 %%
-%% The account that you associate with Firewall Manager is called the
-%% Firewall Manager administrator account.
+%% For information about working with Firewall Manager administrator
+%% accounts, see Managing Firewall Manager administrators in the Firewall
+%% Manager Developer Guide.
 associate_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_admin_account(Client, Input, []).
@@ -181,11 +191,17 @@ delete_resource_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteResourceSet">>, Input, Options).
 
-%% @doc Disassociates the account that has been set as the Firewall Manager
-%% administrator account.
+%% @doc Disassociates an Firewall Manager administrator account.
 %%
-%% To set a different account as the administrator account, you must submit
-%% an `AssociateAdminAccount' request.
+%% To set a different account as an Firewall Manager administrator, submit a
+%% `PutAdminAccount' request. To set an account as a default
+%% administrator account, you must submit an `AssociateAdminAccount'
+%% request.
+%%
+%% Disassociation of the default administrator account follows the first in,
+%% last out principle. If you are the default administrator, all Firewall
+%% Manager administrators within the organization must first disassociate
+%% their accounts before you can disassociate your account.
 disassociate_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_admin_account(Client, Input, []).
@@ -207,13 +223,25 @@ disassociate_third_party_firewall(Client, Input, Options)
     request(Client, <<"DisassociateThirdPartyFirewall">>, Input, Options).
 
 %% @doc Returns the Organizations account that is associated with Firewall
-%% Manager as the Firewall Manager administrator.
+%% Manager as the Firewall Manager default administrator.
 get_admin_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_admin_account(Client, Input, []).
 get_admin_account(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAdminAccount">>, Input, Options).
+
+%% @doc Returns information about the specified account's administrative
+%% scope.
+%%
+%% The admistrative scope defines the resources that an Firewall Manager
+%% administrator can manage.
+get_admin_scope(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_admin_scope(Client, Input, []).
+get_admin_scope(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAdminScope">>, Input, Options).
 
 %% @doc Returns information about the specified Firewall Manager applications
 %% list.
@@ -319,6 +347,33 @@ get_violation_details(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetViolationDetails">>, Input, Options).
 
+%% @doc Returns a `AdminAccounts' object that lists the Firewall Manager
+%% administrators within the organization that are onboarded to Firewall
+%% Manager by `AssociateAdminAccount'.
+%%
+%% This operation can be called only from the organization's management
+%% account.
+list_admin_accounts_for_organization(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_admin_accounts_for_organization(Client, Input, []).
+list_admin_accounts_for_organization(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAdminAccountsForOrganization">>, Input, Options).
+
+%% @doc Lists the accounts that are managing the specified Organizations
+%% member account.
+%%
+%% This is useful for any member account so that they can view the accounts
+%% who are managing their account. This operation only returns the managing
+%% administrators that have the requested account within their
+%% `AdminScope'.
+list_admins_managing_account(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_admins_managing_account(Client, Input, []).
+list_admins_managing_account(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAdminsManagingAccount">>, Input, Options).
+
 %% @doc Returns an array of `AppsListDataSummary' objects.
 list_apps_lists(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -350,8 +405,8 @@ list_discovered_resources(Client, Input, Options)
 %% @doc Returns a `MemberAccounts' object that lists the member accounts
 %% in the administrator's Amazon Web Services organization.
 %%
-%% The `ListMemberAccounts' must be submitted by the account that is set
-%% as the Firewall Manager administrator.
+%% Either an Firewall Manager administrator or the organization's
+%% management account can make this request.
 list_member_accounts(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_member_accounts(Client, Input, []).
@@ -410,6 +465,25 @@ list_third_party_firewall_firewall_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListThirdPartyFirewallFirewallPolicies">>, Input, Options).
 
+%% @doc Creates or updates an Firewall Manager administrator account.
+%%
+%% The account must be a member of the organization that was onboarded to
+%% Firewall Manager by `AssociateAdminAccount'. Only the
+%% organization's management account can create an Firewall Manager
+%% administrator account. When you create an Firewall Manager administrator
+%% account, the service checks to see if the account is already a delegated
+%% administrator within Organizations. If the account isn't a delegated
+%% administrator, Firewall Manager calls Organizations to delegate the
+%% account within Organizations. For more information about administrator
+%% accounts within Organizations, see Managing the Amazon Web Services
+%% Accounts in Your Organization.
+put_admin_account(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_admin_account(Client, Input, []).
+put_admin_account(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutAdminAccount">>, Input, Options).
+
 %% @doc Creates an Firewall Manager applications list.
 put_apps_list(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -421,10 +495,14 @@ put_apps_list(Client, Input, Options)
 %% @doc Designates the IAM role and Amazon Simple Notification Service (SNS)
 %% topic that Firewall Manager uses to record SNS logs.
 %%
-%% To perform this action outside of the console, you must configure the SNS
-%% topic to allow the Firewall Manager role `AWSServiceRoleForFMS' to
-%% publish SNS logs. For more information, see Firewall Manager required
-%% permissions for API actions in the Firewall Manager Developer Guide.
+%% To perform this action outside of the console, you must first configure
+%% the SNS topic's access policy to allow the `SnsRoleName' to
+%% publish SNS logs. If the `SnsRoleName' provided is a role other than
+%% the `AWSServiceRoleForFMS' service-linked role, this role must have a
+%% trust relationship configured to allow the Firewall Manager service
+%% principal `fms.amazonaws.com' to assume this role. For information
+%% about configuring an SNS access policy, see Service roles for Firewall
+%% Manager in the Firewall Manager Developer Guide.
 put_notification_channel(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_notification_channel(Client, Input, []).

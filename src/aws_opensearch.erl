@@ -53,6 +53,12 @@
          describe_domain_config/2,
          describe_domain_config/4,
          describe_domain_config/5,
+         describe_domain_health/2,
+         describe_domain_health/4,
+         describe_domain_health/5,
+         describe_domain_nodes/2,
+         describe_domain_nodes/4,
+         describe_domain_nodes/5,
          describe_domains/2,
          describe_domains/3,
          describe_dry_run_progress/2,
@@ -611,6 +617,56 @@ describe_domain_config(Client, DomainName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns information about domain and node health, the standby
+%% Availability Zone, number of nodes per Availability Zone, and shard count
+%% per node.
+describe_domain_health(Client, DomainName)
+  when is_map(Client) ->
+    describe_domain_health(Client, DomainName, #{}, #{}).
+
+describe_domain_health(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_domain_health(Client, DomainName, QueryMap, HeadersMap, []).
+
+describe_domain_health(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/health"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about domain and nodes, including data nodes,
+%% master nodes, ultrawarm nodes, Availability Zone(s), standby nodes, node
+%% configurations, and node states.
+describe_domain_nodes(Client, DomainName)
+  when is_map(Client) ->
+    describe_domain_nodes(Client, DomainName, #{}, #{}).
+
+describe_domain_nodes(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_domain_nodes(Client, DomainName, QueryMap, HeadersMap, []).
+
+describe_domain_nodes(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/nodes"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns domain configuration information about the specified Amazon
 %% OpenSearch Service domains.
 describe_domains(Client, Input) ->
@@ -920,7 +976,8 @@ get_compatible_versions(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of Amazon OpenSearch Service package versions, along
-%% with their creation time and commit message.
+%% with their creation time, commit message, and plugin properties (if the
+%% package is a zip plugin package).
 %%
 %% For more information, see Custom packages for Amazon OpenSearch Service.
 get_package_version_history(Client, PackageID)
@@ -1085,8 +1142,10 @@ list_instance_type_details(Client, EngineVersion, QueryMap, HeadersMap, Options0
     Query0_ =
       [
         {<<"domainName">>, maps:get(<<"domainName">>, QueryMap, undefined)},
+        {<<"instanceType">>, maps:get(<<"instanceType">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
-        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"retrieveAZs">>, maps:get(<<"retrieveAZs">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1423,7 +1482,7 @@ start_service_software_update(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Modifies the cluster configuration of the specified Amazon OpenSearch
-%% Service domain.
+%% Service domain.sl
 update_domain_config(Client, DomainName, Input) ->
     update_domain_config(Client, DomainName, Input, []).
 update_domain_config(Client, DomainName, Input0, Options0) ->

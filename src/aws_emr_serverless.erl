@@ -165,6 +165,9 @@ get_application(Client, ApplicationId, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a URL to access the job run dashboard.
+%%
+%% The generated URL is valid for one hour, after which you must invoke the
+%% API again to generate a new URL.
 get_dashboard_for_job_run(Client, ApplicationId, JobRunId)
   when is_map(Client) ->
     get_dashboard_for_job_run(Client, ApplicationId, JobRunId, #{}, #{}).
@@ -369,12 +372,12 @@ stop_application(Client, ApplicationId, Input0, Options0) ->
 
 %% @doc Assigns tags to resources.
 %%
-%% A tag is a label that you assign to an AWS resource. Each tag consists of
-%% a key and an optional value, both of which you define. Tags enable you to
-%% categorize your AWS resources by attributes such as purpose, owner, or
-%% environment. When you have many resources of the same type, you can
-%% quickly identify a specific resource based on the tags you've assigned
-%% to it.
+%% A tag is a label that you assign to an Amazon Web Services resource. Each
+%% tag consists of a key and an optional value, both of which you define.
+%% Tags enable you to categorize your Amazon Web Services resources by
+%% attributes such as purpose, owner, or environment. When you have many
+%% resources of the same type, you can quickly identify a specific resource
+%% based on the tags you've assigned to it.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
 tag_resource(Client, ResourceArn, Input0, Options0) ->

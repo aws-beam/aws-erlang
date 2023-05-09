@@ -767,6 +767,9 @@ put_managed_insight_rules(Client, Input, Options)
 %% and `AWSServiceRoleForCloudWatchAlarms_ActionSSM'. For more
 %% information, see Amazon Web Services service-linked role.
 %%
+%% Each `PutMetricAlarm' action has a maximum uncompressed payload of 120
+%% KB.
+%%
 %% Cross-account alarms
 %%
 %% You can set an alarm on metrics in the current account, or in another

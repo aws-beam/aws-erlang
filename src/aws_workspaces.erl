@@ -660,8 +660,8 @@ import_client_branding(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ImportClientBranding">>, Input, Options).
 
-%% @doc Imports the specified Windows 10 Bring Your Own License (BYOL) image
-%% into Amazon WorkSpaces.
+%% @doc Imports the specified Windows 10 or 11 Bring Your Own License (BYOL)
+%% image into Amazon WorkSpaces.
 %%
 %% The image must be an already licensed Amazon EC2 image that is in your
 %% Amazon Web Services account, and you must own the image. For more

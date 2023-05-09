@@ -14,7 +14,9 @@
 %% programmatically. For complete information, see the DataSync User Guide .
 -module(aws_datasync).
 
--export([cancel_task_execution/2,
+-export([add_storage_system/2,
+         add_storage_system/3,
+         cancel_task_execution/2,
          cancel_task_execution/3,
          create_agent/2,
          create_agent/3,
@@ -48,6 +50,8 @@
          delete_task/3,
          describe_agent/2,
          describe_agent/3,
+         describe_discovery_job/2,
+         describe_discovery_job/3,
          describe_location_efs/2,
          describe_location_efs/3,
          describe_location_fsx_lustre/2,
@@ -68,28 +72,48 @@
          describe_location_s3/3,
          describe_location_smb/2,
          describe_location_smb/3,
+         describe_storage_system/2,
+         describe_storage_system/3,
+         describe_storage_system_resource_metrics/2,
+         describe_storage_system_resource_metrics/3,
+         describe_storage_system_resources/2,
+         describe_storage_system_resources/3,
          describe_task/2,
          describe_task/3,
          describe_task_execution/2,
          describe_task_execution/3,
+         generate_recommendations/2,
+         generate_recommendations/3,
          list_agents/2,
          list_agents/3,
+         list_discovery_jobs/2,
+         list_discovery_jobs/3,
          list_locations/2,
          list_locations/3,
+         list_storage_systems/2,
+         list_storage_systems/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          list_task_executions/2,
          list_task_executions/3,
          list_tasks/2,
          list_tasks/3,
+         remove_storage_system/2,
+         remove_storage_system/3,
+         start_discovery_job/2,
+         start_discovery_job/3,
          start_task_execution/2,
          start_task_execution/3,
+         stop_discovery_job/2,
+         stop_discovery_job/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
          update_agent/2,
          update_agent/3,
+         update_discovery_job/2,
+         update_discovery_job/3,
          update_location_hdfs/2,
          update_location_hdfs/3,
          update_location_nfs/2,
@@ -98,6 +122,8 @@
          update_location_object_storage/3,
          update_location_smb/2,
          update_location_smb/3,
+         update_storage_system/2,
+         update_storage_system/3,
          update_task/2,
          update_task/3,
          update_task_execution/2,
@@ -108,6 +134,15 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Creates an Amazon Web Services resource for an on-premises storage
+%% system that you want DataSync Discovery to collect information about.
+add_storage_system(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_storage_system(Client, Input, []).
+add_storage_system(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddStorageSystem">>, Input, Options).
 
 %% @doc Stops an DataSync task execution that's in progress.
 %%
@@ -236,10 +271,18 @@ create_location_object_storage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateLocationObjectStorage">>, Input, Options).
 
-%% @doc Creates an endpoint for an Amazon S3 bucket that DataSync can access
-%% for a transfer.
+%% @doc A location is an endpoint for an Amazon S3 bucket.
 %%
-%% For more information, see Create an Amazon S3 location.
+%% DataSync can use the location as a source or destination for copying data.
+%%
+%% Before you create your location, make sure that you read the following
+%% sections:
+%%
+%% Storage class considerations with Amazon S3 locations
+%%
+%% Evaluating S3 request costs when using DataSync
+%%
+%% For more information, see Creating an Amazon S3 location.
 create_location_s3(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_location_s3(Client, Input, []).
@@ -264,6 +307,10 @@ create_location_smb(Client, Input, Options)
 %% A task includes a source location, a destination location, and the
 %% preferences for how and when you want to transfer your data (such as
 %% bandwidth limits, scheduling, among other options).
+%%
+%% If you're planning to transfer data to or from an Amazon S3 location,
+%% review how DataSync can affect your S3 request charges and the DataSync
+%% pricing page before you begin.
 create_task(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_task(Client, Input, []).
@@ -308,6 +355,14 @@ describe_agent(Client, Input)
 describe_agent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAgent">>, Input, Options).
+
+%% @doc Returns information about a DataSync discovery job.
+describe_discovery_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_discovery_job(Client, Input, []).
+describe_discovery_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeDiscoveryJob">>, Input, Options).
 
 %% @doc Returns metadata about your DataSync location for an Amazon EFS file
 %% system.
@@ -405,6 +460,34 @@ describe_location_smb(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLocationSmb">>, Input, Options).
 
+%% @doc Returns information about an on-premises storage system that
+%% you're using with DataSync Discovery.
+describe_storage_system(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_storage_system(Client, Input, []).
+describe_storage_system(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeStorageSystem">>, Input, Options).
+
+%% @doc Returns information, including performance data and capacity usage,
+%% which DataSync Discovery collects about a specific resource in
+%% your-premises storage system.
+describe_storage_system_resource_metrics(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_storage_system_resource_metrics(Client, Input, []).
+describe_storage_system_resource_metrics(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeStorageSystemResourceMetrics">>, Input, Options).
+
+%% @doc Returns information that DataSync Discovery collects about resources
+%% in your on-premises storage system.
+describe_storage_system_resources(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_storage_system_resources(Client, Input, []).
+describe_storage_system_resources(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeStorageSystemResources">>, Input, Options).
+
 %% @doc Returns metadata about a task.
 describe_task(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -420,6 +503,26 @@ describe_task_execution(Client, Input)
 describe_task_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTaskExecution">>, Input, Options).
+
+%% @doc Creates recommendations about where to migrate your data to in Amazon
+%% Web Services.
+%%
+%% Recommendations are generated based on information that DataSync Discovery
+%% collects about your on-premises storage system's resources. For more
+%% information, see Recommendations provided by DataSync Discovery.
+%%
+%% Once generated, you can view your recommendations by using the
+%% DescribeStorageSystemResources operation.
+%%
+%% If your discovery job completes successfully, you don't need to use
+%% this operation. DataSync Discovery generates the recommendations for you
+%% automatically.
+generate_recommendations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    generate_recommendations(Client, Input, []).
+generate_recommendations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GenerateRecommendations">>, Input, Options).
 
 %% @doc Returns a list of DataSync agents that belong to an Amazon Web
 %% Services account in the Amazon Web Services Region specified in the
@@ -443,6 +546,16 @@ list_agents(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAgents">>, Input, Options).
 
+%% @doc Provides a list of the existing discovery jobs in the Amazon Web
+%% Services Region and Amazon Web Services account where you're using
+%% DataSync Discovery.
+list_discovery_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_discovery_jobs(Client, Input, []).
+list_discovery_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDiscoveryJobs">>, Input, Options).
+
 %% @doc Returns a list of source and destination locations.
 %%
 %% If you have more locations than are returned in a response (that is, the
@@ -455,6 +568,15 @@ list_locations(Client, Input)
 list_locations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListLocations">>, Input, Options).
+
+%% @doc Lists the on-premises storage systems that you're using with
+%% DataSync Discovery.
+list_storage_systems(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_storage_systems(Client, Input, []).
+list_storage_systems(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListStorageSystems">>, Input, Options).
 
 %% @doc Returns all the tags associated with an Amazon Web Services resource.
 list_tags_for_resource(Client, Input)
@@ -480,18 +602,56 @@ list_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTasks">>, Input, Options).
 
+%% @doc Permanently removes a storage system resource from DataSync
+%% Discovery, including the associated discovery jobs, collected data, and
+%% recommendations.
+remove_storage_system(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_storage_system(Client, Input, []).
+remove_storage_system(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveStorageSystem">>, Input, Options).
+
+%% @doc Runs a DataSync discovery job on your on-premises storage system.
+%%
+%% If you haven't added the storage system to DataSync Discovery yet, do
+%% this first by using the AddStorageSystem operation.
+start_discovery_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_discovery_job(Client, Input, []).
+start_discovery_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartDiscoveryJob">>, Input, Options).
+
 %% @doc Starts an DataSync task.
 %%
 %% For each task, you can only run one task execution at a time.
 %%
 %% There are several phases to a task execution. For more information, see
 %% Task execution statuses.
+%%
+%% If you're planning to transfer data to or from an Amazon S3 location,
+%% review how DataSync can affect your S3 request charges and the DataSync
+%% pricing page before you begin.
 start_task_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_task_execution(Client, Input, []).
 start_task_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartTaskExecution">>, Input, Options).
+
+%% @doc Stops a running DataSync discovery job.
+%%
+%% You can stop a discovery job anytime. A job that's stopped before
+%% it's scheduled to end likely will provide you some information about
+%% your on-premises storage system resources. To get recommendations for a
+%% stopped job, you must use the GenerateRecommendations operation.
+stop_discovery_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_discovery_job(Client, Input, []).
+stop_discovery_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopDiscoveryJob">>, Input, Options).
 
 %% @doc Applies a tag to an Amazon Web Services resource.
 %%
@@ -522,6 +682,14 @@ update_agent(Client, Input)
 update_agent(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAgent">>, Input, Options).
+
+%% @doc Edits a DataSync discovery job configuration.
+update_discovery_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_discovery_job(Client, Input, []).
+update_discovery_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDiscoveryJob">>, Input, Options).
 
 %% @doc Updates some parameters of a previously created location for a Hadoop
 %% Distributed File System cluster.
@@ -568,6 +736,15 @@ update_location_smb(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLocationSmb">>, Input, Options).
 
+%% @doc Modifies some configurations of an on-premises storage system
+%% resource that you're using with DataSync Discovery.
+update_storage_system(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_storage_system(Client, Input, []).
+update_storage_system(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateStorageSystem">>, Input, Options).
+
 %% @doc Updates the metadata associated with a task.
 update_task(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -576,14 +753,11 @@ update_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateTask">>, Input, Options).
 
-%% @doc Updates execution of a task.
+%% @doc Modifies a running DataSync task.
 %%
-%% You can modify bandwidth throttling for a task execution that is running
-%% or queued. For more information, see Adjusting Bandwidth Throttling for a
-%% Task Execution.
-%%
-%% The only `Option' that can be modified by `UpdateTaskExecution' is
-%% ` BytesPerSecond '.
+%% Currently, the only `Option' that you can modify with
+%% `UpdateTaskExecution' is ` BytesPerSecond ', which throttles
+%% bandwidth for a running or queued task.
 update_task_execution(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_task_execution(Client, Input, []).

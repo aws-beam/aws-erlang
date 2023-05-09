@@ -19,7 +19,9 @@
 %% Connect Endpoints.
 -module(aws_connect).
 
--export([associate_approved_origin/3,
+-export([activate_evaluation_form/4,
+         activate_evaluation_form/5,
+         associate_approved_origin/3,
          associate_approved_origin/4,
          associate_bot/3,
          associate_bot/4,
@@ -47,12 +49,16 @@
          create_contact_flow/4,
          create_contact_flow_module/3,
          create_contact_flow_module/4,
+         create_evaluation_form/3,
+         create_evaluation_form/4,
          create_hours_of_operation/3,
          create_hours_of_operation/4,
          create_instance/2,
          create_instance/3,
          create_integration_association/3,
          create_integration_association/4,
+         create_participant/2,
+         create_participant/3,
          create_queue/3,
          create_queue/4,
          create_quick_connect/3,
@@ -75,10 +81,16 @@
          create_user_hierarchy_group/4,
          create_vocabulary/3,
          create_vocabulary/4,
+         deactivate_evaluation_form/4,
+         deactivate_evaluation_form/5,
+         delete_contact_evaluation/4,
+         delete_contact_evaluation/5,
          delete_contact_flow/4,
          delete_contact_flow/5,
          delete_contact_flow_module/4,
          delete_contact_flow_module/5,
+         delete_evaluation_form/4,
+         delete_evaluation_form/5,
          delete_hours_of_operation/4,
          delete_hours_of_operation/5,
          delete_instance/3,
@@ -109,12 +121,18 @@
          describe_contact/3,
          describe_contact/5,
          describe_contact/6,
+         describe_contact_evaluation/3,
+         describe_contact_evaluation/5,
+         describe_contact_evaluation/6,
          describe_contact_flow/3,
          describe_contact_flow/5,
          describe_contact_flow/6,
          describe_contact_flow_module/3,
          describe_contact_flow_module/5,
          describe_contact_flow_module/6,
+         describe_evaluation_form/3,
+         describe_evaluation_form/5,
+         describe_evaluation_form/6,
          describe_hours_of_operation/3,
          describe_hours_of_operation/5,
          describe_hours_of_operation/6,
@@ -209,6 +227,9 @@
          list_bots/3,
          list_bots/5,
          list_bots/6,
+         list_contact_evaluations/3,
+         list_contact_evaluations/5,
+         list_contact_evaluations/6,
          list_contact_flow_modules/2,
          list_contact_flow_modules/4,
          list_contact_flow_modules/5,
@@ -220,6 +241,12 @@
          list_contact_references/7,
          list_default_vocabularies/3,
          list_default_vocabularies/4,
+         list_evaluation_form_versions/3,
+         list_evaluation_form_versions/5,
+         list_evaluation_form_versions/6,
+         list_evaluation_forms/2,
+         list_evaluation_forms/4,
+         list_evaluation_forms/5,
          list_hours_of_operations/2,
          list_hours_of_operations/4,
          list_hours_of_operations/5,
@@ -318,6 +345,8 @@
          search_vocabularies/4,
          start_chat_contact/2,
          start_chat_contact/3,
+         start_contact_evaluation/3,
+         start_contact_evaluation/4,
          start_contact_recording/2,
          start_contact_recording/3,
          start_contact_streaming/2,
@@ -332,6 +361,8 @@
          stop_contact_recording/3,
          stop_contact_streaming/2,
          stop_contact_streaming/3,
+         submit_contact_evaluation/4,
+         submit_contact_evaluation/5,
          suspend_contact_recording/2,
          suspend_contact_recording/3,
          tag_resource/3,
@@ -346,6 +377,8 @@
          update_contact/5,
          update_contact_attributes/2,
          update_contact_attributes/3,
+         update_contact_evaluation/4,
+         update_contact_evaluation/5,
          update_contact_flow_content/4,
          update_contact_flow_content/5,
          update_contact_flow_metadata/4,
@@ -358,6 +391,8 @@
          update_contact_flow_name/5,
          update_contact_schedule/2,
          update_contact_schedule/3,
+         update_evaluation_form/4,
+         update_evaluation_form/5,
          update_hours_of_operation/4,
          update_hours_of_operation/5,
          update_instance_attribute/4,
@@ -418,6 +453,33 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Activates an evaluation form in the specified Amazon Connect
+%% instance.
+%%
+%% After the evaluation form is activated, it is available to start new
+%% evaluations based on the form.
+activate_evaluation_form(Client, EvaluationFormId, InstanceId, Input) ->
+    activate_evaluation_form(Client, EvaluationFormId, InstanceId, Input, []).
+activate_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationFormId), "/activate"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This API is in preview release for Amazon Connect and is subject to
 %% change.
@@ -806,6 +868,33 @@ create_contact_flow_module(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an evaluation form in the specified Amazon Connect instance.
+%%
+%% The form can be used to define questions related to agent performance, and
+%% create sections to organize such questions. Question and section
+%% identifiers cannot be duplicated within the same evaluation form.
+create_evaluation_form(Client, InstanceId, Input) ->
+    create_evaluation_form(Client, InstanceId, Input, []).
+create_evaluation_form(Client, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This API is in preview release for Amazon Connect and is subject to
 %% change.
 %%
@@ -874,6 +963,32 @@ create_integration_association(Client, InstanceId, Input) ->
 create_integration_association(Client, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds a new participant into an on-going chat contact.
+%%
+%% For more information, see Customize chat flow experiences by integrating
+%% custom participants.
+create_participant(Client, Input) ->
+    create_participant(Client, Input, []).
+create_participant(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/contact/create-participant"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1176,6 +1291,57 @@ create_vocabulary(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deactivates an evaluation form in the specified Amazon Connect
+%% instance.
+%%
+%% After a form is deactivated, it is no longer available for users to start
+%% new evaluations based on the form.
+deactivate_evaluation_form(Client, EvaluationFormId, InstanceId, Input) ->
+    deactivate_evaluation_form(Client, EvaluationFormId, InstanceId, Input, []).
+deactivate_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationFormId), "/deactivate"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a contact evaluation in the specified Amazon Connect
+%% instance.
+delete_contact_evaluation(Client, EvaluationId, InstanceId, Input) ->
+    delete_contact_evaluation(Client, EvaluationId, InstanceId, Input, []).
+delete_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/contact-evaluations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a flow for the specified Amazon Connect instance.
 delete_contact_flow(Client, ContactFlowId, InstanceId, Input) ->
     delete_contact_flow(Client, ContactFlowId, InstanceId, Input, []).
@@ -1220,6 +1386,38 @@ delete_contact_flow_module(Client, ContactFlowModuleId, InstanceId, Input0, Opti
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an evaluation form in the specified Amazon Connect instance.
+%%
+%% <ul> <li> If the version property is provided, only the specified version
+%% of the evaluation form is deleted.
+%%
+%% </li> <li> If no version is provided, then the full form (all versions) is
+%% deleted.
+%%
+%% </li> </ul>
+delete_evaluation_form(Client, EvaluationFormId, InstanceId, Input) ->
+    delete_evaluation_form(Client, EvaluationFormId, InstanceId, Input, []).
+delete_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationFormId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"version">>, <<"EvaluationFormVersion">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This API is in preview release for Amazon Connect and is subject to
@@ -1586,6 +1784,30 @@ describe_contact(Client, ContactId, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Describes a contact evaluation in the specified Amazon Connect
+%% instance.
+describe_contact_evaluation(Client, EvaluationId, InstanceId)
+  when is_map(Client) ->
+    describe_contact_evaluation(Client, EvaluationId, InstanceId, #{}, #{}).
+
+describe_contact_evaluation(Client, EvaluationId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_contact_evaluation(Client, EvaluationId, InstanceId, QueryMap, HeadersMap, []).
+
+describe_contact_evaluation(Client, EvaluationId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/contact-evaluations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Describes the specified flow.
 %%
 %% You can also create and update flows using the Amazon Connect Flow
@@ -1632,6 +1854,37 @@ describe_contact_flow_module(Client, ContactFlowModuleId, InstanceId, QueryMap, 
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes an evaluation form in the specified Amazon Connect
+%% instance.
+%%
+%% If the version property is not provided, the latest version of the
+%% evaluation form is described.
+describe_evaluation_form(Client, EvaluationFormId, InstanceId)
+  when is_map(Client) ->
+    describe_evaluation_form(Client, EvaluationFormId, InstanceId, #{}, #{}).
+
+describe_evaluation_form(Client, EvaluationFormId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_evaluation_form(Client, EvaluationFormId, InstanceId, QueryMap, HeadersMap, []).
+
+describe_evaluation_form(Client, EvaluationFormId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationFormId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"version">>, maps:get(<<"version">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -2619,6 +2872,34 @@ list_bots(Client, InstanceId, LexVersion, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists contact evaluations in the specified Amazon Connect instance.
+list_contact_evaluations(Client, InstanceId, ContactId)
+  when is_map(Client) ->
+    list_contact_evaluations(Client, InstanceId, ContactId, #{}, #{}).
+
+list_contact_evaluations(Client, InstanceId, ContactId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_contact_evaluations(Client, InstanceId, ContactId, QueryMap, HeadersMap, []).
+
+list_contact_evaluations(Client, InstanceId, ContactId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/contact-evaluations/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"contactId">>, ContactId},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Provides information about the flow modules for the specified Amazon
 %% Connect instance.
 list_contact_flow_modules(Client, InstanceId)
@@ -2740,6 +3021,63 @@ list_default_vocabularies(Client, InstanceId, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists versions of an evaluation form in the specified Amazon Connect
+%% instance.
+list_evaluation_form_versions(Client, EvaluationFormId, InstanceId)
+  when is_map(Client) ->
+    list_evaluation_form_versions(Client, EvaluationFormId, InstanceId, #{}, #{}).
+
+list_evaluation_form_versions(Client, EvaluationFormId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_evaluation_form_versions(Client, EvaluationFormId, InstanceId, QueryMap, HeadersMap, []).
+
+list_evaluation_form_versions(Client, EvaluationFormId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationFormId), "/versions"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists evaluation forms in the specified Amazon Connect instance.
+list_evaluation_forms(Client, InstanceId)
+  when is_map(Client) ->
+    list_evaluation_forms(Client, InstanceId, #{}, #{}).
+
+list_evaluation_forms(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_evaluation_forms(Client, InstanceId, QueryMap, HeadersMap, []).
+
+list_evaluation_forms(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides information about the hours of operation for the specified
 %% Amazon Connect instance.
@@ -3876,6 +4214,37 @@ start_chat_contact(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts an empty evaluation in the specified Amazon Connect instance,
+%% using the given evaluation form for the particular contact.
+%%
+%% The evaluation form version used for the contact evaluation corresponds to
+%% the currently activated version. If no version is activated for the
+%% evaluation form, the contact evaluation cannot be started.
+%%
+%% Evaluations created through the public API do not contain answer values
+%% suggested from automation.
+start_contact_evaluation(Client, InstanceId, Input) ->
+    start_contact_evaluation(Client, InstanceId, Input, []).
+start_contact_evaluation(Client, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/contact-evaluations/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Starts recording the contact:
 %%
 %% <ul> <li> If the API is called before the agent joins the call, recording
@@ -4083,6 +4452,38 @@ stop_contact_streaming(Client, Input) ->
 stop_contact_streaming(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/stop-streaming"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Submits a contact evaluation in the specified Amazon Connect
+%% instance.
+%%
+%% Answers included in the request are merged with existing answers for the
+%% given evaluation. If no answers or notes are passed, the evaluation is
+%% submitted with the existing answers and notes. You can delete an answer or
+%% note by passing an empty object (`{}') to the question identifier.
+%%
+%% If a contact evaluation is already in submitted state, this operation will
+%% trigger a resubmission.
+submit_contact_evaluation(Client, EvaluationId, InstanceId, Input) ->
+    submit_contact_evaluation(Client, EvaluationId, InstanceId, Input, []).
+submit_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/contact-evaluations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationId), "/submit"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -4329,6 +4730,35 @@ update_contact_attributes(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates details about a contact evaluation in the specified Amazon
+%% Connect instance.
+%%
+%% A contact evaluation must be in draft state. Answers included in the
+%% request are merged with existing answers for the given evaluation. An
+%% answer or note can be deleted by passing an empty object (`{}') to the
+%% question identifier.
+update_contact_evaluation(Client, EvaluationId, InstanceId, Input) ->
+    update_contact_evaluation(Client, EvaluationId, InstanceId, Input, []).
+update_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/contact-evaluations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates the specified flow.
 %%
 %% You can also create and update flows using the Amazon Connect Flow
@@ -4458,6 +4888,36 @@ update_contact_schedule(Client, Input) ->
 update_contact_schedule(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/schedule"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates details about a specific evaluation form version in the
+%% specified Amazon Connect instance.
+%%
+%% Question and section identifiers cannot be duplicated within the same
+%% evaluation form.
+%%
+%% This operation does not support partial updates. Instead it does a full
+%% update of evaluation form content.
+update_evaluation_form(Client, EvaluationFormId, InstanceId, Input) ->
+    update_evaluation_form(Client, EvaluationFormId, InstanceId, Input, []).
+update_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationFormId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

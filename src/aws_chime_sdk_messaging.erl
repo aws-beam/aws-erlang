@@ -460,10 +460,9 @@ delete_channel(Client, ChannelArn, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    QueryMapping = [
-                     {<<"sub-channel-id">>, <<"SubChannelId">>}
-                   ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes a member from a channel's ban list.

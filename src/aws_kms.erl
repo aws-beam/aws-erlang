@@ -771,10 +771,17 @@ create_key(Client, Input, Options)
 %% keys or particular trusted accounts. For details, see Best practices for
 %% IAM policies in the Key Management Service Developer Guide.
 %%
-%% Applications in Amazon Web Services Nitro Enclaves can call this operation
-%% by using the Amazon Web Services Nitro Enclaves Development Kit. For
-%% information about the supporting parameters, see How Amazon Web Services
-%% Nitro Enclaves use KMS in the Key Management Service Developer Guide.
+%% `Decrypt' also supports Amazon Web Services Nitro Enclaves, which
+%% provide an isolated compute environment in Amazon EC2. To call
+%% `Decrypt' for a Nitro enclave, use the Amazon Web Services Nitro
+%% Enclaves SDK or any Amazon Web Services SDK. Use the `Recipient'
+%% parameter to provide the attestation document for the enclave. Instead of
+%% the plaintext data, the response includes the plaintext data encrypted
+%% with the public key from the attestation document
+%% (`CiphertextForRecipient').For information about the interaction
+%% between KMS and Amazon Web Services Nitro Enclaves, see How Amazon Web
+%% Services Nitro Enclaves uses KMS in the Key Management Service Developer
+%% Guide..
 %%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For details, see Key states of KMS keys in the Key Management
@@ -1392,10 +1399,19 @@ encrypt(Client, Input, Options)
 %% fails with an `InvalidCiphertextException'. For more information, see
 %% Encryption Context in the Key Management Service Developer Guide.
 %%
-%% Applications in Amazon Web Services Nitro Enclaves can call this operation
-%% by using the Amazon Web Services Nitro Enclaves Development Kit. For
-%% information about the supporting parameters, see How Amazon Web Services
-%% Nitro Enclaves use KMS in the Key Management Service Developer Guide.
+%% `GenerateDataKey' also supports Amazon Web Services Nitro Enclaves,
+%% which provide an isolated compute environment in Amazon EC2. To call
+%% `GenerateDataKey' for an Amazon Web Services Nitro enclave, use the
+%% Amazon Web Services Nitro Enclaves SDK or any Amazon Web Services SDK. Use
+%% the `Recipient' parameter to provide the attestation document for the
+%% enclave. `GenerateDataKey' returns a copy of the data key encrypted
+%% under the specified KMS key, as usual. But instead of a plaintext copy of
+%% the data key, the response includes a copy of the data key encrypted under
+%% the public key from the attestation document
+%% (`CiphertextForRecipient'). For information about the interaction
+%% between KMS and Amazon Web Services Nitro Enclaves, see How Amazon Web
+%% Services Nitro Enclaves uses KMS in the Key Management Service Developer
+%% Guide..
 %%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For details, see Key states of KMS keys in the Key Management
@@ -1496,6 +1512,21 @@ generate_data_key(Client, Input, Options)
 %% DER-encoded X.509 SubjectPublicKeyInfo, as specified in RFC 5280. The
 %% private key is a DER-encoded PKCS8 PrivateKeyInfo, as specified in RFC
 %% 5958.
+%%
+%% `GenerateDataKeyPair' also supports Amazon Web Services Nitro
+%% Enclaves, which provide an isolated compute environment in Amazon EC2. To
+%% call `GenerateDataKeyPair' for an Amazon Web Services Nitro enclave,
+%% use the Amazon Web Services Nitro Enclaves SDK or any Amazon Web Services
+%% SDK. Use the `Recipient' parameter to provide the attestation document
+%% for the enclave. `GenerateDataKeyPair' returns the public data key and
+%% a copy of the private data key encrypted under the specified KMS key, as
+%% usual. But instead of a plaintext copy of the private data key
+%% (`PrivateKeyPlaintext'), the response includes a copy of the private
+%% data key encrypted under the public key from the attestation document
+%% (`CiphertextForRecipient'). For information about the interaction
+%% between KMS and Amazon Web Services Nitro Enclaves, see How Amazon Web
+%% Services Nitro Enclaves uses KMS in the Key Management Service Developer
+%% Guide..
 %%
 %% You can use an optional encryption context to add additional security to
 %% the encryption operation. If you specify an `EncryptionContext', you
@@ -1639,7 +1670,7 @@ generate_data_key_pair_without_plaintext(Client, Input, Options)
 %% 128-bit and 256-bit data keys, use the `KeySpec' parameter.
 %%
 %% To generate an SM4 data key (China Regions only), specify a `KeySpec'
-%% value of `AES_128' or `NumberOfBytes' value of `128'. The
+%% value of `AES_128' or `NumberOfBytes' value of `16'. The
 %% symmetric encryption key used in China Regions to encrypt your data key is
 %% an SM4 encryption key.
 %%
@@ -1732,10 +1763,17 @@ generate_mac(Client, Input, Options)
 %% byte string in the CloudHSM cluster associated with an CloudHSM key store,
 %% use the `CustomKeyStoreId' parameter.
 %%
-%% Applications in Amazon Web Services Nitro Enclaves can call this operation
-%% by using the Amazon Web Services Nitro Enclaves Development Kit. For
-%% information about the supporting parameters, see How Amazon Web Services
-%% Nitro Enclaves use KMS in the Key Management Service Developer Guide.
+%% `GenerateRandom' also supports Amazon Web Services Nitro Enclaves,
+%% which provide an isolated compute environment in Amazon EC2. To call
+%% `GenerateRandom' for a Nitro enclave, use the Amazon Web Services
+%% Nitro Enclaves SDK or any Amazon Web Services SDK. Use the `Recipient'
+%% parameter to provide the attestation document for the enclave. Instead of
+%% plaintext bytes, the response includes the plaintext bytes encrypted under
+%% the public key from the attestation document
+%% (`CiphertextForRecipient').For information about the interaction
+%% between KMS and Amazon Web Services Nitro Enclaves, see How Amazon Web
+%% Services Nitro Enclaves uses KMS in the Key Management Service Developer
+%% Guide.
 %%
 %% For more information about entropy and random number generation, see Key
 %% Management Service Cryptographic Details.

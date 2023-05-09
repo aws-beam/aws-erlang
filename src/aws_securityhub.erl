@@ -130,6 +130,8 @@
          get_finding_aggregator/2,
          get_finding_aggregator/4,
          get_finding_aggregator/5,
+         get_finding_history/2,
+         get_finding_history/3,
          get_findings/2,
          get_findings/3,
          get_insight_results/2,
@@ -1377,6 +1379,32 @@ get_finding_aggregator(Client, FindingAggregatorArn, QueryMap, HeadersMap, Optio
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns history for a Security Hub finding in the last 90 days.
+%%
+%% The history includes changes made to any fields in the Amazon Web Services
+%% Security Finding Format (ASFF).
+get_finding_history(Client, Input) ->
+    get_finding_history(Client, Input, []).
+get_finding_history(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/findingHistory/get"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns a list of findings that match the specified criteria.
 %%

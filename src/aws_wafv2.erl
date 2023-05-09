@@ -23,12 +23,13 @@
 %% WAF is a web application firewall that lets you monitor the HTTP and HTTPS
 %% requests that are forwarded to an Amazon CloudFront distribution, Amazon
 %% API Gateway REST API, Application Load Balancer, AppSync GraphQL API,
-%% Amazon Cognito user pool, or App Runner service. WAF also lets you control
-%% access to your content, to protect the Amazon Web Services resource that
-%% WAF is monitoring. Based on conditions that you specify, such as the IP
-%% addresses that requests originate from or the values of query strings, the
-%% protected resource responds to requests with either the requested content,
-%% an HTTP 403 status code (Forbidden), or with a custom response.
+%% Amazon Cognito user pool, App Runner service, or Amazon Web Services
+%% Verified Access instance. WAF also lets you control access to your
+%% content, to protect the Amazon Web Services resource that WAF is
+%% monitoring. Based on conditions that you specify, such as the IP addresses
+%% that requests originate from or the values of query strings, the protected
+%% resource responds to requests with either the requested content, an HTTP
+%% 403 status code (Forbidden), or with a custom response.
 %%
 %% This API guide is for developers who need detailed information about WAF
 %% API actions, data types, and errors. For detailed information about WAF
@@ -39,8 +40,9 @@
 %%
 %% <ul> <li> For regional applications, you can use any of the endpoints in
 %% the list. A regional application can be an Application Load Balancer
-%% (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, a Amazon
-%% Cognito user pool, or an App Runner service.
+%% (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon
+%% Cognito user pool, an App Runner service, or an Amazon Web Services
+%% Verified Access instance.
 %%
 %% </li> <li> For Amazon CloudFront applications, you must use the API
 %% endpoint listed for US East (N. Virginia): us-east-1.
@@ -74,6 +76,8 @@
          associate_web_acl/3,
          check_capacity/2,
          check_capacity/3,
+         create_api_key/2,
+         create_api_key/3,
          create_ip_set/2,
          create_ip_set/3,
          create_regex_pattern_set/2,
@@ -102,6 +106,8 @@
          disassociate_web_acl/3,
          generate_mobile_sdk_release_url/2,
          generate_mobile_sdk_release_url/3,
+         get_decrypted_api_key/2,
+         get_decrypted_api_key/3,
          get_ip_set/2,
          get_ip_set/3,
          get_logging_configuration/2,
@@ -124,6 +130,8 @@
          get_web_acl/3,
          get_web_acl_for_resource/2,
          get_web_acl_for_resource/3,
+         list_api_keys/2,
+         list_api_keys/3,
          list_available_managed_rule_group_versions/2,
          list_available_managed_rule_group_versions/3,
          list_available_managed_rule_groups/2,
@@ -177,14 +185,15 @@
 %% the resource.
 %%
 %% A regional application can be an Application Load Balancer (ALB), an
-%% Amazon API Gateway REST API, an AppSync GraphQL API, a Amazon Cognito user
-%% pool, or an App Runner service.
+%% Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon Cognito
+%% user pool, an App Runner service, or an Amazon Web Services Verified
+%% Access instance.
 %%
 %% For Amazon CloudFront, don't use this call. Instead, use your
 %% CloudFront distribution configuration. To associate a web ACL, in the
 %% CloudFront call `UpdateDistribution', set the web ACL ID to the Amazon
 %% Resource Name (ARN) of the web ACL. For information, see
-%% UpdateDistribution.
+%% UpdateDistribution in the Amazon CloudFront Developer Guide.
 %%
 %% When you make changes to web ACLs or web ACL components, like rules and
 %% rule groups, WAF propagates the changes everywhere that the web ACL and
@@ -218,13 +227,31 @@ associate_web_acl(Client, Input, Options)
 %% Simple rules that cost little to run use fewer WCUs than more complex
 %% rules that use more processing power. Rule group capacity is fixed at
 %% creation, which helps users plan their web ACL WCU usage when they use a
-%% rule group. The WCU limit for web ACLs is 1,500.
+%% rule group. For more information, see WAF web ACL capacity units (WCU) in
+%% the WAF Developer Guide.
 check_capacity(Client, Input)
   when is_map(Client), is_map(Input) ->
     check_capacity(Client, Input, []).
 check_capacity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CheckCapacity">>, Input, Options).
+
+%% @doc Creates an API key that contains a set of token domains.
+%%
+%% API keys are required for the integration of the CAPTCHA API in your
+%% JavaScript client applications. The API lets you customize the placement
+%% and characteristics of the CAPTCHA puzzle for your end users. For more
+%% information about the CAPTCHA JavaScript integration, see WAF client
+%% application integration in the WAF Developer Guide.
+%%
+%% You can use a single key for up to 5 domains. After you generate a key,
+%% you can copy it for use in your JavaScript integration.
+create_api_key(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_api_key(Client, Input, []).
+create_api_key(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAPIKey">>, Input, Options).
 
 %% @doc Creates an `IPSet', which you use to identify web requests that
 %% originate from specific IP addresses or ranges of IP addresses.
@@ -274,7 +301,8 @@ create_rule_group(Client, Input, Options)
 %% associate a web ACL with one or more Amazon Web Services resources to
 %% protect. The resources can be an Amazon CloudFront distribution, an Amazon
 %% API Gateway REST API, an Application Load Balancer, an AppSync GraphQL
-%% API, Amazon Cognito user pool, or an App Runner service.
+%% API, an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+%% Services Verified Access instance.
 create_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_web_acl(Client, Input, []).
@@ -350,7 +378,7 @@ delete_rule_group(Client, Input, Options)
 %%
 %% For Amazon CloudFront distributions, use the CloudFront call
 %% `ListDistributionsByWebACLId'. For information, see
-%% ListDistributionsByWebACLId.
+%% ListDistributionsByWebACLId in the Amazon CloudFront API Reference.
 %%
 %% To disassociate a resource from a web ACL, use the following calls:
 %%
@@ -358,7 +386,7 @@ delete_rule_group(Client, Input, Options)
 %%
 %% For Amazon CloudFront distributions, provide an empty web ACL ID in the
 %% CloudFront call `UpdateDistribution'. For information, see
-%% UpdateDistribution.
+%% UpdateDistribution in the Amazon CloudFront API Reference.
 delete_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_web_acl(Client, Input, []).
@@ -380,13 +408,14 @@ describe_managed_rule_group(Client, Input, Options)
 %%
 %% A resource can have at most one web ACL association. A regional
 %% application can be an Application Load Balancer (ALB), an Amazon API
-%% Gateway REST API, an AppSync GraphQL API, a Amazon Cognito user pool, or
-%% an App Runner service.
+%% Gateway REST API, an AppSync GraphQL API, an Amazon Cognito user pool, an
+%% App Runner service, or an Amazon Web Services Verified Access instance.
 %%
 %% For Amazon CloudFront, don't use this call. Instead, use your
 %% CloudFront distribution configuration. To disassociate a web ACL, provide
 %% an empty web ACL ID in the CloudFront call `UpdateDistribution'. For
-%% information, see UpdateDistribution.
+%% information, see UpdateDistribution in the Amazon CloudFront API
+%% Reference.
 disassociate_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     disassociate_web_acl(Client, Input, []).
@@ -407,6 +436,22 @@ generate_mobile_sdk_release_url(Client, Input)
 generate_mobile_sdk_release_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateMobileSdkReleaseUrl">>, Input, Options).
+
+%% @doc Returns your API key in decrypted form.
+%%
+%% Use this to check the token domains that you have defined for the key.
+%%
+%% API keys are required for the integration of the CAPTCHA API in your
+%% JavaScript client applications. The API lets you customize the placement
+%% and characteristics of the CAPTCHA puzzle for your end users. For more
+%% information about the CAPTCHA JavaScript integration, see WAF client
+%% application integration in the WAF Developer Guide.
+get_decrypted_api_key(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_decrypted_api_key(Client, Input, []).
+get_decrypted_api_key(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDecryptedAPIKey">>, Input, Options).
 
 %% @doc Retrieves the specified `IPSet'.
 get_ip_set(Client, Input)
@@ -543,6 +588,21 @@ get_web_acl_for_resource(Client, Input)
 get_web_acl_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetWebACLForResource">>, Input, Options).
+
+%% @doc Retrieves a list of the API keys that you've defined for the
+%% specified scope.
+%%
+%% API keys are required for the integration of the CAPTCHA API in your
+%% JavaScript client applications. The API lets you customize the placement
+%% and characteristics of the CAPTCHA puzzle for your end users. For more
+%% information about the CAPTCHA JavaScript integration, see WAF client
+%% application integration in the WAF Developer Guide.
+list_api_keys(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_api_keys(Client, Input, []).
+list_api_keys(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAPIKeys">>, Input, Options).
 
 %% @doc Returns a list of the available versions for the specified managed
 %% rule group.
@@ -976,7 +1036,8 @@ update_rule_group(Client, Input, Options)
 %% associate a web ACL with one or more Amazon Web Services resources to
 %% protect. The resources can be an Amazon CloudFront distribution, an Amazon
 %% API Gateway REST API, an Application Load Balancer, an AppSync GraphQL
-%% API, Amazon Cognito user pool, or an App Runner service.
+%% API, an Amazon Cognito user pool, an App Runner service, or an Amazon Web
+%% Services Verified Access instance.
 update_web_acl(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_web_acl(Client, Input, []).

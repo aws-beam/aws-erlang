@@ -1009,8 +1009,8 @@ update_query_suggestions_block_list(Client, Input, Options)
 %% Amazon Kendra supports partial updates, so you only need to provide the
 %% fields you want to update.
 %%
-%% If an update is currently processing (i.e. 'happening'), you need
-%% to wait for the update to finish before making another update.
+%% If an update is currently processing, you need to wait for the update to
+%% finish before making another update.
 %%
 %% Updates to query suggestions settings might not take effect right away.
 %% The time for your updated settings to take effect depends on the updates

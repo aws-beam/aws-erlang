@@ -1214,7 +1214,7 @@ update_answer(Client, LensAlias, QuestionId, WorkloadId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates whether the Amazon Web Services account is opted into
-%% organization sharing features.
+%% organization sharing and discovery integration features.
 update_global_settings(Client, Input) ->
     update_global_settings(Client, Input, []).
 update_global_settings(Client, Input0, Options0) ->

@@ -506,7 +506,7 @@ list_themes(Client, AppId, EnvironmentName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Stores the metadata information about a feature on a form or view.
+%% @doc Stores the metadata information about a feature on a form.
 put_metadata_flag(Client, AppId, EnvironmentName, FeatureName, Input) ->
     put_metadata_flag(Client, AppId, EnvironmentName, FeatureName, Input, []).
 put_metadata_flag(Client, AppId, EnvironmentName, FeatureName, Input0, Options0) ->

@@ -1,57 +1,48 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Web Services IoT Core Device Advisor is a cloud-based, fully
-%% managed test capability for validating IoT devices during device software
-%% development.
+%% @doc Use the Amazon OpenSearch Ingestion API to create and manage
+%% ingestion pipelines.
 %%
-%% Device Advisor provides pre-built tests that you can use to validate IoT
-%% devices for reliable and secure connectivity with Amazon Web Services IoT
-%% Core before deploying devices to production. By using Device Advisor, you
-%% can confirm that your devices can connect to Amazon Web Services IoT Core,
-%% follow security best practices and, if applicable, receive software
-%% updates from IoT Device Management. You can also download signed
-%% qualification reports to submit to the Amazon Web Services Partner Network
-%% to get your device qualified for the Amazon Web Services Partner Device
-%% Catalog without the need to send your device in and wait for it to be
-%% tested.
--module(aws_iotdeviceadvisor).
+%% OpenSearch Ingestion is a fully managed data collector that delivers
+%% real-time log and trace data to OpenSearch Service domains. For more
+%% information, see Getting data into your cluster using OpenSearch
+%% Ingestion.
+-module(aws_osis).
 
--export([create_suite_definition/2,
-         create_suite_definition/3,
-         delete_suite_definition/3,
-         delete_suite_definition/4,
-         get_endpoint/1,
-         get_endpoint/3,
-         get_endpoint/4,
-         get_suite_definition/2,
-         get_suite_definition/4,
-         get_suite_definition/5,
-         get_suite_run/3,
-         get_suite_run/5,
-         get_suite_run/6,
-         get_suite_run_report/3,
-         get_suite_run_report/5,
-         get_suite_run_report/6,
-         list_suite_definitions/1,
-         list_suite_definitions/3,
-         list_suite_definitions/4,
-         list_suite_runs/1,
-         list_suite_runs/3,
-         list_suite_runs/4,
+-export([create_pipeline/2,
+         create_pipeline/3,
+         delete_pipeline/3,
+         delete_pipeline/4,
+         get_pipeline/2,
+         get_pipeline/4,
+         get_pipeline/5,
+         get_pipeline_blueprint/2,
+         get_pipeline_blueprint/4,
+         get_pipeline_blueprint/5,
+         get_pipeline_change_progress/2,
+         get_pipeline_change_progress/4,
+         get_pipeline_change_progress/5,
+         list_pipeline_blueprints/2,
+         list_pipeline_blueprints/3,
+         list_pipelines/1,
+         list_pipelines/3,
+         list_pipelines/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
-         start_suite_run/3,
-         start_suite_run/4,
-         stop_suite_run/4,
-         stop_suite_run/5,
+         start_pipeline/3,
+         start_pipeline/4,
+         stop_pipeline/3,
+         stop_pipeline/4,
+         tag_resource/2,
          tag_resource/3,
-         tag_resource/4,
+         untag_resource/2,
          untag_resource/3,
-         untag_resource/4,
-         update_suite_definition/3,
-         update_suite_definition/4]).
+         update_pipeline/3,
+         update_pipeline/4,
+         validate_pipeline/2,
+         validate_pipeline/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -59,14 +50,14 @@
 %% API
 %%====================================================================
 
-%% @doc Creates a Device Advisor test suite.
+%% @doc Creates an OpenSearch Ingestion pipeline.
 %%
-%% Requires permission to access the CreateSuiteDefinition action.
-create_suite_definition(Client, Input) ->
-    create_suite_definition(Client, Input, []).
-create_suite_definition(Client, Input0, Options0) ->
+%% For more information, see Creating Amazon OpenSearch Ingestion pipelines.
+create_pipeline(Client, Input) ->
+    create_pipeline(Client, Input, []).
+create_pipeline(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/suiteDefinitions"],
+    Path = ["/2022-01-01/osis/createPipeline"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -84,14 +75,14 @@ create_suite_definition(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a Device Advisor test suite.
+%% @doc Deletes an OpenSearch Ingestion pipeline.
 %%
-%% Requires permission to access the DeleteSuiteDefinition action.
-delete_suite_definition(Client, SuiteDefinitionId, Input) ->
-    delete_suite_definition(Client, SuiteDefinitionId, Input, []).
-delete_suite_definition(Client, SuiteDefinitionId, Input0, Options0) ->
+%% For more information, see Deleting Amazon OpenSearch Ingestion pipelines.
+delete_pipeline(Client, PipelineName, Input) ->
+    delete_pipeline(Client, PipelineName, Input, []).
+delete_pipeline(Client, PipelineName, Input0, Options0) ->
     Method = delete,
-    Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), ""],
+    Path = ["/2022-01-01/osis/deletePipeline/", aws_util:encode_uri(PipelineName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -109,79 +100,18 @@ delete_suite_definition(Client, SuiteDefinitionId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets information about an Device Advisor endpoint.
-get_endpoint(Client)
+%% @doc Retrieves information about an OpenSearch Ingestion pipeline.
+get_pipeline(Client, PipelineName)
   when is_map(Client) ->
-    get_endpoint(Client, #{}, #{}).
+    get_pipeline(Client, PipelineName, #{}, #{}).
 
-get_endpoint(Client, QueryMap, HeadersMap)
+get_pipeline(Client, PipelineName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_endpoint(Client, QueryMap, HeadersMap, []).
+    get_pipeline(Client, PipelineName, QueryMap, HeadersMap, []).
 
-get_endpoint(Client, QueryMap, HeadersMap, Options0)
+get_pipeline(Client, PipelineName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/endpoint"],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
-
-    Headers = [],
-
-    Query0_ =
-      [
-        {<<"authenticationMethod">>, maps:get(<<"authenticationMethod">>, QueryMap, undefined)},
-        {<<"certificateArn">>, maps:get(<<"certificateArn">>, QueryMap, undefined)},
-        {<<"deviceRoleArn">>, maps:get(<<"deviceRoleArn">>, QueryMap, undefined)},
-        {<<"thingArn">>, maps:get(<<"thingArn">>, QueryMap, undefined)}
-      ],
-    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
-%% @doc Gets information about a Device Advisor test suite.
-%%
-%% Requires permission to access the GetSuiteDefinition action.
-get_suite_definition(Client, SuiteDefinitionId)
-  when is_map(Client) ->
-    get_suite_definition(Client, SuiteDefinitionId, #{}, #{}).
-
-get_suite_definition(Client, SuiteDefinitionId, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_suite_definition(Client, SuiteDefinitionId, QueryMap, HeadersMap, []).
-
-get_suite_definition(Client, SuiteDefinitionId, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
-
-    Headers = [],
-
-    Query0_ =
-      [
-        {<<"suiteDefinitionVersion">>, maps:get(<<"suiteDefinitionVersion">>, QueryMap, undefined)}
-      ],
-    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
-%% @doc Gets information about a Device Advisor test suite run.
-%%
-%% Requires permission to access the GetSuiteRun action.
-get_suite_run(Client, SuiteDefinitionId, SuiteRunId)
-  when is_map(Client) ->
-    get_suite_run(Client, SuiteDefinitionId, SuiteRunId, #{}, #{}).
-
-get_suite_run(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_suite_run(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, []).
-
-get_suite_run(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), "/suiteRuns/", aws_util:encode_uri(SuiteRunId), ""],
+    Path = ["/2022-01-01/osis/getPipeline/", aws_util:encode_uri(PipelineName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -193,21 +123,23 @@ get_suite_run(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets a report download link for a successful Device Advisor
-%% qualifying test suite run.
+%% @doc Retrieves information about a specific blueprint for OpenSearch
+%% Ingestion.
 %%
-%% Requires permission to access the GetSuiteRunReport action.
-get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId)
+%% Blueprints are templates for the configuration needed for a
+%% `CreatePipeline' request. For more information, see Using blueprints
+%% to create a pipeline.
+get_pipeline_blueprint(Client, BlueprintName)
   when is_map(Client) ->
-    get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, #{}, #{}).
+    get_pipeline_blueprint(Client, BlueprintName, #{}, #{}).
 
-get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap)
+get_pipeline_blueprint(Client, BlueprintName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, []).
+    get_pipeline_blueprint(Client, BlueprintName, QueryMap, HeadersMap, []).
 
-get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap, Options0)
+get_pipeline_blueprint(Client, BlueprintName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), "/suiteRuns/", aws_util:encode_uri(SuiteRunId), "/report"],
+    Path = ["/2022-01-01/osis/getPipelineBlueprint/", aws_util:encode_uri(BlueprintName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -219,20 +151,75 @@ get_suite_run_report(Client, SuiteDefinitionId, SuiteRunId, QueryMap, HeadersMap
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the Device Advisor test suites you have created.
+%% @doc Returns progress information for the current change happening on an
+%% OpenSearch Ingestion pipeline.
 %%
-%% Requires permission to access the ListSuiteDefinitions action.
-list_suite_definitions(Client)
+%% Currently, this operation only returns information when a pipeline is
+%% being created.
+%%
+%% For more information, see Tracking the status of pipeline creation.
+get_pipeline_change_progress(Client, PipelineName)
   when is_map(Client) ->
-    list_suite_definitions(Client, #{}, #{}).
+    get_pipeline_change_progress(Client, PipelineName, #{}, #{}).
 
-list_suite_definitions(Client, QueryMap, HeadersMap)
+get_pipeline_change_progress(Client, PipelineName, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_suite_definitions(Client, QueryMap, HeadersMap, []).
+    get_pipeline_change_progress(Client, PipelineName, QueryMap, HeadersMap, []).
 
-list_suite_definitions(Client, QueryMap, HeadersMap, Options0)
+get_pipeline_change_progress(Client, PipelineName, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/suiteDefinitions"],
+    Path = ["/2022-01-01/osis/getPipelineChangeProgress/", aws_util:encode_uri(PipelineName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of all available blueprints for Data Prepper.
+%%
+%% For more information, see Using blueprints to create a pipeline.
+list_pipeline_blueprints(Client, Input) ->
+    list_pipeline_blueprints(Client, Input, []).
+list_pipeline_blueprints(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2022-01-01/osis/listPipelineBlueprints"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all OpenSearch Ingestion pipelines in the current Amazon Web
+%% Services account and Region.
+%%
+%% For more information, see Viewing Amazon OpenSearch Ingestion pipelines.
+list_pipelines(Client)
+  when is_map(Client) ->
+    list_pipelines(Client, #{}, #{}).
+
+list_pipelines(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_pipelines(Client, QueryMap, HeadersMap, []).
+
+list_pipelines(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2022-01-01/osis/listPipelines"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -249,23 +236,21 @@ list_suite_definitions(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists runs of the specified Device Advisor test suite.
+%% @doc Lists all resource tags associated with an OpenSearch Ingestion
+%% pipeline.
 %%
-%% You can list all runs of the test suite, or the runs of a specific version
-%% of the test suite.
-%%
-%% Requires permission to access the ListSuiteRuns action.
-list_suite_runs(Client)
+%% For more information, see Tagging Amazon OpenSearch Ingestion pipelines.
+list_tags_for_resource(Client, Arn)
   when is_map(Client) ->
-    list_suite_runs(Client, #{}, #{}).
+    list_tags_for_resource(Client, Arn, #{}, #{}).
 
-list_suite_runs(Client, QueryMap, HeadersMap)
+list_tags_for_resource(Client, Arn, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_suite_runs(Client, QueryMap, HeadersMap, []).
+    list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, []).
 
-list_suite_runs(Client, QueryMap, HeadersMap, Options0)
+list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/suiteRuns"],
+    Path = ["/2022-01-01/osis/listTagsForResource/"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -275,48 +260,20 @@ list_suite_runs(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
-        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
-        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
-        {<<"suiteDefinitionId">>, maps:get(<<"suiteDefinitionId">>, QueryMap, undefined)},
-        {<<"suiteDefinitionVersion">>, maps:get(<<"suiteDefinitionVersion">>, QueryMap, undefined)}
+        {<<"arn">>, Arn}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the tags attached to an IoT Device Advisor resource.
+%% @doc Starts an OpenSearch Ingestion pipeline.
 %%
-%% Requires permission to access the ListTagsForResource action.
-list_tags_for_resource(Client, ResourceArn)
-  when is_map(Client) ->
-    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
-
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
-
-list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
-
-    Headers = [],
-
-    Query_ = [],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
-%% @doc Starts a Device Advisor test suite run.
-%%
-%% Requires permission to access the StartSuiteRun action.
-start_suite_run(Client, SuiteDefinitionId, Input) ->
-    start_suite_run(Client, SuiteDefinitionId, Input, []).
-start_suite_run(Client, SuiteDefinitionId, Input0, Options0) ->
-    Method = post,
-    Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), "/suiteRuns"],
+%% For more information, see Starting an OpenSearch Ingestion pipeline.
+start_pipeline(Client, PipelineName, Input) ->
+    start_pipeline(Client, PipelineName, Input, []).
+start_pipeline(Client, PipelineName, Input0, Options0) ->
+    Method = put,
+    Path = ["/2022-01-01/osis/startPipeline/", aws_util:encode_uri(PipelineName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -334,14 +291,14 @@ start_suite_run(Client, SuiteDefinitionId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Stops a Device Advisor test suite run that is currently running.
+%% @doc Stops an OpenSearch Ingestion pipeline.
 %%
-%% Requires permission to access the StopSuiteRun action.
-stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input) ->
-    stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input, []).
-stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input0, Options0) ->
-    Method = post,
-    Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), "/suiteRuns/", aws_util:encode_uri(SuiteRunId), "/stop"],
+%% For more information, see Stopping an OpenSearch Ingestion pipeline.
+stop_pipeline(Client, PipelineName, Input) ->
+    stop_pipeline(Client, PipelineName, Input, []).
+stop_pipeline(Client, PipelineName, Input0, Options0) ->
+    Method = put,
+    Path = ["/2022-01-01/osis/stopPipeline/", aws_util:encode_uri(PipelineName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -359,39 +316,14 @@ stop_suite_run(Client, SuiteDefinitionId, SuiteRunId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds to and modifies existing tags of an IoT Device Advisor resource.
+%% @doc Tags an OpenSearch Ingestion pipeline.
 %%
-%% Requires permission to access the TagResource action.
-tag_resource(Client, ResourceArn, Input) ->
-    tag_resource(Client, ResourceArn, Input, []).
-tag_resource(Client, ResourceArn, Input0, Options0) ->
+%% For more information, see Tagging Amazon OpenSearch Ingestion pipelines.
+tag_resource(Client, Input) ->
+    tag_resource(Client, Input, []).
+tag_resource(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
-    SuccessStatusCode = undefined,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
-               {append_sha256_content_hash, false}
-               | Options0],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Removes tags from an IoT Device Advisor resource.
-%%
-%% Requires permission to access the UntagResource action.
-untag_resource(Client, ResourceArn, Input) ->
-    untag_resource(Client, ResourceArn, Input, []).
-untag_resource(Client, ResourceArn, Input0, Options0) ->
-    Method = delete,
-    Path = ["/tags/", aws_util:encode_uri(ResourceArn), ""],
+    Path = ["/2022-01-01/osis/tagResource/"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -405,19 +337,71 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     Input2 = Input1,
 
     QueryMapping = [
-                     {<<"tagKeys">>, <<"tagKeys">>}
+                     {<<"arn">>, <<"Arn">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a Device Advisor test suite.
+%% @doc Removes one or more tags from an OpenSearch Ingestion pipeline.
 %%
-%% Requires permission to access the UpdateSuiteDefinition action.
-update_suite_definition(Client, SuiteDefinitionId, Input) ->
-    update_suite_definition(Client, SuiteDefinitionId, Input, []).
-update_suite_definition(Client, SuiteDefinitionId, Input0, Options0) ->
-    Method = patch,
-    Path = ["/suiteDefinitions/", aws_util:encode_uri(SuiteDefinitionId), ""],
+%% For more information, see Tagging Amazon OpenSearch Ingestion pipelines.
+untag_resource(Client, Input) ->
+    untag_resource(Client, Input, []).
+untag_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2022-01-01/osis/untagResource/"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"arn">>, <<"Arn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an OpenSearch Ingestion pipeline.
+%%
+%% For more information, see Updating Amazon OpenSearch Ingestion pipelines.
+update_pipeline(Client, PipelineName, Input) ->
+    update_pipeline(Client, PipelineName, Input, []).
+update_pipeline(Client, PipelineName, Input0, Options0) ->
+    Method = put,
+    Path = ["/2022-01-01/osis/updatePipeline/", aws_util:encode_uri(PipelineName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Checks whether an OpenSearch Ingestion pipeline configuration is
+%% valid prior to creation.
+%%
+%% For more information, see Creating Amazon OpenSearch Ingestion pipelines.
+validate_pipeline(Client, Input) ->
+    validate_pipeline(Client, Input, []).
+validate_pipeline(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2022-01-01/osis/validatePipeline"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -452,8 +436,8 @@ request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode
   aws_request:request(RequestFun, Options).
 
 do_request(Client, Method, Path, Query, Headers0, Input, Options, SuccessStatusCode) ->
-    Client1 = Client#{service => <<"iotdeviceadvisor">>},
-    Host = build_host(<<"api.iotdeviceadvisor">>, Client1),
+    Client1 = Client#{service => <<"osis">>},
+    Host = build_host(<<"osis">>, Client1),
     URL0 = build_url(Host, Path, Client1),
     URL = aws_request:add_query(URL0, Query),
     AdditionalHeaders1 = [ {<<"Host">>, Host}

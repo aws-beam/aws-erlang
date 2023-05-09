@@ -54,6 +54,8 @@
          describe_virtual_cluster/2,
          describe_virtual_cluster/4,
          describe_virtual_cluster/5,
+         get_managed_endpoint_session_credentials/4,
+         get_managed_endpoint_session_credentials/5,
          list_job_runs/2,
          list_job_runs/4,
          list_job_runs/5,
@@ -388,6 +390,29 @@ describe_virtual_cluster(Client, Id, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Generate a session token to connect to a managed endpoint.
+get_managed_endpoint_session_credentials(Client, EndpointIdentifier, VirtualClusterIdentifier, Input) ->
+    get_managed_endpoint_session_credentials(Client, EndpointIdentifier, VirtualClusterIdentifier, Input, []).
+get_managed_endpoint_session_credentials(Client, EndpointIdentifier, VirtualClusterIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/virtualclusters/", aws_util:encode_uri(VirtualClusterIdentifier), "/endpoints/", aws_util:encode_uri(EndpointIdentifier), "/credentials"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists job runs based on a set of parameters.
 %%

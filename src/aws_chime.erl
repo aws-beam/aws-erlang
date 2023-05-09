@@ -1,20 +1,17 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc The Amazon Chime API (application programming interface) is designed
-%% for developers to perform key tasks, such as creating and managing Amazon
-%% Chime accounts, users, and Voice Connectors.
+%% @doc The Amazon Chime application programming interface (API) is designed
+%% so administrators can perform key tasks, such as creating and managing
+%% Amazon Chime accounts, users, and Voice Connectors.
 %%
 %% This guide provides detailed information about the Amazon Chime API,
-%% including operations, types, inputs and outputs, and error codes. It also
-%% includes API actions for use with the Amazon Chime SDK, which developers
-%% use to build their own communication applications. For more information
-%% about the Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon
-%% Chime Developer Guide.
+%% including operations, types, inputs and outputs, and error codes.
 %%
 %% You can use an AWS SDK, the AWS Command Line Interface (AWS CLI), or the
-%% REST API to make API calls. We recommend using an AWS SDK or the AWS CLI.
-%% Each API operation includes links to information about using it with a
+%% REST API to make API calls for Amazon Chime. We recommend using an AWS SDK
+%% or the AWS CLI. The page for each API action contains a See Also section
+%% that includes links to information about using the action with a
 %% language-specific AWS SDK or the AWS CLI.
 %%
 %% <dl> <dt>Using an AWS SDK</dt> <dd> You don't need to write code to
@@ -30,7 +27,7 @@
 %%
 %% </dd> <dt>Using REST APIs</dt> <dd> If you use REST to make API calls, you
 %% must authenticate your request by providing a signature. Amazon Chime
-%% supports signature version 4. For more information, see Signature Version
+%% supports Signature Version 4. For more information, see Signature Version
 %% 4 Signing Process in the Amazon Web Services General Reference.
 %%
 %% When making REST API calls, use the service name `chime' and REST
@@ -601,7 +598,7 @@ associate_signin_delegate_groups_with_account(Client, AccountId, Input0, Options
 %% meeting.
 %%
 %% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK in the Amazon Chime Developer Guide.
+%% Chime SDK in the Amazon Chime SDK Developer Guide.
 batch_create_attendee(Client, MeetingId, Input) ->
     batch_create_attendee(Client, MeetingId, Input, []).
 batch_create_attendee(Client, MeetingId, Input0, Options0) ->
@@ -957,7 +954,7 @@ create_app_instance_user(Client, Input0, Options0) ->
 %% @doc Creates a new attendee for an active Amazon Chime SDK meeting.
 %%
 %% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK in the Amazon Chime Developer Guide.
+%% Chime SDK in the Amazon Chime SDK Developer Guide.
 create_attendee(Client, MeetingId, Input) ->
     create_attendee(Client, MeetingId, Input, []).
 create_attendee(Client, MeetingId, Input0, Options0) ->
@@ -1189,9 +1186,9 @@ create_media_capture_pipeline(Client, Input0, Options0) ->
 %% with no initial attendees.
 %%
 %% For more information about specifying media Regions, see Amazon Chime SDK
-%% Media Regions in the Amazon Chime Developer Guide . For more information
-%% about the Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon
-%% Chime Developer Guide .
+%% Media Regions in the Amazon Chime SDK Developer Guide . For more
+%% information about the Amazon Chime SDK, see Using the Amazon Chime SDK in
+%% the Amazon Chime SDK Developer Guide .
 create_meeting(Client, Input) ->
     create_meeting(Client, Input, []).
 create_meeting(Client, Input0, Options0) ->
@@ -1249,9 +1246,9 @@ create_meeting_dial_out(Client, MeetingId, Input0, Options0) ->
 %% with attendees.
 %%
 %% For more information about specifying media Regions, see Amazon Chime SDK
-%% Media Regions in the Amazon Chime Developer Guide . For more information
-%% about the Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon
-%% Chime Developer Guide .
+%% Media Regions in the Amazon Chime SDK Developer Guide . For more
+%% information about the Amazon Chime SDK, see Using the Amazon Chime SDK in
+%% the Amazon Chime SDK Developer Guide .
 create_meeting_with_attendees(Client, Input) ->
     create_meeting_with_attendees(Client, Input, []).
 create_meeting_with_attendees(Client, Input0, Options0) ->
@@ -1670,7 +1667,7 @@ delete_app_instance_user(Client, AppInstanceUserArn, Input0, Options0) ->
 %%
 %% Attendees are automatically deleted when a Amazon Chime SDK meeting is
 %% deleted. For more information about the Amazon Chime SDK, see Using the
-%% Amazon Chime SDK in the Amazon Chime Developer Guide.
+%% Amazon Chime SDK in the Amazon Chime SDK Developer Guide.
 delete_attendee(Client, AttendeeId, MeetingId, Input) ->
     delete_attendee(Client, AttendeeId, MeetingId, Input, []).
 delete_attendee(Client, AttendeeId, MeetingId, Input0, Options0) ->
@@ -1896,7 +1893,7 @@ delete_media_capture_pipeline(Client, MediaPipelineId, Input0, Options0) ->
 %%
 %% The operation deletes all attendees, disconnects all clients, and prevents
 %% new clients from joining the meeting. For more information about the
-%% Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon Chime
+%% Amazon Chime SDK, see Using the Amazon Chime SDK in the Amazon Chime SDK
 %% Developer Guide.
 delete_meeting(Client, MeetingId, Input) ->
     delete_meeting(Client, MeetingId, Input, []).
@@ -2733,7 +2730,7 @@ get_app_instance_streaming_configurations(Client, AppInstanceArn, QueryMap, Head
 %% and attendee ID.
 %%
 %% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK in the Amazon Chime Developer Guide .
+%% Chime SDK in the Amazon Chime SDK Developer Guide .
 get_attendee(Client, AttendeeId, MeetingId)
   when is_map(Client) ->
     get_attendee(Client, AttendeeId, MeetingId, #{}, #{}).
@@ -2887,7 +2884,7 @@ get_media_capture_pipeline(Client, MediaPipelineId, QueryMap, HeadersMap, Option
 %% ID.
 %%
 %% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK in the Amazon Chime Developer Guide .
+%% Chime SDK in the Amazon Chime SDK Developer Guide .
 get_meeting(Client, MeetingId)
   when is_map(Client) ->
     get_meeting(Client, MeetingId, #{}, #{}).
@@ -3601,7 +3598,7 @@ list_attendee_tags(Client, AttendeeId, MeetingId, QueryMap, HeadersMap, Options0
 %% @doc Lists the attendees for the specified Amazon Chime SDK meeting.
 %%
 %% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK in the Amazon Chime Developer Guide.
+%% Chime SDK in the Amazon Chime SDK Developer Guide.
 list_attendees(Client, MeetingId)
   when is_map(Client) ->
     list_attendees(Client, MeetingId, #{}, #{}).
@@ -3994,7 +3991,7 @@ list_meeting_tags(Client, MeetingId, QueryMap, HeadersMap, Options0)
 %% @doc Lists up to 100 active Amazon Chime SDK meetings.
 %%
 %% For more information about the Amazon Chime SDK, see Using the Amazon
-%% Chime SDK in the Amazon Chime Developer Guide.
+%% Chime SDK in the Amazon Chime SDK Developer Guide.
 list_meetings(Client)
   when is_map(Client) ->
     list_meetings(Client, #{}, #{}).
@@ -4971,6 +4968,20 @@ send_channel_message(Client, ChannelArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts transcription for the specified `meetingId'.
+%%
+%% For more information, refer to Using Amazon Chime SDK live transcription
+%% in the Amazon Chime SDK Developer Guide.
+%%
+%% If you specify an invalid configuration, a `TranscriptFailed' event
+%% will be sent with the contents of the `BadRequestException' generated
+%% by Amazon Transcribe. For more information on each parameter and which
+%% combinations are valid, refer to the StartStreamTranscription API in the
+%% Amazon Transcribe Developer Guide.
+%%
+%% Amazon Chime SDK live transcription is powered by Amazon Transcribe. Use
+%% of Amazon Transcribe is subject to the AWS Service Terms, including the
+%% terms specific to the AWS Machine Learning and Artificial Intelligence
+%% Services.
 start_meeting_transcription(Client, MeetingId, Input) ->
     start_meeting_transcription(Client, MeetingId, Input, []).
 start_meeting_transcription(Client, MeetingId, Input0, Options0) ->

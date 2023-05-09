@@ -170,6 +170,15 @@
          get_journey_execution_metrics/3,
          get_journey_execution_metrics/5,
          get_journey_execution_metrics/6,
+         get_journey_run_execution_activity_metrics/5,
+         get_journey_run_execution_activity_metrics/7,
+         get_journey_run_execution_activity_metrics/8,
+         get_journey_run_execution_metrics/4,
+         get_journey_run_execution_metrics/6,
+         get_journey_run_execution_metrics/7,
+         get_journey_runs/3,
+         get_journey_runs/5,
+         get_journey_runs/6,
          get_push_template/2,
          get_push_template/4,
          get_push_template/5,
@@ -1961,6 +1970,92 @@ get_journey_execution_metrics(Client, ApplicationId, JourneyId, QueryMap, Header
       [
         {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
         {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves (queries) pre-aggregated data for a standard run execution
+%% metric that applies to a journey activity.
+get_journey_run_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, RunId)
+  when is_map(Client) ->
+    get_journey_run_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, RunId, #{}, #{}).
+
+get_journey_run_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, RunId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_journey_run_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, RunId, QueryMap, HeadersMap, []).
+
+get_journey_run_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, RunId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), "/runs/", aws_util:encode_uri(RunId), "/activities/", aws_util:encode_uri(JourneyActivityId), "/execution-metrics"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves (queries) pre-aggregated data for a standard run execution
+%% metric that applies to a journey.
+get_journey_run_execution_metrics(Client, ApplicationId, JourneyId, RunId)
+  when is_map(Client) ->
+    get_journey_run_execution_metrics(Client, ApplicationId, JourneyId, RunId, #{}, #{}).
+
+get_journey_run_execution_metrics(Client, ApplicationId, JourneyId, RunId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_journey_run_execution_metrics(Client, ApplicationId, JourneyId, RunId, QueryMap, HeadersMap, []).
+
+get_journey_run_execution_metrics(Client, ApplicationId, JourneyId, RunId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), "/runs/", aws_util:encode_uri(RunId), "/execution-metrics"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Provides information about the runs of a journey.
+get_journey_runs(Client, ApplicationId, JourneyId)
+  when is_map(Client) ->
+    get_journey_runs(Client, ApplicationId, JourneyId, #{}, #{}).
+
+get_journey_runs(Client, ApplicationId, JourneyId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_journey_runs(Client, ApplicationId, JourneyId, QueryMap, HeadersMap, []).
+
+get_journey_runs(Client, ApplicationId, JourneyId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/apps/", aws_util:encode_uri(ApplicationId), "/journeys/", aws_util:encode_uri(JourneyId), "/runs"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"page-size">>, maps:get(<<"page-size">>, QueryMap, undefined)},
+        {<<"token">>, maps:get(<<"token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

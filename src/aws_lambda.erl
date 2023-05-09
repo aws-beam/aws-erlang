@@ -161,6 +161,8 @@
          invoke/4,
          invoke_async/3,
          invoke_async/4,
+         invoke_with_response_stream/3,
+         invoke_with_response_stream/4,
          list_aliases/2,
          list_aliases/4,
          list_aliases/5,
@@ -394,6 +396,8 @@ create_code_signing_config(Client, Input0, Options0) ->
 %%
 %% </li> <li> Apache Kafka
 %%
+%% </li> <li> Amazon DocumentDB
+%%
 %% </li> </ul> The following error handling options are available only for
 %% stream sources (DynamoDB and Kinesis):
 %%
@@ -428,6 +432,8 @@ create_code_signing_config(Client, Input0, Options0) ->
 %% </li> <li> Amazon MSK
 %%
 %% </li> <li> Apache Kafka
+%%
+%% </li> <li> Amazon DocumentDB
 %%
 %% </li> </ul>
 create_event_source_mapping(Client, Input) ->
@@ -1372,6 +1378,59 @@ invoke_async(Client, FunctionName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Configure your Lambda functions to stream response payloads back to
+%% clients.
+%%
+%% For more information, see Configuring a Lambda function to stream
+%% responses.
+%%
+%% This operation requires permission for the lambda:InvokeFunction action.
+%% For details on how to set up permissions for cross-account invocations,
+%% see Granting function access to other accounts.
+invoke_with_response_stream(Client, FunctionName, Input) ->
+    invoke_with_response_stream(Client, FunctionName, Input, []).
+invoke_with_response_stream(Client, FunctionName, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-11-15/functions/", aws_util:encode_uri(FunctionName), "/response-streaming-invocations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    HeadersMapping = [
+                       {<<"X-Amz-Client-Context">>, <<"ClientContext">>},
+                       {<<"X-Amz-Invocation-Type">>, <<"InvocationType">>},
+                       {<<"X-Amz-Log-Type">>, <<"LogType">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"Qualifier">>, <<"Qualifier">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"X-Amz-Executed-Version">>, <<"ExecutedVersion">>},
+            {<<"Content-Type">>, <<"ResponseStreamContentType">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
 %% @doc Returns a list of aliases for a Lambda function.
 list_aliases(Client, FunctionName)
   when is_map(Client) ->
@@ -2146,6 +2205,8 @@ update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
 %%
 %% </li> <li> Apache Kafka
 %%
+%% </li> <li> Amazon DocumentDB
+%%
 %% </li> </ul> The following error handling options are available only for
 %% stream sources (DynamoDB and Kinesis):
 %%
@@ -2180,6 +2241,8 @@ update_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
 %% </li> <li> Amazon MSK
 %%
 %% </li> <li> Apache Kafka
+%%
+%% </li> <li> Amazon DocumentDB
 %%
 %% </li> </ul>
 update_event_source_mapping(Client, UUID, Input) ->

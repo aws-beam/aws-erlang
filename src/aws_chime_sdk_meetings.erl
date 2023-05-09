@@ -103,7 +103,7 @@ batch_create_attendee(Client, MeetingId, Input0, Options0) ->
 %%
 %% </li> <li> When you change a `video' or `content' capability from
 %% `None' or `Receive' to `Send' or `SendReceive' , and if
-%% the attendee turned on their video or content streams, remote attendess
+%% the attendee turned on their video or content streams, remote attendees
 %% can receive those streams, but only after media renegotiation between the
 %% client and the Amazon Chime back-end server.
 %%
@@ -387,6 +387,12 @@ list_tags_for_resource(Client, ResourceARN, QueryMap, HeadersMap, Options0)
 %% For more information, refer to Using Amazon Chime SDK live transcription
 %% in the Amazon Chime SDK Developer Guide.
 %%
+%% If you specify an invalid configuration, a `TranscriptFailed' event
+%% will be sent with the contents of the `BadRequestException' generated
+%% by Amazon Transcribe. For more information on each parameter and which
+%% combinations are valid, refer to the StartStreamTranscription API in the
+%% Amazon Transcribe Developer Guide.
+%%
 %% Amazon Chime SDK live transcription is powered by Amazon Transcribe. Use
 %% of Amazon Transcribe is subject to the AWS Service Terms, including the
 %% terms specific to the AWS Machine Learning and Artificial Intelligence
@@ -514,7 +520,7 @@ untag_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc The capabilties that you want to update.
+%% @doc The capabilities that you want to update.
 %%
 %% You use the capabilities with a set of values that control what the
 %% capabilities can do, such as `SendReceive' data. For more information
@@ -537,7 +543,7 @@ untag_resource(Client, Input0, Options0) ->
 %%
 %% </li> <li> When you change a `video' or `content' capability from
 %% `None' or `Receive' to `Send' or `SendReceive' , and if
-%% the attendee turned on their video or content streams, remote attendess
+%% the attendee turned on their video or content streams, remote attendees
 %% can receive those streams, but only after media renegotiation between the
 %% client and the Amazon Chime back-end server.
 %%

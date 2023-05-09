@@ -137,6 +137,7 @@ invoke_endpoint_async(Client, EndpointName, Input0, Options0) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
+            {<<"X-Amzn-SageMaker-FailureLocation">>, <<"FailureLocation">>},
             {<<"X-Amzn-SageMaker-OutputLocation">>, <<"OutputLocation">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->

@@ -4,7 +4,11 @@
 %% @doc API for AWS Elemental MediaConnect
 -module(aws_mediaconnect).
 
--export([add_flow_media_streams/3,
+-export([add_bridge_outputs/3,
+         add_bridge_outputs/4,
+         add_bridge_sources/3,
+         add_bridge_sources/4,
+         add_flow_media_streams/3,
          add_flow_media_streams/4,
          add_flow_outputs/3,
          add_flow_outputs/4,
@@ -12,13 +16,32 @@
          add_flow_sources/4,
          add_flow_vpc_interfaces/3,
          add_flow_vpc_interfaces/4,
+         create_bridge/2,
+         create_bridge/3,
          create_flow/2,
          create_flow/3,
+         create_gateway/2,
+         create_gateway/3,
+         delete_bridge/3,
+         delete_bridge/4,
          delete_flow/3,
          delete_flow/4,
+         delete_gateway/3,
+         delete_gateway/4,
+         deregister_gateway_instance/3,
+         deregister_gateway_instance/4,
+         describe_bridge/2,
+         describe_bridge/4,
+         describe_bridge/5,
          describe_flow/2,
          describe_flow/4,
          describe_flow/5,
+         describe_gateway/2,
+         describe_gateway/4,
+         describe_gateway/5,
+         describe_gateway_instance/2,
+         describe_gateway_instance/4,
+         describe_gateway_instance/5,
          describe_offering/2,
          describe_offering/4,
          describe_offering/5,
@@ -27,12 +50,21 @@
          describe_reservation/5,
          grant_flow_entitlements/3,
          grant_flow_entitlements/4,
+         list_bridges/1,
+         list_bridges/3,
+         list_bridges/4,
          list_entitlements/1,
          list_entitlements/3,
          list_entitlements/4,
          list_flows/1,
          list_flows/3,
          list_flows/4,
+         list_gateway_instances/1,
+         list_gateway_instances/3,
+         list_gateway_instances/4,
+         list_gateways/1,
+         list_gateways/3,
+         list_gateways/4,
          list_offerings/1,
          list_offerings/3,
          list_offerings/4,
@@ -44,6 +76,10 @@
          list_tags_for_resource/5,
          purchase_offering/3,
          purchase_offering/4,
+         remove_bridge_output/4,
+         remove_bridge_output/5,
+         remove_bridge_source/4,
+         remove_bridge_source/5,
          remove_flow_media_stream/4,
          remove_flow_media_stream/5,
          remove_flow_output/4,
@@ -62,6 +98,14 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_bridge/3,
+         update_bridge/4,
+         update_bridge_output/4,
+         update_bridge_output/5,
+         update_bridge_source/4,
+         update_bridge_source/5,
+         update_bridge_state/3,
+         update_bridge_state/4,
          update_flow/3,
          update_flow/4,
          update_flow_entitlement/4,
@@ -71,13 +115,61 @@
          update_flow_output/4,
          update_flow_output/5,
          update_flow_source/4,
-         update_flow_source/5]).
+         update_flow_source/5,
+         update_gateway_instance/3,
+         update_gateway_instance/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Adds outputs to an existing bridge.
+add_bridge_outputs(Client, BridgeArn, Input) ->
+    add_bridge_outputs(Client, BridgeArn, Input, []).
+add_bridge_outputs(Client, BridgeArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/bridges/", aws_util:encode_uri(BridgeArn), "/outputs"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds sources to an existing bridge.
+add_bridge_sources(Client, BridgeArn, Input) ->
+    add_bridge_sources(Client, BridgeArn, Input, []).
+add_bridge_sources(Client, BridgeArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/bridges/", aws_util:encode_uri(BridgeArn), "/sources"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Adds media streams to an existing flow.
 %%
@@ -176,6 +268,31 @@ add_flow_vpc_interfaces(Client, FlowArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new bridge.
+%%
+%% The request must include one source.
+create_bridge(Client, Input) ->
+    create_bridge(Client, Input, []).
+create_bridge(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/bridges"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a new flow.
 %%
 %% The request must include one source. The request optionally can include
@@ -186,6 +303,56 @@ create_flow(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/flows"],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new gateway.
+%%
+%% The request must include at least one network (up to 4).
+create_gateway(Client, Input) ->
+    create_gateway(Client, Input, []).
+create_gateway(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/gateways"],
+    SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a bridge.
+%%
+%% Before you can delete a bridge, you must stop the bridge.
+delete_bridge(Client, BridgeArn, Input) ->
+    delete_bridge(Client, BridgeArn, Input, []).
+delete_bridge(Client, BridgeArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/bridges/", aws_util:encode_uri(BridgeArn), ""],
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
                {append_sha256_content_hash, false}
@@ -227,6 +394,83 @@ delete_flow(Client, FlowArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a gateway.
+%%
+%% Before you can delete a gateway, you must deregister its instances and
+%% delete its bridges.
+delete_gateway(Client, GatewayArn, Input) ->
+    delete_gateway(Client, GatewayArn, Input, []).
+delete_gateway(Client, GatewayArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/gateways/", aws_util:encode_uri(GatewayArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deregisters an instance.
+%%
+%% Before you deregister an instance, all bridges running on the instance
+%% must be stopped. If you want to deregister an instance without stopping
+%% the bridges, you must use the --force option.
+deregister_gateway_instance(Client, GatewayInstanceArn, Input) ->
+    deregister_gateway_instance(Client, GatewayInstanceArn, Input, []).
+deregister_gateway_instance(Client, GatewayInstanceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/gateway-instances/", aws_util:encode_uri(GatewayInstanceArn), ""],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"force">>, <<"Force">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Displays the details of a bridge.
+describe_bridge(Client, BridgeArn)
+  when is_map(Client) ->
+    describe_bridge(Client, BridgeArn, #{}, #{}).
+
+describe_bridge(Client, BridgeArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_bridge(Client, BridgeArn, QueryMap, HeadersMap, []).
+
+describe_bridge(Client, BridgeArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/bridges/", aws_util:encode_uri(BridgeArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Displays the details of a flow.
 %%
 %% The response includes the flow ARN, name, and Availability Zone, as well
@@ -242,6 +486,55 @@ describe_flow(Client, FlowArn, QueryMap, HeadersMap)
 describe_flow(Client, FlowArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Displays the details of a gateway.
+%%
+%% The response includes the gateway ARN, name, and CIDR blocks, as well as
+%% details about the networks.
+describe_gateway(Client, GatewayArn)
+  when is_map(Client) ->
+    describe_gateway(Client, GatewayArn, #{}, #{}).
+
+describe_gateway(Client, GatewayArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_gateway(Client, GatewayArn, QueryMap, HeadersMap, []).
+
+describe_gateway(Client, GatewayArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/gateways/", aws_util:encode_uri(GatewayArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Displays the details of an instance.
+describe_gateway_instance(Client, GatewayInstanceArn)
+  when is_map(Client) ->
+    describe_gateway_instance(Client, GatewayInstanceArn, #{}, #{}).
+
+describe_gateway_instance(Client, GatewayInstanceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_gateway_instance(Client, GatewayInstanceArn, QueryMap, HeadersMap, []).
+
+describe_gateway_instance(Client, GatewayInstanceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/gateway-instances/", aws_util:encode_uri(GatewayInstanceArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -329,6 +622,38 @@ grant_flow_entitlements(Client, FlowArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Displays a list of bridges that are associated with this account and
+%% an optionally specified Arn.
+%%
+%% This request returns a paginated result.
+list_bridges(Client)
+  when is_map(Client) ->
+    list_bridges(Client, #{}, #{}).
+
+list_bridges(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_bridges(Client, QueryMap, HeadersMap, []).
+
+list_bridges(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/bridges"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"filterArn">>, maps:get(<<"filterArn">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Displays a list of all entitlements that have been granted to this
 %% account.
 %%
@@ -374,6 +699,69 @@ list_flows(Client, QueryMap, HeadersMap)
 list_flows(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/flows"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Displays a list of instances associated with the AWS account.
+%%
+%% This request returns a paginated result. You can use the filterArn
+%% property to display only the instances associated with the selected
+%% Gateway Amazon Resource Name (ARN).
+list_gateway_instances(Client)
+  when is_map(Client) ->
+    list_gateway_instances(Client, #{}, #{}).
+
+list_gateway_instances(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_gateway_instances(Client, QueryMap, HeadersMap, []).
+
+list_gateway_instances(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/gateway-instances"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"filterArn">>, maps:get(<<"filterArn">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Displays a list of gateways that are associated with this account.
+%%
+%% This request returns a paginated result.
+list_gateways(Client)
+  when is_map(Client) ->
+    list_gateways(Client, #{}, #{}).
+
+list_gateways(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_gateways(Client, QueryMap, HeadersMap, []).
+
+list_gateways(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/gateways"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -488,6 +876,52 @@ purchase_offering(Client, OfferingArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/offerings/", aws_util:encode_uri(OfferingArn), ""],
     SuccessStatusCode = 201,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes an output from a bridge.
+remove_bridge_output(Client, BridgeArn, OutputName, Input) ->
+    remove_bridge_output(Client, BridgeArn, OutputName, Input, []).
+remove_bridge_output(Client, BridgeArn, OutputName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/bridges/", aws_util:encode_uri(BridgeArn), "/outputs/", aws_util:encode_uri(OutputName), ""],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes a source from a bridge.
+remove_bridge_source(Client, BridgeArn, SourceName, Input) ->
+    remove_bridge_source(Client, BridgeArn, SourceName, Input, []).
+remove_bridge_source(Client, BridgeArn, SourceName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/bridges/", aws_util:encode_uri(BridgeArn), "/sources/", aws_util:encode_uri(SourceName), ""],
+    SuccessStatusCode = 202,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
                {append_sha256_content_hash, false}
@@ -736,6 +1170,98 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the bridge
+update_bridge(Client, BridgeArn, Input) ->
+    update_bridge(Client, BridgeArn, Input, []).
+update_bridge(Client, BridgeArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/bridges/", aws_util:encode_uri(BridgeArn), ""],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing bridge output.
+update_bridge_output(Client, BridgeArn, OutputName, Input) ->
+    update_bridge_output(Client, BridgeArn, OutputName, Input, []).
+update_bridge_output(Client, BridgeArn, OutputName, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/bridges/", aws_util:encode_uri(BridgeArn), "/outputs/", aws_util:encode_uri(OutputName), ""],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing bridge source.
+update_bridge_source(Client, BridgeArn, SourceName, Input) ->
+    update_bridge_source(Client, BridgeArn, SourceName, Input, []).
+update_bridge_source(Client, BridgeArn, SourceName, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/bridges/", aws_util:encode_uri(BridgeArn), "/sources/", aws_util:encode_uri(SourceName), ""],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the bridge state
+update_bridge_state(Client, BridgeArn, Input) ->
+    update_bridge_state(Client, BridgeArn, Input, []).
+update_bridge_state(Client, BridgeArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/bridges/", aws_util:encode_uri(BridgeArn), "/state"],
+    SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates flow
 update_flow(Client, FlowArn, Input) ->
     update_flow(Client, FlowArn, Input, []).
@@ -839,6 +1365,29 @@ update_flow_source(Client, FlowArn, SourceArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/flows/", aws_util:encode_uri(FlowArn), "/source/", aws_util:encode_uri(SourceArn), ""],
     SuccessStatusCode = 202,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the configuration of an existing Gateway Instance.
+update_gateway_instance(Client, GatewayInstanceArn, Input) ->
+    update_gateway_instance(Client, GatewayInstanceArn, Input, []).
+update_gateway_instance(Client, GatewayInstanceArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/gateway-instances/", aws_util:encode_uri(GatewayInstanceArn), ""],
+    SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
                {append_sha256_content_hash, false}

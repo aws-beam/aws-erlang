@@ -181,6 +181,10 @@
          create_repository/3,
          create_service/2,
          create_service/3,
+         create_service_instance/2,
+         create_service_instance/3,
+         create_service_sync_config/2,
+         create_service_sync_config/3,
          create_service_template/2,
          create_service_template/3,
          create_service_template_version/2,
@@ -201,6 +205,8 @@
          delete_repository/3,
          delete_service/2,
          delete_service/3,
+         delete_service_sync_config/2,
+         delete_service_sync_config/3,
          delete_service_template/2,
          delete_service_template/3,
          delete_service_template_version/2,
@@ -229,6 +235,12 @@
          get_service/3,
          get_service_instance/2,
          get_service_instance/3,
+         get_service_instance_sync_status/2,
+         get_service_instance_sync_status/3,
+         get_service_sync_blocker_summary/2,
+         get_service_sync_blocker_summary/3,
+         get_service_sync_config/2,
+         get_service_sync_config/3,
          get_service_template/2,
          get_service_template/3,
          get_service_template_version/2,
@@ -303,6 +315,10 @@
          update_service_instance/3,
          update_service_pipeline/2,
          update_service_pipeline/3,
+         update_service_sync_blocker/2,
+         update_service_sync_blocker/3,
+         update_service_sync_config/2,
+         update_service_sync_config/3,
          update_service_template/2,
          update_service_template/3,
          update_service_template_version/2,
@@ -540,6 +556,22 @@ create_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateService">>, Input, Options).
 
+%% @doc Create a service instance.
+create_service_instance(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_service_instance(Client, Input, []).
+create_service_instance(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateServiceInstance">>, Input, Options).
+
+%% @doc Create the Proton Ops configuration file.
+create_service_sync_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_service_sync_config(Client, Input, []).
+create_service_sync_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateServiceSyncConfig">>, Input, Options).
+
 %% @doc Create a service template.
 %%
 %% The administrator creates a service template to define standardized
@@ -675,6 +707,14 @@ delete_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteService">>, Input, Options).
 
+%% @doc Delete the Proton Ops file.
+delete_service_sync_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_service_sync_config(Client, Input, []).
+delete_service_sync_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteServiceSyncConfig">>, Input, Options).
+
 %% @doc If no other major or minor versions of the service template exist,
 %% delete the service template.
 delete_service_template(Client, Input)
@@ -806,7 +846,7 @@ get_repository_sync_status(Client, Input, Options)
 %% up-to-date, behind a template major version, or behind a template minor
 %% version), the total number of resources, and the number of resources that
 %% are in a failed state, grouped by resource type. Components, environments,
-%% and service templates are exceptions—see the `components',
+%% and service templates return less information - see the `components',
 %% `environments', and `serviceTemplates' field descriptions.
 %%
 %% For context, the action also returns the total number of each type of
@@ -838,6 +878,30 @@ get_service_instance(Client, Input)
 get_service_instance(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetServiceInstance">>, Input, Options).
+
+%% @doc Get the status of the synced service instance.
+get_service_instance_sync_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_service_instance_sync_status(Client, Input, []).
+get_service_instance_sync_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetServiceInstanceSyncStatus">>, Input, Options).
+
+%% @doc Get detailed data for the service sync blocker summary.
+get_service_sync_blocker_summary(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_service_sync_blocker_summary(Client, Input, []).
+get_service_sync_blocker_summary(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetServiceSyncBlockerSummary">>, Input, Options).
+
+%% @doc Get detailed information for the service sync configuration.
+get_service_sync_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_service_sync_config(Client, Input, []).
+get_service_sync_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetServiceSyncConfig">>, Input, Options).
 
 %% @doc Get detailed data for a service template.
 get_service_template(Client, Input)
@@ -1310,6 +1374,22 @@ update_service_pipeline(Client, Input)
 update_service_pipeline(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateServicePipeline">>, Input, Options).
+
+%% @doc Update the service sync blocker by resolving it.
+update_service_sync_blocker(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_service_sync_blocker(Client, Input, []).
+update_service_sync_blocker(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateServiceSyncBlocker">>, Input, Options).
+
+%% @doc Update the Proton Ops config file.
+update_service_sync_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_service_sync_config(Client, Input, []).
+update_service_sync_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateServiceSyncConfig">>, Input, Options).
 
 %% @doc Update a service template.
 update_service_template(Client, Input)

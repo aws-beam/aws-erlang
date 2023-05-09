@@ -14,10 +14,16 @@
          create_cluster_v2/3,
          create_configuration/2,
          create_configuration/3,
+         create_vpc_connection/2,
+         create_vpc_connection/3,
          delete_cluster/3,
          delete_cluster/4,
+         delete_cluster_policy/3,
+         delete_cluster_policy/4,
          delete_configuration/3,
          delete_configuration/4,
+         delete_vpc_connection/3,
+         delete_vpc_connection/4,
          describe_cluster/2,
          describe_cluster/4,
          describe_cluster/5,
@@ -33,12 +39,21 @@
          describe_configuration_revision/3,
          describe_configuration_revision/5,
          describe_configuration_revision/6,
+         describe_vpc_connection/2,
+         describe_vpc_connection/4,
+         describe_vpc_connection/5,
          get_bootstrap_brokers/2,
          get_bootstrap_brokers/4,
          get_bootstrap_brokers/5,
+         get_cluster_policy/2,
+         get_cluster_policy/4,
+         get_cluster_policy/5,
          get_compatible_kafka_versions/1,
          get_compatible_kafka_versions/3,
          get_compatible_kafka_versions/4,
+         list_client_vpc_connections/2,
+         list_client_vpc_connections/4,
+         list_client_vpc_connections/5,
          list_cluster_operations/2,
          list_cluster_operations/4,
          list_cluster_operations/5,
@@ -66,8 +81,15 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_vpc_connections/1,
+         list_vpc_connections/3,
+         list_vpc_connections/4,
+         put_cluster_policy/3,
+         put_cluster_policy/4,
          reboot_broker/3,
          reboot_broker/4,
+         reject_client_vpc_connection/3,
+         reject_client_vpc_connection/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -215,6 +237,29 @@ create_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new Amazon MSK VPC connection.
+create_vpc_connection(Client, Input) ->
+    create_vpc_connection(Client, Input, []).
+create_vpc_connection(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/vpc-connection"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the MSK cluster specified by the Amazon Resource Name (ARN)
 %% in the request.
 delete_cluster(Client, ClusterArn, Input) ->
@@ -240,6 +285,30 @@ delete_cluster(Client, ClusterArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the MSK cluster policy specified by the Amazon Resource Name
+%% (ARN) in your request.
+delete_cluster_policy(Client, ClusterArn, Input) ->
+    delete_cluster_policy(Client, ClusterArn, Input, []).
+delete_cluster_policy(Client, ClusterArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/policy"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the specified MSK configuration.
 %%
 %% The configuration must be in the ACTIVE or DELETE_FAILED state.
@@ -248,6 +317,29 @@ delete_configuration(Client, Arn, Input) ->
 delete_configuration(Client, Arn, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/configurations/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the Amazon MSK VPC connection specified in your request.
+delete_vpc_connection(Client, Arn, Input) ->
+    delete_vpc_connection(Client, Arn, Input, []).
+delete_vpc_connection(Client, Arn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/vpc-connection/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -383,6 +475,29 @@ describe_configuration_revision(Client, Arn, Revision, QueryMap, HeadersMap, Opt
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Displays information about the specified Amazon MSK VPC connection.
+describe_vpc_connection(Client, Arn)
+  when is_map(Client) ->
+    describe_vpc_connection(Client, Arn, #{}, #{}).
+
+describe_vpc_connection(Client, Arn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_vpc_connection(Client, Arn, QueryMap, HeadersMap, []).
+
+describe_vpc_connection(Client, Arn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/vpc-connection/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc A list of brokers that a client application can use to bootstrap.
 get_bootstrap_brokers(Client, ClusterArn)
   when is_map(Client) ->
@@ -395,6 +510,29 @@ get_bootstrap_brokers(Client, ClusterArn, QueryMap, HeadersMap)
 get_bootstrap_brokers(Client, ClusterArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/bootstrap-brokers"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the contents of the specified MSK cluster policy.
+get_cluster_policy(Client, ClusterArn)
+  when is_map(Client) ->
+    get_cluster_policy(Client, ClusterArn, #{}, #{}).
+
+get_cluster_policy(Client, ClusterArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_cluster_policy(Client, ClusterArn, QueryMap, HeadersMap, []).
+
+get_cluster_policy(Client, ClusterArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/policy"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -429,6 +567,34 @@ get_compatible_kafka_versions(Client, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"clusterArn">>, maps:get(<<"clusterArn">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Displays a list of client VPC connections.
+list_client_vpc_connections(Client, ClusterArn)
+  when is_map(Client) ->
+    list_client_vpc_connections(Client, ClusterArn, #{}, #{}).
+
+list_client_vpc_connections(Client, ClusterArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_client_vpc_connections(Client, ClusterArn, QueryMap, HeadersMap, []).
+
+list_client_vpc_connections(Client, ClusterArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/client-vpc-connections"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -686,12 +852,89 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Displays a list of Amazon MSK VPC connections.
+list_vpc_connections(Client)
+  when is_map(Client) ->
+    list_vpc_connections(Client, #{}, #{}).
+
+list_vpc_connections(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_vpc_connections(Client, QueryMap, HeadersMap, []).
+
+list_vpc_connections(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/vpc-connections"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Creates or updates the specified MSK cluster policy.
+%%
+%% If updating the policy, the currentVersion field is required in the
+%% request payload.
+put_cluster_policy(Client, ClusterArn, Input) ->
+    put_cluster_policy(Client, ClusterArn, Input, []).
+put_cluster_policy(Client, ClusterArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/policy"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Executes a reboot on a broker.
 reboot_broker(Client, ClusterArn, Input) ->
     reboot_broker(Client, ClusterArn, Input, []).
 reboot_broker(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/reboot-broker"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+
+reject_client_vpc_connection(Client, ClusterArn, Input) ->
+    reject_client_vpc_connection(Client, ClusterArn, Input, []).
+reject_client_vpc_connection(Client, ClusterArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/client-vpc-connection"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -901,7 +1144,7 @@ update_configuration(Client, Arn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the connectivity configuration for the cluster.
+%% @doc Updates the connectivity configuration for the MSK cluster.
 update_connectivity(Client, ClusterArn, Input) ->
     update_connectivity(Client, ClusterArn, Input, []).
 update_connectivity(Client, ClusterArn, Input0, Options0) ->

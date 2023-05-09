@@ -151,6 +151,8 @@
          list_threat_intel_sets/2,
          list_threat_intel_sets/4,
          list_threat_intel_sets/5,
+         start_malware_scan/2,
+         start_malware_scan/3,
          start_monitoring_members/3,
          start_monitoring_members/4,
          stop_monitoring_members/3,
@@ -1596,6 +1598,32 @@ list_threat_intel_sets(Client, DetectorId, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Initiates the malware scan.
+%%
+%% Invoking this API will automatically create the Service-linked role in the
+%% corresponding account.
+start_malware_scan(Client, Input) ->
+    start_malware_scan(Client, Input, []).
+start_malware_scan(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/malware-scan/start"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Turns on GuardDuty monitoring of the specified member accounts.
 %%

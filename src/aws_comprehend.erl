@@ -295,11 +295,9 @@ create_dataset(Client, Input, Options)
 %% @doc Creates a new document classifier that you can use to categorize
 %% documents.
 %%
-%% To create a classifier, you provide a set of training documents that
-%% labeled with the categories that you want to use. After the classifier is
-%% trained you can use it to categorize a set of labeled documents into the
-%% categories. For more information, see Document Classification in the
-%% Comprehend Developer Guide.
+%% To create a classifier, you provide a set of training documents that are
+%% labeled with the categories that you want to use. For more information,
+%% see Training classifier models in the Comprehend Developer Guide.
 create_document_classifier(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_document_classifier(Client, Input, []).

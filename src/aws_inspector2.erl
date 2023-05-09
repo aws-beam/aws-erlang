@@ -12,6 +12,10 @@
          batch_get_account_status/3,
          batch_get_free_trial_info/2,
          batch_get_free_trial_info/3,
+         batch_get_member_ec2_deep_inspection_status/2,
+         batch_get_member_ec2_deep_inspection_status/3,
+         batch_update_member_ec2_deep_inspection_status/2,
+         batch_update_member_ec2_deep_inspection_status/3,
          cancel_findings_report/2,
          cancel_findings_report/3,
          create_filter/2,
@@ -36,6 +40,8 @@
          get_configuration/3,
          get_delegated_admin_account/2,
          get_delegated_admin_account/3,
+         get_ec2_deep_inspection_configuration/2,
+         get_ec2_deep_inspection_configuration/3,
          get_findings_report_status/2,
          get_findings_report_status/3,
          get_member/2,
@@ -61,14 +67,20 @@
          list_tags_for_resource/5,
          list_usage_totals/2,
          list_usage_totals/3,
+         search_vulnerabilities/2,
+         search_vulnerabilities/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
          update_configuration/2,
          update_configuration/3,
+         update_ec2_deep_inspection_configuration/2,
+         update_ec2_deep_inspection_configuration/3,
          update_filter/2,
          update_filter/3,
+         update_org_ec2_deep_inspection_configuration/2,
+         update_org_ec2_deep_inspection_configuration/3,
          update_organization_configuration/2,
          update_organization_configuration/3]).
 
@@ -80,6 +92,11 @@
 
 %% @doc Associates an Amazon Web Services account with an Amazon Inspector
 %% delegated administrator.
+%%
+%% An HTTP 200 response indicates the association was successfully started,
+%% but doesn’t indicate whether it was completed. You can check if the
+%% association completed by using ListMembers for multiple accounts or
+%% GetMembers for a single account.
 associate_member(Client, Input) ->
     associate_member(Client, Input, []).
 associate_member(Client, Input0, Options0) ->
@@ -149,6 +166,60 @@ batch_get_free_trial_info(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves Amazon Inspector deep inspection activation status of
+%% multiple member accounts within your organization.
+%%
+%% You must be the delegated administrator of an organization in Amazon
+%% Inspector to use this API.
+batch_get_member_ec2_deep_inspection_status(Client, Input) ->
+    batch_get_member_ec2_deep_inspection_status(Client, Input, []).
+batch_get_member_ec2_deep_inspection_status(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ec2deepinspectionstatus/member/batch/get"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Activates or deactivates Amazon Inspector deep inspection for the
+%% provided member accounts in your organization.
+%%
+%% You must be the delegated administrator of an organization in Amazon
+%% Inspector to use this API.
+batch_update_member_ec2_deep_inspection_status(Client, Input) ->
+    batch_update_member_ec2_deep_inspection_status(Client, Input, []).
+batch_update_member_ec2_deep_inspection_status(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ec2deepinspectionstatus/member/batch/update"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Cancels the given findings report.
 cancel_findings_report(Client, Input) ->
     cancel_findings_report(Client, Input, []).
@@ -196,6 +267,10 @@ create_filter(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a finding report.
+%%
+%% By default only `ACTIVE' findings are returned in the report. To see
+%% `SUPRESSED' or `CLOSED' findings you must specify a value for the
+%% `findingStatus' filter criteria.
 create_findings_report(Client, Input) ->
     create_findings_report(Client, Input, []).
 create_findings_report(Client, Input0, Options0) ->
@@ -418,6 +493,30 @@ get_delegated_admin_account(Client, Input) ->
 get_delegated_admin_account(Client, Input0, Options0) ->
     Method = post,
     Path = ["/delegatedadminaccounts/get"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves the activation status of Amazon Inspector deep inspection
+%% and custom paths associated with your account.
+get_ec2_deep_inspection_configuration(Client, Input) ->
+    get_ec2_deep_inspection_configuration(Client, Input, []).
+get_ec2_deep_inspection_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ec2deepinspectionconfiguration/get"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -714,6 +813,29 @@ list_usage_totals(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists Amazon Inspector coverage details for a specific vulnerability.
+search_vulnerabilities(Client, Input) ->
+    search_vulnerabilities(Client, Input, []).
+search_vulnerabilities(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/vulnerabilities/search"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Adds tags to a resource.
 tag_resource(Client, ResourceArn, Input) ->
     tag_resource(Client, ResourceArn, Input, []).
@@ -788,6 +910,30 @@ update_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Activates, deactivates Amazon Inspector deep inspection, or updates
+%% custom paths for your account.
+update_ec2_deep_inspection_configuration(Client, Input) ->
+    update_ec2_deep_inspection_configuration(Client, Input, []).
+update_ec2_deep_inspection_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ec2deepinspectionconfiguration/update"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Specifies the action that is to be applied to the findings that match
 %% the filter.
 update_filter(Client, Input) ->
@@ -795,6 +941,32 @@ update_filter(Client, Input) ->
 update_filter(Client, Input0, Options0) ->
     Method = post,
     Path = ["/filters/update"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the Amazon Inspector deep inspection custom paths for your
+%% organization.
+%%
+%% You must be an Amazon Inspector delegated administrator to use this API.
+update_org_ec2_deep_inspection_configuration(Client, Input) ->
+    update_org_ec2_deep_inspection_configuration(Client, Input, []).
+update_org_ec2_deep_inspection_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ec2deepinspectionconfiguration/org/update"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

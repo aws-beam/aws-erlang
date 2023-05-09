@@ -147,6 +147,8 @@
          create_collection/3,
          create_dataset/2,
          create_dataset/3,
+         create_face_liveness_session/2,
+         create_face_liveness_session/3,
          create_project/2,
          create_project/3,
          create_project_version/2,
@@ -199,6 +201,8 @@
          get_content_moderation/3,
          get_face_detection/2,
          get_face_detection/3,
+         get_face_liveness_session_results/2,
+         get_face_liveness_session_results/3,
          get_face_search/2,
          get_face_search/3,
          get_label_detection/2,
@@ -368,6 +372,9 @@ compare_faces(Client, Input, Options)
 %% `Status' in the `ProjectVersionDescription' object. The copy
 %% operation has finished when the value of `Status' is
 %% `COPYING_COMPLETED'.
+%%
+%% This operation requires permissions to perform the
+%% `rekognition:CopyProjectVersion' action.
 copy_project_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     copy_project_version(Client, Input, []).
@@ -435,6 +442,23 @@ create_dataset(Client, Input)
 create_dataset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDataset">>, Input, Options).
+
+%% @doc This API operation initiates a Face Liveness session.
+%%
+%% It returns a `SessionId', which you can use to start streaming Face
+%% Liveness video and get the results for a Face Liveness session. You can
+%% use the `OutputConfig' option in the Settings parameter to provide an
+%% Amazon S3 bucket location. The Amazon S3 bucket stores reference images
+%% and audit images. You can use `AuditImagesLimit' to limit the number
+%% of audit images returned. This number is between 0 and 4. By default, it
+%% is set to 0. The limit is best effort and based on the duration of the
+%% selfie-video.
+create_face_liveness_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_face_liveness_session(Client, Input, []).
+create_face_liveness_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateFaceLivenessSession">>, Input, Options).
 
 %% @doc Creates a new Amazon Rekognition Custom Labels project.
 %%
@@ -507,22 +531,24 @@ create_project_version(Client, Input, Options)
 %%
 %% <ul> <li> If you are creating a stream processor for detecting faces, you
 %% provide as input a Kinesis video stream (`Input') and a Kinesis data
-%% stream (`Output') stream. You also specify the face recognition
-%% criteria in `Settings'. For example, the collection containing faces
-%% that you want to recognize. After you have finished analyzing a streaming
-%% video, use `StopStreamProcessor' to stop processing.
+%% stream (`Output') stream for receiving the output. You must use the
+%% `FaceSearch' option in `Settings', specifying the collection that
+%% contains the faces you want to recognize. After you have finished
+%% analyzing a streaming video, use `StopStreamProcessor' to stop
+%% processing.
 %%
 %% </li> <li> If you are creating a stream processor to detect labels, you
 %% provide as input a Kinesis video stream (`Input'), Amazon S3 bucket
 %% information (`Output'), and an Amazon SNS topic ARN
 %% (`NotificationChannel'). You can also provide a KMS key ID to encrypt
 %% the data sent to your Amazon S3 bucket. You specify what you want to
-%% detect in `ConnectedHomeSettings', such as people, packages and
-%% people, or pets, people, and packages. You can also specify where in the
-%% frame you want Amazon Rekognition to monitor with `RegionsOfInterest'.
-%% When you run the `StartStreamProcessor' operation on a label detection
-%% stream processor, you input start and stop information to determine the
-%% length of the processing time.
+%% detect by using the `ConnectedHome' option in settings, and selecting
+%% one of the following: `PERSON', `PET', `PACKAGE', `ALL'
+%% You can also specify where in the frame you want Amazon Rekognition to
+%% monitor with `RegionsOfInterest'. When you run the
+%% `StartStreamProcessor' operation on a label detection stream
+%% processor, you input start and stop information to determine the length of
+%% the processing time.
 %%
 %% </li> </ul> Use `Name' to assign an identifier for the stream
 %% processor. You use `Name' to manage the stream processor. For example,
@@ -613,6 +639,9 @@ delete_project(Client, Input, Options)
 %% To get a list of project policies attached to a project, call
 %% `ListProjectPolicies'. To attach a project policy to a project, call
 %% `PutProjectPolicy'.
+%%
+%% This operation requires permissions to perform the
+%% `rekognition:DeleteProjectPolicy' action.
 delete_project_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_project_policy(Client, Input, []).
@@ -777,8 +806,8 @@ detect_custom_labels(Client, Input, Options)
 %% face detected, the operation returns face details. These details include a
 %% bounding box of the face, a confidence value (that the bounding box
 %% contains a face), and a fixed set of attributes such as facial landmarks
-%% (for example, coordinates of eye and mouth), presence of beard,
-%% sunglasses, and so on.
+%% (for example, coordinates of eye and mouth), pose, presence of facial
+%% occlusion, and so on.
 %%
 %% The face-detection algorithm is most effective on frontal faces. For
 %% non-frontal or obscured faces, the algorithm might not detect the faces or
@@ -840,7 +869,7 @@ detect_faces(Client, Input, Options)
 %% Response Elements
 %%
 %% For each object, scene, and concept the API returns one or more labels.
-%% The API returns the following types of information regarding labels:
+%% The API returns the following types of information about labels:
 %%
 %% <ul> <li> Name - The name of the detected label.
 %%
@@ -910,8 +939,7 @@ detect_faces(Client, Input, Options)
 %% If the object detected is a person, the operation doesn't provide the
 %% same facial details that the `DetectFaces' operation provides.
 %%
-%% This is a stateless API operation. That is, the operation does not persist
-%% any data.
+%% This is a stateless API operation that doesn't return any data.
 %%
 %% This operation requires permissions to perform the
 %% `rekognition:DetectLabels' action.
@@ -1223,6 +1251,21 @@ get_face_detection(Client, Input)
 get_face_detection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFaceDetection">>, Input, Options).
+
+%% @doc Retrieves the results of a specific Face Liveness session.
+%%
+%% It requires the `sessionId' as input, which was created using
+%% `CreateFaceLivenessSession'. Returns the corresponding Face Liveness
+%% confidence score, a reference image that includes a face bounding box, and
+%% audit images that also contain face bounding boxes. The Face Liveness
+%% confidence score ranges from 0 to 100. The reference image can optionally
+%% be returned.
+get_face_liveness_session_results(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_face_liveness_session_results(Client, Input, []).
+get_face_liveness_session_results(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetFaceLivenessSessionResults">>, Input, Options).
 
 %% @doc Gets the face search results for Amazon Rekognition Video face search
 %% started by `StartFaceSearch'.
@@ -1557,13 +1600,15 @@ get_text_detection(Client, Input, Options)
 %% </li> <li> An image ID, `ImageId', assigned by the service for the
 %% input image.
 %%
-%% </li> </ul> If you request all facial attributes (by using the
-%% `detectionAttributes' parameter), Amazon Rekognition returns detailed
-%% facial attributes, such as facial landmarks (for example, location of eye
-%% and mouth) and other facial attributes. If you provide the same image,
-%% specify the same collection, and use the same external ID in the
-%% `IndexFaces' operation, Amazon Rekognition doesn't save duplicate
-%% face metadata.
+%% </li> </ul> If you request `ALL' or specific facial attributes (e.g.,
+%% `FACE_OCCLUDED') by using the detectionAttributes parameter, Amazon
+%% Rekognition returns detailed facial attributes, such as facial landmarks
+%% (for example, location of eye and mouth), facial occlusion, and other
+%% facial attributes.
+%%
+%% If you provide the same image, specify the same collection, and use the
+%% same external ID in the `IndexFaces' operation, Amazon Rekognition
+%% doesn't save duplicate face metadata.
 %%
 %% The input image is passed either as base64-encoded image bytes, or as a
 %% reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
@@ -1656,6 +1701,9 @@ list_faces(Client, Input, Options)
 %%
 %% To attach a project policy to a project, call `PutProjectPolicy'. To
 %% remove a project policy from a project, call `DeleteProjectPolicy'.
+%%
+%% This operation requires permissions to perform the
+%% `rekognition:ListProjectPolicies' action.
 list_project_policies(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_project_policies(Client, Input, []).
@@ -1706,6 +1754,9 @@ list_tags_for_resource(Client, Input, Options)
 %% `ListProjectPolicies'.
 %%
 %% You copy a model version by calling `CopyProjectVersion'.
+%%
+%% This operation requires permissions to perform the
+%% `rekognition:PutProjectPolicy' action.
 put_project_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_project_policy(Client, Input, []).
@@ -2089,6 +2140,9 @@ start_text_detection(Client, Input, Options)
 %%
 %% The operation might take a while to complete. To check the current status,
 %% call `DescribeProjectVersions'.
+%%
+%% This operation requires permissions to perform the
+%% `rekognition:StopProjectVersion' action.
 stop_project_version(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_project_version(Client, Input, []).

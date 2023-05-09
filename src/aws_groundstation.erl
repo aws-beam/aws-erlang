@@ -362,7 +362,10 @@ describe_ephemeris(Client, EphemerisId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets the latest configuration information for a registered agent.
+%% @doc For use by AWS Ground Station Agent and shouldn't be called
+%% directly.
+%%
+%% Gets the latest configuration information for a registered agent.
 get_agent_configuration(Client, AgentId)
   when is_map(Client) ->
     get_agent_configuration(Client, AgentId, #{}, #{}).
@@ -717,7 +720,10 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Registers a new agent with AWS Groundstation.
+%% @doc For use by AWS Ground Station Agent and shouldn't be called
+%% directly.
+%%
+%% Registers a new agent with AWS Ground Station.
 register_agent(Client, Input) ->
     register_agent(Client, Input, []).
 register_agent(Client, Input0, Options0) ->
@@ -810,7 +816,10 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update the status of the agent.
+%% @doc For use by AWS Ground Station Agent and shouldn't be called
+%% directly.
+%%
+%% Update the status of the agent.
 update_agent_status(Client, AgentId, Input) ->
     update_agent_status(Client, AgentId, Input, []).
 update_agent_status(Client, AgentId, Input0, Options0) ->

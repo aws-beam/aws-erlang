@@ -758,9 +758,10 @@ update_secret_version_stage(Client, Input, Options)
 %% because it might be logged. For more information, see Logging Secrets
 %% Manager events with CloudTrail.
 %%
-%% Required permissions: `secretsmanager:ValidateResourcePolicy'. For
-%% more information, see IAM policy actions for Secrets Manager and
-%% Authentication and access control in Secrets Manager.
+%% Required permissions: `secretsmanager:ValidateResourcePolicy' and
+%% `secretsmanager:PutResourcePolicy'. For more information, see IAM
+%% policy actions for Secrets Manager and Authentication and access control
+%% in Secrets Manager.
 validate_resource_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     validate_resource_policy(Client, Input, []).

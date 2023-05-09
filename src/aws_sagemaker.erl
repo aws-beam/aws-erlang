@@ -654,7 +654,7 @@ add_association(Client, Input, Options)
 %% sure that the tags associated with a hyperparameter tuning job are also
 %% added to all training jobs that the hyperparameter tuning job launches,
 %% add the tags when you first create the tuning job by specifying them in
-%% the `Tags' parameter of `CreateHyperParameterTuningJob'
+%% the `Tags' parameter of CreateHyperParameterTuningJob
 %%
 %% Tags that you add to a SageMaker Studio Domain or User Profile by calling
 %% this API are also added to any Apps that the Domain or User Profile
@@ -663,7 +663,7 @@ add_association(Client, Input, Options)
 %% associated with a Domain or User Profile are also added to all Apps that
 %% the Domain or User Profile launches, add the tags when you first create
 %% the Domain or User Profile by specifying them in the `Tags' parameter
-%% of `CreateDomain' or `CreateUserProfile'.
+%% of CreateDomain or CreateUserProfile.
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -674,8 +674,7 @@ add_tags(Client, Input, Options)
 %% @doc Associates a trial component with a trial.
 %%
 %% A trial component can be associated with multiple trials. To disassociate
-%% a trial component from a trial, call the `DisassociateTrialComponent'
-%% API.
+%% a trial component from a trial, call the DisassociateTrialComponent API.
 associate_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     associate_trial_component(Client, Input, []).
@@ -752,8 +751,8 @@ create_artifact(Client, Input, Options)
 
 %% @doc Creates an Autopilot job.
 %%
-%% Find the best-performing model after you run an Autopilot job by calling `
-%% DescribeAutoMLJob '.
+%% Find the best-performing model after you run an Autopilot job by calling
+%% DescribeAutoMLJob.
 %%
 %% For information about how to use Autopilot, see Automate Model Development
 %% with Amazon SageMaker Autopilot.
@@ -768,11 +767,10 @@ create_auto_ml_job(Client, Input, Options)
 %% such as images or text for Computer Vision or Natural Language Processing
 %% problems.
 %%
-%% Find the resulting model after you run an AutoML job V2 by calling `
-%% DescribeAutoMLJobV2 '.
+%% Find the resulting model after you run an AutoML job V2 by calling
+%% DescribeAutoMLJobV2.
 %%
-%% To create an `AutoMLJob' using tabular data, see ` CreateAutoMLJob
-%% '.
+%% To create an `AutoMLJob' using tabular data, see CreateAutoMLJob.
 %%
 %% This API action is callable through SageMaker Canvas only. Calling it
 %% directly from the CLI or an SDK results in an error.
@@ -827,10 +825,10 @@ create_code_repository(Client, Input, Options)
 %% compilation job's resource use and costs. The response body contains
 %% the `CompilationJobArn' for the compiled job.
 %%
-%% To stop a model compilation job, use `StopCompilationJob'. To get
+%% To stop a model compilation job, use StopCompilationJob. To get
 %% information about a particular model compilation job, use
-%% `DescribeCompilationJob'. To get information about multiple model
-%% compilation jobs, use `ListCompilationJobs'.
+%% DescribeCompilationJob. To get information about multiple model
+%% compilation jobs, use ListCompilationJobs.
 create_compilation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_compilation_job(Client, Input, []).
@@ -957,7 +955,7 @@ create_edge_packaging_job(Client, Input, Options)
 %% request.
 %%
 %% SageMaker uses the endpoint to provision resources and deploy models. You
-%% create the endpoint configuration with the `CreateEndpointConfig' API.
+%% create the endpoint configuration with the CreateEndpointConfig API.
 %%
 %% Use this API to deploy models using SageMaker hosting services.
 %%
@@ -975,23 +973,23 @@ create_edge_packaging_job(Client, Input, Options)
 %% When it receives the request, SageMaker creates the endpoint, launches the
 %% resources (ML compute instances), and deploys the model(s) on them.
 %%
-%% When you call `CreateEndpoint', a load call is made to DynamoDB to
-%% verify that your endpoint configuration exists. When you read data from a
+%% When you call CreateEndpoint, a load call is made to DynamoDB to verify
+%% that your endpoint configuration exists. When you read data from a
 %% DynamoDB table supporting `Eventually Consistent Reads' , the response
 %% might not reflect the results of a recently completed write operation. The
 %% response might include some stale data. If the dependent entities are not
 %% yet in DynamoDB, this causes a validation error. If you repeat your read
 %% request after a short time, the response should return the latest data. So
 %% retry logic is recommended to handle these possible issues. We also
-%% recommend that customers call `DescribeEndpointConfig' before calling
-%% `CreateEndpoint' to minimize the potential impact of a DynamoDB
-%% eventually consistent read.
+%% recommend that customers call DescribeEndpointConfig before calling
+%% CreateEndpoint to minimize the potential impact of a DynamoDB eventually
+%% consistent read.
 %%
 %% When SageMaker receives the request, it sets the endpoint status to
 %% `Creating'. After it creates the endpoint, it sets the status to
 %% `InService'. SageMaker can then process incoming requests for
-%% inferences. To check the status of an endpoint, use the
-%% `DescribeEndpoint' API.
+%% inferences. To check the status of an endpoint, use the DescribeEndpoint
+%% API.
 %%
 %% If any of the models hosted at this endpoint get model data from an Amazon
 %% S3 location, SageMaker uses Amazon Web Services Security Token Service to
@@ -1005,9 +1003,9 @@ create_edge_packaging_job(Client, Input, Options)
 %%
 %% To add the IAM role policies for using this API operation, go to the IAM
 %% console, and choose Roles in the left navigation pane. Search the IAM role
-%% that you want to grant access to use the `CreateEndpoint' and
-%% `CreateEndpointConfig' API operations, add the following policies to
-%% the role.
+%% that you want to grant access to use the CreateEndpoint and
+%% CreateEndpointConfig API operations, add the following policies to the
+%% role.
 %%
 %% Option 1: For a full SageMaker access, search and attach the
 %% `AmazonSageMakerFullAccess' policy.
@@ -1040,7 +1038,7 @@ create_endpoint(Client, Input, Options)
 %%
 %% In the configuration, you identify one or more models, created using the
 %% `CreateModel' API, to deploy and the resources that you want SageMaker
-%% to provision. Then you call the `CreateEndpoint' API.
+%% to provision. Then you call the CreateEndpoint API.
 %%
 %% Use this API if you want to use SageMaker hosting services to deploy
 %% models into production.
@@ -1056,17 +1054,17 @@ create_endpoint(Client, Input, Options)
 %% traffic weight 2 for model A and 1 for model B. SageMaker distributes
 %% two-thirds of the traffic to Model A, and one-third to model B.
 %%
-%% When you call `CreateEndpoint', a load call is made to DynamoDB to
-%% verify that your endpoint configuration exists. When you read data from a
+%% When you call CreateEndpoint, a load call is made to DynamoDB to verify
+%% that your endpoint configuration exists. When you read data from a
 %% DynamoDB table supporting `Eventually Consistent Reads' , the response
 %% might not reflect the results of a recently completed write operation. The
 %% response might include some stale data. If the dependent entities are not
 %% yet in DynamoDB, this causes a validation error. If you repeat your read
 %% request after a short time, the response should return the latest data. So
 %% retry logic is recommended to handle these possible issues. We also
-%% recommend that customers call `DescribeEndpointConfig' before calling
-%% `CreateEndpoint' to minimize the potential impact of a DynamoDB
-%% eventually consistent read.
+%% recommend that customers call DescribeEndpointConfig before calling
+%% CreateEndpoint to minimize the potential impact of a DynamoDB eventually
+%% consistent read.
 create_endpoint_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_endpoint_config(Client, Input, []).
@@ -1094,17 +1092,16 @@ create_endpoint_config(Client, Input, Options)
 %% (Boto), you must use the logging APIs provided by the SDK.
 %%
 %% You can add tags to experiments, trials, trial components and then use the
-%% `Search' API to search for the tags.
+%% Search API to search for the tags.
 %%
 %% To add a description to an experiment, specify the optional
 %% `Description' parameter. To add a description later, or to change the
-%% description, call the `UpdateExperiment' API.
+%% description, call the UpdateExperiment API.
 %%
-%% To get a list of all your experiments, call the `ListExperiments' API.
-%% To view an experiment's properties, call the `DescribeExperiment'
-%% API. To get a list of all the trials associated with an experiment, call
-%% the `ListTrials' API. To create a trial call the `CreateTrial'
-%% API.
+%% To get a list of all your experiments, call the ListExperiments API. To
+%% view an experiment's properties, call the DescribeExperiment API. To
+%% get a list of all the trials associated with an experiment, call the
+%% ListTrials API. To create a trial call the CreateTrial API.
 create_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_experiment(Client, Input, []).
@@ -1552,10 +1549,10 @@ create_presigned_domain_url(Client, Input, Options)
 %% notebook instance. For more information, see Limit Access to a Notebook
 %% Instance by IP Address.
 %%
-%% The URL that you get from a call to
-%% `CreatePresignedNotebookInstanceUrl' is valid only for 5 minutes. If
-%% you try to use the URL after the 5-minute limit expires, you are directed
-%% to the Amazon Web Services console sign-in page.
+%% The URL that you get from a call to CreatePresignedNotebookInstanceUrl is
+%% valid only for 5 minutes. If you try to use the URL after the 5-minute
+%% limit expires, you are directed to the Amazon Web Services console sign-in
+%% page.
 create_presigned_notebook_instance_url(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_presigned_notebook_instance_url(Client, Input, []).
@@ -1708,12 +1705,12 @@ create_transform_job(Client, Input, Options)
 %% logged, and indexed. When you use the Amazon Web Services SDK for Python
 %% (Boto), you must use the logging APIs provided by the SDK.
 %%
-%% You can add tags to a trial and then use the `Search' API to search
-%% for the tags.
+%% You can add tags to a trial and then use the Search API to search for the
+%% tags.
 %%
-%% To get a list of all your trials, call the `ListTrials' API. To view a
-%% trial's properties, call the `DescribeTrial' API. To create a
-%% trial component, call the `CreateTrialComponent' API.
+%% To get a list of all your trials, call the ListTrials API. To view a
+%% trial's properties, call the DescribeTrial API. To create a trial
+%% component, call the CreateTrialComponent API.
 create_trial(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_trial(Client, Input, []).
@@ -1735,7 +1732,7 @@ create_trial(Client, Input, Options)
 %% logged, and indexed. When you use the Amazon Web Services SDK for Python
 %% (Boto), you must use the logging APIs provided by the SDK.
 %%
-%% You can add tags to a trial component and then use the `Search' API to
+%% You can add tags to a trial component and then use the Search API to
 %% search for the tags.
 create_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -1769,9 +1766,9 @@ create_user_profile(Client, Input, Options)
 %% account.
 %%
 %% If you want to create a new workforce in an Amazon Web Services Region
-%% where a workforce already exists, use the API operation to delete the
-%% existing workforce and then use `CreateWorkforce' to create a new
-%% workforce.
+%% where a workforce already exists, use the DeleteWorkforce API operation to
+%% delete the existing workforce and then use `CreateWorkforce' to create
+%% a new workforce.
 %%
 %% To create a private workforce using Amazon Cognito, you must specify a
 %% Cognito user pool in `CognitoConfig'. You can also create an Amazon
@@ -1958,8 +1955,7 @@ delete_endpoint_config(Client, Input, Options)
 %% @doc Deletes an SageMaker experiment.
 %%
 %% All trials associated with the experiment must be deleted first. Use the
-%% `ListTrials' API to get a list of the trials associated with the
-%% experiment.
+%% ListTrials API to get a list of the trials associated with the experiment.
 delete_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_experiment(Client, Input, []).
@@ -2015,8 +2011,8 @@ delete_hub_content(Client, Input, Options)
 %% template).
 %%
 %% To see a list of human task user interfaces (work task templates) in your
-%% account, use . When you delete a worker task template, it no longer
-%% appears when you call `ListHumanTaskUis'.
+%% account, use ListHumanTaskUis. When you delete a worker task template, it
+%% no longer appears when you call `ListHumanTaskUis'.
 delete_human_task_ui(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_human_task_ui(Client, Input, []).
@@ -2224,7 +2220,7 @@ delete_tags(Client, Input, Options)
 %% @doc Deletes the specified trial.
 %%
 %% All trial components that make up the trial must be deleted first. Use the
-%% `DescribeTrialComponent' API to get the list of trial components.
+%% DescribeTrialComponent API to get the list of trial components.
 delete_trial(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trial(Client, Input, []).
@@ -2236,7 +2232,7 @@ delete_trial(Client, Input, Options)
 %%
 %% A trial component must be disassociated from all trials before the trial
 %% component can be deleted. To disassociate a trial component from a trial,
-%% call the `DisassociateTrialComponent' API.
+%% call the DisassociateTrialComponent API.
 delete_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trial_component(Client, Input, []).
@@ -2259,12 +2255,12 @@ delete_user_profile(Client, Input, Options)
 %%
 %% If you want to create a new workforce in an Amazon Web Services Region
 %% where a workforce already exists, use this operation to delete the
-%% existing workforce and then use to create a new workforce.
+%% existing workforce and then use CreateWorkforce to create a new workforce.
 %%
 %% If a private workforce contains one or more work teams, you must use the
-%% operation to delete all work teams before you delete the workforce. If you
-%% try to delete a workforce that contains one or more work teams, you will
-%% recieve a `ResourceInUse' error.
+%% DeleteWorkteam operation to delete all work teams before you delete the
+%% workforce. If you try to delete a workforce that contains one or more work
+%% teams, you will recieve a `ResourceInUse' error.
 delete_workforce(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_workforce(Client, Input, []).
@@ -2362,9 +2358,9 @@ describe_code_repository(Client, Input, Options)
 
 %% @doc Returns information about a model compilation job.
 %%
-%% To create a model compilation job, use `CreateCompilationJob'. To get
+%% To create a model compilation job, use CreateCompilationJob. To get
 %% information about multiple model compilation jobs, use
-%% `ListCompilationJobs'.
+%% ListCompilationJobs.
 describe_compilation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_compilation_job(Client, Input, []).
@@ -2825,11 +2821,11 @@ disable_sagemaker_servicecatalog_portfolio(Client, Input, Options)
 %% This doesn't effect other trials the component is associated with.
 %% Before you can delete a component, you must disassociate the component
 %% from all trials it is associated with. To associate a trial component with
-%% a trial, call the `AssociateTrialComponent' API.
+%% a trial, call the AssociateTrialComponent API.
 %%
-%% To get a list of the trials a component is associated with, use the
-%% `Search' API. Specify `ExperimentTrialComponent' for the
-%% `Resource' parameter. The list appears in the response under
+%% To get a list of the trials a component is associated with, use the Search
+%% API. Specify `ExperimentTrialComponent' for the `Resource'
+%% parameter. The list appears in the response under
 %% `Results.TrialComponent.Parents'.
 disassociate_trial_component(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -2994,9 +2990,9 @@ list_code_repositories(Client, Input, Options)
 
 %% @doc Lists model compilation jobs that satisfy various filters.
 %%
-%% To create a model compilation job, use `CreateCompilationJob'. To get
+%% To create a model compilation job, use CreateCompilationJob. To get
 %% information about a particular model compilation job you have created, use
-%% `DescribeCompilationJob'.
+%% DescribeCompilationJob.
 list_compilation_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_compilation_jobs(Client, Input, []).
@@ -3143,8 +3139,8 @@ list_human_task_uis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListHumanTaskUis">>, Input, Options).
 
-%% @doc Gets a list of `HyperParameterTuningJobSummary' objects that
-%% describe the hyperparameter tuning jobs launched in your account.
+%% @doc Gets a list of HyperParameterTuningJobSummary objects that describe
+%% the hyperparameter tuning jobs launched in your account.
 list_hyper_parameter_tuning_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_hyper_parameter_tuning_jobs(Client, Input, []).
@@ -3344,7 +3340,7 @@ list_monitoring_schedules(Client, Input, Options)
     request(Client, <<"ListMonitoringSchedules">>, Input, Options).
 
 %% @doc Lists notebook instance lifestyle configurations created with the
-%% `CreateNotebookInstanceLifecycleConfig' API.
+%% CreateNotebookInstanceLifecycleConfig API.
 list_notebook_instance_lifecycle_configs(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_notebook_instance_lifecycle_configs(Client, Input, []).
@@ -3484,8 +3480,8 @@ list_training_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTrainingJobs">>, Input, Options).
 
-%% @doc Gets a list of `TrainingJobSummary' objects that describe the
-%% training jobs that a hyperparameter tuning job launched.
+%% @doc Gets a list of TrainingJobSummary objects that describe the training
+%% jobs that a hyperparameter tuning job launched.
 list_training_jobs_for_hyper_parameter_tuning_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_training_jobs_for_hyper_parameter_tuning_job(Client, Input, []).
@@ -3723,9 +3719,9 @@ stop_auto_ml_job(Client, Input, Options)
 %% sends the SIGKILL signal.
 %%
 %% When it receives a `StopCompilationJob' request, Amazon SageMaker
-%% changes the `CompilationJobSummary$CompilationJobStatus' of the job to
-%% `Stopping'. After Amazon SageMaker stops the job, it sets the
-%% `CompilationJobSummary$CompilationJobStatus' to `Stopped'.
+%% changes the `CompilationJobStatus' of the job to `Stopping'. After
+%% Amazon SageMaker stops the job, it sets the `CompilationJobStatus' to
+%% `Stopped'.
 stop_compilation_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_compilation_job(Client, Input, []).
@@ -3963,7 +3959,7 @@ update_domain(Client, Input, Options)
 %% When SageMaker receives the request, it sets the endpoint status to
 %% `Updating'. After updating the endpoint, it sets the status to
 %% `InService'. To check the status of an endpoint, use the
-%% `DescribeEndpoint' API.
+%% DescribeEndpoint API.
 %%
 %% You must not delete an `EndpointConfig' in use by an endpoint that is
 %% live or while the `UpdateEndpoint' or `CreateEndpoint' operations
@@ -3988,7 +3984,7 @@ update_endpoint(Client, Input, Options)
 %% When it receives the request, SageMaker sets the endpoint status to
 %% `Updating'. After updating the endpoint, it sets the status to
 %% `InService'. To check the status of an endpoint, use the
-%% `DescribeEndpoint' API.
+%% DescribeEndpoint API.
 update_endpoint_weights_and_capacities(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_endpoint_weights_and_capacities(Client, Input, []).
@@ -4034,8 +4030,7 @@ update_hub(Client, Input, Options)
 
 %% @doc Updates the properties of a SageMaker image.
 %%
-%% To change the image's tags, use the `AddTags' and `DeleteTags'
-%% APIs.
+%% To change the image's tags, use the AddTags and DeleteTags APIs.
 update_image(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_image(Client, Input, []).
@@ -4055,7 +4050,7 @@ update_image_version(Client, Input, Options)
 %%
 %% The status of the inference experiment has to be either `Created',
 %% `Running'. For more information on the status of an inference
-%% experiment, see `DescribeInferenceExperimentResponse$Status'.
+%% experiment, see DescribeInferenceExperiment.
 update_inference_experiment(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_inference_experiment(Client, Input, []).
@@ -4111,7 +4106,7 @@ update_notebook_instance(Client, Input, Options)
     request(Client, <<"UpdateNotebookInstance">>, Input, Options).
 
 %% @doc Updates a notebook instance lifecycle configuration created with the
-%% `CreateNotebookInstanceLifecycleConfig' API.
+%% CreateNotebookInstanceLifecycleConfig API.
 update_notebook_instance_lifecycle_config(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_notebook_instance_lifecycle_config(Client, Input, []).
@@ -4217,11 +4212,11 @@ update_user_profile(Client, Input, Options)
 %%
 %% You can only update your OIDC IdP configuration when there are no work
 %% teams associated with your workforce. You can delete work teams using the
-%% operation.
+%% DeleteWorkteam operation.
 %%
 %% After restricting access to a range of IP addresses or updating your OIDC
 %% IdP configuration with this operation, you can view details about your
-%% update workforce using the operation.
+%% update workforce using the DescribeWorkforce operation.
 %%
 %% This operation only applies to private workforces.
 update_workforce(Client, Input)

@@ -14,18 +14,25 @@
 
 -export([cancel_change_set/2,
          cancel_change_set/3,
+         delete_resource_policy/2,
+         delete_resource_policy/3,
          describe_change_set/3,
          describe_change_set/5,
          describe_change_set/6,
          describe_entity/3,
          describe_entity/5,
          describe_entity/6,
+         get_resource_policy/2,
+         get_resource_policy/4,
+         get_resource_policy/5,
          list_change_sets/2,
          list_change_sets/3,
          list_entities/2,
          list_entities/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         put_resource_policy/2,
+         put_resource_policy/3,
          start_change_set/2,
          start_change_set/3,
          tag_resource/2,
@@ -64,6 +71,31 @@ cancel_change_set(Client, Input0, Options0) ->
     QueryMapping = [
                      {<<"catalog">>, <<"Catalog">>},
                      {<<"changeSetId">>, <<"ChangeSetId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a resource-based policy on an Entity that is identified by
+%% its resource ARN.
+delete_resource_policy(Client, Input) ->
+    delete_resource_policy(Client, Input, []).
+delete_resource_policy(Client, Input0, Options0) ->
+    Method = delete,
+    Path = ["/DeleteResourcePolicy"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"resourceArn">>, <<"ResourceArn">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -119,6 +151,34 @@ describe_entity(Client, Catalog, EntityId, QueryMap, HeadersMap, Options0)
       [
         {<<"catalog">>, Catalog},
         {<<"entityId">>, EntityId}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a resource-based policy of an Entity that is identified by its
+%% resource ARN.
+get_resource_policy(Client, ResourceArn)
+  when is_map(Client) ->
+    get_resource_policy(Client, ResourceArn, #{}, #{}).
+
+get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/GetResourcePolicy"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"resourceArn">>, ResourceArn}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -202,6 +262,32 @@ list_tags_for_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Attaches a resource-based policy to an Entity.
+%%
+%% Examples of an entity include: `AmiProduct' and
+%% `ContainerProduct'.
+put_resource_policy(Client, Input) ->
+    put_resource_policy(Client, Input, []).
+put_resource_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/PutResourcePolicy"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Allows you to request changes for your entities.
 %%
 %% Within a single `ChangeSet', you can't start the same change type
@@ -218,7 +304,10 @@ list_tags_for_resource(Client, Input0, Options0) ->
 %% (`entity-id@1').
 %%
 %% For more information about working with change sets, see Working with
-%% change sets.
+%% change sets. For information on change types for single-AMI products, see
+%% Working with single-AMI products. Als, for more information on change
+%% types available for container-based products, see Working with container
+%% products.
 start_change_set(Client, Input) ->
     start_change_set(Client, Input, []).
 start_change_set(Client, Input0, Options0) ->

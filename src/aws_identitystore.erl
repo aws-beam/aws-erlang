@@ -14,7 +14,7 @@
 %% href=&quot;https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html#renamed&quot;&gt;IAM
 %% Identity Center rename&lt;/a&gt;.&lt;/p&gt; &lt;/note&gt; &lt;p&gt;This
 %% reference guide describes the identity store operations that you can call
-%% programatically and includes detailed information on data types and
+%% programatically and includes detailed information about data types and
 %% errors.&lt;/p&gt;
 -module(aws_identitystore).
 
@@ -82,7 +82,7 @@ create_group_membership(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateGroupMembership">>, Input, Options).
 
-%% @doc Creates a new user within the specified identity store.
+%% @doc Creates a user within the specified identity store.
 create_user(Client, Input)
   when is_map(Client), is_map(Input) ->
     create_user(Client, Input, []).

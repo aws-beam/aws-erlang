@@ -5,13 +5,11 @@
 %%
 %% This documentation provides descriptions and syntax for each of the
 %% actions and data types in RAM. RAM is a service that helps you securely
-%% share your Amazon Web Services resources across Amazon Web Services
-%% accounts. If you have multiple Amazon Web Services accounts, you can use
-%% RAM to share those resources with other accounts. If you use Organizations
-%% to manage your accounts, then you share your resources with your
-%% organization or organizational units (OUs). For supported resource types,
-%% you can also share resources with individual Identity and Access
-%% Management (IAM) roles an users.
+%% share your Amazon Web Services resources to other Amazon Web Services
+%% accounts. If you use Organizations to manage your accounts, then you can
+%% share your resources with your entire organization or to organizational
+%% units (OUs). For supported resource types, you can also share resources
+%% with individual Identity and Access Management (IAM) roles and users.
 %%
 %% To learn more about RAM, see the following resources:
 %%
@@ -28,8 +26,16 @@
          associate_resource_share/3,
          associate_resource_share_permission/2,
          associate_resource_share_permission/3,
+         create_permission/2,
+         create_permission/3,
+         create_permission_version/2,
+         create_permission_version/3,
          create_resource_share/2,
          create_resource_share/3,
+         delete_permission/2,
+         delete_permission/3,
+         delete_permission_version/2,
+         delete_permission_version/3,
          delete_resource_share/2,
          delete_resource_share/3,
          disassociate_resource_share/2,
@@ -50,22 +56,32 @@
          get_resource_shares/3,
          list_pending_invitation_resources/2,
          list_pending_invitation_resources/3,
+         list_permission_associations/2,
+         list_permission_associations/3,
          list_permission_versions/2,
          list_permission_versions/3,
          list_permissions/2,
          list_permissions/3,
          list_principals/2,
          list_principals/3,
+         list_replace_permission_associations_work/2,
+         list_replace_permission_associations_work/3,
          list_resource_share_permissions/2,
          list_resource_share_permissions/3,
          list_resource_types/2,
          list_resource_types/3,
          list_resources/2,
          list_resources/3,
+         promote_permission_created_from_policy/2,
+         promote_permission_created_from_policy/3,
          promote_resource_share_created_from_policy/2,
          promote_resource_share_created_from_policy/3,
          reject_resource_share_invitation/2,
          reject_resource_share_invitation/3,
+         replace_permission_associations/2,
+         replace_permission_associations/3,
+         set_default_permission_version/2,
+         set_default_permission_version/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -164,6 +180,66 @@ associate_resource_share_permission(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a customer managed permission for a specified resource type
+%% that you can attach to resource shares.
+%%
+%% It is created in the Amazon Web Services Region in which you call the
+%% operation.
+create_permission(Client, Input) ->
+    create_permission(Client, Input, []).
+create_permission(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/createpermission"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new version of the specified customer managed permission.
+%%
+%% The new version is automatically set as the default version of the
+%% customer managed permission. New resource shares automatically use the
+%% default permission. Existing resource shares continue to use their
+%% original permission versions, but you can use
+%% `ReplacePermissionAssociations' to update them.
+%%
+%% If the specified customer managed permission already has the maximum of 5
+%% versions, then you must delete one of the existing versions before you can
+%% create a new one.
+create_permission_version(Client, Input) ->
+    create_permission_version(Client, Input, []).
+create_permission_version(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/createpermissionversion"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a resource share.
 %%
 %% You can provide a list of the Amazon Resource Names (ARNs) for the
@@ -196,11 +272,73 @@ create_resource_share(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the specified customer managed permission in the Amazon Web
+%% Services Region in which you call this operation.
+%%
+%% You can delete a customer managed permission only if it isn't attached
+%% to any resource share. The operation deletes all versions associated with
+%% the customer managed permission.
+delete_permission(Client, Input) ->
+    delete_permission(Client, Input, []).
+delete_permission(Client, Input0, Options0) ->
+    Method = delete,
+    Path = ["/deletepermission"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>},
+                     {<<"permissionArn">>, <<"permissionArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes one version of a customer managed permission.
+%%
+%% The version you specify must not be attached to any resource share and
+%% must not be the default version for the permission.
+%%
+%% If a customer managed permission has the maximum of 5 versions, then you
+%% must delete at least one version before you can create another.
+delete_permission_version(Client, Input) ->
+    delete_permission_version(Client, Input, []).
+delete_permission_version(Client, Input0, Options0) ->
+    Method = delete,
+    Path = ["/deletepermissionversion"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>},
+                     {<<"permissionArn">>, <<"permissionArn">>},
+                     {<<"permissionVersion">>, <<"permissionVersion">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the specified resource share.
 %%
 %% This doesn't delete any of the resources that were associated with the
-%% resource share; it only stops the sharing of those resources outside of
-%% the Amazon Web Services account that created them.
+%% resource share; it only stops the sharing of those resources through this
+%% resource share.
 delete_resource_share(Client, Input) ->
     delete_resource_share(Client, Input, []).
 delete_resource_share(Client, Input0, Options0) ->
@@ -225,8 +363,8 @@ delete_resource_share(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disassociates the specified principals or resources from the
-%% specified resource share.
+%% @doc Removes the specified principals or resources from participating in
+%% the specified resource share.
 disassociate_resource_share(Client, Input) ->
     disassociate_resource_share(Client, Input, []).
 disassociate_resource_share(Client, Input0, Options0) ->
@@ -249,9 +387,9 @@ disassociate_resource_share(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disassociates an RAM permission from a resource share.
+%% @doc Removes a managed permission from a resource share.
 %%
-%% Permission changes take effect immediately. You can remove a RAM
+%% Permission changes take effect immediately. You can remove a managed
 %% permission from a resource share only if there are currently no resources
 %% of the relevant resource type currently attached to the resource share.
 disassociate_resource_share_permission(Client, Input) ->
@@ -278,15 +416,18 @@ disassociate_resource_share_permission(Client, Input0, Options0) ->
 
 %% @doc Enables resource sharing within your organization in Organizations.
 %%
-%% Calling this operation enables RAM to retrieve information about the
-%% organization and its structure. This lets you share resources with all of
-%% the accounts in an organization by specifying the organization's ID,
-%% or all of the accounts in an organizational unit (OU) by specifying the
-%% OU's ID. Until you enable sharing within the organization, you can
-%% specify only individual Amazon Web Services accounts, or for supported
-%% resource types, IAM users and roles.
+%% This operation creates a service-linked role called
+%% `AWSServiceRoleForResourceAccessManager' that has the IAM managed
+%% policy named AWSResourceAccessManagerServiceRolePolicy attached. This role
+%% permits RAM to retrieve information about the organization and its
+%% structure. This lets you share resources with all of the accounts in the
+%% calling account's organization by specifying the organization ID, or
+%% all of the accounts in an organizational unit (OU) by specifying the OU
+%% ID. Until you enable sharing within the organization, you can specify only
+%% individual Amazon Web Services accounts, or for supported resource types,
+%% IAM roles and users.
 %%
-%% You must call this operation from an IAM user or role in the
+%% You must call this operation from an IAM role or user in the
 %% organization's management account.
 enable_sharing_with_aws_organization(Client, Input) ->
     enable_sharing_with_aws_organization(Client, Input, []).
@@ -310,7 +451,7 @@ enable_sharing_with_aws_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets the contents of an RAM permission in JSON format.
+%% @doc Retrieves the contents of a managed permission in JSON format.
 get_permission(Client, Input) ->
     get_permission(Client, Input, []).
 get_permission(Client, Input0, Options0) ->
@@ -357,8 +498,8 @@ get_resource_policies(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Retrieves the resource and principal associations for resource shares
-%% that you own.
+%% @doc Retrieves the lists of resources and principals that associated for
+%% resource shares that you own.
 get_resource_share_associations(Client, Input) ->
     get_resource_share_associations(Client, Input, []).
 get_resource_share_associations(Client, Input0, Options0) ->
@@ -456,6 +597,33 @@ list_pending_invitation_resources(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists information about the managed permission and its associations
+%% to any resource shares that use this managed permission.
+%%
+%% This lets you see which resource shares use which versions of the
+%% specified managed permission.
+list_permission_associations(Client, Input) ->
+    list_permission_associations(Client, Input, []).
+list_permission_associations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/listpermissionassociations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists the available versions of the specified RAM permission.
 list_permission_versions(Client, Input) ->
     list_permission_versions(Client, Input, []).
@@ -510,6 +678,31 @@ list_principals(Client, Input) ->
 list_principals(Client, Input0, Options0) ->
     Method = post,
     Path = ["/listprincipals"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves the current status of the asynchronous tasks performed by
+%% RAM when you perform the `ReplacePermissionAssociationsWork'
+%% operation.
+list_replace_permission_associations_work(Client, Input) ->
+    list_replace_permission_associations_work(Client, Input, []).
+list_replace_permission_associations_work(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/listreplacepermissionassociationswork"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -597,16 +790,81 @@ list_resources(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc When you attach a resource-based permission policy to a resource, it
-%% automatically creates a resource share.
+%% @doc When you attach a resource-based policy to a resource, RAM
+%% automatically creates a resource share of
+%% `featureSet'=`CREATED_FROM_POLICY' with a managed permission that
+%% has the same IAM permissions as the original resource-based policy.
 %%
-%% However, resource shares created this way are visible only to the resource
-%% share owner, and the resource share can't be modified in RAM.
+%% However, this type of managed permission is visible to only the resource
+%% share owner, and the associated resource share can't be modified by
+%% using RAM.
 %%
-%% You can use this operation to promote the resource share to a full RAM
-%% resource share. When you promote a resource share, you can then manage the
-%% resource share in RAM and it becomes visible to all of the principals you
-%% shared it with.
+%% This operation creates a separate, fully manageable customer managed
+%% permission that has the same IAM permissions as the original
+%% resource-based policy. You can associate this customer managed permission
+%% to any resource shares.
+%%
+%% Before you use `PromoteResourceShareCreatedFromPolicy', you should
+%% first run this operation to ensure that you have an appropriate customer
+%% managed permission that can be associated with the promoted resource
+%% share.
+%%
+%% The original `CREATED_FROM_POLICY' policy isn't deleted, and
+%% resource shares using that original policy aren't automatically
+%% updated.
+%%
+%% You can't modify a `CREATED_FROM_POLICY' resource share so you
+%% can't associate the new customer managed permission by using
+%% `ReplacePermsissionAssociations'. However, if you use
+%% `PromoteResourceShareCreatedFromPolicy', that operation automatically
+%% associates the fully manageable customer managed permission to the newly
+%% promoted `STANDARD' resource share.
+%%
+%% After you promote a resource share, if the original
+%% `CREATED_FROM_POLICY' managed permission has no other associations to
+%% A resource share, then RAM automatically deletes it.
+promote_permission_created_from_policy(Client, Input) ->
+    promote_permission_created_from_policy(Client, Input, []).
+promote_permission_created_from_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/promotepermissioncreatedfrompolicy"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc When you attach a resource-based policy to a resource, RAM
+%% automatically creates a resource share of
+%% `featureSet'=`CREATED_FROM_POLICY' with a managed permission that
+%% has the same IAM permissions as the original resource-based policy.
+%%
+%% However, this type of managed permission is visible to only the resource
+%% share owner, and the associated resource share can't be modified by
+%% using RAM.
+%%
+%% This operation promotes the resource share to a `STANDARD' resource
+%% share that is fully manageable in RAM. When you promote a resource share,
+%% you can then manage the resource share in RAM and it becomes visible to
+%% all of the principals you shared it with.
+%%
+%% Before you perform this operation, you should first run
+%% `PromotePermissionCreatedFromPolicy'to ensure that you have an
+%% appropriate customer managed permission that can be associated with this
+%% resource share after its is promoted. If this operation can't find a
+%% managed permission that exactly matches the existing
+%% `CREATED_FROM_POLICY' permission, then this operation fails.
 promote_resource_share_created_from_policy(Client, Input) ->
     promote_resource_share_created_from_policy(Client, Input, []).
 promote_resource_share_created_from_policy(Client, Input0, Options0) ->
@@ -654,11 +912,84 @@ reject_resource_share_invitation(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds the specified tag keys and values to the specified resource
-%% share.
+%% @doc Updates all resource shares that use a managed permission to a
+%% different managed permission.
 %%
-%% The tags are attached only to the resource share, not to the resources
-%% that are in the resource share.
+%% This operation always applies the default version of the target managed
+%% permission. You can optionally specify that the update applies to only
+%% resource shares that currently use a specified version. This enables you
+%% to update to the latest version, without changing the which managed
+%% permission is used.
+%%
+%% You can use this operation to update all of your resource shares to use
+%% the current default version of the permission by specifying the same value
+%% for the `fromPermissionArn' and `toPermissionArn' parameters.
+%%
+%% You can use the optional `fromPermissionVersion' parameter to update
+%% only those resources that use a specified version of the managed
+%% permission to the new managed permission.
+%%
+%% To successfully perform this operation, you must have permission to update
+%% the resource-based policy on all affected resource types.
+replace_permission_associations(Client, Input) ->
+    replace_permission_associations(Client, Input, []).
+replace_permission_associations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/replacepermissionassociations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Designates the specified version number as the default version for
+%% the specified customer managed permission.
+%%
+%% New resource shares automatically use this new default permission.
+%% Existing resource shares continue to use their original permission
+%% version, but you can use `ReplacePermissionAssociations' to update
+%% them.
+set_default_permission_version(Client, Input) ->
+    set_default_permission_version(Client, Input, []).
+set_default_permission_version(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/setdefaultpermissionversion"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds the specified tag keys and values to a resource share or managed
+%% permission.
+%%
+%% If you choose a resource share, the tags are attached to only the resource
+%% share, not to the resources that are in the resource share.
+%%
+%% The tags on a managed permission are the same for all versions of the
+%% managed permission.
 tag_resource(Client, Input) ->
     tag_resource(Client, Input, []).
 tag_resource(Client, Input0, Options0) ->
@@ -682,7 +1013,7 @@ tag_resource(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the specified tag key and value pairs from the specified
-%% resource share.
+%% resource share or managed permission.
 untag_resource(Client, Input) ->
     untag_resource(Client, Input, []).
 untag_resource(Client, Input0, Options0) ->

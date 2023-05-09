@@ -152,6 +152,12 @@
          list_stack_instances_for_provisioned_product/3,
          list_tag_options/2,
          list_tag_options/3,
+         notify_provision_product_engine_workflow_result/2,
+         notify_provision_product_engine_workflow_result/3,
+         notify_terminate_provisioned_product_engine_workflow_result/2,
+         notify_terminate_provisioned_product_engine_workflow_result/3,
+         notify_update_provisioned_product_engine_workflow_result/2,
+         notify_update_provisioned_product_engine_workflow_result/3,
          provision_product/2,
          provision_product/3,
          reject_portfolio_share/2,
@@ -1041,6 +1047,30 @@ list_tag_options(Client, Input)
 list_tag_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagOptions">>, Input, Options).
+
+%% @doc Notifies the result of the provisioning engine execution.
+notify_provision_product_engine_workflow_result(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    notify_provision_product_engine_workflow_result(Client, Input, []).
+notify_provision_product_engine_workflow_result(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"NotifyProvisionProductEngineWorkflowResult">>, Input, Options).
+
+%% @doc Notifies the result of the terminate engine execution.
+notify_terminate_provisioned_product_engine_workflow_result(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    notify_terminate_provisioned_product_engine_workflow_result(Client, Input, []).
+notify_terminate_provisioned_product_engine_workflow_result(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"NotifyTerminateProvisionedProductEngineWorkflowResult">>, Input, Options).
+
+%% @doc Notifies the result of the update engine execution.
+notify_update_provisioned_product_engine_workflow_result(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    notify_update_provisioned_product_engine_workflow_result(Client, Input, []).
+notify_update_provisioned_product_engine_workflow_result(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"NotifyUpdateProvisionedProductEngineWorkflowResult">>, Input, Options).
 
 %% @doc Provisions the specified product.
 %%
