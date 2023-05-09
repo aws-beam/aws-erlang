@@ -26,9 +26,9 @@ jobs:
           - 9090:9090
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Cache Hex packages
-      uses: actions/cache@v1
+      uses: actions/cache@v3
       with:
         path: ~/.cache/rebar3/hex/hexpm/packages
         key: ${{ runner.os }}-hex-${{ hashFiles(format('{0}{1}', github.workspace, '/rebar.lock')) }}

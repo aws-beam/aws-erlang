@@ -10,7 +10,7 @@ on:
 
 jobs:
   check:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     name: Check if changed
     strategy:
       fail-fast: false
@@ -36,7 +36,7 @@ jobs:
           echo "::set-output name=LATEST_TAG::${tag_name}"
 
   generate:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     name: Update services
     needs: check
     if: ${{ needs.check.outputs.current_tag != needs.check.outputs.latest_tag }}
@@ -51,7 +51,7 @@ jobs:
       fail-fast: false
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - uses: erlef/setup-beam@v1
         with:
@@ -60,14 +60,14 @@ jobs:
           rebar3-version: ${{ env.REBAR3_VERSION }}
 
       - name: Checkout aws/aws-sdk-go (official Go SDK)
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: aws/aws-sdk-go
           path: tmp/aws-sdk-go
           ref: ${{ env.LATEST_AWS_SDK_GO_TAG }}
 
       - name: Checkout aws-codegen
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: aws-beam/aws-codegen
           path: tmp/aws-codegen
