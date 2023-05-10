@@ -28,6 +28,8 @@
 %%
 %% </li> <li> Amazon Neptune clusters
 %%
+%% </li> <li> Amazon SageMaker Serverless endpoint provisioned concurrency
+%%
 %% </li> <li> Amazon SageMaker endpoint variants
 %%
 %% </li> <li> Spot Fleets (Amazon EC2)
