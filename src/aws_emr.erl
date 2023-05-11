@@ -125,7 +125,7 @@
 
 %% @doc Adds an instance fleet to a running cluster.
 %%
-%% The instance fleet configuration is available only in Amazon EMR versions
+%% The instance fleet configuration is available only in Amazon EMR releases
 %% 4.8.0 and later, excluding 5.0.x.
 add_instance_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -194,7 +194,7 @@ add_tags(Client, Input, Options)
 %% 5.0.0. A maximum of 256 steps are allowed in each CancelSteps request.
 %% CancelSteps is idempotent but asynchronous; it does not guarantee that a
 %% step will be canceled, even if the request is successfully submitted. When
-%% you use Amazon EMR versions 5.28.0 and later, you can cancel steps that
+%% you use Amazon EMR releases 5.28.0 and later, you can cancel steps that
 %% are in a `PENDING' or `RUNNING' state. In earlier versions of
 %% Amazon EMR, you can only cancel steps that are in a `PENDING' state.
 cancel_steps(Client, Input)
@@ -307,11 +307,11 @@ describe_notebook_execution(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNotebookExecution">>, Input, Options).
 
-%% @doc Provides EMR release label details, such as releases available the
-%% region where the API request is run, and the available applications for a
-%% specific EMR release label.
+%% @doc Provides Amazon EMR release label details, such as the releases
+%% available the Region where the API request is run, and the available
+%% applications for a specific Amazon EMR release label.
 %%
-%% Can also list EMR release versions that support a specified version of
+%% Can also list Amazon EMR releases that support a specified version of
 %% Spark.
 describe_release_label(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -423,7 +423,7 @@ list_clusters(Client, Input, Options)
 
 %% @doc Lists all available details about the instance fleets in a cluster.
 %%
-%% The instance fleet configuration is available only in Amazon EMR versions
+%% The instance fleet configuration is available only in Amazon EMR releases
 %% 4.8.0 and later, excluding 5.0.x versions.
 list_instance_fleets(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -441,10 +441,10 @@ list_instance_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInstanceGroups">>, Input, Options).
 
-%% @doc Provides information for all active EC2 instances and EC2 instances
-%% terminated in the last 30 days, up to a maximum of 2,000.
+%% @doc Provides information for all active Amazon EC2 instances and Amazon
+%% EC2 instances terminated in the last 30 days, up to a maximum of 2,000.
 %%
-%% EC2 instances in any of the following states are considered active:
+%% Amazon EC2 instances in any of the following states are considered active:
 %% AWAITING_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
 list_instances(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -458,7 +458,7 @@ list_instances(Client, Input, Options)
 %% You can filter the list based on multiple criteria such as status, time
 %% range, and editor id. Returns a maximum of 50 notebook executions and a
 %% marker to track the paging of a longer notebook execution list across
-%% multiple `ListNotebookExecution' calls.
+%% multiple `ListNotebookExecutions' calls.
 list_notebook_executions(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_notebook_executions(Client, Input, []).
@@ -466,8 +466,8 @@ list_notebook_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListNotebookExecutions">>, Input, Options).
 
-%% @doc Retrieves release labels of EMR services in the region where the API
-%% is called.
+%% @doc Retrieves release labels of Amazon EMR services in the Region where
+%% the API is called.
 list_release_labels(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_release_labels(Client, Input, []).
@@ -538,7 +538,7 @@ modify_cluster(Client, Input, Options)
 %%
 %% The call either succeeds or fails atomically.
 %%
-%% The instance fleet configuration is available only in Amazon EMR versions
+%% The instance fleet configuration is available only in Amazon EMR releases
 %% 4.8.0 and later, excluding 5.0.x versions.
 modify_instance_fleet(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -564,8 +564,8 @@ modify_instance_groups(Client, Input, Options)
 %% group or task instance group in an Amazon EMR cluster.
 %%
 %% The automatic scaling policy defines how an instance group dynamically
-%% adds and terminates EC2 instances in response to the value of a CloudWatch
-%% metric.
+%% adds and terminates Amazon EC2 instances in response to the value of a
+%% CloudWatch metric.
 put_auto_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_auto_scaling_policy(Client, Input, []).
@@ -573,7 +573,7 @@ put_auto_scaling_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAutoScalingPolicy">>, Input, Options).
 
-%% @doc Auto-termination is supported in Amazon EMR versions 5.30.0 and 6.1.0
+%% @doc Auto-termination is supported in Amazon EMR releases 5.30.0 and 6.1.0
 %% and later.
 %%
 %% For more information, see Using an auto-termination policy.
@@ -604,10 +604,10 @@ put_block_public_access_configuration(Client, Input, Options)
 %% @doc Creates or updates a managed scaling policy for an Amazon EMR
 %% cluster.
 %%
-%% The managed scaling policy defines the limits for resources, such as EC2
-%% instances that can be added or terminated from a cluster. The policy only
-%% applies to the core and task nodes. The master node cannot be scaled after
-%% initial configuration.
+%% The managed scaling policy defines the limits for resources, such as
+%% Amazon EC2 instances that can be added or terminated from a cluster. The
+%% policy only applies to the core and task nodes. The master node cannot be
+%% scaled after initial configuration.
 put_managed_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_managed_scaling_policy(Client, Input, []).
@@ -616,7 +616,7 @@ put_managed_scaling_policy(Client, Input, Options)
     request(Client, <<"PutManagedScalingPolicy">>, Input, Options).
 
 %% @doc Removes an automatic scaling policy from a specified instance group
-%% within an EMR cluster.
+%% within an Amazon EMR cluster.
 remove_auto_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_auto_scaling_policy(Client, Input, []).
@@ -632,7 +632,7 @@ remove_auto_termination_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveAutoTerminationPolicy">>, Input, Options).
 
-%% @doc Removes a managed scaling policy from a specified EMR cluster.
+%% @doc Removes a managed scaling policy from a specified Amazon EMR cluster.
 remove_managed_scaling_policy(Client, Input)
   when is_map(Client), is_map(Input) ->
     remove_managed_scaling_policy(Client, Input, []).
@@ -681,7 +681,7 @@ remove_tags(Client, Input, Options)
 %% For long-running clusters, we recommend that you periodically store your
 %% results.
 %%
-%% The instance fleets configuration is available only in Amazon EMR versions
+%% The instance fleets configuration is available only in Amazon EMR releases
 %% 4.8.0 and later, excluding 5.0.x versions. The RunJobFlow request can
 %% contain InstanceFleets parameters or InstanceGroups parameters, but not
 %% both.
@@ -692,14 +692,14 @@ run_job_flow(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RunJobFlow">>, Input, Options).
 
-%% @doc SetTerminationProtection locks a cluster (job flow) so the EC2
+%% @doc SetTerminationProtection locks a cluster (job flow) so the Amazon EC2
 %% instances in the cluster cannot be terminated by user intervention, an API
 %% call, or in the event of a job-flow error.
 %%
 %% The cluster still terminates upon successful completion of the job flow.
 %% Calling `SetTerminationProtection' on a cluster is similar to calling
-%% the Amazon EC2 `DisableAPITermination' API on all EC2 instances in a
-%% cluster.
+%% the Amazon EC2 `DisableAPITermination' API on all Amazon EC2 instances
+%% in a cluster.
 %%
 %% `SetTerminationProtection' is used to prevent accidental termination
 %% of a cluster and to ensure that in the event of an error, the instances
@@ -724,20 +724,21 @@ set_termination_protection(Client, Input, Options)
 %%
 %% Your cluster may be visible to all users in your account. To restrict
 %% cluster access using an IAM policy, see Identity and Access Management for
-%% EMR.
+%% Amazon EMR.
 %%
-%% Sets the `Cluster$VisibleToAllUsers' value for an EMR cluster. When
-%% `true', IAM principals in the Amazon Web Services account can perform
-%% EMR cluster actions that their IAM policies allow. When `false', only
-%% the IAM principal that created the cluster and the Amazon Web Services
-%% account root user can perform EMR actions on the cluster, regardless of
-%% IAM permissions policies attached to other IAM principals.
+%% Sets the `Cluster$VisibleToAllUsers' value for an Amazon EMR cluster.
+%% When `true', IAM principals in the Amazon Web Services account can
+%% perform Amazon EMR cluster actions that their IAM policies allow. When
+%% `false', only the IAM principal that created the cluster and the
+%% Amazon Web Services account root user can perform Amazon EMR actions on
+%% the cluster, regardless of IAM permissions policies attached to other IAM
+%% principals.
 %%
 %% This action works on running clusters. When you create a cluster, use the
 %% `RunJobFlowInput$VisibleToAllUsers' parameter.
 %%
-%% For more information, see Understanding the EMR Cluster VisibleToAllUsers
-%% Setting in the Amazon EMRManagement Guide.
+%% For more information, see Understanding the Amazon EMR Cluster
+%% VisibleToAllUsers Setting in the Amazon EMR Management Guide.
 set_visible_to_all_users(Client, Input)
   when is_map(Client), is_map(Input) ->
     set_visible_to_all_users(Client, Input, []).
@@ -764,8 +765,8 @@ stop_notebook_execution(Client, Input, Options)
 %% @doc TerminateJobFlows shuts a list of clusters (job flows) down.
 %%
 %% When a job flow is shut down, any step not yet completed is canceled and
-%% the EC2 instances on which the cluster is running are stopped. Any log
-%% files not already saved are uploaded to Amazon S3 if a LogUri was
+%% the Amazon EC2 instances on which the cluster is running are stopped. Any
+%% log files not already saved are uploaded to Amazon S3 if a LogUri was
 %% specified when the cluster was created.
 %%
 %% The maximum number of clusters allowed is 10. The call to
