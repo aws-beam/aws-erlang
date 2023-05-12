@@ -9,10 +9,21 @@
 %%
 %% JSON is used for both requests and responses, including errors.
 %%
-%% Terminology: The IVS stage API sometimes is referred to as the IVS
-%% RealTime API.
+%% Terminology:
 %%
-%% Resources
+%% <ul> <li> The IVS stage API sometimes is referred to as the IVS RealTime
+%% API.
+%%
+%% </li> <li> A participant token is an authorization token used to
+%% publish/subscribe to a stage.
+%%
+%% </li> <li> A participant object represents participants (people) in the
+%% stage and contains information about them. When a token is created, it
+%% includes a participant ID; when a participant uses that token to join a
+%% stage, the participant is associated with that participant ID There is a
+%% 1:1 mapping between participant tokens and participants.
+%%
+%% </li> </ul> Resources
 %%
 %% The following resources contain information about your IVS live stream
 %% (see Getting Started with Amazon IVS):
@@ -56,10 +67,25 @@
 %% participant and revokes the participant permanently from a specified
 %% stage.
 %%
+%% </li> <li> `GetParticipant' — Gets information about the specified
+%% participant token.
+%%
 %% </li> <li> `GetStage' — Gets information for the specified stage.
+%%
+%% </li> <li> `GetStageSession' — Gets information for the specified
+%% stage session.
+%%
+%% </li> <li> `ListParticipantEvents' — Lists events for a specified
+%% participant that occurred during a specified stage session.
+%%
+%% </li> <li> `ListParticipants' — Lists all participants in a specified
+%% stage session.
 %%
 %% </li> <li> `ListStages' — Gets summary information about all stages in
 %% your account, in the AWS region where the API request is processed.
+%%
+%% </li> <li> `ListStageSessions' — Gets all sessions for a specified
+%% stage.
 %%
 %% </li> <li> `UpdateStage' — Updates a stage’s configuration.
 %%
@@ -85,8 +111,18 @@
          delete_stage/3,
          disconnect_participant/2,
          disconnect_participant/3,
+         get_participant/2,
+         get_participant/3,
          get_stage/2,
          get_stage/3,
+         get_stage_session/2,
+         get_stage_session/3,
+         list_participant_events/2,
+         list_participant_events/3,
+         list_participants/2,
+         list_participants/3,
+         list_stage_sessions/2,
+         list_stage_sessions/3,
          list_stages/2,
          list_stages/3,
          list_tags_for_resource/2,
@@ -205,12 +241,128 @@ disconnect_participant(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Gets information about the specified participant token.
+get_participant(Client, Input) ->
+    get_participant(Client, Input, []).
+get_participant(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetParticipant"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets information for the specified stage.
 get_stage(Client, Input) ->
     get_stage(Client, Input, []).
 get_stage(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetStage"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets information for the specified stage session.
+get_stage_session(Client, Input) ->
+    get_stage_session(Client, Input, []).
+get_stage_session(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetStageSession"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists events for a specified participant that occurred during a
+%% specified stage session.
+list_participant_events(Client, Input) ->
+    list_participant_events(Client, Input, []).
+list_participant_events(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListParticipantEvents"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all participants in a specified stage session.
+list_participants(Client, Input) ->
+    list_participants(Client, Input, []).
+list_participants(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListParticipants"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets all sessions for a specified stage.
+list_stage_sessions(Client, Input) ->
+    list_stage_sessions(Client, Input, []).
+list_stage_sessions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListStageSessions"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

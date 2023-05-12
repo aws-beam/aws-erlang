@@ -66,10 +66,14 @@
          describe_cases/3,
          describe_communications/2,
          describe_communications/3,
+         describe_create_case_options/2,
+         describe_create_case_options/3,
          describe_services/2,
          describe_services/3,
          describe_severity_levels/2,
          describe_severity_levels/3,
+         describe_supported_languages/2,
+         describe_supported_languages/3,
          describe_trusted_advisor_check_refresh_statuses/2,
          describe_trusted_advisor_check_refresh_statuses/3,
          describe_trusted_advisor_check_result/2,
@@ -260,6 +264,27 @@ describe_communications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCommunications">>, Input, Options).
 
+%% @doc Returns a list of CreateCaseOption types along with the corresponding
+%% supported hours and language availability.
+%%
+%% You can specify the `language' `categoryCode', `issueType' and
+%% `serviceCode' used to retrieve the CreateCaseOptions.
+%%
+%% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
+%% to use the Amazon Web Services Support API.
+%%
+%% If you call the Amazon Web Services Support API from an account that
+%% doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
+%% plan, the `SubscriptionRequiredException' error message appears. For
+%% information about changing your support plan, see Amazon Web Services
+%% Support.
+describe_create_case_options(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_create_case_options(Client, Input, []).
+describe_create_case_options(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCreateCaseOptions">>, Input, Options).
+
 %% @doc Returns the current list of Amazon Web Services services and a list
 %% of service categories for each service.
 %%
@@ -309,6 +334,27 @@ describe_severity_levels(Client, Input)
 describe_severity_levels(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSeverityLevels">>, Input, Options).
+
+%% @doc Returns a list of supported languages for a specified
+%% `categoryCode', `issueType' and `serviceCode'.
+%%
+%% The returned supported languages will include a ISO 639-1 code for the
+%% `language', and the language display name.
+%%
+%% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
+%% to use the Amazon Web Services Support API.
+%%
+%% If you call the Amazon Web Services Support API from an account that
+%% doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
+%% plan, the `SubscriptionRequiredException' error message appears. For
+%% information about changing your support plan, see Amazon Web Services
+%% Support.
+describe_supported_languages(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_supported_languages(Client, Input, []).
+describe_supported_languages(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeSupportedLanguages">>, Input, Options).
 
 %% @doc Returns the refresh status of the Trusted Advisor checks that have
 %% the specified check IDs.

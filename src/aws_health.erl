@@ -3,17 +3,24 @@
 
 %% @doc Health
 %%
-%% The Health API provides programmatic access to the Health information that
-%% appears in the Personal Health Dashboard.
+%% The Health API provides access to the Health information that appears in
+%% the Health Dashboard.
 %%
 %% You can use the API operations to get information about events that might
-%% affect your Amazon Web Services services and resources.
+%% affect your Amazon Web Services and resources.
 %%
 %% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
 %% from Amazon Web Services Support to use the Health API. If you call the
 %% Health API from an Amazon Web Services account that doesn't have a
 %% Business, Enterprise On-Ramp, or Enterprise Support plan, you receive a
 %% `SubscriptionRequiredException' error.
+%%
+%% For API access, you need an access key ID and a secret access key. Use
+%% temporary credentials instead of long-term access keys when possible.
+%% Temporary credentials include an access key ID, a secret access key, and a
+%% security token that indicates when the credentials expire. For more
+%% information, see Best practices for managing Amazon Web Services access
+%% keys in the Amazon Web Services General Reference.
 %%
 %% You can use the Health endpoint health.us-east-1.amazonaws.com (HTTPS) to
 %% call the Health API operations. Health supports a multi-Region application
@@ -104,10 +111,9 @@ describe_affected_accounts_for_organization(Client, Input, Options)
 %% events, based on the specified filter criteria.
 %%
 %% Entities can refer to individual customer resources, groups of customer
-%% resources, or any other construct, depending on the Amazon Web Services
-%% service. Events that have impact beyond that of the affected entities, or
-%% where the extent of impact is unknown, include at least one entity
-%% indicating this.
+%% resources, or any other construct, depending on the Amazon Web Service.
+%% Events that have impact beyond that of the affected entities, or where the
+%% extent of impact is unknown, include at least one entity indicating this.
 %%
 %% At least one event ARN is required.
 %%
@@ -130,8 +136,7 @@ describe_affected_entities(Client, Input, Options)
 %% based on the filter criteria.
 %%
 %% Entities can refer to individual customer resources, groups of customer
-%% resources, or any other construct, depending on the Amazon Web Services
-%% service.
+%% resources, or any other construct, depending on the Amazon Web Service.
 %%
 %% At least one event Amazon Resource Name (ARN) and account ID are required.
 %%
@@ -245,8 +250,8 @@ describe_event_details_for_organization(Client, Input, Options)
 %% @doc Returns the event types that meet the specified filter criteria.
 %%
 %% You can use this API operation to find information about the Health event,
-%% such as the category, Amazon Web Services service, and event code. The
-%% metadata for each event appears in the EventType object.
+%% such as the category, Amazon Web Service, and event code. The metadata for
+%% each event appears in the EventType object.
 %%
 %% If you don't specify a filter criteria, the API operation returns all
 %% event types, in no particular order.
@@ -329,9 +334,8 @@ describe_events_for_organization(Client, Input, Options)
 %% @doc This operation provides status information on enabling or disabling
 %% Health to work with your organization.
 %%
-%% To call this operation, you must sign in as an IAM user, assume an IAM
-%% role, or sign in as the root user (not recommended) in the
-%% organization's management account.
+%% To call this operation, you must use the organization's management
+%% account.
 describe_health_service_status_for_organization(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_health_service_status_for_organization(Client, Input, []).
@@ -341,10 +345,9 @@ describe_health_service_status_for_organization(Client, Input, Options)
 
 %% @doc Disables Health from working with Organizations.
 %%
-%% To call this operation, you must sign in as an Identity and Access
-%% Management (IAM) user, assume an IAM role, or sign in as the root user
-%% (not recommended) in the organization's management account. For more
-%% information, see Aggregating Health events in the Health User Guide.
+%% To call this operation, you must sign in to the organization's
+%% management account. For more information, see Aggregating Health events in
+%% the Health User Guide.
 %%
 %% This operation doesn't remove the service-linked role from the
 %% management account in your organization. You must use the IAM console,

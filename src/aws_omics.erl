@@ -4,10 +4,12 @@
 %% @doc This is the Amazon Omics API Reference.
 %%
 %% For an introduction to the service, see What is Amazon Omics? in the
-%% Amazon Omics Developer Guide.
+%% Amazon Omics User Guide.
 -module(aws_omics).
 
--export([batch_delete_read_set/3,
+-export([abort_multipart_read_set_upload/4,
+         abort_multipart_read_set_upload/5,
+         batch_delete_read_set/3,
          batch_delete_read_set/4,
          cancel_annotation_import_job/3,
          cancel_annotation_import_job/4,
@@ -15,8 +17,12 @@
          cancel_run/4,
          cancel_variant_import_job/3,
          cancel_variant_import_job/4,
+         complete_multipart_read_set_upload/4,
+         complete_multipart_read_set_upload/5,
          create_annotation_store/2,
          create_annotation_store/3,
+         create_multipart_read_set_upload/3,
+         create_multipart_read_set_upload/4,
          create_reference_store/2,
          create_reference_store/3,
          create_run_group/2,
@@ -101,12 +107,16 @@
          list_annotation_import_jobs/3,
          list_annotation_stores/2,
          list_annotation_stores/3,
+         list_multipart_read_set_uploads/3,
+         list_multipart_read_set_uploads/4,
          list_read_set_activation_jobs/3,
          list_read_set_activation_jobs/4,
          list_read_set_export_jobs/3,
          list_read_set_export_jobs/4,
          list_read_set_import_jobs/3,
          list_read_set_import_jobs/4,
+         list_read_set_upload_parts/4,
+         list_read_set_upload_parts/5,
          list_read_sets/3,
          list_read_sets/4,
          list_reference_import_jobs/3,
@@ -161,13 +171,38 @@
          update_variant_store/3,
          update_variant_store/4,
          update_workflow/3,
-         update_workflow/4]).
+         update_workflow/4,
+         upload_read_set_part/4,
+         upload_read_set_part/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Stops a multipart upload.
+abort_multipart_read_set_upload(Client, SequenceStoreId, UploadId, Input) ->
+    abort_multipart_read_set_upload(Client, SequenceStoreId, UploadId, Input, []).
+abort_multipart_read_set_upload(Client, SequenceStoreId, UploadId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/sequencestore/", aws_util:encode_uri(SequenceStoreId), "/upload/", aws_util:encode_uri(UploadId), "/abort"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes one or more read sets.
 batch_delete_read_set(Client, SequenceStoreId, Input) ->
@@ -261,12 +296,59 @@ cancel_variant_import_job(Client, JobId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Concludes a multipart upload once you have uploaded all the
+%% components.
+complete_multipart_read_set_upload(Client, SequenceStoreId, UploadId, Input) ->
+    complete_multipart_read_set_upload(Client, SequenceStoreId, UploadId, Input, []).
+complete_multipart_read_set_upload(Client, SequenceStoreId, UploadId, Input0, Options0) ->
+    Method = post,
+    Path = ["/sequencestore/", aws_util:encode_uri(SequenceStoreId), "/upload/", aws_util:encode_uri(UploadId), "/complete"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an annotation store.
 create_annotation_store(Client, Input) ->
     create_annotation_store(Client, Input, []).
 create_annotation_store(Client, Input0, Options0) ->
     Method = post,
     Path = ["/annotationStore"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Begins a multipart read set upload.
+create_multipart_read_set_upload(Client, SequenceStoreId, Input) ->
+    create_multipart_read_set_upload(Client, SequenceStoreId, Input, []).
+create_multipart_read_set_upload(Client, SequenceStoreId, Input0, Options0) ->
+    Method = post,
+    Path = ["/sequencestore/", aws_util:encode_uri(SequenceStoreId), "/upload"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1072,6 +1154,31 @@ list_annotation_stores(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists all multipart read set uploads and their statuses.
+list_multipart_read_set_uploads(Client, SequenceStoreId, Input) ->
+    list_multipart_read_set_uploads(Client, SequenceStoreId, Input, []).
+list_multipart_read_set_uploads(Client, SequenceStoreId, Input0, Options0) ->
+    Method = post,
+    Path = ["/sequencestore/", aws_util:encode_uri(SequenceStoreId), "/uploads"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves a list of read set activation jobs.
 list_read_set_activation_jobs(Client, SequenceStoreId, Input) ->
     list_read_set_activation_jobs(Client, SequenceStoreId, Input, []).
@@ -1128,6 +1235,32 @@ list_read_set_import_jobs(Client, SequenceStoreId, Input) ->
 list_read_set_import_jobs(Client, SequenceStoreId, Input0, Options0) ->
     Method = post,
     Path = ["/sequencestore/", aws_util:encode_uri(SequenceStoreId), "/importjobs"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This operation will list all parts in a requested multipart upload
+%% for a sequence store.
+list_read_set_upload_parts(Client, SequenceStoreId, UploadId, Input) ->
+    list_read_set_upload_parts(Client, SequenceStoreId, UploadId, Input, []).
+list_read_set_upload_parts(Client, SequenceStoreId, UploadId, Input0, Options0) ->
+    Method = post,
+    Path = ["/sequencestore/", aws_util:encode_uri(SequenceStoreId), "/upload/", aws_util:encode_uri(UploadId), "/parts"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1329,7 +1462,8 @@ list_runs(Client, QueryMap, HeadersMap, Options0)
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
         {<<"runGroupId">>, maps:get(<<"runGroupId">>, QueryMap, undefined)},
-        {<<"startingToken">>, maps:get(<<"startingToken">>, QueryMap, undefined)}
+        {<<"startingToken">>, maps:get(<<"startingToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1764,6 +1898,34 @@ update_workflow(Client, Id, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This operation uploads a specific part of a read set.
+%%
+%% If you upload a new part using a previously used part number, the
+%% previously uploaded part will be overwritten.
+upload_read_set_part(Client, SequenceStoreId, UploadId, Input) ->
+    upload_read_set_part(Client, SequenceStoreId, UploadId, Input, []).
+upload_read_set_part(Client, SequenceStoreId, UploadId, Input0, Options0) ->
+    Method = put,
+    Path = ["/sequencestore/", aws_util:encode_uri(SequenceStoreId), "/upload/", aws_util:encode_uri(UploadId), "/part"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"partNumber">>, <<"partNumber">>},
+                     {<<"partSource">>, <<"partSource">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
