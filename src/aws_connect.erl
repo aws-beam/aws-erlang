@@ -59,6 +59,8 @@
          create_integration_association/4,
          create_participant/2,
          create_participant/3,
+         create_prompt/3,
+         create_prompt/4,
          create_queue/3,
          create_queue/4,
          create_quick_connect/3,
@@ -97,6 +99,8 @@
          delete_instance/4,
          delete_integration_association/4,
          delete_integration_association/5,
+         delete_prompt/4,
+         delete_prompt/5,
          delete_quick_connect/4,
          delete_quick_connect/5,
          delete_rule/4,
@@ -148,6 +152,9 @@
          describe_phone_number/2,
          describe_phone_number/4,
          describe_phone_number/5,
+         describe_prompt/3,
+         describe_prompt/5,
+         describe_prompt/6,
          describe_queue/3,
          describe_queue/5,
          describe_queue/6,
@@ -212,6 +219,9 @@
          get_metric_data/4,
          get_metric_data_v2/2,
          get_metric_data_v2/3,
+         get_prompt_file/3,
+         get_prompt_file/5,
+         get_prompt_file/6,
          get_task_template/3,
          get_task_template/5,
          get_task_template/6,
@@ -403,6 +413,8 @@
          update_participant_role_config/5,
          update_phone_number/3,
          update_phone_number/4,
+         update_prompt/4,
+         update_prompt/5,
          update_queue_hours_of_operation/4,
          update_queue_hours_of_operation/5,
          update_queue_max_contacts/4,
@@ -1006,6 +1018,33 @@ create_participant(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a prompt.
+%%
+%% For more information about prompts, such as supported file types and
+%% maximum length, see Create prompts in the Amazon Connect
+%% Administrator's Guide.
+create_prompt(Client, InstanceId, Input) ->
+    create_prompt(Client, InstanceId, Input, []).
+create_prompt(Client, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/prompts/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This API is in preview release for Amazon Connect and is subject to
 %% change.
 %%
@@ -1487,6 +1526,29 @@ delete_integration_association(Client, InstanceId, IntegrationAssociationId, Inp
 delete_integration_association(Client, InstanceId, IntegrationAssociationId, Input0, Options0) ->
     Method = delete,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/integration-associations/", aws_util:encode_uri(IntegrationAssociationId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a prompt.
+delete_prompt(Client, InstanceId, PromptId, Input) ->
+    delete_prompt(Client, InstanceId, PromptId, Input, []).
+delete_prompt(Client, InstanceId, PromptId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/prompts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(PromptId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -2027,6 +2089,29 @@ describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap)
 describe_phone_number(Client, PhoneNumberId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the prompt.
+describe_prompt(Client, InstanceId, PromptId)
+  when is_map(Client) ->
+    describe_prompt(Client, InstanceId, PromptId, #{}, #{}).
+
+describe_prompt(Client, InstanceId, PromptId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_prompt(Client, InstanceId, PromptId, QueryMap, HeadersMap, []).
+
+describe_prompt(Client, InstanceId, PromptId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prompts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(PromptId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -2721,6 +2806,29 @@ get_metric_data_v2(Client, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets the prompt file.
+get_prompt_file(Client, InstanceId, PromptId)
+  when is_map(Client) ->
+    get_prompt_file(Client, InstanceId, PromptId, #{}, #{}).
+
+get_prompt_file(Client, InstanceId, PromptId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_prompt_file(Client, InstanceId, PromptId, QueryMap, HeadersMap, []).
+
+get_prompt_file(Client, InstanceId, PromptId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/prompts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(PromptId), "/file"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Gets details about a specific task template in the specified Amazon
 %% Connect instance.
@@ -5070,6 +5178,29 @@ update_phone_number(Client, PhoneNumberId, Input) ->
 update_phone_number(Client, PhoneNumberId, Input0, Options0) ->
     Method = put,
     Path = ["/phone-number/", aws_util:encode_uri(PhoneNumberId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a prompt.
+update_prompt(Client, InstanceId, PromptId, Input) ->
+    update_prompt(Client, InstanceId, PromptId, Input, []).
+update_prompt(Client, InstanceId, PromptId, Input0, Options0) ->
+    Method = post,
+    Path = ["/prompts/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(PromptId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

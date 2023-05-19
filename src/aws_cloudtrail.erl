@@ -296,9 +296,9 @@ get_event_data_store(Client, Input, Options)
 %% </li> </ul> For more information about logging management and data events,
 %% see the following topics in the CloudTrail User Guide:
 %%
-%% <ul> <li> Logging management events for trails
+%% <ul> <li> Logging management events
 %%
-%% </li> <li> Logging data events for trails
+%% </li> <li> Logging data events
 %%
 %% </li> </ul>
 get_event_selectors(Client, Input)
@@ -506,9 +506,13 @@ lookup_events(Client, Input, Options)
 %% trail.
 %%
 %% Use event selectors or advanced event selectors to specify management and
-%% data event settings for your trail. By default, trails created without
-%% specific event selectors are configured to log all read and write
-%% management events, and no data events.
+%% data event settings for your trail. If you want your trail to log Insights
+%% events, be sure the event selector enables logging of the Insights event
+%% types you want configured for your trail. For more information about
+%% logging Insights events, see Logging Insights events for trails in the
+%% CloudTrail User Guide. By default, trails created without specific event
+%% selectors are configured to log all read and write management events, and
+%% no data events.
 %%
 %% When an event occurs in your account, CloudTrail evaluates the event
 %% selectors or advanced event selectors in all trails. For each trail, if
@@ -539,8 +543,8 @@ lookup_events(Client, Input, Options)
 %% `InvalidHomeRegionException' exception is thrown.
 %%
 %% You can configure up to five event selectors for each trail. For more
-%% information, see Logging management events for trails , Logging data
-%% events for trails , and Quotas in CloudTrail in the CloudTrail User Guide.
+%% information, see Logging management events, Logging data events, and
+%% Quotas in CloudTrail in the CloudTrail User Guide.
 %%
 %% You can add advanced event selectors, and conditions for your advanced
 %% event selectors, up to a maximum of 500 values for all conditions and
@@ -548,7 +552,7 @@ lookup_events(Client, Input, Options)
 %% `EventSelectors', but not both. If you apply
 %% `AdvancedEventSelectors' to a trail, any existing `EventSelectors'
 %% are overwritten. For more information about advanced event selectors, see
-%% Logging data events for trails in the CloudTrail User Guide.
+%% Logging data events in the CloudTrail User Guide.
 put_event_selectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_event_selectors(Client, Input, []).
@@ -563,6 +567,12 @@ put_event_selectors(Client, Input, Options)
 %% by passing an empty list of insight types. The valid Insights event types
 %% in this release are `ApiErrorRateInsight' and
 %% `ApiCallRateInsight'.
+%%
+%% To log CloudTrail Insights events on API call volume, the trail must log
+%% `write' management events. To log CloudTrail Insights events on API
+%% error rate, the trail must log `read' or `write' management
+%% events. You can call `GetEventSelectors' on a trail to check whether
+%% the trail logs management events.
 put_insight_selectors(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_insight_selectors(Client, Input, []).
