@@ -175,6 +175,8 @@
          put_configuration_set_vdm_options/4,
          put_dedicated_ip_in_pool/3,
          put_dedicated_ip_in_pool/4,
+         put_dedicated_ip_pool_scaling_attributes/3,
+         put_dedicated_ip_pool_scaling_attributes/4,
          put_dedicated_ip_warmup_attributes/3,
          put_dedicated_ip_warmup_attributes/4,
          put_deliverability_dashboard_option/2,
@@ -2052,6 +2054,31 @@ put_dedicated_ip_in_pool(Client, Ip, Input) ->
 put_dedicated_ip_in_pool(Client, Ip, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/dedicated-ips/", aws_util:encode_uri(Ip), "/pool"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Used to convert a dedicated IP pool to a different scaling mode.
+%%
+%% `MANAGED' pools cannot be converted to `STANDARD' scaling mode.
+put_dedicated_ip_pool_scaling_attributes(Client, PoolName, Input) ->
+    put_dedicated_ip_pool_scaling_attributes(Client, PoolName, Input, []).
+put_dedicated_ip_pool_scaling_attributes(Client, PoolName, Input0, Options0) ->
+    Method = put,
+    Path = ["/v2/email/dedicated-ip-pools/", aws_util:encode_uri(PoolName), "/scaling"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
