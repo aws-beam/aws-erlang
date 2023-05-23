@@ -119,6 +119,12 @@
          describe_analysis_permissions/3,
          describe_analysis_permissions/5,
          describe_analysis_permissions/6,
+         describe_asset_bundle_export_job/3,
+         describe_asset_bundle_export_job/5,
+         describe_asset_bundle_export_job/6,
+         describe_asset_bundle_import_job/3,
+         describe_asset_bundle_import_job/5,
+         describe_asset_bundle_import_job/6,
          describe_dashboard/3,
          describe_dashboard/5,
          describe_dashboard/6,
@@ -225,6 +231,12 @@
          list_analyses/2,
          list_analyses/4,
          list_analyses/5,
+         list_asset_bundle_export_jobs/2,
+         list_asset_bundle_export_jobs/4,
+         list_asset_bundle_export_jobs/5,
+         list_asset_bundle_import_jobs/2,
+         list_asset_bundle_import_jobs/4,
+         list_asset_bundle_import_jobs/5,
          list_dashboard_versions/3,
          list_dashboard_versions/5,
          list_dashboard_versions/6,
@@ -318,6 +330,10 @@
          search_folders/4,
          search_groups/4,
          search_groups/5,
+         start_asset_bundle_export_job/3,
+         start_asset_bundle_export_job/4,
+         start_asset_bundle_import_job/3,
+         start_asset_bundle_import_job/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -1812,6 +1828,63 @@ describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, Header
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Describes an existing export job.
+%%
+%% Poll job descriptions after a job starts to know the status of the job.
+%% When a job succeeds, a URL is provided to download the exported
+%% assets' data from. Download URLs are valid for five minutes after they
+%% are generated. You can call the `DescribeAssetBundleExportJob' API for
+%% a new download URL as needed.
+%%
+%% Job descriptions are available for 14 days after the job starts.
+describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId)
+  when is_map(Client) ->
+    describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId, #{}, #{}).
+
+describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId, QueryMap, HeadersMap, []).
+
+describe_asset_bundle_export_job(Client, AssetBundleExportJobId, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-export-jobs/", aws_util:encode_uri(AssetBundleExportJobId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes an existing import job.
+%%
+%% Poll job descriptions after starting a job to know when it has succeeded
+%% or failed. Job descriptions are available for 14 days after job starts.
+describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId)
+  when is_map(Client) ->
+    describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, #{}, #{}).
+
+describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, QueryMap, HeadersMap, []).
+
+describe_asset_bundle_import_job(Client, AssetBundleImportJobId, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-import-jobs/", aws_util:encode_uri(AssetBundleImportJobId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Provides a summary for a dashboard.
 describe_dashboard(Client, AwsAccountId, DashboardId)
   when is_map(Client) ->
@@ -2812,6 +2885,74 @@ list_analyses(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists all asset bundle export jobs that have been taken place in the
+%% last 14 days.
+%%
+%% Jobs created more than 14 days ago are deleted forever and are not
+%% returned. If you are using the same job ID for multiple jobs,
+%% `ListAssetBundleExportJobs' only returns the most recent job that uses
+%% the repeated job ID.
+list_asset_bundle_export_jobs(Client, AwsAccountId)
+  when is_map(Client) ->
+    list_asset_bundle_export_jobs(Client, AwsAccountId, #{}, #{}).
+
+list_asset_bundle_export_jobs(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_asset_bundle_export_jobs(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+list_asset_bundle_export_jobs(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-export-jobs"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all asset bundle import jobs that have taken place in the last
+%% 14 days.
+%%
+%% Jobs created more than 14 days ago are deleted forever and are not
+%% returned. If you are using the same job ID for multiple jobs,
+%% `ListAssetBundleImportJobs' only returns the most recent job that uses
+%% the repeated job ID.
+list_asset_bundle_import_jobs(Client, AwsAccountId)
+  when is_map(Client) ->
+    list_asset_bundle_import_jobs(Client, AwsAccountId, #{}, #{}).
+
+list_asset_bundle_import_jobs(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_asset_bundle_import_jobs(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+list_asset_bundle_import_jobs(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-import-jobs"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists all the versions of the dashboards in the Amazon QuickSight
 %% subscription.
 list_dashboard_versions(Client, AwsAccountId, DashboardId)
@@ -3746,6 +3887,76 @@ search_groups(Client, AwsAccountId, Namespace, Input0, Options0) ->
                      {<<"next-token">>, <<"NextToken">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts an Asset Bundle export job.
+%%
+%% An Asset Bundle export job exports specified Amazon QuickSight assets. You
+%% can also choose to export any asset dependencies in the same job. Export
+%% jobs run asynchronously and can be polled with a
+%% `DescribeAssetBundleExportJob' API call. When a job is successfully
+%% completed, a download URL that contains the exported assets is returned.
+%% The URL is valid for 5 minutes and can be refreshed with a
+%% `DescribeAssetBundleExportJob' API call. Each Amazon QuickSight
+%% account can run up to 10 export jobs concurrently.
+%%
+%% The API caller must have the necessary permissions in their IAM role to
+%% access each resource before the resources can be exported.
+start_asset_bundle_export_job(Client, AwsAccountId, Input) ->
+    start_asset_bundle_export_job(Client, AwsAccountId, Input, []).
+start_asset_bundle_export_job(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-export-jobs/export"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts an Asset Bundle import job.
+%%
+%% An Asset Bundle import job imports specified Amazon QuickSight assets into
+%% an Amazon QuickSight account. You can also choose to import a naming
+%% prefix and specified configuration overrides. The assets that are
+%% contained in the bundle file that you provide are used to create or update
+%% a new or existing asset in your Amazon QuickSight account. Each Amazon
+%% QuickSight account can run up to 10 import jobs concurrently.
+%%
+%% The API caller must have the necessary `&quot;create&quot;',
+%% `&quot;describe&quot;', and `&quot;update&quot;' permissions in
+%% their IAM role to access each resource type that is contained in the
+%% bundle file before the resources can be imported.
+start_asset_bundle_import_job(Client, AwsAccountId, Input) ->
+    start_asset_bundle_import_job(Client, AwsAccountId, Input, []).
+start_asset_bundle_import_job(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/asset-bundle-import-jobs/import"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Assigns one or more tags (key-value pairs) to the specified Amazon
