@@ -35,6 +35,8 @@
          stop_text_translation_job/3,
          tag_resource/2,
          tag_resource/3,
+         translate_document/2,
+         translate_document/3,
          translate_text/2,
          translate_text/3,
          untag_resource/2,
@@ -212,6 +214,27 @@ tag_resource(Client, Input)
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
+
+%% @doc Translates the input document from the source language to the target
+%% language.
+%%
+%% This synchronous operation supports plain text or HTML for the input
+%% document. `TranslateDocument' supports translations from English to
+%% any supported language, and from any supported language to English.
+%% Therefore, specify either the source language code or the target language
+%% code as “en” (English).
+%%
+%% `TranslateDocument' does not support language auto-detection.
+%%
+%% If you set the `Formality' parameter, the request will fail if the
+%% target language does not support formality. For a list of target languages
+%% that support formality, see Setting formality.
+translate_document(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    translate_document(Client, Input, []).
+translate_document(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TranslateDocument">>, Input, Options).
 
 %% @doc Translates input text from the source language to the target
 %% language.
