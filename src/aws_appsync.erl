@@ -7,6 +7,10 @@
 
 -export([associate_api/3,
          associate_api/4,
+         associate_merged_graphql_api/3,
+         associate_merged_graphql_api/4,
+         associate_source_graphql_api/3,
+         associate_source_graphql_api/4,
          create_api_cache/3,
          create_api_cache/4,
          create_api_key/3,
@@ -41,6 +45,10 @@
          delete_type/5,
          disassociate_api/3,
          disassociate_api/4,
+         disassociate_merged_graphql_api/4,
+         disassociate_merged_graphql_api/5,
+         disassociate_source_graphql_api/4,
+         disassociate_source_graphql_api/5,
          evaluate_code/2,
          evaluate_code/3,
          evaluate_mapping_template/2,
@@ -74,6 +82,9 @@
          get_schema_creation_status/2,
          get_schema_creation_status/4,
          get_schema_creation_status/5,
+         get_source_api_association/3,
+         get_source_api_association/5,
+         get_source_api_association/6,
          get_type/4,
          get_type/6,
          get_type/7,
@@ -98,14 +109,22 @@
          list_resolvers_by_function/3,
          list_resolvers_by_function/5,
          list_resolvers_by_function/6,
+         list_source_api_associations/2,
+         list_source_api_associations/4,
+         list_source_api_associations/5,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
          list_types/3,
          list_types/5,
          list_types/6,
+         list_types_by_association/4,
+         list_types_by_association/6,
+         list_types_by_association/7,
          start_schema_creation/3,
          start_schema_creation/4,
+         start_schema_merge/4,
+         start_schema_merge/5,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -124,6 +143,8 @@
          update_graphql_api/4,
          update_resolver/5,
          update_resolver/6,
+         update_source_api_association/4,
+         update_source_api_association/5,
          update_type/4,
          update_type/5]).
 
@@ -139,6 +160,54 @@ associate_api(Client, DomainName, Input) ->
 associate_api(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/domainnames/", aws_util:encode_uri(DomainName), "/apiassociation"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an association between a Merged API and source API using the
+%% source API's identifier.
+associate_merged_graphql_api(Client, SourceApiIdentifier, Input) ->
+    associate_merged_graphql_api(Client, SourceApiIdentifier, Input, []).
+associate_merged_graphql_api(Client, SourceApiIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/sourceApis/", aws_util:encode_uri(SourceApiIdentifier), "/mergedApiAssociations"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an association between a Merged API and source API using the
+%% Merged API's identifier.
+associate_source_graphql_api(Client, MergedApiIdentifier, Input) ->
+    associate_source_graphql_api(Client, MergedApiIdentifier, Input, []).
+associate_source_graphql_api(Client, MergedApiIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/mergedApis/", aws_util:encode_uri(MergedApiIdentifier), "/sourceApiAssociations"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -554,6 +623,54 @@ disassociate_api(Client, DomainName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes an association between a Merged API and source API using the
+%% source API's identifier and the association ID.
+disassociate_merged_graphql_api(Client, AssociationId, SourceApiIdentifier, Input) ->
+    disassociate_merged_graphql_api(Client, AssociationId, SourceApiIdentifier, Input, []).
+disassociate_merged_graphql_api(Client, AssociationId, SourceApiIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/sourceApis/", aws_util:encode_uri(SourceApiIdentifier), "/mergedApiAssociations/", aws_util:encode_uri(AssociationId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an association between a Merged API and source API using the
+%% Merged API's identifier and the association ID.
+disassociate_source_graphql_api(Client, AssociationId, MergedApiIdentifier, Input) ->
+    disassociate_source_graphql_api(Client, AssociationId, MergedApiIdentifier, Input, []).
+disassociate_source_graphql_api(Client, AssociationId, MergedApiIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/mergedApis/", aws_util:encode_uri(MergedApiIdentifier), "/sourceApiAssociations/", aws_util:encode_uri(AssociationId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Evaluates the given code and returns the response.
 %%
 %% The code definition requirements depend on the specified runtime. For
@@ -853,6 +970,29 @@ get_schema_creation_status(Client, ApiId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves a `SourceApiAssociation' object.
+get_source_api_association(Client, AssociationId, MergedApiIdentifier)
+  when is_map(Client) ->
+    get_source_api_association(Client, AssociationId, MergedApiIdentifier, #{}, #{}).
+
+get_source_api_association(Client, AssociationId, MergedApiIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_source_api_association(Client, AssociationId, MergedApiIdentifier, QueryMap, HeadersMap, []).
+
+get_source_api_association(Client, AssociationId, MergedApiIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/mergedApis/", aws_util:encode_uri(MergedApiIdentifier), "/sourceApiAssociations/", aws_util:encode_uri(AssociationId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a `Type' object.
 get_type(Client, ApiId, TypeName, Format)
   when is_map(Client) ->
@@ -1018,8 +1158,10 @@ list_graphql_apis(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"apiType">>, maps:get(<<"apiType">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
-        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"owner">>, maps:get(<<"owner">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -1065,6 +1207,34 @@ list_resolvers_by_function(Client, ApiId, FunctionId, QueryMap, HeadersMap)
 list_resolvers_by_function(Client, ApiId, FunctionId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/functions/", aws_util:encode_uri(FunctionId), "/resolvers"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the `SourceApiAssociationSummary' data.
+list_source_api_associations(Client, ApiId)
+  when is_map(Client) ->
+    list_source_api_associations(Client, ApiId, #{}, #{}).
+
+list_source_api_associations(Client, ApiId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_source_api_associations(Client, ApiId, QueryMap, HeadersMap, []).
+
+list_source_api_associations(Client, ApiId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/sourceApiAssociations"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1133,6 +1303,35 @@ list_types(Client, ApiId, Format, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists `Type' objects by the source API association ID.
+list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format)
+  when is_map(Client) ->
+    list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format, #{}, #{}).
+
+list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format, QueryMap, HeadersMap, []).
+
+list_types_by_association(Client, AssociationId, MergedApiIdentifier, Format, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/mergedApis/", aws_util:encode_uri(MergedApiIdentifier), "/sourceApiAssociations/", aws_util:encode_uri(AssociationId), "/types"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"format">>, Format},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Adds a new schema to your GraphQL API.
 %%
 %% This operation is asynchronous. Use to determine when it has completed.
@@ -1141,6 +1340,31 @@ start_schema_creation(Client, ApiId, Input) ->
 start_schema_creation(Client, ApiId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/schemacreation"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Initiates a merge operation.
+%%
+%% Returns a status that shows the result of the merge operation.
+start_schema_merge(Client, AssociationId, MergedApiIdentifier, Input) ->
+    start_schema_merge(Client, AssociationId, MergedApiIdentifier, Input, []).
+start_schema_merge(Client, AssociationId, MergedApiIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/mergedApis/", aws_util:encode_uri(MergedApiIdentifier), "/sourceApiAssociations/", aws_util:encode_uri(AssociationId), "/merge"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -1351,6 +1575,30 @@ update_resolver(Client, ApiId, FieldName, TypeName, Input) ->
 update_resolver(Client, ApiId, FieldName, TypeName, Input0, Options0) ->
     Method = post,
     Path = ["/v1/apis/", aws_util:encode_uri(ApiId), "/types/", aws_util:encode_uri(TypeName), "/resolvers/", aws_util:encode_uri(FieldName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates some of the configuration choices of a particular source API
+%% association.
+update_source_api_association(Client, AssociationId, MergedApiIdentifier, Input) ->
+    update_source_api_association(Client, AssociationId, MergedApiIdentifier, Input, []).
+update_source_api_association(Client, AssociationId, MergedApiIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/mergedApis/", aws_util:encode_uri(MergedApiIdentifier), "/sourceApiAssociations/", aws_util:encode_uri(AssociationId), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
