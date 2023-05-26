@@ -1,19 +1,18 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS CodePipeline
+%% @doc CodePipeline
 %%
 %% Overview
 %%
-%% This is the AWS CodePipeline API Reference.
+%% This is the CodePipeline API Reference.
 %%
-%% This guide provides descriptions of the actions and data types for AWS
+%% This guide provides descriptions of the actions and data types for
 %% CodePipeline. Some functionality for your pipeline can only be configured
-%% through the API. For more information, see the AWS CodePipeline User
-%% Guide.
+%% through the API. For more information, see the CodePipeline User Guide.
 %%
-%% You can use the AWS CodePipeline API to work with pipelines, stages,
-%% actions, and transitions.
+%% You can use the CodePipeline API to work with pipelines, stages, actions,
+%% and transitions.
 %%
 %% Pipelines are models of automated release processes. Each pipeline is
 %% uniquely named, and consists of stages, actions, and transitions.
@@ -64,7 +63,7 @@
 %% displays the status of a pipeline, including the status of stages in the
 %% pipeline, or `GetPipeline', which returns the entire structure of the
 %% pipeline, including the stages of that pipeline. For more information
-%% about the structure of stages and actions, see AWS CodePipeline Pipeline
+%% about the structure of stages and actions, see CodePipeline Pipeline
 %% Structure Reference.
 %%
 %% Pipeline stages include actions that are categorized into categories such
@@ -99,12 +98,12 @@
 %% </li> <li> `EnableStageTransition', which enables transition of
 %% artifacts between stages in a pipeline.
 %%
-%% </li> </ul> Using the API to integrate with AWS CodePipeline
+%% </li> </ul> Using the API to integrate with CodePipeline
 %%
 %% For third-party integrators or developers who want to create their own
-%% integrations with AWS CodePipeline, the expected sequence varies from the
-%% standard API user. To integrate with AWS CodePipeline, developers need to
-%% work with the following items:
+%% integrations with CodePipeline, the expected sequence varies from the
+%% standard API user. To integrate with CodePipeline, developers need to work
+%% with the following items:
 %%
 %% Jobs, which are instances of an action. For example, a job for a source
 %% action might import a revision of an artifact from a source.
@@ -126,8 +125,8 @@
 %% success.
 %%
 %% </li> </ul> Third party jobs, which are instances of an action created by
-%% a partner action and integrated into AWS CodePipeline. Partner actions are
-%% created by members of the AWS Partner Network.
+%% a partner action and integrated into CodePipeline. Partner actions are
+%% created by members of the Amazon Web Services Partner Network.
 %%
 %% You can work with third party jobs by calling:
 %%
@@ -256,7 +255,7 @@ acknowledge_third_party_job(Client, Input, Options)
     request(Client, <<"AcknowledgeThirdPartyJob">>, Input, Options).
 
 %% @doc Creates a new custom action that can be used in all pipelines
-%% associated with the AWS account.
+%% associated with the Amazon Web Services account.
 %%
 %% Only used for custom actions.
 create_custom_action_type(Client, Input)
@@ -306,7 +305,7 @@ delete_pipeline(Client, Input, Options)
 
 %% @doc Deletes a previously created webhook by name.
 %%
-%% Deleting the webhook stops AWS CodePipeline from starting a pipeline every
+%% Deleting the webhook stops CodePipeline from starting a pipeline every
 %% time an external event occurs. The API returns successfully when trying to
 %% delete a webhook that is already deleted. If a deleted webhook is
 %% re-created by calling PutWebhook with the same name, it will have a
@@ -364,8 +363,8 @@ get_action_type(Client, Input, Options)
 %%
 %% Used for custom actions only.
 %%
-%% When this API is called, AWS CodePipeline returns temporary credentials
-%% for the S3 bucket used to store artifacts for the pipeline, if the action
+%% When this API is called, CodePipeline returns temporary credentials for
+%% the S3 bucket used to store artifacts for the pipeline, if the action
 %% requires access to that S3 bucket for input or output artifacts. This API
 %% also returns any secret values defined for the action.
 get_job_details(Client, Input)
@@ -414,8 +413,8 @@ get_pipeline_state(Client, Input, Options)
 %%
 %% Used for partner actions only.
 %%
-%% When this API is called, AWS CodePipeline returns temporary credentials
-%% for the S3 bucket used to store artifacts for the pipeline, if the action
+%% When this API is called, CodePipeline returns temporary credentials for
+%% the S3 bucket used to store artifacts for the pipeline, if the action
 %% requires access to that S3 bucket for input or output artifacts. This API
 %% also returns any secret values defined for the action.
 get_third_party_job_details(Client, Input)
@@ -433,8 +432,8 @@ list_action_executions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListActionExecutions">>, Input, Options).
 
-%% @doc Gets a summary of all AWS CodePipeline action types associated with
-%% your account.
+%% @doc Gets a summary of all CodePipeline action types associated with your
+%% account.
 list_action_types(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_action_types(Client, Input, []).
@@ -467,8 +466,8 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Gets a listing of all the webhooks in this AWS Region for this
-%% account.
+%% @doc Gets a listing of all the webhooks in this Amazon Web Services Region
+%% for this account.
 %%
 %% The output lists all webhooks and includes the webhook URL and ARN and the
 %% configuration for each webhook.
@@ -479,15 +478,15 @@ list_webhooks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWebhooks">>, Input, Options).
 
-%% @doc Returns information about any jobs for AWS CodePipeline to act on.
+%% @doc Returns information about any jobs for CodePipeline to act on.
 %%
 %% `PollForJobs' is valid only for action types with &quot;Custom&quot;
-%% in the owner field. If the action type contains &quot;AWS&quot; or
-%% &quot;ThirdParty&quot; in the owner field, the `PollForJobs' action
-%% returns an error.
+%% in the owner field. If the action type contains `AWS' or
+%% `ThirdParty' in the owner field, the `PollForJobs' action returns
+%% an error.
 %%
-%% When this API is called, AWS CodePipeline returns temporary credentials
-%% for the S3 bucket used to store artifacts for the pipeline, if the action
+%% When this API is called, CodePipeline returns temporary credentials for
+%% the S3 bucket used to store artifacts for the pipeline, if the action
 %% requires access to that S3 bucket for input or output artifacts. This API
 %% also returns any secret values defined for the action.
 poll_for_jobs(Client, Input)
@@ -502,8 +501,8 @@ poll_for_jobs(Client, Input, Options)
 %%
 %% Used for partner actions only.
 %%
-%% When this API is called, AWS CodePipeline returns temporary credentials
-%% for the S3 bucket used to store artifacts for the pipeline, if the action
+%% When this API is called, CodePipeline returns temporary credentials for
+%% the S3 bucket used to store artifacts for the pipeline, if the action
 %% requires access to that S3 bucket for input or output artifacts.
 poll_for_third_party_jobs(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -512,8 +511,7 @@ poll_for_third_party_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PollForThirdPartyJobs">>, Input, Options).
 
-%% @doc Provides information to AWS CodePipeline about new revisions to a
-%% source.
+%% @doc Provides information to CodePipeline about new revisions to a source.
 put_action_revision(Client, Input)
   when is_map(Client), is_map(Input) ->
     put_action_revision(Client, Input, []).
@@ -521,8 +519,7 @@ put_action_revision(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutActionRevision">>, Input, Options).
 
-%% @doc Provides the response to a manual approval request to AWS
-%% CodePipeline.
+%% @doc Provides the response to a manual approval request to CodePipeline.
 %%
 %% Valid responses include Approved and Rejected.
 put_approval_result(Client, Input)
@@ -652,7 +649,7 @@ tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
 
-%% @doc Removes tags from an AWS resource.
+%% @doc Removes tags from an Amazon Web Services resource.
 untag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     untag_resource(Client, Input, []).

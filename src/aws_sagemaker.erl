@@ -2505,7 +2505,11 @@ describe_human_task_ui(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHumanTaskUi">>, Input, Options).
 
-%% @doc Gets a description of a hyperparameter tuning job.
+%% @doc Returns a description of a hyperparameter tuning job, depending on
+%% the fields selected.
+%%
+%% These fields can include the name, Amazon Resource Name (ARN), job status
+%% of your tuning job and more.
 describe_hyper_parameter_tuning_job(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_hyper_parameter_tuning_job(Client, Input, []).

@@ -326,7 +326,9 @@ accept_match(Client, Input, Options)
 %% a game server ID, although this approach bypasses Amazon GameLift FleetIQ
 %% placement optimization. Optionally, include game data to pass to the game
 %% server at the start of a game session, such as a game map or player
-%% information.
+%% information. Filter options may be included to further restrict how a game
+%% server is chosen, such as only allowing game servers on `ACTIVE'
+%% instances to be claimed.
 %%
 %% When a game server is successfully claimed, connection information is
 %% returned. A claimed game server's utilization status remains
@@ -344,12 +346,11 @@ accept_match(Client, Input, Options)
 %%
 %% </li> <li> If the game server claim status is `CLAIMED'.
 %%
-%% </li> </ul> When claiming a specific game server, this request will
-%% succeed even if the game server is running on an instance in
-%% `DRAINING' status. To avoid this, first check the instance status by
-%% calling DescribeGameServerInstances .
+%% </li> <li> If the game server is running on an instance in `DRAINING'
+%% status and provided filter option does not allow placing on `DRAINING'
+%% instances.
 %%
-%% Learn more
+%% </li> </ul> Learn more
 %%
 %% Amazon GameLift FleetIQ Guide
 claim_game_server(Client, Input)
@@ -396,25 +397,25 @@ create_alias(Client, Input, Options)
 %%
 %% When setting up a new game build for Amazon GameLift, we recommend using
 %% the CLI command upload-build . This helper command combines two tasks: (1)
-%% it uploads your build files from a file directory to a Amazon GameLift
+%% it uploads your build files from a file directory to an Amazon GameLift
 %% Amazon S3 location, and (2) it creates a new build resource.
 %%
-%% You can use the operation in the following scenarios:
+%% You can use the `CreateBuild' operation in the following scenarios:
 %%
-%% <ul> <li> To create a new game build with build files that are in an
-%% Amazon S3 location under an Amazon Web Services account that you control.
-%% To use this option, you give Amazon GameLift access to the Amazon S3
-%% bucket. With permissions in place, specify a build name, operating system,
-%% and the Amazon S3 storage location of your game build.
+%% <ul> <li> Create a new game build with build files that are in an Amazon
+%% S3 location under an Amazon Web Services account that you control. To use
+%% this option, you give Amazon GameLift access to the Amazon S3 bucket. With
+%% permissions in place, specify a build name, operating system, and the
+%% Amazon S3 storage location of your game build.
 %%
-%% </li> <li> To directly upload your build files to a Amazon GameLift Amazon
-%% S3 location. To use this option, specify a build name and operating
-%% system. This operation creates a new build resource and also returns an
-%% Amazon S3 location with temporary access credentials. Use the credentials
-%% to manually upload your build files to the specified Amazon S3 location.
-%% For more information, see Uploading Objects in the Amazon S3 Developer
-%% Guide. After you upload build files to the Amazon GameLift Amazon S3
-%% location, you can't update them.
+%% </li> <li> Upload your build files to a Amazon GameLift Amazon S3
+%% location. To use this option, specify a build name and operating system.
+%% This operation creates a new build resource and also returns an Amazon S3
+%% location with temporary access credentials. Use the credentials to
+%% manually upload your build files to the specified Amazon S3 location. For
+%% more information, see Uploading Objects in the Amazon S3 Developer Guide.
+%% After you upload build files to the Amazon GameLift Amazon S3 location,
+%% you can't update them.
 %%
 %% </li> </ul> If successful, this operation creates a new build resource
 %% with a unique build ID and places it in `INITIALIZED' status. A build
@@ -2029,7 +2030,7 @@ get_compute_auth_token(Client, Input, Options)
     request(Client, <<"GetComputeAuthToken">>, Input, Options).
 
 %% @doc Retrieves the location of stored game session logs for a specified
-%% game session.
+%% game session on Amazon GameLift managed fleets.
 %%
 %% When a game session is terminated, Amazon GameLift automatically stores
 %% the logs in Amazon S3 and retains them for 14 days. Use this URL to
