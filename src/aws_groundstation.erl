@@ -436,7 +436,7 @@ get_dataflow_endpoint_group(Client, DataflowEndpointGroupId, QueryMap, HeadersMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the number of minutes used by account.
+%% @doc Returns the number of reserved minutes used by account.
 get_minute_usage(Client, Input) ->
     get_minute_usage(Client, Input, []).
 get_minute_usage(Client, Input0, Options0) ->

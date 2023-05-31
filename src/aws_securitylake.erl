@@ -1,15 +1,11 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Security Lake is in preview release.
+%% @doc Amazon Security Lake is a fully managed security data lake service.
 %%
-%% Your use of the Security Lake preview is subject to Section 2 of the
-%% Amazon Web Services Service Terms(&quot;Betas and Previews&quot;).
-%%
-%% Amazon Security Lake is a fully managed security data lake service. You
-%% can use Security Lake to automatically centralize security data from
+%% You can use Security Lake to automatically centralize security data from
 %% cloud, on-premises, and custom sources into a data lake that's stored
-%% in your Amazon Web Servicesaccount. Amazon Web Services Organizations is
+%% in your Amazon Web Services account. Amazon Web Services Organizations is
 %% an account management service that lets you consolidate multiple Amazon
 %% Web Services accounts into an organization that you create and centrally
 %% manage. With Organizations, you can create member accounts and invite
@@ -22,9 +18,9 @@
 %% buckets, and you retain ownership over your data.
 %%
 %% Amazon Security Lake integrates with CloudTrail, a service that provides a
-%% record of actions taken by a user, role, or an Amazon Web Services service
-%% in Security Lake CloudTrail captures API calls for Security Lake as
-%% events. The calls captured include calls from the Security Lake console
+%% record of actions taken by a user, role, or an Amazon Web Services
+%% service. In Security Lake, CloudTrail captures API calls for Security Lake
+%% as events. The calls captured include calls from the Security Lake console
 %% and code calls to the Security Lake API operations. If you create a trail,
 %% you can enable continuous delivery of CloudTrail events to an Amazon S3
 %% bucket, including events for Security Lake. If you don't configure a
@@ -51,68 +47,63 @@
          create_aws_log_source/3,
          create_custom_log_source/2,
          create_custom_log_source/3,
-         create_datalake/2,
-         create_datalake/3,
-         create_datalake_auto_enable/2,
-         create_datalake_auto_enable/3,
-         create_datalake_delegated_admin/2,
-         create_datalake_delegated_admin/3,
-         create_datalake_exceptions_subscription/2,
-         create_datalake_exceptions_subscription/3,
+         create_data_lake/2,
+         create_data_lake/3,
+         create_data_lake_exception_subscription/2,
+         create_data_lake_exception_subscription/3,
+         create_data_lake_organization_configuration/2,
+         create_data_lake_organization_configuration/3,
          create_subscriber/2,
          create_subscriber/3,
-         create_subscription_notification_configuration/3,
-         create_subscription_notification_configuration/4,
+         create_subscriber_notification/3,
+         create_subscriber_notification/4,
          delete_aws_log_source/2,
          delete_aws_log_source/3,
-         delete_custom_log_source/2,
          delete_custom_log_source/3,
-         delete_datalake/2,
-         delete_datalake/3,
-         delete_datalake_auto_enable/2,
-         delete_datalake_auto_enable/3,
-         delete_datalake_delegated_admin/3,
-         delete_datalake_delegated_admin/4,
-         delete_datalake_exceptions_subscription/2,
-         delete_datalake_exceptions_subscription/3,
-         delete_subscriber/2,
+         delete_custom_log_source/4,
+         delete_data_lake/2,
+         delete_data_lake/3,
+         delete_data_lake_exception_subscription/2,
+         delete_data_lake_exception_subscription/3,
+         delete_data_lake_organization_configuration/2,
+         delete_data_lake_organization_configuration/3,
          delete_subscriber/3,
-         delete_subscription_notification_configuration/3,
-         delete_subscription_notification_configuration/4,
-         get_datalake/1,
-         get_datalake/3,
-         get_datalake/4,
-         get_datalake_auto_enable/1,
-         get_datalake_auto_enable/3,
-         get_datalake_auto_enable/4,
-         get_datalake_exceptions_expiry/1,
-         get_datalake_exceptions_expiry/3,
-         get_datalake_exceptions_expiry/4,
-         get_datalake_exceptions_subscription/1,
-         get_datalake_exceptions_subscription/3,
-         get_datalake_exceptions_subscription/4,
-         get_datalake_status/2,
-         get_datalake_status/3,
+         delete_subscriber/4,
+         delete_subscriber_notification/3,
+         delete_subscriber_notification/4,
+         deregister_data_lake_delegated_administrator/2,
+         deregister_data_lake_delegated_administrator/3,
+         get_data_lake_exception_subscription/1,
+         get_data_lake_exception_subscription/3,
+         get_data_lake_exception_subscription/4,
+         get_data_lake_organization_configuration/1,
+         get_data_lake_organization_configuration/3,
+         get_data_lake_organization_configuration/4,
+         get_data_lake_sources/2,
+         get_data_lake_sources/3,
          get_subscriber/2,
          get_subscriber/4,
          get_subscriber/5,
-         list_datalake_exceptions/2,
-         list_datalake_exceptions/3,
+         list_data_lake_exceptions/2,
+         list_data_lake_exceptions/3,
+         list_data_lakes/1,
+         list_data_lakes/3,
+         list_data_lakes/4,
          list_log_sources/2,
          list_log_sources/3,
          list_subscribers/1,
          list_subscribers/3,
          list_subscribers/4,
-         update_datalake/2,
-         update_datalake/3,
-         update_datalake_exceptions_expiry/2,
-         update_datalake_exceptions_expiry/3,
-         update_datalake_exceptions_subscription/2,
-         update_datalake_exceptions_subscription/3,
+         register_data_lake_delegated_administrator/2,
+         register_data_lake_delegated_administrator/3,
+         update_data_lake/2,
+         update_data_lake/3,
+         update_data_lake_exception_subscription/2,
+         update_data_lake_exception_subscription/3,
          update_subscriber/3,
          update_subscriber/4,
-         update_subscription_notification_configuration/3,
-         update_subscription_notification_configuration/4]).
+         update_subscriber_notification/3,
+         update_subscriber_notification/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -126,17 +117,8 @@
 %% Enables source types for member accounts in required Amazon Web Services
 %% Regions, based on the parameters you specify. You can choose any source
 %% type in any Region for either accounts that are part of a trusted
-%% organization or standalone accounts. At least one of the three dimensions
-%% is a mandatory input to this API. However, you can supply any combination
-%% of the three dimensions to this API.
-%%
-%% By default, a dimension refers to the entire set. When you don't
-%% provide a dimension, Security Lake assumes that the missing dimension
-%% refers to the entire set. This is overridden when you supply any one of
-%% the inputs. For instance, when you do not specify members, the API enables
-%% all Security Lake member accounts for all sources. Similarly, when you do
-%% not specify Regions, Security Lake is enabled for all the Regions where
-%% Security Lake is available as a service.
+%% organization or standalone accounts. Once you add an Amazon Web Service as
+%% a source, Security Lake starts collecting logs and events from it,
 %%
 %% You can use this API only to enable natively supported Amazon Web Services
 %% as a source. Use `CreateCustomLogSource' to enable data collection
@@ -145,7 +127,7 @@ create_aws_log_source(Client, Input) ->
     create_aws_log_source(Client, Input, []).
 create_aws_log_source(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/v1/logsources/aws"],
+    Path = ["/v1/datalake/logsources/aws"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -170,13 +152,13 @@ create_aws_log_source(Client, Input0, Options0) ->
 %% After creating the appropriate IAM role to invoke Glue crawler, use this
 %% API to add a custom source name in Security Lake. This operation creates a
 %% partition in the Amazon S3 bucket for Security Lake as the target location
-%% for log files from the custom source in addition to an associated Glue
-%% table and an Glue crawler.
+%% for log files from the custom source. In addition, this operation also
+%% creates an associated Glue table and an Glue crawler.
 create_custom_log_source(Client, Input) ->
     create_custom_log_source(Client, Input, []).
 create_custom_log_source(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/v1/logsources/custom"],
+    Path = ["/v1/datalake/logsources/custom"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -198,15 +180,14 @@ create_custom_log_source(Client, Input0, Options0) ->
 %% default) configuration.
 %%
 %% You can enable Security Lake in Amazon Web Services Regions with
-%% customized settings before enabling log collection in Regions. You can
-%% either use the `enableAll' parameter to specify all Regions or specify
-%% the Regions where you want to enable Security Lake. To specify particular
-%% Regions, use the `Regions' parameter and then configure these Regions
-%% using the `configurations' parameter. If you have already enabled
-%% Security Lake in a Region when you call this command, the command will
-%% update the Region if you provide new configuration parameters. If you have
-%% not already enabled Security Lake in the Region when you call this API, it
-%% will set up the data lake in the Region with the specified configurations.
+%% customized settings before enabling log collection in Regions. By default,
+%% the `CreateDataLake' Security Lake in all Regions. To specify
+%% particular Regions, configure these Regions using the `configurations'
+%% parameter. If you have already enabled Security Lake in a Region when you
+%% call this command, the command will update the Region if you provide new
+%% configuration parameters. If you have not already enabled Security Lake in
+%% the Region when you call this API, it will set up the data lake in the
+%% Region with the specified configurations.
 %%
 %% When you enable Security Lake, it starts ingesting security data after the
 %% `CreateAwsLogSource' call. This includes ingesting security data from
@@ -215,11 +196,35 @@ create_custom_log_source(Client, Input0, Options0) ->
 %% or maintains for your Amazon Web Services account in the current Region,
 %% including security log and event data. For more information, see the
 %% Amazon Security Lake User Guide.
-create_datalake(Client, Input) ->
-    create_datalake(Client, Input, []).
-create_datalake(Client, Input0, Options0) ->
+create_data_lake(Client, Input) ->
+    create_data_lake(Client, Input, []).
+create_data_lake(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates the specified notification subscription in Amazon Security
+%% Lake for the organization you specify.
+create_data_lake_exception_subscription(Client, Input) ->
+    create_data_lake_exception_subscription(Client, Input, []).
+create_data_lake_exception_subscription(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/datalake/exceptions/subscription"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -242,63 +247,11 @@ create_datalake(Client, Input0, Options0) ->
 %%
 %% Security Lake is not automatically enabled for any existing member
 %% accounts in your organization.
-create_datalake_auto_enable(Client, Input) ->
-    create_datalake_auto_enable(Client, Input, []).
-create_datalake_auto_enable(Client, Input0, Options0) ->
+create_data_lake_organization_configuration(Client, Input) ->
+    create_data_lake_organization_configuration(Client, Input, []).
+create_data_lake_organization_configuration(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/v1/datalake/autoenable"],
-    SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
-               {append_sha256_content_hash, false}
-               | Options0],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Designates the Amazon Security Lake delegated administrator account
-%% for the organization.
-%%
-%% This API can only be called by the organization management account. The
-%% organization management account cannot be the delegated administrator
-%% account.
-create_datalake_delegated_admin(Client, Input) ->
-    create_datalake_delegated_admin(Client, Input, []).
-create_datalake_delegated_admin(Client, Input0, Options0) ->
-    Method = post,
-    Path = ["/v1/datalake/delegate"],
-    SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
-               {append_sha256_content_hash, false}
-               | Options0],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Creates the specified notification subscription in Amazon Security
-%% Lake for the organization you specify.
-create_datalake_exceptions_subscription(Client, Input) ->
-    create_datalake_exceptions_subscription(Client, Input, []).
-create_datalake_exceptions_subscription(Client, Input0, Options0) ->
-    Method = post,
-    Path = ["/v1/datalake/exceptions/subscription"],
+    Path = ["/v1/datalake/organization/configuration"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -347,11 +300,11 @@ create_subscriber(Client, Input0, Options0) ->
 %% the sources that the subscriber consumes in Security Lake.
 %%
 %% You can create only one subscriber notification per subscriber.
-create_subscription_notification_configuration(Client, SubscriptionId, Input) ->
-    create_subscription_notification_configuration(Client, SubscriptionId, Input, []).
-create_subscription_notification_configuration(Client, SubscriptionId, Input0, Options0) ->
+create_subscriber_notification(Client, SubscriberId, Input) ->
+    create_subscriber_notification(Client, SubscriberId, Input, []).
+create_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
     Method = post,
-    Path = ["/subscription-notifications/", aws_util:encode_uri(SubscriptionId), ""],
+    Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), "/notification"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -372,32 +325,20 @@ create_subscription_notification_configuration(Client, SubscriptionId, Input0, O
 %% @doc Removes a natively supported Amazon Web Service as an Amazon Security
 %% Lake source.
 %%
-%% When you remove the source, Security Lake stops collecting data from that
-%% source, and subscribers can no longer consume new data from the source.
-%% Subscribers can still consume data that Security Lake collected from the
-%% source before disablement.
+%% You can remove a source for one or more Regions. When you remove the
+%% source, Security Lake stops collecting data from that source in the
+%% specified Regions and accounts, and subscribers can no longer consume new
+%% data from the source. However, subscribers can still consume data that
+%% Security Lake collected from the source before removal.
 %%
 %% You can choose any source type in any Amazon Web Services Region for
 %% either accounts that are part of a trusted organization or standalone
-%% accounts. At least one of the three dimensions is a mandatory input to
-%% this API. However, you can supply any combination of the three dimensions
-%% to this API.
-%%
-%% By default, a dimension refers to the entire set. This is overridden when
-%% you supply any one of the inputs. For instance, when you do not specify
-%% members, the API disables all Security Lake member accounts for sources.
-%% Similarly, when you do not specify Regions, Security Lake is disabled for
-%% all the Regions where Security Lake is available as a service.
-%%
-%% When you don't provide a dimension, Security Lake assumes that the
-%% missing dimension refers to the entire set. For example, if you don't
-%% provide specific accounts, the API applies to the entire set of accounts
-%% in your organization.
+%% accounts.
 delete_aws_log_source(Client, Input) ->
     delete_aws_log_source(Client, Input, []).
 delete_aws_log_source(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/v1/logsources/aws/delete"],
+    Path = ["/v1/datalake/logsources/aws/delete"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -415,12 +356,13 @@ delete_aws_log_source(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes a custom log source from Amazon Security Lake.
-delete_custom_log_source(Client, Input) ->
-    delete_custom_log_source(Client, Input, []).
-delete_custom_log_source(Client, Input0, Options0) ->
+%% @doc Removes a custom log source from Amazon Security Lake, to stop
+%% sending data from the custom source to Security Lake.
+delete_custom_log_source(Client, SourceName, Input) ->
+    delete_custom_log_source(Client, SourceName, Input, []).
+delete_custom_log_source(Client, SourceName, Input0, Options0) ->
     Method = delete,
-    Path = ["/v1/logsources/custom"],
+    Path = ["/v1/datalake/logsources/custom/", aws_util:encode_uri(SourceName), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -434,30 +376,28 @@ delete_custom_log_source(Client, Input0, Options0) ->
     Input2 = Input1,
 
     QueryMapping = [
-                     {<<"customSourceName">>, <<"customSourceName">>}
+                     {<<"sourceVersion">>, <<"sourceVersion">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc When you delete Amazon Security Lake from your account, Security Lake
-%% is disabled in all Amazon Web Services Regions.
+%% @doc When you disable Amazon Security Lake from your account, Security
+%% Lake is disabled in all Amazon Web Services Regions and it stops
+%% collecting data from your sources.
 %%
 %% Also, this API automatically takes steps to remove the account from
-%% Security Lake .
+%% Security Lake. However, Security Lake retains all of your existing
+%% settings and the resources that it created in your Amazon Web Services
+%% account in the current Amazon Web Services Region.
 %%
-%% This operation disables security data collection from sources, deletes
-%% data stored, and stops making data accessible to subscribers. Security
-%% Lake also deletes all the existing settings and resources that it stores
-%% or maintains for your Amazon Web Services account in the current Region,
-%% including security log and event data. The `DeleteDatalake' operation
-%% does not delete the Amazon S3 bucket, which is owned by your Amazon Web
-%% Services account. For more information, see the Amazon Security Lake User
-%% Guide.
-delete_datalake(Client, Input) ->
-    delete_datalake(Client, Input, []).
-delete_datalake(Client, Input0, Options0) ->
-    Method = delete,
-    Path = ["/v1/datalake"],
+%% The `DeleteDataLake' operation does not delete the data that is stored
+%% in your Amazon S3 bucket, which is owned by your Amazon Web Services
+%% account. For more information, see the Amazon Security Lake User Guide.
+delete_data_lake(Client, Input) ->
+    delete_data_lake(Client, Input, []).
+delete_data_lake(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/datalake/delete"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -475,18 +415,96 @@ delete_datalake(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc `DeleteDatalakeAutoEnable' removes automatic enablement of
-%% configuration settings for new member accounts (but keeps settings for the
-%% delegated administrator) from Amazon Security Lake.
+%% @doc Deletes the specified notification subscription in Amazon Security
+%% Lake for the organization you specify.
+delete_data_lake_exception_subscription(Client, Input) ->
+    delete_data_lake_exception_subscription(Client, Input, []).
+delete_data_lake_exception_subscription(Client, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/datalake/exceptions/subscription"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes automatic the enablement of configuration settings for new
+%% member accounts (but retains the settings for the delegated administrator)
+%% from Amazon Security Lake.
 %%
-%% You must run this API using credentials of the delegated administrator.
-%% When you run this API, new member accounts that are added after the
-%% organization enables Security Lake won't contribute to the data lake.
-delete_datalake_auto_enable(Client, Input) ->
-    delete_datalake_auto_enable(Client, Input, []).
-delete_datalake_auto_enable(Client, Input0, Options0) ->
+%% You must run this API using the credentials of the delegated
+%% administrator. When you run this API, new member accounts that are added
+%% after the organization enables Security Lake won't contribute to the
+%% data lake.
+delete_data_lake_organization_configuration(Client, Input) ->
+    delete_data_lake_organization_configuration(Client, Input, []).
+delete_data_lake_organization_configuration(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/v1/datalake/autoenable/delete"],
+    Path = ["/v1/datalake/organization/configuration/delete"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the subscription permission and all notification settings for
+%% accounts that are already enabled in Amazon Security Lake.
+%%
+%% When you run `DeleteSubscriber', the subscriber will no longer consume
+%% data from Security Lake and the subscriber is removed. This operation
+%% deletes the subscriber and removes access to data in the current Amazon
+%% Web Services Region.
+delete_subscriber(Client, SubscriberId, Input) ->
+    delete_subscriber(Client, SubscriberId, Input, []).
+delete_subscriber(Client, SubscriberId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified notification subscription in Amazon Security
+%% Lake for the organization you specify.
+delete_subscriber_notification(Client, SubscriberId, Input) ->
+    delete_subscriber_notification(Client, SubscriberId, Input, []).
+delete_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), "/notification"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -510,11 +528,11 @@ delete_datalake_auto_enable(Client, Input0, Options0) ->
 %% This API can only be called by the organization management account. The
 %% organization management account cannot be the delegated administrator
 %% account.
-delete_datalake_delegated_admin(Client, Account, Input) ->
-    delete_datalake_delegated_admin(Client, Account, Input, []).
-delete_datalake_delegated_admin(Client, Account, Input0, Options0) ->
+deregister_data_lake_delegated_administrator(Client, Input) ->
+    deregister_data_lake_delegated_administrator(Client, Input, []).
+deregister_data_lake_delegated_administrator(Client, Input0, Options0) ->
     Method = delete,
-    Path = ["/v1/datalake/delegate/", aws_util:encode_uri(Account), ""],
+    Path = ["/v1/datalake/delegate"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -532,98 +550,19 @@ delete_datalake_delegated_admin(Client, Account, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the specified notification subscription in Amazon Security
-%% Lake for the organization you specify.
-delete_datalake_exceptions_subscription(Client, Input) ->
-    delete_datalake_exceptions_subscription(Client, Input, []).
-delete_datalake_exceptions_subscription(Client, Input0, Options0) ->
-    Method = delete,
-    Path = ["/v1/datalake/exceptions/subscription"],
-    SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
-               {append_sha256_content_hash, false}
-               | Options0],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Deletes the subscription permission for accounts that are already
-%% enabled in Amazon Security Lake.
-%%
-%% You can delete a subscriber and remove access to data in the current
-%% Amazon Web Services Region.
-delete_subscriber(Client, Input) ->
-    delete_subscriber(Client, Input, []).
-delete_subscriber(Client, Input0, Options0) ->
-    Method = delete,
-    Path = ["/v1/subscribers"],
-    SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
-               {append_sha256_content_hash, false}
-               | Options0],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    QueryMapping = [
-                     {<<"id">>, <<"id">>}
-                   ],
-    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Deletes the specified notification subscription in Amazon Security
-%% Lake for the organization you specify.
-delete_subscription_notification_configuration(Client, SubscriptionId, Input) ->
-    delete_subscription_notification_configuration(Client, SubscriptionId, Input, []).
-delete_subscription_notification_configuration(Client, SubscriptionId, Input0, Options0) ->
-    Method = delete,
-    Path = ["/subscription-notifications/", aws_util:encode_uri(SubscriptionId), ""],
-    SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
-               {append_sha256_content_hash, false}
-               | Options0],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
-%% @doc Retrieves the Amazon Security Lake configuration object for the
-%% specified Amazon Web Services account ID.
-%%
-%% You can use the `GetDatalake' API to know whether Security Lake is
-%% enabled for the current Region. This API does not take input parameters.
-get_datalake(Client)
+%% @doc Retrieves the details of exception notifications for the account in
+%% Amazon Security Lake.
+get_data_lake_exception_subscription(Client)
   when is_map(Client) ->
-    get_datalake(Client, #{}, #{}).
+    get_data_lake_exception_subscription(Client, #{}, #{}).
 
-get_datalake(Client, QueryMap, HeadersMap)
+get_data_lake_exception_subscription(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_datalake(Client, QueryMap, HeadersMap, []).
+    get_data_lake_exception_subscription(Client, QueryMap, HeadersMap, []).
 
-get_datalake(Client, QueryMap, HeadersMap, Options0)
+get_data_lake_exception_subscription(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/v1/datalake"],
+    Path = ["/v1/datalake/exceptions/subscription"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -640,68 +579,17 @@ get_datalake(Client, QueryMap, HeadersMap, Options0)
 %% Amazon Security Lake.
 %%
 %% This API does not take input parameters.
-get_datalake_auto_enable(Client)
+get_data_lake_organization_configuration(Client)
   when is_map(Client) ->
-    get_datalake_auto_enable(Client, #{}, #{}).
+    get_data_lake_organization_configuration(Client, #{}, #{}).
 
-get_datalake_auto_enable(Client, QueryMap, HeadersMap)
+get_data_lake_organization_configuration(Client, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_datalake_auto_enable(Client, QueryMap, HeadersMap, []).
+    get_data_lake_organization_configuration(Client, QueryMap, HeadersMap, []).
 
-get_datalake_auto_enable(Client, QueryMap, HeadersMap, Options0)
+get_data_lake_organization_configuration(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/v1/datalake/autoenable"],
-    SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
-
-    Headers = [],
-
-    Query_ = [],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
-%% @doc Retrieves the expiration period and time-to-live (TTL) for which the
-%% exception message will remain.
-%%
-%% Exceptions are stored by default, for 2 weeks from when a record was
-%% created in Amazon Security Lake. This API does not take input parameters.
-get_datalake_exceptions_expiry(Client)
-  when is_map(Client) ->
-    get_datalake_exceptions_expiry(Client, #{}, #{}).
-
-get_datalake_exceptions_expiry(Client, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_datalake_exceptions_expiry(Client, QueryMap, HeadersMap, []).
-
-get_datalake_exceptions_expiry(Client, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/v1/datalake/exceptions/expiry"],
-    SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false}
-               | Options0],
-
-    Headers = [],
-
-    Query_ = [],
-
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
-
-%% @doc Retrieves the details of exception notifications for the account in
-%% Amazon Security Lake.
-get_datalake_exceptions_subscription(Client)
-  when is_map(Client) ->
-    get_datalake_exceptions_subscription(Client, #{}, #{}).
-
-get_datalake_exceptions_subscription(Client, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_datalake_exceptions_subscription(Client, QueryMap, HeadersMap, []).
-
-get_datalake_exceptions_subscription(Client, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/v1/datalake/exceptions/subscription"],
+    Path = ["/v1/datalake/organization/configuration"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -716,11 +604,11 @@ get_datalake_exceptions_subscription(Client, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves a snapshot of the current Region, including whether Amazon
 %% Security Lake is enabled for those accounts and which sources Security
 %% Lake is collecting data from.
-get_datalake_status(Client, Input) ->
-    get_datalake_status(Client, Input, []).
-get_datalake_status(Client, Input0, Options0) ->
+get_data_lake_sources(Client, Input) ->
+    get_data_lake_sources(Client, Input, []).
+get_data_lake_sources(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/v1/datalake/status"],
+    Path = ["/v1/datalake/sources"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -742,17 +630,17 @@ get_datalake_status(Client, Input0, Options0) ->
 %% ID.
 %%
 %% You can get information about a specific subscriber.
-get_subscriber(Client, Id)
+get_subscriber(Client, SubscriberId)
   when is_map(Client) ->
-    get_subscriber(Client, Id, #{}, #{}).
+    get_subscriber(Client, SubscriberId, #{}, #{}).
 
-get_subscriber(Client, Id, QueryMap, HeadersMap)
+get_subscriber(Client, SubscriberId, QueryMap, HeadersMap)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    get_subscriber(Client, Id, QueryMap, HeadersMap, []).
+    get_subscriber(Client, SubscriberId, QueryMap, HeadersMap, []).
 
-get_subscriber(Client, Id, QueryMap, HeadersMap, Options0)
+get_subscriber(Client, SubscriberId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/v1/subscribers/", aws_util:encode_uri(Id), ""],
+    Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -766,9 +654,9 @@ get_subscriber(Client, Id, QueryMap, HeadersMap, Options0)
 
 %% @doc Lists the Amazon Security Lake exceptions that you can use to find
 %% the source of problems and fix them.
-list_datalake_exceptions(Client, Input) ->
-    list_datalake_exceptions(Client, Input, []).
-list_datalake_exceptions(Client, Input0, Options0) ->
+list_data_lake_exceptions(Client, Input) ->
+    list_data_lake_exceptions(Client, Input, []).
+list_data_lake_exceptions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/datalake/exceptions"],
     SuccessStatusCode = 200,
@@ -788,12 +676,43 @@ list_datalake_exceptions(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves the Amazon Security Lake configuration object for the
+%% specified Amazon Web Services account ID.
+%%
+%% You can use the `ListDataLakes' API to know whether Security Lake is
+%% enabled for any region.
+list_data_lakes(Client)
+  when is_map(Client) ->
+    list_data_lakes(Client, #{}, #{}).
+
+list_data_lakes(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_data_lakes(Client, QueryMap, HeadersMap, []).
+
+list_data_lakes(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/datalakes"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"regions">>, maps:get(<<"regions">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves the log sources in the current Amazon Web Services Region.
 list_log_sources(Client, Input) ->
     list_log_sources(Client, Input, []).
 list_log_sources(Client, Input0, Options0) ->
     Method = post,
-    Path = ["/v1/logsources/list"],
+    Path = ["/v1/datalake/logsources/list"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -843,13 +762,41 @@ list_subscribers(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Designates the Amazon Security Lake delegated administrator account
+%% for the organization.
+%%
+%% This API can only be called by the organization management account. The
+%% organization management account cannot be the delegated administrator
+%% account.
+register_data_lake_delegated_administrator(Client, Input) ->
+    register_data_lake_delegated_administrator(Client, Input, []).
+register_data_lake_delegated_administrator(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/datalake/delegate"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Specifies where to store your security data and for how long.
 %%
 %% You can add a rollup Region to consolidate data from multiple Amazon Web
 %% Services Regions.
-update_datalake(Client, Input) ->
-    update_datalake(Client, Input, []).
-update_datalake(Client, Input0, Options0) ->
+update_data_lake(Client, Input) ->
+    update_data_lake(Client, Input, []).
+update_data_lake(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/datalake"],
     SuccessStatusCode = 200,
@@ -869,39 +816,11 @@ update_datalake(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update the expiration period for the exception message to your
-%% preferred time, and control the time-to-live (TTL) for the exception
-%% message to remain.
-%%
-%% Exceptions are stored by default for 2 weeks from when a record was
-%% created in Amazon Security Lake.
-update_datalake_exceptions_expiry(Client, Input) ->
-    update_datalake_exceptions_expiry(Client, Input, []).
-update_datalake_exceptions_expiry(Client, Input0, Options0) ->
-    Method = put,
-    Path = ["/v1/datalake/exceptions/expiry"],
-    SuccessStatusCode = 200,
-    Options = [{send_body_as_binary, false},
-               {receive_body_as_binary, false},
-               {append_sha256_content_hash, false}
-               | Options0],
-
-    Headers = [],
-    Input1 = Input0,
-
-    CustomHeaders = [],
-    Input2 = Input1,
-
-    Query_ = [],
-    Input = Input2,
-
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
-
 %% @doc Updates the specified notification subscription in Amazon Security
 %% Lake for the organization you specify.
-update_datalake_exceptions_subscription(Client, Input) ->
-    update_datalake_exceptions_subscription(Client, Input, []).
-update_datalake_exceptions_subscription(Client, Input0, Options0) ->
+update_data_lake_exception_subscription(Client, Input) ->
+    update_data_lake_exception_subscription(Client, Input, []).
+update_data_lake_exception_subscription(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/datalake/exceptions/subscription"],
     SuccessStatusCode = 200,
@@ -926,11 +845,11 @@ update_datalake_exceptions_subscription(Client, Input0, Options0) ->
 %%
 %% You can update a subscriber by changing the sources that the subscriber
 %% consumes data from.
-update_subscriber(Client, Id, Input) ->
-    update_subscriber(Client, Id, Input, []).
-update_subscriber(Client, Id, Input0, Options0) ->
+update_subscriber(Client, SubscriberId, Input) ->
+    update_subscriber(Client, SubscriberId, Input, []).
+update_subscriber(Client, SubscriberId, Input0, Options0) ->
     Method = put,
-    Path = ["/v1/subscribers/", aws_util:encode_uri(Id), ""],
+    Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -951,11 +870,11 @@ update_subscriber(Client, Id, Input0, Options0) ->
 %% @doc Updates an existing notification method for the subscription (SQS or
 %% HTTPs endpoint) or switches the notification subscription endpoint for a
 %% subscriber.
-update_subscription_notification_configuration(Client, SubscriptionId, Input) ->
-    update_subscription_notification_configuration(Client, SubscriptionId, Input, []).
-update_subscription_notification_configuration(Client, SubscriptionId, Input0, Options0) ->
+update_subscriber_notification(Client, SubscriberId, Input) ->
+    update_subscriber_notification(Client, SubscriberId, Input, []).
+update_subscriber_notification(Client, SubscriberId, Input0, Options0) ->
     Method = put,
-    Path = ["/subscription-notifications/", aws_util:encode_uri(SubscriptionId), ""],
+    Path = ["/v1/subscribers/", aws_util:encode_uri(SubscriberId), "/notification"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

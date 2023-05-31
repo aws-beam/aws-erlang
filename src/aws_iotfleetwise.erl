@@ -235,7 +235,7 @@ create_signal_catalog(Client, Input, Options)
 %% Vehicles created from the same vehicle model consist of the same signals
 %% inherited from the vehicle model.
 %%
-%% If you have an existing Amazon Web Services IoT Thing, you can use Amazon
+%% If you have an existing Amazon Web Services IoT thing, you can use Amazon
 %% Web Services IoT FleetWise to create a vehicle and collect data from your
 %% thing.
 %%
@@ -591,18 +591,41 @@ put_logging_options(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutLoggingOptions">>, Input, Options).
 
-%% @doc Registers your Amazon Web Services account, IAM, and Amazon
+%% @doc This API operation contains deprecated parameters.
+%%
+%% Register your account again without the Timestream resources parameter so
+%% that Amazon Web Services IoT FleetWise can remove the Timestream metadata
+%% stored. You should then pass the data destination into the CreateCampaign
+%% API operation.
+%%
+%% You must delete any existing campaigns that include an empty data
+%% destination before you register your account again. For more information,
+%% see the DeleteCampaign API operation.
+%%
+%% If you want to delete the Timestream inline policy from the service-linked
+%% role, such as to mitigate an overly permissive policy, you must first
+%% delete any existing campaigns. Then delete the service-linked role and
+%% register your account again to enable CloudWatch metrics. For more
+%% information, see DeleteServiceLinkedRole in the Identity and Access
+%% Management API Reference.
+%%
+%% &lt;p&gt;Registers your Amazon Web Services account, IAM, and Amazon
 %% Timestream resources so Amazon Web Services IoT FleetWise can transfer
-%% your vehicle data to the Amazon Web Services Cloud.
-%%
-%% For more information, including step-by-step procedures, see Setting up
-%% Amazon Web Services IoT FleetWise.
-%%
-%% An Amazon Web Services account is not the same thing as a &quot;user
-%% account&quot;. An Amazon Web Services user is an identity that you create
-%% using Identity and Access Management (IAM) and takes the form of either an
-%% IAM user or an IAM role, both with credentials. A single Amazon Web
-%% Services account can, and typically does, contain many users and roles.
+%% your vehicle data to the Amazon Web Services Cloud. For more information,
+%% including step-by-step procedures, see &lt;a
+%% href=&quot;https://docs.aws.amazon.com/iot-fleetwise/latest/developerguide/setting-up.html&quot;&gt;Setting
+%% up Amazon Web Services IoT FleetWise&lt;/a&gt;. &lt;/p&gt; &lt;note&gt;
+%% &lt;p&gt;An Amazon Web Services account is &lt;b&gt;not&lt;/b&gt; the same
+%% thing as a &quot;user.&quot; An &lt;a
+%% href=&quot;https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction_identity-management.html#intro-identity-users&quot;&gt;Amazon
+%% Web Services user&lt;/a&gt; is an identity that you create using Identity
+%% and Access Management (IAM) and takes the form of either an &lt;a
+%% href=&quot;https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users.html&quot;&gt;IAM
+%% user&lt;/a&gt; or an &lt;a
+%% href=&quot;https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html&quot;&gt;IAM
+%% role, both with credentials&lt;/a&gt;. A single Amazon Web Services
+%% account can, and typically does, contain many users and roles.&lt;/p&gt;
+%% &lt;/note&gt;
 register_account(Client, Input)
   when is_map(Client), is_map(Input) ->
     register_account(Client, Input, []).

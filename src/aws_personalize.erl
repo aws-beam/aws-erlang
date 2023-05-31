@@ -175,6 +175,11 @@ create_batch_segment_job(Client, Input, Options)
 %%
 %% Minimum Provisioned TPS and Auto-Scaling
 %%
+%% A high `minProvisionedTPS' will increase your bill. We recommend
+%% starting with 1 for `minProvisionedTPS' (the default). Track your
+%% usage using Amazon CloudWatch metrics, and increase the
+%% `minProvisionedTPS' as necessary.
+%%
 %% A transaction is a single `GetRecommendations' or
 %% `GetPersonalizedRanking' call. Transactions per second (TPS) is the
 %% throughput and unit of billing for Amazon Personalize. The minimum
@@ -475,6 +480,11 @@ create_metric_attribution(Client, Input, Options)
 %%
 %% Minimum recommendation requests per second
 %%
+%% A high `minRecommendationRequestsPerSecond' will increase your bill.
+%% We recommend starting with 1 for `minRecommendationRequestsPerSecond'
+%% (the default). Track your usage using Amazon CloudWatch metrics, and
+%% increase the `minRecommendationRequestsPerSecond' as necessary.
+%%
 %% When you create a recommender, you can configure the recommender's
 %% minimum recommendation requests per second. The minimum recommendation
 %% requests per second (`minRecommendationRequestsPerSecond') specifies
@@ -563,8 +573,8 @@ create_schema(Client, Input, Options)
 
 %% @doc Creates the configuration for training a model.
 %%
-%% A trained model is known as a solution. After the configuration is
-%% created, you train the model (create a solution) by calling the
+%% A trained model is known as a solution version. After the configuration is
+%% created, you train the model (create a solution version) by calling the
 %% CreateSolutionVersion operation. Every time you call
 %% `CreateSolutionVersion', a new version of the solution is created.
 %%
@@ -577,9 +587,7 @@ create_schema(Client, Input, Options)
 %% The training data comes from the dataset group that you provide in the
 %% request. A recipe specifies the training algorithm and a feature
 %% transformation. You can specify one of the predefined recipes provided by
-%% Amazon Personalize. Alternatively, you can specify `performAutoML' and
-%% Amazon Personalize will analyze your data and select the optimum
-%% USER_PERSONALIZATION recipe for you.
+%% Amazon Personalize.
 %%
 %% Amazon Personalize doesn't support configuring the `hpoObjective'
 %% for solution hyperparameter optimization at this time.
@@ -1261,6 +1269,14 @@ update_metric_attribution(Client, Input, Options)
     request(Client, <<"UpdateMetricAttribution">>, Input, Options).
 
 %% @doc Updates the recommender to modify the recommender configuration.
+%%
+%% If you update the recommender to modify the columns used in training,
+%% Amazon Personalize automatically starts a full retraining of the models
+%% backing your recommender. While the update completes, you can still get
+%% recommendations from the recommender. The recommender uses the previous
+%% configuration until the update completes. To track the status of this
+%% update, use the `latestRecommenderUpdate' returned in the
+%% DescribeRecommender operation.
 update_recommender(Client, Input)
   when is_map(Client), is_map(Input) ->
     update_recommender(Client, Input, []).
