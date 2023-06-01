@@ -19,7 +19,8 @@
 %% provide basic functions that automatically take care of tasks such as
 %% cryptographically signing your requests, retrying requests, and handling
 %% error responses, so that it is easier for you to get started. For more
-%% information about the AWS SDKs, see Tools to build on AWS.
+%% information about the AWS SDKs, go to Tools to build on AWS page, scroll
+%% down to the SDK section, and choose plus (+) sign to expand the section.
 -module(aws_frauddetector).
 
 -export([batch_create_variable/2,

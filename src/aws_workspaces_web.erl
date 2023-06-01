@@ -14,6 +14,8 @@
 
 -export([associate_browser_settings/3,
          associate_browser_settings/4,
+         associate_ip_access_settings/3,
+         associate_ip_access_settings/4,
          associate_network_settings/3,
          associate_network_settings/4,
          associate_trust_store/3,
@@ -26,6 +28,8 @@
          create_browser_settings/3,
          create_identity_provider/2,
          create_identity_provider/3,
+         create_ip_access_settings/2,
+         create_ip_access_settings/3,
          create_network_settings/2,
          create_network_settings/3,
          create_portal/2,
@@ -40,6 +44,8 @@
          delete_browser_settings/4,
          delete_identity_provider/3,
          delete_identity_provider/4,
+         delete_ip_access_settings/3,
+         delete_ip_access_settings/4,
          delete_network_settings/3,
          delete_network_settings/4,
          delete_portal/3,
@@ -52,6 +58,8 @@
          delete_user_settings/4,
          disassociate_browser_settings/3,
          disassociate_browser_settings/4,
+         disassociate_ip_access_settings/3,
+         disassociate_ip_access_settings/4,
          disassociate_network_settings/3,
          disassociate_network_settings/4,
          disassociate_trust_store/3,
@@ -66,6 +74,9 @@
          get_identity_provider/2,
          get_identity_provider/4,
          get_identity_provider/5,
+         get_ip_access_settings/2,
+         get_ip_access_settings/4,
+         get_ip_access_settings/5,
          get_network_settings/2,
          get_network_settings/4,
          get_network_settings/5,
@@ -93,6 +104,9 @@
          list_identity_providers/2,
          list_identity_providers/4,
          list_identity_providers/5,
+         list_ip_access_settings/1,
+         list_ip_access_settings/3,
+         list_ip_access_settings/4,
          list_network_settings/1,
          list_network_settings/3,
          list_network_settings/4,
@@ -122,6 +136,8 @@
          update_browser_settings/4,
          update_identity_provider/3,
          update_identity_provider/4,
+         update_ip_access_settings/3,
+         update_ip_access_settings/4,
          update_network_settings/3,
          update_network_settings/4,
          update_portal/3,
@@ -159,6 +175,30 @@ associate_browser_settings(Client, PortalArn, Input0, Options0) ->
 
     QueryMapping = [
                      {<<"browserSettingsArn">>, <<"browserSettingsArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates an IP access settings resource with a web portal.
+associate_ip_access_settings(Client, PortalArn, Input) ->
+    associate_ip_access_settings(Client, PortalArn, Input, []).
+associate_ip_access_settings(Client, PortalArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/ipAccessSettings"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"ipAccessSettingsArn">>, <<"ipAccessSettingsArn">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -294,6 +334,30 @@ create_identity_provider(Client, Input) ->
 create_identity_provider(Client, Input0, Options0) ->
     Method = post,
     Path = ["/identityProviders"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an IP access settings resource that can be associated with a
+%% web portal.
+create_ip_access_settings(Client, Input) ->
+    create_ip_access_settings(Client, Input, []).
+create_ip_access_settings(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ipAccessSettings"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -488,6 +552,29 @@ delete_identity_provider(Client, IdentityProviderArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes IP access settings.
+delete_ip_access_settings(Client, IpAccessSettingsArn, Input) ->
+    delete_ip_access_settings(Client, IpAccessSettingsArn, Input, []).
+delete_ip_access_settings(Client, IpAccessSettingsArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/ipAccessSettings/", aws_util:encode_multi_segment_uri(IpAccessSettingsArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes network settings.
 delete_network_settings(Client, NetworkSettingsArn, Input) ->
     delete_network_settings(Client, NetworkSettingsArn, Input, []).
@@ -609,6 +696,29 @@ disassociate_browser_settings(Client, PortalArn, Input) ->
 disassociate_browser_settings(Client, PortalArn, Input0, Options0) ->
     Method = delete,
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/browserSettings"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disassociates IP access settings from a web portal.
+disassociate_ip_access_settings(Client, PortalArn, Input) ->
+    disassociate_ip_access_settings(Client, PortalArn, Input, []).
+disassociate_ip_access_settings(Client, PortalArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/ipAccessSettings"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -753,6 +863,29 @@ get_identity_provider(Client, IdentityProviderArn, QueryMap, HeadersMap)
 get_identity_provider(Client, IdentityProviderArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/identityProviders/", aws_util:encode_multi_segment_uri(IdentityProviderArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the IP access settings.
+get_ip_access_settings(Client, IpAccessSettingsArn)
+  when is_map(Client) ->
+    get_ip_access_settings(Client, IpAccessSettingsArn, #{}, #{}).
+
+get_ip_access_settings(Client, IpAccessSettingsArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_ip_access_settings(Client, IpAccessSettingsArn, QueryMap, HeadersMap, []).
+
+get_ip_access_settings(Client, IpAccessSettingsArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/ipAccessSettings/", aws_util:encode_multi_segment_uri(IpAccessSettingsArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -969,6 +1102,34 @@ list_identity_providers(Client, PortalArn, QueryMap, HeadersMap)
 list_identity_providers(Client, PortalArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/portals/", aws_util:encode_multi_segment_uri(PortalArn), "/identityProviders"],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of IP access settings.
+list_ip_access_settings(Client)
+  when is_map(Client) ->
+    list_ip_access_settings(Client, #{}, #{}).
+
+list_ip_access_settings(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_ip_access_settings(Client, QueryMap, HeadersMap, []).
+
+list_ip_access_settings(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/ipAccessSettings"],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -1252,6 +1413,29 @@ update_identity_provider(Client, IdentityProviderArn, Input) ->
 update_identity_provider(Client, IdentityProviderArn, Input0, Options0) ->
     Method = patch,
     Path = ["/identityProviders/", aws_util:encode_multi_segment_uri(IdentityProviderArn), ""],
+    SuccessStatusCode = 200,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates IP access settings.
+update_ip_access_settings(Client, IpAccessSettingsArn, Input) ->
+    update_ip_access_settings(Client, IpAccessSettingsArn, Input, []).
+update_ip_access_settings(Client, IpAccessSettingsArn, Input0, Options0) ->
+    Method = patch,
+    Path = ["/ipAccessSettings/", aws_util:encode_multi_segment_uri(IpAccessSettingsArn), ""],
     SuccessStatusCode = 200,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

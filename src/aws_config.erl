@@ -623,10 +623,10 @@ describe_configuration_aggregators(Client, Input, Options)
 %% If a configuration recorder is not specified, this action returns the
 %% status of all configuration recorders associated with the account.
 %%
-%% Currently, you can specify only one configuration recorder per region in
-%% your account. For a detailed status of recording events over time, add
-%% your Config events to Amazon CloudWatch metrics and use CloudWatch
-%% metrics.
+%% &gt;You can specify only one configuration recorder for each Amazon Web
+%% Services Region for each account. For a detailed status of recording
+%% events over time, add your Config events to Amazon CloudWatch metrics and
+%% use CloudWatch metrics.
 describe_configuration_recorder_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configuration_recorder_status(Client, Input, []).
@@ -639,8 +639,8 @@ describe_configuration_recorder_status(Client, Input, Options)
 %% If the configuration recorder is not specified, this action returns the
 %% details for all configuration recorders associated with the account.
 %%
-%% Currently, you can specify only one configuration recorder per region in
-%% your account.
+%% You can specify only one configuration recorder for each Amazon Web
+%% Services Region for each account.
 describe_configuration_recorders(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_configuration_recorders(Client, Input, []).
@@ -1327,17 +1327,17 @@ put_configuration_aggregator(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutConfigurationAggregator">>, Input, Options).
 
-%% @doc Creates a new configuration recorder to record the selected resource
-%% configurations.
+%% @doc Creates a new configuration recorder to record configuration changes
+%% for specified resource types.
 %%
-%% You can use this action to change the role `roleARN' or the
-%% `recordingGroup' of an existing recorder. To change the role, call the
-%% action on the existing configuration recorder and specify a role.
+%% You can also use this action to change the `roleARN' or the
+%% `recordingGroup' of an existing recorder. For more information, see
+%% Managing the Configuration Recorder in the Config Developer Guide.
 %%
-%% Currently, you can specify only one configuration recorder per region in
-%% your account.
+%% You can specify only one configuration recorder for each Amazon Web
+%% Services Region for each account.
 %%
-%% If `ConfigurationRecorder' does not have the recordingGroup parameter
+%% If the configuration recorder does not have the `recordingGroup' field
 %% specified, the default is to record all supported resource types.
 put_configuration_recorder(Client, Input)
   when is_map(Client), is_map(Input) ->

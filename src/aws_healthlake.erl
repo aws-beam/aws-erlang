@@ -134,7 +134,7 @@ start_fhir_import_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartFHIRImportJob">>, Input, Options).
 
-%% @doc Adds a user specifed key and value tag to a Data Store.
+%% @doc Adds a user specified key and value tag to a Data Store.
 tag_resource(Client, Input)
   when is_map(Client), is_map(Input) ->
     tag_resource(Client, Input, []).
