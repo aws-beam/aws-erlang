@@ -16,12 +16,16 @@
 
 -export([add_profile_key/3,
          add_profile_key/4,
+         create_calculated_attribute_definition/4,
+         create_calculated_attribute_definition/5,
          create_domain/3,
          create_domain/4,
          create_integration_workflow/3,
          create_integration_workflow/4,
          create_profile/3,
          create_profile/4,
+         delete_calculated_attribute_definition/4,
+         delete_calculated_attribute_definition/5,
          delete_domain/3,
          delete_domain/4,
          delete_integration/3,
@@ -38,6 +42,12 @@
          delete_workflow/5,
          get_auto_merging_preview/3,
          get_auto_merging_preview/4,
+         get_calculated_attribute_definition/3,
+         get_calculated_attribute_definition/5,
+         get_calculated_attribute_definition/6,
+         get_calculated_attribute_for_profile/4,
+         get_calculated_attribute_for_profile/6,
+         get_calculated_attribute_for_profile/7,
          get_domain/2,
          get_domain/4,
          get_domain/5,
@@ -63,6 +73,12 @@
          get_workflow_steps/6,
          list_account_integrations/2,
          list_account_integrations/3,
+         list_calculated_attribute_definitions/2,
+         list_calculated_attribute_definitions/4,
+         list_calculated_attribute_definitions/5,
+         list_calculated_attributes_for_profile/3,
+         list_calculated_attributes_for_profile/5,
+         list_calculated_attributes_for_profile/6,
          list_domains/1,
          list_domains/3,
          list_domains/4,
@@ -99,6 +115,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_calculated_attribute_definition/4,
+         update_calculated_attribute_definition/5,
          update_domain/3,
          update_domain/4,
          update_profile/3,
@@ -120,6 +138,36 @@ add_profile_key(Client, DomainName, Input) ->
 add_profile_key(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/keys"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new calculated attribute definition.
+%%
+%% After creation, new object data ingested into Customer Profiles will be
+%% included in the calculated attribute, which can be retrieved for a profile
+%% using the GetCalculatedAttributeForProfile API. Defining a calculated
+%% attribute makes it available for all profiles within a domain. Each
+%% calculated attribute can only reference one `ObjectType' and at most,
+%% two fields from that `ObjectType'.
+create_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input) ->
+    create_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input, []).
+create_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/calculated-attributes/", aws_util:encode_uri(CalculatedAttributeName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -211,6 +259,34 @@ create_profile(Client, DomainName, Input) ->
 create_profile(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an existing calculated attribute definition.
+%%
+%% Note that deleting a default calculated attribute is possible, however
+%% once deleted, you will be unable to undo that action and will need to
+%% recreate it on your own using the CreateCalculatedAttributeDefinition API
+%% if you want it back.
+delete_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input) ->
+    delete_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input, []).
+delete_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/calculated-attributes/", aws_util:encode_uri(CalculatedAttributeName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -436,6 +512,53 @@ get_auto_merging_preview(Client, DomainName, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Provides more information on a calculated attribute definition for
+%% Customer Profiles.
+get_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName)
+  when is_map(Client) ->
+    get_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, #{}, #{}).
+
+get_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, QueryMap, HeadersMap, []).
+
+get_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/calculated-attributes/", aws_util:encode_uri(CalculatedAttributeName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieve a calculated attribute for a customer profile.
+get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName, ProfileId)
+  when is_map(Client) ->
+    get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName, ProfileId, #{}, #{}).
+
+get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName, ProfileId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName, ProfileId, QueryMap, HeadersMap, []).
+
+get_calculated_attribute_for_profile(Client, CalculatedAttributeName, DomainName, ProfileId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/profile/", aws_util:encode_uri(ProfileId), "/calculated-attributes/", aws_util:encode_uri(CalculatedAttributeName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns information about a specific domain.
 get_domain(Client, DomainName)
@@ -706,6 +829,62 @@ list_account_integrations(Client, Input0, Options0) ->
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists calculated attribute definitions for Customer Profiles
+list_calculated_attribute_definitions(Client, DomainName)
+  when is_map(Client) ->
+    list_calculated_attribute_definitions(Client, DomainName, #{}, #{}).
+
+list_calculated_attribute_definitions(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_calculated_attribute_definitions(Client, DomainName, QueryMap, HeadersMap, []).
+
+list_calculated_attribute_definitions(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/calculated-attributes"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieve a list of calculated attributes for a customer profile.
+list_calculated_attributes_for_profile(Client, DomainName, ProfileId)
+  when is_map(Client) ->
+    list_calculated_attributes_for_profile(Client, DomainName, ProfileId, #{}, #{}).
+
+list_calculated_attributes_for_profile(Client, DomainName, ProfileId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_calculated_attributes_for_profile(Client, DomainName, ProfileId, QueryMap, HeadersMap, []).
+
+list_calculated_attributes_for_profile(Client, DomainName, ProfileId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/profile/", aws_util:encode_uri(ProfileId), "/calculated-attributes"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of all the domains for an AWS account that have been
 %% created.
@@ -1172,6 +1351,33 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing calculated attribute definition.
+%%
+%% When updating the Conditions, note that increasing the date range of a
+%% calculated attribute will not trigger inclusion of historical data greater
+%% than the current date range.
+update_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input) ->
+    update_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input, []).
+update_calculated_attribute_definition(Client, CalculatedAttributeName, DomainName, Input0, Options0) ->
+    Method = put,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/calculated-attributes/", aws_util:encode_uri(CalculatedAttributeName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the properties of a domain, including creating or selecting a

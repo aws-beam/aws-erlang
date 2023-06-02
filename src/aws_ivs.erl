@@ -1002,8 +1002,8 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates a channel's configuration.
 %%
-%% This does not affect an ongoing stream of this channel. You must stop and
-%% restart the stream for the changes to take effect.
+%% Live channels cannot be updated. You must stop the ongoing stream, update
+%% the channel, and restart the stream for the changes to take effect.
 update_channel(Client, Input) ->
     update_channel(Client, Input, []).
 update_channel(Client, Input0, Options0) ->
