@@ -100,6 +100,10 @@
          delete_rule_group/3,
          delete_web_acl/2,
          delete_web_acl/3,
+         describe_all_managed_products/2,
+         describe_all_managed_products/3,
+         describe_managed_products_by_vendor/2,
+         describe_managed_products_by_vendor/3,
          describe_managed_rule_group/2,
          describe_managed_rule_group/3,
          disassociate_web_acl/2,
@@ -393,6 +397,24 @@ delete_web_acl(Client, Input)
 delete_web_acl(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWebACL">>, Input, Options).
+
+%% @doc Provides high-level information for the Amazon Web Services Managed
+%% Rules rule groups and Amazon Web Services Marketplace managed rule groups.
+describe_all_managed_products(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_all_managed_products(Client, Input, []).
+describe_all_managed_products(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAllManagedProducts">>, Input, Options).
+
+%% @doc Provides high-level information for the managed rule groups owned by
+%% a specific vendor.
+describe_managed_products_by_vendor(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_managed_products_by_vendor(Client, Input, []).
+describe_managed_products_by_vendor(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeManagedProductsByVendor">>, Input, Options).
 
 %% @doc Provides high-level information for a managed rule group, including
 %% descriptions of the rules.

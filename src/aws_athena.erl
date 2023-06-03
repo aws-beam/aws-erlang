@@ -42,6 +42,8 @@
          create_presigned_notebook_url/3,
          create_work_group/2,
          create_work_group/3,
+         delete_capacity_reservation/2,
+         delete_capacity_reservation/3,
          delete_data_catalog/2,
          delete_data_catalog/3,
          delete_named_query/2,
@@ -211,6 +213,11 @@ batch_get_query_execution(Client, Input, Options)
     request(Client, <<"BatchGetQueryExecution">>, Input, Options).
 
 %% @doc Cancels the capacity reservation with the specified name.
+%%
+%% Cancelled reservations remain in your account and will be deleted 45 days
+%% after cancellation. During the 45 days, you cannot re-purpose or reuse a
+%% reservation that has been cancelled, but you can refer to its tags and
+%% view it for historical reference.
 cancel_capacity_reservation(Client, Input)
   when is_map(Client), is_map(Input) ->
     cancel_capacity_reservation(Client, Input, []).
@@ -296,6 +303,20 @@ create_work_group(Client, Input)
 create_work_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateWorkGroup">>, Input, Options).
+
+%% @doc Deletes a cancelled capacity reservation.
+%%
+%% A reservation must be cancelled before it can be deleted. A deleted
+%% reservation is immediately removed from your account and can no longer be
+%% referenced, including by its ARN. A deleted reservation cannot be called
+%% by `GetCapacityReservation', and deleted reservations do not appear in
+%% the output of `ListCapacityReservations'.
+delete_capacity_reservation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_capacity_reservation(Client, Input, []).
+delete_capacity_reservation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteCapacityReservation">>, Input, Options).
 
 %% @doc Deletes a data catalog.
 delete_data_catalog(Client, Input)

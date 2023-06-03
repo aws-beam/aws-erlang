@@ -25,6 +25,128 @@
 %%
 %% See the CloudTrail User Guide for information about the data that is
 %% included with each Amazon Web Services API call listed in the log files.
+%%
+%% Actions available for CloudTrail trails
+%%
+%% The following actions are available for CloudTrail trails.
+%%
+%% <ul> <li> `AddTags'
+%%
+%% </li> <li> `CreateTrail'
+%%
+%% </li> <li> `DeleteTrail'
+%%
+%% </li> <li> `DescribeTrails'
+%%
+%% </li> <li> `GetEventSelectors'
+%%
+%% </li> <li> `GetInsightSelectors'
+%%
+%% </li> <li> `GetTrail'
+%%
+%% </li> <li> `GetTrailStatus'
+%%
+%% </li> <li> `ListTags'
+%%
+%% </li> <li> `ListTrails'
+%%
+%% </li> <li> `PutEventSelectors'
+%%
+%% </li> <li> `PutInsightSelectors'
+%%
+%% </li> <li> `RemoveTags'
+%%
+%% </li> <li> `StartLogging'
+%%
+%% </li> <li> `StopLogging'
+%%
+%% </li> <li> `UpdateTrail'
+%%
+%% </li> </ul> Actions available for CloudTrail event data stores
+%%
+%% The following actions are available for CloudTrail event data stores.
+%%
+%% <ul> <li> `AddTags'
+%%
+%% </li> <li> `CancelQuery'
+%%
+%% </li> <li> `CreateEventDataStore'
+%%
+%% </li> <li> `DeleteEventDataStore'
+%%
+%% </li> <li> `DescribeQuery'
+%%
+%% </li> <li> `GetEventDataStore'
+%%
+%% </li> <li> `GetQueryResults'
+%%
+%% </li> <li> `ListEventDataStores'
+%%
+%% </li> <li> `ListTags'
+%%
+%% </li> <li> `ListQueries'
+%%
+%% </li> <li> `RemoveTags'
+%%
+%% </li> <li> `RestoreEventDataStore'
+%%
+%% </li> <li> `StartEventDataStoreIngestion'
+%%
+%% </li> <li> `StartImport'
+%%
+%% The following additional actions are available for imports.
+%%
+%% <ul> <li> `GetImport'
+%%
+%% </li> <li> `ListImportFailures'
+%%
+%% </li> <li> `ListImports'
+%%
+%% </li> <li> `StopImport'
+%%
+%% </li> </ul> </li> <li> `StartQuery'
+%%
+%% </li> <li> `StartEventDataStoreIngestion'
+%%
+%% </li> <li> `UpdateEventDataStore'
+%%
+%% </li> </ul> Actions available for CloudTrail channels
+%%
+%% The following actions are available for CloudTrail channels.
+%%
+%% <ul> <li> `AddTags'
+%%
+%% </li> <li> `CreateChannel'
+%%
+%% </li> <li> `DeleteChannel'
+%%
+%% </li> <li> `DeleteResourcePolicy'
+%%
+%% </li> <li> `GetChannel'
+%%
+%% </li> <li> `GetResourcePolicy'
+%%
+%% </li> <li> `ListChannels'
+%%
+%% </li> <li> `ListTags'
+%%
+%% </li> <li> `PutResourcePolicy'
+%%
+%% </li> <li> `RemoveTags'
+%%
+%% </li> <li> `UpdateChannel'
+%%
+%% </li> </ul> Actions available for managing delegated administrators
+%%
+%% The following actions are available for adding or a removing a delegated
+%% administrator to manage an Organizations organization’s CloudTrail
+%% resources.
+%%
+%% <ul> <li> `DeregisterOrganizationDelegatedAdmin'
+%%
+%% </li> <li> `RegisterOrganizationDelegatedAdmin'
+%%
+%% </li> </ul>
 -module(aws_cloudtrail).
 
 -export([add_tags/2,
@@ -99,12 +221,16 @@
          remove_tags/3,
          restore_event_data_store/2,
          restore_event_data_store/3,
+         start_event_data_store_ingestion/2,
+         start_event_data_store_ingestion/3,
          start_import/2,
          start_import/3,
          start_logging/2,
          start_logging/3,
          start_query/2,
          start_query/3,
+         stop_event_data_store_ingestion/2,
+         stop_event_data_store_ingestion/3,
          stop_import/2,
          stop_import/3,
          stop_logging/2,
@@ -131,7 +257,7 @@
 %% a value, the tag will be created with the specified key and a value of
 %% null. You can tag a trail or event data store that applies to all Amazon
 %% Web Services Regions only from the Region in which the trail or event data
-%% store was created (also known as its home region).
+%% store was created (also known as its home Region).
 add_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     add_tags(Client, Input, []).
@@ -221,10 +347,10 @@ delete_resource_policy(Client, Input, Options)
 
 %% @doc Deletes a trail.
 %%
-%% This operation must be called from the region in which the trail was
+%% This operation must be called from the Region in which the trail was
 %% created. `DeleteTrail' cannot be called on the shadow trails
-%% (replicated trails in other regions) of a trail that is enabled in all
-%% regions.
+%% (replicated trails in other Regions) of a trail that is enabled in all
+%% Regions.
 delete_trail(Client, Input)
   when is_map(Client), is_map(Input) ->
     delete_trail(Client, Input, []).
@@ -254,7 +380,7 @@ describe_query(Client, Input, Options)
     request(Client, <<"DescribeQuery">>, Input, Options).
 
 %% @doc Retrieves settings for one or more trails associated with the current
-%% region for your account.
+%% Region for your account.
 describe_trails(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_trails(Client, Input, []).
@@ -367,8 +493,8 @@ get_trail(Client, Input, Options)
 %%
 %% Fields include information on delivery errors, Amazon SNS and Amazon S3
 %% errors, and start and stop logging times for each trail. This operation
-%% returns trail status from a single region. To return trail status from all
-%% regions, you must call the operation on each region.
+%% returns trail status from a single Region. To return trail status from all
+%% Regions, you must call the operation on each Region.
 get_trail_status(Client, Input)
   when is_map(Client), is_map(Input) ->
     get_trail_status(Client, Input, []).
@@ -385,7 +511,7 @@ list_channels(Client, Input, Options)
     request(Client, <<"ListChannels">>, Input, Options).
 
 %% @doc Returns information about all event data stores in the account, in
-%% the current region.
+%% the current Region.
 list_event_data_stores(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_event_data_stores(Client, Input, []).
@@ -416,10 +542,10 @@ list_imports(Client, Input, Options)
 %% The public key is needed to validate digest files that were signed with
 %% its corresponding private key.
 %%
-%% CloudTrail uses different private and public key pairs per region. Each
-%% digest file is signed with a private key unique to its region. When you
-%% validate a digest file from a specific region, you must look in the same
-%% region for its corresponding public key.
+%% CloudTrail uses different private and public key pairs per Region. Each
+%% digest file is signed with a private key unique to its Region. When you
+%% validate a digest file from a specific Region, you must look in the same
+%% Region for its corresponding public key.
 list_public_keys(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_public_keys(Client, Input, []).
@@ -442,8 +568,8 @@ list_queries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListQueries">>, Input, Options).
 
-%% @doc Lists the tags for the trail, event data store, or channel in the
-%% current region.
+%% @doc Lists the tags for the specified trails, event data stores, or
+%% channels in the current Region.
 list_tags(Client, Input)
   when is_map(Client), is_map(Input) ->
     list_tags(Client, Input, []).
@@ -462,7 +588,7 @@ list_trails(Client, Input, Options)
 %% @doc Looks up management events or CloudTrail Insights events that are
 %% captured by CloudTrail.
 %%
-%% You can look up events that occurred in a region within the last 90 days.
+%% You can look up events that occurred in a Region within the last 90 days.
 %% Lookup supports the following attributes for management events:
 %%
 %% <ul> <li> Amazon Web Services access key
@@ -494,7 +620,7 @@ list_trails(Client, Input, Options)
 %% token that you can use to get the next page of results.
 %%
 %% The rate of lookup requests is limited to two per second, per account, per
-%% region. If this limit is exceeded, a throttling error occurs.
+%% Region. If this limit is exceeded, a throttling error occurs.
 lookup_events(Client, Input)
   when is_map(Client), is_map(Input) ->
     lookup_events(Client, Input, []).
@@ -539,7 +665,7 @@ lookup_events(Client, Input, Options)
 %% event.
 %%
 %% </li> </ol> The `PutEventSelectors' operation must be called from the
-%% region in which the trail was created; otherwise, an
+%% Region in which the trail was created; otherwise, an
 %% `InvalidHomeRegionException' exception is thrown.
 %%
 %% You can configure up to five event selectors for each trail. For more
@@ -624,6 +750,19 @@ restore_event_data_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RestoreEventDataStore">>, Input, Options).
 
+%% @doc Starts the ingestion of live events on an event data store specified
+%% as either an ARN or the ID portion of the ARN.
+%%
+%% To start ingestion, the event data store `Status' must be
+%% `STOPPED_INGESTION' and the `eventCategory' must be
+%% `Management', `Data', or `ConfigurationItem'.
+start_event_data_store_ingestion(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_event_data_store_ingestion(Client, Input, []).
+start_event_data_store_ingestion(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartEventDataStoreIngestion">>, Input, Options).
+
 %% @doc Starts an import of logged trail events from a source S3 bucket to a
 %% destination event data store.
 %%
@@ -655,10 +794,10 @@ start_import(Client, Input, Options)
 %% @doc Starts the recording of Amazon Web Services API calls and log file
 %% delivery for a trail.
 %%
-%% For a trail that is enabled in all regions, this operation must be called
-%% from the region in which the trail was created. This operation cannot be
-%% called on the shadow trails (replicated trails in other regions) of a
-%% trail that is enabled in all regions.
+%% For a trail that is enabled in all Regions, this operation must be called
+%% from the Region in which the trail was created. This operation cannot be
+%% called on the shadow trails (replicated trails in other Regions) of a
+%% trail that is enabled in all Regions.
 start_logging(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_logging(Client, Input, []).
@@ -678,6 +817,19 @@ start_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartQuery">>, Input, Options).
 
+%% @doc Stops the ingestion of live events on an event data store specified
+%% as either an ARN or the ID portion of the ARN.
+%%
+%% To stop ingestion, the event data store `Status' must be `ENABLED'
+%% and the `eventCategory' must be `Management', `Data', or
+%% `ConfigurationItem'.
+stop_event_data_store_ingestion(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_event_data_store_ingestion(Client, Input, []).
+stop_event_data_store_ingestion(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopEventDataStoreIngestion">>, Input, Options).
+
 %% @doc Stops a specified import.
 stop_import(Client, Input)
   when is_map(Client), is_map(Input) ->
@@ -691,11 +843,11 @@ stop_import(Client, Input, Options)
 %%
 %% Under most circumstances, there is no need to use this action. You can
 %% update a trail without stopping it first. This action is the only way to
-%% stop recording. For a trail enabled in all regions, this operation must be
-%% called from the region in which the trail was created, or an
+%% stop recording. For a trail enabled in all Regions, this operation must be
+%% called from the Region in which the trail was created, or an
 %% `InvalidHomeRegionException' will occur. This operation cannot be
-%% called on the shadow trails (replicated trails in other regions) of a
-%% trail enabled in all regions.
+%% called on the shadow trails (replicated trails in other Regions) of a
+%% trail enabled in all Regions.
 stop_logging(Client, Input)
   when is_map(Client), is_map(Input) ->
     stop_logging(Client, Input, []).
@@ -741,7 +893,7 @@ update_event_data_store(Client, Input, Options)
 %% this action to designate an existing bucket for log delivery. If the
 %% existing bucket has previously been a target for CloudTrail log files, an
 %% IAM policy exists for the bucket. `UpdateTrail' must be called from
-%% the region in which the trail was created; otherwise, an
+%% the Region in which the trail was created; otherwise, an
 %% `InvalidHomeRegionException' is thrown.
 update_trail(Client, Input)
   when is_map(Client), is_map(Input) ->
