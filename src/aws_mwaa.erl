@@ -6,7 +6,7 @@
 %% This section contains the Amazon Managed Workflows for Apache Airflow
 %% (MWAA) API reference documentation.
 %%
-%% For more information, see What Is Amazon MWAA?.
+%% For more information, see What is Amazon MWAA?.
 %%
 %% Endpoints
 %%

@@ -7,14 +7,68 @@
 
 -export([create_environment/2,
          create_environment/3,
+         create_kx_changeset/4,
+         create_kx_changeset/5,
+         create_kx_cluster/3,
+         create_kx_cluster/4,
+         create_kx_database/3,
+         create_kx_database/4,
+         create_kx_environment/2,
+         create_kx_environment/3,
+         create_kx_user/3,
+         create_kx_user/4,
          delete_environment/3,
          delete_environment/4,
+         delete_kx_cluster/4,
+         delete_kx_cluster/5,
+         delete_kx_database/4,
+         delete_kx_database/5,
+         delete_kx_environment/3,
+         delete_kx_environment/4,
+         delete_kx_user/4,
+         delete_kx_user/5,
          get_environment/2,
          get_environment/4,
          get_environment/5,
+         get_kx_changeset/4,
+         get_kx_changeset/6,
+         get_kx_changeset/7,
+         get_kx_cluster/3,
+         get_kx_cluster/5,
+         get_kx_cluster/6,
+         get_kx_connection_string/4,
+         get_kx_connection_string/6,
+         get_kx_connection_string/7,
+         get_kx_database/3,
+         get_kx_database/5,
+         get_kx_database/6,
+         get_kx_environment/2,
+         get_kx_environment/4,
+         get_kx_environment/5,
+         get_kx_user/3,
+         get_kx_user/5,
+         get_kx_user/6,
          list_environments/1,
          list_environments/3,
          list_environments/4,
+         list_kx_changesets/3,
+         list_kx_changesets/5,
+         list_kx_changesets/6,
+         list_kx_cluster_nodes/3,
+         list_kx_cluster_nodes/5,
+         list_kx_cluster_nodes/6,
+         list_kx_clusters/2,
+         list_kx_clusters/4,
+         list_kx_clusters/5,
+         list_kx_databases/2,
+         list_kx_databases/4,
+         list_kx_databases/5,
+         list_kx_environments/1,
+         list_kx_environments/3,
+         list_kx_environments/4,
+         list_kx_users/2,
+         list_kx_users/4,
+         list_kx_users/5,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -23,7 +77,17 @@
          untag_resource/3,
          untag_resource/4,
          update_environment/3,
-         update_environment/4]).
+         update_environment/4,
+         update_kx_cluster_databases/4,
+         update_kx_cluster_databases/5,
+         update_kx_database/4,
+         update_kx_database/5,
+         update_kx_environment/3,
+         update_kx_environment/4,
+         update_kx_environment_network/3,
+         update_kx_environment_network/4,
+         update_kx_user/4,
+         update_kx_user/5]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -37,6 +101,125 @@ create_environment(Client, Input) ->
 create_environment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/environment"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a changeset for a kdb database.
+%%
+%% A changeset allows you to add and delete existing files by using an
+%% ordered list of change requests.
+create_kx_changeset(Client, DatabaseName, EnvironmentId, Input) ->
+    create_kx_changeset(Client, DatabaseName, EnvironmentId, Input, []).
+create_kx_changeset(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
+    Method = post,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/changesets"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new kdb cluster.
+create_kx_cluster(Client, EnvironmentId, Input) ->
+    create_kx_cluster(Client, EnvironmentId, Input, []).
+create_kx_cluster(Client, EnvironmentId, Input0, Options0) ->
+    Method = post,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/clusters"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new kdb database in the environment.
+create_kx_database(Client, EnvironmentId, Input) ->
+    create_kx_database(Client, EnvironmentId, Input, []).
+create_kx_database(Client, EnvironmentId, Input0, Options0) ->
+    Method = post,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a managed kdb environment for the account.
+create_kx_environment(Client, Input) ->
+    create_kx_environment(Client, Input, []).
+create_kx_environment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/kx/environments"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a user in FinSpace kdb environment with an associated IAM
+%% role.
+create_kx_user(Client, EnvironmentId, Input) ->
+    create_kx_user(Client, EnvironmentId, Input, []).
+create_kx_user(Client, EnvironmentId, Input0, Options0) ->
+    Method = post,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/users"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},
@@ -77,6 +260,106 @@ delete_environment(Client, EnvironmentId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a kdb cluster.
+delete_kx_cluster(Client, ClusterName, EnvironmentId, Input) ->
+    delete_kx_cluster(Client, ClusterName, EnvironmentId, Input, []).
+delete_kx_cluster(Client, ClusterName, EnvironmentId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/clusters/", aws_util:encode_uri(ClusterName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified database and all of its associated data.
+%%
+%% This action is irreversible. You must copy any data out of the database
+%% before deleting it if the data is to be retained.
+delete_kx_database(Client, DatabaseName, EnvironmentId, Input) ->
+    delete_kx_database(Client, DatabaseName, EnvironmentId, Input, []).
+delete_kx_database(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"clientToken">>, <<"clientToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the kdb environment.
+%%
+%% This action is irreversible. Deleting a kdb environment will remove all
+%% the associated data and any services running in it.
+delete_kx_environment(Client, EnvironmentId, Input) ->
+    delete_kx_environment(Client, EnvironmentId, Input, []).
+delete_kx_environment(Client, EnvironmentId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a user in the specified kdb environment.
+delete_kx_user(Client, EnvironmentId, UserName, Input) ->
+    delete_kx_user(Client, EnvironmentId, UserName, Input, []).
+delete_kx_user(Client, EnvironmentId, UserName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/users/", aws_util:encode_uri(UserName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns the FinSpace environment object.
 get_environment(Client, EnvironmentId)
   when is_map(Client) ->
@@ -100,6 +383,152 @@ get_environment(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns information about a kdb changeset.
+get_kx_changeset(Client, ChangesetId, DatabaseName, EnvironmentId)
+  when is_map(Client) ->
+    get_kx_changeset(Client, ChangesetId, DatabaseName, EnvironmentId, #{}, #{}).
+
+get_kx_changeset(Client, ChangesetId, DatabaseName, EnvironmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_kx_changeset(Client, ChangesetId, DatabaseName, EnvironmentId, QueryMap, HeadersMap, []).
+
+get_kx_changeset(Client, ChangesetId, DatabaseName, EnvironmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/changesets/", aws_util:encode_uri(ChangesetId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a kdb cluster.
+get_kx_cluster(Client, ClusterName, EnvironmentId)
+  when is_map(Client) ->
+    get_kx_cluster(Client, ClusterName, EnvironmentId, #{}, #{}).
+
+get_kx_cluster(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_kx_cluster(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap, []).
+
+get_kx_cluster(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/clusters/", aws_util:encode_uri(ClusterName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a connection string for a user to connect to a kdb cluster.
+%%
+%% You must call this API using the same role that you have defined while
+%% creating a user.
+get_kx_connection_string(Client, EnvironmentId, ClusterName, UserArn)
+  when is_map(Client) ->
+    get_kx_connection_string(Client, EnvironmentId, ClusterName, UserArn, #{}, #{}).
+
+get_kx_connection_string(Client, EnvironmentId, ClusterName, UserArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_kx_connection_string(Client, EnvironmentId, ClusterName, UserArn, QueryMap, HeadersMap, []).
+
+get_kx_connection_string(Client, EnvironmentId, ClusterName, UserArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/connectionString"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"clusterName">>, ClusterName},
+        {<<"userArn">>, UserArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns database information for the specified environment ID.
+get_kx_database(Client, DatabaseName, EnvironmentId)
+  when is_map(Client) ->
+    get_kx_database(Client, DatabaseName, EnvironmentId, #{}, #{}).
+
+get_kx_database(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_kx_database(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, []).
+
+get_kx_database(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves all the information for the specified kdb environment.
+get_kx_environment(Client, EnvironmentId)
+  when is_map(Client) ->
+    get_kx_environment(Client, EnvironmentId, #{}, #{}).
+
+get_kx_environment(Client, EnvironmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_kx_environment(Client, EnvironmentId, QueryMap, HeadersMap, []).
+
+get_kx_environment(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about the specified kdb user.
+get_kx_user(Client, EnvironmentId, UserName)
+  when is_map(Client) ->
+    get_kx_user(Client, EnvironmentId, UserName, #{}, #{}).
+
+get_kx_user(Client, EnvironmentId, UserName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_kx_user(Client, EnvironmentId, UserName, QueryMap, HeadersMap, []).
+
+get_kx_user(Client, EnvironmentId, UserName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/users/", aws_util:encode_uri(UserName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc A list of all of your FinSpace environments.
 list_environments(Client)
   when is_map(Client) ->
@@ -112,6 +541,175 @@ list_environments(Client, QueryMap, HeadersMap)
 list_environments(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/environment"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of all the changesets for a database.
+list_kx_changesets(Client, DatabaseName, EnvironmentId)
+  when is_map(Client) ->
+    list_kx_changesets(Client, DatabaseName, EnvironmentId, #{}, #{}).
+
+list_kx_changesets(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_kx_changesets(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, []).
+
+list_kx_changesets(Client, DatabaseName, EnvironmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), "/changesets"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all the nodes in a kdb cluster.
+list_kx_cluster_nodes(Client, ClusterName, EnvironmentId)
+  when is_map(Client) ->
+    list_kx_cluster_nodes(Client, ClusterName, EnvironmentId, #{}, #{}).
+
+list_kx_cluster_nodes(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_kx_cluster_nodes(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap, []).
+
+list_kx_cluster_nodes(Client, ClusterName, EnvironmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/clusters/", aws_util:encode_uri(ClusterName), "/nodes"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of clusters.
+list_kx_clusters(Client, EnvironmentId)
+  when is_map(Client) ->
+    list_kx_clusters(Client, EnvironmentId, #{}, #{}).
+
+list_kx_clusters(Client, EnvironmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_kx_clusters(Client, EnvironmentId, QueryMap, HeadersMap, []).
+
+list_kx_clusters(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/clusters"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"clusterType">>, maps:get(<<"clusterType">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of all the databases in the kdb environment.
+list_kx_databases(Client, EnvironmentId)
+  when is_map(Client) ->
+    list_kx_databases(Client, EnvironmentId, #{}, #{}).
+
+list_kx_databases(Client, EnvironmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_kx_databases(Client, EnvironmentId, QueryMap, HeadersMap, []).
+
+list_kx_databases(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of kdb environments created in an account.
+list_kx_environments(Client)
+  when is_map(Client) ->
+    list_kx_environments(Client, #{}, #{}).
+
+list_kx_environments(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_kx_environments(Client, QueryMap, HeadersMap, []).
+
+list_kx_environments(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/kx/environments"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false}
+               | Options0],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all the users in a kdb environment.
+list_kx_users(Client, EnvironmentId)
+  when is_map(Client) ->
+    list_kx_users(Client, EnvironmentId, #{}, #{}).
+
+list_kx_users(Client, EnvironmentId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_kx_users(Client, EnvironmentId, QueryMap, HeadersMap, []).
+
+list_kx_users(Client, EnvironmentId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/users"],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false}
@@ -204,6 +802,139 @@ update_environment(Client, EnvironmentId, Input) ->
 update_environment(Client, EnvironmentId, Input0, Options0) ->
     Method = put,
     Path = ["/environment/", aws_util:encode_uri(EnvironmentId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the databases mounted on a kdb cluster, which includes the
+%% `changesetId' and all the dbPaths to be cached.
+%%
+%% This API does not allow you to change a database name or add a database if
+%% you created a cluster without one.
+%%
+%% Using this API you can point a cluster to a different changeset and modify
+%% a list of partitions being cached.
+update_kx_cluster_databases(Client, ClusterName, EnvironmentId, Input) ->
+    update_kx_cluster_databases(Client, ClusterName, EnvironmentId, Input, []).
+update_kx_cluster_databases(Client, ClusterName, EnvironmentId, Input0, Options0) ->
+    Method = put,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/clusters/", aws_util:encode_uri(ClusterName), "/configuration/databases"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates information for the given kdb database.
+update_kx_database(Client, DatabaseName, EnvironmentId, Input) ->
+    update_kx_database(Client, DatabaseName, EnvironmentId, Input, []).
+update_kx_database(Client, DatabaseName, EnvironmentId, Input0, Options0) ->
+    Method = put,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/databases/", aws_util:encode_uri(DatabaseName), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates information for the given kdb environment.
+update_kx_environment(Client, EnvironmentId, Input) ->
+    update_kx_environment(Client, EnvironmentId, Input, []).
+update_kx_environment(Client, EnvironmentId, Input0, Options0) ->
+    Method = put,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), ""],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates environment network to connect to your internal network by
+%% using a transit gateway.
+%%
+%% This API supports request to create a transit gateway attachment from
+%% FinSpace VPC to your transit gateway ID and create a custom Route-53
+%% outbound resolvers.
+%%
+%% Once you send a request to update a network, you cannot change it again.
+%% Network update might require termination of any clusters that are running
+%% in the existing network.
+update_kx_environment_network(Client, EnvironmentId, Input) ->
+    update_kx_environment_network(Client, EnvironmentId, Input, []).
+update_kx_environment_network(Client, EnvironmentId, Input0, Options0) ->
+    Method = put,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/network"],
+    SuccessStatusCode = undefined,
+    Options = [{send_body_as_binary, false},
+               {receive_body_as_binary, false},
+               {append_sha256_content_hash, false}
+               | Options0],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the user details.
+%%
+%% You can only update the IAM role associated with a user.
+update_kx_user(Client, EnvironmentId, UserName, Input) ->
+    update_kx_user(Client, EnvironmentId, UserName, Input, []).
+update_kx_user(Client, EnvironmentId, UserName, Input0, Options0) ->
+    Method = put,
+    Path = ["/kx/environments/", aws_util:encode_uri(EnvironmentId), "/users/", aws_util:encode_uri(UserName), ""],
     SuccessStatusCode = undefined,
     Options = [{send_body_as_binary, false},
                {receive_body_as_binary, false},

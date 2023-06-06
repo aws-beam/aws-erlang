@@ -603,13 +603,6 @@ create_grant(Client, Input, Options)
 %% use HMAC keys to generate (`GenerateMac') and verify (`VerifyMac')
 %% HMAC codes for messages up to 4096 bytes.
 %%
-%% HMAC KMS keys are not supported in all Amazon Web Services Regions. If you
-%% try to create an HMAC KMS key in an Amazon Web Services Region in which
-%% HMAC keys are not supported, the `CreateKey' operation returns an
-%% `UnsupportedOperationException'. For a list of Regions in which HMAC
-%% KMS keys are supported, see HMAC keys in KMS in the Key Management Service
-%% Developer Guide.
-%%
 %% </dd> <dt>Multi-Region primary keys</dt> <dt>Imported key material</dt>
 %% <dd> To create a multi-Region primary key in the local Amazon Web Services
 %% Region, use the `MultiRegion' parameter with a value of `True'. To
@@ -635,17 +628,19 @@ create_grant(Client, Input, Options)
 %% in KMS in the Key Management Service Developer Guide.
 %%
 %% </dd> <dd> To import your own key material into a KMS key, begin by
-%% creating a symmetric encryption KMS key with no key material. To do this,
-%% use the `Origin' parameter of `CreateKey' with a value of
-%% `EXTERNAL'. Next, use `GetParametersForImport' operation to get a
-%% public key and import token, and use the public key to encrypt your key
-%% material. Then, use `ImportKeyMaterial' with your import token to
-%% import the key material. For step-by-step instructions, see Importing Key
-%% Material in the Key Management Service Developer Guide .
+%% creating a KMS key with no key material. To do this, use the `Origin'
+%% parameter of `CreateKey' with a value of `EXTERNAL'. Next, use
+%% `GetParametersForImport' operation to get a public key and import
+%% token. Use the wrapping public key to encrypt your key material. Then, use
+%% `ImportKeyMaterial' with your import token to import the key material.
+%% For step-by-step instructions, see Importing Key Material in the Key
+%% Management Service Developer Guide .
 %%
-%% This feature supports only symmetric encryption KMS keys, including
-%% multi-Region symmetric encryption KMS keys. You cannot import key material
-%% into any other type of KMS key.
+%% You can import key material into KMS keys of all supported KMS key types:
+%% symmetric encryption KMS keys, HMAC KMS keys, asymmetric encryption KMS
+%% keys, and asymmetric signing KMS keys. You can also create multi-Region
+%% keys with imported key material. However, you can't import key
+%% material into a KMS key in a custom key store.
 %%
 %% To create a multi-Region primary key with imported key material, use the
 %% `Origin' parameter of `CreateKey' with a value of `EXTERNAL'
@@ -917,18 +912,16 @@ delete_custom_key_store(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCustomKeyStore">>, Input, Options).
 
-%% @doc Deletes key material that you previously imported.
+%% @doc Deletes key material that was previously imported.
 %%
-%% This operation makes the specified KMS key unusable. For more information
-%% about importing key material into KMS, see Importing Key Material in the
-%% Key Management Service Developer Guide.
+%% This operation makes the specified KMS key temporarily unusable. To
+%% restore the usability of the KMS key, reimport the same key material. For
+%% more information about importing key material into KMS, see Importing Key
+%% Material in the Key Management Service Developer Guide.
 %%
 %% When the specified KMS key is in the `PendingDeletion' state, this
 %% operation does not change the KMS key's state. Otherwise, it changes
 %% the KMS key's state to `PendingImport'.
-%%
-%% After you delete key material, you can use `ImportKeyMaterial' to
-%% reimport the same key material into the KMS key.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For details, see Key states of KMS keys in the Key Management
@@ -1866,28 +1859,59 @@ get_key_rotation_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetKeyRotationStatus">>, Input, Options).
 
-%% @doc Returns the items you need to import key material into a symmetric
-%% encryption KMS key.
+%% @doc Returns the public key and an import token you need to import or
+%% reimport key material for a KMS key.
 %%
+%% By default, KMS keys are created with key material that KMS generates.
+%% This operation supports Importing key material, an advanced feature that
+%% lets you generate and import the cryptographic key material for a KMS key.
 %% For more information about importing key material into KMS, see Importing
 %% key material in the Key Management Service Developer Guide.
 %%
-%% This operation returns a public key and an import token. Use the public
-%% key to encrypt the symmetric key material. Store the import token to send
-%% with a subsequent `ImportKeyMaterial' request.
+%% Before calling `GetParametersForImport', use the `CreateKey'
+%% operation with an `Origin' value of `EXTERNAL' to create a KMS key
+%% with no key material. You can import key material for a symmetric
+%% encryption KMS key, HMAC KMS key, asymmetric encryption KMS key, or
+%% asymmetric signing KMS key. You can also import key material into a
+%% multi-Region key of any supported type. However, you can't import key
+%% material into a KMS key in a custom key store. You can also use
+%% `GetParametersForImport' to get a public key and import token to
+%% reimport the original key material into a KMS key whose key material
+%% expired or was deleted.
 %%
-%% You must specify the key ID of the symmetric encryption KMS key into which
-%% you will import key material. The KMS key `Origin' must be
-%% `EXTERNAL'. You must also specify the wrapping algorithm and type of
-%% wrapping key (public key) that you will use to encrypt the key material.
-%% You cannot perform this operation on an asymmetric KMS key, an HMAC KMS
-%% key, or on any KMS key in a different Amazon Web Services account.
+%% `GetParametersForImport' returns the items that you need to import
+%% your key material.
 %%
-%% To import key material, you must use the public key and import token from
-%% the same response. These items are valid for 24 hours. The expiration date
-%% and time appear in the `GetParametersForImport' response. You cannot
-%% use an expired token in an `ImportKeyMaterial' request. If your key
-%% and token expire, send another `GetParametersForImport' request.
+%% <ul> <li> The public key (or &quot;wrapping key&quot;) of an RSA key pair
+%% that KMS generates.
+%%
+%% You will use this public key to encrypt (&quot;wrap&quot;) your key
+%% material while it's in transit to KMS.
+%%
+%% </li> <li> A import token that ensures that KMS can decrypt your key
+%% material and associate it with the correct KMS key.
+%%
+%% </li> </ul> The public key and its import token are permanently linked and
+%% must be used together. Each public key and import token set is valid for
+%% 24 hours. The expiration date and time appear in the
+%% `ParametersValidTo' field in the `GetParametersForImport'
+%% response. You cannot use an expired public key or import token in an
+%% `ImportKeyMaterial' request. If your key and token expire, send
+%% another `GetParametersForImport' request.
+%%
+%% `GetParametersForImport' requires the following information:
+%%
+%% <ul> <li> The key ID of the KMS key for which you are importing the key
+%% material.
+%%
+%% </li> <li> The key spec of the public key (&quot;wrapping key&quot;) that
+%% you will use to encrypt your key material during import.
+%%
+%% </li> <li> The wrapping algorithm that you will use with the public key to
+%% encrypt your key material.
+%%
+%% </li> </ul> You can use the same or a different public key spec and
+%% wrapping algorithm each time you import or reimport the same key material.
 %%
 %% The KMS key that you use for this operation must be in a compatible key
 %% state. For details, see Key states of KMS keys in the Key Management
@@ -1972,51 +1996,91 @@ get_public_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPublicKey">>, Input, Options).
 
-%% @doc Imports key material into an existing symmetric encryption KMS key
-%% that was created without key material.
+%% @doc Imports or reimports key material into an existing KMS key that was
+%% created without key material.
+%%
+%% `ImportKeyMaterial' also sets the expiration model and expiration date
+%% of the imported key material.
+%%
+%% By default, KMS keys are created with key material that KMS generates.
+%% This operation supports Importing key material, an advanced feature that
+%% lets you generate and import the cryptographic key material for a KMS key.
+%% For more information about importing key material into KMS, see Importing
+%% key material in the Key Management Service Developer Guide.
 %%
 %% After you successfully import key material into a KMS key, you can
 %% reimport the same key material into that KMS key, but you cannot import
-%% different key material.
+%% different key material. You might reimport key material to replace key
+%% material that expired or key material that you deleted. You might also
+%% reimport key material to change the expiration model or expiration date of
+%% the key material. Before reimporting key material, if necessary, call
+%% `DeleteImportedKeyMaterial' to delete the current imported key
+%% material.
 %%
-%% You cannot perform this operation on an asymmetric KMS key, an HMAC KMS
-%% key, or on any KMS key in a different Amazon Web Services account. For
-%% more information about creating KMS keys with no key material and then
-%% importing key material, see Importing Key Material in the Key Management
-%% Service Developer Guide.
+%% Each time you import key material into KMS, you can determine whether
+%% (`ExpirationModel') and when (`ValidTo') the key material expires.
+%% To change the expiration of your key material, you must import it again,
+%% either by calling `ImportKeyMaterial' or using the import features of
+%% the KMS console.
 %%
-%% Before using this operation, call `GetParametersForImport'. Its
-%% response includes a public key and an import token. Use the public key to
-%% encrypt the key material. Then, submit the import token from the same
-%% `GetParametersForImport' response.
+%% Before calling `ImportKeyMaterial':
 %%
-%% When calling this operation, you must specify the following values:
+%% <ul> <li> Create or identify a KMS key with no key material. The KMS key
+%% must have an `Origin' value of `EXTERNAL', which indicates that
+%% the KMS key is designed for imported key material.
 %%
-%% <ul> <li> The key ID or key ARN of a KMS key with no key material. Its
-%% `Origin' must be `EXTERNAL'.
+%% To create an new KMS key for imported key material, call the
+%% `CreateKey' operation with an `Origin' value of `EXTERNAL'.
+%% You can create a symmetric encryption KMS key, HMAC KMS key, asymmetric
+%% encryption KMS key, or asymmetric signing KMS key. You can also import key
+%% material into a multi-Region key of any supported type. However, you
+%% can't import key material into a KMS key in a custom key store.
 %%
-%% To create a KMS key with no key material, call `CreateKey' and set the
-%% value of its `Origin' parameter to `EXTERNAL'. To get the
-%% `Origin' of a KMS key, call `DescribeKey'.)
+%% </li> <li> Use the `DescribeKey' operation to verify that the
+%% `KeyState' of the KMS key is `PendingImport', which indicates that
+%% the KMS key has no key material.
 %%
-%% </li> <li> The encrypted key material. To get the public key to encrypt
-%% the key material, call `GetParametersForImport'.
+%% If you are reimporting the same key material into an existing KMS key, you
+%% might need to call the `DeleteImportedKeyMaterial' to delete its
+%% existing key material.
+%%
+%% </li> <li> Call the `GetParametersForImport' operation to get a public
+%% key and import token set for importing key material.
+%%
+%% </li> <li> Use the public key in the `GetParametersForImport' response
+%% to encrypt your key material.
+%%
+%% </li> </ul> Then, in an `ImportKeyMaterial' request, you submit your
+%% encrypted key material and import token. When calling this operation, you
+%% must specify the following values:
+%%
+%% <ul> <li> The key ID or key ARN of the KMS key to associate with the
+%% imported key material. Its `Origin' must be `EXTERNAL' and its
+%% `KeyState' must be `PendingImport'. You cannot perform this
+%% operation on a KMS key in a custom key store, or on a KMS key in a
+%% different Amazon Web Services account. To get the `Origin' and
+%% `KeyState' of a KMS key, call `DescribeKey'.
+%%
+%% </li> <li> The encrypted key material.
 %%
 %% </li> <li> The import token that `GetParametersForImport' returned.
 %% You must use a public key and token from the same
 %% `GetParametersForImport' response.
 %%
 %% </li> <li> Whether the key material expires (`ExpirationModel') and,
-%% if so, when (`ValidTo'). If you set an expiration date, on the
-%% specified date, KMS deletes the key material from the KMS key, making the
-%% KMS key unusable. To use the KMS key in cryptographic operations again,
-%% you must reimport the same key material. The only way to change the
-%% expiration model or expiration date is by reimporting the same key
-%% material and specifying a new expiration date.
+%% if so, when (`ValidTo'). For help with this choice, see Setting an
+%% expiration time in the Key Management Service Developer Guide.
+%%
+%% If you set an expiration date, KMS deletes the key material from the KMS
+%% key on the specified date, making the KMS key unusable. To use the KMS key
+%% in cryptographic operations again, you must reimport the same key
+%% material. However, you can delete and reimport the key material at any
+%% time, including before the key material expires. Each time you reimport,
+%% you can eliminate or reset the expiration time.
 %%
 %% </li> </ul> When this operation is successful, the key state of the KMS
 %% key changes from `PendingImport' to `Enabled', and you can use the
-%% KMS key.
+%% KMS key in cryptographic operations.
 %%
 %% If this operation fails, use the exception to help determine the problem.
 %% If the error is related to the key material, the import token, or wrapping
@@ -2561,8 +2625,10 @@ revoke_grant(Client, Input, Options)
 %%
 %% Deleting a KMS key is a destructive and potentially dangerous operation.
 %% When a KMS key is deleted, all data that was encrypted under the KMS key
-%% is unrecoverable. (The only exception is a multi-Region replica key.) To
-%% prevent the use of a KMS key without deleting it, use `DisableKey'.
+%% is unrecoverable. (The only exception is a multi-Region replica key, or an
+%% asymmetric or HMAC KMS key with imported key material[BUGBUG-link to
+%% importing-keys-managing.html#import-delete-key.) To prevent the use of a
+%% KMS key without deleting it, use `DisableKey'.
 %%
 %% You can schedule the deletion of a multi-Region primary key and its
 %% replica keys at any time. However, KMS will not delete a multi-Region

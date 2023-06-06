@@ -27,7 +27,9 @@
 %% `docs.aws.amazon.com' .
 -module(aws_cloudformation).
 
--export([activate_type/2,
+-export([activate_organizations_access/2,
+         activate_organizations_access/3,
+         activate_type/2,
          activate_type/3,
          batch_describe_type_configurations/2,
          batch_describe_type_configurations/3,
@@ -43,6 +45,8 @@
          create_stack_instances/3,
          create_stack_set/2,
          create_stack_set/3,
+         deactivate_organizations_access/2,
+         deactivate_organizations_access/3,
          deactivate_type/2,
          deactivate_type/3,
          delete_change_set/2,
@@ -61,6 +65,8 @@
          describe_change_set/3,
          describe_change_set_hooks/2,
          describe_change_set_hooks/3,
+         describe_organizations_access/2,
+         describe_organizations_access/3,
          describe_publisher/2,
          describe_publisher/3,
          describe_stack_drift_detection_status/2,
@@ -166,6 +172,18 @@
 %% API
 %%====================================================================
 
+%% @doc Activate trusted access with Organizations.
+%%
+%% With trusted access between StackSets and Organizations activated, the
+%% management account has permissions to create and manage StackSets for your
+%% organization.
+activate_organizations_access(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    activate_organizations_access(Client, Input, []).
+activate_organizations_access(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ActivateOrganizationsAccess">>, Input, Options).
+
 %% @doc Activates a public third-party extension, making it available for use
 %% in stack templates.
 %%
@@ -173,7 +191,7 @@
 %% User Guide.
 %%
 %% Once you have activated a public third-party extension in your account and
-%% region, use SetTypeConfiguration to specify configuration properties for
+%% Region, use SetTypeConfiguration to specify configuration properties for
 %% the extension. For more information, see Configuring extensions at the
 %% account level in the CloudFormation User Guide.
 activate_type(Client, Input)
@@ -184,7 +202,7 @@ activate_type(Client, Input, Options)
     request(Client, <<"ActivateType">>, Input, Options).
 
 %% @doc Returns configuration data for the specified CloudFormation
-%% extensions, from the CloudFormation registry for the account and region.
+%% extensions, from the CloudFormation registry for the account and Region.
 %%
 %% For more information, see Configuring extensions at the account level in
 %% the CloudFormation User Guide.
@@ -299,8 +317,20 @@ create_stack_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStackSet">>, Input, Options).
 
+%% @doc Deactivates trusted access with Organizations.
+%%
+%% If trusted access is deactivated, the management account does not have
+%% permissions to create and manage service-managed StackSets for your
+%% organization.
+deactivate_organizations_access(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    deactivate_organizations_access(Client, Input, []).
+deactivate_organizations_access(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeactivateOrganizationsAccess">>, Input, Options).
+
 %% @doc Deactivates a public extension that was previously activated in this
-%% account and region.
+%% account and Region.
 %%
 %% Once deactivated, an extension can't be used in any CloudFormation
 %% operation. This includes stack update operations where the stack template
@@ -423,6 +453,19 @@ describe_change_set_hooks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeChangeSetHooks">>, Input, Options).
 
+%% @doc Retrieves information about the account's
+%% `OrganizationAccess' status.
+%%
+%% This API can be called either by the management account or the delegated
+%% administrator by using the `CallAs' parameter. This API can also be
+%% called without the `CallAs' parameter by the management account.
+describe_organizations_access(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_organizations_access(Client, Input, []).
+describe_organizations_access(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeOrganizationsAccess">>, Input, Options).
+
 %% @doc Returns information about a CloudFormation extension publisher.
 %%
 %% If you don't supply a `PublisherId', and you have registered as an
@@ -447,12 +490,12 @@ describe_publisher(Client, Input, Options)
 %% @doc Returns information about a stack drift detection operation.
 %%
 %% A stack drift detection operation detects whether a stack's actual
-%% configuration differs, or has drifted, from it's expected
-%% configuration, as defined in the stack template and any values specified
-%% as template parameters. A stack is considered to have drifted if one or
-%% more of its resources have drifted. For more information about stack and
-%% resource drift, see Detecting Unregulated Configuration Changes to Stacks
-%% and Resources.
+%% configuration differs, or has drifted, from its expected configuration, as
+%% defined in the stack template and any values specified as template
+%% parameters. A stack is considered to have drifted if one or more of its
+%% resources have drifted. For more information about stack and resource
+%% drift, see Detecting Unregulated Configuration Changes to Stacks and
+%% Resources.
 %%
 %% Use `DetectStackDrift' to initiate a stack drift detection operation.
 %% `DetectStackDrift' returns a `StackDriftDetectionId' you can use
@@ -483,10 +526,10 @@ describe_stack_events(Client, Input, Options)
     request(Client, <<"DescribeStackEvents">>, Input, Options).
 
 %% @doc Returns the stack instance that's associated with the specified
-%% stack set, Amazon Web Services account, and Region.
+%% StackSet, Amazon Web Services account, and Amazon Web Services Region.
 %%
-%% For a list of stack instances that are associated with a specific stack
-%% set, use `ListStackInstances'.
+%% For a list of stack instances that are associated with a specific
+%% StackSet, use `ListStackInstances'.
 describe_stack_instance(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_instance(Client, Input, []).
@@ -558,7 +601,7 @@ describe_stack_resources(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStackResources">>, Input, Options).
 
-%% @doc Returns the description of the specified stack set.
+%% @doc Returns the description of the specified StackSet.
 describe_stack_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_set(Client, Input, []).
@@ -566,7 +609,7 @@ describe_stack_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeStackSet">>, Input, Options).
 
-%% @doc Returns the description of the specified stack set operation.
+%% @doc Returns the description of the specified StackSet operation.
 describe_stack_set_operation(Client, Input)
   when is_map(Client), is_map(Input) ->
     describe_stack_set_operation(Client, Input, []).
@@ -615,8 +658,8 @@ describe_type_registration(Client, Input, Options)
     request(Client, <<"DescribeTypeRegistration">>, Input, Options).
 
 %% @doc Detects whether a stack's actual configuration differs, or has
-%% drifted, from it's expected configuration, as defined in the stack
-%% template and any values specified as template parameters.
+%% drifted, from its expected configuration, as defined in the stack template
+%% and any values specified as template parameters.
 %%
 %% For each resource in the stack that supports drift detection,
 %% CloudFormation compares the actual configuration of the resource with its
@@ -651,9 +694,9 @@ detect_stack_drift(Client, Input, Options)
     request(Client, <<"DetectStackDrift">>, Input, Options).
 
 %% @doc Returns information about whether a resource's actual
-%% configuration differs, or has drifted, from it's expected
-%% configuration, as defined in the stack template and any values specified
-%% as template parameters.
+%% configuration differs, or has drifted, from its expected configuration, as
+%% defined in the stack template and any values specified as template
+%% parameters.
 %%
 %% This information includes actual and expected property values for
 %% resources in which CloudFormation detects drift. Only resource properties
@@ -807,9 +850,6 @@ get_template_summary(Client, Input, Options)
 %% set in the same account as the source stack or in a different
 %% administrator account and Region, by specifying the stack ID of the stack
 %% you intend to import.
-%%
-%% `ImportStacksToStackSet' is only supported by self-managed
-%% permissions.
 import_stacks_to_stack_set(Client, Input)
   when is_map(Client), is_map(Input) ->
     import_stacks_to_stack_set(Client, Input, []).
@@ -965,7 +1005,7 @@ list_types(Client, Input, Options)
     request(Client, <<"ListTypes">>, Input, Options).
 
 %% @doc Publishes the specified extension to the CloudFormation registry as a
-%% public extension in this region.
+%% public extension in this Region.
 %%
 %% Public extensions are available for use by all CloudFormation users. For
 %% more information about publishing extensions, see Publishing extensions to
@@ -1024,14 +1064,14 @@ register_publisher(Client, Input, Options)
 %% CloudFormation CLI User Guide.
 %%
 %% You can have a maximum of 50 resource extension versions registered at a
-%% time. This maximum is per account and per region. Use DeregisterType to
+%% time. This maximum is per account and per Region. Use DeregisterType to
 %% deregister specific extension versions if necessary.
 %%
 %% Once you have initiated a registration request using ` `RegisterType'
 %% ', you can use ` `DescribeTypeRegistration' ' to monitor the
 %% progress of the registration request.
 %%
-%% Once you have registered a private extension in your account and region,
+%% Once you have registered a private extension in your account and Region,
 %% use SetTypeConfiguration to specify configuration properties for the
 %% extension. For more information, see Configuring extensions at the account
 %% level in the CloudFormation User Guide.
@@ -1082,7 +1122,7 @@ set_stack_policy(Client, Input, Options)
     request(Client, <<"SetStackPolicy">>, Input, Options).
 
 %% @doc Specifies the configuration data for a registered CloudFormation
-%% extension, in the given account and region.
+%% extension, in the given account and Region.
 %%
 %% To view the current configuration data for an extension, refer to the
 %% `ConfigurationSchema' element of DescribeType. For more information,
@@ -1152,7 +1192,7 @@ stop_stack_set_operation(Client, Input, Options)
 %% to publishing in the CloudFormation CLI User Guide.
 %%
 %% If you don't specify a version, CloudFormation uses the default
-%% version of the extension in your account and region for testing.
+%% version of the extension in your account and Region for testing.
 %%
 %% To perform testing, CloudFormation assumes the execution role specified
 %% when the type was registered. For more information, see RegisterType.
